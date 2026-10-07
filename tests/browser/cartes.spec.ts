@@ -1,15 +1,18 @@
 import { test, expect, type Page } from '@playwright/test';
 
 /**
- * Kevin, 07/10/2026 : « toutes les cartes du site pareilles », sans carte orpheline, une carte
- * qui se détache du fond et un séparateur visible.
+ * Kevin, 07/10/2026 : « toutes les cartes du site pareilles », sans carte orpheline ni étirée, une
+ * carte qui se détache du fond et un séparateur visible. Système de page du 07/10/2026
+ * (docs/design/2026-10-07-systeme-de-page.md, § 5).
  *
  * Mesuré dans le navigateur, page par page et largeur par largeur :
  *   - un seul dessin : bord, rayon, surface, ombre et marges identiques pour chaque `.carte`,
- *     même pastille, même titre, même texte ; cellules de bande à la même enseigne ;
- *   - une grille sans trou : chaque rangée occupe toute la largeur ; une colonne en mobile ;
- *     2 ou 4 cartes sur deux colonnes ; un multiple de trois sur trois colonnes quand la place
- *     le permet ; jamais trois colonnes pour un autre compte ;
+ *     même pastille, même titre, même texte que la carte témoin dessinée par global.css ;
+ *     cellules de bande à la même enseigne ;
+ *   - une grille sans carte étirée ni orpheline : toutes les cartes d'un groupe ont la même
+ *     largeur ; chaque rangée est pleine, sauf la dernière, qui se centre et ne porte jamais une
+ *     carte seule ; le nombre de colonnes suit le nombre de cartes (trois au plus) ; une bande
+ *     remplit toujours ses rangées ;
  *   - contrastes : texte AA (4,5:1) sur la carte, bord et filets perceptibles (≥ 1,3:1) ;
  *   - cartes cliquables : cliquables en entier, même survol, même focus ;
  *   - le blog, laissé tel quel, ne porte ni grille ni carte du site.
@@ -38,9 +41,21 @@ const BLOG = [
   '/blog/controler-les-bulletins-de-paie-avant-la-dsn',
 ];
 const LARGEURS = [375, 768, 1024, 1440];
-/** Seuils de la grille, en px : ceux des requêtes de conteneur de global.css (36rem, 56rem). */
+/** Seuils de la grille, en px : ceux des requêtes de conteneur de global.css (36, 48 et 56 rem). */
 const DEUX_COLONNES = 576;
+const BANDE_TROIS = 768;
 const TROIS_COLONNES = 896;
+
+/** Colonnes attendues pour un groupe, selon le système de page (§ 5). */
+function colonnesAttendues(nombre: number, largeur: number, bande: boolean): number {
+  if (largeur < DEUX_COLONNES || nombre === 1) return 1;
+  if (bande) {
+    if (nombre === 3) return largeur >= BANDE_TROIS ? 3 : 1;
+    return 2;
+  }
+  if (largeur < TROIS_COLONNES) return nombre % 2 === 0 ? 2 : 1;
+  return nombre === 2 || nombre === 4 ? 2 : 3;
+}
 
 type Mesure = Awaited<ReturnType<typeof mesurer>>;
 
@@ -82,6 +97,29 @@ async function mesurer(page: Page) {
       const s = getComputedStyle(el);
       return proprietes.map((p) => s.getPropertyValue(p)).join(' | ');
     };
+    const PROPRIETES_CARTE = ['border-top-width', 'border-top-style', 'border-top-color', 'border-right-color', 'border-top-left-radius', 'background-color', 'box-shadow', 'padding-top', 'padding-left'];
+    const PROPRIETES_TITRE = ['font-family', 'font-size', 'font-weight', 'line-height', 'color'];
+    const PROPRIETES_TEXTE = ['font-size', 'color'];
+    const PROPRIETES_ICONE = ['width', 'height', 'border-top-width', 'border-top-color', 'border-top-left-radius', 'background-color', 'color'];
+
+    // Carte témoin : le dessin unique tel que global.css le rend, indépendamment du contenu des pages.
+    const temoin = document.createElement('div');
+    temoin.className = 'carte';
+    temoin.setAttribute('aria-hidden', 'true');
+    temoin.style.cssText = 'position:absolute;left:-9999px;top:0;width:320px';
+    temoin.innerHTML = '<span class="carte-icone"><svg viewBox="0 0 24 24" width="24" height="24"></svg></span>'
+      + '<div class="carte-corps"><h3 class="carte-titre">Témoin</h3><p class="carte-texte">Témoin</p></div>';
+    (document.querySelector('main') ?? document.body).append(temoin);
+    const reference = {
+      carte: signature(temoin, PROPRIETES_CARTE),
+      cellule: signature(temoin, ['background-color', 'padding-top', 'padding-left']),
+      bord: getComputedStyle(temoin).borderTopColor,
+      titre: signature(temoin.querySelector('.carte-titre')!, PROPRIETES_TITRE),
+      texte: signature(temoin.querySelector('.carte-texte')!, PROPRIETES_TEXTE),
+      icone: signature(temoin.querySelector('.carte-icone')!, PROPRIETES_ICONE),
+    };
+    temoin.remove();
+
     const cartes = [...document.querySelectorAll('.carte')].filter(visible);
     const cellules = [...document.querySelectorAll('.cellule')].filter(visible);
     const textesAA: { texte: string; ratio: number }[] = [];
@@ -119,30 +157,29 @@ async function mesurer(page: Page) {
         const cle = [...rangees.keys()].find((y) => Math.abs(y - r.top) <= 1) ?? r.top;
         rangees.set(cle, [...(rangees.get(cle) ?? []), r]);
       }
-      const trous = [...rangees.values()].filter((rangee) => {
-        const gauche = Math.min(...rangee.map((r) => r.left));
-        const droite = Math.max(...rangee.map((r) => r.right));
-        return Math.abs(gauche - boite.left) > 1.5 || Math.abs(droite - boite.right) > 1.5;
-      }).length;
       return {
         nom: grille.className,
+        bande: !!grille.closest('.bande'),
         largeur: boite.width,
         nombre: enfants.length,
-        colonnes: Math.max(0, ...[...rangees.values()].map((rangee) => rangee.length)),
-        trous,
+        largeurs: enfants.map((r) => r.width),
         pleineLargeur,
+        rangees: [...rangees.values()].map((rangee) => ({
+          nombre: rangee.length,
+          gauche: Math.min(...rangee.map((r) => r.left)) - boite.left,
+          droite: boite.right - Math.max(...rangee.map((r) => r.right)),
+        })),
       };
     });
     return {
-      cartes: cartes.map((el) => signature(el, ['border-top-width', 'border-top-style', 'border-top-color', 'border-right-color', 'border-top-left-radius', 'background-color', 'box-shadow', 'padding-top', 'padding-left'])),
+      reference,
+      cartes: cartes.map((el) => signature(el, PROPRIETES_CARTE)),
       cellules: cellules.map((el) => signature(el, ['background-color', 'padding-top', 'padding-left'])),
-      cellulesComme: cartes[0] ? signature(cartes[0], ['background-color', 'padding-top', 'padding-left']) : null,
       filets: [...document.querySelectorAll('.bande > .cartes')].filter(visible).map((el) => getComputedStyle(el).backgroundColor),
       bordsDeBande: [...document.querySelectorAll('.bande')].filter(visible).map((el) => `${getComputedStyle(el).borderTopWidth} ${getComputedStyle(el).borderTopColor}`),
-      bordDeCarte: cartes[0] ? getComputedStyle(cartes[0]).borderTopColor : null,
-      titres: [...document.querySelectorAll('.carte-titre')].filter(visible).map((el) => signature(el, ['font-family', 'font-size', 'font-weight', 'line-height', 'color'])),
-      textes: [...document.querySelectorAll('.carte-texte')].filter(visible).map((el) => signature(el, ['font-size', 'color'])),
-      icones: [...document.querySelectorAll('.carte-icone')].filter(visible).map((el) => signature(el, ['width', 'height', 'border-top-width', 'border-top-color', 'border-top-left-radius', 'background-color', 'color'])),
+      titres: [...document.querySelectorAll('.carte-titre')].filter(visible).map((el) => signature(el, PROPRIETES_TITRE)),
+      textes: [...document.querySelectorAll('.carte-texte')].filter(visible).map((el) => signature(el, PROPRIETES_TEXTE)),
+      icones: [...document.querySelectorAll('.carte-icone')].filter(visible).map((el) => signature(el, PROPRIETES_ICONE)),
       textesAA,
       separations,
       grilles,
@@ -150,51 +187,53 @@ async function mesurer(page: Page) {
   });
 }
 
-const reference = new Map<number, Mesure>();
-
 for (const largeur of LARGEURS) {
   test.describe(`cartes à ${largeur}px`, () => {
-    test.beforeAll(async ({ browser }, testInfo) => {
-      const page = await browser.newPage({ viewport: { width: largeur, height: 900 }, reducedMotion: 'reduce' });
-      await page.goto(new URL('/', testInfo.project.use.baseURL).href);
-      await page.evaluate(() => document.fonts.ready);
-      await page.mouse.move(0, 0);
-      reference.set(largeur, await mesurer(page));
-      await page.close();
-    });
-
     for (const route of ROUTES) {
-      test(`${route} : un seul dessin, grilles pleines, contrastes`, async ({ page }) => {
+      test(`${route} : un seul dessin, grilles sans carte étirée ni orpheline, contrastes`, async ({ page }) => {
         await page.setViewportSize({ width: largeur, height: 900 });
         await page.emulateMedia({ reducedMotion: 'reduce' });
         await page.goto(route);
         await page.evaluate(() => document.fonts.ready);
         await page.mouse.move(0, 0);
-        const m = await mesurer(page);
-        const ref = reference.get(largeur)!;
+        const m: Mesure = await mesurer(page);
+        const ref = m.reference;
 
-        // Un seul dessin : chaque carte, titre, texte et pastille a la signature de l'accueil.
+        // Un seul dessin : chaque carte, titre, texte et pastille a la signature de la carte témoin.
         expect(m.cartes.length + m.cellules.length, 'la page porte des cartes ou une bande').toBeGreaterThan(0);
-        for (const carte of m.cartes) expect.soft(carte, 'carte').toBe(ref.cartes[0]);
-        for (const titre of m.titres) expect.soft(titre, 'titre de carte').toBe(ref.titres[0]);
-        for (const texte of m.textes) expect.soft(texte, 'texte de carte').toBe(ref.textes[0]);
-        for (const icone of m.icones) expect.soft(icone, 'pastille de carte').toBe(ref.icones[0]);
+        for (const carte of m.cartes) expect.soft(carte, 'carte').toBe(ref.carte);
+        for (const titre of m.titres) expect.soft(titre, 'titre de carte').toBe(ref.titre);
+        for (const texte of m.textes) expect.soft(texte, 'texte de carte').toBe(ref.texte);
+        for (const icone of m.icones) expect.soft(icone, 'pastille de carte').toBe(ref.icone);
         // La bande parle la même langue : surface et marges de la carte, filets de son bord.
-        for (const cellule of m.cellules) expect.soft(cellule, 'cellule de bande').toBe(ref.cellulesComme);
-        for (const filet of m.filets) expect.soft(filet, 'filet de bande').toBe(ref.bordDeCarte);
-        for (const bord of m.bordsDeBande) expect.soft(bord, 'bord de bande').toBe(`1px ${ref.bordDeCarte}`);
+        for (const cellule of m.cellules) expect.soft(cellule, 'cellule de bande').toBe(ref.cellule);
+        for (const filet of m.filets) expect.soft(filet, 'filet de bande').toBe(ref.bord);
+        for (const bord of m.bordsDeBande) expect.soft(bord, 'bord de bande').toBe(`1px ${ref.bord}`);
 
-        // Grilles : aucune rangée incomplète, et le nombre de colonnes suit le nombre de cartes.
+        // Grilles : même largeur pour toutes les cartes d'un groupe ; rangées pleines sauf la
+        // dernière, centrée et jamais réduite à une carte ; colonnes selon le nombre de cartes.
         for (const g of m.grilles) {
           const nom = `${g.nom} (${g.nombre} cartes, ${Math.round(g.largeur)} px)`;
           expect.soft(g.pleineLargeur, `${nom} : grille plus étroite que son parent`).toBe(true);
           expect.soft(g.largeur, `${nom} : grille écrasée`).toBeGreaterThan(Math.min(280, largeur - 80));
-          expect.soft(g.trous, `${nom} : rangée incomplète`).toBe(0);
-          if (g.largeur < DEUX_COLONNES) expect.soft(g.colonnes, nom).toBe(1);
-          else if (g.nombre % 3 === 0 && g.largeur >= TROIS_COLONNES) expect.soft(g.colonnes, nom).toBe(3);
-          else if (g.nombre > 1) expect.soft(g.colonnes, nom).toBe(2);
+          const colonnes = Math.max(0, ...g.rangees.map((r) => r.nombre));
+          expect.soft(colonnes, `${nom} : colonnes`).toBe(colonnesAttendues(g.nombre, g.largeur, g.bande));
+          expect.soft(Math.max(...g.largeurs) - Math.min(...g.largeurs), `${nom} : carte étirée`).toBeLessThanOrEqual(1.5);
+          g.rangees.forEach((rangee, i) => {
+            const derniere = i === g.rangees.length - 1;
+            if (g.nombre === 1) {
+              // Une destination seule (phase 2 : lien d'action) se range à gauche.
+              expect.soft(rangee.gauche, `${nom} : carte seule à gauche`).toBeLessThanOrEqual(1.5);
+            } else if (!derniere || g.bande) {
+              expect.soft(rangee.gauche, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);
+              expect.soft(rangee.droite, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);
+            } else {
+              expect.soft(Math.abs(rangee.gauche - rangee.droite), `${nom} : dernière rangée centrée`).toBeLessThanOrEqual(1.5);
+              if (colonnes > 1) expect.soft(rangee.nombre, `${nom} : carte orpheline`).toBeGreaterThanOrEqual(2);
+            }
+          });
         }
-        if (largeur <= 400) for (const g of m.grilles) expect.soft(g.colonnes, `${g.nom} en mobile`).toBe(1);
+        if (largeur <= 400) for (const g of m.grilles) expect.soft(Math.max(...g.rangees.map((r) => r.nombre)), `${g.nom} en mobile`).toBe(1);
 
         // Contrastes : texte AA sur la carte ; bord et filets perceptibles contre la carte et le fond.
         for (const t of m.textesAA) expect.soft(t.ratio, `contraste « ${t.texte} »`).toBeGreaterThanOrEqual(4.5);

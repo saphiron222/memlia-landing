@@ -1,0 +1,8 @@
+---
+import { segmentsInsecables } from '@/lib/insecable';
+// Rend un titre sans couper ses mots composés à leur trait d'union (système de page, § 2).
+interface Props { texte: string; }
+const { texte } = Astro.props;
+const segments = segmentsInsecables(texte);
+---
+{segments.map((s) => (s.insecable ? <span class="insecable">{s.texte}</span> : s.texte))}

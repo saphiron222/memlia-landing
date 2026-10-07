@@ -10,24 +10,24 @@ const proofs = [
  * S6 — « Proposition vs saisie » + repères vérifiables (spec §4.10 / S6 b), à la place
  * des témoignages : aucune preuve sociale sans autorisation distincte. Le motif directeur
  * du produit est dit tel quel ; les repères restent des textes sans microliens.
+ *
+ * Système de page : le surtitre nomme le motif directeur (seul surtitre de section de
+ * l'accueil, en casse de phrase) ; rangée (en-tête, maquette), puis trois engagements dans la
+ * bande du site.
  */
 ---
 
-<section id="preuves" class="preuves" aria-labelledby="preuves-titre">
-  <div class="preuves-media"><ProofRow id="03-controle">
-  <div class="preuves-tete rv">
-
-    <span class="eyebrow">proposition vs saisie</span>
-    <h2 id="preuves-titre">Automatiser la mécanique. Pas le jugement.</h2>
-    <p class="texte-2 lecture preuves-intro">
-      Nous distinguons ce qui peut être exécuté, ce qui doit être proposé et ce qui doit être refusé.
-      Une information ambiguë bloque l’écriture concernée et appelle une revue humaine.
-    </p>
-    <p class="texte-2 lecture">Memlia propose. Le cabinet saisit ou valide. Ce que Memlia génère se régénère ;
-      ce que le cabinet saisit ne se touche jamais. Aucun envoi externe sans validation humaine.</p>
+<section id="preuves" class="section pile preuves" aria-labelledby="preuves-titre">
+  <div class="conteneur">
+    <ProofRow id="03-controle">
+      <div class="tete rv">
+        <p class="surtitre">proposition vs saisie</p>
+        <h2 id="preuves-titre">Automatiser la mécanique. Pas le jugement.</h2>
+        <p>Nous distinguons ce qui peut être exécuté, ce qui doit être proposé et ce qui doit être refusé. Une information ambiguë bloque l’écriture concernée et appelle une revue humaine.</p>
+        <p>Memlia propose. Le cabinet saisit ou valide. Ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais. Aucun envoi externe sans validation humaine.</p>
+      </div>
+    </ProofRow>
   </div>
-  </ProofRow></div>
-
   <div class="bande coins">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
     <ul class="cartes reperes rv-groupe" aria-label="Preuves de méthode">
@@ -39,28 +39,4 @@ const proofs = [
       ))}
     </ul>
   </div>
-
 </section>
-
-<style>
-  .preuves-media { padding: 0 var(--marge-page); }
-  @media (min-width: 64rem) { .preuves-media { padding: 0 var(--marge-page-lg); } }
-  .preuves {
-    padding-top: 96px;
-  }
-  .preuves-tete {
-    display: grid;
-    gap: 12px;
-    max-width: 720px;
-    padding: 0;
-  }
-  .preuves-intro {
-    max-width: 62ch;
-  }
-  /* Les trois repères sont les cellules de la bande du site (`.bande`, global.css). */
-  @media (min-width: 64rem) {
-    .preuves {
-      padding-top: 128px;
-    }
-  }
-</style>

@@ -1,4 +1,5 @@
 ---
+import Picto from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 
 /**
@@ -8,6 +9,10 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
  * L'accueil oriente ; il ne détaille pas. Sans ce bloc, les cinq pages du site v2
  * n'étaient atteignables que par le bandeau et le pied de page : aucun lien de corps,
  * donc aucun chemin de lecture depuis la page d'entrée.
+ *
+ * Système de page : quatre destinations décrites par une phrase, donc quatre cartes (2 × 2),
+ * chacune finie par le lien d'action ; cinq services nommés par leur seul libellé, donc une
+ * liste de liens.
  */
 const destinations = [
   { texte: 'Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, de l’observation à la maintenance.', libelle: 'Découvrir le service', href: PAGES_V2.service.chemin },
@@ -24,50 +29,33 @@ const services = [
 ];
 ---
 
-<section class="orientation" aria-labelledby="orientation-titre">
-  <div class="conteneur">
-    <h2 id="orientation-titre" class="orientation-titre">Par où commencer</h2>
+<section class="section orientation" aria-labelledby="orientation-titre">
+  <div class="conteneur pile">
+    <div class="tete">
+      <h2 id="orientation-titre">Par où commencer</h2>
+    </div>
     <ul class="cartes">
       {destinations.map((d) => (
         <li class="carte">
           <div class="carte-corps">
             <p class="carte-texte">{d.texte}</p>
-            <a class="carte-action carte-lien" href={d.href}>{d.libelle}</a>
+            <a class="carte-action carte-lien" href={d.href}>{d.libelle}<Picto nom="fleche" taille={14} /></a>
           </div>
         </li>
       ))}
     </ul>
-    <nav class="orientation-services" aria-label="Pages de service">
-      <span>Voir une règle appliquée à une tâche</span>
-      <ul>
-        {services.map((service) => <li><a href={service.href}>{service.libelle}</a></li>)}
+    <nav class="liens-bloc" aria-label="Pages de service">
+      <span class="liens-titre">Voir une règle appliquée à une tâche</span>
+      <ul class="liens">
+        {services.map((service) => (
+          <li>
+            <a class="lien-rangee" href={service.href}>
+              <span class="lien-libelle">{service.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
 </section>
-
-<style>
-  /* Même rythme vertical que les autres sections de l'accueil : 96 px, 128 px en grand écran. */
-  .orientation { padding: 96px var(--marge-page) 0; }
-  @media (min-width: 64rem) { .orientation { padding: 128px var(--marge-page-lg) 0; } }
-  .orientation-titre {
-    font-family: var(--police-display), 'Fraunces Fallback';
-    font-size: var(--t-xl);
-    color: var(--texte-fort);
-    margin-bottom: 24px;
-  }
-  /* Les quatre destinations sont des cartes du site (global.css), cliquables en entier. */
-  .orientation-services {
-    display: grid;
-    gap: 14px;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--ligne-douce);
-  }
-  .orientation-services > span { color: var(--texte-2); font-weight: 600; }
-  .orientation-services ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .orientation-services a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-texte); font-weight: 600; text-underline-offset: 3px; }
-  @media (hover: hover) {
-    .orientation-services a:hover { color: var(--texte-fort); text-decoration: underline; }
-  }
-</style>

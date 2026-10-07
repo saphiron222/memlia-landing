@@ -75,10 +75,18 @@ class UnSeulDessinDeCarte(unittest.TestCase):
         css = (SRC / 'styles/global.css').read_text()
         for selecteur in ['.cartes {', '.carte {', '.carte-icone {', '.carte-titre {', '.carte-texte {', '.bande {', '.cellule {']:
             self.assertIn(selecteur, css)
-        # Grille : une colonne, puis deux ; trois pour un multiple de trois ; impair étendu.
+        # Grille (système de page du 07/10/2026, § 5) : une colonne, puis deux pour un nombre pair,
+        # trois au plus dès 56 rem (sauf 4 = 2 × 2) ; aucune carte étirée, rangée incomplète centrée.
         self.assertIn('@container (min-width: 36rem)', css)
-        self.assertIn('.cartes > :last-child:nth-child(odd)', css)
-        self.assertIn('.cartes:has(> :last-child:nth-child(3n))', css)
+        self.assertIn('@container (min-width: 56rem)', css)
+        self.assertIn('.cartes:has(> :last-child:nth-child(even)) > *', css)
+        self.assertIn('.cartes:has(> :nth-child(3)):not(:has(> :last-child:nth-child(4))) > *', css)
+        self.assertRegex(css, r'\.cartes \{[^}]*justify-content: center;')
+        self.assertRegex(css, r'\.cartes > \* \{[^}]*flex: 0 0 100%;')
+        # L'ancienne règle « nombre impair : la dernière carte s'étire » ne revient pas, ni une
+        # quatrième colonne.
+        self.assertNotIn(':last-child:nth-child(odd)', css)
+        self.assertNotRegex(css, r'flex-basis: calc\(\(100% - 3 \* var\(--ecart\)\) / 4')
 
     def test_aucun_composant_ne_redessine_la_carte(self):
         fautes = []

@@ -2,7 +2,8 @@
 import ProofRow from '@/components/ProofRow.astro';
 /**
  * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
- * génériques. Trois cellules dans la bande du site (`.bande`, global.css).
+ * génériques. Système de page : rangée (en-tête, maquette), puis trois engagements dans la bande
+ * du site (`.bande`, global.css), bord à bord de la feuille.
  */
 const points = [
   {
@@ -20,15 +21,15 @@ const points = [
 ];
 ---
 
-<section id="promesse" class="promesse" aria-labelledby="promesse-titre">
-  <div class="promesse-media"><ProofRow id="01-flux">
-  <div class="promesse-tete rv">
-    <h2 id="promesse-titre">Nous prenons la tâche entière. Vous gardez le jugement.</h2>
-    <p class="promesse-intro texte-2">
-      Nous observons le geste, nous écrivons la règle avec vous, nous construisons l’automatisation dans votre environnement et nous la maintenons. Vous n’avez rien à configurer.
-    </p>
+<section id="promesse" class="section pile promesse" aria-labelledby="promesse-titre">
+  <div class="conteneur">
+    <ProofRow id="01-flux">
+      <div class="tete rv">
+        <h2 id="promesse-titre">Nous prenons la tâche entière. Vous gardez le jugement.</h2>
+        <p>Nous observons le geste, nous écrivons la règle avec vous, nous construisons l’automatisation dans votre environnement et nous la maintenons. Vous n’avez rien à configurer.</p>
+      </div>
+    </ProofRow>
   </div>
-  </ProofRow></div>
   <div class="bande coins">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
     <ul class="cartes rv-groupe">
@@ -40,27 +41,4 @@ const points = [
       ))}
     </ul>
   </div>
-
 </section>
-
-<style>
-  .promesse-media { padding: 0 var(--marge-page); }
-  @media (min-width: 64rem) { .promesse-media { padding: 0 var(--marge-page-lg); } }
-  .promesse {
-    padding-top: 96px;
-  }
-  .promesse-tete {
-    display: grid;
-    gap: 12px;
-    max-width: 720px;
-    padding: 0;
-  }
-  .promesse-intro {
-    max-width: 62ch;
-  }
-  @media (min-width: 64rem) {
-    .promesse {
-      padding-top: 128px;
-    }
-  }
-</style>

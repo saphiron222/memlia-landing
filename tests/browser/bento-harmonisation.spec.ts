@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-// Les cinq usages de l'accueil sont des cartes du site (Kevin, 07/10/2026) : une fiche qui se
-// détache du fond, un bord visible, la même pastille de pictogramme pour les cinq, aucune
-// palette ni illustration propre à une capacité.
+// Système de page du 07/10/2026 : les cinq usages de l'accueil sont des définitions, non
+// cliquables, donc des lignes et pas des cartes : aucune fiche, aucune surface propre ; le même
+// pictogramme, de la même couleur et au même trait, ouvre chaque ligne ; aucune palette ni
+// illustration propre à une capacité.
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`bento : cartes du site et cinq pictogrammes uniformes à ${width}`, async ({ page }) => {
+  test(`usages : lignes du site et cinq pictogrammes uniformes à ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/');
@@ -21,50 +22,51 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
         return computed;
       };
       const expected = {
-        page: resolve('color', 'var(--surface-page)'), card: resolve('color', 'var(--carte-fond)'),
-        border: resolve('color', 'var(--carte-bord)'), radius: resolve('border-top-left-radius', 'var(--carte-rayon)'),
-        icon: resolve('color', 'var(--accent-texte)'), iconSize: resolve('width', 'var(--carte-icone)'),
-        title: resolve('color', 'var(--texte-fort)'), body: resolve('color', 'var(--texte-2)'),
+        icon: resolve('color', 'var(--accent-texte)'), title: resolve('color', 'var(--texte-fort)'),
+        body: resolve('color', 'var(--texte-2)'), rule: resolve('color', 'var(--ligne-filet)'),
       };
       return {
         expected,
         background: getComputedStyle(section).backgroundColor,
-        cards: [...section.querySelectorAll('[data-usage]')].map(el => {
-          const mark = el.querySelector('.carte-icone')!;
+        lines: [...section.querySelectorAll('[data-usage]')].map((el, i) => {
+          const mark = el.querySelector('.ligne-picto')!;
           const svg = mark.querySelector('svg')!;
           const m = getComputedStyle(mark), s = getComputedStyle(svg), c = getComputedStyle(el);
-          return { classes: el.className, background: c.backgroundColor, image: c.backgroundImage,
-            border: [c.borderTopWidth, c.borderTopStyle, c.borderTopColor], radius: c.borderTopLeftRadius,
+          return { classes: el.className, background: c.backgroundColor, image: c.backgroundImage, shadow: c.boxShadow,
+            radius: c.borderTopLeftRadius, rule: i === 0 ? null : [c.borderTopWidth, c.borderTopStyle, c.borderTopColor],
             title: getComputedStyle(el.querySelector('h3')!).color, body: getComputedStyle(el.querySelector('p')!).color,
-            mark: { width: m.width, height: m.height, color: m.color, background: m.backgroundColor, image: m.backgroundImage,
-              borders: [m.borderTop, m.borderRight, m.borderBottom, m.borderLeft], radius: m.borderRadius, alignment: m.placeItems,
+            mark: { color: m.color, background: m.backgroundColor, image: m.backgroundImage,
+              borders: [m.borderTopWidth, m.borderRightWidth, m.borderBottomWidth, m.borderLeftWidth],
               before: getComputedStyle(mark, '::before').content, after: getComputedStyle(mark, '::after').content },
             svg: { width: s.width, height: s.height, stroke: svg.getAttribute('stroke-width'), viewBox: svg.getAttribute('viewBox') },
           };
         }),
       };
     });
-    expect(actual.cards).toHaveLength(5);
-    expect(actual.background).toBe(actual.expected.page);
-    // La fiche se distingue du fond de la section : surface et bord différents du fond.
-    expect(actual.expected.card).not.toBe(actual.expected.page);
-    for (const card of actual.cards) {
-      expect(card.classes.split(/\s+/)).toContain('carte');
-      expect(card.background).toBe(actual.expected.card);
-      expect(card.image).toBe('none');
-      expect(card.border).toEqual(['1px', 'solid', actual.expected.border]);
-      expect(card.radius).toBe(actual.expected.radius);
-      expect(card.title).toBe(actual.expected.title);
-      expect(card.body).toBe(actual.expected.body);
-      expect(card.mark).toEqual(actual.cards[0].mark);
-      expect(card.mark.color).toBe(actual.expected.icon);
-      expect(card.mark.background).toBe(actual.expected.page);
-      expect(card.mark.image).toBe('none');
-      expect(card.mark.width).toBe(actual.expected.iconSize);
-      expect(card.mark.height).toBe(actual.expected.iconSize);
-      expect(card.mark.before).toBe('none');
-      expect(card.mark.after).toBe('none');
-      expect(card.svg).toEqual({ width: '24px', height: '24px', stroke: '1.5', viewBox: '0 0 24 24' });
+    expect(actual.lines).toHaveLength(5);
+    // La section n'a pas de fond propre : la feuille du site, comme toutes les sections.
+    expect(actual.background).toBe('rgba(0, 0, 0, 0)');
+    for (const line of actual.lines) {
+      // Une ligne n'est pas une carte : ni fiche, ni ombre, ni rayon.
+      expect(line.classes.split(/\s+/)).not.toContain('carte');
+      expect(line.classes.split(/\s+/)).toContain('ligne');
+      expect(line.background).toBe('rgba(0, 0, 0, 0)');
+      expect(line.image).toBe('none');
+      expect(line.shadow).toBe('none');
+      expect(line.radius).toBe('0px');
+      // Un filet sépare deux lignes.
+      if (line.rule) expect(line.rule).toEqual(['1px', 'solid', actual.expected.rule]);
+      expect(line.title).toBe(actual.expected.title);
+      expect(line.body).toBe(actual.expected.body);
+      // Le même pictogramme pour les cinq : même couleur, sans pastille ni décor, même trait.
+      expect(line.mark).toEqual(actual.lines[0].mark);
+      expect(line.mark.color).toBe(actual.expected.icon);
+      expect(line.mark.background).toBe('rgba(0, 0, 0, 0)');
+      expect(line.mark.image).toBe('none');
+      expect(line.mark.borders).toEqual(['0px', '0px', '0px', '0px']);
+      expect(line.mark.before).toBe('none');
+      expect(line.mark.after).toBe('none');
+      expect(line.svg).toEqual({ width: '24px', height: '24px', stroke: '1.5', viewBox: '0 0 24 24' });
     }
   });
 }

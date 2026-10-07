@@ -519,20 +519,26 @@ ol {
  * entier : son lien `.carte-lien` s'étend sur la carte (ou la carte est elle-même le lien), et
  * toutes partagent le même survol et le même focus.
  *
- * La grille `.cartes` ne laisse aucune carte orpheline : une colonne en mobile ; au-delà, deux
- * colonnes, ou trois quand le nombre de cartes est un multiple de trois et que la place le
- * permet ; sur deux colonnes, un nombre impair étend la dernière carte sur toute la largeur.
- * La grille mesure sa propre largeur (requête de conteneur) : la règle vaut aussi dans une
- * colonne étroite (article, catégorie d'outils, couverture d'un service).
+ * La grille `.cartes` suit le nombre de cartes (système de page, § 5) : toutes les cartes d'un
+ * groupe ont la même largeur, aucune ne s'étire, la dernière rangée ne porte jamais une carte
+ * seule et une rangée incomplète se centre. Trois colonnes au plus : sous 36 rem de grille, une
+ * colonne ; dès 36 rem, deux colonnes pour un nombre pair, une pour un nombre impair ; dès
+ * 56 rem, trois colonnes dès 3 cartes, sauf 4 (2 × 2) : 5 = 3 + 2, 7 = 3 + 2 + 2, 8 = 3 + 3 + 2,
+ * rangées incomplètes centrées. La grille mesure sa propre largeur (requête de conteneur) : la
+ * règle vaut aussi dans une colonne étroite (article, catégorie d'outils, couverture d'un
+ * service). Le retrait de 0,1 px absorbe l'arrondi des largeurs sans faire passer une carte à
+ * la ligne.
  *
  * La bande `.bande` garde la pleine largeur : les cellules d'une même fiche, séparées par le
- * filet du bord des cartes, avec les mêmes marges et la même typographie.
+ * filet du bord des cartes, avec les mêmes marges et la même typographie. Elle compte 2 à 4
+ * cellules et remplit toujours ses rangées.
  */
 .cartes {
   --ecart: var(--cartes-ecart);
   container-type: inline-size;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--ecart);
   width: 100%;
   margin: 0;
@@ -540,7 +546,7 @@ ol {
   list-style: none;
 }
 .cartes > * {
-  flex: 1 1 100%;
+  flex: 0 0 100%;
   min-width: 0;
 }
 @media (min-width: 48rem) {
@@ -548,39 +554,25 @@ ol {
     --ecart: var(--cartes-ecart-lg);
   }
 }
+/* Une destination seule n'est pas une carte (c'est un lien d'action) ; en attendant la phase 2,
+   elle se range à gauche, sur la largeur d'une colonne, au lieu de s'étirer. */
+.cartes:has(> :only-child) {
+  justify-content: flex-start;
+}
 @container (min-width: 36rem) {
-  .cartes > * {
-    flex-basis: calc((100% - var(--ecart)) / 2);
-  }
-  .cartes > :last-child:nth-child(odd) {
-    flex-basis: 100%;
-  }
-  /* Élargie, la carte pose son pictogramme ou son image à côté du texte (carte directe ou
-     carte-lien dans son élément de liste). */
-  .cartes > .carte:last-child:nth-child(odd),
-  .cartes > :last-child:nth-child(odd) > .carte {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: var(--carte-marge-lg);
-  }
-  .cartes > .carte:last-child:nth-child(odd) > .carte-media,
-  .cartes > :last-child:nth-child(odd) > .carte > .carte-media {
-    flex: 0 0 calc(50% - var(--carte-marge-lg));
+  .cartes:has(> :last-child:nth-child(even)) > *,
+  .cartes > :only-child {
+    flex-basis: calc((100% - var(--ecart)) / 2 - 0.1px);
   }
 }
 @container (min-width: 56rem) {
-  .cartes:has(> :last-child:nth-child(3n)) > * {
-    flex-basis: calc((100% - 2 * var(--ecart)) / 3);
+  .cartes:has(> :nth-child(3)):not(:has(> :last-child:nth-child(4))) > * {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
   }
-  .cartes:has(> :last-child:nth-child(3n)) > .carte:last-child,
-  .cartes:has(> :last-child:nth-child(3n)) > :last-child > .carte {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-  }
-  .cartes:has(> :last-child:nth-child(3n)) > .carte:last-child > .carte-media,
-  .cartes:has(> :last-child:nth-child(3n)) > :last-child > .carte > .carte-media {
-    flex: none;
+  /* Sept cartes : 3 + 2 + 2. Au-delà de la troisième, une carte un pixel plus large ne laisse
+     tenir que deux cartes par rangée ; l'écart est invisible. */
+  .cartes:has(> :last-child:nth-child(7)) > :nth-child(n + 4) {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 + 1px);
   }
 }
 
@@ -669,21 +661,37 @@ ol {
   color: var(--texte-2);
   text-wrap: pretty;
 }
+/* Lien d'action (système de page, § 6) : un seul style, dans une carte comme sous un en-tête.
+   Libellé vert, flèche de 14 px après le libellé, cible de 44 px. */
+.lien-action,
 :where(.carte) .carte-action {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
+  justify-self: start;
   gap: 6px;
   min-height: 44px;
-  margin-top: auto;
   font-weight: 600;
   color: var(--accent-texte);
+  text-underline-offset: 3px;
 }
+:where(.carte) .carte-action {
+  margin-top: auto;
+}
+.lien-action svg,
 :where(.carte) .carte-action svg {
   flex: none;
   width: 14px;
   height: 14px;
   transition: transform var(--duree-2) var(--courbe-standard);
+}
+@media (hover: hover) {
+  .lien-action:hover {
+    text-decoration: underline;
+  }
+  .lien-action:hover svg {
+    transform: translateX(2px);
+  }
 }
 /* Le lien de la carte la couvre en entier, bord compris. */
 :where(.carte) .carte-lien::after {
@@ -746,7 +754,18 @@ a.carte:focus-visible {
 }
 .bande > .cartes {
   --ecart: 1px;
+  justify-content: flex-start;
   background: var(--carte-bord);
+}
+/* La bande remplit toujours ses rangées : 2 → deux colonnes, 4 → 2 × 2 (règle paire des
+   cartes), 3 → trois colonnes dès 48 rem de bande, empilées avant. */
+.bande > .cartes > * {
+  flex-grow: 1;
+}
+@container (min-width: 48rem) {
+  .bande > .cartes:has(> :last-child:nth-child(3)) > * {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
+  }
 }
 .cellule .carte-icone {
   margin-bottom: 8px;
@@ -758,7 +777,262 @@ a.carte:focus-visible {
   }
 }
 
-/* Les six garanties : une bande de liens à trois colonnes, sur l'accueil et sur /garanties. */
+/* ---------- Système de page (07/10/2026) ---------- */
+/*
+ * docs/design/2026-10-07-systeme-de-page.md. Une section = un en-tête, puis une forme (carte,
+ * liste de liens, bande, lignes, tableau, étapes, questions), au plus une maquette dans le cadre
+ * unique. Les sections se séparent par `--section-espace`, jamais par un filet.
+ */
+.section {
+  padding-top: var(--section-espace);
+}
+.pile {
+  display: grid;
+  gap: var(--bloc-ecart);
+}
+.pile > * {
+  min-width: 0;
+}
+
+/* En-tête de section : surtitre facultatif, titre, introduction ; aligné à gauche. */
+.tete {
+  display: grid;
+  gap: var(--tete-ecart);
+  max-width: 46rem;
+}
+.tete h2 {
+  font-size: var(--titre-section);
+}
+.tete > p:not(.surtitre) {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+}
+.surtitre {
+  margin: 0;
+  font-family: var(--police-corps), 'Hanken Fallback';
+  font-size: var(--surtitre);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--accent-texte);
+}
+/* Casse de phrase au rendu, le texte source restant tel qu'écrit (« proposition vs saisie »). */
+.surtitre::first-letter {
+  text-transform: uppercase;
+}
+/* Dans un titre, un mot composé ne se coupe pas à son trait d'union (Insecable.astro). */
+.insecable {
+  white-space: nowrap;
+}
+/* Une phrase de portée ou de limite, sous la forme qu'elle borne. */
+.mention {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--mention);
+  color: var(--texte-2);
+}
+
+/* Lignes : des définitions, un terme et son explication, lus de haut en bas. */
+.lignes {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ligne {
+  display: grid;
+  gap: var(--espace-2);
+  margin: 0;
+  padding-block: var(--ligne-pas);
+  border-top: 1px solid var(--ligne-filet);
+}
+.ligne:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.ligne:last-child {
+  padding-bottom: 0;
+}
+.ligne-tete {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espace-3);
+  min-width: 0;
+}
+.ligne-picto {
+  display: grid;
+  place-items: center;
+  flex: none;
+  height: 1.3em;
+  font-size: var(--titre-ligne);
+  color: var(--accent-texte);
+}
+.ligne-libelle {
+  margin: 0;
+  font-family: var(--police-display), 'Fraunces Fallback';
+  font-size: var(--titre-ligne);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--texte-fort);
+  text-wrap: balance;
+}
+.ligne-texte {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+  text-wrap: pretty;
+}
+@media (min-width: 48rem) {
+  .ligne {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: var(--espace-8);
+    align-items: start;
+  }
+  .ligne-texte {
+    padding-top: 1px;
+  }
+}
+/* Dès 64 rem, les lignes suivent les deux moitiés de la rangée : le terme sous le texte, la
+   définition alignée sur le bord de la maquette. */
+@media (min-width: 64rem) {
+  .ligne {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0;
+  }
+  .ligne > :first-child {
+    padding-right: var(--rangee-gouttiere);
+  }
+}
+
+/* Liste de liens : des destinations nommées par leur seul libellé, une rangée par lien. */
+.liens-bloc {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--espace-2);
+}
+.liens-titre {
+  margin: 0;
+  font-weight: 600;
+  color: var(--texte-fort);
+}
+.liens {
+  max-width: var(--liens-colonne);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  column-gap: var(--espace-8);
+}
+.liens > li {
+  break-inside: avoid;
+  border-bottom: 1px solid var(--ligne);
+}
+@container (min-width: 40rem) {
+  .liens:has(> li:nth-child(5)) {
+    columns: 2;
+    max-width: calc(2 * var(--liens-colonne) + var(--espace-8));
+  }
+}
+.lien-rangee {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-3);
+  min-height: var(--lien-rangee-h);
+  padding-block: var(--espace-3);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--texte-fort);
+  transition: color var(--duree-2) var(--courbe-standard);
+}
+.lien-rangee svg {
+  flex: none;
+  color: var(--accent-texte);
+}
+.lien-rangee .lien-libelle {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.lien-rangee .lien-fleche {
+  transition: transform var(--duree-2) var(--courbe-standard);
+}
+.lien-rangee:focus-visible {
+  outline-offset: 2px;
+  border-radius: var(--r-ornement);
+}
+@media (hover: hover) {
+  .lien-rangee:hover {
+    color: var(--accent-texte);
+  }
+  .lien-rangee:hover .lien-fleche {
+    transform: translateX(2px);
+  }
+}
+
+/* Cadre unique des maquettes et du média du héros : un plateau, l'écran posé dedans au rayon
+   concentrique. 16:9, jamais rognée, jamais cliquable ni agrandie. */
+.cadre {
+  margin: 0;
+  padding: var(--cadre-marge);
+  border: 1px solid var(--cadre-bord);
+  border-radius: var(--cadre-rayon);
+  background: var(--cadre-fond);
+}
+.cadre > * {
+  overflow: hidden;
+  border: 1px solid var(--cadre-ecran-bord);
+  border-radius: calc(var(--cadre-rayon) - var(--cadre-marge));
+  background: var(--blanc);
+}
+
+/* Étapes : une suite ordonnée, une maquette par étape. Deux étapes par rangée dès 64 rem ; la
+   sous-grille aligne les textes et les maquettes d'une colonne à l'autre. */
+.etapes {
+  display: grid;
+  gap: var(--espace-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.etape {
+  display: grid;
+  gap: var(--espace-6);
+  align-content: start;
+  min-width: 0;
+}
+.etape-copie {
+  display: grid;
+  gap: var(--espace-3);
+  align-content: start;
+}
+.etape-copie h3 {
+  font-size: var(--titre-bloc);
+  line-height: 1.2;
+}
+.etape-copie p {
+  margin: 0;
+}
+@media (min-width: 64rem) {
+  .etapes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--rangee-gouttiere);
+    row-gap: 0;
+  }
+  .etape {
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .etape:nth-child(n + 3) {
+    padding-top: var(--espace-16);
+  }
+  .etape-copie {
+    padding-bottom: var(--espace-6);
+  }
+}
+
+/* Les six garanties : une bande de liens à trois colonnes, sur /garanties (phase 2 : liste de
+   liens, comme sur l'accueil). */
 .garanties-grille {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

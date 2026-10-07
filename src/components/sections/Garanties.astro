@@ -4,91 +4,35 @@ import ProofRow from '@/components/ProofRow.astro';
 import { GARANTIES } from '@/data/garanties';
 
 /**
- * S3 — Grille de garanties (spec §4.9), à la place des logos clients.
- * Chaque cellule est un lien vers la question FAQ qui la détaille.
+ * S3 — Garanties (spec §4.9), à la place des logos clients.
+ * Chaque garantie est un lien vers la question FAQ qui la détaille.
+ *
+ * Système de page : un titre de section et son lien d'action ; la maquette encadrée à droite ;
+ * les six garanties, nommées par leur seul libellé, en liste de liens (pictogramme, libellé,
+ * flèche), là où des tuiles à libellé centré parlaient une autre langue.
  */
 ---
 
-<section id="garanties" class="garanties" aria-labelledby="garanties-titre">
-  <div class="garanties-media"><ProofRow id="09-garanties">
-  <div class="garanties-tete">
-    <div class="garanties-phrase">
-      <h2 id="garanties-titre" class="garanties-h2">Nos engagements, écrits avant de développer.</h2>
-      <a class="btn btn-lien" href="#questions">Lire les réponses <Picto nom="fleche" taille={14} /></a>
+<section id="garanties" class="section garanties" aria-labelledby="garanties-titre">
+  <div class="conteneur pile">
+    <ProofRow id="09-garanties">
+      <div class="tete rv">
+        <h2 id="garanties-titre">Nos engagements, écrits avant de développer.</h2>
+        <a class="lien-action" href="#questions">Lire les réponses <Picto nom="fleche" taille={14} /></a>
+      </div>
+    </ProofRow>
+    <div class="liens-bloc">
+      <ul class="liens rv" data-garanties>
+        {GARANTIES.map((g) => (
+          <li>
+            <a href={g.href} class="lien-rangee">
+              <Picto nom={g.picto} taille={20} />
+              <span class="lien-libelle">{g.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
-    <span class="garanties-sep" aria-hidden="true"></span>
-
   </div>
-
-  <div class="garanties-proof-list">
-  <ul class="garanties-grille rv" data-garanties>
-    {GARANTIES.map((g) => (
-      <li class="garantie">
-        <a href={g.href} class="garantie-lien">
-          <span class="carte-icone garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
-          <span class="garantie-libelle">{g.libelle}</span>
-          <Picto nom="fleche" taille={14} class="garantie-fleche" />
-        </a>
-      </li>
-    ))}
-  </ul>
-  </div>
-  </ProofRow></div>
 </section>
-
-<style>
-  .garanties-media { padding: 0 var(--marge-page); }
-  @media (min-width: 64rem) { .garanties-media { padding: 0 var(--marge-page-lg); } }
-  .garanties {
-    margin-top: 32px;
-  }
-  .garanties-tete {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 0 24px;
-  }
-  .garanties-phrase {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .garanties-h2 {
-    font-family: var(--police-corps), 'Hanken Fallback';
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 1.5;
-    color: var(--texte);
-  }
-  .garanties-sep {
-    display: none;
-    width: 1px;
-    height: 56px;
-    background: var(--ligne);
-  }
-  /* La grille des six garanties est partagée avec /garanties : global.css. */
-  @media (min-width: 48rem) {
-    .garanties-tete {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 0 24px;
-    }
-    .garanties-phrase {
-      flex-direction: column;
-      align-items: start;
-      gap: 16px;
-      flex: 1;
-    }
-    .garanties-sep {
-      display: none;
-      margin: 0 24px;
-    }
-  }
-  @media (min-width: 64rem) {
-    .garanties-tete {
-      padding: 0 0 24px;
-    }
-  }
-</style>

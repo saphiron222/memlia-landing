@@ -1,11 +1,15 @@
 ---
-
 import Picto, { type NomPicto } from '@/components/Picto.astro';
 import { famillesDeLaProfession } from '@/data/familles';
 const familles = famillesDeLaProfession('ec');
 const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
 
+/**
+ * Système de page : cinq familles de tâches, chacune un terme et sa définition, non cliquables.
+ * Ce sont des lignes (`.lignes`, global.css), pas des cartes : une carte est une destination.
+ * Le même pictogramme, de la même couleur, ouvre chaque ligne ; aucune palette par capacité.
+ */
 const examples = [
   { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les pièces et les informations attendues depuis les sources convenues, et signaler ce qui manque avant le traitement.' },
   { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et présenter les cas à revoir, avec la raison du signalement.' },
@@ -14,27 +18,22 @@ const examples = [
   { id: 'decide', title: 'Préparer une décision', text: 'Réunir données, hypothèses et pièces pour que le professionnel valide, modifie ou refuse en connaissance de cause.' },
 ];
 ---
-<section id="usages" class="uses" aria-labelledby="uses-title">
-  <div class="uses-heading">
-    <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
-    <p class="texte-2 lecture">De la collecte des pièces aux retours DSN, de la saisie au reporting : {familles.length} familles de tâches, {nombrePoles} pôles pour l’expertise comptable, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
-  </div>
-  <div class="cartes uses-grid">
-    {examples.map((example, i) => (
-      <article data-usage={example.id} class="carte" aria-labelledby={`use-${example.id}`}>
-        <span class="carte-icone" aria-hidden="true"><Picto nom={pictos[i]} taille={24} /></span>
-        <div class="carte-corps">
-          <h3 id={`use-${example.id}`} class="carte-titre">{example.title}</h3>
-          <p class="carte-texte">{example.text}</p>
-        </div>
-      </article>
-    ))}
+<section id="usages" class="section uses" aria-labelledby="uses-title">
+  <div class="conteneur pile">
+    <div class="tete">
+      <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
+      <p>De la collecte des pièces aux retours DSN, de la saisie au reporting : {familles.length} familles de tâches, {nombrePoles} pôles pour l’expertise comptable, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
+    </div>
+    <ul class="lignes">
+      {examples.map((example, i) => (
+        <li class="ligne" data-usage={example.id}>
+          <div class="ligne-tete">
+            <span class="ligne-picto" aria-hidden="true"><Picto nom={pictos[i]} taille={24} /></span>
+            <h3 id={`use-${example.id}`} class="ligne-libelle">{example.title}</h3>
+          </div>
+          <p class="ligne-texte">{example.text}</p>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
-<style>
-  /* Les cinq usages sont des cartes du site (global.css) ; la cinquième s'étend sur deux colonnes. */
-  .uses { padding: 96px var(--marge-page) 0; background: var(--surface-page); }
-  .uses-heading { display: grid; gap: 16px; max-width: 780px; }
-  .uses-grid { margin-top: 40px; }
-  @media (min-width: 64rem) { .uses { padding: 128px var(--marge-page-lg) 0; } }
-</style>

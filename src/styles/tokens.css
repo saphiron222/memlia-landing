@@ -147,4 +147,56 @@
   --carte-icone: 40px;
   --cartes-ecart: 16px;
   --cartes-ecart-lg: 24px;
+
+  /* ---- Système de page (07/10/2026) : docs/design/2026-10-07-systeme-de-page.md ---- */
+  /* Primitives : espacement, base 4 px. */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-5: 20px;
+  --espace-6: 24px;
+  --espace-8: 32px;
+  --espace-10: 40px;
+  --espace-12: 48px;
+  --espace-16: 64px;
+  --espace-20: 80px;
+  --espace-24: 96px;
+  --espace-32: 128px;
+
+  /* Sémantique : le pas d'une page. Seules valeurs de marge de section. */
+  --section-espace: var(--espace-20); /* du bas d'une section au haut de la suivante */
+  --bloc-ecart: var(--espace-10); /* en-tête → forme ; forme → forme */
+  --tete-ecart: var(--espace-4); /* surtitre → titre → introduction */
+  --rangee-gouttiere: var(--espace-12); /* texte → maquette dans une rangée */
+  --titre-section: var(--t-5xl);
+  --titre-bloc: var(--t-2xl);
+  --titre-ligne: var(--t-xl);
+  --surtitre: var(--t-sm);
+  --mention: var(--t-sm);
+
+  /* Composants : cadre de maquette, lignes, liste de liens. */
+  --cadre-rayon: var(--r-carte);
+  --cadre-marge: 6px;
+  --cadre-fond: var(--surface-page);
+  --cadre-bord: var(--ligne);
+  --cadre-ecran-bord: var(--ligne-douce);
+  --ligne-pas: var(--espace-5);
+  --ligne-filet: var(--ligne);
+  --lien-rangee-h: 52px;
+  --liens-colonne: 26rem;
+}
+@media (min-width: 48rem) {
+  :root {
+    --section-espace: var(--espace-24);
+    --cadre-rayon: var(--r-cadre);
+    --cadre-marge: 8px;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --section-espace: var(--espace-32);
+    --bloc-ecart: var(--espace-12);
+    --cadre-marge: 12px;
+  }
 }
