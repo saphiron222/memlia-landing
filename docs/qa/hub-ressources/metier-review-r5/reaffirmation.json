@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-10-07T04:43:28.001Z",
+  "reaffirmeLe": "2026-10-07T05:34:42.209Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "c514d4f027afdb220a7a8c7f25004643d3710ae452918411abda8525c5b3b198",
+  "registreSha256": "26647d7eb32fa2489eefa5248d4c76efce24633455db8410d95b8938f905c04b",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
   "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
@@ -13,7 +13,7 @@
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "c2f26c231873c8b268900800936485e24a38005dbef202ff789d426b0f2dad3f",
-      "sujetReaffirme": "e1c15e49ca863595c0281815b2688955a8a66704fd05b06adf03a2bc3e6ef010",
+      "sujetReaffirme": "d34df9b63737ea4e795a0316c8102cebde5cdb95677c603a4f5207b98d3df0cc",
       "feuillesEcartees": 707,
       "feuillesParChamp": {
         "assetBundleDigest.assetBundleDigest": 1,
@@ -65,11 +65,11 @@
       },
       "affirmationsRenduesVerifiees": 77,
       "verdictsConserves": 27,
-      "candidateHash": "8a44474516eb8871d183c0edc6864e15340e131061e253d122d556e1407c1a79",
-      "auditHash": "8fd3dbc52cfae6d97a01cd8ca8ec4ee48da01831747d20454d93ced66d4cc363",
-      "manifestSha256": "f9388902d0968554da166524368390d1eb853a49bd981d19c92171a601718090",
+      "candidateHash": "e0e579e8f26f7f83bede0c9d793e6a3adeee317bd62e12051ce2ad5cf25d8ea0",
+      "auditHash": "c689c304d887718dd525564891770023ebd6a1b0304b7df994eda45f77c91344",
+      "manifestSha256": "cc787563104681c6755a4446883c334bc261a8aafbc9d3abb830b0cf3cfcd08c",
       "preuveRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-      "preuveSha256": "e4d303f30084e07629179da51b147dd829f93d4a3f3738e3935e4d00e61f455a"
+      "preuveSha256": "1cc00071264c4658a02d6a33fe2177a3203fa8c00307cd6226e9b2da65858539"
     }
   }
 }

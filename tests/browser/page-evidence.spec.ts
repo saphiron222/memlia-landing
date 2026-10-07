@@ -31,12 +31,16 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     }
 
     await page.goto(hub);
+    // Système de page (07/10/2026) : l'espace sous la dernière section est porté par l'appel final
+    // (--section-espace au-dessus de son cadre), plus par la section elle-même. On mesure donc ce que
+    // voit le lecteur : de la dernière carte au cadre de ce qui la suit.
     const ecart = await page.evaluate(() => {
       const sections = [...document.querySelectorAll<HTMLElement>('section.pv')];
       const derniere = sections[sections.length - 1];
       const cartes = derniere.querySelectorAll<HTMLElement>('li');
       const carte = cartes[cartes.length - 1];
-      return derniere.getBoundingClientRect().bottom - carte.getBoundingClientRect().bottom;
+      const suite = document.querySelector<HTMLElement>('.appel-int');
+      return suite!.getBoundingClientRect().top - carte.getBoundingClientRect().bottom;
     });
     expect(ecart, 'la dernière carte ne touche pas la section suivante').toBeGreaterThanOrEqual(64);
   });
