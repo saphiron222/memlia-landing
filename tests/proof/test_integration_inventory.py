@@ -12,6 +12,48 @@ import test_build as build
 
 
 class IntegrationInventoryProof(unittest.TestCase):
+    def test_declaration_hors_tableau_n_autorise_ni_page_ni_sitemap(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            shutil.copytree(build.ROOT / 'src', root / 'src')
+            shutil.copytree(build.ROOT / 'guides', root / 'guides')
+            shutil.copytree(build.ROOT / 'public/proofs', root / 'public/proofs')
+            shutil.copytree(build.DIST, root / 'dist')
+            expected = build.public_integrations()
+            source = root / 'src/data/integrations.ts'
+            boundary = '] as const;\n\nexport const INTEGRATIONS:'
+            text = source.read_text()
+            self.assertEqual(text.count(boundary), 1)
+            source.write_text(text.replace(boundary, "] as const;\n\nconst unrelatedQaProbe = {slug: 'orpheline-qa'};\n\nexport const INTEGRATIONS:"))
+            with patch.multiple(build, ROOT=root, DIST=root / 'dist'):
+                self.assertEqual(build.public_integrations(), expected)
+                pages = build.BuildProof('test_pages_one_h1_french')
+                sitemap = build.BuildProof('test_sitemap_complete_no_legal')
+                pages.test_pages_one_h1_french()
+                sitemap.test_sitemap_complete_no_legal()
+                orphan = root / 'dist/integrations/orpheline-qa.html'
+                orphan.write_text('<html lang="fr"><h1>Orpheline QA</h1></html>')
+                with self.assertRaises(AssertionError):
+                    pages.test_pages_one_h1_french()
+                ns = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
+                index = ET.parse(root / 'dist/sitemap.xml')
+                location = index.find(f'.//{ns}loc')
+                assert location is not None and location.text
+                child = location.text.rsplit('/', 1)[-1]
+                target = root / 'dist' / child
+                tree = ET.parse(target)
+                url = ET.SubElement(tree.getroot(), ns + 'url')
+                ET.SubElement(url, ns + 'loc').text = build.SITE + '/integrations/orpheline-qa'
+                lastmod = '2026-10-06T00:00:00Z'
+                ET.SubElement(url, ns + 'lastmod').text = lastmod
+                tree.write(target)
+                register_path = root / 'src/data/pages-lastmod.json'
+                register = json.loads(register_path.read_text())
+                register['pages']['/integrations/orpheline-qa'] = {'lastmod': lastmod, 'sha256': hashlib.sha256(orphan.read_bytes()).hexdigest()}
+                register_path.write_text(json.dumps(register))
+                with self.assertRaises(AssertionError):
+                    sitemap.test_sitemap_complete_no_legal()
+
     def test_page_et_sitemap_supplementaires_restent_refuses(self):
         with TemporaryDirectory() as directory:
             dist = Path(directory) / 'dist'

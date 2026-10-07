@@ -26,7 +26,7 @@ def public_integrations():
     L'audit de la forge conserve la validation métier et celle du renderer.
     """
     source = (ROOT / 'src/data/integrations.ts').read_text(encoding='utf-8')
-    historical = re.search(r'export const INTEGRATIONS_HISTORIQUES\s*:[^=]+?=\s*\[(.*?)\n\];', source, re.S)
+    historical = re.search(r'export const INTEGRATIONS_HISTORIQUES\s*:[^=]+?=\s*\[(.*?)\n\][ \t]*(?:as[ \t]+const[ \t]*)?;', source, re.S)
     assert historical is not None, 'Tableau historique absent ou illisible'
     old = re.findall(r"\bslug:\s*'([a-z0-9]+(?:-[a-z0-9]+)*)'", historical.group(1))
     assert old and len(old) == len(set(old)), 'Slugs historiques absents ou dupliqués'
