@@ -17,8 +17,9 @@ async function etatDesReplis(page: import('@playwright/test').Page) {
     const presente = (nom: string) => new FontFace(`sonde-os-${sonde++}`, `local("${nom}")`).load().then(() => true, () => false);
     return Promise.all(replis.map(async ({ famille, genre, variantes }) => {
       const os = (await Promise.all(variantes.map(async (noms) => (await Promise.all(noms.map(presente))).every(Boolean)))).some(Boolean);
-      const poids = genre === 'serif' ? 600 : 400;
-      const site = await document.fonts.load(`${poids} 16px "${famille}"`).then((faces) => faces.length > 0, () => false);
+      // Chaque face déclarée du repli (graisse et style) : une seule face cassée suffit à échouer.
+      const faces = genre === 'serif' ? ['600', 'italic 400', 'italic 600'] : ['400', '500', '600'];
+      const site = (await Promise.all(faces.map((face) => document.fonts.load(`${face} 16px "${famille}"`).then((chargees) => chargees.length > 0, () => false)))).every(Boolean);
       return { famille, genre, os, site };
     }));
   }, REPLIS);
@@ -49,14 +50,13 @@ for (const route of routes) {
       await page.waitForTimeout(1500);
       const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
       const before = await anchor.boundingBox();
-      const families = await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily);
-      expect(families.indexOf('Fraunces Fallback')).toBeGreaterThanOrEqual(0);
+      const pile = (valeur: string) => valeur.split(',').map((nom) => nom.trim().replace(/^["']|["']$/g, ''));
+      const families = pile(await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily));
       for (const repli of REPLIS.filter((r) => r.genre === 'serif')) {
         expect(families.indexOf(repli.famille), repli.famille).toBeGreaterThanOrEqual(0);
         expect(families.indexOf(repli.famille), repli.famille).toBeLessThan(families.indexOf('Georgia'));
       }
-      const bodyFamilies = await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily);
-      expect(bodyFamilies.indexOf('Hanken Fallback')).toBeGreaterThanOrEqual(0);
+      const bodyFamilies = pile(await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily));
       for (const repli of REPLIS.filter((r) => r.genre === 'sans')) {
         expect(bodyFamilies.indexOf(repli.famille), repli.famille).toBeGreaterThanOrEqual(0);
         expect(bodyFamilies.indexOf(repli.famille), repli.famille).toBeLessThan(bodyFamilies.indexOf('system-ui'));

@@ -18,7 +18,7 @@ Replis ajoutés le 08/10/2026, essayés dans cet ordre par les piles de `tokens.
 - Titres : « Fraunces Fallback » (Georgia), puis « Fraunces Fallback Noto » (Noto Serif, Android), puis « Fraunces Fallback Liberation » (Liberation Serif ou Tinos, Linux et ChromeOS).
 - Texte : « Hanken Fallback » (Arial, Liberation Sans ou Arimo, qui ont les mêmes chasses), puis « Hanken Fallback Roboto » (Android).
 
-Chaque police a ses propres réglages. Ils sont calculés comme les précédents : largeur moyenne, ascendante et descendante de Fraunces ou Hanken, rapportées à celles du repli, avec `@capsizecss/unpack`. Les mesures viennent de Times New Roman pour Liberation Serif (mêmes chasses) et des fichiers Fontsource 5.3.0 pour Roboto et Noto Serif. Recalculée de la même façon, la formule retrouve les valeurs Georgia et Arial existantes à 0,5 % près.
+Chaque police a ses propres réglages. Ils sont calculés comme les précédents : largeur moyenne, ascendante et descendante de Fraunces ou Hanken, rapportées à celles du repli, avec `@capsizecss/unpack`. Les mesures viennent de Times New Roman pour Liberation Serif (mêmes chasses) et des fichiers Fontsource 5.3.0 pour Roboto et Noto Serif. Recalculée de la même façon, la formule retrouve les valeurs Georgia et Arial existantes à 0,7 point près (faces existantes calculées sur une autre version de ces fichiers).
 
 Vérification par simulation sur macOS, sur les 3 routes en 320, 375, 412 et 1440 px :
 - Polices des titres et du texte retenues, puis libérées.
