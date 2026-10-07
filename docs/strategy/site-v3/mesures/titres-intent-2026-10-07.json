@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-07",
+  "measuredAt": "2026-10-07T02:58:05.073Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "hl": "fr",
+  "gl": "fr",
+  "autocompletion": {
+    "lettrage comptable excel": [
+      "lettrage comptable excel"
+    ],
+    "prompt chatgpt expert comptable": [
+      "prompt chatgpt expert comptable"
+    ]
+  },
+  "probes": [
+    {
+      "query": "lettrage comptable excel",
+      "ok": true,
+      "suggestions": [
+        "lettrage comptable excel"
+      ],
+      "erreur": null
+    },
+    {
+      "query": "prompt chatgpt expert comptable",
+      "ok": true,
+      "suggestions": [
+        "prompt chatgpt expert comptable"
+      ],
+      "erreur": null
+    }
+  ],
+  "volumeMensuel": null,
+  "note": "Assistant local et rafraîchissement réel de la requête de fixture blog requise par le build ; aucun volume revendiqué."
+}
