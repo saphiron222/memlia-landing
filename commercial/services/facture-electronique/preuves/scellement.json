@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-candidat-scelle",
+  "kind": "service-publication-scellee",
   "slug": "facture-electronique",
-  "sealedAt": "2026-10-07T16:53:06.075Z",
+  "sealedAt": "2026-10-07T17:09:12.051Z",
   "files": {
     "page": {
       "path": "src/content/services/facture-electronique.md",
-      "bytes": 11507,
-      "sha256": "c37a4f93c112c489f58543c4427eb90083feb5fdfe5ce9c2c5e169ef960ea431"
+      "bytes": 11501,
+      "sha256": "b98746b52b753c0ded391fd1ed713f8abb9deb587b7a1aa4366eea7fb1c7f161"
     },
     "manifest": {
       "path": "commercial/services/facture-electronique/manifest.json",
-      "bytes": 2838,
-      "sha256": "d7a463e279d0ad54439be98f0b7b99eec4b0a4203913c292d649d31456924aea"
+      "bytes": 2832,
+      "sha256": "c63e1e648a5d035b5a245fe653b3d1c66708a1d6aa8c5a74e533fc24c484f500"
     },
     "recipe": {
       "path": "commercial/recettes/facture-electronique/recette.json",
@@ -28,6 +28,11 @@
       "path": "commercial/recettes/facture-electronique/revues.json",
       "bytes": 4235,
       "sha256": "e99cca48909f51d9effe1b079c411c60ebdee3246ebbf75683be9897d9c8f514"
+    },
+    "publication": {
+      "path": "commercial/services/facture-electronique/preuves/publication.json",
+      "bytes": 1413,
+      "sha256": "db18aa2fa9e2f369e6c9d3ff2f15c86ae91232a90cde184e247d2573d2db9dca"
     }
   }
 }

@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: facture-electronique
 verifiedAt: 2026-10-06
-status: pret-preview
+status: publie
 candidateFingerprint: "5880a908784ecd72ee194c3a82395651e19b2ca43bb52828e2f487aea38c2f76"
 cta:
   label: "Confier une première tâche"
