@@ -1,0 +1,315 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "rule": "Préparer uniquement les annonces hors circuit existant : champs fictifs à valider pour une entrée, synthèse pour une sortie ; aucun doublon du portail.",
+  "limits": "Essai sur états déclarés et champs fictifs ; aucune liste réglementaire, extraction, détection de doublon réelle, écoute téléphonique, connexion, création ou transmission.",
+  "cases": [
+    {
+      "id": "ES-ENTREE-01",
+      "kind": "courant",
+      "input": {
+        "evenement": "entree",
+        "canal": "email",
+        "source": "message-fictif-A",
+        "couvert": true,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        }
+      },
+      "expected": {
+        "etat": "preparation-a-valider",
+        "propositions": [
+          {
+            "type": "champs-dpae",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "message-fictif-A",
+            "validation": "gestionnaire-requise"
+          },
+          {
+            "type": "champs-fiche-salarie",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "message-fictif-A",
+            "validation": "gestionnaire-requise"
+          }
+        ],
+        "transmis": false,
+        "salarieCree": false
+      },
+      "decision": "controle-et-validation-gestionnaire",
+      "observed": {
+        "etat": "preparation-a-valider",
+        "propositions": [
+          {
+            "type": "champs-dpae",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "message-fictif-A",
+            "validation": "gestionnaire-requise"
+          },
+          {
+            "type": "champs-fiche-salarie",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "message-fictif-A",
+            "validation": "gestionnaire-requise"
+          }
+        ],
+        "transmis": false,
+        "salarieCree": false
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-SORTIE-02",
+      "kind": "courant",
+      "input": {
+        "evenement": "sortie",
+        "canal": "telephone",
+        "source": "compte-rendu-fictif-B",
+        "couvert": true,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        },
+        "compteRendu": true
+      },
+      "expected": {
+        "etat": "preparation-a-valider",
+        "propositions": [
+          {
+            "type": "synthese-sortie",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "compte-rendu-fictif-B",
+            "validation": "gestionnaire-requise"
+          }
+        ],
+        "transmis": false,
+        "salarieCree": false
+      },
+      "decision": "traitement-social-humain",
+      "observed": {
+        "etat": "preparation-a-valider",
+        "propositions": [
+          {
+            "type": "synthese-sortie",
+            "champs": {
+              "champ-A": "valeur-fictive-A",
+              "champ-B": "valeur-fictive-B",
+              "dateEvenement": "2026-11-02"
+            },
+            "source": "compte-rendu-fictif-B",
+            "validation": "gestionnaire-requise"
+          }
+        ],
+        "transmis": false,
+        "salarieCree": false
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-MANQUE-03",
+      "kind": "limite",
+      "input": {
+        "evenement": "entree",
+        "canal": "email",
+        "source": "message-fictif-A",
+        "couvert": true,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A"
+        }
+      },
+      "expected": {
+        "etat": "liste-manques-finalisation-bloquee",
+        "manquantes": [
+          "champ-B"
+        ],
+        "propositions": []
+      },
+      "decision": "validation-questions-client",
+      "observed": {
+        "etat": "liste-manques-finalisation-bloquee",
+        "manquantes": [
+          "champ-B"
+        ],
+        "propositions": []
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-CONFLIT-04",
+      "kind": "refus",
+      "input": {
+        "evenement": "entree",
+        "canal": "email",
+        "source": "message-fictif-A",
+        "couvert": true,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02",
+          "2026-11-03"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        }
+      },
+      "expected": {
+        "etat": "arret-conflit-dates",
+        "propositions": []
+      },
+      "decision": "choix-version-gestionnaire",
+      "observed": {
+        "etat": "arret-conflit-dates",
+        "propositions": []
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-HORS-05",
+      "kind": "refus",
+      "input": {
+        "evenement": "sortie",
+        "canal": "telephone",
+        "source": "compte-rendu-fictif-B",
+        "couvert": false,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        },
+        "compteRendu": true
+      },
+      "expected": {
+        "etat": "arret-cas-hors-regle",
+        "propositions": []
+      },
+      "decision": "examen-pole-social",
+      "observed": {
+        "etat": "arret-cas-hors-regle",
+        "propositions": []
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-PORTAIL-06",
+      "kind": "refus",
+      "input": {
+        "evenement": "entree",
+        "canal": "email",
+        "source": "message-fictif-A",
+        "couvert": true,
+        "dejaTraitePortail": true,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        }
+      },
+      "expected": {
+        "etat": "circuit-existant-conserve",
+        "propositions": []
+      },
+      "decision": "poursuite-dans-outil-existant",
+      "observed": {
+        "etat": "circuit-existant-conserve",
+        "propositions": []
+      },
+      "pass": true
+    },
+    {
+      "id": "ES-APPEL-07",
+      "kind": "refus",
+      "input": {
+        "evenement": "sortie",
+        "canal": "telephone",
+        "source": "compte-rendu-fictif-B",
+        "couvert": true,
+        "dejaTraitePortail": false,
+        "dates": [
+          "2026-11-02"
+        ],
+        "attendues": [
+          "champ-A",
+          "champ-B"
+        ],
+        "champs": {
+          "champ-A": "valeur-fictive-A",
+          "champ-B": "valeur-fictive-B"
+        },
+        "compteRendu": false
+      },
+      "expected": {
+        "etat": "arret-source-absente",
+        "propositions": []
+      },
+      "decision": "consigner-appel",
+      "observed": {
+        "etat": "arret-source-absente",
+        "propositions": []
+      },
+      "pass": true
+    }
+  ]
+}
