@@ -33,7 +33,7 @@ export const FICHE_OUTIL_CAC = {
   source: { libelle: 'H2A, NEP 315 révisée', href: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/' },
 } as const;
 
-/** Identifiants réservés, pas des preuves déjà rendues. E3 fournit le registre et les fichiers. */
+/** Trois cadres fictifs rendus et scellés par E3, réutilisables uniquement sur l’accueil CAC. */
 export const MEDIAS_CAC = {
   selection: 'cac/accueil-selection-tiers',
   ecarts: 'cac/accueil-ecarts-confirmation',
@@ -45,7 +45,7 @@ export const CONTENU_CAC: ContenuAccueil = {
     etiquette: 'Automatisation IA pour cabinets de commissariat aux comptes',
     titre: 'Automatisation pour commissaire aux comptes : confiez la mécanique, gardez le jugement.',
     texte: 'Quels tiers retenir, quel retour rapprocher, quel fichier comparer à la balance : votre équipe connaît les gestes. Nous écrivons leur règle avec vous et automatisons la part répétitive dans vos outils. Vos auditeurs gardent leurs contrôles. Le signataire garde son opinion.',
-    poster: '/media/cac/accueil-poster.webp',
+    poster: '/proofs/cac/accueil-selection-tiers.webp',
     video: '',
     sousTitres: '',
   },

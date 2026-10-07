@@ -281,7 +281,7 @@ Quels tiers retenir, quel retour rapprocher, quel fichier comparer à la balance
 
 ##### poster
 
-/media/cac/accueil-poster.webp
+/proofs/cac/accueil-selection-tiers.webp
 
 ##### video
 
