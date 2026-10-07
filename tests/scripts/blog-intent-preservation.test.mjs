@@ -14,7 +14,10 @@ const slug = 'prompt-chatgpt-expert-comptable';
 for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
   cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
 }
-const fixture = await materialiser({ root, slug, statut: 'publie' });
+// Date historique de cette fixture, cohérente avec ses preuves et son relevé.
+// Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.
+const jourFixture = '2026-10-03';
+const fixture = await materialiser({ root, slug, statut: 'publie', jour: jourFixture });
 assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
 ecrireSceau(root, slug);
 test.after(() => rmSync(root, { recursive: true, force: true }));
@@ -24,6 +27,20 @@ const dernierReleve = readdirSync(join(root, 'docs/strategy/site-v3/mesures'))
   .sort().at(-1);
 const au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
 const renderedBlogHtml = `<li data-article="${slug}"><a href="/blog/${slug}">Article</a></li>`;
+
+test('la fixture historique se matérialise même après expiration des relevés', async (t) => {
+  const isolated = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-expired-'));
+  t.after(() => rmSync(isolated, { recursive: true, force: true }));
+  cpSync(root, isolated, { recursive: true });
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${au}T12:00:00Z`) });
+  const fixtureExpiree = await materialiser({ root: isolated, slug, statut: 'publie', jour: jourFixture });
+  assert.deepEqual(fixtureExpiree.erreurs, [], 'La reconstruction historique reste indépendante du jour réel.');
+  ecrireSceau(isolated, slug);
+  const historique = await validateDossier({ root: isolated, slug, gateMode: 'publication-scellee', renderedBlogHtml, au });
+  assert.equal(historique.pass, true, historique.errors.join('\n'));
+  const candidat = await validateDossier({ root: isolated, slug, gateMode: 'protected-preview', renderedBlogHtml, au });
+  assert.ok(candidat.errors.some((erreur) => erreur.includes('aucun relevé d’autocomplétion frais')), candidat.errors.join('\n'));
+});
 
 // Le build:site exerce le contrat HTML ; blog:audit exerce également le dossier scellé.
 test('la vieillesse du relevé seule ne refuse pas un article public scellé', async () => {

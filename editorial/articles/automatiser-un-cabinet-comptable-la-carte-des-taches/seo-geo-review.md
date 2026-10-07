@@ -1,6 +1,6 @@
 # SEO et préparation aux citations IA — Automatiser un cabinet comptable : la carte des tâches
 
-Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
+Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-06, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).
 
 | Catégorie | Score |
 | --- | ---: |
@@ -13,13 +13,15 @@ Verdict : PASS — 91/100, 0 P0 (revue indépendante du 2026-10-03, barème blog
 
 ## SEO
 
-- Titre, H1 et canonical conservés dans l'HTML reconstruit ; robots index, follow pour le pilier existant.
+- Preview noindex, follow ; publication initiale conservée et republication datée du 06/10. Canonical et headline cohérents ; aucune nouvelle route CAC liée.
 
 ## Préparation aux citations
 
-- Carte illustrative ; aucune statistique de gains ni faculté d'audit légal induite.
+- La préparation de documents et de comparaisons ne vaut ni sélection des travaux, ni appréciation probante, ni opinion, ni conformité NEP garantie.
 
 ## Réserves mesurées
 
-- Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.
-- Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée.
+- Revue IA indépendante unique ; posture lecteur métier distincte de l'auteur Kevin, sans se présenter comme un CAC humain ou une seconde personne réelle.
+- Copies officielles contrôlées le 29/09, relues localement pour B2 ; aucune nouvelle consultation HTTP des administrations.
+- PASS de revue de candidat uniquement : ni scellement, ni approbation de CI, ni publication, ni contrôle de production.
+- Charte réellement présente v4 : clause historique audit non ouvert dépassée par le mandat B2 ; mise à jour constitutionnelle B1 hors de cette revue.

@@ -1,32 +1,21 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['promesse']; }
+const { contenu = contenuDe('ec').promesse } = Astro.props;
+const retour = '\n';
 /**
  * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
  * génériques. Trois colonnes à filets, dans le gabarit « bande » de la spec.
  */
-const points = [
-  {
-    titre: 'La mécanique est prise en charge.',
-    texte: 'Collecter, comparer, préparer : les gestes répétitifs suivent la règle et le périmètre convenus. Votre équipe valide les propositions et tranche les exceptions.',
-  },
-  {
-    titre: 'Les exceptions remontent, elles ne disparaissent pas.',
-    texte: 'Ce qui est certain est préparé ; ce qui est ambigu vous est présenté, jamais avalé.',
-  },
-  {
-    titre: 'La décision reste à vos équipes.',
-    texte: 'L’IA prépare. Le professionnel valide, modifie ou refuse.',
-  },
-];
+const { points } = contenu;
 ---
 
 <section id="promesse" class="promesse" aria-labelledby="promesse-titre">
-  <div class="promesse-media"><ProofRow id="01-flux">
+  <div class="promesse-media"><ProofRow id={contenu.image} enlarge>
   <div class="promesse-tete rv">
-    <h2 id="promesse-titre">Nous prenons la tâche entière. Vous gardez le jugement.</h2>
-    <p class="promesse-intro texte-2">
-      Nous observons le geste, nous écrivons la règle avec vous, nous construisons l’automatisation dans votre environnement et nous la maintenons. Vous n’avez rien à configurer.
-    </p>
+    <h2 id="promesse-titre">{contenu.titre}</h2>
+    <p class="promesse-intro texte-2">{retour}{contenu.texte}{retour}</p>
   </div>
   </ProofRow></div>
   <div class="coins">

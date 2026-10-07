@@ -51,15 +51,59 @@
 /* Repli à métriques ajustées : limite le saut de mise en page pendant le swap. */
 @font-face {
   font-family: 'Fraunces Fallback';
-  src: local('Georgia');
-  size-adjust: 96%;
-  ascent-override: 92%;
-  descent-override: 24%;
+  src: local('Georgia Bold');
+  font-weight: 600;
+  size-adjust: 93.54%;
+  ascent-override: 104.77%;
+  descent-override: 27.80%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 98.04%;
+  ascent-override: 99.96%;
+  descent-override: 26.52%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia Bold Italic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 88.30%;
+  ascent-override: 110.99%;
+  descent-override: 29.45%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: 'Hanken Fallback';
-  src: local('Arial'), local('Helvetica Neue');
-  size-adjust: 100%;
+  src: local('Arial');
+  font-weight: 400;
+  size-adjust: 101.24%;
+  ascent-override: 98.77%;
+  descent-override: 29.63%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial');
+  font-weight: 500;
+  size-adjust: 101.76%;
+  ascent-override: 98.27%;
+  descent-override: 29.48%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial Bold');
+  font-weight: 600;
+  size-adjust: 94.45%;
+  ascent-override: 105.88%;
+  descent-override: 31.76%;
+  line-gap-override: 0%;
 }
 
 /* ---------- Reset et base ---------- */
