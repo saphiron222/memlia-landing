@@ -14,7 +14,8 @@ function find(node, id) {
 
 // Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
 test('le HTML de / conserve le témoin EC hors nouveau lien service du footer', () => {
-  const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
+  // Puis replis de police Linux et Android (08/10/2026) : seules les faces @font-face et les piles du CSS changent.
+  const expected = '8b953df70bd67eb25378b1000b06566b7f5c7b0ef3214cbff3fa60aca64aaa36';
   const html = readFileSync('dist/index.html', 'utf8');
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;

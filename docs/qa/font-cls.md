@@ -12,7 +12,26 @@ La recherche cachée du glossaire conserve sa grille avant activation JavaScript
 
 Hypothèse de plateforme : Georgia/Arial locaux disponibles (banc Chromium macOS, également polices usuelles Windows). Sinon les familles génériques restent disponibles ; les mesures de ce banc ne prouvent pas le CLS sur tous les OS.
 
-Depuis le 08/10/2026, la CI tourne sur Linux (ubuntu-latest), sans Georgia ni Arial : les replis ajustés ne s'y chargent pas et l'index descend à 320–412 px (8 cas sur 12 échouaient sur la PR 176). Le test sonde donc l'OS du banc avec des faces indépendantes du site. Si Georgia et Arial existent, le repli du site doit se charger et toutes les assertions jouent : un repli cassé échoue. S'ils manquent, seules les mesures de CLS et de décalage de l'index sont relevées sans seuil et annoncées « non vérifié » ; l'ordre des familles, le débordement, le titre et la recherche restent vérifiés. Défaut réel pour les visiteurs Linux et Android : ticket `.scratch/polices-repli/issues/01-replis-linux-android.md` (Liberation Sans/Arimo, compatibles Arial ; Roboto ; Noto Serif). Une fois ces replis livrés, la sonde les inclura et les mesures redeviendront bloquantes sur le banc Linux.
+Depuis le 08/10/2026, la CI tourne sur Linux (ubuntu-latest), sans Georgia ni Arial. Les replis n'existaient que pour macOS et Windows : sous Linux et Android, l'index descendait de 32 à 37 px à 320–412 px quand les polices arrivaient (CLS jusqu'à 0,103).
+
+Replis ajoutés le 08/10/2026, essayés dans cet ordre par les piles de `tokens.css` :
+- Titres : « Fraunces Fallback » (Georgia), puis « Fraunces Fallback Noto » (Noto Serif, Android), puis « Fraunces Fallback Liberation » (Liberation Serif ou Tinos, Linux et ChromeOS).
+- Texte : « Hanken Fallback » (Arial, Liberation Sans ou Arimo, qui ont les mêmes chasses), puis « Hanken Fallback Roboto » (Android).
+
+Chaque police a ses propres réglages. Ils sont calculés comme les précédents : largeur moyenne, ascendante et descendante de Fraunces ou Hanken, rapportées à celles du repli, avec `@capsizecss/unpack`. Les mesures viennent de Times New Roman pour Liberation Serif (mêmes chasses) et des fichiers Fontsource 5.3.0 pour Roboto et Noto Serif. Recalculée de la même façon, la formule retrouve les valeurs Georgia et Arial existantes à 0,5 % près.
+
+Vérification par simulation sur macOS, sur les 3 routes en 320, 375, 412 et 1440 px :
+- Polices des titres et du texte retenues, puis libérées.
+- Georgia et Arial rendus absents. Liberation Serif est remplacée par Times New Roman.
+- Pour le scénario Android, Noto Serif et Roboto sont servis depuis Fontsource et chargés d'avance, comme une police locale.
+- Résultat sur les scénarios macOS, Linux et Android : index déplacé de 0 px dans les 36 cas, CLS ≤ 0,019.
+- Sans ces replis, le scénario Android déplace l'index de 32,6 à 36,7 px.
+
+Le test sonde l'OS du banc avec des faces indépendantes du site (une liste de polices par repli).
+- Là où l'OS a les polices d'un repli, ce repli doit se charger : une face cassée échoue.
+- Si l'OS a un repli serif et un repli sans, toutes les assertions jouent, CLS et décalage compris. C'est le cas du banc Linux de la CI (Liberation).
+- Sinon, seules ces deux mesures sont relevées sans seuil et annoncées « non vérifié ».
+- Ticket : `.scratch/polices-repli/issues/01-replis-linux-android.md`.
 
 ## Régression navigateur
 

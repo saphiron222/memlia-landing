@@ -1,22 +1,27 @@
 import { test, expect } from '@playwright/test';
 
-// Les replis à métriques ajustées reposent sur Georgia et Arial locaux (docs/qa/font-cls.md). On sonde l'OS du banc
-// avec des faces indépendantes du site : là où ces polices existent, le repli du site doit se charger et tenir la page
-// en place ; là où elles manquent (Linux du banc CI, Android), seules les mesures de saut dépendent de l'OS et sont
-// annoncées comme non vérifiées. Ticket : .scratch/polices-repli/issues/01-replis-linux-android.md.
-async function osAvecGeorgiaEtArial(page: import('@playwright/test').Page) {
-  return page.evaluate(async () => {
-    const locales = ['Georgia Bold', 'Georgia Italic', 'Georgia Bold Italic', 'Arial', 'Arial Bold'];
-    const sondes = locales.map((nom, i) => new FontFace(`sonde-os-${i}`, `local("${nom}")`).load().then(() => true, () => false));
-    return (await Promise.all(sondes)).every(Boolean);
-  });
-}
-async function replisDuSiteCharges(page: import('@playwright/test').Page) {
-  return page.evaluate(async () => {
-    const polices = ['600 16px "Fraunces Fallback"', '400 16px "Hanken Fallback"'];
-    const chargees = await Promise.all(polices.map((police) => document.fonts.load(police).then((faces) => faces.length > 0, () => false)));
-    return chargees.every(Boolean);
-  });
+// Chaque famille de repli à métriques ajustées du site et les polices de l'OS qu'elle attend (une liste par variante
+// acceptée ; docs/qa/font-cls.md). On sonde l'OS du banc avec des faces indépendantes du site : là où il a les polices
+// d'un repli, ce repli doit se charger. Si l'OS a un repli serif et un repli sans, la page doit tenir en place ; sinon
+// seules les mesures de saut, qui dépendent de l'OS, sont relevées sans seuil et annoncées « non vérifié ».
+const REPLIS = [
+  { famille: 'Fraunces Fallback', genre: 'serif', variantes: [['Georgia Bold', 'Georgia Italic', 'Georgia Bold Italic']] },
+  { famille: 'Fraunces Fallback Noto', genre: 'serif', variantes: [['Noto Serif Bold', 'Noto Serif Italic', 'Noto Serif Bold Italic']] },
+  { famille: 'Fraunces Fallback Liberation', genre: 'serif', variantes: [['Liberation Serif Bold', 'Liberation Serif Italic', 'Liberation Serif Bold Italic'], ['Tinos Bold', 'Tinos Italic', 'Tinos Bold Italic']] },
+  { famille: 'Hanken Fallback', genre: 'sans', variantes: [['Arial', 'Arial Bold'], ['Liberation Sans', 'Liberation Sans Bold'], ['Arimo', 'Arimo Bold']] },
+  { famille: 'Hanken Fallback Roboto', genre: 'sans', variantes: [['Roboto', 'Roboto Medium', 'Roboto Bold']] },
+];
+async function etatDesReplis(page: import('@playwright/test').Page) {
+  return page.evaluate(async (replis) => {
+    let sonde = 0;
+    const presente = (nom: string) => new FontFace(`sonde-os-${sonde++}`, `local("${nom}")`).load().then(() => true, () => false);
+    return Promise.all(replis.map(async ({ famille, genre, variantes }) => {
+      const os = (await Promise.all(variantes.map(async (noms) => (await Promise.all(noms.map(presente))).every(Boolean)))).some(Boolean);
+      const poids = genre === 'serif' ? 600 : 400;
+      const site = await document.fonts.load(`${poids} 16px "${famille}"`).then((faces) => faces.length > 0, () => false);
+      return { famille, genre, os, site };
+    }));
+  }, REPLIS);
 }
 
 const routes = ['/glossaire', '/integrations/bulletin-de-paie-silae', '/integrations/saisie-comptable-sage'];
@@ -37,18 +42,25 @@ for (const route of routes) {
       const gate = new Promise<void>(resolve => { release = resolve; });
       await page.route('**/fonts/*.woff2', async request => { await gate; await request.continue(); });
       await page.goto(route, { waitUntil: 'domcontentloaded' });
-      const osCompatible = await osAvecGeorgiaEtArial(page);
-      // Là où l'OS a Georgia et Arial, une face de repli supprimée ou mal écrite échoue ici au lieu d'être ignorée.
-      if (osCompatible) expect(await replisDuSiteCharges(page), 'replis à métriques ajustées du site chargés').toBe(true);
+      const replis = await etatDesReplis(page);
+      // Là où l'OS a les polices d'un repli, une face supprimée ou mal écrite échoue ici au lieu d'être ignorée.
+      for (const repli of replis) if (repli.os) expect(repli.site, `${repli.famille} chargé`).toBe(true);
+      const osCompatible = ['serif', 'sans'].every((genre) => replis.some((repli) => repli.genre === genre && repli.os));
       await page.waitForTimeout(1500);
       const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
       const before = await anchor.boundingBox();
       const families = await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily);
       expect(families.indexOf('Fraunces Fallback')).toBeGreaterThanOrEqual(0);
-      expect(families.indexOf('Fraunces Fallback')).toBeLessThan(families.indexOf('Georgia'));
+      for (const repli of REPLIS.filter((r) => r.genre === 'serif')) {
+        expect(families.indexOf(repli.famille), repli.famille).toBeGreaterThanOrEqual(0);
+        expect(families.indexOf(repli.famille), repli.famille).toBeLessThan(families.indexOf('Georgia'));
+      }
       const bodyFamilies = await page.locator('body').evaluate(el => getComputedStyle(el).fontFamily);
       expect(bodyFamilies.indexOf('Hanken Fallback')).toBeGreaterThanOrEqual(0);
-      expect(bodyFamilies.indexOf('Hanken Fallback')).toBeLessThan(bodyFamilies.indexOf('system-ui'));
+      for (const repli of REPLIS.filter((r) => r.genre === 'sans')) {
+        expect(bodyFamilies.indexOf(repli.famille), repli.famille).toBeGreaterThanOrEqual(0);
+        expect(bodyFamilies.indexOf(repli.famille), repli.famille).toBeLessThan(bodyFamilies.indexOf('system-ui'));
+      }
       // Screenshots otherwise wait for document.fonts.ready and deadlock the gate.
       process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY = '1';
       await page.screenshot({ path: testInfo.outputPath('fallback.png') });
@@ -69,7 +81,7 @@ for (const route of routes) {
         expect(cls).toBeLessThanOrEqual(0.1);
         expect(Math.abs(after!.y - before!.y), 'index/chapeau stays in place during font swap').toBeLessThanOrEqual(2);
       } else {
-        testInfo.annotations.push({ type: 'non vérifié', description: `Georgia/Arial absents de cet OS : CLS ${cls.toFixed(3)} et décalage ${Math.abs(after!.y - before!.y).toFixed(1)} px relevés sans seuil (ticket polices-repli 01)` });
+        testInfo.annotations.push({ type: 'non vérifié', description: `aucun repli serif et sans ajusté sur cet OS : CLS ${cls.toFixed(3)} et décalage ${Math.abs(after!.y - before!.y).toFixed(1)} px relevés sans seuil (ticket polices-repli 01)` });
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       await expect(page.locator('h1')).toBeVisible();
