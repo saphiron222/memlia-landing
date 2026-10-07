@@ -4,8 +4,10 @@ import { integrationPath, integrationsForService } from '@/data/integrations';
 
 /**
  * Guides par environnement d'une page (hub, service). Système de page : des destinations nommées
- * par leur titre, donc une liste de liens (titre, éditeur et produit dessous, « Lire le guide »
- * et la flèche au bout), jamais une carte seule ; puis le lien d'action vers les neuf guides.
+ * par leur titre, donc une liste de liens, titrée par son libellé (titre, éditeur et produit
+ * dessous, « Lire le guide » et la flèche au bout), jamais une carte seule ; puis le lien d'action
+ * vers les neuf guides. Le libellé titre la liste plutôt qu'un surtitre : au plus un surtitre pour
+ * trois sections.
  */
 interface Props { servicePath: string; }
 const { servicePath } = Astro.props;
@@ -17,11 +19,11 @@ const titre = (requete: string) => requete.charAt(0).toUpperCase() + requete.sli
 {integrations.length > 0 && (
   <aside class="rayons pile" aria-labelledby={titleId}>
     <div class="tete rv">
-      <p class="surtitre">Guides par environnement</p>
       <h2 id={titleId}>La même frontière, dans l’outil du cabinet</h2>
       <p>Chaque guide situe la tâche dans un environnement précis : le repère utile, la limite de la documentation et le point où le cabinet doit décider.</p>
     </div>
     <div class="liens-bloc">
+      <p class="liens-titre">Guides par environnement</p>
       <ul class="liens" data-integration-links>
         {integrations.map((integration) => (
           <li>
