@@ -21,6 +21,7 @@ Le rapport comporte les comptes par fichier, colonnes manquantes, chaque doublon
 - `npm run regen:generated` PASS : lastmod et surfaces dérivées du glossaire réaffirmées, sans modification du fond.
 - `npm run check` : 0 erreur, 0 avertissement (hints existants).
 - `npm run build` complet PASS, journaux bruts annexés : audits query ownership/blog/service/guide/page contract/positionnement/sitemaps/images/lastmod/resource et tests Node.
+- Lighthouse mobile local : 99/100/100/100 ; rapport brut et collecteur HTTP robots dans `docs/qa/fusion-csv/`. Aucun score public de production revendiqué.
 
 ## Incidents de recette résolus
 
@@ -35,3 +36,5 @@ Les captures après navigation au tableau plaçaient la nav sticky au milieu de 
 Hotspots : registre outils, intent contract, registre requêtes et paragraphes méthode/pilier. Ajouts limités à cet outil ; footer et hub automatiques depuis le registre. Réactualiser main et régénérer les dérivés si conflit, ne pas fusionner leurs empreintes à la main.
 
 La revue indépendante unique appartient à t_d8afa665. La publication et les contrôles publics définitifs (dont Lighthouse sur domaine indexable, robots public et dates J+7/J+28) appartiennent à t_4d6b063b. La prévisualisation n’atteste ni indexation ni usage réel. Aucune métrique de succès/export ajoutée au réseau.
+
+PR159 ouverte. CI distante Repository gates encore en file sur mac-kevin au dernier contrôle : ne pas conclure au PASS CI, ne pas publier avant conclusion verte puis QA. La construction et les preuves locales sont achevées ; l’attente de CI est découpée pour ne pas prolonger une session de développement. Journaux bruts livrés en `.txt` (les `.log` sont ignorés par le dépôt).
