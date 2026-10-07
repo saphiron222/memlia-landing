@@ -24,6 +24,82 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
+def public_integrations():
+    """Corpus historique et définitions générées liées à leurs preuves scellées.
+
+    L'oracle reste indépendant du validateur JS ; guide:audit contrôle en plus
+    les règles métier, le rendu et la mesure de demande avant construction.
+    """
+    expected = set(INTEGRATION_PAGES)
+    def read(path):
+        return json.loads((ROOT / path).read_text())
+    def digest(path):
+        return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+    for entry in read('src/data/guides.generated.json'):
+        slug = entry.get('slug', '')
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in expected:
+            raise ValueError(f'Guide généré dupliqué ou invalide : {slug}')
+        recipe_path = f'guides/recettes/{slug}/recette.json'
+        recipe = read(recipe_path)
+        manifest = read(f'guides/etats/{slug}/manifest.json')
+        seal_path = f'guides/etats/{slug}/scellement.json'
+        seal = read(seal_path)
+        files = manifest.get('files', {})
+        asset = f'public/proofs/integrations/{slug}.webp'
+        if (recipe.get('mode') != 'nouveau' or recipe.get('integration') != entry
+                or manifest.get('slug') != slug or manifest.get('mode') != 'nouveau'
+                or manifest.get('status') not in {'scelle', 'publie'}
+                or manifest.get('candidateSha256') != digest(recipe_path)
+                or manifest.get('sealSha256') != digest(seal_path)
+                or seal.get('slug') != slug or seal.get('candidateSha256') != manifest['candidateSha256']
+                or seal.get('files') != files or recipe_path not in files or asset not in files
+                or seal.get('reviewSha256') != digest(f'guides/recettes/{slug}/revue.json')):
+            raise ValueError(f'Guide sans provenance scellée cohérente : {slug}')
+        for path, hash_value in files.items():
+            if not (ROOT / path).resolve().is_relative_to(ROOT.resolve()) or digest(path) != hash_value:
+                raise ValueError(f'Preuve modifiée ou hors dépôt : {path}')
+        expected.add(slug)
+    return expected
+
+
+class PublicGuideInventoryProof(unittest.TestCase):
+    def test_inventaire_extensible_mais_uniquement_depuis_un_sceau_coherent(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            slug = 'controle-fixture'
+            recipe = {'mode': 'nouveau', 'integration': {'slug': slug}}
+            def write(path, data):
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(json.dumps(data))
+                return hashlib.sha256(target.read_bytes()).hexdigest()
+            recipe_path = f'guides/recettes/{slug}/recette.json'
+            candidate = write(recipe_path, recipe)
+            asset_path = f'public/proofs/integrations/{slug}.webp'
+            asset_hash = write(asset_path, {'fixture': True})
+            review_hash = write(f'guides/recettes/{slug}/revue.json', {'status': 'PASS'})
+            files = {recipe_path: candidate, asset_path: asset_hash}
+            seal = {'slug': slug, 'candidateSha256': candidate, 'files': files, 'reviewSha256': review_hash}
+            seal_hash = write(f'guides/etats/{slug}/scellement.json', seal)
+            manifest = {'slug': slug, 'mode': 'nouveau', 'status': 'scelle', 'candidateSha256': candidate, 'files': files, 'sealSha256': seal_hash}
+            write(f'guides/etats/{slug}/manifest.json', manifest)
+            write('src/data/guides.generated.json', [recipe['integration']])
+            with patch.dict(globals(), ROOT=root):
+                self.assertEqual(public_integrations(), INTEGRATION_PAGES | {slug})
+                for status in ['prepare', 'inconnu']:
+                    write(f'guides/etats/{slug}/manifest.json', {**manifest, 'status': status})
+                    with self.assertRaises(ValueError):
+                        public_integrations()
+                write(f'guides/etats/{slug}/manifest.json', manifest)
+                for path in [asset_path, recipe_path, f'guides/etats/{slug}/scellement.json', f'guides/recettes/{slug}/revue.json']:
+                    original = (root / path).read_bytes()
+                    (root / path).write_text('{}')
+                    with self.assertRaises(ValueError):
+                        public_integrations()
+                    (root / path).write_bytes(original)
+                write('src/data/guides.generated.json', [])
+                self.assertEqual(public_integrations(), INTEGRATION_PAGES)
+
 def public_articles():
     """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
     return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
@@ -205,7 +281,7 @@ class BuildProof(unittest.TestCase):
         self.assertEqual([p.stem for p in pages], PAGES_FIXES)
         self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
-        self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
+        self.assertEqual({page.stem for page in integrations}, public_integrations())
         for page in pages + articles() + integrations:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
@@ -276,7 +352,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
-                         f'{SITE}/integrations/{slug}' for slug in INTEGRATION_PAGES
+                         f'{SITE}/integrations/{slug}' for slug in public_integrations()
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)

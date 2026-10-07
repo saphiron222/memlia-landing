@@ -42,6 +42,8 @@ Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate 
 
 `npm run guide:audit` réconcilie états, recettes, sceaux, preuves et collections ; il s'exécute avant Astro dans `build:site`, donc dans `npm run build`. Un fichier manquant ou altéré échoue fermé. Aucun nouvel actif n'est régénéré pendant le build Cloudflare.
 
+Le contrat de page découvre les manifestes de `guides/etats` et réutilise la validation de la forge : seul un état `scelle` ou `publie` cohérent prouve l'illustration de sa route `/integrations/<slug>`. Une preuve absente, modifiée ou utilisée par une autre page ne compte pas ; un manifeste QA générique ne remplace pas le sceau d'un nouveau guide. Le corpus historique conserve sa provenance antérieure. L'oracle HTML/sitemap attend le corpus historique augmenté des définitions générées liées à leurs recettes et sceaux, sans liste de nouveaux slugs ni déduction depuis le rendu.
+
 ## Rejeu historique et tests
 
 `npm run guide:preparer -- rapprochement-bancaire-sage` rejoue la recette existante sans toucher au corpus ni au WebP. L'exception de demande historique exige le corpus intégralement identique et la grille `PSEO-INTEGRATIONS.md` datée du 20 septembre 2026 ; elle n'ouvre aucune nouvelle URL. Son état préparé est livré pour vérifier ce contrat en continu. Il ne prétend pas disposer d'une nouvelle revue ou d'un nouveau constat de publication.
