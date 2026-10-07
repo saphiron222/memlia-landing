@@ -500,9 +500,9 @@ export function auditerContratPages({
       let validImage = false;
       try {
         const image = new URL(page.ogImages[0]);
-        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password;
+        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password && /\.(jpg|png)$/.test(image.pathname);
       } catch { /* Une URL relative ou absente ne forme pas une image sociale publique. */ }
-      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr est requise pour toute page indexable'));
+      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable'));
     }
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
     if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));

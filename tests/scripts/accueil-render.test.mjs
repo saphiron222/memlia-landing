@@ -13,9 +13,18 @@ function find(node, id) {
 }
 
 // Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
-test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
+test('le HTML complet de / conserve le témoin EC hors variante JPEG de partage', () => {
   const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
-  assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
+  const rendered = readFileSync('dist/index.html', 'utf8');
+  const original = 'https://memlia.fr/assets/og-memlia.png';
+  const sharing = 'https://memlia.fr/social/assets/og-memlia.png.jpg';
+  let normalized = rendered;
+  for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
+    const tag = `<meta ${attribute} content="${sharing}">`;
+    assert.ok(rendered.includes(tag));
+    normalized = normalized.replace(tag, `<meta ${attribute} content="${original}">`);
+  }
+  assert.equal(createHash('sha256').update(normalized).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {

@@ -5,6 +5,8 @@ import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import ancresTitres from './src/lib/ancres-titres.mjs';
 import typedSitemaps from './scripts/lib/sitemaps.mjs';
+import { fileURLToPath } from 'node:url';
+import { renderSocialImages } from './scripts/render-social-images.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
@@ -80,5 +82,10 @@ export default defineConfig({
       }),
     }),
     typedSitemaps(),
+    { name: 'memlia-social-images', hooks: {
+      'astro:build:done': async ({ dir }) => {
+        console.log(`${await renderSocialImages(fileURLToPath(dir))} images sociales JPEG générées.`);
+      },
+    } },
   ],
 });
