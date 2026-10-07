@@ -1,6 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Button from '@/components/Button.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { GLOSSARY_BY_ID, GLOSSARY_ENTRIES, GLOSSARY_SOURCES } from '@/data/glossary';
@@ -151,25 +151,28 @@ const graph = {
       ))}
     </div>
 
-    <section class="conteneur glossaire-sortie" aria-labelledby="sortie-titre">
-      <h2 id="sortie-titre">Une règle du cabinet mérite d’être clarifiée ?</h2>
-      <p class="texte-2">Décrivez la tâche où elle intervient : nous vous disons si elle se cadre et ce qu’il faudrait pour la prendre en charge, sans rien nous envoyer.</p>
-      <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-    </section>
+    {/* Système de page : la page finit par l'appel final de tout le site, avec ses propres mots. */}
+    <AppelFinal
+      id="sortie"
+      titre="Une règle du cabinet mérite d’être clarifiée ?"
+      texte="Décrivez la tâche où elle intervient : nous vous disons si elle se cadre et ce qu’il faudrait pour la prendre en charge, sans rien nous envoyer."
+      points={[]}
+      action={CTA.principal}
+    />
   </div>
 </Base>
 
 <style>
-  .glossaire-feuille { background: var(--surface-feuille); padding-bottom: clamp(56px, 8vw, 104px); }
-  .glossaire-tete { display: grid; gap: 16px; padding-top: clamp(28px, 5vw, 56px); max-width: 880px; margin-inline: 0; }
+  /* Système de page : l'en-tête du héros partagé, sans maquette (40 puis 64 px au-dessus). */
+  .glossaire-tete { display: grid; gap: 16px; padding-top: 40px; max-width: 880px; margin-inline: 0; }
   .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); margin-bottom: 12px; }
   .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
   .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
   .ariane [aria-current] { color: var(--texte); }
-  .glossaire-tete h1 { font-size: var(--t-5xl); max-width: 22ch; }
+  .glossaire-tete h1 { font-size: var(--titre-page-partage); max-width: 22ch; }
   .glossaire-intro { max-width: 62ch; }
   .glossaire-statut { max-width: 65ch; padding: 12px 16px; border-left: 3px solid var(--ocre); background: var(--ocre-voile); color: var(--texte); font-size: var(--t-sm); }
-  .glossaire-outils { display: grid; gap: 24px; margin-top: 40px; padding-block: 24px; border-block: 1px solid var(--ligne); }
+  .glossaire-outils { display: grid; gap: 24px; margin-top: var(--bloc-ecart); padding-block: 24px; border-block: 1px solid var(--ligne); }
   .recherche { display: grid; gap: 8px; max-width: 640px; }
   /* Réserver la recherche avant l'activation JS : l'index ne descend pas au chargement. */
   .recherche[hidden] { display: grid; visibility: hidden; }
@@ -182,10 +185,11 @@ const graph = {
   .recherche-vide { padding: 16px; border: 1px solid var(--ligne); background: var(--surface-page); }
   .alphabet ol { display: flex; flex-wrap: wrap; gap: 8px; }
   .alphabet a { display: grid; place-items: center; min-width: 48px; min-height: 48px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); color: var(--texte-fort); font-weight: 600; }
-  .glossaire-corps { margin-top: 40px; }
+  .glossaire-corps { margin-top: var(--bloc-ecart); }
   .lettre { scroll-margin-top: calc(var(--nav-h) + 20px); }
-  .lettre + .lettre { margin-top: 48px; }
-  .lettre > h2 { padding-bottom: 12px; border-bottom: 2px solid var(--texte-fort); font-size: var(--t-3xl); }
+  /* Les lettres sont les intertitres d'un document : 32 px, espacées de 64 px, sans filet. */
+  .lettre + .lettre { margin-top: var(--espace-16); }
+  .lettre > h2 { font-size: var(--titre-intertitre); }
   .lettre dl { display: grid; }
   .glossaire-entree { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 28px; border-bottom: 1px solid var(--ligne); scroll-margin-top: calc(var(--nav-h) + 20px); }
   .glossaire-entree[hidden], .lettre[hidden] { display: none; }
@@ -202,9 +206,6 @@ const graph = {
   .liens-liste { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .liens-liste li { display: flex; align-items: center; min-height: 44px; }
   .entree-liens a, .definition a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-  .glossaire-sortie { display: grid; justify-items: start; gap: 12px; max-width: 720px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-forte); }
-  .glossaire-sortie h2 { font-size: var(--t-3xl); max-width: 24ch; }
-  .glossaire-sortie p { max-width: 60ch; }
   @media (hover: hover) {
     .alphabet a:hover, .recherche-effacer:hover { background: var(--surface-hover); }
   }
@@ -212,7 +213,9 @@ const graph = {
     .recherche-ligne { grid-template-columns: minmax(0, 1fr) auto; }
   }
   @media (min-width: 64rem) {
-    .glossaire-entree { grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2.2fr); gap: 48px; padding-block: 36px; }
+    .glossaire-tete { padding-top: 64px; }
+    /* Le terme sur un tiers, sa définition sur deux tiers, comme les lignes du système. */
+    .glossaire-entree { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--rangee-gouttiere); padding-block: 36px; }
   }
   @media (forced-colors: active) {
     .glossaire-statut, .entree-details { border-left-color: CanvasText; }

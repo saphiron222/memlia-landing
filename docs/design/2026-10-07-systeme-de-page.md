@@ -167,6 +167,11 @@ Points ouverts pour la phase 2 :
   chacune change (lignes, bande bord à bord, liste) et rompt la répétition ; à revoir si la page
   paraît encore monotone.
 - Les preuves illisibles à 375 px (§ 7).
+- Restent des cartes seules parce que le contenu les impose : l'outil seul de sa catégorie
+  (Explorer, Se situer) et le guide seul de son produit (Cegid Loop). Les regrouper est une
+  décision de contenu.
+- /integrations porte quatre surtitres (l'éditeur de chaque produit) : c'est une catégorie, mais
+  la règle « un pour trois sections » y est dépassée.
 
 ## 10. Phase 2 : les autres pages
 
@@ -178,3 +183,12 @@ Points ouverts pour la phase 2 :
 | Méthode | étapes en quinconce, titres de section à chaque étape | étapes deux par deux, surtitre « Étape n », h3, maquettes encadrées |
 | À propos | rangées en quinconce | rangées alignées ; en-têtes du système ; bande de 2 |
 | Contact | titre dans le plateau du formulaire ; pastilles grises ; astuce sous filet | en-tête de section, plateau, lignes à pictogramme, mention |
+| Intégrations | quatre repères en bande ; « → » tapé | lignes ; éditeur en surtitre ; cartes au lien d'action fléché |
+| Guides | champs en cartes non cliquables ; marge ad hoc du tableau | lignes ; tableau au pas des blocs |
+| Outils (hub) | catégories en colonne, filets entre elles ; « → » tapé | une section par catégorie ; cartes au lien d'action fléché |
+| Outils (pages) | héros à coins, pastille ; bandeaux à filets ; encadré vert ; deux boutons principaux en fin de page | héros partagé ; lignes ; plateau ; garanties en liste de liens ; trois suites en cartes ; un seul bouton principal, celui de l'appel final |
+| Glossaire | lettres soulignées d'un filet épais ; sortie à filet | intertitres sans filet, au pas de 64 px ; appel final du site |
+
+Règles précisées en phase 2 : le lien d'action garde sa flèche après le dernier mot quand son
+libellé passe à la ligne ; dans une rangée à phrase, pictogramme, action et flèche suivent la
+première ligne du libellé.

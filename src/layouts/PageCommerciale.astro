@@ -144,8 +144,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
      propre espace : la dernière section n'en ajoute pas. ---- */
   .page-v2 :global(.pv) { display: grid; gap: var(--bloc-ecart); padding: var(--section-espace) var(--marge-page) 0; }
   .page-v2 :global(.pv > *) { min-width: 0; }
-  .page-v2 :global(.pv-tete) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
-  .page-v2 :global(.pv-tete p) { margin: 0; }
   /* Texte d'une rangée : l'en-tête du système, puis les paragraphes tels qu'écrits. */
   .page-v2 :global(.pv-copy) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
   .page-v2 :global(.pv-copy p) { margin: 0; }
@@ -155,7 +153,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   .page-v2 :global(.pv > .bande) { margin-inline: calc(-1 * var(--marge-page)); }
   /* Un lien dans un paragraphe se voit : c'est là que vivent les sources et les renvois (Kevin, 06/10/2026). */
   .page-v2 :global(.pv p a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
-
 
   @media (min-width: 64rem) {
     .page-v2 :global(.pv) { padding-inline: var(--marge-page-lg); }

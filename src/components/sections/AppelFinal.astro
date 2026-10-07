@@ -48,11 +48,13 @@ const {
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
     <h2 id={`${id}-titre`} class="appel-h2"><Insecable texte={titre} /></h2>
     <p class="texte-2 appel-texte">{texte}</p>
-    <ul class="appel-cadrage">
-      {points.map((c) => (
-        <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
-      ))}
-    </ul>
+    {points.length > 0 && (
+      <ul class="appel-cadrage">
+        {points.map((c) => (
+          <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
+        ))}
+      </ul>
+    )}
     <div class="appel-boutons">
       <Button href={action.href} variante="principal" picto="fleche">{action.libelle}</Button>
       {secondaire && (

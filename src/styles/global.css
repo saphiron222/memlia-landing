@@ -554,8 +554,9 @@ ol {
     --ecart: var(--cartes-ecart-lg);
   }
 }
-/* Une destination seule n'est pas une carte (c'est un lien d'action) ; en attendant la phase 2,
-   elle se range à gauche, sur la largeur d'une colonne, au lieu de s'étirer. */
+/* Une destination seule n'est pas une carte (c'est un lien d'action). Quand le contenu impose une
+   carte seule (l'outil seul de sa catégorie, le guide seul de son produit), elle se range à
+   gauche, sur la largeur d'une colonne, au lieu de s'étirer. */
 .cartes:has(> :only-child) {
   justify-content: flex-start;
 }
@@ -662,27 +663,30 @@ ol {
   text-wrap: pretty;
 }
 /* Lien d'action (système de page, § 6) : un seul style, dans une carte comme sous un en-tête.
-   Libellé vert, flèche de 14 px après le libellé, cible de 44 px. */
+   Libellé vert, flèche de 14 px après le dernier mot, même quand le libellé passe à la ligne ;
+   cible de 44 px (une ligne de 24 px, 10 px dessus et dessous). */
 .lien-action,
 :where(.carte) .carte-action {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   align-self: flex-start;
   justify-self: start;
-  gap: 6px;
-  min-height: 44px;
+  padding-block: 10px;
   font-weight: 600;
+  line-height: 24px;
   color: var(--accent-texte);
   text-underline-offset: 3px;
+  text-wrap: balance;
 }
 :where(.carte) .carte-action {
   margin-top: auto;
 }
 .lien-action svg,
 :where(.carte) .carte-action svg {
-  flex: none;
+  display: inline-block;
   width: 14px;
   height: 14px;
+  margin-left: 6px;
+  vertical-align: -2px;
   transition: transform var(--duree-2) var(--courbe-standard);
 }
 @media (hover: hover) {
@@ -953,6 +957,19 @@ h3.liens-titre {
 .lien-rangee svg {
   flex: none;
   color: var(--accent-texte);
+}
+/* Rangée à phrase : pictogramme, action et flèche suivent la première ligne du libellé. */
+.lien-rangee:has(.lien-detail) {
+  align-items: flex-start;
+}
+.lien-rangee:has(.lien-detail) > svg:first-child {
+  margin-top: 1px;
+}
+.lien-rangee:has(.lien-detail) .lien-suite {
+  margin-top: 2px;
+}
+.lien-rangee:has(.lien-detail) .lien-fleche {
+  margin-top: 4px;
 }
 .lien-rangee .lien-libelle {
   flex: 1 1 auto;

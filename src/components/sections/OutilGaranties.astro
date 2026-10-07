@@ -21,52 +21,28 @@ const garanties = [
     href: '#limites-titre',
   },
 ];
+// Système de page : chaque garantie mène à sa preuve dans la page ; ce sont des destinations
+// nommées, donc une liste de liens (pictogramme, libellé, phrase dessous, flèche), comme les
+// garanties de l'accueil.
 ---
 
-<section class="outil-garanties" data-tool-section="garanties" aria-labelledby="outil-garanties-titre">
-  <div class="conteneur outil-garanties-inner">
-    <div class="outil-garanties-heading rv">
+<section class="section outil-garanties" data-tool-section="garanties" aria-labelledby="outil-garanties-titre">
+  <div class="conteneur pile">
+    <div class="tete rv">
       <h2 id="outil-garanties-titre">Trois garanties vérifiables avant de saisir une valeur.</h2>
     </div>
-    <ul class="cartes rv-groupe">
-      {garanties.map((garantie) => (
-        <li class="outil-garantie rv">
-          <a class="carte" href={garantie.href}>
-            <span class="carte-icone" aria-hidden="true"><Picto nom={garantie.picto} taille={24} /></span>
-            <div class="carte-corps">
-              <h3 class="carte-titre">{garantie.titre}</h3>
-              <p class="carte-texte">{garantie.texte}</p>
-              <span class="carte-action" aria-hidden="true"><Picto nom="fleche" taille={14} /></span>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="liens-bloc rv">
+      <ul class="liens">
+        {garanties.map((garantie) => (
+          <li>
+            <a class="lien-rangee" href={garantie.href}>
+              <Picto nom={garantie.picto} taille={20} />
+              <span class="lien-libelle">{garantie.titre}<span class="lien-detail">{garantie.texte}</span></span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
-
-<style>
-  .outil-garanties {
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
-  .outil-garanties-inner {
-    display: grid;
-    gap: 40px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  .outil-garanties-heading {
-    max-width: 720px;
-  }
-  /* Les trois garanties sont des cartes du site (global.css), chacune lien vers sa preuve. */
-  .outil-garantie { display: flex; }
-  .outil-garantie > .carte { flex: 1 1 auto; }
-  @media (min-width: 64rem) {
-    .outil-garanties-inner {
-      gap: 56px;
-      padding-top: 112px;
-      padding-bottom: 112px;
-    }
-  }
-</style>

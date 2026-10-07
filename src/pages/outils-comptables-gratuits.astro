@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import OutilHero from '@/components/sections/OutilHero.astro';
+import Picto from '@/components/Picto.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
@@ -49,13 +50,15 @@ const graph = {
       breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
     />
 
-    <div class="conteneur outils-categories">
-      {categoriesPubliees.map((category) => (
-        <section class="outils-categorie" aria-labelledby={`categorie-${category.id}`}>
-          <h2 id={`categorie-${category.id}`}>{category.label}</h2>
-          <ul class="cartes">
+    {categoriesPubliees.map((category) => (
+      <section class="section outils-categorie" aria-labelledby={`categorie-${category.id}`}>
+        <div class="conteneur pile">
+          <div class="tete rv">
+            <h2 id={`categorie-${category.id}`}>{category.label}</h2>
+          </div>
+          <ul class="cartes rv-groupe">
             {category.tools.map((outil) => (
-              <li class="carte" data-outil-card>
+              <li class="carte rv" data-outil-card>
                 <div class="carte-corps">
                   <h3 class="carte-titre">{outil.h1}</h3>
                   <p class="carte-texte">{outil.description}</p>
@@ -63,29 +66,26 @@ const graph = {
                     <div><dt>Entrée</dt><dd>{outil.promesse.entree}</dd></div>
                     <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
                   </dl>
-                  <a class="carte-action carte-lien" href={outilPath(outil)}>Utiliser sans compte <span aria-hidden="true">→</span></a>
+                  <a class="carte-action carte-lien" href={outilPath(outil)}>Utiliser sans compte<Picto nom="fleche" taille={14} /></a>
                 </div>
               </li>
             ))}
           </ul>
-        </section>
-      ))}
-    </div>
+        </div>
+      </section>
+    ))}
   </div>
 </Base>
 
 <style>
-  .outils-feuille { min-height: 70vh; padding-bottom: clamp(56px, 8vw, 104px); background: var(--surface-feuille); }
-  .outils-categories { display: grid; margin-top: 56px; border-top: 1px solid var(--ligne-forte); }
-  .outils-categorie { display: grid; gap: 20px; padding: 32px 0; border-bottom: 1px solid var(--ligne); }
-  .outils-categorie h2 { font-size: var(--t-3xl); }
-  /* Chaque outil est une carte du site (global.css) ; la grille suit le nombre d'outils de la catégorie. */
+  /*
+   * Système de page : une catégorie est une section (titre, puis ses cartes) au pas des sections,
+   * sans filet entre elles. Chaque outil est une carte du site (global.css) : la grille suit le
+   * nombre d'outils de la catégorie ; l'outil seul de sa catégorie garde la largeur d'une colonne.
+   */
+  .outils-feuille { min-height: 70vh; padding-bottom: var(--section-espace); }
   .outils-categorie dl { display: grid; gap: 10px; margin: 4px 0 0; padding-top: 16px; border-top: 1px solid var(--ligne); }
   .outils-categorie dl div { display: grid; gap: 2px; }
   .outils-categorie dt { color: var(--texte-2); font-size: var(--t-sm); font-weight: 600; }
   .outils-categorie dd { margin: 0; color: var(--texte-fort); }
-
-  @media (min-width: 48rem) {
-    .outils-categorie { grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); gap: 40px; padding: 40px 0; }
-  }
 </style>

@@ -1,12 +1,15 @@
 ---
+import Picto from '@/components/Picto.astro';
 import { integrationPath, type IntegrationDefinition } from '@/data/integrations';
 
-/** Guides par environnement : chaque guide est une carte du site (global.css), lien en entier. */
+/**
+ * Guides par environnement : chaque guide est une carte du site (global.css), lien en entier,
+ * finie par le lien d'action fléché (système de page, § 6 : jamais de « → » tapé).
+ */
 interface Props {
   integrations: readonly IntegrationDefinition[];
-  compact?: boolean;
 }
-const { integrations, compact = false } = Astro.props;
+const { integrations } = Astro.props;
 ---
 
 <ul class="cartes" data-integration-cards>
@@ -16,8 +19,8 @@ const { integrations, compact = false } = Astro.props;
         <div class="carte-corps">
           <span class="carte-meta">{integration.vendor} · {integration.product}</span>
           <h3 class="carte-titre">{integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
-          {!compact && <p class="carte-texte">{integration.description}</p>}
-          <span class="carte-action">Lire le guide<span aria-hidden="true"> →</span></span>
+          <p class="carte-texte">{integration.description}</p>
+          <span class="carte-action">Lire le guide<Picto nom="fleche" taille={14} /></span>
         </div>
       </a>
     </li>

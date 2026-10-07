@@ -74,25 +74,23 @@ const portee = {
 >
   {generatedIdentity ? <template data-guide-sha256={generatedIdentity}></template> : ' '}
   <section class="pv" aria-labelledby="repere-editeur">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
-      <p class="texte-2 lecture">{portee.avant}<a href={integration.source.url} rel="noopener noreferrer" title={integration.source.title}>{portee.lien}</a>{portee.apres}</p>
-      <p class="texte-2 lecture">{integration.officialPath}</p>
+      <p>{portee.avant}<a href={integration.source.url} rel="noopener noreferrer" title={integration.source.title}>{portee.lien}</a>{portee.apres}</p>
+      <p>{integration.officialPath}</p>
     </div>
-    <ul class="cartes rv-groupe">
+    <dl class="lignes rv">
       {integration.fields.map((field) => (
-        <li class="carte rv"><div class="carte-corps"><h3 class="carte-titre">{field.label}</h3><p class="carte-texte">{field.control}</p></div></li>
+        <div class="ligne"><dt class="ligne-libelle">{field.label}</dt><dd class="ligne-texte">{field.control}</dd></div>
       ))}
-    </ul>
-    <div class="pv-tete rv">
-      <p class="texte-2 lecture"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
-    </div>
+    </dl>
+    <p class="texte-2 lecture rv"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
   </section>
 
   <section class="pv" aria-labelledby="regle-ecrite">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="regle-ecrite">La règle écrite</h2>
-      <p class="texte-2 lecture">{integration.writtenRule}</p>
+      <p>{integration.writtenRule}</p>
     </div>
     <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -105,17 +103,17 @@ const portee = {
   </section>
 
   <section class="pv" aria-labelledby="jeu-fictif">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="jeu-fictif">Cas illustratifs sur données fictives</h2>
-      <p class="texte-2 lecture">Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
+      <p>Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
     </div>
     <IntegrationReplay integration={integration} />
   </section>
 
   <section class="pv" aria-labelledby="maillage">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="maillage">La tâche avant le nom du logiciel</h2>
-      <p class="texte-2 lecture">Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
+      <p>Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
     </div>
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },

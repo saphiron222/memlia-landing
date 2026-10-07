@@ -9,58 +9,46 @@ interface Props {
 }
 
 const { source, mentionLocale, refus, assemblage = false } = Astro.props;
+// Système de page : un en-tête (surtitre, titre de section), puis trois engagements en bande,
+// bord à bord de la feuille, comme les principes des services.
 ---
 
-<section class="outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
-  <div class="conteneur outil-preuves-inner">
-    <div class="outil-preuves-heading rv">
-      <span class="eyebrow">La règle reste lisible</span>
+<section class="section pile outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
+  <div class="conteneur">
+    <div class="tete rv">
+      <p class="surtitre">La règle reste lisible</p>
       <h2 id="outil-preuves-titre">{assemblage ? 'L’assemblage, sa source et son refus sont visibles.' : 'Le calcul, sa source et son refus sont visibles.'}</h2>
     </div>
-    <div class="bande">
-      <div class="cartes rv-groupe">
-        <article class="cellule outil-preuve rv">
-          <h3 class="carte-titre">{assemblage ? 'Assemblage local' : 'Calcul local'}</h3>
-          <p class="carte-texte">{mentionLocale}</p>
-        </article>
-        <article class="cellule outil-preuve rv">
-          <h3 class="carte-titre">Arrêt explicite</h3>
-          <p class="carte-texte">{refus}</p>
-        </article>
-        <article class="cellule outil-preuve rv" data-official-source>
-          <h3 class="carte-titre">{source.titre ?? 'Source officielle'}</h3>
-          <p class="carte-texte">{source.extrait}</p>
-          <p class="outil-source-meta">
-            <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>
+  </div>
+  <div class="bande coins">
+    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+    <div class="cartes rv-groupe">
+      <article class="cellule outil-preuve rv">
+        <h3 class="carte-titre">{assemblage ? 'Assemblage local' : 'Calcul local'}</h3>
+        <p class="carte-texte">{mentionLocale}</p>
+      </article>
+      <article class="cellule outil-preuve rv">
+        <h3 class="carte-titre">Arrêt explicite</h3>
+        <p class="carte-texte">{refus}</p>
+      </article>
+      <article class="cellule outil-preuve rv" data-official-source>
+        <h3 class="carte-titre">{source.titre ?? 'Source officielle'}</h3>
+        <p class="carte-texte">{source.extrait}</p>
+        <p class="outil-source-meta">
+          <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>
+        </p>
+        {source.complement && (
+          <p class="outil-source-complement">
+            {source.complement.extrait}{' '}
+            <a href={source.complement.url} rel="noopener">{source.complement.nom}</a>.
           </p>
-          {source.complement && (
-            <p class="outil-source-complement">
-              {source.complement.extrait}{' '}
-              <a href={source.complement.url} rel="noopener">{source.complement.nom}</a>.
-            </p>
-          )}
-        </article>
-      </div>
+        )}
+      </article>
     </div>
   </div>
 </section>
 
 <style>
-  .outil-preuves {
-    border-bottom: 1px solid var(--ligne);
-    background: var(--surface-page);
-  }
-  .outil-preuves-inner {
-    display: grid;
-    gap: 48px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  .outil-preuves-heading {
-    display: grid;
-    gap: 12px;
-    max-width: 760px;
-  }
   /* Les trois preuves sont les cellules de la bande du site (`.bande`, global.css). */
   .outil-source-meta {
     display: grid;
@@ -70,6 +58,7 @@ const { source, mentionLocale, refus, assemblage = false } = Astro.props;
   /* Même couleur que le texte de la cellule (`.carte-texte`). */
   .outil-source-meta,
   .outil-source-complement {
+    margin: 0;
     color: var(--texte-2);
   }
   .outil-preuve a {
@@ -81,12 +70,5 @@ const { source, mentionLocale, refus, assemblage = false } = Astro.props;
     padding-top: 12px;
     border-top: 1px solid var(--ligne-douce);
     font-size: var(--t-sm);
-  }
-  @media (min-width: 64rem) {
-    .outil-preuves-inner {
-      gap: 64px;
-      padding-top: 112px;
-      padding-bottom: 112px;
-    }
   }
 </style>

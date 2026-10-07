@@ -45,29 +45,26 @@ const noeuds = [
   }}
 >
   <section class="pv" aria-labelledby="publication">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="publication">Partir du produit, choisir le geste</h2>
-      <p class="texte-2 lecture">Un guide vous aide à préparer les contrôles d’une tâche dans votre environnement. Avant toute automatisation, nous vérifions avec vous les formats, les accès et les cas couverts.</p>
+      <p>Un guide vous aide à préparer les contrôles d’une tâche dans votre environnement. Avant toute automatisation, nous vérifions avec vous les formats, les accès et les cas couverts.</p>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ol class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Votre produit</h3><p class="carte-texte">Repérez le produit utilisé par votre équipe : la comptabilité et la paie ont des contrôles distincts.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Votre tâche</h3><p class="carte-texte">Choisissez le geste qui revient et les informations nécessaires pour préparer son contrôle.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Frontière de décision</h3><p class="carte-texte">Chaque guide sépare la préparation, la validation de l’équipe et le cas d’arrêt.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Votre environnement</h3><p class="carte-texte">La version, les formats et les accès du cabinet sont vérifiés au cadrage, puis la règle est éprouvée avant la recette.</p></li>
-      </ol>
-    </div>
+    <ol class="lignes rv">
+      <li class="ligne"><h3 class="ligne-libelle">Votre produit</h3><p class="ligne-texte">Repérez le produit utilisé par votre équipe : la comptabilité et la paie ont des contrôles distincts.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Votre tâche</h3><p class="ligne-texte">Choisissez le geste qui revient et les informations nécessaires pour préparer son contrôle.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Frontière de décision</h3><p class="ligne-texte">Chaque guide sépare la préparation, la validation de l’équipe et le cas d’arrêt.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Votre environnement</h3><p class="ligne-texte">La version, les formats et les accès du cabinet sont vérifiés au cadrage, puis la règle est éprouvée avant la recette.</p></li>
+    </ol>
   </section>
 
   {products.map((product, index) => {
     const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.product === product);
     return (
       <section class="pv" aria-labelledby={`product-${index}`}>
-        <div class="pv-tete rv">
-          <p class="texte-2">{integrations[0].vendor}</p>
+        <div class="tete rv">
+          <p class="surtitre">{integrations[0].vendor}</p>
           <h2 id={`product-${index}`}>{product}</h2>
-          <p class="texte-2 lecture">{integrations.length} {integrations.length > 1 ? 'guides documentés' : 'guide documenté'}, chacun relié à la tâche correspondante et à sa limite de validation.</p>
+          <p>{integrations.length} {integrations.length > 1 ? 'guides documentés' : 'guide documenté'}, chacun relié à la tâche correspondante et à sa limite de validation.</p>
         </div>
         <IntegrationCards integrations={integrations} />
       </section>
@@ -75,9 +72,9 @@ const noeuds = [
   })}
 
   <section class="pv" aria-labelledby="passage-tache">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="passage-tache">Du guide à la tâche confiée</h2>
-      <p class="texte-2 lecture">Le guide donne un repère de départ. La prise en charge commence par le geste réel, les accès disponibles et les exceptions du cabinet, puis se termine par une recette menée avec l’équipe.</p>
+      <p>Le guide donne un repère de départ. La prise en charge commence par le geste réel, les accès disponibles et les exceptions du cabinet, puis se termine par une recette menée avec l’équipe.</p>
     </div>
   </section>
 </PageCommerciale>
