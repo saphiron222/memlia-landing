@@ -91,13 +91,17 @@ class GlossaryProof(unittest.TestCase):
         cites = [ident for ident, definition, contexte in entrees if 'href="https://' in definition + contexte]
         # 22 entrées ne s'appuient que sur la méthode ou un article Memlia : rien d'externe à citer.
         self.assertEqual(len(cites), 31)
-        # Une définition écrite par Memlia n'est pas celle de l'organisme cité : sa citation se pose en fin de
-        # contexte, jamais en fin de définition (revue de #166, 07/10/2026).
+        # Une définition écrite par Memlia n'est pas celle de l'organisme cité : la source externe se pose sur le mot
+        # qu'elle établit, jamais en parenthèse après une phrase maison (revue de #166, 07/10/2026).
         maison = set(re.findall(r"id: '([a-z0-9-]+)'[^\n]*nature: 'Éditoriale Memlia'", (ROOT / 'src/data/glossary.ts').read_text()))
         self.assertEqual(len(maison), 20)
-        for ident, definition, _ in entrees:
+        for ident, definition, contexte in entrees:
             if ident in maison:
-                self.assertNotIn('href="https://', definition, ident)
+                self.assertNotRegex(definition + contexte, r'\(<a [^>]*href="https://', ident)
+        par_mot = {ident: definition + contexte for ident, definition, contexte in entrees}
+        for ident, mot in [('controle-avant-dsn', 'cohérences métier'), ('agregat-non-nominatif', 'afficher un indicateur'),
+                           ('jeu-d-essai-fictif', 'données anonymisées'), ('tracabilite', 'retrouver')]:
+            self.assertRegex(par_mot[ident], r'<a [^>]*href="https://[^"]+"[^>]*>' + re.escape(mot) + '</a>', ident)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)

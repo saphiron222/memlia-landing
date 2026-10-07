@@ -814,13 +814,14 @@ a.carte:focus-visible {
 .surtitre::first-letter {
   text-transform: uppercase;
 }
-/* Dans un titre, un mot composé ne se coupe pas à son trait d'union (Insecable.astro). Sous 360 px, il
-   peut se couper : « expert-comptable » dépasse sinon la colonne d'un écran de 320 px. */
+/* Dans un titre, un mot composé ne se coupe pas à son trait d'union, et une ponctuation haute ne commence
+   jamais une ligne (Insecable.astro). Sous 360 px, seul le mot composé peut se couper : « expert-comptable »
+   dépasse sinon la colonne d'un écran de 320 px. */
 .insecable {
   white-space: nowrap;
 }
 @media (max-width: 22.4375rem) {
-  .insecable {
+  .insecable-compose {
     white-space: normal;
   }
 }

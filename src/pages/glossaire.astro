@@ -30,12 +30,25 @@ const citations = (sourceIds: string[]) => {
     const editeur = source.publisher.split(' — ')[0];
     if (!editeurs.has(editeur)) {
       editeurs.add(editeur);
-      return [{ nom: editeur, url: source.url, titre: source.title }];
+      return [{ sourceId, nom: editeur, url: source.url, titre: source.title }];
     }
     if (!source.libelleCourt) throw new Error(`Second document ${editeur} sans libellé court : ${sourceId}`);
-    return [{ nom: source.libelleCourt, url: source.url, titre: source.title }];
+    return [{ sourceId, nom: source.libelleCourt, url: source.url, titre: source.title }];
   });
 };
+type Citation = ReturnType<typeof citations>[number];
+type LienSurMot = { mot: string; cite: Citation };
+/** Le texte découpé autour du premier `mot` de chaque lien encore à poser ; `poses` retient ceux déjà posés. */
+const segmenter = (texte: string, liens: LienSurMot[], poses: Set<string>): (string | LienSurMot)[] =>
+  liens.reduce<(string | LienSurMot)[]>((morceaux, lien) => {
+    if (poses.has(lien.mot)) return morceaux;
+    const rang = morceaux.findIndex((morceau) => typeof morceau === 'string' && morceau.includes(lien.mot));
+    if (rang === -1) return morceaux;
+    const morceau = morceaux[rang] as string;
+    const debut = morceau.indexOf(lien.mot);
+    poses.add(lien.mot);
+    return [...morceaux.slice(0, rang), morceau.slice(0, debut), lien, morceau.slice(debut + lien.mot.length), ...morceaux.slice(rang + 1)];
+  }, [texte]);
 // Les sources Memlia (méthode, articles) sont des renvois internes : elles rejoignent « Pour aller plus loin », sans
 // doublon avec les renvois déjà écrits (revue de #166, 07/10/2026).
 const liensInternes = (entry: (typeof GLOSSARY_ENTRIES)[number]) => {
@@ -46,7 +59,7 @@ const liensInternes = (entry: (typeof GLOSSARY_ENTRIES)[number]) => {
   return [...entry.internalLinks, ...memlia.filter((lien) => !entry.internalLinks.some((existant) => existant.href === lien.href))];
 };
 // Une définition écrite par Memlia (« Dans ce glossaire, Memlia appelle… ») n'est pas celle de l'organisme cité :
-// sa citation se pose en fin de contexte, là où l'organisme étaye un fait, et non en fin de définition.
+// chaque source externe se pose sur le mot qu'elle établit (motsSources), jamais en parenthèse après une phrase maison.
 const definitionMaison = (entry: (typeof GLOSSARY_ENTRIES)[number]) => entry.nature === 'Éditoriale Memlia';
 const graph = {
   '@context': 'https://schema.org',
@@ -127,12 +140,23 @@ const graph = {
                 <dd>
                   {(() => {
                     const cites = citations(entry.sourceIds);
-                    const parentheses = cites.length === 0 ? null : <> ({cites.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</>;
                     const maison = definitionMaison(entry);
+                    const liens: LienSurMot[] = maison
+                      ? cites.flatMap((cite) => (entry.motsSources?.[cite.sourceId] ? [{ mot: entry.motsSources[cite.sourceId] as string, cite }] : []))
+                      : [];
+                    const enParentheses = cites.filter((cite) => !liens.some((lien) => lien.cite === cite));
+                    const parentheses = enParentheses.length === 0 ? null : <> ({enParentheses.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</>;
+                    const poses = new Set<string>();
+                    const definition = segmenter(entry.definition, liens, poses);
+                    const contexte = segmenter(entry.context, liens, poses);
+                    const absent = liens.find((lien) => !poses.has(lien.mot));
+                    if (absent) throw new Error(`Glossaire ${entry.id} : « ${absent.mot} » introuvable dans la définition ou le contexte.`);
+                    if (maison && enParentheses.length > 0) throw new Error(`Glossaire ${entry.id} : source externe sans mot (motsSources) sur une définition maison.`);
+                    const rendre = (morceaux: (string | LienSurMot)[]) => morceaux.map((morceau) => (typeof morceau === 'string' ? morceau : <a href={morceau.cite.url} rel="noopener noreferrer" title={morceau.cite.titre}>{morceau.mot}</a>));
                     return (
                       <>
-                        <p class="definition">{entry.definition}{!maison && parentheses}</p>
-                        <p class="contexte">{entry.context}{maison && parentheses}</p>
+                        <p class="definition">{rendre(definition)}{!maison && parentheses}</p>
+                        <p class="contexte">{rendre(contexte)}</p>
                       </>
                     );
                   })()}

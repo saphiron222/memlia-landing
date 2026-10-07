@@ -33,6 +33,8 @@ export interface GlossaryEntry {
   sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19';
   nextReviewAt: '2026-12-13' | '2027-03-13';
   sourceIds: string[];
+  /** Définition maison : le mot de la définition ou du contexte qui porte le lien de chaque source externe. */
+  motsSources?: Record<string, string>;
   routeDecision: 'anchor';
   status: 'preview-only';
 }
@@ -236,7 +238,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Comparer, tester et documenter sont automatisables ; qualifier l’écart, modifier la paie et déposer restent humains.',
     relatedTerms: ['dsn-val', 'controle-de-coherence', 'regle-de-cabinet'],
     internalLinks: [{ label: 'la méthode complète de contrôle avant DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' }],
-    owner: 'Article contrôle DSN', nextReviewAt: '2027-03-13', sourceIds: ['article-controle-dsn', 'net-fiabilisation'],
+    owner: 'Article contrôle DSN', nextReviewAt: '2027-03-13', sourceIds: ['article-controle-dsn', 'net-fiabilisation'], motsSources: { 'net-fiabilisation': 'cohérences métier' },
   },
   {
     ...common, id: 'production-sociale', term: 'Production sociale', anchor: 'production-sociale', nature: 'Éditoriale Memlia',
@@ -302,7 +304,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Calculer et afficher les comptes est automatisable ; définir la granularité, la finalité et les droits de lecture relève du cabinet.',
     relatedTerms: ['minimisation-des-donnees', 'anonymisation', 'production-sociale'],
     internalLinks: [{ label: 'structurer un suivi par dossier, sans classer les personnes', href: '/blog/suivre-la-production-sociale-dans-excel' }],
-    owner: 'Positionnement anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['article-production-sociale', 'cnil-rgpd'],
+    owner: 'Positionnement anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['article-production-sociale', 'cnil-rgpd'], motsSources: { 'cnil-rgpd': 'afficher un indicateur' },
   },
   {
     ...common, id: 'lettrage-comptable', term: 'Lettrage comptable', anchor: 'lettrage-comptable', nature: 'Éditoriale Memlia',
@@ -412,7 +414,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Journaliser les étapes techniques prévues est automatisable ; choisir les événements, accès et durées de conservation reste humain.',
     relatedTerms: ['minimisation-des-donnees', 'agregat-non-nominatif', 'validation-humaine'],
     internalLinks: [{ label: 'les garanties de traitement et de contrôle', href: '/#garanties' }],
-    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['nist', 'methode-memlia'],
+    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['nist', 'methode-memlia'], motsSources: { nist: 'retrouver' },
   },
   {
     ...common, id: 'validation-humaine', term: 'Validation humaine', anchor: 'validation-humaine', nature: 'Éditoriale Memlia',
@@ -531,7 +533,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Générer des variantes du jeu fictif pour couvrir de nouveaux cas est automatisable une fois le jeu initial construit. Décider quels cas limites et quels cas de refus le jeu doit couvrir reste un choix humain, propre à chaque traitement.',
     relatedTerms: ['anonymisation', 'recette', 'cas-de-refus'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
-    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia', 'cnil-anonymisation'],
+    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia', 'cnil-anonymisation'], motsSources: { 'cnil-anonymisation': 'données anonymisées' },
   },
   {
     ...common, id: 'systeme-d-ia', term: 'Système d’IA', anchor: 'systeme-d-ia', nature: 'Réglementaire',
