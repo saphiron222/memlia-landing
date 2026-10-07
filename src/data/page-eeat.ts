@@ -78,6 +78,10 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'entrees-sorties-salaries': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{ editeur: 'Silae', titre: 'Gérer les salariés de A à Z', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', consulteLe: '2026-10-06', preuve: 'Le circuit du portail garde la création du salarié et la transmission de la DPAE. La préparation hors portail ne double pas ces gestes.', mot: 'mySilae' }],
+  },
   paie: { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-10-06', sources: [sources.dsnVal] },
   'saisie-comptable': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-10-06', sources: [sources.mentionsFacture] },
   'rapprochement-bancaire': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-10-06', sources: [sources.planComptable] },
@@ -113,13 +117,20 @@ export function eeatCommercial(chemin: string): PageEeat | null {
 const echapper = (texte: string): string =>
   texte.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+const motif = (texte: string) => texte.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** Le texte porte déjà un lien vers la source, posé sur son `mot`. */
+const dejaLiee = (html: string, source: SourcePrimaire) =>
+  new RegExp(`<a\\s[^>]*href="${motif(echapper(source.url))}"[^>]*>${motif(source.mot)}</a>`).test(html);
+
 /**
  * Le HTML rendu d'une page, avec le lien de chacune de ses sources posé sur la première occurrence de son `mot` :
  * dans le texte, jamais dans une balise ni dans un lien existant. Un mot introuvable arrête la construction plutôt
- * que de laisser une source sans lien.
+ * que de laisser une source sans lien. Une source que le texte lie déjà sur son mot reste telle quelle, comme les
+ * sources d'article déjà citées dans le corps (Article.astro).
  */
 export function lierSources(html: string, liste: readonly SourcePrimaire[]): string {
   return liste.reduce((courant, source) => {
+    if (dejaLiee(courant, source)) return courant;
     const morceaux = courant.split(/(<[^>]*>)/);
     let dansUnLien = false;
     let rang = -1;

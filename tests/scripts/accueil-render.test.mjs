@@ -14,9 +14,13 @@ function find(node, id) {
 
 // Témoin reconstruit à la fusion de l’extraction (#113) dans le système de page (#166) : le HTML de /
 // est celui de #166 avant fusion (b96656d5), octet pour octet, H3 et compteurs dynamiques inclus.
-test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
+test('le HTML de / conserve le témoin EC hors nouveau lien service du footer', () => {
   const expected = '030e03b602953c85d7c0715b1aec360e74f2d158041247ccf0b61843ee08876f';
-  assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
+  const html = readFileSync('dist/index.html', 'utf8');
+  // Ajout volontaire du service publié dans le footer généré (#171) : le reste ne change pas.
+  const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
+  assert.equal([...html.matchAll(link)].length, 1);
+  assert.equal(createHash('sha256').update(html.replace(link, '')).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
