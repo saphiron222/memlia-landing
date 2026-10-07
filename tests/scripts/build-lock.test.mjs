@@ -24,6 +24,8 @@ record('start')
 if mode == 'hold':
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
     while True: time.sleep(0.05)
+if mode == 'release':
+    while not os.path.exists(journal + '.' + name + '.release'): time.sleep(0.05)
 time.sleep(0.8)
 record('end')
 sys.exit(7 if mode == 'error' else 0)
@@ -33,7 +35,7 @@ sys.exit(7 if mode == 'error' else 0)
     await Promise.all(children.map((child) => child.done));
     await rm(dir, { recursive: true, force: true });
   });
-  async function run(name, mode = 'normal', wait = '5', viaNpm = false) {
+  async function run(name, mode = 'normal', wait = '30', viaNpm = false) {
     const cwd = join(dir, name);
     await mkdir(cwd);
     if (viaNpm) {
@@ -56,7 +58,7 @@ sys.exit(7 if mode == 'error' else 0)
     return child;
   }
   async function until(predicate, description) {
-    const end = Date.now() + 10000;
+    const end = Date.now() + 30000;
     while (Date.now() < end) {
       if (await predicate()) return;
       if (children.some((child) => child.exitCode !== null && child.exitCode !== 0)) {
@@ -64,20 +66,29 @@ sys.exit(7 if mode == 'error' else 0)
       }
       await delay(20);
     }
-    assert.fail(`Délai dépassé : ${description}`);
+    assert.fail(`Délai dépassé : ${description}\n${children.map((child) => child.output).join('\n')}`);
   }
-  return { lock, journal, run, until, events: () => readFile(journal, 'utf8') };
+  return { lock, journal, run, until, events: () => readFile(journal, 'utf8'), release: (name) => writeFile(journal + '.' + name + '.release', '') };
 }
 
-test('des worktrees différents se suivent ; attente bornée, erreur et interruption rendent le verrou', { timeout: 30000 }, async (t) => {
+test('des worktrees différents se suivent ; attente bornée, erreur et interruption rendent le verrou', { timeout: 120000 }, async (t) => {
   const f = await fixture(t);
-  const npmAgent = await f.run('npm-agent', 'normal', '5', true);
-  await f.until(async () => (await f.events()).includes('npm-agent:start'), 'npm run build agent');
-  const npmCi = await f.run('npm-ci', 'normal', '5', true);
-  await f.until(() => npmCi.output.includes('attente'), 'npm run build CI en attente');
-  assert.equal((await npmAgent.done).code, 0);
-  assert.equal((await npmCi.done).code, 0);
-  assert.equal(await f.events(), 'npm-agent:start\nnpm-agent:end\nnpm-ci:start\nnpm-ci:end\n');
+  // Keep the holder alive until contention is observed, even if npm starts slowly.
+  for (const startDelay of [0, 1500]) {
+    const agentName = `npm-agent-${startDelay}`;
+    const ciName = `npm-ci-${startDelay}`;
+    await writeFile(f.journal, '');
+    const npmAgent = await f.run(agentName, 'release', '30', true);
+    await f.until(async () => (await f.events()).includes(`${agentName}:start`), 'npm run build agent');
+    await delay(startDelay);
+    const npmCi = await f.run(ciName, 'normal', '30', true);
+    await f.until(() => npmCi.output.includes('attente'), 'npm run build CI en attente');
+    assert.equal(await f.events(), `${agentName}:start\n`);
+    await f.release(agentName);
+    assert.equal((await npmAgent.done).code, 0);
+    assert.equal((await npmCi.done).code, 0);
+    assert.equal(await f.events(), `${agentName}:start\n${agentName}:end\n${ciName}:start\n${ciName}:end\n`);
+  }
   await writeFile(f.journal, '');
   const first = await f.run('agent', 'hold');
   await f.until(async () => (await f.events()).includes('agent:start'), 'premier build');
@@ -96,7 +107,7 @@ test('des worktrees différents se suivent ; attente bornée, erreur et interrup
   assert.equal((await (await f.run('after-error')).done).code, 0);
 });
 
-test('un détenteur tué laisse un fichier orphelin récupérable sans supprimer le verrou actif', { timeout: 30000 }, async (t) => {
+test('un détenteur tué laisse un fichier orphelin récupérable sans supprimer le verrou actif', { timeout: 60000 }, async (t) => {
   const f = await fixture(t);
   const holder = await f.run('orphan', 'hold');
   await f.until(async () => (await f.events()).includes('orphan:start'), 'détenteur actif');

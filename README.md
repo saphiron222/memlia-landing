@@ -45,6 +45,8 @@ participent pas au verrou et doivent être actualisés avant de construire.
 Rejeu sans Astro : `node --test tests/scripts/build-lock.test.mjs` (aussi inclus dans
 `npm run test:scripts`). Les options `--lock-file` et `--wait-seconds` du lanceur servent aux
 tests isolés ; ne pas changer le chemin commun dans la CI ou les worktrees du Mac.
+Le test de concurrence garde le premier build actif jusqu'à l'annonce d'attente du second,
+puis le libère explicitement ; il rejoue aussi un démarrage du second retardé de 1,5 seconde.
 
 Le projet live s’appelle **memlia**, pas `memlia-landing` (vérifié avec Wrangler).
 Après build : `npx wrangler pages deploy dist --project-name memlia --branch preview-astro-m3 --commit-dirty=true`.
