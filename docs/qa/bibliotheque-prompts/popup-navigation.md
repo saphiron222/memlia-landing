@@ -13,4 +13,4 @@ La correction porte uniquement sur le parcours navigateur. Les assertions URL, o
 
 ## Livraison
 
-La PR est basée sur `fix/blog-intent-fixture-clock` pour exercer la CI avec la fixture historique déjà corrigée et revue. Son diff propre ne touche ni cette fixture ni sa documentation : seulement R1 et cette note. Après QA unique et CI verte, intégrer cette PR dans la branche de PR152 ; le responsable de PR152 garde sa revue existante et achève lui-même son intégration sur main. Aucun changement aux preuves ni au fond des articles.
+La branche descend de `fix/blog-intent-fixture-clock` pour exercer la CI avec la fixture historique déjà corrigée et revue. La PR cible main, seul déclencheur de CI configuré ; les deux fichiers de PR152 sont donc présents par ascendance, sans modification. Le diff propre par rapport à cette branche ne touche que R1 et cette note. Après QA unique et CI verte, reporter les commits propres dans la branche de PR152, sans fusionner PR157 sur main : le responsable de PR152 garde sa revue existante et achève lui-même son intégration sur main. Aucun changement aux preuves ni au fond des articles.
