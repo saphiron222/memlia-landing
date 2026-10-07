@@ -20,6 +20,17 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'registres-obligations': {
+    dejaFait: [
+      { outil: 'Kanta', geste: 'récupère les informations INPI à partir du SIREN à l’ouverture du dossier', source: { url: 'https://www.kanta.fr/modules/lutte-anti-blanchiment', libelle: 'Kanta, informations INPI et vigilance', consulteLe: '2026-10-06' } },
+      { outil: 'BODACC (DILA)', geste: 'propose des alertes génériques sur les annonces publiées', source: { url: 'https://www.bodacc.fr/pages/informations_generales_service_alertes/', libelle: 'BODACC, service d’alerte', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'la fiche client actualisée depuis le RNE, le BODACC et Sirene, si votre outil ne le fait pas déjà ;',
+      'l’alerte préparée pour l’associé référent, avec le dossier et le changement à examiner ;',
+      'le terme de déclaration de créance calculé dans le cas qualifié, à valider avec ses exceptions et prorogations.',
+    ],
+  },
   'saisie-comptable': {
     dejaFait: [
       {

@@ -1,0 +1,25 @@
+[
+  {
+    "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36703",
+    "error": "Command '['curl', '--fail', '--location', '--max-time', '35', '--user-agent', 'Mozilla/5.0', '--output', 'site/commercial/recettes/registres-obligations/preuves/sources/0.html', '--write-out', '%{http_code} %{url_effective}', 'https://entreprendre.service-public.gouv.fr/vosdroits/F36703']' returned non-zero exit status 28."
+  },
+  {
+    "url": "https://www.inpi.fr/realiser-demarches/formalites-dentreprises/beneficiaires-effectifs",
+    "error": "Command '['curl', '--fail', '--location', '--max-time', '35', '--user-agent', 'Mozilla/5.0', '--output', 'site/commercial/recettes/registres-obligations/preuves/sources/1.html', '--write-out', '%{http_code} %{url_effective}', 'https://www.inpi.fr/realiser-demarches/formalites-dentreprises/beneficiaires-effectifs']' returned non-zero exit status 56."
+  },
+  {
+    "url": "https://www.legalvision.fr/",
+    "http": "200 https://www.legalvision.fr/",
+    "openedAt": "2026-10-06T04:28:25.520968+00:00",
+    "file": "site/commercial/recettes/registres-obligations/preuves/sources/2.txt",
+    "characters": 43055
+  },
+  {
+    "url": "https://www.legalplace.fr/logiciel-juridique/",
+    "error": "Command '['curl', '--fail', '--location', '--max-time', '35', '--user-agent', 'Mozilla/5.0', '--output', 'site/commercial/recettes/registres-obligations/preuves/sources/3.html', '--write-out', '%{http_code} %{url_effective}', 'https://www.legalplace.fr/logiciel-juridique/']' returned non-zero exit status 56."
+  },
+  {
+    "url": "https://www.septeo.com/fr/solutions/polyacte",
+    "error": "Command '['curl', '--fail', '--location', '--max-time', '35', '--user-agent', 'Mozilla/5.0', '--output', 'site/commercial/recettes/registres-obligations/preuves/sources/4.html', '--write-out', '%{http_code} %{url_effective}', 'https://www.septeo.com/fr/solutions/polyacte']' returned non-zero exit status 56."
+  }
+]

@@ -33,7 +33,14 @@
     "saisie automatique comptabilité": [
       "saisie automatique comptabilité"
     ],
-    "saisie automatique comptabilité cabinet comptable": []
+    "saisie automatique comptabilité cabinet comptable": [],
+    "automatisation suivi registres obligations cabinet comptable": [],
+    "automatisation registres cabinet comptable": [],
+    "délai déclaration bénéficiaire effectif greffe": [
+      "déclaration bénéficiaire effectif greffe",
+      "document beneficiaire effectif greffe",
+      "registre bénéficiaire effectif greffe"
+    ]
   },
   "provenance": {
     "factures fournisseurs des dossiers clients": {
@@ -110,6 +117,21 @@
       "capturedAt": "2026-10-05T22:10:30.966Z",
       "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=saisie%20automatique%20comptabilit%C3%A9%20cabinet%20comptable",
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatisation suivi registres obligations cabinet comptable": {
+      "capturedAt": "2026-10-06T04:28:30.796Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20suivi%20registres%20obligations%20cabinet%20comptable"
+    },
+    "automatisation registres cabinet comptable": {
+      "capturedAt": "2026-10-06T04:28:30.899Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20registres%20cabinet%20comptable"
+    },
+    "délai déclaration bénéficiaire effectif greffe": {
+      "capturedAt": "2026-10-06T04:28:31.040Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=d%C3%A9lai%20d%C3%A9claration%20b%C3%A9n%C3%A9ficiaire%20effectif%20greffe"
     }
   }
 }

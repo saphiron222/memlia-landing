@@ -10,6 +10,10 @@ export interface ServiceDesign {
  * docs/design/site-v2-proofs. Aucun visuel ne simule un produit ni ne contient de donnée client.
  */
 export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
+  'registres-obligations': {
+    heroProof: 'v2/44-service-registres-obligations',
+    bodyProof: 'v2/44-service-registres-obligations',
+  },
   'paie': {
     heroProof: 'v2/19-service-paie',
     bodyProof: 'v2/19-service-paie',

@@ -83,6 +83,10 @@ const cicatriceCadrage: ExperiencePremiereMain = {
 };
 
 export const SERVICE_EEAT = {
+  'registres-obligations': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{ editeur: 'Service Public Entreprendre', titre: 'Déclaration de créances', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F22359', consulteLe: '2026-10-06', preuve: 'Le délai général et les points de départ particuliers bornent le calcul fictif ; le cabinet vérifie la date applicable et les prorogations avant inscription.' }],
+  },
   paie: { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.dsnVal] },
   'saisie-comptable': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.mentionsFacture] },
   'rapprochement-bancaire': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.planComptable] },
