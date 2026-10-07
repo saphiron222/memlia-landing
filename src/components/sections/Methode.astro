@@ -1,27 +1,29 @@
 ---
 import ProofMedia from '@/components/ProofMedia.astro';
 import type { ProofId } from '@/data/proofs';
-import { METHODE } from '@/data/methode';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['methode']; }
+const { contenu = contenuDe('ec').methode } = Astro.props;
 
 // Le DOM garde le texte avant l'image ; seule la grille desktop alterne leur position.
 ---
 
 <section id="methode" class="parcours" aria-labelledby="methode-titre">
   <div class="parcours-titre-collant">
-    <h2 id="methode-titre" class="parcours-h2">{METHODE.titre}</h2>
+    <h2 id="methode-titre" class="parcours-h2">{contenu.titre}</h2>
   </div>
 
   <div class="parcours-corps" data-parcours>
     <ol class="parcours-etapes">
-      {METHODE.etapes.map((e, i) => (
+      {contenu.etapes.map((e, i) => (
         <li class="etape" data-etape={i}>
           <div class="method-row" data-proof-row>
           <div class="step-copy" data-proof-copy>
-          <p class="step-number">Étape {e.numero}</p>
+          <p class="step-number">{contenu.libelleEtape} {e.numero}</p>
           <h3 class="etape-h3">{e.titre}</h3>
           <p class="texte-2">{e.texte}</p>
           </div>
-          <ProofMedia id={e.image as ProofId} />
+          <ProofMedia id={e.image as ProofId} enlarge />
           </div>
         </li>
       ))}
@@ -113,7 +115,7 @@ import { METHODE } from '@/data/methode';
     .method-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
     .step-copy { padding: 32px 48px 32px 0; }
     .etape:nth-child(odd) .step-copy { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
-    .etape:nth-child(odd) :global(.functional-proof) { grid-column: 1; grid-row: 1; }
+    .etape:nth-child(odd) :global(.proof-media) { grid-column: 1; grid-row: 1; }
   }
   @media (min-width: 64rem) {
     .etape { max-width: 100%; }

@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
+import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
@@ -90,6 +91,7 @@ const graph = {
     <article data-service={entree.id} data-service-layout="da-v1">
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
       </ServiceHero>
+      <ServiceCouverture slug={entree.id} />
       <ServiceBody proof={design.bodyProof}>
         <slot />
         {toolLink && (

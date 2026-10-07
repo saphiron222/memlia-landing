@@ -1,0 +1,27 @@
+{
+  "keyboard": {
+    "nextField": "operating",
+    "focusStyle": "solid"
+  },
+  "schema": [
+    "WebPage",
+    "WebApplication",
+    "BreadcrumbList"
+  ],
+  "incoming": [
+    {
+      "path": "/outils-comptables-gratuits",
+      "mainLinks": 1
+    },
+    {
+      "path": "/methode",
+      "mainLinks": 1
+    },
+    {
+      "path": "/garanties",
+      "mainLinks": 1
+    }
+  ],
+  "reflow320": true,
+  "boundaryBrowser": "suspended with adjacent rows"
+}
