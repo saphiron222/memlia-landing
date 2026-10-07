@@ -75,6 +75,27 @@ test('un relevé de demande sans date lisible arrête la lecture au lieu d’êt
   assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-14' }), /relevé de demande sans date valide/);
 });
 
+test('une mesure du lundi datée après le jour lu est ignorée, comme toute mesure future', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-futur-');
+  writeFileSync(join(dossier, 'titres-intent-2026-10-05.json'), JSON.stringify({ autocompletion: { 'lettrage sage': ['ancienne'] } }));
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), JSON.stringify({ date: '2026-10-08', autocompletion: { mesuree: { 'lettrage sage': ['futur'] }, pannes: [] } }));
+  writeFileSync(join(dossier, 'semaine-2026-W42-demande.json'), JSON.stringify({ date: '2026-10-12', autocompletion: { mesuree: { 'lettrage sage': ['semaine suivante'] }, pannes: [] } }));
+  const mesure = chargerAutocompletionMesuree(root, { au: '2026-10-07' });
+  assert.deepEqual(mesure.autocompletion['lettrage sage'], ['ancienne']);
+  assert.deepEqual(mesure.fichiers, ['titres-intent-2026-10-05.json']);
+});
+
+test('un vieux relevé de demande abîmé ne bloque pas la porte ; un relevé frais abîmé l’arrête en se nommant', (t) => {
+  const { root, dossier } = dossierDeMesures(t, 'memlia-intent-abime-');
+  writeFileSync(join(dossier, 'titres-intent-2026-10-05.json'), JSON.stringify({ autocompletion: { 'lettrage sage': [] } }));
+  writeFileSync(join(dossier, 'semaine-2026-W26-demande.json'), '{"date": "2026-06-2');
+  assert.deepEqual(chargerAutocompletionMesuree(root, { au: '2026-10-07' }).fichiers, ['titres-intent-2026-10-05.json']);
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), '{"date": "2026-10-0');
+  assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-07' }), /relevé de demande illisible : semaine-2026-W41-demande\.json/);
+  writeFileSync(join(dossier, 'semaine-2026-W41-demande.json'), 'null');
+  assert.throws(() => chargerAutocompletionMesuree(root, { au: '2026-10-07' }), /relevé de demande sans date valide : semaine-2026-W41-demande\.json/);
+});
+
 function frontmatter(path) {
   const source = readFileSync(path, 'utf8');
   const bloc = source.match(/^---\n([\s\S]*?)\n---/);
