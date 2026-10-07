@@ -7,6 +7,7 @@ Trame choisie/éditable, quatre états déclarés, ajout/suppression de pièces 
 
 ## Vérifications exécutées
 - Test initial rouge : moteur absent ; puis 10 tests moteur PASS.
+- Test séparé du contrat HTML contre le moteur PASS : 11 tests ciblés au total. Captures finales sous reduced-motion : sections historiques révélées, header au sommet sans recouvrement ; contrôle visuel positif après correction de la recette de capture, aucun changement du chrome.
 - Astro check : zéro erreur, zéro warning (hints documentés).
 - npm run regen:generated puis npm run build PASS : 150 tests Python ; tests scripts 797 PASS, 8 SKIP, zéro FAIL. Audits blog/services/guides, propriété des requêtes, page contract, médias, lastmod et ressources PASS.
 - 8 parcours Playwright PASS sur Cloudflare Pages local (wrangler), six largeurs 320/375/768/1024/1440/1920. 320 CSS px équivaut au reflow d’un viewport 1280 px à 400 %.

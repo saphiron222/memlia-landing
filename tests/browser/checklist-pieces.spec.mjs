@@ -2,6 +2,7 @@ import {test,expect} from '@playwright/test';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {demoSession,exportJson,exportCsv,createSession,addItem} from '../../src/lib/checklist-pieces.mjs';
 const route='/outils-comptables-gratuits/checklist-pieces-comptables';
+test.use({reducedMotion:'reduce'});
 const download=async(page,format)=>{const wait=page.waitForEvent('download');await page.locator(`[data-cl-export="${format}"]`).click();return readFileSync(await(await wait).path(),'utf8');};
 const upload=async(page,content,format='json')=>{await page.locator('details').filter({has:page.locator('#cl-file')}).evaluate(e=>e.open=true);await page.locator('#cl-format').selectOption(format);await page.locator('#cl-file').setInputFiles({name:`reprise.${format}`,mimeType:format==='json'?'application/json':'text/csv',buffer:Buffer.from(content)});await page.getByRole('button',{name:'Vérifier la reprise',exact:true}).click();};
 for(const width of [320,375,768,1024,1440,1920])test(`checklist complète, réseau/stockages et reflow ${width}`,async({page,context})=>{
