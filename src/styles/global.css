@@ -917,6 +917,11 @@ a.carte:focus-visible {
   font-weight: 600;
   color: var(--texte-fort);
 }
+/* Un titre de liste qui est un intertitre (h3) prend la taille d'un titre de bloc. */
+h3.liens-titre {
+  font-size: var(--titre-bloc);
+  line-height: 1.2;
+}
 .liens {
   max-width: var(--liens-colonne);
   margin: 0;
@@ -952,6 +957,21 @@ a.carte:focus-visible {
 .lien-rangee .lien-libelle {
   flex: 1 1 auto;
   min-width: 0;
+}
+/* Au besoin, une phrase courte sous le libellé, et le libellé de l'action avant la flèche. */
+.lien-rangee .lien-detail {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--t-sm);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--texte-2);
+}
+.lien-rangee .lien-suite {
+  flex: none;
+  font-size: var(--t-sm);
+  color: var(--accent-texte);
+  white-space: nowrap;
 }
 .lien-rangee .lien-fleche {
   transition: transform var(--duree-2) var(--courbe-standard);

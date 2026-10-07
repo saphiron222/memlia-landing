@@ -169,7 +169,10 @@
   --bloc-ecart: var(--espace-10); /* en-tête → forme ; forme → forme */
   --tete-ecart: var(--espace-4); /* surtitre → titre → introduction */
   --rangee-gouttiere: var(--espace-12); /* texte → maquette dans une rangée */
+  --titre-page: clamp(2.25rem, 1rem + 3.6vw, 3.75rem); /* héros centré */
+  --titre-page-partage: clamp(2.25rem, 1.4rem + 2.4vw, 3.5rem); /* héros partagé, maquette à droite */
   --titre-section: var(--t-5xl);
+  --titre-intertitre: var(--t-3xl); /* intertitre d'un document long */
   --titre-bloc: var(--t-2xl);
   --titre-ligne: var(--t-xl);
   --surtitre: var(--t-sm);

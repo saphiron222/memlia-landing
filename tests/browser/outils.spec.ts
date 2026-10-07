@@ -307,7 +307,11 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
-    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
+    // L'appel « Confier une première tâche » : deux fois dans la page (suite et appel final), au pied,
+    // et au bouton de la navigation, qui porte le même libellé depuis le 07/10/2026 (décision de Kevin).
+    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(2);
+    await expect(page.locator('header .nav-principal')).toHaveText('Confier une première tâche');
+    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(4);
     const graph = await graphFrom(page);
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);

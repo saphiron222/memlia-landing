@@ -1,8 +1,9 @@
 ---
+import Picto from '@/components/Picto.astro';
 /**
  * Renvois de fin de page : une phrase, un lien. Chaque renvoi est une carte du site (`.carte`,
- * global.css), cliquable en entier ; la grille `.cartes` choisit seule ses colonnes selon le
- * nombre de renvois, sans carte orpheline.
+ * global.css), cliquable en entier et finie par le lien d'action fléché ; la grille `.cartes`
+ * choisit seule ses colonnes selon le nombre de renvois, sans carte étirée ni orpheline.
  */
 interface Props {
   items: { texte: string; libelle: string; href: string }[];
@@ -15,7 +16,7 @@ const { items } = Astro.props;
     <li class="carte rv">
       <div class="carte-corps">
         <p class="carte-texte">{r.texte}</p>
-        <a class="carte-action carte-lien" href={r.href}>{r.libelle}</a>
+        <a class="carte-action carte-lien" href={r.href}>{r.libelle}<Picto nom="fleche" taille={14} /></a>
       </div>
     </li>
   ))}

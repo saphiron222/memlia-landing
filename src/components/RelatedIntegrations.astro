@@ -1,32 +1,45 @@
 ---
-import IntegrationCards from '@/components/sections/IntegrationCards.astro';
-import { integrationsForService } from '@/data/integrations';
+import Picto from '@/components/Picto.astro';
+import { integrationPath, integrationsForService } from '@/data/integrations';
 
+/**
+ * Guides par environnement d'une page (hub, service). Système de page : des destinations nommées
+ * par leur titre, donc une liste de liens (titre, éditeur et produit dessous, « Lire le guide »
+ * et la flèche au bout), jamais une carte seule ; puis le lien d'action vers les neuf guides.
+ */
 interface Props { servicePath: string; }
 const { servicePath } = Astro.props;
 const integrations = integrationsForService(servicePath);
 const titleId = `rayons-${servicePath.replaceAll('/', '-')}`;
+const titre = (requete: string) => requete.charAt(0).toUpperCase() + requete.slice(1);
 ---
 
 {integrations.length > 0 && (
-  <aside class="rayons" aria-labelledby={titleId}>
-    <div class="rayons-tete">
+  <aside class="rayons pile" aria-labelledby={titleId}>
+    <div class="tete rv">
       <p class="surtitre">Guides par environnement</p>
       <h2 id={titleId}>La même frontière, dans l’outil du cabinet</h2>
       <p>Chaque guide situe la tâche dans un environnement précis : le repère utile, la limite de la documentation et le point où le cabinet doit décider.</p>
     </div>
-    <IntegrationCards integrations={integrations} compact />
-    <a class="rayons-hub" href="/integrations">Voir les neuf guides par environnement<span aria-hidden="true"> →</span></a>
+    <div class="liens-bloc">
+      <ul class="liens" data-integration-links>
+        {integrations.map((integration) => (
+          <li>
+            <a class="lien-rangee" href={integrationPath(integration)}>
+              <span class="lien-libelle">{titre(integration.primaryQuery)}<span class="lien-detail">{integration.vendor} · {integration.product}</span></span>
+              <span class="lien-suite">Lire le guide</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <a class="lien-action" href="/integrations">Voir les neuf guides par environnement<Picto nom="fleche" taille={14} /></a>
   </aside>
 )}
 
 <style>
-  .rayons { padding: 96px var(--marge-page) 0; }
-  .rayons-tete { display: grid; gap: 12px; max-width: 760px; }
-  .rayons-tete h2 { font-size: var(--t-4xl); text-wrap: balance; }
-  .rayons-tete p:last-child { max-width: 64ch; color: var(--texte-2); text-wrap: pretty; }
-  .surtitre { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
-  .rayons :global(.cartes) { margin-top: 28px; }
-  .rayons-hub { display: inline-flex; align-items: center; min-height: 44px; margin-top: 24px; color: var(--accent-texte); font-weight: 600; }
-  @media (min-width: 64rem) { .rayons { padding: 128px var(--marge-page-lg) 0; } }
+  /* Au pas des sections du système de page ; les formes viennent de global.css. */
+  .rayons { padding: var(--section-espace) var(--marge-page) 0; }
+  @media (min-width: 64rem) { .rayons { padding-inline: var(--marge-page-lg); } }
 </style>

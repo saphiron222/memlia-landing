@@ -392,16 +392,20 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     border-bottom: 1px solid var(--ligne-douce);
     background: var(--surface-feuille);
   }
+  /* Les quatre destinations tiennent sur une ligne, réparties sur la largeur ; sous 360 px, en
+     2 × 2. Jamais une destination seule sur une seconde ligne (système de page, § 5). Le retrait
+     du conteneur compense la marge des liens : le texte reste aligné sur le contenu de la page. */
   .nav-mobile-visible-liste {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-inline: calc(var(--marge-page) - 8px);
   }
   .nav-mobile-visible a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    padding: 8px 10px;
+    padding: 8px;
     color: var(--texte);
     font-size: var(--t-sm);
     font-weight: 500;
@@ -409,6 +413,25 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   }
   .nav-mobile-visible a[aria-current] {
     color: var(--accent-texte);
+  }
+  @media (min-width: 30rem) {
+    .nav-mobile-visible-liste {
+      justify-content: flex-start;
+      gap: 8px;
+    }
+  }
+  @media (max-width: 22.49rem) {
+    .nav-mobile-visible-liste {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    /* Sous 360 px, le bouton garde son libellé entier et laisse sa flèche : la barre tient. */
+    .nav-principal {
+      padding-inline: 10px;
+    }
+    .nav-principal :global(svg) {
+      display: none;
+    }
   }
   @media (hover: hover) {
     .nav-groupe:hover .nav-sous-menu {

@@ -71,22 +71,19 @@ const appel = {
   </section>
 
   <section class="pv" aria-labelledby="prepare">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="prepare">La règle écrite, de la frontière au jeu d’essai</h2>
-      <p class="texte-2 lecture">Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
+      <p>Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">La frontière</h3><p class="carte-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">La proposition</h3><p class="carte-texte">L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">L’arrêt</h3><p class="carte-texte">Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Le jeu d’essai</h3><p class="carte-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
-      </ul>
-    </div>
+    <ul class="lignes rv">
+      <li class="ligne"><h3 class="ligne-libelle">La frontière</h3><p class="ligne-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">La proposition</h3><p class="ligne-texte">L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">L’arrêt</h3><p class="ligne-texte">Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Le jeu d’essai</h3><p class="ligne-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
+    </ul>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="cabinet">
+  <section class="pv" aria-labelledby="cabinet">
     <ProofRow id="v2/02-proposition">
       <div class="pv-copy rv">
         <h2 id="cabinet">Que garde le cabinet quand une tâche est automatisée ?</h2>
@@ -106,18 +103,21 @@ const appel = {
         <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
       </div>
     </ProofRow>
-    <ul class="cartes rv-groupe">
+    <ul class="lignes rv">
       {requis.map((r) => (
-        <li class="carte rv">
-          <span class="carte-icone" aria-hidden="true"><Picto nom={r.picto} taille={24} /></span>
-          <div class="carte-corps"><h3 class="carte-titre">{r.titre}</h3><p class="carte-texte">{r.texte}</p></div>
+        <li class="ligne">
+          <div class="ligne-tete">
+            <span class="ligne-picto" aria-hidden="true"><Picto nom={r.picto} taille={24} /></span>
+            <h3 class="ligne-libelle">{r.titre}</h3>
+          </div>
+          <p class="ligne-texte">{r.texte}</p>
         </li>
       ))}
     </ul>
     <p class="texte-2 lecture">Un justificatif manquant montre immédiatement pourquoi ce cadrage compte lorsque vous choisissez de <a href="/automatisation/notes-de-frais">confier le traitement répétitif des notes de frais</a>.</p>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="livre">
+  <section class="pv" aria-labelledby="livre">
     <ProofRow id="07-livrer">
       <div class="pv-copy rv">
         <h2 id="livre">Que livre Memlia pour une tâche automatisée ?</h2>
@@ -129,29 +129,28 @@ const appel = {
   </section>
 
   <section class="pv" aria-labelledby="perimetre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
-      <p class="texte-2 lecture">Une frontière par tâche, en partant de ce que vos logiciels ne font pas : le geste refait dans Excel, dans les e-mails ou entre deux outils. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+      <p>Une frontière par tâche, en partant de ce que vos logiciels ne font pas : le geste refait dans Excel, dans les e-mails ou entre deux outils. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
     </div>
-    <dl class="perimetre-poles rv-groupe">
+    <dl class="lignes perimetre-poles rv">
       {poles.map((pole) => (
-        <div class="perimetre-pole rv">
-          <dt>{pole.nom}</dt>
-          <dd>{pole.reste}</dd>
+        <div class="ligne">
+          <dt class="ligne-libelle">{pole.nom}</dt>
+          <dd class="ligne-texte">{pole.reste}</dd>
         </div>
       ))}
     </dl>
     <p class="texte-2 lecture perimetre-paie rv">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
-    <div class="perimetre-outils rv">
-      <h3>Avant de confier une tâche, cinq outils gratuits</h3>
-      <ul class="cartes">
+    <div class="liens-bloc perimetre-outils rv">
+      <h3 class="liens-titre">Avant de confier une tâche, cinq outils gratuits</h3>
+      <ul class="liens">
         {outils.map((outil) => (
-          <li class="carte">
-            <div class="carte-corps">
-              <a class="carte-titre carte-lien" href={outil.href}>{outil.libelle}</a>
-              <span class="carte-texte">{outil.texte}</span>
-              <span class="carte-action" aria-hidden="true"><Picto nom="fleche" taille={14} /></span>
-            </div>
+          <li>
+            <a class="lien-rangee" href={outil.href}>
+              <span class="lien-libelle">{outil.libelle}<span class="lien-detail">{outil.texte}</span></span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
           </li>
         ))}
       </ul>
@@ -167,7 +166,7 @@ const appel = {
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="outils">
+  <section class="pv" aria-labelledby="outils">
     <ProofRow id="08-integration">
       <div class="pv-copy rv">
         <h2 id="outils">Faut-il changer d’outil pour automatiser une tâche ?</h2>
@@ -180,25 +179,11 @@ const appel = {
   <RelatedIntegrations servicePath="/automatisation-cabinet-comptable" />
 
   <section class="pv" aria-labelledby="avant">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="avant">Pour aller plus loin</h2>
-      <p class="texte-2">La carte des tâches, nos méthodes publiées, un retour d’expérience et nos engagements.</p>
+      <p>La carte des tâches, nos méthodes publiées, un retour d’expérience et nos engagements.</p>
     </div>
     <Renvois items={renvois} />
   </section>
 </PageCommerciale>
 
-<style>
-  /* « Ce que nous savons écrire » : un pôle par ligne, ce qui reste hors des logiciels à côté. */
-  .perimetre-poles { display: grid; margin: 40px 0 0; border-top: 1px solid var(--ligne); }
-  .perimetre-pole { display: grid; gap: 6px; padding: 20px 0; border-bottom: 1px solid var(--ligne); }
-  .perimetre-pole dt { color: var(--texte-fort); font-weight: 600; }
-  .perimetre-pole dd { margin: 0; max-width: 62ch; color: var(--texte-2); }
-  .perimetre-paie { margin: 24px 0 0; }
-  /* Les cinq outils sont des cartes du site (global.css) : la grille place la cinquième en pleine largeur. */
-  .perimetre-outils { display: grid; gap: 24px; margin-top: 56px; }
-  .perimetre-outils h3 { font-size: var(--t-2xl); }
-  @media (min-width: 48rem) {
-    .perimetre-pole { grid-template-columns: 15rem minmax(0, 1fr); gap: 32px; align-items: baseline; }
-  }
-</style>

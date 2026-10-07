@@ -29,8 +29,13 @@ pied
     un secondaire, puis le média sous le texte, dans le cadre unique (§ 7).
   - *Partagé* (services, outils) : la même pile de texte à gauche ; la maquette à droite dès
     1 024 px, dessous avant.
+- Titre h1 : `--titre-page` (36 → 60 px) pour le héros centré, `--titre-page-partage` (36 → 56 px)
+  pour le héros partagé.
 - Rien ne se pose au centre d'une vidéo. « Activer le son » va dans le coin bas gauche, à 16 px
   du bord (12 px en mobile), là où aucune image de la vidéo ne porte de texte.
+- **Navigation mobile** (sous 1 024 px) : les quatre destinations restent visibles, sur une ligne
+  répartie dès 360 px, en 2 × 2 en dessous ; jamais une destination seule sur une ligne. Le bouton
+  « Confier une première tâche » garde son libellé entier ; sous 360 px, il laisse sa flèche.
 
 ## 2. En-tête de section (`.tete`)
 
@@ -42,9 +47,11 @@ pied
 | Alignement | À gauche partout. Deux blocs centrés seulement : le héros de l'accueil et l'appel final. |
 
 Écarts : 16 px entre surtitre, titre et paragraphes. Sous l'en-tête, h3 en Fraunces 600
-`--titre-bloc` (24 px) ; libellé de ligne en Fraunces 600 `--titre-ligne` (20 px). Dans un titre,
-un mot composé ne se coupe pas à son trait d'union (`Insecable.astro`) : ni « savoir-/faire », ni
-« refont-/ils ».
+`--titre-bloc` (24 px) ; libellé de ligne en Fraunces 600 `--titre-ligne` (20 px) ; dans un
+document long, intertitre en `--titre-intertitre` (32 px). Échelle des titres : 60, 48, 32, 24,
+20 px. Dans un titre,
+un mot composé ne se coupe pas à son trait d'union et une ponctuation haute ne commence jamais
+une ligne (`Insecable.astro`) : ni « savoir-/faire », ni « refont-/ils », ni « cabinet / : ».
 
 ## 3. Espacement
 
@@ -67,11 +74,12 @@ Aucune autre valeur de marge de section. Le héros garde 40 → 64 px en haut ; 
 | Forme | Pour | Jamais pour |
 |---|---|---|
 | **Carte** `.carte` | Une destination cliquable décrite par une phrase. La carte entière est le lien ; elle finit par le lien d'action. 2 à 9 par groupe. | Un énoncé non cliquable. Une destination seule : c'est un lien d'action. |
-| **Liste de liens** `.liens` | Des destinations nommées par leur seul libellé (services, garanties, outils). Une rangée par lien, filet dessous, flèche au bout. | Un texte à lire. |
+| **Liste de liens** `.liens` | Des destinations nommées par leur libellé (services, garanties, outils, guides). Une rangée par lien, filet dessous, flèche au bout ; au besoin une phrase courte sous le libellé et le libellé de l'action avant la flèche. | Un texte à lire. |
 | **Bande** `.bande` | 2 à 4 engagements non cliquables (promesse, preuves) : un titre-phrase et une phrase, côte à côte, bord à bord de la feuille. | Plus de 4 éléments ; des définitions. |
 | **Lignes** `.lignes` | Des définitions : un terme (verbe, nom, principe) et son explication, lus de haut en bas. 2 à 8. Pictogramme facultatif, pour toutes les lignes ou aucune. | Des engagements à comparer ; des liens. |
 | **Tableau** `table` | Une comparaison : deux colonnes de valeurs ou plus pour les mêmes lignes. | Une simple liste. |
 | **Étapes** `.etapes` | Une suite ordonnée, numérotée par son surtitre, une maquette par étape. | Des points sans ordre. |
+| **Document** | Un texte long à intertitres (page service) : colonne de lecture, intertitres de 32 px espacés de 64 px sans filet, tableaux du texte ; une note collante à gauche dès 1 024 px. | Une page de sections. |
 | **Questions** | Questions et réponses, accordéon natif. | — |
 | **Mention** `.mention` | Une phrase de portée ou de limite, sous la forme qu'elle borne : 14 px, `--texte-2`, sans filet. | Un message principal. |
 
@@ -152,8 +160,8 @@ apparition, vidéo arrêtée.
 | Appel final | 176 px au-dessus, titre de 40 px | `--section-espace` ; titre de section |
 
 Points ouverts pour la phase 2 :
-- La navigation dit « Parlons de votre tâche », le reste du site « Confier une première tâche » :
-  même intention, deux libellés. C'est un choix de mots, à trancher par Kevin.
+- Tranché par Kevin le 07/10/2026 : le bouton de la navigation dit « Confier une première
+  tâche », comme le reste du site (une intention, un libellé).
 - Intégration, Preuves et Garanties enchaînent trois rangées texte + maquette. La forme qui suit
   chacune change (lignes, bande bord à bord, liste) et rompt la répétition ; à revoir si la page
   paraît encore monotone.
