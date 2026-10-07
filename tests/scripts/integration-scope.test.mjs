@@ -1,21 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import ts from 'typescript';
+import { INTEGRATIONS, INTEGRATIONS_HISTORIQUES, generatedGuides } from '../helpers/integration-data.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
-const compiled = ts.transpileModule(read('src/data/integrations.ts').replace("import generatedGuides from './guides.generated.json';", `const generatedGuides = ${read('src/data/guides.generated.json')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-const { INTEGRATIONS } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+
 const guide = read('src/pages/integrations/[slug].astro');
 const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);
 
-test('neuf guides : chaque champ explique un rôle et sa condition de contrôle', () => {
-  assert.equal(INTEGRATIONS.length, 9);
+test('guides historiques et scellés : chaque champ explique un rôle et sa condition de contrôle', () => {
+  assert.equal(INTEGRATIONS_HISTORIQUES.length, 9);
+  assert.deepEqual(INTEGRATIONS, [...INTEGRATIONS_HISTORIQUES, ...generatedGuides]);
   for (const entry of INTEGRATIONS) {
     assert.ok(entry.documentScope.length > 80, entry.slug);
     assert.ok(entry.fields.every((field) => field.label && field.control.length > 40), entry.slug);
     assert.equal(new Set(entry.fields.map((field) => field.control)).size, entry.fields.length, entry.slug);
-    assert.equal(entry.source.checkedAt, '2026-10-04');
+    if (INTEGRATIONS_HISTORIQUES.includes(entry)) assert.equal(entry.source.checkedAt, '2026-10-04');
+    else assert.match(entry.source.checkedAt, /^\d{4}-\d{2}-\d{2}$/);
   }
   assert.doesNotMatch(guide, /Champ observé dans le jeu fictif/);
   assert.match(guide, /integration.source.checkedAt/);

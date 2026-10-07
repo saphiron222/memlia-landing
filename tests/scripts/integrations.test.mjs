@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { INTEGRATIONS_HISTORIQUES, generatedGuides } from '../helpers/integration-data.mjs';
 
 const root = process.cwd();
 const source = readFileSync(join(root, 'src/data/integrations.ts'), 'utf8');
@@ -63,12 +65,17 @@ test('la grille ferme les 10 variations moyennes et les 16 refusées', () => {
   assert.match(proof, new RegExp(`<span>${closed} variations non ouvertes</span>`));
 });
 
-test('seules les neuf variations fortes produisent une page', () => {
+test('seuls les neuf guides historiques et les guides scellés produisent une page', () => {
+  assert.deepEqual(INTEGRATIONS_HISTORIQUES.map(entry => entry.slug).sort(), [...slugs].sort());
+  const audit = spawnSync(process.execPath, ['scripts/service-forge.mjs', '--guide', 'audit'], { encoding: 'utf8', timeout: 30_000 });
+  assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
   const rendered = readdirSync(join(dist, 'integrations'))
     .filter((name) => name.endsWith('.html'))
     .map((name) => name.replace(/\.html$/, ''))
     .sort();
-  assert.deepEqual(rendered, [...slugs].sort());
+  const expected = [...slugs, ...generatedGuides.map(entry => entry.slug)];
+  assert.equal(new Set(expected).size, expected.length, 'aucune collision historique/scellée');
+  assert.deepEqual(rendered, expected.sort());
 });
 
 test('chaque page porte une intention, une source, un auteur et une preuve propres', () => {

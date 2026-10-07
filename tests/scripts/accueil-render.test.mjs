@@ -5,6 +5,8 @@ import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { parse, serializeOuter } from 'parse5';
+import { generatedGuides } from '../helpers/integration-data.mjs';
+import { historicalAccueil } from '../helpers/accueil-witness.mjs';
 
 const sections = { Hero: 'hero', Orientation: 'orientation', Quotidien: 'quotidien', Promesse: 'promesse', Usages: 'usages', Methode: 'methode', Integration: 'integration', Preuves: 'preuves', Garanties: 'garanties', Faq: 'faq', AppelFinal: 'appelFinal' };
 function find(node, id) {
@@ -12,10 +14,11 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
-test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
+// Témoin main e6f31468 conservé : seuls les liens de guides scellés sont contrôlés séparément.
+test('le HTML de / conserve les octets du témoin EC hors liens scellés contrôlés', () => {
   const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
-  assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
+  const html = historicalAccueil(readFileSync('dist/index.html', 'utf8'), generatedGuides);
+  assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
