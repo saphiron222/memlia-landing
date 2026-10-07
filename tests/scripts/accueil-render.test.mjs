@@ -12,8 +12,8 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin EC conservé ; seul le fil JSON-LD ajouté par le socle schéma est neutralisé.
-test('le HTML complet de / conserve le témoin EC hors ajout du fil JSON-LD', () => {
+// Témoin EC conservé hors fil JSON-LD et lien du service publié dans le footer.
+test('le HTML complet de / conserve le témoin EC hors ajouts du fil et du service', () => {
   const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
   const html = readFileSync('dist/index.html', 'utf8').replace(
     /(<script type="application\/ld\+json">)(.*?)(<\/script>)/g,
@@ -35,7 +35,12 @@ test('le HTML complet de / conserve le témoin EC hors ajout du fil JSON-LD', ()
       return opening + JSON.stringify(schema).replace(/</g, '\\u003c') + closing;
     },
   );
-  assert.equal(createHash('sha256').update(html).digest('hex'), expected);
+
+  // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
+  const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
+  assert.equal([...html.matchAll(link)].length, 1);
+  assert.equal(createHash('sha256').update(html.replace(link, '')).digest('hex'), expected);
+
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
