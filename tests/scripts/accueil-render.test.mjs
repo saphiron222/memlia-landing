@@ -12,10 +12,30 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
-test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
+// Témoin EC conservé ; seul le fil JSON-LD ajouté par le socle schéma est neutralisé.
+test('le HTML complet de / conserve le témoin EC hors ajout du fil JSON-LD', () => {
   const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
-  assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
+  const html = readFileSync('dist/index.html', 'utf8').replace(
+    /(<script type="application\/ld\+json">)(.*?)(<\/script>)/g,
+    (_, opening, json, closing) => {
+      const schema = JSON.parse(json);
+      const crumbs = schema['@graph'].filter(node => node['@type'] === 'BreadcrumbList');
+      assert.equal(crumbs.length, 1);
+      assert.deepEqual(crumbs[0], {
+        '@type': 'BreadcrumbList', '@id': 'https://memlia.fr/#breadcrumb',
+        itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://memlia.fr/' }],
+      });
+      schema['@graph'] = schema['@graph'].filter(node => node['@type'] !== 'BreadcrumbList').map(node => {
+        if (node.breadcrumb) {
+          assert.deepEqual(node.breadcrumb, { '@id': 'https://memlia.fr/#breadcrumb' });
+          delete node.breadcrumb;
+        }
+        return node;
+      });
+      return opening + JSON.stringify(schema).replace(/</g, '\\u003c') + closing;
+    },
+  );
+  assert.equal(createHash('sha256').update(html).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
