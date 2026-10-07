@@ -12,10 +12,13 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
-test('le HTML complet de / conserve tous les octets du témoin EC avant extraction', () => {
-  const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
-  assert.equal(createHash('sha256').update(readFileSync('dist/index.html')).digest('hex'), expected);
+// Témoin EC de main : le chrome généré évolue avec les pages, pas les onze sections.
+test('les onze sections de / conservent le témoin EC indépendamment du chrome', () => {
+  const expected = '15e5a10990db1492c04a0d435eb4ab7ab309b595ec4b13b81bfc7340ec534399';
+  const main = node => node.tagName === 'main' ? node : (node.childNodes ?? []).map(main).find(Boolean);
+  const content = main(parse(readFileSync('dist/index.html', 'utf8')));
+  assert.ok(content, 'contenu principal présent');
+  assert.equal(createHash('sha256').update(serializeOuter(content)).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
