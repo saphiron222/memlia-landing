@@ -1,9 +1,190 @@
 {
- "measuredAt":"2026-10-07T01:02:19.524Z", "market":"France", "instrument":"Google suggest client=firefox hl=fr gl=fr",
- "autocompletion":{
-  "prompt chatgpt expert comptable":["prompt chatgpt expert comptable"],
-  "fusionner fichiers csv":["fusionner fichiers csv","fusionner fichier csv excel","fusionner fichier csv cmd","fusionner fichier csv en ligne","fusionner plusieurs fichiers csv en un seul","fusionner plusieurs fichiers csv","fusionner deux fichiers csv","fusionner des fichiers csv en un seul python"]
- },
- "sources":["https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=prompt+chatgpt+expert+comptable","https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=fusionner+fichiers+csv"],
- "note":"Sondes réelles de construction fusion CSV. La remesure du prompt existant résout le prérequis expiré du build sans contourner sa porte ; correctifs d’horloge indépendants PR152/154 non repris ici. Suggestions, pas volumes mensuels."
+  "measuredAt": "2026-10-06T23:32:49.420Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "autocompletion": {
+    "fusionner fichiers csv": ["fusionner fichiers csv", "fusionner fichier csv excel", "fusionner fichier csv cmd", "fusionner fichier csv en ligne", "fusionner plusieurs fichiers csv en un seul", "fusionner plusieurs fichiers csv", "fusionner deux fichiers csv", "fusionner des fichiers csv en un seul python"],
+    "adoption outil cabinet comptable": [],
+    "automatisation cabinet comptable": [
+      "automatisation cabinet comptable",
+      "automatisation expert comptable",
+      "automatisation ia cabinet comptable"
+    ],
+    "automatisation saisie comptable": [
+      "automatisation saisie comptable",
+      "logiciel automatisation saisie comptable",
+      "saisie automatique comptabilité"
+    ],
+    "automatiser factures fournisseurs clients": [],
+    "changement de logiciel cabinet comptable resistance": [],
+    "charge de travail cabinet comptable": [
+      "charge de travail cabinet comptable",
+      "charge de travail expert comptable"
+    ],
+    "comptes rendus métier DSN": [
+      "compte rendu métier dsn"
+    ],
+    "contrôle bulletin de paie": [
+      "controle bulletin de paie",
+      "controle fiche de paie urssaf",
+      "controle fiche de paie gratuit",
+      "controler ses fiches de paie",
+      "controle caf fiche de paie"
+    ],
+    "crm dsn": [
+      "crm dsn",
+      "crm dsn de substitution",
+      "crm dsn c est quoi",
+      "crm dsn urssaf",
+      "crm dsn substitution net entreprise",
+      "dsn crm 120",
+      "dsn crm 119",
+      "dsn crm 124",
+      "dsn crm 121",
+      "dsn crm 127"
+    ],
+    "logiciel ia comptabilite": [
+      "logiciel ia comptabilite",
+      "logiciel ia finance",
+      "logiciel intelligence artificielle comptabilité",
+      "logiciel intelligence artificielle comptabilité gratuit",
+      "logiciel i compta",
+      "logiciel comptabilite a telecharger",
+      "logiciel comptabilité ipad",
+      "logiciel compta isuite"
+    ],
+    "métier comptable intelligence artificielle compétences": [],
+    "notes de frais en cabinet": [],
+    "pourquoi des tests verts peuvent manquer des défauts": [],
+    "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils": [],
+    "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils": [],
+    "pourquoi un cabinet comptable n'adopte pas un nouvel outil": [],
+    "pourquoi un cabinet n'adopte pas un nouvel outil": [],
+    "pourquoi un cabinet n'adopte pas un outil": [],
+    "prompt chatgpt expert comptable": [
+      "prompt chatgpt expert comptable"
+    ],
+    "relance pièces manquantes cabinet comptable": [],
+    "suivi production sociale excel": [],
+    "tableau de bord paie excel": [
+      "tableau de bord paie excel",
+      "tableau de bord salaire excel"
+    ]
+  },
+  "provenance": {
+    "fusionner fichiers csv": {
+      "capturedAt": "2026-10-07T01:02:19.524Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=fusionner+fichiers+csv",
+      "instrument": "Google suggest client=firefox hl=fr gl=fr"
+    },
+    "adoption outil cabinet comptable": {
+      "capturedAt": "2026-10-06T23:32:49.734Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=adoption%20outil%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatisation cabinet comptable": {
+      "capturedAt": "2026-10-06T23:32:50.209Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatisation saisie comptable": {
+      "capturedAt": "2026-10-06T23:32:50.703Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20saisie%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatiser factures fournisseurs clients": {
+      "capturedAt": "2026-10-06T23:32:51.199Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatiser%20factures%20fournisseurs%20clients",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "changement de logiciel cabinet comptable resistance": {
+      "capturedAt": "2026-10-06T23:32:51.679Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=changement%20de%20logiciel%20cabinet%20comptable%20resistance",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "charge de travail cabinet comptable": {
+      "capturedAt": "2026-10-06T23:32:52.249Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=charge%20de%20travail%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "comptes rendus métier DSN": {
+      "capturedAt": "2026-10-06T23:32:52.730Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=comptes%20rendus%20m%C3%A9tier%20DSN",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "contrôle bulletin de paie": {
+      "capturedAt": "2026-10-06T23:32:53.213Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=contr%C3%B4le%20bulletin%20de%20paie",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "crm dsn": {
+      "capturedAt": "2026-10-06T23:32:53.696Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=crm%20dsn",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "logiciel ia comptabilite": {
+      "capturedAt": "2026-10-06T23:32:54.180Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=logiciel%20ia%20comptabilite",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "métier comptable intelligence artificielle compétences": {
+      "capturedAt": "2026-10-06T23:32:54.651Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=m%C3%A9tier%20comptable%20intelligence%20artificielle%20comp%C3%A9tences",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "notes de frais en cabinet": {
+      "capturedAt": "2026-10-06T23:32:55.142Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=notes%20de%20frais%20en%20cabinet",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi des tests verts peuvent manquer des défauts": {
+      "capturedAt": "2026-10-06T23:32:55.620Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20des%20tests%20verts%20peuvent%20manquer%20des%20d%C3%A9fauts",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi les cabinets comptables n'adoptent pas les nouveaux outils": {
+      "capturedAt": "2026-10-06T23:32:56.121Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20les%20cabinets%20comptables%20n'adoptent%20pas%20les%20nouveaux%20outils",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi les cabinets comptables n’adoptent pas les nouveaux outils": {
+      "capturedAt": "2026-10-06T23:32:56.639Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20les%20cabinets%20comptables%20n%E2%80%99adoptent%20pas%20les%20nouveaux%20outils",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi un cabinet comptable n'adopte pas un nouvel outil": {
+      "capturedAt": "2026-10-06T23:32:57.150Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20un%20cabinet%20comptable%20n'adopte%20pas%20un%20nouvel%20outil",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi un cabinet n'adopte pas un nouvel outil": {
+      "capturedAt": "2026-10-06T23:32:57.643Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20un%20cabinet%20n'adopte%20pas%20un%20nouvel%20outil",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "pourquoi un cabinet n'adopte pas un outil": {
+      "capturedAt": "2026-10-06T23:32:58.127Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pourquoi%20un%20cabinet%20n'adopte%20pas%20un%20outil",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "prompt chatgpt expert comptable": {
+      "capturedAt": "2026-10-06T23:32:58.624Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=prompt%20chatgpt%20expert%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "relance pièces manquantes cabinet comptable": {
+      "capturedAt": "2026-10-06T23:32:59.123Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=relance%20pi%C3%A8ces%20manquantes%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "suivi production sociale excel": {
+      "capturedAt": "2026-10-06T23:32:59.600Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=suivi%20production%20sociale%20excel",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "tableau de bord paie excel": {
+      "capturedAt": "2026-10-06T23:33:00.085Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=tableau%20de%20bord%20paie%20excel",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    }
+  }
 }
