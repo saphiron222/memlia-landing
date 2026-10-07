@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "entrees-sorties-salaries",
+  "path": "/automatisation/entrees-sorties-salaries",
+  "status": "pret-preview",
+  "candidateFingerprint": "fde57a015189065c6cc6206c664513db2ed6ab3cd2d6b921155b3ce2ebf546f8",
+  "title": "Automatisation entrées sorties salariés en cabinet comptable : les annonces hors portail",
+  "tabTitle": "Automatisation entrées sorties salariés cabinet comptable | Memlia",
+  "ogTitle": "Automatisation entrées sorties salariés en cabinet comptable : les annonces hors portail",
+  "headline": "Automatisation entrées sorties salariés en cabinet comptable : les annonces hors portail",
+  "description": "Embauche ou départ annoncé hors portail : informations réunies, champs de DPAE et de fiche salarié préparés à valider, sans doubler votre logiciel de paie.",
+  "hero": "mySilae crée déjà la fiche salarié et envoie la DPAE quand l’embauche passe par son portail. PayFit fait signer les contrats. Nous intervenons sur les annonces reçues par e-mail ou consignées après un appel, hors de ce circuit : informations à réunir, contradictions à trancher, champs de déclaration préalable à l’embauche (DPAE) et de fiche salarié préparés. Le gestionnaire valide ; votre outil garde la transmission.",
+  "primaryQuery": "automatisation entrées sorties salariés cabinet comptable",
+  "secondaryQueries": [
+    "gestion entrées sorties salariés cabinet comptable"
+  ],
+  "audience": {
+    "mode": "qualified",
+    "qualifier": "cabinet comptable",
+    "reason": "La page vise le pôle social qui prépare les dossiers de ses clients, pas un salarié recherchant le délai de remise de son solde de tout compte."
+  },
+  "family": "entrees-sorties-salaries",
+  "verifiedAt": "2026-10-06",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schemaTypes": [
+    "WebPage",
+    "Service",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+  ],
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "préparer les dossiers d’entrée et de sortie des salariés"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "éprouver la préparation d’un dossier salarié"
+    },
+    {
+      "url": "/a-propos",
+      "sourcePath": "src/pages/a-propos.astro",
+      "anchor": "écrire la règle des entrées et sorties des salariés"
+    }
+  ],
+  "review": {
+    "reviewer": "revue-metier-independante",
+    "reviewedAt": "2026-10-06",
+    "status": "PASS"
+  },
+  "pageSha256": "563996d4bfe12f0c7e38d064c3eccda967b841e4d0824d33934ac6c91d3b24ef",
+  "seal": "preuves/scellement.json"
+}
