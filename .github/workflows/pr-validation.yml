@@ -18,7 +18,7 @@ jobs:
     # Preserve main's repository-specific runner (hosted minutes exhausted).
     runs-on: [self-hosted, macOS, ARM64, memlia-mac]
     # Two runs exhausted 30 minutes while Chromium was still progressing.
-    # Include the Playwright webServer rebuild and runner variance;
+    # Include browser contracts and runner variance;
     # keep a finite budget without dropping or parallelizing any gate.
     timeout-minutes: 60
     steps:
@@ -61,6 +61,8 @@ jobs:
           CF_PAGES: "1"
 
       - name: Run browser contracts
-        run: npm run test
+        # Own an ephemeral preview of the already-validated dist; QA_URL
+        # disables Playwright's local rebuild. Stop the server even on failure.
+        run: node scripts/ci-browser-contracts.mjs
         env:
           CF_PAGES: "1"
