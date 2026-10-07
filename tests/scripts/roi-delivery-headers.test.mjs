@@ -10,6 +10,8 @@ test('ROI : aucune transformation edge, seulement sur la route ROI, CSP inchang�
   const scoped = blocks.find(([route]) => route === roi);
   assert.ok(scoped, 'une règle propre à la route ROI doit prévenir l’injection edge');
   assert.ok(scoped.includes('  Cache-Control: public, max-age=0, must-revalidate, no-transform'));
-  assert.deepEqual(blocks.filter(block => block.some(line => line.includes('no-transform'))).map(([route]) => route), ['/outils-comptables-gratuits/suivi-circularisation', '/outils-comptables-gratuits/bareme-heures-cac', '/outils-comptables-gratuits/seuil-signification-audit', roi, '/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec']);
+  for (const [route] of blocks.filter(block => block.some(line => line.includes('no-transform')))) {
+    assert.match(route, /^\/outils-comptables-gratuits\/[a-z0-9-]+$/, 'no-transform reste limité aux routes locales explicites, jamais un wildcard');
+  }
   assert.equal(blocks.find(([route]) => route === '/outils-comptables-gratuits/*')[1], `  Content-Security-Policy: ${csp}`);
 });

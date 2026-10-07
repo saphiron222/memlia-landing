@@ -2,6 +2,8 @@
 
 Phase de construction terminée localement ; la livraison publique n’est pas approuvée. La finalisation technique t_f4b40722 précède l’unique revue QA t_7d981a8b puis la publication t_98d0d66b.
 
+Mise à jour du 7 octobre : lire `FINALISATION.md` pour le build global vert, les corrections de livraison, les onze parcours Cloudflare, le contrôle de persistance, les captures parcourues et Lighthouse. Les limites ci-dessous sont l’état historique de la construction ; la CI distante demeure requise avant QA.
+
 ## Produit livré
 
 - Route `/outils-comptables-gratuits/generateur-relance-facture-impayee`, gabarit Outil et registre catégorie Écrire.

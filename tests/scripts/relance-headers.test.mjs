@@ -10,6 +10,7 @@ test('route locale : CSP fermée, beacon filtré et caches invalidés',async()=>
  const response=await onRequestGet({request,next:async r=>{forwarded=r;return new Response('<html></html>',{headers:{'Content-Type':'text/html','ETag':'old','Last-Modified':'yesterday','Content-Length':'13'}});}});
  assert.equal(forwarded.headers.get('If-None-Match'),null);assert.equal(forwarded.headers.get('Range'),null);
  assert.ok(response.headers.get('Content-Security-Policy').includes("connect-src 'none'"));
+ assert.ok(response.headers.get('Content-Security-Policy').includes("worker-src 'self' blob:"));
  assert.ok(response.headers.get('Cache-Control').includes('no-transform'));assert.equal(response.headers.get('ETag'),null);assert.equal(response.headers.get('Content-Length'),null);
  let removed=false;handler.element({getAttribute:()=> 'https://static.cloudflareinsights.com/beacon.min.js',remove:()=>{removed=true;}});assert.equal(removed,true);
  removed=false;handler.element({getAttribute:()=> '/_astro/relance.js',remove:()=>{removed=true;}});assert.equal(removed,false);

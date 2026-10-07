@@ -24,7 +24,7 @@ const fields=[['clientKey','Clé client'],['client','Nom du client'],['reference
 </div>
 <script>
  import {initializeRelance} from '@/lib/relance-facture-ui.mjs';
- import ImportWorker from '@/lib/relance-facture-worker.mjs?worker';
+ import ImportWorker from '@/lib/relance-facture-worker.mjs?worker&inline';
  initializeRelance(ImportWorker);
 </script>
 <style>
