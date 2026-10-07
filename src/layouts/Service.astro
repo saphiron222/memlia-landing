@@ -10,6 +10,7 @@ import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
+import { PROOFS } from '@/data/proofs';
 import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
 import { eeatService } from '@/data/page-eeat';
 import type { CollectionEntry } from 'astro:content';
@@ -59,7 +60,7 @@ const graph = {
       url,
       areaServed: 'FR',
       provider: { '@id': `${SITE.url}/#organization` },
-      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+      audience: { '@type': 'Audience', audienceType: data.family.startsWith('cac-') ? 'Cabinets de commissariat aux comptes' : "Cabinets d'expertise comptable" },
     },
     {
       '@type': 'BreadcrumbList',
@@ -84,7 +85,7 @@ const graph = {
 };
 ---
 
-<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph}>
+<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph} socialImage={entree.id === 'circularisation-cac' ? { url: `${SITE.url}/proofs/v2/og/${design.heroProof.replace('v2/', '')}.webp`, width: 1200, height: 630, alt: PROOFS[design.heroProof].alt } : undefined}>
   <meta slot="head" name="memlia-candidate" content={data.candidateFingerprint} />
 
   <div class="feuille">

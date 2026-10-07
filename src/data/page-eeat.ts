@@ -83,6 +83,14 @@ const cicatriceCadrage: ExperiencePremiereMain = {
 };
 
 export const SERVICE_EEAT = {
+  'circularisation-cac': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [
+      { editeur: 'H2A', titre: 'NEP 505 — Demandes de confirmation des tiers', url: 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/', consulteLe: '2026-10-06', preuve: 'La sélection des tiers et les suites des non-réponses restent sous la maîtrise du CAC ; la préparation ne conclut pas.' },
+      { editeur: 'H2A', titre: 'NEP 530 — Sélection des éléments à contrôler', url: 'https://h2a-france.org/normes/selection-des-elements-a-controler/', consulteLe: '2026-10-06', preuve: 'Le CAC détermine les méthodes de sélection ; les paramètres du jeu fictif ne sont pas des recommandations.' },
+      { editeur: 'H2A', titre: 'NEP 315 — Connaissance de l’entité et évaluation du risque', url: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/', consulteLe: '2026-10-06', preuve: 'La fiche outil fournit des éléments d’appréciation au CAC, jamais une homologation.' },
+    ],
+  },
   paie: { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.dsnVal] },
   'saisie-comptable': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.mentionsFacture] },
   'rapprochement-bancaire': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.planComptable] },
