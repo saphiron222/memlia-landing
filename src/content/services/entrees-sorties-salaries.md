@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: entrees-sorties-salaries
 verifiedAt: 2026-10-06
-status: pret-preview
+status: publie
 candidateFingerprint: "fde57a015189065c6cc6206c664513db2ed6ab3cd2d6b921155b3ce2ebf546f8"
 cta:
   label: "Confier une première tâche"
