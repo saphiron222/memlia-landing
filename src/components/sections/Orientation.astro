@@ -1,6 +1,8 @@
 ---
 import Picto from '@/components/Picto.astro';
-import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['orientation']; }
+const { contenu = contenuDe('ec').orientation } = Astro.props;
 
 /**
  * Les quatre résumés d'orientation de l'accueil (copy transversale, section « Accueil —
@@ -14,25 +16,13 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
  * chacune finie par le lien d'action ; cinq services nommés par leur seul libellé, donc une
  * liste de liens.
  */
-const destinations = [
-  { texte: 'Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, de l’observation à la maintenance.', libelle: 'Découvrir le service', href: PAGES_V2.service.chemin },
-  { texte: 'Observer le geste réel, écrire la règle, éprouver sur les cas qui doivent échouer, livrer après recette.', libelle: 'Comment nous travaillons', href: PAGES_V2.methode.chemin },
-  { texte: 'Dans le doute, l’automatisation s’arrête et vous présente le cas. Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
-  { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
-];
-const services = [
-  { libelle: 'Paie', href: '/automatisation/paie' },
-  { libelle: 'Saisie comptable', href: '/automatisation/saisie-comptable' },
-  { libelle: 'Rapprochement bancaire', href: '/automatisation/rapprochement-bancaire' },
-  { libelle: 'Notes de frais', href: '/automatisation/notes-de-frais' },
-  { libelle: 'Factures fournisseurs', href: '/automatisation/factures-fournisseurs' },
-];
+const { destinations, services } = contenu;
 ---
 
 <section class="section orientation" aria-labelledby="orientation-titre">
   <div class="conteneur pile">
     <div class="tete">
-      <h2 id="orientation-titre">Par où commencer</h2>
+      <h2 id="orientation-titre">{contenu.titre}</h2>
     </div>
     <ul class="cartes">
       {destinations.map((d) => (
@@ -45,7 +35,7 @@ const services = [
       ))}
     </ul>
     <nav class="liens-bloc" aria-label="Pages de service">
-      <span class="liens-titre">Voir une règle appliquée à une tâche</span>
+      <span class="liens-titre">{contenu.invitation}</span>
       <ul class="liens">
         {services.map((service) => (
           <li>

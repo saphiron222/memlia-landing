@@ -1,7 +1,9 @@
 ---
 import ProofMedia from '@/components/ProofMedia.astro';
 import type { ProofId } from '@/data/proofs';
-import { METHODE } from '@/data/methode';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['methode']; }
+const { contenu = contenuDe('ec').methode } = Astro.props;
 
 // Système de page : les étapes (`.etapes`, global.css), une suite numérotée par son surtitre et
 // une maquette encadrée par étape. Le DOM garde le texte avant l'image ; dès 64 rem, deux étapes
@@ -11,13 +13,13 @@ import { METHODE } from '@/data/methode';
 <section id="methode" class="section parcours" aria-labelledby="methode-titre">
   <div class="conteneur pile">
     <div class="tete">
-      <h2 id="methode-titre" class="parcours-h2">{METHODE.titre}</h2>
+      <h2 id="methode-titre" class="parcours-h2">{contenu.titre}</h2>
     </div>
     <ol class="etapes">
-      {METHODE.etapes.map((e, i) => (
+      {contenu.etapes.map((e, i) => (
         <li class="etape" data-etape={i} data-proof-row>
           <div class="etape-copie step-copy" data-proof-copy>
-            <p class="surtitre step-number">Étape {e.numero}</p>
+            <p class="surtitre step-number">{contenu.libelleEtape} {e.numero}</p>
             <h3 class="etape-h3">{e.titre}</h3>
             <p class="texte-2">{e.texte}</p>
           </div>

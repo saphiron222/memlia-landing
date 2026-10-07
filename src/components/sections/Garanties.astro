@@ -1,7 +1,9 @@
 ---
 import Picto from '@/components/Picto.astro';
 import ProofRow from '@/components/ProofRow.astro';
-import { GARANTIES } from '@/data/garanties';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['garanties']; }
+const { contenu = contenuDe('ec').garanties } = Astro.props;
 
 /**
  * S3 — Garanties (spec §4.9), à la place des logos clients.
@@ -15,15 +17,15 @@ import { GARANTIES } from '@/data/garanties';
 
 <section id="garanties" class="section garanties" aria-labelledby="garanties-titre">
   <div class="conteneur pile">
-    <ProofRow id="09-garanties">
+    <ProofRow id={contenu.image}>
       <div class="tete rv">
-        <h2 id="garanties-titre">Nos engagements, écrits avant de développer.</h2>
-        <a class="lien-action" href="#questions">Lire les réponses <Picto nom="fleche" taille={14} /></a>
+        <h2 id="garanties-titre">{contenu.titre}</h2>
+        <a class="lien-action" href="#questions">{contenu.invitation} <Picto nom="fleche" taille={14} /></a>
       </div>
     </ProofRow>
     <div class="liens-bloc">
       <ul class="liens rv" data-garanties>
-        {GARANTIES.map((g) => (
+        {contenu.liens.map((g) => (
           <li>
             <a href={g.href} class="lien-rangee">
               <Picto nom={g.picto} taille={20} />

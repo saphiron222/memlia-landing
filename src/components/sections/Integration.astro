@@ -1,21 +1,22 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['integration']; }
+const { contenu = contenuDe('ec').integration } = Astro.props;
 // Système de page : rangée (en-tête, maquette), puis trois principes en lignes (un principe, son
 // explication), là où des phrases ouvertes par un mot en gras faisaient une liste.
 ---
 <section id="integration" class="section integration" aria-labelledby="integration-title">
   <div class="conteneur pile">
-    <ProofRow id="08-integration">
+    <ProofRow id={contenu.image}>
       <div class="tete rv">
-        <h2 id="integration-title">Vos outils restent le point de départ.</h2>
-        <p>Aucune plateforme à adopter. L’automatisation se greffe sur ce que votre cabinet utilise déjà : logiciel métier, exports, messagerie, dossier partagé, classeur.</p>
-        <p>Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche et ce qui ne se branche pas.</p>
+        <h2 id="integration-title">{contenu.titre}</h2>
+        <p>{contenu.texte}</p>
+        <p>{contenu.limites}</p>
       </div>
     </ProofRow>
     <ul class="lignes integration-rules">
-      <li class="ligne"><strong class="ligne-libelle">Conserver ce qui fonctionne.</strong> <span class="ligne-texte">Ne pas remplacer un outil uniquement pour introduire l’automatisation.</span></li>
-      <li class="ligne"><strong class="ligne-libelle">Relier le nécessaire.</strong> <span class="ligne-texte">Définir les sources, droits et traitements avant de développer.</span></li>
-      <li class="ligne"><strong class="ligne-libelle">Prévoir l’évolution.</strong> <span class="ligne-texte">Analyser les changements de règle ou d’outil avant toute adaptation.</span></li>
+      {contenu.regles.map((r, i) => <Fragment>{i > 0 && ' '}<li class="ligne"><strong class="ligne-libelle">{r.titre}</strong> <span class="ligne-texte">{r.texte}</span></li></Fragment>)}
     </ul>
   </div>
 </section>

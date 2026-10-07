@@ -1,10 +1,9 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
-const proofs = [
-  { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.' },
-  { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.' },
-  { title: 'Preuve de confidentialité', text: 'Jeux fictifs pour construire, démontrer et tester.' },
-];
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['preuves']; }
+const { contenu = contenuDe('ec').preuves } = Astro.props;
+const proofs = contenu.reperes;
 
 /**
  * S6 — « Proposition vs saisie » + repères vérifiables (spec §4.10 / S6 b), à la place
@@ -19,12 +18,12 @@ const proofs = [
 
 <section id="preuves" class="section pile preuves" aria-labelledby="preuves-titre">
   <div class="conteneur">
-    <ProofRow id="03-controle">
+    <ProofRow id={contenu.image}>
       <div class="tete rv">
-        <p class="surtitre">proposition vs saisie</p>
-        <h2 id="preuves-titre">Automatiser la mécanique. Pas le jugement.</h2>
-        <p>Nous distinguons ce qui peut être exécuté, ce qui doit être proposé et ce qui doit être refusé. Une information ambiguë bloque l’écriture concernée et appelle une revue humaine.</p>
-        <p>Memlia propose. Le cabinet saisit ou valide. Ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais. Aucun envoi externe sans validation humaine.</p>
+        <p class="surtitre">{contenu.etiquette}</p>
+        <h2 id="preuves-titre">{contenu.titre}</h2>
+        <p>{contenu.texte}</p>
+        <p>{contenu.propriete}</p>
       </div>
     </ProofRow>
   </div>

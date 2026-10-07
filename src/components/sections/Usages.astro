@@ -1,8 +1,8 @@
 ---
 import Picto, { type NomPicto } from '@/components/Picto.astro';
-import { famillesDeLaProfession } from '@/data/familles';
-const familles = famillesDeLaProfession('ec');
-const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['usages']; }
+const { contenu = contenuDe('ec').usages } = Astro.props;
 const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
 
 /**
@@ -10,19 +10,13 @@ const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
  * Ce sont des lignes (`.lignes`, global.css), pas des cartes : une carte est une destination.
  * Le même pictogramme, de la même couleur, ouvre chaque ligne ; aucune palette par capacité.
  */
-const examples = [
-  { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les pièces et les informations attendues depuis les sources convenues, et signaler ce qui manque avant le traitement.' },
-  { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et présenter les cas à revoir, avec la raison du signalement.' },
-  { id: 'compare', title: 'Rapprocher et synthétiser', text: 'Comparer deux sources qui devraient concorder et préparer une synthèse où chaque information reste traçable.' },
-  { id: 'follow', title: 'Suivre un processus', text: 'Repérer ce qui bloque et préparer les relances utiles. Leur envoi reste soumis à validation humaine.' },
-  { id: 'decide', title: 'Préparer une décision', text: 'Réunir données, hypothèses et pièces pour que le professionnel valide, modifie ou refuse en connaissance de cause.' },
-];
+const examples = contenu.exemples;
 ---
 <section id="usages" class="section uses" aria-labelledby="uses-title">
   <div class="conteneur pile">
     <div class="tete">
-      <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
-      <p>De la collecte des pièces aux retours DSN, de la saisie au reporting : {familles.length} familles de tâches, {nombrePoles} pôles pour l’expertise comptable, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
+      <h2 id="uses-title">{contenu.titre}</h2>
+      <p>{contenu.texte}</p>
     </div>
     <ul class="lignes">
       {examples.map((example, i) => (
