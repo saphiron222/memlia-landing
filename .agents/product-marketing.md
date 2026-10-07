@@ -73,7 +73,7 @@ Anti-personas : salarié cherchant à vérifier sa propre paie ; acheteur d'un m
 
 | Objection | Réponse |
 |---|---|
-| Nous avons déjà un logiciel | Nous partons de la tâche entre les outils ; l'automatisation se greffe sur l'existant. Les accès et formats sont vérifiés avant de s'engager. |
+| Nous avons déjà un logiciel | Ce que votre logiciel fait déjà, nous ne le refaisons pas : nous le disons, sources à l'appui, puis nous prenons ce qu'il laisse (Excel, e-mails, cas hors règle, gestes entre deux outils). Les accès et formats sont vérifiés avant de s'engager. Règle du 06/10/2026 : aucune page, aucun outil ni aucun support ne présente comme un gain un geste que le logiciel métier du cabinet fait déjà ; chaque page service le dit dans son bloc « Ce que votre logiciel fait déjà » (`src/data/couverture-logiciels.mjs`). |
 | Une IA peut se tromper | Les cas limites et les données absentes font partie des essais ; dans le doute, l'automatisation s'arrête et présente le cas. La proposition n'est pas la décision. |
 | Cela va changer notre organisation | Un périmètre écrit avant de développer, une recette par les équipes qui feront le travail. Vous n'avez rien à configurer. |
 | Combien cela coûte ? | Une tâche prise en charge, pas des sièges. Le devis dépend de la complexité ; ni tarif fictif ni pack. |

@@ -36,7 +36,9 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       const m = await step.evaluate(el => {
         const copy = el.querySelector('[data-proof-copy]')!;
         const img = el.querySelector('img')!;
+        const detail = el.querySelector('[data-proof-detail]')!;
         return { copy: copy.getBoundingClientRect().toJSON(), image: img.getBoundingClientRect().toJSON(),
+          detailHeight: detail.getBoundingClientRect().height,
           natural: [img.naturalWidth, img.naturalHeight], alt: img.alt,
           copyFirst: !!(copy.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING),
           interactive: !!img.closest('a,button,[tabindex],[role="button"]') };
@@ -48,7 +50,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       expect(m.natural).toEqual([1600, 900]);
       if (width >= 1024) {
         expect(m.image.width).toBeCloseTo(m.copy.width, 0);
-        expect(Math.abs((m.image.y + m.image.height / 2) - (m.copy.y + m.copy.height / 2))).toBeLessThan(2);
+        expect(Math.abs((m.image.y + (m.image.height + m.detailHeight) / 2) - (m.copy.y + m.copy.height / 2))).toBeLessThan(2);
         if (i % 2 === 0) expect(m.image.right).toBeLessThanOrEqual(m.copy.x + 1);
         else expect(m.copy.right).toBeLessThanOrEqual(m.image.x + 1);
       } else expect(m.copy.bottom).toBeLessThanOrEqual(m.image.y);
