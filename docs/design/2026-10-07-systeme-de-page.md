@@ -191,4 +191,5 @@ Points ouverts pour la phase 2 :
 
 Règles précisées en phase 2 : le lien d'action garde sa flèche après le dernier mot quand son
 libellé passe à la ligne ; dans une rangée à phrase, pictogramme, action et flèche suivent la
-première ligne du libellé.
+première ligne du libellé ; un surtitre en trop devient le libellé de sa liste ou la phrase
+d'appui sous le titre, sans changer ses mots (services, autocritique du 07/10/2026).
