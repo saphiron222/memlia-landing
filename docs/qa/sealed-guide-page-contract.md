@@ -24,6 +24,12 @@ Un lancement supplémentaire de npm run build sur la branche infrastructure a d�
 
 ## Coordination et livraison
 
+## Levée R1 — reprise du 7 octobre 2026
+
+La classification protège désormais l'actif dès la découverte du chemin de recette ou d'état, même si la recette est absente ou illisible. Le seul mode `historique` ne suffit plus : l'exception exige le slug du dossier et la validation complète de la recette contre le corpus historique identique. Une collection générée vide et un manifeste QA générique ne libèrent donc plus une preuve préparée sans sceau.
+
+Régression avant correctif : FAIL (`0 !== 1` après recette illisible). Après correctif : 19 tests forge, 18 contrats et 1 rendu Astro PASS ; Astro check sans erreur. Le probe indépendant QA conserve une erreur clause 2 dans chacun des cinq états, y compris recette illisible et faux mode historique. La provenance historique légitime est également exercée et conservée. origin/main d9911182 a été intégré pour préserver la correction du renderer ; aucune recette ni revue EBP modifiée. Re-revue limitée à R1 et au fini ; CI et fusion encore à constater.
+
 hotspot : tests/scripts/guide-forge.test.mjs et tests/proof/test_build.py. t_de488db9 a été informée de ne pas dupliquer l'oracle d'inventaire ; conserver son correctif indépendant d'isolation des fixtures lors de l'intégration.
 
 Après l'unique QA et la CI verte : intégrer la PR infrastructure et transmettre le résultat à t_f4529d49. Aucun constat de publication EBP ni déploiement de guide n'a été effectué ici.

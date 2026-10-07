@@ -69,6 +69,27 @@ const response = (recipe, options = {}) => {
   return new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${d.slug}"></head><body><h1>${d.h1}</h1><template data-guide-sha256="${sha(JSON.stringify(d))}"></template><p>${escape(copy)}</p><a href="${d.source.url}">source</a><img src="/proofs/integrations/${d.slug}.webp"></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
 };
 
+test('une recette illisible ou faussement historique ne libère pas une preuve préparée sans sceau', async (t) => {
+  const f = fixture(t);
+  json(f.root, 'src/data/guides.generated.json', []);
+  assert.equal((await preparerGuide(f)).pass, true);
+  const asset = `/proofs/integrations/${f.slug}.webp`;
+  json(f.root, 'docs/qa/contournement.json', { target: `public${asset}` });
+  mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
+  writeFileSync(join(f.root, `dist/integrations/${f.slug}.html`), `<main id="main"><h1>Contrôle</h1><img src="${asset}"></main>`);
+  const images = () => auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2);
+  assert.equal(images().length, 1);
+  const path = join(f.root, f.dir, 'recette.json');
+  const original = readFileSync(path);
+  for (const mutation of ['illisible', JSON.stringify({ ...f.recipe, mode: 'historique' })]) {
+    writeFileSync(path, mutation);
+    assert.equal(images().length, 1, mutation);
+    writeFileSync(path, original);
+  }
+  rmSync(path);
+  assert.equal(images().length, 1, 'recette absente, état préparé conservé');
+});
+
 test('page vide, ancien corps, identité absente/divergente et preuve absente/altérée refusés sans reçu', async (t) => {
   const f = fixture(t); await preparerGuide(f); review(f); await scellerGuide(f);
   const good = await response(f.recipe).text();
@@ -226,6 +247,10 @@ test('recette historique datée rejouée sans modifier données ni preuve exista
   assert.equal((await preparerGuide({ root: f.root, slug })).pass, true);
   assert.deepEqual(readFileSync(join(f.root, asset)), before);
   assert.deepEqual(read(f.root, 'src/data/guides.generated.json'), []);
+  json(f.root, 'docs/qa/historique.json', { target: asset });
+  mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
+  writeFileSync(join(f.root, `dist/integrations/${slug}.html`), `<main id="main"><h1>Contrôle</h1><img src="/${asset.slice(7)}"></main>`);
+  assert.deepEqual(auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2), [], 'provenance historique légitime conservée');
   historical.integration.intro += ' falsification'; json(f.root, `${dir}/recette.json`, historical);
   assert.equal((await preparerGuide({ root: f.root, slug })).pass, false);
 });

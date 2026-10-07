@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditerServiceDesign } from './verify-service-design.mjs';
 import { BLOG_RUBRIQUES } from '../src/data/blog-rubriques.mjs';
-import { verifierPreuveGuide } from './lib/guide-forge.mjs';
+import { verifierPreuveGuide, verifierRecetteGuide } from './lib/guide-forge.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -223,15 +223,23 @@ function manifestedMedia(root) {
   }
   const guideOwners = new Map();
   const guideAssets = new Set();
+  const historicalAssets = new Set();
   for (const recipe of walk(join(root, 'guides/recettes'), (item) => item.endsWith('/recette.json'))) {
+    const slug = relative(join(root, 'guides/recettes'), recipe).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    guideAssets.add(asset);
     try {
       const value = JSON.parse(readFileSync(recipe, 'utf8'));
-      const slug = relative(join(root, 'guides/recettes'), recipe).split(sep)[0];
-      if (value.mode === 'nouveau') guideAssets.add(`/proofs/integrations/${slug}.webp`);
-    } catch { /* Une recette illisible ne prouve aucune provenance. */ }
+      if (value.mode === 'historique' && value.integration?.slug === slug && verifierRecetteGuide({ root, recipe: value }).length === 0) {
+        historicalAssets.add(asset);
+        guideAssets.delete(asset);
+      }
+    } catch { /* L'actif reste protégé même si sa recette est illisible. */ }
   }
   for (const manifest of walk(join(root, 'guides/etats'), (item) => item.endsWith('/manifest.json'))) {
     const slug = relative(join(root, 'guides/etats'), manifest).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    if (!historicalAssets.has(asset)) guideAssets.add(asset);
     const proof = verifierPreuveGuide({ root, slug });
     if (proof.pass) guideOwners.set(proof.asset, proof.route);
   }
