@@ -25,6 +25,26 @@ test('reprise JSON stricte, sans muter la session',()=>{
  for(const change of [{version:2},{extra:'unexpected'},{mode:'fiscal'},{items:[{...s.items[0],state:'maybe'}]}]) assert.throws(()=>m.importJson(JSON.stringify({...s,...change})));
  assert.deepEqual(s,before);
 });
+for(const [field,values] of [['state',[['missing'],['unknown'],{},1,null]],['family',[['banque'],{},1,null]]]){
+ for(const value of values)test(`enum ${field} non textuel refusé : ${JSON.stringify(value)}`,()=>{
+  const s=m.demoSession();s.items=[{...s.items[1],[field]:value}];const before=structuredClone(s);
+  assert.throws(()=>m.importJson(JSON.stringify(s)),/Famille ou état inconnu/);
+  assert.throws(()=>m.result(s),/Famille ou état inconnu/);
+  assert.deepEqual(s,before);
+ });
+}
+test('quatre états textuels et reprises JSON/CSV restent exacts',()=>{
+ for(const state of ['received','missing','na','unknown']){
+  const s=m.demoSession();s.items=[{...s.items[1],state}];
+  for(const restored of [m.importJson(m.exportJson(s)),m.importCsv(m.exportCsv(s))]){
+   assert.deepEqual(restored,s);const r=m.result(restored);
+   assert.equal(r.complete,state==='received'||state==='na');
+   assert.deepEqual(r.missing,state==='missing'?s.items:[]);
+   assert.deepEqual(r.unknown,state==='unknown'?s.items:[]);
+   assert.equal(Boolean(r.message),state==='missing');
+  }
+ }
+});
 test('CSV neutralisé et réimport exact, guillemets, multiligne, apostrophe native',()=>{
  const s=m.demoSession();s.period='=1+1';s.items[0].label='@SUM(1;2)';s.items[0].note='Texte; "cité"\nligne suivante';s.items[1].label="'=original";
  const csv=m.exportCsv(s);assert.ok(csv.startsWith('\ufeff'));assert.match(csv,/'@SUM/);

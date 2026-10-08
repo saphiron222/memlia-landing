@@ -22,6 +22,26 @@ for(const width of [320,375,768,1024,1440,1920])test(`checklist complète, rése
  expect(await storage()).toEqual(before);expect(requests).toEqual([]);expect(errors).toEqual([]);expect(await page.locator('script[src*="cloudflareinsights"]').count()).toBe(0);
  if(process.env.CHECKLIST_CAPTURE==='1'){const out='docs/strategy/site-v3/outils-ec-vague-4/checklist';mkdirSync(out,{recursive:true});if([375,1440].includes(width)){page.once('dialog',d=>d.accept());await page.locator('[data-cl-demo]').click();await page.evaluate(async()=>{for(let y=0;y<document.documentElement.scrollHeight;y+=600){window.scrollTo(0,y);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));}window.scrollTo(0,0);await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});await page.screenshot({path:`${out}/checklist-${width}.png`,fullPage:true});}writeFileSync(`${out}/audit-${width}.json`,JSON.stringify({width,overflow:false,requests,errors,storage:await storage(),reflow:width===320?'équivalent 1280px à 400%':null},null,2));}
 });
+test('enums JSON non textuels refusés avant aperçu, toutes les saisies conservées',async({page})=>{
+ await page.goto(route,{waitUntil:'networkidle'});await page.locator('[data-cl-demo]').click();
+ await page.locator('#cl-period').fill('Période saisie');await page.locator('#cl-p2-note').fill('Note saisie');
+ await page.locator('#cl-label').fill('Brouillon libre');await page.locator('#cl-note').fill('Note brouillon');
+ const before=JSON.parse(await download(page,'json')),message=await page.locator('#cl-message').inputValue(),summary=await page.locator('[data-cl-summary]').innerText();
+ for(const [field,values] of [['state',[['missing'],['unknown'],{},1,null]],['family',[['banque'],{},1,null]]])for(const value of values){
+  // Start with a valid pending preview: refusal must also invalidate that previous candidate.
+  await upload(page,exportJson(demoSession()));await expect(page.locator('[data-cl-apply]')).toBeEnabled();
+  const s=demoSession();s.items=[{...s.items[1],[field]:value}];await upload(page,JSON.stringify(s));
+  await expect(page.locator('[data-cl-status]')).toHaveText('Import refusé ; session conservée.');
+  await expect(page.locator('[data-cl-error]')).toContainText('Famille ou état inconnu');
+  await expect(page.locator('[data-cl-preview]')).toBeEmpty();await expect(page.locator('[data-cl-apply]')).toBeDisabled();
+  await expect(page.locator('[data-cl-summary]')).toHaveText(summary);await expect(page.locator('#cl-message')).toHaveValue(message);
+  await expect(page.locator('#cl-label')).toHaveValue('Brouillon libre');await expect(page.locator('#cl-note')).toHaveValue('Note brouillon');
+  expect(JSON.parse(await download(page,'json'))).toEqual(before);
+ }
+ // Valid resumption still restores all four textual states exactly.
+ await upload(page,exportJson(demoSession()));await expect(page.locator('[data-cl-apply]')).toBeEnabled();page.once('dialog',d=>d.accept());await page.locator('[data-cl-apply]').click();
+ expect(JSON.parse(await download(page,'json'))).toEqual(demoSession());
+});
 test('100 lignes, 101 refusées, annulation sans résultat appliqué',async({page})=>{
  await page.goto(route,{waitUntil:'networkidle'});await page.locator('[data-cl-demo]').click();let s=createSession();for(let i=0;i<100;i++)s=addItem(s,{family:'libre',label:'Pièce '+i,state:'unknown',note:''});await upload(page,exportJson(s));await expect(page.locator('[data-cl-apply]')).toBeEnabled();page.once('dialog',d=>d.accept());await page.locator('[data-cl-apply]').click();await expect(page.locator('[data-cl-item]')).toHaveCount(100);
  await page.locator('#cl-label').fill('101');await page.getByRole('button',{name:'Ajouter la pièce',exact:true}).click();await expect(page.locator('[data-cl-error]')).toContainText('100');await expect(page.locator('#cl-label')).toHaveValue('101');await expect(page.locator('[data-cl-item]')).toHaveCount(100);

@@ -17,7 +17,7 @@ export function validate(s){
  const ids=new Set();
  for(const i of s.items){keys(i,['id','family','label','state','note']);text(i.id,30,true);text(i.label,300,true);text(i.note,2000);
   if(!/^[a-zA-Z0-9_-]+$/.test(i.id)||ids.has(i.id))fail('Identifiant invalide ou dupliqué.');ids.add(i.id);
-  if(!Object.hasOwn(FAMILIES,i.family)||!Object.hasOwn(STATES,i.state))fail('Famille ou état inconnu : reprise refusée.');
+  if(typeof i.family!=='string'||typeof i.state!=='string'||!Object.hasOwn(FAMILIES,i.family)||!Object.hasOwn(STATES,i.state))fail('Famille ou état inconnu : reprise refusée.');
  }
  return s;
 }
