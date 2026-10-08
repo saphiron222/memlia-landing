@@ -304,6 +304,14 @@ const graph = {
       target.scrollIntoView();
     };
     window.addEventListener('hashchange', revealAnchor);
+    // Réactiver le fragment courant ne déclenche pas hashchange (clic ou Entrée).
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
+      if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+      const url = new URL(link.href);
+      if (url.origin === location.origin && url.pathname === location.pathname && url.search === location.search && url.hash === location.hash) revealAnchor();
+    });
     revealAnchor();
   }
 </script>

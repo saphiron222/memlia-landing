@@ -48,6 +48,43 @@ test('recherche progressive : filtre, état vide puis restauration', async ({ pa
 });
 
 for (const width of [375, 1440]) {
+  for (const activation of ['click', 'keyboard'] as const) {
+    for (const id of ['lettre-g', 'generation-augmentee-par-recuperation']) {
+      test(`réactivation de ${id} par ${activation} à ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 812 });
+        await page.goto(`/glossaire#${id}`);
+        const search = page.getByLabel('Rechercher un terme');
+        const target = page.locator(`#${id}`);
+        // Les termes liés sont eux-mêmes filtrés : un lien hors liste représente
+        // aussi une navigation dans le même document depuis un autre composant.
+        const link = id === 'lettre-g'
+          ? page.locator('.alphabet a[href="#lettre-g"]')
+          : page.locator('[data-repeat-anchor]');
+        if (id !== 'lettre-g') {
+          await page.evaluate((anchor) => {
+            const link = document.createElement('a');
+            link.href = `#${anchor}`;
+            link.dataset.repeatAnchor = '';
+            link.textContent = 'Revenir au terme';
+            document.querySelector('[data-search]')!.append(link);
+          }, id);
+        }
+        await search.fill('SEPA');
+        await expect(target).toBeHidden();
+        if (activation === 'keyboard') {
+          await link.focus();
+          await page.keyboard.press('Enter');
+        } else {
+          await link.click();
+        }
+        await expect(target).toBeVisible();
+        await expect(search).toHaveValue('');
+        await expect(page.locator('[data-result-count]')).toHaveText(`${EXPECTED_TERMS} termes`);
+        await expect(page.getByRole('button', { name: 'Effacer la recherche' })).toBeDisabled();
+        await expect(target).toBeInViewport();
+      });
+    }
+  }
   test(`ancre après recherche filtrée à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 812 });
     await page.goto('/glossaire');
