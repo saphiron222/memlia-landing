@@ -15,4 +15,6 @@ Le 8 octobre 2026, le workflow courant utilise les runners GitHub publics `ubunt
 
 Les deux régressions nouvelles échouent avant le correctif (artefact absent, événement ready_for_review absent), puis passent avec import réel de la configuration Playwright. Le test existant conserve la preuve de propriété du processus Astro.
 
+Recette réelle du 8 octobre : PR211 créée en brouillon, run 37837552857 terminé skipped ; quatre jobs skipped, aucun runner assigné et aucune étape exécutée. Le passage ready_for_review, sans push, a déclenché le run 37837581705.
+
 Comparer deux runs complets avant/après avec les dates de début/fin des jobs GitHub : temps mural (début du premier job jusqu'à fin du dernier) et somme des durées des jobs. L'attente de l'artefact peut augmenter le temps mural ; l'objectif de cette modification est d'éliminer huit builds redondants, pas de promettre une accélération non mesurée. Les mesures et les preuves brouillon/annulation sont consignées dans la PR.
