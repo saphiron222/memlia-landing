@@ -1167,11 +1167,11 @@ h3.liens-titre {
   opacity: 1;
   transform: none;
 }
-.js .rv-groupe > .rv:nth-child(2) { --rv-delai: 40ms; transition-delay: var(--rv-delai); }
-.js .rv-groupe > .rv:nth-child(3) { --rv-delai: 80ms; transition-delay: var(--rv-delai); }
-.js .rv-groupe > .rv:nth-child(4) { --rv-delai: 120ms; transition-delay: var(--rv-delai); }
-.js .rv-groupe > .rv:nth-child(5) { --rv-delai: 160ms; transition-delay: var(--rv-delai); }
-.js .rv-groupe > .rv:nth-child(6) { --rv-delai: 200ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(2) { --rv-delai: 20ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(3) { --rv-delai: 40ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(4) { --rv-delai: 60ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(5) { --rv-delai: 80ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(6) { --rv-delai: 100ms; transition-delay: var(--rv-delai); }
 /* Le décalage d'apparition ne retarde que l'entrée d'une carte, jamais son survol. */
 .js .rv-groupe > .carte.rv {
   transition-delay: var(--rv-delai, 0ms), var(--rv-delai, 0ms), 0ms, 0ms, 0ms;

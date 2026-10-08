@@ -12,12 +12,12 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin du contenu de / : main 4f42a88b (chrome v3 testé à part), puis le système de page de #166, dont le <main>
-// est identique à celui de #166 avant cette fusion (6c3c4fb9), hors lien d’orientation CAC.
+// Témoin du système de page #166 après intégration de la copy EC relue (#181).
+// Avant #181 : c28bb8b4… ; DOM inchangé, nouveaux textes de main seuls ; chrome v3 testé à part.
 test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
-  const expected = 'c28bb8b4c16ffea5b722551526f129eb364d7c3d61daa02a2d157d7cf2977ebe';
+  const expected = 'e343eaefe5839366d2feaedc3babd39f485b40e0dc1ecf434202d06809e179f5';
   const html = readFileSync('dist/index.html', 'utf8');
-  // Ajout volontaire du service publié dans le footer généré (#171) : le reste ne change pas.
+  // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
   assert.equal([...html.matchAll(link)].length, 1);
   const main = find(parse(html), 'main');

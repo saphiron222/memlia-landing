@@ -65,7 +65,7 @@ const citations = [
   { route: '/automatisation/notes-de-frais', url: 'https://www.service-public.fr/particuliers/vosdroits/F19846', mot: 'un justificatif' },
   { route: '/automatisation-cabinet-comptable', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2', mot: 'des données fictives' },
   { route: '/garanties', url: 'https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees', mot: 'une mesure individuelle continue' },
-  { route: '/methode', url: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils', mot: 'le cadrage' },
+  { route: '/methode', url: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils', mot: 'Le cadrage' },
 ];
 
 test('chaque source se cite par un lien sur un mot du texte de sa page', () => {

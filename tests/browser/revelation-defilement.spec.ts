@@ -37,6 +37,7 @@ for (const chemin of ['/', '/automatisation-cabinet-comptable', '/methode']) {
         .filter((s) => s.entree >= 0)
         .map((s) => ({ bloc: s.bloc.className, retardMs: s.lisible < 0 ? Infinity : Math.round(s.lisible - s.entree) }));
     });
+    console.log(`${chemin} : ${retards.length} blocs observés, retard maximal ${Math.max(...retards.map((r) => r.retardMs))} ms (seuil ${RETARD_MAX_MS} ms).`);
     expect(retards.length).toBeGreaterThan(0);
     expect(retards.filter((r) => r.retardMs > RETARD_MAX_MS)).toEqual([]);
   });
