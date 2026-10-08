@@ -17,4 +17,6 @@ Les deux régressions nouvelles échouent avant le correctif (artefact absent, �
 
 Recette réelle du 8 octobre : PR211 créée en brouillon, run 37837552857 terminé skipped ; quatre jobs skipped, aucun runner assigné et aucune étape exécutée. Le passage ready_for_review, sans push, a déclenché le run 37837581705.
 
+Référence avant : run vert 37832591157 du 8 octobre, même workflow à huit parts avant partage du build : 1 009 secondes murales entre début du premier job et fin du dernier, 6 383 secondes cumulées sur dix jobs. Cette référence porte une autre PR ; elle mesure une charge comparable, pas un benchmark contrôlé sur un même contenu.
+
 Comparer deux runs complets avant/après avec les dates de début/fin des jobs GitHub : temps mural (début du premier job jusqu'à fin du dernier) et somme des durées des jobs. L'attente de l'artefact peut augmenter le temps mural ; l'objectif de cette modification est d'éliminer huit builds redondants, pas de promettre une accélération non mesurée. Les mesures et les preuves brouillon/annulation sont consignées dans la PR.
