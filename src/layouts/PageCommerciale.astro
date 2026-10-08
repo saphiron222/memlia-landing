@@ -29,6 +29,8 @@ interface Props {
     ariane: string;
     secondaire: { libelle: string; href: string };
   };
+  /** Réserve les lignes du titre sur téléphone lorsque les chasses du repli changent sa composition. */
+  lignesTitreMobile?: number;
   /** Surtitre au-dessus du titre, comme le héros de l'accueil. */
   eyebrow: string;
   /** Preuve fonctionnelle de tête (série v2), rendue avec son image sociale par scripts/render-proofs-v2.mjs. */
@@ -40,7 +42,7 @@ interface Props {
 }
 // Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » sur le site.
 // Une source se cite par un lien sur un mot ou un chiffre du texte ; les données E-E-A-T ne servent plus qu'au JSON-LD.
-const { page, eyebrow, hero, noeuds = [], appel = {} } = Astro.props;
+const { page, eyebrow, hero, lignesTitreMobile, noeuds = [], appel = {} } = Astro.props;
 /**
  * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
  * page courante : c'est là que la réservation directe prend le relais.
@@ -97,7 +99,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
       </nav>
       <div class="page-hero-texte">
         <span class="surtitre">{eyebrow}</span>
-        <h1 id="page-titre" class="page-h1"><Insecable texte={page.h1} /></h1>
+        <h1 id="page-titre" class="page-h1" style={lignesTitreMobile ? `--page-titre-lignes-mobile: ${lignesTitreMobile}` : undefined}><Insecable texte={page.h1} /></h1>
         <p class="page-chapeau">{page.chapeau}</p>
         {/* Pas de signature ni de dates d’article hors du blog (décision de Kevin du 04/10/2026). */}
         <div class="page-actions">
@@ -129,6 +131,10 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   .ariane a { color: var(--texte-2); }
   .page-hero-texte { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 32px; text-align: center; }
   .page-h1 { max-width: 1050px; font-size: var(--titre-page); }
+  @media (max-width: 30rem) {
+    /* La réserve suit l'interligne réel et ne limite jamais un titre plus long. */
+    .page-h1 { min-height: calc(var(--page-titre-lignes-mobile, 0) * 1lh); }
+  }
   .page-chapeau { max-width: 672px; color: var(--texte-2); font-size: var(--t-base); }
   .page-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 12px; }
   .page-cadre { position: relative; left: 50%; width: calc(100% + 256px); max-width: min(1200px, calc(100vw - 32px)); margin-top: var(--bloc-ecart); transform: translateX(-50%); }
