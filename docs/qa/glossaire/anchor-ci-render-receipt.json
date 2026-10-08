@@ -1,31 +1,32 @@
 {
   "schemaVersion": 1,
   "commands": [
-    { "command": "astro build", "exitCode": 0 },
+    { "command": "npx astro build", "exitCode": 0 },
     { "command": "node scripts/strip-briefs.mjs", "exitCode": 0 }
   ],
-  "startedAt": "2026-10-08T16:54:47.005866Z",
-  "endedAt": "2026-10-08T16:55:18.705117Z",
+  "startedAt": "2026-10-08T17:07:02Z",
+  "endedAt": "2026-10-08T17:07:18Z",
   "result": "PASS",
   "provenance": {
-    "runId": 37811786796,
-    "jobId": 113430214075,
-    "headSha": "b02e13f6ded21831646d83a4570acf7535f187c7",
-    "artifactId": 11566220960,
-    "artifactName": "glossary-render",
+    "runId": 37814005906,
+    "jobId": 113437820512,
+    "headSha": "f9741a4e3e391332c2015370e8527ac6409d5237",
+    "integratedMainSha": "37c76542",
+    "artifactId": 11566551469,
+    "artifactName": "integrated-glossary-render",
     "renderPath": "dist/glossaire.html",
-    "renderBytes": 320926,
-    "renderSha256": "bcf1f91808af919eeb0e4ba248fd42062089ea430ba51f2570adc393fb1b8afd",
-    "jobUrl": "https://github.com/saphiron222/memlia-landing/actions/runs/37811786796/job/113430214075",
-    "timingRule": "Bornes observées : lancement du job navigateur, puis première preuve Python. La chaîne build:site reliée par && a atteint test:proof après astro build et strip-briefs ; leurs codes zéro se déduisent de cette exécution réelle. Ces dates bornent le rendu, elles ne sont pas les horodatages individuels des sous-commandes.",
-    "scope": "PASS du rendu Astro et du retrait des briefs uniquement. Le build:site complet de ce run échoue plus tard sur le manifeste périmé ; ce reçu ne déclare pas la CI verte."
+    "renderBytes": 321115,
+    "renderSha256": "8d7824194d59d429a6a4688ea336f362ba41b820eb504d81860f84a47f0c592e",
+    "jobUrl": "https://github.com/saphiron222/memlia-landing/actions/runs/37814005906/job/113437820512",
+    "timingRule": "Horodatages du step Render and strip glossary, qui exécute les deux commandes déclarées avec sortie zéro ; step et job SUCCESS, artefact téléchargé et mesuré.",
+    "scope": "PASS du rendu Astro et du retrait des briefs uniquement. Ce reçu ne préjuge pas du verdict Repository gates final."
   },
   "surfaces": {
     "T": {
       "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
       "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
       "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
-      "outputDigest": "6c5878d6d1c9faa785ce7c67289c37f3da5e7b8a014e37cc088dab83ca7e9dca"
+      "outputDigest": "14aced025ea4cc3b769fb9f2cac31ed12deca5285c867075f1b8355112e0af4a"
     }
   }
 }
