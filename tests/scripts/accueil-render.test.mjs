@@ -12,15 +12,22 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin reconstruit à la fusion de l’extraction (#113) dans le système de page (#166) : le HTML de /
-// est celui de #166 avant fusion (b96656d5), octet pour octet, H3 et compteurs dynamiques inclus.
-test('le HTML de / conserve le témoin EC hors nouveau lien service du footer', () => {
-  const expected = '030e03b602953c85d7c0715b1aec360e74f2d158041247ccf0b61843ee08876f';
+// Témoin du contenu de / : main 4f42a88b (chrome v3 testé à part), puis le système de page de #166, dont le <main>
+// est identique à celui de #166 avant cette fusion (6c3c4fb9), hors lien d’orientation CAC.
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  const expected = 'c28bb8b4c16ffea5b722551526f129eb364d7c3d61daa02a2d157d7cf2977ebe';
   const html = readFileSync('dist/index.html', 'utf8');
   // Ajout volontaire du service publié dans le footer généré (#171) : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
   assert.equal([...html.matchAll(link)].length, 1);
-  assert.equal(createHash('sha256').update(html.replace(link, '')).digest('hex'), expected);
+  const main = find(parse(html), 'main');
+  assert.ok(main);
+  const removeAudience = (node) => {
+    node.childNodes = (node.childNodes ?? []).filter(child => !child.attrs?.some(a => a.name === 'data-accueil-cac'));
+    node.childNodes.forEach(removeAudience);
+  };
+  removeAudience(main);
+  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {

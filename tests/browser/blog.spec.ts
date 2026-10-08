@@ -28,8 +28,9 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
   else await expect(rssLink).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
-  // Le bandeau publié pointe les quatre sections de l'accueil ; le fil d'Ariane porte la page courante.
-  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
+  // Le hub Blog indique la rubrique courante, y compris dans ses articles.
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(1);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveAttribute('href', '/blog');
   for (const text of await textesPublics(page)) expect(text).not.toMatch(CATALOGUE);
   expect(errors).toEqual([]);
 });
@@ -78,7 +79,8 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
     return { types, headline: posting.headline, url: posting.url, canonical, broken, h1 };
   });
   expect(report.types).toEqual(['BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite']);
-  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(1);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveAttribute('href', '/blog');
   expect(report.headline).toBe(report.h1);
   expect(report.canonical).toBe(report.url);
   expect(report.broken).toEqual([]);

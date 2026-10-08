@@ -12,6 +12,28 @@ La recherche cachée du glossaire conserve sa grille avant activation JavaScript
 
 Hypothèse de plateforme : Georgia/Arial locaux disponibles (banc Chromium macOS, également polices usuelles Windows). Sinon les familles génériques restent disponibles ; les mesures de ce banc ne prouvent pas le CLS sur tous les OS.
 
+Depuis le 08/10/2026, la CI tourne sur Linux (ubuntu-latest), sans Georgia ni Arial. Les replis n'existaient que pour macOS et Windows : sous Linux et Android, l'index descendait de 32 à 37 px à 320–412 px quand les polices arrivaient (CLS jusqu'à 0,103).
+
+Replis ajoutés le 08/10/2026, essayés dans cet ordre par les piles de `tokens.css` :
+- Titres : « Fraunces Fallback » (Georgia), puis « Fraunces Fallback Noto » (Noto Serif, Android), puis « Fraunces Fallback Liberation » (Liberation Serif ou Tinos, Linux et ChromeOS).
+- Texte : « Hanken Fallback » (Arial, Liberation Sans ou Arimo, qui ont les mêmes chasses), puis « Hanken Fallback Roboto » (Android).
+
+Chaque police a ses propres réglages. Ils sont calculés comme les précédents : largeur moyenne, ascendante et descendante de Fraunces ou Hanken, rapportées à celles du repli, avec `@capsizecss/unpack`. Les mesures viennent de Times New Roman pour Liberation Serif (mêmes chasses) et des fichiers Fontsource 5.3.0 pour Roboto et Noto Serif. Recalculée de la même façon, la formule retrouve les valeurs Georgia et Arial existantes à 0,7 point près (faces existantes calculées sur une autre version de ces fichiers).
+
+Vérification par simulation sur macOS, sur les 3 routes en 320, 375, 412 et 1440 px :
+- Polices des titres et du texte retenues, puis libérées.
+- Georgia et Arial rendus absents. Liberation Serif est remplacée par Times New Roman.
+- Pour le scénario Android, Noto Serif et Roboto sont servis depuis Fontsource et chargés d'avance, comme une police locale.
+- Résultat sur les scénarios macOS, Linux et Android : index déplacé de 0 px dans les 36 cas, CLS ≤ 0,019.
+- Sans ces replis, le scénario Android déplace l'index de 32,6 à 36,7 px.
+
+Le test sonde l'OS du banc avec des faces indépendantes du site (une liste de polices par repli).
+- Là où l'OS a les polices d'un repli, chacune de ses faces doit se charger : une face cassée échoue.
+- La sonde ne sert qu'au diagnostic, annoté dans le rapport. Elle n'exempte jamais les douze cas des seuils CLS ≤ 0,1 et déplacement ≤ 2 px, sur aucun OS : un OS sans aucun repli ajusté fait échouer la CI. Le banc Linux de la CI les tient grâce à Liberation.
+- Ticket : `.scratch/polices-repli/issues/01-replis-linux-android.md`.
+
+La régression unitaire `node --test tests/scripts/font-cls-contract.test.mjs` exécute les vrais callbacks Playwright avec des valeurs injectées : CLS 0,8 ou déplacement 100 px doivent être rejetés avec et sans polices OS ; les limites 0,1 et 2 px restent acceptées. Elle est découverte par `npm run test:scripts` dans la porte de build. Ce banc ne mesure aucune page et ne remplace pas les treize cas Chromium sur Ubuntu dans Repository gates. Les mesures historiques ci-dessous restent celles de leur banc macOS, pas une preuve Linux.
+
 ## Régression navigateur
 
 `npx playwright test tests/browser/font-cls.spec.ts`
