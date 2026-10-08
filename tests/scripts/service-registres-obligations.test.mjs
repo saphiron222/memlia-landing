@@ -4,6 +4,12 @@ import { readFileSync, existsSync } from 'node:fs';
 import { couvertureDe } from '../../src/data/couverture-logiciels.mjs';
 
 const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8');
+test('registres : la citation possède une ancre présente dans le texte', () => {
+  const eeat = read('src/data/page-eeat.ts').match(/'registres-obligations': \{([\s\S]*?)\n  \},/)[1];
+  const anchor = eeat.match(/mot: '([^']+)'/)?.[1];
+  assert.ok(anchor, 'mot requis par le gabarit de citation');
+  assert.ok(read('src/content/services/registres-obligations.md').includes(anchor));
+});
 test('registres : couverture existante et travail résiduel explicités', () => {
   const coverage = couvertureDe('registres-obligations');
   assert.ok(coverage);
