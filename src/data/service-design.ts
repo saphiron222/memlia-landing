@@ -10,6 +10,10 @@ export interface ServiceDesign {
  * docs/design/site-v2-proofs. Aucun visuel ne simule un produit ni ne contient de donnée client.
  */
 export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
+  'secretariat-juridique': {
+    heroProof: 'v2/46-service-secretariat-juridique',
+    bodyProof: 'v2/46-service-secretariat-juridique',
+  },
   'entrees-sorties-salaries': {
     heroProof: 'v2/44-service-entrees-sorties-salaries',
     bodyProof: 'v2/44-service-entrees-sorties-salaries',

@@ -2,6 +2,7 @@
 import generatedProofs from './guide-proofs.generated.json';
 
 const HISTORICAL_PROOFS = {
+  'v2/46-service-secretariat-juridique': { title: 'Une échéance confirmée, un rappel à valider', alt: 'Quatre dossiers fictifs : approbation à suivre, dépôt avec brouillon à valider, circuit déjà couvert exclu et date inconnue arrêtée. Dates et références confirmées par le cabinet, note humaine conservée.', detail: 'Le rejeu prépare des lignes et brouillons à partir de dates déjà validées. Il ne calcule aucun délai légal, ne génère aucun acte, ne se connecte à aucun éditeur et n’envoie aucun message. La confirmation d’un justificatif ne certifie pas la conformité du dépôt.' },
 
   'v2/45-cadrage-donnees': { title: 'Du cadrage aux essais fictifs', alt: 'Scène fictive de cadrage : fichiers autorisés lus en place sans copie dans les dépôts ; développement sur règle écrite, jeu fictif et critères de recette.', detail: 'La scène porte sur le cadrage et le développement. En exploitation, les données, accès, destinataires, flux et hébergements éventuels sont documentés pour chaque mission avant la mise en service.' },
 

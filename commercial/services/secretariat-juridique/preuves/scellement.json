@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "service-candidat-scelle",
+  "slug": "secretariat-juridique",
+  "sealedAt": "2026-10-08T11:11:29.994Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/secretariat-juridique.md",
+      "bytes": 11057,
+      "sha256": "c2edb12aaedb885eaadb1350991bbacac9b57b4a580bd2bf55a72387429c4c21"
+    },
+    "manifest": {
+      "path": "commercial/services/secretariat-juridique/manifest.json",
+      "bytes": 2832,
+      "sha256": "5c7cb4737d5cd7e7b967217dd054575ead0483c8c03e41f2fa892d890fd6bcf3"
+    },
+    "recipe": {
+      "path": "commercial/recettes/secretariat-juridique/recette.json",
+      "bytes": 2514,
+      "sha256": "c57631c052c2416469307a9293c05c1ae7155130a17eeaea601f2d261a62584f"
+    },
+    "body": {
+      "path": "commercial/recettes/secretariat-juridique/corps.md",
+      "bytes": 9178,
+      "sha256": "5d14f254215cab51c8eaeaa8291e8e0862bf85b11a000e724055b3699eefd20e"
+    },
+    "review": {
+      "path": "commercial/recettes/secretariat-juridique/revues.json",
+      "bytes": 3126,
+      "sha256": "2c237dc7e5298ac5664d5685a62e61516c7b2f968237c226f26579c31704af35"
+    }
+  }
+}

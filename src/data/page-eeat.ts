@@ -78,6 +78,10 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'secretariat-juridique': {
+    auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
+    sources: [{ editeur: 'Service Public Entreprendre', titre: 'Dépôt des comptes annuels d’une société', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31214', consulteLe: '2026-10-06', preuve: 'La sanction concerne le non-dépôt, sans conséquence automatique du suivi fictif ni garantie d’évitement.', mot: 'une amende pénale de 1 500 euros' }],
+  },
   'entrees-sorties-salaries': {
     auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
     sources: [{ editeur: 'Silae', titre: 'Gérer les salariés de A à Z', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', consulteLe: '2026-10-06', preuve: 'Le circuit du portail garde la création du salarié et la transmission de la DPAE. La préparation hors portail ne double pas ces gestes.', mot: 'mySilae' }],

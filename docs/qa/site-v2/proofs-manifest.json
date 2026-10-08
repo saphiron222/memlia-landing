@@ -32,6 +32,18 @@
     {
       "path": "docs/design/entrees-sorties-salaries-proof/content-contract.json",
       "sha256": "cf296bbef1e6b535dc7bc1ebe4d88091c235ff9053693aceff13ee286b394acd"
+    },
+    {
+      "path": "docs/design/secretariat-juridique-proof/index.html",
+      "sha256": "b490aa79768d4a25edacb548f424dfcbc4e83a78b19a4b50959f4c4c54683f3f"
+    },
+    {
+      "path": "docs/design/secretariat-juridique-proof/styles.css",
+      "sha256": "a16b53c0cb4b4d0b08d756655e411c403b407e318ab1d44730f0e32657b86162"
+    },
+    {
+      "path": "docs/design/secretariat-juridique-proof/content-contract.json",
+      "sha256": "4f8168a74b11344cec4bc45ef2da467d148353bb1d3b04a420447d209aeca69b"
     }
   ],
   "browser": "153.0.8010.12",
@@ -287,6 +299,18 @@
       "target": "public/proofs/v2/og/44-service-entrees-sorties-salaries.webp",
       "bytes": 42462,
       "sha256": "36e8211c45bc84d74ef1875480c57b0f837ac8c2e194294c2e81f42b8677991d"
+    },
+    {
+      "source": "docs/design/secretariat-juridique-proof/index.html#service-secretariat-juridique",
+      "target": "public/proofs/v2/46-service-secretariat-juridique.webp",
+      "bytes": 60858,
+      "sha256": "075bc874b990e9287a4980d508db3eab7df5864286c5619112be435c76f612c8"
+    },
+    {
+      "source": "docs/design/secretariat-juridique-proof/index.html#service-secretariat-juridique",
+      "target": "public/proofs/v2/og/46-service-secretariat-juridique.webp",
+      "bytes": 38990,
+      "sha256": "18518f894a5e376ef2b6178e3b5f67d6f5a183337dc2118eaa1b1bffc8cbe0e0"
     }
   ]
 }
