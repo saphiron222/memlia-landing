@@ -43,7 +43,7 @@ export const PAGES_V2 = {
     titre: 'À propos de Memlia : le savoir-faire des cabinets, écrit et automatisé',
     description: "À propos de Memlia : nous écrivons le savoir-faire des cabinets comptables et automatisons la part répétitive du travail, avec validation humaine.",
     h1: 'Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner.',
-    chapeau: "Les cabinets ne manquent ni de compétences ni d’outils. Ils manquent de temps, de bras, et d’une règle écrite quelque part. Memlia écrit cette règle avec vous, puis automatise tout ce qui se répète.",
+    chapeau: "Vos collaborateurs savent quelle pièce réclamer et quel écart vérifier. Nous écrivons ce savoir-faire avec eux, puis automatisons sa part répétitive dans vos outils existants. Votre cabinet garde la règle et la décision.",
     ariane: 'À propos',
     secondaire: { libelle: 'Comprendre la méthode', href: '/methode' },
   },

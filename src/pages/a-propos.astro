@@ -23,8 +23,8 @@ const renvois = [
   { texte: 'Le vocabulaire du cabinet, terme par terme, sourcé et daté, avec la frontière d’automatisation de chacun.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ];
 const appel = {
-  titre: 'Parlons de la tâche, pas d’un logiciel.',
-  texte: 'Décrivez le geste qui revient dans votre cabinet. Nous vous disons s’il se cadre, ce qu’il faudrait pour le prendre en charge, et à quel prix. Rien à envoyer.',
+  titre: 'Confiez-nous le geste qui revient.',
+  texte: 'Nous écrivons la règle avec vos équipes, puis nous prenons la tâche en charge dans leurs outils. Le périmètre, les validations et le prix sont fixés au devis. Une description suffit pour commencer.',
   points: ['La même personne écoute, écrit et code la règle.', 'Le devis dépend de la complexité, jamais du nombre de postes.', 'La décision reste à vos équipes.'],
 };
 ---
@@ -35,8 +35,8 @@ const appel = {
       <div class="pv-copy rv">
         <h2 id="pourquoi">Pourquoi Memlia existe</h2>
         <p>Un cabinet tourne sur des règles que personne n’a écrites. Quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel : ce savoir vit dans la tête de collaborateurs qui en ont déjà trop, difficiles à recruter, plus difficiles encore à garder.</p>
-        <p class="texte-2">Écrire cette frontière permet ensuite de <a href="/automatisation/saisie-comptable">prendre en charge la préparation des écritures</a> tout en laissant leur validation au cabinet.</p>
-        <p class="texte-2">Quand l’un d’eux part, la règle part avec lui. Memlia existe pour que ce savoir-faire appartienne au cabinet : écrit, testé, et automatisé partout où il se répète.</p>
+        <p class="texte-2">Quand l’un d’eux part, la règle part avec lui. Nous l’écrivons pour que vos équipes puissent la relire, la transmettre et la maintenir.</p>
+        <p class="texte-2">Cette règle permet ensuite de <a href="/automatisation/saisie-comptable">prendre en charge la préparation des écritures</a>. Elle précise ce qui se prépare seul, ce qui attend votre validation et ce qui reste une décision humaine.</p>
       </div>
     </ProofRow>
   </section>
@@ -45,9 +45,9 @@ const appel = {
     <ProofRow id="v2/10-une-personne">
       <div class="pv-copy rv">
         <h2 id="faisons">Ce que nous faisons</h2>
-        <p>Nous prenons une tâche répétitive de votre cabinet et nous la menons de bout en bout : observer le geste, écrire la règle dans vos mots, construire l’automatisation dans vos outils, la faire recetter par vos équipes, la maintenir. Vous n’achetez ni licence ni sièges : vous confiez une tâche, et elle est prise en charge.</p>
+        <p>Nous prenons une tâche répétitive de votre cabinet de l’observation à la maintenance. Nous écrivons sa règle dans vos mots et construisons l’automatisation dans vos outils existants. Vos équipes vérifient le résultat selon les critères convenus avant sa mise en service : c’est la recette.</p>
         <p class="texte-2">La règle donne la même limite quand vous choisissez de <a href="/automatisation/rapprochement-bancaire">confier le rapprochement bancaire</a> : la mécanique prépare, le cabinet tranche l’écart.</p>
-        <p class="texte-2">La même personne écoute la règle et la code. Une règle de cabinet se perd entre celui qui l’entend et celui qui l’implémente ; nous avons supprimé ce relais.</p>
+        <p class="texte-2">La même personne écoute la règle et la code. Les exceptions décrites par vos collaborateurs font partie du périmètre écrit et des essais.</p>
       </div>
     </ProofRow>
   </section>
@@ -60,8 +60,8 @@ const appel = {
     <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Votre règle, pas la nôtre.</h3><p class="carte-texte">En paie, en social, en fiscal, la règle est la vôtre. Vous pouvez <a href="/automatisation/paie">confier la mécanique répétitive de la paie</a> ou <a href="/automatisation/entrees-sorties-salaries">écrire la règle des entrées et sorties des salariés</a> annoncées hors portail ; nous l’écrivons telle que vous la donnez et nous la testons. Nous ne la validons pas à votre place : le jugement professionnel reste au cabinet.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Un service, pas un logiciel.</h3><p class="carte-texte">Vous ne paramétrez rien et vous ne payez pas de sièges. Vous confiez une tâche ; elle revient écrite, automatisée, recettée et maintenue, avec des critères de recette que vos équipes ont lus.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Votre règle et votre jugement.</h3><p class="carte-texte">En paie, en social, en fiscal, la règle est la vôtre. Vous pouvez <a href="/automatisation/paie">confier la mécanique répétitive de la paie</a> ou <a href="/automatisation/entrees-sorties-salaries">écrire la règle des entrées et sorties des salariés</a> annoncées hors portail. Nous l’écrivons avec vous et nous la testons. Devant un cas hors règle, l’automatisation s’arrête et présente le cas. Le jugement professionnel reste au cabinet.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Une tâche prise en charge entière.</h3><p class="carte-texte">Vous confiez une tâche ; nous l’écrivons, l’automatisons et la maintenons après la recette par vos équipes. Vous payez cette prise en charge selon sa complexité, pas un nombre de sièges. Le devis précise le support, la maintenance et les évolutions.</p></li>
       </ul>
     </div>
   </section>
@@ -69,8 +69,8 @@ const appel = {
   <section class="pv" id="kevin-kitanga" aria-labelledby="fondateur">
     <div class="tete rv">
       <h2 id="fondateur">Qui est derrière Memlia</h2>
-      <p><strong>Kevin Kitanga, fondateur.</strong> Il livre lui-même chaque automatisation : il observe le geste avec vos équipes, écrit la règle, la code et la fait recetter. Il signe les méthodes publiées sur ce site, sourcées et datées.</p>
-      <p>Il construit la prise en charge dans l’environnement déjà utilisé par l’équipe : classeur, export, logiciel métier, messagerie ou dossier partagé. La mécanique prépare ; le collaborateur saisit ou valide. La règle écrite et le savoir-faire restent au cabinet.</p>
+      <p><strong>Kevin Kitanga, fondateur.</strong> Il observe le geste avec vos équipes, écrit la règle et construit l’automatisation. Vos collaborateurs retrouvent ainsi leurs mots et leurs cas limites dans les essais qu’ils vérifient avec lui.</p>
+      <p>Il signe les méthodes publiées sur ce site. Elles montrent comment écrire une règle, la rejouer sur un jeu d’essai fictif et garder les refus visibles. Ce dossier inventé permet d’éprouver la mécanique avant de travailler sur un vrai dossier. La règle écrite et le savoir-faire restent au cabinet.</p>
     </div>
   </section>
 

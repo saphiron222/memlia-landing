@@ -16,7 +16,7 @@ const pages = [
   { route: '/automatisation-cabinet-comptable', modified: '2026-10-08' },
   { route: '/methode', modified: '2026-10-04' },
   { route: '/garanties', modified: '2026-10-06' },
-  { route: '/a-propos', modified: '2026-09-21' },
+  { route: '/a-propos', modified: '2026-10-08' },
 ];
 
 function htmlFor(route) {

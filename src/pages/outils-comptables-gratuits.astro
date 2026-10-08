@@ -1,14 +1,36 @@
 ---
 import Base from '@/layouts/Base.astro';
 import OutilHero from '@/components/sections/OutilHero.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
 import Picto from '@/components/Picto.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
 const h1 = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const title = `${h1} | Memlia`;
-const description = 'Des outils gratuits conçus pour rendre une règle lisible, garder les valeurs dans le navigateur et s’arrêter plutôt que deviner.';
+const description = 'Des outils gratuits pour calculer, contrôler ou préparer une tâche comptable. Choisissez selon les entrées, le résultat et les limites, sans inscription.';
 const url = `${SITE.url}${OUTILS_HUB_PATH}`;
+const titreHub = (outil: (typeof OUTILS_DISPONIBLES)[number]) => outil.slug === 'suivi-circularisation'
+  ? 'Suivi de circularisation : préparer les lettres et les retours'
+  : outil.h1;
+const actions: Record<string, string> = {
+  'bareme-heures-cac': 'Calculer la référence d’heures',
+  'seuil-signification-audit': 'Comparer vos scénarios de seuils',
+  'suivi-circularisation': 'Préparer les lettres et le suivi',
+  'generateur-prompt-ia-gratuit': 'Préparer une consigne texte',
+  'bibliotheque-prompts-comptables': 'Choisir un modèle de prompt',
+  'verificateur-prompt-ia': 'Examiner votre prompt',
+  'preparer-pseudonymiser-fichier-csv-fec': 'Préparer une copie pseudonymisée',
+  'diagnostic-maturite-ia-cabinet': 'Situer les pratiques du cabinet',
+  'generateur-prompt-expert-comptable': 'Écrire un prompt pour votre tâche',
+  'calculateur-roi-automatisation': 'Comparer vos hypothèses de ROI',
+  'generateur-charte-ia-cabinet': 'Préparer une trame de charte',
+  'verificateur-fec-local': 'Contrôler la structure du FEC',
+  'calculateur-marge-commerciale': 'Calculer la marge et les taux',
+  'calculateur-date-echeance-facture': 'Calculer la date d’échéance',
+  'calculateur-amortissement-comptable': 'Calculer le plan annuel',
+  'modele-rapprochement-bancaire-excel-gratuit': 'Accéder au classeur à télécharger',
+};
 const categoriesPubliees = OUTIL_CATEGORIES.map((category) => ({
   ...category,
   tools: OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id),
@@ -24,7 +46,7 @@ const graph = {
       '@type': 'ItemList', '@id': `${url}#list`, name: 'Outils comptables gratuits',
       numberOfItems: OUTILS_DISPONIBLES.length,
       itemListElement: OUTILS_DISPONIBLES.map((outil, index) => ({
-        '@type': 'ListItem', position: index + 1, name: outil.h1, url: `${SITE.url}${outilPath(outil)}`,
+        '@type': 'ListItem', position: index + 1, name: titreHub(outil), url: `${SITE.url}${outilPath(outil)}`,
       })),
     },
     {
@@ -43,10 +65,10 @@ const graph = {
   <div class="feuille outils-feuille">
     <OutilHero
       title={h1}
-      description="Chaque outil publié ici annonce ses entrées, son résultat et ses limites. Les valeurs restent dans votre navigateur ; devant un cas hors règle, l’outil refuse de produire un résultat."
+      description="Choisissez la tâche que vous voulez préparer, puis ouvrez l’outil sans inscription. Chaque carte indique les données nécessaires, le résultat disponible et sa limite. Vous gardez la validation et la décision pour votre dossier."
       proof="v2/24-outils-hub"
       titleId="outils-titre"
-      eyebrow="Règles visibles, calculs locaux"
+      eyebrow="Un besoin, un résultat, une limite"
       breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
     />
 
@@ -60,13 +82,15 @@ const graph = {
             {category.tools.map((outil) => (
               <li class="carte rv" data-outil-card>
                 <div class="carte-corps">
-                  <h3 class="carte-titre">{outil.h1}</h3>
+                  <h3 class="carte-titre">{titreHub(outil)}</h3>
                   <p class="carte-texte">{outil.description}</p>
                   <dl>
                     <div><dt>Entrée</dt><dd>{outil.promesse.entree}</dd></div>
                     <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
+                    <div><dt>Limite</dt><dd>{outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]}</dd></div>
                   </dl>
-                  <a class="carte-action carte-lien" href={outilPath(outil)}>Utiliser sans compte<Picto nom="fleche" taille={14} /></a>
+                  <a class="carte-action carte-lien outil-carte-action" href={outilPath(outil)}>{actions[outil.slug] ?? 'Ouvrir l’outil'}<Picto nom="fleche" taille={14} /></a>
+                  <p>Gratuit, sans inscription.</p>
                 </div>
               </li>
             ))}
@@ -75,6 +99,12 @@ const graph = {
       </section>
     ))}
   </div>
+  <AppelFinal
+    id="hub-confier"
+    titre="La même tâche revient dans vos dossiers ?"
+    texte="Nous écrivons sa règle dans vos mots, puis nous prenons en charge la tâche entière dans vos outils existants. Vos collaborateurs gardent les validations et le jugement."
+    points={['Règle et limites écrites avec votre cabinet', 'Essais sur des données fictives, puis validation par votre équipe', 'Livraison et maintenance dans le périmètre convenu']}
+  />
 </Base>
 
 <style>
