@@ -44,6 +44,15 @@ const appel = {
           <input id="cabinet" name="cabinet" type="text" maxlength="160" autocomplete="organization" />
         </div>
         <div class="champ">
+          <label for="type_cabinet">Type de cabinet <span class="texte-2">(facultatif)</span></label>
+          <select id="type_cabinet" name="type_cabinet">
+            <option value="">Choisir un type de cabinet</option>
+            <option value="ec">Expertise comptable</option>
+            <option value="cac">Commissariat aux comptes</option>
+            <option value="mixte">Mixte</option>
+          </select>
+        </div>
+        <div class="champ">
           <label for="courriel">Votre adresse de courriel</label>
           <input id="courriel" name="courriel" type="email" required maxlength="254" autocomplete="email" inputmode="email" />
         </div>
@@ -244,12 +253,12 @@ const appel = {
   .contact-form { display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
   .champ { display: grid; gap: 8px; }
   .champ label { font-weight: 500; color: var(--texte-fort); }
-  .champ input[type='text'], .champ input[type='email'], .champ textarea {
+  .champ input[type='text'], .champ input[type='email'], .champ textarea, .champ select {
     width: 100%; min-height: 48px; padding: 12px 14px; font: inherit; color: var(--texte-fort);
     border: 1px solid var(--ligne-forte); border-radius: var(--r-bouton); background: var(--blanc);
   }
   .champ textarea { resize: vertical; line-height: 1.5; }
-  .champ input:focus-visible, .champ textarea:focus-visible { outline: 2.5px solid var(--focus); outline-offset: 2px; }
+  .champ input:focus-visible, .champ textarea:focus-visible, .champ select:focus-visible { outline: 2.5px solid var(--focus); outline-offset: 2px; }
   .champ-aide { margin: 0; font-size: var(--t-sm); }
   .champ-consentement { grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 12px; }
   .champ-consentement input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--vert-appui); }
