@@ -13,7 +13,7 @@ const pages = [
   { route: '/automatisation/rapprochement-bancaire', modified: '2026-10-06' },
   { route: '/automatisation/notes-de-frais', modified: '2026-10-06' },
   { route: '/automatisation/factures-fournisseurs', modified: '2026-10-06' },
-  { route: '/automatisation-cabinet-comptable', modified: '2026-10-06' },
+  { route: '/automatisation-cabinet-comptable', modified: '2026-10-08' },
   { route: '/methode', modified: '2026-10-04' },
   { route: '/garanties', modified: '2026-10-06' },
   { route: '/a-propos', modified: '2026-09-21' },
