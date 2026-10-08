@@ -48,6 +48,7 @@
       "procédure alternative circularisation fournisseur",
       "procédure alternative circularisation client"
     ],
+    "automatisation revue analytique": [],
     "automatisation entrées sorties salariés cabinet comptable": [],
     "gestion entrées sorties salariés cabinet comptable": [],
     "délai remise solde de tout compte": [
@@ -282,6 +283,28 @@
       "statut": "candidate-non-publiee",
       "nombreSuggestions": 2,
       "familleCandidate": "cac-circularisation-alternatives",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "automatisation revue analytique",
+      "famille": "accueil-cac",
+      "typeCandidat": "service",
+      "pageCandidate": "https://memlia.fr/commissaires-aux-comptes",
+      "mesureLe": "2026-10-05T22:17:29.146Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 0,
+      "familleCandidate": "cac-accueil-cac",
       "intention": "informationnelle-pratique",
       "decision": "candidate provisoire à arbitrer par C3, non publiée",
       "niveauPreuve": "autocomplétion observée, aucun volume quantifié"

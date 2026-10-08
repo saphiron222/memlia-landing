@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "reviewer": "metier",
+  "reviewedAt": "2026-10-06",
+  "observations": [
+    "Re-revue limitée au seul défaut D1 du même candidat revue-analytique-cac et à son critère de levée ; aucune nouvelle revue globale ni réouverture des sources réglementaires. Le FAIL initial et sa résolution sont conservés dans revue-metier.md.",
+    "D1 levé : preuves/rejouer.mjs:6 refuse previous ou current non finis avant soustraction et calcul du taux. Pour un compte présent, compare(null, 8000, true) et compare(8000, null, true) retournent montant-absent-ou-invalide, delta null, percentage null, conclusion null, sans classement ordinaire d'examen. Le résultat reste identique après sérialisation JSON. corps.md:31 explicite l'absence de montant N-1 ou N et l'absence d'écart et de taux.",
+    "Rejeu indépendant exécuté sur une copie inchangée du script, code de sortie 0 : 9 cas fictifs PASS ; saisies préservées et aucune conclusion produite. Résultats identiques à preuves/rejeu.json hors executedAt. Les deux cas montant-comparatif-absent et montant-courant-absent sont présents ; les sept cas antérieurs restent PASS.",
+    "Contrôle des valeurs brutes avant JSON : aucun NaN, Infinity ou -Infinity dans les sorties des neuf cas. null n'est pas zéro : compare(0, 8000, true) conserve base-nulle et delta 8000, tandis que N-1 null donne une exception sans calcul. Un compte absent conserve compte-nouveau. Les entrées null, undefined, NaN, Infinity, -Infinity et chaîne '0' sont refusées par compare sur chaque période.",
+    "PASS métier du candidat après levée de D1, sans extension des preuves : démonstrateur fictif seulement, pas intégration livrée, persistance de saisies ni conformité de dossier établie. Build recette seule annoncé PASS, non relancé dans cette re-revue ; image, rendu et publication restent à dev. Dans le dossier candidat, seuls revues.json et revue-metier.md ont été modifiés ; preuves/rejeu.json est resté inchangé. Aucune action Kanban ou Git."
+  ]
+}

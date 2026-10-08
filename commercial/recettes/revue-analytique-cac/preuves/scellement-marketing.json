@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "service-candidat-scelle",
+  "slug": "revue-analytique-cac",
+  "sealedAt": "2026-10-06T04:08:07.522Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/revue-analytique-cac.md",
+      "bytes": 11438,
+      "sha256": "b8e848d8a55aeaae825a4b0d5ab23430029e27a19e8ebbf8c9e4469cfd9af973"
+    },
+    "manifest": {
+      "path": "commercial/services/revue-analytique-cac/manifest.json",
+      "bytes": 2847,
+      "sha256": "20e945ece125ebdd37cc75c0f5d17e80828274e3ece670ac2624d2d9e01ca45c"
+    },
+    "recipe": {
+      "path": "commercial/recettes/revue-analytique-cac/recette.json",
+      "bytes": 2549,
+      "sha256": "349a3488972432940354b436c90de289fdf41a9fbb2d1146b9337ad1bca73d9f"
+    },
+    "body": {
+      "path": "commercial/recettes/revue-analytique-cac/corps.md",
+      "bytes": 9607,
+      "sha256": "99aa497f53fd7f4ae29873b915cecc5476d66fbc648035e39e96e993ae47c381"
+    },
+    "review": {
+      "path": "commercial/recettes/revue-analytique-cac/revues.json",
+      "bytes": 2043,
+      "sha256": "3fd3aa46caf92b7b235033a12395ea0764c20f10dc21d6d8ca43cc8127b8eab8"
+    }
+  }
+}

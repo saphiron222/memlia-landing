@@ -1,0 +1,42 @@
+{
+  "verifiedAt": "2026-10-06",
+  "sources": [
+    {
+      "authority": "H2A",
+      "url": "https://h2a-france.org/normes/procedures-analytiques/",
+      "version": "NEP 520, arrêté 13 novembre 2024, JO 19 novembre 2024, A.821-77",
+      "openedAt": "2026-10-06",
+      "excerpts": [
+        {"paragraph": "05", "quote": "Procédures analytiques de substance : procédures analytiques menées en déterminant les montants ou ratios attendus dans les comptes et les écarts jugés acceptables entre ces montants ou ratios et ceux enregistrés."},
+        {"paragraph": "09", "quote": "Lorsque les procédures analytiques mettent en évidence des informations qui ne sont pas en corrélation avec d’autres informations ou des variations significatives ou des tendances inattendues, le commissaire aux comptes détermine les procédures d’audit à mettre en place pour élucider ces variations et ces incohérences."}
+      ]
+    },
+    {
+      "authority": "H2A",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "version": "NEP 315, arrêté 13 novembre 2024, JO 19 novembre 2024, A.821-72",
+      "openedAt": "2026-10-06",
+      "excerpts": [
+        {"paragraph": "14", "quote": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes."},
+        {"paragraph": "46", "quote": "Pour ce faire, il apprécie :\n • la manière dont les outils fonctionnent ; et\n • le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils."},
+        {"paragraph": "48 d)", "quote": "Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46."}
+      ],
+      "scope": "Application de la norme aux missions de certification relatives aux exercices ouverts à compter du 19 novembre 2024. Fiche outil = livrable Memlia proposé, non document prescrit/homologué."
+    }
+  ],
+  "research": {
+    "architecture": "docs/strategy/site-v3/cac/ARCHITECTURE-CAC.md",
+    "terrain": "docs/strategy/site-v3/cac/TERRAIN-CAC.md V008–V010 : lexique proxy EC, outil CNCC, question de formation ; pas enquête de fréquence",
+    "demand": "docs/strategy/site-v3/cac/DEMANDE-CAC.md priorité 1, outils revue analytique Excel",
+    "query": "automatisation revue analytique",
+    "autocomplete": "0 suggestion mesurée le 2026-10-05T22:17:29.146Z ; volume inconnu",
+    "differentiation": "Service récurrent maintenu vs outil N/N-1 autonome et article pédagogique. Aucun score concurrent inventé."
+  },
+  "handoff": {
+    "authorPublic": "Kevin Kitanga, fondateur Memlia, pas CAC",
+    "audienceType": "Cabinets de commissariat aux comptes",
+    "incomingLinks": "Trois sources de l'architecture planifiées, non encore publiées. Dev vérifie disponibilité et substitue des sources indexables pertinentes si nécessaire.",
+    "images": "Aucune image ni publication dans ce lot ; dev produit un cadre HTML figé propre à la page.",
+    "charter": "Charte v5 relue dans le candidat PR107 approuvé par metier ; la v4 demeure sur main, intégration B1 distincte. Aucun document partagé modifié ici."
+  }
+}

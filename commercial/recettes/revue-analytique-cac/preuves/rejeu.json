@@ -1,0 +1,234 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-06T04:04:25.907Z",
+  "game": "Comparaisons Atelier",
+  "command": "node commercial/recettes/revue-analytique-cac/preuves/rejouer.mjs",
+  "scope": "Démonstrateur de règle, pas automatisation livrée. Choix des seuils et conclusion réservés au professionnel.",
+  "parameters": {
+    "absolute": 5000,
+    "percentage": 20,
+    "purpose": "Convention fictive de tri, aucun seuil normatif",
+    "convention": "(N - N-1) / abs(N-1) × 100"
+  },
+  "cases": [
+    {
+      "id": "base-nulle",
+      "input": {
+        "previous": 0,
+        "current": 12000,
+        "previousAccountExists": true
+      },
+      "expected": {
+        "status": "base-nulle",
+        "delta": 12000,
+        "percentage": null,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "base-nulle",
+        "delta": 12000,
+        "percentage": null,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "compte-nouveau",
+      "input": {
+        "previous": null,
+        "current": 8000,
+        "previousAccountExists": false
+      },
+      "expected": {
+        "status": "compte-nouveau",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "compte-nouveau",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "montant-comparatif-absent",
+      "input": {
+        "previous": null,
+        "current": 8000,
+        "previousAccountExists": true
+      },
+      "expected": {
+        "status": "montant-absent-ou-invalide",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "montant-absent-ou-invalide",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "montant-courant-absent",
+      "input": {
+        "previous": 8000,
+        "current": null
+      },
+      "expected": {
+        "status": "montant-absent-ou-invalide",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "montant-absent-ou-invalide",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "reclassement-non-valide",
+      "input": {
+        "previous": [
+          10000,
+          0
+        ],
+        "current": [
+          0,
+          10000
+        ],
+        "approved": false
+      },
+      "expected": {
+        "status": "correspondance-a-valider",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "correspondance-a-valider",
+        "delta": null,
+        "percentage": null,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "reclassement-valide",
+      "input": {
+        "previous": [
+          10000,
+          0
+        ],
+        "current": [
+          0,
+          10000
+        ],
+        "approved": true,
+        "approval": "validation de scénario fictif, pas jugement CAC réel"
+      },
+      "expected": {
+        "status": "sous-critere",
+        "delta": 0,
+        "percentage": 0,
+        "conclusion": null,
+        "presentationChanged": true
+      },
+      "actual": {
+        "status": "sous-critere",
+        "delta": 0,
+        "percentage": 0,
+        "conclusion": null,
+        "presentationChanged": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "changement-signe",
+      "input": {
+        "previous": 10000,
+        "current": -2000
+      },
+      "expected": {
+        "status": "changement-signe",
+        "delta": -12000,
+        "percentage": -120,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "changement-signe",
+        "delta": -12000,
+        "percentage": -120,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "variation-ordinaire",
+      "input": {
+        "previous": 20000,
+        "current": 26000
+      },
+      "expected": {
+        "status": "critere-examen",
+        "delta": 6000,
+        "percentage": 30,
+        "conclusion": null
+      },
+      "actual": {
+        "status": "critere-examen",
+        "delta": 6000,
+        "percentage": 30,
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "saisie-preservee",
+      "input": {
+        "user": {
+          "comment": "Pièce à examiner par le professionnel",
+          "conclusion": null
+        },
+        "previous": 20000,
+        "current": 26000
+      },
+      "expected": {
+        "user": {
+          "comment": "Pièce à examiner par le professionnel",
+          "conclusion": null
+        },
+        "generated": {
+          "status": "critere-examen",
+          "delta": 6000,
+          "percentage": 30,
+          "conclusion": null
+        }
+      },
+      "actual": {
+        "user": {
+          "comment": "Pièce à examiner par le professionnel",
+          "conclusion": null
+        },
+        "generated": {
+          "status": "critere-examen",
+          "delta": 6000,
+          "percentage": 30,
+          "conclusion": null
+        }
+      },
+      "status": "PASS"
+    }
+  ]
+}
