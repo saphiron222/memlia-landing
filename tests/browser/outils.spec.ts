@@ -23,7 +23,19 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   for (const outil of OUTILS_DISPONIBLES) {
     await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+    const card = page.locator('[data-outil-card]').filter({ has: page.locator(`a[href="${outilPath(outil)}"]`) });
+    await expect(card.locator('dt')).toHaveText(['Entrée', 'Résultat', 'Limite']);
+    await expect(card.locator('dd').nth(0)).toHaveText(outil.promesse.entree);
+    await expect(card.locator('dd').nth(1)).toHaveText(outil.promesse.resultat);
+    await expect(card.locator('dd').nth(2)).toHaveText(outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]);
+    await expect(card).toContainText('Gratuit, sans inscription.');
+    await expect(card.locator('a')).not.toHaveText(/Utiliser sans compte|Ouvrir l’outil/);
   }
+  await expect(page.locator('#hub-confier a')).toHaveText('Confier une première tâche');
+  await expect(page.locator('#hub-confier a')).toHaveAttribute('href', '/contact');
+  expect(await page.evaluate(() => [...document.querySelectorAll('[data-outil-card]')].every(card => Boolean(card.compareDocumentPosition(document.querySelector('#hub-confier')!) & Node.DOCUMENT_POSITION_FOLLOWING)))).toBe(true);
+  await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
+  await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
