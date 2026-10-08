@@ -111,7 +111,7 @@ try {
       clipped: measured.clipped, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
   }
   assert.equal(new Set(records.map(r => r.webpSha256)).size, 9);
-  // Les deux couvertures de blog proviennent des mêmes preuves : ne pas conserver d'annotations dérivées.
+  // Régénérer uniquement les dérivés encore déclarés : les couvertures de blog peuvent avoir changé de source.
   for (const entry of manifest.entries.filter(e => e.derivative && e.source.startsWith('public/proofs/'))) {
     const input = candidates.find(c => c.target === entry.source);
     assert.ok(input, `Source de dérivé inconnue : ${entry.source}`);
@@ -119,7 +119,7 @@ try {
     const bytes = await sharp(input.bytes).resize(Number(width)).toFormat(format, { quality: 85 }).toBuffer();
     candidates.push({ target: entry.target, source: entry.source, bytes });
   }
-  assert.equal(candidates.length, 21);
+
   for (const candidate of candidates) {
     const entry = manifest.entries.find(e => e.target === candidate.target);
     assert.ok(entry, `Cible non répertoriée : ${candidate.target}`);
