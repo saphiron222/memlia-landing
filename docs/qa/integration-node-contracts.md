@@ -8,14 +8,14 @@ Une route supplémentaire, une route manquante ou une collision reste un échec.
 Les contrôles documentaires de portée/champs couvrent les deux collections ; la
 date fixe historique ne s'applique pas à un nouveau guide.
 
-Le témoin accueil conserve son empreinte historique. Un guide scellé ajoute un
-lien au footer : le test vérifie sa présence unique, sa classe, son intitulé,
-son emplacement et la source intégrale du fragment `li`/`a`, puis retire
-uniquement le `li` correspondant par ses offsets
-source. Aucun DOM n'est resérialisé : tous les autres octets de la page restent
-comparés au témoin. Les mutations de lien sont testées séparément. Un nouveau
-contenu de l'accueil ne peut donc pas passer en mettant automatiquement à jour
-l'empreinte, et une modification du reste de la page demeure refusée.
+Un guide scellé ajoute un lien au footer : le test vérifie sa présence unique,
+sa classe, son intitulé, son emplacement et la source intégrale du fragment
+`li`/`a`, puis retire uniquement le `li` correspondant par ses offsets source,
+sans resérialiser le DOM. Les mutations de lien sont testées séparément. Depuis
+la navigation v3 (témoin main 4f42a88b), l'empreinte de l'accueil porte sur le
+contenu de `<main>` hors nœuds `data-accueil-cac` ; le chrome v3 est testé à
+part. Un nouveau contenu de l'accueil ne peut donc pas passer en mettant
+automatiquement à jour l'empreinte.
 
 Le fragment autorisé suit exactement le rendu du Footer historique, avec son
 attribut Astro `data-astro-cid-jo6i4kqk` (ou sans scope dans la fixture unitaire).

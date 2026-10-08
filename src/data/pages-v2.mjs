@@ -53,7 +53,7 @@ export const PAGES_V2 = {
     titre: 'Confier une première tâche | Contact Memlia',
     description: "Décrivez la tâche que vos collaborateurs refont à la main : nous vous disons si elle se cadre, ce qu’il faut pour la prendre en charge, et à quel prix.",
     h1: 'Quelle tâche vos collaborateurs refont-ils encore à la main ?',
-    chapeau: "Décrivez-la en trois phrases : le geste, les outils, le résultat attendu. Nous vous disons ce qui se cadre, ce qu’il faudrait pour le prendre en charge, et à quel prix. Rien à envoyer, aucun engagement.",
+    chapeau: "Décrivez le geste, vos outils et le résultat attendu. Nous regardons comment prendre la tâche entière en charge dans vos outils existants. Votre équipe garde les décisions.",
     ariane: 'Contact',
     secondaire: { libelle: 'Écrire à Memlia', href: 'mailto:contact@memlia.fr' },
   },
