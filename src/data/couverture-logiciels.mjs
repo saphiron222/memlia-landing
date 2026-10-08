@@ -20,6 +20,19 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'secretariat-juridique': {
+    dejaFait: [
+      { outil: 'Lexis PolyActe', geste: 'rédige les actes et suit les assemblées ; Ubikap dématérialise les registres et LegalVision traite les formalités', source: { url: 'https://www.lexisnexis.com/fr-fr/produits/logiciel-secretariat-juridique', libelle: 'Lexis PolyActe, secrétariat juridique', consulteLe: '2026-10-06' } },
+      { outil: 'ACD et VIKTA', geste: 'proposent génération d’actes, signatures, registres et formalités ; le partenariat échange données comptables et documents', source: { url: 'https://www.acd-groupe.fr/partenaire-vikta/', libelle: 'ACD, partenariat VIKTA', consulteLe: '2026-10-06' } },
+      { outil: 'Captain Contrat', geste: 'propose aux entreprises un accompagnement pour l’approbation des comptes', source: { url: 'https://www.captaincontrat.com/gestion/approbation-des-comptes/etapes-approbation-depot-comptes-annuels', libelle: 'Captain Contrat, approbation et dépôt', consulteLe: '2026-10-06' } },
+      { outil: 'LegalPlace', geste: 'propose des services juridiques aux entreprises ; le suivi précis se vérifie dans l’offre utilisée', source: { url: 'https://www.legalplace.fr/guides/approbation-comptes-sas/', libelle: 'LegalPlace, approbation des comptes', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'l’échéancier d’approbation et de dépôt du portefeuille, uniquement s’il reste manuel hors du circuit juridique déjà couvert ;',
+      'les rappels de dépôt préparés à partir de dates et références confirmées par le cabinet, à valider avant envoi ;',
+      'la vérification de l’outil, de l’édition et des options précède toute proposition ; les fonctions Cegid et Sage restent à vérifier, pas présumées absentes.',
+    ],
+  },
   'entrees-sorties-salaries': {
     "dejaFait": [
       {
