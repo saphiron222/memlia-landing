@@ -8,14 +8,17 @@ import Button from '@/components/Button.astro';
     <span class="eyebrow">Erreur 404</span>
     <h1>Cette page est introuvable.</h1>
     <p class="texte-2">Vous pouvez revenir à l’accueil ou consulter nos articles sur les tâches répétitives des cabinets.</p>
-    <Button href="/" variante="principal">Retour à l’accueil</Button>
-    <Button href="/blog" variante="contour">Consulter nos articles</Button>
-    <Button href="/contact" variante="contour">Confier une première tâche</Button>
+    <div class="erreur-actions">
+      <Button href="/" variante="principal">Retour à l’accueil</Button>
+      <Button href="/blog" variante="contour">Consulter nos articles</Button>
+      <Button href="/contact" variante="contour">Confier une première tâche</Button>
+    </div>
   </section>
 </Base>
 
 <style>
   .erreur { padding-block: 96px; min-height: 60vh; }
+  .erreur-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--espace-4); }
   h1 { font-size: var(--t-4xl); margin-block: 20px; }
   p { margin-bottom: 32px; max-width: 48ch; }
 </style>

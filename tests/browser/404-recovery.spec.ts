@@ -1,6 +1,40 @@
 import { test, expect } from '@playwright/test';
 
 for (const route of ['/404', '/copy-404-adresse-absente']) {
+  for (const width of [320, 375]) {
+    for (const input of ['clic', 'toucher']) {
+      test(`bords visibles ${input} ${route} à ${width}px`, async ({ browser, baseURL }) => {
+        const context = await browser.newContext({ baseURL, viewport: { width, height: 900 }, hasTouch: true });
+        const page = await context.newPage();
+        try {
+          for (const [name, href] of [
+            ['Retour à l’accueil', '/'],
+            ['Consulter nos articles', '/blog'],
+            ['Confier une première tâche', '/contact'],
+          ]) {
+            for (const edge of ['haut', 'bas', 'gauche', 'droite']) {
+              await page.goto(route);
+              const link = page.locator('main .erreur').getByRole('link', { name, exact: true });
+              await link.scrollIntoViewIfNeeded();
+              const box = await link.boundingBox();
+              expect(box).not.toBeNull();
+              const x = edge === 'gauche' ? box!.x + 2 : edge === 'droite' ? box!.x + box!.width - 2 : box!.x + box!.width / 2;
+              const y = edge === 'haut' ? box!.y + 2 : edge === 'bas' ? box!.y + box!.height - 2 : box!.y + box!.height / 2;
+              if (input === 'toucher') await page.touchscreen.tap(x, y);
+              else await page.mouse.click(x, y);
+              await expect(page, `${name}, bord ${edge}, ${input}`).toHaveURL(new RegExp(`${href}$`));
+              await expect(page.locator('main h1')).toBeVisible();
+            }
+          }
+        } finally {
+          await context.close();
+        }
+      });
+    }
+  }
+}
+
+for (const route of ['/404', '/copy-404-adresse-absente']) {
   for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     test(`reprise du parcours ${route} à ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
