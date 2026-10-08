@@ -22,37 +22,6 @@ concurrency:
 # contrôle requis par la protection de main, réussit seulement si tous ont
 # réussi. Règle tenue par tests/scripts/ci-parallele.test.mjs.
 jobs:
-  csv-regen:
-    name: Régénération CSV temporaire
-    if: github.event.pull_request.number == 159
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm run regen:generated
-        env:
-          CF_PAGES: "1"
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: csv-generated
-          path: |
-            src/data/pages-lastmod.json
-            editorial/resources/glossaire/manifest.json
-            docs/qa/hub-ressources/metier-fix-c-build-receipt.json
-            docs/qa/hub-ressources/metier-fix-c-register.json
-            docs/qa/hub-ressources/metier-review-r5/reaffirmation.json
-            docs/qa/site-copy-b/preuve-glossaire-metier.json
-            dist/
   portes:
     name: Portes déterministes
     runs-on: ubuntu-latest

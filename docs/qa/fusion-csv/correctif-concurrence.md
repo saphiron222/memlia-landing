@@ -21,4 +21,6 @@ Les premières répétitions locales utilisent Astro dev et un empaquetage cibl�
 
 Main intégré sans réécrire l'historique ; ajouts de preuve CSV et règle HTTP conservés avec les ajouts main. Dérivés régénérés par `npm run regen:generated` sur Ubuntu, run https://github.com/saphiron222/memlia-landing/actions/runs/37749641137 ; job de régénération SUCCESS. Le job temporaire est retiré du candidat final : workflow identique à main. L'échec des autres jobs du premier run précède l'intégration des dérivés et ne constitue pas la preuve du candidat final.
 
+PR166 ayant avancé main pendant cette opération, une seconde intégration conserve son système de pages : l'entrée CSV du hub rejoint la liste d'outils structurée, celle de méthode reste un paragraphe dans le style main. Nouveau job de régénération : https://github.com/saphiron222/memlia-landing/actions/runs/37751567158. Aucun changement de F1/F2 pendant cette intégration.
+
 La conclusion Repository gates finale sera consignée dans le handoff de la carte après lecture GitHub. Re-revue QA à poursuivre sur F1/F2 et fini seulement ; aucune fusion main ni déploiement de production.
