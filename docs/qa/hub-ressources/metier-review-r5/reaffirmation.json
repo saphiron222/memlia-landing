@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-10-08T03:11:19.095Z",
+  "reaffirmeLe": "2026-10-08T05:40:17.430Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "6ce782bf84f4a476abddeeab459d86011899a53099a5e9c88a1f984ff4371e23",
+  "registreSha256": "b77af2f558f946a55ea5cfb1381f4acb2f009d2bf6d418ccc3ce134273c4d711",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
   "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
@@ -13,15 +13,15 @@
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "c2f26c231873c8b268900800936485e24a38005dbef202ff789d426b0f2dad3f",
-      "sujetReaffirme": "225be103f83e8d9c7b837c0704e16ebd13c8b8cf7354cbccc8917d49d895ff44",
-      "feuillesEcartees": 707,
+      "sujetReaffirme": "690cfdc5d9d1b2cb22dd5bd770fad7e64adeb002d22ffa747c6852cc666d9a49",
+      "feuillesEcartees": 715,
       "feuillesParChamp": {
         "assetBundleDigest.assetBundleDigest": 1,
         "buildOutputDigest.buildOutputDigest": 1,
         "candidate.fanOut": 10,
         "claimsEvidence.sourceContentSha256": 49,
-        "claimsEvidence.sha256": 78,
-        "claimsEvidence.text": 78,
+        "claimsEvidence.sha256": 82,
+        "claimsEvidence.text": 82,
         "claimsEvidence.checkedAt": 15,
         "claimsEvidence.claimIds": 63,
         "claimsEvidence.finalUrl": 23,
@@ -65,11 +65,11 @@
       },
       "affirmationsRenduesVerifiees": 77,
       "verdictsConserves": 27,
-      "candidateHash": "ec0b6e78f30c8e95e4f8ffcd563ad216f2be13fa8ee43cda33f7dc3c44c68a83",
-      "auditHash": "4e936a1e265885e65ce9c525e80b467b52aa67aad94b3da7dfd8aa28c2f5170c",
-      "manifestSha256": "1d440ba25483a24a10ad120ae54e8e69a824a1f217659dc21b35fb77cbed816c",
+      "candidateHash": "4e7814b55a77d2eca13f9c6bdb0bffb8314c67fbe55cbf52169f2f95941d2975",
+      "auditHash": "22b4e861a14ce7a8c60f933e6ef4772e5f02cd571d60cf2e5cd07b227944cb9e",
+      "manifestSha256": "11ea50f5a374f9e27c300f7652fa43c561811064b1a0030e53bbbd8f9733dd1e",
       "preuveRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-      "preuveSha256": "aee57bb557bbfd0b69d865c833b64d116a9941b7f0a564fa65938370bdb3017f"
+      "preuveSha256": "e03768f659562898b36353aff8c07d36ae7530286009fa1f71d2a4c248ea381a"
     }
   }
 }
