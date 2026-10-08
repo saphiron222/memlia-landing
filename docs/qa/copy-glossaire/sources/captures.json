@@ -1,0 +1,30 @@
+[
+  {
+    "id": "banque-france-sepa",
+    "url": "https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa",
+    "checkedAt": "2026-10-08T00:05:47.652Z",
+    "method": "curl --fail --location --max-time 30",
+    "bytes": 315986
+  },
+  {
+    "id": "microsoft-rag",
+    "url": "https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview",
+    "checkedAt": "2026-10-08T00:05:47.977Z",
+    "method": "curl --fail --location --max-time 30",
+    "bytes": 72656
+  },
+  {
+    "id": "cnil-rag",
+    "url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+    "checkedAt": "2026-10-08T00:05:48.239Z",
+    "method": "curl --fail --location --max-time 30",
+    "bytes": 137080
+  },
+  {
+    "id": "production-avant",
+    "url": "https://memlia.fr/glossaire",
+    "checkedAt": "2026-10-08T00:05:48.685Z",
+    "method": "curl --fail --location --max-time 30",
+    "bytes": 316401
+  }
+]

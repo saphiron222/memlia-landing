@@ -8,12 +8,12 @@ import type { ContenuAccueil } from './types';
 const familles = famillesDeLaProfession('ec');
 const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
-/** Copie EC extraite sans changement ; les sources partagées restent les mêmes. */
+/** Copie de l’accueil EC ; les sources partagées restent les mêmes. */
 export const CONTENU_EC: ContenuAccueil = {
   hero: {
     etiquette: "Automatisation IA pour cabinets d’expertise comptable",
     titre: "Votre cabinet tourne sur un savoir-faire que personne n’a écrit.",
-    texte: "Nous l’écrivons, puis nous automatisons la part répétitive du travail de vos collaborateurs, dans les outils qu’ils utilisent déjà. Ils gardent la décision. Votre cabinet garde le savoir.",
+    texte: "Confiez-nous une tâche répétitive. Nous en écrivons la règle avec vos collaborateurs, puis nous l’automatisons dans leurs outils. Ils gardent la décision. Votre cabinet garde le savoir.",
     poster: "/media/r9/hero-poster-1200.webp",
     video: "/media/r9/explainer-hero-45s.mp4",
     sousTitres: "/media/r9/explainer.vtt",
@@ -23,7 +23,7 @@ export const CONTENU_EC: ContenuAccueil = {
     invitation: "Voir une règle appliquée à une tâche",
     destinations: [
   { texte: 'Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, de l’observation à la maintenance.', libelle: 'Découvrir le service', href: PAGES_V2.service.chemin },
-  { texte: 'Observer le geste réel, écrire la règle, éprouver sur les cas qui doivent échouer, livrer après recette.', libelle: 'Comment nous travaillons', href: PAGES_V2.methode.chemin },
+  { texte: 'Nous observons le geste, écrivons la règle et la testons sur des cas fictifs. Vos équipes vérifient le résultat avant la livraison : c’est la recette.', libelle: 'Comment nous travaillons', href: PAGES_V2.methode.chemin },
   { texte: 'Dans le doute, l’automatisation s’arrête et vous présente le cas. Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
   { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ],
@@ -44,7 +44,7 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   promesse: {
     titre: "Nous prenons la tâche entière. Vous gardez le jugement.",
-    texte: "Nous observons le geste, nous écrivons la règle avec vous, nous construisons l’automatisation dans votre environnement et nous la maintenons. Vous n’avez rien à configurer.",
+    texte: "De l’observation à la maintenance, nous prenons en charge la tâche confiée. Nous écrivons sa règle avec vous et construisons l’automatisation dans vos outils. Vos équipes la testent avant la livraison.",
     image: "01-flux",
     points: [
   {
@@ -53,7 +53,7 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   {
     titre: 'Les exceptions remontent, elles ne disparaissent pas.',
-    texte: 'Ce qui est certain est préparé ; ce qui est ambigu vous est présenté, jamais avalé.',
+    texte: 'Une pièce illisible ou un cas hors règle arrête le traitement concerné. Votre équipe voit ce qui bloque et décide de la suite.',
   },
   {
     titre: 'La décision reste à vos équipes.',
@@ -74,20 +74,20 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   integration: {
     titre: "Vos outils restent le point de départ.",
-    texte: "Aucune plateforme à adopter. L’automatisation se greffe sur ce que votre cabinet utilise déjà : logiciel métier, exports, messagerie, dossier partagé, classeur.",
-    limites: "Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche et ce qui ne se branche pas.",
+    texte: "Nous partons de votre logiciel métier, de vos fichiers et de vos échanges. Nous prenons en charge les gestes répétitifs qui restent entre ces outils, en conservant ce qui fonctionne déjà.",
+    limites: "Avant le devis, nous vérifions ce que votre logiciel fait déjà, les formats disponibles et les accès nécessaires. Le périmètre précise les gestes pris en charge.",
     regles: [{"titre": "Conserver ce qui fonctionne.", "texte": "Ne pas remplacer un outil uniquement pour introduire l’automatisation."}, {"titre": "Relier le nécessaire.", "texte": "Définir les sources, droits et traitements avant de développer."}, {"titre": "Prévoir l’évolution.", "texte": "Analyser les changements de règle ou d’outil avant toute adaptation."}],
     image: "08-integration",
   },
   preuves: {
     etiquette: "proposition vs saisie",
     titre: "Automatiser la mécanique. Pas le jugement.",
-    texte: "Nous distinguons ce qui peut être exécuté, ce qui doit être proposé et ce qui doit être refusé.\n      Une information ambiguë bloque l’écriture concernée et appelle une revue humaine.",
+    texte: "Pour chaque tâche, la règle distingue ce qui se prépare seul, ce qui attend votre validation et ce qui reste humain. Une information ambiguë bloque l’écriture concernée et vous présente le cas à examiner.",
     propriete: "Memlia propose. Le cabinet saisit ou valide. Ce que Memlia génère se régénère ;\n      ce que le cabinet saisit ne se touche jamais. Aucun envoi externe sans validation humaine.",
     image: "03-controle",
     reperes: [
-  { title: 'Preuve de méthode', text: 'Règle écrite, cas limites, refus attendus et recette avant livraison.' },
-  { title: 'Preuve de contrôle', text: 'Proposition visible, validation humaine et refus des sorties sensibles non prévues au contrat.' },
+  { title: 'Preuve de méthode', text: 'Sur un dossier fictif, nous rejouons les cas prévus et ceux qui doivent être refusés. Vos équipes vérifient les résultats avant la livraison.' },
+  { title: 'Preuve de contrôle', text: 'Vous voyez la proposition et la raison des écarts. Votre équipe valide, corrige ou refuse ; ses saisies restent intactes.' },
   { title: 'Preuve de confidentialité', text: 'Jeux fictifs pour construire, démontrer et tester.' },
 ],
   },
@@ -104,11 +104,11 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   appelFinal: {
     titre: 'Quelle tâche vos collaborateurs refont-ils encore à la main ?',
-    texte: 'Décrivez-la en trois phrases. Nous vous disons si elle se cadre, ce qu’il faudrait pour la prendre en charge, et à quel prix. Vous n’avez rien à nous envoyer : la description suffit.',
+    texte: 'Décrivez la tâche en trois phrases. Nous précisons avec vous sa règle, les outils concernés et ce que votre équipe garde à décider. Vous recevez un périmètre et un devis avant tout engagement. La description suffit pour commencer.',
     points: [
-    'La tâche : ce que quelqu’un refait chaque mois, et avec quels outils.',
-    'Le périmètre : sources, exceptions, cas de refus.',
-    'Le devis : à la complexité, jamais au nombre de postes.',
+    'La règle écrite : les gestes confiés et les décisions qui restent au cabinet.',
+    'La prise en charge : construction, essais par vos équipes et maintenance.',
+    'Le devis : une tâche prise en charge, à la complexité plutôt qu’au nombre de postes.',
   ],
   },
   methode: { ...METHODE, libelleEtape: 'Étape' },

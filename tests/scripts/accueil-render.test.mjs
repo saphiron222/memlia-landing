@@ -12,15 +12,21 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin reconstruit sur main (e6f31468) à l’intégration : H3 et compteurs dynamiques inclus.
-test('le HTML de / conserve le témoin EC hors nouveau lien service du footer', () => {
-  // Puis replis de police Linux et Android (08/10/2026) : seules les faces @font-face et les piles du CSS changent.
-  const expected = '1aa541e82c5aa2eb5756522297927b655951753747a6f2fecb688e7bdd45d1b6';
+// Témoin PR181 intégré sur main : copy EC déjà revue ; chrome v3 testé à part.
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  const expected = '56bf52158fec7c031d0a8f7d03d9d279af1086ae4cdffdb6896a51694a66487d';
   const html = readFileSync('dist/index.html', 'utf8');
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
   assert.equal([...html.matchAll(link)].length, 1);
-  assert.equal(createHash('sha256').update(html.replace(link, '')).digest('hex'), expected);
+  const main = find(parse(html), 'main');
+  assert.ok(main);
+  const removeAudience = (node) => {
+    node.childNodes = (node.childNodes ?? []).filter(child => !child.attrs?.some(a => a.name === 'data-accueil-cac'));
+    node.childNodes.forEach(removeAudience);
+  };
+  removeAudience(main);
+  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
