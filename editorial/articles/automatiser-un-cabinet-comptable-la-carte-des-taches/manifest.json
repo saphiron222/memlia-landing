@@ -2,13 +2,13 @@
   "version": 1,
   "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "action": "creation",
-  "editorialStatus": "go-production",
+  "editorialStatus": "publie",
   "title": "Automatiser un cabinet comptable : la carte des tâches",
   "tabTitle": "Automatisation cabinet comptable : carte des tâches | Memlia",
   "summary": "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
   "description": "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain.",
   "publicationDate": "2026-09-16",
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-08",
   "topics": [
     "automatisation",
     "methode",
@@ -42,7 +42,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-10-07"
+      "verifiedAt": "2026-10-08"
     }
   },
   "businessReview": {
@@ -174,12 +174,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-10-07"
+      "checkedAt": "2026-10-08"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-10-07"
+      "checkedAt": "2026-10-08"
     }
   },
   "links": {
@@ -221,5 +221,7 @@
       "date": "2026-09-16",
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
-  }
+  },
+  "publishedAt": "2026-10-08",
+  "publicationEvidence": "preuves/publication.json"
 }
