@@ -10,6 +10,8 @@ Huit tests ajoutés avant correction : même lettre et même terme, clic et Entr
 
 Suite ciblée `tests/browser/glossary.spec.ts` sur un serveur Astro réel : 19 tests PASS. Filtre, état vide, effacement, cibles inconnues et visibles, liens initiaux, six largeurs et absence de JavaScript sont préservés. Pas de construction complète sur le Mac.
 
+Le premier run complet 37824301693 a signalé une cible restaurée et un filtre vide, mais hors viewport dans un seul cas clic mobile. Le test refiltrait avant la fin du défilement initial ; il attend désormais les polices et la présence initiale de la cible dans le viewport avant l’action. Les huit cas rejoués trois fois donnent 24 PASS. Le test ainsi préparé reste rouge en production avant livraison (cible hidden), donc conserve son pouvoir de détection de F1. Le verdict CI final confirme ou infirme la stabilité de cette préparation, sans modifier le code du filtre.
+
 ## Rendu et matière métier
 
 Main intégré : `05ebe80a`. Le run CI de collecte 37823107561, job 113468921207, construit le candidat `466dd1d6` et exécute le retrait des briefs puis le calcul de lastmod avec succès. Artefact réel 11569673512 : `dist/glossaire.html`, 321115 octets. Le reçu `anchor-ci-render-receipt.json` en conserve la mesure et les dates du step.

@@ -55,6 +55,10 @@ for (const width of [375, 1440]) {
         await page.goto(`/glossaire#${id}`);
         const search = page.getByLabel('Rechercher un terme');
         const target = page.locator(`#${id}`);
+        // Attendre le rendu et la navigation initiale avant de refiltrer : sinon
+        // son défilement peut encore courir pendant la réactivation testée.
+        await page.evaluate(() => document.fonts.ready);
+        await expect(target).toBeInViewport();
         // Les termes liés sont eux-mêmes filtrés : un lien hors liste représente
         // aussi une navigation dans le même document depuis un autre composant.
         const link = id === 'lettre-g'
