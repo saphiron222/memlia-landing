@@ -4,6 +4,7 @@ import { chromium } from '@playwright/test';
 
 const origin = process.env.MEMLIA_VERIFY_ORIGIN ?? 'http://127.0.0.1:4329';
 const production = origin === 'https://memlia.fr';
+const published = JSON.parse(readFileSync('commercial/services/secretariat-juridique/manifest.json', 'utf8')).status === 'publie';
 const recipe = JSON.parse(readFileSync('commercial/recettes/secretariat-juridique/recette.json', 'utf8'));
 const directory = '.qa/secretariat-juridique';
 mkdirSync(directory, { recursive: true });
@@ -26,7 +27,7 @@ try {
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), `https://memlia.fr${recipe.path}`);
     assert.equal(await page.locator('meta[property="og:title"]').getAttribute('content'), recipe.title);
     const robots = await page.locator('meta[name="robots"]').getAttribute('content');
-    assert.equal(robots.includes('noindex'), !production);
+    assert.equal(robots.includes('noindex'), !published);
     assert.equal(await page.locator('[data-service-section="couverture"]').count(), 1);
     assert.equal(await page.locator('[data-proof="v2/46-service-secretariat-juridique"]').count(), 1);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
@@ -41,10 +42,10 @@ try {
     assert.ok(!(await page.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'));
     assert.equal(await page.locator(`main a[href="${recipe.path}"]`).filter({ hasText: link.anchor }).count(), 1);
   }
-  if (production) {
+  if (published) {
     await page.goto(`${origin}${recipe.path}`);
     assert.ok(await page.locator(`footer a[href="${recipe.path}"]`).count());
-    const sitemap = await page.request.get(`${origin}/sitemap-0.xml`);
+    const sitemap = await page.request.get(`${origin}/sitemap-services.xml`);
     assert.equal(sitemap.status(), 200);
     assert.ok((await sitemap.text()).includes(`https://memlia.fr${recipe.path}`));
   }

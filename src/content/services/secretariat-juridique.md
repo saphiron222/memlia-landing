@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: secretariat-juridique
 verifiedAt: 2026-10-06
-status: pret-preview
+status: publie
 candidateFingerprint: "ec5f6109299feeb7c7f6c45b33b2b009d2d3a33282ad25eca853cc2b3606bb47"
 cta:
   label: "Confier une première tâche"
