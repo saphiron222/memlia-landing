@@ -91,6 +91,10 @@ export const SERVICE_EEAT = {
       { editeur: 'H2A', titre: 'NEP 315 — Connaissance de l’entité et évaluation du risque', url: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/', consulteLe: '2026-10-06', preuve: 'La fiche outil fournit des éléments d’appréciation au CAC, jamais une homologation.' },
     ],
   },
+  'entrees-sorties-salaries': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{ editeur: 'Silae', titre: 'Gérer les salariés de A à Z', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', consulteLe: '2026-10-06', preuve: 'Le circuit du portail garde la création du salarié et la transmission de la DPAE. La préparation hors portail ne double pas ces gestes.' }],
+  },
   paie: { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.dsnVal] },
   'saisie-comptable': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.mentionsFacture] },
   'rapprochement-bancaire': { auteur: 'kevin', datePublication: '2026-09-20', dateModification: '2026-09-20', sources: [sources.planComptable] },

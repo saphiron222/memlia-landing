@@ -421,6 +421,7 @@ class BuildProof(unittest.TestCase):
                 '43-outil-bareme-cac.webp',
                 '41-outil-signification.webp',
                 '44-service-circularisation-cac.webp',
+                '44-service-entrees-sorties-salaries.webp',
             ]),
         )
 

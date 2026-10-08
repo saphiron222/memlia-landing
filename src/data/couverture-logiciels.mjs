@@ -38,6 +38,44 @@ export const COUVERTURE_SERVICES = Object.freeze({
       'la préparation des pièces et rapprochements postérieurs choisis par le CAC pour les écarts ou non-réponses, avec conclusion laissée à son examen.',
     ],
   },
+  'entrees-sorties-salaries': {
+    "dejaFait": [
+      {
+        "outil": "mySilae",
+        "geste": "crée la fiche salarié et transmet la DPAE quand l’embauche passe par le portail",
+        "source": {
+          "url": "https://www.silae.fr/solution-rh-paie/gestion-des-salaries/",
+          "libelle": "Silae, gérer les salariés de A à Z",
+          "consulteLe": "2026-10-06"
+        }
+      },
+      {
+        "outil": "mySilae",
+        "geste": "collecte les pièces sur le portail, relance et outille les documents de sortie et leur signature",
+        "source": {
+          "url": "https://www.silae.fr/solution-rh-paie/gestion-des-salaries/",
+          "libelle": "Silae, gérer les salariés de A à Z",
+          "consulteLe": "2026-10-06"
+        }
+      },
+      {
+        "outil": "PayFit",
+        "geste": "génère les contrats, les fait signer avec Yousign et rappelle les pièces attendues dans son espace salarié",
+        "source": {
+          "url": "https://payfit.com/fr/gestion-du-personnel/",
+          "libelle": "PayFit, gestion du personnel",
+          "consulteLe": "2026-10-06"
+        }
+      }
+    ],
+    "reste": [
+      "les annonces reçues par e-mail ou dans un compte rendu d’appel, hors du circuit déjà utilisé ;",
+      "les informations à réunir et les contradictions à présenter au gestionnaire ;",
+      "les champs de DPAE et de fiche salarié préparés à valider, seulement pour une entrée hors portail ;",
+      "le dossier de sortie hors portail préparé, sans calcul de droits ni génération de documents finaux."
+    ]
+  },
+
   'saisie-comptable': {
     dejaFait: [
       {

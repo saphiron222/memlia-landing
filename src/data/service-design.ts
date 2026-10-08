@@ -14,6 +14,10 @@ export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
     heroProof: 'v2/44-service-circularisation-cac',
     bodyProof: 'v2/44-service-circularisation-cac',
   },
+  'entrees-sorties-salaries': {
+    heroProof: 'v2/44-service-entrees-sorties-salaries',
+    bodyProof: 'v2/44-service-entrees-sorties-salaries',
+  },
   'paie': {
     heroProof: 'v2/19-service-paie',
     bodyProof: 'v2/19-service-paie',
