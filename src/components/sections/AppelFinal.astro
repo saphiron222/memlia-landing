@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
 import Picto from '@/components/Picto.astro';
 
 import { CTA } from '@/data/site.mjs';
@@ -7,8 +8,7 @@ import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 
 /**
  * S8 — Appel final (spec §4.13 ; copy validée section 7). Un seul bouton principal,
- * le CTA humain en secondaire. Fond IMG-02 décoratif, texte au-dessus d'un voile crème
- * pour tenir le contraste quel que soit le visuel livré.
+ * le CTA humain en secondaire. Un encadré crème sur la feuille, sans image de fond.
  */
 /**
  * Le même bloc sert les pages commerciales, avec leur propre titre et leurs points :
@@ -45,13 +45,15 @@ const {
 
   <div class="appel-int coins rv">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-    <h2 id={`${id}-titre`} class="appel-h2">{titre}</h2>
+    <h2 id={`${id}-titre`} class="appel-h2"><Insecable texte={titre} /></h2>
     <p class="texte-2 appel-texte">{texte}</p>
-    <ul class="appel-cadrage">
-      {points.map((c) => (
-        <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
-      ))}
-    </ul>
+    {points.length > 0 && (
+      <ul class="appel-cadrage">
+        {points.map((c) => (
+          <li><Picto nom="coche" taille={14} /><span>{c}</span></li>
+        ))}
+      </ul>
+    )}
     <div class="appel-boutons">
       <Button href={action.href} variante="principal" picto="fleche">{action.libelle}</Button>
       {secondaire && (
@@ -66,29 +68,17 @@ const {
 </section>
 
 <style>
+  /* Système de page : l'appel final prend le pas des sections au-dessus et au-dessous (aucun vide
+     propre), et le titre de section. C'est, avec le héros de l'accueil, le seul bloc centré. */
   .appel {
     position: relative;
-    padding: 128px var(--marge-page) 96px;
+    padding: var(--section-espace) var(--marge-page);
     overflow: hidden;
     isolation: isolate;
   }
-  .appel-fond {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    opacity: 0.55;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
-  }
-  .appel-fond :global(picture),
-  .appel-fond :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
   .appel-int {
     display: grid;
-    gap: 16px;
+    gap: var(--tete-ecart);
     justify-items: center;
     text-align: center;
     max-width: 720px;
@@ -96,14 +86,12 @@ const {
     padding: 48px 24px;
     border: 1px solid var(--ligne);
     border-radius: var(--r-carte);
-    background: rgba(255, 254, 251, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--surface-feuille);
     box-shadow: var(--ombre-xs);
   }
   .appel-h2 {
-    font-size: var(--t-4xl);
-    max-width: 22ch;
+    font-size: var(--titre-section);
+    max-width: 24ch;
   }
   .appel-texte {
     max-width: 52ch;
@@ -142,7 +130,7 @@ const {
   }
   @media (min-width: 64rem) {
     .appel {
-      padding: 176px var(--marge-page-lg) 144px;
+      padding-inline: var(--marge-page-lg);
     }
     .appel-int {
       padding: 64px 72px;

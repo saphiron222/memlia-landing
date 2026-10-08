@@ -13,7 +13,11 @@ const noeuds = [{
   '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, about: { '@id': SERVICE_ID },
 }];
-/** Les quatre étapes, chacune avec son illustration : c'est une séquence, elle se numérote. */
+/**
+ * Les quatre étapes, chacune avec son illustration : c'est une séquence, elle se numérote. Système
+ * de page : la forme « étapes » (global.css), numérotée par son surtitre, une maquette encadrée par
+ * étape, deux étapes par rangée dès 64 rem.
+ */
 const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[] }[] = [
   { id: 'observer', titre: 'Observer', image: '04-observer', paragraphes: [
     'Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.',
@@ -52,74 +56,77 @@ const appel = {
 
 <PageCommerciale page={page} noeuds={noeuds} eyebrow="Quatre étapes, une recette" hero="v2/15-hero-methode" appel={appel}>
   <section class="pv" aria-labelledby="etapes-titre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="etapes-titre">Quatre étapes, dans cet ordre</h2>
-      <p class="texte-2 lecture">Vous confiez une tâche entière. Nous observons le travail, écrivons la règle et construisons dans vos outils. Votre équipe vérifie le résultat avant la livraison ; la maintenance prolonge cette prise en charge.</p>
-      <p class="texte-2 lecture">Le cas courant et le justificatif absent suffisent déjà à <a href="/automatisation/notes-de-frais">rejouer une règle de notes de frais</a> sans utiliser de dossier réel.</p>
+      <p>Vous confiez une tâche entière. Nous observons le travail, écrivons la règle et construisons dans vos outils. Votre équipe vérifie le résultat avant la livraison ; la maintenance prolonge cette prise en charge.</p>
+      <p>Le cas courant et le justificatif absent suffisent déjà à <a href="/automatisation/notes-de-frais">rejouer une règle de notes de frais</a> sans utiliser de dossier réel.</p>
     </div>
-    <ol class="pv-etapes">
+    <ol class="etapes">
       {etapes.map((e, i) => (
-        <li class="pv-etape" id={e.id}>
-          <div class="pv-etape-copy rv">
-            <p class="pv-etape-numero">Étape {i + 1}</p>
-            <h2>{e.titre}</h2>
-            {e.paragraphes.map((p, j) => (<p class={j === 0 ? undefined : 'texte-2'}>{p}</p>))}
+        <li class="etape" id={e.id}>
+          <div class="etape-copie rv">
+            <p class="surtitre">Étape {i + 1}</p>
+            <h3>{e.titre}</h3>
+            {e.paragraphes.map((p, j) => (
+              <p class={j === 0 ? undefined : 'texte-2'}>{p}</p>
+            ))}
           </div>
-          <ProofMedia id={e.image} />
+          <ProofMedia id={e.image} cadre />
         </li>
       ))}
     </ol>
-    <div class="pv-bande coins" role="table" aria-label="La frontière de la règle écrite">
-      <div class="pv-bande-liste rv-groupe" data-colonnes="3" role="row">
-        <div class="pv-cellule rv" role="cell"><h3>Se prépare seul</h3><p>Les données autorisées sont rassemblées et les propositions préparées selon la règle convenue.</p></div>
-        <div class="pv-cellule rv" role="cell"><h3>Attend votre validation</h3><p>Votre équipe relit les propositions et traite les exceptions avant toute suite prévue par la règle.</p></div>
-        <div class="pv-cellule rv" role="cell"><h3>Reste humain</h3><p>Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.</p></div>
+    <div class="bande coins" role="table" aria-label="La frontière de la règle écrite">
+      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+      <div class="cartes rv-groupe" role="row">
+        <div class="cellule rv" role="cell"><h3 class="carte-titre">Se prépare seul</h3><p class="carte-texte">Les données autorisées sont rassemblées et les propositions préparées selon la règle convenue.</p></div>
+        <div class="cellule rv" role="cell"><h3 class="carte-titre">Attend votre validation</h3><p class="carte-texte">Votre équipe relit les propositions et traite les exceptions avant toute suite prévue par la règle.</p></div>
+        <div class="cellule rv" role="cell"><h3 class="carte-titre">Reste humain</h3><p class="carte-texte">Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.</p></div>
       </div>
     </div>
   </section>
 
   <section class="pv" aria-labelledby="cout">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="cout">Ce que cette méthode coûte, et ce qu’elle évite</h2>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Ce qu’elle coûte</h3><p>Le cadrage et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
-        <li class="pv-cellule rv"><h3>Ce qu’elle évite</h3><p>Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
+      <ul class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle coûte</h3><p class="carte-texte"><a href="/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils">Le cadrage</a> et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle évite</h3><p class="carte-texte">Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
       </ul>
     </div>
   </section>
 
   <section class="pv" aria-labelledby="suite-titre-renvois">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="suite-titre-renvois">Ce qui vient ensuite</h2>
-      <p class="texte-2 lecture">La recette revient aux personnes qui feront le travail. C’est indispensable pour <a href="/automatisation/paie">faire recetter un contrôle de paie</a> sans déplacer la correction ni la décision hors du pôle social.</p>
-      <p class="texte-2 lecture">Nous pouvons aussi <a href="/automatisation/entrees-sorties-salaries">éprouver la préparation d’un dossier salarié</a> : une annonce hors portail, ses informations manquantes et le retour au circuit existant font partie des essais.</p>
+      <p>La recette revient aux personnes qui feront le travail. C’est indispensable pour <a href="/automatisation/paie">faire recetter un contrôle de paie</a> sans déplacer la correction ni la décision hors du pôle social.</p>
+      <p>Nous pouvons aussi <a href="/automatisation/entrees-sorties-salaries">éprouver la préparation d’un dossier salarié</a> : une annonce hors portail, ses informations manquantes et le retour au circuit existant font partie des essais.</p>
     </div>
     <Renvois items={renvois} />
   </section>
 
   <section class="pv" aria-labelledby="outils-gratuits-titre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
 
 
       <h2 id="outils-gratuits-titre">Des règles à rejouer dans le navigateur</h2>
-      <p class="texte-2 lecture">Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
-      <p class="texte-2 lecture">Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>
-      <p class="texte-2 lecture">Pour un calcul traçable, <a href="/outils-comptables-gratuits/bareme-heures-cac">calculez le barème d’heures CAC</a> avec sa base décomposée et ses exclusions déclarées. Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.</p>
-      <p class="texte-2 lecture">Pour préparer une réunion ou résumer des notes fictives, <a href="/outils-comptables-gratuits/generateur-prompt-ia-gratuit">écrivez une consigne texte professionnelle</a> avec un format, des critères d’acceptation et un arrêt sur information manquante. La consigne se relit avant d’être utilisée dans un outil autorisé.</p>
-      <p class="texte-2 lecture">Vous avez déjà écrit une consigne ? <a href="/outils-comptables-gratuits/verificateur-prompt-ia">Examinez les contraintes de votre prompt IA</a> : le rapport explique les formulations repérées, les points manquants et les négations à relire, en gardant votre original.</p>
-      <p class="texte-2 lecture">Vous pouvez aussi <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">préparer une copie CSV pseudonymisée</a> : choisir les colonnes utiles, voir les alias et les suppressions, puis examiner les risques de réidentification avant toute décision de partage.</p>
-      <p class="texte-2 lecture">Pour discuter les hypothèses avant une mission, le <a href="/outils-comptables-gratuits/calculateur-roi-automatisation">calculateur de ROI d’automatisation</a> sépare temps libéré, coûts et dépenses évitables. Exportez les trois scénarios pour les confronter au travail observé, sans en faire une promesse de gain.</p>
+      <p>Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
+      <p>Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>
+      <p>Pour un calcul traçable, <a href="/outils-comptables-gratuits/bareme-heures-cac">calculez le barème d’heures CAC</a> avec sa base décomposée et ses exclusions déclarées. Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.</p>
+      <p>Pour préparer une réunion ou résumer des notes fictives, <a href="/outils-comptables-gratuits/generateur-prompt-ia-gratuit">écrivez une consigne texte professionnelle</a> avec un format, des critères d’acceptation et un arrêt sur information manquante. La consigne se relit avant d’être utilisée dans un outil autorisé.</p>
+      <p>Vous avez déjà écrit une consigne ? <a href="/outils-comptables-gratuits/verificateur-prompt-ia">Examinez les contraintes de votre prompt IA</a> : le rapport explique les formulations repérées, les points manquants et les négations à relire, en gardant votre original.</p>
+      <p>Vous pouvez aussi <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">préparer une copie CSV pseudonymisée</a> : choisir les colonnes utiles, voir les alias et les suppressions, puis examiner les risques de réidentification avant toute décision de partage.</p>
+      <p>Pour discuter les hypothèses avant une mission, le <a href="/outils-comptables-gratuits/calculateur-roi-automatisation">calculateur de ROI d’automatisation</a> sépare temps libéré, coûts et dépenses évitables. Exportez les trois scénarios pour les confronter au travail observé, sans en faire une promesse de gain.</p>
 
-      <p class="texte-2 lecture">Avant de mettre une préparation IA en pratique, <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">écrivez les usages et les validations dans une trame de charte IA</a>. Un rôle manquant ne s’invente pas ; le cabinet le désigne avant adoption.</p>
+      <p>Avant de mettre une préparation IA en pratique, <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">écrivez les usages et les validations dans une trame de charte IA</a>. Un rôle manquant ne s’invente pas ; le cabinet le désigne avant adoption.</p>
 
 
-      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calcul de marge commerciale</a> montre ses trois formules et refuse un dénominateur nul. Le <a href="/outils-comptables-gratuits/calculateur-date-echeance-facture">calcul de date d’échéance</a> exige le point de départ et la convention choisie. Le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calcul d’amortissement comptable</a> déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale. Chaque page nomme la source, la règle et la limite avant le résultat.</p>
-      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit">modèle de rapprochement bancaire ouvrable dans Excel</a> se télécharge sans compte, avant tout contrôle. Le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement. Même des soldes concordants restent à valider par le collaborateur.</p>
-      <p class="texte-2 lecture">Pour une consigne plutôt qu’un calcul, le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> assemble les entrées autorisées, la validation et les conditions d’arrêt. Aucun modèle d’IA n’est appelé.</p>
-      <p class="texte-2 lecture">Pour choisir un point de départ par geste, la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> présente douze modèles : relance de pièces, compte rendu ou checklist. Lisez l’exemple fictif, copiez la consigne complète puis adaptez-la dans le générateur ; le cabinet garde la décision.</p>
+      <p>Le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calcul de marge commerciale</a> montre ses trois formules et refuse un dénominateur nul. Le <a href="/outils-comptables-gratuits/calculateur-date-echeance-facture">calcul de date d’échéance</a> exige le point de départ et la convention choisie. Le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calcul d’amortissement comptable</a> déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale. Chaque page nomme la source, la règle et la limite avant le résultat.</p>
+      <p>Le <a href="/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit">modèle de rapprochement bancaire ouvrable dans Excel</a> se télécharge sans compte, avant tout contrôle. Le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement. Même des soldes concordants restent à valider par le collaborateur.</p>
+      <p>Pour une consigne plutôt qu’un calcul, le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> assemble les entrées autorisées, la validation et les conditions d’arrêt. Aucun modèle d’IA n’est appelé.</p>
+      <p>Pour choisir un point de départ par geste, la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> présente douze modèles : relance de pièces, compte rendu ou checklist. Lisez l’exemple fictif, copiez la consigne complète puis adaptez-la dans le générateur ; le cabinet garde la décision.</p>
     </div>
   </section>
 </PageCommerciale>

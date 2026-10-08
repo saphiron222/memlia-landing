@@ -7,8 +7,12 @@ import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
+import { eeatCommercial } from '@/data/page-eeat';
 
 const page = PAGES_V2.service;
+// La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
+const [sourceRgpd] = eeatCommercial('/automatisation-cabinet-comptable')?.sources ?? [];
+if (!sourceRgpd) throw new Error('Source CNIL du hub absente de page-eeat');
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [
   {
@@ -30,7 +34,26 @@ const renvois = [
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire le suivi de production sociale', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Après une saisie automatisée, six contrôles restent à faire : lesquels, et pourquoi.', libelle: 'Lire les contrôles après la saisie', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' },
   { texte: 'Lire un compte rendu métier DSN et ses anomalies, retour par retour.', libelle: 'Lire la méthode des retours DSN', href: '/blog/comprendre-les-comptes-rendus-metier-dsn' },
+  { texte: 'Le questionnaire revenu vide qui a changé notre façon de cadrer une tâche.', libelle: 'Lire ce retour d’expérience', href: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils' },
   { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
+];
+// Ce qui reste hors des logiciels du cabinet, pôle par pôle (règle de couverture du 06/10/2026 :
+// preuves dans le chantier cac-site-niveau-superieur, sorties/couverture-logiciels-2026-10-06/).
+const poles = [
+  { nom: 'Production comptable', reste: 'Les pièces que votre outil n’impute pas, les points à trancher avant le bilan.' },
+  { nom: 'Paie et social', reste: 'Les variables reçues hors portail, les retours DSN triés par date limite.' },
+  { nom: 'Portefeuille et échéances', reste: 'Le rappel à chaque client de ses échéances du mois, avec le montant.' },
+  { nom: 'Juridique', reste: 'L’échéancier d’approbation et de dépôt du portefeuille, les fiches clients tenues à jour des registres.' },
+  { nom: 'Administratif', reste: 'La boîte mail rangée par dossier, les lettres de mission non signées relancées.' },
+  { nom: 'Données et outils', reste: 'Les gestes entre deux outils qui ne se parlent pas.' },
+  { nom: 'Commissariat aux comptes', reste: 'La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.' },
+];
+const outils = [
+  { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
+  { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
+  { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
+  { href: '/outils-comptables-gratuits/calculateur-amortissement-comptable', libelle: 'Calculateur d’amortissement comptable', texte: 'Base, prorata, dotation et valeur nette par exercice.' },
+  { href: '/outils-comptables-gratuits/calculateur-marge-commerciale', libelle: 'Calculateur de marge commerciale', texte: 'Marge, taux de marge et taux de marque sur deux montants HT fictifs, sans produire de conseil de prix.' },
 ];
 const appel = {
   titre: 'Décrivez le geste qui revient.',
@@ -52,22 +75,19 @@ const appel = {
   </section>
 
   <section class="pv" aria-labelledby="prepare">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="prepare">La règle écrite, de la frontière au jeu d’essai</h2>
-      <p class="texte-2 lecture">Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
+      <p>Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
     </div>
-    <div class="pv-bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe">
-        <li class="pv-cellule rv"><h3>La frontière</h3><p>Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
-        <li class="pv-cellule rv"><h3>La proposition</h3><p>L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
-        <li class="pv-cellule rv"><h3>L’arrêt</h3><p>Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
-        <li class="pv-cellule rv"><h3>Le jeu d’essai</h3><p>Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur des données fictives avant la recette.</p></li>
-      </ul>
-    </div>
+    <ul class="lignes rv">
+      <li class="ligne"><h3 class="ligne-libelle">La frontière</h3><p class="ligne-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">La proposition</h3><p class="ligne-texte">L’automatisation prépare le résultat et le présente. Ce que le cabinet saisit ne se touche jamais.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">L’arrêt</h3><p class="ligne-texte">Une donnée manque, le cas sort de la règle ou deux lectures restent possibles : le traitement s’arrête et nomme le doute.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Le jeu d’essai</h3><p class="ligne-texte">Les cas qui doivent aboutir et ceux qui doivent échouer sont rejoués sur <a href={sourceRgpd.url} rel="noopener noreferrer" title={`${sourceRgpd.editeur} — ${sourceRgpd.titre}`}>{sourceRgpd.mot}</a> avant la recette.</p></li>
+    </ul>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="cabinet">
+  <section class="pv" aria-labelledby="cabinet">
     <ProofRow id="v2/02-proposition">
       <div class="pv-copy rv">
         <h2 id="cabinet">Que garde le cabinet quand une tâche est automatisée ?</h2>
@@ -87,18 +107,21 @@ const appel = {
         <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
       </div>
     </ProofRow>
-    <ul class="pv-cartes rv-groupe" data-vedette>
+    <ul class="lignes rv">
       {requis.map((r) => (
-        <li class="pv-carte rv">
-          <div class="pv-carte-marque" aria-hidden="true"><Picto nom={r.picto} taille={24} /></div>
-          <div class="pv-carte-corps"><h3>{r.titre}</h3><p>{r.texte}</p></div>
+        <li class="ligne">
+          <div class="ligne-tete">
+            <span class="ligne-picto" aria-hidden="true"><Picto nom={r.picto} taille={24} /></span>
+            <h3 class="ligne-libelle">{r.titre}</h3>
+          </div>
+          <p class="ligne-texte">{r.texte}</p>
         </li>
       ))}
     </ul>
     <p class="texte-2 lecture">Un justificatif manquant montre immédiatement pourquoi ce cadrage compte lorsque vous choisissez de <a href="/automatisation/notes-de-frais">confier le traitement répétitif des notes de frais</a>.</p>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="livre">
+  <section class="pv" aria-labelledby="livre">
     <ProofRow id="07-livrer">
       <div class="pv-copy rv">
         <h2 id="livre">Que livre Memlia pour une tâche automatisée ?</h2>
@@ -110,16 +133,32 @@ const appel = {
   </section>
 
   <section class="pv" aria-labelledby="perimetre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
-      <p class="texte-2 lecture">Production comptable, paie et social, portefeuille et échéances, facturation et recouvrement, juridique et fiscal, administratif, ressources humaines, données et outils : une frontière par tâche. Pour le commissariat aux comptes, nous préparons aussi les demandes de documents, le suivi des réponses et les comparaisons entre exercices. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Une règle écrite se construit en automatisation après vérification des accès, des formats et des cas couverts. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
-      <p class="texte-2 lecture">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
-      <p class="texte-2 lecture">Pour les annonces reçues hors portail, nous pouvons <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a>. Le circuit déjà utilisé et les décisions sociales restent au pôle social.</p>
-      <p class="texte-2 lecture">Avant de cadrer une tâche, comparez vos volumes, le contrôle restant et les dépenses réellement évitables avec le <a href="/outils-comptables-gratuits/calculateur-roi-automatisation">calculateur de ROI d’automatisation comptable</a>. La capacité libérée reste distincte des économies de trésorerie.</p>
-      <p class="texte-2 lecture">Pour vérifier une formule précise avant de la transposer à une règle de cabinet, le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calculateur de marge commerciale</a> rejoue sur deux montants HT fictifs la marge, le taux de marge et le taux de marque, sans produire de conseil de prix.</p>
-      <p class="texte-2 lecture">Pour rendre un plan annuel contrôlable avant toute reprise dans un dossier, le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calculateur d’amortissement comptable</a> affiche la base, le prorata, la dotation et la valeur nette de chaque exercice.</p>
-      <p class="texte-2 lecture">Pour localiser un problème de structure avant de retourner au logiciel, le <a href="/outils-comptables-gratuits/verificateur-fec-local">vérificateur FEC local</a> prépare un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.</p>
-      <p class="texte-2 lecture">Pour commencer à écrire une consigne de préparation, le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> distingue les entrées autorisées, le format, la validation et l’arrêt. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.</p>
+      <p>Une frontière par tâche, en partant de ce que vos logiciels ne font pas : le geste refait dans Excel, dans les e-mails ou entre deux outils. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+    </div>
+    <dl class="lignes perimetre-poles rv">
+      {poles.map((pole) => (
+        <div class="ligne">
+          <dt class="ligne-libelle">{pole.nom}</dt>
+          <dd class="ligne-texte">{pole.reste}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="texte-2 lecture perimetre-paie rv">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
+    <p class="texte-2 lecture perimetre-salaries rv">Pour les annonces reçues hors portail, nous pouvons <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a>. Le circuit déjà utilisé et les décisions sociales restent au pôle social.</p>
+    <div class="liens-bloc perimetre-outils rv">
+      <h3 class="liens-titre">Avant de confier une tâche, cinq outils gratuits</h3>
+      <ul class="liens">
+        {outils.map((outil) => (
+          <li>
+            <a class="lien-rangee" href={outil.href}>
+              <span class="lien-libelle">{outil.libelle}<span class="lien-detail">{outil.texte}</span></span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -132,7 +171,7 @@ const appel = {
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="outils">
+  <section class="pv" aria-labelledby="outils">
     <ProofRow id="08-integration">
       <div class="pv-copy rv">
         <h2 id="outils">Faut-il changer d’outil pour automatiser une tâche ?</h2>
@@ -145,10 +184,11 @@ const appel = {
   <RelatedIntegrations servicePath="/automatisation-cabinet-comptable" />
 
   <section class="pv" aria-labelledby="avant">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="avant">Pour aller plus loin</h2>
-      <p class="texte-2">La carte des tâches, deux méthodes publiées, et nos engagements.</p>
+      <p>La carte des tâches, nos méthodes publiées, un retour d’expérience et nos engagements.</p>
     </div>
-    <Renvois items={renvois} colonnes={2} />
+    <Renvois items={renvois} />
   </section>
 </PageCommerciale>
+

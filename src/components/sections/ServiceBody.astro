@@ -8,13 +8,15 @@ interface Props {
 
 const { proof } = Astro.props;
 const media = PROOFS[proof];
+// Système de page : le document d'une page service, un texte long à intertitres (h2 à la taille d'un
+// document, espacés sans filet), avec sa note collante à gauche dès 1 024 px (titre de bloc).
 ---
 
 <section class="service-body" data-service-section="body" data-service-sections aria-label="Périmètre de la mission">
   <div class="service-body-grid conteneur">
     <aside class="service-body-proof rv" aria-labelledby="service-proof-title">
       <div class="service-body-proof-copy">
-        <span class="eyebrow">preuve fonctionnelle fictive</span>
+        <p class="surtitre">preuve fonctionnelle fictive</p>
         <h2 id="service-proof-title">{media.title}</h2>
         <p>{media.detail}</p>
       </div>
@@ -31,13 +33,11 @@ const media = PROOFS[proof];
 
 <style>
   .service-body {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
+    padding-top: var(--section-espace);
   }
   .service-body-grid {
     display: grid;
-    gap: 56px;
+    gap: var(--bloc-ecart);
   }
   .service-body-proof {
     display: grid;
@@ -48,13 +48,14 @@ const media = PROOFS[proof];
 
   .service-body-proof-copy {
     display: grid;
-    gap: 12px;
+    gap: var(--espace-3);
   }
   .service-body-proof-copy h2 {
     max-width: 22ch;
-    font-size: var(--t-3xl);
+    font-size: var(--titre-bloc);
+    line-height: 1.2;
   }
-  .service-body-proof-copy p {
+  .service-body-proof-copy p:not(.surtitre) {
     max-width: 58ch;
     color: var(--texte-2);
   }
@@ -64,21 +65,15 @@ const media = PROOFS[proof];
   }
   .service-body-copy :global(h2) {
     margin: 0;
-    padding-top: 56px;
-    border-top: 1px solid var(--ligne-douce);
-    font-size: var(--t-4xl);
-    line-height: 1.12;
-  }
-  .service-body-copy :global(h2:first-child) {
-    padding-top: 0;
-    border-top: 0;
+    font-size: var(--titre-intertitre);
+    line-height: 1.15;
   }
   .service-body-copy :global(h2:not(:first-child)) {
-    margin-top: 64px;
+    margin-top: var(--espace-16);
   }
   .service-body-copy :global(h3) {
-    margin: 40px 0 12px;
-    font-size: var(--t-2xl);
+    margin: var(--espace-10) 0 var(--espace-3);
+    font-size: var(--titre-bloc);
   }
   .service-body-copy :global(p) {
     margin: 18px 0 0;
@@ -128,12 +123,9 @@ const media = PROOFS[proof];
     background: var(--surface-page);
   }
   @media (min-width: 64rem) {
-    .service-body {
-      padding: 128px 0;
-    }
     .service-body-grid {
       grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-      gap: 80px;
+      gap: var(--espace-20);
       align-items: start;
     }
     .service-body-proof {
