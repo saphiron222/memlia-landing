@@ -5,12 +5,52 @@ import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { parse, serializeOuter } from 'parse5';
+import { proofSrcset, proofSizes } from '../../scripts/lib/responsive-proofs.mjs';
 
 const sections = { Hero: 'hero', Orientation: 'orientation', Quotidien: 'quotidien', Promesse: 'promesse', Usages: 'usages', Methode: 'methode', Integration: 'integration', Preuves: 'preuves', Garanties: 'garanties', Faq: 'faq', AppelFinal: 'appelFinal' };
 function find(node, id) {
   if (node.attrs?.some(a => a.name === 'id' && a.value === id)) return node;
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
+
+function contentSha(node, masterBytes = src => readFileSync(join('dist', src))) {
+  const normalize = element => {
+    const attr = name => element.attrs?.find(item => item.name === name)?.value;
+    const src = attr('src');
+    // Seule la sélection dérivée des octets du master est logistique.
+    // Toute sélection étrangère et tous les attributs de contenu restent dans le témoin.
+    if (element.tagName === 'img' && /^\/proofs\/(?!responsive\/|.*\/og\/)[a-zA-Z0-9/_-]+\.webp$/.test(src ?? '')
+      && attr('srcset') && attr('srcset') === proofSrcset(src, masterBytes(src))
+      && attr('sizes') === proofSizes(attr('loading') === 'lazy')) {
+      element.attrs = element.attrs.filter(item => !['srcset', 'sizes'].includes(item.name));
+    }
+    (element.childNodes ?? []).forEach(normalize);
+  };
+  normalize(node);
+  return createHash('sha256').update(serializeOuter(node).replace(/\s+/g, ' ')).digest('hex');
+}
+
+test('le témoin accueil ignore uniquement la diffusion canonique du master', () => {
+  const src = '/proofs/home/example.webp';
+  const bytes = Buffer.from('master de contrôle');
+  const image = `<img src="${src}" alt="Validation humaine" width="1600" height="900" loading="lazy">`;
+  const selection = ` srcset="${proofSrcset(src, bytes)}" sizes="${proofSizes(true)}"`;
+  const responsive = image.replace('>', `${selection}>`);
+  const digest = html => contentSha(find(parse(`<main id="main">${html}<p>Contenu conservé</p></main>`), 'main'), () => bytes);
+  const expected = digest(image);
+  assert.equal(digest(responsive), expected);
+  for (const changed of [
+    responsive.replace('Validation humaine', 'Validation automatique'),
+    responsive.replace('src="/proofs/home/example.webp"', 'src="/proofs/home/other.webp"'),
+    responsive.replace('width="1600"', 'width="800"'),
+    responsive.replace('height="900"', 'height="450"'),
+    responsive.replace('-400.webp 400w', '-400.webp 401w'),
+    responsive.replace('/proofs/responsive/', '/foreign/'),
+    responsive.replace('sizes="auto, ', 'sizes="'),
+    responsive.replace(/-[a-f0-9]{16}-/g, '-0000000000000000-'),
+    `${responsive}<p>Contenu ajouté</p>`,
+  ]) assert.notEqual(digest(changed), expected, changed);
+});
 
 // Témoin du système de page #166 après intégration de la copy EC relue (#181).
 // Avant #181 : c28bb8b4… ; DOM inchangé, nouveaux textes de main seuls ; chrome v3 testé à part.
@@ -27,7 +67,7 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
     node.childNodes.forEach(removeAudience);
   };
   removeAudience(main);
-  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
+  assert.equal(contentSha(main), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
