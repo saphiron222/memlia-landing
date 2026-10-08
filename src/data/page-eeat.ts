@@ -111,7 +111,7 @@ export const COMMERCIAL_EEAT = {
     auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-06', sources: [sources.controleSalaries],
   },
   '/a-propos': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-09-21', sources: [],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-08', sources: [],
   },
 } satisfies Record<string, PageEeat>;
 
