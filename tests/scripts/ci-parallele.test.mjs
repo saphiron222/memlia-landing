@@ -21,7 +21,7 @@ test('les contrats navigateur sont répartis sur au moins quatre jobs parallèle
   assert.equal(navigateur.strategy['fail-fast'], false, 'une part en échec n’interrompt pas les autres');
   const commandes = navigateur.steps.map((etape) => etape.run ?? '').join('\n');
   assert.match(commandes, new RegExp(`npm run test -- --grep-invert '${LENT}\\\\\\.spec' --shard=\\$\\{\\{ matrix\\.part \\}\\}/${parts.length}(\\s|$)`));
-  assert.equal(navigateur.needs, undefined, 'les parts démarrent sans attendre les portes déterministes');
+  assert.equal(navigateur.needs, 'portes', 'les parts partagent le build validé');
 });
 
 test('la navigation clavier des tableaux a ses propres parts, partagées par test', () => {
@@ -31,9 +31,8 @@ test('la navigation clavier des tableaux a ses propres parts, partagées par tes
   assert.equal(clavier.strategy['fail-fast'], false);
   const commandes = clavier.steps.map((etape) => etape.run ?? '').join('\n');
   assert.match(commandes, new RegExp(`npm run test -- tests/browser/${LENT}\\.spec\\.ts --shard=\\$\\{\\{ matrix\\.part \\}\\}/${parts.length}(\\s|$)`));
-  assert.equal(clavier.needs, undefined, 'les parts démarrent sans attendre les portes déterministes');
-  // Sans fullyParallel, Playwright découpe par fichier : ce fichier unique resterait entier dans une seule part.
-  assert.match(readFileSync(new URL('../../playwright.config.ts', import.meta.url), 'utf8'), /^\s*fullyParallel: true,/m);
+  assert.equal(clavier.needs, 'portes', 'les parts partagent le build validé');
+  // Le contrat fullyParallel est exercé par import réel dans ci-single-build.test.mjs.
 });
 
 test('« Repository gates » échoue si une seule porte n’a pas réussi, même sautée ou annulée', () => {
@@ -43,7 +42,7 @@ test('« Repository gates » échoue si une seule porte n’a pas réussi, même
   const autres = jobs.map(([nom]) => nom).filter((nom) => nom !== cle).sort();
   assert.deepEqual([agregat.needs].flat().sort(), autres, 'il attend tous les autres jobs');
   // Sans `always()`, une porte en échec le ferait sauter, et GitHub compte un contrôle requis sauté comme vert.
-  assert.equal(agregat.if, 'always()');
+  assert.equal(agregat.if, 'always() && github.event.pull_request.draft == false');
   const script = agregat.steps.map((etape) => etape.run ?? '').join('\n');
   for (const nom of autres) assert.match(script, new RegExp(`needs\\.${nom}\\.result \\}\\}" = success`), nom);
 });
