@@ -25,11 +25,23 @@
   "articles": [
     {
 
+      "slug": "checklist-pieces-comptables", "type": "outil", "url": "https://memlia.fr/outils-comptables-gratuits/checklist-pieces-comptables",
+      "requete": "checklist pièces comptables", "secondaires": ["demande pièces manquantes", "checklist documents cabinet comptable"],
+      "famille": "pieces", "format": "web-application", "publieLe": null,
+      "titreOnglet": "Checklist des pièces comptables à demander | Memlia",
+      "source": "G3 EC 04 : sonde 06/10/2026 valide sans suggestion primaire ; besoin cabinet, signal faible sans volume inventé. Construction candidate, trafic/indexation/conversions ND."
+    },
+    {
+
+
       "slug": "generateur-prompt-ia-gratuit",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
       "requete": "générateur prompt ia gratuit",
-      "secondaires": ["consigne texte professionnelle", "générateur prompt texte tableau JSON"],
+      "secondaires": [
+        "consigne texte professionnelle",
+        "générateur prompt texte tableau JSON"
+      ],
       "famille": "ia-generative-agents",
       "format": "web-application",
       "publieLe": null,
@@ -37,21 +49,21 @@
       "source": "Brief 06 vague 3 et sonde autocomplete au cadrage. Candidat non publié : indexation, trafic et conversions ND."
     },
     {
-
-
-
-      "slug": "bibliotheque-prompts-comptables", "type": "outil",
+      "slug": "bibliotheque-prompts-comptables",
+      "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
       "requete": "bibliothèque prompts comptables",
-      "secondaires": ["modèles prompts comptables", "prompt relance pièces comptable"],
-      "famille": "ia-generative-agents", "format": "web-application", "publieLe": "2026-10-05",
+      "secondaires": [
+        "modèles prompts comptables",
+        "prompt relance pièces comptable"
+      ],
+      "famille": "ia-generative-agents",
+      "format": "web-application",
+      "publieLe": "2026-10-05",
       "titreOnglet": "Bibliothèque de prompts comptables | Memlia",
       "source": "Publication constatée le 05/10/2026 — PR86, Cloudflare 9d38b8f9-46d8-488e-b3cc-68c832f72e7d build/deploy SUCCESS ; 40 Chromium domaine et 40 déploiement, six largeurs ; 116 GET no-cache sans query. Rapport docs/qa/bibliotheque-prompts/publication-2026-10-05.md ; carte t_2508910f. Lighthouse public mobile 94/100/92/100, desktop 100/100/92/100 ; réserves documentées. Trafic, indexation moteur, citations, conversions et J+7/J+28 ND."
     },
     {
-
-
-
       "slug": "verificateur-prompt-ia",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-prompt-ia",
@@ -67,7 +79,6 @@
       "source": "Publication constatée le 05/10/2026 — PR87, Cloudflare canonique 3b009652-f275-4c2c-8e2e-90117b40c9f9 build/deploy SUCCESS ; 17 Chromium domaine + 17 déploiement, six largeurs ; 96 GET sans query avec Cache-Control no-cache. Rapport docs/qa/verificateur-prompt/publication-2026-10-05.md ; carte t_8eb8bbeb. Trafic, indexation moteur, citations, conversions, Lighthouse public et J+7/J+28 ND."
     },
     {
-
       "slug": "diagnostic-maturite-ia-cabinet",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
@@ -83,8 +94,6 @@
       "source": "Publication constatée le 05/10/2026 — PR73, Cloudflare 7e11e252 SUCCESS, 22 parcours domaine et 22 déploiement PASS, 20 GET sans query string avec Cache-Control no-cache ; carte t_0edf65c0. Lighthouse public brut desktop 100/100/92/92 : réserve CSP/analytics Cloudflare, seuil quatre axes non acquis. GSC, backlinks, J+7/J+28 ND."
     },
     {
-
-
       "slug": "generateur-prompt-expert-comptable",
       "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-expert-comptable",
@@ -476,6 +485,42 @@
       "titreOnglet": "Automatiser IA sans changer de logiciel : méthode | Memlia",
       "source": "frontmatter",
       "type": "blog"
+    },
+    {
+      "slug": "entrees-sorties-salaries",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/entrees-sorties-salaries",
+      "requete": "automatisation entrées sorties salariés cabinet comptable",
+      "secondaires": [
+        "gestion entrées sorties salariés cabinet comptable"
+      ],
+      "famille": "entrees-sorties-salaries",
+      "publieLe": "2026-10-07",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "secretariat-juridique",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/secretariat-juridique",
+      "requete": "automatisation secrétariat juridique cabinet comptable",
+      "secondaires": [
+        "automatisation approbation comptes cabinet comptable"
+      ],
+      "famille": "secretariat-juridique",
+      "publieLe": "2026-10-08",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "registres-obligations",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/registres-obligations",
+      "requete": "automatisation suivi registres obligations cabinet comptable",
+      "secondaires": [
+        "automatisation registres cabinet comptable"
+      ],
+      "famille": "registres-obligations",
+      "publieLe": "2026-10-07",
+      "source": "recette-service-publiee"
     }
   ]
 }

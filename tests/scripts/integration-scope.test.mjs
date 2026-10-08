@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import ts from 'typescript';
 
 const read = (path) => readFileSync(path, 'utf8');
-const compiled = ts.transpileModule(read('src/data/integrations.ts'), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+const compiled = ts.transpileModule(read('src/data/integrations.ts').replace("import generatedGuides from './guides.generated.json';", `const generatedGuides = ${read('src/data/guides.generated.json')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { INTEGRATIONS } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const guide = read('src/pages/integrations/[slug].astro');
 const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);
@@ -18,7 +18,9 @@ test('neuf guides : chaque champ explique un rôle et sa condition de contrôle'
     assert.equal(entry.source.checkedAt, '2026-10-04');
   }
   assert.doesNotMatch(guide, /Champ observé dans le jeu fictif/);
-  assert.match(guide, /integration.source.checkedAt/);
+  // La date de vérification reste dans les données (ligne ci-dessus) ; la page cite la source par un lien dans le texte.
+  assert.match(guide, /href=\{integration\.source\.url\}/);
+  assert.doesNotMatch(guide, /SourceEvidence|id="source"/);
 });
 
 test('Cegid : clés JSON et non menu ; compte général ou tiers lettrable', () => {
