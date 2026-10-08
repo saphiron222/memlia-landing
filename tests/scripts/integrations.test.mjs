@@ -54,13 +54,10 @@ test('la grille ferme les 10 variations moyennes et les 16 refusées', () => {
   assert.equal(statuses.length, 35);
 
   const proof = readFileSync(join(root, 'docs/design/integration-proofs/index.html'), 'utf8');
-  const open = candidates.filter(({ status }) => status === 'forte').length;
-  const closed = candidates.length - open;
-  const threshold = Math.min(...candidates.filter(({ status }) => status === 'forte').map(({ suggestions }) => suggestions));
-  assert.match(proof, new RegExp(`<strong>${candidates.length} formulations mesurées</strong>`));
-  assert.match(proof, new RegExp(`<strong>${threshold} suggestions ou plus</strong>`));
-  assert.match(proof, new RegExp(`<strong>${open} guides reliés</strong>`));
-  assert.match(proof, new RegExp(`<span>${closed} variations non ouvertes</span>`));
+  const hub = proof.split('id="rapprochement-bancaire-sage"')[0];
+  assert.doesNotMatch(hub, /formulations mesurées|suggestions ou plus|variations|page maigre|guides ouverts/);
+  for (const product of ['Sage 100 Comptabilité', 'Sage 100 Paie &amp; RH', 'Cegid Loop', 'mySilae']) assert.ok(hub.includes(product));
+  assert.match(hub, /La préparation s’arrête et présente le motif/);
 });
 
 test('seules les neuf variations fortes produisent une page', () => {

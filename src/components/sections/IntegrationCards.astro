@@ -4,8 +4,9 @@ import { integrationPath, type IntegrationDefinition } from '@/data/integrations
 interface Props {
   integrations: readonly IntegrationDefinition[];
   compact?: boolean;
+  titresParTache?: boolean;
 }
-const { integrations, compact = false } = Astro.props;
+const { integrations, compact = false, titresParTache = false } = Astro.props;
 ---
 
 <ul class:list={['integration-cards', { compact }]} data-integration-cards>
@@ -13,7 +14,9 @@ const { integrations, compact = false } = Astro.props;
     <li>
       <a href={integrationPath(integration)}>
         <span class="integration-context">{integration.vendor} · {integration.product}</span>
-        <h3>{integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
+        <h3>{titresParTache
+          ? `${integration.task.charAt(0).toUpperCase() + integration.task.slice(1)} dans ${integration.product}`
+          : integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
         {!compact && <p>{integration.description}</p>}
         <span class="integration-action">Lire le guide<span aria-hidden="true"> →</span></span>
       </a>
