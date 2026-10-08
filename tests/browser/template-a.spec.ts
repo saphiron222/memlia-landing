@@ -20,7 +20,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
           expect(r.height).toBeGreaterThanOrEqual(44);
           expect(r.width).toBeGreaterThanOrEqual(44);
         }
-        if (width === 320) expect(new Set(rects.map((r) => r.top)).size).toBe(2);
+        // Les destinations v3 restent visibles : les hubs occupent une troisième rangée à 320px.
+        if (width === 320) expect(new Set(rects.map((r) => r.top)).size).toBe(3);
         const links = page.locator('[data-mobile-visible] a');
         await links.first().focus();
         await page.keyboard.press('Tab');
