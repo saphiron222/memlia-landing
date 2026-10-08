@@ -1,5 +1,8 @@
 ---
 import Base from '@/layouts/Base.astro';
+import Button from '@/components/Button.astro';
+import { LIEN_CAC } from '@/data/navigation.mjs';
+import { cacDisponible } from '@/data/navigation-publiee';
 import JsonLd from '@/components/JsonLd.astro';
 import Hero from '@/components/sections/Hero.astro';
 import Orientation from '@/components/sections/Orientation.astro';
@@ -30,7 +33,9 @@ const description =
   <link slot="head" rel="preload" as="image" href="/media/r9/hero-poster-1200.webp" fetchpriority="high" />
 
   <div class="feuille">
-    <Hero contenu={contenu.hero} />
+    <Hero contenu={contenu.hero}>
+      {cacDisponible && <Button slot="audience" href={LIEN_CAC.href} variante="lien" picto="fleche" data-accueil-cac>Vous êtes commissaire aux comptes ?</Button>}
+    </Hero>
     <Orientation contenu={contenu.orientation} />
     <Quotidien contenu={contenu.quotidien} />
     <Promesse contenu={contenu.promesse} />

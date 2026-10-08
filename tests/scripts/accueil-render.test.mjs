@@ -12,9 +12,10 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin EC conservé hors fil JSON-LD et lien du service publié dans le footer.
-test('le HTML complet de / conserve le témoin EC hors ajouts du fil et du service', () => {
-  const expected = '121366773c7a216908e6be6feac0387d556507e0e54cca297a0a01758713572c';
+// Témoin main 4f42a88b : le chrome v3 est testé à part ; le contenu EC reste inchangé.
+// Le fil JSON-LD de l’accueil est contrôlé puis retiré avant la comparaison.
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  const expected = 'e7e06c672844aa08566b59e6e8558dab59dbc7d9dd8227d3963dcdf1d129bf55';
   const html = readFileSync('dist/index.html', 'utf8').replace(
     /(<script type="application\/ld\+json">)(.*?)(<\/script>)/g,
     (_, opening, json, closing) => {
@@ -35,12 +36,17 @@ test('le HTML complet de / conserve le témoin EC hors ajouts du fil et du servi
       return opening + JSON.stringify(schema).replace(/</g, '\\u003c') + closing;
     },
   );
-
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
   assert.equal([...html.matchAll(link)].length, 1);
-  assert.equal(createHash('sha256').update(html.replace(link, '')).digest('hex'), expected);
-
+  const main = find(parse(html), 'main');
+  assert.ok(main);
+  const removeAudience = (node) => {
+    node.childNodes = (node.childNodes ?? []).filter(child => !child.attrs?.some(a => a.name === 'data-accueil-cac'));
+    node.childNodes.forEach(removeAudience);
+  };
+  removeAudience(main);
+  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
