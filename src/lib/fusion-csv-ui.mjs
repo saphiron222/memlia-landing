@@ -2,12 +2,12 @@ import { validateFiles } from './fusion-csv.mjs';
 export function initFusionCsv(){
  const root=document.querySelector('[data-fusion]');if(!root)return;
  const q=s=>root.querySelector(s),input=q('#fusion-files'),status=q('[data-status]'),error=q('[data-error]');
- let active=null,pending=null,seq=0,loaded=false,example=false,configs=[],order=[],report=null,page=0,copy=false;
+ let active=null,pending=null,seq=0,loaded=false,example=false,configs=[],order=[],report=null,page=0,exportRevision=0;
  const el=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e;};
  const fail=message=>{error.textContent=message;error.hidden=false;error.focus();};
  const clear=()=>{error.hidden=true;error.textContent='';};
  const exports=()=>root.querySelectorAll('[data-export],[data-copy]').forEach(b=>b.disabled=!report||!q('[data-reviewed]').checked||Boolean(pending));
- const invalidate=()=>{report=null;q('[data-result]').hidden=true;q('[data-reviewed]').checked=false;q('[data-table]').replaceChildren();exports();};
+ const invalidate=()=>{exportRevision++;report=null;q('[data-result]').hidden=true;q('[data-reviewed]').checked=false;q('[data-table]').replaceChildren();exports();};
  const stop=()=>{pending?.terminate();pending=null;q('[data-cancel]').hidden=true;exports();};
  const control=(parent,text,id,type,values)=>{
   const wrap=el('div'),label=el('label',text);label.htmlFor=id;
@@ -29,7 +29,7 @@ export function initFusionCsv(){
   loaded=true;input.disabled=true;q('[data-config]').querySelectorAll('select').forEach(e=>e.disabled=true);order=files.map((_,i)=>i);q('[data-columns]').replaceChildren();
   files.forEach((f,i)=>{
    const fs=el('fieldset');fs.dataset.file=String(i);fs.append(el('legend',`${f.name} — ${f.count} lignes`));
-   const up=el('button','Monter ce fichier');up.type='button';up.className='btn btn-contour';up.addEventListener('click',()=>{const index=order.indexOf(i);if(index>0){[order[index-1],order[index]]=[order[index],order[index-1]];fs.previousElementSibling.before(fs);q('[data-confirmed]').checked=false;invalidate();up.focus();}});fs.append(up);
+   const up=el('button','Monter ce fichier');up.type='button';up.className='btn btn-contour';up.addEventListener('click',()=>{const index=order.indexOf(i);if(index>0){if(pending){stop();status.textContent='Traitement annulé ; ordre modifié, confirmez le mapping avant de consolider à nouveau.';}[order[index-1],order[index]]=[order[index],order[index-1]];fs.previousElementSibling.before(fs);q('[data-confirmed]').checked=false;invalidate();up.focus();}});fs.append(up);
    f.headers.forEach((h,j)=>{const field=control(fs,`${j+1}. ${h} → nom cible`,`fusion-map-${i}-${j}`,'input');field.value=h;field.dataset.map='';});q('[data-columns]').append(fs);
   });q('[data-mapping]').hidden=false;
  };
@@ -40,10 +40,11 @@ export function initFusionCsv(){
  };
  const payload=()=>({kind:'import',example,files:configs.map(c=>({file:c.file,name:c.file.name,size:c.file.size,encoding:c.encoding.value,delimiter:c.delimiter.value==='tab'?'\t':c.delimiter.value}))});
  const receive=async m=>{
-  if(m.kind==='page'){table(m.rows);return;}
+  if(m.kind==='page'){if(report)table(m.rows);return;}
   if(m.kind==='export'){
-   if(!report||!q('[data-reviewed]').checked)return;
-   if(copy){copy=false;try{await navigator.clipboard.writeText(m.content);status.textContent='CSV complet copié avec neutralisation des formules.';}catch{fail('Copie indisponible ; exportez le CSV complet.');}return;}
+   const current=()=>report&&q('[data-reviewed]').checked&&m.revision===exportRevision;
+   if(!current())return;
+   if(m.action==='copy'){try{await navigator.clipboard.writeText(m.content);if(current())status.textContent='CSV complet copié avec neutralisation des formules.';}catch{if(current())fail('Copie indisponible ; exportez le CSV complet.');}return;}
    const url=URL.createObjectURL(new Blob([m.content],{type:m.format==='report'?'application/json':'text/csv;charset=utf-8'})),a=el('a');a.href=url;a.download=m.format==='report'?'rapport-fusion-csv.json':'fusion.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Export complet créé localement.';
   }else if(m.kind==='error')fail(m.error);
  };
@@ -75,8 +76,8 @@ export function initFusionCsv(){
  q('[data-merge]').addEventListener('click',()=>run(true));
  q('[data-mapping]').addEventListener('input',e=>{if(e.target.matches('[data-map]'))q('[data-confirmed]').checked=false;if(pending)stop();invalidate();});
  q('[data-cancel]').addEventListener('click',()=>{stop();status.textContent='Traitement annulé ; aucun nouveau résultat appliqué. Fichiers et choix conservés.';});
- q('[data-reviewed]').addEventListener('change',exports);
+ q('[data-reviewed]').addEventListener('change',()=>{exportRevision++;exports();});
  for(const [selector,delta]of [['[data-prev]',-1],['[data-next]',1]])q(selector).addEventListener('click',()=>{page+=delta;active.postMessage({id:seq,kind:'page',page});});
- root.querySelectorAll('[data-export],[data-copy]').forEach(button=>button.addEventListener('click',()=>{if(!report||pending||!q('[data-reviewed]').checked)return;copy=button.hasAttribute('data-copy');active.postMessage({id:seq,kind:'export',format:copy?'csv':button.dataset.export});}));
+ root.querySelectorAll('[data-export],[data-copy]').forEach(button=>button.addEventListener('click',()=>{if(!report||pending||!q('[data-reviewed]').checked)return;const action=button.hasAttribute('data-copy')?'copy':'download';active.postMessage({id:seq,kind:'export',action,revision:exportRevision,format:action==='copy'?'csv':button.dataset.export});}));
  q('[data-reset]').addEventListener('click',()=>{stop();active?.terminate();active=null;seq++;loaded=false;example=false;configs=[];order=[];input.disabled=false;q('form').reset();root.querySelectorAll('input[type=checkbox]').forEach(e=>e.checked=false);q('[data-config]').replaceChildren();q('[data-columns]').replaceChildren();q('[data-counts]').replaceChildren();q('[data-summary]').textContent='';q('[data-mapping]').hidden=true;invalidate();clear();status.textContent='Fichiers et résultats effacés de cet onglet.';});
 }

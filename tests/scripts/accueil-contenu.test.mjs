@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+
+const sections = ['Hero', 'Orientation', 'Quotidien', 'Promesse', 'Usages', 'Methode', 'Integration', 'Preuves', 'Garanties', 'Faq', 'AppelFinal'];
+
+test('les onze sections de l’accueil acceptent leur contenu et gardent EC par défaut', () => {
+  for (const section of sections) {
+    const source = readFileSync(`src/components/sections/${section}.astro`, 'utf8');
+    assert.match(source, /contenuDe\('ec'\)/, section);
+    assert.match(source, /contenu\??: ContenuAccueil\[/, section);
+    assert.match(source, /Astro\.props/, section);
+  }
+});
+
+test('le contenu EC compose les sources FAQ, méthode et garanties existantes', () => {
+  const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
+  for (const name of ['FAQ', 'METHODE', 'GARANTIES']) assert.match(source, new RegExp(name));
+});
+
+test('le contenu EC conserve les compteurs dynamiques et les preuves agrandissables de main', () => {
+  const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
+  assert.match(source, /famillesDeLaProfession\('ec'\)/);
+  assert.match(source, /\$\{familles\.length\}/);
+  assert.match(source, /\$\{nombrePoles\}/);
+  for (const section of ['Quotidien', 'Promesse', 'Integration', 'Preuves', 'Garanties']) {
+    assert.match(readFileSync(`src/components/sections/${section}.astro`, 'utf8'), /id=\{contenu\.image\} enlarge/, section);
+  }
+  assert.match(readFileSync('src/components/sections/Methode.astro', 'utf8'), /id=\{e\.image as ProofId\} enlarge/);
+});

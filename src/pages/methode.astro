@@ -17,23 +17,23 @@ const noeuds = [{
 const etapes: { id: string; titre: string; image: ProofId; paragraphes: string[] }[] = [
   { id: 'observer', titre: 'Observer', image: '04-observer', paragraphes: [
     'Nous regardons le geste tel qu’il se fait, pas tel qu’il devrait se faire.',
-    'Quels fichiers arrivent, dans quel ordre, avec quelles irrégularités. Où la personne hésite. Ce qu’elle vérifie machinalement sans l’avoir jamais écrit. Combien de fois par mois le cas « normal » n’est pas le cas normal.',
-    'Cette étape produit une description du travail réel. Elle dure ce qu’elle doit durer : une tâche mal observée donne une automatisation qui marche en démonstration et échoue au premier dossier atypique.',
+    'Nous suivons les fichiers reçus, les vérifications et les passages entre vos outils. Nous relevons les cas où un collaborateur doit chercher une pièce, expliquer un écart ou décider de la suite.',
+    'Vous obtenez une description de la tâche entière, de son point de départ au résultat attendu. Elle distingue ce que vos outils font déjà et les gestes répétitifs qui restent à prendre en charge.',
   ] },
   { id: 'cadrer', titre: 'Cadrer', image: 'v2/04-perimetre', paragraphes: [
     'Nous écrivons la règle avec vous, dans le vocabulaire du cabinet. Les accès, les formats et les cas couverts sont vérifiés avant de construire.',
-    'Ce document dit trois choses : ce qui doit se produire, ce qui constitue une exception, et ce qui doit faire arrêter le traitement. Il fixe aussi le périmètre — ce que l’automatisation touche, et ce qu’elle ne touchera jamais.',
-    'C’est ici que la plupart des projets se jouent. Une règle qu’on ne sait pas énoncer ne s’automatise pas : elle se discute d’abord. Si le cadrage révèle que la tâche n’est pas automatisable en l’état, nous le disons à ce moment, pas après le développement.',
+    'La règle écrite comporte quatre parties : la frontière entre préparation, validation et jugement ; la proposition distincte de vos saisies ; l’arrêt dans le doute ; le jeu d’essai fictif.',
+    'Nous nommons les cas couverts, les exceptions et les conditions d’arrêt. Ce que nous générons se régénère ; vos saisies restent intactes. Une règle ambiguë se clarifie avec vous avant le développement.',
   ] },
   { id: 'eprouver', titre: 'Éprouver', image: 'v2/05-refus-attendu', paragraphes: [
     'Nous construisons un jeu d’essai entièrement fictif, qui ressemble à vos fichiers sans en être.',
-    'Il contient les cas qui doivent aboutir, et surtout ceux qui doivent échouer : la donnée manquante, l’exception non prévue, le format inattendu, le mois de reprise. Pour chacun, nous vérifions que l’automatisation fait ce qu’elle doit — y compris s’arrêter.',
-    'Un refus attendu qui ne se produit pas est un défaut, au même titre qu’un résultat faux. C’est la raison pour laquelle nous testons les échecs autant que les succès. Aucune donnée réelle de votre cabinet n’entre dans cette étape.',
+    'Nous construisons l’automatisation dans les outils convenus, puis nous rejouons les cas courants et les exceptions. Une donnée manquante, un format inattendu ou un cas hors règle doit produire l’arrêt prévu.',
+    'Vous pouvez comparer, pour chaque cas, le résultat attendu et la sortie obtenue. Un refus attendu qui ne se produit pas est un défaut à corriger avant la recette.',
   ] },
   { id: 'valider', titre: 'Faire valider', image: 'v2/06-recette-cabinet', paragraphes: [
-    'Après les essais fictifs, la recette se joue dans l’environnement autorisé du cabinet, sur les cas et fichiers convenus, avec les personnes qui feront le travail.',
-    'Nous passons les cas convenus, ceux qui aboutissent et ceux qui s’arrêtent. Le résultat n’est accepté que si la personne qui utilisera l’automatisation confirme qu’elle lit ce qu’elle attend.',
-    'Ensuite seulement la mission est livrée, avec son périmètre écrit et ses conditions de maintenance.',
+    'La recette est votre vérification du résultat, avec les personnes qui feront le travail. Après les essais fictifs, elle se déroule dans l’environnement autorisé du cabinet, sur les cas et fichiers convenus.',
+    'Votre équipe vérifie les propositions, les exceptions et les arrêts avant d’accepter la livraison. La décision et les corrections restent au cabinet.',
+    'Nous livrons l’automatisation, sa règle écrite et ses essais. Le devis précise la maintenance, le support et les évolutions prises en charge. Une règle qui évolue est réécrite, rejouée et soumise à votre recette avant sa mise en service.',
   ] },
 ];
 const renvois = [
@@ -45,7 +45,7 @@ const renvois = [
 ];
 const appel = {
   titre: 'La première étape commence par un échange.',
-  texte: 'Décrivez le geste qui revient. Nous observons ensemble s’il se cadre, avant tout développement. Rien à envoyer.',
+  texte: 'Décrivez le geste qui revient. Nous écrivons sa règle avec vous, construisons dans vos outils et faisons recetter le résultat par votre équipe. La description suffit pour commencer.',
   points: ['Observer le geste réel, pas le geste théorique.', 'Écrire la règle dans vos mots.', 'Éprouver les refus autant que les résultats.'],
 };
 ---
@@ -54,7 +54,7 @@ const appel = {
   <section class="pv" aria-labelledby="etapes-titre">
     <div class="pv-tete rv">
       <h2 id="etapes-titre">Quatre étapes, dans cet ordre</h2>
-      <p class="texte-2 lecture">Chacune produit quelque chose que vous pouvez lire : une description du geste, une règle, un jeu d’essai, une recette. À la fin, le savoir-faire est écrit, et il tourne.</p>
+      <p class="texte-2 lecture">Vous confiez une tâche entière. Nous observons le travail, écrivons la règle et construisons dans vos outils. Votre équipe vérifie le résultat avant la livraison ; la maintenance prolonge cette prise en charge.</p>
       <p class="texte-2 lecture">Le cas courant et le justificatif absent suffisent déjà à <a href="/automatisation/notes-de-frais">rejouer une règle de notes de frais</a> sans utiliser de dossier réel.</p>
     </div>
     <ol class="pv-etapes">
@@ -69,6 +69,13 @@ const appel = {
         </li>
       ))}
     </ol>
+    <div class="pv-bande coins" role="table" aria-label="La frontière de la règle écrite">
+      <div class="pv-bande-liste rv-groupe" data-colonnes="3" role="row">
+        <div class="pv-cellule rv" role="cell"><h3>Se prépare seul</h3><p>Les données autorisées sont rassemblées et les propositions préparées selon la règle convenue.</p></div>
+        <div class="pv-cellule rv" role="cell"><h3>Attend votre validation</h3><p>Votre équipe relit les propositions et traite les exceptions avant toute suite prévue par la règle.</p></div>
+        <div class="pv-cellule rv" role="cell"><h3>Reste humain</h3><p>Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.</p></div>
+      </div>
+    </div>
   </section>
 
   <section class="pv" aria-labelledby="cout">
@@ -78,7 +85,7 @@ const appel = {
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Ce qu’elle coûte</h3><p>Elle est plus lente qu’une démonstration. Le cadrage prend du temps, le jeu d’essai aussi, et nous préférons dire non au cadrage plutôt qu’après.</p></li>
+        <li class="pv-cellule rv"><h3>Ce qu’elle coûte</h3><p>Le cadrage et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
         <li class="pv-cellule rv"><h3>Ce qu’elle évite</h3><p>Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
       </ul>
     </div>
@@ -88,6 +95,7 @@ const appel = {
     <div class="pv-tete rv">
       <h2 id="suite-titre-renvois">Ce qui vient ensuite</h2>
       <p class="texte-2 lecture">La recette revient aux personnes qui feront le travail. C’est indispensable pour <a href="/automatisation/paie">faire recetter un contrôle de paie</a> sans déplacer la correction ni la décision hors du pôle social.</p>
+      <p class="texte-2 lecture">Nous pouvons aussi <a href="/automatisation/entrees-sorties-salaries">éprouver la préparation d’un dossier salarié</a> : une annonce hors portail, ses informations manquantes et le retour au circuit existant font partie des essais.</p>
     </div>
     <Renvois items={renvois} />
   </section>
@@ -109,7 +117,8 @@ const appel = {
       <p class="texte-2 lecture">Avant de mettre une préparation IA en pratique, <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">écrivez les usages et les validations dans une trame de charte IA</a>. Un rôle manquant ne s’invente pas ; le cabinet le désigne avant adoption.</p>
 
 
-      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calcul de marge commerciale</a> montre ses trois formules et refuse un dénominateur nul. Le <a href="/outils-comptables-gratuits/calculateur-date-echeance-facture">calcul de date d’échéance</a> exige le point de départ et la convention choisie. Le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calcul d’amortissement comptable</a> déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale. Le <a href="/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit">modèle de rapprochement bancaire ouvrable dans Excel</a> ne se télécharge que lorsque les deux soldes ajustés concordent. Chaque page nomme la source, la règle et la limite avant le résultat.</p>
+      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calcul de marge commerciale</a> montre ses trois formules et refuse un dénominateur nul. Le <a href="/outils-comptables-gratuits/calculateur-date-echeance-facture">calcul de date d’échéance</a> exige le point de départ et la convention choisie. Le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calcul d’amortissement comptable</a> déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale. Chaque page nomme la source, la règle et la limite avant le résultat.</p>
+      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit">modèle de rapprochement bancaire ouvrable dans Excel</a> se télécharge sans compte, avant tout contrôle. Le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement. Même des soldes concordants restent à valider par le collaborateur.</p>
       <p class="texte-2 lecture">Pour une consigne plutôt qu’un calcul, le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> assemble les entrées autorisées, la validation et les conditions d’arrêt. Aucun modèle d’IA n’est appelé.</p>
       <p class="texte-2 lecture">Pour choisir un point de départ par geste, la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> présente douze modèles : relance de pièces, compte rendu ou checklist. Lisez l’exemple fictif, copiez la consigne complète puis adaptez-la dans le générateur ; le cabinet garde la décision.</p>
     </div>

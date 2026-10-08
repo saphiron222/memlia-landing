@@ -17,7 +17,7 @@ self.onmessage=async ({data:m})=>{
    self.postMessage({id:m.id,kind:'page',rows:result.rows.slice(m.page*25,m.page*25+25)});
   }else if(m.kind==='export'){
    if(!result)throw new Error('Préparez un résultat avant l’export.');
-   self.postMessage({id:m.id,kind:'export',format:m.format,content:m.format==='report'?JSON.stringify(result.report,null,2):exportCsv(result)});
+   self.postMessage({id:m.id,kind:'export',action:m.action,revision:m.revision,format:m.format,content:m.format==='report'?JSON.stringify(result.report,null,2):exportCsv(result)});
   }
  }catch(e){self.postMessage({id:m.id,kind:'error',error:e.message});}
 };
