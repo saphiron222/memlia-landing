@@ -78,6 +78,10 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'evaluation-transmission': {
+    auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
+    sources: [{ editeur: 'Bpifrance Création', titre: 'Évaluation d’entreprise', url: 'https://bpifrance-creation.fr/encyclopedie/reprendre-entreprise-etapes/diagnostiquer-evaluer/evaluation-dentreprise', consulteLe: '2026-10-06', preuve: 'L’évaluation ne fixe pas le prix ; le jeu fictif prépare seulement les chiffres et leurs références, sans valorisation.', mot: 'L’évaluation ne permet pas de fixer un prix' }],
+  },
   'registres-obligations': {
     auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
     sources: [{ editeur: 'Service Public Entreprendre', titre: 'Déclaration de créances', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F22359', consulteLe: '2026-10-06', preuve: 'Le délai général et les points de départ particuliers bornent le calcul fictif ; le cabinet vérifie la date applicable et les prorogations avant inscription.', mot: 'déclaration de créance' }],

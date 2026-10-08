@@ -431,6 +431,7 @@ class BuildProof(unittest.TestCase):
                 '44-service-registres-obligations.webp',
                 '44-service-entrees-sorties-salaries.webp',
                 '46-service-secretariat-juridique.webp',
+                '47-service-evaluation-transmission.webp',
             ]),
         )
 

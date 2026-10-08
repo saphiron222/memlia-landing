@@ -20,6 +20,16 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'evaluation-transmission': {
+    dejaFait: [
+      { outil: 'RCA Évaluation', geste: 'centralise les données, traite les retraitements, automatise les calculs financiers et les scénarios de valorisation, puis génère des rapports personnalisables', source: { url: 'https://rca.fr/logiciels-experts/evaluation/', libelle: 'RCA, Évaluation', consulteLe: '2026-10-08' } },
+    ],
+    reste: [
+      'les pièces et versions à réunir entre vos fichiers et votre outil, seulement si ce geste reste manuel ;',
+      'les références documentaires et les ajustements à faire valider avant la préparation du tableau ;',
+      'la vérification de votre outil, de son édition et de ses options : si la préparation est déjà couverte, nous ne la reconstruisons pas. Le choix des méthodes, la valeur et le conseil restent au cabinet.',
+    ],
+  },
   'registres-obligations': {
     dejaFait: [
       { outil: 'Kanta', geste: 'récupère les informations INPI à partir du SIREN à l’ouverture du dossier', source: { url: 'https://www.kanta.fr/modules/lutte-anti-blanchiment', libelle: 'Kanta, informations INPI et vigilance', consulteLe: '2026-10-06' } },

@@ -1,7 +1,15 @@
 {
   "measuredAt": "2026-10-05T22:10:29.423Z",
+  "provenance": {
+    "automatisation dossier évaluation entreprise cabinet comptable": { "capturedAt": "2026-10-06T05:18:52.326Z", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle", "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20dossier%20%C3%A9valuation%20entreprise%20cabinet%20comptable" },
+    "automatisation évaluation entreprise cabinet comptable": { "capturedAt": "2026-10-06T05:18:52.414Z", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle", "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20%C3%A9valuation%20entreprise%20cabinet%20comptable" },
+    "évaluation entreprise expert comptable": { "capturedAt": "2026-10-06T05:18:52.504Z", "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle", "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=%C3%A9valuation%20entreprise%20expert%20comptable" }
+  },
   "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
   "autocompletion": {
+    "automatisation dossier évaluation entreprise cabinet comptable": [],
+    "automatisation évaluation entreprise cabinet comptable": [],
+    "évaluation entreprise expert comptable": ["evaluation entreprise expert comptable", "evaluation cabinet expertise comptable", "valeur cabinet expertise comptable"],
     "factures fournisseurs des dossiers clients": [],
     "automatisation factures fournisseurs": [
       "automatisation factures fournisseurs"

@@ -29,6 +29,8 @@ const socialImage = entree.id === 'entrees-sorties-salaries'
   ? { url: `${SITE.url}/proofs/v2/og/44-service-entrees-sorties-salaries.webp`, width: 1200, height: 630, alt: 'Sept annonces fictives : propositions à valider, arrêts et circuit existant conservé.' }
   : entree.id === 'secretariat-juridique'
     ? { url: `${SITE.url}/proofs/v2/og/46-service-secretariat-juridique.webp`, width: 1200, height: 630, alt: 'Échéances fictives : suivi résiduel, brouillon à valider, circuit couvert exclu et date inconnue arrêtée.' }
+  : entree.id === 'evaluation-transmission'
+    ? { url: `${SITE.url}/proofs/v2/og/47-service-evaluation-transmission.jpg`, width: 1200, height: 630, alt: 'Trois cas fictifs de préparation : ajustement accepté, attente et conflit de versions.' }
   : undefined;
 const auteur = auteurPar(eeat.auteur);
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
