@@ -47,6 +47,38 @@ test('recherche progressive : filtre, état vide puis restauration', async ({ pa
   await expect(search).toBeFocused();
 });
 
+for (const width of [375, 1440]) {
+  test(`ancre après recherche filtrée à ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 812 });
+    await page.goto('/glossaire');
+    const search = page.getByLabel('Rechercher un terme');
+    const target = page.locator('#generation-augmentee-par-recuperation');
+    await search.fill('SEPA');
+    await expect(target).toBeHidden();
+    await page.evaluate(() => { window.location.href = '/glossaire#generation-augmentee-par-recuperation'; });
+    await expect(target).toBeVisible();
+    await expect(search).toHaveValue('');
+    await expect(page.locator('[data-result-count]')).toHaveText(`${EXPECTED_TERMS} termes`);
+    await expect(page.getByRole('button', { name: 'Effacer la recherche' })).toBeDisabled();
+    await expect(target).toBeInViewport();
+
+    // L’index alphabétique doit aussi pouvoir rouvrir une section filtrée.
+    await search.fill('SEPA');
+    await expect(page.locator('#lettre-g')).toBeHidden();
+    await page.locator('.alphabet a[href="#lettre-g"]').click();
+    await expect(page.locator('#lettre-g')).toBeVisible();
+    await expect(search).toHaveValue('');
+    await expect(page.locator('#lettre-g')).toBeInViewport();
+
+    // Une cible inconnue ne doit pas effacer la saisie.
+    await search.fill('SEPA');
+    await page.evaluate(() => { window.location.hash = 'terme-inconnu'; });
+    await expect(page).toHaveURL(/#terme-inconnu$/);
+    await expect(search).toHaveValue('SEPA');
+    await expect(target).toBeHidden();
+  });
+}
+
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`glossaire sans débordement à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });

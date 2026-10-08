@@ -233,5 +233,18 @@ const graph = {
     };
     input.addEventListener('input', update);
     reset.addEventListener('click', () => { input.value = ''; update(); input.focus(); });
+    const revealAnchor = () => {
+      let id: string;
+      try { id = decodeURIComponent(window.location.hash.slice(1)); }
+      catch { return; }
+      const target = document.getElementById(id);
+      if (!target || !root.contains(target) || !target.closest('[hidden]')) return;
+      // Une navigation explicite prime sur le filtre, sans laisser un compteur incohérent.
+      input.value = '';
+      update();
+      target.scrollIntoView();
+    };
+    window.addEventListener('hashchange', revealAnchor);
+    revealAnchor();
   }
 </script>
