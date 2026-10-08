@@ -11,8 +11,18 @@ export const proofSizes = lazy => `${lazy ? 'auto, ' : ''}${PROOF_SIZES}`;
 const proofSource = src => /^\/proofs\/(?!responsive\/|.*\/og\/)[a-zA-Z0-9/_-]+\.webp$/.test(src ?? '');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex').slice(0, 16);
 export function proofSrcset(src, bytes) {
+  return proofSrcsetWithHash(src, hash(bytes));
+}
+function proofSrcsetWithHash(src, digest) {
   const stem = src.slice('/proofs/'.length, -5);
-  return [...PROOF_WIDTHS.map(width => `/proofs/responsive/${stem}-${hash(bytes)}-${width}.webp ${width}w`), `${src} 1600w`].join(', ');
+  return [...PROOF_WIDTHS.map(width => `/proofs/responsive/${stem}-${digest}-${width}.webp ${width}w`), `${src} 1600w`].join(', ');
+}
+// Le contrat blog vérifie aussi le digest depuis les octets du master ; ici on reconnaît
+// uniquement la forme de diffusion pour distinguer logistique et contenu éditorial.
+export function isResponsiveProofSelection(src, srcset, sizes, lazy) {
+  const digest = srcset?.match(/-([a-f0-9]{16})-400\.webp 400w/)?.[1];
+  return proofSource(src) && Boolean(digest) && srcset === proofSrcsetWithHash(src, digest)
+    && sizes === proofSizes(lazy);
 }
 const attr = (node, name) => node.attrs?.find(item => item.name === name)?.value;
 function nodes(node) { return [node, ...(node.childNodes ?? []).flatMap(nodes)]; }
