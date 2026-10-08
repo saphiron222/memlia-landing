@@ -12,10 +12,10 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin main 4f42a88b : le chrome v3 est testé à part ; le contenu EC reste inchangé.
+// Témoin main après intégration de la copy EC relue (#181) et du système de page #166.
 // Le fil JSON-LD de l’accueil est contrôlé puis retiré avant la comparaison.
 test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
-  const expected = 'e7e06c672844aa08566b59e6e8558dab59dbc7d9dd8227d3963dcdf1d129bf55';
+  const expected = 'e343eaefe5839366d2feaedc3babd39f485b40e0dc1ecf434202d06809e179f5';
   const html = readFileSync('dist/index.html', 'utf8').replace(
     /(<script type="application\/ld\+json">)(.*?)(<\/script>)/g,
     (_, opening, json, closing) => {
@@ -36,6 +36,7 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
       return opening + JSON.stringify(schema).replace(/</g, '\\u003c') + closing;
     },
   );
+
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
   assert.equal([...html.matchAll(link)].length, 1);

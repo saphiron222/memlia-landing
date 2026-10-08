@@ -35,9 +35,9 @@ const review = (f) => json(f.root, `${f.dir}/revue.json`, { kind: 'qa', status: 
 const served = (recipe, root) => async (url) => url.endsWith('.webp') ? new Response(readFileSync(join(root, `public/proofs/integrations/${recipe.integration.slug}.webp`))) : url.endsWith('/robots.txt') ? new Response('User-agent: *\nAllow: /\n', { status: 200 }) : response(recipe);
 const response = (recipe, options = {}) => {
   const d = recipe.integration;
-  const copy = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values), d.source.title, d.source.fact].join(' ');
-  const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;');
-  return new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${d.slug}"></head><body><h1>${d.h1}</h1><template data-guide-sha256="${sha(JSON.stringify(d))}"></template><p>${escape(copy)}</p><a href="${d.source.url}">source</a><img src="/proofs/integrations/${d.slug}.webp"></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
+  const copy = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values)].join(' ');
+  const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+  return new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${d.slug}"></head><body><h1>${d.h1}</h1><template data-guide-sha256="${sha(JSON.stringify(d))}"></template><p>${escape(copy)}</p><a href="${d.source.url}" title="${escape(d.source.title)}">source</a><img src="/proofs/integrations/${d.slug}.webp"></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
 };
 
 test('page vide, ancien corps, identité absente/divergente et preuve absente/altérée refusés sans reçu', async (t) => {
@@ -49,6 +49,7 @@ test('page vide, ancien corps, identité absente/divergente et preuve absente/al
     html => html.replace(/<template.*?<\/template>/, ''),
     html => html.replace(/data-guide-sha256="[^"]+"/, 'data-guide-sha256="autre"'),
     html => html.replace(/<img[^>]+>/, ''),
+    html => html.replace(/ title="[^"]*">source</, '>source<'),
   ];
   for (const alter of alterations) {
     const fetchImpl = async url => url.endsWith(`/integrations/${f.slug}`) ? new Response(alter(good)) : served(f.recipe, f.root)(url);

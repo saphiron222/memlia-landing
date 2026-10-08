@@ -5,7 +5,7 @@ import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageEvidence from '@/components/PageEvidence.astro';
+import Picto from '@/components/Picto.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode, DEFAULT_AUDIENCE_TYPE } from '@/data/schema.mjs';
@@ -100,13 +100,12 @@ const graph = {
         {toolLink && (
           <aside class="service-outil" aria-label="Outil gratuit associé">
             <strong>{entree.id === 'rapprochement-bancaire' ? 'Contrôle de soldes fictifs, pas l’appariement des mouvements' : 'Rejouer la règle sur des données fictives'}</strong>
-            <a href={toolLink.href}>{toolLink.label}</a>
+            <a class="lien-action" href={toolLink.href}>{toolLink.label}<Picto nom="fleche" taille={14} /></a>
           </aside>
         )}
       </ServiceBody>
       <RelatedIntegrations servicePath={chemin} />
       <ServicePrinciples />
-      <PageEvidence eeat={eeat} />
       <AppelFinal
         id="confier"
         titre="Décrivez le geste qui revient."
@@ -123,7 +122,8 @@ const graph = {
 </Base>
 
 <style>
-  .service-outil { display: grid; gap: 8px; margin-top: 32px; padding: 20px; border-left: 3px solid var(--accent-appui); background: var(--accent-voile); }
-  .service-outil a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
-  article > :global([data-service-section='appel']) { background: var(--surface-feuille); }
+  /* L'outil associé : son intitulé, puis le lien d'action du système de page. */
+  .service-outil { display: grid; gap: var(--espace-1); margin-top: var(--espace-10); }
+  .service-outil strong { color: var(--texte-fort); font-weight: 600; }
+  .service-outil .lien-action { text-decoration: none; }
 </style>

@@ -1,6 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Button from '@/components/Button.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { GLOSSARY_BY_ID, GLOSSARY_ENTRIES, GLOSSARY_SOURCES } from '@/data/glossary';
@@ -16,6 +16,69 @@ for (const entry of GLOSSARY_ENTRIES) {
   byLetter.set(letter, [...(byLetter.get(letter) ?? []), entry]);
 }
 const letters = [...byLetter.keys()];
+// Décision de Kevin du 06/10/2026 : pas de bloc « Sources ». L'organisme externe qui établit la définition est cité
+// entre parenthèses à sa fin, son nom portant le lien ; les renvois internes restent dans « Pour aller plus loin ».
+// Chaque source externe garde son lien : un second document du même éditeur se nomme par son libellé court.
+const citations = (sourceIds: string[]) => {
+  const editeurs = new Set<string>();
+  const urls = new Set<string>();
+  return sourceIds.flatMap((sourceId) => {
+    const source = GLOSSARY_SOURCES[sourceId];
+    if (!source) throw new Error(`Source inconnue : ${sourceId}`);
+    if (source.publisher === 'Memlia' || urls.has(source.url)) return [];
+    urls.add(source.url);
+    const editeur = source.publisher.split(' — ')[0];
+    if (!editeurs.has(editeur)) {
+      editeurs.add(editeur);
+      return [{ sourceId, nom: editeur, url: source.url, titre: source.title }];
+    }
+    if (!source.libelleCourt) throw new Error(`Second document ${editeur} sans libellé court : ${sourceId}`);
+    return [{ sourceId, nom: source.libelleCourt, url: source.url, titre: source.title }];
+  });
+};
+type Citation = ReturnType<typeof citations>[number];
+type LienSurMot = { mot: string; cite: Citation };
+/** Le texte découpé autour du premier `mot` de chaque lien encore à poser ; `poses` retient ceux déjà posés. */
+const segmenter = (texte: string, liens: LienSurMot[], poses: Set<string>): (string | LienSurMot)[] =>
+  liens.reduce<(string | LienSurMot)[]>((morceaux, lien) => {
+    if (poses.has(lien.mot)) return morceaux;
+    const rang = morceaux.findIndex((morceau) => typeof morceau === 'string' && morceau.includes(lien.mot));
+    if (rang === -1) return morceaux;
+    const morceau = morceaux[rang] as string;
+    const debut = morceau.indexOf(lien.mot);
+    poses.add(lien.mot);
+    return [...morceaux.slice(0, rang), morceau.slice(0, debut), lien, morceau.slice(debut + lien.mot.length), ...morceaux.slice(rang + 1)];
+  }, [texte]);
+// Les sources Memlia (méthode, articles) sont des renvois internes : elles rejoignent « Pour aller plus loin », sans
+// doublon avec les renvois déjà écrits (revue de #166, 07/10/2026).
+const liensInternes = (entry: (typeof GLOSSARY_ENTRIES)[number]) => {
+  const memlia = entry.sourceIds
+    .map((sourceId) => GLOSSARY_SOURCES[sourceId])
+    .filter((source) => source?.publisher === 'Memlia')
+    .map((source) => ({ label: source.title, href: source.url }));
+  return [...entry.internalLinks, ...memlia.filter((lien) => !entry.internalLinks.some((existant) => existant.href === lien.href))];
+};
+// Une définition écrite par Memlia (« Dans ce glossaire, Memlia appelle… ») n'est pas celle de l'organisme cité :
+// chaque source externe se pose sur le mot qu'elle établit (motsSources), jamais en parenthèse après une phrase maison.
+type Entree = (typeof GLOSSARY_ENTRIES)[number];
+const definitionMaison = (entry: Entree) => entry.nature === 'Éditoriale Memlia';
+// Calculé ici et non dans le gabarit : `astro check` ne lit pas les annotations de type d'une expression du gabarit.
+const corpsEntree = (entry: Entree) => {
+  const cites = citations(entry.sourceIds);
+  const maison = definitionMaison(entry);
+  const mots: Partial<Record<string, string>> = ('motsSources' in entry && entry.motsSources) || {};
+  const liens: LienSurMot[] = maison
+    ? cites.flatMap((cite) => (mots[cite.sourceId] ? [{ mot: mots[cite.sourceId] as string, cite }] : []))
+    : [];
+  const enParentheses = cites.filter((cite) => !liens.some((lien) => lien.cite === cite));
+  const poses = new Set<string>();
+  const definition = segmenter(entry.definition, liens, poses);
+  const contexte = segmenter(entry.context, liens, poses);
+  const absent = liens.find((lien) => !poses.has(lien.mot));
+  if (absent) throw new Error(`Glossaire ${entry.id} : « ${absent.mot} » introuvable dans la définition ou le contexte.`);
+  if (maison && enParentheses.length > 0) throw new Error(`Glossaire ${entry.id} : source externe sans mot (motsSources) sur une définition maison.`);
+  return { definition, contexte, parentheses: maison ? [] : enParentheses };
+};
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -93,8 +156,12 @@ const graph = {
               >
                 <dt><a href={`#${entry.anchor}`}>{entry.term}</a></dt>
                 <dd>
-                  <p class="definition">{entry.definition}</p>
-                  <p class="contexte">{entry.context}</p>
+                  {[corpsEntree(entry)].map((corps) => (
+                    <>
+                      <p class="definition">{corps.definition.map((morceau) => (typeof morceau === 'string' ? morceau : <a href={morceau.cite.url} rel="noopener noreferrer" title={morceau.cite.titre}>{morceau.mot}</a>))}{corps.parentheses.length > 0 && <> ({corps.parentheses.map((cite, index) => <>{index > 0 && ', '}<a href={cite.url} rel={cite.url.startsWith('http') ? 'noopener noreferrer' : undefined} title={cite.titre}>{cite.nom}</a></>)})</>}</p>
+                      <p class="contexte">{corps.contexte.map((morceau) => (typeof morceau === 'string' ? morceau : <a href={morceau.cite.url} rel="noopener noreferrer" title={morceau.cite.titre}>{morceau.mot}</a>))}</p>
+                    </>
+                  ))}
                   <div class="entree-details">
                     <p><strong>Confusion fréquente</strong>{entry.commonConfusion}</p>
                     <p><strong>Exemple avec données fictives</strong>{entry.exampleFictitious}</p>
@@ -114,19 +181,9 @@ const graph = {
                     <div>
                       <strong>Pour aller plus loin</strong>
                       <ul class="liens-liste">
-                        {entry.internalLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+                        {liensInternes(entry).map((link) => <li><a href={link.href}>{link.label}</a></li>)}
                       </ul>
                     </div>
-                  </div>
-                  <div class="entree-sources">
-                    <strong>Sources</strong>
-                    <ul>
-                      {entry.sourceIds.map((sourceId) => {
-                        const source = GLOSSARY_SOURCES[sourceId];
-                        if (!source) throw new Error(`Source inconnue : ${sourceId}`);
-                        return <li><a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.publisher}, {source.title}</a></li>;
-                      })}
-                    </ul>
                   </div>
                 </dd>
               </div>
@@ -136,25 +193,28 @@ const graph = {
       ))}
     </div>
 
-    <section class="conteneur glossaire-sortie" aria-labelledby="sortie-titre">
-      <h2 id="sortie-titre">Une tâche répétitive à nous confier ?</h2>
-      <p class="texte-2">Nous écrivons la règle avec votre équipe, puis prenons la tâche entière en charge dans vos outils existants : construction, essais, recette et maintenance. La recette est la vérification du résultat par votre équipe. Vous gardez la décision.</p>
-      <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-    </section>
+    {/* Système de page : appel final commun, textes du glossaire relus sur main. */}
+    <AppelFinal
+      id="sortie"
+      titre="Une tâche répétitive à nous confier ?"
+      texte="Nous écrivons la règle avec votre équipe, puis prenons la tâche entière en charge dans vos outils existants : construction, essais, recette et maintenance. La recette est la vérification du résultat par votre équipe. Vous gardez la décision."
+      points={[]}
+      action={CTA.principal}
+    />
   </div>
 </Base>
 
 <style>
-  .glossaire-feuille { background: var(--surface-feuille); padding-bottom: clamp(56px, 8vw, 104px); }
-  .glossaire-tete { display: grid; gap: 16px; padding-top: clamp(28px, 5vw, 56px); max-width: 880px; margin-inline: 0; }
+  /* Système de page : l'en-tête du héros partagé, sans maquette (40 puis 64 px au-dessus). */
+  .glossaire-tete { display: grid; gap: 16px; padding-top: 40px; max-width: 880px; margin-inline: 0; }
   .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); margin-bottom: 12px; }
   .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
   .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
   .ariane [aria-current] { color: var(--texte); }
-  .glossaire-tete h1 { font-size: var(--t-5xl); max-width: 22ch; }
+  .glossaire-tete h1 { font-size: var(--titre-page-partage); max-width: 22ch; }
   .glossaire-intro { max-width: 62ch; }
   .glossaire-statut { max-width: 65ch; padding: 12px 16px; border-left: 3px solid var(--ocre); background: var(--ocre-voile); color: var(--texte); font-size: var(--t-sm); }
-  .glossaire-outils { display: grid; gap: 24px; margin-top: 40px; padding-block: 24px; border-block: 1px solid var(--ligne); }
+  .glossaire-outils { display: grid; gap: 24px; margin-top: var(--bloc-ecart); padding-block: 24px; border-block: 1px solid var(--ligne); }
   .recherche { display: grid; gap: 8px; max-width: 640px; }
   /* Réserver la recherche avant l'activation JS : l'index ne descend pas au chargement. */
   .recherche[hidden] { display: grid; visibility: hidden; }
@@ -167,10 +227,11 @@ const graph = {
   .recherche-vide { padding: 16px; border: 1px solid var(--ligne); background: var(--surface-page); }
   .alphabet ol { display: flex; flex-wrap: wrap; gap: 8px; }
   .alphabet a { display: grid; place-items: center; min-width: 48px; min-height: 48px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); color: var(--texte-fort); font-weight: 600; }
-  .glossaire-corps { margin-top: 40px; }
+  .glossaire-corps { margin-top: var(--bloc-ecart); }
   .lettre { scroll-margin-top: calc(var(--nav-h) + 20px); }
-  .lettre + .lettre { margin-top: 48px; }
-  .lettre > h2 { padding-bottom: 12px; border-bottom: 2px solid var(--texte-fort); font-size: var(--t-3xl); }
+  /* Les lettres sont les intertitres d'un document : 32 px, espacées de 64 px, sans filet. */
+  .lettre + .lettre { margin-top: var(--espace-16); }
+  .lettre > h2 { font-size: var(--titre-intertitre); }
   .lettre dl { display: grid; }
   .glossaire-entree { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 28px; border-bottom: 1px solid var(--ligne); scroll-margin-top: calc(var(--nav-h) + 20px); }
   .glossaire-entree[hidden], .lettre[hidden] { display: none; }
@@ -181,17 +242,12 @@ const graph = {
   .contexte { color: var(--texte-2); }
   .entree-details { display: grid; gap: 12px; padding-left: 16px; border-left: 3px solid var(--accent-appui); }
   .entree-details p { display: grid; gap: 2px; }
-  .entree-details strong, .entree-liens strong, .entree-sources > strong { font-size: var(--t-sm); color: var(--texte-fort); }
+  .entree-details strong, .entree-liens strong { font-size: var(--t-sm); color: var(--texte-fort); }
   .entree-liens { display: grid; gap: 8px; font-size: var(--t-sm); }
   .entree-liens > div { display: grid; gap: 2px; }
   .liens-liste { display: flex; flex-wrap: wrap; gap: 2px 16px; }
   .liens-liste li { display: flex; align-items: center; min-height: 44px; }
-  .entree-liens a, .entree-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-  .entree-sources { display: grid; gap: 4px; font-size: var(--t-sm); color: var(--texte-2); }
-  .entree-sources ul { display: grid; gap: 3px; }
-  .glossaire-sortie { display: grid; justify-items: start; gap: 12px; max-width: 720px; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-forte); }
-  .glossaire-sortie h2 { font-size: var(--t-3xl); max-width: 24ch; }
-  .glossaire-sortie p { max-width: 60ch; }
+  .entree-liens a, .definition a, .contexte a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
   @media (hover: hover) {
     .alphabet a:hover, .recherche-effacer:hover { background: var(--surface-hover); }
   }
@@ -199,7 +255,9 @@ const graph = {
     .recherche-ligne { grid-template-columns: minmax(0, 1fr) auto; }
   }
   @media (min-width: 64rem) {
-    .glossaire-entree { grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2.2fr); gap: 48px; padding-block: 36px; }
+    .glossaire-tete { padding-top: 64px; }
+    /* Le terme sur un tiers, sa définition sur deux tiers, comme les lignes du système. */
+    .glossaire-entree { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--rangee-gouttiere); padding-block: 36px; }
   }
   @media (forced-colors: active) {
     .glossaire-statut, .entree-details { border-left-color: CanvasText; }
