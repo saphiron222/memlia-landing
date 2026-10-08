@@ -1,6 +1,17 @@
 import {test,expect} from '@playwright/test';
 const route='/outils-comptables-gratuits/generateur-relance-facture-impayee';
 async function demo(page){await page.goto(route);await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();await page.getByRole('button',{name:'Préparer les relances',exact:true}).click();await expect(page.locator('#rel-message-body')).toHaveValue(/90,00 EUR/);}
+for(const [width,height] of [[320,900],[375,900],[768,900],[1024,900],[1440,900],[1920,900],[320,225]]) test(`import et refus CSV sans débordement global ${width}x${height}`,async({page})=>{
+ await page.setViewportSize({width,height});await demo(page);await page.locator('summary').filter({hasText:'Importer un CSV'}).click();
+ await expect(page.locator('details').filter({has:page.locator('[data-rel-import]')}).locator('p')).toContainText('clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await page.locator('#rel-file').setInputFiles({name:'refus.csv',mimeType:'text/csv',buffer:Buffer.from('clientKey;client\n001;Fictif')});
+ await page.getByRole('button',{name:'Lire le CSV',exact:true}).click();await expect(page.locator('#rel-error')).toContainText('En-têtes requis');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await expect(page.locator('#rel-message-body')).toHaveValue(/90,00 EUR/);
+ const table=page.locator('.table-scroll');await table.focus();await page.keyboard.press('End');
+ if(width<=375)expect(await table.evaluate(el=>el.scrollWidth>el.clientWidth)).toBe(true);
+});
 test('édition, copie et exports complets ; aucune requête ni stockage après chargement',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await page.goto(route);await page.waitForLoadState('networkidle');const requests=[];page.on('request',r=>{if(!r.url().startsWith('blob:'))requests.push(r.url());});const before=await page.evaluate(()=>({local:{...localStorage},session:{...sessionStorage}}));
  await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();await page.getByRole('button',{name:'Préparer les relances',exact:true}).click();await expect(page.locator('#rel-summary')).toContainText('4 factures');await expect(page.locator('#rel-message-body')).toHaveValue(/90,00 EUR/);await expect(page.locator('[data-rel-decisions]')).toContainText('Litige');await expect(page.locator('[data-rel-decisions]')).toContainText('soldée');await expect(page.locator('[data-rel-decisions]')).toContainText('Non échue');
