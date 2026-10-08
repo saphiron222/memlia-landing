@@ -1,0 +1,9 @@
+@import url('../site-v2-proofs/styles.css');
+.frame { align-items: center; }
+.window-bar { display: grid; grid-template-columns: 1fr 1.1fr .8fr; gap: 32px; padding: 0 32px; background: var(--paper); }
+.window-bar > :last-child { margin: 0; }
+.case { display: grid; grid-template-columns: 1fr 1.1fr .8fr; gap: 32px; align-items: center; padding: 24px 32px; border-top: 1px solid var(--line-soft); font-size: 21px; }
+.case b, .case small { display: block; }
+.case b { font-family: Fraunces, Georgia, serif; font-weight: 600; }
+.case small { color: var(--muted); font-size: 17px; margin-top: 8px; }
+.case > span { color: var(--green-dark); font-size: 19px; }

@@ -47,8 +47,20 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'checklist-pieces-comptables', categorie: 'preparer', statut: 'disponible',
+    libelleAction: 'Préparer la demande des pièces manquantes',
+    h1: 'Checklist des pièces comptables à demander', title: 'Checklist des pièces comptables à demander | Memlia',
+    description: 'Préparez une checklist personnalisable, suivez les pièces reçues et générez la demande des seuls documents manquants, sans inscription.',
+    promesse: { entree: 'Période, familles choisies, pièces libres et quatre états déclarés', resultat: 'Checklist éditable, demande exacte, impression et reprise CSV ou JSON' },
+    limites: ['Trame opérationnelle choisie et modifiable : aucune obligation légale ni régime fiscal déduit.', 'Reçu, Manquant, Non applicable et À clarifier restent distincts ; un état inconnu ne devient jamais manquant.', 'Le cabinet valide la demande, les pièces utiles et l’échéance organisationnelle. Aucun envoi ni écriture dans un dossier métier.', '100 éléments et 1 Mo par fichier de reprise ; version, format ou état inattendu : import entier refusé, saisie conservée.'],
+    mentionLocale: 'Tout reste en mémoire dans cet onglet, sans envoi ni stockage navigateur. Exportez volontairement votre JSON ou CSV pour reprendre après fermeture. Aucun document comptable ni pièce jointe.',
+    proof: 'v2/44-outil-checklist-pieces', zoneLarge: true,
+    source: { titre: 'Convention opérationnelle Memlia', nom: 'Méthode Memlia — écrire une règle et ses limites', url: '/methode', extrait: 'La trame suit les familles choisies et les états déclarés, sans sélectionner des obligations. Seules les pièces marquées manquantes entrent dans la demande ; les inconnues restent à clarifier.', verifieeLe: '7 octobre 2026' },
+    articleExact: '/blog/automatiser-la-relance-des-pieces-clients', pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
-    libelleAction: 'Calculer le barème d’heures CAC',
+    libelleAction: 'Calculer la référence d’heures',
     h1: 'Barème d’heures du commissaire aux comptes : calcul et limites',
     title: 'Barème heures commissaire aux comptes | Memlia',
     description: 'Calculez la base et la tranche du barème d’heures CAC, vérifiez les exclusions et exportez les hypothèses. Distinguez barème et budget de mission.',
@@ -66,7 +78,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'seuil-signification-audit', categorie: 'calculer', statut: 'disponible',
-    libelleAction: 'Calculer les seuils d’audit',
+    libelleAction: 'Comparer vos scénarios de seuils',
     h1: 'Seuil de signification en audit : calcul et justification',
     title: 'Seuil de signification audit : calcul motivé | Memlia',
     description: 'Calculez les seuils de signification et de planification avec vos propres paramètres. Comparez les scénarios et exportez leur justification.',
@@ -89,7 +101,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'suivi-circularisation', categorie: 'preparer', statut: 'disponible',
-    libelleAction: 'Préparer le suivi de circularisation',
+    libelleAction: 'Préparer les lettres et le suivi',
     h1: 'Modèle de suivi de circularisation Excel : lettres et retours',
     title: 'Suivi de circularisation : lettres et retours | Memlia',
     description: 'Préparez vos lettres de confirmation, suivez les retours et rapprochez les écarts localement. Exportez le tableau de suivi pour votre dossier.',
@@ -107,7 +119,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'generateur-prompt-ia-gratuit', categorie: 'ecrire', statut: 'disponible',
-    libelleAction: 'Préparer une consigne texte professionnelle',
+    libelleAction: 'Préparer une consigne texte',
     h1: 'Générateur de prompt IA gratuit',
     title: 'Générateur de prompt IA gratuit | Memlia',
     description: 'Préparez un prompt texte pour rédiger, résumer ou classer, avec contexte, format de sortie, contraintes et critères de validation.',
@@ -126,7 +138,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   {
 
     slug: 'bibliotheque-prompts-comptables', categorie: 'explorer', statut: 'disponible',
-    libelleAction: 'Choisir un modèle de prompt comptable',
+    libelleAction: 'Choisir un modèle de prompt',
     h1: 'Bibliothèque de prompts comptables',
     title: 'Bibliothèque de prompts comptables | Memlia',
     description: 'Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.',
@@ -143,7 +155,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'verificateur-prompt-ia', categorie: 'verifier', statut: 'disponible',
-    libelleAction: 'Examiner les contraintes d’un prompt IA',
+    libelleAction: 'Examiner votre prompt',
     h1: 'Vérificateur de prompt IA', title: 'Vérificateur de prompt IA | Memlia',
     description: 'Repérez les contraintes absentes d’un prompt IA et préparez des corrections expliquées, sans confondre structure et fiabilité des réponses.',
     promesse: { entree: 'Consigne abstraite existante, 10 000 caractères maximum', resultat: 'Constats expliqués, original conservé, proposition éditable et rapport complet' },
@@ -160,7 +172,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'preparer-pseudonymiser-fichier-csv-fec', categorie: 'preparer', statut: 'disponible',
-    libelleAction: 'Préparer une copie CSV pseudonymisée',
+    libelleAction: 'Préparer une copie pseudonymisée',
     h1: 'Préparer et pseudonymiser un fichier comptable avant IA',
     title: 'Préparer et pseudonymiser un fichier comptable avant IA | Memlia',
     description: 'Supprimez ou remplacez des colonnes d’un fichier CSV ou FEC local et examinez les risques restants avant tout partage avec une IA.',
@@ -184,7 +196,7 @@ export const OUTILS: readonly OutilDefinition[] = [
 
 
     slug: 'diagnostic-maturite-ia-cabinet', categorie: 'se-situer', statut: 'disponible',
-    libelleAction: 'Situer les pratiques IA du cabinet',
+    libelleAction: 'Situer les pratiques du cabinet',
     h1: 'Diagnostic de maturité IA du cabinet',
     title: 'Diagnostic de maturité IA du cabinet | Memlia',
     description: 'Situez les pratiques IA de votre cabinet et choisissez une prochaine action à partir de vos réponses, sans inscription ni classement des équipes.',
@@ -200,7 +212,7 @@ export const OUTILS: readonly OutilDefinition[] = [
 
 
     slug: 'generateur-prompt-expert-comptable',
-    libelleAction: 'Préparer un prompt pour le cabinet',
+    libelleAction: 'Écrire un prompt pour votre tâche',
     categorie: 'ecrire',
     statut: 'disponible',
     h1: 'Générateur de prompt pour expert-comptable',
@@ -230,7 +242,7 @@ export const OUTILS: readonly OutilDefinition[] = [
 
 
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
-    libelleAction: 'Comparer les scénarios de ROI',
+    libelleAction: 'Comparer vos hypothèses de ROI',
     h1: 'Calculateur de ROI d’automatisation comptable',
     title: 'Calculateur de ROI d’automatisation comptable | Memlia',
     description: 'Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.',
@@ -248,7 +260,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'generateur-charte-ia-cabinet',
-    libelleAction: 'Préparer une trame de charte IA',
+    libelleAction: 'Préparer une trame de charte',
     categorie: 'ecrire',
     statut: 'disponible',
     h1: 'Générateur de charte IA du cabinet',
@@ -281,7 +293,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   {
 
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
-    libelleAction: 'Contrôler la structure d’un FEC',
+    libelleAction: 'Contrôler la structure du FEC',
     h1: 'Vérificateur FEC gratuit et local',
     title: 'Vérificateur FEC gratuit et local | Memlia',
     description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
@@ -305,7 +317,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'calculateur-marge-commerciale',
-    libelleAction: 'Calculer une marge commerciale',
+    libelleAction: 'Calculer la marge et les taux',
     categorie: 'calculer',
     statut: 'disponible',
     h1: 'Calculateur de marge commerciale',
@@ -335,7 +347,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'calculateur-date-echeance-facture',
-    libelleAction: 'Calculer une date d’échéance',
+    libelleAction: 'Calculer la date d’échéance',
     categorie: 'calculer',
     statut: 'disponible',
     h1: 'Calculateur de date d’échéance de facture',
@@ -365,7 +377,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'calculateur-amortissement-comptable',
-    libelleAction: 'Calculer un plan d’amortissement',
+    libelleAction: 'Calculer le plan annuel',
     categorie: 'calculer',
     statut: 'disponible',
     h1: 'Calculateur d’amortissement comptable',
@@ -395,7 +407,7 @@ export const OUTILS: readonly OutilDefinition[] = [
   },
   {
     slug: 'modele-rapprochement-bancaire-excel-gratuit',
-    libelleAction: 'Télécharger le modèle de rapprochement bancaire',
+    libelleAction: 'Accéder au classeur à télécharger',
     categorie: 'verifier',
     statut: 'disponible',
     h1: 'Modèle de rapprochement bancaire Excel gratuit',

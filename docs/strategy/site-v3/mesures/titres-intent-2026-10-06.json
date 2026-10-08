@@ -33,7 +33,52 @@
     "saisie automatique comptabilité": [
       "saisie automatique comptabilité"
     ],
-    "saisie automatique comptabilité cabinet comptable": []
+    "saisie automatique comptabilité cabinet comptable": [],
+    "automatiser circularisation": [],
+    "circularisation commissaire aux comptes": [
+      "circularisation commissaire aux comptes",
+      "obligation circularisation commissaire aux comptes",
+      "lettre de circularisation commissaire aux comptes",
+      "demande de circularisation commissaire aux comptes"
+    ],
+    "réponse circularisation fournisseurs": [
+      "reponse circularisation fournisseurs"
+    ],
+    "procédures alternatives circularisation": [
+      "procédure alternative circularisation fournisseur",
+      "procédure alternative circularisation client"
+    ],
+    "automatisation entrées sorties salariés cabinet comptable": [],
+    "gestion entrées sorties salariés cabinet comptable": [],
+    "délai remise solde de tout compte": [
+      "délai remise solde de tout compte",
+      "délai remise solde de tout compte jurisprudence",
+      "délai remise solde de tout compte licenciement",
+      "délai remise solde de tout compte 8 jours",
+      "délai remise solde de tout compte code du travail",
+      "delai remise solde de tout compte au salarié",
+      "délai remise solde de tout compte rupture conventionnelle",
+      "delai remise solde de tout compte demission",
+      "délai paiement solde de tout compte chèque ou virement",
+      "délai paiement solde de tout compte après liquidation judiciaire"
+    ],
+    "automatisation secrétariat juridique cabinet comptable": [],
+    "automatisation approbation comptes cabinet comptable": [],
+    "délai dépôt des comptes au greffe": [
+      "delai depot des comptes au greffe",
+      "date limite dépot des comptes au greffe",
+      "délai de dépôt des comptes annuels au greffe",
+      "date limite dépôt des comptes annuels 2026 au greffe",
+      "date limite de dépôt des comptes annuels au greffe 2025",
+      "date limite de dépôt des comptes annuels au greffe 2024"
+    ],
+    "automatisation suivi registres obligations cabinet comptable": [],
+    "automatisation registres cabinet comptable": [],
+    "délai déclaration bénéficiaire effectif greffe": [
+      "déclaration bénéficiaire effectif greffe",
+      "document beneficiaire effectif greffe",
+      "registre bénéficiaire effectif greffe"
+    ]
   },
   "provenance": {
     "factures fournisseurs des dossiers clients": {
@@ -110,6 +155,137 @@
       "capturedAt": "2026-10-05T22:10:30.966Z",
       "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=saisie%20automatique%20comptabilit%C3%A9%20cabinet%20comptable",
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatisation entrées sorties salariés cabinet comptable": {
+      "capturedAt": "2026-10-06T01:55:21.365Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20entr%C3%A9es%20sorties%20salari%C3%A9s%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "gestion entrées sorties salariés cabinet comptable": {
+      "capturedAt": "2026-10-06T01:55:21.444Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=gestion%20entr%C3%A9es%20sorties%20salari%C3%A9s%20cabinet%20comptable",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "délai remise solde de tout compte": {
+      "capturedAt": "2026-10-06T01:55:21.528Z",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=d%C3%A9lai%20remise%20solde%20de%20tout%20compte",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "automatisation suivi registres obligations cabinet comptable": {
+      "capturedAt": "2026-10-06T04:28:30.796Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20suivi%20registres%20obligations%20cabinet%20comptable"
+    },
+    "automatisation registres cabinet comptable": {
+      "capturedAt": "2026-10-06T04:28:30.899Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20registres%20cabinet%20comptable"
+    },
+    "délai déclaration bénéficiaire effectif greffe": {
+      "capturedAt": "2026-10-06T04:28:31.040Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=d%C3%A9lai%20d%C3%A9claration%20b%C3%A9n%C3%A9ficiaire%20effectif%20greffe"
     }
-  }
+  },
+  "mesures": [
+    {
+      "requete": "automatiser circularisation",
+      "famille": "accueil-cac",
+      "typeCandidat": "service",
+      "pageCandidate": "https://memlia.fr/commissaires-aux-comptes",
+      "mesureLe": "2026-10-05T22:17:28.981Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 0,
+      "familleCandidate": "cac-accueil-cac",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "circularisation commissaire aux comptes",
+      "famille": "circularisation",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation",
+      "mesureLe": "2026-10-05T22:16:51.911Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "circularisation commissaire aux comptes",
+        "obligation circularisation commissaire aux comptes",
+        "lettre de circularisation commissaire aux comptes",
+        "demande de circularisation commissaire aux comptes"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 4,
+      "familleCandidate": "cac-circularisation",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "réponse circularisation fournisseurs",
+      "famille": "circularisation",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation",
+      "mesureLe": "2026-10-05T22:16:52.535Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "reponse circularisation fournisseurs"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 1,
+      "familleCandidate": "cac-circularisation",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    },
+    {
+      "requete": "procédures alternatives circularisation",
+      "famille": "circularisation-alternatives",
+      "typeCandidat": "guide",
+      "pageCandidate": "https://memlia.fr/blog/circularisation-alternatives",
+      "mesureLe": "2026-10-05T22:16:53.124Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+      "marche": {
+        "hl": "fr",
+        "gl": "fr"
+      },
+      "ok": true,
+      "suggestions": [
+        "procédure alternative circularisation fournisseur",
+        "procédure alternative circularisation client"
+      ],
+      "erreur": null,
+      "volumeMensuel": null,
+      "statut": "candidate-non-publiee",
+      "nombreSuggestions": 2,
+      "familleCandidate": "cac-circularisation-alternatives",
+      "intention": "informationnelle-pratique",
+      "decision": "candidate provisoire à arbitrer par C3, non publiée",
+      "niveauPreuve": "autocomplétion observée, aucun volume quantifié"
+    }
+  ],
+  "origineCAC": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json"
 }
