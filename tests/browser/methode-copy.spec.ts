@@ -58,7 +58,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await page.goto('/methode');
     await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
-    await expect(page.locator('.pv-etape')).toHaveCount(4);
+    await expect(page.locator('.etape')).toHaveCount(4);
     for (const image of await page.locator('main img').all()) {
       await image.scrollIntoViewIfNeeded();
       await expect(image).toHaveJSProperty('complete', true);

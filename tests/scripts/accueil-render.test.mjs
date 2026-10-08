@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
-
+import { createHash } from 'node:crypto';
 import { parse, serializeOuter } from 'parse5';
 
 const sections = { Hero: 'hero', Orientation: 'orientation', Quotidien: 'quotidien', Promesse: 'promesse', Usages: 'usages', Methode: 'methode', Integration: 'integration', Preuves: 'preuves', Garanties: 'garanties', Faq: 'faq', AppelFinal: 'appelFinal' };
@@ -12,8 +12,24 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Compare the default and explicit EC render below, not a historical bundle hash:
-// adding an unrelated tool legitimately changes shared assets and footer links.
+// Témoin du système de page #166 après intégration de la copy EC relue (#181).
+// Avant #181 : c28bb8b4… ; DOM inchangé, nouveaux textes de main seuls ; chrome v3 testé à part.
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  const expected = 'e343eaefe5839366d2feaedc3babd39f485b40e0dc1ecf434202d06809e179f5';
+  const html = readFileSync('dist/index.html', 'utf8');
+  // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
+  const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
+  assert.equal([...html.matchAll(link)].length, 1);
+  const main = find(parse(html), 'main');
+  assert.ok(main);
+  const removeAudience = (node) => {
+    node.childNodes = (node.childNodes ?? []).filter(child => !child.attrs?.some(a => a.name === 'data-accueil-cac'));
+    node.childNodes.forEach(removeAudience);
+  };
+  removeAudience(main);
+  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
+});
+
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
   mkdirSync('.qa', { recursive: true });
   const dir = mkdtempSync(resolve('.qa/accueil-render-'));

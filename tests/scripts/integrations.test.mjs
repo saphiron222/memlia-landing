@@ -96,7 +96,8 @@ test('chaque page porte une intention, une source, un auteur et une preuve propr
     assert.ok(!mediaIds.has(media), `${slug}: média unique`);
     mediaIds.add(media);
 
-    const sourceUrl = html.match(/class="source-lien" href="([^"]+)"/)?.[1];
+    // Décision de Kevin du 06/10/2026 : le document de l'éditeur se cite dans le paragraphe de portée, pas dans une section.
+    const sourceUrl = html.match(/aria-labelledby="repere-editeur"[\s\S]*?<a href="([^"]+)" rel="noopener noreferrer"/)?.[1];
     assert.ok(sourceUrl?.startsWith('https://'), `${slug}: source éditeur`);
     assert.ok(!sourceUrls.has(sourceUrl), `${slug}: source propre`);
     sourceUrls.add(sourceUrl);
