@@ -8,8 +8,9 @@ import { integrationPath, type IntegrationDefinition } from '@/data/integrations
  */
 interface Props {
   integrations: readonly IntegrationDefinition[];
+  titresParTache?: boolean;
 }
-const { integrations } = Astro.props;
+const { integrations, titresParTache = false } = Astro.props;
 ---
 
 <ul class="cartes" data-integration-cards>
@@ -18,7 +19,9 @@ const { integrations } = Astro.props;
       <a class="carte" href={integrationPath(integration)}>
         <div class="carte-corps">
           <span class="carte-meta">{integration.vendor} · {integration.product}</span>
-          <h3 class="carte-titre">{integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
+          <h3 class="carte-titre">{titresParTache
+            ? `${integration.task.charAt(0).toUpperCase() + integration.task.slice(1)} dans ${integration.product}`
+            : integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
           <p class="carte-texte">{integration.description}</p>
           <span class="carte-action">Lire le guide<Picto nom="fleche" taille={14} /></span>
         </div>
