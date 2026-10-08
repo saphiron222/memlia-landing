@@ -12,6 +12,7 @@ function html({ route, h1, media, href, ogTitle = h1, headline = h1, description
     <meta name="description" content="${description}">
     <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}">
     <meta property="og:title" content="${ogTitle}">
+    <meta property="og:image" content="https://memlia.fr${media}">
     <link rel="canonical" href="${url}">
     ${schema ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', url, name: h1, headline, description,
@@ -29,7 +30,7 @@ function fixture() {
   }
   writeFileSync(join(root, 'src/styles/tokens.css'), ':root { --surface-feuille: #fffefb; --r-carte: 16px; }');
   writeFileSync(join(root, 'src/components/sections/TestSection.astro'), '<section><slot /></section>');
-  writeFileSync(join(root, 'src/components/Nav.astro'), '<nav data-mobile-visible></nav><style>.nav-principal { min-height: 44px; } .nav-mobile-visible a { min-height: 44px; }</style>');
+  writeFileSync(join(root, 'src/components/Nav.astro'), '<button data-burger aria-controls="menu-mobile"></button><nav id="menu-mobile" data-menu-mobile></nav><noscript><nav class="nav-sans-js"></nav></noscript><style>.nav-burger { min-height: 48px; } .nav-mobile-cta :global(.btn) { min-height: 44px; } .nav-mobile-lien { min-height: 44px; }</style>');
   writeFileSync(join(root, 'src/pages/alpha.astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
   writeFileSync(join(root, 'src/pages/source.astro'), "import TestSection from '@/components/sections/TestSection.astro';\n<TestSection />\n");
   writeFileSync(join(root, 'public/proofs/alpha.webp'), 'alpha');
@@ -69,6 +70,30 @@ function afficherTemoin(resultat, clause) {
   console.log(`TÉMOIN ROUGE CLAUSE ${clause}\n${sortie}`);
   return sortie;
 }
+
+test('une page indexable refuse une og:image relative, absente, dupliquée ou hors origine HTTPS Memlia', () => {
+  const { root, pages } = fixture();
+  try {
+    assert.equal(audit(root).pass, true);
+    const tag = '<meta property="og:image" content="https://memlia.fr/proofs/alpha.webp">';
+    for (const replacement of [
+      '<meta property="og:image" content="/proofs/alpha.webp">',
+      '<meta property="og:image" content="http://memlia.fr/proofs/alpha.webp">',
+      '<meta property="og:image" content="https://memlia.fr.example.org/image.webp">',
+      '<meta property="og:image" content="https://example.org/image.webp">',
+      '', tag + tag,
+    ]) {
+      writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace(tag, replacement));
+      const rouge = audit(root);
+      assert.equal(rouge.pass, false, replacement);
+      assert.match(afficherTemoin(rouge, 3), /\/alpha.*og:image.*https:\/\/memlia\.fr/);
+    }
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha);
+    assert.equal(audit(root).pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test('la surface publique attendue refuse exactement la dépublication silencieuse de l’incident', () => {
   const { root, pages } = fixture();
@@ -299,20 +324,22 @@ test('une exemption doit être exacte, datée et motivée', () => {
   }
 });
 
-test('la clause DA refuse une navigation mobile cachée ou des cibles sous 44 px', () => {
+test('la clause DA exige le menu, le repli sans JavaScript et les cibles tactiles', () => {
   const { root } = fixture();
   try {
     const nav = join(root, 'src/components/Nav.astro');
-    writeFileSync(nav, '<nav></nav><style>.nav-principal { min-height: 32px; } .nav-mobile-visible a { min-height: 0; }</style>');
+    writeFileSync(nav, '<nav></nav><style>.nav-burger { min-height: 32px; } .nav-mobile-cta :global(.btn) { min-height: 32px; } .nav-mobile-lien { min-height: 0; }</style>');
     const rouge = auditerNavigationMobile({ root });
     const sortie = rouge.errors.join('\n');
     console.log(`TÉMOIN ROUGE CLAUSE 1 MOBILE\n${sortie}`);
     assert.equal(rouge.pass, false);
-    assert.match(sortie, /navigation mobile immédiatement visible absente/);
+    assert.match(sortie, /bouton et panneau de navigation mobile absents/);
+    assert.match(sortie, /navigation sans JavaScript absente/);
+    assert.match(sortie, /32px.*48px requis/);
     assert.match(sortie, /32px.*44px requis/);
     assert.match(sortie, /0px.*44px requis/);
 
-    writeFileSync(nav, '<nav data-mobile-visible></nav><style>.nav-principal { min-height: 44px; } .nav-mobile-visible a { min-height: 44px; }</style>');
+    writeFileSync(nav, '<button data-burger aria-controls="menu-mobile"></button><nav id="menu-mobile" data-menu-mobile></nav><noscript><nav class="nav-sans-js"></nav></noscript><style>.nav-burger { min-height: 48px; } .nav-mobile-cta :global(.btn) { min-height: 44px; } .nav-mobile-lien { min-height: 44px; }</style>');
     assert.deepEqual(auditerNavigationMobile({ root }), { pass: true, errors: [] });
   } finally {
     rmSync(root, { recursive: true, force: true });

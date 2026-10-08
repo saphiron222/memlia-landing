@@ -4,6 +4,8 @@ import { defineConfig } from 'astro/config';
 import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import ancresTitres from './src/lib/ancres-titres.mjs';
+import typedSitemaps from './scripts/lib/sitemaps.mjs';
+import responsiveProofs from './scripts/lib/responsive-proofs.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
@@ -51,6 +53,9 @@ export default defineConfig({
   // `file` : `mentions-legales.html` servi par Cloudflare Pages à `/mentions-legales`
   // (clean URLs), donc canonical extensionless sans saut de redirection.
   build: { format: 'file', inlineStylesheets: 'always' },
+  // Les petits scripts traités par Astro sont sinon réinjectés inline (< 4 Ko),
+  // incompatibles avec script-src 'self' sur /contact. Conserver les autres actifs.
+  vite: { build: { assetsInlineLimit: (filePath) => filePath.endsWith('.js') ? false : undefined } },
   compressHTML: true,
   // Processeur Markdown d'Astro 7 : les ancres des titres d'articles sont posées en ASCII
   // avant le plugin d'identifiants d'Astro, qui conserve un `id` déjà présent.
@@ -75,5 +80,7 @@ export default defineConfig({
         priority: item.url === `${SITE.url}/` ? 1.0 : LASTMOD_BLOG.has(item.url) ? 0.7 : 0.6,
       }),
     }),
+    typedSitemaps(),
+    responsiveProofs(),
   ],
 });

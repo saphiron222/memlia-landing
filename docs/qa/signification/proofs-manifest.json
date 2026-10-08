@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/signification-proof/index.html",
+      "sha256": "80d4c044d390ea105181211b6e1aa10557c37ab540f7210707721f0130749a3d"
+    },
+    {
+      "path": "docs/design/signification-proof/styles.css",
+      "sha256": "29c395198983c39106ae8f84d131ec6f5fc5de62bc5a7a4cd6f534a802b03c83"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/signification-proof/content-contract.json",
+      "sha256": "31d5ee3194048f736ee39f08a0c549c017036337224e7d161393da2f5785b85b"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/signification-proof/index.html#outil-signification",
+      "target": "public/proofs/v2/41-outil-signification.webp",
+      "bytes": 36504,
+      "sha256": "40980d8bc3e3d8c3eb5dc2b67fe369ccfda2e1401a72c8730a6425d811a0c9df"
+    },
+    {
+      "source": "docs/design/signification-proof/index.html#outil-signification",
+      "target": "public/proofs/v2/og/41-outil-signification.webp",
+      "bytes": 24628,
+      "sha256": "0777c97d722d6d41a39a45c07d322f0d36f4322a786bd31910c8c452f5f80942"
+    }
+  ]
+}

@@ -20,8 +20,8 @@ const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const appel = {
   titre: 'Vous préférez en parler de vive voix ?',
-  texte: 'L’échange dure une trentaine de minutes. Réservez un créneau, ou écrivez directement : les deux mènent au même endroit.',
-  points: ['Rien à envoyer : la description suffit.', 'Sans engagement sur un développement.', 'Le devis, s’il vient, dépendra de la complexité réelle.'],
+  texte: 'Réservez un créneau pour parcourir la tâche ensemble. Vous pouvez aussi nous écrire par courriel.',
+  points: ['Une tâche récurrente pour commencer.', 'Un échange sans engagement sur un développement.', 'Un devis établi selon la complexité de la tâche.'],
   action: CTA.rendezVous,
   secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
 };
@@ -29,12 +29,12 @@ const appel = {
 
 <PageCommerciale page={page} noeuds={noeuds} eyebrow="Premier échange" hero="v2/18-hero-contact" appel={appel}>
   <section class="pv" aria-labelledby="formulaire-titre">
+    <div class="tete rv">
+      <h2 id="formulaire-titre">Décrivez la tâche</h2>
+      <p>Trois phrases suffisent. Nous répondons par courriel, sans envoi automatique.</p>
+    </div>
     <div class="contact-grille">
-      <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" data-contact>
-        <div class="contact-form-tete">
-          <h2 id="formulaire-titre">Décrivez la tâche</h2>
-          <p class="texte-2">Trois phrases suffisent. Nous répondons par courriel, sans envoi automatique.</p>
-        </div>
+      <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" aria-labelledby="formulaire-titre" data-contact>
         <div class="champ">
           <label for="nom">Votre nom</label>
           <input id="nom" name="nom" type="text" required minlength="2" maxlength="120" autocomplete="name" />
@@ -50,7 +50,7 @@ const appel = {
         <div class="champ">
           <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
           <textarea id="message" name="message" required minlength="20" maxlength="4000" rows="7" aria-describedby="message-aide"></textarea>
-          <p id="message-aide" class="champ-aide texte-2">Une phrase par élément. La description suffit : ni fichier, ni donnée de paie.</p>
+          <p id="message-aide" class="champ-aide texte-2">Rien à envoyer : la description suffit. Décrivez le geste sans donnée client ; ce formulaire ne reçoit pas de fichier.</p>
         </div>
         <div class="champ-piege" aria-hidden="true">
           <label for="site_web">Site web</label>
@@ -66,7 +66,7 @@ const appel = {
           <label for="consentement_origine">J’accepte que Memlia associe à mon message le chemin interne disponible pour comprendre la page du site à l’origine de ma demande (facultatif). Je peux envoyer mon message sans cet accord et le retirer en écrivant à Memlia.</label>
         </div>
         <div data-turnstile></div>
-        <p class="texte-2">Cette vérification anti-abus peut nécessiter JavaScript. Si elle ne s’affiche pas, <a href={`mailto:${SITE.email}`}>écrivez-nous par courriel</a> ; vos champs restent ici.</p>
+        <p class="mention">Cette vérification anti-abus peut nécessiter JavaScript. Si elle ne s’affiche pas, <a href={`mailto:${SITE.email}`}>écrivez-nous par courriel</a> ; vos champs restent ici.</p>
         <p class="contact-etat" data-etat role="status" aria-live="polite" hidden></p>
         <div class="contact-envoi">
           <Button type="submit" variante="principal" picto="fleche" disabled>Envoyer le message</Button>
@@ -74,30 +74,33 @@ const appel = {
       </form>
 
       <aside class="contact-aside rv" aria-labelledby="preparer-titre">
-        <h2 id="preparer-titre">Ce qu’il est utile de préparer</h2>
-        <p class="texte-2">Rien d’écrit n’est nécessaire. Trois éléments suffisent à rendre l’échange utile.</p>
-        <ul class="contact-liste">
+        <h3 id="preparer-titre">Ce qu’il est utile de préparer</h3>
+        <p class="texte-2">Ces trois repères nous aident à comprendre le travail de votre équipe.</p>
+        <ul class="lignes contact-lignes">
           {preparer.map((p) => (
-            <li>
-              <span class="contact-marque" aria-hidden="true"><Picto nom={p.picto} taille={20} /></span>
-              <div><h3>{p.titre}</h3><p class="texte-2">{p.texte}</p></div>
+            <li class="ligne">
+              <div class="ligne-tete">
+                <span class="ligne-picto" aria-hidden="true"><Picto nom={p.picto} taille={20} /></span>
+                <h4 class="ligne-libelle">{p.titre}</h4>
+              </div>
+              <p class="ligne-texte">{p.texte}</p>
             </li>
           ))}
         </ul>
-        <p class="texte-2 contact-astuce">Pour commencer, décrivez une tâche récurrente, un cas courant et une exception. Nous regardons ensemble ce qui se prépare et ce que votre équipe garde à décider.</p>
+        <p class="mention">Pour commencer, décrivez une tâche récurrente, un cas courant et une exception. Nous regardons ensemble ce qui se prépare et ce que votre équipe garde à décider.</p>
       </aside>
     </div>
   </section>
 
   <section class="pv" aria-labelledby="pasdemande">
-    <div class="pv-tete rv">
-      <h2 id="pasdemande">Vous n’avez rien à nous envoyer</h2>
+    <div class="tete rv">
+      <h2 id="pasdemande">Nous partons du travail de votre équipe</h2>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Aucun fichier client</h3><p>Ni classeur de paie, ni export de dossier, ni donnée de salarié. La description du geste suffit pour savoir s’il se cadre.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun document à déposer</h3><p>Le formulaire n’accepte aucun fichier, et c’est voulu : rien ne transite avant que le périmètre ne soit clair. Nous préférons un échange de vive voix.</p></li>
+      <ul class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Le geste qui se répète</h3><p class="carte-texte">Racontez un cas courant et une exception. Nous repérons les étapes répétitives et celles qui demandent le jugement de votre équipe.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Le savoir-faire à écrire</h3><p class="carte-texte">Nous faisons préciser la règle que vos collaborateurs appliquent aujourd’hui. Elle sert à définir la tâche à prendre en charge et les validations à conserver.</p></li>
       </ul>
     </div>
   </section>
@@ -106,14 +109,14 @@ const appel = {
     <ProofRow id="v2/13-deux-issues">
       <div class="pv-copy rv">
         <h2 id="ensuite">Ce qui se passe ensuite</h2>
-        <p>L’échange dure une trentaine de minutes. Nous regardons si la tâche se cadre, ce qu’il faudrait qualifier, et ce qui reste incertain.</p>
-        <p class="texte-2">À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et nous vous proposons un cadrage, soit la tâche n’est pas automatisable en l’état et nous vous le disons. Dans les deux cas, vous repartez avec une réponse.</p>
-        <p class="texte-2">Aucun engagement n’est pris à ce stade, et le devis, s’il vient, dépendra de la complexité réelle — jamais du nombre de personnes dans votre cabinet.</p>
+        <p>L’échange dure une trentaine de minutes. Nous parcourons la tâche, ses outils et ses exceptions pour voir si sa règle peut s’écrire.</p>
+        <p class="texte-2">Si la tâche peut être prise en charge, nous vous proposons un cadrage : le résultat à livrer et ce que votre équipe garde à valider. Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.</p>
+        <p class="texte-2">Le devis vient après ce cadrage. Il dépend des sources, des règles, des exceptions et des validations, jamais du nombre de personnes dans votre cabinet. La maintenance, le support et les évolutions y sont écrits.</p>
       </div>
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" aria-labelledby="canaux">
+  <section class="pv" aria-labelledby="canaux">
     <ProofRow id="v2/12-avant-echange">
       <div class="pv-copy rv">
         <h2 id="canaux">Les canaux</h2>
@@ -231,11 +234,14 @@ const appel = {
 </script>
 
 <style>
-  .contact-grille { display: grid; gap: 40px; }
-  .contact-form { display: grid; gap: 20px; padding: 32px 24px; border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs); }
-  .contact-form-tete { display: grid; gap: 8px; }
-  .contact-form-tete h2 { font-size: var(--t-3xl); }
-  .contact-form-tete p { margin: 0; }
+  /*
+   * Système de page : l'en-tête de la section porte le titre ; dessous, le formulaire sur son
+   * plateau et, à côté dès 64 rem, ce qu'il est utile de préparer (un titre de bloc, des lignes à
+   * pictogramme, une mention). Dans cette colonne, dès 64 rem, les lignes s'empilent : elle est
+   * trop étroite pour le tiers et les deux tiers.
+   */
+  .contact-grille { display: grid; gap: var(--bloc-ecart); }
+  .contact-form { display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
   .champ { display: grid; gap: 8px; }
   .champ label { font-weight: 500; color: var(--texte-fort); }
   .champ input[type='text'], .champ input[type='email'], .champ textarea {
@@ -254,18 +260,15 @@ const appel = {
   .contact-etat[data-ok='oui'] { color: var(--vert-texte); background: var(--vert-voile); }
   .contact-etat[data-ok='non'] { color: var(--rouge); background: var(--rouge-voile); }
   .contact-envoi { display: flex; }
-  .contact-aside { display: grid; gap: 16px; align-content: start; }
-  .contact-aside h2 { font-size: var(--t-3xl); }
+  .contact-aside { display: grid; gap: var(--tete-ecart); align-content: start; }
+  .contact-aside h3 { font-size: var(--titre-bloc); line-height: 1.2; }
   .contact-aside > p { margin: 0; }
-  .contact-liste { display: grid; gap: 14px; margin: 8px 0 0; padding: 0; list-style: none; }
-  .contact-liste li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; align-items: start; }
-  .contact-liste h3 { font-family: var(--police-corps), 'Hanken Fallback'; font-size: var(--t-base); font-weight: 600; letter-spacing: 0; }
-  .contact-liste p { margin: 4px 0 0; font-size: var(--t-sm); }
-  .contact-marque { display: grid; place-items: center; width: 40px; height: 40px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-page); }
-  .contact-astuce { margin: 8px 0 0; padding-top: 16px; border-top: 1px solid var(--ligne); font-size: var(--t-sm); }
-  @media (min-width: 48rem) { .contact-form { padding: 40px; } }
+  .contact-lignes { margin-top: var(--espace-2); }
+  @media (min-width: 48rem) { .contact-form { padding: var(--carte-marge-lg); } }
   @media (min-width: 64rem) {
-    .contact-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: start; }
+    .contact-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--espace-16); align-items: start; }
     .contact-aside { position: sticky; top: calc(var(--nav-h) + 32px); }
+    .contact-lignes .ligne { grid-template-columns: minmax(0, 1fr); }
+    .contact-lignes .ligne > :first-child { padding-right: 0; }
   }
 </style>

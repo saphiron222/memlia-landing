@@ -36,6 +36,7 @@ import { reviewBindingErrors, reviewSha256, renderedBodySha256, recipeSubstanceS
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
+import { readDilaCopy } from './lib/dila-source-copy.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
 export const LARGEURS_HERO = [768, 1200, 1600];
@@ -149,6 +150,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
       id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: datesSources.get(s.id) ?? jour,
       level: s.level, provenance: 'primary', official: s.official === true, upstreamUrl: s.url,
       classificationReason: s.classificationReason, method: null,
+      ...(s.dilaCopyPath !== undefined ? { dilaCopyPath: `preuves/sources/${s.id}.dila.json` } : {}),
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
     author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
@@ -234,14 +236,21 @@ function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
     || preuve.requestedUrl !== source.url || preuve.finalUrl !== source.url || preuve.upstreamUrl !== source.url
     || preuve.excerpt !== source.excerpt || preuve.level !== source.level || preuve.provenance !== 'primary'
     || preuve.official !== (source.official === true) || preuve.classificationReason !== source.classificationReason
-    || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
+    || preuve.method !== null || (source.dilaCopyPath === undefined && (!Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300))
     || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
     || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
-    || jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt
+    || (source.dilaCopyPath === undefined && jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt)
     || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
   const copiePath = join(dossier, preuve.contentPath);
   if (!existsSync(copiePath)) return false;
   const copie = readFileSync(copiePath, 'utf8');
+  if (source.dilaCopyPath !== undefined) {
+    try {
+      if (preuve.accessMode !== 'dila-copy' || preuve.httpStatus !== null || preuve.dilaCopyPath !== `preuves/sources/${source.id}.dila.json`) return false;
+      const dila = readDilaCopy({ root: dossier, path: preuve.dilaCopyPath, url: source.url, excerpt: source.excerpt, expectedSha256: preuve.dilaCopySha256 });
+      if (dila.text !== copie || dila.retrievedAt !== preuve.retrievedAt) return false;
+    } catch { return false; }
+  }
   return /^[a-f0-9]{64}$/.test(preuve.contentSha256 ?? '') && sha256(copie) === preuve.contentSha256 && copie.includes(source.excerpt);
 }
 
@@ -251,6 +260,11 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
   let recetteModifiee = false;
   const datesSources = new Map();
   for (const source of recette.sources) {
+    if (source.dilaCopyPath !== undefined) {
+      readDilaCopy({ root: dossierRecette, path: source.dilaCopyPath, url: source.url, excerpt: source.excerpt });
+      // L'export A4 devient un fichier du dossier scellé, avec ses dates inchangées.
+      writeFileSync(join(dossier, `preuves/sources/${source.id}.dila.json`), readFileSync(resolve(dossierRecette, source.dilaCopyPath)));
+    }
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
       let existante = null;
