@@ -497,6 +497,30 @@
       "famille": "entrees-sorties-salaries",
       "publieLe": "2026-10-07",
       "source": "recette-service-publiee"
+    },
+    {
+      "slug": "secretariat-juridique",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/secretariat-juridique",
+      "requete": "automatisation secrétariat juridique cabinet comptable",
+      "secondaires": [
+        "automatisation approbation comptes cabinet comptable"
+      ],
+      "famille": "secretariat-juridique",
+      "publieLe": "2026-10-08",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "registres-obligations",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/registres-obligations",
+      "requete": "automatisation suivi registres obligations cabinet comptable",
+      "secondaires": [
+        "automatisation registres cabinet comptable"
+      ],
+      "famille": "registres-obligations",
+      "publieLe": "2026-10-07",
+      "source": "recette-service-publiee"
     }
   ]
 }
