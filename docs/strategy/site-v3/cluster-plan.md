@@ -117,6 +117,9 @@ Rejouer les contrôles répétitifs de la révision, justifier chaque solde, tra
 
 Dérouler la clôture, produire les états et la plaquette, contrôler avant livraison.
 
+Décision commerciale du 06/10/2026 (vague 3, rang 22) : [qualification et mesures](mesures/cloture-bilan-2026-10-06/qualification.md).
+La candidate `/automatisation/cloture-bilan` n'est pas retenue : sept sondes réussies, six listes vides et un seul signal logiciel, sans demande commerciale distincte confirmée. Rattachement à `/automatisation-cabinet-comptable`, sans réservation de requête pour une nouvelle URL. Les fonctions natives annoncées par ACD et l'offre adjacente fulll sont documentées ; les SERP indisponibles ne permettent aucun classement ni volume. La famille éditoriale reste planifiée, non nouvellement approuvée. L'assemblage et le contrôle de complétude d'un lot restent distincts de la révision des soldes et de l'autorisation d'envoi.
+
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
 | 2026-12-15 | [Automatiser la production de la plaquette de bilan](/blog/automatiser-la-production-de-la-plaquette-de-bilan) | automatiser plaquette de bilan cabinet comptable | how-to-guide | chefs-mission-portefeuille | 3 | planned |

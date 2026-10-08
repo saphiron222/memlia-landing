@@ -510,6 +510,27 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       const exporting = page.waitForEvent('download');
       await page.locator('[data-sig-export="json"]').click();
       expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
+    } else if (outil.slug === 'checklist-pieces-comptables') {
+      await page.getByRole('button', { name: 'Charger l’exemple fictif', exact: true }).click();
+      await expect(page.locator('[data-cl-item]')).toHaveCount(4);
+      await expect(page.locator('#cl-message')).toHaveValue(/Relevé bancaire de septembre/);
+      expect(await page.locator('#cl-message').inputValue()).not.toMatch(/Factures d’achat|Récapitulatif de paie/);
+      await expect(page.locator('[data-cl-unknown]')).toContainText('Récapitulatif de paie');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      await page.locator('#cl-period').fill('Octobre 2026');
+      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
+      await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
+      await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
+      await expect(page.locator('[data-cl-apply]')).toBeEnabled();
+      await expect(page.locator('#cl-period')).toHaveValue('Octobre 2026');
+      page.once('dialog', dialog => dialog.accept());
+      await page.locator('[data-cl-apply]').click();
+      await expect(page.locator('#cl-period')).toHaveValue('Septembre 2026');
+      const exporting = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
     } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
