@@ -60,6 +60,18 @@ test('la grille ferme les 10 variations moyennes et les 16 refusées', () => {
   assert.match(hub, /La préparation s’arrête et présente le motif/);
 });
 
+test('le cadre du hub illustre les sorties attendues sans annoncer un rejeu exécuté', () => {
+  const proof = readFileSync(join(root, 'docs/design/integration-proofs/index.html'), 'utf8');
+  const hub = proof.split('id="rapprochement-bancaire-sage"')[0];
+  const contract = JSON.parse(readFileSync(join(root, 'docs/design/integration-proofs/content-contract.json'), 'utf8'));
+  for (const text of [textContent(hub), contract.find(({ id }) => id === 'hub').centralText]) {
+    assert.match(text, /Contrôle illustré sur un cas fictif/);
+    assert.doesNotMatch(text, /Contrôle rejoué|résultats exécutés/);
+  }
+  const guide = readFileSync(join(root, 'src/pages/integrations/[slug].astro'), 'utf8');
+  assert.match(guide, /sorties attendues de la règle proposée, pas des résultats exécutés/);
+});
+
 test('seules les neuf variations fortes produisent une page', () => {
   const rendered = readdirSync(join(dist, 'integrations'))
     .filter((name) => name.endsWith('.html'))
