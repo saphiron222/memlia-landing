@@ -2,6 +2,7 @@ name: PR validation
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - main
 
@@ -17,13 +18,14 @@ concurrency:
 # would execute its code on that machine.
 #
 # Décision de Kevin du 08/10/2026 : les contrats navigateur se répartissent sur
-# des jobs parallèles (près d'une heure en un seul job). Les portes
-# déterministes et chaque part démarrent ensemble ; « Repository gates », seul
+# des jobs parallèles (près d'une heure en un seul job). Les
+# huit parts restent parallèles et partagent le build des portes ; « Repository gates », seul
 # contrôle requis par la protection de main, réussit seulement si tous ont
 # réussi. Règle tenue par tests/scripts/ci-parallele.test.mjs.
 jobs:
   portes:
     name: Portes déterministes
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -67,12 +69,22 @@ jobs:
         env:
           CF_PAGES: "1"
 
+      - name: Share the validated site
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: validated-site
+          path: dist/
+          if-no-files-found: error
+          include-hidden-files: true
+          retention-days: 1
+
   verify:
     name: Contrats navigateur (${{ matrix.part }}/4)
+    if: github.event.pull_request.draft == false
+    needs: portes
     runs-on: ubuntu-latest
     # Two runs exhausted 30 minutes while Chromium was still progressing.
-    # Each part rebuilds the site through the Playwright webServer; keep a
-    # finite budget that still covers the whole suite in a single part.
+    # Keep a finite budget; each part serves the same validated artifact.
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -97,14 +109,23 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Restore the validated site
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: validated-site
+          path: dist/
+
       - name: Run browser contracts
         # La navigation clavier des tableaux (≈ 33 min sur 44) a ses propres parts, job `clavier`.
         run: npm run test -- --grep-invert 'table-keyboard\.spec' --shard=${{ matrix.part }}/4
         env:
           CF_PAGES: "1"
+          PLAYWRIGHT_PREBUILT: "1"
 
   clavier:
     name: Clavier des tableaux (${{ matrix.part }}/4)
+    if: github.event.pull_request.draft == false
+    needs: portes
     runs-on: ubuntu-latest
     # 66 tests d'environ 30 s : seuls dans leur matrice, ils se partagent par test (fullyParallel).
     timeout-minutes: 60
@@ -131,17 +152,24 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Restore the validated site
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: validated-site
+          path: dist/
+
       - name: Run table keyboard contracts
         run: npm run test -- tests/browser/table-keyboard.spec.ts --shard=${{ matrix.part }}/4
         env:
           CF_PAGES: "1"
+          PLAYWRIGHT_PREBUILT: "1"
 
   gates:
     name: Repository gates
     needs: [portes, verify, clavier]
     # Sans always(), une porte en échec ferait sauter ce job, et GitHub compte
     # un contrôle requis sauté comme vert.
-    if: always()
+    if: always() && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - name: Require every gate
