@@ -53,7 +53,7 @@ for(const actions of [['report','copy'],['copy','report'],['csv','copy'],['copy'
  if(actions.includes('report')){expect(d.suggestedFilename()).toBe('rapport-fusion-csv.json');expect(JSON.parse(content).method).toBe('vertical-concatenation');}
  else{expect(d.suggestedFilename()).toBe('fusion.csv');expect(content).toBe(expectedCsv);}
 });
-for(const change of ['reset','mapping','order','review'])test(`F2 : réponses export obsolètes ignorées après ${change}`,async({page})=>{
+for(const change of ['reset','mapping','order','review','review-again'])test(`F2 : réponses export obsolètes ignorées après ${change}`,async({page})=>{
  await load(page);await merge(page);
  await page.evaluate(()=>{(window as any).copies=[];Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async(text:string)=>{(window as any).copies.push(text);}}});});
  const downloads:string[]=[];page.on('download',d=>downloads.push(d.suggestedFilename()));
@@ -63,9 +63,17 @@ for(const change of ['reset','mapping','order','review'])test(`F2 : réponses ex
   if(change==='order')document.querySelector<HTMLButtonElement>('[data-file="1"] button')!.click();
   if(change==='mapping'){const field=document.querySelector<HTMLInputElement>('[data-map]')!;field.value='Code';field.dispatchEvent(new Event('input',{bubbles:true}));}
   if(change==='review'){const field=document.querySelector<HTMLInputElement>('[data-reviewed]')!;field.checked=false;field.dispatchEvent(new Event('change',{bubbles:true}));}
+  if(change==='review-again'){const field=document.querySelector<HTMLInputElement>('[data-reviewed]')!;field.click();field.click();}
  },change);
  await page.waitForTimeout(400);
  expect(await page.evaluate(()=>(window as any).copies)).toEqual([]);expect(downloads).toEqual([]);
  await expect(page.locator('[data-status]')).not.toContainText('copié');
- for(const button of await page.locator('[data-export],[data-copy]').all())await expect(button).toBeDisabled();
+ for(const button of await page.locator('[data-export],[data-copy]').all())if(change==='review-again')await expect(button).toBeEnabled();else await expect(button).toBeDisabled();
+});
+test('F2 : fin de copie asynchrone après reset ne déclare pas un faux succès',async({page})=>{
+ await load(page);await merge(page);
+ await page.evaluate(()=>{Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>new Promise<void>(resolve=>{(window as any).finishCopy=resolve;})}});});
+ await page.locator('[data-copy]').click();await page.waitForFunction(()=>Boolean((window as any).finishCopy));
+ await page.locator('[data-reset]').click();await page.evaluate(()=>(window as any).finishCopy());
+ await expect(page.locator('[data-status]')).toHaveText('Fichiers et résultats effacés de cet onglet.');
 });
