@@ -13,9 +13,9 @@ function find(node, id) {
 }
 
 // Témoin du système de page #166 après intégration de la copy EC relue (#181).
-// Avant #181 : c28bb8b4… ; DOM inchangé, nouveaux textes de main seuls ; chrome v3 testé à part.
+// PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
 test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
-  const expected = 'e343eaefe5839366d2feaedc3babd39f485b40e0dc1ecf434202d06809e179f5';
+  const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
   const html = readFileSync('dist/index.html', 'utf8');
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
