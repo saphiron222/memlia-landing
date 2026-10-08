@@ -81,13 +81,11 @@ class IntegratedMediaProof(unittest.TestCase):
         for figure in figures:
             self.assertRegex(figure.strip(), r'^<img\b[^>]+>$')
             self.assertNotRegex(figure, r'\s(?:tabindex|role|on\w+)\s*=')
-        dialogs = re.findall(r'<dialog\b[^>]*aria-label="[^"]+"[^>]*>(.*?)</dialog>', html, re.S)
-        self.assertEqual(len(dialogs), 9)
-        for dialog in dialogs:
-            self.assertIn('data-proof-summary', dialog)
-            self.assertIn('Fermer la preuve', dialog)
-            self.assertIn('role="region"', dialog)
-            self.assertRegex(dialog, r'<img\b[^>]*data-src="/proofs/[^\"]+"')
+        # Kevin, 07/10/2026 : aucune image ne s'agrandit. Ni dialogue, ni lien vers le fichier de la preuve.
+        self.assertNotRegex(html, r'<dialog\b')
+        self.assertNotIn('Agrandir la preuve', html)
+        self.assertNotIn('data-proof-detail', html)
+        self.assertNotRegex(html, r'<a\b[^>]*href="/proofs/')
 
     def test_nine_functional_proofs_replace_all_legacy_images(self):
         doc = Document(DIST / 'index.html')

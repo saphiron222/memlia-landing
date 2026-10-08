@@ -15,9 +15,9 @@ import { CTA } from '@/data/site.mjs';
  */
 ---
 
-<section id="questions" class="faq" aria-labelledby="faq-titre">
+<section id="questions" class="section faq" aria-labelledby="faq-titre">
   <span id="faq" class="sr-only" aria-hidden="true"></span>
-  <div class="faq-rail rv">
+  <div class="faq-rail tete rv">
     <h2 id="faq-titre">{contenu.titre}</h2>
     <p class="texte-2 faq-intro">{retour}{contenu.texte}{retour}</p>
     <Button href={CTA.principal.href} variante="contour" class="faq-humain">{CTA.principal.libelle}</Button>
@@ -37,14 +37,13 @@ import { CTA } from '@/data/site.mjs';
 </section>
 
 <style>
+  /* Rythme du système de page : `.section` porte l'espace du haut, l'en-tête est une `.tete`. */
   .faq {
     display: grid;
-    gap: 32px;
-    padding: 96px var(--marge-page) 0;
+    gap: var(--bloc-ecart);
+    padding-inline: var(--marge-page);
   }
   .faq-rail {
-    display: grid;
-    gap: 12px;
     align-content: start;
     max-width: 448px;
   }
@@ -107,8 +106,8 @@ import { CTA } from '@/data/site.mjs';
   @media (min-width: 64rem) {
     .faq {
       grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-      gap: 96px;
-      padding: 128px var(--marge-page-lg) 0;
+      gap: var(--espace-24);
+      padding-inline: var(--marge-page-lg);
     }
     .faq-rail {
       position: sticky;
