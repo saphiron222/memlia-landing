@@ -15,6 +15,10 @@ for (const width of [375, 1440]) {
     await expect(limits).toContainText('Nous documentons le traitement prévu et ses limites.');
     await expect(limits).toContainText('elle ne certifie pas les comptes ni le dossier d’audit');
     await expect(page.locator('#donnees')).toContainText('droits d’accès, les destinataires et les flux');
+    await expect(page.locator('#donnees-titre')).toHaveText('Des essais fictifs, des flux cadrés par mission');
+    await expect(page.locator('#donnees img')).toHaveAttribute('src', '/proofs/v2/45-cadrage-donnees.webp');
+    await expect(page.locator('#donnees img')).toHaveAttribute('alt', /Scène fictive de cadrage/);
+    await expect(page.locator('main')).not.toContainText('Vos fichiers restent chez vous');
     await expect(page.locator('#ecrit')).toContainText('maintenance, le support et les évolutions');
     await expect(page.locator('#ecrit')).toContainText('la signature reste au CAC');
     await expect(page.locator('#arret')).toContainText('Aucun envoi externe sans validation humaine');

@@ -7,6 +7,19 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class GarantiesCopy(unittest.TestCase):
+    def test_d1_locality_is_bounded_to_cadrage(self):
+        html = (ROOT / 'dist/garanties.html').read_text()
+        self.assertIn('Des essais fictifs, des flux cadrés par mission', html)
+        self.assertIn('/proofs/v2/45-cadrage-donnees.webp', html)
+        self.assertIn('Scène fictive de cadrage', html)
+        for claim in ['Vos fichiers restent chez vous', 'aucune copie entre les deux',
+                      'Chez Memlia ne vivent que', 'Vos fichiers sont lus en place.']:
+            self.assertNotIn(claim, html)
+        source = (ROOT / 'docs/design/garanties-cadrage-proof/index.html').read_text()
+        self.assertIn('Cadrage', source)
+        self.assertIn('Développement', source)
+        self.assertNotIn('Lecture, jamais copie', source)
+
     def test_attestation_boundary_and_documented_commitments(self):
         html = (ROOT / 'dist/garanties.html').read_text()
         text = ' '.join(' '.join(Text(html).parts).split())

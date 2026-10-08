@@ -6,7 +6,7 @@ Carte : t_33056bf2. Base : origin/main 4f42a88b. Préparation : 8 octobre 2026.
 
 « Aucune conformité » devient « Aucune attestation de conformité ». La documentation du traitement, la recette et une attestation sont distinguées. Les accès, flux, destinataires, hébergements éventuels et conservation sont cadrés par mission ; la maintenance est bornée par le devis. La décision reste au cabinet. Pour une tâche CAC, choix des travaux, conclusions et signature ne sont pas délégués à Memlia.
 
-Structure, H1, sous-titre, métadonnées, ancres, liens existants, illustrations et CSS conservés. Le CTA reste « Confier une première tâche » vers /contact. Aucune nouvelle promesse de conformité, certification, délai ou gain. Les paragraphes restent cohérents avec la FAQ commune (données réelles, recette, validation, maintenance), sans modifier celle-ci.
+Structure, H1, sous-titre, métadonnées, ancres, liens existants et CSS de page conservés. Après le retour métier D1, seule l’illustration du bloc données est remplacée par un cadre propre à /garanties, borné au cadrage et au développement. Le CTA reste « Confier une première tâche » vers /contact. Aucune nouvelle promesse de conformité, certification, délai ou gain. Les paragraphes restent cohérents avec la FAQ commune (données réelles, recette, validation, maintenance), sans modifier celle-ci.
 
 ## Sources ouvertes le 8 octobre 2026
 
@@ -43,3 +43,11 @@ Base d’audit du 6 octobre (t_a80f53ec/AUDIT.md) : HTTP 200, canonical/H1/JSON 
 Après PASS métier : intégrer la PR avec CI verte, puis lire la page réellement servie sans paramètre d’URL. Vérifier le nouveau titre de limite, le paragraphe, les CTA /contact, le canonical et la présence sitemap. Enregistrer la date effective de publication.
 
 J+7 et J+28 depuis cette publication : comparer Search Console /garanties (impressions, clics, CTR, position, requêtes) sur fenêtres de même durée ; compter les demandes de contact dont la provenance est effectivement connue. Si les données sont absentes ou trop faibles, noter non mesurable. Vérifier à nouveau CONT-08 et les liens. Ne pas attribuer de gain à ce changement sans données suffisantes.
+
+## Correction D1 — 8 octobre 2026
+
+Le titre « Vos fichiers restent chez vous » est remplacé par « Des essais fictifs, des flux cadrés par mission ». Le rappel final parle désormais du développement sur jeux fictifs. Le corps conserve la lecture en place des seuls fichiers autorisés au cadrage et la cartographie des accès, destinataires, flux et hébergements éventuels avant mise en service.
+
+Le nouveau cadre HTML figé v2/45-cadrage-donnees distingue Cadrage et Développement. La non-copie porte sur les dépôts ; aucune absence universelle de transmission en exploitation n’est affirmée. Texte alternatif et détail bornent la scène aux mêmes phases. L’ancien cadre v2/08 et ses métadonnées restent intacts : aucune autre page n’est modifiée. Source : docs/design/garanties-cadrage-proof ; manifeste : docs/qa/garanties-cadrage/proofs-manifest.json. Le langage visuel reprend la composition canonique, sans nouveaux tokens ni logos.
+
+Vérification rejouée : renderer adopt puis check PASS (1600 × 900, polices chargées, absence de texte tronqué, actif inférieur à 150 Ko) ; regen:generated et npm run build PASS ; Python garanties 3 PASS, positionnement 8 PASS ; Playwright 5 PASS dont 375/1440. Captures pleines pages et actif figé inspectés : concordance des phases, aucune troncature visible. Les détails des illustrations restent petits sur mobile, constat de confort hors D1. Contrôle des liens, ancres et CSS PASS. Sources et autres constats métier acquis inchangés ; re-revue demandée sur D1 uniquement. Fusion et production restent à réaliser après PASS métier et CI verte.
