@@ -19,7 +19,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       await page.goto(`/integrations/${slug}`);
       await expect(page.locator('h1')).toHaveCount(1);
       await expect(page.locator('[data-proof]')).toHaveAttribute('data-proof', `integrations/${slug}`);
-      await expect(page.locator('.source-lien')).toHaveAttribute('href', /^https:\/\//);
+      // Le document de l'éditeur se cite dans le paragraphe de portée, plus dans une section Source (Kevin, 06/10/2026).
+      await expect(page.locator('section[aria-labelledby="repere-editeur"] a[rel="noopener noreferrer"]')).toHaveAttribute('href', /^https:\/\//);
       await expect(page.locator('h2', { hasText: 'La règle écrite' })).toBeVisible();
       await expect(page.locator('#jeu-fictif')).toHaveText('Cas illustratifs sur données fictives');
       const overflow = await page.evaluate(() => ({

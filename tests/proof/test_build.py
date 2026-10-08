@@ -46,6 +46,14 @@ BLOG_RUBRIQUES = {
     'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
     'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
     'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
+    'utiliser-chatgpt-cabinet-comptable': 'ia-cabinet-comptable',
+    'logiciel-ia-comptabilite': 'ia-cabinet-comptable',
+    'prompt-chatgpt-expert-comptable': 'ia-cabinet-comptable',
+    'ia-comptabilite-confidentialite-donnees': 'ia-cabinet-comptable',
+    'verifier-reponse-ia-comptabilite': 'ia-cabinet-comptable',
+    'automatiser-avec-ia-sans-changer-logiciel': 'ia-cabinet-comptable',
+    'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': 'ia-cabinet-comptable',
+    'tests-verts-et-regle-des-trois-passes': 'ia-cabinet-comptable',
 }
 
 
@@ -125,7 +133,7 @@ def minimum_word_count(article):
     return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
 
 def rendered_body_word_count(article):
-    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)',
                      article.read_text(), re.S).group(1)
     return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
 
@@ -258,6 +266,8 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
                      f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
                      f'{SITE}/outils-comptables-gratuits',
+                     f'{SITE}/outils-comptables-gratuits/checklist-pieces-comptables',
+                     f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
                      f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
                      f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
@@ -271,6 +281,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
+                     f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
@@ -396,7 +407,9 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 38)
+        preuves = re.findall(r"'v2/([^']+)':", (ROOT / 'src/data/proofs.ts').read_text())
+        self.assertEqual({p.name for p in (DIST / 'proofs/v2').glob('*.webp')},
+                         {f'{preuve}.webp' for preuve in preuves})
         self.assertEqual(
             sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
             sorted([
@@ -414,6 +427,12 @@ class BuildProof(unittest.TestCase):
                 '30-outil-roi.webp',
                 '31-outil-bibliotheque.webp',
                 '40-outil-circularisation.webp',
+                '43-outil-bareme-cac.webp',
+                '41-outil-signification.webp',
+                '44-outil-checklist-pieces.webp',
+                '44-service-registres-obligations.webp',
+                '44-service-entrees-sorties-salaries.webp',
+                '46-service-secretariat-juridique.webp',
             ]),
         )
 
@@ -535,7 +554,13 @@ class BuildProof(unittest.TestCase):
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
-                self.assertRegex(article.read_text(), r'<h2\b[^>]*id="sources-titre"[^>]*>Sources</h2>')
+                # Décision de Kevin du 06/10/2026 : les sources se citent dans le texte ; une section « Sources »
+                # ne reste que pour celles qui n'y sont pas encore, jamais en doublon du corps.
+                rendu = article.read_text()
+                corps = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)', rendu, re.S).group(1)
+                residuelle = re.search(r'<section class="article-sources".*?</section>', rendu, re.S)
+                for href in re.findall(r'href="(https?://[^"]+)"', residuelle.group(0) if residuelle else ''):
+                    self.assertNotIn(href, corps, article.name)
                 self.assertEqual(unsafe_external_links(article), [], article.name)
 
     def test_rss_feed_matches_articles(self):

@@ -17,10 +17,10 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
     <p data-empty hidden>Aucun modèle ne correspond. Effacez les filtres ou utilisez un terme plus général ; vos fiches restent disponibles.</p>
   </section>
   <div class="cards">
-    {MODELS.map(m => <article class="model" data-model={m.id} aria-labelledby={`title-${m.id}`}>
-      <p class="meta">{POLES.find(p => p.id === m.pole)?.label} · {MODEL_FORMATS.find(f => f.id === m.format)?.label}</p>
-      <h3 id={`title-${m.id}`}>{m.title}</h3>
-      <p>{m.context}</p>
+    {MODELS.map(m => <article class="carte model" data-model={m.id} aria-labelledby={`title-${m.id}`}>
+      <p class="carte-meta meta">{POLES.find(p => p.id === m.pole)?.label} · {MODEL_FORMATS.find(f => f.id === m.format)?.label}</p>
+      <h3 id={`title-${m.id}`} class="carte-titre">{m.title}</h3>
+      <p class="carte-texte">{m.context}</p>
       <dl>
         <div><dt>Entrées permises</dt><dd>{m.input}</dd></div>
         <div><dt>Résultat à préparer</dt><dd>{m.output}</dd></div>
@@ -103,14 +103,15 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
 </script>
 <style>
   .catalogue,.catalogue section,.model,details,dl { display:grid; gap:16px; min-width:0; }
-  .catalogue h2 { font-size:var(--t-2xl); } .catalogue h3 { font-size:var(--t-xl); }
-  p,dd { color:var(--texte-2); } .meta { font-size:var(--t-sm); color:var(--accent-texte); }
+  .catalogue h2 { font-size:var(--t-2xl); } .suite h3 { font-size:var(--t-xl); }
+  p,dd { color:var(--texte-2); }
   .filters { display:grid; gap:16px; margin-block:24px; }
   .filters > div { display:grid; gap:8px; min-width:0; }
   label { display:grid; gap:8px; font-weight:600; color:var(--texte-fort); min-width:0; }
   input,select,textarea { width:100%; min-width:0; min-height:48px; padding:12px; border:1px solid var(--texte-2); border-radius:var(--r-bouton); background:var(--surface-feuille); color:var(--texte-fort); font:inherit; }
   textarea { resize:vertical; font-weight:400; line-height:1.6; }
-  .cards { display:grid; gap:24px; } .model { padding:24px; border:1px solid var(--ligne); border-radius:var(--r-carte); background:var(--surface-page); }
+  /* Chaque modèle est une carte du site (global.css) ; la grille filtrée garde ses deux colonnes. */
+  .cards { display:grid; gap:24px; } .model { display:grid; align-content:start; gap:12px; } .model > dl { margin:4px 0 0; }
   dt { font-weight:600; } dd { margin:4px 0 0; } dl div { border-top:1px solid var(--ligne-douce); padding-top:12px; }
   summary { cursor:pointer; min-height:44px; padding-block:12px; font-weight:600; color:var(--texte-fort); }
   details[open] { display:block; } details[open] > :not(summary) { margin-top:16px; }

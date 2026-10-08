@@ -1,111 +1,34 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['promesse']; }
+const { contenu = contenuDe('ec').promesse } = Astro.props;
 /**
  * Promesse (copy validée, section 2) — oppose Memlia aux migrations et aux plateformes
- * génériques. Trois colonnes à filets, dans le gabarit « bande » de la spec.
+ * génériques. Système de page : rangée (en-tête, maquette), puis trois engagements dans la bande
+ * du site (`.bande`, global.css), bord à bord de la feuille.
  */
-const points = [
-  {
-    titre: 'La mécanique est prise en charge.',
-    texte: 'Collecter, comparer, préparer : les gestes répétitifs suivent la règle et le périmètre convenus. Votre équipe valide les propositions et tranche les exceptions.',
-  },
-  {
-    titre: 'Les exceptions remontent, elles ne disparaissent pas.',
-    texte: 'Ce qui est certain est préparé ; ce qui est ambigu vous est présenté, jamais avalé.',
-  },
-  {
-    titre: 'La décision reste à vos équipes.',
-    texte: 'L’IA prépare. Le professionnel valide, modifie ou refuse.',
-  },
-];
+const { points } = contenu;
 ---
 
-<section id="promesse" class="promesse" aria-labelledby="promesse-titre">
-  <div class="promesse-media"><ProofRow id="01-flux">
-  <div class="promesse-tete rv">
-    <h2 id="promesse-titre">Nous prenons la tâche entière. Vous gardez le jugement.</h2>
-    <p class="promesse-intro texte-2">
-      Nous observons le geste, nous écrivons la règle avec vous, nous construisons l’automatisation dans votre environnement et nous la maintenons. Vous n’avez rien à configurer.
-    </p>
+<section id="promesse" class="section pile promesse" aria-labelledby="promesse-titre">
+  <div class="conteneur">
+    <ProofRow id={contenu.image}>
+      <div class="tete rv">
+        <h2 id="promesse-titre">{contenu.titre}</h2>
+        <p>{contenu.texte}</p>
+      </div>
+    </ProofRow>
   </div>
-  </ProofRow></div>
-  <div class="coins">
+  <div class="bande coins">
     <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-  <ul class="promesse-grille rv-groupe">
-    {points.map((p) => (
-      <li class="promesse-point rv">
-
-        <h3 class="promesse-h3">{p.titre}</h3>
-        <p class="texte-2">{p.texte}</p>
-      </li>
-    ))}
-  </ul>
+    <ul class="cartes rv-groupe">
+      {points.map((p) => (
+        <li class="cellule promesse-point rv">
+          <h3 class="carte-titre">{p.titre}</h3>
+          <p class="carte-texte">{p.texte}</p>
+        </li>
+      ))}
+    </ul>
   </div>
-
 </section>
-
-<style>
-  .promesse-media { padding: 0 var(--marge-page); }
-  @media (min-width: 64rem) { .promesse-media { padding: 0 var(--marge-page-lg); } }
-  .promesse {
-    padding-top: 96px;
-  }
-  .promesse-tete {
-    display: grid;
-    gap: 12px;
-    max-width: 720px;
-    padding: 0;
-  }
-  .promesse-intro {
-    max-width: 62ch;
-  }
-  .promesse-grille {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1px;
-    background: var(--ligne-douce);
-    border-top: 1px solid var(--ligne);
-    border-bottom: 1px solid var(--ligne);
-  }
-  .promesse-point {
-    position: relative;
-    background: var(--surface-feuille);
-    padding: 40px 24px 48px;
-    display: grid;
-    gap: 12px;
-    align-content: start;
-  }
-  .promesse-num {
-    font-family: var(--police-display), 'Fraunces Fallback';
-    font-variant-numeric: tabular-nums;
-    font-size: var(--t-sm);
-    font-weight: 600;
-    color: var(--accent-texte);
-  }
-  .promesse-h3 {
-    font-size: var(--t-2xl);
-    max-width: 22ch;
-  }
-  @media (min-width: 48rem) {
-    .promesse-grille {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .promesse-point:last-child { grid-column: 1 / -1; }
-    .promesse-point {
-      padding: 48px 32px 64px;
-    }
-  }
-  @media (min-width: 64rem) {
-    .promesse-grille { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .promesse-point:last-child { grid-column: auto; }
-    .promesse {
-      padding-top: 128px;
-    }
-    .promesse-tete {
-      padding: 0;
-    }
-    .promesse-point {
-      padding: 64px 48px;
-    }
-  }
-</style>
