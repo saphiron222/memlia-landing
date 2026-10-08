@@ -52,6 +52,10 @@ Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate 
 
 ## Rejeu historique et tests
 
+Les fixtures forge et rendu initialisent leurs collections générées à `[]` et `{}` uniquement dans leur répertoire temporaire. Copier les collections publiques sans leurs recettes et états importerait des orphelins dès le premier guide scellé. Le corpus historique TypeScript reste copié ; aucune collection, recette ou preuve publique n'est réécrite. Une régression utilise une source non vide pour vérifier cette isolation, et une autre confirme que l'audit de production refuse toujours une entrée sans sceau.
+
+Le test de rejeu historique démarre avec un candidat synthétique déjà scellé : il compare les octets du corpus TypeScript, des collections, du média et des états initiaux après préparation et rejeu idempotent. Une recette historique altérée reste refusée sans modifier ces fichiers. Le test Astro exige que ses collections ne contiennent que son propre candidat synthétique.
+
 `npm run guide:preparer -- rapprochement-bancaire-sage` rejoue la recette existante sans toucher au corpus ni au WebP. L'exception de demande historique exige le corpus intégralement identique et la grille `PSEO-INTEGRATIONS.md` datée du 20 septembre 2026 ; elle n'ouvre aucune nouvelle URL. Son état préparé est livré pour vérifier ce contrat en continu. Il ne prétend pas disposer d'une nouvelle revue ou d'un nouveau constat de publication.
 
 - `npm run test:guide-forge` : seuil 5/6, preuve manquante/fictive, revue, mutations, idempotence, publication et géométrie/composition des images (dont 74 W/49 W) ; réponses servies simulées uniquement dans les tests.
