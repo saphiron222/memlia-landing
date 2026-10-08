@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/accueil-cac-proofs/index.html",
+      "sha256": "0413569cbc0e287ecccb20b0b3cbe033f16eab4cc2741e0f99f5203ab24ea82a"
+    },
+    {
+      "path": "docs/design/accueil-cac-proofs/styles.css",
+      "sha256": "02faa95dc7d0da081d1043c04b957faa3d64b23b93340aebc3e9fb771a6eaa8a"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/accueil-cac-proofs/content-contract.json",
+      "sha256": "b0ad4787e13274d72bb83d99db4eb1bd7c86fdae581fab54c10924ef0fd32112"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/accueil-cac-proofs/index.html#accueil-selection-tiers",
+      "target": "public/proofs/cac/accueil-selection-tiers.webp",
+      "bytes": 66812,
+      "sha256": "48b3a652e954d21da02a7a9fdd38e215f8e292b856f323c348848f34f07f605b"
+    },
+    {
+      "source": "docs/design/accueil-cac-proofs/index.html#accueil-selection-tiers",
+      "target": "public/proofs/cac/og/accueil-selection-tiers.webp",
+      "bytes": 37166,
+      "sha256": "246fa1c548e1e7a146fb987a287a22634ceb8d2678bd808dbe996bb3e5a986fd"
+    },
+    {
+      "source": "docs/design/accueil-cac-proofs/index.html#accueil-ecarts-confirmation",
+      "target": "public/proofs/cac/accueil-ecarts-confirmation.webp",
+      "bytes": 67560,
+      "sha256": "f8efe5d48032f02df7da1c1d35d02a5b6e795f6cf247f2ee2de69bedd73afb85"
+    },
+    {
+      "source": "docs/design/accueil-cac-proofs/index.html#accueil-fichiers-balance",
+      "target": "public/proofs/cac/accueil-fichiers-balance.webp",
+      "bytes": 65338,
+      "sha256": "e06b29d6008f1ba896b297d5a9a4e56a862cbd0a6d6c786f0ecd054101237b0d"
+    }
+  ]
+}

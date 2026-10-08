@@ -19,7 +19,19 @@
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
-      "sha256": "a22db4bc56b0b016615c465f36de22e2761253f4a1c1f6a91f682de5197bff76"
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    },
+    {
+      "path": "docs/design/entrees-sorties-salaries-proof/index.html",
+      "sha256": "c6619208b981eb7969ef60e65d99d80aad9dcb67d6337292e3d291e283a5392c"
+    },
+    {
+      "path": "docs/design/entrees-sorties-salaries-proof/styles.css",
+      "sha256": "80ca12eb36b7be0933990e27f92f4cad71fb36d318b332cfe150e88ee2466cb6"
+    },
+    {
+      "path": "docs/design/entrees-sorties-salaries-proof/content-contract.json",
+      "sha256": "cf296bbef1e6b535dc7bc1ebe4d88091c235ff9053693aceff13ee286b394acd"
     }
   ],
   "browser": "153.0.8010.12",
@@ -263,6 +275,18 @@
       "target": "public/proofs/v2/og/29-outil-prompt.webp",
       "bytes": 22196,
       "sha256": "a64355d38f72fb18c42490b08747b89cd89a0eb024019770e89066f4974a24f1"
+    },
+    {
+      "source": "docs/design/entrees-sorties-salaries-proof/index.html#service-entrees-sorties-salaries",
+      "target": "public/proofs/v2/44-service-entrees-sorties-salaries.webp",
+      "bytes": 67542,
+      "sha256": "14245ff63844ffd6ae61c183af510623819096ce80536574de30ba353678578e"
+    },
+    {
+      "source": "docs/design/entrees-sorties-salaries-proof/index.html#service-entrees-sorties-salaries",
+      "target": "public/proofs/v2/og/44-service-entrees-sorties-salaries.webp",
+      "bytes": 42462,
+      "sha256": "36e8211c45bc84d74ef1875480c57b0f837ac8c2e194294c2e81f42b8677991d"
     }
   ]
 }

@@ -5,8 +5,7 @@ import { CTA } from '../../src/data/site.mjs';
  * La navigation mobile publiée est une liste immédiatement visible sous le bandeau.
  * Aucun geste ni JavaScript ne doit être nécessaire pour découvrir ses destinations.
  */
-const DESTINATIONS = ['Tâches', 'Méthode', 'Contrôle humain', 'Questions'];
-const HREFS = ['/#usages', '/#methode', '/#preuves', '/#questions'];
+import { DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
 
 /** Un contrôle n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
 async function mesurerAtteignable(cible: Locator) {

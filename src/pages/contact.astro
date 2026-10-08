@@ -20,8 +20,8 @@ const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const appel = {
   titre: 'Vous préférez en parler de vive voix ?',
-  texte: 'L’échange dure une trentaine de minutes. Réservez un créneau, ou écrivez directement : les deux mènent au même endroit.',
-  points: ['Rien à envoyer : la description suffit.', 'Sans engagement sur un développement.', 'Le devis, s’il vient, dépendra de la complexité réelle.'],
+  texte: 'Réservez un créneau pour parcourir la tâche ensemble. Vous pouvez aussi nous écrire par courriel.',
+  points: ['Une tâche récurrente pour commencer.', 'Un échange sans engagement sur un développement.', 'Un devis établi selon la complexité de la tâche.'],
   action: CTA.rendezVous,
   secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
 };
@@ -50,7 +50,7 @@ const appel = {
         <div class="champ">
           <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
           <textarea id="message" name="message" required minlength="20" maxlength="4000" rows="7" aria-describedby="message-aide"></textarea>
-          <p id="message-aide" class="champ-aide texte-2">Une phrase par élément. La description suffit : ni fichier, ni donnée de paie.</p>
+          <p id="message-aide" class="champ-aide texte-2">Rien à envoyer : la description suffit. Décrivez le geste sans donnée client ; ce formulaire ne reçoit pas de fichier.</p>
         </div>
         <div class="champ-piege" aria-hidden="true">
           <label for="site_web">Site web</label>
@@ -75,7 +75,7 @@ const appel = {
 
       <aside class="contact-aside rv" aria-labelledby="preparer-titre">
         <h2 id="preparer-titre">Ce qu’il est utile de préparer</h2>
-        <p class="texte-2">Rien d’écrit n’est nécessaire. Trois éléments suffisent à rendre l’échange utile.</p>
+        <p class="texte-2">Ces trois repères nous aident à comprendre le travail de votre équipe.</p>
         <ul class="contact-liste">
           {preparer.map((p) => (
             <li>
@@ -91,13 +91,13 @@ const appel = {
 
   <section class="pv" aria-labelledby="pasdemande">
     <div class="pv-tete rv">
-      <h2 id="pasdemande">Vous n’avez rien à nous envoyer</h2>
+      <h2 id="pasdemande">Nous partons du travail de votre équipe</h2>
     </div>
     <div class="pv-bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
       <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Aucun fichier client</h3><p>Ni classeur de paie, ni export de dossier, ni donnée de salarié. La description du geste suffit pour savoir s’il se cadre.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun document à déposer</h3><p>Le formulaire n’accepte aucun fichier, et c’est voulu : rien ne transite avant que le périmètre ne soit clair. Nous préférons un échange de vive voix.</p></li>
+        <li class="pv-cellule rv"><h3>Le geste qui se répète</h3><p>Racontez un cas courant et une exception. Nous repérons les étapes répétitives et celles qui demandent le jugement de votre équipe.</p></li>
+        <li class="pv-cellule rv"><h3>Le savoir-faire à écrire</h3><p>Nous faisons préciser la règle que vos collaborateurs appliquent aujourd’hui. Elle sert à définir la tâche à prendre en charge et les validations à conserver.</p></li>
       </ul>
     </div>
   </section>
@@ -106,9 +106,9 @@ const appel = {
     <ProofRow id="v2/13-deux-issues">
       <div class="pv-copy rv">
         <h2 id="ensuite">Ce qui se passe ensuite</h2>
-        <p>L’échange dure une trentaine de minutes. Nous regardons si la tâche se cadre, ce qu’il faudrait qualifier, et ce qui reste incertain.</p>
-        <p class="texte-2">À l’issue, deux réponses sont possibles, et la seconde n’a rien d’exceptionnel : soit nous voyons ce qu’il y aurait à construire et nous vous proposons un cadrage, soit la tâche n’est pas automatisable en l’état et nous vous le disons. Dans les deux cas, vous repartez avec une réponse.</p>
-        <p class="texte-2">Aucun engagement n’est pris à ce stade, et le devis, s’il vient, dépendra de la complexité réelle — jamais du nombre de personnes dans votre cabinet.</p>
+        <p>L’échange dure une trentaine de minutes. Nous parcourons la tâche, ses outils et ses exceptions pour voir si sa règle peut s’écrire.</p>
+        <p class="texte-2">Si la tâche peut être prise en charge, nous vous proposons un cadrage : le résultat à livrer et ce que votre équipe garde à valider. Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.</p>
+        <p class="texte-2">Le devis vient après ce cadrage. Il dépend des sources, des règles, des exceptions et des validations, jamais du nombre de personnes dans votre cabinet. La maintenance, le support et les évolutions y sont écrits.</p>
       </div>
     </ProofRow>
   </section>
