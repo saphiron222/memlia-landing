@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
+import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import PageEvidence from '@/components/PageEvidence.astro';
@@ -24,6 +25,9 @@ const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
 const design = serviceDesignFor(entree.id);
 const eeat = eeatService(entree.id);
+const socialImage = entree.id === 'entrees-sorties-salaries'
+  ? { url: `${SITE.url}/proofs/v2/og/44-service-entrees-sorties-salaries.webp`, width: 1200, height: 630, alt: 'Sept annonces fictives : propositions à valider, arrêts et circuit existant conservé.' }
+  : undefined;
 const auteur = auteurPar(eeat.auteur);
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
 const toolLink = entree.id === 'factures-fournisseurs'
@@ -83,13 +87,14 @@ const graph = {
 };
 ---
 
-<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph}>
+<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph} socialImage={socialImage}>
   <meta slot="head" name="memlia-candidate" content={data.candidateFingerprint} />
 
   <div class="feuille">
     <article data-service={entree.id} data-service-layout="da-v1">
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
       </ServiceHero>
+      <ServiceCouverture slug={entree.id} />
       <ServiceBody proof={design.bodyProof}>
         <slot />
         {toolLink && (

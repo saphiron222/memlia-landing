@@ -2,6 +2,11 @@
 import Button from '@/components/Button.astro';
 
 import { CTA } from '@/data/site.mjs';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['hero']; }
+const { contenu = contenuDe('ec').hero } = Astro.props;
+// Conserver les séparateurs du HTML historique, même avec des expressions Astro.
+const retour = '\n';
 
 /**
  * Hero M4-R4 : média R8 sans cartouche, conservé octet pour octet.
@@ -11,22 +16,16 @@ import { CTA } from '@/data/site.mjs';
 
 <section class="hero" aria-labelledby="hero-titre">
   <div class="hero-texte">
-    <span class="pastille hero-eyebrow">
-      Automatisation IA pour cabinets d’expertise comptable
-    </span>
-    <h1 id="hero-titre" class="hero-h1">
-      Votre cabinet tourne sur un savoir-faire que personne n’a écrit.
-    </h1>
-    <p class="hero-sub">
-      Nous l’écrivons, puis nous automatisons la part répétitive du travail de vos collaborateurs, dans les outils qu’ils utilisent déjà. Ils gardent la décision. Votre cabinet garde le savoir.
-    </p>
+    <span class="pastille hero-eyebrow">{retour}{contenu.etiquette}{retour}</span>
+    <h1 id="hero-titre" class="hero-h1">{retour}{contenu.titre}{retour}</h1>
+    <p class="hero-sub">{retour}{contenu.texte}{retour}</p>
     <div class="hero-boutons">
       <Button href={CTA.principal.href} variante="principal" picto="fleche" class="hero-btn">
         {CTA.principal.libelle}
       </Button>
 
     </div>
-
+    <slot name="audience" />
   </div>
 
   <div class="hero-cadre" data-cadre>
@@ -35,9 +34,9 @@ import { CTA } from '@/data/site.mjs';
         <video muted loop playsinline preload="metadata" width="1920" height="1080"
           tabindex="0" data-video aria-label="Reprendre la vidéo"
           disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
-          poster="/media/r9/hero-poster-1200.webp" src="/media/r9/explainer-hero-45s.mp4">
-          <track kind="subtitles" srclang="fr" label="Français" src="/media/r9/explainer.vtt" />
-          <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r9/explainer-hero-45s.mp4">Télécharger la vidéo</a>.</p>
+          poster={contenu.poster} src={contenu.video}>
+          <track kind="subtitles" srclang="fr" label="Français" src={contenu.sousTitres} />
+          <p>Votre navigateur ne peut pas lire cette vidéo. <a href={contenu.video}>Télécharger la vidéo</a>.</p>
         </video>
         <div class="hero-video-overlay" data-video-overlay>
           <button class="hero-video-sound" type="button" data-video-sound>
@@ -49,12 +48,12 @@ import { CTA } from '@/data/site.mjs';
         </div>
         <div class="hero-video-status" data-video-status role="status" aria-live="polite" hidden>
           <span data-video-status-message></span>
-          <a href="/media/r9/explainer-hero-45s.mp4" data-video-download hidden>Télécharger la vidéo</a>
+          <a href={contenu.video} data-video-download hidden>Télécharger la vidéo</a>
         </div>
         <noscript>
           <p class="hero-video-noscript">
             Votre navigateur ne peut pas lancer le lecteur interactif.
-            <a href="/media/r9/explainer-hero-45s.mp4">Télécharger la vidéo</a>.
+            <a href={contenu.video}>Télécharger la vidéo</a>.
           </p>
         </noscript>
       </div>

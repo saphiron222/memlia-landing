@@ -12,6 +12,7 @@ function html({ route, h1, media, href, ogTitle = h1, headline = h1, description
     <meta name="description" content="${description}">
     <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}">
     <meta property="og:title" content="${ogTitle}">
+    <meta property="og:image" content="https://memlia.fr${media}">
     <link rel="canonical" href="${url}">
     ${schema ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', url, name: h1, headline, description,
@@ -69,6 +70,30 @@ function afficherTemoin(resultat, clause) {
   console.log(`TÉMOIN ROUGE CLAUSE ${clause}\n${sortie}`);
   return sortie;
 }
+
+test('une page indexable refuse une og:image relative, absente, dupliquée ou hors origine HTTPS Memlia', () => {
+  const { root, pages } = fixture();
+  try {
+    assert.equal(audit(root).pass, true);
+    const tag = '<meta property="og:image" content="https://memlia.fr/proofs/alpha.webp">';
+    for (const replacement of [
+      '<meta property="og:image" content="/proofs/alpha.webp">',
+      '<meta property="og:image" content="http://memlia.fr/proofs/alpha.webp">',
+      '<meta property="og:image" content="https://memlia.fr.example.org/image.webp">',
+      '<meta property="og:image" content="https://example.org/image.webp">',
+      '', tag + tag,
+    ]) {
+      writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace(tag, replacement));
+      const rouge = audit(root);
+      assert.equal(rouge.pass, false, replacement);
+      assert.match(afficherTemoin(rouge, 3), /\/alpha.*og:image.*https:\/\/memlia\.fr/);
+    }
+    writeFileSync(join(root, 'dist/alpha.html'), pages.alpha);
+    assert.equal(audit(root).pass, true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test('la surface publique attendue refuse exactement la dépublication silencieuse de l’incident', () => {
   const { root, pages } = fixture();

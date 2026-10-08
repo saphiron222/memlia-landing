@@ -78,13 +78,14 @@ test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Générateur de prompt IA gratuit');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${ROUTE}`);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', 'Générateur de prompt IA gratuit');
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/01-outil-prompt-ia.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/01-outil-prompt-ia.webp');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/01-outil-prompt-ia.webp');
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
   await expect(page.locator(`footer a[href="${ROUTE}"]`)).toHaveCount(1);
   const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
   const nodes = schemas.flatMap((text) => JSON.parse(text)['@graph'] ?? []); expect(nodes.map((node) => node['@type'])).toEqual(expect.arrayContaining(['WebPage', 'WebApplication', 'BreadcrumbList']));
   expect(nodes.map((node) => node['@type'])).not.toContain('BlogPosting');
-  expect(await (await page.request.get('/sitemap-0.xml')).text()).toContain(`https://memlia.fr${ROUTE}`);
+  expect(await (await page.request.get('/sitemap-outils.xml')).text()).toContain(`https://memlia.fr${ROUTE}`);
   for (const path of ['/proofs/v2/01-outil-prompt-ia.webp', '/proofs/v2/og/01-outil-prompt-ia.webp']) expect((await page.request.get(path)).status()).toBe(200);
 });
 for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`reflow, clavier et cibles à ${width}px`, async ({ page }) => {

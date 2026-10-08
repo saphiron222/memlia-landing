@@ -51,15 +51,149 @@
 /* Repli à métriques ajustées : limite le saut de mise en page pendant le swap. */
 @font-face {
   font-family: 'Fraunces Fallback';
-  src: local('Georgia');
-  size-adjust: 96%;
-  ascent-override: 92%;
-  descent-override: 24%;
+  src: local('Georgia Bold');
+  font-weight: 600;
+  size-adjust: 93.54%;
+  ascent-override: 104.77%;
+  descent-override: 27.80%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 98.04%;
+  ascent-override: 99.96%;
+  descent-override: 26.52%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia Bold Italic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 88.30%;
+  ascent-override: 110.99%;
+  descent-override: 29.45%;
+  line-gap-override: 0%;
 }
 @font-face {
   font-family: 'Hanken Fallback';
-  src: local('Arial'), local('Helvetica Neue');
-  size-adjust: 100%;
+  src: local('Arial'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Arimo Regular'), local('Arimo-Regular');
+  font-weight: 400;
+  size-adjust: 101.24%;
+  ascent-override: 98.77%;
+  descent-override: 29.63%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Arimo Regular'), local('Arimo-Regular');
+  font-weight: 500;
+  size-adjust: 101.76%;
+  ascent-override: 98.27%;
+  descent-override: 29.48%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial Bold'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold');
+  font-weight: 600;
+  size-adjust: 94.45%;
+  ascent-override: 105.88%;
+  descent-override: 31.76%;
+  line-gap-override: 0%;
+}
+
+/* Replis sans Georgia : Noto Serif (Android), puis Liberation Serif ou Tinos (Linux, ChromeOS ; chasses de Times New
+   Roman). Chaque police a ses propres réglages, calculés comme les précédents (largeur moyenne et hauteurs de
+   Fraunces rapportées à celles du repli) ; la pile essaie Georgia, puis Noto Serif, puis Liberation Serif. */
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+  font-weight: 600;
+  size-adjust: 94.63%;
+  ascent-override: 103.35%;
+  descent-override: 26.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 95.52%;
+  ascent-override: 102.38%;
+  descent-override: 26.70%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Bold Italic'), local('NotoSerif-BoldItalic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 90.62%;
+  ascent-override: 107.92%;
+  descent-override: 28.14%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Bold'), local('LiberationSerif-Bold'), local('Tinos Bold'), local('Tinos-Bold');
+  font-weight: 600;
+  size-adjust: 111.99%;
+  ascent-override: 87.33%;
+  descent-override: 22.77%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Italic'), local('LiberationSerif-Italic'), local('Tinos Italic'), local('Tinos-Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 109.75%;
+  ascent-override: 89.11%;
+  descent-override: 23.23%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Bold Italic'), local('LiberationSerif-BoldItalic'), local('Tinos Bold Italic'), local('Tinos-BoldItalic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 111.96%;
+  ascent-override: 87.35%;
+  descent-override: 22.78%;
+  line-gap-override: 0%;
+}
+/* Repli sans Arial ni Liberation Sans : Roboto (Android), avec ses propres réglages. */
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto'), local('Roboto-Regular');
+  font-weight: 400;
+  size-adjust: 101.16%;
+  ascent-override: 98.85%;
+  descent-override: 29.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto Medium'), local('Roboto-Medium');
+  font-weight: 500;
+  size-adjust: 100.73%;
+  ascent-override: 99.28%;
+  descent-override: 30.08%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600;
+  size-adjust: 100.63%;
+  ascent-override: 99.37%;
+  descent-override: 30.11%;
+  line-gap-override: 0%;
 }
 
 /* ---------- Reset et base ---------- */

@@ -54,8 +54,8 @@
   --bouton-principal-hover: #34c264;
 
   /* ---- Typographie ---- */
-  --police-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --police-corps: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --police-display: 'Fraunces', 'Fraunces Fallback', 'Fraunces Fallback Noto', 'Fraunces Fallback Liberation', Georgia, 'Times New Roman', serif;
+  --police-corps: 'Hanken Grotesk', 'Hanken Fallback', 'Hanken Fallback Roboto', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --police-chiffres: var(--police-display);
 
   --t-xs: 0.75rem;

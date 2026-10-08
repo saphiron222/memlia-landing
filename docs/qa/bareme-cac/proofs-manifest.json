@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/bareme-cac-proof/index.html",
+      "sha256": "14861b46830eb043b4f71a7b6782a15029df9f418ccc2aa7945c94a2895a8c83"
+    },
+    {
+      "path": "docs/design/bareme-cac-proof/styles.css",
+      "sha256": "630c250c629e981f62fb4006421b7fcbe61e7de8c54b50672ae0e6f6d4faa7ca"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/bareme-cac-proof/content-contract.json",
+      "sha256": "1f2caae75cda708aa5bbf452f8d609d7865380613396c59d296d78a953702fc6"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/bareme-cac-proof/index.html#outil-bareme-cac",
+      "target": "public/proofs/v2/43-outil-bareme-cac.webp",
+      "bytes": 31848,
+      "sha256": "fb09bf523c5a3092fc71a7489ed9745ce2186d25de048ae39d0ce03e22f032cc"
+    },
+    {
+      "source": "docs/design/bareme-cac-proof/index.html#outil-bareme-cac",
+      "target": "public/proofs/v2/og/43-outil-bareme-cac.webp",
+      "bytes": 20372,
+      "sha256": "d777d9a5b6a803b8e3b7374578d10ae60ecf32c22c67337fc7493c9557f06044"
+    }
+  ]
+}
