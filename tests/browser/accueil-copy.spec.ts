@@ -11,7 +11,11 @@ for (const width of [375, 1440]) {
     await expect(page.locator('.hero-sub')).toContainText('Ils gardent la décision. Votre cabinet garde le savoir.');
     await expect(page.locator('main section')).toHaveCount(11);
     await expect(page.locator('main [data-proof]')).toHaveCount(9);
-    await expect(page.locator('video')).toHaveAttribute('src', '/media/r9/explainer-hero-45s.mp4');
+    const video = page.locator('video');
+    await video.scrollIntoViewIfNeeded();
+    await expect(video).toHaveAttribute('src', width < 768
+      ? '/media/r9/explainer-hero-45s-mobile.mp4'
+      : '/media/r9/explainer-hero-45s.mp4');
     await expect(page.locator('track')).toHaveAttribute('src', '/media/r9/explainer.vtt');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/');
     await expect(page.locator('#promesse')).toContainText('De l’observation à la maintenance');
