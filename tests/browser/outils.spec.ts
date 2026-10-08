@@ -266,7 +266,9 @@ test('contrat de liens : le registre borne les outils publiés et leurs sorties'
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    const expectedLinks = [HUB, outil.pageService, ...(outil.articleExact ? [outil.articleExact] : []), outil.cta];
+    // Les trois suites (explorer, comprendre, passer à votre tâche) sont trois cartes de même rang ;
+    // la ressource associée, quand elle existe, suit en lien d'action (système de page, 07/10/2026).
+    const expectedLinks = [HUB, outil.pageService, outil.cta, ...(outil.articleExact ? [outil.articleExact] : [])];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
     await expect(page.locator('[data-tool-links] a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('[data-tool-links] a[href^="/contact?"]')).toHaveCount(0);
@@ -285,7 +287,10 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
     await expect(suite.getByText('Explorer', { exact: true })).toBeVisible();
     await expect(suite.getByText('Comprendre', { exact: true })).toBeVisible();
     await expect(suite.getByText('Passer à votre tâche', { exact: true })).toBeVisible();
-    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
+    // Un seul bouton principal en fin de page, celui de l'appel final : dans la suite, l'appel à
+    // passer à sa tâche garde ses mots et son lien, en lien d'action de carte (système de page).
+    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/carte-action/);
+    await expect(page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
     await expect(suite.getByRole('link', { name: /Voir le cadrage des factures fournisseurs/ })).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
 
@@ -295,7 +300,8 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
     await expect(links.nth(1)).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(links.nth(2)).toBeFocused();
-    await expect(links.nth(2)).not.toHaveCSS('box-shadow', 'none');
+    // Le focus d'un lien de carte se dessine sur la carte entière (global.css).
+    await expect(suite.locator('.carte:has(.carte-lien:focus-visible)')).toHaveCSS('outline-style', 'solid');
   }
 });
 
@@ -319,7 +325,11 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
-    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
+    // L'appel « Confier une première tâche » : deux fois dans la page (suite et appel final), au pied,
+    // et au bouton de la navigation, qui porte le même libellé depuis le 07/10/2026 (décision de Kevin).
+    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(2);
+    await expect(page.locator('header .nav-principal')).toHaveText('Confier une première tâche');
+    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(4);
     const graph = await graphFrom(page);
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);

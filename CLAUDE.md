@@ -30,6 +30,10 @@ npx astro check                  # types et contenu : doit rendre 0 erreur
 npx playwright test              # suite navigateur
 ```
 
+Ces trois commandes complètes tournent dans la CI GitHub (« Repository gates », obligatoire pour
+fusionner dans `main`) : son verdict sur le SHA exact fait foi. Sur le Mac, ne lancer que les tests
+ciblés du changement et, si la copy, le menu ou le pied de page changent, `npm run regen:generated`.
+
 ## Message et copy
 
 **La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique

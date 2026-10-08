@@ -79,7 +79,29 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(self.html.count('data-example-fictitious='), 53)
         self.assertEqual(self.html.count('data-common-confusion='), 53)
         self.assertEqual(self.html.count('data-automation-boundary='), 53)
-        self.assertEqual(self.html.count('class="entree-sources"'), 53)
+        # Décision de Kevin du 06/10/2026 : pas de bloc « Sources » ; l'organisme externe est cité par un lien
+        # en fin de définition. Les seules sources internes (méthode, articles Memlia) restent des renvois.
+        self.assertNotIn('entree-sources', self.html)
+        definitions = re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)
+        self.assertEqual(len(definitions), 53)
+        entrees = re.findall(
+            r'<div class="glossaire-entree" id="([a-z0-9-]+)".*?<p class="definition"[^>]*>(.*?)</p>\s*<p class="contexte"[^>]*>(.*?)</p>',
+            self.html, re.S)
+        self.assertEqual(len(entrees), 53)
+        cites = [ident for ident, definition, contexte in entrees if 'href="https://' in definition + contexte]
+        # 22 entrées ne s'appuient que sur la méthode ou un article Memlia : rien d'externe à citer.
+        self.assertEqual(len(cites), 31)
+        # Une définition écrite par Memlia n'est pas celle de l'organisme cité : la source externe se pose sur le mot
+        # qu'elle établit, jamais en parenthèse après une phrase maison (revue de #166, 07/10/2026).
+        maison = set(re.findall(r"id: '([a-z0-9-]+)'[^\n]*nature: 'Éditoriale Memlia'", (ROOT / 'src/data/glossary.ts').read_text()))
+        self.assertEqual(len(maison), 20)
+        for ident, definition, contexte in entrees:
+            if ident in maison:
+                self.assertNotRegex(definition + contexte, r'\(<a [^>]*href="https://', ident)
+        par_mot = {ident: definition + contexte for ident, definition, contexte in entrees}
+        for ident, mot in [('controle-avant-dsn', 'cohérences métier'), ('agregat-non-nominatif', 'afficher un indicateur'),
+                           ('jeu-d-essai-fictif', 'données anonymisées'), ('tracabilite', 'retrouver')]:
+            self.assertRegex(par_mot[ident], r'<a [^>]*href="https://[^"]+"[^>]*>' + re.escape(mot) + '</a>', ident)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)

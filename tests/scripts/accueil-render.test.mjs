@@ -12,9 +12,10 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
-// Témoin main 4f42a88b : le chrome v3 est testé à part ; le contenu EC reste inchangé.
+// Témoin du système de page #166 après intégration de la copy EC relue (#181).
+// Avant #181 : c28bb8b4… ; DOM inchangé, nouveaux textes de main seuls ; chrome v3 testé à part.
 test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
-  const expected = 'e7e06c672844aa08566b59e6e8558dab59dbc7d9dd8227d3963dcdf1d129bf55';
+  const expected = 'e343eaefe5839366d2feaedc3babd39f485b40e0dc1ecf434202d06809e179f5';
   const html = readFileSync('dist/index.html', 'utf8');
   // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
   const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
