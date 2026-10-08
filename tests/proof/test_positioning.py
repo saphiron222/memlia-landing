@@ -164,7 +164,8 @@ class PositioningProof(unittest.TestCase):
 
     def test_written_rule_automation_is_bounded_in_daily_passage(self):
         html = (DIST / 'index.html').read_text()
-        match = re.search(r'<p[^>]*class="daily-note texte-2"[^>]*>(.*?)</p>', html, re.S)
+        # Le passage est la mention du système de page (07/10/2026) : la classe `daily-note` le désigne.
+        match = re.search(r'<p[^>]*class="(?:[^"]* )?daily-note(?: [^"]*)?"[^>]*>(.*?)</p>', html, re.S)
         self.assertIsNotNone(match)
         assert match is not None
         passage = match.group(1)

@@ -1,6 +1,6 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v4 — 21 septembre 2026 (les versions antérieures restent lisibles dans git). **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v5 — 6 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-06. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
@@ -16,7 +16,7 @@ Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge r
 
 **Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, prise entière : observation, règle, construction, recette, maintenance.**
 
-- L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire : les soixante familles des douze pôles de `src/data/familles.ts` (le douzième, l'audit légal, est listé et non ouvert), de la saisie au reporting, de la relance des pièces à la DSN) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »).
+- L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire, en expertise comptable et en commissariat aux comptes : de la relance des pièces à la DSN, du suivi des demandes de confirmation des tiers à la préparation des rapprochements) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »). Les familles publiées restent celles des données du site ; ouvrir le public CAC dans la charte ne prouve ni une intégration livrée ni une page déjà en ligne.
 - L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
 - Le prix se dit ainsi : **« Vous payez une tâche prise en charge, pas des sièges. »** Le devis dépend de la complexité (sources, règles, exceptions, validations) ; maintenance, support et évolutions y sont écrits.
 
@@ -56,6 +56,17 @@ Le résultat et les critères d'acceptation sont définis au devis ; prix à la 
 - **Collaborateur, gestionnaire** : moins de ressaisies et de rapprochements ; comprendre ce qui est proposé et garder ses saisies.
 - **Référent outils et sécurité** : fichiers, accès, droits, traces, maintenance.
 
+### Commissariat aux comptes : une audience distincte
+
+| Persona | Ce qui compte | Tâche et valeur promises |
+|---|---|---|
+| CAC signataire et associé, décideur | Capacité en haute saison, indépendance, responsabilité de la mission et de l'opinion | Confier une mécanique bornée, garder l'appréciation des éléments collectés, les conclusions et la signature ; disposer de la règle et des essais pour apprécier l'outil. |
+| Chef de mission, prescripteur et relecteur | Planification des mandats, suivi des demandes, reprise des travaux et revue de l'équipe | Rassembler les pièces et les exceptions, préparer des rapprochements traçables ; garder le choix des diligences et la revue. |
+| Auditeur, utilisateur | Ressaisies, contrôle du FEC à réception, demandes de confirmation des tiers, préparation des procédures analytiques | Préparer tableaux et écarts dans ses outils ; conserver les commentaires, les contrôles et les conclusions qu'il saisit. |
+| Cabinet mixte EC/CAC, associé et responsables de mission | Séparation des missions, accès et responsabilités pour chaque entité | Cadrer séparément production comptable et travaux d'audit ; apprécier l'indépendance avant tout usage. Le partage d'un outil ne justifie jamais de préparer et d'auditer les mêmes comptes. |
+
+Les rôles et irritants viennent du support CAC de `memlia-rdv` et de ses recherches du 05/10/2026 ; ils ne sont ni des témoignages clients Memlia ni une preuve de gains. Le portefeuille CAC se dit en **mandats**, la période chargée en **haute saison**, la mémoire en **dossier permanent et dossiers de travail**. Le signataire reste commissaire aux comptes ; Memlia reste le service qui prépare la part répétitive.
+
 Anti-personas : salarié cherchant à vérifier sa propre paie ; acheteur d'un moteur de paie ou d'une plateforme complète ; demande de surveillance nominative. France, vouvoiement, français professionnel.
 
 ## 6. Objections et réponses autorisées
@@ -68,12 +79,23 @@ Anti-personas : salarié cherchant à vérifier sa propre paie ; acheteur d'un m
 | Combien cela coûte ? | Une tâche prise en charge, pas des sièges. Le devis dépend de la complexité ; ni tarif fictif ni pack. |
 | Qui voit quoi ? | Fichiers lus en place, jeux d'essai fictifs, traitements documentés par mission, vues de pilotage en agrégats. Aucune certification ni localisation d'hébergement inventée. |
 | Et si la personne qui connaît la règle part ? | C'est précisément pour cela que la règle s'écrit : elle appartient au cabinet, elle se relit, elle se maintient. |
+| Le secret professionnel du CAC interdit-il de confier ces traitements ? | Le secret prévu par L.821-35 s'applique aux CAC, collaborateurs et experts. Nous décrivons les données, accès, destinataires et traitements avant la mission ; les essais utilisent des jeux fictifs. Une promesse de traitement local exige la vérification des appels réseau et de la télémétrie. Le support ne réclame pas de fichiers clients non anonymisés. Le CAC apprécie les conditions d'utilisation ; le recours à Memlia ne lève pas le secret. |
+| Notre cabinet fait aussi la comptabilité : pouvons-nous mutualiser ? | Chaque mission a son périmètre et ses accès. Le CAC apprécie les incompatibilités et les risques d'indépendance, notamment au regard de L.821-27, L.821-31 et du code de déontologie. Nous ne présentons jamais la préparation et l'audit des comptes d'une même entité comme une « synergie ». |
+| Qui porte l'opinion et la responsabilité ? | Le CAC conserve la responsabilité de sa mission et de son opinion. Nous préparons les tableaux, rapprochements et exceptions ; l'équipe d'audit garde ses contrôles et le signataire ses conclusions et sa signature. Aucun résultat d'outil ne certifie les comptes (L.821-53, L.821-37, code de déontologie art. 10). |
+| Un export suffit-il pour le dossier d'audit ? | La NEP 230 demande une documentation permettant de comprendre les procédures, les éléments testés, les résultats et les conclusions. Nous fournissons les paramètres, traces et résultats du traitement prévu ; le CAC les apprécie, les complète et les verse au dossier avec ses travaux. Un export seul ne démontre pas que les diligences sont suffisantes. |
+
+### La fiche outil remise au CAC
+
+La **NEP 315 révisée, § 14**, définit les « outils et techniques automatisés » ; elle distingue ces outils des logiciels servant à documenter l'audit. Les **§ 46 et 48 d)** portent respectivement sur l'appréciation de leur fonctionnement et des informations intégrées, puis sur la consignation de cette appréciation au dossier. Le § 14 ne prescrit pas un modèle de fiche ni une certification de l'outil.
+
+Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia que le CAC peut verser au dossier : objectif et périmètre du traitement ; méthode et version ; données d'entrée et contrôles de pertinence et de fiabilité ; paramètres et règles appliquées ; sorties et traces ; limites, exceptions et conditions d'arrêt ; cas fictifs rejoués avec résultats attendus et obtenus. Elle distingue la préparation automatique, la validation attendue et le jugement humain. La fiche documente l'outil ; le CAC documente son appréciation et l'usage dans la mission. Les exigences complémentaires dépendent de la procédure, notamment la NEP 330 révisée pour la réponse aux risques. Cette fiche et un jeu d'essai ne garantissent jamais la conformité du dossier aux NEP.
 
 ## 7. Message par page
 
 | Page | Rôle | Requête visée | H1 |
 |---|---|---|---|
 | `/` | l'angle et la promesse | automatisation IA cabinet comptable | Votre cabinet tourne sur un savoir-faire que personne n'a écrit. |
+| `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Vos mandats avancent. Votre équipe garde le jugement. (direction de copy ; H1 intent-first arrêté par E1 après mesure) |
 | `/automatisation-cabinet-comptable` | le service, le périmètre, le prix | automatisation sur mesure cabinet comptable | Toute tâche répétitive de votre cabinet, écrite puis automatisée. |
 | `/methode` | la preuve de méthode | comment se déroule une mission | Observer. Écrire. Éprouver. Livrer. |
 | `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Ce que nous garantissons, avant même de commencer. |
@@ -88,8 +110,12 @@ Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête 
 
 ### Sources publiques, contrôles internes
 
-Sur toutes les pages publiques (guides, blog, glossaire, outils et pages légales), citer les sources
-utiles sous une forme éditoriale compacte : éditeur, titre et lien. Ne pas afficher les dates de
+Décision de Kevin du 06/10/2026 : aucune section « Sources », « Source » ni « Expérience de première
+main » sur le site. Une source se cite par un lien posé sur le mot ou le chiffre qu'elle établit, dans
+le paragraphe même. Le lien porte le texte de la phrase, jamais « source » ni « ici ».
+
+Sur toutes les pages publiques (guides, blog, glossaire, outils et pages légales), citer ainsi les
+sources utiles, dans le texte. Ne pas afficher les dates de
 consultation/vérification, les lignes administratives « source vérifiée »/« sources consultées »
 ni les mentions de capture datée. Les preuves, citations et dates de contrôle restent dans les
 données et dossiers internes ; leurs verdicts ne changent pas pour un retrait de présentation.
@@ -138,14 +164,31 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 - **On ne dit jamais** : module, complément Excel ou Memlia (verrouillés par `tests/proof/test_positioning.py`), plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution, gain chiffré, « logiciel » pour désigner Memlia, mots de processus interne (revue métier, fact-check, non attesté : verrouillés par `test_build.py`).
 - **Définir à la première apparition** : recette, fail-closed, jeu d'essai fictif, agrégat non nominatif.
 
+### Vocabulaire CAC : relier les normes aux mots de l'équipe
+
+| Terme normatif ou précis | Terme de pratique à relier à la première apparition |
+|---|---|
+| demande de confirmation des tiers | circularisation (NEP 505) |
+| procédures analytiques | revue analytique (NEP 315 § 15, NEP 520) |
+| déclarations écrites de la direction | lettre d'affirmation (NEP 580) |
+| sélection des éléments à contrôler, sondage | échantillonnage ; la méthode et les paramètres restent explicites |
+| seuil de signification, seuil de planification | matérialité, à préciser plutôt qu'à employer seule |
+| éléments collectés, caractère probant, anomalies significatives, assertions | une sortie de calcul n'est pas à elle seule un élément suffisant et approprié |
+| outils et techniques automatisés | préparation des analyses de données ; distinguer du logiciel de dossier d'audit |
+| certification des comptes, mandat, plan de mission, programme de travail | commissariat aux comptes ; jamais expertise comptable pour désigner la mission CAC |
+| services autres que la certification des comptes (SACC) | prestations dont le périmètre et l'indépendance sont appréciés séparément |
+
+**Interdits CAC** : « audit automatisé », « conforme aux NEP » et variantes (« conforme NEP »), « validé H2A/CNCC », « passe le contrôle H2A », « archivage conforme » sans démonstration. Aucun nom de service, outil ou slogan ressemblant au titre protégé de commissaire aux comptes ou créant une confusion (L.821-7) : « CAC virtuel », « commissaire aux comptes IA », « votre CAC augmenté ». Le titre désigne le lecteur qualifié, jamais Memlia. La préparation d'un FEC, d'une confirmation ou d'une analyse ne vaut ni contrôle d'audit complet, ni conclusion, ni opinion. Aucun gain chiffré CAC tiré d'une étude générale sur l'IA. Les sujets LCB-FT et durabilité exigent leur périmètre et leurs sources propres ; aucun outil ne décide d'une déclaration à TRACFIN.
+
 ## 10. Preuves autorisées et garde-fous
 
-Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; il n'est pas expert-comptable et le site ne le laisse pas croire (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
+Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
 
-Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (séparation entre texte visible, mentions légales et Organization), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync`, la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) et `npm run build`.
+Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (séparation entre texte visible, mentions légales et Organization), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync` et la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) ; la construction complète est faite par la CI GitHub (« Repository gates »), pas sur le Mac.
 
 ## Changelog
 
+- v5 (2026-10-06) — Ouvert la charte au commissariat aux comptes : personas, vocabulaire, secret, indépendance, responsabilité, documentation et fiche outil ; séparé l'accueil CAC de l'accueil EC sans promettre de fonctions déjà livrées.
 - v4 (2026-09-21) — Réservé l'identité juridique aux mentions légales et au schéma Organization ; À propos revient à la valeur produit après mesure du bloc registre hors contexte.
 - v3 (2026-09-17) — Repositionné Memlia sur le savoir-faire non écrit du cabinet, la règle écrite et la prise en charge entière d'une tâche répétitive.
 
@@ -155,6 +198,9 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 
 ## 12. Sources
 
+- Programme CAC décidé par Kevin le 05/10/2026 : `~/memlia-vault/10-memlia/chantiers/cac-site-niveau-superieur/plan.md` (B1), recherche CAC du 05/10 (pièges et points non vérifiés) ; `~/dev/interne/memlia-rdv/docs/recherche/2026-10-05-cac-*.md` et `src/donnees/cac/textes.ts` pour les rôles et gestes, jamais comme preuve réglementaire.
+- [H2A, NEP 315 révisée](https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/) : § 14 (définition), § 46 (appréciation du fonctionnement et des informations), § 48 d) (documentation). [CNCC, NEP 230](https://doc.cncc.fr/docs/nep-230-documentation-de-laudit-x), notamment § 04 (procédures, éléments testés, résultats, conclusions).
+- [CNCC, Code de commerce, partie législative, numérotation 2024](https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024) : L.821-7, L.821-27, L.821-31, L.821-35, L.821-37, L.821-53 ; [code de déontologie, mars 2026](https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026), art. 5, 9, 10, 18 et 19. Toute publication réglementée recontrôle la version applicable ; les points non vérifiés de la recherche ne deviennent pas des affirmations publiques.
 - Décision de Kevin du 17/09/2026 : l'angle « savoir-faire que personne n'a écrit », l'ambition sur la proposition de valeur, le retrait de tout ce qui dessert.
 - Décision de Kevin du 17/09/2026 (soir) : « fais pareil pour les articles du blog » ; les six articles réécrits selon le §7 bis et republiés par la forge, les trois articles antérieurs à la v3 compris.
 - v2 du 15/09/2026 (carte t_630c4a13), coffre 10-memlia/00-socle.md, marketing/positionnement-memlia-automatisation-ia.md, marketing/seo/20-voix-client-vocabulaire.md.

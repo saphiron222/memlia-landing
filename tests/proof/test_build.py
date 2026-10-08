@@ -46,6 +46,14 @@ BLOG_RUBRIQUES = {
     'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
     'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
     'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
+    'utiliser-chatgpt-cabinet-comptable': 'ia-cabinet-comptable',
+    'logiciel-ia-comptabilite': 'ia-cabinet-comptable',
+    'prompt-chatgpt-expert-comptable': 'ia-cabinet-comptable',
+    'ia-comptabilite-confidentialite-donnees': 'ia-cabinet-comptable',
+    'verifier-reponse-ia-comptabilite': 'ia-cabinet-comptable',
+    'automatiser-avec-ia-sans-changer-logiciel': 'ia-cabinet-comptable',
+    'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': 'ia-cabinet-comptable',
+    'tests-verts-et-regle-des-trois-passes': 'ia-cabinet-comptable',
 }
 
 
@@ -125,7 +133,7 @@ def minimum_word_count(article):
     return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
 
 def rendered_body_word_count(article):
-    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)',
                      article.read_text(), re.S).group(1)
     return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
 
@@ -422,6 +430,7 @@ class BuildProof(unittest.TestCase):
                 '43-outil-bareme-cac.webp',
                 '41-outil-signification.webp',
                 '44-outil-checklist-pieces.webp',
+                '44-service-entrees-sorties-salaries.webp',
             ]),
         )
 
@@ -543,7 +552,13 @@ class BuildProof(unittest.TestCase):
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
-                self.assertRegex(article.read_text(), r'<h2\b[^>]*id="sources-titre"[^>]*>Sources</h2>')
+                # Décision de Kevin du 06/10/2026 : les sources se citent dans le texte ; une section « Sources »
+                # ne reste que pour celles qui n'y sont pas encore, jamais en doublon du corps.
+                rendu = article.read_text()
+                corps = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)', rendu, re.S).group(1)
+                residuelle = re.search(r'<section class="article-sources".*?</section>', rendu, re.S)
+                for href in re.findall(r'href="(https?://[^"]+)"', residuelle.group(0) if residuelle else ''):
+                    self.assertNotIn(href, corps, article.name)
                 self.assertEqual(unsafe_external_links(article), [], article.name)
 
     def test_rss_feed_matches_articles(self):
