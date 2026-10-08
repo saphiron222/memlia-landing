@@ -22,17 +22,19 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Lecture regroupée et hubs directs sur desktop ; destinations à plat sur mobile.
+      // Lecture regroupée et hubs directs sur desktop ; destinations dans le panneau sur mobile.
       await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 5 : 4);
       if (width < 1024) {
-        const liens = page.locator('[data-mobile-visible] a');
-        await expect(page.locator('[data-mobile-visible]'), route).toBeVisible();
+        await page.locator('[data-burger]').click();
+        const liens = page.locator('#menu-mobile .nav-mobile-lien');
+        await expect(page.locator('#menu-mobile'), route).toBeVisible();
         await expect(liens, route).toHaveText(DESTINATIONS);
         for (const lien of await liens.all()) {
           const boite = await lien.boundingBox();
           expect(boite?.height, `${route} à ${width}px`).toBeGreaterThanOrEqual(44);
         }
-        await expect(page.locator('[data-burger]'), route).toBeHidden();
+        await expect(page.locator('[data-burger]'), route).toBeVisible();
+        await page.keyboard.press('Escape');
         await expect(page.locator('#menu-mobile'), route).toBeHidden();
       } else {
         await expect(page.locator('.nav-centre'), route).toBeVisible();

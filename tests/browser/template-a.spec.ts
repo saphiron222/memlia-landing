@@ -10,7 +10,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       await page.evaluate(() => document.fonts.ready);
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       if (width < 1024) {
-        const rects = await page.locator('[data-mobile-visible] a').evaluateAll((links) => links.map((link) => {
+        await page.locator('[data-burger]').click();
+        const rects = await page.locator('#menu-mobile .nav-mobile-lien').evaluateAll((links) => links.map((link) => {
           const r = link.getBoundingClientRect();
           return { left: r.left, right: r.right, top: r.top, height: r.height, width: r.width };
         }));
@@ -20,15 +21,16 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
           expect(r.height).toBeGreaterThanOrEqual(44);
           expect(r.width).toBeGreaterThanOrEqual(44);
         }
-        // Les destinations v3 restent visibles : les hubs occupent une troisième rangée à 320px.
-        if (width === 320) expect(new Set(rects.map((r) => r.top)).size).toBe(3);
-        const links = page.locator('[data-mobile-visible] a');
+        const links = page.locator('#menu-mobile .nav-mobile-lien');
+        expect(await links.count()).toBeGreaterThan(0);
         await links.first().focus();
         await page.keyboard.press('Tab');
         await expect(links.nth(1)).toBeFocused();
+        await page.keyboard.press('Escape');
+        await expect(page.locator('#menu-mobile')).toBeHidden();
       } else {
         await expect(page.locator('.nav-centre')).toBeVisible();
-        await expect(page.locator('[data-mobile-visible]')).toBeHidden();
+        await expect(page.locator('[data-burger]')).toBeHidden();
       }
       await expect(page.locator('[data-tool-section="hero"] img')).toHaveAttribute('loading', 'eager');
       await expect(page.locator('[data-tool-section="hero"] img')).toHaveAttribute('fetchpriority', 'high');

@@ -44,7 +44,8 @@ for (const width of [375, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const path of ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits', '/blog']) {
       await page.goto(path);
-      const nav = page.locator(width < 1024 ? '[data-mobile-visible]' : '.nav-centre');
+      if (width < 1024) await page.locator('[data-burger]').click();
+      const nav = page.locator(width < 1024 ? '#menu-mobile' : '.nav-centre');
       await expect(nav.locator(`a[href="${path}"]`)).toHaveAttribute('aria-current', 'page');
       for (const href of ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits', '/blog']) {
         await expect(nav.locator(`a[href="${href}"]`)).toBeVisible();
@@ -83,7 +84,8 @@ for (const width of [375, 1024, 1440]) {
       await page.locator('[aria-controls="sous-menu-cabinets"]').focus();
       await page.keyboard.press('Enter');
     }
-    const nav = page.locator(width < 1024 ? '[data-mobile-visible]' : '.nav-centre');
+    if (width < 1024) await page.locator('[data-burger]').click();
+    const nav = page.locator(width < 1024 ? '#menu-mobile' : '.nav-centre');
     await nav.getByRole('link', { name: 'Commissaires aux comptes', exact: true }).press('Enter');
     await expect(page).toHaveURL(/\/commissaires-aux-comptes$/);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
@@ -91,6 +93,7 @@ for (const width of [375, 1024, 1440]) {
       await page.locator('[aria-controls="sous-menu-lecture"]').focus();
       await page.keyboard.press('Enter');
     }
+    if (width < 1024) await page.locator('[data-burger]').click();
     for (const id of ['usages', 'methode', 'preuves', 'questions']) {
       await expect(nav.locator(`a[href="/commissaires-aux-comptes#${id}"]`)).toBeVisible();
       await expect(page.locator(`#${id}`)).toHaveCount(1);
