@@ -22,9 +22,9 @@ const noeuds = [
   serviceNode(),
 ];
 const requis: { picto: NomPicto; titre: string; texte: string }[] = [
-  { picto: 'feuilles', titre: 'Les formats réels', texte: 'Pas le format théorique de votre logiciel, celui de vos fichiers.' },
+  { picto: 'feuilles', titre: 'Les formats réels', texte: 'Les colonnes, pièces et exports que votre équipe utilise pour cette tâche.' },
   { picto: 'bouclier', titre: 'Les accès', texte: 'Ce que l’automatisation doit lire, ce qu’elle peut écrire, et où s’arrête son périmètre.' },
-  { picto: 'limites', titre: 'Les cas limites', texte: 'Le dossier atypique, le mois particulier, la reprise d’un exercice. Ce sont eux qui font échouer une automatisation naïve.' },
+  { picto: 'limites', titre: 'Les cas limites', texte: 'Une pièce absente ou un dossier atypique : le cas qui doit s’arrêter et la personne qui décide de la suite.' },
   { picto: 'grille', titre: 'L’environnement', texte: 'La version de vos outils, les postes concernés, qui utilisera quoi.' },
 ];
 const renvois = [
@@ -57,7 +57,7 @@ const outils = [
 ];
 const appel = {
   titre: 'Décrivez le geste qui revient.',
-  texte: 'Nous regardons ensemble s’il se cadre, ce qu’il faudrait pour le prendre en charge, et à quel prix. Rien à envoyer, aucun engagement.',
+  texte: 'Nous partons de votre description pour délimiter la tâche, le résultat à livrer et ce qui reste à décider. Le périmètre et le prix se précisent avant la construction.',
   points: ['Le geste : ce que quelqu’un refait chaque mois.', 'Les outils : d’où viennent les fichiers, où va le résultat.', 'Le résultat attendu : ce qui devrait exister à la fin.'],
 };
 ---
@@ -67,8 +67,8 @@ const appel = {
     <ProofRow id="01-flux">
       <div class="pv-copy rv">
         <h2 id="situation">Le geste que quelqu’un refait chaque mois</h2>
-        <p>Recopier des montants d’un export vers un classeur. Réclamer les mêmes pièces aux mêmes clients. Comparer deux états qui devraient concorder. Le geste est maîtrisé, il revient chaque mois, et il prend le temps de la personne la plus qualifiée pour autre chose.</p>
-        <p class="texte-2">Ce n’est ni un problème de compétence ni un outil qui manque. C’est un savoir-faire qui vit dans la tête d’un collaborateur et dans les habitudes du cabinet, que personne n’a écrit, et qui part le jour où il part.</p>
+        <p>Recopier des montants d’un export vers un classeur. Réclamer les mêmes pièces aux mêmes clients. Comparer deux états qui devraient concorder. Votre collaborateur connaît le geste et les exceptions. Il recommence au dossier suivant.</p>
+        <p class="texte-2">Nous écrivons avec lui les entrées, les étapes et le résultat attendu. La règle devient relisible par l’équipe. Nous prenons en charge la mécanique qui reste à faire entre vos outils, jusqu’à la proposition que vous validez.</p>
         <p class="texte-2">Pour une première règle concrète, vous pouvez <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> sans céder la validation des écritures.</p>
       </div>
     </ProofRow>
@@ -77,7 +77,7 @@ const appel = {
   <section class="pv" aria-labelledby="prepare">
     <div class="tete rv">
       <h2 id="prepare">La règle écrite, de la frontière au jeu d’essai</h2>
-      <p>Nous transformons le savoir-faire du cabinet en une règle relisible, puis en automatisation dans vos outils. Quatre parties ne changent jamais.</p>
+      <p class="texte-2 lecture">La règle décrit le résultat attendu, les cas couverts et les raisons de s’arrêter. Vous pouvez la relire avant que nous construisions l’automatisation. Elle comporte quatre parties.</p>
     </div>
     <ul class="lignes rv">
       <li class="ligne"><h3 class="ligne-libelle">La frontière</h3><p class="ligne-texte">Trois colonnes fixent ce qui se prépare seul, ce qui attend une validation et ce qui reste humain.</p></li>
@@ -92,9 +92,9 @@ const appel = {
       <div class="pv-copy rv">
         <h2 id="cabinet">Que garde le cabinet quand une tâche est automatisée ?</h2>
         <p><strong>La décision. Toujours.</strong></p>
-        <p>Une proposition qui vous semble juste se valide. Une proposition qui vous surprend s’examine. Et lorsque la règle ne tranche pas — une donnée manque, une exception n’était pas prévue, deux lectures sont possibles — l’automatisation s’arrête et vous le dit, plutôt que d’écrire quelque chose de faux.</p>
+        <p>Votre équipe contrôle la proposition et décide de la suite. Une donnée manque ou une exception sort de la règle : la préparation s’arrête sur ce cas. Le motif reste visible pour le collaborateur qui le reprend.</p>
         <p>Cette frontière reste visible lorsque vous choisissez de <a href="/automatisation/rapprochement-bancaire">confier la préparation du rapprochement bancaire</a> : les appariements se proposent, les écarts restent à décider.</p>
-        <p class="texte-2">C’est le point sur lequel nous ne transigeons pas. Une automatisation qui décide seule dans le doute est plus coûteuse que le geste manuel qu’elle remplace.</p>
+        <p class="texte-2">La règle sépare les propositions que nous générons des saisies de votre équipe. Nous pouvons régénérer les premières ; vos commentaires, corrections et décisions restent les vôtres.</p>
       </div>
     </ProofRow>
   </section>
@@ -103,8 +103,8 @@ const appel = {
     <ProofRow id="v2/01-qualification">
       <div class="pv-copy rv">
         <h2 id="requis">Comment savoir si une tâche est prête à être automatisée ?</h2>
-        <p>Quatre points, sur vos fichiers réels, pas sur la théorie du logiciel.</p>
-        <p class="texte-2">Cette qualification est un travail, pas une formalité. Elle décide si la tâche est automatisable, et à quel coût.</p>
+        <p>Nous vérifions les formats utilisés, les droits nécessaires et les exceptions avec la personne qui réalise la tâche.</p>
+        <p class="texte-2">Avant tout accès aux dossiers, nous précisons les données nécessaires, qui peut les lire et où elles sont traitées. Les premiers essais utilisent un jeu d’essai fictif : des données inventées pour tester la règle.</p>
       </div>
     </ProofRow>
     <ul class="lignes rv">
@@ -125,9 +125,9 @@ const appel = {
     <ProofRow id="07-livrer">
       <div class="pv-copy rv">
         <h2 id="livre">Que livre Memlia pour une tâche automatisée ?</h2>
-        <p>Un périmètre écrit, des critères de recette, et une automatisation qui les satisfait sur vos fichiers.</p>
-        <p>Après les essais fictifs, la recette se joue dans l’environnement autorisé du cabinet, sur les cas et fichiers convenus : ceux qui doivent aboutir, et ceux qui doivent échouer. Un refus attendu qui ne se produit pas est un défaut au même titre qu’un résultat faux.</p>
-        <p class="texte-2">La maintenance se traite au contrat, pas en supplément implicite : vos règles évoluent, vos formats aussi.</p>
+        <p>Vous recevez la règle écrite, l’automatisation dans l’environnement convenu et les résultats des essais. La règle précise les entrées, les propositions produites, les validations et les conditions d’arrêt.</p>
+        <p>La recette est la vérification par votre équipe du résultat livré, sur les cas convenus. Après les essais fictifs, elle se joue dans l’environnement autorisé du cabinet. Nous rejouons les cas qui doivent aboutir et ceux qui doivent s’arrêter. Un traitement qui continue alors qu’il devait s’arrêter est un défaut au même titre qu’un résultat faux.</p>
+        <p class="texte-2">Les conditions de maintenance, de support et d’évolution sont écrites au devis. Un format ou une règle change : nous distinguons la correction couverte de l’évolution à chiffrer, puis les cas concernés sont rejoués.</p>
       </div>
     </ProofRow>
   </section>
@@ -135,7 +135,8 @@ const appel = {
   <section class="pv" aria-labelledby="perimetre">
     <div class="tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
-      <p>Une frontière par tâche, en partant de ce que vos logiciels ne font pas : le geste refait dans Excel, dans les e-mails ou entre deux outils. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+      <p class="texte-2 lecture">Partons d’une tâche : rassembler les pièces manquantes, préparer des écarts entre deux états ou suivre une échéance. Nous écrivons ce qui déclenche le traitement, la proposition attendue et ce que votre équipe doit décider. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
+      <p class="texte-2 lecture">Pour le commissariat aux comptes, nous préparons aussi les demandes de documents, le suivi des réponses et les comparaisons entre exercices. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission.</p>
     </div>
     <dl class="lignes perimetre-poles rv">
       {poles.map((pole) => (
@@ -166,7 +167,8 @@ const appel = {
     <ProofRow id="v2/03-devis">
       <div class="pv-copy rv">
         <h2 id="prix">Vous payez une tâche prise en charge, pas des sièges.</h2>
-        <p>Le devis dépend de la complexité de la tâche : règles à appliquer, formats à traiter, exceptions et contraintes de votre environnement. Il précise le périmètre, les critères de recette et les conditions de maintenance. <strong>Il n’est jamais multiplié par le nombre de postes.</strong></p>
+        <p>Le devis dépend des sources à relier, des règles à appliquer, des exceptions et des validations. Un export stable à comparer et plusieurs formats à rapprocher demandent des travaux différents.</p>
+        <p>Le devis précise le résultat livré, les cas couverts et les critères de recette. Il écrit aussi la maintenance, le support et les conditions d’évolution. <strong>Il n’est jamais multiplié par le nombre de postes.</strong></p>
       </div>
     </ProofRow>
   </section>
@@ -175,7 +177,8 @@ const appel = {
     <ProofRow id="08-integration">
       <div class="pv-copy rv">
         <h2 id="outils">Faut-il changer d’outil pour automatiser une tâche ?</h2>
-        <p>Un classeur, un export ou un logiciel métier peut être le point de départ. Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche. <strong>Nous ne promettons rien que nous n’ayons vérifié.</strong></p>
+        <p>Nous commençons par ce que votre logiciel fait déjà dans la version et le circuit que vous utilisez. Nous conservons ces fonctions. La tâche confiée porte sur les gestes qui restent : reprendre un export, rassembler les pièces reçues par courriel ou préparer les exceptions entre deux outils.</p>
+        <p class="texte-2">Nous vérifions les formats, les accès et le résultat attendu avant de nous engager. Le devis nomme l’environnement pris en charge. Un guide publié sur un logiciel ne démontre pas la compatibilité avec toutes ses versions.</p>
         <p class="texte-2">La même vérification précède le choix de <a href="/automatisation/factures-fournisseurs">confier le flux des factures fournisseurs</a> : réception, proposition et exceptions doivent rester lisibles dans le circuit existant.</p>
       </div>
     </ProofRow>
@@ -186,7 +189,7 @@ const appel = {
   <section class="pv" aria-labelledby="avant">
     <div class="tete rv">
       <h2 id="avant">Pour aller plus loin</h2>
-      <p>La carte des tâches, nos méthodes publiées, un retour d’expérience et nos engagements.</p>
+      <p class="texte-2">Choisir une tâche, lire ses contrôles et comprendre nos engagements.</p>
     </div>
     <Renvois items={renvois} />
   </section>

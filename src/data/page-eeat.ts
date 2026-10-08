@@ -91,7 +91,18 @@ export const SERVICE_EEAT = {
 
 export const COMMERCIAL_EEAT = {
   '/automatisation-cabinet-comptable': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-06', sources: [sources.principesRgpd],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-08',
+    sources: [
+      { ...sources.principesRgpd, consulteLe: '2026-10-08' },
+      {
+        editeur: 'H2A',
+        titre: 'NEP 200 — Principes applicables à l’audit des comptes',
+        url: 'https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/',
+        consulteLe: '2026-10-08',
+        preuve: 'Les paragraphes 01, 06 et 07 réservent l’opinion, l’appréciation des éléments et le choix des procédures au commissaire aux comptes. Ils ne valident pas une automatisation Memlia.',
+        mot: 'la sélection des travaux, leur appréciation et l’opinion',
+      },
+    ],
   },
   '/methode': {
     auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-04', sources: [],
