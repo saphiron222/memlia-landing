@@ -59,6 +59,9 @@ jobs:
       - name: Exercise guide forge and proof geometry in Chromium
         run: npm run test:guide-forge && npm run test:guide-render
 
+      - name: Exercise CAC proof geometry in Chromium
+        run: node --test tests/scripts/accueil-cac-geometry.test.mjs
+
       - name: Build and run deterministic gates
         run: npm run build
         env:

@@ -3,9 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
-import { chromium } from '@playwright/test';
-import { pathToFileURL } from 'node:url';
-import { resolve } from 'node:path';
+
 import { population, cloture, regle, selection, confirmations, immobilisations } from '../../docs/design/accueil-cac-proofs/fixture.mjs';
 import { html } from '../../docs/design/accueil-cac-proofs/build-source.mjs';
 import { MEDIAS_CAC, CONTENU_CAC } from '../../src/data/accueil/cac.ts';
@@ -29,21 +27,7 @@ test('la fixture rejoue les résultats affichés et la source ne dérive pas', (
   assert.equal(confirmations[0].reponse - confirmations[0].balance, -2000);
   assert.deepEqual(immobilisations.map(row => row.client - row.balance), [0, 0, 500]);
 });
-test('les panneaux ne chevauchent pas le pied de chaque cadre', async () => {
-  const browser = await chromium.launch({ channel: 'chromium' });
-  try {
-    const page = await browser.newPage({ viewport: { width: 1720, height: 1000 } });
-    await page.goto(pathToFileURL(resolve(source, 'index.html')).href);
-    await page.evaluate(() => document.fonts.ready);
-    for (const frame of await page.locator('.frame').all()) {
-      const foot = await frame.locator('.foot').boundingBox();
-      for (const panel of await frame.locator('.workspace > *, .panel').all()) {
-        const box = await panel.boundingBox();
-        assert.ok(box.y + box.height <= foot.y, await frame.getAttribute('id'));
-      }
-    }
-  } finally { await browser.close(); }
-});
+
 test('les trois références CAC ont un registre et des actifs propres', async () => {
   for (const id of Object.values(MEDIAS_CAC)) {
     assert.ok(registry.includes(`'${id}'`), id);
