@@ -59,6 +59,7 @@ test('les neuf pages hors blog gardent un Person relié, sans signature, dates v
 // Oracle indépendant de page-eeat.ts : chaque source publique est un lien posé sur ces mots-là du texte rendu.
 const citations = [
   { route: '/automatisation/paie', url: 'https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/', mot: 'tout dépôt' },
+  { route: '/automatisation/entrees-sorties-salaries', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', mot: 'mySilae' },
   { route: '/automatisation/saisie-comptable', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31808', mot: 'les champs' },
   { route: '/automatisation/rapprochement-bancaire', url: 'https://www.anc.gouv.fr/plan-comptable-general-0', mot: 'des écritures' },
   { route: '/automatisation/notes-de-frais', url: 'https://www.service-public.fr/particuliers/vosdroits/F19846', mot: 'un justificatif' },

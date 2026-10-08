@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { CAC_PUBLIE, DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
 
 /**
  * Les six largeurs de la consigne, sur les pages du site v2.
@@ -21,13 +22,12 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Les quatre entrées desktop restent dans le document ; sous 1024 px, les quatre destinations
-      // à plat sont immédiatement visibles dans la barre mobile, sans menu à ouvrir.
-      await expect(page.locator('.nav-entree'), route).toHaveCount(4);
+      // Lecture regroupée et hubs directs sur desktop ; destinations à plat sur mobile.
+      await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 5 : 4);
       if (width < 1024) {
         const liens = page.locator('[data-mobile-visible] a');
         await expect(page.locator('[data-mobile-visible]'), route).toBeVisible();
-        await expect(liens, route).toHaveText(['Tâches', 'Méthode', 'Contrôle humain', 'Questions']);
+        await expect(liens, route).toHaveText(DESTINATIONS);
         for (const lien of await liens.all()) {
           const boite = await lien.boundingBox();
           expect(boite?.height, `${route} à ${width}px`).toBeGreaterThanOrEqual(44);
@@ -59,7 +59,7 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      // Les quatre entrées publiées sont des liens vers les sections de l'accueil.
+      // Les trois hubs sont des liens directs ; la lecture est un bouton de sous-menu.
       nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {
@@ -73,8 +73,8 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
     expect(rendu.canonical, `${route} canonical`).toBe(servi.canonical);
     expect(rendu.h1, `${route} h1`).toBe(servi.h1);
     expect(rendu.robots, `${route} robots`).toBe(servi.robots);
-    // Les quatre ancres publiées sont identiques dans le HTML servi et dans le DOM rendu.
+    // Les hubs publiés sont identiques dans le HTML servi et dans le DOM rendu.
     expect(rendu.nav, `${route} entrées de navigation`).toEqual(servi.nav);
-    expect(rendu.nav.length, `${route} entrées de navigation`).toBe(4);
+    expect(rendu.nav, `${route} hubs directs`).toEqual(HREFS.slice(-3));
   }
 });
