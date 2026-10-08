@@ -22,6 +22,33 @@ concurrency:
 # contrôle requis par la protection de main, réussit seulement si tous ont
 # réussi. Règle tenue par tests/scripts/ci-parallele.test.mjs.
 jobs:
+  glossary-render-repair:
+    name: Collect integrated glossary render
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Render and strip glossary
+        run: |
+          npx astro build
+          node scripts/strip-briefs.mjs
+        env:
+          CF_PAGES: "1"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: integrated-glossary-render
+          path: dist/glossaire.html
+          if-no-files-found: error
+          retention-days: 1
+
   portes:
     name: Portes déterministes
     runs-on: ubuntu-latest
