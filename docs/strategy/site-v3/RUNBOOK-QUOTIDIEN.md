@@ -368,7 +368,9 @@ Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, 
 à jour, synchronise `pages-lastmod.json`, rescelle le glossaire (avec reconstruction du
 rendu après la synchronisation), réaffirme la revue métier existante, puis contrôle
 le registre et exécute l'audit QA Ressources. Chaque échec arrête la chaîne ; cette
-commande ne remplace pas `npm run build` ni la revue QA de la PR.
+commande ne remplace ni la construction complète assurée par la CI GitHub
+(« Repository gates »), ni la revue QA de la PR. Ne pas rejouer le build complet
+sur le Mac après la régénération.
 
 Après `git fetch origin` puis `git merge origin/main`, si seuls les fichiers générés
 ci-dessous sont en conflit, prendre **la version de main**, jamais assembler leurs
@@ -377,7 +379,7 @@ empreintes à la main (`--theirs` signifie main uniquement dans ce merge, pas da
 ```bash
 git restore --source=origin/main --staged --worktree -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
 npm run regen:generated
-npm run build
+# La construction complète sera vérifiée par la CI GitHub après le push.
 git diff --check
 git add -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
 ```
@@ -404,7 +406,7 @@ npm run regen:generated
 Si `publier` ou le build échoue, relever la cause et arrêter sans retirer de porte : vérifier les frontmatters non-brouillons de tout le lot, les entrées anticipées du registre et leurs provenances, `llms.txt`, le ledger lastmod et les sceaux Ressources. Ne jamais modifier `PUBLIC_ARTICLES` (inventaire dynamique) ni réécrire le corps signé pour obtenir un build vert. Rejouer la séquence et la QA sur les octets finaux avant livraison. Ensuite :
 
 ```bash
-npm run build
+# La construction complète sera vérifiée par la CI GitHub après le push.
 git add -- editorial/recettes/<slug-1> editorial/recettes/<slug-2> editorial/recettes/<slug-3> editorial/articles/<slug-1> editorial/articles/<slug-2> editorial/articles/<slug-3> src/content/blog/<slug-1>.md src/content/blog/<slug-2>.md src/content/blog/<slug-3>.md docs/strategy/site-v3/mesures/registre-requetes.json # inclure aussi explicitement les autres fichiers réellement modifiés du lot, dont le pilier s'il a été revu
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-commit --base "$BASE_SHA" || exit 1
 # PR_BRANCH est déjà la branche isolée créée au §1 ; ne pas changer de base.
