@@ -27,6 +27,8 @@ const design = serviceDesignFor(entree.id);
 const eeat = eeatService(entree.id);
 const socialImage = entree.id === 'entrees-sorties-salaries'
   ? { url: `${SITE.url}/proofs/v2/og/44-service-entrees-sorties-salaries.webp`, width: 1200, height: 630, alt: 'Sept annonces fictives : propositions à valider, arrêts et circuit existant conservé.' }
+  : entree.id === 'secretariat-juridique'
+    ? { url: `${SITE.url}/proofs/v2/og/46-service-secretariat-juridique.webp`, width: 1200, height: 630, alt: 'Échéances fictives : suivi résiduel, brouillon à valider, circuit couvert exclu et date inconnue arrêtée.' }
   : undefined;
 const auteur = auteurPar(eeat.auteur);
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
