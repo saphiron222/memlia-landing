@@ -46,6 +46,17 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'checklist-pieces-comptables', categorie: 'preparer', statut: 'disponible',
+    h1: 'Checklist des pièces comptables à demander', title: 'Checklist des pièces comptables à demander | Memlia',
+    description: 'Préparez une checklist personnalisable, suivez les pièces reçues et générez la demande des seuls documents manquants, sans inscription.',
+    promesse: { entree: 'Période, familles choisies, pièces libres et quatre états déclarés', resultat: 'Checklist éditable, demande exacte, impression et reprise CSV ou JSON' },
+    limites: ['Trame opérationnelle choisie et modifiable : aucune obligation légale ni régime fiscal déduit.', 'Reçu, Manquant, Non applicable et À clarifier restent distincts ; un état inconnu ne devient jamais manquant.', 'Le cabinet valide la demande, les pièces utiles et l’échéance organisationnelle. Aucun envoi ni écriture dans un dossier métier.', '100 éléments et 1 Mo par fichier de reprise ; version, format ou état inattendu : import entier refusé, saisie conservée.'],
+    mentionLocale: 'Tout reste en mémoire dans cet onglet, sans envoi ni stockage navigateur. Exportez volontairement votre JSON ou CSV pour reprendre après fermeture. Aucun document comptable ni pièce jointe.',
+    proof: 'v2/44-outil-checklist-pieces', zoneLarge: true,
+    source: { titre: 'Convention opérationnelle Memlia', nom: 'Méthode Memlia — écrire une règle et ses limites', url: '/methode', extrait: 'La trame suit les familles choisies et les états déclarés, sans sélectionner des obligations. Seules les pièces marquées manquantes entrent dans la demande ; les inconnues restent à clarifier.', verifieeLe: '7 octobre 2026' },
+    articleExact: '/blog/automatiser-la-relance-des-pieces-clients', pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
     h1: 'Barème d’heures du commissaire aux comptes : calcul et limites',
     title: 'Barème heures commissaire aux comptes | Memlia',
