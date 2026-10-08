@@ -26,6 +26,19 @@ RUBRIQUES = {
             "automatiser-la-relance-des-pieces-clients",
         },
     },
+    "ia-cabinet-comptable": {
+        "label": "IA en cabinet",
+        "articles": {
+            "utiliser-chatgpt-cabinet-comptable",
+            "logiciel-ia-comptabilite",
+            "prompt-chatgpt-expert-comptable",
+            "ia-comptabilite-confidentialite-donnees",
+            "verifier-reponse-ia-comptabilite",
+            "automatiser-avec-ia-sans-changer-logiciel",
+            "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+            "tests-verts-et-regle-des-trois-passes",
+        },
+    },
 }
 HORS_RUBRIQUE = {
     "automatiser-un-cabinet-comptable-la-carte-des-taches",

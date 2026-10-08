@@ -401,10 +401,14 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     border-bottom: 1px solid var(--ligne-douce);
     background: var(--surface-feuille);
   }
+  /* Navigation v3 : de sept à neuf destinations, qui passent à la ligne plutôt que de déborder
+     (navigation-mobile-visible.spec). Le retrait du conteneur compense la marge des liens : le
+     texte reste aligné sur le contenu de la page (système de page). */
   .nav-mobile-visible-liste {
     display: flex;
     flex-wrap: wrap;
     gap: 4px;
+    padding-inline: calc(var(--marge-page) - 10px);
   }
   .nav-mobile-visible a {
     display: inline-flex;
@@ -418,6 +422,15 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   }
   .nav-mobile-visible a[aria-current] {
     color: var(--accent-texte);
+  }
+  @media (max-width: 22.49rem) {
+    /* Sous 360 px, le bouton garde son libellé entier et laisse sa flèche : la barre tient. */
+    .nav-principal {
+      padding-inline: 10px;
+    }
+    .nav-principal :global(svg) {
+      display: none;
+    }
   }
   @media (hover: hover) {
 

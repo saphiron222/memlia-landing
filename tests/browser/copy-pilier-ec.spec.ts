@@ -10,7 +10,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${route}`);
     await expect(page.locator('main')).not.toContainText('n’est pas ouvert à la prise en charge');
     await expect(page.locator('#prepare').locator('..')).toContainText('quatre parties');
-    await expect(page.locator('.pv-bande-liste h3')).toHaveText(['La frontière', 'La proposition', 'L’arrêt', 'Le jeu d’essai']);
+    await expect(page.locator('section[aria-labelledby="prepare"] h3')).toHaveText(['La frontière', 'La proposition', 'L’arrêt', 'Le jeu d’essai']);
     const body = page.locator('main');
     for (const phrase of [
       'Avant tout accès aux dossiers', 'des données inventées pour tester la règle',

@@ -1,6 +1,7 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Service from '@/layouts/Service.astro';
+import { eeatService, lierSources } from '@/data/page-eeat';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -8,9 +9,13 @@ export async function getStaticPaths() {
 }
 
 const { entree } = Astro.props;
-const { Content } = await render(entree);
+// Le corps rendu de la fiche, chaque source posée sur un mot de son texte (décision de Kevin du 06/10/2026) :
+// le fichier scellé de la fiche reste intact, seul son rendu porte les liens.
+const corps = entree.rendered?.html;
+if (!corps) throw new Error(`Corps rendu absent pour /automatisation/${entree.id}`);
+const html = lierSources(corps, eeatService(entree.id).sources);
 ---
 
 <Service entree={entree}>
-  <Content />
+  <Fragment set:html={html} />
 </Service>
