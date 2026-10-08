@@ -1,0 +1,29 @@
+name: Temporary glossary render collection
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Render the candidate and derive lastmod
+        run: npx astro build && node scripts/strip-briefs.mjs && node scripts/sync-lastmod.mjs
+        env:
+          CF_PAGES: "1"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glossary-f1-render
+          path: |
+            dist/glossaire.html
+            src/data/pages-lastmod.json
+          retention-days: 7
