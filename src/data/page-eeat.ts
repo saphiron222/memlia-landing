@@ -78,6 +78,10 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'registres-obligations': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{ editeur: 'Service Public Entreprendre', titre: 'Déclaration de créances', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F22359', consulteLe: '2026-10-06', preuve: 'Le délai général et les points de départ particuliers bornent le calcul fictif ; le cabinet vérifie la date applicable et les prorogations avant inscription.', mot: 'déclaration de créance' }],
+  },
   'secretariat-juridique': {
     auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
     sources: [{ editeur: 'Service Public Entreprendre', titre: 'Dépôt des comptes annuels d’une société', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31214', consulteLe: '2026-10-06', preuve: 'La sanction concerne le non-dépôt, sans conséquence automatique du suivi fictif ni garantie d’évitement.', mot: 'une amende pénale de 1 500 euros' }],
