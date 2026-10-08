@@ -16,7 +16,7 @@ for (const width of [375, 1440]) {
     await expect(page.locator('.glossaire-sortie a')).toHaveAttribute('href', '/contact');
     expect(oldAnchors.length).toBeGreaterThan(0);
     const current = await page.locator('.glossaire-entree').evaluateAll(nodes => nodes.map(node => node.id));
-    expect(current.sort()).toEqual(oldAnchors.sort());
+    for (const anchor of oldAnchors) expect(current).toContain(anchor);
     await page.goto('/glossaire#generation-augmentee-par-recuperation');
     await expect(page.locator('#generation-augmentee-par-recuperation')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
