@@ -113,6 +113,13 @@ for (const width of [375, 1440]) {
     await expect(page).toHaveURL(/#terme-inconnu$/);
     await expect(search).toHaveValue('SEPA');
     await expect(target).toBeHidden();
+    // Une cible déjà visible conserve également le filtre et son compteur.
+    const filteredCount = await page.locator('[data-result-count]').textContent();
+    await page.evaluate(() => { window.location.hash = 'prelevement-sepa-et-rejet'; });
+    await expect(page).toHaveURL(/#prelevement-sepa-et-rejet$/);
+    await expect(page.locator('#prelevement-sepa-et-rejet')).toBeVisible();
+    await expect(search).toHaveValue('SEPA');
+    await expect(page.locator('[data-result-count]')).toHaveText(filteredCount!);
   });
 }
 
