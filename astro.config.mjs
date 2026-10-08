@@ -5,6 +5,7 @@ import sitemap, { ChangeFreqEnum } from '@astrojs/sitemap';
 import { satteri } from '@astrojs/markdown-satteri';
 import ancresTitres from './src/lib/ancres-titres.mjs';
 import typedSitemaps from './scripts/lib/sitemaps.mjs';
+import responsiveProofs from './scripts/lib/responsive-proofs.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
@@ -80,5 +81,6 @@ export default defineConfig({
       }),
     }),
     typedSitemaps(),
+    responsiveProofs(),
   ],
 });
