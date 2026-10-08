@@ -46,29 +46,26 @@ const noeuds = [
   }}
 >
   <section class="pv" aria-labelledby="publication">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="publication">Trouvez les repères utiles à votre tâche</h2>
-      <p class="texte-2 lecture">Chaque guide part de la documentation de l’éditeur et montre une règle de préparation sur un jeu d’essai fictif. Le chemin disponible, les champs à vérifier et les limites du repère sont précisés dans le guide.</p>
+      <p>Chaque guide part de la documentation de l’éditeur et montre une règle de préparation sur un jeu d’essai fictif. Le chemin disponible, les champs à vérifier et les limites du repère sont précisés dans le guide.</p>
     </div>
-    <div class="pv-bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ol class="pv-bande-liste rv-groupe">
-        <li class="pv-cellule rv"><h3>Le logiciel de votre équipe</h3><p>Choisissez le produit exact : Sage 100 Comptabilité et Sage 100 Paie &amp; RH ont des parcours distincts.</p></li>
-        <li class="pv-cellule rv"><h3>Les champs à vérifier</h3><p>Ouvrez le guide de votre tâche pour retrouver les données nécessaires au contrôle et leur rôle dans la préparation.</p></li>
-        <li class="pv-cellule rv"><h3>La décision à garder</h3><p>La règle écrite distingue ce qui se prépare, ce qui attend votre validation et le cas qui arrête la préparation.</p></li>
-        <li class="pv-cellule rv"><h3>Les limites du repère</h3><p>Lisez le périmètre de la documentation citée. Avant de construire une automatisation, nous vérifions votre version, vos formats et vos accès.</p></li>
-      </ol>
-    </div>
+    <ol class="lignes rv">
+      <li class="ligne"><h3 class="ligne-libelle">Le logiciel de votre équipe</h3><p class="ligne-texte">Choisissez le produit exact : Sage 100 Comptabilité et Sage 100 Paie &amp; RH ont des parcours distincts.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Les champs à vérifier</h3><p class="ligne-texte">Ouvrez le guide de votre tâche pour retrouver les données nécessaires au contrôle et leur rôle dans la préparation.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">La décision à garder</h3><p class="ligne-texte">La règle écrite distingue ce qui se prépare, ce qui attend votre validation et le cas qui arrête la préparation.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Les limites du repère</h3><p class="ligne-texte">Lisez le périmètre de la documentation citée. Avant de construire une automatisation, nous vérifions votre version, vos formats et vos accès.</p></li>
+    </ol>
   </section>
 
   {products.map((product, index) => {
     const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.product === product);
     return (
       <section class="pv" aria-labelledby={`product-${index}`}>
-        <div class="pv-tete rv">
-          <p class="texte-2">{integrations[0].vendor}</p>
+        <div class="tete rv">
+          <p class="surtitre">{integrations[0].vendor}</p>
           <h2 id={`product-${index}`}>{product}</h2>
-          <p class="texte-2 lecture">{integrations.length} {integrations.length > 1 ? 'guides pour préparer vos contrôles' : 'guide pour préparer vos contrôles'} dans {product}. Choisissez votre tâche ci-dessous.</p>
+          <p>{integrations.length} {integrations.length > 1 ? 'guides pour préparer vos contrôles' : 'guide pour préparer vos contrôles'} dans {product}. Choisissez votre tâche ci-dessous.</p>
         </div>
         <IntegrationCards integrations={integrations} titresParTache />
       </section>
@@ -76,9 +73,9 @@ const noeuds = [
   })}
 
   <section class="pv" aria-labelledby="passage-tache">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="passage-tache">Du guide à la tâche confiée</h2>
-      <p class="texte-2 lecture">Le guide vous aide à choisir ce que vous voulez confier. Nous partons ensuite de votre manière de travailler, de ce que votre logiciel fait déjà et des exceptions que votre équipe rencontre. La règle est éprouvée sur un dossier fictif, puis votre équipe teste et accepte le résultat avant la mise en service.</p>
+      <p>Le guide vous aide à choisir ce que vous voulez confier. Nous partons ensuite de votre manière de travailler, de ce que votre logiciel fait déjà et des exceptions que votre équipe rencontre. La règle est éprouvée sur un dossier fictif, puis votre équipe teste et accepte le résultat avant la mise en service.</p>
     </div>
   </section>
 </PageCommerciale>

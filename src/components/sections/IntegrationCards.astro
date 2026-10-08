@@ -1,41 +1,37 @@
 ---
+import Picto from '@/components/Picto.astro';
 import { integrationPath, type IntegrationDefinition } from '@/data/integrations';
 
+/**
+ * Guides par environnement : chaque guide est une carte du site (global.css), lien en entier,
+ * finie par le lien d'action fléché (système de page, § 6 : jamais de « → » tapé).
+ */
 interface Props {
   integrations: readonly IntegrationDefinition[];
-  compact?: boolean;
   titresParTache?: boolean;
 }
-const { integrations, compact = false, titresParTache = false } = Astro.props;
+const { integrations, titresParTache = false } = Astro.props;
 ---
 
-<ul class:list={['integration-cards', { compact }]} data-integration-cards>
+<ul class="cartes" data-integration-cards>
   {integrations.map((integration) => (
     <li>
-      <a href={integrationPath(integration)}>
-        <span class="integration-context">{integration.vendor} · {integration.product}</span>
-        <h3>{titresParTache
-          ? `${integration.task.charAt(0).toUpperCase() + integration.task.slice(1)} dans ${integration.product}`
-          : integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
-        {!compact && <p>{integration.description}</p>}
-        <span class="integration-action">Lire le guide<span aria-hidden="true"> →</span></span>
+      <a class="carte" href={integrationPath(integration)}>
+        <div class="carte-corps">
+          <span class="carte-meta">{integration.vendor} · {integration.product}</span>
+          <h3 class="carte-titre">{titresParTache
+            ? `${integration.task.charAt(0).toUpperCase() + integration.task.slice(1)} dans ${integration.product}`
+            : integration.primaryQuery.charAt(0).toUpperCase() + integration.primaryQuery.slice(1)}</h3>
+          <p class="carte-texte">{integration.description}</p>
+          <span class="carte-action">Lire le guide<Picto nom="fleche" taille={14} /></span>
+        </div>
       </a>
     </li>
   ))}
 </ul>
 
 <style>
-  .integration-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 20px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .integration-cards li { min-width: 0; }
-  .integration-cards a { display: grid; align-content: start; gap: 14px; height: 100%; min-height: 44px; padding: 28px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); color: var(--texte-fort); transition: border-color var(--duree-1), background-color var(--duree-1), transform var(--duree-1); }
-  .integration-context { color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
-  h3 { max-width: 24ch; font-size: var(--t-2xl); line-height: 1.18; text-wrap: balance; }
-  p { max-width: 52ch; margin: 0; color: var(--texte-2); text-wrap: pretty; }
-  .integration-action { align-self: end; margin-top: auto; padding-top: 8px; color: var(--accent-texte); font-weight: 600; }
-  .compact { margin-top: 28px; }
-  .compact a { min-height: 180px; }
-  @media (hover: hover) {
-    .integration-cards a:hover { border-color: var(--accent-appui); background: var(--accent-voile); transform: translateY(-2px); }
-  }
-  @media (prefers-reduced-motion: reduce) { .integration-cards a { transition: none; } }
+  /* La carte remplit sa cellule de grille : les actions s'alignent d'une carte à l'autre. */
+  li { display: flex; }
+  li > .carte { flex: 1 1 auto; }
 </style>

@@ -27,8 +27,10 @@ test('navigation mobile visible reste au clavier sans verrouiller le fond', asyn
 
 test('garanties cohérentes avec les limites et les données', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.garantie-lien').filter({hasText:'RGPD'})).toHaveAttribute('href','#faq-donnees-reelles');
-  await expect(page.locator('.garanties-grille')).not.toContainText('Zéro macro, zéro migration');
+  // Système de page du 07/10/2026 : les six garanties de l'accueil sont une liste de liens.
+  await expect(page.locator('#garanties .lien-rangee').filter({hasText:'RGPD'})).toHaveAttribute('href','#faq-donnees-reelles');
+  await expect(page.locator('#garanties .lien-rangee')).toHaveCount(6);
+  await expect(page.locator('#garanties')).not.toContainText('Zéro macro, zéro migration');
 });
 
 test('promesse tablette conserve des colonnes lisibles', async ({ page }) => {

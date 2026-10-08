@@ -14,16 +14,20 @@ const ATTACHES = [
   'suivre-la-production-sociale-dans-excel',
   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
   'automatiser-la-relance-des-pieces-clients',
+  'utiliser-chatgpt-cabinet-comptable',
+  'logiciel-ia-comptabilite',
+  'prompt-chatgpt-expert-comptable',
+  'ia-comptabilite-confidentialite-donnees',
+  'verifier-reponse-ia-comptabilite',
+  'automatiser-avec-ia-sans-changer-logiciel',
+  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
+  'tests-verts-et-regle-des-trois-passes',
 ];
 
 const HORS_RUBRIQUE = [
   'automatiser-un-cabinet-comptable-la-carte-des-taches',
   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
-  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
-  'prompt-chatgpt-expert-comptable',
-  'logiciel-ia-comptabilite',
-  'tests-verts-et-regle-des-trois-passes',
 ];
 
 const entree = (id, date = '2026-09-20') => ({
@@ -32,10 +36,10 @@ const entree = (id, date = '2026-09-20') => ({
 });
 
 test('le contrat central conserve les rubriques historiques et motive chaque exclusion du stock vivant', () => {
-  assert.equal(BLOG_RUBRIQUES.length, 2);
+  assert.equal(BLOG_RUBRIQUES.length, 3);
   const attaches = BLOG_RUBRIQUES.flatMap((rubrique) => rubrique.articleIds);
   assert.deepEqual([...attaches].sort(), [...ATTACHES].sort());
-  assert.equal(new Set(attaches).size, 5);
+  assert.equal(new Set(attaches).size, 13);
   for (const id of HORS_RUBRIQUE) assert.ok(Object.hasOwn(ARTICLES_HORS_RUBRIQUE, id));
   const registre = JSON.parse(readFileSync(new URL('../../docs/strategy/site-v3/mesures/registre-requetes.json', import.meta.url), 'utf8'));
   const publies = registre.articles.filter(({ type }) => type === 'blog').map(({ slug }) => slug);
@@ -53,10 +57,18 @@ test('la liste de chaque hub vient des entrées visibles et ignore un article ab
     entree('automatiser-la-relance-des-pieces-clients', '2026-09-16'),
     entree('automatiser-un-cabinet-comptable-la-carte-des-taches'),
     entree('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'),
+    entree('utiliser-chatgpt-cabinet-comptable'),
+    entree('logiciel-ia-comptabilite'),
+    entree('prompt-chatgpt-expert-comptable'),
+    entree('ia-comptabilite-confidentialite-donnees'),
+    entree('verifier-reponse-ia-comptabilite'),
+    entree('automatiser-avec-ia-sans-changer-logiciel'),
+    entree('intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'),
+    entree('tests-verts-et-regle-des-trois-passes'),
   ];
   const rubriques = construireRubriques(visibles);
-  assert.equal(rubriques.length, 2);
-  assert.deepEqual(rubriques.map((rubrique) => rubrique.articles.length), [3, 2]);
+  assert.equal(rubriques.length, 3);
+  assert.deepEqual(rubriques.map((rubrique) => rubrique.articles.length), [3, 2, 8]);
   assert.deepEqual(
     rubriques[0].articles.map((article) => article.id),
     ['controler-les-bulletins-de-paie-avant-la-dsn', 'comprendre-les-comptes-rendus-metier-dsn', 'suivre-la-production-sociale-dans-excel'],

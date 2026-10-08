@@ -63,3 +63,9 @@ Pour les mesures publiques, employer le même script avec `https://memlia.fr` av
 Avant livraison, trois runs publics par route ont été collectés avec ce même Lighthouse 13.4.1 : glossaire CLS médian 0,1048776 / LCP 3082,38274 ms ; bulletin Silae CLS 0 / LCP 2955,18104 ms ; saisie Sage CLS 0 / LCP 2165,74777 ms. Le dépassement public du glossaire est donc reproduit, pas ceux des deux intégrations dans cette reprise. Le relevé après livraison relève du passage QA/publication et ne doit pas être déduit de la mesure locale.
 
 Les registres générés sont rafraîchis par `npm run regen:generated` : dates/rendus du sitemap, manifeste du glossaire et réaffirmation de sa revue métier inchangée. Ce rafraîchissement ne constitue pas une nouvelle revue de fond. En cas de conflit sur ces fichiers, régénérer plutôt que fusionner leurs valeurs à la main.
+
+Le 08/10, l’intégration du système de page de #166 a révélé un cas Sage à 412 px sur Ubuntu :
+le titre tient sur trois lignes en Liberation Serif, puis quatre en Fraunces (déplacement de 36,71875 px).
+La coque réserve quatre interlignes pour ce titre sur téléphone (jusqu’à 480 px), sans hauteur maximale,
+sans toucher aux textes, aux polices ni aux seuils du contrat. La simulation avec Times New Roman,
+métriquement compatible avec Liberation Serif, reproduit le défaut avant la réserve.
