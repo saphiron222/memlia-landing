@@ -4733,7 +4733,7 @@
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "7e97c53971ef9f9c7d89e9edebb85171cc0b380a7c3ff12c87688d5699e9cf22",
+        "reviewedCandidateHash": "00f0418d5678c2a3937a0995e9dbe2d31e4b3752e95d5950c1f3a810bbc23537",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -5047,7 +5047,7 @@
           }
         ],
         "evidenceRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-        "evidenceSha256": "4a7cd3f4d0b55a25f49e39e3f8573604fc358c6e91637a6b27f3fdd3ded03d46"
+        "evidenceSha256": "76e9d56b714a33f4b08304aca806a2c7fd9f4c8db256e91acd23f7ce29acf790"
       }
     }
   },
@@ -7241,35 +7241,35 @@
         {
           "path": "dist/glossaire.html",
           "bytes": 320926,
-          "sha256": "45f7f8d3f6ea13f53fb486c2646746063feff95ccb911341257017a9891c4cab"
+          "sha256": "bcf1f91808af919eeb0e4ba248fd42062089ea430ba51f2570adc393fb1b8afd"
         }
       ],
-      "digest": "e026bb6090e008dcfbcb3e2caecc4f4630b8376c695cd55b6cc3354157b7a19d"
+      "digest": "6c5878d6d1c9faa785ce7c67289c37f3da5e7b8a014e37cc088dab83ca7e9dca"
     },
     "candidateHash": {
-      "value": "ce4a4794f26aae545cafbb03b5db7149eb87794e87cc61aa94cb59fbaa0b62cd",
+      "value": "a72530c388678bc2cb80fafd1d515f6e35c94769c2c7d660043e3ac20f644c71",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
   },
   "build": {
-    "pipelineCommit": "5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a",
+    "pipelineCommit": "b02e13f6ded21831646d83a4570acf7535f187c7",
     "commands": [
-      "npx astro build",
+      "astro build",
       "node scripts/strip-briefs.mjs"
     ],
-    "startedAt": "2026-10-08T15:12:05.342Z",
-    "endedAt": "2026-10-08T15:12:26.029Z",
+    "startedAt": "2026-10-08T16:54:47.005866Z",
+    "endedAt": "2026-10-08T16:55:18.705117Z",
     "result": "PASS",
     "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
     "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
     "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
-    "outputDigest": "e026bb6090e008dcfbcb3e2caecc4f4630b8376c695cd55b6cc3354157b7a19d",
+    "outputDigest": "6c5878d6d1c9faa785ce7c67289c37f3da5e7b8a014e37cc088dab83ca7e9dca",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
-    "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "8d7eb76cf30623e96e088846333a7642e291ff5ce8d8a2bda233f5e4829f030a"
+    "receiptRef": "docs/qa/glossaire/anchor-ci-render-receipt.json",
+    "receiptSha256": "0ff2949d1d894d07af1db0905b91240641f41042c346944d1fe7c9c27b06b19e"
   },
   "preview": {
     "branch": null,
@@ -7287,8 +7287,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "ce4a4794f26aae545cafbb03b5db7149eb87794e87cc61aa94cb59fbaa0b62cd",
-    "buildOutputDigest": "e026bb6090e008dcfbcb3e2caecc4f4630b8376c695cd55b6cc3354157b7a19d",
+    "candidateHash": "a72530c388678bc2cb80fafd1d515f6e35c94769c2c7d660043e3ac20f644c71",
+    "buildOutputDigest": "6c5878d6d1c9faa785ce7c67289c37f3da5e7b8a014e37cc088dab83ca7e9dca",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -7300,7 +7300,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "66be6f28324d2b092a0ac50490916388c84744c2ef2e11d18e1adca653ddd5e6"
+    "auditHash": "6eaf3665122ce4635d8b6b25dfc411a5a7d9f553fee044b88f2aa540778c9454"
   },
   "approval": {
     "state": "pending",
