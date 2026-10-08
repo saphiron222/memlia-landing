@@ -520,7 +520,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.locator('[data-cl-export="json"]').click();
       const raw = await readFile((await (await downloading).path())!, 'utf8');
       await page.locator('#cl-period').fill('Octobre 2026');
-      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => { element.open = true; });
+      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
       await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
       await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
       await expect(page.locator('[data-cl-apply]')).toBeEnabled();
