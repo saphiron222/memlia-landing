@@ -8,6 +8,9 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
 import { eeatCommercial } from '@/data/page-eeat';
+import { famillesDeLaProfession } from '@/data/familles';
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
 const page = PAGES_V2.service;
 // La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
@@ -29,7 +32,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const renvois = [
   { texte: 'Choisir une prochaine action à partir des pratiques déclarées, sans classement des équipes.', libelle: 'Situer les pratiques IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
-  { texte: 'La carte des tâches automatisables d’un cabinet : douze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
+  { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire les contrôles avant la DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire le suivi de production sociale', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Après une saisie automatisée, six contrôles restent à faire : lesquels, et pourquoi.', libelle: 'Lire les contrôles après la saisie', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' },
@@ -49,6 +52,7 @@ const poles = [
   { nom: 'Commissariat aux comptes', reste: 'La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.' },
 ];
 const outils = [
+  { href: '/outils-comptables-gratuits/fusionner-fichiers-csv', libelle: 'Fusionner des exports CSV', texte: 'Correspondance des colonnes confirmée, fichier consolidé et rapport des exceptions. Le cabinet vérifie la comparabilité des exports.' },
   { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
   { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
   { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
@@ -92,6 +96,7 @@ const appel = {
       <div class="pv-copy rv">
         <h2 id="cabinet">Que garde le cabinet quand une tâche est automatisée ?</h2>
         <p><strong>La décision. Toujours.</strong></p>
+        <p class="texte-2">Pour situer cette frontière par geste, voyez <a href="/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain">ce que l’IA prépare et ce qui reste humain</a>.</p>
         <p>Votre équipe contrôle la proposition et décide de la suite. Une donnée manque ou une exception sort de la règle : la préparation s’arrête sur ce cas. Le motif reste visible pour le collaborateur qui le reprend.</p>
         <p>Cette frontière reste visible lorsque vous choisissez de <a href="/automatisation/rapprochement-bancaire">confier la préparation du rapprochement bancaire</a> : les appariements se proposent, les écarts restent à décider.</p>
         <p class="texte-2">La règle sépare les propositions que nous générons des saisies de votre équipe. Nous pouvons régénérer les premières ; vos commentaires, corrections et décisions restent les vôtres.</p>
@@ -103,6 +108,7 @@ const appel = {
     <ProofRow id="v2/01-qualification">
       <div class="pv-copy rv">
         <h2 id="requis">Comment savoir si une tâche est prête à être automatisée ?</h2>
+        <p class="texte-2">Avant de choisir, commencez par <a href="/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps">repérer où passe le temps du cabinet</a> : le geste répétitif et le dossier qui demande un jugement ne se traitent pas de la même façon.</p>
         <p>Nous vérifions les formats utilisés, les droits nécessaires et les exceptions avec la personne qui réalise la tâche.</p>
         <p class="texte-2">Avant tout accès aux dossiers, nous précisons les données nécessaires, qui peut les lire et où elles sont traitées. Les premiers essais utilisent un jeu d’essai fictif : des données inventées pour tester la règle.</p>
       </div>
@@ -169,6 +175,7 @@ const appel = {
     <ProofRow id="v2/03-devis">
       <div class="pv-copy rv">
         <h2 id="prix">Vous payez une tâche prise en charge, pas des sièges.</h2>
+        <p>Pour <a href="/automatisation/evaluation-transmission">préparer le dossier d’évaluation d’entreprise</a>, nous relions les pièces, périodes et retraitements qui restent à réunir hors de votre outil. Le cabinet garde les méthodes, la valeur et le conseil sur la transmission.</p>
         <p>Le devis dépend des sources à relier, des règles à appliquer, des exceptions et des validations. Un export stable à comparer et plusieurs formats à rapprocher demandent des travaux différents.</p>
         <p>Le devis précise le résultat livré, les cas couverts et les critères de recette. Il écrit aussi la maintenance, le support et les conditions d’évolution. <strong>Il n’est jamais multiplié par le nombre de postes.</strong></p>
       </div>

@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync } from 'nod
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { parse, serializeOuter } from 'parse5';
+import { parse, serialize, serializeOuter } from 'parse5';
 import { proofSrcset, proofSizes } from '../../scripts/lib/responsive-proofs.mjs';
 
 const sections = { Hero: 'hero', Orientation: 'orientation', Quotidien: 'quotidien', Promesse: 'promesse', Usages: 'usages', Methode: 'methode', Integration: 'integration', Preuves: 'preuves', Garanties: 'garanties', Faq: 'faq', AppelFinal: 'appelFinal' };
@@ -54,9 +54,9 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
 
 // Témoin du système de page #166 après intégration de la copy EC relue (#181).
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
-test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+function assertEcContent(html) {
   const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
-  const html = readFileSync('dist/index.html', 'utf8');
+
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]
     .flatMap(match => JSON.parse(match[1])['@graph'] ?? []);
@@ -68,9 +68,7 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
   });
   const page = schemas.find(node => node['@type'] === 'WebPage');
   assert.deepEqual(page.breadcrumb, { '@id': 'https://memlia.fr/#breadcrumb' });
-  // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
-  const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
-  assert.equal([...html.matchAll(link)].length, 1);
+  // Le chrome de publication (head, navigation, footer) n'est pas du contenu EC.
   const main = find(parse(html), 'main');
   assert.ok(main);
   const removeAudience = (node) => {
@@ -79,6 +77,51 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
   };
   removeAudience(main);
   assert.equal(contentSha(main), expected);
+}
+
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  assertEcContent(readFileSync('dist/index.html', 'utf8'));
+});
+
+test('les métadonnées de partage accueil utilisent la carte JPEG dédiée', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  const sharing = 'https://memlia.fr/social/assets/og-memlia.png.jpg';
+  for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
+    assert.ok(html.includes(`<meta ${attribute} content="${sharing}">`), attribute);
+  }
+});
+
+test('le témoin EC admet la publication de pages et les métadonnées hors sections', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  assert.ok(html.includes('</footer>'));
+  const published = html.replace('</footer>', '<ul><li><a href="/automatisation/service-fictif">Service fictif publié</a></li></ul></footer>');
+  assertEcContent(published);
+  const withoutFooter = html.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/, '');
+  assert.notEqual(withoutFooter, html);
+  assertEcContent(withoutFooter);
+  assertEcContent(html.replace('</head>', '<meta name="date" content="2099-01-01"></head>'));
+});
+
+test('le témoin refuse une altération du contenu ou du rendu dans chacune des onze sections EC', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  const renderedSections = document => {
+    const main = find(document, 'main');
+    const sheet = main.childNodes.find(node => node.attrs?.some(attr => attr.name === 'class' && attr.value === 'feuille'));
+    return sheet.childNodes.filter(node => node.tagName === 'section');
+  };
+  assert.equal(renderedSections(parse(html)).length, Object.keys(sections).length);
+  for (const [index, name] of Object.keys(sections).entries()) {
+    for (const mutation of ['contenu', 'rendu']) {
+      const document = parse(html);
+      const section = renderedSections(document)[index];
+      if (mutation === 'contenu') {
+        section.childNodes.push({ nodeName: '#text', value: 'Contenu EC altéré', parentNode: section });
+      } else {
+        section.attrs.find(attr => attr.name === 'class').value += ' rendu-altere';
+      }
+      assert.throws(() => assertEcContent(serialize(document)), assert.AssertionError, `${name} : ${mutation}`);
+    }
+  }
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {

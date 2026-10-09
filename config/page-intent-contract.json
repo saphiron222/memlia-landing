@@ -3,6 +3,14 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/automatisation/circularisation-cac": { "query": "automatiser circularisation", "descriptionLead": "Automatiser la circularisation", "measuredAt": "2026-10-06", "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué." },
+    "/outils-comptables-gratuits/fusionner-fichiers-csv": { "query": "fusionner fichiers csv", "descriptionLead": "Fusionnez vos exports CSV localement", "measuredAt": "2026-10-06", "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel" },
+    "/automatisation/evaluation-transmission": {
+      "query": "automatisation dossier évaluation entreprise cabinet comptable",
+      "descriptionLead": "Confiez l’assemblage du dossier d’évaluation",
+      "measuredAt": "2026-10-06",
+      "source": "Recette evaluation-transmission et titres-intent-2026-10-06.json : aucune suggestion commerciale ni volume revendiqué ; pièces et versions résiduelles, sans méthode, valeur ni conseil automatique."
+    },
     "/automatisation/secretariat-juridique": {
       "query": "automatisation secrétariat juridique cabinet comptable",
       "descriptionLead": "Suivez les échéances d’approbation et de dépôt",

@@ -13,25 +13,7 @@ const url = `${SITE.url}${OUTILS_HUB_PATH}`;
 const titreHub = (outil: (typeof OUTILS_DISPONIBLES)[number]) => outil.slug === 'suivi-circularisation'
   ? 'Suivi de circularisation : préparer les lettres et les retours'
   : outil.h1;
-const actions: Record<string, string> = {
-  'checklist-pieces-comptables': 'Préparer la demande des pièces manquantes',
-  'bareme-heures-cac': 'Calculer la référence d’heures',
-  'seuil-signification-audit': 'Comparer vos scénarios de seuils',
-  'suivi-circularisation': 'Préparer les lettres et le suivi',
-  'generateur-prompt-ia-gratuit': 'Préparer une consigne texte',
-  'bibliotheque-prompts-comptables': 'Choisir un modèle de prompt',
-  'verificateur-prompt-ia': 'Examiner votre prompt',
-  'preparer-pseudonymiser-fichier-csv-fec': 'Préparer une copie pseudonymisée',
-  'diagnostic-maturite-ia-cabinet': 'Situer les pratiques du cabinet',
-  'generateur-prompt-expert-comptable': 'Écrire un prompt pour votre tâche',
-  'calculateur-roi-automatisation': 'Comparer vos hypothèses de ROI',
-  'generateur-charte-ia-cabinet': 'Préparer une trame de charte',
-  'verificateur-fec-local': 'Contrôler la structure du FEC',
-  'calculateur-marge-commerciale': 'Calculer la marge et les taux',
-  'calculateur-date-echeance-facture': 'Calculer la date d’échéance',
-  'calculateur-amortissement-comptable': 'Calculer le plan annuel',
-  'modele-rapprochement-bancaire-excel-gratuit': 'Accéder au classeur à télécharger',
-};
+
 const categoriesPubliees = OUTIL_CATEGORIES.map((category) => ({
   ...category,
   tools: OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id),
@@ -90,7 +72,7 @@ const graph = {
                     <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
                     <div><dt>Limite</dt><dd>{outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]}</dd></div>
                   </dl>
-                  <a class="carte-action carte-lien outil-carte-action" href={outilPath(outil)}>{actions[outil.slug] ?? 'Ouvrir l’outil'}<Picto nom="fleche" taille={14} /></a>
+                  <a class="carte-action carte-lien outil-carte-action" href={outilPath(outil)}>{outil.libelleAction}<Picto nom="fleche" taille={14} /></a>
                   <p>Gratuit, sans inscription.</p>
                 </div>
               </li>

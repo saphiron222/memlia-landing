@@ -12,7 +12,7 @@ const products = [...new Set(INTEGRATIONS_INDEXABLES.map((integration) => integr
 const page = {
   chemin,
   titre: 'Guides par environnement comptable | Memlia',
-  description: 'Trouvez les repères de contrôle dans Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae : champs à lire, préparation et décisions du cabinet.',
+  description: `Trouvez les repères de contrôle dans ${new Intl.ListFormat('fr', { type: 'disjunction' }).format(products)} : champs à lire, préparation et décisions du cabinet.`,
   h1: 'Guides par environnement comptable',
   chapeau: `Choisissez le logiciel de votre équipe, puis la tâche qui vous occupe. Les ${INTEGRATIONS_INDEXABLES.length} guides indiquent les champs à lire, les contrôles à préparer et les décisions qui restent au cabinet.`,
   ariane: 'Guides par environnement',
@@ -48,6 +48,7 @@ const noeuds = [
   <section class="pv" aria-labelledby="publication">
     <div class="tete rv">
       <h2 id="publication">Trouvez les repères utiles à votre tâche</h2>
+      <p class="texte-2 lecture">Quand la tâche traverse plusieurs supports, il faut <a href="/blog/automatiser-avec-ia-sans-changer-logiciel">écrire le passage entre les outils</a> : ce qui entre, ce qui sort et le cas qui arrête la préparation.</p>
       <p>Chaque guide part de la documentation de l’éditeur et montre une règle de préparation sur un jeu d’essai fictif. Le chemin disponible, les champs à vérifier et les limites du repère sont précisés dans le guide.</p>
     </div>
     <ol class="lignes rv">

@@ -1,48 +1,143 @@
 {
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "bodySha256": "3846993327d57db4b6c8f0b939b91206f1f3aff160167390cf3d47d8db241c9a",
-    "recipeSha256": "9c7cbfbefa53bcd5945af16cdd80c02b31337f2b078b095567644b23d71d535f",
+    "bodySha256": "3374e1dd0cf6d2f4f8368fb8a76598044655d7e2d9ba44c0213a6ff31f8c8005",
+    "recipeSha256": "31b9ef6d625d1a33c7886fc6fe7192faafad97b156f6ff9fe92ca6cc486fea7e",
     "recipeSubstanceSha256": "246a4cf9fcc1249a4f84851d6799f0f99bfe20dc6e2dac199752d0886adc6f09",
-    "renderedSha256": "fab7b59b9aff581fc2cb149c623f247bab2988d8f245f1656ab2df8321ce201e"
+    "renderedSha256": "ece021589285963f4bcc8ef8c3b6c79465479ee36ee2b3ec4ed0c93f3ea428c5"
   },
   "editorial": {
-    "reviewer": "qa:doctrine-b2-independent",
+    "reviewer": "qa:h4-independent-hermes",
     "p0": [],
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158)."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue."]},
-      "ai-citability": {"result": "PASS", "observations": ["Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome."]}
-    }
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Pilier : réponse directe, définitions, carte par pôle et frontières maintenues. Le nouveau repère CAC nomme trois préparations concrètes et réserve sélection des travaux, appréciation et opinion au commissaire aux comptes (corps.md:36,158).",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Intention comprendre et format pillar-page conservés ; titre/onglet/description cohérents. Le candidat B2 ne change pas la stratégie de requête et n'ajoute aucun résultat SEO revendiqué. Aucune nouvelle recherche SERP effectuée ni position validée.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les six affirmations officielles inchangées ont été relues contre les copies locales du 29/09/2026 et leurs SHA-256. Le périmètre CAC ajouté est une offre de préparation, pas une affirmation de conformité NEP ou une délégation d'opinion.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Le tableau distingue le repère transversal EC des familles CAC ; inventaire fictif mis à jour, règle de relance fictive maintenue. Les illustrations ne prouvent ni un outil livré ni une performance mesurée.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "HTML candidat ouvert dans le navigateur puis servi localement en HTTP 200 : un H1, canonical exact, dates publication 16/09 et mise à jour 06/10, BlogPosting cohérent. Preview noindex, follow normale ; aucun lien ajouté vers une route CAC inexistante ; ancres internes présentes. Pas de débordement à la largeur observée de 1280 px. Pas de validation mobile, CI ou production dans cette revue.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4.",
+          "H4 exécuté : preview Astro 64 pages, 10 tests ciblés PASS ; 33 destinations locales HTTP 200, fragment rapprochement-bancaire présent, 48 contrôles de largeur sur huit routes sans overflow ; captures hub 1440/375 inspectées. Preview du pilier noindex, follow ; pas de CI générale ni de production."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Définitions et tableaux lisibles dans le DOM. La restriction CAC est explicite dans le tableau et le paragraphe de limitation ; les huit familles CAC actives ne sont pas ajoutées au compte EC.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Appel du pilier Confier une première tâche vers /contact conservé ; clôture méthode/service/garanties et décision humaine maintenues. La page service et llms.txt décrivent les mêmes demandes, réponses et comparaisons, sans promesse d'audit autonome.",
+          "H4 : diff relu, fond, titre, description, preuves et images inchangés ; continuité éditoriale limitée au maillage, voir docs/qa/h4-maillage.md. Les observations B2 précédentes restent datées du 06/10, pas des vérifications réexécutées H4.",
+          "H4 : huit entrants contextuels dans main, quatre satellites dans le corps du pilier ; 16 cartes disponibles ont une action visible distincte issue de libelleAction, sans changement de promesse. Le vérificateur précise consigne versus réponse."
+        ]
+      }
+    },
+    "scope": "PASS limité au maillage H4 : quatre transitions du pilier, ancre glossaire, entrants hors blog et libellés outils. Avis B2 ci-dessous conservés comme historique ; aucun nouveau score métier, image, SERP ou GSC."
   },
   "business": {
     "reviewerTaskId": "relecteur-metier-ia:doctrine-b2-independent",
     "claims": {
-      "claim-unit-1dc9c56e18bd-1": {"verdict": "soutient", "reasoning": "CNIL cnil-roles.source.txt:732-734 : qualification au cas par cas selon les faits, non choix contractuel. corps.md:118 conserve cette portée et ne déduit pas le rôle du fichier client. Copie et SHA-256 contrôlés."},
-      "claim-unit-279d5bd8bf20-1": {"verdict": "soutient", "reasoning": "Service-Public sp-conservation.source.txt:307 : conservation minimale, délai variable selon nature et obligations. corps.md:48 ne fixe aucune durée universelle. Copie et SHA-256 contrôlés."},
-      "claim-unit-e8439da9f147-1": {"verdict": "soutient", "reasoning": "Net-entreprises net-crm.source.txt:156 : définition du retour CRM après réception de déclaration en cas d'erreur ou suspicion. corps.md:71 conserve la décision de correction au responsable. Copie et SHA-256 contrôlés."},
-      "claim-unit-ceb5c8df6333-1": {"verdict": "soutient", "reasoning": "DGFiP impots-calendrier.source.txt:642 : TVA mensuelle de septembre 2026, entre les 15 et 24, date dans l'espace professionnel. corps.md:80 borne explicitement le mois et la date propre à l'entreprise, sans généralisation à octobre. Copie et SHA-256 contrôlés."},
-      "claim-unit-2614d7101a11-1": {"verdict": "soutient", "reasoning": "CNIL cnil-principes.source.txt:528-533, article 5 : données adéquates, pertinentes, limitées à la finalité. corps.md:120 indique parmi d'autres obligations RGPD. Copie et SHA-256 contrôlés."},
-      "claim-unit-2614d7101a11-2": {"verdict": "soutient", "reasoning": "CNIL cnil-durees.source.txt:774-776 : durée issue de l'analyse de conformité du responsable pour son traitement. corps.md:120 ne dispense pas des obligations de conservation documentaire rappelées ligne 48. Copie et SHA-256 contrôlés."}
-    }
+      "claim-unit-1dc9c56e18bd-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-roles.source.txt:732-734 : qualification au cas par cas selon les faits, non choix contractuel. corps.md:118 conserve cette portée et ne déduit pas le rôle du fichier client. Copie et SHA-256 contrôlés."
+      },
+      "claim-unit-279d5bd8bf20-1": {
+        "verdict": "soutient",
+        "reasoning": "Service-Public sp-conservation.source.txt:307 : conservation minimale, délai variable selon nature et obligations. corps.md:48 ne fixe aucune durée universelle. Copie et SHA-256 contrôlés."
+      },
+      "claim-unit-e8439da9f147-1": {
+        "verdict": "soutient",
+        "reasoning": "Net-entreprises net-crm.source.txt:156 : définition du retour CRM après réception de déclaration en cas d'erreur ou suspicion. corps.md:71 conserve la décision de correction au responsable. Copie et SHA-256 contrôlés."
+      },
+      "claim-unit-ceb5c8df6333-1": {
+        "verdict": "soutient",
+        "reasoning": "DGFiP impots-calendrier.source.txt:642 : TVA mensuelle de septembre 2026, entre les 15 et 24, date dans l'espace professionnel. corps.md:80 borne explicitement le mois et la date propre à l'entreprise, sans généralisation à octobre. Copie et SHA-256 contrôlés."
+      },
+      "claim-unit-2614d7101a11-1": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-principes.source.txt:528-533, article 5 : données adéquates, pertinentes, limitées à la finalité. corps.md:120 indique parmi d'autres obligations RGPD. Copie et SHA-256 contrôlés."
+      },
+      "claim-unit-2614d7101a11-2": {
+        "verdict": "soutient",
+        "reasoning": "CNIL cnil-durees.source.txt:774-776 : durée issue de l'analyse de conformité du responsable pour son traitement. corps.md:120 ne dispense pas des obligations de conservation documentaire rappelées ligne 48. Copie et SHA-256 contrôlés."
+      }
+    },
+    "scope": "Avis B2 historique inchangé, non réémis par H4. H4 constate uniquement six claims strictement identiques et six citations/contexte maintenus dans les sources renouvelées ; aucun avis métier nouveau inventé."
   },
   "image": {
     "reviewer": "qa:doctrine-b2-independent",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Brief de couverture dans recette.json relu et couverture 1600 visuellement inspectée : îlots reliés en diorama, jeton et bifurcation, palette vert/crème/graphite, sans texte. Inventaire au gabarit RECETTE ; fiche de relance également inspectée."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Fenêtre d'inventaire, fond quadrillé, données et badges nets, aucun logo, personne, slogan ou étapes commentées. Les compteurs 60 et 2 décrivent l'inventaire fictif, pas un gain. Couverture sans texte ni donnée réelle."]},
-      "fictive-provenance": {"result": "PASS", "observations": ["En-tête Jeu d'essai fictif · cabinet de démonstration ; fiche Jeu d'essai fictif · règle R-01 et dossiers D-004/D-007/D-009. Pas de témoignage ou de résultat réel induit."]},
-      "recognizable-subject": {"result": "PASS", "observations": ["Inventaire : Carte EC · 12 pôles, Repères EC 60, demandes de documents par mission, règle À cadrer et statut Carte CAC. Le renvoi distinct n'est plus Non ouvert et n'ajoute pas huit familles aux repères EC. La fiche montre la proposition et l'envoi par le collaborateur."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["sips : inventaire et fiche 1600 × 900 ; inventaire 43014 octets. Couverture WebP 768×432, 1200×675, 1600×900 et OG 1200×630 présentes. HTML : attributs 1600×900, sources uniques sans -mobile. Inventaire réellement chargé en 1600×900 via HTTP local et confiné à la colonne à 1280 px ; téléphone non rejoué."]},
-      "alt-information": {"result": "PASS", "observations": ["Alt de l'inventaire décrit six familles, fréquence, règle et statut ; correspond au visuel et au HTML. Alt fiche fidèle à la règle fictive ; alt couverture fidèle aux îlots, chemins, jeton et bifurcation. Aucune légende technique publique ajoutée."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Brief de couverture dans recette.json relu et couverture 1600 visuellement inspectée : îlots reliés en diorama, jeton et bifurcation, palette vert/crème/graphite, sans texte. Inventaire au gabarit RECETTE ; fiche de relance également inspectée."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Fenêtre d'inventaire, fond quadrillé, données et badges nets, aucun logo, personne, slogan ou étapes commentées. Les compteurs 60 et 2 décrivent l'inventaire fictif, pas un gain. Couverture sans texte ni donnée réelle."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "En-tête Jeu d'essai fictif · cabinet de démonstration ; fiche Jeu d'essai fictif · règle R-01 et dossiers D-004/D-007/D-009. Pas de témoignage ou de résultat réel induit."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Inventaire : Carte EC · 12 pôles, Repères EC 60, demandes de documents par mission, règle À cadrer et statut Carte CAC. Le renvoi distinct n'est plus Non ouvert et n'ajoute pas huit familles aux repères EC. La fiche montre la proposition et l'envoi par le collaborateur."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "sips : inventaire et fiche 1600 × 900 ; inventaire 43014 octets. Couverture WebP 768×432, 1200×675, 1600×900 et OG 1200×630 présentes. HTML : attributs 1600×900, sources uniques sans -mobile. Inventaire réellement chargé en 1600×900 via HTTP local et confiné à la colonne à 1280 px ; téléphone non rejoué."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alt de l'inventaire décrit six familles, fréquence, règle et statut ; correspond au visuel et au HTML. Alt fiche fidèle à la règle fictive ; alt couverture fidèle aux îlots, chemins, jeton et bifurcation. Aucune légende technique publique ajoutée."
+        ]
+      }
     },
     "directionArt": 18,
     "semanticRelevance": 22,
-    "scoreProvenance": "Appréciations qualitatives du relecteur B2 sur les images effectivement inspectées ; pas des mesures de performance ou de production."
+    "scoreProvenance": "Appréciations qualitatives du relecteur B2 sur les images effectivement inspectées ; pas des mesures de performance ou de production.",
+    "scope": "Avis et scores B2 historiques conservés ; aucun changement image dans H4 et aucune nouvelle revue artistique."
   },
   "sources": {
     "reviewedBy": "relecteur-metier-ia:doctrine-b2-independent",
@@ -53,18 +148,34 @@
       "cnil-durees": "Copie du 29/09, passage 774-776, SHA-256 392f8e1800d89961a4286ff0542eb2fc8e5b046bfcd250118ad78e2b0c2dde74 conforme au metadata.",
       "impots-calendrier": "Copie du 29/09, passage 642, SHA-256 15c908d3ce9a54af55fd1c9cdc96d0d1b477eb2e4f1968471322a3a189c4bc7b conforme au metadata.",
       "net-crm": "Copie du 29/09, passage 156, SHA-256 9a6b8de31b36259329bdf8c110680cee10c1127166e1c47c22801f09ebbb653f conforme au metadata."
-    }
+    },
+    "scope": "Observations B2 historiques : les SHA-256 ci-dessous correspondent aux copies du 29/09. Les empreintes des copies renouvelées et leurs passages concordants sont consignés dans docs/qa/h4-maillage/checks.json ; H4 ne réécrit pas ces anciennes notes."
   },
   "qualite": {
     "reviewer": "qa:doctrine-b2-independent",
     "score": 91,
     "p0": [],
     "categories": {
-      "contentQuality": {"score": 27, "max": 30},
-      "seoOptimization": {"score": 22, "max": 25},
-      "eeatSignals": {"score": 14, "max": 15},
-      "technicalElements": {"score": 14, "max": 15},
-      "aiCitationReadiness": {"score": 14, "max": 15}
+      "contentQuality": {
+        "score": 27,
+        "max": 30
+      },
+      "seoOptimization": {
+        "score": 22,
+        "max": 25
+      },
+      "eeatSignals": {
+        "score": 14,
+        "max": 15
+      },
+      "technicalElements": {
+        "score": 14,
+        "max": 15
+      },
+      "aiCitationReadiness": {
+        "score": 14,
+        "max": 15
+      }
     },
     "evidence": [
       "27/30 : carte et frontières concrètes ; ouverture CAC strictement mécanique et opinion réservée. Le compte historique EC inclut un repère transversal explicite, non huit tâches CAC.",
@@ -79,16 +190,52 @@
       "PASS de revue de candidat uniquement : ni scellement, ni approbation de CI, ni publication, ni contrôle de production.",
       "Charte réellement présente v4 : clause historique audit non ouvert dépassée par le mandat B2 ; mise à jour constitutionnelle B1 hors de cette revue."
     ],
-    "seo": ["Preview noindex, follow ; publication initiale conservée et republication datée du 06/10. Canonical et headline cohérents ; aucune nouvelle route CAC liée."],
-    "geo": ["La préparation de documents et de comparaisons ne vaut ni sélection des travaux, ni appréciation probante, ni opinion, ni conformité NEP garantie."],
-    "verdict": "PASS du candidat doctrinal B2 et de sa figure d'inventaire ; grille complète réévaluée, limites explicites, aucune publication autorisée par ce fichier."
+    "seo": [
+      "Preview noindex, follow ; publication initiale conservée et republication datée du 06/10. Canonical et headline cohérents ; aucune nouvelle route CAC liée."
+    ],
+    "geo": [
+      "La préparation de documents et de comparaisons ne vaut ni sélection des travaux, ni appréciation probante, ni opinion, ni conformité NEP garantie."
+    ],
+    "verdict": "PASS du candidat doctrinal B2 et de sa figure d'inventaire ; grille complète réévaluée, limites explicites, aucune publication autorisée par ce fichier.",
+    "scope": "Score 91 et sous-notes B2 conservés, non recalculés H4 ; verdict courant limité au maillage dans scopedReview."
   },
   "provenance": {
-    "reviewedAt": "2026-10-06",
-    "reviewer": "qa:doctrine-b2-independent",
-    "businessReader": "relecteur-metier-ia:doctrine-b2-independent",
-    "scope": "Une seule revue indépendante B2 ; diff doctrinal, recette/corps/paquet, HTML local, six copies officielles, trois visuels et référence social-dictionnaire inspectés. Anciens constats étrangers au pilier remplacés, pas de PASS recopié sur des tests non exécutés.",
-    "fingerprintCommand": "node scripts/blog-forge.mjs empreinte automatiser-un-cabinet-comptable-la-carte-des-taches .qa/doctrine-render/blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html",
-    "report": "docs/qa/doctrine-cac/REVUE.md"
+    "reviewedAt": "2026-10-07",
+    "reviewer": "qa:h4-independent-hermes",
+    "author": "kevin",
+    "reviewerNature": "Agent IA chargé de la revue indépendante, distinct de l’auteur ; ne prétend pas être un CAC humain ou une seconde personne réelle.",
+    "scope": "Une seule revue QA H4 scoped, effectuée sur code et preview local. Aucun changement métier dans le corps, aucune approbation de publication. Avis B2 intégral préservé dans le fichier historique.",
+    "fingerprintCommand": "node scripts/blog-forge.mjs empreinte automatiser-un-cabinet-comptable-la-carte-des-taches dist/blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html",
+    "fingerprintPathNote": "La commande demandée avec /index.html a retourné ENOENT : le build réel émet une route .html ; empreinte officielle relancée sur ce fichier réel, sans modifier la forge.",
+    "report": "docs/qa/h4-maillage.md",
+    "previousReview": "docs/qa/h4-maillage/revues-b2-historique.json"
+  },
+  "scopedReview": {
+    "verdict": "PASS",
+    "reviewer": "qa:h4-independent-hermes",
+    "checkedAt": "2026-10-06T22:55:53.495Z",
+    "scope": "Maillage H4 uniquement",
+    "bodySubstance": "Quatre phrases de transition et reformulation de l’ancre glossaire uniquement ; aucune modification de fond, titres, descriptions SEO ou images.",
+    "sourceContinuity": "Les six claims de recette sont identiques à HEAD et les six citations retrouvées dans les copies renouvelées, avec contexte relu. Le changement fiscal fixe septembre 2026, sans nouvel énoncé fiscal.",
+    "checks": {
+      "targetedTests": {
+        "pass": 10,
+        "fail": 0
+      },
+      "previewBuildPages": 64,
+      "renderedToolCards": 16,
+      "baselineToolCards": 13,
+      "layoutChecks": 48,
+      "overflow": 0,
+      "localDestinations": 33,
+      "invalidDestinations": 0
+    },
+    "history": "docs/qa/h4-maillage/revues-b2-historique.json",
+    "limitations": [
+      "Aucun avis métier nouveau ni score global nouveau.",
+      "Ni sceau, ni publication, ni clôture de carte.",
+      "Rematérialisation du candidat par le parent nécessaire après cette liaison ; les FAIL techniques issus de preparer ne sont pas transformés directement en PASS.",
+      "CI complète et constat public hors mandat."
+    ]
   }
 }

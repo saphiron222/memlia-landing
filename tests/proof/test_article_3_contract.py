@@ -131,9 +131,8 @@ class Article3Contract(unittest.TestCase):
         self.assertEqual(person["name"], "Kevin Kitanga")
         self.assertEqual(posting["mainEntityOfPage"]["@id"], canonical)
         self.assertGreaterEqual(posting["wordCount"], 1500)
-        # Depuis le rescellement du 16/09, l'article declare imageOg et utilise l'image
-        # sociale dediee 1200x630, comme les deux articles publies avant lui.
-        social_image = "https://memlia.fr/images/img-25-comptes-rendus-metier-dsn-og.webp"
+        # La carte dédiée conserve son visuel, dans une variante JPEG pour le partage.
+        social_image = "https://memlia.fr/social/images/img-25-comptes-rendus-metier-dsn-og.webp.jpg"
         og_image = next(attrs.get("content") for tag, attrs in self.doc.tags if tag == "meta" and attrs.get("property") == "og:image")
         twitter_image = next(attrs.get("content") for tag, attrs in self.doc.tags if tag == "meta" and attrs.get("name") == "twitter:image")
         self.assertEqual(og_image, social_image)

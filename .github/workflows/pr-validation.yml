@@ -62,6 +62,9 @@ jobs:
       - name: Exercise CAC proof geometry in Chromium
         run: node --test tests/scripts/accueil-cac-geometry.test.mjs
 
+      - name: Exercise proof renderer ownership in Chromium
+        run: node --test tests/scripts/proof-render-ownership.test.mjs
+
       - name: Build and run deterministic gates
         run: npm run build
         env:

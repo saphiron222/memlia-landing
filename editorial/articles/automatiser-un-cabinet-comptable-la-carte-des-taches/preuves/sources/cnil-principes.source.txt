@@ -115,8 +115,8 @@
       <nav role="navigation" aria-label="Navigation principal">
 <ul data-region="header" block="header_menu_part_fr" class="js-dropdown-wrapper nav menu--menu-menu-header">
                         <li class="menu-item menu-item-0">
-                          <button type="button" id="menu-toggler-1035138263" rel="1035138263" aria-expanded="false"
-                  aria-controls="menu-level-1035138263"
+                          <button type="button" id="menu-toggler-965746584" rel="965746584" aria-expanded="false"
+                  aria-controls="menu-level-965746584"
                   class="menu-link menu-link-0 js-dropdown-toggle">Mon quotidien</button>
                                   <ul class="menu-level-1">
                           <li class="menu-item menu-item-1">
@@ -174,8 +174,8 @@
     
               </li>
                       <li class="menu-item menu-item-0">
-                          <button type="button" id="menu-toggler-2100354849" rel="2100354849" aria-expanded="false"
-                  aria-controls="menu-level-2100354849"
+                          <button type="button" id="menu-toggler-336098511" rel="336098511" aria-expanded="false"
+                  aria-controls="menu-level-336098511"
                   class="menu-link menu-link-0 js-dropdown-toggle">Exercer mes droits</button>
                                   <ul class="menu-level-1">
                           <li class="menu-item menu-item-1">
@@ -261,8 +261,8 @@
     
               </li>
                       <li class="menu-item menu-item-0">
-                          <button type="button" id="menu-toggler-551687810" rel="551687810" aria-expanded="false"
-                  aria-controls="menu-level-551687810"
+                          <button type="button" id="menu-toggler-2046543846" rel="2046543846" aria-expanded="false"
+                  aria-controls="menu-level-2046543846"
                   class="menu-link menu-link-0 js-dropdown-toggle">À télécharger</button>
                                   <ul class="menu-level-1">
                           <li class="menu-item menu-item-1">
@@ -287,8 +287,8 @@
     
               </li>
                       <li class="menu-item menu-item-0">
-                          <button type="button" id="menu-toggler-2015088430" rel="2015088430" aria-expanded="false"
-                  aria-controls="menu-level-2015088430"
+                          <button type="button" id="menu-toggler-835706806" rel="835706806" aria-expanded="false"
+                  aria-controls="menu-level-835706806"
                   class="menu-link menu-link-0 js-dropdown-toggle">La CNIL</button>
                                   <ul class="menu-level-1">
                           <li class="menu-item menu-item-1">
@@ -404,11 +404,11 @@
     </div>
   </div>
   <div class="block-search-wrapper js-block-search-wrapper" role="search">
-    <div class="cnil-search-form block block-cnil-search block-cnil-search-form-block" data-drupal-selector="cnil-search-form-2" id="block-search">
+    <div class="cnil-search-form block block-cnil-search block-cnil-search-form-block" data-drupal-selector="cnil-search-form" id="block-search">
   
       <h2 class="visually-hidden">CNIL : Formulaire de recherche</h2>
     
-      <form action="/fr/reglement-europeen-protection-donnees/chapitre2" method="post" id="cnil-search-form--2" accept-charset="UTF-8">
+      <form action="/fr/reglement-europeen-protection-donnees/chapitre2" method="post" id="cnil-search-form" accept-charset="UTF-8">
   
 
 
@@ -419,15 +419,15 @@
 
 <div class="form-item js-form-item form-type-textfield js-form-type-textfield form-item-keyword js-form-item-keyword form-group">
       
-  <label for="edit-keyword--2" class="control-label">Poser une question ou rechercher un article, une délibération... </label>
+  <label for="edit-keyword" class="control-label">Poser une question ou rechercher un article, une délibération... </label>
   
   
-  <input data-drupal-selector="edit-keyword" class="form-text form-control" type="text" id="edit-keyword--2" name="keyword" value="" size="60" maxlength="128" />
+  <input data-drupal-selector="edit-keyword" class="form-text form-control" type="text" id="edit-keyword" name="keyword" value="" size="60" maxlength="128" />
 
   
   
   </div>
-<button data-drupal-selector="edit-submit" class="button js-form-submit form-submit btn-default btn" type="submit" id="edit-submit--2" name="op" value="Rechercher">Rechercher</button><input autocomplete="off" data-drupal-selector="form-p-qfpdit-w0k5pkoz-rnqecugvw-v7ru1sjerongszq" type="hidden" name="form_build_id" value="form-p_QfPdIT-W0k5PkoZ_rNqECugvW-v7Ru1SjErOngszQ" /><input data-drupal-selector="edit-cnil-search-form-2" type="hidden" name="form_id" value="cnil_search_form" />
+<button data-drupal-selector="edit-submit" class="button js-form-submit form-submit btn-default btn" type="submit" id="edit-submit" name="op" value="Rechercher">Rechercher</button><input autocomplete="off" data-drupal-selector="form-huxvkvsjiygahksoflnc-lcbmvzrmjssbmnm-vumnp4" type="hidden" name="form_build_id" value="form-huXVKvsJiyGahKsofLNc-lCbmvZrMjsSBMNM-VUmNp4" /><input data-drupal-selector="edit-cnil-search-form" type="hidden" name="form_id" value="cnil_search_form" />
 </form>
 
   </div>

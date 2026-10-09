@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import re
 import unittest
+from source_inventory import source_export
 import xml.etree.ElementTree as ET
 from urllib.parse import urlsplit
 
@@ -76,11 +77,20 @@ def sitemap_urls():
     return urls
 
 
+RUBRIQUES_HISTORIQUES = set(RUBRIQUES)
+RUBRIQUES = {entry['slug']: {'label': entry['libelle'], 'articles': set(entry['articleIds'])}
+             for entry in source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')}
+HORS_RUBRIQUE = set(source_export(ROOT, 'src/data/blog-rubriques.mjs', 'ARTICLES_HORS_RUBRIQUE'))
+
+
 class BlogRubriquesProof(unittest.TestCase):
-    def test_exactement_deux_hubs_substantiels_et_dynamiques(self):
+    def test_hubs_substantiels_et_dynamiques(self):
+        self.assertGreaterEqual(len(RUBRIQUES), 2)
+        self.assertTrue(RUBRIQUES_HISTORIQUES <= set(RUBRIQUES))
         hubs = sorted((DIST / "blog/rubrique").glob("*.html"))
         self.assertEqual([hub.stem for hub in hubs], sorted(RUBRIQUES))
         for slug, attendu in RUBRIQUES.items():
+            self.assertGreaterEqual(len(attendu['articles']), 2)
             route = f"/blog/rubrique/{slug}"
             html = page_path(route).read_text(encoding="utf-8")
             doc = Document(html)
