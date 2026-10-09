@@ -79,7 +79,7 @@ const sources = {
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
   'circularisation-cac': {
-    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    auteur: 'kevin', datePublication: '2026-10-09', dateModification: '2026-10-09',
     sources: [
       { editeur: 'H2A', titre: 'NEP 505 — Demandes de confirmation des tiers', url: 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/', consulteLe: '2026-10-06', preuve: 'La sélection des tiers et les suites des non-réponses restent sous la maîtrise du CAC ; la préparation ne conclut pas.', mot: 'H2A, NEP 505' },
       { editeur: 'H2A', titre: 'NEP 530 — Sélection des éléments à contrôler', url: 'https://h2a-france.org/normes/selection-des-elements-a-controler/', consulteLe: '2026-10-06', preuve: 'Le CAC détermine les méthodes de sélection ; les paramètres du jeu fictif ne sont pas des recommandations.', mot: 'NEP 530' },

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import { mkdirSync, writeFileSync } from 'node:fs';
 const origin = process.env.QA_ORIGIN ?? 'http://127.0.0.1:4328';
-const dir = 'docs/qa/circularisation-cac';
+const dir = process.env.QA_OUTPUT_DIR ?? 'docs/qa/circularisation-cac';
 mkdirSync(dir, { recursive: true });
 const browser = await chromium.launch({ channel: 'chromium' });
 const reports = [];
@@ -19,6 +19,7 @@ async function reveal(page) {
 }
 try {
   const page = await browser.newPage();
+  await page.setExtraHTTPHeaders({ 'Cache-Control': 'no-cache' });
   for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 960 });
     const response = await page.goto(`${origin}/automatisation/circularisation-cac`);
@@ -26,7 +27,7 @@ try {
     await page.evaluate(() => document.fonts.ready);
     const observation = await page.evaluate(() => {
       const schemas = [...document.querySelectorAll('script[type="application/ld+json"]')].flatMap((el) => JSON.parse(el.textContent)['@graph'] ?? []);
-      const source = document.querySelector('[data-primary-source]');
+      const source = [...document.querySelectorAll('.service-body-copy p')].find((el) => el.textContent.startsWith('Références :'));
       const cta = document.querySelector('#confier');
       return {
         width: window.innerWidth,
