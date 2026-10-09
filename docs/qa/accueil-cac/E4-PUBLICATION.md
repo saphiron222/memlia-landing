@@ -16,6 +16,8 @@ La couverture suit immédiatement Orientation. Dans Méthode, le tableau de fron
 
 La CI GitHub Repository gates reste l’oracle des tests complets, types et construction finale. Aucun déploiement manuel de production. Search Console : inspection en lecture et sitemap seulement ; aucune demande d’indexation automatique promise.
 
+Premier run CI : type explicite ajouté au callback FAQ du test ; intention CAC promue à « construite-en-revue », architecture régénérée. La CI a aussi révélé que regen:generated scelle le HTML brut avant le retrait final des dates de consultation sur une page de service historique. Contournement : après le dernier scellement/rebuild, rejouer `node scripts/render-public-source-text.mjs`, puis `npm run lastmod:sync` et `node scripts/sync-lastmod.mjs --check` ; audit Ressources PASS. Réparation durable suivie séparément sur t_282e5e51, sans bloquer cette publication. Tests architecture/cadence et BuildProof rejoués sur le rendu final.
+
 ## Risques et suites
 
 L’illisibilité des détails des preuves à 375 px et la répétition des trois scènes dans la même page sont les limites connues acceptées par E3/système. Aucune compatibilité logicielle ni performance réelle n’est déduite des illustrations fictives. E9 remplace la variante poster et adaptera les assertions qui décrivent l’état sans vidéo ; H4 conserve la ligne CAC de llms.

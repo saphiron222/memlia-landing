@@ -38,7 +38,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     expect(service.url).toBe(`https://memlia.fr${SEO_CAC.chemin}`);
     expect(service.audience.audienceType).toBe('Cabinets de commissariat aux comptes');
     expect(schemas.find(node => node['@type'] === 'WebPage').headline).toBe(CONTENU_CAC.hero.titre);
-    expect(schemas.find(node => node['@type'] === 'FAQPage').mainEntity.map(q => q.name)).toEqual(CONTENU_CAC.faq.questions.map(q => q.question));
+    expect(schemas.find(node => node['@type'] === 'FAQPage').mainEntity.map((q: { name: string }) => q.name)).toEqual(CONTENU_CAC.faq.questions.map(q => q.question));
     expect(schemas.find(node => node['@type'] === 'BreadcrumbList').itemListElement.at(-1).item).toBe(`https://memlia.fr${SEO_CAC.chemin}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     // Les preuves sont chargées à la lecture, pas avant le défilement.
