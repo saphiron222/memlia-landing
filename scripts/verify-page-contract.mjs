@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditerServiceDesign } from './verify-service-design.mjs';
 import { BLOG_RUBRIQUES } from '../src/data/blog-rubriques.mjs';
+import { verifierPreuveGuide, verifierRecetteGuide } from './lib/guide-forge.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -220,7 +221,34 @@ function manifestedMedia(root) {
       // Même règle : seuls les manifestes lisibles prouvent la provenance.
     }
   }
-  return { exact, articleOwners };
+  const guideOwners = new Map();
+  const guideAssets = new Set();
+  const historicalAssets = new Set();
+  for (const recipe of walk(join(root, 'guides/recettes'), (item) => item.endsWith('/recette.json'))) {
+    const slug = relative(join(root, 'guides/recettes'), recipe).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    guideAssets.add(asset);
+    try {
+      const value = JSON.parse(readFileSync(recipe, 'utf8'));
+      if (value.mode === 'historique' && value.integration?.slug === slug && verifierRecetteGuide({ root, recipe: value }).length === 0) {
+        historicalAssets.add(asset);
+        guideAssets.delete(asset);
+      }
+    } catch { /* L'actif reste protégé même si sa recette est illisible. */ }
+  }
+  for (const manifest of walk(join(root, 'guides/etats'), (item) => item.endsWith('/manifest.json'))) {
+    const slug = relative(join(root, 'guides/etats'), manifest).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    if (!historicalAssets.has(asset)) guideAssets.add(asset);
+    const proof = verifierPreuveGuide({ root, slug });
+    if (proof.pass) guideOwners.set(proof.asset, proof.route);
+  }
+  for (const asset of guideOwners.keys()) guideAssets.add(asset);
+  const generated = join(root, 'src/data/guides.generated.json');
+  if (existsSync(generated)) {
+    for (const guide of JSON.parse(readFileSync(generated, 'utf8'))) guideAssets.add(`/proofs/integrations/${guide.slug}.webp`);
+  }
+  return { exact, articleOwners, guideOwners, guideAssets };
 }
 
 function traverseJson(value, visit) {
@@ -240,6 +268,10 @@ function mediaOwner(provenance, asset) {
 
 function mediaIsOwned(root, provenance, asset, route, references) {
   if (!existsSync(join(root, 'public', asset.slice(1)))) return false;
+  // Un manifeste QA générique ne peut contourner un état de forge invalide.
+  if (provenance.guideAssets.has(asset)) {
+    return provenance.guideOwners.get(asset) === route && references.get(asset)?.length === 1;
+  }
   const explicitOwner = mediaOwner(provenance, asset);
   if (explicitOwner) return explicitOwner === route;
   return provenance.exact.has(asset) && references.get(asset)?.length === 1;
