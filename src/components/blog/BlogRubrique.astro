@@ -1,11 +1,17 @@
 ---
 import Base from '@/layouts/Base.astro';
+import type { CollectionEntry } from 'astro:content';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import { SITE } from '@/data/site.mjs';
 import { BLOG, compterMots } from '@/data/blog.mjs';
 import { IMAGES } from '@/data/images.mjs';
 import { organizationNode } from '@/data/schema.mjs';
+import { BLOG_RUBRIQUES } from '@/data/blog-rubriques.mjs';
+
+interface Props {
+  rubrique: (typeof BLOG_RUBRIQUES)[number] & { articles: readonly CollectionEntry<'blog'>[] };
+}
 
 const { rubrique } = Astro.props;
 const u = `${SITE.url}/`;
