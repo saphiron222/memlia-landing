@@ -195,6 +195,8 @@ const DISALLOWED_SOURCE_PLATFORMS = Object.freeze([
   { label: 'Hacker News', host: /^news\.ycombinator\.com$/i },
 ]);
 const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
+  { id: 'h2a', host: /^h2a-france\.org$/i, publisher: /\b(?:h2a|haute autorite de l audit)\b/i },
+  { id: 'cncc', host: /^(?:doc\.)?cncc\.fr$/i, publisher: /\b(?:cncc|compagnie nationale des commissaires aux comptes)\b/i },
   { id: 'urssaf', host: /(?:^|\.)urssaf\.fr$/i, publisher: /\burssaf\b/i },
   { id: 'net-entreprises', host: /(?:^|\.)net-entreprises\.fr$/i, publisher: /\bnet[- ]entreprises\b/i },
   { id: 'service-public', host: /(?:^|\.)service-public\.(?:fr|gouv\.fr)$/i, publisher: /\bservice public\b/i },
