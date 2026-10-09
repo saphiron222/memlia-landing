@@ -47,6 +47,18 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'fusionner-fichiers-csv', categorie: 'preparer', statut: 'disponible',
+    libelleAction: 'Fusionner des exports CSV',
+    h1: 'Fusionner des fichiers CSV gratuitement', title: 'Fusionner des fichiers CSV gratuitement | Memlia',
+    description: 'Fusionnez vos exports CSV localement avec correspondance des colonnes, origine des lignes et fichier consolidé téléchargeable, sans inscription.',
+    promesse: { entree: 'Deux à vingt CSV texte et correspondance confirmée des colonnes', resultat: 'CSV consolidé complet, aperçu paginé, origine et rapport JSON des décisions' },
+    limites: ['Concaténation verticale seulement, pas jointure ni validation comptable. Périodes, devises et contenu restent à vérifier.', 'Doublons conservés par défaut ; retrait exact optionnel, première occurrence conservée et exceptions rapportées.', 'L’export protège les formules par une apostrophe : montants négatifs et en-têtes concernés deviennent du texte. Original intact.', 'Total 20 Mo et 100 000 lignes, 128 colonnes, 65 536 caractères par cellule. Structure irrégulière ou mapping ambigu : refus sans résultat final.'],
+    mentionLocale: 'Lecture, mapping, consolidation, copie et exports dans ce navigateur, sans envoi ni stockage persistant. Réinitialiser termine les Workers et retire le lot ; fermer l’onglet l’efface. Les fichiers téléchargés restent sur votre appareil.',
+    proof: 'v2/44-outil-fusion-csv', zoneLarge: true,
+    source: { titre: 'Convention de consolidation', nom: 'RFC 4180 — Common Format and MIME Type for CSV Files', url: 'https://www.rfc-editor.org/rfc/rfc4180', extrait: 'Cellules citées, guillemets doublés et retours à la ligne conservés ; extension aux séparateurs choisis. Mapping et union confirmés par la personne, sans règle comptable déduite.', verifieeLe: '7 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
     slug: 'checklist-pieces-comptables', categorie: 'preparer', statut: 'disponible',
     libelleAction: 'Préparer la demande des pièces manquantes',
     h1: 'Checklist des pièces comptables à demander', title: 'Checklist des pièces comptables à demander | Memlia',
