@@ -112,6 +112,7 @@ const fetcher = async () => new Response(PAGE_SOURCE, { status: 200, headers: { 
 
 function racineDeTest(date = jour) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-forge-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   mkdirSync(join(root, 'editorial/templates'), { recursive: true });
   mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
   mkdirSync(join(root, 'src/content/blog'), { recursive: true });

@@ -41,6 +41,7 @@ function pageArticle({
 
 function fixture(options = {}) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-blog-contract-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   mkdirSync(join(root, 'src/content/blog'), { recursive: true });
   mkdirSync(join(root, 'dist/blog'), { recursive: true });
   writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle(options));

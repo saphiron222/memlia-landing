@@ -157,6 +157,7 @@ function recette() {
 
 function racineDeTest() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-service-forge-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   mkdirSync(join(root, 'commercial/recettes', SLUG, 'preuves'), { recursive: true });
   mkdirSync(join(root, 'src/content/blog'), { recursive: true });
   mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });

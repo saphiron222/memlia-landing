@@ -285,8 +285,14 @@ Voir [la méthode]`);
     assert.ok(existsSync(pagePath(publicRender, `/blog/${slug}`)));
     assert.ok(readFileSync(join(publicRender, 'sitemap-blog.xml'), 'utf8').includes(`/blog/${slug}`));
   } finally {
-    if (browser) await browser.close();
-    if (server) await new Promise((resolveClose) => server.close(resolveClose));
-    rmSync(workspace, { recursive: true, force: true });
+    try {
+      if (browser) await browser.close();
+    } finally {
+      try {
+        if (server) await new Promise((resolveClose) => server.close(resolveClose));
+      } finally {
+        rmSync(workspace, { recursive: true, force: true });
+      }
+    }
   }
 });

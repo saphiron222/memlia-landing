@@ -15,6 +15,7 @@ function git(root, ...args) {
 }
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-publication-baseline-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   const blog = join(root, 'src/content/blog');
   mkdirSync(blog, { recursive: true });
   git(root, 'init', '--initial-branch=main');

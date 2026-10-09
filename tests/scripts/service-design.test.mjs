@@ -7,6 +7,7 @@ import { auditerServiceDesign } from '../../scripts/verify-service-design.mjs';
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-service-design-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   mkdirSync(join(root, 'src/content/services'), { recursive: true });
   mkdirSync(join(root, 'dist/automatisation/tache-test'), { recursive: true });
   mkdirSync(join(root, 'public/proofs/v2'), { recursive: true });
