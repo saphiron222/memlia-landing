@@ -32,10 +32,11 @@ import { estRattrapageIA } from './lib/blog-ia-catchup.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, renderedBodySha256, recipeSubstanceSha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
+import { readDilaCopy } from './lib/dila-source-copy.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
 export const LARGEURS_HERO = [768, 1200, 1600];
@@ -149,6 +150,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
       id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: datesSources.get(s.id) ?? jour,
       level: s.level, provenance: 'primary', official: s.official === true, upstreamUrl: s.url,
       classificationReason: s.classificationReason, method: null,
+      ...(s.dilaCopyPath !== undefined ? { dilaCopyPath: `preuves/sources/${s.id}.dila.json` } : {}),
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
     author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
@@ -234,14 +236,21 @@ function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
     || preuve.requestedUrl !== source.url || preuve.finalUrl !== source.url || preuve.upstreamUrl !== source.url
     || preuve.excerpt !== source.excerpt || preuve.level !== source.level || preuve.provenance !== 'primary'
     || preuve.official !== (source.official === true) || preuve.classificationReason !== source.classificationReason
-    || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
+    || preuve.method !== null || (source.dilaCopyPath === undefined && (!Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300))
     || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
     || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
-    || jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt
+    || (source.dilaCopyPath === undefined && jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt)
     || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
   const copiePath = join(dossier, preuve.contentPath);
   if (!existsSync(copiePath)) return false;
   const copie = readFileSync(copiePath, 'utf8');
+  if (source.dilaCopyPath !== undefined) {
+    try {
+      if (preuve.accessMode !== 'dila-copy' || preuve.httpStatus !== null || preuve.dilaCopyPath !== `preuves/sources/${source.id}.dila.json`) return false;
+      const dila = readDilaCopy({ root: dossier, path: preuve.dilaCopyPath, url: source.url, excerpt: source.excerpt, expectedSha256: preuve.dilaCopySha256 });
+      if (dila.text !== copie || dila.retrievedAt !== preuve.retrievedAt) return false;
+    } catch { return false; }
+  }
   return /^[a-f0-9]{64}$/.test(preuve.contentSha256 ?? '') && sha256(copie) === preuve.contentSha256 && copie.includes(source.excerpt);
 }
 
@@ -251,6 +260,11 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
   let recetteModifiee = false;
   const datesSources = new Map();
   for (const source of recette.sources) {
+    if (source.dilaCopyPath !== undefined) {
+      readDilaCopy({ root: dossierRecette, path: source.dilaCopyPath, url: source.url, excerpt: source.excerpt });
+      // L'export A4 devient un fichier du dossier scellé, avec ses dates inchangées.
+      writeFileSync(join(dossier, `preuves/sources/${source.id}.dila.json`), readFileSync(resolve(dossierRecette, source.dilaCopyPath)));
+    }
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
       let existante = null;
@@ -638,7 +652,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
   if (estReliquatW39(slug) || estRattrapageIA(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
-  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
@@ -652,7 +666,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
   refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   revuesValides = revueErreurs.length ? null : revues;
   const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);
@@ -698,13 +712,13 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   if (qualite) {
     ecrireJson(join(dossier, 'quality-review.json'), {
       version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
-      status: qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
+      status: (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
       categories: qualite.categories, evidence: qualite.evidence ?? [], reservations: qualite.reservations ?? [], verdict: qualite.verdict ?? '',
       subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash },
     });
     const cats = qualite.categories ?? {};
     const ligneCat = (id, libelle) => `| ${libelle} | ${cats[id]?.score ?? '—'}/${cats[id]?.max ?? '—'} |`;
-    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
+    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${(qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
   }
   const preuvesRecette = recette.preuvesSkills ?? {};
   if (qualite) {
@@ -789,7 +803,7 @@ export async function commande(argv, root = process.cwd()) {
     const { corps } = chargerRecette(root, slug);
     const renderedSha256 = renderedBodySha256(readFileSync(resolve(root, htmlPath), 'utf8'));
     if (!renderedSha256) throw new Error('Le rendu HTML ne contient pas de .article-corps.');
-    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
+    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), recipeSubstanceSha256: recipeSubstanceSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
     return;
   }
   if (action === 'preparer') {

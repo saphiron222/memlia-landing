@@ -1,3 +1,9 @@
+https://memlia.fr/*
+  Strict-Transport-Security: max-age=31536000
+
+/
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+
 /contact
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'
 
@@ -7,8 +13,36 @@
 /outils-comptables-gratuits/*
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
 
+/outils-comptables-gratuits/suivi-circularisation
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/checklist-pieces-comptables
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/bareme-heures-cac
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/seuil-signification-audit
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
 /outils-comptables-gratuits/calculateur-roi-automatisation
   Cache-Control: public, max-age=0, must-revalidate, no-transform
 
 /outils-comptables-gratuits/generateur-prompt-ia-gratuit
   Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/bibliotheque-prompts-comptables
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/outils-comptables-gratuits/fusionner-fichiers-csv
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+# Les AVIF restent accessibles au navigateur, mais hors index des moteurs.
+# WebP et PNG restent indexables pour la recherche d’images.
+/*.avif
+  X-Robots-Tag: noindex
+
+

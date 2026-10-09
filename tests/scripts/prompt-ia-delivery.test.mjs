@@ -36,7 +36,12 @@ test('prompt IA : GET/HEAD retirent uniquement Insights sans réutiliser le corp
       assert.equal(await response.text(), method === 'GET' ? 'full html' : '');
     }
     for (const response of [new Response(null, { status: 301, headers: { Location: route } }), new Response('error', { status: 404 })]) {
-      assert.equal(await onRequestGet({ request: new Request(`https://memlia.fr${route}`), next: async () => response }), response);
+      const expectedBody = await response.clone().text();
+      const result = await onRequestGet({ request: new Request(`https://memlia.fr${route}`), next: async () => response });
+      assert.equal(result.status, response.status);
+      assert.equal(result.headers.get('Location'), response.headers.get('Location'));
+      assert.equal(result.headers.get('Strict-Transport-Security'), 'max-age=31536000');
+      assert.equal(await result.text(), expectedBody);
     }
   } finally {
     if (previous === undefined) delete globalThis.HTMLRewriter;

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/circularisation-cac-proof/index.html",
+      "sha256": "e03fc601d6c12bc6aa98800228cc3aeea527d9fb6765332ba0d70b44881030bd"
+    },
+    {
+      "path": "docs/design/circularisation-cac-proof/styles.css",
+      "sha256": "961f6a0d7af32e6a7680b737fe982e9867bbfbabbebb44ab8355f6d1922a88e7"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/circularisation-cac-proof/content-contract.json",
+      "sha256": "2305634bc5d2f2aef7aed561098affbd3dc6905ffef5c3b0b19aa4b6d5827a79"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/circularisation-cac-proof/index.html#service-circularisation-cac",
+      "target": "public/proofs/v2/44-service-circularisation-cac.webp",
+      "bytes": 42098,
+      "sha256": "1f8b92c3c2a32f3e93ea08ceaeca8ae642967f24c7261de2fadbfbbcf401371a"
+    },
+    {
+      "source": "docs/design/circularisation-cac-proof/index.html#service-circularisation-cac",
+      "target": "public/proofs/v2/og/44-service-circularisation-cac.webp",
+      "bytes": 26714,
+      "sha256": "ad3487739fd2815f32ecd011b555ec1873167edf73c8c054c0f7e67653135a18"
+    }
+  ]
+}

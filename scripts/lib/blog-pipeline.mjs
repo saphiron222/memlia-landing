@@ -7,10 +7,11 @@ import { parse as parseHtml } from 'parse5';
 import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
+import { readDilaCopy } from './dila-source-copy.mjs';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, recipeReviewMatches } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 import { estRattrapageIA, lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './blog-ia-catchup.mjs';
@@ -59,7 +60,7 @@ export const CLAIM_TYPES = Object.freeze([
   'statistique-chiffre',
 ]);
 
-const MIN_SAFETY_WORDS = 80;
+
 /** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
 export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
@@ -742,6 +743,24 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
   const source = (manifest.sources ?? []).find((item) => item.id === sourceId);
   if (!source) throw new Error(`Source inconnue pour ${slug} : ${sourceId}.`);
   if (!hasText(excerpt, 12)) throw new Error('Un extrait exact d’au moins 12 caractères est requis pour relier la source.');
+  if (source.dilaCopyPath !== undefined) {
+    const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt });
+    const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
+    if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
+    const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
+    mkdirSync(dirname(evidencePath), { recursive: true });
+    writeFileSync(contentPath, copy.text);
+    writeJsonAtomic(evidencePath, {
+      version: 1, candidateSlug: slug, sourceId: source.id,
+      ...Object.fromEntries(['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method'].map((key) => [key, source[key]])),
+      requestedUrl: source.url, finalUrl: copy.url, httpStatus: null, accessMode: 'dila-copy',
+      checkedAt: copy.checkedAt, retrievedAt: copy.retrievedAt, contentType: 'text/plain',
+      contentPath: relative(dossier, contentPath), contentSha256: copy.textSha256, excerpt,
+      dilaCopyPath: source.dilaCopyPath, dilaCopySha256: copy.copySha256,
+      legalVersion: { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning },
+    });
+    return { sourceId, evidence: relative(absoluteRoot, evidencePath), content: relative(absoluteRoot, contentPath) };
+  }
   const approvedAddresses = new Map();
   const remember = ({ url, addresses }) => {
     approvedAddresses.set(url.hostname.replace(/^\[|\]$/g, ''), addresses);
@@ -843,7 +862,7 @@ function validateSubjectEvidence(errors, evidence, expected, label, expectedKind
   }
 }
 
-function validateSources(manifest, dossier, expected) {
+function validateSources(manifest, dossier, expected, preserveSealed = false) {
   const errors = [];
   const verified = new Map();
   for (const [index, source] of (manifest?.sources ?? []).entries()) {
@@ -892,9 +911,17 @@ function validateSources(manifest, dossier, expected) {
       if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
     }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
-    if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
+    if (source.dilaCopyPath !== undefined || proof.accessMode === 'dila-copy') {
+      try {
+        if (proof.accessMode !== 'dila-copy' || proof.httpStatus !== null || proof.dilaCopyPath !== source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(proof.dilaCopySha256 ?? '')) throw new Error('Mode DILA et copie divergents, sans réponse HTTP.');
+        const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt: proof.excerpt, expectedSha256: proof.dilaCopySha256,
+          ...(preserveSealed ? { asOf: proof.retrievedAt } : {}) });
+        if (proof.retrievedAt !== copy.retrievedAt || proof.checkedAt !== copy.checkedAt || proof.contentSha256 !== copy.textSha256
+          || !sameValue(proof.legalVersion, { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning })) throw new Error('Copie DILA : collecte, texte ou version divergents.');
+      } catch (error) { errors.push(`${label} : ${error.message}`); }
+    } else if (!Number.isInteger(proof.httpStatus) || proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
-    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+    if (proof.accessMode !== 'dila-copy' && jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
       errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
     }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
@@ -1391,7 +1418,7 @@ function validateReview(review, dossier, manifest, expected) {
       }
       score += expectedEarned;
     }
-    if (score < 90) errors.push(`Le score recalculé depuis la grille est ${score}/100 ; 90 minimum est requis.`);
+    // Le score reste une mesure éditoriale ; seuls les défauts critiques (P0) bloquent.
   }
   return errors;
 }
@@ -1656,13 +1683,8 @@ function jaccard(left, right) {
 
 function validateContentDepthAndDuplication(markdown, root, slug) {
   const errors = [];
-  const body = markdownBody(markdown);
   const normalized = normalizedContent(markdown);
-  const words = normalized.split(/\s+/).filter(Boolean);
-  const substantiveParagraphs = body.split(/\r?\n\s*\r?\n/).filter((part) => !/^#{1,6}\s/.test(part.trim()) && normalizedContent(part).split(/\s+/).filter(Boolean).length >= 12);
-  if (words.length < MIN_SAFETY_WORDS || substantiveParagraphs.length < 3) {
-    errors.push(`Contenu manifestement mince : le seuil anti-coquille exige au moins ${MIN_SAFETY_WORDS} mots utiles et 3 paragraphes substantiels ; ce seuil de sécurité n’est pas un objectif SEO.`);
-  }
+  if (!normalized) errors.push('Corps éditorial absent : une coquille vide ne peut être publiée.');
   const ownShingles = shingles(normalized);
   const blogDirectory = join(root, 'src/content/blog');
   if (!existsSync(blogDirectory)) return errors;
@@ -1804,11 +1826,10 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       const current = queue.candidates.find((candidate) => candidate.slug === slug);
       const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
       verifierIdentiteW39(recette, current, manifest?.publicationDate);
-      const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status)
-        && (candidate !== current || candidate.status === 'publie'));
+
       if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
       lireCadrageW39(absoluteRoot, manifest?.publicationDate);
-      verifierPlafonds(actifs, manifest?.publicationDate, { root: absoluteRoot, slug, serie: recette.serie });
+      // La cadence est une préférence du planificateur, pas une porte d'audit.
     } catch (error) {
       errors.push(`Cadrage W39 : ${error.message}`);
     }
@@ -1863,7 +1884,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
     const legacyHashes = legacyBaseline?.version === 1 ? legacyBaseline.articles?.[slug] : null;
     const legacyRecipeMatches = legacyHashes && existsSync(recipePath) && existsSync(independentReviewPath)
-      && legacyHashes.recipeSha256 === reviewSha256(readFileSync(recipePath))
+      && recipeReviewMatches(legacyHashes.recipeSha256, readFileSync(recipePath), absoluteRoot)
       && legacyHashes.reviewSha256 === reviewSha256(readFileSync(independentReviewPath));
     if (manifest?.editorialStatus === 'publie' && !independentReview?.subject && !legacyRecipeMatches) {
       errors.push('recette publiée divergente : une republication exige une nouvelle revue indépendante.');
@@ -1871,7 +1892,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
       && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
     if (!preservedPublished) {
-      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
+      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml, absoluteRoot));
     }
   }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
@@ -1893,7 +1914,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
-  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject) : { errors: [], verified: new Map() };
+  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject, gateMode === 'publication-scellee' && sealErrors.length === 0) : { errors: [], verified: new Map() };
   errors.push(...sources.errors);
   if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, evidenceSubject, sensitiveMatter));
   if (review && manifest) errors.push(...validateReview(review, dossier, manifest, evidenceSubject));

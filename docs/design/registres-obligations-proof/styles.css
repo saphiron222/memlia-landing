@@ -1,0 +1,10 @@
+@import url('../m4-r1-functional-proofs/styles.css');
+.workspace{display:grid;grid-template-columns:1.12fr 1fr;gap:32px;align-items:center}
+.fiche{min-height:620px}.fiche-body{padding:32px}.fiche-body h2{font:600 32px Fraunces;margin:0 0 14px}
+.muted{color:var(--muted);font-size:17px;line-height:1.5}
+table{border-collapse:collapse;width:100%;margin:30px 0;font-size:18px}th,td{text-align:left;padding:20px 12px;border-bottom:1px solid var(--line-soft);line-height:1.4}th{font-size:15px;color:var(--muted);font-weight:600}
+.annotation{border:1px solid var(--line);border-radius:12px;padding:24px;background:var(--paper)}.annotation p{margin:12px 0 0;font-size:18px;line-height:1.5}
+.decision{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:28px;font-size:16px}
+.stack{display:grid;gap:28px}.panel{padding:28px}.panel h3{font:600 26px/1.25 Fraunces;margin:0 0 18px}.panel p{font-size:18px;line-height:1.5;margin:0 0 20px}
+.calculation{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:24px 0;font-size:18px}.calculation strong{font:600 26px Fraunces;text-align:right;color:var(--green-dark)}
+.status-block{font-size:14px}

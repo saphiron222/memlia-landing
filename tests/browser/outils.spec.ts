@@ -1,5 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
+import { readFile } from 'node:fs/promises';
+import { INPUT_FIELDS } from '../../src/lib/signification.mjs';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
@@ -21,9 +23,22 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   for (const outil of OUTILS_DISPONIBLES) {
     await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+    const card = page.locator('[data-outil-card]').filter({ has: page.locator(`a[href="${outilPath(outil)}"]`) });
+    await expect(card.locator('dt')).toHaveText(['Entrée', 'Résultat', 'Limite']);
+    await expect(card.locator('dd').nth(0)).toHaveText(outil.promesse.entree);
+    await expect(card.locator('dd').nth(1)).toHaveText(outil.promesse.resultat);
+    await expect(card.locator('dd').nth(2)).toHaveText(outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]);
+    await expect(card).toContainText('Gratuit, sans inscription.');
+    await expect(card.locator('a')).not.toHaveText(/Utiliser sans compte|Ouvrir l’outil/);
   }
+  await expect(page.locator('#hub-confier a')).toHaveText('Confier une première tâche');
+  await expect(page.locator('#hub-confier a')).toHaveAttribute('href', '/contact');
+  expect(await page.evaluate(() => [...document.querySelectorAll('[data-outil-card]')].every(card => Boolean(card.compareDocumentPosition(document.querySelector('#hub-confier')!) & Node.DOCUMENT_POSITION_FOLLOWING)))).toBe(true);
+  await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
+  await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/proofs/v2/og/24-outils-hub.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
 
@@ -251,7 +266,9 @@ test('contrat de liens : le registre borne les outils publiés et leurs sorties'
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    const expectedLinks = [HUB, outil.pageService, ...(outil.articleExact ? [outil.articleExact] : []), outil.cta];
+    // Les trois suites (explorer, comprendre, passer à votre tâche) sont trois cartes de même rang ;
+    // la ressource associée, quand elle existe, suit en lien d'action (système de page, 07/10/2026).
+    const expectedLinks = [HUB, outil.pageService, outil.cta, ...(outil.articleExact ? [outil.articleExact] : [])];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
     await expect(page.locator('[data-tool-links] a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('[data-tool-links] a[href^="/contact?"]')).toHaveCount(0);
@@ -270,7 +287,10 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
     await expect(suite.getByText('Explorer', { exact: true })).toBeVisible();
     await expect(suite.getByText('Comprendre', { exact: true })).toBeVisible();
     await expect(suite.getByText('Passer à votre tâche', { exact: true })).toBeVisible();
-    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
+    // Un seul bouton principal en fin de page, celui de l'appel final : dans la suite, l'appel à
+    // passer à sa tâche garde ses mots et son lien, en lien d'action de carte (système de page).
+    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/carte-action/);
+    await expect(page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
     await expect(suite.getByRole('link', { name: /Voir le cadrage des factures fournisseurs/ })).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
 
@@ -280,7 +300,8 @@ test('pour continuer : trois niveaux lisibles, clavier et responsive sans débor
     await expect(links.nth(1)).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(links.nth(2)).toBeFocused();
-    await expect(links.nth(2)).not.toHaveCSS('box-shadow', 'none');
+    // Le focus d'un lien de carte se dessine sur la carte entière (global.css).
+    await expect(suite.locator('.carte:has(.carte-lien:focus-visible)')).toHaveCSS('outline-style', 'solid');
   }
 });
 
@@ -299,11 +320,16 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
-    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
+    // L'appel « Confier une première tâche » : deux fois dans la page (suite et appel final), au pied,
+    // et au bouton de la navigation, qui porte le même libellé depuis le 07/10/2026 (décision de Kevin).
+    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(2);
+    await expect(page.locator('header .nav-principal')).toHaveText('Confier une première tâche');
+    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(4);
     const graph = await graphFrom(page);
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);
@@ -346,12 +372,12 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
   }
 });
 
-test('outils publiés : zéro requête et zéro stockage après armement', async ({ page }) => {
+test('outils publiés : zéro requête et zéro stockage après armement', async ({ page, context }) => {
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
     const listener = (request: { method(): string; url(): string }) => { if (armed) requests.push(`${request.method()} ${request.url()}`); };
-    page.on('request', listener);
+    context.on('request', listener);
     await page.goto(outilPath(outil));
     await page.evaluate(() => document.fonts.ready);
     await page.waitForLoadState('networkidle');
@@ -427,6 +453,108 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
       await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click();
       await expect(page.locator('[data-editor]')).toHaveValue(/Relance de pièces/);
+    } else if (outil.slug === 'suivi-circularisation') {
+      await page.getByText('Importer un CSV : mapping, aperçu et sélection', { exact: true }).click();
+      await page.locator('#circ-csv').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from('id;category;recipient;contact;referenceDate;currency;requestedAmount;confirmationType\n0007;client;Tiers fictif;Contact fictif;2026-01-01;EUR;100;open'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('[data-circ-mapping] select')).toHaveCount(10);
+      for (const field of ['id', 'category', 'recipient', 'contact', 'referenceDate', 'currency', 'requestedAmount', 'confirmationType']) {
+        await page.locator(`[data-circ-mapping] select[name="${field}"]`).selectOption(field);
+      }
+      await page.getByRole('button', { name: 'Voir l’aperçu mappé', exact: true }).click();
+      await expect(page.locator('[data-circ-import-summary]')).toContainText('1 lignes au total');
+      await page.locator('[data-circ-preview-rows] input').check();
+      await page.locator('#circ-import-valid').check();
+      await page.getByRole('button', { name: 'Ajouter la sélection validée', exact: true }).click();
+      await expect(page.locator('[data-circ-summary]')).toContainText('1 tiers');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-circ-export="json"]').click();
+      await downloading;
+    } else if (outil.slug === 'bareme-heures-cac') {
+      await page.locator('[data-demo]').click();
+      await expect(page.locator('[data-result]')).toContainText('20 à 35');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-export="json"]').click();
+      await downloading;
+    } else if (outil.slug === 'seuil-signification-audit') {
+      await page.getByText('Importer des scénarios CSV', { exact: true }).click();
+      await page.locator('#sig-csv').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from(INPUT_FIELDS.join(';') + '\n0007;Scénario fictif;CA;1000000;1;2026;Balance;Motif;rate;70'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('[data-mapping]')).toHaveCount(10);
+      for (let i = 0; i < INPUT_FIELDS.length; i++) {
+        await page.locator(`[data-mapping="${INPUT_FIELDS[i]}"]`).selectOption(String(i));
+      }
+      await page.locator('[data-sig-preview]').click();
+      await expect(page.locator('[data-sig-import-summary]')).toContainText('1 lignes');
+      await page.locator('[data-sig-import-valid]').check();
+      await page.locator('[data-sig-import-confirm]').click();
+      await expect(page.locator('[data-sig-table]')).toContainText('10000.00');
+      await page.getByRole('button', { name: 'Retenir 0007', exact: true }).click();
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-sig-export="json"]').click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      expect(JSON.parse(raw).retainedId).toBe('0007');
+      page.once('dialog', dialog => dialog.accept());
+      await page.locator('[data-sig-reset]').click();
+      await expect(page.locator('[data-sig-summary]')).toContainText('0 scénario');
+      await page.getByText('Reprendre une sauvegarde JSON', { exact: true }).click();
+      await page.locator('#sig-json').setInputFiles({name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw)});
+      await page.locator('[data-sig-restore] button').click();
+      await expect(page.locator('[data-sig-summary]')).toContainText('Retenu : 0007');
+      const exporting = page.waitForEvent('download');
+      await page.locator('[data-sig-export="json"]').click();
+      expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
+    } else if (outil.slug === 'fusionner-fichiers-csv') {
+      await page.locator('#fusion-files').setInputFiles([
+        { name: 'a.csv', mimeType: 'text/csv', buffer: Buffer.from('ID;Montant\n00123;10\n002;20') },
+        { name: 'b.csv', mimeType: 'text/csv', buffer: Buffer.from('Montant;ID\n30;003') },
+      ]);
+      await page.getByRole('button', { name: 'Importer les fichiers', exact: true }).click();
+      await expect(page.locator('[data-mapping]')).toBeVisible();
+      await page.locator('[data-provenance]').check();
+      await page.locator('[data-confirmed]').check();
+      await page.locator('[data-merge]').click();
+      await expect(page.locator('[data-summary]')).toContainText('3 lignes consolidées');
+      await expect(page.locator('[data-table]')).toContainText('00123');
+      await page.locator('[data-reviewed]').check();
+      const csvDownload = page.waitForEvent('download');
+      await page.locator('[data-export="csv"]').click();
+      expect(await readFile((await (await csvDownload).path())!, 'utf8')).toContain('"003";"30";"b.csv";"2"');
+      const reportDownload = page.waitForEvent('download');
+      await page.locator('[data-export="report"]').click();
+      const report = JSON.parse(await readFile((await (await reportDownload).path())!, 'utf8'));
+      expect(report.outputRows).toBe(3);
+      expect(report.origins).toHaveLength(3);
+      await page.locator('[data-reset]').click();
+      await expect(page.locator('[data-mapping]')).toBeHidden();
+      await expect(page.locator('[data-table]')).toBeEmpty();
+    } else if (outil.slug === 'checklist-pieces-comptables') {
+      await page.getByRole('button', { name: 'Charger l’exemple fictif', exact: true }).click();
+      await expect(page.locator('[data-cl-item]')).toHaveCount(4);
+      await expect(page.locator('#cl-message')).toHaveValue(/Relevé bancaire de septembre/);
+      expect(await page.locator('#cl-message').inputValue()).not.toMatch(/Factures d’achat|Récapitulatif de paie/);
+      await expect(page.locator('[data-cl-unknown]')).toContainText('Récapitulatif de paie');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      await page.locator('#cl-period').fill('Octobre 2026');
+      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
+      await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
+      await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
+      await expect(page.locator('[data-cl-apply]')).toBeEnabled();
+      await expect(page.locator('#cl-period')).toHaveValue('Octobre 2026');
+      page.once('dialog', dialog => dialog.accept());
+      await page.locator('[data-cl-apply]').click();
+      await expect(page.locator('#cl-period')).toHaveValue('Septembre 2026');
+      const exporting = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
     } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
@@ -449,8 +577,18 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'suivi-circularisation') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/circularisation-worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Parsing, preview and validated selection each create their own local Worker.
+      expect(requests).toHaveLength(3);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'fusionner-fichiers-csv') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fusion-csv\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Import and confirmed consolidation create two local Workers; exports reuse the second.
+      expect(requests).toHaveLength(2);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
-    page.off('request', listener);
+    context.off('request', listener);
   }
 });
 

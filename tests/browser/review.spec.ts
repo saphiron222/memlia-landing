@@ -12,23 +12,27 @@ for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
   });
 }
 
-test('navigation mobile visible reste au clavier sans verrouiller le fond', async ({ page }) => {
+test('menu mobile : clavier, fermeture et libération du fond', async ({ page }) => {
   await page.setViewportSize({width:375,height:812});
   await page.goto('/');
-  const liens = page.locator('[data-mobile-visible] a');
+  await page.locator('[data-burger]').click();
+  const liens = page.locator('#menu-mobile a');
   await liens.first().focus();
   await page.keyboard.press('Tab');
   await expect(liens.nth(1)).toBeFocused();
-  await expect(page.locator('#main')).not.toHaveAttribute('inert');
+  await expect(page.locator('#main')).toHaveAttribute('inert', '');
   await page.keyboard.press('Escape');
+  await expect(page.locator('#main')).not.toHaveAttribute('inert');
   await expect(page.locator('#menu-mobile')).toBeHidden();
   await expect(page.locator('body')).not.toHaveCSS('position','fixed');
 });
 
 test('garanties cohérentes avec les limites et les données', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.garantie-lien').filter({hasText:'RGPD'})).toHaveAttribute('href','#faq-donnees-reelles');
-  await expect(page.locator('.garanties-grille')).not.toContainText('Zéro macro, zéro migration');
+  // Système de page du 07/10/2026 : les six garanties de l'accueil sont une liste de liens.
+  await expect(page.locator('#garanties .lien-rangee').filter({hasText:'RGPD'})).toHaveAttribute('href','#faq-donnees-reelles');
+  await expect(page.locator('#garanties .lien-rangee')).toHaveCount(6);
+  await expect(page.locator('#garanties')).not.toContainText('Zéro macro, zéro migration');
 });
 
 test('promesse tablette conserve des colonnes lisibles', async ({ page }) => {

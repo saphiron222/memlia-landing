@@ -1,6 +1,6 @@
 # CLAUDE.md — memlia.fr
 
-Site public de **Memlia** (SASU, Paris 8ᵉ — RCS Paris 108 621 541) : l'IA pour les cabinets d'expertise comptable. Markdown français.
+Site public de **Memlia** (SASU, Paris 8ᵉ — RCS Paris 108 621 541) : l'automatisation IA des tâches répétitives des cabinets d'expertise comptable et de commissariat aux comptes. Markdown français.
 Dépôt privé `saphiron222/memlia-landing`, intégré sur `main` sous garde PR, déployé sur **Cloudflare Pages**.
 
 ## Ce que ce dépôt est, et ce qu'il n'est pas
@@ -11,7 +11,7 @@ Dépôt privé `saphiron222/memlia-landing`, intégré sur `main` sous garde PR,
 | parler le vocabulaire réel des cabinets (paie, DSN, bulletin, portefeuille) | promettre une fonction qu'aucune automatisation livrée ne fait |
 
 **Ce qui se vend, et qui doit transparaître : l'automatisation IA des tâches répétitives d'un cabinet
-d'expertise comptable.** Un service, pas un logiciel : observer la tâche, écrire sa règle et ses limites dans
+d'expertise comptable ou de commissariat aux comptes.** Un service, pas un logiciel : observer la tâche, écrire sa règle et ses limites dans
 les mots du cabinet, automatiser **dans les outils existants**, éprouver sur un jeu d'essai fictif, recetter,
 maintenir. Proposition puis validation humaine ; prix à la complexité, jamais au siège. Le **véhicule** se
 choisit par tâche (panneau Office.js sur un classeur, add-in COM/.NET, application de bureau) et n'est
@@ -30,14 +30,22 @@ npx astro check                  # types et contenu : doit rendre 0 erreur
 npx playwright test              # suite navigateur
 ```
 
+Ces trois commandes complètes tournent dans la CI GitHub (« Repository gates », obligatoire pour
+fusionner dans `main`) : son verdict sur le SHA exact fait foi. Sur le Mac, ne lancer que les tests
+ciblés du changement et, si la copy, le menu ou le pied de page changent, `npm run regen:generated`.
+
 ## Message et copy
 
-**La charte de message fait foi : `.agents/product-marketing.md` (v3, 17/09/2026).** Toute surface publique
+**La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique
 (site, blog, LinkedIn, devis, prise de parole) suit son angle (« Votre cabinet tourne sur un savoir-faire que
 personne n'a écrit »), sa promesse (toute tâche répétitive, prise entière), sa voix (« nous », concret,
 confiant) et ses interdits. Une phrase qui la contredit se corrige ; une phrase qu'elle ne couvre pas se
 discute dans la charte avant d'être publiée. Le copy des pages vit dans `src/data/pages-v2.mjs`,
 `src/data/site.mjs`, `src/data/faq.ts`, les sections de l'accueil et les pages ; `public/llms.txt` le reflète.
+
+Pour les CAC, appliquer les personas, le lexique normatif et la fiche outil de la charte : Memlia prépare ;
+le CAC apprécie les données et l'outil, documente ses travaux et conserve son opinion et sa responsabilité.
+Le secret et l'indépendance se cadrent par mission ; aucun rapprochement entre production et audit des mêmes comptes n'est vendu comme une synergie.
 
 ## Charte
 
@@ -49,15 +57,15 @@ rédigé, en WebP/AVIF ; les captures produit viennent du banc Windows, sur le j
 
 ## Règles non négociables
 
-- **Rien n'est publié sans l'autorisation applicable de Kevin.** Tu travailles sur une branche
-  `site/<sujet>` et peux déployer une **prévisualisation**
-  (`npx wrangler pages deploy dist --project-name memlia --branch preview-<sujet>`)
-  lorsque le contrat de la carte le prévoit. Depuis la décision Kevin du 24/09/2026, un agent peut
-  pousser sans nouvelle validation sa propre branche par un `git push` non destructif après contrôle
-  du dépôt, de la branche et du diff, puis vérification du SHA distant et de la CI. Le push forcé,
-  la suppression de branche et toute refspec destructive restent interdits. Cette autorisation ne
-  vaut **pas** fusion, déploiement de production (`--branch main`), publication d'article ou levée
-  d'une revue QA : ces étapes suivent les autorisations et gardes propres à chaque carte.
+- **Livraison (constitution Hermes du 03/10/2026, `~/hermes/AGENTS.md` §5).** Tu travailles sur une
+  branche `site/<sujet>` et la pousses librement : `git push` non destructif, après contrôle du dépôt, de
+  la branche et du diff, puis vérification du SHA distant et de la CI. La fusion sur `main` suit dès que la
+  CI est verte et qu'**une** revue indépendante est PASS (QA pour le code, `metier` pour le contenu
+  réglementé) ; une correction du même candidat repasse la même revue. Le blog se publie seul : `main` →
+  Cloudflare Pages, jamais par un déploiement manuel de production (`--branch main`). Une
+  **prévisualisation** reste possible (`npx wrangler pages deploy dist --project-name memlia --branch
+  preview-<sujet>`). Le push forcé, la suppression de branche distante et toute refspec destructive restent
+  interdits. Kevin n'est sollicité que pour les quatre cas de la constitution (§1) ; le reste, tu le tranches.
 - **Le SEO acquis ne régresse pas** : `title`, `description`, canonical, Open Graph, JSON-LD (Organization,
   WebSite, Service, FAQPage), `robots.txt`, sitemap, `llms.txt`, pages légales en `noindex`,
   `lang="fr"`, un seul `h1`. Lighthouse ≥ 95 sur les quatre axes.
