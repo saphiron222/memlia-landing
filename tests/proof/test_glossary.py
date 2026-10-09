@@ -2,11 +2,15 @@
 import hashlib
 import json
 from html.parser import HTMLParser
+from html import unescape
 from pathlib import Path
 import re
 import unittest
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from urllib.parse import urlsplit
+from source_inventory import source_export
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
@@ -34,6 +38,10 @@ EXPECTED_ANCHORS = {
 }
 
 
+def glossary_entries():
+    return source_export(ROOT, 'src/data/glossary.ts', 'GLOSSARY_ENTRIES')
+
+
 class Document(HTMLParser):
     def __init__(self, path):
         super().__init__()
@@ -58,43 +66,89 @@ def sitemap_urls():
     return urls
 
 
+class GlossaryInventoryRegression(unittest.TestCase):
+    def test_un_terme_ajoute_aux_sources_est_attendu_dans_le_rendu(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'src/data').mkdir(parents=True)
+            anchors = sorted(EXPECTED_ANCHORS | {'terme-fictif'})
+            entries = [{'anchor': anchor, 'term': f'Terme {anchor}'} for anchor in anchors]
+            (root / 'src/data/glossary.ts').write_text(
+                'export const GLOSSARY_ENTRIES = ' + json.dumps(entries) + ';')
+            html = '<section data-lettre="T">' + ''.join(
+                f'<div class="glossaire-entree" id="{anchor}"><dt><a>Terme {anchor}</a></dt></div>'
+                for anchor in anchors) + '</section>'
+            proof = GlossaryProof('test_unique_visible_terms_and_real_letters')
+            proof.html = html
+            with patch.dict(globals(), ROOT=root):
+                proof.test_unique_visible_terms_and_real_letters()
+                # Même compte, mauvaise identité : aucune substitution ne passe.
+                proof.html = html.replace('id="terme-fictif"', 'id="intrus"')
+                with self.assertRaises(AssertionError):
+                    proof.test_unique_visible_terms_and_real_letters()
+
+
 class GlossaryProof(unittest.TestCase):
     def setUp(self):
         self.path = DIST / 'glossaire.html'
         self.html = self.path.read_text()
         self.doc = Document(self.path)
 
-    def test_exactly_53_unique_visible_terms_and_real_letters(self):
+    def test_unique_visible_terms_and_real_letters(self):
+        entries = glossary_entries()
+        expected = {entry['anchor'] for entry in entries}
+        self.assertGreaterEqual(len(entries), 53)
+        self.assertEqual(len(entries), len(expected), 'ancres sources dupliquées')
+        self.assertTrue(EXPECTED_ANCHORS <= expected, 'termes historiques perdus')
         anchors = re.findall(r'<div class="glossaire-entree" id="([a-z0-9-]+)"', self.html)
-        self.assertEqual(len(anchors), 53)
-        self.assertEqual(set(anchors), EXPECTED_ANCHORS)
+        self.assertEqual(len(anchors), len(entries))
+        self.assertEqual(set(anchors), expected)
         self.assertEqual(len(anchors), len(set(anchors)))
         terms = re.findall(r'<dt[^>]*>\s*<a[^>]*>(.*?)</a>', self.html, re.S)
-        self.assertEqual(len(terms), 53)
+        self.assertEqual(len(terms), len(entries))
+        self.assertCountEqual([unescape(term).strip() for term in terms], [entry['term'] for entry in entries])
+        rendered_terms = re.findall(
+            r'<div class="glossaire-entree" id="([a-z0-9-]+)"[^>]*>\s*<dt[^>]*>\s*<a[^>]*>(.*?)</a>',
+            self.html, re.S)
+        self.assertEqual({anchor: unescape(term).strip() for anchor, term in rendered_terms},
+                         {entry['anchor']: entry['term'] for entry in entries})
         letters = re.findall(r'<section[^>]*data-lettre="([A-Z])"', self.html)
         self.assertEqual(letters, sorted(set(term.strip()[0].upper() for term in terms)))
 
     def test_metadata_sources_and_boundaries_are_complete(self):
-        self.assertEqual(self.html.count('data-definition='), 53)
-        self.assertEqual(self.html.count('data-example-fictitious='), 53)
-        self.assertEqual(self.html.count('data-common-confusion='), 53)
-        self.assertEqual(self.html.count('data-automation-boundary='), 53)
+        count = len(glossary_entries())
+        self.assertGreaterEqual(count, 53)
+        self.assertEqual(self.html.count('data-definition='), count)
+        self.assertEqual(self.html.count('data-example-fictitious='), count)
+        self.assertEqual(self.html.count('data-common-confusion='), count)
+        self.assertEqual(self.html.count('data-automation-boundary='), count)
+        rendered = {attrs['id']: attrs for tag, attrs in self.doc.tags
+                    if tag == 'div' and attrs.get('class') == 'glossaire-entree'}
+        for entry in glossary_entries():
+            for attribute, field in [('data-definition', 'definition'),
+                                     ('data-example-fictitious', 'exampleFictitious'),
+                                     ('data-common-confusion', 'commonConfusion'),
+                                     ('data-automation-boundary', 'automationBoundary')]:
+                self.assertEqual(rendered[entry['anchor']].get(attribute), entry[field],
+                                 (entry['anchor'], attribute))
         # Décision de Kevin du 06/10/2026 : pas de bloc « Sources » ; l'organisme externe est cité par un lien
         # en fin de définition. Les seules sources internes (méthode, articles Memlia) restent des renvois.
         self.assertNotIn('entree-sources', self.html)
         definitions = re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)
-        self.assertEqual(len(definitions), 53)
+        self.assertEqual(len(definitions), count)
         entrees = re.findall(
             r'<div class="glossaire-entree" id="([a-z0-9-]+)".*?<p class="definition"[^>]*>(.*?)</p>\s*<p class="contexte"[^>]*>(.*?)</p>',
             self.html, re.S)
-        self.assertEqual(len(entrees), 53)
+        self.assertEqual(len(entrees), count)
         cites = [ident for ident, definition, contexte in entrees if 'href="https://' in definition + contexte]
-        # 22 entrées ne s'appuient que sur la méthode ou un article Memlia : rien d'externe à citer.
-        self.assertEqual(len(cites), 31)
+        sources = source_export(ROOT, 'src/data/glossary.ts', 'GLOSSARY_SOURCES')
+        self.assertEqual(set(cites), {entry['anchor'] for entry in glossary_entries()
+                                     if any(sources[ident]['url'].startswith('https://')
+                                            for ident in entry['sourceIds'])})
         # Une définition écrite par Memlia n'est pas celle de l'organisme cité : la source externe se pose sur le mot
         # qu'elle établit, jamais en parenthèse après une phrase maison (revue de #166, 07/10/2026).
         maison = set(re.findall(r"id: '([a-z0-9-]+)'[^\n]*nature: 'Éditoriale Memlia'", (ROOT / 'src/data/glossary.ts').read_text()))
-        self.assertEqual(len(maison), 20)
+        self.assertEqual(maison, {entry['anchor'] for entry in glossary_entries() if entry['nature'] == 'Éditoriale Memlia'})
         for ident, definition, contexte in entrees:
             if ident in maison:
                 self.assertNotRegex(definition + contexte, r'\(<a [^>]*href="https://', ident)
@@ -122,9 +176,15 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(types, ['CollectionPage', 'DefinedTermSet', 'BreadcrumbList', 'Organization', 'WebSite'])
         term_set = graph[1]
         self.assertEqual(term_set['url'], GLOSSARY_URL)
-        self.assertEqual(len(term_set['hasDefinedTerm']), 53)
+        entries = glossary_entries()
+        self.assertGreaterEqual(len(entries), 53)
+        self.assertEqual(len(term_set['hasDefinedTerm']), len(entries))
         schema_urls = {term['url'] for term in term_set['hasDefinedTerm']}
-        self.assertEqual(schema_urls, {f'{GLOSSARY_URL}#{anchor}' for anchor in EXPECTED_ANCHORS})
+        self.assertEqual(schema_urls, {f'{GLOSSARY_URL}#{entry["anchor"]}' for entry in entries})
+        self.assertCountEqual([term['name'] for term in term_set['hasDefinedTerm']], [entry['term'] for entry in entries])
+        self.assertEqual(
+            {term['url']: (term['name'], term['description']) for term in term_set['hasDefinedTerm']},
+            {f'{GLOSSARY_URL}#{entry["anchor"]}': (entry['term'], entry['definition']) for entry in entries})
         self.assertTrue(all(term['inDefinedTermSet'] == {'@id': f'{GLOSSARY_URL}#term-set'} for term in term_set['hasDefinedTerm']))
         self.assertNotIn('FAQPage', self.html)
         crumbs = graph[2]['itemListElement']
@@ -164,8 +224,10 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(list((DIST / 'glossaire').glob('*.html')), [])
         self.assertNotRegex(self.html, r'href="/glossaire/[^"]+"')
         definitions = [re.sub(r'<[^>]+>', ' ', value).strip() for value in re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)]
-        self.assertEqual(len(definitions), 53)
-        self.assertEqual(len(set(definitions)), 53)
+        count = len(glossary_entries())
+        self.assertGreaterEqual(count, 53)
+        self.assertEqual(len(definitions), count)
+        self.assertEqual(len(set(definitions)), count)
         for entry in re.findall(r'<div class="glossaire-entree".*?</dd>\s*</div>', self.html, re.S):
             text = re.sub(r'<[^>]+>', ' ', entry)
             self.assertGreaterEqual(len(text.split()), 55)

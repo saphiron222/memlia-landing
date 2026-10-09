@@ -5,6 +5,9 @@ import ProofMedia from '@/components/ProofMedia.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { SERVICE_ID } from '@/data/schema.mjs';
+import { famillesDeLaProfession } from '@/data/familles';
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 import type { ProofId } from '@/data/proofs';
 
 const page = PAGES_V2.methode;
@@ -44,7 +47,7 @@ const renvois = [
   { texte: 'Situer les usages, règles, données, validations et mesures déclarés pour choisir une prochaine tâche.', libelle: 'Faire le diagnostic de maturité IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
   { texte: 'Ce que le service livre concrètement, ce qu’il requiert et ce qui détermine le devis.', libelle: 'L’automatisation sur mesure', href: '/automatisation-cabinet-comptable' },
   { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Les garanties', href: '/garanties' },
-  { texte: 'La carte des tâches automatisables d’un cabinet : douze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte des tâches', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
+  { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte des tâches', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Pourquoi Memlia existe, et qui écrit et code la règle.', libelle: 'À propos', href: '/a-propos' },
 ];
 const appel = {
