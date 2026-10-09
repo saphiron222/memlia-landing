@@ -15,8 +15,9 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('h1')).toHaveText(CONTENU_CAC.hero.titre);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${SEO_CAC.chemin}`);
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', CONTENU_CAC.hero.titre);
-    await expect(page.locator('video, [data-video-player], [data-video-sound]')).toHaveCount(0);
-    await expect(page.locator('.hero-ecran img')).toBeVisible();
+    await expect(page.locator('[data-video-player] video')).toHaveAttribute('src', CONTENU_CAC.hero.video);
+    await expect(page.locator('[data-video-player] video')).toHaveAttribute('poster', CONTENU_CAC.hero.poster);
+    await expect(page.locator('[data-video-sound]')).toBeVisible();
     await expect(page.locator('#couverture-cac')).toHaveText('Ce que votre suite d’audit fait déjà');
     for (const id of ['usages', 'methode', 'preuves', 'questions', 'use-certification', 'use-interventions', 'use-sacc', 'use-durabilite', 'use-administration']) await expect(page.locator(`#${id}`)).toHaveCount(1);
     const table = page.locator('[data-frontiere-cac] table');

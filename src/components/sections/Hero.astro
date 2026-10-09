@@ -35,12 +35,14 @@ const retour = '\n';
     <div class="hero-verre cadre">
       {contenu.video ? <div class="hero-ecran" data-video-player>
         <video muted loop playsinline preload="none" width="1920" height="1080"
-          tabindex="0" data-video aria-label="Reprendre la vidéo"
+          tabindex="0" data-video aria-label="Reprendre la vidéo" aria-describedby={contenu.descriptionVideo ? 'hero-video-description' : undefined}
           disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
           poster={contenu.poster} src={contenu.video} data-video-mobile={contenu.videoMobile}>
           <track kind="subtitles" srclang="fr" label="Français" src={contenu.sousTitres} />
           <p>Votre navigateur ne peut pas lire cette vidéo. <a href={contenu.video}>Télécharger la vidéo</a>.</p>
         </video>
+        {contenu.descriptionVideo && <p id="hero-video-description" class="sr-only">{contenu.descriptionVideo}</p>}
+        {contenu.sousTitresOptionnels && <button class="hero-video-captions" type="button" data-video-captions aria-pressed="false" hidden>Sous-titres</button>}
         <div class="hero-video-overlay" data-video-overlay>
           <button class="hero-video-sound" type="button" data-video-sound>
             <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
@@ -56,7 +58,7 @@ const retour = '\n';
         <noscript>
           <p class="hero-video-noscript">
             Votre navigateur ne peut pas lancer le lecteur interactif.
-            <a href={contenu.video}>Télécharger la vidéo</a>.
+            <a href={contenu.video}>Télécharger la vidéo</a>.{contenu.sousTitresOptionnels && <a href={contenu.sousTitres}>Télécharger les sous-titres</a>}
           </p>
         </noscript>
       </div> : <div class="hero-ecran">
@@ -66,6 +68,8 @@ const retour = '\n';
 
   </div>
 </section>
+
+{contenu.sousTitresOptionnels && <script is:inline src="/scripts/cac-video-captions.js" defer></script>}
 
 <style>
   .hero {
@@ -180,6 +184,31 @@ const retour = '\n';
     stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+  .hero-video-captions {
+    position: absolute;
+    top: calc(100% + var(--espace-3));
+    right: 0;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--accent-appui);
+    border-radius: var(--r-bouton);
+    background: var(--blanc);
+    color: var(--encre);
+    font: inherit;
+    font-size: var(--t-sm);
+    cursor: pointer;
+  }
+  .hero-ecran:has([data-video-captions]) {
+    margin-bottom: calc(44px + var(--espace-3));
+  }
+  .hero-video-captions[aria-pressed="true"] {
+    background: var(--accent-texte);
+    color: var(--blanc);
+  }
+  .hero-video-captions:focus-visible {
+    outline: 3px solid var(--accent-texte);
+    outline-offset: 3px;
   }
   /* Le message d'état se lit en haut : il ne recouvre jamais le bouton du son qu'il désigne. */
   .hero-video-status,
