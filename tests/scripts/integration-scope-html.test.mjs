@@ -20,7 +20,9 @@ for (const slug of slugs) {
     assert.match(html, new RegExp(`<link rel="canonical" href="https://memlia.fr/integrations/${slug}"`));
     assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
     assert.match(html, new RegExp(`/proofs/integrations/${slug}\\.webp`));
-    assert.match(html, /data-primary-source/);
+    // Décision de Kevin du 06/10/2026 : pas de section « Source » ; le document de l'éditeur se cite dans le texte.
+    assert.doesNotMatch(html, /data-primary-source|id="source"/, 'aucune section Source');
+    assert.match(html, /aria-labelledby="repere-editeur"[\s\S]*?<a href="https:\/\/[^"]+" rel="noopener noreferrer"/, 'le document de l’éditeur est cité par un lien dans le paragraphe de portée');
     assert.doesNotMatch(visible, /consultée le|vérifiée le/i);
     assert.match(visible, /Cas illustratifs sur données fictives/);
     assert.match(visible, /aucun essai dans le logiciel éditeur/);

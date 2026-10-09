@@ -182,6 +182,12 @@ class CacArchitecture(unittest.TestCase):
                 self.assertEqual(p['query'], existing[p['url']]['query'])
 
     def test_generated_artifact_matches_sources(self):
+        promoted = next(p for p in self.source['pages'] if p['id'] == 'outil-circu')
+        self.assertIn(promoted['state'], ('construite-en-revue', 'publiee'))
+        invalid = deepcopy(self.source)
+        next(p for p in invalid['pages'] if p['id'] == 'outil-circu')['query'] = 'une autre intention'
+        with self.assertRaisesRegex(ValueError, 'owner drift'):
+            CAC.resolve(source=invalid)
         self.assertEqual(json.loads(CAC.OUTPUT.read_text()), self.arch)
         plan = json.loads((HERE / 'cluster-plan.json').read_text())
         posts = [p for c in plan['clusters'] for p in c['posts']]
@@ -203,7 +209,7 @@ class CacArchitecture(unittest.TestCase):
             {'slug': 'a2', 'pole': 'A', 'format': 'x', 'date': '2026-10-08', 'statut': 'planned'}]
         PLAN.alterner(entries)
         self.assertEqual(PLAN.verifier_alternance(entries), [])
-        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (2, 4, (0, 1, 2, 3)))
+        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (3, 15, (0, 1, 2, 3, 4)))
 
 
 if __name__ == '__main__':
