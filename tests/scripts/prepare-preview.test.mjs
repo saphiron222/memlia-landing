@@ -11,6 +11,7 @@ const PREVIEW_META = '<meta name="robots" content="noindex, nofollow">';
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-preview-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   const dist = join(root, 'dist');
   const target = join(root, '.qa', 'preview-dist');
   mkdirSync(join(dist, 'blog'), { recursive: true });

@@ -25,6 +25,7 @@ function html({ route, h1, media, href, ogTitle = h1, headline = h1, description
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-page-contract-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   for (const path of ['src/pages', 'src/layouts', 'src/components/sections', 'src/styles', 'dist', 'public/proofs', 'docs/qa/site-v2']) {
     mkdirSync(join(root, path), { recursive: true });
   }

@@ -10,23 +10,26 @@ import { chargerAutocompletionMesuree } from '../../scripts/lib/blog-title-inten
 
 const sourceRoot = resolve(import.meta.dirname, '../..');
 // Fixture scellée isolée : le vrai candidat peut être en republication go-production.
-const root = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-fixture-'));
+let root;
 const slug = 'prompt-chatgpt-expert-comptable';
-for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
-  cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
-}
-// Date historique de cette fixture, cohérente avec ses preuves et son relevé.
-// Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.
+// Date historique, cohérente avec les preuves ; jamais le jour d'exécution.
 const jourFixture = '2026-10-03';
-const fixture = await materialiser({ root, slug, statut: 'publie', jour: jourFixture });
-assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
-ecrireSceau(root, slug);
-test.after(() => rmSync(root, { recursive: true, force: true }));
-// Le dernier relevé, toutes sources confondues (forge et relevé de demande du lundi) : neuf jours plus tard,
-// plus aucun n'est frais, quel que soit le fichier qui l'a apporté.
-const toutesMesures = chargerAutocompletionMesuree(root, { au: '9999-12-31', ageMaxJours: Number.MAX_SAFE_INTEGER });
-const dernierReleve = Object.values(toutesMesures.mesureParRequete).map(({ date }) => date).sort().at(-1);
-const au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
+let au;
+test.after(() => { if (root) rmSync(root, { recursive: true, force: true }); });
+test.before(async () => {
+  root = mkdtempSync(join(tmpdir(), 'blog-intent-fixture-'));
+  for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
+    cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
+  }
+  const fixture = await materialiser({ root, slug, statut: 'publie', jour: jourFixture });
+  assert.deepEqual(fixture.erreurs, [], 'La fixture doit être réellement matérialisée.');
+  ecrireSceau(root, slug);
+
+  // Neuf jours après le dernier relevé (forge ou demande du lundi), plus aucun n'est frais.
+  const toutesMesures = chargerAutocompletionMesuree(root, { au: '9999-12-31', ageMaxJours: Number.MAX_SAFE_INTEGER });
+  const dernierReleve = Object.values(toutesMesures.mesureParRequete).map(({ date }) => date).sort().at(-1);
+  au = new Date(Date.parse(`${dernierReleve}T00:00:00Z`) + 9 * 86_400_000).toISOString().slice(0, 10);
+});
 const renderedBlogHtml = `<li data-article="${slug}"><a href="/blog/${slug}">Article</a></li>`;
 
 test('la fixture historique se matérialise même après expiration des relevés', async (t) => {

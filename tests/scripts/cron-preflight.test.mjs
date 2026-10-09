@@ -63,7 +63,9 @@ test('cron refuses a dirty checkout and accepts only clean synced main with requ
 
 test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publication', () => {
   const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   const other = mkdtempSync(join(tmpdir(), 'memlia-cron-other-'));
+  test.after(() => rmSync(other, { recursive: true, force: true }));
   try {
     git(root, 'init', '-q', '-b', 'main');
     git(root, 'config', 'user.email', 'test@example.invalid');
@@ -102,8 +104,11 @@ test('cron refuses wrong checkout, failed fetch, stale SHA and never claims publ
 
 test('cron publication guard accepts prepared changes then exact commit, and rejects concurrent main', () => {
   const root = mkdtempSync(join(tmpdir(), 'memlia-cron-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   const remote = mkdtempSync(join(tmpdir(), 'memlia-cron-remote-'));
+  test.after(() => rmSync(remote, { recursive: true, force: true }));
   const competitor = mkdtempSync(join(tmpdir(), 'memlia-cron-competitor-'));
+  test.after(() => rmSync(competitor, { recursive: true, force: true }));
   try {
     git(root, 'init', '-q', '-b', 'main');
     git(root, 'config', 'user.email', 'test@example.invalid');

@@ -19,6 +19,7 @@ const REVIEW_NOW = '2026-09-20T03:11:00+01:00';
 
 function candidateFixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-c3-r1-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   for (const relativePath of RELATIVE_FILES) {
     const target = join(root, relativePath);
     mkdirSync(dirname(target), { recursive: true });

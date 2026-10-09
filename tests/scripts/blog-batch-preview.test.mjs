@@ -20,6 +20,7 @@ function writeCandidate(dist, slug, otherSlug) {
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-blog-batch-'));
+  test.after(() => rmSync(root, { recursive: true, force: true }));
   const dist = join(root, 'dist');
   const target = join(root, 'preview');
   mkdirSync(dist, { recursive: true });
