@@ -1,0 +1,20 @@
+---
+import { FICHE_OUTIL_CAC } from '@/data/accueil/cac';
+import Picto from '@/components/Picto.astro';
+---
+<aside class="tete fiche-outil" aria-labelledby="fiche-outil-cac">
+  <h3 id="fiche-outil-cac">{FICHE_OUTIL_CAC.titre}</h3>
+  <p>{FICHE_OUTIL_CAC.texte}</p>
+  <p>{FICHE_OUTIL_CAC.precision}</p>
+  <a href={FICHE_OUTIL_CAC.source.href} class="lien-action" rel="noopener noreferrer">{FICHE_OUTIL_CAC.source.libelle}<Picto nom="fleche" taille={14} /></a>
+</aside>
+<style>
+  .fiche-outil {
+    max-width: none;
+    padding: var(--carte-marge);
+    border: 1px solid var(--carte-bord);
+    border-radius: var(--carte-rayon);
+    background: var(--surface-page);
+  }
+  h3 { font-size: var(--titre-bloc); }
+</style>

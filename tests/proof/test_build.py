@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 # Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
-PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'contact', 'garanties',
+PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'commissaires-aux-comptes', 'contact', 'garanties',
                'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
                'politique-de-confidentialite']
 INTEGRATION_PAGES = {
