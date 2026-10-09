@@ -78,6 +78,8 @@ export function auditerComposition({ root = process.cwd(), sourcePath }) {
         layouts.add(layout);
         follow(imported);
       }
+      // Le rendu canonique des rubriques compose Base sans être lui-même un layout.
+      if (imported === join(root, 'src/components/blog/BlogRubrique.astro')) follow(imported);
     }
   }
 

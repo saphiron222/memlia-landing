@@ -51,3 +51,12 @@ test('les deux routes partagent le rendu et son canonical déclaré', () => {
   assert.doesNotMatch(component, /getStaticPaths/);
   assert.match(read('src/pages/blog/[slug].astro'), /construireRoutesRubriques\(publies\)/);
 });
+
+test('le garde de composition suit le rendu canonique jusqu’au layout Base', () => {
+  const root = new URL('../..', import.meta.url).pathname.replace(/\/$/, '');
+  for (const route of [taxonomy.BLOG_RUBRIQUES[0].chemin, direct.chemin]) {
+    const result = contract.auditerComposition({ root, sourcePath: contract.sourceForRoute(root, route, [...taxonomy.BLOG_RUBRIQUES, direct]) });
+    assert.equal(result.pass, true, result.errors.join('\n'));
+    assert.ok(result.layouts.includes('Base'));
+  }
+});

@@ -10,7 +10,7 @@ Cette livraison n'ajoute aucune rubrique CAC, aucun article et aucune réservati
 
     node --test tests/scripts/blog-rubrique-routes.test.mjs tests/scripts/blog-rubriques.test.mjs tests/scripts/page-contract.test.mjs tests/scripts/blog-contract.test.mjs tests/scripts/data-driven-counts.test.mjs
 
-Témoin initial : les cinq nouveaux tests échouent avant implémentation. Après implémentation : 47 tests passent. La suite complète et la construction relèvent de Repository gates sur GitHub, pas du Mac.
+Témoin initial : les cinq nouveaux tests échouent avant implémentation. Après correction du défaut QA de parcours de composition : 48 tests passent. Le sixième test reproduit le refus de Base derrière BlogRubrique ; le garde suit explicitement ce rendu canonique, sans approuver les composants arbitraires. La suite complète et la construction relèvent de Repository gates sur GitHub, pas du Mac.
 
 Recette Astro locale exécutée sur 127.0.0.1:4337 : les trois rubriques EC répondent HTTP 200 avec canonical exact, CollectionPage et toutes leurs cartes ; un article EC répond HTTP 200 avec BlogPosting. Fixture temporaire : remplacer uniquement le chemin de la première rubrique par /blog/fixture-directe (slug inchangé), sans toucher ses articles. Cette URL répond HTTP 200 avec canonical exact et trois cartes ; le garde la classe CollectionPage et résout [...rubrique].astro ; son ancien alias répond HTTP 404. Restaurer immédiatement le chemin EC avant tout commit. Les fixtures ne sont pas publiées.
 
