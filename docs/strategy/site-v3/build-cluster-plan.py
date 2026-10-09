@@ -34,12 +34,17 @@ FAMILLE_HISTORIQUE = {
 PAR_JOUR_MAX = 2
 PAR_SEMAINE_MAX = 4
 REGLE_IA = 'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json'
-# Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer la pointe d'origin/main,
-# sinon deux PR planifieraient sur des états publiés différents. Les autres PR lisent leur fourche.
+# Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer
+# les changements concurrents pertinents de main. Une avancée hors calendrier
+# laisse la fourche utilisable ; aucun brouillon candidat ne devient publié.
 CHEMINS_CALENDRIER = (
     'src/content/blog', 'src/data/familles.ts', 'src/content.config.ts',
     'docs/strategy/site-v3/backlog-v3.json', 'docs/strategy/site-v3/cluster-plan.json',
     'docs/strategy/site-v3/cluster-plan.md', 'docs/strategy/site-v3/CONTENT-CALENDAR.md', REGLE_IA,
+    'docs/strategy/site-v3/mesures/questions-2026-09-19.json',
+    'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
+    'docs/strategy/site-v3/mesures/autocompletion-cache.json',
+    'docs/strategy/site-v3/build-cluster-plan.py', 'scripts/lib/blog-ia-catchup.mjs',
 )
 
 
@@ -163,9 +168,9 @@ def base_de_publication(pointe):
     """The pinned commit whose publication the candidate integrates.
 
     The origin/main tip when the candidate contains it. Otherwise its fork point
-    with origin/main, but only when the candidate (committed, staged, modified
-    or untracked) touches no calendar input: a stale PR outside the calendar
-    reads the publication it was built on, a stale calendar PR must integrate main.
+    with origin/main, unless both main and the candidate (committed, staged,
+    modified or untracked) touch calendar inputs. Unrelated main changes do not
+    invalidate that coherent baseline; concurrent calendar changes require main.
     """
     try:
         ancetre = subprocess.run(['git', '-C', str(RACINE), 'merge-base', '--is-ancestor', pointe, 'HEAD'],
@@ -182,8 +187,10 @@ def base_de_publication(pointe):
         raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
     modifies = git_publication('diff', '--name-only', fourche, '--', *CHEMINS_CALENDRIER).strip()
     nouveaux = git_publication('ls-files', '--others', '--exclude-standard', '--', *CHEMINS_CALENDRIER).strip()
-    if modifies or nouveaux:
-        chemin = (modifies or nouveaux).splitlines()[0]
+    concurrents = git_publication('diff', '--name-only', fourche, pointe,
+                                 '--', *CHEMINS_CALENDRIER).strip()
+    if (modifies or nouveaux) and concurrents:
+        chemin = concurrents.splitlines()[0]
         raise SystemExit('base de publication origin/main non intégrée au candidat : le calendrier est modifié '
                          f'({chemin}), intégrer origin/main')
     return fourche

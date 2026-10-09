@@ -12,7 +12,10 @@ const noeuds = [{
   '@type': 'WebPage', '@id': `${url}#page`, url, name: page.h1, description: page.description,
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` }, about: { '@id': SERVICE_ID },
 }];
-/** La grille de l'accueil, dont chaque cellule mène ici à la section qui la tient. */
+/**
+ * Les six garanties de l'accueil, chacune menant ici à la section qui la tient. Système de page :
+ * des destinations nommées par leur libellé, donc une liste de liens (pictogramme, libellé, flèche).
+ */
 const grille: { picto: NomPicto; libelle: string; href: string }[] = [
   { picto: 'main', libelle: 'L’IA prépare, l’humain décide', href: '#arret' },
   { picto: 'fictif', libelle: 'Aucune donnée client dans les essais', href: '#donnees' },
@@ -30,23 +33,27 @@ const appel = {
 
 <PageCommerciale page={page} noeuds={noeuds} eyebrow="Nos engagements" hero="v2/16-hero-garanties" appel={appel}>
   <section class="pv" aria-label="Les six garanties">
-    <ul class="garanties-grille rv" data-garanties>
-      {grille.map((g) => (
-        <li class="garantie">
-          <a class="garantie-lien" href={g.href}>
-            <span class="garantie-picto" aria-hidden="true"><Picto nom={g.picto} taille={24} /></span>
-            <span class="garantie-libelle">{g.libelle}</span>
-            <span class="garantie-fleche" aria-hidden="true"><Picto nom="chevron" taille={14} /></span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="liens-bloc">
+      <ul class="liens rv" data-garanties>
+        {grille.map((g) => (
+          <li>
+            <a class="lien-rangee" href={g.href}>
+              <Picto nom={g.picto} taille={20} />
+              <span class="lien-libelle">{g.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
   <section class="pv" id="arret" aria-labelledby="arret-titre">
     <ProofRow id="v2/07-exception-visible">
       <div class="pv-copy rv">
         <h2 id="arret-titre">Dans le doute, l’automatisation s’arrête</h2>
+        <p class="texte-2">Vous pouvez <a href="/automatisation/evaluation-transmission">garder la décision sur la valeur de l’entreprise</a> tout en confiant la préparation des pièces et tableaux. Un ajustement en attente reste hors du total ; un conflit de versions réclame votre arbitrage.</p>
+        <p class="texte-2">Pour <a href="/automatisation/registres-obligations">confier la préparation des mises à jour et rappels</a>, la fiche proposée conserve les annotations du cabinet. Une identité incertaine ou des sources contradictoires arrêtent la proposition ; l’alerte reste à valider.</p>
         <p>Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation et présente le motif à votre équipe.</p>
         <p class="texte-2">Une contradiction entre deux règles ou un format inattendu bloque l’écriture concernée. Le motif est visible ; votre équipe corrige l’entrée ou décide de la suite. La règle ne devine pas la donnée manquante.</p>
         <p class="texte-2">Cette règle borne la décision de <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> : une pièce incertaine ne devient jamais une écriture certaine.</p>
@@ -56,10 +63,11 @@ const appel = {
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" id="donnees" aria-labelledby="donnees-titre">
+  <section class="pv" id="donnees" aria-labelledby="donnees-titre">
     <ProofRow id="v2/45-cadrage-donnees">
       <div class="pv-copy rv">
         <h2 id="donnees-titre">Des essais fictifs, des flux cadrés par mission</h2>
+        <p class="texte-2">Le cadrage commence par <a href="/blog/ia-comptabilite-confidentialite-donnees">préparer les données avant de les confier à une IA</a> : déterminer les entrées utiles et les usages autorisés avant tout partage.</p>
         <p class="texte-2">Vous pouvez <a href="/outils-comptables-gratuits/seuil-signification-audit">reprendre localement vos scénarios de seuils d’audit</a> : le JSON conserve paramètres et commentaires, sans stockage automatique. Le CAC choisit et justifie les seuils ; nous calculons leur effet.</p>
         <p class="texte-2">Le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi local de circularisation</a> conserve lettres et notes uniquement dans l’onglet. Exportez le JSON pour reprendre votre campagne ; aucun envoi de courrier ni stockage automatique n’est effectué.</p>
         <p class="texte-2"><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> prépare une proposition de tiers et les pièces postérieures choisies par le CAC. Ses saisies restent séparées des résultats générés ; les conclusions lui appartiennent.</p>
@@ -78,13 +86,13 @@ const appel = {
       <div class="pv-copy rv">
         <h2 id="personnes-titre">Nous ne mesurons pas les personnes</h2>
         <p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs. Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent.</p>
-        <p class="texte-2">L’affectation sert à distribuer le travail ; elle ne justifie pas une mesure individuelle continue, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
+        <p class="texte-2">L’affectation sert à distribuer le travail ; elle ne justifie pas <a href="https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees" rel="noopener noreferrer">une mesure individuelle continue</a>, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
         <p class="texte-2">C’est notre choix de conception pour les vues de pilotage. Le glossaire définit l’<a href="/glossaire#agregat-non-nominatif">agrégat non nominatif</a> : un total utile pour suivre le travail, sans classement individuel.</p>
       </div>
     </ProofRow>
   </section>
 
-  <section class="pv pv-inverse" id="recette" aria-labelledby="recette-titre">
+  <section class="pv" id="recette" aria-labelledby="recette-titre">
     <ProofRow id="06-eprouver">
       <div class="pv-copy rv">
         <h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2>
@@ -109,44 +117,21 @@ const appel = {
   </section>
 
   <section class="pv" id="refus" aria-labelledby="refus-titre">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
-      <p class="texte-2 lecture">Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
-      <p class="texte-2 lecture">Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
-      <p class="texte-2 lecture">Le <a href="/outils-comptables-gratuits/bareme-heures-cac">barème d’heures du commissaire aux comptes</a> n’est pas un tarif universel. Une exclusion ou un champ inconnu suspend la fourchette ; le budget et la suffisance des diligences restent à justifier par le CAC.</p>
+      <p>Vous pouvez <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a> sans interpréter une pièce inconnue comme absente : les éléments à clarifier restent séparés. La liste est choisie par le cabinet, pas déduite d’obligations fiscales ; le message n’est jamais envoyé par l’outil.</p>
+      <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
+      <p>Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
+      <p>Le <a href="/outils-comptables-gratuits/bareme-heures-cac">barème d’heures du commissaire aux comptes</a> n’est pas un tarif universel. Une exclusion ou un champ inconnu suspend la fourchette ; le budget et la suffisance des diligences restent à justifier par le CAC.</p>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="pv-bande-liste rv-groupe" data-colonnes="2">
-        <li class="pv-cellule rv"><h3>Aucune attestation de conformité</h3><p>Nous documentons le traitement prévu et ses limites. Ce document n’est pas une attestation de conformité en paie, en droit social ou en protection des données. La recette valide le périmètre convenu ; elle ne certifie pas les comptes ni le dossier d’audit.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun branchement universel</h3><p>Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
-        <li class="pv-cellule rv"><h3>Aucun pourcentage inventé</h3><p>Le résultat attendu et les critères d’acceptation sont écrits avec vous. Les gains se mesurent sur votre tâche ; nous n’annonçons pas d’heures ni de pourcentages sans mesure.</p></li>
-        <li class="pv-cellule rv"><h3>Aucune illustration trompeuse</h3><p>Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
+      <ul class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Aucune attestation de conformité</h3><p class="carte-texte">Nous documentons le traitement prévu et ses limites. Ce document n’est pas une attestation de conformité en paie, en droit social ou en protection des données. La recette valide le périmètre convenu ; elle ne certifie pas les comptes ni le dossier d’audit.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucun branchement universel</h3><p class="carte-texte">Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucun pourcentage inventé</h3><p class="carte-texte">Le résultat attendu et les critères d’acceptation sont écrits avec vous. Les gains se mesurent sur votre tâche ; nous n’annonçons pas d’heures ni de pourcentages sans mesure.</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Aucune illustration trompeuse</h3><p class="carte-texte">Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
       </ul>
     </div>
   </section>
 </PageCommerciale>
-
-<style>
-  /* La grille des six garanties, telle qu'elle existe sur l'accueil (Garanties.astro),
-     dont chaque cellule mène ici à sa section plutôt qu'à la FAQ. */
-  .garanties-grille { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--ligne-douce); border-top: 1px solid var(--ligne-douce); border-bottom: 1px solid var(--ligne-douce); }
-  .garantie { position: relative; background: var(--surface-feuille); min-height: 96px; overflow: hidden; }
-  .garantie-lien { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 100%; min-height: 96px; padding: 12px 8px 16px; text-align: center; color: var(--texte-2); transition: color var(--duree-4) var(--courbe-standard); }
-  .garantie-picto { color: var(--picto-repos); transition: color var(--duree-4) var(--courbe-standard); }
-  .garantie-libelle { font-size: 0.8125rem; font-weight: 500; line-height: 1.3; text-wrap: balance; }
-  .garantie-fleche { position: absolute; right: 10px; bottom: 8px; opacity: 0; transform: translateY(12px); color: var(--accent-texte); transition: opacity var(--duree-3) var(--courbe-standard), transform var(--duree-3) var(--courbe-standard); }
-  .garantie-lien:focus-visible { outline-offset: -3px; border-radius: 0; }
-  .garantie-lien:focus-visible, .garantie-lien:focus-visible .garantie-picto { color: var(--texte-fort); }
-  .garantie-lien:focus-visible .garantie-fleche { opacity: 1; transform: none; }
-  .garantie::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%); transform: translateX(-100%); pointer-events: none; }
-  :global(html.js) .garanties-grille.in .garantie::after { animation: garantie-balayage 1.5s var(--courbe-standard) both; animation-delay: calc(var(--i, 0) * 150ms); }
-  .garantie:nth-child(2) { --i: 1; } .garantie:nth-child(3) { --i: 2; } .garantie:nth-child(4) { --i: 3; } .garantie:nth-child(5) { --i: 4; } .garantie:nth-child(6) { --i: 5; }
-  @keyframes garantie-balayage { to { transform: translateX(100%); } }
-  @media (hover: hover) {
-    .garantie-lien:hover, .garantie-lien:hover .garantie-picto { color: var(--texte-fort); }
-    .garantie-lien:hover .garantie-fleche { opacity: 1; transform: none; }
-  }
-  @media (min-width: 40rem) { .garantie, .garantie-lien { min-height: 128px; } }
-  @media (prefers-reduced-motion: reduce) { .garantie::after { animation: none !important; } }
-</style>

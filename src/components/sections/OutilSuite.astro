@@ -1,5 +1,4 @@
 ---
-import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
 import { OUTILS_HUB_PATH, type OutilDefinition, type OutilServicePage } from '@/data/outils';
 
@@ -27,186 +26,51 @@ const destinations: Record<OutilServicePage, { libelle: string; description: str
   },
 };
 const destination = destinations[outil.pageService];
+/*
+ * Système de page : trois suites de même rang, donc trois cartes de même largeur (le niveau en
+ * tête, une phrase, le lien d'action qui nomme la destination). L'appel final qui suit porte le
+ * seul bouton principal de la fin de page : « Passer à votre tâche » garde ses mots et son lien,
+ * en lien d'action. La ressource associée, quand elle existe, suit en lien d'action.
+ */
 ---
 
-<section class="outil-suite" data-tool-section="suite" aria-labelledby="outil-suite-titre">
-  <div class="conteneur outil-suite-inner">
-    <div class="outil-suite-tete">
-      <p class="outil-suite-repere">Après l’outil</p>
+<section class="section outil-suite" data-tool-section="suite" aria-labelledby="outil-suite-titre">
+  <div class="conteneur pile">
+    <div class="tete rv">
+      <p class="surtitre">Après l’outil</p>
       <h2 id="outil-suite-titre">Choisissez la suite qui vous est utile.</h2>
       <p>Continuez à explorer, regardez comment la règle serait cadrée, ou partez de votre propre tâche.</p>
     </div>
 
-    <nav class="outil-parcours" data-tool-links aria-label="Pour continuer">
-      <div class="outil-suite-secondaires">
-        <a class="outil-suite-lien" href={OUTILS_HUB_PATH}>
-          <span class="outil-suite-etape">Explorer</span>
-          <strong>Tous les outils comptables gratuits</strong>
-          <span class="outil-suite-description">Retrouver les autres calculs et modèles utilisables sans compte.</span>
-          <Picto nom="fleche" taille={18} class="outil-suite-fleche" />
-        </a>
+    <nav class="outil-parcours pile" data-tool-links aria-label="Pour continuer">
+      <ul class="cartes rv-groupe">
+        <li class="carte rv">
+          <div class="carte-corps">
+            <p class="carte-meta">Explorer</p>
+            <p class="carte-texte">Retrouver les autres calculs et modèles utilisables sans compte.</p>
+            <a class="carte-action carte-lien" href={OUTILS_HUB_PATH}>Tous les outils comptables gratuits<Picto nom="fleche" taille={14} /></a>
+          </div>
+        </li>
+        <li class="carte rv">
+          <div class="carte-corps">
+            <p class="carte-meta">Comprendre</p>
+            <p class="carte-texte">{destination.description}</p>
+            <a class="carte-action carte-lien" href={outil.pageService}>{destination.libelle}<Picto nom="fleche" taille={14} /></a>
+          </div>
+        </li>
+        <li class="carte rv">
+          <div class="carte-corps">
+            <p class="carte-meta">Passer à votre tâche</p>
+            <h3 class="carte-titre">Une tâche se répète dans votre cabinet&nbsp;?</h3>
+            <p class="carte-texte">Décrivez le geste, les outils et le résultat attendu. Aucun fichier ni donnée client ne sont demandés à ce stade.</p>
+            <a class="carte-action carte-lien" href={outil.cta}>Confier une première tâche<Picto nom="fleche" taille={14} /></a>
+          </div>
+        </li>
+      </ul>
 
-        <a class="outil-suite-lien" href={outil.pageService}>
-          <span class="outil-suite-etape">Comprendre</span>
-          <strong>{destination.libelle}</strong>
-          <span class="outil-suite-description">{destination.description}</span>
-          <Picto nom="fleche" taille={18} class="outil-suite-fleche" />
-        </a>
-
-        {outil.articleExact && (
-          <a class="outil-suite-ressource" href={outil.articleExact}>
-            Consulter la ressource associée
-            <Picto nom="fleche" taille={16} />
-          </a>
-        )}
-      </div>
-
-      <div class="outil-suite-principale">
-        <p class="outil-suite-etape">Passer à votre tâche</p>
-        <h3>Une tâche se répète dans votre cabinet&nbsp;?</h3>
-        <p>Décrivez le geste, les outils et le résultat attendu. Aucun fichier ni donnée client ne sont demandés à ce stade.</p>
-        <Button href={outil.cta} variante="principal" picto="fleche">Confier une première tâche</Button>
-      </div>
+      {outil.articleExact && (
+        <a class="lien-action" href={outil.articleExact}>Consulter la ressource associée<Picto nom="fleche" taille={14} /></a>
+      )}
     </nav>
   </div>
 </section>
-
-<style>
-  .outil-suite {
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
-  .outil-suite-inner {
-    display: grid;
-    gap: 40px;
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-  .outil-suite-tete {
-    display: grid;
-    gap: 12px;
-    max-width: 700px;
-  }
-  .outil-suite h2 {
-    font-size: var(--t-4xl);
-  }
-  .outil-suite-tete > p:last-child {
-    max-width: 60ch;
-    color: var(--texte-2);
-  }
-  .outil-suite-repere,
-  .outil-suite-etape {
-    color: var(--accent-texte);
-    font-size: var(--t-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    line-height: 1.3;
-    text-transform: uppercase;
-  }
-  .outil-parcours {
-    display: grid;
-    gap: 24px;
-    border-top: 1px solid var(--ligne-forte);
-    padding-top: 24px;
-  }
-  .outil-suite-secondaires {
-    min-width: 0;
-    border-top: 1px solid var(--ligne-douce);
-  }
-  .outil-suite-lien {
-    position: relative;
-    display: grid;
-    min-height: 148px;
-    gap: 8px;
-    padding: 24px 48px 24px 0;
-    border-bottom: 1px solid var(--ligne-douce);
-    transition:
-      color var(--duree-1) var(--courbe-standard),
-      background-color var(--duree-1) var(--courbe-standard),
-      padding-left var(--duree-1) var(--courbe-standard);
-  }
-  .outil-suite-lien strong {
-    color: var(--texte-fort);
-    font-size: var(--t-xl);
-    line-height: 1.25;
-    text-wrap: balance;
-  }
-  .outil-suite-description {
-    max-width: 58ch;
-    color: var(--texte-2);
-    line-height: 1.5;
-    text-wrap: pretty;
-  }
-  .outil-suite-fleche {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    color: var(--accent-texte);
-    transform: translateY(-50%);
-    transition: transform var(--duree-1) var(--courbe-standard);
-  }
-  .outil-suite-lien:hover {
-    padding-left: 12px;
-    background: var(--surface-hover);
-  }
-  .outil-suite-lien:hover .outil-suite-fleche,
-  .outil-suite-lien:focus-visible .outil-suite-fleche {
-    transform: translate(4px, -50%);
-  }
-  .outil-suite-ressource {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 44px;
-    margin-top: 12px;
-    color: var(--accent-texte);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .outil-suite-principale {
-    display: grid;
-    align-content: start;
-    gap: 16px;
-    order: -1;
-    padding: clamp(24px, 6vw, 40px);
-    border: 1px solid var(--ligne);
-    border-radius: var(--r-cadre);
-    background: var(--accent-voile);
-    box-shadow: var(--ombre-xs);
-  }
-  .outil-suite-principale h3 {
-    font-size: var(--t-3xl);
-  }
-  .outil-suite-principale > p:not(.outil-suite-etape) {
-    max-width: 48ch;
-    color: var(--texte-2);
-  }
-  .outil-suite-principale :global(.btn) {
-    justify-self: start;
-    min-height: 44px;
-    margin-top: 8px;
-  }
-  @media (min-width: 64rem) {
-    .outil-suite-inner {
-      gap: 48px;
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-    .outil-parcours {
-      grid-template-columns: minmax(0, 7fr) minmax(340px, 5fr);
-      gap: 64px;
-      padding-top: 32px;
-    }
-    .outil-suite-principale {
-      order: initial;
-      min-height: 332px;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .outil-suite-lien,
-    .outil-suite-fleche {
-      transition: none;
-    }
-  }
-</style>
