@@ -52,21 +52,10 @@ try {
       }
     });
     if (width === 375) {
-      await check('navigation mobile visible clavier', async () => {
-        const links = page.locator('[data-mobile-visible] a[href]');
-        assert.equal(await links.first().isVisible(), true);
-        await links.first().focus();
-        await page.keyboard.press('Tab');
-        assert.equal(await links.nth(1).evaluate((e) => e === document.activeElement), true);
-      });
       await check('menu mobile clavier, focus et fond', async () => {
         const burger = page.locator('[data-burger]');
         const menu = page.locator('[data-menu-mobile]');
-        // Le chrome actuel affiche les liens mobiles, pas le burger (display:none).
-        // Exposer ce contrôle uniquement dans la sonde pour éprouver le code dormant
-        // sans modifier le CSS livré ni prétendre que le menu est le parcours public.
-        assert.equal(await burger.isVisible(), false);
-        await burger.evaluate((e) => e.style.display = 'inline-flex');
+        assert.equal(await burger.isVisible(), true);
         await burger.focus();
         await page.keyboard.press('Enter');
         assert.equal(await burger.getAttribute('aria-expanded'), 'true');
@@ -83,7 +72,6 @@ try {
         await burger.click();
         await burger.click();
         assert.equal(await menu.isVisible(), false);
-        await burger.evaluate((e) => e.style.removeProperty('display'));
       });
       await check('footer accordéon clavier', async () => {
         const button = page.locator('.pied-bascule').first();

@@ -34,7 +34,7 @@ try {
       const text = el => el.textContent.replace(/\s+/g, ' ').trim();
       return { width: innerWidth, scrollWidth: document.documentElement.scrollWidth,
         section: style(section),
-        cards: [...section.querySelectorAll('[data-usage]')].map(el => ({ id: el.getAttribute('data-usage'), text: text(el), card: style(el), title: style(el.querySelector('h3')), body: style(el.querySelector('p')), mark: style(el.querySelector('.use-mark')), svg: style(el.querySelector('svg')) })),
+        cards: [...section.querySelectorAll('[data-usage]')].map(el => ({ id: el.getAttribute('data-usage'), text: text(el), card: style(el), title: style(el.querySelector('h3')), body: style(el.querySelector('p')), mark: style(el.querySelector('.carte-icone')), svg: style(el.querySelector('svg')) })),
         method: [...document.querySelectorAll('#methode [data-etape]')].map(el => ({ text: text(el.querySelector('.step-copy')), image: el.querySelector('img').getAttribute('src'), alt: el.querySelector('img').alt })),
         overflow: [section, ...section.querySelectorAll('*')].filter(el => {
           const r = el.getBoundingClientRect();

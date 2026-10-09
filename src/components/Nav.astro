@@ -119,13 +119,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   </div>
 </header>
 
-<!-- Sur mobile, les destinations restent immédiatement visibles et tactiles. -->
-<nav class="nav-mobile-visible" aria-label="Navigation principale mobile" data-mobile-visible>
-  <div class="conteneur nav-mobile-visible-liste">
-    {destinationsPlates.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
-  </div>
-</nav>
-
 <!-- Frère du header : son backdrop-filter ne doit pas contenir le fixed (WebKit). -->
 <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
   <nav aria-label="Navigation principale, menu" class="conteneur">
@@ -159,7 +152,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 </noscript>
 
 <style>
-  @media print { .nav-barre, .nav-sans-js { display: none; } }
+  @media print { .nav-barre, .nav-mobile, .nav-sans-js { display: none; } }
   .nav-barre {
     position: sticky;
     top: 0;
@@ -279,7 +272,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     gap: 4px;
   }
   .nav-principal {
-    display: inline-flex;
+    display: none;
     min-height: 44px;
     font-size: var(--t-sm);
   }
@@ -364,7 +357,15 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     gap: 16px;
     padding-block: 12px;
   }
+  .nav-sans-js a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
   @media (max-width: 63.999rem) {
+    :global(.js) .nav-burger {
+      display: inline-flex;
+    }
     .nav-barre[data-mobile-open] {
       position: fixed;
       left: 0;
@@ -395,29 +396,6 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     .nav-chevron {
       transition: none;
     }
-  }
-  .nav-mobile-visible {
-    display: block;
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
-  .nav-mobile-visible-liste {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  .nav-mobile-visible a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 8px 10px;
-    color: var(--texte);
-    font-size: var(--t-sm);
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .nav-mobile-visible a[aria-current] {
-    color: var(--accent-texte);
   }
   @media (hover: hover) {
 
@@ -450,8 +428,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       display: inline-flex;
     }
     .nav-burger,
-    .nav-mobile,
-    .nav-mobile-visible {
+    .nav-mobile {
       display: none;
     }
   }
@@ -525,7 +502,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     desktop.addEventListener('change', (e) => {
       if (!e.matches || menu.hidden) return;
       closeMenu(false);
-      header.querySelector<HTMLAnchorElement>('.nav-centre a')?.focus({ preventScroll: true });
+      header.querySelector<HTMLElement>('.nav-centre .nav-entree')?.focus({ preventScroll: true });
     });
     // Ne pas conserver le verrou si la page est restaurée depuis le bfcache.
     window.addEventListener('pagehide', () => closeMenu(false));

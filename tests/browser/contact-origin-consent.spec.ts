@@ -24,6 +24,11 @@ for (const choice of ['refus', 'accord', 'retrait avant envoi']) {
     await expect(page.locator('#origine')).toHaveValue('');
     await expect(page.locator('label[for="consentement"]')).not.toContainText('comprendre la page');
     await page.fill('#nom', 'Camille Fictive');
+    const typeCabinet = page.getByLabel('Type de cabinet');
+    await expect(typeCabinet).not.toHaveAttribute('required');
+    await expect(typeCabinet).toHaveValue('');
+    await expect(typeCabinet.locator('option')).toHaveText(['Choisir un type de cabinet', 'Expertise comptable', 'Commissariat aux comptes', 'Mixte']);
+    if (choice === 'accord') await typeCabinet.selectOption('cac');
     await page.fill('#courriel', 'camille@exemple.test');
     await page.fill('#message', 'Chaque mois nous comparons deux exports dans un classeur.');
     await page.check('#consentement');
@@ -39,8 +44,10 @@ for (const choice of ['refus', 'accord', 'retrait avant envoi']) {
     await expect(page.locator('[data-etat]')).toContainText('Message envoyé');
     expect(payloads).toHaveLength(1);
     expect(payloads[0].get('origine')).toBe(choice === 'accord' ? '/garanties' : '');
+    expect(payloads[0].get('type_cabinet')).toBe(choice === 'accord' ? 'cac' : '');
     expect(payloads[0].get('consentement_origine')).toBe(choice === 'accord' ? 'on' : null);
     await expect(consent).not.toBeChecked();
+    await expect(typeCabinet).toHaveValue('');
     await expect(page.locator('#origine')).toHaveValue('');
   });
 }

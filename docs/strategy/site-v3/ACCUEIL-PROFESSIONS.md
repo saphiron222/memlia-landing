@@ -28,15 +28,23 @@ métier EC, média ou compteur n’est réécrit.
 ## Vérification
 
 `node --test tests/scripts/accueil-contenu.test.mjs tests/scripts/accueil-render.test.mjs`
-contrôle le contrat des sections, l’identité intégrale du HTML EC et un build Astro isolé
+contrôle le contrat des sections, le témoin DOM du contenu EC et un build Astro isolé
 qui injecte un autre titre dans chacune des onze sections, une autre FAQ, ainsi qu’un titre
 explicite prioritaire dans l’appel final. Le projet d’essai est supprimé après exécution,
 et n’ajoute aucune route au site ni au sitemap public.
 
-Le témoin HTML a été construit avant extraction sur main `e612e1a3`. Son contrôle compare
-la totalité des octets, styles et métadonnées compris. Lors d’une future modification
-intentionnelle de l’accueil (copy ou chrome), actualiser ce témoin seulement après avoir
-comparé le rendu et obtenu la revue prévue pour cette modification.
+Le témoin historique porte désormais sur `<main id="main">` : les onze sections EC,
+leur ordre, leurs textes, médias, attributs de rendu et structure restent contrôlés.
+Le head et ses métadonnées de publication, la navigation et le footer généré sont hors
+de ce périmètre : publier une page ne doit pas imposer un nouveau témoin EC. La valeur
+DOM déjà présente sur main est conservée, sans recalage sur le candidat.
+Seuls le lien d’orientation marqué `data-accueil-cac`, les espaces normalisés et la
+diffusion responsive canonique des masters sont neutralisés par ce témoin existant.
+Deux tests de frontière rejouent l’ajout et le retrait du footer, une métadonnée de
+publication, puis une altération de texte et de classe dans chacune des onze sections.
+Le témoin DOM ne mesure pas les pixels ni les feuilles CSS externes ; la recette visuelle
+ci-dessous reste le contrôle de géométrie. Pour une modification intentionnelle du contenu
+EC, comparer le rendu et obtenir la revue prévue avant d’actualiser le témoin.
 
 Pour rejouer la comparaison visuelle, servir les deux builds sur deux ports, puis :
 

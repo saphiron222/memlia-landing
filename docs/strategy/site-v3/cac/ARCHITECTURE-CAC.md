@@ -52,13 +52,13 @@ Quatre angles de geste et de preuve par famille ouverte, plus un pilier transver
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/commissaires-aux-comptes` | automatisation commissaire aux comptes | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:28.634Z | entrée de navigation |
+| `/commissaires-aux-comptes` | automatisation commissaire aux comptes | construite-en-revue | proprietaire-existant | entrée de navigation |
 
 ### service
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/automatisation/circularisation-cac` | automatiser circularisation | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:28.981Z | Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle. |
+| `/automatisation/circularisation-cac` | automatiser circularisation | construite-en-revue | proprietaire-existant | Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes. |
 | `/automatisation/revue-analytique-cac` | automatisation revue analytique | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:29.146Z | Confier la comparaison récurrente, les propositions et leur maintenance, pas télécharger un classeur. |
 | `/automatisation/dossier-travail-cac` | automatiser assemblage dossier audit | retenue-non-publiee | non-mesuree | Confier index et renvois sans écraser les saisies, pas acheter un logiciel de dossier. |
 
