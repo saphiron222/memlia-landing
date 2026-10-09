@@ -8,6 +8,9 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
 import { eeatCommercial } from '@/data/page-eeat';
+import { famillesDeLaProfession } from '@/data/familles';
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
 const page = PAGES_V2.service;
 // La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
@@ -29,7 +32,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const renvois = [
   { texte: 'Choisir une prochaine action à partir des pratiques déclarées, sans classement des équipes.', libelle: 'Situer les pratiques IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
-  { texte: 'La carte des tâches automatisables d’un cabinet : douze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
+  { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire les contrôles avant la DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire le suivi de production sociale', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Après une saisie automatisée, six contrôles restent à faire : lesquels, et pourquoi.', libelle: 'Lire les contrôles après la saisie', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' },
