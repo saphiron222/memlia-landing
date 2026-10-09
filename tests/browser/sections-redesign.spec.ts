@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { expectProofSelection } from './proof-selection';
 
 const titles = ['Collecter et préparer', 'Contrôler et signaler', 'Rapprocher et synthétiser', 'Suivre un processus', 'Préparer une décision'];
 
@@ -68,7 +69,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       expect(m.enlarge).toBe(0);
       expect(m.framed).toBe(true);
       expect(m.alt.length).toBeGreaterThan(20);
-      expect(m.natural).toEqual([1600, 900]);
+      await expectProofSelection(step.locator('img'));
       // Le texte de l'étape, puis sa maquette encadrée, sur toute la largeur de l'étape.
       expect(m.copy.bottom).toBeLessThanOrEqual(m.image.y + 1);
       expect(Math.abs(m.frame.width - m.step.width)).toBeLessThanOrEqual(1);

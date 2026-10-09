@@ -34,10 +34,10 @@ const retour = '\n';
   <div class="hero-cadre" data-cadre>
     <div class="hero-verre cadre">
       <div class="hero-ecran" data-video-player>
-        <video muted loop playsinline preload="metadata" width="1920" height="1080"
+        <video muted loop playsinline preload="none" width="1920" height="1080"
           tabindex="0" data-video aria-label="Reprendre la vidéo"
           disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
-          poster={contenu.poster} src={contenu.video}>
+          poster={contenu.poster} src={contenu.video} data-video-mobile={contenu.videoMobile}>
           <track kind="subtitles" srclang="fr" label="Français" src={contenu.sousTitres} />
           <p>Votre navigateur ne peut pas lire cette vidéo. <a href={contenu.video}>Télécharger la vidéo</a>.</p>
         </video>
@@ -327,6 +327,17 @@ const retour = '\n';
     if (!video || !overlay || !soundButton || !status || !statusMessage || !downloadLink) continue;
 
     let mediaFailed = false;
+    let playbackRequested = false;
+    let sourceSelected = false;
+
+    // Choisir une seule rendition à la première lecture, jamais pendant la lecture.
+    const selectSource = () => {
+      if (sourceSelected) return;
+      sourceSelected = true;
+      if (window.matchMedia('(max-width: 767px)').matches && video.dataset.videoMobile) {
+        video.src = video.dataset.videoMobile;
+      }
+    };
 
     const setStatus = (message = '', offerDownload = false) => {
       statusMessage.textContent = message;
@@ -343,6 +354,8 @@ const retour = '\n';
     };
 
     const startPlayback = async (autoplayAttempt = false) => {
+      playbackRequested = true;
+      selectSource();
       try {
         await video.play();
         setStatus();
@@ -385,9 +398,21 @@ const retour = '\n';
       video.currentTime = 0;
       syncPlaybackLabel();
     } else {
-      video.autoplay = true;
-      video.setAttribute('autoplay', '');
-      void startPlayback(true);
+      // L’affiche prioritaire termine son chargement avant toute requête vidéo.
+      // Sur mobile le lecteur est sous le pli : ne pas télécharger hors écran.
+      const observePlayback = () => {
+        const observer = new IntersectionObserver(entries => {
+          if (!entries.some(entry => entry.isIntersecting)) return;
+          observer.disconnect();
+          if (playbackRequested) return;
+          video.autoplay = true;
+          video.setAttribute('autoplay', '');
+          void startPlayback(true);
+        }, { threshold: 0.1 });
+        observer.observe(video);
+      };
+      if (document.readyState === 'complete') observePlayback();
+      else window.addEventListener('load', observePlayback, { once: true });
     }
 
     soundButton.addEventListener('click', async () => {

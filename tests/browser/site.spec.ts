@@ -62,7 +62,7 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -122,8 +122,10 @@ test('fragment malformé toléré, navigation intacte et sans erreur', async ({ 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
-  await expect(page.locator('[data-mobile-visible] a')).toHaveCount(DESTINATIONS.length);
-  await expect(page.locator('[data-burger]')).toBeHidden();
+  await expect(page.locator('[data-burger]')).toBeVisible();
+  await page.locator('[data-burger]').click();
+  await expect(page.locator('#menu-mobile .nav-mobile-lien')).toHaveCount(DESTINATIONS.length);
+  await page.keyboard.press('Escape');
   await expect(page.locator('#menu-mobile')).toBeHidden();
   expect(errors).toEqual([]);
 });

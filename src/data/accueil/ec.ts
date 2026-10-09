@@ -16,6 +16,7 @@ export const CONTENU_EC: ContenuAccueil = {
     texte: "Confiez-nous une tâche répétitive. Nous en écrivons la règle avec vos collaborateurs, puis nous l’automatisons dans leurs outils. Ils gardent la décision. Votre cabinet garde le savoir.",
     poster: "/media/r9/hero-poster-1200.webp",
     video: "/media/r9/explainer-hero-45s.mp4",
+    videoMobile: "/media/r9/explainer-hero-45s-mobile.mp4",
     sousTitres: "/media/r9/explainer.vtt",
   },
   orientation: {

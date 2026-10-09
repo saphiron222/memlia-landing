@@ -113,7 +113,7 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await page.goto('/blog');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('[data-article]').first()).toBeVisible();
-  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 
