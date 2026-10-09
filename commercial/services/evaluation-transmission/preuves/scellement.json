@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "service-publication-scellee",
+  "slug": "evaluation-transmission",
+  "sealedAt": "2026-10-08T14:54:46.798Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/evaluation-transmission.md",
+      "bytes": 11012,
+      "sha256": "575bb4cef966962e86726bf486c280e80fa5b40dc3ad2b8d3b8a9a06bca06c30"
+    },
+    "manifest": {
+      "path": "commercial/services/evaluation-transmission/manifest.json",
+      "bytes": 2756,
+      "sha256": "acab42552991fa970a04c9ed9cfff709537c4f81633aa69add62018541afb53d"
+    },
+    "recipe": {
+      "path": "commercial/recettes/evaluation-transmission/recette.json",
+      "bytes": 2412,
+      "sha256": "2ce7588162ffd616ce0e48708acd82e8127d0734c517cb221b90b0f1e1db74d1"
+    },
+    "body": {
+      "path": "commercial/recettes/evaluation-transmission/corps.md",
+      "bytes": 9215,
+      "sha256": "5254f53423a40b816cf76f0422620dd90a00e2dede8f91bdacd4a5f387806e05"
+    },
+    "review": {
+      "path": "commercial/recettes/evaluation-transmission/revues.json",
+      "bytes": 3632,
+      "sha256": "f31de366a81d2cb0447a4c287f85b33bfe7d38791fcb7e14232ab95f4a760267"
+    },
+    "publication": {
+      "path": "commercial/services/evaluation-transmission/preuves/publication.json",
+      "bytes": 1419,
+      "sha256": "5e7d1183e41257a17b7e7fa2cc9ef097dc80d99592d32dded61f560366f304d1"
+    }
+  }
+}

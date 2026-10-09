@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { LIENS_COMMERCIAUX_BLOG, lienCommercialPourArticle } from '../../src/data/blog-commercial-links.mjs';
+import { LIENS_COMMERCIAUX_BLOG, lienCommercialPourArticle, estLienCommercialBlog } from '../../src/data/blog-commercial-links.mjs';
 
 const ROOT = process.cwd();
 const registre = JSON.parse(readFileSync(join(ROOT, 'docs/strategy/site-v3/mesures/registre-requetes.json'), 'utf8'));
@@ -29,7 +29,7 @@ test('chaque article publié reçoit un pont commercial explicite après le corp
   verifierCardinalite(articles);
   for (const entree of articles) {
     const lien = lienCommercialPourArticle(entree.slug);
-    assert.match(lien.href, /^\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)$/);
+    assert.ok(estLienCommercialBlog(lien.href), `${entree.slug} : destination commerciale invalide`);
     assert.ok(lien.label.trim(), `${entree.slug} : libellé commercial vide`);
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, entree.slug), `${entree.slug} : repli non autorisé pour un article publié`);
   }

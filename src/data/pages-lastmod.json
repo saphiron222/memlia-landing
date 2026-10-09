@@ -3,152 +3,192 @@
   "regle": "lastmod = jour où le HTML rendu de la page a changé. Mis à jour par scripts/sync-lastmod.mjs, jamais par le build.",
   "pages": {
     "/": {
-      "sha256": "dbf9410855f31dde7e15471911fd44d7b0f151f4735549919c9e9f803827e90e",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "440d28d8beffad90ffbdbf3771a131db684f08d209b2ddca4b3deb3025dba8f8",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/a-propos": {
-      "sha256": "4134cfb49cb42dde94a0d55d9e19eed5fdc96c8505727bb61eebced2fb3bc9c7",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "c2b57234a3089ddfc08ffe8fbe642acdbb8c184063cb12ba6b2060838642a4f3",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/automatisation-cabinet-comptable": {
-      "sha256": "eb0a9ddf67f2f1803166a4b5ad4a932b2810d3df35a224dc8badfb5c78a7f611",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "7351797fffb8ff62eddc9921c13494bc9a810acbde1411ff5d7485be105e0930",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/automatisation/circularisation-cac": {
+      "sha256": "22e1a2168ee5b6decc121940c0d1d0f97f2904c857fbad294dfc9da0bb7319a3",
+      "lastmod": "2026-10-09T04:31:10.386Z"
+    },
+    "/automatisation/entrees-sorties-salaries": {
+      "sha256": "6000e1de8ccaa2f4de871c25581267ab8ff0a0c0267db6a608117c73d910237d",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/automatisation/evaluation-transmission": {
+      "sha256": "c7e28954d1afdf96f1b1af3252e1b0bb1ac97b27595e0c9cc3e24c5654eb81b6",
+      "lastmod": "2026-10-09T04:44:26.118Z"
     },
     "/automatisation/factures-fournisseurs": {
-      "sha256": "d2c49546e9d68b452a5fe04710ca34eccf66cd42469d8f0c08678d9c1604e09c",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "e136b3cfde5b247ed800cbb49e97e81e945b12f5376fc51024e4350d578187b2",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/automatisation/notes-de-frais": {
-      "sha256": "7ef7a6aeb9c11c0dff522f56172541d509b9c6563faf1f2c4081078b074c6533",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "a00c7c25a76d1f5357dec1c1586b89c2e6a48877d02cfd6216f459293837f961",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/automatisation/paie": {
-      "sha256": "812ef64417f416b66e3c5d82e67b7e2cc5057d526dfaaed0130307d25b6800c6",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "f229c262042ffe0f9d2b8f3f8a0caac4256f717f92e637d70e3bfa80f6bfb72d",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/automatisation/rapprochement-bancaire": {
-      "sha256": "a48237cc2d7adc87993b3a88be4d03f9c969ce7a67cc4b6654c9fe3c4f766749",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "db70e5f943aaaa54cc871ac6601bf378acd174e302eed06162985b89d9e1244d",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/automatisation/registres-obligations": {
+      "sha256": "0622955e09ccf94363dc52c0431a3732b3862340056d9a4a448bd10706007ce6",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/automatisation/saisie-comptable": {
-      "sha256": "d58babd5a991c1daf7f330fea388d531f471adae9c807af78e6b4b4ba17a9458",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "6a974fd3acb3db3938713552edcb88bb3151bf035ffe3b30035a83d793ca582b",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/automatisation/secretariat-juridique": {
+      "sha256": "afd116a81e55b40baeac6dbdb2ca70207812538a9a673d73264b210f72cb09a7",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/blog": {
-      "sha256": "e82906fcb1834767df47b543d2e928a45fe566d3bf3eb8e01feef9a6bce9e6cd",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "f370eab4fae776546d5a193e85b0f12996bbbd3b3eb9fb0cf6c96002030fb4fd",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/contact": {
-      "sha256": "9fa4dbaf36850a88ee97f2d169b364122a3fd460cb443712dffba2332f8b5a73",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "5c1565116a12e73ca51c48f66fa9cc8c87d915dbfbfc1564f36db9c3feb7b5d6",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/garanties": {
-      "sha256": "afdb47d5cc6ae5c6c7bc1a098f75fb6f9486fbad9ccf755819468ef172875a14",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "5c79db56b5d9a691f961c3fa798c75b2ae766584e1844a0fcf087c79376f002a",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/glossaire": {
-      "sha256": "1768c107410ed4d2aad3af434041531813fc1c62daf25ba1cd40215a2a79b591",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "1b0ddbe414566494d39a317657ac5b28dc7cfea3de67c438284ccdf76180ec82",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations": {
-      "sha256": "5fb99951712f85421874d7421cf0c21a0be59d19850907a1cbf83ab9e48584f3",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "20bb2d8e927696297ef37048113fbc9959ab602429138add94441214d7a1cae5",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/bulletin-de-paie-sage": {
-      "sha256": "715c0571030dc8719c9fd505e9b68073230fc8305b2bb3cf53a9875ab648006e",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "c0b5791748042dc8ca5b09f87078f06c4c8964c95a5b4bd1d44a4337681e45bc",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/bulletin-de-paie-silae": {
-      "sha256": "22a92e29e0a907718d6d440e70e6f1048e90c040ecab87069662b5d1db76d49f",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "6b90dc340e47d0d6a268df16845451de2132ac7176a586f626d7db104983155a",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/cloture-sage": {
-      "sha256": "78f46b4b165b965b4e222e8d7a986cf536095b36f17e47873add01842d36706c",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "58f349faca580090d4946daf9935425543b468c56100cb6c8b59500506659533",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/dsn-sage": {
-      "sha256": "c3af3a345a5f6df719a927bf604704b66e580eb9c3a80792656f610d5ba710e5",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "ca04a12d997d7ca8864ecea06fc8c59745e0b681f61d59087f279f0c5c8576c9",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/dsn-silae": {
-      "sha256": "0354d687cf0a3682c9d14b05630367822749a211fc5ed048b4781f01e2227ae8",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "44e5f02fd0ebd655ec21c1198683edba9ae0ce8e9b3e7c90e0c9f48d06f9c675",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/lettrage-cegid": {
-      "sha256": "6abf6fc32fd1ff7b77d1d13463c1b9109693f665536c727d44485cfdfd97b65b",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "ab487359642ea93854dee47251af744b27186ad2071eac56d11c2cd9a82f7ab5",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/lettrage-sage": {
-      "sha256": "52da42a776ec3346565ca779c9a603c867d53cf7b6a8b458b168e85b6798a572",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "251869d1f7426a35b54cd1eed665539995d99cce177f7d06a8a841bb854eded4",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/rapprochement-bancaire-sage": {
-      "sha256": "40a3f89904db2da8641a1a4db1cea253928927b7d1b580bcbc3e42884e75c481",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "38de6705a9b4b247b1685b73db8332bb18c20ad2b7e5b5fdda8e5a398f6bd09e",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/integrations/saisie-comptable-sage": {
-      "sha256": "f6b46083d0fb7754c3b36c5b861429f37eeefa53b2f846b382290fcba4e5e2e1",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "56a903d87ce55377a115308c4159faf7d3e9147fd31a72e6c364fc61780023fd",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/methode": {
-      "sha256": "e08aa294d7e8547ee320482caeccc9632726f84dd7cd686f0bda79a41b1f23c8",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "50d9bafb79f97cb4c73541a097281ede16c138572d9491b8ce7a4e975b4650bb",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits": {
-      "sha256": "1003ad658a6b668172d488ce12d694af8ce015e255e37c0f544fc13f6f1204af",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "69baed0ab5724474516ec86c263a3f3a0a9367148e553dd226ca61306781812a",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/outils-comptables-gratuits/bareme-heures-cac": {
+      "sha256": "93ab1124d2d764e5dc2299bfc23a9b60551c3b32e797332d6c0d36c8b336cc57",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
-      "sha256": "9b4ee00ec8b766365e63e508c8d1abbde4758436f28f250c9cd46b20dbd5037d",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "116cac3d13f6e5a4128dee61353257cd08ce8378b41b52e2442949598ee1d0c9",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
-      "sha256": "6af62aa45ea2f07f0dbf50a8a6c6e92beba688630e8dd46c4380a6592b60cc12",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "40285b972acc90f2a0727a26d882ed534bc54a9dc23beae3a01615399c263007",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
-      "sha256": "1671c5d2c16c52a1325aa56b9d092f2e517669da948ed383d23ba559ef08c971",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "43f1577dc18e6c5f36b536879a81a0ca177daaeec115e7cf61a778b73bafb88f",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/calculateur-marge-commerciale": {
-      "sha256": "0205cf6fc8a9998a08df293877aaa28a35af2d74cfb13a65d38737a761cc9fb0",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "165f2d1ca390cd1840420470b88f437946bfccb5d48ea92d66cd92113603425d",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/calculateur-roi-automatisation": {
-      "sha256": "f85193b4447b4e22ffaa46e0892fff746ab40157a8d77364b44082afb7c6cce9",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "5f66578db6854358d7e08117f897b0ec8f5896725ac075b3bd9ccb516f9d2aeb",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/outils-comptables-gratuits/checklist-pieces-comptables": {
+      "sha256": "f402d4f2b6cdb5e17077a0f27aa8a61ead85347bb7a5b30c545580890a5a98f7",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": {
-      "sha256": "9d5bfab05ad5138921b0c5506c83c5ced5c39ae163c2f063621dcf2806643d3a",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "a0433bcbd4dc5feb21121cd2e19d95a2943fdb6ba19df7a286457913c9736fce",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/outils-comptables-gratuits/fusionner-fichiers-csv": {
+      "sha256": "cbd060e0b671bba003f7ecbcf284bc693170a7d048afefda03bff770a6ecdabe",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/generateur-charte-ia-cabinet": {
-      "sha256": "a622d4d0264c255c6df4a4a8c1000147e29552eeb375c706b00e264d261420eb",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "44ee1b308e5f26619b9db609a1ff1ef8c4fa09eb5d55e440d218a62483b69045",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/generateur-prompt-expert-comptable": {
-      "sha256": "3e6a9cb806f12b90d07909206c7007ebacf69b3eeb4fc599686a4b29397642ba",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "9b7fcf19d5d8ce4d779af0cd90e0250b2bdc2c5ff13ce6ef0f25ad2f77403dca",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": {
-      "sha256": "eef44996e8fecc8e173cb080c37118e5f8bef7d8947bef47f7a2370a764e5315",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "98faa619886a1039ac5199dea5a74a8a790d44b847651edcddbc3e5c61d9eb13",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
-      "sha256": "f6b543652a85dbf768feee21d4fe8c2cd4e146fc187d1f4220fea79f316c60a9",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "a377dda702a625af7f09713534ea70968e2b05fa4ef31a1058a98aa92873cdf6",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": {
-      "sha256": "3e9564b5157028c420278f9134b9f2be7d91ad18f02d9d6af0ef83fff2c2fb83",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "91daf1c87e91c04adf3b7897a803a8599172a13357e538856cf6bdaf51a535d3",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/outils-comptables-gratuits/seuil-signification-audit": {
+      "sha256": "502cba24508bf5199def720992721739baf2b263a5fa92b7df1672e9bef71c97",
+      "lastmod": "2026-10-09T04:25:34.359Z"
+    },
+    "/outils-comptables-gratuits/suivi-circularisation": {
+      "sha256": "1ec00b85f60989bdad40b3285ed1e3d42d19999fbdd1f4c26dfc9a9cdec19989",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/verificateur-fec-local": {
-      "sha256": "31e508acc62eef53e3f54e5175b6cb24bca8e1e2e392049da26c6adb69adbab5",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "4885abf203a13e35a4c8f6a724cf77019d80edb04e328edcd8691951d60ac013",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     },
     "/outils-comptables-gratuits/verificateur-prompt-ia": {
-      "sha256": "884b55f5fc04dee5d743b02f5d5df42a2ea3901d814901c5d018ff1408d21bdc",
-      "lastmod": "2026-10-05T20:20:43.693Z"
+      "sha256": "a9e299ce6f04e8cb3e645c59ad86d24dec604e04188288ff208c9893f092d6a3",
+      "lastmod": "2026-10-09T04:25:34.359Z"
     }
   }
 }

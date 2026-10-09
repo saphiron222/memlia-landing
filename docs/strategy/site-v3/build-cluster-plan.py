@@ -34,6 +34,18 @@ FAMILLE_HISTORIQUE = {
 PAR_JOUR_MAX = 2
 PAR_SEMAINE_MAX = 4
 REGLE_IA = 'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json'
+# Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer
+# les changements concurrents pertinents de main. Une avancée hors calendrier
+# laisse la fourche utilisable ; aucun brouillon candidat ne devient publié.
+CHEMINS_CALENDRIER = (
+    'src/content/blog', 'src/data/familles.ts', 'src/content.config.ts',
+    'docs/strategy/site-v3/backlog-v3.json', 'docs/strategy/site-v3/cluster-plan.json',
+    'docs/strategy/site-v3/cluster-plan.md', 'docs/strategy/site-v3/CONTENT-CALENDAR.md', REGLE_IA,
+    'docs/strategy/site-v3/mesures/questions-2026-09-19.json',
+    'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
+    'docs/strategy/site-v3/mesures/autocompletion-cache.json',
+    'docs/strategy/site-v3/build-cluster-plan.py', 'scripts/lib/blog-ia-catchup.mjs',
+)
 
 
 def lire_rattrapage_ia():
@@ -152,6 +164,38 @@ def git_publication(*arguments):
     return resultat.stdout
 
 
+def base_de_publication(pointe):
+    """The pinned commit whose publication the candidate integrates.
+
+    The origin/main tip when the candidate contains it. Otherwise its fork point
+    with origin/main, unless both main and the candidate (committed, staged,
+    modified or untracked) touch calendar inputs. Unrelated main changes do not
+    invalidate that coherent baseline; concurrent calendar changes require main.
+    """
+    try:
+        ancetre = subprocess.run(['git', '-C', str(RACINE), 'merge-base', '--is-ancestor', pointe, 'HEAD'],
+            env={k: v for k, v in os.environ.items() if not k.startswith('GIT_')},
+            capture_output=True, text=True, timeout=10, check=False)
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        raise SystemExit('base de publication origin/main indisponible : arrêt sans écriture') from exc
+    if ancetre.returncode == 0:
+        return pointe
+    if ancetre.returncode != 1:
+        raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
+    fourche = git_publication('merge-base', pointe, 'HEAD').strip()
+    if not re.fullmatch(r'[0-9a-f]{40,64}', fourche):
+        raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
+    modifies = git_publication('diff', '--name-only', fourche, '--', *CHEMINS_CALENDRIER).strip()
+    nouveaux = git_publication('ls-files', '--others', '--exclude-standard', '--', *CHEMINS_CALENDRIER).strip()
+    concurrents = git_publication('diff', '--name-only', fourche, pointe,
+                                 '--', *CHEMINS_CALENDRIER).strip()
+    if (modifies or nouveaux) and concurrents:
+        chemin = concurrents.splitlines()[0]
+        raise SystemExit('base de publication origin/main non intégrée au candidat : le calendrier est modifié '
+                         f'({chemin}), intégrer origin/main')
+    return fourche
+
+
 def etat_publie():
     """Calendar state, not a production receipt or approval of draft bytes.
 
@@ -167,10 +211,10 @@ def etat_publie():
     if os.path.lexists(git_dir):
         if git_dir.is_symlink():
             raise SystemExit('base de publication origin/main : .git symbolique refusé')
-        base = git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip()
-        if not re.fullmatch(r'[0-9a-f]{40,64}', base):
+        pointe = git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip()
+        if not re.fullmatch(r'[0-9a-f]{40,64}', pointe):
             raise SystemExit('base de publication origin/main invalide')
-        git_publication('merge-base', '--is-ancestor', base, 'HEAD')
+        base = base_de_publication(pointe)
         for ligne in git_publication('ls-tree', '-r', '-z', '--name-only', base,
                                     '--', 'src/content/blog').split('\0'):
             if ligne:
@@ -192,7 +236,7 @@ def etat_publie():
             publies[fichier.stem] = integre
         elif base is None and brouillon == 'false':
             publies[fichier.stem] = courant
-    if base and git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip() != base:
+    if base and git_publication('rev-parse', '--verify', 'refs/remotes/origin/main^{commit}').strip() != pointe:
         raise SystemExit('base de publication origin/main a changé pendant la lecture')
     return publies
 

@@ -39,6 +39,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
     expect(await tab.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
   }
   await other.close();
+  await page.bringToFront();
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click();
   expect(await readFile((await (await downloaded).path())!, 'utf8')).toBe(edited);
 });

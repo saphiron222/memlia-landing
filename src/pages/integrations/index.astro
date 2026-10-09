@@ -8,20 +8,20 @@ import { SITE } from '@/data/site.mjs';
 const chemin = '/integrations';
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar('kevin');
-const products = ['Sage 100 Comptabilité', 'Sage 100 Paie & RH', 'Cegid Loop', 'mySilae'] as const;
+const products = [...new Set(INTEGRATIONS_INDEXABLES.map((integration) => integration.product))];
 const page = {
   chemin,
   titre: 'Guides par environnement comptable | Memlia',
-  description: 'Trouvez les repères de contrôle pour Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae, puis cadrez la tâche à automatiser.',
+  description: `Trouvez les repères de contrôle dans ${new Intl.ListFormat('fr', { type: 'disjunction' }).format(products)} : champs à lire, préparation et décisions du cabinet.`,
   h1: 'Guides par environnement comptable',
-  chapeau: 'Choisissez votre produit, puis le geste à contrôler : saisie, lettrage, rapprochement, clôture, bulletin ou DSN. Neuf guides donnent des repères de cadrage et distinguent la préparation de la validation du cabinet.',
+  chapeau: `Choisissez le logiciel de votre équipe, puis la tâche qui vous occupe. Les ${INTEGRATIONS_INDEXABLES.length} guides indiquent les champs à lire, les contrôles à préparer et les décisions qui restent au cabinet.`,
   ariane: 'Guides par environnement',
   secondaire: { libelle: 'Comprendre le service Memlia', href: '/automatisation-cabinet-comptable' },
 };
 const noeuds = [
   {
     '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: page.h1, headline: page.h1,
-    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-04', inLanguage: SITE.langue,
+    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-08', inLanguage: SITE.langue,
     author: { '@id': `${SITE.url}${identiteAuteur(auteur)}` }, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#items` },
   },
   {
@@ -39,45 +39,44 @@ const noeuds = [
   eyebrow="Guides documentés"
   hero="integrations/hub"
   appel={{
-    titre: 'Décrivez le geste dans votre environnement.',
-    texte: 'Le nom du logiciel situe le terrain. La mission commence par le geste réel, ses exceptions et la décision que votre équipe doit garder.',
-    points: ['Le geste qui revient.', 'L’environnement et les accès disponibles.', 'Le cas qui doit arrêter la préparation.'],
+    titre: 'Confiez la tâche qui revient dans votre équipe.',
+    texte: 'Nous écrivons sa règle dans vos mots, puis nous automatisons sa part répétitive dans vos outils. Nous prenons en charge la construction, les essais avec votre équipe et la maintenance. Vous gardez la décision.',
+    points: ['Une règle qui appartient au cabinet.', 'Une proposition avant validation.', 'Un arrêt quand le cas sort de la règle.'],
+    action: { libelle: 'Confier une première tâche', href: '/contact' },
   }}
 >
   <section class="pv" aria-labelledby="publication">
-    <div class="pv-tete rv">
-      <h2 id="publication">Partir du produit, choisir le geste</h2>
-      <p class="texte-2 lecture">Un guide vous aide à préparer les contrôles d’une tâche dans votre environnement. Avant toute automatisation, nous vérifions avec vous les formats, les accès et les cas couverts.</p>
+    <div class="tete rv">
+      <h2 id="publication">Trouvez les repères utiles à votre tâche</h2>
+      <p class="texte-2 lecture">Quand la tâche traverse plusieurs supports, il faut <a href="/blog/automatiser-avec-ia-sans-changer-logiciel">écrire le passage entre les outils</a> : ce qui entre, ce qui sort et le cas qui arrête la préparation.</p>
+      <p>Chaque guide part de la documentation de l’éditeur et montre une règle de préparation sur un jeu d’essai fictif. Le chemin disponible, les champs à vérifier et les limites du repère sont précisés dans le guide.</p>
     </div>
-    <div class="pv-bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ol class="pv-bande-liste rv-groupe">
-        <li class="pv-cellule rv"><h3>Votre produit</h3><p>Repérez le produit utilisé par votre équipe : la comptabilité et la paie ont des contrôles distincts.</p></li>
-        <li class="pv-cellule rv"><h3>Votre tâche</h3><p>Choisissez le geste qui revient et les informations nécessaires pour préparer son contrôle.</p></li>
-        <li class="pv-cellule rv"><h3>Frontière de décision</h3><p>Chaque guide sépare la préparation, la validation de l’équipe et le cas d’arrêt.</p></li>
-        <li class="pv-cellule rv"><h3>Votre environnement</h3><p>La version, les formats et les accès du cabinet sont vérifiés au cadrage, puis la règle est éprouvée avant la recette.</p></li>
-      </ol>
-    </div>
+    <ol class="lignes rv">
+      <li class="ligne"><h3 class="ligne-libelle">Le logiciel de votre équipe</h3><p class="ligne-texte">Choisissez le produit exact : Sage 100 Comptabilité et Sage 100 Paie &amp; RH ont des parcours distincts.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Les champs à vérifier</h3><p class="ligne-texte">Ouvrez le guide de votre tâche pour retrouver les données nécessaires au contrôle et leur rôle dans la préparation.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">La décision à garder</h3><p class="ligne-texte">La règle écrite distingue ce qui se prépare, ce qui attend votre validation et le cas qui arrête la préparation.</p></li>
+      <li class="ligne"><h3 class="ligne-libelle">Les limites du repère</h3><p class="ligne-texte">Lisez le périmètre de la documentation citée. Avant de construire une automatisation, nous vérifions votre version, vos formats et vos accès.</p></li>
+    </ol>
   </section>
 
   {products.map((product, index) => {
     const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.product === product);
     return (
       <section class="pv" aria-labelledby={`product-${index}`}>
-        <div class="pv-tete rv">
-          <p class="texte-2">{integrations[0].vendor}</p>
+        <div class="tete rv">
+          <p class="surtitre">{integrations[0].vendor}</p>
           <h2 id={`product-${index}`}>{product}</h2>
-          <p class="texte-2 lecture">{integrations.length} {integrations.length > 1 ? 'guides documentés' : 'guide documenté'}, chacun relié à la tâche correspondante et à sa limite de validation.</p>
+          <p>{integrations.length} {integrations.length > 1 ? 'guides pour préparer vos contrôles' : 'guide pour préparer vos contrôles'} dans {product}. Choisissez votre tâche ci-dessous.</p>
         </div>
-        <IntegrationCards integrations={integrations} />
+        <IntegrationCards integrations={integrations} titresParTache />
       </section>
     );
   })}
 
   <section class="pv" aria-labelledby="passage-tache">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="passage-tache">Du guide à la tâche confiée</h2>
-      <p class="texte-2 lecture">Le guide donne un repère de départ. La prise en charge commence par le geste réel, les accès disponibles et les exceptions du cabinet, puis se termine par une recette menée avec l’équipe.</p>
+      <p>Le guide vous aide à choisir ce que vous voulez confier. Nous partons ensuite de votre manière de travailler, de ce que votre logiciel fait déjà et des exceptions que votre équipe rencontre. La règle est éprouvée sur un dossier fictif, puis votre équipe teste et accepte le résultat avant la mise en service.</p>
     </div>
   </section>
 </PageCommerciale>

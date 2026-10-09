@@ -58,7 +58,7 @@ Quatre angles de geste et de preuve par famille ouverte, plus un pilier transver
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/automatisation/circularisation-cac` | automatiser circularisation | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:28.981Z | Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle. |
+| `/automatisation/circularisation-cac` | automatiser circularisation | construite-en-revue | proprietaire-existant | Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes. |
 | `/automatisation/revue-analytique-cac` | automatisation revue analytique | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:29.146Z | Confier la comparaison récurrente, les propositions et leur maintenance, pas télécharger un classeur. |
 | `/automatisation/dossier-travail-cac` | automatiser assemblage dossier audit | retenue-non-publiee | non-mesuree | Confier index et renvois sans écraser les saisies, pas acheter un logiciel de dossier. |
 
@@ -66,9 +66,9 @@ Quatre angles de geste et de preuve par famille ouverte, plus un pilier transver
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/outils-comptables-gratuits/suivi-circularisation` | modèle suivi circularisation excel | retenue-non-publiee | non-mesuree | Lettres originales et journal exportable dans une seule page ; pas de pages clonées banque/client/fournisseur. |
-| `/outils-comptables-gratuits/seuil-signification-audit` | seuil de signification audit calcul | retenue-non-publiee | 2 suggestions ; 2026-10-05T22:16:53.771Z | Signification et planification dans un outil documenté ; paramètres choisis et justification exportable. |
-| `/outils-comptables-gratuits/bareme-heures-cac` | barème heures commissaire aux comptes | retenue-non-publiee | 1 suggestions ; 2026-10-05T22:17:22.263Z | Calcul et explications intégrés, exclusions et hypothèses à vérifier en B3 ; aucun tarif universel. |
+| `/outils-comptables-gratuits/suivi-circularisation` | modèle suivi circularisation excel | construite-en-revue | proprietaire-existant | Lettres originales et journal exportable dans une seule page ; pas de pages clonées banque/client/fournisseur. |
+| `/outils-comptables-gratuits/seuil-signification-audit` | seuil de signification audit calcul | construite-en-revue | proprietaire-existant | Signification et planification dans un outil documenté ; paramètres choisis et justification exportable. |
+| `/outils-comptables-gratuits/bareme-heures-cac` | barème heures commissaire aux comptes | construite-en-revue | proprietaire-existant | Calcul et explications intégrés, exclusions et hypothèses à vérifier en B3 ; aucun tarif universel. |
 | `/outils-comptables-gratuits/revue-analytique-excel` | revue analytique excel | retenue-non-publiee | 2 suggestions ; 2026-10-05T22:16:57.923Z | Comparaison de deux balances, zéros et comptes nouveaux, commentaires et export ; pas décision d’audit. |
 | `/outils-comptables-gratuits/feuilles-maitresses-audit` | feuille maîtresse audit excel | retenue-non-publiee | 3 suggestions ; 2026-10-05T22:16:59.755Z | Regroupement par cycle et concordance, distinct de l’analyse N/N-1. |
 

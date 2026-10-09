@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-10-06 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 281 satellites (15 publiés, 264 planifiés) en 67 familles et 13 pôles, 1122 liens, 407600 mots estimés.
+Généré le 2026-10-07 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 281 satellites (15 publiés, 264 planifiés) en 67 familles et 13 pôles, 1122 liens, 407600 mots estimés.
 
 ## Méthode
 
@@ -31,7 +31,7 @@ Lire les pièces, extraire les champs, pré-imputer, et faire remonter ce que la
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | automatisation saisie comptable OCR | how-to-guide | collaborateurs-comptables | 3 | published |
+| 2026-09-17 | [Automatiser la saisie comptable : ce qui reste à vérifier](/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier) | automatisation saisie comptable | how-to-guide | collaborateurs-comptables | 3 | published |
 | 2027-01-06 | [Contrôler une pré-comptabilisation automatique avant validation](/blog/controler-une-pre-comptabilisation-automatique-avant-validation) | checklist contrôle saisie comptable automatisée | listicle-checklist | collaborateurs-comptables | 3 | planned |
 | 2027-05-27 | [Quand la lecture automatique d'une pièce doit remonter à un collaborateur](/blog/quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur) | OCR comptable erreur reconnaissance que faire | how-to-guide | collaborateurs-comptables | 3 | planned |
 | 2027-02-15 | [OCR comptable et IA générative : quelle différence pour la saisie ?](/blog/ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie) | différence OCR et IA comptabilité | faq-knowledge | collaborateurs-comptables | 2 | planned |
@@ -42,7 +42,7 @@ Récupérer les relevés, rapprocher les mouvements des écritures, typer les é
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-06 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | rapprochement bancaire automatique | how-to-guide | collaborateurs-comptables | 1 | planned |
+| 2026-10-07 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | rapprochement bancaire automatique | how-to-guide | collaborateurs-comptables | 1 | planned |
 | 2027-01-13 | [La checklist avant de valider un rapprochement bancaire automatisé](/blog/checklist-avant-de-valider-un-rapprochement-bancaire-automatise) | checklist rapprochement bancaire comptabilité | listicle-checklist | collaborateurs-comptables | 3 | planned |
 | 2027-06-01 | [Les écarts qu'un rapprochement bancaire automatique ne tranche pas seul](/blog/les-ecarts-bancaires-qu-un-rapprochement-automatique-ne-doit-pas-trancher-seul) | écart de rapprochement bancaire non expliqué comptabilité | how-to-guide | collaborateurs-comptables | 3 | planned |
 | 2026-10-28 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | définition rapprochement bancaire comptabilité | faq-knowledge | collaborateurs-comptables | 1 | planned |
@@ -116,6 +116,9 @@ Rejouer les contrôles répétitifs de la révision, justifier chaque solde, tra
 ### Clôture, bilan et plaquette (`cloture-bilan`)
 
 Dérouler la clôture, produire les états et la plaquette, contrôler avant livraison.
+
+Décision commerciale du 06/10/2026 (vague 3, rang 22) : [qualification et mesures](mesures/cloture-bilan-2026-10-06/qualification.md).
+La candidate `/automatisation/cloture-bilan` n'est pas retenue : sept sondes réussies, six listes vides et un seul signal logiciel, sans demande commerciale distincte confirmée. Rattachement à `/automatisation-cabinet-comptable`, sans réservation de requête pour une nouvelle URL. Les fonctions natives annoncées par ACD et l'offre adjacente fulll sont documentées ; les SERP indisponibles ne permettent aucun classement ni volume. La famille éditoriale reste planifiée, non nouvellement approuvée. L'assemblage et le contrôle de complétude d'un lot restent distincts de la révision des soldes et de l'autorisation d'envoi.
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
@@ -246,7 +249,7 @@ Préparer, contrôler et déposer la DSN ; lire et traiter les retours.
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
 | 2027-01-19 | [Automatiser le contrôle et le dépôt de la DSN](/blog/automatiser-le-controle-et-le-depot-de-la-dsn) | automatiser dépôt DSN cabinet comptable | how-to-guide | paie-responsables-sociaux | 3 | planned |
-| 2026-10-07 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | date limite dépôt DSN mensuelle | listicle-checklist | paie-responsables-sociaux | 1 | planned |
+| 2026-10-08 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | date limite dépôt DSN mensuelle | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2027-07-27 | [Que faire quand un compte rendu métier DSN signale une anomalie ?](/blog/que-faire-quand-un-compte-rendu-metier-dsn-signale-une-anomalie) | compte rendu métier DSN anomalie action corrective | how-to-guide | paie-responsables-sociaux | 3 | planned |
 | 2026-11-04 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | crm dsn de substitution | faq-knowledge | paie-responsables-sociaux | 1 | planned |
 | 2026-09-15 | [Comprendre les comptes rendus métier DSN : méthode de lecture](/blog/comprendre-les-comptes-rendus-metier-dsn) | crm dsn | how-to-guide | paie-responsables-sociaux | 1 | published |
@@ -440,7 +443,7 @@ Collecter les pièces d’entrée, poser les jalons, préparer ce qui attend la 
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-06 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
+| 2026-10-07 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
 | 2027-05-11 | [Automatiser la collecte des pièces d'entrée en relation](/blog/automatiser-la-collecte-des-pieces-d-entree-en-relation) | pièces entrée en relation client cabinet comptable | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-09-09 | [Les jalons d'un onboarding client qui attendent toujours la signature](/blog/les-jalons-d-un-onboarding-client-qui-attendent-toujours-la-signature) | onboarding client cabinet comptable signature lettre de mission | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-08-25 | [Qu'est-ce que l'entrée en relation avec un nouveau client, au cabinet ?](/blog/qu-est-ce-que-l-entree-en-relation-avec-un-nouveau-client-au-cabinet) | définition entrée en relation client cabinet comptable | faq-knowledge | administratif-secretariat | 3 | planned |
@@ -527,7 +530,6 @@ Ce que l’IA prépare, ce qu’elle ne décide pas ; agents, assistants, modèl
 | 2026-10-05 | [Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils](/blog/automatiser-avec-ia-sans-changer-logiciel) | automatiser IA sans changer logiciel | how-to-guide | direction-associes | 3 | published |
 | 2026-10-04 | [Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile](/blog/utiliser-chatgpt-cabinet-comptable) | utiliser ChatGPT cabinet comptable | how-to-guide | direction-associes | 3 | published |
 | 2026-10-05 | [Vérifier une réponse IA en comptabilité : une checklist avant utilisation](/blog/verifier-reponse-ia-comptabilite) | vérifier réponse IA comptabilité | how-to-guide | collaborateurs-comptables | 3 | published |
-| 2026-10-02 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/tests-verts-et-regle-des-trois-passes) | pourquoi des tests verts peuvent manquer des défauts | thought-leadership | direction-associes | 1 | published |
 
 ### RGPD, secret professionnel et sécurité (`rgpd-secret-securite`)
 
@@ -622,6 +624,7 @@ Qualifier les tâches candidates, choisir la première, écrire le cadre.
 | 2027-10-04 | [La checklist de recette avant de mettre en service une automatisation](/blog/checklist-de-recette-avant-de-mettre-en-service-une-automatisation) | checklist recette automatisation cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-10-21 | [Les cas qu'un jeu d'essai doit toujours inclure avant la recette](/blog/les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette) | jeu d'essai cas limite cas de refus automatisation | how-to-guide | direction-associes | 3 | planned |
 | 2027-03-08 | [Qu'est-ce qu'un manuel de procédures comptables, et que doit-il contenir ?](/blog/qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir) | qu'est-ce qu'un manuel de procédures comptables | faq-knowledge | direction-associes | 2 | planned |
+| 2026-10-02 | [Pourquoi des tests verts manquent des défauts : la règle des trois passes](/blog/tests-verts-et-regle-des-trois-passes) | pourquoi des tests verts peuvent manquer des défauts | thought-leadership | direction-associes | 3 | published |
 | 2026-10-17 | [Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient](/blog/zero-erreur-collecte-incomplete) | pourquoi zéro erreur ne prouve pas une collecte complète | thought-leadership | numerique-it-data | 3 | planned |
 | 2026-10-31 | [Pourquoi une revue visuelle peut valider la mauvaise palette](/blog/revue-visuelle-mauvaise-palette) | pourquoi une revue visuelle peut valider la mauvaise palette | thought-leadership | direction-associes | 3 | planned |
 | 2026-11-07 | [Pourquoi un test automatisé peut accuser le mauvais système](/blog/test-automatise-accuse-mauvais-systeme) | pourquoi un test automatisé peut accuser le mauvais système | thought-leadership | numerique-it-data | 3 | planned |

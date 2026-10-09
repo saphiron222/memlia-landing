@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "date": "2026-10-06",
+  "date": "2026-10-07",
   "seed": "automatisation cabinet comptable",
   "methode": "backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 67 familles et 13 pôles actifs dans ce plan (12 pôles dans la taxonomie EC historique, 5 pôles CAC dont durabilité inactive) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
   "pillar": {
@@ -167,7 +167,7 @@
         },
         {
           "title": "Automatiser la saisie comptable : ce qui reste à vérifier",
-          "keyword": "automatisation saisie comptable OCR",
+          "keyword": "automatisation saisie comptable",
           "profession": "ec",
           "architectureRole": null,
           "volume": null,
@@ -297,7 +297,7 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-10-06",
+          "date": "2026-10-07",
           "missedDate": null,
           "secondaryKeywords": [
             "clé de rapprochement bancaire comptabilité",
@@ -2473,7 +2473,7 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-07",
+          "date": "2026-10-08",
           "missedDate": null,
           "secondaryKeywords": [
             "checklist dépôt DSN mensuelle cabinet",
@@ -4524,7 +4524,7 @@
           "intent": "executer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-06",
+          "date": "2026-10-07",
           "missedDate": null,
           "secondaryKeywords": [
             "pièces d'entrée en relation cabinet comptable",
@@ -5518,30 +5518,6 @@
           "officialSources": [
             "CNIL"
           ],
-          "status": "published",
-          "incomingLinks": 3
-        },
-        {
-          "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
-          "keyword": "pourquoi des tests verts peuvent manquer des défauts",
-          "profession": "ec",
-          "architectureRole": null,
-          "volume": null,
-          "template": "essai",
-          "format": "thought-leadership",
-          "wordCount": 1400,
-          "url": "/blog/tests-verts-et-regle-des-trois-passes",
-          "slug": "tests-verts-et-regle-des-trois-passes",
-          "family": "ia-generative-agents",
-          "role": "direction-associes",
-          "intent": "diagnostiquer",
-          "funnel": "MOFU",
-          "priority": 1,
-          "date": "2026-10-02",
-          "missedDate": null,
-          "secondaryKeywords": [],
-          "proof": "cicatrice W39 signée, publiée le 2026-10-02",
-          "officialSources": [],
           "status": "published",
           "incomingLinks": 3
         },
@@ -6557,6 +6533,35 @@
             "Ordre des experts-comptables — référentiel normatif (à ouvrir le jour de la recette)"
           ],
           "status": "planned",
+          "incomingLinks": 3
+        },
+        {
+          "title": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
+          "keyword": "pourquoi des tests verts peuvent manquer des défauts",
+          "profession": "ec",
+          "architectureRole": null,
+          "volume": null,
+          "template": "essai",
+          "format": "thought-leadership",
+          "wordCount": 1400,
+          "url": "/blog/tests-verts-et-regle-des-trois-passes",
+          "slug": "tests-verts-et-regle-des-trois-passes",
+          "family": "regle-jeu-essai-recette",
+          "role": "direction-associes",
+          "intent": "comprendre",
+          "funnel": "TOFU",
+          "priority": 3,
+          "date": "2026-10-02",
+          "missedDate": null,
+          "secondaryKeywords": [
+            "tests verts faux positifs",
+            "controle automatique qui ne detecte rien"
+          ],
+          "proof": "les trois défauts nommés, la mesure qui aurait dû rougir et ne rougissait pas, et la recette en trois passes qui les attrape depuis",
+          "officialSources": [
+            "aucune"
+          ],
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -8368,18 +8373,6 @@
       "anchor": "Tableau de bord paie Excel en cabinet : suivre sans surveiller"
     },
     {
-      "from": "tests-verts-et-regle-des-trois-passes",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "tests-verts-et-regle-des-trois-passes",
-      "type": "pilier",
-      "anchor": "Pourquoi des tests verts manquent des défauts : la règle des trois passes"
-    },
-    {
       "from": "automatiser-la-relance-des-pieces-clients",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -8450,6 +8443,18 @@
       "to": "pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
       "type": "pilier",
       "anchor": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec"
+    },
+    {
+      "from": "tests-verts-et-regle-des-trois-passes",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "tests-verts-et-regle-des-trois-passes",
+      "type": "pilier",
+      "anchor": "Pourquoi des tests verts manquent des défauts : la règle des trois passes"
     },
     {
       "from": "verifier-reponse-ia-comptabilite",
@@ -11596,18 +11601,6 @@
       "anchor": "Pourquoi une installation logicielle échoue en cabinet : le test qui a tranché"
     },
     {
-      "from": "zero-erreur-collecte-incomplete",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "zero-erreur-collecte-incomplete",
-      "type": "pilier",
-      "anchor": "Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient"
-    },
-    {
       "from": "rapport-analytics-mauvais-site",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -11630,6 +11623,18 @@
       "to": "build-reussi-application-ne-demarre-pas",
       "type": "pilier",
       "anchor": "Pourquoi un build réussi ne prouve pas qu’une application démarre"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "pilier",
+      "anchor": "Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient"
     },
     {
       "from": "revue-visuelle-mauvaise-palette",
@@ -11711,15 +11716,9 @@
     },
     {
       "from": "utiliser-chatgpt-cabinet-comptable",
-      "to": "tests-verts-et-regle-des-trois-passes",
+      "to": "ia-cabinet-comptable",
       "type": "famille",
-      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
-    },
-    {
-      "from": "verifier-reponse-ia-comptabilite",
-      "to": "tests-verts-et-regle-des-trois-passes",
-      "type": "famille",
-      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
+      "anchor": "ia cabinet comptable"
     },
     {
       "from": "verifier-reponse-ia-comptabilite",
@@ -11728,13 +11727,7 @@
       "anchor": "ia cabinet comptable"
     },
     {
-      "from": "tests-verts-et-regle-des-trois-passes",
-      "to": "ia-cabinet-comptable",
-      "type": "famille",
-      "anchor": "ia cabinet comptable"
-    },
-    {
-      "from": "tests-verts-et-regle-des-trois-passes",
+      "from": "verifier-reponse-ia-comptabilite",
       "to": "logiciel-ia-comptabilite",
       "type": "famille",
       "anchor": "logiciel ia comptabilite"
@@ -12097,13 +12090,13 @@
       "from": "quand-la-lecture-automatique-d-une-piece-doit-remonter-a-un-collaborateur",
       "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "type": "famille",
-      "anchor": "automatisation saisie comptable OCR"
+      "anchor": "automatisation saisie comptable"
     },
     {
       "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
       "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "type": "famille",
-      "anchor": "automatisation saisie comptable OCR"
+      "anchor": "automatisation saisie comptable"
     },
     {
       "from": "ocr-comptable-et-ia-generative-quelle-difference-pour-la-saisie",
@@ -12220,6 +12213,102 @@
       "anchor": "quand ne pas automatiser une tâche cabinet comptable"
     },
     {
+      "from": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
+      "to": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
+      "type": "famille",
+      "anchor": "checklist recette automatisation cabinet comptable"
+    },
+    {
+      "from": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
+      "to": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
+      "type": "famille",
+      "anchor": "jeu d'essai cas limite cas de refus automatisation"
+    },
+    {
+      "from": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
+      "to": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
+      "type": "famille",
+      "anchor": "jeu d'essai cas limite cas de refus automatisation"
+    },
+    {
+      "from": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
+      "to": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
+      "type": "famille",
+      "anchor": "qu'est-ce qu'un manuel de procédures comptables"
+    },
+    {
+      "from": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
+      "to": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
+      "type": "famille",
+      "anchor": "qu'est-ce qu'un manuel de procédures comptables"
+    },
+    {
+      "from": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
+      "to": "tests-verts-et-regle-des-trois-passes",
+      "type": "famille",
+      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
+    },
+    {
+      "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
+      "to": "tests-verts-et-regle-des-trois-passes",
+      "type": "famille",
+      "anchor": "pourquoi des tests verts peuvent manquer des défauts"
+    },
+    {
+      "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "famille",
+      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
+    },
+    {
+      "from": "tests-verts-et-regle-des-trois-passes",
+      "to": "zero-erreur-collecte-incomplete",
+      "type": "famille",
+      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
+    },
+    {
+      "from": "tests-verts-et-regle-des-trois-passes",
+      "to": "revue-visuelle-mauvaise-palette",
+      "type": "famille",
+      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "revue-visuelle-mauvaise-palette",
+      "type": "famille",
+      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
+    },
+    {
+      "from": "zero-erreur-collecte-incomplete",
+      "to": "test-automatise-accuse-mauvais-systeme",
+      "type": "famille",
+      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
+    },
+    {
+      "from": "revue-visuelle-mauvaise-palette",
+      "to": "test-automatise-accuse-mauvais-systeme",
+      "type": "famille",
+      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
+    },
+    {
+      "from": "revue-visuelle-mauvaise-palette",
+      "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
+      "type": "famille",
+      "anchor": "manuel de procédures cabinet expertise comptable"
+    },
+    {
+      "from": "test-automatise-accuse-mauvais-systeme",
+      "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
+      "type": "famille",
+      "anchor": "manuel de procédures cabinet expertise comptable"
+    },
+    {
+      "from": "test-automatise-accuse-mauvais-systeme",
+      "to": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
+      "type": "famille",
+      "anchor": "checklist recette automatisation cabinet comptable"
+    },
+    {
       "from": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
       "to": "checklist-avant-de-valider-un-rapprochement-bancaire-automatise",
       "type": "famille",
@@ -12362,90 +12451,6 @@
       "to": "automatiser-la-collecte-des-pieces-d-entree-en-relation",
       "type": "famille",
       "anchor": "pièces entrée en relation client cabinet comptable"
-    },
-    {
-      "from": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
-      "to": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
-      "type": "famille",
-      "anchor": "checklist recette automatisation cabinet comptable"
-    },
-    {
-      "from": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
-      "to": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
-      "type": "famille",
-      "anchor": "jeu d'essai cas limite cas de refus automatisation"
-    },
-    {
-      "from": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
-      "to": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
-      "type": "famille",
-      "anchor": "jeu d'essai cas limite cas de refus automatisation"
-    },
-    {
-      "from": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
-      "to": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
-      "type": "famille",
-      "anchor": "qu'est-ce qu'un manuel de procédures comptables"
-    },
-    {
-      "from": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
-      "to": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
-      "type": "famille",
-      "anchor": "qu'est-ce qu'un manuel de procédures comptables"
-    },
-    {
-      "from": "les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette",
-      "to": "zero-erreur-collecte-incomplete",
-      "type": "famille",
-      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
-    },
-    {
-      "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
-      "to": "zero-erreur-collecte-incomplete",
-      "type": "famille",
-      "anchor": "pourquoi zéro erreur ne prouve pas une collecte complète"
-    },
-    {
-      "from": "qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir",
-      "to": "revue-visuelle-mauvaise-palette",
-      "type": "famille",
-      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
-    },
-    {
-      "from": "zero-erreur-collecte-incomplete",
-      "to": "revue-visuelle-mauvaise-palette",
-      "type": "famille",
-      "anchor": "pourquoi une revue visuelle peut valider la mauvaise palette"
-    },
-    {
-      "from": "zero-erreur-collecte-incomplete",
-      "to": "test-automatise-accuse-mauvais-systeme",
-      "type": "famille",
-      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
-    },
-    {
-      "from": "revue-visuelle-mauvaise-palette",
-      "to": "test-automatise-accuse-mauvais-systeme",
-      "type": "famille",
-      "anchor": "pourquoi un test automatisé peut accuser le mauvais système"
-    },
-    {
-      "from": "revue-visuelle-mauvaise-palette",
-      "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
-      "type": "famille",
-      "anchor": "manuel de procédures cabinet expertise comptable"
-    },
-    {
-      "from": "test-automatise-accuse-mauvais-systeme",
-      "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
-      "type": "famille",
-      "anchor": "manuel de procédures cabinet expertise comptable"
-    },
-    {
-      "from": "test-automatise-accuse-mauvais-systeme",
-      "to": "checklist-de-recette-avant-de-mettre-en-service-une-automatisation",
-      "type": "famille",
-      "anchor": "checklist recette automatisation cabinet comptable"
     },
     {
       "from": "cac-reception-fec-constat",

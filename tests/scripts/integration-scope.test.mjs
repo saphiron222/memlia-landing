@@ -2,23 +2,20 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import ts from 'typescript';
+import { assertScope } from './integration-inventory.mjs';
 
 const read = (path) => readFileSync(path, 'utf8');
-const compiled = ts.transpileModule(read('src/data/integrations.ts'), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+const compiled = ts.transpileModule(read('src/data/integrations.ts').replace("import generatedGuides from './guides.generated.json' with { type: 'json' };", `const generatedGuides = ${read('src/data/guides.generated.json')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { INTEGRATIONS } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const guide = read('src/pages/integrations/[slug].astro');
 const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);
 
-test('neuf guides : chaque champ explique un rôle et sa condition de contrôle', () => {
-  assert.equal(INTEGRATIONS.length, 9);
-  for (const entry of INTEGRATIONS) {
-    assert.ok(entry.documentScope.length > 80, entry.slug);
-    assert.ok(entry.fields.every((field) => field.label && field.control.length > 40), entry.slug);
-    assert.equal(new Set(entry.fields.map((field) => field.control)).size, entry.fields.length, entry.slug);
-    assert.equal(entry.source.checkedAt, '2026-10-04');
-  }
+test('au moins neuf guides : chaque champ explique un rôle et sa condition de contrôle', () => {
+  assertScope(INTEGRATIONS);
   assert.doesNotMatch(guide, /Champ observé dans le jeu fictif/);
-  assert.match(guide, /integration.source.checkedAt/);
+  // La date de vérification reste dans les données (ligne ci-dessus) ; la page cite la source par un lien dans le texte.
+  assert.match(guide, /href=\{integration\.source\.url\}/);
+  assert.doesNotMatch(guide, /SourceEvidence|id="source"/);
 });
 
 test('Cegid : clés JSON et non menu ; compte général ou tiers lettrable', () => {
