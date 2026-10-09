@@ -33,7 +33,7 @@ const retour = '\n';
 
   <div class="hero-cadre" data-cadre>
     <div class="hero-verre cadre">
-      <div class="hero-ecran" data-video-player>
+      {contenu.video ? <div class="hero-ecran" data-video-player>
         <video muted loop playsinline preload="none" width="1920" height="1080"
           tabindex="0" data-video aria-label="Reprendre la vidéo"
           disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
@@ -59,7 +59,9 @@ const retour = '\n';
             <a href={contenu.video}>Télécharger la vidéo</a>.
           </p>
         </noscript>
-      </div>
+      </div> : <div class="hero-ecran">
+        <img src={contenu.poster} width="1600" height="900" alt="Sélection fictive des tiers : critères, graine, deux passes et validation en attente." loading="eager" fetchpriority="high" />
+      </div>}
     </div>
 
   </div>
@@ -120,6 +122,13 @@ const retour = '\n';
   .hero-ecran video:focus-visible {
     outline: 3px solid var(--accent-texte);
     outline-offset: -5px;
+  }
+  .hero-ecran img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
   }
   /* Rien ne se pose au centre de la vidéo, où passent ses titres : le bouton du son va dans le
      coin bas gauche, vide sur toutes les images de la vidéo (système de page, § 1). */
