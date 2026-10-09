@@ -1,31 +1,26 @@
 ---
+import Insecable from '@/components/Insecable.astro';
 import ProofRow from '@/components/ProofRow.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 interface Props { contenu?: ContenuAccueil['quotidien']; }
 const { contenu = contenuDe('ec').quotidien } = Astro.props;
-/** Le problème quotidien, sans métrique client ni témoignage inventé. */
+/**
+ * Le problème quotidien, sans métrique client ni témoignage inventé.
+ * Système de page : rangée (en-tête, maquette), puis des lignes (un verbe, sa définition), puis
+ * la mention qui borne la promesse.
+ */
 ---
-<section class="daily" aria-labelledby="daily-title">
-  <ProofRow id={contenu.image} enlarge>
-  <div class="daily-intro rv">
-    <h2 id="daily-title">{contenu.titre}</h2>
-    <p class="texte-2 lecture">{contenu.texte}</p>
+<section class="section daily" aria-labelledby="daily-title">
+  <div class="conteneur pile">
+    <ProofRow id={contenu.image}>
+      <div class="tete rv">
+        <h2 id="daily-title"><Insecable texte={contenu.titre} /></h2>
+        <p>{contenu.texte}</p>
+      </div>
+    </ProofRow>
+    <dl class="lignes rv">
+      {contenu.points.map((p, i) => <Fragment>{i > 0 && ' '}<div class="ligne"><dt class="ligne-libelle">{p.titre}</dt><dd class="ligne-texte">{p.texte}</dd></div></Fragment>)}
+    </dl>
+    <p class="daily-note mention">{contenu.note}</p>
   </div>
-  </ProofRow>
-  <dl class="daily-list rv">
-    {contenu.points.map((p, i) => <Fragment>{i > 0 && ' '}<div><dt>{p.titre}</dt><dd>{p.texte}</dd></div></Fragment>)}
-  </dl>
-  <p class="daily-note texte-2">{contenu.note}</p>
-
 </section>
-<style>
-  .daily { padding: 96px var(--marge-page) 0; }
-  .daily-intro { display: grid; gap: 20px; max-width: 800px; }
-  .daily-list { display: grid; gap: 24px; margin: 40px 0 32px; }
-  .daily-list div { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  dt { font-weight: 600; color: var(--texte-fort); }
-  dd { margin: 0; color: var(--texte-2); }
-  .daily-note { padding-top: 24px; border-top: 1px solid var(--ligne); font-size: var(--t-sm); }
-  @media (min-width: 48rem) { .daily-list div { grid-template-columns: 160px 1fr; gap: 32px; } }
-  @media (min-width: 64rem) { .daily { padding: 128px var(--marge-page-lg) 0; } }
-</style>
