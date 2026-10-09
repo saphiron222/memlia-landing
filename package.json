@@ -15,7 +15,7 @@
     "test": "playwright test",
     "test:images": "node scripts/verify-m4-images.mjs",
     "lastmod:sync": "node scripts/sync-lastmod.mjs",
-    "regen:generated": "npx astro build && npm run lastmod:sync && npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
+    "regen:generated": "npx astro build && node scripts/render-public-source-text.mjs && npm run lastmod:sync && npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
     "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",

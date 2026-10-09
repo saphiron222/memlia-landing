@@ -8,10 +8,14 @@
     {
       "command": "node scripts/strip-briefs.mjs",
       "exitCode": 0
+    },
+    {
+      "command": "node scripts/render-public-source-text.mjs",
+      "exitCode": 0
     }
   ],
-  "startedAt": "2026-10-09T10:07:50.822Z",
-  "endedAt": "2026-10-09T10:08:18.870Z",
+  "startedAt": "2026-10-09T10:14:02.670Z",
+  "endedAt": "2026-10-09T10:14:31.876Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -21,6 +25,10 @@
       },
       {
         "command": "node scripts/strip-briefs.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node scripts/render-public-source-text.mjs",
         "exitCode": 0
       }
     ],
