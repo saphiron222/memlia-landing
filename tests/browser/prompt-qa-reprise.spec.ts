@@ -8,6 +8,14 @@ async function assemble(page: import('@playwright/test').Page) {
   await page.locator('[name=confirmed]').check();
   await page.locator('button[type=submit]').click();
 }
+async function assembleModel(page: import('@playwright/test').Page, model: typeof MODELS[number]) {
+  // L'URL et la visibilité du formulaire précèdent l'exécution du module.
+  // Attendre la reprise réelle sans remplir les champs ni accepter un dialogue.
+  for (const name of ['description', 'task', 'input', 'format', 'validator', 'stop'] as const) {
+    await expect(page.locator(`form [name=${name}]`)).toHaveValue(model.seed[name]);
+  }
+  await assemble(page);
+}
 for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, original édité conservé sans stockage${navigationDelay ? ', destination différée' : ''}`, async ({ page, context }) => {
   if (navigationDelay) await context.route(`**${lib}`, async route => {
     await delay(navigationDelay);
@@ -26,7 +34,8 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
   await other.bringToFront(); await expect(other).toHaveURL(new RegExp(lib + '$'));
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
   await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
-  await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
+  await expect(other).toHaveURL(new RegExp(gen + '$'));
+  await assembleModel(other, MODELS.find(m => m.id === 'compte-rendu')!);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
   // Chromium macOS peut suspendre l'évaluation dans l'onglet en arrière-plan.
   // Revenir à l'original comme un utilisateur, sans toucher à son contenu.
@@ -42,6 +51,25 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
   await page.bringToFront();
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click();
   expect(await readFile((await (await downloaded).path())!, 'utf8')).toBe(edited);
+});
+test('R1 : module indisponible, la recette refuse de confirmer ou soumettre', async ({ page }) => {
+  await page.goto(gen);
+  const moduleUrl = await page.locator('script[src*="GenerateurPrompt."]').getAttribute('src');
+  expect(moduleUrl).toBeTruthy();
+  await page.goto(lib);
+  await page.route(`**${moduleUrl}`, route => route.abort());
+  const submissions: string[] = [];
+  page.on('request', request => {
+    const url = new URL(request.url());
+    if (request.isNavigationRequest() && url.pathname === gen && url.search) submissions.push(request.url());
+  });
+  await page.locator('[data-model="compte-rendu"] [data-adapt]').click();
+  await expect(page).toHaveURL(new RegExp(gen + '$'));
+  await expect(assembleModel(page, MODELS.find(m => m.id === 'compte-rendu')!)).rejects.toThrow(/toHaveValue/);
+  await expect(page.locator('form [name=description]')).toHaveValue('');
+  await expect(page.locator('[name=confirmed]')).not.toBeChecked();
+  await expect(page.locator('[data-editor]')).toHaveValue('');
+  expect(submissions).toEqual([]);
 });
 for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description', 'confirmed']) {
   for (const accept of [false, true]) test(`R2 : ${name} seul, reprise ${accept ? 'acceptée' : 'refusée'}`, async ({ page }) => {
@@ -66,7 +94,7 @@ test('R3 : export adapté différé exact et nettoyage', async ({ page }) => {
     URL.revokeObjectURL = url => { (window as any).__revoked.push(url); revoke.call(URL, url); };
   });
   await page.goto(lib); await page.locator('[data-model="relance-pieces"] [data-adapt]').click();
-  await expect(page).toHaveURL(new RegExp(gen + '$')); await assemble(page);
+  await expect(page).toHaveURL(new RegExp(gen + '$')); await assembleModel(page, MODELS[0]);
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click(); const file = await downloaded;
   expect(await file.failure()).toBe(null); expect(file.suggestedFilename()).toBe('prompt-expert-comptable.txt');
   expect(await readFile((await file.path())!, 'utf8')).toBe(modelPrompt(MODELS[0]));
