@@ -106,6 +106,15 @@ ce qui produit « Process from config.webServer exited early » avant tout test.
 marqueur ne modifie aucune approbation ou présence humaine ; ne pas lui
 substituer `--ignore-lock`, un serveur réutilisé ou un changement d'outil.
 
+Le `webServer` conserve aussi stdout et stderr dans le journal Playwright :
+`build:site` précède le serveur et les tests Node écrivent leurs défauts sur
+stdout. Un « Exit code: 1 » après les preuves Python peut donc venir d'une
+porte de construction, pas du démarrage Astro. Lire la première assertion
+en échec dans ce journal avant de relancer ou de modifier un garde.
+`node --test tests/scripts/playwright-startup.test.mjs` vérifie avec le vrai
+processus Playwright qu'un échec de construction affiche son diagnostic et
+empêche l'exécution des tests navigateur.
+
 `node --test tests/scripts/playwright-foreground.test.mjs` éprouve le vrai
 serveur Astro temporaire et sa durée de vie. Pour les cinq corps republiés,
 la recette réelle est
