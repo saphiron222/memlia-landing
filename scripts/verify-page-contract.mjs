@@ -359,10 +359,15 @@ export function auditerNavigationMobile({ root = process.cwd() } = {}) {
   if (!existsSync(path)) return { pass: false, errors: ['src/components/Nav.astro absent'] };
   const source = readFileSync(path, 'utf8');
   const errors = [];
-  if (!source.includes('data-mobile-visible')) errors.push('navigation mobile immédiatement visible absente');
-  const ctaHeight = selectorMinHeight(source, '.nav-principal');
+  if (!source.includes('data-burger') || !source.includes('aria-controls="menu-mobile"') || !source.includes('data-menu-mobile')) {
+    errors.push('bouton et panneau de navigation mobile absents');
+  }
+  if (!source.includes('<noscript>') || !source.includes('nav-sans-js')) errors.push('navigation sans JavaScript absente');
+  const burgerHeight = selectorMinHeight(source, '.nav-burger');
+  if (burgerHeight < 48) errors.push(`bouton de menu mobile haut de ${burgerHeight}px dans le contrat CSS, 48px requis`);
+  const ctaHeight = selectorMinHeight(source, '.nav-mobile-cta :global(.btn)');
   if (ctaHeight < 44) errors.push(`cible principale mobile haute de ${ctaHeight}px dans le contrat CSS, 44px requis`);
-  const linkHeight = selectorMinHeight(source, '.nav-mobile-visible a');
+  const linkHeight = selectorMinHeight(source, '.nav-mobile-lien');
   if (linkHeight < 44) errors.push(`liens structurants mobiles hauts de ${linkHeight}px dans le contrat CSS, 44px requis`);
   return { pass: errors.length === 0, errors };
 }
@@ -532,9 +537,9 @@ export function auditerContratPages({
       let validImage = false;
       try {
         const image = new URL(page.ogImages[0]);
-        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password;
+        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password && /\.(jpg|png)$/.test(image.pathname);
       } catch { /* Une URL relative ou absente ne forme pas une image sociale publique. */ }
-      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr est requise pour toute page indexable'));
+      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable'));
     }
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
     if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));

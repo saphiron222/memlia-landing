@@ -210,6 +210,8 @@ function robotsAllow(body, path) {
 }
 function nodes(root) { return [root, ...(root.childNodes ?? []).flatMap(nodes), ...(root.content ? nodes(root.content) : [])]; }
 function text(node) { return ['script', 'style', 'template'].includes(node.tagName) ? '' : node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join(' '); }
+// Un titre passé par Insecable (#166) porte des balises : text() y ajoute des espaces, le titre relu n'en a qu'un.
+function texteTitre(node) { return text(node).replace(/\s+/g, ' ').trim(); }
 export async function publierGuide({ root = process.cwd(), slug, fetchImpl = fetch }) {
   try {
     const { errors, manifest, recipe } = verifyState(root, slug);
@@ -225,14 +227,17 @@ export async function publierGuide({ root = process.cwd(), slug, fetchImpl = fet
     const h1s = all.filter(n => n.tagName === 'h1');
     const robots = all.filter(n => n.tagName === 'meta' && ['robots','googlebot','bingbot'].includes((attr(n, 'name') ?? '').toLowerCase())).map(n => attr(n, 'content')).join(' ') + ' ' + (response.headers.get('x-robots-tag') ?? '');
     const indexable = !/\b(noindex|none)\b/i.test(robots);
-    if (canonicals.length !== 1 || attr(canonicals[0], 'href') !== url || h1s.length !== 1 || text(h1s[0]).trim() !== recipe.integration.h1 || !indexable) return fail(['Canonical, H1 unique ou indexabilité non conformes.']);
+    if (canonicals.length !== 1 || attr(canonicals[0], 'href') !== url || h1s.length !== 1 || texteTitre(h1s[0]) !== recipe.integration.h1 || !indexable) return fail(['Canonical, H1 unique ou indexabilité non conformes.']);
     const d = recipe.integration;
     const integrationSha256 = sha(JSON.stringify(d));
     const identities = all.filter(n => attr(n, 'data-guide-sha256') !== undefined);
     if (recipe.mode === 'nouveau' && (identities.length !== 1 || attr(identities[0], 'data-guide-sha256') !== integrationSha256)) return fail(['Identité du guide servi absente ou divergente.']);
     const body = norm(text(all.find(n => n.tagName === 'body') ?? {}));
-    const expected = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values), d.source.title, d.source.fact];
-    if (expected.some(value => !body.includes(norm(value))) || !all.some(n => n.tagName === 'a' && attr(n, 'href') === d.source.url)) return fail(['Corps du guide servi différent du candidat relu.']);
+    // Pas de bloc « Source » (décision de Kevin du 06/10/2026, #166) : la source se lit sur le lien posé dans le
+    // paragraphe de portée, son titre relu en attribut ; le fait relu reste dans la recette scellée.
+    const expected = [d.intro, d.documentScope, d.officialPath, d.knownTrap, d.writtenRule, ...d.fields.flatMap(f => [f.label, f.control]), ...Object.values(d.boundary), ...d.replay.flatMap(Object.values)];
+    const lienSource = all.some(n => n.tagName === 'a' && attr(n, 'href') === d.source.url && attr(n, 'title') === d.source.title);
+    if (expected.some(value => !body.includes(norm(value))) || !lienSource) return fail(['Corps du guide servi différent du candidat relu.']);
     const proofUrl = `/proofs/integrations/${slug}.webp`;
     if (!all.some(n => n.tagName === 'img' && [proofUrl, `https://memlia.fr${proofUrl}`].includes(attr(n, 'src')))) return fail(['Preuve attendue absente de la page servie.']);
     const proofResponse = await fetchImpl(`https://memlia.fr${proofUrl}`, { redirect: 'manual', signal: AbortSignal.timeout(20000) });
@@ -243,7 +248,7 @@ export async function publierGuide({ root = process.cwd(), slug, fetchImpl = fet
     if (robotsResponse.status !== 200 || !robotsAllow(robotsBody, `/integrations/${slug}`)) return fail(['robots.txt absent ou bloquant le guide.']);
     const terminal = verifyState(root, slug);
     if (terminal.errors.length || !equal(terminal.manifest, manifest)) return fail([...terminal.errors, 'Candidat modifié pendant le constat réseau.']);
-    const receipt = { version: 1, slug, candidateSha256: manifest.candidateSha256, integrationSha256, proofSha256, observedAt: new Date().toISOString(), url, httpStatus: response.status, canonical: url, h1: text(h1s[0]).trim(), indexable, robotsAllowed: true, robotsSha256: sha(robotsBody), htmlSha256: sha(html) };
+    const receipt = { version: 1, slug, candidateSha256: manifest.candidateSha256, integrationSha256, proofSha256, observedAt: new Date().toISOString(), url, httpStatus: response.status, canonical: url, h1: texteTitre(h1s[0]), indexable, robotsAllowed: true, robotsSha256: sha(robotsBody), htmlSha256: sha(html) };
     write(root, statePath(slug, 'publication'), receipt);
     const seal = read(root, statePath(slug, 'scellement'));
     seal.publicationSha256 = sha(readFileSync(join(root, statePath(slug, 'publication'))));

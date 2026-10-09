@@ -1,0 +1,1850 @@
+{
+  "/": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/#page",
+          "url": "https://memlia.fr/",
+          "name": "Votre cabinet tourne sur un savoir-faire que personne n’a écrit.",
+          "headline": "Votre cabinet tourne sur un savoir-faire que personne n’a écrit.",
+          "description": "Votre cabinet tourne sur un savoir-faire que personne n’a écrit. Memlia l’écrit et en automatise la part répétitive dans vos outils, avec validation humaine.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "about": {
+            "@id": "https://memlia.fr/#service"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "datePublished": "2026-09-16",
+          "dateModified": "2026-09-20",
+          "breadcrumb": {
+            "@id": "https://memlia.fr/#breadcrumb"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://memlia.fr/#service",
+          "name": "Memlia : automatisation IA du cabinet",
+          "serviceType": "Automatisation IA pour cabinets d'expertise comptable",
+          "areaServed": "FR",
+          "url": "https://memlia.fr/automatisation-cabinet-comptable",
+          "image": "https://memlia.fr/assets/og-memlia.png",
+          "description": "Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils. Livrée après recette, maintenue, sans siège à payer.",
+          "provider": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Cabinets d'expertise comptable"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://memlia.fr/#faq",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "about": {
+            "@id": "https://memlia.fr/#service"
+          },
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Memlia est-il un logiciel à paramétrer seul ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Memlia est un service : nous observons la tâche, nous écrivons sa règle et ses limites, nous construisons l’automatisation dans vos outils, et vos équipes la valident. Vous n’avez rien à paramétrer."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Faut-il remplacer nos logiciels ou nos fichiers ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. L’automatisation se greffe sur l’environnement existant : logiciel métier, exports, messagerie, dossier partagé, classeur. Si une évolution d’outil est nécessaire, elle est identifiée avant le développement, jamais découverte après."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "L’IA peut-elle agir sans validation ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Uniquement pour la mécanique explicitement autorisée dans le périmètre accepté. Les décisions sensibles restent proposées à la personne désignée, qui peut valider, modifier ou refuser. Aucun envoi externe sans validation humaine : mail, déclaration ou facture."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Que se passe-t-il si une information manque ou si le cas est ambigu ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "L’automatisation bloque l’écriture concernée et signale le cas. Elle ne complète pas silencieusement une information métier et n’étend pas seule la règle : c’est le principe fail-closed."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Est-ce un outil de surveillance des équipes ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Les éventuelles vues de pilotage portent sur l’avancement du processus et des agrégats utiles, jamais nominatifs. Memlia ne note pas les salariés et ne publie aucun classement individuel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Utilisez-vous des données client réelles pour développer ou démontrer ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Les développements, tests et démonstrations utilisent des jeux fictifs. En exploitation, les données, accès, flux, hébergements éventuels, durées de conservation et responsabilités RGPD sont documentés pour chaque automatisation avant installation, dans le respect du secret professionnel. Ce cadrage ne constitue pas une certification de conformité."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quels processus pouvez-vous automatiser ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Toute tâche répétitive dont la règle peut s’écrire : des entrées identifiables, des exceptions listables, un résultat vérifiable. Saisie, relances de pièces, rapprochements, contrôles de paie, retours DSN, échéances, dossier permanent, reporting. Ce qui demande un jugement reste à vos équipes ; ce qui se répète nous revient."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment le prix est-il calculé ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vous payez une tâche prise en charge, pas des sièges. Le devis dépend des sources, des règles, des exceptions et des validations à couvrir ; maintenance, support et évolutions y sont écrits."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Memlia fonctionne-t-il uniquement dans Excel ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Non. Excel peut faire partie du processus, comme un logiciel métier, un export, une messagerie ou un dossier partagé. Le choix dépend de la tâche et des intégrations techniquement accessibles. Les versions et environnements couverts sont définis avant de développer."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Que se passe-t-il si notre processus ou nos outils évoluent ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La maintenance, le support et les évolutions sont définis dans la proposition commerciale. Tout changement susceptible d’affecter la règle, la source ou le résultat déclenche une analyse d’impact et, si nécessaire, une nouvelle recette."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment se déroule la recette ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vos référents vérifient les cas attendus, les exceptions et les refus sur des jeux fictifs représentatifs. La livraison vaut pour le périmètre et l’environnement explicitement acceptés, pas pour des intégrations non testées."
+              }
+            }
+          ],
+          "breadcrumb": {
+            "@id": "https://memlia.fr/#breadcrumb"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "/automatisation-cabinet-comptable": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/automatisation-cabinet-comptable#page",
+          "url": "https://memlia.fr/automatisation-cabinet-comptable",
+          "name": "Automatisation pour cabinet comptable : votre règle écrite, dans vos outils.",
+          "description": "Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils. Livrée après recette, maintenue, sans siège à payer.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "mainEntity": {
+            "@id": "https://memlia.fr/#service"
+          },
+          "headline": "Automatisation pour cabinet comptable : votre règle écrite, dans vos outils.",
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "datePublished": "2026-09-16",
+          "dateModified": "2026-10-04"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://memlia.fr/#service",
+          "name": "Memlia : automatisation IA du cabinet",
+          "serviceType": "Automatisation IA pour cabinets d'expertise comptable",
+          "areaServed": "FR",
+          "url": "https://memlia.fr/automatisation-cabinet-comptable",
+          "image": "https://memlia.fr/assets/og-memlia.png",
+          "description": "Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils. Livrée après recette, maintenue, sans siège à payer.",
+          "provider": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Cabinets d'expertise comptable"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/automatisation-cabinet-comptable#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Automatisation",
+              "item": "https://memlia.fr/automatisation-cabinet-comptable"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "url": "https://memlia.fr/a-propos",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/automatisation/paie": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/automatisation/paie#webpage",
+          "url": "https://memlia.fr/automatisation/paie",
+          "name": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+          "headline": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+          "description": "Automatisation paie pôle social : règle écrite, contrôles préparés, écarts visibles et décisions conservées par les gestionnaires.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "about": {
+            "@id": "https://memlia.fr/automatisation/paie#service"
+          },
+          "breadcrumb": {
+            "@id": "https://memlia.fr/automatisation/paie#breadcrumb"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "datePublished": "2026-09-20",
+          "dateModified": "2026-09-20"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://memlia.fr/automatisation/paie#service",
+          "name": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+          "serviceType": "automatisation paie pôle social",
+          "description": "Automatisation paie pôle social : règle écrite, contrôles préparés, écarts visibles et décisions conservées par les gestionnaires.",
+          "url": "https://memlia.fr/automatisation/paie",
+          "areaServed": "FR",
+          "provider": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Cabinets d'expertise comptable"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/automatisation/paie#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Automatisation",
+              "item": "https://memlia.fr/automatisation-cabinet-comptable"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+              "item": "https://memlia.fr/automatisation/paie"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "url": "https://memlia.fr/a-propos",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/methode": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/methode#page",
+          "url": "https://memlia.fr/methode",
+          "name": "Observer. Écrire. Éprouver. Livrer.",
+          "description": "Observer le geste réel, écrire la règle dans vos mots, éprouver les cas qui doivent échouer, livrer après recette : les quatre étapes d’une mission Memlia.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "about": {
+            "@id": "https://memlia.fr/#service"
+          },
+          "headline": "Observer. Écrire. Éprouver. Livrer.",
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "datePublished": "2026-09-16",
+          "dateModified": "2026-10-04"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/methode#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Méthode",
+              "item": "https://memlia.fr/methode"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "url": "https://memlia.fr/a-propos",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/blog": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": [
+            "CollectionPage",
+            "Blog"
+          ],
+          "@id": "https://memlia.fr/blog#page",
+          "url": "https://memlia.fr/blog",
+          "name": "Blog Memlia : vérifier et automatiser le travail du cabinet",
+          "headline": "Ce qui se vérifie, ce qui s’automatise, ce qui se décide.",
+          "description": "Blog Memlia : des méthodes pour écrire le savoir-faire du cabinet, préparer les tâches répétitives et garder la décision humaine.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "mainEntityOfPage": {
+            "@id": "https://memlia.fr/blog#page"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "blogPost": [
+            {
+              "@id": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/tests-verts-et-regle-des-trois-passes#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/logiciel-ia-comptabilite#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/prompt-chatgpt-expert-comptable#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn#article"
+            },
+            {
+              "@id": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel#article"
+            }
+          ],
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+          "url": "https://memlia.fr/a-propos",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/blog/rubrique/paie-dsn-cabinet-comptable": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": [
+            "WebPage",
+            "CollectionPage"
+          ],
+          "@id": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable#page",
+          "url": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable",
+          "name": "Paie et DSN en cabinet comptable : du bulletin au retour métier",
+          "headline": "Paie et DSN en cabinet comptable : du bulletin au retour métier",
+          "description": "Paie et DSN en cabinet comptable : contrôler les bulletins, lire les retours DSN et suivre le pôle social avec la règle écrite du cabinet.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "breadcrumb": {
+            "@id": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable#breadcrumb"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": 3,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+                "name": "Comment contrôler les bulletins de paie avant la DSN ?"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+                "name": "Comprendre les comptes rendus métier DSN : méthode de lecture"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+                "name": "Tableau de bord paie Excel en cabinet : suivre sans surveiller"
+              }
+            ]
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://memlia.fr/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Paie et DSN",
+              "item": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/integrations": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://memlia.fr/integrations#webpage",
+          "url": "https://memlia.fr/integrations",
+          "name": "Guides par environnement comptable",
+          "headline": "Guides par environnement comptable",
+          "description": "Trouvez les repères de contrôle pour Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae, puis cadrez la tâche à automatiser.",
+          "datePublished": "2026-09-20",
+          "dateModified": "2026-10-04",
+          "inLanguage": "fr-FR",
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "mainEntity": {
+            "@id": "https://memlia.fr/integrations#items"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://memlia.fr/integrations#items",
+          "numberOfItems": 9,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Rapprochement bancaire Sage : écrire la règle avant le pointage",
+              "url": "https://memlia.fr/integrations/rapprochement-bancaire-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Lettrage Sage : proposer les paires sans masquer l’écart",
+              "url": "https://memlia.fr/integrations/lettrage-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "DSN Sage : préparer les contrôles, laisser la déclaration au gestionnaire",
+              "url": "https://memlia.fr/integrations/dsn-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Bulletin de paie Sage : contrôler les changements avant validation",
+              "url": "https://memlia.fr/integrations/bulletin-de-paie-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Saisie comptable Sage : préparer un lot sans perdre le contexte",
+              "url": "https://memlia.fr/integrations/saisie-comptable-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "Clôture Sage : préparer les contrôles, jamais le clic final",
+              "url": "https://memlia.fr/integrations/cloture-sage"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "Lettrage Cegid : équilibrer le paquet sur le bon compte",
+              "url": "https://memlia.fr/integrations/lettrage-cegid"
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "name": "DSN Silae : traiter les contrôles avant la transmission",
+              "url": "https://memlia.fr/integrations/dsn-silae"
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "name": "Bulletin de paie Silae : contrôler les variables avant distribution",
+              "url": "https://memlia.fr/integrations/bulletin-de-paie-silae"
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/integrations#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Guides par environnement",
+              "item": "https://memlia.fr/integrations"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/integrations/lettrage-sage": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TechArticle",
+          "@id": "https://memlia.fr/integrations/lettrage-sage#article",
+          "url": "https://memlia.fr/integrations/lettrage-sage",
+          "headline": "Lettrage Sage : proposer les paires sans masquer l’écart",
+          "name": "Lettrage Sage : proposer les paires sans masquer l’écart",
+          "description": "Cadrez le lettrage Sage 100 depuis les journaux ou les comptes tiers, avec règle d’équilibre, proposition traçable et arrêt sur écart.",
+          "datePublished": "2026-09-20",
+          "dateModified": "2026-10-04",
+          "inLanguage": "fr-FR",
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          },
+          "citation": "https://fr-kb.sage.com/portal/app/portlets/results/viewsolution.jsp?solutionid=211010160118208",
+          "mainEntityOfPage": {
+            "@id": "https://memlia.fr/integrations/lettrage-sage#webpage"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/integrations/lettrage-sage#webpage",
+          "url": "https://memlia.fr/integrations/lettrage-sage",
+          "name": "Lettrage Sage : proposer les paires sans masquer l’écart",
+          "headline": "Lettrage Sage : proposer les paires sans masquer l’écart",
+          "description": "Cadrez le lettrage Sage 100 depuis les journaux ou les comptes tiers, avec règle d’équilibre, proposition traçable et arrêt sur écart.",
+          "datePublished": "2026-09-20",
+          "dateModified": "2026-10-04",
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          },
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+          "name": "Kevin Kitanga",
+          "url": "https://memlia.fr/a-propos#kevin-kitanga",
+          "jobTitle": "Fondateur de Memlia",
+          "worksFor": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/integrations/lettrage-sage#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sage · lettrage",
+              "item": "https://memlia.fr/integrations/lettrage-sage"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/glossaire": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://memlia.fr/glossaire#page",
+          "url": "https://memlia.fr/glossaire",
+          "name": "Glossaire des tâches et contrôles du cabinet",
+          "headline": "Glossaire des tâches et contrôles du cabinet.",
+          "description": "Glossaire comptable : des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.",
+          "inLanguage": "fr-FR",
+          "isPartOf": {
+            "@id": "https://memlia.fr/#website"
+          },
+          "mainEntity": {
+            "@id": "https://memlia.fr/glossaire#term-set"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          }
+        },
+        {
+          "@type": "DefinedTermSet",
+          "@id": "https://memlia.fr/glossaire#term-set",
+          "url": "https://memlia.fr/glossaire",
+          "name": "Glossaire Memlia",
+          "description": "Glossaire comptable : des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.",
+          "hasDefinedTerm": [
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#agent-ia",
+              "name": "Agent IA",
+              "description": "Un agent IA est un composant logiciel qui enchaîne des actions au moyen d’outils — lire un fichier, interroger une base, écrire une ligne — pour atteindre un but formulé en langage courant. Il agit sur un environnement défini et en modifie l’état, avec un niveau d’autonomie variable.",
+              "url": "https://memlia.fr/glossaire#agent-ia",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#agregat-non-nominatif",
+              "name": "Agrégat non nominatif",
+              "description": "Résultat regroupant des dossiers, étapes ou périodes sans afficher un indicateur par personne.",
+              "url": "https://memlia.fr/glossaire#agregat-non-nominatif",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#annule-et-remplace-dsn",
+              "name": "Annule et remplace DSN",
+              "description": "Une DSN « annule et remplace » remplace une déclaration déjà transmise dans la fenêtre autorisée pour ce type de déclaration.",
+              "url": "https://memlia.fr/glossaire#annule-et-remplace-dsn",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#anonymisation",
+              "name": "Anonymisation",
+              "description": "Traitement visant à rendre impossible, en pratique, l’identification d’une personne par quelque moyen que ce soit et de manière irréversible.",
+              "url": "https://memlia.fr/glossaire#anonymisation",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#automatisation",
+              "name": "Automatisation",
+              "description": "L’automatisation consiste à faire exécuter par un outil, sans intervention humaine à chaque occurrence, une règle explicite et stable : les mêmes conditions produisent toujours le même traitement. Ce qui sort de la règle — une donnée absente, un cas non prévu — doit être signalé plutôt que traité par approximation, pour rester fidèle à la règle écrite.",
+              "url": "https://memlia.fr/glossaire#automatisation",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#automatisation-robotisee-des-processus",
+              "name": "Automatisation robotisée des processus (RPA)",
+              "description": "L’automatisation robotisée des processus désigne un logiciel qui rejoue, dans l’interface d’une application, les clics et les saisies qu’une personne exécuterait : ouvrir un écran, lire un champ, recopier une valeur. Elle suit une séquence d’actions écrite à l’avance et ne comprend ni le document ni la décision qu’elle transporte.",
+              "url": "https://memlia.fr/glossaire#automatisation-robotisee-des-processus",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#cas-de-refus",
+              "name": "Cas de refus",
+              "description": "Situation prévue dans laquelle le traitement s’arrête et demande une intervention au lieu de produire un résultat incertain.",
+              "url": "https://memlia.fr/glossaire#cas-de-refus",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#cle-de-rapprochement",
+              "name": "Clé de rapprochement",
+              "description": "Une clé de rapprochement est le champ, ou la combinaison de champs, qui permet d’affirmer que deux lignes venues de sources différentes désignent le même objet : un numéro de dossier, un identifiant de pièce, un montant associé à une date. Elle doit être stable et non ambiguë.",
+              "url": "https://memlia.fr/glossaire#cle-de-rapprochement",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#completude-du-dossier",
+              "name": "Complétude du dossier",
+              "description": "La complétude d’un dossier désigne l’état dans lequel toutes les pièces attendues pour une période donnée ont été reçues et sont lisibles, selon une liste définie à l’avance pour ce dossier. Elle se constate pièce par pièce, jamais par une impression générale que « le client a envoyé quelque chose ».",
+              "url": "https://memlia.fr/glossaire#completude-du-dossier",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#compte-rendu-metier-dsn",
+              "name": "Compte rendu métier DSN",
+              "description": "Un compte rendu métier est le retour d’un organisme ou d’une administration après réception d’une déclaration lorsqu’une erreur ou une suspicion d’erreur est détectée ; il peut aussi confirmer la qualité du traitement reçu.",
+              "url": "https://memlia.fr/glossaire#compte-rendu-metier-dsn",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#connecteur-et-api",
+              "name": "Connecteur et API",
+              "description": "Une interface de programmation, ou API, est la porte par laquelle un logiciel expose ses données à un autre ; un connecteur est l’enveloppe qui relie cette porte à un outil donné. Quand aucune porte n’existe, l’échange passe par un fichier exporté puis importé.",
+              "url": "https://memlia.fr/glossaire#connecteur-et-api",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#controle-avant-dsn",
+              "name": "Contrôle avant DSN",
+              "description": "Dans ce glossaire, Memlia appelle « contrôle avant DSN » l’ensemble des vérifications que le cabinet choisit de rejouer entre le calcul de la paie et le dépôt : pièces, variables, écarts, cohérences métier et conformité du fichier.",
+              "url": "https://memlia.fr/glossaire#controle-avant-dsn",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#controle-de-coherence",
+              "name": "Contrôle de cohérence",
+              "description": "Dans ce glossaire, Memlia appelle « contrôle de cohérence » une vérification qui compare des données entre elles ou à une règle du cabinet pour faire ressortir une anomalie possible.",
+              "url": "https://memlia.fr/glossaire#controle-de-coherence",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#declencheur",
+              "name": "Déclencheur",
+              "description": "Un déclencheur est l’événement précis qui lance l’exécution d’une règle : une date atteinte, la réception d’un document, un changement de statut dans un dossier. Il se distingue de la règle elle-même, qui décrit ce qui se passe une fois l’exécution lancée, et des conditions, qui filtrent ensuite les cas à traiter.",
+              "url": "https://memlia.fr/glossaire#declencheur",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#donnee-personnelle",
+              "name": "Donnée personnelle",
+              "description": "Toute information se rapportant à une personne physique identifiée ou identifiable, directement ou indirectement.",
+              "url": "https://memlia.fr/glossaire#donnee-personnelle",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#dsn",
+              "name": "DSN",
+              "description": "La déclaration sociale nominative (DSN) est obligatoire pour les entreprises du secteur privé ainsi que pour la fonction publique ; elle remplace des formalités qui s’appuient sur les données de paie.",
+              "url": "https://memlia.fr/glossaire#dsn",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#dsn-val",
+              "name": "DSN-Val",
+              "description": "DSN-Val est l’outil d’auto-contrôle qui teste un fichier DSN avant dépôt selon le cahier technique et le journal de maintenance de la norme associés.",
+              "url": "https://memlia.fr/glossaire#dsn-val",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#exception",
+              "name": "Exception (cas hors règle)",
+              "description": "Une exception est une occurrence que la règle écrite ne couvre pas — une donnée absente, un format inattendu, une combinaison non prévue — et qui doit remonter à une personne plutôt qu’être traitée par une valeur par défaut. Une exception n’est pas une erreur : c’est le fonctionnement attendu d’une règle qui refuse de deviner.",
+              "url": "https://memlia.fr/glossaire#exception",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#export-logiciel-et-import-csv",
+              "name": "Export logiciel et import CSV",
+              "description": "Un export est un fichier plat produit par un logiciel pour être relu par un autre ; le format CSV en est la forme la plus répandue. Aucune spécification unique ne s’impose : le nombre et l’ordre des colonnes se vérifient à chaque import, jamais une fois pour toutes.",
+              "url": "https://memlia.fr/glossaire#export-logiciel-et-import-csv",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#extraction-de-donnees",
+              "name": "Extraction de données",
+              "description": "L’extraction de données repère les champs utiles — fournisseur, montant, taux de TVA, date d’échéance — dans un document ou un flux pour les rendre exploitables. Elle peut partir d’une image, d’un texte natif ou de données structurées, sans passage obligatoire par un OCR séparé.",
+              "url": "https://memlia.fr/glossaire#extraction-de-donnees",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#fail-closed",
+              "name": "Fail-closed",
+              "description": "Dans le contrat technique Memlia, « fail-closed » désigne le comportement testé où une entrée inconnue, invalide ou ambiguë bloque le traitement au lieu d’autoriser une sortie par défaut.",
+              "url": "https://memlia.fr/glossaire#fail-closed",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#file-d-anomalies",
+              "name": "File d’anomalies",
+              "description": "Une file d’anomalies est la liste unique où se regroupent toutes les exceptions détectées par un traitement, chacune avec son motif et son statut, pour être reprise en une seule séance par une personne plutôt qu’au fil de l’eau. Elle transforme des interruptions dispersées en une revue périodique et maîtrisable.",
+              "url": "https://memlia.fr/glossaire#file-d-anomalies",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#flux-de-travail",
+              "name": "Flux de travail (workflow)",
+              "description": "Un flux de travail est l’enchaînement ordonné des étapes qui transforment une demande en résultat : chacune a un responsable, une condition qui permet de la déclencher, et une sortie qui alimente l’étape suivante. Il existe indépendamment de tout logiciel ; un outil peut ensuite exécuter tout ou partie de ses étapes.",
+              "url": "https://memlia.fr/glossaire#flux-de-travail",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#generation-augmentee-par-recuperation",
+              "name": "Génération augmentée par récupération (RAG)",
+              "description": "La génération augmentée par récupération est une technique où un modèle de langage répond à partir de documents qui lui sont fournis au moment de la question, plutôt qu’à partir de ce qu’il a mémorisé. Les réponses sont ancrées dans un contenu choisi, et les passages utilisés peuvent être cités.",
+              "url": "https://memlia.fr/glossaire#generation-augmentee-par-recuperation",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#grand-modele-de-langage",
+              "name": "Grand modèle de langage (LLM)",
+              "description": "Un grand modèle de langage, ou Large Language Model (LLM), est un modèle statistique entraîné sur de très grands volumes de texte, possédant un grand nombre de paramètres, généralement de l’ordre du milliard ou plus, qui prédit la suite la plus probable d’un texte donné. Cette capacité de prédiction sert ensuite de base à des usages comme la rédaction ou la synthèse.",
+              "url": "https://memlia.fr/glossaire#grand-modele-de-langage",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#hallucination",
+              "name": "Hallucination",
+              "description": "Une hallucination est un résultat produit par un système d’IA générative qui paraît plausible et formulé avec assurance, mais qui est inexact ou inventé. Elle survient notamment lorsque le système est interrogé sur une information absente de ses données d’entraînement, sans qu’il signale cette absence.",
+              "url": "https://memlia.fr/glossaire#hallucination",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#honoraires-mensualises-et-actes-hors-forfait",
+              "name": "Honoraires mensualisés et actes hors forfait",
+              "description": "Les honoraires mensualisés sont prélevés chaque mois sur une base fixée par la lettre de mission ; un acte hors forfait correspond à une prestation non comprise dans ce forfait, qui s’ajoute et se facture séparément, une seule fois. Le code de déontologie prévoit que les honoraires sont fixés librement entre le client et l’expert-comptable, en fonction de l’importance des diligences, de la difficulté des cas et des frais exposés.",
+              "url": "https://memlia.fr/glossaire#honoraires-mensualises-et-actes-hors-forfait",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#ia-generative",
+              "name": "IA générative",
+              "description": "L’intelligence artificielle dite générative désigne les systèmes capables de produire des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne. Ils peuvent aussi résumer, corriger ou traduire des contenus existants. Le résultat est généré, mais pas nécessairement inédit ni différent à chaque exécution.",
+              "url": "https://memlia.fr/glossaire#ia-generative",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#idempotence",
+              "name": "Idempotence",
+              "description": "Une opération est idempotente lorsque la rejouer produit le même état final que l’exécuter une seule fois : relancé sur les mêmes données, un import n’écrit pas une deuxième fois les lignes déjà présentes. La propriété porte sur l’effet obtenu, pas sur le nombre d’exécutions.",
+              "url": "https://memlia.fr/glossaire#idempotence",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#jeu-d-essai-fictif",
+              "name": "Jeu d’essai fictif",
+              "description": "Un jeu d’essai fictif est un ensemble de données entièrement inventées, plausibles, construites pour couvrir un cas courant, un cas limite et un cas de refus, utilisé pour construire et éprouver un traitement sans jamais exposer de dossier réel. Il se distingue de données anonymisées ou pseudonymisées, qui proviennent toujours de personnes réelles.",
+              "url": "https://memlia.fr/glossaire#jeu-d-essai-fictif",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#lettrage-comptable",
+              "name": "Lettrage comptable",
+              "description": "Dans ce glossaire, Memlia appelle « lettrage comptable » le rapprochement d’écritures que le cabinet considère comme liées, par exemple une facture et son règlement, au moyen d’un repère commun.",
+              "url": "https://memlia.fr/glossaire#lettrage-comptable",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#minimisation-des-donnees",
+              "name": "Minimisation des données",
+              "description": "Principe selon lequel les données traitées doivent être adéquates, pertinentes et limitées à ce qui est nécessaire au regard de la finalité.",
+              "url": "https://memlia.fr/glossaire#minimisation-des-donnees",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#modele-local",
+              "name": "Modèle local",
+              "description": "Un modèle local s’exécute sur une machine contrôlée par le cabinet. Ce lieu d’exécution ne garantit pas l’absence de connexions : l’application peut utiliser des connecteurs, une télémétrie ou des services distants. Les flux et les accès doivent être vérifiés pour le déploiement retenu.",
+              "url": "https://memlia.fr/glossaire#modele-local",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#piece-justificative",
+              "name": "Pièce justificative",
+              "description": "Dans ce glossaire, Memlia appelle « pièce justificative » le document ou la trace que le cabinet retient pour expliquer et étayer une opération enregistrée ou une décision de contrôle.",
+              "url": "https://memlia.fr/glossaire#piece-justificative",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#pre-comptabilite",
+              "name": "Pré-comptabilité",
+              "description": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.",
+              "url": "https://memlia.fr/glossaire#pre-comptabilite",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#prelevement-sepa-et-rejet",
+              "name": "Prélèvement SEPA et rejet",
+              "description": "Le prélèvement SEPA permet de débiter les honoraires d’un client qui y a consenti par la signature d’un mandat de prélèvement ; un rejet est le refus de ce débit par la banque du client, qui doit le lui notifier en précisant le motif, par exemple une provision insuffisante. Un rejet n’est pas un impayé définitif : il appelle une nouvelle présentation ou un contact avec le client.",
+              "url": "https://memlia.fr/glossaire#prelevement-sepa-et-rejet",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#production-sociale",
+              "name": "Production sociale",
+              "description": "Dans ce glossaire, Memlia appelle « production sociale » le cycle de travail retenu par le cabinet pour collecter les variables, établir et contrôler les bulletins, déposer les déclarations puis traiter les retours et documents.",
+              "url": "https://memlia.fr/glossaire#production-sociale",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#proposition-puis-validation",
+              "name": "Proposition puis validation",
+              "description": "Proposition puis validation décrit un fonctionnement en deux temps : l’outil prépare une valeur, un texte ou une action à partir d’une règle, puis une personne l’accepte, la corrige ou la refuse avant qu’elle ne produise un effet. Ce que la personne saisit ou corrige n’est jamais réécrit ensuite par l’outil.",
+              "url": "https://memlia.fr/glossaire#proposition-puis-validation",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#pseudonymisation",
+              "name": "Pseudonymisation",
+              "description": "Traitement de données personnelles réalisé de manière à ne plus pouvoir attribuer les données à une personne physique sans information supplémentaire.",
+              "url": "https://memlia.fr/glossaire#pseudonymisation",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#rapprochement-bancaire",
+              "name": "Rapprochement bancaire",
+              "description": "Dans ce glossaire, Memlia appelle « rapprochement bancaire » le contrôle qui compare les mouvements et le solde comptables d’un compte au relevé de la banque, puis prépare l’explication des écarts de date, d’omission ou d’erreur.",
+              "url": "https://memlia.fr/glossaire#rapprochement-bancaire",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#recette",
+              "name": "Recette",
+              "description": "La recette est la séance au cours de laquelle le cabinet rejoue ses propres cas sur ses propres fichiers et décide d’accepter ou de refuser le livrable, en confrontant un cas courant, un cas limite et un cas de refus. Le vocabulaire des marchés publics informatiques l’appelle vérification puis admission.",
+              "url": "https://memlia.fr/glossaire#recette",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#reconnaissance-optique-de-caracteres",
+              "name": "Reconnaissance optique de caractères (OCR)",
+              "description": "La reconnaissance optique de caractères, ou OCR, est une technologie qui transforme l’image d’un document — une facture scannée, une photo de ticket — en texte numérique exploitable, mot par mot et ligne par ligne. Elle lit des caractères ; elle n’interprète pas le sens de ce qu’elle lit.",
+              "url": "https://memlia.fr/glossaire#reconnaissance-optique-de-caracteres",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#recouvrement-amiable",
+              "name": "Recouvrement amiable",
+              "description": "Tentative d’obtenir le paiement d’une créance sans engager d’abord une action judiciaire, généralement par relance puis, en cas d’échec, par mise en demeure.",
+              "url": "https://memlia.fr/glossaire#recouvrement-amiable",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#regle-de-cabinet",
+              "name": "Règle de cabinet",
+              "description": "Instruction explicite qui décrit ce que le cabinet attend d’une entrée donnée, les exceptions admises et le résultat à préparer.",
+              "url": "https://memlia.fr/glossaire#regle-de-cabinet",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#relance-de-pieces",
+              "name": "Relance de pièces",
+              "description": "La relance de pièces est la demande, adressée à un client selon une cadence définie à l’avance, des pièces manquantes pour compléter un dossier ; elle s’arrête dès leur réception. Elle porte sur des documents attendus dans une mission en cours, jamais sur une somme due.",
+              "url": "https://memlia.fr/glossaire#relance-de-pieces",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#reliquat-d-exceptions",
+              "name": "Reliquat d’exceptions",
+              "description": "Le reliquat d’exceptions est la part des occurrences qu’un traitement automatisé n’a pas su trancher et qu’il remonte à un collaborateur : cas hors règle, pièce illisible, écart inexpliqué. Il se compte à chaque passage et se suit dans le temps comme une charge de travail attendue.",
+              "url": "https://memlia.fr/glossaire#reliquat-d-exceptions",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#revision-comptable",
+              "name": "Révision comptable",
+              "description": "Dans ce glossaire, Memlia appelle « révision comptable » l’ensemble de contrôles défini par la mission du cabinet pour examiner les comptes, documenter les anomalies et préparer leur validation.",
+              "url": "https://memlia.fr/glossaire#revision-comptable",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#schema-de-donnees",
+              "name": "Schéma de données",
+              "description": "Dans le contrat technique Memlia, le « schéma de données » décrit la structure attendue d’un jeu de données : champs, types, formats, valeurs admises et relations utiles au traitement.",
+              "url": "https://memlia.fr/glossaire#schema-de-donnees",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#seuil-d-alerte",
+              "name": "Seuil d’alerte",
+              "description": "Un seuil d’alerte est la valeur à partir de laquelle un écart cesse d’être ignoré et remonte pour examen : un montant, un pourcentage, un nombre de jours. Il est fixé par le cabinet et révisé par lui ; l’outil l’applique sans jamais le déduire des données.",
+              "url": "https://memlia.fr/glossaire#seuil-d-alerte",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#sous-traitant-rgpd",
+              "name": "Sous-traitant (RGPD)",
+              "description": "Au sens du RGPD, le sous-traitant est la personne physique ou morale qui traite des données personnelles pour le compte d’un autre organisme, le responsable de traitement, dans le cadre d’un service ou d’une prestation. Ses obligations concernant ces données doivent figurer dans le contrat qui le lie au responsable de traitement.",
+              "url": "https://memlia.fr/glossaire#sous-traitant-rgpd",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#systeme-d-ia",
+              "name": "Système d’IA",
+              "description": "Au sens de l’article 3 du règlement (UE) 2024/1689, un système d’IA est un système automatisé conçu pour fonctionner à différents niveaux d’autonomie, qui peut faire preuve d’une capacité d’adaptation après son déploiement et qui déduit, à partir des entrées qu’il reçoit, la manière de générer des sorties telles que des prédictions, du contenu, des recommandations ou des décisions.",
+              "url": "https://memlia.fr/glossaire#systeme-d-ia",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#tracabilite",
+              "name": "Traçabilité",
+              "description": "Dans le contrat technique Memlia, la « traçabilité » permet de retrouver quelles entrées, quelle règle, quelle version et quel résultat ont conduit à une proposition ou à une décision.",
+              "url": "https://memlia.fr/glossaire#tracabilite",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            },
+            {
+              "@type": "DefinedTerm",
+              "@id": "https://memlia.fr/glossaire#validation-humaine",
+              "name": "Validation humaine",
+              "description": "Étape où une personne compétente accepte, corrige ou refuse la proposition préparée avant qu’elle produise un effet métier.",
+              "url": "https://memlia.fr/glossaire#validation-humaine",
+              "inDefinedTermSet": {
+                "@id": "https://memlia.fr/glossaire#term-set"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/glossaire#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Glossaire",
+              "item": "https://memlia.fr/glossaire"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://memlia.fr/#organization",
+          "name": "Memlia",
+          "legalName": "MEMLIA",
+          "url": "https://memlia.fr/",
+          "logo": "https://memlia.fr/apple-touch-icon.png",
+          "email": "contact@memlia.fr",
+          "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+          "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+            "postalCode": "75008",
+            "addressLocality": "Paris",
+            "addressCountry": "FR"
+          },
+          "identifier": [
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIREN",
+              "value": "108621541"
+            },
+            {
+              "@type": "PropertyValue",
+              "propertyID": "SIRET",
+              "value": "10862154100011"
+            }
+          ],
+          "sameAs": [
+            "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+            "https://www.pappers.fr/entreprise/memlia-108621541",
+            "https://www.societe.com/societe/memlia-108621541.html"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@memlia.fr",
+            "contactType": "customer support",
+            "areaServed": "FR",
+            "availableLanguage": "French"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://memlia.fr/#website",
+          "url": "https://memlia.fr/",
+          "name": "Memlia",
+          "inLanguage": "fr-FR",
+          "publisher": {
+            "@id": "https://memlia.fr/#organization"
+          }
+        }
+      ]
+    }
+  ],
+  "/outils-comptables-gratuits/calculateur-marge-commerciale": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#page",
+          "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+          "name": "Calculateur de marge commerciale",
+          "headline": "Calculateur de marge commerciale",
+          "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+          "inLanguage": "fr-FR",
+          "mainEntity": {
+            "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application"
+          },
+          "author": {
+            "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+          }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#application",
+          "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+          "name": "Calculateur de marge commerciale",
+          "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "JavaScript activé dans un navigateur récent",
+          "isAccessibleForFree": true
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://memlia.fr/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Outils comptables gratuits",
+              "item": "https://memlia.fr/outils-comptables-gratuits"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Calculateur de marge commerciale",
+              "item": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

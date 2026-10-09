@@ -33,3 +33,7 @@ Régression avant correctif : FAIL (`0 !== 1` après recette illisible). Après 
 hotspot : tests/scripts/guide-forge.test.mjs et tests/proof/test_build.py. t_de488db9 a été informée de ne pas dupliquer l'oracle d'inventaire ; conserver son correctif indépendant d'isolation des fixtures lors de l'intégration.
 
 Après l'unique QA et la CI verte : intégrer la PR infrastructure et transmettre le résultat à t_f4529d49. Aucun constat de publication EBP ni déploiement de guide n'a été effectué ici.
+
+## Combinaison de l'inventaire source — 9 octobre 2026
+
+L'avancement de main a rendu l'oracle HTML/sitemap dynamique depuis les exports source. La résolution conserve ce comportement et vérifie en plus la provenance scellée des guides générés avant de rendre cet inventaire utilisable. Les fixtures sans nouveau guide déclarent explicitement une collection vide ; les nouvelles intégrations source et les planchers historiques restent couverts. Le témoin exécutant l'inventaire source seul échoue sur un état préparé ; la combinaison passe les trois régressions d'inventaire. Aucun contenu EBP ni avis métier modifié.
