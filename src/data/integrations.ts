@@ -1,9 +1,9 @@
-import generatedGuides from './guides.generated.json';
+import generatedGuides from './guides.generated.json' with { type: 'json' };
 
 export const INTEGRATIONS_HUB_PATH = '/integrations' as const;
 
 export type IntegrationStatus = 'forte' | 'moyenne' | 'refusee';
-export type IntegrationVendor = 'Sage' | 'Cegid' | 'Silae' | 'Pennylane' | 'Quadra';
+export type IntegrationVendor = string;
 export type ServicePath = `/automatisation/${string}`
   | '/automatisation-cabinet-comptable'
   | '/automatisation/paie'
@@ -77,7 +77,7 @@ export interface IntegrationReplayCase {
 export interface IntegrationDefinition {
   slug: string;
   task: string;
-  vendor: string;
+  vendor: IntegrationVendor;
   product: string;
   primaryQuery: string;
   suggestions: number;

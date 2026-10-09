@@ -8,6 +8,9 @@ const baseURL = remoteUrl ?? `http://127.0.0.1:${localPort}`;
 export default defineConfig({
   testDir: './tests/browser',
   workers: 1,
+  // La CI répartit la suite sur des jobs parallèles (`--shard`) : découpée par test et non par fichier, un fichier
+  // long se partage entre plusieurs parts. Un seul worker par part, comme en local.
+  fullyParallel: true,
   use: { baseURL, channel: 'chromium', screenshot: 'only-on-failure' },
   webServer: remoteUrl ? undefined : {
     command: `npm run build:site && npm run preview -- --host 127.0.0.1 --port ${localPort}`,

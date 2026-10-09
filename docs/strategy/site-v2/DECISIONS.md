@@ -21,6 +21,10 @@ Décisions de t_630c4a13. Ce registre est la copie transportable des arbitrages 
 | D15 | Seuil Lighthouse 95 par axe reste un objectif de recette, pas un état atteint | Accueil mesuré 87/92 en performance ; 100 SEO ne prouve pas le classement ni la conversion. |
 
 ## Maintenant / ensuite / refusé
+Décision D9 du programme CAC, Kevin le 05/10/2026, appliquée le 06/10 : plafond commun EC/CAC de 15 articles ordinaires par semaine ISO, 3 par jour du lundi au vendredi. Ce sont des capacités, jamais un objectif de remplissage ni un signal de classement. Alternance des pôles et formats conservée ; Cicatrice factuelle du samedi indépendante, au plus une par semaine. Les publications et les reçus de rattrapage antérieurs restent inchangés ; leurs rejeux gardent la cadence historique.
+
+Six créneaux CAC du backlog existant réservés du 07 au 14/10 : réception FEC, seuil de signification, circularisation, écritures de journal, préservation des contributions et pilier. Aucun fait réglementaire ni nouvel angle créé ici ; F4 complète NEP 315/330, appréciation des outils et archivage après qualification. La réservation IA du 29/09 non publiée devient une trace `dateManquee`, non actionnable jusqu’à nouvelle décision de planification.
+
 Maintenant : les cinq nouvelles pages, liens contextuels des deux articles, nouveau chapeau Blog, navigation/footer cohérents, composants et SEO transversaux. Intégration de Ressources seulement après sa release, sans retoucher ses preuves métier.
 
 Ensuite : un article sur la lecture des comptes rendus métier DSN si la recherche fraîche confirme son périmètre et si le lot Ressources ne le couvre pas déjà. Les namespaces guides et modèles restent conditionnels, détenus par le chantier Ressources ; aucun endpoint vide à créer. Une étude de cas seulement avec autorisation, mesures et source de preuve ; pas de slug réservé maintenant.
