@@ -58,8 +58,7 @@ const retour = '\n';
         <noscript>
           <p class="hero-video-noscript">
             Votre navigateur ne peut pas lancer le lecteur interactif.
-            <a href={contenu.video}>Télécharger la vidéo</a>.
-            {contenu.sousTitresOptionnels && <a href={contenu.sousTitres}>Télécharger les sous-titres</a>}
+            <a href={contenu.video}>Télécharger la vidéo</a>.{contenu.sousTitresOptionnels && <a href={contenu.sousTitres}>Télécharger les sous-titres</a>}
           </p>
         </noscript>
       </div> : <div class="hero-ecran">
@@ -69,6 +68,8 @@ const retour = '\n';
 
   </div>
 </section>
+
+{contenu.sousTitresOptionnels && <script is:inline src="/scripts/cac-video-captions.js" defer></script>}
 
 <style>
   .hero {
@@ -424,15 +425,6 @@ const retour = '\n';
     video.muted = true;
     video.defaultMuted = true;
     video.loop = true;
-    const captionsButton = player.querySelector<HTMLButtonElement>('[data-video-captions]');
-    if (captionsButton) captionsButton.hidden = false;
-    captionsButton?.addEventListener('click', () => {
-      const track = video.textTracks[0];
-      if (!track) return;
-      const showing = track.mode !== 'showing';
-      track.mode = showing ? 'showing' : 'disabled';
-      captionsButton.setAttribute('aria-pressed', String(showing));
-    });
     video.addEventListener('error', showMediaError);
     if (video.error) showMediaError();
 
