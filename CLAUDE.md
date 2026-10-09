@@ -19,6 +19,16 @@ jamais la catégorie commerciale : ⚠ **« module » et « complément Excel »
 publique** — charte §9, verrouillé par `tests/proof/test_positioning.py`. Excel est une intégration
 possible, jamais un mot du hero (charte §4).
 
+La garde distingue la copie des deux formes techniques Worker dans le JavaScript publié
+(`.js`, `.mjs` et scripts HTML/SVG exécutables) : `type: 'module'` dans les options de
+`new Worker(...)`, et le diagnostic exact `new Error('Module Worker indisponible')`.
+Le parseur TypeScript déjà présent identifie les vrais appels et propriétés ; du code apparent
+dans une chaîne, un template ou une expression régulière reste du texte contrôlé.
+Elle neutralise uniquement ces littéraux pour l'analyse, pas le reste du script ou des options.
+Texte visible, attributs publics, JSON/JSON-LD, noms de fichiers et vocabulaire catalogue
+restent contrôlés ; une variante technique non reconnue ou un script invalide est refusé,
+jamais exempté en bloc. Une panne du parseur échoue le contrôle.
+
 ## Stack
 
 Site **Astro** (content collections pour le blog, sitemap, RSS), déployé sur Cloudflare Pages via `wrangler`.
