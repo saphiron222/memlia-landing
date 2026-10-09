@@ -15,10 +15,43 @@ import {
   verifierRecetteService,
 } from '../../scripts/service-forge.mjs';
 import { verifierPlafonds } from '../../scripts/lib/blog-pipeline.mjs';
+import { COPY, TEXT, URL } from './dila-copy-fixture.mjs';
 
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+
+test('sources DILA du service : copie récente et extrait exact, puis refus et scellement des octets', () => {
+  const root = racineDeTest();
+  try {
+    const recipe = recette();
+    const copy = structuredClone(COPY);
+    copy.provenance.retrieved_at = '2026-09-19T10:00:00Z';
+    copy.provenance.file_commit.date = '2026-09-01T10:00:00Z';
+    const path = join(root, 'commercial/recettes', SLUG, 'legi.json');
+    const bytes = JSON.stringify(copy); writeFileSync(path, bytes);
+    recipe.sources = [{ id: 'legi', url: URL, excerpt: TEXT, dilaCopyPath: 'legi.json', dilaCopySha256: sha256(bytes) }];
+    const body = `${CORPS}\nSource : [Légifrance](${URL}).`;
+    const review = { status: 'PASS', reviewer: 'qa-test', reviewedAt: JOUR, observations: ['Source fictive comparée pour le témoin technique.'] };
+    const validate = () => verifierRecetteService({ root, recipe, body, review, today: JOUR });
+    assert.deepEqual(validate(), []);
+    for (const excerpt of ['Texte inventé absent de la source', '']) { recipe.sources[0].excerpt = excerpt; assert.ok(validate().length); }
+    recipe.sources[0].excerpt = TEXT;
+    copy.provenance.retrieved_at = '2026-09-01T10:00:00Z';
+    writeFileSync(path, JSON.stringify(copy)); recipe.sources[0].dilaCopySha256 = sha256(JSON.stringify(copy));
+    assert.ok(validate().some((error) => /périmée/.test(error)));
+    copy.provenance.retrieved_at = '2026-09-19T10:00:00Z'; writeFileSync(path, JSON.stringify(copy));
+    recipe.sources[0].dilaCopySha256 = sha256(JSON.stringify(copy));
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'recette.json'), JSON.stringify(recipe));
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'corps.md'), body);
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'revues.json'), JSON.stringify(review));
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const seal = JSON.parse(readFileSync(join(root, 'commercial/services', SLUG, 'preuves/scellement.json')));
+    assert.equal(seal.files.dilaSource0.sha256, recipe.sources[0].dilaCopySha256);
+    rmSync(path);
+    assert.ok(validate().length);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 const observationServie = (overrides = {}) => async ({ recipe, expectedFingerprint, servedUrl }) => ({
   url: servedUrl,

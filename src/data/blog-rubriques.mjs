@@ -41,17 +41,35 @@ export const BLOG_RUBRIQUES = Object.freeze([
       'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
     ]),
   }),
+  Object.freeze({
+    slug: 'ia-cabinet-comptable',
+    chemin: '/blog/rubrique/ia-cabinet-comptable',
+    libelle: 'IA en cabinet',
+    primaryQuery: 'ia cabinet comptable',
+    descriptionLead: 'IA en cabinet comptable',
+    h1: 'IA en cabinet comptable : choisir l’usage, protéger les données, vérifier la réponse',
+    titreOnglet: 'IA en cabinet comptable | Memlia',
+    description: 'IA en cabinet comptable : choisir un premier usage, écrire la consigne, préparer les données sans perdre leur confidentialité et vérifier chaque réponse.',
+    chapeau: 'L’IA ne remplace ni le logiciel du cabinet ni le jugement du collaborateur. Cette rubrique suit un usage de bout en bout : quoi lui confier, comment le lui demander, quelles données lui donner et comment relire ce qu’elle produit avant de s’en servir.',
+    roleTitre: 'Du premier usage à la réponse vérifiée',
+    role: 'Choisissez l’article selon votre étape. Pour démarrer, choisir un premier usage ou un outil. Pour demander, écrire une consigne qui part d’une tâche. Pour protéger, préparer les données avant de les confier. Pour utiliser, vérifier la réponse et la chaîne qui l’a produite. Dans tous les cas, la décision reste au cabinet.',
+    articleIds: Object.freeze([
+      'utiliser-chatgpt-cabinet-comptable',
+      'logiciel-ia-comptabilite',
+      'prompt-chatgpt-expert-comptable',
+      'ia-comptabilite-confidentialite-donnees',
+      'verifier-reponse-ia-comptabilite',
+      'automatiser-avec-ia-sans-changer-logiciel',
+      'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
+      'tests-verts-et-regle-des-trois-passes',
+    ]),
+  }),
 ]);
-
 /**
  * Les articles transversaux restent hors rubrique par décision explicite. Chaque exemption est
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
-  'automatiser-avec-ia-sans-changer-logiciel': Object.freeze({
-    date: '2026-10-05',
-    raison: 'Fiche transversale du passage entre outils et de sa reprise ; la demande de pièces est un cas fictif, pas une nouvelle étape réservée à Saisie et pièces. Famille IA existante, sans nouvelle rubrique artificielle.',
-  }),
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
     raison: 'Article de référence transversal : il relie les familles de tâches de tout le cabinet et ne doit pas être réduit à la paie, à la DSN, à la saisie ou aux pièces.',
@@ -63,34 +81,6 @@ export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps': Object.freeze({
     date: '2026-09-21',
     raison: 'Diagnostic transversal de la charge et des états du flux : il concerne plusieurs familles de production et ne relève exclusivement ni de la paie-DSN ni de la gestion des pièces.',
-  }),
-  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': Object.freeze({
-    date: '2026-09-21',
-    raison: 'Article transversal sur les compétences, la préparation et la décision humaine : il ne correspond pas à une chaîne de tâches propre aux deux rubriques existantes.',
-  }),
-  'utiliser-chatgpt-cabinet-comptable': Object.freeze({
-    date: '2026-10-04',
-    raison: 'Guide transversal de sélection d’un premier usage IA : il ne décrit ni une étape Paie et DSN ni une étape Saisie et pièces. La famille IA existante porte son rattachement sans créer une rubrique artificielle.',
-  }),
-  'verifier-reponse-ia-comptabilite': Object.freeze({
-    date: '2026-10-04',
-    raison: 'Checklist transversale de contrôle des affirmations IA, distincte des chaînes Paie et DSN et Saisie et pièces ; rattachement à la famille IA sans nouvelle rubrique mince.',
-  }),
-  'ia-comptabilite-confidentialite-donnees': Object.freeze({
-    date: '2026-10-05',
-    raison: 'Fiche transversale de préparation et autorisation des entrées IA ; famille RGPD, secret et sécurité, sans correspondre aux chaînes Paie et DSN ou Saisie et pièces.',
-  }),
-  'prompt-chatgpt-expert-comptable': Object.freeze({
-    date: '2026-09-28',
-    raison: 'Guide transversal sur l’usage prudent d’un prompt ChatGPT en cabinet : la demande de pièce est un exemple fictif, pas une étape de la chaîne Saisie et pièces ni du cycle Paie et DSN.',
-  }),
-  'logiciel-ia-comptabilite': Object.freeze({
-    date: '2026-09-28',
-    raison: 'Grille de choix transversale entre logiciel existant et solutions envisagées : le parcours fictif d’une pièce sert à comparer les exceptions, sans transformer ce guide en étape de la chaîne Saisie et pièces.',
-  }),
-  'tests-verts-et-regle-des-trois-passes': Object.freeze({
-    date: '2026-09-28',
-    raison: 'Cicatrice de méthode transversale sur les suites, la chaîne de preuve et l’écran : elle concerne la recette de toute tâche, non une étape propre aux rubriques Paie et DSN ou Saisie et pièces.',
   }),
 });
 

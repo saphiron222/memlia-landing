@@ -25,10 +25,18 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-def fixed_pages():
-    """Pages racine Astro et index de collections : mêmes routes plates que le build."""
-    pages = {path.stem for path in (ROOT / 'src/pages').glob('*.astro')}
-    pages.update(path.parent.name for path in (ROOT / 'src/pages').glob('*/index.astro'))
+def fixed_pages(nested=False):
+    """Routes Astro statiques, y compris un nouvel outil imbriqué ; pas les gabarits dynamiques."""
+    source = ROOT / 'src/pages'
+    pages = set()
+    for path in source.rglob('*.astro'):
+        relative = path.relative_to(source).with_suffix('')
+        if any('[' in part for part in relative.parts):
+            continue
+        if not nested and len(relative.parts) > 1 and path.stem != 'index':
+            continue
+        route = relative.as_posix()
+        pages.add(route.removesuffix('/index') if path.stem == 'index' else route)
     return pages
 
 
@@ -140,7 +148,7 @@ def minimum_word_count(article):
     return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
 
 def rendered_body_word_count(article):
-    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)',
                      article.read_text(), re.S).group(1)
     return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
 
@@ -334,7 +342,8 @@ class BuildProof(unittest.TestCase):
             if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
         attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
-                     for slug in fixed_pages() - {'404', 'mentions-legales', 'politique-de-confidentialite'}} | {
+                     for slug in fixed_pages(nested=True)
+                     if f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
                      f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
                      f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
@@ -613,7 +622,13 @@ class BuildProof(unittest.TestCase):
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
-                self.assertRegex(article.read_text(), r'<h2\b[^>]*id="sources-titre"[^>]*>Sources</h2>')
+                # Décision de Kevin du 06/10/2026 : les sources se citent dans le texte ; une section « Sources »
+                # ne reste que pour celles qui n'y sont pas encore, jamais en doublon du corps.
+                rendu = article.read_text()
+                corps = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)', rendu, re.S).group(1)
+                residuelle = re.search(r'<section class="article-sources".*?</section>', rendu, re.S)
+                for href in re.findall(r'href="(https?://[^"]+)"', residuelle.group(0) if residuelle else ''):
+                    self.assertNotIn(href, corps, article.name)
                 self.assertEqual(unsafe_external_links(article), [], article.name)
 
     def test_rss_feed_matches_articles(self):

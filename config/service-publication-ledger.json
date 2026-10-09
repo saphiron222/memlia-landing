@@ -3,6 +3,24 @@
   "description": "Autorité durable des services déjà publiés. Une sortie de cette liste exige une entrée depublie et sa preuve autorisée.",
   "services": [
     {
+      "slug": "evaluation-transmission",
+      "route": "/automatisation/evaluation-transmission",
+      "status": "publie",
+      "publishedOn": "2026-10-08"
+    },
+    {
+      "slug": "secretariat-juridique",
+      "route": "/automatisation/secretariat-juridique",
+      "status": "publie",
+      "publishedOn": "2026-10-08"
+    },
+    {
+      "slug": "entrees-sorties-salaries",
+      "route": "/automatisation/entrees-sorties-salaries",
+      "status": "publie",
+      "publishedOn": "2026-10-07"
+    },
+    {
       "slug": "factures-fournisseurs",
       "route": "/automatisation/factures-fournisseurs",
       "status": "publie",
@@ -31,6 +49,12 @@
       "route": "/automatisation/saisie-comptable",
       "status": "publie",
       "publishedOn": "2026-09-20"
+    },
+    {
+      "slug": "registres-obligations",
+      "route": "/automatisation/registres-obligations",
+      "status": "publie",
+      "publishedOn": "2026-10-07"
     }
   ]
 }

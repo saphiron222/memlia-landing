@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "reviewer": "metier",
+  "reviewedAt": "2026-10-06",
+  "observations": [
+    "Nouvelle revue indépendante de la livraison recadrée : proposition de sélection selon la règle du CAC et préparation documentaire des écarts/contrôles postérieurs. Ce verdict remplace l'ancien PASS sur le suivi ; il ne le reconduit pas.",
+    "Les sept pages H2A/éditeurs ont été rouvertes le 06/10/2026 ; les sept copies HTML durables et les douze extraits exacts de sources.json ont été contrôlés en lecture seule. Versions : NEP 505 arrêté 28/12/2023 JO 31/12/2023 ; NEP 315/530 arrêté 13/11/2024 JO 19/11/2024 ; NEP 911/912 arrêté 24/07/2026 JO 26/07/2026.",
+    "NEP 911 §24 et 912 §23 : faculté de contrôles clients/fournisseurs postérieurs lorsque le CAC intervient plusieurs semaines après clôture, limitée aux missions de leur champ propre. Le corps ne généralise ni dispense de confirmation ni traitement automatique des non-réponses.",
+    "Rejeux exécutés sans régénérer les preuves : rejouer.mjs --check PASS pour 8 cas et selection-rejouer.mjs --check PASS pour 12 cas ; commande groupée code 0. Classement solde/mouvement, tirage reproductible, couverture ou limite N, deux passes et pièces structurées proposés sans conclusion ; aucun envoi réalisé.",
+    "Méthode et liste définitive, maîtrise des demandes NEP 505, diligences, appréciation probante et conclusion restent CAC. Non-réponses et refus sont transmis sans décider des suites. 70 % est explicitement un paramètre fictif, ni norme ni assurance ; le tirage ne rend pas une sélection spécifique extrapolable.",
+    "Les plateformes couvrent lettres/envoi/relances ; Circit déclare le rapprochement et les exceptions. Le candidat reconnaît aussi des fonctions existantes de sélection, vérifie les options du cabinet et ne reconstruit pas ce qui est déjà couvert. Les déclarations éditeurs n'ont pas été testées comme fonctions opérationnelles.",
+    "Fiche outil Memlia : support de livraison, ni prescrit ni homologué par NEP 315 ; §§14/46/48 d) lus dans leur contexte et appréciation conservée au CAC. Aucun agrément ni conformité du dossier déduit de la fiche.",
+    "Offre sur mesure distincte de la preuve locale : aucune intégration, lecture de PDF, agrégation FEC réelle ou diligence accomplie démontrée. Les références de pièces et booléens de validation sont fictifs ; export réel, contrôles de données, sécurité et persistance sont à éprouver dans la recette de la tâche. Limites explicites aux lignes 29,46,72 du corps ; ajout final de la ligne du tableau sur la pièce postérieure vérifié, sans changement de fond.",
+    "Charte v5 : service dans les outils existants, nous/vous, frontière en trois colonnes, quatre parties de la règle écrite, jeu fictif, prix à la complexité, CTA /contact et frontières CAC cohérents. Secret et indépendance sont à apprécier avant usage réel, sans localité ou absence de transfert présumée. LCB-FT et durabilité hors champ.",
+    "Note non bloquante de présentation : retirer du rendu public la seule date de consultation éditeur de corps.md:74 conformément à v5, en la conservant dans les preuves internes ; cela ne change pas le fond et ne requiert pas de nouvelle revue. Aucun défaut métier matériel ; grille et inconnues détaillées dans preuves/revue-metier.md. Aucun candidat modifié par le relecteur, aucune transition kanban, publication, commit ou scellement."
+  ]
+}

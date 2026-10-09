@@ -122,7 +122,6 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual(self.html.count('data-example-fictitious='), count)
         self.assertEqual(self.html.count('data-common-confusion='), count)
         self.assertEqual(self.html.count('data-automation-boundary='), count)
-        self.assertEqual(self.html.count('class="entree-sources"'), count)
         rendered = {attrs['id']: attrs for tag, attrs in self.doc.tags
                     if tag == 'div' and attrs.get('class') == 'glossaire-entree'}
         for entry in glossary_entries():
@@ -132,6 +131,31 @@ class GlossaryProof(unittest.TestCase):
                                      ('data-automation-boundary', 'automationBoundary')]:
                 self.assertEqual(rendered[entry['anchor']].get(attribute), entry[field],
                                  (entry['anchor'], attribute))
+        # Décision de Kevin du 06/10/2026 : pas de bloc « Sources » ; l'organisme externe est cité par un lien
+        # en fin de définition. Les seules sources internes (méthode, articles Memlia) restent des renvois.
+        self.assertNotIn('entree-sources', self.html)
+        definitions = re.findall(r'<p class="definition"[^>]*>(.*?)</p>', self.html, re.S)
+        self.assertEqual(len(definitions), count)
+        entrees = re.findall(
+            r'<div class="glossaire-entree" id="([a-z0-9-]+)".*?<p class="definition"[^>]*>(.*?)</p>\s*<p class="contexte"[^>]*>(.*?)</p>',
+            self.html, re.S)
+        self.assertEqual(len(entrees), count)
+        cites = [ident for ident, definition, contexte in entrees if 'href="https://' in definition + contexte]
+        sources = source_export(ROOT, 'src/data/glossary.ts', 'GLOSSARY_SOURCES')
+        self.assertEqual(set(cites), {entry['anchor'] for entry in glossary_entries()
+                                     if any(sources[ident]['url'].startswith('https://')
+                                            for ident in entry['sourceIds'])})
+        # Une définition écrite par Memlia n'est pas celle de l'organisme cité : la source externe se pose sur le mot
+        # qu'elle établit, jamais en parenthèse après une phrase maison (revue de #166, 07/10/2026).
+        maison = set(re.findall(r"id: '([a-z0-9-]+)'[^\n]*nature: 'Éditoriale Memlia'", (ROOT / 'src/data/glossary.ts').read_text()))
+        self.assertEqual(maison, {entry['anchor'] for entry in glossary_entries() if entry['nature'] == 'Éditoriale Memlia'})
+        for ident, definition, contexte in entrees:
+            if ident in maison:
+                self.assertNotRegex(definition + contexte, r'\(<a [^>]*href="https://', ident)
+        par_mot = {ident: definition + contexte for ident, definition, contexte in entrees}
+        for ident, mot in [('controle-avant-dsn', 'cohérences métier'), ('agregat-non-nominatif', 'afficher un indicateur'),
+                           ('jeu-d-essai-fictif', 'données anonymisées'), ('tracabilite', 'retrouver')]:
+            self.assertRegex(par_mot[ident], r'<a [^>]*href="https://[^"]+"[^>]*>' + re.escape(mot) + '</a>', ident)
         # Le lecteur voit les sources, jamais notre chaîne éditoriale : ni encart de statut,
         # ni date de relecture, ni marqueur de revue — pas même dans les attributs du HTML.
         self.assertNotIn('data-business-reviewer', self.html)

@@ -24,7 +24,7 @@ export async function checkIntegrationPage(page: Page, guide: Pick<IntegrationDe
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('h1')).toHaveText(guide.h1);
   await expect(page.locator('[data-proof]')).toHaveAttribute('data-proof', `integrations/${guide.slug}`);
-  await expect(page.locator('.source-lien')).toHaveAttribute('href', /^https:\/\//);
+  await expect(page.locator('section[aria-labelledby="repere-editeur"] a[rel="noopener noreferrer"]')).toHaveAttribute('href', /^https:\/\//);
   await expect(page.locator('h2', { hasText: 'La règle écrite' })).toBeVisible();
   await expect(page.locator('#jeu-fictif')).toHaveText('Cas illustratifs sur données fictives');
   const overflow = await page.evaluate(() => ({

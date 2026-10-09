@@ -1,0 +1,29 @@
+{
+  "openedOn": "2026-10-06",
+  "method": "browser_navigate puis browser_console ; extraits exacts, pas un classement SERP",
+  "sources": [
+    {
+      "name": "Dext",
+      "url": "https://dext.com/fr",
+      "quotes": [
+        "Centralisez et organisez facilement tous vos documents administratifs avec Dext : prise de photo via notre application, connecteurs API, glisser-déposer de documents PDF ou envoi par e-mail. Simplifiez-vous la vie.",
+        "Vos clients peuvent vous transmettre leurs documents (factures, reçus, relevés bancaires...), via l’une de nos 4 méthodes de collecte : prise de photo depuis notre application mobile, connecteurs marchands, email dédié ou téléchargement de PDF. Ils vous transmettent ainsi leur pièces au fur et à mesure pour des échanges plus simples et plus rapides."
+      ],
+      "establishes": "L’éditeur annonce une collecte multicanal ; ni recette testée ni preuve de demande Memlia."
+    },
+    {
+      "name": "MyCompanyFiles",
+      "url": "https://www.mycompanyfiles.fr/experts-comptables/",
+      "quotes": [
+        "«Je dois toujours relancer!»",
+        "La collecte, la mise à disposition des documents, la centralisation des échanges, voilà quelques grandes douleurs qui hantent le quotidien des petits comme des grands cabinets."
+      ],
+      "establishes": "Vocabulaire de douleur utilisé par un éditeur adressant les cabinets. Ce n’est pas un entretien indépendant ni la preuve de la capacité à supprimer une relance après réception."
+    }
+  ],
+  "limits": [
+    "Firecrawl web_search et web_extract : 403 ; lecture des éditeurs réalisée au navigateur.",
+    "Google SERP : page anti-robot ; Bing : timeout. Aucun classement ni exhaustivité concurrentielle revendiqués.",
+    "Collecte urllib interrompue au timeout ; récupération HTML finalement réalisée avec curl."
+  ]
+}

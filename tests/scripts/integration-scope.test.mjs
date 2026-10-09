@@ -13,7 +13,9 @@ const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);
 test('au moins neuf guides : chaque champ explique un rôle et sa condition de contrôle', () => {
   assertScope(INTEGRATIONS);
   assert.doesNotMatch(guide, /Champ observé dans le jeu fictif/);
-  assert.match(guide, /integration.source.checkedAt/);
+  // La date de vérification reste dans les données (ligne ci-dessus) ; la page cite la source par un lien dans le texte.
+  assert.match(guide, /href=\{integration\.source\.url\}/);
+  assert.doesNotMatch(guide, /SourceEvidence|id="source"/);
 });
 
 test('Cegid : clés JSON et non menu ; compte général ou tiers lettrable', () => {

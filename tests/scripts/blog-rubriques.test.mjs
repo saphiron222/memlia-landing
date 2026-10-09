@@ -14,16 +14,20 @@ const ATTACHES = [
   'suivre-la-production-sociale-dans-excel',
   'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
   'automatiser-la-relance-des-pieces-clients',
+  'utiliser-chatgpt-cabinet-comptable',
+  'logiciel-ia-comptabilite',
+  'prompt-chatgpt-expert-comptable',
+  'ia-comptabilite-confidentialite-donnees',
+  'verifier-reponse-ia-comptabilite',
+  'automatiser-avec-ia-sans-changer-logiciel',
+  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
+  'tests-verts-et-regle-des-trois-passes',
 ];
 
 const HORS_RUBRIQUE = [
   'automatiser-un-cabinet-comptable-la-carte-des-taches',
   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
-  'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain',
   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
-  'prompt-chatgpt-expert-comptable',
-  'logiciel-ia-comptabilite',
-  'tests-verts-et-regle-des-trois-passes',
 ];
 
 const entree = (id, date = '2026-09-20') => ({
@@ -53,6 +57,14 @@ test('la liste de chaque hub vient des entrées visibles et ignore un article ab
     entree('automatiser-la-relance-des-pieces-clients', '2026-09-16'),
     entree('automatiser-un-cabinet-comptable-la-carte-des-taches'),
     entree('pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'),
+    entree('utiliser-chatgpt-cabinet-comptable'),
+    entree('logiciel-ia-comptabilite'),
+    entree('prompt-chatgpt-expert-comptable'),
+    entree('ia-comptabilite-confidentialite-donnees'),
+    entree('verifier-reponse-ia-comptabilite'),
+    entree('automatiser-avec-ia-sans-changer-logiciel'),
+    entree('intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'),
+    entree('tests-verts-et-regle-des-trois-passes'),
   ];
   const visibles = [...visiblesHistoriques, ...BLOG_RUBRIQUES.flatMap(({ articleIds }) => articleIds)
     .filter((id) => !visiblesHistoriques.some((entry) => entry.id === id)).map((id) => entree(id))];
