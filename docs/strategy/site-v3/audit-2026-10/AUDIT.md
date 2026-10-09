@@ -210,7 +210,7 @@ Métadonnées/JSON-LD = contrôle structurel local ; IA = HTML et robots, pas ci
 
 ## Preuves et rejouabilité
 
-Fichiers compacts versionnés : crawl.json, browser.json, desktop-reflow.json, contact-check.json, keyboard-settled.json, settled-checks.json, assets.json, image-dimensions.json, schema-links.json, findings-content.json, findings-technical.json, performance.json, performance-retry-summary.json, tools-tests-summary.json, crawlers.json, robots.txt, sitemap.xml, sitemap-0.xml et llms.txt. Une archive de preuves complète est attachée à H1 : HTML servis, rapports Unlighthouse interactifs, captures stabilisées, rapports de tests et reprises Lighthouse.
+Fichiers compacts versionnés : crawl.json, browser.json, desktop-reflow.json, contact-check.json, keyboard-settled.json, settled-checks.json, assets.json, image-dimensions.json, schema-links.json, findings-content.json, findings-technical.json, performance.json, performance-retry-summary.json, tools-tests-summary.json, crawlers.json, robots.txt, sitemap.xml, sitemap-0.xml et llms.txt. Sept archives autonomes de preuves sont attachées à H1 (carte t_a80f53ec), à extraire dans un même dossier : HTML servis, rapports Unlighthouse interactifs, captures stabilisées, rapports de tests et reprises Lighthouse.
 
 Les scripts de relevé vivent dans evidence-scripts/ ; README.md donne les commandes et les limites. Les captures non stabilisées sont conservées uniquement comme contre-exemples : ne pas utiliser leurs blancs comme défauts de mise en page.
 
