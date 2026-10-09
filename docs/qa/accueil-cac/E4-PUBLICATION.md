@@ -16,6 +16,8 @@ La couverture suit immédiatement Orientation. Dans Méthode, le tableau de fron
 
 La CI GitHub Repository gates reste l’oracle des tests complets, types et construction finale. Aucun déploiement manuel de production. Search Console : inspection en lecture et sitemap seulement ; aucune demande d’indexation automatique promise.
 
+Contrat de navigation corrigé : la barre et ses CTA visibles, y compris les boutons de groupe, restent sur une ligne. Les liens des sous-menus fermés ne sont plus mesurés comme la barre ; les panneaux sont ouverts au clavier puis vérifiés séparément (visibilité, largeur de viewport, hauteur suffisante pour le texte, fermeture). Deux lignes dans un panneau sont permises, sans imposer une largeur artificielle au libellé CAC. Rouge reproduit aux deux largeurs 1024/1366 avant correction ; 23 tests ciblés review/navigation-v3 PASS ensuite, dont un témoin qui force et détecte un vrai retour à la ligne visible. Aucun changement de copie ni de revue de fond.
+
 Premier run CI : type explicite ajouté au callback FAQ du test ; intention CAC promue à « construite-en-revue », architecture régénérée. La CI a aussi révélé que regen:generated scelle le HTML brut avant le retrait final des dates de consultation sur une page de service historique. Contournement : après le dernier scellement/rebuild, rejouer `node scripts/render-public-source-text.mjs`, puis `npm run lastmod:sync` et `node scripts/sync-lastmod.mjs --check` ; audit Ressources PASS. Réparation durable suivie séparément sur t_282e5e51, sans bloquer cette publication. Tests architecture/cadence et BuildProof rejoués sur le rendu final.
 
 ## Risques et suites
