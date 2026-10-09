@@ -20,6 +20,24 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'circularisation-cac': {
+    dejaFait: [
+      {
+        outil: 'e-Circu',
+        geste: 'prépare les courriers, facilite la sélection des tiers, relance et centralise les justificatifs et le suivi des réponses',
+        source: { url: 'https://www.gestonline.com/blog/circularisation-audit', libelle: 'Gest On Line, circularisation avec e-Circu', consulteLe: LU_LE },
+      },
+      {
+        outil: 'Circit',
+        geste: 'envoie, suit et reçoit les confirmations, rapproche les réponses des documents de travail et signale les exceptions',
+        source: { url: 'https://www.circit.io/fr/platform/confirm', libelle: 'Circit, Confirm', consulteLe: LU_LE },
+      },
+    ],
+    reste: [
+      'la proposition de tiers selon la règle de votre cabinet, si elle n’est pas déjà couverte : soldes, mouvements, tirage reproductible, couverture ou nombre de comptes, deux passes et feuille de couverture ;',
+      'la préparation des pièces et rapprochements postérieurs choisis par le CAC pour les écarts ou non-réponses, avec conclusion laissée à son examen.',
+    ],
+  },
   'evaluation-transmission': {
     dejaFait: [
       { outil: 'RCA Évaluation', geste: 'centralise les données, traite les retraitements, automatise les calculs financiers et les scénarios de valorisation, puis génère des rapports personnalisables', source: { url: 'https://rca.fr/logiciels-experts/evaluation/', libelle: 'RCA, Évaluation', consulteLe: '2026-10-08' } },

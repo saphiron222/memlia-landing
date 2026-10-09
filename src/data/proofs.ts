@@ -2,6 +2,7 @@
 import generatedProofs from './guide-proofs.generated.json';
 
 const HISTORICAL_PROOFS = {
+  'v2/44-service-circularisation-cac': { title: 'Des motifs de sélection aux pièces à examiner', alt: 'Sélection fictive : tiers C01 par solde, C02 par mouvement et C03 par tirage reproductible ; couverture suivie en deux passes, encaissement postérieur à examiner pour un écart.', detail: 'La scène illustre une proposition selon la règle du cabinet, pas une diligence réalisée. Le CAC valide la sélection et choisit les pièces et procédures ; aucune conclusion, connexion ni lecture de PDF n’est démontrée.' },
 
   'v2/44-outil-fusion-csv': { title: 'Les colonnes se correspondent, les origines restent', alt: 'Deux exports fictifs janvier et février, colonnes ID et Montant inversées : mapping confirmé, cinq lignes consolidées et fichier/ligne source pour chaque ligne.', detail: 'La scène provient du moteur de consolidation testé : deux lignes puis trois, un en-tête, identifiants texte et provenance exacte. Aucun fichier métier n’est modifié.' },
 

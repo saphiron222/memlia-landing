@@ -10,6 +10,7 @@ import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { serviceDesignFor } from '@/data/service-design';
+import { PROOFS } from '@/data/proofs';
 import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
 import { eeatService } from '@/data/page-eeat';
 import type { CollectionEntry } from 'astro:content';
@@ -31,6 +32,8 @@ const socialImage = entree.id === 'entrees-sorties-salaries'
     ? { url: `${SITE.url}/proofs/v2/og/46-service-secretariat-juridique.webp`, width: 1200, height: 630, alt: 'Échéances fictives : suivi résiduel, brouillon à valider, circuit couvert exclu et date inconnue arrêtée.' }
   : entree.id === 'evaluation-transmission'
     ? { url: `${SITE.url}/proofs/v2/og/47-service-evaluation-transmission.jpg`, width: 1200, height: 630, alt: 'Trois cas fictifs de préparation : ajustement accepté, attente et conflit de versions.' }
+  : entree.id === 'circularisation-cac'
+    ? { url: `${SITE.url}/proofs/v2/og/${design.heroProof.replace('v2/', '')}.webp`, width: 1200, height: 630, alt: PROOFS[design.heroProof].alt }
   : undefined;
 const auteur = auteurPar(eeat.auteur);
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
@@ -66,7 +69,7 @@ const graph = {
       url,
       areaServed: 'FR',
       provider: { '@id': `${SITE.url}/#organization` },
-      audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+      audience: { '@type': 'Audience', audienceType: data.family.startsWith('cac-') ? 'Cabinets de commissariat aux comptes' : "Cabinets d'expertise comptable" },
     },
     {
       '@type': 'BreadcrumbList',
