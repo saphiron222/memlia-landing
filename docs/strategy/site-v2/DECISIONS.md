@@ -6,13 +6,13 @@ Décisions de t_630c4a13. Ce registre est la copie transportable des arbitrages 
 |---|---|---|
 | D01 | Service d’automatisation du travail répétitif, résultat cadré et recette humaine | Ferme le catalogue de modules, le SaaS au siège et le positionnement « Excel seulement ». |
 | D02 | Cinq nouvelles pages maintenant : service, méthode, garanties, à-propos, contact | Répondre au choix, au déroulement, aux objections, à l’identité et à l’action ; pas gonfler artificiellement le sitemap. |
-| D03 | / cible la catégorie et la marque ; /automatisation-cabinet-comptable cible le service sur mesure et le cadrage | Éviter deux landing pages clones. L’accueil oriente, le service détaille livrables/limites/devis. |
+| D03 | / reste l'accueil EC ; /automatisation-cabinet-comptable détaille le service sur mesure EC ; /commissaires-aux-comptes devient l'accueil CAC (révision du 06/10/2026, charte v5) | L'accueil CAC répond aux mandats, à la documentation des outils et à la frontière avec l'opinion ; il ne clone pas l'accueil EC. Intentions et H1 mesurés avant publication ; routes existantes conservées. |
 | D04 | Blog = méthodes expliquées ; Ressources = orientation tâche/format ; conserver /blog et ses articles | Ne pas migrer le SEO ni recréer les hubs du chantier Ressources. /glossaire appartient à cette même chaîne. |
 | D05 | Header : Automatisation, Méthode, Garanties, Ressources, Blog, Parlons de votre tâche | Six entrées dont CTA ; logo vers /. Mobile : liste visible sans ouverture, deux colonnes + CTA pleine largeur, pas hamburger obligatoire. |
 | D06 | /a-propos contient le profil fondateur et l’identité auteur Kevin Kitanga | Pas de page /auteurs mince ni de qualification comptable inventée. |
 | D07 | /contact expose attentes + rendez-vous + email existants, sans formulaire ni dépôt de fichier | Conversion compréhensible et minimisation des données ; pas de backend supplémentaire. |
 | D08 | Preuves sur /methode et page service, pas de /cas-clients ou /demonstrations pour l’instant | Les illustrations existantes sont fictives ; elles ne prouvent ni ROI ni module livré. |
-| D09 | Pas de pages /solutions/paie et /solutions/production-sociale maintenant | Deux articles répondent déjà aux intentions ; ouvrir une page commerciale seulement avec preuve distincte et besoin d’achat démontré. |
+| D09 | Ouvrir les pages de service EC et CAC sur une tâche et une intention distinctes documentées (révision du 06/10/2026) ; conserver les URL existantes | La restriction de septembre ne ferme plus un public ni une famille entière. Chaque page apporte un livrable, une frontière et une recette propres ; la recherche et le maillage décident de sa place, sans dupliquer les articles ou multiplier des variantes artificielles. |
 | D10 | Séquence code après release Ressources t_4cd25435 ; un seul propriétaire Nav/Footer/Base/site.mjs | Aucun conflit de chaînes ; le plan et la copy peuvent avancer avant. |
 | D11 | Service + Organization + WebSite, types spécifiques selon contenu | Ne pas réintroduire SoftwareApplication pour décrire le service ; FAQ existante conservée sans promesse de rich result. |
 | D12 | Pages HTML statiques, canonical sans slash sauf / ; ancres historiques conservées | Aucun déplacement d’URL existante et aucun redirect large vers l’accueil. |
@@ -21,6 +21,10 @@ Décisions de t_630c4a13. Ce registre est la copie transportable des arbitrages 
 | D15 | Seuil Lighthouse 95 par axe reste un objectif de recette, pas un état atteint | Accueil mesuré 87/92 en performance ; 100 SEO ne prouve pas le classement ni la conversion. |
 
 ## Maintenant / ensuite / refusé
+Décision D9 du programme CAC, Kevin le 05/10/2026, appliquée le 06/10 : plafond commun EC/CAC de 15 articles ordinaires par semaine ISO, 3 par jour du lundi au vendredi. Ce sont des capacités, jamais un objectif de remplissage ni un signal de classement. Alternance des pôles et formats conservée ; Cicatrice factuelle du samedi indépendante, au plus une par semaine. Les publications et les reçus de rattrapage antérieurs restent inchangés ; leurs rejeux gardent la cadence historique.
+
+Six créneaux CAC du backlog existant réservés du 07 au 14/10 : réception FEC, seuil de signification, circularisation, écritures de journal, préservation des contributions et pilier. Aucun fait réglementaire ni nouvel angle créé ici ; F4 complète NEP 315/330, appréciation des outils et archivage après qualification. La réservation IA du 29/09 non publiée devient une trace `dateManquee`, non actionnable jusqu’à nouvelle décision de planification.
+
 Maintenant : les cinq nouvelles pages, liens contextuels des deux articles, nouveau chapeau Blog, navigation/footer cohérents, composants et SEO transversaux. Intégration de Ressources seulement après sa release, sans retoucher ses preuves métier.
 
 Ensuite : un article sur la lecture des comptes rendus métier DSN si la recherche fraîche confirme son périmètre et si le lot Ressources ne le couvre pas déjà. Les namespaces guides et modèles restent conditionnels, détenus par le chantier Ressources ; aucun endpoint vide à créer. Une étude de cas seulement avec autorisation, mesures et source de preuve ; pas de slug réservé maintenant.

@@ -643,7 +643,7 @@ class EditorialCadenceProof(unittest.TestCase):
                                                  ('b', 'faq-knowledge'), ('b', 'listicle-checklist')])]
         with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
             PLAN.planifier(entries, {})
-        ordered = sorted(entries, key=lambda e: (e['date'], e['slug']))
+        ordered = sorted(entries, key=lambda e: (e['date'], e['_ordre_calendrier']))
         for before, after in zip(ordered, ordered[1:]):
             self.assertNotEqual(before['pole'], after['pole'])
             self.assertNotEqual(before['format'], after['format'])
@@ -758,8 +758,10 @@ class EditorialCadenceProof(unittest.TestCase):
     def test_deuxieme_cicatrice_de_la_meme_semaine_iso_rougit(self):
         donnees, _, _, _ = construire_et_verifier()
         donnees = deepcopy(donnees)
-        cicatrices = [e for e in donnees[4] if e.get("serie") == "cicatrices"]
-        cicatrices[1]["date"] = "2026-09-26"
+        cicatrices = sorted((e for e in donnees[4] if e.get("serie") == "cicatrices"), key=PLAN.creneau)
+        # Fabriquer un doublon réel, indépendamment de l'ordre du backlog et
+        # sans déplacer la Cicatrice W39 déjà publiée.
+        cicatrices[2]["date"] = PLAN.creneau(cicatrices[1])
         erreurs, _, _ = PLAN.verifier(*donnees)
         self.assertTrue(any("plus d’une cicatrice" in erreur for erreur in erreurs), erreurs)
 

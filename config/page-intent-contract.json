@@ -3,59 +3,246 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
-    "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": { "query": "générateur prompt ia gratuit", "descriptionLead": "Préparez un prompt texte", "source": "Brief 06 vague 3 ; intention professionnelle générique distincte du générateur cabinet et du blog, aucun volume revendiqué" },
-
-    "/outils-comptables-gratuits/bibliotheque-prompts-comptables": { "query": "bibliothèque prompts comptables", "descriptionLead": "Choisissez un modèle de prompt comptable", "measuredAt": "2026-10-05", "source": "Brief 02 vague 3 ; sélection de modèles distincte du générateur et du guide. Sonde dans docs/qa/bibliotheque-prompts/demande-autocomplete.json ; aucun volume revendiqué." },
-
-    "/outils-comptables-gratuits/verificateur-prompt-ia": { "query": "vérificateur prompt ia", "descriptionLead": "Repérez les contraintes absentes", "measuredAt": "2026-10-04", "source": "Brief 07 et sondes vague 3 ; vérifier une consigne existante, distinct de la création 01 et du guide blog. Trafic ND." },
-
-
-
-    "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": { "query": "diagnostic maturité ia cabinet comptable", "descriptionLead": "Situez les pratiques IA", "source": "Brief 08 vague 3 ; méthode déclarative originale, aucune promesse de volume" },
-
-    "/outils-comptables-gratuits/generateur-prompt-expert-comptable": { "query": "générateur prompt expert comptable", "descriptionLead": "Décrivez une tâche abstraite du cabinet", "measuredAt": "2026-10-04", "source": "Brief 01 vague 3 et sonde autocomplete de cadrage ; aucune promesse de volume. Intention exécution distincte du guide /blog/prompt-chatgpt-expert-comptable." },
-
-
-    "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": { "query": "pseudonymiser fichier comptable avant ia", "descriptionLead": "Supprimez ou remplacez des colonnes" },
-
-    "/outils-comptables-gratuits/calculateur-roi-automatisation": { "query": "calculateur roi automatisation comptable", "descriptionLead": "Comparez des scénarios d’automatisation", "source": "Brief 09 vague 3 ; hypothèses économiques, aucune promesse de gain ou de volume" },
-    "/outils-comptables-gratuits/verificateur-fec-local": { "query": "vérificateur fec gratuit", "descriptionLead": "Contrôlez localement la structure", "source": "Brief 05 vague 3 ; sonde Google au cadrage, aucune promesse de volume" },
-
-    "/": { "query": "automatisation IA cabinet comptable", "descriptionLead": "Votre cabinet" },
-    "/a-propos": { "query": "marque / preuve d’identité", "descriptionLead": "À propos de Memlia" },
-    "/automatisation-cabinet-comptable": { "query": "automatisation cabinet comptable", "descriptionLead": "Toute tâche répétitive" },
-    "/automatisation/factures-fournisseurs": { "query": "factures fournisseurs des dossiers clients", "descriptionLead": "Factures fournisseurs des dossiers clients" },
-    "/automatisation/notes-de-frais": { "query": "notes de frais des clients en cabinet", "descriptionLead": "Notes de frais des clients en cabinet" },
-    "/automatisation/paie": { "query": "automatisation paie pôle social", "descriptionLead": "Automatisation paie pôle social" },
-    "/automatisation/rapprochement-bancaire": { "query": "rapprochement bancaire en cabinet", "descriptionLead": "Confiez la préparation du rapprochement bancaire" },
-    "/automatisation/saisie-comptable": { "query": "saisie comptable en cabinet", "descriptionLead": "Saisie comptable en cabinet" },
-    "/blog": { "query": "index éditorial", "descriptionLead": "Blog Memlia" },
-    "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps": { "query": "charge de travail cabinet comptable", "descriptionLead": "Charge de travail cabinet comptable", "minMedia": 2 },
-    "/blog/comprendre-les-comptes-rendus-metier-dsn": { "query": "CRM DSN", "descriptionLead": "CRM DSN", "minMedia": 2 },
-    "/blog/controler-les-bulletins-de-paie-avant-la-dsn": { "query": "Contrôle bulletin de paie", "descriptionLead": "Contrôle bulletin de paie", "minMedia": 2 },
-    "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain": { "query": "métier comptable intelligence artificielle compétences", "descriptionLead": "Métier comptable intelligence artificielle compétences", "minMedia": 2 },
-    "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils": { "query": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils", "descriptionLead": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils", "minMedia": 2 },
-    "/blog/suivre-la-production-sociale-dans-excel": { "query": "Tableau de bord paie Excel", "descriptionLead": "Tableau de bord paie Excel", "minMedia": 2 },
-
-    "/contact": { "query": "navigation transactionnelle de marque", "descriptionLead": "Décrivez la tâche" },
-    "/garanties": { "query": "preuve et réduction du risque", "descriptionLead": "Garanties Memlia" },
-    "/glossaire": { "query": "glossaire comptable", "descriptionLead": "Glossaire comptable" },
-    "/integrations": { "query": "guides par environnement comptable", "descriptionLead": "Trouvez les repères de contrôle" },
-    "/integrations/rapprochement-bancaire-sage": { "query": "rapprochement bancaire sage", "descriptionLead": "Cadrez un rapprochement bancaire Sage 100" },
-    "/integrations/lettrage-sage": { "query": "lettrage sage", "descriptionLead": "Cadrez le lettrage Sage 100" },
-    "/integrations/dsn-sage": { "query": "dsn sage", "descriptionLead": "Cadrez les contrôles d’une DSN Sage" },
-    "/integrations/bulletin-de-paie-sage": { "query": "bulletin de paie sage", "descriptionLead": "Préparez le contrôle d’un bulletin Sage" },
-    "/integrations/saisie-comptable-sage": { "query": "saisie comptable sage", "descriptionLead": "Cadrez une préparation de saisie Sage 100" },
-    "/integrations/cloture-sage": { "query": "clôture sage", "descriptionLead": "Structurez les contrôles de clôture Sage 100" },
-    "/integrations/lettrage-cegid": { "query": "lettrage cegid", "descriptionLead": "Cadrez un lettrage Cegid" },
-    "/integrations/dsn-silae": { "query": "dsn silae", "descriptionLead": "Cadrez les contrôles d’une DSN Silae" },
-    "/integrations/bulletin-de-paie-silae": { "query": "bulletin de paie silae", "descriptionLead": "Cadrez le contrôle d’un bulletin Silae" },
-    "/methode": { "query": "méthode automatisation cabinet comptable", "descriptionLead": "Observer le geste réel" },
-    "/outils-comptables-gratuits": { "query": "outils comptables gratuits", "descriptionLead": "Des outils gratuits" },
-    "/outils-comptables-gratuits/generateur-charte-ia-cabinet": { "query": "générateur charte ia cabinet comptable", "descriptionLead": "Préparez une trame de charte IA", "measuredAt": "2026-10-04", "source": "docs/qa/charte-ia/demande-autocomplete.json" },
-    "/outils-comptables-gratuits/calculateur-date-echeance-facture": { "query": "calculateur date échéance facture", "descriptionLead": "Calculez une date d’échéance" },
-    "/outils-comptables-gratuits/calculateur-marge-commerciale": { "query": "calculateur marge commerciale", "descriptionLead": "Calculez une marge commerciale" },
-    "/outils-comptables-gratuits/calculateur-amortissement-comptable": { "query": "calculateur amortissement comptable", "descriptionLead": "Calculez un plan d’amortissement" },
-    "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": { "query": "modèle rapprochement bancaire Excel gratuit", "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit" }
+    "/commissaires-aux-comptes": { "query": "automatisation commissaire aux comptes", "descriptionLead": "Automatisation pour commissaire aux comptes", "measuredAt": "2026-10-06", "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2." },
+    "/automatisation/circularisation-cac": { "query": "automatiser circularisation", "descriptionLead": "Automatiser la circularisation", "measuredAt": "2026-10-06", "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué." },
+    "/outils-comptables-gratuits/fusionner-fichiers-csv": { "query": "fusionner fichiers csv", "descriptionLead": "Fusionnez vos exports CSV localement", "measuredAt": "2026-10-06", "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel" },
+    "/automatisation/evaluation-transmission": {
+      "query": "automatisation dossier évaluation entreprise cabinet comptable",
+      "descriptionLead": "Confiez l’assemblage du dossier d’évaluation",
+      "measuredAt": "2026-10-06",
+      "source": "Recette evaluation-transmission et titres-intent-2026-10-06.json : aucune suggestion commerciale ni volume revendiqué ; pièces et versions résiduelles, sans méthode, valeur ni conseil automatique."
+    },
+    "/automatisation/secretariat-juridique": {
+      "query": "automatisation secrétariat juridique cabinet comptable",
+      "descriptionLead": "Suivez les échéances d’approbation et de dépôt",
+      "measuredAt": "2026-10-06",
+      "source": "Recette recadrée et titres-intent-2026-10-06.json : aucune suggestion commerciale, aucun volume revendiqué ; suivi annuel résiduel hors outil, distinct des formalités ponctuelles."
+    },
+    "/automatisation/entrees-sorties-salaries": {
+      "query": "automatisation entrées sorties salariés cabinet comptable",
+      "descriptionLead": "Embauche ou départ annoncé hors portail",
+      "measuredAt": "2026-10-06",
+      "source": "Recette recadrée et relevé du 06/10 : aucune suggestion commerciale, aucun volume revendiqué ; annonces hors portail distinctes des contrôles mensuels de paie."
+    },
+    "/outils-comptables-gratuits/bareme-heures-cac": {
+      "query": "barème heures commissaire aux comptes",
+      "descriptionLead": "Calculez la base et la tranche",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche F2 CAC 03 et mesures C2 : une suggestion ; calcul local distinct du budget et du réalisé, sans volume revendiqué."
+    },
+    "/outils-comptables-gratuits/seuil-signification-audit": {
+      "query": "seuil de signification audit calcul",
+      "descriptionLead": "Calculez les seuils de signification",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche F2 CAC et C2, deux suggestions ; outil de calcul sur paramètres distinct du futur article de justification et des seuils de nomination. Aucun volume revendiqué."
+    },
+    "/outils-comptables-gratuits/suivi-circularisation": {
+      "query": "modèle suivi circularisation excel",
+      "descriptionLead": "Préparez vos lettres de confirmation",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche F2 CAC : autocomplétion valide sans suggestion, aucune promesse de trafic ; suivi et reprise distincts du service."
+    },
+    "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": {
+      "query": "générateur prompt ia gratuit",
+      "descriptionLead": "Préparez un prompt texte",
+      "source": "Brief 06 vague 3 ; intention professionnelle générique distincte du générateur cabinet et du blog, aucun volume revendiqué"
+    },
+    "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
+      "query": "bibliothèque prompts comptables",
+      "descriptionLead": "Choisissez un modèle de prompt comptable",
+      "measuredAt": "2026-10-05",
+      "source": "Brief 02 vague 3 ; sélection de modèles distincte du générateur et du guide. Sonde dans docs/qa/bibliotheque-prompts/demande-autocomplete.json ; aucun volume revendiqué."
+    },
+    "/outils-comptables-gratuits/verificateur-prompt-ia": {
+      "query": "vérificateur prompt ia",
+      "descriptionLead": "Repérez les contraintes absentes",
+      "measuredAt": "2026-10-04",
+      "source": "Brief 07 et sondes vague 3 ; vérifier une consigne existante, distinct de la création 01 et du guide blog. Trafic ND."
+    },
+    "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": {
+      "query": "diagnostic maturité ia cabinet comptable",
+      "descriptionLead": "Situez les pratiques IA",
+      "source": "Brief 08 vague 3 ; méthode déclarative originale, aucune promesse de volume"
+    },
+    "/outils-comptables-gratuits/generateur-prompt-expert-comptable": {
+      "query": "générateur prompt expert comptable",
+      "descriptionLead": "Décrivez une tâche abstraite du cabinet",
+      "measuredAt": "2026-10-04",
+      "source": "Brief 01 vague 3 et sonde autocomplete de cadrage ; aucune promesse de volume. Intention exécution distincte du guide /blog/prompt-chatgpt-expert-comptable."
+    },
+    "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": {
+      "query": "pseudonymiser fichier comptable avant ia",
+      "descriptionLead": "Supprimez ou remplacez des colonnes"
+    },
+    "/outils-comptables-gratuits/calculateur-roi-automatisation": {
+      "query": "calculateur roi automatisation comptable",
+      "descriptionLead": "Comparez des scénarios d’automatisation",
+      "source": "Brief 09 vague 3 ; hypothèses économiques, aucune promesse de gain ou de volume"
+    },
+    "/outils-comptables-gratuits/verificateur-fec-local": {
+      "query": "vérificateur fec gratuit",
+      "descriptionLead": "Contrôlez localement la structure",
+      "source": "Brief 05 vague 3 ; sonde Google au cadrage, aucune promesse de volume"
+    },
+    "/": {
+      "query": "automatisation IA cabinet comptable",
+      "descriptionLead": "Votre cabinet"
+    },
+    "/a-propos": {
+      "query": "marque / preuve d’identité",
+      "descriptionLead": "À propos de Memlia"
+    },
+    "/automatisation-cabinet-comptable": {
+      "query": "automatisation tâches répétitives cabinet comptable",
+      "descriptionLead": "Toute tâche répétitive"
+    },
+    "/automatisation/factures-fournisseurs": {
+      "query": "factures fournisseurs des dossiers clients",
+      "descriptionLead": "Factures fournisseurs des dossiers clients"
+    },
+    "/automatisation/notes-de-frais": {
+      "query": "notes de frais des clients en cabinet",
+      "descriptionLead": "Notes de frais des clients en cabinet"
+    },
+    "/automatisation/paie": {
+      "query": "automatisation paie pôle social",
+      "descriptionLead": "Automatisation paie pôle social"
+    },
+    "/automatisation/rapprochement-bancaire": {
+      "query": "rapprochement bancaire en cabinet",
+      "descriptionLead": "Confiez la préparation du rapprochement bancaire"
+    },
+    "/automatisation/saisie-comptable": {
+      "query": "saisie comptable en cabinet",
+      "descriptionLead": "Saisie comptable en cabinet"
+    },
+    "/blog": {
+      "query": "index éditorial",
+      "descriptionLead": "Blog Memlia"
+    },
+    "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps": {
+      "query": "charge de travail cabinet comptable",
+      "descriptionLead": "Charge de travail cabinet comptable",
+      "minMedia": 2
+    },
+    "/blog/comprendre-les-comptes-rendus-metier-dsn": {
+      "query": "CRM DSN",
+      "descriptionLead": "CRM DSN",
+      "minMedia": 2
+    },
+    "/blog/controler-les-bulletins-de-paie-avant-la-dsn": {
+      "query": "Contrôle bulletin de paie",
+      "descriptionLead": "Contrôle bulletin de paie",
+      "minMedia": 2
+    },
+    "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain": {
+      "query": "métier comptable intelligence artificielle compétences",
+      "descriptionLead": "Métier comptable intelligence artificielle compétences",
+      "minMedia": 2
+    },
+    "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils": {
+      "query": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+      "descriptionLead": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+      "minMedia": 2
+    },
+    "/blog/suivre-la-production-sociale-dans-excel": {
+      "query": "Tableau de bord paie Excel",
+      "descriptionLead": "Tableau de bord paie Excel",
+      "minMedia": 2
+    },
+    "/contact": {
+      "query": "navigation transactionnelle de marque",
+      "descriptionLead": "Décrivez la tâche"
+    },
+    "/garanties": {
+      "query": "preuve et réduction du risque",
+      "descriptionLead": "Garanties Memlia"
+    },
+    "/glossaire": {
+      "query": "glossaire comptable",
+      "descriptionLead": "Glossaire comptable"
+    },
+    "/integrations": {
+      "query": "guides par environnement comptable",
+      "descriptionLead": "Trouvez les repères de contrôle"
+    },
+    "/integrations/rapprochement-bancaire-sage": {
+      "query": "rapprochement bancaire sage",
+      "descriptionLead": "Cadrez un rapprochement bancaire Sage 100"
+    },
+    "/integrations/lettrage-sage": {
+      "query": "lettrage sage",
+      "descriptionLead": "Cadrez le lettrage Sage 100"
+    },
+    "/integrations/dsn-sage": {
+      "query": "dsn sage",
+      "descriptionLead": "Cadrez les contrôles d’une DSN Sage"
+    },
+    "/integrations/bulletin-de-paie-sage": {
+      "query": "bulletin de paie sage",
+      "descriptionLead": "Préparez le contrôle d’un bulletin Sage"
+    },
+    "/integrations/saisie-comptable-sage": {
+      "query": "saisie comptable sage",
+      "descriptionLead": "Cadrez une préparation de saisie Sage 100"
+    },
+    "/integrations/cloture-sage": {
+      "query": "clôture sage",
+      "descriptionLead": "Structurez les contrôles de clôture Sage 100"
+    },
+    "/integrations/lettrage-cegid": {
+      "query": "lettrage cegid",
+      "descriptionLead": "Cadrez un lettrage Cegid"
+    },
+    "/integrations/dsn-silae": {
+      "query": "dsn silae",
+      "descriptionLead": "Cadrez les contrôles d’une DSN Silae"
+    },
+    "/integrations/bulletin-de-paie-silae": {
+      "query": "bulletin de paie silae",
+      "descriptionLead": "Cadrez le contrôle d’un bulletin Silae"
+    },
+    "/methode": {
+      "query": "méthode automatisation cabinet comptable",
+      "descriptionLead": "Observer le geste réel"
+    },
+    "/outils-comptables-gratuits": {
+      "query": "outils comptables gratuits",
+      "descriptionLead": "Des outils gratuits"
+    },
+    "/outils-comptables-gratuits/generateur-charte-ia-cabinet": {
+      "query": "générateur charte ia cabinet comptable",
+      "descriptionLead": "Préparez une trame de charte IA",
+      "measuredAt": "2026-10-04",
+      "source": "docs/qa/charte-ia/demande-autocomplete.json"
+    },
+    "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
+      "query": "calculateur date échéance facture",
+      "descriptionLead": "Calculez une date d’échéance"
+    },
+    "/outils-comptables-gratuits/calculateur-marge-commerciale": {
+      "query": "calculateur marge commerciale",
+      "descriptionLead": "Calculez une marge commerciale"
+    },
+    "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
+      "query": "calculateur amortissement comptable",
+      "descriptionLead": "Calculez un plan d’amortissement"
+    },
+    "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
+      "query": "modèle rapprochement bancaire Excel gratuit",
+      "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit"
+    },
+    "/automatisation/registres-obligations": {
+      "query": "automatisation suivi registres obligations cabinet comptable",
+      "descriptionLead": "RNE, BODACC, Sirene",
+      "measuredAt": "2026-10-06",
+      "source": "Recette recadrée et demande.json : deux requêtes commerciales sans suggestion, aucun volume revendiqué."
+    },
+    "/outils-comptables-gratuits/checklist-pieces-comptables": {
+      "query": "checklist pièces comptables",
+      "descriptionLead": "Préparez une checklist personnalisable",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche G3 EC 04 : primaire sans suggestion, besoin produit explicite ; sondes copiées dans docs/strategy/site-v3/outils-ec-vague-4. Aucun volume ni trafic revendiqué."
+    }
   }
 }

@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "decision": "non-ouverture",
+  "queries": 8,
+  "emptyLists": 7,
+  "suggestions": 1,
+  "competitorPagesArchived": 2,
+  "production": [
+    {
+      "route": "/blog/automatiser-la-relance-des-pieces-clients",
+      "httpStatus": 200,
+      "method": "curl GET Cache-Control: no-cache sans query",
+      "canonical": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "h1": [
+        "Automatiser la relance des pièces clients manquantes"
+      ]
+    },
+    {
+      "route": "/automatisation-cabinet-comptable",
+      "httpStatus": 200,
+      "method": "curl GET Cache-Control: no-cache sans query",
+      "canonical": "https://memlia.fr/automatisation-cabinet-comptable",
+      "h1": [
+        "Automatisation pour cabinet comptable : votre règle écrite, dans vos outils."
+      ]
+    },
+    {
+      "route": "/automatisation/collecte-pieces",
+      "httpStatus": 404,
+      "method": "curl GET Cache-Control: no-cache sans query",
+      "canonical": "https://memlia.fr/404",
+      "h1": [
+        "Cette page n’existe pas."
+      ]
+    }
+  ],
+  "recipeCreated": false,
+  "siteChanges": false,
+  "serpAvailable": false,
+  "monthlyVolume": null
+}

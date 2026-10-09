@@ -1,51 +1,33 @@
 ---
-
 import Picto, { type NomPicto } from '@/components/Picto.astro';
-import { famillesDeLaProfession } from '@/data/familles';
-const familles = famillesDeLaProfession('ec');
-const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['usages']; }
+const { contenu = contenuDe('ec').usages } = Astro.props;
 const pictos: NomPicto[] = ['feuilles', 'bouclier', 'limites', 'flux', 'main'];
 
-const examples = [
-  { id: 'collect', title: 'Collecter et préparer', text: 'Rassembler les pièces et les informations attendues depuis les sources convenues, et signaler ce qui manque avant le traitement.' },
-  { id: 'check', title: 'Contrôler et signaler', text: 'Appliquer les règles du cabinet, isoler les écarts et présenter les cas à revoir, avec la raison du signalement.' },
-  { id: 'compare', title: 'Rapprocher et synthétiser', text: 'Comparer deux sources qui devraient concorder et préparer une synthèse où chaque information reste traçable.' },
-  { id: 'follow', title: 'Suivre un processus', text: 'Repérer ce qui bloque et préparer les relances utiles. Leur envoi reste soumis à validation humaine.' },
-  { id: 'decide', title: 'Préparer une décision', text: 'Réunir données, hypothèses et pièces pour que le professionnel valide, modifie ou refuse en connaissance de cause.' },
-];
+/**
+ * Système de page : cinq familles de tâches, chacune un terme et sa définition, non cliquables.
+ * Ce sont des lignes (`.lignes`, global.css), pas des cartes : une carte est une destination.
+ * Le même pictogramme, de la même couleur, ouvre chaque ligne ; aucune palette par capacité.
+ */
+const examples = contenu.exemples;
 ---
-<section id="usages" class="uses" aria-labelledby="uses-title">
-  <div class="uses-heading">
-    <h2 id="uses-title">Toute tâche répétitive a une règle. Nous l’écrivons.</h2>
-    <p class="texte-2 lecture">De la collecte des pièces aux retours DSN, de la saisie au reporting : {familles.length} familles de tâches, {nombrePoles} pôles pour l’expertise comptable, et pour chacune la frontière entre ce qui se prépare seul et ce qui se décide. Commencez par celle qui revient le plus.</p>
-  </div>
-  <div class="uses-grid">
-    {examples.map((example, i) => (
-      <article data-usage={example.id} class="use-card" aria-labelledby={`use-${example.id}`}>
-        <div class="use-mark" aria-hidden="true"><Picto nom={pictos[i]} taille={24} /></div>
-        <div class="use-copy">
-          <h3 id={`use-${example.id}`}>{example.title}</h3>
-          <p>{example.text}</p>
-        </div>
-      </article>
-    ))}
+<section id="usages" class="section uses" aria-labelledby="uses-title">
+  <div class="conteneur pile">
+    <div class="tete">
+      <h2 id="uses-title">{contenu.titre}</h2>
+      <p>{contenu.texte}</p>
+    </div>
+    <ul class="lignes">
+      {examples.map((example, i) => (
+        <li class="ligne" data-usage={example.id}>
+          <div class="ligne-tete">
+            <span class="ligne-picto" aria-hidden="true"><Picto nom={pictos[i]} taille={24} /></span>
+            <h3 id={`use-${example.id}`} class="ligne-libelle">{example.title}</h3>
+          </div>
+          <p class="ligne-texte">{example.text}</p>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
-<style>
-  .uses { padding: 96px var(--marge-page) 0; background: var(--surface-page); }
-  .uses-heading { display: grid; gap: 16px; max-width: 780px; }
-  .uses-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 40px; }
-  .use-card { min-width: 0; padding: 28px; border-radius: var(--r-carte); background: var(--surface-feuille); }
-  .use-mark { display: grid; place-items: center; width: 48px; height: 48px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-page); }
-  .use-copy { display: grid; gap: 16px; margin-top: 20px; }
-  h3 { font-size: var(--t-3xl); line-height: 1.2; text-wrap: pretty; color: var(--texte-fort); }
-  .use-copy p { margin: 0; max-width: 52ch; color: var(--texte-2); }
-  @media (min-width: 48rem) {
-    .uses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .use-card { padding: 40px; }
-    .use-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 32px; }
-    .use-card:first-child .use-copy { margin-top: 0; }
-    .use-card:first-child h3 { font-size: var(--t-4xl); }
-  }
-  @media (min-width: 64rem) { .uses { padding: 128px var(--marge-page-lg) 0; } }
-</style>
