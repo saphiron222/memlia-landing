@@ -1,8 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync, readFileSync } from 'node:fs';
+import { expectProofSelection } from './proof-selection';
 
 // Cicatrice « tests verts » : depuis la recette de référence du 03/10/2026, ses deux figures sont,
-// comme les autres, une seule image 1600 × 900 servie au bureau comme au téléphone. Le contrôle
+// comme les autres, un master 1600 × 900 et ses dérivés responsive sans recadrage. Le contrôle
 // du CTA garde le libellé exact qui débordait à 320 px dans le candidat joint du 02/10.
 const slug = 'tests-verts-et-regle-des-trois-passes';
 const ids = JSON.parse(readFileSync(`editorial/recettes/${slug}/recette.json`, 'utf8')).inlineProofs.map((proof: { id: string }) => proof.id);
@@ -30,8 +31,7 @@ for (const width of [320, 375, 1440]) {
         parentWidth: image.parentElement!.getBoundingClientRect().width,
         legacy: Boolean(image.parentElement!.querySelector('figcaption, .preuve-defilante')),
       }));
-      expect(measured.selected).toBe(`/proofs/blog/${id}.webp`);
-      expect(measured.natural).toEqual([1600, 900]);
+      await expectProofSelection(img, `/proofs/blog/${id}.webp`);
       expect(measured.width).toBeLessThanOrEqual(measured.parentWidth);
       expect(measured.width).toBeGreaterThanOrEqual(measured.parentWidth - 2);
       expect(Math.abs(measured.height - measured.width * 9 / 16)).toBeLessThanOrEqual(2);

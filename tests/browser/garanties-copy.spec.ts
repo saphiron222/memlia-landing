@@ -11,7 +11,7 @@ for (const width of [375, 1440]) {
     await expect(page.locator('#refus h3').first()).toHaveText('Aucune attestation de conformité');
     await expect(page.locator('#refus h3').first()).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Aucune conformité', exact: true })).toHaveCount(0);
-    const limits = page.locator('#refus .pv-cellule').first();
+    const limits = page.locator('#refus .cellule').first();
     await expect(limits).toContainText('Nous documentons le traitement prévu et ses limites.');
     await expect(limits).toContainText('elle ne certifie pas les comptes ni le dossier d’audit');
     await expect(page.locator('#donnees')).toContainText('droits d’accès, les destinataires et les flux');

@@ -114,7 +114,7 @@ class Article3Contract(unittest.TestCase):
     def test_rendered_canonical_links_and_jsonld(self):
         canonical = next(attrs["href"] for tag, attrs in self.doc.tags if tag == "link" and attrs.get("rel") == "canonical")
         self.assertEqual(canonical, f"https://memlia.fr/blog/{SLUG}")
-        body_match = re.search(r'<div class="article-corps lecture"[^>]*>(.*?)<section class="article-sources"', self.rendered, re.S)
+        body_match = re.search(r'<div class="article-corps lecture"[^>]*>(.*?)(?:<section class="article-sources"|<aside class="article-pont)', self.rendered, re.S)
         self.assertIsNotNone(body_match)
         assert body_match is not None
         article_body = body_match.group(1)

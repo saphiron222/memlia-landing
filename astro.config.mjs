@@ -7,6 +7,7 @@ import ancresTitres from './src/lib/ancres-titres.mjs';
 import typedSitemaps from './scripts/lib/sitemaps.mjs';
 import { fileURLToPath } from 'node:url';
 import { renderSocialImages } from './scripts/render-social-images.mjs';
+import responsiveProofs from './scripts/lib/responsive-proofs.mjs';
 
 
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
@@ -87,5 +88,6 @@ export default defineConfig({
         console.log(`${await renderSocialImages(fileURLToPath(dir))} images sociales JPEG générées.`);
       },
     } },
+    responsiveProofs(),
   ],
 });

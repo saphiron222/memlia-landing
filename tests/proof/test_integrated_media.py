@@ -28,7 +28,7 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in (DIST / 'media').iterdir()), ['r9'])
         self.assertEqual(
             sorted(p.name for p in (DIST / 'media/r9').iterdir() if p.is_file()),
-            ['explainer-hero-45s.mp4', 'explainer.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
+            ['explainer-hero-45s-mobile.mp4', 'explainer-hero-45s.mp4', 'explainer.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
         )
         videos = [video for path in DIST.rglob('*.html') for video in Document(path).select('video')]
         self.assertEqual(len(videos), 1)
@@ -44,7 +44,9 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertNotIn('controls', video)
         self.assertIn('data-video', video)
         self.assertEqual(video.get('tabindex'), '0')
-        self.assertEqual(video['preload'], 'metadata')
+        self.assertEqual(video['preload'], 'none')
+        self.assertEqual(video['data-video-mobile'], '/media/r9/explainer-hero-45s-mobile.mp4')
+        self.assertLess((DIST / video['data-video-mobile'].lstrip('/')).stat().st_size, 2_000_000)
         self.assertTrue(video['aria-label'])
         self.assertEqual(video['poster'], '/media/r9/hero-poster-1200.webp')
         self.assertEqual(video['src'], '/media/r9/explainer-hero-45s.mp4')
@@ -81,13 +83,11 @@ class IntegratedMediaProof(unittest.TestCase):
         for figure in figures:
             self.assertRegex(figure.strip(), r'^<img\b[^>]+>$')
             self.assertNotRegex(figure, r'\s(?:tabindex|role|on\w+)\s*=')
-        dialogs = re.findall(r'<dialog\b[^>]*aria-label="[^"]+"[^>]*>(.*?)</dialog>', html, re.S)
-        self.assertEqual(len(dialogs), 9)
-        for dialog in dialogs:
-            self.assertIn('data-proof-summary', dialog)
-            self.assertIn('Fermer la preuve', dialog)
-            self.assertIn('role="region"', dialog)
-            self.assertRegex(dialog, r'<img\b[^>]*data-src="/proofs/[^\"]+"')
+        # Kevin, 07/10/2026 : aucune image ne s'agrandit. Ni dialogue, ni lien vers le fichier de la preuve.
+        self.assertNotRegex(html, r'<dialog\b')
+        self.assertNotIn('Agrandir la preuve', html)
+        self.assertNotIn('data-proof-detail', html)
+        self.assertNotRegex(html, r'<a\b[^>]*href="/proofs/')
 
     def test_nine_functional_proofs_replace_all_legacy_images(self):
         doc = Document(DIST / 'index.html')

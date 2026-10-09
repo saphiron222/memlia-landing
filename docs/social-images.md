@@ -19,6 +19,9 @@ Vérifications :
 
 - `node --test tests/scripts/social-images.test.mjs` : rendu réel avec Sharp,
   dimensions, poids, source intacte, déduplication et source manquante.
+- La fixture de preview et les contrats navigateur attendent la variante JPEG
+  dans les balises de partage ; leurs contrôles des sources WebP et du JSON-LD
+  restent inchangés. Le JPEG candidat doit aussi exister dans l’export de preview.
 - `npm run test:page-contract` : URL OG unique, absolue HTTPS Memlia, `.jpg` ou `.png`.
 - `npm run regen:generated` puis `npm run build` : registres et surfaces régénérés.
 - Après publication : parcourir le sitemap et vérifier les deux balises, le HTTP
