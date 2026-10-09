@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
+import { proofSizes, proofSrcset } from '../../scripts/lib/responsive-proofs.mjs';
 
 const SLUG = 'article-test';
 const REQUETE = 'contrôle bulletin de paie';
@@ -68,6 +69,11 @@ test('clause 1 — image directe liée à la recette ; une variante portrait est
     const path = join(root, 'dist/blog', `${SLUG}.html`);
     writeFileSync(path, page);
     assert.deepEqual(auditer(root).erreurs, [], 'image directe de la recette acceptée');
+    const master = Buffer.from('master de fixture');
+    writeFileSync(join(root, 'public/proofs/blog/preuve-1.webp'), master);
+    const responsive = `srcset="${proofSrcset('/proofs/blog/preuve-1.webp', master)}" sizes="${proofSizes(true)}" loading="lazy"`;
+    writeFileSync(path, page.replace('alt="Preuve 1"', `alt="Preuve 1" ${responsive}`));
+    assert.deepEqual(auditer(root).erreurs, [], 'variantes réduites liées au master acceptées');
     writeFileSync(join(root, 'public/proofs/blog/preuve-1-mobile.webp'), 'actif de fixture');
     writeFileSync(path, page.replace('preuve-1.webp', 'preuve-1-mobile.webp'));
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait refusé même si le fichier existe');

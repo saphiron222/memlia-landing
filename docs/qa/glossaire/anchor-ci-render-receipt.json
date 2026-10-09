@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "commands": [
+    {
+      "command": "npx astro build",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/strip-briefs.mjs",
+      "exitCode": 0
+    }
+  ],
+  "startedAt": "2026-10-08T18:17:48Z",
+  "endedAt": "2026-10-08T18:18:04Z",
+  "result": "PASS",
+  "provenance": {
+    "runId": 37823107561,
+    "jobId": 113468921207,
+    "headSha": "466dd1d68c0bbd724765db74fcf596d9feb49c99",
+    "integratedMainSha": "05ebe80a",
+    "artifactId": 11569673512,
+    "artifactName": "glossary-f1-render",
+    "renderPath": "dist/glossaire.html",
+    "renderBytes": 321115,
+    "renderSha256": "ebebc0d0675dd1e21838074eaff0843c27b3b70537c390dcc0d7f5c1666f330a",
+    "jobUrl": "https://github.com/saphiron222/memlia-landing/actions/runs/37823107561/job/113468921207",
+    "timingRule": "Step SUCCESS exécutant les deux commandes puis sync-lastmod via && ; artefact réel téléchargé et mesuré.",
+    "scope": "Rendu uniquement, pas le verdict Repository gates."
+  },
+  "surfaces": {
+    "T": {
+      "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
+      "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
+      "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
+      "outputDigest": "e95a3980e9e6e6e73d50e69b8da9a1dfab43caf370206e129967d24c4f50d015"
+    }
+  }
+}

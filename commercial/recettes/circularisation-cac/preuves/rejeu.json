@@ -1,0 +1,280 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-06T03:29:36.028Z",
+  "method": "Simulation déterministe des états de suivi. Aucun envoi, aucune pièce générée ou lue, aucune intégration ni diligence d’audit exécutée.",
+  "cases": [
+    {
+      "id": "retour-non-rapproche",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": false,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000,
+        "pieces": [
+          "retour-orme-01.pdf"
+        ]
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [
+          "retour-orme-01.pdf"
+        ],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "retour-non-rapproche",
+        "arret": "Identifiant de demande ambigu ou absent"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [
+          "retour-orme-01.pdf"
+        ],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "retour-non-rapproche",
+        "arret": "Identifiant de demande ambigu ou absent"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "ecart-documente",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 11700,
+        "pieces": [
+          "justificatif-orme-02.pdf"
+        ]
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [
+          "justificatif-orme-02.pdf"
+        ],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "ecart": -300,
+        "etat": "ecart-documente-a-examiner",
+        "arret": null
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [
+          "justificatif-orme-02.pdf"
+        ],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "ecart": -300,
+        "etat": "ecart-documente-a-examiner",
+        "arret": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "absence-reponse",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": false,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "absence-transmise-cac",
+        "arret": "Suites à décider par le CAC"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "absence-transmise-cac",
+        "arret": "Suites à décider par le CAC"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "validation-envoi-absente",
+      "input": {
+        "validationEnvoi": false,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "brouillon",
+        "arret": "Validation d’envoi absente"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "brouillon",
+        "arret": "Validation d’envoi absente"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "refus-direction",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000,
+        "refusDirection": true
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "suspendu-refus",
+        "arret": "Examen du refus par le CAC"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "suspendu-refus",
+        "arret": "Examen du refus par le CAC"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "saisie-preservee",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000,
+        "commentaireHumain": "À examiner avec le chef de mission."
+      },
+      "expected": {
+        "commentaireHumain": "À examiner avec le chef de mission.",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "ecart": 0,
+        "etat": "concordance-a-examiner",
+        "arret": null
+      },
+      "actual": {
+        "commentaireHumain": "À examiner avec le chef de mission.",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "ecart": 0,
+        "etat": "concordance-a-examiner",
+        "arret": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "perimetre-different",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": false,
+        "type": "fermee",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "comparaison-refusee",
+        "arret": "Devise ou période différente"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "comparaison-refusee",
+        "arret": "Devise ou période différente"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "demande-ouverte",
+      "input": {
+        "validationEnvoi": true,
+        "reponse": true,
+        "rattachementCertain": true,
+        "memePerimetre": true,
+        "type": "ouverte",
+        "montantAttendu": 12000,
+        "montantRetourne": 12000,
+        "information": "Engagement fictif à examiner"
+      },
+      "expected": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "information-a-examiner",
+        "arret": null,
+        "information": "Engagement fictif à examiner"
+      },
+      "actual": {
+        "commentaireHumain": "",
+        "pieces": [],
+        "envoi": false,
+        "procedureAlternative": null,
+        "conclusion": null,
+        "etat": "information-a-examiner",
+        "arret": null,
+        "information": "Engagement fictif à examiner"
+      },
+      "status": "PASS"
+    }
+  ]
+}

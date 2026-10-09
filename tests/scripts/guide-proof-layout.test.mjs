@@ -47,6 +47,11 @@ for (const wide of [false, true]) {
     assert.ok(geometry.fonts.some(([name, state]) => name === 'Fraunces' && state === 'loaded'));
     assert.doesNotMatch(geometry.text, /Simulation documentaire|Aucun essai|La décision reste humaine/);
     assert.ok(!geometry.text.includes(d.slug));
+    assert.equal(await page.locator('header').innerText(), d.task);
+    assert.equal(await page.locator('.row').count(), 3);
+    assert.deepEqual(await page.locator('.head span').allTextContents(), ['Entrée lue', 'Règle appliquée', 'Sortie / cause', 'Décision']);
+    assert.ok(result.proof.alt.includes(d.product));
+    assert.ok(readFileSync(join(root, result.target)).length < 150000);
     const meta = await sharp(readFileSync(join(root, result.target))).metadata();
     assert.equal(meta.width, 1600); assert.equal(meta.height, 900);
     assert.match(result.proof.alt, /Simulation documentaire/);

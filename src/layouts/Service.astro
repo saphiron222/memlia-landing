@@ -5,7 +5,7 @@ import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
 import ServicePrinciples from '@/components/sections/ServicePrinciples.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageEvidence from '@/components/PageEvidence.astro';
+import Picto from '@/components/Picto.astro';
 import RelatedIntegrations from '@/components/RelatedIntegrations.astro';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
@@ -25,6 +25,13 @@ const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
 const design = serviceDesignFor(entree.id);
 const eeat = eeatService(entree.id);
+const socialImage = entree.id === 'entrees-sorties-salaries'
+  ? { url: `${SITE.url}/proofs/v2/og/44-service-entrees-sorties-salaries.webp`, width: 1200, height: 630, alt: 'Sept annonces fictives : propositions à valider, arrêts et circuit existant conservé.' }
+  : entree.id === 'secretariat-juridique'
+    ? { url: `${SITE.url}/proofs/v2/og/46-service-secretariat-juridique.webp`, width: 1200, height: 630, alt: 'Échéances fictives : suivi résiduel, brouillon à valider, circuit couvert exclu et date inconnue arrêtée.' }
+  : entree.id === 'evaluation-transmission'
+    ? { url: `${SITE.url}/proofs/v2/og/47-service-evaluation-transmission.jpg`, width: 1200, height: 630, alt: 'Trois cas fictifs de préparation : ajustement accepté, attente et conflit de versions.' }
+  : undefined;
 const auteur = auteurPar(eeat.auteur);
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
 const toolLink = entree.id === 'factures-fournisseurs'
@@ -84,7 +91,7 @@ const graph = {
 };
 ---
 
-<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph}>
+<Base titre={data.tabTitle} titreSocial={data.ogTitle} description={data.description} chemin={chemin} noindex={noindex} base="/" schema={graph} socialImage={socialImage}>
   <meta slot="head" name="memlia-candidate" content={data.candidateFingerprint} />
 
   <div class="feuille">
@@ -97,13 +104,12 @@ const graph = {
         {toolLink && (
           <aside class="service-outil" aria-label="Outil gratuit associé">
             <strong>{entree.id === 'rapprochement-bancaire' ? 'Contrôle de soldes fictifs, pas l’appariement des mouvements' : 'Rejouer la règle sur des données fictives'}</strong>
-            <a href={toolLink.href}>{toolLink.label}</a>
+            <a class="lien-action" href={toolLink.href}>{toolLink.label}<Picto nom="fleche" taille={14} /></a>
           </aside>
         )}
       </ServiceBody>
       <RelatedIntegrations servicePath={chemin} />
       <ServicePrinciples />
-      <PageEvidence eeat={eeat} />
       <AppelFinal
         id="confier"
         titre="Décrivez le geste qui revient."
@@ -120,7 +126,8 @@ const graph = {
 </Base>
 
 <style>
-  .service-outil { display: grid; gap: 8px; margin-top: 32px; padding: 20px; border-left: 3px solid var(--accent-appui); background: var(--accent-voile); }
-  .service-outil a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
-  article > :global([data-service-section='appel']) { background: var(--surface-feuille); }
+  /* L'outil associé : son intitulé, puis le lien d'action du système de page. */
+  .service-outil { display: grid; gap: var(--espace-1); margin-top: var(--espace-10); }
+  .service-outil strong { color: var(--texte-fort); font-weight: 600; }
+  .service-outil .lien-action { text-decoration: none; }
 </style>

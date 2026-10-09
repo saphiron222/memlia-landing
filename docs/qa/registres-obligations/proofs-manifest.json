@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/registres-obligations-proof/index.html",
+      "sha256": "348728303d470c72f07c63bd6cd27fc994febfecc1f9d251f2fb5c6862215bc8"
+    },
+    {
+      "path": "docs/design/registres-obligations-proof/styles.css",
+      "sha256": "2a8792bd02dc4f9119d9818cb979d6d7d7eef924872fe4915fe42519f23de249"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/registres-obligations-proof/content-contract.json",
+      "sha256": "5b638b8af4a36d7c40ccf647033c1f658e82a466a7e09e279bc3691d693a1cd3"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/registres-obligations-proof/index.html#service-registres-obligations",
+      "target": "public/proofs/v2/44-service-registres-obligations.webp",
+      "bytes": 54466,
+      "sha256": "4412dfaa411c8eeae01d32def1fa314da1a3cad2eb43d98ff0b9dc7d2e3078d1"
+    },
+    {
+      "source": "docs/design/registres-obligations-proof/index.html#service-registres-obligations",
+      "target": "public/proofs/v2/og/44-service-registres-obligations.webp",
+      "bytes": 35002,
+      "sha256": "afc00cc7caa076612137e9f1aa2c56bbfc758ca9b2f94b98845ae2bf9728fdbe"
+    }
+  ]
+}

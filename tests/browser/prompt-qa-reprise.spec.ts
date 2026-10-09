@@ -13,17 +13,29 @@ test('R1 : navigation réelle isolée, original édité conservé sans stockage'
   await page.locator('[data-editor]').fill(edited);
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
   const popup = page.waitForEvent('popup');
-  await page.locator(`a[href="${lib}"]`).first().click();
-  const other = await popup; await expect(other).toHaveURL(new RegExp(lib + '$'));
+  // Observe the popup before awaiting the click: opening a tab can background
+  // the original while Playwright is still finishing its pointer action.
+  const clicked = page.locator(`a[href="${lib}"]`).first().click();
+  const other = await popup;
+  await page.bringToFront();
+  await clicked;
+  // Suivre l’onglet consulté, sans dépendre de l’activation implicite de Chromium.
+  await other.bringToFront();
+  await expect(other).toHaveURL(new RegExp(lib + '$'));
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
   await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
   await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
+  await page.bringToFront();
   await expect(page).toHaveURL(new RegExp(gen + '$'));
   await expect(page.locator('[data-editor]')).toHaveValue(edited);
   expect(await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)))).toEqual(before);
-  for (const tab of [page, other]) expect(await tab.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
+  for (const tab of [page, other]) {
+    await tab.bringToFront();
+    expect(await tab.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 });
+  }
   await other.close();
+  await page.bringToFront();
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click();
   expect(await readFile((await (await downloaded).path())!, 'utf8')).toBe(edited);
 });

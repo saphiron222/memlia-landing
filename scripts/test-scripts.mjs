@@ -17,6 +17,8 @@ import { join } from 'node:path';
 
 const DOSSIER = 'tests/scripts';
 const SANS_NAVIGATEUR = {
+  'proof-render-ownership.test.mjs': 'rend les neuf preuves dans Chromium : joué explicitement en CI, hors build Cloudflare',
+  'accueil-cac-geometry.test.mjs': 'mesure les panneaux CAC dans Chromium : joué explicitement en CI, hors build Cloudflare ; les autres contrôles CAC restent dans accueil-cac-medias.test.mjs',
   'guide-forge.test.mjs': 'rend les preuves dans Chromium : joué par npm run test:guide-forge et en CI, hors build Cloudflare',
   'guide-proof-layout.test.mjs': 'mesure les textes dans Chromium : joué par npm run test:guide-forge et en CI, hors build Cloudflare',
   'guide-forge-render.test.mjs': 'forge une preuve dans Chromium et construit Astro : joué par npm run test:guide-render et en CI, hors build Cloudflare',
