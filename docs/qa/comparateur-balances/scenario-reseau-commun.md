@@ -12,6 +12,12 @@ Vérification locale sur le rendu Astro servi par preview, sans suite complète 
 - Test commun après correction : 1 réussite.
 - `QA_URL=http://127.0.0.1:4337 npx playwright test tests/browser/outils.spec.ts tests/browser/comparateur-balances.spec.ts` : 37 réussites (dont les 14 parcours spécifiques).
 - `git diff --check` : réussi.
-- `npm run blog:audit` avec `origin/main` présent : réussi, aucune erreur. L’intégration de main n’est donc pas nécessaire pour cette correction ; aucun outil concurrent n’est modifié.
+- `npm run blog:audit` avec `origin/main` présent : réussi, aucune erreur. GitHub a toutefois déclaré la PR en conflit, empêchant le déclenchement de CI : main a donc été intégré pour rendre le candidat vérifiable.
+
+Après intégration de main, les scénarios checklist et fusion CSV, leurs en-têtes, contrats et preuves sont conservés. Les paragraphes d’entrée du comparateur sont réinsérés sans rétablir les anciens paragraphes remplacés sur main. Les fichiers générés sont recalculés avec `npm run regen:generated`, sans modifier les revues de fond.
+
+- Suites navigateur outils, comparateur, fusion CSV et concurrence fusion : 60 réussites.
+- Tests Node du moteur comparateur, de sa livraison et des en-têtes ROI/pseudonymisation : 27 réussites.
+- Les captures fusion produites par les tests sont exclues de la livraison ; les captures approuvées de main sont conservées.
 
 La construction complète « Repository gates » et la recette HTTPS Cloudflare restent à recueillir par la carte platform existante ; ces tests locaux ne s’y substituent pas.

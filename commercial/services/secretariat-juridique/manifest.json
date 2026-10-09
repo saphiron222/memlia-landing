@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "secretariat-juridique",
+  "path": "/automatisation/secretariat-juridique",
+  "status": "publie",
+  "candidateFingerprint": "ec5f6109299feeb7c7f6c45b33b2b009d2d3a33282ad25eca853cc2b3606bb47",
+  "title": "Automatisation du secrétariat juridique en cabinet comptable : les échéances hors outil",
+  "tabTitle": "Automatisation secrétariat juridique cabinet comptable | Memlia",
+  "ogTitle": "Automatisation du secrétariat juridique en cabinet comptable : les échéances hors outil",
+  "headline": "Automatisation du secrétariat juridique en cabinet comptable : les échéances hors outil",
+  "description": "Suivez les échéances d’approbation et de dépôt encore hors de votre outil juridique. Nous préparons les rappels ; le cabinet valide, les habilités déposent.",
+  "hero": "Votre outil juridique peut déjà préparer les actes et suivre les assemblées. Nous intervenons seulement si des échéances d’approbation et de dépôt du portefeuille restent suivies à la main en dehors de ce circuit. Nous réunissons les dates confirmées et préparons les rappels de dépôt à contrôler. Avant de construire, nous vérifions votre offre et ses options. Le cabinet valide les dates et les messages ; les personnes habilitées approuvent, signent et déposent.",
+  "primaryQuery": "automatisation secrétariat juridique cabinet comptable",
+  "secondaryQueries": [
+    "automatisation approbation comptes cabinet comptable"
+  ],
+  "audience": {
+    "mode": "qualified",
+    "qualifier": "cabinet comptable",
+    "reason": "Le cabinet comptable confie uniquement les échéances de portefeuille et rappels encore hors du circuit de son outil juridique, après vérification de l’édition et des options."
+  },
+  "family": "secretariat-juridique",
+  "verifiedAt": "2026-10-06",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schemaTypes": [
+    "WebPage",
+    "Service",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+  ],
+  "incomingLinks": [
+    {
+      "url": "/automatisation-cabinet-comptable",
+      "sourcePath": "src/pages/automatisation-cabinet-comptable.astro",
+      "anchor": "suivre les échéances juridiques hors de votre outil"
+    },
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "éprouver les rappels de dépôt encore manuels"
+    },
+    {
+      "url": "/a-propos",
+      "sourcePath": "src/pages/a-propos.astro",
+      "anchor": "confier le suivi juridique restant hors du circuit du cabinet"
+    }
+  ],
+  "review": {
+    "reviewer": "metier-independant",
+    "reviewedAt": "2026-10-06",
+    "status": "PASS"
+  },
+  "pageSha256": "29400dbb88c69f678080fa106bb0da8f7d7583999fba42813267dd08d1b093df",
+  "seal": "preuves/scellement.json"
+}

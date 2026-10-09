@@ -18,7 +18,7 @@ try {
     const text = el => el.textContent.replace(/\s+/g, ' ').trim();
     const removed = [old.querySelector('.uses-scenario'), old.querySelector('.uses-note')].map(text);
     const oldUses = [...old.querySelectorAll('[data-usage]')].map(el => [text(el.querySelector('dt')), text(el.querySelector('dd'))]);
-    const newUses = [...document.querySelectorAll('[data-usage]')].map(el => [text(el.querySelector('h3')), text(el.querySelector('.use-copy p'))]);
+    const newUses = [...document.querySelectorAll('[data-usage]')].map(el => [text(el.querySelector('h3')), text(el.querySelector('.carte-texte'))]);
     const method = root => [...root.querySelectorAll('#methode .step-copy')].map(text);
     const oldMethod = method(old), newMethod = method(document);
     return { removed, oldUses, newUses, oldMethod, newMethod };

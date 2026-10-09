@@ -1,0 +1,747 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "scope": "Préparation documentaire et arithmétique uniquement. Aucune formule de valorisation, avis, décision de méthode ou choix de prix.",
+  "executable": "preuves/rejouer.mjs",
+  "cases": [
+    {
+      "id": "courant",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "PROPOSITION",
+        "generated": {
+          "rows": [
+            {
+              "period": "2023",
+              "source": "bilan-2023-fictif",
+              "version": "v1",
+              "baseResult": 80000,
+              "acceptedAdjustments": [],
+              "preparedResult": 80000
+            },
+            {
+              "period": "2024",
+              "source": "bilan-2024-fictif",
+              "version": "v1",
+              "baseResult": 90000,
+              "acceptedAdjustments": [],
+              "preparedResult": 90000
+            },
+            {
+              "period": "2025",
+              "source": "bilan-2025-fictif",
+              "version": "v1",
+              "baseResult": 100000,
+              "acceptedAdjustments": [
+                {
+                  "id": "A1",
+                  "amount": 12000,
+                  "source": "piece-charge-fictive",
+                  "approvedBy": "responsable-fictif",
+                  "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+                }
+              ],
+              "preparedResult": 112000
+            }
+          ],
+          "pending": []
+        },
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        },
+        "method": null,
+        "enterpriseValue": null,
+        "price": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "retraitement-en-attente",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "pending",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ATTEND_VALIDATION",
+        "generated": {
+          "rows": [
+            {
+              "period": "2023",
+              "source": "bilan-2023-fictif",
+              "version": "v1",
+              "baseResult": 80000,
+              "acceptedAdjustments": [],
+              "preparedResult": 80000
+            },
+            {
+              "period": "2024",
+              "source": "bilan-2024-fictif",
+              "version": "v1",
+              "baseResult": 90000,
+              "acceptedAdjustments": [],
+              "preparedResult": 90000
+            },
+            {
+              "period": "2025",
+              "source": "bilan-2025-fictif",
+              "version": "v1",
+              "baseResult": 100000,
+              "acceptedAdjustments": [],
+              "preparedResult": 100000
+            }
+          ],
+          "pending": [
+            "A1"
+          ]
+        },
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        },
+        "method": null,
+        "enterpriseValue": null,
+        "price": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "piece-manquante",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "PIECE_ABSENTE_OU_CONFLIT"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "versions-concurrentes",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 110000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v2"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "PIECE_ABSENTE_OU_CONFLIT"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "unite-incompatible",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "kEUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "UNITE_OU_MONTANT"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "validation-sans-piece",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "RETRAITEMENT_NON_JUSTIFIE"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "perimetre-different",
+      "input": {
+        "scope": "groupe-fictif",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "PERIMETRE"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "retraitement-rejete",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "rejected",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "PROPOSITION",
+        "generated": {
+          "rows": [
+            {
+              "period": "2023",
+              "source": "bilan-2023-fictif",
+              "version": "v1",
+              "baseResult": 80000,
+              "acceptedAdjustments": [],
+              "preparedResult": 80000
+            },
+            {
+              "period": "2024",
+              "source": "bilan-2024-fictif",
+              "version": "v1",
+              "baseResult": 90000,
+              "acceptedAdjustments": [],
+              "preparedResult": 90000
+            },
+            {
+              "period": "2025",
+              "source": "bilan-2025-fictif",
+              "version": "v1",
+              "baseResult": 100000,
+              "acceptedAdjustments": [],
+              "preparedResult": 100000
+            }
+          ],
+          "pending": []
+        },
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        },
+        "method": null,
+        "enterpriseValue": null,
+        "price": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "sans-tracabilite",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "ARRET",
+        "reasons": [
+          "SOURCE"
+        ],
+        "generated": null,
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "nouveau-rejeu",
+      "input": {
+        "scope": "societe-fictive-01",
+        "periods": [
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "documents": [
+          {
+            "period": "2023",
+            "result": 80000,
+            "unit": "EUR",
+            "source": "bilan-2023-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2024",
+            "result": 90000,
+            "unit": "EUR",
+            "source": "bilan-2024-fictif",
+            "version": "v1"
+          },
+          {
+            "period": "2025",
+            "result": 100000,
+            "unit": "EUR",
+            "source": "bilan-2025-fictif",
+            "version": "v1"
+          }
+        ],
+        "adjustments": [
+          {
+            "id": "A1",
+            "period": "2025",
+            "amount": 12000,
+            "status": "accepted",
+            "source": "piece-charge-fictive",
+            "approvedBy": "responsable-fictif",
+            "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+          }
+        ],
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        }
+      },
+      "output": {
+        "status": "PROPOSITION",
+        "generated": {
+          "rows": [
+            {
+              "period": "2023",
+              "source": "bilan-2023-fictif",
+              "version": "v1",
+              "baseResult": 80000,
+              "acceptedAdjustments": [],
+              "preparedResult": 80000
+            },
+            {
+              "period": "2024",
+              "source": "bilan-2024-fictif",
+              "version": "v1",
+              "baseResult": 90000,
+              "acceptedAdjustments": [],
+              "preparedResult": 90000
+            },
+            {
+              "period": "2025",
+              "source": "bilan-2025-fictif",
+              "version": "v1",
+              "baseResult": 100000,
+              "acceptedAdjustments": [
+                {
+                  "id": "A1",
+                  "amount": 12000,
+                  "source": "piece-charge-fictive",
+                  "approvedBy": "responsable-fictif",
+                  "rationale": "Réintégration décidée par le cabinet pour ce seul tableau de préparation."
+                }
+              ],
+              "preparedResult": 112000
+            }
+          ],
+          "pending": []
+        },
+        "userNotes": {
+          "method": "à décider par le cabinet",
+          "comment": "conserver ma note"
+        },
+        "method": null,
+        "enterpriseValue": null,
+        "price": null
+      },
+      "status": "PASS"
+    }
+  ]
+}
