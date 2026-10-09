@@ -24,7 +24,6 @@
   ],
   "articles": [
     {
-
       "slug": "generateur-relance-facture-impayee", "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee",
       "requete": "générateur relance facture impayée",
@@ -32,6 +31,15 @@
       "famille": "facturation-recouvrement", "format": "web-application", "publieLe": null,
       "titreOnglet": "Générateur de relance de facture impayée | Memlia",
       "source": "Brief 01 outils EC vague 4 et docs/qa/relance-facture/demande-autocomplete.json ; vraie sonde : primaire sans suggestion, mail relance facture impayée avec dix suggestions. Convention de préparation, aucune règle juridique. Candidat non publié : indexation, trafic et conversions ND."
+    },
+    { "slug": "fusionner-fichiers-csv", "type": "outil", "url": "https://memlia.fr/outils-comptables-gratuits/fusionner-fichiers-csv", "requete": "fusionner fichiers csv", "secondaires": ["consolider exports csv localement"], "famille": "fusion-csv", "format": "web-application", "publieLe": null, "titreOnglet": "Fusionner des fichiers CSV gratuitement | Memlia", "source": "Brief 02 EC vague 4, sonde du 06/10 : 8 suggestions ; candidat avant QA/publication, aucun volume ou usage revendiqué." },
+    {
+
+      "slug": "checklist-pieces-comptables", "type": "outil", "url": "https://memlia.fr/outils-comptables-gratuits/checklist-pieces-comptables",
+      "requete": "checklist pièces comptables", "secondaires": ["demande pièces manquantes", "checklist documents cabinet comptable"],
+      "famille": "pieces", "format": "web-application", "publieLe": null,
+      "titreOnglet": "Checklist des pièces comptables à demander | Memlia",
+      "source": "G3 EC 04 : sonde 06/10/2026 valide sans suggestion primaire ; besoin cabinet, signal faible sans volume inventé. Construction candidate, trafic/indexation/conversions ND."
     },
     {
 
@@ -497,6 +505,57 @@
         "gestion entrées sorties salariés cabinet comptable"
       ],
       "famille": "entrees-sorties-salaries",
+      "publieLe": "2026-10-07",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "secretariat-juridique",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/secretariat-juridique",
+      "requete": "automatisation secrétariat juridique cabinet comptable",
+      "secondaires": [
+        "automatisation approbation comptes cabinet comptable"
+      ],
+      "famille": "secretariat-juridique",
+      "publieLe": "2026-10-08",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "registres-obligations",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/registres-obligations",
+      "requete": "automatisation suivi registres obligations cabinet comptable",
+      "secondaires": [
+        "automatisation registres cabinet comptable"
+      ],
+      "famille": "registres-obligations",
+      "publieLe": "2026-10-07",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "evaluation-transmission",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/evaluation-transmission",
+      "requete": "automatisation dossier évaluation entreprise cabinet comptable",
+      "secondaires": [
+        "automatisation évaluation entreprise cabinet comptable",
+        "évaluation entreprise expert comptable"
+      ],
+      "famille": "evaluation-transmission",
+      "publieLe": "2026-10-08",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "circularisation-cac",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/circularisation-cac",
+      "requete": "automatiser circularisation",
+      "secondaires": [
+        "circularisation commissaire aux comptes",
+        "réponse circularisation fournisseurs",
+        "procédures alternatives circularisation"
+      ],
+      "famille": "cac-confirmations-audit",
       "publieLe": "2026-10-07",
       "source": "recette-service-publiee"
     }

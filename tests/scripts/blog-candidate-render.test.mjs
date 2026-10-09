@@ -72,11 +72,11 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     // jamais dans une légende technique visible de la preuve inline.
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
-  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
+  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 <figure data-blog-proof="fixture-refus">
-  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
+  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 Voir [la méthode]`);
@@ -112,8 +112,8 @@ Voir [la méthode]`);
       mkdirSync(dirname(proofPath), { recursive: true });
       await sharp({
         create: {
-          width: 640,
-          height: 360,
+          width: 1600,
+          height: 900,
           channels: 3,
           background: proofId === 'fixture-frontiere' ? '#dff5e6' : '#f3efe3',
         },
@@ -211,12 +211,14 @@ Voir [la méthode]`);
     const html = readFileSync(articlePath, 'utf8');
     assert.ok(!html.includes('<figcaption>Source'), 'la preview ne doit pas réintroduire une légende technique publique');
     const ogUrl = `${previewOrigin}/images/${heroId}-og.webp`;
+    const sharingUrl = `${previewOrigin}/social/images/${heroId}-og.webp.jpg`;
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
     assert.ok(html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}">`));
-    assert.ok(html.includes(`<meta property="og:image" content="${ogUrl}">`), 'OG candidat non appliqué');
+    assert.ok(html.includes(`<meta property="og:image" content="${sharingUrl}">`), 'OG candidat non appliqué');
     assert.ok(html.includes('<meta property="og:image:width" content="1200">'));
     assert.ok(html.includes('<meta property="og:image:height" content="630">'));
-    assert.ok(html.includes(`<meta name="twitter:image" content="${ogUrl}">`), 'Twitter image candidate non appliquée');
+    assert.ok(html.includes(`<meta name="twitter:image" content="${sharingUrl}">`), 'Twitter image candidate non appliquée');
+    assert.ok(existsSync(join(preview, 'social/images', `${heroId}-og.webp.jpg`)), 'JPEG candidat absent de la preview');
     assert.ok(html.includes(`href="${fixture.manifest.cta.destination}"`), 'destination CTA candidate non appliquée');
     assert.ok(html.includes(fixture.manifest.cta.label), 'libellé CTA candidat non appliqué');
     assert.ok(html.includes(fixture.manifest.cta.outcome), 'résultat CTA candidat non rendu');

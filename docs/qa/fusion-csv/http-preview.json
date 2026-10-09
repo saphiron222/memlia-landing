@@ -1,0 +1,171 @@
+{
+  "base": "https://1c944a4b.memlia.pages.dev",
+  "checkedAt": "2026-10-07T01:32:14.169Z",
+  "results": [
+    {
+      "method": "GET",
+      "conditions": {},
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a46926953df86fbd-CDG",
+        "connection": "keep-alive",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=akVk1CGGpi7tCdl6Rr1deRLlHVBbPkhbrcXqjHJQWfv1Mn3crE4EN8CKQxtvpOpZdo4thNKB7%2FLLfd3Za%2B%2By%2Bi3XiYkYziloWPzBID4OKzJzh7IFHdBkrozFdBl7Xl2AYezBoFXNLkmJ00lNNO2F1qqxodxnPL5c\"}]}",
+        "server": "cloudflare",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 89355
+    },
+    {
+      "method": "GET",
+      "conditions": {
+        "If-None-Match": "\"old\""
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a4692696abe77026-CDG",
+        "connection": "keep-alive",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=e7J%2F8Ncf60GGLvF3bb4bVua63%2FajpJDE0wX2g6AHx%2F3PCNIwMfJMSdKDPJhO38r6OOQ6EbXNm8GMyIT3L6Lz9as5hYb%2BGHVGhnR672yDKInBc6W4C5rQIL0I8J%2F%2F0kb2hrp7xymGhWr6eH%2ByLmMrBuHn0g5xMQuI\"}]}",
+        "server": "cloudflare",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 89355
+    },
+    {
+      "method": "GET",
+      "conditions": {
+        "Range": "bytes=0-10",
+        "If-Range": "\"old\""
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a46926976ea26fbd-CDG",
+        "connection": "keep-alive",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=fGRrx3Krc03OZtraGJ6jtmdY7xoK5t6V2bLbRftcOH9vWI1WuHeqhKN42HZDFe0cO%2FVtngxDtY%2Bu28a6k6j%2Bk6%2FVm1vuWJ7APkm1MY%2BCMVcYirRxyNs8cCHTPucdaJ1RwpDgjt5UsiGC6ByH7UoEfYrjn9Wy5Sb3\"}]}",
+        "server": "cloudflare",
+        "transfer-encoding": "chunked",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 89355
+    },
+    {
+      "method": "HEAD",
+      "conditions": {},
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a46926980c9c7026-CDG",
+        "connection": "close",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=UJXWrA00Wz0J9V7s%2BCe%2BZRIaniPnu%2Fq7IlFBxRWwwqpZ9Jy80XUlioWjwn6QL4ILrMDRaLD37%2Bara4QLrS0IaQ3nHg9LthDKlUaeHXKvyds6WYyPbal%2FDZ%2B8on2gzLrwAa%2FI4yeZTjJNzdSbfrSJXfZyLJDpAK%2Bm\"}]}",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 0
+    },
+    {
+      "method": "HEAD",
+      "conditions": {
+        "If-None-Match": "\"old\""
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a46926986edf6fbd-CDG",
+        "connection": "close",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=95SbMPK3To%2B5p8yL51gBnsagtzmF0x6cCLY4476kS9grldYPJcRGjR3a1inCXkoiW4PwhJu75r6wiaPJInRLi4sNGzOiupyEJEUIw3pc%2Bzh4v8vq2o2UKImyyNeHWS94gSu9I96z0OPl9Mfrvg1SLT0khAUDeGI%2B\"}]}",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 0
+    },
+    {
+      "method": "HEAD",
+      "conditions": {
+        "Range": "bytes=0-10",
+        "If-Range": "\"old\""
+      },
+      "status": 200,
+      "headers": {
+        "access-control-allow-origin": "*",
+        "alt-svc": "h3=\":443\"; ma=86400",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "cf-ray": "a4692699781ad149-CDG",
+        "connection": "close",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Wed, 07 Oct 2026 01:32:13 GMT",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=N6R2lBqxnHskcz24kqiAMP5ZV8ci7gIye5mSJ98IaNLHtsN8y1fJB%2FonToxStFY1eucnLloZH%2FQLoFyoTkMXdfVSp3thFJhMDBROEd%2BKMI3JTgs03zEzQJ1KvvmgOjWSrr8rWsNJbBDGeJknSPI%2FplDCgmT6Wme%2B\"}]}",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "x-robots-tag": "noindex"
+      },
+      "bytes": 0
+    },
+    {
+      "path": "/outils-comptables-gratuits",
+      "status": 200,
+      "incomingLink": true
+    },
+    {
+      "path": "/methode",
+      "status": 200,
+      "incomingLink": true
+    },
+    {
+      "path": "/automatisation-cabinet-comptable",
+      "status": 200,
+      "incomingLink": true
+    },
+    {
+      "path": "/sitemap-outils.xml",
+      "status": 200,
+      "listed": true
+    }
+  ]
+}

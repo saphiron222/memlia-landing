@@ -7,7 +7,9 @@ for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
 
-    const cta = page.locator('.nav-principal');
+    if (width < 1024) await page.locator('[data-burger]').click();
+    const cta = page.locator(width < 1024 ? '.nav-mobile-cta a' : '.nav-principal');
+    if (width < 1024) await cta.scrollIntoViewIfNeeded();
     await expect(cta).toBeVisible();
     const ctaBox = await cta.boundingBox();
     expect(ctaBox, 'CTA sans boîte').not.toBeNull();
@@ -17,7 +19,7 @@ for (const width of widths) {
     expect(overflow, 'débordement horizontal de la page').toBeLessThanOrEqual(1);
 
     if (width < 1024) {
-      const nav = page.locator('[data-mobile-visible]');
+      const nav = page.locator('#menu-mobile');
       await expect(nav).toBeVisible();
       const links = nav.locator('a[href]');
       expect(await links.count()).toBeGreaterThan(0);
@@ -27,9 +29,11 @@ for (const width of widths) {
         expect(box!.width, `lien mobile ${index + 1} de largeur nulle`).toBeGreaterThan(0);
         expect(box!.height, `lien mobile ${index + 1} sous 44 px`).toBeGreaterThanOrEqual(44);
       }
+      await page.keyboard.press('Escape');
+      await expect(page.locator('#menu-mobile')).toBeHidden();
     } else {
       await expect(page.locator('.nav-centre')).toBeVisible();
-      await expect(page.locator('[data-mobile-visible]')).toBeHidden();
+      await expect(page.locator('[data-burger]')).toBeHidden();
     }
   });
 }

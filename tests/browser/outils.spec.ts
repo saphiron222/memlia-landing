@@ -23,10 +23,22 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   for (const outil of OUTILS_DISPONIBLES) {
     await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+    const card = page.locator('[data-outil-card]').filter({ has: page.locator(`a[href="${outilPath(outil)}"]`) });
+    await expect(card.locator('dt')).toHaveText(['Entrée', 'Résultat', 'Limite']);
+    await expect(card.locator('dd').nth(0)).toHaveText(outil.promesse.entree);
+    await expect(card.locator('dd').nth(1)).toHaveText(outil.promesse.resultat);
+    await expect(card.locator('dd').nth(2)).toHaveText(outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]);
+    await expect(card).toContainText('Gratuit, sans inscription.');
+    await expect(card.locator('a')).not.toHaveText(/Utiliser sans compte|Ouvrir l’outil/);
   }
+  await expect(page.locator('#hub-confier a')).toHaveText('Confier une première tâche');
+  await expect(page.locator('#hub-confier a')).toHaveAttribute('href', '/contact');
+  expect(await page.evaluate(() => [...document.querySelectorAll('[data-outil-card]')].every(card => Boolean(card.compareDocumentPosition(document.querySelector('#hub-confier')!) & Node.DOCUMENT_POSITION_FOLLOWING)))).toBe(true);
+  await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
+  await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
 
@@ -308,8 +320,8 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
-    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
@@ -520,6 +532,51 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       const exporting = page.waitForEvent('download');
       await page.locator('[data-sig-export="json"]').click();
       expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
+    } else if (outil.slug === 'fusionner-fichiers-csv') {
+      await page.locator('#fusion-files').setInputFiles([
+        { name: 'a.csv', mimeType: 'text/csv', buffer: Buffer.from('ID;Montant\n00123;10\n002;20') },
+        { name: 'b.csv', mimeType: 'text/csv', buffer: Buffer.from('Montant;ID\n30;003') },
+      ]);
+      await page.getByRole('button', { name: 'Importer les fichiers', exact: true }).click();
+      await expect(page.locator('[data-mapping]')).toBeVisible();
+      await page.locator('[data-provenance]').check();
+      await page.locator('[data-confirmed]').check();
+      await page.locator('[data-merge]').click();
+      await expect(page.locator('[data-summary]')).toContainText('3 lignes consolidées');
+      await expect(page.locator('[data-table]')).toContainText('00123');
+      await page.locator('[data-reviewed]').check();
+      const csvDownload = page.waitForEvent('download');
+      await page.locator('[data-export="csv"]').click();
+      expect(await readFile((await (await csvDownload).path())!, 'utf8')).toContain('"003";"30";"b.csv";"2"');
+      const reportDownload = page.waitForEvent('download');
+      await page.locator('[data-export="report"]').click();
+      const report = JSON.parse(await readFile((await (await reportDownload).path())!, 'utf8'));
+      expect(report.outputRows).toBe(3);
+      expect(report.origins).toHaveLength(3);
+      await page.locator('[data-reset]').click();
+      await expect(page.locator('[data-mapping]')).toBeHidden();
+      await expect(page.locator('[data-table]')).toBeEmpty();
+    } else if (outil.slug === 'checklist-pieces-comptables') {
+      await page.getByRole('button', { name: 'Charger l’exemple fictif', exact: true }).click();
+      await expect(page.locator('[data-cl-item]')).toHaveCount(4);
+      await expect(page.locator('#cl-message')).toHaveValue(/Relevé bancaire de septembre/);
+      expect(await page.locator('#cl-message').inputValue()).not.toMatch(/Factures d’achat|Récapitulatif de paie/);
+      await expect(page.locator('[data-cl-unknown]')).toContainText('Récapitulatif de paie');
+      const downloading = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      await page.locator('#cl-period').fill('Octobre 2026');
+      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
+      await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
+      await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
+      await expect(page.locator('[data-cl-apply]')).toBeEnabled();
+      await expect(page.locator('#cl-period')).toHaveValue('Octobre 2026');
+      page.once('dialog', dialog => dialog.accept());
+      await page.locator('[data-cl-apply]').click();
+      await expect(page.locator('#cl-period')).toHaveValue('Septembre 2026');
+      const exporting = page.waitForEvent('download');
+      await page.locator('[data-cl-export="json"]').click();
+      expect(JSON.parse(await readFile((await (await exporting).path())!, 'utf8'))).toEqual(JSON.parse(raw));
     } else if (outil.slug === 'modele-rapprochement-bancaire-excel-gratuit') {
       await page.getByLabel('Début de période').fill('2026-01-01');
       await page.getByLabel('Fin de période').fill('2026-01-31');
@@ -547,10 +604,18 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       // Parsing, preview and validated selection each create their own local Worker.
       expect(requests).toHaveLength(3);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+
     } else if (outil.slug === 'generateur-relance-facture-impayee') {
       // Playwright observes the in-memory Worker URL; it is not an HTTP request.
       expect(requests).toHaveLength(1);
       expect(requests[0]).toMatch(new RegExp(`^GET blob:${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/[a-f0-9-]+$`));
+
+    } else if (outil.slug === 'fusionner-fichiers-csv') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fusion-csv\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Import and confirmed consolidation create two local Workers; exports reuse the second.
+      expect(requests).toHaveLength(2);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+
     } else expect(requests).toEqual([]);
     context.off('request', listener);
   }
