@@ -122,7 +122,8 @@ test('les guides conservent auteur et dates dans le schéma sans signature édit
 
 test('toutes les routes intégrations ont chacune une preuve figée manifestée', () => {
   const manifest = JSON.parse(readFileSync(join(root, 'docs/qa/integration-proofs/proofs-manifest.json'), 'utf8'));
-  const targets = manifest.entries.map((entry) => entry.target);
+  const generatedProofs = JSON.parse(readFileSync(join(root, 'src/data/guide-proofs.generated.json'), 'utf8'));
+  const targets = [...manifest.entries.map((entry) => entry.target), ...Object.keys(generatedProofs).map(id => `public/proofs/${id}.webp`)];
   assert.ok(targets.length >= 10, 'plancher : dix preuves');
   assertIntegrationCoverage(targets, [
     'public/proofs/integrations/hub.webp',
