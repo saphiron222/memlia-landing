@@ -13,8 +13,12 @@ test('R1 : navigation réelle isolée, original édité conservé sans stockage'
   await page.locator('[data-editor]').fill(edited);
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
   const popup = page.waitForEvent('popup');
-  await page.locator(`a[href="${lib}"]`).first().click();
+  // Observe the popup before awaiting the click: opening a tab can background
+  // the original while Playwright is still finishing its pointer action.
+  const clicked = page.locator(`a[href="${lib}"]`).first().click();
   const other = await popup;
+  await page.bringToFront();
+  await clicked;
   // Suivre l’onglet consulté, sans dépendre de l’activation implicite de Chromium.
   await other.bringToFront();
   await expect(other).toHaveURL(new RegExp(lib + '$'));

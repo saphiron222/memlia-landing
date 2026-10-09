@@ -72,6 +72,8 @@ const appel = {
             {e.paragraphes.map((p, j) => (
               <p class={j === 0 ? undefined : 'texte-2'}>{p}</p>
             ))}
+            {e.id === 'eprouver' && <p class="texte-2">Avant l’essai, vous pouvez <a href="/blog/logiciel-ia-comptabilite">comparer le parcours complet d’un outil IA</a> : entrée, résultat, exception et reprise.</p>}
+            {e.id === 'valider' && <p class="texte-2">Pour relier les tests au résultat visible, voyez comment <a href="/blog/tests-verts-et-regle-des-trois-passes">recetter le parcours en trois passes</a>.</p>}
           </div>
           <ProofMedia id={e.image} cadre />
         </li>
@@ -115,6 +117,7 @@ const appel = {
 
 
       <h2 id="outils-gratuits-titre">Des règles à rejouer dans le navigateur</h2>
+      <p>Pour <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a>, choisissez une trame et déclarez les quatre états. Le résultat sépare le relevé bancaire manquant du récapitulatif de paie à clarifier ; seule la pièce manquante entre dans la demande à relire.</p>
       <p>Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
       <p>Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>
       <p>Pour un calcul traçable, <a href="/outils-comptables-gratuits/bareme-heures-cac">calculez le barème d’heures CAC</a> avec sa base décomposée et ses exclusions déclarées. Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.</p>

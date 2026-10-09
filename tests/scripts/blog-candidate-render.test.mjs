@@ -72,11 +72,11 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     // jamais dans une légende technique visible de la preuve inline.
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
-  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
+  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 <figure data-blog-proof="fixture-refus">
-  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
+  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 Voir [la méthode]`);
@@ -112,8 +112,8 @@ Voir [la méthode]`);
       mkdirSync(dirname(proofPath), { recursive: true });
       await sharp({
         create: {
-          width: 640,
-          height: 360,
+          width: 1600,
+          height: 900,
           channels: 3,
           background: proofId === 'fixture-frontiere' ? '#dff5e6' : '#f3efe3',
         },

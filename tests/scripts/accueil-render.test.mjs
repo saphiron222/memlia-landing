@@ -4,7 +4,8 @@ import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync } from 'nod
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { parse, serializeOuter } from 'parse5';
+import { parse, serialize, serializeOuter } from 'parse5';
+import { proofSrcset, proofSizes } from '../../scripts/lib/responsive-proofs.mjs';
 
 const sections = { Hero: 'hero', Orientation: 'orientation', Quotidien: 'quotidien', Promesse: 'promesse', Usages: 'usages', Methode: 'methode', Integration: 'integration', Preuves: 'preuves', Garanties: 'garanties', Faq: 'faq', AppelFinal: 'appelFinal' };
 function find(node, id) {
@@ -12,14 +13,50 @@ function find(node, id) {
   for (const child of node.childNodes ?? []) { const found = find(child, id); if (found) return found; }
 }
 
+function contentSha(node, masterBytes = src => readFileSync(join('dist', src))) {
+  const normalize = element => {
+    const attr = name => element.attrs?.find(item => item.name === name)?.value;
+    const src = attr('src');
+    // Seule la sélection dérivée des octets du master est logistique.
+    // Toute sélection étrangère et tous les attributs de contenu restent dans le témoin.
+    if (element.tagName === 'img' && /^\/proofs\/(?!responsive\/|.*\/og\/)[a-zA-Z0-9/_-]+\.webp$/.test(src ?? '')
+      && attr('srcset') && attr('srcset') === proofSrcset(src, masterBytes(src))
+      && attr('sizes') === proofSizes(attr('loading') === 'lazy')) {
+      element.attrs = element.attrs.filter(item => !['srcset', 'sizes'].includes(item.name));
+    }
+    (element.childNodes ?? []).forEach(normalize);
+  };
+  normalize(node);
+  return createHash('sha256').update(serializeOuter(node).replace(/\s+/g, ' ')).digest('hex');
+}
+
+test('le témoin accueil ignore uniquement la diffusion canonique du master', () => {
+  const src = '/proofs/home/example.webp';
+  const bytes = Buffer.from('master de contrôle');
+  const image = `<img src="${src}" alt="Validation humaine" width="1600" height="900" loading="lazy">`;
+  const selection = ` srcset="${proofSrcset(src, bytes)}" sizes="${proofSizes(true)}"`;
+  const responsive = image.replace('>', `${selection}>`);
+  const digest = html => contentSha(find(parse(`<main id="main">${html}<p>Contenu conservé</p></main>`), 'main'), () => bytes);
+  const expected = digest(image);
+  assert.equal(digest(responsive), expected);
+  for (const changed of [
+    responsive.replace('Validation humaine', 'Validation automatique'),
+    responsive.replace('src="/proofs/home/example.webp"', 'src="/proofs/home/other.webp"'),
+    responsive.replace('width="1600"', 'width="800"'),
+    responsive.replace('height="900"', 'height="450"'),
+    responsive.replace('-400.webp 400w', '-400.webp 401w'),
+    responsive.replace('/proofs/responsive/', '/foreign/'),
+    responsive.replace('sizes="auto, ', 'sizes="'),
+    responsive.replace(/-[a-f0-9]{16}-/g, '-0000000000000000-'),
+    `${responsive}<p>Contenu ajouté</p>`,
+  ]) assert.notEqual(digest(changed), expected, changed);
+});
+
 // Témoin du système de page #166 après intégration de la copy EC relue (#181).
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
-test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+function assertEcContent(html) {
   const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
-  const html = readFileSync('dist/index.html', 'utf8');
-  // Ajout volontaire du service publié dans le footer généré : le reste ne change pas.
-  const link = /<li[^>]*><a[^>]*href="\/automatisation\/entrees-sorties-salaries"[^>]*>.*?<\/a><\/li>/g;
-  assert.equal([...html.matchAll(link)].length, 1);
+  // Le chrome de publication (head, navigation, footer) n'est pas du contenu EC.
   const main = find(parse(html), 'main');
   assert.ok(main);
   const removeAudience = (node) => {
@@ -27,7 +64,44 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
     node.childNodes.forEach(removeAudience);
   };
   removeAudience(main);
-  assert.equal(createHash('sha256').update(serializeOuter(main).replace(/\s+/g, ' ')).digest('hex'), expected);
+  assert.equal(contentSha(main), expected);
+}
+
+test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+  assertEcContent(readFileSync('dist/index.html', 'utf8'));
+});
+
+test('le témoin EC admet la publication de pages et les métadonnées hors sections', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  assert.ok(html.includes('</footer>'));
+  const published = html.replace('</footer>', '<ul><li><a href="/automatisation/service-fictif">Service fictif publié</a></li></ul></footer>');
+  assertEcContent(published);
+  const withoutFooter = html.replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/, '');
+  assert.notEqual(withoutFooter, html);
+  assertEcContent(withoutFooter);
+  assertEcContent(html.replace('</head>', '<meta name="date" content="2099-01-01"></head>'));
+});
+
+test('le témoin refuse une altération du contenu ou du rendu dans chacune des onze sections EC', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  const renderedSections = document => {
+    const main = find(document, 'main');
+    const sheet = main.childNodes.find(node => node.attrs?.some(attr => attr.name === 'class' && attr.value === 'feuille'));
+    return sheet.childNodes.filter(node => node.tagName === 'section');
+  };
+  assert.equal(renderedSections(parse(html)).length, Object.keys(sections).length);
+  for (const [index, name] of Object.keys(sections).entries()) {
+    for (const mutation of ['contenu', 'rendu']) {
+      const document = parse(html);
+      const section = renderedSections(document)[index];
+      if (mutation === 'contenu') {
+        section.childNodes.push({ nodeName: '#text', value: 'Contenu EC altéré', parentNode: section });
+      } else {
+        section.attrs.find(attr => attr.name === 'class').value += ' rendu-altere';
+      }
+      assert.throws(() => assertEcContent(serialize(document)), assert.AssertionError, `${name} : ${mutation}`);
+    }
+  }
 });
 
 test('un vrai build Astro rend les onze sections avec le contenu fourni', { timeout: 120_000 }, () => {
