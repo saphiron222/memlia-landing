@@ -7,7 +7,7 @@ export const MESSAGES_CONTACT = Object.freeze({
   nom: 'Indiquez votre nom (au moins deux caractères).',
   courriel: 'L’adresse de courriel ne semble pas valide.',
   message: 'Décrivez la tâche en quelques phrases (vingt caractères au moins).',
-  consentement: 'Cochez la case pour que nous puissions vous répondre.',
+  consentement: 'Confirmez avoir pris connaissance de la politique de confidentialité. L’accord de provenance reste facultatif.',
   'trop-de-messages': 'Plusieurs messages viennent de partir depuis cette connexion. Réessayez dans une heure, ou écrivez-nous par courriel.',
   'trop-long': 'Le message dépasse la taille acceptée. Raccourcissez-le, ou écrivez-nous par courriel.',
   verification: 'La vérification anti-abus a échoué ou expiré. Recommencez-la avant l’envoi, ou écrivez-nous par courriel.',

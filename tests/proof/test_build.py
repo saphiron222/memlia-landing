@@ -1,4 +1,4 @@
-"""Oracle indépendant sur dist : aucun import du code Astro ou du manifeste produit."""
+"""Oracle indépendant sur dist : attentes issues des sources, aucun import du rendu Astro."""
 import hashlib
 import json
 import os
@@ -10,6 +10,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
+from source_inventory import source_export
 
 ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
@@ -24,7 +25,32 @@ INTEGRATION_PAGES = {
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-SUSPENDED_ARTICLE = 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
+def fixed_pages(nested=False):
+    """Routes Astro statiques, y compris un nouvel outil imbriqué ; pas les gabarits dynamiques."""
+    source = ROOT / 'src/pages'
+    pages = set()
+    for path in source.rglob('*.astro'):
+        relative = path.relative_to(source).with_suffix('')
+        if any('[' in part for part in relative.parts):
+            continue
+        if not nested and len(relative.parts) > 1 and path.stem != 'index':
+            continue
+        route = relative.as_posix()
+        pages.add(route.removesuffix('/index') if path.stem == 'index' else route)
+    return pages
+
+
+def integration_pages():
+    return [entry['slug'] for entry in source_export(ROOT, 'src/data/integrations.ts', 'INTEGRATIONS_INDEXABLES')]
+
+
+def assert_v2_proof_inventory(proof):
+    data = source_export(ROOT, 'src/data/proofs.ts', 'PROOFS')
+    expected = {f'{key.removeprefix("v2/")}.webp' for key in data if key.startswith('v2/')}
+    proof.assertGreaterEqual(len(expected), 37)
+    proof.assertEqual({path.name for path in (DIST / 'proofs/v2').glob('*.webp')}, expected)
+
+
 def public_articles():
     """Une source non-brouillon est attendue dans dist ; aucun nouveau slug n'est implicitement autorisé."""
     return {path.stem for path in (ROOT / 'src/content/blog').glob('*.md')
@@ -41,13 +67,9 @@ class PublicArticleInventoryProof(unittest.TestCase):
                 self.assertEqual(public_articles(), {'autorise'})
                 (source / 'autorise.md').write_text('---\nbrouillon: true\n---\nArticle')
                 self.assertEqual(public_articles(), set())
-BLOG_RUBRIQUES = {
-    'controler-les-bulletins-de-paie-avant-la-dsn': 'paie-dsn-cabinet-comptable',
-    'comprendre-les-comptes-rendus-metier-dsn': 'paie-dsn-cabinet-comptable',
-    'suivre-la-production-sociale-dans-excel': 'paie-dsn-cabinet-comptable',
-    'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier': 'gestion-pieces-comptables',
-    'automatiser-la-relance-des-pieces-clients': 'gestion-pieces-comptables',
-}
+BLOG_RUBRIQUES = {article: entry['slug']
+                 for entry in source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')
+                 for article in entry['articleIds']}
 
 
 class Document(HTMLParser):
@@ -61,6 +83,43 @@ class Document(HTMLParser):
 
     def select(self, tag):
         return [attrs for name, attrs in self.tags if name == tag]
+
+
+def unsafe_external_links(article):
+    """Chaque navigation web externe ouvrant une fenêtre protège l'opener."""
+    dangereux = []
+    for lien in Document(article).select('a'):
+        href = lien.get('href', '')
+        url = urlsplit(href)
+        externe = bool(url.netloc) and url.netloc != urlsplit(SITE).netloc
+        if externe and lien.get('target', '').lower() == '_blank':
+            if 'noopener' not in lien.get('rel', '').lower().split():
+                dangereux.append(href)
+    return dangereux
+
+
+class ExternalLinkSafetyProof(unittest.TestCase):
+    def test_chaque_lien_externe_est_sur_meme_avec_deux_sources(self):
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'article.html'
+            liens = '<a href="https://cnil.fr" target="_blank" rel="noopener">CNIL</a>'
+            liens += '<a href="https://exemple.fr" rel="noreferrer noopener" target="_blank">Source</a>'
+            article.write_text(liens)
+            self.assertEqual(unsafe_external_links(article), [])
+            # Trois liens sûrs ne doivent jamais masquer le quatrième dangereux.
+            for href in ('https://autre.fr', 'http://autre.fr', '//autre.fr'):
+                for rel in ('', 'rel="noreferrer"', 'rel="not-noopener"'):
+                    article.write_text(liens * 2 + f'<a href="{href}" target="_blank" {rel}>Danger</a>')
+                    self.assertEqual(unsafe_external_links(article), [href])
+
+    def test_navigation_locale_et_externe_restent_distinguees(self):
+        with TemporaryDirectory() as directory:
+            article = Path(directory) / 'article.html'
+            article.write_text('<a href="/blog" target="_blank">Local</a>'
+                               '<a href="https://memlia.fr/blog" target="_blank">Local absolu</a>'
+                               '<a href="https://cnil.fr">Même fenêtre</a>'
+                               '<a href="mailto:contact@exemple.fr">Courriel</a>')
+            self.assertEqual(unsafe_external_links(article), [])
 
 
 def jsonld(path):
@@ -89,7 +148,7 @@ def minimum_word_count(article):
     return 1000 if article.stem == 'tests-verts-et-regle-des-trois-passes' else 1500
 
 def rendered_body_word_count(article):
-    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)<section class="article-sources',
+    body = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)',
                      article.read_text(), re.S).group(1)
     return len([m for m in re.sub(r'<[^>]+>', ' ', body).split() if re.search(r'\w', m)])
 
@@ -128,6 +187,63 @@ def pillar_slugs():
     return trouves
 
 
+class SourceInventoryRegression(unittest.TestCase):
+    def test_page_fictive_et_integration_ajoutees_sont_attendues(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'src/pages/integrations').mkdir(parents=True)
+            (root / 'src/data').mkdir(parents=True)
+            (root / 'src/content/blog').mkdir(parents=True)
+            dist = root / 'dist'
+            (dist / 'integrations').mkdir(parents=True)
+            pages = sorted(set(PAGES_FIXES) | {'page-fictive'})
+            integrations = INTEGRATION_PAGES | {'integration-fictive'}
+            for slug in pages:
+                source = root / 'src/pages' / ('integrations/index.astro' if slug == 'integrations' else f'{slug}.astro')
+                source.write_text('---\n---\n<h1>Page</h1>')
+                (dist / f'{slug}.html').write_text('<html lang="fr"><h1>Page</h1></html>')
+            (root / 'src/data/integrations.ts').write_text(
+                'export const INTEGRATIONS_INDEXABLES = ' + json.dumps([{'slug': slug} for slug in sorted(integrations)]) + ';')
+            for slug in integrations:
+                (dist / 'integrations' / f'{slug}.html').write_text('<html lang="fr"><h1>Guide</h1></html>')
+            proof = BuildProof('test_pages_one_h1_french')
+            with patch.dict(globals(), ROOT=root, DIST=dist, PREVIEW_ARTICLES=set()):
+                proof.test_pages_one_h1_french()
+                (dist / 'page-fictive.html').rename(dist / 'intrus.html')
+                with self.assertRaises(AssertionError):
+                    proof.test_pages_one_h1_french()
+                (dist / 'intrus.html').rename(dist / 'page-fictive.html')
+                (dist / 'integrations/integration-fictive.html').rename(dist / 'integrations/intrus.html')
+                with self.assertRaises(AssertionError):
+                    proof.test_pages_one_h1_french()
+
+    def test_preuve_ajoutee_et_substitution_a_compte_constant(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'src/data').mkdir(parents=True)
+            dist = root / 'dist/proofs/v2'
+            dist.mkdir(parents=True)
+            names = {f'{number:02}-fictif.webp' for number in range(38)}
+            (root / 'src/data/proofs.ts').write_text(
+                'export const PROOFS = ' + json.dumps({f'v2/{Path(name).stem}': {} for name in names}) + ';')
+            for name in names:
+                (dist / name).write_bytes(b'preuve fictive')
+            with patch.dict(globals(), ROOT=root, DIST=root / 'dist'):
+                assert_v2_proof_inventory(self)
+                (dist / sorted(names)[0]).rename(dist / 'intrus.webp')
+                with self.assertRaises(AssertionError):
+                    assert_v2_proof_inventory(self)
+                # Des sources et un rendu amputés ensemble ne réduisent pas le plancher.
+                reduced = sorted(names)[2:]
+                for path in dist.glob('*.webp'):
+                    if path.name not in reduced:
+                        path.unlink()
+                (root / 'src/data/proofs.ts').write_text(
+                    'export const PROOFS = ' + json.dumps({f'v2/{Path(name).stem}': {} for name in reduced}) + ';')
+                with self.assertRaises(AssertionError):
+                    assert_v2_proof_inventory(self)
+
+
 class BuildProof(unittest.TestCase):
     def test_headline_identity_refuse_une_mutation_og(self):
         from tempfile import TemporaryDirectory
@@ -156,13 +272,27 @@ class BuildProof(unittest.TestCase):
                                f'<meta property="og:title" content="{escape(headline, quote=True)}">'
                                f'<script type="application/ld+json">{json.dumps({"@graph": [{"@type": "BlogPosting", "headline": headline}]}, ensure_ascii=False)}</script>')
             self.assertTrue(article_headline_identity(article))
+    def test_requalified_article_static_html_is_indexable(self):
+        # Le candidat livre la correction FE et retire ensemble l'interception
+        # HTTP et l'exclusion du sitemap (test article-maintenance indépendant).
+        # Garder une assertion positive sur le rendu, pas supprimer la recette.
+        doc = Document(DIST / 'blog' / 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html')
+        robots = [m['content'] for m in doc.select('meta') if m.get('name') == 'robots']
+        self.assertEqual(robots, ['index, follow, max-image-preview:large'])
 
     def test_pages_one_h1_french(self):
         pages = sorted(DIST.glob('*.html'))
-        self.assertEqual([p.stem for p in pages], PAGES_FIXES)
+        expected_pages = fixed_pages()
+        self.assertGreaterEqual(len(expected_pages), len(PAGES_FIXES))
+        self.assertTrue(set(PAGES_FIXES) <= expected_pages, 'pages historiques perdues')
+        self.assertEqual({p.stem for p in pages}, expected_pages)
         self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
-        self.assertEqual({page.stem for page in integrations}, INTEGRATION_PAGES)
+        expected_integrations = integration_pages()
+        self.assertGreaterEqual(len(expected_integrations), len(INTEGRATION_PAGES))
+        self.assertEqual(len(expected_integrations), len(set(expected_integrations)), 'slugs sources dupliqués')
+        self.assertTrue(INTEGRATION_PAGES <= set(expected_integrations), 'intégrations historiques perdues')
+        self.assertEqual({page.stem for page in integrations}, set(expected_integrations))
         for page in pages + articles() + integrations:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
@@ -204,29 +334,39 @@ class BuildProof(unittest.TestCase):
             subtree = ET.parse(DIST / urlsplit(link).path.lstrip('/'))
             for url in subtree.findall('.//s:url', ns):
                 pages[url.find('s:loc', ns).text] = url.find('s:lastmod', ns).text
-        published_articles = [a for a in articles() if not is_preview_article(a)
-                              and a.stem != SUSPENDED_ARTICLE]
+        published_articles = [a for a in articles() if not is_preview_article(a)]
         # Les pages légales et les candidats service noindex restent hors sitemap. Une page de
         # service n'y entre qu'après le passage de la forge au statut `publie`.
         services_publies = set()
         for service in (ROOT / 'src/content/services').glob('*.md'):
             if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
-        attendues = {f'{SITE}/', f'{SITE}/blog', f'{SITE}/glossaire',
-                     f'{SITE}/automatisation-cabinet-comptable', f'{SITE}/methode', f'{SITE}/garanties',
-                     f'{SITE}/a-propos', f'{SITE}/contact', f'{SITE}/integrations',
-                     f'{SITE}/outils-comptables-gratuits',
+        attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
+                     for slug in fixed_pages(nested=True)
+                     if f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
+                     f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
+                     f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
+                     f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
+                     f'{SITE}/outils-comptables-gratuits/generateur-charte-ia-cabinet',
                      f'{SITE}/outils-comptables-gratuits/calculateur-marge-commerciale',
                      f'{SITE}/outils-comptables-gratuits/calculateur-date-echeance-facture',
                      f'{SITE}/outils-comptables-gratuits/calculateur-amortissement-comptable',
+                     f'{SITE}/outils-comptables-gratuits/generateur-prompt-expert-comptable',
+                     f'{SITE}/outils-comptables-gratuits/generateur-prompt-ia-gratuit',
+                     f'{SITE}/outils-comptables-gratuits/verificateur-prompt-ia',
+                     f'{SITE}/outils-comptables-gratuits/verificateur-fec-local',
+                     f'{SITE}/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet',
+                     f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
+                     f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
+                     f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
+                     f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
-                         f'{SITE}/integrations/{slug}' for slug in INTEGRATION_PAGES
+                         f'{SITE}/integrations/{slug}' for slug in integration_pages()
                      } | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
-        self.assertNotIn(f'{SITE}/blog/{SUSPENDED_ARTICLE}', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
         # lastmod d'un article publié = dateModified de son schéma (une seule source : le frontmatter).
         for article in published_articles:
@@ -345,16 +485,25 @@ class BuildProof(unittest.TestCase):
         # Série v2 : treize preuves de section, cinq preuves de tête, cinq scènes propres
         # aux pages de service et cinq scènes propres aux outils. Les dix images sociales
         # correspondantes restent sous og/.
-        self.assertEqual(len(list((DIST / 'proofs/v2').glob('*.webp'))), 28)
-        self.assertEqual(
-            sorted(p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')),
-            sorted([
-                '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
-                '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
-                '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
-                '28-outil-amortissement.webp',
-            ]),
-        )
+        assert_v2_proof_inventory(self)
+        og_sources = {p.name for p in (ROOT / 'public/proofs/v2/og').glob('*.webp')}
+        self.assertGreaterEqual(len(og_sources), 19)
+        historiques = {
+            '14-hero-service.webp', '15-hero-methode.webp', '16-hero-garanties.webp',
+            '17-hero-apropos.webp', '18-hero-contact.webp', '24-outils-hub.webp',
+            '25-outil-marge.webp', '26-outil-echeance.webp', '27-outil-rapprochement.webp',
+            '28-outil-amortissement.webp', '29-outil-prompt.webp', '31-outil-verificateur-prompt.webp',
+            '01-outil-charte-ia.webp', '01-outil-prompt-ia.webp', '29-outil-fec.webp',
+            '30-outil-maturite.webp', '29-outil-pseudonymisation.webp', '30-outil-roi.webp',
+            '31-outil-bibliotheque.webp',
+            '40-outil-circularisation.webp', '41-outil-signification.webp',
+            '43-outil-bareme-cac.webp',
+        }
+        self.assertTrue(historiques <= og_sources, 'images sociales historiques perdues')
+        self.assertEqual({p.name for p in (DIST / 'proofs/v2/og').glob('*.webp')}, og_sources)
+        for name in og_sources:
+            self.assertEqual((DIST / 'proofs/v2/og' / name).read_bytes(),
+                             (ROOT / 'public/proofs/v2/og' / name).read_bytes())
 
     def test_five_generic_examples_no_product_statuses(self):
         html = (DIST / 'index.html').read_text()
@@ -474,8 +623,14 @@ class BuildProof(unittest.TestCase):
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())
-                self.assertIn('Sources consultées', article.read_text())
-                self.assertGreaterEqual(article.read_text().count('rel="noopener"'), 3)
+                # Décision de Kevin du 06/10/2026 : les sources se citent dans le texte ; une section « Sources »
+                # ne reste que pour celles qui n'y sont pas encore, jamais en doublon du corps.
+                rendu = article.read_text()
+                corps = re.search(r'<div class="article-corps[^"]*"[^>]*>(.*?)(?:<section class="article-sources|<aside class="article-pont)', rendu, re.S).group(1)
+                residuelle = re.search(r'<section class="article-sources".*?</section>', rendu, re.S)
+                for href in re.findall(r'href="(https?://[^"]+)"', residuelle.group(0) if residuelle else ''):
+                    self.assertNotIn(href, corps, article.name)
+                self.assertEqual(unsafe_external_links(article), [], article.name)
 
     def test_rss_feed_matches_articles(self):
         feed = ET.parse(DIST / 'blog' / 'rss.xml').getroot()
@@ -551,4 +706,3 @@ class FamillesDesArticles(unittest.TestCase):
             verifies += 1
         # Le compte affiché dit ce que le test a réellement contrôlé : zéro article pipeline n'est pas un succès silencieux.
         print(f'familles vérifiées : {verifies} article(s) pipeline')
-

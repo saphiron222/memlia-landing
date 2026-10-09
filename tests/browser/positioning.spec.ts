@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 for (const [route, status, phrase] of [
   ['/mentions-legales', 200, 'un service d’automatisation IA des tâches et processus chronophages'],
   ['/politique-de-confidentialite', 200, 'documentés pour chaque processus automatisé'],
-  ['/m3-page-inexistante', 404, 'Retrouvez notre service d’automatisation IA'],
+  ['/m3-page-inexistante', 404, 'Vous pouvez revenir à l’accueil'],
 ] as const) {
   test(`positionnement service sur ${route}`, async ({ page }) => {
     const response = await page.goto(route);

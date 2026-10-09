@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/secretariat-juridique-proof/index.html",
+      "sha256": "b490aa79768d4a25edacb548f424dfcbc4e83a78b19a4b50959f4c4c54683f3f"
+    },
+    {
+      "path": "docs/design/secretariat-juridique-proof/styles.css",
+      "sha256": "a16b53c0cb4b4d0b08d756655e411c403b407e318ab1d44730f0e32657b86162"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/secretariat-juridique-proof/content-contract.json",
+      "sha256": "4f8168a74b11344cec4bc45ef2da467d148353bb1d3b04a420447d209aeca69b"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/secretariat-juridique-proof/index.html#service-secretariat-juridique",
+      "target": "public/proofs/v2/46-service-secretariat-juridique.webp",
+      "bytes": 60858,
+      "sha256": "075bc874b990e9287a4980d508db3eab7df5864286c5619112be435c76f612c8"
+    },
+    {
+      "source": "docs/design/secretariat-juridique-proof/index.html#service-secretariat-juridique",
+      "target": "public/proofs/v2/og/46-service-secretariat-juridique.webp",
+      "bytes": 38990,
+      "sha256": "18518f894a5e376ef2b6178e3b5f67d6f5a183337dc2118eaa1b1bffc8cbe0e0"
+    }
+  ]
+}

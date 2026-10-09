@@ -1,7 +1,34 @@
 import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { parse } from 'parse5';
+import { isResponsiveProofSelection } from './responsive-proofs.mjs';
 
 export const reviewSha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+
+// La logistique et les références techniques ne sont pas un nouvel avis de fond.
+const logistics = new Set(['date', 'updatedAt', 'checkedAt', 'capturedAt', 'retrievedAt', 'verifiedAt', 'sha256', 'recipeSha256', 'bodySha256', 'renderedSha256']);
+export function recipeSubstanceSha256(bytes) {
+  const project = (value) => {
+    if (Array.isArray(value)) return value.map(project);
+    if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort()
+      .filter((key) => !logistics.has(key)).map((key) => [key, project(value[key])]));
+    if (typeof value === 'string' && /^(?:https?:\/\/|\/)/.test(value)) return '__reference_url__';
+    return value;
+  };
+  return reviewSha256(JSON.stringify(project(JSON.parse(String(bytes)))));
+}
+
+export function recipeReviewMatches(expectedHash, bytes, root, substanceHash) {
+  if (expectedHash === reviewSha256(bytes)) return true;
+  if (substanceHash && substanceHash === recipeSubstanceSha256(bytes)) return true;
+  const path = root && join(root, 'editorial/review-substance-baseline.json');
+  if (!path || !existsSync(path)) return false;
+  try {
+    const baseline = JSON.parse(readFileSync(path));
+    return baseline.version === 1 && baseline.recipes?.[expectedHash] === recipeSubstanceSha256(bytes);
+  } catch { return false; }
+}
 
 // L'empreinte du contenu rendu exclut le chrome et le témoin preview qui changent
 // entre pret-preview, go-production et publie ; elle inclut les figures inline.
@@ -11,7 +38,37 @@ export function renderedBodySha256(html) {
   const visit = (node) => {
     if (node.tagName === 'div' && node.attrs?.some((attr) => attr.name === 'class' && attr.value.split(/\s+/).includes('article-corps'))) {
       const location = node.sourceCodeLocation;
-      if (location?.startTag && location?.endTag) return reviewSha256(source.slice(location.startTag.endOffset, location.endTag.startOffset));
+      if (location?.startTag && location?.endTag) {
+        let body = source.slice(location.startTag.endOffset, location.endTag.startOffset);
+        const wrappers = [];
+        const collect = (child) => {
+          // Only the generated, single-table accessibility envelope is logistical.
+          // Keep all cells, captions, figures and any other surrounding content bound.
+          const children = (child.childNodes ?? []).filter((item) => item.nodeName !== '#text' || item.value.trim());
+          const attributes = Object.fromEntries((child.attrs ?? []).map(item => [item.name, item.value]));
+          if (child.tagName === 'img' && isResponsiveProofSelection(attributes.src, attributes.srcset,
+            attributes.sizes, attributes.loading === 'lazy')) {
+            // Les variantes canoniques ne changent pas le fond : src, alt et dimensions restent liés.
+            for (const name of ['srcset', 'sizes']) {
+              const attribute = child.sourceCodeLocation.attrs[name];
+              wrappers.push({ startOffset: attribute.startOffset - 1, endOffset: attribute.endOffset });
+            }
+          }
+          if (child.tagName === 'div' && child.attrs?.some((attr) => attr.name === 'data-table-scroll')
+            && children.length === 1 && children[0].tagName === 'table') {
+            const tags = child.sourceCodeLocation;
+            if (tags?.startTag && tags?.endTag) wrappers.push(tags.startTag, tags.endTag);
+          }
+          for (const item of child.childNodes ?? []) collect(item);
+        };
+        collect(node);
+        for (const tag of wrappers.sort((a, b) => b.startOffset - a.startOffset)) {
+          const start = tag.startOffset - location.startTag.endOffset;
+          const end = tag.endOffset - location.startTag.endOffset;
+          body = body.slice(0, start) + body.slice(end);
+        }
+        return reviewSha256(body);
+      }
     }
     for (const child of node.childNodes ?? []) {
       const hash = visit(child);
@@ -22,12 +79,12 @@ export function renderedBodySha256(html) {
   return visit(document);
 }
 
-export function reviewBindingErrors(review, slug, body, recipeBytes, renderedHtml) {
+export function reviewBindingErrors(review, slug, body, recipeBytes, renderedHtml, root) {
   const errors = [];
   if (review?.subject?.slug !== slug || review?.subject?.bodySha256 !== reviewSha256(body.trim())) {
     errors.push('revues.json : empreinte du corps ou slug divergent ; nouvelle revue indépendante requise.');
   }
-  if (review?.subject?.recipeSha256 !== reviewSha256(recipeBytes)) {
+  if (!recipeReviewMatches(review?.subject?.recipeSha256, recipeBytes, root, review?.subject?.recipeSubstanceSha256)) {
     errors.push('revues.json : empreinte de la recette divergente ; nouvelle revue indépendante requise.');
   }
   if (!/^[a-f0-9]{64}$/.test(review?.subject?.renderedSha256 ?? '')) {

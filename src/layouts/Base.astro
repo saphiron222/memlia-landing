@@ -53,18 +53,12 @@ const blogActif = articles.length > 0;
 const rubriques = construireRubriques(articles);
 const auteur = AUTEURS.kevin;
 const auteurId = `${SITE.url}${identiteAuteur(auteur)}`;
-const publication = chemin.startsWith('/automatisation/') || chemin.startsWith('/outils-comptables-gratuits')
-  ? '2026-09-20'
-  : '2026-09-16';
-// Date éditoriale, distincte du lastmod technique du sitemap afin d'éviter une boucle
-// hash du HTML → lastmod → HTML différent à chaque build.
-const modification = '2026-09-20';
+// Les dates restent celles des sources éditoriales explicites : aucune date de repli
+// ni lastmod technique du sitemap ne doit devenir une date de publication.
 const attribution = {
   '@context': 'https://schema.org',
   '@id': `${canonical}#page`,
   author: { '@id': auteurId },
-  datePublished: publication,
-  dateModified: modification,
 };
 const schemaAvecAttribution = schema?.['@graph']
   ? {
@@ -76,15 +70,13 @@ const schemaAvecAttribution = schema?.['@graph']
           ? {
               ...node,
               author: node.author ?? attribution.author,
-              datePublished: node.datePublished ?? attribution.datePublished,
-              dateModified: node.dateModified ?? attribution.dateModified,
             }
           : node;
       }),
     }
   : schema
-    ? { ...schema, ...attribution }
-    : attribution;
+    ? { ...attribution, ...schema }
+    : { ...attribution, '@type': 'WebPage', url: canonical, name: titreSocial, inLanguage: SITE.langue };
 ---
 
 <!doctype html>
@@ -152,7 +144,9 @@ const schemaAvecAttribution = schema?.['@graph']
               obs.unobserve(e.target);
             }
           },
-          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+          // Le bloc se révèle avant d'entrer à l'écran (30 % de hauteur d'avance) : au défilement, il est
+          // déjà lisible quand il arrive, au lieu d'apparaître une demi-seconde après (Kevin, 07/10/2026).
+          { threshold: 0, rootMargin: '0px 0px 30% 0px' }
         );
         cibles.forEach((el) => obs.observe(el));
       }

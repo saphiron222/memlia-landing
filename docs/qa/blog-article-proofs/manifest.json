@@ -3,19 +3,19 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "7ae865cc0eff8f9d0ef7e1d478099a822ad56144eecd8a66f1648dc093ae63cf"
+      "sha256": "db26d90c12f27e067d4d5473603366c5797bf18d261e5305cc058e559e2b3634"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
-      "sha256": "0197bc648ea058bc80a2e5a37b3810a60e554e88a6689dd25beb2a49289bdbab"
+      "sha256": "736f5862868492a6be51422cb6afb47345d57d62d24b6be7375e9ee8ce561efb"
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "d4625a39e888ab715284248e50e9698a21b5a4c609801c617aee4be4c8d0ee14"
+      "sha256": "78a4cac7e76ccd1b28421ccc487809ad517ac7d4e937cb29069d4eeb2d8f197e"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
-      "sha256": "4ffa0086ee5d0464fb5df8c509d4bdb1662271dc32e19b8e5ca72511494fe87d"
+      "sha256": "ea7ba5dc7b4139223a3c5a563dfb518db654208524f9931fff9faee299cc2713"
     }
   ],
   "browser": "153.0.8010.12",
@@ -33,16 +33,16 @@
       "sha256": "fc7bb3b1c8d1d1b51ef07ae9e0a8728059c248e283e754c8eb14299e7709eafc"
     },
     {
-      "source": "docs/design/blog-article-proofs/index.html#saisie-six-controles",
-      "target": "public/proofs/blog/saisie-six-controles.webp",
-      "bytes": 30430,
-      "sha256": "b4463918ea2803438e475e236389ce01a223973da80507429f88d7d6e77465be"
+      "source": "docs/design/blog-article-proofs/index.html#saisie-controle-piece",
+      "target": "public/proofs/blog/saisie-controle-piece.webp",
+      "bytes": 41238,
+      "sha256": "a6d9d063bfbc74b5e785c0a5d759cbf11a29e34c6d1f37b1c6b6ec1ad53e1076"
     },
     {
-      "source": "docs/design/blog-article-proofs/index.html#saisie-file-anomalies",
-      "target": "public/proofs/blog/saisie-file-anomalies.webp",
-      "bytes": 33334,
-      "sha256": "a1f89bbe975ab8e7847f6162eb38e0aa4b6af68c87fd1d847bcc22d1975c9dbc"
+      "source": "docs/design/blog-article-proofs/index.html#saisie-file-anomalies-avril",
+      "target": "public/proofs/blog/saisie-file-anomalies-avril.webp",
+      "bytes": 43232,
+      "sha256": "94ca1335ea57951c0be1aec08db3846367b09c328fdb758d72042664f4090c3b"
     },
     {
       "source": "docs/design/blog-article-proofs/index.html#social-dictionnaire",
@@ -81,16 +81,16 @@
       "sha256": "2ca3861a039b5b25442eec2774236a7b443bc6de36450075cd1e1e0c239a91c0"
     },
     {
-      "source": "docs/design/blog-article-proofs/index.html#carte-douze-poles",
-      "target": "public/proofs/blog/carte-douze-poles.webp",
-      "bytes": 34396,
-      "sha256": "1c0a0ad7367851946bd23567a85f6a719e1e1b9cc1487f7ef75b7ace0143600d"
+      "source": "docs/design/blog-article-proofs/index.html#carte-inventaire-taches",
+      "target": "public/proofs/blog/carte-inventaire-taches.webp",
+      "bytes": 43014,
+      "sha256": "7c049f02b54e7297b88e27f4ed12e2380b86a4f37c5e0b888ae2b3c1078b9875"
     },
     {
-      "source": "docs/design/blog-article-proofs/index.html#carte-test-regle",
-      "target": "public/proofs/blog/carte-test-regle.webp",
-      "bytes": 30458,
-      "sha256": "9710f1db9693f2378694a26df3a963b3cae7ea5d464b2779f690e8278937590e"
+      "source": "docs/design/blog-article-proofs/index.html#carte-fiche-regle-relance",
+      "target": "public/proofs/blog/carte-fiche-regle-relance.webp",
+      "bytes": 44202,
+      "sha256": "a58b4a2762063386c95efe55041d7729fc9c71fb8a6ae6363f7122636ac92536"
     },
     {
       "source": "docs/design/blog-article-proofs/index.html#cicatrice-questionnaire-vide",
@@ -103,6 +103,114 @@
       "target": "public/proofs/blog/cicatrice-formulaire-manques.webp",
       "bytes": 26866,
       "sha256": "007508ace04052abadbeb764d539be855f628c3aad3613068cd7b714abd0b6e9"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#logiciel-grille-demonstration",
+      "target": "public/proofs/blog/logiciel-grille-demonstration.webp",
+      "bytes": 33168,
+      "sha256": "ebd49ef8b35e9b4086c28a0b48f404fbb83b0a3f75ccaed0d2f088dd0ebd8bee"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#logiciel-file-controle",
+      "target": "public/proofs/blog/logiciel-file-controle.webp",
+      "bytes": 38564,
+      "sha256": "03461d74c9d984a0959d3b4e676bd520605a3160e2d7106d5be7bdbbe3315809"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#prompt-assistant-brouillon",
+      "target": "public/proofs/blog/prompt-assistant-brouillon.webp",
+      "bytes": 38478,
+      "sha256": "b9f27b39dd79000c32797974797528eba7c0cdabb00581b9b7f642a8ecd7e303"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#prompt-suivi-demandes",
+      "target": "public/proofs/blog/prompt-suivi-demandes.webp",
+      "bytes": 38118,
+      "sha256": "351a2ebafaf3732b4ac10df6a475b38d2de052aae0dac412bcc814b851d0d4f8"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#competences-tableau-dossier",
+      "target": "public/proofs/blog/competences-tableau-dossier.webp",
+      "bytes": 37988,
+      "sha256": "d08aad4e55961190bd48cdebaa14f4afe477ba9541ed1822b425f991c317930d"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#competences-journal-rejeu",
+      "target": "public/proofs/blog/competences-journal-rejeu.webp",
+      "bytes": 40010,
+      "sha256": "9cb7d7eb331cac0844572da384c57465404e9708c81f82278062fbab437726e6"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#surcharge-journal-semaine",
+      "target": "public/proofs/blog/surcharge-journal-semaine.webp",
+      "bytes": 36294,
+      "sha256": "b24adbc0c6413727508ee7d6f7a496bdcf33c9868dfce96d015845dc6e704c98"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#surcharge-grille-priorisation",
+      "target": "public/proofs/blog/surcharge-grille-priorisation.webp",
+      "bytes": 38198,
+      "sha256": "02b4a26771b86a06b77f81b9c2c30ed1db26db1262af1bfbeb3558c51bc15076"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#trois-passes-journal-recette",
+      "target": "public/proofs/blog/trois-passes-journal-recette.webp",
+      "bytes": 38726,
+      "sha256": "684077107d452763a1a27748f7fa8f0b9942cc958e463b0c5db5fbfafc219edc"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#trois-passes-chaine-preuve",
+      "target": "public/proofs/blog/trois-passes-chaine-preuve.webp",
+      "bytes": 36178,
+      "sha256": "80b3370da7d2ba1fd2d756056002e2f091091247fe9301f0c57fc65b58914a7f"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#usage-fiche-selection",
+      "target": "public/proofs/blog/usage-fiche-selection.webp",
+      "bytes": 33872,
+      "sha256": "55319b16c7d70aeb521d2f5978ec05fd0d8ec32f76fa290190929eb599b43e19"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#usage-file-essais",
+      "target": "public/proofs/blog/usage-file-essais.webp",
+      "bytes": 35020,
+      "sha256": "190524d823101a20cc3f8a55908aed8299b94c8675f4c2794564c3519569f495"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-registre",
+      "target": "public/proofs/blog/verification-registre.webp",
+      "bytes": 38268,
+      "sha256": "07eaaa441686f08a97db1f1937b2a0f9c5662864aa8fd07fa4583dd7076d0ef3"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#verification-fiche-reserve",
+      "target": "public/proofs/blog/verification-fiche-reserve.webp",
+      "bytes": 33938,
+      "sha256": "0de9f3041fdd2601fee9b348276fd4dc59bb380a37896f6f8b7d046d5fb5ecdc"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-fiche",
+      "target": "public/proofs/blog/confidentialite-fiche.webp",
+      "bytes": 33242,
+      "sha256": "10b63c419bb8563dc58c42ce1553877b684e5339621c7df0f756a4312200e03f"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#confidentialite-registre",
+      "target": "public/proofs/blog/confidentialite-registre.webp",
+      "bytes": 31004,
+      "sha256": "3287d3e6884476d98bc887b2c1dd7cfa21367600041840f259338f9ec86d8540"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#passage-registre",
+      "target": "public/proofs/blog/passage-registre.webp",
+      "bytes": 29154,
+      "sha256": "60df927f220f6c71b06def0312f931bcc5bee3883ec5f8e935fd4b6ed8fd9832"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#passage-reprises",
+      "target": "public/proofs/blog/passage-reprises.webp",
+      "bytes": 30876,
+      "sha256": "4e81a59c0210f51ea73f5a24a940f6a4963dd507f3e7f7a87999ab818d5ec299"
     }
   ]
 }

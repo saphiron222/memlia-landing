@@ -1,7 +1,10 @@
 # Architecture des accès commerciaux
 
 Décision du 20 septembre 2026 pour le chantier ACCÈS, carte C2 `t_2d42e66c`.
-Ce document définit les routes, les intentions, le gabarit et le maillage. Il ne crée aucune page.
+Ce document définit les routes, les intentions, le gabarit et le maillage. Sa décision du 20/09
+est conservée comme historique ; les réservations de requêtes, volumes et ordre de production
+des §§2–3 et 10 sont **supersédés** par la sélection du 20/09 et par l'état des routes décrit
+dans l'addendum. Ne pas les employer pour lancer une page ou lui attribuer un volume.
 
 Sources de vérité lues avant décision :
 
@@ -46,7 +49,7 @@ Conséquences :
 | `/automatiser/` | les requêtes de service sont surtout nominales | sonne comme un guide | confond action et offre | refusé |
 | `/solutions/` | absent des requêtes | vocabulaire d’éditeur | trop vague | refusé |
 
-## 2. Profondeur et arborescence exacte
+## 2. Profondeur et arborescence exacte (décision historique, requêtes supersédées)
 
 **DECISION · un seul niveau sous `/automatisation/` ·** C1 mesure cinq tâches, mais aucune
 sous-tâche qui justifierait une route fille · **cela ferme** les chemins du type
@@ -70,9 +73,9 @@ Il n’existe pas de route publique pour les synonymes `agence`, `prestataire`, 
 Il n’existe pas non plus de page par pôle : les pôles organisent le blog ; ils ne prouvent pas une
 intention de confier.
 
-### Contrat route–requête
+### Contrat route–requête C1/C4 initial — historique, non exécutable
 
-| Ordre C4 | Route | Requête primaire réservée | Mesure C1 | Famille éditoriale reliée | État |
+| Ancien ordre C4 | Route | Requête initiale (supersédée pour les cinq tâches) | Mesure C1 de cette variante seule | Famille éditoriale reliée | État prévu alors |
 |---:|---|---|---:|---|---|
 | 0 | `/automatisation-cabinet-comptable` | `automatisation cabinet comptable` | 10/mois | `choisir-cadrer` | renforcer, ne pas recréer |
 | 1 | `/automatisation/notes-de-frais` | `automatisation notes de frais` | 70/mois | `notes-de-frais` | nouvelle page |
@@ -81,7 +84,10 @@ intention de confier.
 | 4 | `/automatisation/rapprochement-bancaire` | `rapprochement bancaire automatique` | 20/mois | `banque-rapprochement` | nouvelle page |
 | 5 | `/automatisation/paie` | `automatisation paie` | 10/mois | `paie-social`, puis familles précises | nouvelle page |
 
-L’ordre suit la recommandation finale de C1 : notes de frais, saisie, factures fournisseurs,
+L'ordre ci-dessus suivait la recommandation C1 avant qualification d'audience ; il n'est plus
+un ordre de travail. Le relevé du 20/09 a rejeté les requêtes nues des cinq pages de tâche : leurs volumes
+Ads appartiennent aux anciennes variantes, **jamais** aux requêtes désormais propriétaires.
+L’ordre suivait la recommandation finale de C1 : notes de frais, saisie, factures fournisseurs,
 rapprochement bancaire, paie. Le volume seul ne départage pas les deux requêtes à 30 : la saisie
 passe avant les factures fournisseurs parce qu’une méthode, un jeu fictif et une preuve existent
 déjà dans le dépôt.
@@ -96,7 +102,7 @@ impressions ». Le relevé plus frais du 20/09 contredit cette prémisse : 0 imp
 n’est revendiqué. Les articles publiés avant le 19/09 restent gelés jusqu’à la lecture utile de
 mi-octobre prévue par la stratégie.
 
-## 3. Pages de comparaison : une troisième famille
+## 3. Pages de comparaison : une troisième famille (hypothèses C1 datées)
 
 **DECISION · `/comparatifs/<sujet>` ·** une personne qui compare a déjà décidé d’automatiser mais
 n’a pas encore choisi l’approche ; cette intention n’est ni « apprendre à faire » ni « confier
@@ -331,9 +337,9 @@ inventée.
 | service général ↔ pilier « carte des tâches » sur `automatisation cabinet comptable` | existante, élevée | ne pas réécrire le pilier avant mi-octobre ; ensuite réserver la requête commerciale au service si la SERP confirme l’intention, et mesurer une requête informationnelle distincte pour le pilier |
 | service saisie ↔ article saisie | élevée | trois requêtes primaires distinctes ; résumé commercial contre méthode complète ; liens croisés ; comparatif différé |
 | service factures fournisseurs ↔ article saisie/OCR | moyenne | la page service traite le flux fournisseur entier ; l’article reste centré extraction et contrôles de saisie |
-| service paie ↔ contrôle des bulletins et CRM DSN | moyenne | `automatisation paie` reste la tâche large ; chaque article garde un geste précis et aucune page fille paie n’est créée sans demande |
+| service paie ↔ contrôle des bulletins et CRM DSN | moyenne | `automatisation paie pôle social` qualifie la tâche ; chaque article garde un geste précis et aucune page fille paie n’est créée sans demande |
 | service rapprochement ↔ futurs articles banque | moyenne | page de délégation large ; un article par question d’exécution ; aucune route `/rapprochement/<sous-tache>` |
-| service notes de frais ↔ requêtes de logiciel grand public | élevée côté SERP | ouvrir par « pour un cabinet » dans la seconde proposition, garder la requête exacte en tête, prouver la règle du cabinet plutôt que promettre une application |
+| service notes de frais ↔ requêtes de logiciel grand public | élevée côté SERP | viser `notes de frais des clients en cabinet`, prouver la règle du cabinet plutôt que promettre une application |
 | comparatif logiciel comptable ↔ service général | moyenne | le comparatif évalue les approches ; le service vend la prise en charge ; ancres et schémas distincts |
 | comparatif saisie ↔ article + service saisie | critique | ne pas publier avant que la page générique de comparaison ait produit une mesure et que le registre confirme trois requêtes distinctes |
 | Outils EC ↔ comparatif générique | faible tant que non publié | une seule URL de marque consolidant avis, alternative et tarif ; page créée seulement après requête mesurée et contrôle de fraîcheur |
@@ -404,7 +410,12 @@ et `publier` exigent la revue indépendante. Le build joue `service:audit` en pl
 La cadence de quatre articles par semaine reste inchangée. Les pages de service en sortent par
 type explicite, pas par exception manuelle.
 
-## 10. Liste ordonnée remise à C4
+## 10. Liste ordonnée remise à C4 — historique, supersédée
+
+La liste ci-dessous documente la remise initiale, **pas** les prochaines publications : les cinq
+routes de tâche sont désormais `publie` en collection et leurs requêtes propriétaires ont changé.
+Ne ni reproduire l'ordre C1 ni appliquer ses volumes aux nouvelles formulations ; pour toute
+nouvelle route, rouvrir intention, audience, SERP et registre avant décision.
 
 1. Renforcer sans déplacer `/automatisation-cabinet-comptable` et enregistrer son conflit de
    requête avec le pilier ; ne pas toucher au pilier avant la lecture de mi-octobre.
@@ -423,3 +434,54 @@ type explicite, pas par exception manuelle.
 Chaque page reste non publiée tant qu’elle n’a pas : sa requête réservée, son jeu fictif réellement
 rejoué, trois liens entrants contextuels, sa revue indépendante, son sceau et sa preuve sur
 l’artefact servi.
+
+## Addendum de réconciliation — 28 septembre 2026
+
+**Contrat courant route–requête (relevé du 20/09, France desktop).** Les cinq requêtes de tâche
+sélectionnées ont un `monthlyVolume: null` dans le relevé Ads : elles ne sont pas chiffrées,
+pas zéro lecteur ni le volume de la variante nue. Propriétaire effectif : frontmatter des services
+publiés et leurs entrées dans `mesures/registre-requetes.json` ; la catégorie générale est
+documentée dans `AUDIT-AUDIENCE-REQUETES-2026-09-20.md` et `src/data/pages-v2.mjs`. Mesure et raison :
+`mesures/audience-requetes-2026-09-20.json` et `AUDIT-AUDIENCE-REQUETES-2026-09-20.md`.
+
+| Route | Requête primaire actuelle | Rôle et frontière |
+|---|---|---|
+| `/automatisation-cabinet-comptable` | `automatisation cabinet comptable` | catégorie commerciale ; vérifier la collision de vocabulaire avec le pilier éditorial, sans canonical croisé automatique |
+| `/automatisation/notes-de-frais` | `notes de frais des clients en cabinet` | dossiers clients, non salarié cherchant ses frais |
+| `/automatisation/saisie-comptable` | `saisie comptable en cabinet` | délégation en cabinet, distincte de l'article d'exécution |
+| `/automatisation/factures-fournisseurs` | `factures fournisseurs des dossiers clients` | flux des dossiers clients, non direction financière d'entreprise |
+| `/automatisation/rapprochement-bancaire` | `rapprochement bancaire en cabinet` | travail du cabinet, non trésorerie d'entreprise |
+| `/automatisation/paie` | `automatisation paie pôle social` | gestionnaires du pôle social, non employeur |
+
+Les comparatifs du §3 restent des hypothèses de conception à mesurer à nouveau avant toute
+publication, non un backlog autorisé par les anciennes estimations C1.
+
+Les cinq routes de tâche du §2 sont maintenant des entrées `status: publie` de
+`src/content/services/` ; le service général reste `/automatisation-cabinet-comptable`.
+`src/pages/automatisation/[slug].astro` ne matérialise que les entrées publiées ; `Footer.astro`
+les lit depuis la collection, sans catalogue de capacités. Les commandes du §9 sont donc une
+trace de la porte conçue **avant C4**, non la preuve qu'une nouvelle route est encore candidate.
+La source actuelle des statuts et des reçus est `commercial/services/<slug>/` et la collection ;
+pour juger une publication précise, relire son manifeste, sa revue et son reçu sur l'artefact servi.
+
+Deux autres accès servent des intentions différentes : `/integrations` explique comment une
+tâche s'insère dans un environnement existant, avec guides admis depuis `src/data/integrations.ts`
+(relevé d'autocomplétion du 20/09, filtrage `INTEGRATIONS_INDEXABLES`) ; ce n'est ni une promesse
+de compatibilité universelle ni une fiche de service par vendeur. `/outils-comptables-gratuits`
+donne un résultat local sans inscription depuis `src/data/outils.ts` ; la boucle d'usage et ses
+seuils sont possédés par `OUTILS-BOUCLE.md`. Chaque guide, outil, article et service garde sa
+propre requête et son canonical si son intention est distincte ; si deux pages visent réellement
+le même geste, la SERP et la preuve tranchent avant toute nouvelle route.
+Relecture du 04/10/2026 : la suspension FE de Saisie décrite dans l'état du 28/09 est historique.
+La republication intégrée `e9866dd8` a retiré l'article de `PAGES_NOINDEX` dans
+`src/data/site.mjs` et supprimé sa fonction Pages 503. Son URL et son canonical sont conservés ;
+aucun changement de requête commerciale ni canonical croisé n'en découle. Le constat HTTP et
+le commit réellement déployé restent deux preuves différentes. Voir la
+[qualification des socles](QUALIFICATION-SOCLES-2026-10-04.md) ; les choix de routes, intentions,
+gabarit et maillage de cet addendum sont conservés après relecture, sans reprendre C1/C4.
+
+Le design des services et guides vient de `docs/design/2026-09-08-design-navattic-memlia.md`,
+`src/styles/tokens.css`, et des sections canoniques `src/components/sections/`. La preuve visuelle
+d'un geste est un cadre HTML figé avec jeu fictif, jamais une image générée ni une capture réelle
+de client ; comparer desktop et mobile aux pages historiques (`memlia-site-design`). La couverture
+de blog est un autre circuit, détaillé dans `RUNBOOK-QUOTIDIEN.md`.

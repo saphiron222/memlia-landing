@@ -4,6 +4,7 @@ titreOnglet: "Prompt ChatGPT expert comptable : demande de pièce | Memlia"
 resume: "Un prompt pour préparer une demande de pièce fictive : contexte autorisé, brouillon, arrêt si la pièce manque, destinataire et envoi validés par une personne."
 description: "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine."
 datePublication: 2026-09-29
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, pieces, automatisation]
 motsCles: ["prompt chatgpt expert comptable", "demande de pièce", "confidentialité des données"]
@@ -22,7 +23,7 @@ tache: "Préparer une demande de pièce manquante sans envoyer avant contrôle d
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-29
+  date: 2026-10-03
 funnel: MOFU
 contentType: searchable
 format: how-to-guide
@@ -31,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Trois cas fictifs exécutés par rejouer-cas.mjs, entrées et sorties dans journal-rejeu.json ; le refus demande déjà partie est propre au script local alimenté par le suivi et absent du prompt copiable ; deux consignes par pôle illustratives non exécutées ; aucune réponse ChatGPT mesurée."
 reviewRule: "Revoir les conditions d'utilisation de l'outil et les recommandations CNIL avant un usage réel ; réviser le contenu en cas d'évolution de la source."
-reviewer: qa:t_f7a52dd8
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-29
 cta:
   label: "Confier cette tâche"
@@ -63,9 +64,8 @@ Un prompt ChatGPT pour expert-comptable utile part d'une tâche précise : prép
 
 Une instruction copiée d'un collaborateur à l'autre ne dit pas où lire l'état de la pièce, si une demande est déjà partie ni quand cesser la relance. La règle de cabinet à écrire est celle du passage de « pièce absente » à « demande proposée », puis de « reçue » à « arrêt » ; le texte du prompt n'en est qu'une étape.
 
-<figure data-blog-proof="w39-prompt-brouillon">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." tabindex="0"><img src="/proofs/blog/w39-prompt-brouillon.webp" alt="Brouillon fictif de demande de facture non envoyé avec destinataire à confirmer." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Reconstitution HTML fictive ; scène nominale vérifiable dans journal-rejeu.json, aucun modèle interrogé · capture du 2026-09-27</figcaption>
+<figure data-blog-proof="prompt-assistant-brouillon">
+  <img src="/proofs/blog/prompt-assistant-brouillon.webp" alt="Fenêtre d’assistant fictive : consigne du collaborateur et brouillon de demande de facture, non envoyé." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Exemple : préparer une demande de pièce manquante
@@ -130,9 +130,8 @@ Le gestionnaire reprend la liste dans son outil de paie et tranche l'écart. La 
 
 Le collaborateur vérifie la pièce et décide dans son logiciel comptable. Ce patron ne classe pas une dépense et ne mesure pas ChatGPT ; il aide seulement à formuler ce qui manque avant une décision.
 
-<figure data-blog-proof="w39-prompt-arret">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." tabindex="0"><img src="/proofs/blog/w39-prompt-arret.webp" alt="Refus fictif de préparer la demande de pièce en l'absence de la pièce attendue." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : Reconstitution HTML fictive ; arrêt vérifiable dans journal-rejeu.json, aucun modèle interrogé · capture du 2026-09-27</figcaption>
+<figure data-blog-proof="prompt-suivi-demandes">
+  <img src="/proofs/blog/prompt-suivi-demandes.webp" alt="Suivi fictif des demandes de pièces : brouillon à relire, relance arrêtée et champ « Pièce attendue » non renseigné." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Les quatre éléments à conserver quand on adapte ce prompt

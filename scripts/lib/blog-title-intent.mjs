@@ -48,36 +48,80 @@ export function titrePorteUneRequeteMesuree(titre, requetes, autocompletion) {
 
 const DOSSIER_MESURES = 'docs/strategy/site-v3/mesures';
 const RELEVE_TITRES = /^(?:questions|titres-intent)-(\d{4}-\d{2}-\d{2})\.json$/;
+// Le relevé de demande du lundi (scripts/seo/releve-demande.mjs, cron memlia-releve-demande) autocomplète la
+// requête primaire de chaque article du registre. Sa date est dans le fichier ; ses pannes ne sont pas des mesures.
+const RELEVE_DEMANDE = /^semaine-(\d{4})-W(\d{2})-demande\.json$/;
+const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
+const JOUR_MS = 86_400_000;
 
 function ecartJours(debut, fin) {
-  return Math.floor((Date.parse(`${fin}T00:00:00Z`) - Date.parse(`${debut}T00:00:00Z`)) / 86_400_000);
+  return Math.floor((Date.parse(`${fin}T00:00:00Z`) - Date.parse(`${debut}T00:00:00Z`)) / JOUR_MS);
+}
+
+/** Le lundi et le dimanche de la semaine ISO (la semaine 1 contient le 4 janvier). */
+function bornesSemaineIso(annee, semaine) {
+  const quatreJanvier = Date.UTC(annee, 0, 4);
+  const lundiSemaine1 = quatreJanvier - ((new Date(quatreJanvier).getUTCDay() || 7) - 1) * JOUR_MS;
+  const lundi = lundiSemaine1 + (semaine - 1) * 7 * JOUR_MS;
+  return { lundi: new Date(lundi).toISOString().slice(0, 10), dimanche: new Date(lundi + 6 * JOUR_MS).toISOString().slice(0, 10) };
+}
+
+const estDictionnaire = (valeur) => Boolean(valeur) && typeof valeur === 'object' && !Array.isArray(valeur);
+
+/**
+ * Un fichier de mesures : sa date, et la lecture de ses mesures, faite seulement s'il est frais. Un relevé de
+ * demande porte sa date dedans : il n'est ouvert que si sa semaine ISO touche la fenêtre, pour qu'un vieux
+ * fichier abîmé ne bloque jamais la porte.
+ */
+function releveDuFichier(dossier, nom, { au, ageMaxJours }) {
+  const date = nom.match(RELEVE_TITRES)?.[1];
+  if (date) {
+    return [{ nom, date, mesures: () => {
+      const releve = JSON.parse(readFileSync(join(dossier, nom), 'utf8'));
+      if (!estDictionnaire(releve.autocompletion)) throw new Error(`relevé d’autocomplétion invalide : ${nom}`);
+      return releve.autocompletion;
+    } }];
+  }
+  const semaine = nom.match(RELEVE_DEMANDE);
+  if (!semaine) return [];
+  const { lundi, dimanche } = bornesSemaineIso(Number(semaine[1]), Number(semaine[2]));
+  if (lundi > au || ecartJours(dimanche, au) > ageMaxJours) return [];
+  let releve;
+  try {
+    releve = JSON.parse(readFileSync(join(dossier, nom), 'utf8'));
+  } catch (erreur) {
+    throw new Error(`relevé de demande illisible : ${nom} (${erreur.message})`);
+  }
+  if (!estDictionnaire(releve) || !DATE_ISO.test(String(releve.date ?? ''))) throw new Error(`relevé de demande sans date valide : ${nom}`);
+  // Un relevé du lundi dont toutes les mesures ont échoué ne mesure rien : ce n'est pas un relevé frais.
+  const mesuree = releve.autocompletion?.mesuree;
+  if (estDictionnaire(mesuree) && Object.keys(mesuree).length === 0) return [];
+  return [{ nom, date: releve.date, mesures: () => {
+    if (!estDictionnaire(releve.autocompletion?.mesuree)) throw new Error(`relevé de demande sans autocomplétion mesurée : ${nom}`);
+    return releve.autocompletion.mesuree;
+  } }];
 }
 
 /**
- * Charge les relevés produits par l'autocomplétion Google de la forge. Une liste vide est une
- * mesure valide ; seule l'absence de la requête signifie « non mesurée ». La valeur la plus
- * récente de chaque requête gagne et une mesure future ou vieille de plus de huit jours est
- * ignorée. L'audit d'un dossier scellé peut fournir sa date de publication comme borne :
+ * Charge les relevés produits par l'autocomplétion Google : ceux de la forge (questions, titres-intent) et le
+ * relevé de demande du lundi. Une liste vide est une mesure valide ; seule l'absence de la requête signifie
+ * « non mesurée ». La valeur la plus récente de chaque requête gagne et une mesure future ou vieille de plus
+ * de huit jours est ignorée. L'audit d'un dossier scellé peut fournir sa date de publication comme borne :
  * les candidats non scellés restent soumis au relevé hebdomadaire frais.
  */
-export function chargerAutocompletionMesuree(root, { au = new Date().toISOString().slice(0, 10), ageMaxJours = 8 } = {}) {
+export function chargerAutocompletionMesuree(root, { au = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()), ageMaxJours = 8 } = {}) {
   const dossier = join(root, DOSSIER_MESURES);
   if (!existsSync(dossier)) throw new Error(`relevés d’autocomplétion absents : ${DOSSIER_MESURES}`);
   const fichiers = readdirSync(dossier)
-    .map((nom) => ({ nom, date: nom.match(RELEVE_TITRES)?.[1] }))
-    .filter(({ date }) => date && date <= au && ecartJours(date, au) <= ageMaxJours)
+    .flatMap((nom) => releveDuFichier(dossier, nom, { au, ageMaxJours }))
+    .filter(({ date }) => date <= au && ecartJours(date, au) <= ageMaxJours)
     .sort((a, b) => a.date.localeCompare(b.date) || a.nom.localeCompare(b.nom));
   if (fichiers.length === 0) throw new Error(`aucun relevé d’autocomplétion frais au ${au} (âge maximal : ${ageMaxJours} jours)`);
 
   const autocompletion = {};
   const mesureParRequete = {};
   for (const fichier of fichiers) {
-    const chemin = join(dossier, fichier.nom);
-    const releve = JSON.parse(readFileSync(chemin, 'utf8'));
-    if (!releve.autocompletion || typeof releve.autocompletion !== 'object' || Array.isArray(releve.autocompletion)) {
-      throw new Error(`relevé d’autocomplétion invalide : ${fichier.nom}`);
-    }
-    for (const [requete, suggestions] of Object.entries(releve.autocompletion)) {
+    for (const [requete, suggestions] of Object.entries(fichier.mesures())) {
       if (!Array.isArray(suggestions)) throw new Error(`mesure d’autocomplétion invalide pour « ${requete} » dans ${fichier.nom}`);
       autocompletion[requete] = suggestions;
       mesureParRequete[requete] = { date: fichier.date, fichier: fichier.nom, suggestions: suggestions.length };

@@ -1,30 +1,26 @@
 ---
+import Insecable from '@/components/Insecable.astro';
 import ProofRow from '@/components/ProofRow.astro';
-/** Le problème quotidien, sans métrique client ni témoignage inventé. */
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['quotidien']; }
+const { contenu = contenuDe('ec').quotidien } = Astro.props;
+/**
+ * Le problème quotidien, sans métrique client ni témoignage inventé.
+ * Système de page : rangée (en-tête, maquette), puis des lignes (un verbe, sa définition), puis
+ * la mention qui borne la promesse.
+ */
 ---
-<section class="daily" aria-labelledby="daily-title">
-  <ProofRow id="02-repetition">
-  <div class="daily-intro rv">
-    <h2 id="daily-title">Le savoir-faire est là. Il n’est écrit nulle part.</h2>
-    <p class="texte-2 lecture">Quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel : vos collaborateurs connaissent la règle et la rejouent à la main, chaque mois, entre deux dossiers qui demandent du jugement. Le jour où l’un d’eux part, la règle part avec lui.</p>
+<section class="section daily" aria-labelledby="daily-title">
+  <div class="conteneur pile">
+    <ProofRow id={contenu.image}>
+      <div class="tete rv">
+        <h2 id="daily-title"><Insecable texte={contenu.titre} /></h2>
+        <p>{contenu.texte}</p>
+      </div>
+    </ProofRow>
+    <dl class="lignes rv">
+      {contenu.points.map((p, i) => <Fragment>{i > 0 && ' '}<div class="ligne"><dt class="ligne-libelle">{p.titre}</dt><dd class="ligne-texte">{p.texte}</dd></div></Fragment>)}
+    </dl>
+    <p class="daily-note mention">{contenu.note}</p>
   </div>
-  </ProofRow>
-  <dl class="daily-list rv">
-    <div><dt>Répéter</dt><dd>Les mêmes contrôles et manipulations à chaque cycle, par les personnes les plus difficiles à recruter.</dd></div>
-    <div><dt>Reconstituer</dt><dd>L’information dispersée entre logiciels, fichiers et messages, réassemblée de mémoire.</dd></div>
-    <div><dt>Sécuriser</dt><dd>Les cas particuliers à repérer parmi les traitements courants, sans liste écrite.</dd></div>
-  </dl>
-  <p class="daily-note texte-2">Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet, et une règle écrite s’automatise.</p>
-
 </section>
-<style>
-  .daily { padding: 96px var(--marge-page) 0; }
-  .daily-intro { display: grid; gap: 20px; max-width: 800px; }
-  .daily-list { display: grid; gap: 24px; margin: 40px 0 32px; }
-  .daily-list div { display: grid; grid-template-columns: 1fr; gap: 8px; }
-  dt { font-weight: 600; color: var(--texte-fort); }
-  dd { margin: 0; color: var(--texte-2); }
-  .daily-note { padding-top: 24px; border-top: 1px solid var(--ligne); font-size: var(--t-sm); }
-  @media (min-width: 48rem) { .daily-list div { grid-template-columns: 160px 1fr; gap: 32px; } }
-  @media (min-width: 64rem) { .daily { padding: 128px var(--marge-page-lg) 0; } }
-</style>

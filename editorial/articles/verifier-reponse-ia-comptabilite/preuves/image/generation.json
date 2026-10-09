@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "candidateSlug": "verifier-reponse-ia-comptabilite",
+  "kind": "image-generation",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "43798a62f3f53834b6c1438b2d2e0a7ff75a7ce478384baf18b45489a134fe36",
+  "manifestSha256": "23990afd99d4ebaab4075a2276c4bad97d248fed1e4fb04edc4e184e7f924b4e",
+  "observations": [
+    "Contrôle image-generation relu sur le candidat exact verifier-reponse-ia-comptabilite."
+  ],
+  "engine": "image_generate",
+  "generationId": "d04ce7ff-c463-4eca-83bc-08a626ffe5ff",
+  "model": "gpt_image_2_5",
+  "provider": "higgsfield",
+  "generatedAt": "2026-10-04",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "bcf3b84ae9cf300998f7626b78aa263c97797fd263ee965485cd661b1302e530",
+  "outputSha256": "0722c7afbf41a5c3547eb6ce4dcf08b8fd06cfd99d085ff7bf7511d5e568d1fd",
+  "credits": 2.75
+}

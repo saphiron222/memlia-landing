@@ -1,0 +1,10 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import VerificateurPrompt from '@/components/outils/VerificateurPrompt.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('verificateur-prompt-ia');
+---
+<Outil outil={outil}>
+  <VerificateurPrompt />
+  <p>Ce contrôle examine la consigne, pas la fiabilité de la sortie. Pour <a href="/blog/verifier-reponse-ia-comptabilite">vérifier ensuite la réponse produite</a>, confrontez ses affirmations aux sources et gardez la décision au cabinet.</p>
+</Outil>

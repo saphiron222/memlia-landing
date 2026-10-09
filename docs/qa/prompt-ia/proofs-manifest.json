@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/prompt-ia-proof/index.html",
+      "sha256": "f0f53439b6c9b5928107695b0feed2beaf3b441b93922541c6be478c5718ecf5"
+    },
+    {
+      "path": "docs/design/prompt-ia-proof/styles.css",
+      "sha256": "227aaac4deb1166139027b3ee89b8b1f879f2428dc6c88e4fd82fbfc4154a578"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/prompt-ia-proof/content-contract.json",
+      "sha256": "23a3b07191277b63789a79dfea087d7b7674249b68d8b553e839fa846d358222"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/prompt-ia-proof/index.html#outil-prompt-ia",
+      "target": "public/proofs/v2/01-outil-prompt-ia.webp",
+      "bytes": 71572,
+      "sha256": "fc807946d154573f49f448baeba31d62d6935beb3d7890457ac78d16f10ef5a8"
+    },
+    {
+      "source": "docs/design/prompt-ia-proof/index.html#outil-prompt-ia",
+      "target": "public/proofs/v2/og/01-outil-prompt-ia.webp",
+      "bytes": 36440,
+      "sha256": "6686ddc4e4853db0fa7aaf01d7fd8b55cda594c2c9d67bd24aa5ff81ac704170"
+    }
+  ]
+}

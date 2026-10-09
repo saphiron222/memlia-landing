@@ -1,0 +1,5 @@
+# Copies réseau et patch historique : préserver les octets et les blancs d'origine.
+# Les documents rédigés et les scripts conservent le contrôle whitespace ordinaire.
+sources/*.html -text whitespace=-blank-at-eol,cr-at-eol
+runbook.patch -text whitespace=-blank-at-eol
+build-verification.log -text whitespace=-blank-at-eol

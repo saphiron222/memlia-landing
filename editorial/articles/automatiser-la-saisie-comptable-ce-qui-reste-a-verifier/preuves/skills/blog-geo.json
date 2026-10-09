@@ -3,16 +3,12 @@
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-  "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
   "observations": [
     "Réponse directe en tête (74 mots au premier paragraphe) ; définitions extractibles dans le corps.",
-    "Réponse directe en tête d'article (environ 72 mots), formulée comme un paragraphe autonome extractible sans contexte supplémentaire.",
-    "Terminologie d'entité stable tout au long du texte (saisie comptable automatisée, OCR, pré-comptabilité, file d'anomalies, reliquat), reliée au glossaire du site.",
-    "Cinq questions fréquentes en langage naturel, balisées h3 sous « Questions fréquentes », propices à une citation directe dans une réponse conversationnelle (sans schema FAQPage, optionnel selon le barème).",
-    "Quatre tableaux avec <thead> (champs extraits, six contrôles, règle déclencheur/condition/action/exception, répartition automatisé/validé/humain), format propice à l'extraction structurée.",
-    "Chaque affirmation sensible porte une citation exacte liée en ligne vers une source officielle, toutes consultées à la même date (17 septembre 2026)."
+    "Exemple fiscal contextualisé, non universel ; pas de résultat de moteur IA mesuré."
   ],
   "skill": "blog-geo"
 }

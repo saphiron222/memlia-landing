@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { LIENS_COMMERCIAUX_BLOG, lienCommercialPourArticle } from '../../src/data/blog-commercial-links.mjs';
+import { LIENS_COMMERCIAUX_BLOG, lienCommercialPourArticle, estLienCommercialBlog } from '../../src/data/blog-commercial-links.mjs';
 
 const ROOT = process.cwd();
 const registre = JSON.parse(readFileSync(join(ROOT, 'docs/strategy/site-v3/mesures/registre-requetes.json'), 'utf8'));
@@ -20,28 +20,31 @@ const pontsW39 = new Map([
   ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
 ]);
 
-function verifierCardinalite(articlesPublies) {
+function verifierCardinalite(articlesPublies, liens = LIENS_COMMERCIAUX_BLOG) {
   const slugsAttendus = new Set([...articlesPublies.map(({ slug }) => slug), ...pontsW39.keys()]);
-  assert.equal(Object.keys(LIENS_COMMERCIAUX_BLOG).length, slugsAttendus.size);
+  assert.deepEqual(Object.keys(liens).sort(), [...slugsAttendus].sort());
 }
 
 test('chaque article publié reçoit un pont commercial explicite après le corps éditorial', () => {
   verifierCardinalite(articles);
   for (const entree of articles) {
     const lien = lienCommercialPourArticle(entree.slug);
-    assert.match(lien.href, /^\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)$/);
+    assert.ok(estLienCommercialBlog(lien.href), `${entree.slug} : destination commerciale invalide`);
     assert.ok(lien.label.trim(), `${entree.slug} : libellé commercial vide`);
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, entree.slug), `${entree.slug} : repli non autorisé pour un article publié`);
   }
 });
 
 test('le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39', () => {
-  const articlesHistoriques = articles.filter(({ slug }) => !pontsW39.has(slug));
+  const publiesW39 = JSON.parse(readFileSync(join(ROOT, 'tests/fixtures/editorial-w39-published.json'), 'utf8'));
+  const inventaireW39 = Object.keys(publiesW39).map((slug) => ({ type: 'blog', slug }));
+  const liensW39 = Object.fromEntries(inventaireW39.map(({ slug }) => [slug, LIENS_COMMERCIAUX_BLOG[slug]]));
+  const articlesHistoriques = inventaireW39.filter(({ slug }) => !pontsW39.has(slug));
   assert.equal(articlesHistoriques.length, 9);
-  verifierCardinalite(articlesHistoriques);
+  verifierCardinalite(articlesHistoriques, liensW39);
   const articlesPublies = [...articlesHistoriques, ...[...pontsW39.keys()].map((slug) => ({ type: 'blog', slug }))];
   assert.equal(articlesPublies.length, 12);
-  verifierCardinalite(articlesPublies);
+  verifierCardinalite(articlesPublies, liensW39);
   for (const { slug } of articlesPublies) {
     assert.ok(Object.hasOwn(LIENS_COMMERCIAUX_BLOG, slug), `${slug} : pont explicite absent après publication`);
   }

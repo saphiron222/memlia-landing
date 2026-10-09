@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import VerificateurFec from '@/components/outils/VerificateurFec.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('verificateur-fec-local');
+---
+<Outil outil={outil}><VerificateurFec /></Outil>

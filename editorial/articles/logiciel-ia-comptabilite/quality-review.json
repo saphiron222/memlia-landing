@@ -1,19 +1,19 @@
 {
   "version": 1,
   "candidateSlug": "logiciel-ia-comptabilite",
-  "reviewedAt": "2026-09-29",
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewedAt": "2026-10-03",
+  "reviewer": "metier:t_303e7c6d",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 91,
   "p0": 0,
   "categories": {
     "contentQuality": {
-      "score": 28,
+      "score": 27,
       "max": 30
     },
     "seoOptimization": {
-      "score": 23,
+      "score": 22,
       "max": 25
     },
     "eeatSignals": {
@@ -21,7 +21,7 @@
       "max": 15
     },
     "technicalElements": {
-      "score": 12,
+      "score": 14,
       "max": 15
     },
     "aiCitationReadiness": {
@@ -30,20 +30,20 @@
     }
   },
   "evidence": [
-    "28/30 contenu : six questions et trois voies concrètes avec quatre cas locaux exécutés ; une capacité d'éditeur non vue reste non vérifiée.",
-    "23/25 SEO : intention logiciel IA lisible dans H1 et title, canonical et liens contextuels vers le pilier, le prompt et la méthode.",
-    "14/15 confiance : CNIL, Ordre et Service-Public vérifiés par copies ; le guide ne simule pas des résultats produits par Dext ou Pennylane.",
-    "12/15 technique : HTML statique, légendes des figures et OG 1200 × 630 ; aucun chiffre LCP ou parcours mobile interactif mesuré ici.",
-    "14/15 citabilité : tableaux d'essai et FAQ réutilisables seulement en conservant la mention aucun éditeur évalué."
+    "27/30 : protocole de comparaison à faire chez le vendeur ; quatre cas de règle locale, tous visibles dans la file de contrôle fictive (proposition, doublon probable, période ambiguë, donnée absente), sans écriture.",
+    "22/25 : grille de choix et maillage cohérents, sans classement ni performance commerciale mesurés.",
+    "14/15 : trois claims déjà confrontés aux copies, contexte CNIL limité à l'IA générative ; aucune nouvelle consultation HTTP.",
+    "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; aucune mesure Lighthouse ou de production.",
+    "14/15 : tableaux citables seulement avec la mention qu'aucun éditeur n'a été évalué."
   ],
   "reservations": [
-    "La règle locale sur quatre cas ne teste aucune intégration ni logiciel du marché.",
-    "La prévisualisation noindex ne démontre ni indexabilité ni performances de la future page publiée."
+    "Le contrat interne déclare capturedAt 2026-10-03 pour les deux nouvelles figures, sans horodatage autonome de fabrication ; les captures à 1280 et 390 px relues ici attestent leur rendu, non leur date de création.",
+    "Robots index dans le build local ; QA/CI, scellement et contenu HTML effectivement servi après intégration restent à prouver."
   ],
-  "verdict": "91/100 et zéro P0 sur la prévisualisation exacte ; pas de GO publication sans scellement, CI et QA finale.",
+  "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px, sous réserve de la traçabilité de fabrication ; ni scellement ni publication.",
   "subject": {
     "slug": "logiciel-ia-comptabilite",
-    "articleSha256": "9b4b454fcef2378508f24edf533c282467eb3ea4b3dd7cb4ad5ff2531a863254",
-    "manifestSha256": "41d687a8a01a7413731390ce19c1fad37d2e2bc3e5bb853871b92ddf3da91eef"
+    "articleSha256": "bb2554d5aa5cd76e0239d7388cdaa4310b7710e33589aad117057f73d00c8c42",
+    "manifestSha256": "89608d3394905cf25b630daec8ce1d2f43ff727d66efa1118da8f7901c7ff6dc"
   }
 }

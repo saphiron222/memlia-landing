@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/maturite-ia-proof/index.html",
+      "sha256": "47e700d4a30d4fc8bc63f183868f84bcf06b0fab7ee76c9006bfc39496d64ade"
+    },
+    {
+      "path": "docs/design/maturite-ia-proof/styles.css",
+      "sha256": "338c5901890f90099edcace37c21d4d7014909190829e82e76a65a1181d2c95a"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/maturite-ia-proof/content-contract.json",
+      "sha256": "14e1717de637d5ddcfeb52698b6111fea8096fce13e3ed7719aa7c0721bc2e5f"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/maturite-ia-proof/index.html#outil-maturite",
+      "target": "public/proofs/v2/30-outil-maturite.webp",
+      "bytes": 55286,
+      "sha256": "7225bf71756c93d4f458489d1688e8cd10760b8fb3bc5ca11f2ba3dd0a7a874d"
+    },
+    {
+      "source": "docs/design/maturite-ia-proof/index.html#outil-maturite",
+      "target": "public/proofs/v2/og/30-outil-maturite.webp",
+      "bytes": 36494,
+      "sha256": "34d5772bb61e73ba043bea910f32068e15865d49011cceba7500897569e9b18f"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "prompt-chatgpt-expert-comptable",
-  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -276,11 +276,11 @@
       "sourceExcerpts": {
         "cnil-ia-generative": "les utilisateurs finaux ne devraient soumettre que des informations qu’ils sont autorisés à partager"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "cnil-ia-generative",
@@ -320,7 +320,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Recommandation de la FAQ CNIL sur les informations fournies dans une invite, et non obligation réglementaire autonome.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }
@@ -336,11 +336,11 @@
       "sourceExcerpts": {
         "cnil-donnee-personnelle": "à partir du croisement d’un ensemble de données (exemple&nbsp;: une femme vivant à telle adresse, née tel jour et membre dans telle association)."
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "cnil-donnee-personnelle",
@@ -377,7 +377,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La définition CNIL donne explicitement l’identification par croisement comme possibilité.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }
@@ -393,11 +393,11 @@
       "sourceExcerpts": {
         "ordre-ia": "Cas d’usage applicables en cabinet, précautions à prendre, techniques pour bien « prompter » et même une charte de l’utilisation de l’IA Générative en cabinet"
       },
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-03",
         "sourceResults": [
           {
             "sourceId": "ordre-ia",
@@ -437,7 +437,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "La page de l’Ordre annonce ces catégories de ressources, sans mesurer un résultat logiciel.",
-            "checkedAt": "2026-09-29"
+            "checkedAt": "2026-10-03"
           }
         ]
       }

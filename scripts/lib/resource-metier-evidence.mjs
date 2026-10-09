@@ -10,6 +10,12 @@ const DEFINITIONS_ATTENDUES = 53;
 const UNITES_ATTENDUES = 76;
 
 const SOURCE_SPECS = {
+  'source-cnil-roles-rgpd': {
+    publisher: 'CNIL', title: 'RGPD, article 4 : responsable de traitement et sous-traitant',
+    url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1',
+    snapshotPath: 'docs/qa/site-copy-b/sources/cnil-roles-rgpd.md', report: 'docs/qa/site-copy-b/recette.md',
+    checkedAt: '2026-10-04T00:59:00Z', level: 'tier-1', provenance: 'primary', official: true,
+  },
   'source-net-dsn-overview': {
     publisher: 'Net-entreprises (GIP-MDS)',
     title: 'DSN-INFO : La déclaration Sociale Nominative (DSN)',
@@ -114,6 +120,8 @@ const SOURCE_SPECS = {
   "source-banque-france-sepa": {
     publisher: "Banque de France", title: "Foire aux questions - Le prélèvement SEPA | Banque de France",
     url: "https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa",
+    // Copie sensible historique conservée pour porter son verdict acquis ; réouverture et
+    // correction ciblée documentées dans docs/qa/copy-glossaire/REVUE.md pour la nouvelle revue.
     snapshotPath: "docs/qa/hub-ressources/glossaire-vague-1-sources/banque-france-sepa.txt", report: "docs/qa/hub-ressources/glossaire-vague-1.md",
     level: 'tier-1', provenance: 'primary', official: true,
   },
@@ -152,8 +160,8 @@ const SOURCE_SPECS = {
   "source-microsoft-rag": {
     publisher: "Microsoft", title: "Génération augmentée par récupération (RAG) dans Recherche Azure AI | Microsoft Learn",
     url: "https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview",
-    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/microsoft-rag.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
-    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+    snapshotPath: "docs/qa/copy-glossaire/sources/microsoft-rag.txt", report: "docs/qa/copy-glossaire/REVUE.md",
+    checkedAt: '2026-10-08T00:05:47.977Z', level: 'tier-1', provenance: 'primary', official: true,
   },
   "source-cnil-ia-generative-deploiement": {
     publisher: "CNIL", title: "Comment déployer une IA générative ? La CNIL apporte de premières précisions | CNIL",
@@ -181,6 +189,13 @@ const SOURCE_SPECS = {
 };
 
 const OFFICIAL = {
+  'roles-rgpd': {
+    sourceId: 'source-cnil-roles-rgpd', type: 'legal-reglementaire',
+    citations: ["détermine les finalités et les moyens du traitement", "qui traite des données à caractère personnel pour le compte du responsable du traitement"],
+    applicability: 'Qualification par traitement des rôles de responsable et de sous-traitant.',
+    regime: 'RGPD, article 4, points 7 et 8.',
+    exceptions: 'La qualification concrète dépend du traitement et des instructions ; elle ne découle pas du titre de cabinet ou de fournisseur.',
+  },
   dsn: {
     sourceId: 'source-net-dsn-overview', type: 'dsn',
     citations: ['La DSN – Déclaration Sociale Nominative – est obligatoire pour toutes les entreprises du secteur privé ainsi qu’à la Fonction publique. Elle remplace à ce jour près de 80 procédures et a vocation à supprimer encore des formalités qui s’appuient sur les données de paie.'],
@@ -274,7 +289,7 @@ const OFFICIAL = {
     citations: ["L' intelligence artificielle dite « générative » désigne les systèmes capables de créer des contenus (texte, code informatique, images, musique, audio, vidéos, etc.). Lorsqu’ils permettent de réaliser un large éventail de tâches, ces systèmes peuvent être qualifiés de systèmes d’IA à usage général. C’est par exemple le cas des systèmes intégrant des grands modèles de langage (en anglais large language models ou LLM)."],
     applicability: "Systèmes capables de créer des contenus, tels que décrits par la CNIL.",
     regime: "Présentation par la CNIL de l’IA générative et des systèmes d’IA à usage général.",
-    exceptions: "La seconde phrase de la définition décrit le caractère non déterministe des sorties ; elle relève de la doctrine Memlia.",
+    exceptions: "La génération ne garantit ni l’originalité ni une sortie différente à chaque exécution ; la définition ne promet aucun résultat particulier.",
   },
   "grand-modele-de-langage": {
     sourceId: "source-cnil-modele-de-langage", type: "information",
@@ -302,7 +317,7 @@ const OFFICIAL = {
     citations: ["Les modèles d’extraction de champs de document sont formés pour extraire des champs étiquetés à partir de documents.", "Extrayez du texte, des structures et des paires clé-valeur."],
     applicability: "Extraction de champs étiquetés, de texte, de structures et de paires clé-valeur à partir de documents.",
     regime: "Documentation Microsoft Learn d’Azure Document Intelligence, description des modèles d’extraction.",
-    exceptions: "Documentation d’un éditeur : l’ordre « après la lecture, jamais avant » et les exemples de champs relèvent de la doctrine Memlia.",
+    exceptions: "Documentation d’un éditeur : les formats et l’enchaînement lecture/extraction dépendent du traitement retenu ; aucun OCR séparé n’est imposé universellement.",
   },
   "declencheur": {
     sourceId: "source-microsoft-power-automate-declencheur", type: "information",
@@ -367,7 +382,7 @@ const OFFICIAL = {
     citations: ['La génération augmentée par récupération (RAG) est un modèle qui étend les capacités des LLM en ancrant les réponses dans votre contenu propriétaire.'],
     applicability: 'Réponses d’un modèle de langage ancrées dans des documents fournis au moment de la question.',
     regime: 'Documentation d’un éditeur sur son propre produit, citée pour la définition du procédé.',
-    exceptions: 'L’ancrage borne ce que le modèle peut invoquer ; il ne garantit pas l’exactitude de la réponse.',
+    exceptions: 'Les passages récupérés enrichissent le contexte ; ils ne remplacent pas les connaissances d’entraînement et ne garantissent pas l’exactitude de la réponse. La CNIL détaille les limites générales dans le dossier de correction.',
   },
   'modele-local': {
     sourceId: 'source-cnil-ia-generative-deploiement', type: 'information',

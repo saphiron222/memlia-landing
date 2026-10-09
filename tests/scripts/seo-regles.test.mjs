@@ -563,7 +563,8 @@ test('alertesDemande nomme les articles dont la requête primaire n’a aucune s
     { slug: 'c', requete: 'jamais mesurée' },
   ] };
   const alertes = alertesDemande(registre, { 'crm dsn': ['crm dsn c est quoi'], 'suivi production sociale': [] });
-  assert.deepEqual(alertes, ['requête primaire sans demande mesurée à l’autocomplétion : « suivi production sociale » (b) — recaler le titre ou l’angle (voir questions.mjs)']);
+  assert.deepEqual(alertes, ['aucune suggestion relevée pour la requête primaire testée : « suivi production sociale » (b) — ne conclure ni au volume, ni à la demande, ni à l’audience ; revoir la formulation ou l’angle (voir questions.mjs)']);
+  assert.deepEqual(alertesDemande(registre, {}), [], 'une mesure absente ne vaut pas zéro suggestion');
 });
 
 test('PAGES_A_SERVIR exclut l’accueil : son corps ne porte aucun lien par décision de conception', async () => {

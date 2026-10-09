@@ -4,6 +4,8 @@ export interface GlossarySource {
   title: string;
   url: string;
   checkedAt: string;
+  /** Nom du lien quand l'entrée cite déjà le même éditeur : « (CNIL, article 4 du RGPD) ». */
+  libelleCourt?: string;
 }
 
 export interface GlossaryLink {
@@ -28,14 +30,21 @@ export interface GlossaryEntry {
   editorialReviewer: 'Équipe éditoriale Memlia';
   businessReviewer: null;
   reviewedAt: null;
-  sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19';
+  sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19' | '2026-10-08';
   nextReviewAt: '2026-12-13' | '2027-03-13';
   sourceIds: string[];
+  /** Définition maison : le mot de la définition ou du contexte qui porte le lien de chaque source externe. */
+  motsSources?: Record<string, string>;
   routeDecision: 'anchor';
   status: 'preview-only';
 }
 
 export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
+  'cnil-roles-rgpd': {
+    id: 'cnil-roles-rgpd', publisher: 'CNIL',
+    title: 'RGPD, article 4 : responsable de traitement et sous-traitant', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1', checkedAt: '2026-10-04',
+    libelleCourt: 'article 4 du RGPD',
+  },
   'net-dsn-overview': {
     id: 'net-dsn-overview', publisher: 'Net-entreprises',
     title: 'DSN-INFO : la déclaration sociale nominative', url: 'https://www.net-entreprises.fr/tableau-de-bord-dsn/', checkedAt: '2026-09-14',
@@ -55,6 +64,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   'net-fiabilisation': {
     id: 'net-fiabilisation', publisher: 'Net-entreprises',
     title: 'La fiabilisation des données de la DSN', url: 'https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/', checkedAt: '2026-09-14',
+    libelleCourt: 'fiabilisation de la DSN',
   },
   'cnil-donnee': {
     id: 'cnil-donnee', publisher: 'CNIL',
@@ -75,7 +85,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   },
   'methode-memlia': {
     id: 'methode-memlia', publisher: 'Memlia',
-    title: 'Méthode : écrire la règle, éprouver, livrer', url: '/#methode', checkedAt: '2026-09-14',
+    title: 'Méthode : écrire la règle, éprouver, livrer', url: '/methode', checkedAt: '2026-09-14',
   },
   'article-controle-dsn': {
     id: 'article-controle-dsn', publisher: 'Memlia',
@@ -123,7 +133,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   },
   'banque-france-sepa': {
     id: 'banque-france-sepa', publisher: 'Banque de France',
-    title: 'Foire aux questions - Le prélèvement SEPA', url: 'https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa', checkedAt: '2026-09-16',
+    title: 'Foire aux questions - Le prélèvement SEPA', url: 'https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa', checkedAt: '2026-10-08',
   },
   'legifrance-deontologie-honoraires': {
     id: 'legifrance-deontologie-honoraires', publisher: 'Légifrance',
@@ -148,7 +158,7 @@ export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
   },
   'microsoft-rag': {
     id: 'microsoft-rag', publisher: 'Microsoft',
-    title: 'Génération augmentée par récupération (RAG) dans Recherche Azure AI', url: 'https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview', checkedAt: '2026-09-19',
+    title: 'Génération augmentée par récupération (RAG) dans Recherche Azure AI', url: 'https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview', checkedAt: '2026-10-08',
   },
   'cnil-ia-generative-deploiement': {
     id: 'cnil-ia-generative-deploiement', publisher: 'CNIL',
@@ -228,7 +238,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Comparer, tester et documenter sont automatisables ; qualifier l’écart, modifier la paie et déposer restent humains.',
     relatedTerms: ['dsn-val', 'controle-de-coherence', 'regle-de-cabinet'],
     internalLinks: [{ label: 'la méthode complète de contrôle avant DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' }],
-    owner: 'Article contrôle DSN', nextReviewAt: '2027-03-13', sourceIds: ['article-controle-dsn', 'net-fiabilisation'],
+    owner: 'Article contrôle DSN', nextReviewAt: '2027-03-13', sourceIds: ['article-controle-dsn', 'net-fiabilisation'], motsSources: { 'net-fiabilisation': 'cohérences métier' },
   },
   {
     ...common, id: 'production-sociale', term: 'Production sociale', anchor: 'production-sociale', nature: 'Éditoriale Memlia',
@@ -249,7 +259,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Retirer le nom ne suffit pas toujours à sortir du champ du RGPD.',
     automationBoundary: 'Détecter certains champs ou empêcher leur export peut être automatisé ; déterminer la finalité, la base et les accès exige une décision responsable.',
     relatedTerms: ['pseudonymisation', 'anonymisation', 'minimisation-des-donnees'],
-    internalLinks: [{ label: 'le cadrage des données avant développement', href: '/#faq-donnees-reelles' }],
+    internalLinks: [{ label: 'le cadrage des données avant développement', href: '/garanties' }],
     owner: 'Référentiel RGPD', nextReviewAt: '2026-12-13', sourceIds: ['cnil-donnee'],
   },
   {
@@ -271,7 +281,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Les données pseudonymisées conservent un caractère personnel ; la pseudonymisation est réversible, contrairement à l’anonymisation.',
     automationBoundary: 'Appliquer des transformations et tester des seuils est automatisable ; qualifier juridiquement le résultat nécessite une revue humaine.',
     relatedTerms: ['pseudonymisation', 'donnee-personnelle', 'agregat-non-nominatif'],
-    internalLinks: [{ label: 'les garanties appliquées aux données', href: '/#garanties' }],
+    internalLinks: [{ label: 'les garanties appliquées aux données', href: '/garanties' }],
     owner: 'Référentiel RGPD', nextReviewAt: '2026-12-13', sourceIds: ['cnil-anonymisation'],
   },
   {
@@ -282,7 +292,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'La pseudonymisation n’est ni une anonymisation ni une sortie du RGPD.',
     automationBoundary: 'Remplacer les identifiants et séparer les tables est automatisable ; choisir les accès, la conservation et l’usage reste une responsabilité humaine.',
     relatedTerms: ['anonymisation', 'donnee-personnelle', 'tracabilite'],
-    internalLinks: [{ label: 'le cadrage des données avant développement', href: '/#faq-donnees-reelles' }],
+    internalLinks: [{ label: 'le cadrage des données avant développement', href: '/garanties' }],
     owner: 'Référentiel RGPD', nextReviewAt: '2026-12-13', sourceIds: ['cnil-anonymisation'],
   },
   {
@@ -294,7 +304,7 @@ export const GLOSSARY_ENTRIES = ([
     automationBoundary: 'Calculer et afficher les comptes est automatisable ; définir la granularité, la finalité et les droits de lecture relève du cabinet.',
     relatedTerms: ['minimisation-des-donnees', 'anonymisation', 'production-sociale'],
     internalLinks: [{ label: 'structurer un suivi par dossier, sans classer les personnes', href: '/blog/suivre-la-production-sociale-dans-excel' }],
-    owner: 'Positionnement anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['article-production-sociale', 'cnil-rgpd'],
+    owner: 'Positionnement anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['article-production-sociale', 'cnil-rgpd'], motsSources: { 'cnil-rgpd': 'afficher un indicateur' },
   },
   {
     ...common, id: 'lettrage-comptable', term: 'Lettrage comptable', anchor: 'lettrage-comptable', nature: 'Éditoriale Memlia',
@@ -304,7 +314,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Il ne faut pas forcer un lettrage pour faire disparaître un écart ni associer des montants sans vérifier les pièces.',
     automationBoundary: 'Proposer des correspondances exactes ou plausibles est automatisable ; confirmer une affectation ambiguë ou un solde litigieux reste humain.',
     relatedTerms: ['piece-justificative', 'controle-de-coherence', 'tracabilite'],
-    internalLinks: [{ label: 'partir du fichier et écrire la règle de contrôle', href: '/#methode' }],
+    internalLinks: [{ label: 'partir du fichier et écrire la règle de contrôle', href: '/methode' }],
     owner: 'Pratique comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -315,7 +325,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Une écriture ne doit pas être modifiée uniquement pour forcer l’égalité des soldes.',
     automationBoundary: 'Importer, rapprocher des références et lister les écarts est automatisable ; justifier l’écart et passer une écriture restent soumis à validation.',
     relatedTerms: ['lettrage-comptable', 'piece-justificative', 'cas-de-refus'],
-    internalLinks: [{ label: 'partir du fichier et écrire la règle de contrôle', href: '/#integration' }],
+    internalLinks: [{ label: 'cadrer la tâche et ses fichiers', href: '/automatisation-cabinet-comptable' }],
     owner: 'Pratique comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -326,7 +336,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Une checklist générique ne remplace pas les diligences adaptées à la mission et la révision n’est pas la certification des comptes.',
     automationBoundary: 'Exécuter des tests définis et préparer le dossier est automatisable ; fixer les diligences et conclure reste au professionnel.',
     relatedTerms: ['controle-de-coherence', 'piece-justificative', 'validation-humaine'],
-    internalLinks: [{ label: 'partir du fichier et écrire la règle de contrôle', href: '/#methode' }],
+    internalLinks: [{ label: 'partir du fichier et écrire la règle de contrôle', href: '/methode' }],
     owner: 'Pratique comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -337,7 +347,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un montant saisi, une capture sans origine ou un commentaire libre ne constitue pas toujours une preuve suffisante.',
     automationBoundary: 'Vérifier présence, format, date ou doublon est automatisable ; juger l’adéquation de la pièce et la traiter relève du professionnel.',
     relatedTerms: ['tracabilite', 'revision-comptable', 'schema-de-donnees'],
-    internalLinks: [{ label: 'les preuves attendues avant une proposition', href: '/#preuves' }],
+    internalLinks: [{ label: 'les essais avant une proposition', href: '/methode' }],
     owner: 'Pratique comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -348,7 +358,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Convention Memlia : un simple retard ne doit pas déclencher automatiquement un envoi. Une relance précède généralement la mise en demeure en cas d’échec ; ce sont deux étapes distinctes.',
     automationBoundary: 'Détecter les retards et préparer une proposition de message est automatisable ; décider du ton, du destinataire et envoyer reste humain.',
     relatedTerms: ['rapprochement-bancaire', 'cas-de-refus', 'validation-humaine'],
-    internalLinks: [{ label: 'préparer sans envoyer avant validation', href: '/#garanties' }],
+    internalLinks: [{ label: 'préparer sans envoyer avant validation', href: '/garanties' }],
     owner: 'Recouvrement', nextReviewAt: '2026-12-13', sourceIds: ['service-public-recouvrement'],
   },
   {
@@ -359,7 +369,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Une habitude orale ambiguë ne doit pas devenir un automatisme sans validation de son périmètre.',
     automationBoundary: 'Exécuter une règle stabilisée est automatisable ; choisir la règle, ses exceptions et sa version reste une décision du cabinet.',
     relatedTerms: ['controle-de-coherence', 'cas-de-refus', 'validation-humaine'],
-    internalLinks: [{ label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -370,7 +380,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un arrêt explicite est une protection du dossier, pas un échec à masquer.',
     automationBoundary: 'Reconnaître une condition interdite et préparer le diagnostic est automatisable ; corriger ou élargir la règle reste humain.',
     relatedTerms: ['fail-closed', 'schema-de-donnees', 'tracabilite'],
-    internalLinks: [{ label: 'les garanties qui empêchent une sortie incertaine', href: '/#garanties' }],
+    internalLinks: [{ label: 'les garanties qui empêchent une sortie incertaine', href: '/garanties' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -392,7 +402,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Deux fichiers ne sont pas compatibles simplement parce que leurs colonnes se ressemblent visuellement.',
     automationBoundary: 'Valider types, champs et formats est automatisable ; décider du sens métier d’une colonne et faire évoluer le contrat reste humain.',
     relatedTerms: ['cas-de-refus', 'regle-de-cabinet', 'tracabilite'],
-    internalLinks: [{ label: 'intégrer les fichiers déjà utilisés par le cabinet', href: '/#integration' }],
+    internalLinks: [{ label: 'intégrer les fichiers déjà utilisés par le cabinet', href: '/integrations' }],
     owner: 'Contrat de données', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -403,8 +413,8 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'La traçabilité n’est ni une surveillance nominative ni une conservation illimitée de chaque action.',
     automationBoundary: 'Journaliser les étapes techniques prévues est automatisable ; choisir les événements, accès et durées de conservation reste humain.',
     relatedTerms: ['minimisation-des-donnees', 'agregat-non-nominatif', 'validation-humaine'],
-    internalLinks: [{ label: 'les garanties de traitement et de contrôle', href: '/#garanties' }],
-    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['nist', 'methode-memlia'],
+    internalLinks: [{ label: 'les garanties de traitement et de contrôle', href: '/garanties' }],
+    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['nist', 'methode-memlia'], motsSources: { nist: 'retrouver' },
   },
   {
     ...common, id: 'validation-humaine', term: 'Validation humaine', anchor: 'validation-humaine', nature: 'Éditoriale Memlia',
@@ -414,7 +424,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un clic automatique, une absence de réponse ou un écran sans éléments de preuve n’est pas une validation.',
     automationBoundary: 'Préparer le dossier de décision et consigner le choix est automatisable ; porter le jugement et l’autoriser reste humain.',
     relatedTerms: ['regle-de-cabinet', 'cas-de-refus', 'tracabilite'],
-    internalLinks: [{ label: 'la proposition avant la saisie ou la validation', href: '/#methode' }],
+    internalLinks: [{ label: 'la proposition avant la saisie ou la validation', href: '/methode' }],
     owner: 'Doctrine human-in-the-loop', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -425,7 +435,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Remplacer un champ absent par zéro, deviner une feuille ou poursuivre silencieusement fabrique un résultat non fiable.',
     automationBoundary: 'Arrêter et diagnostiquer selon des conditions codées est automatisable ; corriger l’entrée ou changer la règle demande validation.',
     relatedTerms: ['cas-de-refus', 'schema-de-donnees', 'validation-humaine'],
-    internalLinks: [{ label: 'les garanties qui ferment le traitement en cas de doute', href: '/#garanties' }],
+    internalLinks: [{ label: 'les garanties qui ferment le traitement en cas de doute', href: '/garanties' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   // --- vague 1 (2026-09-16) : vingt termes ; contrat Ressources v3, revue métier R5 ---
@@ -438,7 +448,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'L’automatisation est parfois confondue avec la numérisation, qui consiste seulement à remplacer le papier par un fichier, ou avec l’intelligence artificielle, qui infère un résultat au lieu de suivre une règle écrite d’avance.',
     automationBoundary: 'Exécuter la règle sur chaque occurrence et signaler les cas hors règle est automatisable. Écrire la règle, en fixer les limites et décider quoi faire des cas signalés restent des choix humains, revus à échéance régulière.',
     relatedTerms: ['flux-de-travail', 'declencheur', 'exception', 'regle-de-cabinet'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -450,7 +460,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un flux de travail est parfois pris pour le logiciel qui l’exécute ; il existait pourtant sur papier ou dans une tête avant tout outil, et continue d’exister si l’outil change.',
     automationBoundary: 'Documenter les étapes et exécuter celles qui suivent une règle stable est automatisable. Décider de l’ordre des étapes, du responsable de chacune et de ce qui justifie une exception reste une décision du cabinet.',
     relatedTerms: ['automatisation', 'declencheur', 'regle-de-cabinet', 'proposition-puis-validation'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -474,7 +484,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Une exception est parfois prise pour un bug à corriger dans l’outil ; elle signale au contraire que la règle a correctement reconnu ses propres limites plutôt que de produire un résultat non fiable.',
     automationBoundary: 'Détecter qu’un cas sort de la règle et le signaler avec un motif explicite est automatisable. Décider quoi faire de ce cas — corriger, écarter, faire remonter au client — reste une décision humaine.',
     relatedTerms: ['cas-de-refus', 'fail-closed', 'file-d-anomalies', 'controle-de-coherence'],
-    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -486,7 +496,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Une file d’anomalies est parfois confondue avec une alerte envoyée par courriel à chaque cas : la file regroupe et hiérarchise, l’alerte au fil de l’eau disperse l’attention et noie les cas urgents dans les cas mineurs.',
     automationBoundary: 'Détecter chaque anomalie, la qualifier et l’ajouter à la file est automatisable. Décider de l’ordre de traitement et trancher chaque cas reste une tâche humaine, à une cadence choisie par le cabinet.',
     relatedTerms: ['exception', 'controle-de-coherence', 'tracabilite'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -498,7 +508,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Ce principe est parfois confondu avec « l’outil fait tout, puis on vérifie après coup » : la validation intervient avant l’effet, jamais en rattrapage d’un résultat déjà produit.',
     automationBoundary: 'Préparer la proposition à partir d’une règle et consigner la décision prise est automatisable. Porter le jugement sur le cas précis et l’autoriser reste, par construction, une étape humaine.',
     relatedTerms: ['validation-humaine', 'regle-de-cabinet', 'fail-closed'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -510,7 +520,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'La recette est parfois confondue avec une démonstration : la démonstration montre un cas favorable choisi à l’avance, la recette confronte le livrable aux cas propres du cabinet, y compris ceux qui doivent échouer.',
     automationBoundary: 'Préparer le jeu de cas et comparer un résultat attendu à un résultat obtenu est automatisable. Décider si l’écart constaté est acceptable, et accepter le livrable, reste une décision du cabinet.',
     relatedTerms: ['jeu-d-essai-fictif', 'cas-de-refus', 'validation-humaine'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Méthode Memlia', nextReviewAt: '2026-12-13', sourceIds: ['methode-memlia', 'legifrance-ccag-tic'],
   },
   {
@@ -522,8 +532,8 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un jeu d’essai fictif est parfois pris pour un jeu de données anonymisées : l’anonymisation part de données réelles et cherche à empêcher la réidentification, alors que le jeu fictif n’a jamais correspondu à une personne existante.',
     automationBoundary: 'Générer des variantes du jeu fictif pour couvrir de nouveaux cas est automatisable une fois le jeu initial construit. Décider quels cas limites et quels cas de refus le jeu doit couvrir reste un choix humain, propre à chaque traitement.',
     relatedTerms: ['anonymisation', 'recette', 'cas-de-refus'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
-    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia', 'cnil-anonymisation'],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
+    owner: 'Méthode Memlia', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia', 'cnil-anonymisation'], motsSources: { 'cnil-anonymisation': 'données anonymisées' },
   },
   {
     ...common, id: 'systeme-d-ia', term: 'Système d’IA', anchor: 'systeme-d-ia', nature: 'Réglementaire',
@@ -540,10 +550,10 @@ export const GLOSSARY_ENTRIES = ([
   {
     ...common, id: 'ia-generative', term: 'IA générative', anchor: 'ia-generative', nature: 'Technique',
     sourceCheckedAt: '2026-09-16' as const,
-    definition: 'L’intelligence artificielle dite générative désigne les systèmes capables de créer des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne, plutôt que de retrouver un contenu déjà existant. Le résultat produit est nouveau à chaque exécution, même pour une consigne proche d’une exécution précédente.',
+    definition: 'L’intelligence artificielle dite générative désigne les systèmes capables de produire des contenus — texte, code informatique, images, son ou vidéo — à partir d’une consigne. Ils peuvent aussi résumer, corriger ou traduire des contenus existants. Le résultat est généré, mais pas nécessairement inédit ni différent à chaque exécution.',
     context: 'Un cabinet la rencontre dans un assistant de rédaction, un outil de synthèse ou un générateur de code utilisé par son éditeur logiciel. Le contenu produit doit être relu avant tout usage, car sa plausibilité ne garantit pas son exactitude.',
     exampleFictitious: 'Dans un test fictif, un brouillon de courrier de relance est rédigé par un outil génératif à partir de trois informations : le nom du dossier fictif, l’échéance et la pièce manquante. Un collaborateur fictif relit le brouillon avant tout envoi.',
-    commonConfusion: 'L’IA générative est parfois confondue avec un moteur de recherche : le moteur de recherche retrouve un contenu qui existe déjà quelque part, l’IA générative produit un contenu qui n’existait pas avant la demande.',
+    commonConfusion: 'Un moteur de recherche retrouve des contenus ; un système génératif produit une sortie, éventuellement à partir de contenus retrouvés. Cette sortie peut reprendre une formulation existante et doit être vérifiée.',
     automationBoundary: 'Produire un brouillon à partir d’une consigne stable est automatisable. Relire ce brouillon, corriger ce qu’il contient et décider de l’envoyer restent des étapes humaines, quel que soit le soin apporté à la consigne.',
     relatedTerms: ['grand-modele-de-langage', 'hallucination', 'systeme-d-ia'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
@@ -577,7 +587,7 @@ export const GLOSSARY_ENTRIES = ([
     ...common, id: 'reconnaissance-optique-de-caracteres', term: 'Reconnaissance optique de caractères (OCR)', anchor: 'reconnaissance-optique-de-caracteres', nature: 'Technique',
     sourceCheckedAt: '2026-09-16' as const,
     definition: 'La reconnaissance optique de caractères, ou OCR, est une technologie qui transforme l’image d’un document — une facture scannée, une photo de ticket — en texte numérique exploitable, mot par mot et ligne par ligne. Elle lit des caractères ; elle n’interprète pas le sens de ce qu’elle lit.',
-    context: 'Un cabinet la rencontre en amont de toute saisie automatisée de factures ou de notes de frais : un document scanné doit d’abord passer par l’OCR avant que ses champs puissent être identifiés. La qualité du scan conditionne directement la qualité du texte obtenu.',
+    context: 'Un cabinet l’utilise pour lire une facture scannée ou une photo de justificatif. La qualité de l’image conditionne celle du texte obtenu. Un document contenant déjà du texte exploitable ou des données structurées ne nécessite pas forcément cette étape.',
     exampleFictitious: 'Sur un ticket de caisse fictif légèrement froissé, l’OCR restitue correctement le montant total mais bute sur le nom du commerçant, imprimé trop pâle. Le champ douteux est signalé plutôt que deviné.',
     commonConfusion: 'L’OCR est parfois prise pour de la compréhension du document ; elle restitue des caractères sans savoir lequel est un montant, une date ou un nom, ce que fait l’étape d’extraction qui suit.',
     automationBoundary: 'Convertir une image en texte brut est entièrement automatisable et constitue la fonction même de l’OCR. Juger de la fiabilité d’une lecture douteuse — caractère peu net, document froissé — reste une vérification humaine avant usage.',
@@ -588,10 +598,10 @@ export const GLOSSARY_ENTRIES = ([
   {
     ...common, id: 'extraction-de-donnees', term: 'Extraction de données', anchor: 'extraction-de-donnees', nature: 'Technique',
     sourceCheckedAt: '2026-09-16' as const,
-    definition: 'L’extraction de données est l’étape qui repère, dans le texte obtenu après lecture d’un document, les champs qui ont un sens métier — fournisseur, montant, taux de TVA, date d’échéance — pour les rendre exploitables par un traitement. Elle intervient après la lecture du document, jamais avant.',
-    context: 'Un cabinet s’en sert juste après la reconnaissance de caractères, pour transformer un texte brut en informations classées prêtes à être contrôlées. Une extraction erronée sur un seul champ suffit à fausser tout le traitement qui suit.',
+    definition: 'L’extraction de données repère les champs utiles — fournisseur, montant, taux de TVA, date d’échéance — dans un document ou un flux pour les rendre exploitables. Elle peut partir d’une image, d’un texte natif ou de données structurées, sans passage obligatoire par un OCR séparé.',
+    context: 'Un cabinet transforme ainsi les informations reçues en champs prêts à contrôler. Selon le format, la lecture et l’extraction sont séparées ou intégrées dans le même traitement. Une erreur sur un champ peut fausser la suite.',
     exampleFictitious: 'Sur une facture fictive, l’extraction identifie correctement le montant et la date, mais place par erreur le numéro de commande dans le champ réservé au numéro de facture. L’écart est signalé avant toute intégration comptable.',
-    commonConfusion: 'L’extraction de données est parfois confondue avec l’OCR elle-même : l’OCR restitue du texte sans savoir ce qu’il représente, l’extraction attribue ensuite chaque portion de texte à un champ précis.',
+    commonConfusion: 'L’OCR reconnaît des caractères dans une image ; l’extraction identifie les champs utiles. Les deux peuvent être combinés, mais l’extraction peut aussi utiliser du texte natif ou un flux structuré.',
     automationBoundary: 'Repérer un champ selon un schéma stable et connu est automatisable. Traiter un document dont la mise en page ne correspond à aucun schéma prévu doit être signalé pour une vérification humaine plutôt que deviné.',
     relatedTerms: ['reconnaissance-optique-de-caracteres', 'schema-de-donnees', 'piece-justificative'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
@@ -601,24 +611,24 @@ export const GLOSSARY_ENTRIES = ([
     ...common, id: 'sous-traitant-rgpd', term: 'Sous-traitant (RGPD)', anchor: 'sous-traitant-rgpd', nature: 'Réglementaire',
     sourceCheckedAt: '2026-09-16' as const,
     definition: 'Au sens du RGPD, le sous-traitant est la personne physique ou morale qui traite des données personnelles pour le compte d’un autre organisme, le responsable de traitement, dans le cadre d’un service ou d’une prestation. Ses obligations concernant ces données doivent figurer dans le contrat qui le lie au responsable de traitement.',
-    context: 'Un cabinet, responsable du traitement de ses dossiers clients, qualifie chaque éditeur logiciel ou hébergeur qui traite ces données pour son compte : un outil d’IA hébergé par un tiers relève souvent de ce statut. Cette qualification impose d’inscrire dans le contrat les obligations du sous-traitant concernant les données personnelles.',
-    exampleFictitious: 'Pour un cabinet fictif, un éditeur de messagerie hébergé à l’étranger qui traite les courriels professionnels est qualifié de sous-traitant ; un contrat fictif décrit alors la nature du traitement, sa durée et les garanties apportées.',
-    commonConfusion: 'Un sous-traitant au sens du RGPD est parfois confondu avec un simple fournisseur ; un fournisseur qui ne touche jamais aux données personnelles n’a pas ce statut, tandis qu’un éditeur d’IA qui héberge des données de dossiers en a un.',
+    context: 'Les rôles se qualifient pour chaque traitement d’après les finalités, les moyens et les instructions : le cabinet n’est pas présumé responsable de traitement pour tous ses fichiers. Un prestataire qui traite des données pour le compte du responsable et selon ses instructions peut être sous-traitant ; les obligations correspondantes sont alors inscrites au contrat.',
+    exampleFictitious: 'Dans un cas fictif, un cabinet détermine les finalités et les moyens de sa messagerie interne. Un hébergeur traite les messages pour son compte et selon ses instructions : ce traitement est encadré par un contrat de sous-traitance.',
+    commonConfusion: 'Le titre de fournisseur, d’éditeur ou de cabinet ne suffit pas à fixer un rôle RGPD. Recevoir des données ne fait pas automatiquement d’un organisme un sous-traitant : il faut examiner le traitement et qui en détermine les finalités et les moyens.',
     automationBoundary: 'Recenser les outils qui traitent des données personnelles pour signaler ceux à qualifier est automatisable. Qualifier juridiquement chaque cas et négocier les clauses contractuelles requises restent des tâches humaines, en général avec un conseil compétent.',
     relatedTerms: ['donnee-personnelle', 'minimisation-des-donnees', 'pseudonymisation'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
-    owner: 'Direction du cabinet (RGPD)', nextReviewAt: '2026-12-13', sourceIds: ['cnil-sous-traitant'],
+    owner: 'Direction du cabinet (RGPD)', nextReviewAt: '2026-12-13', sourceIds: ['cnil-sous-traitant', 'cnil-roles-rgpd'],
   },
   {
     ...common, id: 'pre-comptabilite', term: 'Pré-comptabilité', anchor: 'pre-comptabilite', nature: 'Professionnelle',
     sourceCheckedAt: '2026-09-16' as const,
-    definition: 'La pré-comptabilité regroupe les tâches qui précèdent l’écriture comptable proprement dite : collecter les pièces, les trier par nature et par période, vérifier qu’elles sont lisibles et complètes, puis les préparer pour la saisie. Elle s’arrête avant l’imputation sur un compte, qui relève de la tenue comptable.',
+    definition: 'La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.',
     context: 'Un cabinet y consacre un temps important en amont de chaque clôture, en particulier lorsque les pièces arrivent par des canaux variés — courriel, dépôt, courrier. Une pré-comptabilité incomplète retarde mécaniquement toute la suite de la production.',
     exampleFictitious: 'Pour un dossier fictif, les pièces d’un mois sont d’abord triées par nature — achats, ventes, banque — avant tout début de saisie. Une pièce illisible est mise de côté et signalée plutôt que saisie approximativement.',
-    commonConfusion: 'La pré-comptabilité est parfois confondue avec la tenue comptable elle-même ; elle s’arrête au tri et à la vérification des pièces, avant toute décision d’imputation sur un compte du plan comptable.',
-    automationBoundary: 'Trier des pièces reçues par type et signaler celles qui sont illisibles ou incomplètes est automatisable une fois la nomenclature du cabinet définie. Décider de l’imputation comptable d’une pièce reste un acte professionnel réservé au collaborateur ou à l’expert-comptable.',
+    commonConfusion: 'Une proposition d’imputation ou d’écriture n’est pas une écriture validée. La pré-comptabilité prépare le contrôle ; elle ne remplace pas la tenue comptable ni sa validation.',
+    automationBoundary: 'Collecter, extraire, préparer une proposition selon la règle du cabinet et signaler les pièces incertaines est automatisable. Décider de l’imputation définitive et valider l’écriture restent au cabinet.',
     relatedTerms: ['piece-justificative', 'completude-du-dossier', 'extraction-de-donnees'],
-    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Pôle comptable', nextReviewAt: '2026-12-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -630,29 +640,29 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'La complétude est parfois confondue avec le simple fait que le client a transmis un lot de documents ; un lot reçu peut très bien être incomplet au regard de la liste attendue pour la période.',
     automationBoundary: 'Comparer les pièces reçues à la liste attendue et signaler les manques est automatisable, à condition que la liste soit définie et tenue à jour. Décider qu’une pièce reçue est acceptable malgré un défaut mineur reste un jugement humain.',
     relatedTerms: ['piece-justificative', 'relance-de-pieces', 'controle-de-coherence'],
-    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Pôle comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
     ...common, id: 'relance-de-pieces', term: 'Relance de pièces', anchor: 'relance-de-pieces', nature: 'Professionnelle',
     sourceCheckedAt: '2026-09-16' as const,
     definition: 'La relance de pièces est la demande, adressée à un client selon une cadence définie à l’avance, des pièces manquantes pour compléter un dossier ; elle s’arrête dès leur réception. Elle porte sur des documents attendus dans une mission en cours, jamais sur une somme due.',
-    context: 'Un cabinet l’engage dès qu’une pièce attendue manque pour avancer un dossier, avec un ton et une cadence différents d’une relance d’impayé. Elle cesse automatiquement dès que la complétude du dossier est atteinte.',
-    exampleFictitious: 'Pour un dossier fictif, un premier message rappelle la pièce manquante à sept jours, un second à quatorze jours avec le collaborateur en copie. La relance s’arrête dès réception d’un relevé bancaire lisible pour la période concernée.',
+    context: 'Un cabinet prépare la relance dès qu’une pièce attendue manque, selon une cadence convenue. La préparation s’arrête lorsque la pièce attendue est reçue et lisible ; l’envoi reste soumis à validation humaine.',
+    exampleFictitious: 'Pour un dossier fictif, un brouillon à sept jours puis un autre à quatorze jours sont proposés selon la cadence d’essai. Chaque envoi attend une validation ; la réception d’un relevé lisible arrête la préparation suivante.',
     commonConfusion: 'La relance de pièces est souvent confondue avec la relance d’impayés ; l’une réclame un document nécessaire à une mission, l’autre réclame une somme due, avec un ton et des conséquences très différents.',
-    automationBoundary: 'Envoyer un rappel selon une cadence fixée et l’arrêter à réception de la pièce est automatisable. Décider du contenu d’une relance sensible ou d’y déroger pour un client particulier reste une décision humaine.',
+    automationBoundary: 'Identifier les pièces manquantes, préparer le rappel selon la cadence et arrêter sa préparation à réception est automatisable. L’envoi attend une validation humaine ; le cabinet décide du contenu et des dérogations.',
     relatedTerms: ['completude-du-dossier', 'declencheur', 'piece-justificative'],
-    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'automatiser la relance des pièces manquantes', href: '/blog/automatiser-la-relance-des-pieces-clients' }, { label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Pôle comptable', nextReviewAt: '2026-12-13', sourceIds: ['methode-memlia'],
   },
   {
     ...common, id: 'prelevement-sepa-et-rejet', term: 'Prélèvement SEPA et rejet', anchor: 'prelevement-sepa-et-rejet', nature: 'Professionnelle',
-    sourceCheckedAt: '2026-09-16' as const,
-    definition: 'Le prélèvement SEPA permet de débiter les honoraires d’un client qui y a consenti par la signature d’un mandat de prélèvement ; un rejet est le refus de ce débit par la banque du client, qui doit le lui notifier en précisant le motif, par exemple une provision insuffisante. Un rejet n’est pas un impayé définitif : il appelle une nouvelle présentation ou un contact avec le client.',
-    context: 'Un cabinet le suit dans son propre encaissement d’honoraires mensualisés : chaque rejet doit être identifié, motivé et relancé selon un délai propre au motif constaté. Le volume de rejets d’un mois donne une vision agrégée de la santé des encaissements, jamais un classement de clients.',
-    exampleFictitious: 'Pour un cabinet fictif, un prélèvement du mois est rejeté pour provision insuffisante ; une nouvelle présentation est programmée dix jours plus tard, avec un message informant le client fictif du rejet et de sa cause.',
-    commonConfusion: 'Un rejet de prélèvement est parfois pris pour un impayé acté ; la plupart des rejets se résolvent par une nouvelle présentation ou un rappel, et ne devraient être traités comme un impayé qu’après plusieurs échecs.',
-    automationBoundary: 'Détecter un rejet, en lire le motif codé et programmer une nouvelle présentation selon une règle fixée est automatisable. Décider de contacter directement un client après plusieurs rejets successifs reste une décision humaine.',
+    sourceCheckedAt: '2026-10-08' as const,
+    definition: 'Le prélèvement SEPA permet de débiter les honoraires d’un client qui y a consenti par la signature d’un mandat de prélèvement. Un rejet est le refus de ce débit par la banque du client, qui doit le lui notifier en précisant le motif, par exemple une provision insuffisante. Le rejet ne met pas fin à la dette ; la suite dépend du motif et de la situation du client.',
+    context: 'Convention Memlia : pour les honoraires réglés par prélèvement, le suivi rapproche le rejet de la créance et prépare la suite selon la règle écrite du cabinet. Le volume de rejets donne une vue agrégée des encaissements, jamais un classement de clients.',
+    exampleFictitious: 'Dans un cabinet fictif, un prélèvement est rejeté pour provision insuffisante. Le suivi prépare une proposition de représentation avec le mandat, le motif, le montant et la date envisagée. Le collaborateur vérifie ces éléments et valide la proposition avant toute programmation ou transmission bancaire.',
+    commonConfusion: 'Un rejet ne suffit pas à autoriser une nouvelle présentation. Un mandat révoqué et une provision insuffisante appellent des suites différentes ; le cabinet vérifie le motif avant de décider.',
+    automationBoundary: 'Détecter le rejet, lire son motif codé et préparer une proposition de représentation est automatisable. Vérifier le mandat, le motif, le montant et la date, puis autoriser la programmation ou la transmission bancaire, reste au cabinet. Le contact avec le client attend aussi sa validation.',
     relatedTerms: ['relance-de-pieces', 'recouvrement-amiable', 'declencheur'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
     owner: 'Gestion du cabinet', nextReviewAt: '2026-12-13', sourceIds: ['banque-france-sepa'],
@@ -660,14 +670,14 @@ export const GLOSSARY_ENTRIES = ([
   {
     ...common, id: 'honoraires-mensualises-et-actes-hors-forfait', term: 'Honoraires mensualisés et actes hors forfait', anchor: 'honoraires-mensualises-et-actes-hors-forfait', nature: 'Professionnelle',
     sourceCheckedAt: '2026-09-16' as const,
-    definition: 'Les honoraires mensualisés sont prélevés chaque mois sur une base fixée par la lettre de mission ; un acte hors forfait correspond à une prestation non comprise dans ce forfait, qui s’ajoute et se facture séparément, une seule fois. Le code de déontologie prévoit que les honoraires sont fixés librement entre le client et l’expert-comptable, en fonction de l’importance des diligences, de la difficulté des cas et des frais exposés.',
+    definition: 'Les honoraires mensualisés sont facturés ou répartis mensuellement selon la lettre de mission. Le prélèvement est un mode de règlement possible, avec un mandat signé ; la mensualisation ne le rend pas obligatoire. Un acte hors forfait est une prestation non comprise dans le forfait, facturée séparément selon les conditions convenues. Le code de déontologie prévoit que les honoraires sont fixés librement entre le client et l’expert-comptable, en fonction de l’importance des diligences, de la difficulté des cas et des frais exposés.',
     context: 'Un cabinet distingue les deux dans sa facturation courante : le forfait couvre les missions récurrentes définies à l’avance, l’acte hors forfait couvre une demande ponctuelle qui s’y ajoute. La confusion entre les deux est une source fréquente de facturation contestée.',
     exampleFictitious: 'Pour un client fictif, le forfait mensuel couvre la tenue et la paie courante ; une attestation ponctuelle demandée en cours d’année est facturée à part, en acte hors forfait, sur la base d’un tarif fictif communiqué au préalable.',
     commonConfusion: 'L’erreur la plus fréquente est de facturer en acte hors forfait une prestation déjà comprise dans le forfait mensualisé, ce qui revient à facturer deux fois le même travail.',
     automationBoundary: 'Vérifier qu’un acte facturé hors forfait n’apparaît pas déjà dans le périmètre du forfait est automatisable, à condition que ce périmètre soit décrit avec précision. Fixer le tarif d’un acte hors forfait et le proposer au client restent des décisions humaines.',
     relatedTerms: ['recouvrement-amiable', 'prelevement-sepa-et-rejet'],
     internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }],
-    owner: 'Gestion du cabinet', nextReviewAt: '2026-12-13', sourceIds: ['legifrance-deontologie-honoraires'],
+    owner: 'Gestion du cabinet', nextReviewAt: '2026-12-13', sourceIds: ['legifrance-deontologie-honoraires', 'banque-france-sepa'],
   },
   // --- vague 2 (2026-09-19) : dix termes ; contrat Ressources v3, sources rouvertes le jour même ---
   {
@@ -679,7 +689,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'L’automatisation robotisée est souvent confondue avec l’intelligence artificielle : elle rejoue une séquence de gestes décrite à l’avance et ne déduit rien du contenu qu’elle manipule.',
     automationBoundary: 'Rejouer la séquence et s’arrêter dès qu’un écran ne correspond plus est automatisable. Décider qu’une application modifiée reste sûre à piloter, et à quelle cadence, reste une décision humaine.',
     relatedTerms: ['automatisation', 'flux-de-travail', 'connecteur-et-api'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Pôle comptable', nextReviewAt: '2026-12-13', sourceIds: ['microsoft-power-automate-rpa'],
   },
   {
@@ -691,19 +701,19 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'L’idempotence est souvent prise pour une annulation : elle ne défait rien et ne rattrape aucune erreur, elle garantit seulement qu’un second passage ne modifie pas l’état obtenu au premier.',
     automationBoundary: 'Reconnaître qu’une ligne existe déjà et refuser de la réécrire est automatisable, à condition qu’une clé stable la désigne. Choisir cette clé et trancher qu’un doublon apparent en est un reste humain.',
     relatedTerms: ['cle-de-rapprochement', 'schema-de-donnees', 'fail-closed'],
-    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Contrat technique', nextReviewAt: '2027-03-13', sourceIds: ['rfc-9110-idempotence'],
   },
   {
     ...common, id: 'reliquat-d-exceptions', term: 'Reliquat d’exceptions', anchor: 'reliquat-d-exceptions', nature: 'Professionnelle',
     sourceCheckedAt: '2026-09-19' as const,
     definition: 'Le reliquat d’exceptions est la part des occurrences qu’un traitement automatisé n’a pas su trancher et qu’il remonte à un collaborateur : cas hors règle, pièce illisible, écart inexpliqué. Il se compte à chaque passage et se suit dans le temps comme une charge de travail attendue.',
-    context: 'Un cabinet le regarde avant d’étendre une automatisation : un reliquat stable indique une règle qui tient, un reliquat qui enfle signale une règle devenue fausse ou une source qui a changé de forme.',
+    context: 'Un cabinet le suit sur des données et un périmètre comparables. Un reliquat stable n’est pas une preuve de fiabilité : les résultats préparés, les motifs d’arrêt et les cas limites restent à contrôler. Une hausse appelle l’examen des entrées et de la règle, sans conclure à sa cause par le seul compteur.',
     exampleFictitious: 'Sur un jeu fictif de deux cents lignes, cent quatre-vingt-douze sont traitées et huit remontent : six pièces illisibles et deux montants sans correspondance. Le chiffre huit est affiché à côté du total, jamais masqué.',
     commonConfusion: 'Un reliquat est souvent lu comme un taux d’erreur : le premier est attendu et dimensionné dès l’écriture de la règle, le second est un défaut à corriger.',
     automationBoundary: 'Compter les cas écartés, les classer par motif et les présenter est automatisable. Traiter chaque cas remonté, et décider si leur nombre justifie de réécrire la règle, revient au cabinet.',
     relatedTerms: ['exception', 'file-d-anomalies', 'seuil-d-alerte'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Pôle comptable', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -715,7 +725,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un seuil d’alerte est parfois pris pour une tolérance comptable : il décide de ce qui remonte à un humain, jamais de ce qui est régulier, exact ou acceptable en comptabilité.',
     automationBoundary: 'Appliquer le seuil, compter ce qu’il écarte et l’afficher est automatisable. Fixer sa valeur, la réviser et assumer ce qu’elle laisse passer restent des décisions du cabinet.',
     relatedTerms: ['reliquat-d-exceptions', 'regle-de-cabinet', 'exception'],
-    internalLinks: [{ label: 'structurer un suivi par dossier, sans classer les personnes', href: '/blog/suivre-la-production-sociale-dans-excel' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'structurer un suivi par dossier, sans classer les personnes', href: '/blog/suivre-la-production-sociale-dans-excel' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Doctrine anti-surveillance', nextReviewAt: '2027-03-13', sourceIds: ['methode-memlia'],
   },
   {
@@ -727,31 +737,31 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un agent est souvent confondu avec un assistant conversationnel : le second répond dans une fenêtre, le premier agit sur un environnement défini — applications tierces, bases de données, postes de travail — et en modifie l’état.',
     automationBoundary: 'Enchaîner des lectures, préparer un classement et rédiger une proposition est automatisable. Écrire dans un logiciel du cabinet ou envoyer un message reste soumis à une validation humaine explicite.',
     relatedTerms: ['systeme-d-ia', 'ia-generative', 'generation-augmentee-par-recuperation', 'validation-humaine'],
-    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'les garanties appliquées aux données', href: '/#garanties' }],
+    internalLinks: [{ label: 'la carte des tâches automatisables du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' }, { label: 'les garanties appliquées aux données', href: '/garanties' }],
     owner: 'Référentiel IA', nextReviewAt: '2026-12-13', sourceIds: ['cnil-ia-agentique'],
   },
   {
     ...common, id: 'generation-augmentee-par-recuperation', term: 'Génération augmentée par récupération (RAG)', anchor: 'generation-augmentee-par-recuperation', nature: 'Technique',
-    sourceCheckedAt: '2026-09-19' as const,
-    definition: 'La génération augmentée par récupération est une technique où un modèle de langage répond à partir de documents qui lui sont fournis au moment de la question, plutôt qu’à partir de ce qu’il a mémorisé. Les réponses sont ancrées dans un contenu choisi, et les passages utilisés peuvent être cités.',
-    context: 'Un cabinet y voit le moyen de faire répondre un modèle sur ses propres documents — une convention collective, un dossier permanent — sans les confondre avec le reste du web.',
+    sourceCheckedAt: '2026-10-08' as const,
+    definition: 'La génération augmentée par récupération ajoute au contexte d’un modèle de langage des passages recherchés dans un corpus au moment de la question. Le modèle les utilise pour préparer sa réponse et peut en citer la provenance. Il conserve ses connaissances d’entraînement et peut encore s’appuyer sur elles.',
+    context: 'Un cabinet peut ainsi fournir au modèle les passages utiles de ses documents, par exemple une convention collective ou un dossier permanent. Il définit le corpus accessible et vérifie les références de la réponse.',
     exampleFictitious: 'Sur un corpus fictif de notes internes, une question sur une règle de calcul rend la réponse accompagnée du paragraphe d’où elle est tirée. Sans paragraphe rattaché, la réponse est refusée plutôt que produite.',
-    commonConfusion: 'Cette technique est souvent prise pour une garantie d’exactitude : elle borne ce que le modèle peut invoquer, sans empêcher une lecture fautive du passage retenu ni le choix d’un document inadapté.',
+    commonConfusion: 'Le RAG ne garantit pas l’exactitude. Le modèle peut mal lire un passage, retenir un document inadapté ou ajouter une information absente du corpus. Une citation doit être confrontée à la réponse.',
     automationBoundary: 'Rechercher les passages pertinents, les fournir au modèle et afficher la citation est automatisable. Vérifier que le passage cité dit bien ce que la réponse affirme reste une lecture humaine.',
     relatedTerms: ['grand-modele-de-langage', 'hallucination', 'agent-ia'],
-    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'les garanties appliquées aux données', href: '/#garanties' }],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'les garanties appliquées aux données', href: '/garanties' }],
     owner: 'Référentiel IA', nextReviewAt: '2026-12-13', sourceIds: ['microsoft-rag'],
   },
   {
     ...common, id: 'modele-local', term: 'Modèle local', anchor: 'modele-local', nature: 'Technique',
     sourceCheckedAt: '2026-09-19' as const,
-    definition: 'Un modèle local s’exécute sur une machine contrôlée par le cabinet : les documents soumis ne quittent pas son parc et aucun prestataire ne les reçoit. C’est le mode de déploiement, et non le pays d’hébergement, qui détermine qui peut lire les données.',
+    definition: 'Un modèle local s’exécute sur une machine contrôlée par le cabinet. Ce lieu d’exécution ne garantit pas l’absence de connexions : l’application peut utiliser des connecteurs, une télémétrie ou des services distants. Les flux et les accès doivent être vérifiés pour le déploiement retenu.',
     context: 'La question se pose avant tout usage sur des pièces couvertes par le secret professionnel. À défaut d’un déploiement local, il faut établir dans quelle mesure le prestataire qui opère le service peut réutiliser ce qui lui est transmis.',
     exampleFictitious: 'Dans un cabinet fictif, un modèle installé sur un poste dédié résume des pièces fictives sans connexion sortante. Le même travail confié à un service distant sortirait les pièces du parc, ce qui change la question posée.',
     commonConfusion: 'Un modèle local est souvent confondu avec un service « hébergé en France » : un service distant, même installé en France, reçoit bien les documents, et la réutilisation possible par le prestataire qui l’opère reste à établir.',
-    automationBoundary: 'Exécuter le traitement sans connexion sortante et le prouver est automatisable. Décider quelles pièces peuvent être soumises, et à quel mode de déploiement, reste une décision du cabinet.',
+    automationBoundary: 'Les contrôles réseau peuvent vérifier les flux prévus dans un environnement donné. Autoriser les accès, choisir les pièces soumises et accepter le mode de déploiement restent des décisions du cabinet.',
     relatedTerms: ['sous-traitant-rgpd', 'systeme-d-ia', 'donnee-personnelle'],
-    internalLinks: [{ label: 'les garanties appliquées aux données', href: '/#garanties' }, { label: 'le cadrage des données avant développement', href: '/#faq-donnees-reelles' }],
+    internalLinks: [{ label: 'les garanties appliquées aux données', href: '/garanties' }, { label: 'le cadrage de la tâche avant développement', href: '/automatisation-cabinet-comptable' }],
     owner: 'Référentiel RGPD', nextReviewAt: '2026-12-13', sourceIds: ['cnil-ia-generative-deploiement'],
   },
   {
@@ -775,7 +785,7 @@ export const GLOSSARY_ENTRIES = ([
     commonConfusion: 'Un export est souvent pris pour une copie stable : chaque ligne d’un même fichier doit porter le même nombre de champs, et rien n’oblige un éditeur à conserver ses colonnes d’une version à l’autre.',
     automationBoundary: 'Vérifier l’en-tête, compter les champs et refuser un fichier non conforme est automatisable. Décider d’accepter une nouvelle colonne, ou de réécrire la règle de lecture, reste une décision humaine.',
     relatedTerms: ['schema-de-donnees', 'connecteur-et-api', 'cle-de-rapprochement'],
-    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/#methode' }],
+    internalLinks: [{ label: 'ce qui reste à vérifier après une saisie automatisée', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' }, { label: 'écrire puis éprouver la règle du cabinet', href: '/methode' }],
     owner: 'Contrat technique', nextReviewAt: '2026-12-13', sourceIds: ['rfc-4180-csv'],
   },
   {

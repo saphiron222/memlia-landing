@@ -1,0 +1,10 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import SuiviCircularisation from '@/components/outils/SuiviCircularisation.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('suivi-circularisation');
+---
+<Outil outil={outil}>
+  <SuiviCircularisation />
+  <p><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> : préparer les tiers selon la règle de votre cabinet et les pièces à examiner pour les écarts. La sélection définitive et les conclusions restent au CAC ; les plateformes gardent les envois et les relances.</p>
+</Outil>

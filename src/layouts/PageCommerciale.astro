@@ -1,9 +1,8 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
-import PageAttribution from '@/components/PageAttribution.astro';
-import PageEvidence from '@/components/PageEvidence.astro';
 import { CTA, SITE } from '@/data/site.mjs';
 import { organizationNode } from '@/data/schema.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
@@ -11,13 +10,14 @@ import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
 import { eeatCommercial } from '@/data/page-eeat';
 
 /**
- * Coque des cinq pages commerciales du site v2, construite avec le langage de l'accueil :
- * hero centré sous une pastille, une preuve fonctionnelle plein cadre dans le même cadre de
- * verre que la vidéo de l'accueil, puis les sections de la page, puis le même appel final.
+ * Coque des cinq pages commerciales du site v2 : le héros centré du système de page
+ * (docs/design/2026-10-07-systeme-de-page.md), surtitre, titre, chapeau, actions, puis la preuve
+ * de tête dans le cadre unique des maquettes ; puis les sections de la page ; puis l'appel final.
  *
- * Les motifs partagés par les cinq pages (rangée preuve, bande à filets, grille de cartes,
- * étapes alternées, renvois) vivent ici, sous `.page-v2`, pour qu'aucune page n'en garde
- * une copie qui dériverait.
+ * Le rythme des sections (`.pv`, au pas de `--section-espace`, blocs espacés de `--bloc-ecart`)
+ * vit ici, sous `.page-v2`, pour qu'aucune page n'en garde une copie qui dériverait. Les formes
+ * (cartes, bande, lignes, liste de liens, étapes, cadre) sont celles de tout le site, définies une
+ * fois dans global.css.
  */
 interface Props {
   page: {
@@ -29,7 +29,9 @@ interface Props {
     ariane: string;
     secondaire: { libelle: string; href: string };
   };
-  /** Pastille au-dessus du titre, comme le hero de l'accueil. */
+  /** Réserve les lignes du titre sur téléphone lorsque les chasses du repli changent sa composition. */
+  lignesTitreMobile?: number;
+  /** Surtitre au-dessus du titre, comme le héros de l'accueil. */
   eyebrow: string;
   /** Preuve fonctionnelle de tête (série v2), rendue avec son image sociale par scripts/render-proofs-v2.mjs. */
   hero: ProofId;
@@ -38,7 +40,9 @@ interface Props {
   /** Appel final propre à la page ; sinon celui de l'accueil. */
   appel?: { titre?: string; texte?: string; points?: string[]; action?: { libelle: string; href: string }; secondaire?: { libelle: string; href: string } };
 }
-const { page, eyebrow, hero, noeuds = [], appel = {} } = Astro.props;
+// Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » sur le site.
+// Une source se cite par un lien sur un mot ou un chiffre du texte ; les données E-E-A-T ne servent plus qu'au JSON-LD.
+const { page, eyebrow, hero, lignesTitreMobile, noeuds = [], appel = {} } = Astro.props;
 /**
  * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
  * page courante : c'est là que la réservation directe prend le relais.
@@ -94,10 +98,10 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
         <ol><li><a href="/">Accueil</a></li><li aria-current="page">{page.ariane}</li></ol>
       </nav>
       <div class="page-hero-texte">
-        <span class="pastille">{eyebrow}</span>
-        <h1 id="page-titre" class="page-h1">{page.h1}</h1>
+        <span class="surtitre">{eyebrow}</span>
+        <h1 id="page-titre" class="page-h1" style={lignesTitreMobile ? `--page-titre-lignes-mobile: ${lignesTitreMobile}` : undefined}><Insecable texte={page.h1} /></h1>
         <p class="page-chapeau">{page.chapeau}</p>
-        {eeat && <PageAttribution eeat={eeat} />}
+        {/* Pas de signature ni de dates d’article hors du blog (décision de Kevin du 04/10/2026). */}
         <div class="page-actions">
           <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
           {secondaireCourriel && <Fragment set:html={`<!--email_off-->`} />}
@@ -106,7 +110,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
         </div>
       </div>
       <div class="page-cadre">
-        <div class="page-verre">
+        <div class="page-verre cadre">
           <img src={heroSrc} alt={preuve.alt} width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" class="page-ecran" data-proof={hero} />
         </div>
       </div>
@@ -114,7 +118,6 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
 
     <slot />
 
-    {eeat && <PageEvidence eeat={eeat} />}
     <AppelFinal id="suite" {...appel} />
   </div>
 </Base>
@@ -127,95 +130,38 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   .ariane li + li::before { content: '/'; margin-right: 6px; color: var(--picto-repos); }
   .ariane a { color: var(--texte-2); }
   .page-hero-texte { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 32px; text-align: center; }
-  .page-h1 { max-width: 1050px; font-size: clamp(2.25rem, 1rem + 3.6vw, 3.75rem); }
+  .page-h1 { max-width: 1050px; font-size: var(--titre-page); }
+  @media (max-width: 30rem) {
+    /* La réserve suit l'interligne réel et ne limite jamais un titre plus long. */
+    .page-h1 { min-height: calc(var(--page-titre-lignes-mobile, 0) * 1lh); }
+  }
   .page-chapeau { max-width: 672px; color: var(--texte-2); font-size: var(--t-base); }
   .page-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 12px; }
-  .page-cadre { position: relative; left: 50%; width: calc(100% + 256px); max-width: min(1200px, calc(100vw - 32px)); margin-top: 48px; transform: translateX(-50%); }
-  .page-ecran {
-    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
-    border: 1px solid var(--ligne); border-radius: var(--r-ecran); box-shadow: 0 12px 36px rgba(35, 31, 32, 0.06);
-  }
+  .page-cadre { position: relative; left: 50%; width: calc(100% + 256px); max-width: min(1200px, calc(100vw - 32px)); margin-top: var(--bloc-ecart); transform: translateX(-50%); }
+  /* Le cadre unique (global.css) porte le bord et le rayon ; l'écran y est posé. */
+  .page-ecran { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   @media (min-width: 64rem) {
     .page-hero { padding: 64px var(--marge-page-lg) 0; }
     .page-hero-texte { min-height: 270px; justify-content: center; }
-    .page-verre { padding: 16px; border: 1px solid rgba(35, 31, 32, 0.096); border-radius: var(--r-cadre); background: rgba(252, 251, 247, 0.2); }
   }
 
-  /* ---- Rythme : 96 px, 128 px en grand écran, comme chaque section de l'accueil. ---- */
-  .page-v2 :global(.pv) { padding: 96px var(--marge-page) 0; }
-  .page-v2 :global(.pv-tete) { display: grid; gap: 16px; max-width: 780px; }
-  .page-v2 :global(.pv-tete p) { margin: 0; }
-  .page-v2 :global(.pv-copy) { display: grid; gap: 20px; max-width: 800px; }
+  /* ---- Rythme du système de page : chaque section au pas de --section-espace, ses blocs
+     (en-tête, rangée, forme, paragraphe) espacés de --bloc-ecart. L'appel final porte son
+     propre espace : la dernière section n'en ajoute pas. ---- */
+  .page-v2 :global(.pv) { display: grid; gap: var(--bloc-ecart); padding: var(--section-espace) var(--marge-page) 0; }
+  .page-v2 :global(.pv > *) { min-width: 0; }
+  /* Texte d'une rangée : l'en-tête du système, puis les paragraphes tels qu'écrits. */
+  .page-v2 :global(.pv-copy) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
   .page-v2 :global(.pv-copy p) { margin: 0; }
-  .page-v2 :global(.pv-copy h2) { font-size: var(--t-4xl); }
-  .page-v2 :global(.pv-copy strong) { color: var(--texte-fort); font-weight: 600; }
+  .page-v2 :global(.pv-copy h2) { font-size: var(--titre-section); }
+  .page-v2 :global(.pv strong) { color: var(--texte-fort); font-weight: 600; }
+  /* La bande va bord à bord de la feuille, seule forme à le faire. */
+  .page-v2 :global(.pv > .bande) { margin-inline: calc(-1 * var(--marge-page)); }
+  /* Un lien dans un paragraphe se voit : c'est là que vivent les sources et les renvois (Kevin, 06/10/2026). */
+  .page-v2 :global(.pv p a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
 
-  /* Rangée preuve inversée : illustration à gauche, comme les étapes impaires de l'accueil. */
   @media (min-width: 64rem) {
-    .page-v2 :global(.pv-inverse .proof-row) { direction: rtl; }
-    .page-v2 :global(.pv-inverse .proof-row > *) { direction: ltr; }
-    .page-v2 :global(.pv-inverse .proof-copy) { padding-right: 0; padding-left: 48px; }
-  }
-
-  /* Bande à filets : cellules crème séparées d'un filet, sans bordure par cellule. */
-  .page-v2 :global(.pv-bande) { margin-top: 40px; }
-  .page-v2 :global(.pv-bande-liste) {
-    display: grid; grid-template-columns: 1fr; gap: 1px; margin: 0; padding: 0; list-style: none;
-    background: var(--ligne-douce); border-top: 1px solid var(--ligne); border-bottom: 1px solid var(--ligne);
-  }
-  .page-v2 :global(.pv-cellule) { display: grid; gap: 12px; align-content: start; padding: 40px 24px 48px; background: var(--surface-feuille); }
-  .page-v2 :global(.pv-cellule h3) { font-size: var(--t-2xl); max-width: 22ch; }
-  .page-v2 :global(.pv-cellule p) { margin: 0; color: var(--texte-2); max-width: 44ch; }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-bande-liste) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: 1 / -1; }
-    .page-v2 :global(.pv-cellule) { padding: 48px 32px 64px; }
-  }
-  @media (min-width: 64rem) {
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .page-v2 :global(.pv-bande-liste[data-colonnes='3'] .pv-cellule:last-child) { grid-column: auto; }
-    .page-v2 :global(.pv-cellule) { padding: 64px 48px; }
-  }
-
-  /* Grille de cartes : le motif des usages de l'accueil, marque picto puis texte. */
-  .page-v2 :global(.pv-cartes) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-carte) { min-width: 0; padding: 28px; border-radius: var(--r-carte); background: var(--surface-page); }
-  .page-v2 :global(.pv-carte-marque) { display: grid; place-items: center; width: 48px; height: 48px; color: var(--picto-repos); border-radius: var(--r-pastille); background: var(--surface-feuille); }
-  .page-v2 :global(.pv-carte-corps) { display: grid; gap: 12px; margin-top: 20px; }
-  .page-v2 :global(.pv-carte h3) { font-size: var(--t-2xl); line-height: 1.2; }
-  .page-v2 :global(.pv-carte p) { margin: 0; max-width: 52ch; color: var(--texte-2); }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-cartes) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-    .page-v2 :global(.pv-carte) { padding: 40px; }
-    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child) { grid-column: 1 / -1; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 32px; }
-    .page-v2 :global(.pv-cartes[data-vedette] .pv-carte:first-child .pv-carte-corps) { margin-top: 0; }
-  }
-
-  /* Étapes alternées : copie et illustration, comme la méthode de l'accueil. */
-  .page-v2 :global(.pv-etapes) { display: grid; gap: 56px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-etape) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: center; }
-  .page-v2 :global(.pv-etape-copy) { display: grid; gap: 16px; min-width: 0; }
-  .page-v2 :global(.pv-etape-copy p) { margin: 0; }
-  .page-v2 :global(.pv-etape-numero) { color: var(--accent-texte); font-weight: 600; }
-  .page-v2 :global(.pv-etape h2) { font-size: var(--t-3xl); }
-  @media (min-width: 64rem) {
-    .page-v2 :global(.pv-etapes) { gap: 80px; }
-    .page-v2 :global(.pv-etape) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; }
-    .page-v2 :global(.pv-etape-copy) { padding: 32px 48px 32px 0; }
-    .page-v2 :global(.pv-etape:nth-child(odd) .pv-etape-copy) { grid-column: 2; grid-row: 1; padding: 32px 0 32px 48px; }
-    .page-v2 :global(.pv-etape:nth-child(odd) .functional-proof) { grid-column: 1; grid-row: 1; }
-  }
-
-  /* Renvois : les cartes bordées du bloc « Par où commencer » de l'accueil. */
-  .page-v2 :global(.pv-renvois) { display: grid; gap: 16px; margin: 40px 0 0; padding: 0; list-style: none; }
-  .page-v2 :global(.pv-renvoi) { display: grid; gap: 10px; padding: 24px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
-  .page-v2 :global(.pv-renvoi p) { margin: 0; color: var(--texte); max-width: 44ch; }
-  .page-v2 :global(.pv-renvoi a) { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: var(--accent-texte); }
-  @media (min-width: 48rem) {
-    .page-v2 :global(.pv-renvois) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .page-v2 :global(.pv-renvois[data-colonnes='3']) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  @media (min-width: 64rem) {
-    .page-v2 :global(.pv) { padding: 128px var(--marge-page-lg) 0; }
+    .page-v2 :global(.pv) { padding-inline: var(--marge-page-lg); }
+    .page-v2 :global(.pv > .bande) { margin-inline: calc(-1 * var(--marge-page-lg)); }
   }
 </style>

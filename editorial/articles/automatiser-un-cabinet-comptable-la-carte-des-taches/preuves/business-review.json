@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "business-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
-  "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c",
+  "checkedAt": "2026-10-08",
+  "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
+  "manifestSha256": "515344dfc273ab31a91844c66ff13343f517bc0775f8e1f43281f7adfae512da",
   "observations": [
     "Contrôle business-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -15,86 +15,86 @@
     {
       "id": "review-claim-unit-1dc9c56e18bd-1-cnil-roles",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-1dc9c56e18bd-1",
       "claimSha256": "7a5503e934fb28817d41ddd7d69d73a11514cdff3fac3b07c0907ea52beb117e",
       "sourceId": "cnil-roles",
-      "sourceContentSha256": "0aa8bb40f50528952782ebbf7cd9515e5e2a33b17bc2b4a0c862b75bec98ce11",
+      "sourceContentSha256": "a9fcb2851e47a1b45ec6ab687596f186928b97ae90d3e8305e565f0b81ff160c",
       "citationSha256": "a7e399081ad228603e3ae4114c792128f007d85020258128621a0271f566fe1a",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "La fiche CNIL distingue les rôles selon les faits et le traitement ; l'article demande cette qualification sans attribuer un rôle unique au cabinet du seul fait que le fichier vient du client."
+      "checkedAt": "2026-10-08",
+      "reasoning": "CNIL cnil-roles.source.txt:732-734 : qualification au cas par cas selon les faits, non choix contractuel. corps.md:118 conserve cette portée et ne déduit pas le rôle du fichier client. Copie et SHA-256 contrôlés."
     },
     {
       "id": "review-claim-unit-279d5bd8bf20-1-sp-conservation",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-279d5bd8bf20-1",
       "claimSha256": "2023ed4ccd60bb092bd263483469fa84f1d81e076bdd952bbb9861b5c67c41d2",
       "sourceId": "sp-conservation",
-      "sourceContentSha256": "fffbe0ab21c00944167fe668fe08deca5ef83ceac9dc697d7f61d67cedd332b1",
+      "sourceContentSha256": "1579fad787123bf506ed4d7e7f82708ddad2ed43c881149c7b3166103651abc5",
       "citationSha256": "f1931c6a1dbaee7d6642d38840c7f946b56efe2d78df4c426cb545c7f8acb3ed",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "Service-Public indique une durée minimale et des délais variant selon la nature du document ; le pilier ne fixe pas de durée générale de conservation."
+      "checkedAt": "2026-10-08",
+      "reasoning": "Service-Public sp-conservation.source.txt:307 : conservation minimale, délai variable selon nature et obligations. corps.md:48 ne fixe aucune durée universelle. Copie et SHA-256 contrôlés."
     },
     {
       "id": "review-claim-unit-e8439da9f147-1-net-crm",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-e8439da9f147-1",
       "claimSha256": "d7a7b4f575917e0b133ccb4b11688abaea9ae331ca801331de503548086fc8d4",
       "sourceId": "net-crm",
-      "sourceContentSha256": "9a6b8de31b36259329bdf8c110680cee10c1127166e1c47c22801f09ebbb653f",
+      "sourceContentSha256": "e81b8d066ac82ef8140757916c4a74c830aec4e866b7751a2e60c2b408305feb",
       "citationSha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "Net-entreprises définit le CRM comme retour après réception de déclaration lorsqu'une erreur ou suspicion est détectée ; la correction engageant les droits du salarié reste humaine."
+      "checkedAt": "2026-10-08",
+      "reasoning": "Net-entreprises net-crm.source.txt:156 : définition du retour CRM après réception de déclaration en cas d'erreur ou suspicion. corps.md:71 conserve la décision de correction au responsable. Copie et SHA-256 contrôlés."
     },
     {
       "id": "review-claim-unit-ceb5c8df6333-1-impots-calendrier",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-ceb5c8df6333-1",
       "claimSha256": "82cce41ee2da94b0a2a13edf6c64faead1831a39e5e61725f67002a8a48a455b",
       "sourceId": "impots-calendrier",
-      "sourceContentSha256": "15c908d3ce9a54af55fd1c9cdc96d0d1b477eb2e4f1968471322a3a189c4bc7b",
+      "sourceContentSha256": "b8099015d8289529a05582a4829329cad507ad5d5689f1b72267cd09e4b30186",
       "citationSha256": "9ac9ef6b56935e495b65b71a3269d4f8e3cf5c7386eb8cca7a1686ca5c7d0fc8",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "Le calendrier DGFiP mentionne la fenêtre du 15 au 24 septembre 2026 pour la déclaration mensuelle de TVA et la date figurant dans l'espace professionnel ; l'article garde cette portée mensuelle."
+      "checkedAt": "2026-10-08",
+      "reasoning": "DGFiP impots-calendrier.source.txt:642 : TVA mensuelle de septembre 2026, entre les 15 et 24, date dans l'espace professionnel. corps.md:80 borne explicitement le mois et la date propre à l'entreprise, sans généralisation à octobre. Copie et SHA-256 contrôlés."
     },
     {
       "id": "review-claim-unit-2614d7101a11-1-cnil-principes",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-2614d7101a11-1",
       "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "sourceId": "cnil-principes",
-      "sourceContentSha256": "1c73164bc14a3174abe3737f4551cdab68ee530893619a286ad9f60bf8259c7b",
+      "sourceContentSha256": "8acef21340da5ec6762df4416344e2e23f8502331f502d655084555f36219b6d",
       "citationSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "Le texte RGPD publié par la CNIL contient la formule de minimisation citée ; le passage la situe parmi d'autres obligations à apprécier traitement par traitement."
+      "checkedAt": "2026-10-08",
+      "reasoning": "CNIL cnil-principes.source.txt:528-533, article 5 : données adéquates, pertinentes, limitées à la finalité. corps.md:120 indique parmi d'autres obligations RGPD. Copie et SHA-256 contrôlés."
     },
     {
       "id": "review-claim-unit-2614d7101a11-2-cnil-durees",
       "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
+      "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
       "claimId": "claim-unit-2614d7101a11-2",
       "claimSha256": "425018890498eb4534d4a887a5f4e6049eed1c45e02941d48e2a844c25450e91",
       "sourceId": "cnil-durees",
-      "sourceContentSha256": "392f8e1800d89961a4286ff0542eb2fc8e5b046bfcd250118ad78e2b0c2dde74",
+      "sourceContentSha256": "fc703ae5db93c5e4e530fee7d70aab0899477b639c186b366ba8954d411da9ba",
       "citationSha256": "461c2f50a632e8d85d7fdbd75beaa13bb871fc5651adb58ce1d46fd441da28ee",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-09-29",
-      "reasoning": "La CNIL confie la définition de la durée à l'analyse de conformité du responsable pour chaque traitement ; la règle de purge citée ne dispense pas des durées et obligations d'archivage applicables."
+      "checkedAt": "2026-10-08",
+      "reasoning": "CNIL cnil-durees.source.txt:774-776 : durée issue de l'analyse de conformité du responsable pour son traitement. corps.md:120 ne dispense pas des obligations de conservation documentaire rappelées ligne 48. Copie et SHA-256 contrôlés."
     }
   ]
 }

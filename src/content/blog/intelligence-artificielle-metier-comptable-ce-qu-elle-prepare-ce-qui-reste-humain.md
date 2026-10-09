@@ -4,7 +4,7 @@ titreOnglet: "Intelligence artificielle, métier comptable et compétences | Mem
 resume: "L’intelligence artificielle ne remplace pas un métier en bloc. Elle prépare une information, applique une règle écrite et signale le doute ; le cabinet valide, arbitre et fait évoluer la règle."
 description: "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs."
 datePublication: 2026-09-21
-dateMiseAJour: 2026-09-28
+dateMiseAJour: 2026-10-03
 auteur: kevin
 sujets: [ia, cabinet, automatisation]
 motsCles: ["métier comptable intelligence artificielle compétences", "intelligence artificielle cabinet comptable", "compétences comptables", "validation humaine"]
@@ -23,7 +23,7 @@ tache: "Comprendre ce que l’intelligence artificielle peut préparer dans un c
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-09-28
+  date: 2026-10-03
 funnel: TOFU
 contentType: searchable
 format: thought-leadership
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Frontière en trois colonnes et trois cas fictifs, dont une ambiguïté et une règle absente ; aucune liste de tâches ni donnée réelle."
 reviewRule: "Relire la source OPCO Atlas à six mois et à toute modification de la page de branche."
-reviewer: qa:t_de67db5a
+reviewer: metier:t_303e7c6d
 sourcesVerifieesLe: 2026-09-28
 cta:
   label: "Confier cette tâche"
@@ -96,9 +96,8 @@ Le cabinet fixe le périmètre de la règle, les entrées qu’elle accepte, la 
 
 Informer un client, interpréter une situation ou assumer un arbitrage engage une relation et une responsabilité. La préparation rassemble les éléments utiles ; la personne compétente choisit et assume l’action.
 
-<figure data-blog-proof="competences-frontiere">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Frontière fictive entre préparation automatisée, validation et décision humaine." tabindex="0"><img src="/proofs/blog/competences-frontiere.webp" alt="Frontière fictive entre préparation automatisée, validation et décision humaine." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : cadre HTML et jeu fictif décrits dans l’article · capture du 2026-09-21</figcaption>
+<figure data-blog-proof="competences-tableau-dossier">
+  <img src="/proofs/blog/competences-tableau-dossier.webp" alt="Tableau fictif du dossier D-008 : travaux préparés, propositions à valider et décisions du collaborateur." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## La règle écrite
@@ -125,9 +124,8 @@ Informer un client, interpréter une situation ou assumer un arbitrage engage un
 
 **Le jeu d’essai.** La même règle a été exécutée sur trois entrées fictives : une entrée complète, une pièce à deux interprétations et une entrée sans règle applicable. Le rejeu a produit une proposition et deux refus motivés.
 
-<figure data-blog-proof="competences-refus">
-  <div class="preuve-defilante" role="region" aria-label="Preuve visuelle défilante : Résultats du rejeu fictif : une proposition et deux refus motivés." tabindex="0"><img src="/proofs/blog/competences-refus.webp" alt="Résultats du rejeu fictif : une proposition et deux refus motivés." width="1600" height="900" loading="lazy" decoding="async"></div>
-  <figcaption>Source : oracle exécutable sur le jeu fictif, rendu dans un cadre HTML figé · capture du 2026-09-21</figcaption>
+<figure data-blog-proof="competences-journal-rejeu">
+  <img src="/proofs/blog/competences-journal-rejeu.webp" alt="Journal fictif du rejeu : une proposition et deux refus motivés, avec le détail du cas à deux interprétations." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 ## Rejoué sur le jeu fictif

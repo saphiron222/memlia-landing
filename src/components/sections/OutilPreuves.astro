@@ -5,32 +5,37 @@ interface Props {
   source: OutilDefinition['source'];
   mentionLocale: string;
   refus: string;
+  assemblage?: boolean;
 }
 
-const { source, mentionLocale, refus } = Astro.props;
+const { source, mentionLocale, refus, assemblage = false } = Astro.props;
+// Système de page : un en-tête (surtitre, titre de section), puis trois engagements en bande,
+// bord à bord de la feuille, comme les principes des services.
 ---
 
-<section class="outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
-  <div class="conteneur outil-preuves-inner">
-    <div class="outil-preuves-heading rv">
-      <span class="eyebrow">La règle reste lisible</span>
-      <h2 id="outil-preuves-titre">Le calcul, sa source et son refus sont visibles.</h2>
+<section class="section pile outil-preuves" data-tool-section="preuves" aria-labelledby="outil-preuves-titre">
+  <div class="conteneur">
+    <div class="tete rv">
+      <p class="surtitre">La règle reste lisible</p>
+      <h2 id="outil-preuves-titre">{assemblage ? 'L’assemblage, sa source et son refus sont visibles.' : 'Le calcul, sa source et son refus sont visibles.'}</h2>
     </div>
-    <div class="outil-preuves-grid rv-groupe">
-      <article class="outil-preuve rv">
-        <h3>Calcul local</h3>
-        <p>{mentionLocale}</p>
+  </div>
+  <div class="bande coins">
+    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+    <div class="cartes rv-groupe">
+      <article class="cellule outil-preuve rv">
+        <h3 class="carte-titre">{assemblage ? 'Assemblage local' : 'Calcul local'}</h3>
+        <p class="carte-texte">{mentionLocale}</p>
       </article>
-      <article class="outil-preuve rv">
-        <h3>Arrêt explicite</h3>
-        <p>{refus}</p>
+      <article class="cellule outil-preuve rv">
+        <h3 class="carte-titre">Arrêt explicite</h3>
+        <p class="carte-texte">{refus}</p>
       </article>
-      <article class="outil-preuve rv" data-official-source>
-        <h3>Source officielle</h3>
-        <p>{source.extrait}</p>
+      <article class="cellule outil-preuve rv" data-official-source>
+        <h3 class="carte-titre">{source.titre ?? 'Source officielle'}</h3>
+        <p class="carte-texte">{source.extrait}</p>
         <p class="outil-source-meta">
           <a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a>
-          <span>Vérifiée le {source.verifieeLe}.</span>
         </p>
         {source.complement && (
           <p class="outil-source-complement">
@@ -44,45 +49,17 @@ const { source, mentionLocale, refus } = Astro.props;
 </section>
 
 <style>
-  .outil-preuves {
-    border-bottom: 1px solid var(--ligne);
-    background: var(--surface-page);
-  }
-  .outil-preuves-inner {
-    display: grid;
-    gap: 48px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  .outil-preuves-heading {
-    display: grid;
-    gap: 12px;
-    max-width: 760px;
-  }
-  .outil-preuves-grid {
-    display: grid;
-    gap: 1px;
-    border-block: 1px solid var(--ligne);
-    background: var(--ligne);
-  }
-  .outil-preuve {
-    display: grid;
-    align-content: start;
-    gap: 12px;
-    min-width: 0;
-    padding: 32px 24px 40px;
-    background: var(--surface-feuille);
-  }
-  .outil-preuve h3 {
-    font-size: var(--t-2xl);
-  }
-  .outil-preuve p {
-    color: var(--texte-2);
-  }
+  /* Les trois preuves sont les cellules de la bande du site (`.bande`, global.css). */
   .outil-source-meta {
     display: grid;
     gap: 4px;
     font-size: var(--t-sm);
+  }
+  /* Même couleur que le texte de la cellule (`.carte-texte`). */
+  .outil-source-meta,
+  .outil-source-complement {
+    margin: 0;
+    color: var(--texte-2);
   }
   .outil-preuve a {
     color: var(--accent-texte);
@@ -93,29 +70,5 @@ const { source, mentionLocale, refus } = Astro.props;
     padding-top: 12px;
     border-top: 1px solid var(--ligne-douce);
     font-size: var(--t-sm);
-  }
-  @media (min-width: 48rem) {
-    .outil-preuves-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .outil-preuve:last-child {
-      grid-column: 1 / -1;
-    }
-  }
-  @media (min-width: 64rem) {
-    .outil-preuves-inner {
-      gap: 64px;
-      padding-top: 112px;
-      padding-bottom: 112px;
-    }
-    .outil-preuves-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .outil-preuve:last-child {
-      grid-column: auto;
-    }
-    .outil-preuve {
-      padding: 40px 32px 48px;
-    }
   }
 </style>

@@ -28,12 +28,15 @@ import {
   PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource, jourRecuperationParis,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
+import { estRattrapageIA } from './lib/blog-ia-catchup.mjs';
 import { retirerPreuvesInline } from './lib/blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
 export { corpsSansTitreDuplique } from './lib/blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256, renderedBodySha256 } from './lib/blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, renderedBodySha256, recipeSubstanceSha256 } from './lib/blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
+import { estReliquatW39, verifierIdentiteW39, lireCadrageW39 } from './lib/blog-w39-framing.mjs';
 import { inscrireArticle } from './seo/forge-seo.mjs';
+import { readDilaCopy } from './lib/dila-source-copy.mjs';
 
 export const IMAGE_REVIEW_CRITERIA = ['brief-six-components', 'generation-constraints', 'fictive-provenance', 'recognizable-subject', 'technical-derivatives', 'alt-information'];
 export const LARGEURS_HERO = [768, 1200, 1600];
@@ -138,7 +141,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
     publicationDate: recette.date, updatedAt: recette.updatedAt ?? null, topics: recette.topics, keywords: recette.keywords,
     primaryQuery: recette.primaryQuery, secondaryQueries: recette.secondaryQueries, intent: recette.intent, fanOut: recette.fanOut,
     role: { primary: recette.role.primary, secondary: recette.role.secondary ?? [], proof: { level: recette.role.proofLevel, source: 'preuves/role.json', verifiedAt: jour } },
-    businessReview: { required: true, reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
+    businessReview: { required: true, reviewerId: revues?.business?.reviewerId ?? recette.businessReview.reviewerId, role: recette.businessReview.role, status: revues?.business ? 'PASS' : 'FAIL', evidence: 'preuves/business-review.json' },
     funnel: recette.funnel, cluster: recette.cluster, famille: recette.famille, contentType: recette.contentType, format: recette.format,
     task: recette.task, rankability: recette.rankability, businessRelevance: recette.businessRelevance,
     proofStatus: 'verifiee', proofRequired: recette.proofRequired,
@@ -147,6 +150,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
       id: s.id, publisher: s.publisher, title: s.title, url: s.url, checkedAt: datesSources.get(s.id) ?? jour,
       level: s.level, provenance: 'primary', official: s.official === true, upstreamUrl: s.url,
       classificationReason: s.classificationReason, method: null,
+      ...(s.dilaCopyPath !== undefined ? { dilaCopyPath: `preuves/sources/${s.id}.dila.json` } : {}),
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
     author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
@@ -232,14 +236,21 @@ function preuveSourceReutilisable(preuve, source, dossier, slug, jour) {
     || preuve.requestedUrl !== source.url || preuve.finalUrl !== source.url || preuve.upstreamUrl !== source.url
     || preuve.excerpt !== source.excerpt || preuve.level !== source.level || preuve.provenance !== 'primary'
     || preuve.official !== (source.official === true) || preuve.classificationReason !== source.classificationReason
-    || preuve.method !== null || !Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300
+    || preuve.method !== null || (source.dilaCopyPath === undefined && (!Number.isInteger(preuve.httpStatus) || preuve.httpStatus < 200 || preuve.httpStatus >= 300))
     || !/^\d{4}-\d{2}-\d{2}$/.test(preuve.checkedAt ?? '')
     || !Number.isInteger(ageSource(preuve.checkedAt, jour)) || ageSource(preuve.checkedAt, jour) < 0 || ageSource(preuve.checkedAt, jour) > 7
-    || jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt
+    || (source.dilaCopyPath === undefined && jourRecuperationParis(preuve.retrievedAt) !== preuve.checkedAt)
     || preuve.contentPath !== `preuves/sources/${source.id}.source.txt`) return false;
   const copiePath = join(dossier, preuve.contentPath);
   if (!existsSync(copiePath)) return false;
   const copie = readFileSync(copiePath, 'utf8');
+  if (source.dilaCopyPath !== undefined) {
+    try {
+      if (preuve.accessMode !== 'dila-copy' || preuve.httpStatus !== null || preuve.dilaCopyPath !== `preuves/sources/${source.id}.dila.json`) return false;
+      const dila = readDilaCopy({ root: dossier, path: preuve.dilaCopyPath, url: source.url, excerpt: source.excerpt, expectedSha256: preuve.dilaCopySha256 });
+      if (dila.text !== copie || dila.retrievedAt !== preuve.retrievedAt) return false;
+    } catch { return false; }
+  }
   return /^[a-f0-9]{64}$/.test(preuve.contentSha256 ?? '') && sha256(copie) === preuve.contentSha256 && copie.includes(source.excerpt);
 }
 
@@ -249,6 +260,11 @@ export async function verifierSources({ root, slug, recette, dossierRecette, jou
   let recetteModifiee = false;
   const datesSources = new Map();
   for (const source of recette.sources) {
+    if (source.dilaCopyPath !== undefined) {
+      readDilaCopy({ root: dossierRecette, path: source.dilaCopyPath, url: source.url, excerpt: source.excerpt });
+      // L'export A4 devient un fichier du dossier scellé, avec ses dates inchangées.
+      writeFileSync(join(dossier, `preuves/sources/${source.id}.dila.json`), readFileSync(resolve(dossierRecette, source.dilaCopyPath)));
+    }
     for (let tentative = 0; tentative < 2; tentative += 1) {
       const evidencePath = join(dossier, `preuves/sources/${source.id}.json`);
       let existante = null;
@@ -498,19 +514,30 @@ export function declarerImage(root, heroId, alt) {
   writeFileSync(path, texte);
 }
 
+function verifierFile(root, slug, date, statut, serie, queue) {
+  const existant = queue.candidates.find((c) => c.slug === slug);
+  const w39 = estReliquatW39(slug);
+  if (w39) verifierIdentiteW39({ slug, serie, date }, existant, date);
+  const actifs = queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)
+    && (c !== existant || (w39 && c.status === 'publie')));
+  if (w39 && existant?.status === 'publie') throw new Error('La Cicatrice W39 est déjà publiée ; aucun nouvel exemplaire ni édition.');
+  if (w39 && date > aujourdhui()) throw new Error('Le cadrage W39 refuse une date future.');
+  if (w39) lireCadrageW39(root, date);
+  if (w39 || estRattrapageIA(slug) || !existant || existant.date !== date || existant.serie !== (serie ?? undefined)
+    || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
+    verifierPlafonds(actifs, date, { serie, slug, root });
+  }
+}
+
 function inscrireFile(root, slug, date, statut, serie = null) {
   const path = join(root, 'editorial/queue.json');
   const queue = lireJson(path);
+  verifierFile(root, slug, date, statut, serie, queue);
   const existant = queue.candidates.find((c) => c.slug === slug);
   if (existant) {
-    if (existant.date !== date || existant.serie !== (serie ?? undefined)
-      || (['archive', 'bloque'].includes(existant.status) && !['archive', 'bloque'].includes(statut))) {
-      verifierPlafonds(queue.candidates.filter((c) => c !== existant && !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
-    }
     existant.status = statut; existant.date = date; if (serie) existant.serie = serie; else delete existant.serie;
   }
   else {
-    verifierPlafonds(queue.candidates.filter((c) => !['archive', 'bloque'].includes(c.status)), date, { serie, slug });
     queue.candidates.push({ slug, date, status: statut, ...(serie ? { serie } : {}) });
   }
   ecrireJson(path, queue);
@@ -535,7 +562,8 @@ const echapperHtml = (texte) => String(texte)
 
 /**
  * Ajoute les preuves visuelles déclarées par la recette sans modifier son corps éditorial.
- * Source et date restent dans la recette ; la page expose l'image fixe sans légende technique.
+ * La source et la date restent traçables dans la recette et le manifeste internes. La page
+ * publique rend seulement une image fixe et responsive, comme les articles de référence.
  * Chaque insertion échoue fermée si le H2 d'ancrage a disparu : une preuve ne doit jamais
  * glisser silencieusement vers une section sans rapport après une réécriture.
  */
@@ -565,10 +593,10 @@ export function injecterPreuvesInline(corps, preuves = []) {
   for (const [titre, groupe] of groupes) {
     const ancre = `\n## ${titre}\n`;
     if (!resultat.includes(ancre)) throw new Error(`Preuves inline : H2 d’ancrage absent « ${titre} ».`);
-    const figures = groupe.map((preuve) => {
-      const imagePath = `/proofs/blog/${preuve.id}.webp`;
-      return `<figure data-blog-proof="${preuve.id}">\n  <img src="${imagePath}" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`;
-    }).join('\n\n');
+    // Recette de référence (décision Kevin du 03/10/2026) : une seule image 1600 × 900 par
+    // figure, la même sur bureau et sur téléphone. Une variante portrait « -mobile » n'est
+    // jamais servie, même si un tel fichier existe : la figure illustre, elle n'explique pas.
+    const figures = groupe.map((preuve) => `<figure data-blog-proof="${preuve.id}">\n  <img src="/proofs/blog/${preuve.id}.webp" alt="${echapperHtml(preuve.alt)}" width="1600" height="900" loading="lazy" decoding="async">\n</figure>`).join('\n\n');
     resultat = resultat.replace(ancre, `\n${figures}\n\n## ${titre}\n`);
   }
   return resultat;
@@ -610,12 +638,21 @@ export function verifierRegleEcrite(corps, { date }) {
 export async function materialiser({ root, slug, statut, fetcher, rendreImage, jour }) {
   const jourDebut = aujourdhui();
   jour ??= jourDebut;
+  // Le calendrier matérialisé n'est pas une autorité : comparer au plan recalculé
+  // avant toute écriture, y compris pour les appels programmatiques à materialiser.
+  const planificateur = join(root, 'docs/strategy/site-v3/build-cluster-plan.py');
+  if (existsSync(planificateur)) {
+    const controle = spawnSync('python3', [planificateur, '--slot', slug, jourDebut],
+      { cwd: root, encoding: 'utf8', timeout: 30_000 });
+    if (controle.status !== 0) throw new Error(`Créneau éditorial refusé : ${controle.error?.message || controle.stderr?.trim() || controle.stdout?.trim() || 'contrôle indisponible'}`);
+  }
   const refuserChangementDeJour = () => {
     if (aujourdhui() !== jourDebut) throw new Error(`Le jour civil Europe/Paris a changé pendant la matérialisation (${jourDebut} → ${aujourdhui()}) : arrêter, reprendre une nouvelle préparation et obtenir une revue du candidat au jour réel. Ne pas sceller les fichiers partiels.`);
   };
   const { dossierRecette, recette, corps, revues } = chargerRecette(root, slug);
+  if (estReliquatW39(slug) || estRattrapageIA(slug)) verifierFile(root, slug, recette.date, statut, recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
   const recettePath = join(dossierRecette, 'recette.json');
-  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  let revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   let revuesValides = revueErreurs.length ? null : revues;
   const requetes = [recette.primaryQuery, ...(recette.secondaryQueries ?? [])];
   verifierTitreIntentMesure({ root, titre: recette.title, requetes, au: jour, surface: `${slug} : H1` });
@@ -629,7 +666,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const datesSources = await verifierSources({ root, slug, recette, dossierRecette, jour, fetcher, verifierJour: refuserChangementDeJour });
   refuserChangementDeJour();
   // Les URL finales ont pu réécrire la recette : le manifeste est reconstruit depuis la recette à jour.
-  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath)) : [];
+  revueErreurs = revues ? reviewBindingErrors(revues, slug, corps, readFileSync(recettePath), undefined, root) : [];
   revuesValides = revueErreurs.length ? null : revues;
   const manifestFinal = construireManifest(recette, statut, jour, revuesValides, datesSources);
   ecrireJson(manifestPath, manifestFinal);
@@ -675,13 +712,13 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   if (qualite) {
     ecrireJson(join(dossier, 'quality-review.json'), {
       version: 1, candidateSlug: slug, reviewedAt: jour, reviewer: qualite.reviewer ?? 'relecteur-qualite-ia-memlia', rubric: 'blog-analyze-100',
-      status: qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
+      status: (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL', score: qualite.score, p0: (qualite.p0 ?? []).length,
       categories: qualite.categories, evidence: qualite.evidence ?? [], reservations: qualite.reservations ?? [], verdict: qualite.verdict ?? '',
       subject: { slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash },
     });
     const cats = qualite.categories ?? {};
     const ligneCat = (id, libelle) => `| ${libelle} | ${cats[id]?.score ?? '—'}/${cats[id]?.max ?? '—'} |`;
-    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${qualite.score >= 90 && (qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
+    writeFileSync(join(dossier, 'seo-geo-review.md'), `# SEO et préparation aux citations IA — ${recette.title}\n\nVerdict : ${(qualite.p0 ?? []).length === 0 ? 'PASS' : 'FAIL'} — ${qualite.score}/100, ${(qualite.p0 ?? []).length} P0 (revue indépendante du ${jour}, barème blog-analyze, heuristique éditoriale, ni facteur Google ni probabilité de citation).\n\n| Catégorie | Score |\n| --- | ---: |\n${ligneCat('contentQuality', 'Qualité du contenu')}\n${ligneCat('seoOptimization', 'SEO')}\n${ligneCat('eeatSignals', 'E-E-A-T')}\n${ligneCat('technicalElements', 'Technique')}\n${ligneCat('aiCitationReadiness', 'Préparation aux citations IA')}\n| Total | ${qualite.score}/100 |\n\n## SEO\n\n${(qualite.seo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Préparation aux citations\n\n${(qualite.geo ?? []).map((x) => `- ${x}`).join('\n')}\n\n## Réserves mesurées\n\n${(qualite.reservations ?? []).map((x) => `- ${x}`).join('\n')}\n`);
   }
   const preuvesRecette = recette.preuvesSkills ?? {};
   if (qualite) {
@@ -709,11 +746,11 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   const business = revuesValides?.business;
   const preuvesSources = new Map(manifestFinal.sources.map((s) => [s.id, lireJson(join(dossier, s.verificationEvidence))]));
   ecrireJson(join(dossier, 'preuves/business-review.json'), artefact(sujet, 'business-review', jour, {
-    status: business ? 'PASS' : 'FAIL', reviewerId: recette.businessReview.reviewerId, role: recette.businessReview.role,
+    status: business ? 'PASS' : 'FAIL', reviewerId: manifestFinal.businessReview.reviewerId, role: recette.businessReview.role,
     claimReviews: claims.claims.flatMap((claim) => claim.sourceIds.map((sourceId) => {
       const verdict = business?.claims?.[claim.id];
       if (business && !verdict) erreurs.push(`Revue métier absente pour ${claim.id}.`);
-      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: recette.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
+      return { id: `review-${claim.id}-${sourceId}`, candidateSlug: slug, articleSha256: sujet.articleHash, claimId: claim.id, claimSha256: sha256(claim.claim), sourceId, sourceContentSha256: preuvesSources.get(sourceId).contentSha256, citationSha256: sha256(claim.sourceExcerpts[sourceId]), reviewerId: manifestFinal.businessReview.reviewerId, verdict: verdict?.verdict ?? 'hors_sujet', checkedAt: jour, reasoning: verdict?.reasoning ?? 'Revue métier non exécutée.' };
     })),
   }));
 
@@ -728,7 +765,7 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
     corps, preuvesInline: recette.inlineProofs ?? [], sources: manifestFinal.sources.map((s) => ({ id: s.id, publisher: s.publisher, title: s.title, url: s.url, level: s.level, official: s.official })),
     claims: claims.claims.map((c) => ({ id: c.id, claim: c.claim, type: c.type, sourceId: c.sourceIds[0], citation: c.sourceExcerpts[c.sourceIds[0]], contexte: c.factCheck.sourceResults[0].context.slice(0, 1200) })),
     criteresEditoriaux: REVIEW_CRITERIA, criteresImage: IMAGE_REVIEW_CRITERIA, image: { alt: recette.image.alt, cadre: recette.image.cadre, master: relative(root, join(dossier, 'preuves/image/master.png')) },
-    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: recette.businessReview.reviewerId, roleMetier: recette.businessReview.role },
+    identites: { auteur: 'kevin', reviewerEditorial: manifestFinal.reviewer, reviewerMetier: manifestFinal.businessReview.reviewerId, roleMetier: recette.businessReview.role },
   });
   refuserChangementDeJour();
   return { erreurs, manifest: manifestFinal, sujet, dossier };
@@ -752,12 +789,21 @@ function lancer(root, args) {
 export async function commande(argv, root = process.cwd()) {
   const [action, slug, htmlPath] = argv;
   if (!slug) throw new Error('Usage : blog-forge <preparer|sceller|publier> <slug>');
+  if (action === 'verifier-creneau-w39') {
+    if (argv.length !== 3 || !estReliquatW39(slug) || htmlPath !== aujourdhui()) {
+      throw new Error('Le préflight W39 exige le slug exact et le jour réel Europe/Paris.');
+    }
+    const { recette } = chargerRecette(root, slug);
+    verifierFile(root, slug, recette.date, 'a-valider', recette.serie ?? null, lireJson(join(root, 'editorial/queue.json')));
+    console.log('cadrage W39 : OK (ni revue ni publication)');
+    return;
+  }
   if (action === 'empreinte') {
     if (!htmlPath) throw new Error('Usage : blog-forge empreinte <slug> <html-rendu>');
     const { corps } = chargerRecette(root, slug);
     const renderedSha256 = renderedBodySha256(readFileSync(resolve(root, htmlPath), 'utf8'));
     if (!renderedSha256) throw new Error('Le rendu HTML ne contient pas de .article-corps.');
-    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
+    console.log(JSON.stringify({ slug, bodySha256: reviewSha256(corps), recipeSha256: reviewSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), recipeSubstanceSha256: recipeSubstanceSha256(readFileSync(join(root, 'editorial/recettes', slug, 'recette.json'))), renderedSha256, notice: 'Empreintes techniques seulement : aucune approbation ou revue générée.' }, null, 2));
     return;
   }
   if (action === 'preparer') {

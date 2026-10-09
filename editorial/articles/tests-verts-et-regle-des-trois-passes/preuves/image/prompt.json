@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact tests-verts-et-regle-des-trois-passes."
+  ],
+  "engine": "image_generate",
+  "prompt": "Original Memlia 3D isometric editorial cover, wide 16:9, cream #fcfbf7 paper ground. Three clearly separate verification stations for a cabinet automation: TEST station has two green tiles and one dark failed tile; PROOF station has a chain of linked blank paper cards; SCREEN station has only an empty neutral frame and a waiting blank card. A LARGE matte graphite #231f20 rectangular plinth spans the three stations and covers 10 percent of the image; green #27b657 and deep green #1c8a41 blocks are visibly large and distinct on the plinth. No checkmarks, no numbers, no letters, no person, no logo, no UI screenshot, no automatic approval. Geometric tactile shapes, studio light top left, soft shadows.",
+  "brief": {
+    "sujet": "Trois passes complémentaires pour vérifier une sortie métier.",
+    "composition": "Trois stations distinctes sans chiffres lisibles, fond crème et pièces vertes et graphite.",
+    "style": "Diorama 3D isométrique, matières mates, éclairage doux.",
+    "palette": "Crème #fcfbf7 dominante, vert #27b657, vert profond #1c8a41 et graphite #231f20 visibles.",
+    "interdits": "Aucun dossier client, montant réel, validation implicite ou interface fictive.",
+    "alt": "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine"
+  },
+  "reviewCriteria": [
+    "trois stations lisibles",
+    "aucune donnée réelle",
+    "palette dérivés mesurée",
+    "pas de texte",
+    "récit historique non représenté comme capture",
+    "variants et OG vérifiés"
+  ]
+}

@@ -46,7 +46,7 @@
   "task": "Dresser la carte des tâches automatisables du cabinet et repérer celles qui ont une règle écrite.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Douze pôles et soixante familles listés depuis src/data/familles.ts ; pour chacun des onze pôles ouverts, un tableau se-prépare-seul / attend-une-validation / reste-humain ; le douzième (audit légal) listé et non ouvert ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
+  "proofRequired": "Carte des familles de l’expertise comptable depuis src/data/familles.ts ; une frontière en trois colonnes par pôle ; un repère transversal vers les familles CAC, sans confondre préparation et opinion ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication.",
   "reviewRule": "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données.",
   "cta": {
     "label": "Confier une première tâche",
@@ -55,18 +55,18 @@
   },
   "inlineProofs": [
     {
-      "id": "carte-douze-poles",
+      "id": "carte-inventaire-taches",
       "insertBeforeHeading": "Production comptable : de la pièce reçue au bilan livré",
-      "alt": "Carte des douze pôles et de leurs soixante familles, avec l’audit légal listé mais non ouvert.",
-      "source": "taxonomie éditoriale versionnée src/data/familles.ts",
-      "capturedAt": "2026-09-20"
+      "alt": "Inventaire fictif des tâches d’un cabinet par pôle : fréquence, règle écrite et statut de six familles.",
+      "source": "écran fictif construit sur la taxonomie éditoriale versionnée src/data/familles.ts",
+      "capturedAt": "2026-10-03"
     },
     {
-      "id": "carte-test-regle",
+      "id": "carte-fiche-regle-relance",
       "insertBeforeHeading": "Que ne contient pas cette carte ?",
-      "alt": "Test fictif d’une tâche candidate selon répétition, règle écrite et exceptions dénombrables.",
-      "source": "test de maturité décrit dans cet article sur la carte des tâches",
-      "capturedAt": "2026-09-20"
+      "alt": "Fiche fictive de la règle de relance des pièces : déclencheur, condition, action, exception et validation humaine.",
+      "source": "écran fictif de la règle de relance des pièces décrite dans cet article",
+      "capturedAt": "2026-10-03"
     }
   ],
   "image": {
@@ -181,7 +181,7 @@
       "id": "impots-calendrier",
       "publisher": "impots.gouv.fr",
       "title": "Calendrier fiscal des professionnels",
-      "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal/2026-09",
       "level": "tier-1",
       "official": true,
       "classificationReason": "Calendrier officiel publié par la direction générale des finances publiques, source primaire.",
@@ -213,7 +213,8 @@
       "/blog/automatiser-la-relance-des-pieces-clients",
       "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "/blog/prompt-chatgpt-expert-comptable",
-      "/blog/logiciel-ia-comptabilite"
+      "/blog/logiciel-ia-comptabilite",
+      "/blog/tests-verts-et-regle-des-trois-passes"
     ],
     "incoming": [
       "/blog",
@@ -327,5 +328,5 @@
       "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : « Comment lire cette carte ? » nomme le savoir-faire que personne n’a écrit ; « Par où commencer ? » dit ce que nous prenons en charge, entier, et ce que le cabinet garde ; vocabulaire de catalogue retiré (« compléments ») ; appel « Confier une première tâche » (le pilier ne traite pas une tâche unique). Familles, tableaux, sources et affirmations inchangés. Deuxième passe du 17/09/2026 : compte des pôles recalé sur src/data/familles.ts (douze pôles, dont l’audit légal listé et non ouvert ; le tableau totalise désormais soixante familles), et un tableau de frontière ajouté aux quatre pôles qui n’en avaient pas (RH, Excel et outils existants, conseil, méthode), comme « Comment lire cette carte ? » l’annonce."
     ]
   },
-  "updatedAt": "2026-09-29"
+  "updatedAt": "2026-10-08"
 }

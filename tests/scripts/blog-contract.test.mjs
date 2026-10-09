@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { auditerContratBlog } from '../../scripts/verify-blog-contract.mjs';
+import { proofSizes, proofSrcset } from '../../scripts/lib/responsive-proofs.mjs';
 
 const SLUG = 'article-test';
 const REQUETE = 'contrôle bulletin de paie';
@@ -52,6 +53,35 @@ function auditer(root) {
   return auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE });
 }
 
+// Recette de référence (03/10/2026) : la figure directe est l'unique image 1600 × 900 de la preuve.
+test('clause 1 — image directe liée à la recette ; une variante portrait est refusée', () => {
+  const root = fixture({ preuves: 1, legendePreuve: null });
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    mkdirSync(join(root, 'public/proofs/blog'), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [{
+      id: 'preuve-1', alt: 'Preuve 1', source: 'Jeu fictif', capturedAt: '2026-09-20',
+    }] }));
+    const page = pageArticle({ preuves: 1, legendePreuve: null }).replace(
+      '<figure data-blog-proof><img src="/preuves/1.webp"',
+      '<figure data-blog-proof="preuve-1"><img src="/proofs/blog/preuve-1.webp"',
+    );
+    const path = join(root, 'dist/blog', `${SLUG}.html`);
+    writeFileSync(path, page);
+    assert.deepEqual(auditer(root).erreurs, [], 'image directe de la recette acceptée');
+    const master = Buffer.from('master de fixture');
+    writeFileSync(join(root, 'public/proofs/blog/preuve-1.webp'), master);
+    const responsive = `srcset="${proofSrcset('/proofs/blog/preuve-1.webp', master)}" sizes="${proofSizes(true)}" loading="lazy"`;
+    writeFileSync(path, page.replace('alt="Preuve 1"', `alt="Preuve 1" ${responsive}`));
+    assert.deepEqual(auditer(root).erreurs, [], 'variantes réduites liées au master acceptées');
+    writeFileSync(join(root, 'public/proofs/blog/preuve-1-mobile.webp'), 'actif de fixture');
+    writeFileSync(path, page.replace('preuve-1.webp', 'preuve-1-mobile.webp'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'portrait refusé même si le fichier existe');
+    writeFileSync(path, page.replace('alt="Preuve 1"', 'alt="Preuve 1" srcset="/autre.webp 1600w"'));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1/, 'sélection alternative non liée refusée');
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 function temoinClause(clause, options) {
   const root = fixture(options);
   try {
@@ -84,7 +114,7 @@ test('le build public ignore seulement les brouillons absents ; leur preview res
     writeFileSync(join(root, 'src/content/blog', `${draft}.md`), sourceArticle({ brouillon: true }));
     assert.deepEqual(auditer(root), { pass: true, articles: 1, exemptions: [], erreurs: [] });
     assert.match(auditerContratBlog({ root, dist: join(root, 'dist'), mesure: MESURE, slugs: [draft] }).erreurs.join('\n'), /page construite absente/);
-    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ preuves: 1 }));
+    writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle({ legendeTechnique: true }));
     assert.match(auditer(root).erreurs.join('\n'), /brouillon-test : clause 1/);
     writeFileSync(join(root, 'dist/blog', `${draft}.html`), pageArticle());
     writeFileSync(join(root, 'dist/blog/paie-dsn.html'), `<a href="/blog/${SLUG}">Lire</a><a href="/blog/${draft}">Lire</a>`);
@@ -107,8 +137,60 @@ test('un slug explicitement demandé mais absent des sources échoue au lieu de 
   }
 });
 
-test('clause 1 — deux images de preuve avec alternative accessible en plus de la couverture', () => {
-  temoinClause(1, { preuves: 1 });
+test('clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée', () => {
+  const root = fixture();
+  const page = join(root, 'dist/blog', `${SLUG}.html`);
+  try {
+    for (const preuves of [0, 1, 2, 3]) {
+      writeFileSync(page, pageArticle({ preuves }));
+      assert.deepEqual(auditer(root).erreurs, [], `quota seul : ${preuves}`);
+    }
+    writeFileSync(page, pageArticle({ preuves: 0 }).replace(/<div class="article-corps">[\s\S]*?<\/div>/, ''));
+    assert.match(auditer(root).erreurs.join('\n'), /corps.*absent/);
+    for (const mutation of [
+      pageArticle().replace('alt="Preuve 1"', 'alt=""'),
+      pageArticle().replace('<img src="/preuves/1.webp" alt="Preuve 1">', ''),
+    ]) {
+      writeFileSync(page, mutation);
+      assert.match(auditer(root).erreurs.join('\n'), /clause 1.*alternative accessible/);
+    }
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({
+      inlineProofs: [{ id: 'requise', alt: 'Preuve requise', source: 'jeu fictif', capturedAt: '2026-09-20' }],
+    }));
+    writeFileSync(page, pageArticle({ preuves: 0 }));
+    assert.match(auditer(root).erreurs.join('\n'), /clause 1.*preuve déclarée.*requise.*absente/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur', () => {
+  const root = fixture({ preuves: 0 });
+  const page = join(root, 'dist/blog', `${SLUG}.html`);
+  const remplacerCorps = (contenu) => pageArticle({ preuves: 0 })
+    .replace(/<div class="article-corps">[\s\S]*?<\/div>/, `<div class="article-corps">${contenu}</div>`);
+  try {
+    mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify({ inlineProofs: [] }));
+    for (const contenu of [
+      '', ' \n\t ', '<!-- contenu perdu -->', '<p> &nbsp; </p><!-- contenu perdu -->',
+      '<style>.article-corps p { color: black; }</style>',
+      '<script type="application/json">{"status":"ready"}</script>',
+      '<p hidden>Méthode perdue au rendu</p>',
+      '<section hidden="false"><p>Méthode perdue au rendu</p></section>',
+      '<noscript>Méthode non rendue avec JavaScript actif</noscript>',
+    ]) {
+      writeFileSync(page, remplacerCorps(contenu));
+      const resultat = auditer(root);
+      assert.equal(resultat.pass, false, `corps sans contenu : ${JSON.stringify(contenu)}`);
+      assert.match(resultat.erreurs.join('\n'), /clause 1.*corps.*vide/);
+    }
+    writeFileSync(page, remplacerCorps('<p>X</p><style>p { color: black; }</style><script type="application/json">{}</script><p hidden>Texte masqué</p>'));
+    assert.deepEqual(auditer(root).erreurs, [], 'aucun seuil de longueur ni quota de figures');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('clause 1 — une légende technique publique fait échouer le contrat', () => {
@@ -144,7 +226,7 @@ test('clause 1 — nouvelles figures sans légende refusées, ancien dossier ép
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
     writeFileSync(join(root, 'src/content/blog', `${SLUG}.md`), sourceArticle());
     assert.match(auditer(root).erreurs.join('\n'), /clause 1/);
-    const recette = 'recette historique', revue = 'revue historique';
+    const recette = '{"historique":true}', revue = 'revue historique';
     const hash = (value) => createHash('sha256').update(value).digest('hex');
     mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), recette);
@@ -224,7 +306,7 @@ test('clause 1 — deux figures avec le même identifiant ne comptent pas comme 
     writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), page);
     const erreurs = auditer(root).erreurs.join('\n');
     assert.match(erreurs, /clause 1, identifiant data-blog-proof répété entre figures/);
-    assert.match(erreurs, /1 avec alternative accessible ; 2 requises/, 'une seule preuve distincte');
+    assert.doesNotMatch(erreurs, /2 requises/, 'le doublon est critique, pas le quota');
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

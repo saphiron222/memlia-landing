@@ -8,7 +8,7 @@
   "summary": "Comparer le parcours entier d'une pièce : réception, exception, reprise, validation et trace. Quatre cas fictifs rejoués, aucun éditeur testé.",
   "description": "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré.",
   "publicationDate": "2026-09-29",
-  "updatedAt": null,
+  "updatedAt": "2026-10-03",
   "topics": [
     "ia",
     "saisie",
@@ -35,7 +35,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-09-29"
+      "verifiedAt": "2026-10-03"
     }
   },
   "businessReview": {
@@ -104,7 +104,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "metier:t_303e7c6d",
   "reviewRule": "Réviser les conditions des éditeurs et la documentation officielle avant tout classement de produit ; la grille de méthode reste indépendante des marques.",
   "cta": {
     "label": "Confier cette tâche",
@@ -122,12 +122,12 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-03"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-09-29"
+      "checkedAt": "2026-10-03"
     }
   },
   "links": {
@@ -159,6 +159,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-09-29",
+  "publishedAt": "2026-10-03",
   "publicationEvidence": "preuves/publication.json"
 }

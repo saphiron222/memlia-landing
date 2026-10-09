@@ -47,7 +47,8 @@ const blog = defineCollection({
       secondaryQueries: z.array(z.string().min(3)).default([]),
       intent: z.enum(['comprendre', 'executer', 'diagnostiquer', 'comparer-approches', 'evaluer-service', 'reduire-risque', 'decider']).optional(),
       fanOut: z.array(z.string().min(3)).default([]),
-      cluster: z.enum(['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions']).optional(),
+      profession: z.enum(['ec', 'cac']).default('ec'),
+      cluster: z.enum(['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions', 'certification', 'interventions-legales', 'sacc', 'durabilite', 'administration']).optional(),
       /** Famille de tâches (src/data/familles.ts) : la maille éditoriale de la v3, plus fine que le cluster. */
       famille: z.enum(IDS_FAMILLES).optional(),
       rolePrincipal: z.enum(['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente']).optional(),
@@ -85,9 +86,7 @@ const blog = defineCollection({
         .default([]),
     })
     .superRefine((data, context) => {
-      if (!data.brouillon && data.sources.length < 3) {
-        context.addIssue({ code: 'custom', message: 'Un article publié exige au moins trois sources.', path: ['sources'] });
-      }
+      // Le gate valide les sources et les claims ; leur quantité n'est pas une preuve.
       if (!data.pipelineVersion) return;
       const required = ['primaryQuery', 'intent', 'cluster', 'rolePrincipal', 'tache', 'preuveRole', 'funnel', 'contentType', 'format', 'rankability', 'businessRelevance', 'proofStatus', 'proofRequired', 'reviewRule', 'reviewer', 'sourcesVerifieesLe', 'cta', 'imageOg', 'imageAlt', 'statutEditorial'] as const;
       for (const field of required) {

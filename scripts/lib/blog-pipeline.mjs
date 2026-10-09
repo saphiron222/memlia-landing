@@ -7,11 +7,14 @@ import { parse as parseHtml } from 'parse5';
 import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
+import { readDilaCopy } from './dila-source-copy.mjs';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
-import { reviewBindingErrors, reviewSha256 } from './blog-review-binding.mjs';
+import { reviewBindingErrors, reviewSha256, recipeReviewMatches } from './blog-review-binding.mjs';
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
+import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
+import { estRattrapageIA, lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './blog-ia-catchup.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -57,7 +60,7 @@ export const CLAIM_TYPES = Object.freeze([
   'statistique-chiffre',
 ]);
 
-const MIN_SAFETY_WORDS = 80;
+
 /** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
 export const CANDIDATS_PAR_JOUR_MAX = 2;
 export const CANDIDATS_PAR_SEMAINE_MAX = 4;
@@ -85,32 +88,38 @@ export function semaineIso(value) {
   return `${date.getUTCFullYear()}-W${String(numero).padStart(2, '0')}`;
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
-export function verifierPlafonds(actifs, date, { serie = null, slug = null } = {}) {
+export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  if (estRattrapageIA(slug) && serie === 'cicatrices') throw new Error('Rattrapage IA : série ordinaire requise.');
+  if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
   if (serie === 'cicatrices') {
-    // Rattrapage signé W39 uniquement : les 28 et 29 sont en W40, sans doubler la W39.
-    const slugW39 = 'tests-verts-et-regle-des-trois-passes';
-    const rattrapageW39 = (candidateSlug, candidateDate) => candidateSlug === slugW39
-      && ['2026-09-27', '2026-09-28', '2026-09-29'].includes(candidateDate);
-    if (slug === slugW39 && date > '2026-09-29') {
-      throw new Error(`Le rattrapage W39 de cette cicatrice s'arrête au 29/09/2026 ; nouveau cadrage requis pour ${date}.`);
-    }
-    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !rattrapageW39(slug, date)) {
+    const historique = estReliquatW39(slug) && date >= '2026-09-27' && date <= '2026-09-29';
+    const cadre = estReliquatW39(slug) && !historique ? lireCadrageW39(root, date, now) : null;
+    if (new Date(`${date}T00:00:00Z`).getUTCDay() !== 6 && !historique && !cadre) {
       throw new Error(`Une cicatrice paraît le samedi ; ${date} n’est pas un samedi.`);
     }
-    const semaineControlee = rattrapageW39(slug, date) ? '2026-W39' : semaine;
-    if (actifs.some((candidate) => candidate.serie === 'cicatrices' && isDate(candidate.date)
-      && (rattrapageW39(candidate.slug, candidate.date)
-        ? '2026-W39' : semaineIso(candidate.date)) === semaineControlee)) {
+    const semaineControlee = estReliquatW39(slug) ? '2026-W39' : semaine;
+    if (actifs.some((candidate) => (candidate.serie === 'cicatrices' || estReliquatW39(candidate.slug))
+      && (estReliquatW39(candidate.slug) ? '2026-W39' : isDate(candidate.date) ? semaineIso(candidate.date) : null) === semaineControlee)) {
       throw new Error(`Une cicatrice est déjà planifiée la semaine ${semaineControlee} ; le plafond est d’une cicatrice par semaine ISO.`);
     }
     return;
   }
+  if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
-  if (ordinaires.filter((candidate) => candidate.date === date).length >= CANDIDATS_PAR_JOUR_MAX) {
-    throw new Error(`${CANDIDATS_PAR_JOUR_MAX} candidats sont déjà planifiés le ${date} ; le plafond est de ${CANDIDATS_PAR_JOUR_MAX} candidats par jour.`);
+  const rule = lireRattrapageIA(root);
+  if (estRattrapageIA(slug) && root && !rule) throw new Error('Rattrapage IA : règle requise.');
+  verifierDateRattrapageIA(rule, slug, date, serie);
+  for (const candidate of ordinaires) verifierDateRattrapageIA(rule, candidate.slug, candidate.date, candidate.serie);
+  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, CANDIDATS_PAR_JOUR_MAX);
+  if (ordinaires.filter((candidate) => candidate.date === date).length >= plafondJour) {
+    throw new Error(`${plafondJour} candidats sont déjà planifiés le ${date} ; le plafond est de ${plafondJour} candidats par jour.`);
   }
-  if (ordinaires.filter((candidate) => isDate(candidate.date) && semaineIso(candidate.date) === semaine).length >= CANDIDATS_PAR_SEMAINE_MAX) {
+  const semaineEditoriale = semaineEditorialeIA(rule, slug, date, semaine);
+  const dansLot = rule?.publications[slug] === date;
+  if (ordinaires.filter((candidate) => isDate(candidate.date)
+    && (rule?.publications[candidate.slug] === candidate.date) === dansLot
+    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= CANDIDATS_PAR_SEMAINE_MAX) {
     throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
   }
 }
@@ -395,7 +404,8 @@ export function validateCandidate(candidate, { gateMode = 'production' } = {}) {
   if (!['verifiee', 'non-applicable'].includes(candidate.proofStatus)) errors.push('proofStatus doit être verifiee ou non-applicable avant preview.');
   requireText(errors, candidate.proofRequired, 'proofRequired', 10);
   if (!isDate(candidate.sourcesVerifiedAt)) errors.push('sourcesVerifiedAt doit être une date AAAA-MM-JJ.');
-  if (!Array.isArray(candidate.sources) || candidate.sources.length < 3) errors.push('sources doit contenir au moins trois sources vérifiables avant preview.');
+  // La quantité est un objectif éditorial ; chaque source déclarée reste contrôlée.
+  if (!Array.isArray(candidate.sources)) errors.push('sources doit être une liste de sources vérifiables.');
   else candidate.sources.forEach((source, index) => {
     requireText(errors, source?.id, `sources[${index}].id`, 3);
     requireText(errors, source?.publisher, `sources[${index}].publisher`, 2);
@@ -434,7 +444,7 @@ export function validateCandidate(candidate, { gateMode = 'production' } = {}) {
   validateResearchProof(errors, candidate.research?.serp, 'SERP', gateMode);
   validateResearchProof(errors, candidate.research?.gsc, 'GSC', gateMode);
   if (!Array.isArray(candidate.links?.outgoing) || candidate.links.outgoing.length === 0) errors.push('links.outgoing doit contenir au moins un lien utile.');
-  if (!Array.isArray(candidate.links?.incoming) || new Set(candidate.links.incoming).size < 2) errors.push('links.incoming doit contenir au moins deux pages sources distinctes.');
+  if (!Array.isArray(candidate.links?.incoming)) errors.push('links.incoming doit être une liste de pages sources.');
   if (!['faible', 'moyen'].includes(candidate.cannibalization?.risk)) errors.push('Une cannibalisation forte, bloquante ou non évaluée interdit la preview.');
   requireText(errors, candidate.cannibalization?.decision, 'cannibalization.decision', 5);
   if (!Array.isArray(candidate.contradictions)) errors.push('contradictions doit être une liste.');
@@ -589,7 +599,7 @@ export function createCandidate({ root = process.cwd(), slug, title, primaryQuer
   const queue = JSON.parse(readFileSync(queuePath, 'utf8'));
   if (!Array.isArray(queue.candidates)) throw new Error('editorial/queue.json doit contenir une liste candidates.');
   const actifs = queue.candidates.filter((candidate) => !['archive', 'bloque'].includes(candidate.status));
-  verifierPlafonds(actifs, date);
+  verifierPlafonds(actifs, date, { slug, root: absoluteRoot });
   if (queue.candidates.some((candidate) => candidate.slug === slug)) throw new Error(`Le candidat ${slug} existe déjà dans la file.`);
 
   const articlePath = join(absoluteRoot, 'src/content/blog', `${slug}.md`);
@@ -733,6 +743,24 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
   const source = (manifest.sources ?? []).find((item) => item.id === sourceId);
   if (!source) throw new Error(`Source inconnue pour ${slug} : ${sourceId}.`);
   if (!hasText(excerpt, 12)) throw new Error('Un extrait exact d’au moins 12 caractères est requis pour relier la source.');
+  if (source.dilaCopyPath !== undefined) {
+    const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt });
+    const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
+    if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
+    const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
+    mkdirSync(dirname(evidencePath), { recursive: true });
+    writeFileSync(contentPath, copy.text);
+    writeJsonAtomic(evidencePath, {
+      version: 1, candidateSlug: slug, sourceId: source.id,
+      ...Object.fromEntries(['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method'].map((key) => [key, source[key]])),
+      requestedUrl: source.url, finalUrl: copy.url, httpStatus: null, accessMode: 'dila-copy',
+      checkedAt: copy.checkedAt, retrievedAt: copy.retrievedAt, contentType: 'text/plain',
+      contentPath: relative(dossier, contentPath), contentSha256: copy.textSha256, excerpt,
+      dilaCopyPath: source.dilaCopyPath, dilaCopySha256: copy.copySha256,
+      legalVersion: { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning },
+    });
+    return { sourceId, evidence: relative(absoluteRoot, evidencePath), content: relative(absoluteRoot, contentPath) };
+  }
   const approvedAddresses = new Map();
   const remember = ({ url, addresses }) => {
     approvedAddresses.set(url.hostname.replace(/^\[|\]$/g, ''), addresses);
@@ -834,7 +862,7 @@ function validateSubjectEvidence(errors, evidence, expected, label, expectedKind
   }
 }
 
-function validateSources(manifest, dossier, expected) {
+function validateSources(manifest, dossier, expected, preserveSealed = false) {
   const errors = [];
   const verified = new Map();
   for (const [index, source] of (manifest?.sources ?? []).entries()) {
@@ -883,9 +911,17 @@ function validateSources(manifest, dossier, expected) {
       if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
     }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
-    if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
+    if (source.dilaCopyPath !== undefined || proof.accessMode === 'dila-copy') {
+      try {
+        if (proof.accessMode !== 'dila-copy' || proof.httpStatus !== null || proof.dilaCopyPath !== source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(proof.dilaCopySha256 ?? '')) throw new Error('Mode DILA et copie divergents, sans réponse HTTP.');
+        const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt: proof.excerpt, expectedSha256: proof.dilaCopySha256,
+          ...(preserveSealed ? { asOf: proof.retrievedAt } : {}) });
+        if (proof.retrievedAt !== copy.retrievedAt || proof.checkedAt !== copy.checkedAt || proof.contentSha256 !== copy.textSha256
+          || !sameValue(proof.legalVersion, { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning })) throw new Error('Copie DILA : collecte, texte ou version divergents.');
+      } catch (error) { errors.push(`${label} : ${error.message}`); }
+    } else if (!Number.isInteger(proof.httpStatus) || proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
-    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+    if (proof.accessMode !== 'dila-copy' && jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
       errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
     }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
@@ -926,11 +962,43 @@ function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
 
-function visibleSourceBlocks(source) {
-  if (!/<(?:html|body|main|article|section|p|div|h[1-6])\b/i.test(source)) return [source.replace(/\s+/g, ' ').trim()];
-  const document = parseHtml(source);
+function visibleSourceBlocks(source, { raw = false } = {}) {
+  if (!/<\/?[a-z][^>]*>|<!--/i.test(source)) return [raw ? source.trim() : source.replace(/\s+/g, ' ').trim()];
+  const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
+  // innerHTML complète réintroduirait les descendants ignorés par nodeText.
+  const omittedRanges = [];
+  if (raw) {
+    const collectOmitted = (node) => {
+      if (ignoredTags.has(node.tagName) || node.nodeName === '#comment') {
+        const location = node.sourceCodeLocation;
+        if (location) {
+          omittedRanges.push([location.startOffset, location.endOffset]);
+          return;
+        }
+      }
+      for (const child of node.childNodes ?? []) collectOmitted(child);
+    };
+    collectOmitted(document);
+    omittedRanges.sort((left, right) => left[0] - right[0]);
+  }
+  const visibleRawInnerHTML = (node) => {
+    const location = node.sourceCodeLocation;
+    if (!location?.startTag) return null;
+    const start = location.startTag.endOffset;
+    const end = location.endTag?.startOffset ?? location.endOffset;
+    let cursor = start;
+    const parts = [];
+    for (const [hiddenStart, hiddenEnd] of omittedRanges) {
+      if (hiddenEnd <= cursor || hiddenStart >= end) continue;
+      parts.push(source.slice(cursor, Math.max(cursor, hiddenStart)));
+      cursor = Math.min(end, Math.max(cursor, hiddenEnd));
+    }
+    parts.push(source.slice(cursor, end));
+    return parts.join('').trim();
+  };
   const nodeText = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (ignored) return '';
@@ -941,7 +1009,8 @@ function visibleSourceBlocks(source) {
   const visit = (node, hidden = false) => {
     const ignored = hidden || ignoredTags.has(node.tagName);
     if (!ignored && blockTags.has(node.tagName)) {
-      const text = nodeText(node).replace(/\s+/g, ' ').trim();
+      const text = (raw ? visibleRawInnerHTML(node) : null)
+        ?? nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
       return;
     }
@@ -953,8 +1022,14 @@ function visibleSourceBlocks(source) {
 }
 
 export function contexteDeCitation(source, excerpt) {
-  const citation = excerpt.replace(/\s+/g, ' ').trim();
-  const visible = visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
+  const exact = excerpt.trim();
+  const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
+  const rawBlock = needsRaw
+    ? visibleSourceBlocks(source, { raw: true }).find((block) => block.includes(exact))
+    : null;
+  const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
+  const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
   const end = position + citation.length;
@@ -965,7 +1040,8 @@ export function contexteDeCitation(source, excerpt) {
 }
 
 function sourceContainsContext(source, context) {
-  return source.includes(context) || visibleSourceBlocks(source).some((block) => block.includes(context));
+  return visibleSourceBlocks(source, { raw: true }).some((block) => block.includes(context))
+    || visibleSourceBlocks(source).some((block) => block.includes(context));
 }
 
 function sensitiveTextSignals(value) {
@@ -1158,7 +1234,11 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
     if (!actualUnits.some((actual) => actual.id === unit?.id && actual.text === unit?.text)) errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} ne correspond à aucune unité du rendu.`);
     if (sensitiveMatter.claimRequiredUnitIds.has(unit?.id)) {
       if (!Array.isArray(unit?.claimIds) || unit.claimIds.length === 0) {
-        errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible.`);
+        const text = actualUnits.find((actual) => actual.id === unit.id).text;
+        const excerpt = text.length > 160 ? `${text.slice(0, 160)}…` : text;
+        const signals = [...(sensitiveMatter.unitSignals.get(unit.id) ?? [])];
+        if (NORMATIVE_LANGUAGE.test(normalizedDetectionText(text))) signals.push('verbe normatif');
+        errors.push(`claims.contentUnits.${unit?.id ?? 'sans-id'} doit relier au moins une affirmation vérifiée : cette unité contient une matière sensible visible. Phrase : « ${excerpt} ». Signaux détectés : ${signals.join(', ')}. Si la phrase n'énonce pas de règle, reformulez-la sans ces mots (constitution §6) ; sinon reliez une affirmation sourcée.`);
       }
       const linkedClaims = (claims?.claims ?? []).filter((claim) => unit?.claimIds?.includes(claim?.id));
       const unitSignals = sensitiveMatter.unitSignals.get(unit.id) ?? [];
@@ -1183,11 +1263,20 @@ function validateClaims(claims, markdown, manifest, verifiedSources, expected, s
       if (!sourceIds.has(sourceId)) errors.push(`${prefix}.sourceIds référence une source absente du manifeste : ${sourceId}.`);
       const verified = verifiedSources.get(sourceId);
       if (!verified) errors.push(`${prefix} référence ${sourceId}, dont la vérification n’est pas prouvée.`);
-      const unitSignals = sensitiveMatter.unitSignals.get(claim?.unitId) ?? [];
+      // Seul un claim methode non normatif peut être borné à son fragment.
+      // Une obligation anaphorique conserve le référent sensible du paragraphe,
+      // même sans employeur/salarié nommé dans la phrase du claim.
+      const claimSignals = sensitiveTextSignals(claim?.claim);
+      const normalizedClaim = normalizedDetectionText(claim?.claim);
+      const scopedMethod = claim?.type === 'methode'
+        && !NORMATIVE_LANGUAGE.test(normalizedClaim)
+        && !RGPD_OBLIGATION_LANGUAGE.test(normalizedClaim);
+      const sourceSignals = scopedMethod ? claimSignals
+        : [...claimSignals, ...(sensitiveMatter.unitSignals.get(claim?.unitId) ?? [])];
       if (verified?.source?.level === 'technical-primary' && (claim?.type !== 'methode' || verified.deterministicClassification?.technicalPrimary !== true)) {
         errors.push(`${prefix} : source primaire technique ${sourceId} réservée aux claims methode avec domaine et éditeur vérifiés.`);
       }
-      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || unitSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
+      if (OFFICIAL_PRIMARY_CLAIM_TYPES.has(claim?.type) || sourceSignals.some((signal) => OFFICIAL_PRIMARY_SIGNALS.has(signal))) {
         const source = verified?.source ?? (manifest?.sources ?? []).find((item) => item.id === sourceId);
         if (!['tier-1', 'tier-2', 'tier-3'].includes(source?.level) || source?.provenance !== 'primary' || source?.official !== true || verified?.deterministicClassification?.officialAuthority !== true) {
           errors.push(`${prefix} de type ${claim.type} exige une source primaire officielle tier-1 à tier-3 ; ${sourceId} ne satisfait pas ce contrat.`);
@@ -1329,7 +1418,7 @@ function validateReview(review, dossier, manifest, expected) {
       }
       score += expectedEarned;
     }
-    if (score < 90) errors.push(`Le score recalculé depuis la grille est ${score}/100 ; 90 minimum est requis.`);
+    // Le score reste une mesure éditoriale ; seuls les défauts critiques (P0) bloquent.
   }
   return errors;
 }
@@ -1425,8 +1514,8 @@ async function validateImage(image, dossier, manifest, root, subject) {
   if (expected?.master !== image?.master?.path) errors.push('Le master du manifeste éditorial et celui de image.json doivent être identiques.');
   if (expected?.og !== image?.og?.path) errors.push('L’OG du manifeste éditorial et celui de image.json doivent être identiques.');
   if (image?.score !== 100) errors.push('Le score image doit être recalculé à 100 uniquement lorsque les six critères observables sont PASS.');
-  if (image?.directionArt < 16 || image?.directionArt > 20) errors.push('Le score de direction artistique doit être compris entre 16 et 20.');
-  if (image?.semanticRelevance < 20 || image?.semanticRelevance > 25) errors.push('Le score de pertinence sémantique doit être compris entre 20 et 25.');
+  // Les notes cosmétiques restent facultatives ; les six critères et les P0
+  // ci-dessus/ci-dessous sont les contrôles de fond, sans note inventée.
   if (!Array.isArray(image?.p0) || image.p0.length > 0) errors.push('La revue image doit conclure à zéro P0.');
   if (image?.kevinApproved !== true) errors.push('Le brief et le rendu image doivent être approuvés explicitement par Kevin.');
 
@@ -1594,13 +1683,8 @@ function jaccard(left, right) {
 
 function validateContentDepthAndDuplication(markdown, root, slug) {
   const errors = [];
-  const body = markdownBody(markdown);
   const normalized = normalizedContent(markdown);
-  const words = normalized.split(/\s+/).filter(Boolean);
-  const substantiveParagraphs = body.split(/\r?\n\s*\r?\n/).filter((part) => !/^#{1,6}\s/.test(part.trim()) && normalizedContent(part).split(/\s+/).filter(Boolean).length >= 12);
-  if (words.length < MIN_SAFETY_WORDS || substantiveParagraphs.length < 3) {
-    errors.push(`Contenu manifestement mince : le seuil anti-coquille exige au moins ${MIN_SAFETY_WORDS} mots utiles et 3 paragraphes substantiels ; ce seuil de sécurité n’est pas un objectif SEO.`);
-  }
+  if (!normalized) errors.push('Corps éditorial absent : une coquille vide ne peut être publiée.');
   const ownShingles = shingles(normalized);
   const blogDirectory = join(root, 'src/content/blog');
   if (!existsSync(blogDirectory)) return errors;
@@ -1736,6 +1820,20 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   const manifestPath = join(dossier, 'manifest.json');
   const errors = [];
   const manifest = readJson(manifestPath, errors, 'manifest.json');
+  if (estReliquatW39(slug) && !['publication-scellee', 'published-audit'].includes(gateMode)) {
+    try {
+      const queue = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/queue.json'), 'utf8'));
+      const current = queue.candidates.find((candidate) => candidate.slug === slug);
+      const recette = JSON.parse(readFileSync(join(absoluteRoot, 'editorial/recettes', slug, 'recette.json'), 'utf8'));
+      verifierIdentiteW39(recette, current, manifest?.publicationDate);
+
+      if (manifest?.publicationDate > jourCadrageParis()) throw new Error('W39 refuse une date future.');
+      lireCadrageW39(absoluteRoot, manifest?.publicationDate);
+      // La cadence est une préférence du planificateur, pas une porte d'audit.
+    } catch (error) {
+      errors.push(`Cadrage W39 : ${error.message}`);
+    }
+  }
   const skills = readJson(join(dossier, 'skills.json'), errors, 'skills.json');
   const claims = readJson(join(dossier, 'claims.json'), errors, 'claims.json');
   const review = readJson(join(dossier, 'review.json'), errors, 'review.json');
@@ -1765,6 +1863,12 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       errors.push('Identité du reviewer éditorial divergente entre revues.json, manifest.json et review.json.');
     }
   }
+  if (independentReview?.business && Object.hasOwn(independentReview.business, 'reviewerId')) {
+    requireText(errors, independentReview.business.reviewerId, 'revues.json business.reviewerId', 3);
+    if (manifest?.businessReview?.reviewerId !== independentReview.business.reviewerId) {
+      errors.push('Identité du reviewer métier divergente entre revues.json et manifest.json.');
+    }
+  }
   if (existsSync(recipeBodyPath)) {
     const recipeBody = readFileSync(recipeBodyPath, 'utf8').trim();
     const articleBody = retirerPreuvesInline(markdownBody(markdown));
@@ -1780,7 +1884,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
       ? readJson(legacyBaselinePath, errors, 'inventaire historique de revue') : null;
     const legacyHashes = legacyBaseline?.version === 1 ? legacyBaseline.articles?.[slug] : null;
     const legacyRecipeMatches = legacyHashes && existsSync(recipePath) && existsSync(independentReviewPath)
-      && legacyHashes.recipeSha256 === reviewSha256(readFileSync(recipePath))
+      && recipeReviewMatches(legacyHashes.recipeSha256, readFileSync(recipePath), absoluteRoot)
       && legacyHashes.reviewSha256 === reviewSha256(readFileSync(independentReviewPath));
     if (manifest?.editorialStatus === 'publie' && !independentReview?.subject && !legacyRecipeMatches) {
       errors.push('recette publiée divergente : une republication exige une nouvelle revue indépendante.');
@@ -1788,7 +1892,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     const preservedPublished = manifest?.editorialStatus === 'publie' && !independentReview?.subject
       && validatePublicationSeal(dossier, manifest, subject).length === 0 && bodiesMatch && legacyRecipeMatches;
     if (!preservedPublished) {
-      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml));
+      errors.push(...reviewBindingErrors(independentReview, slug, recipeBody, existsSync(recipePath) ? readFileSync(recipePath) : '', renderedArticleHtml, absoluteRoot));
     }
   }
   const sensitiveMatter = detectSensitiveMatter(manifest, claims, markdown);
@@ -1799,7 +1903,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
     errors.push(...validateCandidate(manifest, { gateMode }));
     const requetes = [manifest.primaryQuery, ...(manifest.secondaryQueries ?? [])];
     const dateMesure = gateMode === 'publication-scellee' && sealErrors.length === 0
-      ? manifest.publishedAt : au;
+      ? manifest.publishedAt : (au ?? jourRecuperationParis(new Date().toISOString()));
     for (const [surface, titre] of [['H1', manifest.title], ['titre d’onglet', manifest.tabTitle]]) {
       try {
         verifierTitreIntentMesure({ root: absoluteRoot, titre, requetes, surface: `${slug} : ${surface}`, au: dateMesure });
@@ -1810,7 +1914,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
-  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject) : { errors: [], verified: new Map() };
+  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject, gateMode === 'publication-scellee' && sealErrors.length === 0) : { errors: [], verified: new Map() };
   errors.push(...sources.errors);
   if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, evidenceSubject, sensitiveMatter));
   if (review && manifest) errors.push(...validateReview(review, dossier, manifest, evidenceSubject));

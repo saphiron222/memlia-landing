@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "candidateSlug": "ia-comptabilite-confidentialite-donnees",
+  "kind": "skill",
+  "status": "PASS",
+  "checkedAt": "2026-10-05",
+  "articleSha256": "c2896b598118bf0b26becac307c561f6c1f174c7089cd3029e115306b8a66a30",
+  "manifestSha256": "56d0bec7fb44858ba33b76ac1e6bcb1b1af9c735e7ae3715fdc082e695ffcbc4",
+  "observations": [
+    "Titre 79 caractères, onglet 57, description 147 ; 7 lien(s) interne(s) : /blog/prompt-chatgpt-expert-comptable, /blog/logiciel-ia-comptabilite, /methode, /blog/verifier-reponse-ia-comptabilite, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches, /glossaire#validation-humaine, /garanties ; 3 lien(s) externe(s) dans le corps.",
+    "Un H1, treize H2 du corps et cinq FAQ H3 ; sommaire correspondant, métadonnées et cinq types JSON-LD présents.",
+    "Sept destinations internes présentes et chemins/ancre résolus dans le build de preview ; /blog seul entrant déclaré, pas d'entrants frères inventés.",
+    "Quatre tableaux à en-têtes et deux figures directes ; contrôle Chromium local aux deux largeurs sans erreur ni débordement global.",
+    "Autocomplétions vides stockées et recherche Hermes documentée ; aucune donnée Google fraîche propre au candidat ou indexation accordée."
+  ],
+  "skill": "blog-seo-check"
+}

@@ -3,6 +3,22 @@
  * cette table relie chaque intention informationnelle à une seule page commerciale.
  */
 export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
+  'automatiser-avec-ia-sans-changer-logiciel': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser un passage dans vos outils',
+  }),
+  'ia-comptabilite-confidentialite-donnees': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser la préparation des entrées',
+  }),
+  'verifier-reponse-ia-comptabilite': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser la préparation du contrôle',
+  }),
+  'utiliser-chatgpt-cabinet-comptable': Object.freeze({
+    href: '/automatisation-cabinet-comptable',
+    label: 'Voir comment automatiser une tâche préparatoire',
+  }),
   'automatiser-la-relance-des-pieces-clients': Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir le service d’automatisation',
@@ -52,6 +68,10 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
     label: 'Voir le service d’automatisation',
   }),
 });
+
+export function estLienCommercialBlog(href) {
+  return typeof href === 'string' && /^(?:\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)|\/commissaires-aux-comptes)$/.test(href);
+}
 
 export function lienCommercialPourArticle(articleId) {
   return LIENS_COMMERCIAUX_BLOG[articleId] ?? {

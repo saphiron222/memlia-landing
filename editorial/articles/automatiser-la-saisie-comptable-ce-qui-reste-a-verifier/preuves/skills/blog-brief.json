@@ -3,11 +3,11 @@
   "candidateSlug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "b53e32e3210a41188f2a6569efe70e2f1070807e9841dd975ebfaf7d176fdc25",
-  "manifestSha256": "7c9318a7b271910bbde80e8bde6a724ba4fef42a1fd48dd87255af9ad005de77",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "49f7120165a90a904be38db9229922d26e230b551de4dce06c2ae1832cbd266a",
+  "manifestSha256": "67a9558ce0aa1d51a8fac8956eb1faa49e952b8330eeaf147c032621cc6582cc",
   "observations": [
-    "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR », preuve attendue : reliquat d’exceptions mesuré sur un jeu fictif de cinquante pièces, avec la file d’anomalies qui en sort)."
+    "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR »). Le candidat décrit un scénario fictif et ses sorties attendues ; une mesure de reliquat n’est revendiquée qu’après un rejeu réel, ligne par ligne, dans une mise en œuvre."
   ],
   "skill": "blog-brief"
 }

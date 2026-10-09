@@ -94,7 +94,7 @@ en voici l'ossature, dans l'ordre :
 1. **Rédiger les entrées** dans `src/data/glossary.ts` (apostrophe typographique, jamais droite, dans les textes).
 2. **Copier et dater les sources** dans `docs/qa/hub-ressources/<vague>-sources/`, avec un en-tête de navigateur : Légifrance et l'assistance Net-entreprises refusent un agent nu.
 3. **Déclarer les preuves attendues** : planchers `DEFINITIONS_ATTENDUES` et `UNITES_ATTENDUES` (`scripts/lib/resource-metier-evidence.mjs`), champs à portée juridique dans `ADDITIONAL_UNITS` (`resource-metier-v3.mjs`).
-4. **Monter les compteurs** : `tests/proof/test_glossary.py` (43 vers 57), `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`.
+4. **Monter les compteurs** depuis les 53 termes actuels vers le total réellement revu, pas vers une cible supposée : `tests/proof/test_glossary.py`, `tests/browser/glossary.spec.ts`, totaux de `test_resource_v3_traceability.py`.
 5. `npm run build`, puis **`npm run resource:seal-surfaces`** : la surface scellée est le glossaire seul depuis le retrait de `/ressources`.
 6. **Revue métier par un agent distinct de l'auteur**, sous une carte de suivi, avec un verdict par couple affirmation et source sur tous les types sensibles.
 7. **Injecter la revue** dans les manifestes, puis `node scripts/reaffirm-resource-review.mjs ancrer` : l'ancre enregistre le sujet complet de la revue après avoir vérifié qu'il reproduit l'empreinte épinglée.
@@ -108,22 +108,34 @@ n'ajoute **aucune affirmation de type sensible** n'a pas besoin de R6 : la revue
 que les affirmations sensibles n'ont pas bougé d'un octet. C'est la voie prise le 19/09/2026 pour la
 vague 2, et la raison pour laquelle ses quatre termes réglementaires sont restés dehors.
 
-Entre deux vagues, quand le chrome du site change sans que la matière bouge, on ne rescelle pas : on
-**réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant
+Entre deux vagues, quand le chrome du site change sans que la matière bouge, on rescelle les surfaces
+(`npm run resource:seal-surfaces`), puis on **réaffirme** (`node scripts/reaffirm-resource-review.mjs reaffirmer`), qui compare le sujet courant
 à l'ancre feuille par feuille, refuse tout écart non déclaré, revérifie que chaque affirmation est
 encore rendue et chaque copie de source intacte, puis re-épingle. La revue en vigueur est
 `metier-review-r5`.
 
 ## 5. Le piège, écrit pour ne pas être refait
 
-**Ne jamais rejouer `resource:seal-surfaces` après un scellement de revue.** Le scellement des
-surfaces réinitialise sans condition les listes de défauts et le blocage : relancé après coup, il
-efface le bloc de revue que le scellement venait d'écrire, **silencieusement**. Le dossier repart en
-attente sans que rien ne rougisse. C'est un défaut connu du script, relevé lors du scellement R2 et
-consigné dans `docs/qa/hub-ressources/metier-r2-seal.md` ; tant qu'il n'est pas corrigé, l'ordre du
-§4 est contraignant : sceller d'abord, faire relire ensuite, ancrer enfin.
+`resource:seal-surfaces` conserve désormais la revue existante non PENDING, ses verdicts, sa
+date de campagne (`sensitiveMatter.checkedAt`) et les défauts P0/P1/blocage. Il ne revient pas
+à la date initiale du 16/09 : un verdict ajouté à une campagne ultérieure reste antérieur
+à celle-ci. Une date manquante reste manquante, donc refusée par le validateur. Le défaut de
+perte silencieuse relevé dans `docs/qa/hub-ressources/metier-r2-seal.md` est corrigé ; les
+empreintes de revue ne sont toutefois pas actualisées par le scellement. La réaffirmation
+reste nécessaire après un changement de chrome ; une matière sensible modifiée exige sa revue.
 
 Second piège, du même genre : une réaffirmation n'est pas un rescellement. Rescellier en effaçant la
 revue serait la perte silencieuse ; re-épingler automatiquement serait pire, une revue qui suit
 n'importe quel contenu ne revoit plus rien. Le script tient la troisième voie, explicite et
 fail-closed, et refuse d'écrire dès qu'une vérification manque.
+
+## 6. Cadence et déclencheur (arbitrage du 28/09/2026)
+
+Pas de quota hebdomadaire de termes : un mot n'entre que lorsqu'un article, un outil ou une
+page de service publié(e) en a besoin pour lever une ambiguïté de métier, et qu'une source et
+une preuve fictive sont disponibles. À chaque vendredi de maintenance de la forge, relever les
+termes employés mais non définis, les liens cassés et les confusions de Search Console ; proposer
+une vague seulement si au moins un terme satisfait ce besoin, sans forcer la vague de quatre
+réglementaires reportés. Avant une publication, vérifier la source à la date de revue et le contrat
+de la chaîne Ressources (§4) ; si elle bloque, garder l'entrée candidate hors du glossaire public.
+Les 53 ancres ne sont pas une cible de croissance mais le stock de `src/data/glossary.ts`.

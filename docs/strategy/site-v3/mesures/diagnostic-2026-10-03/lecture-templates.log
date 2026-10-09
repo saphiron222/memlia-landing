@@ -1,0 +1,479 @@
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/case-study.md
+1|# Template: Case Study
+2|
+3|**Template Name:** Case Study (Results-Focused Narrative)
+4|**Target Word Count:** 1,500-2,000 words
+5|**Description:** A narrative-driven analysis of a specific project, campaign, or initiative that documents the challenge, strategy, execution, and measurable results. Designed to build credibility, demonstrate expertise through real outcomes, and rank for "[topic] case study," "how [company] achieved [result]," and long-tail problem-solution queries.
+6|
+7|## When to Use This Template
+8|
+9|- **Content Goals:** Build trust and authority through documented results, generate leads by demonstrating competence, create reference material for sales conversations, attract backlinks from industry publications
+10|- **Search Intent:** Informational / Commercial investigation: the reader wants proof that a strategy works before committing to it themselves
+11|- **Best For:** Client success stories, internal project retrospectives, before/after transformations, strategy validation, process documentation
+12|- **Avoid When:** You lack specific metrics or measurable outcomes (vague "it went well" stories don't qualify), or when the subject hasn't given permission to be referenced
+16|## Section-by-Section Structure
+20|### Title (H1)
+37|### TL;DR Box (concise; length follows the material)
+55|### Introduction (100-150 words)
+73|### The Challenge (200-250 words)
+95|### The Strategy (300-400 words)
+122|### The Implementation (200-300 words)
+136|[STAT: Implementation efficiency metric (time spent, cost, iterations required)]
+143|### The Results (200-300 words)
+170|### Key Takeaways (150-200 words)
+177|- It must be **transferable**: applicable to the reader's own situation, not just this specific case
+178|- It must be **specific**: actionable advice, not a platitude
+179|- It must be **earned**: grounded in what actually happened in this case study
+191|### Optional Reader Questions (count by reader need)
+206|#### Would this approach work for a smaller team?
+210|#### What was the total cost of this project?
+214|#### What would you do differently?
+220|## Template Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/comparison.md
+1|# Template: Comparison (X vs Y)
+2|
+3|**Template Name:** Comparison (X vs Y Analysis)
+4|**Target Word Count:** 1,500-2,000 words
+5|**Description:** A structured, fair, category-by-category comparison of two (or occasionally three) competing products, tools, strategies, or approaches. Each category section is framed as a question the reader is actually asking, with a clear winner declared per category and an overall verdict. Designed to rank for "[A] vs [B]" queries, capture decision-stage traffic, and earn featured snippets for direct comparison questions.
+6|
+7|## When to Use This Template
+8|
+9|- **Content Goals:** Capture high-intent "[A] vs [B]" search traffic, help readers make confident purchase/adoption decisions, build authority as a fair evaluator, rank in "People Also Ask" boxes
+10|- **Search Intent:** Commercial investigation: the reader has narrowed their options to 2-3 choices and needs help making the final decision
+11|- **Best For:** Software comparisons, tool evaluations, framework decisions, platform migrations, methodology debates, service provider comparisons
+12|- **Avoid When:** The two options aren't genuinely comparable (different categories), one option is clearly obsolete, or you need to evaluate more than 3 options (use the Listicle template instead)
+16|## Section-by-Section Structure
+20|### Title (H1)
+38|### TL;DR Box (concise; length follows the material)
+54|### Introduction (100-150 words)
+74|### Quick Comparison Table (H2)
+80|**Required rows (adapt to your category):**
+95|- Use specific, measurable values: never "Good" or "Fast"
+105|**Benchmark data sourcing.** Every material statistic must be traceable to a
+112|### Category 1: Which Has Better [Core Feature]? (150-200 words)
+144|### Category 2: Which Has Better [Second Feature]? (150-200 words)
+155|### Category 3: Which Has Better [Third Feature]? (150-200 words)
+165|### Category 4: Which Has Better [Fourth Feature]? (150-200 words)
+176|### Category 5: Which Has Better [Fifth Feature]? (150-200 words)
+184|### Categories 6-7: [Additional categories as needed] (150-200 words each)
+200|### Pricing Comparison (150-200 words)
+208|4. **Hidden costs** (1-2 sentences): Any costs not immediately obvious: migration effort, required add-ons, lock-in implications.
+226|### Who Should Choose What (100-150 words)
+251|### Optional Reader Questions (count by reader need)
+268|#### Is Next.js better than Astro?
+272|#### Can I migrate from Next.js to Astro?
+276|#### Can I use Next.js and Astro together?
+280|#### Which has better SEO?
+284|#### Is [Product] still relevant in 2026?
+290|### Verdict with Category Winners (50-100 words)
+312|## Template Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/data-research.md
+1|# Template: Data Research (Original Data Study)
+2|
+3|**Template ID:** data-research
+4|**Target Length:** 2,000-3,000 words
+5|**Content Type:** Original data study with visualizations and actionable findings
+6|**Primary Search Intent:** Informational ("study," "data," "statistics," "research," "benchmark")
+7|
+8|## When to Use This Template
+9|
+10|Use this template when:
+11|- You have original data from surveys, experiments, tool analysis, or proprietary sources
+12|- The study reveals findings that challenge assumptions or fill knowledge gaps
+29|## Title Format
+54|## Section-by-Section Structure
+58|### Optional TL;DR Box
+78|### Key Findings (200-300 words)
+85|## Key Findings
+101|- Each bullet must be self-contained - citable without context
+108|### Methodology (200-300 words)
+113|## Methodology
+117|### Data Source
+124|### Sample
+134|### Analysis Approach
+138|### Limitations
+157|is required. Drop unverifiable statistics and replace contradicted statistics
+163|### Finding Sections (300-400 words each, 4 findings)
+169|## [Finding as a Question]?
+201|- Always open with the data point - never bury the lead
+202|- Each finding must have its own visualization (vary chart types)
+209|### Surprises & Outliers (150-200 words)
+214|## Surprises & Outliers
+237|### Limitations & Future Research (100-150 words)
+242|## Limitations & Future Research
+265|### Implications & Recommendations (200-300 words)
+270|## Implications & Recommendations
+274|### For [Audience Segment 1]:
+279|### For [Audience Segment 2]:
+297|### Optional Reader Questions (count by reader need)
+302|## Frequently Asked Questions
+304|### How was this data collected?
+308|### Does this apply to [specific audience/context]?
+312|### How does this compare to [previous study/industry benchmark]?
+318|### Can I cite this research?
+322|### When will this data be updated?
+331|- Answers should be concise and complete; Google has no required answer length
+335|### Data Appendix
+338|## Data Appendix
+340|### Summary Data Table
+363|## Content Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/faq-knowledge.md
+1|# Template: FAQ / Knowledge Base
+2|
+3|**Template ID:** faq-knowledge
+4|**Target Length:** 1,500-2,000 words
+5|**Content Type:** Comprehensive FAQ organized by category with extractable answers
+6|**Primary Search Intent:** Informational ("what is," "how does," "why does," "can I," "should I")
+7|
+8|## When to Use This Template
+9|
+10|Use this template when:
+11|- A topic generates many recurring questions across forums, support channels, or search
+12|- Each question can be answered clearly and directly without a fixed word band
+30|## Title Format
+54|## Section-by-Section Structure
+58|### Introduction (100-150 words)
+64|# [Topic]: Frequently Asked Questions ([Year])
+90|### FAQ Category 1: "Getting Started" Questions (count by reader need)
+95|## Getting Started with [Topic]
+97|### What is [topic/tool/concept]?
+107|### Who should use [topic/tool]?
+120|### How do I get started with [topic]?
+128|### How much does [topic/tool] cost?
+139|### FAQ Category 2: "How It Works" Questions (count by reader need)
+144|## How [Topic] Works
+146|### How does [topic/feature] work?
+156|### What is the difference between [A] and [B]?
+171|### Can [topic/tool] do [specific capability]?
+177|### What are the limitations of [topic/tool]?
+191|### FAQ Category 3: "Common Problems" Questions (count by reader need)
+196|## Common Problems & Solutions
+198|### Why is [topic/tool] [not working / slow / showing error]?
+214|### How do I fix [specific error message]?
+219|# [Fix command or code]
+227|### How do I migrate from [old tool/version] to [new tool/version]?
+240|### Where can I get help with [topic/tool]?
+252|### FAQ Category 4: "Advanced" Questions (count by reader need)
+257|## Advanced Topics
+259|### How do I [advanced use case]?
+266|# Example implementation
+276|### What are the best practices for [topic] in production?
+288|### How does [topic] compare to [alternative] for [specific use case]?
+304|### Related Resources (100 words)
+307|## Related Resources
+325|### Still Have Questions? (50 words)
+328|## Still Have Questions?
+337|## Structured Data Notes
+369|## Content Checklist
+388|- [ ] No answer references another answer (each must stand alone)
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/how-to-guide.md
+1|# Template: How-To Guide
+2|
+3|**Template Name:** How-To Guide (Step-by-Step Tutorial)
+4|**Target Word Count:** 2,000-2,500 words
+5|**Description:** A structured, actionable tutorial that walks readers through a specific process from start to finish. Each step is concrete, visual, and builds on the previous one. Designed to rank for "how to" queries and earn featured snippets.
+6|
+7|## When to Use This Template
+8|
+9|- **Content Goals:** Drive organic traffic from instructional queries, establish topical authority, earn featured snippets for step-based queries
+10|- **Search Intent:** Informational / Transactional hybrid: the reader has a specific problem and wants a clear solution *right now*
+11|- **Best For:** Process explanations, software tutorials, setup guides, configuration walkthroughs, skill-building content
+12|- **Avoid When:** The topic lacks a clear sequential process or has fewer than 3 meaningful steps
+16|## Section-by-Section Structure
+20|### Title (H1)
+35|### Introduction (150-200 words)
+60|### Prerequisites / Before You Begin (100-150 words)
+65|- Required tools/software (with versions)
+66|- Required accounts or access
+83|### Step 1: [Action Verb] + [Specific Object] (200-300 words)
+107|### Step 2: [Action Verb] + [Specific Object] (200-300 words)
+117|### Step 3: [Action Verb] + [Specific Object] (200-300 words)
+127|### Step 4: [Action Verb] + [Specific Object] (200-300 words)
+139|### Step 5: [Action Verb] + [Specific Object] (200-300 words)
+147|### Step 6: [Action Verb] + [Specific Object] (200-300 words)
+159|### Common Mistakes to Avoid (150-200 words)
+185|### Results / What Success Looks Like (100-150 words)
+202|### Optional Reader Questions (count by reader need)
+219|#### How long does it take to set up a CI/CD pipeline?
+223|#### Can I use [Alternative Tool] instead?
+227|#### What should I do if Step [N] fails?
+231|#### How do I scale this for a larger team?
+235|#### Is [Tool/Service] free?
+241|### Conclusion with CTA (50-100 words)
+252|## Template Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/listicle.md
+1|# Template: Listicle
+2|
+3|**Template Name:** Listicle (Ranked/Numbered List)
+4|**Target Word Count:** 1,500-2,000 words
+5|**Description:** A curated, opinionated list of tools, resources, strategies, or options ranked by quality or relevance. Each item gets a concise evaluation with clear "best for" positioning. Designed to rank for "best [X]" and "[N] top [Y]" queries, capture comparison traffic, and earn featured snippets for list-format results.
+6|
+7|## When to Use This Template
+8|
+9|- **Content Goals:** Capture high-volume "best of" search queries, provide quick decision-making support, drive affiliate or referral traffic, establish curation authority
+10|- **Search Intent:** Commercial investigation: the reader is evaluating options and wants an expert-curated shortlist
+11|- **Best For:** Tool roundups, resource collections, strategy compilations, product recommendations, tip collections
+12|- **Avoid When:** The topic requires deep analysis of only 1-2 options (use the Comparison template instead) or the items cannot be meaningfully ranked or differentiated
+16|## Section-by-Section Structure
+20|### Title (H1)
+37|### Introduction (100-150 words)
+65|### Item 1: [Item Name] - Best Overall / Best for [Primary Use Case] (150-200 words)
+102|### Item 2: [Item Name] - Best for [Specific Use Case] (150-200 words)
+110|### Item 3: [Item Name] - Best for [Specific Use Case] (150-200 words)
+120|### Item 4: [Item Name] - Best for [Specific Use Case] (150-200 words)
+128|### Item 5: [Item Name] - Best for [Specific Use Case] (150-200 words)
+138|### Items 6-N: [Continue as needed] (150-200 words each)
+142|**Note:** Every item must earn its spot. If you can't write 150 meaningful words about an item, it doesn't belong on the list. Padding with filler items destroys credibility.
+146|### Comparison Table (Feature Matrix)
+152|**Required columns:**
+167|### How We Selected These
+204|### Optional Frequently Asked Questions
+222|#### What is the best static site generator in 2026?
+226|#### Is [Free Option] good enough for production?
+230|#### What's the difference between [A] and [B]?
+236|### Conclusion with Top Pick Recommendation (50-100 words)
+248|## Template Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/news-analysis.md
+1|# Template: News Analysis (Timely Event Commentary)
+2|
+3|**Template ID:** news-analysis
+4|**Target Length:** 800-1,200 words
+5|**Content Type:** Timely event analysis with actionable implications
+6|**Primary Search Intent:** Informational / Navigational ("what happened," "what does X mean," "reaction to")
+7|
+8|## When to Use This Template
+9|
+10|Use this template when:
+11|- A significant event, announcement, or release has just occurred
+12|- The audience needs fast, opinionated analysis (not just a summary)
+27|## Title Format
+51|## Section-by-Section Structure
+55|### TL;DR Box (concise; length follows the material)
+72|### What Happened (100-150 words)
+77|## What Happened
+100|### Why This Matters (200-300 words)
+105|## Why This Matters
+135|### What This Means for [Audience] (200-300 words)
+140|## What This Means for [Audience]
+144|### Impact 1: [Specific Change]
+148|### Impact 2: [Specific Change]
+152|### Impact 3: [Specific Change]
+169|### What to Do Now (150-200 words)
+174|## What to Do Now
+199|### The Bigger Picture (100-150 words)
+204|## The Bigger Picture
+225|### Optional Reader Questions (count by reader need)
+230|## Frequently Asked Questions
+232|### [Question 1 - the most obvious question about the event]?
+236|### [Question 2 - practical question about what to do]?
+242|### [Question 3 - forward-looking question about what happens next]?
+251|- Answers must be self-contained and extractable for search snippets and AI citations
+252|- Keep answers concise and complete; Google has no required answer length
+257|### References and Retrieval Notes
+260|## References and Retrieval Notes
+269|- Every factual claim in the article must have an inline citation
+270|- Retrieval notes provide provenance and must not duplicate inline citations as a raw source dump
+277|## Content Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/pillar-page.md
+1|# Template: Pillar Page
+2|
+3|**Description:** Comprehensive topic authority guide that serves as the central hub for a topic cluster. Pillar pages provide broad, thorough coverage of a subject and link out to supporting articles that dive deeper into sub-topics.
+4|
+5|**Target Word Count:** 3,000-4,000 words
+6|
+7|---
+8|
+9|## When to Use This Template
+10|
+11|- **Content Goal:** Establish topical authority and create an SEO hub that ranks for high-volume head terms
+12|- **Search Intent:** Informational (users want a complete understanding of a topic)
+22|## Section-by-Section Structure
+26|### Title
+36|# The Complete Guide to [Topic] in [Year]
+43|### TL;DR Box (concise; length follows the material)
+53|### Table of Contents
+58|## Table of Contents
+76|### Introduction (200-300 words)
+96|### What Is [Topic]? (200-300 words)
+115|### Why [Topic] Matters (200-300 words)
+136|### Core Sections (6-8 H2s, 300-400 words each)
+143|## [Sub-topic as H2 - written as a clear, keyword-rich heading]
+170|### Advanced: [Expert-Level Sub-topic] (200-300 words)
+190|### Tools & Resources (200-300 words)
+210|### Getting Started (150-200 words)
+224|### Optional Reader Questions (count by reader need)
+237|### [Question 1 - basic definition or "what is" question]?
+241|### [Question 2 - "how to" or process question]?
+245|### [Question 3 - comparison or "vs" question]?
+249|### [Question 4 - cost, time, or effort question]?
+253|### [Question 5 - common misconception or "is it worth" question]?
+257|### [Question 6 - advanced or edge-case question]?
+261|### [Question 7 - future-looking or trend question]?
+270|### Conclusion with Internal Link Hub (150-200 words)
+284|### Continue Learning
+305|## Pre-Publish Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/product-review.md
+1|# Template: Product Review
+2|
+3|**Description:** First-hand product assessment based on real testing and hands-on experience. Product reviews build trust through transparency, detailed observations, and honest verdicts. They target high-intent commercial search queries where readers are close to a purchase decision.
+4|
+5|**Target Word Count:** 1,500-2,000 words
+6|
+7|---
+8|
+9|## When to Use This Template
+10|
+11|- **Content Goal:** Provide an honest, experience-based evaluation that helps readers make informed purchase decisions
+12|- **Search Intent:** Commercial investigation (users are evaluating options before buying)
+22|## Section-by-Section Structure
+26|### Title
+37|# [Product Name] Review ([Year]): [Key Verdict]
+44|### TL;DR Verdict Box
+64|### Introduction (100-150 words)
+80|### Pros & Cons Table
+101|### Testing Methodology (100-150 words)
+115|### Feature Sections (4-6 features, 150-200 words each)
+123|## How Good Is [Feature Name]?
+145|### Pricing & Value (150-200 words)
+161|3. **Hidden costs** (1-2 sentences): Are there add-ons, overage charges, or required integrations that increase the real cost?
+171|### Alternatives (100-150 words)
+179|### [Alternative 1 Name]
+184|### [Alternative 2 Name]
+189|### [Alternative 3 Name]
+199|### Final Verdict (100-150 words)
+213|### Optional Reader Questions (count by reader need)
+223|### Is [Product Name] worth the price?
+227|### How does [Product Name] compare to [Top Competitor]?
+231|### Does [Product Name] offer a free plan/trial?
+235|### What are the biggest drawbacks of [Product Name]?
+239|### Who is [Product Name] best for?
+248|## Pre-Publish Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/roundup.md
+1|# Template: Roundup
+2|
+3|**Description:** Curated collection of expert quotes, insights, and strategies organized around a specific topic. Roundup posts leverage external authority, provide diverse perspectives, and are highly shareable because each featured expert has an incentive to promote the piece. They also build relationships with industry leaders.
+4|
+5|**Target Word Count:** 1,500-2,000 words
+6|
+7|---
+8|
+9|## When to Use This Template
+10|
+11|- **Content Goal:** Aggregate diverse expert perspectives to create a uniquely valuable resource, build relationships with industry leaders, and earn social shares and backlinks
+12|- **Search Intent:** Informational (users want curated, authoritative advice on a topic)
+23|## Section-by-Section Structure
+27|### Title
+43|# [N] Experts Share Their [Topic] Strategies for [Year]
+50|### Introduction (100-150 words)
+67|### Expert Sections (5-8 experts, 150-200 words each)
+74|## [Expert Full Name], [Title] at [Company/Organization]
+105|### Synthesis: What the Experts Agree On (200-300 words)
+137|### Actionable Takeaways (150-200 words)
+167|### Resources (100-150 words)
+197|### Optional Reader Questions (count by reader need)
+207|### How do I choose which expert advice to follow first?
+211|### Does this advice apply to [specific industry/size/context]?
+215|### What if [expert advice A] contradicts [expert advice B]?
+219|### How often should I revisit these strategies?
+223|### Where can I learn more about [specific sub-topic mentioned by experts]?
+232|### Methodology (100 words)
+249|## Pre-Publish Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/thought-leadership.md
+1|# Template: Thought Leadership
+2|
+3|**Description:** Opinion and analysis piece that challenges conventional wisdom with a data-backed contrarian angle. Thought leadership content positions the author as an independent thinker, generates discussion and backlinks, and attracts an engaged audience that values original perspectives.
+4|
+5|**Target Word Count:** 1,500-2,500 words
+6|
+7|---
+8|
+9|## When to Use This Template
+10|
+11|- **Content Goal:** Establish the author as an original thinker, spark industry conversation, and earn backlinks through a strong, defensible opinion
+12|- **Search Intent:** Informational with a navigational element (readers seek specific perspectives and analysis, not just facts)
+23|## Section-by-Section Structure
+27|### Title
+37|- The title must clearly signal a contrarian position - ambiguity kills click-through
+43|# Why [Conventional Wisdom] Is Wrong (And What to Do Instead)
+50|### Hook (100-150 words)
+65|### The Conventional View (200-300 words)
+82|### Why This Is Wrong (300-400 words)
+110|### What the Data Actually Shows (300-400 words)
+131|### The Better Approach (200-300 words)
+148|### How to Apply This (200-300 words)
+169|### Caveats (100-150 words)
+186|### Optional Reader Questions (count by reader need)
+196|### But doesn't [conventional approach] work in [specific context]?
+200|### What if I've already invested in [conventional approach]?
+204|### How do you respond to [specific expert or study] that supports the conventional view?
+213|### Conclusion: Call for Industry Shift (100-150 words)
+227|## Pre-Publish Checklist
+
+SOURCE /Users/kevinkitanga/hermes/packs/claude-blog/skills/blog/templates/tutorial.md
+1|# Template: Tutorial (Code/Tool Walkthrough)
+2|
+3|**Template ID:** tutorial
+4|**Target Length:** 2,000-3,000 words
+5|**Content Type:** Technical walkthrough with step-by-step instructions
+6|**Primary Search Intent:** Informational / Transactional ("how to," "tutorial," "guide," "setup")
+7|
+8|## When to Use This Template
+9|
+10|Use this template when:
+11|- Teaching readers how to build, configure, or implement something specific
+12|- The outcome is a working piece of code, a configured tool, or a completed setup
+24|## Title Format
+43|## Section-by-Section Structure
+47|### TL;DR Box (concise; length follows the material)
+54|> [concrete deliverable]. No prior experience with [tool] is required beyond [minimum prerequisite].
+61|### Prerequisites (100-150 words)
+66|- Required tools with exact version numbers
+87|### What We're Building (100-150 words)
+109|### Setup (200-300 words)
+120|## Setting Up Your Environment
+124|### Step 1: [Initialize/Create/Clone]
+129|# [Descriptive comment]
+134|### Step 2: [Install Dependencies]
+137|# [Descriptive comment]
+141|### Step 3: [Configure]
+173|### Step-by-Step Sections (300-400 words each, 4-6 steps)
+178|## Step [N]: [Action Verb] + [What You're Doing]
+211|- Code blocks must be complete and copy-pasteable (no ellipsis or "..." shortcuts)
+215|- Each step builds on the previous one - never skip dependencies
+219|### Testing/Verification (200-300 words)
+224|## Testing Your [Project]
+228|### Quick Smoke Test
+239|### Full Test Suite
+247|### Manual Verification Checklist
+258|### Troubleshooting (200-300 words)
+263|## Troubleshooting
+284|### Next Steps (100-150 words)
+289|## Next Steps
+310|### Optional Technical Questions (count by reader need)
+315|## Frequently Asked Questions
+317|### [Question 1 - phrased as users would search it]?
+323|### [Question 2]?
+327|### [Question 3]?
+338|- Answer the question directly and completely; Google has no required answer length
+342|### Full Source Code Reference
+345|## Complete Source Code
+363|## Content Checklist
+{
+  "catalogue": 56
+}
+{
+  "pack": 63
+}
+
+__HERMES_CWD_076ac2ea6b10__/Users/kevinkitanga/.hermes/profiles/marketing/cache/scratch/blog-w40__HERMES_CWD_076ac2ea6b10__

@@ -6,20 +6,22 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
-    "build:site": "astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
+    "build": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
+    "test:query-ownership": "node scripts/verify-query-ownership.mjs && node --test tests/scripts/query-ownership.test.mjs",
+    "build:site": "npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
     "check": "astro check",
     "test": "playwright test",
     "test:images": "node scripts/verify-m4-images.mjs",
     "lastmod:sync": "node scripts/sync-lastmod.mjs",
+    "regen:generated": "npx astro build && npm run lastmod:sync && npm run resource:seal-surfaces && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
-    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check",
+    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",
-    "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check && node scripts/render-blog-recrutement-proofs.mjs --check",
+    "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check",
     "test:proof": "python3 -m unittest discover -s tests/proof -v",
     "test:preview-export": "node --test tests/scripts/prepare-preview.test.mjs",
     "test:service-design": "node scripts/verify-service-design.mjs && node --test tests/scripts/service-design.test.mjs",
@@ -62,7 +64,13 @@
     "contact:messages": "node scripts/contact-messages.mjs",
     "contact:dev": "wrangler pages dev dist --ip 127.0.0.1 --port 8789 --show-interactive-dev-session false",
     "contact:purge:deploy": "wrangler deploy -c workers/purge-contact/wrangler.toml",
-    "contact:schema": "wrangler d1 execute memlia-contact --remote --file db/contact/0001-messages.sql"
+    "contact:schema": "wrangler d1 execute memlia-contact --remote --file db/contact/0001-messages.sql",
+    "guide:preparer": "node scripts/service-forge.mjs --guide preparer",
+    "guide:sceller": "node scripts/service-forge.mjs --guide sceller",
+    "guide:publier": "node scripts/service-forge.mjs --guide publier",
+    "guide:audit": "node scripts/service-forge.mjs --guide audit",
+    "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs tests/scripts/guide-proof-layout.test.mjs",
+    "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs"
   },
   "engines": {
     "node": ">=22"
@@ -82,6 +90,7 @@
     "@playwright/test": "^1.63.0",
     "chrome-launcher": "^1.2.1",
     "lighthouse": "^13.4.1",
+    "pdfjs-dist": "^6.4.299",
     "typescript": "^6.0.3"
   }
 }

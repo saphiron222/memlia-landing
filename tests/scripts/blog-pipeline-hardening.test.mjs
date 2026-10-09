@@ -138,6 +138,37 @@ test('les sources T1, T2 et T3 correctement tracées ouvrent le gate', async () 
   assert.equal(result.pass, true);
 });
 
+test('les objectifs de quantité ne remplacent jamais les preuves des sources et des entrants déclarés', async () => {
+  const fixture = await createCompleteDossier(root('editorial-targets'), {
+    manifestMutator: (manifest) => {
+      manifest.sources = manifest.sources.slice(0, 2);
+      manifest.links.incoming = ['/blog'];
+    },
+  });
+  assert.deepEqual((await validateDossier({ root: fixture.root, slug: fixture.slug })).errors, []);
+  const original = readJson(fixture.manifestPath);
+  const mutations = [
+    [(value) => { value.sources[0].url = 'http://localhost/source'; }, /sources\[0\]\.url/],
+    [(value) => { value.sources[1].checkedAt = 'hier'; }, /sources\[1\]\.checkedAt/],
+    [(value) => { value.sources[0].verificationEvidence = 'preuves/absente.json'; }, /absente\.json/],
+    [(value) => { value.links.incoming = ['/blog/page-inventee']; }, /Le lien entrant depuis/],
+  ];
+  for (const [mutate, expected] of mutations) {
+    const changed = structuredClone(original);
+    mutate(changed);
+    writeJson(fixture.manifestPath, changed);
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(result.pass, false);
+    assert.match(result.errors.join('\n'), expected);
+  }
+  writeJson(fixture.manifestPath, original);
+  const state = sourceState(fixture);
+  writeFileSync(state.snapshotPath, 'Copie source altérée sans actualiser la preuve.');
+  const corrupted = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(corrupted.pass, false);
+  assert.match(corrupted.errors.join('\n'), /empreinte|SHA|sha256/i);
+});
+
 test('Medium anonyme, Reddit et Substack personnel restent refusés même avec des preuves locales cohérentes', async () => {
   const replacements = [
     { publisher: 'Medium anonyme', url: 'https://medium.com/@anonyme/article', level: 'tier-4' },
@@ -280,6 +311,100 @@ test('la fixture de documentation primaire technique ouvre un claim methode sans
   assert.equal(falsified.pass, false);
   assert.ok(falsified.errors.some((error) => /contentSha256.*copie locale/.test(error)), falsified.errors.join('\n'));
 });
+
+test('un claim doctest méthodologique reste borné à sa phrase même dans un paragraphe évoquant le pôle social', async () => {
+  const claimText = "Ils confirment seulement les cas qu'ils exercent.";
+  const paragraph = `Des tests verts ne garantissent pas que le collaborateur voit le bon total ni le bon périmètre. ${claimText} Dans une réalisation pour le pôle social, j'ai vu deux défauts échapper aux suites vertes : une référence de coût déplacée, puis un cumul sur plusieurs exercices. Un autre test a rougi à raison. Depuis, je passe par les suites, la chaîne de preuve et l'écran.`;
+  const fixture = await createCompleteDossier(root('doctest-social-context'), {
+    body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+    manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+      publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+      level: 'tier-2', provenance: 'primary', official: false,
+      classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+    }),
+    claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+    claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const claim = claims.claims.find((item) => item.claim === paragraph);
+  claim.claim = claimText;
+  claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).slice(0, 3);
+  writeJson(claimsPath, claims);
+  const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+  const review = readJson(reviewPath);
+  review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+  writeJson(reviewPath, review);
+
+  for (const gateMode of ['protected-preview', 'production']) {
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+    assert.deepEqual(result.errors, []);
+    assert.equal(result.pass, true);
+  }
+
+  claim.claim = 'Dans une réalisation pour le pôle social';
+  claim.type = 'methode';
+  writeJson(claimsPath, claims);
+  const relabel = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+  assert.ok(relabel.errors.some((error) => /primaire officielle/.test(error)), relabel.errors.join('\n'));
+});
+
+test('relabel methode ne fait pas accepter doctest sur une obligation sociale, de paie ou réglementaire', async () => {
+  for (const [label, sentence] of [
+    ['social', 'Les cotisations sociales doivent être déclarées par le pôle social.'],
+    ['paie', 'Le bulletin de paie doit comporter le montant net versé au salarié.'],
+    ['reglementaire', 'Le décret impose cette obligation réglementaire.'],
+  ]) {
+    const fixture = await createCompleteDossier(root(`doctest-relabel-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', sentence),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode: 'protected-preview' });
+    assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}: ${result.errors.join('\n')}`);
+  }
+});
+
+for (const [label, paragraph, claimText] of [
+  ['paie', 'La remise du bulletin de paie est le geste concerné. Cette remise est obligatoire.', 'Cette remise est obligatoire.'],
+  ['social', 'Les cotisations sociales font l’objet de cette déclaration. Leur déclaration est obligatoire.', 'Leur déclaration est obligatoire.'],
+  ['fiscal', 'La déclaration de TVA est le geste concerné. Cette déclaration est obligatoire.', 'Cette déclaration est obligatoire.'],
+  ['pluriel', 'Les cotisations sociales font l’objet de ces déclarations. Ces déclarations sont obligatoires.', 'Ces déclarations sont obligatoires.'],
+]) {
+  test(`relabel methode conserve le contexte sensible de l’anaphore normative ${label} en preview et production`, async () => {
+    const fixture = await createCompleteDossier(root(`doctest-anaphore-${label}`), {
+      body: DEFAULT_BODY.replace('Une revue utile relie chaque règle publiée à une source conservée et à un contrôle humain explicite. Cette phrase est une affirmation vérifiée du candidat.', paragraph),
+      manifestMutator: (manifest) => Object.assign(manifest.sources[1], {
+        publisher: 'Python Software Foundation', url: DOCTEST_URL, upstreamUrl: DOCTEST_URL,
+        level: 'tier-2', provenance: 'primary', official: false,
+        classificationReason: 'Documentation primaire du projet Python sur les limites des tests doctest.', method: null,
+      }),
+      claimSourceForUnit: (manifest, _unit, index) => index === 1 ? manifest.sources[1] : manifest.sources[0],
+      claimTypeForUnit: (_unit, index) => index === 1 ? 'methode' : 'paie',
+    });
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const claim = claims.claims.find((item) => item.claim === paragraph);
+    claim.claim = claimText;
+    claim.factCheck.sourceResults[0].justification.sharedTerms = keyTermsForTest(claimText).filter((term) => !['cette', 'sont'].includes(term)).slice(0, 3);
+    writeJson(claimsPath, claims);
+    const reviewPath = join(fixture.dossier, fixture.manifest.businessReview.evidence);
+    const review = readJson(reviewPath);
+    review.claimReviews.find((item) => item.claimId === claim.id).claimSha256 = sha256(claimText);
+    writeJson(reviewPath, review);
+
+    for (const gateMode of ['protected-preview', 'production']) {
+      const result = await validateDossier({ root: fixture.root, slug: fixture.slug, gateMode });
+      assert.equal(result.pass, false, `${label}/${gateMode} accepté`);
+      assert.ok(result.errors.some((error) => /claims\[1\].*primaire officielle/.test(error)), `${label}/${gateMode}: ${result.errors.join('\n')}`);
+    }
+  });
+}
 
 test('seule l’URL HTTPS doctest canonique ouvre la classification technique', async () => {
   for (const [label, url] of [
@@ -468,6 +593,35 @@ test('une assertion juridique fausse reliée à un extrait hors sujet ferme le g
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.equal(result.pass, false);
   assert.ok(result.errors.some((error) => /hors contexte|ne soutient pas|support sémantique/i.test(error)), result.errors.join('\n'));
+});
+
+test('un contexte uniquement dans du code ou un commentaire ferme le gate des claims', async () => {
+  for (const wrap of [
+    (text) => `<html><body><script>${text}</script></body></html>`,
+    (text) => `<!-- ${text} -->`,
+  ]) {
+    const fixture = await createCompleteDossier(root('hidden-source-context'));
+    const before = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.deepEqual(before.errors, []);
+    const state = sourceState(fixture);
+    const updated = replaceSourceSnapshot(fixture, wrap(readFileSync(state.snapshotPath, 'utf8')));
+    const claimsPath = join(fixture.dossier, 'claims.json');
+    const claims = readJson(claimsPath);
+    const reviews = [];
+    for (const claim of claims.claims) {
+      for (const result of claim.factCheck.sourceResults) {
+        if (result.sourceId === 'source-urssaf') {
+          result.citation.sourceContentSha256 = updated.contentSha256;
+          reviews.push(claimReview(fixture, claim, result.sourceId, result.excerpt, updated.contentSha256));
+        }
+      }
+    }
+    writeJson(claimsPath, claims);
+    writeClaimReviews(fixture, reviews);
+    const after = await validateDossier({ root: fixture.root, slug: fixture.slug });
+    assert.equal(after.pass, false);
+    assert.ok(after.errors.some((error) => /\.context est absent, hors de la copie vérifiée/.test(error)), after.errors.join('\n'));
+  }
 });
 
 test('une contradiction à fort recouvrement lexical ferme le gate malgré des attestations de support forcées', async () => {
@@ -678,6 +832,29 @@ test('une matière sensible cohérente et vérifiée aujourd’hui conserve le c
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.deepEqual(result.errors, []);
   assert.equal(result.pass, true);
+});
+
+test('le refus sensible nomme la convention, les signaux et la reformulation sans changer la garde', async () => {
+  const witness = 'Les quatre décisions sont une convention de travail, pas des catégories réglementaires. Leur sens doit rester stable pour permettre à toute l’équipe de relire les décisions et de comparer les résultats.';
+  const fixture = await createCompleteDossier(root('sensitive-message'), {
+    body: `${DEFAULT_BODY}\n\n${witness}`,
+  });
+  const claimsPath = join(fixture.dossier, 'claims.json');
+  const claims = readJson(claimsPath);
+  const unit = claims.contentUnits.find((item) => item.text === witness);
+  assert.ok(unit);
+  unit.claimIds = [];
+  writeJson(claimsPath, claims);
+
+  const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
+  assert.equal(result.pass, false);
+  const error = result.errors.find((item) => item.startsWith(`claims.contentUnits.${unit.id} doit relier au moins une affirmation vérifiée`));
+  assert.ok(error, result.errors.join('\n'));
+  assert.ok(error.includes(`« ${witness.slice(0, 160)}… »`), error);
+  assert.ok(!error.includes(witness), error);
+  assert.ok(error.includes('legal-reglementaire'), error);
+  assert.ok(error.includes('verbe normatif'), error);
+  assert.ok(error.includes("Si la phrase n'énonce pas de règle, reformulez-la sans ces mots (constitution §6) ; sinon reliez une affirmation sourcée."), error);
 });
 
 test('une recommandation CNIL sourcée reste information, une obligation RGPD exige un type sensible', async () => {
@@ -1079,11 +1256,11 @@ test('la grille éditoriale est complète et son score est recalculé depuis les
   assert.ok(result.errors.some((error) => /score recalculé|earned.*divergent|90/i.test(error)), result.errors.join('\n'));
 });
 
-test('un contenu manifestement mince est refusé sans transformer le seuil en objectif SEO', async () => {
-  const fixture = await createCompleteDossier(root('thin'), { body: '## Réponse directe\n\nCopie.' });
+test('un corps vide est refusé sans imposer de seuil de longueur', async () => {
+  const fixture = await createCompleteDossier(root('thin'), { body: '' });
   const result = await validateDossier({ root: fixture.root, slug: fixture.slug });
   assert.equal(result.pass, false);
-  assert.ok(result.errors.some((error) => /coquille|manifestement mince/i.test(error)), result.errors.join('\n'));
+  assert.ok(result.errors.some((error) => /coquille|corps.*absent/i.test(error)), result.errors.join('\n'));
 });
 
 test('une duplication exacte et une near-duplication du corpus sont refusées', async () => {
@@ -1180,13 +1357,13 @@ test('tous les champs du frontmatter divergent sont comparés au manifeste', asy
   }
 });
 
-test('l’inventaire et chaque dossier refusent les articles pipeline minces ou dupliqués', async () => {
+test('l’inventaire et chaque dossier refusent les articles pipeline vides ou dupliqués', async () => {
   const corpusRoot = root('audit-corpus');
-  await createCompleteDossier(corpusRoot, { slug: 'candidat-mince', heroId: 'img-candidat-mince', body: '## Réponse directe\n\nCopie.' });
+  await createCompleteDossier(corpusRoot, { slug: 'candidat-mince', heroId: 'img-candidat-mince', body: '' });
   const inventory = auditArticleInventory({ root: corpusRoot });
   assert.equal(inventory.articles.find((item) => item.slug === 'candidat-mince')?.status, 'pipeline');
   const result = await validateDossier({ root: corpusRoot, slug: 'candidat-mince' });
-  assert.ok(result.errors.some((error) => /manifestement mince/i.test(error)));
+  assert.ok(result.errors.some((error) => /corps.*absent/i.test(error)));
 });
 
 test('le registre canonique conserve bien les 31 skills Blog et 24 SEO', () => {

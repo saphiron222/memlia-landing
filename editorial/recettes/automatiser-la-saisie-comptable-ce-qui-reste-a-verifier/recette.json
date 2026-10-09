@@ -22,7 +22,7 @@
   "summary": "La lecture extrait, une personne vérifie. Six contrôles dans un ordre fixe : nature, émetteur, mentions, montants, période, doublon. Puis une file d’anomalies à motifs fermés. Rien ne s’enregistre sans validation, et le reliquat se recompte à chaque période.",
   "description": "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine.",
   "date": "2026-09-17",
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-10-03",
   "topics": [
     "saisie",
     "pieces",
@@ -66,7 +66,7 @@
   "task": "Faire lire les pièces et proposer les écritures sans que rien ne s’enregistre sans contrôle, et faire remonter ce que la lecture n’a pas su traiter.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Jeu fictif de cinquante pièces (trente-deux fournisseurs récurrents, six inconnus, quatre tickets dont deux coupés, trois hors période, un doublon reçu deux fois, deux notes de frais sans justificatif, un avoir) rejoué sur la règle ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
+  "proofRequired": "Scénario fictif explicite de cinquante pièces avec sorties attendues, sans prétendre à une exécution ; tableau déclencheur-condition-action-exception ; cinq affirmations sourcées.",
   "reviewRule": "Réviser à la publication de l’article sur le rapprochement bancaire et de celui sur le lettrage, et dès qu’une étape du calendrier de la facturation électronique change ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
@@ -75,18 +75,18 @@
   },
   "inlineProofs": [
     {
-      "id": "saisie-six-controles",
+      "id": "saisie-controle-piece",
       "insertBeforeHeading": "Brique 3 : la file d’anomalies, et le reliquat qui se compte",
-      "alt": "Six contrôles de saisie dans leur ordre fixe, arrêtés sur un écart de montants fictif.",
+      "alt": "Contrôle fictif de la facture FA-2026-0412 : quatre contrôles concluants, période à qualifier, aucune écriture enregistrée.",
       "source": "jeu d’essai fictif et règle écrite décrits dans cet article",
-      "capturedAt": "2026-09-20"
+      "capturedAt": "2026-10-03"
     },
     {
-      "id": "saisie-file-anomalies",
+      "id": "saisie-file-anomalies-avril",
       "insertBeforeHeading": "La règle dans les mots du cabinet",
-      "alt": "File d’anomalies fictive avec six motifs fermés et un écart de montants à traiter.",
+      "alt": "File d’anomalies fictive d’avril : six pièces, dont un ticket coupé, chacune avec son contrôle échoué et son motif.",
       "source": "jeu d’essai fictif et règle écrite décrits dans cet article",
-      "capturedAt": "2026-09-20"
+      "capturedAt": "2026-10-03"
     }
   ],
   "image": {
@@ -123,6 +123,16 @@
   },
   "sources": [
     {
+      "id": "bofip-periode-deduction",
+      "publisher": "DGFiP",
+      "title": "BOI-TVA-DED-40-20 du 08/01/2025 — Conditions de temps et date de la déduction, §25",
+      "url": "https://bofip.impots.gouv.fr/bofip/1133-PGP.html/identifiant%3DBOI-TVA-DED-40-20-20250108",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Doctrine fiscale officielle DGFiP ; exemple du §25 limité à la livraison de biens et à ses conditions, pas à toute pièce tardive.",
+      "excerpt": "Dans le cadre d’une livraison de biens meubles corporels à un acquéreur déposant des déclarations de chiffre d’affaires selon une périodicité mensuelle, si l’exigibilité de la taxe est intervenue le 30 avril et que la facture n’a été délivrée à l’acquéreur que le 5 mai, celui-ci est fondé à exercer son droit à déduction en mentionnant la TVA correspondante sur la déclaration mensuelle de chiffre d’affaires qu’il dépose au mois de mai au titre de ses opérations du mois d’avril."
+    },
+    {
       "id": "sp-mentions-facture",
       "publisher": "Service Public",
       "title": "Mentions obligatoires sur une facture",
@@ -151,6 +161,16 @@
       "official": true,
       "classificationReason": "Fiche officielle de l’administration française sur la conservation des documents d’entreprise, source primaire.",
       "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés"
+    },
+    {
+      "id": "sp-reforme-conservation",
+      "publisher": "Service Public",
+      "title": "Modification de la durée de conservation des documents fiscaux",
+      "url": "https://entreprendre.service-public.gouv.fr/actualites/A18906",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Synthèse officielle du délai fiscal et de ses points de départ, publiée le 26 juin 2026.",
+      "excerpt": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027."
     },
     {
       "id": "cnil-donnee-personnelle",
@@ -214,6 +234,14 @@
   },
   "claims": [
     {
+      "unite": "La conserver : elle reste reçue",
+      "claim": "une facture délivrée le 5 mai",
+      "type": "fiscal",
+      "sourceId": "bofip-periode-deduction",
+      "excerpt": "Dans le cadre d’une livraison de biens meubles corporels à un acquéreur déposant des déclarations de chiffre d’affaires selon une périodicité mensuelle, si l’exigibilité de la taxe est intervenue le 30 avril et que la facture n’a été délivrée à l’acquéreur que le 5 mai, celui-ci est fondé à exercer son droit à déduction en mentionnant la TVA correspondante sur la déclaration mensuelle de chiffre d’affaires qu’il dépose au mois de mai au titre de ses opérations du mois d’avril.",
+      "explanation": "Exemple du §25 : exigibilité le 30 avril, facture délivrée le 5 mai, déduction au titre d’avril sous conditions. Aucune affectation automatique par la seule date ; clôture et régime restent à qualifier humainement."
+    },
+    {
       "unite": "Une pièce lue n’est pas une pièce valable",
       "claim": "comporter les mentions suivantes, que le client soit un particulier, un professionnel ou une entité publique",
       "type": "juridique",
@@ -222,7 +250,7 @@
       "explanation": "La phrase de la fiche Service-Public sur les mentions obligatoires d’une facture est reprise à l’identique, sans élargir sa portée."
     },
     {
-      "unite": "La bascule vers la facture électronique déplace ce travail",
+      "unite": "Pour les flux concernés, la facture électronique déplace ce travail",
       "claim": "la facturation électronique impose un suivi des factures reçues tout au long de leur cycle de vie",
       "type": "fiscal",
       "sourceId": "sp-facture-electronique",
@@ -243,10 +271,18 @@
       "type": "juridique",
       "sourceId": "sp-conservation-pieces",
       "excerpt": "documents ou pièces sur lesquels peuvent s'exercer les droits de communication, d'enquête et de contrôle de l'administration doivent être conservés",
-      "explanation": "Phrase de la fiche Service-Public sur la conservation des documents reprise à l’identique ; seule l’apostrophe typographique diffère, et aucune durée n’est affirmée."
+      "explanation": "Phrase de F10029 reprise à l’identique ; seule l’apostrophe typographique diffère. Cette fiche de 2024 ne suffit pas à établir les durées après la réforme de 2026."
     },
     {
-      "unite": "Enfin, une facture porte presque toujours des données personnelles",
+      "unite": "Service-Public précise que l’article 36 de la loi n° 2026-534",
+      "claim": "l’ancien délai expire après le 1er janvier 2027",
+      "type": "juridique",
+      "sourceId": "sp-reforme-conservation",
+      "excerpt": "Cette mesure sera applicable aux documents et aux pièces dont le délai de conservation expire après le 1<sup>er</sup> janvier 2027.",
+      "explanation": "Synthèse DILA du 26 juin 2026 renvoyant à l'article 36 I et II : le délai fiscal passe de six à dix ans, avec condition transitoire strictement après le seuil. Aucun délai universel ni purge automatique n'en découle."
+    },
+    {
+      "unite": "Enfin, une facture peut porter des données personnelles",
       "claim": "une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable",
       "type": "legal-reglementaire",
       "sourceId": "cnil-donnee-personnelle",
@@ -260,7 +296,7 @@
   },
   "preuvesSkills": {
     "blog-brief": [
-      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR », preuve attendue : reliquat d’exceptions mesuré sur un jeu fictif de cinquante pièces, avec la file d’anomalies qui en sort)."
+      "Brief pris dans docs/strategy/site-v3/backlog-v3.json (famille saisie-ocr, lecteur collaborateurs-comptables, requête « automatisation saisie comptable OCR »). Le candidat décrit un scénario fictif et ses sorties attendues ; une mesure de reliquat n’est revendiquée qu’après un rejeu réel, ligne par ligne, dans une mise en œuvre."
     ],
     "blog-outline": [
       "Plan calqué sur le gabarit how-to-guide du skill blog : réponse directe, définitions, avant de commencer, trois briques, tableau déclencheur/condition/action/exception, refus, frontière en trois colonnes, jeu fictif, cadre sourcé, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."

@@ -1,7 +1,8 @@
 import { test } from 'node:test';
+import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +14,8 @@ import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
-const jour = new Date().toISOString().slice(0, 10);
+// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
+const jour = forge.aujourdhui();
 const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
@@ -59,12 +61,12 @@ const PAGE_SOURCE = `<html><head><title>Durées de conservation</title></head>
 </body></html>
 `;
 
-function recette() {
+function recette(date = jour) {
   return {
     slug: SLUG, title: 'Automatiser une tâche de test dans un cabinet', tabTitle: 'Automatiser une tâche de test | Memlia',
     summary: 'Une règle écrite, un jeu fictif et une validation humaine : la méthode de test rejouable dans un cabinet.',
     description: 'Méthode de test pour automatiser une tâche répétitive de cabinet avec une règle écrite, un jeu fictif et une validation humaine.',
-    date: jour, topics: ['methode', 'automatisation'], keywords: ['automatisation cabinet'],
+    date, topics: ['methode', 'automatisation'], keywords: ['automatisation cabinet'],
     primaryQuery: 'automatiser une tâche de test cabinet', secondaryQueries: ['tâche de test cabinet comptable'], intent: 'executer', fanOut: ['quelle règle écrire'],
     role: { primary: 'direction-associes', secondary: [], proofLevel: 'hypothese', proofNote: 'Rôle supposé pour le test.' },
     funnel: 'TOFU', cluster: 'methode-decision-humaine', famille: 'choisir-cadrer', contentType: 'searchable', format: 'how-to-guide',
@@ -83,8 +85,8 @@ function recette() {
     ],
     links: { outgoing: ['/methode', '/blog/article-frere'], incoming: ['/', '/blog'] },
     cannibalization: { risk: 'faible', comparedWith: ['/blog/article-frere'], decision: 'Intentions distinctes après comparaison du corpus.' },
-    serp: { requete: 'automatiser une tâche de test cabinet', date: jour, acteurs: ['aucun'], note: 'Relevé fictif de test.' },
-    gsc: { requete: 'automatiser une tâche de test cabinet', date: jour, impressions: 0, clics: 0, note: 'Propriété lue, aucune impression : nouvel article.' },
+    serp: { requete: 'automatiser une tâche de test cabinet', date, acteurs: ['aucun'], note: 'Relevé fictif de test.' },
+    gsc: { requete: 'automatiser une tâche de test cabinet', date, impressions: 0, clics: 0, note: 'Propriété lue, aucune impression : nouvel article.' },
     claims: [
       { unite: 'Les données personnelles ne peuvent pas être conservées indéfiniment', claim: 'Les données personnelles ne peuvent pas être conservées indéfiniment et une durée de conservation doit être déterminée par le responsable de traitement', type: 'legal-reglementaire', sourceId: 'cnil-durees', excerpt: 'Les données personnelles ne peuvent pas être conservées indéfiniment : une durée de conservation doit être déterminée par le responsable de traitement en fonction de l’objectif ayant conduit à la collecte de ces données.', explanation: 'La CNIL énonce la règle reprise mot pour mot par le claim.' },
     ],
@@ -99,7 +101,7 @@ function revues(claimId, root) {
     subject: { slug: SLUG, bodySha256: createHash('sha256').update(CORPS.trim()).digest('hex'), recipeSha256: createHash('sha256').update(readFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'))).digest('hex'), renderedSha256: renderedBodySha256(HTML_RELUT) },
     editorial: { criteria: criteres, p0: [] },
     business: { claims: { [claimId]: { verdict: 'soutient', reasoning: 'Le reviewer métier a comparé le claim et la citation exacte de la CNIL dans la copie locale.' } } },
-    image: { criteria: criteresImage, directionArt: 18, semanticRelevance: 22 },
+    image: { criteria: criteresImage },
     sources: { reviewedBy: 'relecteur-metier-ia-memlia' },
   };
 }
@@ -108,7 +110,7 @@ const imageFictive = (width, height) => Buffer.from(`<svg xmlns="http://www.w3.o
 const rendreImage = async (html, cible) => { assert.ok(html.includes('Automatiser une tâche de test'), 'le cadre porte le titre'); await sharp(imageFictive(1920, 1080)).png().toFile(cible); };
 const fetcher = async () => new Response(PAGE_SOURCE, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'content-length': String(Buffer.byteLength(PAGE_SOURCE)) } });
 
-function racineDeTest() {
+function racineDeTest(date = jour) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-forge-'));
   mkdirSync(join(root, 'editorial/templates'), { recursive: true });
   mkdirSync(join(root, 'editorial/recettes', SLUG), { recursive: true });
@@ -117,8 +119,8 @@ function racineDeTest() {
   mkdirSync(join(root, 'src/data'), { recursive: true });
   mkdirSync(join(root, 'public/fonts'), { recursive: true });
   mkdirSync(join(root, 'docs/strategy/site-v3/mesures'), { recursive: true });
-  writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${jour}.json`), JSON.stringify({
-    jour,
+  writeFileSync(join(root, `docs/strategy/site-v3/mesures/questions-${date}.json`), JSON.stringify({
+    jour: date,
     autocompletion: {
       'automatiser une tâche de test cabinet': [],
       'tâche de test cabinet comptable': [],
@@ -132,11 +134,67 @@ function racineDeTest() {
   writeFileSync(join(root, 'src/pages/blog.astro'), '<ul class="blog-liste"></ul>');
   writeFileSync(join(root, 'src/content/blog/article-frere.md'), '---\ntitre: "Article frère de test"\nbrouillon: false\nprimaryQuery: "autre requête"\nintent: comprendre\n---\n\n## Frère\n\nContenu distinct et suffisamment long pour ne pas être confondu avec le candidat de test.\n');
   writeFileSync(join(root, 'editorial/legacy-baseline.json'), JSON.stringify({ version: 1, articles: {} }));
-  writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(recette(), null, 2));
+  writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(recette(date), null, 2));
   writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS);
   return root;
 }
 const blogRendu = `<li data-article="${SLUG}"><a href="/blog/${SLUG}"></a></li>`;
+
+test('materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable', async (t) => {
+  const root = racineDeTest();
+  const RealDate = Date;
+  t.mock.method(globalThis, 'Date', class extends RealDate {
+    constructor(...args) { super(...(args.length ? args : ['2026-09-30T10:00:00Z'])); }
+  });
+  try {
+    const planDir = join(root, 'docs/strategy/site-v3');
+    rmSync(join(root, 'src/content/blog'), { recursive: true });
+    for (const path of ['src/content.config.ts', 'src/data/familles.ts',
+      'docs/strategy/site-v3/mesures']) {
+      cpSync(join(RACINE, path), join(root, path), { recursive: true });
+    }
+    cpSync(join(RACINE, 'tests/fixtures/editorial-w39-backlog.json'), join(planDir, 'backlog-v3.json'));
+    mkdirSync(join(root, 'src/content/blog'), { recursive: true });
+    const publiesW39 = JSON.parse(readFileSync(join(RACINE, 'tests/fixtures/editorial-w39-published.json')));
+    for (const slug of Object.keys(publiesW39)) {
+      cpSync(join(RACINE, 'src/content/blog', `${slug}.md`), join(root, 'src/content/blog', `${slug}.md`));
+    }
+    const backlogPath = join(planDir, 'backlog-v3.json');
+    const backlog = JSON.parse(readFileSync(backlogPath));
+    const cible = backlog.find((e) => e.slug === 'automatiser-l-entree-en-relation-d-un-nouveau-client');
+    cible.slug = SLUG;
+    writeFileSync(backlogPath, JSON.stringify(backlog));
+    const moteur = join(planDir, 'plan-engine.py');
+    cpSync(join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), moteur);
+    // L'horloge du sous-processus est figée ; le garde lui-même reste le code réel.
+    writeFileSync(join(planDir, 'build-cluster-plan.py'), `import datetime, runpy\nclass FixedDate(datetime.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, 30)\ndatetime.date = FixedDate\nrunpy.run_path(${JSON.stringify(moteur)}, run_name='__main__')\n`);
+    const editer = (day) => {
+      const code = `import importlib.util\ns=importlib.util.spec_from_file_location('plan', ${JSON.stringify(moteur)})\np=importlib.util.module_from_spec(s)\ns.loader.exec_module(p)\nclass FixedDate(p.date):\n    @classmethod\n    def today(cls): return cls(2026, 9, ${day})\np.date=FixedDate\nd=p.construire()\ne, entrants, _=p.verifier(*d)\nassert not e, e\np.ecrire_json(d[0],d[1],d[3],d[4],d[5],entrants)\np.ecrire_calendrier(d[3],d[4],d[1],d[0])\n`;
+      const result = spawnSync('python3', ['-c', code], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+    };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage };
+    editer(29);
+    const calendrierPath = join(planDir, 'CONTENT-CALENDAR.md');
+    const avant = readFileSync(calendrierPath);
+    await assert.rejects(materialiser(options), /Créneau éditorial refusé.*calendrier périmé/s);
+    assert.deepEqual(readFileSync(calendrierPath), avant);
+    assert.equal(existsSync(join(root, 'editorial/articles', SLUG)), false);
+    assert.equal(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)), false);
+    editer(30);
+    const r = recette();
+    r.date = '2026-09-30';
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(planDir, 'mesures/questions-2026-09-30.json'), JSON.stringify({
+      jour: '2026-09-30', autocompletion: Object.fromEntries([r.primaryQuery, ...r.secondaryQueries].map((q) => [q, []])),
+    }));
+    const resultat = await materialiser(options);
+    assert.equal(resultat.manifest.slug, SLUG);
+    assert.ok(existsSync(join(root, 'editorial/articles', SLUG, 'manifest.json')));
+    assert.ok(existsSync(join(root, 'src/content/blog', `${SLUG}.md`)));
+    // Préparer n'est ni sceller ni publier : les autres portes restent distinctes.
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO', () => {
   assert.equal(semaineIso('2026-09-16'), '2026-W38');
@@ -410,8 +468,11 @@ test('minuit Paris entre le jour implicite et la garde interrompt sans produire 
   }
 });
 
-test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async () => {
-  const root = racineDeTest();
+test('la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification', async (t) => {
+  const jour = '2026-09-29';
+  const root = racineDeTest(jour);
+  // La récupération à 22h22 UTC doit être passée, pas future après minuit Paris.
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse(`${jour}T12:00:00Z`) });
   let appels = 0;
   const compter = async (...args) => { appels += 1; return fetcher(...args); };
   const dossier = join(root, 'editorial/articles', SLUG, 'preuves/sources');
@@ -463,7 +524,42 @@ test('la forge ne réutilise que des copies intègres, âgées de sept jours au 
     const appelsAvantFaux = appels;
     await forge.verifierSources({ root, slug: SLUG, recette: recette(), dossierRecette: join(root, 'editorial/recettes', SLUG), jour: '2026-03-03', fetcher: compter });
     assert.equal(appels - appelsAvantFaux, 1, 'une date impossible impose une nouvelle ouverture');
-  } finally { rmSync(root, { recursive: true, force: true }); }
+  } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+});
+
+test('le cache distingue jour Paris et instant futur aux frontières été/hiver et UTC', async (t) => {
+  const cas = [
+    ['2026-09-28T21:59:59Z', '2026-09-28'],
+    ['2026-09-28T22:00:01Z', '2026-09-29'],
+    ['2026-09-28T23:59:59Z', '2026-09-29'],
+    ['2026-09-29T00:00:01Z', '2026-09-29'],
+    ['2026-01-28T22:59:59Z', '2026-01-28'],
+    ['2026-01-28T23:00:01Z', '2026-01-29'],
+    ['2026-01-28T23:59:59Z', '2026-01-29'],
+    ['2026-01-29T00:00:01Z', '2026-01-29'],
+  ];
+  for (const [instant, jour] of cas) {
+    const root = racineDeTest(jour);
+    t.mock.timers.enable({ apis: ['Date'], now: Date.parse(instant) });
+    let appels = 0;
+    const compter = async (...args) => { appels += 1; return fetcher(...args); };
+    const options = { root, slug: SLUG, statut: 'a-valider', fetcher: compter, rendreImage, jour };
+    try {
+      assert.equal(forge.aujourdhui(), jour, instant);
+      await materialiser(options);
+      const path = join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json');
+      const preuve = JSON.parse(readFileSync(path));
+      assert.equal(preuve.checkedAt, jour, instant);
+      assert.equal(preuve.retrievedAt, new Date(instant).toISOString());
+      await materialiser(options);
+      assert.equal(appels, 3, `${instant} : les trois copies passées restent réutilisables`);
+      const futur = new Date(Date.parse(instant) + 1_000).toISOString();
+      writeFileSync(path, JSON.stringify({ ...preuve, retrievedAt: futur }));
+      assert.equal(jourRecuperationParis(futur), null, 'même jour Paris ne signifie pas instant passé');
+      await materialiser(options);
+      assert.equal(appels, 4, `${instant} : une copie future impose une nouvelle lecture`);
+    } finally { t.mock.timers.reset(); rmSync(root, { recursive: true, force: true }); }
+  }
 });
 
 test('la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices', async () => {
@@ -547,11 +643,32 @@ test('le gate compare le corps signé après retrait du seul H1 identique au tit
 test('la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets', async () => {
   const root = racineDeTest();
   try {
+    const git = (...args) => {
+      const result = spawnSync('git', ['-C', root, ...args], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return result.stdout.trim();
+    };
+    git('init', '--initial-branch=main');
+    git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '--allow-empty', '-m', 'Base sans candidat');
+    git('update-ref', 'refs/remotes/origin/main', git('rev-parse', 'HEAD'));
+    const publicationsIntegrees = () => {
+      const result = spawnSync('python3', ['-B', '-c', `
+import importlib.util, json, sys
+from pathlib import Path
+spec = importlib.util.spec_from_file_location('planner', sys.argv[1])
+p = importlib.util.module_from_spec(spec); spec.loader.exec_module(p)
+p.RACINE = Path(sys.argv[2]); p.BLOG = p.RACINE/'src/content/blog'
+print(json.dumps(p.etat_publie()))
+`, join(RACINE, 'docs/strategy/site-v3/build-cluster-plan.py'), root], { encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      return JSON.parse(result.stdout);
+    };
     // 1. Préparation sans revues : le dossier existe, le gate le refuse pour la seule raison des revues.
     const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
     assert.deepEqual(preparation.erreurs, []);
     const paquet = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json'), 'utf8'));
     assert.equal(paquet.claims.length, 1);
+    assert.equal(paquet.identites.reviewerMetier, preparation.manifest.businessReview.reviewerId);
     const claimId = paquet.claims[0].id;
     const sansRevue = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
     assert.equal(sansRevue.pass, false);
@@ -567,9 +684,17 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     const avisPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
     const avis = JSON.parse(readFileSync(avisPath, 'utf8'));
     avis.editorial.reviewer = 'qa:t_93191b88';
+    avis.business.reviewerId = 'metier:t_3a224b17';
     writeFileSync(avisPath, JSON.stringify(avis));
     await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
     const candidateDir = join(root, 'editorial/articles', SLUG);
+    assert.equal(JSON.parse(readFileSync(join(candidateDir, 'manifest.json'))).businessReview.reviewerId, avis.business.reviewerId);
+    const businessProof = JSON.parse(readFileSync(join(candidateDir, 'preuves/business-review.json')));
+    assert.equal(businessProof.reviewerId, avis.business.reviewerId);
+    assert.ok(businessProof.claimReviews.every((row) => row.reviewerId === avis.business.reviewerId));
+    const paquetAttribue = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json')));
+    assert.equal(paquetAttribue.identites.reviewerMetier, avis.business.reviewerId);
+    assert.equal(paquetAttribue.identites.reviewerEditorial, avis.editorial.reviewer);
     for (const name of ['manifest.json', 'review.json', 'preuves/review.json']) {
       assert.equal(JSON.parse(readFileSync(join(candidateDir, name))).reviewer, avis.editorial.reviewer, name);
     }
@@ -618,10 +743,12 @@ test('la forge produit un dossier que le gate accepte, puis un dossier publié s
     // 3. Production puis publication scellée : l'audit en mode publication-scellee passe.
     const production = await materialiser({ root, slug: SLUG, statut: 'go-production', fetcher, rendreImage });
     assert.deepEqual(production.erreurs, []);
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'go-production ne ferme pas le créneau de première publication');
     const prod = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'production' });
     assert.deepEqual(prod.errors, []);
     assert.match(readFileSync(join(root, 'src/content/blog', `${SLUG}.md`), 'utf8'), /^brouillon: false$/m);
     await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage });
+    assert.equal(publicationsIntegrees()[SLUG], undefined, 'publie local attend encore son intégration');
     ecrireSceau(root, SLUG);
     const scelle = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.deepEqual(scelle.errors, []);

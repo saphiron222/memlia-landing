@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "dfe1aa51ad8fe067320cd956346100ecdfd50e60552093d9cf986384f4fe50b1",
-  "manifestSha256": "85dd7e9ddad6523f9a73d8c34587f1d8d9904bbdab1a6da774c1934285a30d6c",
+  "checkedAt": "2026-10-08",
+  "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
+  "manifestSha256": "515344dfc273ab31a91844c66ff13343f517bc0775f8e1f43281f7adfae512da",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -49,42 +49,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le brief de recette décrit sujet, composition, style, palette hexadécimale, interdits et alt ; le PNG montre effectivement une carte d'îlots reliés et un jeton vert au croisement."
+        "Brief de couverture dans recette.json relu et couverture 1600 visuellement inspectée : îlots reliés en diorama, jeton et bifurcation, palette vert/crème/graphite, sans texte. Inventaire au gabarit RECETTE ; fiche de relance également inspectée."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Inspection du master 1920 × 1080 : pas de personne, logo, interface, donnée client ou inscription exploitable ; la palette mesurée est PASS dans visual-review.json."
+        "Fenêtre d'inventaire, fond quadrillé, données et badges nets, aucun logo, personne, slogan ou étapes commentées. Les compteurs 60 et 2 décrivent l'inventaire fictif, pas un gain. Couverture sans texte ni donnée réelle."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "La seconde preuve porte « Jeu d'essai fictif » et conclut seulement « Candidate au cadrage » ; aucun envoi ni gain n'y est présenté comme réel."
+        "En-tête Jeu d'essai fictif · cabinet de démonstration ; fiche Jeu d'essai fictif · règle R-01 et dossiers D-004/D-007/D-009. Pas de témoignage ou de résultat réel induit."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Diorama avec îlots comptables connectés, jeton et bifurcation ; la première preuve nomme explicitement douze pôles, soixante familles et l'audit légal listé non ouvert."
+        "Inventaire : Carte EC · 12 pôles, Repères EC 60, demandes de documents par mission, règle À cadrer et statut Carte CAC. Le renvoi distinct n'est plus Non ouvert et n'ajoute pas huit familles aux repères EC. La fiche montre la proposition et l'envoi par le collaborateur."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Master PNG 1920 × 1080, OG WebP 1200 × 630, dérivés WebP et AVIF 768 × 432 constatés ; deux preuves WebP 1600 × 900 rendues dans le HTML."
+        "sips : inventaire et fiche 1600 × 900 ; inventaire 43014 octets. Couverture WebP 768×432, 1200×675, 1600×900 et OG 1200×630 présentes. HTML : attributs 1600×900, sources uniques sans -mobile. Inventaire réellement chargé en 1600×900 via HTTP local et confiné à la colonne à 1280 px ; téléphone non rejoué."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alt de couverture fidèle aux îlots, chemins et jeton ; les deux figures ont un alt pertinent, leur source et leur date de capture 2026-09-20 visibles dans le rendu."
+        "Alt de l'inventaire décrit six familles, fréquence, règle et statut ; correspond au visuel et au HTML. Alt fiche fidèle à la règle fictive ; alt couverture fidèle aux îlots, chemins, jeton et bifurcation. Aucune légende technique publique ajoutée."
       ]
     }
   ]

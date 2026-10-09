@@ -3,20 +3,20 @@
   "candidateSlug": "prompt-chatgpt-expert-comptable",
   "kind": "editorial-review",
   "status": "PASS",
-  "checkedAt": "2026-09-29",
-  "articleSha256": "b87780ddfb647f6ea994905072bda70e23d2dfda2ec9904963d81915888dd785",
-  "manifestSha256": "b2cdbd292ffe24a190e872b7aa6e8772c8e60b0ba0e222ea16021cc1afbaccf3",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "14902c9917838d6e9cafd94159a3c4c7288261d4cbac23b64054eb0a6479a571",
+  "manifestSha256": "da19b3e5b7b2454f51c3d99f43694f7571ecb08a34d0a7a5abfcf512134e419f",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact prompt-chatgpt-expert-comptable."
   ],
-  "reviewer": "qa:t_f7a52dd8",
+  "reviewer": "metier:t_303e7c6d",
   "criteria": [
     {
       "id": "intent-satisfaction",
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le prompt copiable part d'une facture fictive d'avril 2026, exige pièce et période, laisse le destinataire à confirmer et ne déclenche aucun envoi ; la réponse directe expose précisément ce geste."
+        "La demande de facture fictive est préparée comme brouillon lorsque la pièce à demander est nommée mais pas reçue ; le champ Pièce attendue vide provoque l'arrêt du script local, pas l'absence du justificatif."
       ]
     },
     {
@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "H1, titre d'onglet et description portent l'intention prompt ChatGPT expert-comptable ; le lecteur trouve une consigne utilisable, les quatre éléments à conserver et une FAQ plutôt qu'une liste de formules magiques."
+        "Article borné au prompt de demande de pièce, sans promesse d'un résultat ChatGPT ni classement de fournisseurs ; cette revue ne mesure aucun rang SERP."
       ]
     },
     {
@@ -32,7 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Deux citations CNIL dans le corps bornent partage autorisé et identification par croisement ; la page de l'Ordre ne prouve que l'existence de ses ressources. Le texte répète qu'aucune réponse ChatGPT n'a été mesurée."
+        "Les citations CNIL relatives au partage autorisé et à l'identification par croisement, et la présentation par l'Ordre de ses ressources Data et IA, restent limitées à leur portée ; copies locales et SHA des reçus du 29/09 vérifiés. Aucune source ne prétend valider le comportement de ChatGPT."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les quatre parties de La règle écrite précisent l'arrêt ; les trois sorties du journal local concordent avec le tableau rendu. Le refus demande déjà partie vient du suivi fourni au script, absent du prompt copiable, limite explicitée deux fois."
+        "Le journal du script local consigne pièce attendue vide, statut arrêt, motif contexte incomplet, message absent et aucun envoi. La figure de suivi et son alt montrent la ligne « Champ non renseigné » en « Arrêt · contexte incomplet » ; la fenêtre d’assistant porte une facture nommée, suivi « Non reçue », et produit seulement un brouillon fictif « non envoyé », destinataire à confirmer."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Build Astro ciblé neuf : un H1, canonical de ce slug, date visible et BlogPosting au 29 septembre 2026, deux figures avec source et date, OG et noindex propre au brouillon."
+        "HTML construit localement : deux figures data-blog-proof à une seule img WebP 1600 × 900 servie au bureau comme au téléphone, alts concordants, aucune légende ni wrapper défilant ; captures 1280 et 390 px sans débordement. La page locale affiche robots index ; cela ne prouve pas que le brouillon soit publié ou indexé, ni la QA/CI du candidat."
       ]
     },
     {
@@ -56,7 +56,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "La consigne autonome, le tableau de trois sorties et les quatre FAQ sont extractibles ; l'attribution au script fictif accompagne les sorties et interdit de les présenter comme résultats de ChatGPT."
+        "Le texte attribue le refus au script déterministe et dit explicitement qu'aucun essai ChatGPT n'a été réalisé ; l'alt corrigé ne transforme pas la pièce justificative non reçue en raison d'arrêt."
       ]
     },
     {
@@ -64,7 +64,7 @@
       "result": "PASS",
       "earned": 5,
       "observations": [
-        "La clôture relie le pilier, la relance des pièces, /methode et /contact ; elle propose écriture, recette et maintenance dans les outils existants et maintient l'envoi humain."
+        "La décision de vérifier le destinataire puis d'envoyer reste humaine ; aucun courriel n'est présenté comme envoyé."
       ]
     }
   ]

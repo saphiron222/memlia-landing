@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-03",
+  "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+  "manifestSha256": "7ba35869a2811f1054ad23328da36e8b14d982fdcc3ce7064aeb1b156bf2ef51",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact tests-verts-et-regle-des-trois-passes."
+  ],
+  "reviewerId": "metier:t_3a224b17",
+  "role": "direction-associes",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-f2ed6077a390-1-python-doctest",
+      "candidateSlug": "tests-verts-et-regle-des-trois-passes",
+      "articleSha256": "a4d4115948909570dce6df9538143a2cafee3e68400513e7beaf127dabb1d82a",
+      "claimId": "claim-unit-f2ed6077a390-1",
+      "claimSha256": "c4b716e1e5edfb968dca163571bd3f8efa589615e3cd1f2461d677d014f351a8",
+      "sourceId": "python-doctest",
+      "sourceContentSha256": "39efd9d1012a1e81abc96586cf5ca459f5d32a4557f63e65a942fce10a74880b",
+      "citationSha256": "7835f15b04f9407c16f59aa93ddaa71fc3cfd161d19f09a429d3cc4fdefec527",
+      "reviewerId": "metier:t_3a224b17",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-03",
+      "reasoning": "Extrait exact dans le texte visible, source hashée conforme. La documentation décrit la vérification des exemples exécutés. Le candidat exclut explicitement tout lien probant entre cette annexe et les incidents historiques."
+    }
+  ]
+}

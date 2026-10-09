@@ -1,3 +1,6 @@
+<p><a class="btn btn-principal" href="/downloads/modele-rapprochement-bancaire.xlsx" download data-outil-action="export">Télécharger le modèle Excel (.xlsx)</a></p>
+<p>Sans compte : un exemple fictif, une feuille à remplir, des formules et des écarts visibles. Le classeur ne contient ni macro ni connexion externe. Une fois téléchargé, il reste sur votre ordinateur.</p>
+<p>Signes : solde positif = avoir bancaire ou solde débiteur du 512 ; solde négatif = découvert ou solde créditeur. Remises et paiements déjà comptabilisés ajustent la banque (+ remises − paiements). Frais et intérêts déjà au relevé ajustent le 512 (− frais + intérêts). Les ajustements sont positifs, sauf contrepassation de signe opposé ; les éléments inexpliqués restent un contrôle séparé.</p>
 <form class="outil-form" data-reconciliation-form novalidate>
   <div class="fields two"><label>Début de période <input type="date" name="start" required /></label><label>Fin de période <input type="date" name="end" required /></label></div>
   <div class="fields two">
@@ -24,7 +27,7 @@
       <button class="btn btn-contour" type="button" data-download data-outil-action="export" disabled>Télécharger le CSV ouvrable dans Excel</button>
     </div>
     <p class="status" data-status aria-live="polite"></p>
-    <p class="proof"><strong>Preuve de refus :</strong> une période inversée, un élément inexpliqué ou une différence non nulle bloque le téléchargement.</p>
+    <p class="proof">Une période inversée ou un montant illisible bloque le calcul. Les écarts et éléments inexpliqués restent exportables avec l’état NON VALIDÉ, sans produire d’écriture.</p>
   </section>
 </form>
 <script>
@@ -57,9 +60,13 @@
       const bankAdjusted=values.bank+values.deposits-values.payments; const ledgerAdjusted=values.ledger-values.fees+values.interest; const difference=bankAdjusted-ledgerAdjusted;
       form.querySelector<HTMLElement>('[data-bank-adjusted]')!.textContent=money(bankAdjusted);form.querySelector<HTMLElement>('[data-ledger-adjusted]')!.textContent=money(ledgerAdjusted);form.querySelector<HTMLElement>('[data-difference]')!.textContent=money(difference);
       form.querySelector<HTMLOListElement>('[data-trace]')!.innerHTML=[`Solde bancaire ajusté = ${money(values.bank)} + ${money(values.deposits)} − ${money(values.payments)} = ${money(bankAdjusted)}.`,`Solde comptable ajusté = ${money(values.ledger)} − ${money(values.fees)} + ${money(values.interest)} = ${money(ledgerAdjusted)}.`,`Différence = ${money(bankAdjusted)} − ${money(ledgerAdjusted)} = ${money(difference)}.`].map(x=>`<li>${x}</li>`).join('');output.hidden=false;
-      if(values.unexplained!==0){refuse('Refus : un élément inexpliqué subsiste. Identifiez-le avant de produire le modèle.',form.elements.namedItem('unexplained') as HTMLInputElement);return;} if(difference!==0){refuse('Refus : les soldes ajustés ne concordent pas. Le téléchargement reste bloqué.',form.elements.namedItem('ledger') as HTMLInputElement);return;}
+      const controlState = values.unexplained !== 0 || difference !== 0 ? 'NON VALIDÉ — écart ou élément inexpliqué à traiter' : 'Soldes concordants — à valider par le collaborateur';
+      if(values.unexplained!==0){refuse('NON VALIDÉ : un élément inexpliqué subsiste. Le CSV conserve cette exception.',form.elements.namedItem('unexplained') as HTMLInputElement);} else if(difference!==0){refuse('NON VALIDÉ : les soldes ajustés ne concordent pas. Le CSV conserve cet écart.',form.elements.namedItem('ledger') as HTMLInputElement);} else { error.hidden=true; }
       error.hidden=true; const rows=[['MODÈLE DE RAPPROCHEMENT BANCAIRE — DONNÉES FICTIVES'],['Format','CSV UTF-8 BOM, séparateur point-virgule, ouvrable dans Excel'],['Période',start,end],[],['Contrôle','Montant'],['Solde du relevé bancaire',csvMoney(values.bank)],['Remises en circulation',csvMoney(values.deposits)],['Paiements en circulation',csvMoney(values.payments)],['Solde bancaire ajusté',csvMoney(bankAdjusted)],['Solde du compte 512',csvMoney(values.ledger)],['Frais bancaires à comptabiliser',csvMoney(values.fees)],['Intérêts à comptabiliser',csvMoney(values.interest)],['Éléments inexpliqués',csvMoney(values.unexplained)],['Solde comptable ajusté',csvMoney(ledgerAdjusted)],['Différence',csvMoney(difference)],[],['LIGNES EN CIRCULATION À DÉTAILLER'],['Date','Libellé fictif','Type : remise ou paiement','Montant'],['','','',''],['','','',''],['','','',''],['','','',''],['','','',''],[],['Conclusion','À valider par le collaborateur — aucune écriture produite']]; const quote=(v:string)=>`"${v.replace(/"/g,'""')}"`; csv='\uFEFF'+rows.map(row=>row.map(quote).join(';')).join('\r\n');download.disabled=false;
-      summary=[`Période : ${start} au ${end}.`,`Solde bancaire ajusté : ${money(bankAdjusted)}.`,`Solde comptable ajusté : ${money(ledgerAdjusted)}.`,`Différence : ${money(difference)}.`].join('\n');copy.disabled=false;output.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});
+      csv += '\r\n' + ['État du contrôle', controlState, 'Éléments inexpliqués', csvMoney(values.unexplained)].map(quote).join(';');
+      error.hidden = values.unexplained === 0 && difference === 0;
+      status.textContent = controlState;
+      summary=[`Période : ${start} au ${end}.`,`Solde bancaire ajusté : ${money(bankAdjusted)}.`,`Solde comptable ajusté : ${money(ledgerAdjusted)}.`,`Différence : ${money(difference)}.`,`Éléments inexpliqués : ${money(values.unexplained)}.`,controlState].join('\n');copy.disabled=false;output.querySelector<HTMLElement>('h2')?.focus({preventScroll:true});
     });
     copy.addEventListener('click',async()=>{if(!summary)return;try{await navigator.clipboard.writeText(summary);status.textContent='Contrôle copié.';}catch{status.textContent='La copie est bloquée par le navigateur. Le contrôle reste sélectionnable.';}});
     download.addEventListener('click',()=>{if(!csv||download.disabled)return;const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='modele-rapprochement-bancaire-fictif.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),0);});

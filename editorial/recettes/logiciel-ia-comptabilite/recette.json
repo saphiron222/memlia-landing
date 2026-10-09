@@ -3,18 +3,18 @@
   "preparationStatus": "NON_PUBLIABLE_attend_revue_independante",
   "inlineProofs": [
     {
-      "id": "w39-logiciel-parcours",
+      "id": "logiciel-grille-demonstration",
       "insertBeforeHeading": "Comparer ce qui compte vraiment",
-      "alt": "Parcours fictif d'une pièce du dépôt jusqu'à la proposition soumise au contrôle humain.",
-      "source": "Grille éditoriale W39 rejouée sur des données fictives ; aucun éditeur évalué",
-      "capturedAt": "2026-09-27"
+      "alt": "Grille fictive de démonstration : logiciel actuel et deux solutions relevés sur la même pièce nominale.",
+      "source": "écran fictif de la grille de comparaison décrite dans l’article ; aucun éditeur évalué",
+      "capturedAt": "2026-10-03"
     },
     {
-      "id": "w39-logiciel-exceptions",
+      "id": "logiciel-file-controle",
       "insertBeforeHeading": "Trois choix possibles, pas un classement de marques",
-      "alt": "Schéma fictif de trois issues de contrôle : proposition à vérifier, doublon probable et période ambiguë, sans écriture.",
-      "source": "Schéma HTML de la règle éditoriale W39 sur cas fictifs ; aucun éditeur évalué",
-      "capturedAt": "2026-09-27"
+      "alt": "File de contrôle fictive : proposition à valider, doublon probable, période ambiguë et donnée absente, sans écriture.",
+      "source": "écran fictif des cas rejoués dans journal-rejeu.json ; aucun éditeur évalué",
+      "capturedAt": "2026-10-03"
     }
   ],
   "title": "Logiciel IA pour la comptabilité : la grille de choix d'un cabinet",
@@ -22,6 +22,7 @@
   "summary": "Comparer le parcours entier d'une pièce : réception, exception, reprise, validation et trace. Quatre cas fictifs rejoués, aucun éditeur testé.",
   "description": "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré.",
   "date": "2026-09-29",
+  "updatedAt": "2026-10-03",
   "topics": [
     "ia",
     "saisie",

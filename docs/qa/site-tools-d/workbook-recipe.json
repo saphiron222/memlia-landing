@@ -1,0 +1,180 @@
+{
+  "engine": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+  "results": [
+    {
+      "case": "concordant",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
+      "case": "ecart",
+      "values": [
+        1100,
+        1050,
+        50
+      ],
+      "state": "NON VALIDÉ — écart à expliquer",
+      "pass": true
+    },
+    {
+      "case": "inexplique",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — écart à expliquer",
+      "pass": true
+    },
+    {
+      "case": "decouvert",
+      "values": [
+        0,
+        -100,
+        100
+      ],
+      "state": "NON VALIDÉ — écart à expliquer",
+      "pass": true
+    },
+    {
+      "case": "centimes",
+      "values": [
+        0.3,
+        0.3,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
+      "case": "periode-inversee",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — période inversée",
+      "pass": true
+    },
+    {
+      "case": "incomplet",
+      "values": [
+        100,
+        1100,
+        -1000
+      ],
+      "state": "NON VALIDÉ — saisie incomplète",
+      "pass": true
+    },
+    {
+      "case": "sous-centime",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — montant hors borne ou précision",
+      "pass": true
+    },
+    {
+      "case": "hors-borne",
+      "values": [
+        1000000100,
+        1100,
+        999999000
+      ],
+      "state": "NON VALIDÉ — montant hors borne ou précision",
+      "pass": true
+    },
+    {
+      "case": "date-zero",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-negative",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-fractionnaire",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-hors-borne",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-texte",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — saisie invalide",
+      "pass": true
+    },
+    {
+      "case": "date-fictive-excel",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    },
+    {
+      "case": "date-minimale",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
+      "case": "date-maximale",
+      "values": [
+        1100,
+        1100,
+        0
+      ],
+      "state": "Soldes concordants — à valider",
+      "pass": true
+    },
+    {
+      "case": "feuille-vide",
+      "state": "NON VALIDÉ — date hors borne ou invalide",
+      "pass": true
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # context_session_1 — SEO/GEO audit loop (memlia-landing)
 
+## Claude Code — 2026-10-07 — un seul dessin de carte, plus aucun agrandissement d’image
+
+- Demande de Kevin (07/10) : retirer « Agrandir la preuve » partout ; une seule carte pour tout le site, sans orpheline ; cartes d’usage de l’accueil plus « fondues ». Correction en cours de route : le blog ne change pas.
+- Zoom : `ProofDetail.astro` supprimé, prop `enlarge` retirée (ProofMedia, ProofRow, sept sections, PageCommerciale). Aucune page ne porte de `<dialog>`, de commande « Agrandir » ni de lien vers un fichier image.
+- Carte : `global.css` « Cartes et bandes », jetons à trois couches (`--surface-elevee`, `--ombre-posee/levee`, `--carte-fond/bord/bord-survol/ombre/rayon/marge/icone`). Grille `.cartes` par requête de conteneur : 1 colonne < 576 px, 2 colonnes, 3 si multiple de 3 et ≥ 896 px, impair → dernière carte pleine largeur. Bandes `.bande/.cellule`. Sous-éléments sous `:where(.carte, .cellule)` : le blog garde ses classes. Spec design §4.15.
+- Vérifs : textes et liens identiques à HEAD sur les 63 pages ; blog identique au pixel (375/1440, 3 pages) ; build vert sauf `blog-intent-preservation` (requête « prompt chatgpt expert comptable » mesurée seulement le 28/09, périmée le 07/10, rouge aussi sur HEAD) ; rouges préexistants identiques sur HEAD : `integrations.spec` (`.source-lien`) et `site-copy-b.spec` (copy hub/glossaire).
+- Suite : passe de cohérence hors cartes (en-têtes, rythme, listes, CTA, maquettes) par un autre agent dans ce worktree.
+
 ## Hermes — 2026-09-20 — téléphone officiel de l’hébergeur
 
 - Les conditions Cloudflare, relues en HTTP 200 le 20/09/2026, publient `+1 (888) 99 FLARE`, le lien `tel:18889935273` et la date « Last Updated September 12, 2025 ». Les mentions légales transcrivent désormais ce numéro sous ses formes officielle et numérique, avec source et date de consultation visibles.

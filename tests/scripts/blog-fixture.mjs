@@ -2,10 +2,11 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from '../../scripts/lib/blog-pipeline.mjs';
+import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS, jourRecuperationParis, verifySource } from '../../scripts/lib/blog-pipeline.mjs';
 import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
-const utcToday = () => new Date().toISOString().slice(0, 10);
+// Le gate compare la fraîcheur au jour de Paris, y compris pendant le décalage UTC à minuit.
+const fixtureToday = () => jourRecuperationParis(new Date().toISOString());
 const sha256 = (content) => createHash('sha256').update(content).digest('hex');
 const writeJson = (path, value) => writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
 const FIXTURE_STOP_WORDS = new Set(['alors', 'avec', 'avoir', 'cette', 'comme', 'dans', 'depuis', 'elle', 'elles', 'entre', 'etre', 'faire', 'leurs', 'mais', 'meme', 'pour', 'sans', 'selon', 'sont', 'sous', 'toute', 'toutes', 'toujours', 'tout', 'tous', 'une', 'vers', 'votre']);
@@ -51,7 +52,7 @@ const informativeImage = (width, height) => Buffer.from(`<svg xmlns="http://www.
   <path d="M ${width * 0.46} ${height * 0.5} l ${width * 0.025} ${height * 0.04} l ${width * 0.07} ${-height * 0.09}" fill="none" stroke="#fffefb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`);
 
-export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = utcToday()) {
+export function candidateManifest(slug = 'article-de-test', heroId = `img-${slug}`, fixtureDate = fixtureToday()) {
   return {
     version: 1,
     slug,
@@ -155,7 +156,7 @@ datePublication: ${manifest.publicationDate}
 auteur: ${manifest.author}
 sujets: [${manifest.topics.join(', ')}]
 motsCles: [${manifest.keywords.map((item) => `"${item}"`).join(', ')}]
-brouillon: true
+brouillon: ${manifest.editorialStatus !== 'publie'}
 image: ${manifest.image.heroId}
 pipelineVersion: 1
 primaryQuery: "${manifest.primaryQuery}"
@@ -198,9 +199,10 @@ ${body}
 `;
 }
 
-export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie' } = {}) {
-  // A single UTC day for every correlated fixture artifact, sampled at creation rather than import.
-  const fixtureDate = utcToday();
+export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie', sourceCopies = {} } = {}) {
+  // Un seul jour Paris pour les preuves corrélées, prélevé à la création (pas à l'import).
+  const fixtureInstant = new Date().toISOString();
+  const fixtureDate = jourRecuperationParis(fixtureInstant);
   const subjectArtifact = ({ slug: candidateSlug, kind, articleHash, manifestHash, extra = {} }) => ({
     version: 1,
     candidateSlug,
@@ -275,12 +277,13 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   const sourceSnapshots = new Map();
   for (const source of manifest.sources) {
     const snapshotPath = join(preuves, 'sources', `${source.id}.txt`);
-    const excerpt = `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
+    const sourceCopy = sourceCopies[source.id];
+    const excerpt = sourceCopy ? sourceCopy.text.split('\n')[0] : `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
     const citations = contentUnits.map((unit, index) => ({
-      text: `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
-      line: index + 3,
+      text: sourceCopy ? excerpt : `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
+      line: sourceCopy ? 1 : index + 3,
     }));
-    const snapshot = `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
+    const snapshot = sourceCopy?.text ?? `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
     writeFileSync(snapshotPath, snapshot);
     const contentSha256 = sha256(snapshot);
     sourceSnapshots.set(source.id, { contentSha256, citations });
@@ -304,7 +307,10 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       checkedAt: source.checkedAt,
       observations: ['Le domaine, l’éditeur, la provenance et le niveau ont été relus séparément.'],
     });
-    writeJson(join(dossier, source.verificationEvidence), {
+    if (sourceCopy) {
+      writeJson(join(dossier, source.dilaCopyPath), sourceCopy);
+      await verifySource({ root, slug, sourceId: source.id, excerpt, fetcher: async () => { throw new Error('Une copie DILA ne consulte pas le réseau.'); } });
+    } else writeJson(join(dossier, source.verificationEvidence), {
       version: 1,
       candidateSlug: slug,
       sourceId: source.id,
@@ -318,7 +324,7 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       finalUrl: source.url,
       httpStatus: 200,
       checkedAt: source.checkedAt,
-      retrievedAt: `${source.checkedAt}T00:00:00.000Z`,
+      retrievedAt: fixtureInstant,
       contentPath: `preuves/sources/${source.id}.txt`,
       contentSha256,
       excerpt,

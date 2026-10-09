@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 
 import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { test as nodeTest } from 'node:test';
 import sharp from 'sharp';
@@ -67,22 +68,40 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
 
+    // Le témoin positif suit le contrat public : provenance et date vivent dans la recette,
+    // jamais dans une légende technique visible de la preuve inline.
     const fixtureBody = DEFAULT_BODY.replace('Voir [la méthode]', `
 <figure data-blog-proof="fixture-frontiere">
-  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/fixture-frontiere.webp" alt="Frontière fictive entre proposition automatisée et validation humaine." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 <figure data-blog-proof="fixture-refus">
-  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="640" height="360" loading="lazy" decoding="async">
-  <figcaption>Source : jeu d’essai fictif · capture du 2026-09-20</figcaption>
+  <img src="/proofs/blog/fixture-refus.webp" alt="Cas fictif refusé lorsque la règle métier manque." width="1600" height="900" loading="lazy" decoding="async">
 </figure>
 
 Voir [la méthode]`);
-    const fixture = await createCompleteDossier(staging, { slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY });
+    const fixture = await createCompleteDossier(staging, {
+      slug, heroId, body: fixtureBody, claimsBody: DEFAULT_BODY,
+      manifestMutator: (manifest) => {
+        manifest.sources = manifest.sources.slice(0, 2);
+        manifest.links.incoming = ['/blog'];
+      },
+    });
     copyFile(fixture.articlePath, join(project, 'src/content/blog', `${slug}.md`));
     copyFile(fixture.dossier, join(project, 'editorial/articles', slug));
     copyFile(join(staging, 'editorial/recettes', slug), join(project, 'editorial/recettes', slug));
+    const recipePath = join(project, 'editorial/recettes', slug, 'recette.json');
+    const recipe = JSON.parse(readFileSync(recipePath, 'utf8'));
+    recipe.inlineProofs = [
+      { id: 'fixture-frontiere', alt: 'Frontière fictive entre proposition automatisée et validation humaine.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+      { id: 'fixture-refus', alt: 'Cas fictif refusé lorsque la règle métier manque.', source: 'jeu fictif', capturedAt: '2026-09-20' },
+    ];
+    const recipeBytes = JSON.stringify(recipe);
+    writeFileSync(recipePath, recipeBytes);
+    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
+    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
+    review.subject.recipeSha256 = createHash('sha256').update(recipeBytes).digest('hex');
+    writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     copyFile(join(staging, 'docs/strategy/site-v3/mesures'), join(project, 'docs/strategy/site-v3/mesures'));
     for (const extension of ['avif', 'webp']) {
       copyFile(join(staging, `public/images/${heroId}-768.${extension}`), join(project, `public/images/${heroId}-768.${extension}`));
@@ -93,8 +112,8 @@ Voir [la méthode]`);
       mkdirSync(dirname(proofPath), { recursive: true });
       await sharp({
         create: {
-          width: 640,
-          height: 360,
+          width: 1600,
+          height: 900,
           channels: 3,
           background: proofId === 'fixture-frontiere' ? '#dff5e6' : '#f3efe3',
         },
@@ -108,8 +127,7 @@ Voir [la méthode]`);
     writeFileSync(imagesPath, images
       .replace(marker, `\n  '${heroId}': {\n    brief: 'FIXTURE',\n    largeurs: [768],\n    ratio: [16, 9],\n    alt: '${fixture.manifest.image.alt}',\n    generee: true,\n  },${marker}`)
       .replace("export const PUBLISHED_IMAGE_IDS = [", `export const PUBLISHED_IMAGE_IDS = ['${heroId}', `));
-    const indexPath = join(project, 'src/pages/index.astro');
-    writeFileSync(indexPath, `${readFileSync(indexPath, 'utf8')}\n<a data-fixture-link href="/blog/${slug}">Fixture candidat</a>\n`);
+
 
     const rubriquesPath = join(project, 'src/data/blog-rubriques.mjs');
     const rubriques = readFileSync(rubriquesPath, 'utf8');
@@ -130,8 +148,6 @@ Voir [la méthode]`);
       timeout: 120_000,
     });
     assert.equal(subjectBuild.status, 0, `${subjectBuild.error?.message ?? ''}\n${subjectBuild.stderr ?? ''}`);
-    const reviewPath = join(project, 'editorial/recettes', slug, 'revues.json');
-    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
     review.subject.renderedSha256 = renderedBodySha256(readFileSync(pagePath(subjectRender, `/blog/${slug}`), 'utf8'));
     writeFileSync(reviewPath, `${JSON.stringify(review, null, 2)}\n`);
     const distSentinel = join(project, 'dist', 'sentinel.txt');
@@ -193,6 +209,7 @@ Voir [la méthode]`);
     const articlePath = join(preview, 'blog', `${slug}.html`);
     assert.ok(existsSync(articlePath), 'le candidat n’a pas été construit par Astro');
     const html = readFileSync(articlePath, 'utf8');
+    assert.ok(!html.includes('<figcaption>Source'), 'la preview ne doit pas réintroduire une légende technique publique');
     const ogUrl = `${previewOrigin}/images/${heroId}-og.webp`;
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
     assert.ok(html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}">`));
@@ -214,7 +231,7 @@ Voir [la méthode]`);
     assert.equal(posting.image.height, 630);
     assert.equal(posting.thumbnailUrl, ogUrl);
 
-    for (const xmlPath of ['sitemap-0.xml', 'blog/rss.xml']) {
+    for (const xmlPath of ['sitemap-blog.xml', 'blog/rss.xml']) {
       const xml = readFileSync(join(preview, xmlPath), 'utf8');
       assert.ok(!xml.includes(`/blog/${slug}`), `${xmlPath} expose le brouillon preview`);
     }
@@ -225,7 +242,7 @@ Voir [la méthode]`);
 
     const served = await servePreview(preview);
     server = served.server;
-    for (const route of ['/', '/blog', `/blog/${slug}`, '/sitemap-0.xml', '/blog/rss.xml', `/images/${heroId}-og.webp`]) {
+    for (const route of ['/', '/blog', `/blog/${slug}`, '/sitemap-blog.xml', '/blog/rss.xml', `/images/${heroId}-og.webp`]) {
       const response = await fetch(`${served.origin}${route}`);
       assert.equal(response.status, 200, `${route} ne répond pas 200`);
       assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow', `${route} sans X-Robots-Tag`);
@@ -253,6 +270,20 @@ Voir [la méthode]`);
       await page.screenshot({ path: join(REPO, `.qa/blog/blog-sys-4r2-article-${width}.png`), fullPage: true });
       await page.close();
     }
+
+    // Le même dossier sous l'objectif doit aussi franchir le schéma public,
+    // pas seulement la collection en mode brouillon/preview.
+    const publicArticlePath = join(project, 'src/content/blog', `${slug}.md`);
+    writeFileSync(publicArticlePath, readFileSync(publicArticlePath, 'utf8').replace('brouillon: true', 'brouillon: false'));
+    const publicRender = join(workspace, 'public-render');
+    const publicBuild = spawnSync(process.execPath, [ASTRO_CLI, 'build', '--root', project, '--outDir', publicRender], {
+      cwd: project,
+      env: { ...process.env, BLOG_PREVIEW_SLUG: '', BLOG_PREVIEW_SLUGS: '' },
+      encoding: 'utf8', timeout: 120_000, maxBuffer: 10 * 1024 * 1024,
+    });
+    assert.equal(publicBuild.status, 0, `${publicBuild.error?.message ?? ''}\n${publicBuild.stdout ?? ''}\n${publicBuild.stderr ?? ''}`);
+    assert.ok(existsSync(pagePath(publicRender, `/blog/${slug}`)));
+    assert.ok(readFileSync(join(publicRender, 'sitemap-blog.xml'), 'utf8').includes(`/blog/${slug}`));
   } finally {
     if (browser) await browser.close();
     if (server) await new Promise((resolveClose) => server.close(resolveClose));

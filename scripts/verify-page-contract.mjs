@@ -150,6 +150,7 @@ function pageSnapshot(route, path) {
   const headings = [];
   const descriptions = [];
   const ogTitles = [];
+  const ogImages = [];
   const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
@@ -163,6 +164,7 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'meta' && attr(node, 'name') === 'description') descriptions.push(normalizedText(attr(node, 'content')));
     if (node.nodeName === 'meta' && attr(node, 'name') === 'robots') robots = normalizedText(attr(node, 'content'));
     if (node.nodeName === 'meta' && attr(node, 'property') === 'og:title') ogTitles.push(normalizedText(attr(node, 'content')));
+    if (node.nodeName === 'meta' && attr(node, 'property') === 'og:image') ogImages.push(attr(node, 'content'));
     if (node.nodeName === 'link' && (attr(node, 'rel') ?? '').split(/\s+/).includes('canonical')) canonicals.push(attr(node, 'href'));
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
@@ -189,7 +191,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, canonicals, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -325,10 +327,15 @@ export function auditerNavigationMobile({ root = process.cwd() } = {}) {
   if (!existsSync(path)) return { pass: false, errors: ['src/components/Nav.astro absent'] };
   const source = readFileSync(path, 'utf8');
   const errors = [];
-  if (!source.includes('data-mobile-visible')) errors.push('navigation mobile immédiatement visible absente');
-  const ctaHeight = selectorMinHeight(source, '.nav-principal');
+  if (!source.includes('data-burger') || !source.includes('aria-controls="menu-mobile"') || !source.includes('data-menu-mobile')) {
+    errors.push('bouton et panneau de navigation mobile absents');
+  }
+  if (!source.includes('<noscript>') || !source.includes('nav-sans-js')) errors.push('navigation sans JavaScript absente');
+  const burgerHeight = selectorMinHeight(source, '.nav-burger');
+  if (burgerHeight < 48) errors.push(`bouton de menu mobile haut de ${burgerHeight}px dans le contrat CSS, 48px requis`);
+  const ctaHeight = selectorMinHeight(source, '.nav-mobile-cta :global(.btn)');
   if (ctaHeight < 44) errors.push(`cible principale mobile haute de ${ctaHeight}px dans le contrat CSS, 44px requis`);
-  const linkHeight = selectorMinHeight(source, '.nav-mobile-visible a');
+  const linkHeight = selectorMinHeight(source, '.nav-mobile-lien');
   if (linkHeight < 44) errors.push(`liens structurants mobiles hauts de ${linkHeight}px dans le contrat CSS, 44px requis`);
   return { pass: errors.length === 0, errors };
 }
@@ -494,6 +501,14 @@ export function auditerContratPages({
 
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
+    if (indexable) {
+      let validImage = false;
+      try {
+        const image = new URL(page.ogImages[0]);
+        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password;
+      } catch { /* Une URL relative ou absente ne forme pas une image sociale publique. */ }
+      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr est requise pour toute page indexable'));
+    }
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
     if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));
     const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;
@@ -515,8 +530,11 @@ export function auditerContratPages({
     const schemaTypes = routeContract?.schemaTypes ?? expectedSchema(page.route);
     if (schemaTypes.length > 0 && (!h1 || !page.schema.headlines.includes(h1))) erreurs.push(error(page.route, 3, 'headline JSON-LD doit être identique au H1'));
     if (schemaTypes.length > 0 && page.schema.authors === 0) erreurs.push(error(page.route, 3, 'author absent du JSON-LD'));
-    if (schemaTypes.length > 0 && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
-    if (schemaTypes.length > 0 && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
+    // Les articles ont une source éditoriale datée. Une WebPage générique n'en a
+    // pas forcément : exiger des dates partout encouragerait des replis inventés.
+    const articleDate = schemaTypes.some((type) => ['BlogPosting', 'TechArticle', 'Article'].includes(type));
+    if (articleDate && page.schema.datesPublished.length === 0) erreurs.push(error(page.route, 3, 'datePublished absente du JSON-LD'));
+    if (articleDate && page.schema.datesModified.length === 0) erreurs.push(error(page.route, 3, 'dateModified absente du JSON-LD'));
     for (const type of schemaTypes) {
       if (!page.schema.types.has(type)) erreurs.push(error(page.route, 3, `schéma ${type} absent ou incohérent avec le type de page`));
     }

@@ -1,0 +1,11 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import GenerateurPrompt from '@/components/outils/GenerateurPrompt.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('generateur-prompt-expert-comptable');
+---
+<Outil outil={outil}>
+  <p>Avant d’écrire la consigne, voyez comment <a href="/blog/utiliser-chatgpt-cabinet-comptable">choisir un premier usage utile de ChatGPT</a> sur un cas fictif, dans un outil autorisé par le cabinet.</p>
+  <GenerateurPrompt />
+  <p>Pour rédiger, résumer ou préparer une réunion hors cadre comptable, utilisez le <a href="/outils-comptables-gratuits/generateur-prompt-ia-gratuit">générateur de consigne texte professionnelle</a> : public, ton, contraintes et formats texte, tableau ou JSON.</p>
+</Outil>

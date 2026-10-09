@@ -52,19 +52,19 @@ La session écrit une ligne de journal avec : les totaux (semaine, 28 jours, 28 
 
 Depuis le 19/09/2026, le backlog éditorial se construit **de l'extérieur** : depuis ce que le lecteur tape, pas depuis notre taxonomie. Deux instruments, deux propriétés à ne pas confondre :
 
-- **L'autocomplétion Google** (gratuite, `client=firefox`, `hl=fr&gl=fr`) ne propose que des requêtes au-dessus d'un seuil de volume : **une liste vide est une mesure**, un angle que personne ne tape. Une panne de l'instrument (HTTP 429, délai) n'est jamais comptée comme zéro : l'amorce reste « non mesurée » et la priorité de l'angle ne bouge pas.
-- **La page de résultats DataForSEO** (`serp_organic_live_advanced`, 0,002 $ l'appel, porte de coût obligatoire) porte les questions « Autres questions », les recherches associées et les domaines qui gagnent : quand la moitié du haut de page est tenue par des éditeurs de logiciel (`DOMAINES_LOGICIEL`), l'intention est « logiciel », ce que Memlia refuse de vendre — l'angle se corrige, la priorité ne bouge pas toute seule.
+- **L'autocomplétion Google** (gratuite, `client=firefox`, `hl=fr&gl=fr`) fournit un signal de suggestions sur les amorces testées, sans quantifier leur volume de recherche. **Une liste vide est un résultat du relevé**, pas la preuve qu'aucun lecteur ne tape la requête : lire aussi la SERP, l'intention cabinet et Search Console avant d'écarter un angle. Une panne de l'instrument (HTTP 429, délai) laisse l'amorce « non mesurée » (`null`) ; une panne totale ne date pas l'angle, une secondaire manquante empêche P3. Une P1 maintenue sans signal admissible est refusée par `--check` : reprendre la mesure avant de régénérer le plan.
+- **La page de résultats DataForSEO** (`serp_organic_live_advanced`, 0,002 $ l'appel, porte de coût obligatoire) est relevée par famille, non par angle. Elle porte les questions « Autres questions », les recherches associées et les domaines du haut de page : le détecteur `DOMAINES_LOGICIEL` peut signaler « logiciel », sans prouver l'intention de chaque angle. Lire la SERP, l'intention cabinet et Search Console avant de décider une correction ; la priorité ne bouge pas toute seule.
 
 ```bash
 node scripts/seo/questions.mjs relever            # toutes les requêtes du backlog + mesures/amorces-marche.json ; une SERP par famille (≤ 62 appels)
 node scripts/seo/questions.mjs rapport            # mesures/questions-<jour>.md : la lecture par famille, pour corriger les angles à la main
 node scripts/seo/questions.mjs recaler            # priorité + bloc `demande` de chaque angle du backlog
-python3 docs/strategy/site-v3/build-cluster-plan.py --check   # calendrier régénéré ; refuse un angle de priorité 1 sans demande mesurée
+python3 docs/strategy/site-v3/build-cluster-plan.py --check   # refuse une P1 sans signal mesuré daté
 ```
 
-Règle de priorité (`scripts/lib/seo-questions.mjs`, testée) : **1** si la requête primaire a des suggestions, **2** si seule une secondaire en a, **3** si rien n'en a ; le pilier n'est jamais recalé. Le relevé complet coûte environ 0,13 $ et deux minutes ; il se rejoue le premier vendredi du mois (`RUNBOOK-QUOTIDIEN.md` §6) et chaque fois qu'un angle est réécrit. Ce que le relevé ne fait pas : il ne réécrit ni titre ni requête — c'est une lecture, la correction d'un angle reste une décision écrite dans le backlog, puis un `--check`.
+Règle de priorité attendue (`scripts/lib/seo-questions.mjs`) : **1** si la requête primaire a des suggestions, **2** si seule une secondaire en a, **3** si aucune suggestion n'est relevée sur toutes les formulations testées ; le pilier n'est jamais recalé. Zéro suggestion ne prouve ni zéro demande ni zéro volume ; une formulation non mesurée (panne) n'est pas un zéro. Sur panne partielle, la priorité antérieure reste si la conclusion dépend de l'amorce absente ; `demande.secondaires=null` tant qu'une secondaire manque. La date du bloc signale qu'au moins une formulation a été relevée, pas que le relevé est complet. Le relevé complet coûte environ 0,13 $ et deux minutes ; il se rejoue le premier vendredi du mois (`RUNBOOK-QUOTIDIEN.md` §6) et chaque fois qu'un angle est réécrit. Ce que le relevé ne fait pas : il ne réécrit ni titre ni requête — la décision suit la lecture SERP, intention cabinet et Search Console, puis s'écrit dans le backlog avant `--check`.
 
-C2 porte depuis le même jour une alerte hebdomadaire : chaque requête primaire du registre est autocomplétée, et « requête primaire sans demande mesurée » sort dans `alertes` quand la liste est vide (`alertesDemande`, testée).
+C2 porte depuis le même jour une alerte hebdomadaire : chaque requête primaire du registre est testée par autocomplétion. Si le relevé réussit mais que la liste est vide, `alertesDemande` signale « aucune suggestion relevée pour la requête primaire testée » dans `alertes` ; cela ne conclut ni au volume, ni à la demande, ni à l'audience. Une requête non mesurée (panne) ne déclenche pas cette alerte (`scripts/lib/seo-regles.mjs`, testée).
 
 ## 4. C3 — l'intégrité éditoriale et technique (le mercredi, 7 h)
 
@@ -120,23 +120,48 @@ depuis ces crons. Partir d'un `origin/main` propre sur une branche dédiée
 propositions de maintenance. Conserver le SHA du commit candidat et celui de
 `origin/main` dans la carte de release. Une tâche QA indépendante doit rendre
 `PASS` sans réserve sur le SHA exact de la PR et ses checks `Repository gates`.
-Une autre carte, distincte de QA, doit enregistrer la décision humaine autorisant explicitement cette release
-(`scope=seo-measures`, `decision=AUTHORIZE`, `pr`, `pr_head`, `main_sha`,
-`qa_task` dans les métadonnées du dernier run terminé). Sans ces preuves,
-ne pas fusionner ni activer les crons. La garde en lecture seule est :
+Une autre carte, distincte de QA, doit recevoir la décision de Kevin via le
+bouton du circuit Telegram authentifié. Son événement `blocked` en `needs_input`
+porte `DECISION_JSON:` (question, contexte, preuve, justification, recommandation
+et deux options avec impacts, selon `HERMES-BLOCKAGES-TELEGRAM.md`) et le champ
+supplémentaire exact `seo_release` :
 
-**Identité de l'autorisation.** Les métadonnées de la carte ne prouvent pas qui
-les a écrites : un profil `dev` peut y inscrire `AUTHORIZE`. La garde exige en
-plus `signed_decision` contenant exactement ces six champs et `signature` (base64
-d'une signature Ed25519 sur les octets UTF-8 de `JSON.stringify(signed_decision)`).
-La clé publique de vérification `config/seo-release-authority.pem` est lue dans
-le commit de `main` attendu, jamais dans la PR candidate. Kevin doit générer et
-conserver sa clé privée hors du poste accessible aux agents, vérifier l'empreinte
-de la clé publique avant son ajout sur `main`, puis signer lui-même la décision
-exacte. Ne jamais déposer la clé privée ni une signature fabriquée par un agent.
-Sans clé publique approuvée sur `main` ou sans signature humaine valide, la garde
-refuse la release ; une carte remplie par `dev` ne suffit pas. L'ajout de la clé
-sur `main` déplace la base : refaire QA et décision sur les SHA exacts.
+```json
+{"repo":"saphiron222/memlia-landing","pr":12,"pr_head":"<SHA_PR_40_HEX>","main_sha":"<SHA_MAIN_40_HEX>","scope":"seo-measures","qa_task":"t_<ID_QA>"}
+```
+
+Les deux labels sont exactement `Autoriser cette release SEO` et
+`Refuser cette release SEO`, dans cet ordre. Le résolveur livre le bouton ; le
+plugin Telegram doit appeler `ingest_telegram_choice` de
+`scripts/lib/seo-release-receipt.py` **après** validation de l'auteur et de la
+carte courante (`_callback_authorized` puis `_current_decision`), **avant** le
+commentaire et `unblock` dans `_accept`, avec `query.id` et
+`query.message.message_id` reçus par le callback. Cette intégration du plugin
+hors dépôt fait partie de la qualification `t_a67dba57` ; ne pas présenter le
+lecteur seul comme un circuit actif. Si l'ingestion échoue, le callback arrête
+sans débloquer. Son retour doit être exactement `True` avant toute provenance,
+commentaire ou déblocage ; `False` n'est pas un reçu SEO. En cas de demande
+invalide, le refus lit l'événement bloquant exact du callback, jamais le dernier
+événement d'audit : un commentaire ultérieur ne peut neutraliser le refus.
+L'ingestion revalide l'événement, l'abonnement et la livraison
+depuis `~/.hermes/kanban.db` et `~/.hermes/state/block-resolver.json`. La lecture
+ultérieure vérifie le reçu persistant et l'abonnement ; elle ne requiert plus
+`waiting_decision`, qui disparaît normalement après le déblocage. L'option
+de refus ne donne jamais un reçu autorisant. Le lecteur CLI n'accepte aucun
+chemin de reçu ni indicateur d'autorisation injecté par argument ou environnement.
+Le plugin charge le code d'ingestion installé à côté de lui, pas un chemin vers
+un worktree de livraison éphémère. Si le JSON de décision SEO de l'événement
+`blocked` est incomplet, le callback expire : aucun commentaire de secours ne
+peut réordonner les boutons de cet événement pour produire un reçu autorisant.
+**Tant que le plugin en production n'est pas intégré et vérifié sur ce chemin,
+aucune release ni activation SEO : la garde refuse en l'absence de reçu.**
+
+L'authenticité est procédurale : le gateway Telegram vérifie Kevin, pas une
+signature personnelle. Toute personne ou tout processus ayant l'écriture sur
+le gateway et la base locale pourrait falsifier un reçu ; un commentaire `Kevin`
+ou une métadonnée de worker ne l'est pas. Pas de PEM, mot de passe ou signature
+à créer par Kevin. Le dépôt reste privé ; la garde recontrôle cet état via GitHub.
+Les dépenses et les permissions hors `seo-measures` ne changent pas.
 
 ```bash
 node scripts/seo-release-gate.mjs --pr <N> --qa-task <t_ID> --authorization-task <t_ID> --expected-head <SHA_PR> --expected-main <SHA_MAIN>

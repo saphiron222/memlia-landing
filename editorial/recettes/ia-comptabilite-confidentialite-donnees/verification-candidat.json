@@ -1,0 +1,47 @@
+{
+  "generatedAt": "2026-10-05T09:25:04.641Z",
+  "phase": "candidat-non-publie",
+  "htmlPath": ".qa/render-ia-comptabilite-confidentialite-donnees/blog/ia-comptabilite-confidentialite-donnees.html",
+  "htmlSha256": "72e6ce6d4ef7b0d9e2da3ac81069da7db2afa143a9eb5e913fe34d0be019596d",
+  "checks": [
+    {
+      "name": "metadata",
+      "detail": "H1 unique, canonical, onglet et description identiques à la recette."
+    },
+    {
+      "name": "schema",
+      "detail": "BlogPosting réel, auteur Kevin Kitanga et headline cohérents."
+    },
+    {
+      "name": "gain-intention",
+      "detail": "Réponse directe, fiche complète, quatre états du rejeu et FAQ réellement dans le HTML."
+    },
+    {
+      "name": "maillage",
+      "detail": "Sept destinations sortantes présentes ; entrant /blog automatique. Pas de modification de voisin publié pour ajouter un entrant."
+    },
+    {
+      "name": "figures",
+      "detail": "Deux images directes 1600×900, alternatives propres et provenance fictive de recette."
+    },
+    {
+      "name": "navigateur",
+      "detail": "Images chargées, deux figures et absence de débordement global aux largeurs 390/1280. Captures réelles."
+    },
+    {
+      "name": "rejeu",
+      "detail": "Quatre assertions des états attendus, transmission false, pas modèle ni analyse sémantique."
+    }
+  ],
+  "captured": [
+    "editorial/recettes/ia-comptabilite-confidentialite-donnees/capture-390.png",
+    "editorial/recettes/ia-comptabilite-confidentialite-donnees/capture-1280.png"
+  ],
+  "limites": [
+    "Revue indépendante en attente",
+    "Aucune preuve de production ni CI distante",
+    "Deux sources utiles, pas trois artificielles ; /blog seul entrant déclaré",
+    "Analyseurs Blog anglais heuristiques ; textstat absent",
+    "Runtime SEO externe indisponible, contrôles natifs utilisés"
+  ]
+}

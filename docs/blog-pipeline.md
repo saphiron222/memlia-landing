@@ -55,7 +55,7 @@ Le gate refuse notamment :
 - une URL source qui résout, avant le premier fetch ou après une redirection, vers une plage du registre IANA des adresses spéciales IPv4/IPv6, y compris `192.88.99.0/24` ; les IP publiques ordinaires restent autorisées ;
 - une source `tier-4`, `tier-5` ou `echo` dans le candidat, ainsi que Medium, Reddit, Substack, WordPress, Quora et Hacker News. Les champs de qualité, l’amont primaire et, le cas échéant, les éléments de méthode doivent concorder entre le manifeste, la preuve issue de l’URL ouverte et la preuve de classification relue. Une source `secondary` doit nommer un amont distinct ; une source `primary` doit rejoindre son URL finale vérifiée. Le garde déterministe refuse les incohérences domaine↔éditeur et ne reconnaît l’officialité que pour un registre borné d’autorités françaises connues. Un claim paie/social/DSN/fiscal/juridique/RGPD exige cette reconnaissance, une provenance primaire et un niveau `tier-1` à `tier-3` : `official: true` seul n’ouvre jamais le gate. `original-method` reste admis pour une méthode transparente hors de ce régime réglementaire ;
 - une image uniforme, sans preuve de génération/grille visuelle, non approuvée, mal dimensionnée, non déclarée dans `src/data/images.mjs` ou sans dérivés publics AVIF/WebP. Le garde déterministe refuse aussi les alt manifestement non descriptifs : placeholder, nom de fichier, libellé générique, répétition, suite alphabétique/clavier ou chaîne monobloc manifestement factice ;
-- une matière paie/social/DSN/fiscal/juridique/légale/réglementaire, ou une assertion normative métier, sans `blog-factcheck` `RUN`/`PASS`, claims exhaustifs sourcés et revue métier `PASS` distincte reliée au candidat exact. La preuve métier contient exactement un verdict par couple claim/source : `soutient`, `soutient_partiellement`, `contredit` ou `hors_sujet`. Seul `soutient` ouvre le gate ; chaque verdict est lié au slug et aux SHA-256 du Markdown, du claim, de la copie source et de la citation. La sensibilité est recalculée depuis le texte rendu, les métadonnées visibles, le cluster, les rôles et les types de claims : un type générique ne peut pas la neutraliser. Pour ces matières, la date du gate, la revue éditoriale, sa preuve, la revue métier, le skill de fact-check, chaque source, chaque claim et chaque résultat source doivent tous porter le même jour UTC ; le candidat redevient donc bloqué le lendemain jusqu’à une nouvelle vérification ;
+- une matière paie/social/DSN/fiscal/juridique/légale/réglementaire, ou une assertion normative métier, sans `blog-factcheck` `RUN`/`PASS`, claims exhaustifs sourcés et revue métier `PASS` distincte reliée au candidat exact. La preuve métier contient exactement un verdict par couple claim/source : `soutient`, `soutient_partiellement`, `contredit` ou `hors_sujet`. Seul `soutient` ouvre le gate ; chaque verdict est lié au slug et aux SHA-256 du Markdown, du claim, de la copie source et de la citation. La sensibilité est recalculée depuis le texte rendu, les métadonnées visibles, le cluster, les rôles et les types de claims : un type générique ne peut pas la neutraliser. Pour ces matières, en mode production, la revue éditoriale doit porter le jour civil Europe/Paris du gate ; sa preuve, la revue métier, le skill de fact-check et sa preuve, chaque claim, son fact-check et chaque résultat source doivent porter ce même jour. La récupération vérifiée de chaque source peut dater de 0 à 7 jours civils avant la revue, bornes incluses : sa preuve conserve exactement la date de récupération déclarée, calculée en Europe/Paris depuis l’instant UTC réel du fetch, et `sourcesVerifiedAt` date la plus ancienne récupération. Cette fenêtre ne reporte ni la revue ni les claims ni le fact-check : en mode production, le candidat redevient bloqué le lendemain jusqu’à une nouvelle vérification. Les fixtures de test prélèvent ce jour à la création du dossier (pas à l'import du module) et conservent l'instant UTC réel du fetch ; une date UTC seule ne suffit pas à la frontière de minuit Paris ;
 - Pour une unité liée à une source et marquée uniquement `rgpd`, la mention de la CNIL ou de données personnelles impose toujours un claim vérifié et une source officielle primaire, mais pas un `claim.type` juridique si le texte ne porte aucune formulation d'obligation. Une recommandation attribuée (« conseille », « ne devraient ») peut rester `information` ; « doit », « obligation », « interdit » et les autres formulations contraignantes, ainsi que toute autre famille sensible détectée dans la même unité, conservent l'exigence d'un type sensible canonique. Ce filtre lexical ne tranche pas la portée juridique d'une citation : la revue métier reste requise et peut refuser le claim ;
 - Le corps signé `corps.md` peut commencer par un unique H1 identique au titre de la recette : la forge le retire avant le rendu, puis le gate compare le corps rendu après cette seule extraction. Un H1 divergent et toute phrase modifiée conservent le refus ; les revues indépendantes restent obligatoires ;
 - une revue sous 90/100 ou contenant un P0 ;
@@ -64,6 +64,22 @@ Le gate refuse notamment :
 Les rapports sont écrits sous `.qa/blog/` et restent des artefacts locaux.
 
 Limites assumées : le registre domaine↔éditeur est volontairement borné et doit être étendu par code et tests avant d’admettre une nouvelle autorité ; un domaine officiel légitime absent est donc refusé en matière sensible plutôt qu’accepté par déclaration. La preuve de classification impose une seconde identité mais reste une attestation locale non signée : elle ne prouve pas l’identité civile du relecteur. Le garde déterministe peut aussi refuser une citation légitime courte ou un passage unique qui soutient plusieurs formulations ; il faut alors citer des passages distincts ou consolider les claims. Il ne détecte qu’un sous-ensemble explicite des contradictions lexicales : le verdict du reviewer métier distinct reste obligatoire et seul décisionnaire du support. De même, le garde d’alt ne juge pas la sémantique complète d’une image et ne remplace pas une analyse linguistique : le critère humain `alt-information` reste obligatoire pour vérifier le sujet et le mécanisme. Les revues métier, la provenance image et leurs scores restent des attestations locales déclaratives, non signées cryptographiquement. La fixture de rendu fabrique avec Sharp une image abstraite portant une coche pour éprouver le pipeline ; elle ne constitue ni une sortie réelle de `image_generate`, ni une preuve de conformité à la direction artistique Memlia.
+
+## Oracle temporel du cache de sources
+
+Le test d'intégrité et de fraîcheur du cache utilise un jour de fixture fixe
+et une horloge `Date` figée à midi, remise à zéro à la sortie du test.
+Le jour passé à la forge ne remplace pas l'instant réel du vérificateur :
+`retrievedAt` doit être passé et son jour Europe/Paris doit égaler `checkedAt`.
+À 00h01 Paris en été, une fixture de la veille à 22h22 UTC est encore future ;
+en hiver, 22h22 UTC appartient encore à la veille Paris. Mélanger ces valeurs
+avec l'horloge de la machine rendait l'oracle rouge à minuit, à raison côté cache.
+
+`node --test tests/scripts/blog-forge.test.mjs` couvre les deux côtés de minuit
+Paris et UTC en été et en hiver, la réutilisation des copies passées et le refus
+d'un instant futur, même du même jour civil. Les bornes 0–7 jours, le refus de
+8 jours ou d'une date future et les contrôles d'intégrité restent inchangés.
+Cette correction des fixtures ne change ni la forge publique ni les sources.
 
 ## Construire la preview privée
 
@@ -78,7 +94,30 @@ La commande rejoue le gate, construit uniquement le brouillon ciblé via `BLOG_P
 - l’en-tête `X-Robots-Tag: noindex, nofollow` ;
 - l’absence du candidat dans le sitemap et le RSS.
 
-Déploiement Cloudflare distinct, après succès local :
+### Recette navigateur locale sous agent
+
+Les previews Cloudflare sont désactivées dans le fonctionnement actuel. Leur
+absence n'empêche pas la recette du candidat local : Playwright construit le
+site puis possède son propre serveur Astro sur `127.0.0.1`, sans réutiliser un
+serveur déjà ouvert. Astro 7 détecte les agents et détache sinon son serveur,
+ce qui produit « Process from config.webServer exited early » avant tout test.
+`playwright.config.ts` fournit son marqueur interne de serveur enfant
+`ASTRO_PREVIEW_BACKGROUND=1` pour conserver ce processus au premier plan. Ce
+marqueur ne modifie aucune approbation ou présence humaine ; ne pas lui
+substituer `--ignore-lock`, un serveur réutilisé ou un changement d'outil.
+
+`node --test tests/scripts/playwright-foreground.test.mjs` éprouve le vrai
+serveur Astro temporaire et sa durée de vie. Pour les cinq corps republiés,
+la recette réelle est
+`QA_BLOG_REPUBLICATION_REQUIRED=1 npx playwright test tests/browser/blog-proof-mobile.spec.ts`
+sans `QA_URL`. Ses captures ne sont ni une publication ni une preuve des
+en-têtes, alias ou contenu servis par Cloudflare. Un refus HTTP de production
+ne se rejoue pas par cette recette locale ou un autre client.
+
+### Ancienne option de preview Cloudflare — non activée
+
+La voie ci-dessous est distincte, seulement si ce mode est explicitement
+réactivé ; ne pas la lancer ou l'exiger dans le mode local actuel :
 
 ```bash
 npx wrangler pages deploy .qa/preview-dist/<slug> \
@@ -94,7 +133,7 @@ Après déploiement, relire l’URL exacte et ses en-têtes avant de produire le
 npm run blog:review -- <slug>
 ```
 
-La commande recalcule le gate et écrit `.qa/blog/<slug>/review-package.md`, avec la taille et le SHA-256 de chaque artefact. L’URL Cloudflare, les preuves HTML/HTTP, les captures et les résultats de tests restent à joindre au rapport.
+La commande recalcule le gate et écrit `.qa/blog/<slug>/review-package.md`, avec la taille et le SHA-256 de chaque artefact. Joindre les preuves HTML, les captures et les résultats de tests du rendu local exact. Une URL et des preuves HTTP Cloudflare ne sont requises ici que si ce mode de preview est réellement utilisé ; la preuve de production demeure distincte et obligatoire à la livraison.
 
 ## Vérifier un candidat autorisé pour la production
 
@@ -108,7 +147,7 @@ L'autorité blog-only du 25/09/2026 supprime le go individuel de Kevin pour un a
 npm run blog:production-check -- <slug>
 ```
 
-Le contrôle reconstruit sans `BLOG_PREVIEW_SLUG`, refuse tout `noindex`, exige la canonical auto-référente et vérifie l’inclusion dans le sitemap et le RSS. Il ne pousse rien et ne déploie rien en production.
+Le contrôle reconstruit sans `BLOG_PREVIEW_SLUG`, refuse tout `noindex`, exige la canonical auto-référente et vérifie l’inclusion dans le sitemap et le RSS. Pendant ce contrôle, la route est publique dans le build local mais le sceau de publication n'existe pas encore : le test d'intention exige alors un relevé frais du jour, sans prétendre que le candidat est déjà scellé. Après `publier`, il compare la date du sceau et ses octets. Il ne pousse rien et ne déploie rien en production.
 
 ### Lot de rattrapage (sans antidater)
 
@@ -124,3 +163,34 @@ Le plan W39 garde les créneaux des 22, 24 et 26 septembre et affiche la date r�
 ## Garde-fou pSEO
 
 Aucune page programmatique n’est générée par ce pipeline. Une extension future exige avant code : dataset fiable, intention distincte par page, valeur unique, contrôle du contenu mince et lancement par lots soumis à validation humaine.
+
+## Recette mobile Cicatrice — correction technique du 02/10/2026
+
+Le rendu joint de la préparation a trouvé deux vrais défauts, indépendants
+des previews Cloudflare : les paysages `w39-trois-passes` et
+`w39-reference-decalee` étaient trop petits sur téléphone, et le lien
+« Voir le service d’automatisation et sa recette » dépassait à 320 px.
+
+Les deux cadres HTML portrait conservent les données fictives des paysages,
+avec du texte de 18 px minimum à 360 px. Le renderer existant produit désormais
+les six portraits W39 et scelle leurs sources, actifs, texte et date réelle de
+capture. Les quatre portraits antérieurs restent octet-identiques. Ce sont
+des illustrations, pas des captures d’un produit ou des résultats client.
+La forge sélectionne automatiquement le portrait lorsqu’il existe ; aucun
+nouveau défilement, figcaption public ou fournisseur de génération n’est ajouté.
+
+Le CTA utilise une colonne réductible et des boutons à hauteur adaptative :
+le texte reste entier et se replie, sans crop, police réduite ou overflow caché.
+`tests/browser/blog-cicatrice-mobile.spec.ts` exerce le vrai layout/forge/actifs
+avec deux figures fictives et le libellé exact, à 320/375/1440 px. Sa fixture
+ne remplace pas la recette du récit signé et du pilier réunis. Le témoin des
+cinq articles vérifie maintenant aussi l’absence de débordement à 320 px.
+
+Le récit signé, les candidats, leurs revues et la preuve de production restent
+sur leurs voies existantes. Cette livraison technique ne publie pas la Cicatrice,
+n’ajoute aucun consentement et ne qualifie pas un déploiement Cloudflare.
+
+Le 03/10/2026, la recette de référence a remplacé les six portraits W39, dont
+ces deux-là, par des images 1600 × 900 rendues par `render-blog-article-proofs.mjs` ;
+le renderer `render-blog-w39-mobile-proofs.mjs` et ses sources sont retirés et la
+forge ne sert plus aucune variante `-mobile`.

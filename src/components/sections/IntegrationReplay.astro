@@ -4,16 +4,16 @@ interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 ---
 
-<div class="replay-wrap" tabindex="0" aria-label="Résultats du jeu fictif, défilement horizontal possible">
+<div class="replay-wrap" tabindex="0" aria-label="Cas illustratifs fictifs, défilement horizontal possible">
   <table>
-    <thead><tr><th>Entrée fictive</th><th>Règle appliquée</th><th>Verdict</th><th>Trace produite</th></tr></thead>
+    <thead><tr><th>Entrée fictive</th><th>Condition proposée</th><th>État attendu</th><th>Trace attendue</th></tr></thead>
     <tbody>
       {integration.replay.map((replay) => (
         <tr>
           <td data-label="Entrée">{replay.input}</td>
-          <td data-label="Règle">{replay.rule}</td>
-          <td data-label="Verdict"><span class="verdict">{replay.outcome}</span></td>
-          <td data-label="Trace">{replay.detail}</td>
+          <td data-label="Condition">{replay.rule}</td>
+          <td data-label="État attendu"><span class="verdict">{replay.outcome}</span></td>
+          <td data-label="Trace attendue">{replay.detail}</td>
         </tr>
       ))}
     </tbody>
@@ -21,7 +21,8 @@ const { integration } = Astro.props;
 </div>
 
 <style>
-  .replay-wrap { width: 100%; min-width: 0; overflow-x: auto; margin-top: 36px; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
+  /* Système de page : un tableau, sous l'en-tête de sa section à --bloc-ecart (la section porte l'écart). */
+  .replay-wrap { width: 100%; min-width: 0; overflow-x: auto; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-feuille); }
   table { width: 100%; min-width: 760px; border-collapse: collapse; }
   th, td { padding: 18px; border-bottom: 1px solid var(--ligne-douce); text-align: left; vertical-align: top; }
   th { background: var(--surface-hover); color: var(--texte-fort); font-size: var(--t-sm); }

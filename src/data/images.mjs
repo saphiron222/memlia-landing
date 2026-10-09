@@ -169,6 +169,34 @@ export const IMAGES = {
     alt: "Trois postes de vérification distincts en diorama, pour les suites, la chaîne de preuve et la lecture humaine",
     generee: true,
   },
+  'img-art-utiliser-chatgpt-cabinet-comptable': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Trois plateaux de tâches et des fiches vierges dans un diorama vert, graphite et crème",
+    generee: true,
+  },
+  'img-art-verifier-reponse-ia-comptabilite': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Une feuille vierge et trois points de vérification dans un diorama vert, graphite et crème",
+    generee: true,
+  },
+  'img-art-ia-comptabilite-confidentialite-donnees': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Deux plateaux séparés par une carte d’accès dans un diorama vert, graphite et crème",
+    generee: true,
+  },
+  'img-art-automatiser-avec-ia-sans-changer-logiciel': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -176,6 +204,10 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-ia-comptabilite-confidentialite-donnees',
+  'img-art-automatiser-avec-ia-sans-changer-logiciel',
+  'img-art-verifier-reponse-ia-comptabilite',
+  'img-art-utiliser-chatgpt-cabinet-comptable',
   'img-art-tests-verts-trois-passes',
   'img-art-logiciel-ia-comptabilite',
   'img-art-prompt-chatgpt-expert-comptable',
