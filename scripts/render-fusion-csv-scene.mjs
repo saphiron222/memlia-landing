@@ -1,0 +1,10 @@
+import { EXAMPLE,parseSource,mergeSources } from '../src/lib/fusion-csv.mjs';
+import { writeFileSync,readFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const result=mergeSources(EXAMPLE.map(f=>parseSource(new TextEncoder().encode(f.text),{name:f.name,encoding:'utf-8',delimiter:';'})),undefined,{confirmed:true,provenance:true});
+assert.equal(result.rows.length,5);
+const escape=v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
+const html=`<!doctype html><html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="styles.css"><title>Scène fictive de consolidation CSV</title></head><body><main><section class="frame" id="outil-fusion-csv" data-og aria-label="Deux exports fictifs, mapping confirmé et cinq lignes avec provenance"><div class="fusion-window"><header><span>Consolidation des exports</span><span>Mapping confirmé</span></header><div class="body"><div class="mapping"><div><b>janvier.csv · 2 lignes</b><p>ID → ID<br>Montant → Montant</p></div><div><b>fevrier.csv · 3 lignes</b><p>Montant → Montant<br>ID → ID</p></div><div><b>Correspondance validée</b><p>Ordre : janvier, février<br>Provenance ajoutée</p></div></div><table><thead><tr>${result.headers.map(h=>`<th>${escape(h)}</th>`).join('')}</tr></thead><tbody>${result.rows.map(row=>`<tr>${row.map(v=>`<td>${escape(v)}</td>`).join('')}</tr>`).join('')}</tbody></table><div class="summary"><strong>5 lignes · un seul en-tête</strong><span>CSV complet + rapport des décisions</span></div></div></div></section></main></body></html>\n`;
+const path='docs/design/fusion-csv-proof/index.html';
+if(process.argv.includes('--check'))assert.equal(readFileSync(path,'utf8'),html);else writeFileSync(path,html);
+console.log('Scène fusion CSV : moteur et HTML concordants.');

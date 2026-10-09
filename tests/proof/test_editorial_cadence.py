@@ -643,7 +643,7 @@ class EditorialCadenceProof(unittest.TestCase):
                                                  ('b', 'faq-knowledge'), ('b', 'listicle-checklist')])]
         with patch.object(PLAN, 'PREMIER_JOUR', date(2026, 9, 28)):
             PLAN.planifier(entries, {})
-        ordered = sorted(entries, key=lambda e: (e['date'], e['slug']))
+        ordered = sorted(entries, key=lambda e: (e['date'], e['_ordre_calendrier']))
         for before, after in zip(ordered, ordered[1:]):
             self.assertNotEqual(before['pole'], after['pole'])
             self.assertNotEqual(before['format'], after['format'])
