@@ -1,8 +1,17 @@
 # Mode opératoire quotidien — la forge éditoriale de memlia.fr
 
-Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au samedi à 9 h (heure locale), sur ce Mac, dans une session Hermes neuve avec le profil GPT configuré. Autorisations de Kevin : quatre articles ordinaires par semaine (16/09/2026), puis une Cicatrice chaque samedi en plus (19/09/2026). Chaque exécution part de zéro : ce document est la seule mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` de ce dossier avant d'agir.
+Exécuté par la tâche planifiée « memlia-forge-quotidienne » du lundi au samedi à 9 h (heure locale), sur ce Mac, dans une session Hermes neuve avec le profil GPT configuré. Décision de Kevin du 05/10, appliquée le 06/10/2026 : au plus quinze articles ordinaires par semaine ISO, trois par jour du lundi au vendredi, EC et CAC confondus ; une Cicatrice le samedi en plus, inchangée. Cette règle remplace les mentions historiques de deux/jour, quatre/semaine et vendredi de maintenance seule ci-dessous. Produire chaque ligne `planned` du jour dans son ordre de calendrier, avec les mêmes portes de qualité et une revue par livraison. Aucun ordinaire nouveau le week-end, même avec `datePlanifiee` ; les publications et exceptions historiques restent inchangées. Chaque exécution part de zéro : ce document est la mémoire de la procédure. Lire aussi `README.md` et `IMPLEMENTATION-ROADMAP.md` avant d'agir.
 
 ## 0. Rails non négociables
+
+### Copies de textes LEGI/JORF
+
+La voie A4 `dila-copy` accepte une collecte réelle de 0 à 7 jours civils Paris,
+avec texte exact, provenance et version conservés. Elle ne simule ni HTTP 2xx
+ni ouverture de page Légifrance. Le lien public et la revue métier restent
+inchangés. Voir [SOURCES-DILA.md](SOURCES-DILA.md) pour l'export et les contrats
+du blog, du glossaire/Ressources et des services. Une collecte récente ne
+garantit pas une consolidation récente ; ne jamais redater un export local.
 
 ### Règle courante de livraison et de revue (constitution du 03/10)
 
@@ -30,7 +39,8 @@ fabriquer un nouvel avis métier. Un changement du texte ou d'une figure n'est p
 assimilé automatiquement à une simple modification logistique.
 
 Rejeu : `node --test tests/scripts/blog-constitution.test.mjs`, puis
-`npm run blog:audit` et `npm run build`. Le test change uniquement la date de
+`npm run blog:audit` ; la construction complète est faite par la CI GitHub
+(« Repository gates »), pas sur le Mac. Le test change uniquement la date de
 recette, conserve la revue intacte, puis vérifie qu'un titre divergent est refusé.
 
 - **Dépôt** : `/Users/kevinkitanga/dev/interne/memlia-landing`. Chaque exécution utilise un worktree isolé, une branche neuve `site/blog-<sujet>` à la base fraîche de `main`, puis une PR. Le clone dédié du cron ne sert que de source propre synchronisée par `forge_checkout_gate.py` ; il ne reçoit aucune écriture éditoriale. D'autres workers peuvent tourner en parallèle. Seule la fusion contrôlée sur `main` déclenche la publication Cloudflare ; jamais de push direct sur `main`.
@@ -44,10 +54,19 @@ identité recette/file, jour réel, reçu exact, RAW signé et quota sont ceux d
 Une publication déjà présente dans les sources ou la file reste un refus, pas une republication.
 
 **État publié et brouillon de republication sont distincts.** Dans un vrai checkout
-Git, le planificateur lit une seule base `origin/main`, intégrée à HEAD, pour
+Git, le planificateur lit une seule base de publication pour
 reconnaître un article antérieurement non-brouillon dont la forge prépare maintenant
 la nouvelle version en `brouillon:true`. Il conserve les métadonnées de cette base
 pour le calendrier, sans modifier le candidat ni le considérer comme revu ou servi.
+Cette base est la pointe d'`origin/main` quand HEAD l'intègre. Sinon (06/10), c'est la
+fourche du candidat avec main, à condition que le candidat ne touche à aucune entrée du
+calendrier (`CHEMINS_CALENDRIER` : articles, familles, schéma, backlog, plan, calendrier,
+règle IA ; commité, indexé, modifié ou non suivi). Une PR du calendrier en retard est
+refusée avec le chemin en cause : intégrer `origin/main` puis relancer. Une PR hors
+calendrier n'échoue donc plus parce qu'une autre PR a été fusionnée. Contrepartie : deux
+PR en retard qui modifient les mêmes fichiers générés (pied de page, `pages-lastmod.json`,
+sceau du glossaire) peuvent être vertes chacune sur sa fourche. Avant de fusionner la
+seconde, intégrer main et lancer `npm run regen:generated`.
 Une date historique changée, une base absente/non intégrée ou une référence qui
 change pendant la lecture arrêtent ce contrôle. Un nouveau brouillon ou un commit
 de branche seul ne créent pas de publication antérieure. Le préflight doit toujours
@@ -131,10 +150,10 @@ selon la règle existante ; le brief ne crée pas d'exception implicite.
 
 Réservation mandatée d'un article ordinaire (constitution du 03/10, décision du
 29/09) : `datePlanifiee` dans le backlog peut fixer la date réelle, y compris
-vendredi, samedi ou dimanche. Ce champ existant est la décision éditoriale ; une
+vendredi. Depuis D9, samedi et dimanche sont refusés pour les ordinaires. Ce champ est la décision éditoriale ; une
 recette, un brief ou une ligne de dérivé seuls ne réservent pas de créneau. Les
-jours lundi-jeudi restent ceux de la planification automatique, non une porte de
-sûreté. Les plafonds restent 2 ordinaires par jour et 4 par semaine ISO, en
+jours lundi-vendredi régissent la planification automatique et les nouvelles réservations.
+Les plafonds sont 3 ordinaires par jour et 15 par semaine ISO, en
 comptant les publications réelles et les réservations. Une date échue reste
 refusée ; un jour saturé par les publications devient `a-replanifier`. Marketing
 réserve le backlog et régénère les dérivés, puis passe le préflight natif
@@ -160,7 +179,7 @@ node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-selecti
 
 Ce contrôle ne remplace pas `--slot` dans la forge : date Paris fraîche, reconstruction complète depuis les sources et authenticité du récit restent obligatoires. Aucun article disponible après maintenance : consigner le fait, conserver le worktree pour examen, arrêter sans fabrication ni publication. Le reliquat W39 reste sur ses cartes existantes. Le prompt versionné `FORGE-CRON-PROMPT.md` doit être installé sur le seul cron marketing `e4eaaf20655f`, en conservant son état paused ; sa réactivation appartient à la reprise éditoriale après intégration et revue.
 
-Chaque ligne de la date du jour au statut `planned` est un article à produire (une, parfois deux du lundi au jeudi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
+Chaque ligne de la date du jour au statut `planned` est un article à produire (au plus trois du lundi au vendredi ; une seule Cicatrice le samedi). Son slug donne l'entrée complète dans `docs/strategy/site-v3/backlog-v3.json` : titre, requête primaire, requêtes secondaires, famille, rôle, intention, entonnoir, format, preuve attendue, autorités à citer. Aucune ligne un jour ordinaire : aller au §6. Aucune ligne un samedi : ne pas inventer de récit ; consigner le stock vide dans `JOURNAL.md` et ouvrir une carte de réapprovisionnement depuis les leçons et faits mesurés.
 
 ## 3. Écrire la recette (la recette éditoriale Memlia, héritée de l'article 3)
 
@@ -349,7 +368,9 @@ Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, 
 à jour, synchronise `pages-lastmod.json`, rescelle le glossaire (avec reconstruction du
 rendu après la synchronisation), réaffirme la revue métier existante, puis contrôle
 le registre et exécute l'audit QA Ressources. Chaque échec arrête la chaîne ; cette
-commande ne remplace pas `npm run build` ni la revue QA de la PR.
+commande ne remplace ni la construction complète assurée par la CI GitHub
+(« Repository gates »), ni la revue QA de la PR. Ne pas rejouer le build complet
+sur le Mac après la régénération.
 
 Après `git fetch origin` puis `git merge origin/main`, si seuls les fichiers générés
 ci-dessous sont en conflit, prendre **la version de main**, jamais assembler leurs
@@ -358,7 +379,7 @@ empreintes à la main (`--theirs` signifie main uniquement dans ce merge, pas da
 ```bash
 git restore --source=origin/main --staged --worktree -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
 npm run regen:generated
-npm run build
+# La construction complète sera vérifiée par la CI GitHub après le push.
 git diff --check
 git add -- src/data/pages-lastmod.json editorial/resources/glossaire/manifest.json docs/qa/site-copy-b/preuve-glossaire-metier.json docs/qa/hub-ressources/metier-review-r5/reaffirmation.json docs/qa/hub-ressources/metier-fix-c-register.json docs/qa/hub-ressources/metier-fix-c-build-receipt.json
 ```
@@ -385,7 +406,7 @@ npm run regen:generated
 Si `publier` ou le build échoue, relever la cause et arrêter sans retirer de porte : vérifier les frontmatters non-brouillons de tout le lot, les entrées anticipées du registre et leurs provenances, `llms.txt`, le ledger lastmod et les sceaux Ressources. Ne jamais modifier `PUBLIC_ARTICLES` (inventaire dynamique) ni réécrire le corps signé pour obtenir un build vert. Rejouer la séquence et la QA sur les octets finaux avant livraison. Ensuite :
 
 ```bash
-npm run build
+# La construction complète sera vérifiée par la CI GitHub après le push.
 git add -- editorial/recettes/<slug-1> editorial/recettes/<slug-2> editorial/recettes/<slug-3> editorial/articles/<slug-1> editorial/articles/<slug-2> editorial/articles/<slug-3> src/content/blog/<slug-1>.md src/content/blog/<slug-2>.md src/content/blog/<slug-3>.md docs/strategy/site-v3/mesures/registre-requetes.json # inclure aussi explicitement les autres fichiers réellement modifiés du lot, dont le pilier s'il a été revu
 node scripts/cron-preflight.mjs --root "$PWD" --job forge --phase before-commit --base "$BASE_SHA" || exit 1
 # PR_BRANCH est déjà la branche isolée créée au §1 ; ne pas changer de base.

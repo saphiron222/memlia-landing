@@ -29,6 +29,8 @@ const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--
 const source = option('source', maturite ? 'docs/design/maturite-ia-proof' : roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs');
 const contractPath = `${source}/content-contract.json`;
 const manifestPath = option('manifest', `docs/qa/${series}/proofs-manifest.json`);
+const targetRoot = option('target-root', 'public/proofs/v2');
+const unnumbered = process.argv.includes('--unnumbered');
 const startIndex = Number(option('start', maturite || roi ? '30' : fec ? '29' : '1'));
 assert.ok(Number.isInteger(startIndex) && startIndex > 0, 'Index de départ invalide');
 const output = `.qa/annotations/${series}-${mode}`;
@@ -98,19 +100,19 @@ try {
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${id}`);
     if (mode !== 'adopt') assert.equal(measured.text, contract[index].centralText, `Contenu divergent : ${id}`);
     adopted.push({ id, centralText: measured.text });
-    const name = `${String(index + startIndex).padStart(2, '0')}-${id}`;
+    const name = unnumbered ? id : `${String(index + startIndex).padStart(2, '0')}-${id}`;
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${name}.png` });
     const webp = await sharp(png).webp({ quality: 90, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${name} (${webp.length} octets)`);
     writeFileSync(`${output}/${name}.webp`, webp);
-    candidates.push({ target: `public/proofs/v2/${name}.webp`, bytes: webp, source: `${source}/index.html#${id}` });
+    candidates.push({ target: `${targetRoot}/${name}.webp`, bytes: webp, source: `${source}/index.html#${id}` });
     records.push({ id, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
     // Un cadre de tête porte aussi l'image sociale de sa page : 1200 × 630, recadrée au centre du 16:9.
     if (await element.evaluate((root) => root.hasAttribute('data-og'))) {
       const og = await sharp(png).resize(1200, 675).extract({ left: 0, top: 22, width: 1200, height: 630 }).webp({ quality: 88, effort: 6 }).toBuffer();
       assert.ok(og.length < 150_000, `Image sociale trop lourde : ${name} (${og.length} octets)`);
       writeFileSync(`${output}/${name}-og.webp`, og);
-      candidates.push({ target: `public/proofs/v2/og/${name}.webp`, bytes: og, source: `${source}/index.html#${id}` });
+      candidates.push({ target: `${targetRoot}/og/${name}.webp`, bytes: og, source: `${source}/index.html#${id}` });
     }
   }
   assert.equal(new Set(records.map((r) => r.webpSha256)).size, records.length, 'Deux cadres rendent la même image');
@@ -135,11 +137,12 @@ try {
     }
     console.log(`check : ${candidates.length} preuves v2 conformes à leur manifeste.`);
   } else {
-    mkdirSync('public/proofs/v2/og', { recursive: true });
+    mkdirSync(`${targetRoot}/og`, { recursive: true });
+    mkdirSync(resolve(manifestPath, '..'), { recursive: true });
     mkdirSync(`docs/qa/${series}`, { recursive: true });
     for (const candidate of candidates) writeFileSync(candidate.target, candidate.bytes);
     writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`${mode} : ${candidates.length} preuves v2 publiées dans public/proofs/v2, manifeste ${manifestPath}.`);
+    console.log(`${mode} : ${candidates.length} preuves v2 publiées dans ${targetRoot}, manifeste ${manifestPath}.`);
   }
   for (const r of records) console.log(`  ${r.id.padEnd(20)} ${Math.round(r.bytes / 1024)} Ko`);
 } finally {

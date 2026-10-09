@@ -1,7 +1,13 @@
 ---
 import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
 
 import { CTA } from '@/data/site.mjs';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['hero']; }
+const { contenu = contenuDe('ec').hero } = Astro.props;
+// Conserver les séparateurs du HTML historique, même avec des expressions Astro.
+const retour = '\n';
 
 /**
  * Hero M4-R4 : média R8 sans cartouche, conservé octet pour octet.
@@ -11,33 +17,29 @@ import { CTA } from '@/data/site.mjs';
 
 <section class="hero" aria-labelledby="hero-titre">
   <div class="hero-texte">
-    <span class="pastille hero-eyebrow">
-      Automatisation IA pour cabinets d’expertise comptable
-    </span>
+    <span class="surtitre hero-eyebrow">{retour}{contenu.etiquette}{retour}</span>
     <h1 id="hero-titre" class="hero-h1">
-      Votre cabinet tourne sur un savoir-faire que personne n’a écrit.
+      <Insecable texte={contenu.titre} />
     </h1>
-    <p class="hero-sub">
-      Nous l’écrivons, puis nous automatisons la part répétitive du travail de vos collaborateurs, dans les outils qu’ils utilisent déjà. Ils gardent la décision. Votre cabinet garde le savoir.
-    </p>
+    <p class="hero-sub">{retour}{contenu.texte}{retour}</p>
     <div class="hero-boutons">
       <Button href={CTA.principal.href} variante="principal" picto="fleche" class="hero-btn">
         {CTA.principal.libelle}
       </Button>
 
     </div>
-
+    <slot name="audience" />
   </div>
 
   <div class="hero-cadre" data-cadre>
-    <div class="hero-verre">
-      <div class="hero-ecran" data-video-player>
-        <video muted loop playsinline preload="metadata" width="1920" height="1080"
+    <div class="hero-verre cadre">
+      {contenu.video ? <div class="hero-ecran" data-video-player>
+        <video muted loop playsinline preload="none" width="1920" height="1080"
           tabindex="0" data-video aria-label="Reprendre la vidéo"
           disablepictureinpicture disableRemotePlayback controlslist="nodownload nofullscreen noremoteplayback"
-          poster="/media/r9/hero-poster-1200.webp" src="/media/r9/explainer-hero-45s.mp4">
-          <track kind="subtitles" srclang="fr" label="Français" src="/media/r9/explainer.vtt" />
-          <p>Votre navigateur ne peut pas lire cette vidéo. <a href="/media/r9/explainer-hero-45s.mp4">Télécharger la vidéo</a>.</p>
+          poster={contenu.poster} src={contenu.video} data-video-mobile={contenu.videoMobile}>
+          <track kind="subtitles" srclang="fr" label="Français" src={contenu.sousTitres} />
+          <p>Votre navigateur ne peut pas lire cette vidéo. <a href={contenu.video}>Télécharger la vidéo</a>.</p>
         </video>
         <div class="hero-video-overlay" data-video-overlay>
           <button class="hero-video-sound" type="button" data-video-sound>
@@ -49,15 +51,17 @@ import { CTA } from '@/data/site.mjs';
         </div>
         <div class="hero-video-status" data-video-status role="status" aria-live="polite" hidden>
           <span data-video-status-message></span>
-          <a href="/media/r9/explainer-hero-45s.mp4" data-video-download hidden>Télécharger la vidéo</a>
+          <a href={contenu.video} data-video-download hidden>Télécharger la vidéo</a>
         </div>
         <noscript>
           <p class="hero-video-noscript">
             Votre navigateur ne peut pas lancer le lecteur interactif.
-            <a href="/media/r9/explainer-hero-45s.mp4">Télécharger la vidéo</a>.
+            <a href={contenu.video}>Télécharger la vidéo</a>.
           </p>
         </noscript>
-      </div>
+      </div> : <div class="hero-ecran">
+        <img src={contenu.poster} width="1600" height="900" alt="Sélection fictive des tiers : critères, graine, deux passes et validation en attente." loading="eager" fetchpriority="high" />
+      </div>}
     </div>
 
   </div>
@@ -79,7 +83,7 @@ import { CTA } from '@/data/site.mjs';
   }
   .hero-h1 {
     max-width: 1050px;
-    font-size: clamp(2.25rem, 1rem + 3.6vw, 3.75rem);
+    font-size: var(--titre-page);
   }
   .hero-sub {
     max-width: 672px;
@@ -93,27 +97,10 @@ import { CTA } from '@/data/site.mjs';
     gap: 16px;
     margin-top: 12px;
   }
-  .hero-confiance {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 18px;
-    margin-top: 8px;
-    font-size: var(--t-sm);
-    color: var(--texte-2);
-  }
-  .hero-confiance li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45em;
-  }
-  .hero-confiance svg {
-    color: var(--accent-appui);
-    flex: 0 0 auto;
-  }
-  /* Cadre de démo : capture statique pleine largeur sous 1024, calque verre au-dessus. */
+  /* Média du héros dans le cadre unique des maquettes (`.cadre`, global.css) : le plateau porte le
+     bord et la marge, l'écran posé dedans prend le rayon concentrique. */
   .hero-cadre {
-    margin-top: 48px;
+    margin-top: var(--bloc-ecart);
     max-width: min(1200px, calc(100vw - 32px));
     position: relative;
     left: 50%;
@@ -122,12 +109,7 @@ import { CTA } from '@/data/site.mjs';
   }
   .hero-ecran {
     position: relative;
-    border-radius: var(--r-ecran);
-    border: 1px solid var(--ligne);
-    overflow: hidden;
-    background: var(--blanc);
     aspect-ratio: 16 / 9;
-    box-shadow: 0 12px 36px rgba(35, 31, 32, 0.06);
   }
   .hero-ecran video {
     width: 100%;
@@ -141,11 +123,20 @@ import { CTA } from '@/data/site.mjs';
     outline: 3px solid var(--accent-texte);
     outline-offset: -5px;
   }
+  .hero-ecran img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+  }
+  /* Rien ne se pose au centre de la vidéo, où passent ses titres : le bouton du son va dans le
+     coin bas gauche, vide sur toutes les images de la vidéo (système de page, § 1). */
   .hero-video-overlay {
     position: absolute;
     inset: 0;
     display: grid;
-    place-items: center;
+    place-items: end start;
     padding: 0;
     pointer-events: none;
   }
@@ -157,20 +148,22 @@ import { CTA } from '@/data/site.mjs';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    min-height: 46px;
-    padding: 10px 18px;
-    border: 1px solid var(--accent-texte);
-    border-radius: 999px;
-    background: rgba(39, 182, 87, 0.9);
+    gap: 8px;
+    min-height: 44px;
+    margin: var(--espace-3);
+    padding: 0 16px 0 14px;
+    border: 1px solid var(--accent-appui);
+    border-radius: var(--r-bouton);
+    background: rgba(39, 182, 87, 0.92);
     color: var(--encre);
     font: inherit;
-    font-weight: 700;
+    font-size: var(--t-sm);
+    font-weight: 600;
     cursor: pointer;
     pointer-events: auto;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
-    box-shadow: 0 8px 24px rgba(35, 31, 32, 0.18), 0 0 0 4px rgba(39, 182, 87, 0.12);
+    box-shadow: var(--ombre-plein);
   }
   .hero-video-sound:hover {
     background: var(--accent-appui);
@@ -188,12 +181,13 @@ import { CTA } from '@/data/site.mjs';
     stroke-linecap: round;
     stroke-linejoin: round;
   }
+  /* Le message d'état se lit en haut : il ne recouvre jamais le bouton du son qu'il désigne. */
   .hero-video-status,
   .hero-video-noscript {
     position: absolute;
     z-index: 2;
+    top: 16px;
     right: 16px;
-    bottom: 16px;
     left: 16px;
     width: fit-content;
     max-width: calc(100% - 32px);
@@ -209,18 +203,18 @@ import { CTA } from '@/data/site.mjs';
   .hero-video-status a,
   .hero-video-noscript a {
     color: var(--accent-texte);
-    font-weight: 700;
+    font-weight: 600;
   }
-
 
   @media (max-width: 24.99rem) {
     .hero-boutons {
       flex-direction: column;
       align-items: stretch;
     }
+  }
+  @media (min-width: 48rem) {
     .hero-video-sound {
-      min-height: 44px;
-      padding: 8px 14px;
+      margin: var(--espace-4);
     }
   }
   @media (min-width: 64rem) {
@@ -231,13 +225,7 @@ import { CTA } from '@/data/site.mjs';
       min-height: 270px;
     }
     .hero-cadre {
-      margin: 48px 0 0;
-    }
-    .hero-verre {
-      padding: 16px;
-      border-radius: var(--r-cadre);
-      background: rgba(252, 251, 247, 0.2);
-      border: 1px solid rgba(35, 31, 32, 0.096);
+      margin: var(--bloc-ecart) 0 0;
     }
   }
   @media (min-width: 80rem) {
@@ -321,9 +309,6 @@ import { CTA } from '@/data/site.mjs';
   :global(html.js) .hero-boutons > :nth-child(2) {
     animation: hero-bouton var(--duree-entree) var(--courbe-sortie) 200ms both;
   }
-  :global(html.js) .hero-confiance {
-    animation: hero-bouton var(--duree-entree) var(--courbe-sortie) 300ms both;
-  }
   :global(html.js) .hero-verre {
     animation: hero-verre var(--duree-etiquette) var(--courbe-sortie) 200ms both;
   }
@@ -331,7 +316,7 @@ import { CTA } from '@/data/site.mjs';
     animation: hero-ecran var(--duree-revelation) var(--courbe-douce) 200ms both;
   }
   @media (prefers-reduced-motion: reduce) {
-    :global(html.js) .hero :is(.hero-h1, .hero-sub, .hero-eyebrow, .hero-boutons > *, .hero-confiance, .hero-verre, .hero-ecran) {
+    :global(html.js) .hero :is(.hero-h1, .hero-sub, .hero-eyebrow, .hero-boutons > *, .hero-verre, .hero-ecran) {
       animation: none;
     }
   }
@@ -351,6 +336,17 @@ import { CTA } from '@/data/site.mjs';
     if (!video || !overlay || !soundButton || !status || !statusMessage || !downloadLink) continue;
 
     let mediaFailed = false;
+    let playbackRequested = false;
+    let sourceSelected = false;
+
+    // Choisir une seule rendition à la première lecture, jamais pendant la lecture.
+    const selectSource = () => {
+      if (sourceSelected) return;
+      sourceSelected = true;
+      if (window.matchMedia('(max-width: 767px)').matches && video.dataset.videoMobile) {
+        video.src = video.dataset.videoMobile;
+      }
+    };
 
     const setStatus = (message = '', offerDownload = false) => {
       statusMessage.textContent = message;
@@ -367,6 +363,8 @@ import { CTA } from '@/data/site.mjs';
     };
 
     const startPlayback = async (autoplayAttempt = false) => {
+      playbackRequested = true;
+      selectSource();
       try {
         await video.play();
         setStatus();
@@ -409,9 +407,21 @@ import { CTA } from '@/data/site.mjs';
       video.currentTime = 0;
       syncPlaybackLabel();
     } else {
-      video.autoplay = true;
-      video.setAttribute('autoplay', '');
-      void startPlayback(true);
+      // L’affiche prioritaire termine son chargement avant toute requête vidéo.
+      // Sur mobile le lecteur est sous le pli : ne pas télécharger hors écran.
+      const observePlayback = () => {
+        const observer = new IntersectionObserver(entries => {
+          if (!entries.some(entry => entry.isIntersecting)) return;
+          observer.disconnect();
+          if (playbackRequested) return;
+          video.autoplay = true;
+          video.setAttribute('autoplay', '');
+          void startPlayback(true);
+        }, { threshold: 0.1 });
+        observer.observe(video);
+      };
+      if (document.readyState === 'complete') observePlayback();
+      else window.addEventListener('load', observePlayback, { once: true });
     }
 
     soundButton.addEventListener('click', async () => {

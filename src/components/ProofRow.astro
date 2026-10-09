@@ -1,18 +1,21 @@
 ---
 import ProofMedia from '@/components/ProofMedia.astro';
 import type { ProofId } from '@/data/proofs';
+// Rangée du système de page (§ 7) : texte à gauche, maquette encadrée à droite dès 1 024 px, sur
+// la moitié de la largeur, alignés en haut ; dessous avant. Aucun filet : les sections se séparent
+// par l'espace, et le titre tombe toujours à `--section-espace` de la section précédente.
 interface Props { id: ProofId; }
 const { id } = Astro.props;
 ---
 <div class="proof-row" data-proof-row>
   <div class="proof-copy" data-proof-copy><slot /></div>
-  <ProofMedia id={id} />
+  <ProofMedia id={id} cadre />
 </div>
 <style>
-  .proof-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 32px; border-top: 1px solid var(--ligne); }
+  .proof-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--espace-6); }
   .proof-copy { min-width: 0; }
   @media (min-width: 64rem) {
-    .proof-row { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 0; min-height: 400px; padding-block: 20px; }
-    .proof-copy { padding-right: 48px; }
+    .proof-row { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 0; }
+    .proof-copy { padding-right: var(--rangee-gouttiere); }
   }
 </style>

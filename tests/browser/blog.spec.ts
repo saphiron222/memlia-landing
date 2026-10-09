@@ -28,8 +28,9 @@ test('liste du blog : articles, auteur, flux et navigation courante', async ({ p
   if (PREVIEW_SLUGS.size) await expect(rssLink).toHaveCount(0);
   else await expect(rssLink).toHaveAttribute('href', '/blog/rss.xml');
   await page.setViewportSize({ width: 1440, height: 900 });
-  // Le bandeau publié pointe les quatre sections de l'accueil ; le fil d'Ariane porte la page courante.
-  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
+  // Le hub Blog indique la rubrique courante, y compris dans ses articles.
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(1);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveAttribute('href', '/blog');
   for (const text of await textesPublics(page)) expect(text).not.toMatch(CATALOGUE);
   expect(errors).toEqual([]);
 });
@@ -65,7 +66,8 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
   const couverture = await page.locator('.article-couverture img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0);
   expect(couverture).toBe(true);
   await expect(page.locator('.article-corps h2').first()).toBeVisible();
-  await expect(page.locator('.article-sources li')).not.toHaveCount(0);
+  // Décision de Kevin du 06/10/2026 : les sources se citent dans le texte (une section ne reste que pour les sources pas encore citées).
+  expect(await page.locator('.article-corps a[href^="https://"], .article-sources li').count()).toBeGreaterThan(0);
   await expect(page.locator('.article-pont .btn-principal')).toHaveCount(1);
   const report = await page.evaluate(() => {
     const graph = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!);
@@ -77,7 +79,8 @@ test('article : en-tête, fil d’Ariane, schéma, sources et retour à la liste
     return { types, headline: posting.headline, url: posting.url, canonical, broken, h1 };
   });
   expect(report.types).toEqual(['BlogPosting', 'BreadcrumbList', 'Person', 'Organization', 'WebSite']);
-  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(0);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveCount(1);
+  await expect(page.locator('.nav-centre a[aria-current]')).toHaveAttribute('href', '/blog');
   expect(report.headline).toBe(report.h1);
   expect(report.canonical).toBe(report.url);
   expect(report.broken).toEqual([]);
@@ -110,7 +113,7 @@ test('article sans JavaScript : contenu et navigation visibles', async ({ browse
   await page.goto('/blog');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('[data-article]').first()).toBeVisible();
-  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 

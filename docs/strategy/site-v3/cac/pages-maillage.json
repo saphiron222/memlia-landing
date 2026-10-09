@@ -636,7 +636,7 @@
         {
           "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         },
         {
@@ -2180,7 +2180,7 @@
         {
           "from": "/blog/cac-circularisation-campagne",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         },
         {
@@ -2288,7 +2288,7 @@
         {
           "from": "/blog/cac-circularisation-reponse-rapprochement",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         },
         {
@@ -3719,16 +3719,13 @@
       "query": "automatisation commissaire aux comptes",
       "type": "accueil",
       "family": "cac-dossier-de-travail",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "owner": "/commissaires-aux-comptes",
       "profession": "cac",
       "measure": {
-        "state": "mesuree",
-        "source": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "automatisation commissaire aux comptes",
-        "measuredAt": "2026-10-05T22:17:28.634Z",
-        "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
-        "suggestions": 0,
         "volumeMensuel": null
       },
       "terrain": [
@@ -4223,21 +4220,18 @@
       "query": "automatiser circularisation",
       "type": "service",
       "family": "cac-confirmations-audit",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-circularisation-campagne",
         "cac-circularisation-reponse-rapprochement"
       ],
-      "purpose": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+      "purpose": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
       "owner": "/automatisation/circularisation-cac",
       "profession": "cac",
       "measure": {
-        "state": "mesuree",
-        "source": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "automatiser circularisation",
-        "measuredAt": "2026-10-05T22:17:28.981Z",
-        "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
-        "suggestions": 0,
         "volumeMensuel": null
       },
       "terrain": [
@@ -4249,19 +4243,19 @@
         {
           "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         },
         {
           "from": "/blog/cac-circularisation-campagne",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         },
         {
           "from": "/blog/cac-circularisation-reponse-rapprochement",
           "to": "/automatisation/circularisation-cac",
-          "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+          "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
           "state": "projete-non-publie"
         }
       ],
@@ -4509,7 +4503,7 @@
       "query": "seuil de signification audit calcul",
       "type": "outil",
       "family": "cac-revue-analytique",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-seuil-signification-justification",
         "cac-revue-analytique-exemple"
@@ -4518,12 +4512,9 @@
       "owner": "/outils-comptables-gratuits/seuil-signification-audit",
       "profession": "cac",
       "measure": {
-        "state": "mesuree",
-        "source": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "seuil de signification audit calcul",
-        "measuredAt": "2026-10-05T22:16:53.771Z",
-        "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
-        "suggestions": 2,
         "volumeMensuel": null
       },
       "terrain": [
@@ -4590,7 +4581,7 @@
       "query": "barème heures commissaire aux comptes",
       "type": "outil",
       "family": "cac-suivi-mandats",
-      "state": "retenue-non-publiee",
+      "state": "construite-en-revue",
       "contextFrom": [
         "cac-bareme-budget-realise",
         "cac-declaration-activite-preparation"
@@ -4599,12 +4590,9 @@
       "owner": "/outils-comptables-gratuits/bareme-heures-cac",
       "profession": "cac",
       "measure": {
-        "state": "mesuree",
-        "source": "docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json",
+        "state": "proprietaire-existant",
+        "source": "config/page-intent-contract.json",
         "query": "barème heures commissaire aux comptes",
-        "measuredAt": "2026-10-05T22:17:22.263Z",
-        "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
-        "suggestions": 1,
         "volumeMensuel": null
       },
       "terrain": [
@@ -6602,7 +6590,7 @@
     {
       "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
       "to": "/automatisation/circularisation-cac",
-      "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+      "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
       "state": "projete-non-publie"
     },
     {
@@ -6614,7 +6602,7 @@
     {
       "from": "/blog/cac-circularisation-campagne",
       "to": "/automatisation/circularisation-cac",
-      "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+      "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
       "state": "projete-non-publie"
     },
     {
@@ -6626,7 +6614,7 @@
     {
       "from": "/blog/cac-circularisation-reponse-rapprochement",
       "to": "/automatisation/circularisation-cac",
-      "context": "Confier la préparation et le suivi d’une campagne dans les outils existants, pas obtenir un modèle.",
+      "context": "Confier la proposition de tiers selon la règle du cabinet et les pièces postérieures choisies par le CAC ; lettres, envois et relances restent aux plateformes.",
       "state": "projete-non-publie"
     },
     {

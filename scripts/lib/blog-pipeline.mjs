@@ -7,6 +7,7 @@ import { parse as parseHtml } from 'parse5';
 import sharp from 'sharp';
 import { Agent, fetch as fetchUndici } from 'undici';
 import { parse as parseYaml } from 'yaml';
+import { readDilaCopy } from './dila-source-copy.mjs';
 import { dossierFiles, validatePublishedAdoption } from './blog-published-authority.mjs';
 import { retirerPreuvesInline } from './blog-proof-figures.mjs';
 import { corpsSansTitreDuplique } from './blog-body-envelope.mjs';
@@ -60,9 +61,12 @@ export const CLAIM_TYPES = Object.freeze([
 ]);
 
 
-/** Cadence décidée le 16/09/2026 : quatre articles par semaine, au plus deux le même jour. */
-export const CANDIDATS_PAR_JOUR_MAX = 2;
-export const CANDIDATS_PAR_SEMAINE_MAX = 4;
+/** Décision du 05/10 appliquée le 06/10 ; les rejeux historiques restent bornés. */
+export const CANDIDATS_PAR_JOUR_MAX = 3;
+export const CANDIDATS_PAR_SEMAINE_MAX = 15;
+export const DEBUT_CADENCE_15 = '2026-10-06';
+export const plafondJourOrdinaire = (date) => date >= DEBUT_CADENCE_15 ? CANDIDATS_PAR_JOUR_MAX : 2;
+export const plafondSemaineOrdinaire = (semaine) => semaine >= '2026-W41' ? CANDIDATS_PAR_SEMAINE_MAX : 4;
 /** Reçu de publication : le dossier est scellé sur ses octets le jour de la mise en ligne. */
 export const PUBLICATION_SEAL_PATH = 'preuves/publication.json';
 /** La date déclarée est celle du calendrier de publication en Europe/Paris, pas la date UTC du fetch. */
@@ -105,21 +109,25 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null, root
     return;
   }
   if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
+  if (date >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${date}T00:00:00Z`).getUTCDay())) {
+    throw new Error(`Un article ordinaire paraît du lundi-vendredi : ${date}.`);
+  }
   const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
   const rule = lireRattrapageIA(root);
   if (estRattrapageIA(slug) && root && !rule) throw new Error('Rattrapage IA : règle requise.');
   verifierDateRattrapageIA(rule, slug, date, serie);
   for (const candidate of ordinaires) verifierDateRattrapageIA(rule, candidate.slug, candidate.date, candidate.serie);
-  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, CANDIDATS_PAR_JOUR_MAX);
+  const plafondJour = plafondJourIA(rule, slug, date, ordinaires, plafondJourOrdinaire(date));
   if (ordinaires.filter((candidate) => candidate.date === date).length >= plafondJour) {
     throw new Error(`${plafondJour} candidats sont déjà planifiés le ${date} ; le plafond est de ${plafondJour} candidats par jour.`);
   }
   const semaineEditoriale = semaineEditorialeIA(rule, slug, date, semaine);
   const dansLot = rule?.publications[slug] === date;
+  const plafondSemaine = plafondSemaineOrdinaire(semaineEditoriale);
   if (ordinaires.filter((candidate) => isDate(candidate.date)
     && (rule?.publications[candidate.slug] === candidate.date) === dansLot
-    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= CANDIDATS_PAR_SEMAINE_MAX) {
-    throw new Error(`${CANDIDATS_PAR_SEMAINE_MAX} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${CANDIDATS_PAR_SEMAINE_MAX} candidats par semaine.`);
+    && semaineEditorialeIA(rule, candidate.slug, candidate.date, semaineIso(candidate.date)) === semaineEditoriale).length >= plafondSemaine) {
+    throw new Error(`${plafondSemaine} candidats sont déjà planifiés la semaine ${semaine} ; le plafond est de ${plafondSemaine} candidats par semaine.`);
   }
 }
 /**
@@ -742,6 +750,24 @@ export async function verifySource({ root = process.cwd(), slug, sourceId, excer
   const source = (manifest.sources ?? []).find((item) => item.id === sourceId);
   if (!source) throw new Error(`Source inconnue pour ${slug} : ${sourceId}.`);
   if (!hasText(excerpt, 12)) throw new Error('Un extrait exact d’au moins 12 caractères est requis pour relier la source.');
+  if (source.dilaCopyPath !== undefined) {
+    const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt });
+    const evidencePath = isSafeRelativePath(dossier, source.verificationEvidence);
+    if (!evidencePath) throw new Error('verificationEvidence doit rester dans le dossier éditorial.');
+    const contentPath = join(dirname(evidencePath), `${source.id}.source.txt`);
+    mkdirSync(dirname(evidencePath), { recursive: true });
+    writeFileSync(contentPath, copy.text);
+    writeJsonAtomic(evidencePath, {
+      version: 1, candidateSlug: slug, sourceId: source.id,
+      ...Object.fromEntries(['level', 'provenance', 'official', 'upstreamUrl', 'classificationReason', 'method'].map((key) => [key, source[key]])),
+      requestedUrl: source.url, finalUrl: copy.url, httpStatus: null, accessMode: 'dila-copy',
+      checkedAt: copy.checkedAt, retrievedAt: copy.retrievedAt, contentType: 'text/plain',
+      contentPath: relative(dossier, contentPath), contentSha256: copy.textSha256, excerpt,
+      dilaCopyPath: source.dilaCopyPath, dilaCopySha256: copy.copySha256,
+      legalVersion: { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning },
+    });
+    return { sourceId, evidence: relative(absoluteRoot, evidencePath), content: relative(absoluteRoot, contentPath) };
+  }
   const approvedAddresses = new Map();
   const remember = ({ url, addresses }) => {
     approvedAddresses.set(url.hostname.replace(/^\[|\]$/g, ''), addresses);
@@ -843,7 +869,7 @@ function validateSubjectEvidence(errors, evidence, expected, label, expectedKind
   }
 }
 
-function validateSources(manifest, dossier, expected) {
+function validateSources(manifest, dossier, expected, preserveSealed = false) {
   const errors = [];
   const verified = new Map();
   for (const [index, source] of (manifest?.sources ?? []).entries()) {
@@ -892,9 +918,17 @@ function validateSources(manifest, dossier, expected) {
       if (source.url !== proof.finalUrl) errors.push(`${label} : une source primaire technique doit être ouverte directement, sans redirection depuis un domaine tiers.`);
     }
     if (source.provenance === 'secondary' && proof.upstreamUrl === proof.finalUrl) errors.push(`${label}.upstreamUrl doit nommer une source primaire distincte pour une source secondary.`);
-    if (proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
+    if (source.dilaCopyPath !== undefined || proof.accessMode === 'dila-copy') {
+      try {
+        if (proof.accessMode !== 'dila-copy' || proof.httpStatus !== null || proof.dilaCopyPath !== source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(proof.dilaCopySha256 ?? '')) throw new Error('Mode DILA et copie divergents, sans réponse HTTP.');
+        const copy = readDilaCopy({ root: dossier, path: source.dilaCopyPath, url: source.url, excerpt: proof.excerpt, expectedSha256: proof.dilaCopySha256,
+          ...(preserveSealed ? { asOf: proof.retrievedAt } : {}) });
+        if (proof.retrievedAt !== copy.retrievedAt || proof.checkedAt !== copy.checkedAt || proof.contentSha256 !== copy.textSha256
+          || !sameValue(proof.legalVersion, { id: copy.id, version: copy.version, date: copy.versionDate, warning: copy.warning })) throw new Error('Copie DILA : collecte, texte ou version divergents.');
+      } catch (error) { errors.push(`${label} : ${error.message}`); }
+    } else if (!Number.isInteger(proof.httpStatus) || proof.httpStatus < 200 || proof.httpStatus >= 300) errors.push(`${label}.httpStatus doit prouver une réponse 2xx.`);
     if (proof.checkedAt !== source.checkedAt) errors.push(`${label}.checkedAt doit être identique à la date de la source.`);
-    if (jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
+    if (proof.accessMode !== 'dila-copy' && jourRecuperationParis(proof.retrievedAt) !== proof.checkedAt) {
       errors.push(`${label}.retrievedAt doit dater l'ouverture réelle, non future, au jour civil Europe/Paris de checkedAt.`);
     }
     const snapshotPath = isSafeRelativePath(dossier, proof.contentPath);
@@ -1887,7 +1921,7 @@ export async function validateDossier({ root = process.cwd(), slug, renderedBlog
   }
   if (skills) errors.push(...validateSkillsManifest(skills));
   if (skills && manifest && claims) errors.push(...validateRequiredSkills(skills, sensitiveMatter));
-  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject) : { errors: [], verified: new Map() };
+  const sources = manifest ? validateSources(manifest, dossier, evidenceSubject, gateMode === 'publication-scellee' && sealErrors.length === 0) : { errors: [], verified: new Map() };
   errors.push(...sources.errors);
   if (claims) errors.push(...validateClaims(claims, markdown, manifest, sources.verified, evidenceSubject, sensitiveMatter));
   if (review && manifest) errors.push(...validateReview(review, dossier, manifest, evidenceSubject));

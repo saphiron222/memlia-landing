@@ -209,7 +209,7 @@ class CacArchitecture(unittest.TestCase):
             {'slug': 'a2', 'pole': 'A', 'format': 'x', 'date': '2026-10-08', 'statut': 'planned'}]
         PLAN.alterner(entries)
         self.assertEqual(PLAN.verifier_alternance(entries), [])
-        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (2, 4, (0, 1, 2, 3)))
+        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (3, 15, (0, 1, 2, 3, 4)))
 
 
 if __name__ == '__main__':

@@ -45,7 +45,12 @@ test('surfaces locales : filtre de route, GET/HEAD complets, CSP propre et scrip
         assert.equal(await response.text(), method === 'GET' ? 'full html' : '');
       }
       for (const response of [new Response(null, { status: 301 }), new Response('missing', { status: 404 }), new Response('asset', { headers: { 'Content-Type': 'text/plain' } })]) {
-        assert.equal(await handlers.onRequestGet({ request: new Request(`https://memlia.fr${route}`), next: async () => response }), response);
+        const expectedBody = await response.clone().text();
+        const result = await handlers.onRequestGet({ request: new Request(`https://memlia.fr${route}`), next: async () => response });
+        assert.equal(result.status, response.status);
+        assert.equal(result.headers.get('Content-Type'), response.headers.get('Content-Type'));
+        assert.equal(result.headers.get('Strict-Transport-Security'), 'max-age=31536000');
+        assert.equal(await result.text(), expectedBody);
       }
     }
   } finally {

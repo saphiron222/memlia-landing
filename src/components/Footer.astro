@@ -2,6 +2,8 @@
 import Lockup from './Lockup.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site.mjs';
+import { LIEN_CAC } from '@/data/navigation.mjs';
+import { cacDisponible } from '@/data/navigation-publiee';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 import { INTEGRATIONS_HUB_PATH, INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
@@ -33,7 +35,7 @@ const integrations = INTEGRATIONS_INDEXABLES.map((integration) => ({
 
 const automatise = {
   titre: 'Ce qu’on automatise',
-  liens: [{ libelle: 'Automatisation pour cabinet comptable', href: PAGES_V2.service.chemin }, ...services],
+  liens: [{ libelle: 'Automatisation pour cabinet comptable', href: PAGES_V2.service.chemin }, ...(cacDisponible ? [LIEN_CAC] : []), ...services],
 };
 const comprendre = {
   titre: 'Comprendre',
