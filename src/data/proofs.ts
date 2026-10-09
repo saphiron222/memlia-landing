@@ -2,6 +2,8 @@
 import generatedProofs from './guide-proofs.generated.json';
 
 const HISTORICAL_PROOFS = {
+  'v2/45-outil-balances': { title: 'Trois comptes, trois lectures de variation', alt: 'Comparaison fictive : compte 00123 de 100 à 130, delta 30 et 30 % ; 401 de −100 à −80, delta 20 et 20 % ; 707 nouveau à 50, pourcentage non calculable.', detail: 'La scène reprend les trois comptes du moteur testé, avec un seuil absolu fictif de 20 EUR. Les trois comptes sont à examiner selon ce choix, sans appréciation de risque ni de signification.' },
+
 
   'v2/44-outil-fusion-csv': { title: 'Les colonnes se correspondent, les origines restent', alt: 'Deux exports fictifs janvier et février, colonnes ID et Montant inversées : mapping confirmé, cinq lignes consolidées et fichier/ligne source pour chaque ligne.', detail: 'La scène provient du moteur de consolidation testé : deux lignes puis trois, un en-tête, identifiants texte et provenance exacte. Aucun fichier métier n’est modifié.' },
 
@@ -18,6 +20,7 @@ const HISTORICAL_PROOFS = {
   'cac/accueil-fichiers-balance': { title: 'Comparer les sources, laisser les arrêts visibles', alt: 'Mandat fictif Atelier des Rives : immobilisations comparées aux comptes 215, 2815 et 68112 de la balance ; deux montants concordants et une différence de 500 euros ; clé multiple et période incompatible bloquées.', detail: 'Illustration fonctionnelle fictive sur fichiers inventés de même période. Origines IMMO visibles ; sources inchangées et exceptions sans rapprochement forcé. Une concordance de montants ne suffit pas à conclure sur les comptes. Aucune connexion à une suite d’audit ni automatisation livrée n’est démontrée.' },
 
   'v2/44-service-entrees-sorties-salaries': { title: 'Deux propositions, cinq cas sans finalisation', alt: 'Sept cas fictifs d’annonces : entrée par e-mail avec champs de DPAE à valider, sortie consignée sans DPAE, manque, conflit, cas hors règle, circuit existant conservé et appel sans compte rendu arrêté.', detail: 'Le rejeu porte sur des champs déjà structurés. Aucune extraction, connexion, création dans la paie ni transmission n’est démontrée. Le gestionnaire valide les propositions et garde ses saisies.' },
+
 
   'v2/43-outil-bareme-cac': { title: 'La base calculée, le budget séparé', alt: 'Exemple fictif : bilan 100 000 euros, produits d’exploitation 150 000 euros et financiers 10 000 euros ; base 260 000 euros, référence 20 à 35 heures et budget saisi 42 heures distinct.', detail: 'Le questionnaire fictif ne déclare aucune exclusion. Le budget ne reçoit aucun verdict de conformité ; la fourchette n’est pas un tarif ni une preuve de suffisance des diligences.' },
   'v2/41-outil-signification': { title: 'Les paramètres se comparent, le choix reste au CAC', alt: 'Deux scénarios fictifs sur une base de 1 000 000 EUR : taux saisis 1 % et 1,25 %, signification 10 000 et 12 500 EUR ; planification 7 000 et 7 500 EUR, aucun scénario retenu.', detail: 'Les taux sont des données d’essai, jamais une recommandation. La justification saisie est séparée des calculs. La scène reprend l’exemple chargeable : deux scénarios sur la même base, sans choix utilisateur présumé.' },

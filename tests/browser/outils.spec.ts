@@ -373,6 +373,8 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
 });
 
 test('outils publiés : zéro requête et zéro stockage après armement', async ({ page, context }) => {
+  // Le registre grandit : toutes les navigations et attentes réseau partagent ce budget.
+  test.setTimeout(60_000);
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
@@ -382,7 +384,20 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     await page.evaluate(() => document.fonts.ready);
     await page.waitForLoadState('networkidle');
     armed = true;
-    if (outil.slug === 'calculateur-marge-commerciale') {
+    if (outil.slug === 'comparateur-balances-comptables') {
+      await page.getByRole('button', { name: 'Charger les deux CSV fictifs', exact: true }).click();
+      await page.locator('#same-currency').check();
+      await page.locator('#comparable').check();
+      await page.getByRole('button', { name: 'Comparer les balances', exact: true }).click();
+      await expect(page.locator('[data-result]')).toBeVisible();
+      await expect(page.locator('[data-table]')).toContainText('00123');
+      await expect(page.locator('[data-table]')).toContainText('30,00');
+      const downloading = page.waitForEvent('download');
+      await page.getByRole('button', { name: 'Exporter le rapport CSV complet', exact: true }).click();
+      const csv = await readFile((await (await downloading).path())!, 'utf8');
+      expect(csv).toContain('00123');
+      expect(csv).toContain('comparateur-balances-1');
+    } else if (outil.slug === 'calculateur-marge-commerciale') {
       await page.getByLabel('Prix d’achat HT').fill('80');
       await page.getByLabel('Prix de vente HT').fill('100');
       await page.getByRole('button', { name: 'Calculer la marge' }).click();
@@ -582,10 +597,16 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       // Parsing, preview and validated selection each create their own local Worker.
       expect(requests).toHaveLength(3);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'comparateur-balances-comptables') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/comparateur-balances\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Un seul Worker local traite les deux balances et leur comparaison.
+      expect(requests).toHaveLength(1);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else if (outil.slug === 'fusionner-fichiers-csv') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fusion-csv\\.worker-[a-zA-Z0-9_-]+\\.js$`);
       // Import and confirmed consolidation create two local Workers; exports reuse the second.
       expect(requests).toHaveLength(2);
+
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else expect(requests).toEqual([]);
     context.off('request', listener);

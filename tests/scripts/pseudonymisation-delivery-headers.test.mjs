@@ -10,6 +10,6 @@ test('Pseudonymisation : aucune transformation edge, seulement sur la route Pseu
   const scoped = blocks.find(([route]) => route === roi);
   assert.ok(scoped, 'une règle propre à la route Pseudonymisation doit prévenir l’injection edge');
   assert.ok(scoped.includes('  Cache-Control: public, max-age=0, must-revalidate, no-transform'));
-  assert.deepEqual(blocks.filter(block => block.some(line => line.includes('no-transform'))).map(([route]) => route), ['/outils-comptables-gratuits/suivi-circularisation', '/outils-comptables-gratuits/checklist-pieces-comptables', '/outils-comptables-gratuits/bareme-heures-cac', '/outils-comptables-gratuits/seuil-signification-audit', '/outils-comptables-gratuits/calculateur-roi-automatisation', roi, '/outils-comptables-gratuits/fusionner-fichiers-csv']);
+  assert.deepEqual(blocks.filter(block => block.some(line => line.includes('no-transform'))).map(([route]) => route), ['/outils-comptables-gratuits/suivi-circularisation', '/outils-comptables-gratuits/comparateur-balances-comptables', '/outils-comptables-gratuits/checklist-pieces-comptables', '/outils-comptables-gratuits/bareme-heures-cac', '/outils-comptables-gratuits/seuil-signification-audit', '/outils-comptables-gratuits/calculateur-roi-automatisation', roi, '/outils-comptables-gratuits/fusionner-fichiers-csv']);
   assert.equal(blocks.find(([route]) => route === '/outils-comptables-gratuits/*')[1], `  Content-Security-Policy: ${csp}`);
 });

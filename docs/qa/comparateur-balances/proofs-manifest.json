@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/comparateur-balances-proof/index.html",
+      "sha256": "c01398dd8d9f8a936362d35656ec0eb881442d59807161ab328092c67dff85ff"
+    },
+    {
+      "path": "docs/design/comparateur-balances-proof/styles.css",
+      "sha256": "be370bc253fc9fd971edc5ea142b5867f011476db9eb7d1eb1e82b83e1048833"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/comparateur-balances-proof/content-contract.json",
+      "sha256": "3b1dca07b822c09c8c4fca1169a2c942ceab3bf2a92be37d15c3504b2db98025"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/comparateur-balances-proof/index.html#outil-balances",
+      "target": "public/proofs/v2/45-outil-balances.webp",
+      "bytes": 36060,
+      "sha256": "1735858125c084380ccb45a9a619da460602ff14a8eefadcb554b01ca6898db3"
+    },
+    {
+      "source": "docs/design/comparateur-balances-proof/index.html#outil-balances",
+      "target": "public/proofs/v2/og/45-outil-balances.webp",
+      "bytes": 24328,
+      "sha256": "30f5cfa141485639c174d8524a783231b26bbf8966fd06f2086a0294fce68f03"
+    }
+  ]
+}
