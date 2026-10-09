@@ -37,8 +37,8 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
   await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
   await expect(page.locator('[data-tool-media]')).toHaveCount(1);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/proofs/v2/og/24-outils-hub.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
 
@@ -320,8 +320,8 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
-    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/proofs/v2/og/${outil.proof?.slice(3)}.webp`);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
     await expect(page.locator('[data-tool-section]')).toHaveCount(8);
     await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);

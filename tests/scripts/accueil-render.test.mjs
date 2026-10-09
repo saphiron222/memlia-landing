@@ -71,6 +71,14 @@ test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () 
   assertEcContent(readFileSync('dist/index.html', 'utf8'));
 });
 
+test('les métadonnées de partage accueil utilisent la carte JPEG dédiée', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  const sharing = 'https://memlia.fr/social/assets/og-memlia.png.jpg';
+  for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
+    assert.ok(html.includes(`<meta ${attribute} content="${sharing}">`), attribute);
+  }
+});
+
 test('le témoin EC admet la publication de pages et les métadonnées hors sections', () => {
   const html = readFileSync('dist/index.html', 'utf8');
   assert.ok(html.includes('</footer>'));

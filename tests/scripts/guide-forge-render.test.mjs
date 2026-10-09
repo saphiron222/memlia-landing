@@ -14,7 +14,7 @@ const write = (root, path, data) => { mkdirSync(dirname(join(root, path)), { rec
 test('un guide scellé produit réellement sa page, son média, ses liens hub et moyeu via Astro', async t => {
   const root = mkdtempSync(join(tmpdir(), 'guide-render-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (const path of ['src','public','scripts/lib/sitemaps.mjs','scripts/lib/responsive-proofs.mjs','astro.config.mjs','tsconfig.json','package.json']) cpSync(join(project, path), join(root, path), { recursive: true });
+  for (const path of ['src','public','scripts/lib/sitemaps.mjs','scripts/lib/responsive-proofs.mjs','scripts/render-social-images.mjs','astro.config.mjs','tsconfig.json','package.json']) cpSync(join(project, path), join(root, path), { recursive: true });
   // Seul le candidat synthétique est scellé dans ce dossier, pas le corpus public copié.
   write(root, 'src/data/guides.generated.json', []);
   write(root, 'src/data/guide-proofs.generated.json', {});
