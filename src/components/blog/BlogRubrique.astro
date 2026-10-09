@@ -1,0 +1,159 @@
+---
+import Base from '@/layouts/Base.astro';
+import Picture from '@/components/Picture.astro';
+import Picto from '@/components/Picto.astro';
+import { SITE } from '@/data/site.mjs';
+import { BLOG, compterMots } from '@/data/blog.mjs';
+import { IMAGES } from '@/data/images.mjs';
+import { organizationNode } from '@/data/schema.mjs';
+
+const { rubrique } = Astro.props;
+const u = `${SITE.url}/`;
+const url = `${SITE.url}${rubrique.chemin}`;
+const formatDate = (date: Date) => date.toLocaleDateString('fr-FR', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+const iso = (date: Date) => date.toISOString().slice(0, 10);
+const minutes = (corps: string | undefined) => Math.max(1, Math.ceil(compterMots(corps ?? '') / BLOG.motsParMinute));
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['WebPage', 'CollectionPage'],
+      '@id': `${url}#page`,
+      url,
+      name: rubrique.h1,
+      headline: rubrique.h1,
+      description: rubrique.description,
+      inLanguage: SITE.langue,
+      isPartOf: { '@id': `${u}#website` },
+      breadcrumb: { '@id': `${url}#breadcrumb` },
+      publisher: { '@id': `${u}#organization` },
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: rubrique.articles.length,
+        itemListElement: rubrique.articles.map((article, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          url: `${SITE.url}${BLOG.chemin}/${article.id}`,
+          name: article.data.titre,
+        })),
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: u },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}${BLOG.chemin}` },
+        { '@type': 'ListItem', position: 3, name: rubrique.libelle, item: url },
+      ],
+    },
+    organizationNode(),
+    { '@type': 'WebSite', '@id': `${u}#website`, url: u, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${u}#organization` } },
+  ],
+};
+---
+
+<Base titre={rubrique.titreOnglet} titreSocial={rubrique.h1} description={rubrique.description} chemin={rubrique.chemin} base="/" schema={graph}>
+
+  <div class="feuille rubrique-feuille">
+    <header class="conteneur rubrique-tete">
+      <nav class="ariane" aria-label="Fil d’Ariane">
+        <ol>
+          <li><a href="/">Accueil</a></li>
+          <li><a href={BLOG.chemin}>Blog</a></li>
+          <li aria-current="page">{rubrique.libelle}</li>
+        </ol>
+      </nav>
+      <a class="eyebrow rubrique-retour" href={BLOG.chemin}>Rubrique du blog</a>
+      <h1>{rubrique.h1}</h1>
+      <p class="rubrique-chapeau texte-2">{rubrique.chapeau}</p>
+    </header>
+
+    <section class="conteneur rubrique-role" aria-labelledby="rubrique-role-titre">
+      <span class="rubrique-repere" aria-hidden="true">{String(rubrique.articles.length).padStart(2, '0')}</span>
+      <div>
+        <h2 id="rubrique-role-titre">{rubrique.roleTitre}</h2>
+        <p class="texte-2">{rubrique.role}</p>
+      </div>
+    </section>
+
+    <section class="conteneur rubrique-articles" aria-labelledby="rubrique-articles-titre">
+      <div class="rubrique-section-tete">
+        <span class="eyebrow">Les méthodes de la rubrique</span>
+        <h2 id="rubrique-articles-titre">Choisir le geste à écrire</h2>
+      </div>
+      <ol class="rubrique-liste">
+        {rubrique.articles.map((article, index) => (
+          <li class="rubrique-carte rv" data-rubrique-article={article.id}>
+            <a class="rubrique-image" href={`${BLOG.chemin}/${article.id}`} aria-hidden="true" tabindex="-1">
+              <Picture id={article.data.image as keyof typeof IMAGES} sizes="(min-width: 64rem) 420px, 100vw" />
+            </a>
+            <div class="rubrique-carte-texte">
+              <p class="rubrique-numero" aria-hidden="true">{String(index + 1).padStart(2, '0')}</p>
+              <p class="rubrique-meta texte-2">
+                <time datetime={iso(article.data.datePublication)}>{formatDate(article.data.datePublication)}</time>
+                <span aria-hidden="true">·</span>
+                <span>{minutes(article.body)} min de lecture</span>
+              </p>
+              <h3><a href={`${BLOG.chemin}/${article.id}`}>{article.data.titre}</a></h3>
+              <p class="texte-2 rubrique-resume">{article.data.resume}</p>
+              <span class="btn btn-lien rubrique-lire" aria-hidden="true">Lire la méthode <Picto nom="fleche" taille={14} /></span>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .rubrique-feuille { background: var(--surface-feuille); padding-bottom: clamp(64px, 10vw, 120px); }
+  .rubrique-tete {
+    display: grid; gap: 16px; max-width: 960px; margin-inline: 0;
+    padding-top: clamp(28px, 5vw, 64px); padding-bottom: clamp(48px, 8vw, 88px);
+  }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a, .rubrique-retour { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
+  .ariane [aria-current] { color: var(--texte); }
+  .rubrique-retour { justify-self: start; }
+  .rubrique-tete h1 { max-width: 18ch; font-size: var(--t-5xl); line-height: 1.08; }
+  .rubrique-chapeau { max-width: 68ch; font-size: var(--t-lg); line-height: 1.6; }
+  .rubrique-role {
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start;
+    padding-block: clamp(32px, 5vw, 56px); border-block: 1px solid var(--ligne);
+  }
+  .rubrique-role h2 { max-width: 24ch; font-size: var(--t-3xl); }
+  .rubrique-role p { max-width: 68ch; margin-top: 12px; }
+  .rubrique-repere {
+    font-family: var(--police-display), 'Fraunces Fallback'; font-size: var(--t-3xl); color: var(--accent-texte);
+  }
+  .rubrique-articles { margin-top: clamp(48px, 8vw, 88px); }
+  .rubrique-section-tete { display: grid; gap: 8px; margin-bottom: 28px; }
+  .rubrique-section-tete h2 { font-size: var(--t-3xl); }
+  .rubrique-liste { display: grid; gap: 28px; list-style: none; }
+  .rubrique-carte {
+    display: grid; gap: 20px; padding-block: 28px; border-top: 1px solid var(--ligne-douce);
+  }
+  .rubrique-image { display: block; border: 1px solid var(--ligne-douce); border-radius: var(--r-carte); overflow: hidden; }
+  .rubrique-carte-texte { display: grid; gap: 10px; align-content: start; }
+  .rubrique-numero { font-family: var(--police-display), 'Fraunces Fallback'; color: var(--accent-texte); }
+  .rubrique-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--t-sm); }
+  .rubrique-carte h3 { max-width: 26ch; font-size: var(--t-2xl); line-height: 1.15; }
+  .rubrique-resume { max-width: 60ch; }
+  .rubrique-lire { justify-self: start; margin-top: 4px; }
+  @media (hover: hover) {
+    .rubrique-carte h3 a:hover { color: var(--accent-texte); }
+  }
+  @media (min-width: 48rem) {
+    .rubrique-role { gap: 48px; }
+    .rubrique-carte { grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  }
+  @media (min-width: 64rem) {
+    .rubrique-liste { gap: 8px; }
+    .rubrique-carte { padding-block: 40px; }
+  }
+</style>
