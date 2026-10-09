@@ -58,8 +58,10 @@ const appel = {
   <section class="pv" aria-labelledby="etapes-titre">
     <div class="tete rv">
       <h2 id="etapes-titre">Quatre étapes, dans cet ordre</h2>
+      <p>Pour <a href="/automatisation/evaluation-transmission">recetter la préparation d’un dossier d’évaluation</a>, nous rejouons un ajustement accepté, un ajustement en attente et deux versions concurrentes. Le tableau prépare les chiffres, jamais la valeur de l’entreprise.</p>
       <p>Vous confiez une tâche entière. Nous observons le travail, écrivons la règle et construisons dans vos outils. Votre équipe vérifie le résultat avant la livraison ; la maintenance prolonge cette prise en charge.</p>
       <p>Le cas courant et le justificatif absent suffisent déjà à <a href="/automatisation/notes-de-frais">rejouer une règle de notes de frais</a> sans utiliser de dossier réel.</p>
+      <p>Pour <a href="/automatisation/secretariat-juridique">éprouver les rappels de dépôt encore manuels</a>, le jeu fictif oppose une date confirmée, un circuit déjà couvert et une date inconnue. Le brouillon attend une validation ; aucun message n’est envoyé.</p>
     </div>
     <ol class="etapes">
       {etapes.map((e, i) => (
@@ -70,6 +72,8 @@ const appel = {
             {e.paragraphes.map((p, j) => (
               <p class={j === 0 ? undefined : 'texte-2'}>{p}</p>
             ))}
+            {e.id === 'eprouver' && <p class="texte-2">Avant l’essai, vous pouvez <a href="/blog/logiciel-ia-comptabilite">comparer le parcours complet d’un outil IA</a> : entrée, résultat, exception et reprise.</p>}
+            {e.id === 'valider' && <p class="texte-2">Pour relier les tests au résultat visible, voyez comment <a href="/blog/tests-verts-et-regle-des-trois-passes">recetter le parcours en trois passes</a>.</p>}
           </div>
           <ProofMedia id={e.image} cadre />
         </li>
@@ -101,6 +105,7 @@ const appel = {
   <section class="pv" aria-labelledby="suite-titre-renvois">
     <div class="tete rv">
       <h2 id="suite-titre-renvois">Ce qui vient ensuite</h2>
+      <p class="texte-2 lecture">Vous pouvez <a href="/automatisation/registres-obligations">faire recetter un suivi de registres</a> sur des changements fictifs fournis : annotations conservées, alerte non envoyée et terme calendaire à vérifier. Les accès réels se testent avant utilisation.</p>
       <p>La recette revient aux personnes qui feront le travail. C’est indispensable pour <a href="/automatisation/paie">faire recetter un contrôle de paie</a> sans déplacer la correction ni la décision hors du pôle social.</p>
       <p>Nous pouvons aussi <a href="/automatisation/entrees-sorties-salaries">éprouver la préparation d’un dossier salarié</a> : une annonce hors portail, ses informations manquantes et le retour au circuit existant font partie des essais.</p>
     </div>
@@ -112,6 +117,7 @@ const appel = {
 
 
       <h2 id="outils-gratuits-titre">Des règles à rejouer dans le navigateur</h2>
+      <p>Pour <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a>, choisissez une trame et déclarez les quatre états. Le résultat sépare le relevé bancaire manquant du récapitulatif de paie à clarifier ; seule la pièce manquante entre dans la demande à relire.</p>
       <p>Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
       <p>Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>
       <p>Pour un calcul traçable, <a href="/outils-comptables-gratuits/bareme-heures-cac">calculez le barème d’heures CAC</a> avec sa base décomposée et ses exclusions déclarées. Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.</p>

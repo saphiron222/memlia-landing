@@ -173,6 +173,67 @@ test('une PR en retard sur main qui touche au calendrier doit intégrer main', (
   }
 });
 
+test('un calendrier candidat accepte main avancé hors publication sans lire ses brouillons candidats', () => {
+  for (const mode of ['commit', 'index', 'arbre']) {
+    const { root, blog, base } = fixture();
+    try {
+      git(root, 'switch', 'main');
+      writeFileSync(join(root, 'GUIDE-FORGE.md'), 'Documentation sans effet calendrier.\n');
+      git(root, 'add', '-A');
+      git(root, 'commit', '-m', 'Documentation indépendante');
+      const tip = git(root, 'rev-parse', 'HEAD');
+      git(root, 'update-ref', 'refs/remotes/origin/main', tip);
+      git(root, 'switch', 'fixture-candidate');
+      const candidate = article('2026-09-21', true, 'Titre candidat non publié');
+      writeFileSync(join(blog, 'pilier.md'), candidate);
+      writeFileSync(join(blog, 'nouveau.md'), article('2026-10-05', false));
+      if (mode !== 'arbre') git(root, 'add', '-A');
+      if (mode === 'commit') git(root, 'commit', '-m', 'Calendrier candidat');
+      const before = git(root, 'status', '--porcelain');
+      const result = state(root);
+      assert.equal(result.status, 0, `${mode}: ${result.stderr}`);
+      assert.deepEqual(Object.keys(JSON.parse(result.stdout)), ['pilier']);
+      assert.equal(JSON.parse(result.stdout).pilier.titre, 'Titre intégré');
+      assert.equal(git(root, 'merge-base', tip, 'HEAD'), base);
+      assert.equal(git(root, 'status', '--porcelain'), before);
+      assert.equal(readFileSync(join(blog, 'pilier.md'), 'utf8'), candidate);
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  }
+});
+
+test('les entrées concurrentes réellement lues bloquent un calendrier candidat sans écriture', () => {
+  const paths = [
+    'src/data/familles.ts', 'src/content.config.ts',
+    'docs/strategy/site-v3/backlog-v3.json',
+    'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json',
+    'docs/strategy/site-v3/mesures/questions-2026-09-19.json',
+    'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
+    'docs/strategy/site-v3/mesures/autocompletion-cache.json',
+    'docs/strategy/site-v3/build-cluster-plan.py',
+    'scripts/lib/blog-ia-catchup.mjs',
+  ];
+  for (const path of paths) {
+    const { root, blog } = fixture();
+    try {
+      git(root, 'switch', 'main');
+      mkdirSync(join(root, path, '..'), { recursive: true });
+      writeFileSync(join(root, path), 'Entrée concurrente\n');
+      git(root, 'add', '-A');
+      git(root, 'commit', '-m', 'Entrée de publication concurrente');
+      git(root, 'update-ref', 'refs/remotes/origin/main', git(root, 'rev-parse', 'HEAD'));
+      git(root, 'switch', 'fixture-candidate');
+      const candidate = article('2026-10-05', true);
+      writeFileSync(join(blog, 'nouveau.md'), candidate);
+      const before = git(root, 'status', '--porcelain');
+      const result = state(root);
+      assert.notEqual(result.status, 0, path);
+      assert.match(result.stderr, /non intégrée au candidat : le calendrier est modifié/);
+      assert.equal(git(root, 'status', '--porcelain'), before);
+      assert.equal(readFileSync(join(blog, 'nouveau.md'), 'utf8'), candidate);
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  }
+});
+
 test('un checkout CI partiel refuse la base manquante ; récupérer son historique conserve le candidat exact', () => {
   const { root, blog, base } = fixture();
   const cloneParent = mkdtempSync(join(tmpdir(), 'memlia-publication-checkout-'));

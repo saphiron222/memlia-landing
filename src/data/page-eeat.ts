@@ -78,6 +78,18 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'evaluation-transmission': {
+    auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
+    sources: [{ editeur: 'Bpifrance Création', titre: 'Évaluation d’entreprise', url: 'https://bpifrance-creation.fr/encyclopedie/reprendre-entreprise-etapes/diagnostiquer-evaluer/evaluation-dentreprise', consulteLe: '2026-10-06', preuve: 'L’évaluation ne fixe pas le prix ; le jeu fictif prépare seulement les chiffres et leurs références, sans valorisation.', mot: 'L’évaluation ne permet pas de fixer un prix' }],
+  },
+  'registres-obligations': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{ editeur: 'Service Public Entreprendre', titre: 'Déclaration de créances', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F22359', consulteLe: '2026-10-06', preuve: 'Le délai général et les points de départ particuliers bornent le calcul fictif ; le cabinet vérifie la date applicable et les prorogations avant inscription.', mot: 'déclaration de créance' }],
+  },
+  'secretariat-juridique': {
+    auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
+    sources: [{ editeur: 'Service Public Entreprendre', titre: 'Dépôt des comptes annuels d’une société', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31214', consulteLe: '2026-10-06', preuve: 'La sanction concerne le non-dépôt, sans conséquence automatique du suivi fictif ni garantie d’évitement.', mot: 'une amende pénale de 1 500 euros' }],
+  },
   'entrees-sorties-salaries': {
     auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
     sources: [{ editeur: 'Silae', titre: 'Gérer les salariés de A à Z', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', consulteLe: '2026-10-06', preuve: 'Le circuit du portail garde la création du salarié et la transmission de la DPAE. La préparation hors portail ne double pas ces gestes.', mot: 'mySilae' }],
