@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 import { SITE, OG_IMAGE } from '@/data/site.mjs';
+import { withBreadcrumb } from '@/data/schema.mjs';
 import { socialImageUrl } from '@/data/social-image.mjs';
 import { BLOG } from '@/data/blog.mjs';
 import { construireRubriques } from '@/data/blog-rubriques.mjs';
@@ -79,6 +80,7 @@ const schemaAvecAttribution = schema?.['@graph']
   : schema
     ? { ...attribution, ...schema }
     : { ...attribution, '@type': 'WebPage', url: canonical, name: titreSocial, inLanguage: SITE.langue };
+const schemaComplet = withBreadcrumb(schemaAvecAttribution, { chemin, name: titreSocial, noindex });
 ---
 
 <!doctype html>
@@ -117,7 +119,7 @@ const schemaAvecAttribution = schema?.['@graph']
     <meta name="twitter:title" content={titreSocial} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={sharingImageUrl} />
-    {ogType !== 'article' && !schemaExterne && <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaAvecAttribution).replace(/</g, '\\u003c')} />}
+    {ogType !== 'article' && !schemaExterne && <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaComplet).replace(/</g, '\\u003c')} />}
 
     <slot name="head" />
   </head>

@@ -56,6 +56,18 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
 function assertEcContent(html) {
   const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
+
+  // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]
+    .flatMap(match => JSON.parse(match[1])['@graph'] ?? []);
+  const crumbs = schemas.filter(node => node['@type'] === 'BreadcrumbList');
+  assert.equal(crumbs.length, 1);
+  assert.deepEqual(crumbs[0], {
+    '@type': 'BreadcrumbList', '@id': 'https://memlia.fr/#breadcrumb',
+    itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://memlia.fr/' }],
+  });
+  const page = schemas.find(node => node['@type'] === 'WebPage');
+  assert.deepEqual(page.breadcrumb, { '@id': 'https://memlia.fr/#breadcrumb' });
   // Le chrome de publication (head, navigation, footer) n'est pas du contenu EC.
   const main = find(parse(html), 'main');
   assert.ok(main);
