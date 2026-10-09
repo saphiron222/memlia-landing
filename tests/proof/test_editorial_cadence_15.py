@@ -50,9 +50,16 @@ class Cadence15(unittest.TestCase):
         data = PLAN.construire()
         self.assertEqual(PLAN.verifier(*data)[0], [])
         entries = [data[3]] + data[4]
-        cac = [e for e in entries if e.get('profession') == 'cac' and e.get('datePlanifiee')]
+        cac = [e for e in entries if e.get('profession') == 'cac'
+               and (e.get('datePlanifiee') or e.get('dateManquee'))]
         self.assertGreaterEqual(len(cac), 6)
-        self.assertTrue(all(e['date'] == e['datePlanifiee'] for e in cac))
+        for e in cac:
+            if e.get('datePlanifiee'):
+                self.assertEqual(e['date'], e['datePlanifiee'])
+            else:
+                self.assertLess(e['dateManquee'], date.today().isoformat())
+                self.assertEqual(e['statut'], 'a-replanifier')
+                self.assertGreaterEqual(e['date'], date.today().isoformat())
         ia = next(e for e in entries if e['slug'] == 'ia-cabinet-comptable')
         self.assertEqual(ia['dateManquee'], '2026-09-29')
         self.assertGreaterEqual(ia['date'], date.today().isoformat())
