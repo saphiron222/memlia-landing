@@ -18,13 +18,18 @@ test('le contenu EC compose les sources FAQ, méthode et garanties existantes', 
   for (const name of ['FAQ', 'METHODE', 'GARANTIES']) assert.match(source, new RegExp(name));
 });
 
-test('le contenu EC conserve les compteurs dynamiques et les preuves agrandissables de main', () => {
+// Plus aucun agrandissement d'image (demande de Kevin du 07/10/2026, #166) : la preuve suit le contenu, sans zoom.
+test('le contenu EC conserve les compteurs dynamiques ; ses preuves suivent le contenu, sans agrandissement', () => {
   const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
   assert.match(source, /famillesDeLaProfession\('ec'\)/);
   assert.match(source, /\$\{familles\.length\}/);
   assert.match(source, /\$\{nombrePoles\}/);
   for (const section of ['Quotidien', 'Promesse', 'Integration', 'Preuves', 'Garanties']) {
-    assert.match(readFileSync(`src/components/sections/${section}.astro`, 'utf8'), /id=\{contenu\.image\} enlarge/, section);
+    const composant = readFileSync(`src/components/sections/${section}.astro`, 'utf8');
+    assert.match(composant, /id=\{contenu\.image\}/, section);
+    assert.doesNotMatch(composant, /\benlarge\b/, section);
   }
-  assert.match(readFileSync('src/components/sections/Methode.astro', 'utf8'), /id=\{e\.image as ProofId\} enlarge/);
+  const methode = readFileSync('src/components/sections/Methode.astro', 'utf8');
+  assert.match(methode, /id=\{e\.image as ProofId\}/);
+  assert.doesNotMatch(methode, /\benlarge\b/);
 });

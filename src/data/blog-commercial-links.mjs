@@ -69,6 +69,10 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
   }),
 });
 
+export function estLienCommercialBlog(href) {
+  return typeof href === 'string' && /^(?:\/automatisation(?:-cabinet-comptable|\/[a-z0-9-]+)|\/commissaires-aux-comptes)$/.test(href);
+}
+
 export function lienCommercialPourArticle(articleId) {
   return LIENS_COMMERCIAUX_BLOG[articleId] ?? {
     href: '/automatisation-cabinet-comptable',

@@ -222,6 +222,24 @@ test('une fixture service passe préparer, sceller et auditer sans toucher au bl
   }
 });
 
+test('la forge conserve audienceType et refuse une audience structurée vide', () => {
+  const root = racineDeTest();
+  try {
+    const path = join(root, 'commercial/recettes', SLUG, 'recette.json');
+    const recipe = JSON.parse(readFileSync(path, 'utf8'));
+    recipe.audienceType = 'Cabinets de commissariat aux comptes';
+    writeFileSync(path, JSON.stringify(recipe));
+    const result = materialiserService({ root, slug: SLUG, status: 'a-valider', today: JOUR });
+    assert.deepEqual(result.errors, []);
+    assert.match(readFileSync(result.pagePath, 'utf8'), /audienceType: "Cabinets de commissariat aux comptes"/);
+    assert.equal(result.manifest.audienceType, recipe.audienceType);
+    const errors = verifierRecetteService({ root, recipe: { ...recipe, audienceType: '  ' }, body: CORPS, today: JOUR });
+    assert.ok(errors.some(error => error.includes('audienceType')));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('préparer rend le candidat avant la revue, mais sceller exige la revue indépendante', () => {
   const root = racineDeTest();
   try {

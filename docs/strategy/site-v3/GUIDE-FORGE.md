@@ -50,6 +50,8 @@ Après déploiement sur `memlia.fr`, `npm run guide:publier -- <slug>` constate 
 
 `npm run guide:audit` réconcilie états, recettes, sceaux, preuves et collections ; il s'exécute avant Astro dans `build:site`, donc dans `npm run build`. Un fichier manquant ou altéré échoue fermé. Aucun nouvel actif n'est régénéré pendant le build Cloudflare.
 
+Le contrat de page découvre les manifestes de `guides/etats` et réutilise la validation de la forge : seul un état `scelle` ou `publie` cohérent prouve l'illustration de sa route `/integrations/<slug>`. Une preuve absente, modifiée ou utilisée par une autre page ne compte pas ; un manifeste QA générique ne remplace pas le sceau d'un nouveau guide. Le corpus historique conserve sa provenance antérieure. L'oracle HTML/sitemap attend le corpus historique augmenté des définitions générées liées à leurs recettes et sceaux, sans liste de nouveaux slugs ni déduction depuis le rendu.
+
 ## Rejeu historique et tests
 
 La lecture historique s'arrête à la clôture du tableau (`];` ou `] as const;`). Une déclaration portant un `slug` après ce tableau ne devient jamais publique ; la mutation de non-régression exige un inventaire inchangé et refuse sa page comme son URL sitemap, même avec un lastmod cohérent.

@@ -113,6 +113,7 @@ const services = defineCollection({
       return words >= 40 && words <= 80;
     }, 'La réponse commerciale du héros doit contenir 40 à 80 mots.'),
     primaryQuery: z.string().min(3),
+    audienceType: z.string().trim().min(3).optional(),
     secondaryQueries: z.array(z.string().min(3)).default([]),
     audience: z.discriminatedUnion('mode', [
       z.object({

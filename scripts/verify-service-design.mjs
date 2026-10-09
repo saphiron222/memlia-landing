@@ -7,7 +7,9 @@ const REQUIRED_MARKERS = [
   ['data-service-hero', 'hero éditorial'],
   ['data-service-sections', 'sections structurées'],
   ['data-service-media', 'premier média fonctionnel'],
-  ['data-primary-source', 'source primaire datée'],
+  // Décision de Kevin du 06/10/2026 : plus de section « Sources » sur le site. La confiance d'une page service passe
+  // par ce que fait déjà le logiciel du cabinet, l'éditeur cité en lien (src/data/couverture-logiciels.mjs).
+  ['data-service-section="couverture"', 'bloc de couverture des logiciels'],
 ];
 
 export function servicesServis(root) {
