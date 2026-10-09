@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "service-candidat-scelle",
+  "slug": "circularisation-cac",
+  "sealedAt": "2026-10-06T20:50:46.722Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/circularisation-cac.md",
+      "bytes": 16006,
+      "sha256": "9a584317a3d16b80a9ff48f3ea2c0ecdbc59dd82ff626155bcfd39a860f4a1b3"
+    },
+    "manifest": {
+      "path": "commercial/services/circularisation-cac/manifest.json",
+      "bytes": 2895,
+      "sha256": "0bca63243436f438ad24f0ed17772fed6fe50180882cbb9ded5dc4d7817cb557"
+    },
+    "recipe": {
+      "path": "commercial/recettes/circularisation-cac/recette.json",
+      "bytes": 2581,
+      "sha256": "a9d4b14dbe9eb7bedb05e22edffd19621682c5f610c09265087e331c3ce1bde0"
+    },
+    "body": {
+      "path": "commercial/recettes/circularisation-cac/corps.md",
+      "bytes": 14148,
+      "sha256": "3c08085125134e698627e2608bb5e0e0dcf569c89265e798daa0df2fccb1bfb3"
+    },
+    "review": {
+      "path": "commercial/recettes/circularisation-cac/revues.json",
+      "bytes": 3514,
+      "sha256": "956f2016a7df811c9fd5768f3decfe266827900b30113e252c77c27657a8b838"
+    }
+  }
+}

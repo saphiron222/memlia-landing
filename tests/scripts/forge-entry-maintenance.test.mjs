@@ -82,7 +82,7 @@ test('maintenance does not bypass wrong branches, dirty roots, stale bases or re
     const run = () => spawnSync(process.execPath, [script, '--root', root, '--job', 'forge', '--phase', 'maintenance'], { cwd: root, encoding: 'utf8' });
     assert.match(run().stdout, /branche incorrecte/);
     git(root, 'switch', '-qc', 'site/blog-forge-test');
-    assert.match(run().stdout, /jour réel.*plus de deux/);
+    assert.match(run().stdout, /jour réel.*plafond de 2/);
     writeFileSync(join(root, 'dirty'), 'dirty');
     assert.match(run().stdout, /arbre Git non propre/);
     rmSync(join(root, 'dirty'));

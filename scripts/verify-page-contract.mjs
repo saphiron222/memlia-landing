@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { auditerServiceDesign } from './verify-service-design.mjs';
 import { BLOG_RUBRIQUES } from '../src/data/blog-rubriques.mjs';
+import { verifierPreuveGuide, verifierRecetteGuide } from './lib/guide-forge.mjs';
 
 const CLAUSES = Object.freeze({ 1: 'DA', 2: 'IMAGES', 3: 'SEO', 4: 'COPIE', 5: 'LIENS' });
 const DATE_ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -150,6 +151,7 @@ function pageSnapshot(route, path) {
   const headings = [];
   const descriptions = [];
   const ogTitles = [];
+  const ogImages = [];
   const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
@@ -163,6 +165,7 @@ function pageSnapshot(route, path) {
     if (node.nodeName === 'meta' && attr(node, 'name') === 'description') descriptions.push(normalizedText(attr(node, 'content')));
     if (node.nodeName === 'meta' && attr(node, 'name') === 'robots') robots = normalizedText(attr(node, 'content'));
     if (node.nodeName === 'meta' && attr(node, 'property') === 'og:title') ogTitles.push(normalizedText(attr(node, 'content')));
+    if (node.nodeName === 'meta' && attr(node, 'property') === 'og:image') ogImages.push(attr(node, 'content'));
     if (node.nodeName === 'link' && (attr(node, 'rel') ?? '').split(/\s+/).includes('canonical')) canonicals.push(attr(node, 'href'));
     if (node.nodeName === 'a') {
       const href = normalizeRoute(attr(node, 'href'));
@@ -189,7 +192,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, canonicals, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -218,7 +221,34 @@ function manifestedMedia(root) {
       // Même règle : seuls les manifestes lisibles prouvent la provenance.
     }
   }
-  return { exact, articleOwners };
+  const guideOwners = new Map();
+  const guideAssets = new Set();
+  const historicalAssets = new Set();
+  for (const recipe of walk(join(root, 'guides/recettes'), (item) => item.endsWith('/recette.json'))) {
+    const slug = relative(join(root, 'guides/recettes'), recipe).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    guideAssets.add(asset);
+    try {
+      const value = JSON.parse(readFileSync(recipe, 'utf8'));
+      if (value.mode === 'historique' && value.integration?.slug === slug && verifierRecetteGuide({ root, recipe: value }).length === 0) {
+        historicalAssets.add(asset);
+        guideAssets.delete(asset);
+      }
+    } catch { /* L'actif reste protégé même si sa recette est illisible. */ }
+  }
+  for (const manifest of walk(join(root, 'guides/etats'), (item) => item.endsWith('/manifest.json'))) {
+    const slug = relative(join(root, 'guides/etats'), manifest).split(sep)[0];
+    const asset = `/proofs/integrations/${slug}.webp`;
+    if (!historicalAssets.has(asset)) guideAssets.add(asset);
+    const proof = verifierPreuveGuide({ root, slug });
+    if (proof.pass) guideOwners.set(proof.asset, proof.route);
+  }
+  for (const asset of guideOwners.keys()) guideAssets.add(asset);
+  const generated = join(root, 'src/data/guides.generated.json');
+  if (existsSync(generated)) {
+    for (const guide of JSON.parse(readFileSync(generated, 'utf8'))) guideAssets.add(`/proofs/integrations/${guide.slug}.webp`);
+  }
+  return { exact, articleOwners, guideOwners, guideAssets };
 }
 
 function traverseJson(value, visit) {
@@ -238,6 +268,10 @@ function mediaOwner(provenance, asset) {
 
 function mediaIsOwned(root, provenance, asset, route, references) {
   if (!existsSync(join(root, 'public', asset.slice(1)))) return false;
+  // Un manifeste QA générique ne peut contourner un état de forge invalide.
+  if (provenance.guideAssets.has(asset)) {
+    return provenance.guideOwners.get(asset) === route && references.get(asset)?.length === 1;
+  }
   const explicitOwner = mediaOwner(provenance, asset);
   if (explicitOwner) return explicitOwner === route;
   return provenance.exact.has(asset) && references.get(asset)?.length === 1;
@@ -325,10 +359,15 @@ export function auditerNavigationMobile({ root = process.cwd() } = {}) {
   if (!existsSync(path)) return { pass: false, errors: ['src/components/Nav.astro absent'] };
   const source = readFileSync(path, 'utf8');
   const errors = [];
-  if (!source.includes('data-mobile-visible')) errors.push('navigation mobile immédiatement visible absente');
-  const ctaHeight = selectorMinHeight(source, '.nav-principal');
+  if (!source.includes('data-burger') || !source.includes('aria-controls="menu-mobile"') || !source.includes('data-menu-mobile')) {
+    errors.push('bouton et panneau de navigation mobile absents');
+  }
+  if (!source.includes('<noscript>') || !source.includes('nav-sans-js')) errors.push('navigation sans JavaScript absente');
+  const burgerHeight = selectorMinHeight(source, '.nav-burger');
+  if (burgerHeight < 48) errors.push(`bouton de menu mobile haut de ${burgerHeight}px dans le contrat CSS, 48px requis`);
+  const ctaHeight = selectorMinHeight(source, '.nav-mobile-cta :global(.btn)');
   if (ctaHeight < 44) errors.push(`cible principale mobile haute de ${ctaHeight}px dans le contrat CSS, 44px requis`);
-  const linkHeight = selectorMinHeight(source, '.nav-mobile-visible a');
+  const linkHeight = selectorMinHeight(source, '.nav-mobile-lien');
   if (linkHeight < 44) errors.push(`liens structurants mobiles hauts de ${linkHeight}px dans le contrat CSS, 44px requis`);
   return { pass: errors.length === 0, errors };
 }
@@ -494,6 +533,14 @@ export function auditerContratPages({
 
     const h1 = page.h1s[0];
     const indexable = !page.robots.toLowerCase().includes('noindex');
+    if (indexable) {
+      let validImage = false;
+      try {
+        const image = new URL(page.ogImages[0]);
+        validImage = image.origin === 'https://memlia.fr' && !image.username && !image.password && /\.(jpg|png)$/.test(image.pathname);
+      } catch { /* Une URL relative ou absente ne forme pas une image sociale publique. */ }
+      if (page.ogImages.length !== 1 || !validImage) erreurs.push(error(page.route, 3, 'une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable'));
+    }
     if (routeContract?.indexing === 'noindex' && indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige noindex'));
     if (routeContract?.indexing === 'index' && !indexable) erreurs.push(error(page.route, 3, 'le contrat de route exige une page indexable'));
     const measuredIntentRequired = routeContract?.measuredIntentRequired ?? true;

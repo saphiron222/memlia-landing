@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import SeuilSignification from '@/components/outils/SeuilSignification.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('seuil-signification-audit');
+---
+<Outil outil={outil}><SeuilSignification /></Outil>

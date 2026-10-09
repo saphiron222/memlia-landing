@@ -1,0 +1,240 @@
+
+Running 5 tests using 1 worker
+
+  ✘  1 tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent (6.0s)
+  ✘  2 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination (6.7s)
+  ✘  3 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination (6.4s)
+  ✓  4 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : csv puis copy conserve chaque destination (2.1s)
+  ✘  5 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination (6.1s)
+
+
+  1) tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('[data-status]')
+    Expected substring: "annulé"
+    Received string:    "Consolidation préparée ; relisez avant d’exporter."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('[data-status]') with timeout 5000ms
+      - waiting for locator('[data-status]')
+        2 × locator resolved to <p role="status" data-status="" data-astro-cid-6gvwl62g="">Traitement local en cours ; annulation disponible.</p>
+          - unexpected value "Traitement local en cours ; annulation disponible."
+        12 × locator resolved to <p role="status" data-status="" data-astro-cid-6gvwl62g="">Consolidation préparée ; relisez avant d’exporter.</p>
+           - unexpected value "Consolidation préparée ; relisez avant d’exporter."
+
+
+      27 |   document.querySelector<HTMLButtonElement>('[data-file="1"] button')!.click();
+      28 |  });
+    > 29 |  await expect(page.locator('[data-status]')).toContainText('annulé');
+         |                                              ^
+      30 |  await page.waitForTimeout(300); // laisser une réponse tardive éventuelle arriver
+      31 |  await expect(page.locator('[data-result]')).toBeHidden();
+      32 |  await expect(page.locator('[data-confirmed]')).not.toBeChecked();
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_8e27927f/repo/tests/browser/fusion-csv-concurrency.spec.ts:29:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/fusion-csv-concurrency-F1--a717a-ping-rapport-CSV-concordent/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/fusion-csv-concurrency-F1--a717a-ping-rapport-CSV-concordent/error-context.md
+
+  2) tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  4
+    + Received  + 93
+
+      Array [
+    -   "﻿\"ID\";\"Montant\";\"source_fichier\";\"source_ligne\"    
+    - \"00123\";\"10\";\"a.csv\";\"2\"    
+    - \"004\";\"20\";\"b.csv\";\"2\"    
+    - ",
+    +   "{
+    +   \"version\": 1,
+    +   \"method\": \"vertical-concatenation\",
+    +   \"options\": {
+    +     \"confirmed\": true,
+    +     \"union\": false,
+    +     \"deduplicate\": false,
+    +     \"provenance\": true
+    +   },
+    +   \"files\": [
+    +     {
+    +       \"index\": 1,
+    +       \"name\": \"a.csv\",
+    +       \"encoding\": \"utf-8\",
+    +       \"delimiter\": \";\",
+    +       \"bytes\": 19,
+    +       \"inputRows\": 1,
+    +       \"outputRows\": 1,
+    +       \"missingColumns\": [],
+    +       \"mapping\": [
+    +         {
+    +           \"index\": 1,
+    +           \"source\": \"ID\",
+    +           \"target\": \"ID\"
+    +         },
+    +         {
+    +           \"index\": 2,
+    +           \"source\": \"Montant\",
+    +           \"target\": \"Montant\"
+    +         }
+    +       ]
+    +     },
+    +     {
+    +       \"index\": 2,
+    +       \"name\": \"b.csv\",
+    +       \"encoding\": \"utf-8\",
+    +       \"delimiter\": \";\",
+    +       \"bytes\": 17,
+    +       \"inputRows\": 1,
+    +       \"outputRows\": 1,
+    +       \"missingColumns\": [],
+    +       \"mapping\": [
+    +         {
+    +           \"index\": 1,
+    +           \"source\": \"Montant\",
+    +           \"target\": \"Montant\"
+    +         },
+    +         {
+    +           \"index\": 2,
+    +           \"source\": \"ID\",
+    +           \"target\": \"ID\"
+    +         }
+    +       ]
+    +     }
+    +   ],
+    +   \"headers\": [
+    +     \"ID\",
+    +     \"Montant\",
+    +     \"source_fichier\",
+    +     \"source_ligne\"
+    +   ],
+    +   \"inputRows\": 2,
+    +   \"outputRows\": 2,
+    +   \"removedRows\": 0,
+    +   \"duplicates\": [],
+    +   \"missingCells\": 0,
+    +   \"origins\": [
+    +     {
+    +       \"fileIndex\": 1,
+    +       \"file\": \"a.csv\",
+    +       \"line\": 2
+    +     },
+    +     {
+    +       \"fileIndex\": 2,
+    +       \"file\": \"b.csv\",
+    +       \"line\": 2
+    +     }
+    +   ],
+    +   \"neutralizations\": [],
+    +   \"exportConvention\": \"UTF-8 BOM ; point-virgule ; apostrophe devant formule potentielle, original intact\",
+    +   \"limits\": {
+    +     \"maxBytes\": 20971520,
+    +     \"maxRows\": 100000,
+    +     \"maxColumns\": 128,
+    +     \"maxCellCharacters\": 65536
+    +   },
+    +   \"notEvaluated\": [
+    +     \"Jointures\",
+    +     \"Exactitude comptable\",
+    +     \"Devise et comparabilité des périodes\",
+    +     \"Doublons métier non identiques\"
+    +   ]
+    + }",
+      ]
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      48 |  const downloads:import('@playwright/test').Download[]=[];page.on('download',d=>downloads.push(d));
+      49 |  await page.evaluate(actions=>{for(const action of actions)document.querySelector<HTMLButtonElement>(action==='copy'?'[data-copy]':`[data-export="${action}"]`)!.click();},actions);
+    > 50 |  await expect.poll(()=>page.evaluate(()=>(window as any).copies)).toEqual([expectedCsv]);
+         |                                                                   ^
+      51 |  await expect.poll(()=>downloads.length).toBe(1);
+      52 |  const d=downloads[0],content=await readFile((await d.path())!,'utf8');
+      53 |  if(actions.includes('report')){expect(d.suggestedFilename()).toBe('rapport-fusion-csv.json');expect(JSON.parse(content).method).toBe('vertical-concatenation');}
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_8e27927f/repo/tests/browser/fusion-csv-concurrency.spec.ts:50:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/fusion-csv-concurrency-F2--06fc8-conserve-chaque-destination/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/fusion-csv-concurrency-F2--06fc8-conserve-chaque-destination/error-context.md
+
+  3) tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 1
+
+    - Array [
+    -   "﻿\"ID\";\"Montant\";\"source_fichier\";\"source_ligne\"    
+    - \"00123\";\"10\";\"a.csv\";\"2\"    
+    - \"004\";\"20\";\"b.csv\";\"2\"    
+    - ",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      48 |  const downloads:import('@playwright/test').Download[]=[];page.on('download',d=>downloads.push(d));
+      49 |  await page.evaluate(actions=>{for(const action of actions)document.querySelector<HTMLButtonElement>(action==='copy'?'[data-copy]':`[data-export="${action}"]`)!.click();},actions);
+    > 50 |  await expect.poll(()=>page.evaluate(()=>(window as any).copies)).toEqual([expectedCsv]);
+         |                                                                   ^
+      51 |  await expect.poll(()=>downloads.length).toBe(1);
+      52 |  const d=downloads[0],content=await readFile((await d.path())!,'utf8');
+      53 |  if(actions.includes('report')){expect(d.suggestedFilename()).toBe('rapport-fusion-csv.json');expect(JSON.parse(content).method).toBe('vertical-concatenation');}
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_8e27927f/repo/tests/browser/fusion-csv-concurrency.spec.ts:50:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/fusion-csv-concurrency-F2--89565-conserve-chaque-destination/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/fusion-csv-concurrency-F2--89565-conserve-chaque-destination/error-context.md
+
+  4) tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 6
+    + Received  + 1
+
+    - Array [
+    -   "﻿\"ID\";\"Montant\";\"source_fichier\";\"source_ligne\"    
+    - \"00123\";\"10\";\"a.csv\";\"2\"    
+    - \"004\";\"20\";\"b.csv\";\"2\"    
+    - ",
+    - ]
+    + Array []
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      48 |  const downloads:import('@playwright/test').Download[]=[];page.on('download',d=>downloads.push(d));
+      49 |  await page.evaluate(actions=>{for(const action of actions)document.querySelector<HTMLButtonElement>(action==='copy'?'[data-copy]':`[data-export="${action}"]`)!.click();},actions);
+    > 50 |  await expect.poll(()=>page.evaluate(()=>(window as any).copies)).toEqual([expectedCsv]);
+         |                                                                   ^
+      51 |  await expect.poll(()=>downloads.length).toBe(1);
+      52 |  const d=downloads[0],content=await readFile((await d.path())!,'utf8');
+      53 |  if(actions.includes('report')){expect(d.suggestedFilename()).toBe('rapport-fusion-csv.json');expect(JSON.parse(content).method).toBe('vertical-concatenation');}
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_8e27927f/repo/tests/browser/fusion-csv-concurrency.spec.ts:50:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/fusion-csv-concurrency-F2--f549d-conserve-chaque-destination/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/fusion-csv-concurrency-F2--f549d-conserve-chaque-destination/error-context.md
+
+  4 failed
+    tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent 
+    tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination 
+    tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination 
+    tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination 
+  1 passed (32.2s)

@@ -1,5 +1,7 @@
 # Site v3 : l'éditorial de memlia.fr, de la stratégie à la mesure
 
+Cadence courante D9 (décision Kevin du 05/10 appliquée le 06/10/2026) : au plus 15 articles ordinaires par semaine ISO, 3 par jour du lundi au vendredi, EC et CAC confondus. Alternance et portes de qualité conservées ; Cicatrice du samedi indépendante. Cette décision remplace les mentions historiques 4/semaine et 2/jour de ce dossier ; les archives et leurs rejeux restent bornés à leur ancienne règle. Voir `../site-v2/DECISIONS.md`.
+
 Porte d'entrée du dossier. Écrit le 16 septembre 2026, remis à l'état réel le 20 septembre puis
 réconcilié avec les sources le 28 septembre, puis avec l'inventaire et la charte le 29 septembre 2026.
 Le site est en ligne depuis le 16/09 et sert la copy v3 « un savoir-faire que personne n'a écrit »
