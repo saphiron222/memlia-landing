@@ -373,6 +373,8 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
 });
 
 test('outils publiés : zéro requête et zéro stockage après armement', async ({ page, context }) => {
+  // Le registre grandit : toutes les navigations et attentes réseau partagent ce budget.
+  test.setTimeout(60_000);
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
