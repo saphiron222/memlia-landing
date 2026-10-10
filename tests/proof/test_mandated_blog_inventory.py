@@ -5,6 +5,7 @@ from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 from unittest.mock import patch
 import unittest
+from editorial_clock import jour_fixe
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = spec_from_file_location('mandated_plan', ROOT / 'docs/strategy/site-v3/build-cluster-plan.py')
@@ -21,6 +22,7 @@ BRIEFS = {
 
 class MandatedInventory(unittest.TestCase):
     def setUp(self):
+        self.enterContext(jour_fixe(PLAN, date(2026, 10, 3)))
         # Oracle du stock du 03/10, avec dates synthétiques futures : pas le mandat
         # de livraison du 05/10, exercé séparément par test_ia_catchup.py.
         # Le lot entier est synthétique ici, même après sa publication réelle ;

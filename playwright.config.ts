@@ -20,6 +20,8 @@ export default defineConfig({
     env: { ASTRO_PREVIEW_BACKGROUND: '1' },
     url: baseURL,
     reuseExistingServer: false,
+    stdout: 'pipe',
+    stderr: 'pipe',
     timeout: 600_000,
   },
   reporter: [['list'], ['json', { outputFile: '.qa/playwright.json' }]],
