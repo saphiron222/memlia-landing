@@ -6,16 +6,17 @@
   "description": "Site memlia.fr — Astro, Cloudflare Pages",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa",
+    "build": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa && node scripts/generate-agent-markdown.mjs && node scripts/verify-agent-markdown.mjs",
     "test:query-ownership": "node scripts/verify-query-ownership.mjs && node --test tests/scripts/query-ownership.test.mjs",
-    "build:site": "npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
+    "build:site": "npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && npm run render:public && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
     "preview:prepare": "node scripts/prepare-preview.mjs",
     "check": "astro check",
     "test": "playwright test",
     "test:images": "node scripts/verify-m4-images.mjs",
     "lastmod:sync": "node scripts/sync-lastmod.mjs",
-    "regen:generated": "npm run resource:seal-surfaces && node scripts/render-public-source-text.mjs && npm run lastmod:sync && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
+    "render:public": "node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs",
+    "regen:generated": "npm run resource:seal-surfaces && npm run render:public && npm run lastmod:sync && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
     "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",
@@ -90,6 +91,7 @@
     "@playwright/test": "^1.63.0",
     "chrome-launcher": "^1.2.1",
     "lighthouse": "^13.4.1",
+    "markdown-it": "^15.0.2",
     "pdfjs-dist": "^6.4.299",
     "typescript": "^6.0.3"
   }

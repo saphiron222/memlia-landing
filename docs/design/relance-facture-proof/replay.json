@@ -1,0 +1,69 @@
+{
+  "version": "relance-facture-1",
+  "options": {
+    "preparationDate": "2026-10-06",
+    "currency": "EUR",
+    "groupConfirmed": true,
+    "level": "first",
+    "signature": ""
+  },
+  "invoices": [
+    {
+      "clientKey": "001",
+      "client": "Atelier fictif",
+      "reference": "F-001",
+      "amount": "120,00",
+      "payments": "20,00",
+      "credits": "10,00",
+      "dueDate": "2026-09-01",
+      "dispute": "non",
+      "currency": "EUR",
+      "line": 1,
+      "balance": "90.00",
+      "status": "ready",
+      "reason": "Solde échu sans litige déclaré : relance à valider."
+    },
+    {
+      "clientKey": "001",
+      "client": "Atelier fictif",
+      "reference": "F-002",
+      "amount": "120,00",
+      "payments": "120,00",
+      "credits": "0",
+      "dueDate": "2026-09-01",
+      "dispute": "non",
+      "currency": "EUR",
+      "line": 2,
+      "balance": "0.00",
+      "status": "excluded",
+      "reason": "Facture soldée : exclue."
+    },
+    {
+      "clientKey": "002",
+      "client": "Studio fictif",
+      "reference": "F-003",
+      "amount": "120,00",
+      "payments": "20,00",
+      "credits": "10,00",
+      "dueDate": "2026-09-01",
+      "dispute": "oui",
+      "currency": "EUR",
+      "line": 3,
+      "balance": "90.00",
+      "status": "review",
+      "reason": "Litige déclaré : à examiner, sans relance."
+    }
+  ],
+  "messages": [
+    {
+      "clientKey": "001",
+      "client": "Atelier fictif",
+      "subject": "Suivi de vos factures — F-001",
+      "body": "Bonjour,\n\nNous revenons vers vous au sujet des factures suivantes, dont le solde reste à régler à la date du 2026-10-06 :\n\n• F-001 — échéance 2026-09-01 — solde 90,00 EUR\n\nTotal restant : 90,00 EUR.\n\nSi un règlement a déjà été effectué, pourriez-vous nous en communiquer la référence afin de mettre notre suivi à jour ? Nous restons disponibles pour toute question ou précision.\n\nMerci pour votre retour.",
+      "balance": "90.00",
+      "references": [
+        "F-001"
+      ]
+    }
+  ]
+}

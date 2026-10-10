@@ -9,15 +9,15 @@ import test from 'node:test';
 const { scripts } = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
 const expected = [
   'npm run resource:seal-surfaces',
-  'node scripts/render-public-source-text.mjs',
+  'npm run render:public',
   'npm run lastmod:sync',
   'node scripts/reaffirm-resource-review.mjs reaffirmer',
   'node scripts/sync-lastmod.mjs --check',
   'npm run resource:audit:qa',
 ];
 
-for (const failAt of [0, 1, 2, 3, 4, 5, 6]) {
-  test(`regen:generated ${failAt ? `stops at failed step ${failAt}` : 'completes all six steps'}`, () => {
+for (const failAt of Array.from({ length: expected.length + 1 }, (_, index) => index)) {
+  test(`regen:generated ${failAt ? `stops at failed step ${failAt}` : 'completes all steps'}`, () => {
     assert.equal(typeof scripts['regen:generated'], 'string');
     const root = mkdtempSync(join(tmpdir(), 'regen-generated-'));
     try {
@@ -48,7 +48,8 @@ test('regen leaves lastmod valid after final public rendering, including a seali
     mkdirSync(join(root, 'src/data'), { recursive: true });
     mkdirSync(join(root, 'bin'));
     mkdirSync(join(root, 'scripts/lib'), { recursive: true });
-    for (const file of ['render-public-source-text.mjs', 'verify-public-source-labels.mjs', 'sync-lastmod.mjs', 'lib/sitemaps.mjs']) {
+    cpSync(new URL('../../src/data/images.mjs', import.meta.url), join(root, 'src/data/images.mjs'));
+    for (const file of ['strip-briefs.mjs', 'render-public-source-text.mjs', 'verify-public-source-labels.mjs', 'sync-lastmod.mjs', 'lib/sitemaps.mjs']) {
       cpSync(new URL(`../../scripts/${file}`, import.meta.url), join(root, 'scripts', file));
     }
     symlinkSync(fileURLToPath(new URL('../../node_modules', import.meta.url)), join(root, 'node_modules'), 'dir');
@@ -64,8 +65,11 @@ const args = process.argv.slice(2);
 if (executable === 'npx' || (executable === 'npm' && args[1] === 'resource:seal-surfaces')) {
   writeFileSync('dist/index.html', ${JSON.stringify(raw)});
   writeFileSync('dist/sitemap-pages.xml', '<urlset><url><loc>https://memlia.fr/</loc></url></urlset>');
+  writeFileSync('dist/sitemap-index.xml', '<sitemapindex></sitemapindex>');
 } else if (executable === 'npm' && args[1] === 'lastmod:sync') {
   process.exit(spawnSync(${JSON.stringify(process.execPath)}, ['scripts/sync-lastmod.mjs'], { stdio: 'inherit' }).status ?? 1);
+} else if (executable === 'npm' && args[1] === 'render:public') {
+  process.exit(spawnSync(${JSON.stringify(scripts['render:public'])}, { shell: true, stdio: 'inherit' }).status ?? 1);
 } else if (executable === 'node' && args[0] !== 'scripts/reaffirm-resource-review.mjs') {
   process.exit(spawnSync(${JSON.stringify(process.execPath)}, args, { stdio: 'inherit' }).status ?? 1);
 }
@@ -87,6 +91,12 @@ if (executable === 'npx' || (executable === 'npm' && args[1] === 'resource:seal-
     assert.equal(check.status, 0, check.stdout + check.stderr);
     const sync = spawnSync(process.execPath, ['scripts/sync-lastmod.mjs'], { cwd: root, encoding: 'utf8' });
     assert.equal(sync.status, 0, sync.stderr);
+    assert.equal(readFileSync(join(root, 'src/data/pages-lastmod.json'), 'utf8'), register);
+    const second = spawnSync(scripts['regen:generated'], {
+      shell: true, cwd: root, encoding: 'utf8',
+      env: { ...process.env, PATH: `${join(root, 'bin')}:${process.env.PATH}` },
+    });
+    assert.equal(second.status, 0, second.stdout + second.stderr);
     assert.equal(readFileSync(join(root, 'src/data/pages-lastmod.json'), 'utf8'), register);
   } finally {
     rmSync(root, { recursive: true, force: true });

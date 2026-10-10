@@ -3,6 +3,7 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/outils-comptables-gratuits/generateur-relance-facture-impayee": { "query": "générateur relance facture impayée", "descriptionLead": "Préparez une relance amiable", "source": "docs/qa/relance-facture/demande-autocomplete.json ; sonde réelle, aucune suggestion primaire et dix suggestions pour mail relance facture impayée ; volume mensuel ND." },
     "/commissaires-aux-comptes": { "query": "automatisation commissaire aux comptes", "descriptionLead": "Automatisation pour commissaire aux comptes", "measuredAt": "2026-10-06", "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2." },
     "/automatisation/circularisation-cac": { "query": "automatiser circularisation", "descriptionLead": "Automatiser la circularisation", "measuredAt": "2026-10-06", "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué." },
     "/outils-comptables-gratuits/fusionner-fichiers-csv": { "query": "fusionner fichiers csv", "descriptionLead": "Fusionnez vos exports CSV localement", "measuredAt": "2026-10-06", "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel" },

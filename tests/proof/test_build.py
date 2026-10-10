@@ -449,6 +449,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
                      f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
+                     f'{SITE}/outils-comptables-gratuits/generateur-relance-facture-impayee',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
@@ -633,7 +634,7 @@ class BuildProof(unittest.TestCase):
         self.assertEqual(canonical, f'{SITE}/blog')
         robots = next(m['content'] for m in doc.select('meta') if m.get('name') == 'robots')
         self.assertNotIn('noindex', robots)
-        rss = [l for l in doc.select('link') if l.get('rel') == 'alternate']
+        rss = [l for l in doc.select('link') if l.get('rel') == 'alternate' and l.get('type') == 'application/rss+xml']
         self.assertEqual([l['href'] for l in rss], [] if PREVIEW_ARTICLES else ['/blog/rss.xml'])
         self.assertEqual(any(attrs.get('id') == 'auteur-kevin' for _, attrs in doc.tags), bool(articles()))
         (graph,) = jsonld(DIST / 'blog.html')
