@@ -78,6 +78,16 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'facture-electronique': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{
+      editeur: 'DGFiP', titre: 'Je passe à la facturation électronique',
+      url: 'https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique',
+      consulteLe: '2026-10-06',
+      preuve: 'Le calendrier lié fixe l’émission des PME au 1er septembre 2027. La préparation des appels reste un choix d’organisation du cabinet, pas un statut de conformité.',
+      mot: 'calendrier officiel lié par la DGFiP',
+    }],
+  },
   'bulletins-controle': {
     auteur: 'kevin', datePublication: '2026-10-10', dateModification: '2026-10-10',
     sources: [{ editeur: 'Service Public', titre: 'Fiche de paie', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F559', consulteLe: '2026-10-06', preuve: 'Les mentions et libellés bornent la revue ; le repérage fictif ne qualifie pas juridiquement un bulletin.', mot: 'Service Public, fiche de paie' }],

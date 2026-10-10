@@ -15,13 +15,47 @@
       "measuredAt": "2026-10-06",
       "source": "guides/recettes/cloture-ebp/autocomplete.json ; dix suggestions distinctes, aucun volume revendiqué. Contrôles avant fermeture distincts du guide Sage et de l’export FEC."
     },
-    "/integrations/lettrage-ebp": {"query": "lettrage ebp", "descriptionLead": "Contrôlez les paires de lettrage EBP", "measuredAt": "2026-10-06", "source": "guides/recettes/lettrage-ebp/autocomplete.json ; neuf suggestions distinctes. Guide documentaire distinct du lettrage Sage et Cegid, sans volume revendiqué."},
-    "/integrations/export-fec-ebp": { "query": "export fec ebp", "descriptionLead": "Préparez un export FEC EBP", "measuredAt": "2026-10-06", "source": "guides/recettes/export-fec-ebp/autocomplete.json ; sept suggestions distinctes, sans estimation de volume." },
-    "/outils-comptables-gratuits/assistant-lettrage-comptable-local": { "query": "lettrage comptable excel", "descriptionLead": "Préparez le lettrage", "measuredAt": "2026-10-06", "source": "Fiche EC 03 et sonde G3 : une suggestion identique, aucun volume revendiqué. Préparation locale distincte des guides Sage et Cegid." },
-    "/outils-comptables-gratuits/generateur-relance-facture-impayee": { "query": "générateur relance facture impayée", "descriptionLead": "Préparez une relance amiable", "source": "docs/qa/relance-facture/demande-autocomplete.json ; sonde réelle, aucune suggestion primaire et dix suggestions pour mail relance facture impayée ; volume mensuel ND." },
-    "/commissaires-aux-comptes": { "query": "automatisation commissaire aux comptes", "descriptionLead": "Automatisation pour commissaire aux comptes", "measuredAt": "2026-10-06", "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2." },
-    "/automatisation/circularisation-cac": { "query": "automatiser circularisation", "descriptionLead": "Automatiser la circularisation", "measuredAt": "2026-10-06", "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué." },
-    "/outils-comptables-gratuits/fusionner-fichiers-csv": { "query": "fusionner fichiers csv", "descriptionLead": "Fusionnez vos exports CSV localement", "measuredAt": "2026-10-06", "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel" },
+    "/integrations/lettrage-ebp": {
+      "query": "lettrage ebp",
+      "descriptionLead": "Contrôlez les paires de lettrage EBP",
+      "measuredAt": "2026-10-06",
+      "source": "guides/recettes/lettrage-ebp/autocomplete.json ; neuf suggestions distinctes. Guide documentaire distinct du lettrage Sage et Cegid, sans volume revendiqué."
+    },
+    "/integrations/export-fec-ebp": {
+      "query": "export fec ebp",
+      "descriptionLead": "Préparez un export FEC EBP",
+      "measuredAt": "2026-10-06",
+      "source": "guides/recettes/export-fec-ebp/autocomplete.json ; sept suggestions distinctes, sans estimation de volume."
+    },
+    "/outils-comptables-gratuits/assistant-lettrage-comptable-local": {
+      "query": "lettrage comptable excel",
+      "descriptionLead": "Préparez le lettrage",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche EC 03 et sonde G3 : une suggestion identique, aucun volume revendiqué. Préparation locale distincte des guides Sage et Cegid."
+    },
+    "/outils-comptables-gratuits/generateur-relance-facture-impayee": {
+      "query": "générateur relance facture impayée",
+      "descriptionLead": "Préparez une relance amiable",
+      "source": "docs/qa/relance-facture/demande-autocomplete.json ; sonde réelle, aucune suggestion primaire et dix suggestions pour mail relance facture impayée ; volume mensuel ND."
+    },
+    "/commissaires-aux-comptes": {
+      "query": "automatisation commissaire aux comptes",
+      "descriptionLead": "Automatisation pour commissaire aux comptes",
+      "measuredAt": "2026-10-06",
+      "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2."
+    },
+    "/automatisation/circularisation-cac": {
+      "query": "automatiser circularisation",
+      "descriptionLead": "Automatiser la circularisation",
+      "measuredAt": "2026-10-06",
+      "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué."
+    },
+    "/outils-comptables-gratuits/fusionner-fichiers-csv": {
+      "query": "fusionner fichiers csv",
+      "descriptionLead": "Fusionnez vos exports CSV localement",
+      "measuredAt": "2026-10-06",
+      "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel"
+    },
     "/automatisation/evaluation-transmission": {
       "query": "automatisation dossier évaluation entreprise cabinet comptable",
       "descriptionLead": "Confiez l’assemblage du dossier d’évaluation",
@@ -259,6 +293,12 @@
       "descriptionLead": "Préparez une checklist personnalisable",
       "measuredAt": "2026-10-06",
       "source": "Fiche G3 EC 04 : primaire sans suggestion, besoin produit explicite ; sondes copiées dans docs/strategy/site-v3/outils-ec-vague-4. Aucun volume ni trafic revendiqué."
+    },
+    "/automatisation/facture-electronique": {
+      "query": "automatisation flux facture électronique cabinet comptable",
+      "descriptionLead": "Clients sur une autre plateforme agréée",
+      "measuredAt": "2026-10-06",
+      "source": "commercial/recettes/facture-electronique/preuves/demande.json ; autocomplétion sans suggestion commerciale, aucun volume revendiqué."
     }
   }
 }

@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-06",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "hl": "fr",
+  "gl": "fr",
+  "autocompletion": {
+    "automatisation flux facture électronique cabinet comptable": [],
+    "suivi statuts facture électronique cabinet comptable": [],
+    "réception facture électronique cabinet comptable automatisation": [],
+    "facturation électronique cabinet comptable": [
+      "facturation électronique cabinet comptable",
+      "facturation electronique expert comptable",
+      "facturation electronique ordre expert comptable",
+      "plateforme facturation electronique expert comptable",
+      "formation facture electronique expert comptable"
+    ]
+  },
+  "observations": [
+    {
+      "query": "automatisation flux facture électronique cabinet comptable",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "suivi statuts facture électronique cabinet comptable",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "réception facture électronique cabinet comptable automatisation",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "facturation électronique cabinet comptable",
+      "ok": true,
+      "suggestions": [
+        "facturation électronique cabinet comptable",
+        "facturation electronique expert comptable",
+        "facturation electronique ordre expert comptable",
+        "plateforme facturation electronique expert comptable",
+        "formation facture electronique expert comptable"
+      ],
+      "erreur": null
+    }
+  ]
+}

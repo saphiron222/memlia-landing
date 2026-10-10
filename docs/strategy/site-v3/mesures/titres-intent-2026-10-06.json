@@ -105,6 +105,26 @@
       "capturedAt": "2026-10-06T04:28:31.040Z",
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
       "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=d%C3%A9lai%20d%C3%A9claration%20b%C3%A9n%C3%A9ficiaire%20effectif%20greffe"
+    },
+    "automatisation flux facture électronique cabinet comptable": {
+      "capturedAt": "2026-10-06",
+      "source": "commercial/recettes/facture-electronique/preuves/demande.json",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "suivi statuts facture électronique cabinet comptable": {
+      "capturedAt": "2026-10-06",
+      "source": "commercial/recettes/facture-electronique/preuves/demande.json",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "réception facture électronique cabinet comptable automatisation": {
+      "capturedAt": "2026-10-06",
+      "source": "commercial/recettes/facture-electronique/preuves/demande.json",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "facturation électronique cabinet comptable": {
+      "capturedAt": "2026-10-06",
+      "source": "commercial/recettes/facture-electronique/preuves/demande.json",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
     }
   },
   "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
@@ -192,6 +212,16 @@
       "déclaration bénéficiaire effectif greffe",
       "document beneficiaire effectif greffe",
       "registre bénéficiaire effectif greffe"
+    ],
+    "automatisation flux facture électronique cabinet comptable": [],
+    "suivi statuts facture électronique cabinet comptable": [],
+    "réception facture électronique cabinet comptable automatisation": [],
+    "facturation électronique cabinet comptable": [
+      "facturation électronique cabinet comptable",
+      "facturation electronique expert comptable",
+      "facturation electronique ordre expert comptable",
+      "plateforme facturation electronique expert comptable",
+      "formation facture electronique expert comptable"
     ],
     "automatisation contrôle bulletins cabinet comptable": [],
     "automatisation contrôle bulletins de paie cabinet comptable": [],
