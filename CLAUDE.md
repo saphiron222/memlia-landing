@@ -41,6 +41,13 @@ les Cicatrices gardent un samedi de publication. Ne pas dater les recettes de te
 Cicatrices et claims sous des horloges de vendredi, samedi et dimanche, en UTC et America/Los_Angeles.
 La suite complète reste jouée une fois ; ce contrat entre dans `npm run test:scripts`.
 
+La fixture `integration-fixture.mjs` charge les intégrations TypeScript avec la collection
+source `guides.generated.json` et ajoute ses mesures tâche/vendeur/suggestions aux candidats
+historiques, avec le statut de lancement `forte`. Elle ne déduit rien des routes de `dist`.
+`integration-inventory.test.mjs` injecte aussi une collection non vide : couverture exacte,
+doublons, mesures divergentes, planchers et seuil de six restent bloquants. Cette fixture
+ne remplace pas `guide:audit`, qui vérifie recettes, provenance et sceaux de la collection.
+
 La fixture de `blog-intent-preservation.test.mjs` copie les preuves documentaires nécessaires
 à l'intention historique, mais pas le planificateur du calendrier courant. `jour` ne suffit pas
 à isoler ce dernier : Python consulte aussi son propre jour système. La régression reconstruit
