@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "slug": "cloture-ebp",
+  "observedAt": "2026-10-10T17:04:09.012Z",
+  "deployedCommit": "1900b19cff16060d559c4c6ad753426eeca106d4",
+  "deployment": {
+    "id": "c0cbb207-b2ee-44b6-a8d7-ed3c57581792",
+    "checkId": 114265572116,
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-10-10T17:02:20Z",
+    "url": "https://dash.cloudflare.com/?to=/063970336833bc239dbe83778a7fea26/pages/view/memlia/c0cbb207-b2ee-44b6-a8d7-ed3c57581792",
+    "immutableUrl": "https://c0cbb207.memlia.pages.dev"
+  },
+  "publication": {
+    "version": 1,
+    "slug": "cloture-ebp",
+    "candidateSha256": "9caf36c0e2a9391636f75d36b041fffaf6dbc9f2f1cc84aedcce31701477f11a",
+    "integrationSha256": "0194e189d4a7fd15bd5ba0f4fef0b1004c7a7c6f1449af4f01f15aa875eed04a",
+    "proofSha256": "bf38567cb045bfb09035fadd9b7d5ff1a14b780ee20a01f475eec5d4f9170d4a",
+    "observedAt": "2026-10-10T17:04:09.012Z",
+    "url": "https://memlia.fr/integrations/cloture-ebp",
+    "httpStatus": 200,
+    "canonical": "https://memlia.fr/integrations/cloture-ebp",
+    "h1": "Clôture EBP : préparer les contrôles avant de fermer l'exercice",
+    "indexable": true,
+    "robotsAllowed": true,
+    "robotsSha256": "7a956da4adf5f4d79df3b2f37e8e5206a0faba7196e6f66fa0d9780478ef0e7f",
+    "htmlSha256": "a1ef0bcd97da330ec599004ce94d3a8e1d241da0a6c4206639fdd2ce2fc38473"
+  },
+  "public": {
+    "observedAt": "2026-10-10T17:05:42.237Z",
+    "base": "https://memlia.fr",
+    "h1": "Clôture EBP : préparer les contrôles avant de fermer l'exercice",
+    "canonical": "https://memlia.fr/integrations/cloture-ebp",
+    "indexable": true,
+    "htmlIndexable": true,
+    "xRobotsTag": "",
+    "immutablePreview": false,
+    "sitemapCount": 1,
+    "checks": [
+      {
+        "path": "/integrations/cloture-ebp",
+        "status": 200,
+        "sha256": "a1ef0bcd97da330ec599004ce94d3a8e1d241da0a6c4206639fdd2ce2fc38473",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/integrations",
+        "status": 200,
+        "sha256": "8d64859d33cbd398a0e805f2b42e81a0d7edecbb4770c353bf3949cbcce04c23",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/automatisation-cabinet-comptable",
+        "status": 200,
+        "sha256": "1a3b4d29cfe5752b96ce7dc34022aabea82aae23d630a71a907a1e1f19d0a3fd",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "2e48ed0340ddf3056f86ec37a7ad2b591a59ac9c2cf972f7ad677f1a53c963b9",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/proofs/integrations/cloture-ebp.webp",
+        "status": 200,
+        "sha256": "bf38567cb045bfb09035fadd9b7d5ff1a14b780ee20a01f475eec5d4f9170d4a",
+        "cache": "REVALIDATED"
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "7a956da4adf5f4d79df3b2f37e8e5206a0faba7196e6f66fa0d9780478ef0e7f",
+        "cache": "REVALIDATED"
+      },
+      {
+        "path": "/sitemap-index.xml",
+        "status": 200,
+        "sha256": "bf8d87ab5fd80d3a43882c45e71d58d8b30116ad8b156413f74edd0662ea39f1",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-pages.xml",
+        "status": 200,
+        "sha256": "736352173630b1345d8efff656f233673b9172235d2e33c2e1aeec5328d7f61b",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-services.xml",
+        "status": 200,
+        "sha256": "a23d7b4500bbb34c9c8031e654921f20efe4a3d78b4bfec90e1504bc3a14b848",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-guides.xml",
+        "status": 200,
+        "sha256": "34062ce1c6f1cda7c0a2879a904919281a406cacffad1891770fdb38e5bb1965",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-outils.xml",
+        "status": 200,
+        "sha256": "e866f25d7913eb20396270f9aba7b226c311cda6b6cff8e8cbeef744c5b7b430",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-blog.xml",
+        "status": 200,
+        "sha256": "f506f2aa32273d16db2a864c7c9159e83ceab70ffff200ac0266c8e5f3b08c7b",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-glossaire.xml",
+        "status": 200,
+        "sha256": "1482a1186ec5502ac04f8bade293bb1648f086f16001177451284122f9baf0e8",
+        "cache": "DYNAMIC"
+      },
+      {
+        "path": "/sitemap-cac.xml",
+        "status": 200,
+        "sha256": "adcad71e8a4bb9faab3a190d7b31d032e9b133c65e0528fe163cbcbafa2853f9",
+        "cache": "DYNAMIC"
+      }
+    ]
+  },
+  "immutable": {
+    "observedAt": "2026-10-10T17:05:42.856Z",
+    "base": "https://c0cbb207.memlia.pages.dev",
+    "h1": "Clôture EBP : préparer les contrôles avant de fermer l'exercice",
+    "canonical": "https://memlia.fr/integrations/cloture-ebp",
+    "indexable": false,
+    "htmlIndexable": true,
+    "xRobotsTag": "noindex",
+    "immutablePreview": true,
+    "sitemapCount": 1,
+    "checks": [
+      {
+        "path": "/integrations/cloture-ebp",
+        "status": 200,
+        "sha256": "a1ef0bcd97da330ec599004ce94d3a8e1d241da0a6c4206639fdd2ce2fc38473",
+        "cache": null
+      },
+      {
+        "path": "/integrations",
+        "status": 200,
+        "sha256": "8d64859d33cbd398a0e805f2b42e81a0d7edecbb4770c353bf3949cbcce04c23",
+        "cache": null
+      },
+      {
+        "path": "/automatisation-cabinet-comptable",
+        "status": 200,
+        "sha256": "1a3b4d29cfe5752b96ce7dc34022aabea82aae23d630a71a907a1e1f19d0a3fd",
+        "cache": null
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "sha256": "2e48ed0340ddf3056f86ec37a7ad2b591a59ac9c2cf972f7ad677f1a53c963b9",
+        "cache": null
+      },
+      {
+        "path": "/proofs/integrations/cloture-ebp.webp",
+        "status": 200,
+        "sha256": "bf38567cb045bfb09035fadd9b7d5ff1a14b780ee20a01f475eec5d4f9170d4a",
+        "cache": null
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "sha256": "7a956da4adf5f4d79df3b2f37e8e5206a0faba7196e6f66fa0d9780478ef0e7f",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-index.xml",
+        "status": 200,
+        "sha256": "bf8d87ab5fd80d3a43882c45e71d58d8b30116ad8b156413f74edd0662ea39f1",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-pages.xml",
+        "status": 200,
+        "sha256": "736352173630b1345d8efff656f233673b9172235d2e33c2e1aeec5328d7f61b",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-services.xml",
+        "status": 200,
+        "sha256": "a23d7b4500bbb34c9c8031e654921f20efe4a3d78b4bfec90e1504bc3a14b848",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-guides.xml",
+        "status": 200,
+        "sha256": "34062ce1c6f1cda7c0a2879a904919281a406cacffad1891770fdb38e5bb1965",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-outils.xml",
+        "status": 200,
+        "sha256": "e866f25d7913eb20396270f9aba7b226c311cda6b6cff8e8cbeef744c5b7b430",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-blog.xml",
+        "status": 200,
+        "sha256": "f506f2aa32273d16db2a864c7c9159e83ceab70ffff200ac0266c8e5f3b08c7b",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-glossaire.xml",
+        "status": 200,
+        "sha256": "1482a1186ec5502ac04f8bade293bb1648f086f16001177451284122f9baf0e8",
+        "cache": null
+      },
+      {
+        "path": "/sitemap-cac.xml",
+        "status": 200,
+        "sha256": "adcad71e8a4bb9faab3a190d7b31d032e9b133c65e0528fe163cbcbafa2853f9",
+        "cache": null
+      }
+    ]
+  },
+  "identicalResponseBytes": true,
+  "captures": [
+    {
+      "width": 320,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "width": 375,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "width": 768,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "width": 1024,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "width": 1440,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "width": 1920,
+      "status": 200,
+      "h1": [
+        "Clôture EBP : préparer les contrôles avant de fermer l'exercice"
+      ],
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "overflow": false,
+      "brokenImages": [],
+      "hub": true,
+      "moyeu": true,
+      "cases": true
+    },
+    {
+      "route": "integrations",
+      "incoming": true
+    },
+    {
+      "route": "automatisation-cabinet-comptable",
+      "incoming": true
+    }
+  ],
+  "visualInspection": "Desktop1440 et mobile375 entiers relus : aucune section absente ni collision ; miniature mobile et couleurs badges, réserves héritées conservées.",
+  "reviewsPreserved": [
+    "t_8d63b57b métier",
+    "PR173/175/228 QA"
+  ],
+  "followupDueAt": {
+    "J+7": "2026-10-17T17:04:09.012Z",
+    "J+28": "2026-11-07T17:04:09.012Z"
+  },
+  "notes": [
+    "URL publique indexable ; URL Pages immuable noindex HTTP, HTML identique avec canonical public.",
+    "Aucun changement du fond, recette, revue, preuve ou collections sources."
+  ]
+}
