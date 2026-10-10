@@ -3,6 +3,12 @@
   "description": "Autorité durable des services déjà publiés. Une sortie de cette liste exige une entrée depublie et sa preuve autorisée.",
   "services": [
     {
+      "slug": "bulletins-controle",
+      "route": "/automatisation/bulletins-controle",
+      "status": "publie",
+      "publishedOn": "2026-10-10"
+    },
+    {
       "slug": "circularisation-cac",
       "route": "/automatisation/circularisation-cac",
       "status": "publie",

@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: bulletins-controle
 verifiedAt: 2026-10-06
-status: pret-preview
+status: publie
 candidateFingerprint: "f858f174bf3f3aa5dafa4f3861bd98faa594a2eac714ced0961e636c64d0ca0b"
 cta:
   label: "Confier une première tâche"
