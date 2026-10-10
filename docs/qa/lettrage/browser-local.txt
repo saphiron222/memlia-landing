@@ -1,0 +1,16 @@
+
+Running 11 tests using 1 worker
+
+  ✓   1 tests/browser/lettrage.spec.ts:10:1 › exemple, décisions réversibles, copie/export complets, stockage et réseau inchangés (1.7s)
+  ✓   2 tests/browser/lettrage.spec.ts:20:1 › import strict, exceptions exportées, erreur conservant rapport et saisie, HTML inerte (2.7s)
+  ✓   3 tests/browser/lettrage.spec.ts:26:1 › pagination sans troncature et export non filtré (991ms)
+  ✓   4 tests/browser/lettrage.spec.ts:30:1 › annulation immédiate laisse le rapport précédent intact (585ms)
+  ✓   5 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 320px (763ms)
+  ✓   6 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 375px (879ms)
+  ✓   7 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 768px (983ms)
+  ✓   8 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 1024px (1.1s)
+  ✓   9 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 1440px (1.3s)
+  ✓  10 tests/browser/lettrage.spec.ts:34:49 › clavier et lisibilité à 1920px (1.3s)
+  ✓  11 tests/browser/lettrage.spec.ts:40:1 › contrat canonique, maillage et reflow équivalent 400 % (820ms)
+
+  11 passed (14.0s)

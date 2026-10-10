@@ -448,6 +448,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
+                     f'{SITE}/outils-comptables-gratuits/assistant-lettrage-comptable-local',
                      f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
                      f'{SITE}/outils-comptables-gratuits/generateur-relance-facture-impayee',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
