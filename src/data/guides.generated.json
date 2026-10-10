@@ -160,5 +160,91 @@
       "checkedAt": "2026-10-07",
       "fact": "L’aide EBP indique « Pour effectuer un lettrage manuel, cliquez sur le menu Consultation, puis Consultation des comptes. », exige que les lignes sélectionnées s’équilibrent et décrit « Depuis le menu Plus d'actions, sélectionnez Lettrage automatique. ». Elle atteste les parcours natifs, pas les critères d’appariement de notre préparation ni un essai dans EBP."
     }
+  },
+  {
+    "slug": "cloture-ebp",
+    "task": "clôture annuelle",
+    "vendor": "EBP",
+    "product": "EBP Comptabilité",
+    "primaryQuery": "clôture ebp",
+    "suggestions": 10,
+    "modifiers": [
+      "EBP Comptabilité",
+      "clôture annuelle",
+      "premier exercice non clôturé",
+      "à-nouveaux"
+    ],
+    "h1": "Clôture EBP : préparer les contrôles avant de fermer l'exercice",
+    "tabTitle": "Clôture EBP : contrôles avant fermeture | Memlia",
+    "description": "Préparez les contrôles de clôture EBP Comptabilité : exercice, écritures validées et à-nouveaux, sans lancer la fermeture irréversible à la place du collaborateur.",
+    "intro": "Avant de fermer un exercice dans EBP Comptabilité, identifiez le premier exercice non clôturé, vérifiez la validation des écritures et relisez les options d’à-nouveaux. EBP fournit l’assistant et ses contrôles natifs. Nous préparons une liste de contrôles avec leurs repères documentaires ; le collaborateur corrige les écarts, décide des options et lance la clôture dans EBP.",
+    "datePublication": "2026-10-06",
+    "dateMiseAJour": "2026-10-06",
+    "auteur": "kevin",
+    "service": {
+      "href": "/automatisation-cabinet-comptable",
+      "label": "Confier la préparation des contrôles du cabinet"
+    },
+    "officialPath": "Clôture → Gestion des exercices → sélectionner l’exercice → Clôturer l’exercice. L’assistant affiche les informations de l’exercice, les paramètres du suivant, les options et les contrôles. Après leur lecture, le bouton LANCER exécute définitivement la clôture : ce geste reste au collaborateur.",
+    "documentScope": "La fiche EBP porte sur EBP Comptabilité ; sa vidéo associée indique V20 et supérieure, sans établir une compatibilité avec chaque édition ou version actuelle. Le parcours est à vérifier sur l’édition du cabinet. La préparation ci-dessous est une simulation documentaire, pas un essai dans EBP ; elle ne concerne ni EBP Paie ni EBP Bâtiment.",
+    "fields": [
+      {
+        "label": "Exercice à fermer",
+        "control": "Source : EBP, étape 1. L’assistant prend obligatoirement le premier exercice non clôturé ; comparer ses dates au périmètre demandé. Un autre exercice ne se choisit pas pour contourner celui qui reste ouvert."
+      },
+      {
+        "label": "Validation des écritures",
+        "control": "Source : EBP, avant de commencer. Toutes les écritures de l’exercice doivent être validées. Relever les écritures encore non validées ; leur correction et leur validation restent dans EBP."
+      },
+      {
+        "label": "Exercice suivant et à-nouveaux",
+        "control": "Source : EBP, étape 2. Relever l’existence du suivant et d’à-nouveaux déjà générés. S’ils existent déjà, les options de génération ne sont plus modifiables et les à-nouveaux doivent être mis à jour. Sinon, présenter le choix au collaborateur."
+      },
+      {
+        "label": "Options de clôture",
+        "control": "Source : EBP, étape 3. Relire les options de clôtures mensuelles, impressions annuelles, export FEC et mise en inactivité proposées. Nous conservons les choix renseignés ; leur validation n’est pas déduite d’une liste de contrôles prête."
+      },
+      {
+        "label": "Résultat des contrôles natifs",
+        "control": "Source : EBP, étape 4. Un statut Échec bloque la clôture et demande une correction avant reprise. Un statut Information peut être non bloquant ; son traitement demande une lecture humaine, pas une assimilation à un échec."
+      },
+      {
+        "label": "Sauvegarde et archivage",
+        "control": "Source : EBP, fin de l’assistant. La clôture enchaîne automatiquement une sauvegarde complète puis un archivage. La règle du cabinet demande de vérifier leur destination et leur disponibilité avant de décider du lancement ; elle ne prétend pas les avoir exécutés."
+      }
+    ],
+    "knownTrap": "La clôture annuelle est irréversible : la fiche EBP indique qu’après fermeture, toute nouvelle saisie, modification ou suppression d’écriture, tout lettrage et délettrage sont interdits. Une liste Préparé n’autorise donc pas le lancement. Le statut Information n’est pas le statut Échec ; la décision sur une information non bloquante reste au collaborateur.",
+    "writtenRule": "Préparer la liste seulement si l’exercice demandé est le premier non clôturé et si toutes ses écritures sont validées. Associer chaque contrôle à son repère EBP et conserver les options saisies. Un choix d’à-nouveaux non confirmé reste À valider. Un exercice incohérent, une écriture non validée, un statut Échec ou une donnée nécessaire absente arrête la préparation. Aucun bouton de clôture n’est actionné et aucune donnée du dossier n’est modifiée.",
+    "boundary": {
+      "prepared": "Rassembler le périmètre, le statut des écritures et les options déjà renseignées dans une liste de contrôles sourcée, sans écrire dans le dossier.",
+      "validation": "Présenter les à-nouveaux, les options et les informations non bloquantes au collaborateur ; conserver toute saisie existante et signaler chaque choix manquant.",
+      "human": "Corriger et valider les écritures, décider des paramètres puis actionner LANCER dans EBP. Contrôler ensuite le résumé, la sauvegarde et l’archivage."
+    },
+    "replay": [
+      {
+        "input": "Exercice 2025, premier non clôturé ; écritures validées ; options confirmées",
+        "rule": "Périmètre et validations établis",
+        "outcome": "Préparé",
+        "detail": "Liste prête pour lecture ; aucun lancement."
+      },
+      {
+        "input": "Exercice 2025 prêt ; suivant sans à-nouveaux ; choix de génération non confirmé",
+        "rule": "Option encore ouverte à décider",
+        "outcome": "À valider",
+        "detail": "Choix présenté ; aucune option modifiée."
+      },
+      {
+        "input": "Exercice 2025 demandé ; une écriture non validée",
+        "rule": "Validation des écritures incomplète",
+        "outcome": "Arrêt",
+        "detail": "Cause signalée ; correction humaine dans EBP."
+      }
+    ],
+    "source": {
+      "title": "La clôture annuelle dans EBP Comptabilité",
+      "url": "https://support.ebp.com/hc/fr/articles/360009811138",
+      "checkedAt": "2026-10-06",
+      "fact": "EBP décrit le premier exercice non clôturé, la validation préalable de toutes les écritures, les options d’à-nouveaux et les contrôles natifs. La clôture est irréversible et enchaîne sauvegarde puis archivage. La liste proposée ici prépare la lecture de ces repères ; elle n’exécute pas ces traitements."
+    }
   }
 ]

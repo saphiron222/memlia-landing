@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "route": "/integrations/cloture-ebp",
+  "delivery": "Remplacement explicite après PR163 : retrait du cartouche éditeur, trois cas inchangés.",
+  "review": "guides/recettes/cloture-ebp/revue.json",
+  "candidateSha256": "9caf36c0e2a9391636f75d36b041fffaf6dbc9f2f1cc84aedcce31701477f11a",
+  "rendererSha256": "cc4cfe259a574dcdcba8c83eec49acd6fd631810396d536f41c3076dbd17d9ba",
+  "source": "guides/etats/cloture-ebp/preuve.html",
+  "sourceSha256": "7cfc1268cb4a6422ce95151b76949c4e47b338531ceb09b5208881b7f06e9365",
+  "target": "public/proofs/integrations/cloture-ebp.webp",
+  "sha256": "bf38567cb045bfb09035fadd9b7d5ff1a14b780ee20a01f475eec5d4f9170d4a",
+  "width": 1600,
+  "height": 900,
+  "bytes": 54690,
+  "seal": "guides/etats/cloture-ebp/scellement.json",
+  "limitations": "Simulation documentaire de cas fictifs ; aucun essai dans EBP. Revue métier conservée, sans auto-approbation."
+}
