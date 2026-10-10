@@ -3,6 +3,7 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
+    "/integrations/lettrage-ebp": {"query": "lettrage ebp", "descriptionLead": "Contrôlez les paires de lettrage EBP", "measuredAt": "2026-10-06", "source": "guides/recettes/lettrage-ebp/autocomplete.json ; neuf suggestions distinctes. Guide documentaire distinct du lettrage Sage et Cegid, sans volume revendiqué."},
     "/integrations/export-fec-ebp": { "query": "export fec ebp", "descriptionLead": "Préparez un export FEC EBP", "measuredAt": "2026-10-06", "source": "guides/recettes/export-fec-ebp/autocomplete.json ; sept suggestions distinctes, sans estimation de volume." },
     "/outils-comptables-gratuits/assistant-lettrage-comptable-local": { "query": "lettrage comptable excel", "descriptionLead": "Préparez le lettrage", "measuredAt": "2026-10-06", "source": "Fiche EC 03 et sonde G3 : une suggestion identique, aucun volume revendiqué. Préparation locale distincte des guides Sage et Cegid." },
     "/outils-comptables-gratuits/generateur-relance-facture-impayee": { "query": "générateur relance facture impayée", "descriptionLead": "Préparez une relance amiable", "source": "docs/qa/relance-facture/demande-autocomplete.json ; sonde réelle, aucune suggestion primaire et dix suggestions pour mail relance facture impayée ; volume mensuel ND." },

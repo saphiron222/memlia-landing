@@ -1,0 +1,15 @@
+{
+  "kind": "metier",
+  "status": "PASS",
+  "reviewer": "metier",
+  "reviewedAt": "2026-10-07",
+  "candidateSha256": "92f443c2c3b0fa7fa6011771a4adffb088efc45dc297daedf2453245bed8ed60",
+  "observations": [
+    "Source officielle EBP ouverte indépendamment le 7 octobre 2026 : l’article 360011494518 décrit Consultation > Consultation des comptes > Compte Général, l’équilibre des lignes sélectionnées pour le lettrage manuel et Plus d’actions > Lettrage automatique. Les citations et parcours du candidat sont fidèles. L’édition, la version chiffrée et les critères d’appariement de l’assistant ne sont pas établis par cette source ; le guide expose ces limites sans attribuer sa règle de préparation à EBP.",
+    "La recette distingue explicitement le lettrage natif, la préparation de propositions sans écriture dans EBP et le choix puis le geste du collaborateur. Même compte, pièces justificatives, référence commune établie, montants au centime, sens opposés, unicité dans le périmètre et exclusion des lignes déjà lettrées sont contrôlés. Le seul équilibre ne vaut pas preuve du rattachement facture-règlement.",
+    "Les trois cas illustratifs sont cohérents avec la règle : 480,00 euros au débit et au crédit avec rattachement unique donnent Préparé ; deux règlements concurrents de même montant restent À valider sans choix implicite ; 480,00 contre 470,00 donnent un écart de 10,00 euros et Arrêt sans écriture d’écart. Compte absent et pièce manquante arrêtent également la préparation. Paiements partiels, regroupements et écarts sont hors de la règle à deux lignes, pas présentés comme impossibles à traiter dans EBP.",
+    "Le HTML de preuve, le WebP dédié et la capture mobile ont été examinés. Les trois états et leurs causes restent lisibles, sans texte rogné dans le WebP. La page et le texte alternatif qualifient la simulation documentaire et les sorties attendues : aucun essai EBP ni automatisation livrée ne sont démontrés par ces cas. Le choix humain et l’absence de modification des saisies ou des codes de lettrage sont explicites.",
+    "Preuve de demande : autocomplete.json correspond à l’archive marketing jointe à t_5b286083. Les neuf suggestions distinctes et l’empreinte de la preuve sont cohérentes, sans promesse de volume de recherche. H1, EBP Comptabilité et moyeu saisie-comptable respectent le cadrage arrêté.",
+    "Contrôles indépendants rejoués : test de recette lettrage-ebp 1/1 PASS et guide:audit PASS sur deux états. Aucun défaut métier bloquant ni correction requise. La compatibilité dans une édition et un environnement précis devra être recettée au cabinet ; scellement, CI et constat de publication restent à dev. Le défaut global de fixture blog signalé dans preparation.md est hors de cette revue."
+  ]
+}
