@@ -34,6 +34,13 @@ Ces trois commandes complètes tournent dans la CI GitHub (« Repository gates �
 fusionner dans `main`) : son verdict sur le SHA exact fait foi. Sur le Mac, ne lancer que les tests
 ciblés du changement et, si la copy, le menu ou le pied de page changent, `npm run regen:generated`.
 
+Les fixtures de `blog-forge.test.mjs` utilisent un mardi fixe précédé d'un lundi et une horloge
+à midi UTC, restaurée après chaque test. Les scénarios de minuit Paris gardent leur propre horloge ;
+les Cicatrices gardent un samedi de publication. Ne pas dater les recettes de test avec le jour réel.
+`node --test tests/scripts/blog-forge-clock.test.mjs` rejoue les scénarios de sources, report,
+Cicatrices et claims sous des horloges de vendredi, samedi et dimanche, en UTC et America/Los_Angeles.
+La suite complète reste jouée une fois ; ce contrat entre dans `npm run test:scripts`.
+
 ## Message et copy
 
 **La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique
