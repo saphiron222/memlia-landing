@@ -28,10 +28,12 @@ Priorité 3, rôle audit-cac, aucune suggestion dans les réponses réelles du 9
 
 Échecs initiaux observés avant implémentation : figures absentes et suppléments absents.
 
-- 19 tests Node figures/renderer/mobile PASS.
+- 20 tests Node figures/renderer/mobile PASS, dont refus d'une recette F4 divergente en mode Cloudflare sans Chromium.
 - 18 tests Python CAC et 45 tests éditoriaux PASS.
 - 6 tests Node demande/profession PASS.
 - Renderer `--preview`, observation des quatre images, `--adopt`, puis `--check` PASS.
 - Générateur calendrier `--check` et `git diff --check` PASS.
 
 Le build, Astro et la suite navigateur complète sont vérifiés par GitHub Repository gates. La revue QA indépendante et le reçu d'intégration main accompagnent la carte ; ce document ne les anticipe pas.
+
+Le défaut signalé par QA dans le retour anticipé Cloudflare a été reproduit par un test rouge, puis corrigé : les paires et les recettes présentes sont contrôlées avant le sceau portable, comme avant le rendu local. Les fixtures Cloudflare embarquent désormais les recettes historiques au lieu de les omettre.

@@ -34,25 +34,6 @@ const records = [];
 const candidates = [];
 mkdirSync(output, { recursive: true });
 
-// Les hashes WebP scellent un rendu visuel produit et revu sur macOS. Les
-// recalculer dans l'image Linux de Cloudflare donnerait des octets différents
-// (rasterisation des polices), même lorsque le contenu et la mise en page sont
-// inchangés. En CI Pages, on vérifie donc le sceau portable : sources, manifeste
-// et actifs versionnés. Le rendu pixel complet reste obligatoire localement.
-if (mode === 'check' && process.env.CF_PAGES === '1') {
-  const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
-  const currentSources = previous.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
-  assert.deepEqual(previous.sources, currentSources, 'Sources ou contrat de rendu périmés');
-  assert.equal(previous.entries.length, contract.length, 'Le manifeste doit couvrir une image et une seule par preuve');
-  assert.ok(previous.entries.every((entry) => !/-mobile\.webp$/.test(entry.target)), 'Aucune variante portrait n’est attendue');
-  for (const entry of previous.entries) {
-    assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
-    assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
-  }
-  console.log(`check Cloudflare : ${previous.entries.length} preuves scellées, sources et actifs intègres.`);
-  process.exit(0);
-}
-
 // Actifs globaux F4 livrés avant la préparation des recettes blog-only.
 // Seules ces deux paires peuvent attendre leur recette ; dès qu'elle existe,
 // sa correspondance reste obligatoire. Ce registre n'autorise aucune publication.
@@ -75,6 +56,25 @@ for (const [article, preuves] of Map.groupBy(contract, (entry) => entry.article)
   }
   const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
   assert.deepEqual(recette.inlineProofs?.map(({ id }) => id), ids, `Recette et contrat divergent : ${article}`);
+}
+
+// Les hashes WebP scellent un rendu visuel produit et revu sur macOS. Les
+// recalculer dans l'image Linux de Cloudflare donnerait des octets différents
+// (rasterisation des polices), même lorsque le contenu et la mise en page sont
+// inchangés. En CI Pages, on vérifie donc le sceau portable : sources, manifeste
+// et actifs versionnés. Le rendu pixel complet reste obligatoire localement.
+if (mode === 'check' && process.env.CF_PAGES === '1') {
+  const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const currentSources = previous.sources.map(({ path }) => ({ path, sha256: hash(readFileSync(path)) }));
+  assert.deepEqual(previous.sources, currentSources, 'Sources ou contrat de rendu périmés');
+  assert.equal(previous.entries.length, contract.length, 'Le manifeste doit couvrir une image et une seule par preuve');
+  assert.ok(previous.entries.every((entry) => !/-mobile\.webp$/.test(entry.target)), 'Aucune variante portrait n’est attendue');
+  for (const entry of previous.entries) {
+    assert.ok(existsSync(entry.target), `Actif absent : ${entry.target}`);
+    assert.equal(hash(readFileSync(entry.target)), entry.sha256, `Actif périmé : ${entry.target}`);
+  }
+  console.log(`check Cloudflare : ${previous.entries.length} preuves scellées, sources et actifs intègres.`);
+  process.exit(0);
 }
 
 const browser = await chromium.launch({ channel: 'chromium' });
