@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "facture-electronique",
+  "path": "/automatisation/facture-electronique",
+  "status": "publie",
+  "publishedOn": "2026-10-07",
+  "publishedAt": "2026-10-07T17:09:12.051Z",
+  "servedObservation": {
+    "url": "https://8357b712.memlia.pages.dev/automatisation/facture-electronique",
+    "status": 200,
+    "canonical": "https://memlia.fr/automatisation/facture-electronique",
+    "canonicalCount": 1,
+    "h1": "Automatisation des flux de facture électronique en cabinet comptable : appels hors outil",
+    "h1Count": 1,
+    "candidateFingerprint": "5880a908784ecd72ee194c3a82395651e19b2ca43bb52828e2f487aea38c2f76",
+    "candidateFingerprintCount": 1,
+    "bodySha256": "fab7b2d719ad26b7878fe1588e99dee33b88b365d225470a7bb5ab5c943fdce0",
+    "observedAt": "2026-10-07T17:09:12.040Z",
+    "cacheControl": "public, max-age=0, must-revalidate",
+    "cfCacheStatus": null,
+    "age": null,
+    "xRobotsTag": "noindex",
+    "metaRobots": [
+      "noindex, follow"
+    ],
+    "indexable": false
+  },
+  "page": {
+    "path": "src/content/services/facture-electronique.md",
+    "bytes": 11501,
+    "sha256": "b98746b52b753c0ded391fd1ed713f8abb9deb587b7a1aa4366eea7fb1c7f161"
+  },
+  "manifest": {
+    "path": "commercial/services/facture-electronique/manifest.json",
+    "bytes": 2832,
+    "sha256": "c63e1e648a5d035b5a245fe653b3d1c66708a1d6aa8c5a74e533fc24c484f500"
+  }
+}

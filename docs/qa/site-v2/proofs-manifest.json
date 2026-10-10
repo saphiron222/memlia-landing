@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/site-v2-proofs/index.html",
-      "sha256": "0bce226de87b71334ea1d65e0fb135089230724d2d403e23df5308a6565bf260"
+      "sha256": "02cc307f191aa1eeddf1fb5458f8eac7f7b06900292abd8f13e6bb622360e9b1"
     },
     {
       "path": "docs/design/site-v2-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/site-v2-proofs/content-contract.json",
-      "sha256": "30a22d5ddfcd9c72d46d227951d7f3a4a3c0362b8bbf265f89e4c821056fcc42"
+      "sha256": "ccae7e43f8844c754599b6f6162184538bf57ae1883424b5b7a4b6baf4162afb"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -287,6 +287,12 @@
       "target": "public/proofs/v2/og/29-outil-prompt.webp",
       "bytes": 22196,
       "sha256": "a64355d38f72fb18c42490b08747b89cd89a0eb024019770e89066f4974a24f1"
+    },
+    {
+      "source": "docs/design/site-v2-proofs/index.html#service-facture-electronique",
+      "target": "public/proofs/v2/30-service-facture-electronique.webp",
+      "bytes": 40288,
+      "sha256": "cc63fc0943a3e422fc311cce49e8e26b4442270c6f51e4c317c20544c22bd979"
     },
     {
       "source": "docs/design/circularisation-cac-proof/index.html#service-circularisation-cac",
