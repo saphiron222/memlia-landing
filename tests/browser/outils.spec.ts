@@ -373,6 +373,7 @@ test('maillage entrant : trois contextes rendus par outil, dont le hub et une re
 });
 
 test('outils publiés : zéro requête et zéro stockage après armement', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   for (const outil of OUTILS_DISPONIBLES) {
     const requests: string[] = [];
     let armed = false;
@@ -382,7 +383,28 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     await page.evaluate(() => document.fonts.ready);
     await page.waitForLoadState('networkidle');
     armed = true;
-    if (outil.slug === 'calculateur-marge-commerciale') {
+    if (outil.slug === 'generateur-relance-facture-impayee') {
+      await page.locator('summary').filter({ hasText: 'Importer un CSV' }).click();
+      await page.locator('#rel-file').setInputFiles({
+        name: 'factures-fictives.csv', mimeType: 'text/csv',
+        buffer: Buffer.from('clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency\n001;Atelier fictif;F-001;120;20;10;20260101;non;EUR'),
+      });
+      await page.getByRole('button', { name: 'Lire le CSV', exact: true }).click();
+      await expect(page.locator('#rel-status')).toContainText('1 facture');
+      await page.locator('#rel-group').check();
+      await page.getByRole('button', { name: 'Préparer les relances', exact: true }).click();
+      await expect(page.locator('#rel-message-body')).toHaveValue(/90,00 EUR/);
+      await page.locator('#rel-message-body').fill('Message fictif relu');
+      await page.getByRole('button', { name: 'Copier le message', exact: true }).click();
+      await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toContain('Message fictif relu');
+      for (const name of ['Exporter tout en texte', 'Exporter tout en CSV']) {
+        const downloading = page.waitForEvent('download');
+        await page.getByRole('button', { name, exact: true }).click();
+        expect(await readFile((await (await downloading).path())!, 'utf8')).toContain('Message fictif relu');
+      }
+      await page.getByRole('button', { name: 'Effacer la session', exact: true }).click();
+      await expect(page.locator('#rel-message')).toBeHidden();
+    } else if (outil.slug === 'calculateur-marge-commerciale') {
       await page.getByLabel('Prix d’achat HT').fill('80');
       await page.getByLabel('Prix de vente HT').fill('100');
       await page.getByRole('button', { name: 'Calculer la marge' }).click();
@@ -582,11 +604,18 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       // Parsing, preview and validated selection each create their own local Worker.
       expect(requests).toHaveLength(3);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+
+    } else if (outil.slug === 'generateur-relance-facture-impayee') {
+      // Playwright observes the in-memory Worker URL; it is not an HTTP request.
+      expect(requests).toHaveLength(1);
+      expect(requests[0]).toMatch(new RegExp(`^GET blob:${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/[a-f0-9-]+$`));
+
     } else if (outil.slug === 'fusionner-fichiers-csv') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/fusion-csv\\.worker-[a-zA-Z0-9_-]+\\.js$`);
       // Import and confirmed consolidation create two local Workers; exports reuse the second.
       expect(requests).toHaveLength(2);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
+
     } else expect(requests).toEqual([]);
     context.off('request', listener);
   }

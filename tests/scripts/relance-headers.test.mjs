@@ -1,0 +1,20 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {onRequestGet,onRequestHead} from '../../functions/outils-comptables-gratuits/generateur-relance-facture-impayee.js';
+const url='https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee';
+test('route locale : CSP fermée, beacon filtré et caches invalidés',async()=>{
+ let handler;globalThis.HTMLRewriter=class{on(selector,h){assert.equal(selector,'script[src]');handler=h;return this;}transform(r){return r;}};
+ const request=new Request(url,{headers:{'If-None-Match':'old','Range':'bytes=0-20'}});
+ let forwarded;
+ const response=await onRequestGet({request,next:async r=>{forwarded=r;return new Response('<html></html>',{headers:{'Content-Type':'text/html','ETag':'old','Last-Modified':'yesterday','Content-Length':'13'}});}});
+ assert.equal(forwarded.headers.get('If-None-Match'),null);assert.equal(forwarded.headers.get('Range'),null);
+ assert.ok(response.headers.get('Content-Security-Policy').includes("connect-src 'none'"));
+ assert.ok(response.headers.get('Content-Security-Policy').includes("worker-src 'self' blob:"));
+ assert.ok(response.headers.get('Cache-Control').includes('no-transform'));assert.equal(response.headers.get('ETag'),null);assert.equal(response.headers.get('Content-Length'),null);
+ let removed=false;handler.element({getAttribute:()=> 'https://static.cloudflareinsights.com/beacon.min.js',remove:()=>{removed=true;}});assert.equal(removed,true);
+ removed=false;handler.element({getAttribute:()=> '/_astro/relance.js',remove:()=>{removed=true;}});assert.equal(removed,false);
+ const head=await onRequestHead({request,next:async()=>new Response('html',{headers:{'Content-Type':'text/html'}})});assert.equal(await head.text(),'');
+ delete globalThis.HTMLRewriter;
+ assert.match(readFileSync('public/_headers','utf8'),/generateur-relance-facture-impayee\n  Cache-Control: public, max-age=0, must-revalidate, no-transform/);
+});

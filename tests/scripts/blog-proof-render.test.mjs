@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
@@ -9,6 +9,8 @@ const project = resolve(import.meta.dirname, '../..');
 const manifestPath = 'docs/qa/blog-article-proofs/manifest.json';
 const manifest = JSON.parse(readFileSync(join(project, manifestPath), 'utf8'));
 const files = [...manifest.sources.map(({ path }) => path), manifestPath, ...manifest.entries.map(({ target }) => target)];
+const contract = JSON.parse(readFileSync(join(project, 'docs/design/blog-article-proofs/content-contract.json')));
+files.push(...new Set(contract.map(({ article }) => `editorial/recettes/${article}/recette.json`).filter((path) => existsSync(join(project, path)))));
 
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'memlia-blog-proof-'));
@@ -30,6 +32,16 @@ test('Cloudflare vérifie les preuves blog scellées sans Chromium', (t) => {
   const result = check(fixture(t));
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, new RegExp(`${manifest.entries.length} preuves scellées`));
+});
+
+test('Cloudflare refuse une recette F4 présente mais divergente', (t) => {
+  const root = fixture(t);
+  const path = join(root, 'editorial/recettes/cac-reception-fec-constat');
+  mkdirSync(path, { recursive: true });
+  writeFileSync(join(path, 'recette.json'), JSON.stringify({ inlineProofs: [{ id: 'autre' }] }));
+  const result = check(root);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /Recette et contrat divergent/);
 });
 
 test('Cloudflare refuse une source blog modifiée', (t) => {

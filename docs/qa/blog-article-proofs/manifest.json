@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "db26d90c12f27e067d4d5473603366c5797bf18d261e5305cc058e559e2b3634"
+      "sha256": "c44a1eadeb20acc4db36888a992246ef49ef42cbca5df2b33849879d343b38f5"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "78a4cac7e76ccd1b28421ccc487809ad517ac7d4e937cb29069d4eeb2d8f197e"
+      "sha256": "27e1a54664db6694417a14115b41776f7d0bb231b4949c233a8ab7ba06777096"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
-      "sha256": "ea7ba5dc7b4139223a3c5a563dfb518db654208524f9931fff9faee299cc2713"
+      "sha256": "8ce82387dc7096f57f57b7ade2bac8dcbc64ba437ee53c1dea77dc1a34a8f9e0"
     }
   ],
   "browser": "153.0.8010.12",
@@ -211,6 +211,30 @@
       "target": "public/proofs/blog/passage-reprises.webp",
       "bytes": 30876,
       "sha256": "4e81a59c0210f51ea73f5a24a940f6a4963dd507f3e7f7a87999ab818d5ec299"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#cac-inventaire-taches",
+      "target": "public/proofs/blog/cac-inventaire-taches.webp",
+      "bytes": 23852,
+      "sha256": "7eed6f9f6827f3ce601df08b019bb4011b05999e3069a48435de87ca73e592d5"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#cac-fiche-regle",
+      "target": "public/proofs/blog/cac-fiche-regle.webp",
+      "bytes": 20674,
+      "sha256": "447031fed56fe6cd5570a51482a725ae805d22e0dc246b242f600ad6a1ffe2a1"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#cac-fec-registre-reception",
+      "target": "public/proofs/blog/cac-fec-registre-reception.webp",
+      "bytes": 17678,
+      "sha256": "45ad7494b1381505338c485defe92ccd7bcb4fd8f305ef296c1c02f9d415ed02"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#cac-fec-constat",
+      "target": "public/proofs/blog/cac-fec-constat.webp",
+      "bytes": 17598,
+      "sha256": "835dd19a0ceffdac4e4b5777c92aea00062e0811b8ab98db8cb864019f0d536d"
     }
   ]
 }
