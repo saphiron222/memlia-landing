@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { parse } from 'parse5';
 
 const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
 const source = 'docs/design/integration-proofs';
@@ -15,19 +16,38 @@ const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const contract = existsSync(contractPath) ? JSON.parse(readFileSync(contractPath, 'utf8')) : [];
 const sourcePaths = [`${source}/index.html`, `${source}/styles.css`, contractPath, 'scripts/render-integration-proofs.mjs'];
 
+function frameIds(node) {
+  const classes = node.attrs?.find(({ name }) => name === 'class')?.value.split(/\s+/) ?? [];
+  return [
+    ...(classes.includes('frame') ? [node.attrs?.find(({ name }) => name === 'id')?.value] : []),
+    ...(node.childNodes ?? []).flatMap(frameIds),
+  ];
+}
+
+function validateIds(ids) {
+  assert.ok(ids.length >= 10, 'Au moins dix scènes sont requises');
+  assert.ok(ids.every((id) => typeof id === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)), 'Identifiant de scène invalide');
+  assert.equal(new Set(ids).size, ids.length, 'Chaque scène porte un identifiant unique');
+}
+
+const contractIds = contract.map(({ id }) => id);
+if (mode !== 'adopt') {
+  validateIds(contractIds);
+  assert.deepEqual(frameIds(parse(readFileSync(`${source}/index.html`, 'utf8'))), contractIds, 'Les scènes divergent du contrat');
+}
+
 // Cloudflare Pages ne fournit pas Chromium. Le rendu pixel complet reste
 // obligatoire en recette locale ; le build distant vérifie le sceau portable
 // des sources, du contrat, du manifeste et des WebP déjà revus.
 if (mode === 'check' && process.env.CF_PAGES === '1') {
   const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
   assert.equal(previous.schemaVersion, 1, 'Version de manifeste inconnue');
-  assert.equal(contract.length, 10, 'Dix scènes sont requises');
-  const ids = contract.map(({ id }) => id);
-  assert.equal(new Set(ids).size, 10, 'Chaque scène porte un identifiant unique');
+  const ids = contractIds;
   assert.deepEqual(previous.sources, sourcePaths.map((path) => ({ path, sha256: sha256(readFileSync(path)) })), 'Sources ou contrat de rendu périmés');
-  assert.equal(previous.entries.length, 10, 'Le manifeste ne couvre pas les dix scènes');
+  assert.equal(previous.entries.length, ids.length, 'Le manifeste ne couvre pas toutes les scènes');
   assert.deepEqual(previous.entries.map(({ source: path }) => path), ids.map((id) => `${source}/index.html#${id}`), 'Ordre ou source des scènes divergent du contrat');
-  assert.equal(new Set(previous.entries.map(({ target }) => target)).size, 10, 'Deux scènes partagent le même actif');
+  assert.equal(new Set(previous.entries.map(({ target }) => target)).size, ids.length, 'Deux scènes partagent le même actif');
+  assert.equal(new Set(previous.entries.map(({ sha256 }) => sha256)).size, ids.length, 'Deux scènes rendent la même image');
   for (const [index, entry] of previous.entries.entries()) {
     assert.equal(entry.target, `public/proofs/integrations/${ids[index]}.webp`, `Cible inattendue : ${entry.target}`);
     const bytes = readFileSync(entry.target);
@@ -35,7 +55,7 @@ if (mode === 'check' && process.env.CF_PAGES === '1') {
     assert.ok(bytes.length < 150_000, `Actif trop lourd : ${entry.target}`);
     assert.equal(sha256(bytes), entry.sha256, `Actif périmé : ${entry.target}`);
   }
-  console.log('check Cloudflare : 10 preuves intégrations scellées, sources et actifs intègres.');
+  console.log(`check Cloudflare : ${ids.length} preuves intégrations scellées, sources et actifs intègres.`);
   process.exit(0);
 }
 
@@ -52,8 +72,7 @@ try {
   const fonts = await page.evaluate(() => [...document.fonts].map((font) => ({ family: font.family, status: font.status })));
   assert.ok(fonts.filter((font) => font.status === 'loaded').length >= 2, `Polices non chargées : ${JSON.stringify(fonts)}`);
   const ids = await page.locator('.frame').evaluateAll((elements) => elements.map((element) => element.id));
-  assert.equal(ids.length, 10, 'Dix scènes sont requises');
-  assert.equal(new Set(ids).size, 10, 'Chaque scène porte un identifiant unique');
+  validateIds(ids);
   if (mode !== 'adopt') assert.deepEqual(ids, contract.map((entry) => entry.id), 'Les scènes divergent du contrat');
 
   await page.addStyleTag({ content: 'body{padding:0}main{display:block}.frame{display:none}.frame[data-render]{display:grid}' });
@@ -99,7 +118,7 @@ try {
     writeFileSync(`${output}/${id}.webp`, webp);
     candidates.push({ source: `${source}/index.html#${id}`, target: `public/proofs/integrations/${id}.webp`, bytes: webp.length, sha256: sha256(webp), buffer: webp });
   }
-  assert.equal(new Set(candidates.map((candidate) => candidate.sha256)).size, 10, 'Deux scènes rendent la même image');
+  assert.equal(new Set(candidates.map((candidate) => candidate.sha256)).size, ids.length, 'Deux scènes rendent la même image');
   if (mode === 'adopt') writeFileSync(contractPath, `${JSON.stringify(adopted, null, 2)}\n`);
 
   const manifest = {
@@ -112,13 +131,13 @@ try {
     const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
     assert.deepEqual(manifest, previous, 'Le manifeste des preuves intégrations a dérivé');
     for (const candidate of candidates) assert.equal(sha256(readFileSync(candidate.target)), candidate.sha256, `Actif périmé : ${candidate.target}`);
-    console.log('check : 10 preuves intégrations conformes à leur contrat et à leur manifeste.');
+    console.log(`check : ${ids.length} preuves intégrations conformes à leur contrat et à leur manifeste.`);
   } else {
     mkdirSync('public/proofs/integrations', { recursive: true });
     mkdirSync('docs/qa/integration-proofs', { recursive: true });
     for (const candidate of candidates) writeFileSync(candidate.target, candidate.buffer);
     writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
-    console.log(`${mode} : 10 preuves intégrations publiées et manifestées.`);
+    console.log(`${mode} : ${ids.length} preuves intégrations publiées et manifestées.`);
   }
   for (const candidate of candidates) console.log(`  ${candidate.target} ${Math.round(candidate.bytes / 1024)} Ko`);
 } finally {

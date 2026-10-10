@@ -37,7 +37,8 @@ s'il semble ancien, car un nouvel inode permettrait deux builds concurrents.
 
 Sur un runner hébergé hors Mac, `MEMLIA_BUILD_LOCK=0 npm run build` désactive le verrou
 (cette désactivation est refusée sur macOS). Ailleurs, le fichier par défaut est dans le
-répertoire temporaire système. La CI Mac ne définit pas cette variable.
+répertoire temporaire système. Un runner Mac doit garder ce verrou actif ; la CI actuelle
+utilise des runners GitHub Ubuntu, sans modifier cette protection des builds locaux Mac.
 `npm run build:locked` est l'implémentation interne ; agents et CI doivent appeler `npm run build`,
 pas cette étape ni `astro build` directement. Les checkouts antérieurs à ce changement ne
 participent pas au verrou et doivent être actualisés avant de construire.

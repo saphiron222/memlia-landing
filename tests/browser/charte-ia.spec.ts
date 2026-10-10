@@ -84,7 +84,15 @@ test('six largeurs, clavier, traitement sans réseau ni stockage', async ({ page
   await example(page);
   await page.evaluate(() => document.fonts.ready);
   const requests: string[] = [];
-  page.on('request', request => requests.push(request.url()));
+  // Les changements de viewport peuvent charger un candidat d'image statique.
+  // Aucun appel applicatif, envoi de données ni image étrangère n'est autorisé.
+  const staticImages = await page.locator('img').evaluateAll(images => (images as HTMLImageElement[]).flatMap(img =>
+    [img.src, ...img.srcset.split(',').filter(Boolean).map(candidate => new URL(candidate.trim().split(' ')[0], location.href).href)]));
+  page.on('request', request => {
+    if (request.method() === 'GET' && request.resourceType() === 'image'
+      && request.postData() === null && staticImages.includes(request.url())) return;
+    requests.push(request.url());
+  });
   await page.getByLabel('Rôle responsable des usages').fill('Référent fictif');
   await page.getByRole('button', { name: 'Préparer la charte', exact: true }).focus();
   await page.keyboard.press('Enter');

@@ -12,16 +12,20 @@ concurrency:
   group: pr-validation-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
+# GitHub-hosted: the repository is public, so standard hosted minutes are
+# free. Never route a job to a self-hosted runner: a pull request from a fork
+# would execute its code on that machine.
+#
+# Décision de Kevin du 08/10/2026 : les contrats navigateur se répartissent sur
+# des jobs parallèles (près d'une heure en un seul job). Les portes
+# déterministes et chaque part démarrent ensemble ; « Repository gates », seul
+# contrôle requis par la protection de main, réussit seulement si tous ont
+# réussi. Règle tenue par tests/scripts/ci-parallele.test.mjs.
 jobs:
-  verify:
-    name: Repository gates
-    # Preserve main's repository-specific runner (hosted minutes exhausted).
-    runs-on: [self-hosted, macOS, ARM64, memlia-mac]
-    # Two runs exhausted 30 minutes while Chromium was still progressing.
-    # Include the Playwright webServer rebuild and runner variance;
-    # keep a finite budget without dropping or parallelizing any gate.
-    # A build may wait up to 45 minutes for another worktree on this machine.
-    timeout-minutes: 105
+  portes:
+    name: Portes déterministes
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - name: Check out the exact candidate
         uses: actions/checkout@v4
@@ -35,14 +39,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          # No `cache: npm`: ~/.npm already persists on the self-hosted runner,
-          # and uploading it to the GitHub cache only slowed every run.
+          cache: npm
 
       - name: Install locked dependencies
         run: npm ci
 
       - name: Install Chromium
-        run: npx playwright install chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Check Astro and content
         run: npm run check
@@ -56,12 +59,96 @@ jobs:
       - name: Exercise guide forge and proof geometry in Chromium
         run: npm run test:guide-forge && npm run test:guide-render
 
+      - name: Exercise CAC proof geometry in Chromium
+        run: node --test tests/scripts/accueil-cac-geometry.test.mjs
+
+      - name: Exercise proof renderer ownership in Chromium
+        run: node --test tests/scripts/proof-render-ownership.test.mjs
+
       - name: Build and run deterministic gates
         run: npm run build
         env:
           CF_PAGES: "1"
 
+  verify:
+    name: Contrats navigateur (${{ matrix.part }}/4)
+    runs-on: ubuntu-latest
+    # Two runs exhausted 30 minutes while Chromium was still progressing.
+    # Each part rebuilds the site through the Playwright webServer; keep a
+    # finite budget that still covers the whole suite in a single part.
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [1, 2, 3, 4]
+    steps:
+      - name: Check out the exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Run browser contracts
-        run: npm run test
+        # La navigation clavier des tableaux (≈ 33 min sur 44) a ses propres parts, job `clavier`.
+        run: npm run test -- --grep-invert 'table-keyboard\.spec' --shard=${{ matrix.part }}/4
         env:
           CF_PAGES: "1"
+
+  clavier:
+    name: Clavier des tableaux (${{ matrix.part }}/4)
+    runs-on: ubuntu-latest
+    # 66 tests d'environ 30 s : seuls dans leur matrice, ils se partagent par test (fullyParallel).
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [1, 2, 3, 4]
+    steps:
+      - name: Check out the exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run table keyboard contracts
+        run: npm run test -- tests/browser/table-keyboard.spec.ts --shard=${{ matrix.part }}/4
+        env:
+          CF_PAGES: "1"
+
+  gates:
+    name: Repository gates
+    needs: [portes, verify, clavier]
+    # Sans always(), une porte en échec ferait sauter ce job, et GitHub compte
+    # un contrôle requis sauté comme vert.
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every gate
+        run: |
+          test "${{ needs.portes.result }}" = success
+          test "${{ needs.verify.result }}" = success
+          test "${{ needs.clavier.result }}" = success
