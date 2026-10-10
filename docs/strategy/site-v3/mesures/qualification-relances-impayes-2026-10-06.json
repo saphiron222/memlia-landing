@@ -1,0 +1,299 @@
+{
+  "task": "t_dd32480d",
+  "measuredAt": "2026-10-06T07:49:53.159Z",
+  "family": "relances-impayes",
+  "candidate": "/automatisation/relances-impayes",
+  "decision": "non-ouverture",
+  "canonical": "/automatisation-cabinet-comptable",
+  "primaryQuery": "automatisation relance honoraires impayés cabinet comptable",
+  "reason": "Besoin métier et offre native de relances sur modèles confirmés ; aucun signal distinct de délégation observé. Ne pas créer une page commerciale sur cette seule hypothèse.",
+  "monthlyVolume": null,
+  "measure": {
+    "measuredAt": "2026-10-06T07:49:53.159Z",
+    "instrument": "scripts/lib/seo-instruments.mjs autocompleterGoogle hl=fr gl=fr",
+    "results": [
+      {
+        "query": "automatisation relance honoraires impayés cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "relance honoraires impayés expert comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "logiciel relance honoraires cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "automatisation relance impayés",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "relance impayés cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "recouvrement honoraires expert comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "relance facture impayée expert comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "automatiser relances honoraires",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      }
+    ]
+  },
+  "backlogAngles": [
+    {
+      "slug": "automatiser-les-relances-d-honoraires-impayes",
+      "titre": "Automatiser les relances d'honoraires impayés",
+      "requete": "relance impayés cabinet comptable",
+      "secondaires": [
+        "messages types relance impayé cabinet comptable",
+        "cadence de relance client impayé"
+      ],
+      "famille": "relances-impayes",
+      "role": "facturation-recouvrement",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "messages types, cadence et arrêt à règlement rejoués sur un historique fictif par client",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le délai légal pour relancer une facture impayée ?",
+          "Quelle formule de relance utiliser pour une facture impayée ?",
+          "Comment relancer un client qui n'a pas payé ?",
+          "Comment relancer une facture impayée ?"
+        ],
+        "intention": "logiciel",
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-de-la-cadence-de-relance-d-un-impaye",
+      "titre": "La checklist de la cadence de relance d'un impayé",
+      "requete": "checklist cadence relance impayé cabinet comptable",
+      "secondaires": [
+        "messages types relance impayé cabinet comptable",
+        "fréquence de relance client impayé"
+      ],
+      "famille": "relances-impayes",
+      "role": "facturation-recouvrement",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée en cinq paliers, rejouée sur un historique fictif de dix clients relancés",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le délai légal pour relancer une facture impayée ?",
+          "Quelle formule de relance utiliser pour une facture impayée ?",
+          "Comment relancer un client qui n'a pas payé ?",
+          "Comment relancer une facture impayée ?"
+        ],
+        "intention": "logiciel",
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "les-relances-d-impayes-qu-un-cabinet-doit-toujours-arreter-avant-l-envoi",
+      "titre": "Les relances d'impayés qu'un cabinet arrête toujours avant l'envoi",
+      "requete": "arrêter une relance impayé cabinet comptable litige",
+      "secondaires": [
+        "client en litige relance suspendue",
+        "client en procédure collective relance impayé"
+      ],
+      "famille": "relances-impayes",
+      "role": "facturation-recouvrement",
+      "intent": "reduire-risque",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau anomalie -> cause -> action sur trois cas fictifs (litige, procédure collective, règlement partiel)",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le délai légal pour relancer une facture impayée ?",
+          "Quelle formule de relance utiliser pour une facture impayée ?",
+          "Comment relancer un client qui n'a pas payé ?",
+          "Comment relancer une facture impayée ?"
+        ],
+        "intention": "logiciel",
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "a-partir-de-quand-un-honoraire-est-il-considere-comme-impaye",
+      "titre": "À partir de quand un honoraire est-il considéré comme impayé ?",
+      "requete": "définition honoraire impayé cabinet comptable délai",
+      "secondaires": [
+        "délai de paiement honoraires expert-comptable",
+        "relance amiable avant contentieux définition"
+      ],
+      "famille": "relances-impayes",
+      "role": "facturation-recouvrement",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec un exemple fictif de délai contractuel",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le délai légal pour relancer une facture impayée ?",
+          "Quelle formule de relance utiliser pour une facture impayée ?",
+          "Comment relancer un client qui n'a pas payé ?",
+          "Comment relancer une facture impayée ?"
+        ],
+        "intention": "logiciel",
+        "apercuIa": true
+      }
+    }
+  ],
+  "cacheExisting": {
+    "relance impayés cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "messages types relance impayé cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "cadence de relance client impayé": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "checklist cadence relance impayé cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "fréquence de relance client impayé": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "arrêter une relance impayé cabinet comptable litige": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "client en litige relance suspendue": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "client en procédure collective relance impayé": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "définition honoraire impayé cabinet comptable délai": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "délai de paiement honoraires expert-comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "relance amiable avant contentieux définition": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    }
+  },
+  "registryExisting": [
+    {
+      "slug": "bibliotheque-prompts-comptables",
+      "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "requete": "bibliothèque prompts comptables",
+      "secondaires": [
+        "modèles prompts comptables",
+        "prompt relance pièces comptable"
+      ],
+      "famille": "ia-generative-agents",
+      "format": "web-application",
+      "publieLe": "2026-10-05",
+      "titreOnglet": "Bibliothèque de prompts comptables | Memlia",
+      "source": "Publication constatée le 05/10/2026 — PR86, Cloudflare 9d38b8f9-46d8-488e-b3cc-68c832f72e7d build/deploy SUCCESS ; 40 Chromium domaine et 40 déploiement, six largeurs ; 116 GET no-cache sans query. Rapport docs/qa/bibliotheque-prompts/publication-2026-10-05.md ; carte t_2508910f. Lighthouse public mobile 94/100/92/100, desktop 100/100/92/100 ; réserves documentées. Trafic, indexation moteur, citations, conversions et J+7/J+28 ND."
+    },
+    {
+      "slug": "automatiser-la-relance-des-pieces-clients",
+      "type": "blog",
+      "url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "requete": "relance pièces manquantes cabinet comptable",
+      "secondaires": [
+        "collecte de pièces comptables automatisée",
+        "relance documents clients expert-comptable"
+      ],
+      "famille": "collecte-pieces",
+      "format": "how-to-guide",
+      "publieLe": "2026-09-16",
+      "titreOnglet": "Relance des pièces manquantes en cabinet comptable | Memlia",
+      "source": "frontmatter"
+    }
+  ],
+  "intentContractsExisting": [],
+  "baseCommit": "69269f83e224ce9441fe078bf56e653a485fb7d2",
+  "sources": [
+    {
+      "url": "https://www.acd-groupe.fr/solution-expert-comptable/acd-gi/",
+      "quote": "Programmez automatiquement vos honoraires",
+      "scope": "contexte de gestion interne, pas preuve de relance"
+    },
+    {
+      "url": "https://www.acd-groupe.fr/wp-content/uploads/2022/12/FP-DiaClientGI_decembre2022.pdf",
+      "quote": "relances sur modèles ou publipostage Word",
+      "scope": "fiche technique page 13, document portant Avril 2026 malgré chemin 2022 ; option comptabilité auxiliaire, offre déclarée non testée"
+    },
+    {
+      "url": "https://www.fulll.fr/pilotage-cabinet",
+      "quote": "Confrontez automatiquement les feuilles de temps (timesheets) de vos équipes avec les honoraires facturés. Identifiez rapidement le temps productif non facturé.",
+      "scope": "adjacent : pilotage honoraires, ne prouve pas une fonction de relance"
+    }
+  ],
+  "limits": [
+    "Aucun volume mensuel mesuré ; listes vides ne signifient pas demande nulle",
+    "SERP spécialisée non qualifiée : Firecrawl 403, Google challenge, DuckDuckGo 202 challenge, Bing résultats surtout hors sujet",
+    "Inventaire concurrentiel non exhaustif ; aucune fonction éditeur testée",
+    "Source officielle Service-Public inaccessible après reprise curl et navigateur ; aucun délai légal ni procédure de recouvrement affirmés"
+  ],
+  "recipeStatus": "non applicable : page non retenue, ni recette publique ni revue métier ni sceau ni rejeu"
+}
