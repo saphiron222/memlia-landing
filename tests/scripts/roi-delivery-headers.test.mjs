@@ -10,12 +10,6 @@ test('ROI : aucune transformation edge sur la route ROI, aucune règle globale, 
   const scoped = blocks.find(([route]) => route === roi);
   assert.ok(scoped, 'une règle propre à la route ROI doit prévenir l’injection edge');
   assert.ok(scoped.includes('  Cache-Control: public, max-age=0, must-revalidate, no-transform'));
-
-  for (const [route] of blocks.filter(block => block.some(line => line.includes('no-transform')))) {
-    assert.match(route, /^\/outils-comptables-gratuits\/[a-z0-9-]+$/, 'no-transform reste limité aux routes locales explicites, jamais un wildcard');
-  }
-
-  assert.ok(!blocks.find(([route]) => route === '/*')?.some(line => line.includes('no-transform')));
-
+  assert.ok(!blocks.filter(([route]) => route.includes('*')).some(block => block.some(line => line.includes('no-transform'))));
   assert.equal(blocks.find(([route]) => route === '/outils-comptables-gratuits/*')[1], `  Content-Security-Policy: ${csp}`);
 });

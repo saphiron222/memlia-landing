@@ -52,7 +52,7 @@ Quatre angles de geste et de preuve par famille ouverte, plus un pilier transver
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/commissaires-aux-comptes` | automatisation commissaire aux comptes | retenue-non-publiee | 0 suggestions ; 2026-10-05T22:17:28.634Z | entrée de navigation |
+| `/commissaires-aux-comptes` | automatisation commissaire aux comptes | construite-en-revue | proprietaire-existant | entrée de navigation |
 
 ### service
 

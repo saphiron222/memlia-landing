@@ -1,0 +1,1 @@
+export default {site:'https://memlia.fr',outputPath:'site/docs/strategy/site-v3/audit-2026-10/unlighthouse',scanner:{samples:1,throttle:true,device:'mobile',dynamicSampling:false},puppeteerClusterOptions:{maxConcurrency:2},ci:{reporter:'jsonExpanded',buildStatic:true}};
