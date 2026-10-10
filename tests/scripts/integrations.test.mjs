@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import ts from 'typescript';
 import { integrationInventory, assertIntegrationCoverage } from './integration-inventory.mjs';
 
@@ -48,7 +49,9 @@ test('le cadre du hub illustre les sorties attendues sans annoncer un rejeu exé
   assert.match(guide, /sorties attendues de la règle proposée, pas des résultats exécutés/);
 });
 
-test('seules toutes les variations fortes produisent une page', () => {
+test('seuls les guides historiques et scellés produisent une page', () => {
+  const audit = spawnSync(process.execPath, ['scripts/service-forge.mjs', '--guide', 'audit'], { encoding: 'utf8', timeout: 30_000 });
+  assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
   const rendered = readdirSync(join(dist, 'integrations'))
     .filter((name) => name.endsWith('.html'))
     .map((name) => name.replace(/\.html$/, ''))
