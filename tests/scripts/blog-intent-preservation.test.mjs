@@ -13,7 +13,13 @@ const sourceRoot = resolve(import.meta.dirname, '../..');
 const root = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-fixture-'));
 const slug = 'prompt-chatgpt-expert-comptable';
 for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
-  cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
+  cpSync(join(sourceRoot, path), join(root, path), {
+    recursive: true,
+    // This fixture reconstructs a sealed archive, not a new publication slot.
+    // Do not import the live planner executable and its unrelated pending dates.
+    // Production keeps that guard; planner contracts exercise it separately.
+    filter: (source) => source !== join(sourceRoot, 'docs/strategy/site-v3/build-cluster-plan.py'),
+  });
 }
 // Date historique de cette fixture, cohérente avec ses preuves et son relevé.
 // Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.
