@@ -61,6 +61,8 @@ CHEMINS_CALENDRIER = (
     'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
     'docs/strategy/site-v3/mesures/autocompletion-cache.json',
     'docs/strategy/site-v3/build-cluster-plan.py', 'scripts/lib/blog-ia-catchup.mjs',
+    'docs/strategy/site-v3/build_cac_architecture.py',
+    'docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json',
 )
 
 
@@ -131,6 +133,37 @@ BRIEFS_IA_MANDATES = {
     'ia-comptabilite-confidentialite-donnees': 'rgpd-secret-securite',
     'automatiser-avec-ia-sans-changer-logiciel': 'ia-generative-agents',
 }
+
+
+# F4 : suppléments explicitement mandatés, pas des cinquièmes angles.
+SUPPLEMENTS_CAC_F4 = {
+    'cac-appreciation-outil-automatise': {
+        'requete': 'appréciation outils automatisés audit',
+        'datePlanifiee': '2026-10-20', 'format': 'how-to-guide'},
+    'cac-dossier-constitution-soixante-jours': {
+        'requete': 'archivage dossier audit 60 jours',
+        'datePlanifiee': '2026-10-21', 'format': 'listicle-checklist'},
+}
+SOURCE_MESURES_F4 = 'cac/mesures/f4-rubrique-preflight-2026-10-09.json'
+
+
+def verifier_supplements_cac(entries):
+    erreurs = []
+    for e in entries:
+        attendu = SUPPLEMENTS_CAC_F4.get(e['slug'])
+        if e.get('supplementMandate') and attendu is None:
+            erreurs.append(f"supplément CAC arbitraire : {e['slug']}")
+        if attendu is not None:
+            contrat = {**attendu, 'supplementMandate': 'cac-f4', 'profession': 'cac',
+                       'famille': 'cac-dossier-de-travail', 'role': 'audit-cac',
+                       'intent': 'executer', 'priorite': 3}
+            if any(e.get(k) != v for k, v in contrat.items()) or e.get('architectureRole') or e.get('angle'):
+                erreurs.append(f"supplément CAC hors mandat : {e['slug']}")
+    if any(e.get('profession') == 'cac' for e in entries):
+        for slug in SUPPLEMENTS_CAC_F4:
+            if sum(e['slug'] == slug for e in entries) != 1:
+                erreurs.append(f'supplément CAC absent ou doublonné : {slug}')
+    return erreurs
 
 
 def enum_du_schema(nom):
@@ -633,6 +666,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     erreurs = []
     regle_ia = lire_rattrapage_ia()
     tous = [pilier] + satellites
+    erreurs.extend(verifier_supplements_cac(tous))
     for e in tous:
         verifier_date_ia(regle_ia, e['slug'], e['date'], e.get('serie'))
     slugs = [e['slug'] for e in tous]
@@ -665,9 +699,10 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     for fid, membres in par_famille.items():
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
-        angles = [e for e in membres if not e.get('historique') and not e.get('serie') and not e.get('architectureRole')]
+        angles = [e for e in membres if not e.get('historique') and not e.get('serie') and not e.get('architectureRole') and e['slug'] not in SUPPLEMENTS_CAC_F4]
         # Conserver le stock initial ; chaque intention mandatée effectivement inscrite
         # dans sa famille ajoute une place, sans permettre un angle arbitraire.
+        # Les deux suppléments CAC sont hors stock de base, contrôlés par registre.
         attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
             BRIEFS_IA_MANDATES.get(e['slug']) == fid for e in angles)
         # Le brief IA 4 concrétise l'ancien angle 08, sur une seule URL.
@@ -799,7 +834,7 @@ def construire_json(poles, familles, pilier, satellites, liens, entrants):
         if not posts:
             continue
         clusters.append({'id': pid, 'name': pole['libelle'], 'color': pole['couleur'], 'families': sorted({e['famille'] for e in posts}, key=lambda f: familles[f]['rang']), 'posts': [
-            {'title': e['titre'], 'keyword': e['requete'], 'profession': e['profession'], 'architectureRole': e.get('architectureRole'), 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
+            {'title': e['titre'], 'keyword': e['requete'], 'profession': e['profession'], 'architectureRole': e.get('architectureRole'), **({'supplementMandate': e['supplementMandate']} if e.get('supplementMandate') else {}), 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
@@ -845,7 +880,7 @@ def construire_calendrier(pilier, satellites, familles, poles, jour=None):
 
          "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 : primaire à zéro le 21/09 dans `titres-intent-2026-09-21.json`, secondaires non mesurées, questions de la SERP par famille du 19/09 dans `questions-2026-09-19.json` ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
          '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
-         '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
+         '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible. F4 ajoute exactement deux suppléments mandatés dans le dossier de travail CAC : appréciation des outils automatisés et constitution finale du dossier, sans remplacer les angles de base ni modifier les quotas.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
          '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quinze articles ordinaires ; sans faits signés ni recette, le créneau reste vide. `manque` désigne une date échue conservée en trace, pas une publication.', '',

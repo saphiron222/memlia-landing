@@ -5,7 +5,8 @@
   "promotion": "À publication seulement : copier query et source dans config/page-intent-contract.json.pages, après mesure des formulations non mesurées, revue B3 et contrôle du HTML dist. Ne pas copier les routes différées.",
   "sources": [
     "docs/strategy/site-v3/cac/page-intent-plan.json",
-    "docs/strategy/site-v3/backlog-v3.json"
+    "docs/strategy/site-v3/backlog-v3.json",
+    "docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json"
   ],
   "familyDecisions": {
     "cac-fec-reception": {
@@ -326,6 +327,18 @@
           "state": "projete-non-publie"
         },
         {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "context": "Frontière de cette tâche dans la mission CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
+          "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "context": "Frontière de cette tâche dans la mission CAC",
+          "state": "projete-non-publie"
+        },
+        {
           "from": "/blog/cac-calendrier-mandats",
           "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
           "context": "Frontière de cette tâche dans la mission CAC",
@@ -607,6 +620,18 @@
           "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
           "to": "/blog/cac-dossier-travail-permanent",
           "context": "Dossier de travail du commissaire aux comptes : distinguer annuel et permanent",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "Appréciation des outils automatisés en audit : documenter les limites",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
           "state": "projete-non-publie"
         },
         {
@@ -2843,13 +2868,13 @@
           "state": "projete-non-publie"
         },
         {
-          "from": "/blog/cac-contributions-dossier-preservation",
+          "from": "/blog/cac-appreciation-outil-automatise",
           "to": "/blog/cac-feuille-maitresse-exemple",
           "context": "feuille maîtresse audit exemple",
           "state": "projete-non-publie"
         },
         {
-          "from": "/blog/cac-dossier-travail-permanent",
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
           "to": "/blog/cac-feuille-maitresse-exemple",
           "context": "feuille maîtresse audit exemple",
           "state": "projete-non-publie"
@@ -2942,7 +2967,7 @@
           "state": "projete-non-publie"
         },
         {
-          "from": "/blog/cac-dossier-travail-permanent",
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
           "to": "/blog/cac-referencement-dossier",
           "context": "référencement dossier audit",
           "state": "projete-non-publie"
@@ -3078,8 +3103,8 @@
         },
         {
           "from": "/blog/cac-contributions-dossier-preservation",
-          "to": "/blog/cac-feuille-maitresse-exemple",
-          "context": "feuille maîtresse audit exemple",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "appréciation outils automatisés audit",
           "state": "projete-non-publie"
         },
         {
@@ -3159,12 +3184,174 @@
         },
         {
           "from": "/blog/cac-dossier-travail-permanent",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "appréciation outils automatisés audit",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-travail-permanent",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "archivage dossier audit 60 jours",
+          "state": "projete-non-publie"
+        }
+      ]
+    },
+    {
+      "id": "cac-appreciation-outil-automatise",
+      "url": "/blog/cac-appreciation-outil-automatise",
+      "query": "appréciation outils automatisés audit",
+      "owner": "/blog/cac-appreciation-outil-automatise",
+      "profession": "cac",
+      "family": "cac-dossier-de-travail",
+      "state": "retenue-non-publiee",
+      "type": "supplement",
+      "angle": null,
+      "measure": {
+        "state": "mesuree",
+        "source": "docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json",
+        "query": "appréciation outils automatisés audit",
+        "measuredAt": "2026-10-09T21:54:22.406Z",
+        "instrument": "autocompleterGoogle",
+        "suggestions": 0,
+        "volumeMensuel": null
+      },
+      "terrain": [
+        "V020",
+        "V021",
+        "V022",
+        "V023",
+        "V065",
+        "V066"
+      ],
+      "purpose": "Fiche fictive outil, données, paramètres, tests et limites ; appréciation et décision conservées par le CAC",
+      "incoming": [
+        {
+          "from": "/blog/cac-contributions-dossier-preservation",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "appréciation outils automatisés audit",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-travail-permanent",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "appréciation outils automatisés audit",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "Appréciation des outils automatisés en audit : documenter les limites",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/commissariat-aux-comptes",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "Appréciation des outils automatisés en audit : documenter les limites",
+          "state": "projete-non-publie"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "context": "Frontière de cette tâche dans la mission CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/commissariat-aux-comptes",
+          "context": "Autres méthodes de préparation CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "archivage dossier audit 60 jours",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/cac-feuille-maitresse-exemple",
+          "context": "feuille maîtresse audit exemple",
+          "state": "projete-non-publie"
+        }
+      ]
+    },
+    {
+      "id": "cac-dossier-constitution-soixante-jours",
+      "url": "/blog/cac-dossier-constitution-soixante-jours",
+      "query": "archivage dossier audit 60 jours",
+      "owner": "/blog/cac-dossier-constitution-soixante-jours",
+      "profession": "cac",
+      "family": "cac-dossier-de-travail",
+      "state": "retenue-non-publiee",
+      "type": "supplement",
+      "angle": null,
+      "measure": {
+        "state": "mesuree",
+        "source": "docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json",
+        "query": "archivage dossier audit 60 jours",
+        "measuredAt": "2026-10-09T21:54:22.447Z",
+        "instrument": "autocompleterGoogle",
+        "suggestions": 0,
+        "volumeMensuel": null
+      },
+      "terrain": [
+        "V020",
+        "V021",
+        "V022",
+        "V023",
+        "V065",
+        "V066"
+      ],
+      "purpose": "Checklist fictive constitution finale, pièces, renvois et modifications ; délai de 60 jours à vérifier dans la NEP 230 applicable avant publication",
+      "incoming": [
+        {
+          "from": "/blog/cac-dossier-travail-permanent",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "archivage dossier audit 60 jours",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "archivage dossier audit 60 jours",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/commissariat-aux-comptes",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
+          "state": "projete-non-publie"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
+          "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "context": "Frontière de cette tâche dans la mission CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
+          "to": "/blog/commissariat-aux-comptes",
+          "context": "Autres méthodes de préparation CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
           "to": "/blog/cac-feuille-maitresse-exemple",
           "context": "feuille maîtresse audit exemple",
           "state": "projete-non-publie"
         },
         {
-          "from": "/blog/cac-dossier-travail-permanent",
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
           "to": "/blog/cac-referencement-dossier",
           "context": "référencement dossier audit",
           "state": "projete-non-publie"
@@ -3989,6 +4176,18 @@
           "state": "projete-non-publie"
         },
         {
+          "from": "/blog/cac-appreciation-outil-automatise",
+          "to": "/blog/commissariat-aux-comptes",
+          "context": "Autres méthodes de préparation CAC",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/cac-dossier-constitution-soixante-jours",
+          "to": "/blog/commissariat-aux-comptes",
+          "context": "Autres méthodes de préparation CAC",
+          "state": "projete-non-publie"
+        },
+        {
           "from": "/blog/cac-calendrier-mandats",
           "to": "/blog/commissariat-aux-comptes",
           "context": "Autres méthodes de préparation CAC",
@@ -4186,6 +4385,18 @@
           "from": "/blog/commissariat-aux-comptes",
           "to": "/blog/cac-dossier-travail-permanent",
           "context": "Dossier de travail du commissaire aux comptes : distinguer annuel et permanent",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/commissariat-aux-comptes",
+          "to": "/blog/cac-appreciation-outil-automatise",
+          "context": "Appréciation des outils automatisés en audit : documenter les limites",
+          "state": "projete-non-publie"
+        },
+        {
+          "from": "/blog/commissariat-aux-comptes",
+          "to": "/blog/cac-dossier-constitution-soixante-jours",
+          "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
           "state": "projete-non-publie"
         },
         {
@@ -6403,8 +6614,8 @@
     },
     {
       "from": "/blog/cac-contributions-dossier-preservation",
-      "to": "/blog/cac-feuille-maitresse-exemple",
-      "context": "feuille maîtresse audit exemple",
+      "to": "/blog/cac-appreciation-outil-automatise",
+      "context": "appréciation outils automatisés audit",
       "state": "projete-non-publie"
     },
     {
@@ -6433,12 +6644,84 @@
     },
     {
       "from": "/blog/cac-dossier-travail-permanent",
+      "to": "/blog/cac-appreciation-outil-automatise",
+      "context": "appréciation outils automatisés audit",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-dossier-travail-permanent",
+      "to": "/blog/cac-dossier-constitution-soixante-jours",
+      "context": "archivage dossier audit 60 jours",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "to": "/blog/cac-appreciation-outil-automatise",
+      "context": "Appréciation des outils automatisés en audit : documenter les limites",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-appreciation-outil-automatise",
+      "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "context": "Frontière de cette tâche dans la mission CAC",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/commissariat-aux-comptes",
+      "to": "/blog/cac-appreciation-outil-automatise",
+      "context": "Appréciation des outils automatisés en audit : documenter les limites",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-appreciation-outil-automatise",
+      "to": "/blog/commissariat-aux-comptes",
+      "context": "Autres méthodes de préparation CAC",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-appreciation-outil-automatise",
+      "to": "/blog/cac-dossier-constitution-soixante-jours",
+      "context": "archivage dossier audit 60 jours",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-appreciation-outil-automatise",
       "to": "/blog/cac-feuille-maitresse-exemple",
       "context": "feuille maîtresse audit exemple",
       "state": "projete-non-publie"
     },
     {
-      "from": "/blog/cac-dossier-travail-permanent",
+      "from": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "to": "/blog/cac-dossier-constitution-soixante-jours",
+      "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-dossier-constitution-soixante-jours",
+      "to": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "context": "Frontière de cette tâche dans la mission CAC",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/commissariat-aux-comptes",
+      "to": "/blog/cac-dossier-constitution-soixante-jours",
+      "context": "Constitution finale du dossier d’audit : la checklist des 60 jours",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-dossier-constitution-soixante-jours",
+      "to": "/blog/commissariat-aux-comptes",
+      "context": "Autres méthodes de préparation CAC",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-dossier-constitution-soixante-jours",
+      "to": "/blog/cac-feuille-maitresse-exemple",
+      "context": "feuille maîtresse audit exemple",
+      "state": "projete-non-publie"
+    },
+    {
+      "from": "/blog/cac-dossier-constitution-soixante-jours",
       "to": "/blog/cac-referencement-dossier",
       "context": "référencement dossier audit",
       "state": "projete-non-publie"
@@ -7045,10 +7328,11 @@
     }
   ],
   "meta": {
-    "pages": 50,
-    "links": 297,
+    "pages": 52,
+    "links": 309,
     "activeFamilies": 8,
     "articles": 32,
+    "supplements": 2,
     "volumeMensuel": null
   }
 }

@@ -23,7 +23,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
+const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--preview') ? 'preview' : process.argv.includes('--adopt') ? 'adopt' : 'render';
 const source = 'docs/design/blog-article-proofs';
 const contractPath = `${source}/content-contract.json`;
 const manifestPath = 'docs/qa/blog-article-proofs/manifest.json';
@@ -53,6 +53,30 @@ if (mode === 'check' && process.env.CF_PAGES === '1') {
   process.exit(0);
 }
 
+// Actifs globaux F4 livrés avant la préparation des recettes blog-only.
+// Seules ces deux paires peuvent attendre leur recette ; dès qu'elle existe,
+// sa correspondance reste obligatoire. Ce registre n'autorise aucune publication.
+const reservations = {
+  'automatiser-un-cabinet-cac-la-carte-des-taches': ['cac-inventaire-taches', 'cac-fiche-regle'],
+  'cac-reception-fec-constat': ['cac-fec-registre-reception', 'cac-fec-constat'],
+};
+for (const [article, preuves] of Map.groupBy(contract, (entry) => entry.article)) {
+  assert.equal(preuves.length, 2, `${article} doit porter exactement deux preuves`);
+  const ids = preuves.map(({ id }) => id);
+  const reserved = preuves.some((entry) => entry.reservation !== undefined);
+  if (reserved) {
+    assert.ok(preuves.every((entry) => entry.reservation === 'F4'), `Réservation inconnue : ${article}`);
+    assert.deepEqual(ids, reservations[article], `Paire réservée inconnue : ${article}`);
+  }
+  const recettePath = `editorial/recettes/${article}/recette.json`;
+  if (!existsSync(recettePath)) {
+    assert.ok(reserved, `Recette absente : ${article}`);
+    continue;
+  }
+  const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
+  assert.deepEqual(recette.inlineProofs?.map(({ id }) => id), ids, `Recette et contrat divergent : ${article}`);
+}
+
 const browser = await chromium.launch({ channel: 'chromium' });
 try {
   const page = await browser.newPage({ viewport: { width: 1720, height: 1000 }, deviceScaleFactor: 1 });
@@ -71,15 +95,7 @@ try {
   assert.ok(contract.every((entry) => entry.article && entry.alt && entry.source && entry.capturedAt), 'Métadonnées de preuve incomplètes');
   assert.ok(contract.every((entry) => /^\d{4}-\d{2}-\d{2}$/.test(entry.capturedAt)
     && !Number.isNaN(Date.parse(`${entry.capturedAt}T00:00:00Z`))), 'Date de capture invalide');
-  const articles = Map.groupBy(contract, (entry) => entry.article);
 
-  for (const [article, preuves] of articles) {
-    assert.equal(preuves.length, 2, `${article} doit porter exactement deux preuves`);
-    const recettePath = `editorial/recettes/${article}/recette.json`;
-    assert.ok(existsSync(recettePath), `Recette absente : ${article}`);
-    const recette = JSON.parse(readFileSync(recettePath, 'utf8'));
-    assert.deepEqual(recette.inlineProofs?.map(({ id }) => id), preuves.map(({ id }) => id), `Recette et contrat divergent : ${article}`);
-  }
 
   // Recette : chaque cadre est une seule fenêtre de référence dont l’en-tête nomme l’écran
   // et se déclare jeu d’essai fictif (ou reconstitution).
@@ -153,7 +169,7 @@ try {
     assert.equal(measured.height, 900, `Hauteur ${entry.id}`);
     assert.deepEqual(measured.clipped, [], `Texte tronqué : ${entry.id}`);
     assert.deepEqual(measured.hidden, [], `Texte masqué : ${entry.id}`);
-    if (mode !== 'adopt') assert.equal(measured.text, entry.centralText, `Contenu divergent : ${entry.id}`);
+    if (!['adopt', 'preview'].includes(mode)) assert.equal(measured.text, entry.centralText, `Contenu divergent : ${entry.id}`);
     adopted.push({ ...entry, centralText: measured.text });
 
     const png = await element.screenshot({ animations: 'disabled', path: `${output}/${entry.id}.png` });
@@ -166,6 +182,10 @@ try {
   }
   assert.equal(new Set(records.map((record) => record.webpSha256)).size, records.length, 'Deux preuves rendent la même image');
 
+  if (mode === 'preview') {
+    console.log(`preview : ${records.length} cadres vérifiés et rendus dans ${output}, sans adoption ni publication.`);
+    process.exitCode = 0;
+  } else {
   if (mode === 'adopt') writeFileSync(contractPath, `${JSON.stringify(adopted, null, 2)}\n`);
   const manifest = {
     schemaVersion: 1,
@@ -193,6 +213,7 @@ try {
     console.log(`${mode} : ${candidates.length} preuves d’article publiées dans public/proofs/blog.`);
   }
   for (const record of records) console.log(`  ${record.id.padEnd(30)} ${Math.round(record.bytes / 1024)} Ko`);
+  }
 } finally {
   await browser.close();
 }
