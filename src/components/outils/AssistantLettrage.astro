@@ -1,0 +1,47 @@
+---
+---
+<div data-lettrage>
+  <h2>Préparer des paires, garder la décision</h2>
+  <p>Aucun accès à votre logiciel comptable. Le fichier original reste intact. Import, calcul et rapport s’effectuent dans ce navigateur, sans stockage ni envoi réseau.</p>
+  <form>
+    <label for="lettrage-file">Export CSV de mouvements</label>
+    <input id="lettrage-file" type="file" accept=".csv,.txt,.tsv" aria-describedby="lettrage-help lettrage-error" />
+    <p data-file-name>Fichier choisi : aucun.</p>
+    <p id="lettrage-help">10 Mo et 20 000 lignes maximum. En-têtes obligatoires : id, compte, tiers, reference, date, debit, credit, devise. « lettre » facultatif : toute valeur non vide exclut une ligne déjà lettrée. Identifiants uniques conservés comme texte ; date AAAA-MM-JJ ; devise explicite par ligne (EUR, USD…). Montants positifs sans milliers, virgule ou point décimal, deux décimales maximum ; saisir 0 dans le côté inutilisé. Débit et crédit simultanés refusés.</p>
+    <div class="options">
+      <div><label for="lettrage-separator">Séparateur du CSV</label><select id="lettrage-separator"><option value=";">Point-virgule</option><option value=",">Virgule</option><option value="tab">Tabulation</option><option value="|">Barre verticale</option></select></div>
+      <div><label for="lettrage-encoding">Encodage du fichier</label><select id="lettrage-encoding"><option value="utf-8">UTF-8 (strict)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></div>
+    </div>
+    <div class="actions"><button type="submit" class="btn btn-principal">Importer et rechercher les paires</button><button type="button" data-example class="btn btn-contour">Essayer l’exemple fictif</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler le traitement</button><button type="button" data-reset class="btn btn-contour">Tout réinitialiser</button></div>
+    <p id="lettrage-error" data-error role="alert" tabindex="-1" hidden></p>
+  </form>
+  <p data-status role="status" aria-live="polite">Aucun fichier importé.</p>
+  <section data-result hidden aria-labelledby="lettrage-result-title">
+    <h3 id="lettrage-result-title" tabindex="-1">Rapport de préparation — à valider</h3>
+    <p data-summary></p>
+    <p>Seulement deux lignes de montant exactement opposé dans le même compte, tiers et devise. Référence identique non vide prioritaire ; sans référence, seulement une paire unique par montant. Références différentes : aucun rapprochement. Aucun arrondi, conversion, combinaison ou choix arbitraire. Les ambiguïtés restent à examiner.</p>
+    <h4>Paires proposées et décisions réversibles</h4>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Paires et décisions, défilement horizontal"><table data-pairs></table></div>
+    <div class="actions"><button type="button" data-pair-prev class="btn btn-contour">Paires précédentes</button><p data-pair-page></p><button type="button" data-pair-next class="btn btn-contour">Paires suivantes</button></div>
+    <h4>Toutes les lignes et exceptions</h4>
+    <label for="lettrage-filter">Afficher les lignes</label><select id="lettrage-filter"><option value="all">Tous les états</option><option value="proposé">Proposées</option><option value="accepté">Acceptées</option><option value="refusé">Paires refusées</option><option value="ambigu">Ambiguës</option><option value="restant">Restantes</option><option value="rejeté">Lignes rejetées à l’import</option><option value="exclu">Déjà lettrées, exclues</option></select>
+    <p>Le numéro de ligne source est physique, y compris les cellules multilignes. Chaque tableau se parcourt horizontalement au clavier (flèches après focus). Pagination d’affichage seulement : copie et export couvrent toutes les lignes et tous les états, sans filtre.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Lignes source et motifs, défilement horizontal"><table data-lines></table></div>
+    <div class="actions"><button type="button" data-line-prev class="btn btn-contour">Lignes précédentes</button><p data-line-page></p><button type="button" data-line-next class="btn btn-contour">Lignes suivantes</button></div>
+    <h4>Contrôle exact des sommes, séparé par devise et état</h4>
+    <p>Aucune somme entre devises. Les totaux incluent aussi les lignes rejetées ou exclues lorsque leurs montants sont lisibles ; le nombre de montants illisibles est indiqué. Un total nul ne constitue pas une validation comptable.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Contrôle des sommes par devise"><table data-sums></table></div>
+    <p>Rapport versionné lettrage-local-v1, CSV UTF-8 avec BOM et séparateur point-virgule. Une apostrophe est ajoutée aux cellules commençant par =, +, -, @ (même après des espaces), tabulation ou retour ligne. Cela neutralise les formules, y compris les soldes négatifs exportés en texte. Les contenus sont affichés comme texte, jamais comme HTML.</p>
+    <p>Le rapport n’est pas importable comme écriture ou lettrage définitif. Accepter une paire exprime votre décision dans ce rapport seulement ; aucune opération n’est faite dans votre dossier métier.</p>
+    <div class="actions"><button type="button" data-copy class="btn btn-contour">Copier le rapport CSV complet</button><button type="button" data-export class="btn btn-principal">Exporter le rapport CSV complet</button></div>
+    <label for="lettrage-copy-fallback" data-fallback-label hidden>Rapport complet à sélectionner si la copie est bloquée</label><textarea id="lettrage-copy-fallback" data-fallback readonly hidden rows="8"></textarea>
+  </section>
+  <noscript>JavaScript est nécessaire au traitement local ; aucun fichier n’est envoyé par ce formulaire.</noscript>
+</div>
+<script>
+  import { initLettrage } from '../../lib/lettrage-ui.mjs';
+  initLettrage();
+</script>
+<style>
+  [data-lettrage],form,section{display:grid;gap:16px;min-width:0}h2{font-size:var(--t-3xl)}h3{font-size:var(--t-2xl)}h4{font-size:var(--t-lg)}p{color:var(--texte-2);overflow-wrap:anywhere;margin:0}label{font-weight:600;overflow-wrap:anywhere}input,select,textarea{width:100%;max-width:100%;min-height:44px;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte);font:inherit;box-sizing:border-box;min-width:0}.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}.options>div{display:grid;gap:8px}.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.actions p{flex:1 1 120px}button{white-space:normal;min-height:44px}button:disabled{opacity:.55;cursor:not-allowed}.table-scroll{min-width:0;max-width:100%;overflow:auto;border:1px solid var(--ligne);border-radius:var(--r-cadre)}table{width:100%;border-collapse:collapse;font-size:var(--t-sm)}table :global(th),table :global(td){padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--ligne-douce);min-width:100px;max-width:280px;overflow-wrap:anywhere;white-space:pre-wrap}table :global(caption){padding:12px;text-align:left;font-weight:600}table :global(.decision-actions){display:flex;flex-wrap:wrap;gap:8px;min-width:180px}table :global(button){font:inherit;white-space:normal;min-height:44px}section{padding:20px;border:1px solid var(--ligne);border-radius:var(--r-boite);background:var(--surface-page)}[data-error]{border-left:3px solid var(--rouge);padding:12px;background:var(--rouge-voile);color:var(--texte-fort)}[hidden]{display:none!important}:is(input,select,textarea,button,.table-scroll):focus-visible{outline:2px solid var(--accent-appui);outline-offset:3px}@media(max-width:480px){section{padding:12px}.actions .btn{max-width:100%}}
+</style>

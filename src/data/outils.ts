@@ -47,6 +47,23 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+    slug: 'assistant-lettrage-comptable-local', categorie: 'verifier', statut: 'disponible',
+    libelleAction: 'Préparer les paires de lettrage à valider',
+    h1: 'Assistant de lettrage comptable local', title: 'Assistant de lettrage comptable local | Memlia',
+    description: 'Préparez le lettrage d’un export CSV : paires expliquées, ambiguïtés et lignes restantes. Vous validez ; le fichier original reste inchangé.',
+    promesse: { entree: 'Export CSV avec identifiant, compte, tiers, référence, date, débit, crédit et devise', resultat: 'Paires expliquées à valider individuellement, ambiguïtés et rapport CSV complet' },
+    limites: [
+      'Deux mouvements opposés de montant exact, même compte, tiers et devise. Référence identique non vide prioritaire ; sans référence, paire unique seulement.',
+      'Plusieurs candidats : aucun choix arbitraire. Pas de tolérance, de combinaison de règlements ni de rapprochement bancaire.',
+      'La validation documente une décision, jamais une écriture dans votre logiciel. Le rapport n’est pas un fichier d’import de lettrage définitif.',
+      '10 Mo et 20 000 lignes maximum. Identifiants dupliqués, dates ou montants invalides et débit/crédit simultanés sont refusés et exportés avec leur motif. Les lignes déjà lettrées sont exclues si la colonne lettre est présente.',
+    ],
+    mentionLocale: 'Import, calcul, copie et export dans cet onglet, sans envoi ni stockage persistant. Le fichier original reste inchangé. Effacer termine le Worker et retire les données de la page ; les téléchargements restent sur votre appareil.',
+    proof: 'v2/46-outil-lettrage', zoneLarge: true,
+    source: { titre: 'Convention de préparation', nom: 'Méthode Memlia — écrire et éprouver une règle', url: '/methode', extrait: 'Paires exactes, références explicites, ambiguïtés visibles et validation individuelle : une convention locale de préparation, pas une norme ni une certification comptable.', verifieeLe: '7 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
 
     slug: 'generateur-relance-facture-impayee', categorie: 'ecrire', statut: 'disponible',
     libelleAction: 'Préparer une relance de facture impayée',

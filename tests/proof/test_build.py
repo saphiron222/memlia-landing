@@ -19,93 +19,142 @@ SITE = 'https://memlia.fr'
 PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'commissaires-aux-comptes', 'contact', 'garanties',
                'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
                'politique-de-confidentialite']
+def public_integrations():
+    """Inventaire source, indépendant du rendu et de l'audit de la forge.
+
+    Le corpus historique est déclaré dans son tableau TS ; chaque ajout généré
+    doit correspondre à une recette, ses preuves et une revue encore scellées.
+    L'audit de la forge conserve la validation métier et celle du renderer.
+    """
+    source = (ROOT / 'src/data/integrations.ts').read_text(encoding='utf-8')
+    historical = re.search(r'export const INTEGRATIONS_HISTORIQUES\s*:[^=]+?=\s*\[(.*?)\n\][ \t]*(?:as[ \t]+const[ \t]*)?;', source, re.S)
+    assert historical is not None, 'Tableau historique absent ou illisible'
+    old = re.findall(r"\bslug:\s*'([a-z0-9]+(?:-[a-z0-9]+)*)'", historical.group(1))
+    assert old and len(old) == len(set(old)), 'Slugs historiques absents ou dupliqués'
+
+    def read(path):
+        try:
+            return json.loads((ROOT / path).read_text(encoding='utf-8'))
+        except (OSError, ValueError) as error:
+            raise AssertionError(f'Provenance guide illisible : {path}') from error
+
+    def digest(path):
+        target = (ROOT / path).resolve()
+        assert target.is_relative_to(ROOT.resolve()), f'Preuve hors dépôt : {path}'
+        try:
+            return hashlib.sha256(target.read_bytes()).hexdigest()
+        except OSError as error:
+            raise AssertionError(f'Preuve guide absente : {path}') from error
+
+    entries = read('src/data/guides.generated.json')
+    proofs = read('src/data/guide-proofs.generated.json')
+    assert isinstance(entries, list) and isinstance(proofs, dict), 'Collections guides invalides'
+    slugs = set(old)
+    generated = set()
+    for entry in entries:
+        slug = entry.get('slug')
+        assert isinstance(slug, str) and re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug), 'Slug généré invalide'
+        assert slug not in slugs, f'Guide dupliqué ou historique écrasé : {slug}'
+        recipe_path = f'guides/recettes/{slug}/recette.json'
+        state = f'guides/etats/{slug}'
+        recipe = read(recipe_path)
+        manifest = read(f'{state}/manifest.json')
+        seal_path = f'{state}/scellement.json'
+        seal = read(seal_path)
+        review_path = f'guides/recettes/{slug}/revue.json'
+        review = read(review_path)
+        assert recipe.get('version') == 1 and recipe.get('type') == 'guide' and recipe.get('mode') == 'nouveau', slug
+        assert recipe.get('integration') == entry, f'Collection différente de la recette : {slug}'
+        assert manifest.get('version') == 1 and manifest.get('mode') == 'nouveau' and manifest.get('slug') == slug, slug
+        assert manifest.get('status') in ('scelle', 'publie'), f'Guide sans sceau : {slug}'
+        assert seal.get('version') == 1 and isinstance(manifest.get('proof'), dict), slug
+        assert re.fullmatch(r'[a-f0-9]{64}', manifest.get('rendererSha256', '')), f'Renderer non identifié : {slug}'
+        assert manifest.get('candidateSha256') == digest(recipe_path), f'Recette modifiée : {slug}'
+        assert manifest.get('sealSha256') == digest(seal_path), f'Sceau modifié : {slug}'
+        for key in ('slug', 'candidateSha256', 'files', 'rendererSha256', 'proof'):
+            assert seal.get(key) == manifest.get(key), f'Sceau divergent ({key}) : {slug}'
+        assert seal.get('reviewSha256') == digest(review_path), f'Revue modifiée : {slug}'
+        assert review.get('status') == 'PASS' and review.get('kind') == recipe.get('reviewKind', 'qa'), slug
+        assert review.get('candidateSha256') == manifest['candidateSha256'], slug
+        assert review.get('reviewer') and review['reviewer'] not in (recipe.get('author'), entry.get('auteur')), slug
+        evidence = recipe.get('demand', {}).get('evidencePath', '')
+        assert re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]*\.json', evidence), f'Provenance invalide : {slug}'
+        evidence_path = f'guides/recettes/{slug}/{evidence}'
+        assert recipe['demand'].get('sha256') == digest(evidence_path), f'Demande modifiée : {slug}'
+        files = manifest.get('files', {})
+        assert set(files) == {recipe_path, evidence_path, f'{state}/preuve.html', f'public/proofs/integrations/{slug}.webp'}, f'Inventaire de preuves divergent : {slug}'
+        for path, expected in files.items():
+            assert digest(path) == expected, f'Preuve modifiée : {path}'
+        assert proofs.get(f'integrations/{slug}') == manifest.get('proof'), f'Métadonnées divergentes : {slug}'
+        generated.add(f'integrations/{slug}')
+        slugs.add(slug)
+    assert set(proofs) == generated, 'Métadonnées de preuve orphelines'
+    return slugs
+
 INTEGRATION_PAGES = {
     'rapprochement-bancaire-sage', 'lettrage-sage', 'dsn-sage', 'bulletin-de-paie-sage',
     'saisie-comptable-sage', 'cloture-sage', 'lettrage-cegid', 'dsn-silae',
     'bulletin-de-paie-silae',
 }
 PREVIEW_ARTICLES = {slug for slug in os.environ.get('BLOG_PREVIEW_SLUGS', '').split(',') if slug}
-def public_integrations():
-    """Corpus historique et définitions générées liées à leurs preuves scellées.
-
-    L'oracle reste indépendant du validateur JS ; guide:audit contrôle en plus
-    les règles métier, le rendu et la mesure de demande avant construction.
-    """
-    expected = set(INTEGRATION_PAGES)
-    def read(path):
-        return json.loads((ROOT / path).read_text())
-    def digest(path):
-        return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
-    for entry in read('src/data/guides.generated.json'):
-        slug = entry.get('slug', '')
-        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) or slug in expected:
-            raise ValueError(f'Guide généré dupliqué ou invalide : {slug}')
-        recipe_path = f'guides/recettes/{slug}/recette.json'
-        recipe = read(recipe_path)
-        manifest = read(f'guides/etats/{slug}/manifest.json')
-        seal_path = f'guides/etats/{slug}/scellement.json'
-        seal = read(seal_path)
-        files = manifest.get('files', {})
-        asset = f'public/proofs/integrations/{slug}.webp'
-        if (recipe.get('mode') != 'nouveau' or recipe.get('integration') != entry
-                or manifest.get('slug') != slug or manifest.get('mode') != 'nouveau'
-                or manifest.get('status') not in {'scelle', 'publie'}
-                or manifest.get('candidateSha256') != digest(recipe_path)
-                or manifest.get('sealSha256') != digest(seal_path)
-                or seal.get('slug') != slug or seal.get('candidateSha256') != manifest['candidateSha256']
-                or seal.get('files') != files or recipe_path not in files or asset not in files
-                or seal.get('reviewSha256') != digest(f'guides/recettes/{slug}/revue.json')):
-            raise ValueError(f'Guide sans provenance scellée cohérente : {slug}')
-        for path, hash_value in files.items():
-            if not (ROOT / path).resolve().is_relative_to(ROOT.resolve()) or digest(path) != hash_value:
-                raise ValueError(f'Preuve modifiée ou hors dépôt : {path}')
-        expected.add(slug)
-    return expected
-
-
 class PublicGuideInventoryProof(unittest.TestCase):
     def test_inventaire_extensible_mais_uniquement_depuis_un_sceau_coherent(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             slug = 'controle-fixture'
-            recipe = {'mode': 'nouveau', 'integration': {'slug': slug}}
+            recipe = {'version': 1, 'type': 'guide', 'mode': 'nouveau', 'author': 'dev',
+                      'integration': {'slug': slug}}
             def write(path, data):
                 target = root / path
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(json.dumps(data))
                 return hashlib.sha256(target.read_bytes()).hexdigest()
             recipe_path = f'guides/recettes/{slug}/recette.json'
+            evidence_path = f'guides/recettes/{slug}/autocomplete.json'
+            evidence_hash = write(evidence_path, {'fixture': True})
+            recipe['demand'] = {'evidencePath': 'autocomplete.json', 'sha256': evidence_hash}
             candidate = write(recipe_path, recipe)
             asset_path = f'public/proofs/integrations/{slug}.webp'
             asset_hash = write(asset_path, {'fixture': True})
-            review_hash = write(f'guides/recettes/{slug}/revue.json', {'status': 'PASS'})
-            files = {recipe_path: candidate, asset_path: asset_hash}
-            seal = {'slug': slug, 'candidateSha256': candidate, 'files': files, 'reviewSha256': review_hash}
+            review_hash = write(f'guides/recettes/{slug}/revue.json',
+                                {'kind': 'qa', 'status': 'PASS', 'reviewer': 'qa', 'candidateSha256': candidate})
+            html_path = f'guides/etats/{slug}/preuve.html'
+            files = {recipe_path: candidate, asset_path: asset_hash, evidence_path: evidence_hash,
+                     html_path: write(html_path, {'fixture': True})}
+            proof = {'alt': 'Simulation'}
+            renderer = hashlib.sha256(b'renderer-fixture').hexdigest()
+            seal = {'version': 1, 'slug': slug, 'candidateSha256': candidate, 'files': files,
+                    'reviewSha256': review_hash, 'rendererSha256': renderer, 'proof': proof}
             seal_hash = write(f'guides/etats/{slug}/scellement.json', seal)
-            manifest = {'slug': slug, 'mode': 'nouveau', 'status': 'scelle', 'candidateSha256': candidate, 'files': files, 'sealSha256': seal_hash}
+            manifest = {'version': 1, 'slug': slug, 'mode': 'nouveau', 'status': 'scelle',
+                        'candidateSha256': candidate, 'files': files, 'sealSha256': seal_hash,
+                        'rendererSha256': renderer, 'proof': proof}
             write(f'guides/etats/{slug}/manifest.json', manifest)
             write('src/data/guides.generated.json', [recipe['integration']])
+            write('src/data/guide-proofs.generated.json', {f'integrations/{slug}': proof})
             (root / 'src/data/integrations.ts').write_text(
                 "import generated from './guides.generated.json' with { type: 'json' };\n"
-                'export const INTEGRATIONS_INDEXABLES = ' + json.dumps(
-                    [{'slug': historical} for historical in sorted(INTEGRATION_PAGES)]) + '.concat(generated);')
+                'export const INTEGRATIONS_HISTORIQUES: readonly IntegrationDefinition[] = [\n'
+                + ''.join(f"{{slug: '{historical}'}},\n" for historical in sorted(INTEGRATION_PAGES))
+                + '];\nexport const INTEGRATIONS_INDEXABLES = INTEGRATIONS_HISTORIQUES.concat(generated);')
             with patch.dict(globals(), ROOT=root):
                 self.assertEqual(public_integrations(), INTEGRATION_PAGES | {slug})
                 self.assertEqual(set(integration_pages()), INTEGRATION_PAGES | {slug})
                 for status in ['prepare', 'inconnu']:
                     write(f'guides/etats/{slug}/manifest.json', {**manifest, 'status': status})
-                    with self.assertRaises(ValueError):
+                    with self.assertRaises(AssertionError):
                         public_integrations()
-                    with self.assertRaises(ValueError):
+                    with self.assertRaises(AssertionError):
                         integration_pages()
                 write(f'guides/etats/{slug}/manifest.json', manifest)
                 for path in [asset_path, recipe_path, f'guides/etats/{slug}/scellement.json', f'guides/recettes/{slug}/revue.json']:
                     original = (root / path).read_bytes()
                     (root / path).write_text('{}')
-                    with self.assertRaises(ValueError):
+                    with self.assertRaises(AssertionError):
                         public_integrations()
                     (root / path).write_bytes(original)
                 write('src/data/guides.generated.json', [])
+                write('src/data/guide-proofs.generated.json', {})
                 self.assertEqual(public_integrations(), INTEGRATION_PAGES)
                 self.assertEqual(set(integration_pages()), INTEGRATION_PAGES)
 
@@ -126,8 +175,13 @@ def fixed_pages(nested=False):
 
 
 def integration_pages():
+    sealed = public_integrations()
+    # Les fixtures de contrat minimales déclarent seulement le tableau historique.
+    source = (ROOT / 'src/data/integrations.ts').read_text(encoding='utf-8')
+    if not re.search(r'export const INTEGRATIONS_INDEXABLES\b', source):
+        return sorted(sealed)
     expected = [entry['slug'] for entry in source_export(ROOT, 'src/data/integrations.ts', 'INTEGRATIONS_INDEXABLES')]
-    if len(expected) != len(set(expected)) or not public_integrations() <= set(expected):
+    if len(expected) != len(set(expected)) or sealed != set(expected):
         raise ValueError('Inventaire source incomplet ou dupliqué')
     return expected
 
@@ -291,8 +345,11 @@ class SourceInventoryRegression(unittest.TestCase):
                 source.write_text('---\n---\n<h1>Page</h1>')
                 (dist / f'{slug}.html').write_text('<html lang="fr"><h1>Page</h1></html>')
             (root / 'src/data/integrations.ts').write_text(
-                'export const INTEGRATIONS_INDEXABLES = ' + json.dumps([{'slug': slug} for slug in sorted(integrations)]) + ';')
+                'export const INTEGRATIONS_HISTORIQUES: readonly IntegrationDefinition[] = [\n'
+                + ''.join(f"{{slug: '{slug}'}},\n" for slug in sorted(integrations))
+                + '];\nexport const INTEGRATIONS_INDEXABLES = INTEGRATIONS_HISTORIQUES;')
             (root / 'src/data/guides.generated.json').write_text('[]')
+            (root / 'src/data/guide-proofs.generated.json').write_text('{}')
             for slug in integrations:
                 (dist / 'integrations' / f'{slug}.html').write_text('<html lang="fr"><h1>Guide</h1></html>')
             proof = BuildProof('test_pages_one_h1_french')
@@ -377,10 +434,9 @@ class BuildProof(unittest.TestCase):
         self.assertEqual({p.stem for p in pages}, expected_pages)
         self.assertEqual({article.stem for article in articles()}, public_articles() | PREVIEW_ARTICLES)
         integrations = sorted((DIST / 'integrations').glob('*.html'))
+        self.assertEqual({page.stem for page in integrations}, public_integrations())
         expected_integrations = integration_pages()
-        self.assertGreaterEqual(len(expected_integrations), len(INTEGRATION_PAGES))
         self.assertEqual(len(expected_integrations), len(set(expected_integrations)), 'slugs sources dupliqués')
-        self.assertTrue(INTEGRATION_PAGES <= set(expected_integrations), 'intégrations historiques perdues')
         self.assertEqual({page.stem for page in integrations}, set(expected_integrations))
         for page in pages + articles() + integrations:
             doc = Document(page)
@@ -448,6 +504,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec',
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
+                     f'{SITE}/outils-comptables-gratuits/assistant-lettrage-comptable-local',
                      f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
                      f'{SITE}/outils-comptables-gratuits/generateur-relance-facture-impayee',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {

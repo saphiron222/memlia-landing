@@ -24,6 +24,41 @@
   ],
   "articles": [
     {
+      "slug": "lettrage-ebp",
+      "type": "guide",
+      "url": "https://memlia.fr/integrations/lettrage-ebp",
+      "requete": "lettrage ebp",
+      "secondaires": [
+        "lettrage manuel EBP",
+        "lettrage automatique EBP"
+      ],
+      "famille": "gestion-pieces-comptables",
+      "format": "guide-tache-logiciel",
+      "publieLe": null,
+      "titreOnglet": "Lettrage EBP : contrôler les paires | Memlia",
+      "source": "G2 volet 2 ; preuve Google du 06/10/2026 dans guides/recettes/lettrage-ebp/autocomplete.json : neuf suggestions distinctes, aucun volume revendiqué. Revue métier PASS du 07/10, candidat scellé non publié ; indexation, trafic et conversions ND."
+    },
+    {
+      "slug": "export-fec-ebp",
+      "type": "guide",
+      "url": "https://memlia.fr/integrations/export-fec-ebp",
+      "requete": "export fec ebp",
+      "secondaires": ["export fec provisoire ebp", "extraction fec ebp", "export fichier fec ebp compta"],
+      "famille": "production-comptable",
+      "format": "guide",
+      "publieLe": null,
+      "titreOnglet": "Export FEC EBP : destination et périmètre | Memlia",
+      "source": "G2 EC ; guides/recettes/export-fec-ebp/autocomplete.json, relevé Google France du 06/10/2026 : sept suggestions distinctes. Intention export EBP distincte du vérificateur structurel FEC. Trafic et indexation moteur ND."
+    },
+    {
+      "slug": "assistant-lettrage-comptable-local", "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/assistant-lettrage-comptable-local",
+      "requete": "lettrage comptable excel", "secondaires": ["assistant lettrage CSV local"],
+      "famille": "preparation-lettrage", "format": "web-application", "publieLe": null,
+      "titreOnglet": "Assistant de lettrage comptable local | Memlia",
+      "source": "Fiche EC 03 et demande-autocomplete.json du 06/10/2026 : une suggestion identique. Candidat non publié, trafic/indexation/usages ND ; intention distincte des guides Sage et Cegid."
+    },
+    {
       "slug": "generateur-relance-facture-impayee", "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee",
       "requete": "générateur relance facture impayée",

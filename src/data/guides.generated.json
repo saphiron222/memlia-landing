@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "slug": "export-fec-ebp",
+    "task": "export FEC",
+    "vendor": "EBP",
+    "product": "EBP Comptabilité",
+    "primaryQuery": "export fec ebp",
+    "suggestions": 7,
+    "modifiers": [
+      "export fec provisoire ebp",
+      "extraction fec ebp",
+      "export fichier fec ebp compta"
+    ],
+    "h1": "Export FEC EBP : choisir le bon export et contrôler son périmètre",
+    "tabTitle": "Export FEC EBP : destination et périmètre | Memlia",
+    "description": "Préparez un export FEC EBP en distinguant comptable et administration fiscale, puis contrôlez exercice, période, régime, codage et pièces jointes avant validation.",
+    "intro": "Dans EBP Comptabilité, choisissez d’abord le destinataire : l’export Provisoire au format FEC est destiné au comptable ; l’export comptabilité informatisé FEC est destiné à l’administration fiscale. Ouvrez Déclaratif, puis Fichier des écritures comptables. Avant d’exporter, vérifiez l’exercice, la période, le régime, le codage et les pièces jointes. Nous préparons ces contrôles ; vous confirmez les paramètres et réalisez l’export dans EBP.",
+    "datePublication": "2026-10-07",
+    "dateMiseAJour": "2026-10-07",
+    "auteur": "kevin",
+    "service": {
+      "href": "/automatisation/saisie-comptable",
+      "label": "Voir le moyeu saisie comptable"
+    },
+    "officialPath": "Déclaratif → Fichier des écritures comptables → choisir le type d’export selon le destinataire → contrôler les paramètres → Exporter.",
+    "documentScope": "La fiche EBP porte sur EBP Comptabilité, pas sur EBP Bâtiment ou Gestion Commerciale. Elle distingue les deux exports et leurs paramètres ; l’option de documents liés aux écritures est annoncée depuis les versions 2024. Vérifiez votre édition et les options visibles avant de suivre ce parcours. Nos cas fictifs préparent une demande d’export : ils ne constituent ni un essai dans EBP ni une validation fiscale du fichier.",
+    "fields": [
+      {
+        "label": "destinataire",
+        "control": "Identifier le comptable ou l’administration fiscale avant de choisir l’export. Une destination inconnue arrête la préparation ; un export provisoire ne se substitue pas au parcours destiné à l’administration."
+      },
+      {
+        "label": "exercice et période",
+        "control": "Comparer l’exercice sélectionné et les dates de début et de fin à la demande du destinataire. Dans notre règle, une période hors de l’exercice ou différente de la demande arrête la préparation."
+      },
+      {
+        "label": "régime",
+        "control": "Relever le régime affiché et le faire confirmer à partir des paramètres du dossier. Ne pas le déduire du nom du fichier ou du destinataire."
+      },
+      {
+        "label": "codage du fichier",
+        "control": "Relever le codage proposé et vérifier celui attendu par le destinataire. Un choix non confirmé reste à valider ; nous n’inventons pas de valeur par défaut."
+      },
+      {
+        "label": "pièces jointes",
+        "control": "Décider si les documents liés doivent être inclus et vérifier la disponibilité de l’option. EBP annonce cette option depuis 2024 : les noms reposent sur PieceRef pour le provisoire, sur EcritureNum pour l’export définitif."
+      },
+      {
+        "label": "emplacement et nom du fichier",
+        "control": "Choisir un dossier de sortie distinct des fichiers déjà reçus. La fiche EBP demande de conserver le nom généré ; nous ne renommons ni ne remplaçons silencieusement un fichier existant."
+      }
+    ],
+    "knownTrap": "Un fichier au format FEC ne dit pas à lui seul quel export a été choisi. La destination précède le contrôle des paramètres. La présence de pièces jointes et un contrôle structurel ne prouvent pas la conformité fiscale ; une période partielle demandée par le comptable ne doit pas être reprise automatiquement pour une autre destination.",
+    "writtenRule": "Préparer une fiche de paramètres seulement si le destinataire est connu et si la période correspond à la demande dans l’exercice retenu. Le régime doit être identifié. Un codage ou un choix de pièces jointes non confirmé reste à valider ; une destination absente ou un périmètre incohérent arrête la préparation. La proposition ne modifie aucun paramètre dans EBP et ne lance aucun export.",
+    "boundary": {
+      "prepared": "Comparer la demande aux paramètres relevés et préparer une fiche de contrôle sans modifier le dossier, ses écritures ou ses fichiers.",
+      "validation": "Confirmer le type d’export, l’exercice, la période, le régime, le codage, les pièces jointes et le dossier de sortie avant toute action.",
+      "human": "Décider de la transmission, réaliser l’export dans EBP et apprécier la portée fiscale du fichier ; conserver les fichiers reçus et les choix déjà saisis."
+    },
+    "replay": [
+      {
+        "input": "Comptable ; exercice 2025 ; période 01/01–31/12/2025 ; régime et codage confirmés ; sans pièces",
+        "rule": "Destination et paramètres concordent avec la demande",
+        "outcome": "Préparé",
+        "detail": "Fiche pour export provisoire proposée ; lancement et transmission restent humains."
+      },
+      {
+        "input": "Administration ; exercice et période 2025 confirmés ; régime identifié ; codage ou pièces à confirmer",
+        "rule": "Choix de codage ou de documents encore ouvert",
+        "outcome": "À valider",
+        "detail": "Parcours administration repéré ; choix non déduit, aucun export lancé."
+      },
+      {
+        "input": "Destination inconnue ; exercice 2025 ; période demandée jusqu’au 31/01/2026, hors exercice",
+        "rule": "Destination absente et période incompatible",
+        "outcome": "Arrêt",
+        "detail": "Demander le destinataire et corriger le périmètre ; aucun paramètre remplacé."
+      }
+    ],
+    "source": {
+      "title": "EBP — Générer un fichier FEC avec ou sans pièces jointes dans EBP Comptabilité",
+      "url": "https://support.ebp.com/hc/fr/articles/360009858758",
+      "checkedAt": "2026-10-07",
+      "fact": "L’aide distingue « L’export Provisoire au format FEC » pour le comptable et « L’export comptabilité informatisé FEC » pour l’administration fiscale. Elle décrit Déclaratif → Fichier des écritures comptables, exercice, période, régime et codage, la conservation du nom généré et les documents liés depuis 2024 (PieceRef ou EcritureNum selon l’export). Nos critères de préparation sont une règle proposée au cabinet, pas une garantie fiscale."
+    }
+  },
+  {
+    "slug": "lettrage-ebp",
+    "task": "lettrage",
+    "vendor": "EBP",
+    "product": "EBP Comptabilité",
+    "primaryQuery": "lettrage ebp",
+    "suggestions": 9,
+    "modifiers": [
+      "lettrage manuel EBP",
+      "lettrage automatique EBP",
+      "contrôle des paires"
+    ],
+    "h1": "Lettrage EBP : contrôler les paires avant de les valider",
+    "tabTitle": "Lettrage EBP : contrôler les paires | Memlia",
+    "description": "Contrôlez les paires de lettrage EBP : compte, pièces, montants et sens. Distinguez l’assistant natif, la proposition préparée et les exceptions à valider.",
+    "intro": "EBP Comptabilité propose un lettrage manuel et un assistant de lettrage automatique. Avant le geste, nous préparons une liste de paires et de leurs exceptions : même compte, référence justifiée, débit et crédit équilibrés, candidat unique. Une égalité de montant ne suffit pas à reconnaître un règlement ; vous gardez le choix des lignes et le lettrage dans EBP.",
+    "datePublication": "2026-10-07",
+    "dateMiseAJour": "2026-10-07",
+    "auteur": "kevin",
+    "service": {
+      "href": "/automatisation/saisie-comptable",
+      "label": "Voir la préparation de saisie comptable"
+    },
+    "officialPath": "Dans EBP : Consultation → Consultation des comptes → Compte Général. Pour le lettrage manuel, sélectionner les lignes équilibrées puis Plus d’actions → Lettrer. Pour le lettrage automatique natif, Plus d’actions → Lettrage automatique ouvre l’assistant.",
+    "documentScope": "La fiche officielle concerne EBP Comptabilité et décrit les deux parcours de lettrage ; elle ne précise ni édition ni version chiffrée. Elle demande l’équilibre des lignes sélectionnées pour le lettrage manuel, sans détailler les critères de l’assistant automatique. Les contrôles de référence et d’unicité ci-dessous sont notre règle de préparation, à recetter dans l’environnement autorisé du cabinet, pas des fonctions supplémentaires attribuées à EBP.",
+    "fields": [
+      {
+        "label": "Compte et périmètre",
+        "control": "Vérifier le Compte Général consulté et le périmètre des lignes retenues. Ne pas proposer une paire issue de comptes différents ni poursuivre si le compte manque."
+      },
+      {
+        "label": "Pièces et référence",
+        "control": "Relier la facture et le règlement à leurs pièces justificatives. La référence commune doit être établie par ces pièces, pas déduite d’un libellé ressemblant."
+      },
+      {
+        "label": "Montant et sens",
+        "control": "Comparer les montants au centime et distinguer débit et crédit. La sélection doit s’équilibrer ; un écart n’est ni compensé ni écrit automatiquement."
+      },
+      {
+        "label": "Unicité et état des lignes",
+        "control": "Chercher les autres candidats dans le périmètre et écarter les lignes déjà lettrées. Plusieurs règlements possibles restent visibles, sans choix implicite ni modification des saisies."
+      }
+    ],
+    "knownTrap": "L’équilibre d’une sélection permet le geste décrit dans l’aide EBP ; il ne prouve pas que la facture et le règlement portent sur la même pièce. Deux règlements de même montant peuvent satisfaire ce contrôle. L’existence du lettrage automatique natif ne dispense pas de relire la paire proposée selon la règle du cabinet.",
+    "writtenRule": "Notre règle de préparation propose une paire seulement si les deux lignes ouvertes appartiennent au même compte, ont une référence commune justifiée et unique dans le périmètre, portent des sens opposés et s’équilibrent au centime. Plusieurs candidats restent à valider sans proposition de choix. Un compte absent, une pièce manquante ou une sélection non équilibrée arrête la préparation. Paiements partiels, regroupements et écarts sortent de cette règle à deux lignes : le collaborateur les traite séparément. Aucune saisie ni aucun code de lettrage n’est modifié.",
+    "boundary": {
+      "prepared": "Préparer la liste des paires certaines et des exceptions avec les références de leurs pièces, sans écrire dans EBP.",
+      "validation": "Présenter tous les candidats ambigus et leur motif ; attendre le choix du collaborateur, sans départager par le seul montant.",
+      "human": "Choisir les lignes et effectuer le lettrage dans EBP, avec le parcours manuel ou l’assistant natif ; décider du traitement des écarts et des cas hors règle."
+    },
+    "replay": [
+      {
+        "input": "Compte 411001 : facture F-018, débit 480,00 € ; règlement R-018, crédit 480,00 €, référence F-018 justifiée ; deux lignes ouvertes, un seul candidat",
+        "rule": "Même compte, référence unique, sens opposés et sélection équilibrée",
+        "outcome": "Préparé",
+        "detail": "F-018 / R-018 proposée avec les pièces ; le code de lettrage reste inchangé."
+      },
+      {
+        "input": "Deux règlements R-021 et R-022, crédits de 480,00 € sur le compte 411001, pour une facture F-021 au débit ; rattachement non départagé",
+        "rule": "Même montant mais plusieurs candidats, sans référence commune unique établie",
+        "outcome": "À valider",
+        "detail": "Les deux candidats restent visibles ; le collaborateur vérifie les pièces avant de choisir."
+      },
+      {
+        "input": "Compte 411001 : facture F-030 au débit de 480,00 € et règlement R-030 au crédit de 470,00 €",
+        "rule": "Sélection non équilibrée : écart de 10,00 €",
+        "outcome": "Arrêt",
+        "detail": "Aucune paire proposée ni écriture d’écart créée ; le collaborateur recherche la cause."
+      }
+    ],
+    "source": {
+      "title": "Lettrer / Délettrer un compte comptable dans EBP Comptabilité",
+      "url": "https://support.ebp.com/hc/fr/articles/360011494518",
+      "checkedAt": "2026-10-07",
+      "fact": "L’aide EBP indique « Pour effectuer un lettrage manuel, cliquez sur le menu Consultation, puis Consultation des comptes. », exige que les lignes sélectionnées s’équilibrent et décrit « Depuis le menu Plus d'actions, sélectionnez Lettrage automatique. ». Elle atteste les parcours natifs, pas les critères d’appariement de notre préparation ni un essai dans EBP."
+    }
+  }
+]
