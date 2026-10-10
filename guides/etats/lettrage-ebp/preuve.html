@@ -4,14 +4,14 @@
 *{box-sizing:border-box}body{margin:0;color:#231f20;font-family:Hanken,sans-serif}
 main{width:1600px;height:900px;padding:54px 64px;background:#fffefb;border:1px solid #c8c4bb}
 header{border-bottom:1px solid #dedbd4;padding-bottom:24px}p,h2{margin:0;overflow-wrap:anywhere}
-.context{font-size:22px;color:#1c8a41;margin-bottom:12px}h2{font-family:Fraunces,serif;font-size:40px;line-height:1.4}
+h2{font-family:Fraunces,serif;font-size:40px;line-height:1.4}
 .head,.row{display:grid;grid-template-columns:1fr 1fr 1.2fr .42fr;gap:28px}
 .head{margin-top:28px;padding:0 22px 16px;font-size:16px;color:#625d5f}
 .row{padding:26px 22px;border-top:1px solid #dedbd4;font-size:23px;line-height:1.35;align-items:start}
 .row:last-child{border-bottom:1px solid #dedbd4}.row>*{min-width:0}.row p{font-weight:400}
 .state{font-size:18px;line-height:1.3;padding:8px 10px;border-radius:16px;text-align:center}
 .success{background:#eaf8ef;color:#1c8a41}.warning{background:#fff4d9;color:#71500a}.blocked{background:#f9e7e3;color:#7b3226}
-</style></head><body><main><header><p class="context">EBP Comptabilité</p><h2>lettrage</h2></header>
+</style></head><body><main><header><h2>lettrage</h2></header>
 <div class="head"><span>Entrée lue</span><span>Règle appliquée</span><span>Sortie / cause</span><span>Décision</span></div>
 <article class="row"><p>Compte 411001 : facture F-018, débit 480,00 € ; règlement R-018, crédit 480,00 €, référence F-018 justifiée ; deux lignes ouvertes, un seul candidat</p><p>Même compte, référence unique, sens opposés et sélection équilibrée</p><p>F-018 / R-018 proposée avec les pièces ; le code de lettrage reste inchangé.</p><p class="state success">Préparé</p></article><article class="row"><p>Deux règlements R-021 et R-022, crédits de 480,00 € sur le compte 411001, pour une facture F-021 au débit ; rattachement non départagé</p><p>Même montant mais plusieurs candidats, sans référence commune unique établie</p><p>Les deux candidats restent visibles ; le collaborateur vérifie les pièces avant de choisir.</p><p class="state warning">À valider</p></article><article class="row"><p>Compte 411001 : facture F-030 au débit de 480,00 € et règlement R-030 au crédit de 470,00 €</p><p>Sélection non équilibrée : écart de 10,00 €</p><p>Aucune paire proposée ni écriture d’écart créée ; le collaborateur recherche la cause.</p><p class="state blocked">Arrêt</p></article>
 </main></body></html>

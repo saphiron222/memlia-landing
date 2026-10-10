@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import ChecklistPieces from '@/components/outils/ChecklistPieces.astro';
+import {getOutil} from '@/data/outils';
+const outil=getOutil('checklist-pieces-comptables');
+---
+<Outil outil={outil}><ChecklistPieces /></Outil>

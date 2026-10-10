@@ -1,17 +1,19 @@
 ---
 import { PROOFS, type ProofId } from '@/data/proofs';
-import ProofDetail from '@/components/ProofDetail.astro';
-interface Props { id: ProofId; priority?: boolean; enlarge?: boolean; }
-const { id, priority = false, enlarge = false } = Astro.props;
+// Une preuve se lit à sa taille dans la page : aucune version agrandie, aucun lien vers l'image
+// (Kevin, 07/10/2026 : « on ne doit pas pouvoir agrandir une image, nulle part sur le site »).
+// `cadre` pose la preuve dans le cadre unique des maquettes (système de page, § 7). Les héros de
+// service et d'outil gardent leur propre cadre jusqu'à la phase 2.
+interface Props { id: ProofId; priority?: boolean; cadre?: boolean; }
+const { id, priority = false, cadre = false } = Astro.props;
 const proof = PROOFS[id];
 if (!proof) throw new Error(`Preuve inconnue : ${id}`);
 const source = `/proofs/${id}.webp`;
 ---
-<div class="proof-media">
+<div class:list={['proof-media', { cadre }]}>
   <figure class="functional-proof" data-proof={id}>
     <img src={source} alt={proof.alt} width="1600" height="900" loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : undefined} decoding="async" />
   </figure>
-  {enlarge && <ProofDetail id={id} />}
 </div>
 <style>
   .proof-media { min-width: 0; }

@@ -192,7 +192,7 @@ class CacArchitecture(unittest.TestCase):
         plan = json.loads((HERE / 'cluster-plan.json').read_text())
         posts = [p for c in plan['clusters'] for p in c['posts']]
         cac = [p for p in posts if p['profession'] == 'cac']
-        self.assertEqual(len(cac), 33)
+        self.assertEqual(len(cac), 35)
         self.assertTrue(all(p['volume'] is None for p in cac))
         self.assertEqual({p['family'] for p in cac}, set(self.source['familyDecisions']))
         pillar = next(p for p in cac if p['architectureRole'] == 'pillar')['slug']
@@ -209,7 +209,7 @@ class CacArchitecture(unittest.TestCase):
             {'slug': 'a2', 'pole': 'A', 'format': 'x', 'date': '2026-10-08', 'statut': 'planned'}]
         PLAN.alterner(entries)
         self.assertEqual(PLAN.verifier_alternance(entries), [])
-        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (2, 4, (0, 1, 2, 3)))
+        self.assertEqual((PLAN.PAR_JOUR_MAX, PLAN.PAR_SEMAINE_MAX, PLAN.JOURS_DE_PUBLICATION), (3, 15, (0, 1, 2, 3, 4)))
 
 
 if __name__ == '__main__':

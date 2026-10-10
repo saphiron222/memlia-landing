@@ -80,7 +80,7 @@
 }
 @font-face {
   font-family: 'Hanken Fallback';
-  src: local('Arial');
+  src: local('Arial'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Arimo Regular'), local('Arimo-Regular');
   font-weight: 400;
   size-adjust: 101.24%;
   ascent-override: 98.77%;
@@ -89,7 +89,7 @@
 }
 @font-face {
   font-family: 'Hanken Fallback';
-  src: local('Arial');
+  src: local('Arial'), local('Liberation Sans'), local('LiberationSans'), local('Arimo'), local('Arimo Regular'), local('Arimo-Regular');
   font-weight: 500;
   size-adjust: 101.76%;
   ascent-override: 98.27%;
@@ -98,11 +98,101 @@
 }
 @font-face {
   font-family: 'Hanken Fallback';
-  src: local('Arial Bold');
+  src: local('Arial Bold'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold');
   font-weight: 600;
   size-adjust: 94.45%;
   ascent-override: 105.88%;
   descent-override: 31.76%;
+  line-gap-override: 0%;
+}
+
+/* Replis sans Georgia : Noto Serif (Android), puis Liberation Serif ou Tinos (Linux, ChromeOS ; chasses de Times New
+   Roman). Chaque police a ses propres réglages, calculés comme les précédents (largeur moyenne et hauteurs de
+   Fraunces rapportées à celles du repli) ; la pile essaie Georgia, puis Noto Serif, puis Liberation Serif. */
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+  font-weight: 600;
+  size-adjust: 94.63%;
+  ascent-override: 103.35%;
+  descent-override: 26.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 95.52%;
+  ascent-override: 102.38%;
+  descent-override: 26.70%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Noto';
+  src: local('Noto Serif Bold Italic'), local('NotoSerif-BoldItalic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 90.62%;
+  ascent-override: 107.92%;
+  descent-override: 28.14%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Bold'), local('LiberationSerif-Bold'), local('Tinos Bold'), local('Tinos-Bold');
+  font-weight: 600;
+  size-adjust: 111.99%;
+  ascent-override: 87.33%;
+  descent-override: 22.77%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Italic'), local('LiberationSerif-Italic'), local('Tinos Italic'), local('Tinos-Italic');
+  font-weight: 400;
+  font-style: italic;
+  size-adjust: 109.75%;
+  ascent-override: 89.11%;
+  descent-override: 23.23%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Fallback Liberation';
+  src: local('Liberation Serif Bold Italic'), local('LiberationSerif-BoldItalic'), local('Tinos Bold Italic'), local('Tinos-BoldItalic');
+  font-weight: 600;
+  font-style: italic;
+  size-adjust: 111.96%;
+  ascent-override: 87.35%;
+  descent-override: 22.78%;
+  line-gap-override: 0%;
+}
+/* Repli sans Arial ni Liberation Sans : Roboto (Android), avec ses propres réglages. */
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto'), local('Roboto-Regular');
+  font-weight: 400;
+  size-adjust: 101.16%;
+  ascent-override: 98.85%;
+  descent-override: 29.95%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto Medium'), local('Roboto-Medium');
+  font-weight: 500;
+  size-adjust: 100.73%;
+  ascent-override: 99.28%;
+  descent-override: 30.08%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Hanken Fallback Roboto';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600;
+  size-adjust: 100.63%;
+  ascent-override: 99.37%;
+  descent-override: 30.11%;
   line-gap-override: 0%;
 }
 
@@ -511,24 +601,581 @@ ol {
   outline-offset: -1px;
 }
 
+/* ---------- Cartes et bandes (Kevin, 07/10/2026) ---------- */
+/*
+ * Un seul dessin de carte pour tout le site, défini ici et nulle part ailleurs : une fiche
+ * blanche posée sur la feuille, bord de 1 px visible, rayon et marges constants, pictogramme,
+ * titre et texte traités de la même façon. Une carte qui mène quelque part est cliquable en
+ * entier : son lien `.carte-lien` s'étend sur la carte (ou la carte est elle-même le lien), et
+ * toutes partagent le même survol et le même focus.
+ *
+ * La grille `.cartes` suit le nombre de cartes (système de page, § 5) : toutes les cartes d'un
+ * groupe ont la même largeur, aucune ne s'étire, la dernière rangée ne porte jamais une carte
+ * seule et une rangée incomplète se centre. Trois colonnes au plus : sous 36 rem de grille, une
+ * colonne ; dès 36 rem, deux colonnes pour un nombre pair, une pour un nombre impair ; dès
+ * 56 rem, trois colonnes dès 3 cartes, sauf 4 (2 × 2) : 5 = 3 + 2, 7 = 3 + 2 + 2, 8 = 3 + 3 + 2,
+ * rangées incomplètes centrées. La grille mesure sa propre largeur (requête de conteneur) : la
+ * règle vaut aussi dans une colonne étroite (article, catégorie d'outils, couverture d'un
+ * service). Le retrait de 0,1 px absorbe l'arrondi des largeurs sans faire passer une carte à
+ * la ligne.
+ *
+ * La bande `.bande` garde la pleine largeur : les cellules d'une même fiche, séparées par le
+ * filet du bord des cartes, avec les mêmes marges et la même typographie. Elle compte 2 à 4
+ * cellules et remplit toujours ses rangées.
+ */
+.cartes {
+  --ecart: var(--cartes-ecart);
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ecart);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cartes > * {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+@media (min-width: 48rem) {
+  .cartes {
+    --ecart: var(--cartes-ecart-lg);
+  }
+}
+/* Une destination seule n'est pas une carte (c'est un lien d'action). Quand le contenu impose une
+   carte seule (l'outil seul de sa catégorie, le guide seul de son produit), elle se range à
+   gauche, sur la largeur d'une colonne, au lieu de s'étirer. */
+.cartes:has(> :only-child) {
+  justify-content: flex-start;
+}
+@container (min-width: 36rem) {
+  .cartes:has(> :last-child:nth-child(even)) > *,
+  .cartes > :only-child {
+    flex-basis: calc((100% - var(--ecart)) / 2 - 0.1px);
+  }
+}
+@container (min-width: 56rem) {
+  .cartes:has(> :nth-child(3)):not(:has(> :last-child:nth-child(4))) > * {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
+  }
+  /* Sept cartes : 3 + 2 + 2. Au-delà de la troisième, une carte un pixel plus large ne laisse
+     tenir que deux cartes par rangée ; l'écart est invisible. */
+  .cartes:has(> :last-child:nth-child(7)) > :nth-child(n + 4) {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 + 1px);
+  }
+}
+
+.carte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+  padding: var(--carte-marge);
+  border: 1px solid var(--carte-bord);
+  border-radius: var(--carte-rayon);
+  background: var(--carte-fond);
+  box-shadow: var(--carte-ombre);
+  color: var(--texte);
+}
+.cellule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--carte-ecart);
+  min-width: 0;
+  padding: var(--carte-marge);
+  background: var(--carte-fond);
+}
+/*
+ * Les sous-éléments ne valent qu'à l'intérieur d'une carte ou d'une cellule de bande : le blog,
+ * laissé tel quel, garde ses propres classes scopées `.carte-titre`, `.carte-texte`,
+ * `.carte-meta`, sans rien hériter d'ici. `:where()` n'ajoute aucune spécificité.
+ */
+:where(.carte) .carte-corps {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--carte-ecart);
+  min-width: 0;
+}
+:where(.carte, .cellule) .carte-icone {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--carte-icone);
+  height: var(--carte-icone);
+  border: 1px solid var(--ligne);
+  border-radius: var(--r-pastille);
+  background: var(--surface-page);
+  color: var(--accent-texte);
+}
+:where(.carte, .cellule) .carte-icone svg {
+  width: 24px;
+  height: 24px;
+}
+:where(.carte, .cellule) .carte-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--texte-2);
+}
+:where(.carte, .cellule) .carte-titre {
+  margin: 0;
+  font-family: var(--police-display), 'Fraunces Fallback';
+  font-size: var(--t-2xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--texte-fort);
+  text-wrap: balance;
+}
+:where(.carte, .cellule) .carte-texte {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+  text-wrap: pretty;
+}
+/* Lien d'action (système de page, § 6) : un seul style, dans une carte comme sous un en-tête.
+   Libellé vert, flèche de 14 px après le dernier mot, même quand le libellé passe à la ligne ;
+   cible de 44 px (une ligne de 24 px, 10 px dessus et dessous). */
+.lien-action,
+:where(.carte) .carte-action {
+  display: inline-block;
+  align-self: flex-start;
+  justify-self: start;
+  padding-block: 10px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--accent-texte);
+  text-underline-offset: 3px;
+  text-wrap: balance;
+}
+:where(.carte) .carte-action {
+  margin-top: auto;
+}
+.lien-action svg,
+:where(.carte) .carte-action svg {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+  vertical-align: -2px;
+  transition: transform var(--duree-2) var(--courbe-standard);
+}
+@media (hover: hover) {
+  .lien-action:hover {
+    text-decoration: underline;
+  }
+  .lien-action:hover svg {
+    transform: translateX(2px);
+  }
+}
+/* Le lien de la carte la couvre en entier, bord compris. */
+:where(.carte) .carte-lien::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  border-radius: var(--carte-rayon);
+}
+.carte:has(.carte-lien),
+a.carte {
+  transition:
+    border-color var(--duree-2) var(--courbe-standard),
+    box-shadow var(--duree-2) var(--courbe-standard),
+    translate var(--duree-1) var(--courbe-standard);
+}
+.js .carte.rv {
+  transition:
+    opacity 400ms var(--courbe-expo),
+    transform 400ms var(--courbe-expo),
+    border-color var(--duree-2) var(--courbe-standard),
+    box-shadow var(--duree-2) var(--courbe-standard),
+    translate var(--duree-1) var(--courbe-standard);
+}
+@media (hover: hover) {
+  .carte:has(.carte-lien):hover,
+  a.carte:hover {
+    border-color: var(--carte-bord-survol);
+    box-shadow: var(--carte-ombre-survol);
+  }
+  .carte:has(.carte-lien):hover .carte-action svg,
+  a.carte:hover .carte-action svg {
+    transform: translateX(2px);
+  }
+}
+/* Appui : la fiche s'enfonce d'un pixel et reprend son ombre posée (retour tactile). */
+.carte:has(.carte-lien):active,
+a.carte:active {
+  translate: 0 1px;
+  box-shadow: var(--carte-ombre);
+}
+a.carte:focus-visible {
+  outline: 2.5px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: var(--carte-rayon);
+}
+@supports selector(:has(*)) {
+  .carte-lien:focus-visible {
+    outline: none;
+  }
+  .carte:has(.carte-lien:focus-visible) {
+    outline: 2.5px solid var(--focus);
+    outline-offset: 3px;
+  }
+}
+
+.bande {
+  position: relative;
+  border-block: 1px solid var(--carte-bord);
+}
+.bande > .cartes {
+  --ecart: 1px;
+  justify-content: flex-start;
+  background: var(--carte-bord);
+}
+/* La bande remplit toujours ses rangées : 2 → deux colonnes, 4 → 2 × 2 (règle paire des
+   cartes), 3 → trois colonnes dès 48 rem de bande, empilées avant. */
+.bande > .cartes > * {
+  flex-grow: 1;
+}
+@container (min-width: 48rem) {
+  .bande > .cartes:has(> :last-child:nth-child(3)) > * {
+    flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
+  }
+}
+.cellule .carte-icone {
+  margin-bottom: 8px;
+}
+@media (min-width: 48rem) {
+  .carte,
+  .cellule {
+    padding: var(--carte-marge-lg);
+  }
+}
+
+/* ---------- Système de page (07/10/2026) ---------- */
+/*
+ * docs/design/2026-10-07-systeme-de-page.md. Une section = un en-tête, puis une forme (carte,
+ * liste de liens, bande, lignes, tableau, étapes, questions), au plus une maquette dans le cadre
+ * unique. Les sections se séparent par `--section-espace`, jamais par un filet.
+ */
+.section {
+  padding-top: var(--section-espace);
+}
+.pile {
+  display: grid;
+  gap: var(--bloc-ecart);
+}
+.pile > * {
+  min-width: 0;
+}
+
+/* En-tête de section : surtitre facultatif, titre, introduction ; aligné à gauche. */
+.tete {
+  display: grid;
+  gap: var(--tete-ecart);
+  max-width: 46rem;
+}
+.tete h2 {
+  font-size: var(--titre-section);
+}
+.tete > p:not(.surtitre) {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+}
+.surtitre {
+  margin: 0;
+  font-family: var(--police-corps), 'Hanken Fallback';
+  font-size: var(--surtitre);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--accent-texte);
+}
+/* Casse de phrase au rendu, le texte source restant tel qu'écrit (« proposition vs saisie »). */
+.surtitre::first-letter {
+  text-transform: uppercase;
+}
+/* Dans un titre, un mot composé ne se coupe pas à son trait d'union, et une ponctuation haute ne commence
+   jamais une ligne (Insecable.astro). Sous 360 px, seul le mot composé peut se couper : « expert-comptable »
+   dépasse sinon la colonne d'un écran de 320 px. */
+.insecable {
+  white-space: nowrap;
+}
+@media (max-width: 22.4375rem) {
+  .insecable-compose {
+    white-space: normal;
+  }
+}
+/* Une phrase de portée ou de limite, sous la forme qu'elle borne. */
+.mention {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--mention);
+  color: var(--texte-2);
+}
+
+/* Lignes : des définitions, un terme et son explication, lus de haut en bas. */
+.lignes {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ligne {
+  display: grid;
+  gap: var(--espace-2);
+  margin: 0;
+  padding-block: var(--ligne-pas);
+  border-top: 1px solid var(--ligne-filet);
+}
+.ligne:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.ligne:last-child {
+  padding-bottom: 0;
+}
+.ligne-tete {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espace-3);
+  min-width: 0;
+}
+.ligne-picto {
+  display: grid;
+  place-items: center;
+  flex: none;
+  height: 1.3em;
+  font-size: var(--titre-ligne);
+  color: var(--accent-texte);
+}
+.ligne-libelle {
+  margin: 0;
+  font-family: var(--police-display), 'Fraunces Fallback';
+  font-size: var(--titre-ligne);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--texte-fort);
+  text-wrap: balance;
+}
+.ligne-texte {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--texte-2);
+  text-wrap: pretty;
+}
+@media (min-width: 48rem) {
+  .ligne {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: var(--espace-8);
+    align-items: start;
+  }
+  .ligne-texte {
+    padding-top: 1px;
+  }
+}
+/* Dès 64 rem, les lignes suivent les deux moitiés de la rangée : le terme sous le texte, la
+   définition alignée sur le bord de la maquette. */
+@media (min-width: 64rem) {
+  .ligne {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0;
+  }
+  .ligne > :first-child {
+    padding-right: var(--rangee-gouttiere);
+  }
+}
+
+/* Liste de liens : des destinations nommées par leur seul libellé, une rangée par lien. */
+.liens-bloc {
+  container-type: inline-size;
+  display: grid;
+  gap: var(--espace-2);
+}
+.liens-titre {
+  margin: 0;
+  font-weight: 600;
+  color: var(--texte-fort);
+}
+/* Un titre de liste qui est un intertitre (h3) prend la taille d'un titre de bloc. */
+h3.liens-titre {
+  font-size: var(--titre-bloc);
+  line-height: 1.2;
+}
+.liens {
+  max-width: var(--liens-colonne);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  column-gap: var(--espace-8);
+}
+.liens > li {
+  break-inside: avoid;
+  border-bottom: 1px solid var(--ligne);
+}
+@container (min-width: 40rem) {
+  .liens:has(> li:nth-child(5)) {
+    columns: 2;
+    max-width: calc(2 * var(--liens-colonne) + var(--espace-8));
+  }
+}
+.lien-rangee {
+  display: flex;
+  align-items: center;
+  gap: var(--espace-3);
+  min-height: var(--lien-rangee-h);
+  padding-block: var(--espace-3);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--texte-fort);
+  transition: color var(--duree-2) var(--courbe-standard);
+}
+.lien-rangee svg {
+  flex: none;
+  color: var(--accent-texte);
+}
+/* Rangée à phrase : pictogramme, action et flèche suivent la première ligne du libellé. */
+.lien-rangee:has(.lien-detail) {
+  align-items: flex-start;
+}
+.lien-rangee:has(.lien-detail) > svg:first-child {
+  margin-top: 1px;
+}
+.lien-rangee:has(.lien-detail) .lien-suite {
+  margin-top: 2px;
+}
+.lien-rangee:has(.lien-detail) .lien-fleche {
+  margin-top: 4px;
+}
+.lien-rangee .lien-libelle {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+/* Au besoin, une phrase courte sous le libellé, et le libellé de l'action avant la flèche. */
+.lien-rangee .lien-detail {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--t-sm);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--texte-2);
+}
+.lien-rangee .lien-suite {
+  flex: none;
+  font-size: var(--t-sm);
+  color: var(--accent-texte);
+  white-space: nowrap;
+}
+.lien-rangee .lien-fleche {
+  transition: transform var(--duree-2) var(--courbe-standard);
+}
+.lien-rangee:focus-visible {
+  outline-offset: 2px;
+  border-radius: var(--r-ornement);
+}
+@media (hover: hover) {
+  .lien-rangee:hover {
+    color: var(--accent-texte);
+  }
+  .lien-rangee:hover .lien-fleche {
+    transform: translateX(2px);
+  }
+}
+
+/* Cadre unique des maquettes et du média du héros : un plateau, l'écran posé dedans au rayon
+   concentrique. 16:9, jamais rognée, jamais cliquable ni agrandie. */
+.cadre {
+  margin: 0;
+  padding: var(--cadre-marge);
+  border: 1px solid var(--cadre-bord);
+  border-radius: var(--cadre-rayon);
+  background: var(--cadre-fond);
+}
+.cadre > * {
+  overflow: hidden;
+  border: 1px solid var(--cadre-ecran-bord);
+  border-radius: calc(var(--cadre-rayon) - var(--cadre-marge));
+  background: var(--blanc);
+}
+
+/* Étapes : une suite ordonnée, une maquette par étape. Deux étapes par rangée dès 64 rem ; la
+   sous-grille aligne les textes et les maquettes d'une colonne à l'autre. */
+.etapes {
+  display: grid;
+  gap: var(--espace-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.etape {
+  display: grid;
+  gap: var(--espace-6);
+  align-content: start;
+  min-width: 0;
+}
+.etape-copie {
+  display: grid;
+  gap: var(--espace-3);
+  align-content: start;
+}
+.etape-copie h3 {
+  font-size: var(--titre-bloc);
+  line-height: 1.2;
+}
+.etape-copie p {
+  margin: 0;
+}
+@media (min-width: 64rem) {
+  .etapes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--rangee-gouttiere);
+    row-gap: 0;
+  }
+  .etape {
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+  .etape:nth-child(n + 3) {
+    padding-top: var(--espace-16);
+  }
+  .etape-copie {
+    padding-bottom: var(--espace-6);
+  }
+}
+
 /* ---------- Motion (§5) ---------- */
 /* Apparitions au défilement : visibles sans JS ; la classe `js` est posée à l'hydratation. */
 .js .rv {
   opacity: 0;
   transform: translateY(14px);
   transition:
-    opacity 600ms var(--courbe-expo),
-    transform 600ms var(--courbe-expo);
+    opacity 400ms var(--courbe-expo),
+    transform 400ms var(--courbe-expo);
 }
 .js .rv.in {
   opacity: 1;
   transform: none;
 }
-.js .rv-groupe > .rv:nth-child(2) { transition-delay: 80ms; }
-.js .rv-groupe > .rv:nth-child(3) { transition-delay: 160ms; }
-.js .rv-groupe > .rv:nth-child(4) { transition-delay: 240ms; }
-.js .rv-groupe > .rv:nth-child(5) { transition-delay: 320ms; }
-.js .rv-groupe > .rv:nth-child(6) { transition-delay: 400ms; }
+.js .rv-groupe > .rv:nth-child(2) { --rv-delai: 20ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(3) { --rv-delai: 40ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(4) { --rv-delai: 60ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(5) { --rv-delai: 80ms; transition-delay: var(--rv-delai); }
+.js .rv-groupe > .rv:nth-child(6) { --rv-delai: 100ms; transition-delay: var(--rv-delai); }
+/* Le décalage d'apparition ne retarde que l'entrée d'une carte, jamais son survol. */
+.js .rv-groupe > .carte.rv {
+  transition-delay: var(--rv-delai, 0ms), var(--rv-delai, 0ms), 0ms, 0ms, 0ms;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -553,5 +1200,13 @@ ol {
   .chip .chip-icone,
   .pastille {
     border: 1px solid CanvasText;
+  }
+  /* Les filets des bandes sont un fond : en couleurs forcées, ils restent visibles. */
+  .bande > .cartes {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  .bande > .cartes > * {
+    forced-color-adjust: auto;
   }
 }

@@ -52,10 +52,11 @@
   --bouton-sombre-bord: #141112;
   --bouton-sombre-hover: #37322f;
   --bouton-principal-hover: #34c264;
+  --surface-elevee: var(--blanc); /* ce qui se pose sur la feuille : cartes, cellules de bande */
 
   /* ---- Typographie ---- */
-  --police-display: 'Fraunces', 'Fraunces Fallback', Georgia, 'Times New Roman', serif;
-  --police-corps: 'Hanken Grotesk', 'Hanken Fallback', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --police-display: 'Fraunces', 'Fraunces Fallback', 'Fraunces Fallback Noto', 'Fraunces Fallback Liberation', Georgia, 'Times New Roman', serif;
+  --police-corps: 'Hanken Grotesk', 'Hanken Fallback', 'Hanken Fallback Roboto', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --police-chiffres: var(--police-display);
 
   --t-xs: 0.75rem;
@@ -94,6 +95,9 @@
   --ombre-ornement: 0 3px 5px rgba(35, 31, 32, 0.05), 0 1px 2px rgba(35, 31, 32, 0.05),
     0 0.5px 0.5px rgba(35, 31, 32, 0.07);
   --ombre-panneau: 0 10px 15px -3px rgba(35, 31, 32, 0.1), 0 4px 6px -4px rgba(35, 31, 32, 0.1);
+  /* Élévation d'une fiche : posée (repos), levée (survol). Ombre diffuse teintée encre. */
+  --ombre-posee: 0 1px 2px rgba(35, 31, 32, 0.04), 0 8px 20px -10px rgba(35, 31, 32, 0.16);
+  --ombre-levee: 0 2px 4px rgba(35, 31, 32, 0.05), 0 14px 28px -12px rgba(35, 31, 32, 0.22);
 
   /* ---- Motion ---- */
   --duree-1: 150ms;
@@ -128,4 +132,74 @@
   --ornement: 20px;
   --ornement-sm: 10px;
   --nav-h: 56px;
+  /* Carte (Kevin, 07/10/2026) : une fiche blanche posée sur la feuille, bord visible,
+     identique partout ; la bande en reprend la surface, les marges et le filet.
+     Bord 1,4:1 sur crème ; texte --texte-fort 16:1, --texte-2 5,7:1 sur la fiche. */
+  --carte-fond: var(--surface-elevee);
+  --carte-bord: var(--ligne-forte);
+  --carte-bord-survol: var(--accent-appui);
+  --carte-ombre: var(--ombre-posee);
+  --carte-ombre-survol: var(--ombre-levee);
+  --carte-rayon: var(--r-carte);
+  --carte-marge: 24px;
+  --carte-marge-lg: 32px;
+  --carte-ecart: 12px;
+  --carte-icone: 40px;
+  --cartes-ecart: 16px;
+  --cartes-ecart-lg: 24px;
+
+  /* ---- Système de page (07/10/2026) : docs/design/2026-10-07-systeme-de-page.md ---- */
+  /* Primitives : espacement, base 4 px. */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-5: 20px;
+  --espace-6: 24px;
+  --espace-8: 32px;
+  --espace-10: 40px;
+  --espace-12: 48px;
+  --espace-16: 64px;
+  --espace-20: 80px;
+  --espace-24: 96px;
+  --espace-32: 128px;
+
+  /* Sémantique : le pas d'une page. Seules valeurs de marge de section. */
+  --section-espace: var(--espace-20); /* du bas d'une section au haut de la suivante */
+  --bloc-ecart: var(--espace-10); /* en-tête → forme ; forme → forme */
+  --tete-ecart: var(--espace-4); /* surtitre → titre → introduction */
+  --rangee-gouttiere: var(--espace-12); /* texte → maquette dans une rangée */
+  --titre-page: clamp(2.25rem, 1rem + 3.6vw, 3.75rem); /* héros centré */
+  --titre-page-partage: clamp(2.25rem, 1.4rem + 2.4vw, 3.5rem); /* héros partagé, maquette à droite */
+  --titre-section: var(--t-5xl);
+  --titre-intertitre: var(--t-3xl); /* intertitre d'un document long */
+  --titre-bloc: var(--t-2xl);
+  --titre-ligne: var(--t-xl);
+  --surtitre: var(--t-sm);
+  --mention: var(--t-sm);
+
+  /* Composants : cadre de maquette, lignes, liste de liens. */
+  --cadre-rayon: var(--r-carte);
+  --cadre-marge: 6px;
+  --cadre-fond: var(--surface-page);
+  --cadre-bord: var(--ligne);
+  --cadre-ecran-bord: var(--ligne-douce);
+  --ligne-pas: var(--espace-5);
+  --ligne-filet: var(--ligne);
+  --lien-rangee-h: 52px;
+  --liens-colonne: 26rem;
+}
+@media (min-width: 48rem) {
+  :root {
+    --section-espace: var(--espace-24);
+    --cadre-rayon: var(--r-cadre);
+    --cadre-marge: 8px;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --section-espace: var(--espace-32);
+    --bloc-ecart: var(--espace-12);
+    --cadre-marge: 12px;
+  }
 }
