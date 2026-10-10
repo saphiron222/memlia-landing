@@ -11,14 +11,10 @@ const source = readFileSync(join(root, 'src/data/integrations.ts'), 'utf8');
 const dist = join(root, 'dist');
 
 const compiled = ts.transpileModule(source.replace("import generatedGuides from './guides.generated.json' with { type: 'json' };", `const generatedGuides = ${readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-const { INTEGRATIONS, INTEGRATIONS_HISTORIQUES, INTEGRATION_CANDIDATES: candidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
-const { primaryQueries, mappings } = integrationInventory(INTEGRATIONS_HISTORIQUES, candidates);
-const slugs = INTEGRATIONS.map(entry => entry.slug);
-for (const entry of INTEGRATIONS.filter(entry => !INTEGRATIONS_HISTORIQUES.includes(entry))) {
-  primaryQueries.set(entry.slug, entry.primaryQuery);
-  const file = `${entry.service.href.slice(1)}.html`;
-  mappings.set(file, [...(mappings.get(file) ?? []), entry.slug]);
-}
+const { INTEGRATIONS, INTEGRATION_CANDIDATES: historicalCandidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+const generated = JSON.parse(readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8'));
+const candidates = [...historicalCandidates, ...generated.map(({ task, vendor, suggestions }) => ({ task, vendor, suggestions, status: 'forte' }))];
+const { slugs, primaryQueries, mappings } = integrationInventory(INTEGRATIONS, candidates);
 
 function decodeEntities(value) {
   return value
@@ -123,7 +119,7 @@ test('les guides conservent auteur et dates dans le schéma sans signature édit
 test('toutes les routes intégrations ont chacune une preuve figée manifestée', () => {
   const manifest = JSON.parse(readFileSync(join(root, 'docs/qa/integration-proofs/proofs-manifest.json'), 'utf8'));
   const generatedProofs = JSON.parse(readFileSync(join(root, 'src/data/guide-proofs.generated.json'), 'utf8'));
-  const targets = [...manifest.entries.map((entry) => entry.target), ...Object.keys(generatedProofs).map(id => `public/proofs/${id}.webp`)];
+  const targets = [...manifest.entries.map((entry) => entry.target), ...Object.keys(generatedProofs).map((key) => `public/proofs/${key}.webp`)];
   assert.ok(targets.length >= 10, 'plancher : dix preuves');
   assertIntegrationCoverage(targets, [
     'public/proofs/integrations/hub.webp',

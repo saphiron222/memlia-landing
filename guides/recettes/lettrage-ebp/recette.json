@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "type": "guide",
+  "mode": "nouveau",
+  "author": "dev",
+  "reviewKind": "metier",
+  "integration": {
+    "slug": "lettrage-ebp",
+    "task": "lettrage",
+    "vendor": "EBP",
+    "product": "EBP Comptabilité",
+    "primaryQuery": "lettrage ebp",
+    "suggestions": 9,
+    "modifiers": ["lettrage manuel EBP", "lettrage automatique EBP", "contrôle des paires"],
+    "h1": "Lettrage EBP : contrôler les paires avant de les valider",
+    "tabTitle": "Lettrage EBP : contrôler les paires | Memlia",
+    "description": "Contrôlez les paires de lettrage EBP : compte, pièces, montants et sens. Distinguez l’assistant natif, la proposition préparée et les exceptions à valider.",
+    "intro": "EBP Comptabilité propose un lettrage manuel et un assistant de lettrage automatique. Avant le geste, nous préparons une liste de paires et de leurs exceptions : même compte, référence justifiée, débit et crédit équilibrés, candidat unique. Une égalité de montant ne suffit pas à reconnaître un règlement ; vous gardez le choix des lignes et le lettrage dans EBP.",
+    "datePublication": "2026-10-07",
+    "dateMiseAJour": "2026-10-07",
+    "auteur": "kevin",
+    "service": { "href": "/automatisation/saisie-comptable", "label": "Voir la préparation de saisie comptable" },
+    "officialPath": "Dans EBP : Consultation → Consultation des comptes → Compte Général. Pour le lettrage manuel, sélectionner les lignes équilibrées puis Plus d’actions → Lettrer. Pour le lettrage automatique natif, Plus d’actions → Lettrage automatique ouvre l’assistant.",
+    "documentScope": "La fiche officielle concerne EBP Comptabilité et décrit les deux parcours de lettrage ; elle ne précise ni édition ni version chiffrée. Elle demande l’équilibre des lignes sélectionnées pour le lettrage manuel, sans détailler les critères de l’assistant automatique. Les contrôles de référence et d’unicité ci-dessous sont notre règle de préparation, à recetter dans l’environnement autorisé du cabinet, pas des fonctions supplémentaires attribuées à EBP.",
+    "fields": [
+      { "label": "Compte et périmètre", "control": "Vérifier le Compte Général consulté et le périmètre des lignes retenues. Ne pas proposer une paire issue de comptes différents ni poursuivre si le compte manque." },
+      { "label": "Pièces et référence", "control": "Relier la facture et le règlement à leurs pièces justificatives. La référence commune doit être établie par ces pièces, pas déduite d’un libellé ressemblant." },
+      { "label": "Montant et sens", "control": "Comparer les montants au centime et distinguer débit et crédit. La sélection doit s’équilibrer ; un écart n’est ni compensé ni écrit automatiquement." },
+      { "label": "Unicité et état des lignes", "control": "Chercher les autres candidats dans le périmètre et écarter les lignes déjà lettrées. Plusieurs règlements possibles restent visibles, sans choix implicite ni modification des saisies." }
+    ],
+    "knownTrap": "L’équilibre d’une sélection permet le geste décrit dans l’aide EBP ; il ne prouve pas que la facture et le règlement portent sur la même pièce. Deux règlements de même montant peuvent satisfaire ce contrôle. L’existence du lettrage automatique natif ne dispense pas de relire la paire proposée selon la règle du cabinet.",
+    "writtenRule": "Notre règle de préparation propose une paire seulement si les deux lignes ouvertes appartiennent au même compte, ont une référence commune justifiée et unique dans le périmètre, portent des sens opposés et s’équilibrent au centime. Plusieurs candidats restent à valider sans proposition de choix. Un compte absent, une pièce manquante ou une sélection non équilibrée arrête la préparation. Paiements partiels, regroupements et écarts sortent de cette règle à deux lignes : le collaborateur les traite séparément. Aucune saisie ni aucun code de lettrage n’est modifié.",
+    "boundary": {
+      "prepared": "Préparer la liste des paires certaines et des exceptions avec les références de leurs pièces, sans écrire dans EBP.",
+      "validation": "Présenter tous les candidats ambigus et leur motif ; attendre le choix du collaborateur, sans départager par le seul montant.",
+      "human": "Choisir les lignes et effectuer le lettrage dans EBP, avec le parcours manuel ou l’assistant natif ; décider du traitement des écarts et des cas hors règle."
+    },
+    "replay": [
+      {
+        "input": "Compte 411001 : facture F-018, débit 480,00 € ; règlement R-018, crédit 480,00 €, référence F-018 justifiée ; deux lignes ouvertes, un seul candidat",
+        "rule": "Même compte, référence unique, sens opposés et sélection équilibrée",
+        "outcome": "Préparé",
+        "detail": "F-018 / R-018 proposée avec les pièces ; le code de lettrage reste inchangé."
+      },
+      {
+        "input": "Deux règlements R-021 et R-022, crédits de 480,00 € sur le compte 411001, pour une facture F-021 au débit ; rattachement non départagé",
+        "rule": "Même montant mais plusieurs candidats, sans référence commune unique établie",
+        "outcome": "À valider",
+        "detail": "Les deux candidats restent visibles ; le collaborateur vérifie les pièces avant de choisir."
+      },
+      {
+        "input": "Compte 411001 : facture F-030 au débit de 480,00 € et règlement R-030 au crédit de 470,00 €",
+        "rule": "Sélection non équilibrée : écart de 10,00 €",
+        "outcome": "Arrêt",
+        "detail": "Aucune paire proposée ni écriture d’écart créée ; le collaborateur recherche la cause."
+      }
+    ],
+    "source": {
+      "title": "Lettrer / Délettrer un compte comptable dans EBP Comptabilité",
+      "url": "https://support.ebp.com/hc/fr/articles/360011494518",
+      "checkedAt": "2026-10-07",
+      "fact": "L’aide EBP indique « Pour effectuer un lettrage manuel, cliquez sur le menu Consultation, puis Consultation des comptes. », exige que les lignes sélectionnées s’équilibrent et décrit « Depuis le menu Plus d'actions, sélectionnez Lettrage automatique. ». Elle atteste les parcours natifs, pas les critères d’appariement de notre préparation ni un essai dans EBP."
+    }
+  },
+  "demand": {
+    "evidencePath": "autocomplete.json",
+    "sha256": "98f463f4ba4030c39482efc550704b37939e6fb60c3427f1ef021781b23445ff"
+  }
+}
