@@ -40,9 +40,12 @@ class MandatedInventory(unittest.TestCase):
         publication.start()
         self.addCleanup(publication.stop)
         precedent = max((e for e in [stock[3]] + stock[4]
-                         if not e.get('serie') and e['slug'] not in BRIEFS), key=lambda e: e['date'])
+                         if not e.get('serie') and e['slug'] not in BRIEFS),
+                        key=lambda e: (e['date'], e.get('_ordre_calendrier', 0)))
         jour = date.fromisoformat(precedent['date']) + timedelta(days=7)
-        for e in stock[4]:
+        # La liste des satellites suit les familles, pas l'ordre des dates.
+        # Réserver dans l'ordre réellement vérifié par verifier_alternance.
+        for e in sorted(stock[4], key=lambda e: (e['date'], e.get('_ordre_calendrier', 0))):
             if e['slug'] in BRIEFS:
                 self.reserver(e, precedent, jour)
                 precedent = e
@@ -67,7 +70,8 @@ class MandatedInventory(unittest.TestCase):
         donnees = PLAN.construire()
         poles, familles, publies, pilier, satellites, liens, par_famille = donnees
         modele = next(e for e in satellites if e['slug'] == 'prompt-chatgpt-expert-comptable')
-        precedent = max((e for e in [pilier] + satellites if not e.get('serie')), key=lambda e: e['date'])
+        precedent = max((e for e in [pilier] + satellites if not e.get('serie')),
+                        key=lambda e: (e['date'], e.get('_ordre_calendrier', 0)))
         jour = date.fromisoformat(precedent['date']) + timedelta(days=7)
         for slug, famille in ajouts.items():
             existant = next((e for e in satellites if e['slug'] == slug), None)
