@@ -2,6 +2,7 @@
 import generatedProofs from './guide-proofs.generated.json';
 
 const HISTORICAL_PROOFS = {
+  'v2/48-service-bulletins-controle': { title: 'L’écart préparé, la correction au gestionnaire', alt: 'Contrôles fictifs : prime de référence 200 EUR et bulletin 150 EUR, référence absente arrêtée, revue de v1 à reprendre sur v2. Valeurs et motifs séparés des décisions.', detail: 'La scène reprend les cas du démonstrateur de rapprochement. Elle ne calcule pas les cotisations et ne démontre ni une connexion au logiciel de paie ni une automatisation livrée. Les sources et décisions humaines ne sont pas modifiées.' },
   'v2/46-outil-lettrage': { title: 'Une paire proposée, le doute conservé', alt: 'Export fictif : F-001 et R-001, 100 EUR, proposés ensemble ; F-002 face à R-002 et R-003, 80 EUR, ambigu ; F-003, 45 EUR, restant.', detail: 'La scène reprend l’exemple réellement calculé : une paire, trois lignes ambiguës et une ligne restante. Aucun règlement concurrent n’est choisi, aucune paire n’est acceptée sans décision.' },
   'v2/44-service-circularisation-cac': { title: 'Des motifs de sélection aux pièces à examiner', alt: 'Sélection fictive : tiers C01 par solde, C02 par mouvement et C03 par tirage reproductible ; couverture suivie en deux passes, encaissement postérieur à examiner pour un écart.', detail: 'La scène illustre une proposition selon la règle du cabinet, pas une diligence réalisée. Le CAC valide la sélection et choisit les pièces et procédures ; aucune conclusion, connexion ni lecture de PDF n’est démontrée.' },
 

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "kind": "service-candidat-scelle",
+  "slug": "bulletins-controle",
+  "sealedAt": "2026-10-10T17:24:37.738Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/bulletins-controle.md",
+      "bytes": 11372,
+      "sha256": "584a440b3a665bbd29fd2ffe1f252168de53f08210e673f935a458071f0e1d25"
+    },
+    "manifest": {
+      "path": "commercial/services/bulletins-controle/manifest.json",
+      "bytes": 2847,
+      "sha256": "fea824acac27c210e2e979c64606cb6fe44fc6063b1f072943d22ba8cc4686f7"
+    },
+    "recipe": {
+      "path": "commercial/recettes/bulletins-controle/recette.json",
+      "bytes": 2501,
+      "sha256": "19b596fd2594ecfa0ecdc8e523cd3ffb4951893ef6012530b474a44ed770b0c5"
+    },
+    "body": {
+      "path": "commercial/recettes/bulletins-controle/corps.md",
+      "bytes": 9545,
+      "sha256": "0a07a515461ddf011479277971b0566076133e09be9c99d5ee9654330218304a"
+    },
+    "review": {
+      "path": "commercial/recettes/bulletins-controle/revues.json",
+      "bytes": 1402,
+      "sha256": "15a688d2d651b703e08f13d16ac101486e11e25f831ebdcf834f9b97a5f3fb1f"
+    }
+  }
+}
