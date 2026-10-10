@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
@@ -14,6 +14,7 @@ test('le renderer adopte les quatre nouveaux articles depuis leur contrat sans r
   const root = mkdtempSync(join(tmpdir(), 'memlia-blog-growth-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   for (const path of [source, 'public/fonts', ...contract.map(({ article }) => `editorial/recettes/${article}`)]) {
+    if (!existsSync(join(project, path))) continue; // Paires F4 réservées avant leur recette.
     mkdirSync(dirname(join(root, path)), { recursive: true });
     cpSync(join(project, path), join(root, path), { recursive: true });
   }
@@ -104,6 +105,7 @@ for (const [label, extra] of [
     const root = mkdtempSync(join(tmpdir(), 'memlia-blog-frame-'));
     t.after(() => rmSync(root, { recursive: true, force: true }));
     for (const path of [source, 'public/fonts', 'scripts/render-blog-article-proofs.mjs', ...contract.map(({ article }) => `editorial/recettes/${article}`)]) {
+      if (!existsSync(join(project, path))) continue; // Paires F4 réservées avant leur recette.
       mkdirSync(dirname(join(root, path)), { recursive: true });
       cpSync(join(project, path), join(root, path), { recursive: true });
     }
