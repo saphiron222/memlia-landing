@@ -63,7 +63,7 @@ jobs:
         run: node --test tests/scripts/accueil-cac-geometry.test.mjs
 
       - name: Exercise proof renderer ownership in Chromium
-        run: node --test tests/scripts/proof-render-ownership.test.mjs
+        run: node --test tests/scripts/proof-render-ownership.test.mjs tests/scripts/proofs-v2-ownership.test.mjs tests/scripts/relance-provenance.test.mjs
 
       - name: Build and run deterministic gates
         run: npm run build

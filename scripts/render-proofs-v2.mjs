@@ -16,7 +16,7 @@ import { chromium } from '@playwright/test';
 import sharp from 'sharp';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const mode = process.argv.includes('--check') ? 'check' : process.argv.includes('--adopt') ? 'adopt' : 'render';
@@ -26,7 +26,7 @@ const roi = process.argv.includes('--series=roi');
 assert.ok([fec, roi, maturite].filter(Boolean).length <= 1, 'Choisir une seule série');
 const series = maturite ? 'maturite-ia' : roi ? 'roi-automatisation' : fec ? 'fec-local' : 'site-v2';
 const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
-const source = option('source', maturite ? 'docs/design/maturite-ia-proof' : roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs');
+const source = relative(process.cwd(), resolve(option('source', maturite ? 'docs/design/maturite-ia-proof' : roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs')));
 const contractPath = `${source}/content-contract.json`;
 const manifestPath = option('manifest', `docs/qa/${series}/proofs-manifest.json`);
 const targetRoot = option('target-root', 'public/proofs/v2');
@@ -117,18 +117,31 @@ try {
   }
   assert.equal(new Set(records.map((r) => r.webpSha256)).size, records.length, 'Deux cadres rendent la même image');
 
-  if (mode === 'adopt') {
-    writeFileSync(contractPath, JSON.stringify(adopted, null, 2) + '\n');
+  // Le fichier HTML source, pas le dossier cible ni l'index, définit le propriétaire.
+  const previous = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : null;
+  const foreignEntries = previous?.entries.filter((entry) => resolve(entry.source.split('#')[0]) !== resolve(source, 'index.html')) ?? [];
+  const foreignTargets = new Set(foreignEntries.map((entry) => resolve(entry.target)));
+  for (const candidate of candidates) {
+    assert.ok(!foreignTargets.has(resolve(candidate.target)), `Cible appartenant à une autre série : ${candidate.target}`);
   }
   const manifest = {
+    ...previous,
     schemaVersion: 1,
     sources: [`${source}/index.html`, `${source}/styles.css`, 'docs/design/m4-r1-functional-proofs/styles.css', contractPath, 'scripts/render-proofs-v2.mjs']
-      .map((path) => ({ path, sha256: hash(readFileSync(path)) })),
+      .map((path) => ({ path, sha256: hash(path === contractPath && mode === 'adopt' ? Buffer.from(JSON.stringify(adopted, null, 2) + '\n') : readFileSync(path)) })),
     browser: browser.version(),
     entries: candidates.map((c) => ({ source: c.source, target: c.target, bytes: c.bytes.length, sha256: hash(c.bytes) })),
   };
+  // Mettre à jour les dépendances lues, sans resceller les sources des autres séries.
+  const refreshedSources = new Map(manifest.sources.map((entry) => [resolve(entry.path), entry]));
+  manifest.sources = (previous?.sources ?? []).map((entry) => {
+    const refreshed = refreshedSources.get(resolve(entry.path));
+    refreshedSources.delete(resolve(entry.path));
+    return refreshed ?? entry;
+  }).concat([...refreshedSources.values()]);
+  manifest.entries = [...manifest.entries, ...foreignEntries];
   if (mode === 'check') {
-    const previous = JSON.parse(readFileSync(manifestPath, 'utf8'));
+    assert.ok(previous, `Manifeste absent : ${manifestPath}`);
     for (const candidate of candidates) {
       const entry = previous.entries.find((e) => e.target === candidate.target);
       assert.ok(entry, `Cible non répertoriée : ${candidate.target}`);
@@ -137,6 +150,7 @@ try {
     }
     console.log(`check : ${candidates.length} preuves v2 conformes à leur manifeste.`);
   } else {
+    if (mode === 'adopt') writeFileSync(contractPath, JSON.stringify(adopted, null, 2) + '\n');
     mkdirSync(`${targetRoot}/og`, { recursive: true });
     mkdirSync(resolve(manifestPath, '..'), { recursive: true });
     mkdirSync(`docs/qa/${series}`, { recursive: true });
