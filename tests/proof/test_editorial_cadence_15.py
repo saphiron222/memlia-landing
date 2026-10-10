@@ -3,6 +3,7 @@ from collections import Counter
 from datetime import date
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+import json
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -13,6 +14,23 @@ SPEC.loader.exec_module(PLAN)
 
 
 class Cadence15(unittest.TestCase):
+    def test_circularisation_manquee_ne_devient_pas_une_nouvelle_reservation(self):
+        backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
+        target = next(e for e in backlog if e['slug'] == 'cac-circularisation-campagne')
+        self.assertEqual(target.get('dateManquee'), '2026-10-09')
+        self.assertNotIn('datePlanifiee', target)
+        data = PLAN.construire()
+        entries = [data[3]] + data[4]
+        scheduled = next(e for e in entries if e['slug'] == target['slug'])
+        self.assertEqual(scheduled['statut'], 'a-replanifier')
+        self.assertGreaterEqual(scheduled['date'], date.today().isoformat())
+        self.assertEqual({e['slug']: e['datePlanifiee'] for e in backlog
+                          if e.get('profession') == 'cac' and e.get('datePlanifiee')}, {
+            'cac-ecritures-journal-criteres': '2026-10-12',
+            'cac-contributions-dossier-preservation': '2026-10-13',
+            'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-14',
+        })
+
     def test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre(self):
         entries = [dict(slug='precedent', pole='a', format='x', date='2026-10-12', statut='published')]
         entries += [dict(slug=f'fixe-{i}', pole=p, format=f, date='2026-10-13',
