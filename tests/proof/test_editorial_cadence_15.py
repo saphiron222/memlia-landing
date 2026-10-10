@@ -4,6 +4,7 @@ from datetime import date
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 import unittest
+from editorial_clock import jour_fixe
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = spec_from_file_location('cadence15', ROOT / 'docs/strategy/site-v3/build-cluster-plan.py')
@@ -13,6 +14,9 @@ SPEC.loader.exec_module(PLAN)
 
 
 class Cadence15(unittest.TestCase):
+    def setUp(self):
+        self.enterContext(jour_fixe(PLAN, date(2026, 10, 9)))
+
     def test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre(self):
         entries = [dict(slug='precedent', pole='a', format='x', date='2026-10-12', statut='published')]
         entries += [dict(slug=f'fixe-{i}', pole=p, format=f, date='2026-10-13',
@@ -57,9 +61,9 @@ class Cadence15(unittest.TestCase):
             if e.get('datePlanifiee'):
                 self.assertEqual(e['date'], e['datePlanifiee'])
             else:
-                self.assertLess(e['dateManquee'], date.today().isoformat())
+                self.assertLess(e['dateManquee'], PLAN.date.today().isoformat())
                 self.assertEqual(e['statut'], 'a-replanifier')
-                self.assertGreaterEqual(e['date'], date.today().isoformat())
+                self.assertGreaterEqual(e['date'], PLAN.date.today().isoformat())
         ia = next(e for e in entries if e['slug'] == 'ia-cabinet-comptable')
         self.assertEqual(ia['dateManquee'], '2026-09-29')
-        self.assertGreaterEqual(ia['date'], date.today().isoformat())
+        self.assertGreaterEqual(ia['date'], PLAN.date.today().isoformat())
