@@ -5,6 +5,7 @@ from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 import json
 import unittest
+from editorial_clock import jour_fixe
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC = spec_from_file_location('cadence15', ROOT / 'docs/strategy/site-v3/build-cluster-plan.py')
@@ -13,7 +14,7 @@ PLAN = module_from_spec(SPEC)
 SPEC.loader.exec_module(PLAN)
 
 
-class Cadence15(unittest.TestCase):
+class CalendrierVivant(unittest.TestCase):
     def test_circularisation_manquee_ne_devient_pas_une_nouvelle_reservation(self):
         backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
         target = next(e for e in backlog if e['slug'] == 'cac-circularisation-campagne')
@@ -30,6 +31,11 @@ class Cadence15(unittest.TestCase):
             'cac-contributions-dossier-preservation': '2026-10-13',
             'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-14',
         })
+
+
+class Cadence15(unittest.TestCase):
+    def setUp(self):
+        self.enterContext(jour_fixe(PLAN, date(2026, 10, 9)))
 
     def test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre(self):
         entries = [dict(slug='precedent', pole='a', format='x', date='2026-10-12', statut='published')]
@@ -64,6 +70,8 @@ class Cadence15(unittest.TestCase):
         PLAN.planifier(entries, {}, aujourd_hui=date(2026, 10, 9))
         self.assertEqual(Counter(e['date'] for e in entries), {'2026-10-09': 3, '2026-10-12': 1})
 
+
+class CalendrierReservations(unittest.TestCase):
     def test_calendrier_vivant_et_reservations_cac(self):
         data = PLAN.construire()
         self.assertEqual(PLAN.verifier(*data)[0], [])
@@ -75,9 +83,9 @@ class Cadence15(unittest.TestCase):
             if e.get('datePlanifiee'):
                 self.assertEqual(e['date'], e['datePlanifiee'])
             else:
-                self.assertLess(e['dateManquee'], date.today().isoformat())
+                self.assertLess(e['dateManquee'], PLAN.date.today().isoformat())
                 self.assertEqual(e['statut'], 'a-replanifier')
-                self.assertGreaterEqual(e['date'], date.today().isoformat())
+                self.assertGreaterEqual(e['date'], PLAN.date.today().isoformat())
         ia = next(e for e in entries if e['slug'] == 'ia-cabinet-comptable')
         self.assertEqual(ia['dateManquee'], '2026-09-29')
-        self.assertGreaterEqual(ia['date'], date.today().isoformat())
+        self.assertGreaterEqual(ia['date'], PLAN.date.today().isoformat())
