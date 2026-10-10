@@ -24,17 +24,21 @@ test('génère uniquement les routes sitemap, après nettoyage des sources, de f
   const dist = mkdtempSync(join(tmpdir(), 'agent-markdown-'));
   try {
     mkdirSync(join(dist, 'blog'), { recursive: true });
-    writeFileSync(join(dist, 'sitemap-pages.xml'), '<urlset><url><loc>https://memlia.fr/</loc></url><url><loc>https://memlia.fr/blog/article</loc></url></urlset>');
+    const hubs = ['/glossaire', '/integrations', '/outils-comptables-gratuits', '/blog'];
+    writeFileSync(join(dist, 'sitemap-pages.xml'), `<urlset>${['/', '/blog/article', ...hubs].map(path => `<url><loc>https://memlia.fr${path}</loc></url>`).join('')}</urlset>`);
+    for (const path of hubs) writeFileSync(join(dist, `${path}.html`), `<html><head><meta name="description" content="Description du hub.">${path === '/glossaire' ? '<script type="application/ld+json">{"@type":"DefinedTermSet","hasDefinedTerm":[{}]}</script>' : ''}</head><body><main><h1>Hub</h1></main></body></html>`);
     writeFileSync(join(dist, 'index.html'), '<html><head></head><body><main><h1>Accueil</h1></main></body></html>');
     writeFileSync(join(dist, 'blog/article.html'), renderPublicSourceText('<html><head></head><body><main><h1>Article</h1><p>Source, consultée le 6 octobre 2026</p></main></body></html>'));
-    writeFileSync(join(dist, 'llms.txt'), '# Memlia\n');
+    writeFileSync(join(dist, 'llms.txt'), '# Memlia\n- [Glossaire](https://memlia.fr/glossaire) : définitions.\n');
     writeFileSync(join(dist, '_headers'), '/contact\n  X-Test: intact\n');
-    assert.equal(generateAgentMarkdown(dist), 2);
+    assert.equal(generateAgentMarkdown(dist), 2 + hubs.length);
     const full = readFileSync(join(dist, 'llms-full.txt'), 'utf8');
     const llms = readFileSync(join(dist, 'llms.txt'), 'utf8');
     assert.match(llms, /https:\/\/memlia.fr\/markdown\/index.md/);
     assert.match(llms, /https:\/\/memlia.fr\/markdown\/blog\/article.md/);
     assert.match(llms, /https:\/\/memlia.fr\/llms-full.txt/);
+    assert.match(llms, /1 définitions/);
+    assert.match(llms, /## Inventaire des pages publiées/);
     assert.doesNotMatch(full, /consultée le/);
     assert.match(full, /Source/);
     assert.match(readFileSync(join(dist, 'blog/article.html'), 'utf8'), /<link rel="alternate" type="text\/markdown" href="https:\/\/memlia.fr\/markdown\/blog\/article.md">/);
@@ -43,7 +47,7 @@ test('génère uniquement les routes sitemap, après nettoyage des sources, de f
     assert.equal(readFileSync(join(dist, 'llms-full.txt'), 'utf8'), full);
     assert.equal(readFileSync(join(dist, 'llms.txt'), 'utf8'), llms);
     assert.equal(readFileSync(join(dist, 'index.html'), 'utf8').match(/rel="alternate"/g).length, 1);
-    assert.equal(await verifyAgentMarkdown({ dist }), 2);
+    assert.equal(await verifyAgentMarkdown({ dist }), 2 + hubs.length);
     writeFileSync(join(dist, 'markdown/blog/article.md'), '# Mauvaise version\n');
     await assert.rejects(verifyAgentMarkdown({ dist }), /texte divergent/);
   } finally { rmSync(dist, { recursive: true, force: true }); }

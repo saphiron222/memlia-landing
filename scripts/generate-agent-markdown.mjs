@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readSitemapPages } from './lib/sitemaps.mjs';
+import { renderLlmsInventory } from './lib/llms-inventory.mjs';
 
 const OMIT = new Set(['head', 'script', 'style', 'template', 'nav', 'form', 'button', 'input', 'select', 'textarea', 'svg', 'img']);
 const BLOCK = new Set(['p', 'section', 'article', 'div', 'aside', 'header', 'footer', 'figure', 'figcaption', 'details', 'summary', 'dl', 'dt', 'dd']);
@@ -108,11 +109,13 @@ export function generateAgentMarkdown(dist = 'dist') {
       if (!html.includes('</head>')) throw new Error(`${url} : head absent`);
       writeFileSync(file, html.replace('</head>', `${alternate}</head>`));
     }
-    return { url, path, markdown, title: markdown.match(/^# (.+)$/m)?.[1] ?? route };
+    return { url, path, html, markdown, title: markdown.match(/^# (.+)$/m)?.[1] ?? route };
   });
   writeFileSync(join(dist, 'llms-full.txt'), `# Memlia — contenu des pages publiques\n\nVersions textuelles statiques ; les outils interactifs restent disponibles sur leurs pages HTML.\n\n${entries.map(e => `---\n\nSource : ${e.url}\nVersion Markdown : https://memlia.fr${e.path}\n\n${e.markdown}`).join('\n')}`);
   const llms = join(dist, 'llms.txt');
-  writeFileSync(llms, `${readFileSync(llms, 'utf8').split(MARKER)[0].trimEnd()}${MARKER}\n- [Toutes les pages en texte intégral](https://memlia.fr/llms-full.txt)\n${entries.map(e => `- [${e.title.replace(/[\[\]]/g, '')}](https://memlia.fr${e.path})`).join('\n')}\n`);
+  const template = readFileSync(llms, 'utf8').split(MARKER)[0].trimEnd();
+  const inventory = renderLlmsInventory(template, entries);
+  writeFileSync(llms, `${inventory.trimEnd()}${MARKER}\n- [Toutes les pages en texte intégral](https://memlia.fr/llms-full.txt)\n${entries.map(e => `- [${e.title.replace(/[\[\]]/g, '')}](https://memlia.fr${e.path})`).join('\n')}\n`);
   const headers = join(dist, '_headers');
   writeFileSync(headers, `${readFileSync(headers, 'utf8').split(HEADER_MARKER)[0].trimEnd()}${HEADER_MARKER}/markdown/*\n  Content-Type: text/markdown; charset=utf-8\n  X-Content-Type-Options: nosniff\n  X-Robots-Tag: noindex\n\n/llms-full.txt\n  Content-Type: text/plain; charset=utf-8\n  X-Robots-Tag: noindex\n`);
   return entries.length;
