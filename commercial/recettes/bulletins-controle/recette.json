@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "bulletins-controle",
+  "path": "/automatisation/bulletins-controle",
+  "title": "Automatisation contrôle bulletins de paie cabinet comptable : une file d’écarts à valider",
+  "tabTitle": "Automatisation contrôle bulletins de paie cabinet comptable | Memlia",
+  "ogTitle": "Automatisation contrôle bulletins de paie cabinet comptable : une file d’écarts à valider",
+  "description": "Contrôles des bulletins de paie en cabinet : nous rapprochons variables et résultats, préparons les écarts ; vos gestionnaires corrigent et valident.",
+  "hero": "Vos gestionnaires comparent les variables attendues, les bulletins calculés et le mois précédent. Nous écrivons ces contrôles dans les mots de votre cabinet, puis automatisons les rapprochements dans ses outils. Vous obtenez une file d’écarts avec leurs références, plutôt qu’une nouvelle liste à reconstituer. Les éléments manquants arrêtent le contrôle concerné. Vos équipes expliquent les variations, corrigent la paie et valident chaque version.",
+  "primaryQuery": "automatisation contrôle bulletins de paie cabinet comptable",
+  "secondaryQueries": ["automatisation contrôle bulletins cabinet comptable"],
+  "audience": {"mode": "qualified", "qualifier": "cabinet comptable", "reason": "Service destiné aux gestionnaires et responsables sociaux d’un cabinet comptable, pas aux salariés qui veulent vérifier leur bulletin."},
+  "intent": "evaluer-service",
+  "family": "bulletins-controle",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {"headline": "Automatisation contrôle bulletins de paie cabinet comptable : une file d’écarts à valider", "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]},
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/blog/controler-les-bulletins-de-paie-avant-la-dsn", "sourcePath": "src/content/blog/controler-les-bulletins-de-paie-avant-la-dsn.md", "anchor": "confier les contrôles croisés des bulletins de paie"},
+    {"url": "/methode", "sourcePath": "src/pages/methode.astro", "anchor": "faire recetter les contrôles croisés des bulletins"},
+    {"url": "/automatisation-cabinet-comptable", "sourcePath": "src/pages/automatisation-cabinet-comptable.astro", "anchor": "automatiser les contrôles des bulletins de paie"}
+  ]
+}

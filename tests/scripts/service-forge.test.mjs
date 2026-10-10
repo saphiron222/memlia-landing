@@ -19,6 +19,30 @@ import { COPY, TEXT, URL } from './dila-copy-fixture.mjs';
 
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
+test('le pont commercial contextualisé compte sans modifier le Markdown scellé du blog', async () => {
+  const root = racineDeTest();
+  try {
+    const slug = 'controler-les-bulletins-de-paie-avant-la-dsn';
+    const path = join(root, 'commercial/recettes', SLUG, 'recette.json');
+    const recipe = recette();
+    recipe.incomingLinks[0] = { url: `/blog/${slug}`, sourcePath: `src/content/blog/${slug}.md`, anchor: 'confier les contrôles croisés des bulletins de paie' };
+    writeFileSync(path, JSON.stringify(recipe));
+    writeFileSync(join(root, `src/content/blog/${slug}.md`), '---\nbrouillon: false\n---\nCorps scellé inchangé.');
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const rejected = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() });
+    assert.equal(rejected.pass, false, 'une destination différente ne compte pas');
+    recipe.path = '/automatisation/bulletins-controle';
+    // Le vérificateur public est testé directement : aucune recette de test n’est publiée.
+    const { verifierLiensEntrantsService } = await import('../../scripts/service-forge.mjs');
+    const errors = [];
+    verifierLiensEntrantsService(root, { ...recipe, incomingLinks: [recipe.incomingLinks[0], ...recette().incomingLinks.slice(1)] }, errors);
+    assert.ok(!errors.some((error) => error.startsWith(`/blog/${slug}`)), errors.join('\n'));
+    recipe.incomingLinks[0].anchor = 'ancre non rendue';
+    const wrongAnchor = [];
+    verifierLiensEntrantsService(root, recipe, wrongAnchor);
+    assert.ok(wrongAnchor.some((error) => error.startsWith(`/blog/${slug}`)));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
 test('sources DILA du service : copie récente et extrait exact, puis refus et scellement des octets', () => {

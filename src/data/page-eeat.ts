@@ -78,6 +78,10 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'bulletins-controle': {
+    auteur: 'kevin', datePublication: '2026-10-10', dateModification: '2026-10-10',
+    sources: [{ editeur: 'Service Public', titre: 'Fiche de paie', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F559', consulteLe: '2026-10-06', preuve: 'Les mentions et libellés bornent la revue ; le repérage fictif ne qualifie pas juridiquement un bulletin.', mot: 'Service Public, fiche de paie' }],
+  },
   'circularisation-cac': {
     auteur: 'kevin', datePublication: '2026-10-09', dateModification: '2026-10-09',
     sources: [

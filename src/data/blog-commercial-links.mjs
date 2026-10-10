@@ -40,8 +40,8 @@ export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
     label: 'Voir la prise en charge autour de la paie',
   }),
   'controler-les-bulletins-de-paie-avant-la-dsn': Object.freeze({
-    href: '/automatisation/paie',
-    label: 'Voir la prise en charge autour de la paie',
+    href: '/automatisation/bulletins-controle',
+    label: 'confier les contrôles croisés des bulletins de paie',
   }),
   'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain': Object.freeze({
     href: '/automatisation-cabinet-comptable',

@@ -18,6 +18,7 @@ import { parse } from 'parse5';
 
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { ajouterAuRegistre, chargerRegistre, sauverRegistre } from './lib/seo-registres.mjs';
+import { LIENS_COMMERCIAUX_BLOG } from '../src/data/blog-commercial-links.mjs';
 import { readDilaCopy } from './lib/dila-source-copy.mjs';
 
 const REQUIRED_SCHEMA_TYPES = ['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'];
@@ -145,7 +146,7 @@ function verifyIncomingLinkDeclarations(recipe, errors) {
   }
 }
 
-function verifyIncomingLinks(root, recipe, errors) {
+export function verifierLiensEntrantsService(root, recipe, errors) {
   verifyIncomingLinkDeclarations(recipe, errors);
   const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
   for (const link of links) {
@@ -163,11 +164,18 @@ function verifyIncomingLinks(root, recipe, errors) {
     if (publicRoute === null || link.url !== publicRoute) errors.push(`${prefix} : ne correspond pas à la route publique de ${link.sourcePath} (${publicRoute ?? 'route dynamique ou non publique'}).`);
     const markdownLink = `[${link.anchor}](${recipe.path})`;
     const astroLink = `href="${recipe.path}"`;
-    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)))) {
+    // Article.astro rend ce pont après le corps scellé. La clé d’article, l’URL et
+    // l’ancre doivent correspondre ; ni le fallback ni un lien global ne comptent.
+    const articleId = link.sourcePath.match(/^src\/content\/blog\/(.+)\.md$/)?.[1];
+    const bridge = articleId ? LIENS_COMMERCIAUX_BLOG[articleId] : null;
+    const contextualBridge = bridge?.href === recipe.path && bridge?.label === link.anchor;
+    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge)) {
       errors.push(`${prefix} : aucun lien contextuel avec l’ancre « ${link.anchor} » vers ${recipe.path} dans ${link.sourcePath}.`);
     }
   }
 }
+
+const verifyIncomingLinks = verifierLiensEntrantsService;
 
 function verifyReplayEvidence(root, recipe, body, errors) {
   const path = recipe.proof?.evidencePath;
