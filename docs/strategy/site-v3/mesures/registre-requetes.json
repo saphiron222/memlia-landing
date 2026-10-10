@@ -32,6 +32,16 @@
       "source": "Fiche EC 03 et demande-autocomplete.json du 06/10/2026 : une suggestion identique. Candidat non publié, trafic/indexation/usages ND ; intention distincte des guides Sage et Cegid."
     },
     {
+      "slug": "generateur-relance-facture-impayee", "type": "outil",
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee",
+      "requete": "générateur relance facture impayée",
+      "secondaires": ["mail relance facture impayée", "modèle relance facture impayée"],
+      "famille": "facturation-recouvrement", "format": "web-application", "publieLe": null,
+      "titreOnglet": "Générateur de relance de facture impayée | Memlia",
+      "source": "Brief 01 outils EC vague 4 et docs/qa/relance-facture/demande-autocomplete.json ; vraie sonde : primaire sans suggestion, mail relance facture impayée avec dix suggestions. Convention de préparation, aucune règle juridique. Candidat non publié : indexation, trafic et conversions ND."
+    },
+    { "slug": "fusionner-fichiers-csv", "type": "outil", "url": "https://memlia.fr/outils-comptables-gratuits/fusionner-fichiers-csv", "requete": "fusionner fichiers csv", "secondaires": ["consolider exports csv localement"], "famille": "fusion-csv", "format": "web-application", "publieLe": null, "titreOnglet": "Fusionner des fichiers CSV gratuitement | Memlia", "source": "Brief 02 EC vague 4, sonde du 06/10 : 8 suggestions ; candidat avant QA/publication, aucun volume ou usage revendiqué." },
+    {
 
       "slug": "checklist-pieces-comptables", "type": "outil", "url": "https://memlia.fr/outils-comptables-gratuits/checklist-pieces-comptables",
       "requete": "checklist pièces comptables", "secondaires": ["demande pièces manquantes", "checklist documents cabinet comptable"],
@@ -541,6 +551,20 @@
       ],
       "famille": "evaluation-transmission",
       "publieLe": "2026-10-08",
+      "source": "recette-service-publiee"
+    },
+    {
+      "slug": "circularisation-cac",
+      "type": "service",
+      "url": "https://memlia.fr/automatisation/circularisation-cac",
+      "requete": "automatiser circularisation",
+      "secondaires": [
+        "circularisation commissaire aux comptes",
+        "réponse circularisation fournisseurs",
+        "procédures alternatives circularisation"
+      ],
+      "famille": "cac-confirmations-audit",
+      "publieLe": "2026-10-07",
       "source": "recette-service-publiee"
     }
   ]

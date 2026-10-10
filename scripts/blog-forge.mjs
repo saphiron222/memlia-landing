@@ -43,6 +43,8 @@ export const LARGEURS_HERO = [768, 1200, 1600];
 const SKILLS_TOUJOURS_JOUES = ['blog-write', 'blog-factcheck', ...CORE_BLOG_SKILLS, ...CORE_SEO_SKILLS];
 const CLAIM_TYPES_OFFICIELS = new Set(['paie', 'social', 'dsn', 'fiscal', 'juridique', 'legal-reglementaire']);
 const AUTORITES = [
+  { id: 'h2a', host: /^h2a-france\.org$/i, publisher: /\b(?:h2a|haute autorite de l audit)\b/i },
+  { id: 'cncc', host: /^(?:doc\.)?cncc\.fr$/i, publisher: /\b(?:cncc|compagnie nationale des commissaires aux comptes)\b/i },
   { id: 'urssaf', host: /(?:^|\.)urssaf\.fr$/i, publisher: /\burssaf\b/i },
   { id: 'net-entreprises', host: /(?:^|\.)net-entreprises\.fr$/i, publisher: /\bnet[- ]entreprises\b/i },
   { id: 'service-public', host: /(?:^|\.)service-public\.(?:fr|gouv\.fr)$/i, publisher: /\bservice public\b/i },
@@ -322,7 +324,7 @@ export function construireClaims({ recette, corps, dossier, sujet, jour }) {
     if (!recouvrement) erreurs.push(`${prefixe} : recouvrement insuffisant entre le claim et la citation (${partages.length} jeton(s) partagé(s) sur ${jetonsClaim.length} : ${partages.join(', ') || 'aucun'}) ; ajouter des translationTerms ou reformuler.`);
     if (partages.length + traductions.length < 2) erreurs.push(`${prefixe} : au moins deux correspondances exactes ou traductions sont requises.`);
     if (c.excerpt.trim().length < 40 || jetonsCitation.length < 5) erreurs.push(`${prefixe} : citation trop courte ou trop générique (40 caractères et 5 jetons minimum).`);
-    if (CLAIM_TYPES_OFFICIELS.has(c.type) && !(v.source.official === true && autoriteDe(v.source.url, v.source.publisher))) erreurs.push(`${prefixe} : un claim ${c.type} exige une source officielle reconnue (Urssaf, Net-entreprises, Service-Public, Légifrance, CNIL, impots.gouv, Insee, travail-emploi).`);
+    if (CLAIM_TYPES_OFFICIELS.has(c.type) && !(v.source.official === true && autoriteDe(v.source.url, v.source.publisher))) erreurs.push(`${prefixe} : un claim ${c.type} exige une source officielle reconnue (H2A, CNCC, Urssaf, Net-entreprises, Service-Public, Légifrance, CNIL, impots.gouv, Insee, travail-emploi).`);
     if (!c.explanation || c.explanation.length < 20) erreurs.push(`${prefixe} : explanation d'au moins 20 caractères requise.`);
     const id = `claim-${unite.id}-${(claimIdsParUnite.get(unite.id)?.length ?? 0) + 1}`;
     claimIdsParUnite.set(unite.id, [...(claimIdsParUnite.get(unite.id) ?? []), id]);

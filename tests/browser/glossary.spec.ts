@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { GLOSSARY_ENTRIES } from '../../src/data/glossary';
+import { assertGlossaryInventory } from './helpers/inventories';
 
-const EXPECTED_TERMS = 53;
+const EXPECTED_TERMS = GLOSSARY_ENTRIES.length;
 
 async function glossaryReport(page: import('@playwright/test').Page) {
   return page.evaluate(() => ({
@@ -13,16 +15,14 @@ async function glossaryReport(page: import('@playwright/test').Page) {
   }));
 }
 
-test('glossaire : 53 termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
+test('glossaire : inventaire des termes, alphabet réel, canonical, breadcrumb et schéma', async ({ page }) => {
   const response = await page.goto('/glossaire');
   expect(response?.status()).toBe(200);
   const report = await glossaryReport(page);
   expect(report).toEqual(expect.objectContaining({ terms: EXPECTED_TERMS, h1: 1, broken: [] }));
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/glossaire');
   await expect(page.locator('.ariane [aria-current="page"]')).toHaveText('Glossaire');
-  // 16 initiales depuis la vague 1 du 16/09/2026 (E, G, H, I, J rejoignent les onze lettres initiales).
-  await expect(page.locator('[data-lettre]')).toHaveCount(16);
-  await expect(page.locator('.alphabet a')).toHaveCount(16);
+  await assertGlossaryInventory(page, GLOSSARY_ENTRIES);
   const schema = await page.locator('script[type="application/ld+json"]').textContent();
   const types = JSON.parse(schema!)['@graph'].map((node: { '@type': string }) => node['@type']);
   expect(types).toEqual(['CollectionPage', 'DefinedTermSet', 'BreadcrumbList', 'Organization', 'WebSite']);
@@ -143,6 +143,7 @@ test('glossaire sans JavaScript : toutes les entrées et les ancres restent util
   await page.goto('/glossaire');
   await expect(page.getByLabel('Rechercher un terme')).toBeHidden();
   await expect(page.locator('.glossaire-entree')).toHaveCount(EXPECTED_TERMS);
+  await assertGlossaryInventory(page, GLOSSARY_ENTRIES);
   await expect(page.locator('.glossaire-entree').last()).toBeVisible();
   await page.locator('.alphabet a').first().click();
   await expect(page).toHaveURL(/#lettre-a$/);

@@ -1,4 +1,15 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Locator } from '@playwright/test';
+
+// Mesurer le texte, pas les pictogrammes ni les panneaux fermés.
+async function textLines(locator: Locator) {
+  return locator.evaluateAll(elements => elements.map(el => {
+    const range = document.createRange();
+    const text = [...el.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+    if (!text) throw new Error('Texte à mesurer absent');
+    range.selectNodeContents(text);
+    return new Set([...range.getClientRects()].map(rect => Math.round(rect.y))).size;
+  }));
+}
 
 for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
   test(`première vue utile ${width}x${height}`, async ({ page }) => {
@@ -47,14 +58,8 @@ for (const width of [1024, 1366]) {
     await page.setViewportSize({ width, height: 768 });
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
-    for (const selector of ['.nav-centre a', '.nav-principal', '.hero-btn']) {
-      const lines = await page.locator(selector).evaluateAll(elements => elements.map(el => {
-        const range = document.createRange();
-        const text = [...el.childNodes].find(node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
-        if (!text) throw new Error('Texte à mesurer absent');
-        range.selectNodeContents(text);
-        return new Set([...range.getClientRects()].map(rect => Math.round(rect.y))).size;
-      }));
+    for (const selector of ['.nav-centre .nav-entree:visible', '.nav-principal:visible', '.hero-btn:visible']) {
+      const lines = await textLines(page.locator(selector));
       expect(lines.length).toBeGreaterThan(0);
       expect(lines.every(count => count === 1)).toBe(true);
     }
@@ -65,4 +70,47 @@ for (const width of [1024, 1366]) {
     });
     expect(lines).toBeLessThanOrEqual(2);
   });
+
+  test(`sous-menus ouverts lisibles à ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 768 });
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    const triggers = page.locator('[data-groupe-bouton]');
+    expect(await triggers.count()).toBeGreaterThan(0);
+    for (const trigger of await triggers.all()) {
+      const panel = page.locator(`#${await trigger.getAttribute('aria-controls')}`);
+      await expect(panel).toBeHidden();
+      await trigger.focus();
+      await page.keyboard.press('Enter');
+      await expect(panel).toBeVisible();
+      for (const link of await panel.locator('a').all()) {
+        await expect(link).toBeVisible();
+        const box = (await link.boundingBox())!;
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(width);
+        const [lines] = await textLines(link);
+        expect(lines).toBeGreaterThan(0);
+        const lineHeight = await link.evaluate(el => parseFloat(getComputedStyle(el).lineHeight));
+        expect(box.height).toBeGreaterThanOrEqual(lines * lineHeight);
+      }
+      await page.keyboard.press('Escape');
+      await expect(panel).toBeHidden();
+    }
+  });
 }
+
+test('témoin : un vrai retour à la ligne visible reste détecté', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto('/');
+  await page.evaluate(() => document.fonts.ready);
+  const entry = page.locator('.nav-centre a.nav-entree').first();
+  expect(await textLines(entry)).toEqual([1]);
+  await entry.evaluate(el => {
+    el.textContent = 'Navigation volontairement sur plusieurs lignes';
+    (el as HTMLElement).style.cssText = 'display:block; width:80px; white-space:normal; overflow-wrap:anywhere';
+  });
+  await expect(entry).toBeVisible();
+  const lines = await textLines(entry);
+  expect(lines[0]).toBeGreaterThan(1);
+  expect(lines.every(count => count === 1)).toBe(false);
+});

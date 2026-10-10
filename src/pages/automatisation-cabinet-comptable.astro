@@ -8,6 +8,9 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
 import { eeatCommercial } from '@/data/page-eeat';
+import { famillesDeLaProfession } from '@/data/familles';
+const familles = famillesDeLaProfession('ec');
+const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
 
 const page = PAGES_V2.service;
 // La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
@@ -29,7 +32,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
 ];
 const renvois = [
   { texte: 'Choisir une prochaine action à partir des pratiques déclarées, sans classement des équipes.', libelle: 'Situer les pratiques IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
-  { texte: 'La carte des tâches automatisables d’un cabinet : douze pôles, soixante familles, une frontière par tâche.', libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
+  { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire les contrôles avant la DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
   { texte: 'Suivre la production sociale dans Excel sans surveiller les personnes.', libelle: 'Lire le suivi de production sociale', href: '/blog/suivre-la-production-sociale-dans-excel' },
   { texte: 'Après une saisie automatisée, six contrôles restent à faire : lesquels, et pourquoi.', libelle: 'Lire les contrôles après la saisie', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier' },
@@ -49,6 +52,7 @@ const poles = [
   { nom: 'Commissariat aux comptes', reste: 'La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.' },
 ];
 const outils = [
+  { href: '/outils-comptables-gratuits/fusionner-fichiers-csv', libelle: 'Fusionner des exports CSV', texte: 'Correspondance des colonnes confirmée, fichier consolidé et rapport des exceptions. Le cabinet vérifie la comparabilité des exports.' },
   { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
   { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
   { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
@@ -137,8 +141,10 @@ const appel = {
   <section class="pv" aria-labelledby="perimetre">
     <div class="tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
+      <p>Pour <a href="/outils-comptables-gratuits/generateur-relance-facture-impayee">préparer une relance de facture impayée</a>, rejouez trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.</p>
       <p class="texte-2 lecture">Partons d’une tâche : rassembler les pièces manquantes, préparer des écarts entre deux états ou suivre une échéance. Nous écrivons ce qui déclenche le traitement, la proposition attendue et ce que votre équipe doit décider. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
       <p class="texte-2 lecture">Pour le commissariat aux comptes, nous préparons aussi les demandes de documents, le suivi des réponses et les comparaisons entre exercices. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission.</p>
+      <p class="texte-2 lecture">Pour vos missions d’audit, découvrez <a href="/commissaires-aux-comptes">l’automatisation pour commissaire aux comptes</a> : sélection des tiers, écarts de confirmation et fichiers rapprochés de la balance, avec votre validation.</p>
     </div>
     <dl class="lignes perimetre-poles rv">
       {poles.map((pole) => (

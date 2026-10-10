@@ -12,7 +12,7 @@ const products = [...new Set(INTEGRATIONS_INDEXABLES.map((integration) => integr
 const page = {
   chemin,
   titre: 'Guides par environnement comptable | Memlia',
-  description: 'Trouvez les repères de contrôle dans Sage 100 Comptabilité, Sage 100 Paie & RH, Cegid Loop ou mySilae : champs à lire, préparation et décisions du cabinet.',
+  description: `Trouvez les repères de contrôle dans ${new Intl.ListFormat('fr', { type: 'disjunction' }).format(products)} : champs à lire, préparation et décisions du cabinet.`,
   h1: 'Guides par environnement comptable',
   chapeau: `Choisissez le logiciel de votre équipe, puis la tâche qui vous occupe. Les ${INTEGRATIONS_INDEXABLES.length} guides indiquent les champs à lire, les contrôles à préparer et les décisions qui restent au cabinet.`,
   ariane: 'Guides par environnement',

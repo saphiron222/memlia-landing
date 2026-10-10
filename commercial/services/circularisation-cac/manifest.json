@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "circularisation-cac",
+  "path": "/automatisation/circularisation-cac",
+  "status": "publie",
+  "candidateFingerprint": "da14625d86e566d5b9328a02336a1980129b10d145b89a1308a532d0fc793df2",
+  "title": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
+  "tabTitle": "Automatiser la circularisation dans vos outils | Memlia",
+  "ogTitle": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
+  "headline": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
+  "description": "Automatiser la circularisation : proposez les tiers selon votre règle et documentez les écarts. Le CAC valide la sélection. Confiez la mécanique.",
+  "hero": "Votre plateforme gère déjà les demandes, les envois et les relances. Nous préparons ce qui reste dans vos outils : une proposition de tiers selon la règle du cabinet, sa feuille de couverture et les pièces à examiner pour les écarts ou les non-réponses. Le CAC valide la sélection et choisit les procédures et les suites ; aucun envoi ni conclusion ne part de cette préparation.",
+  "primaryQuery": "automatiser circularisation",
+  "secondaryQueries": [
+    "circularisation commissaire aux comptes",
+    "réponse circularisation fournisseurs",
+    "procédures alternatives circularisation"
+  ],
+  "audience": {
+    "mode": "exception",
+    "qualifier": null,
+    "reason": "Requête de geste retenue par C2 et ARCHITECTURE-CAC malgré zéro suggestion, sans volume revendiqué. La tâche circularisation est contextualisée pour les CAC dès le héros ; conserver son propriétaire commercial distinct des modèles gratuits et articles de méthode."
+  },
+  "family": "cac-confirmations-audit",
+  "verifiedAt": "2026-10-06",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact"
+  },
+  "schemaTypes": [
+    "WebPage",
+    "Service",
+    "BreadcrumbList",
+    "Organization",
+    "WebSite"
+  ],
+  "incomingLinks": [
+    {
+      "url": "/methode",
+      "sourcePath": "src/pages/methode.astro",
+      "anchor": "Automatiser la circularisation"
+    },
+    {
+      "url": "/garanties",
+      "sourcePath": "src/pages/garanties.astro",
+      "anchor": "Automatiser la circularisation"
+    },
+    {
+      "url": "/outils-comptables-gratuits/suivi-circularisation",
+      "sourcePath": "src/pages/outils-comptables-gratuits/suivi-circularisation.astro",
+      "anchor": "Automatiser la circularisation"
+    }
+  ],
+  "review": {
+    "reviewer": "metier",
+    "reviewedAt": "2026-10-06",
+    "status": "PASS"
+  },
+  "pageSha256": "935bb306667b55721804094d1c6dd87acd78bb62e6f2dc54f99edeacf6b5376c",
+  "seal": "preuves/scellement.json"
+}

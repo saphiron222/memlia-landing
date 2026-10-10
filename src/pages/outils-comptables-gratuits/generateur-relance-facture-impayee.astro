@@ -1,0 +1,7 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import GenerateurRelanceFacture from '@/components/outils/GenerateurRelanceFacture.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('generateur-relance-facture-impayee');
+---
+<Outil outil={outil}><GenerateurRelanceFacture /></Outil>

@@ -39,14 +39,14 @@ test('les trois références CAC ont un registre et des actifs propres', async (
     assert.ok(bytes.length < 150000);
   }
 });
-test('le manifeste scelle scènes et image sociale et le poster reprend la sélection', async () => {
+test('le manifeste scelle scènes et image sociale indépendamment du film E9', async () => {
   const manifest = JSON.parse(readFileSync('docs/qa/accueil-cac/proofs-manifest.json'));
   assert.equal(manifest.entries.length, 4);
   for (const entry of [...manifest.sources, ...manifest.entries]) {
     assert.equal(hash(readFileSync(entry.path ?? entry.target)), entry.sha256);
   }
-  assert.equal(CONTENU_CAC.hero.poster, `/proofs/${MEDIAS_CAC.selection}.webp`);
-  assert.equal(CONTENU_CAC.hero.video, '');
+  assert.equal(CONTENU_CAC.hero.poster, '/media/cac-r4/hero-poster-1200.webp');
+  assert.equal(CONTENU_CAC.hero.video, '/media/cac-r4/explainer-hero-45s.mp4');
   const og = await sharp('public/proofs/cac/og/accueil-selection-tiers.webp').metadata();
   assert.deepEqual([og.width, og.height], [1200, 630]);
 });
