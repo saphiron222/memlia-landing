@@ -37,6 +37,17 @@ export const COUVERTURE_SERVICES = Object.freeze({
       'un accompagnement de transition jusqu’au 01/09/2027, à réévaluer si les éditeurs couvrent le besoin.',
     ],
   },
+  'bulletins-controle': {
+    dejaFait: [
+      { outil: 'Silae', geste: 'produit la paie et automatise son circuit jusqu’à la DSN', source: { url: 'https://www.silae.fr/solutions/', libelle: 'Silae, solutions de paie', consulteLe: '2026-10-06' } },
+      { outil: 'Cegid Payroll Ultimate', geste: 'propose un tableau de bord et des contrôles de paie personnalisables pour contrôler et valider la paie', source: { url: 'https://www.cegid.com/fr/produits/cegid-payroll-ultimate/', libelle: 'Cegid, Payroll Ultimate', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'les rapprochements encore manuels entre variables validées, bulletins calculés et références du cabinet, seulement si les contrôles natifs ne les couvrent pas ;',
+      'la file des écarts avec leurs valeurs, références et versions, à examiner par le gestionnaire ;',
+      'la vérification de votre outil, de son édition et de ses options avant toute proposition : un contrôle déjà suffisant reste dans cet outil. La correction et la validation restent au pôle social.',
+    ],
+  },
   'circularisation-cac': {
     dejaFait: [
       {

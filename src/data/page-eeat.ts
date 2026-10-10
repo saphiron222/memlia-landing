@@ -88,6 +88,10 @@ export const SERVICE_EEAT = {
       mot: 'calendrier officiel lié par la DGFiP',
     }],
   },
+  'bulletins-controle': {
+    auteur: 'kevin', datePublication: '2026-10-10', dateModification: '2026-10-10',
+    sources: [{ editeur: 'Service Public', titre: 'Fiche de paie', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F559', consulteLe: '2026-10-06', preuve: 'Les mentions et libellés bornent la revue ; le repérage fictif ne qualifie pas juridiquement un bulletin.', mot: 'Service Public, fiche de paie' }],
+  },
   'circularisation-cac': {
     auteur: 'kevin', datePublication: '2026-10-09', dateModification: '2026-10-09',
     sources: [

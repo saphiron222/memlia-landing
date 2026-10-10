@@ -31,6 +31,7 @@ const requis: { picto: NomPicto; titre: string; texte: string }[] = [
   { picto: 'grille', titre: 'L’environnement', texte: 'La version de vos outils, les postes concernés, qui utilisera quoi.' },
 ];
 const renvois = [
+
   { texte: 'Choisir une prochaine action à partir des pratiques déclarées, sans classement des équipes.', libelle: 'Situer les pratiques IA du cabinet', href: '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet' },
   { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Contrôler les bulletins de paie avant la DSN : une liste de contrôles à rejouer chaque mois.', libelle: 'Lire les contrôles avant la DSN', href: '/blog/controler-les-bulletins-de-paie-avant-la-dsn' },
@@ -156,6 +157,7 @@ const appel = {
     </dl>
       <p class="texte-2 lecture">Pour passer d’une publication à une fiche client proposée et à une alerte destinée à l’associé, vous pouvez <a href="/automatisation/registres-obligations">automatiser le suivi des registres et obligations</a>. Le cabinet garde la mise à jour, la date applicable et les suites à donner.</p>
     <p class="texte-2 lecture perimetre-paie rv">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
+    <p class="texte-2 lecture rv">Nous pouvons <a href="/automatisation/bulletins-controle">automatiser les contrôles des bulletins de paie</a> là où les contrôles natifs laissent un rapprochement manuel entre variables validées et résultats calculés. Les écarts attendent l’examen du gestionnaire ; aucune correction ne part seule.</p>
     <p class="texte-2 lecture perimetre-salaries rv">Pour les annonces reçues hors portail, nous pouvons <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a>. Le circuit déjà utilisé et les décisions sociales restent au pôle social.</p>
     <p class="texte-2 lecture rv">Dans le pôle juridique, nous pouvons <a href="/automatisation/secretariat-juridique">suivre les échéances juridiques hors de votre outil</a> si ce suivi reste manuel après vérification de votre offre et de ses options. Les dates, l’approbation et le dépôt restent au cabinet et aux personnes habilitées.</p>
     <div class="liens-bloc perimetre-outils rv">

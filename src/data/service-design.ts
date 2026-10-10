@@ -14,6 +14,10 @@ export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
     heroProof: 'v2/30-service-facture-electronique',
     bodyProof: 'v2/30-service-facture-electronique',
   },
+  'bulletins-controle': {
+    heroProof: 'v2/48-service-bulletins-controle',
+    bodyProof: 'v2/48-service-bulletins-controle',
+  },
   'circularisation-cac': {
     heroProof: 'v2/44-service-circularisation-cac',
     bodyProof: 'v2/44-service-circularisation-cac',
