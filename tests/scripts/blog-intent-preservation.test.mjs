@@ -13,7 +13,12 @@ const sourceRoot = resolve(import.meta.dirname, '../..');
 const root = mkdtempSync(join(process.env.TMPDIR || tmpdir(), 'blog-intent-fixture-'));
 const slug = 'prompt-chatgpt-expert-comptable';
 for (const path of ['editorial', 'src', 'docs', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
-  cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
+  // Cette fixture reconstruit une publication historique, pas un créneau courant.
+  // Le vrai garde du calendrier est exercé séparément dans blog-forge.test.mjs.
+  cpSync(join(sourceRoot, path), join(root, path), {
+    recursive: true,
+    filter: (source) => source !== join(sourceRoot, 'docs/strategy/site-v3/build-cluster-plan.py'),
+  });
 }
 // Date historique de cette fixture, cohérente avec ses preuves et son relevé.
 // Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.
