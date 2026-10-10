@@ -41,6 +41,14 @@ les Cicatrices gardent un samedi de publication. Ne pas dater les recettes de te
 Cicatrices et claims sous des horloges de vendredi, samedi et dimanche, en UTC et America/Los_Angeles.
 La suite complète reste jouée une fois ; ce contrat entre dans `npm run test:scripts`.
 
+La fixture de `blog-intent-preservation.test.mjs` copie les preuves documentaires nécessaires
+à l'intention historique, mais pas le planificateur du calendrier courant. `jour` ne suffit pas
+à isoler ce dernier : Python consulte aussi son propre jour système. La régression reconstruit
+la publication sous des horloges ultérieures ; le candidat non scellé reste refusé si ses relevés
+sont vieillis. Le vrai dépôt conserve son planificateur et tous ses gardes. Cette suite exige le
+vrai `dist` produit en CI. Les journaux stdout/stderr du webServer Playwright restent visibles
+pour distinguer un refus de build d'un défaut de démarrage du serveur.
+
 ## Message et copy
 
 **La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique
