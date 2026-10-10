@@ -214,11 +214,16 @@ export function verifierRecetteService({ root, recipe, body, review, today = tod
   }
   for (const source of recipe?.sources ?? []) {
     try {
-      if (!source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(source.dilaCopySha256 ?? '')) throw new Error('Copie DILA et empreinte requises pour cette source.');
-      readDilaCopy({ root: join(root, 'commercial/recettes', recipe.slug), path: source.dilaCopyPath, url: source.url,
-        excerpt: source.excerpt, expectedSha256: source.dilaCopySha256,
-        asOf: sourceAsOf ?? (today === todayIso() ? new Date().toISOString() : `${today}T12:00:00Z`) });
-      if (!body.includes(source.url)) throw new Error('Le lien public Légifrance doit apparaître dans le corps.');
+      const host = new URL(source.url).hostname.replace(/\.$/, '');
+      const requiresDila = host === 'legifrance.gouv.fr' || host.endsWith('.legifrance.gouv.fr')
+        || source.dilaCopyPath !== undefined || source.dilaCopySha256 !== undefined;
+      if (requiresDila) {
+        if (!source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(source.dilaCopySha256 ?? '')) throw new Error('Copie DILA et empreinte requises pour cette source.');
+        readDilaCopy({ root: join(root, 'commercial/recettes', recipe.slug), path: source.dilaCopyPath, url: source.url,
+          excerpt: source.excerpt, expectedSha256: source.dilaCopySha256,
+          asOf: sourceAsOf ?? (today === todayIso() ? new Date().toISOString() : `${today}T12:00:00Z`) });
+      }
+      if (!body.includes(source.url)) throw new Error('Le lien public de la source doit apparaître dans le corps.');
     } catch (error) { errors.push(`Source ${source.id ?? '(sans identifiant)'} : ${error.message}`); }
   }
 

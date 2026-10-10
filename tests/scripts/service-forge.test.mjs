@@ -21,6 +21,39 @@ const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
+test('sources hors DILA : acceptées sans copie, sans permettre de contourner une copie déclarée ou Légifrance', () => {
+  const root = racineDeTest();
+  try {
+    const recipe = recette();
+    const url = 'https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique';
+    const source = { url, publisher: 'DGFiP', proofPath: 'preuves/source-dgfip.md' };
+    writeFileSync(join(root, 'commercial/recettes', SLUG, source.proofPath), 'Témoin technique de la source officielle hors DILA.');
+    recipe.sources = [source];
+    const body = `${CORPS}\nSource : [DGFiP](${url}).`;
+    const validate = (content = body) => verifierRecetteService({ root, recipe, body: content, today: JOUR, requireReview: false });
+    assert.deepEqual(validate(), []);
+    assert.ok(validate(CORPS).some((error) => /lien public/i.test(error)));
+    for (const declaration of [
+      { dilaCopyPath: '' }, { dilaCopySha256: '' },
+      { dilaCopyPath: null }, { dilaCopySha256: null },
+      { dilaCopyPath: 'absent.json', dilaCopySha256: 'a'.repeat(64) },
+    ]) {
+      recipe.sources = [{ ...source, ...declaration }];
+      assert.ok(validate().some((error) => /DILA|ENOENT/.test(error)), JSON.stringify(declaration));
+    }
+    for (const legalUrl of [URL, URL.replace('www.legifrance', 'legifrance'), URL.replace('gouv.fr/', 'gouv.fr./'), 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050685014']) {
+      recipe.sources = [{ url: legalUrl }];
+      assert.ok(validate(`${CORPS}\n${legalUrl}`).some((error) => /Copie DILA et empreinte requises/.test(error)));
+    }
+    recipe.sources = [source];
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'recette.json'), JSON.stringify(recipe));
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'corps.md'), body);
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const seal = JSON.parse(readFileSync(join(root, 'commercial/services', SLUG, 'preuves/scellement.json')));
+    assert.ok(!Object.keys(seal.files).some((key) => key.startsWith('dilaSource')));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('sources DILA du service : copie récente et extrait exact, puis refus et scellement des octets', () => {
   const root = racineDeTest();
   try {
