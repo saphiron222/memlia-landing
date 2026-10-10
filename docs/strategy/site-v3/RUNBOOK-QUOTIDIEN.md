@@ -365,8 +365,11 @@ Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, 
 ### Régénérer après un conflit ou un changement du chrome
 
 `npm run regen:generated` construit d'abord le site sans exiger des fichiers générés déjà
-à jour, synchronise `pages-lastmod.json`, rescelle le glossaire (avec reconstruction du
-rendu après la synchronisation), réaffirme la revue métier existante, puis contrôle
+à jour, applique `npm run render:public` (retrait des briefs, rendu sans dates de consultation,
+contrôle des libellés publics), puis synchronise `pages-lastmod.json` sur ce HTML final.
+Le scellement du glossaire rejoue ce même rendu public lors de ses deux reconstructions,
+comme `build:site` : il ne remet donc pas de HTML brut après la synchronisation.
+La commande réaffirme la revue métier existante, puis contrôle
 le registre et exécute l'audit QA Ressources. Chaque échec arrête la chaîne ; cette
 commande ne remplace ni la construction complète assurée par la CI GitHub
 (« Repository gates »), ni la revue QA de la PR. Ne pas rejouer le build complet

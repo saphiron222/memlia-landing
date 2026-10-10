@@ -6,12 +6,12 @@
       "exitCode": 0
     },
     {
-      "command": "node scripts/strip-briefs.mjs",
+      "command": "npm run render:public",
       "exitCode": 0
     }
   ],
-  "startedAt": "2026-10-09T18:30:05.985Z",
-  "endedAt": "2026-10-09T18:30:35.221Z",
+  "startedAt": "2026-10-10T01:14:29.491Z",
+  "endedAt": "2026-10-10T01:15:00.875Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -20,7 +20,7 @@
         "exitCode": 0
       },
       {
-        "command": "node scripts/strip-briefs.mjs",
+        "command": "npm run render:public",
         "exitCode": 0
       }
     ],

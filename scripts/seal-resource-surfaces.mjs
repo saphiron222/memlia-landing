@@ -25,7 +25,8 @@ for (const key of ['BLOG_PREVIEW_SLUG', 'BLOG_PREVIEW_SLUGS', 'BLOG_PREVIEW_ALL'
 const buildStartedAt = new Date().toISOString();
 const bootstrapCommands = [
   { command: 'npx astro build', executable: 'npx', args: ['astro', 'build'], env: publicEnv },
-  { command: 'node scripts/strip-briefs.mjs', executable: process.execPath, args: ['scripts/strip-briefs.mjs'], env: process.env },
+  // Both reconstructions must seal the same final HTML as build:site and lastmod.
+  { command: 'npm run render:public', executable: 'npm', args: ['run', 'render:public'], env: publicEnv },
 ];
 for (const row of bootstrapCommands) {
   const run = spawnSync(row.executable, row.args, { cwd: root, env: row.env, stdio: 'inherit' });
