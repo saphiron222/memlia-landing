@@ -7,8 +7,8 @@ import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 export async function getStaticPaths() {
   const articles = await getCollection('blog', isBlogEntryVisible);
   return construireRoutesRubriques(articles)
-    .filter(({ historique }) => historique)
-    .map(({ param, rubrique }) => ({ params: { slug: param }, props: { rubrique } }));
+    .filter(({ historique }) => !historique)
+    .map(({ param, rubrique }) => ({ params: { rubrique: param }, props: { rubrique } }));
 }
 ---
 <BlogRubrique rubrique={Astro.props.rubrique} />
