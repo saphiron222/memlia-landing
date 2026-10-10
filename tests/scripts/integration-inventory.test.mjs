@@ -1,16 +1,39 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
-import { readFileSync } from 'node:fs';
-import { integrationInventory, assertIntegrationCoverage, assertScope } from './integration-inventory.mjs';
 
-const source = readFileSync('src/data/integrations.ts', 'utf8');
-const compiled = ts.transpileModule(source.replace("import generatedGuides from './guides.generated.json' with { type: 'json' };", `const generatedGuides = ${readFileSync('src/data/guides.generated.json', 'utf8')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-const { INTEGRATIONS, INTEGRATION_CANDIDATES: historicalCandidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
-const generated = JSON.parse(readFileSync('src/data/guides.generated.json', 'utf8'));
-const INTEGRATION_CANDIDATES = [...historicalCandidates, ...generated.map(({ task, vendor, suggestions }) => ({ task, vendor, suggestions, status: 'forte' }))];
+import { integrationInventory, assertIntegrationCoverage, assertScope } from './integration-inventory.mjs';
+import { loadIntegrationFixture } from './integration-fixture.mjs';
+
+const { INTEGRATIONS, INTEGRATION_CANDIDATES } = await loadIntegrationFixture();
 const extra = { ...structuredClone(INTEGRATIONS[0]), slug: 'guide-fictif-nouveau', vendor: 'Éditeur fictif', task: 'geste fictif', primaryQuery: 'geste fictif nouveau', source: { ...INTEGRATIONS[0].source, checkedAt: '2026-11-12' } };
 const candidate = { task: extra.task, vendor: extra.vendor, suggestions: extra.suggestions, status: 'forte' };
+
+test('une collection générée non vide raccorde chaque mesure source aux routes et mappings', async () => {
+  const generatedGuides = [extra, { ...extra, slug: 'autre-guide-fictif', task: 'autre geste fictif', suggestions: 6 }];
+  const data = await loadIntegrationFixture({ generatedGuides });
+  const inventory = integrationInventory(data.INTEGRATIONS, data.INTEGRATION_CANDIDATES);
+  for (const guide of generatedGuides) {
+    assert.ok(inventory.slugs.includes(guide.slug));
+    assert.equal(inventory.primaryQueries.get(guide.slug), guide.primaryQuery);
+    assert.ok(inventory.mappings.get(`${guide.service.href.slice(1)}.html`).includes(guide.slug));
+    assert.deepEqual(data.INTEGRATION_CANDIDATES.find(({ task, vendor }) => task === guide.task && vendor === guide.vendor), {
+      task: guide.task, vendor: guide.vendor, suggestions: guide.suggestions, status: 'forte',
+    });
+  }
+  assertScope(data.INTEGRATIONS);
+});
+
+test('les candidats générés ne masquent ni orphelin, ni doublon, ni mesure divergente', async () => {
+  const { INTEGRATIONS: entries, INTEGRATION_CANDIDATES: candidates } = await loadIntegrationFixture({ generatedGuides: [extra] });
+  assert.throws(() => integrationInventory(entries.slice(0, -1), candidates), /couverture/);
+  assert.throws(() => integrationInventory([...entries, { ...extra, slug: 'orphelin', task: 'geste orphelin' }], candidates), /couverture/);
+  assert.throws(() => integrationInventory([...entries, extra], candidates), /dupliquées/);
+  assert.throws(() => integrationInventory(entries, [...candidates, candidate]), /couverture/);
+  assert.throws(() => integrationInventory(entries.map(entry => entry.slug === extra.slug ? { ...entry, suggestions: entry.suggestions + 1 } : entry), candidates), /mesure/);
+  const insufficient = await loadIntegrationFixture({ generatedGuides: [{ ...extra, suggestions: 5 }] });
+  assert.throws(() => integrationInventory(insufficient.INTEGRATIONS, insufficient.INTEGRATION_CANDIDATES), /seuil/);
+});
 
 test('un guide et un vendeur fictifs étendent requêtes, routes et mappings sans changer les planchers', () => {
   const entries = [...INTEGRATIONS, extra];
