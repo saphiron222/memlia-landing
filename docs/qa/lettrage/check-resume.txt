@@ -1,0 +1,82 @@
+
+> memlia-landing@2.0.0 check
+> astro check
+
+05:58:16 [content] Syncing content
+05:58:16 [content] Synced content
+05:58:16 [types] Generated 556ms
+05:58:16 [check] Getting diagnostics for Astro files in /Users/kevinkitanga/.hermes/kanban/workspaces/t_52251fce/site...
+[96meditorial/recettes/verifier-reponse-ia-comptabilite/revue-verifier.mjs[0m:[93m8[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'parse' is declared but its value is never read.
+
+[7m8[0m import { parse } from 'parse5';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96mscripts/lighthouse.mjs[0m:[93m92[0m:[93m3[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m92[0m   await chrome.kill();
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~~~~[0m
+
+[96mscripts/measure-font-cls.mjs[0m:[93m22[0m:[93m17[0m - [93mwarning[0m[90m ts(80007): [0m'await' has no effect on the type of this expression.
+
+[7m22[0m     } finally { await chrome.kill(); }
+[7m  [0m [93m                ~~~~~~~~~~~~~~~~~~~[0m
+
+[96mscripts/lib/resource-metier-v3.mjs[0m:[93m31[0m:[93m36[0m - [93mwarning[0m[90m ts(6133): [0m'root' is declared but its value is never read.
+
+[7m31[0m export function expandV3Evidence({ root, glossary, entries, sources, official, checkedAt }) {
+[7m  [0m [93m                                   ~~~~[0m
+
+[96mscripts/seo/integrite.mjs[0m:[93m124[0m:[93m56[0m - [93mwarning[0m[90m ts(6133): [0m'x' is declared but its value is never read.
+
+[7m124[0m             extraitsManquants: source.extraits.filter((x, k) => niveaux[k] === 'absent').map((x) => x.slice(0, 80)),
+[7m   [0m [93m                                                       ~[0m
+
+[96mscripts/seo/sentinelle.mjs[0m:[93m19[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'ORIGINE' is declared but its value is never read.
+
+[7m19[0m   ORIGINE,
+[7m  [0m [93m  ~~~~~~~[0m
+
+[96msrc/lib/circularisation-ui.mjs[0m:[93m87[0m:[93m103[0m - [93mwarning[0m[90m ts(6385): [0m'returnValue' is deprecated.
+
+[7m87[0m  window.addEventListener('beforeunload',event=>{if(session.tiers.length){event.preventDefault();event.returnValue='';}});
+[7m  [0m [93m                                                                                                      ~~~~~~~~~~~[0m
+
+[96msrc/lib/signification-ui.mjs[0m:[93m78[0m:[93m83[0m - [93mwarning[0m[90m ts(6385): [0m'returnValue' is deprecated.
+
+[7m78[0m  window.addEventListener('beforeunload',e=>{if(hasContent()){e.preventDefault();e.returnValue='';}});
+[7m  [0m [93m                                                                                  ~~~~~~~~~~~[0m
+
+[96msrc/pages/mentions-legales.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'SITE' is declared but its value is never read.
+
+[7m4[0m import { SITE } from '@/data/site.mjs';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/politique-de-confidentialite.astro[0m:[93m4[0m:[93m1[0m - [93mwarning[0m[90m ts(6133): [0m'SITE' is declared but its value is never read.
+
+[7m4[0m import { SITE } from '@/data/site.mjs';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/integrations/[slug].astro[0m:[93m16[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'Props' is declared but never used.
+
+[7m16[0m interface Props { integration: IntegrationDefinition; }
+[7m  [0m [93m          ~~~~~[0m
+
+[96mtests/browser/signification.spec.mjs[0m:[93m3[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'addScenario' is declared but its value is never read.
+
+[7m3[0m import {createSession,addScenario,retainScenario,exportJson,INPUT_FIELDS,demoSession} from '../../src/lib/signification.mjs';
+[7m [0m [93m                      ~~~~~~~~~~~[0m
+[96mtests/browser/signification.spec.mjs[0m:[93m3[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'createSession' is declared but its value is never read.
+
+[7m3[0m import {createSession,addScenario,retainScenario,exportJson,INPUT_FIELDS,demoSession} from '../../src/lib/signification.mjs';
+[7m [0m [93m        ~~~~~~~~~~~~~[0m
+
+[96mtests/scripts/blog-intent-preservation.test.mjs[0m:[93m3[0m:[93m58[0m - [93mwarning[0m[90m ts(6133): [0m'writeFileSync' is declared but its value is never read.
+
+[7m3[0m import { readFileSync, readdirSync, mkdtempSync, cpSync, writeFileSync, rmSync } from 'node:fs';
+[7m [0m [93m                                                         ~~~~~~~~~~~~~[0m
+
+Result (480 files): 
+- 0 errors
+- 0 warnings
+- 14 hints
+

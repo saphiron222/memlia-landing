@@ -1,0 +1,22 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import AssistantLettrage from '@/components/outils/AssistantLettrage.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('assistant-lettrage-comptable-local');
+---
+<Outil outil={outil}>
+  <AssistantLettrage />
+  <section class="lecture" aria-labelledby="lettrage-conventions">
+    <h2 id="lettrage-conventions">Du CSV aux paires à examiner</h2>
+    <p>Pour préparer un lettrage comptable dans Excel, exportez les mouvements de tiers avec leurs identifiants. Cet assistant propose seulement des paires exactes : il ne modifie ni votre export ni votre logiciel. L’exemple fictif montre une paire certaine, deux règlements concurrents et une ligne sans règlement.</p>
+    <h3>Pourquoi un montant identique ne suffit-il pas ?</h3>
+    <p>Le compte, le tiers et la devise doivent être identiques. Une référence non vide doit aussi correspondre. Sans référence, le moteur exige un seul débit et un seul crédit de ce montant dans le groupe sans référence. Deux règlements concurrents restent ambigus ; 100 face à 60 et 40 reste à examiner.</p>
+    <h3>Que contient le rapport ?</h3>
+    <p>Chaque mouvement garde ses valeurs et sa ligne source. Les propositions, les acceptations, les refus, les ambiguïtés, les exclusions et les rejets sont distingués. Les sommes sont exactes et séparées par devise ; une ligne illisible est comptée, jamais transformée en zéro.</p>
+    <h3>Peut-on reprendre une décision ?</h3>
+    <p>Acceptez ou refusez chaque paire, puis revenez à « proposé » si nécessaire. Copiez ou exportez le rapport complet avant de fermer cet onglet : aucune sauvegarde automatique. Pour une nouvelle session, réimportez l’export original et validez de nouveau ; ce rapport de préparation n’est pas un fichier de reprise ni d’écriture.</p>
+    <h3>Et dans le logiciel du cabinet ?</h3>
+    <p>La décision et le geste final restent dans votre outil habituel. Consultez les frontières des guides <a href="/integrations/lettrage-sage">lettrage Sage</a> et <a href="/integrations/lettrage-cegid">lettrage Cegid</a>. Notre <a href="/methode">méthode de règle écrite</a> permet ensuite de prendre en charge une préparation répétitive avec ses arrêts et sa validation.</p>
+  </section>
+</Outil>
+<style>.lecture{display:grid;gap:16px;padding-top:32px;margin-top:32px;border-top:1px solid var(--ligne)}.lecture h2{font-size:var(--t-3xl)}.lecture h3{font-size:var(--t-2xl)}.lecture p{color:var(--texte-2)}</style>

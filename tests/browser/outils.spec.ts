@@ -495,6 +495,27 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       const downloading = page.waitForEvent('download');
       await page.locator('[data-circ-export="json"]').click();
       await downloading;
+    } else if (outil.slug === 'assistant-lettrage-comptable-local') {
+      await page.locator('#lettrage-file').setInputFiles({
+        name: 'fictif.csv', mimeType: 'text/csv',
+        buffer: Buffer.from('id;compte;tiers;reference;date;debit;credit;devise;lettre\n001;411;CLIENT;F1;2026-01-01;100;0;EUR;\n002;411;CLIENT;F1;2026-01-02;0;100;EUR;'),
+      });
+      await page.getByRole('button', { name: 'Importer et rechercher les paires', exact: true }).click();
+      await expect(page.locator('[data-summary]')).toContainText('2 lignes source ; 1 paire(s), 0 groupe(s) ambigu(s)');
+      await page.getByRole('button', { name: 'Accepter la paire P1', exact: true }).click();
+      await expect(page.locator('[data-pairs]')).toContainText('P1 : accepté');
+      await page.getByRole('button', { name: 'Refuser la paire P1', exact: true }).click();
+      await expect(page.locator('[data-pairs]')).toContainText('P1 : refusé');
+      const downloading = page.waitForEvent('download');
+      await page.getByRole('button', { name: 'Exporter le rapport CSV complet', exact: true }).click();
+      const raw = await readFile((await (await downloading).path())!, 'utf8');
+      expect(raw).toContain('"001"');
+      expect(raw).toContain('"002"');
+      expect(raw).toContain('"refusé"');
+      expect(raw).not.toContain('"accepté"');
+      await page.getByRole('button', { name: 'Tout réinitialiser', exact: true }).click();
+      await expect(page.locator('[data-result]')).toBeHidden();
+      await expect(page.locator('[data-pairs]')).toBeEmpty();
     } else if (outil.slug === 'bareme-heures-cac') {
       await page.locator('[data-demo]').click();
       await expect(page.locator('[data-result]')).toContainText('20 à 35');
@@ -598,6 +619,11 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else if (outil.slug === 'preparer-pseudonymiser-fichier-csv-fec') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/pseudonymisation\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      expect(requests.filter(request => !asset.test(request))).toEqual([]);
+    } else if (outil.slug === 'assistant-lettrage-comptable-local') {
+      const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/lettrage\\.worker-[a-zA-Z0-9_-]+\\.js$`);
+      // Un seul Worker statique pour l’import et l’export, jamais de donnée dans l’URL.
+      expect(requests).toHaveLength(1);
       expect(requests.filter(request => !asset.test(request))).toEqual([]);
     } else if (outil.slug === 'suivi-circularisation') {
       const asset = new RegExp(`^GET ${new URL(page.url()).origin.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/_astro/circularisation-worker-[a-zA-Z0-9_-]+\\.js$`);
