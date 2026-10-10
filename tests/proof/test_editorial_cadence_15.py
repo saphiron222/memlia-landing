@@ -15,27 +15,42 @@ SPEC.loader.exec_module(PLAN)
 
 
 class CalendrierVivant(unittest.TestCase):
-    def test_circularisation_manquee_ne_devient_pas_une_nouvelle_reservation(self):
+    def test_reservations_f4_explicitement_replanifiees_sans_antidate(self):
         backlog = json.loads(PLAN.BACKLOG.read_text(encoding='utf-8'))
         target = next(e for e in backlog if e['slug'] == 'cac-circularisation-campagne')
         self.assertEqual(target.get('dateManquee'), '2026-10-09')
-        self.assertNotIn('datePlanifiee', target)
+        self.assertEqual(target.get('datePlanifiee'), '2026-10-15')
         data = PLAN.construire()
         entries = [data[3]] + data[4]
         scheduled = next(e for e in entries if e['slug'] == target['slug'])
-        self.assertEqual(scheduled['statut'], 'a-replanifier')
-        self.assertGreaterEqual(scheduled['date'], date.today().isoformat())
+        self.assertEqual(scheduled['statut'], 'planned')
+        self.assertEqual(scheduled['date'], '2026-10-15')
         self.assertEqual({e['slug']: e['datePlanifiee'] for e in backlog
                           if e.get('profession') == 'cac' and e.get('datePlanifiee')}, {
-            'cac-ecritures-journal-criteres': '2026-10-12',
-            'cac-contributions-dossier-preservation': '2026-10-13',
+            'cac-reception-fec-constat': '2026-10-12',
+            'cac-ecritures-journal-criteres': '2026-10-13',
+            'cac-seuil-signification-justification': '2026-10-14',
             'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-14',
+            'cac-circularisation-campagne': '2026-10-15',
+            'cac-circularisation-alternatives': '2026-10-16',
+            'cac-demandes-documents-cycles': '2026-10-19',
+            'cac-contributions-dossier-preservation': '2026-10-23',
+            'cac-appreciation-outil-automatise': '2026-10-20',
+            'cac-dossier-constitution-soixante-jours': '2026-10-21',
         })
 
 
 class Cadence15(unittest.TestCase):
     def setUp(self):
         self.enterContext(jour_fixe(PLAN, date(2026, 10, 9)))
+
+    def test_date_manquee_seule_ne_cree_pas_de_reservation(self):
+        entry = dict(slug='campagne-fictive', pole='a', format='tutorial', priorite=1,
+                     rang_famille=0, dateManquee='2026-10-08')
+        PLAN.planifier([entry], {}, aujourd_hui=date(2026, 10, 9))
+        self.assertNotIn('datePlanifiee', entry)
+        self.assertEqual(entry['statut'], 'a-replanifier')
+        self.assertGreaterEqual(str(entry['date']), '2026-10-09')
 
     def test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre(self):
         entries = [dict(slug='precedent', pole='a', format='x', date='2026-10-12', statut='published')]
