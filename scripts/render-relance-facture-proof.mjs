@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
+import {resolve} from 'node:path';
 import {demoInvoices,prepareReminders} from '../src/lib/relance-facture.mjs';
 const folder='docs/design/relance-facture-proof';
 const manifestPath='docs/qa/relance-facture/proofs-manifest.json';
@@ -34,6 +35,15 @@ assert.equal(result.status,0,'Renderer canonique');
 const provenance=['scripts/render-relance-facture-proof.mjs','src/lib/relance-facture.mjs',`${folder}/replay.json`,`${folder}/replay-input.json`];
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 const manifest=JSON.parse(readFileSync(manifestPath,'utf8'));
-if(check) for(const path of provenance) assert.equal(manifest.sources.find(s=>s.path===path)?.sha256,hash(path),`Provenance périmée : ${path}`);
-else {manifest.sources.push(...provenance.map(path=>({path,sha256:hash(path)})));writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');}
+if(check) for(const path of provenance) {
+ const sources=manifest.sources.filter(source=>resolve(source.path)===resolve(path));
+ assert.equal(sources.length,1,`Provenance non unique : ${path}`);
+ assert.equal(sources[0].sha256,hash(path),`Provenance périmée : ${path}`);
+}
+else {
+ const owned=new Set(provenance.map(path=>resolve(path)));
+ manifest.sources=manifest.sources.filter(source=>!owned.has(resolve(source.path)));
+ manifest.sources.push(...provenance.map(path=>({path,sha256:hash(path)})));
+ writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+}
 console.log('PASS : trois factures rejouées, une relance à 90 EUR, deux exceptions ; preuve et OG scellées.');

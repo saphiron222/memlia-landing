@@ -17,6 +17,7 @@ import { join } from 'node:path';
 
 const DOSSIER = 'tests/scripts';
 const SANS_NAVIGATEUR = {
+  'relance-provenance.test.mjs': 'rejoue le wrapper relance dans Chromium : joué explicitement en CI, hors build Cloudflare',
   'proofs-v2-ownership.test.mjs': 'rend les preuves v2 dans Chromium : joué explicitement en CI, hors build Cloudflare',
   'proof-render-ownership.test.mjs': 'rend les neuf preuves dans Chromium : joué explicitement en CI, hors build Cloudflare',
   'accueil-cac-geometry.test.mjs': 'mesure les panneaux CAC dans Chromium : joué explicitement en CI, hors build Cloudflare ; les autres contrôles CAC restent dans accueil-cac-medias.test.mjs',
