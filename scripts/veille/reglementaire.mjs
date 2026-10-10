@@ -134,7 +134,26 @@ export function evaluateClaimSource(snapshot, source) {
   };
 }
 
-function evaluateDiscoverySource(snapshot, source) {
+function latestDilaArchive(html) {
+  const packages = [];
+  // Consommer les commentaires et les blocs de texte brut avant les balises.
+  // Les valeurs entre guillemets restent entières, même si elles contiennent du HTML.
+  const tokens = /<!--[\s\S]*?(?:-->|$)|<(script|style|textarea|title)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[\s\S]*?(?:<\/\1\s*>|$)|<([a-z][\w:-]*)\b((?:"[^"]*"|'[^']*'|[^'">])*)>/gi;
+  for (const token of html.matchAll(tokens)) {
+    if (token[2]?.toLowerCase() !== 'a') continue;
+    const attributes = /([^\s=/'"<>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
+    for (const attribute of token[3].matchAll(attributes)) {
+      if (attribute[1].toLowerCase() !== 'href') continue;
+      const href = attribute[2] ?? attribute[3] ?? attribute[4] ?? '';
+      const packageId = href.match(/^(?:[^\s]*\/)?LEGI_(\d{8}-\d{6})\.tar\.gz$/i)?.[1];
+      if (packageId) packages.push(packageId);
+      break;
+    }
+  }
+  return packages.sort().at(-1) ?? null;
+}
+
+export function evaluateDiscoverySource(snapshot, source) {
   const fragments = source.requiredFragments ?? [];
   const corpus = canonicalText(snapshot.body);
   const fragmentResults = fragments.map((fragment) => ({
@@ -142,6 +161,11 @@ function evaluateDiscoverySource(snapshot, source) {
     present: normalizedIncludes(corpus, fragment),
   }));
   const evidencePresent = fragmentResults.length > 0 ? fragmentResults.every((fragment) => fragment.present) : null;
+  // Une maintenance sous HTTP 200 n'est pas un index d'archives exploitable.
+  const latestDilaPackage = snapshot.id === 'legifrance-dila-index'
+    ? latestDilaArchive(snapshot.body)
+    : undefined;
+  const dilaUnavailable = snapshot.id === 'legifrance-dila-index' && latestDilaPackage === null;
   return {
     id: snapshot.id,
     kind: snapshot.kind,
@@ -152,9 +176,9 @@ function evaluateDiscoverySource(snapshot, source) {
     canonicalSha256: snapshot.canonicalSha256 ?? null,
     evidencePresent,
     fragmentResults,
-    latestDilaPackage: snapshot.latestDilaPackage,
-    critical: snapshot.httpStatus !== 200 || evidencePresent === false,
-    error: snapshot.error ?? null,
+    ...(latestDilaPackage === undefined ? {} : { latestDilaPackage }),
+    critical: snapshot.httpStatus !== 200 || evidencePresent === false || dilaUnavailable,
+    error: snapshot.error ?? (dilaUnavailable ? 'DilaIndexUnavailable' : null),
   };
 }
 
@@ -185,15 +209,10 @@ export async function inspectRegulatorySources({ root = ROOT } = {}) {
   ));
   const discoveryDefinitions = [...DISCOVERY_SOURCES, ...maintenance.discoverySources];
   const discoverySnapshots = await Promise.all(discoveryDefinitions.map(fetchSnapshot));
-  const discoverySources = discoverySnapshots.map((snapshot) => {
-    const latestDilaPackage = snapshot.id === 'legifrance-dila-index'
-      ? [...snapshot.body.matchAll(/LEGI_(\d{8}-\d{6})\.tar\.gz/g)].map((match) => match[1]).sort().at(-1) ?? null
-      : undefined;
-    return evaluateDiscoverySource(
-      { ...snapshot, ...(latestDilaPackage === undefined ? {} : { latestDilaPackage }) },
-      discoveryDefinitions.find((source) => source.id === snapshot.id),
-    );
-  });
+  const discoverySources = discoverySnapshots.map((snapshot) => evaluateDiscoverySource(
+    snapshot,
+    discoveryDefinitions.find((source) => source.id === snapshot.id),
+  ));
   const closedClaims = measure.review.claims
     .filter((claim) => claim.verdict === 'SOURCE_INACCESSIBLE')
     .map(({ id, verdict, severity, publicationEligible }) => ({ id, verdict, severity, publicationEligible }));
