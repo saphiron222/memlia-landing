@@ -364,10 +364,15 @@ Si la recette n'existe pas, ne l'invente pas : une cicatrice est un fait vécu, 
 
 ### Régénérer après un conflit ou un changement du chrome
 
-`npm run regen:generated` construit d'abord le site sans exiger des fichiers générés déjà
-à jour, synchronise `pages-lastmod.json`, rescelle le glossaire (avec reconstruction du
-rendu après la synchronisation), réaffirme la revue métier existante, puis contrôle
-le registre et exécute l'audit QA Ressources. Chaque échec arrête la chaîne ; cette
+`npm run regen:generated` rescelle d'abord le glossaire sans exiger des fichiers générés
+déjà à jour : chaque reconstruction retire les briefs puis rend le texte public final.
+Après la dernière reconstruction, la commande rejoue ce rendu idempotent, synchronise
+`pages-lastmod.json`, réaffirme la revue métier existante, puis contrôle le registre et
+exécute l'audit QA Ressources. Lastmod mesure ainsi les mêmes octets publics que
+`npm run build`, jamais le HTML Astro brut ; aucun corps éditorial scellé n'est modifié.
+Pour vérifier l'absence de dérive sans reconstruire :
+`node scripts/render-public-source-text.mjs && npm run test:lastmod`.
+Chaque échec arrête la chaîne ; cette
 commande ne remplace ni la construction complète assurée par la CI GitHub
 (« Repository gates »), ni la revue QA de la PR. Ne pas rejouer le build complet
 sur le Mac après la régénération.
