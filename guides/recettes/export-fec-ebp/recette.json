@@ -1,16 +1,17 @@
-[
-  {
+{
+  "version": 1,
+  "type": "guide",
+  "mode": "nouveau",
+  "author": "dev",
+  "reviewKind": "metier",
+  "integration": {
     "slug": "export-fec-ebp",
     "task": "export FEC",
     "vendor": "EBP",
     "product": "EBP Comptabilité",
     "primaryQuery": "export fec ebp",
     "suggestions": 7,
-    "modifiers": [
-      "export fec provisoire ebp",
-      "extraction fec ebp",
-      "export fichier fec ebp compta"
-    ],
+    "modifiers": ["export fec provisoire ebp", "extraction fec ebp", "export fichier fec ebp compta"],
     "h1": "Export FEC EBP : choisir le bon export et contrôler son périmètre",
     "tabTitle": "Export FEC EBP : destination et périmètre | Memlia",
     "description": "Préparez un export FEC EBP en distinguant comptable et administration fiscale, puis contrôlez exercice, période, régime, codage et pièces jointes avant validation.",
@@ -83,5 +84,9 @@
       "checkedAt": "2026-10-07",
       "fact": "L’aide distingue « L’export Provisoire au format FEC » pour le comptable et « L’export comptabilité informatisé FEC » pour l’administration fiscale. Elle décrit Déclaratif → Fichier des écritures comptables, exercice, période, régime et codage, la conservation du nom généré et les documents liés depuis 2024 (PieceRef ou EcritureNum selon l’export). Nos critères de préparation sont une règle proposée au cabinet, pas une garantie fiscale."
     }
+  },
+  "demand": {
+    "evidencePath": "autocomplete.json",
+    "sha256": "0425b41138fa20117af63a1434127ca247aa11c2c1ab09c3a978c2b6067c9a5b"
   }
-]
+}
