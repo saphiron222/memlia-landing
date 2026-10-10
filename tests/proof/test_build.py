@@ -449,6 +449,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/calculateur-roi-automatisation',
                      f'{SITE}/outils-comptables-gratuits/bareme-heures-cac',
                      f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
+                     f'{SITE}/outils-comptables-gratuits/generateur-relance-facture-impayee',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
                          f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {

@@ -47,6 +47,26 @@ export interface OutilDefinition {
 
 export const OUTILS: readonly OutilDefinition[] = [
   {
+
+    slug: 'generateur-relance-facture-impayee', categorie: 'ecrire', statut: 'disponible',
+    libelleAction: 'Préparer une relance de facture impayée',
+    h1: 'Générateur de relance de facture impayée',
+    title: 'Générateur de relance de facture impayée | Memlia',
+    description: 'Préparez une relance amiable depuis vos factures, paiements et avoirs, avec messages éditables et cas à examiner. Tout reste dans votre navigateur.',
+    promesse: { entree: 'Factures, paiements, avoirs, échéances et clé client confirmée', resultat: 'Messages amiables éditables par client, soldes expliqués et exports complets' },
+    limites: [
+      'Le solde est le montant initial moins les paiements et les avoirs, dans une même devise déclarée. Le regroupement exige votre confirmation de la clé client.',
+      'Facture soldée ou non échue : exclue avec motif. Litige, solde négatif, échéance absente ou montant ambigu : cas à examiner, sans relance proposée.',
+      'Aucun envoi, pénalité, mise en demeure ni délai légal ajouté. Vous relisez le message et décidez des suites ; aucun dossier métier n’est modifié.',
+      'CSV : 5 Mo et 500 factures maximum. Une référence absente ou une date invalide arrête la ligne ; aucune donnée manquante n’est devinée.',
+    ],
+    mentionLocale: 'Saisie, import, préparation, copie et exports restent en mémoire dans cet onglet, sans envoi ni stockage persistant. Recharger efface la session ; les fichiers téléchargés restent sur votre appareil.',
+    proof: 'v2/44-outil-relance-facture', zoneLarge: true,
+    source: { titre: 'Convention de préparation Memlia', nom: 'Méthode Memlia — écrire et éprouver une règle', url: '/methode', extrait: 'Nous séparons le calcul du solde, les exclusions et les cas à examiner de la décision de relancer. Le jeu fictif éprouve une préparation amiable, pas une règle juridique.', verifieeLe: '7 octobre 2026' },
+    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+  },
+
+  {
     slug: 'fusionner-fichiers-csv', categorie: 'preparer', statut: 'disponible',
     libelleAction: 'Fusionner des exports CSV',
     h1: 'Fusionner des fichiers CSV gratuitement', title: 'Fusionner des fichiers CSV gratuitement | Memlia',
@@ -70,6 +90,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     source: { titre: 'Convention opérationnelle Memlia', nom: 'Méthode Memlia — écrire une règle et ses limites', url: '/methode', extrait: 'La trame suit les familles choisies et les états déclarés, sans sélectionner des obligations. Seules les pièces marquées manquantes entrent dans la demande ; les inconnues restent à clarifier.', verifieeLe: '7 octobre 2026' },
     articleExact: '/blog/automatiser-la-relance-des-pieces-clients', pageService: '/methode', cta: '/contact',
   },
+
   {
     slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
     libelleAction: 'Calculer la référence d’heures',

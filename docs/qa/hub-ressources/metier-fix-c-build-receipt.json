@@ -8,10 +8,14 @@
     {
       "command": "node scripts/strip-briefs.mjs",
       "exitCode": 0
+    },
+    {
+      "command": "node scripts/render-public-source-text.mjs",
+      "exitCode": 0
     }
   ],
-  "startedAt": "2026-10-09T18:30:05.985Z",
-  "endedAt": "2026-10-09T18:30:35.221Z",
+  "startedAt": "2026-10-10T00:24:25.678Z",
+  "endedAt": "2026-10-10T00:24:56.512Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -21,6 +25,10 @@
       },
       {
         "command": "node scripts/strip-briefs.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "node scripts/render-public-source-text.mjs",
         "exitCode": 0
       }
     ],
@@ -32,7 +40,7 @@
       "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
       "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
       "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
-      "outputDigest": "f6a50480591c9705e84909b85d85c006cd351297a521c25f19473815d4248ac4"
+      "outputDigest": "e1d5feea8dfa17e29b30a4fed843221a20af261f949832fb2a7a8ca3eba31b25"
     }
   }
 }
