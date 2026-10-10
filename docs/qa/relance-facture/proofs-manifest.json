@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/relance-facture-proof/index.html",
+      "sha256": "20c9c3547ccfbf361dbea67d4709c395142a5d266ee39ad20ab374d47a60d901"
+    },
+    {
+      "path": "docs/design/relance-facture-proof/styles.css",
+      "sha256": "abac2853de8e078b02338916c62d637f6896e89cae890058396a8d525e970a38"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/relance-facture-proof/content-contract.json",
+      "sha256": "09dc4dad670e97f516ff238b380b845cb5898a35ed495ce148fefd4091bea092"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    },
+    {
+      "path": "scripts/render-relance-facture-proof.mjs",
+      "sha256": "ac50b3de8b21c85288f9d54e9b1730481dad0726e6775182adef079abc8b5036"
+    },
+    {
+      "path": "src/lib/relance-facture.mjs",
+      "sha256": "9b77633433ed5b63bf03cb4b5c34c83cbf2d5c89be8bfe23284c91c149cf9c6a"
+    },
+    {
+      "path": "docs/design/relance-facture-proof/replay.json",
+      "sha256": "6255c75484ef3e0c3da988a046f68e8b3eb3d3fb4e8259622646e920793f20f9"
+    },
+    {
+      "path": "docs/design/relance-facture-proof/replay-input.json",
+      "sha256": "f6589864b8bea33232c84288dc5b7aa7c9ada6d6dd8ebc7df5b7dca6e676ee7b"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/relance-facture-proof/index.html#outil-relance-facture",
+      "target": "public/proofs/v2/44-outil-relance-facture.webp",
+      "bytes": 84150,
+      "sha256": "76bf8ee81c8bcaac519873fe01c820d59343f32a25f95857dfebbdce7d9e8f0c"
+    },
+    {
+      "source": "docs/design/relance-facture-proof/index.html#outil-relance-facture",
+      "target": "public/proofs/v2/og/44-outil-relance-facture.webp",
+      "bytes": 47710,
+      "sha256": "934bc52f829ba05fd20830cba7b1857e3787f8d8c48189dc7cc35c93442bf768"
+    }
+  ]
+}

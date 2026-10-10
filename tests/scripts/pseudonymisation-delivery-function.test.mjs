@@ -25,7 +25,10 @@ test('Pseudonymisation : seuls les deux beacons Cloudflare sont retirés, CSP et
 });
 test('Pseudonymisation : redirection ou erreur non HTML inchangée', async () => {
   const response = new Response(null,{status:301,headers:{Location:'/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec'}});
-  assert.equal(await onRequestGet({request,next:async()=>response}), response);
+  const delivered = await onRequestGet({request,next:async()=>response});
+  assert.equal(delivered.status, response.status);
+  assert.equal(delivered.headers.get('Location'), response.headers.get('Location'));
+  assert.equal(await delivered.text(), '');
 });
 
 test('Pseudonymisation : ancien ETag, date ou Range ne réutilisent jamais le corps avec beacon ; HEAD concorde', async () => {

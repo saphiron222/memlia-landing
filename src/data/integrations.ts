@@ -1,9 +1,9 @@
-import generatedGuides from './guides.generated.json';
+import generatedGuides from './guides.generated.json' with { type: 'json' };
 
 export const INTEGRATIONS_HUB_PATH = '/integrations' as const;
 
 export type IntegrationStatus = 'forte' | 'moyenne' | 'refusee';
-export type IntegrationVendor = 'Sage' | 'Cegid' | 'Silae' | 'Pennylane' | 'Quadra';
+export type IntegrationVendor = string;
 export type ServicePath = `/automatisation/${string}`
   | '/automatisation-cabinet-comptable'
   | '/automatisation/paie'
@@ -77,7 +77,7 @@ export interface IntegrationReplayCase {
 export interface IntegrationDefinition {
   slug: string;
   task: string;
-  vendor: string;
+  vendor: IntegrationVendor;
   product: string;
   primaryQuery: string;
   suggestions: number;
@@ -191,6 +191,7 @@ export const INTEGRATIONS_HISTORIQUES: readonly IntegrationDefinition[] = [
       checkedAt: '2026-10-04',
       fact: 'Fiche modifiée le 5 septembre 2023 : accès par les journaux ou la gestion des tiers, avec une incrémentation différente des codes. Elle n’établit pas notre règle de tolérance d’écart.',
     },
+    tool: { href: '/outils-comptables-gratuits/assistant-lettrage-comptable-local', label: 'Préparer un lettrage depuis un export : paires expliquées et ambiguïtés' },
   },
   {
     slug: 'dsn-sage',
@@ -422,6 +423,7 @@ export const INTEGRATIONS_HISTORIQUES: readonly IntegrationDefinition[] = [
       checkedAt: '2026-10-04',
       fact: 'La référence décrit les clés de l’import JSON et le lettrage importé : compte général ou tiers lettrable, même compte lettrable par code et débit = crédit. Aucune version chiffrée n’est affichée.',
     },
+    tool: { href: '/outils-comptables-gratuits/assistant-lettrage-comptable-local', label: 'Préparer un lettrage depuis un export : paires expliquées et ambiguïtés' },
   },
   {
     slug: 'dsn-silae',

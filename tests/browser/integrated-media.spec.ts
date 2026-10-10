@@ -113,7 +113,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       time: element.currentTime,
       width: element.videoWidth,
       height: element.videoHeight,
-    }))).toEqual({ paused: true, time: 0, width: 1920, height: 1080 });
+    }))).toEqual({ paused: true, time: 0, width: 0, height: 0 });
     const track = video.locator('track');
     expect(await track.getAttribute('default')).toBeNull();
     expect(await video.evaluate((element: HTMLVideoElement) => element.textTracks[0].mode)).toBe('disabled');

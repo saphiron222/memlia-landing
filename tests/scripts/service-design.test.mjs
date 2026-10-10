@@ -22,7 +22,7 @@ function pageComposee(preuve = 'v2/service-tache-test', liens = ['/automatisatio
     { '@type': 'WebPage', author: { '@id': 'https://memlia.fr/a-propos#kevin-kitanga' }, datePublished: '2026-09-20', dateModified: '2026-09-20' },
     { '@type': 'Person', '@id': 'https://memlia.fr/a-propos#kevin-kitanga', worksFor: { '@id': 'https://memlia.fr/#organization' } },
   ] });
-  return `<script type="application/ld+json">${schema}</script><main data-service-layout="da-v1"><section data-service-hero class="rv in"><div data-service-media><figure data-proof="${preuve}"></figure></div><div data-service-media><figure data-proof="${preuve}"></figure></div></section><p data-page-byline>Par Kevin Kitanga · mis à jour le 20 septembre 2026</p><section data-service-sections></section><section data-primary-source>Source primaire consultée le 20 septembre 2026</section><footer>${liens.map((href) => `<a href="${href}">Tâche</a>`).join('')}</footer></main>`;
+  return `<script type="application/ld+json">${schema}</script><main data-service-layout="da-v1"><section data-service-hero class="rv in"><div data-service-media><figure data-proof="${preuve}"></figure></div><div data-service-media><figure data-proof="${preuve}"></figure></div></section><p data-page-byline>Par Kevin Kitanga · mis à jour le 20 septembre 2026</p><section data-service-sections></section><section data-service-section="couverture">Ce que votre logiciel fait déjà</section><footer>${liens.map((href) => `<a href="${href}">Tâche</a>`).join('')}</footer></main>`;
 }
 
 test('une page à plat échoue, une page composée passe', () => {
@@ -69,18 +69,18 @@ test('une future page non publiée ne peut pas contourner la porte DA', () => {
   }
 });
 
-test('une page sans source ou Person reliée échoue la porte de confiance', () => {
+test('une page sans bloc de couverture ou Person reliée échoue la porte de confiance', () => {
   const root = fixture();
   try {
     const cible = join(root, 'dist/automatisation/tache-test/index.html');
     const sansConfiance = pageComposee()
-      .replace(' data-primary-source', '')
+      .replace(' data-service-section="couverture"', '')
       .replace('"@type":"Person"', '"@type":"Thing"')
       .replace('"worksFor":{"@id":"https://memlia.fr/#organization"}', '"worksFor":null');
     writeFileSync(cible, sansConfiance);
     const rouge = auditerServiceDesign({ root });
     assert.equal(rouge.pass, false);
-    assert.match(rouge.erreurs.join('\n'), /source primaire datée absent/);
+    assert.match(rouge.erreurs.join('\n'), /bloc de couverture des logiciels absent/);
     assert.match(rouge.erreurs.join('\n'), /nœud Person absent/);
     assert.match(rouge.erreurs.join('\n'), /Person non reliée à Organization/);
   } finally {

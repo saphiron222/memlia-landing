@@ -21,100 +21,28 @@ const garanties = [
     href: '#limites-titre',
   },
 ];
+// Système de page : chaque garantie mène à sa preuve dans la page ; ce sont des destinations
+// nommées, donc une liste de liens (pictogramme, libellé, phrase dessous, flèche), comme les
+// garanties de l'accueil.
 ---
 
-<section class="outil-garanties" data-tool-section="garanties" aria-labelledby="outil-garanties-titre">
-  <div class="conteneur outil-garanties-inner">
-    <div class="outil-garanties-heading rv">
+<section class="section outil-garanties" data-tool-section="garanties" aria-labelledby="outil-garanties-titre">
+  <div class="conteneur pile">
+    <div class="tete rv">
       <h2 id="outil-garanties-titre">Trois garanties vérifiables avant de saisir une valeur.</h2>
     </div>
-    <ul class="outil-garanties-grid rv-groupe">
-      {garanties.map((garantie) => (
-        <li class="outil-garantie rv">
-          <a href={garantie.href}>
-            <span class="outil-garantie-icon" aria-hidden="true"><Picto nom={garantie.picto} taille={24} /></span>
-            <h3>{garantie.titre}</h3>
-            <p>{garantie.texte}</p>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="liens-bloc rv">
+      <ul class="liens">
+        {garanties.map((garantie) => (
+          <li>
+            <a class="lien-rangee" href={garantie.href}>
+              <Picto nom={garantie.picto} taille={20} />
+              <span class="lien-libelle">{garantie.titre}<span class="lien-detail">{garantie.texte}</span></span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 </section>
-
-<style>
-  .outil-garanties {
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
-  .outil-garanties-inner {
-    display: grid;
-    gap: 40px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-  .outil-garanties-heading {
-    max-width: 720px;
-  }
-  .outil-garanties-grid {
-    display: grid;
-    gap: 1px;
-    border-block: 1px solid var(--ligne);
-    background: var(--ligne);
-  }
-  .outil-garantie {
-    background: var(--surface-feuille);
-  }
-  .outil-garantie a {
-    display: grid;
-    align-content: start;
-    gap: 12px;
-    height: 100%;
-    min-height: 100%;
-    padding: 32px 24px 40px;
-    transition: background-color var(--duree-1) var(--courbe-standard);
-  }
-  .outil-garantie-icon {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-boite);
-    color: var(--accent-texte);
-    background: var(--surface-page);
-    transition: border-color var(--duree-1) var(--courbe-standard), color var(--duree-1) var(--courbe-standard);
-  }
-  .outil-garantie h3 {
-    font-size: var(--t-2xl);
-  }
-  .outil-garantie p {
-    max-width: 38ch;
-    color: var(--texte-2);
-  }
-  @media (hover: hover) {
-    .outil-garantie a:hover {
-      background: var(--surface-hover);
-    }
-    .outil-garantie a:hover .outil-garantie-icon {
-      border-color: var(--accent-appui);
-      color: var(--texte-fort);
-    }
-  }
-  @media (min-width: 48rem) {
-    .outil-garanties-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .outil-garantie a {
-      padding: 40px 32px 48px;
-    }
-  }
-  @media (min-width: 64rem) {
-    .outil-garanties-inner {
-      gap: 56px;
-      padding-top: 112px;
-      padding-bottom: 112px;
-    }
-  }
-</style>

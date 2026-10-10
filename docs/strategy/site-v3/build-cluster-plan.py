@@ -15,6 +15,7 @@ import subprocess
 import sys
 from collections import Counter, defaultdict
 from datetime import date, timedelta
+from itertools import permutations
 from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
@@ -31,15 +32,37 @@ FAMILLE_HISTORIQUE = {
     'suivre-la-production-sociale-dans-excel': 'suivi-production-sociale',
 }
 
-PAR_JOUR_MAX = 2
-PAR_SEMAINE_MAX = 4
+PAR_JOUR_MAX = 3
+PAR_SEMAINE_MAX = 15
+DEBUT_CADENCE_15 = date(2026, 10, 6)
+
+
+def plafond_semaine(semaine):
+    return PAR_SEMAINE_MAX if semaine[-2:] >= semaine_iso(DEBUT_CADENCE_15) else 4
+
+
+def plafond_jour(jour):
+    return PAR_JOUR_MAX if jour >= DEBUT_CADENCE_15 else 2
+
+
+def jours_publication(jour):
+    return JOURS_DE_PUBLICATION if jour >= DEBUT_CADENCE_15 else (0, 1, 2, 3)
+
+
 REGLE_IA = 'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json'
-# Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer la pointe d'origin/main,
-# sinon deux PR planifieraient sur des états publiés différents. Les autres PR lisent leur fourche.
+# Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer
+# les changements concurrents pertinents de main. Une avancée hors calendrier
+# laisse la fourche utilisable ; aucun brouillon candidat ne devient publié.
 CHEMINS_CALENDRIER = (
     'src/content/blog', 'src/data/familles.ts', 'src/content.config.ts',
     'docs/strategy/site-v3/backlog-v3.json', 'docs/strategy/site-v3/cluster-plan.json',
     'docs/strategy/site-v3/cluster-plan.md', 'docs/strategy/site-v3/CONTENT-CALENDAR.md', REGLE_IA,
+    'docs/strategy/site-v3/mesures/questions-2026-09-19.json',
+    'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
+    'docs/strategy/site-v3/mesures/autocompletion-cache.json',
+    'docs/strategy/site-v3/build-cluster-plan.py', 'scripts/lib/blog-ia-catchup.mjs',
+    'docs/strategy/site-v3/build_cac_architecture.py',
+    'docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json',
 )
 
 
@@ -64,7 +87,7 @@ def plafond_jour_ia(regle, slug, jour, actifs):
     if (regle and jour == '2026-10-05' and regle['publications'].get(slug) == jour
             and all(regle['publications'].get(e['slug']) == jour for e in actifs if e['date'] == jour)):
         return regle['maximumParJour']
-    return PAR_JOUR_MAX
+    return plafond_jour(date.fromisoformat(jour))
 
 
 def cle_quota_ia(regle, slug, jour):
@@ -77,7 +100,7 @@ def verifier_date_ia(regle, slug, jour, serie=None):
     if regle and slug in regle['publications'] and (regle['publications'][slug] != jour or serie == 'cicatrices'):
         raise SystemExit(f'rattrapage IA hors slug/date/série mandatés : {slug} ({jour})')
 
-JOURS_DE_PUBLICATION = (0, 1, 2, 3)  # lundi à jeudi ; la semaine 38 (deux articles le 16/09) se complète le jeudi 17/09
+JOURS_DE_PUBLICATION = (0, 1, 2, 3, 4)  # lundi à vendredi ; archives antérieures inchangées
 PREMIER_JOUR = date(2026, 9, 17)
 RATTRAPAGE_W39 = {'prompt-chatgpt-expert-comptable': '2026-09-22', 'logiciel-ia-comptabilite': '2026-09-24', 'tests-verts-et-regle-des-trois-passes': '2026-09-26'}
 DATE_RATTRAPAGE = '2026-09-28'
@@ -110,6 +133,37 @@ BRIEFS_IA_MANDATES = {
     'ia-comptabilite-confidentialite-donnees': 'rgpd-secret-securite',
     'automatiser-avec-ia-sans-changer-logiciel': 'ia-generative-agents',
 }
+
+
+# F4 : suppléments explicitement mandatés, pas des cinquièmes angles.
+SUPPLEMENTS_CAC_F4 = {
+    'cac-appreciation-outil-automatise': {
+        'requete': 'appréciation outils automatisés audit',
+        'datePlanifiee': '2026-10-20', 'format': 'how-to-guide'},
+    'cac-dossier-constitution-soixante-jours': {
+        'requete': 'archivage dossier audit 60 jours',
+        'datePlanifiee': '2026-10-21', 'format': 'listicle-checklist'},
+}
+SOURCE_MESURES_F4 = 'cac/mesures/f4-rubrique-preflight-2026-10-09.json'
+
+
+def verifier_supplements_cac(entries):
+    erreurs = []
+    for e in entries:
+        attendu = SUPPLEMENTS_CAC_F4.get(e['slug'])
+        if e.get('supplementMandate') and attendu is None:
+            erreurs.append(f"supplément CAC arbitraire : {e['slug']}")
+        if attendu is not None:
+            contrat = {**attendu, 'supplementMandate': 'cac-f4', 'profession': 'cac',
+                       'famille': 'cac-dossier-de-travail', 'role': 'audit-cac',
+                       'intent': 'executer', 'priorite': 3}
+            if any(e.get(k) != v for k, v in contrat.items()) or e.get('architectureRole') or e.get('angle'):
+                erreurs.append(f"supplément CAC hors mandat : {e['slug']}")
+    if any(e.get('profession') == 'cac' for e in entries):
+        for slug in SUPPLEMENTS_CAC_F4:
+            if sum(e['slug'] == slug for e in entries) != 1:
+                erreurs.append(f'supplément CAC absent ou doublonné : {slug}')
+    return erreurs
 
 
 def enum_du_schema(nom):
@@ -163,9 +217,9 @@ def base_de_publication(pointe):
     """The pinned commit whose publication the candidate integrates.
 
     The origin/main tip when the candidate contains it. Otherwise its fork point
-    with origin/main, but only when the candidate (committed, staged, modified
-    or untracked) touches no calendar input: a stale PR outside the calendar
-    reads the publication it was built on, a stale calendar PR must integrate main.
+    with origin/main, unless both main and the candidate (committed, staged,
+    modified or untracked) touch calendar inputs. Unrelated main changes do not
+    invalidate that coherent baseline; concurrent calendar changes require main.
     """
     try:
         ancetre = subprocess.run(['git', '-C', str(RACINE), 'merge-base', '--is-ancestor', pointe, 'HEAD'],
@@ -182,8 +236,10 @@ def base_de_publication(pointe):
         raise SystemExit('base de publication origin/main illisible ou non intégrée au candidat')
     modifies = git_publication('diff', '--name-only', fourche, '--', *CHEMINS_CALENDRIER).strip()
     nouveaux = git_publication('ls-files', '--others', '--exclude-standard', '--', *CHEMINS_CALENDRIER).strip()
-    if modifies or nouveaux:
-        chemin = (modifies or nouveaux).splitlines()[0]
+    concurrents = git_publication('diff', '--name-only', fourche, pointe,
+                                 '--', *CHEMINS_CALENDRIER).strip()
+    if (modifies or nouveaux) and concurrents:
+        chemin = concurrents.splitlines()[0]
         raise SystemExit('base de publication origin/main non intégrée au candidat : le calendrier est modifié '
                          f'({chemin}), intégrer origin/main')
     return fourche
@@ -310,33 +366,39 @@ def alterner(entrees):
             for champ in ('pole', 'format'))
 
     def chercher(i, disponibles, precedent):
-        # Deux créneaux le même jour n'ont pas d'ordre éditorial imposé. Essayer
-        # les deux places d'une date figée avant de déclarer le stock impossible.
-        # Le budget d'essais est partagé entre les branches.
+        # Jusqu'à trois créneaux du même jour : essayer tous les ordres des
+        # réservations, sans déplacer leur date ni changer les archives publiées.
         solution = chercher_position(i, disponibles, precedent)
         if solution is not None or i + 1 >= len(dates) or dates[i] != dates[i + 1]:
             return solution
-        premier, second = fixes.get(i), fixes.get(i + 1)
-        if (premier is None and second is None) or (premier is not None and second is not None
-                                                   and premier.get('statut') == second.get('statut') == 'published'):
+        positions = []
+        for position in range(i, len(dates)):
+            if dates[position] != dates[i]:
+                break
+            if fixes.get(position, {}).get('statut') != 'published':
+                positions.append(position)
+        originaux = [fixes.get(position) for position in positions]
+        if not any(originaux):
             return None
-        if second is None:
-            fixes[i + 1] = fixes.pop(i)
-        elif premier is None:
-            fixes[i] = fixes.pop(i + 1)
-        else:
-            fixes[i], fixes[i + 1] = second, premier
         try:
-            return chercher_position(i, disponibles, precedent)
+            for ordre in permutations(range(len(positions))):
+                if ordre == tuple(range(len(positions))):
+                    continue
+                for position, index in zip(positions, ordre):
+                    if originaux[index] is None:
+                        fixes.pop(position, None)
+                    else:
+                        fixes[position] = originaux[index]
+                solution = chercher_position(i, disponibles, precedent)
+                if solution is not None:
+                    return solution
+            return None
         finally:
-            if premier is None:
-                fixes.pop(i, None)
-            else:
-                fixes[i] = premier
-            if second is None:
-                fixes.pop(i + 1, None)
-            else:
-                fixes[i + 1] = second
+            for position, original in zip(positions, originaux):
+                if original is None:
+                    fixes.pop(position, None)
+                else:
+                    fixes[position] = original
 
     def chercher_position(i, disponibles, precedent):
         nonlocal essais
@@ -395,7 +457,7 @@ def alterner(entrees):
 
 
 def planifier(entrees, publies, aujourd_hui=None):
-    """Réserve les dates explicites, puis planifie les ordinaires lun-jeu et les cicatrices le samedi."""
+    """Réserve les dates explicites, puis les ordinaires ouvrés et les cicatrices le samedi."""
     aujourd_hui = aujourd_hui or date.today()
     regle_ia = lire_rattrapage_ia()
     for slug, p in publies.items():
@@ -426,7 +488,7 @@ def planifier(entrees, publies, aujourd_hui=None):
                 par_jour[reel] += 1
                 par_semaine[semaine_iso(reel)] += 1
     # La série « Cicatrices » (charte §7 ter) a sa propre cadence : un samedi par semaine ISO,
-    # en sus des quatre articles ordinaires. Son stock reste factuel ; le planificateur place les
+    # en sus des articles ordinaires. Son stock reste factuel ; le planificateur place les
     # entrées existantes mais n'en invente jamais pour combler une semaine future.
     series = [e for e in entrees if e.get('serie') == 'cicatrices']
     semaines_reservees = set()
@@ -483,7 +545,9 @@ def planifier(entrees, publies, aujourd_hui=None):
         if candidat < PREMIER_JOUR:
             raise SystemExit(f"date planifiée avant le début du calendrier : {e['slug']} ({valeur})")
 
-        if par_jour[candidat] >= plafond or par_semaine[semaine] >= PAR_SEMAINE_MAX:
+        if candidat >= DEBUT_CADENCE_15 and candidat.weekday() not in JOURS_DE_PUBLICATION:
+            raise SystemExit(f"article ordinaire hors lundi-vendredi : {e['slug']} ({valeur})")
+        if par_jour[candidat] >= plafond or par_semaine[semaine] >= plafond_semaine(semaine):
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
         e['date'] = valeur
         e['statut'] = 'planned'
@@ -500,18 +564,21 @@ def planifier(entrees, publies, aujourd_hui=None):
             continue
         if e.get('datePlanifiee'):
             continue
-        while not (jour.weekday() in JOURS_DE_PUBLICATION and par_jour[jour] < PAR_JOUR_MAX and par_semaine[semaine_iso(jour)] < PAR_SEMAINE_MAX):
+        while not (jour.weekday() in jours_publication(jour) and par_jour[jour] < plafond_jour(jour) and par_semaine[semaine_iso(jour)] < plafond_semaine(semaine_iso(jour))):
             jour += timedelta(days=1)
         e['date'] = jour.isoformat()
         # Une date proposée après un créneau manqué n'est pas une nouvelle décision éditoriale.
         e['statut'] = 'a-replanifier' if e.get('dateManquee') else 'planned'
         par_jour[jour] += 1
         par_semaine[semaine_iso(jour)] += 1
-        # En régime : un article par jour ouvré ; le même jour ne reçoit un second article que pour finir une semaine entamée.
-        jours_restants = sum(1 for d in range(1, 4) if (jour + timedelta(days=d)).weekday() in JOURS_DE_PUBLICATION and semaine_iso(jour + timedelta(days=d)) == semaine_iso(jour))
-        if par_semaine[semaine_iso(jour)] < PAR_SEMAINE_MAX and (jours_restants >= PAR_SEMAINE_MAX - par_semaine[semaine_iso(jour)] or par_jour[jour] >= PAR_JOUR_MAX):
+        # D9 : au plus trois places par jour ouvré, EC et CAC confondus.
+        if jour >= DEBUT_CADENCE_15:
+            continue
+        # Rejeu historique : un article par jour, deux pour finir une semaine entamée.
+        jours_restants = sum(1 for d in range(1, 4) if (jour + timedelta(days=d)).weekday() in jours_publication(jour) and semaine_iso(jour + timedelta(days=d)) == semaine_iso(jour))
+        if par_semaine[semaine_iso(jour)] < plafond_semaine(semaine_iso(jour)) and (jours_restants >= plafond_semaine(semaine_iso(jour)) - par_semaine[semaine_iso(jour)] or par_jour[jour] >= plafond_jour(jour)):
             jour += timedelta(days=1)
-        elif par_semaine[semaine_iso(jour)] >= PAR_SEMAINE_MAX:
+        elif par_semaine[semaine_iso(jour)] >= plafond_semaine(semaine_iso(jour)):
             jour += timedelta(days=1)
     # Le pôle vient de la famille ; les dates figées et le stock Cicatrices restent hors permutation.
     familles = taxonomie()[1] if any('pole' not in e for e in entrees if e.get('serie') != 'cicatrices') else {}
@@ -599,6 +666,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     erreurs = []
     regle_ia = lire_rattrapage_ia()
     tous = [pilier] + satellites
+    erreurs.extend(verifier_supplements_cac(tous))
     for e in tous:
         verifier_date_ia(regle_ia, e['slug'], e['date'], e.get('serie'))
     slugs = [e['slug'] for e in tous]
@@ -631,9 +699,10 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
     for fid, membres in par_famille.items():
         # La série « Cicatrices » (charte §7 ter) prend un créneau mais n'est pas un angle de famille :
         # elle vise la marque, pas une requête, et n'entre donc pas dans le compte des quatre.
-        angles = [e for e in membres if not e.get('historique') and not e.get('serie') and not e.get('architectureRole')]
+        angles = [e for e in membres if not e.get('historique') and not e.get('serie') and not e.get('architectureRole') and e['slug'] not in SUPPLEMENTS_CAC_F4]
         # Conserver le stock initial ; chaque intention mandatée effectivement inscrite
         # dans sa famille ajoute une place, sans permettre un angle arbitraire.
+        # Les deux suppléments CAC sont hors stock de base, contrôlés par registre.
         attendu = (3 if fid in {pilier['famille'], 'ia-generative-agents'} else 4) + sum(
             BRIEFS_IA_MANDATES.get(e['slug']) == fid for e in angles)
         # Le brief IA 4 concrétise l'ancien angle 08, sur une seule URL.
@@ -715,20 +784,21 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
                 par_semaine_reelle[semaine_iso(reel)] += 1
         # Les jours habituels régissent le seul ordonnancement automatique, pas
         # une réservation explicite concordante ni une publication intégrée.
-        if (slot >= PREMIER_JOUR and slot.weekday() not in JOURS_DE_PUBLICATION
+        if (slot >= PREMIER_JOUR and slot.weekday() not in jours_publication(slot)
                 and e.get('statut') not in ('a-replanifier', 'published')
-                and e.get('datePlanifiee') != e['date']):
-            erreurs.append(f"article ordinaire hors lundi-jeudi : {e['slug']} ({e['date']})")
+                and (slot >= DEBUT_CADENCE_15 or e.get('datePlanifiee') != e['date'])):
+            jours = 'lundi-vendredi' if slot >= DEBUT_CADENCE_15 else 'lundi-jeudi'
+            erreurs.append(f"article ordinaire hors {jours} : {e['slug']} ({e['date']})")
     if any(n > plafond_jour_ia(regle_ia, e['slug'], d.isoformat(), ordinaires) for d, n in par_jour.items()
            for e in ordinaires if date.fromisoformat(creneau(e)) == d):
-        erreurs.append('plus de deux articles le même jour')
-    if any(n > PAR_SEMAINE_MAX for n in par_semaine.values()):
-        erreurs.append('plus de quatre articles la même semaine')
+        erreurs.append('plafond quotidien dépassé : trois articles (deux avant D9)')
+    if any(n > plafond_semaine(s) for s, n in par_semaine.items()):
+        erreurs.append('plus de quatre articles la même semaine' if any(n > 4 and s[-2:] < semaine_iso(DEBUT_CADENCE_15) for s, n in par_semaine.items()) else 'plus de quinze articles la même semaine')
     if any(n > plafond_jour_ia(regle_ia, e['slug'], d.isoformat(), ordinaires) for d, n in par_jour_reel.items()
            for e in ordinaires if e['date'] == d.isoformat()):
-        erreurs.append('jour réel : plus de deux articles publiés ou planifiés')
-    if any(n > PAR_SEMAINE_MAX for n in par_semaine_reelle.values()):
-        erreurs.append('semaine réelle : plus de quatre articles publiés ou planifiés')
+        erreurs.append('jour réel : plafond quotidien dépassé : trois articles (deux avant D9)')
+    if any(n > plafond_semaine(s) for s, n in par_semaine_reelle.items()):
+        erreurs.append('semaine réelle : plafond hebdomadaire dépassé : quinze articles (quatre avant D9)')
     erreurs.extend(verifier_alternance(tous))
     cicatrices_par_semaine = Counter()
     dates_cicatrices = []
@@ -764,11 +834,11 @@ def construire_json(poles, familles, pilier, satellites, liens, entrants):
         if not posts:
             continue
         clusters.append({'id': pid, 'name': pole['libelle'], 'color': pole['couleur'], 'families': sorted({e['famille'] for e in posts}, key=lambda f: familles[f]['rang']), 'posts': [
-            {'title': e['titre'], 'keyword': e['requete'], 'profession': e['profession'], 'architectureRole': e.get('architectureRole'), 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
+            {'title': e['titre'], 'keyword': e['requete'], 'profession': e['profession'], 'architectureRole': e.get('architectureRole'), **({'supplementMandate': e['supplementMandate']} if e.get('supplementMandate') else {}), 'volume': None, 'template': e['gabarit'], 'format': e['format'], 'wordCount': e['mots'], 'url': e['url'], 'slug': e['slug'], 'family': e['famille'], 'role': e['role'], 'intent': e['intent'], 'funnel': e['funnel'], 'priority': e['priorite'], 'date': e['date'], 'missedDate': e.get('dateManquee'), 'secondaryKeywords': e['secondaires'], 'proof': e['preuve'], 'officialSources': e['sourcesOfficielles'], 'status': e['statut'], 'incomingLinks': entrants[e['slug']]}
             for e in sorted(posts, key=lambda e: (familles[e['famille']]['rang'], e['rang_famille']))]})
     data = {
         'version': 2, 'date': date.today().isoformat(), 'seed': 'automatisation cabinet comptable',
-        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie EC historique, 5 pôles CAC dont durabilité inactive) ; cadence de 4 articles ordinaires par semaine, 2 par jour au plus du lundi au jeudi, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
+        'methode': f"backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), {len({e['famille'] for e in satellites})} familles et {len(clusters)} pôles actifs dans ce plan (12 pôles dans la taxonomie EC historique, 5 pôles CAC dont durabilité inactive) ; cadence de 15 articles ordinaires par semaine ISO, 3 par jour au plus du lundi au vendredi, EC et CAC confondus, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
         'pillar': {'title': pilier['titre'], 'keyword': pilier['requete'], 'volume': 10, 'template': pilier['gabarit'], 'wordCount': pilier['mots'], 'url': pilier['url'], 'slug': pilier['slug'], 'family': pilier['famille'], 'status': pilier['statut'], 'date': pilier['date']},
         'rattrapageIA': lire_rattrapage_ia(),
         'clusters': clusters,
@@ -804,18 +874,18 @@ def ecrire_md(data, familles):
 def construire_calendrier(pilier, satellites, familles, poles, jour=None):
     jour = jour or date.today()
     tous = sorted([pilier] + satellites, key=lambda e: (e['date'], e.get('_ordre_calendrier', 0)))
-    L = ['# Calendrier éditorial v3 — quatre articles et une Cicatrice par semaine', '',
-         f"Généré le {jour.strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Cadence décidée par Kevin : quatre articles ordinaires par semaine, deux par jour au plus du lundi au jeudi, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
+    L = ['# Calendrier éditorial v3 — quinze articles et une Cicatrice par semaine au plus', '',
+         f"Généré le {jour.strftime('%d/%m/%Y')} par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Décision de Kevin du 05/10 appliquée le 06/10 : quinze articles ordinaires par semaine ISO, trois par jour au plus du lundi au vendredi, EC et CAC confondus, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).", '',
          '## Règles', '',
 
          "- Les priorités 1 → 3 restent celles du backlog (1 : la requête primaire a des suggestions d'autocomplétion Google, sauf l'angle IA publié conservé en P1 : primaire à zéro le 21/09 dans `titres-intent-2026-09-21.json`, secondaires non mesurées, questions de la SERP par famille du 19/09 dans `questions-2026-09-19.json` ; 2 : seule une requête secondaire en a ; 3 : aucune suggestion relevée sur les formulations testées — relevé `scripts/seo/questions.mjs`). --check contrôle aussi les P1 publiées du backlog sans réécrire les publications ; les trois historiques synthétiques et la série sont hors gate. Ce signal ne permet de conclure ni au volume de recherche, ni à la demande, ni à l’audience ; une formulation non mesurée ne vaut pas zéro suggestion. Ces priorités guident l'ordre des candidats compatibles avec l'alternance ; l'équilibre du stock de formats peut différer une priorité 1 sans changer sa mesure ni son angle.",
          '- Les créneaux ordinaires non figés alternent pôle et format entre deux articles successifs ; les dates publiées et `datePlanifiee` ne bougent jamais. Si un conflit daté est inévitable, `exceptionAlternance` dans le backlog désigne séparément `pole` ou `format`, chacun avec `date` (YYYY-MM-DD) et `raison` non vide ; seul le champ effectivement en conflit à cette date est dispensé. La série factuelle Cicatrices ne peut pas porter cette exception.',
-         '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible.',
+         '- Chaque famille active conserve ses quatre angles (méthode, contrôle ou checklist, exceptions et refus, définition) ; leur ordre de sortie dépend des contraintes de calendrier et du stock disponible. F4 ajoute exactement deux suppléments mandatés dans le dossier de travail CAC : appréciation des outils automatisés et constitution finale du dossier, sans remplacer les angles de base ni modifier les quotas.',
          '- Une requête primaire par article, unique ; sources officielles obligatoires pour toute matière paie, sociale, fiscale, juridique ou données.',
          '- Le pilier reçoit un lien à chaque publication (republication scellée par la forge).', '',
-         '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quatre articles ordinaires ; sans faits signés ni recette, le créneau reste vide. `manque` désigne une date échue conservée en trace, pas une publication.', '',
+         '- Une Cicatrice factuelle peut paraître le samedi, au plus une par semaine ISO, en sus du plafond des quinze articles ordinaires ; sans faits signés ni recette, le créneau reste vide. `manque` désigne une date échue conservée en trace, pas une publication.', '',
          '- Les anciennes réservations ordinaires manquées restent dans `dateManquee` du backlog ; leur date proposée au statut `a-replanifier` n’est pas actionnable. Une décision humaine fixe une nouvelle `datePlanifiee`, soumise aux portes de qualité et au quota du jour réel.', '',
-         '- Rattrapage IA : `rattrapage-ia-2026-10-05.json` rattache quatre sujets à 2026-W40, avec dates réelles 04/10 et 05/10. Le 05/10 accepte trois articles uniquement de ce lot. Ils ne consomment pas les quatre nouveaux sujets W41 ; le jour réel reste occupé. Les autres quotas et Cicatrices restent inchangés.', '',
+         '- Rattrapage IA historique : `rattrapage-ia-2026-10-05.json` rattache quatre sujets à 2026-W40, avec dates réelles 04/10 et 05/10. Le 05/10 accepte trois articles uniquement de ce lot. Ils ne consomment pas les quinze nouveaux sujets W41 ; le jour réel reste occupé. Archives antérieures et Cicatrices inchangées.', '',
          '## Volume', '', f"- {len(satellites)} satellites + 1 pilier ; {sum(1 for e in satellites if e['statut'] == 'published')} satellite(s) publié(s) dans le registre au {date.today().strftime('%d/%m/%Y')} ; dernier créneau planifié : {tous[-1]['date']}.", '',
          '## Semaine par semaine', '']
     par_sem = defaultdict(list)

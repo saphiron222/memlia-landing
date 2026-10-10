@@ -1,0 +1,24 @@
+---
+import { FRONTIERE_CAC } from '@/data/accueil/cac';
+import ScrollableTables from '@/components/ScrollableTables.astro';
+---
+<div class="frontiere-cac" data-frontiere-cac>
+  <h3 id="frontiere-cac-titre">{FRONTIERE_CAC.titre}</h3>
+  <p class="mention frontiere-aide">Faites défiler le tableau pour comparer les trois colonnes.</p>
+  <ScrollableTables>
+    <table>
+      <caption class="sr-only">{FRONTIERE_CAC.titre}</caption>
+      <thead><tr>{FRONTIERE_CAC.colonnes.map(colonne => <th scope="col">{colonne}</th>)}</tr></thead>
+      <tbody>{FRONTIERE_CAC.lignes.map(ligne => <tr>{ligne.map(cellule => <td>{cellule}</td>)}</tr>)}</tbody>
+    </table>
+  </ScrollableTables>
+</div>
+<style>
+  .frontiere-cac { min-width: 0; display: grid; gap: var(--espace-4); }
+  h3 { font-size: var(--titre-bloc); }
+  table { width: 100%; min-width: 42rem; border-collapse: collapse; table-layout: fixed; }
+  th, td { padding: var(--espace-4); border-bottom: 1px solid var(--ligne); text-align: left; vertical-align: top; }
+  th { color: var(--texte-fort); font-weight: 600; background: var(--surface-page); }
+  td { color: var(--texte-2); }
+  @media (min-width: 48rem) { .frontiere-aide { display: none; } }
+</style>
