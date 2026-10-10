@@ -8,6 +8,7 @@ import test from 'node:test';
 const { scripts } = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
 const expected = [
   'npx astro build',
+  'npm run render:public',
   'npm run lastmod:sync',
   'npm run resource:seal-surfaces',
   'node scripts/reaffirm-resource-review.mjs reaffirmer',
@@ -19,8 +20,8 @@ test('regen:generated rebuilds, synchronizes, seals, reaffirms and verifies in o
   assert.equal(scripts['regen:generated'], expected.join(' && '));
 });
 
-for (const failAt of [0, 1, 2, 3, 4, 5, 6]) {
-  test(`regen:generated ${failAt ? `stops at failed step ${failAt}` : 'completes all six steps'}`, () => {
+for (const failAt of [0, ...expected.map((_, index) => index + 1)]) {
+  test(`regen:generated ${failAt ? `stops at failed step ${failAt}` : 'completes all steps'}`, () => {
     assert.equal(typeof scripts['regen:generated'], 'string');
     const root = mkdtempSync(join(tmpdir(), 'regen-generated-'));
     try {
