@@ -41,6 +41,26 @@ les Cicatrices gardent un samedi de publication. Ne pas dater les recettes de te
 Cicatrices et claims sous des horloges de vendredi, samedi et dimanche, en UTC et America/Los_Angeles.
 La suite complète reste jouée une fois ; ce contrat entre dans `npm run test:scripts`.
 
+La fixture de `blog-intent-preservation.test.mjs` copie les preuves documentaires nécessaires
+à l'intention historique, mais pas le planificateur du calendrier courant. `jour` ne suffit pas
+à isoler ce dernier : Python consulte aussi son propre jour système. La régression reconstruit
+la publication sous des horloges ultérieures ; le candidat non scellé reste refusé si ses relevés
+sont vieillis. Le vrai dépôt conserve son planificateur et tous ses gardes. Cette suite exige le
+vrai `dist` produit en CI. Les journaux stdout/stderr du webServer Playwright restent visibles
+pour distinguer un refus de build d'un défaut de démarrage du serveur.
+
+Les fixtures Python du plan éditorial fixent `PLAN.date.today()` avec
+`tests/proof/editorial_clock.py` : stock réel et cadence D9 au 09/10/2026,
+stock des briefs mandatés au 03/10/2026, contre-factuels W39 au 28/09/2026.
+Les scénarios qui spécifient un autre jour gardent leur horloge propre ; le rejeu
+`runpy` du refus de source invalide fixe aussi `datetime.date` dans ce processus.
+Les assertions de dates utilisent le jour du scénario, pas celui de la machine.
+`python3 -m unittest discover -s tests/proof -p test_editorial_fixture_clock.py -v`
+rejoue les trois suites sous les jours Python 16/10/2026 et 01/01/2030 puis vérifie
+que, hors fixture, leur reconstruction refuse toujours une réservation échue.
+Les sources, publications et l'autorité Git restent lues réellement ; aucun garde
+ni réglage d'horloge de production n'est modifié.
+
 ## Message et copy
 
 **La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique
