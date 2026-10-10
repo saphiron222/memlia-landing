@@ -426,6 +426,17 @@ Bloc pleine largeur `padding 16px 0`, `border-top/bottom --ligne` ; intérieur `
 
 `padding 144px 0 56px`, conteneur 1 360 px sans bordures. Colonnes : 4 (≥ 1024, `gap 32px / 48px`) ; 2 en dessous (`gap-x 32px`, blocs `gap-y 40px`). Titre de colonne 14 px / 600 `--texte-fort` ; liste `margin-top 12px`, `gap 10px` ; liens 14 px `--texte-2` → `--texte-fort`. Colonne « Modules » avec chips pleines 20 px (une par module affiché). Ligne © et liens légaux : `padding-top 128px`, 12 px **`--texte-2`** (5,64:1 ; la référence descend à 2,6:1, ce qui n'est pas admissible pour des liens obligatoires), liens `gap 32px / 16px`. Derrière (≥ 1024) : la tuile « M » du lockup en très grand (≈ 765 × 669 px, échelle 125 %, centrée à 48 %), tracée en `--surface-hover`, décorative (`aria-hidden`), sans `will-change`.
 
+### 4.15 Carte et bande — un seul dessin (décision de Kevin, 07/10/2026)
+
+Remplace, pour les cartes, la surface crème de 2.3 (« les cartes » en `--surface-feuille`) : sur la feuille crème, une carte crème se fondait dans le fond. Défini une fois dans `src/styles/global.css` (`.cartes`, `.carte`, `.bande`, `.cellule`) ; jetons en trois couches dans `tokens.css` : primitives (`--blanc`, `--encre-18`, `--vert-appui`), sémantique (`--surface-elevee`, `--ligne-forte`, `--accent-appui`, élévations `--ombre-posee` / `--ombre-levee`), composant (`--carte-fond`, `--carte-bord`, `--carte-bord-survol`, `--carte-ombre`, `--carte-ombre-survol`, `--carte-rayon`, `--carte-marge`, `--carte-ecart`, `--carte-icone`, `--cartes-ecart`).
+
+- **Carte** `.carte` : fond blanc, bord 1 px `--ligne-forte` (1,4:1 sur crème), rayon 16 px, ombre posée diffuse teintée encre, marges 24 px puis 32 px (≥ 768). Contenu, toujours sous une carte ou une cellule (`:where(.carte, .cellule)`, sans spécificité ajoutée) : pastille `.carte-icone` 40 px (`--accent-texte` sur `--surface-page`, bord `--ligne`), méta `.carte-meta` 14 px `--texte-2`, titre `.carte-titre` Fraunces `--t-2xl`, texte `.carte-texte` `--texte-2`, action `.carte-action` `--accent-texte` 600 poussée en bas.
+- **Carte cliquable** : la carte est le lien (`a.carte`) ou son lien `.carte-lien` s'étend sur toute la carte ; chaque carte cliquable finit par le lien d'action (libellé vert et flèche, système de page du 07/10/2026, § 6). Survol : bord `--carte-bord-survol` et ombre levée ; appui : la fiche s'enfonce d'un pixel ; focus clavier : anneau 2,5 px `--focus` décalé de 3 px, sur la carte entière.
+- **Grille** `.cartes` : remplacée par le système de page du 07/10/2026 (`docs/design/2026-10-07-systeme-de-page.md`, § 5) : trois colonnes au plus, aucune carte étirée, rangée incomplète centrée, jamais une carte seule en dernière rangée.
+- **Bande** `.bande` : la pleine largeur et les ornements de coin de 4.7 restent ; cellules `.cellule` au fond et aux marges de la carte, séparées par un filet `--carte-bord` (visible) ; 2 à 4 cellules (système de page, § 4 et 5). Sur l'accueil, les garanties sont une liste de liens ; /garanties garde ses tuiles jusqu'à la phase 2.
+- **Hors périmètre** : le blog (liste, rubriques, articles) garde son propre dessin (« les blogs pas besoin de toucher », Kevin, 07/10/2026) ; il ne porte ni `.cartes` ni `.carte`.
+- **Aucun agrandissement d'image** : ni lien « Agrandir », ni dialogue, ni image cliquable vers son fichier (contrats `tests/browser/mobile-proofs.spec.ts`, `tests/proof/test_cartes.py`).
+
 ---
 
 ## 5. Motion Memlia

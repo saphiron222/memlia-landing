@@ -199,8 +199,8 @@ ne deviennent pas mécaniquement des rubriques ou des pages commerciales.
 | Charge de travail, pénurie et adoption des outils | contexte relié, pas fusion automatique | la charge porte les états du flux, les compétences portent ce qui reste humain ; fusionner seulement si la SERP révèle la même intention |
 | Calculateur, modèle, générateur de prompt | outil si autonome | `/outils-comptables-gratuits` ; besoin complet sans inscription, preuve du calcul, retour d'usage avant seconde vague (`OUTILS-BOUCLE.md`) |
 
-Le rythme est un plafond, non un quota à remplir : quatre articles ordinaires par semaine ISO,
-deux par jour au plus du lundi au jeudi ; une Cicatrice factuelle le samedi seulement si ses faits
+Le rythme est un plafond, non un quota à remplir : quinze articles ordinaires EC/CAC par semaine ISO,
+trois par jour au plus du lundi au vendredi (D9, décision du 05/10 appliquée le 06/10) ; une Cicatrice factuelle le samedi seulement si ses faits
 existent (`RUNBOOK-QUOTIDIEN.md`). Avant chaque créneau non fixé, alterner autant que possible le
 pôle et le format des derniers ordinaires pour éviter quatre déclinaisons de même geste ; ne jamais
 déplacer un article déjà publié ni une date explicitement réservée. Une exception exige dans le

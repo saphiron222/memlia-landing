@@ -33,6 +33,9 @@ const chemin = `${BLOG.chemin}/${entree.id}`;
 const rubrique = rubriquePourArticle(entree.id);
 const auteur = auteurPar(data.auteur);
 const dateMiseAJour = data.dateMiseAJour ?? data.datePublication;
+// Décision de Kevin du 06/10/2026 : une source se cite par un lien dans le texte, pas dans une section « Sources ».
+// La section ne garde que les sources pas encore citées dans le corps (deux articles à republier) ; elle disparaît sinon.
+const sourcesHorsTexte = data.sources.filter((source) => !(entree.body ?? '').includes(source.url));
 const description = data.description ?? data.resume.slice(0, 157).trimEnd() + '…';
 const nombreMots = compterMots(entree.body ?? '');
 const minutes = Math.max(1, Math.ceil(nombreMots / BLOG.motsParMinute));
@@ -166,16 +169,18 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
         <ScrollableTables><slot /></ScrollableTables>
       </div>
 
-      <section class="article-sources" aria-labelledby="sources-titre">
-        <h2 id="sources-titre">Sources</h2>
-        <ol>
-          {data.sources.map((s) => (
-            <li>
-              {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>.
-            </li>
-          ))}
-        </ol>
-      </section>
+      {sourcesHorsTexte.length > 0 && (
+        <section class="article-sources" aria-labelledby="sources-titre">
+          <h2 id="sources-titre">Sources</h2>
+          <ol>
+            {sourcesHorsTexte.map((s) => (
+              <li>
+                {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>.
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       <aside class="article-pont coins" aria-labelledby="pont-titre">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>

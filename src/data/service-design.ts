@@ -14,6 +14,26 @@ export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
     heroProof: 'v2/30-service-facture-electronique',
     bodyProof: 'v2/30-service-facture-electronique',
   },
+  'circularisation-cac': {
+    heroProof: 'v2/44-service-circularisation-cac',
+    bodyProof: 'v2/44-service-circularisation-cac',
+  },
+  'evaluation-transmission': {
+    heroProof: 'v2/47-service-evaluation-transmission',
+    bodyProof: 'v2/47-service-evaluation-transmission',
+  },
+  'registres-obligations': {
+    heroProof: 'v2/44-service-registres-obligations',
+    bodyProof: 'v2/44-service-registres-obligations',
+  },
+  'secretariat-juridique': {
+    heroProof: 'v2/46-service-secretariat-juridique',
+    bodyProof: 'v2/46-service-secretariat-juridique',
+  },
+  'entrees-sorties-salaries': {
+    heroProof: 'v2/44-service-entrees-sorties-salaries',
+    bodyProof: 'v2/44-service-entrees-sorties-salaries',
+  },
   'paie': {
     heroProof: 'v2/19-service-paie',
     bodyProof: 'v2/19-service-paie',

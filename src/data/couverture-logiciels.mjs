@@ -37,6 +37,96 @@ export const COUVERTURE_SERVICES = Object.freeze({
       'un accompagnement de transition jusqu’au 01/09/2027, à réévaluer si les éditeurs couvrent le besoin.',
     ],
   },
+  'circularisation-cac': {
+    dejaFait: [
+      {
+        outil: 'e-Circu',
+        geste: 'prépare les courriers, facilite la sélection des tiers, relance et centralise les justificatifs et le suivi des réponses',
+        source: { url: 'https://www.gestonline.com/blog/circularisation-audit', libelle: 'Gest On Line, circularisation avec e-Circu', consulteLe: LU_LE },
+      },
+      {
+        outil: 'Circit',
+        geste: 'envoie, suit et reçoit les confirmations, rapproche les réponses des documents de travail et signale les exceptions',
+        source: { url: 'https://www.circit.io/fr/platform/confirm', libelle: 'Circit, Confirm', consulteLe: LU_LE },
+      },
+    ],
+    reste: [
+      'la proposition de tiers selon la règle de votre cabinet, si elle n’est pas déjà couverte : soldes, mouvements, tirage reproductible, couverture ou nombre de comptes, deux passes et feuille de couverture ;',
+      'la préparation des pièces et rapprochements postérieurs choisis par le CAC pour les écarts ou non-réponses, avec conclusion laissée à son examen.',
+    ],
+  },
+  'evaluation-transmission': {
+    dejaFait: [
+      { outil: 'RCA Évaluation', geste: 'centralise les données, traite les retraitements, automatise les calculs financiers et les scénarios de valorisation, puis génère des rapports personnalisables', source: { url: 'https://rca.fr/logiciels-experts/evaluation/', libelle: 'RCA, Évaluation', consulteLe: '2026-10-08' } },
+    ],
+    reste: [
+      'les pièces et versions à réunir entre vos fichiers et votre outil, seulement si ce geste reste manuel ;',
+      'les références documentaires et les ajustements à faire valider avant la préparation du tableau ;',
+      'la vérification de votre outil, de son édition et de ses options : si la préparation est déjà couverte, nous ne la reconstruisons pas. Le choix des méthodes, la valeur et le conseil restent au cabinet.',
+    ],
+  },
+  'registres-obligations': {
+    dejaFait: [
+      { outil: 'Kanta', geste: 'récupère les informations INPI à partir du SIREN à l’ouverture du dossier', source: { url: 'https://www.kanta.fr/modules/lutte-anti-blanchiment', libelle: 'Kanta, informations INPI et vigilance', consulteLe: '2026-10-06' } },
+      { outil: 'BODACC (DILA)', geste: 'propose des alertes génériques sur les annonces publiées', source: { url: 'https://www.bodacc.fr/pages/informations_generales_service_alertes/', libelle: 'BODACC, service d’alerte', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'la fiche client actualisée depuis le RNE, le BODACC et Sirene, si votre outil ne le fait pas déjà ;',
+      'l’alerte préparée pour l’associé référent, avec le dossier et le changement à examiner ;',
+      'le terme de déclaration de créance calculé dans le cas qualifié, à valider avec ses exceptions et prorogations.',
+    ],
+  },
+  'secretariat-juridique': {
+    dejaFait: [
+      { outil: 'Lexis PolyActe', geste: 'rédige les actes et suit les assemblées ; Ubikap dématérialise les registres et LegalVision traite les formalités', source: { url: 'https://www.lexisnexis.com/fr-fr/produits/logiciel-secretariat-juridique', libelle: 'Lexis PolyActe, secrétariat juridique', consulteLe: '2026-10-06' } },
+      { outil: 'ACD et VIKTA', geste: 'proposent génération d’actes, signatures, registres et formalités ; le partenariat échange données comptables et documents', source: { url: 'https://www.acd-groupe.fr/partenaire-vikta/', libelle: 'ACD, partenariat VIKTA', consulteLe: '2026-10-06' } },
+      { outil: 'Captain Contrat', geste: 'propose aux entreprises un accompagnement pour l’approbation des comptes', source: { url: 'https://www.captaincontrat.com/gestion/approbation-des-comptes/etapes-approbation-depot-comptes-annuels', libelle: 'Captain Contrat, approbation et dépôt', consulteLe: '2026-10-06' } },
+      { outil: 'LegalPlace', geste: 'propose des services juridiques aux entreprises ; le suivi précis se vérifie dans l’offre utilisée', source: { url: 'https://www.legalplace.fr/guides/approbation-comptes-sas/', libelle: 'LegalPlace, approbation des comptes', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'l’échéancier d’approbation et de dépôt du portefeuille, uniquement s’il reste manuel hors du circuit juridique déjà couvert ;',
+      'les rappels de dépôt préparés à partir de dates et références confirmées par le cabinet, à valider avant envoi ;',
+      'la vérification de l’outil, de l’édition et des options précède toute proposition ; les fonctions Cegid et Sage restent à vérifier, pas présumées absentes.',
+    ],
+  },
+  'entrees-sorties-salaries': {
+    "dejaFait": [
+      {
+        "outil": "mySilae",
+        "geste": "crée la fiche salarié et transmet la DPAE quand l’embauche passe par le portail",
+        "source": {
+          "url": "https://www.silae.fr/solution-rh-paie/gestion-des-salaries/",
+          "libelle": "Silae, gérer les salariés de A à Z",
+          "consulteLe": "2026-10-06"
+        }
+      },
+      {
+        "outil": "mySilae",
+        "geste": "collecte les pièces sur le portail, relance et outille les documents de sortie et leur signature",
+        "source": {
+          "url": "https://www.silae.fr/solution-rh-paie/gestion-des-salaries/",
+          "libelle": "Silae, gérer les salariés de A à Z",
+          "consulteLe": "2026-10-06"
+        }
+      },
+      {
+        "outil": "PayFit",
+        "geste": "génère les contrats, les fait signer avec Yousign et rappelle les pièces attendues dans son espace salarié",
+        "source": {
+          "url": "https://payfit.com/fr/gestion-du-personnel/",
+          "libelle": "PayFit, gestion du personnel",
+          "consulteLe": "2026-10-06"
+        }
+      }
+    ],
+    "reste": [
+      "les annonces reçues par e-mail ou dans un compte rendu d’appel, hors du circuit déjà utilisé ;",
+      "les informations à réunir et les contradictions à présenter au gestionnaire ;",
+      "les champs de DPAE et de fiche salarié préparés à valider, seulement pour une entrée hors portail ;",
+      "le dossier de sortie hors portail préparé, sans calcul de droits ni génération de documents finaux."
+    ]
+  },
+
   'saisie-comptable': {
     dejaFait: [
       {
