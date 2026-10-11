@@ -1,0 +1,1063 @@
+{
+  "date": "2026-10-06T08:23:06.153977+00:00",
+  "decision": "non-ouverture",
+  "famille": "situations-reporting-client",
+  "candidate": "/automatisation/situations-reporting-client",
+  "rattachement": "/automatisation-cabinet-comptable",
+  "mesures": {
+    "sondes": 8,
+    "vides": 6,
+    "suggestions": 13
+  },
+  "volumeMensuel": null,
+  "worktree": "/Users/kevinkitanga/.hermes/kanban/workspaces/t_ab847b40/site",
+  "branche": "site/situations-reporting-client-t_ab847b40",
+  "commitDepart": "9cad26ef4ad765a0af8f0dde95acad74801789d6",
+  "anglesBacklog": [
+    {
+      "slug": "automatiser-les-situations-intermediaires-et-le-reporting-client",
+      "titre": "Automatiser les situations intermédiaires et le reporting client",
+      "requete": "automatiser situation comptable intermédiaire client cabinet",
+      "secondaires": [
+        "tableau de bord client automatique cabinet comptable",
+        "reporting mensuel client cabinet comptable"
+      ],
+      "famille": "situations-reporting-client",
+      "role": "chefs-mission-portefeuille",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "jeu fictif produisant une situation trimestrielle et trois indicateurs à partir d'une balance intermédiaire",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment automatiser la comptabilité ?",
+          "Quels sont les 5 grands principes comptables ?",
+          "Pourquoi les cabinets comptables n'arrivent-ils pas à recruter ?",
+          "Quelle est la marge moyenne d'un cabinet comptable ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "controler-une-situation-intermediaire-avant-envoi-au-client",
+      "titre": "Contrôler une situation intermédiaire avant de l'envoyer au client",
+      "requete": "checklist situation comptable intermédiaire avant envoi",
+      "secondaires": [
+        "vérifier un reporting client avant diffusion",
+        "cohérence situation intermédiaire comptabilité"
+      ],
+      "famille": "situations-reporting-client",
+      "role": "chefs-mission-portefeuille",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée en six points, rejouée sur une situation fictive avec un ratio incohérent volontaire",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment automatiser la comptabilité ?",
+          "Quels sont les 5 grands principes comptables ?",
+          "Pourquoi les cabinets comptables n'arrivent-ils pas à recruter ?",
+          "Quelle est la marge moyenne d'un cabinet comptable ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "les-indicateurs-de-reporting-client-qu-un-tableau-automatique-ne-doit-pas-commenter-seul",
+      "titre": "Les indicateurs qu'un reporting client automatique ne commente pas seul",
+      "requete": "commentaire tableau de bord client comptabilité risque",
+      "secondaires": [
+        "interprétation ratio financier reporting client",
+        "situation intermédiaire dégradée que dire au client"
+      ],
+      "famille": "situations-reporting-client",
+      "role": "chefs-mission-portefeuille",
+      "intent": "decider",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau se-prépare-seul / attend-validation / reste-humain sur cinq indicateurs fictifs",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment automatiser la comptabilité ?",
+          "Quels sont les 5 grands principes comptables ?",
+          "Pourquoi les cabinets comptables n'arrivent-ils pas à recruter ?",
+          "Quelle est la marge moyenne d'un cabinet comptable ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "situation-intermediaire-et-reporting-client-quelle-difference",
+      "titre": "Situation intermédiaire et reporting client : quelle différence ?",
+      "requete": "différence situation intermédiaire et reporting client",
+      "secondaires": [
+        "définition situation comptable intermédiaire",
+        "reporting client cabinet comptable définition"
+      ],
+      "famille": "situations-reporting-client",
+      "role": "chefs-mission-portefeuille",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec un tableau à deux colonnes distinguant les deux livrables",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment automatiser la comptabilité ?",
+          "Quels sont les 5 grands principes comptables ?",
+          "Pourquoi les cabinets comptables n'arrivent-ils pas à recruter ?",
+          "Quelle est la marge moyenne d'un cabinet comptable ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ],
+  "entreesRegistreFamille": [],
+  "contratServiceGeneral": {
+    "version": 1,
+    "measuredAt": "2026-09-20",
+    "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
+    "pages": {
+      "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": {
+        "query": "générateur prompt ia gratuit",
+        "descriptionLead": "Préparez un prompt texte",
+        "source": "Brief 06 vague 3 ; intention professionnelle générique distincte du générateur cabinet et du blog, aucun volume revendiqué"
+      },
+      "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
+        "query": "bibliothèque prompts comptables",
+        "descriptionLead": "Choisissez un modèle de prompt comptable",
+        "measuredAt": "2026-10-05",
+        "source": "Brief 02 vague 3 ; sélection de modèles distincte du générateur et du guide. Sonde dans docs/qa/bibliotheque-prompts/demande-autocomplete.json ; aucun volume revendiqué."
+      },
+      "/outils-comptables-gratuits/verificateur-prompt-ia": {
+        "query": "vérificateur prompt ia",
+        "descriptionLead": "Repérez les contraintes absentes",
+        "measuredAt": "2026-10-04",
+        "source": "Brief 07 et sondes vague 3 ; vérifier une consigne existante, distinct de la création 01 et du guide blog. Trafic ND."
+      },
+      "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": {
+        "query": "diagnostic maturité ia cabinet comptable",
+        "descriptionLead": "Situez les pratiques IA",
+        "source": "Brief 08 vague 3 ; méthode déclarative originale, aucune promesse de volume"
+      },
+      "/outils-comptables-gratuits/generateur-prompt-expert-comptable": {
+        "query": "générateur prompt expert comptable",
+        "descriptionLead": "Décrivez une tâche abstraite du cabinet",
+        "measuredAt": "2026-10-04",
+        "source": "Brief 01 vague 3 et sonde autocomplete de cadrage ; aucune promesse de volume. Intention exécution distincte du guide /blog/prompt-chatgpt-expert-comptable."
+      },
+      "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": {
+        "query": "pseudonymiser fichier comptable avant ia",
+        "descriptionLead": "Supprimez ou remplacez des colonnes"
+      },
+      "/outils-comptables-gratuits/calculateur-roi-automatisation": {
+        "query": "calculateur roi automatisation comptable",
+        "descriptionLead": "Comparez des scénarios d’automatisation",
+        "source": "Brief 09 vague 3 ; hypothèses économiques, aucune promesse de gain ou de volume"
+      },
+      "/outils-comptables-gratuits/verificateur-fec-local": {
+        "query": "vérificateur fec gratuit",
+        "descriptionLead": "Contrôlez localement la structure",
+        "source": "Brief 05 vague 3 ; sonde Google au cadrage, aucune promesse de volume"
+      },
+      "/": {
+        "query": "automatisation IA cabinet comptable",
+        "descriptionLead": "Votre cabinet"
+      },
+      "/a-propos": {
+        "query": "marque / preuve d’identité",
+        "descriptionLead": "À propos de Memlia"
+      },
+      "/automatisation-cabinet-comptable": {
+        "query": "automatisation cabinet comptable",
+        "descriptionLead": "Toute tâche répétitive"
+      },
+      "/automatisation/factures-fournisseurs": {
+        "query": "factures fournisseurs des dossiers clients",
+        "descriptionLead": "Factures fournisseurs des dossiers clients"
+      },
+      "/automatisation/notes-de-frais": {
+        "query": "notes de frais des clients en cabinet",
+        "descriptionLead": "Notes de frais des clients en cabinet"
+      },
+      "/automatisation/paie": {
+        "query": "automatisation paie pôle social",
+        "descriptionLead": "Automatisation paie pôle social"
+      },
+      "/automatisation/rapprochement-bancaire": {
+        "query": "rapprochement bancaire en cabinet",
+        "descriptionLead": "Confiez la préparation du rapprochement bancaire"
+      },
+      "/automatisation/saisie-comptable": {
+        "query": "saisie comptable en cabinet",
+        "descriptionLead": "Saisie comptable en cabinet"
+      },
+      "/blog": {
+        "query": "index éditorial",
+        "descriptionLead": "Blog Memlia"
+      },
+      "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps": {
+        "query": "charge de travail cabinet comptable",
+        "descriptionLead": "Charge de travail cabinet comptable",
+        "minMedia": 2
+      },
+      "/blog/comprendre-les-comptes-rendus-metier-dsn": {
+        "query": "CRM DSN",
+        "descriptionLead": "CRM DSN",
+        "minMedia": 2
+      },
+      "/blog/controler-les-bulletins-de-paie-avant-la-dsn": {
+        "query": "Contrôle bulletin de paie",
+        "descriptionLead": "Contrôle bulletin de paie",
+        "minMedia": 2
+      },
+      "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain": {
+        "query": "métier comptable intelligence artificielle compétences",
+        "descriptionLead": "Métier comptable intelligence artificielle compétences",
+        "minMedia": 2
+      },
+      "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils": {
+        "query": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+        "descriptionLead": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils",
+        "minMedia": 2
+      },
+      "/blog/suivre-la-production-sociale-dans-excel": {
+        "query": "Tableau de bord paie Excel",
+        "descriptionLead": "Tableau de bord paie Excel",
+        "minMedia": 2
+      },
+      "/contact": {
+        "query": "navigation transactionnelle de marque",
+        "descriptionLead": "Décrivez la tâche"
+      },
+      "/garanties": {
+        "query": "preuve et réduction du risque",
+        "descriptionLead": "Garanties Memlia"
+      },
+      "/glossaire": {
+        "query": "glossaire comptable",
+        "descriptionLead": "Glossaire comptable"
+      },
+      "/integrations": {
+        "query": "guides par environnement comptable",
+        "descriptionLead": "Trouvez les repères de contrôle"
+      },
+      "/integrations/rapprochement-bancaire-sage": {
+        "query": "rapprochement bancaire sage",
+        "descriptionLead": "Cadrez un rapprochement bancaire Sage 100"
+      },
+      "/integrations/lettrage-sage": {
+        "query": "lettrage sage",
+        "descriptionLead": "Cadrez le lettrage Sage 100"
+      },
+      "/integrations/dsn-sage": {
+        "query": "dsn sage",
+        "descriptionLead": "Cadrez les contrôles d’une DSN Sage"
+      },
+      "/integrations/bulletin-de-paie-sage": {
+        "query": "bulletin de paie sage",
+        "descriptionLead": "Préparez le contrôle d’un bulletin Sage"
+      },
+      "/integrations/saisie-comptable-sage": {
+        "query": "saisie comptable sage",
+        "descriptionLead": "Cadrez une préparation de saisie Sage 100"
+      },
+      "/integrations/cloture-sage": {
+        "query": "clôture sage",
+        "descriptionLead": "Structurez les contrôles de clôture Sage 100"
+      },
+      "/integrations/lettrage-cegid": {
+        "query": "lettrage cegid",
+        "descriptionLead": "Cadrez un lettrage Cegid"
+      },
+      "/integrations/dsn-silae": {
+        "query": "dsn silae",
+        "descriptionLead": "Cadrez les contrôles d’une DSN Silae"
+      },
+      "/integrations/bulletin-de-paie-silae": {
+        "query": "bulletin de paie silae",
+        "descriptionLead": "Cadrez le contrôle d’un bulletin Silae"
+      },
+      "/methode": {
+        "query": "méthode automatisation cabinet comptable",
+        "descriptionLead": "Observer le geste réel"
+      },
+      "/outils-comptables-gratuits": {
+        "query": "outils comptables gratuits",
+        "descriptionLead": "Des outils gratuits"
+      },
+      "/outils-comptables-gratuits/generateur-charte-ia-cabinet": {
+        "query": "générateur charte ia cabinet comptable",
+        "descriptionLead": "Préparez une trame de charte IA",
+        "measuredAt": "2026-10-04",
+        "source": "docs/qa/charte-ia/demande-autocomplete.json"
+      },
+      "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
+        "query": "calculateur date échéance facture",
+        "descriptionLead": "Calculez une date d’échéance"
+      },
+      "/outils-comptables-gratuits/calculateur-marge-commerciale": {
+        "query": "calculateur marge commerciale",
+        "descriptionLead": "Calculez une marge commerciale"
+      },
+      "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
+        "query": "calculateur amortissement comptable",
+        "descriptionLead": "Calculez un plan d’amortissement"
+      },
+      "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
+        "query": "modèle rapprochement bancaire Excel gratuit",
+        "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit"
+      }
+    }
+  },
+  "sourcesUtilisees": [
+    {
+      "url": "https://www.fulll.fr/analyse-et-conseil",
+      "urlFinale": "https://www.fulll.fr/analyse-et-conseil",
+      "http": 200,
+      "captureLe": "2026-10-06T08:20:59.593610+00:00",
+      "texte": "preuves/source-6.txt",
+      "liens": [
+        {
+          "texte": "",
+          "url": "/"
+        },
+        {
+          "texte": "",
+          "url": "/"
+        },
+        {
+          "texte": "Vision",
+          "url": "/vision"
+        },
+        {
+          "texte": "Pré-compta",
+          "url": "/pre-compta"
+        },
+        {
+          "texte": "Production co﻿mptable",
+          "url": "/production-comptable"
+        },
+        {
+          "texte": "Production sociale",
+          "url": "/production-sociale"
+        },
+        {
+          "texte": "Facture électronique",
+          "url": "/facturation-electronique"
+        },
+        {
+          "texte": "Croissance du cabinet",
+          "url": "/croissance-cabinet"
+        },
+        {
+          "texte": "Pilotage du cabinet",
+          "url": "/pilotage-cabinet"
+        },
+        {
+          "texte": "Espace collaboratif",
+          "url": "/espace-collaboratif"
+        },
+        {
+          "texte": "Analyse et conseil",
+          "url": "/analyse-et-conseil"
+        },
+        {
+          "texte": "Data",
+          "url": "/data"
+        },
+        {
+          "texte": "Accompagnement",
+          "url": "/accompagnement"
+        },
+        {
+          "texte": "Intelligence artificielle",
+          "url": "/intelligence-artificielle"
+        },
+        {
+          "texte": "Intégrations",
+          "url": "/connectivite"
+        },
+        {
+          "texte": "Compte pro",
+          "url": "/outils/compte-pro"
+        },
+        {
+          "texte": "Marque blanche",
+          "url": "/marque-blanche"
+        },
+        {
+          "texte": "Je suis une entreprise",
+          "url": "/entreprise"
+        },
+        {
+          "texte": "Facturation électronique Avec la Plateforme Agréée fulll, connectez vos clients, vos flux et votre production comptable dans un environnement unique.",
+          "url": "/facturation-electronique"
+        },
+        {
+          "texte": "Témoignages",
+          "url": "/temoignages"
+        },
+        {
+          "texte": "Tarifs",
+          "url": "/tarifs"
+        },
+        {
+          "texte": "COEC 2026",
+          "url": "/evenements/congres-national"
+        },
+        {
+          "texte": "Guides",
+          "url": "/ressources"
+        },
+        {
+          "texte": "Événements",
+          "url": "/evenements"
+        },
+        {
+          "texte": "Blllog",
+          "url": "/blllog"
+        },
+        {
+          "texte": "Academy",
+          "url": "https://academy.fulll.fr/"
+        },
+        {
+          "texte": "Centre d'aide",
+          "url": "https://aide.fulll.io/fr/"
+        },
+        {
+          "texte": "Qui sommes-nous ?",
+          "url": "/notre-mission"
+        },
+        {
+          "texte": "Offres d'emploi",
+          "url": "/rejoignez-nous"
+        },
+        {
+          "texte": "Presse",
+          "url": "/presse"
+        },
+        {
+          "texte": "Se connecter",
+          "url": "https://auth.fulll.io/"
+        },
+        {
+          "texte": "Organiser une démo",
+          "url": "/demo"
+        },
+        {
+          "texte": "Organiser une démo",
+          "url": "/demo"
+        },
+        {
+          "texte": "En savoir plus",
+          "url": "/data"
+        },
+        {
+          "texte": "",
+          "url": "/applications-mobiles-comptables"
+        },
+        {
+          "texte": "",
+          "url": "/applications-mobiles-comptables"
+        },
+        {
+          "texte": "« Avec fulll Dashboard, nous ne nous limitons plus à restituer des chiffres : nous aidons nos clients à comprendre leur activité et à prendre de meilleures décisions. Que ce soit pour valider un recrutement, préparer un financement ou optimiser leurs choix de fin d’année, les analyses deviennent un véritable support au conseil. » ‍ Charlène Nisse - Manager, In Extenso",
+          "url": "https://www.fulll.fr/blllog/fulll-dashboard-au-coeur-du-conseil-charlene-nisse-manager-in-extenso"
+        },
+        {
+          "texte": "Organiser une démo",
+          "url": "/connectivite"
+        },
+        {
+          "texte": "",
+          "url": "/"
+        },
+        {
+          "texte": "Notre vision",
+          "url": "/vision"
+        },
+        {
+          "texte": "À propos",
+          "url": "/notre-mission"
+        },
+        {
+          "texte": "Jobs",
+          "url": "/rejoignez-nous"
+        },
+        {
+          "texte": "Presse",
+          "url": "/presse"
+        },
+        {
+          "texte": "Égalité femmes-hommes",
+          "url": "/egalite-femmes-hommes"
+        },
+        {
+          "texte": "Infos pratiques",
+          "url": "/informations-pratiques"
+        },
+        {
+          "texte": "Sécurité",
+          "url": "/securite"
+        },
+        {
+          "texte": "Une question ?",
+          "url": "/contact"
+        },
+        {
+          "texte": "Facture électronique",
+          "url": "/facturation-electronique"
+        },
+        {
+          "texte": "Pré-compta",
+          "url": "/pre-compta"
+        },
+        {
+          "texte": "Production comptable",
+          "url": "/production-comptable"
+        },
+        {
+          "texte": "Production sociale",
+          "url": "/production-sociale"
+        },
+        {
+          "texte": "Data",
+          "url": "/data"
+        },
+        {
+          "texte": "Analyse et conseil",
+          "url": "/analyse-et-conseil"
+        },
+        {
+          "texte": "Accompagnement",
+          "url": "/accompagnement"
+        },
+        {
+          "texte": "Tarifs",
+          "url": "/tarifs"
+        },
+        {
+          "texte": "Intégrations",
+          "url": "/connectivite"
+        },
+        {
+          "texte": "Marque blanche",
+          "url": "/marque-blanche"
+        },
+        {
+          "texte": "Réconciliation et lettrage",
+          "url": "/reconciliation-et-lettrage-automatises"
+        },
+        {
+          "texte": "Le Compte pro",
+          "url": "/outils/compte-pro"
+        },
+        {
+          "texte": "ECF",
+          "url": "/outils/ecf"
+        },
+        {
+          "texte": "Révision continue",
+          "url": "/outils/revision-en-continu"
+        },
+        {
+          "texte": "Congrès de l'Ordre",
+          "url": "/evenements/congres-national"
+        },
+        {
+          "texte": "Ressources",
+          "url": "/ressources"
+        },
+        {
+          "texte": "Événements",
+          "url": "/evenements"
+        },
+        {
+          "texte": "Blllog",
+          "url": "/blllog"
+        },
+        {
+          "texte": "Témoignages",
+          "url": "/temoignages"
+        },
+        {
+          "texte": "Applications mobiles",
+          "url": "/applications-mobiles-comptables"
+        },
+        {
+          "texte": "fulll e-days",
+          "url": "/evenements/fulll-edays"
+        },
+        {
+          "texte": "fulll day",
+          "url": "/evenements/fulllday"
+        },
+        {
+          "texte": "Glossaire",
+          "url": "/production-comptable/glossaire-vocabulaire-comptable"
+        },
+        {
+          "texte": "",
+          "url": "https://www.linkedin.com/company/fulll/"
+        },
+        {
+          "texte": "",
+          "url": "https://linktr.ee/be.fulll"
+        },
+        {
+          "texte": "",
+          "url": "https://apps.apple.com/fr/app/fulll/id1561772484"
+        },
+        {
+          "texte": "",
+          "url": "https://play.google.com/store/apps/details?id=digital.fulll.inexweb&hl=fr&gl=US&pli=1"
+        },
+        {
+          "texte": "Sécurité |",
+          "url": "/securite"
+        },
+        {
+          "texte": "Mentions légales |",
+          "url": "/mentions-legales"
+        },
+        {
+          "texte": "CGS/CGU |",
+          "url": "/cgu-csv"
+        },
+        {
+          "texte": "Protection des données personnelles |",
+          "url": "/politiques-de-confidentialite-et-cookies/politique-de-protection-des-donnees-personnelles"
+        },
+        {
+          "texte": "Politique de cookies",
+          "url": "/politiques-de-confidentialite-et-cookies/politique-de-gestion-des-cookies"
+        },
+        {
+          "texte": "Organiser une démo",
+          "url": "/demo"
+        }
+      ]
+    },
+    {
+      "url": "https://rca.fr/logiciels-experts/tableau-de-bord/",
+      "urlFinale": "https://rca.fr/logiciels-experts/tableau-de-bord/",
+      "http": 200,
+      "captureLe": "2026-10-06T08:21:15.607198+00:00"
+    }
+  ],
+  "statutRecette": "non applicable : page non retenue",
+  "surfaces": [
+    {
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "urlFinale": "https://memlia.fr/automatisation-cabinet-comptable",
+      "http": 200,
+      "captureLe": "2026-10-06T08:20:59.606491+00:00",
+      "texte": "preuves/source-4.txt",
+      "liens": [
+        {
+          "texte": "Aller au contenu",
+          "url": "#main"
+        },
+        {
+          "texte": "M emlia",
+          "url": "/"
+        },
+        {
+          "texte": "Tâches",
+          "url": "/#usages"
+        },
+        {
+          "texte": "Méthode",
+          "url": "/#methode"
+        },
+        {
+          "texte": "Contrôle humain",
+          "url": "/#preuves"
+        },
+        {
+          "texte": "Questions",
+          "url": "/#questions"
+        },
+        {
+          "texte": "Parlons de votre tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Tâches",
+          "url": "/#usages"
+        },
+        {
+          "texte": "Méthode",
+          "url": "/#methode"
+        },
+        {
+          "texte": "Contrôle humain",
+          "url": "/#preuves"
+        },
+        {
+          "texte": "Questions",
+          "url": "/#questions"
+        },
+        {
+          "texte": "Tâches",
+          "url": "/#usages"
+        },
+        {
+          "texte": "Méthode",
+          "url": "/#methode"
+        },
+        {
+          "texte": "Contrôle humain",
+          "url": "/#preuves"
+        },
+        {
+          "texte": "Questions",
+          "url": "/#questions"
+        },
+        {
+          "texte": "Parlons de votre tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Tâches",
+          "url": "/#usages"
+        },
+        {
+          "texte": "Méthode",
+          "url": "/#methode"
+        },
+        {
+          "texte": "Contrôle humain",
+          "url": "/#preuves"
+        },
+        {
+          "texte": "Questions",
+          "url": "/#questions"
+        },
+        {
+          "texte": "Parlons de votre tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Accueil",
+          "url": "/"
+        },
+        {
+          "texte": "Confier une première tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Voir comment se déroule la mission",
+          "url": "/methode"
+        },
+        {
+          "texte": "confier la préparation de la saisie comptable",
+          "url": "/automatisation/saisie-comptable"
+        },
+        {
+          "texte": "confier la préparation du rapprochement bancaire",
+          "url": "/automatisation/rapprochement-bancaire"
+        },
+        {
+          "texte": "confier le traitement répétitif des notes de frais",
+          "url": "/automatisation/notes-de-frais"
+        },
+        {
+          "texte": "Lire la carte des tâches",
+          "url": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+        },
+        {
+          "texte": "confier un geste répétitif autour de la paie",
+          "url": "/automatisation/paie"
+        },
+        {
+          "texte": "calculateur de ROI d’automatisation comptable",
+          "url": "/outils-comptables-gratuits/calculateur-roi-automatisation"
+        },
+        {
+          "texte": "calculateur de marge commerciale",
+          "url": "/outils-comptables-gratuits/calculateur-marge-commerciale"
+        },
+        {
+          "texte": "calculateur d’amortissement comptable",
+          "url": "/outils-comptables-gratuits/calculateur-amortissement-comptable"
+        },
+        {
+          "texte": "vérificateur FEC local",
+          "url": "/outils-comptables-gratuits/verificateur-fec-local"
+        },
+        {
+          "texte": "générateur de prompt pour expert-comptable",
+          "url": "/outils-comptables-gratuits/generateur-prompt-expert-comptable"
+        },
+        {
+          "texte": "confier le flux des factures fournisseurs",
+          "url": "/automatisation/factures-fournisseurs"
+        },
+        {
+          "texte": "Sage · Sage 100 Comptabilité Clôture sage Lire le guide →",
+          "url": "/integrations/cloture-sage"
+        },
+        {
+          "texte": "Voir les neuf guides par environnement →",
+          "url": "/integrations"
+        },
+        {
+          "texte": "Situer les pratiques IA du cabinet",
+          "url": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet"
+        },
+        {
+          "texte": "Lire la carte",
+          "url": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+        },
+        {
+          "texte": "Lire les contrôles avant la DSN",
+          "url": "/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+        },
+        {
+          "texte": "Lire le suivi de production sociale",
+          "url": "/blog/suivre-la-production-sociale-dans-excel"
+        },
+        {
+          "texte": "Lire les contrôles après la saisie",
+          "url": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+        },
+        {
+          "texte": "Lire la méthode des retours DSN",
+          "url": "/blog/comprendre-les-comptes-rendus-metier-dsn"
+        },
+        {
+          "texte": "Nos garanties",
+          "url": "/garanties"
+        },
+        {
+          "texte": "CNIL — Règlement européen sur la protection des données, chapitre 2 : principes ↗",
+          "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2"
+        },
+        {
+          "texte": "Le questionnaire revenu vide qui a changé notre cadrage",
+          "url": "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+        },
+        {
+          "texte": "Confier une première tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Automatisation pour cabinet comptable",
+          "url": "/automatisation-cabinet-comptable"
+        },
+        {
+          "texte": "Automatisation paie pôle social",
+          "url": "/automatisation/paie"
+        },
+        {
+          "texte": "Factures fournisseurs des dossiers clients",
+          "url": "/automatisation/factures-fournisseurs"
+        },
+        {
+          "texte": "Notes de frais des clients en cabinet",
+          "url": "/automatisation/notes-de-frais"
+        },
+        {
+          "texte": "Rapprochement bancaire en cabinet",
+          "url": "/automatisation/rapprochement-bancaire"
+        },
+        {
+          "texte": "Saisie comptable en cabinet",
+          "url": "/automatisation/saisie-comptable"
+        },
+        {
+          "texte": "Blog",
+          "url": "/blog"
+        },
+        {
+          "texte": "Paie et DSN",
+          "url": "/blog/rubrique/paie-dsn-cabinet-comptable"
+        },
+        {
+          "texte": "Saisie et pièces",
+          "url": "/blog/rubrique/gestion-pieces-comptables"
+        },
+        {
+          "texte": "Glossaire",
+          "url": "/glossaire"
+        },
+        {
+          "texte": "Guides par environnement",
+          "url": "/integrations"
+        },
+        {
+          "texte": "Comment se déroule une mission",
+          "url": "/methode"
+        },
+        {
+          "texte": "À propos",
+          "url": "/a-propos"
+        },
+        {
+          "texte": "Nos garanties",
+          "url": "/garanties"
+        },
+        {
+          "texte": "Confier une première tâche",
+          "url": "/contact"
+        },
+        {
+          "texte": "Rapprochement bancaire · Sage",
+          "url": "/integrations/rapprochement-bancaire-sage"
+        },
+        {
+          "texte": "Lettrage · Sage",
+          "url": "/integrations/lettrage-sage"
+        },
+        {
+          "texte": "DSN · Sage",
+          "url": "/integrations/dsn-sage"
+        },
+        {
+          "texte": "Bulletin de paie · Sage",
+          "url": "/integrations/bulletin-de-paie-sage"
+        },
+        {
+          "texte": "Saisie comptable · Sage",
+          "url": "/integrations/saisie-comptable-sage"
+        },
+        {
+          "texte": "Clôture · Sage",
+          "url": "/integrations/cloture-sage"
+        },
+        {
+          "texte": "Lettrage · Cegid",
+          "url": "/integrations/lettrage-cegid"
+        },
+        {
+          "texte": "DSN · Silae",
+          "url": "/integrations/dsn-silae"
+        },
+        {
+          "texte": "Bulletin de paie · Silae",
+          "url": "/integrations/bulletin-de-paie-silae"
+        },
+        {
+          "texte": "Tous les outils comptables gratuits",
+          "url": "/outils-comptables-gratuits"
+        },
+        {
+          "texte": "Générateur de prompt IA gratuit",
+          "url": "/outils-comptables-gratuits/generateur-prompt-ia-gratuit"
+        },
+        {
+          "texte": "Bibliothèque de prompts comptables",
+          "url": "/outils-comptables-gratuits/bibliotheque-prompts-comptables"
+        },
+        {
+          "texte": "Vérificateur de prompt IA",
+          "url": "/outils-comptables-gratuits/verificateur-prompt-ia"
+        },
+        {
+          "texte": "Préparer et pseudonymiser un fichier comptable avant IA",
+          "url": "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec"
+        },
+        {
+          "texte": "Diagnostic de maturité IA du cabinet",
+          "url": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet"
+        },
+        {
+          "texte": "Générateur de prompt pour expert-comptable",
+          "url": "/outils-comptables-gratuits/generateur-prompt-expert-comptable"
+        },
+        {
+          "texte": "Calculateur de ROI d’automatisation comptable",
+          "url": "/outils-comptables-gratuits/calculateur-roi-automatisation"
+        },
+        {
+          "texte": "Générateur de charte IA du cabinet",
+          "url": "/outils-comptables-gratuits/generateur-charte-ia-cabinet"
+        },
+        {
+          "texte": "Vérificateur FEC gratuit et local",
+          "url": "/outils-comptables-gratuits/verificateur-fec-local"
+        },
+        {
+          "texte": "Calculateur de marge commerciale",
+          "url": "/outils-comptables-gratuits/calculateur-marge-commerciale"
+        },
+        {
+          "texte": "Calculateur de date d’échéance de facture",
+          "url": "/outils-comptables-gratuits/calculateur-date-echeance-facture"
+        },
+        {
+          "texte": "Calculateur d’amortissement comptable",
+          "url": "/outils-comptables-gratuits/calculateur-amortissement-comptable"
+        },
+        {
+          "texte": "Modèle de rapprochement bancaire Excel gratuit",
+          "url": "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit"
+        },
+        {
+          "texte": "Mentions légales",
+          "url": "/mentions-legales"
+        },
+        {
+          "texte": "Confidentialité",
+          "url": "/politique-de-confidentialite"
+        }
+      ]
+    },
+    {
+      "url": "https://memlia.fr/automatisation/situations-reporting-client",
+      "erreur": "HTTP Error 404: Not Found",
+      "http": 404
+    }
+  ],
+  "verification": {
+    "statut": "PASS",
+    "tests": [
+      "8 mesures réussies, 6 vides, 13 suggestions",
+      "4 angles backlog préservés",
+      "4 citations exactes dans captures et rapport",
+      "registre et contrat sans réservation de cette candidate",
+      "service général 200, candidate 404",
+      "worktree propre, aucune surface publique modifiée"
+    ]
+  },
+  "limites": [
+    "Volume non mesuré",
+    "SERP non qualifiée : 403 Firecrawl, Google sorry, Bing hors sujet",
+    "Fonctions des éditeurs non testées",
+    "Pas de preuve de délégation terrain distincte"
+  ]
+}

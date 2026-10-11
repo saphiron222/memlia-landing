@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseDelimited} from '../../src/lib/pseudonymisation.mjs';
+import {demoInvoices,prepareReminders,parseInvoiceCsv,exportCsv,exportText,parseAmount} from '../../src/lib/relance-facture.mjs';
+const options={preparationDate:'2026-10-06',currency:'EUR',groupConfirmed:true,level:'first',signature:''};
+const base=()=>demoInvoices()[0];
+test('CSV daté indépendamment des messages édités, sans altérer les originaux',()=>{
+ const inputs=demoInvoices();const original=structuredClone(inputs);const r=prepareReminders(inputs,options);
+ r.messages[0].subject='=Objet personnel';r.messages[0].body='Corps personnel sans date';
+ const {headers,rows}=parseDelimited(exportCsv(r),';');const dateIndex=headers.indexOf('date_preparation');
+ assert.notEqual(dateIndex,-1);assert.ok(rows.every(row=>row[dateIndex]===options.preparationDate));
+ assert.ok(rows.every(row=>row[headers.indexOf('version')]===r.version));
+ const message=rows.find(row=>row[headers.indexOf('type')]==='message');
+ assert.equal(message[headers.indexOf('objet_edite')],"'=Objet personnel");assert.equal(message[headers.indexOf('corps_edite')],'Corps personnel sans date');
+ assert.deepEqual(inputs,original);assert.equal(r.messages[0].subject,'=Objet personnel');
+});
+test('CSV daté même sans message après solde négatif',()=>{
+ const r=prepareReminders([{...base(),payments:'200'}],options);assert.equal(r.messages.length,0);
+ const {headers,rows}=parseDelimited(exportCsv(r),';');assert.equal(rows.length,1);
+ assert.notEqual(headers.indexOf('date_preparation'),-1);assert.equal(rows[0][headers.indexOf('date_preparation')],options.preparationDate);
+ assert.equal(rows[0][headers.indexOf('etat')],'review');assert.equal(rows[0][headers.indexOf('paiements')],'200');
+});
+test('solde exact et trois décisions distinctes',()=>{const r=prepareReminders(demoInvoices(),options);assert.equal(r.messages.length,1);assert.equal(r.messages[0].balance,'90.00');assert.match(r.messages[0].body,/90,00 EUR/);assert.deepEqual(r.invoices.map(x=>x.status),['ready','excluded','review','excluded']);assert.match(r.invoices[1].reason,/soldée/);assert.match(r.invoices[2].reason,/Litige/);assert.match(r.invoices[3].reason,/Non échue/);});
+test('homonymes jamais fusionnés ; clé confirmée obligatoire',()=>{const rows=[base(),{...base(),clientKey:'002',reference:'F002'}];assert.equal(prepareReminders(rows,options).messages.length,2);assert.throws(()=>prepareReminders(rows,{...options,groupConfirmed:false}),/confirmez/i);});
+test('même clé avec noms différents et référence dupliquée suspendent les groupes',()=>{assert.equal(prepareReminders([base(),{...base(),client:'Autre',reference:'F002'}],options).messages.length,0);assert.equal(prepareReminders([base(),base()],options).messages.length,0);});
+test('référence absente, date impossible, montant ambigu, avoir excessif et litige inconnu',()=>{for(const patch of [{reference:''},{dueDate:'20260230'},{amount:'1,200.00'},{credits:'121'},{dispute:'peut-être'},{payments:''},{clientKey:''},{currency:'USD'}]){const r=prepareReminders([{...base(),...patch}],options);assert.equal(r.messages.length,0);assert.equal(r.invoices[0].status,'review');}});
+test('précision centime, nombres gigantesques bornés ; échéance du jour exclue',()=>{assert.equal(parseAmount('0,10')+parseAmount('0.20'),30n);assert.throws(()=>parseAmount('1.001'));assert.throws(()=>parseAmount('-1'));assert.throws(()=>parseAmount('1e2'));assert.throws(()=>parseAmount('1'.repeat(30)));assert.equal(prepareReminders([{...base(),dueDate:options.preparationDate}],options).messages.length,0);});
+test('CSV strict avec source physique multiligne et identifiants texte',()=>{const csv='clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency\r\n001;"Atelier\r\nFictif";F1;120,00;20;10;20260901;non;EUR\r\n002;Autre;F2;2;0;0;2026-09-01;non;EUR';const rows=parseInvoiceCsv(csv,';');assert.equal(rows[0].clientKey,'001');assert.equal(rows[0].line,2);assert.equal(rows[1].line,4);assert.equal(prepareReminders(rows,options).messages.length,2);assert.throws(()=>parseInvoiceCsv(csv.replace('clientKey;client','client;client'),';'));assert.throws(()=>parseInvoiceCsv(csv+'\nmal;formé',';'));});
+test('501 lignes et 5 Mo refusés avant préparation',()=>{assert.throws(()=>prepareReminders(Array.from({length:501},base),options),/500/);const header='clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency';assert.throws(()=>parseInvoiceCsv(header+'\n'+Array.from({length:501},(_,i)=>`001;A;F${i};1;0;0;20260901;non;EUR`).join('\n'),';'),/500/);assert.throws(()=>parseInvoiceCsv('a'.repeat(5_000_001),';'),/5 Mo/);});
+test('versions éditées et exceptions intégralement exportées, formules neutralisées',()=>{const r=prepareReminders(demoInvoices(),options);r.messages[0].subject='=test';r.messages[0].body='Texte personnel <b>non HTML</b>';const text=exportText(r);assert.match(text,/Texte personnel/);assert.match(text,/Litige/);const csv=exportCsv(r);assert.match(csv,/"'=test"/);assert.match(csv,/Texte personnel/);assert.equal(parseInvoiceCsv('clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency\n001;"<script>x</script>";F;1;0;0;20260901;non;EUR',';')[0].client,'<script>x</script>');});

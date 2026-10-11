@@ -1,0 +1,44 @@
+{
+  "inputs": [
+    {
+      "clientKey": "001",
+      "client": "Atelier fictif",
+      "reference": "F-001",
+      "amount": "120,00",
+      "payments": "20,00",
+      "credits": "10,00",
+      "dueDate": "2026-09-01",
+      "dispute": "non",
+      "currency": "EUR"
+    },
+    {
+      "clientKey": "001",
+      "client": "Atelier fictif",
+      "reference": "F-002",
+      "amount": "120,00",
+      "payments": "120,00",
+      "credits": "0",
+      "dueDate": "2026-09-01",
+      "dispute": "non",
+      "currency": "EUR"
+    },
+    {
+      "clientKey": "002",
+      "client": "Studio fictif",
+      "reference": "F-003",
+      "amount": "120,00",
+      "payments": "20,00",
+      "credits": "10,00",
+      "dueDate": "2026-09-01",
+      "dispute": "oui",
+      "currency": "EUR"
+    }
+  ],
+  "options": {
+    "preparationDate": "2026-10-06",
+    "currency": "EUR",
+    "groupConfirmed": true,
+    "level": "first",
+    "signature": ""
+  }
+}

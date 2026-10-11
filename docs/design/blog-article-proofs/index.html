@@ -335,6 +335,61 @@
       </div>
     </article>
   </section>
+  <section class="frame" id="cac-inventaire-taches" aria-label="Inventaire fictif de six tâches du mandat D-004">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Inventaire du mandat</b><span>Jeu d’essai fictif · D-004 · 2026</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>D-004</small><b>6 tâches</b></div><nav class="tabs"><span class="on">Inventaire</span><span>Règles</span></nav></div>
+        <div class="data-table" style="--cols:.65fr 1.1fr 1fr 1fr">
+          <div class="table-head"><span>Règle</span><span>Tâche</span><span>Source</span><span>État</span></div>
+          <div class="sel"><span>REG-01</span><span>Réception</span><span>FEC-D004-v1</span><span><em class="pill amber">À valider</em></span></div>
+          <div><span>REG-02</span><span>Demandes</span><span>DEP-002</span><span><em class="pill grey">À écrire</em></span></div>
+          <div><span>REG-03</span><span>Variations</span><span>BAL-D004-v1</span><span><em class="pill grey">Règle renseignée</em></span></div>
+          <div><span>REG-04</span><span>Confirmations</span><span>T-008</span><span><em class="pill grey">À écrire</em></span></div>
+          <div><span>REG-05</span><span>Index</span><span>P-014</span><span><em class="pill grey">Règle renseignée</em></span></div>
+          <div><span>REG-06</span><span>Jalons</span><span>M-004</span><span><em class="pill amber">À valider</em></span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="cac-fiche-regle" aria-label="Fiche REG-01 fictive avec proposition et conflit de contribution séparés de la saisie">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Fiche REG-01</b><span>Jeu d’essai fictif · D-004 · 2026</span></header>
+      <div class="record-layout">
+        <section><div class="record-head"><div><small>Réception</small><h2>REG-01</h2></div><span class="pill amber">Proposition à valider</span></div>
+          <dl class="fields"><div><dt>Source</dt><dd>FEC-D004-v1</dd></div><div><dt>Règle</dt><dd>REG-01</dd></div><div><dt>Proposition</dt><dd>PROPOSITION_A_VALIDER</dd></div><div><dt>Saisie conservée</dt><dd>commentaire du senior</dd></div></dl>
+        </section>
+        <aside class="side-panel"><small>Seconde contribution</small><h3>REG-01</h3><dl><div><dt>Commentaire</dt><dd>commentaire corrigé</dd></div><div><dt>État</dt><dd>CONFLIT_A_PRESENTER</dd></div></dl><span class="pill amber">À présenter</span></aside>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="cac-fec-registre-reception" aria-label="Registre de trois jeux JSON fictifs et de leurs constats de réception">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Réceptions</b><span>Jeu d’essai fictif · JSON fictif · D-004 · 2026</span></header>
+      <div class="screen">
+        <div class="toolbar"><div><small>D-004</small><b>3 jeux reçus</b></div></div>
+        <div class="data-table" style="--cols:.8fr .5fr .6fr .6fr 1.2fr">
+          <div class="table-head"><span>Jeu JSON</span><span>Lignes</span><span>Écart</span><span>Période</span><span>Statut</span></div>
+          <div class="sel"><span>R-004</span><span>2</span><span>0,00</span><span>2026</span><span><em class="pill amber">CONSTAT_A_REVOIR</em></span></div>
+          <div><span>R-005</span><span>2</span><span>0,00</span><span>2025</span><span><em class="pill amber">REFUS_PERIODE</em></span></div>
+          <div><span>R-006</span><span>2</span><span>1,00</span><span>2026</span><span><em class="pill amber">REFUS_ECART</em></span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+  <section class="frame" id="cac-fec-constat" aria-label="Constat R-004 sur deux lignes JSON fictives avec commentaire humain séparé">
+    <article class="window full">
+      <header class="window-bar"><span class="dot amber"></span><b>Constat R-004</b><span>Jeu d’essai fictif · JSON fictif · D-004 · 2026</span></header>
+      <div class="queue-split">
+        <section>
+          <div class="toolbar"><div><small>R-004</small><b>2 lignes</b></div></div>
+          <div class="data-table" style="--cols:1fr 1fr 1fr"><div class="table-head"><span>Ligne</span><span>Débit</span><span>Crédit</span></div><div><span>E-001</span><span>1 200,00</span><span>0,00</span></div><div><span>E-002</span><span>0,00</span><span>1 200,00</span></div></div>
+          <div class="footer-band"><b>Écart</b><span>0,00</span></div>
+        </section>
+        <aside class="side-panel"><small>Constat</small><h3>R-004</h3><span class="pill amber">CONSTAT_A_REVOIR</span><dl><div><dt>Période</dt><dd>2026</dd></div><div><dt>Commentaire saisi</dt><dd><div class="composer">À examiner</div></dd></div></dl></aside>
+      </div>
+    </article>
+  </section>
 </main>
 </body>
 </html>

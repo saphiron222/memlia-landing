@@ -1,0 +1,27 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 tests/browser/outils.spec.ts:353:1 › outils publiés : zéro requête et zéro stockage après armement (1.2s)
+
+
+  1) tests/browser/outils.spec.ts:353:1 › outils publiés : zéro requête et zéro stockage après armement 
+
+    Error: Scénario réseau à définir pour l’outil assistant-lettrage-comptable-local
+
+      497 |       await expect(page.locator('[data-difference]')).toHaveText('0,00 €');
+      498 |     } else {
+    > 499 |       throw new Error(`Scénario réseau à définir pour l’outil ${outil.slug}`);
+          |             ^
+      500 |     }
+      501 |     expect(await page.evaluate(async () => ({
+      502 |       localStorage: localStorage.length,
+        at /Users/kevinkitanga/.hermes/kanban/workspaces/t_52251fce/site/tests/browser/outils.spec.ts:499:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    .qa/test-results/outils-outils-publiés-zéro-3a34a-éro-stockage-après-armement/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: .qa/test-results/outils-outils-publiés-zéro-3a34a-éro-stockage-après-armement/error-context.md
+
+  1 failed
+    tests/browser/outils.spec.ts:353:1 › outils publiés : zéro requête et zéro stockage après armement 

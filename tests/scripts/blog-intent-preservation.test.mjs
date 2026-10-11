@@ -18,6 +18,7 @@ for (const path of ['editorial', 'src', 'docs/strategy/site-v3/mesures',
   'docs/strategy/site-v3/cluster-briefs', 'docs/strategy/site-v3/w39-cadrage-operateur.json',
   'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json', 'public', 'dist', 'scripts/lib/blog-ia-catchup.mjs']) {
   cpSync(join(sourceRoot, path), join(root, path), { recursive: true });
+
 }
 // Date historique de cette fixture, cohérente avec ses preuves et son relevé.
 // Ne pas utiliser le jour d'exécution pour reconstruire une publication passée.

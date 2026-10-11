@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: Lettrage : seuls les deux beacons Cloudflare sont retirés, CSP et validation du cache maintenues
+ok 1 - Lettrage : seuls les deux beacons Cloudflare sont retirés, CSP et validation du cache maintenues
+  ---
+  duration_ms: 2.030291
+  type: 'test'
+  ...
+# Subtest: Lettrage : redirection ou erreur non HTML inchangée
+ok 2 - Lettrage : redirection ou erreur non HTML inchangée
+  ---
+  duration_ms: 0.276666
+  type: 'test'
+  ...
+# Subtest: Lettrage : ancien ETag, date ou Range ne réutilisent jamais le corps avec beacon ; HEAD concorde
+ok 3 - Lettrage : ancien ETag, date ou Range ne réutilisent jamais le corps avec beacon ; HEAD concorde
+  ---
+  duration_ms: 1.573375
+  type: 'test'
+  ...
+# Subtest: Lettrage : aucune transformation edge, seulement sur la route Lettrage, CSP inchangée
+ok 4 - Lettrage : aucune transformation edge, seulement sur la route Lettrage, CSP inchangée
+  ---
+  duration_ms: 0.92275
+  type: 'test'
+  ...
+# Subtest: exemple : paire certaine, ambiguïté et reste, partition complète
+ok 5 - exemple : paire certaine, ambiguïté et reste, partition complète
+  ---
+  duration_ms: 2.656417
+  type: 'test'
+  ...
+# Subtest: centimes exacts sans flottants et bornes
+ok 6 - centimes exacts sans flottants et bornes
+  ---
+  duration_ms: 0.172625
+  type: 'test'
+  ...
+# Subtest: tiers et devises cloisonnés, pas de combinaison
+ok 7 - tiers et devises cloisonnés, pas de combinaison
+  ---
+  duration_ms: 0.516625
+  type: 'test'
+  ...
+# Subtest: ambiguïté : aucun identifiant réutilisé et aucune priorité arbitraire
+ok 8 - ambiguïté : aucun identifiant réutilisé et aucune priorité arbitraire
+  ---
+  duration_ms: 0.143625
+  type: 'test'
+  ...
+# Subtest: référence égale prioritaire, références différentes jamais rapprochées
+ok 9 - référence égale prioritaire, références différentes jamais rapprochées
+  ---
+  duration_ms: 0.311
+  type: 'test'
+  ...
+# Subtest: doublons tous refusés, simultanés refusés, déjà lettré exclu, devise obligatoire
+ok 10 - doublons tous refusés, simultanés refusés, déjà lettré exclu, devise obligatoire
+  ---
+  duration_ms: 0.132209
+  type: 'test'
+  ...
+# Subtest: CSV cité multiligne, source physique, ids texte, erreurs strictes
+ok 11 - CSV cité multiligne, source physique, ids texte, erreurs strictes
+  ---
+  duration_ms: 0.415792
+  type: 'test'
+  ...
+# Subtest: export complet décisions actuelles, source intacte, neutralisation
+ok 12 - export complet décisions actuelles, source intacte, neutralisation
+  ---
+  duration_ms: 1.0535
+  type: 'test'
+  ...
+# Subtest: limites 10 Mo et 20 000 lignes
+ok 13 - limites 10 Mo et 20 000 lignes
+  ---
+  duration_ms: 25.166125
+  type: 'test'
+  ...
+# Subtest: encodage choisi, UTF-8 invalide et UTF-16 refusés
+ok 14 - encodage choisi, UTF-8 invalide et UTF-16 refusés
+  ---
+  duration_ms: 0.696416
+  type: 'test'
+  ...
+# Subtest: sans référence : ambiguïté conservée ; 20 000 lignes évaluées et exportées
+ok 15 - sans référence : ambiguïté conservée ; 20 000 lignes évaluées et exportées
+  ---
+  duration_ms: 194.235875
+  type: 'test'
+  ...
+# Subtest: toutes lignes exportées, contrôle exact par devise et état
+ok 16 - toutes lignes exportées, contrôle exact par devise et état
+  ---
+  duration_ms: 0.441041
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 299.695584

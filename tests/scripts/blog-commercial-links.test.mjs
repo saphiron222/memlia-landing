@@ -11,7 +11,7 @@ const articles = registre.articles.filter((entree) => entree.type === 'blog');
 const liensAttendus = new Map([
   ['automatiser-la-saisie-comptable-ce-qui-reste-a-verifier', '/automatisation/saisie-comptable'],
   ['comprendre-les-comptes-rendus-metier-dsn', '/automatisation/paie'],
-  ['controler-les-bulletins-de-paie-avant-la-dsn', '/automatisation/paie'],
+  ['controler-les-bulletins-de-paie-avant-la-dsn', '/automatisation/bulletins-controle'],
   ['suivre-la-production-sociale-dans-excel', '/automatisation/paie'],
 ]);
 const pontsW39 = new Map([

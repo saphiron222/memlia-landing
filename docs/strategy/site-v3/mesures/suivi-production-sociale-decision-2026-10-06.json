@@ -1,0 +1,51 @@
+{
+  "task": "t_3f6458c4",
+  "date": "2026-10-06",
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/suivi-production-sociale",
+  "rattachement_commercial": "/automatisation/paie",
+  "proprietaire_informationnel": "/blog/suivre-la-production-sociale-dans-excel",
+  "counts": {
+    "queries": 8,
+    "empty_lists": 5,
+    "raw_suggestions": 19,
+    "off_scope": 10
+  },
+  "quotes": [
+    {
+      "url": "https://www.fulll.fr/pilotage-cabinet",
+      "file": "captures/fulll-pilotage.txt",
+      "quote": "Évaluez en direct la santé comptable et sociale de vos dossiers grâce aux indicateurs issus directement de la production (compta et paie) et aux alertes de gestion.",
+      "portee": "Santé comptable/sociale native ; ne prouve pas la totalité du suivi par période et étape."
+    },
+    {
+      "url": "https://www.fulll.fr/pilotage-cabinet",
+      "file": "captures/fulll-pilotage.txt",
+      "quote": "Indicateurs consolidés par agence, pôle et dossier",
+      "portee": "Consolidation annoncée ; fonctions non testées."
+    },
+    {
+      "url": "https://www.fulll.fr/production-sociale",
+      "file": "captures/fulll-social.txt",
+      "quote": "Simplifiez votre production sociale en collectant les données directement à la source via Portail RH.",
+      "portee": "Collecte native ; pas preuve de consolidation multi-outils."
+    }
+  ],
+  "angles_backlog": [
+    "piloter-le-pole-social-par-etape-sans-jamais-nommer-un-salarie",
+    "checklist-des-indicateurs-a-agreger-pour-le-pole-social",
+    "pourquoi-un-indicateur-de-production-sociale-ne-doit-jamais-remonter-un-nom",
+    "qu-est-ce-que-le-suivi-de-la-production-sociale-d-un-cabinet"
+  ],
+  "motif": "Les suggestions utiles concernent surtout la méthode de tableau paie/Excel déjà couverte. Besoin opérationnel plausible, mais aucune demande commerciale distincte de délégation du suivi social multi-outils établie.",
+  "reouverture": "Recueillir un cas explicite de cabinet devant consolider manuellement les états dossier × période × étape entre plusieurs outils, et qualifier une requête de délégation distincte du blog et du service paie.",
+  "forge": "Non applicable : page non retenue, pas de recette ni revue métier ni scellement revendiqués.",
+  "limitations": [
+    "Pas de volume mensuel mesuré ; liste vide ne signifie pas demande nulle.",
+    "Google SERP : contrôle anti-robot ; Bing : suivi colis hors sujet ; aucun top 10 français revendiqué.",
+    "Firecrawl recherche/extraction 403, reprise sources par curl HTTP 200.",
+    "pilotage pôle social : dix suggestions aviation social centre hors périmètre exclues.",
+    "Silae URL candidate renvoie un contenu générique ; non utilisée pour prouver le suivi social.",
+    "Revue documentaire fulll ciblée, sans tests fonctionnels ni prétention à exhaustivité."
+  ]
+}

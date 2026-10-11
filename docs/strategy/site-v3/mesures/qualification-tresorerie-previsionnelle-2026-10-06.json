@@ -1,0 +1,304 @@
+{
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/tresorerie-previsionnelle",
+  "rattachement_documentaire": "/automatisation-cabinet-comptable",
+  "mesures": {
+    "captured_at": "2026-10-06T08:37:22.420595+00:00",
+    "method": "Google autocomplete firefox hl=fr gl=fr; aucun volume mensuel déduit",
+    "queries": [
+      {
+        "requete": "automatisation trésorerie prévisionnelle cabinet comptable",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation+tr%C3%A9sorerie+pr%C3%A9visionnelle+cabinet+comptable",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"automatisation trésorerie prévisionnelle cabinet comptable\",[]]"
+      },
+      {
+        "requete": "trésorerie prévisionnelle expert comptable",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=tr%C3%A9sorerie+pr%C3%A9visionnelle+expert+comptable",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"trésorerie prévisionnelle expert comptable\",[]]"
+      },
+      {
+        "requete": "automatisation trésorerie prévisionnelle",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation+tr%C3%A9sorerie+pr%C3%A9visionnelle",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"automatisation trésorerie prévisionnelle\",[]]"
+      },
+      {
+        "requete": "prévision trésorerie cabinet comptable",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pr%C3%A9vision+tr%C3%A9sorerie+cabinet+comptable",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"prévision trésorerie cabinet comptable\",[]]"
+      },
+      {
+        "requete": "prévision trésorerie Excel",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=pr%C3%A9vision+tr%C3%A9sorerie+Excel",
+        "http": 200,
+        "suggestions": [
+          "prevision tresorerie excel",
+          "prévisionnel tresorerie excel gratuit"
+        ],
+        "raw": "[\"prévision trésorerie Excel\",[\"prevision tresorerie excel\",\"prévisionnel tresorerie excel gratuit\"],[],{\"google:suggestsubtypes\":[[22,30],[22,30]]}]"
+      },
+      {
+        "requete": "plan de trésorerie automatisé",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=plan+de+tr%C3%A9sorerie+automatis%C3%A9",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"plan de trésorerie automatisé\",[]]"
+      },
+      {
+        "requete": "logiciel trésorerie expert comptable",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=logiciel+tr%C3%A9sorerie+expert+comptable",
+        "http": 200,
+        "suggestions": [],
+        "raw": "[\"logiciel trésorerie expert comptable\",[]]"
+      },
+      {
+        "requete": "trésorerie prévisionnelle",
+        "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=tr%C3%A9sorerie+pr%C3%A9visionnelle",
+        "http": 200,
+        "suggestions": [
+          "trésorerie prévisionnelle",
+          "trésorerie prévisionnelle excel",
+          "trésorerie prévisionnelle définition",
+          "tableau trésorerie prévisionnelle excel",
+          "tableau trésorerie prévisionnelle",
+          "modèle tableau trésorerie prévisionnelle",
+          "plan de trésorerie prévisionnel"
+        ],
+        "raw": "[\"trésorerie prévisionnelle\",[\"trésorerie prévisionnelle\",\"trésorerie prévisionnelle excel\",\"trésorerie prévisionnelle définition\",\"tableau trésorerie prévisionnelle excel\",\"tableau trésorerie prévisionnelle\",\"modèle tableau trésorerie prévisionnelle\",\"plan de trésorerie prévisionnel\"],[],{\"google:suggestsubtypes\":[[512],[22,30],[22,30],[22,30],[22,30],[22,30],[22,30,10]]}]"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://agicap.com/fr/produits/gestion-de-tresorerie/",
+      "http": 200,
+      "text_file": "capture-0.txt",
+      "links": [
+        "https://lelab.bpifrance.fr/enquetes/barometre-tpe-pme-t4-2025-l-incertitude-politique-plombe-la-tresorerie-et-l-investissement",
+        "https://agicap.com/fr/ebook/priorites-tresorerie-daf/",
+        "https://agicap.com/fr/article/consolidation-des-comptes-et-de-tresorerie/",
+        "/fr/produits/gestion-de-tresorerie/",
+        "/fr/categorie/gestion-tresorerie/",
+        "/fr/categorie/comptabilite/",
+        "/fr/produits/gestion-de-tresorerie/",
+        "/fr/categorie/gestion-tresorerie/",
+        "/fr/categorie/comptabilite/"
+      ],
+      "captured_at": "2026-10-06T08:38:22.439736+00:00"
+    },
+    {
+      "url": "https://rca.fr/logiciels-experts/previsionnel/",
+      "http": 200,
+      "text_file": "capture-1.txt",
+      "links": [
+        "https://rca.fr/simulateur-revenus-conseil-expert-comptable/",
+        "https://rca.fr/meg-mon-expert-en-gestion/pre-comptabilite/",
+        "https://rca.fr/logiciels-experts/previsionnel/",
+        "https://rca.fr/simulateur-revenus-conseil-expert-comptable/"
+      ],
+      "captured_at": "2026-10-06T08:38:22.823340+00:00"
+    },
+    {
+      "url": "https://memlia.fr/automatisation/tresorerie-previsionnelle",
+      "http": 404,
+      "text_file": "capture-2.txt",
+      "links": [
+        "/automatisation-cabinet-comptable",
+        "/automatisation/saisie-comptable",
+        "/blog/rubrique/paie-dsn-cabinet-comptable",
+        "/blog/rubrique/gestion-pieces-comptables",
+        "/integrations/saisie-comptable-sage",
+        "/outils-comptables-gratuits",
+        "/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+        "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+        "/outils-comptables-gratuits/verificateur-prompt-ia",
+        "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+        "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+        "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+        "/outils-comptables-gratuits/calculateur-roi-automatisation",
+        "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+        "/outils-comptables-gratuits/verificateur-fec-local",
+        "/outils-comptables-gratuits/calculateur-marge-commerciale",
+        "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+        "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+        "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit"
+      ],
+      "captured_at": "2026-10-06T08:38:23.052968+00:00"
+    },
+    {
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "http": 200,
+      "text_file": "capture-3.txt",
+      "links": [
+        "/automatisation/saisie-comptable",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/outils-comptables-gratuits/calculateur-roi-automatisation",
+        "/outils-comptables-gratuits/calculateur-marge-commerciale",
+        "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+        "/outils-comptables-gratuits/verificateur-fec-local",
+        "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+        "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+        "/automatisation-cabinet-comptable",
+        "/automatisation/saisie-comptable",
+        "/blog/rubrique/paie-dsn-cabinet-comptable",
+        "/blog/rubrique/gestion-pieces-comptables",
+        "/integrations/saisie-comptable-sage",
+        "/outils-comptables-gratuits",
+        "/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+        "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+        "/outils-comptables-gratuits/verificateur-prompt-ia",
+        "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+        "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+        "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+        "/outils-comptables-gratuits/calculateur-roi-automatisation",
+        "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+        "/outils-comptables-gratuits/verificateur-fec-local",
+        "/outils-comptables-gratuits/calculateur-marge-commerciale",
+        "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+        "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+        "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit"
+      ],
+      "captured_at": "2026-10-06T08:38:23.353322+00:00"
+    }
+  ],
+  "backlog_preserve": [
+    {
+      "slug": "automatiser-la-projection-de-tresorerie-d-un-client-depuis-ses-echeances",
+      "titre": "Automatiser la projection de trésorerie d'un client depuis ses échéances",
+      "requete": "automatiser trésorerie prévisionnelle cabinet comptable",
+      "secondaires": [
+        "projeter la trésorerie client cabinet comptable",
+        "tension de trésorerie signal automatique"
+      ],
+      "famille": "tresorerie-previsionnelle",
+      "role": "chefs-mission-portefeuille",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "jeu fictif d'une projection de trésorerie à treize semaines depuis les échéances connues",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur outil de prévisionnel de trésorerie ?",
+          "Comment puis-je automatiser la saisie comptable ?",
+          "Est-il possible de faire un prévisionnel soi-même ?",
+          "Comment faire un prévisionnel de trésorerie ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-avant-de-presenter-une-tresorerie-previsionnelle-au-client",
+      "titre": "La checklist avant de présenter une trésorerie prévisionnelle au client",
+      "requete": "checklist trésorerie prévisionnelle avant présentation client",
+      "secondaires": [
+        "contrôle cohérence trésorerie prévisionnelle",
+        "hypothèses de trésorerie prévisionnelle vérification"
+      ],
+      "famille": "tresorerie-previsionnelle",
+      "role": "chefs-mission-portefeuille",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée en six points, rejouée sur une projection fictive de treize semaines",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur outil de prévisionnel de trésorerie ?",
+          "Comment puis-je automatiser la saisie comptable ?",
+          "Est-il possible de faire un prévisionnel soi-même ?",
+          "Comment faire un prévisionnel de trésorerie ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "tension-de-tresorerie-detectee-ce-qu-un-outil-de-projection-ne-decide-jamais-seul",
+      "titre": "Tension de trésorerie détectée : ce qu'un outil de projection ne décide jamais seul",
+      "requete": "tension de trésorerie client cabinet comptable action",
+      "secondaires": [
+        "alerte trésorerie négative client cabinet",
+        "décision de financement trésorerie tendue"
+      ],
+      "famille": "tresorerie-previsionnelle",
+      "role": "chefs-mission-portefeuille",
+      "intent": "decider",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau se-prépare-seul / attend-validation / reste-humain sur trois signaux fictifs de tension de trésorerie",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur outil de prévisionnel de trésorerie ?",
+          "Comment puis-je automatiser la saisie comptable ?",
+          "Est-il possible de faire un prévisionnel soi-même ?",
+          "Comment faire un prévisionnel de trésorerie ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "qu-est-ce-qu-une-tresorerie-previsionnelle-et-comment-elle-se-construit",
+      "titre": "Qu'est-ce qu'une trésorerie prévisionnelle, et comment se construit-elle ?",
+      "requete": "définition trésorerie prévisionnelle construction",
+      "secondaires": [
+        "plan de trésorerie définition cabinet comptable",
+        "trésorerie à treize semaines définition"
+      ],
+      "famille": "tresorerie-previsionnelle",
+      "role": "chefs-mission-portefeuille",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec un exemple fictif de plan de trésorerie à treize semaines",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur outil de prévisionnel de trésorerie ?",
+          "Comment puis-je automatiser la saisie comptable ?",
+          "Est-il possible de faire un prévisionnel soi-même ?",
+          "Comment faire un prévisionnel de trésorerie ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ]
+}

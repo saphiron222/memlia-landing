@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { INTEGRATIONS } from '../../src/data/integrations';
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`hub guides : choisir une tâche à ${width}px`, async ({ page }) => {
@@ -11,8 +12,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/integrations');
     await expect(page.locator('[data-integration-cards] > li')).toHaveCount(count);
     const titles = await page.locator('[data-integration-cards] h3').allTextContents();
+    expect([...titles].sort()).toEqual(INTEGRATIONS.map(({ task, product }) => `${task.charAt(0).toLocaleUpperCase('fr')}${task.slice(1)} dans ${product}`).sort());
     for (const title of titles) {
-      expect(title).toMatch(/ dans (Sage 100 Comptabilité|Sage 100 Paie & RH|Cegid Loop|mySilae)$/);
       expect(title).not.toMatch(/Dsn|sage|cegid|silae/);
     }
     await expect(page.locator('main')).not.toContainText(/moyeu|signal d.indexation|Mesurer, publier peu/i);

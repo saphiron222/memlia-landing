@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: HTML construit : intention, canonical, schémas, CTA et confidentialité
+ok 1 - HTML construit : intention, canonical, schémas, CTA et confidentialité
+  ---
+  duration_ms: 1.078625
+  type: 'test'
+  ...
+# Subtest: HTML construit : trois entrants, footer et sitemap
+ok 2 - HTML construit : trois entrants, footer et sitemap
+  ---
+  duration_ms: 0.946625
+  type: 'test'
+  ...
+# Subtest: solde exact et trois décisions distinctes
+ok 3 - solde exact et trois décisions distinctes
+  ---
+  duration_ms: 3.116041
+  type: 'test'
+  ...
+# Subtest: homonymes jamais fusionnés ; clé confirmée obligatoire
+ok 4 - homonymes jamais fusionnés ; clé confirmée obligatoire
+  ---
+  duration_ms: 0.998708
+  type: 'test'
+  ...
+# Subtest: même clé avec noms différents et référence dupliquée suspendent les groupes
+ok 5 - même clé avec noms différents et référence dupliquée suspendent les groupes
+  ---
+  duration_ms: 0.284958
+  type: 'test'
+  ...
+# Subtest: référence absente, date impossible, montant ambigu, avoir excessif et litige inconnu
+ok 6 - référence absente, date impossible, montant ambigu, avoir excessif et litige inconnu
+  ---
+  duration_ms: 0.642458
+  type: 'test'
+  ...
+# Subtest: précision centime, nombres gigantesques bornés ; échéance du jour exclue
+ok 7 - précision centime, nombres gigantesques bornés ; échéance du jour exclue
+  ---
+  duration_ms: 0.132875
+  type: 'test'
+  ...
+# Subtest: CSV strict avec source physique multiligne et identifiants texte
+ok 8 - CSV strict avec source physique multiligne et identifiants texte
+  ---
+  duration_ms: 1.052375
+  type: 'test'
+  ...
+# Subtest: 501 lignes et 5 Mo refusés avant préparation
+ok 9 - 501 lignes et 5 Mo refusés avant préparation
+  ---
+  duration_ms: 3.575708
+  type: 'test'
+  ...
+# Subtest: versions éditées et exceptions intégralement exportées, formules neutralisées
+ok 10 - versions éditées et exceptions intégralement exportées, formules neutralisées
+  ---
+  duration_ms: 2.477
+  type: 'test'
+  ...
+# Subtest: route locale : CSP fermée, beacon filtré et caches invalidés
+ok 11 - route locale : CSP fermée, beacon filtré et caches invalidés
+  ---
+  duration_ms: 24.444
+  type: 'test'
+  ...
+# Subtest: route, registre, intention et deux entrants contextuels
+ok 12 - route, registre, intention et deux entrants contextuels
+  ---
+  duration_ms: 3.708958
+  type: 'test'
+  ...
+# Subtest: preuve canonique scellée, dimensions et poids
+ok 13 - preuve canonique scellée, dimensions et poids
+  ---
+  duration_ms: 9.264459
+  type: 'test'
+  ...
+# Subtest: annuler termine le Worker ; message tardif sans effet
+ok 14 - annuler termine le Worker ; message tardif sans effet
+  ---
+  duration_ms: 0.82525
+  type: 'test'
+  ...
+# Subtest: fichier trop gros non lu, encodage choisi, fichier binaire refusé
+ok 15 - fichier trop gros non lu, encodage choisi, fichier binaire refusé
+  ---
+  duration_ms: 3.23225
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 228.84175
