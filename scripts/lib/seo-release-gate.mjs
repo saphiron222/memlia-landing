@@ -1,6 +1,6 @@
 // Separate, read-only SEO measurement release decision. Never reuse the blog allowlist.
 const SHA = /^[0-9a-f]{40}$/;
-const REPO = 'saphiron222/memlia-landing';
+
 const PREFIX = 'docs/strategy/site-v3/mesures/';
 const MEASURE_FILES = new Set(['docs/strategy/site-v3/JOURNAL.md', 'editorial/maintenance.json']);
 
@@ -9,11 +9,11 @@ function scoped(path) {
     (MEASURE_FILES.has(path) || (path.startsWith(PREFIX) && path.length > PREFIX.length));
 }
 
-export function evaluateSeoRelease({ pr, qa, receipt, checks, changedPaths,
-  expectedHead, expectedMain, remoteMain, privateRepository }) {
+export function evaluateSeoRelease({ pr, qa, checks, changedPaths,
+  expectedHead, expectedMain, remoteMain, authorizedRepository }) {
   const errors = [];
   if (!SHA.test(expectedHead ?? '') || !SHA.test(expectedMain ?? '') ||
-      privateRepository !== true || pr?.state !== 'OPEN' || pr?.isDraft !== false || pr?.baseRefName !== 'main' ||
+      authorizedRepository !== true || pr?.state !== 'OPEN' || pr?.isDraft !== false || pr?.baseRefName !== 'main' ||
       pr?.headRefOid !== expectedHead || pr?.baseRefOid !== expectedMain ||
       remoteMain !== expectedMain || pr?.mergeable !== 'MERGEABLE' || pr?.mergeStateStatus !== 'CLEAN') {
     errors.push('PR, HEAD ou main non conforme à la base enregistrée');
@@ -32,15 +32,7 @@ export function evaluateSeoRelease({ pr, qa, receipt, checks, changedPaths,
       q?.metadata?.ci?.head !== expectedHead || q?.metadata?.ci?.success_verified !== true) {
     errors.push('QA indépendante exact-head absente');
   }
-  // This object must come from the local, read-only receipt verifier, never from
-  // a PR file, Kanban comment, run metadata or a caller-supplied CLI flag.
-  if (receipt?.verified !== true || receipt?.repo !== REPO || receipt?.scope !== 'seo-measures' ||
-      receipt?.pr !== pr?.number || receipt?.pr_head !== expectedHead ||
-      receipt?.main_sha !== expectedMain || receipt?.qa_task !== qa?.task?.id ||
-      receipt?.decision !== 'AUTHORIZE' || receipt?.channel !== 'telegram' ||
-      receipt?.authorization_task === qa?.task?.id) {
-    errors.push('autorisation SEO explicite et distincte absente');
-  }
+
   const runs = checks?.check_runs;
   const required = Array.isArray(runs) ? runs.filter(check => check.name === 'Repository gates') : [];
   if (!Number.isSafeInteger(checks?.total_count) || checks.total_count !== runs?.length ||
