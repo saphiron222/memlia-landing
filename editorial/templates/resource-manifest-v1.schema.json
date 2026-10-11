@@ -7940,6 +7940,14 @@
                     "type": "string",
                     "minLength": 1
                   },
+                  "dilaCopyPath": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "dilaCopySha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
                   "contentSha256": {
                     "type": "string",
                     "minLength": 1,

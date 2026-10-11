@@ -1,0 +1,18 @@
+{
+  "kind": "metier",
+  "status": "PASS",
+  "reviewer": "metier",
+  "reviewedAt": "2026-10-07",
+  "candidateSha256": "eb2207b3273416e772d60d7ceb6e1dc5292ade697778bc6d8e8e7b9eb26704b1",
+  "observations": [
+    "Source officielle EBP 360009858758 et API du centre d’aide ouvertes le 07/10/2026 : article français publié, non marqué obsolète ; métadonnées updated_at 2026-10-01 et edited_at 2026-03-02. Sa portée est EBP Comptabilité. Le guide exclut Bâtiment et Gestion Commerciale et demande de vérifier l’édition et les options visibles ; aucune compatibilité toutes éditions n’est attestée.",
+    "La distinction documentaire est exacte : « L’export Provisoire au format FEC » est destiné au comptable ; « L’export comptabilité informatisé FEC » est destiné à l’administration fiscale. Le parcours Déclaratif → Fichier des écritures comptables et la conservation du nom généré correspondent à la fiche officielle ; aucun export provisoire n’est présenté comme substitut au parcours administration.",
+    "L’exercice, la période, le régime et le codage sont bien des paramètres décrits par EBP pour les deux exports. L’arrêt sur une période hors exercice ou différente de la demande est qualifié de règle proposée au cabinet, non d’obligation fiscale ni de comportement natif démontré. Le régime et le codage ne sont pas déduits du destinataire et aucune valeur par défaut n’est inventée.",
+    "L’option d’export des documents liés est attribuée par EBP aux versions 2024 et suivantes. Les noms de pièces reposent sur PieceRef pour le provisoire et EcritureNum pour le définitif, conformément à la source ; le guide en conditionne l’usage à la disponibilité effective de l’option et à la confirmation humaine.",
+    "Les trois cas fictifs concordent avec la règle écrite, le HTML et le WebP examinés : comptable et paramètres confirmés → fiche provisoire Préparé ; administration avec codage ou pièces à confirmer → À valider sans choix déduit ; destination inconnue et période explicitement hors exercice → Arrêt sans remplacement de paramètres. Préparé ne signifie ni fichier produit ni transmission autorisée.",
+    "La frontière conserve la décision au collaborateur : la préparation compare les paramètres sans modifier le dossier, les écritures ou les fichiers ; le type d’export et tous les paramètres restent à confirmer ; lancement et transmission restent humains. Les cas et le visuel sont qualifiés de simulation documentaire, jamais d’essai effectivement exécuté dans EBP.",
+    "Aucune garantie fiscale n’est reprise de l’aide EBP : le guide précise que ni les pièces jointes ni un contrôle structurel ne prouvent la conformité fiscale. La portée fiscale reste appréciée humainement ; aucune obligation juridique supplémentaire, seuil ni régime fiscal précis n’est affirmé sans preuve primaire.",
+    "Preuve de demande contrôlée contre les pièces jointes de t_5b286083 : autocomplete.json est identique en octets à evidence/export-fec-ebp.autocomplete.json de l’archive G2 ; sa réponse correspond au JSON brut archivé. Relevé France daté du 06/10/2026, HTTP 200 déclaré, sept suggestions distinctes, sans estimation de volume. Le test spécifique de recette et l’audit des deux états guides sont PASS lors de cette revue.",
+    "Aucune correction de fond requise. Le cartouche éditeur du renderer est un défaut visuel déjà porté par t_c0fcdf54, hors de cette revue métier ; sa suppression à fond et cas inchangés ne requiert pas de nouvelle revue. Les essais dans EBP, la compatibilité d’une édition précise et la validité fiscale d’un fichier réel restent non démontrés et ne sont pas revendiqués. Aucun scellement, commit, fusion ni publication effectué par le reviewer."
+  ]
+}

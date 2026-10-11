@@ -18,11 +18,13 @@ const questions = [
     reponse: `${mentionLocale} La politique de sécurité de cette page bloque aussi les connexions sortantes pendant le calcul.`,
   },
 ];
+// Système de page : la forme « questions » de l'accueil — l'en-tête collant à gauche dès
+// 1 024 px, l'accordéon natif à droite, aux mêmes mesures.
 ---
 
-<section class="outil-faq" data-tool-section="faq" aria-labelledby="outil-faq-titre">
+<section class="section outil-faq" data-tool-section="faq" aria-labelledby="outil-faq-titre">
   <div class="conteneur outil-faq-inner">
-    <div class="outil-faq-heading rv">
+    <div class="tete outil-faq-heading rv">
       <h2 id="outil-faq-titre">Avant d’utiliser l’outil.</h2>
       <p>Les deux objections relevées lors de la conception des outils gratuits.</p>
     </div>
@@ -41,24 +43,13 @@ const questions = [
 </section>
 
 <style>
-  .outil-faq {
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
   .outil-faq-inner {
     display: grid;
-    gap: 32px;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    gap: var(--bloc-ecart);
   }
   .outil-faq-heading {
-    display: grid;
-    gap: 12px;
-    max-width: 520px;
-  }
-  .outil-faq-heading p,
-  .outil-faq-item p {
-    color: var(--texte-2);
+    align-content: start;
+    max-width: 448px;
   }
   .outil-faq-list {
     border-top: 1px solid var(--ligne);
@@ -72,7 +63,7 @@ const questions = [
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    padding: 24px 4px;
+    padding: 20px 4px;
     cursor: pointer;
     list-style: none;
     color: var(--texte-fort);
@@ -80,10 +71,14 @@ const questions = [
     font-size: var(--t-xl);
     font-weight: 600;
     line-height: 1.25;
+    letter-spacing: -0.01em;
     text-wrap: pretty;
   }
   .outil-faq-item summary::-webkit-details-marker {
     display: none;
+  }
+  .outil-faq-item summary:focus-visible {
+    outline-offset: -2px;
   }
   .outil-faq-chevron {
     flex: 0 0 auto;
@@ -97,19 +92,29 @@ const questions = [
   }
   .outil-faq-item p {
     max-width: 62ch;
-    padding: 0 4px 28px;
+    margin: 0;
+    padding: 0 4px 24px;
+    color: var(--texte-2);
+  }
+  @media (hover: hover) {
+    .outil-faq-item summary:hover .outil-faq-chevron {
+      color: var(--accent-texte);
+    }
   }
   @media (min-width: 64rem) {
     .outil-faq-inner {
       grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-      gap: 96px;
-      padding-top: 112px;
-      padding-bottom: 112px;
+      gap: var(--espace-24);
     }
     .outil-faq-heading {
       position: sticky;
       top: calc(var(--nav-h) + 32px);
-      align-self: start;
+    }
+    .outil-faq-item summary {
+      padding: 24px 8px;
+    }
+    .outil-faq-item p {
+      padding: 0 8px 28px;
     }
   }
 </style>

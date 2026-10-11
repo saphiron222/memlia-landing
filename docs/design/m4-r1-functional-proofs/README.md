@@ -14,11 +14,11 @@ npm run check
 npm run build
 ```
 
-`render:proofs` charge les trois polices locales, contrôle les neuf compositions, rend chaque scène à une origine fixe en **1600 × 900**, puis encode les WebP avec Sharp (`quality: 90`, `effort: 6`). Il régénère également les dérivés dont le manifeste déclare une source dans `public/proofs/`, sans changer le blog ni ses textes. Le lot contient les neuf preuves plus ces seuls dérivés ; aucun dérivé n'est requis si les couvertures de blog ont changé de source.
+`render:proofs` charge les trois polices locales, contrôle les neuf compositions, rend chaque scène à une origine fixe en **1600 × 900**, puis encode les WebP avec Sharp (`quality: 90`, `effort: 6`). Il régénère seulement les dérivés dont le manifeste indique encore une source dans `public/proofs/`. Les couvertures `img-23`/`img-24`, désormais issues des masters de la forge éditoriale, restent inchangées et sont contrôlées par leur propriétaire et par `test:images`.
 
 - Source de composition : `index.html`, `styles.css`.
 - PNG versionnés : `renders/`.
-- Actifs du site : `public/proofs/` et les éventuels dérivés déclarés dans le manifeste.
+- Actifs possédés par ce rendu : les neuf images `public/proofs/` et leurs éventuels dérivés déclarés dans le manifeste.
 - Manifeste actif : `docs/qa/m4-r4/media-manifest.json` ; seul le lot des images concernées est actualisé, vidéo/poster inchangés.
 - Contrat textuel : `content-contract.json`, texte central exact et inventaire des suppressions par scène.
 - Journal du rendu : `.qa/annotations/render/report.json`.
@@ -35,7 +35,9 @@ python3 -m unittest discover -s tests/proof -p test_proof_annotations.py -v
 
 Le test images exige un `dist/` récent. Il compare les 23 images au manifeste et au build, et contrôle les empreintes des huit sources de rendu (HTML, CSS, contrat, moteur, lockfile et trois polices) et des neuf PNG. Le build Cloudflare reste donc sans dépendance à un navigateur installé. Une modification de source sans nouveau rendu fait échouer le build.
 
-`test:proof-render` vérifie d'abord deux manifestes isolés (sans dérivé puis avec un dérivé), leur rendu réel et leur recalcul sans écriture. Il **rerend** ensuite les neuf sources du dépôt et compare les octets des neuf PNG, des neuf preuves et des seuls dérivés encore déclarés ; cette recette complète exige Chromium et tourne en CI, hors build Cloudflare. Les versions npm sont verrouillées par `package-lock.json` ; le rapport et le manifeste nomment le navigateur réellement utilisé. Après une mise à jour de Chromium, vérifier individuellement les nouveaux rendus avant d'actualiser le sceau, jamais le modifier pour masquer une divergence.
+`test:proof-render` vérifie d'abord deux manifestes isolés (sans dérivé puis avec un dérivé), leur rendu réel et leur recalcul sans écriture. Il **rerend** ensuite les neuf sources et compare les octets des neuf PNG et de chaque actif possédé par cette série ; cette recette complète exige Chromium et tourne en CI, hors build Cloudflare. Les versions npm sont verrouillées par `package-lock.json` ; le rapport et le manifeste nomment le navigateur réellement utilisé. Après une mise à jour de Chromium, vérifier individuellement les nouveaux rendus avant d'actualiser le sceau, jamais le modifier pour masquer une divergence.
+
+Après l'ajout d'une dépendance de test (par exemple `markdown-it`), rejouer `render:proofs`, puis `test:proof-render` et le build complet : le lockfile reste scellé, même si les neuf médias sont identiques. Le test `tests/scripts/proof-render-ownership.test.mjs` exerce le rendu réel dans un dépôt temporaire, la conservation des actifs éditoriaux et le refus d'un actif altéré en mode contrôle.
 
 Le rendu refuse un texte central divergent, une annotation interdite (y compris en pseudo-élément CSS), un texte tronqué ou masqué et une étiquette de curseur sur un bouton. La flèche du curseur possède un caractère de secours à taille zéro : cette seule représentation redondante est explicitement exclue du contrôle géométrique des textes. Le texte lisible de son étiquette reste contrôlé.
 

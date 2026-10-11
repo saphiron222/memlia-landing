@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
+import { DESTINATIONS } from '../navigation-attendue.mjs';
 
 for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
   test(`accueil sans débordement à ${width}px`, async ({ page }) => {
@@ -61,7 +62,7 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('[data-mobile-visible] a[href="/#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/#methode"]')).toBeVisible();
   await context.close();
 });
 
@@ -76,9 +77,11 @@ test('navigation desktop : quatre destinations atteignables au clavier et CTA un
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
-  await expect(links).toHaveText(['Tâches', 'Méthode', 'Contrôle humain', 'Questions']);
+  await expect(links).toHaveText(DESTINATIONS);
   for (const fragment of ['usages', 'methode', 'preuves', 'questions']) {
     await page.goto('/');
+    await page.locator('[aria-controls="sous-menu-lecture"]').focus();
+    await page.keyboard.press('Enter');
     const link = page.locator(`.nav-centre a[href="/#${fragment}"]`);
     await link.focus();
     await link.press('Enter');
@@ -119,8 +122,10 @@ test('fragment malformé toléré, navigation intacte et sans erreur', async ({ 
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/#%');
-  await expect(page.locator('[data-mobile-visible] a')).toHaveCount(4);
-  await expect(page.locator('[data-burger]')).toBeHidden();
+  await expect(page.locator('[data-burger]')).toBeVisible();
+  await page.locator('[data-burger]').click();
+  await expect(page.locator('#menu-mobile .nav-mobile-lien')).toHaveCount(DESTINATIONS.length);
+  await page.keyboard.press('Escape');
   await expect(page.locator('#menu-mobile')).toBeHidden();
   expect(errors).toEqual([]);
 });

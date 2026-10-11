@@ -1,5 +1,6 @@
 ---
 import Base from './Base.astro';
+import ScrollableTables from '@/components/ScrollableTables.astro';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
 import Button from '@/components/Button.astro';
@@ -32,6 +33,9 @@ const chemin = `${BLOG.chemin}/${entree.id}`;
 const rubrique = rubriquePourArticle(entree.id);
 const auteur = auteurPar(data.auteur);
 const dateMiseAJour = data.dateMiseAJour ?? data.datePublication;
+// Décision de Kevin du 06/10/2026 : une source se cite par un lien dans le texte, pas dans une section « Sources ».
+// La section ne garde que les sources pas encore citées dans le corps (deux articles à republier) ; elle disparaît sinon.
+const sourcesHorsTexte = data.sources.filter((source) => !(entree.body ?? '').includes(source.url));
 const description = data.description ?? data.resume.slice(0, 157).trimEnd() + '…';
 const nombreMots = compterMots(entree.body ?? '');
 const minutes = Math.max(1, Math.ceil(nombreMots / BLOG.motsParMinute));
@@ -162,19 +166,21 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
       <Picture id={image} sizes="(min-width: 48rem) 720px, 100vw" loading="eager" fetchpriority="high" class="article-couverture" />
 
       <div class="article-corps lecture">
-        <slot />
+        <ScrollableTables><slot /></ScrollableTables>
       </div>
 
-      <section class="article-sources" aria-labelledby="sources-titre">
-        <h2 id="sources-titre">Sources</h2>
-        <ol>
-          {data.sources.map((s) => (
-            <li>
-              {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>.
-            </li>
-          ))}
-        </ol>
-      </section>
+      {sourcesHorsTexte.length > 0 && (
+        <section class="article-sources" aria-labelledby="sources-titre">
+          <h2 id="sources-titre">Sources</h2>
+          <ol>
+            {sourcesHorsTexte.map((s) => (
+              <li>
+                {s.editeur}, <a href={s.url} rel="noopener">{s.titre}</a>.
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       <aside class="article-pont coins" aria-labelledby="pont-titre">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -216,6 +222,9 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
     </article>
   </div>
 </Base>
+<script>
+  import '@/lib/table-keyboard';
+</script>
 
 <style>
   .article-feuille { background: var(--surface-feuille); }
@@ -269,7 +278,8 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
     color: var(--texte-2); font-family: var(--police-display), 'Fraunces Fallback'; font-style: italic; font-weight: 400;
   }
   /* Un tableau à trois colonnes dépasse 320 px : il défile dans sa colonne au lieu d'élargir la page. */
-  .article-corps :global(table) { display: block; width: 100%; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin: 1.2em 0 1.6em; font-size: var(--t-sm); }
+  .article-corps :global([data-table-scroll]) { margin: 1.2em 0 1.6em; }
+  .article-corps :global(table) { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
   .article-corps :global(th), .article-corps :global(td) { min-width: 9em; }
   .article-corps :global(th:nth-child(2)), .article-corps :global(td:nth-child(2)) { min-width: 16em; }
   .article-corps :global(th), .article-corps :global(td) { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--ligne-douce); }

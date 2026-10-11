@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "family": "envois-plaquettes-documents",
+  "candidate": "/automatisation/envois-plaquettes-documents",
+  "decision": "non-ouverture",
+  "commercialOwner": "/automatisation-cabinet-comptable",
+  "reason": "Geste de restitution confirmé par offres primaires, mais intention commerciale propre aux lots et destinataires non confirmée ; huit réponses d’autocomplétion vides et SERP candidate mêlant assemblage et offres larges.",
+  "nativeAlternatives": [
+    "MyCompanyFiles",
+    "Welyb",
+    "ACD"
+  ],
+  "serviceCompetitor": "Factory 456",
+  "reopenWhen": "Demande entrante qualifiée de lots d’envoi non résolus nativement ou mesure distincte de délégation, accès et formats vérifiables.",
+  "forgeStatus": "non applicable : recette non retenue",
+  "publicationAllowed": false,
+  "childTask": "t_f246c2dd",
+  "preserve": [
+    "Famille active",
+    "Pages et articles existants",
+    "Registre des requêtes",
+    "Backlog",
+    "Sitemap et maillage"
+  ]
+}

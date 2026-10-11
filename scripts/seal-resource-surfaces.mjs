@@ -26,6 +26,8 @@ const buildStartedAt = new Date().toISOString();
 const bootstrapCommands = [
   { command: 'npx astro build', executable: 'npx', args: ['astro', 'build'], env: publicEnv },
   { command: 'node scripts/strip-briefs.mjs', executable: process.execPath, args: ['scripts/strip-briefs.mjs'], env: process.env },
+  // Seal the same final public text as build:site, not Astro's pre-normalized HTML.
+  { command: 'node scripts/render-public-source-text.mjs', executable: process.execPath, args: ['scripts/render-public-source-text.mjs'], env: process.env },
 ];
 for (const row of bootstrapCommands) {
   const run = spawnSync(row.executable, row.args, { cwd: root, env: row.env, stdio: 'inherit' });

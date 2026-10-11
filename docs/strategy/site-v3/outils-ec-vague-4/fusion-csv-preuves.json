@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/fusion-csv-proof/index.html",
+      "sha256": "de32042ce67d25d82ccf40b7823c80dcb318f56a1adfc98e86666070c8ebf4e8"
+    },
+    {
+      "path": "docs/design/fusion-csv-proof/styles.css",
+      "sha256": "9a8e852df548a9075d37da6e2aa60c7de89df9b292db873b5e76b8ff8c72c2b0"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/fusion-csv-proof/content-contract.json",
+      "sha256": "c11bcd0d1ca20d3f929393359abbca4683fe9fe43535141eb885b4c84d3c6354"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/fusion-csv-proof/index.html#outil-fusion-csv",
+      "target": "public/proofs/v2/44-outil-fusion-csv.webp",
+      "bytes": 39728,
+      "sha256": "800cc84e4bb7a40cbf9b1777213e42548ca945f3586c5b686ee25f7ec9064264"
+    },
+    {
+      "source": "docs/design/fusion-csv-proof/index.html#outil-fusion-csv",
+      "target": "public/proofs/v2/og/44-outil-fusion-csv.webp",
+      "bytes": 26522,
+      "sha256": "36a283493949a1130eaa19a5a86875f8a6b67dfd3baddd54547ac0cf24f6c644"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "slug": "circularisation-cac",
+  "destination": "src/data/couverture-logiciels.mjs#COUVERTURE_SERVICES",
+  "dejaFait": [
+    { "outil": "e-Circu", "geste": "prépare les courriers, facilite la sélection des tiers, relance et centralise les justificatifs et le suivi des réponses", "source": { "url": "https://www.gestonline.com/blog/circularisation-audit", "libelle": "Gest On Line, circularisation avec e-Circu", "consulteLe": "2026-10-06" } },
+    { "outil": "Circit", "geste": "envoie, suit et reçoit les confirmations, rapproche les réponses des documents de travail et signale les exceptions", "source": { "url": "https://www.circit.io/fr/platform/confirm", "libelle": "Circit, Confirm", "consulteLe": "2026-10-06" } }
+  ],
+  "reste": [
+    "la proposition de tiers selon la règle de votre cabinet, si elle n’est pas déjà couverte : soldes, mouvements, tirage reproductible, couverture ou nombre de comptes, deux passes et feuille de couverture ;",
+    "la préparation des pièces et rapprochements postérieurs choisis par le CAC pour les écarts ou non-réponses, avec conclusion laissée à son examen."
+  ],
+  "limite": "Fonctions déclarées par les éditeurs, non testées. Ne pas présenter une absence de fonction documentée comme preuve d’impossibilité. Vérifier édition/options et retirer toute partie déjà réalisée. Ajouter dans le registre au moment de créer la route, sans entrée orpheline."
+}

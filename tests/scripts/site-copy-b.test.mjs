@@ -55,7 +55,10 @@ test('glossaire : les frontières corrigées restent explicites', () => {
   assert.doesNotMatch(text, /Un cabinet, responsable du traitement de ses dossiers clients|Le résultat produit est nouveau à chaque exécution|un reliquat stable indique une règle qui tient/);
 });
 
-test('Sources n’est rendu que si des références publiques existent', () => {
-  const text = source('src/components/PageEvidence.astro');
-  assert.match(text, /eeat.sources.length > 0 && \(\s*<div class="page-evidence-head"/);
+// Décision de Kevin du 06/10/2026 : plus de section Sources ; chaque source se cite par un lien sur un mot du texte.
+test('chaque source de page se cite sur un mot du texte, sans composant de section', () => {
+  const eeat = source('src/data/page-eeat.ts');
+  assert.match(eeat, /\/\*\* Les mots du texte de la page qui portent le lien\. \*\/\s*mot: string;/);
+  assert.match(source('src/pages/automatisation/[slug].astro'), /lierSources\(corps, eeatService\(entree\.id\)\.sources\)/);
+  assert.doesNotMatch(eeat, /experience|ExperiencePremiereMain/);
 });

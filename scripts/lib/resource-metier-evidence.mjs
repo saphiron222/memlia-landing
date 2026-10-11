@@ -120,6 +120,8 @@ const SOURCE_SPECS = {
   "source-banque-france-sepa": {
     publisher: "Banque de France", title: "Foire aux questions - Le prélèvement SEPA | Banque de France",
     url: "https://www.banque-france.fr/fr/foire-aux-questions-le-prelevement-sepa",
+    // Copie sensible historique conservée pour porter son verdict acquis ; réouverture et
+    // correction ciblée documentées dans docs/qa/copy-glossaire/REVUE.md pour la nouvelle revue.
     snapshotPath: "docs/qa/hub-ressources/glossaire-vague-1-sources/banque-france-sepa.txt", report: "docs/qa/hub-ressources/glossaire-vague-1.md",
     level: 'tier-1', provenance: 'primary', official: true,
   },
@@ -158,8 +160,8 @@ const SOURCE_SPECS = {
   "source-microsoft-rag": {
     publisher: "Microsoft", title: "Génération augmentée par récupération (RAG) dans Recherche Azure AI | Microsoft Learn",
     url: "https://learn.microsoft.com/fr-fr/azure/search/retrieval-augmented-generation-overview",
-    snapshotPath: "docs/qa/hub-ressources/glossaire-vague-2-sources/microsoft-rag.txt", report: "docs/qa/hub-ressources/glossaire-vague-2.md",
-    checkedAt: '2026-09-19T14:55:38+01:00', level: 'tier-1', provenance: 'primary', official: true,
+    snapshotPath: "docs/qa/copy-glossaire/sources/microsoft-rag.txt", report: "docs/qa/copy-glossaire/REVUE.md",
+    checkedAt: '2026-10-08T00:05:47.977Z', level: 'tier-1', provenance: 'primary', official: true,
   },
   "source-cnil-ia-generative-deploiement": {
     publisher: "CNIL", title: "Comment déployer une IA générative ? La CNIL apporte de premières précisions | CNIL",
@@ -380,7 +382,7 @@ const OFFICIAL = {
     citations: ['La génération augmentée par récupération (RAG) est un modèle qui étend les capacités des LLM en ancrant les réponses dans votre contenu propriétaire.'],
     applicability: 'Réponses d’un modèle de langage ancrées dans des documents fournis au moment de la question.',
     regime: 'Documentation d’un éditeur sur son propre produit, citée pour la définition du procédé.',
-    exceptions: 'L’ancrage borne ce que le modèle peut invoquer ; il ne garantit pas l’exactitude de la réponse.',
+    exceptions: 'Les passages récupérés enrichissent le contexte ; ils ne remplacent pas les connaissances d’entraînement et ne garantissent pas l’exactitude de la réponse. La CNIL détaille les limites générales dans le dossier de correction.',
   },
   'modele-local': {
     sourceId: 'source-cnil-ia-generative-deploiement', type: 'information',

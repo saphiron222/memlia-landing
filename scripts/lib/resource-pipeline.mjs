@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from 'n
 import { isAbsolute, join, relative, resolve } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS } from './blog-pipeline.mjs';
+import { readDilaCopy } from './dila-source-copy.mjs';
 
 const RESOURCE_SCHEMA = JSON.parse(readFileSync(new URL('../../editorial/templates/resource-manifest-v1.schema.json', import.meta.url), 'utf8'));
 // Le contrat R1 décrit la forme candidate de formatContract avec H seulement.
@@ -45,7 +46,7 @@ const REVIEW_FRESHNESS_MS = 24 * 60 * 60 * 1000;
 // sans elle, reporter un verdict deviendrait le moyen de ne plus jamais revérifier.
 const VERDICT_VALIDITY_MS = 183 * 24 * 60 * 60 * 1000;
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
-const ISO_TIMESTAMP = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?(?:Z|([+-])(\d{2}):(\d{2}))$/;
+const ISO_TIMESTAMP = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,6}))?(?:Z|([+-])(\d{2}):(\d{2}))$/;
 const hasText = (value, minimum = 1) => typeof value === 'string' && value.trim().length >= minimum;
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const timestamp = (value) => {
@@ -227,6 +228,13 @@ function validateClaims(manifest, phase, errors) {
     for (const sourceId of claim.sourceIds ?? []) {
       const source = sources.get(sourceId);
       if (!source || !(source.claimIds ?? []).includes(claim.id)) errors.push(`Chaîne bidirectionnelle claim↔source divergente pour ${claim.id}/${sourceId}.`);
+      if (source?.dilaCopyPath !== undefined) {
+        try {
+          const citation = [...citations.values()].find((c) => c.sourceId === sourceId && (claim.citationIds ?? []).includes(c.id));
+          readDilaCopy({ root: manifest.__root, path: source.dilaCopyPath, url: source.finalUrl, excerpt: citation?.text,
+            expectedSha256: source.dilaCopySha256, asOf: claim.checkedAt });
+        } catch (error) { errors.push(`Claim ${claim.id} : ${error.message}`); }
+      }
       if (timestamp(source?.checkedAt) === null || applicability?.validAsOf !== source.checkedAt.slice(0, 10)
         || timestamp(claim.checkedAt) === null || timestamp(claim.checkedAt) < timestamp(source?.checkedAt)) {
         errors.push(`Claim ${claim.id} : validAsOf doit correspondre au checkedAt de sa copie source et précéder son contrôle.`);
@@ -258,6 +266,18 @@ function validateClaims(manifest, phase, errors) {
     if (!path || !existsSync(path) || sha256(existsSync(path) ? readFileSync(path) : '') !== source.contentSha256) errors.push(`Source ${source.id} : copie source absente ou hash divergent.`);
     const bundleEntry = manifest.integrity?.sourceBundle?.entries?.find((entry) => entry.path === source.snapshotPath);
     if (!bundleEntry || bundleEntry.sha256 !== source.contentSha256) errors.push(`Source ${source.id} : copie source hors du bundle d’intégrité ou hash divergent.`);
+    if (source.dilaCopyPath !== undefined) {
+      try {
+        if (!SHA256.test(source.dilaCopySha256 ?? '') || !source.official || source.provenance !== 'primary') throw new Error('Copie DILA : empreinte et provenance officielle primaire requises.');
+        const excerpt = [...citations.values()].find((c) => c.sourceId === source.id)?.text;
+        const copy = readDilaCopy({ root: manifest.__root, path: source.dilaCopyPath, url: source.finalUrl, excerpt,
+          expectedSha256: source.dilaCopySha256, asOf: source.checkedAt });
+        if (source.requestedUrl !== copy.url || source.upstreamUrl !== copy.url || source.checkedAt !== copy.retrievedAt
+          || source.contentSha256 !== copy.textSha256) throw new Error('Copie DILA : URL, collecte ou texte divergent.');
+        const entry = manifest.integrity?.sourceBundle?.entries?.find((e) => e.path === source.dilaCopyPath);
+        if (!entry || entry.sha256 !== copy.copySha256 || source.verificationEvidenceRef !== source.dilaCopyPath) throw new Error('Copie DILA hors du bundle ou preuve d’ouverture divergente.');
+      } catch (error) { errors.push(`Source ${source.id} : ${error.message}`); }
+    }
   }
   const sensitiveClaims = [...claims.values()].filter((claim) => SENSITIVE_TYPES.has(claim.type));
   // Corollaire maison : un contrôle qui accepte un report doit compter ce qu’il reporte, et l’afficher.
@@ -324,10 +344,17 @@ function validateClaims(manifest, phase, errors) {
         verdictKeys.add(`${claim.id}/${sourceId}`);
         const verdictCheckedAt = timestamp(verdict.checkedAt);
         const sourceCheckedAt = timestamp(source?.checkedAt);
-        if (sourceCheckedAt === null || verdictCheckedAt === null || source.checkedAt.slice(0, 10) !== verdict.checkedAt.slice(0, 10) || sourceCheckedAt > verdictCheckedAt) {
+        if (sourceCheckedAt === null || verdictCheckedAt === null || (source?.dilaCopyPath === undefined && source.checkedAt.slice(0, 10) !== verdict.checkedAt.slice(0, 10)) || sourceCheckedAt > verdictCheckedAt) {
           errors.push(`Claim sensible ${claim.id} : copie source périmée, invalide ou postérieure à la revue métier.`);
         }
-        if (sourceCheckedAt !== null && verdictCheckedAt !== null && verdictCheckedAt - sourceCheckedAt > REVIEW_FRESHNESS_MS) errors.push(`Claim sensible ${claim.id} : copie source consultée plus de 24 heures avant la revue métier.`);
+        if (sourceCheckedAt !== null && verdictCheckedAt !== null && source?.dilaCopyPath === undefined && verdictCheckedAt - sourceCheckedAt > REVIEW_FRESHNESS_MS) errors.push(`Claim sensible ${claim.id} : copie source consultée plus de 24 heures avant la revue métier.`);
+        if (source?.dilaCopyPath !== undefined && verdictCheckedAt !== null) {
+          try {
+            readDilaCopy({ root: manifest.__root, path: source.dilaCopyPath, url: source.finalUrl,
+              excerpt: [...citations.values()].find((c) => c.sourceId === sourceId && (claim.citationIds ?? []).includes(c.id))?.text,
+              expectedSha256: source.dilaCopySha256, asOf: verdict.checkedAt });
+          } catch (error) { errors.push(`Claim sensible ${claim.id} : ${error.message}`); }
+        }
         const expectedCitationIds = (claim.citationIds ?? []).filter((citationId) => citations.get(citationId)?.sourceId === sourceId).sort();
         if (verdict.verdict !== 'soutient'
           || !sameArray([...(verdict.citationIds ?? [])].sort(), expectedCitationIds)

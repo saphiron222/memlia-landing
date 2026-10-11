@@ -1,0 +1,61 @@
+PASS — nouvelle livraison recadrée : proposition de sélection et préparation documentaire sous décision du CAC. Aucun défaut matériel bloquant dans le candidat et la preuve locale examinés. Ce verdict remplace l'ancienne revue de suivi ; il ne la reconduit pas.
+
+# Revue métier indépendante — 6 octobre 2026
+
+Relecteur : metier, profil IA indépendant de l'auteur marketing, ni avocat, ni expert-comptable humain, ni autorité administrative.
+
+## Portée
+
+Pièces relues dans cette recette : recette.json, corps.md, preuves/rejeu.json, preuves/selection-rejeu.json, preuves/sources.json ; scripts rejouer.mjs, selection-rejouer.mjs, preparer-preuves.mjs et completer-sources.mjs. Les deux scripts de préparation de sources ont seulement été lus, sans régénération des preuves.
+
+Référentiels appliqués : /Users/kevinkitanga/hermes/recherche/audit-legal-revue.md, grille en dix points ; charte v5 approuvée fournie dans /Users/kevinkitanga/.hermes/kanban/workspaces/t_c5695136/site/.agents/product-marketing.md. La charte ancienne du dépôt n'a pas été substituée à cette v5.
+
+Le PASS vise le discours de service sur mesure et la fidélité des simulations locales. Il ne valide pas une automatisation opérationnelle, une intégration, la lecture des justificatifs, des diligences réalisées ni un dossier conforme aux NEP. Le corps déclare ces limites notamment aux lignes 29, 46 et 72. Le titre, les métadonnées et le héros ont été examinés avec le corps, pas seulement les sorties des scripts. Une lecture finale a également contrôlé la ligne du tableau ajoutée sur la pièce postérieure : elle décrit fidèlement le cas déjà examiné, sans modification de fond des frontières.
+
+## Vérifications exécutées
+
+Depuis /Users/kevinkitanga/.hermes/kanban/workspaces/t_cfd78283/repo :
+
+- node commercial/recettes/circularisation-cac/preuves/rejouer.mjs --check
+  Résultat : « PASS : 8 cas fictifs de suivi ; aucun envoi ni conclusion d’audit. »
+- node commercial/recettes/circularisation-cac/preuves/selection-rejouer.mjs --check
+  Résultat : « PASS : 12 cas sélection/deux passes/pièces postérieures ; conclusions vides. »
+
+Les deux commandes se terminent normalement ; commande groupée : code 0. Les contrôles comparent les nouveaux résultats aux cas sauvegardés sans réécrire les JSON. Les statuts PASS de l'auteur ne constituent pas le verdict métier.
+
+Lecture indépendante des scripts et contrôle supplémentaire en lecture seule : conclusions nulles dans tous les cas ; envoi false partout où ce champ est produit. Dans rejouer.mjs, procédure alternative null dans chaque état. Dans selection-rejouer.mjs, classement par solde et mouvement, tirage déterministe ordonné par SHA-256 de graine et identifiant, dédoublonnage, couverture, conservation des tiers encore présents et signalement des absents. L'essai vérifie aussi l'égalité de la première sélection après inversion de l'ordre d'entrée.
+
+Sorties examinées : première sélection A/B/E, dénominateur 100000, montant 75000, couverture 0,75 ; arrêt à deux comptes A/B, montant 65000, cible 0,99 non atteinte ; deuxième passe A/B/E/F, dénominateur 150000, montant 125000. Ces montants structurés sont fictifs ; le script les décrit en centimes. Une pièce postérieure n'est proposée que lorsque la procédure est choisie par le CAC ; pièce absente ou correspondances multiples restent signalées sans conclusion. Le rapprochement est limité à des champs structurés égaux : tiers, devise, montant et date postérieure. Ce n'est pas une lecture de facture, une preuve de paiement ni une vérification de l'assertion.
+
+Les sept pages sources ont été rouvertes indépendamment le 06/10/2026 : cinq H2A et deux éditeurs. Les sept copies HTML durables existent ; leurs douze extraits de sources.json ont été retrouvés après normalisation des espaces par un contrôle Python HTMLParser, code 0. Les paragraphes et leur contexte ont été lus, notamment NEP 505 §§ 03–15, NEP 530 §§ 03–08, NEP 315 §§ 14, 46, 48 d), champs et facultés NEP 911/912. Aucun PDF n'a été lu dans cette revue.
+
+## Grille en dix points
+
+| Point | Résultat | Constat, preuve et portée |
+|---|---|---|
+| 1. Population et mission | Satisfait | CAC français et demandes de confirmation des tiers, distincts de la production comptable. Clients/fournisseurs ont une règle monétaire ; les autres tiers sont ajoutés selon l'objectif du CAC (corps.md:5–7). La faculté 911/912 est réservée aux missions de leur champ propre (ligne 61), pas étendue à tout audit ou à tout mandat de trois ans. Pas d'opposition ALPE/certification, aucun seuil de nomination annoncé. |
+| 2. Sources, version et calendrier | Satisfait | H2A confirme 505 : arrêté 28/12/2023, JO 31/12/2023, A.821-76 ; 315 et 530 : arrêté 13/11/2024, JO 19/11/2024, A.821-72 et A.821-78 ; 911/912 : arrêté 24/07/2026, JO 26/07/2026, A.821-94. NEP 315 applicable aux exercices ouverts à compter de sa publication. 911 §24 et 912 §23 disent bien « peut estimer pertinent » lorsque le CAC intervient plusieurs semaines après clôture. Aucun calendrier d'application supplémentaire inventé. Le jalon de suivi est une convention du cabinet (ligne 45). Les slugs historiques H2A ne sont pas pris pour une numérotation légale actuelle. |
+| 3. Titre, opinion et responsabilité | Satisfait | Memlia calcule une proposition et prépare des rapprochements ; méthode, sélection définitive, demandes, diligences, caractère probant, conclusions et opinion restent CAC (lignes 17–21, 55–61, 89–99). Aucun titre réservé attribué à Memlia. Les simulations ne produisent ni envoi ni opinion. Le titre « sélectionner les tiers » se lit avec cette frontière explicite dès le héros. |
+| 4. Indépendance et autorévision | Satisfait au niveau éditorial | Missions, accès et responsabilités séparés en cabinet mixte ; indépendance appréciée par CAC (ligne 67). Pas de préparation comptable puis audit des mêmes comptes vendus comme une synergie. Les liens, prestations antérieures et conditions d'un mandat réel ne sont pas établis par cette revue. |
+| 5. Secret et données | Satisfait dans la portée annoncée | Jeux fictifs, aucun contenu client ni transmission exécutée par les checks. Données, destinataires, support, conservation et traitements tiers à définir avant usage ; aucune localité exclusive ou absence de transfert présumée (ligne 67). Le local qualifie les essais, pas toute future réalisation. Aucune garantie RGPD ou confidentialité technique déduite de ces scripts. |
+| 6. Méthode, données et reproductibilité | Satisfait pour la preuve locale | Solde, mouvement, tirage avec graine, dénominateur et motifs sont visibles ; coverage ou limite N et deux passes réellement exercés. Population non rapprochée, identifiant dupliqué, solde inattendu et dénominateur nul arrêtent le calcul. 70 % est explicitement un paramètre fictif, ni norme ni suffisance (ligne 19). Le tirage ne rend pas la sélection spécifique extrapolable. La fiche outil est un support Memlia distinct d'un modèle prescrit ou homologué ; le contexte identification/évaluation des risques du §46 est conservé (lignes 51–53). |
+| 7. Diligences et exceptions | Satisfait | Maîtrise 505 §09 conservée au CAC, réponse directe définie au §03. Non-réponse ≠ accord ; obligation d'alternatives §13 et suites §§14–15 laissées au CAC. Refus de direction renvoyé aux §§10–12 sans contournement automatique (lignes 23, 57–61). Les contrôles postérieurs 911 §24/912 §23 peuvent limiter ou remplacer des confirmations clients/fournisseurs dans ces missions ; aucune dispense générale ni traitement automatique des non-réponses. La feuille organise les données des procédures choisies, pas leur réalisation ou leur appréciation probante. |
+| 8. Documentation et réversibilité | Satisfait à l'échelle démontrée | Entrées, attendus, obtenus, paramètres, graine, motifs et absents sont conservés dans les JSON ; les checks ne les écrasent pas. Le commentaire du cas fictif est préservé et les pièces sont référencées, pas lues. Préservation des saisies et export dans les outils réels restent des essais d'acceptation (lignes 21, 71). Pas de garantie d'archivage, restauration ou conformité NEP 230. |
+| 9. LCB-FT et durabilité | Hors champ motivé | Ni vigilance/BE/TRACFIN ni obligation ou certification de durabilité dans ce candidat. La circularisation n'est pas utilisée pour valider ces domaines. |
+| 10. Preuves commerciales et compréhension | Satisfait | Lettres, envoi et relances sont reconnus chez les plateformes ; rapprochement et exceptions chez Circit (lignes 3, 49). Les éditeurs déclarent leurs fonctions ; elles ne sont pas testées ici. Aucune prétention qu'aucun logiciel ne sélectionne les tiers ; les fonctions existantes sont vérifiées et non reconstruites (lignes 49, 65). Offre sur mesure, tâche prise en charge, prix à la complexité, nous/vous, règle écrite en quatre parties, frontière en trois colonnes et CTA /contact cohérents avec v5. Aucun gain, agrément, compatibilité universelle ou livraison réelle déduit des jeux fictifs. Page de service, pas article : règles structurelles propres au blog hors champ. |
+
+## Sources et qualification
+
+Références, URL et extraits exacts : preuves/sources.json ; copies nep505-source.html, nep315-source.html, nep530-source.html, nep911-source.html, nep912-source.html, circit-source.html et ecircu-source.html.
+
+- NEP 911 §24 / NEP 912 §23 : texte intégral du passage relu, y compris la faculté de limiter les demandes ou de s'y substituer. La limite aux créances clients/dettes fournisseurs et l'intervention plusieurs semaines après clôture sont fidèlement résumées à la ligne 61. L'arrêté et le JO sont corroborés par les deux pages actuelles H2A ; aucun téléchargement direct du JO, contrôle de signature ou consolidation générale de LEGI n'est revendiqué.
+- NEP 315 §§14/46/48 d) : définition, fonctionnement, pertinence/fiabilité et documentation appréciés par le CAC. Ces paragraphes ne prescrivent ni n'homologuent la fiche Memlia ; la fiche et le jeu d'essai ne garantissent pas le dossier.
+- e-Circu : page Gest On Line décrivant sélection, préparation de demandes, courriers et relances. Circit Confirm : page éditeur décrivant envoi/suivi, correspondance réponses-documents de travail et exceptions. Ces déclarations ne prouvent ni une absence de fonctions concurrentes ni une intégration Memlia.
+
+## Note de présentation non bloquante et inconnues
+
+Charte v5 §7 bis : la date de consultation éditeur « consultées le 6 octobre 2026 » de corps.md:74 doit rester interne et être retirée du rendu public. Les dates réglementaires utiles de la ligne 62 restent. C'est une correction de présentation sans changement de fond et sans nouvelle revue ; aucune modification du candidat n'a été effectuée ici. Le rendu public n'a pas été audité dans cette mission. Les autres renvois de lignes ci-dessus correspondent à la première lecture ; après la ligne 39 ajoutée au tableau en cours de revue, ils sont décalés d'une ligne, sans changement du passage visé.
+
+Restent non démontrés : agrégation réelle FEC/balance, exactitude/exhaustivité de la population, identité économique des tiers malgré des identifiants différents, choix du sens des mouvements à l'import, règles particulières de priorité entre seuil individuel/anciens tiers/ajouts et limite N, formats d'export, connecteurs, contrôles d'accès et traitements tiers, parsing de PDF, rattachement probant et contrôles postérieurs réalisés, persistance/régénération des saisies dans un outil réel. Le prototype de sélection reçoit une population déjà structurée et un booléen populationRapprochee ; il ne vérifie pas lui-même la source comptable. Le code signale depassementN mais les cas sauvegardés n'exercent pas tous les conflits de critères ou les paramètres défectueux. Ces limites bornent la preuve locale ; le candidat ne présente pas une recette opérationnelle complète comme acquise et prévoit les essais sur les formats du cabinet.
+
+Conclusion : la nouvelle proposition est compatible avec le recadrage, les textes contrôlés et la charte v5 dans cette portée. Aucun défaut métier matériel à lever. Ce PASS n'autorise aucune publication par lui-même. Seuls revues.json et le présent rapport sont remplacés dans la recette ; aucun candidat réécrit, aucune action kanban, aucun commit, aucune publication ni scellement.

@@ -1,0 +1,274 @@
+{
+  "famille": "suivi-dossiers-etats",
+  "date": "2026-10-06T08:19:33.386Z",
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/suivi-dossiers-etats",
+  "rattachement_documentaire": "/automatisation-cabinet-comptable",
+  "motif": "Besoin de suivi confirmé, mais intention de délégation sur mesure distincte non établie ; deux suggestions suivi/tableau et réponse native fulll documentée. Pas de nouvelle page commerciale sans lacune qualifiée.",
+  "mesures": [
+    {
+      "requete": "automatisation suivi dossiers cabinet comptable",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "automatiser suivi dossiers comptables",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "suivi dossiers cabinet comptable",
+      "ok": true,
+      "suggestions": [
+        "suivi dossier client cabinet comptable"
+      ],
+      "erreur": null
+    },
+    {
+      "requete": "suivi avancement dossiers comptables",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "tableau suivi dossiers comptables",
+      "ok": true,
+      "suggestions": [
+        "tableau suivi dossier comptable"
+      ],
+      "erreur": null
+    },
+    {
+      "requete": "logiciel suivi dossiers cabinet comptable",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "suivi dossiers comptables excel",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "suivi états dossiers comptables",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    }
+  ],
+  "nombre_mesures": 8,
+  "listes_vides": 6,
+  "suggestions": 2,
+  "volume_mensuel": null,
+  "citations": [
+    {
+      "source": "fulll-collaboration",
+      "url": "https://www.fulll.fr/espace-collaboratif",
+      "citation": "Personnalisez vos missions et vos circuits de validation selon l'organisation de votre cabinet. Documents, tâches et validations sont réunis dans un environnement unique pour fluidifier vos processus, automatiser les relances et faciliter le suivi des dossiers."
+    },
+    {
+      "source": "fulll-collaboration",
+      "url": "https://www.fulll.fr/espace-collaboratif",
+      "citation": "Suivre l'avancement des missions"
+    },
+    {
+      "source": "acd-grc",
+      "url": "https://www.acd-groupe.fr/solution-expert-comptable/acd-grc/",
+      "citation": "Dossier permanent complet, avec ajout personnalisable de rubriques (champs et onglets), pour une meilleure qualification de votre base client."
+    }
+  ],
+  "backlog": [
+    {
+      "slug": "automatiser-le-suivi-des-dossiers-par-etat-dans-un-classeur-partage",
+      "titre": "Automatiser le suivi des dossiers par état dans un classeur partagé",
+      "requete": "suivi des dossiers par état cabinet comptable automatisation",
+      "secondaires": [
+        "classeur de suivi dossiers cabinet comptable",
+        "état d'avancement dossier client comptabilité"
+      ],
+      "famille": "suivi-dossiers-etats",
+      "role": "chefs-mission-portefeuille",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "jeu fictif de vingt dossiers dont les états se mettent à jour depuis un classeur de suivi partagé",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur logiciel d'automatisation de la saisie comptable ?",
+          "Comment automatiser les écritures comptables ?",
+          "Quand utiliser le compte 768 ?",
+          "Qu'est-ce que le suivi comptable et quelles sont ses obligations ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-pour-fiabiliser-les-etats-d-un-classeur-de-suivi-de-dossiers",
+      "titre": "La checklist pour fiabiliser les états d'un classeur de suivi",
+      "requete": "checklist fiabiliser classeur suivi dossiers comptables",
+      "secondaires": [
+        "état de dossier obsolète cabinet comptable",
+        "contrôle cohérence classeur de suivi"
+      ],
+      "famille": "suivi-dossiers-etats",
+      "role": "chefs-mission-portefeuille",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée en six points, rejouée sur un classeur fictif avec deux états contradictoires volontaires",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur logiciel d'automatisation de la saisie comptable ?",
+          "Comment automatiser les écritures comptables ?",
+          "Quand utiliser le compte 768 ?",
+          "Qu'est-ce que le suivi comptable et quelles sont ses obligations ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "les-dossiers-bloques-qu-un-suivi-automatique-doit-toujours-signaler-a-un-humain",
+      "titre": "Les dossiers bloqués qu'un suivi automatique signale toujours",
+      "requete": "dossier bloqué cabinet comptable alerte",
+      "secondaires": [
+        "dossier en souffrance cabinet comptable détection",
+        "relance interne dossier bloqué comptabilité"
+      ],
+      "famille": "suivi-dossiers-etats",
+      "role": "chefs-mission-portefeuille",
+      "intent": "reduire-risque",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau anomalie -> cause -> action sur trois motifs fictifs de blocage (attente client, attente associé, litige)",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur logiciel d'automatisation de la saisie comptable ?",
+          "Comment automatiser les écritures comptables ?",
+          "Quand utiliser le compte 768 ?",
+          "Qu'est-ce que le suivi comptable et quelles sont ses obligations ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "quels-sont-les-etats-possibles-d-un-dossier-dans-un-cabinet-comptable",
+      "titre": "Quels sont les états possibles d'un dossier, dans un cabinet comptable ?",
+      "requete": "états d'un dossier comptable liste définition",
+      "secondaires": [
+        "cycle de vie d'un dossier client cabinet",
+        "nomenclature des états de dossier comptabilité"
+      ],
+      "famille": "suivi-dossiers-etats",
+      "role": "chefs-mission-portefeuille",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec une liste fictive de six états et leurs transitions",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quel est le meilleur logiciel d'automatisation de la saisie comptable ?",
+          "Comment automatiser les écritures comptables ?",
+          "Quand utiliser le compte 768 ?",
+          "Qu'est-ce que le suivi comptable et quelles sont ses obligations ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ],
+  "cache_historique": {
+    "suivi des dossiers par état cabinet comptable automatisation": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "classeur de suivi dossiers cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "état d'avancement dossier client comptabilité": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "checklist fiabiliser classeur suivi dossiers comptables": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "état de dossier obsolète cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "contrôle cohérence classeur de suivi": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "dossier bloqué cabinet comptable alerte": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "dossier en souffrance cabinet comptable détection": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "relance interne dossier bloqué comptabilité": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "états d'un dossier comptable liste définition": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "cycle de vie d'un dossier client cabinet": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "nomenclature des états de dossier comptabilité": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    }
+  },
+  "base_commit": "9cad26ef4ad765a0af8f0dde95acad74801789d6",
+  "registre_entries": [],
+  "candidate_contrat": null,
+  "forge": "Non applicable : aucun candidat retenu, aucune recette, revue métier, rejeu ou scellement revendiqué.",
+  "limites": [
+    "Autocomplete ne mesure pas le volume mensuel et ne prouve pas une absence de demande.",
+    "Bing renvoie des résultats hors sujet (colis) ; pas de classement Google France exploitable. Recherche Firecrawl 403.",
+    "ACD GRC confirme une base dossier, pas un automate de transitions ; fulll décrit le suivi sans essai fonctionnel.",
+    "Pages concurrentes documentaires seulement ; pas de compatibilité, gain ou conformité revendiqués."
+  ],
+  "reouverture": "Recueillir un geste répétitif distinct non couvert par les fonctions existantes : rapprochement de deux sources d’état, proposition traçable d’une transition ou contradiction à arbitrer, avec responsable et critères de recette. Pas de surveillance nominative."
+}

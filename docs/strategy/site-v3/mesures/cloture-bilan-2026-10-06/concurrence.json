@@ -1,0 +1,37 @@
+{
+  "observedAt": "2026-10-06",
+  "method": "Lecture directe des pages éditeurs dans le navigateur et téléchargement de la fiche ACD liée depuis sa page produit. Ce relevé n'est pas un classement SERP.",
+  "sources": [
+    {
+      "publisher": "ACD",
+      "url": "https://www.acd-groupe.fr/solution-expert-comptable/acd-compta/",
+      "documentUrl": "https://www.acd-groupe.fr/wp-content/uploads/2023/02/FP-ComptabiliteExpert_fevrier2023.pdf",
+      "documentLocal": "acd-comptabilite.pdf",
+      "documentPrintedDate": "Avril 2026",
+      "quotes": [
+        "En interaction directe avec la comptabilité, générez et révisez entièrement à l’écran vos plaquettes, comptes annuels, liasses fiscales, états de détails et annexes.",
+        "Insertions d’états internes (comptables) et externes (Word®, Excel® ou PDF).",
+        "Archivage PDF et classement automatique dans ACD GED."
+      ],
+      "interpretation": "La génération et l'assemblage d'états sont déjà annoncés dans une suite métier. Examiner l'existant avant de proposer une automatisation sur mesure.",
+      "limits": "Fonctions annoncées par l'éditeur, non testées ; aucun gain ou conformité repris. Le nom de fichier ancien ne date pas le contenu actuel : la fiche téléchargée affiche Avril 2026."
+    },
+    {
+      "publisher": "fulll",
+      "url": "https://www.fulll.fr/production-comptable",
+      "quotes": [
+        "La tenue, la révision et la fiscalité partagent la même base de données. Plus aucun export/import FEC entre logiciels",
+        "Une interface pensée pour le collaborateur, où l'outil le seconde, sans jamais lui imposer de choix à son insu"
+      ],
+      "interpretation": "Offre intégrée de production comptable adjacente, qui privilégie une chaîne unifiée plutôt qu'un service d'assemblage inter-outils.",
+      "limits": "Pas de preuve dans cette page d'une fonction précise d'assemblage de plaquette ; fonctions annoncées seulement."
+    }
+  ],
+  "retrievalLimits": [
+    "web_search et web_extract : Firecrawl HTTP 403",
+    "Google Search navigateur : page anti-robot",
+    "Bing Search navigateur : timeout",
+    "DuckDuckGo HTML : challenge",
+    "Aucun rang SERP, volume mensuel ou absence de concurrents revendiqué"
+  ]
+}

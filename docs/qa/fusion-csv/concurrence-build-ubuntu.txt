@@ -1,0 +1,22 @@
+
+Running 17 tests using 1 worker
+
+  ✓   1 tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent (4.6s)
+  ✓   2 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination (1.9s)
+  ✓   3 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination (1.8s)
+  ✓   4 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : csv puis copy conserve chaque destination (1.7s)
+  ✓   5 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination (1.7s)
+  ✓   6 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après reset (1.9s)
+  ✓   7 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après mapping (2.0s)
+  ✓   8 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après order (1.8s)
+  ✓   9 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review (1.4s)
+  ✓  10 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review-again (1.5s)
+  ✓  11 tests/browser/fusion-csv-concurrency.spec.ts:73:1 › F2 : fin de copie asynchrone après reset ne déclare pas un faux succès (1.9s)
+  ✓  12 tests/browser/fusion-csv.spec.ts:8:1 › mapping inversé, provenance, cinq lignes, exports complets et copie (7.5s)
+  ✓  13 tests/browser/fusion-csv.spec.ts:17:1 › homonymes arrêtés, correction et ordre des fichiers (1.2s)
+  ✓  14 tests/browser/fusion-csv.spec.ts:21:1 › doublons conservés puis retirés, formule neutralisée et original intact (5.1s)
+  ✓  15 tests/browser/fusion-csv.spec.ts:25:1 › Windows-1252 par fichier, multiline et refus de structure (2.1s)
+  ✓  16 tests/browser/fusion-csv.spec.ts:29:1 › annulation immédiate et refus supérieur à 20 Mo sans succès (763ms)
+  ✓  17 tests/browser/fusion-csv.spec.ts:33:1 › pagination export complet, zéro transfert contenu et stockage (2.5s)
+
+  17 passed (44.6s)

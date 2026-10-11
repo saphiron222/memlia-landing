@@ -1,10 +1,9 @@
 /**
  * Entités partagées du graphe JSON-LD.
  *
- * Le Service est déclaré ici, et nulle part ailleurs. Deux pages l'avaient décrit chacune
- * de son côté, avec deux `@id`, deux noms et deux `serviceType` : pour un moteur, deux
- * services concurrents du même fournisseur. Le contrat de schéma l'interdit nommément.
- * Une seule définition, émise à l'identique partout où elle est utile.
+ * Le Service global EC est émis à l'identique sur l'accueil et le pilier.
+ * Une prestation d'une autre page ou audience peut avoir ses propres données et son
+ * propre identifiant : ne jamais réutiliser un identifiant avec deux définitions.
  */
 import { SITE, OG_IMAGE } from './site.mjs';
 import { PAGES_V2 } from './pages-v2.mjs';
@@ -63,19 +62,49 @@ export const organizationNode = () => ({
 });
 
 /**
- * Une entité, une description. Le nœud était émis sur deux pages avec la description de
- * chacune : même `@id`, deux valeurs pour un champ, donc deux réponses à la même question
- * pour qui fusionne le graphe. C'est la page qui décrit le service qui fait foi.
+ * L'appel sans argument préserve l'entité EC historique. Pour une autre prestation,
+ * fournir le chemin, le public et les textes de la page qui la décrit.
  */
-export const serviceNode = () => ({
+export const DEFAULT_AUDIENCE_TYPE = "Cabinets d'expertise comptable";
+
+export const serviceNode = ({
+  audienceType = DEFAULT_AUDIENCE_TYPE,
+  chemin = PAGES_V2.service.chemin,
+  id = chemin === PAGES_V2.service.chemin ? SERVICE_ID : `${SITE.url}${chemin}#service`,
+  name = 'Memlia : automatisation IA du cabinet',
+  serviceType = "Automatisation IA pour cabinets d'expertise comptable",
+  description = PAGES_V2.service.description,
+} = {}) => ({
   '@type': 'Service',
-  '@id': SERVICE_ID,
-  name: 'Memlia : automatisation IA du cabinet',
-  serviceType: "Automatisation IA pour cabinets d'expertise comptable",
+  '@id': id,
+  name,
+  serviceType,
   areaServed: 'FR',
-  url: `${SITE.url}${PAGES_V2.service.chemin}`,
+  url: `${SITE.url}${chemin}`,
   image: OG_IMAGE.url,
-  description: PAGES_V2.service.description,
+  description,
   provider: { '@id': ORGANIZATION_ID },
-  audience: { '@type': 'Audience', audienceType: "Cabinets d'expertise comptable" },
+  audience: { '@type': 'Audience', audienceType },
 });
+
+/** Complète seulement les pages indexables sans fil éditorial explicite. */
+export function withBreadcrumb(schema, { chemin, name, noindex = false }) {
+  if (noindex) return schema;
+  const nodes = schema['@graph'] ?? [schema];
+  if (nodes.some(node => node['@type'] === 'BreadcrumbList')) return schema;
+  const url = `${SITE.url}${chemin}`;
+  const id = `${url}#breadcrumb`;
+  const items = [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` }];
+  if (chemin !== '/') items.push({ '@type': 'ListItem', position: 2, name, item: url });
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...nodes.map(node => {
+        const types = [].concat(node['@type'] ?? []);
+        return types.some(type => type.endsWith('Page')) && !node.breadcrumb
+          ? { ...node, breadcrumb: { '@id': id } } : node;
+      }),
+      { '@type': 'BreadcrumbList', '@id': id, itemListElement: items },
+    ],
+  };
+}

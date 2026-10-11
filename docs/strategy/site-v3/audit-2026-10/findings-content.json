@@ -1,0 +1,634 @@
+[
+  {
+    "path": "/",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/404",
+    "verdict": "Conserver le contenu de secours : erreur expliquée et retour à l’accueil, sans allégation commerciale trompeuse. Cette route explicite /404 répond 200 et porte noindex ; ne pas en déduire que toutes les URL absentes répondent 200, puisque /confidentialite répond effectivement 404. Le statut relève de l’audit technique.",
+    "findings": []
+  },
+  {
+    "path": "/a-propos",
+    "verdict": "Conserver : Kevin Kitanga est identifié comme fondateur qui observe, écrit, code et fait recetter ; la règle et le jugement professionnel restent au cabinet. Ni expertise comptable attribuée à Memlia, ni identité juridique encombrant le corps, ni témoignage inventé à ajouter.",
+    "findings": []
+  },
+  {
+    "path": "/automatisation-cabinet-comptable",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/automatisation/factures-fournisseurs",
+    "verdict": "Corriger : CONT-01, CONT-02. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-01 — Une trace de recette interne et sa date de contrôle sont publiées comme ligne administrative, après un tableau déjà explicite.",
+        "evidence": "crawl.json, /automatisation/factures-fournisseurs : « Preuve locale : preuves/rejeu.json , rejouée le 2026-09-20. »",
+        "correction": "Correction commune aux cinq pages de tâche : retirer cette ligne du texte public, garder le tableau des cas et sorties ainsi que la qualification fictive ; conserver le journal et sa date dans le dossier interne. Ne pas retirer les dates de publication ou mise à jour des métadonnées."
+      },
+      {
+        "priority": "P3",
+        "defect": "CONT-02 — La FAQ expose le contrôle éditorial interne plutôt que la décision du cabinet.",
+        "evidence": "crawl.json, /automatisation/factures-fournisseurs : « Les règles réglementaires sont-elles incluses d’office ? » ; « Aucun fait réglementaire non vérifié n’est publié ici. »",
+        "correction": "Remplacer la dernière phrase par l’engagement de mission : les règles sensibles applicables à la tâche sont nommées et validées avec le cabinet avant construction. Garder la décision professionnelle au cabinet ; ne pas transformer la page en dossier de conformité."
+      }
+    ]
+  },
+  {
+    "path": "/automatisation/notes-de-frais",
+    "verdict": "Corriger : CONT-01. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-01 — Une trace de recette interne et sa date de contrôle sont publiées comme ligne administrative, après un tableau déjà explicite.",
+        "evidence": "crawl.json, /automatisation/notes-de-frais : « Preuve locale : preuves/rejeu.json , rejouée le 2026-09-20. »",
+        "correction": "Correction commune aux cinq pages de tâche : retirer cette ligne du texte public, garder le tableau des cas et sorties ainsi que la qualification fictive ; conserver le journal et sa date dans le dossier interne. Ne pas retirer les dates de publication ou mise à jour des métadonnées."
+      }
+    ]
+  },
+  {
+    "path": "/automatisation/paie",
+    "verdict": "Corriger : CONT-01, CONT-02. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-01 — Une trace de recette interne et sa date de contrôle sont publiées comme ligne administrative, après un tableau déjà explicite.",
+        "evidence": "crawl.json, /automatisation/paie : « Preuve locale : preuves/rejeu.json , rejouée le 2026-09-20. »",
+        "correction": "Correction commune aux cinq pages de tâche : retirer cette ligne du texte public, garder le tableau des cas et sorties ainsi que la qualification fictive ; conserver le journal et sa date dans le dossier interne. Ne pas retirer les dates de publication ou mise à jour des métadonnées."
+      },
+      {
+        "priority": "P3",
+        "defect": "CONT-02 — Une réponse explique la stratégie de page au lieu de préciser la première mission.",
+        "evidence": "crawl.json, /automatisation/paie : « La page couvre l’intention large ; la mission reste précise. »",
+        "correction": "Dire : « Nous choisissons avec votre pôle social un contrôle répétitif précis, puis écrivons sa règle et ses exceptions. » Garder la limite sur correction, validation et dépôt ; retirer le commentaire sur l’intention de la page."
+      }
+    ]
+  },
+  {
+    "path": "/automatisation/rapprochement-bancaire",
+    "verdict": "Corriger : CONT-01. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-01 — Une trace de recette interne et sa date de contrôle sont publiées comme ligne administrative, après un tableau déjà explicite.",
+        "evidence": "crawl.json, /automatisation/rapprochement-bancaire : « Preuve locale : preuves/rejeu.json , rejouée le 2026-09-20. »",
+        "correction": "Correction commune aux cinq pages de tâche : retirer cette ligne du texte public, garder le tableau des cas et sorties ainsi que la qualification fictive ; conserver le journal et sa date dans le dossier interne. Ne pas retirer les dates de publication ou mise à jour des métadonnées."
+      }
+    ]
+  },
+  {
+    "path": "/automatisation/saisie-comptable",
+    "verdict": "Corriger : CONT-01. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-01 — Une trace de recette interne et sa date de contrôle sont publiées comme ligne administrative, après un tableau déjà explicite.",
+        "evidence": "crawl.json, /automatisation/saisie-comptable : « Preuve locale : preuves/rejeu.json , rejouée le 2026-09-20. »",
+        "correction": "Correction commune aux cinq pages de tâche : retirer cette ligne du texte public, garder le tableau des cas et sorties ainsi que la qualification fictive ; conserver le journal et sa date dans le dossier interne. Ne pas retirer les dates de publication ou mise à jour des métadonnées."
+      }
+    ]
+  },
+  {
+    "path": "/blog",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/automatiser-avec-ia-sans-changer-logiciel",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/automatiser-la-relance-des-pieces-clients",
+    "verdict": "Corriger : CONT-03, CONT-04. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-03 — La comparaison déterministe est présentée comme sûre par nature ; l’explication exclut à tort les défauts d’implémentation ou de périmètre.",
+        "evidence": "crawl.json, /blog/automatiser-la-relance-des-pieces-clients : « C’est ce qui le rend automatisable en toute sécurité : s’il se trompe, c’est que la checklist ou l’état a été mal renseigné, et l’erreur est visible. »",
+        "correction": "Dire que la comparaison peut être rejouée et contrôlée, puis tester la checklist, les états, les changements de période et le résultat réellement présenté. Une règle déterministe peut aussi être mal implémentée : supprimer « en toute sécurité » et la causalité exclusive. Garder la validation humaine de la complétude."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-04 — La réponse sur le secret professionnel réduit la compatibilité à une liste de champs et à un contrat d’hébergement.",
+        "evidence": "crawl.json, /blog/automatiser-la-relance-des-pieces-clients : « Elle l’est si la relance ne contient que la liste des pièces attendues et l’adresse du contact, sans donnée issue du dossier, et si l’outil qui la prépare est encadré par un contrat quand il est hébergé par un tiers. »",
+        "correction": "Formuler une frontière opérationnelle, pas une conclusion générale de compatibilité : limiter les champs au besoin, vérifier destinataire, habilitations et circuit, puis faire valider chaque envoi dans le cadre défini par le cabinet. La minimisation et le contrat du tiers sont des conditions utiles, pas une garantie suffisante de secret professionnel."
+      }
+    ]
+  },
+  {
+    "path": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "verdict": "Corriger : CONT-05. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-05 — Le pilier résume la collecte en trois états et perd le refus « hors période » expliqué dans l’article relié.",
+        "evidence": "crawl.json, /blog/automatiser-un-cabinet-comptable-la-carte-des-taches : « La règle typique tient en trois états, attendu, reçu, lisible, et une cadence de relance qui cesse à réception. »",
+        "correction": "Aligner ce résumé sur les quatre états de l’article de relance : attendu, reçu, lisible et hors période. Préciser que la réception exploitable sur la bonne période arrête la préparation ; chaque envoi reste validé. Ne pas réécrire l’ensemble de l’ancien pilier pour ce seul correctif ciblé."
+      }
+    ]
+  },
+  {
+    "path": "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+    "verdict": "Corriger : CONT-06. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-06 — Deux sections « Sources » successives répètent les mêmes éditeurs, avec une présentation non harmonisée.",
+        "evidence": "crawl.json, /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps : « Sources OEC Paris — Le Francilien, Comment attirer et fidéliser des collaborateurs . »",
+        "correction": "Correction commune aux deux articles : conserver une seule section de références, éditeur + titre + lien, et les citations utiles dans le corps. Garder dans les paragraphes les dates historiques nécessaires au périmètre des sources ; ne pas ajouter de bloc administratif de vérification."
+      }
+    ]
+  },
+  {
+    "path": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/ia-comptabilite-confidentialite-donnees",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+    "verdict": "Corriger : CONT-06. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-06 — Deux sections « Sources » successives répètent les mêmes éditeurs, avec une présentation non harmonisée.",
+        "evidence": "crawl.json, /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain : « Sources OPCO Atlas, Experts-comptables, Commissaires aux comptes et Audit . »",
+        "correction": "Correction commune aux deux articles : conserver une seule section de références, éditeur + titre + lien, et les citations utiles dans le corps. Garder dans les paragraphes les dates historiques nécessaires au périmètre des sources ; ne pas ajouter de bloc administratif de vérification."
+      }
+    ]
+  },
+  {
+    "path": "/blog/logiciel-ia-comptabilite",
+    "verdict": "Corriger : CONT-07. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-07 — La grille utilise les notions de jeu fictif et de validation, mais aucun lien vers une définition ancrée du glossaire n’est présent.",
+        "evidence": "crawl.json, /blog/logiciel-ia-comptabilite : « Constituez ensuite un petit dossier entièrement fictif » ; « Comment une proposition devient-elle une décision ? »",
+        "correction": "Ajouter dans ces passages un lien vers /glossaire#jeu-d-essai-fictif et /glossaire#validation-humaine. Conserver la grille gratuite avant l’appel commercial ; ne pas inventer de tests ni de classement d’éditeurs."
+      }
+    ]
+  },
+  {
+    "path": "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+    "verdict": "Conserver : récit à la première personne signé Kevin Kitanga, coût et règle de cadrage exposés, première automatisation distinguée du rejeu fictif. Le « je » appartient à l’exception Cicatrices ; aucune preuve locale examinée ici ne permet de déclarer le récit inventé ou de le remplacer par un témoignage client.",
+    "findings": []
+  },
+  {
+    "path": "/blog/prompt-chatgpt-expert-comptable",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/rubrique/gestion-pieces-comptables",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/rubrique/paie-dsn-cabinet-comptable",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/suivre-la-production-sociale-dans-excel",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/blog/tests-verts-et-regle-des-trois-passes",
+    "verdict": "Corriger : CONT-07. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-07 — La fiche de recette ne relie aucune notion au glossaire, contrairement au maillage prévu pour le blog.",
+        "evidence": "crawl.json, /blog/tests-verts-et-regle-des-trois-passes : « Une fiche de recette que le cabinet peut reprendre » ; « Le cabinet garde la décision. »",
+        "correction": "Relier « recette » à /glossaire#recette et « jeu fictif » à /glossaire#jeu-d-essai-fictif au premier passage utile. La première personne n’est pas en soi un défaut : ce récit signé relève de l’exception Cicatrices ; ne pas le transformer en faux cas client."
+      }
+    ]
+  },
+  {
+    "path": "/blog/utiliser-chatgpt-cabinet-comptable",
+    "verdict": "Corriger : CONT-01. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-01 — Une date de consultation interne reste publiée, sans être une date réglementaire ou de publication.",
+        "evidence": "crawl.json, /blog/utiliser-chatgpt-cabinet-comptable : « Nous avons consulté cette présentation publique le 4 octobre 2026 ; le contenu complet du livret accessible en extranet n’est pas utilisé comme preuve dans ce guide. »",
+        "correction": "Retirer seulement « Nous avons consulté cette présentation publique le 4 octobre 2026 » ; conserver la limite d’accès au livret et le lien à la présentation publique. Les métadonnées réelles de l’article restent inchangées."
+      }
+    ]
+  },
+  {
+    "path": "/blog/verifier-reponse-ia-comptabilite",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/cdn-cgi/l/email-protection",
+    "verdict": "Route technique Cloudflare, pas une page éditoriale Memlia : réponse 404, texte « You are unable to access this email address » et absence de schémas Memlia. /contact contient aussi des liens mailto:contact@memlia.fr ; cette seule capture ne prouve pas que le recours au courriel est indisponible. À traiter dans l’audit technique, pas comme contenu à réécrire.",
+    "findings": []
+  },
+  {
+    "path": "/confidentialite",
+    "verdict": "Route absente dans ce crawl : réponse 404 et contenu de secours « Cette page n’existe pas. ». Aucun lien interne du crawl ne pointe vers ce path ; la politique publiée est /politique-de-confidentialite. Ne pas inventer une page juridique manquante ou une conversion cassée à partir de cette URL isolée.",
+    "findings": []
+  },
+  {
+    "path": "/contact",
+    "verdict": "Conserver : trois éléments demandés, aucune pièce client, formulaire puis rendez-vous et courriel, suite de l’échange explicitée. La provenance est facultative et séparée de la prise de connaissance de la politique ; des liens mailto existent malgré un lien Cloudflare. Aucun blocage fonctionnel prétendu sans essai du formulaire.",
+    "findings": []
+  },
+  {
+    "path": "/garanties",
+    "verdict": "Corriger : CONT-08. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-08 — Le titre « Aucune conformité » nie plus que le paragraphe, qui exclut seulement la délivrance d’attestations.",
+        "evidence": "crawl.json, /garanties : « Aucune conformité » ; « Nous ne délivrons pas d’attestation, ni en paie, ni en droit social, ni au titre du règlement européen sur les données. »",
+        "correction": "Renommer le sous-titre « Aucune attestation de conformité » ou « Pas de conformité garantie ». Garder l’engagement de documentation par mission, sans certification ni expertise comptable revendiquées."
+      }
+    ]
+  },
+  {
+    "path": "/glossaire",
+    "verdict": "Corriger : CONT-10, CONT-11, CONT-12, CONT-13. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-10 — L’entrée SEPA autorise la programmation de la nouvelle présentation sans rendre visible la validation de cette action bancaire.",
+        "evidence": "crawl.json, /glossaire : « Détecter un rejet, en lire le motif codé et programmer une nouvelle présentation selon une règle fixée est automatisable. Décider de contacter directement un client après plusieurs rejets successifs reste une décision humaine. »",
+        "correction": "Séparer explicitement : détecter le rejet et préparer une proposition de représentation ; validation humaine du mandat, du motif, du montant et de la date avant toute présentation bancaire. Ne pas laisser croire que seul le contact après plusieurs rejets reste humain."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-11 — La définition des honoraires mensualisés confond périodicité des honoraires et mode de règlement par prélèvement.",
+        "evidence": "crawl.json, /glossaire : « Les honoraires mensualisés sont prélevés chaque mois sur une base fixée par la lettre de mission »",
+        "correction": "Dire « facturés ou répartis mensuellement selon la lettre de mission ». Décrire le prélèvement seulement comme un mode de paiement possible, avec mandat ; garder la distinction entre forfait et acte hors forfait."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-12 — La définition du RAG oppose documents fournis et connaissances d’entraînement, comme si la récupération remplaçait celles-ci.",
+        "evidence": "crawl.json, /glossaire : « un modèle de langage répond à partir de documents qui lui sont fournis au moment de la question, plutôt qu’à partir de ce qu’il a mémorisé. »",
+        "correction": "Dire que les passages récupérés sont ajoutés au contexte du modèle, qui peut encore produire une réponse à partir de ses connaissances d’entraînement. Garder la limite déjà présente : citation, pertinence du document et fidélité du passage restent à vérifier par une personne."
+      },
+      {
+        "priority": "P3",
+        "defect": "CONT-13 — Les définitions renvoient encore aux sections d’accueil pour des engagements désormais portés par des pages dédiées.",
+        "evidence": "crawl.json, /glossaire : « /#garanties » ; « /#integration »",
+        "correction": "Remplacer les renvois d’engagement par /garanties et ceux de cadrage/intégration par /automatisation-cabinet-comptable ou /integrations selon le sujet. Ne pas supprimer les liens de navigation vers les sections de l’accueil : le correctif concerne les renvois éditoriaux des définitions."
+      }
+    ]
+  },
+  {
+    "path": "/integrations",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/integrations/bulletin-de-paie-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/bulletin-de-paie-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu paie »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/bulletin-de-paie-silae",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/bulletin-de-paie-silae : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu paie »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/cloture-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/cloture-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/dsn-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/dsn-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu paie »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/dsn-silae",
+    "verdict": "Corriger : CONT-14, CONT-01. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/dsn-silae : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu paie »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      },
+      {
+        "priority": "P3",
+        "defect": "CONT-01 — Le repère éditeur affiche une date d’ouverture de source, qui est une donnée de contrôle interne.",
+        "evidence": "crawl.json, /integrations/dsn-silae : « mySilae : page commerciale DSN ouverte le 4 octobre 2026, sans version chiffrée. »",
+        "correction": "Dire « mySilae : présentation commerciale DSN, sans version chiffrée » ; conserver les limites de portée et le lien éditeur, et garder la date d’ouverture dans les données internes."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/lettrage-cegid",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/lettrage-cegid : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu saisie comptable »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/lettrage-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/lettrage-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu saisie comptable »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/rapprochement-bancaire-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/rapprochement-bancaire-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu rapprochement bancaire »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/integrations/saisie-comptable-sage",
+    "verdict": "Corriger : CONT-14. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-14 — Le bloc de sortie expose la requête visée et, selon le guide, appelle la page de service un « moyeu », au lieu de nommer l’action du lecteur.",
+        "evidence": "crawl.json, /integrations/saisie-comptable-sage : « Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette. » ; « Voir le moyeu saisie comptable »",
+        "correction": "Correction commune dans src/pages/integrations/[slug].astro : remplacer le paragraphe par une suite utile à la tâche (« Pour appliquer cette grille à votre circuit, commencez par décrire le geste et ses exceptions »). Renommer le lien « Voir la prise en charge de la paie / saisie / du rapprochement » selon sa destination. Garder les repères éditeur, exemples fictifs et limites techniques ; les auteurs et dates des métadonnées suffisent, sans dossier de conformité supplémentaire."
+      }
+    ]
+  },
+  {
+    "path": "/mentions-legales",
+    "verdict": "Conserver sur le périmètre contenu : éditeur et directeur de publication nommés, identité juridique cantonnée à cette page, hébergeur et politique liés. Le téléphone cité est celui de Cloudflare, pas un téléphone commercial Memlia. Aucun verdict de validité juridique ou de vérification du registre n’est déduit de la seule capture.",
+    "findings": []
+  },
+  {
+    "path": "/methode",
+    "verdict": "Corriger : CONT-09. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-09 — Le renvoi au modèle Excel annonce une restriction de téléchargement contredite par sa page de destination.",
+        "evidence": "crawl.json, /methode : « ne se télécharge que lorsque les deux soldes ajustés concordent. »",
+        "correction": "Remplacer par : « Le modèle Excel se télécharge sans compte ; le contrôle en ligne garde les écarts visibles et exportables avec l’état NON VALIDÉ. » La destination propose « Télécharger le modèle Excel (.xlsx) » et un export des écarts NON VALIDÉ ; ne pas confondre fichier réutilisable, contrôle de soldes et validation du rapprochement."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits",
+    "verdict": "Conserver : aucun défaut concret retenu après lecture du texte, des titres, des schémas et des liens ; proposition distincte de la décision humaine et conversion accessible.",
+    "findings": []
+  },
+  {
+    "path": "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+    "verdict": "Corriger : CONT-15, CONT-17. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/bibliotheque-prompts-comptables : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-17 — Le prompt complet « Accusé de réception » contient une frontière générique de demande de pièces manquantes, différente du geste décrit par sa fiche.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/bibliotheque-prompts-comptables : « Prompt complet : Accusé de réception » ; « Se prépare seul : Préparer un brouillon générique de demande de pièces manquantes. » ; « Le collaborateur vérifie la réception effective et décide du message à envoyer. »",
+        "correction": "Aligner les blocs du prompt copiable et exporté sur chaque fiche, en particulier « Accusé de réception » : reconnaître uniquement les éléments explicitement reçus, sans réclamer de pièce supplémentaire ni affirmer leur validation. Vérifier les douze fiches, copie/export/adaptation compris, avec un nominal et un refus propres à la tâche ; ne pas remplacer ces tests par des réponses IA inventées."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/calculateur-amortissement-comptable : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/calculateur-date-echeance-facture : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/calculateur-marge-commerciale : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/calculateur-roi-automatisation",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable. Les chiffres sont des hypothèses et un exemple fictif, distincts d’un gain garanti Memlia ; ne pas les supprimer comme une promesse de performance.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/calculateur-roi-automatisation : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+    "verdict": "Corriger : CONT-15, CONT-16. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-16 — Le titre « Source officielle » coiffe une méthode originale Memlia, et peut faire croire à une validation institutionnelle de la rubrique.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet : « Source officielle » ; « Cette rubrique déclarative originale organise les réponses en usages, règles, données, validation et mesure. »",
+        "correction": "Définir explicitement source.titre dans src/data/outils.ts : « Méthode Memlia déclarative » pour le diagnostic et « Convention structurelle Memlia » pour le vérificateur. Réserver « Source officielle » aux sources de l’autorité citée ; garder la mention de méthode non normative et l’absence de score de fiabilité."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/generateur-charte-ia-cabinet : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/generateur-prompt-expert-comptable : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/generateur-prompt-ia-gratuit : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/verificateur-fec-local",
+    "verdict": "Corriger : CONT-15. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/verificateur-fec-local : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      }
+    ]
+  },
+  {
+    "path": "/outils-comptables-gratuits/verificateur-prompt-ia",
+    "verdict": "Corriger : CONT-15, CONT-16. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable.",
+    "findings": [
+      {
+        "priority": "P3",
+        "defect": "CONT-15 — Le gabarit répète la confidentialité dans le bloc local, le bloc de preuve et la FAQ, puis juxtapose deux clôtures commerciales pour la même action.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/verificateur-prompt-ia : « Ce qui reste dans votre navigateur » ; « Mes données quittent-elles le navigateur ? » ; « Choisissez la suite qui vous est utile. » ; « Confier une première tâche »",
+        "correction": "Correction commune aux treize outils : garder une explication locale précise, une FAQ courte renvoyant à cette explication, et un seul bloc de suite après le résultat. Conserver l’accès gratuit, les limites avant résultat, les refus et le lien /contact ; retirer la seconde clôture commerciale redondante. Le défaut est la répétition observée, pas un seuil de longueur ni une baisse de conversion mesurée."
+      },
+      {
+        "priority": "P2",
+        "defect": "CONT-16 — Le titre « Source officielle » coiffe une méthode originale Memlia, et peut faire croire à une validation institutionnelle de la rubrique.",
+        "evidence": "crawl.json, /outils-comptables-gratuits/verificateur-prompt-ia : « Source officielle » ; « Méthode structurelle Memlia »",
+        "correction": "Définir explicitement source.titre dans src/data/outils.ts : « Méthode Memlia déclarative » pour le diagnostic et « Convention structurelle Memlia » pour le vérificateur. Réserver « Source officielle » aux sources de l’autorité citée ; garder la mention de méthode non normative et l’absence de score de fiabilité."
+      }
+    ]
+  },
+  {
+    "path": "/politique-de-confidentialite",
+    "verdict": "Corriger : CONT-18, CONT-19. Le reste du contenu ne justifie ni score arbitraire, ni ajout de preuves clients, ni revendication d’expertise comptable. Couverture : les 62 captures de ce path ont un texte, des titres, des schémas, des liens et des métadonnées identiques ; verdict regroupé une seule fois.",
+    "findings": [
+      {
+        "priority": "P2",
+        "defect": "CONT-18 — Le paragraphe transferts reste conditionnel sur l’hébergeur alors que Cloudflare et Cal.com sont déjà nommés ailleurs ; le lecteur ne sait pas quels traitements sont réellement concernés.",
+        "evidence": "crawl.json, /politique-de-confidentialite : « Selon l’hébergeur retenu, certaines données techniques peuvent être traitées en dehors de l’Union européenne. » ; « Prise de rendez-vous : les boutons de rendez-vous renvoient vers le service tiers Cal.com »",
+        "correction": "À partir des documents contractuels effectivement disponibles, nommer les services et catégories de données concernés par un transfert, et les garanties correspondantes. Si un point reste à confirmer, le signaler précisément ; ne pas inventer une localisation ou des clauses en place. Maintenir la séparation entre données du site et traitements des missions. Audit éditorial, pas verdict de conformité juridique."
+      },
+      {
+        "priority": "P3",
+        "defect": "CONT-19 — La conservation des courriels et journaux est moins concrète que celle du formulaire, déjà bornée à douze mois.",
+        "evidence": "crawl.json, /politique-de-confidentialite : « Les messages reçus par e-mail sont conservés le temps nécessaire au traitement de votre demande. » ; « Les journaux techniques sont conservés pour une durée limitée à des fins de sécurité, puis supprimés. »",
+        "correction": "Préciser les durées réellement appliquées ou leurs critères de suppression vérifiables pour courriels et journaux. Ne pas aligner arbitrairement ces durées sur celles du formulaire ni annoncer une purge non vérifiée."
+      }
+    ]
+  }
+]

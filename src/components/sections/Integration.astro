@@ -1,30 +1,22 @@
 ---
 import ProofRow from '@/components/ProofRow.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['integration']; }
+const { contenu = contenuDe('ec').integration } = Astro.props;
+// Système de page : rangée (en-tête, maquette), puis trois principes en lignes (un principe, son
+// explication), là où des phrases ouvertes par un mot en gras faisaient une liste.
 ---
-<section id="integration" class="integration" aria-labelledby="integration-title">
-  <ProofRow id="08-integration">
-  <div class="integration-copy rv">
-    <h2 id="integration-title">Vos outils restent le point de départ.</h2>
-    <p class="texte-2">Aucune plateforme à adopter. L’automatisation se greffe sur ce que votre cabinet utilise déjà : logiciel métier, exports, messagerie, dossier partagé, classeur.</p>
-    <p class="texte-2">Nous vérifions les formats et les accès avant de nous engager, et nous vous disons ce qui se branche et ce qui ne se branche pas.</p>
-  </div>
-  </ProofRow>
-    <ul class="integration-rules">
-      <li><strong>Conserver ce qui fonctionne.</strong> Ne pas remplacer un outil uniquement pour introduire l’automatisation.</li>
-      <li><strong>Relier le nécessaire.</strong> Définir les sources, droits et traitements avant de développer.</li>
-      <li><strong>Prévoir l’évolution.</strong> Analyser les changements de règle ou d’outil avant toute adaptation.</li>
+<section id="integration" class="section integration" aria-labelledby="integration-title">
+  <div class="conteneur pile">
+    <ProofRow id={contenu.image}>
+      <div class="tete rv">
+        <h2 id="integration-title">{contenu.titre}</h2>
+        <p>{contenu.texte}</p>
+        <p>{contenu.limites}</p>
+      </div>
+    </ProofRow>
+    <ul class="lignes integration-rules">
+      {contenu.regles.map((r, i) => <Fragment>{i > 0 && ' '}<li class="ligne"><strong class="ligne-libelle">{r.titre}</strong> <span class="ligne-texte">{r.texte}</span></li></Fragment>)}
     </ul>
-
+  </div>
 </section>
-<style>
-  .integration { padding: 0 var(--marge-page) 64px; display: grid; grid-template-columns: 1fr; gap: 40px; }
-  .integration-copy { display: grid; gap: 24px; }
-  .integration-rules { display: grid; gap: 20px; color: var(--texte-2); }
-  strong { font-weight: 600; color: var(--texte-fort); }
-  .integration-image { align-self: center; }
-  .integration-image :global(img) { border-radius: var(--r-carte); }
-  @media (min-width: 64rem) {
-    .integration { padding: 0 var(--marge-page-lg) 96px; gap: 32px; }
-    .integration-copy { max-width: 75ch; }
-  }
-</style>

@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "family": "envois-plaquettes-documents",
+  "measuredAt": "2026-10-06T06:27:00.676Z",
+  "market": "fr-FR pour autocompletion; SERP DDG candidate sans localisation garantie",
+  "instrument": "scripts/lib/seo-instruments.mjs autocompleterGoogle",
+  "coverage": {
+    "probes": 8,
+    "responses": 8,
+    "empty": 8,
+    "suggestions": 0
+  },
+  "probes": [
+    {
+      "query": "automatisation envoi plaquettes cabinet comptable",
+      "measuredAt": "2026-10-06T06:27:00.676Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "envoi automatique plaquette comptable",
+      "measuredAt": "2026-10-06T06:27:00.700Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "envoi plaquette bilan client",
+      "measuredAt": "2026-10-06T06:27:00.700Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "suivi envoi documents cabinet comptable",
+      "measuredAt": "2026-10-06T06:27:00.701Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "automatisation envoi documents cabinet comptable",
+      "measuredAt": "2026-10-06T06:27:00.702Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "logiciel envoi plaquette comptable",
+      "measuredAt": "2026-10-06T06:27:00.702Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "envoi bilan client expert comptable",
+      "measuredAt": "2026-10-06T06:27:00.703Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "portail client cabinet comptable",
+      "measuredAt": "2026-10-06T06:27:00.703Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    }
+  ],
+  "captures": [
+    {
+      "id": "mycompanyfiles",
+      "url": "https://www.mycompanyfiles.fr/",
+      "finalUrl": "https://www.mycompanyfiles.fr/",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.214Z",
+      "bytes": 306585
+    },
+    {
+      "id": "welyb",
+      "url": "https://www.welyb.fr/",
+      "finalUrl": "https://www.welyb.fr/",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.179Z",
+      "bytes": 64186
+    },
+    {
+      "id": "acd",
+      "url": "https://www.acd-groupe.fr/",
+      "finalUrl": "https://www.acd-groupe.fr/",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.384Z",
+      "bytes": 450602
+    },
+    {
+      "id": "google",
+      "url": "https://www.google.com/search?hl=fr&q=automatisation%20envoi%20plaquettes%20cabinet%20comptable",
+      "finalUrl": "https://www.google.com/search?hl=fr&q=automatisation+envoi+plaquettes+cabinet+comptable&ucbcb=1",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.674Z",
+      "bytes": 91860
+    },
+    {
+      "id": "bing",
+      "url": "https://www.bing.com/search?q=automatisation%20envoi%20plaquettes%20cabinet%20comptable",
+      "finalUrl": "https://www.bing.com/search?q=automatisation%20envoi%20plaquettes%20cabinet%20comptable",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.434Z",
+      "bytes": 124847
+    },
+    {
+      "id": "duckduckgo",
+      "url": "https://html.duckduckgo.com/html/?q=automatisation%20envoi%20plaquettes%20cabinet%20comptable",
+      "finalUrl": "https://html.duckduckgo.com/html/?q=automatisation%20envoi%20plaquettes%20cabinet%20comptable",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:02.005Z",
+      "bytes": 33095
+    },
+    {
+      "id": "service-general",
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "finalUrl": "https://memlia.fr/automatisation-cabinet-comptable",
+      "status": 200,
+      "capturedAt": "2026-10-06T06:27:01.385Z",
+      "bytes": 82570
+    },
+    {
+      "id": "candidate",
+      "url": "https://memlia.fr/automatisation/envois-plaquettes-documents",
+      "finalUrl": "https://memlia.fr/automatisation/envois-plaquettes-documents",
+      "status": 404,
+      "capturedAt": "2026-10-06T06:27:01.383Z",
+      "bytes": 43230
+    },
+    {
+      "id": "mycompanyfiles-connecteurs",
+      "url": "https://www.mycompanyfiles.fr/connecteurs-metiers/",
+      "finalUrl": "https://www.mycompanyfiles.fr/la-solution/connecteurs-metiers/",
+      "status": 200,
+      "bytes": 154684,
+      "capturedAt": "2026-10-06T06:27:33.761Z"
+    },
+    {
+      "id": "factory456-plaquette",
+      "url": "https://www.factory456.com/automatisation-de-la-plaquette-comptable-pour-les-cabinets",
+      "finalUrl": "https://www.factory456.com/automatisation-de-la-plaquette-comptable-pour-les-cabinets",
+      "status": 200,
+      "bytes": 217064,
+      "capturedAt": "2026-10-06T06:27:34.080Z"
+    },
+    {
+      "id": "serp-envoi",
+      "url": "https://html.duckduckgo.com/html/?kl=fr-fr&q=%22envoi%22%20%22plaquette%22%20%22comptable%22",
+      "finalUrl": "https://html.duckduckgo.com/html/?kl=fr-fr&q=%22envoi%22%20%22plaquette%22%20%22comptable%22",
+      "status": 200,
+      "bytes": 9418,
+      "capturedAt": "2026-10-06T06:27:33.942Z"
+    }
+  ],
+  "monthlyVolume": null,
+  "limitations": [
+    "Google non exploitable : interstitielle",
+    "Bing hors sujet sur cette requête",
+    "SERP DuckDuckGo candidate non géolocalisée avec certitude",
+    "Pas de preuve de demande terrain pour la délégation distincte",
+    "Aucune promesse concurrente de conformité, de gain ou de compatibilité adoptée"
+  ]
+}

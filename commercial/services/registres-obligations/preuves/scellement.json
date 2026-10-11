@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "kind": "service-publication-scellee",
+  "slug": "registres-obligations",
+  "sealedAt": "2026-10-07T08:24:35.340Z",
+  "files": {
+    "page": {
+      "path": "src/content/services/registres-obligations.md",
+      "bytes": 12688,
+      "sha256": "b5707ca465877628614deeb9c52e9b5c18a1deffbf54326f1fa46182c47c0630"
+    },
+    "manifest": {
+      "path": "commercial/services/registres-obligations/manifest.json",
+      "bytes": 2666,
+      "sha256": "ab795eb2fedd41bb58962e4a24553d1736701da289c274c460bdb803b29db2f6"
+    },
+    "recipe": {
+      "path": "commercial/recettes/registres-obligations/recette.json",
+      "bytes": 2338,
+      "sha256": "90ce114257421f36d114e5a5204620bf4cae7ab6057f3ff6e0c442a6ab5901d8"
+    },
+    "body": {
+      "path": "commercial/recettes/registres-obligations/corps.md",
+      "bytes": 10941,
+      "sha256": "53af14269d0ab111693cc584f29bfbec4e481c56a1a2be43f4313a55161d6e77"
+    },
+    "review": {
+      "path": "commercial/recettes/registres-obligations/revues.json",
+      "bytes": 5206,
+      "sha256": "7a064392e915189ce8d5dd7af350b417e22cb1f398b080bd12e2ee3f23ba45de"
+    },
+    "publication": {
+      "path": "commercial/services/registres-obligations/preuves/publication.json",
+      "bytes": 1403,
+      "sha256": "eda99b1e5351fdca234a6b1ab76a1ef0464f34a46b453900eb222507ed40526e"
+    }
+  }
+}

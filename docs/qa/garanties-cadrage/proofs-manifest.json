@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/garanties-cadrage-proof/index.html",
+      "sha256": "c8bc235b3f4786741e2140f0e862d364c8a8be06e1879f8926d58a80c0838c99"
+    },
+    {
+      "path": "docs/design/garanties-cadrage-proof/styles.css",
+      "sha256": "c62b457a376526e50ac613fb00e3596e168ed64822400d47e76eacdccbb868fe"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/garanties-cadrage-proof/content-contract.json",
+      "sha256": "82cf105f96a44770f102a6ae736271bd78d1d74831c5389626c6420211a40988"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/garanties-cadrage-proof/index.html#cadrage-donnees",
+      "target": "public/proofs/v2/45-cadrage-donnees.webp",
+      "bytes": 40516,
+      "sha256": "cf412d23f913625ca8db2e3a676249f6bdd97f0356742b684b97e1641904193b"
+    }
+  ]
+}

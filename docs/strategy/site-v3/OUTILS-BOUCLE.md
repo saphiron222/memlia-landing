@@ -2,6 +2,12 @@
 
 Règle figée le **20 septembre 2026 à 21:12 Europe/Paris**, avant le premier relevé page par page des trois outils publiés. Elle ne se déplace pas après lecture des résultats. Une évolution crée une nouvelle version datée et n’altère pas l’interprétation de la vague 1.
 
+## Version 2 — ouverture EC et CAC, 6 octobre 2026
+
+Kevin a levé le plafond d'une seule nouvelle place le 05/10/2026 (programme CAC, G3). À compter de cette version, plusieurs outils peuvent être cadrés et construits en parallèle, pour les EC et les CAC, sur demande mesurée et besoin autonome complet. L'ouverture n'attend plus le 21 octobre ni le franchissement d'un seuil par les outils historiques. Chaque candidat a sa fiche, sa recette, sa revue et ses suivis J+7 et J+28 ; il reste utile sans inscription et son traitement local doit être vérifié. Un outil CAC reçoit aussi la fiche outil de la charte v5 pour l'appréciation par le CAC.
+
+Les § 3 et 4 et la dernière ligne des seuils de l'addendum du 21 septembre sont conservés ci-dessous comme **règle historique v1**, pour lire ses cohortes et ses hypothèses. Ils ne limitent plus les constructions nouvelles : « une seule place », « une seule construction », « attendre » et le gel jusqu'au 21 octobre sont supersédés. Les instruments, la séparation des cohortes, les seuils d'évaluation préenregistrés, le retrait pour erreur et les exigences de preuve restent valables. Lever le plafond ne transforme ni un zéro lien en succès d'autorité ni un signal ND en zéro ; une construction nouvelle se justifie par sa demande propre, pas par la réinterprétation des résultats de la vague 1.
+
 ## 1. Population et source de vérité
 
 La vague 1 comprend exactement les trois routes `statut: disponible` de `src/data/outils.ts` :

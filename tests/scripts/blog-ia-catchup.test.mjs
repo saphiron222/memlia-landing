@@ -22,11 +22,11 @@ test('le troisième article réel du 05/10 appartient uniquement au lot IA W40',
   assert.throws(() => verifierPlafonds([...actifs, { slug: 'autre-sujet', date: '2026-10-05' }], '2026-10-05', { root, slug }));
 });
 
-test('le lot ne consomme pas les quatre nouveaux sujets W41, mais conserve le quota réel du jour', () => {
+test('le lot ne consomme pas les quinze nouveaux sujets W41, mais conserve le quota réel du jour', () => {
   const lot = [...actifs, { slug, date: '2026-10-05' }];
   const nouveaux = [6, 7, 8].map((day) => ({ slug: `nouveau-${day}`, date: `2026-10-0${day}` }));
   assert.doesNotThrow(() => verifierPlafonds([...lot, ...nouveaux], '2026-10-08', { root, slug: 'nouveau-4' }));
-  assert.throws(() => verifierPlafonds([...lot, ...nouveaux, { slug: 'nouveau-4', date: '2026-10-08' }], '2026-10-09', { root, slug: 'nouveau-5' }));
+  assert.doesNotThrow(() => verifierPlafonds([...lot, ...nouveaux, { slug: 'nouveau-4', date: '2026-10-08' }], '2026-10-09', { root, slug: 'nouveau-5' }));
   assert.throws(() => verifierPlafonds(lot, '2026-10-05', { root, slug: 'nouveau-1' }));
   assert.doesNotThrow(() => verifierPlafonds([...actifs, { slug: 'logiciel-ia-comptabilite', date: '2026-09-29' }, { slug: 'prompt-chatgpt-expert-comptable', date: '2026-09-29' }], '2026-10-05', { root, slug }));
   assert.throws(() => verifierPlafonds(lot, '2026-10-05', { root, slug }));

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "registres-obligations",
+  "path": "/automatisation/registres-obligations",
+  "title": "Automatisation du suivi des registres et obligations en cabinet comptable",
+  "tabTitle": "Automatisation suivi registres obligations cabinet comptable | Memlia",
+  "ogTitle": "Automatisation du suivi des registres et obligations en cabinet comptable",
+  "description": "RNE, BODACC, Sirene : fiche client actualisée, alerte à l’associé et délai de créance préparés. Le cabinet valide les changements et la date applicable.",
+  "hero": "Kanta lit déjà les informations INPI à l’ouverture du dossier ; le BODACC propose des alertes génériques. Nous prenons le travail qui reste après ces lectures : rapprocher les changements du RNE, du BODACC et de Sirene avec la fiche client, préparer sa mise à jour et l’alerte à l’associé. Pour une procédure collective qualifiée, le délai de déclaration de créance est calculé dans le périmètre convenu, puis validé par le cabinet.",
+  "primaryQuery": "automatisation suivi registres obligations cabinet comptable",
+  "secondaryQueries": ["automatisation registres cabinet comptable"],
+  "audience": {"mode": "qualified", "qualifier": "cabinet comptable", "reason": "Le qualificatif vise le suivi d’un portefeuille et les collaborateurs du cabinet, pas le dirigeant cherchant à remplir une déclaration."},
+  "intent": "evaluer-service",
+  "family": "registres-obligations",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {"headline": "Automatisation du suivi des registres et obligations en cabinet comptable", "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]},
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/automatisation-cabinet-comptable", "sourcePath": "src/pages/automatisation-cabinet-comptable.astro", "anchor": "automatiser le suivi des registres et obligations"},
+    {"url": "/methode", "sourcePath": "src/pages/methode.astro", "anchor": "faire recetter un suivi de registres"},
+    {"url": "/garanties", "sourcePath": "src/pages/garanties.astro", "anchor": "confier la préparation des mises à jour et rappels"}
+  ]
+}

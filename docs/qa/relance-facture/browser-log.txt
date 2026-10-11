@@ -1,0 +1,14 @@
+
+Running 9 tests using 1 worker
+
+  ✓  1 tests/browser/relance-facture.spec.mjs:4:1 › édition, copie et exports complets ; aucune requête ni stockage après chargement (5.0s)
+  ✓  2 tests/browser/relance-facture.spec.mjs:11:1 › refus 501, import multiline et source traçable sans écrasement (1.7s)
+  ✓  3 tests/browser/relance-facture.spec.mjs:20:1 › édition conservée après modification et refus de régénération (2.0s)
+  ✓  4 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 320 (892ms)
+  ✓  5 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 375 (1.5s)
+  ✓  6 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 768 (576ms)
+  ✓  7 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 1024 (901ms)
+  ✓  8 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 1440 (2.2s)
+  ✓  9 tests/browser/relance-facture.spec.mjs:21:50 › reflow et navigation clavier 1920 (705ms)
+
+  9 passed (16.5s)

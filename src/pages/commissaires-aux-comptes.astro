@@ -1,0 +1,65 @@
+---
+import Base from '@/layouts/Base.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Orientation from '@/components/sections/Orientation.astro';
+import Quotidien from '@/components/sections/Quotidien.astro';
+import Promesse from '@/components/sections/Promesse.astro';
+import Usages from '@/components/sections/Usages.astro';
+import Methode from '@/components/sections/Methode.astro';
+import Integration from '@/components/sections/Integration.astro';
+import Preuves from '@/components/sections/Preuves.astro';
+import Garanties from '@/components/sections/Garanties.astro';
+import Faq from '@/components/sections/Faq.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
+import CouvertureCac from '@/components/sections/CouvertureCac.astro';
+import FrontiereCac from '@/components/sections/FrontiereCac.astro';
+import FicheOutilCac from '@/components/sections/FicheOutilCac.astro';
+import SourcesCac from '@/components/sections/SourcesCac.astro';
+import { contenuDe } from '@/data/accueil/contenu';
+import { SEO_CAC } from '@/data/accueil/cac';
+import { SITE } from '@/data/site.mjs';
+import { organizationNode, serviceNode } from '@/data/schema.mjs';
+const contenu = contenuDe('cac');
+const url = `${SITE.url}${SEO_CAC.chemin}`;
+const image = '/proofs/cac/og/accueil-selection-tiers.webp';
+const service = { ...serviceNode({
+  chemin: SEO_CAC.chemin,
+  audienceType: 'Cabinets de commissariat aux comptes',
+  name: 'Automatisation pour commissaire aux comptes',
+  serviceType: contenu.hero.etiquette,
+  description: SEO_CAC.description,
+}), image: `${SITE.url}${image}` };
+const schema = { '@context': 'https://schema.org', '@graph': [
+  organizationNode(),
+  { '@type': 'WebPage', '@id': `${url}#page`, url, name: contenu.hero.titre, headline: contenu.hero.titre,
+    description: SEO_CAC.description, inLanguage: SITE.langue, mainEntity: { '@id': service['@id'] },
+    isPartOf: { '@id': `${SITE.url}/#website` } },
+  service,
+  { '@type': 'FAQPage', '@id': `${url}#faq`, inLanguage: SITE.langue, about: { '@id': service['@id'] },
+    mainEntity: contenu.faq.questions.map(q => ({ '@type': 'Question', name: q.question,
+      acceptedAnswer: { '@type': 'Answer', text: q.reponse } })) },
+] };
+---
+<Base titre={SEO_CAC.titre} titreSocial={contenu.hero.titre} description={SEO_CAC.description}
+  chemin={SEO_CAC.chemin} schema={schema} socialImage={{ url: `${SITE.url}${image}`, width: 1200, height: 630,
+    alt: 'Sélection fictive des tiers à circulariser, critères et validation humaine.' }}>
+  <link slot="head" rel="preload" as="image" href={contenu.hero.poster} fetchpriority="high" />
+  <div class="feuille">
+    <Hero contenu={contenu.hero} />
+    <Orientation contenu={contenu.orientation} />
+    <CouvertureCac />
+    <Quotidien contenu={contenu.quotidien} />
+    <Promesse contenu={contenu.promesse} />
+    <Usages contenu={contenu.usages} />
+    <Methode contenu={contenu.methode}>
+      <FrontiereCac slot="frontiere" />
+      <FicheOutilCac />
+    </Methode>
+    <Integration contenu={contenu.integration} />
+    <Preuves contenu={contenu.preuves} />
+    <Garanties contenu={contenu.garanties} />
+    <Faq contenu={contenu.faq} />
+    <SourcesCac />
+    <AppelFinal contenu={contenu.appelFinal} />
+  </div>
+</Base>

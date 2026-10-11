@@ -1,0 +1,263 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-07T16:47:11.371Z",
+  "scope": "Préparation des appels et relances hors circuit couvert, sur données confirmées fictives ; aucun envoi ni inscription.",
+  "command": "node commercial/recettes/facture-electronique/preuves/rejouer.mjs",
+  "cases": [
+    {
+      "id": "FE-01",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "PROPOSITION",
+        "dossier": "D-041",
+        "priority": 1,
+        "reason": "préparation inachevée",
+        "origin": "échange fictif confirmé",
+        "draft": "Bonjour, pour votre dossier D-041, pouvez-vous confirmer le point de préparation restant ? Merci.",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "PROPOSITION",
+        "dossier": "D-041",
+        "priority": 1,
+        "reason": "préparation inachevée",
+        "origin": "échange fictif confirmé",
+        "draft": "Bonjour, pour votre dossier D-041, pouvez-vous confirmer le point de préparation restant ? Merci.",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-02",
+      "input": {
+        "dossier": "D-042",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "réponse attendue",
+        "missing": "le retour attendu sur votre préparation",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "PROPOSITION",
+        "dossier": "D-042",
+        "priority": 2,
+        "reason": "réponse attendue",
+        "origin": "échange fictif confirmé",
+        "draft": "Bonjour, pour votre dossier D-042, pouvez-vous confirmer le retour attendu sur votre préparation ? Merci.",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "PROPOSITION",
+        "dossier": "D-042",
+        "priority": 2,
+        "reason": "réponse attendue",
+        "origin": "échange fictif confirmé",
+        "draft": "Bonjour, pour votre dossier D-042, pouvez-vous confirmer le retour attendu sur votre préparation ? Merci.",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-03",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": true,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "EXCLU",
+        "reason": "déjà pris en charge",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "EXCLU",
+        "reason": "déjà pris en charge",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-04",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": false,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "ARRET",
+        "reason": "plateforme à confirmer",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "ARRET",
+        "reason": "plateforme à confirmer",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-05",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 2,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "ARRET",
+        "reason": "dossier ambigu",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "ARRET",
+        "reason": "dossier ambigu",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-06",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": true,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "ARRET",
+        "reason": "information contradictoire",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "ARRET",
+        "reason": "information contradictoire",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-07",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": false,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": false,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "ARRET",
+        "reason": "contact à valider",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "ARRET",
+        "reason": "contact à valider",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    },
+    {
+      "id": "FE-08",
+      "input": {
+        "dossier": "D-041",
+        "platform": "plateforme-client-A",
+        "platformConfirmed": true,
+        "covered": false,
+        "actionPlanned": true,
+        "identities": 1,
+        "contradiction": false,
+        "contactAuthorized": true,
+        "need": "préparation inachevée",
+        "missing": "le point de préparation restant",
+        "origin": "échange fictif confirmé",
+        "cabinetNote": "Appeler avant tout envoi ; conserver cette note"
+      },
+      "expected": {
+        "state": "EXCLU",
+        "reason": "action déjà prévue",
+        "externalWrite": false
+      },
+      "output": {
+        "state": "EXCLU",
+        "reason": "action déjà prévue",
+        "externalWrite": false
+      },
+      "status": "PASS",
+      "humanDecisionPreserved": true
+    }
+  ],
+  "invariants": {
+    "humanDecisionPreserved": true,
+    "noExternalWrites": true,
+    "coverageExclusion": true
+  }
+}

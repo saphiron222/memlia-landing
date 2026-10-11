@@ -18,94 +18,27 @@ const principes = [
     texte: 'L’automatisation prépare une proposition traçable. La correction et la décision restent au cabinet.',
   },
 ];
+// Système de page : trois engagements, donc la bande du site, bord à bord de la feuille. La
+// phrase d'appui suit le titre plutôt qu'un surtitre : au plus un surtitre pour trois sections.
 ---
 
-<section class="service-principles" data-service-section="principles" aria-labelledby="service-principles-title">
-  <div class="conteneur service-principles-inner">
-    <div class="service-principles-heading rv">
-      <span class="eyebrow">La même frontière, à chaque mission</span>
+<section class="section pile service-principles" data-service-section="principles" aria-labelledby="service-principles-title">
+  <div class="conteneur">
+    <div class="tete rv">
       <h2 id="service-principles-title">L’IA prépare. L’humain décide.</h2>
+      <p>La même frontière, à chaque mission</p>
     </div>
-    <ul class="service-principles-grid rv-groupe">
+  </div>
+  <div class="bande coins">
+    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
+    <ul class="cartes rv-groupe">
       {principes.map((principe) => (
-        <li class="service-principle rv">
-          <span class="service-principle-icon" aria-hidden="true"><Picto nom={principe.picto} taille={24} /></span>
-          <h3>{principe.titre}</h3>
-          <p>{principe.texte}</p>
+        <li class="cellule rv">
+          <span class="carte-icone" aria-hidden="true"><Picto nom={principe.picto} taille={24} /></span>
+          <h3 class="carte-titre">{principe.titre}</h3>
+          <p class="carte-texte">{principe.texte}</p>
         </li>
       ))}
     </ul>
   </div>
 </section>
-
-<style>
-  .service-principles {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--ligne);
-    background: var(--surface-page);
-  }
-  .service-principles-inner {
-    display: grid;
-    gap: 48px;
-  }
-  .service-principles-heading {
-    display: grid;
-    gap: 12px;
-  }
-  .service-principles-heading h2 {
-    max-width: 18ch;
-    font-size: var(--t-5xl);
-  }
-  .service-principles-grid {
-    display: grid;
-    gap: 1px;
-    border-top: 1px solid var(--ligne);
-    border-bottom: 1px solid var(--ligne);
-    background: var(--ligne);
-  }
-  .service-principle {
-    display: grid;
-    align-content: start;
-    gap: 12px;
-    padding: 32px 24px 40px;
-    background: var(--surface-feuille);
-  }
-  .service-principle-icon {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 8px;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-boite);
-    color: var(--accent-texte);
-    background: var(--surface-page);
-    transition: color var(--duree-4) var(--courbe-standard), border-color var(--duree-4) var(--courbe-standard);
-  }
-  .service-principle h3 {
-    font-size: var(--t-2xl);
-  }
-  .service-principle p {
-    max-width: 38ch;
-    color: var(--texte-2);
-  }
-  @media (hover: hover) {
-    .service-principle:hover .service-principle-icon {
-      color: var(--texte-fort);
-      border-color: var(--accent-appui);
-    }
-  }
-  @media (min-width: 48rem) {
-    .service-principles-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .service-principle {
-      padding: 40px 32px 48px;
-    }
-  }
-  @media (min-width: 64rem) {
-    .service-principles {
-      padding: 128px 0;
-    }
-  }
-</style>

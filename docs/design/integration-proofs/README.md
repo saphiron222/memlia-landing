@@ -14,7 +14,7 @@ Chaque scène garde au centre les éléments nécessaires pour comprendre le rej
 
 Le contexte logiciel reste un libellé fonctionnel. Le jeu fictif et la portée de la démonstration vivent dans `content-contract.json`, le texte alternatif et la page qui porte l’image.
 
-Les nombres du cadre `hub` ne sont pas des statistiques externes : ils projettent la grille d’autocomplétion mesurée le 20 septembre 2026 et versionnée dans `src/data/integrations.ts`. Les 35 couples mesurés se répartissent en 9 guides ouverts à partir de 6 suggestions et 26 variations fermées. `tests/scripts/integrations.test.mjs` recalcule cette projection pour empêcher toute dérive entre la grille et le cadre.
+Le cadre `hub` aide à choisir une tâche dans son environnement : champs à lire, préparation et validation distinctes. Les mesures d’autocomplétion restent dans `src/data/integrations.ts` ; aucun seuil de publication ni compte de variantes fermées n’est affiché dans l’image. Les comptes du hub HTML et de son ItemList viennent de la collection existante. `tests/scripts/integrations.test.mjs` contrôle la grille interne et l’absence de jargon éditorial dans le cadre.
 
 ## Éléments interdits dans le cadre
 

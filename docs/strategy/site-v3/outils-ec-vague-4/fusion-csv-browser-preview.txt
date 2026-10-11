@@ -1,0 +1,17 @@
+
+Running 12 tests using 1 worker
+
+  ✓   1 tests/browser/fusion-csv.spec.ts:8:1 › mapping inversé, provenance, cinq lignes, exports complets et copie (7.1s)
+  ✓   2 tests/browser/fusion-csv.spec.ts:17:1 › homonymes arrêtés, correction et ordre des fichiers (3.8s)
+  ✓   3 tests/browser/fusion-csv.spec.ts:21:1 › doublons conservés puis retirés, formule neutralisée et original intact (4.6s)
+  ✓   4 tests/browser/fusion-csv.spec.ts:25:1 › Windows-1252 par fichier, multiline et refus de structure (3.4s)
+  ✓   5 tests/browser/fusion-csv.spec.ts:29:1 › annulation immédiate et refus supérieur à 20 Mo sans succès (1.8s)
+  ✓   6 tests/browser/fusion-csv.spec.ts:33:1 › pagination export complet, zéro transfert contenu et stockage (3.7s)
+  ✓   7 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 320 (3.9s)
+  ✓   8 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 375 (3.5s)
+  ✓   9 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 768 (4.0s)
+  ✓  10 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 1024 (3.3s)
+  ✓  11 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 1440 (5.4s)
+  ✓  12 tests/browser/fusion-csv.spec.ts:38:49 › mobile, clavier, SEO et export 1920 (8.7s)
+
+  12 passed (57.8s)

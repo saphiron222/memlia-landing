@@ -1,0 +1,1068 @@
+{
+  "stats": {
+    "startTime": "2026-10-05T23:22:46.563Z",
+    "duration": 783527.6140000001,
+    "expected": 148,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "sans JS : douze fiches, prompts complets et limites lisibles",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "filtres combinés, recherche vide, effacement sans nouvelle URL",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : relance-pieces",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : accuse-reception",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : liste-pieces",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : tri-exceptions",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : synthese-suivi",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : reformulation-note",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : ordre-du-jour",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : compte-rendu",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : checklist-transmission",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : tableau-controles",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : synthese-ecarts",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie et export exacts sans réseau : fiche-regle",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "export : navigation différée et nettoyage après consommation du Blob",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "copie refusée : texte complet sélectionné, aucune perte",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "reprise publique complète, consommée puis éditions protégées",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "stockage indisponible : repli explicite, catalogue conservé",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "bibliotheque-prompts.spec.ts",
+      "title": "clavier, reflow et captures à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "charte-ia.spec.ts",
+      "title": "nominal, édition conservée, exports identiques et impression",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "charte-ia.spec.ts",
+      "title": "refus conserve les éditions, reset annulable et copie en repli",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "charte-ia.spec.ts",
+      "title": "copie de secours : document complet, Clipboard refusé",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "charte-ia.spec.ts",
+      "title": "copie de secours : document complet, Clipboard indisponible",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "charte-ia.spec.ts",
+      "title": "six largeurs, clavier, traitement sans réseau ni stockage",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "impression exhaustive avec détails fermés, sans changer leur état écran",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "impression exhaustive avec détails mixtes, sans changer leur état écran",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "inconnues : cinq incomplets, rapport et export exhaustif sans mail",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "précédent/suivant conserve les réponses, synthèse et reprise actualisées",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "exemple justifie données avant expansion, remplacement annulé et reset explicite",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "quinze formalisées : suivi des exceptions sans certification",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "copie réussie et refus offrent le même rapport sélectionnable",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "interaction sans réseau ni stockage et événements sans réponses",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "sans JavaScript : questions, méthode et limites accessibles",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "reflow et parcours à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "maturite-ia.spec.ts",
+      "title": "SEO canonical schema sitemap hub footer et entrants contextuels",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub : outils disponibles et schéma de collection",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "footer : le hub et les outils publiés sont générés, le témoin reste absent",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "marge : calcul exact, marge négative et refus visibles",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "marge : exemple, copie, export, effacement et événements de mesure",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "échéance : les deux conventions divergent et l’absence de convention est refusée",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "amortissement : plan linéaire tracé, dégressif confirmé et entrées incohérentes refusées",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "rapprochement : CSV exact et refus d’une différence",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "contrat de liens : le registre borne les outils publiés et leurs sorties",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "pour continuer : trois niveaux lisibles, clavier et responsive sans débordement",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "outils publiés : métadonnées, source liée et schémas concordent",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "outils et services : les entrées respectent la préférence de mouvement réduit",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "maillage entrant : trois contextes rendus par outil, dont le hub et une ressource exacte",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "outils publiés : zéro requête et zéro stockage après armement",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "témoin : noindex, CSP, quatre surfaces et liens sortants concordants",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "témoin : le garde détecte toute requête après armement, puis exige zéro",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "contact : accord saisi avant le chargement JavaScript conservé et appliqué",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "outil vers contact : origine attribuée après accord distinct, sans envoi avant validation volontaire",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "outils.spec.ts",
+      "title": "hub, outils et témoin sans débordement à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "amorces, édition contrôlée, export exact et copie ; aucune donnée dans les événements",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "refus accessibles et aucune édition écrasée sans confirmation",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "toutes les amorces, choix configurables et effacement explicite",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "maillage, médias propres, canonical et sitemap",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-comptable.spec.ts",
+      "title": "clavier et aucun débordement à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "réunion, prévisualisation, copies et deux exports exacts ; pas de réseau ni stockage",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "refus reliés au champ, original conservé, annulation exemple et effacement",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "tous les exemples et formats sont accessibles sans compte",
+      "status": "unexpected",
+      "expected": "passed",
+      "errors": [
+        "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+        "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://memlia.fr/outils-comptables-gratuits/generateur-prompt-ia-gratuit\", waiting until \"load\"\u001b[22m\n\n\n  61 | test('tous les exemples et formats sont accessibles sans compte', async ({ page }) => {\n  62 |   for (const name of ['Rédiger', 'Résumer', 'Classer', 'Préparer une réunion']) for (const format of ['texte', 'tableau', 'json']) {\n> 63 |     await page.goto(ROUTE); await seed(page, name); await page.getByLabel('Format de la future réponse').selectOption(format); await page.getByRole('button', { name: 'Assembler le prompt' }).click();\n     |                ^\n  64 |     await expect(page.locator('[data-output]')).toBeVisible(); await expect(page.getByRole('button', { name: 'Exporter en JSON (.json)' })).toBeEnabled();\n  65 |   }\n  66 | });\n    at /Users/kevinkitanga/.hermes/kanban/workspaces/t_a80f53ec/site/tests/browser/prompt-ia.spec.ts:63:16"
+      ]
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "fallback presse-papiers, reload efface et aucun texte dans URL",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "SEO, trois entrants, footer, médias et sitemap",
+      "status": "unexpected",
+      "expected": "passed",
+      "errors": [
+        "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+        "Error: apiRequestContext.get: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - → GET https://memlia.fr/proofs/v2/01-outil-prompt-ia.webp\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n\n  86 |   expect(nodes.map((node) => node['@type'])).not.toContain('BlogPosting');\n  87 |   expect(await (await page.request.get('/sitemap-0.xml')).text()).toContain(`https://memlia.fr${ROUTE}`);\n> 88 |   for (const path of ['/proofs/v2/01-outil-prompt-ia.webp', '/proofs/v2/og/01-outil-prompt-ia.webp']) expect((await page.request.get(path)).status()).toBe(200);\n     |                                                                                                                                  ^\n  89 | });\n  90 | for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`reflow, clavier et cibles à ${width}px`, async ({ page }) => {\n  91 |   await page.setViewportSize({ width, height: 900 }); await page.emulateMedia({ reducedMotion: 'reduce' });\n    at /Users/kevinkitanga/.hermes/kanban/workspaces/t_a80f53ec/site/tests/browser/prompt-ia.spec.ts:88:130"
+      ]
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "prompt-ia.spec.ts",
+      "title": "reflow, clavier et cibles à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "import local, aperçu cohérent, copie/rapport/mapping séparés et reset",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "erreur préserve import, cancel et exemple sans écrasement",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "UTF-8 refusé puis Windows-1252 explicite, TSV/FEC",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "aucun réseau de contenu ni stockage pendant import/preview/export",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "pseudonymisation.spec.ts",
+      "title": "rendu, SEO et export au clavier 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : scripts disabled, clic et Entrée ne transmettent ni ne perdent les saisies",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : scripts blocked, clic et Entrée ne transmettent ni ne perdent les saisies",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : borne exacte concordante dans interface, copie, JSON et CSV",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : oracle, comparaison, copie et exports complets, zéro envoi ou stockage",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : E inconnu, temps négatif, payback hors horizon, coûts nuls",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : refus sans perte, résultat périmé inaccessible, remplacement consenti et effacement",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : SEO, média propre, sitemap, hub/footer et entrants",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 320, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 375, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 768, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 1024, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 1440, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "roi-automatisation.spec.ts",
+      "title": "ROI : largeur 1920, clavier et reflow",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "formules et classeur accessibles sans JavaScript et sans compte",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "dégressif utilise acquisition novembre plutôt que mise en service décembre",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "dégressif refuse 2009 et accepte la borne du 01/01/2010",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "exceptions inexpliquées exportées sans annoncer de validation",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 320px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 375px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 768px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 1024px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 1440px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-marge-commerciale : lecture et calcul à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-date-echeance-facture : lecture et calcul à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "calculateur-amortissement-comptable : lecture et calcul à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "tools-d.spec.ts",
+      "title": "modele-rapprochement-bancaire-excel-gratuit : lecture et calcul à 1920px",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "reformulation, extraits, deux copies et rapport édité complet sans réseau ni stockage",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "vague, négation et suggestion ; éditions préservées, annulation et invalidation",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "refus accessible conserve saisie et résultat ; édition sensible bloque rapport entier",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "HTML hostile traité comme texte et presse-papiers indisponible",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 320",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 375",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 768",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 1024",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 1440",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    },
+    {
+      "file": "verificateur-prompt.spec.ts",
+      "title": "structure SEO, clavier et reflow 1920",
+      "status": "expected",
+      "expected": "passed",
+      "errors": []
+    }
+  ]
+}

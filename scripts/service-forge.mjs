@@ -18,6 +18,8 @@ import { parse } from 'parse5';
 
 import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { ajouterAuRegistre, chargerRegistre, sauverRegistre } from './lib/seo-registres.mjs';
+import { LIENS_COMMERCIAUX_BLOG } from '../src/data/blog-commercial-links.mjs';
+import { readDilaCopy } from './lib/dila-source-copy.mjs';
 
 const REQUIRED_SCHEMA_TYPES = ['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'];
 const FORBIDDEN_SCHEMA_TYPES = ['BlogPosting', 'Product', 'SoftwareApplication', 'Offer', 'Review'];
@@ -144,7 +146,7 @@ function verifyIncomingLinkDeclarations(recipe, errors) {
   }
 }
 
-function verifyIncomingLinks(root, recipe, errors) {
+export function verifierLiensEntrantsService(root, recipe, errors) {
   verifyIncomingLinkDeclarations(recipe, errors);
   const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
   for (const link of links) {
@@ -162,11 +164,18 @@ function verifyIncomingLinks(root, recipe, errors) {
     if (publicRoute === null || link.url !== publicRoute) errors.push(`${prefix} : ne correspond pas à la route publique de ${link.sourcePath} (${publicRoute ?? 'route dynamique ou non publique'}).`);
     const markdownLink = `[${link.anchor}](${recipe.path})`;
     const astroLink = `href="${recipe.path}"`;
-    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)))) {
+    // Article.astro rend ce pont après le corps scellé. La clé d’article, l’URL et
+    // l’ancre doivent correspondre ; ni le fallback ni un lien global ne comptent.
+    const articleId = link.sourcePath.match(/^src\/content\/blog\/(.+)\.md$/)?.[1];
+    const bridge = articleId ? LIENS_COMMERCIAUX_BLOG[articleId] : null;
+    const contextualBridge = bridge?.href === recipe.path && bridge?.label === link.anchor;
+    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge)) {
       errors.push(`${prefix} : aucun lien contextuel avec l’ancre « ${link.anchor} » vers ${recipe.path} dans ${link.sourcePath}.`);
     }
   }
 }
+
+const verifyIncomingLinks = verifierLiensEntrantsService;
 
 function verifyReplayEvidence(root, recipe, body, errors) {
   const path = recipe.proof?.evidencePath;
@@ -190,7 +199,7 @@ function verifyReplayEvidence(root, recipe, body, errors) {
   }
 }
 
-export function verifierRecetteService({ root, recipe, body, review, today = todayIso(), requireReview = true }) {
+export function verifierRecetteService({ root, recipe, body, review, today = todayIso(), requireReview = true, sourceAsOf = null }) {
   const errors = [];
   if (recipe?.version !== 1) errors.push('version doit valoir 1.');
   if (recipe?.type !== 'service') errors.push('Le type de recette doit valoir service.');
@@ -208,6 +217,23 @@ export function verifierRecetteService({ root, recipe, body, review, today = tod
   if (!DATE_RE.test(recipe?.verifiedAt ?? '') || recipe.verifiedAt > today) errors.push('verifiedAt doit être une date non future au format AAAA-MM-JJ.');
   verifyTitleMeasurement(root, recipe, today, errors);
   verifyCommercialAudience(recipe, errors);
+  if (recipe.audienceType !== undefined && (typeof recipe.audienceType !== 'string' || recipe.audienceType.trim().length < 3)) {
+    errors.push('audienceType doit décrire le public avec au moins trois caractères.');
+  }
+  for (const source of recipe?.sources ?? []) {
+    try {
+      const host = new URL(source.url).hostname.replace(/\.$/, '');
+      const requiresDila = host === 'legifrance.gouv.fr' || host.endsWith('.legifrance.gouv.fr')
+        || source.dilaCopyPath !== undefined || source.dilaCopySha256 !== undefined;
+      if (requiresDila) {
+        if (!source.dilaCopyPath || !/^[a-f0-9]{64}$/.test(source.dilaCopySha256 ?? '')) throw new Error('Copie DILA et empreinte requises pour cette source.');
+        readDilaCopy({ root: join(root, 'commercial/recettes', recipe.slug), path: source.dilaCopyPath, url: source.url,
+          excerpt: source.excerpt, expectedSha256: source.dilaCopySha256,
+          asOf: sourceAsOf ?? (today === todayIso() ? new Date().toISOString() : `${today}T12:00:00Z`) });
+      }
+      if (!body.includes(source.url)) throw new Error('Le lien public de la source doit apparaître dans le corps.');
+    } catch (error) { errors.push(`Source ${source.id ?? '(sans identifiant)'} : ${error.message}`); }
+  }
 
   const normalizedBody = typographicApostrophe(body);
   let previous = -1;
@@ -280,7 +306,7 @@ description: ${value(recipe.description)}
 hero: ${value(recipe.hero)}
 primaryQuery: ${value(recipe.primaryQuery)}
 secondaryQueries: ${list(recipe.secondaryQueries)}
-audience:
+${recipe.audienceType === undefined ? '' : `audienceType: ${value(recipe.audienceType.trim())}\n`}audience:
   mode: ${value(recipe.audience.mode)}
   qualifier: ${recipe.audience.qualifier === null ? 'null' : value(recipe.audience.qualifier)}
   reason: ${value(recipe.audience.reason)}
@@ -314,6 +340,10 @@ function subjectFiles(root, slug) {
   if (existsSync(publication)) files.publication = publication;
   const depublication = join(dossier, 'preuves/depublication.json');
   if (existsSync(depublication)) files.depublication = depublication;
+  const recipe = readJson(files.recipe);
+  for (const [index, source] of (recipe.sources ?? []).entries()) {
+    if (source.dilaCopyPath) files[`dilaSource${index}`] = join(recipeDir, source.dilaCopyPath);
+  }
   return files;
 }
 
@@ -366,6 +396,7 @@ export function materialiserService({ root = process.cwd(), slug, status = 'a-va
     primaryQuery: recipe.primaryQuery,
     secondaryQueries: recipe.secondaryQueries,
     audience: recipe.audience,
+    ...(recipe.audienceType === undefined ? {} : { audienceType: recipe.audienceType.trim() }),
     family: recipe.family,
     verifiedAt: recipe.verifiedAt,
     cta: recipe.cta,
@@ -649,8 +680,11 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
     try {
       const snapshot = loadRecipe(root, slug);
       const { recipe, body, review } = snapshot;
-      errors.push(...verifierRecetteService({ root, recipe, body, review, today, requireReview: true }).map((error) => `${slug} : ${error}`));
       const manifest = readJson(join(base, slug, 'manifest.json'));
+      const receiptPath = join(base, slug, 'preuves/publication.json');
+      const sourceAsOf = manifest.status === 'publie' && existsSync(receiptPath) ? readJson(receiptPath).publishedAt : null;
+      // Une copie scellée reste historique après publication ; une nouvelle préparation exige une collecte récente.
+      errors.push(...verifierRecetteService({ root, recipe, body, review, today, requireReview: true, sourceAsOf }).map((error) => `${slug} : ${error}`));
       const expectedFingerprint = candidateFingerprint(snapshot);
       const entries = registryServices.filter((entry) => entry.slug === slug);
       if (entries.length !== 1) errors.push(`${slug} : le registre doit contenir exactement une entrée service, reçu ${entries.length}.`);
@@ -689,6 +723,10 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
 }
 
 export async function commande(argv, root = process.cwd()) {
+  if (argv[0] === '--guide') {
+    const { commandeGuide } = await import('./lib/guide-forge.mjs');
+    return commandeGuide(argv.slice(1), root);
+  }
   const [action, slug, declarationPath] = argv;
   let result;
   if (action === 'auditer') result = auditerServices({ root });

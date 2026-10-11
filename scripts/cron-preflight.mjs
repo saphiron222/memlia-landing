@@ -4,7 +4,7 @@ import { existsSync, realpathSync, readFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './lib/blog-ia-catchup.mjs';
-import { semaineIso } from './lib/blog-pipeline.mjs';
+import { semaineIso, plafondJourOrdinaire, plafondSemaineOrdinaire, DEBUT_CADENCE_15 } from './lib/blog-pipeline.mjs';
 
 const required = ['RUNBOOK-QUOTIDIEN.md'];
 const args = process.argv.slice(2);
@@ -81,6 +81,9 @@ try {
     }
     if ((post?.status === 'published' || post?.status === 'planned') && !cicatrices.has(post.slug)) {
       const day = post.date;
+      if (post.status === 'planned' && day >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${day}T12:00:00Z`).getUTCDay())) {
+        errors.push(`article ordinaire hors lundi-vendredi : ${post.slug} (${day})`);
+      }
       verifierDateRattrapageIA(ruleIA, post.slug, day);
       const semaine = semaineEditorialeIA(ruleIA, post.slug, day, semaineIso(day));
       const week = ruleIA?.publications[post.slug] === day ? `lot-ia-${semaine}` : semaine;
@@ -89,11 +92,11 @@ try {
     }
   }
   for (const [day, count] of realDays) {
-    if (actifs.some((post) => post.date === day && count > plafondJourIA(ruleIA, post.slug, day, actifs, 2))) {
-      errors.push(`jour réel ${day} : plus de deux articles publiés ou planned hors rattrapage IA (${count})`);
+    if (actifs.some((post) => post.date === day && count > plafondJourIA(ruleIA, post.slug, day, actifs, plafondJourOrdinaire(day)))) {
+      errors.push(`jour réel ${day} : plafond de ${plafondJourOrdinaire(day)} articles dépassé hors rattrapage IA (${count})`);
     }
   }
-  for (const [week, count] of realWeeks) if (count > 4) errors.push(`semaine réelle ${week} : plus de quatre articles publiés ou planned (${count})`);
+  for (const [week, count] of realWeeks) if (count > plafondSemaineOrdinaire(week.replace('lot-ia-', ''))) errors.push(`semaine réelle ${week} : plafond hebdomadaire dépassé (${count})`);
   const statusBySlug = new Map(posts.map((post) => [post.slug, post.status]));
   for (const entry of backlog) {
     if (entry.datePlanifiee && entry.datePlanifiee < today && statusBySlug.get(entry.slug) !== 'a-replanifier') {

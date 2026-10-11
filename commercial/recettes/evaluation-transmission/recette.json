@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "evaluation-transmission",
+  "path": "/automatisation/evaluation-transmission",
+  "title": "Automatisation du dossier d’évaluation d’entreprise en cabinet comptable",
+  "tabTitle": "Dossier d’évaluation : automatisation en cabinet comptable | Memlia",
+  "ogTitle": "Automatisation du dossier d’évaluation d’entreprise en cabinet comptable",
+  "description": "Confiez l’assemblage du dossier d’évaluation : pièces reliées aux chiffres, retraitements tracés et hypothèses visibles. Le cabinet garde valeur et conseil.",
+  "hero": "Avant de discuter une valeur, vos collaborateurs réunissent les pièces, alignent les périodes et retrouvent l’origine de chaque chiffre. Nous écrivons cette règle de préparation puis l’automatisons dans vos outils. Vous recevez un dossier de travail avec les pièces manquantes et les retraitements à valider. Le cabinet choisit les méthodes, les hypothèses et la valeur retenue ; il garde le conseil sur la transmission.",
+  "primaryQuery": "automatisation dossier évaluation entreprise cabinet comptable",
+  "secondaryQueries": ["automatisation évaluation entreprise cabinet comptable", "évaluation entreprise expert comptable"],
+  "audience": {"mode": "qualified", "qualifier": "cabinet comptable", "reason": "Le qualificatif désigne l’équipe qui prépare le dossier, et non le dirigeant qui cherche une estimation ou un conseil de cession."},
+  "intent": "evaluer-service",
+  "family": "evaluation-transmission",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {"headline": "Automatisation du dossier d’évaluation d’entreprise en cabinet comptable", "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]},
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/automatisation-cabinet-comptable", "sourcePath": "src/pages/automatisation-cabinet-comptable.astro", "anchor": "préparer le dossier d’évaluation d’entreprise"},
+    {"url": "/methode", "sourcePath": "src/pages/methode.astro", "anchor": "recetter la préparation d’un dossier d’évaluation"},
+    {"url": "/garanties", "sourcePath": "src/pages/garanties.astro", "anchor": "garder la décision sur la valeur de l’entreprise"}
+  ]
+}

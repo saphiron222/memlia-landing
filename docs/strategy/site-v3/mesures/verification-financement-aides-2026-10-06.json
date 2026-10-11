@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-06T06:38:41.342103+00:00",
+  "checks": [
+    "8 sondes HTTP 200, 8 listes vides",
+    "SERP exploitable : 10 liens ; 2 challenges exclus",
+    "Citation Bpifrance exacte présente dans capture",
+    "Citation MyCompanyFiles exacte présente dans capture",
+    "Deux sources concurrentes primaires HTTP 200",
+    "Service général 200 ; candidate 404",
+    "Worktree propre"
+  ],
+  "git_base": "2f4ba16bf55ae52f6d0d018bf7b5de39edd1ef70"
+}

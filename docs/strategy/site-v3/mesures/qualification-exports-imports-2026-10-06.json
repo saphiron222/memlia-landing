@@ -1,0 +1,142 @@
+{
+  "famille": "exports-imports-logiciels",
+  "date": "2026-10-06T06:31:36.730Z",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "mesures": [
+    {
+      "requete": "automatisation import exports comptables cabinet comptable",
+      "date": "2026-10-06T06:31:36.730Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "automatisation import comptable",
+      "date": "2026-10-06T06:31:36.783Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "import automatique écritures comptables",
+      "date": "2026-10-06T06:31:36.784Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "import export comptabilité",
+      "date": "2026-10-06T06:31:36.785Z",
+      "ok": true,
+      "suggestions": [
+        "import export comptabilité",
+        "import export finance",
+        "import export accounting",
+        "import export accounting course",
+        "import export finance procedure",
+        "import export finance procedure bcom 3rd year",
+        "import export finance procedure pdf",
+        "import export accounting entry",
+        "import export accounting in india",
+        "import export finance companies"
+      ],
+      "erreur": null
+    },
+    {
+      "requete": "import csv comptabilité",
+      "date": "2026-10-06T06:31:36.786Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "doublon import écritures comptables",
+      "date": "2026-10-06T06:31:36.786Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "automatiser import fichier comptable",
+      "date": "2026-10-06T06:31:36.787Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "requete": "conversion fichier comptable import",
+      "date": "2026-10-06T06:31:36.788Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    }
+  ],
+  "sources": [
+    {
+      "id": "sage-fec",
+      "url": "https://fr-kb.sage.com/portal/app/portlets/results/view2.jsp?k2dockey=211010150079909",
+      "finalUrl": "https://fr-kb.sage.com/portal/app/portlets/results/viewsolution.jsp?solutionid=211010150079909&hypermediatext=null",
+      "status": 200,
+      "date": "2026-10-06T06:32:06.206Z"
+    },
+    {
+      "id": "myunisoft",
+      "url": "https://support.myunisoft.fr/comment-importer-des-%C3%A9critures-sur-myunisoft-en-utilisant-le-fichier-mod%C3%A8le-.csv",
+      "finalUrl": "https://support.myunisoft.fr/comment-importer-des-%C3%A9critures-sur-myunisoft-en-utilisant-le-fichier-mod%C3%A8le-.csv",
+      "status": 200,
+      "date": "2026-10-06T06:32:05.882Z"
+    },
+    {
+      "id": "caleb",
+      "url": "https://calebgestion.com/aide/ecritures/importation_ecritures.htm",
+      "finalUrl": "https://calebgestion.com/aide/ecritures/importation_ecritures.htm",
+      "status": 200,
+      "date": "2026-10-06T06:32:05.917Z"
+    },
+    {
+      "id": "sage-generique",
+      "url": "https://fr-kb.sage.com/portal/app/portlets/results/view2.jsp?k2dockey=211010150080170",
+      "finalUrl": "https://fr-kb.sage.com/portal/app/portlets/results/viewsolution.jsp?solutionid=211010150080170&hypermediatext=null",
+      "status": 200,
+      "date": "2026-10-06T06:32:06.068Z"
+    },
+    {
+      "id": "service",
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "finalUrl": "https://memlia.fr/automatisation-cabinet-comptable",
+      "status": 200,
+      "date": "2026-10-06T06:32:05.849Z"
+    },
+    {
+      "id": "candidate",
+      "url": "https://memlia.fr/automatisation/exports-imports-logiciels",
+      "finalUrl": "https://memlia.fr/automatisation/exports-imports-logiciels",
+      "status": 404,
+      "date": "2026-10-06T06:32:05.842Z"
+    }
+  ],
+  "serps": [
+    {
+      "url": "https://html.duckduckgo.com/html/?kl=fr-fr&q=automatisation%20import%20exports%20comptables%20cabinet%20comptable",
+      "status": 200,
+      "date": "2026-10-06T06:31:38.198Z"
+    },
+    {
+      "url": "https://html.duckduckgo.com/html/?kl=fr-fr&q=import%20csv%20%C3%A9critures%20comptables%20logiciel",
+      "status": 200,
+      "date": "2026-10-06T06:31:38.812Z"
+    },
+    {
+      "url": "https://html.duckduckgo.com/html/?kl=fr-fr&q=doublon%20import%20%C3%A9critures%20comptables",
+      "status": 200,
+      "date": "2026-10-06T06:31:39.453Z"
+    }
+  ],
+  "base": "2f4ba16bf55ae52f6d0d018bf7b5de39edd1ef70",
+  "limites": [
+    "Pas de volume mensuel mesuré",
+    "Signal import-export ambigu",
+    "SERP DuckDuckGo, pas classement Google",
+    "Offres natives ne prouvent pas une intention de délégation"
+  ]
+}

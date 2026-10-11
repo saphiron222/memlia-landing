@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';
+import {writeFileSync,readFileSync} from 'node:fs';
+const base=process.env.QA_URL??'http://127.0.0.1:45921',route='/outils-comptables-gratuits/checklist-pieces-comptables';
+const response=await fetch(base+route,{headers:{'Cache-Control':'no-cache'}});assert.equal(response.status,200);const headers=Object.fromEntries(response.headers),html=await response.text();assert.match(headers['content-security-policy'],/connect-src 'none'/);assert.match(headers['cache-control'],/no-transform/);assert.equal(headers['x-content-type-options'],'nosniff');assert.ok(!html.includes('static.cloudflareinsights.com'));
+const incoming=[];for(const path of ['/outils-comptables-gratuits','/methode','/garanties']){const r=await fetch(base+path);assert.equal(r.status,200);assert.ok((await r.text()).includes(`href="${route}"`));incoming.push(path);}
+assert.ok(html.includes('href="/blog/automatiser-la-relance-des-pieces-clients"'));assert.ok(html.includes('href="/contact"'));assert.ok(html.includes('href="/methode"'));
+const index=readFileSync('dist/sitemap.xml','utf8');assert.ok([...index.matchAll(/<loc>([^<]+)<\/loc>/g)].some(m=>readFileSync('dist'+new URL(m[1]).pathname,'utf8').includes('https://memlia.fr'+route)));
+writeFileSync('docs/strategy/site-v3/outils-ec-vague-4/checklist/headers-links.json',JSON.stringify({checkedAt:new Date().toISOString(),base,environment:'Cloudflare Pages local via wrangler, pas production',route,headers,incoming,beacon:false,sitemap:true},null,2));console.log('PASS : en-têtes réels, CSP, no-transform, aucun beacon, trois entrants et sitemap.');

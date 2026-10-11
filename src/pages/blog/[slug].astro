@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Article from '@/layouts/Article.astro';
 import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
+import { construireRoutesRubriques } from '@/data/blog-rubriques.mjs';
 
 /**
  * Route /blog/<slug> : un fichier par article publié (brouillon: false). Les brouillons
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
   const publies = (await getCollection('blog', isBlogEntryVisible)).sort(
     (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
   );
+  construireRoutesRubriques(publies);
   return publies.map((entree) => ({
     params: { slug: entree.id },
     props: { entree, suivants: publies.filter((e) => e.id !== entree.id).slice(0, 2) },
