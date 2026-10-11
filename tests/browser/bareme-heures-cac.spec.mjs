@@ -1,9 +1,10 @@
 import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
+import {observeCacRequests} from './helpers/cac-network-oracle.mjs';
 const route='/outils-comptables-gratuits/bareme-heures-cac';
 test('local calculation, refusals, preservation and reprise',async({page})=>{
  const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
- const requests=[];page.on('request',r=>{if(!r.url().startsWith('blob:'))requests.push(r.url());});
+ const requests=observeCacRequests(page);
  await page.locator('[data-demo]').click();await expect(page.locator('[data-result]')).toContainText('20 à 35');await expect(page.locator('[data-result]')).toContainText('42 heures');
  await page.locator('[name="notes"]').fill('001 note <script>bad()</script>');await expect(page.locator('[data-export="json"]')).toBeDisabled();await page.locator('[data-bareme-form]').evaluate(f=>f.requestSubmit());
  const dl=page.waitForEvent('download');await page.locator('[data-export="json"]').click();const json=await readFile(await(await dl).path(),'utf8');expect(JSON.parse(json).input.notes).toBe('001 note <script>bad()</script>');
