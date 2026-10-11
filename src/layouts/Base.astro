@@ -7,7 +7,8 @@ import { SITE, OG_IMAGE } from '@/data/site.mjs';
 import { withBreadcrumb } from '@/data/schema.mjs';
 import { socialImageUrl } from '@/data/social-image.mjs';
 import { BLOG } from '@/data/blog.mjs';
-import { construireRubriques } from '@/data/blog-rubriques.mjs';
+import { construireRubriques, verifierCouvertureRubriques } from '@/data/blog-rubriques.mjs';
+import { FAMILLES } from '@/data/familles';
 import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 import { AUTEURS, identiteAuteur } from '@/data/auteurs';
 
@@ -52,6 +53,7 @@ const {
 const canonical = chemin === '/' ? `${SITE.url}/` : `${SITE.url}${chemin}`;
 const sharingImageUrl = socialImageUrl(socialImage.url);
 const articles = await getCollection('blog', isBlogEntryVisible);
+verifierCouvertureRubriques(articles.filter((article) => article.data.brouillon === false), FAMILLES);
 const blogActif = articles.length > 0;
 const rubriques = construireRubriques(articles);
 const auteur = AUTEURS.kevin;

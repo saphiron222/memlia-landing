@@ -72,15 +72,15 @@ export const BLOG_RUBRIQUES = Object.freeze([
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
-    raison: 'Article de référence transversal : il relie les familles de tâches de tout le cabinet et ne doit pas être réduit à la paie, à la DSN, à la saisie ou aux pièces.',
+    raison: 'Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA.',
   }),
   'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils': Object.freeze({
     date: '2026-09-20',
-    raison: 'Cicatrice transversale : elle raconte une décision de cadrage et la règle qui en est sortie, pas une tâche appartenant à l’une des deux rubriques.',
+    raison: 'Cicatrice transversale d’adoption et de cadrage : elle explique un échec et la règle qui en est sortie, pas l’exécution d’un geste métier. La réunir avec le pilier ne constituerait pas un parcours propre.',
   }),
   'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps': Object.freeze({
     date: '2026-09-21',
-    raison: 'Diagnostic transversal de la charge et des états du flux : il concerne plusieurs familles de production et ne relève exclusivement ni de la paie-DSN ni de la gestion des pièces.',
+    raison: 'Diagnostic transversal de la charge et des états du flux : seul article du portefeuille, il concerne plusieurs familles. Les pièces y illustrent un blocage sans justifier un rattachement au parcours de saisie.',
   }),
 });
 
@@ -101,6 +101,50 @@ for (const rubrique of BLOG_RUBRIQUES) {
 }
 
 export const rubriquePourArticle = (articleId) => PAR_ARTICLE.get(articleId) ?? null;
+
+/**
+ * Croise le stock publié EC avec les familles/pôles de la source de vérité.
+ * Les exemptions ne comptent pas dans le seuil de deux articles d’un pôle ; les rubriques
+ * suivent une intention de lecture et peuvent donc réunir plusieurs pôles (par exemple l’IA).
+ * L’appelant fournit le stock publié : les brouillons en aperçu ne forcent pas une archive.
+ */
+export function verifierCouvertureRubriques(entrees, familles, {
+  rubriques = BLOG_RUBRIQUES, exemptions = ARTICLES_HORS_RUBRIQUE,
+} = {}) {
+  const parFamille = new Map(familles.map((famille) => [famille.id, famille]));
+  const rattachements = new Map();
+  for (const rubrique of rubriques) {
+    for (const id of rubrique.articleIds) {
+      if (rattachements.has(id)) throw new Error(`[blog-rubriques] ${id} appartient à plusieurs rubriques`);
+      if (Object.hasOwn(exemptions, id)) throw new Error(`[blog-rubriques] ${id} est à la fois rattaché et hors rubrique`);
+      rattachements.set(id, rubrique);
+    }
+  }
+  const parPole = new Map();
+  for (const { id, data } of entrees) {
+    const famille = parFamille.get(data.famille);
+    if (!famille) throw new Error(`[blog-rubriques] ${id} : famille inconnue ${data.famille}`);
+    if (famille.profession !== 'ec') continue;
+    if (Object.hasOwn(exemptions, id)) {
+      const { date, raison } = exemptions[id];
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date ?? '') || typeof raison !== 'string' || raison.trim().length < 50) {
+        throw new Error(`[blog-rubriques] ${id} : exemption datée et motivée requise`);
+      }
+      continue;
+    }
+    if (!parPole.has(famille.pole)) parPole.set(famille.pole, []);
+    parPole.get(famille.pole).push(id);
+  }
+  for (const [pole, ids] of parPole) {
+    const sansRubrique = ids.filter((id) => !rattachements.has(id));
+    if (sansRubrique.length && ids.length >= 2) {
+      throw new Error(`[blog-rubriques] ${pole} : ${ids.length} articles non exemptés, sans parcours de rubrique pour ${sansRubrique.join(', ')}`);
+    }
+    if (sansRubrique.length) {
+      throw new Error(`[blog-rubriques] ${sansRubrique[0]} : rubrique ou exemption motivée requise`);
+    }
+  }
+}
 
 /**
  * Joint la taxonomie à la collection réellement visible. Une rubrique ne produit aucune route
