@@ -1,0 +1,47 @@
+{
+  "pass": true,
+  "scope": "Sous-contrat natif validateClaims et reviewSubjectDigestPayload exercé sur la projection réelle du lot 1, pas manifeste global ni autorisation de publication.",
+  "librarySha256": "58406aaea2dede2d8d2dcdf01722330cadd18f7a9b711b02302057595af5f4af",
+  "projectionCounts": {
+    "renderedFields": 50,
+    "claims": 60,
+    "citations": 109,
+    "sources": 12,
+    "sensitiveVerdicts": 29
+  },
+  "sensitiveVerdictsReported": 0,
+  "errors": [],
+  "mutations": [
+    {
+      "name": "unité sensible manquante",
+      "rejected": true,
+      "errorCount": 5
+    },
+    {
+      "name": "citation inventée",
+      "rejected": true,
+      "errorCount": 3
+    },
+    {
+      "name": "avis absent",
+      "rejected": true,
+      "errorCount": 4
+    },
+    {
+      "name": "reviewer auteur",
+      "rejected": true,
+      "errorCount": 2
+    },
+    {
+      "name": "copie DILA redatée",
+      "rejected": true,
+      "errorCount": 8
+    },
+    {
+      "name": "confusion auto-validée",
+      "rejected": true,
+      "errorCount": 2
+    }
+  ],
+  "candidateUnchanged": true
+}

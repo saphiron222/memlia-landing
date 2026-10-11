@@ -1,0 +1,794 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_f87ddaa1",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "7a4bfeb98e275061376964d999d43f771d610cad2a8de478bd65939bf065839d",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "elements-collectes-audit-definition-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "elements-collectes-audit-definition-h2a-nep-500-citation-1",
+        "elements-collectes-audit-definition-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§01/04 : les éléments servent aux conclusions fondant l’opinion et incluent audit courant, audits antérieurs, autres interventions et acceptation/maintien. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "elements-collectes-audit-definition-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "elements-collectes-audit-definition-dila-a821-74-citation-1",
+        "elements-collectes-audit-definition-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§01/04 : les éléments servent aux conclusions fondant l’opinion et incluent audit courant, audits antérieurs, autres interventions et acceptation/maintien. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "elements-collectes-audit-context-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "elements-collectes-audit-context-h2a-nep-500-citation-1",
+        "elements-collectes-audit-context-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§05/06 : la simple collecte ne vaut pas suffisance/qualité ; la source établit la distinction appliquée à une pièce reçue. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "elements-collectes-audit-context-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "elements-collectes-audit-context-dila-a821-74-citation-1",
+        "elements-collectes-audit-context-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§05/06 : la simple collecte ne vaut pas suffisance/qualité ; la source établit la distinction appliquée à une pièce reçue. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "elements-collectes-audit-commonConfusion-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "elements-collectes-audit-commonConfusion-h2a-nep-500-citation-1",
+        "elements-collectes-audit-commonConfusion-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : quantité distincte de pertinence/fiabilité ; incohérence à élucider par des procédures complémentaires choisies par le CAC. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "elements-collectes-audit-commonConfusion-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "elements-collectes-audit-commonConfusion-dila-a821-74-citation-1",
+        "elements-collectes-audit-commonConfusion-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : quantité distincte de pertinence/fiabilité ; incohérence à élucider par des procédures complémentaires choisies par le CAC. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "caractere-probant-definition-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "caractere-probant-definition-h2a-nep-500-citation-1",
+        "caractere-probant-definition-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§05/06 : preuves ou présomptions sur assertions, suffisance quantitative et caractère approprié qualitatif, pertinence et fiabilité. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "caractere-probant-definition-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "caractere-probant-definition-dila-a821-74-citation-1",
+        "caractere-probant-definition-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§05/06 : preuves ou présomptions sur assertions, suffisance quantitative et caractère approprié qualitatif, pertinence et fiabilité. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "caractere-probant-context-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "caractere-probant-context-h2a-nep-500-citation-1",
+        "caractere-probant-context-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : quantité liée au risque et à la qualité ; fiabilité dépendant origine/nature/circonstances et maintien de l’esprit critique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "caractere-probant-context-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "caractere-probant-context-dila-a821-74-citation-1",
+        "caractere-probant-context-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : quantité liée au risque et à la qualité ; fiabilité dépendant origine/nature/circonstances et maintien de l’esprit critique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "caractere-probant-commonConfusion-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "caractere-probant-commonConfusion-h2a-nep-500-citation-1",
+        "caractere-probant-commonConfusion-h2a-nep-500-citation-2"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : principes de fiabilité circonstanciés, non garantie d’une pièce externe ; doute et incohérence appellent investigations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "caractere-probant-commonConfusion-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "caractere-probant-commonConfusion-dila-a821-74-citation-1",
+        "caractere-probant-commonConfusion-dila-a821-74-citation-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 500 §§06/07 : principes de fiabilité circonstanciés, non garantie d’une pièce externe ; doute et incohérence appellent investigations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-definition-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "confirmation-tiers-audit-definition-h2a-nep-505-citation-1"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §03 : déclaration du tiers directement adressée au CAC sur une ou plusieurs informations ; l’alias est jugé séparément comme vocabulaire de pratique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-definition-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "confirmation-tiers-audit-definition-dila-a821-76-citation-1"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §03 : déclaration du tiers directement adressée au CAC sur une ou plusieurs informations ; l’alias est jugé séparément comme vocabulaire de pratique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-context-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "confirmation-tiers-audit-context-h2a-nep-505-citation-1",
+        "confirmation-tiers-audit-context-h2a-nep-505-citation-2",
+        "confirmation-tiers-audit-context-h2a-nep-505-citation-3"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§04/08/09 : distinction ouverte/fermée, assertions concernées et maîtrise par le CAC de sélection, rédaction, envoi et réception. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-context-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "confirmation-tiers-audit-context-dila-a821-76-citation-1",
+        "confirmation-tiers-audit-context-dila-a821-76-citation-2",
+        "confirmation-tiers-audit-context-dila-a821-76-citation-3"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§04/08/09 : distinction ouverte/fermée, assertions concernées et maîtrise par le CAC de sélection, rédaction, envoi et réception. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-commonConfusion-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "confirmation-tiers-audit-commonConfusion-h2a-nep-505-citation-1",
+        "confirmation-tiers-audit-commonConfusion-h2a-nep-505-citation-2",
+        "confirmation-tiers-audit-commonConfusion-h2a-nep-505-citation-3"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§07/13/15 : existence distincte d’évaluation, alternatives en absence de réponse et appréciation des résultats ; réception ou concordance n’est pas conclusion. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "confirmation-tiers-audit-commonConfusion-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "confirmation-tiers-audit-commonConfusion-dila-a821-76-citation-1",
+        "confirmation-tiers-audit-commonConfusion-dila-a821-76-citation-2",
+        "confirmation-tiers-audit-commonConfusion-dila-a821-76-citation-3"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§07/13/15 : existence distincte d’évaluation, alternatives en absence de réponse et appréciation des résultats ; réception ou concordance n’est pas conclusion. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-definition-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "procedures-alternatives-audit-definition-h2a-nep-505-citation-1",
+        "procedures-alternatives-audit-definition-h2a-nep-505-citation-2"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§11/13 : alternatives en cas de refus fondé ou absence de réponse ; définition expressément bornée aux confirmations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-definition-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "procedures-alternatives-audit-definition-dila-a821-76-citation-1",
+        "procedures-alternatives-audit-definition-dila-a821-76-citation-2"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§11/13 : alternatives en cas de refus fondé ou absence de réponse ; définition expressément bornée aux confirmations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-context-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "procedures-alternatives-audit-context-h2a-nep-505-citation-1",
+        "procedures-alternatives-audit-context-h2a-nep-505-citation-2",
+        "procedures-alternatives-audit-context-h2a-nep-505-citation-3",
+        "procedures-alternatives-audit-context-h2a-nep-505-citation-4",
+        "procedures-alternatives-audit-context-h2a-nep-505-citation-5"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§10–12/14/15 : analyse du refus, conséquences éventuelles du refus non fondé, procédures supplémentaires et appréciation des résultats. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-context-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "procedures-alternatives-audit-context-dila-a821-76-citation-1",
+        "procedures-alternatives-audit-context-dila-a821-76-citation-2",
+        "procedures-alternatives-audit-context-dila-a821-76-citation-3",
+        "procedures-alternatives-audit-context-dila-a821-76-citation-4",
+        "procedures-alternatives-audit-context-dila-a821-76-citation-5"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§10–12/14/15 : analyse du refus, conséquences éventuelles du refus non fondé, procédures supplémentaires et appréciation des résultats. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-commonConfusion-h2a-nep-505",
+      "sourceId": "h2a-nep-505",
+      "citationIds": [
+        "procedures-alternatives-audit-commonConfusion-h2a-nep-505-citation-1",
+        "procedures-alternatives-audit-commonConfusion-h2a-nep-505-citation-2",
+        "procedures-alternatives-audit-commonConfusion-h2a-nep-505-citation-3"
+      ],
+      "sourceContentSha256": "436d7cd097f5b8a8923117df5570ade681621088d08d62bf6b3c0ab6ac358bd3",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§13–15 : alternatives visant la collecte d’éléments et compléments si insuffisance ; une relance administrative seule n’établit pas cette collecte. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-alternatives-audit-commonConfusion-dila-a821-76",
+      "sourceId": "dila-a821-76",
+      "citationIds": [
+        "procedures-alternatives-audit-commonConfusion-dila-a821-76-citation-1",
+        "procedures-alternatives-audit-commonConfusion-dila-a821-76-citation-2",
+        "procedures-alternatives-audit-commonConfusion-dila-a821-76-citation-3"
+      ],
+      "sourceContentSha256": "956e7802379deb2c6671b06fc28c6cddb289008da78aa1485bc4d9f74448ea74",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 505 §§13–15 : alternatives visant la collecte d’éléments et compléments si insuffisance ; une relance administrative seule n’établit pas cette collecte. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-analytiques-definition-h2a-nep-520",
+      "sourceId": "h2a-nep-520",
+      "citationIds": [
+        "procedures-analytiques-definition-h2a-nep-520-citation-1"
+      ],
+      "sourceContentSha256": "85ab33d7c6c5be77a0e51a20c055c3b20a17966b05e5dd4df0b85c1e35254a91",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §04 : corrélations et variations significatives/tendances inattendues. Le terme revue analytique est apprécié séparément en alias de pratique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-analytiques-definition-dila-a821-77",
+      "sourceId": "dila-a821-77",
+      "citationIds": [
+        "procedures-analytiques-definition-dila-a821-77-citation-1"
+      ],
+      "sourceContentSha256": "8a0650e2fdced3f6ed6c9cca1016bae54952922dca33d084ee34ab34a4576e26",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §04 : corrélations et variations significatives/tendances inattendues. Le terme revue analytique est apprécié séparément en alias de pratique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-analytiques-context-h2a-nep-520",
+      "sourceId": "h2a-nep-520",
+      "citationIds": [
+        "procedures-analytiques-context-h2a-nep-520-citation-1",
+        "procedures-analytiques-context-h2a-nep-520-citation-2",
+        "procedures-analytiques-context-h2a-nep-520-citation-3",
+        "procedures-analytiques-context-h2a-nep-520-citation-4"
+      ],
+      "sourceContentSha256": "85ab33d7c6c5be77a0e51a20c055c3b20a17966b05e5dd4df0b85c1e35254a91",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §§05–08 : étapes initiale/finale obligatoires, faculté d’usage en substance et attentes/écarts acceptables définis pour la substance. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-analytiques-context-dila-a821-77",
+      "sourceId": "dila-a821-77",
+      "citationIds": [
+        "procedures-analytiques-context-dila-a821-77-citation-1",
+        "procedures-analytiques-context-dila-a821-77-citation-2",
+        "procedures-analytiques-context-dila-a821-77-citation-3",
+        "procedures-analytiques-context-dila-a821-77-citation-4"
+      ],
+      "sourceContentSha256": "8a0650e2fdced3f6ed6c9cca1016bae54952922dca33d084ee34ab34a4576e26",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §§05–08 : étapes initiale/finale obligatoires, faculté d’usage en substance et attentes/écarts acceptables définis pour la substance. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "procedures-analytiques-commonConfusion-h2a-nep-520",
+      "sourceId": "h2a-nep-520",
+      "citationIds": [
+        "procedures-analytiques-commonConfusion-h2a-nep-520-citation-1",
+        "procedures-analytiques-commonConfusion-h2a-nep-520-citation-2",
+        "procedures-analytiques-commonConfusion-h2a-nep-520-citation-3"
+      ],
+      "sourceContentSha256": "85ab33d7c6c5be77a0e51a20c055c3b20a17966b05e5dd4df0b85c1e35254a91",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §§05/09/10 : attente et écarts acceptables, variations à élucider et risques nouveaux à apprécier ; un calcul seul n’est pas une conclusion. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "procedures-analytiques-commonConfusion-dila-a821-77",
+      "sourceId": "dila-a821-77",
+      "citationIds": [
+        "procedures-analytiques-commonConfusion-dila-a821-77-citation-1",
+        "procedures-analytiques-commonConfusion-dila-a821-77-citation-2",
+        "procedures-analytiques-commonConfusion-dila-a821-77-citation-3"
+      ],
+      "sourceContentSha256": "8a0650e2fdced3f6ed6c9cca1016bae54952922dca33d084ee34ab34a4576e26",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 520 §§05/09/10 : attente et écarts acceptables, variations à élucider et risques nouveaux à apprécier ; un calcul seul n’est pas une conclusion. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "tests-procedures-definition-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "tests-procedures-definition-h2a-nep-330-citation-1"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §08 : définition des tests sur les contrôles visant leur efficacité au niveau des assertions. Seule cette partie normative est attribuée à la source ; le rapprochement terminologique est une convention jugée séparément. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "tests-procedures-definition-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "tests-procedures-definition-dila-a821-73-citation-1"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §08 : définition des tests sur les contrôles visant leur efficacité au niveau des assertions. Seule cette partie normative est attribuée à la source ; le rapprochement terminologique est une convention jugée séparément. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "tests-procedures-context-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "tests-procedures-context-h2a-nep-330-citation-1",
+        "tests-procedures-context-h2a-nep-330-citation-2"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§14/15 : appui prévu sur les contrôles et/ou substance seule insuffisante ; tests ne se limitant pas aux demandes d’information. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "tests-procedures-context-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "tests-procedures-context-dila-a821-73-citation-1",
+        "tests-procedures-context-dila-a821-73-citation-2"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§14/15 : appui prévu sur les contrôles et/ou substance seule insuffisante ; tests ne se limitant pas aux demandes d’information. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "tests-procedures-commonConfusion-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "tests-procedures-commonConfusion-h2a-nep-330-citation-1",
+        "tests-procedures-commonConfusion-h2a-nep-330-citation-2"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§15/23 : description/demandes seules insuffisantes et absence d’anomalie en substance ne prouvant pas efficacité des contrôles. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "tests-procedures-commonConfusion-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "tests-procedures-commonConfusion-dila-a821-73-citation-1",
+        "tests-procedures-commonConfusion-dila-a821-73-citation-2"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§15/23 : description/demandes seules insuffisantes et absence d’anomalie en substance ne prouvant pas efficacité des contrôles. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "controles-substance-definition-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "controles-substance-definition-h2a-nep-330-citation-1"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §06 : substance visant anomalies au niveau des assertions, avec tests de détail et procédures analytiques de substance. Le rapprochement terminologique relève de la convention Memlia distincte. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "controles-substance-definition-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "controles-substance-definition-dila-a821-73-citation-1"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §06 : substance visant anomalies au niveau des assertions, avec tests de détail et procédures analytiques de substance. Le rapprochement terminologique relève de la convention Memlia distincte. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "controles-substance-context-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "controles-substance-context-h2a-nep-330-citation-1",
+        "controles-substance-context-h2a-nep-330-citation-2",
+        "controles-substance-context-h2a-nep-330-citation-3"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§05/07/10 : test individuel, attentes/écarts de substance et lien nature/calendrier/étendue aux risques. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "controles-substance-context-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "controles-substance-context-dila-a821-73-citation-1",
+        "controles-substance-context-dila-a821-73-citation-2",
+        "controles-substance-context-dila-a821-73-citation-3"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§05/07/10 : test individuel, attentes/écarts de substance et lien nature/calendrier/étendue aux risques. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "controles-substance-commonConfusion-h2a-nep-330",
+      "sourceId": "h2a-nep-330",
+      "citationIds": [
+        "controles-substance-commonConfusion-h2a-nep-330-citation-1",
+        "controles-substance-commonConfusion-h2a-nep-330-citation-2",
+        "controles-substance-commonConfusion-h2a-nep-330-citation-3"
+      ],
+      "sourceContentSha256": "f3cb545d54f40d9826221c1f9893adc51be93d6764e712e24d4bd7e03fe589bb",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§06/08/23 : objectif de détection distinct de l’efficacité des contrôles ; pas de preuve de cette efficacité par absence d’anomalies. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "controles-substance-commonConfusion-dila-a821-73",
+      "sourceId": "dila-a821-73",
+      "citationIds": [
+        "controles-substance-commonConfusion-dila-a821-73-citation-1",
+        "controles-substance-commonConfusion-dila-a821-73-citation-2",
+        "controles-substance-commonConfusion-dila-a821-73-citation-3"
+      ],
+      "sourceContentSha256": "3c8ced79dd8c77ea9a7c473a40207c22d34e3ff1e00395bd89a86eef9f50bcec",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 330 §§06/08/23 : objectif de détection distinct de l’efficacité des contrôles ; pas de preuve de cette efficacité par absence d’anomalies. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "sondage-audit-definition-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "sondage-audit-definition-h2a-nep-530-citation-1",
+        "sondage-audit-definition-h2a-nep-530-citation-2"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/07 : chance de sélection pour tous les éléments, statistique ou non ; sondages distincts de sélection spécifique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "sondage-audit-definition-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "sondage-audit-definition-dila-a821-78-citation-1",
+        "sondage-audit-definition-dila-a821-78-citation-2"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/07 : chance de sélection pour tous les éléments, statistique ou non ; sondages distincts de sélection spécifique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "sondage-audit-context-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "sondage-audit-context-h2a-nep-530-citation-1",
+        "sondage-audit-context-h2a-nep-530-citation-2",
+        "sondage-audit-context-h2a-nep-530-citation-3"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/08/09 : choix sous jugement, analyse des résultats et conclusion sur population pour sondage, nature/cause/conséquences des anomalies. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "sondage-audit-context-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "sondage-audit-context-dila-a821-78-citation-1",
+        "sondage-audit-context-dila-a821-78-citation-2",
+        "sondage-audit-context-dila-a821-78-citation-3"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/08/09 : choix sous jugement, analyse des résultats et conclusion sur population pour sondage, nature/cause/conséquences des anomalies. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "sondage-audit-commonConfusion-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "sondage-audit-commonConfusion-h2a-nep-530-citation-1",
+        "sondage-audit-commonConfusion-h2a-nep-530-citation-2",
+        "sondage-audit-commonConfusion-h2a-nep-530-citation-3"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage inhabituel ou en valeur distinct du sondage ; couverture élevée ne justifiant pas une extrapolation automatique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "sondage-audit-commonConfusion-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "sondage-audit-commonConfusion-dila-a821-78-citation-1",
+        "sondage-audit-commonConfusion-dila-a821-78-citation-2",
+        "sondage-audit-commonConfusion-dila-a821-78-citation-3"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage inhabituel ou en valeur distinct du sondage ; couverture élevée ne justifiant pas une extrapolation automatique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "population-audit-definition-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "population-audit-definition-h2a-nep-530-citation-1"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 : ensemble de données de sélection et de conclusion, notamment solde/catégorie d’opérations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "population-audit-definition-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "population-audit-definition-dila-a821-78-citation-1"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 : ensemble de données de sélection et de conclusion, notamment solde/catégorie d’opérations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "population-audit-context-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "population-audit-context-h2a-nep-530-citation-1"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "population-audit-context-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "population-audit-context-dila-a821-78-citation-1"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "population-audit-commonConfusion-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "population-audit-commonConfusion-h2a-nep-530-citation-1"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "population-audit-commonConfusion-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "population-audit-commonConfusion-dila-a821-78-citation-1"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "population-audit-context-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "population-audit-context-h2a-nep-500-citation-1"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "population-audit-context-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "population-audit-context-dila-a821-74-citation-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "population-audit-commonConfusion-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "population-audit-commonConfusion-h2a-nep-500-citation-1"
+      ],
+      "sourceContentSha256": "9f2991373a7334c450c18171619bd7fd17dd2c55f35b8443e1bb66ed3dcda43d",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "population-audit-commonConfusion-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "population-audit-commonConfusion-dila-a821-74-citation-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "selection-elements-specifiques-definition-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "selection-elements-specifiques-definition-h2a-nep-530-citation-1"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §06 : sélection en valeur au-delà d’un montant fixé ou éléments inhabituels par importance/nature ; aucun seuil chiffré imposé. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "selection-elements-specifiques-definition-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "selection-elements-specifiques-definition-dila-a821-78-citation-1"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §06 : sélection en valeur au-delà d’un montant fixé ou éléments inhabituels par importance/nature ; aucun seuil chiffré imposé. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "selection-elements-specifiques-context-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "selection-elements-specifiques-context-h2a-nep-530-citation-1",
+        "selection-elements-specifiques-context-h2a-nep-530-citation-2",
+        "selection-elements-specifiques-context-h2a-nep-530-citation-3"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/06/08 : connaissance/risques, une ou plusieurs méthodes et appréciation du caractère suffisant/approprié des résultats. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "selection-elements-specifiques-context-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "selection-elements-specifiques-context-dila-a821-78-citation-1",
+        "selection-elements-specifiques-context-dila-a821-78-citation-2",
+        "selection-elements-specifiques-context-dila-a821-78-citation-3"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§04/06/08 : connaissance/risques, une ou plusieurs méthodes et appréciation du caractère suffisant/approprié des résultats. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "claimId": "selection-elements-specifiques-commonConfusion-h2a-nep-530",
+      "sourceId": "h2a-nep-530",
+      "citationIds": [
+        "selection-elements-specifiques-commonConfusion-h2a-nep-530-citation-1",
+        "selection-elements-specifiques-commonConfusion-h2a-nep-530-citation-2",
+        "selection-elements-specifiques-commonConfusion-h2a-nep-530-citation-3"
+      ],
+      "sourceContentSha256": "f8f1fcc95947a5d88ab84dda4b42103e27a62b5ded8465482ffb16c00301fe53",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage spécifique distinct du sondage ; conclusion sur population liée au sondage et non transposable par seul taux de couverture. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "claimId": "selection-elements-specifiques-commonConfusion-dila-a821-78",
+      "sourceId": "dila-a821-78",
+      "citationIds": [
+        "selection-elements-specifiques-commonConfusion-dila-a821-78-citation-1",
+        "selection-elements-specifiques-commonConfusion-dila-a821-78-citation-2",
+        "selection-elements-specifiques-commonConfusion-dila-a821-78-citation-3"
+      ],
+      "sourceContentSha256": "1c9a4159d164e6306d6279d2162f3d0ec1748d99b50efdeadb6bdde45608a461",
+      "checkedAt": "2026-10-11T13:41:48.729Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage spécifique distinct du sondage ; conclusion sur population liée au sondage et non transposable par seul taux de couverture. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    }
+  ]
+}

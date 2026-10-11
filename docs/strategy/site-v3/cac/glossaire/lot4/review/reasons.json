@@ -1,0 +1,72 @@
+{
+  "dossier-travail-audit": {
+    "definition": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation.",
+    "context": "NEP 230 §§04/08 : intelligibilité pour un auditeur expérimenté non participant ; identité et date des travaux, identité/date/étendue de la revue lorsqu’elle existe. Aucune suppression de revue professionnelle n’est proposée.",
+    "commonConfusion": "NEP 230 §§04/07 : l’accumulation ne satisfait pas l’intelligibilité ; les explications fournies aux autorités de contrôle ne sont pas la documentation. Ce n’est pas une interdiction de compléter le dossier dans les cas du §10.",
+    "exampleFictitious": "Exemple nommé fictif : écritures, pièces, résultat et conclusion reliés ; un export isolé n’est pas réputé suffisant. Aucun cas client ni test d’intégration réel n’est allégué.",
+    "automationBoundary": "Index et renvois proposés, pièces et commentaires préservés ; l’équipe traite les liens manquants, le CAC apprécie travaux et conclusions. Aucun statut conforme aux NEP ni opinion générée."
+  },
+  "dossier-permanent-audit": {
+    "definition": "Convention de classement explicitement limitée à ce glossaire : informations pluriannuelles, sans obligation normative autonome. La NEP 230 ne prescrit pas un dossier-type permanent distinct sous ce nom.",
+    "context": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence.",
+    "commonConfusion": "Convention Memlia recevable : conservation ne signifie ni actualité ni conclusion reconduite. Aucun automatisme de réutilisation ni règle légale universelle n’est déduit.",
+    "exampleFictitious": "Contrat et avenant fictifs : vérification de l’actualité avant réutilisation. Aucun contenu ancien reconduit automatiquement.",
+    "automationBoundary": "Pièces proposées sans remplacer les notes ; validation de l’actualité, arrêt en version ambiguë, usage et opinion réservés au CAC."
+  },
+  "feuille-maitresse-audit": {
+    "definition": "Convention de tableau de synthèse des soldes et renvois, expressément distincte d’une diligence autonome imposée ; pas de modèle homologué allégué.",
+    "context": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode.",
+    "commonConfusion": "Convention Memlia correcte : concordance arithmétique et regroupement ne démontrent pas l’exécution des contrôles ni la conclusion sur le cycle.",
+    "exampleFictitious": "Immobilisations fictives : le solde sans feuille associée est signalé, jamais marqué audité. Aucun audit exécuté ni conformité automatique.",
+    "automationBoundary": "Regroupement selon table fournie, compte hors règle en exception, validation des renvois ; diligences et appréciation au CAC, commentaires intacts, aucune opinion issue du tableau."
+  },
+  "plan-mission-audit": {
+    "definition": "NEP 300 §10 : approche générale, étendue/calendrier/orientation, seuils et lignes directrices ; aucun taux normatif ou choix automatique de seuil n’est proposé.",
+    "context": "NEP 300 §§08/12/13 : plan et programme écrits pour l’exercice ; modification à partir des éléments collectés, raisons consignées. Portée attribuée à cette norme, pas prescription universelle de forme ALPE.",
+    "commonConfusion": "NEP 300 §§10/11 : approche générale distincte des diligences d’exécution ; un seul calendrier d’affectation ne contient pas tous les éléments du plan.",
+    "exampleFictitious": "Changement d’activité fictif : réorientation décidée par le CAC et motif conservé ; aucun élément planifié modifié par l’outil seul.",
+    "automationBoundary": "Assemblage et calendrier à partir des choix saisis ; donnée de mission manquante bloquante, approche/seuils/modifications réservés au CAC et choix préservés."
+  },
+  "programme-travail-audit": {
+    "definition": "NEP 300 §11 : nature et étendue des diligences estimées nécessaires au cours de l’exercice et nombre d’heures affectées. Ni barème universel ni tarif n’est déduit.",
+    "context": "NEP 300 §§08/09/12/13 : écrit adapté à forme, taille, activités et complexité ; travaux ajustables et modifications motivées au dossier.",
+    "commonConfusion": "NEP 230 §04 distingue planification et procédures effectuées/résultats/conclusions ; programme seul ne démontre pas exécution. La définition du programme relue dans NEP 300 §11 corrobore le contraste.",
+    "exampleFictitious": "Programme fictif : ajout motivé et case sans résultat laissée à examiner. Case cochée et contrôle achevé ne sont pas assimilés.",
+    "automationBoundary": "Présentation des diligences décidées et pièces attendues, vérification humaine de l’exécution, pièce absente en exception ; sufficience et conclusions au CAC, saisies intactes."
+  },
+  "declarations-ecrites-direction": {
+    "definition": "NEP 580 §§06/08 : formulation écrite demandée au représentant légal, lettre d’affirmation comme une des formes. La clause pas une mission ni une entrée distincte est une convention éditoriale, pas une disposition de NEP.",
+    "context": "NEP 580 §§08/09/10 et §11 relu : plusieurs formes, lettre datée/signée envoyée directement, date proche et non postérieure à la signature du rapport ; §11 prouve la confirmation écrite de la lettre du CAC. La citation §11 est ajoutée à la preuve de revue, candidat inchangé.",
+    "commonConfusion": "NEP 580 §§04/05 : corroboration des déclarations significatives et élucidation des incohérences, avec conséquences appréciées par le CAC. Lettre reçue n’est pas preuve suffisante par elle-même.",
+    "exampleFictitious": "Lettre fictive non signée : signalement sans ajouter de signature ou déclaration au nom de la direction ; manque transmis à l’équipe.",
+    "automationBoundary": "Liste et champs manquants seulement ; déclarations humaines, contrôle des dates/réception et arrêt sur contradiction ; cohérence et conséquence sur opinion au CAC, aucun texte remplacé."
+  },
+  "evenements-posterieurs-cloture": {
+    "definition": "NEP 560 §01 : événements identifiés entre clôture et approbation appelant traitement comptable ou information de l’organe statuant. Le terme ne se réduit pas à la survenance après signature.",
+    "context": "NEP 560 §§04/07/15–18 : survenance et identification distinctes ; recherche au plus près du rapport puis cessation de recherche, sans suppression des suites d’un événement connu avant approbation.",
+    "commonConfusion": "NEP 560 §§02/03 : traitement suivant référentiel et dates, information de l’organe distincte de l’écriture ; absence d’enregistrement systématique. Ni réécriture automatique des comptes ni garantie de détection.",
+    "exampleFictitious": "Litige fictif existant à la clôture et jugement ultérieur : dates et pièces au CAC, pas de traitement comptable ou opinion automatiquement déduit.",
+    "automationBoundary": "Chronologie de dates déclarées, confirmation humaine et arrêt sur date incertaine ; comptes/communications/rapport appréciés par le CAC, saisies intactes."
+  },
+  "continuite-exploitation": {
+    "definition": "NEP 570 §§01/02 : présomption de poursuite pour établir les comptes, appréciation du caractère approprié et de l’incertitude significative par le CAC, non par la préparation.",
+    "context": "NEP 570 §§06/07/11 : examen de l’évaluation en présence d’événements/circonstances susceptibles de mettre en cause la continuité ; douze mois seulement si référentiel sans période ; conclusion sous jugement à partir des éléments.",
+    "commonConfusion": "NEP 570 §§12–15 : principe approprié avec incertitude et annexe pertinente entraîne partie distincte sans modifier l’opinion ; information insuffisante ou principe inapproprié ont d’autres conséquences. Aucune assimilation automatique incertitude/refus.",
+    "exampleFictitious": "Emprunt fictif non renouvelé : échéancier et prévisions rassemblés, plans et hypothèses appréciés par le CAC. Renouvellement ou continuité non inventés.",
+    "automationBoundary": "Rapprochements documentaires, donnée absente signalée et financement non confirmé en exception ; appréciation de la continuité et du rapport réservée au CAC, pas d’hypothèses générées."
+  },
+  "rapport-sur-comptes": {
+    "definition": "NEP 700 §§01/02 : opinion, justification des appréciations et vérifications/informations spécifiques dans le rapport destiné à l’organe statuant sur les comptes. Memlia n’est ni auteur d’opinion ni signataire.",
+    "context": "NEP 700 §§04/06 : annuels et consolidés ont rapports distincts ; certification sans/avec réserve, refus et impossibilité distingués et motifs des trois derniers au fondement de l’opinion.",
+    "commonConfusion": "NEP 700 §§07/08 : observation portant sur information de l’annexe distincte de réserve ; assurance raisonnable élevée non absolue, pas garantie d’absence de toute erreur.",
+    "exampleFictitious": "Projet fictif d’identité/exercice/comptes joints : zone d’opinion vide jusqu’à décision et rédaction du CAC. Aucun projet d’opinion de l’outil.",
+    "automationBoundary": "Assemblage de références et versions, comptes non validés bloquants ; opinion/motifs/appréciations rédigés et rapport signé par le CAC sous sa responsabilité. Aucun résultat ne certifie."
+  },
+  "alpe": {
+    "definition": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris.",
+    "context": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule.",
+    "commonConfusion": "NEP 911 §§01/03/09/12 : régime de trois exercices conditionnel, assurance raisonnable non réduite et jugement du CAC. La petite taille seule ne décide ni nomination ni durée. Aucun seuil chiffré non vérifié.",
+    "exampleFictitious": "Mandat fictif : durée et nomination documentées, durée non confirmée bloque la trame ; norme applicable déterminée par le CAC, pas automatiquement par taille.",
+    "automationBoundary": "Pièces de mandat et suivi seulement ; cadre hors règle en exception, risques/diligences/rapports et opinion restent au CAC, choix non écrasés."
+  }
+}

@@ -1,35 +1,33 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-10-11T15:12:14.777Z",
+  "reaffirmeLe": "2026-10-11T23:39:14.442Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "69dbd450c41da9ba6f57aa00dfc3899cdec00ae1a8f063c89c12a057964d2e5d",
+  "registreSha256": "cb6a406f4a172098662a05e32eb3de05c3be942bf2f17038e64a3d3747a272b2",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
   "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
-  "ancreSha256": "07fe6ac3bc740ee66c0bed5da116f8a657c871d92fd09afaab7e911c7a173532",
+  "ancreSha256": "a97352187492379842dc8f2be48490b7ee238854f28a66197eddba17035bc311",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
   "surfaces": {
     "T": {
       "action": "réaffirmée",
-      "sujetAncre": "d0feceb0b7919b1f9b773eb94de2a78fb7d4d766c0a84b587549470ed38bdd24",
-      "sujetReaffirme": "6d32159e469968364d80906a4cf671a70d8956d690d7927055a2ff890ab6d85e",
-      "feuillesEcartees": 8,
+      "sujetAncre": "930fc89299c744fc8de09a5674f4b8e98f3624198a78da35d0240d3ad9c1bf2d",
+      "sujetReaffirme": "d83be7eb77debe37706dc45eff3c93080e4399a58d43c88da07ffef16286af69",
+      "feuillesEcartees": 7,
       "feuillesParChamp": {
-        "configBundleDigest.configBundleDigest": 1,
         "skills.checkedAt": 7
       },
       "justifications": {
-        "configBundleDigest": "Le lot de configuration suit src/data/glossary.ts, qui gagne sept sources et dix entrées, et les deux modules de preuve, dont les planchers passent de 43 à 53 définitions et de 63 à 76 unités. Aucune spécification d'une affirmation sensible n'est modifiée.",
         "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées ; le verdict de chaque ligne ne peut pas bouger."
       },
-      "affirmationsRenduesVerifiees": 101,
-      "verdictsConserves": 45,
-      "candidateHash": "0798839c73c2249fa1f879bc5a7207e7833ca838058210b408ea3bd9aceb29cf",
-      "auditHash": "690bd72e85c45233bc011a32a71144749e7c92087bcf62f73b9b87c3fc6fe668",
-      "manifestSha256": "98ee895c84327e4569a252ba6c25ebd4ca462f9733d86d31edda7b247c860059",
-      "preuveRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/review/business-review-global.json",
-      "preuveSha256": "8b87c10f02a5e20e002a371a9492129e48bfc93791f39d893ac9afb898c34ff0"
+      "affirmationsRenduesVerifiees": 423,
+      "verdictsConserves": 262,
+      "candidateHash": "7b32f4bb2fd78dbf615ed4e3e21b985fcbb42cd0ecad6ff566f3c282f7d16ad6",
+      "auditHash": "fbb16f386f523718af4379d0458be58ff0b5efb255643738c3b893ff03a50aba",
+      "manifestSha256": "2728a2445a3340a3a0138033672ada22bb89358d6916ca2b269d475b00d5dc51",
+      "preuveRef": "docs/strategy/site-v3/cac/glossaire/business-review-aggregate.json",
+      "preuveSha256": "09e2ef13f97ab60edc7ea7e4afabc5bd2c535ff77db6587de0dc48de2c5f4983"
     }
   }
 }

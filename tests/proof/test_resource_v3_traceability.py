@@ -182,7 +182,7 @@ class ResourceV3TraceabilityProof(unittest.TestCase):
             totals["claims"] += len(claims)
             totals["citations"] += len(citations)
 
-        self.assertEqual(totals, {"units": 86, "claims": 101, "citations": 114})
+        self.assertEqual(totals, {"units": 286, "claims": 423, "citations": 761})
 
     def test_machine_readable_register_is_an_exact_projection(self) -> None:
         register = json.loads(REGISTER.read_text())

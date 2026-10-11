@@ -1,0 +1,124 @@
+{
+  "verifiedAt": "2026-10-11T21:38:07.614387+00:00",
+  "task": "t_79f71254",
+  "reviewTask": "t_ada6a80c",
+  "reviewScope": [
+    "D1",
+    "D2",
+    "D3"
+  ],
+  "businessVerdict": null,
+  "publication": false,
+  "controls": {
+    "regression-before": {
+      "command": [
+        "python3",
+        "tests-corrections.py",
+        "/Users/kevinkitanga/.hermes/kanban/attachments/t_33e01ca3/glossaire-cac-lot-1.json"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "pass": true
+    },
+    "regression-after": {
+      "command": [
+        "python3",
+        "tests-corrections.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "pass": true
+    },
+    "validation": {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/validate.mjs"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "pass": true
+    },
+    "mutations": {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/mutations.mjs"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "pass": true
+    },
+    "tests-dila": {
+      "command": [
+        "node",
+        "--test",
+        "tests/scripts/dila-source-copy.test.mjs"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "pass": true
+    },
+    "shape-check": {
+      "command": [
+        "/Users/kevinkitanga/dev/interne/memlia-landing/node_modules/.bin/tsc",
+        "--ignoreConfig",
+        "--noEmit",
+        "--skipLibCheck",
+        "--strict",
+        "--target",
+        "ES2022",
+        "--moduleResolution",
+        "bundler",
+        "--module",
+        "ESNext",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/shape-check.ts"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "pass": true
+    },
+    "remerged-D1": {
+      "command": [
+        "python3",
+        "tests-corrections.py",
+        "/Users/kevinkitanga/.hermes/kanban/workspaces/t_79f71254/lot-1/corrections/mutation-D1.json"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "pass": true
+    },
+    "remerged-D2": {
+      "command": [
+        "python3",
+        "tests-corrections.py",
+        "/Users/kevinkitanga/.hermes/kanban/workspaces/t_79f71254/lot-1/corrections/mutation-D2.json"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "pass": true
+    },
+    "remerged-D3": {
+      "command": [
+        "python3",
+        "tests-corrections.py",
+        "/Users/kevinkitanga/.hermes/kanban/workspaces/t_79f71254/lot-1/corrections/mutation-D3.json"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "pass": true
+    }
+  },
+  "validation": {
+    "pass": true,
+    "entries": 10,
+    "sources": 11,
+    "units": 60,
+    "links": 2,
+    "existingAnchors": 55,
+    "asOf": "2026-10-11T12:50:56.407957+00:00",
+    "review": "pending; format/source control only"
+  },
+  "publicEntriesUnchanged": true,
+  "sourceMetadataUnchanged": true,
+  "units": 60,
+  "packageSha256": "ac2a865bd0c61b38e944f7c943bfe2479a090f1c3a2109fa2b11228485a0e65d"
+}
