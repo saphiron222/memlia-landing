@@ -1,18 +1,32 @@
 import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
+import {networkViolation,observeNetwork} from '../helpers/circularisation-network.mjs';
 const route='/outils-comptables-gratuits/suivi-circularisation';
 const csv='id;category;recipient;contact;referenceDate;currency;requestedAmount;confirmationType\n0007;client;<img src=x onerror=alert(1)>;"=HYPERLINK(""x"")";2026-01-01;EUR;100;open';
 const headers=['id','category','recipient','contact','referenceDate','currency','requestedAmount','confirmationType'];
 async function prepare(page,text=csv){await page.getByText('Importer un CSV : mapping, aperçu et sélection',{exact:true}).click();await page.locator('#circ-csv').setInputFiles({name:'fictif.csv',mimeType:'text/csv',buffer:Buffer.from(text)});await page.getByRole('button',{name:'Lire le CSV',exact:true}).click();await expect(page.locator('[data-circ-mapping] select')).toHaveCount(10);for(const h of headers)await page.locator(`[data-circ-mapping] select[name="${h}"]`).selectOption(h);await page.getByRole('button',{name:'Voir l’aperçu mappé',exact:true}).click();await expect(page.locator('[data-circ-import-summary]')).toContainText('1 lignes au total');}
-test('Worker navigateur, mapping, validation humaine, texte inerte et lettre ouverte',async({page})=>{
- await page.goto(route);await page.evaluate(()=>document.fonts.ready);const requests=[];page.on('request',r=>requests.push(r));
+test('Worker navigateur, mapping, validation humaine, texte inerte et lettre ouverte',async({page,context},testInfo)=>{
+ const network=observeNetwork(context);const workers=[];page.on('worker',worker=>workers.push(worker.url()));
+ if(process.env.QA_NETWORK_SLOW==='1'){
+  const cdp=await context.newCDPSession(page);await cdp.send('Emulation.setCPUThrottlingRate',{rate:6});await cdp.send('Network.enable');await cdp.send('Network.emulateNetworkConditions',{offline:false,latency:20,downloadThroughput:1000000,uploadThroughput:1000000});
+ }
+ try{
+ await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ const origin=new URL(page.url()).origin;
+ const iconUrl=await page.locator('link[rel="icon"][type="image/svg+xml"]').evaluate(link=>link.href);
+ expect(iconUrl).toBe(new URL('/favicon.svg',origin).href);
+ network.startOperations();
  await prepare(page);await expect(page.locator('[data-circ-preview-rows]')).toContainText('<img src=x onerror=alert(1)>');await expect(page.locator('[data-circ-preview-rows] img')).toHaveCount(0);
  await page.getByRole('button',{name:'Ajouter la sélection validée',exact:true}).click();await expect(page.locator('[data-circ-error]')).toContainText('Validez explicitement');
  await page.locator('[data-circ-preview-rows] input').check();await page.locator('#circ-import-valid').check();await page.getByRole('button',{name:'Ajouter la sélection validée',exact:true}).click();await expect(page.locator('[data-circ-summary]')).toContainText('1 tiers');
  await page.getByRole('button',{name:'Ouvrir 0007',exact:true}).click();await page.locator('#circ-return').fill('Retour fictif au cabinet');await page.locator('#circ-letter-valid').check();await page.getByRole('button',{name:'Préparer une version de lettre',exact:true}).click();await expect(page.locator('[data-circ-letter-text]')).not.toContainText('100');await expect(page.locator('[data-circ-detail-summary]')).toContainText('Préparée');await expect(page.locator('[data-circ-reminder]')).toContainText('Envoi non renseigné');
  const dl=page.waitForEvent('download');await page.locator('[data-circ-export="csv"]').click();const output=await readFile(await(await dl).path(),'utf8');expect(output.charCodeAt(0)).toBe(0xFEFF);expect(output).toContain("'=HYPERLINK");
  const json=page.waitForEvent('download');await page.locator('[data-circ-export="json"]').click();expect(JSON.parse(await readFile(await(await json).path(),'utf8')).tiers[0].id).toBe('0007');
- expect(requests.filter(r=>r.method()!=='GET'||r.postData())).toEqual([]);expect(requests.every(r=>r.url().startsWith(new URL(page.url()).origin))).toBe(true);expect(requests.filter(r=>!r.url().includes('/_astro/'))).toEqual([]);
+ expect(workers.length).toBeGreaterThan(0);
+ expect(workers.every(url=>new URL(url).origin===origin&&new URL(url).pathname.startsWith('/_astro/')&&!new URL(url).search)).toBe(true);
+ const violations=network.requests.map(request=>({...request,violation:networkViolation(request,{origin,iconUrl})})).filter(request=>request.violation);
+ expect(violations).toEqual([]);
+ }finally{await testInfo.attach('circularisation-network',{body:JSON.stringify({requests:network.requests,workers},null,2),contentType:'application/json'});}
 });
 test('refus fichier volumineux, reprise invalide conserve les données et annulation',async({page})=>{
  await page.goto(route);await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();await page.getByText('Reprendre une sauvegarde JSON',{exact:true}).click();await page.locator('#circ-json').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{}')});await page.getByRole('button',{name:'Reprendre le JSON',exact:true}).click();await expect(page.locator('[data-circ-error]')).toContainText('Structure');await expect(page.locator('[data-circ-summary]')).toContainText('3 tiers');
