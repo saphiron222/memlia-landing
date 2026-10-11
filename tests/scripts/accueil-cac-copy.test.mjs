@@ -40,9 +40,9 @@ test('la couverture est visible et la frontière garde ses trois colonnes', () =
   assert.match(FICHE_OUTIL_CAC.precision, /§ 46/);
   assert.match(FICHE_OUTIL_CAC.precision, /§ 48 d/);
 });
-test('les médias attendent E3 et E9, sans réutilisation du film ou des preuves EC', () => {
-  assert.equal(CONTENU_CAC.hero.video, '');
-  assert.equal(CONTENU_CAC.hero.sousTitres, '');
+test('E9 livre le film CAC sans réutilisation du film ou des preuves EC', () => {
+  assert.ok(CONTENU_CAC.hero.video.startsWith('/media/cac-r4/'));
+  assert.ok(CONTENU_CAC.hero.sousTitres.startsWith('/media/cac-r4/'));
   const images = [CONTENU_CAC.quotidien.image, CONTENU_CAC.promesse.image, CONTENU_CAC.integration.image, CONTENU_CAC.preuves.image, CONTENU_CAC.garanties.image, ...CONTENU_CAC.methode.etapes.map(e => e.image)];
   assert.equal(new Set(images).size, 3);
   assert.ok(images.every(id => Object.values(MEDIAS_CAC).includes(id)));

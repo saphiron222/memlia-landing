@@ -286,5 +286,45 @@
     "sourceUrl": null,
     "capturedAt": "2026-10-05",
     "centralText": "Journal des reprises Jeu d’essai fictif · règle locale séquentielle Reprise du travail Propositions et décisions Tous Réutiliser Refus Cas État constaté Sortie Décision F-012 · v1 Même entrée P-F-012-v1 REUTILISER F-012 · v2 Version changée VERSION_CHANGEE REFUS F-016 État inconnu ETAT_INCONNU REFUS F-012 · v1 Accord sur P-F-012-v0 VALIDATION_PERIMEE REFUS Saisie F-015 conservée Texte corrigé par le collaborateur Connexion éditeur Aucune"
+  },
+  {
+    "id": "cac-inventaire-taches",
+    "article": "automatiser-un-cabinet-cac-la-carte-des-taches",
+    "alt": "Inventaire fictif de six tâches du mandat D-004, avec sources, règles et états.",
+    "source": "Banc F4 D-004 fictif : inventaire et réception JSON, sans validation du format FEC",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-10",
+    "reservation": "F4",
+    "centralText": "Inventaire du mandat Jeu d’essai fictif · D-004 · 2026 D-004 6 tâches Inventaire Règles Règle Tâche Source État REG-01 Réception FEC-D004-v1 À valider REG-02 Demandes DEP-002 À écrire REG-03 Variations BAL-D004-v1 Règle renseignée REG-04 Confirmations T-008 À écrire REG-05 Index P-014 Règle renseignée REG-06 Jalons M-004 À valider"
+  },
+  {
+    "id": "cac-fiche-regle",
+    "article": "automatiser-un-cabinet-cac-la-carte-des-taches",
+    "alt": "Fiche fictive REG-01 : proposition à valider, saisie conservée et seconde contribution à présenter.",
+    "source": "Banc F4 D-004 fictif : inventaire et réception JSON, sans validation du format FEC",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-10",
+    "reservation": "F4",
+    "centralText": "Fiche REG-01 Jeu d’essai fictif · D-004 · 2026 Réception REG-01 Proposition à valider Source FEC-D004-v1 Règle REG-01 Proposition PROPOSITION_A_VALIDER Saisie conservée commentaire du senior Seconde contribution REG-01 Commentaire commentaire corrigé État CONFLIT_A_PRESENTER À présenter"
+  },
+  {
+    "id": "cac-fec-registre-reception",
+    "article": "cac-reception-fec-constat",
+    "alt": "Réception de trois jeux JSON fictifs de deux lignes : constat à revoir, refus de période et refus pour écart.",
+    "source": "Banc F4 D-004 fictif : inventaire et réception JSON, sans validation du format FEC",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-10",
+    "reservation": "F4",
+    "centralText": "Réceptions Jeu d’essai fictif · JSON fictif · D-004 · 2026 D-004 3 jeux reçus Jeu JSON Lignes Écart Période Statut R-004 2 0,00 2026 CONSTAT_A_REVOIR R-005 2 0,00 2025 REFUS_PERIODE R-006 2 1,00 2026 REFUS_ECART"
+  },
+  {
+    "id": "cac-fec-constat",
+    "article": "cac-reception-fec-constat",
+    "alt": "Constat fictif R-004 sur deux lignes JSON équilibrées, à revoir, avec commentaire humain distinct.",
+    "source": "Banc F4 D-004 fictif : inventaire et réception JSON, sans validation du format FEC",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-10",
+    "reservation": "F4",
+    "centralText": "Constat R-004 Jeu d’essai fictif · JSON fictif · D-004 · 2026 R-004 2 lignes Ligne Débit Crédit E-001 1 200,00 0,00 E-002 0,00 1 200,00 Écart 0,00 Constat R-004 CONSTAT_A_REVOIR Période 2026 Commentaire saisi À examiner"
   }
 ]

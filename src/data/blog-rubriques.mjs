@@ -106,9 +106,9 @@ export const rubriquePourArticle = (articleId) => PAR_ARTICLE.get(articleId) ?? 
  * Joint la taxonomie à la collection réellement visible. Une rubrique ne produit aucune route
  * avec une liste maigre : si moins de deux de ses articles sont rendus, le build échoue fermé.
  */
-export function construireRubriques(entrees, { minimum = 2 } = {}) {
+export function construireRubriques(entrees, { minimum = 2, rubriques = BLOG_RUBRIQUES } = {}) {
   const visibles = new Map(entrees.map((entree) => [entree.id, entree]));
-  return BLOG_RUBRIQUES.map((rubrique) => {
+  return rubriques.map((rubrique) => {
     const articles = rubrique.articleIds
       .map((articleId) => visibles.get(articleId))
       .filter(Boolean);
@@ -116,5 +116,25 @@ export function construireRubriques(entrees, { minimum = 2 } = {}) {
       throw new Error(`[blog-rubriques] ${rubrique.slug} : ${articles.length} article visible, minimum ${minimum}`);
     }
     return Object.freeze({ ...rubrique, articles: Object.freeze(articles) });
+  });
+}
+
+/** Résout un seul chemin par rubrique et refuse toute collision avec la collection. */
+export function construireRoutesRubriques(entrees, { rubriques = BLOG_RUBRIQUES } = {}) {
+  const chemins = new Set();
+  const articles = new Set(entrees.map(({ id }) => `/blog/${id}`));
+  for (const { chemin } of rubriques) {
+    if (!/^\/blog\/(?:rubrique\/)?[a-z0-9]+(?:-[a-z0-9]+)*$/.test(chemin) ||
+        ['/blog/rubrique', '/blog/page'].includes(chemin)) {
+      throw new Error(`[blog-rubriques] chemin de rubrique invalide : ${chemin}`);
+    }
+    if (chemins.has(chemin)) throw new Error(`[blog-rubriques] chemin dupliqué : ${chemin}`);
+    if (articles.has(chemin)) throw new Error(`[blog-rubriques] collision avec un article : ${chemin}`);
+    chemins.add(chemin);
+  }
+  return construireRubriques(entrees, { rubriques }).map((rubrique) => {
+    const historique = rubrique.chemin.startsWith('/blog/rubrique/');
+    const prefixe = historique ? '/blog/rubrique/' : '/blog/';
+    return { rubrique, historique, param: rubrique.chemin.slice(prefixe.length) };
   });
 }

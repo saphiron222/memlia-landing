@@ -106,8 +106,8 @@ test('ROI : SEO, média propre, sitemap, hub/footer et entrants', async ({page,r
   await expect(page.locator('main h1')).toHaveCount(1); await expect(page.locator('main h1')).toHaveText(h1);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',h1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',`https://memlia.fr${route}`);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content','https://memlia.fr/proofs/v2/og/30-outil-roi.webp');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://memlia.fr/proofs/v2/og/30-outil-roi.webp');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content','https://memlia.fr/social/proofs/v2/og/30-outil-roi.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://memlia.fr/social/proofs/v2/og/30-outil-roi.webp.jpg');
   const schemas = (await page.locator('script[type="application/ld+json"]').allTextContents()).map(text=>JSON.parse(text));
   const graph = schemas.find(schema=>schema['@graph'])['@graph'];
   expect(graph.map((node:Record<string,string>)=>node['@type'])).toEqual(['WebPage','WebApplication','BreadcrumbList']);

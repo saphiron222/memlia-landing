@@ -281,15 +281,19 @@ Quels tiers retenir, quel retour rapprocher, quel fichier comparer à la balance
 
 ##### poster
 
-/proofs/cac/accueil-selection-tiers.webp
+/media/cac-r4/hero-poster-1200.webp
 
 ##### video
 
-
+/media/cac-r4/explainer-hero-45s.mp4
 
 ##### sousTitres
 
+/media/cac-r4/explainer.vtt
 
+##### descriptionVideo
+
+Démonstration sur un jeu fictif : réponses de tiers, proposition de montant, ambiguïté bloquée et validation par le cabinet. Les conclusions restent au CAC.
 
 #### orientation
 

@@ -24,15 +24,15 @@ class IntegratedMediaProof(unittest.TestCase):
                     references.append(path.relative_to(DIST).as_posix())
         self.assertEqual(references, [])
 
-    def test_r9_is_the_only_exported_video_generation(self):
-        self.assertEqual(sorted(p.name for p in (DIST / 'media').iterdir()), ['r9'])
+    def test_only_approved_ec_and_cac_generations_are_exported(self):
+        self.assertEqual(sorted(p.name for p in (DIST / 'media').iterdir()), ['cac-r4', 'r9'])
         self.assertEqual(
             sorted(p.name for p in (DIST / 'media/r9').iterdir() if p.is_file()),
             ['explainer-hero-45s-mobile.mp4', 'explainer-hero-45s.mp4', 'explainer.vtt', 'hero-poster-1200.webp', 'hero-poster.webp'],
         )
         videos = [video for path in DIST.rglob('*.html') for video in Document(path).select('video')]
-        self.assertEqual(len(videos), 1)
-        self.assertEqual(videos[0]['src'], '/media/r9/explainer-hero-45s.mp4')
+        self.assertEqual(len(videos), 2)
+        self.assertEqual(sorted(v['src'] for v in videos), ['/media/cac-r4/explainer-hero-45s.mp4', '/media/r9/explainer-hero-45s.mp4'])
 
     def test_hero_has_accessible_r9_player(self):
         doc = Document(DIST / 'index.html')

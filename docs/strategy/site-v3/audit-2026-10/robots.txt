@@ -1,0 +1,58 @@
+# robots.txt — memlia.fr
+# Memlia — IA pour cabinets d'expertise comptable (landing mono-page)
+# ----------------------------------------------------------------------------
+# Domaine canonique : https://memlia.fr/
+# ----------------------------------------------------------------------------
+# Stratégie : marque neuve, priorité = VISIBILITÉ (SEO + GEO/AEO).
+#   - Moteurs classiques + crawlers de RECHERCHE/RÉPONSE IA : AUTORISÉS sans réserve.
+#   - Crawlers d'entraînement IA (GPTBot, CCBot, Google-Extended, ClaudeBot…) :
+#     tolérés pour l'instant (rien de propriétaire à protéger sur une landing).
+#   - Scraper abusif Bytespider : BLOQUÉ ici + à doubler au niveau WAF/Cloudflare.
+# Rappel : robots.txt n'est PAS un mécanisme de sécurité — il demande poliment.
+# Ne jamais bloquer CSS / JS / polices : les crawlers en ont besoin pour le rendu.
+#
+# NB précédence RFC 9309 : un robot suit UNIQUEMENT le groupe le plus spécifique
+# qui le matche et n'hérite PAS du groupe "User-agent: *". On NE déclare donc
+# aucun "Disallow" ici : il n'y a aujourd'hui aucun endpoint à cacher (les CTA
+# sont des liens mailto:, pas de formulaire ni de POST /api/). Le jour où un
+# endpoint sensible apparaîtra, le protéger CÔTÉ APPLICATION (auth + en-tête
+# noindex), pas via robots.txt — qui de toute façon n'est pas un garde-fou.
+
+# --- Groupe par défaut : s'applique à tout robot non explicitement nommé -------
+User-agent: *
+Allow: /
+
+# --- Crawlers de RECHERCHE / RÉPONSE IA : autorisés (citent et renvoient du trafic) ---
+
+# OpenAI — crawler de recherche (ChatGPT Search, cite la source)
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — fetcher à la demande (un utilisateur ChatGPT ouvre votre lien)
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity — index qui cite et renvoie vers la source
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity — fetcher à la demande (l'utilisateur fournit votre URL)
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic — crawler de recherche (réponses Claude sourcées)
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic — fetcher à la demande (l'utilisateur fournit votre URL)
+User-agent: Claude-User
+Allow: /
+
+# --- Scraper abusif : bloqué (rafales, aucun trafic renvoyé, entraînement seul) ---
+# Bytespider (ByteDance/TikTok) respecte mal robots.txt → à doubler au WAF/Cloudflare.
+User-agent: Bytespider
+Disallow: /
+
+# --- Déclaration du sitemap (URL ABSOLUE, directive globale hors de tout groupe) ---
+# Le fichier sitemap.xml est livré à la racine en même temps que ce robots.txt.
+Sitemap: https://memlia.fr/sitemap.xml

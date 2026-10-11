@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { tabTo } from './helpers/tab-to';
 
 const VIDEO_SRC = '/media/r9/explainer-hero-45s.mp4';
 
@@ -77,9 +78,7 @@ test('surface, Entrée et Espace basculent uniquement pause et reprise', async (
   await expect(video).toHaveAttribute('aria-label', 'Reprendre la vidéo');
 
   await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
-  for (let index = 0; index < 100 && !(await video.evaluate(element => element === document.activeElement)); index++) {
-    await page.keyboard.press('Tab');
-  }
+  await tabTo(page, video);
   await expect(video).toBeFocused();
   await expect(video).toHaveCSS('outline-style', 'solid');
   await page.keyboard.press('Enter');

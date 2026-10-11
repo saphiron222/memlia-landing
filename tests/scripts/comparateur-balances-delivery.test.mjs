@@ -4,6 +4,12 @@ import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { onRequestGet, onRequestHead } from '../../functions/outils-comptables-gratuits/comparateur-balances-comptables.js';
 const route='/outils-comptables-gratuits/comparateur-balances-comptables';
+test('registre : action du comparateur explicite pour le hub',()=>{
+ const registry=readFileSync('src/data/outils.ts','utf8');
+ const entry=registry.split("slug: 'comparateur-balances-comptables'")[1]?.split('\n  },')[0];
+ assert.ok(entry,'comparateur présent dans le registre');
+ assert.match(entry,/libelleAction: 'Comparer deux balances comptables'/);
+});
 test('livraison locale : beacon retiré, GET/HEAD, cache et CSP',async()=>{
  const removed=[];globalThis.HTMLRewriter=class{on(selector,handler){assert.equal(selector,'script[src]');for(const src of ['https://static.cloudflareinsights.com/beacon.min.js','https://static.cloudflareinsights.com/beacon.min.js/v123','/_astro/balances.js'])handler.element({getAttribute:()=>src,remove:()=>removed.push(src)});return this}transform(r){return r}};
  try{for(const method of ['GET','HEAD']){const request=new Request('https://memlia.fr'+route,{method,headers:{'If-None-Match':'old',Range:'bytes=0-8'}});const response=await(method==='HEAD'?onRequestHead:onRequestGet)({request,next:async req=>{assert.equal(req.headers.get('If-None-Match'),null);assert.equal(req.headers.get('Range'),null);return new Response('<html>fictif</html>',{headers:{'Content-Type':'text/html',ETag:'old'}})}});assert.equal(response.status,200);assert.match(response.headers.get('Cache-Control'),/no-transform/);assert.match(response.headers.get('Content-Security-Policy'),/connect-src 'none'/);assert.equal(response.headers.get('ETag'),null);if(method==='HEAD')assert.equal(await response.text(),'');}assert.equal(removed.length,4)}finally{delete globalThis.HTMLRewriter}

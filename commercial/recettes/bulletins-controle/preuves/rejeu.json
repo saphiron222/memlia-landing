@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-06T05:01:55.977Z",
+  "scope": "Contrôles de rapprochement fictifs uniquement ; aucune correction, validation, transmission ou qualification juridique automatique.",
+  "cases": [
+    {
+      "id": "courant",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "PROPOSITION_A_VALIDER",
+        "reason": null,
+        "alerts": []
+      },
+      "actual": {
+        "status": "PROPOSITION_A_VALIDER",
+        "reason": null,
+        "alerts": []
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "prime_ecart",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 15000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "prime_a_rapprocher"
+        ]
+      },
+      "actual": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "prime_a_rapprocher"
+        ]
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "variation",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 291000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "variation_a_expliquer"
+        ]
+      },
+      "actual": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "variation_a_expliquer"
+        ]
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "reference_absente",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": null,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ARRET",
+        "reason": "reference_absente",
+        "alerts": []
+      },
+      "actual": {
+        "status": "ARRET",
+        "reason": "reference_absente",
+        "alerts": []
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "periode",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-08",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ARRET",
+        "reason": "periode_incoherente",
+        "alerts": []
+      },
+      "actual": {
+        "status": "ARRET",
+        "reason": "periode_incoherente",
+        "alerts": []
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "doublon",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01",
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ARRET",
+        "reason": "cle_non_unique",
+        "alerts": []
+      },
+      "actual": {
+        "status": "ARRET",
+        "reason": "cle_non_unique",
+        "alerts": []
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "illisible",
+      "input": {
+        "readable": false,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ARRET",
+        "reason": "source_illisible",
+        "alerts": []
+      },
+      "actual": {
+        "status": "ARRET",
+        "reason": "source_illisible",
+        "alerts": []
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "libelle",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Retenue grève",
+        "version": "v1",
+        "reviewedVersion": null
+      },
+      "expected": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "libelle_a_examiner"
+        ]
+      },
+      "actual": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "libelle_a_examiner"
+        ]
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    },
+    {
+      "id": "recalcul",
+      "input": {
+        "readable": true,
+        "period": "2026-09",
+        "variablePeriod": "2026-09",
+        "ids": [
+          "FICTIF-01"
+        ],
+        "sourcePrime": 20000,
+        "bulletinPrime": 20000,
+        "gross": 280000,
+        "previousGross": 280000,
+        "label": "Prime",
+        "version": "v2",
+        "reviewedVersion": "v1"
+      },
+      "expected": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "validation_a_reprendre"
+        ]
+      },
+      "actual": {
+        "status": "ECARTS_A_VALIDER",
+        "reason": null,
+        "alerts": [
+          "validation_a_reprendre"
+        ]
+      },
+      "pass": true,
+      "writePayroll": false,
+      "humanDecisionRequired": true
+    }
+  ]
+}

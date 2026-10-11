@@ -48,6 +48,7 @@ export interface OutilDefinition {
 export const OUTILS: readonly OutilDefinition[] = [
   {
     slug: 'comparateur-balances-comptables', categorie: 'verifier', statut: 'disponible',
+    libelleAction: 'Comparer deux balances comptables',
     h1: 'Comparateur de balances comptables N et N−1',
     title: 'Comparateur de balances comptables N et N−1 | Memlia',
     description: 'Comparez deux balances CSV, retrouvez les comptes nouveaux et les variations avec conventions visibles et rapport exportable. Calcul local.',
@@ -63,6 +64,43 @@ export const OUTILS: readonly OutilDefinition[] = [
     source: { titre: 'Convention de comparaison', nom: 'Méthode Memlia — écrire la règle de comparaison', url: '/methode', extrait: 'Aligner les numéros texte, calculer sur centimes exacts, documenter le mapping, les périodes et les confirmations. La liste à examiner suit vos seuils, sans conclure sur un risque.', verifieeLe: '7 octobre 2026' },
     pageService: '/methode', cta: '/contact',
   },
+  {
+    slug: 'assistant-lettrage-comptable-local', categorie: 'verifier', statut: 'disponible',
+    libelleAction: 'Préparer les paires de lettrage à valider',
+    h1: 'Assistant de lettrage comptable local', title: 'Assistant de lettrage comptable local | Memlia',
+    description: 'Préparez le lettrage d’un export CSV : paires expliquées, ambiguïtés et lignes restantes. Vous validez ; le fichier original reste inchangé.',
+    promesse: { entree: 'Export CSV avec identifiant, compte, tiers, référence, date, débit, crédit et devise', resultat: 'Paires expliquées à valider individuellement, ambiguïtés et rapport CSV complet' },
+    limites: [
+      'Deux mouvements opposés de montant exact, même compte, tiers et devise. Référence identique non vide prioritaire ; sans référence, paire unique seulement.',
+      'Plusieurs candidats : aucun choix arbitraire. Pas de tolérance, de combinaison de règlements ni de rapprochement bancaire.',
+      'La validation documente une décision, jamais une écriture dans votre logiciel. Le rapport n’est pas un fichier d’import de lettrage définitif.',
+      '10 Mo et 20 000 lignes maximum. Identifiants dupliqués, dates ou montants invalides et débit/crédit simultanés sont refusés et exportés avec leur motif. Les lignes déjà lettrées sont exclues si la colonne lettre est présente.',
+    ],
+    mentionLocale: 'Import, calcul, copie et export dans cet onglet, sans envoi ni stockage persistant. Le fichier original reste inchangé. Effacer termine le Worker et retire les données de la page ; les téléchargements restent sur votre appareil.',
+    proof: 'v2/46-outil-lettrage', zoneLarge: true,
+    source: { titre: 'Convention de préparation', nom: 'Méthode Memlia — écrire et éprouver une règle', url: '/methode', extrait: 'Paires exactes, références explicites, ambiguïtés visibles et validation individuelle : une convention locale de préparation, pas une norme ni une certification comptable.', verifieeLe: '7 octobre 2026' },
+    pageService: '/methode', cta: '/contact',
+  },
+  {
+
+    slug: 'generateur-relance-facture-impayee', categorie: 'ecrire', statut: 'disponible',
+    libelleAction: 'Préparer une relance de facture impayée',
+    h1: 'Générateur de relance de facture impayée',
+    title: 'Générateur de relance de facture impayée | Memlia',
+    description: 'Préparez une relance amiable depuis vos factures, paiements et avoirs, avec messages éditables et cas à examiner. Tout reste dans votre navigateur.',
+    promesse: { entree: 'Factures, paiements, avoirs, échéances et clé client confirmée', resultat: 'Messages amiables éditables par client, soldes expliqués et exports complets' },
+    limites: [
+      'Le solde est le montant initial moins les paiements et les avoirs, dans une même devise déclarée. Le regroupement exige votre confirmation de la clé client.',
+      'Facture soldée ou non échue : exclue avec motif. Litige, solde négatif, échéance absente ou montant ambigu : cas à examiner, sans relance proposée.',
+      'Aucun envoi, pénalité, mise en demeure ni délai légal ajouté. Vous relisez le message et décidez des suites ; aucun dossier métier n’est modifié.',
+      'CSV : 5 Mo et 500 factures maximum. Une référence absente ou une date invalide arrête la ligne ; aucune donnée manquante n’est devinée.',
+    ],
+    mentionLocale: 'Saisie, import, préparation, copie et exports restent en mémoire dans cet onglet, sans envoi ni stockage persistant. Recharger efface la session ; les fichiers téléchargés restent sur votre appareil.',
+    proof: 'v2/44-outil-relance-facture', zoneLarge: true,
+    source: { titre: 'Convention de préparation Memlia', nom: 'Méthode Memlia — écrire et éprouver une règle', url: '/methode', extrait: 'Nous séparons le calcul du solde, les exclusions et les cas à examiner de la décision de relancer. Le jeu fictif éprouve une préparation amiable, pas une règle juridique.', verifieeLe: '7 octobre 2026' },
+    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+  },
+
   {
     slug: 'fusionner-fichiers-csv', categorie: 'preparer', statut: 'disponible',
     libelleAction: 'Fusionner des exports CSV',
@@ -87,6 +125,7 @@ export const OUTILS: readonly OutilDefinition[] = [
     source: { titre: 'Convention opérationnelle Memlia', nom: 'Méthode Memlia — écrire une règle et ses limites', url: '/methode', extrait: 'La trame suit les familles choisies et les états déclarés, sans sélectionner des obligations. Seules les pièces marquées manquantes entrent dans la demande ; les inconnues restent à clarifier.', verifieeLe: '7 octobre 2026' },
     articleExact: '/blog/automatiser-la-relance-des-pieces-clients', pageService: '/methode', cta: '/contact',
   },
+
   {
     slug: 'bareme-heures-cac', categorie: 'calculer', statut: 'disponible',
     libelleAction: 'Calculer la référence d’heures',

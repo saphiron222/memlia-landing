@@ -5,6 +5,7 @@ import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createHash } from 'node:crypto';
 import { preparerGuide, scellerGuide, publierGuide, auditerGuides, verifierRecetteGuide } from '../../scripts/lib/guide-forge.mjs';
+import { auditerContratPages } from '../../scripts/verify-page-contract.mjs';
 
 const sha = (s) => createHash('sha256').update(s).digest('hex');
 const json = (root, path, data) => { mkdirSync(dirname(join(root, path)), { recursive: true }); writeFileSync(join(root, path), JSON.stringify(data, null, 2) + '\n'); };
@@ -32,6 +33,36 @@ function fixture(t, count = 6, source = process.cwd()) {
   return { root, recipe, dir, slug: recipe.integration.slug };
 }
 const review = (f) => json(f.root, `${f.dir}/revue.json`, { kind: 'qa', status: 'PASS', reviewer: 'qa-independant', reviewedAt: '2026-10-06', candidateSha256: sha(readFileSync(join(f.root, f.dir, 'recette.json'))), observations: ['Frontière et simulation relues.'] });
+
+test('le contrat de page découvre le sceau réel et refuse les preuves absentes, altérées ou réutilisées', async (t) => {
+  const f = fixture(t);
+  assert.equal((await preparerGuide(f)).pass, true);
+  const asset = `/proofs/integrations/${f.slug}.webp`;
+  const route = `/integrations/${f.slug}`;
+  const page = `<main id="main"><h1>Contrôle</h1><img src="${asset}"></main>`;
+  mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
+  writeFileSync(join(f.root, `dist/integrations/${f.slug}.html`), page);
+  const images = (target = route) => auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2 && e.route === target);
+  assert.equal(images().length, 1, 'préparé sans sceau');
+  review(f);
+  assert.equal((await scellerGuide(f)).pass, true);
+  assert.deepEqual(images(), [], 'preuve scellée reconnue sans exception de route');
+  json(f.root, 'docs/qa/contournement.json', { target: `public${asset}` });
+  for (const path of [`public${asset}`, `guides/etats/${f.slug}/preuve.html`, `guides/etats/${f.slug}/manifest.json`, `guides/etats/${f.slug}/scellement.json`, `${f.dir}/recette.json`, `${f.dir}/revue.json`, `${f.dir}/autocomplete.json`, 'src/data/guide-proofs.generated.json']) {
+    const full = join(f.root, path);
+    const original = readFileSync(full);
+    writeFileSync(full, 'altéré');
+    assert.equal(images().length, 1, path);
+    rmSync(full);
+    assert.equal(images().length, 1, `absent : ${path}`);
+    writeFileSync(full, original);
+    assert.deepEqual(images(), []);
+  }
+  writeFileSync(join(f.root, 'dist/emprunt.html'), page);
+  assert.equal(images().length, 1, 'preuve réutilisée même sur le propriétaire');
+  rmSync(join(f.root, `dist/integrations/${f.slug}.html`));
+  assert.equal(images('/emprunt').length, 1, 'preuve utilisée uniquement sur une autre route');
+});
 const served = (recipe, root) => async (url) => url.endsWith('.webp') ? new Response(readFileSync(join(root, `public/proofs/integrations/${recipe.integration.slug}.webp`))) : url.endsWith('/robots.txt') ? new Response('User-agent: *\nAllow: /\n', { status: 200 }) : response(recipe);
 const response = (recipe, options = {}) => {
   const d = recipe.integration;
@@ -39,6 +70,27 @@ const response = (recipe, options = {}) => {
   const escape = s => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
   return new Response(`<html><head><link rel="canonical" href="https://memlia.fr/integrations/${d.slug}"></head><body><h1>${d.h1}</h1><template data-guide-sha256="${sha(JSON.stringify(d))}"></template><p>${escape(copy)}</p><a href="${d.source.url}" title="${escape(d.source.title)}">source</a><img src="/proofs/integrations/${d.slug}.webp"></body></html>`, { status: 200, headers: { 'content-type': 'text/html', ...options.headers } });
 };
+
+test('une recette illisible ou faussement historique ne libère pas une preuve préparée sans sceau', async (t) => {
+  const f = fixture(t);
+  json(f.root, 'src/data/guides.generated.json', []);
+  assert.equal((await preparerGuide(f)).pass, true);
+  const asset = `/proofs/integrations/${f.slug}.webp`;
+  json(f.root, 'docs/qa/contournement.json', { target: `public${asset}` });
+  mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
+  writeFileSync(join(f.root, `dist/integrations/${f.slug}.html`), `<main id="main"><h1>Contrôle</h1><img src="${asset}"></main>`);
+  const images = () => auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2);
+  assert.equal(images().length, 1);
+  const path = join(f.root, f.dir, 'recette.json');
+  const original = readFileSync(path);
+  for (const mutation of ['illisible', JSON.stringify({ ...f.recipe, mode: 'historique' })]) {
+    writeFileSync(path, mutation);
+    assert.equal(images().length, 1, mutation);
+    writeFileSync(path, original);
+  }
+  rmSync(path);
+  assert.equal(images().length, 1, 'recette absente, état préparé conservé');
+});
 
 test('page vide, ancien corps, identité absente/divergente et preuve absente/altérée refusés sans reçu', async (t) => {
   const f = fixture(t); await preparerGuide(f); review(f); await scellerGuide(f);
@@ -226,6 +278,10 @@ test('recette historique datée rejouée sans modifier un corpus déjà scellé 
   const before = readFileSync(join(f.root, asset));
   assert.equal((await preparerGuide({ root: f.root, slug })).pass, true);
   assert.deepEqual(readFileSync(join(f.root, asset)), before);
+  json(f.root, 'docs/qa/historique.json', { target: asset });
+  mkdirSync(join(f.root, 'dist/integrations'), { recursive: true });
+  writeFileSync(join(f.root, `dist/integrations/${slug}.html`), `<main id="main"><h1>Contrôle</h1><img src="/${asset.slice(7)}"></main>`);
+  assert.deepEqual(auditerContratPages({ root: f.root }).erreurs.filter(e => e.clause === 2), [], 'provenance historique légitime conservée');
   assert.equal((await preparerGuide({ root: f.root, slug })).idempotent, true);
   for (const [i, path] of preservedPaths.entries()) assert.deepEqual(readFileSync(join(f.root, path)), corpusBefore[i], path);
   assert.equal(auditerGuides({ root: f.root }).pass, true);

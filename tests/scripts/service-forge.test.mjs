@@ -19,7 +19,64 @@ import { COPY, TEXT, URL } from './dila-copy-fixture.mjs';
 
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
+test('le pont commercial contextualisé compte sans modifier le Markdown scellé du blog', async () => {
+  const root = racineDeTest();
+  try {
+    const slug = 'controler-les-bulletins-de-paie-avant-la-dsn';
+    const path = join(root, 'commercial/recettes', SLUG, 'recette.json');
+    const recipe = recette();
+    recipe.incomingLinks[0] = { url: `/blog/${slug}`, sourcePath: `src/content/blog/${slug}.md`, anchor: 'confier les contrôles croisés des bulletins de paie' };
+    writeFileSync(path, JSON.stringify(recipe));
+    writeFileSync(join(root, `src/content/blog/${slug}.md`), '---\nbrouillon: false\n---\nCorps scellé inchangé.');
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const rejected = await publierService({ root, slug: SLUG, today: JOUR, observeServed: observationServie() });
+    assert.equal(rejected.pass, false, 'une destination différente ne compte pas');
+    recipe.path = '/automatisation/bulletins-controle';
+    // Le vérificateur public est testé directement : aucune recette de test n’est publiée.
+    const { verifierLiensEntrantsService } = await import('../../scripts/service-forge.mjs');
+    const errors = [];
+    verifierLiensEntrantsService(root, { ...recipe, incomingLinks: [recipe.incomingLinks[0], ...recette().incomingLinks.slice(1)] }, errors);
+    assert.ok(!errors.some((error) => error.startsWith(`/blog/${slug}`)), errors.join('\n'));
+    recipe.incomingLinks[0].anchor = 'ancre non rendue';
+    const wrongAnchor = [];
+    verifierLiensEntrantsService(root, recipe, wrongAnchor);
+    assert.ok(wrongAnchor.some((error) => error.startsWith(`/blog/${slug}`)));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+
+test('sources hors DILA : acceptées sans copie, sans permettre de contourner une copie déclarée ou Légifrance', () => {
+  const root = racineDeTest();
+  try {
+    const recipe = recette();
+    const url = 'https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique';
+    const source = { url, publisher: 'DGFiP', proofPath: 'preuves/source-dgfip.md' };
+    writeFileSync(join(root, 'commercial/recettes', SLUG, source.proofPath), 'Témoin technique de la source officielle hors DILA.');
+    recipe.sources = [source];
+    const body = `${CORPS}\nSource : [DGFiP](${url}).`;
+    const validate = (content = body) => verifierRecetteService({ root, recipe, body: content, today: JOUR, requireReview: false });
+    assert.deepEqual(validate(), []);
+    assert.ok(validate(CORPS).some((error) => /lien public/i.test(error)));
+    for (const declaration of [
+      { dilaCopyPath: '' }, { dilaCopySha256: '' },
+      { dilaCopyPath: null }, { dilaCopySha256: null },
+      { dilaCopyPath: 'absent.json', dilaCopySha256: 'a'.repeat(64) },
+    ]) {
+      recipe.sources = [{ ...source, ...declaration }];
+      assert.ok(validate().some((error) => /DILA|ENOENT/.test(error)), JSON.stringify(declaration));
+    }
+    for (const legalUrl of [URL, URL.replace('www.legifrance', 'legifrance'), URL.replace('gouv.fr/', 'gouv.fr./'), 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050685014']) {
+      recipe.sources = [{ url: legalUrl }];
+      assert.ok(validate(`${CORPS}\n${legalUrl}`).some((error) => /Copie DILA et empreinte requises/.test(error)));
+    }
+    recipe.sources = [source];
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'recette.json'), JSON.stringify(recipe));
+    writeFileSync(join(root, 'commercial/recettes', SLUG, 'corps.md'), body);
+    assert.equal(scellerService({ root, slug: SLUG, today: JOUR }).pass, true);
+    const seal = JSON.parse(readFileSync(join(root, 'commercial/services', SLUG, 'preuves/scellement.json')));
+    assert.ok(!Object.keys(seal.files).some((key) => key.startsWith('dilaSource')));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('sources DILA du service : copie récente et extrait exact, puis refus et scellement des octets', () => {
   const root = racineDeTest();
@@ -217,6 +274,24 @@ test('une fixture service passe préparer, sceller et auditer sans toucher au bl
     const registry = JSON.parse(readFileSync(join(root, 'docs/strategy/site-v3/mesures/registre-requetes.json'), 'utf8'));
     assert.equal(registry.articles.length, 2);
     assert.equal(registry.articles.find((entry) => entry.slug === SLUG).type, 'service');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('la forge conserve audienceType et refuse une audience structurée vide', () => {
+  const root = racineDeTest();
+  try {
+    const path = join(root, 'commercial/recettes', SLUG, 'recette.json');
+    const recipe = JSON.parse(readFileSync(path, 'utf8'));
+    recipe.audienceType = 'Cabinets de commissariat aux comptes';
+    writeFileSync(path, JSON.stringify(recipe));
+    const result = materialiserService({ root, slug: SLUG, status: 'a-valider', today: JOUR });
+    assert.deepEqual(result.errors, []);
+    assert.match(readFileSync(result.pagePath, 'utf8'), /audienceType: "Cabinets de commissariat aux comptes"/);
+    assert.equal(result.manifest.audienceType, recipe.audienceType);
+    const errors = verifierRecetteService({ root, recipe: { ...recipe, audienceType: '  ' }, body: CORPS, today: JOUR });
+    assert.ok(errors.some(error => error.includes('audienceType')));
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

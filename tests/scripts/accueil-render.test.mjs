@@ -56,6 +56,18 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
 function assertEcContent(html) {
   const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
+
+  // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]
+    .flatMap(match => JSON.parse(match[1])['@graph'] ?? []);
+  const crumbs = schemas.filter(node => node['@type'] === 'BreadcrumbList');
+  assert.equal(crumbs.length, 1);
+  assert.deepEqual(crumbs[0], {
+    '@type': 'BreadcrumbList', '@id': 'https://memlia.fr/#breadcrumb',
+    itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://memlia.fr/' }],
+  });
+  const page = schemas.find(node => node['@type'] === 'WebPage');
+  assert.deepEqual(page.breadcrumb, { '@id': 'https://memlia.fr/#breadcrumb' });
   // Le chrome de publication (head, navigation, footer) n'est pas du contenu EC.
   const main = find(parse(html), 'main');
   assert.ok(main);
@@ -69,6 +81,14 @@ function assertEcContent(html) {
 
 test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
   assertEcContent(readFileSync('dist/index.html', 'utf8'));
+});
+
+test('les métadonnées de partage accueil utilisent la carte JPEG dédiée', () => {
+  const html = readFileSync('dist/index.html', 'utf8');
+  const sharing = 'https://memlia.fr/social/assets/og-memlia.png.jpg';
+  for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
+    assert.ok(html.includes(`<meta ${attribute} content="${sharing}">`), attribute);
+  }
 });
 
 test('le témoin EC admet la publication de pages et les métadonnées hors sections', () => {
@@ -113,7 +133,7 @@ test('un vrai build Astro rend les onze sections avec le contenu fourni', { time
     writeFileSync(join(dir, 'astro.config.mjs'), `import { defineConfig } from 'astro/config';\nexport default defineConfig({ vite: { resolve: { alias: { '@': ${JSON.stringify(src)} } } } });\n`);
     const imports = Object.keys(sections).map(name => `import ${name} from ${JSON.stringify(`${src}/components/sections/${name}.astro`)};`).join('\n');
     const cases = Object.entries(sections).map(([name, key]) => `<div id="default-${name}"><${name} /></div>\n<div id="explicit-${name}"><${name} contenu={ec.${key}} /></div>\n<div id="custom-${name}"><${name} contenu={{ ...ec.${key}, titre: ${JSON.stringify(`Texte fictif de contrôle ${name}`)} }} /></div>`).join('\n');
-    writeFileSync(join(dir, 'src/pages/index.astro'), `---\n${imports}\nimport { contenuDe } from ${JSON.stringify(`${src}/data/accueil/contenu`)};\nimport assert from 'node:assert/strict';\nconst ec = contenuDe('ec');\nassert.throws(() => contenuDe('cac'), /indisponible/);\nassert.throws(() => contenuDe('inconnue' as never), /indisponible/);\n---\n<html><head></head><body>${cases}\n<div id="faq-override"><Faq contenu={{ ...ec.faq, questions: [{id: 'fictif', question: 'Question fictive injectée ?', reponse: 'Réponse fictive injectée.'}] }} /></div>\n<div id="appel-priority"><AppelFinal contenu={{ ...ec.appelFinal, titre: 'Titre fourni par audience' }} titre="Priorité au titre de la page" /></div></body></html>`);
+    writeFileSync(join(dir, 'src/pages/index.astro'), `---\n${imports}\nimport { contenuDe } from ${JSON.stringify(`${src}/data/accueil/contenu`)};\nimport assert from 'node:assert/strict';\nconst ec = contenuDe('ec');\nassert.equal(contenuDe('cac').hero.video, '/media/cac-r4/explainer-hero-45s.mp4');\nassert.throws(() => contenuDe('inconnue' as never), /indisponible/);\n---\n<html><head></head><body>${cases}\n<div id="faq-override"><Faq contenu={{ ...ec.faq, questions: [{id: 'fictif', question: 'Question fictive injectée ?', reponse: 'Réponse fictive injectée.'}] }} /></div>\n<div id="appel-priority"><AppelFinal contenu={{ ...ec.appelFinal, titre: 'Titre fourni par audience' }} titre="Priorité au titre de la page" /></div></body></html>`);
     const bin = JSON.parse(readFileSync('node_modules/astro/package.json', 'utf8')).bin.astro;
     const result = spawnSync(process.execPath, [resolve('node_modules/astro', bin), 'build', '--root', dir], { cwd: dir, encoding: 'utf8', timeout: 110_000, env: { ...process.env, ASTRO_TELEMETRY_DISABLED: '1' } });
     assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);

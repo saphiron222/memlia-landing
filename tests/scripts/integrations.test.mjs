@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
 import ts from 'typescript';
 import { integrationInventory, assertIntegrationCoverage } from './integration-inventory.mjs';
 
@@ -10,7 +11,9 @@ const source = readFileSync(join(root, 'src/data/integrations.ts'), 'utf8');
 const dist = join(root, 'dist');
 
 const compiled = ts.transpileModule(source.replace("import generatedGuides from './guides.generated.json' with { type: 'json' };", `const generatedGuides = ${readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8')};`), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
-const { INTEGRATIONS, INTEGRATION_CANDIDATES: candidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+const { INTEGRATIONS, INTEGRATION_CANDIDATES: historicalCandidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+const generated = JSON.parse(readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8'));
+const candidates = [...historicalCandidates, ...generated.map(({ task, vendor, suggestions }) => ({ task, vendor, suggestions, status: 'forte' }))];
 const { slugs, primaryQueries, mappings } = integrationInventory(INTEGRATIONS, candidates);
 
 function decodeEntities(value) {
@@ -46,7 +49,9 @@ test('le cadre du hub illustre les sorties attendues sans annoncer un rejeu exé
   assert.match(guide, /sorties attendues de la règle proposée, pas des résultats exécutés/);
 });
 
-test('seules toutes les variations fortes produisent une page', () => {
+test('seuls les guides historiques et scellés produisent une page', () => {
+  const audit = spawnSync(process.execPath, ['scripts/service-forge.mjs', '--guide', 'audit'], { encoding: 'utf8', timeout: 30_000 });
+  assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
   const rendered = readdirSync(join(dist, 'integrations'))
     .filter((name) => name.endsWith('.html'))
     .map((name) => name.replace(/\.html$/, ''))
@@ -113,7 +118,8 @@ test('les guides conservent auteur et dates dans le schéma sans signature édit
 
 test('toutes les routes intégrations ont chacune une preuve figée manifestée', () => {
   const manifest = JSON.parse(readFileSync(join(root, 'docs/qa/integration-proofs/proofs-manifest.json'), 'utf8'));
-  const targets = manifest.entries.map((entry) => entry.target);
+  const generatedProofs = JSON.parse(readFileSync(join(root, 'src/data/guide-proofs.generated.json'), 'utf8'));
+  const targets = [...manifest.entries.map((entry) => entry.target), ...Object.keys(generatedProofs).map((key) => `public/proofs/${key}.webp`)];
   assert.ok(targets.length >= 10, 'plancher : dix preuves');
   assertIntegrationCoverage(targets, [
     'public/proofs/integrations/hub.webp',

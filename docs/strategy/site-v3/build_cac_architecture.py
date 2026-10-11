@@ -29,12 +29,25 @@ def key(value):
 def resolve(source=None, backlog=None, families=None):
     source = source if source is not None else load(SOURCE)
     backlog = backlog if backlog is not None else load(HERE / 'backlog-v3.json')
+    plan = runpy.run_path(str(HERE / 'build-cluster-plan.py'))
     if families is None:
-        families = runpy.run_path(str(HERE / 'build-cluster-plan.py'))['taxonomie']()[1]
+        families = plan['taxonomie']()[1]
     measurements = {r['requete']: r for r in load(ROOT / source['measureSource'])['requetes']}
+    supplements = plan['SUPPLEMENTS_CAC_F4']
+    f4_source = plan['SOURCE_MESURES_F4']
+    f4 = {r['query']: r for r in load(HERE / f4_source)['measurements']}
+    for entry in supplements.values():
+        query = entry['requete']
+        row = f4.get(query)
+        if (not row or row.get('ok') is not True or row.get('suggestions') != []
+                or not row.get('retrievedAt', '').startswith('2026-10-09')):
+            raise ValueError('invalid F4 measurement: ' + query)
+        measurements[query] = {'requete': query, 'ok': True, 'nombreSuggestions': 0,
+                               'mesureLe': row['retrievedAt'],
+                               'instrument': 'autocompleterGoogle', 'source': f4_source}
     terrain = {r['id']: r for r in load(ROOT / source['terrainSource'])}
     existing = load(ROOT / 'config/page-intent-contract.json')['pages']
-    errors = []
+    errors = plan['verifier_supplements_cac'](backlog)
     cac = [e for e in backlog if e.get('profession', 'ec') == 'cac']
     active = {fid for fid, f in families.items() if f['profession'] == 'cac' and f['active']}
     decisions = source['familyDecisions']
@@ -59,14 +72,14 @@ def resolve(source=None, backlog=None, families=None):
         if e.get('architectureRole'):
             if e['architectureRole'] != 'pillar' or e['slug'] != 'automatiser-un-cabinet-cac-la-carte-des-taches':
                 errors.append('arbitrary architectureRole cannot bypass four angles')
-        else:
+        elif e['slug'] not in supplements:
             counts[e['famille']].append(e)
         demand = e['demande']
         row = measurements.get(e['requete'])
         if row:
             if (demand.get('etat') != 'mesuree' or demand.get('requete') != row['nombreSuggestions']
                     or demand.get('mesureeLe') != row['mesureLe'][:10]
-                    or demand.get('source') != 'cac/mesures/autocomplete-cac-2026-10-06.json'):
+                    or demand.get('source') != row.get('source', 'cac/mesures/autocomplete-cac-2026-10-06.json')):
                 errors.append(f"measurement drift: {e['slug']}")
         elif demand.get('etat') != 'non-mesuree' or demand.get('requete') is not None or demand.get('source') is not None:
             errors.append(f"invented measurement: {e['slug']}")
@@ -86,7 +99,7 @@ def resolve(source=None, backlog=None, families=None):
                     'query': existing.get(url, {}).get('query'), 'volumeMensuel': None}
         row = measurements.get(query)
         if row:
-            return {'state': 'mesuree', 'source': source['measureSource'], 'query': query,
+            return {'state': 'mesuree', 'source': ('docs/strategy/site-v3/' + row['source']) if row.get('source') else source['measureSource'], 'query': query,
                     'measuredAt': row['mesureLe'], 'instrument': row['instrument'],
                     'suggestions': row['nombreSuggestions'], 'volumeMensuel': None}
         return {'state': 'non-mesuree', 'source': None, 'query': query, 'suggestions': None, 'volumeMensuel': None}
@@ -95,7 +108,7 @@ def resolve(source=None, backlog=None, families=None):
     for e in cac:
         pages.append({'id': e['slug'], 'url': '/blog/' + e['slug'], 'query': e['requete'],
                       'owner': '/blog/' + e['slug'], 'profession': 'cac', 'family': e['famille'],
-                      'state': 'retenue-non-publiee', 'type': 'pilier' if e.get('architectureRole') else 'article',
+                      'state': 'retenue-non-publiee', 'type': 'pilier' if e.get('architectureRole') else 'supplement' if e['slug'] in supplements else 'article',
                       'angle': e.get('angle'), 'measure': evidence(e['requete']),
                       'terrain': decisions[e['famille']]['terrain'], 'purpose': e['preuve']})
     for p in source['pages']:
@@ -164,7 +177,9 @@ def resolve(source=None, backlog=None, families=None):
         if hub:
             link(hub, p['id'], p['query'])
             link(p['id'], hub, 'Autres supports gratuits' if hub == 'hub-outils' else 'Autres définitions')
-    for members in counts.values():
+    graph_members = {fid: members + [e for e in cac if e['slug'] in supplements and e['famille'] == fid]
+                     for fid, members in counts.items()}
+    for members in graph_members.values():
         for i, e in enumerate(members):
             sid = e['slug']
             link(pillar, sid, e['titre'])
@@ -194,12 +209,14 @@ def resolve(source=None, backlog=None, families=None):
     if errors:
         raise ValueError('\n'.join(errors))
     return {'version': 1, 'profession': 'cac', 'publication': source['publication'],
-            'promotion': source['promotion'], 'sources': [str(SOURCE.relative_to(ROOT)), source['blogSource']],
+            'promotion': source['promotion'], 'sources': [str(SOURCE.relative_to(ROOT)), source['blogSource'],
+                                                        'docs/strategy/site-v3/' + f4_source],
             'familyDecisions': decisions, 'pages': pages,
             'deferredGuides': [{**p, 'measure': evidence(p['query'])} for p in source['deferredGuides']],
             'links': list(links.values()),
             'meta': {'pages': len(pages), 'links': len(links), 'activeFamilies': len(active),
-                     'articles': sum(p['type'] == 'article' for p in pages), 'volumeMensuel': None}}
+                     'articles': sum(p['type'] == 'article' for p in pages),
+                     'supplements': sum(p['type'] == 'supplement' for p in pages), 'volumeMensuel': None}}
 
 
 def markdown(data):
@@ -215,6 +232,8 @@ def markdown(data):
         'Les signaux indirects et les limites de chaque ouverture figurent ci-dessous.', '',
         'Sources : [terrain C1](TERRAIN-CAC.md), [demande C2](DEMANDE-CAC.md), '
         '[mesures par requête](mesures/autocomplete-cac-2026-10-06.json). '
+        'Les deux suppléments F4 reprennent les réponses valides sans suggestion du 09/10/2026 '
+        '([relevé intégral](mesures/f4-rubrique-preflight-2026-10-09.json)), sans inventer de volume. '
         'Aucun volume mensuel ni chevauchement du top10 Google n’a été mesuré.', '',
         '## Contrat et périmètre', '',
         '`page-intent-plan.json` fixe les propriétaires futurs ; `pages-maillage.json` résout les requêtes, preuves et liens. '
@@ -234,12 +253,12 @@ def markdown(data):
     lines += ['', 'Le legacy `audit-legal` reste inactif pour les contenus historiques EC ; '
               'les familles actives CAC ne le réactivent pas. B2 traite séparément les anciennes mentions publiques.', '',
               '## Carte des pages par hub', '',
-              'Quatre angles de geste et de preuve par famille ouverte, plus un pilier transversal. '
+              'Quatre angles de geste et de preuve par famille ouverte, plus un pilier transversal et deux suppléments F4 explicitement mandatés. '
               'Les services vendent une préparation maintenue ; les outils exécutent un travail autonome ; '
               'les articles expliquent une méthode ou un cas précis. Les variantes de tiers de circularisation '
               'restent des sections, pas des pages clonées. Signification et planification partagent le même outil ; '
               'analyse FEC et pseudonymisation réutilisent les pages existantes.', '']
-    types = ('accueil', 'service', 'outil', 'outil-existant', 'hub-existant', 'pilier', 'rubrique', 'article', 'glossaire')
+    types = ('accueil', 'service', 'outil', 'outil-existant', 'hub-existant', 'pilier', 'rubrique', 'article', 'supplement', 'glossaire')
     for kind in types:
         pages = [p for p in data['pages'] if p['type'] == kind]
         if not pages:
@@ -267,7 +286,7 @@ def markdown(data):
         lines.append(f"| `{p['url']}` | {incoming} | {outgoing} |")
     lines += ['', '## Exécution et contrôles', '',
               'F1 : trois services. F2 : cinq outils nouveaux et deux réutilisations. '
-              'F3 : quatre pistes différées. F4 : rubrique, pilier et trente-deux angles. '
+              'F3 : quatre pistes différées. F4 : rubrique, pilier, trente-deux angles et deux suppléments bornés (appréciation de l’outil et constitution finale du dossier). '
               'F5 : trois intentions de terme prioritaires puis enrichissement sans concurrence avec les méthodes et outils. '
               'D9 décide les quotas : C3 ne les change pas. Le stock est planifié, non une promesse de date de publication.', '',
               'Régénérer : `python3 docs/strategy/site-v3/build-cluster-plan.py`. '

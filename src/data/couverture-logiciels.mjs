@@ -20,6 +20,52 @@ const LU_LE = '2026-10-06';
 
 /** @type {Readonly<Record<string, Couverture>>} */
 export const COUVERTURE_SERVICES = Object.freeze({
+  'facture-electronique': {
+    dejaFait: [
+      { outil: 'Pennylane', geste: 'invite les clients en masse, recueille les mandats, suit leur inscription et permet les relances', source: { url: 'https://www.pennylane.com/fr/expert-comptable/pdp', libelle: 'Pennylane, plateforme agréée pour les cabinets', consulteLe: LU_LE } },
+      { outil: 'ACD', geste: 'suit les mandats et inscriptions dans i-Suite Expert et permet les campagnes de mandats en lot', source: { url: 'https://www.acd-groupe.fr/facture-electronique/', libelle: 'ACD, facture électronique', consulteLe: LU_LE } },
+      { outil: 'Inqom', geste: 'suit les inscriptions à sa plateforme agréée depuis le portefeuille', source: { url: 'https://help.inqom.com/fr/suivre-les-inscriptions-%C3%A0-la-plateforme-agr%C3%A9%C3%A9e', libelle: 'Inqom, suivre les inscriptions à la plateforme agréée', consulteLe: LU_LE } },
+      { outil: 'fulll', geste: 'propose une plateforme agréée et son suivi de facturation électronique', source: { url: 'https://www.fulll.fr/facturation-electronique', libelle: 'fulll, facturation électronique', consulteLe: LU_LE } },
+      { outil: 'Cegid Loop et Quadra Plus', geste: 'intègrent la plateforme agréée de Shine ; le suivi précis du portefeuille se vérifie selon l’offre', source: { url: 'https://www.shine.fr/experts-comptables/produits/cegid-loop', libelle: 'Shine, plateforme intégrée à Cegid Loop', consulteLe: LU_LE } },
+      { outil: 'MyU', geste: 'intègre sa plateforme agréée ; le détail des fonctions de bascule se vérifie dans l’offre utilisée', source: { url: 'https://support.myunisoft.fr/facture-%C3%A9lectronique-et-pa-myunisoft', libelle: 'MyU, facture électronique et plateforme agréée', consulteLe: LU_LE } },
+      { outil: 'Tiime', geste: 'donne au cabinet accès aux flux de ses clients ; le suivi de bascule se vérifie dans l’offre utilisée', source: { url: 'https://www.tiime.fr/ec/', libelle: 'Tiime, offre cabinets', consulteLe: LU_LE } },
+    ],
+    reste: [
+      'les clients sur une autre plateforme agréée, seulement si le cabinet les suit encore hors de son outil ;',
+      'les appels à passer selon la règle du cabinet et les informations confirmées du dossier ;',
+      'les relances rédigées hors des campagnes déjà utilisées, à valider avant envoi ;',
+      'un accompagnement de transition jusqu’au 01/09/2027, à réévaluer si les éditeurs couvrent le besoin.',
+    ],
+  },
+  'bulletins-controle': {
+    dejaFait: [
+      { outil: 'Silae', geste: 'produit la paie et automatise son circuit jusqu’à la DSN', source: { url: 'https://www.silae.fr/solutions/', libelle: 'Silae, solutions de paie', consulteLe: '2026-10-06' } },
+      { outil: 'Cegid Payroll Ultimate', geste: 'propose un tableau de bord et des contrôles de paie personnalisables pour contrôler et valider la paie', source: { url: 'https://www.cegid.com/fr/produits/cegid-payroll-ultimate/', libelle: 'Cegid, Payroll Ultimate', consulteLe: '2026-10-06' } },
+    ],
+    reste: [
+      'les rapprochements encore manuels entre variables validées, bulletins calculés et références du cabinet, seulement si les contrôles natifs ne les couvrent pas ;',
+      'la file des écarts avec leurs valeurs, références et versions, à examiner par le gestionnaire ;',
+      'la vérification de votre outil, de son édition et de ses options avant toute proposition : un contrôle déjà suffisant reste dans cet outil. La correction et la validation restent au pôle social.',
+    ],
+  },
+  'circularisation-cac': {
+    dejaFait: [
+      {
+        outil: 'e-Circu',
+        geste: 'prépare les courriers, facilite la sélection des tiers, relance et centralise les justificatifs et le suivi des réponses',
+        source: { url: 'https://www.gestonline.com/blog/circularisation-audit', libelle: 'Gest On Line, circularisation avec e-Circu', consulteLe: LU_LE },
+      },
+      {
+        outil: 'Circit',
+        geste: 'envoie, suit et reçoit les confirmations, rapproche les réponses des documents de travail et signale les exceptions',
+        source: { url: 'https://www.circit.io/fr/platform/confirm', libelle: 'Circit, Confirm', consulteLe: LU_LE },
+      },
+    ],
+    reste: [
+      'la proposition de tiers selon la règle de votre cabinet, si elle n’est pas déjà couverte : soldes, mouvements, tirage reproductible, couverture ou nombre de comptes, deux passes et feuille de couverture ;',
+      'la préparation des pièces et rapprochements postérieurs choisis par le CAC pour les écarts ou non-réponses, avec conclusion laissée à son examen.',
+    ],
+  },
   'evaluation-transmission': {
     dejaFait: [
       { outil: 'RCA Évaluation', geste: 'centralise les données, traite les retraitements, automatise les calculs financiers et les scénarios de valorisation, puis génère des rapports personnalisables', source: { url: 'https://rca.fr/logiciels-experts/evaluation/', libelle: 'RCA, Évaluation', consulteLe: '2026-10-08' } },

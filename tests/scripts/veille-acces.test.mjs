@@ -4,6 +4,8 @@ import { decodeHtml, isRelevantQuestion, isWithinWindow, normalizeQuestion, qual
 import {
   canonicalText,
   evaluateClaimSource,
+  evaluateDiscoverySource,
+  inspectRegulatorySources,
   metaDescription,
   normalizedIncludes,
   sha256,
@@ -106,3 +108,60 @@ test('une preuve fragmentée ferme si son manifeste ou un fragment dérive', () 
   assert.equal(staleManifest.evidenceHashMatches, false);
   assert.equal(staleManifest.critical, true);
 });
+
+test('index DILA : maintenance HTTP 200 ou texte non lié est indisponible', () => {
+  const source = { id: 'legifrance-dila-index' };
+  for (const body of ['<title>Page de maintenance</title>', '<p>LEGI_20260929-100000.tar.gz</p>', '']) {
+    const verdict = evaluateDiscoverySource({ id: source.id, httpStatus: 200, body, error: null }, source);
+    assert.equal(verdict.latestDilaPackage, null);
+    assert.equal(verdict.critical, true);
+    assert.equal(verdict.error, 'DilaIndexUnavailable');
+  }
+});
+
+test('index DILA : panne réseau conserve TypeError et ferme la porte', () => {
+  const verdict = evaluateDiscoverySource({ id: 'legifrance-dila-index', httpStatus: 0, body: '', error: 'TypeError' }, { id: 'legifrance-dila-index' });
+  assert.equal(verdict.latestDilaPackage, null);
+  assert.equal(verdict.critical, true);
+  assert.equal(verdict.error, 'TypeError');
+});
+
+test('index DILA : seul un lien d’archive sur HTTP 200 établit une disponibilité', () => {
+  const source = { id: 'legifrance-dila-index' };
+  const verdict = evaluateDiscoverySource({ id: source.id, httpStatus: 200, body: '<a href="LEGI_20260927-204937.tar.gz">ancien</a><a href="/OPENDATA/LEGI/LEGI_20260929-204937.tar.gz">nouveau</a>', error: null }, source);
+  assert.equal(verdict.latestDilaPackage, '20260929-204937');
+  assert.equal(verdict.critical, false);
+  assert.equal(evaluateDiscoverySource({ id: source.id, httpStatus: 503, body: '<a href="LEGI_20260929-204937.tar.gz">archive</a>', error: null }, source).critical, true);
+});
+
+for (const [name, body] of [
+  ['data-href', '<html><p>Maintenance</p><a data-href="LEGI_20260929-204937.tar.gz">archive indisponible</a></html>'],
+  ['commentaire HTML', '<html><p>Maintenance</p><!-- <a href="LEGI_20260929-204937.tar.gz">archive</a> --></html>'],
+  ['script text/plain', '<html><p>Maintenance</p><script type="text/plain"><a href="LEGI_20260929-204937.tar.gz">archive</a></script></html>'],
+]) {
+  test(`index DILA : ${name} sans lien actif reste indisponible dans la chaîne réelle`, async (t) => {
+    const calls = [];
+    t.mock.method(globalThis, 'fetch', async (request) => {
+      const url = String(request);
+      calls.push(url);
+      return {
+        status: 200,
+        url,
+        text: async () => new URL(url).hostname === 'echanges.dila.gouv.fr'
+          ? body : '<html>FIXTURE OFFLINE — aucune preuve réglementaire</html>',
+      };
+    });
+    const result = await inspectRegulatorySources();
+    const source = result.discoverySources.find((item) => item.id === 'legifrance-dila-index');
+    assert.equal(calls.filter((url) => new URL(url).hostname === 'echanges.dila.gouv.fr').length, 1);
+    assert.equal(result.candidate.matchesSeal, true);
+    assert.equal(result.maintenanceBaseline.matchesSeal, true);
+    assert.equal(result.review.aiReviewPass, false);
+    assert.deepEqual(result.review.closedClaims.map(({ id, verdict, severity }) => [id, verdict, severity]).sort(), [
+      ['FE-01', 'SOURCE_INACCESSIBLE', 'P1'],
+      ['FE-02', 'SOURCE_INACCESSIBLE', 'P1'],
+      ['FE-03', 'SOURCE_INACCESSIBLE', 'P1'],
+    ]);
+    assert.deepEqual([source.latestDilaPackage, source.critical, source.error], [null, true, 'DilaIndexUnavailable']);
+  });
+}

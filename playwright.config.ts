@@ -18,6 +18,9 @@ export default defineConfig({
     // child-server marker: keep the exact process owned by Playwright alive.
     // No --ignore-lock, server reuse or simulated approval/human presence.
     env: { ASTRO_PREVIEW_BACKGROUND: '1' },
+    // Node's build tests report failures on stdout, before preview starts.
+    stdout: 'pipe',
+    stderr: 'pipe',
     url: baseURL,
     reuseExistingServer: false,
     timeout: 600_000,

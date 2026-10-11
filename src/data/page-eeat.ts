@@ -78,6 +78,28 @@ const sources = {
 // Factures fournisseurs : la page dit elle-même ne supposer aucune obligation réglementaire ; la fiche sur la
 // facturation électronique n'y étayait aucun mot du texte, elle n'est plus citée (revue de #166, 07/10/2026).
 export const SERVICE_EEAT = {
+  'facture-electronique': {
+    auteur: 'kevin', datePublication: '2026-10-07', dateModification: '2026-10-07',
+    sources: [{
+      editeur: 'DGFiP', titre: 'Je passe à la facturation électronique',
+      url: 'https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique',
+      consulteLe: '2026-10-06',
+      preuve: 'Le calendrier lié fixe l’émission des PME au 1er septembre 2027. La préparation des appels reste un choix d’organisation du cabinet, pas un statut de conformité.',
+      mot: 'calendrier officiel lié par la DGFiP',
+    }],
+  },
+  'bulletins-controle': {
+    auteur: 'kevin', datePublication: '2026-10-10', dateModification: '2026-10-10',
+    sources: [{ editeur: 'Service Public', titre: 'Fiche de paie', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F559', consulteLe: '2026-10-06', preuve: 'Les mentions et libellés bornent la revue ; le repérage fictif ne qualifie pas juridiquement un bulletin.', mot: 'Service Public, fiche de paie' }],
+  },
+  'circularisation-cac': {
+    auteur: 'kevin', datePublication: '2026-10-09', dateModification: '2026-10-09',
+    sources: [
+      { editeur: 'H2A', titre: 'NEP 505 — Demandes de confirmation des tiers', url: 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/', consulteLe: '2026-10-06', preuve: 'La sélection des tiers et les suites des non-réponses restent sous la maîtrise du CAC ; la préparation ne conclut pas.', mot: 'H2A, NEP 505' },
+      { editeur: 'H2A', titre: 'NEP 530 — Sélection des éléments à contrôler', url: 'https://h2a-france.org/normes/selection-des-elements-a-controler/', consulteLe: '2026-10-06', preuve: 'Le CAC détermine les méthodes de sélection ; les paramètres du jeu fictif ne sont pas des recommandations.', mot: 'NEP 530' },
+      { editeur: 'H2A', titre: 'NEP 315 — Connaissance de l’entité et évaluation du risque', url: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/', consulteLe: '2026-10-06', preuve: 'La fiche outil fournit des éléments d’appréciation au CAC, jamais une homologation.', mot: 'NEP 315 révisée' },
+    ],
+  },
   'evaluation-transmission': {
     auteur: 'kevin', datePublication: '2026-10-08', dateModification: '2026-10-08',
     sources: [{ editeur: 'Bpifrance Création', titre: 'Évaluation d’entreprise', url: 'https://bpifrance-creation.fr/encyclopedie/reprendre-entreprise-etapes/diagnostiquer-evaluer/evaluation-dentreprise', consulteLe: '2026-10-06', preuve: 'L’évaluation ne fixe pas le prix ; le jeu fictif prépare seulement les chiffres et leurs références, sans valorisation.', mot: 'L’évaluation ne permet pas de fixer un prix' }],

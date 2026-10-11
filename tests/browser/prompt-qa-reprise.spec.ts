@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { setTimeout as delay } from 'node:timers/promises';
 import { MODELS, modelPrompt, TRANSFER_KEY } from '../../src/lib/bibliotheque-prompts.mjs';
 const lib = '/outils-comptables-gratuits/bibliotheque-prompts-comptables';
 const gen = '/outils-comptables-gratuits/generateur-prompt-expert-comptable';
@@ -7,25 +8,28 @@ async function assemble(page: import('@playwright/test').Page) {
   await page.locator('[name=confirmed]').check();
   await page.locator('button[type=submit]').click();
 }
-test('R1 : navigation réelle isolée, original édité conservé sans stockage', async ({ page }) => {
+for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, original édité conservé sans stockage${navigationDelay ? ', destination différée' : ''}`, async ({ page, context }) => {
+  if (navigationDelay) await context.route(`**${lib}`, async route => {
+    await delay(navigationDelay);
+    await route.continue();
+  });
   await page.goto(gen); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
   const edited = (await page.locator('[data-editor]').inputValue()) + '\nNote abstraite à conserver.';
   await page.locator('[data-editor]').fill(edited);
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
-  const popup = page.waitForEvent('popup');
-  // Observe the popup before awaiting the click: opening a tab can background
-  // the original while Playwright is still finishing its pointer action.
-  const clicked = page.locator(`a[href="${lib}"]`).first().click();
-  const other = await popup;
-  await page.bringToFront();
-  await clicked;
-  // Suivre l’onglet consulté, sans dépendre de l’activation implicite de Chromium.
-  await other.bringToFront();
-  await expect(other).toHaveURL(new RegExp(lib + '$'));
+  // Sur Chromium macOS, l'acquittement du clic peut rester suspendu dans
+  // l'onglet parent masqué. Le réactiver dès le popup, sans attendre le clic.
+  const [other] = await Promise.all([
+    page.waitForEvent('popup').then(async tab => { await page.bringToFront(); return tab; }),
+    page.locator(`a[href="${lib}"]`).first().click(),
+  ]);
+  await other.bringToFront(); await expect(other).toHaveURL(new RegExp(lib + '$'));
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
   await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
   await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
+  // Chromium macOS peut suspendre l'évaluation dans l'onglet en arrière-plan.
+  // Revenir à l'original comme un utilisateur, sans toucher à son contenu.
   await page.bringToFront();
   await expect(page).toHaveURL(new RegExp(gen + '$'));
   await expect(page.locator('[data-editor]')).toHaveValue(edited);

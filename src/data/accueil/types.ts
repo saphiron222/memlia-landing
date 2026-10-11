@@ -9,7 +9,7 @@ type Texte = { titre: string; texte: string };
 
 /** Données de page uniquement : les composants conservent le DOM, les styles et les interactions. */
 export interface ContenuAccueil {
-  hero: { etiquette: string; titre: string; texte: string; poster: string; video: string; videoMobile?: string; sousTitres: string };
+  hero: { etiquette: string; titre: string; texte: string; poster: string; video: string; videoMobile?: string; sousTitres: string; sousTitresOptionnels?: boolean; descriptionVideo?: string };
   orientation: { titre: string; destinations: (Lien & { texte: string })[]; services: Lien[]; invitation: string };
   quotidien: { titre: string; texte: string; points: Texte[]; note: string; image: ProofId };
   promesse: { titre: string; texte: string; points: Texte[]; image: ProofId };

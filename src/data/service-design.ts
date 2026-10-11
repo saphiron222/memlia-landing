@@ -10,6 +10,18 @@ export interface ServiceDesign {
  * docs/design/site-v2-proofs. Aucun visuel ne simule un produit ni ne contient de donnée client.
  */
 export const SERVICE_DESIGN: Record<string, ServiceDesign> = {
+  'facture-electronique': {
+    heroProof: 'v2/30-service-facture-electronique',
+    bodyProof: 'v2/30-service-facture-electronique',
+  },
+  'bulletins-controle': {
+    heroProof: 'v2/48-service-bulletins-controle',
+    bodyProof: 'v2/48-service-bulletins-controle',
+  },
+  'circularisation-cac': {
+    heroProof: 'v2/44-service-circularisation-cac',
+    bodyProof: 'v2/44-service-circularisation-cac',
+  },
   'evaluation-transmission': {
     heroProof: 'v2/47-service-evaluation-transmission',
     bodyProof: 'v2/47-service-evaluation-transmission',

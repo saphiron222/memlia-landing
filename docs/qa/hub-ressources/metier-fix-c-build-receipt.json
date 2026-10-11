@@ -8,10 +8,14 @@
     {
       "command": "node scripts/strip-briefs.mjs",
       "exitCode": 0
+    },
+    {
+      "command": "node scripts/render-public-source-text.mjs",
+      "exitCode": 0
     }
   ],
-  "startedAt": "2026-10-09T03:57:15.921Z",
-  "endedAt": "2026-10-09T03:57:39.024Z",
+  "startedAt": "2026-10-11T16:25:33.916Z",
+  "endedAt": "2026-10-11T16:26:10.633Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -22,6 +26,10 @@
       {
         "command": "node scripts/strip-briefs.mjs",
         "exitCode": 0
+      },
+      {
+        "command": "node scripts/render-public-source-text.mjs",
+        "exitCode": 0
       }
     ],
     "snapshotsIdentiques": true,
@@ -29,10 +37,10 @@
   },
   "surfaces": {
     "T": {
-      "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
-      "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
-      "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
-      "outputDigest": "76ea6bd5933c122d86e7d5d7bf4ef14d45df28ee96eecbb943ef69fb376a0b07"
+      "sourceBundleDigest": "cacf97035e9e4d49e7809c9b0816fbefaa820d091da8c1ede8e459603ceefac2",
+      "assetBundleDigest": "d67773b372160ee213401ee539dec96269197985133efdd268f6934b05a94229",
+      "configBundleDigest": "97bc6044f2a1147a5479204a8304171190e783d1fa91839033c45531856efe0e",
+      "outputDigest": "12835578758572de02b04c8999dab24d0244171e0fcd27a591f93f754d8c3ca9"
     }
   }
 }

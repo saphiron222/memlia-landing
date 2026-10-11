@@ -135,6 +135,13 @@ function verifyState(root, slug) {
 function reviewErrors(review, recipe, candidateHash) {
   return review?.kind === (recipe.reviewKind ?? 'qa') && review.status === 'PASS' && typeof review.reviewer === 'string' && review.reviewer.trim() && review.reviewer !== recipe.author && review.reviewer !== recipe.integration.auteur && date(review.reviewedAt) && review.candidateSha256 === candidateHash && Array.isArray(review.observations) && review.observations.length && review.observations.every(x => typeof x === 'string' && x.trim()) ? [] : ['Une revue indépendante PASS datée, motivée et liée au candidat est requise (reviewKind).'];
 }
+export function verifierPreuveGuide({ root = process.cwd(), slug }) {
+  try {
+    const { errors, manifest } = verifyState(root, slug);
+    if (!['scelle', 'publie'].includes(manifest.status)) errors.push('Scellement requis pour la provenance publique.');
+    return { pass: errors.length === 0, errors, asset: `/${assetPath(slug).slice(7)}`, route: `/integrations/${slug}` };
+  } catch (error) { return fail([error.message]); }
+}
 export async function preparerGuide({ root = process.cwd(), slug }) {
   try {
     const recipe = load(root, slug);
