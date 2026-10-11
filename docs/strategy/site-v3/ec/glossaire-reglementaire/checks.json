@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "entries": 4,
+  "sources": 8,
+  "evidencePairs": 44,
+  "publicationAllowed": false,
+  "unitTests": 6,
+  "originalTypeCheck": "EXPECTED FAIL : seule date 2026-10-11 absente de l’union originale",
+  "preparedTypeCheck": "PASS : tous les champs, avec extension de date explicitement proposée",
+  "snapshotCommit": "f9b65c7d5a40d6ec6ccf17a3c8dee8f6f93eb73f",
+  "anchorCollisions": [],
+  "dilaBodyComparison": "PASS après normalisation des seuls espaces",
+  "dilaNotesComparison": "DIFFERENCE : note A4 tronquée après « à compter du 1 » ; page complète utilisée comme source principale",
+  "businessReviewAcquired": false,
+  "sourcesLastOpened": "2026-10-11"
+}
