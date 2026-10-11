@@ -1,0 +1,367 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_79043fac",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "preparedByTask": "t_3395d534",
+  "status": "AI_REVIEW_PASS",
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+  "reviewedCandidateHash": "fc0d831bcc6840c8923f481184efca39bf75319946cf91f2c5ae1c0d60defeba",
+  "candidateHashScope": "Octets du paquet entries.json uniquement ; pas le manifeste global Ressources.",
+  "claimIdScope": "Identifiants du paquet parent ; remapper vers les unités/citations globales lors de l’intégration.",
+  "evidenceRef": "review/REVUE.md",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "supervision-humaine.definition.1.human-control",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 14 §§1-3 : exigence de contrôle effectif des systèmes à haut risque. Le mot « ici » borne l’alias supervision au sens du glossaire ; aucune assimilation de toute IA comptable au haut risque.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "supervision-humaine.definition.2.human-control",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 14 §4 a), c), d), e) : capacités/limites, surveillance, interprétation, rejet et intervention ou arrêt sécurisé. La proportionnalité est explicitée dans commonConfusion ; il s’agit de possibilités de contrôle, non d’une garantie de chaque sortie.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "supervision-humaine.context.1.human-control",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "L’article 14 vise expressément les systèmes à haut risque. Dire que cette exigence ne concerne pas indistinctement tout usage est exact ; cela n’exclut pas les autres obligations ni la règle de service Memlia.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "supervision-humaine.context.2.ia-calendar",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 113 c) i)-ii) consolidé et article 1 point 40 du règlement 2026/1744 au JO : 2 décembre 2027 pour article 6 §2/annexe III, 2 août 2028 pour article 6 §1/annexe I. L’article 14 relève bien de la section 2 ; l’exception de l’article 6 §5 ne change pas sa date.",
+      "supplementarySourceIds": [
+        "eurlex-modificatif"
+      ]
+    },
+    {
+      "claimId": "supervision-humaine.context.3.ia-calendar",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Précaution interprétative justifiée par les catégories d’article 113 et, en complément, articles 2, 6 et 111 §2. Les systèmes antérieurs et les limitations sectorielles ne sont pas traités comme tous soumis aux mêmes exigences ; aucune qualification de système concret n’est revendiquée.",
+      "supplementarySourceIds": [
+        "eurlex-consolide"
+      ]
+    },
+    {
+      "claimId": "supervision-humaine.commonConfusion.2.human-control",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 14 §§1 et 3 emploie contrôle effectif et mesures proportionnées aux risques, autonomie et contexte. La phrase conserve ces deux qualités et la population haut risque.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.definition.1.ia-definition",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 3 point 56 : compétences, connaissances et compréhension pour déployer en connaissance de cause, possibilités, risques et préjudices potentiels. Définition autonome fidèle, sans réduire la maîtrise à une certification.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.definition.2.ia-measures",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 4 §1 actuel : fournisseurs et déployeurs prennent des mesures pour favoriser le développement, tenant compte des personnes et du contexte. Les autres personnes agissant pour leur compte entrent dans la preuve ; la définition n’exige pas une garantie de niveau individuel.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.context.1.ia-calendar",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 113 a) : chapitre I applicable depuis le 2 février 2025. Les nouvelles exceptions de cet alinéa portent sur article 5 du chapitre II, non sur chapitre I. La phrase suivante distingue la version de l’article 4 remplacée en juillet 2026.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.context.2.ia-modification",
+      "sourceId": "eurlex-modificatif",
+      "sourceContentSha256": "75ded61ecb85dcedf6e366d133b338ff31f68507de469a8984caf9211c7570cb",
+      "checkedAt": "2026-10-11T16:09:30.422817+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 1 point 5 du règlement 2026/1744 remplace expressément article 4 et exclut la garantie d’un niveau spécifique par individu. Acte signé le 8 juillet, publié le 24 juillet ; son article 4 prévoit l’entrée en vigueur le troisième jour, concordant avec la consolidation du 27 juillet.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.context.3.ia-measures",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 4 §1 : connaissances techniques, expérience, éducation, formation, contexte et personnes affectées guident les mesures. La phrase est une transposition au cabinet, sans affirmer un programme unique ou une durée obligatoire.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "maitrise-de-l-ia.commonConfusion.2.ia-measures",
+      "sourceId": "eurlex-consolide",
+      "sourceContentSha256": "b8c3033416bc044c4d72c43873ac30f06bcc4a944899198c589fa0b86b5ff74c",
+      "checkedAt": "2026-10-11T16:09:30.040697+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 4 §1 impose bien des mesures tenant compte des personnes et usages et énonce expressément que garantir un niveau spécifique individuel n’est pas requis. Ne pas reconduire la formulation ancienne du plan.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.definition.1.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 151, troisième alinéa : le contrat écrit peut prendre la forme d’une lettre de mission. Population expressément expertise comptable/client ou adhérent, sans transposition au mandat du CAC.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.definition.2.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Premier alinéa de l’article 151 : contrat écrit définissant la mission et précisant droits et obligations de chaque partie. La définition restitue le contenu requis, sans prétendre qu’un suivi logiciel crée l’accord.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.definition.3.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Deuxième et troisième alinéas de l’article 151 : référence aux règles professionnelles et indication du mandat le cas échéant. La condition « le cas échéant » est conservée ; aucun mandat universel n’est inventé.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.context.1.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Premier et troisième alinéas de l’article 151 : contrat écrit requis, forme lettre de mission possible. Distinction exacte entre obligation de contrat et faculté de forme ou d’intitulé.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.context.2.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "La page officielle donne la version depuis le 1er janvier 2023 ; son troisième alinéa impose de préciser l’étendue du mandat dans la lettre. Le champ complet et la définition gardent la condition d’existence du mandat.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.commonConfusion.2.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Article 151 emploie contrat écrit et peut prendre la forme d’une lettre. Obligation de fond et faculté de forme sont restituées sans changement de polarité.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "lettre-de-mission.commonConfusion.3.mission-all",
+      "sourceId": "legi-mission",
+      "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+      "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Conséquence exacte du caractère facultatif de la forme indiqué par article 151. Le glossaire ne transforme pas le titre du document en condition réglementaire universelle.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+      "sourceId": "dgfip-definition",
+      "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+      "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "FAQ DGFiP modifiée le 16 janvier 2026 : trois étapes dématérialisées et socle minimum de données structurées. L’ouverture du 11 octobre ne change pas la date éditoriale de la source.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+      "sourceId": "dgfip-definition",
+      "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+      "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "La FAQ précise l’intermédiation et l’envoi effectif à la plateforme du destinataire. Je découvre la facturation électronique précise l’immatriculation par l’État ; l’agrément appartient à la plateforme, pas à Memlia.",
+      "supplementarySourceIds": [
+        "dgfip-perimetre"
+      ]
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.definition.3.invoice-definition",
+      "sourceId": "dgfip-definition",
+      "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+      "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "La FAQ exclut le PDF image envoyé par mail ; le périmètre est complété par CGI 289 bis et DGFiP Je découvre. « Dans la réforme » et « entrant dans son périmètre » évitent de déclarer invalide tout PDF dans tout régime de facturation.",
+      "supplementarySourceIds": [
+        "legi-cgi",
+        "dgfip-perimetre"
+      ]
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.context.1.invoice-cgi",
+      "sourceId": "legi-cgi",
+      "sourceContentSha256": "c6afe7621c13581ba850bf254ecdd9f3c603e312f367f302b964a2f578e98807",
+      "checkedAt": "2026-10-11T16:09:31.146784+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "CGI 289 bis I, version depuis le 21 février 2026 : opérations visées, assujettis établis en France, recours à une plateforme agréée. La clause « opérations concernées » garde les exclusions des IV/V ; réexport A4 PR125 identique, corps concordant avec la page officielle, notes non assimilées au corps.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+      "sourceId": "dgfip-calendrier",
+      "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+      "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "FAQ calendrier DGFiP : réception pour toutes tailles au 1er septembre 2026, émission et e-reporting GE/ETI à cette date, PME/micro au 1er septembre 2027. Lu dans le champ opérations concernées et fournisseur soumis à émission ; aucune émission universelle en 2026 n’est annoncée.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.context.3.invoice-reporting",
+      "sourceId": "dgfip-perimetre",
+      "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+      "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "DGFiP Je découvre, trois volets : facturation domestique B2B, e-reporting transaction pour particuliers/étranger, e-reporting paiement selon exigibilité. Le candidat distingue les périmètres et n’attribue pas automatiquement les trois obligations à chaque opération.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+      "sourceId": "dgfip-calendrier",
+      "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+      "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "FAQ calendrier : petites entreprises et micro-entreprises passent à émission obligatoire en septembre 2027. L’exemple s’inscrit dans le périmètre déclaré de l’entrée et fait vérifier catégorie et opération ; il n’étend pas la règle à toutes ventes.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition",
+      "sourceId": "dgfip-definition",
+      "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+      "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "FAQ : PDF image envoyé par mail n’est pas une facture électronique au sens de la réforme. La vérification catégorie/opération/canal est une méthode de cabinet, non une validation de conformité par la réception seule.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition",
+      "sourceId": "dgfip-definition",
+      "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+      "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "La FAQ distingue expressément socle structuré, plateforme agréée et PDF ordinaire. Le candidat dit « ne suffit pas », sans disqualifier les formats mixtes reconnus.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format",
+      "sourceId": "dgfip-perimetre",
+      "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+      "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "La DGFiP cite UBL, CII ou format mixte données structurées/fichier image. La présence d’un PDF ne suffit donc pas à classer le document ; aucune assimilation PDF ordinaire/format mixte conforme n’est faite.",
+      "supplementarySourceIds": []
+    },
+    {
+      "claimId": "facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar",
+      "sourceId": "dgfip-calendrier",
+      "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+      "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+      "reviewedAt": "2026-10-11T16:44:37.544784+02:00",
+      "verdict": "soutient",
+      "reasoning": "Le calendrier distingue réception toutes tailles en 2026 et émission PME/micro en 2027. La phrase combat précisément la confusion entre les deux obligations.",
+      "supplementarySourceIds": []
+    }
+  ],
+  "definitionsVerdicts": [
+    {
+      "entryId": "supervision-humaine",
+      "verdict": "PASS"
+    },
+    {
+      "entryId": "maitrise-de-l-ia",
+      "verdict": "PASS"
+    },
+    {
+      "entryId": "lettre-de-mission",
+      "verdict": "PASS"
+    },
+    {
+      "entryId": "facture-electronique-et-plateforme-agreee",
+      "verdict": "PASS"
+    }
+  ],
+  "admission": {
+    "admissible": [
+      "lettre-de-mission",
+      "facture-electronique-et-plateforme-agreee"
+    ],
+    "deferredNoPublishedArticle": [
+      "supervision-humaine",
+      "maitrise-de-l-ia"
+    ],
+    "reviewIsNotPublicationPermission": true
+  },
+  "blockingDefects": [],
+  "publicationVerified": false,
+  "reservations": [
+    "Consolidation A4 récente non validée globalement ; note CGI tronquée exclue comme preuve.",
+    "Qualification du système, dispositions transitoires et catégorie/opération à vérifier pour tout cas réel.",
+    "Deux définitions IA relues mais non admises faute d’article public support."
+  ]
+}

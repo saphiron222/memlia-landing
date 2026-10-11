@@ -31,18 +31,19 @@ function routeFromHtml(dist, path) {
   return `/${name}`;
 }
 
-function sourceForRoute(root, route) {
+export function sourceForRoute(root, route, rubriques = BLOG_RUBRIQUES) {
   if (route === '/') return join(root, 'src/pages/index.astro');
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
   if (route.startsWith('/integrations/')) return join(root, 'src/pages/integrations/[slug].astro');
   if (route === '/integrations') return join(root, 'src/pages/integrations/index.astro');
   if (route.startsWith('/blog/rubrique/')) return join(root, 'src/pages/blog/rubrique/[slug].astro');
+  if (rubriques.some(({ chemin }) => chemin === route)) return join(root, 'src/pages/blog/[...rubrique].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
   return join(root, 'src/pages', `${route.slice(1)}.astro`);
 }
 
-function isBlogArticle(route) {
-  return /^\/blog\/[^/]+$/.test(route);
+export function isBlogArticle(route, rubriques = BLOG_RUBRIQUES) {
+  return !rubriques.some(({ chemin }) => chemin === route) && /^\/blog\/[^/]+$/.test(route);
 }
 
 function resolveLocalImport(root, owner, specifier) {
@@ -77,6 +78,8 @@ export function auditerComposition({ root = process.cwd(), sourcePath }) {
         layouts.add(layout);
         follow(imported);
       }
+      // Le rendu canonique des rubriques compose Base sans être lui-même un layout.
+      if (imported === join(root, 'src/components/blog/BlogRubrique.astro')) follow(imported);
     }
   }
 
@@ -277,14 +280,14 @@ function mediaIsOwned(root, provenance, asset, route, references) {
   return provenance.exact.has(asset) && references.get(asset)?.length === 1;
 }
 
-function expectedSchema(route) {
+export function expectedSchema(route, rubriques = BLOG_RUBRIQUES) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
   if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
   if (route === '/integrations') return ['CollectionPage', 'ItemList'];
   if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
-  if (/^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
-  if (isBlogArticle(route)) return ['BlogPosting', 'BreadcrumbList'];
+  if (rubriques.some(({ chemin }) => chemin === route) || /^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
+  if (isBlogArticle(route, rubriques)) return ['BlogPosting', 'BreadcrumbList'];
   if (route === '/blog' || route === '/glossaire') return ['CollectionPage', 'BreadcrumbList'];
   if (route === '/a-propos') return ['AboutPage', 'BreadcrumbList'];
   if (route === '/contact') return ['ContactPage', 'BreadcrumbList'];

@@ -68,6 +68,9 @@
     "tableau de bord paie excel": [
       "tableau de bord paie excel",
       "tableau de bord salaire excel"
+    ],
+    "lettrage comptable excel": [
+      "lettrage comptable excel"
     ]
   },
   "provenance": {
@@ -167,8 +170,7 @@
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
     },
     "prompt chatgpt expert comptable": {
-      "capturedAt": "2026-10-06T23:32:58.624Z",
-      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=prompt%20chatgpt%20expert%20comptable",
+      "capturedAt": "2026-10-07T02:58:05.073Z",
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
     },
     "relance pièces manquantes cabinet comptable": {
@@ -185,6 +187,31 @@
       "capturedAt": "2026-10-06T23:33:00.085Z",
       "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=tableau%20de%20bord%20paie%20excel",
       "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
+    },
+    "lettrage comptable excel": {
+      "capturedAt": "2026-10-07T02:58:05.073Z",
+      "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle"
     }
-  }
+  },
+  "probes": [
+    {
+      "query": "lettrage comptable excel",
+      "ok": true,
+      "suggestions": [
+        "lettrage comptable excel"
+      ],
+      "erreur": null
+    },
+    {
+      "query": "prompt chatgpt expert comptable",
+      "ok": true,
+      "suggestions": [
+        "prompt chatgpt expert comptable"
+      ],
+      "erreur": null
+    }
+  ],
+  "note": "Assistant local et rafraîchissement réel de la requête de fixture blog requise par le build ; aucun volume revendiqué.",
+  "hl": "fr",
+  "gl": "fr"
 }

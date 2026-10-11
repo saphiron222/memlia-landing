@@ -54,6 +54,10 @@ Le contrat de page découvre les manifestes de `guides/etats` et réutilise la v
 
 ## Rejeu historique et tests
 
+La lecture historique s'arrête à la clôture du tableau (`];` ou `] as const;`). Une déclaration portant un `slug` après ce tableau ne devient jamais publique ; la mutation de non-régression exige un inventaire inchangé et refuse sa page comme son URL sitemap, même avec un lastmod cohérent.
+
+Les oracles indépendants `tests/proof/test_build.py` dérivent les pages et URLs de sitemap du tableau `INTEGRATIONS_HISTORIQUES` et de `guides.generated.json`, jamais du contenu de `dist`. Un ajout généré exige une définition identique à sa recette, un état `scelle` ou `publie`, un sceau lié à la revue indépendante et les octets intacts des preuves de demande, HTML et WebP. L'audit forge reste responsable de la validation complète de recette et du renderer. Les égalités d'inventaire restent strictes : une page ou une URL de sitemap supplémentaire, une collection orpheline ou une provenance modifiée échoue. `test_integration_inventory.py` exerce ces mutations dans des dossiers temporaires, sans ajouter de données au corpus livré.
+
 Les fixtures forge et rendu initialisent leurs collections générées à `[]` et `{}` uniquement dans leur répertoire temporaire. Copier les collections publiques sans leurs recettes et états importerait des orphelins dès le premier guide scellé. Le corpus historique TypeScript reste copié ; aucune collection, recette ou preuve publique n'est réécrite. Une régression utilise une source non vide pour vérifier cette isolation, et une autre confirme que l'audit de production refuse toujours une entrée sans sceau.
 
 Le test de rejeu historique démarre avec un candidat synthétique déjà scellé : il compare les octets du corpus TypeScript, des collections, du média et des états initiaux après préparation et rejeu idempotent. Une recette historique altérée reste refusée sans modifier ces fichiers. Le test Astro exige que ses collections ne contiennent que son propre candidat synthétique.

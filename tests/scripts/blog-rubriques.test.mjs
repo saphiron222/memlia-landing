@@ -45,7 +45,9 @@ test('le contrat central conserve les rubriques historiques et motive chaque exc
   const publies = registre.articles.filter(({ type }) => type === 'blog').map(({ slug }) => slug);
   assert.deepEqual([...attaches, ...Object.keys(ARTICLES_HORS_RUBRIQUE)].sort(), publies.sort());
   assert.ok(Object.values(ARTICLES_HORS_RUBRIQUE).every(({ date, raison }) => /^\d{4}-\d{2}-\d{2}$/.test(date) && raison.length >= 50));
-  assert.ok(BLOG_RUBRIQUES.every((rubrique) => rubrique.chemin === `/blog/rubrique/${rubrique.slug}`));
+  for (const slug of ['paie-dsn-cabinet-comptable', 'gestion-pieces-comptables', 'ia-cabinet-comptable']) {
+    assert.equal(BLOG_RUBRIQUES.find((rubrique) => rubrique.slug === slug)?.chemin, `/blog/rubrique/${slug}`);
+  }
 });
 
 test('la liste de chaque hub vient des entrées visibles et ignore un article absent de la collection', () => {

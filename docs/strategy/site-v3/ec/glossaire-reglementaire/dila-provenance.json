@@ -1,0 +1,16 @@
+{
+  "id": "LEGIARTI000053546660",
+  "exportMethod": "PR125 scripts/export-dila-source.mjs, exécuté sans redater la collecte",
+  "dilaPath": "sources/cgi.dila.json",
+  "dilaCopySha256": "da0c3f8394c0dc25bcdae63fd8a44fa23fcb4fe5d8f5bd55bf5619508f203e4b",
+  "retrievedAt": "2026-10-05T22:44:33.011198+00:00",
+  "validFrom": "2026-02-21",
+  "validToExclusiveRaw": "2222-02-22",
+  "status": "ABROGE_DIFF",
+  "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+  "bodyComparison": "PASS après normalisation des seuls espaces",
+  "notesComparison": "DIFFERENCE : note A4 tronquée après « à compter du 1 » ; page complète utilisée comme source principale",
+  "sourceForCurrentLaw": "legi-cgi (copie de page ouverte le 11/10), pas la note tronquée A4",
+  "missionA4Lookup": "Aucun article LEGIARTI000046882378 trouvé dans le périmètre du snapshot ; page Légifrance ouverte et copiée directement",
+  "followupTask": "t_976e43cb"
+}

@@ -10,6 +10,7 @@ import json
 import runpy
 import sys
 import unittest
+from editorial_clock import jour_fixe
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "docs/strategy/site-v3/build-cluster-plan.py"
@@ -43,7 +44,8 @@ def scenario_w39(test):
                 return (p for p in resultat if p.stem in publies)
             return resultat
 
-        with patch.object(PLAN, 'etat_publie', side_effect=lambda: deepcopy(publies)), \
+        with jour_fixe(PLAN, date(2026, 9, 28)), \
+                patch.object(PLAN, 'etat_publie', side_effect=lambda: deepcopy(publies)), \
                 patch.object(Path, 'read_text', autospec=True, side_effect=lire_source), \
                 patch.object(Path, 'glob', autospec=True, side_effect=fichiers):
             return test(*args, **kwargs)
@@ -57,6 +59,10 @@ def construire_et_verifier():
 
 
 class EditorialCadenceProof(unittest.TestCase):
+    def setUp(self):
+        # Stock réel et autorité Git conservés ; reconstruire au jour du scénario.
+        self.enterContext(jour_fixe(PLAN, date(2026, 10, 9)))
+
     @scenario_w39
     def test_reservation_hors_jours_automatiques_traverse_le_preflight(self):
         jour = date(2026, 10, 4)
@@ -235,7 +241,8 @@ class EditorialCadenceProof(unittest.TestCase):
                 return json.dumps(backlog, ensure_ascii=False)
             return lire(chemin, *args, **kwargs)
 
-        with patch.object(sys, 'argv', [str(SCRIPT), '--check']), \
+        with patch('datetime.date', PLAN.date), \
+                patch.object(sys, 'argv', [str(SCRIPT), '--check']), \
                 patch.object(Path, 'read_text', autospec=True, side_effect=lire_source), \
                 patch.object(Path, 'write_text', side_effect=AssertionError('--check écrit un fichier')):
             with self.assertRaises(SystemExit) as sortie:
@@ -744,7 +751,7 @@ class EditorialCadenceProof(unittest.TestCase):
                     self.assertEqual(w39['date'], '2026-09-26')
                 for e in cicatrices:
                     statut = ('published' if e['slug'] in publies else
-                              'manque' if e['date'] < date.today().isoformat() else 'planned')
+                              'manque' if e['date'] < PLAN.date.today().isoformat() else 'planned')
                     self.assertEqual(e['statut'], statut, e)
 
     def test_cicatrice_hors_samedi_rougit(self):
