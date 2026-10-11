@@ -1,6 +1,28 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 const ROUTE = '/outils-comptables-gratuits/generateur-prompt-ia-gratuit';
+const SOCIAL_IMAGE = 'https://memlia.fr/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg';
+async function expectSocialImage(page: import('@playwright/test').Page, selector: string) {
+  const image = page.locator(selector);
+  await expect(image).toHaveAttribute('content', /\S+/);
+  expect(new URL((await image.getAttribute('content'))!, page.url()).href).toBe(SOCIAL_IMAGE);
+}
+for (const [name, content, accepted] of [
+  ['relative', '/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg', true],
+  ['absolue', SOCIAL_IMAGE, true],
+  ['autre origine', 'https://example.com/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg', false],
+  ['autre chemin', 'https://memlia.fr/proofs/v2/og/01-outil-prompt-ia.webp', false],
+] as const) test(`image sociale résolue : ${name}`, async ({ page }) => {
+  await page.route(`https://memlia.fr${ROUTE}`, (route) => route.fulfill({
+    contentType: 'text/html',
+    body: `<meta property="og:image" content="${content}"><meta name="twitter:image" content="${content}">`,
+  }));
+  await page.goto(`https://memlia.fr${ROUTE}`);
+  for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
+    if (accepted) await expectSocialImage(page, selector);
+    else await expect(expectSocialImage(page, selector)).rejects.toThrow();
+  }
+});
 const confirm = (page: import('@playwright/test').Page) => page.getByLabel(/Je confirme une description/).check();
 async function seed(page: import('@playwright/test').Page, name = 'Préparer une réunion') {
   await page.getByRole('button', { name, exact: true }).click(); await confirm(page);
@@ -78,8 +100,8 @@ test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Générateur de prompt IA gratuit');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${ROUTE}`);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', 'Générateur de prompt IA gratuit');
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg');
+  await expectSocialImage(page, 'meta[property="og:image"]');
+  await expectSocialImage(page, 'meta[name="twitter:image"]');
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
   await expect(page.locator(`footer a[href="${ROUTE}"]`)).toHaveCount(1);
   const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
