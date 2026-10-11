@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {startImport,executeRequest} from '../../src/lib/relance-facture-worker.mjs';
+test('annuler termine le Worker ; message tardif sans effet',async()=>{let worker;class FakeWorker{constructor(){worker=this;}postMessage(){}terminate(){this.terminated=true;}}const job=startImport({},FakeWorker);job.cancel();worker.onmessage({data:{invoices:['late']}});assert.deepEqual(await job.promise,{cancelled:true});assert.equal(worker.terminated,true);});
+test('fichier trop gros non lu, encodage choisi, fichier binaire refusé',async()=>{let read=false;await assert.rejects(executeRequest({file:{size:5_000_001,arrayBuffer(){read=true;}},encoding:'utf-8',delimiter:';'}),/5 Mo/);assert.equal(read,false);const csv='clientKey;client;reference;amount;payments;credits;dueDate;dispute;currency\n001;Atelier;F1;120;20;10;20260901;non;EUR';assert.equal((await executeRequest({file:new Blob([csv]),encoding:'utf-8',delimiter:';'}))[0].line,2);await assert.rejects(executeRequest({file:new Blob(['\u0000']),encoding:'utf-8',delimiter:';'}),/binaire/);});

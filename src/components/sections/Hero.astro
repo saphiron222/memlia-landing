@@ -200,7 +200,13 @@ const retour = '\n';
     cursor: pointer;
   }
   .hero-ecran:has([data-video-captions]) {
+    /* Le contrôle est sous l'image : ne pas le découper avec l'écran du cadre.
+       Garder la géométrie R8 et arrondir le média lui-même, pas son débordement. */
+    overflow: visible;
     margin-bottom: calc(44px + var(--espace-3));
+  }
+  .hero-ecran:has([data-video-captions]) video {
+    border-radius: inherit;
   }
   .hero-video-captions[aria-pressed="true"] {
     background: var(--accent-texte);

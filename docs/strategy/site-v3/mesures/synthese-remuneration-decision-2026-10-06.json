@@ -1,0 +1,23 @@
+{
+  "famille": "synthese-remuneration",
+  "date": "2026-10-06",
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/synthese-remuneration",
+  "rattachementDocumentaire": "/automatisation-cabinet-comptable",
+  "modificationPublique": false,
+  "motif": "Sondes commerciales sans suggestion, vocabulaire BSI plus large que le périmètre initial, rapport individuel et BSI documentés par les éditeurs ; aucun besoin distinct de délégation établi.",
+  "mesures": "synthese-remuneration-mesures-2026-10-06.json",
+  "rapport": "QUALIFICATION-SYNTHESE-REMUNERATION.md",
+  "sources": [
+    "https://www.winchapps.com/nos-solutions/e-bilan-social-individuel/",
+    "https://www.silae.fr/silae-bi-studio/"
+  ],
+  "volumeMensuel": null,
+  "serpQualifiee": false,
+  "recette": null,
+  "revueMetier": null,
+  "scellement": null,
+  "reouverture": "Demande concrète de cabinet ou intention commerciale fraîche et écart documenté face aux sorties existantes, période et éléments hors paie qualifiés.",
+  "enfant": "t_b0bbf196",
+  "integration": "Trois fichiers livraison/ vers docs/strategy/site-v3/mesures, sans créer de page ni modifier les fichiers globaux."
+}

@@ -77,6 +77,7 @@ const appel = {
             ))}
             {e.id === 'eprouver' && <p class="texte-2">Avant l’essai, vous pouvez <a href="/blog/logiciel-ia-comptabilite">comparer le parcours complet d’un outil IA</a> : entrée, résultat, exception et reprise.</p>}
             {e.id === 'valider' && <p class="texte-2">Pour relier les tests au résultat visible, voyez comment <a href="/blog/tests-verts-et-regle-des-trois-passes">recetter le parcours en trois passes</a>.</p>}
+            {e.id === 'valider' && <p class="texte-2">Pour <a href="/automatisation/bulletins-controle">faire recetter les contrôles croisés des bulletins</a>, votre pôle social examine une prime différente, une référence absente et une revue à reprendre après recalcul. Il garde la correction et la validation.</p>}
           </div>
           <ProofMedia id={e.image} cadre />
         </li>
@@ -102,6 +103,7 @@ const appel = {
         <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle coûte</h3><p class="carte-texte"><a href="/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils">Le cadrage</a> et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
         <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle évite</h3><p class="carte-texte">Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
       </ul>
+      <p class="texte-2 lecture">Nous pouvons aussi <a href="/automatisation/facture-electronique">éprouver la préparation des appels de facture électronique</a> : un dossier sur une autre plateforme avance, un circuit déjà couvert est exclu et un choix incertain arrête la préparation.</p>
     </div>
   </section>
 
@@ -120,11 +122,15 @@ const appel = {
 
 
       <h2 id="outils-gratuits-titre">Des règles à rejouer dans le navigateur</h2>
+
+      <p>Pour <a href="/outils-comptables-gratuits/generateur-relance-facture-impayee">préparer une relance de facture impayée</a>, rejouez trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.</p>
+
       <p><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> commence par la règle de sélection du cabinet et sa feuille de couverture. Le CAC valide les tiers et choisit les pièces à examiner ; les plateformes gardent les envois et les relances.</p>
 
       <p>Pour <a href="/outils-comptables-gratuits/fusionner-fichiers-csv">fusionner des exports CSV</a>, confirmez les colonnes puis conservez le fichier consolidé et son rapport de provenance. Ce résultat permet de rejouer la préparation ; il ne valide pas les opérations comptables.</p>
 
       <p>Pour <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a>, choisissez une trame et déclarez les quatre états. Le résultat sépare le relevé bancaire manquant du récapitulatif de paie à clarifier ; seule la pièce manquante entre dans la demande à relire.</p>
+
 
       <p>Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
       <p>Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>

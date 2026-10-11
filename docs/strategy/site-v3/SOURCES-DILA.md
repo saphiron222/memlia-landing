@@ -96,6 +96,12 @@ node scripts/resource-pipeline.mjs validate <manifest.json> --phase qa
 ## Services
 
 La forge des services accepte une liste optionnelle `sources` dans sa recette.
+Une URL Légifrance (domaine `legifrance.gouv.fr` ou sous-domaine), ou la présence
+de `dilaCopyPath` ou `dilaCopySha256`, exige le contrôle DILA complet ; une
+déclaration vide ou partielle ne permet pas de l'éviter. Une source hors DILA,
+par exemple DGFiP sur `impots.gouv.fr`, ne requiert pas de copie DILA. Son URL
+doit toujours apparaître dans le corps ; ses preuves et sa revue existantes
+restent inchangées. Ce branchement n'atteste pas à lui seul sa fraîcheur.
 Chaque entrée DILA comporte `id`, `url`, `excerpt`, `dilaCopyPath` (relatif à
 `commercial/recettes/<slug>`) et `dilaCopySha256`. L'URL doit apparaître dans le
 corps ; l'extrait doit être exact dans la copie. Les copies sont incluses dans

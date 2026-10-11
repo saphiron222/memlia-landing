@@ -1,0 +1,329 @@
+{
+  "capturedAt": "2026-10-06T09:23:39.840410+02:00",
+  "family": "offboarding-transfert",
+  "candidate": "/automatisation/offboarding-transfert",
+  "decision": "non-ouverture",
+  "canonical": "/automatisation-cabinet-comptable",
+  "counts": {
+    "probes": 8,
+    "empty_lists": 5,
+    "suggestions": 11
+  },
+  "probes": [
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20transfert%20dossier%20client%20cabinet%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-0.html",
+      "suggestions": [],
+      "query": "automatisation transfert dossier client cabinet comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=transfert%20dossier%20expert%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-1.html",
+      "suggestions": [
+        "transfert de dossier entre expert comptable"
+      ],
+      "query": "transfert dossier expert comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=reprise%20dossier%20confr%C3%A8re%20expert%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-2.html",
+      "suggestions": [
+        "reprise dossier confrère expert comptable"
+      ],
+      "query": "reprise dossier confrère expert comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=fin%20de%20mission%20expert%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-3.html",
+      "suggestions": [
+        "fin de mission expert comptable",
+        "lettre fin de mission expert comptable",
+        "modele fin de mission expert comptable",
+        "rapport fin de mission expert comptable",
+        "lettre de fin de mission expert comptable exemple",
+        "travaux de fin de mission expert comptable",
+        "compte rendu de fin de mission expert comptable",
+        "exemple rapport de fin de mission expert comptable",
+        "mettre fin mission expert comptable"
+      ],
+      "query": "fin de mission expert comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=checklist%20transfert%20dossier%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-4.html",
+      "suggestions": [],
+      "query": "checklist transfert dossier comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=logiciel%20transfert%20dossier%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-5.html",
+      "suggestions": [],
+      "query": "logiciel transfert dossier comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=automatisation%20fin%20de%20mission%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-6.html",
+      "suggestions": [],
+      "query": "automatisation fin de mission comptable"
+    },
+    {
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&hl=fr&gl=fr&q=transmission%20dossier%20confr%C3%A8re%20expert%20comptable",
+      "http": "200",
+      "error": "",
+      "capture": "suggest-7.html",
+      "suggestions": [],
+      "query": "transmission dossier confrère expert comptable"
+    }
+  ],
+  "monthlyVolume": null,
+  "interpretation": "Signal informationnel : reprise de dossier et modèles/rapports de fin de mission ; aucune intention distincte de délégation sur mesure établie. Fin de mission peut aussi désigner le rapport de travaux, pas un départ client.",
+  "sources": {
+    "capturedAt": "2026-10-06T09:24:42.735739+02:00",
+    "sources": [
+      {
+        "id": "ordre",
+        "url": "https://www.paysdelaloire.experts-comptables.fr/experts-comptables-et-experts-comptables-stagiaires/exercice-professionnel/vous-rencontrez-des-difficultes/vous-reprenez-un-dossier-a-un-confrere/",
+        "http_final": "200 https://www.paysdelaloire.experts-comptables.fr/experts-comptables-et-experts-comptables-stagiaires/exercice-professionnel/vous-rencontrez-des-difficultes/vous-reprenez-un-dossier-a-un-confrere/",
+        "error": "",
+        "html": "ordre.html",
+        "text": "ordre.txt"
+      },
+      {
+        "id": "welyb",
+        "url": "https://www.welyb.fr/blog/comment-faciliter-la-reprise-des-dossiers-entre-les-experts-comptables",
+        "http_final": "200 https://www.welyb.fr/blog/comment-faciliter-la-reprise-des-dossiers-entre-les-experts-comptables",
+        "error": "",
+        "html": "welyb.html",
+        "text": "welyb.txt"
+      },
+      {
+        "id": "kanta",
+        "url": "https://www.kanta.fr/articles/reprise-de-dossier-chez-les-experts-comptables-comment-ca-marche",
+        "http_final": "200 https://www.kanta.fr/articles/reprise-de-dossier-chez-les-experts-comptables-comment-ca-marche",
+        "error": "",
+        "html": "kanta.html",
+        "text": "kanta.txt"
+      },
+      {
+        "id": "cnil",
+        "url": "https://www.cnil.fr/fr/securite-les-precautions-elementaires",
+        "http_final": "404 https://www.cnil.fr/fr/securite-les-precautions-elementaires",
+        "error": "",
+        "html": "cnil.html",
+        "text": "cnil.txt"
+      },
+      {
+        "id": "service",
+        "url": "https://memlia.fr/automatisation-cabinet-comptable",
+        "http_final": "200 https://memlia.fr/automatisation-cabinet-comptable",
+        "error": "",
+        "html": "service.html",
+        "text": "service.txt"
+      },
+      {
+        "id": "candidate",
+        "url": "https://memlia.fr/automatisation/offboarding-transfert",
+        "http_final": "404 https://memlia.fr/automatisation/offboarding-transfert",
+        "error": "",
+        "html": "candidate.html",
+        "text": "candidate.txt"
+      },
+      {
+        "id": "sitemap",
+        "url": "https://memlia.fr/sitemap-index.xml",
+        "http_final": "200 https://memlia.fr/sitemap-index.xml",
+        "error": "",
+        "html": "sitemap.html",
+        "text": "sitemap.txt"
+      }
+    ]
+  },
+  "complements": [
+    {
+      "id": "cnil-echanges",
+      "url": "https://www.cnil.fr/fr/securite-securiser-les-echanges-avec-lexterieur",
+      "http_final": "200 https://www.cnil.fr/fr/securite-securiser-les-echanges-avec-lexterieur",
+      "error": ""
+    },
+    {
+      "id": "serp-pennylane",
+      "url": "https://html.duckduckgo.com/html/?q=site%3Ahelp.pennylane.com%20transf%C3%A9rer%20dossier%20cabinet",
+      "http_final": "202 https://html.duckduckgo.com/html/?q=site%3Ahelp.pennylane.com%20transf%C3%A9rer%20dossier%20cabinet",
+      "error": ""
+    }
+  ],
+  "quotes": [
+    {
+      "source": "ordre",
+      "excerpt": "En cas de reprise de dossier, le professionnel repreneur doit informer le précédent professionnel par l’envoi d’une lettre déontologique de reprise, mentionnée à l’article 163 du décret du 30 mars 2012, s’informant notamment des honoraires restant éventuellement dus.",
+      "usage": "Besoin professionnel et frontière humaine ; pas de prescription publique rédigée."
+    },
+    {
+      "source": "welyb",
+      "excerpt": "Centralisation des informations : une GED regroupe tous les documents du client (contrats, pièces comptables, FEC, justificatifs, courriers, bilans, etc.) en un seul espace.",
+      "usage": "Offre adjacente GED, déclarations de l’éditeur non testées."
+    },
+    {
+      "source": "kanta",
+      "excerpt": "Attention également aux dossiers incomplets qui ralentissent la prise en charge et affectent la qualité de la mission. L’idéal est de faire une liste précise des pièces attendues dans la lettre de reprise dossier.",
+      "usage": "Besoin documentaire et concurrence éditoriale, pas autorité juridique."
+    },
+    {
+      "source": "cnil-echanges",
+      "excerpt": "restreindre l’accès aux fichiers aux seuls destinataires dûment autorisés",
+      "usage": "Frontière de sécurité, pas autorisation de transfert déduite."
+    }
+  ],
+  "backlogAngles": [
+    {
+      "slug": "automatiser-le-transfert-de-dossier-a-la-fin-d-une-mission",
+      "titre": "Automatiser le transfert de dossier à la fin d'une mission",
+      "requete": "transfert de dossier client cabinet comptable confrère",
+      "secondaires": [
+        "fin de mission cabinet comptable procédure",
+        "lettre de confrère transfert de dossier"
+      ],
+      "famille": "offboarding-transfert",
+      "role": "administratif-secretariat",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "jeu fictif d'un dossier clos transféré au confrère avec la liste des pièces remises tracée",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment transférer un dossier d'un cabinet Pennylane à un autre ?",
+          "Que dit l'article 163 du Code de déontologie ?",
+          "Qu'est-ce que le transfert comptable ?",
+          "Quelles sont les obligations d'un comptable envers son client ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-de-fin-de-mission-avant-transfert-de-dossier",
+      "titre": "La checklist de fin de mission avant transfert de dossier",
+      "requete": "checklist fin de mission cabinet comptable",
+      "secondaires": [
+        "pièces à remettre en fin de mission cabinet comptable",
+        "solde de compte client fin de mission"
+      ],
+      "famille": "offboarding-transfert",
+      "role": "administratif-secretariat",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée sourcée code de déontologie, rejouée sur un dossier fictif en fin de mission",
+      "sourcesOfficielles": [
+        "legifrance.gouv.fr"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment transférer un dossier d'un cabinet Pennylane à un autre ?",
+          "Que dit l'article 163 du Code de déontologie ?",
+          "Qu'est-ce que le transfert comptable ?",
+          "Quelles sont les obligations d'un comptable envers son client ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "ce-qu-un-transfert-de-dossier-ne-doit-jamais-oublier-de-signaler-au-confrere",
+      "titre": "Ce qu'un transfert de dossier ne doit jamais oublier de signaler au confrère",
+      "requete": "confraternité transfert dossier cabinet comptable obligation",
+      "secondaires": [
+        "lettre de confrère avant reprise de dossier",
+        "honoraires impayés transfert de dossier"
+      ],
+      "famille": "offboarding-transfert",
+      "role": "administratif-secretariat",
+      "intent": "reduire-risque",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau anomalie -> cause -> action sur trois cas fictifs (honoraires dus, procédure en cours, pièce manquante)",
+      "sourcesOfficielles": [
+        "legifrance.gouv.fr"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment transférer un dossier d'un cabinet Pennylane à un autre ?",
+          "Que dit l'article 163 du Code de déontologie ?",
+          "Qu'est-ce que le transfert comptable ?",
+          "Quelles sont les obligations d'un comptable envers son client ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "qu-est-ce-qu-une-lettre-de-confrere-et-quand-l-envoyer",
+      "titre": "Qu'est-ce qu'une lettre de confrère, et quand l'envoyer ?",
+      "requete": "définition lettre de confrère expert-comptable",
+      "secondaires": [
+        "obligation confraternelle changement d'expert-comptable",
+        "procédure de reprise de dossier cabinet comptable"
+      ],
+      "famille": "offboarding-transfert",
+      "role": "administratif-secretariat",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots sourcée code de déontologie avec un exemple fictif de courrier",
+      "sourcesOfficielles": [
+        "legifrance.gouv.fr"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Comment transférer un dossier d'un cabinet Pennylane à un autre ?",
+          "Que dit l'article 163 du Code de déontologie ?",
+          "Qu'est-ce que le transfert comptable ?",
+          "Quelles sont les obligations d'un comptable envers son client ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ],
+  "limitations": [
+    "Firecrawl recherche et extraction : 403 ; collecte curl de substitution.",
+    "Google HTML non exploité comme classement ; une SERP DuckDuckGo exploitable, trois challenges 202.",
+    "Pas de volume mensuel ni de métrique GSC revendiqué.",
+    "Fonctionnalités éditeurs non testées ; pas de compatibilité Memlia revendiquée.",
+    "CNIL URL initiale 404, remplacée par la fiche échanges HTTP 200.",
+    "Sources éditeurs contradictoires sur le silence et la transmission ; aucune règle de droit déduite."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "measuredAt": "2026-10-09T21:54:22.493Z",
+  "measurements": [
+    {
+      "query": "méthodes de travail commissariat aux comptes",
+      "retrievedAt": "2026-10-09T21:54:22.236Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "automatisation cabinet audit",
+      "retrievedAt": "2026-10-09T21:54:22.366Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "appréciation outils automatisés audit",
+      "retrievedAt": "2026-10-09T21:54:22.406Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "archivage dossier audit 60 jours",
+      "retrievedAt": "2026-10-09T21:54:22.447Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    }
+  ],
+  "route": "/blog/commissariat-aux-comptes",
+  "currentRubriques": [
+    {
+      "slug": "paie-dsn-cabinet-comptable",
+      "chemin": "/blog/rubrique/paie-dsn-cabinet-comptable"
+    },
+    {
+      "slug": "gestion-pieces-comptables",
+      "chemin": "/blog/rubrique/gestion-pieces-comptables"
+    },
+    {
+      "slug": "ia-cabinet-comptable",
+      "chemin": "/blog/rubrique/ia-cabinet-comptable"
+    }
+  ],
+  "templateUsesSlugOnly": true,
+  "cacWouldRenderAt": "/blog/rubrique/commissariat-aux-comptes",
+  "contractClassifiesSingleSegmentAsArticle": true,
+  "public": [
+    {
+      "route": "/blog/commissariat-aux-comptes",
+      "status": 404,
+      "url": "https://memlia.fr/blog/commissariat-aux-comptes"
+    },
+    {
+      "route": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "status": 404,
+      "url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
+    }
+  ]
+}

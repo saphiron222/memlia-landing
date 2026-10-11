@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "queries": 8,
+  "empty": 7,
+  "suggestions": 4,
+  "citations_verifiees": 5,
+  "angles_backlog": 4,
+  "surfaces_http": {
+    "https://www.pennylane.com/fr/integrations/shopify": "200",
+    "https://www.pennylane.com/fr/integrations/sumup": "200",
+    "https://memlia.fr/automatisation/ventes-caisse": "404",
+    "https://memlia.fr/automatisation-cabinet-comptable": "200"
+  },
+  "route_non_reservee": true,
+  "base_lue": "5280ea694685e53f06750414fd420cb0483bfeb9",
+  "decision": "non-ouverture",
+  "rattachement_documentaire": "/automatisation-cabinet-comptable",
+  "recette": "non applicable : candidate non retenue",
+  "limitations": [
+    "Autocompletion sans volume mensuel ni classement SERP",
+    "Connecteurs annonces non executes ; detail fonctionnel absent",
+    "Recherche et extraction Firecrawl 403, reprise curl/navigateur"
+  ],
+  "repo_modifie": false
+}
