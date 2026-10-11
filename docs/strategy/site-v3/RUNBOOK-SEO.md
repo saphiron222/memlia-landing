@@ -124,7 +124,8 @@ Depuis la décision de Kevin du 06/10/2026, cette release suit la règle commune
 de la constitution §5 : CI verte et une revue indépendante PASS, sans reçu
 opérateur Telegram ni carte d'autorisation. Le lecteur historique
 `scripts/lib/seo-release-receipt.py` n'est plus appelé par la garde.
-Le dépôt reste privé ; la garde recontrôle cet état via GitHub.
+La décision du 07/10/2026 maintient `saphiron222/memlia-landing` public et la CI
+GitHub hébergée ; la garde recontrôle l'identité et cet état via GitHub.
 Les dépenses et les permissions hors `seo-measures` ne changent pas.
 
 ```bash

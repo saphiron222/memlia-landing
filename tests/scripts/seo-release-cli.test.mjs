@@ -7,7 +7,7 @@ import path from 'node:path';
 
 const head = 'a'.repeat(40);
 const base = 'b'.repeat(40);
-for (const scenario of ['PASS', 'missing QA', 'red CI']) {
+for (const scenario of ['PASS', 'missing QA', 'red CI', 'wrong repository', 'private repository']) {
   test(`read-only SEO CLI: ${scenario}, no operator receipt`, () => {
     const dir = mkdtempSync(path.join(tmpdir(), 'seo-cli-'));
     try {
@@ -23,6 +23,9 @@ for (const scenario of ['PASS', 'missing QA', 'red CI']) {
           status: 'completed', conclusion: scenario === 'red CI' ? 'failure' : 'success' }] },
         files: [{ filename: 'docs/strategy/site-v3/mesures/cli-test.md', status: 'added' }],
         base,
+        repository: { private: scenario === 'private repository',
+          visibility: scenario === 'private repository' ? 'private' : 'public',
+          full_name: scenario === 'wrong repository' ? 'other/repository' : 'saphiron222/memlia-landing' },
       };
       const bin = path.join(dir, 'bin');
       mkdirSync(bin);
@@ -36,7 +39,7 @@ else if (args[0] === 'kanban') console.log(JSON.stringify(p.qa));
 else if (args[0] === 'ls-remote') console.log(p.base + '\\trefs/heads/main');
 else if (args[1].includes('/check-runs?')) console.log(JSON.stringify([p.checks]));
 else if (args[1].includes('/files?')) console.log(JSON.stringify([p.files]));
-else console.log(JSON.stringify({ private: true, full_name: 'saphiron222/memlia-landing' }));
+else console.log(JSON.stringify(p.repository));
 `;
       for (const name of ['gh', 'hermes', 'git'])
         writeFileSync(path.join(bin, name), fixture, { mode: 0o755 });

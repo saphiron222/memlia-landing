@@ -10,10 +10,10 @@ function scoped(path) {
 }
 
 export function evaluateSeoRelease({ pr, qa, checks, changedPaths,
-  expectedHead, expectedMain, remoteMain, privateRepository }) {
+  expectedHead, expectedMain, remoteMain, authorizedRepository }) {
   const errors = [];
   if (!SHA.test(expectedHead ?? '') || !SHA.test(expectedMain ?? '') ||
-      privateRepository !== true || pr?.state !== 'OPEN' || pr?.isDraft !== false || pr?.baseRefName !== 'main' ||
+      authorizedRepository !== true || pr?.state !== 'OPEN' || pr?.isDraft !== false || pr?.baseRefName !== 'main' ||
       pr?.headRefOid !== expectedHead || pr?.baseRefOid !== expectedMain ||
       remoteMain !== expectedMain || pr?.mergeable !== 'MERGEABLE' || pr?.mergeStateStatus !== 'CLEAN') {
     errors.push('PR, HEAD ou main non conforme à la base enregistrée');

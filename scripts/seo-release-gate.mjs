@@ -34,8 +34,8 @@ try {
     filename: file.filename, status: file.status, previous_filename: file.previous_filename })));
   const remoteMain = call('git', ['ls-remote', 'origin', 'refs/heads/main']).split(/\s+/)[0];
   const verdict = evaluateSeoRelease({ pr, qa, checks, changedPaths,
-    expectedHead, expectedMain, remoteMain, privateRepository: repository.private === true &&
-      repository.full_name === REPO });
+    expectedHead, expectedMain, remoteMain, authorizedRepository: repository.private === false &&
+      repository.visibility === 'public' && repository.full_name === REPO });
   console.log(JSON.stringify({ ...verdict, pr: Number(prNumber), head: expectedHead,
     main: expectedMain, qaTask, scope: 'seo-measures', publicationPerformed: false }));
   if (!verdict.pass) process.exitCode = 2;

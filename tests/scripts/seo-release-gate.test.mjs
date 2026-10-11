@@ -20,7 +20,7 @@ const evidence = () => ({
       ci: { exact_head: true, head, success_verified: true } } }] },
   checks: collectCheckRuns([{ total_count: 1, check_runs: [{ name: 'Repository gates', head_sha: head,
     status: 'completed', conclusion: 'success' }] }]),
-  privateRepository: true,
+  authorizedRepository: true,
 });
 
 test('SEO gate accepts green CI and independent QA PASS without an operator receipt', () => {
@@ -30,9 +30,9 @@ test('SEO gate accepts green CI and independent QA PASS without an operator rece
   assert.equal(evaluateSeoRelease(p).pass, false);
 });
 
-test('SEO gate refuses a public repository', () => {
+test('SEO gate refuses an unauthorized repository', () => {
   const p = evidence();
-  assert.equal(evaluateSeoRelease({ ...p, privateRepository: false }).pass, false);
+  assert.equal(evaluateSeoRelease({ ...p, authorizedRepository: false }).pass, false);
 });
 
 for (const [name, mutate] of [
