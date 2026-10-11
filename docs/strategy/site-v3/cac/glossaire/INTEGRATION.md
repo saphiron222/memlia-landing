@@ -5,6 +5,9 @@ Les candidats corrigés des lots 1 et 2 remplacent leurs préparations initiales
 lots 3 et 4 sont originaux. Les quatre PASS sont t_ada6a80c, t_135675b2,
 t_f87ddaa1 et t_bf6cb3b3. Les rapports, avis détaillés et projections originales
 restent sous lot1/ à lot4/, avec identités, dates, réserves et copies intactes.
+Les deux témoins documentaires shape-check.ts des lots 3/4 sont archivés sous
+shape-check.ts.txt, octets inchangés : leurs imports relatifs portent sur leur
+ancien emplacement et ne sont pas du code exécutable du site intégré.
 
 ## Contrat et report
 
