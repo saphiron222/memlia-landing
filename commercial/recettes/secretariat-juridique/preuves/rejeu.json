@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "rule": "Échéances confirmées et rappels hors circuit couvert uniquement ; aucun calcul de délai légal, document juridique, envoi ou dépôt.",
+  "runner": "preuves/rejouer.mjs",
+  "cases": [
+    {
+      "id": "SJ-APPROBATION",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": true,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "approbation-a-suivre",
+      "observed": {
+        "status": "approbation-a-suivre",
+        "line": {
+          "dossier": "DOSSIER-FICTIF",
+          "exercice": "2025",
+          "date": "2026-10-20",
+          "reference": "Échéance validée par le cabinet, fixture"
+        }
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-DEPOT",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "rappel-depot-a-valider",
+      "observed": {
+        "status": "rappel-depot-a-valider",
+        "line": {
+          "dossier": "DOSSIER-FICTIF",
+          "exercice": "2025",
+          "date": "2026-10-20",
+          "reference": "Échéance validée par le cabinet, fixture"
+        },
+        "draft": "Pour le dossier DOSSIER-FICTIF, exercice 2025, l’échéance de dépôt confirmée est le 2026-10-20. Merci de nous transmettre le justificatif de dépôt ou de nous indiquer ce qui reste à faire."
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-COUVERT",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": true,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "exclu-circuit-couvert",
+      "observed": {
+        "status": "exclu-circuit-couvert"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-COUVERTURE",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": false,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "arret-couverture-inconnue",
+      "observed": {
+        "status": "arret-couverture-inconnue"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-DATE",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": null,
+        "dateConfirmed": false,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "arret-date-non-confirmee",
+      "observed": {
+        "status": "arret-date-non-confirmee"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-CONTRADICTION",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": true,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "arret-contradiction",
+      "observed": {
+        "status": "arret-contradiction"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-ANNONCE",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": true,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "depot-a-verifier",
+      "observed": {
+        "status": "depot-a-verifier"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-JUSTIFICATIF",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": true,
+        "reminderPlanned": false,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "aucun-rappel-justificatif-confirme",
+      "observed": {
+        "status": "aucun-rappel-justificatif-confirme"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-RAPPEL",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": true,
+        "contactAuthorized": true,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "aucun-second-rappel",
+      "observed": {
+        "status": "aucun-second-rappel"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    },
+    {
+      "id": "SJ-CONTACT",
+      "input": {
+        "dossier": "DOSSIER-FICTIF",
+        "exercice": "2025",
+        "identityConfirmed": true,
+        "coverageChecked": true,
+        "covered": false,
+        "date": "2026-10-20",
+        "dateConfirmed": true,
+        "reference": "Échéance validée par le cabinet, fixture",
+        "contradictory": false,
+        "approvalPending": false,
+        "depositAnnounced": false,
+        "receiptConfirmed": false,
+        "reminderPlanned": false,
+        "contactAuthorized": false,
+        "cabinetNote": "Note humaine à conserver"
+      },
+      "expected": "arret-contact-non-autorise",
+      "observed": {
+        "status": "arret-contact-non-autorise"
+      },
+      "inputUnchanged": true,
+      "pass": true
+    }
+  ]
+}

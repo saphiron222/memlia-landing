@@ -1,0 +1,117 @@
+{
+  "integrite": [
+    {
+      "id": "2026-10-06-inserer-lien-cabinet-comptable-surcharge-de-travail-ou-passe-le-temps-1",
+      "type": "inserer-lien",
+      "slug": "cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "cle": "liens-entrants",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain-1",
+      "type": "inserer-lien",
+      "slug": "intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "cle": "liens-entrants",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-tests-verts-et-regle-des-trois-passes-1",
+      "type": "inserer-lien",
+      "slug": "tests-verts-et-regle-des-trois-passes",
+      "cle": "liens-entrants",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "type": "inserer-lien",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "lien-vers-cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-2",
+      "type": "inserer-lien",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "lien-vers-intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-3",
+      "type": "inserer-lien",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "lien-vers-utiliser-chatgpt-cabinet-comptable",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-inserer-lien-automatiser-un-cabinet-comptable-la-carte-des-taches-4",
+      "type": "inserer-lien",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "lien-vers-verifier-reponse-ia-comptabilite",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-varier-ancre-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "type": "varier-ancre",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "ancre-vers-glossaire",
+      "priseEnCharge": "t_28337116",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-relance-des-pieces-clients-1",
+      "type": "reverifier-source",
+      "slug": "automatiser-la-relance-des-pieces-clients",
+      "cle": "sp-conservation",
+      "priseEnCharge": "t_712a0bf3",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-la-saisie-comptable-ce-qui-reste-a-verifier-1",
+      "type": "reverifier-source",
+      "slug": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "cle": "sp-conservation-pieces",
+      "priseEnCharge": "t_712a0bf3",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-1",
+      "type": "reverifier-source",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "sp-conservation",
+      "priseEnCharge": "t_712a0bf3",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-automatiser-un-cabinet-comptable-la-carte-des-taches-2",
+      "type": "reverifier-source",
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "cle": "impots-calendrier",
+      "priseEnCharge": "t_712a0bf3",
+      "statut": "transmis-non-corrige"
+    },
+    {
+      "id": "2026-10-06-reverifier-source-logiciel-ia-comptabilite-1",
+      "type": "reverifier-source",
+      "slug": "logiciel-ia-comptabilite",
+      "cle": "service-public-pieces",
+      "priseEnCharge": "t_712a0bf3",
+      "statut": "transmis-non-corrige"
+    }
+  ],
+  "demande": [
+    {
+      "id": "2026-10-06-recaler-titre-prompt-chatgpt-expert-comptable-1",
+      "priseEnCharge": "t_28337116",
+      "statut": "proposition-a-examiner-apres-le-15-10"
+    }
+  ],
+  "integrationMesuresEtC6": "t_96616444",
+  "gardeReleaseExistant": "t_65812c95"
+}

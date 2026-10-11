@@ -1,12 +1,13 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import IntegrationReplay from '@/components/sections/IntegrationReplay.astro';
-import SourceEvidence from '@/components/sections/SourceEvidence.astro';
 import Renvois from '@/components/Renvois.astro';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
 import { SITE } from '@/data/site.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
+import { createHash } from 'node:crypto';
+import generatedGuides from '@/data/guides.generated.json';
 
 export function getStaticPaths() {
   return INTEGRATIONS_INDEXABLES.map((integration) => ({ params: { slug: integration.slug }, props: { integration } }));
@@ -15,6 +16,8 @@ interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 const chemin = integrationPath(integration);
 const hero = `integrations/${integration.slug}` as ProofId;
+const generatedIdentity = (generatedGuides as IntegrationDefinition[]).some(guide => guide.slug === integration.slug)
+  ? createHash('sha256').update(JSON.stringify(integration)).digest('hex') : null;
 if (!(hero in PROOFS)) throw new Error(`Preuve absente pour ${integration.slug}`);
 const url = `${SITE.url}${chemin}`;
 const auteur = auteurPar(integration.auteur);
@@ -26,7 +29,7 @@ const page = {
   h1: integration.h1,
   chapeau: integration.intro,
   ariane: `${integration.vendor} · ${integration.task}`,
-  secondaire: { libelle: 'Voir les neuf guides', href: '/integrations' },
+  secondaire: { libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides' : 'Voir les guides', href: '/integrations' },
 };
 const noeuds = [
   {
@@ -42,12 +45,15 @@ const noeuds = [
   },
   { '@type': 'Person', '@id': authorUrl, name: auteur.nom, url: authorUrl, jobTitle: auteur.role, worksFor: { '@id': `${SITE.url}/#organization` } },
 ];
-const source = {
-  editeur: integration.vendor,
-  titre: integration.source.title,
-  url: integration.source.url,
-  preuve: integration.source.fact,
-  consulteLe: integration.source.checkedAt,
+// Décision de Kevin du 06/10/2026 : pas de section « Source ». Le lien vers le document de l'éditeur se pose sur
+// le mot qui le désigne dans le paragraphe de portée (« la fiche », « la note Sage », « référence publique »…).
+const MOT_DU_DOCUMENT = /(la note Sage|la fiche|fiche|référence publique|page commerciale|présentation commerciale)/i;
+const trouve = integration.documentScope.match(MOT_DU_DOCUMENT) ?? integration.documentScope.match(new RegExp(integration.product.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+if (!trouve || trouve.index === undefined) throw new Error(`${integration.slug} : aucun mot du paragraphe de portée ne peut porter le lien vers la source`);
+const portee = {
+  avant: integration.documentScope.slice(0, trouve.index),
+  lien: trouve[0],
+  apres: integration.documentScope.slice(trouve.index + trouve[0].length),
 };
 ---
 
@@ -56,6 +62,7 @@ const source = {
   noeuds={noeuds}
   eyebrow={`${integration.product} · repères de contrôle`}
   hero={hero}
+  lignesTitreMobile={integration.slug === 'saisie-comptable-sage' ? 4 : undefined}
   appel={{
     titre: 'Décrivez le geste dans votre environnement.',
     texte: 'Une description suffit pour le premier échange. Aucun fichier réel ne vous est demandé à ce stade.',
@@ -66,62 +73,53 @@ const source = {
     ],
   }}
 >
+  {generatedIdentity ? <template data-guide-sha256={generatedIdentity}></template> : ' '}
   <section class="pv" aria-labelledby="repere-editeur">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="repere-editeur">Les repères et les champs que la règle doit connaître</h2>
-      <p class="texte-2 lecture">{integration.documentScope}</p>
-      <p class="texte-2 lecture">{integration.officialPath}</p>
+      <p>{portee.avant}<a href={integration.source.url} rel="noopener noreferrer" title={integration.source.title}>{portee.lien}</a>{portee.apres}</p>
+      <p>{integration.officialPath}</p>
     </div>
-    <ul class="pv-cartes rv-groupe">
+    <dl class="lignes rv">
       {integration.fields.map((field) => (
-        <li class="pv-carte rv"><div class="pv-carte-corps"><h3>{field.label}</h3><p>{field.control}</p></div></li>
+        <div class="ligne"><dt class="ligne-libelle">{field.label}</dt><dd class="ligne-texte">{field.control}</dd></div>
       ))}
-    </ul>
-    <div class="pv-tete rv">
-      <p class="texte-2 lecture"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
-    </div>
+    </dl>
+    <p class="texte-2 lecture rv"><strong>Le piège connu.</strong> {integration.knownTrap}</p>
   </section>
 
   <section class="pv" aria-labelledby="regle-ecrite">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="regle-ecrite">La règle écrite</h2>
-      <p class="texte-2 lecture">{integration.writtenRule}</p>
+      <p>{integration.writtenRule}</p>
     </div>
-    <div class="pv-bande coins">
+    <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ol class="pv-bande-liste rv-groupe" data-colonnes="3">
-        <li class="pv-cellule rv"><h3>Préparé</h3><p>{integration.boundary.prepared}</p></li>
-        <li class="pv-cellule rv"><h3>À valider</h3><p>{integration.boundary.validation}</p></li>
-        <li class="pv-cellule rv"><h3>Reste humain</h3><p>{integration.boundary.human}</p></li>
+      <ol class="cartes rv-groupe">
+        <li class="cellule rv"><h3 class="carte-titre">Préparé</h3><p class="carte-texte">{integration.boundary.prepared}</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">À valider</h3><p class="carte-texte">{integration.boundary.validation}</p></li>
+        <li class="cellule rv"><h3 class="carte-titre">Reste humain</h3><p class="carte-texte">{integration.boundary.human}</p></li>
       </ol>
     </div>
   </section>
 
   <section class="pv" aria-labelledby="jeu-fictif">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="jeu-fictif">Cas illustratifs sur données fictives</h2>
-      <p class="texte-2 lecture">Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
+      <p>Ces trois cas décrivent les sorties attendues de la règle proposée, pas des résultats exécutés. Le visuel est une simulation locale de présentation ; aucun essai dans le logiciel éditeur n’est rapporté ici. La recette vérifie ensuite ces attentes dans l’environnement autorisé du cabinet.</p>
     </div>
     <IntegrationReplay integration={integration} />
   </section>
 
-  <section class="pv" aria-labelledby="source">
-    <div class="pv-tete rv">
-      <h2 id="source">Source</h2>
-      <p class="texte-2 lecture">La portée de cette référence et les règles proposées par le cabinet sont distinguées ci-dessous.</p>
-    </div>
-    <SourceEvidence source={source} />
-  </section>
-
   <section class="pv" aria-labelledby="maillage">
-    <div class="pv-tete rv">
+    <div class="tete rv">
       <h2 id="maillage">La tâche avant le nom du logiciel</h2>
-      <p class="texte-2 lecture">Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
+      <p>Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
     </div>
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
       ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
-      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: 'Voir les neuf guides par environnement', href: '/integrations' },
-    ]} colonnes={2} />
+      { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides par environnement' : 'Voir les guides par environnement', href: '/integrations' },
+    ]} />
   </section>
 </PageCommerciale>

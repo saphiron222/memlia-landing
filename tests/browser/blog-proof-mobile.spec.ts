@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { articles, technicalProofFixtures, requiresRepublicationGate } from './blog-proof-fixture.mjs';
+import { expectProofSelection } from './proof-selection';
 
 const fixtures = technicalProofFixtures(process.cwd());
 const finalRequired = requiresRepublicationGate(
@@ -8,7 +9,7 @@ const finalRequired = requiresRepublicationGate(
   { remoteUrl: process.env.QA_URL, required: process.env.QA_BLOG_REPUBLICATION_REQUIRED });
 
 // Recette de référence (03/10/2026) : chaque figure de corps est UNE image 1600 × 900, la même
-// sur bureau et sur téléphone ; elle remplit la colonne de lecture en 16:9, sans variante portrait.
+// sur bureau et sur téléphone, avec des dérivés responsive du même master ; elle remplit la colonne en 16:9.
 for (const width of [320, 375, 1440]) {
   for (const technical of [true, false]) {
   test(`${technical ? 'fixture technique forge/CSS (non publiée)' : 'republication réelle des sept articles'} à ${width}px`, async ({ page }) => {
@@ -51,8 +52,7 @@ for (const width of [320, 375, 1440]) {
           };
         });
         expect(measured.loaded, slug).toBe(true);
-        expect(measured.selected, slug).toBe(`/proofs/blog/${id}.webp`);
-        expect(measured.natural, slug).toEqual([1600, 900]);
+        await expectProofSelection(image, `/proofs/blog/${id}.webp`);
         // L’image remplit la colonne, en 16:9, sur téléphone comme sur bureau.
         expect(measured.width, slug).toBeLessThanOrEqual(measured.figureWidth);
         expect(measured.width, slug).toBeGreaterThanOrEqual(measured.figureWidth - 2);

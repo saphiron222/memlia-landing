@@ -1,5 +1,8 @@
 ---
-import { PAGES_V2 } from '@/data/pages-v2.mjs';
+import Picto from '@/components/Picto.astro';
+import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
+interface Props { contenu?: ContenuAccueil['orientation']; }
+const { contenu = contenuDe('ec').orientation } = Astro.props;
 
 /**
  * Les quatre résumés d'orientation de l'accueil (copy transversale, section « Accueil —
@@ -8,95 +11,41 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
  * L'accueil oriente ; il ne détaille pas. Sans ce bloc, les cinq pages du site v2
  * n'étaient atteignables que par le bandeau et le pied de page : aucun lien de corps,
  * donc aucun chemin de lecture depuis la page d'entrée.
+ *
+ * Système de page : quatre destinations décrites par une phrase, donc quatre cartes (2 × 2),
+ * chacune finie par le lien d'action ; cinq services nommés par leur seul libellé, donc une
+ * liste de liens.
  */
-const destinations = [
-  { texte: 'Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, de l’observation à la maintenance.', libelle: 'Découvrir le service', href: PAGES_V2.service.chemin },
-  { texte: 'Observer le geste réel, écrire la règle, éprouver sur les cas qui doivent échouer, livrer après recette.', libelle: 'Comment nous travaillons', href: PAGES_V2.methode.chemin },
-  { texte: 'Dans le doute, l’automatisation s’arrête et vous présente le cas. Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: PAGES_V2.garanties.chemin },
-  { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
-];
-const services = [
-  { libelle: 'Paie', href: '/automatisation/paie' },
-  { libelle: 'Saisie comptable', href: '/automatisation/saisie-comptable' },
-  { libelle: 'Rapprochement bancaire', href: '/automatisation/rapprochement-bancaire' },
-  { libelle: 'Notes de frais', href: '/automatisation/notes-de-frais' },
-  { libelle: 'Factures fournisseurs', href: '/automatisation/factures-fournisseurs' },
-];
+const { destinations, services } = contenu;
 ---
 
-<section class="orientation" aria-labelledby="orientation-titre">
-  <div class="conteneur">
-    <h2 id="orientation-titre" class="orientation-titre">Par où commencer</h2>
-    <ul class="orientation-liste">
+<section class="section orientation" aria-labelledby="orientation-titre">
+  <div class="conteneur pile">
+    <div class="tete">
+      <h2 id="orientation-titre">{contenu.titre}</h2>
+    </div>
+    <ul class="cartes">
       {destinations.map((d) => (
-        <li class="orientation-item">
-          <p class="orientation-texte">{d.texte}</p>
-          <a class="orientation-lien" href={d.href}>{d.libelle}</a>
+        <li class="carte">
+          <div class="carte-corps">
+            <p class="carte-texte">{d.texte}</p>
+            <a class="carte-action carte-lien" href={d.href}>{d.libelle}<Picto nom="fleche" taille={14} /></a>
+          </div>
         </li>
       ))}
     </ul>
-    <nav class="orientation-services" aria-label="Pages de service">
-      <span>Voir une règle appliquée à une tâche</span>
-      <ul>
-        {services.map((service) => <li><a href={service.href}>{service.libelle}</a></li>)}
+    <nav class="liens-bloc" aria-label="Pages de service">
+      <span class="liens-titre">{contenu.invitation}</span>
+      <ul class="liens">
+        {services.map((service) => (
+          <li>
+            <a class="lien-rangee" href={service.href}>
+              <span class="lien-libelle">{service.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
 </section>
-
-<style>
-  /* Même rythme vertical que les autres sections de l'accueil : 96 px, 128 px en grand écran. */
-  .orientation { padding: 96px var(--marge-page) 0; }
-  @media (min-width: 64rem) { .orientation { padding: 128px var(--marge-page-lg) 0; } }
-  .orientation-titre {
-    font-family: var(--police-display), 'Fraunces Fallback';
-    font-size: var(--t-xl);
-    color: var(--texte-fort);
-    margin-bottom: 24px;
-  }
-  .orientation-liste {
-    display: grid;
-    gap: 16px;
-  }
-  .orientation-item {
-    display: grid;
-    gap: 10px;
-    padding: 24px;
-    border: 1px solid var(--ligne-douce);
-    border-radius: var(--r-boite);
-    background: var(--surface-feuille);
-  }
-  .orientation-texte {
-    color: var(--texte);
-    max-width: 44ch;
-  }
-  .orientation-lien {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    font-weight: 600;
-    color: var(--accent-texte);
-  }
-  .orientation-services {
-    display: grid;
-    gap: 14px;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--ligne-douce);
-  }
-  .orientation-services > span { color: var(--texte-2); font-weight: 600; }
-  .orientation-services ul { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .orientation-services a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-texte); font-weight: 600; text-underline-offset: 3px; }
-  @media (hover: hover) {
-    .orientation-lien:hover {
-      color: var(--texte-fort);
-    }
-    .orientation-services a:hover { color: var(--texte-fort); text-decoration: underline; }
-  }
-  @media (min-width: 48rem) {
-    .orientation-liste {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-  }
-</style>

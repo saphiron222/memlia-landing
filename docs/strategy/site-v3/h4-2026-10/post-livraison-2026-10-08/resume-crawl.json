@@ -1,0 +1,72 @@
+{
+  "observed_at": "2026-10-08T19:59:09.755575+00:00",
+  "pages": 66,
+  "indexable": 63,
+  "all_200": true,
+  "tool_cards": 17,
+  "checks_pass": 15,
+  "checks_total": 15,
+  "errors": [],
+  "three_previous_low_incoming": {
+    "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps": {
+      "incoming_main": [
+        "/automatisation-cabinet-comptable",
+        "/blog",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain"
+      ],
+      "incoming_non_blog_main": [
+        "/automatisation-cabinet-comptable"
+      ]
+    },
+    "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain": {
+      "incoming_main": [
+        "/automatisation-cabinet-comptable",
+        "/blog",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+        "/blog/rubrique/ia-cabinet-comptable"
+      ],
+      "incoming_non_blog_main": [
+        "/automatisation-cabinet-comptable"
+      ]
+    },
+    "/blog/tests-verts-et-regle-des-trois-passes": {
+      "incoming_main": [
+        "/blog",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "/blog/rubrique/ia-cabinet-comptable",
+        "/methode"
+      ],
+      "incoming_non_blog_main": [
+        "/methode"
+      ]
+    }
+  },
+  "eight_non_blog_targets": {
+    "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "/blog/automatiser-avec-ia-sans-changer-logiciel": [
+      "/integrations"
+    ],
+    "/blog/ia-comptabilite-confidentialite-donnees": [
+      "/garanties"
+    ],
+    "/blog/logiciel-ia-comptabilite": [
+      "/methode"
+    ],
+    "/blog/tests-verts-et-regle-des-trois-passes": [
+      "/methode"
+    ],
+    "/blog/utiliser-chatgpt-cabinet-comptable": [
+      "/outils-comptables-gratuits/generateur-prompt-expert-comptable"
+    ],
+    "/blog/verifier-reponse-ia-comptabilite": [
+      "/outils-comptables-gratuits/verificateur-prompt-ia"
+    ]
+  }
+}

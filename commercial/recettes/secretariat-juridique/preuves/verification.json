@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "cases": 10,
+  "review": "PASS",
+  "reviewer": "metier-independant",
+  "candidateStatus": "pret-preview",
+  "sealFilesVerified": [
+    "page",
+    "manifest",
+    "recipe",
+    "body",
+    "review"
+  ],
+  "tests": [
+    "service:preparer PASS",
+    "service:sceller PASS",
+    "service-couverture 5 PASS",
+    "rejeu 10 PASS",
+    "git diff --check PASS"
+  ],
+  "limits": [
+    "Pas de build ni rendu HTML sur cette phase recette : le test de couverture des pages construites ne visite aucune page dist.",
+    "Suite service-forge : 11 PASS, 1 FAIL ; fixture tache-de-test datée 20/09 audite avec date actuelle 06/10, fraîcheur périmée. Test non modifié, hors recette.",
+    "Aucune compatibilité ni absence universelle de suivi éditeur démontrée."
+  ],
+  "production": "Non publiée ; intégration aval t_a49de3dd, respecter le gel annoncé dans sa carte.",
+  "base": "5280ea69"
+}

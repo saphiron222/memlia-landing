@@ -26,7 +26,7 @@ function fixture() {
   writeFileSync(join(dist, 'index.html'), `<html><head>${robots}</head><body>Accueil</body></html>`);
   writeCandidate(dist, slugs[0], slugs[1]);
   writeCandidate(dist, slugs[1], slugs[0]);
-  writeFileSync(join(dist, 'sitemap-0.xml'), '<urlset></urlset>');
+  writeFileSync(join(dist, 'sitemap-blog.xml'), '<urlset></urlset>');
   mkdirSync(join(dist, 'blog'), { recursive: true });
   writeFileSync(join(dist, 'blog', 'rss.xml'), '<rss></rss>');
   const gateReports = Object.fromEntries(slugs.map((slug) => {
@@ -80,13 +80,13 @@ test('la preview tolère le slug voisin mais refuse sa propre URL indexée', () 
   try {
     preparePreview({ source: dist, target, candidateSlugs: slugs, gateReports });
     const neighbor = `${slugs[0]}-suite`;
-    writeFileSync(join(target, 'sitemap-0.xml'), `<urlset><url><loc>https://memlia.fr/blog/${neighbor}</loc></url></urlset>`);
+    writeFileSync(join(target, 'sitemap-blog.xml'), `<urlset><url><loc>https://memlia.fr/blog/${neighbor}</loc></url></urlset>`);
     writeFileSync(join(target, 'blog', 'rss.xml'), `<rss><channel><item><link>https://memlia.fr/blog/${neighbor}</link></item></channel></rss>`);
     assert.deepEqual(verifyCandidateBatchPreview(slugs, target, previewOrigin), []);
-    writeFileSync(join(target, 'sitemap-0.xml'), `<urlset><url><loc>https://memlia.fr/blog/${slugs[0]}</loc></url></urlset>`);
+    writeFileSync(join(target, 'sitemap-blog.xml'), `<urlset><url><loc>https://memlia.fr/blog/${slugs[0]}</loc></url></urlset>`);
     writeFileSync(join(target, 'blog', 'rss.xml'), `<rss><channel><item><link>https://memlia.fr/blog/${slugs[0]}</link></item></channel></rss>`);
     const errors = verifyCandidateBatchPreview(slugs, target, previewOrigin);
-    assert.ok(errors.some((error) => error.includes('sitemap-0.xml')));
+    assert.ok(errors.some((error) => error.includes('sitemap-blog.xml')));
     assert.ok(errors.some((error) => error.includes('blog/rss.xml')));
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
@@ -95,7 +95,7 @@ test('le contrôle de production exige toutes les pages du lot dans le même bui
   const { root, dist } = fixture();
   try {
     assert.ok(productionArtifactsErrors(root, slugs).some((e) => e.includes('sitemap')));
-    writeFileSync(join(dist, 'sitemap-0.xml'), slugs.map((slug) => `<loc>https://memlia.fr/blog/${slug}</loc>`).join(''));
+    writeFileSync(join(dist, 'sitemap-blog.xml'), slugs.map((slug) => `<loc>https://memlia.fr/blog/${slug}</loc>`).join(''));
     writeFileSync(join(dist, 'blog', 'rss.xml'), slugs.map((slug) => `<link>https://memlia.fr/blog/${slug}</link>`).join(''));
     assert.deepEqual(productionArtifactsErrors(root, slugs), []);
     rmSync(join(dist, 'blog', `${slugs[1]}.html`));
@@ -108,14 +108,14 @@ test('le sitemap et le RSS refusent un slug absent même si un autre slug le pro
   try {
     const requested = ['article', 'article-suite'];
     for (const slug of requested) writeCandidate(dist, slug, 'article-suite');
-    writeFileSync(join(dist, 'sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
+    writeFileSync(join(dist, 'sitemap-blog.xml'), '<urlset><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
     writeFileSync(join(dist, 'blog', 'rss.xml'), '<rss><channel><item><link>https://memlia.fr/blog/article-suite</link></item></channel></rss>');
     const errors = productionArtifactsErrors(root, requested);
-    assert.ok(errors.some((error) => error.includes('article: dist/sitemap-0.xml')), errors.join('\n'));
+    assert.ok(errors.some((error) => error.includes('article: dist/sitemap-blog.xml')), errors.join('\n'));
     assert.ok(errors.some((error) => error.includes('article: dist/blog/rss.xml')), errors.join('\n'));
     assert.equal(errors.some((error) => error.startsWith('article-suite:')), false, errors.join('\n'));
 
-    writeFileSync(join(dist, 'sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/blog/article</loc></url><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
+    writeFileSync(join(dist, 'sitemap-blog.xml'), '<urlset><url><loc>https://memlia.fr/blog/article</loc></url><url><loc>https://memlia.fr/blog/article-suite</loc></url></urlset>');
     assert.ok(productionArtifactsErrors(root, requested).some((error) => error.includes('article: dist/blog/rss.xml')));
     writeFileSync(join(dist, 'blog', 'rss.xml'), '<rss><channel><item><link>https://memlia.fr/blog/article</link></item><item><link>https://memlia.fr/blog/article-suite</link></item></channel></rss>');
     assert.deepEqual(productionArtifactsErrors(root, requested), []);

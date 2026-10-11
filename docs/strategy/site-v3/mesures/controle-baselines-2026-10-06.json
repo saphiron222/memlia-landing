@@ -1,0 +1,407 @@
+{
+  "measuredAt": "2026-10-06T01:02:03.993298+02:00",
+  "deployment": {
+    "Id": "dfb498ab-6e58-4002-8989-15c81e451943",
+    "Environment": "Production",
+    "Branch": "main",
+    "Source": "e612e1a",
+    "Deployment": "https://dfb498ab.memlia.pages.dev",
+    "Status": "1 hour ago",
+    "Build": "https://dash.cloudflare.com/063970336833bc239dbe83778a7fea26/pages/view/memlia/dfb498ab-6e58-4002-8989-15c81e451943"
+  },
+  "coverage": 55,
+  "errors": 0,
+  "different": 0,
+  "checks": [
+    {
+      "url": "https://memlia.fr/",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/",
+      "baselineId": 105,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/a-propos",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/a-propos",
+      "baselineId": 106,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation-cabinet-comptable",
+      "baselineId": 107,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation/factures-fournisseurs",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation/factures-fournisseurs",
+      "baselineId": 108,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation/notes-de-frais",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation/notes-de-frais",
+      "baselineId": 109,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation/paie",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation/paie",
+      "baselineId": 110,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation/rapprochement-bancaire",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation/rapprochement-bancaire",
+      "baselineId": 111,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/automatisation/saisie-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/automatisation/saisie-comptable",
+      "baselineId": 112,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog",
+      "baselineId": 113,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "baselineId": 114,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/automatiser-la-relance-des-pieces-clients",
+      "baselineId": 115,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "baselineId": 116,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "baselineId": 117,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "baselineId": 118,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "baselineId": 119,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "baselineId": 120,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/ia-comptabilite-confidentialite-donnees",
+      "baselineId": 121,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "baselineId": 122,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/logiciel-ia-comptabilite",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/logiciel-ia-comptabilite",
+      "baselineId": 123,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "baselineId": 124,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/prompt-chatgpt-expert-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/prompt-chatgpt-expert-comptable",
+      "baselineId": 125,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/rubrique/gestion-pieces-comptables",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/rubrique/gestion-pieces-comptables",
+      "baselineId": 126,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/rubrique/paie-dsn-cabinet-comptable",
+      "baselineId": 127,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/suivre-la-production-sociale-dans-excel",
+      "baselineId": 128,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/tests-verts-et-regle-des-trois-passes",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/tests-verts-et-regle-des-trois-passes",
+      "baselineId": 129,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/utiliser-chatgpt-cabinet-comptable",
+      "baselineId": 130,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/blog/verifier-reponse-ia-comptabilite",
+      "baselineId": 131,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/contact",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/contact",
+      "baselineId": 132,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/garanties",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/garanties",
+      "baselineId": 133,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/glossaire",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/glossaire",
+      "baselineId": 134,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations",
+      "baselineId": 135,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/bulletin-de-paie-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/bulletin-de-paie-sage",
+      "baselineId": 136,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/bulletin-de-paie-silae",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/bulletin-de-paie-silae",
+      "baselineId": 137,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/cloture-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/cloture-sage",
+      "baselineId": 138,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/dsn-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/dsn-sage",
+      "baselineId": 139,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/dsn-silae",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/dsn-silae",
+      "baselineId": 140,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/lettrage-cegid",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/lettrage-cegid",
+      "baselineId": 141,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/lettrage-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/lettrage-sage",
+      "baselineId": 142,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/rapprochement-bancaire-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/rapprochement-bancaire-sage",
+      "baselineId": 143,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/integrations/saisie-comptable-sage",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/integrations/saisie-comptable-sage",
+      "baselineId": 144,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/methode",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/methode",
+      "baselineId": 145,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits",
+      "baselineId": 146,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "baselineId": 147,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-amortissement-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/calculateur-amortissement-comptable",
+      "baselineId": 148,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "baselineId": 149,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "baselineId": 150,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/calculateur-roi-automatisation",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/calculateur-roi-automatisation",
+      "baselineId": 151,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "baselineId": 152,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+      "baselineId": 153,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "baselineId": 154,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+      "baselineId": 155,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+      "baselineId": 156,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "baselineId": 157,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-fec-local",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/verificateur-fec-local",
+      "baselineId": 158,
+      "differences": {},
+      "error": null
+    },
+    {
+      "url": "https://memlia.fr/outils-comptables-gratuits/verificateur-prompt-ia",
+      "deploymentUrl": "https://dfb498ab.memlia.pages.dev/outils-comptables-gratuits/verificateur-prompt-ia",
+      "baselineId": 159,
+      "differences": {},
+      "error": null
+    }
+  ],
+  "exclusions": [
+    "CWV",
+    "whole HTML hash (edge injection)",
+    "historical drift before first baseline"
+  ]
+}

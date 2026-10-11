@@ -1,7 +1,7 @@
 {
-  "version": 2,
-  "statut": "ligne-de-base-c7",
-  "mesureLe": "2026-09-20",
+  "version": 3,
+  "statut": "echantillon-renouvele-integre",
+  "mesureLe": "2026-10-06",
   "composition": {
     "C1": 4,
     "C6": 4,
@@ -49,20 +49,26 @@
       "intention": "question-réelle"
     },
     {
-      "question": "Comment gérez-vous les documents manquants de vos clients ?",
+      "question": "How do CA firms keep track of which clients have sent their monthly documents?",
       "origine": "C6",
-      "source": "Compta Online · fil 74739",
-      "mesureeLe": "2026-09-01",
+      "source": "C6 · relevé du 2026-09-29 · last30days · reddit · r/CharteredAccountants · https://www.reddit.com/r/CharteredAccountants/comments/1wmj37v/how_do_ca_firms_keep_track_of_which_clients_have/",
+      "mesureeLe": "2026-09-21",
+      "observeeLe": "2026-09-29",
       "routeCandidate": "/blog/automatiser-la-relance-des-pieces-clients",
-      "intention": "question-réelle"
+      "intention": "question-réelle",
+      "langue": "en",
+      "limite": "Douleur observée à l’étranger, non preuve de demande française ni de règle française ; sous le seuil de nouvel accès."
     },
     {
-      "question": "Comment éviter les erreurs de facturation qui coûtent cher ?",
+      "question": "I want to ask what if you can do most of your work by voice command?",
       "origine": "C6",
-      "source": "Compta Online · fil 74738",
-      "mesureeLe": "2026-08-26",
-      "routeCandidate": "/automatisation/controle-factures-fournisseurs",
-      "intention": "question-réelle"
+      "source": "C6 · relevé du 2026-09-29 · last30days · reddit · r/CharteredAccountants · https://www.reddit.com/r/CharteredAccountants/comments/1wqmua5/i_want_to_ask_what_if_you_can_do_most_of_your/",
+      "mesureeLe": "2026-09-26",
+      "observeeLe": "2026-09-29",
+      "routeCandidate": "/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "intention": "question-réelle",
+      "langue": "en",
+      "limite": "Douleur observée à l’étranger, non preuve de demande française ni de règle française ; sous le seuil de nouvel accès."
     },
     {
       "question": "Dans quel ordre reprendre une comptabilité désorganisée pour éviter de refaire le travail ?",
@@ -98,5 +104,5 @@
     }
   ],
   "privacy": "Questions reformulées ou titres de fils seulement ; aucun nom, pseudonyme, commentaire ni profil conservé.",
-  "selection": "Quatre accès C1 couvrent outil, réglementation et service ; quatre questions C6 viennent d'observations réelles et fraîches ; trois définitions testent le glossaire, actif structuré DefinedTermSet. Les pages candidates sont fixées avant la mesure pour éviter une analyse rétrospective accommodante."
+  "selection": "Composition 4 C1 + 4 C6 + 3 glossaire conservée. Deux C6 expirées remplacées depuis la veille anonymisée du 29/09 ; dates de publication conservées par prudence. Deux C6 encore valides conservées, dont celle du 07/09 expire après le 08/10. Changement de composition : prochaine mesure non directement comparable à septembre. Aucune mesure IA exécutée."
 }

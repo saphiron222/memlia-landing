@@ -16,12 +16,13 @@ export const SITE = {
 /**
  * Un seul appel à l'action sur tout le site. Depuis le site v2 il mène à /contact, qui
  * explique quoi préparer avant l'échange ; c'est là, et là seulement, que se trouvent
- * les liens de réservation. Le bouton de navigation porte un libellé court, même
- * action et même destination.
+ * les liens de réservation. Le bouton de navigation porte le même libellé que l'appel
+ * principal, même action et même destination (décision de Kevin du 07/10/2026 : une
+ * intention, un libellé).
  */
 export const CTA = {
   principal: { libelle: 'Confier une première tâche', href: '/contact' },
-  nav: { libelle: 'Parlons de votre tâche', href: '/contact' },
+  nav: { libelle: 'Confier une première tâche', href: '/contact' },
   /** Réservation directe : réservée à /contact, jamais un raccourci depuis une autre page. */
   rendezVous: { libelle: 'Réserver un échange', href: 'https://cal.com/kevin-svg/decouvrir-memlia' },
   humain: { libelle: 'Parler à un humain', href: 'https://cal.com/kevin-svg/echanger-avec-l-equipe-memlia' },

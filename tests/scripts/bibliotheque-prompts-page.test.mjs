@@ -15,7 +15,7 @@ test('bibliothèque construite : metadata, corps statique, médias, sitemap et e
   for (const m of MODELS) assert.ok(html.includes(`data-model="${m.id}"`));
   for (const type of ['WebPage', 'WebApplication', 'BreadcrumbList']) assert.ok(html.includes(`"@type":"${type}"`));
   assert.ok(!html.includes('"@type":"BlogPosting"'));
-  assert.ok(readFileSync('dist/sitemap-0.xml', 'utf8').includes(`https://memlia.fr${route}`));
+  assert.ok(readFileSync('dist/sitemap-outils.xml', 'utf8').includes(`https://memlia.fr${route}`));
   for (const from of ['outils-comptables-gratuits', 'methode', 'outils-comptables-gratuits/generateur-prompt-expert-comptable']) {
     const source = readFileSync(`dist/${from}.html`, 'utf8');
     const main = source.split('<main')[1].split('</main>')[0];

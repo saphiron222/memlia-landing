@@ -1,0 +1,19 @@
+---
+import { FICHE_OUTIL_CAC } from '@/data/accueil/cac';
+import Picto from '@/components/Picto.astro';
+const sources = [
+  FICHE_OUTIL_CAC.source,
+  { libelle: 'H2A, NEP 505 — demandes de confirmation des tiers', href: 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/' },
+  { libelle: 'H2A, NEP 230 — documentation de l’audit', href: 'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/' },
+  { libelle: 'CNCC, Code de commerce — partie législative', href: 'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024' },
+  { libelle: 'CNCC, Code de déontologie — mars 2026', href: 'https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026' },
+];
+---
+<section class="section" aria-labelledby="sources-cac">
+  <div class="conteneur pile">
+    <div class="tete"><h2 id="sources-cac">Les textes de référence</h2></div>
+    <div class="liens-bloc">
+      <ul class="liens">{sources.map(source => <li><a href={source.href} class="lien-action" rel="noopener noreferrer">{source.libelle}<Picto nom="fleche" taille={14} /></a></li>)}</ul>
+    </div>
+  </div>
+</section>

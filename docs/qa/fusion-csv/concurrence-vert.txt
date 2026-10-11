@@ -1,0 +1,27 @@
+
+Running 22 tests using 1 worker
+
+  ✓   1 tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent (2.9s)
+  ✓   2 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination (1.6s)
+  ✓   3 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination (1.4s)
+  ✓   4 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : csv puis copy conserve chaque destination (1.1s)
+  ✓   5 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination (1.5s)
+  ✓   6 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après reset (1.7s)
+  ✓   7 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après mapping (1.7s)
+  ✓   8 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après order (1.3s)
+  ✓   9 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review (1.4s)
+  ✓  10 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review-again (1.7s)
+  ✓  11 tests/browser/fusion-csv-concurrency.spec.ts:73:1 › F2 : fin de copie asynchrone après reset ne déclare pas un faux succès (2.1s)
+  ✓  12 tests/browser/fusion-csv-concurrency.spec.ts:23:1 › F1 : réordre pendant consolidation annule, puis ordre/mapping/rapport/CSV concordent (3.8s)
+  ✓  13 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : report puis copy conserve chaque destination (1.4s)
+  ✓  14 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis report conserve chaque destination (1.6s)
+  ✓  15 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : csv puis copy conserve chaque destination (1.7s)
+  ✓  16 tests/browser/fusion-csv-concurrency.spec.ts:44:90 › F2 : copy puis csv conserve chaque destination (1.7s)
+  ✓  17 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après reset (1.6s)
+  ✓  18 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après mapping (1.5s)
+  ✓  19 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après order (1.9s)
+  ✓  20 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review (2.4s)
+  ✓  21 tests/browser/fusion-csv-concurrency.spec.ts:56:73 › F2 : réponses export obsolètes ignorées après review-again (3.2s)
+  ✓  22 tests/browser/fusion-csv-concurrency.spec.ts:73:1 › F2 : fin de copie asynchrone après reset ne déclare pas un faux succès (3.9s)
+
+  22 passed (49.8s)

@@ -1,0 +1,679 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-06T20:45:26.732Z",
+  "method": "Calcul déterministe de sélection et propositions sur données structurées fictives. Ni PDF lu ni plateforme connectée ni procédure d’audit réalisée.",
+  "cases": [
+    {
+      "id": "selection-couverture",
+      "input": {
+        "population": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "denominator": 100000,
+        "objectifAtteint": true,
+        "arret": "couverture",
+        "envoi": false
+      },
+      "actual": {
+        "selection": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000,
+            "motif": "solde"
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000,
+            "motif": "mouvement"
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000,
+            "motif": "tirage-reproductible"
+          }
+        ],
+        "denominator": 100000,
+        "montantSelectionne": 75000,
+        "couverture": 0.75,
+        "graine": "orme-2026-09",
+        "parametres": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "absentsSecondePasse": [],
+        "depassementN": false,
+        "objectifAtteint": true,
+        "arret": "couverture",
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "arret-n-comptes",
+      "input": {
+        "population": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.99,
+          "n": 2,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "arret": "nombre",
+        "objectifAtteint": false,
+        "montantSelectionne": 65000
+      },
+      "actual": {
+        "selection": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000,
+            "motif": "solde"
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000,
+            "motif": "mouvement"
+          }
+        ],
+        "denominator": 100000,
+        "montantSelectionne": 65000,
+        "couverture": 0.65,
+        "graine": "orme-2026-09",
+        "parametres": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.99,
+          "n": 2,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "absentsSecondePasse": [],
+        "depassementN": false,
+        "objectifAtteint": false,
+        "arret": "nombre",
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "deux-passes",
+      "input": {
+        "population": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          },
+          {
+            "id": "F",
+            "solde": 50000,
+            "mouvement": 80000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "previous": [
+          "A",
+          "B",
+          "E"
+        ]
+      },
+      "expected": {
+        "denominator": 150000,
+        "absentsSecondePasse": []
+      },
+      "actual": {
+        "selection": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000,
+            "motif": "passe-anterieure"
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000,
+            "motif": "passe-anterieure"
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000,
+            "motif": "passe-anterieure"
+          },
+          {
+            "id": "F",
+            "solde": 50000,
+            "mouvement": 80000,
+            "motif": "solde"
+          }
+        ],
+        "denominator": 150000,
+        "montantSelectionne": 125000,
+        "couverture": 0.8333333333333334,
+        "graine": "orme-2026-09",
+        "parametres": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "absentsSecondePasse": [],
+        "depassementN": false,
+        "objectifAtteint": true,
+        "arret": "couverture",
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "tiers-disparu",
+      "input": {
+        "population": [
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "previous": [
+          "A",
+          "B"
+        ]
+      },
+      "expected": {
+        "absentsSecondePasse": [
+          "A"
+        ]
+      },
+      "actual": {
+        "selection": [
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000,
+            "motif": "passe-anterieure"
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000,
+            "motif": "solde"
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000,
+            "motif": "mouvement"
+          }
+        ],
+        "denominator": 60000,
+        "montantSelectionne": 50000,
+        "couverture": 0.8333333333333334,
+        "graine": "orme-2026-09",
+        "parametres": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        },
+        "absentsSecondePasse": [
+          "A"
+        ],
+        "depassementN": false,
+        "objectifAtteint": true,
+        "arret": "couverture",
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "population-non-rapprochee",
+      "input": {
+        "population": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": false,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "arret": "population-non-rapprochee",
+        "selection": []
+      },
+      "actual": {
+        "arret": "population-non-rapprochee",
+        "selection": [],
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "doublon-identifiant",
+      "input": {
+        "population": [
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          },
+          {
+            "id": "B",
+            "solde": 25000,
+            "mouvement": 90000
+          },
+          {
+            "id": "C",
+            "solde": 15000,
+            "mouvement": 30000
+          },
+          {
+            "id": "D",
+            "solde": 10000,
+            "mouvement": 20000
+          },
+          {
+            "id": "E",
+            "solde": 10000,
+            "mouvement": 5000
+          },
+          {
+            "id": "A",
+            "solde": 40000,
+            "mouvement": 10000
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "arret": "identifiants-ambigus"
+      },
+      "actual": {
+        "arret": "identifiants-ambigus",
+        "selection": [],
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "solde-inattendu",
+      "input": {
+        "population": [
+          {
+            "id": "X",
+            "solde": -100,
+            "mouvement": 0
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "arret": "montant-ou-sens-inattendu"
+      },
+      "actual": {
+        "arret": "montant-ou-sens-inattendu",
+        "selection": [],
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "denominateur-nul",
+      "input": {
+        "population": [
+          {
+            "id": "X",
+            "solde": 0,
+            "mouvement": 100
+          }
+        ],
+        "rule": {
+          "populationRapprochee": true,
+          "seuil": 100000,
+          "grosSoldes": 1,
+          "grosMouvements": 1,
+          "couverture": 0.7,
+          "n": 5,
+          "graine": "orme-2026-09",
+          "ajoutsManuels": []
+        }
+      },
+      "expected": {
+        "arret": "denominateur-nul"
+      },
+      "actual": {
+        "arret": "denominateur-nul",
+        "selection": [],
+        "conclusion": null,
+        "envoi": false
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "piece-posterieure-proposee",
+      "input": {
+        "tiers": "C",
+        "devise": "EUR",
+        "solde": 12000,
+        "cloture": "2026-12-31",
+        "procedureChoisieCAC": true,
+        "pieces": [
+          {
+            "id": "reglement-01",
+            "tiers": "C",
+            "devise": "EUR",
+            "date": "2027-01-20",
+            "montant": 12000
+          }
+        ]
+      },
+      "expected": {
+        "etat": "piece-a-examiner",
+        "propositions": [
+          "reglement-01"
+        ]
+      },
+      "actual": {
+        "etat": "piece-a-examiner",
+        "propositions": [
+          "reglement-01"
+        ],
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "procedure-non-choisie",
+      "input": {
+        "tiers": "C",
+        "devise": "EUR",
+        "solde": 12000,
+        "cloture": "2026-12-31",
+        "procedureChoisieCAC": false,
+        "pieces": [
+          {
+            "id": "reglement-01",
+            "tiers": "C",
+            "devise": "EUR",
+            "date": "2027-01-20",
+            "montant": 12000
+          }
+        ]
+      },
+      "expected": {
+        "etat": "absence-transmise-cac",
+        "propositions": []
+      },
+      "actual": {
+        "etat": "absence-transmise-cac",
+        "propositions": [],
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "piece-manquante",
+      "input": {
+        "tiers": "C",
+        "devise": "EUR",
+        "solde": 12000,
+        "cloture": "2026-12-31",
+        "procedureChoisieCAC": true,
+        "pieces": []
+      },
+      "expected": {
+        "etat": "piece-manquante",
+        "propositions": []
+      },
+      "actual": {
+        "etat": "piece-manquante",
+        "propositions": [],
+        "conclusion": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "pieces-ambigues",
+      "input": {
+        "tiers": "C",
+        "devise": "EUR",
+        "solde": 12000,
+        "cloture": "2026-12-31",
+        "procedureChoisieCAC": true,
+        "pieces": [
+          {
+            "id": "reglement-01",
+            "tiers": "C",
+            "devise": "EUR",
+            "date": "2027-01-20",
+            "montant": 12000
+          },
+          {
+            "id": "reglement-02",
+            "tiers": "C",
+            "devise": "EUR",
+            "date": "2027-01-20",
+            "montant": 12000
+          }
+        ]
+      },
+      "expected": {
+        "etat": "pieces-ambigues",
+        "propositions": [
+          "reglement-01",
+          "reglement-02"
+        ]
+      },
+      "actual": {
+        "etat": "pieces-ambigues",
+        "propositions": [
+          "reglement-01",
+          "reglement-02"
+        ],
+        "conclusion": null
+      },
+      "status": "PASS"
+    }
+  ]
+}

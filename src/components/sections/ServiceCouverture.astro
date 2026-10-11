@@ -1,0 +1,71 @@
+---
+import { couvertureDe } from '@/data/couverture-logiciels.mjs';
+
+/*
+ * Sous le héros d'une page service : ce que le logiciel du cabinet fait déjà, puis ce qui reste à
+ * la main. Le nom de l'éditeur porte le lien vers sa page : une source se cite dans le texte, jamais
+ * dans une section « Sources » (Kevin, 06/10/2026). La date de lecture reste un contrôle interne.
+ * Une tâche que l'outil du cabinet couvre ne se présente jamais comme un gain (règle du 06/10/2026).
+ *
+ * Système de page : un outil et ce qu'il fait, c'est une définition, donc des lignes (l'éditeur à
+ * gauche, son geste à droite) ; ce qui reste à la main suit, en liste du texte. Aucune carte : rien
+ * ici n'est une destination.
+ */
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const couverture = couvertureDe(slug);
+---
+
+{couverture && (
+  <section class="section service-couverture" data-service-section="couverture" aria-labelledby="service-couverture-title">
+    <div class="conteneur pile">
+      <div class="tete rv">
+        <p class="surtitre">Avant de nous confier cette tâche</p>
+        <h2 id="service-couverture-title">Ce que votre logiciel fait déjà</h2>
+        <p>Si votre outil fait déjà ce geste, nous ne le refaisons pas. Nous partons de ce qu’il laisse.</p>
+      </div>
+      <dl class="lignes service-couverture-outils rv">
+        {couverture.dejaFait.map((geste) => (
+          <div class="ligne">
+            <dt class="ligne-libelle"><a href={geste.source.url} rel="noopener noreferrer" title={geste.source.libelle}>{geste.outil}</a></dt>
+            <dd class="ligne-texte">{geste.geste}.</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="service-couverture-reste rv">
+        <h3>Ce qui reste à la main, et que nous prenons</h3>
+        <ul>
+          {couverture.reste.map((ligne) => <li>{ligne}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  /* Le nom de l'éditeur est un lien du texte : vert, souligné. */
+  .service-couverture-outils a {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .service-couverture-reste {
+    display: grid;
+    gap: var(--espace-3);
+    max-width: 62ch;
+  }
+  .service-couverture-reste h3 {
+    font-size: var(--titre-bloc);
+  }
+  .service-couverture-reste ul {
+    display: grid;
+    gap: var(--espace-2);
+    padding-left: 1.3em;
+    list-style: disc;
+    color: var(--texte-2);
+  }
+</style>

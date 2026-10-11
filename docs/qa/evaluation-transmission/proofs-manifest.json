@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/evaluation-transmission-proof/index.html",
+      "sha256": "9909c810a98135d1265260e9abc119f4375fbaea7cab6790ddbe22c7cee99c7c"
+    },
+    {
+      "path": "docs/design/evaluation-transmission-proof/styles.css",
+      "sha256": "0913898f641b866275fbb7f979201060ca1d7fae9d19639e3bfd67315be0ae08"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/evaluation-transmission-proof/content-contract.json",
+      "sha256": "bbc41b075b44a1820b877708f480f9fe23e0740c701950a7557f52241ad571d9"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "eb7ce73010451b6791f8c6863b9fc11ac43b91b183abbee018c01fde24c2b728"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/evaluation-transmission-proof/index.html#service-evaluation-transmission",
+      "target": "public/proofs/v2/47-service-evaluation-transmission.webp",
+      "bytes": 44896,
+      "sha256": "f12b47bcf6763b5c0989679cd9d6229e009cb176bd598346b5ae4b6c8309a0f4"
+    },
+    {
+      "source": "docs/design/evaluation-transmission-proof/index.html#service-evaluation-transmission",
+      "target": "public/proofs/v2/og/47-service-evaluation-transmission.webp",
+      "bytes": 28444,
+      "sha256": "c1d561a03005a5ed5ed4a881e5ed7f0f7a6ce8d143a3aa988843e6835f3bdabc"
+    }
+  ]
+}

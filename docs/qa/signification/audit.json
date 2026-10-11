@@ -1,0 +1,153 @@
+{
+  "checkedAt": "2026-10-06T10:22:39.976Z",
+  "environment": "Cloudflare Pages local via wrangler ; pas production",
+  "route": "/outils-comptables-gratuits/seuil-signification-audit",
+  "headers": {
+    "access-control-allow-origin": "*",
+    "cache-control": "public, max-age=0, must-revalidate, no-transform",
+    "content-encoding": "gzip",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Tue, 06 Oct 2026 10:22:18 GMT",
+    "etag": "\"5ae1efbacbe755d7c3cb5946a2af59bd\"",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "transfer-encoding": "chunked",
+    "x-content-type-options": "nosniff",
+    "x-server-env": "dev"
+  },
+  "records": [
+    {
+      "width": 320,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    },
+    {
+      "width": 1920,
+      "overflow": false,
+      "requests": [],
+      "storage": {
+        "local": 0,
+        "session": 0,
+        "cookies": "",
+        "indexedDB": [],
+        "caches": []
+      },
+      "errors": [],
+      "nominal": true,
+      "decimalExact": true,
+      "exports": [
+        "csv",
+        "json",
+        "html"
+      ],
+      "resumeEqual": true
+    }
+  ],
+  "incoming": [
+    "/methode",
+    "/garanties",
+    "/outils-comptables-gratuits"
+  ],
+  "reflow400": "viewport CSS 320px, équivalent de 1280px à 400%",
+  "renderer": "node scripts/render-proofs-v2.mjs --source=docs/design/signification-proof --manifest=docs/qa/signification/proofs-manifest.json --start=41 --check"
+}

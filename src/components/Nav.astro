@@ -3,7 +3,8 @@ import Lockup from './Lockup.astro';
 import Button from './Button.astro';
 import Picto from './Picto.astro';
 import { CTA } from '@/data/site.mjs';
-import { NAV_V2 } from '@/data/pages-v2.mjs';
+import { creerNavigation } from '@/data/navigation.mjs';
+import { cacDisponible } from '@/data/navigation-publiee';
 
 /**
  * Navigation courte : les sections de l'accueil en clair à partir de 1024 px,
@@ -33,7 +34,7 @@ const { blogActif, chemin } = Astro.props;
 
 type Marque = 'page' | 'true' | undefined;
 interface Destination { libelle: string; href: string; courant: Marque }
-interface Groupe { libelle: string; sousEntrees: Destination[]; courant: Marque }
+interface Groupe { id: string; libelle: string; sousEntrees: Destination[]; courant: Marque }
 
 /**
  * Deux marquages distincts : « page » quand on est exactement sur l'entrée, « true »
@@ -48,12 +49,12 @@ const marquer = (href: string): Marque =>
  * (décision de Kevin, 16/09/2026) et qui accueillera les ressources à venir. Il se marque
  * « true » dès qu'une de ses destinations est courante ; ses destinations portent leur propre marque.
  */
-const entrees: (Destination | Groupe)[] = NAV_V2.map((entree: any) => {
+const entrees: (Destination | Groupe)[] = creerNavigation({ chemin, cacDisponible, blogActif }).map((entree: any) => {
   if (entree.sousEntrees) {
     const sousEntrees: Destination[] = entree.sousEntrees
       .filter((sous: any) => blogActif || sous.href !== '/blog')
       .map((sous: any) => ({ ...sous, courant: marquer(sous.href) }));
-    return { libelle: entree.libelle, sousEntrees, courant: sousEntrees.some((sous) => sous.courant) ? 'true' : undefined };
+    return { id: entree.id, libelle: entree.libelle, sousEntrees, courant: sousEntrees.some((sous) => sous.courant) ? 'true' : undefined };
   }
   return { ...entree, courant: marquer(entree.href) };
 });
@@ -77,14 +78,14 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
               type="button"
               class="nav-entree nav-groupe-bouton"
               aria-expanded="false"
-              aria-controls="sous-menu-ressources"
+              aria-controls={`sous-menu-${e.id}`}
               aria-current={e.courant}
               data-groupe-bouton
             >
               {e.libelle}
               <Picto nom="chevron" taille={14} class="nav-chevron" />
             </button>
-            <ul class="nav-sous-menu" id="sous-menu-ressources" aria-label={e.libelle}>
+            <ul class="nav-sous-menu" id={`sous-menu-${e.id}`} aria-label={e.libelle}>
               {e.sousEntrees.map((s) => (
                 <li><a class="nav-sous-entree" href={s.href} aria-current={s.courant}>{s.libelle}</a></li>
               ))}
@@ -118,21 +119,14 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   </div>
 </header>
 
-<!-- Sur mobile, les destinations restent immédiatement visibles et tactiles. -->
-<nav class="nav-mobile-visible" aria-label="Navigation principale mobile" data-mobile-visible>
-  <div class="conteneur nav-mobile-visible-liste">
-    {destinationsPlates.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
-  </div>
-</nav>
-
 <!-- Frère du header : son backdrop-filter ne doit pas contenir le fixed (WebKit). -->
 <div class="nav-mobile" id="menu-mobile" data-menu-mobile hidden>
   <nav aria-label="Navigation principale, menu" class="conteneur">
     <ul class="nav-mobile-liste">
       {entrees.map((e) => estGroupe(e) ? (
         <li class="nav-mobile-groupe">
-          <p class="nav-mobile-groupe-titre" id="menu-mobile-ressources">{e.libelle}</p>
-          <ul class="nav-mobile-sous-liste" aria-labelledby="menu-mobile-ressources">
+          <p class="nav-mobile-groupe-titre" id={`menu-mobile-${e.id}`}>{e.libelle}</p>
+          <ul class="nav-mobile-sous-liste" aria-labelledby={`menu-mobile-${e.id}`}>
             {e.sousEntrees.map((s) => (
               <li><a class="nav-mobile-lien nav-mobile-sous-lien" href={s.href} aria-current={s.courant}>{s.libelle}</a></li>
             ))}
@@ -158,7 +152,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 </noscript>
 
 <style>
-  @media print { .nav-barre, .nav-sans-js { display: none; } }
+  @media print { .nav-barre, .nav-mobile, .nav-sans-js { display: none; } }
   .nav-barre {
     position: sticky;
     top: 0;
@@ -191,6 +185,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   .nav-entree {
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     padding: 6px 8px;
     border-radius: var(--r-bouton);
     font-size: var(--t-sm);
@@ -234,18 +229,25 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     border-radius: var(--r-bouton);
     box-shadow: 0 12px 32px rgba(35, 31, 32, 0.12);
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-4px);
     pointer-events: none;
     transition: opacity var(--duree-1) ease-out, transform var(--duree-1) ease-out;
   }
-  /* Les destinations restent dans l'ordre du clavier : le panneau se révèle dès qu'une reçoit le focus. */
-  .nav-groupe:focus-within .nav-sous-menu,
+  /* Relier le bouton au panneau sans changer leur espacement visuel. */
+  .nav-sous-menu::before {
+    content: '';
+    position: absolute;
+    inset: -7px 0 auto;
+    height: 7px;
+  }
+  /* Le bouton ouvre le panneau au clavier ; fermé, ses liens sortent du Tab. */
   .nav-groupe[data-ouvert] .nav-sous-menu {
     opacity: 1;
+    visibility: visible;
     transform: none;
     pointer-events: auto;
   }
-  .nav-groupe:focus-within .nav-chevron,
   .nav-groupe[data-ouvert] .nav-chevron {
     transform: rotate(180deg);
   }
@@ -270,7 +272,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     gap: 4px;
   }
   .nav-principal {
-    display: inline-flex;
+    display: none;
     min-height: 44px;
     font-size: var(--t-sm);
   }
@@ -355,7 +357,15 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     gap: 16px;
     padding-block: 12px;
   }
+  .nav-sans-js a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
   @media (max-width: 63.999rem) {
+    :global(.js) .nav-burger {
+      display: inline-flex;
+    }
     .nav-barre[data-mobile-open] {
       position: fixed;
       left: 0;
@@ -387,38 +397,8 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       transition: none;
     }
   }
-  .nav-mobile-visible {
-    display: block;
-    border-bottom: 1px solid var(--ligne-douce);
-    background: var(--surface-feuille);
-  }
-  .nav-mobile-visible-liste {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  .nav-mobile-visible a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 8px 10px;
-    color: var(--texte);
-    font-size: var(--t-sm);
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .nav-mobile-visible a[aria-current] {
-    color: var(--accent-texte);
-  }
   @media (hover: hover) {
-    .nav-groupe:hover .nav-sous-menu {
-      opacity: 1;
-      transform: none;
-      pointer-events: auto;
-    }
-    .nav-groupe:hover .nav-chevron {
-      transform: rotate(180deg);
-    }
+
     .nav-sous-entree:hover {
       color: var(--texte-fort);
       background: var(--surface-hover);
@@ -448,8 +428,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
       display: inline-flex;
     }
     .nav-burger,
-    .nav-mobile,
-    .nav-mobile-visible {
+    .nav-mobile {
       display: none;
     }
   }
@@ -523,25 +502,31 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     desktop.addEventListener('change', (e) => {
       if (!e.matches || menu.hidden) return;
       closeMenu(false);
-      header.querySelector<HTMLAnchorElement>('.nav-centre a')?.focus({ preventScroll: true });
+      header.querySelector<HTMLElement>('.nav-centre .nav-entree')?.focus({ preventScroll: true });
     });
     // Ne pas conserver le verrou si la page est restaurée depuis le bfcache.
     window.addEventListener('pagehide', () => closeMenu(false));
   }
 
-  // Le groupe « Ressources » : le survol et le focus le révèlent en CSS ; le clic, Échap et
-  // le clic hors du groupe tiennent l'état annoncé (aria-expanded) et l'ouverture sans souris.
+  // Le survol ouvre ; le premier clic confirme cette ouverture, les suivants basculent.
+  // Le clavier, Échap et le clic extérieur conservent le même état annoncé.
   const groupes = [...document.querySelectorAll<HTMLElement>('[data-groupe]')];
   for (const groupe of groupes) {
     const bouton = groupe.querySelector<HTMLButtonElement>('[data-groupe-bouton]');
     if (!bouton) continue;
+    let survolSeul = false;
     const ouvrir = (etat: boolean) => {
+      survolSeul = false;
       groupe.toggleAttribute('data-ouvert', etat);
       bouton.setAttribute('aria-expanded', String(etat));
     };
-    bouton.addEventListener('click', () => ouvrir(!groupe.hasAttribute('data-ouvert')));
-    groupe.addEventListener('mouseenter', () => bouton.setAttribute('aria-expanded', 'true'));
-    groupe.addEventListener('mouseleave', () => { if (!groupe.hasAttribute('data-ouvert')) bouton.setAttribute('aria-expanded', 'false'); });
+    bouton.addEventListener('click', (e) => ouvrir((e.detail > 0 && survolSeul) || !groupe.hasAttribute('data-ouvert')));
+    groupe.addEventListener('mouseenter', () => {
+      if (groupe.hasAttribute('data-ouvert')) return;
+      ouvrir(true);
+      survolSeul = true;
+    });
+    groupe.addEventListener('mouseleave', () => { if (!groupe.contains(document.activeElement)) ouvrir(false); });
     groupe.addEventListener('focusout', (e) => { if (!groupe.contains(e.relatedTarget as Node | null)) ouvrir(false); });
     groupe.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && groupe.hasAttribute('data-ouvert')) { e.preventDefault(); ouvrir(false); bouton.focus(); }

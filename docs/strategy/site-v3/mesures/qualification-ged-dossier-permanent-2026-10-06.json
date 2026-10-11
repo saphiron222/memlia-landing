@@ -1,0 +1,20 @@
+{
+  "task_id": "t_4a179762",
+  "date": "2026-10-06",
+  "family": "ged-dossier-permanent",
+  "candidate": "/automatisation/ged-dossier-permanent",
+  "decision": "non-ouverture",
+  "canonical": "/automatisation-cabinet-comptable",
+  "queries_measured": 8,
+  "empty_lists": 6,
+  "suggestions": 6,
+  "signal": "GED générique et dossier permanent informationnel ; délégation du classement dans l’existant non démontrée",
+  "competitors": ["ACD GED", "Zeendoc"],
+  "limitations": ["Aucun volume mensuel", "Trois challenges DuckDuckGo", "Bing générique, non retenu pour qualifier une offre spécialisée", "Concurrence non exhaustive"],
+  "scope": "Nommage, proposition de classement et index après réception des pièces ; distinct de la collecte",
+  "stop_conditions": ["Dossier ambigu", "Doublon", "Collision de nom", "Version concurrente", "Pièce illisible", "Droits insuffisants"],
+  "recipe_status": "Non applicable à une candidate non retenue ; aucun rejeu revendiqué",
+  "child": "t_766a50e2",
+  "handoff": "Intégration documentaire seulement dans docs/strategy/site-v3/mesures ; pas de page ni réservation de requête",
+  "reopening": "Signal qualifié de délégation dans une GED existante ; examiner d’abord les fonctions natives"
+}

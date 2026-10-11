@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { parse as parseHtml } from 'parse5';
 import { parse as parseYaml } from 'yaml';
 import { dateIntentionScellee } from './lib/blog-pipeline.mjs';
+import { proofSrcset, proofSizes } from './lib/responsive-proofs.mjs';
 import {
   chargerAutocompletionMesuree,
   titrePorteUneRequeteMesuree,
@@ -40,13 +41,17 @@ function preuveDirecteSourcee(root, slug, figure) {
     const preuves = recette.inlineProofs ?? [];
     const preuve = preuves.find((item) => item.id === id);
     const date = new Date(`${preuve?.capturedAt}T00:00:00Z`);
-    // Recette de référence : l'image directe est l'unique /proofs/blog/<id>.webp (1600 × 900) ;
-    // une variante portrait « -mobile » est refusée, même si le fichier existe.
+    // Le master reste la source directe. Seules ses réductions déterministes sont acceptées ;
+    // une variante portrait « -mobile » reste refusée, même si le fichier existe.
+    const src = `/proofs/blog/${id}.webp`;
+    const responsive = attribut(image, 'srcset') !== null || attribut(image, 'sizes') !== null;
+    const responsiveValide = !responsive || (
+      attribut(image, 'srcset') === proofSrcset(src, readFileSync(join(root, 'public', src)))
+      && attribut(image, 'sizes') === proofSizes(attribut(image, 'loading') === 'lazy')
+    );
     return preuves.filter((item) => item.id === id).length === 1
       && preuve.alt === attribut(image, 'alt') && Boolean(preuve.alt?.trim())
-      && attribut(image, 'src') === `/proofs/blog/${id}.webp`
-      && attribut(image, 'srcset') === null
-      && attribut(image, 'sizes') === null
+      && attribut(image, 'src') === src && responsiveValide
       && Boolean(preuve.source?.trim())
       && /^\d{4}-\d{2}-\d{2}$/.test(preuve.capturedAt ?? '')
       && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === preuve.capturedAt

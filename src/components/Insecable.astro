@@ -1,0 +1,10 @@
+---
+import { segmentsInsecables } from '@/lib/insecable';
+// Rend un titre sans couper ses mots composés à leur trait d'union (système de page, § 2).
+interface Props { texte: string; }
+const { texte } = Astro.props;
+const segments = segmentsInsecables(texte);
+// Le mot composé seul peut céder sous 360 px (global.css) ; la ponctuation haute et le guillemet, jamais.
+const compose = (morceau: string) => /^[\p{L}\p{N}’']+(?:-[\p{L}\p{N}’']+)+$/u.test(morceau);
+---
+{segments.map((s) => (s.insecable ? <span class={compose(s.texte) ? 'insecable insecable-compose' : 'insecable'}>{s.texte}</span> : s.texte))}

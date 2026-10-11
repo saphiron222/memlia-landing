@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "recipe": "evaluation-transmission",
+  "checks": [
+    "Recette et revue métier valides",
+    "Tous les fichiers scellés concordent",
+    "Candidat prêt pour preview",
+    "Réservation primaire unique"
+  ],
+  "replayCases": 10,
+  "forgeTests": 15,
+  "publication": false
+}

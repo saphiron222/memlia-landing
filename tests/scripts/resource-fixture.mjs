@@ -72,18 +72,19 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release', op
   // Un couple claim/source/verdict peut être daté d’un jour antérieur : c’est le cas réel d’une revue
   // qui ajoute des termes sans rouvrir ceux qu’elle ne juge pas. La campagne, elle, garde sa date.
   const jourSensible = options.sensitiveVerdictDay ?? null;
-  const dateClaimSensible = jourSensible ? `${jourSensible}T10:00:00+01:00` : '2026-09-13T21:30:00+01:00';
-  const dateSourceSensible = jourSensible ? `${jourSensible}T09:00:00+01:00` : '2026-09-13T21:30:00+01:00';
+  const dateClaimSensible = options.sensitiveVerdictAt ?? (jourSensible ? `${jourSensible}T10:00:00+01:00` : '2026-09-13T21:30:00+01:00');
+  const dateSourceSensible = options.dilaCopy?.provenance.retrieved_at ?? (jourSensible ? `${jourSensible}T09:00:00+01:00` : '2026-09-13T21:30:00+01:00');
   if (!['qa', 'preview', 'approval', 'release'].includes(phase)) throw new Error(`Phase fixture inconnue : ${phase}.`);
   const manifest = clone(BASE);
   manifest.contractRevision = 3;
   const files = new Map([
-    ['fixtures/source.md', 'Source fixture primaire.'],
+    ['fixtures/source.md', options.dilaCopy?.text ?? 'Source fixture primaire.'],
     ['fixtures/build.html', '<html><meta name="robots" content="noindex, nofollow"><body>Fixture</body></html>'],
     ['fixtures/image.webp', 'fixture-image'],
   ]);
   const registry = { blog: [...BLOG_SKILLS], seo: [...SEO_SKILLS], marketingDesignCore: [...RESOURCE_CORE_SKILLS] };
   files.set('fixtures/skills.json', `${JSON.stringify(registry)}\n`);
+  if (options.dilaCopy) files.set('fixtures/dila.json', `${JSON.stringify(options.dilaCopy)}\n`);
   if (adapter === 'M') files.set('fixtures/model.xlsx', 'fixture-xlsx');
   for (const [path, content] of files) {
     mkdirSync(join(root, path, '..'), { recursive: true });
@@ -97,6 +98,7 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release', op
     buildOutput: { entries: [entry('fixtures/build.html')] },
   };
   if (adapter === 'M') bundles.assetBundle.entries.push(entry('fixtures/model.xlsx'));
+  if (options.dilaCopy) bundles.sourceBundle.entries.push(entry('fixtures/dila.json'));
   for (const bundle of Object.values(bundles)) {
     bundle.entries.sort((left, right) => left.path.localeCompare(right.path));
     bundle.digest = digest(bundle.entries);
@@ -143,7 +145,7 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release', op
     applicability: {
       population: 'Entreprises françaises concernées par la règle juridique fictive.',
       regime: 'Régime juridique fictif décrit par la source primaire de la fixture.',
-      validAsOf: jourSensible ?? '2026-09-13',
+      validAsOf: options.dilaCopy ? dateSourceSensible.slice(0, 10) : jourSensible ?? '2026-09-13',
       exceptions: 'Les situations hors du régime fictif restent exclues du claim.',
       sourceIds: ['source-1'],
     },
@@ -151,6 +153,15 @@ export function createResourceFixture(root, adapter = 'H', phase = 'release', op
   manifest.claimsEvidence.citations = [{ id: 'citation-1', claimIds: ['claim-1'], sourceId: 'source-1', text: sourceText, sha256: sha256(sourceText), sourceContentSha256: sha256(sourceText), finalUrl: 'https://www.service-public.fr/fixture', checkedAt: dateClaimSensible, title: 'Source fixture', locator: 'ligne 1', verdict: 'soutient' }];
   manifest.claimsEvidence.sources = [{ id: 'source-1', publisher: 'Service Public', title: 'Source fixture', requestedUrl: 'https://www.service-public.fr/fixture', finalUrl: 'https://www.service-public.fr/fixture', checkedAt: dateSourceSensible, level: 'tier-1', provenance: 'primary', official: true, upstreamUrl: 'https://www.service-public.fr/fixture', snapshotPath: 'fixtures/source.md', contentSha256: sha256(sourceText), verificationEvidenceRef: 'fixture://source/open', classificationEvidenceRef: 'fixture://source/classification', claimIds: ['claim-1'] }];
   manifest.claimsEvidence.sensitiveMatter = { detected: true, signals: ['juridique'], checkedAt: '2026-09-13T21:30:00+01:00', businessReview: null };
+  if (options.dilaCopy) {
+    const url = options.dilaCopy.url;
+    Object.assign(manifest.claimsEvidence.sources[0], {
+      publisher: 'Légifrance', requestedUrl: url, finalUrl: url, upstreamUrl: url,
+      dilaCopyPath: 'fixtures/dila.json', dilaCopySha256: sha256(files.get('fixtures/dila.json')), verificationEvidenceRef: 'fixtures/dila.json',
+    });
+    manifest.claimsEvidence.citations[0].finalUrl = url;
+    manifest.claimsEvidence.sensitiveMatter.checkedAt = dateClaimSensible;
+  }
 
   manifest.assets.assetRefs = ['fixtures/image.webp'];
   manifest.assets.image = { required: true, engine: 'image_generate', promptEvidenceRef: 'fixture://prompt', generationEvidenceRef: 'fixture://generation', generationId: 'fixture-generation', masterSha256: sha256(files.get('fixtures/image.webp')), visualReviewEvidenceRef: 'fixture://visual-review', alt: 'Illustration fictive d’une ressource contrôlée', ogSha256: sha256(files.get('fixtures/image.webp')), derivativeRefs: ['fixture://derivative'], kevinApproved: true };

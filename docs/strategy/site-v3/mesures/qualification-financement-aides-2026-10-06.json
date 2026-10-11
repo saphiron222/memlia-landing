@@ -1,0 +1,51 @@
+{
+  "task": "t_bc4590e7",
+  "family": "financement-aides",
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/financement-aides",
+  "canonical": "/automatisation-cabinet-comptable",
+  "checked_at": "2026-10-06T06:38:41.342103+00:00",
+  "queries": 8,
+  "empty_lists": 8,
+  "suggestions": 0,
+  "monthly_volume": null,
+  "serp_usable": 1,
+  "serp_challenges": 2,
+  "distinct_commercial_intent": "non démontrée",
+  "source_officielle": {
+    "url": "https://bpifrance-creation.fr/encyclopedie/previsions-financieres-business-plan/business-plan/faire-son-business-plan",
+    "quote": "Cette partie doit faire l'objet d'un dossier à part pour réunir toutes les pièces justificatives et ne pas alourdir le business plan."
+  },
+  "boundaries": {
+    "automatic": [
+      "inventaire",
+      "proposition assemblage",
+      "signalement manquants"
+    ],
+    "validation": [
+      "liste des pièces",
+      "ambiguïtés",
+      "versions",
+      "relance"
+    ],
+    "human": [
+      "éligibilité",
+      "conseil",
+      "hypothèses",
+      "choix financement",
+      "signature",
+      "dépôt"
+    ]
+  },
+  "child": "t_931440d7",
+  "next_step": "Intégrer les documents de qualification, aucune publication",
+  "recipe": "non retenue ; preparer, revue métier, sceller non applicables",
+  "limitations": [
+    "Aucun volume mensuel mesuré",
+    "Une seule SERP exploitable ; deux challenges",
+    "Concurrence spécialisée financement non couverte exhaustivement",
+    "Liste vide ne prouve pas absence de demande"
+  ],
+  "git_base": "2f4ba16bf55ae52f6d0d018bf7b5de39edd1ef70",
+  "changed_repo_files": []
+}

@@ -130,7 +130,7 @@ test('SEO canonical schema sitemap hub footer et entrants contextuels', async ({
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content','Diagnostic de maturité IA du cabinet');
   const graphs = await page.locator('script[type="application/ld+json"]').allTextContents();
   expect(graphs.join('')).toContain('WebApplication'); expect(graphs.join('')).not.toContain('AggregateRating');
-  expect(await (await request.get('/sitemap-0.xml')).text()).toContain('https://memlia.fr' + route);
+  expect(await (await request.get('/sitemap-outils.xml')).text()).toContain('https://memlia.fr' + route);
   for (const from of ['/outils-comptables-gratuits','/methode','/automatisation-cabinet-comptable']) {
     await page.goto(from); await expect(page.locator(`main a[href="${route}"]`).first()).toBeVisible();
     await expect(page.locator(`footer a[href="${route}"]`)).toHaveCount(1);

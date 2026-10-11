@@ -23,6 +23,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { readSitemapPages } from './lib/sitemaps.mjs';
 
 const REGISTRE = 'src/data/pages-lastmod.json';
 const DIST = 'dist';
@@ -42,7 +43,7 @@ const empreinte = (octets) => createHash('sha256').update(octets).digest('hex');
 
 /** Les routes du sitemap qui ne sont pas des articles : leur date ne vient d'aucun frontmatter. */
 export function routesNonEditoriales(dist = DIST) {
-  const sitemap = readFileSync(join(dist, 'sitemap-0.xml'), 'utf8');
+  const sitemap = readSitemapPages(dist);
   return [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
     .map((m) => new URL(m[1]).pathname.replace(/\/$/, '') || '/')
     .filter((route) => !route.startsWith('/blog/'))

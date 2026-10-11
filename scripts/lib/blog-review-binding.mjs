@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'parse5';
+import { isResponsiveProofSelection } from './responsive-proofs.mjs';
 
 export const reviewSha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
@@ -37,7 +38,37 @@ export function renderedBodySha256(html) {
   const visit = (node) => {
     if (node.tagName === 'div' && node.attrs?.some((attr) => attr.name === 'class' && attr.value.split(/\s+/).includes('article-corps'))) {
       const location = node.sourceCodeLocation;
-      if (location?.startTag && location?.endTag) return reviewSha256(source.slice(location.startTag.endOffset, location.endTag.startOffset));
+      if (location?.startTag && location?.endTag) {
+        let body = source.slice(location.startTag.endOffset, location.endTag.startOffset);
+        const wrappers = [];
+        const collect = (child) => {
+          // Only the generated, single-table accessibility envelope is logistical.
+          // Keep all cells, captions, figures and any other surrounding content bound.
+          const children = (child.childNodes ?? []).filter((item) => item.nodeName !== '#text' || item.value.trim());
+          const attributes = Object.fromEntries((child.attrs ?? []).map(item => [item.name, item.value]));
+          if (child.tagName === 'img' && isResponsiveProofSelection(attributes.src, attributes.srcset,
+            attributes.sizes, attributes.loading === 'lazy')) {
+            // Les variantes canoniques ne changent pas le fond : src, alt et dimensions restent liés.
+            for (const name of ['srcset', 'sizes']) {
+              const attribute = child.sourceCodeLocation.attrs[name];
+              wrappers.push({ startOffset: attribute.startOffset - 1, endOffset: attribute.endOffset });
+            }
+          }
+          if (child.tagName === 'div' && child.attrs?.some((attr) => attr.name === 'data-table-scroll')
+            && children.length === 1 && children[0].tagName === 'table') {
+            const tags = child.sourceCodeLocation;
+            if (tags?.startTag && tags?.endTag) wrappers.push(tags.startTag, tags.endTag);
+          }
+          for (const item of child.childNodes ?? []) collect(item);
+        };
+        collect(node);
+        for (const tag of wrappers.sort((a, b) => b.startOffset - a.startOffset)) {
+          const start = tag.startOffset - location.startTag.endOffset;
+          const end = tag.endOffset - location.startTag.endOffset;
+          body = body.slice(0, start) + body.slice(end);
+        }
+        return reviewSha256(body);
+      }
     }
     for (const child of node.childNodes ?? []) {
       const hash = visit(child);

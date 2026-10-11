@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/lettrage-proof/index.html",
+      "sha256": "261a074aa7a7fc79b1418e77c9bb224512d1ddb54467c3f0b3244aa5cff1fa55"
+    },
+    {
+      "path": "docs/design/lettrage-proof/styles.css",
+      "sha256": "e1a117f55db6f9a12f2a2728417c684945c61a5a0aa5a9acb9e3fcfe44e7bc1e"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/lettrage-proof/content-contract.json",
+      "sha256": "4e9e3970c99c56cc827e30d3e86be69b2f56f516c3926eafac8c5c172747e593"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/lettrage-proof/index.html#outil-lettrage",
+      "target": "public/proofs/v2/46-outil-lettrage.webp",
+      "bytes": 47366,
+      "sha256": "35366b56db4bd020581604d350bfba7e3ad75233afaad13c4ac7bf3d69fb351e"
+    },
+    {
+      "source": "docs/design/lettrage-proof/index.html#outil-lettrage",
+      "target": "public/proofs/v2/og/46-outil-lettrage.webp",
+      "bytes": 30532,
+      "sha256": "0effa9f34d805ce08fd5f8297ea6d311640ff12d60ec26a8eaaf1e572fec82e9"
+    }
+  ]
+}

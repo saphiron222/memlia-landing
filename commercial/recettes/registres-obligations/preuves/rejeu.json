@@ -1,0 +1,480 @@
+{
+  "status": "PASS",
+  "fictitious": true,
+  "replayedAt": "2026-10-06",
+  "executedAt": "2026-10-06T21:25:07.960322+00:00",
+  "limits": "Extraits simulés ; aucune connexion ; terme calendaire de deux mois seulement, prorogations et exceptions humaines.",
+  "cases": [
+    {
+      "id": "courant",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": "2026-09-06",
+          "envoi": false
+        },
+        "calcul": {
+          "terme_calendaire": "2026-11-06",
+          "mois": 2,
+          "point_depart": "2026-09-06",
+          "source": "R622-24",
+          "statut": "à valider, prorogation à vérifier"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "fin-mois",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-12-31",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": "2026-12-31",
+          "envoi": false
+        },
+        "calcul": {
+          "terme_calendaire": "2027-02-28",
+          "mois": 2,
+          "point_depart": "2026-12-31",
+          "source": "R622-24",
+          "statut": "à valider, prorogation à vérifier"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "sans-procedure",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": false,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": "2026-09-06",
+          "envoi": false
+        },
+        "calcul": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "qualification-inconnue",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": false,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": "2026-09-06",
+          "envoi": false
+        },
+        "calcul": null,
+        "delai_status": "EXAMEN_HUMAIN"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "surete-ou-etranger",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": false
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": "2026-09-06",
+          "envoi": false
+        },
+        "calcul": null,
+        "delai_status": "EXAMEN_HUMAIN"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "date-absente",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": null,
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "PROPOSITION",
+        "fiche": {
+          "siren": "IDENTIFIANT_FICTIF_A",
+          "changements": [
+            "adresse à mettre à jour"
+          ],
+          "sources": [
+            "RNE extrait fictif",
+            "Sirene extrait fictif",
+            "BODACC annonce fictive"
+          ]
+        },
+        "alerte_associe": {
+          "destinataire": "associé référent à valider",
+          "publication": null,
+          "envoi": false
+        },
+        "calcul": null,
+        "delai_status": "PUBLICATION_A_CONFIRMER"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "contradiction",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": true,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "ARRET",
+        "motif": "sources contradictoires"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "identite-incertaine",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": false,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "ARRET",
+        "motif": "identité à confirmer"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "lecture-incomplete",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": false,
+        "deja_traite": false,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "ARRET",
+        "motif": "lecture incomplète"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "doublon",
+      "input": {
+        "siren": "IDENTIFIANT_FICTIF_A",
+        "siren_confirme": true,
+        "contradiction": false,
+        "sources_completes": true,
+        "deja_traite": true,
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "changements": [
+          "adresse à mettre à jour"
+        ],
+        "sources": [
+          "RNE extrait fictif",
+          "Sirene extrait fictif",
+          "BODACC annonce fictive"
+        ],
+        "publication": "2026-09-06",
+        "procedure": true,
+        "qualification_validee": true,
+        "cas_general": true
+      },
+      "output": {
+        "annotations": [
+          "appeler le dirigeant"
+        ],
+        "envoi": false,
+        "depot": false,
+        "ecriture_client": false,
+        "status": "ARRET",
+        "motif": "événement déjà traité"
+      },
+      "status": "PASS"
+    }
+  ]
+}

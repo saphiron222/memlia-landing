@@ -164,7 +164,8 @@ class PositioningProof(unittest.TestCase):
 
     def test_written_rule_automation_is_bounded_in_daily_passage(self):
         html = (DIST / 'index.html').read_text()
-        match = re.search(r'<p[^>]*class="daily-note texte-2"[^>]*>(.*?)</p>', html, re.S)
+        # Le passage est la mention du système de page (07/10/2026) : la classe `daily-note` le désigne.
+        match = re.search(r'<p[^>]*class="(?:[^"]* )?daily-note(?: [^"]*)?"[^>]*>(.*?)</p>', html, re.S)
         self.assertIsNotNone(match)
         assert match is not None
         passage = match.group(1)
@@ -172,6 +173,22 @@ class PositioningProof(unittest.TestCase):
         self.assertEqual(text, 'Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet. '
                          'Nous en automatisons la part répétitive lorsque les formats, les accès et les cas couverts le permettent.')
         self.assertNotIn('une règle écrite s’automatise', html)
+
+    def test_blog_hub_separates_published_methods_and_service(self):
+        html = (DIST / 'blog.html').read_text()
+        text = ' '.join(' '.join(Text(html).parts).split())
+        for phrase in [
+            'Nous publions des méthodes pour en écrire la règle',
+            'La décision reste au cabinet.',
+            'Vous avez lu la méthode ; vous pouvez aussi nous confier la tâche.',
+            'Dans la série Cicatrices, Kevin Kitanga raconte à la première personne',
+        ]:
+            self.assertIn(phrase, text)
+        self.assertIn('https://memlia.fr/blog', html)
+        self.assertNotIn('Kevin Sauvaget', html)
+        for slug in ['paie-dsn-cabinet-comptable', 'gestion-pieces-comptables', 'ia-cabinet-comptable']:
+            self.assertIn(f'href="/blog/rubrique/{slug}"', html)
+            self.assertTrue((DIST / 'blog' / 'rubrique' / f'{slug}.html').is_file())
 
     def test_illustrations_are_not_product_cards(self):
         html = (DIST / 'index.html').read_text()

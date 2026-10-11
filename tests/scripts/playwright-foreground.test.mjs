@@ -19,6 +19,8 @@ test('Playwright retains ownership of its real Astro preview child', { timeout: 
   const config = localServerConfig();
   assert.equal(config.env?.ASTRO_PREVIEW_BACKGROUND, '1');
   assert.equal(config.reuseExistingServer, false);
+  assert.equal(config.stdout, 'pipe', 'Les refus de build doivent être visibles dans les journaux CI.');
+  assert.equal(config.stderr, 'pipe');
   assert.doesNotMatch(config.command, /--ignore-lock|--force|--background/);
   const reservation = createServer();
   let root;

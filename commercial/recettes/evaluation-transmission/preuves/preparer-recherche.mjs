@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+const dir=import.meta.dirname;
+const url='https://bpifrance-creation.fr/encyclopedie/reprendre-entreprise-etapes/diagnostiquer-evaluer/evaluation-dentreprise';
+const r=await fetch(url,{signal:AbortSignal.timeout(30000)});if(r.status!==200)throw Error('Source Bpi indisponible');const html=await r.text();writeFileSync(dir+'/bpi-source.html',html);
+const text=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'').replace(/<[^>]*>/g,' ').replace(/&#039;|&apos;/g,"'").replace(/&nbsp;/g,' ').replace(/&amp;/g,'&').replace(/\s+/g,' ').trim();
+writeFileSync(dir+'/bpi-source.txt',text);
+const excerpt="L'évaluation ne permet pas de fixer un prix";if(!text.includes(excerpt))throw Error('Extrait absent');
+writeFileSync(dir+'/sources.json',JSON.stringify({openedAt:new Date().toISOString(),sources:[{id:'bpi-evaluation',url,status:r.status,title:"Evaluation d’entreprise",excerpt,localText:'preuves/bpi-source.txt',role:'Distinguer préparation, évaluation et prix de cession ; pas de prescription de méthode.'},{id:'rca-evaluation',url:'https://rca.fr/logiciels-experts/evaluation/',status:200,localText:'preuves/rca.txt',excerpt:'Retraitement des données',role:'Offre concurrente observée, pas source normative ni compatibilité démontrée.'}]},null,2)+'\n');
+const demand=JSON.parse(readFileSync(dir+'/demande.json','utf8'));const dest='docs/strategy/site-v3/mesures/titres-intent-2026-10-06.json';const prior=existsSync(dest)?JSON.parse(readFileSync(dest,'utf8')):{};
+writeFileSync(dest,JSON.stringify({...prior,measuredAt:prior.measuredAt??demand.measuredAt,autocompletion:{...prior.autocompletion,...demand.autocompletion},provenance:{...prior.provenance,...demand.provenance}},null,2)+'\n');console.log(JSON.stringify({source:r.status,excerpt,measurements:Object.keys(demand.autocompletion).length}));

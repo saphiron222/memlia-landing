@@ -1,0 +1,45 @@
+<div data-fusion>
+  <h2>Assembler les lignes, garder leur origine</h2>
+  <p>2 à 20 CSV texte, 20 Mo au total, 100 000 lignes au total, 128 colonnes et 65 536 caractères par cellule. Chaque fichier commence par ses en-têtes. Aucune jointure ni conversion de montants, de dates ou de devises.</p>
+  <form data-async-tool data-own-telemetry>
+    <label for="fusion-files">Fichiers CSV locaux</label>
+    <input id="fusion-files" type="file" multiple accept=".csv,.txt,.tsv" aria-describedby="fusion-help fusion-error" />
+    <p id="fusion-help">Choisissez ensuite l’encodage et le séparateur de chaque fichier, puis importez. Une sélection remplace seulement le choix avant import ; réinitialisez explicitement pour commencer un autre lot.</p>
+    <div data-config></div>
+    <div class="actions"><button type="submit" class="btn btn-principal">Importer les fichiers</button><button type="button" data-example class="btn btn-contour">Essayer deux exports fictifs</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler le traitement</button><button type="button" data-reset class="btn btn-contour">Tout réinitialiser</button></div>
+    <p id="fusion-error" data-error hidden role="alert" tabindex="-1"></p>
+  </form>
+  <p data-status role="status">Aucun fichier importé.</p>
+  <section data-mapping hidden aria-labelledby="fusion-mapping">
+    <h3 id="fusion-mapping">Correspondance et ordre des fichiers</h3>
+    <p>Chaque colonne est associée à un nom cible. Deux colonnes d’un même fichier ne peuvent pas partager le même nom cible. Renommez les en-têtes homonymes avant de confirmer ; aucune colonne n’est supprimée.</p>
+    <div data-columns></div>
+    <label class="check"><input type="checkbox" data-union /> J’accepte l’union des colonnes différentes et les cellules vides pour les colonnes absentes.</label>
+    <label class="check"><input type="checkbox" data-provenance /> Ajouter les colonnes source_fichier et source_ligne (ligne physique de début de l’enregistrement).</label>
+    <label class="check"><input type="checkbox" data-dedup /> Retirer les doublons strictement identiques après mapping, avant ajout de provenance. La première occurrence est conservée.</label>
+    <label class="check"><input type="checkbox" data-confirmed /> J’ai vérifié et je confirme cette correspondance et cet ordre.</label>
+    <button type="button" data-merge class="btn btn-principal">Consolider les lignes</button>
+  </section>
+  <section data-result hidden aria-labelledby="fusion-result">
+    <h3 id="fusion-result">CSV consolidé à relire</h3>
+    <p data-summary></p><ul data-counts></ul>
+    <p>L’aperçu paginé affiche 25 lignes par page ; copie et exports couvrent le résultat entier. Sur écran étroit, faites défiler le tableau. Au clavier, utilisez les flèches dans sa région.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Aperçu du CSV consolidé"><table data-table></table></div>
+    <div class="actions"><button type="button" data-prev class="btn btn-contour">Page précédente</button><p data-pagination></p><button type="button" data-next class="btn btn-contour">Page suivante</button></div>
+    <p>Export UTF-8 avec BOM et point-virgule. L’export et la copie ajoutent une apostrophe devant =, +, -, @, y compris après des espaces, ou un retour à la ligne / une tabulation en début de cellule. Les montants négatifs deviennent donc du texte. Les en-têtes et noms de fichiers sont aussi protégés. L’original et l’aperçu restent intacts.</p>
+    <label class="check"><input type="checkbox" data-reviewed /> J’ai relu le résultat et la convention d’export.</label>
+    <div class="actions"><button type="button" data-export="csv" disabled class="btn btn-principal">Exporter le CSV consolidé</button><button type="button" data-export="report" disabled class="btn btn-contour">Exporter le rapport JSON</button><button type="button" data-copy disabled class="btn btn-contour">Copier le CSV complet</button></div>
+    <p>Le rapport JSON versionné inclut le mapping, les comptes par fichier, les cellules absentes, chaque doublon, chaque neutralisation et la provenance de toutes les lignes. Il contient les noms des fichiers : conservez-le avec précaution. Il ne permet pas de reprendre sans les CSV sources.</p>
+  </section>
+  <noscript>JavaScript est nécessaire au traitement local. Aucun fichier n’est envoyé.</noscript>
+</div>
+<script>
+ import { initFusionCsv } from '../../lib/fusion-csv-ui.mjs';
+ initFusionCsv();
+</script>
+<style>
+ [data-fusion],form,section,[data-config],[data-columns]{display:grid;gap:16px;min-width:0} h2{font-size:var(--t-3xl)}h3{font-size:var(--t-2xl)}p,li{color:var(--texte-2);overflow-wrap:anywhere}label{display:block;font-weight:600;margin-bottom:8px;overflow-wrap:anywhere}
+ input[type=file],:global([data-fusion] select),:global([data-fusion] input[type=text]){width:100%;min-width:0;max-width:100%;min-height:44px;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);color:var(--texte);font:inherit}
+ :global([data-fusion] fieldset){min-width:0;padding:16px;border:1px solid var(--ligne);display:grid;gap:12px}:global([data-fusion] legend){overflow-wrap:anywhere;max-width:100%;font-weight:600}:global([data-fusion] .controls){display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}:global([data-fusion] label){overflow-wrap:anywhere}
+ .actions{display:flex;flex-wrap:wrap;gap:12px}button{white-space:normal;min-height:44px}button:disabled{opacity:.55;cursor:not-allowed}.check{display:flex;align-items:flex-start;gap:12px;font-weight:400}.check input{width:24px;height:24px;flex-shrink:0}.table-scroll{max-width:100%;overflow:auto;border:1px solid var(--ligne);border-radius:var(--r-cadre)}table{width:100%;border-collapse:collapse;font-size:var(--t-sm)}table :global(th),table :global(td){padding:12px;border-bottom:1px solid var(--ligne-douce);text-align:left;min-width:120px;max-width:280px;overflow-wrap:anywhere;white-space:pre-wrap}table :global(caption){padding:12px;text-align:left;font-weight:600}ul{padding-left:20px;display:grid;gap:12px}[data-error]{border-left:3px solid var(--texte);padding:12px}[hidden]{display:none!important}
+</style>

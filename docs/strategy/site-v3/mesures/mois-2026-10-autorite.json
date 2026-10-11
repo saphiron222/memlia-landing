@@ -1,0 +1,225 @@
+{
+  "mois": "2026-10",
+  "jour": "2026-10-06",
+  "autorite": {
+    "rang": null,
+    "liens": null,
+    "domainesReferents": null,
+    "domainesPrincipaux": null,
+    "liensCasses": null,
+    "erreur": "identifiants DataForSEO absents de l’environnement"
+  },
+  "entite": {
+    "spell": null,
+    "rangMarque": null,
+    "suggestions": 0,
+    "erreur": "identifiants DataForSEO absents de l’environnement"
+  },
+  "ia": {
+    "instrument": "dataforseo-chatgpt-search-scraper-force-web-search",
+    "typeMesure": "citation-ancree",
+    "echantillon": "docs/strategy/site-v3/mesures/echantillon-ia.json",
+    "requetes": 0,
+    "avecRecherche": 0,
+    "citations": 0,
+    "nomme": 0,
+    "domainesCites": [],
+    "detail": [],
+    "erreur": "question C6 périmée ou datée dans le futur : 2026-09-01",
+    "historiqueNonAncre": null
+  },
+  "lisibiliteMachine": {
+    "mesureeLe": "2026-10-05T22:38:30.393Z",
+    "crawlers": [
+      {
+        "userAgent": "OAI-SearchBot",
+        "capacite": "citation ChatGPT Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "oai-searchbot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "GPTBot",
+        "capacite": "entraînement OpenAI",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Claude-SearchBot",
+        "capacite": "citation Claude Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "claude-searchbot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "ClaudeBot",
+        "capacite": "entraînement Anthropic",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "PerplexityBot",
+        "capacite": "citation Perplexity",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "perplexitybot",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Googlebot",
+        "capacite": "Google Search et AI Overviews",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Google-Extended",
+        "capacite": "entraînement et grounding Gemini, pas Google Search",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Applebot",
+        "capacite": "Siri, Spotlight et Safari",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Applebot-Extended",
+        "capacite": "préférence d’entraînement Apple Intelligence",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "CCBot",
+        "capacite": "jeu Common Crawl",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": true,
+        "groupeRobots": "*",
+        "regleRobots": "allow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      },
+      {
+        "userAgent": "Bytespider",
+        "capacite": "entraînement ByteDance",
+        "robotsHttp": 200,
+        "pageHttp": 200,
+        "autoriseRobots": false,
+        "groupeRobots": "bytespider",
+        "regleRobots": "disallow: /",
+        "xRobotsTag": null,
+        "indexableHttp": true,
+        "erreur": null
+      }
+    ],
+    "llmsTxt": {
+      "existe": true,
+      "http": 200,
+      "octets": 10158,
+      "xRobotsTag": null,
+      "effetCitationMesure": null,
+      "conclusion": "présence mesurée seulement : aucun effet de citation attribuable ; Google Search ignore llms.txt",
+      "erreur": null
+    }
+  },
+  "audience": {
+    "ok": false,
+    "erreur": "CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement",
+    "visites": null,
+    "directes": null,
+    "assistants": [],
+    "visitesAssistants": null,
+    "hotes": []
+  },
+  "depenses": {
+    "total": 0,
+    "parEndpoint": {}
+  },
+  "budget": 0.6,
+  "portes": {
+    "liens": {
+      "ok": true,
+      "porte": "approved",
+      "couvertPar": "porte"
+    },
+    "serp": {
+      "ok": true,
+      "porte": "approved",
+      "couvertPar": "porte"
+    },
+    "ia": {
+      "ok": false,
+      "porte": "non-demandee",
+      "couvertPar": null
+    }
+  },
+  "exclusions": [
+    "profil de liens non relevé : identifiants DataForSEO absents de l’environnement",
+    "page de résultats de la marque non relevée : identifiants DataForSEO absents de l’environnement",
+    "citations IA non relevées : question C6 périmée ou datée dans le futur : 2026-09-01 (docs/strategy/site-v3/mesures/echantillon-ia.json)",
+    "référents d'audience non relevés : CLOUDFLARE_ANALYTICS_TOKEN absent de l’environnement"
+  ],
+  "rouges": [],
+  "avertissements": [
+    {
+      "code": "visibilite-ia-non-mesuree",
+      "motif": "aucune requête n'a abouti : la visibilité IA n'est pas mesurée ce mois-ci",
+      "mesure": "0 refus"
+    }
+  ],
+  "infos": [
+    "L'autocomplétion ne propose rien sur la marque : elle est sous le seuil de volume, ce qui est attendu pour une marque jeune."
+  ]
+}

@@ -18,21 +18,21 @@ export function decodeFile(bytes, encoding) {
 }
 
 /** Parse strict ; ligne indiquée = ligne physique source, même dans les cellules multilignes. */
-export function parseDelimited(input, delimiter) {
+export function parseDelimited(input, delimiter, { allowDuplicateHeaders = false, sourceLines = false, minimumColumns = 2 } = {}) {
   if (![',', ';', '\t', '|'].includes(delimiter)) throw new Error('Séparateur non pris en charge.');
   const text = input.replace(/^\uFEFF/, '');
   if (!text.trim() || /\u0000/.test(text)) throw new Error('Fichier vide ou binaire.');
-  const records = []; let row = [], cell = '', state = 'start', line = 1;
+  const records = [], lines = []; let row = [], cell = '', state = 'start', line = 1, recordLine = 1;
   const fail = (message) => { throw new Error(`Ligne ${line} : ${message}`); };
   const field = () => { row.push(cell); cell = ''; state = 'start'; if (row.length > MAX_COLUMNS) fail('plus de 128 colonnes.'); };
-  const record = () => { field(); records.push(row); row = []; if (records.length > MAX_ROWS + 1) fail('plus de 100 000 lignes de données.'); };
+  const record = () => { field(); records.push(row); lines.push(recordLine); row = []; if (records.length > MAX_ROWS + 1) fail('plus de 100 000 lignes de données.'); };
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
     if (state === 'quoted') {
       if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else state = 'closed'; }
       else { cell += c; if (c === '\n' || c === '\r' && text[i + 1] !== '\n') line++; }
     } else if (c === delimiter) field();
-    else if (c === '\r' || c === '\n') { record(); if (c === '\r' && text[i + 1] === '\n') i++; line++; }
+    else if (c === '\r' || c === '\n') { record(); if (c === '\r' && text[i + 1] === '\n') i++; line++; recordLine = line; }
     else if (c === '"' && state === 'start') state = 'quoted';
     else if (state === 'closed' || c === '"') fail('guillemets ou texte après une cellule citée invalides.');
     else { cell += c; state = 'plain'; }
@@ -41,11 +41,11 @@ export function parseDelimited(input, delimiter) {
   if (state === 'quoted') fail('guillemet non fermé.');
   if (cell || row.length || state !== 'start') record();
   const headers = records.shift();
-  if (!headers || headers.length < 2) throw new Error('Au moins deux colonnes requises : vérifiez le séparateur.');
-  if (headers.some(h => !h.trim()) || new Set(headers).size !== headers.length) throw new Error('En-têtes vides ou dupliqués : import refusé.');
+  if (!headers || headers.length < minimumColumns) throw new Error('Au moins deux colonnes requises : vérifiez le séparateur.');
+  if (headers.some(h => !h.trim()) || !allowDuplicateHeaders && new Set(headers).size !== headers.length) throw new Error('En-têtes vides ou dupliqués : import refusé.');
   if (!records.length) throw new Error('Aucune ligne de données.');
   for (const [i, r] of records.entries()) if (r.length !== headers.length) throw new Error(`Enregistrement ${i + 2} : nombre de colonnes différent des en-têtes.`);
-  return { headers, rows: records };
+  return { headers, rows: records, ...(sourceLines ? { lines: lines.slice(1) } : {}) };
 }
 
 export function defaultActions(headers) {

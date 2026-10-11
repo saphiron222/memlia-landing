@@ -1,0 +1,23 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import FusionCsv from '@/components/outils/FusionCsv.astro';
+import { getOutil } from '@/data/outils';
+const outil=getOutil('fusionner-fichiers-csv');
+---
+<Outil outil={outil}>
+ <FusionCsv />
+ <section class="lecture" aria-labelledby="fusion-conventions">
+  <h2 id="fusion-conventions">Une consolidation verticale, pas une jointure</h2>
+  <p>Deux exports de deux et trois lignes produisent cinq lignes sous un seul en-tête. Même si les colonnes sont inversées, le mapping relie chaque valeur à sa colonne cible. L’ordre des fichiers reste celui que vous confirmez ; les identifiants comme 00123 restent du texte.</p>
+  <h3>Que faire si une colonne manque ?</h3>
+  <p>Vous pouvez renommer les colonnes qui décrivent le même champ, puis confirmer leur correspondance. Si elles restent différentes, l’union doit être acceptée : une cellule vide remplace chaque colonne absente, et le rapport les compte. Un en-tête homonyme reste à résoudre ; l’outil ne devine pas quel champ fusionner.</p>
+  <h3>Pourquoi les doublons sont-ils conservés ?</h3>
+  <p>Deux lignes égales peuvent décrire deux opérations réelles. Le retrait optionnel ne compare que les chaînes exactes après mapping, avant provenance. Il conserve la première occurrence et rapporte l’origine de chaque occurrence supplémentaire. Aucun doublon métier approximatif n’est évalué.</p>
+  <h3>Comment reprendre après un refus ou une annulation ?</h3>
+  <p>Les fichiers sélectionnés et vos choix restent dans l’onglet. Corrigez le séparateur, l’encodage ou le mapping, puis recommencez. Tout réinitialiser retire le lot et les résultats ; fermer ou recharger la page les efface. Conservez le CSV, le rapport et vos originaux si vous devez travailler plus tard : rien n’est sauvegardé automatiquement.</p>
+  <h3>Que vérifie ce contrôle ?</h3>
+  <p>Le parseur strict accepte les cellules citées, les guillemets doublés et leurs retours à la ligne, selon les conventions du <a href="https://www.rfc-editor.org/rfc/rfc4180">RFC 4180</a>, adaptées au séparateur choisi. Il refuse une structure irrégulière, du binaire et un encodage illisible. La comparabilité des périodes, la devise et l’exactitude comptable ne sont pas évaluées : vous les validez avant de réutiliser la consolidation.</p>
+  <p>Pour une préparation répétée, notre <a href="/methode">méthode de cadrage et de recette</a> part de ce résultat réutilisable : un CSV consolidé accompagné de la provenance et des exceptions. Pour minimiser les données d’une copie avant un partage, utilisez la <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">préparation d’un CSV pseudonymisé</a> avec ses limites propres.</p>
+ </section>
+</Outil>
+<style>.lecture{display:grid;gap:16px;padding-top:32px;margin-top:32px;border-top:1px solid var(--ligne)}.lecture h2{font-size:var(--t-3xl)}.lecture h3{font-size:var(--t-2xl)}.lecture p{color:var(--texte-2)}</style>

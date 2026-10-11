@@ -90,19 +90,19 @@ const graph = {
       <span class="eyebrow">Blog</span>
       <h1 id="blog-titre">{headline}</h1>
       <p class="texte-2 lecture blog-intro">
-        Le savoir-faire d’un cabinet tient dans des règles que personne n’a écrites. Ces méthodes les écrivent,
-        une tâche à la fois : contrôler les bulletins avant la DSN, relancer les pièces, suivre la production
-        sociale, vérifier une saisie automatique. Chacune dit ce qui se prépare seul, ce qui attend une
-        validation, et ce qui reste à vos équipes.
+        Contrôler les bulletins avant la DSN, relancer les pièces manquantes, vérifier une écriture proposée :
+        ces gestes reposent sur le savoir-faire de vos équipes. Nous publions des méthodes pour en écrire
+        la règle et préparer la part répétitive. Vous y trouvez les contrôles à garder et les cas où la
+        préparation doit s’arrêter. La décision reste au cabinet.
       </p>
-      <p class="texte-2 lecture blog-transition">Commencez par la tâche qui vous occupe.</p>
-      <a class="btn btn-lien blog-rss" href={BLOG.fluxRss} type="application/rss+xml">Flux RSS <Picto nom="fleche" taille={14} /></a>
+      <p class="texte-2 lecture blog-transition">Choisissez votre geste : <a href="/blog/rubrique/paie-dsn-cabinet-comptable">contrôler les bulletins et lire les retours DSN</a>, <a href="/blog/rubrique/gestion-pieces-comptables">relancer les pièces et vérifier la saisie</a> ou <a href="/blog/rubrique/ia-cabinet-comptable">cadrer un usage de l’IA et vérifier sa réponse</a>.</p>
+      <a class="btn btn-lien blog-rss" href={BLOG.fluxRss} type="application/rss+xml">Suivre les articles par RSS <Picto nom="fleche" taille={14} /></a>
     </section>
 
     {pilier && (
       <section class="conteneur blog-depart" aria-labelledby="depart-titre">
-        <span class="pastille"><span class="point"></span>À lire en premier</span>
-        <h2 id="depart-titre" class="sr-only">Article de référence</h2>
+        <span class="pastille"><span class="point"></span>Pour choisir une tâche</span>
+        <h2 id="depart-titre" class="sr-only">La carte des tâches du cabinet</h2>
         <article class="blog-carte blog-pilier rv" data-article={pilier.id}>
           <a href={`${BLOG.chemin}/${pilier.id}`} class="carte-image" aria-hidden="true" tabindex="-1">
             <Picture id={pilier.data.image as keyof typeof IMAGES} sizes="(min-width: 64rem) 560px, (min-width: 48rem) 50vw, 100vw" />
@@ -122,7 +122,7 @@ const graph = {
     )}
 
     <section class="conteneur blog-section-liste" aria-labelledby="articles-titre">
-      <h2 id="articles-titre" class="blog-liste-titre">Les articles</h2>
+      <h2 id="articles-titre" class="blog-liste-titre">Méthodes et retours d’expérience</h2>
       <ul class="blog-liste rv-groupe" data-articles={suite.length}>
         {suite.map((a) => (
           <li class="blog-carte rv" data-article={a.id}>
@@ -151,7 +151,7 @@ const graph = {
           <span class="auteur-initiale" aria-hidden="true">{a.nom.charAt(0)}</span>
           <div>
             <h3 class="auteur-nom"><a href={identiteAuteur(a)}>{a.nom}</a> <span class="texte-2 auteur-role">· {a.role}</span></h3>
-            <p class="texte-2">{a.bio}</p>
+            <p class="texte-2">{a.bio} Dans la série Cicatrices, Kevin Kitanga raconte à la première personne ce qui a cassé dans la construction de Memlia et la règle qui en est sortie.</p>
             <p class="auteur-contact"><Courriel /></p>
           </div>
         </article>
@@ -161,10 +161,10 @@ const graph = {
     <!-- Sortie de page : même forme que celle du glossaire (titre en question, une phrase, l'action), en dernier. -->
     <section class="conteneur blog-sortie" aria-labelledby="sortie-titre">
       <h2 id="sortie-titre">Une tâche revient chaque semaine dans votre cabinet ?</h2>
-      <p class="texte-2">Décrivez-la : nous vous disons si elle se cadre et ce qu’il faudrait pour la prendre en charge, sans rien nous envoyer. Pour le vocabulaire, le <a href="/glossaire">glossaire</a> fixe chaque terme et sa frontière d’automatisation.</p>
+      <p class="texte-2">Vous avez lu la méthode ; vous pouvez aussi nous confier la tâche. Nous écrivons sa règle dans vos mots et automatisons sa part répétitive dans vos outils. Vos équipes valident les essais ; nous assurons la maintenance. Vous gardez la décision. Pour préciser un terme, consultez le <a href="/glossaire">glossaire du cabinet</a>.</p>
       <p class="blog-actions">
         <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
-        <Button href="/methode" variante="lien">Comprendre notre méthode</Button>
+        <Button href="/methode" variante="lien">Voir les étapes d’une tâche confiée</Button>
       </p>
     </section>
   </div>
@@ -179,6 +179,7 @@ const graph = {
   .ariane [aria-current] { color: var(--texte); }
   .blog-tete h1 { font-size: var(--t-5xl); max-width: 20ch; }
   .blog-intro { max-width: 62ch; }
+  .blog-transition a, .blog-sortie > .texte-2 a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
   .blog-rss { justify-self: start; }
   /* Le pilier a son propre bloc au-dessus de la liste : la liste redevient strictement
      chronologique, et le moyeu du cluster reste la première chose vue. */

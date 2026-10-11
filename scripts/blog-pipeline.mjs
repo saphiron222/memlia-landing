@@ -174,7 +174,7 @@ function verifyCandidatePreview(slug, previewDirectory, previewOrigin) {
   }
   const headers = existsSync(join(previewDirectory, '_headers')) ? readFileSync(join(previewDirectory, '_headers'), 'utf8') : '';
   if (!/X-Robots-Tag:\s*noindex, nofollow/i.test(headers)) errors.push('L’en-tête X-Robots-Tag noindex, nofollow manque.');
-  for (const file of ['sitemap-0.xml', 'blog/rss.xml']) {
+  for (const file of ['sitemap-blog.xml', 'blog/rss.xml']) {
     const path = join(previewDirectory, file);
     if (existsSync(path) && indexedBlogUrl(readFileSync(path, 'utf8'), file, slug)) errors.push(`Le candidat ne doit pas apparaître dans ${file}.`);
   }
@@ -257,7 +257,7 @@ export function productionArtifactsErrors(siteRoot, slugs) {
       if (/noindex/i.test(html)) errors.push(`${slug}: la page production contient encore noindex.`);
       if (!html.includes(`<link rel="canonical" href="https://memlia.fr/blog/${slug}"`)) errors.push(`${slug}: canonical auto-référent absent.`);
     }
-    for (const file of ['dist/sitemap-0.xml', 'dist/blog/rss.xml']) {
+    for (const file of ['dist/sitemap-blog.xml', 'dist/blog/rss.xml']) {
       if (!existsSync(join(siteRoot, file)) || !indexedBlogUrl(readFileSync(join(siteRoot, file), 'utf8'), file, slug)) errors.push(`${slug}: ${file} ne référence pas le candidat autorisé.`);
     }
   }

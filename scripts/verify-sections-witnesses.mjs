@@ -12,7 +12,7 @@ const insert = text => html.replace(/(<section[^>]*id="usages"[^>]*>)/, `$1${tex
 const cases = [
   ['phrase', insert('<p>Exemples non contractuels, à étudier selon vos sources, règles, exceptions et accès. Ils ne décrivent pas des fonctions prêtes à installer.</p>')],
   ['annotation', insert('<small>Exemple de parcours</small>')],
-  ['bento', html.replace('</head>', '<style>.uses-grid{grid-template-columns:1fr!important}.use-card:first-child{grid-column:auto!important}</style></head>')],
+  ['bento', html.replace('</head>', '<style>#usages .cartes>*{flex-basis:100%!important}</style></head>')],
   ['quinconce', html.replace('</head>', '<style>.etape:nth-child(odd) .step-copy{grid-column:1!important}.etape:nth-child(odd) .functional-proof{grid-column:2!important}</style></head>')],
 ];
 const results = [];

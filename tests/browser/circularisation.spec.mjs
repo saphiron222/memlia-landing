@@ -1,0 +1,31 @@
+import {test,expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
+const route='/outils-comptables-gratuits/suivi-circularisation';
+test('campagne locale, refus, lettres, historique et reprise',async({page})=>{
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ const requests=[];page.on('request',r=>requests.push(r));
+ await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();
+ await expect(page.locator('[data-circ-summary]')).toContainText('3 tiers');
+ await expect(page.locator('[data-circ-table]')).toContainText('+20 EUR');
+ await page.getByRole('button',{name:'Ouvrir 003',exact:true}).click();
+ await expect(page.locator('[data-circ-detail]')).toContainText('Relance suspendue');
+ await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();
+ await page.locator('#circ-note').fill('Commentaire conservé');await page.getByRole('button',{name:'Ajouter la note',exact:true}).click();
+ await page.getByRole('button',{name:'Valider le rapprochement',exact:true}).click();
+ await expect(page.locator('[data-circ-detail]')).toContainText('Réponse rapprochée');
+ const dl=page.waitForEvent('download');await page.locator('[data-circ-export="json"]').click();const json=await readFile(await(await dl).path(),'utf8');expect(JSON.parse(json).tiers[0].notes.at(-1).text).toBe('Commentaire conservé');
+ page.once('dialog',d=>d.dismiss());await page.getByRole('button',{name:'Effacer la session',exact:true}).click();await expect(page.locator('[data-circ-summary]')).toContainText('3 tiers');
+ page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Effacer la session',exact:true}).click();await expect(page.locator('[data-circ-summary]')).toContainText('0 tiers');
+ await page.getByText('Reprendre une sauvegarde JSON',{exact:true}).click();await page.locator('#circ-json').setInputFiles({name:'reprise.json',mimeType:'application/json',buffer:Buffer.from(json)});await page.getByRole('button',{name:'Reprendre le JSON',exact:true}).click();await expect(page.locator('[data-circ-table]')).toContainText('Réponse rapprochée');
+ await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();await expect(page.locator('[data-circ-detail]')).toContainText('Commentaire conservé');
+ const csv=page.waitForEvent('download');await page.locator('[data-circ-export="csv"]').click();expect(await readFile(await(await csv).path(),'utf8')).toContain('Commentaire conservé');
+ expect(requests.filter(r=>r.method()!=='GET'||r.postData())).toEqual([]);expect(requests.every(r=>r.url().startsWith(new URL(page.url()).origin))).toBe(true);
+ expect(await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length,cookie:document.cookie}))).toEqual({local:0,session:0,cookie:''});expect(await page.evaluate(()=>indexedDB.databases())).toEqual([]);expect(errors).toEqual([]);
+ await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content',/connect-src 'none'/);
+});
+for(const width of [320,375,768,1024,1440,1920])test(`rendu ${width}`,async({page},testInfo)=>{
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ await expect(page.locator('h1')).toHaveText('Modèle de suivi de circularisation Excel : lettres et retours');await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);
+ await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ if([375,1440].includes(width))await page.screenshot({path:testInfo.outputPath(`circularisation-${width}.png`),fullPage:true});
+});

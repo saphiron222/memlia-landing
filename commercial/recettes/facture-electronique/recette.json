@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "type": "service",
+  "slug": "facture-electronique",
+  "path": "/automatisation/facture-electronique",
+  "title": "Automatisation des flux de facture électronique en cabinet comptable : appels hors outil",
+  "tabTitle": "Automatisation flux facture électronique cabinet comptable | Memlia",
+  "ogTitle": "Automatisation des flux de facture électronique en cabinet comptable : appels hors outil",
+  "description": "Clients sur une autre plateforme agréée : préparer les appels et les relances du cabinet, sans refaire le suivi déjà fourni par votre éditeur.",
+  "hero": "Votre outil suit déjà les clients inscrits sur sa plateforme agréée. Mais certains ont choisi leur banque ou leur outil de facturation. Si leur accompagnement reste hors de votre outil, nous préparons la liste des appels et les relances à valider. Vous gardez le choix de la plateforme et les échanges avec le client. Ce besoin de transition se réévalue jusqu’au 1er septembre 2027.",
+  "primaryQuery": "automatisation flux facture électronique cabinet comptable",
+  "secondaryQueries": ["suivi statuts facture électronique cabinet comptable", "réception facture électronique cabinet comptable automatisation"],
+  "audience": {"mode": "qualified", "qualifier": "cabinet comptable", "reason": "Le service vise seulement un portefeuille réparti sur plusieurs plateformes agréées dont l’accompagnement extérieur reste manuel, après vérification de la couverture réelle de l’éditeur."},
+  "intent": "evaluer-service",
+  "family": "facture-electronique",
+  "verifiedAt": "2026-10-06",
+  "author": "marketing",
+  "cta": {"label": "Confier une première tâche", "destination": "/contact"},
+  "schema": {"headline": "Automatisation des flux de facture électronique en cabinet comptable : appels hors outil", "types": ["WebPage", "Service", "BreadcrumbList", "Organization", "WebSite"]},
+  "proof": {"replayedAt": "2026-10-06", "evidencePath": "preuves/rejeu.json"},
+  "incomingLinks": [
+    {"url": "/automatisation-cabinet-comptable", "sourcePath": "src/pages/automatisation-cabinet-comptable.astro", "anchor": "préparer les relances des clients sur une autre plateforme agréée"},
+    {"url": "/methode", "sourcePath": "src/pages/methode.astro", "anchor": "éprouver la préparation des appels de facture électronique"},
+    {"url": "/garanties", "sourcePath": "src/pages/garanties.astro", "anchor": "valider les relances hors de la plateforme du cabinet"}
+  ],
+  "sources": [{"url": "https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique", "title": "DGFiP, je passe à la facturation électronique et calendrier lié", "sourceDate": "2026-09-01", "proofPath": "preuves/etude-couverture/ec-social-juridique-gestion.md", "claim": "Le calendrier officiel lié a été ouvert : émission des PME au 01/09/2027. La fenêtre commerciale Memlia est une décision interne, pas une fin de toutes les obligations."}]
+}

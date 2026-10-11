@@ -8,7 +8,13 @@ export async function onRequestGet(context) {
   // 304/206 pour ce corps, sinon un navigateur réutiliserait son ancien beacon.
   const assetHeaders = new Headers(context.request.headers);
   for (const header of ['If-None-Match', 'If-Modified-Since', 'Range', 'If-Range']) assetHeaders.delete(header);
-  const response = await context.next(new Request(context.request, {method: 'GET', headers: assetHeaders}));
+  let response = await context.next(new Request(context.request, {method: 'GET', headers: assetHeaders}));
+  // Pages ignore _headers pour les Functions ; ne pas étendre HSTS aux previews.
+  if (new URL(context.request.url).hostname === 'memlia.fr') {
+    const headers = new Headers(response.headers);
+    headers.set('Strict-Transport-Security', 'max-age=31536000');
+    response = new Response(response.body, {status: response.status, statusText: response.statusText, headers});
+  }
   if (response.status !== 200 || !response.headers.get('Content-Type')?.startsWith('text/html')) return response;
   const headers = new Headers(response.headers);
   headers.set('Cache-Control', 'public, max-age=0, must-revalidate, no-transform');

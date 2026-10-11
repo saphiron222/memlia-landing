@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-29T06:37:01.126Z",
+  "windowDays": 31,
+  "privacy": "Titres, dates et URL seulement; aucun nom, pseudonyme, commentaire ou profil conservé.",
+  "threshold": {
+    "occurrences": 3,
+    "distinctContributors": 3,
+    "distinctThreads": 2,
+    "windowDays": 31,
+    "rule": "Un accès nouveau exige trois occurrences, trois contributeurs distincts vérifiés transitoirement, au moins deux fils et aucune couverture C1."
+  },
+  "terrains": [
+    {
+      "terrain": "Compta Online",
+      "status": "ok",
+      "listingHttpStatus": 200,
+      "itemsScanned": 40,
+      "relevantQuestions": 2,
+      "staleExcluded": 3
+    },
+    {
+      "terrain": "last30days · monde",
+      "status": "ok",
+      "sourceStatus": {
+        "reddit": "ok"
+      },
+      "families": [
+        "client-documents",
+        "close-reconciliation"
+      ],
+      "itemsScanned": 7,
+      "relevantQuestions": 5
+    }
+  ],
+  "observations": [
+    {
+      "question": "Cut-off en révision : votre méthode ?",
+      "source": "Compta Online · forum professionnel",
+      "sourceItemId": "72e0c01a1be26126",
+      "url": "https://www.compta-online.com/cut-off-en-revision-votre-methode-t74756#entry281620",
+      "publishedAt": "2026-09-17",
+      "httpStatus": 200
+    },
+    {
+      "question": "Comment gérez-vous les documents manquants de vos clients ?",
+      "source": "Compta Online · forum professionnel",
+      "sourceItemId": "c846641da59c3716",
+      "url": "https://www.compta-online.com/comment-gerez-vous-les-documents-manquants-de-vos-clients-t74739",
+      "publishedAt": "2026-09-01",
+      "httpStatus": 200
+    },
+    {
+      "question": "Transition from FP&A to accounting",
+      "source": "last30days · reddit · r/Accounting",
+      "sourceItemId": "2a937c75d7fea94a",
+      "url": "https://www.reddit.com/r/Accounting/comments/1wszvll/transition_from_fpa_to_accounting/",
+      "publishedAt": "2026-09-29",
+      "httpStatus": 200,
+      "occurrenceCount": 4,
+      "distinctContributors": 4,
+      "distinctThreads": 1
+    },
+    {
+      "question": "Moving from Accounts Payable to Junior Accounting Clerk — nervous but excited. What should I expect?",
+      "source": "last30days · reddit · r/Accounting",
+      "sourceItemId": "0d40571060956550",
+      "url": "https://www.reddit.com/r/Accounting/comments/1wstpyx/moving_from_accounts_payable_to_junior_accounting/",
+      "publishedAt": "2026-09-28",
+      "httpStatus": 200,
+      "occurrenceCount": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1
+    },
+    {
+      "question": "I want to ask what if you can do most of your work by voice command?",
+      "source": "last30days · reddit · r/CharteredAccountants",
+      "sourceItemId": "480c64c6a4ee0e90",
+      "url": "https://www.reddit.com/r/CharteredAccountants/comments/1wqmua5/i_want_to_ask_what_if_you_can_do_most_of_your/",
+      "publishedAt": "2026-09-26",
+      "httpStatus": 200,
+      "occurrenceCount": 2,
+      "distinctContributors": 2,
+      "distinctThreads": 1
+    },
+    {
+      "question": "How do CA firms keep track of which clients have sent their monthly documents?",
+      "source": "last30days · reddit · r/CharteredAccountants",
+      "sourceItemId": "88473b02e6417df9",
+      "url": "https://www.reddit.com/r/CharteredAccountants/comments/1wmj37v/how_do_ca_firms_keep_track_of_which_clients_have/",
+      "publishedAt": "2026-09-21",
+      "httpStatus": 200,
+      "occurrenceCount": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1
+    },
+    {
+      "question": "How do small CA firms track missing documents from clients?",
+      "source": "last30days · reddit · r/CharteredAccountants",
+      "sourceItemId": "2e4a134301b698dd",
+      "url": "https://www.reddit.com/r/CharteredAccountants/comments/1wix5f7/how_do_small_ca_firms_track_missing_documents/",
+      "publishedAt": "2026-09-17",
+      "httpStatus": 200,
+      "occurrenceCount": 1,
+      "distinctContributors": 1,
+      "distinctThreads": 1
+    }
+  ]
+}

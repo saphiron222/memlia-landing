@@ -26,7 +26,7 @@ const routes = [
   ['/m3-page-inexistante', '404.html', 404],
   ['/blog/rss.xml', 'blog/rss.xml', 200],
   ['/sitemap.xml', 'sitemap.xml', 200],
-  ['/sitemap-0.xml', 'sitemap-0.xml', 200],
+  ['/sitemap-blog.xml', 'sitemap-blog.xml', 200],
   ['/robots.txt', 'robots.txt', 200],
   ['/llms.txt', 'llms.txt', 200],
 ];

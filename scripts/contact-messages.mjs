@@ -34,7 +34,7 @@ if (options.has('--purger-ip')) {
 
 // « notifie » = Telegram a prévenu, personne n'a encore lu : c'est encore un message à traiter.
 const filtre = options.has('--tous') ? '' : "WHERE statut IN ('nouveau', 'notifie')";
-const lignes = executer(`SELECT id, recu_le, nom, cabinet, courriel, message, statut, origine FROM messages ${filtre} ORDER BY recu_le DESC LIMIT 200`);
+const lignes = executer(`SELECT id, recu_le, nom, cabinet, courriel, message, statut, origine, type_cabinet FROM messages ${filtre} ORDER BY recu_le DESC LIMIT 200`);
 if (lignes.length === 0) {
   console.log(options.has('--tous') ? 'Aucun message.' : 'Aucun message nouveau.');
   process.exit(0);
@@ -43,5 +43,6 @@ for (const m of lignes) {
   console.log(`\n#${m.id} · ${m.recu_le} · ${m.statut}`);
   console.log(`${m.nom}${m.cabinet ? ` — ${m.cabinet}` : ''} <${m.courriel}>`);
   console.log(m.message);
+  console.log(`Type de cabinet : ${m.type_cabinet ?? 'non renseigné'} · Page d’origine : ${m.origine ?? 'non renseignée'}`);
 }
 console.log(`\n${lignes.length} message(s).`);

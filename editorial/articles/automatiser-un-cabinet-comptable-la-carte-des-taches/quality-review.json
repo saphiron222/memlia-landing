@@ -1,8 +1,8 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-  "reviewedAt": "2026-10-03",
-  "reviewer": "metier:t_303e7c6d",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "qa:doctrine-b2-independent",
   "rubric": "blog-analyze-100",
   "status": "PASS",
   "score": 91,
@@ -30,20 +30,22 @@
     }
   },
   "evidence": [
-    "27/30 : inventaire fictif de la carte (12 pôles, 60 familles) et fiche fictive de la règle de relance lisibles, sans chiffre de gain ni promesse sur l’audit légal, affiché « Listé, non ouvert ».",
-    "22/25 : intention pilier et liens contextuels maintenus ; pas de résultat SERP mesuré.",
-    "14/15 : six claims vérifiés sur copies datées du 29/09 dans la revue antérieure ; corps et recette inchangés.",
-    "14/15 : deux images 1600 × 900 directes, sans légende ni défilement, qui tiennent dans la colonne dans les captures à 1280 et 390 px et restent lisibles dans leurs grandes masses sur téléphone ; pas de Lighthouse ni de test de production.",
-    "14/15 : définitions et tableau récupérables avec la restriction audit légal."
+    "27/30 : carte et frontières concrètes ; ouverture CAC strictement mécanique et opinion réservée. Le compte historique EC inclut un repère transversal explicite, non huit tâches CAC.",
+    "22/25 : métadonnées et intention du pilier maintenues ; aucune nouvelle étude SERP, position ou performance revendiquée.",
+    "14/15 : six affirmations relues contre les copies officielles et empreintes du paquet ; pas de conformité CAC/NEP inventée.",
+    "14/15 : rendu HTML réellement consulté, inventaire chargé et inspecté à 1280 px, formats et ancres vérifiés ; pas de QA mobile ou CI exacte dans ce mandat.",
+    "14/15 : définitions, tableaux et limite de l'opinion extractibles ; llms.txt maintient la même frontière."
   ],
   "reservations": [
-    "Revue IA sur rendu local et sources archivées contrôlées le 29/09 ; pas de nouvelle requête HTTP ni de garantie d'applicabilité à un cabinet précis.",
-    "Le nouveau rendu n'est ni scellé ni validé par la QA/CI de livraison ; indexabilité en production non prouvée."
+    "Revue IA indépendante unique ; posture lecteur métier distincte de l'auteur Kevin, sans se présenter comme un CAC humain ou une seconde personne réelle.",
+    "Copies officielles contrôlées le 29/09, relues localement pour B2 ; aucune nouvelle consultation HTTP des administrations.",
+    "PASS de revue de candidat uniquement : ni scellement, ni approbation de CI, ni publication, ni contrôle de production.",
+    "Charte réellement présente v4 : clause historique audit non ouvert dépassée par le mandat B2 ; mise à jour constitutionnelle B1 hors de cette revue."
   ],
-  "verdict": "AI_REVIEW_PASS sur les deux nouvelles figures 1600 × 900 et leur rendu local relu à 1280 et 390 px ; ni scellement, ni livraison.",
+  "verdict": "PASS du candidat doctrinal B2 et de sa figure d'inventaire ; grille complète réévaluée, limites explicites, aucune publication autorisée par ce fichier.",
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "articleSha256": "78060c52295ff76473df782c4c7133b2ac5dcefa02aada10251c51cf7cf7e91f",
-    "manifestSha256": "848959d4da94995271ddd442da89d33fdd0c0112b695b214c40c763b5bddb317"
+    "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
+    "manifestSha256": "515344dfc273ab31a91844c66ff13343f517bc0775f8e1f43281f7adfae512da"
   }
 }

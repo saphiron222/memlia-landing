@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { BLOG_SKILLS, REVIEW_CRITERIA, SEO_SKILLS, jourRecuperationParis, verifySource } from '../../scripts/lib/blog-pipeline.mjs';
 import { retirerPreuvesInline } from '../../scripts/lib/blog-proof-figures.mjs';
 
 // Le gate compare la fraîcheur au jour de Paris, y compris pendant le décalage UTC à minuit.
@@ -156,7 +156,7 @@ datePublication: ${manifest.publicationDate}
 auteur: ${manifest.author}
 sujets: [${manifest.topics.join(', ')}]
 motsCles: [${manifest.keywords.map((item) => `"${item}"`).join(', ')}]
-brouillon: true
+brouillon: ${manifest.editorialStatus !== 'publie'}
 image: ${manifest.image.heroId}
 pipelineVersion: 1
 primaryQuery: "${manifest.primaryQuery}"
@@ -199,7 +199,7 @@ ${body}
 `;
 }
 
-export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie' } = {}) {
+export async function createCompleteDossier(root, { slug = 'article-de-test', heroId = `img-${slug}`, body = DEFAULT_BODY, claimsBody = body, manifestMutator = () => {}, claimSourceForUnit = (manifest) => manifest.sources[0], claimTypeForUnit = () => 'paie', sourceCopies = {} } = {}) {
   // Un seul jour Paris pour les preuves corrélées, prélevé à la création (pas à l'import).
   const fixtureInstant = new Date().toISOString();
   const fixtureDate = jourRecuperationParis(fixtureInstant);
@@ -277,12 +277,13 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
   const sourceSnapshots = new Map();
   for (const source of manifest.sources) {
     const snapshotPath = join(preuves, 'sources', `${source.id}.txt`);
-    const excerpt = `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
+    const sourceCopy = sourceCopies[source.id];
+    const excerpt = sourceCopy ? sourceCopy.text.split('\n')[0] : `Passage vérifié pour ${source.id} : les données sont contrôlées avant leur transmission.`;
     const citations = contentUnits.map((unit, index) => ({
-      text: `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
-      line: index + 3,
+      text: sourceCopy ? excerpt : `La source confirme la règle suivante dans son contexte : « ${unit.text} » Cette citation circonscrit le point contrôlé sans en étendre la portée.`,
+      line: sourceCopy ? 1 : index + 3,
     }));
-    const snapshot = `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
+    const snapshot = sourceCopy?.text ?? `${source.title}\n${excerpt}\n${citations.map((citation) => citation.text).join('\n')}\n`;
     writeFileSync(snapshotPath, snapshot);
     const contentSha256 = sha256(snapshot);
     sourceSnapshots.set(source.id, { contentSha256, citations });
@@ -306,7 +307,10 @@ export async function createCompleteDossier(root, { slug = 'article-de-test', he
       checkedAt: source.checkedAt,
       observations: ['Le domaine, l’éditeur, la provenance et le niveau ont été relus séparément.'],
     });
-    writeJson(join(dossier, source.verificationEvidence), {
+    if (sourceCopy) {
+      writeJson(join(dossier, source.dilaCopyPath), sourceCopy);
+      await verifySource({ root, slug, sourceId: source.id, excerpt, fetcher: async () => { throw new Error('Une copie DILA ne consulte pas le réseau.'); } });
+    } else writeJson(join(dossier, source.verificationEvidence), {
       version: 1,
       candidateSlug: slug,
       sourceId: source.id,

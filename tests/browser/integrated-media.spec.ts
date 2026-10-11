@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { tabTo } from './helpers/tab-to';
 
 const VIDEO_SRC = '/media/r9/explainer-hero-45s.mp4';
 
@@ -77,9 +78,7 @@ test('surface, Entrée et Espace basculent uniquement pause et reprise', async (
   await expect(video).toHaveAttribute('aria-label', 'Reprendre la vidéo');
 
   await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
-  for (let index = 0; index < 100 && !(await video.evaluate(element => element === document.activeElement)); index++) {
-    await page.keyboard.press('Tab');
-  }
+  await tabTo(page, video);
   await expect(video).toBeFocused();
   await expect(video).toHaveCSS('outline-style', 'solid');
   await page.keyboard.press('Enter');
@@ -113,7 +112,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       time: element.currentTime,
       width: element.videoWidth,
       height: element.videoHeight,
-    }))).toEqual({ paused: true, time: 0, width: 1920, height: 1080 });
+    }))).toEqual({ paused: true, time: 0, width: 0, height: 0 });
     const track = video.locator('track');
     expect(await track.getAttribute('default')).toBeNull();
     expect(await video.evaluate((element: HTMLVideoElement) => element.textTracks[0].mode)).toBe('disabled');

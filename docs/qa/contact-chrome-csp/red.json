@@ -1,0 +1,82 @@
+{
+  "base": "http://127.0.0.1:8796",
+  "checkedAt": "2026-10-06T11:13:11.657Z",
+  "records": [
+    {
+      "width": 375,
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'",
+      "failures": [
+        {
+          "name": "apparitions",
+          "error": "page.waitForFunction: Timeout 2000ms exceeded."
+        },
+        {
+          "name": "menu mobile clavier, focus et fond",
+          "error": "Expected values to be strictly equal:\n\n'false' !== 'true'\n"
+        },
+        {
+          "name": "footer accordéon clavier",
+          "error": "The expression evaluated to a falsy value:\n\n  assert.ok(await button.count() > 0)\n"
+        },
+        {
+          "name": "SEC-01 sans violation inline",
+          "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   },\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   },\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   }\n+ ]\n- []\n"
+        }
+      ],
+      "chromeViolations": [
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        },
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        },
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        }
+      ],
+      "otherViolations": [],
+      "errors": [],
+      "forbiddenRequests": []
+    },
+    {
+      "width": 1440,
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'",
+      "failures": [
+        {
+          "name": "apparitions",
+          "error": "page.waitForFunction: Timeout 2000ms exceeded."
+        },
+        {
+          "name": "SEC-01 sans violation inline",
+          "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   },\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   },\n+   {\n+     blockedURI: 'inline',\n+     directive: 'script-src-elem',\n+     sample: ''\n+   }\n+ ]\n- []\n"
+        }
+      ],
+      "chromeViolations": [
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        },
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        },
+        {
+          "directive": "script-src-elem",
+          "blockedURI": "inline",
+          "sample": ""
+        }
+      ],
+      "otherViolations": [],
+      "errors": [],
+      "forbiddenRequests": []
+    }
+  ]
+}

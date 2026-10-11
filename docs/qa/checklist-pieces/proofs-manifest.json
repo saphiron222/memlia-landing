@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/checklist-pieces-proof/index.html",
+      "sha256": "76d8d0dc0fc210001562fcd1d94305481736dc337c6d244b55ba4669d36b9ad6"
+    },
+    {
+      "path": "docs/design/checklist-pieces-proof/styles.css",
+      "sha256": "ff5c5b922bf9b4f8139f20fd5aca91c550d2ed16bdd86e16f874274067696b20"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/checklist-pieces-proof/content-contract.json",
+      "sha256": "a64fe4fcd727175db1960ce59d35c93c66eb8fc5fc310f18a6f82eda9972badf"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "173d710b9f62eaed6d1cd61384535f2479826e140c43c930e1e2b2c61ef377e1"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/checklist-pieces-proof/index.html#outil-checklist-pieces",
+      "target": "public/proofs/v2/44-outil-checklist-pieces.webp",
+      "bytes": 40222,
+      "sha256": "ca28de7027bdaff3b1c59a50ff4d245eafd7bed5cf7883cba93f9c17365a0a6d"
+    },
+    {
+      "source": "docs/design/checklist-pieces-proof/index.html#outil-checklist-pieces",
+      "target": "public/proofs/v2/og/44-outil-checklist-pieces.webp",
+      "bytes": 27354,
+      "sha256": "614dd6f51a76b602623eb36900ff0dd3058b69588fd5290cef9006f38da1b9a7"
+    }
+  ]
+}

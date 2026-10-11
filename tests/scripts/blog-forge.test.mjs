@@ -1,4 +1,4 @@
-import { test } from 'node:test';
+import { test, beforeEach } from 'node:test';
 import { spawnSync } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -14,8 +14,16 @@ import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
-// Même calendrier que le gate et la forge : un jour UTC peut encore être la veille à Paris (ou inversement).
-const jour = forge.aujourdhui();
+// Mardi, précédé d'un lundi : le report et les articles ordinaires restent ouvrés.
+// L'horloge des preuves est indépendante du jour et de la timezone du runner.
+const jour = '2026-09-29';
+const NativeDate = Date;
+beforeEach((t) => {
+  t.mock.method(globalThis, 'Date', class extends NativeDate {
+    constructor(...args) { super(...(args.length ? args : [`${jour}T12:00:00Z`])); }
+    static now() { return NativeDate.parse(`${jour}T12:00:00Z`); }
+  });
+});
 const HTML_RELUT = '<html><body><div class="article-corps lecture"><p>Texte rendu relu.</p></div></body></html>';
 
 const CORPS_REGLE = `## La règle écrite
@@ -906,7 +914,7 @@ test('la palette : le brief d’un article nouveau doit épingler ses couleurs, 
       .composite([{ input: await sharp({ create: { width: 320, height: 180, channels: 3, background: '#27b657' } }).png().toBuffer(), left: 40, top: 40 }])
       .png().toFile(source);
     const r = recette();
-    r.date = '2026-09-20';
+    r.date = '2026-09-21';
     r.image.source = { path: 'image-source.png', generationId: 'test-1', model: 'gpt_image_2_5', provider: 'higgsfield', generatedAt: r.date, credits: 3 };
     r.image.brief = { sujet: 'Sujet de test.', composition: 'Composition de test.', style: 'Style de test.', palette: 'Vert Memlia #27b657 dominant, crème #fcfbf7, touches de graphite #231f20.', interdits: 'Texte lisible.', prompt: 'Prompt de test.' };
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
@@ -926,7 +934,7 @@ test('la palette : le brief d’un article nouveau doit épingler ses couleurs, 
     assert.ok(revueDette.palette.ecarts.some((e) => /#231f20/.test(e)));
 
     // Un brief qui nomme une couleur sans son hex est refusé avant même de regarder l'image.
-    r.date = '2026-09-20';
+    r.date = '2026-09-21';
     r.image.brief.palette = 'Vert Memlia #27b657 dominant, crème #fcfbf7, touches de graphite.';
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
     const flou = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });

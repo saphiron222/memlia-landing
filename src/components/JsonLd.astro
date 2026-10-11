@@ -1,6 +1,6 @@
 ---
 import { SITE } from '@/data/site.mjs';
-import { organizationNode, serviceNode } from '@/data/schema.mjs';
+import { organizationNode, serviceNode, withBreadcrumb } from '@/data/schema.mjs';
 import { FAQ } from '@/data/faq';
 import { AUTEURS, identiteAuteur } from '@/data/auteurs';
 
@@ -62,4 +62,4 @@ const graph = {
 };
 ---
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(withBreadcrumb(graph, { chemin: '/', name: headline })).replace(/</g, '\\u003c')} />
