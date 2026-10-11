@@ -18,4 +18,6 @@ Tests ciblés :
 
 Les témoins couvrent réussite, absence de parcours au seuil de deux, couverture partielle, article isolé, exemption insuffisante, famille inconnue, double rattachement, exceptions transversales et séparation CAC. Le dernier test lit le stock réel et la taxonomie source. Ce fichier entre automatiquement dans `npm run test:scripts`, donc dans la CI et le build Cloudflare.
 
+La fabrique de candidat de test renseigne `famille: bulletins-controle`, cohérente avec son scénario paie. Un témoin lit son vrai frontmatter après passage de preview à publication et vérifie sa couverture avec une exemption motivée ; une famille inconnue reste refusée même avec cette exemption. Le scénario complet preview → publication de `blog-candidate-render.test.mjs` est conservé et rejoué par la CI.
+
 Le commentaire obsolète du gabarit de rubrique a déjà disparu lors de son extraction dans `BlogRubrique.astro` ; seule la docstring Python conservait la mention de deux rubriques. Les raisons d’exemption sont documentaires : aucun texte public, route, canonical, liste d’articles ou lien ne change. Pas de nouvelle mesure J+7/J+28 nécessaire pour ce changement interne. La livraison reste à vérifier par CI, puis sur les trois rubriques publiques, les liens article/hub, leurs canonical et le sitemap.

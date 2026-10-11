@@ -4,6 +4,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import ts from 'typescript';
 import { parse } from 'yaml';
 import * as taxonomy from '../../src/data/blog-rubriques.mjs';
+import { articleMarkdown, candidateManifest } from './blog-fixture.mjs';
 
 const familles = [
   { id: 'collecte', pole: 'production', profession: 'ec' },
@@ -38,6 +39,19 @@ test('chaque article publié doit avoir une rubrique ou une exemption motivée',
 
 test('la famille doit être connue même pour un article exempté', () => {
   assert.throws(() => verifier([entry('pilier', 'inconnue')]), /pilier.*famille inconnue/);
+});
+
+test('la vraie fixture preview reste couverte une fois publiée, sans accepter une famille inconnue', async () => {
+  const compiled = ts.transpileModule(readFileSync('src/data/familles.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
+  const { FAMILLES } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+  const manifest = candidateManifest('fixture-candidat-pipeline');
+  const markdown = articleMarkdown(manifest).replace('brouillon: true', 'brouillon: false');
+  const data = parse(markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
+  const published = { id: manifest.slug, data };
+  const fixtureOptions = { rubriques: [], exemptions: { [manifest.slug]: exemption } };
+  assert.equal(data.brouillon, false);
+  assert.doesNotThrow(() => taxonomy.verifierCouvertureRubriques([published], FAMILLES, fixtureOptions));
+  assert.throws(() => taxonomy.verifierCouvertureRubriques([{ ...published, data: { ...data, famille: 'inconnue' } }], FAMILLES, fixtureOptions), /fixture-candidat-pipeline.*famille inconnue/);
 });
 
 test('un rattachement double ou doublé par une exemption est refusé', () => {
