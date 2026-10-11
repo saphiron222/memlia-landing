@@ -173,9 +173,16 @@ export function gscPy(root, sousCommande, args = []) {
   return { ...r, json: analyserSortieJson(r.sortie) };
 }
 
-export function deriveComparer(url, { commitBaseline = null } = {}) {
-  const r = executerSeo('drift_compare.py', [url, '--skip-cwv'], { timeoutMs: 90_000 });
-  return lireDerive({ sortie: sortieOutil(r), code: r.code, url, commitBaseline });
+export function deriveComparer(url, { commitBaseline = null, baselineId = null, execute = executerSeo } = {}) {
+  const args = [url, '--skip-cwv'];
+  if (baselineId !== null) args.push('--baseline-id', String(baselineId));
+  const r = execute('drift_compare.py', args, { timeoutMs: 90_000 });
+  const comparaison = lireDerive({ sortie: sortieOutil(r), code: r.code, url, commitBaseline });
+  if (baselineId !== null && (comparaison.statut === 'sans-baseline'
+    || (['ok', 'derive'].includes(comparaison.statut) && comparaison.baselineId !== baselineId))) {
+    return { url, statut: 'erreur', commitBaseline, message: `baseline mémorisée ${baselineId} indisponible ou différente : restauration requise, aucun remplacement automatique` };
+  }
+  return comparaison;
 }
 
 export function derivePoser(url) {

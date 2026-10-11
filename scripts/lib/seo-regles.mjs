@@ -81,7 +81,7 @@ export function jugerIndexation({
   const infos = [];
   const actions = { demanderIndexation: [], indexnow: [], poserBaseline: [] };
   const vues = { ...premieresVues };
-  const etat = {};
+  const etat = { ...etatPrecedent };
   const instant = maintenant ?? `${aujourdhui}T12:00:00Z`;
   let indexees = 0;
   let enAttente = 0;
@@ -160,7 +160,9 @@ export function jugerIndexation({
     const arrivee = v.finalUrl ?? v.location ?? null;
     const permanent = [301, 308].includes(status);
     const temporaire = [302, 307].includes(status);
-    if (!memeSite(arrivee) || !(permanent || temporaire)) {
+    if (v.erreur || status === 0) {
+      avertissements.push({ code: 'variante-indisponible', url: v.url, message: `redirection non mesurée : ${v.erreur ?? 'aucune réponse HTTP'}` });
+    } else if (!memeSite(arrivee) || !(permanent || temporaire)) {
       rouges.push({ code: 'variante-non-redirigee', url: v.url, message: `répond ${v.status}${arrivee ? ` vers ${arrivee}` : ''} au lieu d'une redirection permanente vers https://memlia.fr/` });
     } else if (temporaire) {
       avertissements.push({ code: 'variante-redirection-temporaire', url: v.url, message: `redirection ${v.status}, une 301 est attendue` });
