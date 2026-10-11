@@ -77,7 +77,8 @@ def sitemap_urls():
 class ResourceProof(unittest.TestCase):
     def test_build_audits_resources_after_generating_the_site(self):
         scripts = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['scripts']
-        build_steps = [step.strip() for step in scripts['build'].split('&&')]
+        self.assertIn('npm run build:locked', scripts['build'])
+        build_steps = [step.strip() for step in scripts['build:locked'].split('&&')]
 
         self.assertLess(build_steps.index('npm run build:site'), build_steps.index('npm run resource:audit:qa'))
 
