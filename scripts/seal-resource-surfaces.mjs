@@ -299,7 +299,7 @@ function createManifest(adapter) {
   ])];
   manifest.integrity.sourceBundle = bundle(sourceBundlePaths);
   manifest.integrity.assetBundle = bundle([sourcePath]);
-  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs']);
+  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs', 'scripts/lib/resource-metier-ec.mjs']);
   manifest.integrity.buildOutput = bundle([outputPath]);
   manifest.build = { ...manifest.build, pipelineCommit: '5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a', commands: bootstrapCommands.map((row) => row.command), startedAt: buildStartedAt, endedAt: buildEndedAt, result: 'PASS', sourceBundleDigest: manifest.integrity.sourceBundle.digest, assetBundleDigest: manifest.integrity.assetBundle.digest, configBundleDigest: manifest.integrity.configBundle.digest, outputDigest: manifest.integrity.buildOutput.digest, reportRefs: ['docs/qa/hub-ressources/freshness-r4-exec.md'] };
   manifest.limitations = [

@@ -1,4 +1,14 @@
-# Glossaire v3 : vagues 1 et 2 intégrées, quatre termes réglementaires en attente
+# Glossaire v3 : vagues 1 et 2 intégrées, sous-lot EC admis
+
+État d’intégration du 11 octobre 2026 : 55 termes, dont `lettre-de-mission` et
+`facture-electronique-et-plateforme-agreee`. PASS métier t_79043fac sur les quatre
+candidats, mais deux publications admises seulement. `supervision-humaine` et
+`maitrise-de-l-ia` restent documentaires faute d’article support servi ; leurs liens
+restent vides. Le paquet, les réserves A4 et les motifs de l’avis sont dans
+`ec/glossaire-reglementaire/`, la recette d’intégration dans `INTEGRATION.md`.
+Les dates AI Act et la formulation de l’article 4 du tableau historique §3 ne
+décrivent plus le texte actuel : ne pas les réutiliser ; voir les copies et l’avis
+du 11/10. Le bloc qui suit conserve la photographie du 19 septembre, pas le stock actuel.
 
 Plan écrit le 16 septembre 2026, remis à l'état réel le 19 septembre 2026, puis le 19 au soir après
 l'intégration de la vague 2.

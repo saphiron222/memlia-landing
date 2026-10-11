@@ -1,5 +1,5 @@
 {
-  "$comment": "CANDIDAT V3 : 76 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.",
+  "$comment": "CANDIDAT V3 : 86 unités R2 couvertes, résumés H atomisés. Contenu paie/social non attesté ; revue métier IA indépendante AI_REVIEW_PASS. SERP ND sans crédit SEO.",
   "schemaVersion": "resource-manifest-v1",
   "contractRevision": 3,
   "templateState": "candidate",
@@ -13,7 +13,7 @@
     "architectureTask": "t_27e8be9f",
     "publicProjection": "src/pages/glossaire.astro",
     "resourceTypeRule": "resourceType est distinct du format éditorial existant",
-    "decisions": "/glossaire reste un index unique de 53 ancres ; aucun guide ou modèle.",
+    "decisions": "/glossaire reste un index unique de 55 ancres ; aucun guide ou modèle.",
     "qualityThreshold": 90,
     "maxP0": 0,
     "maxP1": 0,
@@ -105,6 +105,8 @@
       "définitions paie dsn cabinet"
     ],
     "fanOut": [
+      "/glossaire#lettre-de-mission",
+      "/glossaire#facture-electronique-et-plateforme-agreee",
       "/glossaire#dsn",
       "/glossaire#dsn-val",
       "/glossaire#compte-rendu-metier-dsn",
@@ -172,7 +174,7 @@
     ],
     "requiredOutputs": [
       "dist/glossaire.html",
-      "53 ancres uniques"
+      "55 ancres uniques"
     ],
     "routeDecision": {
       "status": "PASS",
@@ -186,7 +188,7 @@
       "rule": "Index unique ; aucune page /glossaire/{slug}.",
       "containerAuditResult": "PASS"
     },
-    "anchorPolicy": "Le conteneur /glossaire porte exactement les 53 ancres déclarées.",
+    "anchorPolicy": "Le conteneur /glossaire porte exactement les 55 ancres déclarées.",
     "noNaAbuse": "Les audits du conteneur restent requis.",
     "imagePolicy": "Aucune image utile à cet index."
   },
@@ -892,6 +894,100 @@
         "sha256": "df0d7a34959206573dfeb4f666307cc7b7e8ca6093b74f473d34fb425822b806",
         "claimIds": [
           "claim-t-export-logiciel-et-import-csv-commonConfusion"
+        ]
+      },
+      {
+        "id": "unit-t-ec-lettre-de-mission-definition",
+        "text": "La lettre de mission est une forme du contrat écrit conclu entre le professionnel de l’expertise comptable et son client ou adhérent. Ce contrat définit la mission et les droits et obligations des parties. Il fait référence aux règles professionnelles et précise, le cas échéant, le mandat confié au professionnel.",
+        "sha256": "c75f248b97d83bd997d078645aa3fd114ffc0e646ab1c8546088730aad1c1b50",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.definition.1.mission-all",
+          "claim-t-ec-lettre-de-mission.definition.2.mission-all",
+          "claim-t-ec-lettre-de-mission.definition.3.mission-all"
+        ]
+      },
+      {
+        "id": "unit-t-ec-lettre-de-mission-context",
+        "text": "L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+        "sha256": "8c7705a48c131ef1d2f36fe92e5a01513bfa82c8e4209108f083f2d16b600f3c",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.context.1.mission-all",
+          "claim-t-ec-lettre-de-mission.context.2.mission-all",
+          "claim-t-ec-lettre-de-mission.context.3.editorial"
+        ]
+      },
+      {
+        "id": "unit-t-ec-lettre-de-mission-exampleFictitious",
+        "text": "Dans un cabinet fictif, un tableau signale que le document contractuel d’un dossier fictif reste à examiner. Un brouillon rassemble le périmètre proposé et les questions ouvertes. Le professionnel vérifie les clauses avec le client avant la conclusion du contrat ; le tableau ne crée aucun accord.",
+        "sha256": "029b822c2c2e9d275ae8c5427495b1d6e5a05899c07247e05520ff8a2f7f9a2a",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.exampleFictitious.1.editorial"
+        ]
+      },
+      {
+        "id": "unit-t-ec-lettre-de-mission-commonConfusion",
+        "text": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+        "sha256": "a6fde7b0e827881fd6ab8d8c04f6513a2a06183c328046ce5ce86308bccf1ee7",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.commonConfusion.1.editorial",
+          "claim-t-ec-lettre-de-mission.commonConfusion.2.mission-all",
+          "claim-t-ec-lettre-de-mission.commonConfusion.3.mission-all"
+        ]
+      },
+      {
+        "id": "unit-t-ec-lettre-de-mission-automationBoundary",
+        "text": "Recenser les documents, signaler un élément absent et préparer un brouillon sont automatisables. Définir le périmètre, examiner les clauses, convenir des droits et obligations et conclure le contrat restent des actes humains. Aucune clause saisie ou validée n’est remplacée silencieusement par une proposition.",
+        "sha256": "9d024379c2ac5f0b9ea6dbef1c47205aab3ba06e275ac99a4e43e2d7162de50a",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.automationBoundary.1.editorial"
+        ]
+      },
+      {
+        "id": "unit-t-ec-facture-electronique-et-plateforme-agreee-definition",
+        "text": "Dans la réforme française, une facture électronique est émise, transmise et reçue sous forme dématérialisée, avec un socle de données structurées. Elle passe par une plateforme agréée par l’administration, qui assure sa transmission au destinataire. Ce dispositif concerne les opérations entrant dans son périmètre, et non tout document PDF envoyé par courriel.",
+        "sha256": "25c6d696d9fd4c4b790b5ab6ca789ba7fb559da448ba6f00a6ed97bccbbbd191",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition"
+        ]
+      },
+      {
+        "id": "unit-t-ec-facture-electronique-et-plateforme-agreee-context",
+        "text": "Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+        "sha256": "0fcda71e9dcd46c424e6754c6ab578446f1ca10ec6677c26db2bbd35ac0ad47e",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting"
+        ]
+      },
+      {
+        "id": "unit-t-ec-facture-electronique-et-plateforme-agreee-exampleFictitious",
+        "text": "Une petite entreprise fictive reçoit une facture structurée par sa plateforme en octobre 2026. Pour ses ventes fictives, elle prépare son passage à l’émission obligatoire de septembre 2027. Le cabinet vérifie sa catégorie, l’opération et le canal ; un PDF reçu par courriel n’est pas déclaré conforme par le seul fait de sa réception.",
+        "sha256": "35ef4ec646d4ccc820d5d7cdbfb10085d10e42386d1468031f5ebda26dc7fa97",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition"
+        ]
+      },
+      {
+        "id": "unit-t-ec-facture-electronique-et-plateforme-agreee-commonConfusion",
+        "text": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+        "sha256": "3314692fc7f46f685f64a6020e90cfe7782ae4962e2c794b428ac90c0b54c52e",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar"
+        ]
+      },
+      {
+        "id": "unit-t-ec-facture-electronique-et-plateforme-agreee-automationBoundary",
+        "text": "Rassembler les données, contrôler les champs attendus et préparer une proposition de traitement sont automatisables. Qualifier l’opération, vérifier la catégorie de l’entreprise, choisir la plateforme, valider les données fiscales et autoriser une transmission engageante restent humains. La lecture d’une pièce ne vaut ni agrément de plateforme ni validation fiscale.",
+        "sha256": "e1589f16574c984f99391c85f54a14c885989e0220784b156b75540f9cd22c72",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial"
         ]
       }
     ],
@@ -2756,6 +2852,582 @@
             "source-rfc-4180-csv"
           ]
         }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.definition.1.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-definition",
+        "text": "La lettre de mission est une forme du contrat écrit conclu entre le professionnel de l’expertise comptable et son client ou adhérent.",
+        "sha256": "bcdfa5a8f31348f21b5d371d69823675958d30282b37f4f48454e547d17aa013",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.definition.1.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:definition : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.definition.2.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-definition",
+        "text": "Ce contrat définit la mission et les droits et obligations des parties.",
+        "sha256": "bc80071b5a8a32085f9a34bee26a9ccd7f8a5cbbc35b302b37c9bcae5f9c4355",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.definition.2.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:definition : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.definition.3.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-definition",
+        "text": "Il fait référence aux règles professionnelles et précise, le cas échéant, le mandat confié au professionnel.",
+        "sha256": "8ed83482b2b84d5d56f870f44a429451c83916909eaf25dacc0d032f1df28999",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.definition.3.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:definition : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.context.1.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-context",
+        "text": "L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission.",
+        "sha256": "81f6e4368536bbf71da4bf2a48e3dff480bdb99d5f697503cb6f167b0bdf6822",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.context.1.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:context : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.context.2.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-context",
+        "text": "Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre.",
+        "sha256": "75be5693450be9010924dbcb22c65ddcb9037e9f5092496de7c49f8229ec986d",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.context.2.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:context : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.context.3.editorial",
+        "unitId": "unit-t-ec-lettre-de-mission-context",
+        "text": "Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+        "sha256": "c16a90e9a74d591daa838bc1ed19d71533fdc20fb9c61b74db4676273b5ac459",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.context.3.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.exampleFictitious.1.editorial",
+        "unitId": "unit-t-ec-lettre-de-mission-exampleFictitious",
+        "text": "Dans un cabinet fictif, un tableau signale que le document contractuel d’un dossier fictif reste à examiner. Un brouillon rassemble le périmètre proposé et les questions ouvertes. Le professionnel vérifie les clauses avec le client avant la conclusion du contrat ; le tableau ne crée aucun accord.",
+        "sha256": "029b822c2c2e9d275ae8c5427495b1d6e5a05899c07247e05520ff8a2f7f9a2a",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.exampleFictitious.1.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.commonConfusion.1.editorial",
+        "unitId": "unit-t-ec-lettre-de-mission-commonConfusion",
+        "text": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission.",
+        "sha256": "f4c1eb736ac89547a6750dba133415fa0a2fe6799cf40872149c4c69b84d60c0",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.commonConfusion.1.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.commonConfusion.2.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-commonConfusion",
+        "text": "Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission.",
+        "sha256": "121d81c0e6a6f7b3da7f43dd7baa9c52bcbf9de138cc1848f29bf561711a82d2",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.commonConfusion.2.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:commonConfusion : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.commonConfusion.3.mission-all",
+        "unitId": "unit-t-ec-lettre-de-mission-commonConfusion",
+        "text": "Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+        "sha256": "35c3703b8640b8b22a58482f1fba5384be6e695e1f629f3f2c0bdca55c289009",
+        "type": "legal-reglementaire",
+        "sourceIds": [
+          "source-ec-legi-mission"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.commonConfusion.3.mission-all"
+        ],
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ lettre-de-mission:commonConfusion : L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+          "regime": "Depuis le 1er janvier 2023 ; données du décret mises à jour le 1er juillet 2025",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.",
+          "sourceIds": [
+            "source-ec-legi-mission"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-lettre-de-mission.automationBoundary.1.editorial",
+        "unitId": "unit-t-ec-lettre-de-mission-automationBoundary",
+        "text": "Recenser les documents, signaler un élément absent et préparer un brouillon sont automatisables. Définir le périmètre, examiner les clauses, convenir des droits et obligations et conclure le contrat restent des actes humains. Aucune clause saisie ou validée n’est remplacée silencieusement par une proposition.",
+        "sha256": "9d024379c2ac5f0b9ea6dbef1c47205aab3ba06e275ac99a4e43e2d7162de50a",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-lettre-de-mission.automationBoundary.1.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-definition",
+        "text": "Dans la réforme française, une facture électronique est émise, transmise et reçue sous forme dématérialisée, avec un socle de données structurées.",
+        "sha256": "6c5eca7a7dc86ca24038d5d743206aa3fed576a7ff65a5ead2999287f825c5b7",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-definition"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:definition : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-definition"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-definition",
+        "text": "Elle passe par une plateforme agréée par l’administration, qui assure sa transmission au destinataire.",
+        "sha256": "118884edd0b36f0c21e4b45cdca7691831397d8b3982ce0e9ee9e5317c49bb9f",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-definition"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:definition : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-definition"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-definition",
+        "text": "Ce dispositif concerne les opérations entrant dans son périmètre, et non tout document PDF envoyé par courriel.",
+        "sha256": "497b19a051e9ad646bc41684d876ce412a612c2f6856064a1520a8750d9a97d8",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-definition"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:definition : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-definition"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-context",
+        "text": "Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée.",
+        "sha256": "f4491c2594061fe8683176016ee9c5ff1ff6dc9f8866ce3f7629210292dd30ad",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-legi-cgi"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.146784+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:context : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Depuis le 21 février 2026, LEGIARTI000053546660 ; abrogation différée et maintien transitoire indiqués sur la page",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-legi-cgi"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-context",
+        "text": "La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises.",
+        "sha256": "4c5b917afbcf67cfacb57a6471f9594e02ceccadde09c6286f2d79c203c4e4a8",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-calendrier"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:context : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-calendrier"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-context",
+        "text": "Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+        "sha256": "fcbcf197706cd3934f216e433fc26dbea0e75da1a6c15762707d25502c833f51",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-perimetre"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:context : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-perimetre"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-exampleFictitious",
+        "text": "Une petite entreprise fictive reçoit une facture structurée par sa plateforme en octobre 2026.",
+        "sha256": "7f6c437bf48baa1d3b2eb9752df7e48bd065d6957e414b5eec1faccfdef0457e",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-exampleFictitious",
+        "text": "Pour ses ventes fictives, elle prépare son passage à l’émission obligatoire de septembre 2027.",
+        "sha256": "e59cd21962d879903ac1d48f0a3bbb94f5645af45b8b09b5a3d8f683b2b9b6da",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-calendrier"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:exampleFictitious : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-calendrier"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-exampleFictitious",
+        "text": "Le cabinet vérifie sa catégorie, l’opération et le canal ; un PDF reçu par courriel n’est pas déclaré conforme par le seul fait de sa réception.",
+        "sha256": "c8124a6b03baebc1d66f3700b0dc49e7ba299fd8013b7bfa4844957db0fd5492",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-definition"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:exampleFictitious : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-definition"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-commonConfusion",
+        "text": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée.",
+        "sha256": "f91648ea304ead9d066f5e6a8dc878582eeba81394201e7f14fe467964b0e344",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-definition"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:commonConfusion : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-definition"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-commonConfusion",
+        "text": "Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche.",
+        "sha256": "a0c3b4b0d54b40c2e80258b2a7494405d4ebe5ef6d71d7e085b6508542fd1af6",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-perimetre"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:commonConfusion : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-perimetre"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-commonConfusion",
+        "text": "Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+        "sha256": "3e141526a5d992bd1a392733c3038d0b9d238ede640627b755af5d2737bbbf4e",
+        "type": "fiscal",
+        "sourceIds": [
+          "source-ec-dgfip-calendrier"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar"
+        ],
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Population et opérations bornées dans le champ facture-electronique-et-plateforme-agreee:commonConfusion : Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.",
+          "regime": "Date de page conservée dans la copie DGFiP",
+          "validAsOf": "2026-10-11",
+          "exceptions": "Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.",
+          "sourceIds": [
+            "source-ec-dgfip-calendrier"
+          ]
+        }
+      },
+      {
+        "id": "claim-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial",
+        "unitId": "unit-t-ec-facture-electronique-et-plateforme-agreee-automationBoundary",
+        "text": "Rassembler les données, contrôler les champs attendus et préparer une proposition de traitement sont automatisables. Qualifier l’opération, vérifier la catégorie de l’entreprise, choisir la plateforme, valider les données fiscales et autoriser une transmission engageante restent humains. La lecture d’une pièce ne vaut ni agrément de plateforme ni validation fiscale.",
+        "sha256": "e1589f16574c984f99391c85f54a14c885989e0220784b156b75540f9cd22c72",
+        "type": "methode-memlia",
+        "sourceIds": [
+          "source-glossary-memlia"
+        ],
+        "citationIds": [
+          "citation-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial"
+        ],
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "status": "PASS",
+        "applicability": {
+          "population": "Convention pédagogique Memlia, cas entièrement fictif ou frontière du service.",
+          "regime": "Convention interne Memlia, sans portée réglementaire autonome.",
+          "validAsOf": "2026-09-16",
+          "exceptions": "Ne constitue ni obligation universelle, ni résultat réel, ni certification.",
+          "sourceIds": [
+            "source-glossary-memlia"
+          ]
+        }
       }
     ],
     "citations": [
@@ -2842,7 +3514,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « contrôle avant DSN » l’ensemble des vérifications que le cabinet choisit de rejouer entre le calcul de la paie et le dépôt : pièces, variables, écarts, cohérences métier et conformité du fichier.",
         "sha256": "fca06fe42a7e25b4b05ae0efd1017cfec7f45341c7415d36b8c15070e4b34f46",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2857,7 +3529,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « production sociale » le cycle de travail retenu par le cabinet pour collecter les variables, établir et contrôler les bulletins, déposer les déclarations puis traiter les retours et documents.",
         "sha256": "acb724673cb90dace6ec722eb50a00f14ffd211298293d2d6367a4e5fd48cff6",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2932,7 +3604,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Résultat regroupant des dossiers, étapes ou périodes sans afficher un indicateur par personne.",
         "sha256": "1ebf26f16dd177c4b45395c3a3ccf7db7ed646d53df5f63457e3946d25e63095",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2947,7 +3619,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « lettrage comptable » le rapprochement d’écritures que le cabinet considère comme liées, par exemple une facture et son règlement, au moyen d’un repère commun.",
         "sha256": "5e251550804bff5c985f1977625f66a37ec867df5da9ba4a4bfbaf5018dd00fb",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2962,7 +3634,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « rapprochement bancaire » le contrôle qui compare les mouvements et le solde comptables d’un compte au relevé de la banque, puis prépare l’explication des écarts de date, d’omission ou d’erreur.",
         "sha256": "5d6711e4a86e86cd3a95ed9cb8b0d54d311f6dd578fcdfbf0c99b373cc772c48",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2977,7 +3649,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « révision comptable » l’ensemble de contrôles défini par la mission du cabinet pour examiner les comptes, documenter les anomalies et préparer leur validation.",
         "sha256": "1bb644f7358a3eb85955f013c6eb131b8722ee74487b4d597b735e4598bbb755",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -2992,7 +3664,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « pièce justificative » le document ou la trace que le cabinet retient pour expliquer et étayer une opération enregistrée ou une décision de contrôle.",
         "sha256": "a765ba57657d449aef91e08dcac9bbf8e6ad6cba44930a214c16cbe21e9b50bb",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3022,7 +3694,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Instruction explicite qui décrit ce que le cabinet attend d’une entrée donnée, les exceptions admises et le résultat à préparer.",
         "sha256": "b94515f0319c8330469b0516ef1bc892a5793f7c70e44cefa4f542e17ad37528",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3037,7 +3709,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Situation prévue dans laquelle le traitement s’arrête et demande une intervention au lieu de produire un résultat incertain.",
         "sha256": "322fc7b6a29dc30567b72ea3d2b4c09191c9107ad81d3476e5822275d4dce4dd",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3052,7 +3724,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans ce glossaire, Memlia appelle « contrôle de cohérence » une vérification qui compare des données entre elles ou à une règle du cabinet pour faire ressortir une anomalie possible.",
         "sha256": "c9692a450e9890e647cc0292233593ce074db032e72eda209524caeff4189c13",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3067,7 +3739,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, le « schéma de données » décrit la structure attendue d’un jeu de données : champs, types, formats, valeurs admises et relations utiles au traitement.",
         "sha256": "f3a6538359f5ecac5b06ce359be2ad772d9e26cff576ab69631a41851c5aca3c",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3082,7 +3754,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, la « traçabilité » permet de retrouver quelles entrées, quelle règle, quelle version et quel résultat ont conduit à une proposition ou à une décision.",
         "sha256": "b5e9e626feeb05bb79bf98dc5bfff437d28848865218681951503f66df53f36a",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3097,7 +3769,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Étape où une personne compétente accepte, corrige ou refuse la proposition préparée avant qu’elle produise un effet métier.",
         "sha256": "146f1957b12faf35ffd1ca6a168522cd48a56ca15ef3dd40c10acbb8fe972fab",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3112,7 +3784,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Dans le contrat technique Memlia, « fail-closed » désigne le comportement testé où une entrée inconnue, invalide ou ambiguë bloque le traitement au lieu d’autoriser une sortie par défaut.",
         "sha256": "7067305c1bf51ffbc2b0eadee41b25f9a61094299e322ab24906f0d4f91e610d",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3127,7 +3799,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "L’automatisation consiste à faire exécuter par un outil, sans intervention humaine à chaque occurrence, une règle explicite et stable : les mêmes conditions produisent toujours le même traitement. Ce qui sort de la règle — une donnée absente, un cas non prévu — doit être signalé plutôt que traité par approximation, pour rester fidèle à la règle écrite.",
         "sha256": "96230605db4208e81218a25489db246fc744765ec9c379abbe05c0e628419d06",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3142,7 +3814,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un flux de travail est l’enchaînement ordonné des étapes qui transforment une demande en résultat : chacune a un responsable, une condition qui permet de la déclencher, et une sortie qui alimente l’étape suivante. Il existe indépendamment de tout logiciel ; un outil peut ensuite exécuter tout ou partie de ses étapes.",
         "sha256": "1bdb8ddbda00abca0aac6c891098fbfb07f4d2a56838ba7bfda939bc2b0e5351",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3172,7 +3844,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une exception est une occurrence que la règle écrite ne couvre pas — une donnée absente, un format inattendu, une combinaison non prévue — et qui doit remonter à une personne plutôt qu’être traitée par une valeur par défaut. Une exception n’est pas une erreur : c’est le fonctionnement attendu d’une règle qui refuse de deviner.",
         "sha256": "850600a19b721cc4666597b435bd6cbd1b782d46c06c8a2dbc70aec2e4471a61",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3187,7 +3859,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une file d’anomalies est la liste unique où se regroupent toutes les exceptions détectées par un traitement, chacune avec son motif et son statut, pour être reprise en une seule séance par une personne plutôt qu’au fil de l’eau. Elle transforme des interruptions dispersées en une revue périodique et maîtrisable.",
         "sha256": "b34be3463258ab375c19747720598d213b1184b6bed71f911fd067bd123347c3",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3202,7 +3874,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Proposition puis validation décrit un fonctionnement en deux temps : l’outil prépare une valeur, un texte ou une action à partir d’une règle, puis une personne l’accepte, la corrige ou la refuse avant qu’elle ne produise un effet. Ce que la personne saisit ou corrige n’est jamais réécrit ensuite par l’outil.",
         "sha256": "08b4932c54da12dd4c50b0232db3ab6d940d0ea995edca1cd82811f19efaa967",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3232,7 +3904,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un jeu d’essai fictif est un ensemble de données entièrement inventées, plausibles, construites pour couvrir un cas courant, un cas limite et un cas de refus, utilisé pour construire et éprouver un traitement sans jamais exposer de dossier réel. Il se distingue de données anonymisées ou pseudonymisées, qui proviennent toujours de personnes réelles.",
         "sha256": "34921b975d981e6672063b19d9dff280ef814393071f1deff4dab2efe6e29dbb",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3382,7 +4054,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "La pré-comptabilité regroupe ici la collecte et le tri des pièces, leur lecture, l’extraction des champs et la préparation de propositions comptables, sans imputation définitive ni écriture validée. Les propositions sont présentées au cabinet pour contrôle.",
         "sha256": "549fc46b249af83eeeba46ad499b0c1462830e6427887a5fa76c5162ff10a73a",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3397,7 +4069,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "La complétude d’un dossier désigne l’état dans lequel toutes les pièces attendues pour une période donnée ont été reçues et sont lisibles, selon une liste définie à l’avance pour ce dossier. Elle se constate pièce par pièce, jamais par une impression générale que « le client a envoyé quelque chose ».",
         "sha256": "fa008e7bb0c97e1525e4015e0f22c9e9dc99128d3614f59913d48d3d471d95a5",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3412,7 +4084,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "La relance de pièces est la demande, adressée à un client selon une cadence définie à l’avance, des pièces manquantes pour compléter un dossier ; elle s’arrête dès leur réception. Elle porte sur des documents attendus dans une mission en cours, jamais sur une somme due.",
         "sha256": "3bba2a0d062afc8d31f3fc4febeb81f79b1e560b2ecf37a9a909f6ba75bd4a77",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3502,7 +4174,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Le reliquat d’exceptions est la part des occurrences qu’un traitement automatisé n’a pas su trancher et qu’il remonte à un collaborateur : cas hors règle, pièce illisible, écart inexpliqué. Il se compte à chaque passage et se suit dans le temps comme une charge de travail attendue.",
         "sha256": "0b6037679c7fb8707ee2d15f21ce5eb5b63c867ccae4d54c8f2b6857ecb79311",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3517,7 +4189,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Un seuil d’alerte est la valeur à partir de laquelle un écart cesse d’être ignoré et remonte pour examen : un montant, un pourcentage, un nombre de jours. Il est fixé par le cabinet et révisé par lui ; l’outil l’applique sans jamais le déduire des données.",
         "sha256": "04bbb8c42517a77373afda02502e1688a0a6ef97a576173879c86caa70f36d23",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3607,7 +4279,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Une clé de rapprochement est le champ, ou la combinaison de champs, qui permet d’affirmer que deux lignes venues de sources différentes désignent le même objet : un numéro de dossier, un identifiant de pièce, un montant associé à une date. Elle doit être stable et non ambiguë.",
         "sha256": "9ab553abee153f84eb06545ed910e74648c258a759fd419115cf3090e0979d94",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3622,7 +4294,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : un fichier accepté techniquement reste soumis à la revue de paie du cabinet.",
         "sha256": "fb32a084fc2aaddb38ba9b411e56bc77c48bf86c485227a6d7f0e33a6f30fc3d",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3637,7 +4309,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : la recherche des primes oubliées relève de la revue du bulletin, distincte du test DSN-Val.",
         "sha256": "79124f07e103528272a1e8e80fb96fac0ae9f912bd93e7b99fb28725f84e2e4d",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3652,7 +4324,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : même sans anomalie visible dans un retour, le cabinet conserve sa revue de paie.",
         "sha256": "5501e088db7b2a8b8a6f99eeb9aa5fd04442164687056363e87977c796ceee31",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3787,7 +4459,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : le suivi retient l’état du dossier, pas l’enregistrement de chaque geste individuel.",
         "sha256": "222d059682b72d7bf0e3943272e101e4715f5ff63d580c1568836c88a79c9935",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3817,7 +4489,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : nous réservons le mot « anonyme » à un résultat dont les possibilités de réidentification ont été examinées.",
         "sha256": "01e2938e867c247059b0df5f21dcb906616302f3422a997bf4313d8dcacfdd15",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3922,7 +4594,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : nous ne déclarons jamais un export anonyme ou conforme au seul motif que ses lignes sont regroupées.",
         "sha256": "26f1e6c921c980f01230d0330015443b1d0332a011a1c8df0c69d891f0ffe9db",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -3937,7 +4609,7 @@
         "sourceId": "source-glossary-memlia",
         "text": "Convention Memlia : un simple retard ne doit pas déclencher automatiquement un envoi.",
         "sha256": "8c8530126b2b75514260098e4107c50cb03e764b282c89231b723c0499e4b03a",
-        "sourceContentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "finalUrl": "file://src/data/glossary.ts",
         "checkedAt": "2026-09-16T20:24:14+01:00",
         "title": "Vocabulaire et contrats Memlia",
@@ -4108,6 +4780,366 @@
         "title": "RFC 4180: Common Format and MIME Type for Comma-Separated Values (CSV) Files",
         "locator": "export-logiciel-et-import-csv:commonConfusion",
         "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.definition.1.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.definition.1.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.definition.2.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.definition.2.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.definition.3.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.definition.3.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.context.1.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.context.1.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.context.2.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.context.2.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.context.3.editorial",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.context.3.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.",
+        "sha256": "c16a90e9a74d591daa838bc1ed19d71533fdc20fb9c61b74db4676273b5ac459",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "lettre-de-mission:context",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.exampleFictitious.1.editorial",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.exampleFictitious.1.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Dans un cabinet fictif, un tableau signale que le document contractuel d’un dossier fictif reste à examiner. Un brouillon rassemble le périmètre proposé et les questions ouvertes. Le professionnel vérifie les clauses avec le client avant la conclusion du contrat ; le tableau ne crée aucun accord.",
+        "sha256": "029b822c2c2e9d275ae8c5427495b1d6e5a05899c07247e05520ff8a2f7f9a2a",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "lettre-de-mission:exampleFictitious",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.commonConfusion.1.editorial",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.commonConfusion.1.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission.",
+        "sha256": "f4c1eb736ac89547a6750dba133415fa0a2fe6799cf40872149c4c69b84d60c0",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "lettre-de-mission:commonConfusion",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.commonConfusion.2.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.commonConfusion.2.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.commonConfusion.3.mission-all",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.commonConfusion.3.mission-all"
+        ],
+        "sourceId": "source-ec-legi-mission",
+        "text": "## Article 151\n\nVersion en vigueur depuis le 01/01/2023Version en vigueur depuis le 01 janvier 2023\n\n[Modifié par Décret n°2022-1732 du 30 décembre 2022 - art. 2](https://www.legifrance.gouv.fr/loda/id/LEGIARTI000046853788/2023-01-01)\n\nLes personnes mentionnées à l'article 141 passent avec leur client ou adhérent un contrat écrit définissant leur mission et précisant les droits et obligations de chacune des parties.\n\nCe contrat fait référence aux règles professionnelles définies par le conseil national de l'ordre dans les conditions prévues au 3° de l'article 29.\n\nCe contrat, qui peut prendre la forme d'une lettre de mission, fait état, le cas échéant, du mandat confié au professionnel par son client ou adhérent. L'étendue de ce mandat, qui s'exerce dans la limite des prérogatives éventuellement réservées à d'autres professions, est précisée dans la lettre de mission. La durée du mandat peut également y être mentionnée. A défaut, et sauf dénonciation du mandat, elle est réputée correspondre à la durée pour laquelle la lettre de mission est signée.\n\nEn application de l' [article 22 de l'ordonnance du 19 septembre 1945 susvisée](https://www.legifrance.gouv.fr/affichTexteArticle.do?cidTexte=JORFTEXT000000698851&idArticle=LEGIARTI000006912812&dateTexte=&categorieLien=cid), le mandat implicite autorise le professionnel de l'expertise comptable, personne physique, inscrit au tableau de l'ordre à effectuer des démarches auprès :\n\na) Des organismes de sécurité sociale dans les conditions prévues aux articles [R. 133-43](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877087&dateTexte=&categorieLien=cid) et [R. 133-44](https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000006073189&idArticle=LEGIARTI000037877089&dateTexte=&categorieLien=cid) du code de la sécurité sociale ;\n\nb) De l'administration fiscale. S'agissant des déclarations fiscales, le mandat implicite vise également à conclure avec l'administration un contrat d'adhésion à une téléprocédure ainsi qu'à choisir et à mandater un partenaire, au sens de l'article 344 I quater de l'annexe III au code général des impôts, en matière de télétransmission de déclarations fiscales.\n\nEn dehors des hypothèses de présomption simple de mandat mentionnées à l'alinéa précédent, le mandat régulièrement consenti doit pouvoir être présenté par le professionnel à toute personne à qui il est opposé et qui en fait la demande.",
+        "sha256": "e20be062dba2d8d4047fed5d5cce264c0a4cdbf56d7a966500e1bfa3755bf45e",
+        "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "locator": "mission-all",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-lettre-de-mission.automationBoundary.1.editorial",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.automationBoundary.1.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Recenser les documents, signaler un élément absent et préparer un brouillon sont automatisables. Définir le périmètre, examiner les clauses, convenir des droits et obligations et conclure le contrat restent des actes humains. Aucune clause saisie ou validée n’est remplacée silencieusement par une proposition.",
+        "sha256": "9d024379c2ac5f0b9ea6dbef1c47205aab3ba06e275ac99a4e43e2d7162de50a",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "lettre-de-mission:automationBoundary",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition"
+        ],
+        "sourceId": "source-ec-dgfip-definition",
+        "text": "Non, l’ [article 289 bis du CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635) définit la facture électronique comme :\n\n1. **une facture émise, transmise et reçue sous une forme dématérialisée ;**\n2. **qui comporte nécessairement un socle minimum de données sous forme structurée, ce qui la différencie des factures « papier » ou du PDF ordinaire ;**\n3. **adressée au client par l’intermédiaire d’une plateforme agréée.**\n\n**La facture de type image PDF (facture numérisée ou PDF générée à partir d’un outil bureautique) envoyée par mail n'est pas une facture électronique.**\n\nLes factures adressées à vos clients professionnels (transactions « business to business » ou B2B) seront obligatoirement transmises par l’intermédiaire d’une [plateforme agréée](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). Elle se chargera de l’envoi effectif des factures électroniques à la plateforme de votre client professionnel. Vous n’adresserez donc plus directement les factures à vos clients professionnels.\n\nLes factures de vos fournisseurs vous parviendront elles aussi sous forme électronique par le biais de la (ou les) plateforme(s) que vous aurez choisie(s). Cette plateforme peut être la même que celle de votre fournisseur, ou distincte. Toute entreprise est libre de choisir la ou les plateforme(s) agréée(s) de son choix.",
+        "sha256": "72796e611060c95caf34d3adb53690179aafd80126848a2398a76edfe32b83e1",
+        "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "locator": "invoice-definition",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition"
+        ],
+        "sourceId": "source-ec-dgfip-definition",
+        "text": "Non, l’ [article 289 bis du CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635) définit la facture électronique comme :\n\n1. **une facture émise, transmise et reçue sous une forme dématérialisée ;**\n2. **qui comporte nécessairement un socle minimum de données sous forme structurée, ce qui la différencie des factures « papier » ou du PDF ordinaire ;**\n3. **adressée au client par l’intermédiaire d’une plateforme agréée.**\n\n**La facture de type image PDF (facture numérisée ou PDF générée à partir d’un outil bureautique) envoyée par mail n'est pas une facture électronique.**\n\nLes factures adressées à vos clients professionnels (transactions « business to business » ou B2B) seront obligatoirement transmises par l’intermédiaire d’une [plateforme agréée](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). Elle se chargera de l’envoi effectif des factures électroniques à la plateforme de votre client professionnel. Vous n’adresserez donc plus directement les factures à vos clients professionnels.\n\nLes factures de vos fournisseurs vous parviendront elles aussi sous forme électronique par le biais de la (ou les) plateforme(s) que vous aurez choisie(s). Cette plateforme peut être la même que celle de votre fournisseur, ou distincte. Toute entreprise est libre de choisir la ou les plateforme(s) agréée(s) de son choix.",
+        "sha256": "72796e611060c95caf34d3adb53690179aafd80126848a2398a76edfe32b83e1",
+        "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "locator": "invoice-definition",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition"
+        ],
+        "sourceId": "source-ec-dgfip-definition",
+        "text": "Non, l’ [article 289 bis du CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635) définit la facture électronique comme :\n\n1. **une facture émise, transmise et reçue sous une forme dématérialisée ;**\n2. **qui comporte nécessairement un socle minimum de données sous forme structurée, ce qui la différencie des factures « papier » ou du PDF ordinaire ;**\n3. **adressée au client par l’intermédiaire d’une plateforme agréée.**\n\n**La facture de type image PDF (facture numérisée ou PDF générée à partir d’un outil bureautique) envoyée par mail n'est pas une facture électronique.**\n\nLes factures adressées à vos clients professionnels (transactions « business to business » ou B2B) seront obligatoirement transmises par l’intermédiaire d’une [plateforme agréée](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). Elle se chargera de l’envoi effectif des factures électroniques à la plateforme de votre client professionnel. Vous n’adresserez donc plus directement les factures à vos clients professionnels.\n\nLes factures de vos fournisseurs vous parviendront elles aussi sous forme électronique par le biais de la (ou les) plateforme(s) que vous aurez choisie(s). Cette plateforme peut être la même que celle de votre fournisseur, ou distincte. Toute entreprise est libre de choisir la ou les plateforme(s) agréée(s) de son choix.",
+        "sha256": "72796e611060c95caf34d3adb53690179aafd80126848a2398a76edfe32b83e1",
+        "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "locator": "invoice-definition",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi"
+        ],
+        "sourceId": "source-ec-legi-cgi",
+        "text": "I. - Pour l'application de l'article 289 et par dérogation au VI du même article 289, l'émission, la transmission et la réception des factures relatives aux opérations mentionnées aux a et d du 1 du I dudit article 289 ainsi qu'aux acomptes s'y rapportant s'opèrent sous une forme électronique, selon des normes de facturation électronique définies par arrêté du ministre chargé du budget, lorsque l'émetteur de la facture et son destinataire sont des assujettis qui sont établis ou ont leur domicile ou leur résidence habituelle en France.\n\nL'émission, la transmission et la réception des factures électroniques s'effectuent en recourant à une plateforme agréée.\n\nLes conditions et modalités d'application du présent I sont fixées par décret en Conseil d'Etat.",
+        "sha256": "1328063f4621b2b23517c3d0692505759c9ddef64e96872a2681be375a5bd805",
+        "sourceContentSha256": "c6afe7621c13581ba850bf254ecdd9f3c603e312f367f302b964a2f578e98807",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053546660",
+        "checkedAt": "2026-10-11T16:09:31.146784+02:00",
+        "title": "Article 289 bis - Code général des impôts - Légifrance",
+        "locator": "invoice-cgi",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar"
+        ],
+        "sourceId": "source-ec-dgfip-calendrier",
+        "text": "La mise en œuvre de la facturation électronique et la transmission des données de transaction et de paiement à l’administration (e-reporting) interviendra de manière progressive. Les obligations de facturation électronique et d’e-reporting se déploieront **en deux étapes, et selon le critère de la taille des entreprises.**\n\n**À compter du 1er septembre 2026, toutes les entreprises** quelle que soit leur taille ( [article 51 de la loi du 4 août 2008 de modernisation de l’économie (LME)](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000019285059)) devront **recevoir leurs factures** sous forme électronique, dès lors que leur fournisseur a l’obligation de les émettre sous ce format.\n\nÀ cette date, les grandes entreprises et les entreprises de taille intermédiaire seront tenues d’émettre leurs factures sous format électronique et de transmettre électroniquement à l’administration leurs informations de transactions et leurs données de paiement.\n\n**À compter du 1er septembre 2027**, l’obligation d’émission des factures sous format électronique et de transmission électronique à l’administration d’informations de transactions et de données de paiement sera **obligatoire pour les petites et moyennes entreprises** ainsi que pour **les micro-entreprises**.",
+        "sha256": "7729a82046324c75b7f62c8da628854c6f60e7d8a36f79bafae5bea6599cc891",
+        "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "title": "À partir de quand suis-je concerné par la réforme de la facturation électronique ? | impots.gouv.fr",
+        "locator": "invoice-calendar",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting"
+        ],
+        "sourceId": "source-ec-dgfip-perimetre",
+        "text": "### Qu’est-ce que la réforme ?\n\nLe périmètre de la réforme comporte **trois volets** différents liés à la nature des clients et des opérations que vous réalisez :\n\n1. **La facturation électronique**: elle concerne toutes les opérations d’achats et de ventes de biens et/ou de prestations de services réalisées entre les entreprises établies en France et assujetties à la TVA française, y compris les entreprises bénéficiant du régime de la franchise en base. À partir de cette facture électronique, des données seront transmises à l’administration (directement par la plateforme gérant la transmission de la facture).\n2. **La transmission électronique à l’administration des données des transactions (ou e-reporting de transaction)** : elle concerne les opérations de ventes et/ou de prestations de service avec des personnes non assujetties par exemple des particuliers, ou des transactions avec des opérateurs établis à l’étranger (exportations, acquisitions et livraisons intracommunautaires…).\n3. **La transmission électronique à l’administration des données de paiement ou données d’encaissement (ou e-reporting de paiement)** : elle concerne les opérations dont la TVA est exigible à l’encaissement, par exemple les prestations de services, quand l’entreprise n’a pas opté pour le paiement de la TVA sur les débits ou que l’opération ne donne pas lieu à autoliquidation (prestations dans le bâtiment par exemple). Il s’agit du montant encaissé par l’entreprise servant à déterminer la TVA collectée exigible à déclarer à l’administration.\n\nPour plus d’information sur les e-reporting, rendez-vous dans la rubrique « [J’approfondis mes connaissances sur la réforme](https://www.impots.gouv.fr/japprofondis-mes-connaissances-sur-la-reforme)».",
+        "sha256": "2d4a08383b59a8782eb0cab0c6bbf4dd98f261d4254b8541e365cfa821d7b9f3",
+        "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique",
+        "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+        "title": "Je découvre la facturation électronique |impots.gouv.fr",
+        "locator": "invoice-reporting",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Une petite entreprise fictive reçoit une facture structurée par sa plateforme en octobre 2026.",
+        "sha256": "7f6c437bf48baa1d3b2eb9752df7e48bd065d6957e414b5eec1faccfdef0457e",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "facture-electronique-et-plateforme-agreee:exampleFictitious",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar"
+        ],
+        "sourceId": "source-ec-dgfip-calendrier",
+        "text": "La mise en œuvre de la facturation électronique et la transmission des données de transaction et de paiement à l’administration (e-reporting) interviendra de manière progressive. Les obligations de facturation électronique et d’e-reporting se déploieront **en deux étapes, et selon le critère de la taille des entreprises.**\n\n**À compter du 1er septembre 2026, toutes les entreprises** quelle que soit leur taille ( [article 51 de la loi du 4 août 2008 de modernisation de l’économie (LME)](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000019285059)) devront **recevoir leurs factures** sous forme électronique, dès lors que leur fournisseur a l’obligation de les émettre sous ce format.\n\nÀ cette date, les grandes entreprises et les entreprises de taille intermédiaire seront tenues d’émettre leurs factures sous format électronique et de transmettre électroniquement à l’administration leurs informations de transactions et leurs données de paiement.\n\n**À compter du 1er septembre 2027**, l’obligation d’émission des factures sous format électronique et de transmission électronique à l’administration d’informations de transactions et de données de paiement sera **obligatoire pour les petites et moyennes entreprises** ainsi que pour **les micro-entreprises**.",
+        "sha256": "7729a82046324c75b7f62c8da628854c6f60e7d8a36f79bafae5bea6599cc891",
+        "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "title": "À partir de quand suis-je concerné par la réforme de la facturation électronique ? | impots.gouv.fr",
+        "locator": "invoice-calendar",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition"
+        ],
+        "sourceId": "source-ec-dgfip-definition",
+        "text": "Non, l’ [article 289 bis du CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635) définit la facture électronique comme :\n\n1. **une facture émise, transmise et reçue sous une forme dématérialisée ;**\n2. **qui comporte nécessairement un socle minimum de données sous forme structurée, ce qui la différencie des factures « papier » ou du PDF ordinaire ;**\n3. **adressée au client par l’intermédiaire d’une plateforme agréée.**\n\n**La facture de type image PDF (facture numérisée ou PDF générée à partir d’un outil bureautique) envoyée par mail n'est pas une facture électronique.**\n\nLes factures adressées à vos clients professionnels (transactions « business to business » ou B2B) seront obligatoirement transmises par l’intermédiaire d’une [plateforme agréée](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). Elle se chargera de l’envoi effectif des factures électroniques à la plateforme de votre client professionnel. Vous n’adresserez donc plus directement les factures à vos clients professionnels.\n\nLes factures de vos fournisseurs vous parviendront elles aussi sous forme électronique par le biais de la (ou les) plateforme(s) que vous aurez choisie(s). Cette plateforme peut être la même que celle de votre fournisseur, ou distincte. Toute entreprise est libre de choisir la ou les plateforme(s) agréée(s) de son choix.",
+        "sha256": "72796e611060c95caf34d3adb53690179aafd80126848a2398a76edfe32b83e1",
+        "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "locator": "invoice-definition",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition"
+        ],
+        "sourceId": "source-ec-dgfip-definition",
+        "text": "Non, l’ [article 289 bis du CGI](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000046195635) définit la facture électronique comme :\n\n1. **une facture émise, transmise et reçue sous une forme dématérialisée ;**\n2. **qui comporte nécessairement un socle minimum de données sous forme structurée, ce qui la différencie des factures « papier » ou du PDF ordinaire ;**\n3. **adressée au client par l’intermédiaire d’une plateforme agréée.**\n\n**La facture de type image PDF (facture numérisée ou PDF générée à partir d’un outil bureautique) envoyée par mail n'est pas une facture électronique.**\n\nLes factures adressées à vos clients professionnels (transactions « business to business » ou B2B) seront obligatoirement transmises par l’intermédiaire d’une [plateforme agréée](https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees). Elle se chargera de l’envoi effectif des factures électroniques à la plateforme de votre client professionnel. Vous n’adresserez donc plus directement les factures à vos clients professionnels.\n\nLes factures de vos fournisseurs vous parviendront elles aussi sous forme électronique par le biais de la (ou les) plateforme(s) que vous aurez choisie(s). Cette plateforme peut être la même que celle de votre fournisseur, ou distincte. Toute entreprise est libre de choisir la ou les plateforme(s) agréée(s) de son choix.",
+        "sha256": "72796e611060c95caf34d3adb53690179aafd80126848a2398a76edfe32b83e1",
+        "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "locator": "invoice-definition",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format"
+        ],
+        "sourceId": "source-ec-dgfip-perimetre",
+        "text": "### Qu’est-ce-qu’une facture électronique ?\n\nUne facture électronique devra :\n\n- respecter un format donné (UBL, CII ou tout format mixte composé d’un fichier de données structurées et d’un fichier image) ;\n- comporter les mentions obligatoires d’une facture sous un format donné dans un champ dédié (par exemple le numéro de SIREN du fournisseur et du client, la date d’émission de la facture, l’adresse complète de livraison du bien ou du service si différente de l’adresse du client, …) ;\n- être transmise au client par l’intermédiaire d’une plateforme agréée, partenaire de l’administration.\n\nPar conséquent, la facturation électronique, comme on peut l’entendre aujourd’hui, sous la forme de **facture « papier » scannée, de PDF ordinaire, de document envoyé par mail, ne sera plus conforme à la réglementation.**",
+        "sha256": "2993d1464668eb0535a619d0f67b3203edb43274db1427eae3c63b5815753c0c",
+        "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique",
+        "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+        "title": "Je découvre la facturation électronique |impots.gouv.fr",
+        "locator": "invoice-format",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar"
+        ],
+        "sourceId": "source-ec-dgfip-calendrier",
+        "text": "La mise en œuvre de la facturation électronique et la transmission des données de transaction et de paiement à l’administration (e-reporting) interviendra de manière progressive. Les obligations de facturation électronique et d’e-reporting se déploieront **en deux étapes, et selon le critère de la taille des entreprises.**\n\n**À compter du 1er septembre 2026, toutes les entreprises** quelle que soit leur taille ( [article 51 de la loi du 4 août 2008 de modernisation de l’économie (LME)](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000019285059)) devront **recevoir leurs factures** sous forme électronique, dès lors que leur fournisseur a l’obligation de les émettre sous ce format.\n\nÀ cette date, les grandes entreprises et les entreprises de taille intermédiaire seront tenues d’émettre leurs factures sous format électronique et de transmettre électroniquement à l’administration leurs informations de transactions et leurs données de paiement.\n\n**À compter du 1er septembre 2027**, l’obligation d’émission des factures sous format électronique et de transmission électronique à l’administration d’informations de transactions et de données de paiement sera **obligatoire pour les petites et moyennes entreprises** ainsi que pour **les micro-entreprises**.",
+        "sha256": "7729a82046324c75b7f62c8da628854c6f60e7d8a36f79bafae5bea6599cc891",
+        "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "title": "À partir de quand suis-je concerné par la réforme de la facturation électronique ? | impots.gouv.fr",
+        "locator": "invoice-calendar",
+        "verdict": "soutient"
+      },
+      {
+        "id": "citation-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial"
+        ],
+        "sourceId": "source-glossary-memlia",
+        "text": "Rassembler les données, contrôler les champs attendus et préparer une proposition de traitement sont automatisables. Qualifier l’opération, vérifier la catégorie de l’entreprise, choisir la plateforme, valider les données fiscales et autoriser une transmission engageante restent humains. La lecture d’une pièce ne vaut ni agrément de plateforme ni validation fiscale.",
+        "sha256": "e1589f16574c984f99391c85f54a14c885989e0220784b156b75540f9cd22c72",
+        "sourceContentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
+        "finalUrl": "file://src/data/glossary.ts",
+        "checkedAt": "2026-09-16T20:24:14+01:00",
+        "title": "Vocabulaire et contrats Memlia",
+        "locator": "facture-electronique-et-plateforme-agreee:automationBoundary",
+        "verdict": "soutient"
       }
     ],
     "sources": [
@@ -4200,7 +5232,7 @@
         "official": false,
         "upstreamUrl": "file://src/data/glossary.ts",
         "snapshotPath": "src/data/glossary.ts",
-        "contentSha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53",
+        "contentSha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272",
         "verificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#verification-des-sources",
         "classificationEvidenceRef": "docs/qa/hub-ressources/metier-fix-a.md#classification-des-sources",
         "claimIds": [
@@ -4236,7 +5268,13 @@
           "claim-t-minimisation-des-donnees-context",
           "claim-t-anonymisation-context",
           "claim-t-agregat-non-nominatif-commonConfusion",
-          "claim-t-recouvrement-amiable-commonConfusion-doctrine"
+          "claim-t-recouvrement-amiable-commonConfusion-doctrine",
+          "claim-t-ec-lettre-de-mission.context.3.editorial",
+          "claim-t-ec-lettre-de-mission.exampleFictitious.1.editorial",
+          "claim-t-ec-lettre-de-mission.commonConfusion.1.editorial",
+          "claim-t-ec-lettre-de-mission.automationBoundary.1.editorial",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.1.editorial",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.automationBoundary.1.editorial"
         ]
       },
       {
@@ -4691,6 +5729,114 @@
           "claim-t-sous-traitant-rgpd-context",
           "claim-t-sous-traitant-rgpd-commonConfusion"
         ]
+      },
+      {
+        "id": "source-ec-legi-mission",
+        "publisher": "Légifrance",
+        "title": "Article 151 - Décret n° 2012-432 du 30 mars 2012 relatif à l'exercice de l'activité d'expertise comptable - Légifrance",
+        "requestedUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+        "snapshotPath": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/legi-mission.md",
+        "contentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+        "verificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#réserves-a4--disponibilité-réellement-constatée",
+        "classificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#livrable-et-usage",
+        "claimIds": [
+          "claim-t-ec-lettre-de-mission.definition.1.mission-all",
+          "claim-t-ec-lettre-de-mission.definition.2.mission-all",
+          "claim-t-ec-lettre-de-mission.definition.3.mission-all",
+          "claim-t-ec-lettre-de-mission.context.1.mission-all",
+          "claim-t-ec-lettre-de-mission.context.2.mission-all",
+          "claim-t-ec-lettre-de-mission.commonConfusion.2.mission-all",
+          "claim-t-ec-lettre-de-mission.commonConfusion.3.mission-all"
+        ]
+      },
+      {
+        "id": "source-ec-dgfip-definition",
+        "publisher": "DGFiP",
+        "title": "Est-ce qu’une facture envoyée par mail est une facture électronique ? | impots.gouv.fr",
+        "requestedUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "checkedAt": "2026-10-11T16:09:31.340157+02:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique",
+        "snapshotPath": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-definition.md",
+        "contentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+        "verificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#réserves-a4--disponibilité-réellement-constatée",
+        "classificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#livrable-et-usage",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition"
+        ]
+      },
+      {
+        "id": "source-ec-legi-cgi",
+        "publisher": "Légifrance",
+        "title": "Article 289 bis - Code général des impôts - Légifrance",
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053546660",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053546660",
+        "checkedAt": "2026-10-11T16:09:31.146784+02:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053546660",
+        "snapshotPath": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/legi-cgi.md",
+        "contentSha256": "c6afe7621c13581ba850bf254ecdd9f3c603e312f367f302b964a2f578e98807",
+        "verificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#réserves-a4--disponibilité-réellement-constatée",
+        "classificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#livrable-et-usage",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi"
+        ]
+      },
+      {
+        "id": "source-ec-dgfip-calendrier",
+        "publisher": "DGFiP",
+        "title": "À partir de quand suis-je concerné par la réforme de la facturation électronique ? | impots.gouv.fr",
+        "requestedUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "checkedAt": "2026-10-11T16:09:31.637924+02:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation",
+        "snapshotPath": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-calendrier.md",
+        "contentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+        "verificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#réserves-a4--disponibilité-réellement-constatée",
+        "classificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#livrable-et-usage",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar"
+        ]
+      },
+      {
+        "id": "source-ec-dgfip-perimetre",
+        "publisher": "DGFiP",
+        "title": "Je découvre la facturation électronique |impots.gouv.fr",
+        "requestedUrl": "https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique",
+        "finalUrl": "https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique",
+        "checkedAt": "2026-10-11T16:09:31.921434+02:00",
+        "level": "tier-1",
+        "provenance": "primary",
+        "official": true,
+        "upstreamUrl": "https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique",
+        "snapshotPath": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-perimetre.md",
+        "contentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+        "verificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#réserves-a4--disponibilité-réellement-constatée",
+        "classificationEvidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/README.md#livrable-et-usage",
+        "claimIds": [
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting",
+          "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format"
+        ]
       }
     ],
     "requiredRelations": [
@@ -4721,19 +5867,19 @@
         "dsn",
         "legal-reglementaire"
       ],
-      "checkedAt": "2026-10-04T02:49:45.632Z",
+      "checkedAt": "2026-10-11T16:44:37.544784+02:00",
       "businessReview": {
         "required": true,
         "reviewerType": "ai-agent",
         "reviewerProfile": "metier",
-        "reviewerId": "t_4caa8d82",
+        "reviewerId": "t_79043fac",
         "reviewerRole": "reviewer-metier-memlia",
         "distinctFrom": [
           "author",
           "editorialReviewer",
           "sourceClassifier"
         ],
-        "reviewedCandidateHash": "2e545642720b08e425b8a2c92ec495d94dc78953590d2c44150c2fb2eb214fae",
+        "reviewedCandidateHash": "6d32159e469968364d80906a4cf671a70d8956d690d7927055a2ff890ab6d85e",
         "status": "AI_REVIEW_PASS",
         "claimSourceVerdicts": [
           {
@@ -5044,10 +6190,208 @@
             "sourceContentSha256": "fc641877386afdfb47162e2160c7facdc26811a982959d8e910cc9c9186bc70d",
             "checkedAt": "2026-09-16T21:00:59+01:00",
             "reasoning": "Source rouverte par curl (HTTP 200) ; la citation (définition de l'anonymisation) est retrouvée mot pour mot. La distinction avec un jeu d'essai fictif, qui n'a jamais correspondu à une personne réelle, découle logiquement de cette définition, qui suppose un traitement appliqué à des données réelles ; applicability précise que le caractère inventé du jeu d'essai est une convention Memlia, non une notion CNIL."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.definition.1.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.definition.1.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Article 151, troisième alinéa : le contrat écrit peut prendre la forme d’une lettre de mission. Population expressément expertise comptable/client ou adhérent, sans transposition au mandat du CAC."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.definition.2.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.definition.2.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Premier alinéa de l’article 151 : contrat écrit définissant la mission et précisant droits et obligations de chaque partie. La définition restitue le contenu requis, sans prétendre qu’un suivi logiciel crée l’accord."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.definition.3.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.definition.3.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Deuxième et troisième alinéas de l’article 151 : référence aux règles professionnelles et indication du mandat le cas échéant. La condition « le cas échéant » est conservée ; aucun mandat universel n’est inventé."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.context.1.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.context.1.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Premier et troisième alinéas de l’article 151 : contrat écrit requis, forme lettre de mission possible. Distinction exacte entre obligation de contrat et faculté de forme ou d’intitulé."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.context.2.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.context.2.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "La page officielle donne la version depuis le 1er janvier 2023 ; son troisième alinéa impose de préciser l’étendue du mandat dans la lettre. Le champ complet et la définition gardent la condition d’existence du mandat."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.commonConfusion.2.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.commonConfusion.2.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Article 151 emploie contrat écrit et peut prendre la forme d’une lettre. Obligation de fond et faculté de forme sont restituées sans changement de polarité."
+          },
+          {
+            "claimId": "claim-t-ec-lettre-de-mission.commonConfusion.3.mission-all",
+            "sourceId": "source-ec-legi-mission",
+            "citationIds": [
+              "citation-t-ec-lettre-de-mission.commonConfusion.3.mission-all"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Conséquence exacte du caractère facultatif de la forme indiqué par article 151. Le glossaire ne transforme pas le titre du document en condition réglementaire universelle."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition",
+            "sourceId": "source-ec-dgfip-definition",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.1.invoice-definition"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "FAQ DGFiP modifiée le 16 janvier 2026 : trois étapes dématérialisées et socle minimum de données structurées. L’ouverture du 11 octobre ne change pas la date éditoriale de la source."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition",
+            "sourceId": "source-ec-dgfip-definition",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.2.invoice-definition"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "La FAQ précise l’intermédiation et l’envoi effectif à la plateforme du destinataire. Je découvre la facturation électronique précise l’immatriculation par l’État ; l’agrément appartient à la plateforme, pas à Memlia."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition",
+            "sourceId": "source-ec-dgfip-definition",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.definition.3.invoice-definition"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "La FAQ exclut le PDF image envoyé par mail ; le périmètre est complété par CGI 289 bis et DGFiP Je découvre. « Dans la réforme » et « entrant dans son périmètre » évitent de déclarer invalide tout PDF dans tout régime de facturation."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi",
+            "sourceId": "source-ec-legi-cgi",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.context.1.invoice-cgi"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "c6afe7621c13581ba850bf254ecdd9f3c603e312f367f302b964a2f578e98807",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "CGI 289 bis I, version depuis le 21 février 2026 : opérations visées, assujettis établis en France, recours à une plateforme agréée. La clause « opérations concernées » garde les exclusions des IV/V ; réexport A4 PR125 identique, corps concordant avec la page officielle, notes non assimilées au corps."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar",
+            "sourceId": "source-ec-dgfip-calendrier",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.context.2.invoice-calendar"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "FAQ calendrier DGFiP : réception pour toutes tailles au 1er septembre 2026, émission et e-reporting GE/ETI à cette date, PME/micro au 1er septembre 2027. Lu dans le champ opérations concernées et fournisseur soumis à émission ; aucune émission universelle en 2026 n’est annoncée."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting",
+            "sourceId": "source-ec-dgfip-perimetre",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.context.3.invoice-reporting"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "DGFiP Je découvre, trois volets : facturation domestique B2B, e-reporting transaction pour particuliers/étranger, e-reporting paiement selon exigibilité. Le candidat distingue les périmètres et n’attribue pas automatiquement les trois obligations à chaque opération."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar",
+            "sourceId": "source-ec-dgfip-calendrier",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.2.invoice-calendar"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "FAQ calendrier : petites entreprises et micro-entreprises passent à émission obligatoire en septembre 2027. L’exemple s’inscrit dans le périmètre déclaré de l’entrée et fait vérifier catégorie et opération ; il n’étend pas la règle à toutes ventes."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition",
+            "sourceId": "source-ec-dgfip-definition",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.exampleFictitious.3.invoice-definition"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "FAQ : PDF image envoyé par mail n’est pas une facture électronique au sens de la réforme. La vérification catégorie/opération/canal est une méthode de cabinet, non une validation de conformité par la réception seule."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition",
+            "sourceId": "source-ec-dgfip-definition",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.1.invoice-definition"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "La FAQ distingue expressément socle structuré, plateforme agréée et PDF ordinaire. Le candidat dit « ne suffit pas », sans disqualifier les formats mixtes reconnus."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format",
+            "sourceId": "source-ec-dgfip-perimetre",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.2.invoice-format"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "La DGFiP cite UBL, CII ou format mixte données structurées/fichier image. La présence d’un PDF ne suffit donc pas à classer le document ; aucune assimilation PDF ordinaire/format mixte conforme n’est faite."
+          },
+          {
+            "claimId": "claim-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar",
+            "sourceId": "source-ec-dgfip-calendrier",
+            "citationIds": [
+              "citation-t-ec-facture-electronique-et-plateforme-agreee.commonConfusion.3.invoice-calendar"
+            ],
+            "verdict": "soutient",
+            "sourceContentSha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31",
+            "checkedAt": "2026-10-11T16:44:37.544784+02:00",
+            "reasoning": "Le calendrier distingue réception toutes tailles en 2026 et émission PME/micro en 2027. La phrase combat précisément la confusion entre les deux obligations."
           }
         ],
-        "evidenceRef": "docs/qa/site-copy-b/preuve-glossaire-metier.json",
-        "evidenceSha256": "d518947dbb3b1f4769f396b868ddfcdef0097b6df217ed29952cfc1f108c5c2d"
+        "evidenceRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/review/business-review-global.json",
+        "evidenceSha256": "8b87c10f02a5e20e002a371a9492129e48bfc93791f39d893ac9afb898c34ff0"
       }
     }
   },
@@ -5302,7 +6646,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5323,7 +6667,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5407,7 +6751,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5470,7 +6814,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5892,7 +7236,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5976,7 +7320,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -5997,7 +7341,7 @@
         "status": "RUN",
         "result": "PASS",
         "toolOrCommand": "npm run build:site",
-        "checkedAt": "2026-10-10T20:27:35.072Z",
+        "checkedAt": "2026-10-11T15:11:59.411Z",
         "version": "candidat-v3-t_54774b16",
         "evidenceRefs": [
           "docs/qa/hub-ressources/freshness-r4-exec.md"
@@ -6810,7 +8154,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-10-10T20:27:35.072Z",
+      "checkedAt": "2026-10-11T15:11:59.411Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6835,7 +8179,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-10-10T20:27:35.072Z",
+      "checkedAt": "2026-10-11T15:11:59.411Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6858,7 +8202,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-10-10T20:27:35.072Z",
+      "checkedAt": "2026-10-11T15:11:59.411Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6883,7 +8227,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-10-10T20:27:35.072Z",
+      "checkedAt": "2026-10-11T15:11:59.411Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -6906,7 +8250,7 @@
       ],
       "status": "PASS",
       "result": "PASS",
-      "checkedAt": "2026-10-10T20:27:35.072Z",
+      "checkedAt": "2026-10-11T15:11:59.411Z",
       "evidenceRefs": [
         "docs/qa/hub-ressources/freshness-r4-exec.md"
       ]
@@ -7199,22 +8543,47 @@
           "sha256": "e0087456bdeba9c77f7fb4f5647a44037de911996e53e25697ddfa3518bf7a5a"
         },
         {
+          "path": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-calendrier.md",
+          "bytes": 5541,
+          "sha256": "fbcb88676572ecd47c9c3f718423a0259744c44d0da1922220b0c8d69ee0df31"
+        },
+        {
+          "path": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-definition.md",
+          "bytes": 5662,
+          "sha256": "42b83c74207da8c0886b6d68f797ca02262080ef7d93e7120aaaf398e50a031e"
+        },
+        {
+          "path": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/dgfip-perimetre.md",
+          "bytes": 8648,
+          "sha256": "fed6712ef475abd0c44243de1b895dea1fa9edb5651b3c2f66d7cec28a9877f2"
+        },
+        {
+          "path": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/legi-cgi.md",
+          "bytes": 9400,
+          "sha256": "c6afe7621c13581ba850bf254ecdd9f3c603e312f367f302b964a2f578e98807"
+        },
+        {
+          "path": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/legi-mission.md",
+          "bytes": 39798,
+          "sha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12"
+        },
+        {
           "path": "src/data/glossary.ts",
-          "bytes": 97525,
-          "sha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53"
+          "bytes": 104261,
+          "sha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272"
         }
       ],
-      "digest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2"
+      "digest": "cacf97035e9e4d49e7809c9b0816fbefaa820d091da8c1ede8e459603ceefac2"
     },
     "assetBundle": {
       "entries": [
         {
           "path": "src/data/glossary.ts",
-          "bytes": 97525,
-          "sha256": "3e7abec2e71d6c16174738982c6b12134188ffdbbdfc49db253267bd4c74cc53"
+          "bytes": 104261,
+          "sha256": "246cb1edd4aa041e611f74625a85a5579ee6bb6664d7599764b065a099888272"
         }
       ],
-      "digest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c"
+      "digest": "d67773b372160ee213401ee539dec96269197985133efdd268f6934b05a94229"
     },
     "configBundle": {
       "entries": [
@@ -7224,9 +8593,14 @@
           "sha256": "63ef54814c12b7b364d1633b09e25b00ea6451526b08e5375693a51a0e1c2457"
         },
         {
+          "path": "scripts/lib/resource-metier-ec.mjs",
+          "bytes": 3252,
+          "sha256": "535c148c40e47ae4035fd8e7788444910afdd662c40f788530e61ccc8c644edb"
+        },
+        {
           "path": "scripts/lib/resource-metier-evidence.mjs",
-          "bytes": 41594,
-          "sha256": "56665e04643b05e65df9f9c9335ebde8cf87a14abf425222f5d1c05996026483"
+          "bytes": 41873,
+          "sha256": "9a114741f038b9a15978246ab6f639a57f1d3e64bfe2ed6982a2e41462f8b622"
         },
         {
           "path": "scripts/lib/resource-metier-v3.mjs",
@@ -7234,20 +8608,20 @@
           "sha256": "b6a68c9211aedb1905c0a7ddca5db2f52e79fb0b54cd916db4d804014abcf5ec"
         }
       ],
-      "digest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f"
+      "digest": "97bc6044f2a1147a5479204a8304171190e783d1fa91839033c45531856efe0e"
     },
     "buildOutput": {
       "entries": [
         {
           "path": "dist/glossaire.html",
-          "bytes": 324555,
-          "sha256": "c9f1d787f4bb07df75e0a4a69ed44ea4065827af7ae0ab162ed6c89c3bb248a2"
+          "bytes": 338880,
+          "sha256": "5c7552c870386da1f818b0995ced4d8ceffadc3b349589f9cf33dc7b7c99816a"
         }
       ],
-      "digest": "6a174caff97caf64006b35b79b07dbc5608e9b4dd158a236df0a96a2389f8839"
+      "digest": "43b8cb4f28d9967f2cbb35d244215e970e0a44b22e32e91d7d9610677b32e594"
     },
     "candidateHash": {
-      "value": "e0a00c7a5c10a23fed121b657e8179bba574adb4738c58a043a5ddfc716bd450",
+      "value": "0798839c73c2249fa1f879bc5a7207e7833ca838058210b408ea3bd9aceb29cf",
       "formula": "sha256(canonical-json({schemaVersion,contractRevision,formatAdapter,resourceType,editorialFormat,candidate,sourceBundle.digest,assetBundle.digest,configBundle.digest,buildOutput.digest}))"
     },
     "rule": "Entrées triées par chemin avec path, bytes, sha256; divergence invalide preview, audit et GO."
@@ -7259,18 +8633,18 @@
       "node scripts/strip-briefs.mjs",
       "node scripts/render-public-source-text.mjs"
     ],
-    "startedAt": "2026-10-10T20:27:19.200Z",
-    "endedAt": "2026-10-10T20:27:51.945Z",
+    "startedAt": "2026-10-11T15:11:44.454Z",
+    "endedAt": "2026-10-11T15:12:14.428Z",
     "result": "PASS",
-    "sourceBundleDigest": "a76a636d6e75fe03f1da48dd550f18116f41239683e29d53235220b25fd5fdc2",
-    "assetBundleDigest": "6c40c0ed25834122c7d2253243fce1558e6ae0a6f67ba669fab1e368749bbf4c",
-    "configBundleDigest": "3161d9ee45dc048a67320aa3b9b1508faf5bccba7a5864e0b3843422a33f463f",
-    "outputDigest": "6a174caff97caf64006b35b79b07dbc5608e9b4dd158a236df0a96a2389f8839",
+    "sourceBundleDigest": "cacf97035e9e4d49e7809c9b0816fbefaa820d091da8c1ede8e459603ceefac2",
+    "assetBundleDigest": "d67773b372160ee213401ee539dec96269197985133efdd268f6934b05a94229",
+    "configBundleDigest": "97bc6044f2a1147a5479204a8304171190e783d1fa91839033c45531856efe0e",
+    "outputDigest": "43b8cb4f28d9967f2cbb35d244215e970e0a44b22e32e91d7d9610677b32e594",
     "reportRefs": [
       "docs/qa/hub-ressources/freshness-r4-exec.md"
     ],
     "receiptRef": "docs/qa/hub-ressources/metier-fix-c-build-receipt.json",
-    "receiptSha256": "8209540b16bc5a094b2614a2ec34314b6f8bf47d0d70a20a211327b38caa2603"
+    "receiptSha256": "5eb4ae022aa1a30ac9b9991286a1c0be52b386e1b92072ffb4657c887cafaa1f"
   },
   "preview": {
     "branch": null,
@@ -7288,8 +8662,8 @@
     "reportRef": null
   },
   "audit": {
-    "candidateHash": "e0a00c7a5c10a23fed121b657e8179bba574adb4738c58a043a5ddfc716bd450",
-    "buildOutputDigest": "6a174caff97caf64006b35b79b07dbc5608e9b4dd158a236df0a96a2389f8839",
+    "candidateHash": "0798839c73c2249fa1f879bc5a7207e7833ca838058210b408ea3bd9aceb29cf",
+    "buildOutputDigest": "43b8cb4f28d9967f2cbb35d244215e970e0a44b22e32e91d7d9610677b32e594",
     "gateReportRefs": [
       "fixture://audit/gates"
     ],
@@ -7301,7 +8675,7 @@
     "p0": [],
     "p1": [],
     "result": "PASS",
-    "auditHash": "01af4816081d052bc82493b29ce6159c73523b7e2d69ccf53bccb13c3dfa5d4c"
+    "auditHash": "690bd72e85c45233bc011a32a71144749e7c92087bcf62f73b9b87c3fc6fe668"
   },
   "approval": {
     "state": "pending",

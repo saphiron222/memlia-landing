@@ -30,7 +30,7 @@ export interface GlossaryEntry {
   editorialReviewer: 'Équipe éditoriale Memlia';
   businessReviewer: null;
   reviewedAt: null;
-  sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19' | '2026-10-08';
+  sourceCheckedAt: '2026-09-14' | '2026-09-16' | '2026-09-19' | '2026-10-08' | '2026-10-11';
   nextReviewAt: '2026-12-13' | '2027-03-13';
   sourceIds: string[];
   /** Définition maison : le mot de la définition ou du contexte qui porte le lien de chaque source externe. */
@@ -40,6 +40,28 @@ export interface GlossaryEntry {
 }
 
 export const GLOSSARY_SOURCES: Record<string, GlossarySource> = {
+  'legi-mission': {
+    id: 'legi-mission', publisher: 'Légifrance', title: 'Article 151 du décret n° 2012-432 du 30 mars 2012',
+    url: 'https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378', checkedAt: '2026-10-11',
+  },
+  'legi-cgi': {
+    id: 'legi-cgi', publisher: 'Légifrance', title: 'CGI, article 289 bis, version depuis le 21 février 2026',
+    url: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053546660', checkedAt: '2026-10-11',
+  },
+  'dgfip-definition': {
+    id: 'dgfip-definition', publisher: 'DGFiP', title: 'Est-ce qu’une facture envoyée par mail est une facture électronique ?',
+    url: 'https://www.impots.gouv.fr/professionnel/questions/est-ce-quune-facture-envoyee-par-mail-est-une-facture-electronique', checkedAt: '2026-10-11',
+  },
+  'dgfip-perimetre': {
+    id: 'dgfip-perimetre', publisher: 'DGFiP', title: 'Je découvre la facturation électronique',
+    libelleCourt: 'périmètre de la réforme',
+    url: 'https://www.impots.gouv.fr/professionnel/je-decouvre-la-facturation-electronique', checkedAt: '2026-10-11',
+  },
+  'dgfip-calendrier': {
+    id: 'dgfip-calendrier', publisher: 'DGFiP', title: 'À partir de quand suis-je concerné par la réforme de la facturation électronique ?',
+    libelleCourt: 'calendrier de la réforme',
+    url: 'https://www.impots.gouv.fr/professionnel/questions/partir-de-quand-suis-je-concerne-par-la-reforme-de-la-facturation', checkedAt: '2026-10-11',
+  },
   'cnil-roles-rgpd': {
     id: 'cnil-roles-rgpd', publisher: 'CNIL',
     title: 'RGPD, article 4 : responsable de traitement et sous-traitant', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre1', checkedAt: '2026-10-04',
@@ -185,6 +207,28 @@ const common = {
 };
 
 export const GLOSSARY_ENTRIES = ([
+  {
+    ...common, id: 'lettre-de-mission', term: 'Lettre de mission', anchor: 'lettre-de-mission', nature: 'Réglementaire',
+    definition: 'La lettre de mission est une forme du contrat écrit conclu entre le professionnel de l’expertise comptable et son client ou adhérent. Ce contrat définit la mission et les droits et obligations des parties. Il fait référence aux règles professionnelles et précise, le cas échéant, le mandat confié au professionnel.',
+    context: 'L’article 151 du décret du 30 mars 2012 impose un contrat écrit et indique que ce contrat peut prendre la forme d’une lettre de mission. Dans la version consultée, en vigueur depuis le 1er janvier 2023, l’étendue du mandat est précisée dans la lettre. Le cabinet examine le périmètre contractuel avant de préparer un suivi ou une prestation supplémentaire.',
+    exampleFictitious: 'Dans un cabinet fictif, un tableau signale que le document contractuel d’un dossier fictif reste à examiner. Un brouillon rassemble le périmètre proposé et les questions ouvertes. Le professionnel vérifie les clauses avec le client avant la conclusion du contrat ; le tableau ne crée aucun accord.',
+    commonConfusion: 'Un devis ou un statut de suivi n’équivaut pas automatiquement au contrat écrit qui définit la mission. Le décret rend obligatoire ce contrat écrit ; il indique que celui-ci peut prendre la forme d’une lettre de mission. Ne pas transformer cette faculté de forme en obligation d’intitulé.',
+    automationBoundary: 'Recenser les documents, signaler un élément absent et préparer un brouillon sont automatisables. Définir le périmètre, examiner les clauses, convenir des droits et obligations et conclure le contrat restent des actes humains. Aucune clause saisie ou validée n’est remplacée silencieusement par une proposition.',
+    relatedTerms: ['honoraires-mensualises-et-actes-hors-forfait', 'validation-humaine'],
+    internalLinks: [{label: 'la place de la lettre de mission dans les tâches du cabinet', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches'}],
+    owner: 'Référentiel expertise comptable', nextReviewAt: '2026-12-13', sourceCheckedAt: '2026-10-11', sourceIds: ['legi-mission'],
+  },
+  {
+    ...common, id: 'facture-electronique-et-plateforme-agreee', term: 'Facture électronique et plateforme agréée', anchor: 'facture-electronique-et-plateforme-agreee', nature: 'Réglementaire',
+    definition: 'Dans la réforme française, une facture électronique est émise, transmise et reçue sous forme dématérialisée, avec un socle de données structurées. Elle passe par une plateforme agréée par l’administration, qui assure sa transmission au destinataire. Ce dispositif concerne les opérations entrant dans son périmètre, et non tout document PDF envoyé par courriel.',
+    context: 'Pour les opérations concernées entre assujettis établis en France, le CGI prévoit le recours à une plateforme agréée. La DGFiP distingue réception et émission : réception à compter du 1er septembre 2026 pour toutes les tailles ; émission et transmission des données de transaction et de paiement à cette date pour les grandes entreprises et les entreprises de taille intermédiaire, puis au 1er septembre 2027 pour les PME et micro-entreprises. Le périmètre de facturation électronique ne se confond pas avec celui de la transmission de données, notamment pour les ventes aux particuliers ou à l’étranger.',
+    exampleFictitious: 'Une petite entreprise fictive reçoit une facture structurée par sa plateforme en octobre 2026. Pour ses ventes fictives, elle prépare son passage à l’émission obligatoire de septembre 2027. Le cabinet vérifie sa catégorie, l’opération et le canal ; un PDF reçu par courriel n’est pas déclaré conforme par le seul fait de sa réception.',
+    commonConfusion: 'Un PDF ordinaire envoyé par courriel ne suffit pas : la DGFiP distingue le socle de données structurées et le passage par une plateforme agréée. Un format mixte peut comporter un fichier image ; ce n’est donc pas la présence d’un PDF qui tranche. Réception obligatoire en 2026 ne signifie pas émission obligatoire en 2026 pour toutes les entreprises.',
+    automationBoundary: 'Rassembler les données, contrôler les champs attendus et préparer une proposition de traitement sont automatisables. Qualifier l’opération, vérifier la catégorie de l’entreprise, choisir la plateforme, valider les données fiscales et autoriser une transmission engageante restent humains. La lecture d’une pièce ne vaut ni agrément de plateforme ni validation fiscale.',
+    relatedTerms: ['pre-comptabilite', 'extraction-de-donnees', 'validation-humaine'],
+    internalLinks: [{label: 'ce que la facture électronique change dans la collecte des pièces', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches'}, {label: 'les contrôles conservés avant une saisie comptable', href: '/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'}],
+    owner: 'Référentiel fiscal', nextReviewAt: '2026-12-13', sourceCheckedAt: '2026-10-11', sourceIds: ['legi-cgi', 'dgfip-definition', 'dgfip-perimetre', 'dgfip-calendrier'],
+  },
   {
     ...common, id: 'dsn', term: 'DSN', anchor: 'dsn', nature: 'Réglementaire',
     definition: 'La déclaration sociale nominative (DSN) est obligatoire pour les entreprises du secteur privé ainsi que pour la fonction publique ; elle remplace des formalités qui s’appuient sur les données de paie.',
