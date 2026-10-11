@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-06",
+  "famille": "lettrage",
+  "decision": "non-ouverture",
+  "candidate": "/automatisation/lettrage",
+  "requeteCandidate": "automatisation lettrage comptes tiers cabinet comptable",
+  "canonicalService": "/automatisation-cabinet-comptable",
+  "guidesPreserves": [
+    "/integrations/lettrage-cegid",
+    "/integrations/lettrage-sage"
+  ],
+  "moyeuExistantGuides": "/automatisation/saisie-comptable",
+  "reservePrimaire": false,
+  "publieLe": null,
+  "volumeMensuel": null,
+  "motif": "Besoin reel, fonctions natives et concurrence specialisee etablis ; intention distincte de delegation sur mesure insuffisamment etablie. Conserver le parcours existant.",
+  "reevaluation": "Demande explicite hors regles natives ou signal Search Console sur les guides",
+  "preuve": "demande-lettrage-2026-10-06.json",
+  "rapport": "QUALIFICATION-LETTRAGE.md"
+}

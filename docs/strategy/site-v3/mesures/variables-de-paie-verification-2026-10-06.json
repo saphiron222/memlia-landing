@@ -1,0 +1,40 @@
+{
+  "verdict": "PASS",
+  "sondes_reussies": 8,
+  "listes_vides": 6,
+  "suggestions": 8,
+  "citations_exactes": 6,
+  "angles_backlog": 4,
+  "surfaces": [
+    {
+      "url": "https://www.cnil.fr/fr/securite-gerer-les-habilitations",
+      "http": 200,
+      "exit": 0,
+      "capture": "preuves/cnil.html"
+    },
+    {
+      "url": "https://memlia.fr/automatisation/paie",
+      "http": 200,
+      "exit": 0,
+      "capture": "preuves/paie.html"
+    },
+    {
+      "url": "https://memlia.fr/automatisation/variables-de-paie",
+      "http": 404,
+      "exit": 22,
+      "capture": "preuves/candidate.html"
+    }
+  ],
+  "worktree_propre": true,
+  "decision": "non-ouverture",
+  "rattachement": "/automatisation/paie",
+  "recette": "non applicable : page non retenue",
+  "tests": [
+    "mesures et totaux",
+    "citations dans captures",
+    "angles backlog",
+    "registre et recouvrement paie",
+    "surfaces publiques 200/404",
+    "worktree sans modification"
+  ]
+}

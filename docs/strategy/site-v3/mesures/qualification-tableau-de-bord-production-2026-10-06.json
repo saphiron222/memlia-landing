@@ -1,0 +1,323 @@
+{
+  "date": "2026-10-06",
+  "family": "tableau-de-bord-production",
+  "candidate": "/automatisation/tableau-de-bord-production",
+  "decision": "non-ouverture",
+  "rattachement_documentaire": "/automatisation-cabinet-comptable",
+  "public_changes": false,
+  "reason": "Besoin agrégé documenté par un éditeur, mais ni demande de délégation ni mécanique inter-outils résiduelle suffisamment qualifiée.",
+  "instrument": "scripts/lib/seo-instruments.mjs#autocompleterGoogle",
+  "market": {
+    "hl": "fr",
+    "gl": "fr"
+  },
+  "counts": {
+    "queries_measured": 8,
+    "empty_lists": 8,
+    "suggestions": 0
+  },
+  "measures": [
+    {
+      "query": "automatisation tableau de bord production cabinet comptable",
+      "measuredAt": "2026-10-06T08:32:41.058Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "automatiser tableau de bord cabinet comptable",
+      "measuredAt": "2026-10-06T08:32:41.372Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "tableau de bord production cabinet comptable",
+      "measuredAt": "2026-10-06T08:32:41.448Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "tableau de bord cabinet expertise comptable",
+      "measuredAt": "2026-10-06T08:32:41.528Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "indicateurs tableau de bord cabinet expertise comptable",
+      "measuredAt": "2026-10-06T08:32:41.608Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "KPI production cabinet expertise comptable",
+      "measuredAt": "2026-10-06T08:32:41.701Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "suivi avancement portefeuille cabinet comptable",
+      "measuredAt": "2026-10-06T08:32:41.783Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    },
+    {
+      "query": "logiciel pilotage production cabinet comptable",
+      "measuredAt": "2026-10-06T08:32:41.854Z",
+      "ok": true,
+      "suggestions": [],
+      "erreur": null
+    }
+  ],
+  "monthly_volume": null,
+  "historical_angles": [
+    {
+      "slug": "tableau-de-bord-de-production-sans-classer-les-personnes",
+      "titre": "Un tableau de bord de production sans classer les personnes",
+      "requete": "tableau de bord cabinet comptable suivi dossiers",
+      "secondaires": [
+        "indicateurs tableau de bord cabinet expertise comptable",
+        "suivi de charge cabinet comptable indicateur"
+      ],
+      "famille": "tableau-de-bord-production",
+      "role": "direction-associes",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "agrégats non nominatifs et seuils d'alerte rejoués sur un portefeuille fictif",
+      "sourcesOfficielles": [
+        "cnil.fr"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quels sont les 3 types de tableaux de bord ?",
+          "Comment faire le suivi des tableaux de bord ?",
+          "Quel est le meilleur logiciel de tableau de bord comptable ?",
+          "Quels sont les indicateurs importants à prendre en compte dans un tableau de bord ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-des-indicateurs-a-suivre-dans-un-tableau-de-bord-de-production",
+      "titre": "Les indicateurs à suivre dans un tableau de bord de production",
+      "requete": "indicateurs tableau de bord cabinet comptable",
+      "secondaires": [
+        "KPI production cabinet expertise comptable",
+        "suivi de charge cabinet comptable indicateur"
+      ],
+      "famille": "tableau-de-bord-production",
+      "role": "direction-associes",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée de huit indicateurs agrégés, testée sur un portefeuille fictif de trente dossiers",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quels sont les 3 types de tableaux de bord ?",
+          "Comment faire le suivi des tableaux de bord ?",
+          "Quel est le meilleur logiciel de tableau de bord comptable ?",
+          "Quels sont les indicateurs importants à prendre en compte dans un tableau de bord ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "pourquoi-un-tableau-de-bord-de-production-ne-doit-jamais-nommer-un-collaborateur",
+      "titre": "Pourquoi un tableau de bord de production ne nomme jamais un collaborateur",
+      "requete": "tableau de bord cabinet comptable surveillance salarié",
+      "secondaires": [
+        "indicateur RH nominatif cabinet comptable risque",
+        "CNIL surveillance des salariés cabinet"
+      ],
+      "famille": "tableau-de-bord-production",
+      "role": "direction-associes",
+      "intent": "reduire-risque",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau se-prépare-seul / attend-validation / reste-humain appliqué à un indicateur nominatif fictif reformulé en agrégat",
+      "sourcesOfficielles": [
+        "cnil.fr"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quels sont les 3 types de tableaux de bord ?",
+          "Comment faire le suivi des tableaux de bord ?",
+          "Quel est le meilleur logiciel de tableau de bord comptable ?",
+          "Quels sont les indicateurs importants à prendre en compte dans un tableau de bord ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "qu-est-ce-qu-un-tableau-de-bord-de-production-en-cabinet-comptable",
+      "titre": "Qu'est-ce qu'un tableau de bord de production, en cabinet comptable ?",
+      "requete": "définition tableau de bord de production cabinet",
+      "secondaires": [
+        "différence tableau de bord client et de production",
+        "pilotage de la production cabinet comptable"
+      ],
+      "famille": "tableau-de-bord-production",
+      "role": "direction-associes",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec un exemple fictif d'agrégat par pôle",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quels sont les 3 types de tableaux de bord ?",
+          "Comment faire le suivi des tableaux de bord ?",
+          "Quel est le meilleur logiciel de tableau de bord comptable ?",
+          "Quels sont les indicateurs importants à prendre en compte dans un tableau de bord ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ],
+  "historical_cache": {
+    "CNIL surveillance des salariés cabinet": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "KPI production cabinet expertise comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "différence tableau de bord client et de production": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "définition tableau de bord de production cabinet": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "indicateur RH nominatif cabinet comptable risque": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "indicateurs tableau de bord cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "indicateurs tableau de bord cabinet expertise comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "pilotage de la production cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "suivi de charge cabinet comptable indicateur": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "tableau de bord cabinet comptable suivi dossiers": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "tableau de bord cabinet comptable surveillance salarié": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    }
+  },
+  "sources": [
+    {
+      "name": "fulll-pilotage",
+      "url": "https://www.fulll.fr/pilotage-cabinet",
+      "http": "200",
+      "exit_code": 0,
+      "error": "",
+      "openedAt": "2026-10-06T08:32:42.539971+00:00"
+    },
+    {
+      "name": "fulll-collaboratif",
+      "url": "https://www.fulll.fr/espace-collaboratif",
+      "http": "200",
+      "exit_code": 0,
+      "error": "",
+      "openedAt": "2026-10-06T08:32:42.749218+00:00"
+    },
+    {
+      "name": "acd-grc",
+      "url": "https://www.acd-groupe.fr/solution-expert-comptable/acd-grc/",
+      "http": "200",
+      "exit_code": 0,
+      "error": "",
+      "openedAt": "2026-10-06T08:32:43.876440+00:00"
+    },
+    {
+      "name": "candidate",
+      "url": "https://memlia.fr/automatisation/tableau-de-bord-production",
+      "http": "404",
+      "exit_code": 0,
+      "error": "",
+      "openedAt": "2026-10-06T08:32:44.104155+00:00"
+    },
+    {
+      "name": "service-general",
+      "url": "https://memlia.fr/automatisation-cabinet-comptable",
+      "http": "200",
+      "exit_code": 0,
+      "error": "",
+      "openedAt": "2026-10-06T08:32:44.376565+00:00"
+    }
+  ],
+  "quotes": [
+    {
+      "source": "fulll-pilotage",
+      "quote": "Évaluez en direct la santé comptable et sociale de vos dossiers grâce aux indicateurs issus directement de la production (compta et paie) et aux alertes de gestion."
+    },
+    {
+      "source": "fulll-pilotage",
+      "quote": "Lien direct avec la production agrégation temps réel des actes réalisés (comptabilité et paie) sans aucun export ni retraitement de données."
+    },
+    {
+      "source": "fulll-pilotage",
+      "quote": "Vision portefeuille unifiée suivi analytique global pour les associés, consolidant l'ensemble du cabinet."
+    },
+    {
+      "source": "fulll-collaboratif",
+      "quote": "Suivre l'avancement des missions"
+    }
+  ],
+  "limitations": [
+    "Listes vides ne prouvent pas un volume nul",
+    "Aucun classement Google France mesuré",
+    "Sources éditeurs consultées, fonctionnalités non testées",
+    "Revue concurrentielle ciblée non exhaustive",
+    "Firecrawl 403 repris par curl avec TLS"
+  ],
+  "recipe": "Non applicable : page non retenue",
+  "reopen_when": "Besoin observé avec sources, conventions de retard et avancement, fréquence, exclusions, validation et recette non nominative."
+}

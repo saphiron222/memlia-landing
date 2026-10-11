@@ -1,0 +1,267 @@
+{
+  "task": "t_3f3022e4",
+  "date": "2026-10-06T06:48:47.069712+00:00",
+  "family": "honoraires-facturation",
+  "candidate": "/automatisation/honoraires-facturation",
+  "decision": "non-ouverture",
+  "canonical": "/automatisation-cabinet-comptable",
+  "primaryQuery": "automatisation facturation honoraires cabinet comptable",
+  "reason": "Besoin confirmé par les offres de gestion interne ; aucun signal distinct de délégation dans les outils existants. Une suggestion générique ne qualifie pas une intention de confier.",
+  "monthlyVolume": null,
+  "measure": {
+    "measuredAt": "2026-10-06T06:46:10.990Z",
+    "instrument": "scripts/lib/seo-instruments.mjs autocompleterGoogle; hl=fr gl=fr client=firefox",
+    "results": [
+      {
+        "query": "automatisation facturation honoraires cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "automatisation facturation cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "facturation honoraires expert comptable",
+        "ok": true,
+        "suggestions": [
+          "facturation honoraires expert comptable"
+        ],
+        "erreur": null
+      },
+      {
+        "query": "logiciel facturation honoraires cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "facturation hors forfait cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "automatiser facturation honoraires",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "facturation cabinet expertise comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      },
+      {
+        "query": "gestion honoraires cabinet comptable",
+        "ok": true,
+        "suggestions": [],
+        "erreur": null
+      }
+    ]
+  },
+  "backlogAngles": [
+    {
+      "slug": "ne-pas-facturer-deux-fois-un-acte-hors-forfait",
+      "titre": "Ne pas facturer deux fois un acte hors forfait",
+      "requete": "facturation actes hors forfait cabinet comptable",
+      "secondaires": [
+        "règle d'unicité facturation cabinet comptable",
+        "idempotence facturation acte hors forfait"
+      ],
+      "famille": "honoraires-facturation",
+      "role": "facturation-recouvrement",
+      "intent": "executer",
+      "funnel": "MOFU",
+      "format": "how-to-guide",
+      "preuve": "règle d'unicité et idempotence rejouées sur un jeu fictif d'actes hors forfait",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quand utiliser le compte 658000 ?",
+          "Qu'est-ce que la facturation au forfait ?",
+          "Quelle est la procédure de facturation électronique pour les professions libérales ?",
+          "Quel est le code comptable pour les frais de facturation ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "checklist-mensuelle-de-facturation-des-honoraires",
+      "titre": "La checklist mensuelle de facturation des honoraires",
+      "requete": "checklist facturation honoraires cabinet comptable mensuelle",
+      "secondaires": [
+        "contrôle avant émission facture honoraires",
+        "facturation mensualisée cabinet comptable vérification"
+      ],
+      "famille": "honoraires-facturation",
+      "role": "facturation-recouvrement",
+      "intent": "diagnostiquer",
+      "funnel": "TOFU",
+      "format": "listicle-checklist",
+      "preuve": "checklist datée en sept points, rejouée sur un portefeuille fictif de vingt dossiers avant facturation",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quand utiliser le compte 658000 ?",
+          "Qu'est-ce que la facturation au forfait ?",
+          "Quelle est la procédure de facturation électronique pour les professions libérales ?",
+          "Quel est le code comptable pour les frais de facturation ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "les-actes-hors-forfait-qu-une-facturation-automatique-ne-doit-jamais-emettre-seule",
+      "titre": "Les actes hors forfait qu'une facturation automatique n'émet jamais seule",
+      "requete": "facturation acte hors forfait validation avant envoi",
+      "secondaires": [
+        "acte exceptionnel facturation cabinet comptable",
+        "devis préalable acte hors forfait cabinet"
+      ],
+      "famille": "honoraires-facturation",
+      "role": "facturation-recouvrement",
+      "intent": "decider",
+      "funnel": "BOFU",
+      "format": "how-to-guide",
+      "preuve": "tableau se-prépare-seul / attend-validation / reste-humain sur quatre actes hors forfait fictifs",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quand utiliser le compte 658000 ?",
+          "Qu'est-ce que la facturation au forfait ?",
+          "Quelle est la procédure de facturation électronique pour les professions libérales ?",
+          "Quel est le code comptable pour les frais de facturation ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    },
+    {
+      "slug": "honoraires-mensualises-et-actes-hors-forfait-quelle-difference",
+      "titre": "Honoraires mensualisés et actes hors forfait : quelle différence ?",
+      "requete": "différence honoraires mensualisés actes hors forfait",
+      "secondaires": [
+        "facturation cabinet comptable définition",
+        "forfait de mission expert-comptable définition"
+      ],
+      "famille": "honoraires-facturation",
+      "role": "facturation-recouvrement",
+      "intent": "comprendre",
+      "funnel": "TOFU",
+      "format": "faq-knowledge",
+      "preuve": "définition autonome de 45 mots avec un tableau à deux colonnes distinguant les deux circuits de facturation",
+      "sourcesOfficielles": [
+        "aucune"
+      ],
+      "priorite": 3,
+      "demande": {
+        "mesureeLe": "2026-09-19",
+        "requete": 0,
+        "secondaires": 0,
+        "questions": [
+          "Quand utiliser le compte 658000 ?",
+          "Qu'est-ce que la facturation au forfait ?",
+          "Quelle est la procédure de facturation électronique pour les professions libérales ?",
+          "Quel est le code comptable pour les frais de facturation ?"
+        ],
+        "intention": null,
+        "apercuIa": true
+      }
+    }
+  ],
+  "cacheExisting": {
+    "facturation actes hors forfait cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "règle d'unicité facturation cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "idempotence facturation acte hors forfait": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "checklist facturation honoraires cabinet comptable mensuelle": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "contrôle avant émission facture honoraires": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "facturation mensualisée cabinet comptable vérification": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "facturation acte hors forfait validation avant envoi": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "acte exceptionnel facturation cabinet comptable": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "devis préalable acte hors forfait cabinet": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "différence honoraires mensualisés actes hors forfait": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "facturation cabinet comptable définition": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    },
+    "forfait de mission expert-comptable définition": {
+      "suggestions": [],
+      "le": "2026-09-19"
+    }
+  },
+  "registryExisting": [],
+  "intentContractsExisting": [],
+  "baseCommit": "2f4ba16bf55ae52f6d0d018bf7b5de39edd1ef70",
+  "sources": [
+    {
+      "url": "https://www.acd-groupe.fr/solution-expert-comptable/acd-gi/",
+      "quote": "Programmez automatiquement vos honoraires"
+    },
+    {
+      "url": "https://www.fulll.fr/pilotage-cabinet",
+      "quote": "transformation des dépassements de temps identifiés en opportunités de pré-facturation complémentaire."
+    }
+  ],
+  "limits": [
+    "Aucun volume mensuel mesuré",
+    "SERP spécialisée non exploitable : Firecrawl 403, DuckDuckGo challenge 202, Google challenge ; Bing ignore les termes spécialisés",
+    "Sources éditeurs : déclarations fonctionnelles, ni test de compatibilité ni validation tarifaire",
+    "Concurrence non exhaustive"
+  ],
+  "recipeStatus": "Non applicable : page non retenue ; aucun rejeu ni PASS métier revendiqué"
+}
