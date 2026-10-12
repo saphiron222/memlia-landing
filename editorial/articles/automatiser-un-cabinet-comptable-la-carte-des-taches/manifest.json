@@ -8,7 +8,7 @@
   "summary": "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel.",
   "description": "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain.",
   "publicationDate": "2026-09-16",
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-12",
   "topics": [
     "automatisation",
     "methode",
@@ -42,7 +42,7 @@
     "proof": {
       "level": "indirect",
       "source": "preuves/role.json",
-      "verifiedAt": "2026-10-12"
+      "verifiedAt": "2026-10-13"
     }
   },
   "businessReview": {
@@ -156,7 +156,7 @@
     }
   ],
   "author": "kevin",
-  "reviewer": "qa:h4-independent-hermes",
+  "reviewer": "qa:h5-independent-hermes",
   "reviewRule": "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données.",
   "cta": {
     "label": "Confier une première tâche",
@@ -174,17 +174,16 @@
     "serp": {
       "status": "PASS",
       "evidence": "preuves/research-serp.json",
-      "checkedAt": "2026-10-12"
+      "checkedAt": "2026-10-13"
     },
     "gsc": {
       "status": "PASS",
       "evidence": "preuves/research-gsc.json",
-      "checkedAt": "2026-10-12"
+      "checkedAt": "2026-10-13"
     }
   },
   "links": {
     "outgoing": [
-      "/blog/suivre-les-echeances-fiscales-d-un-portefeuille",
       "/automatisation-cabinet-comptable",
       "/methode",
       "/garanties",
@@ -199,7 +198,8 @@
       "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "/blog/prompt-chatgpt-expert-comptable",
       "/blog/logiciel-ia-comptabilite",
-      "/blog/tests-verts-et-regle-des-trois-passes"
+      "/blog/tests-verts-et-regle-des-trois-passes",
+      "/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
     ],
     "incoming": [
       "/blog",
@@ -223,6 +223,6 @@
       "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
     }
   },
-  "publishedAt": "2026-10-12",
+  "publishedAt": "2026-10-13",
   "publicationEvidence": "preuves/publication.json"
 }

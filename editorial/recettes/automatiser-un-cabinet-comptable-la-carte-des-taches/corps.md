@@ -163,7 +163,7 @@ La validation d’une proposition commence par [vérifier une réponse IA avant 
 
 ## Que ne contient pas cette carte ?
 
-Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Le commissariat aux comptes possède ses propres familles : cette carte conserve un repère transversal, sans les ajouter aux familles de l’expertise comptable. Nous y préparons les demandes de documents, le suivi des réponses et les comparaisons entre exercices. La sélection des travaux, leur appréciation et l’opinion restent au commissaire aux comptes. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
+Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Le commissariat aux comptes possède ses propres familles : la [carte des tâches d’un cabinet de commissariat aux comptes](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) les détaille. Cette carte conserve un repère transversal, sans les ajouter aux familles de l’expertise comptable. Nous y préparons les demandes de documents, le suivi des réponses et les comparaisons entre exercices. La sélection des travaux, leur appréciation et l’opinion restent au commissaire aux comptes. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
 
 ## Les erreurs à éviter quand on automatise un cabinet
 

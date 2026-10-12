@@ -165,9 +165,17 @@ function requetesMesurees(frontmatter, mesure) {
   return requetesDeclarees(frontmatter).filter((requete) => clesMesurees.has(normaliser(requete)));
 }
 
-function descriptionCommenceParRequete(description, frontmatter, mesure) {
-  const debut = normaliser(description);
-  return requetesMesurees(frontmatter, mesure).find((requete) => debut.startsWith(normaliser(requete))) ?? null;
+function descriptionPorteRequete(description, frontmatter, mesure) {
+  // Seulement les liaisons grammaticales : garder les termes métier et les négations.
+  // Pas de racines approchées ni de couverture partielle (contrairement aux titres).
+  const liaisons = new Set(['a', 'au', 'aux', 'd', 'dans', 'de', 'des', 'du', 'en', 'l', 'la', 'le', 'les', 'un', 'une']);
+  const jetons = (value) => normaliser(value).split(/\s+/).filter((mot) => mot && !liaisons.has(mot));
+  const contenu = jetons(description);
+  return requetesMesurees(frontmatter, mesure).find((requete) => {
+    const attendus = jetons(requete);
+    return attendus.length > 0 && contenu.some((_, debut) =>
+      attendus.every((mot, index) => contenu[debut + index] === mot));
+  }) ?? null;
 }
 
 function mediasPreuve(articleCorps) {
@@ -315,9 +323,13 @@ function auditerArticle({ root, dist, slug, path, mesure }) {
 
   const metaDescription = premier(document, (node) => node.tagName === 'meta' && attribut(node, 'name') === 'description');
   const description = attribut(metaDescription, 'content') ?? '';
-  const requeteAmorce = descriptionCommenceParRequete(description, frontmatter, mesure);
-  if (!requeteAmorce) {
-    erreurs.push(`${slug} : clause 3, la meta-description n’ouvre sur aucune requête déclarée et mesurée — « ${description.slice(0, 72)}${description.length > 72 ? '…' : ''} »`);
+  const requetePortee = descriptionPorteRequete(description, frontmatter, mesure);
+  if (!requetePortee) {
+    erreurs.push(`${slug} : clause 3, meta-description absente ou sans intention complète déclarée et mesurée — « ${description.slice(0, 72)}${description.length > 72 ? '…' : ''} »`);
+  }
+  const nettoyerDescription = (value) => String(value ?? '').replace(/\s+/g, ' ').trim();
+  if (nettoyerDescription(description) !== nettoyerDescription(frontmatter.description)) {
+    erreurs.push(`${slug} : clause 3, meta-description rendue différente de la description éditoriale déclarée`);
   }
 
   const exemption = exemptionRubrique(slug);

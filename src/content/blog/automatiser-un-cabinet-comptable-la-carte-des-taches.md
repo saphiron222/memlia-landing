@@ -4,7 +4,7 @@ titreOnglet: "Automatisation cabinet comptable : carte des tâches | Memlia"
 resume: "Soixante familles de tâches réparties en douze pôles, avec pour chacune la règle typique et sa frontière : ce qui se prépare seul, ce qui attend une validation, ce qui reste humain. Une carte pour choisir par où commencer, sans changer de logiciel."
 description: "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain."
 datePublication: 2026-09-16
-dateMiseAJour: 2026-10-08
+dateMiseAJour: 2026-10-12
 auteur: kevin
 sujets: [automatisation, methode, cabinet]
 motsCles: ["automatisation cabinet comptable", "tâches répétitives", "validation humaine", "règle de cabinet", "familles de tâches"]
@@ -23,7 +23,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-10-12
+  date: 2026-10-13
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -32,7 +32,7 @@ businessRelevance: directe
 proofStatus: verifiee
 proofRequired: "Carte des familles de l’expertise comptable depuis src/data/familles.ts ; une frontière en trois colonnes par pôle ; un repère transversal vers les familles CAC, sans confondre préparation et opinion ; six affirmations sourcées sur des pages officielles ouvertes le jour de la publication."
 reviewRule: "Réviser à chaque publication de satellite (ajout d’un lien) et à chaque changement des sources officielles citées ; relecture trimestrielle des passages fiscaux et données."
-reviewer: qa:h4-independent-hermes
+reviewer: qa:h5-independent-hermes
 sourcesVerifieesLe: 2026-10-07
 cta:
   label: "Confier une première tâche"
@@ -133,7 +133,7 @@ Sur la conservation des pièces, le cadre est clair et il borne la règle de cla
 
 ## Portefeuille et échéances : piloter la production sans classer les personnes
 
-Cinq familles, et un principe qui les traverse : on pilote des dossiers et des étapes, jamais des personnes. Le calendrier des [échéances fiscales](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) et sociales du portefeuille se tient par dossier, avec une alerte quand une échéance approche sans que le dossier soit à l’étape attendue. Les télédéclarations et leurs rejets se suivent de la même façon : envoyé, accusé, rejeté, corrigé. Le suivi des dossiers par état, dans un classeur que le cabinet possède déjà, donne en une lecture l’étape de chacun et ses exceptions.
+Cinq familles, et un principe qui les traverse : on pilote des dossiers et des étapes, jamais des personnes. Le calendrier des échéances fiscales et sociales du portefeuille se tient par dossier, avec une alerte quand une échéance approche sans que le dossier soit à l’étape attendue. Les télédéclarations et leurs rejets se suivent de la même façon : envoyé, accusé, rejeté, corrigé. Le suivi des dossiers par état, dans un classeur que le cabinet possède déjà, donne en une lecture l’étape de chacun et ses exceptions.
 
 Le tableau de bord de production agrège tout cela en [indicateurs non nominatifs](/glossaire#agregat-non-nominatif) : combien de dossiers à chaque étape, combien en retard, combien d’exceptions ouvertes. Le plan de charge en découle, pour répartir les périodes de pointe. La ligne rouge est nette : un indicateur qui classe les collaborateurs n’est pas un indicateur de production, c’est de la surveillance, et la carte ne le prévoit nulle part.
 
@@ -241,7 +241,7 @@ La validation d’une proposition commence par [vérifier une réponse IA avant 
 
 ## Que ne contient pas cette carte ?
 
-Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Le commissariat aux comptes possède ses propres familles : cette carte conserve un repère transversal, sans les ajouter aux familles de l’expertise comptable. Nous y préparons les demandes de documents, le suivi des réponses et les comparaisons entre exercices. La sélection des travaux, leur appréciation et l’opinion restent au commissaire aux comptes. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
+Elle ne contient aucun chiffre de gain. Les promesses en heures par semaine ou en pourcentage d’impayés circulent ; aucune de celles que nous avons lues n’est accompagnée de sa mesure, et nous n’en publierons pas sans jeu fictif et protocole. Le commissariat aux comptes possède ses propres familles : la [carte des tâches d’un cabinet de commissariat aux comptes](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) les détaille. Cette carte conserve un repère transversal, sans les ajouter aux familles de l’expertise comptable. Nous y préparons les demandes de documents, le suivi des réponses et les comparaisons entre exercices. La sélection des travaux, leur appréciation et l’opinion restent au commissaire aux comptes. Elle ne promet enfin aucune fonction : chaque famille décrit une tâche et sa règle, pas une fonction livrée.
 
 ## Les erreurs à éviter quand on automatise un cabinet
 

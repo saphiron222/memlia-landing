@@ -2,6 +2,8 @@
 
 Une ligne par article publié, complétée par chaque exécution (manuelle ou planifiée). Les jours sans créneau consignent la maintenance faite.
 
+H5 du 12–13/10/2026, t_bca7ec83 : lien du pilier EC vers la carte CAC publique ajouté, publication initiale 16/09 conservée et mise à jour 12/10 ; forge preview et production-check PASS, revue indépendante du maillage PASS. PR263 en livraison, CI et réception publique non encore acquises à cette ligne. Huit alertes de perte GSC sur deux périodes de quatorze jours vérifiées par huit inspections indexées/canonical concordants et huit GET 200 ; conservation des articles, sans suppression ni réécriture spéculative sur 0–2 clics. Exports et triage : `mesures/h5-2026-10-12/`. Suivis courts J+7 le20/10 à10h Paris (74558e42369c) et J+28 le10/11 à10h Paris (d87f1a8c083a), résultat vers Telegram. Le reçu final de production sera attaché à H5 après livraison.
+
 Reprise CAC du 12/10/2026, t_79bc51d9 : créneau réel et deux réservations vérifiés, main intégré sans conflit, calendrier régénéré et contrôlé, 27 tests ciblés PASS et deux requêtes réellement remesurées. Les deux préparations restent refusées sur la citation normative courte et les planchers de palette des couvertures HTML autorisées. Fabrication locale partielle uniquement ; aucun commit, push, sceau ou publication. Avis métier acquis conservé, rubrique inactive, F4/H5 non libérées. Rapport : `docs/qa/cac-f4-livraison/ETAT-2026-10-12.md` ; correctifs autonomes dev t_88f84548 et t_22fb4350, sans parent ajouté à la publication.
 
 | Date | Article | Commit | Déploiement | HTTP en ligne | Octets identiques | Sitemap renvoyé | Note |
