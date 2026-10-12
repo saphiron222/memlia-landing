@@ -3,6 +3,10 @@
  * cette table relie chaque intention informationnelle à une seule page commerciale.
  */
 export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
+  'rapprochement-bancaire-automatise-les-ecarts-a-remonter': Object.freeze({
+    href: '/automatisation/rapprochement-bancaire',
+    label: 'Voir la prise en charge du rapprochement bancaire',
+  }),
   'automatiser-un-cabinet-cac-la-carte-des-taches': Object.freeze({
     href: '/commissaires-aux-comptes',
     label: 'Voir comment cadrer une tâche du cabinet CAC',
