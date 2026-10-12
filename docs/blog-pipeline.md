@@ -33,6 +33,7 @@ Cette exception est lexicale, jamais une validation juridique : provenance prima
 
 ## Auditer et ouvrir le gate
 
+
 ### Réparation des refus de scellement CAC
 
 Le contrat `cluster` accepte aussi les cinq pôles CAC déjà présents dans la collection Astro :
@@ -53,6 +54,15 @@ Les quatre tests CAC échouaient avant réparation et passent ensuite. Le rejeu 
 des deux dossiers CAC matérialisés avec leur HTML d’article archivé ne signale plus aucune
 des trois classes de refus ; le rendu `/blog` absent de ce diagnostic doit encore être fourni
 par la vraie commande `sceller` lors de la reprise propriétaire, sans fabriquer de lien témoin.
+
+### Autorité ANC et routes service
+
+Le registre officiel reconnaît l’ANC uniquement sur `anc.gouv.fr` ou `www.anc.gouv.fr`, avec l’éditeur `ANC`, `Autorité des normes comptables` ou `Autorité des normes comptables (ANC)`. Cette cohérence ne prouve aucune affirmation : copie consultée, citation et revue indépendante restent obligatoires.
+
+Les liens `/automatisation/<slug>` sont résolus vers `src/content/services/<slug>.md` lorsque le gabarit `src/pages/automatisation/[slug].astro` existe, conformément à sa collection `services`. Le gabarit sans entrée ou une entrée sans gabarit ne suffit pas. Les paramètres et fragments d’un lien sortant ne changent pas la cible ; ce contrôle d’existence ne valide pas l’ancre. Les liens entrants utilisent également la source réelle du service, sans fabriquer de backlink.
+
+Régression ciblée : `node --test tests/scripts/blog-anc-service-routes.test.mjs` (également découvert par `test:scripts` en CI).
+
 
 ### Conservation bornée des deux articles déjà publiés
 
