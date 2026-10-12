@@ -1,0 +1,489 @@
+{
+  "schemaVersion": "glossaire-cac-review-v1",
+  "status": "AI_REVIEW_FAIL",
+  "verdict": "FAIL",
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_135675b2",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+  "candidatePath": "docs/strategy/site-v3/glossaire-cac-lot-2.json",
+  "candidateSha256": "cd4072c3cd40defd18992237a8423a542ce9acd050ef847ce9c7310ca8234798",
+  "canonical": "/glossaire",
+  "entryIds": [
+    "assertions-audit",
+    "anomalie-significative",
+    "risque-audit",
+    "risque-inherent",
+    "risque-lie-controle",
+    "risque-non-detection",
+    "seuil-signification-audit",
+    "seuil-planification-audit",
+    "controle-interne-audit",
+    "ipe-audit"
+  ],
+  "sourceSnapshotSha256": {
+    "h2a-nep-315": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+    "h2a-nep-320": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+    "h2a-nep-500": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+    "h2a-nep-200": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+    "dila-a821-63": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+    "dila-a821-70": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+    "dila-a821-72": "82964dc02ffba5a4f9dbb9a51d8fb35aebfdb5c6fc4c333a3d75c7aaad907ff0",
+    "dila-a821-74": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f"
+  },
+  "unitVerdicts": [
+    {
+      "id": "assertions-audit-definition-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutient"
+    },
+    {
+      "id": "assertions-audit-definition-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutient"
+    },
+    {
+      "id": "assertions-audit-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "assertions-audit-context-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "assertions-audit-context-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "assertions-audit-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "assertions-audit-commonConfusion-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutient"
+    },
+    {
+      "id": "assertions-audit-commonConfusion-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutient"
+    },
+    {
+      "id": "assertions-audit-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "assertions-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "assertions-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "anomalie-significative-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "anomalie-significative-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "anomalie-significative-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "anomalie-significative-context-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "anomalie-significative-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "anomalie-significative-commonConfusion-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "anomalie-significative-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "anomalie-significative-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-audit-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-definition-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-context-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-commonConfusion-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-inherent-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-inherent-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-inherent-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-inherent-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-inherent-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-inherent-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-inherent-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-inherent-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-lie-controle-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-lie-controle-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-lie-controle-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-lie-controle-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-lie-controle-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-lie-controle-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "risque-lie-controle-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-lie-controle-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-non-detection-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-non-detection-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-non-detection-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "verdict": "soutient"
+    },
+    {
+      "id": "risque-non-detection-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "risque-non-detection-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "seuil-signification-audit-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-definition-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-context-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-context-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-commonConfusion-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-commonConfusion-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-signification-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "seuil-signification-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "seuil-planification-audit-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-definition-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-context-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-context-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-commonConfusion-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-commonConfusion-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "verdict": "soutient"
+    },
+    {
+      "id": "seuil-planification-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "seuil-planification-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "controle-interne-audit-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-definition-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-context-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-commonConfusion-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "verdict": "soutient"
+    },
+    {
+      "id": "controle-interne-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "controle-interne-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "ipe-audit-definition-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutient"
+    },
+    {
+      "id": "ipe-audit-definition-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutient"
+    },
+    {
+      "id": "ipe-audit-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "ipe-audit-context-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "ipe-audit-context-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "ipe-audit-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "ipe-audit-commonConfusion-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "verdict": "soutient"
+    },
+    {
+      "id": "ipe-audit-commonConfusion-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "verdict": "soutient"
+    },
+    {
+      "id": "ipe-audit-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "verdict": "soutien-partiel"
+    },
+    {
+      "id": "ipe-audit-exampleFictitious",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    },
+    {
+      "id": "ipe-audit-automationBoundary",
+      "sourceId": null,
+      "verdict": "recevable-methode-memlia"
+    }
+  ],
+  "requiredCorrection": {
+    "assertions-audit-definition-h2a-nep-315": "§§06/17 : ni définition des assertions (315 §05), ni énoncé équivalent à NEP 500 §03.",
+    "assertions-audit-context-h2a-nep-500": "La seconde phrase concerne NEP 315 §06, absente de NEP 500.",
+    "assertions-audit-context-dila-a821-74": "La seconde phrase concerne NEP 315 §06, absente de A.821-74.",
+    "assertions-audit-context-h2a-nep-315": "La première phrase et sa liste d’assertions relèvent de NEP 500 §09.",
+    "assertions-audit-commonConfusion-h2a-nep-315": "§§06/17 ne définissent pas les assertions comme critères ; citer aussi §05 ou borner le sous-claim.",
+    "anomalie-significative-context-h2a-nep-200": "§04 ne prouve pas les précisions de NEP 320 §§09/10 dans la seconde phrase.",
+    "anomalie-significative-commonConfusion-h2a-nep-200": "§04 couvre le cumul mais pas les circonstances et le caractère significatif sous le seuil de NEP 320 §09.",
+    "risque-inherent-context-h2a-nep-200": "§11 ne prouve pas l’évaluation distincte et les facteurs de NEP 315 §§02/39/40.",
+    "risque-inherent-commonConfusion-h2a-nep-200": "§11 ne prouve pas la phrase complexité/forte volumétrie, décrite par NEP 315 §02.",
+    "risque-lie-controle-definition-h2a-nep-315": "§§34/41 ne définissent pas non-prévention/non-détection et correction en temps voulu ; citer §02 ou NEP 200 §11.",
+    "risque-lie-controle-context-h2a-nep-200": "§§11/12 ne prouvent pas la règle d’absence de tests ni la distinction conception/tests de NEP 315 §§34/41.",
+    "risque-lie-controle-commonConfusion-h2a-nep-200": "§§11/12 soutiennent la distinction contrôle/non-détection, pas la première phrase sur décrire/tester.",
+    "risque-lie-controle-commonConfusion-h2a-nep-315": "§§34/41 soutiennent décrire/tester, pas la distinction d’avec le risque de non-détection de NEP 200 §12.",
+    "ipe-audit-definition-h2a-nep-315": "§46 porte sur les informations intégrées aux outils ; ne définit pas les informations internes produites par l’entité ni IPE.",
+    "ipe-audit-context-h2a-nep-500": "La seconde phrase exige NEP 315 §46.",
+    "ipe-audit-context-dila-a821-74": "La seconde phrase exige NEP 315 §46.",
+    "ipe-audit-context-h2a-nep-315": "La première phrase exige NEP 500 §06/A.821-74, exactitude et exhaustivité.",
+    "ipe-audit-commonConfusion-h2a-nep-315": "§46 ne couvre pas à lui seul exactitude/exhaustivité, caractère suffisant et approprié et origine interne de NEP 500 §§05/06."
+  },
+  "reviewReport": "REVUE.md",
+  "integrationNote": "Preuve de FAIL du paquet séparé, non un manifeste resource-pipeline. Ne pas injecter AI_REVIEW_PASS ni des soutient globaux. Après correction auteur : reprendre t_135675b2 sur F1, préserver les champs publics acquis et les dates des copies. Les identifiants et hashes rattachent la re-revue aux unités ; le scellement du manifeste publié incombe à l’intégrateur.",
+  "checks": {
+    "candidateValidator": "PASS 10/8/83/2/53",
+    "dilaTests": "5/5 PASS",
+    "independentH2A": "4 HTTP200, HTML identique au candidat, citations et versions retrouvées"
+  },
+  "limitations": [
+    "A4 : dérivé DINUM, aucune garantie de consolidation générale actuelle",
+    "NEP 315 révisée : exercices ouverts à compter du JO du 19 novembre 2024",
+    "Aucun audit produit, build global ni publication"
+  ]
+}

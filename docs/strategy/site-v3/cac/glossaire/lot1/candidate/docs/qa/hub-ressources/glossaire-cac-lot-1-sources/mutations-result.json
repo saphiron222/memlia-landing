@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "name": "terme manquant",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "citation inventée",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "source périmée",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "lien futur exposé",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "terme lié absent",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "empreinte divergente",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "name": "fausse revue",
+      "rejected": true,
+      "exitCode": 1
+    }
+  ]
+}

@@ -1,0 +1,2008 @@
+{
+  "schemaVersion": 1,
+  "lot": "cac-audit-1",
+  "canonical": "/glossaire",
+  "preparedAt": "2026-10-11T12:50:56.407957+00:00",
+  "baselineMain": "fdab2843a6f14cacecc95f2d93671a086622ce15",
+  "entries": [
+    {
+      "id": "nep",
+      "term": "NEP",
+      "anchor": "nep",
+      "nature": "Réglementaire",
+      "definition": "Les normes d’exercice professionnel (NEP) encadrent les travaux du commissaire aux comptes dans les missions auxquelles elles s’appliquent. La NEP 200 fixe les principes de l’audit des comptes en vue de leur certification.",
+      "context": "La NEP 200 est homologuée à l’article A.821-63 du Code de commerce. Le référentiel normatif de la H2A permet de retrouver les numéros d’usage et les textes correspondants ; le CAC apprécie ceux qui concernent sa mission.",
+      "exampleFictitious": "Dans un dossier fictif, le chef de mission repère la NEP 200 dans son référentiel avant de préciser les travaux attendus ; un tableau de suivi ne suffit pas à réaliser ces travaux.",
+      "commonConfusion": "Une NEP n’est pas un mode d’emploi du logiciel d’audit. Son application suppose des diligences et le jugement du CAC, pas la seule présence d’une checklist.",
+      "automationBoundary": "Nous préparons les renvois et les listes de pièces selon une règle écrite ; le CAC choisit les diligences, apprécie leur exécution et leurs conclusions. Une référence introuvable suspend la proposition.",
+      "relatedTerms": [
+        "audit-legal",
+        "jugement-professionnel",
+        "h2a"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-nep-200",
+        "dila-a821-63",
+        "h2a-referentiel"
+      ],
+      "motsSources": {
+        "h2a-nep-200": "NEP",
+        "dila-a821-63": "A.821-63",
+        "h2a-referentiel": "référentiel normatif"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "audit-legal",
+      "term": "Audit légal",
+      "anchor": "audit-legal",
+      "nature": "Professionnelle",
+      "definition": "L’audit légal des comptes désigne ici l’audit mis en œuvre par le commissaire aux comptes en vue de la certification des comptes annuels et, le cas échéant, consolidés. Il permet au CAC de fonder son opinion sur les comptes.",
+      "context": "L’article L.821-53 du Code de commerce porte la certification ; la NEP 200 décrit l’audit qui la prépare. Le terme « audit légal » est un vocabulaire professionnel, pas le nom d’une prestation Memlia.",
+      "exampleFictitious": "Pour une entité fictive, l’équipe rassemble les éléments collectés et ses travaux ; le signataire apprécie ces éléments avant de formuler son opinion.",
+      "commonConfusion": "L’audit des comptes ne garantit ni la viabilité de l’entité ni la qualité de sa gestion. Il se distingue de la préparation de la comptabilité et d’un simple contrôle de structure de fichier.",
+      "automationBoundary": "Nous préparons rapprochements, renvois et exceptions sans modifier les observations saisies ; le CAC conserve la stratégie d’audit, l’appréciation des éléments collectés, l’opinion et la signature.",
+      "relatedTerms": [
+        "nep",
+        "assurance-raisonnable",
+        "independance-cac"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-nep-200",
+        "dila-l821-53"
+      ],
+      "motsSources": {
+        "h2a-nep-200": "audit",
+        "dila-l821-53": "L.821-53"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "assurance-raisonnable",
+      "term": "Assurance raisonnable",
+      "anchor": "assurance-raisonnable",
+      "nature": "Réglementaire",
+      "definition": "L’assurance raisonnable est le niveau d’assurance élevé, mais non absolu, que le CAC recherche pour conclure que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+      "context": "La NEP 200, paragraphes 08 et 09, relie cette assurance aux limites de l’audit, notamment aux sondages, au contrôle interne et à la nature des éléments collectés.",
+      "exampleFictitious": "Dans un dossier fictif, aucun écart n’apparaît dans les éléments examinés ; le CAC apprécie néanmoins si les travaux sont suffisants pour soutenir son opinion sur l’ensemble des comptes.",
+      "commonConfusion": "L’assurance raisonnable n’est ni une certitude absolue ni un pourcentage de confiance fourni par un outil. Un fichier sans alerte ne démontre pas, à lui seul, l’absence d’anomalies significatives.",
+      "automationBoundary": "Nous présentons les contrôles exécutés, les données utilisées et leurs limites ; le CAC décide des travaux complémentaires et de la conclusion. L’outil n’attribue aucun niveau d’assurance à la mission.",
+      "relatedTerms": [
+        "audit-legal",
+        "jugement-professionnel",
+        "esprit-critique"
+      ],
+      "internalLinks": [
+        {
+          "label": "Vérifier une réponse d’IA en comptabilité, sans la confondre avec une conclusion d’audit",
+          "href": "/blog/verifier-reponse-ia-comptabilite"
+        }
+      ],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-nep-200"
+      ],
+      "motsSources": {
+        "h2a-nep-200": "assurance raisonnable"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "jugement-professionnel",
+      "term": "Jugement professionnel",
+      "anchor": "jugement-professionnel",
+      "nature": "Réglementaire",
+      "definition": "Le jugement professionnel est l’appréciation exercée par le CAC tout au long de ses travaux, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit et pour conclure à partir des éléments collectés.",
+      "context": "La NEP 200, paragraphe 07, situe ce jugement dans les choix de travaux et les conclusions. Une proposition technique ne porte pas cette appréciation à la place du professionnel.",
+      "exampleFictitious": "Un écart fictif apparaît dans un rapprochement. Le chef de mission examine ses causes et propose des travaux ; le CAC apprécie leur portée plutôt que d’accepter le commentaire suggéré.",
+      "commonConfusion": "Le jugement professionnel n’est pas l’application aveugle d’un seuil ni la reprise d’une réponse d’IA. La décision repose sur l’appréciation des éléments collectés, non sur leur simple classement.",
+      "automationBoundary": "Nous préparons les comparaisons et les propositions dans une zone distincte ; les justifications, choix de procédures et conclusions saisis par l’équipe restent préservés. Le CAC décide.",
+      "relatedTerms": [
+        "esprit-critique",
+        "assurance-raisonnable",
+        "audit-legal"
+      ],
+      "internalLinks": [
+        {
+          "label": "Vérifier une réponse d’IA en comptabilité, sans la confondre avec une conclusion d’audit",
+          "href": "/blog/verifier-reponse-ia-comptabilite"
+        }
+      ],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-nep-200"
+      ],
+      "motsSources": {
+        "h2a-nep-200": "jugement professionnel"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "esprit-critique",
+      "term": "Esprit critique",
+      "anchor": "esprit-critique",
+      "nature": "Réglementaire",
+      "definition": "L’esprit critique est l’attitude par laquelle le CAC évalue la validité des éléments collectés et reste attentif aux informations qui contredisent ou remettent en cause leur fiabilité.",
+      "context": "La NEP 200, paragraphe 06, demande cette attitude tout au long de l’audit, en tenant compte des situations susceptibles de conduire à des anomalies significatives dans les comptes.",
+      "exampleFictitious": "Deux pièces fictives décrivent des dates différentes pour une même opération. L’équipe conserve les deux versions et examine la contradiction au lieu de retenir automatiquement la plus récente.",
+      "commonConfusion": "L’esprit critique n’est pas une suspicion systématique de fraude. Une alerte technique appelle une appréciation des éléments ; elle ne suffit pas à qualifier l’opération.",
+      "automationBoundary": "Nous repérons les divergences et conservons leurs pièces d’origine ; l’équipe examine les contradictions et le CAC apprécie la fiabilité des éléments. Une pièce illisible reste signalée, jamais interprétée par défaut.",
+      "relatedTerms": [
+        "jugement-professionnel",
+        "audit-legal",
+        "assurance-raisonnable"
+      ],
+      "internalLinks": [
+        {
+          "label": "Vérifier une réponse d’IA en comptabilité, sans la confondre avec une conclusion d’audit",
+          "href": "/blog/verifier-reponse-ia-comptabilite"
+        }
+      ],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-nep-200"
+      ],
+      "motsSources": {
+        "h2a-nep-200": "esprit critique"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "independance-cac",
+      "term": "Indépendance du CAC",
+      "anchor": "independance-cac",
+      "nature": "Réglementaire",
+      "definition": "L’indépendance du CAC est une exigence applicable à ses missions et prestations, appréciée en réalité et en apparence, pour préserver ses conclusions des partis pris, conflits d’intérêts et risques d’autorévision.",
+      "context": "L’article L.821-31 du Code de commerce traite notamment des intérêts et des liens incompatibles. La norme de déontologie publiée par la H2A précise l’appréciation de l’indépendance ; l’absence d’un intérêt financier ne résume pas toute cette exigence.",
+      "exampleFictitious": "Dans un cas fictif, un cabinet mixte envisage un outil utilisé en production comptable et en audit. Il examine les missions, les accès et les risques d’autorévision avant tout usage.",
+      "commonConfusion": "Partager un outil ou disposer d’accès séparés ne démontre pas l’indépendance. Cette appréciation porte sur les faits et circonstances de la mission ou de la prestation, en réalité et en apparence.",
+      "automationBoundary": "Nous préparons l’inventaire des accès, rôles et traitements ; le CAC apprécie les incompatibilités et les risques, puis décide des conditions d’usage. Aucun indicateur automatique ne déclare la mission indépendante.",
+      "relatedTerms": [
+        "sacc",
+        "jugement-professionnel",
+        "audit-legal"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "h2a-deontologie",
+        "dila-l821-31"
+      ],
+      "motsSources": {
+        "h2a-deontologie": "indépendance",
+        "dila-l821-31": "L.821-31"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "secret-professionnel-cac",
+      "term": "Secret professionnel du CAC",
+      "anchor": "secret-professionnel-cac",
+      "nature": "Réglementaire",
+      "definition": "Le secret professionnel du CAC protège les faits, actes et renseignements connus dans l’exercice de la profession. L’article L.821-35 du Code de commerce y astreint les commissaires aux comptes, leurs collaborateurs et experts, sous les réserves et exceptions qu’il prévoit.",
+      "context": "Le même article prévoit des cas de levée du secret, notamment entre certains intervenants à la certification des comptes ou des informations de durabilité. Ces cas ne constituent pas une autorisation générale de transmettre un dossier à un prestataire ou à une IA.",
+      "exampleFictitious": "Dans un essai fictif, le cabinet décrit un traitement avec des pièces inventées. Avant un usage sur un dossier, il examine les données, accès, destinataires et appels réseau de l’environnement envisagé.",
+      "commonConfusion": "Un traitement présenté comme local ne suffit pas à établir le respect du secret. Le recours à un prestataire ou à une IA n’est pas, en soi, un cas de levée du secret prévu par l’article L.821-35.",
+      "automationBoundary": "Nous documentons les données et leurs flux, utilisons des jeux fictifs pour les essais et signalons toute destination inconnue ; le CAC apprécie les conditions d’utilisation avant une transmission. Les fichiers clients ne servent pas à illustrer le glossaire.",
+      "relatedTerms": [
+        "independance-cac",
+        "pseudonymisation",
+        "jeu-d-essai-fictif"
+      ],
+      "internalLinks": [
+        {
+          "label": "Préparer les données avant une transmission à l’IA en cabinet comptable",
+          "href": "/blog/ia-comptabilite-confidentialite-donnees"
+        }
+      ],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-06",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "dila-l821-35"
+      ],
+      "motsSources": {
+        "dila-l821-35": "L.821-35"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "h2a",
+      "term": "H2A",
+      "anchor": "h2a",
+      "nature": "Professionnelle",
+      "definition": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+      "context": "L’article L.820-1 du Code de commerce décrit ses missions, dont l’adoption des normes, les contrôles, les enquêtes et les sanctions. La H2A a succédé au H3C le 1er janvier 2024.",
+      "exampleFictitious": "Pour un dossier fictif, le cabinet consulte le référentiel H2A pour retrouver une norme applicable ; il distingue cette publication officielle de la documentation de son logiciel.",
+      "commonConfusion": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+      "automationBoundary": "Nous préparons des renvois traçables vers les textes et signalons un lien absent ; le CAC vérifie la version et son application à la mission. Aucune proposition ne reçoit un label d’approbation H2A.",
+      "relatedTerms": [
+        "cncc",
+        "nep",
+        "audit-legal"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "dila-l820-1",
+        "h2a-presentation"
+      ],
+      "motsSources": {
+        "dila-l820-1": "L.820-1",
+        "h2a-presentation": "H2A a succédé au H3C"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "cncc",
+      "term": "CNCC",
+      "anchor": "cncc",
+      "nature": "Professionnelle",
+      "definition": "La Compagnie nationale des commissaires aux comptes (CNCC) est l’instance représentative de la profession en France. Elle porte la voix des commissaires aux comptes auprès des institutions et des parties prenantes.",
+      "context": "La CNCC représente notamment la profession auprès de son régulateur, la H2A. Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+      "exampleFictitious": "Dans une préparation fictive, l’équipe repère une publication CNCC et le texte qu’elle cite. Elle conserve le renvoi officiel pour distinguer commentaire professionnel et exigence applicable.",
+      "commonConfusion": "La CNCC n’est pas la H2A. Un guide professionnel n’établit pas à lui seul que l’environnement du cabinet ou une automatisation est conforme aux normes applicables.",
+      "automationBoundary": "Nous indexons les références et séparons les textes des commentaires ; le CAC apprécie leur portée et leur actualité. Nous ne reproduisons pas de modèles réservés ni n’inventons une approbation CNCC.",
+      "relatedTerms": [
+        "h2a",
+        "nep",
+        "sacc"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "cncc-representation"
+      ],
+      "motsSources": {
+        "cncc-representation": "instance représentative"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    },
+    {
+      "id": "sacc",
+      "term": "SACC",
+      "anchor": "sacc",
+      "nature": "Professionnelle",
+      "definition": "Les services autres que la certification des comptes (SACC) désignent, dans le vocabulaire professionnel, les services distincts de la mission de certification. Ce terme ne signifie pas que tout service peut être fourni par le CAC.",
+      "context": "La CNCC emploie cet intitulé dans sa documentation. La norme de déontologie de la H2A distingue les missions légales ou réglementaires et les prestations, parmi lesquelles un audit financier contractuel ; le CAC apprécie le cadre et l’indépendance de chaque intervention.",
+      "exampleFictitious": "Une entité fictive demande un audit contractuel. Le CAC examine la demande et les conditions d’intervention avant de l’accepter ; le mot SACC ne vaut pas accord.",
+      "commonConfusion": "SACC et certification des comptes ne sont pas interchangeables. Définir ce vocabulaire ne publie aucune offre Memlia et ne rouvre pas les familles de services gardées en réserve.",
+      "automationBoundary": "Nous préparons les pièces et le périmètre décrit par le cabinet ; le CAC décide de l’acceptation, des conditions d’indépendance, des travaux et de leur restitution. Aucun service en réserve n’est proposé par cette entrée.",
+      "relatedTerms": [
+        "audit-legal",
+        "independance-cac",
+        "cncc"
+      ],
+      "internalLinks": [],
+      "owner": "Commissariat aux comptes",
+      "author": "Memlia",
+      "editorialReviewer": "Équipe éditoriale Memlia",
+      "businessReviewer": null,
+      "reviewedAt": null,
+      "sourceCheckedAt": "2026-10-11",
+      "nextReviewAt": "2026-12-13",
+      "sourceIds": [
+        "cncc-sacc-vocabulaire",
+        "h2a-deontologie"
+      ],
+      "motsSources": {
+        "cncc-sacc-vocabulaire": "services autres que la certification des comptes",
+        "h2a-deontologie": "missions légales ou réglementaires"
+      },
+      "routeDecision": "anchor",
+      "status": "preview-only"
+    }
+  ],
+  "sources": {
+    "h2a-nep-200": {
+      "id": "h2a-nep-200",
+      "publisher": "H2A",
+      "title": "NEP 200, principes applicables à l’audit des comptes",
+      "url": "https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/",
+      "checkedAt": "2026-10-11"
+    },
+    "h2a-referentiel": {
+      "id": "h2a-referentiel",
+      "publisher": "H2A",
+      "title": "Référentiel normatif",
+      "url": "https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/acceder-au-referentiel-normatif/",
+      "checkedAt": "2026-10-11"
+    },
+    "h2a-presentation": {
+      "id": "h2a-presentation",
+      "publisher": "H2A",
+      "title": "Présentation de la H2A",
+      "url": "https://h2a-france.org/la-h2a/presentation-de-la-h2a/",
+      "checkedAt": "2026-10-11"
+    },
+    "cncc-representation": {
+      "id": "cncc-representation",
+      "publisher": "CNCC",
+      "title": "Représenter et faire rayonner la profession",
+      "url": "https://www.cncc.fr/missions/representer-la-profession",
+      "checkedAt": "2026-10-11"
+    },
+    "cncc-sacc-vocabulaire": {
+      "id": "cncc-sacc-vocabulaire",
+      "publisher": "CNCC",
+      "title": "Services autres que la certification des comptes, présentation du guide 2018",
+      "url": "https://doc.cncc.fr/docs/services-autres-que-la-certifica",
+      "checkedAt": "2026-10-11"
+    },
+    "h2a-deontologie": {
+      "id": "h2a-deontologie",
+      "publisher": "H2A",
+      "title": "Sécuriser les interventions, principes fondamentaux de comportement",
+      "url": "https://h2a-france.org/normes/142282/",
+      "checkedAt": "2026-10-11"
+    },
+    "dila-l821-35": {
+      "id": "dila-l821-35",
+      "publisher": "Légifrance — DILA/DINUM",
+      "title": "Code de commerce, L821-35",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559623",
+      "checkedAt": "2026-10-06"
+    },
+    "dila-l821-31": {
+      "id": "dila-l821-31",
+      "publisher": "Légifrance — DILA/DINUM",
+      "title": "Code de commerce, L821-31",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048524900",
+      "checkedAt": "2026-10-06"
+    },
+    "dila-l821-53": {
+      "id": "dila-l821-53",
+      "publisher": "Légifrance — DILA/DINUM",
+      "title": "Code de commerce, L821-53",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+      "checkedAt": "2026-10-06"
+    },
+    "dila-l820-1": {
+      "id": "dila-l820-1",
+      "publisher": "Légifrance — DILA/DINUM",
+      "title": "Code de commerce, L820-1",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535351",
+      "checkedAt": "2026-10-06"
+    },
+    "dila-a821-63": {
+      "id": "dila-a821-63",
+      "publisher": "Légifrance — DILA/DINUM",
+      "title": "Code de commerce, A821-63",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050697008",
+      "checkedAt": "2026-10-06"
+    }
+  },
+  "evidence": {
+    "sources": {
+      "h2a-nep-200": {
+        "id": "h2a-nep-200",
+        "publisher": "H2A",
+        "title": "NEP 200, principes applicables à l’audit des comptes",
+        "url": "https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:40:17.362336+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/",
+        "finalUrl": "https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-nep-200.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-nep-200.html",
+        "contentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+        "rawSha256": "86207d609b602be62072e92e858f0f1415cff571d3b70cba0e71eb464122253b",
+        "headers": {
+          "Cache-Control": "no-cache",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Expires": "Sun, 11 Oct 2026 12:40:16 GMT",
+          "Last-Modified": "Mon, 05 Oct 2026 13:37:54 GMT",
+          "Server": "nginx",
+          "Strict-Transport-Security": "max-age=63072000",
+          "Vary": "Accept-Encoding",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "SAMEORIGIN",
+          "X-Xss-Protection": "1; mode=block",
+          "Connection": "close",
+          "Transfer-Encoding": "chunked"
+        }
+      },
+      "h2a-referentiel": {
+        "id": "h2a-referentiel",
+        "publisher": "H2A",
+        "title": "Référentiel normatif",
+        "url": "https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/acceder-au-referentiel-normatif/",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:40:17.345366+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/acceder-au-referentiel-normatif/",
+        "finalUrl": "https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/acceder-au-referentiel-normatif/",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-referentiel.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-referentiel.html",
+        "contentSha256": "eb212cd60034a7cdeb418f25caa72acc7bdceec4e3d734d25677e6693e5e7e5f",
+        "rawSha256": "fd66aaf58a64f4db8fa859de74da74e49856edd67c1716eff6a4d346f77ba672",
+        "headers": {
+          "Cache-Control": "no-cache",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Expires": "Sun, 11 Oct 2026 12:40:16 GMT",
+          "Last-Modified": "Mon, 05 Oct 2026 10:25:42 GMT",
+          "Server": "nginx",
+          "Strict-Transport-Security": "max-age=63072000",
+          "Vary": "Accept-Encoding",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "SAMEORIGIN",
+          "X-Xss-Protection": "1; mode=block",
+          "Connection": "close",
+          "Transfer-Encoding": "chunked"
+        }
+      },
+      "h2a-presentation": {
+        "id": "h2a-presentation",
+        "publisher": "H2A",
+        "title": "Présentation de la H2A",
+        "url": "https://h2a-france.org/la-h2a/presentation-de-la-h2a/",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:40:17.359450+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://h2a-france.org/la-h2a/presentation-de-la-h2a/",
+        "finalUrl": "https://h2a-france.org/la-h2a/presentation-de-la-h2a/",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-presentation.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-presentation.html",
+        "contentSha256": "27e01182660e981d5ad4f336a71e8a3066460d459afe477cfea5c4a5768c1347",
+        "rawSha256": "33bd5871b521da1fe5cc19a3486cfbff16df8eb6d336369d03b19207502a325b",
+        "headers": {
+          "Cache-Control": "no-cache",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Expires": "Sun, 11 Oct 2026 12:40:16 GMT",
+          "Last-Modified": "Fri, 09 Oct 2026 09:22:35 GMT",
+          "Server": "nginx",
+          "Strict-Transport-Security": "max-age=63072000",
+          "Vary": "Accept-Encoding",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "SAMEORIGIN",
+          "X-Xss-Protection": "1; mode=block",
+          "Connection": "close",
+          "Transfer-Encoding": "chunked"
+        }
+      },
+      "cncc-representation": {
+        "id": "cncc-representation",
+        "publisher": "CNCC",
+        "title": "Représenter et faire rayonner la profession",
+        "url": "https://www.cncc.fr/missions/representer-la-profession",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:48:46.331998+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://www.cncc.fr/missions/representer-la-profession",
+        "finalUrl": "https://www.cncc.fr/missions/representer-la-profession",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/cncc-representation.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/cncc-representation.html",
+        "contentSha256": "81383fd9679c00c5b82d2ae1b5eebef5ca9183cc5979692654fa3e875a36fd48",
+        "rawSha256": "a9ba1ff0af8b33b09d8eee79e299dba666d67b953b1fc171f239996d23c948bf",
+        "headers": {
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Server": "Apache",
+          "Strict-Transport-Security": "max-age=63072000",
+          "X-XSS-Protection": "1; mode=block",
+          "Referrer-Policy": "strict-origin",
+          "X-Content-Type-Options": "nosniff",
+          "Feature-Policy": "ambient-light-sensor 'none'; autoplay 'none'; accelerometer 'none'; camera 'none'; display-capture 'none'; document-domain 'none'; encrypted-media 'none'; fullscreen 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; payment 'none'; picture-in-picture 'none'; sync-xhr 'none'; usb 'none'; wake-lock 'none'; xr-spatial-tracking 'none'",
+          "Permissions-Policy": "ambient-light-sensor=(), autoplay=(), accelerometer=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), sync-xhr=(), usb=(), wake-lock=(), xr-spatial-tracking=()",
+          "Content-Security-Policy": "default-src 'self' ; base-uri 'self' ; img-src 'self' https://unpkg.com/leaflet@1.9.4/* https://*.tile.openstreetmap.org data: blob: ; frame-src www.youtube.com player.vimeo.com ; object-src 'none' ; script-src 'self' cncc.matomo.cloud https://unpkg.com/leaflet@1.9.4/dist/leaflet.js ; style-src 'self' 'unsafe-inline' https://unpkg.com/leaflet@1.9.4/dist/leaflet.css ; connect-src 'self' https://cncc.matomo.cloud ; frame-ancestors 'self' https://cncc-sites-nationaux-admin.reeliant.net ;",
+          "Last-Modified": "Wed, 11 Jun 2025 08:24:02 GMT",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "704",
+          "Vary": "Accept-Encoding",
+          "Cache-Control": "max-age=0, no-cache, no-store, must-revalidate",
+          "Content-Type": "text/html",
+          "ETag": "\"2c0-63747891857d5\"-gzip",
+          "Connection": "close"
+        },
+        "textExtraction": "Hermes web_extract ; texte extrait de la page officielle. HTML HTTP conservé : coquille JavaScript, ne contient pas le corps.",
+        "textRetrievedAt": "2026-10-11T12:48:46.331998+00:00"
+      },
+      "cncc-sacc-vocabulaire": {
+        "id": "cncc-sacc-vocabulaire",
+        "publisher": "CNCC",
+        "title": "Services autres que la certification des comptes, présentation du guide 2018",
+        "url": "https://doc.cncc.fr/docs/services-autres-que-la-certifica",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:48:46.625778+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://doc.cncc.fr/docs/services-autres-que-la-certifica",
+        "finalUrl": "https://doc.cncc.fr/docs/services-autres-que-la-certifica",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/cncc-sacc-vocabulaire.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/cncc-sacc-vocabulaire.html",
+        "contentSha256": "da48f4040e9e9a28bf5814dc0d71f1e94f6c068d26eb9d643bdd90e5b38a4e57",
+        "rawSha256": "049eafe8e7b58a96df6f97580591339114733e5a8dfac0a4dc98d5b30a0c4b37",
+        "headers": {
+          "Server": "nginx",
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Content-Type": "text/html",
+          "Transfer-Encoding": "chunked",
+          "Connection": "close",
+          "X-DNS-Prefetch-Control": "off",
+          "X-Frame-Options": "SAMEORIGIN",
+          "Strict-Transport-Security": "max-age=15552000; includeSubDomains",
+          "X-Content-Type-Options": "nosniff",
+          "X-XSS-Protection": "1; mode=block",
+          "Cache-Control": "private, max-age=600",
+          "Vary": "Cookie, X-Requested-With"
+        },
+        "textExtraction": "Hermes web_extract ; texte extrait de la page officielle. HTML HTTP conservé : coquille JavaScript, ne contient pas le corps.",
+        "textRetrievedAt": "2026-10-11T12:48:46.625778+00:00"
+      },
+      "h2a-deontologie": {
+        "id": "h2a-deontologie",
+        "publisher": "H2A",
+        "title": "Sécuriser les interventions, principes fondamentaux de comportement",
+        "url": "https://h2a-france.org/normes/142282/",
+        "checkedAt": "2026-10-11",
+        "retrievedAt": "2026-10-11T12:40:17.469588+00:00",
+        "accessMode": "http",
+        "httpStatus": 200,
+        "requestedUrl": "https://h2a-france.org/normes/142282/",
+        "finalUrl": "https://h2a-france.org/normes/142282/",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-deontologie.txt",
+        "rawPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/h2a-deontologie.html",
+        "contentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+        "rawSha256": "915988f039dec6f95e82954f58de0ada4d2b0179f3abc5265c24aeea9f391ae5",
+        "headers": {
+          "Cache-Control": "no-cache",
+          "Content-Type": "text/html; charset=UTF-8",
+          "Date": "Sun, 11 Oct 2026 12:40:17 GMT",
+          "Expires": "Sun, 11 Oct 2026 12:40:16 GMT",
+          "Last-Modified": "Mon, 05 Oct 2026 12:03:57 GMT",
+          "Server": "nginx",
+          "Strict-Transport-Security": "max-age=63072000",
+          "Vary": "Accept-Encoding",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "SAMEORIGIN",
+          "X-Xss-Protection": "1; mode=block",
+          "Connection": "close",
+          "Transfer-Encoding": "chunked"
+        }
+      },
+      "dila-l821-35": {
+        "id": "dila-l821-35",
+        "publisher": "Légifrance — DILA/DINUM",
+        "title": "Code de commerce, L821-35",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559623",
+        "checkedAt": "2026-10-06",
+        "retrievedAt": "2026-10-05T22:44:11.834561+00:00",
+        "accessMode": "dila-copy",
+        "httpStatus": null,
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559623",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559623",
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559623",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-35.txt",
+        "contentSha256": "e647e35119c9a72ddd575bf0f3bddfb2105bab73644f7b56f6fb6eaf7c6d68d7",
+        "dilaCopyPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-35.json",
+        "dilaCopySha256": "a90f60b50fe48a2f58e8c60730151c7f626c1e2cf98e0de59ec7946e94cb3102",
+        "version": "LEGIARTI000051559623",
+        "versionDate": "2025-05-03",
+        "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+      },
+      "dila-l821-31": {
+        "id": "dila-l821-31",
+        "publisher": "Légifrance — DILA/DINUM",
+        "title": "Code de commerce, L821-31",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048524900",
+        "checkedAt": "2026-10-06",
+        "retrievedAt": "2026-10-05T22:44:11.834561+00:00",
+        "accessMode": "dila-copy",
+        "httpStatus": null,
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048524900",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048524900",
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048524900",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-31.txt",
+        "contentSha256": "e42e8e7fe6cfab04f2dd128fcb6d4c1b2e1d1b47e46c690067c424c64d35c2ff",
+        "dilaCopyPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-31.json",
+        "dilaCopySha256": "191be85706a4c40700ed3b86673ea73db7e36cb6153909b86853416f1b5b1d3f",
+        "version": "LEGIARTI000048524900",
+        "versionDate": "2024-01-01",
+        "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+      },
+      "dila-l821-53": {
+        "id": "dila-l821-53",
+        "publisher": "Légifrance — DILA/DINUM",
+        "title": "Code de commerce, L821-53",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+        "checkedAt": "2026-10-06",
+        "retrievedAt": "2026-10-05T22:44:11.834561+00:00",
+        "accessMode": "dila-copy",
+        "httpStatus": null,
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-53.txt",
+        "contentSha256": "a5c87e888b71632959330b3d958aaf0642a71e2ab7f4825f976be7b03a4731a6",
+        "dilaCopyPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l821-53.json",
+        "dilaCopySha256": "7ae42cb85f73440037fde83e826e6247b42bfaa2f34bd84e7524a2332927f47d",
+        "version": "LEGIARTI000048525441",
+        "versionDate": "2024-01-01",
+        "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+      },
+      "dila-l820-1": {
+        "id": "dila-l820-1",
+        "publisher": "Légifrance — DILA/DINUM",
+        "title": "Code de commerce, L820-1",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535351",
+        "checkedAt": "2026-10-06",
+        "retrievedAt": "2026-10-05T22:44:11.834561+00:00",
+        "accessMode": "dila-copy",
+        "httpStatus": null,
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535351",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535351",
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535351",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l820-1.txt",
+        "contentSha256": "99cedb51fd136639f5fa671b64f2790e5279f9e6a4c4e86d2332cd3f3b4fb66d",
+        "dilaCopyPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-l820-1.json",
+        "dilaCopySha256": "0fca3f9a5597d1c06d9999541e939e7ae0162b84cf79fceaf112c6f06d0142ee",
+        "version": "LEGIARTI000048535351",
+        "versionDate": "2024-01-01",
+        "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+      },
+      "dila-a821-63": {
+        "id": "dila-a821-63",
+        "publisher": "Légifrance — DILA/DINUM",
+        "title": "Code de commerce, A821-63",
+        "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050697008",
+        "checkedAt": "2026-10-06",
+        "retrievedAt": "2026-10-05T22:44:11.834561+00:00",
+        "accessMode": "dila-copy",
+        "httpStatus": null,
+        "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050697008",
+        "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050697008",
+        "upstreamUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000050697008",
+        "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-a821-63.txt",
+        "contentSha256": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+        "dilaCopyPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/dila-a821-63.json",
+        "dilaCopySha256": "90a9a59f0cdfdd71028702735d230cf1a1b8bab891c712e675ec0ad8ebf9bcc8",
+        "version": "LEGIARTI000050697008",
+        "versionDate": "2024-12-01",
+        "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+      }
+    },
+    "units": [
+      {
+        "id": "audit-legal-context-h2a-nep-200",
+        "entryId": "audit-legal",
+        "field": "context",
+        "text": "la NEP 200 décrit l’audit qui la prépare.",
+        "unitText": "L’article L.821-53 du Code de commerce porte la certification ; la NEP 200 décrit l’audit qui la prépare. Le terme « audit légal » est un vocabulaire professionnel, pas le nom d’une prestation Memlia.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Audit des comptes en vue de leur certification ; NEP 200 §03.",
+        "regime": "Objet de la norme, distinct de la certification prévue par L.821-53.",
+        "exceptions": "Reproduction institutionnelle H2A ; aucune garantie de consolidation complète du code.",
+        "citations": [
+          {
+            "text": "03. La présente norme a pour objet de définir les principes applicables à l’audit des comptes mis en œuvre par le commissaire aux comptes en vue de certifier les comptes.",
+            "locator": "h2a-nep-200:ligne-68"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-commonConfusion-cncc-representation",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "l’instance représentative de la profession",
+        "claimSubject": "CNCC",
+        "evidenceStatus": "role-institutionnel-source",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Rôle représentatif de la CNCC, distinct de la supervision H2A.",
+        "regime": "Présentation institutionnelle, sans nouvelle obligation normative.",
+        "exceptions": "La page CNCC ne constitue pas une approbation d’un outil Memlia.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-commonConfusion-synthese-memlia",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts.",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "evidenceStatus": "synthese-editoriale",
+        "basedOnUnitIds": ["h2a-commonConfusion-h2a-presentation", "h2a-commonConfusion-cncc-representation"],
+        "applicability": "Synthèse éditoriale des deux rôles institutionnels sourcés séparément.",
+        "regime": "Distinction de vocabulaire, sans obligation normative autonome.",
+        "exceptions": "La phrase n’est pas une citation de la page H2A ; les faits sur la CNCC sont rattachés à la page CNCC.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-context-frontiere-memlia",
+        "entryId": "cncc",
+        "field": "context",
+        "text": "Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "unitText": "La CNCC représente notamment la profession auprès de son régulateur, la H2A. Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "evidenceStatus": "frontiere-editoriale",
+        "applicability": "Interprétation éditoriale de l’usage des publications professionnelles ; non attribuée à la page de représentation CNCC.",
+        "regime": "Frontière de lecture Memlia, sans obligation normative autonome.",
+        "exceptions": "Ne qualifie pas juridiquement une publication particulière et ne prétend pas que la page de représentation établit une hiérarchie doctrine/norme.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-definition-h2a-nep-200",
+        "entryId": "nep",
+        "field": "definition",
+        "text": "Les normes d’exercice professionnel (NEP) encadrent les travaux du commissaire aux comptes dans les missions auxquelles elles s’appliquent. La NEP 200 fixe les principes de l’audit des comptes en vue de leur certification.",
+        "unitText": "Les normes d’exercice professionnel (NEP) encadrent les travaux du commissaire aux comptes dans les missions auxquelles elles s’appliquent. La NEP 200 fixe les principes de l’audit des comptes en vue de leur certification.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "03. La présente norme a pour objet de définir les principes applicables à l’audit des comptes mis en œuvre par le commissaire aux comptes en vue de certifier les comptes.",
+            "locator": "h2a-nep-200:ligne-68"
+          },
+          {
+            "text": "Il réalise sa mission d’audit des comptes conformément aux textes légaux et aux normes d’exercice professionnel relatives à cette mission.",
+            "locator": "h2a-nep-200:ligne-73"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-context-dila-a821-63",
+        "entryId": "nep",
+        "field": "context",
+        "text": "La NEP 200 est homologuée à l’article A.821-63 du Code de commerce.",
+        "unitText": "La NEP 200 est homologuée à l’article A.821-63 du Code de commerce. Le référentiel normatif de la H2A permet de retrouver les numéros d’usage et les textes correspondants ; le CAC apprécie ceux qui concernent sa mission.",
+        "sourceId": "dila-a821-63",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "La norme d'exercice professionnel relative aux principes applicables à l'audit des comptes mis en œuvre dans le cadre de la certification des comptes, homologuée par le garde des sceaux, ministre de la justice, figure ci-dessous :",
+            "locator": "dila-a821-63:ligne-1"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-context-h2a-referentiel",
+        "entryId": "nep",
+        "field": "context",
+        "text": "Le référentiel normatif de la H2A permet de retrouver les numéros d’usage et les textes correspondants ; le CAC apprécie ceux qui concernent sa mission.",
+        "unitText": "La NEP 200 est homologuée à l’article A.821-63 du Code de commerce. Le référentiel normatif de la H2A permet de retrouver les numéros d’usage et les textes correspondants ; le CAC apprécie ceux qui concernent sa mission.",
+        "sourceId": "h2a-referentiel",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Le présent référentiel recense l’ensemble des normes qui régissent les interventions des commissaires aux comptes et qu’ils doivent respecter pour mener à bien ces interventions.",
+            "locator": "h2a-referentiel:ligne-60"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-commonConfusion-h2a-nep-200",
+        "entryId": "nep",
+        "field": "commonConfusion",
+        "text": "Une NEP n’est pas un mode d’emploi du logiciel d’audit. Son application suppose des diligences et le jugement du CAC, pas la seule présence d’une checklist.",
+        "unitText": "Une NEP n’est pas un mode d’emploi du logiciel d’audit. Son application suppose des diligences et le jugement du CAC, pas la seule présence d’une checklist.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "03. La présente norme a pour objet de définir les principes applicables à l’audit des comptes mis en œuvre par le commissaire aux comptes en vue de certifier les comptes.",
+            "locator": "h2a-nep-200:ligne-68"
+          },
+          {
+            "text": "Il réalise sa mission d’audit des comptes conformément aux textes légaux et aux normes d’exercice professionnel relatives à cette mission.",
+            "locator": "h2a-nep-200:ligne-73"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-exampleFictitious-memlia",
+        "entryId": "nep",
+        "field": "exampleFictitious",
+        "text": "Dans un dossier fictif, le chef de mission repère la NEP 200 dans son référentiel avant de préciser les travaux attendus ; un tableau de suivi ne suffit pas à réaliser ces travaux.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "nep-automationBoundary-memlia",
+        "entryId": "nep",
+        "field": "automationBoundary",
+        "text": "Nous préparons les renvois et les listes de pièces selon une règle écrite ; le CAC choisit les diligences, apprécie leur exécution et leurs conclusions. Une référence introuvable suspend la proposition.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-definition-h2a-nep-200",
+        "entryId": "audit-legal",
+        "field": "definition",
+        "text": "L’audit légal des comptes désigne ici l’audit mis en œuvre par le commissaire aux comptes en vue de la certification des comptes annuels et, le cas échéant, consolidés. Il permet au CAC de fonder son opinion sur les comptes.",
+        "unitText": "L’audit légal des comptes désigne ici l’audit mis en œuvre par le commissaire aux comptes en vue de la certification des comptes annuels et, le cas échéant, consolidés. Il permet au CAC de fonder son opinion sur les comptes.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Pour répondre à ces obligations légales, le commissaire aux comptes formule une opinion sur les comptes annuels et, le cas échéant, une opinion sur les comptes consolidés, après avoir mis en œuvre un audit des comptes.",
+            "locator": "h2a-nep-200:ligne-66"
+          },
+          {
+            "text": "02. Conformément à l’article L. 821-55 du code de commerce, sans préjudice des obligations d’information résultant des rapports à émettre par le commissaire aux comptes et des autres dispositions qui définissent les diligences qui lui incombent, visées par ledit article, l’audit des comptes mis en œuvre au titre de la mission de certification des comptes ne consiste pas à garantir la viabilité ou la qualité de la gestion de la personne ou entité contrôlée.",
+            "locator": "h2a-nep-200:ligne-67"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-context-dila-l821-53",
+        "entryId": "audit-legal",
+        "field": "context",
+        "text": "L’article L.821-53 du Code de commerce porte la certification",
+        "unitText": "L’article L.821-53 du Code de commerce porte la certification ; la NEP 200 décrit l’audit qui la prépare. Le terme « audit légal » est un vocabulaire professionnel, pas le nom d’une prestation Memlia.",
+        "sourceId": "dila-l821-53",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "Les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine de la personne ou de l'entité à la fin de cet exercice.",
+            "locator": "dila-l821-53:ligne-1"
+          },
+          {
+            "text": "Lorsqu'une personne ou une entité établit des comptes consolidés, les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes consolidés sont réguliers et sincères et donnent une image fidèle du patrimoine, de la situation financière ainsi que du résultat de l'ensemble constitué par les personnes et entités comprises dans la consolidation.",
+            "locator": "dila-l821-53:ligne-2"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-commonConfusion-h2a-nep-200",
+        "entryId": "audit-legal",
+        "field": "commonConfusion",
+        "text": "L’audit des comptes ne garantit ni la viabilité de l’entité ni la qualité de sa gestion. Il se distingue de la préparation de la comptabilité et d’un simple contrôle de structure de fichier.",
+        "unitText": "L’audit des comptes ne garantit ni la viabilité de l’entité ni la qualité de sa gestion. Il se distingue de la préparation de la comptabilité et d’un simple contrôle de structure de fichier.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Pour répondre à ces obligations légales, le commissaire aux comptes formule une opinion sur les comptes annuels et, le cas échéant, une opinion sur les comptes consolidés, après avoir mis en œuvre un audit des comptes.",
+            "locator": "h2a-nep-200:ligne-66"
+          },
+          {
+            "text": "02. Conformément à l’article L. 821-55 du code de commerce, sans préjudice des obligations d’information résultant des rapports à émettre par le commissaire aux comptes et des autres dispositions qui définissent les diligences qui lui incombent, visées par ledit article, l’audit des comptes mis en œuvre au titre de la mission de certification des comptes ne consiste pas à garantir la viabilité ou la qualité de la gestion de la personne ou entité contrôlée.",
+            "locator": "h2a-nep-200:ligne-67"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-exampleFictitious-memlia",
+        "entryId": "audit-legal",
+        "field": "exampleFictitious",
+        "text": "Pour une entité fictive, l’équipe rassemble les éléments collectés et ses travaux ; le signataire apprécie ces éléments avant de formuler son opinion.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-automationBoundary-memlia",
+        "entryId": "audit-legal",
+        "field": "automationBoundary",
+        "text": "Nous préparons rapprochements, renvois et exceptions sans modifier les observations saisies ; le CAC conserve la stratégie d’audit, l’appréciation des éléments collectés, l’opinion et la signature.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "assurance-raisonnable-definition-h2a-nep-200",
+        "entryId": "assurance-raisonnable",
+        "field": "definition",
+        "text": "L’assurance raisonnable est le niveau d’assurance élevé, mais non absolu, que le CAC recherche pour conclure que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+        "unitText": "L’assurance raisonnable est le niveau d’assurance élevé, mais non absolu, que le CAC recherche pour conclure que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "08. La formulation, par le commissaire aux comptes, de son opinion sur les comptes nécessite qu’il obtienne l’assurance que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+            "locator": "h2a-nep-200:ligne-78"
+          },
+          {
+            "text": "Cette assurance élevée, mais non absolue du fait des limites de l’audit est qualifiée, par convention, d’« assurance raisonnable ».",
+            "locator": "h2a-nep-200:ligne-79"
+          },
+          {
+            "text": "09. Les limites de l’audit résultent notamment de l’utilisation des techniques de sondages, des limites inhérentes au contrôle interne, et du fait que la plupart des éléments collectés au cours de la mission conduisent davantage à des présomptions qu’à des certitudes.",
+            "locator": "h2a-nep-200:ligne-80"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "assurance-raisonnable-context-h2a-nep-200",
+        "entryId": "assurance-raisonnable",
+        "field": "context",
+        "text": "La NEP 200, paragraphes 08 et 09, relie cette assurance aux limites de l’audit, notamment aux sondages, au contrôle interne et à la nature des éléments collectés.",
+        "unitText": "La NEP 200, paragraphes 08 et 09, relie cette assurance aux limites de l’audit, notamment aux sondages, au contrôle interne et à la nature des éléments collectés.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "08. La formulation, par le commissaire aux comptes, de son opinion sur les comptes nécessite qu’il obtienne l’assurance que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+            "locator": "h2a-nep-200:ligne-78"
+          },
+          {
+            "text": "Cette assurance élevée, mais non absolue du fait des limites de l’audit est qualifiée, par convention, d’« assurance raisonnable ».",
+            "locator": "h2a-nep-200:ligne-79"
+          },
+          {
+            "text": "09. Les limites de l’audit résultent notamment de l’utilisation des techniques de sondages, des limites inhérentes au contrôle interne, et du fait que la plupart des éléments collectés au cours de la mission conduisent davantage à des présomptions qu’à des certitudes.",
+            "locator": "h2a-nep-200:ligne-80"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "assurance-raisonnable-commonConfusion-h2a-nep-200",
+        "entryId": "assurance-raisonnable",
+        "field": "commonConfusion",
+        "text": "L’assurance raisonnable n’est ni une certitude absolue ni un pourcentage de confiance fourni par un outil. Un fichier sans alerte ne démontre pas, à lui seul, l’absence d’anomalies significatives.",
+        "unitText": "L’assurance raisonnable n’est ni une certitude absolue ni un pourcentage de confiance fourni par un outil. Un fichier sans alerte ne démontre pas, à lui seul, l’absence d’anomalies significatives.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "08. La formulation, par le commissaire aux comptes, de son opinion sur les comptes nécessite qu’il obtienne l’assurance que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+            "locator": "h2a-nep-200:ligne-78"
+          },
+          {
+            "text": "Cette assurance élevée, mais non absolue du fait des limites de l’audit est qualifiée, par convention, d’« assurance raisonnable ».",
+            "locator": "h2a-nep-200:ligne-79"
+          },
+          {
+            "text": "09. Les limites de l’audit résultent notamment de l’utilisation des techniques de sondages, des limites inhérentes au contrôle interne, et du fait que la plupart des éléments collectés au cours de la mission conduisent davantage à des présomptions qu’à des certitudes.",
+            "locator": "h2a-nep-200:ligne-80"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "assurance-raisonnable-exampleFictitious-memlia",
+        "entryId": "assurance-raisonnable",
+        "field": "exampleFictitious",
+        "text": "Dans un dossier fictif, aucun écart n’apparaît dans les éléments examinés ; le CAC apprécie néanmoins si les travaux sont suffisants pour soutenir son opinion sur l’ensemble des comptes.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "assurance-raisonnable-automationBoundary-memlia",
+        "entryId": "assurance-raisonnable",
+        "field": "automationBoundary",
+        "text": "Nous présentons les contrôles exécutés, les données utilisées et leurs limites ; le CAC décide des travaux complémentaires et de la conclusion. L’outil n’attribue aucun niveau d’assurance à la mission.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "jugement-professionnel-definition-h2a-nep-200",
+        "entryId": "jugement-professionnel",
+        "field": "definition",
+        "text": "Le jugement professionnel est l’appréciation exercée par le CAC tout au long de ses travaux, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit et pour conclure à partir des éléments collectés.",
+        "unitText": "Le jugement professionnel est l’appréciation exercée par le CAC tout au long de ses travaux, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit et pour conclure à partir des éléments collectés.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "07. Par ailleurs, tout au long de ses travaux, le commissaire aux comptes exerce son jugement professionnel, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit à mettre en œuvre, et pour conclure à partir des éléments collectés.",
+            "locator": "h2a-nep-200:ligne-76"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "jugement-professionnel-context-h2a-nep-200",
+        "entryId": "jugement-professionnel",
+        "field": "context",
+        "text": "La NEP 200, paragraphe 07, situe ce jugement dans les choix de travaux et les conclusions. Une proposition technique ne porte pas cette appréciation à la place du professionnel.",
+        "unitText": "La NEP 200, paragraphe 07, situe ce jugement dans les choix de travaux et les conclusions. Une proposition technique ne porte pas cette appréciation à la place du professionnel.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "07. Par ailleurs, tout au long de ses travaux, le commissaire aux comptes exerce son jugement professionnel, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit à mettre en œuvre, et pour conclure à partir des éléments collectés.",
+            "locator": "h2a-nep-200:ligne-76"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "jugement-professionnel-commonConfusion-h2a-nep-200",
+        "entryId": "jugement-professionnel",
+        "field": "commonConfusion",
+        "text": "Le jugement professionnel n’est pas l’application aveugle d’un seuil ni la reprise d’une réponse d’IA. La décision repose sur l’appréciation des éléments collectés, non sur leur simple classement.",
+        "unitText": "Le jugement professionnel n’est pas l’application aveugle d’un seuil ni la reprise d’une réponse d’IA. La décision repose sur l’appréciation des éléments collectés, non sur leur simple classement.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "07. Par ailleurs, tout au long de ses travaux, le commissaire aux comptes exerce son jugement professionnel, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit à mettre en œuvre, et pour conclure à partir des éléments collectés.",
+            "locator": "h2a-nep-200:ligne-76"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "jugement-professionnel-exampleFictitious-memlia",
+        "entryId": "jugement-professionnel",
+        "field": "exampleFictitious",
+        "text": "Un écart fictif apparaît dans un rapprochement. Le chef de mission examine ses causes et propose des travaux ; le CAC apprécie leur portée plutôt que d’accepter le commentaire suggéré.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "jugement-professionnel-automationBoundary-memlia",
+        "entryId": "jugement-professionnel",
+        "field": "automationBoundary",
+        "text": "Nous préparons les comparaisons et les propositions dans une zone distincte ; les justifications, choix de procédures et conclusions saisis par l’équipe restent préservés. Le CAC décide.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "esprit-critique-definition-h2a-nep-200",
+        "entryId": "esprit-critique",
+        "field": "definition",
+        "text": "L’esprit critique est l’attitude par laquelle le CAC évalue la validité des éléments collectés et reste attentif aux informations qui contredisent ou remettent en cause leur fiabilité.",
+        "unitText": "L’esprit critique est l’attitude par laquelle le CAC évalue la validité des éléments collectés et reste attentif aux informations qui contredisent ou remettent en cause leur fiabilité.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "06. Tout au long de son audit, il fait preuve d’esprit critique et tient compte du fait que certaines situations peuvent conduire à des anomalies significatives dans les comptes.",
+            "locator": "h2a-nep-200:ligne-74"
+          },
+          {
+            "text": "A ce titre, le commissaire aux comptes évalue de façon critique la validité des éléments collectés au cours de ses travaux, et reste attentif aux informations qui contredisent ou remettent en cause la fiabilité des éléments obtenus.",
+            "locator": "h2a-nep-200:ligne-75"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "esprit-critique-context-h2a-nep-200",
+        "entryId": "esprit-critique",
+        "field": "context",
+        "text": "La NEP 200, paragraphe 06, demande cette attitude tout au long de l’audit, en tenant compte des situations susceptibles de conduire à des anomalies significatives dans les comptes.",
+        "unitText": "La NEP 200, paragraphe 06, demande cette attitude tout au long de l’audit, en tenant compte des situations susceptibles de conduire à des anomalies significatives dans les comptes.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "06. Tout au long de son audit, il fait preuve d’esprit critique et tient compte du fait que certaines situations peuvent conduire à des anomalies significatives dans les comptes.",
+            "locator": "h2a-nep-200:ligne-74"
+          },
+          {
+            "text": "A ce titre, le commissaire aux comptes évalue de façon critique la validité des éléments collectés au cours de ses travaux, et reste attentif aux informations qui contredisent ou remettent en cause la fiabilité des éléments obtenus.",
+            "locator": "h2a-nep-200:ligne-75"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "esprit-critique-commonConfusion-h2a-nep-200",
+        "entryId": "esprit-critique",
+        "field": "commonConfusion",
+        "text": "L’esprit critique n’est pas une suspicion systématique de fraude. Une alerte technique appelle une appréciation des éléments ; elle ne suffit pas à qualifier l’opération.",
+        "unitText": "L’esprit critique n’est pas une suspicion systématique de fraude. Une alerte technique appelle une appréciation des éléments ; elle ne suffit pas à qualifier l’opération.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "06. Tout au long de son audit, il fait preuve d’esprit critique et tient compte du fait que certaines situations peuvent conduire à des anomalies significatives dans les comptes.",
+            "locator": "h2a-nep-200:ligne-74"
+          },
+          {
+            "text": "A ce titre, le commissaire aux comptes évalue de façon critique la validité des éléments collectés au cours de ses travaux, et reste attentif aux informations qui contredisent ou remettent en cause la fiabilité des éléments obtenus.",
+            "locator": "h2a-nep-200:ligne-75"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "esprit-critique-exampleFictitious-memlia",
+        "entryId": "esprit-critique",
+        "field": "exampleFictitious",
+        "text": "Deux pièces fictives décrivent des dates différentes pour une même opération. L’équipe conserve les deux versions et examine la contradiction au lieu de retenir automatiquement la plus récente.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "esprit-critique-automationBoundary-memlia",
+        "entryId": "esprit-critique",
+        "field": "automationBoundary",
+        "text": "Nous repérons les divergences et conservons leurs pièces d’origine ; l’équipe examine les contradictions et le CAC apprécie la fiabilité des éléments. Une pièce illisible reste signalée, jamais interprétée par défaut.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-definition-h2a-deontologie",
+        "entryId": "independance-cac",
+        "field": "definition",
+        "text": "L’indépendance du CAC est une exigence applicable à ses missions et prestations, appréciée en réalité et en apparence, pour préserver ses conclusions des partis pris, conflits d’intérêts et risques d’autorévision.",
+        "unitText": "L’indépendance du CAC est une exigence applicable à ses missions et prestations, appréciée en réalité et en apparence, pour préserver ses conclusions des partis pris, conflits d’intérêts et risques d’autorévision.",
+        "sourceId": "h2a-deontologie",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "20. L’article 5 du code de déontologie dispose en son point I que “ le commissaire aux comptes doit être indépendant de la personne ou de l’entité à laquelle il fournit une mission ou une prestation. Il doit également éviter de se placer dans une situation qui pourrait être perçue comme de nature à compromettre l’exercice impartial de sa mission ou de sa prestation. Ces exigences s’appliquent pendant toute la durée de la mission ou de la prestation, tant à l’occasion qu’en dehors de leur exercice ”.",
+            "locator": "h2a-deontologie:ligne-115"
+          },
+          {
+            "text": "Cet article précise en son point II que l’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence et garantit l’absence de parti pris ou de conflits d’intérêts dans l’émission de ses conclusions ainsi que l’absence de risque d’autorévision.",
+            "locator": "h2a-deontologie:ligne-116"
+          },
+          {
+            "text": "22. L’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence, ce qui signifie que les conclusions qu’il émet à l’issue des missions qu’il exerce ou des prestations qu’il fournit doivent être non seulement dignes de confiance, mais également perçues comme telles par un tiers objectif, raisonnable et informé.",
+            "locator": "h2a-deontologie:ligne-120"
+          },
+          {
+            "text": "23. Ainsi, le commissaire aux comptes n’accepte pas une mission ou une prestation lorsque les faits et circonstances dans lesquels elle s’inscrit le placeraient dans une situation interdite ou incompatible prévue par les textes légaux et réglementaires. Il ne l’accepte pas davantage lorsqu’à l’issue de la mise en œuvre de la démarche usuellement dénommée “ risques et sauvegardes ” menée conformément aux principes définis dans la norme dédiée, il conclut que son indépendance est compromise.",
+            "locator": "h2a-deontologie:ligne-124"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-context-dila-l821-31",
+        "entryId": "independance-cac",
+        "field": "context",
+        "text": "L’article L.821-31 du Code de commerce traite notamment des intérêts et des liens incompatibles.",
+        "unitText": "L’article L.821-31 du Code de commerce traite notamment des intérêts et des liens incompatibles. La norme de déontologie publiée par la H2A précise l’appréciation de l’indépendance ; l’absence d’un intérêt financier ne résume pas toute cette exigence.",
+        "sourceId": "dila-l821-31",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "I.-Le commissaire aux comptes ne peut prendre, recevoir ou conserver, directement ou indirectement, un intérêt auprès de la personne ou de l'entité pour laquelle il exerce une mission ou une prestation, ou auprès d'une personne qui la contrôle ou qui est contrôlée par elle, au sens des I et II de l'article L. 233-3.",
+            "locator": "dila-l821-31:ligne-1"
+          },
+          {
+            "text": "Sans préjudice des dispositions contenues dans le présent livre ou dans le livre II, le code de déontologie prévu à l'article L. 821-36 définit les liens personnels, financiers et professionnels, concomitants ou antérieurs à la mission ou à la prestation du commissaire aux comptes, incompatibles avec l'exercice de celle-ci. Il précise en particulier les situations dans lesquelles l'indépendance du commissaire aux comptes est affectée, lorsqu'il appartient à un réseau pluridisciplinaire, national ou international, dont les membres ont un intérêt économique commun, par la fourniture de prestations de services à une personne ou à une entité contrôlée ou qui contrôle, au sens des I et II de l'article L. 233-3, la personne ou l'entité pour laquelle une mission ou une prestation est envisagée. Le code de déontologie précise également les restrictions à apporter à la détention d'intérêts financiers par les personnes mentionnées au II.",
+            "locator": "dila-l821-31:ligne-2"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-context-h2a-deontologie",
+        "entryId": "independance-cac",
+        "field": "context",
+        "text": "La norme de déontologie publiée par la H2A précise l’appréciation de l’indépendance ; l’absence d’un intérêt financier ne résume pas toute cette exigence.",
+        "unitText": "L’article L.821-31 du Code de commerce traite notamment des intérêts et des liens incompatibles. La norme de déontologie publiée par la H2A précise l’appréciation de l’indépendance ; l’absence d’un intérêt financier ne résume pas toute cette exigence.",
+        "sourceId": "h2a-deontologie",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "20. L’article 5 du code de déontologie dispose en son point I que “ le commissaire aux comptes doit être indépendant de la personne ou de l’entité à laquelle il fournit une mission ou une prestation. Il doit également éviter de se placer dans une situation qui pourrait être perçue comme de nature à compromettre l’exercice impartial de sa mission ou de sa prestation. Ces exigences s’appliquent pendant toute la durée de la mission ou de la prestation, tant à l’occasion qu’en dehors de leur exercice ”.",
+            "locator": "h2a-deontologie:ligne-115"
+          },
+          {
+            "text": "Cet article précise en son point II que l’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence et garantit l’absence de parti pris ou de conflits d’intérêts dans l’émission de ses conclusions ainsi que l’absence de risque d’autorévision.",
+            "locator": "h2a-deontologie:ligne-116"
+          },
+          {
+            "text": "22. L’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence, ce qui signifie que les conclusions qu’il émet à l’issue des missions qu’il exerce ou des prestations qu’il fournit doivent être non seulement dignes de confiance, mais également perçues comme telles par un tiers objectif, raisonnable et informé.",
+            "locator": "h2a-deontologie:ligne-120"
+          },
+          {
+            "text": "23. Ainsi, le commissaire aux comptes n’accepte pas une mission ou une prestation lorsque les faits et circonstances dans lesquels elle s’inscrit le placeraient dans une situation interdite ou incompatible prévue par les textes légaux et réglementaires. Il ne l’accepte pas davantage lorsqu’à l’issue de la mise en œuvre de la démarche usuellement dénommée “ risques et sauvegardes ” menée conformément aux principes définis dans la norme dédiée, il conclut que son indépendance est compromise.",
+            "locator": "h2a-deontologie:ligne-124"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-commonConfusion-h2a-deontologie",
+        "entryId": "independance-cac",
+        "field": "commonConfusion",
+        "text": "Partager un outil ou disposer d’accès séparés ne démontre pas l’indépendance. Cette appréciation porte sur les faits et circonstances de la mission ou de la prestation, en réalité et en apparence.",
+        "unitText": "Partager un outil ou disposer d’accès séparés ne démontre pas l’indépendance. Cette appréciation porte sur les faits et circonstances de la mission ou de la prestation, en réalité et en apparence.",
+        "sourceId": "h2a-deontologie",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "20. L’article 5 du code de déontologie dispose en son point I que “ le commissaire aux comptes doit être indépendant de la personne ou de l’entité à laquelle il fournit une mission ou une prestation. Il doit également éviter de se placer dans une situation qui pourrait être perçue comme de nature à compromettre l’exercice impartial de sa mission ou de sa prestation. Ces exigences s’appliquent pendant toute la durée de la mission ou de la prestation, tant à l’occasion qu’en dehors de leur exercice ”.",
+            "locator": "h2a-deontologie:ligne-115"
+          },
+          {
+            "text": "Cet article précise en son point II que l’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence et garantit l’absence de parti pris ou de conflits d’intérêts dans l’émission de ses conclusions ainsi que l’absence de risque d’autorévision.",
+            "locator": "h2a-deontologie:ligne-116"
+          },
+          {
+            "text": "22. L’indépendance du commissaire aux comptes s’apprécie en réalité et en apparence, ce qui signifie que les conclusions qu’il émet à l’issue des missions qu’il exerce ou des prestations qu’il fournit doivent être non seulement dignes de confiance, mais également perçues comme telles par un tiers objectif, raisonnable et informé.",
+            "locator": "h2a-deontologie:ligne-120"
+          },
+          {
+            "text": "23. Ainsi, le commissaire aux comptes n’accepte pas une mission ou une prestation lorsque les faits et circonstances dans lesquels elle s’inscrit le placeraient dans une situation interdite ou incompatible prévue par les textes légaux et réglementaires. Il ne l’accepte pas davantage lorsqu’à l’issue de la mise en œuvre de la démarche usuellement dénommée “ risques et sauvegardes ” menée conformément aux principes définis dans la norme dédiée, il conclut que son indépendance est compromise.",
+            "locator": "h2a-deontologie:ligne-124"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-exampleFictitious-memlia",
+        "entryId": "independance-cac",
+        "field": "exampleFictitious",
+        "text": "Dans un cas fictif, un cabinet mixte envisage un outil utilisé en production comptable et en audit. Il examine les missions, les accès et les risques d’autorévision avant tout usage.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "independance-cac-automationBoundary-memlia",
+        "entryId": "independance-cac",
+        "field": "automationBoundary",
+        "text": "Nous préparons l’inventaire des accès, rôles et traitements ; le CAC apprécie les incompatibilités et les risques, puis décide des conditions d’usage. Aucun indicateur automatique ne déclare la mission indépendante.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "secret-professionnel-cac-definition-dila-l821-35",
+        "entryId": "secret-professionnel-cac",
+        "field": "definition",
+        "text": "Le secret professionnel du CAC protège les faits, actes et renseignements connus dans l’exercice de la profession. L’article L.821-35 du Code de commerce y astreint les commissaires aux comptes, leurs collaborateurs et experts, sous les réserves et exceptions qu’il prévoit.",
+        "unitText": "Le secret professionnel du CAC protège les faits, actes et renseignements connus dans l’exercice de la profession. L’article L.821-35 du Code de commerce y astreint les commissaires aux comptes, leurs collaborateurs et experts, sous les réserves et exceptions qu’il prévoit.",
+        "sourceId": "dila-l821-35",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "Sous réserve des dispositions de l'article L. 821-10 et des dispositions législatives particulières, les commissaires aux comptes, ainsi que leurs collaborateurs et experts, sont astreints au secret professionnel pour les faits, actes et renseignements dont ils ont pu avoir connaissance dans l'exercice de leur profession. Toutefois, ils sont déliés du secret professionnel à l'égard du président du tribunal de commerce ou du tribunal judiciaire lorsqu'ils font application des dispositions du chapitre IV du titre III du livre II ou du chapitre II du titre Ier du livre VI.",
+            "locator": "dila-l821-35:ligne-1"
+          },
+          {
+            "text": "Lorsqu'une personne morale ou entité fait certifier ses comptes par un commissaire aux comptes différent de celui qui certifie ses informations en matière de durabilité, ceux-ci sont, les uns à l'égard des autres, libérés de leur secret professionnel. Le commissaire aux comptes qui certifie les comptes d'une personne morale ou entité qui fait certifier ses informations en matière de durabilité par un organisme tiers indépendant est libéré de son secret professionnel vis-à-vis de ce dernier.",
+            "locator": "dila-l821-35:ligne-2"
+          },
+          {
+            "text": "Lorsqu'une personne morale établit des comptes consolidés ou une publication d'informations consolidées en matière de durabilité, les commissaires aux comptes de la personne morale consolidante et les commissaires aux comptes des personnes consolidées sont, les uns à l'égard des autres, libérés du secret professionnel. De même, les commissaires aux comptes sont libérés de leur secret professionnel à l'égard des organismes tiers indépendants lorsque ces derniers procèdent à la certification d'informations en matière de durabilité au sein de l'entité consolidante ou consolidée. Ces dispositions s'appliquent également lorsqu'une personne établit des comptes combinés ou des informations combinées en matière de durabilité.",
+            "locator": "dila-l821-35:ligne-3"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "secret-professionnel-cac-context-dila-l821-35",
+        "entryId": "secret-professionnel-cac",
+        "field": "context",
+        "text": "Le même article prévoit des cas de levée du secret, notamment entre certains intervenants à la certification des comptes ou des informations de durabilité. Ces cas ne constituent pas une autorisation générale de transmettre un dossier à un prestataire ou à une IA.",
+        "unitText": "Le même article prévoit des cas de levée du secret, notamment entre certains intervenants à la certification des comptes ou des informations de durabilité. Ces cas ne constituent pas une autorisation générale de transmettre un dossier à un prestataire ou à une IA.",
+        "sourceId": "dila-l821-35",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "Sous réserve des dispositions de l'article L. 821-10 et des dispositions législatives particulières, les commissaires aux comptes, ainsi que leurs collaborateurs et experts, sont astreints au secret professionnel pour les faits, actes et renseignements dont ils ont pu avoir connaissance dans l'exercice de leur profession. Toutefois, ils sont déliés du secret professionnel à l'égard du président du tribunal de commerce ou du tribunal judiciaire lorsqu'ils font application des dispositions du chapitre IV du titre III du livre II ou du chapitre II du titre Ier du livre VI.",
+            "locator": "dila-l821-35:ligne-1"
+          },
+          {
+            "text": "Lorsqu'une personne morale ou entité fait certifier ses comptes par un commissaire aux comptes différent de celui qui certifie ses informations en matière de durabilité, ceux-ci sont, les uns à l'égard des autres, libérés de leur secret professionnel. Le commissaire aux comptes qui certifie les comptes d'une personne morale ou entité qui fait certifier ses informations en matière de durabilité par un organisme tiers indépendant est libéré de son secret professionnel vis-à-vis de ce dernier.",
+            "locator": "dila-l821-35:ligne-2"
+          },
+          {
+            "text": "Lorsqu'une personne morale établit des comptes consolidés ou une publication d'informations consolidées en matière de durabilité, les commissaires aux comptes de la personne morale consolidante et les commissaires aux comptes des personnes consolidées sont, les uns à l'égard des autres, libérés du secret professionnel. De même, les commissaires aux comptes sont libérés de leur secret professionnel à l'égard des organismes tiers indépendants lorsque ces derniers procèdent à la certification d'informations en matière de durabilité au sein de l'entité consolidante ou consolidée. Ces dispositions s'appliquent également lorsqu'une personne établit des comptes combinés ou des informations combinées en matière de durabilité.",
+            "locator": "dila-l821-35:ligne-3"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "secret-professionnel-cac-commonConfusion-dila-l821-35",
+        "entryId": "secret-professionnel-cac",
+        "field": "commonConfusion",
+        "text": "Un traitement présenté comme local ne suffit pas à établir le respect du secret. Le recours à un prestataire ou à une IA n’est pas, en soi, un cas de levée du secret prévu par l’article L.821-35.",
+        "unitText": "Un traitement présenté comme local ne suffit pas à établir le respect du secret. Le recours à un prestataire ou à une IA n’est pas, en soi, un cas de levée du secret prévu par l’article L.821-35.",
+        "sourceId": "dila-l821-35",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "Sous réserve des dispositions de l'article L. 821-10 et des dispositions législatives particulières, les commissaires aux comptes, ainsi que leurs collaborateurs et experts, sont astreints au secret professionnel pour les faits, actes et renseignements dont ils ont pu avoir connaissance dans l'exercice de leur profession. Toutefois, ils sont déliés du secret professionnel à l'égard du président du tribunal de commerce ou du tribunal judiciaire lorsqu'ils font application des dispositions du chapitre IV du titre III du livre II ou du chapitre II du titre Ier du livre VI.",
+            "locator": "dila-l821-35:ligne-1"
+          },
+          {
+            "text": "Lorsqu'une personne morale ou entité fait certifier ses comptes par un commissaire aux comptes différent de celui qui certifie ses informations en matière de durabilité, ceux-ci sont, les uns à l'égard des autres, libérés de leur secret professionnel. Le commissaire aux comptes qui certifie les comptes d'une personne morale ou entité qui fait certifier ses informations en matière de durabilité par un organisme tiers indépendant est libéré de son secret professionnel vis-à-vis de ce dernier.",
+            "locator": "dila-l821-35:ligne-2"
+          },
+          {
+            "text": "Lorsqu'une personne morale établit des comptes consolidés ou une publication d'informations consolidées en matière de durabilité, les commissaires aux comptes de la personne morale consolidante et les commissaires aux comptes des personnes consolidées sont, les uns à l'égard des autres, libérés du secret professionnel. De même, les commissaires aux comptes sont libérés de leur secret professionnel à l'égard des organismes tiers indépendants lorsque ces derniers procèdent à la certification d'informations en matière de durabilité au sein de l'entité consolidante ou consolidée. Ces dispositions s'appliquent également lorsqu'une personne établit des comptes combinés ou des informations combinées en matière de durabilité.",
+            "locator": "dila-l821-35:ligne-3"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "secret-professionnel-cac-exampleFictitious-memlia",
+        "entryId": "secret-professionnel-cac",
+        "field": "exampleFictitious",
+        "text": "Dans un essai fictif, le cabinet décrit un traitement avec des pièces inventées. Avant un usage sur un dossier, il examine les données, accès, destinataires et appels réseau de l’environnement envisagé.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "secret-professionnel-cac-automationBoundary-memlia",
+        "entryId": "secret-professionnel-cac",
+        "field": "automationBoundary",
+        "text": "Nous documentons les données et leurs flux, utilisons des jeux fictifs pour les essais et signalons toute destination inconnue ; le CAC apprécie les conditions d’utilisation avant une transmission. Les fichiers clients ne servent pas à illustrer le glossaire.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-definition-dila-l820-1",
+        "entryId": "h2a",
+        "field": "definition",
+        "text": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+        "unitText": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+        "sourceId": "dila-l820-1",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "I.-La Haute autorité de l'audit est une autorité publique indépendante.",
+            "locator": "dila-l820-1:ligne-1"
+          },
+          {
+            "text": " 2° Elle adopte les normes relatives à la déontologie, au contrôle interne de qualité et à l'exercice professionnel des commissaires aux comptes et, dans l'exercice de leur mission de certification des informations en matière de durabilité, des organismes tiers indépendants et des auditeurs des informations en matière de durabilité ;",
+            "locator": "dila-l820-1:ligne-4"
+          },
+          {
+            "text": " 5° Elle définit le cadre et les orientations des contrôles prévus aux articles L. 820-14 et L. 820-15 concernant les commissaires aux comptes, les organismes tiers indépendants et les auditeurs des informations en matière de durabilité. Elle les réalise directement ou dans les conditions prévues au II du présent article et peut émettre des recommandations dans le cadre de leur suivi ;",
+            "locator": "dila-l820-1:ligne-7"
+          },
+          {
+            "text": " 6° Elle diligente des enquêtes portant sur les manquements aux dispositions du présent titre et à celles du règlement (UE) n° 537/2014 du 16 avril 2014 ;",
+            "locator": "dila-l820-1:ligne-8"
+          },
+          {
+            "text": " 7° Elle prononce des sanctions dans les conditions prévues à la section 4 du chapitre Ier et à la sous-section 2 de la section 4 du chapitre II ;",
+            "locator": "dila-l820-1:ligne-9"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-definition-h2a-presentation",
+        "entryId": "h2a",
+        "field": "definition",
+        "text": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+        "unitText": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+        "sourceId": "h2a-presentation",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Autorité publique indépendante dotée de la personnalité morale et créée par l’ordonnance n° 2023-1142 du 6 décembre 2023 portant transposition de la directive européenne CSRD (Corporate Sustainability Reporting Directive), la Haute autorité de l’audit (H2A) a succédé, le 1er janvier 2024, au Haut Conseil du commissariat aux comptes (H3C).",
+            "locator": "h2a-presentation:ligne-58"
+          },
+          {
+            "text": "En sus de reprendre les missions historiques du H3C, la H2A a vu ses missions étendues à la supervision de la mission de certification des informations en matière de durabilité et à ses acteurs (commissaires aux comptes, organismes tiers indépendants1 et leurs associés, dirigeants ou collaborateurs).",
+            "locator": "h2a-presentation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-context-dila-l820-1",
+        "entryId": "h2a",
+        "field": "context",
+        "text": "L’article L.820-1 du Code de commerce décrit ses missions, dont l’adoption des normes, les contrôles, les enquêtes et les sanctions.",
+        "unitText": "L’article L.820-1 du Code de commerce décrit ses missions, dont l’adoption des normes, les contrôles, les enquêtes et les sanctions. La H2A a succédé au H3C le 1er janvier 2024.",
+        "sourceId": "dila-l820-1",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "I.-La Haute autorité de l'audit est une autorité publique indépendante.",
+            "locator": "dila-l820-1:ligne-1"
+          },
+          {
+            "text": " 2° Elle adopte les normes relatives à la déontologie, au contrôle interne de qualité et à l'exercice professionnel des commissaires aux comptes et, dans l'exercice de leur mission de certification des informations en matière de durabilité, des organismes tiers indépendants et des auditeurs des informations en matière de durabilité ;",
+            "locator": "dila-l820-1:ligne-4"
+          },
+          {
+            "text": " 5° Elle définit le cadre et les orientations des contrôles prévus aux articles L. 820-14 et L. 820-15 concernant les commissaires aux comptes, les organismes tiers indépendants et les auditeurs des informations en matière de durabilité. Elle les réalise directement ou dans les conditions prévues au II du présent article et peut émettre des recommandations dans le cadre de leur suivi ;",
+            "locator": "dila-l820-1:ligne-7"
+          },
+          {
+            "text": " 6° Elle diligente des enquêtes portant sur les manquements aux dispositions du présent titre et à celles du règlement (UE) n° 537/2014 du 16 avril 2014 ;",
+            "locator": "dila-l820-1:ligne-8"
+          },
+          {
+            "text": " 7° Elle prononce des sanctions dans les conditions prévues à la section 4 du chapitre Ier et à la sous-section 2 de la section 4 du chapitre II ;",
+            "locator": "dila-l820-1:ligne-9"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-context-h2a-presentation",
+        "entryId": "h2a",
+        "field": "context",
+        "text": "La H2A a succédé au H3C le 1er janvier 2024.",
+        "unitText": "L’article L.820-1 du Code de commerce décrit ses missions, dont l’adoption des normes, les contrôles, les enquêtes et les sanctions. La H2A a succédé au H3C le 1er janvier 2024.",
+        "sourceId": "h2a-presentation",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Autorité publique indépendante dotée de la personnalité morale et créée par l’ordonnance n° 2023-1142 du 6 décembre 2023 portant transposition de la directive européenne CSRD (Corporate Sustainability Reporting Directive), la Haute autorité de l’audit (H2A) a succédé, le 1er janvier 2024, au Haut Conseil du commissariat aux comptes (H3C).",
+            "locator": "h2a-presentation:ligne-58"
+          },
+          {
+            "text": "En sus de reprendre les missions historiques du H3C, la H2A a vu ses missions étendues à la supervision de la mission de certification des informations en matière de durabilité et à ses acteurs (commissaires aux comptes, organismes tiers indépendants1 et leurs associés, dirigeants ou collaborateurs).",
+            "locator": "h2a-presentation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-commonConfusion-h2a-presentation",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "l’autorité de supervision",
+        "claimSubject": "H2A",
+        "evidenceStatus": "role-institutionnel-source",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": "h2a-presentation",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Autorité publique indépendante dotée de la personnalité morale et créée par l’ordonnance n° 2023-1142 du 6 décembre 2023 portant transposition de la directive européenne CSRD (Corporate Sustainability Reporting Directive), la Haute autorité de l’audit (H2A) a succédé, le 1er janvier 2024, au Haut Conseil du commissariat aux comptes (H3C).",
+            "locator": "h2a-presentation:ligne-58"
+          },
+          {
+            "text": "En sus de reprendre les missions historiques du H3C, la H2A a vu ses missions étendues à la supervision de la mission de certification des informations en matière de durabilité et à ses acteurs (commissaires aux comptes, organismes tiers indépendants1 et leurs associés, dirigeants ou collaborateurs).",
+            "locator": "h2a-presentation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-exampleFictitious-memlia",
+        "entryId": "h2a",
+        "field": "exampleFictitious",
+        "text": "Pour un dossier fictif, le cabinet consulte le référentiel H2A pour retrouver une norme applicable ; il distingue cette publication officielle de la documentation de son logiciel.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-automationBoundary-memlia",
+        "entryId": "h2a",
+        "field": "automationBoundary",
+        "text": "Nous préparons des renvois traçables vers les textes et signalons un lien absent ; le CAC vérifie la version et son application à la mission. Aucune proposition ne reçoit un label d’approbation H2A.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-definition-cncc-representation",
+        "entryId": "cncc",
+        "field": "definition",
+        "text": "La Compagnie nationale des commissaires aux comptes (CNCC) est l’instance représentative de la profession en France. Elle porte la voix des commissaires aux comptes auprès des institutions et des parties prenantes.",
+        "unitText": "La Compagnie nationale des commissaires aux comptes (CNCC) est l’instance représentative de la profession en France. Elle porte la voix des commissaires aux comptes auprès des institutions et des parties prenantes.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-context-cncc-representation",
+        "entryId": "cncc",
+        "field": "context",
+        "text": "La CNCC représente notamment la profession auprès de son régulateur, la H2A.",
+        "unitText": "La CNCC représente notamment la profession auprès de son régulateur, la H2A. Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-commonConfusion-cncc-representation",
+        "entryId": "cncc",
+        "field": "commonConfusion",
+        "text": "La CNCC n’est pas la H2A.",
+        "unitText": "La CNCC n’est pas la H2A. Un guide professionnel n’établit pas à lui seul que l’environnement du cabinet ou une automatisation est conforme aux normes applicables.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-exampleFictitious-memlia",
+        "entryId": "cncc",
+        "field": "exampleFictitious",
+        "text": "Dans une préparation fictive, l’équipe repère une publication CNCC et le texte qu’elle cite. Elle conserve le renvoi officiel pour distinguer commentaire professionnel et exigence applicable.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-automationBoundary-memlia",
+        "entryId": "cncc",
+        "field": "automationBoundary",
+        "text": "Nous indexons les références et séparons les textes des commentaires ; le CAC apprécie leur portée et leur actualité. Nous ne reproduisons pas de modèles réservés ni n’inventons une approbation CNCC.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-definition-cncc-sacc-vocabulaire",
+        "entryId": "sacc",
+        "field": "definition",
+        "text": "Les services autres que la certification des comptes (SACC) désignent, dans le vocabulaire professionnel, les services distincts de la mission de certification.",
+        "unitText": "Les services autres que la certification des comptes (SACC) désignent, dans le vocabulaire professionnel, les services distincts de la mission de certification. Ce terme ne signifie pas que tout service peut être fourni par le CAC.",
+        "sourceId": "cncc-sacc-vocabulaire",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Guide CNCC 2018 cité uniquement pour le vocabulaire SACC, pas comme état du droit actuel.",
+        "citations": [
+          {
+            "text": "Services autres que la certification des comptes : Guide d'application à l'attention des entreprises, des comités d'audit, des conseils d'administration et de surveillance et des commissaires aux comptes",
+            "locator": "cncc-sacc-vocabulaire:ligne-9"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-definition-h2a-deontologie",
+        "entryId": "sacc",
+        "field": "definition",
+        "text": "Ce terme ne signifie pas que tout service peut être fourni par le CAC.",
+        "unitText": "Les services autres que la certification des comptes (SACC) désignent, dans le vocabulaire professionnel, les services distincts de la mission de certification. Ce terme ne signifie pas que tout service peut être fourni par le CAC.",
+        "sourceId": "h2a-deontologie",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "08. Mission : conformément au III de l’article L. 821-2 du code de commerce, le terme mission recouvre :",
+            "locator": "h2a-deontologie:ligne-78"
+          },
+          {
+            "text": "09. Prestation : conformément au IV de l’article L. 821-2 du code de commerce, le terme prestation recouvre les services et attestations qui ne sont pas des missions visées au paragraphe 08 de la présente norme, qu’un commissaire aux comptes fournit à une personne ou une entité pour laquelle il exerce ou non la mission de contrôle légal. Il peut s’agir par exemple d’un audit financier contractuel ou encore d’une revue de conformité à un référentiel.",
+            "locator": "h2a-deontologie:ligne-81"
+          },
+          {
+            "text": "23. Ainsi, le commissaire aux comptes n’accepte pas une mission ou une prestation lorsque les faits et circonstances dans lesquels elle s’inscrit le placeraient dans une situation interdite ou incompatible prévue par les textes légaux et réglementaires. Il ne l’accepte pas davantage lorsqu’à l’issue de la mise en œuvre de la démarche usuellement dénommée “ risques et sauvegardes ” menée conformément aux principes définis dans la norme dédiée, il conclut que son indépendance est compromise.",
+            "locator": "h2a-deontologie:ligne-124"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-context-cncc-sacc-vocabulaire",
+        "entryId": "sacc",
+        "field": "context",
+        "text": "La CNCC emploie cet intitulé dans sa documentation.",
+        "unitText": "La CNCC emploie cet intitulé dans sa documentation. La norme de déontologie de la H2A distingue les missions légales ou réglementaires et les prestations, parmi lesquelles un audit financier contractuel ; le CAC apprécie le cadre et l’indépendance de chaque intervention.",
+        "sourceId": "cncc-sacc-vocabulaire",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Guide CNCC 2018 cité uniquement pour le vocabulaire SACC, pas comme état du droit actuel.",
+        "citations": [
+          {
+            "text": "Services autres que la certification des comptes : Guide d'application à l'attention des entreprises, des comités d'audit, des conseils d'administration et de surveillance et des commissaires aux comptes",
+            "locator": "cncc-sacc-vocabulaire:ligne-9"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-context-h2a-deontologie",
+        "entryId": "sacc",
+        "field": "context",
+        "text": "La norme de déontologie de la H2A distingue les missions légales ou réglementaires et les prestations, parmi lesquelles un audit financier contractuel ; le CAC apprécie le cadre et l’indépendance de chaque intervention.",
+        "unitText": "La CNCC emploie cet intitulé dans sa documentation. La norme de déontologie de la H2A distingue les missions légales ou réglementaires et les prestations, parmi lesquelles un audit financier contractuel ; le CAC apprécie le cadre et l’indépendance de chaque intervention.",
+        "sourceId": "h2a-deontologie",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "08. Mission : conformément au III de l’article L. 821-2 du code de commerce, le terme mission recouvre :",
+            "locator": "h2a-deontologie:ligne-78"
+          },
+          {
+            "text": "09. Prestation : conformément au IV de l’article L. 821-2 du code de commerce, le terme prestation recouvre les services et attestations qui ne sont pas des missions visées au paragraphe 08 de la présente norme, qu’un commissaire aux comptes fournit à une personne ou une entité pour laquelle il exerce ou non la mission de contrôle légal. Il peut s’agir par exemple d’un audit financier contractuel ou encore d’une revue de conformité à un référentiel.",
+            "locator": "h2a-deontologie:ligne-81"
+          },
+          {
+            "text": "23. Ainsi, le commissaire aux comptes n’accepte pas une mission ou une prestation lorsque les faits et circonstances dans lesquels elle s’inscrit le placeraient dans une situation interdite ou incompatible prévue par les textes légaux et réglementaires. Il ne l’accepte pas davantage lorsqu’à l’issue de la mise en œuvre de la démarche usuellement dénommée “ risques et sauvegardes ” menée conformément aux principes définis dans la norme dédiée, il conclut que son indépendance est compromise.",
+            "locator": "h2a-deontologie:ligne-124"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-commonConfusion-memlia",
+        "entryId": "sacc",
+        "field": "commonConfusion",
+        "text": "SACC et certification des comptes ne sont pas interchangeables. Définir ce vocabulaire ne publie aucune offre Memlia et ne rouvre pas les familles de services gardées en réserve.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-exampleFictitious-memlia",
+        "entryId": "sacc",
+        "field": "exampleFictitious",
+        "text": "Une entité fictive demande un audit contractuel. Le CAC examine la demande et les conditions d’intervention avant de l’accepter ; le mot SACC ne vaut pas accord.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      },
+      {
+        "id": "sacc-automationBoundary-memlia",
+        "entryId": "sacc",
+        "field": "automationBoundary",
+        "text": "Nous préparons les pièces et le périmètre décrit par le cabinet ; le CAC décide de l’acceptation, des conditions d’indépendance, des travaux et de leur restitution. Aucun service en réserve n’est proposé par cette entrée.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "applicability": "Exemple fictif ou frontière de préparation Memlia.",
+        "regime": "Convention de travail, sans obligation normative autonome.",
+        "exceptions": "Aucune opinion, acceptation ou décision d’audit automatisée.",
+        "citations": [],
+        "businessVerdict": null
+      }
+    ]
+  },
+  "linkChecks": [
+    {
+      "href": "/blog/verifier-reponse-ia-comptabilite",
+      "url": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "finalUrl": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "httpStatus": 200,
+      "inMain": true,
+      "hasArticleBody": true,
+      "checkedAt": "2026-10-11T12:50:56.534594+00:00",
+      "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/link-critique.html",
+      "sha256": "33c7a111514e30cf6b186c4d18a5500c7586144a09933ab41a3bf85b864c5fa9",
+      "sourcePath": "src/content/blog/verifier-reponse-ia-comptabilite.md"
+    },
+    {
+      "href": "/blog/ia-comptabilite-confidentialite-donnees",
+      "url": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "finalUrl": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "httpStatus": 200,
+      "inMain": true,
+      "hasArticleBody": true,
+      "checkedAt": "2026-10-11T12:50:56.676997+00:00",
+      "snapshotPath": "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/link-secret.html",
+      "sha256": "d7b2038e8865be43f195a19d369cabf14ea862ec0323dd0578cf6c71e138f3ee",
+      "sourcePath": "src/content/blog/ia-comptabilite-confidentialite-donnees.md"
+    }
+  ],
+  "deferredLinks": [
+    {
+      "entryIds": [
+        "nep",
+        "audit-legal",
+        "h2a",
+        "cncc"
+      ],
+      "href": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "reason": "Destination future ARCHITECTURE-CAC.md ; absente de src/content/blog sur main, ne pas publier ce lien."
+    },
+    {
+      "entryIds": [
+        "jugement-professionnel",
+        "esprit-critique",
+        "independance-cac"
+      ],
+      "href": "/blog/cac-appreciation-outil-automatise",
+      "reason": "Supplément F4 retenu, non publié sur main ; lien à promouvoir seulement après livraison."
+    }
+  ],
+  "compatibility": {
+    "entryShape": "GlossaryEntry",
+    "sourceShape": "GlossarySource",
+    "dateExtensionRequired": [
+      "2026-10-06",
+      "2026-10-11"
+    ],
+    "note": "Les dates réelles ne figurent pas encore dans l’union sourceCheckedAt de main. L’intégrateur ajoute ces deux littéraux, sans redater les preuves ; tous les autres champs conservent le contrat.",
+    "globalFilesModified": false
+  },
+  "review": {
+    "status": "pending",
+    "taskId": "t_ada6a80c",
+    "publicationAuthorized": false
+  }
+}

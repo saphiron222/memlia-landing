@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-10-11T22:44:44.613428+00:00",
+  "candidateSha256": "ac2a865bd0c61b38e944f7c943bfe2479a090f1c3a2109fa2b11228485a0e65d",
+  "entries": 10,
+  "units": 60,
+  "publicEntriesUnchanged": true,
+  "sourcesUnchanged": true,
+  "unchangedUnits": 53,
+  "modifiedUnits": 3,
+  "newUnits": 4,
+  "identicalSourceCopyFiles": 25,
+  "results": {
+    "corrections": {
+      "command": [
+        "python3",
+        "tests-corrections.py"
+      ],
+      "exitCode": 0
+    },
+    "format": {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/validate.mjs"
+      ],
+      "exitCode": 0
+    },
+    "mutations": {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/mutations.mjs"
+      ],
+      "exitCode": 0
+    },
+    "dila": {
+      "command": [
+        "node",
+        "--test",
+        "/Users/kevinkitanga/.hermes/kanban/workspaces/t_ada6a80c/reexamen/main/tests/scripts/dila-source-copy.test.mjs"
+      ],
+      "exitCode": 0
+    },
+    "shape": {
+      "command": [
+        "/Users/kevinkitanga/dev/interne/memlia-landing/node_modules/.bin/tsc",
+        "--ignoreConfig",
+        "--noEmit",
+        "--skipLibCheck",
+        "--strict",
+        "--target",
+        "ES2022",
+        "--moduleResolution",
+        "bundler",
+        "--module",
+        "ESNext",
+        "docs/qa/hub-ressources/glossaire-cac-lot-1-sources/shape-check.ts"
+      ],
+      "exitCode": 0
+    },
+    "reintroduced-D1": {
+      "exitCode": 1,
+      "expectedExitCode": 1
+    },
+    "reintroduced-D2": {
+      "exitCode": 1,
+      "expectedExitCode": 1
+    },
+    "reintroduced-D3": {
+      "exitCode": 1,
+      "expectedExitCode": 1
+    }
+  }
+}

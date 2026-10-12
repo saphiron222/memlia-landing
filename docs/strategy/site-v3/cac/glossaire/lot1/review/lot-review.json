@@ -1,0 +1,1157 @@
+{
+  "schemaVersion": 1,
+  "lot": "cac-audit-1",
+  "verdict": "PASS",
+  "status": "AI_REVIEW_PASS",
+  "checkedAt": "2026-10-11T22:47:00.042Z",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_ada6a80c",
+  "reviewerRole": "reviewer-metier-memlia",
+  "reviewedPackageSha256": "ac2a865bd0c61b38e944f7c943bfe2479a090f1c3a2109fa2b11228485a0e65d",
+  "baselineMain": "b896a3a37f6a4fbf902d7889fdaf184711d6c573",
+  "initialReviewRef": "initial-review/PREUVE-REVUE.json",
+  "initialAuthor": "t_33e01ca3",
+  "correctedCandidateAuthor": "t_79f71254",
+  "reviewScope": [
+    "D1",
+    "D2",
+    "D3",
+    "critere-de-fini"
+  ],
+  "defectsResolved": [
+    "D1",
+    "D2",
+    "D3"
+  ],
+  "publicationAuthorized": false,
+  "counts": {
+    "entries": 10,
+    "unitReviews": 60,
+    "officialClaimSourceVerdicts": 37,
+    "nativeSensitiveClaimSourceVerdicts": 29,
+    "methodUnitVerdicts": 23,
+    "carriedOverReviews": 53,
+    "targetedReviews": 7,
+    "renderedFields": 50
+  },
+  "unitReviews": [
+    {
+      "unitId": "audit-legal-context-h2a-nep-200",
+      "entryId": "audit-legal",
+      "field": "context",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "la NEP 200 décrit l’audit qui la prépare.",
+      "reasoning": "D1 levé : NEP 200 §03, copie ligne 68, définit les principes de l’audit en vue de la certification. Arrêté du 27/11/2024, JO 30/11/2024, A.821-63. Citation relue également sur la page H2A, distincte du claim L.821-53."
+    },
+    {
+      "unitId": "h2a-commonConfusion-cncc-representation",
+      "entryId": "h2a",
+      "field": "commonConfusion",
+      "sourceId": "cncc-representation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "l’instance représentative de la profession",
+      "reasoning": "D2 levé : le sujet CNCC est explicite. La page CNCC lignes 55 et 59 atteste l’instance représentative et désigne la H2A comme régulateur. Le fragment n’est pas présenté comme citation H2A."
+    },
+    {
+      "unitId": "h2a-commonConfusion-synthese-memlia",
+      "entryId": "h2a",
+      "field": "commonConfusion",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts.",
+      "reasoning": "D2 levé : synthèse éditoriale explicitement non normative, sans citation H2A/CNCC fictive, renvoyant aux deux unités factuelles jugées séparément. La distinction des rôles est soutenue, aucune approbation produit déduite."
+    },
+    {
+      "unitId": "cncc-context-frontiere-memlia",
+      "entryId": "cncc",
+      "field": "context",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+      "reasoning": "D3 levé : la phrase sur publications et texte normatif est une frontière éditoriale et interprétation de lecture, non une obligation ni une citation institutionnelle. Elle ne qualifie pas juridiquement une publication déterminée."
+    },
+    {
+      "unitId": "nep-definition-h2a-nep-200",
+      "entryId": "nep",
+      "field": "definition",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Les normes d’exercice professionnel (NEP) encadrent les travaux du commissaire aux comptes dans les missions auxquelles elles s’appliquent. La NEP 200 fixe les principes de l’audit des comptes en vue de leur certification.",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "unitId": "nep-context-dila-a821-63",
+      "entryId": "nep",
+      "field": "context",
+      "sourceId": "dila-a821-63",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La NEP 200 est homologuée à l’article A.821-63 du Code de commerce.",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "unitId": "nep-context-h2a-referentiel",
+      "entryId": "nep",
+      "field": "context",
+      "sourceId": "h2a-referentiel",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Le référentiel normatif de la H2A permet de retrouver les numéros d’usage et les textes correspondants ; le CAC apprécie ceux qui concernent sa mission.",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "unitId": "nep-commonConfusion-h2a-nep-200",
+      "entryId": "nep",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Une NEP n’est pas un mode d’emploi du logiciel d’audit. Son application suppose des diligences et le jugement du CAC, pas la seule présence d’une checklist.",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "unitId": "nep-exampleFictitious-memlia",
+      "entryId": "nep",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Dans un dossier fictif, le chef de mission repère la NEP 200 dans son référentiel avant de préciser les travaux attendus ; un tableau de suivi ne suffit pas à réaliser ces travaux.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "nep-automationBoundary-memlia",
+      "entryId": "nep",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons les renvois et les listes de pièces selon une règle écrite ; le CAC choisit les diligences, apprécie leur exécution et leurs conclusions. Une référence introuvable suspend la proposition.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "audit-legal-definition-h2a-nep-200",
+      "entryId": "audit-legal",
+      "field": "definition",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’audit légal des comptes désigne ici l’audit mis en œuvre par le commissaire aux comptes en vue de la certification des comptes annuels et, le cas échéant, consolidés. Il permet au CAC de fonder son opinion sur les comptes.",
+      "reasoning": "La NEP 200 §§01–03 situe l’audit avant l’opinion annuelle et consolidée et exclut garantie de viabilité/gestion. Le rôle réservé du CAC est conservé, sans audit attribué à Memlia."
+    },
+    {
+      "unitId": "audit-legal-context-dila-l821-53",
+      "entryId": "audit-legal",
+      "field": "context",
+      "sourceId": "dila-l821-53",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "L’article L.821-53 du Code de commerce porte la certification",
+      "reasoning": "D1 levé : la sous-affirmation ne porte plus que sur la certification. Les alinéas 1 et 2 de L.821-53 la démontrent ; la NEP 200 ne leur est plus attribuée. Réserve A4 conservée."
+    },
+    {
+      "unitId": "audit-legal-commonConfusion-h2a-nep-200",
+      "entryId": "audit-legal",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’audit des comptes ne garantit ni la viabilité de l’entité ni la qualité de sa gestion. Il se distingue de la préparation de la comptabilité et d’un simple contrôle de structure de fichier.",
+      "reasoning": "La NEP 200 §§01–03 situe l’audit avant l’opinion annuelle et consolidée et exclut garantie de viabilité/gestion. Le rôle réservé du CAC est conservé, sans audit attribué à Memlia."
+    },
+    {
+      "unitId": "audit-legal-exampleFictitious-memlia",
+      "entryId": "audit-legal",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Pour une entité fictive, l’équipe rassemble les éléments collectés et ses travaux ; le signataire apprécie ces éléments avant de formuler son opinion.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "audit-legal-automationBoundary-memlia",
+      "entryId": "audit-legal",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons rapprochements, renvois et exceptions sans modifier les observations saisies ; le CAC conserve la stratégie d’audit, l’appréciation des éléments collectés, l’opinion et la signature.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "assurance-raisonnable-definition-h2a-nep-200",
+      "entryId": "assurance-raisonnable",
+      "field": "definition",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’assurance raisonnable est le niveau d’assurance élevé, mais non absolu, que le CAC recherche pour conclure que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives.",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "unitId": "assurance-raisonnable-context-h2a-nep-200",
+      "entryId": "assurance-raisonnable",
+      "field": "context",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La NEP 200, paragraphes 08 et 09, relie cette assurance aux limites de l’audit, notamment aux sondages, au contrôle interne et à la nature des éléments collectés.",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "unitId": "assurance-raisonnable-commonConfusion-h2a-nep-200",
+      "entryId": "assurance-raisonnable",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’assurance raisonnable n’est ni une certitude absolue ni un pourcentage de confiance fourni par un outil. Un fichier sans alerte ne démontre pas, à lui seul, l’absence d’anomalies significatives.",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "unitId": "assurance-raisonnable-exampleFictitious-memlia",
+      "entryId": "assurance-raisonnable",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Dans un dossier fictif, aucun écart n’apparaît dans les éléments examinés ; le CAC apprécie néanmoins si les travaux sont suffisants pour soutenir son opinion sur l’ensemble des comptes.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "assurance-raisonnable-automationBoundary-memlia",
+      "entryId": "assurance-raisonnable",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous présentons les contrôles exécutés, les données utilisées et leurs limites ; le CAC décide des travaux complémentaires et de la conclusion. L’outil n’attribue aucun niveau d’assurance à la mission.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "jugement-professionnel-definition-h2a-nep-200",
+      "entryId": "jugement-professionnel",
+      "field": "definition",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Le jugement professionnel est l’appréciation exercée par le CAC tout au long de ses travaux, notamment pour décider de la nature, du calendrier et de l’étendue des procédures d’audit et pour conclure à partir des éléments collectés.",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "unitId": "jugement-professionnel-context-h2a-nep-200",
+      "entryId": "jugement-professionnel",
+      "field": "context",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La NEP 200, paragraphe 07, situe ce jugement dans les choix de travaux et les conclusions. Une proposition technique ne porte pas cette appréciation à la place du professionnel.",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "unitId": "jugement-professionnel-commonConfusion-h2a-nep-200",
+      "entryId": "jugement-professionnel",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Le jugement professionnel n’est pas l’application aveugle d’un seuil ni la reprise d’une réponse d’IA. La décision repose sur l’appréciation des éléments collectés, non sur leur simple classement.",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "unitId": "jugement-professionnel-exampleFictitious-memlia",
+      "entryId": "jugement-professionnel",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Un écart fictif apparaît dans un rapprochement. Le chef de mission examine ses causes et propose des travaux ; le CAC apprécie leur portée plutôt que d’accepter le commentaire suggéré.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "jugement-professionnel-automationBoundary-memlia",
+      "entryId": "jugement-professionnel",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons les comparaisons et les propositions dans une zone distincte ; les justifications, choix de procédures et conclusions saisis par l’équipe restent préservés. Le CAC décide.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "esprit-critique-definition-h2a-nep-200",
+      "entryId": "esprit-critique",
+      "field": "definition",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’esprit critique est l’attitude par laquelle le CAC évalue la validité des éléments collectés et reste attentif aux informations qui contredisent ou remettent en cause leur fiabilité.",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "unitId": "esprit-critique-context-h2a-nep-200",
+      "entryId": "esprit-critique",
+      "field": "context",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La NEP 200, paragraphe 06, demande cette attitude tout au long de l’audit, en tenant compte des situations susceptibles de conduire à des anomalies significatives dans les comptes.",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "unitId": "esprit-critique-commonConfusion-h2a-nep-200",
+      "entryId": "esprit-critique",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-200",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’esprit critique n’est pas une suspicion systématique de fraude. Une alerte technique appelle une appréciation des éléments ; elle ne suffit pas à qualifier l’opération.",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "unitId": "esprit-critique-exampleFictitious-memlia",
+      "entryId": "esprit-critique",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Deux pièces fictives décrivent des dates différentes pour une même opération. L’équipe conserve les deux versions et examine la contradiction au lieu de retenir automatiquement la plus récente.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "esprit-critique-automationBoundary-memlia",
+      "entryId": "esprit-critique",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous repérons les divergences et conservons leurs pièces d’origine ; l’équipe examine les contradictions et le CAC apprécie la fiabilité des éléments. Une pièce illisible reste signalée, jamais interprétée par défaut.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "independance-cac-definition-h2a-deontologie",
+      "entryId": "independance-cac",
+      "field": "definition",
+      "sourceId": "h2a-deontologie",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’indépendance du CAC est une exigence applicable à ses missions et prestations, appréciée en réalité et en apparence, pour préserver ses conclusions des partis pris, conflits d’intérêts et risques d’autorévision.",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "unitId": "independance-cac-context-dila-l821-31",
+      "entryId": "independance-cac",
+      "field": "context",
+      "sourceId": "dila-l821-31",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’article L.821-31 du Code de commerce traite notamment des intérêts et des liens incompatibles.",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "unitId": "independance-cac-context-h2a-deontologie",
+      "entryId": "independance-cac",
+      "field": "context",
+      "sourceId": "h2a-deontologie",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La norme de déontologie publiée par la H2A précise l’appréciation de l’indépendance ; l’absence d’un intérêt financier ne résume pas toute cette exigence.",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "unitId": "independance-cac-commonConfusion-h2a-deontologie",
+      "entryId": "independance-cac",
+      "field": "commonConfusion",
+      "sourceId": "h2a-deontologie",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Partager un outil ou disposer d’accès séparés ne démontre pas l’indépendance. Cette appréciation porte sur les faits et circonstances de la mission ou de la prestation, en réalité et en apparence.",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "unitId": "independance-cac-exampleFictitious-memlia",
+      "entryId": "independance-cac",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Dans un cas fictif, un cabinet mixte envisage un outil utilisé en production comptable et en audit. Il examine les missions, les accès et les risques d’autorévision avant tout usage.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "independance-cac-automationBoundary-memlia",
+      "entryId": "independance-cac",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons l’inventaire des accès, rôles et traitements ; le CAC apprécie les incompatibilités et les risques, puis décide des conditions d’usage. Aucun indicateur automatique ne déclare la mission indépendante.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "secret-professionnel-cac-definition-dila-l821-35",
+      "entryId": "secret-professionnel-cac",
+      "field": "definition",
+      "sourceId": "dila-l821-35",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Le secret professionnel du CAC protège les faits, actes et renseignements connus dans l’exercice de la profession. L’article L.821-35 du Code de commerce y astreint les commissaires aux comptes, leurs collaborateurs et experts, sous les réserves et exceptions qu’il prévoit.",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "unitId": "secret-professionnel-cac-context-dila-l821-35",
+      "entryId": "secret-professionnel-cac",
+      "field": "context",
+      "sourceId": "dila-l821-35",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Le même article prévoit des cas de levée du secret, notamment entre certains intervenants à la certification des comptes ou des informations de durabilité. Ces cas ne constituent pas une autorisation générale de transmettre un dossier à un prestataire ou à une IA.",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "unitId": "secret-professionnel-cac-commonConfusion-dila-l821-35",
+      "entryId": "secret-professionnel-cac",
+      "field": "commonConfusion",
+      "sourceId": "dila-l821-35",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Un traitement présenté comme local ne suffit pas à établir le respect du secret. Le recours à un prestataire ou à une IA n’est pas, en soi, un cas de levée du secret prévu par l’article L.821-35.",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "unitId": "secret-professionnel-cac-exampleFictitious-memlia",
+      "entryId": "secret-professionnel-cac",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Dans un essai fictif, le cabinet décrit un traitement avec des pièces inventées. Avant un usage sur un dossier, il examine les données, accès, destinataires et appels réseau de l’environnement envisagé.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "secret-professionnel-cac-automationBoundary-memlia",
+      "entryId": "secret-professionnel-cac",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous documentons les données et leurs flux, utilisons des jeux fictifs pour les essais et signalons toute destination inconnue ; le CAC apprécie les conditions d’utilisation avant une transmission. Les fichiers clients ne servent pas à illustrer le glossaire.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "h2a-definition-dila-l820-1",
+      "entryId": "h2a",
+      "field": "definition",
+      "sourceId": "dila-l820-1",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "unitId": "h2a-definition-h2a-presentation",
+      "entryId": "h2a",
+      "field": "definition",
+      "sourceId": "h2a-presentation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La Haute autorité de l’audit (H2A) est l’autorité publique indépendante qui supervise notamment la profession de commissaire aux comptes et la certification des informations en matière de durabilité.",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "unitId": "h2a-context-dila-l820-1",
+      "entryId": "h2a",
+      "field": "context",
+      "sourceId": "dila-l820-1",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "L’article L.820-1 du Code de commerce décrit ses missions, dont l’adoption des normes, les contrôles, les enquêtes et les sanctions.",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "unitId": "h2a-context-h2a-presentation",
+      "entryId": "h2a",
+      "field": "context",
+      "sourceId": "h2a-presentation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La H2A a succédé au H3C le 1er janvier 2024.",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "unitId": "h2a-commonConfusion-h2a-presentation",
+      "entryId": "h2a",
+      "field": "commonConfusion",
+      "sourceId": "h2a-presentation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "l’autorité de supervision",
+      "reasoning": "D2 levé : le sujet H2A est explicite. Les lignes 58–59 attestent son statut d’autorité indépendante et ses missions de supervision ; aucun rôle CNCC n’est attribué à cette source."
+    },
+    {
+      "unitId": "h2a-exampleFictitious-memlia",
+      "entryId": "h2a",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Pour un dossier fictif, le cabinet consulte le référentiel H2A pour retrouver une norme applicable ; il distingue cette publication officielle de la documentation de son logiciel.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "h2a-automationBoundary-memlia",
+      "entryId": "h2a",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons des renvois traçables vers les textes et signalons un lien absent ; le CAC vérifie la version et son application à la mission. Aucune proposition ne reçoit un label d’approbation H2A.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "cncc-definition-cncc-representation",
+      "entryId": "cncc",
+      "field": "definition",
+      "sourceId": "cncc-representation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La Compagnie nationale des commissaires aux comptes (CNCC) est l’instance représentative de la profession en France. Elle porte la voix des commissaires aux comptes auprès des institutions et des parties prenantes.",
+      "reasoning": "La page de représentation, lignes 55 et 59, établit le rôle représentatif et le régulateur H2A distinct. Aucune assimilation entre cette représentation et une approbation produit."
+    },
+    {
+      "unitId": "cncc-context-cncc-representation",
+      "entryId": "cncc",
+      "field": "context",
+      "sourceId": "cncc-representation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "reviewMode": "reexamen-D1-D3",
+      "sourceSupportedText": "La CNCC représente notamment la profession auprès de son régulateur, la H2A.",
+      "reasoning": "D3 levé : seules la représentation professionnelle et la H2A comme régulateur sont attribuées aux lignes 55/59 de la page CNCC. Aucune portée doctrinale de ses publications ne lui est attribuée."
+    },
+    {
+      "unitId": "cncc-commonConfusion-cncc-representation",
+      "entryId": "cncc",
+      "field": "commonConfusion",
+      "sourceId": "cncc-representation",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La CNCC n’est pas la H2A.",
+      "reasoning": "La page de représentation, lignes 55 et 59, établit le rôle représentatif et le régulateur H2A distinct. Aucune assimilation entre cette représentation et une approbation produit."
+    },
+    {
+      "unitId": "cncc-exampleFictitious-memlia",
+      "entryId": "cncc",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Dans une préparation fictive, l’équipe repère une publication CNCC et le texte qu’elle cite. Elle conserve le renvoi officiel pour distinguer commentaire professionnel et exigence applicable.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "cncc-automationBoundary-memlia",
+      "entryId": "cncc",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous indexons les références et séparons les textes des commentaires ; le CAC apprécie leur portée et leur actualité. Nous ne reproduisons pas de modèles réservés ni n’inventons une approbation CNCC.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "sacc-definition-cncc-sacc-vocabulaire",
+      "entryId": "sacc",
+      "field": "definition",
+      "sourceId": "cncc-sacc-vocabulaire",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Les services autres que la certification des comptes (SACC) désignent, dans le vocabulaire professionnel, les services distincts de la mission de certification.",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "unitId": "sacc-definition-h2a-deontologie",
+      "entryId": "sacc",
+      "field": "definition",
+      "sourceId": "h2a-deontologie",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Ce terme ne signifie pas que tout service peut être fourni par le CAC.",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "unitId": "sacc-context-cncc-sacc-vocabulaire",
+      "entryId": "sacc",
+      "field": "context",
+      "sourceId": "cncc-sacc-vocabulaire",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La CNCC emploie cet intitulé dans sa documentation.",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "unitId": "sacc-context-h2a-deontologie",
+      "entryId": "sacc",
+      "field": "context",
+      "sourceId": "h2a-deontologie",
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "La norme de déontologie de la H2A distingue les missions légales ou réglementaires et les prestations, parmi lesquelles un audit financier contractuel ; le CAC apprécie le cadre et l’indépendance de chaque intervention.",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "unitId": "sacc-commonConfusion-memlia",
+      "entryId": "sacc",
+      "field": "commonConfusion",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "SACC et certification des comptes ne sont pas interchangeables. Définir ce vocabulaire ne publie aucune offre Memlia et ne rouvre pas les familles de services gardées en réserve.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "sacc-exampleFictitious-memlia",
+      "entryId": "sacc",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Une entité fictive demande un audit contractuel. Le CAC examine la demande et les conditions d’intervention avant de l’accepter ; le mot SACC ne vaut pas accord.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    },
+    {
+      "unitId": "sacc-automationBoundary-memlia",
+      "entryId": "sacc",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "reviewMode": "report-revue-initiale-fond-inchange",
+      "sourceSupportedText": "Nous préparons les pièces et le périmètre décrit par le cabinet ; le CAC décide de l’acceptation, des conditions d’indépendance, des travaux et de leur restitution. Aucun service en réserve n’est proposé par cette entrée.",
+      "reasoning": "Exemple fictif ou engagement de méthode Memlia borné : préparation distincte du jugement, aucune garantie normative ni capacité technique certifiée. Les implications professionnelles ont été examinées avec les définitions du même terme."
+    }
+  ],
+  "claimSourceVerdicts": [
+    {
+      "claimId": "audit-legal-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-audit-legal-context-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "verdict": "soutient",
+      "reasoning": "D1 levé : NEP 200 §03, copie ligne 68, définit les principes de l’audit en vue de la certification. Arrêté du 27/11/2024, JO 30/11/2024, A.821-63. Citation relue également sur la page H2A, distincte du claim L.821-53."
+    },
+    {
+      "claimId": "h2a-commonConfusion-cncc-representation",
+      "sourceId": "cncc-representation",
+      "citationIds": [
+        "citation-h2a-commonConfusion-cncc-representation-1",
+        "citation-h2a-commonConfusion-cncc-representation-2"
+      ],
+      "sourceContentSha256": "81383fd9679c00c5b82d2ae1b5eebef5ca9183cc5979692654fa3e875a36fd48",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "verdict": "soutient",
+      "reasoning": "D2 levé : le sujet CNCC est explicite. La page CNCC lignes 55 et 59 atteste l’instance représentative et désigne la H2A comme régulateur. Le fragment n’est pas présenté comme citation H2A."
+    },
+    {
+      "claimId": "nep-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-nep-definition-h2a-nep-200-1",
+        "citation-nep-definition-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "claimId": "nep-context-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "citationIds": [
+        "citation-nep-context-dila-a821-63-1"
+      ],
+      "sourceContentSha256": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "claimId": "nep-context-h2a-referentiel",
+      "sourceId": "h2a-referentiel",
+      "citationIds": [
+        "citation-nep-context-h2a-referentiel-1"
+      ],
+      "sourceContentSha256": "eb212cd60034a7cdeb418f25caa72acc7bdceec4e3d734d25677e6693e5e7e5f",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "claimId": "nep-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-nep-commonConfusion-h2a-nep-200-1",
+        "citation-nep-commonConfusion-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§03 et 05 définit les principes et impose les textes applicables ; §07 lu dans la copie complète conserve le jugement. Les distinctions checklist/logiciel sont des conséquences prudentes, non des documents prescrits."
+    },
+    {
+      "claimId": "audit-legal-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-audit-legal-definition-h2a-nep-200-1",
+        "citation-audit-legal-definition-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§01–03 situe l’audit avant l’opinion annuelle et consolidée et exclut garantie de viabilité/gestion. Le rôle réservé du CAC est conservé, sans audit attribué à Memlia."
+    },
+    {
+      "claimId": "audit-legal-context-dila-l821-53",
+      "sourceId": "dila-l821-53",
+      "citationIds": [
+        "citation-audit-legal-context-dila-l821-53-1",
+        "citation-audit-legal-context-dila-l821-53-2"
+      ],
+      "sourceContentSha256": "a5c87e888b71632959330b3d958aaf0642a71e2ab7f4825f976be7b03a4731a6",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "verdict": "soutient",
+      "reasoning": "D1 levé : la sous-affirmation ne porte plus que sur la certification. Les alinéas 1 et 2 de L.821-53 la démontrent ; la NEP 200 ne leur est plus attribuée. Réserve A4 conservée."
+    },
+    {
+      "claimId": "audit-legal-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-audit-legal-commonConfusion-h2a-nep-200-1",
+        "citation-audit-legal-commonConfusion-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La NEP 200 §§01–03 situe l’audit avant l’opinion annuelle et consolidée et exclut garantie de viabilité/gestion. Le rôle réservé du CAC est conservé, sans audit attribué à Memlia."
+    },
+    {
+      "claimId": "assurance-raisonnable-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-assurance-raisonnable-definition-h2a-nep-200-1",
+        "citation-assurance-raisonnable-definition-h2a-nep-200-2",
+        "citation-assurance-raisonnable-definition-h2a-nep-200-3"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "claimId": "assurance-raisonnable-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-assurance-raisonnable-context-h2a-nep-200-1",
+        "citation-assurance-raisonnable-context-h2a-nep-200-2",
+        "citation-assurance-raisonnable-context-h2a-nep-200-3"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "claimId": "assurance-raisonnable-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-assurance-raisonnable-commonConfusion-h2a-nep-200-1",
+        "citation-assurance-raisonnable-commonConfusion-h2a-nep-200-2",
+        "citation-assurance-raisonnable-commonConfusion-h2a-nep-200-3"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Les paragraphes 08–09 définissent une assurance élevée non absolue, les comptes dans leur ensemble et les limites de l’audit. Le rejet du pourcentage fourni par un outil est une frontière prudente, pas une nouvelle règle chiffrée."
+    },
+    {
+      "claimId": "jugement-professionnel-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-jugement-professionnel-definition-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "claimId": "jugement-professionnel-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-jugement-professionnel-context-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "claimId": "jugement-professionnel-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-jugement-professionnel-commonConfusion-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 07 porte exactement sur nature, calendrier, étendue et conclusions. Le texte conserve cette appréciation chez le CAC, sans assimiler tri, seuil ou réponse IA au jugement."
+    },
+    {
+      "claimId": "esprit-critique-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-esprit-critique-definition-h2a-nep-200-1",
+        "citation-esprit-critique-definition-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "claimId": "esprit-critique-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-esprit-critique-context-h2a-nep-200-1",
+        "citation-esprit-critique-context-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "claimId": "esprit-critique-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-esprit-critique-commonConfusion-h2a-nep-200-1",
+        "citation-esprit-critique-commonConfusion-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "6d7bc68255cbdbd45f8c8d9ff5a722c7231e31bc528944004515fc7200a2acfa",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le paragraphe 06 porte la validité des éléments et les contradictions, tout au long de l’audit. La confusion est interprétée comme vigilance critique, non comme permission d’écarter une présomption spécifique prévue par une autre NEP."
+    },
+    {
+      "claimId": "independance-cac-definition-h2a-deontologie",
+      "sourceId": "h2a-deontologie",
+      "citationIds": [
+        "citation-independance-cac-definition-h2a-deontologie-1",
+        "citation-independance-cac-definition-h2a-deontologie-2",
+        "citation-independance-cac-definition-h2a-deontologie-3",
+        "citation-independance-cac-definition-h2a-deontologie-4"
+      ],
+      "sourceContentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "claimId": "independance-cac-context-dila-l821-31",
+      "sourceId": "dila-l821-31",
+      "citationIds": [
+        "citation-independance-cac-context-dila-l821-31-1",
+        "citation-independance-cac-context-dila-l821-31-2"
+      ],
+      "sourceContentSha256": "e42e8e7fe6cfab04f2dd128fcb6d4c1b2e1d1b47e46c690067c424c64d35c2ff",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "claimId": "independance-cac-context-h2a-deontologie",
+      "sourceId": "h2a-deontologie",
+      "citationIds": [
+        "citation-independance-cac-context-h2a-deontologie-1",
+        "citation-independance-cac-context-h2a-deontologie-2",
+        "citation-independance-cac-context-h2a-deontologie-3",
+        "citation-independance-cac-context-h2a-deontologie-4"
+      ],
+      "sourceContentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "claimId": "independance-cac-commonConfusion-h2a-deontologie",
+      "sourceId": "h2a-deontologie",
+      "citationIds": [
+        "citation-independance-cac-commonConfusion-h2a-deontologie-1",
+        "citation-independance-cac-commonConfusion-h2a-deontologie-2",
+        "citation-independance-cac-commonConfusion-h2a-deontologie-3",
+        "citation-independance-cac-commonConfusion-h2a-deontologie-4"
+      ],
+      "sourceContentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-31 décrit les intérêts/liens ; la norme H2A §§20–23 porte réalité/apparence, conflits et autorévision. Les accès séparés ne sont pas présentés comme sauvegarde suffisante ni autorisation de cumuler production et audit."
+    },
+    {
+      "claimId": "secret-professionnel-cac-definition-dila-l821-35",
+      "sourceId": "dila-l821-35",
+      "citationIds": [
+        "citation-secret-professionnel-cac-definition-dila-l821-35-1",
+        "citation-secret-professionnel-cac-definition-dila-l821-35-2",
+        "citation-secret-professionnel-cac-definition-dila-l821-35-3"
+      ],
+      "sourceContentSha256": "e647e35119c9a72ddd575bf0f3bddfb2105bab73644f7b56f6fb6eaf7c6d68d7",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "claimId": "secret-professionnel-cac-context-dila-l821-35",
+      "sourceId": "dila-l821-35",
+      "citationIds": [
+        "citation-secret-professionnel-cac-context-dila-l821-35-1",
+        "citation-secret-professionnel-cac-context-dila-l821-35-2",
+        "citation-secret-professionnel-cac-context-dila-l821-35-3"
+      ],
+      "sourceContentSha256": "e647e35119c9a72ddd575bf0f3bddfb2105bab73644f7b56f6fb6eaf7c6d68d7",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "claimId": "secret-professionnel-cac-commonConfusion-dila-l821-35",
+      "sourceId": "dila-l821-35",
+      "citationIds": [
+        "citation-secret-professionnel-cac-commonConfusion-dila-l821-35-1",
+        "citation-secret-professionnel-cac-commonConfusion-dila-l821-35-2",
+        "citation-secret-professionnel-cac-commonConfusion-dila-l821-35-3"
+      ],
+      "sourceContentSha256": "e647e35119c9a72ddd575bf0f3bddfb2105bab73644f7b56f6fb6eaf7c6d68d7",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L821-35 astreint CAC, collaborateurs et experts avec réserves et levées spécifiques ; les alinéas sur comptes/durabilité ne sont pas une permission générale de partage avec un prestataire. Lecture bornée, sans garantie de licéité d’un flux concret."
+    },
+    {
+      "claimId": "h2a-definition-dila-l820-1",
+      "sourceId": "dila-l820-1",
+      "citationIds": [
+        "citation-h2a-definition-dila-l820-1-1",
+        "citation-h2a-definition-dila-l820-1-2",
+        "citation-h2a-definition-dila-l820-1-3",
+        "citation-h2a-definition-dila-l820-1-4",
+        "citation-h2a-definition-dila-l820-1-5"
+      ],
+      "sourceContentSha256": "99cedb51fd136639f5fa671b64f2790e5279f9e6a4c4e86d2332cd3f3b4fb66d",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "claimId": "h2a-definition-h2a-presentation",
+      "sourceId": "h2a-presentation",
+      "citationIds": [
+        "citation-h2a-definition-h2a-presentation-1",
+        "citation-h2a-definition-h2a-presentation-2"
+      ],
+      "sourceContentSha256": "27e01182660e981d5ad4f336a71e8a3066460d459afe477cfea5c4a5768c1347",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "claimId": "h2a-context-dila-l820-1",
+      "sourceId": "dila-l820-1",
+      "citationIds": [
+        "citation-h2a-context-dila-l820-1-1",
+        "citation-h2a-context-dila-l820-1-2",
+        "citation-h2a-context-dila-l820-1-3",
+        "citation-h2a-context-dila-l820-1-4",
+        "citation-h2a-context-dila-l820-1-5"
+      ],
+      "sourceContentSha256": "99cedb51fd136639f5fa671b64f2790e5279f9e6a4c4e86d2332cd3f3b4fb66d",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "claimId": "h2a-context-h2a-presentation",
+      "sourceId": "h2a-presentation",
+      "citationIds": [
+        "citation-h2a-context-h2a-presentation-1",
+        "citation-h2a-context-h2a-presentation-2"
+      ],
+      "sourceContentSha256": "27e01182660e981d5ad4f336a71e8a3066460d459afe477cfea5c4a5768c1347",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "L820-1 et la présentation institutionnelle établissent le statut, supervision, normes/contrôles/enquêtes/sanctions et succession au 01/01/2024 ; aucun agrément d’outil ni calendrier CSRD n’en est déduit."
+    },
+    {
+      "claimId": "h2a-commonConfusion-h2a-presentation",
+      "sourceId": "h2a-presentation",
+      "citationIds": [
+        "citation-h2a-commonConfusion-h2a-presentation-1",
+        "citation-h2a-commonConfusion-h2a-presentation-2"
+      ],
+      "sourceContentSha256": "27e01182660e981d5ad4f336a71e8a3066460d459afe477cfea5c4a5768c1347",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "verdict": "soutient",
+      "reasoning": "D2 levé : le sujet H2A est explicite. Les lignes 58–59 attestent son statut d’autorité indépendante et ses missions de supervision ; aucun rôle CNCC n’est attribué à cette source."
+    },
+    {
+      "claimId": "cncc-definition-cncc-representation",
+      "sourceId": "cncc-representation",
+      "citationIds": [
+        "citation-cncc-definition-cncc-representation-1",
+        "citation-cncc-definition-cncc-representation-2"
+      ],
+      "sourceContentSha256": "81383fd9679c00c5b82d2ae1b5eebef5ca9183cc5979692654fa3e875a36fd48",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La page de représentation, lignes 55 et 59, établit le rôle représentatif et le régulateur H2A distinct. Aucune assimilation entre cette représentation et une approbation produit."
+    },
+    {
+      "claimId": "cncc-context-cncc-representation",
+      "sourceId": "cncc-representation",
+      "citationIds": [
+        "citation-cncc-context-cncc-representation-1",
+        "citation-cncc-context-cncc-representation-2"
+      ],
+      "sourceContentSha256": "81383fd9679c00c5b82d2ae1b5eebef5ca9183cc5979692654fa3e875a36fd48",
+      "checkedAt": "2026-10-11T22:47:00.042Z",
+      "verdict": "soutient",
+      "reasoning": "D3 levé : seules la représentation professionnelle et la H2A comme régulateur sont attribuées aux lignes 55/59 de la page CNCC. Aucune portée doctrinale de ses publications ne lui est attribuée."
+    },
+    {
+      "claimId": "cncc-commonConfusion-cncc-representation",
+      "sourceId": "cncc-representation",
+      "citationIds": [
+        "citation-cncc-commonConfusion-cncc-representation-1",
+        "citation-cncc-commonConfusion-cncc-representation-2"
+      ],
+      "sourceContentSha256": "81383fd9679c00c5b82d2ae1b5eebef5ca9183cc5979692654fa3e875a36fd48",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "La page de représentation, lignes 55 et 59, établit le rôle représentatif et le régulateur H2A distinct. Aucune assimilation entre cette représentation et une approbation produit."
+    },
+    {
+      "claimId": "sacc-definition-cncc-sacc-vocabulaire",
+      "sourceId": "cncc-sacc-vocabulaire",
+      "citationIds": [
+        "citation-sacc-definition-cncc-sacc-vocabulaire-1"
+      ],
+      "sourceContentSha256": "da48f4040e9e9a28bf5814dc0d71f1e94f6c068d26eb9d643bdd90e5b38a4e57",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "claimId": "sacc-definition-h2a-deontologie",
+      "sourceId": "h2a-deontologie",
+      "citationIds": [
+        "citation-sacc-definition-h2a-deontologie-1",
+        "citation-sacc-definition-h2a-deontologie-2",
+        "citation-sacc-definition-h2a-deontologie-3"
+      ],
+      "sourceContentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "claimId": "sacc-context-cncc-sacc-vocabulaire",
+      "sourceId": "cncc-sacc-vocabulaire",
+      "citationIds": [
+        "citation-sacc-context-cncc-sacc-vocabulaire-1"
+      ],
+      "sourceContentSha256": "da48f4040e9e9a28bf5814dc0d71f1e94f6c068d26eb9d643bdd90e5b38a4e57",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    },
+    {
+      "claimId": "sacc-context-h2a-deontologie",
+      "sourceId": "h2a-deontologie",
+      "citationIds": [
+        "citation-sacc-context-h2a-deontologie-1",
+        "citation-sacc-context-h2a-deontologie-2",
+        "citation-sacc-context-h2a-deontologie-3"
+      ],
+      "sourceContentSha256": "5020a93b1eb1b97f90f08a45e3fc535c63e2cbdc98adb9d5725728a5e6984d46",
+      "checkedAt": "2026-10-11T13:10:15.598Z",
+      "verdict": "soutient",
+      "reasoning": "Le guide CNCC 2018 sert uniquement à l’intitulé, pas à une obligation actuelle ; la norme H2A §§08–09 et 23 décrit missions/prestations, audit financier contractuel et refus des interventions incompatibles. Aucune offre en réserve réactivée."
+    }
+  ]
+}

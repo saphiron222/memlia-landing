@@ -1,0 +1,169 @@
+[
+  {
+    "defect": "D1",
+    "publicFieldUnchanged": true,
+    "claims": [
+      {
+        "id": "audit-legal-context-dila-l821-53",
+        "entryId": "audit-legal",
+        "field": "context",
+        "text": "L’article L.821-53 du Code de commerce porte la certification",
+        "unitText": "L’article L.821-53 du Code de commerce porte la certification ; la NEP 200 décrit l’audit qui la prépare. Le terme « audit légal » est un vocabulaire professionnel, pas le nom d’une prestation Memlia.",
+        "sourceId": "dila-l821-53",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement.",
+        "citations": [
+          {
+            "text": "Les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l'exercice écoulé ainsi que de la situation financière et du patrimoine de la personne ou de l'entité à la fin de cet exercice.",
+            "locator": "dila-l821-53:ligne-1"
+          },
+          {
+            "text": "Lorsqu'une personne ou une entité établit des comptes consolidés, les commissaires aux comptes certifient, en justifiant de leurs appréciations, que les comptes consolidés sont réguliers et sincères et donnent une image fidèle du patrimoine, de la situation financière ainsi que du résultat de l'ensemble constitué par les personnes et entités comprises dans la consolidation.",
+            "locator": "dila-l821-53:ligne-2"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "audit-legal-context-h2a-nep-200",
+        "entryId": "audit-legal",
+        "field": "context",
+        "text": "la NEP 200 décrit l’audit qui la prépare.",
+        "unitText": "L’article L.821-53 du Code de commerce porte la certification ; la NEP 200 décrit l’audit qui la prépare. Le terme « audit légal » est un vocabulaire professionnel, pas le nom d’une prestation Memlia.",
+        "sourceId": "h2a-nep-200",
+        "type": "legal-reglementaire",
+        "applicability": "Audit des comptes en vue de leur certification ; NEP 200 §03.",
+        "regime": "Objet de la norme, distinct de la certification prévue par L.821-53.",
+        "exceptions": "Reproduction institutionnelle H2A ; aucune garantie de consolidation complète du code.",
+        "citations": [
+          {
+            "text": "03. La présente norme a pour objet de définir les principes applicables à l’audit des comptes mis en œuvre par le commissaire aux comptes en vue de certifier les comptes.",
+            "locator": "h2a-nep-200:ligne-68"
+          }
+        ],
+        "businessVerdict": null
+      }
+    ]
+  },
+  {
+    "defect": "D2",
+    "publicFieldUnchanged": true,
+    "claims": [
+      {
+        "id": "h2a-commonConfusion-h2a-presentation",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "l’autorité de supervision",
+        "claimSubject": "H2A",
+        "evidenceStatus": "role-institutionnel-source",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": "h2a-presentation",
+        "type": "legal-reglementaire",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "Autorité publique indépendante dotée de la personnalité morale et créée par l’ordonnance n° 2023-1142 du 6 décembre 2023 portant transposition de la directive européenne CSRD (Corporate Sustainability Reporting Directive), la Haute autorité de l’audit (H2A) a succédé, le 1er janvier 2024, au Haut Conseil du commissariat aux comptes (H3C).",
+            "locator": "h2a-presentation:ligne-58"
+          },
+          {
+            "text": "En sus de reprendre les missions historiques du H3C, la H2A a vu ses missions étendues à la supervision de la mission de certification des informations en matière de durabilité et à ses acteurs (commissaires aux comptes, organismes tiers indépendants1 et leurs associés, dirigeants ou collaborateurs).",
+            "locator": "h2a-presentation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-commonConfusion-cncc-representation",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "l’instance représentative de la profession",
+        "claimSubject": "CNCC",
+        "evidenceStatus": "role-institutionnel-source",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Rôle représentatif de la CNCC, distinct de la supervision H2A.",
+        "regime": "Présentation institutionnelle, sans nouvelle obligation normative.",
+        "exceptions": "La page CNCC ne constitue pas une approbation d’un outil Memlia.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "h2a-commonConfusion-synthese-memlia",
+        "entryId": "h2a",
+        "field": "commonConfusion",
+        "text": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts.",
+        "unitText": "La H2A n’est pas la CNCC : l’autorité de supervision et l’instance représentative de la profession ont des rôles distincts. Citer la H2A ne signifie pas qu’elle a approuvé un outil Memlia.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "evidenceStatus": "synthese-editoriale",
+        "basedOnUnitIds": [
+          "h2a-commonConfusion-h2a-presentation",
+          "h2a-commonConfusion-cncc-representation"
+        ],
+        "applicability": "Synthèse éditoriale des deux rôles institutionnels sourcés séparément.",
+        "regime": "Distinction de vocabulaire, sans obligation normative autonome.",
+        "exceptions": "La phrase n’est pas une citation de la page H2A ; les faits sur la CNCC sont rattachés à la page CNCC.",
+        "citations": [],
+        "businessVerdict": null
+      }
+    ]
+  },
+  {
+    "defect": "D3",
+    "publicFieldUnchanged": true,
+    "claims": [
+      {
+        "id": "cncc-context-cncc-representation",
+        "entryId": "cncc",
+        "field": "context",
+        "text": "La CNCC représente notamment la profession auprès de son régulateur, la H2A.",
+        "unitText": "La CNCC représente notamment la profession auprès de son régulateur, la H2A. Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "sourceId": "cncc-representation",
+        "type": "information",
+        "applicability": "Cadre professionnel français ; vérifier le texte applicable à la mission.",
+        "regime": "Vocabulaire professionnel distingué de l’obligation normative ; aucun nouveau service proposé.",
+        "exceptions": "Lire le paragraphe cité dans son contexte et la version applicable.",
+        "citations": [
+          {
+            "text": "> Instance représentative de la profession en France, la mission première de la CNCC est de porter la voix de la profession auprès de ses parties prenantes, d’assurer la promotion de ses valeurs et de son rôle sociétal, et défendre les intérêts de ses membres, toujours au service de l’intérêt public.",
+            "locator": "cncc-representation:ligne-55"
+          },
+          {
+            "text": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+            "locator": "cncc-representation:ligne-59"
+          }
+        ],
+        "businessVerdict": null
+      },
+      {
+        "id": "cncc-context-frontiere-memlia",
+        "entryId": "cncc",
+        "field": "context",
+        "text": "Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "unitText": "La CNCC représente notamment la profession auprès de son régulateur, la H2A. Ses publications professionnelles aident à comprendre les pratiques ; une publication doctrinale ne se confond pas avec le texte normatif auquel elle renvoie.",
+        "sourceId": null,
+        "type": "methode-memlia",
+        "evidenceStatus": "frontiere-editoriale",
+        "applicability": "Interprétation éditoriale de l’usage des publications professionnelles ; non attribuée à la page de représentation CNCC.",
+        "regime": "Frontière de lecture Memlia, sans obligation normative autonome.",
+        "exceptions": "Ne qualifie pas juridiquement une publication particulière et ne prétend pas que la page de représentation établit une hiérarchie doctrine/norme.",
+        "citations": [],
+        "businessVerdict": null
+      }
+    ]
+  }
+]

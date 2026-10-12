@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "executions": [
+    {
+      "command": [
+        "python3",
+        "verify-f1.py"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"initialCandidateMatchesReview\": true,\n  \"entriesUnchanged\": true,\n  \"sourceMetadataUnchanged\": true,\n  \"sourceCopyFilesUnchanged\": 16,\n  \"signaledPairs\": 18,\n  \"fields\": 13,\n  \"replacedRows\": 32,\n  \"targetedRows\": 36,\n  \"carriedRows\": 51,\n  \"allFieldsFullyCovered\": true,\n  \"citationsLocated\": true,\n  \"archiveNote\": \"f1.test.mjs annoncé mais absent ; tests de localisation/couverture exécutés indépendamment par verify-f1.py.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "test-review-f1.py"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"cases\": [\n    {\n      \"case\": \"omit-claim\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"case\": \"wrong-source\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"case\": \"missing-definition-citation\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "check-review-f1.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"scope\": \"Sous-contrat validateClaims et digest natifs ; projection réelle du lot 2, pas manifeste global de publication.\",\n  \"nativeLibrarySha256\": \"58406aaea2dede2d8d2dcdf01722330cadd18f7a9b711b02302057595af5f4af\",\n  \"counts\": {\n    \"renderedFields\": 50,\n    \"claims\": 87,\n    \"citations\": 213,\n    \"sources\": 9,\n    \"sensitiveVerdicts\": 66\n  },\n  \"errors\": [],\n  \"mutations\": [\n    {\n      \"name\": \"unité sensible manquante\",\n      \"rejected\": true,\n      \"errorCount\": 5\n    },\n    {\n      \"name\": \"citation fabriquée\",\n      \"rejected\": true,\n      \"errorCount\": 3\n    },\n    {\n      \"name\": \"avis absent\",\n      \"rejected\": true,\n      \"errorCount\": 4\n    },\n    {\n      \"name\": \"reviewer auteur\",\n      \"rejected\": true,\n      \"errorCount\": 2\n    },\n    {\n      \"name\": \"copie DILA redatée\",\n      \"rejected\": true,\n      \"errorCount\": 8\n    },\n    {\n      \"name\": \"extension du sous-claim\",\n      \"rejected\": true,\n      \"errorCount\": 2\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-2-sources/validate.mjs"
+      ],
+      "cwd": "baseline",
+      "exitCode": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"entries\": 10,\n  \"sources\": 8,\n  \"units\": 87,\n  \"links\": 2,\n  \"existingAnchors\": 55,\n  \"asOf\": \"2026-10-11T13:07:50.670291+00:00\",\n  \"review\": \"pending; format/source control only\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "docs/qa/hub-ressources/glossaire-cac-lot-2-sources/f1-mutations.test.mjs"
+      ],
+      "cwd": "baseline",
+      "exitCode": 0,
+      "stdout": "TAP version 13\n# Subtest: F1 refus matériel : phrase omise\nok 1 - F1 refus matériel : phrase omise\n  ---\n  duration_ms: 76.588542\n  type: 'test'\n  ...\n# Subtest: F1 refus matériel : sous-claim tronqué\nok 2 - F1 refus matériel : sous-claim tronqué\n  ---\n  duration_ms: 67.939583\n  type: 'test'\n  ...\n# Subtest: F1 refus matériel : unitText altéré\nok 3 - F1 refus matériel : unitText altéré\n  ---\n  duration_ms: 64.626833\n  type: 'test'\n  ...\n# Subtest: F1 refus matériel : identifiant dupliqué\nok 4 - F1 refus matériel : identifiant dupliqué\n  ---\n  duration_ms: 70.233541\n  type: 'test'\n  ...\n# Subtest: F1 refus matériel : source sans citation\nok 5 - F1 refus matériel : source sans citation\n  ---\n  duration_ms: 65.045542\n  type: 'test'\n  ...\n# Subtest: F1 refus matériel : lexique doté de portée réglementaire\nok 6 - F1 refus matériel : lexique doté de portée réglementaire\n  ---\n  duration_ms: 68.994875\n  type: 'test'\n  ...\n1..6\n# tests 6\n# suites 0\n# pass 6\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 467.997583\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "docs/qa/hub-ressources/glossaire-cac-lot-2-sources/mutations.mjs"
+      ],
+      "cwd": "baseline",
+      "exitCode": 0,
+      "stdout": "{\n  \"pass\": true,\n  \"cases\": [\n    {\n      \"name\": \"terme manquant\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"citation inventée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"source périmée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"lien futur exposé\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"terme lié absent\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"empreinte divergente\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"fausse revue\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/scripts/dila-source-copy.test.mjs"
+      ],
+      "cwd": "baseline",
+      "exitCode": 0,
+      "stdout": "TAP version 13\n# Subtest: LEGI : collecte de 0 à 7 jours inclus, version et URL conservées\nok 1 - LEGI : collecte de 0 à 7 jours inclus, version et URL conservées\n  ---\n  duration_ms: 16.465292\n  type: 'test'\n  ...\n# Subtest: copies absentes, sorties du dossier, périmées et futures refusées\nok 2 - copies absentes, sorties du dossier, périmées et futures refusées\n  ---\n  duration_ms: 1.332459\n  type: 'test'\n  ...\n# Subtest: horodatage Python A4 préservé : microsecondes et offset UTC, jour civil Paris\nok 3 - horodatage Python A4 préservé : microsecondes et offset UTC, jour civil Paris\n  ---\n  duration_ms: 1.748542\n  type: 'test'\n  ...\n# Subtest: extrait inexact, provenance manquante, identifiant/version/URL incohérents refusés\nok 4 - extrait inexact, provenance manquante, identifiant/version/URL incohérents refusés\n  ---\n  duration_ms: 4.030583\n  type: 'test'\n  ...\n# Subtest: JORF : acte publié et article exact, sans convertir un JORF en LEGI\nok 5 - JORF : acte publié et article exact, sans convertir un JORF en LEGI\n  ---\n  duration_ms: 1.6945\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 5\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 83.604125\n",
+      "stderr": ""
+    }
+  ]
+}

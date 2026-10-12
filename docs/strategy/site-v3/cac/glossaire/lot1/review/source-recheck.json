@@ -1,0 +1,33 @@
+{
+  "scope": "Relecture ciblée D1–D3 avec Hermes web_extract ; copie parentale intacte. Les passages indiqués ont été vus dans les sorties réelles du tool pendant le réexamen, sans prétendre à une copie complète nouvelle ni à une ouverture Légifrance.",
+  "sources": [
+    {
+      "sourceId": "h2a-nep-200",
+      "url": "https://h2a-france.org/normes/audit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/",
+      "result": "Corps de la NEP 200 et date d'homologation lus",
+      "version": "Arrêté du 27 novembre 2024, JO du 30 novembre 2024, A.821-63",
+      "paragraph": "03",
+      "quote": "La présente norme a pour objet de définir les principes applicables à l’audit des comptes mis en œuvre par le commissaire aux comptes en vue de certifier les comptes.",
+      "matchesCandidateCitation": true
+    },
+    {
+      "sourceId": "h2a-presentation",
+      "url": "https://h2a-france.org/la-h2a/presentation-de-la-h2a/",
+      "result": "Présentation datée du 21 juillet 2025 lue ; les deux passages cités des lignes 58–59 sont présents",
+      "quote": "Autorité publique indépendante dotée de la personnalité morale et créée par l’ordonnance n° 2023-1142 du 6 décembre 2023 portant transposition de la directive européenne CSRD (Corporate Sustainability Reporting Directive), la Haute autorité de l’audit (H2A) a succédé, le 1er janvier 2024, au Haut Conseil du commissariat aux comptes (H3C).",
+      "matchesCandidateCitation": true
+    },
+    {
+      "sourceId": "cncc-representation",
+      "url": "https://www.cncc.fr/missions/representer-la-profession",
+      "result": "Corps Représenter et faire rayonner la profession lu ; instance représentative et H2A comme régulateur présents",
+      "quote": "En France, la CNCC représente la profession auprès de ses parties prenantes, au premier rang desquelles le régulateur de la profession : la Haute Autorité de l'Audit.",
+      "matchesCandidateCitation": true
+    }
+  ],
+  "initialMistakenUrls": [
+    {"url": "https://h2a-france.org/normes/principes-applicables-a-laudit-des-comptes-mis-en-oeuvre-dans-le-cadre-de-la-certification-des-comptes/", "result": "Erreur 404, non utilisée comme preuve"},
+    {"url": "https://www.cncc.fr/representer-et-faire-rayonner-la-profession.html", "result": "Page non trouvée 404, non utilisée comme preuve"}
+  ],
+  "dila": "L.821-53 relu dans la copie locale et corroboré par NEP 200 §01. Aucun accès Légifrance revendiqué. Réserve A4 conservée."
+}

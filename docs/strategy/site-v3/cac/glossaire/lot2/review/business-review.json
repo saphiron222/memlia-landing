@@ -1,0 +1,868 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_135675b2",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "dd74e68a0d4825170e9fdde9885db1af47e859d359e0e7af15e1d80d240c97ac",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "assertions-audit-definition-f1-1-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-1-h2a-nep-500-1"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la définition seule est attribuée à NEP 500 §03 / A.821-74 §3 et NEP 315 §05. Les critères ne sont plus confondus avec les procédures."
+    },
+    {
+      "claimId": "assertions-audit-definition-f1-1-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-1-dila-a821-74-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la définition seule est attribuée à NEP 500 §03 / A.821-74 §3 et NEP 315 §05. Les critères ne sont plus confondus avec les procédures."
+    },
+    {
+      "claimId": "assertions-audit-definition-f1-1-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-1-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la définition seule est attribuée à NEP 500 §03 / A.821-74 §3 et NEP 315 §05. Les critères ne sont plus confondus avec les procédures."
+    },
+    {
+      "claimId": "assertions-audit-definition-f1-2-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-2-h2a-nep-500-1"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : explication pédagogique du rôle des assertions dans les vérifications, non citation littérale. NEP 500 §05 relie preuves et assertions ; dans NEP 315, §17 décrit les travaux et conclusions, lu avec la définition §05 et le lien aux assertions §18/21. Cette phrase ne définit ni un test ni une opinion."
+    },
+    {
+      "claimId": "assertions-audit-definition-f1-2-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-2-dila-a821-74-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : explication pédagogique du rôle des assertions dans les vérifications, non citation littérale. NEP 500 §05 relie preuves et assertions ; dans NEP 315, §17 décrit les travaux et conclusions, lu avec la définition §05 et le lien aux assertions §18/21. Cette phrase ne définit ni un test ni une opinion."
+    },
+    {
+      "claimId": "assertions-audit-definition-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-assertions-audit-definition-f1-2-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : explication pédagogique du rôle des assertions dans les vérifications, non citation littérale. NEP 500 §05 relie preuves et assertions ; dans NEP 315, §17 décrit les travaux et conclusions, lu avec la définition §05 et le lien aux assertions §18/21. Cette phrase ne définit ni un test ni une opinion."
+    },
+    {
+      "claimId": "assertions-audit-context-f1-1-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-assertions-audit-context-f1-1-h2a-nep-500-1"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la liste réalité/séparation des exercices/existence/annexe relève exclusivement de NEP 500 §09 / A.821-74 §9. L’article A.821-74 est attesté par l’en-tête de la copie."
+    },
+    {
+      "claimId": "assertions-audit-context-f1-1-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-assertions-audit-context-f1-1-dila-a821-74-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la liste réalité/séparation des exercices/existence/annexe relève exclusivement de NEP 500 §09 / A.821-74 §9. L’article A.821-74 est attesté par l’en-tête de la copie."
+    },
+    {
+      "claimId": "assertions-audit-context-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-assertions-audit-context-f1-2-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : seules les assertions pertinentes avant prise en compte des contrôles sont attribuées à NEP 315 §06 ; la liste de NEP 500 ne lui est plus imputée."
+    },
+    {
+      "claimId": "assertions-audit-commonConfusion-f1-1-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-assertions-audit-commonConfusion-f1-1-h2a-nep-500-1",
+        "citation-assertions-audit-commonConfusion-f1-1-h2a-nep-500-2"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §05 ajouté à §17 ; NEP 500 §§03/05 et A.821-74 §§3/5 établissent critères, preuves et conclusion. La distinction assertion / déclaration / test est une explication fidèle de ces définitions, pas une nouvelle obligation."
+    },
+    {
+      "claimId": "assertions-audit-commonConfusion-f1-1-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-assertions-audit-commonConfusion-f1-1-dila-a821-74-1",
+        "citation-assertions-audit-commonConfusion-f1-1-dila-a821-74-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §05 ajouté à §17 ; NEP 500 §§03/05 et A.821-74 §§3/5 établissent critères, preuves et conclusion. La distinction assertion / déclaration / test est une explication fidèle de ces définitions, pas une nouvelle obligation."
+    },
+    {
+      "claimId": "assertions-audit-commonConfusion-f1-1-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-assertions-audit-commonConfusion-f1-1-h2a-nep-315-1",
+        "citation-assertions-audit-commonConfusion-f1-1-h2a-nep-315-2"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §05 ajouté à §17 ; NEP 500 §§03/05 et A.821-74 §§3/5 établissent critères, preuves et conclusion. La distinction assertion / déclaration / test est une explication fidèle de ces définitions, pas une nouvelle obligation."
+    },
+    {
+      "claimId": "anomalie-significative-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-anomalie-significative-definition-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §04 et NEP 320 §§04/09/10 : définition, cumul, montant/nature/circonstances et jugement."
+    },
+    {
+      "claimId": "anomalie-significative-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-anomalie-significative-definition-h2a-nep-320-1",
+        "citation-anomalie-significative-definition-h2a-nep-320-2",
+        "citation-anomalie-significative-definition-h2a-nep-320-3"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §04 et NEP 320 §§04/09/10 : définition, cumul, montant/nature/circonstances et jugement."
+    },
+    {
+      "claimId": "anomalie-significative-context-f1-1-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-anomalie-significative-context-f1-1-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 200 §04 seul porte le rappel anaphorique de la définition publiée juste avant ; aucune règle montant/nature/circonstances ne lui est attribuée."
+    },
+    {
+      "claimId": "anomalie-significative-context-f1-2-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-anomalie-significative-context-f1-2-h2a-nep-320-1",
+        "citation-anomalie-significative-context-f1-2-h2a-nep-320-2"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 320 §§09/10 porte entièrement montant, nature, circonstances et jugement professionnel."
+    },
+    {
+      "claimId": "anomalie-significative-commonConfusion-f1-1-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-anomalie-significative-commonConfusion-f1-1-h2a-nep-320-1"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 320 §09 porte le caractère significatif qualitatif et circonstancié, sans le réduire au dépassement d’un seuil."
+    },
+    {
+      "claimId": "anomalie-significative-commonConfusion-f1-2-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-anomalie-significative-commonConfusion-f1-2-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : le cumul seul est attribué à NEP 200 §04 et NEP 320 §04. Le point-virgule est conservé pour couvrir le champ, sans étendre la preuve au sous-claim précédent."
+    },
+    {
+      "claimId": "anomalie-significative-commonConfusion-f1-2-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-anomalie-significative-commonConfusion-f1-2-h2a-nep-320-1"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : le cumul seul est attribué à NEP 200 §04 et NEP 320 §04. Le point-virgule est conservé pour couvrir le champ, sans étendre la preuve au sous-claim précédent."
+    },
+    {
+      "claimId": "risque-audit-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-audit-definition-h2a-nep-200-1",
+        "citation-risque-audit-definition-h2a-nep-200-2",
+        "citation-risque-audit-definition-h2a-nep-200-3",
+        "citation-risque-audit-definition-h2a-nep-200-4"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-audit-definition-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "citationIds": [
+        "citation-risque-audit-definition-dila-a821-63-1",
+        "citation-risque-audit-definition-dila-a821-63-2",
+        "citation-risque-audit-definition-dila-a821-63-3",
+        "citation-risque-audit-definition-dila-a821-63-4"
+      ],
+      "sourceContentSha256": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-audit-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-audit-context-h2a-nep-200-1",
+        "citation-risque-audit-context-h2a-nep-200-2",
+        "citation-risque-audit-context-h2a-nep-200-3",
+        "citation-risque-audit-context-h2a-nep-200-4"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-audit-context-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "citationIds": [
+        "citation-risque-audit-context-dila-a821-63-1",
+        "citation-risque-audit-context-dila-a821-63-2",
+        "citation-risque-audit-context-dila-a821-63-3",
+        "citation-risque-audit-context-dila-a821-63-4"
+      ],
+      "sourceContentSha256": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-audit-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-audit-commonConfusion-h2a-nep-200-1",
+        "citation-risque-audit-commonConfusion-h2a-nep-200-2",
+        "citation-risque-audit-commonConfusion-h2a-nep-200-3",
+        "citation-risque-audit-commonConfusion-h2a-nep-200-4"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-audit-commonConfusion-dila-a821-63",
+      "sourceId": "dila-a821-63",
+      "citationIds": [
+        "citation-risque-audit-commonConfusion-dila-a821-63-1",
+        "citation-risque-audit-commonConfusion-dila-a821-63-2",
+        "citation-risque-audit-commonConfusion-dila-a821-63-3",
+        "citation-risque-audit-commonConfusion-dila-a821-63-4"
+      ],
+      "sourceContentSha256": "c3611e02e7e13cad7bb76fa4b0639f100020de87bf08f09f9f95bc2047543de7",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10–13 : risque d’opinion inappropriée, risques de l’entité et non-détection, assurance raisonnable sans garantie absolue."
+    },
+    {
+      "claimId": "risque-inherent-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-inherent-definition-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §11 / NEP 315 §02 : risque apprécié sans les contrôles, facteurs et jugement distincts."
+    },
+    {
+      "claimId": "risque-inherent-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-inherent-definition-h2a-nep-315-1",
+        "citation-risque-inherent-definition-h2a-nep-315-2",
+        "citation-risque-inherent-definition-h2a-nep-315-3"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §11 / NEP 315 §02 : risque apprécié sans les contrôles, facteurs et jugement distincts."
+    },
+    {
+      "claimId": "risque-inherent-context-f1-1-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-inherent-context-f1-1-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 200 §11 distingue les composantes du risque propre à l’entité ; la liste de facteurs et l’évaluation distincte ne lui sont plus attribuées."
+    },
+    {
+      "claimId": "risque-inherent-context-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-inherent-context-f1-2-h2a-nep-315-1",
+        "citation-risque-inherent-context-f1-2-h2a-nep-315-2",
+        "citation-risque-inherent-context-f1-2-h2a-nep-315-3"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §02 donne les facteurs, §39 l’évaluation séparée et §40 la probabilité/ampleur et incidence des facteurs ; « peuvent » ne transforme pas un facteur en score automatique."
+    },
+    {
+      "claimId": "risque-inherent-commonConfusion-f1-1-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-inherent-commonConfusion-f1-1-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 200 §11 définit le risque inhérent sans tenir compte du contrôle interne, même si ce dernier est efficace."
+    },
+    {
+      "claimId": "risque-inherent-commonConfusion-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-inherent-commonConfusion-f1-2-h2a-nep-315-1",
+        "citation-risque-inherent-commonConfusion-f1-2-h2a-nep-315-2"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §§02/40 relie complexité/volumétrie à l’évaluation du CAC, sans attribuer de niveau automatique ni établir une causalité certaine."
+    },
+    {
+      "claimId": "risque-lie-controle-definition-f1-1-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-lie-controle-definition-f1-1-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la définition, y compris non-correction en temps voulu et distinction inhérent/contrôle, est prouvée par NEP 200 §11 ou NEP 315 §02. Les seuls §§34/41 ne sont plus présentés comme définition."
+    },
+    {
+      "claimId": "risque-lie-controle-definition-f1-1-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-lie-controle-definition-f1-1-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la définition, y compris non-correction en temps voulu et distinction inhérent/contrôle, est prouvée par NEP 200 §11 ou NEP 315 §02. Les seuls §§34/41 ne sont plus présentés comme définition."
+    },
+    {
+      "claimId": "risque-lie-controle-context-f1-1-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-lie-controle-context-f1-1-h2a-nep-200-1"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : rappel de définition seul attribué à NEP 200 §11, lu avec le champ définition ; ni tests ni absence de tests ne lui sont attribués."
+    },
+    {
+      "claimId": "risque-lie-controle-context-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-lie-controle-context-f1-2-h2a-nep-315-1",
+        "citation-risque-lie-controle-context-f1-2-h2a-nep-315-2"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §§34/41 distingue conception, mise en œuvre et efficacité du fonctionnement ; une description ne prouve pas un test."
+    },
+    {
+      "claimId": "risque-lie-controle-context-f1-3-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-lie-controle-context-f1-3-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : la dernière phrase de NEP 315 §41 énonce exactement la conséquence de l’absence de tests sur l’évaluation au niveau des assertions ; elle fait désormais l’objet de son propre sous-claim."
+    },
+    {
+      "claimId": "risque-lie-controle-commonConfusion-f1-1-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-risque-lie-controle-commonConfusion-f1-1-h2a-nep-315-1",
+        "citation-risque-lie-controle-commonConfusion-f1-1-h2a-nep-315-2"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §§34/41 distingue description/conception/mise en œuvre et tests d’efficacité ; le sous-claim ne traite plus la non-détection."
+    },
+    {
+      "claimId": "risque-lie-controle-commonConfusion-f1-2-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-lie-controle-commonConfusion-f1-2-h2a-nep-200-1",
+        "citation-risque-lie-controle-commonConfusion-f1-2-h2a-nep-200-2"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 200 §§11/12 oppose risque propre à l’entité et risque propre à la mission ; aucune règle de test du contrôle ne lui est attribuée."
+    },
+    {
+      "claimId": "risque-non-detection-definition-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-non-detection-definition-h2a-nep-200-1",
+        "citation-risque-non-detection-definition-h2a-nep-200-2",
+        "citation-risque-non-detection-definition-h2a-nep-200-3",
+        "citation-risque-non-detection-definition-h2a-nep-200-4",
+        "citation-risque-non-detection-definition-h2a-nep-200-5"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10/12/13 : risque propre à la mission, réponse adaptée et impossibilité d’obtenir une assurance absolue."
+    },
+    {
+      "claimId": "risque-non-detection-context-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-non-detection-context-h2a-nep-200-1",
+        "citation-risque-non-detection-context-h2a-nep-200-2",
+        "citation-risque-non-detection-context-h2a-nep-200-3",
+        "citation-risque-non-detection-context-h2a-nep-200-4",
+        "citation-risque-non-detection-context-h2a-nep-200-5"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10/12/13 : risque propre à la mission, réponse adaptée et impossibilité d’obtenir une assurance absolue."
+    },
+    {
+      "claimId": "risque-non-detection-commonConfusion-h2a-nep-200",
+      "sourceId": "h2a-nep-200",
+      "citationIds": [
+        "citation-risque-non-detection-commonConfusion-h2a-nep-200-1",
+        "citation-risque-non-detection-commonConfusion-h2a-nep-200-2",
+        "citation-risque-non-detection-commonConfusion-h2a-nep-200-3",
+        "citation-risque-non-detection-commonConfusion-h2a-nep-200-4",
+        "citation-risque-non-detection-commonConfusion-h2a-nep-200-5"
+      ],
+      "sourceContentSha256": "7c6e31b312c30d60cc6e9db85e72ff99d6d7daef8a5184d777d960d83a9995bf",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 200 §§10/12/13 : risque propre à la mission, réponse adaptée et impossibilité d’obtenir une assurance absolue."
+    },
+    {
+      "claimId": "seuil-signification-audit-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-signification-audit-definition-h2a-nep-320-1",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-2",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-3",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-4",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-5",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-6",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-7",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-8",
+        "citation-seuil-signification-audit-definition-h2a-nep-320-9"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-signification-audit-definition-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-signification-audit-definition-dila-a821-70-1",
+        "citation-seuil-signification-audit-definition-dila-a821-70-2",
+        "citation-seuil-signification-audit-definition-dila-a821-70-3",
+        "citation-seuil-signification-audit-definition-dila-a821-70-4",
+        "citation-seuil-signification-audit-definition-dila-a821-70-5",
+        "citation-seuil-signification-audit-definition-dila-a821-70-6",
+        "citation-seuil-signification-audit-definition-dila-a821-70-7"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-signification-audit-context-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-signification-audit-context-h2a-nep-320-1",
+        "citation-seuil-signification-audit-context-h2a-nep-320-2",
+        "citation-seuil-signification-audit-context-h2a-nep-320-3",
+        "citation-seuil-signification-audit-context-h2a-nep-320-4",
+        "citation-seuil-signification-audit-context-h2a-nep-320-5",
+        "citation-seuil-signification-audit-context-h2a-nep-320-6",
+        "citation-seuil-signification-audit-context-h2a-nep-320-7",
+        "citation-seuil-signification-audit-context-h2a-nep-320-8",
+        "citation-seuil-signification-audit-context-h2a-nep-320-9"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-signification-audit-context-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-signification-audit-context-dila-a821-70-1",
+        "citation-seuil-signification-audit-context-dila-a821-70-2",
+        "citation-seuil-signification-audit-context-dila-a821-70-3",
+        "citation-seuil-signification-audit-context-dila-a821-70-4",
+        "citation-seuil-signification-audit-context-dila-a821-70-5",
+        "citation-seuil-signification-audit-context-dila-a821-70-6",
+        "citation-seuil-signification-audit-context-dila-a821-70-7"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-signification-audit-commonConfusion-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-1",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-2",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-3",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-4",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-5",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-6",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-7",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-8",
+        "citation-seuil-signification-audit-commonConfusion-h2a-nep-320-9"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-signification-audit-commonConfusion-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-1",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-2",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-3",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-4",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-5",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-6",
+        "citation-seuil-signification-audit-commonConfusion-dila-a821-70-7"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§06/09/10/14–16/21–24 : montant, jugement, critères et révision documentée ; pas de pourcentage universel prescrit."
+    },
+    {
+      "claimId": "seuil-planification-audit-definition-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-planification-audit-definition-h2a-nep-320-1",
+        "citation-seuil-planification-audit-definition-h2a-nep-320-2",
+        "citation-seuil-planification-audit-definition-h2a-nep-320-3",
+        "citation-seuil-planification-audit-definition-h2a-nep-320-4",
+        "citation-seuil-planification-audit-definition-h2a-nep-320-5",
+        "citation-seuil-planification-audit-definition-h2a-nep-320-6"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "seuil-planification-audit-definition-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-planification-audit-definition-dila-a821-70-1",
+        "citation-seuil-planification-audit-definition-dila-a821-70-2",
+        "citation-seuil-planification-audit-definition-dila-a821-70-3",
+        "citation-seuil-planification-audit-definition-dila-a821-70-4"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "seuil-planification-audit-context-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-planification-audit-context-h2a-nep-320-1",
+        "citation-seuil-planification-audit-context-h2a-nep-320-2",
+        "citation-seuil-planification-audit-context-h2a-nep-320-3",
+        "citation-seuil-planification-audit-context-h2a-nep-320-4",
+        "citation-seuil-planification-audit-context-h2a-nep-320-5",
+        "citation-seuil-planification-audit-context-h2a-nep-320-6"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "seuil-planification-audit-context-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-planification-audit-context-dila-a821-70-1",
+        "citation-seuil-planification-audit-context-dila-a821-70-2",
+        "citation-seuil-planification-audit-context-dila-a821-70-3",
+        "citation-seuil-planification-audit-context-dila-a821-70-4"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "seuil-planification-audit-commonConfusion-h2a-nep-320",
+      "sourceId": "h2a-nep-320",
+      "citationIds": [
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-1",
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-2",
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-3",
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-4",
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-5",
+        "citation-seuil-planification-audit-commonConfusion-h2a-nep-320-6"
+      ],
+      "sourceContentSha256": "4789761bee40b233bc46e0c531dc254811260e7b015a14fea1013c54295b55c3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "seuil-planification-audit-commonConfusion-dila-a821-70",
+      "sourceId": "dila-a821-70",
+      "citationIds": [
+        "citation-seuil-planification-audit-commonConfusion-dila-a821-70-1",
+        "citation-seuil-planification-audit-commonConfusion-dila-a821-70-2",
+        "citation-seuil-planification-audit-commonConfusion-dila-a821-70-3",
+        "citation-seuil-planification-audit-commonConfusion-dila-a821-70-4"
+      ],
+      "sourceContentSha256": "03a3c97f6ffe7075ffc1a8821f27216a0531fd58248901c779d3ad7f3491e0d3",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 320 §§07/17–19/21–24 : montant inférieur au seuil de signification, risque de cumul, expérience/connaissance et jugement ; pas de taux obligatoire."
+    },
+    {
+      "claimId": "controle-interne-audit-definition-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-controle-interne-audit-definition-h2a-nep-315-1",
+        "citation-controle-interne-audit-definition-h2a-nep-315-2",
+        "citation-controle-interne-audit-definition-h2a-nep-315-3"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "controle-interne-audit-definition-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "citationIds": [
+        "citation-controle-interne-audit-definition-dila-a821-72-1",
+        "citation-controle-interne-audit-definition-dila-a821-72-2",
+        "citation-controle-interne-audit-definition-dila-a821-72-3"
+      ],
+      "sourceContentSha256": "82964dc02ffba5a4f9dbb9a51d8fb35aebfdb5c6fc4c333a3d75c7aaad907ff0",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "controle-interne-audit-context-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-controle-interne-audit-context-h2a-nep-315-1",
+        "citation-controle-interne-audit-context-h2a-nep-315-2",
+        "citation-controle-interne-audit-context-h2a-nep-315-3"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "controle-interne-audit-context-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "citationIds": [
+        "citation-controle-interne-audit-context-dila-a821-72-1",
+        "citation-controle-interne-audit-context-dila-a821-72-2",
+        "citation-controle-interne-audit-context-dila-a821-72-3"
+      ],
+      "sourceContentSha256": "82964dc02ffba5a4f9dbb9a51d8fb35aebfdb5c6fc4c333a3d75c7aaad907ff0",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "controle-interne-audit-commonConfusion-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-controle-interne-audit-commonConfusion-h2a-nep-315-1",
+        "citation-controle-interne-audit-commonConfusion-h2a-nep-315-2",
+        "citation-controle-interne-audit-commonConfusion-h2a-nep-315-3"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "controle-interne-audit-commonConfusion-dila-a821-72",
+      "sourceId": "dila-a821-72",
+      "citationIds": [
+        "citation-controle-interne-audit-commonConfusion-dila-a821-72-1",
+        "citation-controle-interne-audit-commonConfusion-dila-a821-72-2",
+        "citation-controle-interne-audit-commonConfusion-dila-a821-72-3"
+      ],
+      "sourceContentSha256": "82964dc02ffba5a4f9dbb9a51d8fb35aebfdb5c6fc4c333a3d75c7aaad907ff0",
+      "checkedAt": "2026-10-11T13:29:18.072673+00:00",
+      "verdict": "soutient",
+      "reasoning": "Avis acquis du 11/10 reporté, preuve historique prior/PREUVE.json, sans nouvelle revue de fond : NEP 315 §§24/34/41 et A.821-72 : dispositif de l’entité, conception/mise en œuvre distinctes des tests, efficacité appréciée par le CAC."
+    },
+    {
+      "claimId": "ipe-audit-definition-f1-2-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-ipe-audit-definition-f1-2-h2a-nep-500-1",
+        "citation-ipe-audit-definition-f1-2-h2a-nep-500-2"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §§06/07 / A.821-74 §§6/7 relie fiabilité à l’origine, nature, circonstances, contrôle interne et esprit critique. L’origine interne n’établit pas seule la fiabilité."
+    },
+    {
+      "claimId": "ipe-audit-definition-f1-2-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-ipe-audit-definition-f1-2-dila-a821-74-1",
+        "citation-ipe-audit-definition-f1-2-dila-a821-74-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §§06/07 / A.821-74 §§6/7 relie fiabilité à l’origine, nature, circonstances, contrôle interne et esprit critique. L’origine interne n’établit pas seule la fiabilité."
+    },
+    {
+      "claimId": "ipe-audit-context-f1-1-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-ipe-audit-context-f1-1-h2a-nep-500-1"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §06 / A.821-74 §6 porte la collecte d’éléments sur exactitude/exhaustivité des informations produites par l’entité ; la règle particulière des outils automatisés est isolée."
+    },
+    {
+      "claimId": "ipe-audit-context-f1-1-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-ipe-audit-context-f1-1-dila-a821-74-1"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §06 / A.821-74 §6 porte la collecte d’éléments sur exactitude/exhaustivité des informations produites par l’entité ; la règle particulière des outils automatisés est isolée."
+    },
+    {
+      "claimId": "ipe-audit-context-f1-2-h2a-nep-315",
+      "sourceId": "h2a-nep-315",
+      "citationIds": [
+        "citation-ipe-audit-context-f1-2-h2a-nep-315-1"
+      ],
+      "sourceContentSha256": "68c0d571ca081b14919638131ba8f375c00902b8e28ffa8325d6c33df94e10ba",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 315 §46 seul porte l’appréciation de la pertinence/fiabilité des informations intégrées aux outils dans l’identification et l’évaluation des risques, sans définition normative de l’acronyme IPE."
+    },
+    {
+      "claimId": "ipe-audit-commonConfusion-f1-1-h2a-nep-500",
+      "sourceId": "h2a-nep-500",
+      "citationIds": [
+        "citation-ipe-audit-commonConfusion-f1-1-h2a-nep-500-1",
+        "citation-ipe-audit-commonConfusion-f1-1-h2a-nep-500-2"
+      ],
+      "sourceContentSha256": "6665f29f263a3854f6bb71543871e67fba1527c0dfa700632d11d528525fa603",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §§05/06 / A.821-74 §§5/6 porte suffisance, qualité, exactitude, exhaustivité et pertinence. Export ou total rapproché est une illustration éditoriale de cette exigence, pas une diligence dispensatoire. Le rattachement global à NEP 315 §46 est supprimé."
+    },
+    {
+      "claimId": "ipe-audit-commonConfusion-f1-1-dila-a821-74",
+      "sourceId": "dila-a821-74",
+      "citationIds": [
+        "citation-ipe-audit-commonConfusion-f1-1-dila-a821-74-1",
+        "citation-ipe-audit-commonConfusion-f1-1-dila-a821-74-2"
+      ],
+      "sourceContentSha256": "5c1b3ea25289fa0fe44a2e7fddb53bdbd7c1091874a7a28ff5bf2d7e4f26c85f",
+      "checkedAt": "2026-10-11T23:07:40.377Z",
+      "verdict": "soutient",
+      "reasoning": "F1 levé : NEP 500 §§05/06 / A.821-74 §§5/6 porte suffisance, qualité, exactitude, exhaustivité et pertinence. Export ou total rapproché est une illustration éditoriale de cette exigence, pas une diligence dispensatoire. Le rattachement global à NEP 315 §46 est supprimé."
+    }
+  ]
+}

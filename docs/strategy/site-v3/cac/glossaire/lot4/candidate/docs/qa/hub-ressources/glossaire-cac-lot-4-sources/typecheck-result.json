@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/kevinkitanga/dev/interne/memlia-landing/node_modules/.bin/tsc",
+    "--ignoreConfig",
+    "--noEmit",
+    "--skipLibCheck",
+    "--strict",
+    "--target",
+    "ES2022",
+    "--moduleResolution",
+    "bundler",
+    "--module",
+    "ESNext",
+    "docs/qa/hub-ressources/glossaire-cac-lot-4-sources/shape-check.ts"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ""
+}

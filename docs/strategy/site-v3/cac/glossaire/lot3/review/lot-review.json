@@ -1,0 +1,811 @@
+{
+  "schemaVersion": 1,
+  "lot": "cac-audit-3",
+  "verdict": "PASS",
+  "checkedAt": "2026-10-11T13:41:48.729Z",
+  "reviewerId": "t_f87ddaa1",
+  "reviewerRole": "reviewer-metier-memlia",
+  "reviewedPackageSha256": "633fd81e61587e562f6a56b0bda7ce7b262a57824fba3219571ffa4808ae2433",
+  "baselineMain": "f9b65c7d5a40d6ec6ccf17a3c8dee8f6f93eb73f",
+  "publicationAuthorized": false,
+  "counts": {
+    "entries": 10,
+    "unitReviews": 88,
+    "sensitiveClaimSourceVerdicts": 64,
+    "methodReviews": 24
+  },
+  "unitReviews": [
+    {
+      "unitId": "elements-collectes-audit-definition-h2a-nep-500",
+      "entryId": "elements-collectes-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les éléments collectés sont les informations recueillies par le commissaire aux comptes pour aboutir aux conclusions sur lesquelles il fonde son opinion. Ils peuvent provenir de l’audit en cours, d’audits précédents, d’autres interventions ou de l’acceptation et du maintien de la mission.",
+      "reasoning": "NEP 500 §§01/04 : les éléments servent aux conclusions fondant l’opinion et incluent audit courant, audits antérieurs, autres interventions et acceptation/maintien. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "elements-collectes-audit-definition-dila-a821-74",
+      "entryId": "elements-collectes-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les éléments collectés sont les informations recueillies par le commissaire aux comptes pour aboutir aux conclusions sur lesquelles il fonde son opinion. Ils peuvent provenir de l’audit en cours, d’audits précédents, d’autres interventions ou de l’acceptation et du maintien de la mission.",
+      "reasoning": "NEP 500 §§01/04 : les éléments servent aux conclusions fondant l’opinion et incluent audit courant, audits antérieurs, autres interventions et acceptation/maintien. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "elements-collectes-audit-context-h2a-nep-500",
+      "entryId": "elements-collectes-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 500 distingue la collecte d’informations et l’appréciation de leur caractère suffisant et approprié au regard des assertions vérifiées. Une pièce reçue entre dans les travaux ; sa seule présence ne démontre pas que les éléments permettent de fonder une opinion.",
+      "reasoning": "NEP 500 §§05/06 : la simple collecte ne vaut pas suffisance/qualité ; la source établit la distinction appliquée à une pièce reçue. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "elements-collectes-audit-context-dila-a821-74",
+      "entryId": "elements-collectes-audit",
+      "field": "context",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 500 distingue la collecte d’informations et l’appréciation de leur caractère suffisant et approprié au regard des assertions vérifiées. Une pièce reçue entre dans les travaux ; sa seule présence ne démontre pas que les éléments permettent de fonder une opinion.",
+      "reasoning": "NEP 500 §§05/06 : la simple collecte ne vaut pas suffisance/qualité ; la source établit la distinction appliquée à une pièce reçue. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "elements-collectes-audit-commonConfusion-h2a-nep-500",
+      "entryId": "elements-collectes-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Éléments collectés ne signifie pas automatiquement éléments suffisants et appropriés. La quantité de documents ne remplace pas leur pertinence et leur fiabilité ; une incohérence entre pièces conduit le CAC à déterminer les procédures complémentaires nécessaires.",
+      "reasoning": "NEP 500 §§06/07 : quantité distincte de pertinence/fiabilité ; incohérence à élucider par des procédures complémentaires choisies par le CAC. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "elements-collectes-audit-commonConfusion-dila-a821-74",
+      "entryId": "elements-collectes-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Éléments collectés ne signifie pas automatiquement éléments suffisants et appropriés. La quantité de documents ne remplace pas leur pertinence et leur fiabilité ; une incohérence entre pièces conduit le CAC à déterminer les procédures complémentaires nécessaires.",
+      "reasoning": "NEP 500 §§06/07 : quantité distincte de pertinence/fiabilité ; incohérence à élucider par des procédures complémentaires choisies par le CAC. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "elements-collectes-audit-exampleFictitious-memlia",
+      "entryId": "elements-collectes-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : l’équipe rassemble une facture, une preuve de livraison et une réponse du client pour examiner une vente. Elle conserve l’origine de chaque pièce et présente une contradiction au CAC, sans transformer la réception des documents en conclusion d’audit.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "elements-collectes-audit-automationBoundary-memlia",
+      "entryId": "elements-collectes-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons l’inventaire, les références, les doublons proposés et les pièces manquantes selon la règle écrite. L’équipe valide le rattachement et garde ses commentaires. Nous signalons les contradictions ; le CAC apprécie le caractère probant, décide des diligences et conclut. Les saisies du cabinet ne sont jamais écrasées.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "caractere-probant-definition-h2a-nep-500",
+      "entryId": "caractere-probant",
+      "field": "definition",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le caractère probant des éléments collectés s’apprécie au regard de leur capacité à apporter des preuves ou des présomptions sur les assertions vérifiées. Pour fonder l’opinion, ces éléments doivent être suffisants en quantité et appropriés en qualité, c’est-à-dire pertinents et fiables.",
+      "reasoning": "NEP 500 §§05/06 : preuves ou présomptions sur assertions, suffisance quantitative et caractère approprié qualitatif, pertinence et fiabilité. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "caractere-probant-definition-dila-a821-74",
+      "entryId": "caractere-probant",
+      "field": "definition",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le caractère probant des éléments collectés s’apprécie au regard de leur capacité à apporter des preuves ou des présomptions sur les assertions vérifiées. Pour fonder l’opinion, ces éléments doivent être suffisants en quantité et appropriés en qualité, c’est-à-dire pertinents et fiables.",
+      "reasoning": "NEP 500 §§05/06 : preuves ou présomptions sur assertions, suffisance quantitative et caractère approprié qualitatif, pertinence et fiabilité. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "caractere-probant-context-h2a-nep-500",
+      "entryId": "caractere-probant",
+      "field": "context",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 500 relie la quantité nécessaire au risque d’anomalies significatives et à la qualité des éléments. Leur fiabilité dépend de leur origine, de leur nature et des circonstances de leur collecte. Le CAC garde un esprit critique devant les indices qui remettent leur validité en cause.",
+      "reasoning": "NEP 500 §§06/07 : quantité liée au risque et à la qualité ; fiabilité dépendant origine/nature/circonstances et maintien de l’esprit critique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "caractere-probant-context-dila-a821-74",
+      "entryId": "caractere-probant",
+      "field": "context",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 500 relie la quantité nécessaire au risque d’anomalies significatives et à la qualité des éléments. Leur fiabilité dépend de leur origine, de leur nature et des circonstances de leur collecte. Le CAC garde un esprit critique devant les indices qui remettent leur validité en cause.",
+      "reasoning": "NEP 500 §§06/07 : quantité liée au risque et à la qualité ; fiabilité dépendant origine/nature/circonstances et maintien de l’esprit critique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "caractere-probant-commonConfusion-h2a-nep-500",
+      "entryId": "caractere-probant",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une concordance de montants, un document externe ou une réponse reçue ne suffit pas à garantir le caractère probant. Les principes de fiabilité de la NEP 500 sont appréciés dans les circonstances de la mission ; en cas de doute ou d’incohérence, le CAC approfondit ses investigations.",
+      "reasoning": "NEP 500 §§06/07 : principes de fiabilité circonstanciés, non garantie d’une pièce externe ; doute et incohérence appellent investigations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "caractere-probant-commonConfusion-dila-a821-74",
+      "entryId": "caractere-probant",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une concordance de montants, un document externe ou une réponse reçue ne suffit pas à garantir le caractère probant. Les principes de fiabilité de la NEP 500 sont appréciés dans les circonstances de la mission ; en cas de doute ou d’incohérence, le CAC approfondit ses investigations.",
+      "reasoning": "NEP 500 §§06/07 : principes de fiabilité circonstanciés, non garantie d’une pièce externe ; doute et incohérence appellent investigations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "caractere-probant-exampleFictitious-memlia",
+      "entryId": "caractere-probant",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : deux états présentent le même solde, mais proviennent de la même extraction. L’équipe indique cette origine commune au CAC au lieu de compter deux corroborations indépendantes. Le CAC apprécie les éléments et les travaux à compléter.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "caractere-probant-automationBoundary-memlia",
+      "entryId": "caractere-probant",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons les rapprochements, l’origine des données et les écarts non expliqués. L’équipe valide les rattachements et conserve ses observations. Aucun score automatique ne déclare une preuve suffisante : l’appréciation du caractère probant, les investigations et la conclusion restent au CAC. Ses saisies ne sont jamais écrasées.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-alias-memlia",
+      "entryId": "confirmation-tiers-audit",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Circularisation est le terme de pratique associé à cette technique, pas une seconde procédure à créer.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-definition-h2a-nep-505",
+      "entryId": "confirmation-tiers-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "La demande de confirmation des tiers consiste à obtenir d’un tiers une déclaration directement adressée au commissaire aux comptes sur une ou plusieurs informations.",
+      "reasoning": "NEP 505 §03 : déclaration du tiers directement adressée au CAC sur une ou plusieurs informations ; l’alias est jugé séparément comme vocabulaire de pratique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-definition-dila-a821-76",
+      "entryId": "confirmation-tiers-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "La demande de confirmation des tiers consiste à obtenir d’un tiers une déclaration directement adressée au commissaire aux comptes sur une ou plusieurs informations.",
+      "reasoning": "NEP 505 §03 : déclaration du tiers directement adressée au CAC sur une ou plusieurs informations ; l’alias est jugé séparément comme vocabulaire de pratique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-context-h2a-nep-505",
+      "entryId": "confirmation-tiers-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 505 distingue la demande fermée, qui sollicite l’accord sur une information fournie, et la demande ouverte, qui demande au tiers de fournir l’information. Le CAC maîtrise la sélection des tiers, la rédaction, l’envoi et la réception des réponses, en fonction des assertions concernées.",
+      "reasoning": "NEP 505 §§04/08/09 : distinction ouverte/fermée, assertions concernées et maîtrise par le CAC de sélection, rédaction, envoi et réception. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-context-dila-a821-76",
+      "entryId": "confirmation-tiers-audit",
+      "field": "context",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 505 distingue la demande fermée, qui sollicite l’accord sur une information fournie, et la demande ouverte, qui demande au tiers de fournir l’information. Le CAC maîtrise la sélection des tiers, la rédaction, l’envoi et la réception des réponses, en fonction des assertions concernées.",
+      "reasoning": "NEP 505 §§04/08/09 : distinction ouverte/fermée, assertions concernées et maîtrise par le CAC de sélection, rédaction, envoi et réception. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-commonConfusion-h2a-nep-505",
+      "entryId": "confirmation-tiers-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une réponse concordante ne vaut pas automatiquement validation de toutes les assertions. Une confirmation peut apporter des éléments sur l’existence d’une créance sans généralement renseigner son évaluation. L’absence de réponse conduit à des procédures alternatives, pas à une confirmation tacite.",
+      "reasoning": "NEP 505 §§07/13/15 : existence distincte d’évaluation, alternatives en absence de réponse et appréciation des résultats ; réception ou concordance n’est pas conclusion. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-commonConfusion-dila-a821-76",
+      "entryId": "confirmation-tiers-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une réponse concordante ne vaut pas automatiquement validation de toutes les assertions. Une confirmation peut apporter des éléments sur l’existence d’une créance sans généralement renseigner son évaluation. L’absence de réponse conduit à des procédures alternatives, pas à une confirmation tacite.",
+      "reasoning": "NEP 505 §§07/13/15 : existence distincte d’évaluation, alternatives en absence de réponse et appréciation des résultats ; réception ou concordance n’est pas conclusion. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-exampleFictitious-memlia",
+      "entryId": "confirmation-tiers-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : une campagne clients affiche séparément « réponse reçue », « rapprochement préparé » et « appréciation du CAC attendue ». Une différence entre la réponse et le solde du dossier reste une exception ; aucun statut de réception ne clôt le contrôle.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "confirmation-tiers-audit-automationBoundary-memlia",
+      "entryId": "confirmation-tiers-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons le tableau de suivi, les projets de demandes et les rapprochements. Le CAC garde la maîtrise des destinataires, du texte, de l’envoi et de la réception ; l’équipe valide chaque action dans ce cadre. Les réponses originales et saisies du cabinet restent intactes. Le CAC juge les écarts, les alternatives et le caractère probant des résultats.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-definition-h2a-nep-505",
+      "entryId": "procedures-alternatives-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "Dans le cadre des confirmations de tiers, les procédures alternatives sont les travaux d’audit mis en œuvre par le CAC pour collecter les éléments nécessaires aux assertions contrôlées lorsqu’une demande reste sans réponse ou lorsque le refus de la direction est considéré comme fondé.",
+      "reasoning": "NEP 505 §§11/13 : alternatives en cas de refus fondé ou absence de réponse ; définition expressément bornée aux confirmations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-definition-dila-a821-76",
+      "entryId": "procedures-alternatives-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "Dans le cadre des confirmations de tiers, les procédures alternatives sont les travaux d’audit mis en œuvre par le CAC pour collecter les éléments nécessaires aux assertions contrôlées lorsqu’une demande reste sans réponse ou lorsque le refus de la direction est considéré comme fondé.",
+      "reasoning": "NEP 505 §§11/13 : alternatives en cas de refus fondé ou absence de réponse ; définition expressément bornée aux confirmations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-context-h2a-nep-505",
+      "entryId": "procedures-alternatives-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 505 prévoit des procédures supplémentaires si la confirmation et les alternatives n’apportent pas d’éléments suffisants et appropriés. Le CAC évalue les résultats de l’ensemble des travaux. Un refus non fondé de la direction relève d’un traitement distinct, avec des conséquences éventuelles dans son rapport.",
+      "reasoning": "NEP 505 §§10–12/14/15 : analyse du refus, conséquences éventuelles du refus non fondé, procédures supplémentaires et appréciation des résultats. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-context-dila-a821-76",
+      "entryId": "procedures-alternatives-audit",
+      "field": "context",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 505 prévoit des procédures supplémentaires si la confirmation et les alternatives n’apportent pas d’éléments suffisants et appropriés. Le CAC évalue les résultats de l’ensemble des travaux. Un refus non fondé de la direction relève d’un traitement distinct, avec des conséquences éventuelles dans son rapport.",
+      "reasoning": "NEP 505 §§10–12/14/15 : analyse du refus, conséquences éventuelles du refus non fondé, procédures supplémentaires et appréciation des résultats. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-commonConfusion-h2a-nep-505",
+      "entryId": "procedures-alternatives-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-505",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une relance administrative n’est pas à elle seule une procédure alternative apportant les éléments nécessaires. Une alternative ne garantit pas que le contrôle est achevé : si les éléments restent insuffisants ou inappropriés, le CAC met en œuvre des procédures supplémentaires.",
+      "reasoning": "NEP 505 §§13–15 : alternatives visant la collecte d’éléments et compléments si insuffisance ; une relance administrative seule n’établit pas cette collecte. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-commonConfusion-dila-a821-76",
+      "entryId": "procedures-alternatives-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-76",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une relance administrative n’est pas à elle seule une procédure alternative apportant les éléments nécessaires. Une alternative ne garantit pas que le contrôle est achevé : si les éléments restent insuffisants ou inappropriés, le CAC met en œuvre des procédures supplémentaires.",
+      "reasoning": "NEP 505 §§13–15 : alternatives visant la collecte d’éléments et compléments si insuffisance ; une relance administrative seule n’établit pas cette collecte. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-exampleFictitious-memlia",
+      "entryId": "procedures-alternatives-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : un client ne répond pas à une demande. Sur instruction de l’équipe, le suivi rassemble une facture, une preuve de livraison et un règlement postérieur. Le CAC choisit les travaux pertinents pour l’assertion visée et apprécie leurs résultats ; cette liste n’est pas une recette universelle.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "procedures-alternatives-audit-automationBoundary-memlia",
+      "entryId": "procedures-alternatives-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous repérons les demandes sans réponse, préparons les pièces demandées et suivons les travaux prescrits. L’équipe valide la demande et conserve les éléments examinés. Nous n’inventons ni une procédure de remplacement ni une conclusion ; le CAC décide des alternatives, des compléments et de l’appréciation finale. Ses saisies restent intactes.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "procedures-analytiques-alias-memlia",
+      "entryId": "procedures-analytiques",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Revue analytique est un alias de pratique ; un tableau de variations n’épuise pas cette technique d’audit.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "procedures-analytiques-definition-h2a-nep-520",
+      "entryId": "procedures-analytiques",
+      "field": "definition",
+      "sourceId": "h2a-nep-520",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les procédures analytiques apprécient les informations financières à partir de leurs corrélations avec d’autres informations et de l’analyse des variations significatives ou des tendances inattendues.",
+      "reasoning": "NEP 520 §04 : corrélations et variations significatives/tendances inattendues. Le terme revue analytique est apprécié séparément en alias de pratique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-analytiques-definition-dila-a821-77",
+      "entryId": "procedures-analytiques",
+      "field": "definition",
+      "sourceId": "dila-a821-77",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les procédures analytiques apprécient les informations financières à partir de leurs corrélations avec d’autres informations et de l’analyse des variations significatives ou des tendances inattendues.",
+      "reasoning": "NEP 520 §04 : corrélations et variations significatives/tendances inattendues. Le terme revue analytique est apprécié séparément en alias de pratique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-analytiques-context-h2a-nep-520",
+      "entryId": "procedures-analytiques",
+      "field": "context",
+      "sourceId": "h2a-nep-520",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 520 prévoit leur emploi lors de la prise de connaissance et de l’évaluation des risques, puis lors de la revue de cohérence d’ensemble en fin d’audit. Elles peuvent aussi servir de procédures analytiques de substance : les montants ou ratios attendus et les écarts acceptables sont alors déterminés dans le cadre des travaux.",
+      "reasoning": "NEP 520 §§05–08 : étapes initiale/finale obligatoires, faculté d’usage en substance et attentes/écarts acceptables définis pour la substance. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-analytiques-context-dila-a821-77",
+      "entryId": "procedures-analytiques",
+      "field": "context",
+      "sourceId": "dila-a821-77",
+      "verdict": "PASS",
+      "sourceSupportedText": "La NEP 520 prévoit leur emploi lors de la prise de connaissance et de l’évaluation des risques, puis lors de la revue de cohérence d’ensemble en fin d’audit. Elles peuvent aussi servir de procédures analytiques de substance : les montants ou ratios attendus et les écarts acceptables sont alors déterminés dans le cadre des travaux.",
+      "reasoning": "NEP 520 §§05–08 : étapes initiale/finale obligatoires, faculté d’usage en substance et attentes/écarts acceptables définis pour la substance. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-analytiques-commonConfusion-h2a-nep-520",
+      "entryId": "procedures-analytiques",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-520",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un calcul de pourcentage ou l’absence de variation n’est pas une conclusion d’audit. Une procédure analytique de substance suppose des attentes et des écarts acceptables ; des variations ou incohérences mises en évidence conduisent le CAC à déterminer les procédures pour les élucider.",
+      "reasoning": "NEP 520 §§05/09/10 : attente et écarts acceptables, variations à élucider et risques nouveaux à apprécier ; un calcul seul n’est pas une conclusion. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "procedures-analytiques-commonConfusion-dila-a821-77",
+      "entryId": "procedures-analytiques",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-77",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un calcul de pourcentage ou l’absence de variation n’est pas une conclusion d’audit. Une procédure analytique de substance suppose des attentes et des écarts acceptables ; des variations ou incohérences mises en évidence conduisent le CAC à déterminer les procédures pour les élucider.",
+      "reasoning": "NEP 520 §§05/09/10 : attente et écarts acceptables, variations à élucider et risques nouveaux à apprécier ; un calcul seul n’est pas une conclusion. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "procedures-analytiques-exampleFictitious-memlia",
+      "entryId": "procedures-analytiques",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : le tableau rapproche les ventes et les volumes livrés, avec une comparaison à l’exercice précédent. Il isole un compte nouveau et une variation inexpliquée. L’équipe vérifie les données ; le CAC apprécie la relation attendue et les investigations nécessaires.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "procedures-analytiques-automationBoundary-memlia",
+      "entryId": "procedures-analytiques",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons les comparatifs, les calculs et la liste des bases absentes ou non comparables. L’équipe valide les correspondances et ses explications ne sont jamais remplacées. Le CAC fixe les attentes et écarts acceptables, apprécie les données et décide des investigations ; une variation inexpliquée reste ouverte.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "tests-procedures-terminologie-memlia",
+      "entryId": "tests-procedures",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Tests de procédures désigne ici le terme de pratique relié aux tests sur les contrôles de la NEP 330 révisée : des procédures conçues pour évaluer l’efficacité des contrôles de l’entité qui visent à prévenir, ou à détecter et corriger, les anomalies significatives au niveau des assertions.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "tests-procedures-definition-h2a-nep-330",
+      "entryId": "tests-procedures",
+      "field": "definition",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "des procédures conçues pour évaluer l’efficacité des contrôles de l’entité qui visent à prévenir, ou à détecter et corriger, les anomalies significatives au niveau des assertions.",
+      "reasoning": "NEP 330 §08 : définition des tests sur les contrôles visant leur efficacité au niveau des assertions. Seule cette partie normative est attribuée à la source ; le rapprochement terminologique est une convention jugée séparément. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "tests-procedures-definition-dila-a821-73",
+      "entryId": "tests-procedures",
+      "field": "definition",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "des procédures conçues pour évaluer l’efficacité des contrôles de l’entité qui visent à prévenir, ou à détecter et corriger, les anomalies significatives au niveau des assertions.",
+      "reasoning": "NEP 330 §08 : définition des tests sur les contrôles visant leur efficacité au niveau des assertions. Seule cette partie normative est attribuée à la source ; le rapprochement terminologique est une convention jugée séparément. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "tests-procedures-context-h2a-nep-330",
+      "entryId": "tests-procedures",
+      "field": "context",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "Dans cette version de la NEP 330, le CAC réalise des tests sur les contrôles lorsqu’il prévoit de s’appuyer sur les contrôles pertinents ou lorsque les procédures de substance seules ne permettent pas de collecter les éléments suffisants et appropriés. Les tests ne se limitent pas à des demandes d’information.",
+      "reasoning": "NEP 330 §§14/15 : appui prévu sur les contrôles et/ou substance seule insuffisante ; tests ne se limitant pas aux demandes d’information. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "tests-procedures-context-dila-a821-73",
+      "entryId": "tests-procedures",
+      "field": "context",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "Dans cette version de la NEP 330, le CAC réalise des tests sur les contrôles lorsqu’il prévoit de s’appuyer sur les contrôles pertinents ou lorsque les procédures de substance seules ne permettent pas de collecter les éléments suffisants et appropriés. Les tests ne se limitent pas à des demandes d’information.",
+      "reasoning": "NEP 330 §§14/15 : appui prévu sur les contrôles et/ou substance seule insuffisante ; tests ne se limitant pas aux demandes d’information. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "tests-procedures-commonConfusion-h2a-nep-330",
+      "entryId": "tests-procedures",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "Connaître une procédure ne démontre pas son fonctionnement efficace. De même, l’absence d’anomalie relevée par des procédures de substance ne constitue pas un élément suffisant et approprié pour justifier l’efficacité des contrôles relatifs à l’assertion considérée.",
+      "reasoning": "NEP 330 §§15/23 : description/demandes seules insuffisantes et absence d’anomalie en substance ne prouvant pas efficacité des contrôles. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "tests-procedures-commonConfusion-dila-a821-73",
+      "entryId": "tests-procedures",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "Connaître une procédure ne démontre pas son fonctionnement efficace. De même, l’absence d’anomalie relevée par des procédures de substance ne constitue pas un élément suffisant et approprié pour justifier l’efficacité des contrôles relatifs à l’assertion considérée.",
+      "reasoning": "NEP 330 §§15/23 : description/demandes seules insuffisantes et absence d’anomalie en substance ne prouvant pas efficacité des contrôles. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "tests-procedures-exampleFictitious-memlia",
+      "entryId": "tests-procedures",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : pour un contrôle d’autorisation des achats, l’équipe prépare les opérations sélectionnées et les traces d’autorisation disponibles. L’auditeur examine la mise en œuvre effective du contrôle et consigne les déviations ; un document décrivant la procédure n’est pas présenté comme preuve de son efficacité.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "tests-procedures-automationBoundary-memlia",
+      "entryId": "tests-procedures",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons les sélections selon les paramètres approuvés, les références et les traces disponibles. L’équipe valide le périmètre et réalise les tests prescrits. Les déviations et commentaires saisis restent intacts ; le CAC apprécie l’efficacité, les conséquences et les travaux complémentaires, sans verdict automatique.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "controles-substance-terminologie-memlia",
+      "entryId": "controles-substance",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Contrôles de substance renvoie ici aux procédures de substance de la NEP 330 révisée. Ces procédures d’audit sont mises en œuvre pour détecter les anomalies significatives au niveau des assertions ; elles incluent les tests de détail et les procédures analytiques de substance.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "controles-substance-definition-h2a-nep-330",
+      "entryId": "controles-substance",
+      "field": "definition",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "Ces procédures d’audit sont mises en œuvre pour détecter les anomalies significatives au niveau des assertions ; elles incluent les tests de détail et les procédures analytiques de substance.",
+      "reasoning": "NEP 330 §06 : substance visant anomalies au niveau des assertions, avec tests de détail et procédures analytiques de substance. Le rapprochement terminologique relève de la convention Memlia distincte. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "controles-substance-definition-dila-a821-73",
+      "entryId": "controles-substance",
+      "field": "definition",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "Ces procédures d’audit sont mises en œuvre pour détecter les anomalies significatives au niveau des assertions ; elles incluent les tests de détail et les procédures analytiques de substance.",
+      "reasoning": "NEP 330 §06 : substance visant anomalies au niveau des assertions, avec tests de détail et procédures analytiques de substance. Le rapprochement terminologique relève de la convention Memlia distincte. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "controles-substance-context-h2a-nep-330",
+      "entryId": "controles-substance",
+      "field": "context",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un test de détail contrôle un élément individuel ; une procédure analytique de substance repose sur des montants ou ratios attendus et des écarts acceptables. Le CAC détermine la nature, le calendrier et l’étendue des procédures en les reliant aux risques auxquels elles répondent.",
+      "reasoning": "NEP 330 §§05/07/10 : test individuel, attentes/écarts de substance et lien nature/calendrier/étendue aux risques. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "controles-substance-context-dila-a821-73",
+      "entryId": "controles-substance",
+      "field": "context",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un test de détail contrôle un élément individuel ; une procédure analytique de substance repose sur des montants ou ratios attendus et des écarts acceptables. Le CAC détermine la nature, le calendrier et l’étendue des procédures en les reliant aux risques auxquels elles répondent.",
+      "reasoning": "NEP 330 §§05/07/10 : test individuel, attentes/écarts de substance et lien nature/calendrier/étendue aux risques. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "controles-substance-commonConfusion-h2a-nep-330",
+      "entryId": "controles-substance",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-330",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une procédure de substance vise la détection d’anomalies au niveau des assertions ; un test sur les contrôles vise l’efficacité des contrôles de l’entité. Une absence d’anomalie dans les premières ne démontre pas l’efficacité des seconds.",
+      "reasoning": "NEP 330 §§06/08/23 : objectif de détection distinct de l’efficacité des contrôles ; pas de preuve de cette efficacité par absence d’anomalies. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "controles-substance-commonConfusion-dila-a821-73",
+      "entryId": "controles-substance",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-73",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une procédure de substance vise la détection d’anomalies au niveau des assertions ; un test sur les contrôles vise l’efficacité des contrôles de l’entité. Une absence d’anomalie dans les premières ne démontre pas l’efficacité des seconds.",
+      "reasoning": "NEP 330 §§06/08/23 : objectif de détection distinct de l’efficacité des contrôles ; pas de preuve de cette efficacité par absence d’anomalies. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "controles-substance-exampleFictitious-memlia",
+      "entryId": "controles-substance",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : l’équipe prépare les pièces d’une vente sélectionnée pour un test de détail et, séparément, un rapprochement entre ventes et volumes. Le CAC détermine l’objectif de chaque procédure et ne conclut pas sur la seule concordance d’un total.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "controles-substance-automationBoundary-memlia",
+      "entryId": "controles-substance",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons les données, les références et les calculs définis par la règle écrite. L’équipe valide les paramètres et exécute les contrôles prescrits. Le CAC apprécie les éléments et conclut ; aucune sortie n’atteste seule l’absence d’anomalie. Les travaux, observations et décisions saisis restent intacts.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "sondage-audit-definition-h2a-nep-530",
+      "entryId": "sondage-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un sondage donne à tous les éléments d’une population une chance d’être sélectionnés. Selon la NEP 530, les techniques de sélection d’échantillons peuvent être statistiques ou non statistiques ; le sondage se distingue de la sélection d’éléments spécifiques.",
+      "reasoning": "NEP 530 §§04/07 : chance de sélection pour tous les éléments, statistique ou non ; sondages distincts de sélection spécifique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "sondage-audit-definition-dila-a821-78",
+      "entryId": "sondage-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Un sondage donne à tous les éléments d’une population une chance d’être sélectionnés. Selon la NEP 530, les techniques de sélection d’échantillons peuvent être statistiques ou non statistiques ; le sondage se distingue de la sélection d’éléments spécifiques.",
+      "reasoning": "NEP 530 §§04/07 : chance de sélection pour tous les éléments, statistique ou non ; sondages distincts de sélection spécifique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "sondage-audit-context-h2a-nep-530",
+      "entryId": "sondage-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le CAC détermine les méthodes appropriées de sélection sur la base de son jugement professionnel et des caractéristiques de la population. Lorsqu’il sélectionne par sondage, il tire du contrôle des éléments une conclusion sur toute la population et apprécie la nature, la cause et les conséquences des anomalies relevées.",
+      "reasoning": "NEP 530 §§04/08/09 : choix sous jugement, analyse des résultats et conclusion sur population pour sondage, nature/cause/conséquences des anomalies. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "sondage-audit-context-dila-a821-78",
+      "entryId": "sondage-audit",
+      "field": "context",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le CAC détermine les méthodes appropriées de sélection sur la base de son jugement professionnel et des caractéristiques de la population. Lorsqu’il sélectionne par sondage, il tire du contrôle des éléments une conclusion sur toute la population et apprécie la nature, la cause et les conséquences des anomalies relevées.",
+      "reasoning": "NEP 530 §§04/08/09 : choix sous jugement, analyse des résultats et conclusion sur population pour sondage, nature/cause/conséquences des anomalies. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "sondage-audit-commonConfusion-h2a-nep-530",
+      "entryId": "sondage-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Retenir seulement les opérations inhabituelles ou dépassant un montant choisi relève d’une sélection spécifique, pas à lui seul d’un sondage. Couvrir une forte part des montants ne donne pas à chaque élément une chance de sélection et ne justifie pas une conclusion automatique sur toute la population.",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage inhabituel ou en valeur distinct du sondage ; couverture élevée ne justifiant pas une extrapolation automatique. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "sondage-audit-commonConfusion-dila-a821-78",
+      "entryId": "sondage-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Retenir seulement les opérations inhabituelles ou dépassant un montant choisi relève d’une sélection spécifique, pas à lui seul d’un sondage. Couvrir une forte part des montants ne donne pas à chaque élément une chance de sélection et ne justifie pas une conclusion automatique sur toute la population.",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage inhabituel ou en valeur distinct du sondage ; couverture élevée ne justifiant pas une extrapolation automatique. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "sondage-audit-exampleFictitious-memlia",
+      "entryId": "sondage-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : l’équipe prépare une population bornée d’opérations et exécute la sélection prescrite par le CAC. Elle conserve la population, la méthode, les paramètres et le résultat. Le CAC contrôle les éléments retenus et apprécie les conséquences des anomalies pour la population.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "sondage-audit-automationBoundary-memlia",
+      "entryId": "sondage-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous préparons la population et exécutons la méthode et les paramètres validés, avec une trace reproductible. L’équipe valide les données et la sélection avant les travaux. Le CAC choisit la méthode, l’étendue et la portée des conclusions ; nous signalons un périmètre incertain et conservons toutes ses saisies.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "population-audit-definition-h2a-nep-530",
+      "entryId": "population-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "La population est l’ensemble des données à partir desquelles le CAC sélectionne un échantillon et sur lesquelles il souhaite parvenir à une conclusion. Selon la NEP 530, elle peut notamment comprendre tous les éléments d’un solde de compte ou d’une catégorie d’opérations.",
+      "reasoning": "NEP 530 §03 : ensemble de données de sélection et de conclusion, notamment solde/catégorie d’opérations. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "population-audit-definition-dila-a821-78",
+      "entryId": "population-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "La population est l’ensemble des données à partir desquelles le CAC sélectionne un échantillon et sur lesquelles il souhaite parvenir à une conclusion. Selon la NEP 530, elle peut notamment comprendre tous les éléments d’un solde de compte ou d’une catégorie d’opérations.",
+      "reasoning": "NEP 530 §03 : ensemble de données de sélection et de conclusion, notamment solde/catégorie d’opérations. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "population-audit-context-h2a-nep-530",
+      "entryId": "population-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les caractéristiques de la population orientent le choix de la méthode de sélection.",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "population-audit-context-dila-a821-78",
+      "entryId": "population-audit",
+      "field": "context",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Les caractéristiques de la population orientent le choix de la méthode de sélection.",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "population-audit-commonConfusion-h2a-nep-530",
+      "entryId": "population-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le fichier disponible n’est pas nécessairement la population sur laquelle le CAC veut conclure.",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "population-audit-commonConfusion-dila-a821-78",
+      "entryId": "population-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le fichier disponible n’est pas nécessairement la population sur laquelle le CAC veut conclure.",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "population-audit-context-h2a-nep-500",
+      "entryId": "population-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Lorsqu’elle provient d’informations produites par l’entité pour les procédures d’audit, le CAC collecte aussi des éléments concernant l’exactitude et l’exhaustivité de ces informations, conformément à la NEP 500.",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "population-audit-context-dila-a821-74",
+      "entryId": "population-audit",
+      "field": "context",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Lorsqu’elle provient d’informations produites par l’entité pour les procédures d’audit, le CAC collecte aussi des éléments concernant l’exactitude et l’exhaustivité de ces informations, conformément à la NEP 500.",
+      "reasoning": "NEP 530 §04 établit la première phrase sur les caractéristiques de population et le choix de sélection. NEP 500 §06 établit la seconde sur exactitude/exhaustivité des informations produites par l’entité. Les claims sont bornés à leur source respective, sans modifier le texte rendu. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "population-audit-commonConfusion-h2a-nep-500",
+      "entryId": "population-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-500",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une sélection réalisée sur des informations incomplètes ne supprime pas la nécessité de collecter des éléments sur leur exactitude et leur exhaustivité.",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "population-audit-commonConfusion-dila-a821-74",
+      "entryId": "population-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-74",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une sélection réalisée sur des informations incomplètes ne supprime pas la nécessité de collecter des éléments sur leur exactitude et leur exhaustivité.",
+      "reasoning": "NEP 530 §03 établit le périmètre de population voulu, qui n’est pas automatiquement celui du fichier disponible. NEP 500 §06 établit la collecte d’éléments sur exactitude/exhaustivité ; les deux phrases sont reliées à leurs sources respectives. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "population-audit-exampleFictitious-memlia",
+      "entryId": "population-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : une extraction de ventes porte un filtre de période qui exclut les écritures de clôture. Le tableau décrit ce filtre et les lignes présentes. L’équipe demande de vérifier le périmètre avant de sélectionner ; le fichier reçu n’est pas rebaptisé population complète.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "population-audit-automationBoundary-memlia",
+      "entryId": "population-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous décrivons les filtres, sources, périodes, doublons et rapprochements de l’extraction. L’équipe valide le périmètre et les exceptions avant toute sélection. En cas de filtre inconnu ou de données manquantes, la préparation s’arrête et nomme le doute. Le CAC apprécie les données et la portée de ses travaux ; ses saisies restent intactes.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "selection-elements-specifiques-definition-h2a-nep-530",
+      "entryId": "selection-elements-specifiques",
+      "field": "definition",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "La sélection d’éléments spécifiques est une méthode par laquelle le CAC choisit des éléments ciblés au sein d’une population. La NEP 530 cite notamment la sélection au-dessus d’un montant qu’il fixe pour couvrir une large proportion en valeur, ou celle d’éléments inhabituels par leur importance ou leur nature.",
+      "reasoning": "NEP 530 §06 : sélection en valeur au-delà d’un montant fixé ou éléments inhabituels par importance/nature ; aucun seuil chiffré imposé. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "selection-elements-specifiques-definition-dila-a821-78",
+      "entryId": "selection-elements-specifiques",
+      "field": "definition",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "La sélection d’éléments spécifiques est une méthode par laquelle le CAC choisit des éléments ciblés au sein d’une population. La NEP 530 cite notamment la sélection au-dessus d’un montant qu’il fixe pour couvrir une large proportion en valeur, ou celle d’éléments inhabituels par leur importance ou leur nature.",
+      "reasoning": "NEP 530 §06 : sélection en valeur au-delà d’un montant fixé ou éléments inhabituels par importance/nature ; aucun seuil chiffré imposé. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "selection-elements-specifiques-context-h2a-nep-530",
+      "entryId": "selection-elements-specifiques",
+      "field": "context",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le CAC choisit cette méthode selon sa connaissance de l’entité, de son environnement et son évaluation des risques. Il peut employer une ou plusieurs méthodes de sélection, puis apprécie si les résultats permettent de conclure sur le caractère suffisant et approprié des éléments collectés.",
+      "reasoning": "NEP 530 §§04/06/08 : connaissance/risques, une ou plusieurs méthodes et appréciation du caractère suffisant/approprié des résultats. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "selection-elements-specifiques-context-dila-a821-78",
+      "entryId": "selection-elements-specifiques",
+      "field": "context",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Le CAC choisit cette méthode selon sa connaissance de l’entité, de son environnement et son évaluation des risques. Il peut employer une ou plusieurs méthodes de sélection, puis apprécie si les résultats permettent de conclure sur le caractère suffisant et approprié des éléments collectés.",
+      "reasoning": "NEP 530 §§04/06/08 : connaissance/risques, une ou plusieurs méthodes et appréciation du caractère suffisant/approprié des résultats. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "selection-elements-specifiques-commonConfusion-h2a-nep-530",
+      "entryId": "selection-elements-specifiques",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-530",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une sélection ciblée n’est pas un sondage donnant une chance de sélection à tous les éléments. La NEP 530 rattache au sondage la conclusion tirée du contrôle des éléments sur toute la population ; une couverture élevée en valeur ne suffit pas à transférer automatiquement ce raisonnement à une sélection spécifique.",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage spécifique distinct du sondage ; conclusion sur population liée au sondage et non transposable par seul taux de couverture. Corps normatif H2A rouvert et identique ; version et article attestés."
+    },
+    {
+      "unitId": "selection-elements-specifiques-commonConfusion-dila-a821-78",
+      "entryId": "selection-elements-specifiques",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-78",
+      "verdict": "PASS",
+      "sourceSupportedText": "Une sélection ciblée n’est pas un sondage donnant une chance de sélection à tous les éléments. La NEP 530 rattache au sondage la conclusion tirée du contrôle des éléments sur toute la population ; une couverture élevée en valeur ne suffit pas à transférer automatiquement ce raisonnement à une sélection spécifique.",
+      "reasoning": "NEP 530 §§06/07/09 : ciblage spécifique distinct du sondage ; conclusion sur population liée au sondage et non transposable par seul taux de couverture. Copie locale identique à l’export A4 relu ; réserve de consolidation conservée."
+    },
+    {
+      "unitId": "selection-elements-specifiques-exampleFictitious-memlia",
+      "entryId": "selection-elements-specifiques",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Exemple fictif : le CAC prescrit de préparer les opérations d’une nature inhabituelle et celles dépassant le montant qu’il a retenu. Le tableau conserve les critères et montre aussi les éléments non sélectionnés. L’équipe valide la liste sans l’appeler échantillon représentatif par défaut.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    },
+    {
+      "unitId": "selection-elements-specifiques-automationBoundary-memlia",
+      "entryId": "selection-elements-specifiques",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedText": "Nous appliquons les critères approuvés et présentons les éléments retenus et écartés, sans modifier les seuils ni retirer les exceptions à l’insu de l’équipe. Elle valide la liste. Le CAC définit la méthode et apprécie la portée des résultats, les anomalies et les compléments ; ses observations restent intactes.",
+      "reasoning": "Exemple explicitement fictif, frontière de préparation/validation/jugement ou convention de vocabulaire recevable ; ne démontre ni automatisation livrée ni obligation normative."
+    }
+  ]
+}

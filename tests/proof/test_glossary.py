@@ -6,6 +6,7 @@ from html import unescape
 from pathlib import Path
 import re
 import unittest
+import unicodedata
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 import xml.etree.ElementTree as ET
@@ -113,7 +114,13 @@ class GlossaryProof(unittest.TestCase):
         self.assertEqual({anchor: unescape(term).strip() for anchor, term in rendered_terms},
                          {entry['anchor']: entry['term'] for entry in entries})
         letters = re.findall(r'<section[^>]*data-lettre="([A-Z])"', self.html)
-        self.assertEqual(letters, sorted(set(term.strip()[0].upper() for term in terms)))
+        # L'alphabet français classe É sous E, comme les données rendues.
+        expected_letters = {
+            ''.join(char for char in unicodedata.normalize('NFD', unescape(term).strip())
+                    if not unicodedata.combining(char))[0].upper()
+            for term in terms
+        }
+        self.assertEqual(letters, sorted(expected_letters))
 
     def test_metadata_sources_and_boundaries_are_complete(self):
         count = len(glossary_entries())

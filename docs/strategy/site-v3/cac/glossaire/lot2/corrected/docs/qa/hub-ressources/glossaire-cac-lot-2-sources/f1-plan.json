@@ -1,0 +1,398 @@
+{
+  "signaledIds": [
+    "assertions-audit-definition-h2a-nep-315",
+    "assertions-audit-context-h2a-nep-500",
+    "assertions-audit-context-dila-a821-74",
+    "assertions-audit-context-h2a-nep-315",
+    "assertions-audit-commonConfusion-h2a-nep-315",
+    "anomalie-significative-context-h2a-nep-200",
+    "anomalie-significative-commonConfusion-h2a-nep-200",
+    "risque-inherent-context-h2a-nep-200",
+    "risque-inherent-commonConfusion-h2a-nep-200",
+    "risque-lie-controle-definition-h2a-nep-315",
+    "risque-lie-controle-context-h2a-nep-200",
+    "risque-lie-controle-commonConfusion-h2a-nep-200",
+    "risque-lie-controle-commonConfusion-h2a-nep-315",
+    "ipe-audit-definition-h2a-nep-315",
+    "ipe-audit-context-h2a-nep-500",
+    "ipe-audit-context-dila-a821-74",
+    "ipe-audit-context-h2a-nep-315",
+    "ipe-audit-commonConfusion-h2a-nep-315"
+  ],
+  "groups": [
+    {
+      "entryId": "assertions-audit",
+      "field": "definition",
+      "originalIds": [
+        "assertions-audit-definition-h2a-nep-500",
+        "assertions-audit-definition-dila-a821-74",
+        "assertions-audit-definition-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Les assertions sont les critères dont la réalisation conditionne la régularité, la sincérité et l’image fidèle des comptes.",
+          "sources": {
+            "h2a-nep-500": [
+              "03"
+            ],
+            "dila-a821-74": [
+              "3"
+            ],
+            "h2a-nep-315": [
+              "05"
+            ]
+          }
+        },
+        {
+          "text": "Elles permettent de préciser ce que les travaux d’audit cherchent à vérifier.",
+          "sources": {
+            "h2a-nep-500": [
+              "05"
+            ],
+            "dila-a821-74": [
+              "5"
+            ],
+            "h2a-nep-315": [
+              "17"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "assertions-audit",
+      "field": "context",
+      "originalIds": [
+        "assertions-audit-context-h2a-nep-500",
+        "assertions-audit-context-dila-a821-74",
+        "assertions-audit-context-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "La NEP 500, reprise à l’article A.821-74 du Code de commerce, distingue notamment la réalité et la séparation des exercices pour les opérations, l’existence pour les soldes et les assertions relatives à l’annexe.",
+          "sources": {
+            "h2a-nep-500": [
+              "09"
+            ],
+            "dila-a821-74": [
+              "9"
+            ]
+          }
+        },
+        {
+          "text": "La NEP 315 révisée définit les assertions pertinentes à partir des risques identifiés avant prise en compte des contrôles.",
+          "sources": {
+            "h2a-nep-315": [
+              "06"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "assertions-audit",
+      "field": "commonConfusion",
+      "originalIds": [
+        "assertions-audit-commonConfusion-h2a-nep-500",
+        "assertions-audit-commonConfusion-dila-a821-74",
+        "assertions-audit-commonConfusion-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Une assertion n’est ni une déclaration de la direction ni le nom d’un test. Le contrôle porte sur une ou plusieurs assertions ; son résultat doit être apprécié pour fonder une conclusion.",
+          "sources": {
+            "h2a-nep-500": [
+              "03",
+              "05"
+            ],
+            "dila-a821-74": [
+              "3",
+              "5"
+            ],
+            "h2a-nep-315": [
+              "05",
+              "17"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "anomalie-significative",
+      "field": "context",
+      "originalIds": [
+        "anomalie-significative-context-h2a-nep-200",
+        "anomalie-significative-context-h2a-nep-320"
+      ],
+      "claims": [
+        {
+          "text": "La NEP 200 donne cette définition.",
+          "sources": {
+            "h2a-nep-200": [
+              "04"
+            ]
+          }
+        },
+        {
+          "text": "La NEP 320 précise que le caractère significatif s’apprécie selon le montant, la nature et les circonstances de l’anomalie ; cette appréciation relève du jugement professionnel du CAC.",
+          "sources": {
+            "h2a-nep-320": [
+              "09",
+              "10"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "anomalie-significative",
+      "field": "commonConfusion",
+      "originalIds": [
+        "anomalie-significative-commonConfusion-h2a-nep-200",
+        "anomalie-significative-commonConfusion-h2a-nep-320"
+      ],
+      "claims": [
+        {
+          "text": "Une anomalie ne devient pas significative uniquement parce qu’un montant dépasse un seuil. Une anomalie de montant inférieur peut être significative par sa nature ou ses circonstances",
+          "sources": {
+            "h2a-nep-320": [
+              "09"
+            ]
+          }
+        },
+        {
+          "text": "; plusieurs anomalies peuvent aussi se cumuler.",
+          "sources": {
+            "h2a-nep-200": [
+              "04"
+            ],
+            "h2a-nep-320": [
+              "04"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "risque-inherent",
+      "field": "context",
+      "originalIds": [
+        "risque-inherent-context-h2a-nep-200",
+        "risque-inherent-context-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "La NEP 200 distingue ce risque du risque lié au contrôle.",
+          "sources": {
+            "h2a-nep-200": [
+              "11"
+            ]
+          }
+        },
+        {
+          "text": "Selon la NEP 315 révisée, le CAC évalue séparément ces deux risques au niveau des assertions ; la complexité, la subjectivité, les changements ou la forte volumétrie peuvent être des facteurs de risque inhérent.",
+          "sources": {
+            "h2a-nep-315": [
+              "02",
+              "39",
+              "40"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "risque-inherent",
+      "field": "commonConfusion",
+      "originalIds": [
+        "risque-inherent-commonConfusion-h2a-nep-200",
+        "risque-inherent-commonConfusion-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Un contrôle interne efficace ne fait pas disparaître le risque inhérent de la définition : celui-ci est apprécié sans tenir compte des contrôles.",
+          "sources": {
+            "h2a-nep-200": [
+              "11"
+            ]
+          }
+        },
+        {
+          "text": "Complexité et forte volumétrie sont des facteurs à examiner, pas des niveaux de risque attribués automatiquement.",
+          "sources": {
+            "h2a-nep-315": [
+              "02",
+              "40"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "risque-lie-controle",
+      "field": "definition",
+      "originalIds": [
+        "risque-lie-controle-definition-h2a-nep-200",
+        "risque-lie-controle-definition-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Le risque lié au contrôle est le risque qu’une anomalie significative ne soit ni prévenue ni détectée par le contrôle interne de l’entité, et donc ne soit pas corrigée en temps voulu. Il est distinct du risque inhérent.",
+          "sources": {
+            "h2a-nep-200": [
+              "11"
+            ],
+            "h2a-nep-315": [
+              "02"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "risque-lie-controle",
+      "field": "context",
+      "originalIds": [
+        "risque-lie-controle-context-h2a-nep-200",
+        "risque-lie-controle-context-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "La NEP 200 définit ce risque.",
+          "sources": {
+            "h2a-nep-200": [
+              "11"
+            ]
+          }
+        },
+        {
+          "text": "La NEP 315 révisée distingue l’appréciation de la conception et de la mise en œuvre des contrôles de leurs tests de fonctionnement.",
+          "sources": {
+            "h2a-nep-315": [
+              "34",
+              "41"
+            ]
+          }
+        },
+        {
+          "text": "Lorsque le CAC ne teste pas l’efficacité du fonctionnement des contrôles, l’évaluation du risque d’anomalies significatives au niveau des assertions correspond à l’évaluation du risque inhérent.",
+          "sources": {
+            "h2a-nep-315": [
+              "41"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "risque-lie-controle",
+      "field": "commonConfusion",
+      "originalIds": [
+        "risque-lie-controle-commonConfusion-h2a-nep-200",
+        "risque-lie-controle-commonConfusion-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Décrire un contrôle n’est pas tester son efficacité.",
+          "sources": {
+            "h2a-nep-315": [
+              "34",
+              "41"
+            ]
+          }
+        },
+        {
+          "text": "Le risque lié au contrôle concerne les contrôles de l’entité, tandis que le risque de non-détection concerne la mission d’audit.",
+          "sources": {
+            "h2a-nep-200": [
+              "11",
+              "12"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "ipe-audit",
+      "field": "definition",
+      "originalIds": [
+        "ipe-audit-definition-h2a-nep-500",
+        "ipe-audit-definition-dila-a821-74",
+        "ipe-audit-definition-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Les informations produites par l’entité, souvent appelées IPE en pratique d’audit, sont les informations internes que le CAC utilise pour mettre en œuvre ses procédures : états, extractions ou tableaux préparés par l’entité.",
+          "sources": {}
+        },
+        {
+          "text": "Leur origine interne ne suffit pas à établir leur fiabilité.",
+          "sources": {
+            "h2a-nep-500": [
+              "06",
+              "07"
+            ],
+            "dila-a821-74": [
+              "6",
+              "7"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "ipe-audit",
+      "field": "context",
+      "originalIds": [
+        "ipe-audit-context-h2a-nep-500",
+        "ipe-audit-context-dila-a821-74",
+        "ipe-audit-context-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "La NEP 500, reprise à l’article A.821-74 du Code de commerce, demande au CAC qui utilise des informations produites par l’entité de collecter des éléments concernant leur exactitude et leur exhaustivité.",
+          "sources": {
+            "h2a-nep-500": [
+              "06"
+            ],
+            "dila-a821-74": [
+              "6"
+            ]
+          }
+        },
+        {
+          "text": "La NEP 315 révisée précise aussi l’appréciation de la pertinence et de la fiabilité des informations intégrées dans les outils automatisés.",
+          "sources": {
+            "h2a-nep-315": [
+              "46"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "entryId": "ipe-audit",
+      "field": "commonConfusion",
+      "originalIds": [
+        "ipe-audit-commonConfusion-h2a-nep-500",
+        "ipe-audit-commonConfusion-dila-a821-74",
+        "ipe-audit-commonConfusion-h2a-nep-315"
+      ],
+      "claims": [
+        {
+          "text": "Une IPE n’est pas automatiquement un élément probant suffisant et approprié. Un état exporté par le système de l’entité ou un total rapproché ne dispense pas d’examiner l’exactitude, l’exhaustivité et la pertinence des informations utilisées.",
+          "sources": {
+            "h2a-nep-500": [
+              "05",
+              "06"
+            ],
+            "dila-a821-74": [
+              "5",
+              "6"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
