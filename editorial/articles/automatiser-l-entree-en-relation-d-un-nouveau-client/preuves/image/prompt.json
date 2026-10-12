@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
+  ],
+  "engine": "image_generate",
+  "prompt": "Prompt exact conservé dans provenance-e1b26719-2623-4044-8ccb-86b40198bac6.json ; pièce jointe opérateur utilisée sans régénération. La palette hex est une cible de comparaison locale, pas le prompt historique.",
+  "brief": {
+    "sujet": "Pièces d'un nouveau dossier préparées avant la signature.",
+    "composition": "Dossier ouvert à pictogrammes, main au crayon et quatre plateaux alignés dont un vide, en 16:9.",
+    "style": "Illustration tactile de papeterie en vue oblique, lumière chaude et ombres douces.",
+    "palette": "Crème #fcfbf7 dominante, accents vert #27b657 et vert profond #1c8a41, touches graphite #231f20.",
+    "interdits": "Texte lisible, chiffres, logo, données client, interface, certification légale ou action d'envoi.",
+    "alt": "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide."
+  },
+  "reviewCriteria": [
+    "Dossier ouvert et quatre plateaux",
+    "Main au crayon et attente visible",
+    "Palette mesurée avec écarts conservés",
+    "Aucun texte lisible ni donnée client",
+    "Provenance native exacte",
+    "Dérivés adaptés"
+  ]
+}

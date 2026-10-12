@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cmf-identification",
+    "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+    "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+    "retrievedAt": "2026-10-12T07:50:40.244Z",
+    "httpStatus": 403,
+    "retryAfter": null,
+    "extraitPresent": false,
+    "sha256Html": "843ec19a8cad48c8bd40d9c43dcf86b262a7ab7b5674eebbd08072b1e0693ebf",
+    "sha256Texte": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copie": "preuves/sources/cmf-identification.html",
+    "texte": "preuves/sources/cmf-identification.txt",
+    "limite": "Reçu de recherche directe ; ne remplace pas le reçu natif verifySource de la forge."
+  },
+  {
+    "id": "cmf-relation",
+    "requestedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+    "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+    "retrievedAt": "2026-10-12T07:50:40.543Z",
+    "httpStatus": 403,
+    "retryAfter": null,
+    "extraitPresent": false,
+    "sha256Html": "662360ca88a5a7ac7235360e90f2b2ae2279899c2be9482c88aa06a4ea46d959",
+    "sha256Texte": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copie": "preuves/sources/cmf-relation.html",
+    "texte": "preuves/sources/cmf-relation.txt",
+    "limite": "Reçu de recherche directe ; ne remplace pas le reçu natif verifySource de la forge."
+  },
+  {
+    "id": "contrat-mission",
+    "requestedUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+    "finalUrl": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000046882378",
+    "retrievedAt": "2026-10-12T07:50:40.745Z",
+    "httpStatus": 403,
+    "retryAfter": null,
+    "extraitPresent": false,
+    "sha256Html": "27d3ee74237ed9ea4d37b1b5eee5d90699f490eb255444abb15f05354d6353a2",
+    "sha256Texte": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copie": "preuves/sources/contrat-mission.html",
+    "texte": "preuves/sources/contrat-mission.txt",
+    "limite": "Reçu de recherche directe ; ne remplace pas le reçu natif verifySource de la forge."
+  },
+  {
+    "id": "cnil-minimisation",
+    "requestedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+    "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+    "retrievedAt": "2026-10-12T07:50:40.939Z",
+    "httpStatus": 200,
+    "retryAfter": null,
+    "extraitPresent": true,
+    "sha256Html": "3e477cd5813a1a2cd69479753b0e841bc58e2da4420d0b919b11d9351bb6a52a",
+    "sha256Texte": "3177f0875008685597061df09f1b4c5cde2dbc9a694de45558219fe8ae2770ef",
+    "copie": "preuves/sources/cnil-minimisation.html",
+    "texte": "preuves/sources/cnil-minimisation.txt",
+    "limite": "Reçu de recherche directe ; ne remplace pas le reçu natif verifySource de la forge."
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
+  ],
+  "reviewerId": "metier:t_67cb2d6a",
+  "role": "administratif-secretariat",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-486467fd0bdc-1-cmf-identification",
+      "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+      "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+      "claimId": "claim-unit-486467fd0bdc-1",
+      "claimSha256": "02a0d8199f64a1519f743c16db018aec1fde83cb5af4cbb06776ae3953f5887b",
+      "sourceId": "cmf-identification",
+      "sourceContentSha256": "47c270e777ffd468e3554127d3e00cbc14c064e72562b3bb17abb3ef8e0987da",
+      "citationSha256": "02a0d8199f64a1519f743c16db018aec1fde83cb5af4cbb06776ae3953f5887b",
+      "reviewerId": "metier:t_67cb2d6a",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "L561-5,I distingue identification et vérification ; le IV ne concerne que la vérification sous conditions. Extrait exact dans la copie DILA et dans la section officielle affichée au12/10/2026 (preuve conservée). L561-2,12° confirme le champ EC dans le référentiel local ; aucune dérogation décidée automatiquement."
+    },
+    {
+      "id": "review-claim-unit-4e4236251a67-1-cmf-relation",
+      "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+      "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+      "claimId": "claim-unit-4e4236251a67-1",
+      "claimSha256": "de7028fd57f3c5865358607687275fa21ad8f4c615f5a5ae65241ff8e66bf88e",
+      "sourceId": "cmf-relation",
+      "sourceContentSha256": "44943e09cfa38bde30c9d825afa50611e17c7574331066fabd3176bdd64f0224",
+      "citationSha256": "de7028fd57f3c5865358607687275fa21ad8f4c615f5a5ae65241ff8e66bf88e",
+      "reviewerId": "metier:t_67cb2d6a",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "L561-5-1 prévoit objet/nature et actualisation pendant toute la relation ; la citation et la phrase d’actualisation concordent avec la copie DILA et la section officielle du12/10/2026. Le suivi de contexte est présenté comme méthode, pas comme diligence de vigilance suffisante."
+    },
+    {
+      "id": "review-claim-unit-2e6ab1298fa8-1-cnil-minimisation",
+      "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+      "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+      "claimId": "claim-unit-2e6ab1298fa8-1",
+      "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "sourceId": "cnil-minimisation",
+      "sourceContentSha256": "f3d012485f4ff8b4fbefdc54dab9e2449be7994e978f5127dab1fbe42b9184c7",
+      "citationSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "reviewerId": "metier:t_67cb2d6a",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "La page officielle CNIL ouverte pendant cette revue porte exactement l’article5,1,c du RGPD. Le conseil de suivre les références/états plutôt que multiplier les copies est cohérent ; aucune durée universelle ou suppression des justificatifs requis n’en est déduite."
+    }
+  ]
+}

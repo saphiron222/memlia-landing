@@ -1,0 +1,136 @@
+{
+  "reviewer": "metier:t_67cb2d6a",
+  "executedAt": "2026-10-12T08:19:28.687Z",
+  "baselineCases": 10,
+  "defectId": "F1",
+  "observations": [
+    {
+      "nom": "Décision d’un autre dossier",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "dossier": "D-999",
+          "version": "V2"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "PRÉPARER LA PASSATION",
+        "envois": 0,
+        "decisionVigilance": null
+      },
+      "attenduMetier": "Aucune préparation de passation sur la seule présence d’une décision non favorable ou hors dossier/version."
+    },
+    {
+      "nom": "Décision sur une ancienne version",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "dossier": "D-107",
+          "version": "V1"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "PRÉPARER LA PASSATION",
+        "envois": 0,
+        "decisionVigilance": null
+      },
+      "attenduMetier": "Aucune préparation de passation sur la seule présence d’une décision non favorable ou hors dossier/version."
+    },
+    {
+      "nom": "Décision défavorable enregistrée",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "dossier": "D-107",
+          "version": "V2",
+          "resultat": "REFUS"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "PRÉPARER LA PASSATION",
+        "envois": 0,
+        "decisionVigilance": null
+      },
+      "attenduMetier": "Aucune préparation de passation sur la seule présence d’une décision non favorable ou hors dossier/version."
+    }
+  ],
+  "limites": "Reproduction sur le script fictif fourni, pas sur une intégration ni sur des données client. Aucun fichier auteur réécrit."
+}

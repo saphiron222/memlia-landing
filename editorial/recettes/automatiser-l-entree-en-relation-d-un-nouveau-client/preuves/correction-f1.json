@@ -1,0 +1,804 @@
+{
+  "auteur": "marketing",
+  "controleAuteurNonRevue": true,
+  "executedAt": "2026-10-12T12:23:35.543Z",
+  "defectId": "F1",
+  "casArticle": 15,
+  "observations": [
+    {
+      "nom": "autre dossier",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-999",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION AUTRE DOSSIER",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION AUTRE DOSSIER",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "ancienne version",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V1",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION ANCIENNE VERSION",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION ANCIENNE VERSION",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "défavorable",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "defavorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION NON FAVORABLE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION NON FAVORABLE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "résultat inconnu",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "INCONNU"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION NON FAVORABLE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION NON FAVORABLE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "objet reviewer REFUS",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "REFUS"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION NON FAVORABLE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION NON FAVORABLE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "objet vide",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {},
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "simple booléen",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": true,
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "absente",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": null,
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "DÉCISION CABINET ATTENDUE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "DÉCISION CABINET ATTENDUE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "favorable complète",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "PRÉPARER LA PASSATION",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "PRÉPARER LA PASSATION",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ absent : dossier",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ blanc : dossier",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "  ",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ absent : version",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ blanc : version",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "  ",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ absent : auteur",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ blanc : auteur",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "  ",
+          "reference": "DEC-FICTIVE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ absent : reference",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ blanc : reference",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "  ",
+          "resultat": "favorable"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ absent : resultat",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE"
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    },
+    {
+      "nom": "champ blanc : resultat",
+      "entree": {
+        "dossier": "D-107",
+        "version": "V2",
+        "checklist": "ENTREE-SOCIETE-1",
+        "reexamen": false,
+        "pieces": [
+          {
+            "dossier": "D-107",
+            "nom": "identification",
+            "etat": "qualifiee"
+          },
+          {
+            "dossier": "D-107",
+            "nom": "beneficiaire",
+            "etat": "qualifiee"
+          }
+        ],
+        "decisionCabinet": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE",
+          "reference": "DEC-FICTIVE",
+          "resultat": "  "
+        },
+        "signature": "V2",
+        "autorisation": {
+          "dossier": "D-107",
+          "version": "V2",
+          "auteur": "ROLE-RESPONSABLE"
+        },
+        "commentaireHumain": "Demander un échange avant la passation."
+      },
+      "attendu": "REFUS : DÉCISION INCOMPLÈTE",
+      "obtenu": {
+        "dossier": "D-107",
+        "version": "V2",
+        "statut": "REFUS : DÉCISION INCOMPLÈTE",
+        "envois": 0,
+        "decisionVigilance": null
+      }
+    }
+  ],
+  "limites": "Transitions administratives fictives, aucun calcul de vigilance ni intégration client. Le rapport FAIL indépendant initial est conservé."
+}

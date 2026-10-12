@@ -1,0 +1,15 @@
+# Livraison native — 12 octobre 2026
+
+Carte t_0380a3db. Base fraîche origin/main 06548228 ; branche isolée blog/t_0380a3db, worktree auteur intact. Aucun achat, aucune nouvelle image, aucun feedback personnel inventé.
+
+Avis métier acquis de t_67cb2d6a conservé : revues-acquises.json et historique FAIL. La projection technique copie les constats, ne produit aucun jugement. Deux libellés incompatibles avec les registres natifs sont portés : organisation-cabinet → administratif-secretariat (rôle et famille inchangés), modere → moyen (décision de cannibalisation inchangée). verifier-portage.mjs démontre que les autres champs de recette et tous les avis sont identiques. Les paragraphes/citations/tableaux/liens/figures Astro sont confrontés au rendu de fabrication par verifier-rendu-portage.mjs ; seules apostrophes typographiques, ancres, enveloppes et chemins publics diffèrent.
+
+Quinze cas et dix-neuf contrôles F1 exécutés de nouveau. Réservation du 12/10 dans le backlog ; le 06/10 reste créneau manqué. Reçu réel d’autocomplétion du paquet projeté dans le registre du jour. Rubrique Saisie et pièces déclarée ; aucune variante future fabriquée.
+
+Deux figures portées dans le contrat canonique : états inchangés. Header sémantique et apostrophe typographique nécessaires au renderer natif ; même CSS, données et mise en page. Renderer --adopt exécuté :38 cadres, aucun actif historique modifié. Nouveaux cadres réellement regardés, textes lisibles sans troncature. WebP canoniques en qualité88, pas copie prétendue byte-identique des dérivés qualité86 de fabrication.
+
+Couverture exacte OpenAI exec-e1b26719-2623-4044-8ccb-86b40198bac6, provenance et image source conservées. Dérivé1200 réellement regardé : quatre plateaux dont un vide, dossier et main au crayon, aucun texte ou donnée client lisible. Deux verts absents selon la mesure acquise, observation cosmétique conservée ; modèle/coût non communiqués. Matrice63 acquise conservée :15 exécutés,3 à exécuter,23 N/A,19 partiels,3 indisponibles. Les preuves RUN natives sont des contrôles déterministes de forge, pas une exécution intégrale des skills ni des métriques GSC/PSI/CrUX/indexation.
+
+Journal local honnête : preparer sans erreur ; gate initial refusait deux libellés puis empreinte de rendu de fabrication, corrigés par portage vérifié. sceller PASS. publier exécution1 arrêt sur registre SEO manquant ; exécution2 arrêt sur llms et lastmod non projetés, corrigés. Exécution3 interrompue à300 secondes : aucune réussite globale locale revendiquée. Sur instruction opérateur, pas de nouveau build lourd Mac ; materialiser(statut:publie), ecrireSceau, inscription SEO et validation réelle du sceau exécutés, PASS sans erreur. Contrat blog19 PASS et lastmod56 à jour ; tests ciblés du portage PASS. Les logs bruts sont en preuves/livraison-locale/.
+
+Le sceau natif est une autorisation de candidat, pas un reçu HTTP de production. La construction complète et la suite globale doivent être vertes en CI sur la PR avant fusion normale. Déploiement automatique et recette publique restent à constater. Aucune soumission moteur, rang, gain, visibilité IA ou mesure terrain déclarés.

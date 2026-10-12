@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
+  ],
+  "reviewer": "metier:t_67cb2d6a",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Trois checklists distinguent pièces, jalons et signature pour le lecteur administratif ; aucune décision de vigilance confiée à l’automatisation."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Guide exécutable et FAQ cohérents avec l’intention onboarding ; brief qualitatif et autocomplétion reçue, sans volume ni classement Google attestés."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Trois citations exactes contrôlées ; CMF confronté à la section officielle affichée au12/10/2026 et CNIL ouverte ; version et champ EC examinés."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "F1 levé par exécution indépendante :15 cas du corps et19 contrôles de décision dont hors dossier, ancienne version, non favorable, champ absent/blanc et cas favorable. Dix sorties nominales inchangées confrontées au paquet initial ; saisies protégées, déterminisme et aucun envoi/calcul de vigilance. preuves/revue-metier-correction.json."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "PASS limité à la fabrication : H1 unique et cinq tableaux complets dans des régions défilantes ; canonical, JSON-LD, OG, sitemap et CI restent à vérifier après matérialisation, pas acquis ici."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Réponse directe, définitions de jalon/complétude, citations dans les paragraphes et quatre FAQ permettent une extraction bornée ; visibilité IA non mesurée."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "Clôture en nous/vous et Confier cette tâche vers /contact ; prise en charge dans les outils, essais par les équipes et décision conservée au cabinet."
+      ]
+    }
+  ]
+}

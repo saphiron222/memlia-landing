@@ -1,0 +1,477 @@
+14:34:59 [content] Syncing content
+14:34:59 [content] Synced content
+14:34:59 [types] Generated 401ms
+14:34:59 [build] output: "static"
+14:34:59 [build] mode: "static"
+14:34:59 [build] directory: /var/folders/vm/f90yz5jx7xv1c2019p97kpr40000gn/T/memlia-blog-render-G7AM5U/
+14:34:59 [build] Collecting build info...
+14:34:59 [build] ✓ Completed in 431ms.
+14:34:59 [build] Building static entrypoints...
+14:34:59 [vite] ✓ built in 327ms
+14:34:59 [vite] ✓ built in 265ms
+14:34:59 [build] Rearranging server assets...
+
+ generating static routes 
+14:35:00   ├─ /404.html (+11ms) 
+14:35:00   ├─ /a-propos.html (+7ms) 
+14:35:00   ├─ /automatisation/bulletins-controle.html (+15ms) 
+14:35:00   ├─ /automatisation/circularisation-cac.html (+6ms) 
+14:35:00   ├─ /automatisation/entrees-sorties-salaries.html (+9ms) 
+14:35:00   ├─ /automatisation/evaluation-transmission.html (+6ms) 
+14:35:00   ├─ /automatisation/facture-electronique.html (+6ms) 
+14:35:00   ├─ /automatisation/factures-fournisseurs.html (+21ms) 
+14:35:00   ├─ /automatisation/notes-de-frais.html (+5ms) 
+14:35:00   ├─ /automatisation/paie.html (+3ms) 
+14:35:00   ├─ /automatisation/rapprochement-bancaire.html (+4ms) 
+14:35:00   ├─ /automatisation/registres-obligations.html (+3ms) 
+14:35:00   ├─ /automatisation/saisie-comptable.html (+2ms) 
+14:35:00   ├─ /automatisation/secretariat-juridique.html (+3ms) 
+14:35:00   ├─ /automatisation-cabinet-comptable.html (+3ms) 
+14:35:00   ├─ /blog/rss.xml (+38ms) 
+14:35:00   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms) 
+14:35:00   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms) 
+14:35:00   ├─ /blog/rubrique/ia-cabinet-comptable.html (+4ms) 
+14:35:00   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+6ms) 
+14:35:00   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+4ms) 
+14:35:00   ├─ /blog/cac-reception-fec-constat.html (+4ms) 
+14:35:00   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+3ms) 
+14:35:00   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+4ms) 
+14:35:00   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+14:35:00   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+3ms) 
+14:35:00   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+3ms) 
+14:35:00   ├─ /blog/logiciel-ia-comptabilite.html (+4ms) 
+14:35:00   ├─ /blog/prompt-chatgpt-expert-comptable.html (+4ms) 
+14:35:00   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+14:35:00   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+14:35:00   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms) 
+14:35:00   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+3ms) 
+14:35:00   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+4ms) 
+14:35:00   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+4ms) 
+14:35:00   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+4ms) 
+14:35:00   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+5ms) 
+14:35:00   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+3ms) 
+14:35:00   ├─ /blog.html (+9ms) 
+14:35:00   ├─ /blog/commissariat-aux-comptes.html (+2ms) 
+14:35:00   ├─ /commissaires-aux-comptes.html (+5ms) 
+14:35:00   ├─ /contact/erreur.html (+2ms) 
+14:35:00   ├─ /contact/merci.html (+2ms) 
+14:35:00   ├─ /contact.html (+2ms) 
+14:35:00   ├─ /garanties.html (+3ms) 
+14:35:00   ├─ /glossaire.html (+9ms) 
+14:35:00   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+14:35:00   ├─ /integrations/lettrage-sage.html (+1ms) 
+14:35:00   ├─ /integrations/dsn-sage.html (+1ms) 
+14:35:00   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+14:35:00   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+14:35:00   ├─ /integrations/cloture-sage.html (+1ms) 
+14:35:00   ├─ /integrations/lettrage-cegid.html (+2ms) 
+14:35:00   ├─ /integrations/dsn-silae.html (+2ms) 
+14:35:00   ├─ /integrations/bulletin-de-paie-silae.html (+2ms) 
+14:35:00   ├─ /integrations/export-fec-ebp.html (+2ms) 
+14:35:00   ├─ /integrations/lettrage-ebp.html (+1ms) 
+14:35:00   ├─ /integrations/cloture-ebp.html (+1ms) 
+14:35:00   ├─ /integrations.html (+4ms) 
+14:35:00   ├─ /mentions-legales.html (+2ms) 
+14:35:00   ├─ /methode.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+4ms) 
+14:35:00   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+5ms) 
+14:35:00   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms) 
+14:35:00   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+3ms) 
+14:35:00   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+3ms) 
+14:35:00   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+5ms) 
+14:35:00   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+3ms) 
+14:35:00   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+3ms) 
+14:35:00   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+3ms) 
+14:35:00   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms) 
+14:35:00   ├─ /outils-comptables-gratuits.html (+2ms) 
+14:35:00   ├─ /politique-de-confidentialite.html (+2ms) 
+14:35:00   ├─ /index.html (+3ms) 
+14:35:00 ✓ Completed in 407ms.
+
+14:35:00 [build] ✓ Completed in 1.04s.
+14:35:00 [@astrojs/sitemap] `sitemap-index.xml` created at `../../../../../../../var/folders/vm/f90yz5jx7xv1c2019p97kpr40000gn/T/memlia-blog-render-G7AM5U`
+14:35:03 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+66 images sociales JPEG générées.
+14:35:06 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+14:35:14 [memlia-responsive-proofs] 115 masters conservés, 345 variantes responsives
+14:35:14 [build] 85 page(s) built in 15.46s
+14:35:14 [build] Complete!
+
+> memlia-landing@2.0.0 build:site
+> npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && npm run render:public && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts
+
+
+> memlia-landing@2.0.0 guide:audit
+> node scripts/service-forge.mjs --guide audit
+
+{
+  "pass": true,
+  "guides": 4,
+  "errors": []
+}
+14:35:18 [content] Syncing content
+14:35:18 [content] Synced content
+14:35:18 [types] Generated 379ms
+14:35:18 [build] output: "static"
+14:35:18 [build] mode: "static"
+14:35:18 [build] directory: /Users/kevinkitanga/.hermes/kanban/workspaces/t_0380a3db/site/dist/
+14:35:18 [build] Collecting build info...
+14:35:18 [build] ✓ Completed in 418ms.
+14:35:18 [build] Building static entrypoints...
+14:35:18 [vite] ✓ built in 326ms
+14:35:19 [vite] ✓ built in 255ms
+14:35:19 [build] Rearranging server assets...
+
+ generating static routes 
+14:35:19   ├─ /404.html (+10ms) 
+14:35:19   ├─ /a-propos.html (+7ms) 
+14:35:19   ├─ /automatisation/bulletins-controle.html (+15ms) 
+14:35:19   ├─ /automatisation/circularisation-cac.html (+7ms) 
+14:35:19   ├─ /automatisation/entrees-sorties-salaries.html (+6ms) 
+14:35:19   ├─ /automatisation/evaluation-transmission.html (+4ms) 
+14:35:19   ├─ /automatisation/facture-electronique.html (+3ms) 
+14:35:19   ├─ /automatisation/factures-fournisseurs.html (+3ms) 
+14:35:19   ├─ /automatisation/notes-de-frais.html (+4ms) 
+14:35:19   ├─ /automatisation/paie.html (+3ms) 
+14:35:19   ├─ /automatisation/rapprochement-bancaire.html (+3ms) 
+14:35:19   ├─ /automatisation/registres-obligations.html (+4ms) 
+14:35:19   ├─ /automatisation/saisie-comptable.html (+2ms) 
+14:35:19   ├─ /automatisation/secretariat-juridique.html (+3ms) 
+14:35:19   ├─ /automatisation-cabinet-comptable.html (+3ms) 
+14:35:19   ├─ /blog/rss.xml (+31ms) 
+14:35:19   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+4ms) 
+14:35:19   ├─ /blog/rubrique/gestion-pieces-comptables.html (+4ms) 
+14:35:19   ├─ /blog/rubrique/ia-cabinet-comptable.html (+4ms) 
+14:35:19   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+5ms) 
+14:35:19   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+4ms) 
+14:35:19   ├─ /blog/cac-reception-fec-constat.html (+4ms) 
+14:35:19   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+3ms) 
+14:35:19   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+3ms) 
+14:35:19   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+14:35:19   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+4ms) 
+14:35:19   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+3ms) 
+14:35:19   ├─ /blog/logiciel-ia-comptabilite.html (+4ms) 
+14:35:19   ├─ /blog/prompt-chatgpt-expert-comptable.html (+4ms) 
+14:35:19   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+14:35:19   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+14:35:19   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms) 
+14:35:19   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+3ms) 
+14:35:19   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms) 
+14:35:19   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+5ms) 
+14:35:19   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+3ms) 
+14:35:19   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+3ms) 
+14:35:19   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+4ms) 
+14:35:19   ├─ /blog.html (+9ms) 
+14:35:19   ├─ /blog/commissariat-aux-comptes.html (+2ms) 
+14:35:19   ├─ /commissaires-aux-comptes.html (+5ms) 
+14:35:19   ├─ /contact/erreur.html (+2ms) 
+14:35:19   ├─ /contact/merci.html (+1ms) 
+14:35:19   ├─ /contact.html (+2ms) 
+14:35:19   ├─ /garanties.html (+2ms) 
+14:35:19   ├─ /glossaire.html (+9ms) 
+14:35:19   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+14:35:19   ├─ /integrations/lettrage-sage.html (+2ms) 
+14:35:19   ├─ /integrations/dsn-sage.html (+1ms) 
+14:35:19   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+14:35:19   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+14:35:19   ├─ /integrations/cloture-sage.html (+1ms) 
+14:35:19   ├─ /integrations/lettrage-cegid.html (+1ms) 
+14:35:19   ├─ /integrations/dsn-silae.html (+1ms) 
+14:35:19   ├─ /integrations/bulletin-de-paie-silae.html (+1ms) 
+14:35:19   ├─ /integrations/export-fec-ebp.html (+1ms) 
+14:35:19   ├─ /integrations/lettrage-ebp.html (+2ms) 
+14:35:19   ├─ /integrations/cloture-ebp.html (+2ms) 
+14:35:19   ├─ /integrations.html (+6ms) 
+14:35:19   ├─ /mentions-legales.html (+2ms) 
+14:35:19   ├─ /methode.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+4ms) 
+14:35:19   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+5ms) 
+14:35:19   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+4ms) 
+14:35:19   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+8ms) 
+14:35:19   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+3ms) 
+14:35:19   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+14:35:19   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+3ms) 
+14:35:19   ├─ /outils-comptables-gratuits.html (+2ms) 
+14:35:19   ├─ /politique-de-confidentialite.html (+1ms) 
+14:35:19   ├─ /index.html (+4ms) 
+14:35:19 ✓ Completed in 362ms.
+
+14:35:19 [build] ✓ Completed in 987ms.
+14:35:19 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+14:35:22 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+66 images sociales JPEG générées.
+14:35:25 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+14:35:32 [memlia-responsive-proofs] 115 masters conservés, 345 variantes responsives
+14:35:32 [build] 85 page(s) built in 14.88s
+14:35:32 [build] Complete!
+
+> memlia-landing@2.0.0 test:blog-contract
+> node --test tests/scripts/blog-contract.test.mjs tests/scripts/blog-intent-preservation.test.mjs && node scripts/verify-blog-contract.mjs
+
+TAP version 13
+# [TÉMOIN ROUGE CLAUSE 1] article-test : clause 1, légende de preuve invalide, provenance interne manquante ou consigne technique publique
+# [TÉMOIN ROUGE CLAUSE 2] article-test : clause 2, 6 H2 mais sommaire incomplet (sommaire absent)
+# [TÉMOIN ROUGE CLAUSE 3] article-test : clause 3, la meta-description n’ouvre sur aucune requête déclarée et mesurée — « La méthode en six étapes pour préparer le contrôle et ses preuves. »
+# [TÉMOIN ROUGE CLAUSE 4] article-test : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter
+# [TÉMOIN ROUGE CLAUSE 5] article-test : clause 5, H1, og:title et headline divergent — H1 « Contrôle bulletin de paie : la méthode du cabinet », og:title « Un autre titre », headline « Contrôle bulletin de paie : la méthode du cabinet »
+# Subtest: clause 1 — image directe liée à la recette ; une variante portrait est refusée
+ok 1 - clause 1 — image directe liée à la recette ; une variante portrait est refusée
+  ---
+  duration_ms: 28.191833
+  type: 'test'
+  ...
+# Subtest: le contrat vert contrôle chaque article de la collection sans slug codé en dur
+ok 2 - le contrat vert contrôle chaque article de la collection sans slug codé en dur
+  ---
+  duration_ms: 6.465167
+  type: 'test'
+  ...
+# Subtest: le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+ok 3 - le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+  ---
+  duration_ms: 12.328
+  type: 'test'
+  ...
+# Subtest: un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+ok 4 - un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+  ---
+  duration_ms: 2.168709
+  type: 'test'
+  ...
+# Subtest: clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+ok 5 - clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+  ---
+  duration_ms: 11.382375
+  type: 'test'
+  ...
+# Subtest: clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+ok 6 - clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+  ---
+  duration_ms: 13.70325
+  type: 'test'
+  ...
+# Subtest: clause 1 — une légende technique publique fait échouer le contrat
+ok 7 - clause 1 — une légende technique publique fait échouer le contrat
+  ---
+  duration_ms: 4.0115
+  type: 'test'
+  ...
+# Subtest: clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+ok 8 - clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+  ---
+  duration_ms: 10.939833
+  type: 'test'
+  ...
+# Subtest: clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+ok 9 - clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+  ---
+  duration_ms: 11.695334
+  type: 'test'
+  ...
+# Subtest: clause 1 — image directe sans légende exige provenance liée à la recette
+ok 10 - clause 1 — image directe sans légende exige provenance liée à la recette
+  ---
+  duration_ms: 8.804583
+  type: 'test'
+  ...
+# Subtest: clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+ok 11 - clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+  ---
+  duration_ms: 6.263583
+  type: 'test'
+  ...
+# Subtest: clause 2 — dès six H2, le sommaire porte toutes les ancres
+ok 12 - clause 2 — dès six H2, le sommaire porte toutes les ancres
+  ---
+  duration_ms: 7.786583
+  type: 'test'
+  ...
+# Subtest: clause 3 — la meta-description ouvre sur la requête mesurée
+ok 13 - clause 3 — la meta-description ouvre sur la requête mesurée
+  ---
+  duration_ms: 3.417125
+  type: 'test'
+  ...
+# Subtest: clause 4 — la rubrique est déclarée, construite et réciproque
+ok 14 - clause 4 — la rubrique est déclarée, construite et réciproque
+  ---
+  duration_ms: 3.193125
+  type: 'test'
+  ...
+# Subtest: clause 5 — H1, Open Graph et headline restent identiques
+ok 15 - clause 5 — H1, Open Graph et headline restent identiques
+  ---
+  duration_ms: 2.860167
+  type: 'test'
+  ...
+# Subtest: clause 4 — une page de rubrique sans lien retour échoue
+ok 16 - clause 4 — une page de rubrique sans lien retour échoue
+  ---
+  duration_ms: 2.88475
+  type: 'test'
+  ...
+# Subtest: clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+ok 17 - clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+  ---
+  duration_ms: 2.824083
+  type: 'test'
+  ...
+# (node:46664) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: la fixture historique se matérialise même après expiration des relevés
+    # Subtest: 2026-10-21
+    ok 1 - 2026-10-21
+      ---
+      duration_ms: 1376.472333
+      type: 'test'
+      ...
+    # Subtest: 2030-01-01
+    ok 2 - 2030-01-01
+      ---
+      duration_ms: 1438.841375
+      type: 'test'
+      ...
+    1..2
+ok 18 - la fixture historique se matérialise même après expiration des relevés
+  ---
+  duration_ms: 2848.50825
+  type: 'test'
+  ...
+# Subtest: la vieillesse du relevé seule ne refuse pas un article public scellé
+ok 19 - la vieillesse du relevé seule ne refuse pas un article public scellé
+  ---
+  duration_ms: 200.112709
+  type: 'test'
+  ...
+# Subtest: un candidat non scellé conserve le refus sur un relevé vieilli
+ok 20 - un candidat non scellé conserve le refus sur un relevé vieilli
+  ---
+  duration_ms: 185.243209
+  type: 'test'
+  ...
+# Subtest: un sceau rompu ne peut bénéficier de la conservation historique
+ok 21 - un sceau rompu ne peut bénéficier de la conservation historique
+  ---
+  duration_ms: 200.792125
+  type: 'test'
+  ...
+1..21
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4803.829458
+VERT — contrat blog : 19 article(s) contrôlé(s) · 3 exemption(s) clause 4
+- automatiser-un-cabinet-comptable-la-carte-des-taches : clause 4 exemptée le 2026-09-20 — Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA.
+- cabinet-comptable-surcharge-de-travail-ou-passe-le-temps : clause 4 exemptée le 2026-09-21 — Diagnostic transversal de la charge et des états du flux : seul article du portefeuille, il concerne plusieurs familles. Les pièces y illustrent un blocage sans justifier un rattachement au parcours de saisie.
+- pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils : clause 4 exemptée le 2026-09-20 — Cicatrice transversale d’adoption et de cadrage : elle explique un échec et la règle qui en est sortie, pas l’exécution d’un geste métier. La réunir avec le pilier ne constituerait pas un parcours propre.
+
+> memlia-landing@2.0.0 test:service-design
+> node scripts/verify-service-design.mjs && node --test tests/scripts/service-design.test.mjs
+
+VERT — garde DA services : 12 page(s)
+TAP version 13
+# Subtest: le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu
+ok 1 - le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu
+  ---
+  duration_ms: 7.148708
+  type: 'test'
+  ...
+# Subtest: une page à plat échoue, une page composée passe
+ok 2 - une page à plat échoue, une page composée passe
+  ---
+  duration_ms: 4.496209
+  type: 'test'
+  ...
+# Subtest: deux occurrences du même cadre sont refusées
+ok 3 - deux occurrences du même cadre sont refusées
+  ---
+  duration_ms: 3.247583
+  type: 'test'
+  ...
+# Subtest: une future page non publiée ne peut pas contourner la porte DA
+ok 4 - une future page non publiée ne peut pas contourner la porte DA
+  ---
+  duration_ms: 3.585916
+  type: 'test'
+  ...
+# Subtest: une page sans bloc de couverture ou Person reliée échoue la porte de confiance
+ok 5 - une page sans bloc de couverture ou Person reliée échoue la porte de confiance
+  ---
+  duration_ms: 3.1725
+  type: 'test'
+  ...
+# Subtest: un média partagé par deux pages échoue en nommant les deux routes
+ok 6 - un média partagé par deux pages échoue en nommant les deux routes
+  ---
+  duration_ms: 3.683833
+  type: 'test'
+  ...
+# Subtest: une page sans recette scellée échoue
+ok 7 - une page sans recette scellée échoue
+  ---
+  duration_ms: 3.11275
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 83.526375
+
+> memlia-landing@2.0.0 render:public
+> node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs
+
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 133 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Sources publiques : texte final rendu sur 10 pages ; corpus interne conservé.
+Sources publiques : 85 pages, 0 pages avec libellés de processus.
+
+> memlia-landing@2.0.0 test:page-contract
+> node scripts/verify-page-contract.mjs && node --test tests/scripts/page-contract.test.mjs
+
+ROUGE — contrat de page : 85 page(s), 5 clauses, 3 exemption(s) appliquée(s)
+- clause 4 déléguée : test_positioning.py PASS
+- garde services déléguée : verify-service-design.mjs PASS
+- service-forge délégué : PASS
+- blog-contract délégué : PASS
+- blog-title-intent délégué : PASS
+- /blog/automatiser-l-entree-en-relation-d-un-nouveau-client : clause 3 (SEO) — aucune requête mesurée ni décision d’intention écrite pour cette route
+[blog-pipeline] npm run build:site a échoué avec le code 1.

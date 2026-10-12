@@ -1,0 +1,502 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-00e25ead00c6",
+      "text": "Pour automatiser l'entrée en relation d'un nouveau client au cabinet comptable, séparez trois suivis : les pièces attendues, les jalons de préparation et les décisions du cabinet. Une pièce reçue ne vaut pas identité vérifiée ; une lettre envoyée ne vaut pas contrat signé. Préparez les demandes et les rappels dans vos outils, puis soumettez le passage en production à une validation explicite portant sur le bon dossier et la bonne version de mission.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cee5aa2413f9",
+      "text": "Qu'est-ce que l'onboarding client au cabinet comptable ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-181e7093ab9d",
+      "text": "L'onboarding client est l'organisation de l'arrivée d'un nouveau dossier : rassembler les informations utiles, cadrer la mission, préparer les accès et installer les habitudes de transmission. Ici, nous traitons son suivi administratif, jusqu'à la proposition de passage en production.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-186909ebdd9a",
+      "text": "Un jalon est un point de contrôle nommé, avec un responsable, un état et une preuve. « Lettre envoyée », « lettre signée » et « démarrage autorisé » sont trois jalons différents. Les confondre produit un tableau vert alors que la mission attend encore une décision.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ecbd6b8600d5",
+      "text": "La complétude administrative décrit les pièces présentes dans une liste validée par le cabinet. Elle ne tranche ni leur valeur probante, ni le niveau de vigilance, ni l'acceptation du client. Cette distinction place l'entrée en relation dans la carte des tâches répétitives du cabinet, sans transformer une checklist en décision professionnelle.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f0ab0828a31c",
+      "text": "Pourquoi la tâche casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-933f4eae21dc",
+      "text": "Le dossier commence dans un échange commercial, continue dans la messagerie, puis arrive dans le suivi de production. À chaque passage, quelqu'un reconstitue ce que la personne précédente avait déjà compris. Une pièce jointe reste dans un fil ; la signature concerne une ancienne lettre ; l'accès est préparé avant que son périmètre soit confirmé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4cda4cc933c7",
+      "text": "La règle implicite ressemble souvent à ceci : « Je sais ce qu'il manque et je sais quand on peut commencer. » Tant qu'elle vit dans une seule tête, l'absence du collaborateur laisse le dossier sans prochaine action lisible. Le savoir-faire à écrire est plus précis : pour cette typologie de dossier et cette mission, quelle pièce attendons-nous, qui l'examine et quel événement autorise le jalon suivant ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-430f891e6aab",
+      "text": "Avant d'ajouter une automatisation, examinez les fonctions déjà présentes dans vos outils. Un parcours intégré peut déjà suivre les pièces, la lettre et les étapes. Le travail utile porte alors sur les exceptions ou les passages entre outils, pas sur une deuxième checklist concurrente. Gardez un seul registre de référence pour chaque état.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5af0368179a5",
+      "text": "Réunissez cinq éléments, sans recopier tout le dossier dans un nouveau fichier :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0bc1925972bb",
+      "text": "- Une référence interne stable, distincte du nom saisi dans un courriel. - Une typologie de dossier et un périmètre de mission confirmés par le cabinet. - Une liste de pièces versionnée, avec la raison de chaque demande. - Les personnes autorisées à qualifier une pièce, apprécier la vigilance et autoriser le démarrage. - Les événements réellement lisibles dans vos outils : réception, retour de signature, validation et changement de périmètre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a2a6f2af3f",
+      "text": "Une tâche de préparation n'a pas les mêmes droits qu'une tâche d'envoi. Commencez par la lecture des états et la préparation des demandes. Le cabinet choisit ensuite les validations et les accès nécessaires. Ne placez pas de mots de passe dans le registre : gardez uniquement l'état de l'habilitation et une référence vers le dispositif prévu pour les accès.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b6e8566b5579",
+      "text": "Checklist 1 : les pièces d'entrée",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c33b85991697",
+      "text": "La liste suivante est une structure de travail, pas une liste réglementaire universelle. Le cabinet fixe les documents pertinents selon le client, la mission et sa procédure de vigilance.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8558500c6baa",
+      "text": "| Ensemble | Ce que le suivi prépare | Ce que le cabinet examine | |---|---|---| | Identification | Référence de pièce, date de réception, état de lisibilité | Identité du client, portée et fiabilité des éléments | | Bénéficiaire effectif, lorsque pertinent | Liste des éléments demandés et reçus | Identification et vérifications nécessaires | | Objet de la relation | Questionnaire et informations reçues | Nature de la mission et cohérence de la relation | | Mission | Référence et version du projet de lettre | Périmètre, conditions et acceptation | | Reprise du dossier | Inventaire des fichiers et périodes disponibles | Travaux de reprise et échanges à conduire | | Accès | État de la demande d'habilitation | Autorisation et périmètre des droits |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-486467fd0bdc",
+      "text": "Le principe de départ est posé par L.561-5 : les personnes concernées « Identifient leur client et, le cas échéant, le bénéficiaire effectif », puis vérifient les éléments d'identification. Le texte distingue identification et vérification, et prévoit notamment une dérogation encadrée au IV. Notre circuit administratif conserve la décision de vigilance au cabinet ; il n'applique pas cette dérogation par déduction automatique.",
+      "claimIds": [
+        "claim-unit-486467fd0bdc-1"
+      ]
+    },
+    {
+      "id": "unit-bba194c1063f",
+      "text": "Pour chaque pièce, utilisez quatre états : attendue, reçue à examiner, qualifiée par le cabinet, à remplacer. « Reçue à examiner » signifie seulement que le document est arrivé. Une pièce illisible est à remplacer ; une pièce rattachée à un autre dossier est une exception, pas une réception valable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-96da0b0ab52d",
+      "text": "La mécanique de demande peut reprendre la règle de relance des pièces clients. À réception, la proposition de relance correspondante disparaît. Les autres demandes restent visibles, avec leur objet précis. Une relance déjà validée ne se renvoie pas au simple rejeu du même événement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4024ab3ec321",
+      "text": "Checklist 2 : les jalons et leur preuve",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1d3e97a73fb2",
+      "text": "Un jalon utile répond à trois questions : qu'est-ce qui a changé, quel événement le démontre et quelle est la prochaine action ? Ne déduisez pas « terminé » du nombre de cases cochées.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1106f59337a3",
+      "text": "| Jalon | Preuve attendue dans notre méthode | Prochaine action proposée | |---|---|---| | Liste définie | Version de checklist validée | Préparer la demande des pièces absentes | | Pièces reçues | Références des documents liés au dossier | Présenter les pièces à examiner | | Examen réalisé | Décision du cabinet, auteur et périmètre | Présenter le jalon restant | | Mission cadrée | Référence de lettre et version retenue | Préparer la demande de signature | | Signature constatée | Retour relié à la bonne version | Présenter le dossier au responsable | | Démarrage autorisé | Validation explicite du responsable | Préparer la passation à la production |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4e4236251a67",
+      "text": "L.561-5-1 prévoit aussi le recueil des « informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent ». Le même article prévoit leur actualisation pendant la relation. C'est une raison pour conserver le contexte de mission, pas seulement un indicateur de pièces reçues.",
+      "claimIds": [
+        "claim-unit-4e4236251a67-1"
+      ]
+    },
+    {
+      "id": "unit-b6b91693e180",
+      "text": "Lorsqu'une activité ou un périmètre change, ouvrez un événement de réexamen. Ne remettez pas automatiquement toutes les pièces à zéro ; présentez la différence au cabinet. Une personne décide quelles demandes et quelles validations doivent être reprises.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5ea92a97d057",
+      "text": "Checklist 3 : la lettre et la signature",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aeaad1ad51c0",
+      "text": "Le cabinet confirme le périmètre et les conditions de la mission, puis retient la version du contrat à signer. Dans notre méthode, le suivi attend ce contrat signé et une autorisation humaine distincte avant de proposer la passation en production. Il ne déduit pas un délai légal de signature et ne transforme pas le retour d'un document en acceptation automatique du client.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e0f6f825f23f",
+      "text": "Suivez séparément : projet préparé, version approuvée, demande envoyée, retour reçu et retour rapproché de la version approuvée. « Signée » n'est pas un état fiable si vous ignorez quelle lettre a été signée. Une copie de la version V1 ne ferme pas la demande portant sur V2.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a131eb7d416b",
+      "text": "La lettre de mission n'est pas un document que l'automatisation accepte à la place du cabinet. Nous préparons le rapprochement de références. Le professionnel conserve le choix du périmètre, des conditions et de l'acceptation ; les parties gardent leur signature.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-08747b3533c7",
+      "text": "La frontière. Notre méthode répartit les gestes ainsi :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1c2d20e6ff5f",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Inventaire des pièces et événements reçus | Envoi d'une demande ou d'un rappel préparé | Identification et vérification du client | | Liste des pièces manquantes selon la checklist retenue | Qualification administrative d'une pièce | Appréciation de la vigilance LCB-FT | | Rapprochement de la signature et de la version | Autorisation de passation en production | Acceptation de la mission et signature | | Proposition de prochaine action | Modification du périmètre du circuit | Analyse d'un soupçon et décision du professionnel |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c59f4c5932f4",
+      "text": "La proposition. Nous produisons une prochaine action avec ses motifs et ses références. Les commentaires, qualifications et autorisations saisis par le cabinet restent séparés. Une nouvelle réception régénère la proposition, sans remplacer une saisie humaine. Chaque validation porte sur un dossier et une version précise.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a87ea996b524",
+      "text": "Dans ce jeu fictif, la décision enregistrée comporte la référence du dossier, la version de mission, l'auteur, la référence de décision et un résultat explicitement favorable. « Favorable » est un choix saisi par le cabinet, jamais calculé à partir des pièces. Une décision concernant un autre dossier ou une ancienne version, un résultat défavorable ou inconnu, ou un champ manquant arrêtent la préparation de la passation. Ces champs décrivent notre essai administratif, pas un modèle réglementaire de décision de vigilance. L'autorisation de passation reste un jalon distinct.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8b588de9b586",
+      "text": "L'arrêt. La préparation de la passation cesse si une pièce est illisible, si la référence de dossier diverge, si la checklist est absente, si la lettre signée n'est pas la version retenue ou si la décision du cabinet attend un réexamen. Une incohérence d'identité ou une question de vigilance sort du circuit répétitif. L'outil présente le motif ; il ne produit ni classement de risque, ni décision d'acceptation, ni déclaration à TRACFIN.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4c1fdd94dd98",
+      "text": "Le jeu d'essai. Un jeu d'essai fictif est un ensemble de situations construites pour éprouver la règle, sans données client. Nous avons rejoué quinze situations administratives sur des références fictives D-101 à D-115. Ce test vérifie des transitions de suivi ; il n'effectue aucune vérification d'identité ou analyse LCB-FT.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-104cfb75264f",
+      "text": "La règle dans les mots du cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f8a0eaaee84",
+      "text": "| Déclencheur | Condition | Proposition | Exception | |---|---|---|---| | Nouvelle entrée | Checklist absente | Aucune proposition | Faire définir la liste | | Réception | Pièce attendue encore absente | Demander la pièce nommée | Pièce illisible ou mauvais dossier | | Liste reçue | Pièces non qualifiées | Présenter l'examen | Aucune qualification déduite | | Examen terminé | Décision favorable complète sur le même dossier et la même version | Présenter le jalon restant | Décision absente, autre dossier, ancienne version, non favorable ou incomplète : attendre le cabinet | | Lettre rapprochée | Version signée différente | Aucune passation | Rapprocher la bonne version | | Jalons administratifs réunis | Autorisation non enregistrée | Présenter la passation à valider | Ne pas démarrer | | Autorisation enregistrée | Même dossier et même version | Préparer la passation | Réexamen ou incohérence |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e10d3b07c97e",
+      "text": "Les sorties ci-dessous proviennent du script de règle exécuté sur quinze entrées fictives. « Préparer la passation » est une sortie de suivi, pas un démarrage de mission. Les cinq derniers cas disposent tous d'une signature V2 et d'une autorisation sur leur dossier V2 : seule la décision enregistrée empêche la passation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cecbce527d46",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | D-101, jalons réunis sans autorisation | PASSATION À VALIDER | Attendre le responsable | | D-102, pièce d'identification attendue | DEMANDE À VALIDER : identification | Préparer la demande | | D-103, pièce illisible | REFUS : PIÈCE ILLISIBLE | Faire examiner et remplacer | | D-104, bénéficiaire effectif non qualifié | EXAMEN DES PIÈCES À FAIRE | Attendre la qualification du cabinet | | D-105, décision du cabinet absente | DÉCISION CABINET ATTENDUE | Ne rien déduire sur la vigilance | | D-106, signature V1 pour lettre V2 | REFUS : VERSION SIGNÉE DIFFÉRENTE | Rapprocher la bonne version | | D-107, décision favorable complète sur D-107 V2, jalons et autorisation réunis | PRÉPARER LA PASSATION | Préparer seulement | | D-108, checklist absente | REFUS : CHECKLIST ABSENTE | Faire définir la liste | | D-109, pièce d'un autre dossier | REFUS : RÉFÉRENCE DIVERGENTE | Faire corriger le rattachement | | D-110, réexamen demandé | REFUS : RÉEXAMEN CABINET | Attendre une nouvelle décision | | D-111, décision concernant D-999 | REFUS : DÉCISION AUTRE DOSSIER | Faire vérifier le rattachement | | D-112, décision V1 pour mission V2 | REFUS : DÉCISION ANCIENNE VERSION | Attendre la décision sur V2 | | D-113, décision défavorable | REFUS : DÉCISION NON FAVORABLE | Arrêter la préparation | | D-114, auteur absent de la décision | REFUS : DÉCISION INCOMPLÈTE | Faire compléter par le cabinet | | D-115, résultat absent de la décision | REFUS : DÉCISION INCOMPLÈTE | Ne pas déduire un accord |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0b633f6b90c2",
+      "text": "Le rejeu conserve les entrées, les résultats et les assertions. Une seconde exécution sur les mêmes événements produit la même proposition ; elle ne crée aucun message envoyé. Un commentaire humain identique avant et après le calcul vérifie la séparation entre proposition et saisie. Cette preuve porte sur le script fictif présenté, pas sur une intégration déjà livrée au cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7fcc633dd95e",
+      "text": "Ce qui reste au cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b52be9e7652d",
+      "text": "La LCB-FT désigne la lutte contre le blanchiment de capitaux et le financement du terrorisme. La vigilance ne se résume pas à collecter des pièces. Notre règle de suivi ne réalise aucune analyse de soupçon, ne décide d'aucune déclaration à TRACFIN et n'affiche pas de verdict « conforme ». Le responsable distingue l'état administratif du dossier de ses décisions professionnelles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2e6ab1298fa8",
+      "text": "Pour les données personnelles, le principe de minimisation prévoit des données « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ». Gardez dans le suivi les références et états utiles, plutôt que des copies de documents d'identité dans chaque tableau. Le cabinet définit les accès et la conservation selon les documents et traitements concernés, séparément du simple état « onboarding terminé ».",
+      "claimIds": [
+        "claim-unit-2e6ab1298fa8-1"
+      ]
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bf0dda36a00b",
+      "text": "- Une checklist identique pour toutes les missions. Le même document peut être pertinent dans un dossier et inutile dans un autre. Le cabinet valide les conditions de demande. - Un vert unique pour toutes les étapes. Affichez le jalon manquant et sa prochaine action, pas seulement un pourcentage. - Une signature détachée de sa version. Conservez la référence de la lettre concernée et présentez tout écart. - Un démarrage déduit de la réception des pièces. Le responsable conserve une autorisation explicite, distincte de la complétude. - Un dossier complet interprété comme un client accepté. L'acceptation et l'appréciation de la vigilance restent des décisions professionnelles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71dc262c2dc6",
+      "text": "Quelles pièces demander à un nouveau client ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-cf64699d60bb",
+      "text": "Partez de la mission et de la typologie du client, puis faites valider la liste par le cabinet. Distinguez les éléments d'identification, le contexte de la relation, le contrat, les documents de reprise et les accès. Le tableau de cet article aide à structurer cette liste ; il ne prescrit pas les mêmes pièces pour chaque dossier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-335199c2d9e8",
+      "text": "Peut-on automatiser la lettre de mission ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e2ee57f4bb75",
+      "text": "On peut préparer des informations et suivre ses versions dans les outils prévus par le cabinet. Le contenu retenu, l'acceptation de la mission et la signature restent aux personnes concernées. Commencez par rapprocher les états déjà produits par votre outil de signature, plutôt que par fabriquer un contrat à partir d'un courriel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-eecc3c5b97af",
+      "text": "À quel moment le dossier passe-t-il en production ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-48e1d2df3533",
+      "text": "Dans notre méthode, quand le cabinet a enregistré les décisions attendues, rapproché la signature de la bonne version et autorisé la passation. Ce n'est pas un automatisme déclenché par la dernière pièce reçue. Un changement de périmètre ouvre un réexamen.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b85c78d91908",
+      "text": "Faut-il un nouvel outil pour ce suivi ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1f8b17ef96a1",
+      "text": "Non, pas nécessairement. Une messagerie, une gestion documentaire et un registre existant peuvent fournir les événements utiles. Vérifiez leurs fonctions, leurs accès et leurs formats avant de choisir ce qui mérite réellement une automatisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-39ff2e50bc7e",
+      "text": "Une réception ferme une demande de pièce, pas une décision du cabinet. Chaque passage important garde sa preuve, sa version et sa validation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-75f903f7fbff",
+      "text": "Nous prenons en charge la mécanique répétitive de l'entrée en relation : écrire les listes conditionnelles et les jalons dans vos mots, préparer les demandes, rapprocher les états et présenter les exceptions dans vos outils. Votre cabinet garde les qualifications, les décisions de vigilance, l'acceptation et la signature.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9cb0a8148b18",
+      "text": "La méthode de prise en charge comprend une recette, c'est-à-dire des essais définis puis validés par vos équipes avant usage. Le service d'automatisation des tâches du cabinet inclut la construction et la maintenance de la règle retenue, sans dupliquer ce que vos outils réalisent déjà.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-486467fd0bdc-1",
+      "unitId": "unit-486467fd0bdc",
+      "claim": "Identifient leur client et, le cas échéant, le bénéficiaire effectif",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cmf-identification"
+      ],
+      "sourceExcerpts": {
+        "cmf-identification": "Identifient leur client et, le cas échéant, le bénéficiaire effectif"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cmf-identification",
+            "sourceUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+            "verifiedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+            "excerpt": "Identifient leur client et, le cas échéant, le bénéficiaire effectif",
+            "context": "561-2 : 1° Identifient leur client et, le cas échéant, le bénéficiaire effectif au sens de l'article L.",
+            "contextSha256": "e1b271cdfab42a5cd5e0f9b48e36d0c81d5d07c55fd58bd9cf425d3b1a46ffc4",
+            "citation": {
+              "text": "Identifient leur client et, le cas échéant, le bénéficiaire effectif",
+              "sha256": "02a0d8199f64a1519f743c16db018aec1fde83cb5af4cbb06776ae3953f5887b",
+              "sourceContentSha256": "47c270e777ffd468e3554127d3e00cbc14c064e72562b3bb17abb3ef8e0987da",
+              "coordinates": {
+                "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+                "checkedAt": "2026-10-06",
+                "title": "Code monétaire et financier, L561-5",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 2,
+                  "endLine": 2
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "identifient",
+                "leur",
+                "client",
+                "echeant",
+                "beneficiaire",
+                "effectif"
+              ],
+              "reasoning": "La citation, relevée à la ligne 2 de la copie locale de Légifrance, porte les mêmes entités que le claim (identifient, leur, client, echeant, beneficiaire, effectif) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation partielle exacte du I 1°, avec vérification distinguée et dérogation du IV signalée ; aucun automatisme de vigilance.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-4e4236251a67-1",
+      "unitId": "unit-4e4236251a67",
+      "claim": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cmf-relation"
+      ],
+      "sourceExcerpts": {
+        "cmf-relation": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cmf-relation",
+            "sourceUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+            "verifiedUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+            "excerpt": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent",
+            "context": "Avant d'entrer en relation d'affaires, les personnes mentionnées à l'article L. 561-2 recueillent les informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent.",
+            "contextSha256": "c49ca041916abbf69c7d36ba27628f4f150fe80369a47e07dc040e8fccbf5368",
+            "citation": {
+              "text": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent",
+              "sha256": "de7028fd57f3c5865358607687275fa21ad8f4c615f5a5ae65241ff8e66bf88e",
+              "sourceContentSha256": "44943e09cfa38bde30c9d825afa50611e17c7574331066fabd3176bdd64f0224",
+              "coordinates": {
+                "finalUrl": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+                "checkedAt": "2026-10-06",
+                "title": "Code monétaire et financier, L561-5-1",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1,
+                  "endLine": 1
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "informations",
+                "relatives",
+                "objet",
+                "nature",
+                "relation",
+                "autre",
+                "element",
+                "information",
+                "pertinent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1 de la copie locale de Légifrance, porte les mêmes entités que le claim (informations, relatives, objet, nature, relation, autre, element, information, pertinent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation exacte contextualisée par la phrase d'actualisation pendant la relation ; ne remplace pas l'appréciation professionnelle.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-2e6ab1298fa8-1",
+      "unitId": "unit-2e6ab1298fa8",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-minimisation"
+      ],
+      "sourceExcerpts": {
+        "cnil-minimisation": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-minimisation",
+            "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+            "context": "a) traitées de manière licite, loyale et transparente au regard de la personne concernée (licéité, loyauté, transparence); b) collectées pour des finalités déterminées, explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités; le traitement ultérieur à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques n'est pas considéré, conformément à l'article 89, paragraphe 1, comme incompatible avec les finalités initiales (limitation des finalités); c) adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ( minimisation des données); d) exactes et, si nécessaire, tenues à jour; toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder (exactitude); e) conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées; les données à caractère personnel peuvent être conservées pour des durées plus longues dans la mesure où elles seront traitées exclusivement à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques conformément à l'article 89, paragraphe 1, pour autant que soient mises en œuvre les mesures techniques et organisationnelles appropriées requises par le présent règlement afin de garantir les droits et libertés de la personne concernée (limitation de la conservation); f) traitées de façon à garantir une sécurité appropriée des données à caractère personnel, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées (intégrité et confidentialité);",
+            "contextSha256": "c225de36bf199a45fea454329c7f85442fab95ca16e5c28784c24e1ce65a0ebd",
+            "citation": {
+              "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+              "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+              "sourceContentSha256": "f3d012485f4ff8b4fbefdc54dab9e2449be7994e978f5127dab1fbe42b9184c7",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+                "checkedAt": "2026-10-12",
+                "title": "RGPD, chapitre II, article 5",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 531,
+                  "endLine": 531
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "adequates",
+                "pertinentes",
+                "limitees",
+                "necessaire",
+                "regard",
+                "finalites",
+                "lesquelles",
+                "traitees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 531 de la copie locale de CNIL, porte les mêmes entités que le claim (adequates, pertinentes, limitees, necessaire, regard, finalites, lesquelles, traitees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation exacte de l'article 5 1 c ; la règle ne fixe pas de durée universelle ni ne demande d'effacer les pièces requises.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    }
+  ]
+}

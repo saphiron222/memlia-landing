@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
+  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "touche"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
+    "parts": {
+      "#fcfbf7": 0.09595486111111111,
+      "#27b657": 0,
+      "#1c8a41": 0,
+      "#231f20": 0.19036458333333334
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
+    "ecarts": [
+      "Palette : #fcfbf7 (dominante) mesurée à 9,595 % sur l'image, sous l'objectif cosmétique indicatif de 10 % (non bloquant).",
+      "Palette : #27b657 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
+      "Palette : #1c8a41 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Six composantes présentes pour la pièce jointe N1 ; prompt historique préservé, cible hex locale explicitement distincte du prompt. Deux écarts de verts restent une note cosmétique, pas une conformité de palette revendiquée."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "N1 levé : copie binaire exacte du fichier opérateur et de sa provenance, démontrée indépendamment. Aucune recoloration ; dérivés seuls redimensionnés/recadrés. Modèle et coût non communiqués."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Dérivé1200 réellement regardé pendant cette re-revue : pictogrammes et lignes génériques, aucun nom, numéro, texte lisible ou marque identifiable ; source exacte confrontée à la pièce jointe."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Quatre plateaux dont le dernier ocre vide, dossier vert ouvert, main au crayon sur une checklist : composition confirmée dans le dérivé regardé. Illustration, jamais preuve de diligence de vigilance."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Sept dérivés WebP/AVIF/OG contrôlés présents et non vides ; dérivé1200 regardé. Les deux figures sont byte-identiques au paquet initial. Contrôles publics/production réservés à platform."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt actuel concordant avec le dérivé réellement regardé : main au crayon, dossier fictif, quatre plateaux dont un vide. Aucun pouvoir de décision attribué à cette illustration."
+      ]
+    }
+  ]
+}

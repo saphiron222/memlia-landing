@@ -326,5 +326,21 @@
     "capturedAt": "2026-10-10",
     "reservation": "F4",
     "centralText": "Constat R-004 Jeu d’essai fictif · JSON fictif · D-004 · 2026 R-004 2 lignes Ligne Débit Crédit E-001 1 200,00 0,00 E-002 0,00 1 200,00 Écart 0,00 Constat R-004 CONSTAT_A_REVOIR Période 2026 Commentaire saisi À examiner"
+  },
+  {
+    "id": "onboarding-pieces",
+    "article": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+    "alt": "Checklist fictive D-104 : identification qualifiée, bénéficiaire reçu à examiner et lettre V2.",
+    "source": "Cadre figures.html dérivé des entrées D-104 du rejeu fictif preuves/rejeu.json ; aucune intégration livrée représentée.",
+    "capturedAt": "2026-10-12",
+    "centralText": "Pièces d'entrée Jeu d’essai fictif · D-104 · V2 ENTREE-SOCIETE-1 D-104 Pièces Mission Accès Élément Référence Réception Qualification Identification ID-F104 Reçue Qualifiée Bénéficiaire effectif BE-F104 Reçue À examiner Lettre de mission LM-F104-V2 Retour V2 Rapprochée EXAMEN DES PIÈCES À FAIRE ROLE-RESPONSABLE"
+  },
+  {
+    "id": "onboarding-jalons",
+    "article": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+    "alt": "Registre fictif D-101, D-106 et D-107 : passation à valider, signature divergente et passation à préparer.",
+    "source": "Cadre figures.html dérivé des sorties D-101, D-106, D-107 du rejeu fictif preuves/rejeu.json.",
+    "capturedAt": "2026-10-12",
+    "centralText": "Registre d'entrée Jeu d’essai fictif · V2 · trois dossiers ENTREE-SOCIETE-1 Passations Pièces Jalons Accès Dossier Pièces Signature Autorisation Proposition D-101 Qualifiées V2 Absente Passation à valider D-106 Qualifiées V1 Absente Version signée différente D-107 Qualifiées V2 ROLE-RESP. Préparer la passation D-107 · DEC-FICTIVE · V2 Autorisation enregistrée"
   }
 ]

@@ -1,0 +1,65 @@
+# Couverture des compétences · fabrication
+
+- blog : execute ; Cycle scoped recherche → brief → corps → essais et rendu ; publication explicitement séparée. Preuve : RECHERCHE-BRIEF.md
+- blog-analyze : a-executer ; Unique metier à venir sur fond, sources, visuels et matrice ; aucun verdict ni score auteur. Preuve : HANDOFF.md
+- blog-audio : N/A ; Aucune narration mandatée : article écrit et accessible sans inscription. Preuve : RECHERCHE-BRIEF.md
+- blog-audit : partiel ; Lecture scoped du nouveau dossier et mentions du corpus ; pas audit du blog complet ni historique performance. Preuve : preuves/verification-paquet.json
+- blog-brand : execute ; Charte v5 relue ; nous/vous, pas de gain, pas de catalogue ni identité légale dans le corps. Preuve : RECHERCHE-BRIEF.md
+- blog-brief : execute ; Besoin, intention, acteurs/formats, preuve et frontières fixés avant rendu ; aucune métrique comparative inventée. Preuve : RECHERCHE-BRIEF.md
+- blog-calendar : partiel ; Ancien créneau et date réelle distingués ; réservation native et cadence au jour de publication déléguées à platform. Preuve : RECHERCHE-BRIEF.md
+- blog-cannibalization : execute ; Mentions des pages publiées examinées et comparaison des intentions du backlog ; deux variantes futures non actionnées. Preuve : preuves/verification-paquet.json
+- blog-chart : N/A ; Aucune série numérique à grapher ; les états sont mieux représentés en tableau et écran fictif. Preuve : RECHERCHE-BRIEF.md
+- blog-cluster : partiel ; Famille/pilier/frère du backlog comparés ; aucun cluster entier refait. Preuve : RECHERCHE-BRIEF.md
+- blog-decay : N/A ; Route nouvelle non publiée, pas de série de déclin. Preuve : RECHERCHE-BRIEF.md
+- blog-discourse : partiel ; Recherche web qualitative du jour, pas étude sociale last30days ni citation de praticien. Preuve : RECHERCHE-BRIEF.md
+- blog-factcheck : execute ; Trois citations exactes contrôlées ; deux CMF DILA et CNIL réseau. Article151 hérité intègre conservé seulement en recherche complémentaire, sans claim public. Preuve : preuves/qualification-sources.json
+- blog-flow : execute ; Find : besoin des jalons ; Leverage : corpus/charte ; Optimize : preuve et refus ; Win : mesure future explicitement séparée. Preuve : RECHERCHE-BRIEF.md
+- blog-geo : partiel ; Réponse directe, définitions stables, citations contextualisées, tableaux et preuves contrôlables ; aucune citation IA réellement mesurée. Preuve : corps.md
+- blog-google : indisponible ; GSC/API performance non interrogées dans cette fabrication ; impressions/clics ND, aucune donnée déduite de l’absence de route. Preuve : RECHERCHE-BRIEF.md
+- blog-image : partiel ; Pièce jointe native opérateur copiée sans recoloration ; dérivés exécutés. Mesure réelle : verts de marque absents selon tolérance45, réserve cosmétique conservée sans PASS de palette. Preuve : image-traitement.json
+- blog-locale-audit : N/A ; Pas de version étrangère à comparer. Preuve : RECHERCHE-BRIEF.md
+- blog-localize : N/A ; Aucun autre marché ni adaptation culturelle demandés. Preuve : RECHERCHE-BRIEF.md
+- blog-multilingual : N/A ; Une seule langue publique : français. Preuve : RECHERCHE-BRIEF.md
+- blog-notebooklm : N/A ; Quatre sources primaires lues directement ; aucun notebook requis. Preuve : RECHERCHE-BRIEF.md
+- blog-outline : execute ; Trois checklists et suite d’essais ; ranked-listicle écarté car il répond à une comparaison, pas à ce geste. Preuve : corps.md
+- blog-persona : execute ; Administratif/secrétariat nommé par le backlog ; décisions et personne autorisatrice explicitement séparées. Preuve : recette.json
+- blog-repurpose : N/A ; Aucune diffusion hors blog mandatée ; ne pas ouvrir LinkedIn ou e-mail. Preuve : RECHERCHE-BRIEF.md
+- blog-rewrite : N/A ; Nouvel article, pas une réécriture ou republication. Preuve : RECHERCHE-BRIEF.md
+- blog-schema : partiel ; Données auteur/titre/date/image préparées pour le gabarit existant ; aucun JSON-LD public émis par le rendu de fabrication. Preuve : recette.json
+- blog-seo-check : partiel ; H1, titres, requête mesurée, liens du corps, sommaire et figures contrôlés ; métas/schema publics à valider après matérialisation. Preuve : preuves/verification-paquet.json
+- blog-strategy : partiel ; Sujet demandé et charte relus ; demande/intentions différenciées, pas refonte de la stratégie complète. Preuve : RECHERCHE-BRIEF.md
+- blog-style : execute ; Analyseur exécuté : Healthy, 15 sections, 0 overloaded, 2 borderline ; heuristique anglaise non assimilée à une qualité française certifiée. Preuve : preuves/style.json
+- blog-taxonomy : execute ; Famille onboarding-client et rôle du backlog conservés ; pas de catégorie artificielle. Preuve : recette.json
+- blog-translate : N/A ; Aucune traduction requise pour une intention française. Preuve : RECHERCHE-BRIEF.md
+- blog-write : execute ; Réponse directe, définitions, gestes, tableaux, exceptions, quatre questions et clôture rédigés. Preuve : corps.md
+- seo : partiel ; Contrôles scoped au contenu et rendu local ; pas audit intégral du site ni score de santé. Preuve : preuves/verification-paquet.json
+- seo-ahrefs : N/A ; Pas de campagne backlink ni abonnement à ouvrir pour fabriquer cette page. Preuve : RECHERCHE-BRIEF.md
+- seo-audit : partiel ; Audit scoped du paquet ; infra, indexation et performance hors fabrication restent inconnues. Preuve : preuves/verification-paquet.json
+- seo-backlinks : N/A ; Aucun entrant externe à mesurer pour une page encore non publiée ; aucun outreach mandaté. Preuve : RECHERCHE-BRIEF.md
+- seo-bing : indisponible ; Aucun relevé Bing de cette route non publiée ; pas de soumission avant reçu public. Preuve : RECHERCHE-BRIEF.md
+- seo-cluster : partiel ; Différenciation pilote onboarding/recurrent/pilier ; pas clustering automatique des SERP complet. Preuve : RECHERCHE-BRIEF.md
+- seo-competitor-pages : N/A ; Deux pages concurrentes sont des entrées de recherche, pas un comparatif public d’éditeurs. Preuve : RECHERCHE-BRIEF.md
+- seo-content : execute ; Source par citation et preuve fictive traçable ; aucune expérience client ni qualité d’expert-comptable attribuée à Kevin. Preuve : preuves/verification-paquet.json
+- seo-content-brief : execute ; Nouveau guide, format choisi selon intention et relevé qualitative ; pas de score de concurrents ni densité forcée. Preuve : RECHERCHE-BRIEF.md
+- seo-dataforseo : N/A ; Volume ND ; recherche qualitative gratuite suffisante pour ce sujet mandaté, aucun budget API engagé. Preuve : RECHERCHE-BRIEF.md
+- seo-drift : a-executer ; Baseline publique inexistante ; comparer article servi et dossier après première publication. Preuve : HANDOFF.md
+- seo-ecommerce : N/A ; Article de méthode, pas catalogue transactionnel ni panier. Preuve : RECHERCHE-BRIEF.md
+- seo-firecrawl : N/A ; Pas de crawl intégral nécessaire pour cette fabrication ; corpus local et pages pertinentes lus. Preuve : RECHERCHE-BRIEF.md
+- seo-flow : execute ; Observation externe et corpus interne rapprochés ; faux positif de besoin côté recrutement explicitement exclu. Preuve : RECHERCHE-BRIEF.md
+- seo-geo : partiel ; Extractibilité locale et limites documentées ; robots/llms et visibilité IA de la route non publiés à contrôler à release. Preuve : corps.md
+- seo-google : indisponible ; Autocomplétion reçue, mais GSC/PSI/CrUX/indexation non collectées ; ne pas présenter la suggestion comme résultat de ces APIs. Preuve : RECHERCHE-BRIEF.md
+- seo-hreflang : N/A ; Site français, aucun ensemble alterné. Preuve : RECHERCHE-BRIEF.md
+- seo-image-gen : partiel ; Génération native OpenAI fournie par opérateur, pas Gemini du pack ; aucune génération durant la correction, modèle/coût non exposés. Preuve : provenance-e1b26719-2623-4044-8ccb-86b40198bac6.json
+- seo-images : partiel ; Dimensions, tailles, variantes et chargement du rendu local contrôlés ; pas LCP/CWV servies ni image SERP. Preuve : preuves/rendu-controles.json
+- seo-local : N/A ; Intention cabinet nationale, pas de page ville ni GBP. Preuve : RECHERCHE-BRIEF.md
+- seo-maps : N/A ; Pas d’intention géographique ni fiche Maps. Preuve : RECHERCHE-BRIEF.md
+- seo-page : partiel ; Page locale inspectée à1280/390 ; pas une page Astro publique ni un audit performance réel. Preuve : preuves/rendu-controles.json
+- seo-plan : partiel ; Sujet mandaté exécuté dans le plan existant ; aucune nouvelle roadmap ni KPI inventés. Preuve : RECHERCHE-BRIEF.md
+- seo-profound : N/A ; Pas de campagne de mesure de citations IA mandatée pour une page absente. Preuve : RECHERCHE-BRIEF.md
+- seo-programmatic : N/A ; Corps unique avec essais propres, pas déclinaison en masse. Preuve : RECHERCHE-BRIEF.md
+- seo-schema : partiel ; Contrat BlogPosting/Breadcrumb/Person du gabarit existant repéré ; validation du JSON-LD réellement construit reste à platform. Preuve : recette.json
+- seo-seranking : N/A ; Pas de suivi de rang/SOV payant à ouvrir pour ce guide. Preuve : RECHERCHE-BRIEF.md
+- seo-sitemap : a-executer ; Route encore non matérialisée : contrôler entrée sitemap, date et canonical après publication réelle. Preuve : HANDOFF.md
+- seo-sxo : execute ; User story : savoir qui doit faire quoi sur le dossier avant passation ; tableau de prochaine action, pas définition seule. Preuve : RECHERCHE-BRIEF.md
+- seo-technical : partiel ; HTML local non vide, h1 unique, pas de débordement et images chargées ; indexabilité/headers publics futurs. Preuve : preuves/rendu-controles.json
+- seo-unlighthouse : N/A ; Pas d’audit crawl/performance de site complet dans ce paquet de fabrication. Preuve : RECHERCHE-BRIEF.md

@@ -1,0 +1,77 @@
+[
+  {
+    "sourceId": "cmf-identification",
+    "mode": "dila-copy",
+    "httpStatus": null,
+    "text": "I. – Avant d'entrer en relation d'affaires avec leur client ou de l'assister dans la préparation ou la réalisation d'une transaction, les personnes mentionnées à l'article L. 561-2 : \n1° Identifient leur client et, le cas échéant, le bénéficiaire effectif au sens de l'article L. 561-2-2 ; \n2° Vérifient ces éléments d'identification sur présentation de tout document écrit à caractère probant. \nII. – Elles identifient et vérifient dans les mêmes conditions que celles prévues au I l'identité de leurs clients occasionnels et, le cas échéant, de leurs bénéficiaires effectifs, lorsqu'elles soupçonnent qu'une opération pourrait participer au blanchiment des capitaux ou au financement du terrorisme ou lorsque les opérations sont d'une certaine nature ou dépassent un certain montant. \nIII. – Lorsque le client souscrit ou adhère à un contrat d'assurance-vie ou de capitalisation, les personnes concernées identifient et vérifient également l'identité des bénéficiaires de ces contrats et le cas échéant des bénéficiaires effectifs de ces bénéficiaires. \nIV. – Par dérogation au I, lorsque le risque de blanchiment des capitaux ou de financement du terrorisme paraît faible et que c'est nécessaire pour ne pas interrompre l'exercice normal de l'activité, les obligations mentionnées au 2° dudit I peuvent être satisfaites durant l'établissement de la relation d'affaires. \nV. – Les conditions d'application du présent article sont précisées par décret en Conseil d'Etat.",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+    "id": "LEGIARTI000033517742",
+    "version": "LEGIARTI000033517742",
+    "versionDate": "2016-12-03",
+    "retrievedAt": "2026-10-05T22:43:09.193358+00:00",
+    "checkedAt": "2026-10-06",
+    "copySha256": "731072a4bed3e6ba52ff95750ad15f30aced3d69d774cfbf1d1e1c085171ff07",
+    "textSha256": "47c270e777ffd468e3554127d3e00cbc14c064e72562b3bb17abb3ef8e0987da",
+    "sourceType": "LEGI_DINUM",
+    "provenance": {
+      "code": "code_monetaire_et_financier",
+      "path": "/Users/kevinkitanga/hermes/referentiel-juridique/sources/dinum/legi_code_monetaire_et_financier_part_0.parquet",
+      "url": "https://huggingface.co/datasets/AgentPublic/legi/resolve/68b01fbbe0cdaf5fe7b8a6befe4b8acab41530f8/data/legi-latest/legi_code_monetaire_et_financier/legi_code_monetaire_et_financier_part_0.parquet",
+      "sha256": "6e3dec48a14c9e3ec8ca5301ba7c0432c885226ee8fd5043a1686ff213c6fee4",
+      "size": 117432683,
+      "file_commit": {
+        "id": "69201f00fb75e35e5d0d3008c20530ee04e012bd",
+        "title": "Updating legi dataset, subfolder legi_code_monetaire_et_financier",
+        "date": "2026-09-26T07:35:56.000Z"
+      },
+      "repository_sha": "68b01fbbe0cdaf5fe7b8a6befe4b8acab41530f8",
+      "dataset_id": "6883417e592dee0d5beed92a",
+      "publisher": "DINUM/AgentPublic depuis DILA LEGI",
+      "retrieved_at": "2026-10-05T22:43:09.193358+00:00"
+    },
+    "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+  },
+  {
+    "sourceId": "cmf-relation",
+    "mode": "dila-copy",
+    "httpStatus": null,
+    "text": "Avant d'entrer en relation d'affaires, les personnes mentionnées à l'article L. 561-2 recueillent les informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent. Elles actualisent ces informations pendant toute la durée de la relation d'affaires. \nLes modalités d'application de cet article sont précisées par décret en Conseil d'Etat.",
+    "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+    "id": "LEGIARTI000033512858",
+    "version": "LEGIARTI000033512858",
+    "versionDate": "2016-12-03",
+    "retrievedAt": "2026-10-05T22:43:09.193358+00:00",
+    "checkedAt": "2026-10-06",
+    "copySha256": "74ff8e7d88372da5a69d13e0de3200b3bd973644418a9acf24c8abedda633444",
+    "textSha256": "44943e09cfa38bde30c9d825afa50611e17c7574331066fabd3176bdd64f0224",
+    "sourceType": "LEGI_DINUM",
+    "provenance": {
+      "code": "code_monetaire_et_financier",
+      "path": "/Users/kevinkitanga/hermes/referentiel-juridique/sources/dinum/legi_code_monetaire_et_financier_part_0.parquet",
+      "url": "https://huggingface.co/datasets/AgentPublic/legi/resolve/68b01fbbe0cdaf5fe7b8a6befe4b8acab41530f8/data/legi-latest/legi_code_monetaire_et_financier/legi_code_monetaire_et_financier_part_0.parquet",
+      "sha256": "6e3dec48a14c9e3ec8ca5301ba7c0432c885226ee8fd5043a1686ff213c6fee4",
+      "size": 117432683,
+      "file_commit": {
+        "id": "69201f00fb75e35e5d0d3008c20530ee04e012bd",
+        "title": "Updating legi dataset, subfolder legi_code_monetaire_et_financier",
+        "date": "2026-09-26T07:35:56.000Z"
+      },
+      "repository_sha": "68b01fbbe0cdaf5fe7b8a6befe4b8acab41530f8",
+      "dataset_id": "6883417e592dee0d5beed92a",
+      "publisher": "DINUM/AgentPublic depuis DILA LEGI",
+      "retrieved_at": "2026-10-05T22:43:09.193358+00:00"
+    },
+    "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+  },
+  {
+    "id": "contrat-mission",
+    "mode": "recherche complémentaire hors claims publics, capture officielle du 11/10 conservée",
+    "fichier": "preuves/sources/contrat-mission-lecture.md",
+    "sourceFile": "docs/strategy/site-v3/ec/glossaire-reglementaire/sources/legi-mission.md",
+    "checkedAt": "2026-10-11T16:09:30.925841+02:00",
+    "httpStatus": null,
+    "excerptPresent": true,
+    "contentSha256": "e0991a92f21d02b4caf91e443b10da7d1a05924d6c68607f4ac4a7b92cb7aa12",
+    "limite": "Capture Markdown officielle conservée hors claims publics ; aucune dépendance de portage et aucun HTTP 200 inventé."
+  }
+]

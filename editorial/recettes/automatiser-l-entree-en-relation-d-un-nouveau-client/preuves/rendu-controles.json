@@ -1,0 +1,62 @@
+{
+  "type": "fabrication-locale-non-Astro-non-publiee",
+  "figures": [
+    {
+      "id": "onboarding-pieces",
+      "width": 1600,
+      "height": 900,
+      "bytes": 21066,
+      "overflow": []
+    },
+    {
+      "id": "onboarding-jalons",
+      "width": 1600,
+      "height": 900,
+      "bytes": 23478,
+      "overflow": []
+    }
+  ],
+  "vues": [
+    {
+      "width": 1280,
+      "pageWidth": 1280,
+      "images": [
+        {
+          "alt": "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide.",
+          "chargee": true
+        },
+        {
+          "alt": "Checklist fictive D-104 : identification qualifiée, bénéficiaire reçu à examiner et lettre V2.",
+          "chargee": true
+        },
+        {
+          "alt": "Registre fictif D-101, D-106 et D-107 : passation à valider, signature divergente et passation à préparer.",
+          "chargee": true
+        }
+      ],
+      "tables": 5,
+      "sommaire": true
+    },
+    {
+      "width": 390,
+      "pageWidth": 390,
+      "images": [
+        {
+          "alt": "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide.",
+          "chargee": true
+        },
+        {
+          "alt": "Checklist fictive D-104 : identification qualifiée, bénéficiaire reçu à examiner et lettre V2.",
+          "chargee": true
+        },
+        {
+          "alt": "Registre fictif D-101, D-106 et D-107 : passation à valider, signature divergente et passation à préparer.",
+          "chargee": true
+        }
+      ],
+      "tables": 5,
+      "sommaire": true
+    }
+  ],
+  "limites": "Le rendu emploie les styles Article et la vraie injection de figures, mais pas Base/Article Astro ni JSON-LD public. Les cadres isolés doivent être intégrés au contrat global par platform après revue."
+}

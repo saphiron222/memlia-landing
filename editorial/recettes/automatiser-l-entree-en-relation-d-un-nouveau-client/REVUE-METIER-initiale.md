@@ -1,0 +1,31 @@
+FAIL
+
+Revue indépendante du 12/10/2026 par metier:t_67cb2d6a, limitée au paquet de fabrication. Aucun candidat public, PR ou CI soumis ; ces étapes appartiennent à la livraison platform après avis favorable. Le corps, la recette et les figures n'ont pas été corrigés par le reviewer.
+
+F1 — La preuve de validation est insuffisamment modélisée dans le rejeu.
+
+Constat : corps.md:88 affirme que chaque validation porte sur un dossier et une version précise ; corps.md:90 impose l'arrêt lorsqu'une décision attend un réexamen ; corps.md:137 garde l'acceptation au professionnel. Or rejouer.mjs:15 ne contrôle que la présence de decisionCabinet. Les entrées nominales (ligne20) n'en précisent ni le dossier, ni la version, ni le sens favorable. L'autorisation est mieux cadrée (ligne17), mais elle ne qualifie pas cette décision distincte.
+
+Preuve exécutée : node editorial/recettes/automatiser-l-entree-en-relation-d-un-nouveau-client/revue-metier-probe.mjs. Les dix cas du tableau sont concordants. Sur D-107, en conservant la signature et l'autorisation V2 valables, une décision portant sur D-999, une décision V1, et un objet portant resultat=REFUS produisent tous PRÉPARER LA PASSATION. Entrées et sorties réelles : preuves/revue-metier-probe.json.
+
+Portée : ces contre-cas éprouvent des frontières que l'article annonce mais que le modèle ne définit pas. Le champ resultat du troisième cas est une entrée de contrôle proposée par le reviewer, pas un schéma existant prétendument utilisé en production. Il n'existe ici aucune intégration ni envoi effectif ; aucune décision LCB-FT n'est calculée. Le défaut concerne la cohérence de la démonstration publiée, pas une opération client avérée.
+
+Correction requise : définir une décision humaine favorable, pertinente pour le dossier et la version/périmètre actuels, puis éprouver son contrôle avant la passation. Si ce contrôle appartient à un prétraitement, fournir son contrat et son rejeu ; ne pas simplement renommer tout objet présent en décision favorable. Ajouter les essais décision hors dossier, périmée, défavorable et incomplète, ainsi qu'un cas favorable ; préserver les dix cas nominaux, l'absence d'envoi et les saisies humaines. Mettre en concordance le tableau, les figures si leur contenu change, et les assertions. Le nombre de dix cas n'est pas une exigence de sécurité : l'étendre plutôt que cacher les cas manquants.
+
+Critère de levée : aucun de ces états ne prépare la passation ; une décision favorable correctement rattachée permet le parcours nominal avec les autres validations. L'appréciation humaine n'est jamais remplacée par ce contrôle administratif. Re-revue ciblée F1 et critère de fini, sans relire tout le fond inchangé.
+
+Constats acquis
+
+- Les trois citations réglementaires sont exactes et pertinentes. L561-5 (version depuis03/12/2016) distingue identification et vérification ; son IV ne déroge qu'à la vérification, sous conditions. L561-5-1 (même début de version) prévoit objet/nature et actualisation. Confrontation réelle des copies au texte de la section officielle Légifrance affichée au12/10/2026, conservée dans preuves/revue-metier-cmf-section.md, lignes344–436. Le champ EC est confirmé par L561-2,12°, version05/08/2026–10/07/2027 exclusive du référentiel local ; réserve de consolidation conservée. CNIL article5,1,c ouvert pendant cette revue. Aucun besoin d'inventer une obligation ou un délai de signature sur le fondement de151.
+- Le corps distingue pièces reçues, qualification, vigilance, acceptation, version signée et autorisation. Aucune donnée client, gain chiffré, conformité garantie ou pouvoir d'audit attribué à Memlia. Les références sont dans les paragraphes, sans section publique Sources.
+- Les deux figures ont été effectivement regardées. Les cinq critères de RECETTE.md sont satisfaits pour chacune : fenêtre d'outil, données fictives concrètes sans marque, autonomie de lecture et texte complet sans image, ni slogan ni frise ni avertissement, parenté avec le cadre relance-checklist regardé séparément. D-104 reste à examiner ; D-106 reste en anomalie de version ; D-107 ne montre qu'une préparation. Format1600×900, fichiers21066 et23478octets. Ce constat visuel ne lève pas F1.
+- Matrice :63 lignes uniques, aucune omission dans l'union déclarée Blog/SEO et les lectures archivées, références présentes. États15execute/19partiel/23N/A/3indisponible/3a-executer vérifiés par script ; les N/A sont adaptés à un article français unique sans audio, ecommerce ou campagne externe. GSC, indexation, mesures et rendu public restent non exécutés, pas PASS implicites. Ces comptes ne certifient pas l'exécution intégrale de chaque skill.
+- Le HTML local a un H1, cinq tableaux complets (3,3,3,4,3colonnes) dans des régions défilantes, trois citations liées et un CTA contextuel. La capture390 a été lue ; les colonnes hors champ ne sont pas supprimées. Les figures réduites restent illustratives. Le transport navigateur file:// n'a pas chargé leurs pixels : aucune preuve de chargement indépendante n'en est déduite. L'inspection des fichiers image séparés est acquise.
+
+Note opérateur N1 — couverture à reprendre, pas nouveau défaut réglementaire
+
+Le paquet utilise la génération native exec-94abc8c8-5111-4257-b2e6-c52a5006bf68, avec recoloration déclarée ; son original concorde avec sa provenance et a été regardé. La pièce jointe fournie par l'opérateur est différente : exec-e1b26719-2623-4044-8ccb-86b40198bac6. Les deux images ont été regardées, sans supposer leur modèle ni leur coût. La nouvelle consigne livrée pendant cette revue demande d'utiliser la pièce jointe réelle : reprendre ce fichier et sa provenance, adapter alt/brief/dérivés honnêtement, sans nouvelle génération. Elle représente quatre bacs, une main au crayon et une case en attente ; illustration évocatrice, pas preuve de vigilance. Ce changement cosmétique n'appelle pas une nouvelle revue juridique. Les mouchetures du candidat alternatif ne sont pas un motif de FAIL.
+
+Inconnues restantes
+
+Matérialisation et scellement natifs, rendu Astro final, metadata/JSON-LD/canonical/OG, réservation au jour réel, CI et preuve de production non disponibles à ce stade. Aucun score global qualité/SEO n'est inventé pour remplacer ces contrôles. Aucun transfert de livraison n'est ouvert tant que F1 n'est pas levé.
