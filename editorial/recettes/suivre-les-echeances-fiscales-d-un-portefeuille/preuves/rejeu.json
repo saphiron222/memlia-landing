@@ -1,0 +1,219 @@
+{
+  "nature": "Simulation locale déterministe sur données fictives fournies",
+  "limite": "Aucun compte fiscal, aucun calcul d'obligation, aucun dépôt ou paiement",
+  "lignes": 12,
+  "cles_uniques": 11,
+  "doublons_isoles": 1,
+  "agrege": {
+    "À qualifier ou reprendre": 7,
+    "Préparation": 2,
+    "Retour ou paiement attendu": 2,
+    "Éléments confirmés": 1
+  },
+  "cas": [
+    {
+      "id": "F-01",
+      "cle": "D-001|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": false,
+        "pieces": true,
+        "transmis": false,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "À qualifier",
+      "obtenu": "À qualifier",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-02",
+      "cle": "D-002|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": false,
+        "transmis": false,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Pièces attendues",
+      "obtenu": "Pièces attendues",
+      "file": "Préparation"
+    },
+    {
+      "id": "F-03",
+      "cle": "D-003|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": false,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Préparation prête",
+      "obtenu": "Préparation prête",
+      "file": "Préparation"
+    },
+    {
+      "id": "F-04",
+      "cle": "D-004|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Retour attendu",
+      "obtenu": "Retour attendu",
+      "file": "Retour ou paiement attendu"
+    },
+    {
+      "id": "F-05",
+      "cle": "D-005|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": "rejete",
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Rejet à reprendre",
+      "obtenu": "Rejet à reprendre",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-06",
+      "cle": "D-006|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": "accepte",
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Dépôt confirmé, paiement à vérifier",
+      "obtenu": "Dépôt confirmé, paiement à vérifier",
+      "file": "Retour ou paiement attendu"
+    },
+    {
+      "id": "F-07",
+      "cle": "D-007|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": "accepte",
+        "paiement": "confirme",
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Éléments confirmés",
+      "obtenu": "Éléments confirmés",
+      "file": "Éléments confirmés"
+    },
+    {
+      "id": "F-08",
+      "cle": "D-008|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": false,
+        "retour": "accepte",
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Incohérence à qualifier",
+      "obtenu": "Incohérence à qualifier",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-09",
+      "cle": "D-009|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": "inconnu",
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "Retour non reconnu",
+      "obtenu": "Retour non reconnu",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-10",
+      "cle": "D-010|TVA|2026-09",
+      "entree": {
+        "qualifie": false,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": false,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": false
+      },
+      "attendu": "À qualifier",
+      "obtenu": "À qualifier",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-11",
+      "cle": "D-003|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": false,
+        "retour": null,
+        "paiement": null,
+        "periode_retour_ok": true,
+        "doublon": true
+      },
+      "attendu": "Doublon à qualifier",
+      "obtenu": "Doublon à qualifier",
+      "file": "À qualifier ou reprendre"
+    },
+    {
+      "id": "F-12",
+      "cle": "D-012|TVA|2026-09",
+      "entree": {
+        "qualifie": true,
+        "date_confirmee": true,
+        "pieces": true,
+        "transmis": true,
+        "retour": "accepte",
+        "paiement": null,
+        "periode_retour_ok": false,
+        "doublon": false
+      },
+      "attendu": "Période à qualifier",
+      "obtenu": "Période à qualifier",
+      "file": "À qualifier ou reprendre"
+    }
+  ]
+}

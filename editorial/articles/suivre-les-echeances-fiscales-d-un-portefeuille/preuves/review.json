@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+  "manifestSha256": "e270eaa36bdf6ced624d0e3205239711a49987304d5c2a86b67ab07686d05a4e",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact suivre-les-echeances-fiscales-d-un-portefeuille."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Réponse directe, prérequis et quatre étapes permettent de qualifier une ligne et son prochain geste ; fenêtre nationale, date propre et date interne sont distinctes."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Guide opératoire cohérent avec la requête calendrier fiscal cabinet comptable : tableaux, exceptions et FAQ, sans se faire passer pour un calendrier fiscal exhaustif. Le relevé consigné est limité : ni nouvelle recherche, ni volume, ni classement observé."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Trois citations exactes retrouvées dans les copies DGFiP/CNIL, empreintes vérifiées ; contexte réel normal et article 5 §1 c conservés. Attribution Kevin Kitanga visible dans l’aperçu, sans titre professionnel inventé."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Rejeu indépendant identique à rejeu.json : douze lignes, onze clés uniques, un doublon isolé et files 7/2/2/1. Il classe des faits fournis, ne détecte pas depuis un système connecté les qualifications, doublons ou références."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Dans l’aperçu local Satteri contrôlé sous Chromium : un H1, quatre thead, deux figures chargées, alts présents et aucun débordement document à 1440 et 390 px. NOINDEX voulu ; ce PASS de fabrication ne valide pas canonical, JSON-LD, robots ou OG du gabarit public."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Réponse autonome et tableaux extractibles ; les nombres sont explicitement bornés au jeu fictif et la citation TVA garde son régime. Aucun résultat de citation IA ni accessibilité publique de crawler attesté."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "CTA Confier cette tâche vers /contact ; mécanique dans les outils existants, recette par l’équipe et décisions fiscales humaines. Le corps demande de conserver ce que le logiciel métier suit déjà."
+      ]
+    }
+  ]
+}

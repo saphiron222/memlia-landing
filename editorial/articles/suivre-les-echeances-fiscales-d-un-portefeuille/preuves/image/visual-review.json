@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+  "manifestSha256": "e270eaa36bdf6ced624d0e3205239711a49987304d5c2a86b67ab07686d05a4e",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact suivre-les-echeances-fiscales-d-un-portefeuille."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "presente"
+      },
+      {
+        "hex": "#27b657",
+        "role": "touche"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
+    "parts": {
+      "#fcfbf7": 0.6853298611111112,
+      "#27b657": 0.00001736111111111111,
+      "#1c8a41": 0.07236111111111111,
+      "#231f20": 0.04534722222222222
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
+    "ecarts": [
+      "Palette : #27b657 (touche) mesurée à 0,002 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Sujet, composition, style, palette, interdits et alt sont présents dans la recette ; prompt et provenance consignés sans réécrire l’historique de génération."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Master et OG regardés : calendrier vierge, dossiers crème et bacs verts en 3D mate, aucun texte, chiffre, main, personnage, marque, interface ou symbole d’envoi. Le disque graphite n’affiche ni sceau ni coche.",
+        "Vert #27b657 quasi absent dans la mesure consignée : observation cosmétique, pas FAIL. Le prompt contient ceramic, ajout absent du bloc historique ; le rendu reste cohérent avec ses formes mates simplifiées."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "OpenAI natif Codex fourni par le propriétaire, identifiant exec-1ab7ca55-1c81-48f0-ae0c-0710064ef107 ; modèle exact et coût non communiqués, aucune dépense de génération engagée dans cette revue. Les figures sont des reconstitutions HTML du jeu fictif, pas des captures client."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Calendrier et dossiers reconnaissables ; OG 1200×630 conserve les objets entiers et le disque dans un bac séparé. Ce disque reste un repère abstrait, pas une preuve de validation fiscale."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Sharp vérifie dimensions, octets et empreintes des huit entrées derives.json : master 1920×1080, OG 1200×630, AVIF/WebP 768/1200/1600. Deux figures WebP 1600×900, 33130 et 34376 octets, empreintes conformes et moins de 150 Ko.",
+        "Chromium charge les trois images de l’aperçu après défilement pour déclencher le lazy-load, sans erreur de page ou requête échouée ; aucune variante mobile de figure."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt de couverture descriptif de 93 caractères : calendrier vierge, dossiers et disque séparé. Alts des deux figures présents dans le DOM et fidèles aux états fictifs, sans gain revendiqué."
+      ]
+    }
+  ]
+}

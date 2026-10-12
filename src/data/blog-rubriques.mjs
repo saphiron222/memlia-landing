@@ -87,6 +87,10 @@ export const BLOG_RUBRIQUES = Object.freeze([
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
+  'suivre-les-echeances-fiscales-d-un-portefeuille': Object.freeze({
+    date: '2026-10-12',
+    raison: 'Premier guide du suivi fiscal du portefeuille : aucun second article de ce parcours n’est publié. Il reste relié au pilier et au hub, sans créer une rubrique maigre ni le rattacher artificiellement à la paie ou à la saisie.',
+  }),
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
     raison: 'Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA.',

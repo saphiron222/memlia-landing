@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-12",
+  "statut": "contrôles techniques de fabrication, pas de revue indépendante ni de publication",
+  "sources": [
+    {
+      "id": "dgfip-calendrier",
+      "http": 200,
+      "excerptExact": true
+    },
+    {
+      "id": "dgfip-echeances",
+      "http": 200,
+      "excerptExact": true
+    },
+    {
+      "id": "cnil-minimisation",
+      "http": 200,
+      "excerptExact": true
+    }
+  ],
+  "claims": 3,
+  "regleErreurs": [],
+  "claimsErreurs": [],
+  "bodySha256": "ffd5b813febbb5ef4489385c751ceb3acfae4f2c6c6852808e2c2a7a81198a02",
+  "imageOriginalSha256": "d25ac23a9c3f7c707c9651c550a320036e6270887b3aac7128e5b6b099a4c135",
+  "sourceDecision": "Diorama OpenAI natif ; modèle et coût non communiqués",
+  "forge": "preparer non exécuté : créneau planned non actionnable au 12/10 ; aucun garde modifié",
+  "next": "Réservation de livraison et matérialisation par platform après avis indépendant"
+}

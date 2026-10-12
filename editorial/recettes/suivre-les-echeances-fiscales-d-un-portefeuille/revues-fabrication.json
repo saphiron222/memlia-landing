@@ -1,0 +1,71 @@
+{
+  "reviewedAt": "2026-10-12",
+  "reviewScope": "Revue indépendante du paquet de fabrication local : corps, recette, trois copies officielles et contexte, rejeu exécuté sans écriture, couverture et OG regardés, deux figures regardées et aperçu Chromium contrôlé. Ni gabarit public final, ni scellement, ni CI, ni production.",
+  "subject": {"slug": "suivre-les-echeances-fiscales-d-un-portefeuille", "bodySha256": "ffd5b813febbb5ef4489385c751ceb3acfae4f2c6c6852808e2c2a7a81198a02", "bodyHashConvention": "SHA-256 du corps UTF-8 trim(), convention de la forge ; aucun triplet de rendu public calculé"},
+  "businessOutcome": "PASS",
+  "publication_completed": false,
+  "editorial": {
+    "reviewer": "marketing",
+    "criteria": {
+      "intent-satisfaction": {"result": "PASS", "observations": ["Réponse directe, prérequis et quatre étapes permettent de qualifier une ligne et son prochain geste ; fenêtre nationale, date propre et date interne sont distinctes."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["Guide opératoire cohérent avec la requête calendrier fiscal cabinet comptable : tableaux, exceptions et FAQ, sans se faire passer pour un calendrier fiscal exhaustif. Le relevé consigné est limité : ni nouvelle recherche, ni volume, ni classement observé."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Trois citations exactes retrouvées dans les copies DGFiP/CNIL, empreintes vérifiées ; contexte réel normal et article 5 §1 c conservés. Attribution Kevin Kitanga visible dans l’aperçu, sans titre professionnel inventé."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Rejeu indépendant identique à rejeu.json : douze lignes, onze clés uniques, un doublon isolé et files 7/2/2/1. Il classe des faits fournis, ne détecte pas depuis un système connecté les qualifications, doublons ou références."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["Dans l’aperçu local Satteri contrôlé sous Chromium : un H1, quatre thead, deux figures chargées, alts présents et aucun débordement document à 1440 et 390 px. NOINDEX voulu ; ce PASS de fabrication ne valide pas canonical, JSON-LD, robots ou OG du gabarit public."]},
+      "ai-citability": {"result": "PASS", "observations": ["Réponse autonome et tableaux extractibles ; les nombres sont explicitement bornés au jeu fictif et la citation TVA garde son régime. Aucun résultat de citation IA ni accessibilité publique de crawler attesté."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["CTA Confier cette tâche vers /contact ; mécanique dans les outils existants, recette par l’équipe et décisions fiscales humaines. Le corps demande de conserver ce que le logiciel métier suit déjà."]}
+    },
+    "p0": []
+  },
+  "business": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "claims": {
+      "claim-unit-d20bfc6ae3b0-1": {"verdict": "soutient", "reasoning": "Copie DGFiP, lignes 625–627 : titre TVA régime réel normal d’imposition et phrase exacte octobre 2026. La fenêtre 15–24 renvoie à la date de l’espace professionnel ; le corps refuse d’attribuer une date commune ou de conclure sur une date absente."},
+      "claim-unit-446c0389db2d-1": {"verdict": "soutient", "reasoning": "Copie DGFiP ligne 299 : extrait exact, complété dans le contexte par Mes services, Consulter, Compte fiscal, Accès par impôt, TVA ou IS et Échéancier. L’article garde ce renvoi à l’espace professionnel, pas une date calculée à partir du calendrier national."},
+      "claim-unit-57e380a85d74-1": {"verdict": "soutient", "reasoning": "Copie CNIL lignes 522–541, article 5 §1 c : citation exacte de minimisation, parmi les autres principes. La vue non nominative est présentée comme convention Memlia, pas obligation RGPD exhaustive ni anonymisation garantie ; un code réidentifiable reste protégé."}
+    },
+    "observations": ["Aucun dépôt ou paiement réel revendiqué : F-06/F-07 sont des valeurs de confirmation fictives fournies au classement.", "Qualifications, dates, commentaires, décisions de transmission/paiement et clôture restent humains ; leur conservation est prescrite dans le corps. Le script ne teste pas une persistance en application ni une intégration fiscale.", "F-11 reprend la clé de F-03 : le compteur de douze lignes inclut une anomalie, pas douze obligations distinctes. Le doublon et la période erronée sont des faits injectés."]
+  },
+  "image": {
+    "reviewer": "marketing",
+    "criteria": {
+      "brief-six-components": {"result": "PASS", "observations": ["Sujet, composition, style, palette, interdits et alt sont présents dans la recette ; prompt et provenance consignés sans réécrire l’historique de génération."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Master et OG regardés : calendrier vierge, dossiers crème et bacs verts en 3D mate, aucun texte, chiffre, main, personnage, marque, interface ou symbole d’envoi. Le disque graphite n’affiche ni sceau ni coche.", "Vert #27b657 quasi absent dans la mesure consignée : observation cosmétique, pas FAIL. Le prompt contient ceramic, ajout absent du bloc historique ; le rendu reste cohérent avec ses formes mates simplifiées."]},
+      "fictive-provenance": {"result": "PASS", "observations": ["OpenAI natif Codex fourni par le propriétaire, identifiant exec-1ab7ca55-1c81-48f0-ae0c-0710064ef107 ; modèle exact et coût non communiqués, aucune dépense de génération engagée dans cette revue. Les figures sont des reconstitutions HTML du jeu fictif, pas des captures client."]},
+      "recognizable-subject": {"result": "PASS", "observations": ["Calendrier et dossiers reconnaissables ; OG 1200×630 conserve les objets entiers et le disque dans un bac séparé. Ce disque reste un repère abstrait, pas une preuve de validation fiscale."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Sharp vérifie dimensions, octets et empreintes des huit entrées derives.json : master 1920×1080, OG 1200×630, AVIF/WebP 768/1200/1600. Deux figures WebP 1600×900, 33130 et 34376 octets, empreintes conformes et moins de 150 Ko.", "Chromium charge les trois images de l’aperçu après défilement pour déclencher le lazy-load, sans erreur de page ou requête échouée ; aucune variante mobile de figure."]},
+      "alt-information": {"result": "PASS", "observations": ["Alt de couverture descriptif de 93 caractères : calendrier vierge, dossiers et disque séparé. Alts des deux figures présents dans le DOM et fidèles aux états fictifs, sans gain revendiqué."]}
+    },
+    "directionArt": 17,
+    "semanticRelevance": 23,
+    "scoreProvenance": "Avis visuel heuristique : direction artistique /20, pertinence sémantique /25. Palette plus sombre et disque abstrait justifient les points non attribués ; aucune mesure de performance marketing.",
+    "p0": [],
+    "figuresReview": {
+      "fiscal-registre-portefeuille": {"result": "PASS", "answers": [true, true, true, true, true], "observations": ["Fenêtre sur quadrillage, pastille, registre et contexte Jeu d’essai fictif TVA 2026-09 ; F-01 à F-07 lisibles et cohérents avec le rejeu, F-03 sans transmission. Ni slogan ni étapes commentées. Même grammaire .frame/.window/.screen que les références.", "Date dossier contient un état de confirmation, non une date : intitulé perfectible en État de la date, sans date fiscale inventée ni défaut bloquant."]},
+      "fiscal-files-agregees": {"result": "PASS", "answers": [true, true, true, true, true], "observations": ["Fenêtre fictive de files sur quadrillage, compteurs 7/2/2/1 et 12 lignes/11 clés. Sept exceptions affichées, F-11 copie de F-03, sans nom de collaborateur, slogan ni avertissement. Le texte de méthode reste compréhensible sans l’image."]}
+    }
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "dgfip-calendrier": "Copie officielle et métadonnées du 12/10 relues ; empreinte 2714bde7e9b325002b273d5d768d07e41fa6214fb7e60a4e6f01827244627f4c concordante. Citation littérale ligne 627, contexte réel normal ligne 625, fenêtre distincte de la date individuelle. Pas de nouvelle requête réseau dans cette revue.",
+      "dgfip-echeances": "Copie et empreinte d6a9f4cc31ea8895e5446eaf62843d93c3dd722e8c27954e5a5f42563c7c8426 concordantes ; extrait ligne 299 et chemin TVA/IS relus après retrait des balises et décodage HTML. Renvoi à l’échéancier, pas garantie de complétude du portefeuille.",
+      "cnil-minimisation": "Copie et empreinte 4e3faf8538113cf8421d7933c5d388142fc32081d57bafdebbbffa7e463f4141 concordantes ; article 5 §1 c ligne 531 relu avec les principes voisins. La convention de pilotage ne prétend pas satisfaire à elle seule tout le RGPD."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 83,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30, "detail": "Couverture 7, lisibilité 6, originalité 5, structure 3, engagement 4, clarté 3."},
+      "seoOptimization": {"score": 23, "max": 25, "detail": "Hiérarchie 5, titre 4, cohérence 4, maillage 2, URL 3, description 3, sources externes 2. Liens entrants seulement déclarés, pas matérialisés."},
+      "eeatSignals": {"score": 12, "max": 15, "detail": "Attribution 3, fidélité 4, confiance 2, preuves 3. Bio et surfaces de confiance publiques non vérifiées dans ce paquet."},
+      "technicalElements": {"score": 7, "max": 15, "detail": "Schema 0, images 3, tableaux 2, vitesse 0, mobile 2, OG balises 0. Un fichier OG n’atteste pas les métabalises publiques."},
+      "aiCitationReadiness": {"score": 13, "max": 15, "detail": "Citabilité 4, utilité 3, entités 3, extraction 3, accès crawler public 0. NOINDEX volontaire de l’aperçu."}
+    },
+    "evidence": ["Barème quality-scoring.md réellement lu ; somme calculée 28+23+12+7+13 = 83/100, conseil uniquement, pas signal Google ou probabilité de citation.", "Rejeu réellement exécuté sans écrire rejeu.json, strictement identique à la copie ; citations et empreintes des trois sources contrôlées.", "Contrôle indépendant Chromium de l’aperçu existant à 1440/390 : un H1, quatre thead, deux figures, aucune largeur document débordante, images chargées et alts présents, aucune erreur navigateur. Rendu local Satteri établi par rendre.mjs, non reconstruction du gabarit final.", "Quatre visuels regardés : master, OG et deux figures ; huit dérivés et deux figures contrôlés par Sharp et SHA-256."],
+    "reservations": ["Scope fabrication seulement. Aucun triplet de rendered public inventé, aucun sceau ni publication ; publication_completed=false.", "Phase platform : matérialiser le gabarit puis vérifier canonical, JSON-LD Article/Person/Organization/BreadcrumbList, balises OG/Twitter, indexabilité et politique crawler, maillage entrant, performance et livraison sur SHA exact. Ces absences de preuve ne sont pas des P0 de fond.", "Aucune intégration à un espace fiscal ni persistance des décisions humaines démontrée ; le classement de faits injectés ne prouve pas ces capacités.", "Palette #27b657 quasi absente et intitulé Date dossier perfectible : observations non bloquantes. Modèle exact et coût inconnus ; pas de provenance fournisseur plus précise inventée."],
+    "verdict": "PASS éditorial, métier et visuel sur le paquet local contrôlé ; score conseil 83/100. Aucune validation de publication."
+  }
+}

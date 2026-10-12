@@ -1,6 +1,6 @@
 # Plan de cluster v3 — « automatisation cabinet comptable »
 
-Généré le 2026-10-12 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 283 satellites (15 publiés, 265 planifiés) en 67 familles et 13 pôles, 1130 liens, 410500 mots estimés.
+Généré le 2026-10-12 par `build-cluster-plan.py` (source unique : `backlog-v3.json`, `src/data/familles.ts`, `src/content/blog`). 283 satellites (17 publiés, 263 planifiés) en 67 familles et 13 pôles, 1130 liens, 410500 mots estimés.
 
 ## Méthode
 
@@ -42,10 +42,10 @@ Récupérer les relevés, rapprocher les mouvements des écritures, typer les é
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-12 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | rapprochement bancaire automatique | how-to-guide | collaborateurs-comptables | 1 | planned |
+| 2026-10-13 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | rapprochement bancaire automatique | how-to-guide | collaborateurs-comptables | 1 | planned |
 | 2026-11-11 | [La checklist avant de valider un rapprochement bancaire automatisé](/blog/checklist-avant-de-valider-un-rapprochement-bancaire-automatise) | checklist rapprochement bancaire comptabilité | listicle-checklist | collaborateurs-comptables | 3 | planned |
 | 2026-12-17 | [Les écarts qu'un rapprochement bancaire automatique ne tranche pas seul](/blog/les-ecarts-bancaires-qu-un-rapprochement-automatique-ne-doit-pas-trancher-seul) | écart de rapprochement bancaire non expliqué comptabilité | how-to-guide | collaborateurs-comptables | 3 | planned |
-| 2026-10-16 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | définition rapprochement bancaire comptabilité | faq-knowledge | collaborateurs-comptables | 1 | planned |
+| 2026-10-19 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | définition rapprochement bancaire comptabilité | faq-knowledge | collaborateurs-comptables | 1 | planned |
 
 ### Lettrage des comptes de tiers (`lettrage`)
 
@@ -99,7 +99,7 @@ Tenir les tableaux d’amortissement et d’emprunt, générer les écritures r�
 |---|---|---|---|---|---|---|
 | 2026-11-02 | [Automatiser les tableaux d'amortissement et d'emprunt du dossier permanent](/blog/automatiser-les-tableaux-d-amortissement-et-d-emprunt-du-dossier-permanent) | automatiser tableau amortissement comptabilité cabinet | how-to-guide | collaborateurs-comptables | 3 | planned |
 | 2026-11-19 | [Contrôler les soldes d'amortissement avant la clôture](/blog/controler-les-soldes-d-amortissement-avant-la-cloture) | checklist contrôle amortissement avant clôture | listicle-checklist | collaborateurs-comptables | 3 | planned |
-| 2026-10-15 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | mise au rebut immobilisation comptabilité | how-to-guide | collaborateurs-comptables | 1 | planned |
+| 2026-10-16 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | mise au rebut immobilisation comptabilité | how-to-guide | collaborateurs-comptables | 1 | planned |
 | 2026-12-11 | [Qu'est-ce qu'une immobilisation, et comment son amortissement se calcule ?](/blog/qu-est-ce-qu-une-immobilisation-et-comment-son-amortissement-se-calcule) | définition immobilisation amortissement comptable | faq-knowledge | collaborateurs-comptables | 3 | planned |
 
 ### Révision par cycles et justification des soldes (`revision-cycles`)
@@ -165,7 +165,7 @@ Tenir, par dossier, les échéances déclaratives et de paiement, avec alertes a
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-13 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | calendrier fiscal cabinet comptable | how-to-guide | chefs-mission-portefeuille | 1 | planned |
+| 2026-10-12 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | calendrier fiscal cabinet comptable | how-to-guide | chefs-mission-portefeuille | 1 | planned |
 | 2026-11-03 | [La checklist mensuelle des échéances fiscales du portefeuille](/blog/checklist-mensuelle-des-echeances-fiscales-du-portefeuille) | checklist échéances fiscales cabinet comptable mensuelle | listicle-checklist | chefs-mission-portefeuille | 3 | planned |
 | 2026-12-15 | [Échéances reportées ou suspendues : ce qu'un calendrier ne décide pas](/blog/echeances-fiscales-reportees-ou-suspendues-ce-qu-un-calendrier-automatique-ne-decide-pas) | report échéance fiscale entreprise procédure | how-to-guide | chefs-mission-portefeuille | 3 | planned |
 | 2026-12-16 | [Qu'est-ce qu'une échéance fiscale de portefeuille, et comment la suivre ?](/blog/qu-est-ce-qu-une-echeance-fiscale-de-portefeuille-et-comment-elle-se-suit) | définition échéance fiscale portefeuille cabinet | faq-knowledge | chefs-mission-portefeuille | 3 | planned |
@@ -246,9 +246,9 @@ Préparer, contrôler et déposer la DSN ; lire et traiter les retours.
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
 | 2026-11-12 | [Automatiser le contrôle et le dépôt de la DSN](/blog/automatiser-le-controle-et-le-depot-de-la-dsn) | automatiser dépôt DSN cabinet comptable | how-to-guide | paie-responsables-sociaux | 3 | planned |
-| 2026-10-15 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | date limite dépôt DSN mensuelle | listicle-checklist | paie-responsables-sociaux | 1 | planned |
+| 2026-10-14 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | date limite dépôt DSN mensuelle | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2027-01-01 | [Que faire quand un compte rendu métier DSN signale une anomalie ?](/blog/que-faire-quand-un-compte-rendu-metier-dsn-signale-une-anomalie) | compte rendu métier DSN anomalie action corrective | how-to-guide | paie-responsables-sociaux | 3 | planned |
-| 2026-10-21 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | crm dsn de substitution | faq-knowledge | paie-responsables-sociaux | 1 | planned |
+| 2026-10-20 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | crm dsn de substitution | faq-knowledge | paie-responsables-sociaux | 1 | planned |
 | 2026-09-15 | [Comprendre les comptes rendus métier DSN : méthode de lecture](/blog/comprendre-les-comptes-rendus-metier-dsn) | crm dsn | how-to-guide | paie-responsables-sociaux | 1 | published |
 
 ### Entrées, sorties et attestations (`entrees-sorties-salaries`)
@@ -258,7 +258,7 @@ DPAE, contrats, soldes de tout compte, attestations : préparer sans ressaisir.
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
 | 2026-11-12 | [Automatiser les entrées et sorties de salariés sans ressaisie](/blog/automatiser-les-entrees-et-sorties-de-salaries-sans-ressaisie) | automatiser DPAE et solde de tout compte cabinet comptable | how-to-guide | paie-responsables-sociaux | 3 | planned |
-| 2026-10-19 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | documents obligatoires fin de contrat salarié | listicle-checklist | paie-responsables-sociaux | 1 | planned |
+| 2026-10-16 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | documents obligatoires fin de contrat salarié | listicle-checklist | paie-responsables-sociaux | 1 | planned |
 | 2026-10-19 | [Rupture conventionnelle : délai d'homologation, ce qu'un générateur ne boucle pas seul](/blog/les-ruptures-de-contrat-qu-un-generateur-automatique-de-documents-ne-doit-pas-boucler-seul) | rupture conventionnelle homologation délai | how-to-guide | paie-responsables-sociaux | 1 | planned |
 | 2026-11-23 | [DPAE et attestation employeur : quelle différence ?](/blog/dpae-et-attestation-employeur-quelle-difference) | différence DPAE et attestation employeur | faq-knowledge | paie-responsables-sociaux | 2 | planned |
 
@@ -361,7 +361,7 @@ Tenir registres, bénéficiaires effectifs et obligations récurrentes par dossi
 |---|---|---|---|---|---|---|
 | 2026-10-27 | [Automatiser la tenue des registres et du registre des bénéficiaires effectifs](/blog/automatiser-la-tenue-des-registres-et-du-registre-des-beneficiaires-effectifs) | automatiser registre des bénéficiaires effectifs cabinet | how-to-guide | juridique-fiscal | 2 | planned |
 | 2026-10-30 | [La checklist annuelle des registres obligatoires d'une société](/blog/checklist-annuelle-des-registres-obligatoires-d-une-societe) | checklist registres obligatoires société annuelle | listicle-checklist | juridique-fiscal | 2 | planned |
-| 2026-10-16 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | déclaration bénéficiaire effectif changement obligation | how-to-guide | juridique-fiscal | 1 | planned |
+| 2026-10-21 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | déclaration bénéficiaire effectif changement obligation | how-to-guide | juridique-fiscal | 1 | planned |
 | 2026-11-05 | [Qu'est-ce que le registre des bénéficiaires effectifs ?](/blog/qu-est-ce-que-le-registre-des-beneficiaires-effectifs) | définition registre des bénéficiaires effectifs | faq-knowledge | juridique-fiscal | 1 | planned |
 
 ### Lettre de mission et vigilance (`lettre-de-mission-lcbft`)
@@ -440,7 +440,7 @@ Collecter les pièces d’entrée, poser les jalons, préparer ce qui attend la 
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-14 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
+| 2026-10-13 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | onboarding client cabinet comptable | listicle-checklist | administratif-secretariat | 1 | planned |
 | 2026-12-11 | [Automatiser la collecte des pièces d'entrée en relation](/blog/automatiser-la-collecte-des-pieces-d-entree-en-relation) | pièces entrée en relation client cabinet comptable | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-01-13 | [Les jalons d'un onboarding client qui attendent toujours la signature](/blog/les-jalons-d-un-onboarding-client-qui-attendent-toujours-la-signature) | onboarding client cabinet comptable signature lettre de mission | how-to-guide | administratif-secretariat | 3 | planned |
 | 2027-01-08 | [Qu'est-ce que l'entrée en relation avec un nouveau client, au cabinet ?](/blog/qu-est-ce-que-l-entree-en-relation-avec-un-nouveau-client-au-cabinet) | définition entrée en relation client cabinet comptable | faq-knowledge | administratif-secretariat | 3 | planned |
@@ -617,7 +617,7 @@ Qualifier les tâches candidates, choisir la première, écrire le cadre.
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-13 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | manuel de procédures cabinet expertise comptable | how-to-guide | direction-associes | 1 | planned |
+| 2026-10-15 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | manuel de procédures cabinet expertise comptable | how-to-guide | direction-associes | 1 | planned |
 | 2027-01-20 | [La checklist de recette avant de mettre en service une automatisation](/blog/checklist-de-recette-avant-de-mettre-en-service-une-automatisation) | checklist recette automatisation cabinet comptable | listicle-checklist | direction-associes | 3 | planned |
 | 2027-01-26 | [Les cas qu'un jeu d'essai doit toujours inclure avant la recette](/blog/les-cas-qu-un-jeu-d-essai-doit-toujours-inclure-avant-la-recette) | jeu d'essai cas limite cas de refus automatisation | how-to-guide | direction-associes | 3 | planned |
 | 2026-11-25 | [Qu'est-ce qu'un manuel de procédures comptables, et que doit-il contenir ?](/blog/qu-est-ce-qu-un-manuel-de-procedures-comptables-et-que-doit-il-contenir) | qu'est-ce qu'un manuel de procédures comptables | faq-knowledge | direction-associes | 2 | planned |
@@ -703,9 +703,9 @@ Constater la réception et les défauts du fichier avant les travaux, sans concl
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-12 | [FEC contrôle : préparer le constat de réception pour la mission CAC](/blog/cac-reception-fec-constat) | fec contrôle | tutorial | audit-cac | 1 | planned |
+| 2026-10-12 | [FEC contrôle : préparer le constat de réception pour la mission CAC](/blog/cac-reception-fec-constat) | fec contrôle | tutorial | audit-cac | 1 | published |
 | 2026-10-22 | [FEC non conforme : tracer les défauts et demander un nouvel export](/blog/cac-fec-non-conforme-traitement) | fec non conforme | listicle-checklist | audit-cac | 1 | planned |
-| 2026-10-20 | [FEC conforme : pourquoi la structure ne conclut pas sur les comptes](/blog/cac-fec-controle-structure-limites) | fec conforme | faq-knowledge | audit-cac | 1 | planned |
+| 2026-10-15 | [FEC conforme : pourquoi la structure ne conclut pas sur les comptes](/blog/cac-fec-controle-structure-limites) | fec conforme | faq-knowledge | audit-cac | 1 | planned |
 | 2027-02-08 | [Versionner le FEC reçu en audit sans perdre la trace des contrôles](/blog/cac-fec-reception-versions) | versionner fec reçu audit | how-to-guide | audit-cac | 3 | planned |
 
 ### Demandes de documents (`cac-demandes-documents`)
@@ -769,7 +769,7 @@ Assembler les feuilles par cycle, indexer les justificatifs et préserver les co
 
 | Date | Article | Requête primaire | Format | Rôle | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-12 | [Automatisation en cabinet CAC : la carte des tâches et des décisions humaines](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) | automatisation cabinet audit | pillar-page | audit-cac | 3 | planned |
+| 2026-10-12 | [Automatisation en cabinet CAC : la carte des tâches et des décisions humaines](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) | automatisation cabinet audit | pillar-page | audit-cac | 3 | published |
 | 2027-02-05 | [Feuille maîtresse d’audit : un exemple de passage de la balance au cycle](/blog/cac-feuille-maitresse-exemple) | feuille maîtresse audit exemple | tutorial | audit-cac | 1 | planned |
 | 2027-02-09 | [Référencement du dossier d’audit : retrouver chaque feuille et sa pièce](/blog/cac-referencement-dossier) | référencement dossier audit | listicle-checklist | audit-cac | 3 | planned |
 | 2026-10-23 | [Dossier CAC partagé : reprendre les contributions sans écraser les saisies](/blog/cac-contributions-dossier-preservation) | dossier cac contributions sans écraser saisies | how-to-guide | audit-cac | 3 | planned |

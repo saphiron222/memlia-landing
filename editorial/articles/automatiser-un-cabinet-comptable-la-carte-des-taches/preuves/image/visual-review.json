@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-10-08",
-  "articleSha256": "32cf4936cbe382e8bc373711e24bf56efd1acfce4ae57fed4db4bb0d08d32824",
-  "manifestSha256": "515344dfc273ab31a91844c66ff13343f517bc0775f8e1f43281f7adfae512da",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "9ae7456d67cfdd68582b04e16ebcb5d7411ace378df04755b9ebf0246aacb94b",
+  "manifestSha256": "2161cb291c3a4494e6cbd955abbb8855c70325bc8a50aeceaa87115c48279c35",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-comptable-la-carte-des-taches."
   ],
@@ -30,6 +30,7 @@
     ],
     "tolerance": 45,
     "pixelsMesures": 57600,
+    "resolution": "largeur-320",
     "parts": {
       "#fcfbf7": 0.7209722222222222,
       "#27b657": 0.022083333333333333,
@@ -41,7 +42,8 @@
       "touche": 0.005,
       "presente": 0.005
     },
-    "statut": "PASS",
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
     "ecarts": []
   },
   "criteria": [

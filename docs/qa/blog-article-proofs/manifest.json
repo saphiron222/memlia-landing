@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "c44a1eadeb20acc4db36888a992246ef49ef42cbca5df2b33849879d343b38f5"
+      "sha256": "b40a2b7a60cafe5f535bbd231e9ef82c4b8e014df912da23703634dfa2742c5e"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "27e1a54664db6694417a14115b41776f7d0bb231b4949c233a8ab7ba06777096"
+      "sha256": "47c3520ab59c457efa2745d64d3fd5f81b932df8a598622fafd49308c5388929"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -235,6 +235,18 @@
       "target": "public/proofs/blog/cac-fec-constat.webp",
       "bytes": 17598,
       "sha256": "835dd19a0ceffdac4e4b5777c92aea00062e0811b8ab98db8cb864019f0d536d"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#fiscal-registre-portefeuille",
+      "target": "public/proofs/blog/fiscal-registre-portefeuille.webp",
+      "bytes": 33130,
+      "sha256": "a67caca583334611567d08f0dcf44236df1eb5ad16146df1197ff170ac71fc8e"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#fiscal-files-agregees",
+      "target": "public/proofs/blog/fiscal-files-agregees.webp",
+      "bytes": 34376,
+      "sha256": "f34cbc2dcdea0c7f77be622bf9df4d50a3865cf5b730be09fc218b906430bddf"
     }
   ]
 }

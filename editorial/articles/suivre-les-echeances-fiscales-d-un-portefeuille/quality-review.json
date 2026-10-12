@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "reviewedAt": "2026-10-12",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 83,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30,
+      "detail": "Couverture 7, lisibilité 6, originalité 5, structure 3, engagement 4, clarté 3."
+    },
+    "seoOptimization": {
+      "score": 23,
+      "max": 25,
+      "detail": "Hiérarchie 5, titre 4, cohérence 4, maillage 2, URL 3, description 3, sources externes 2. Liens entrants seulement déclarés, pas matérialisés."
+    },
+    "eeatSignals": {
+      "score": 12,
+      "max": 15,
+      "detail": "Attribution 3, fidélité 4, confiance 2, preuves 3. Bio et surfaces de confiance publiques non vérifiées dans ce paquet."
+    },
+    "technicalElements": {
+      "score": 7,
+      "max": 15,
+      "detail": "Schema 0, images 3, tableaux 2, vitesse 0, mobile 2, OG balises 0. Un fichier OG n’atteste pas les métabalises publiques."
+    },
+    "aiCitationReadiness": {
+      "score": 13,
+      "max": 15,
+      "detail": "Citabilité 4, utilité 3, entités 3, extraction 3, accès crawler public 0. NOINDEX volontaire de l’aperçu."
+    }
+  },
+  "evidence": [
+    "Barème quality-scoring.md réellement lu ; somme calculée 28+23+12+7+13 = 83/100, conseil uniquement, pas signal Google ou probabilité de citation.",
+    "Rejeu réellement exécuté sans écrire rejeu.json, strictement identique à la copie ; citations et empreintes des trois sources contrôlées.",
+    "Contrôle indépendant Chromium de l’aperçu existant à 1440/390 : un H1, quatre thead, deux figures, aucune largeur document débordante, images chargées et alts présents, aucune erreur navigateur. Rendu local Satteri établi par rendre.mjs, non reconstruction du gabarit final.",
+    "Quatre visuels regardés : master, OG et deux figures ; huit dérivés et deux figures contrôlés par Sharp et SHA-256."
+  ],
+  "reservations": [
+    "Scope fabrication seulement. Aucun triplet de rendered public inventé, aucun sceau ni publication ; publication_completed=false.",
+    "Phase platform : matérialiser le gabarit puis vérifier canonical, JSON-LD Article/Person/Organization/BreadcrumbList, balises OG/Twitter, indexabilité et politique crawler, maillage entrant, performance et livraison sur SHA exact. Ces absences de preuve ne sont pas des P0 de fond.",
+    "Aucune intégration à un espace fiscal ni persistance des décisions humaines démontrée ; le classement de faits injectés ne prouve pas ces capacités.",
+    "Palette #27b657 quasi absente et intitulé Date dossier perfectible : observations non bloquantes. Modèle exact et coût inconnus ; pas de provenance fournisseur plus précise inventée."
+  ],
+  "verdict": "PASS éditorial, métier et visuel sur le paquet local contrôlé ; score conseil 83/100. Aucune validation de publication.",
+  "subject": {
+    "slug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+    "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+    "manifestSha256": "e270eaa36bdf6ced624d0e3205239711a49987304d5c2a86b67ab07686d05a4e"
+  }
+}
