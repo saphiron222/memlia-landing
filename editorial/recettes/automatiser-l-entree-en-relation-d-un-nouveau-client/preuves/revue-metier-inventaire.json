@@ -1,0 +1,61 @@
+{
+  "reviewer": "metier:t_67cb2d6a",
+  "executedAt": "2026-10-12T08:23:02.424Z",
+  "matrix": {
+    "rows": 63,
+    "states": {
+      "execute": 15,
+      "a-executer": 3,
+      "N/A": 23,
+      "partiel": 19,
+      "indisponible": 3
+    },
+    "omissions": [],
+    "referencesExist": true,
+    "limite": "Inventaire et existence contrôlés ; les N/A justifiés et états partiels ne sont pas des PASS d’exécution intégrale."
+  },
+  "sourceScope": {
+    "id": "LEGIARTI000054616568",
+    "validFrom": "2026-08-05",
+    "validToExclusive": "2027-07-10",
+    "extrait": "12° Les experts-comptables, les salariés autorisés à exercer la profession d'expert-comptable en application des articles 83 ter et 83 quater de l'ordonnance n° 45-2138 du 19 septembre 1945 portant institution de l'ordre des experts-comptables et réglementant les titres et la profession d'expert-comptable ;",
+    "warning": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+  },
+  "sources": [
+    {
+      "id": "LEGIARTI000033517742",
+      "validFrom": "2016-12-03",
+      "validToExclusive": "2999-01-01",
+      "textSha256": "731072a4bed3e6ba52ff95750ad15f30aced3d69d774cfbf1d1e1c085171ff07",
+      "limite": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+    },
+    {
+      "id": "LEGIARTI000033512858",
+      "validFrom": "2016-12-03",
+      "validToExclusive": "2999-01-01",
+      "textSha256": "74ff8e7d88372da5a69d13e0de3200b3bd973644418a9acf24c8abedda633444",
+      "limite": "Dérivé DINUM : consolidation à la date du fichier source ; pas une garantie de droit à jour à la date de téléchargement."
+    }
+  ],
+  "image": {
+    "candidateOriginalSha256": "acd57b84b20e55baa8e5559f549d5f4faf261d89c8ca6f3838ecfee100c9befa",
+    "candidateProcessedSha256": "6348e3bfc364884b26d5c6689ef9880ca9be1cbaa02e45d2f90b44dc09318564",
+    "operatorAttachmentSha256": "399ca91fd64054e5d940e611915eff4f3dc9a86e763add6bb8dcf302781af59f",
+    "provenanceConcordante": true,
+    "sameAsOperatorAttachment": false
+  },
+  "figures": [
+    {
+      "id": "onboarding-pieces",
+      "bytes": 21066
+    },
+    {
+      "id": "onboarding-jalons",
+      "bytes": 23478
+    }
+  ],
+  "limites": [
+    "Pas de CI ni publication à ce stade de fabrication.",
+    "Le chargement des images dans le transport navigateur file:// a retourné naturalWidth=0 : pas utilisé comme preuve du rendu local original. Figures inspectées séparément et capture auteur mobile lue."
+  ]
+}

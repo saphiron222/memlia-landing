@@ -1,12 +1,22 @@
 {
   "date": "2026-10-12",
   "autocompletion": {
+    "onboarding client cabinet comptable": ["onboarding client cabinet comptable"],
     "automatisation cabinet audit": [],
     "fec contrôle": [
       "contrôle fec"
     ]
   },
   "receipts": [
+    {
+      "query": "onboarding client cabinet comptable",
+      "retrievedAt": "2026-10-12T07:50:41.422Z",
+      "ok": true,
+      "suggestions": ["onboarding client cabinet comptable"],
+      "httpStatus": 200,
+      "evidence": "editorial/recettes/automatiser-l-entree-en-relation-d-un-nouveau-client/preuves/autocompletion.json",
+      "erreur": null
+    },
     {
       "query": "automatisation cabinet audit",
       "retrievedAt": "2026-10-11T22:48:55.514Z",
@@ -24,5 +34,5 @@
       "erreur": null
     }
   ],
-  "note": "Relevé réel limité aux deux requêtes CAC. Liste vide ne signifie ni volume nul ni absence de demande. Aucun achat et aucune SERP certifiée."
+  "note": "Relevés réels des deux requêtes CAC et projection du reçu onboarding du paquet métier. Liste vide ne signifie ni volume nul ni absence de demande. Aucun achat et aucune SERP certifiée."
 }

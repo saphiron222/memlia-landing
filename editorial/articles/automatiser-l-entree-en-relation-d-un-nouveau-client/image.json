@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "articleSha256": "e62d22aae516a86a2e559371666b59d98d9136228241c96cc3a756568f200ff3",
+  "manifestSha256": "25b5ba83e69c3df66ff39a230e5c5e68483e3b2f269cddad02464f3acf5b29b7",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
+  "score": 100,
+  "directionArt": null,
+  "semanticRelevance": null,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "OBSERVATION",
+    "parts": {
+      "#fcfbf7": 0.6724652777777778,
+      "#27b657": 0.0001388888888888889,
+      "#1c8a41": 0.11413194444444444,
+      "#231f20": 0.03324652777777778
+    },
+    "ecarts": [
+      "Palette : #27b657 (touche) mesurée à 0,014 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  }
+}

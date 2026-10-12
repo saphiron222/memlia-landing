@@ -1,0 +1,646 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex"><title>Onboarding client cabinet comptable : pièces et jalons | Memlia</title><meta name="description" content="Onboarding client cabinet comptable : suivez les pièces, les jalons et la bonne version signée, avec une validation avant la passation."><style>/*
+ * Jetons Memlia — spec docs/design/2026-09-08-design-navattic-memlia.md, section 2.
+ * Trois couches : primitives → alias sémantiques (seuls noms autorisés dans les
+ * composants) → composants. Contrastes calculés sur crème #fffefb (WCAG 2.x).
+ */
+:root {
+  /* ---- Primitives : surfaces ---- */
+  --creme: #fffefb;
+  --papier: #fcfbf7;
+  --blanc: #ffffff;
+
+  /* ---- Primitives : encre et voiles (dérivés de #231f20) ---- */
+  --encre: #231f20;
+  --encre-88: rgba(35, 31, 32, 0.88);
+  --encre-68: rgba(35, 31, 32, 0.68); /* texte secondaire — 5,45:1 */
+  --encre-42: rgba(35, 31, 32, 0.42); /* décoratif uniquement — 2,57:1 */
+  --encre-18: rgba(35, 31, 32, 0.18);
+  --encre-12: rgba(35, 31, 32, 0.12);
+  --encre-07: rgba(35, 31, 32, 0.07);
+  --encre-04: rgba(35, 31, 32, 0.04);
+
+  /* ---- Primitives : vert Memlia ---- */
+  --vert: #27b657; /* accent — 2,63:1 : jamais en texte, focus ni icône sur crème */
+  --vert-appui: #1c8a41; /* bordure du bouton principal, icônes ≥ 24 px */
+  --vert-texte: #176f37; /* texte vert — 6,2:1 */
+  --vert-doux: #b9f8cf;
+  --vert-voile: #eafaef;
+
+  /* ---- Primitives : signal (jamais décoratif) ---- */
+  --ocre: #926500;
+  --ocre-voile: #fbf3df;
+  --rouge: #a4322a;
+  --rouge-voile: #fbecea;
+
+  /* ---- Alias sémantiques ---- */
+  --surface-page: var(--papier);
+  --surface-feuille: var(--creme);
+  --surface-hover: var(--encre-04);
+  --ligne-douce: var(--encre-07);
+  --ligne: var(--encre-12);
+  --ligne-forte: var(--encre-18);
+  --texte-fort: var(--encre);
+  --texte: var(--encre-88);
+  --texte-2: var(--encre-68);
+  --picto-repos: var(--encre-42);
+  --accent: var(--vert);
+  --accent-appui: var(--vert-appui);
+  --accent-voile: var(--vert-voile);
+  --accent-texte: var(--vert-texte);
+  --focus: var(--vert-texte);
+  --bouton-sombre: var(--encre);
+  --bouton-sombre-bord: #141112;
+  --bouton-sombre-hover: #37322f;
+  --bouton-principal-hover: #34c264;
+  --surface-elevee: var(--blanc); /* ce qui se pose sur la feuille : cartes, cellules de bande */
+
+  /* ---- Typographie ---- */
+  --police-display: 'Fraunces', 'Fraunces Fallback', 'Fraunces Fallback Noto', 'Fraunces Fallback Liberation', Georgia, 'Times New Roman', serif;
+  --police-corps: 'Hanken Grotesk', 'Hanken Fallback', 'Hanken Fallback Roboto', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --police-chiffres: var(--police-display);
+
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --t-lg: 1.125rem;
+  --t-xl: 1.25rem;
+  --t-2xl: 1.5rem;
+  --t-3xl: clamp(1.625rem, 1.2rem + 1.2vw, 2rem);
+  --t-4xl: clamp(2rem, 1.5rem + 1.4vw, 2.5rem);
+  --t-5xl: clamp(2rem, 1.2rem + 2.4vw, 3rem);
+  --t-7xl: clamp(2.25rem, 1rem + 4.2vw, 4.25rem);
+  --t-chiffre: clamp(2.75rem, 2.4rem + 1vw, 3rem);
+
+  /* ---- Rayons ---- */
+  --r-chip: 7px;
+  --r-bouton: 8px;
+  --r-pastille: 10px;
+  --r-ecran: 11px;
+  --r-boite: 12px;
+  --r-carte: 16px;
+  --r-cadre: 24px;
+  --r-ecran-coin: 32px;
+  --r-ornement: 6px;
+
+  /* ---- Ombres (teinte encre) ---- */
+  --ombre-xs: 0 2px 2px rgba(35, 31, 32, 0.02), 0 5px 5px rgba(35, 31, 32, 0.02);
+  --ombre-contour: 0 2px 3px rgba(35, 31, 32, 0.03), 0 2px 2px -1px rgba(35, 31, 32, 0.03);
+  --ombre-plein: 0 1px 1px rgba(35, 31, 32, 0.1), 0 2px 3px rgba(35, 31, 32, 0.08),
+    1px 4px 8px rgba(35, 31, 32, 0.12), inset 0 -3px 2px rgba(0, 0, 0, 0.2),
+    inset 0 2px 0.4px rgba(255, 255, 255, 0.14);
+  --ombre-plein-actif: inset 0 3px 1px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(0, 0, 0, 0.2);
+  --ombre-contour-actif: inset 0 2px 1px rgba(35, 31, 32, 0.05);
+  --ombre-chip: 0 2px 8px rgba(39, 182, 87, 0.3), inset 0 2.5px 1px rgba(255, 255, 255, 0.2);
+  --ombre-chip-clair: 0 2px 7px rgba(35, 31, 32, 0.05);
+  --ombre-ornement: 0 3px 5px rgba(35, 31, 32, 0.05), 0 1px 2px rgba(35, 31, 32, 0.05),
+    0 0.5px 0.5px rgba(35, 31, 32, 0.07);
+  --ombre-panneau: 0 10px 15px -3px rgba(35, 31, 32, 0.1), 0 4px 6px -4px rgba(35, 31, 32, 0.1);
+  /* Élévation d'une fiche : posée (repos), levée (survol). Ombre diffuse teintée encre. */
+  --ombre-posee: 0 1px 2px rgba(35, 31, 32, 0.04), 0 8px 20px -10px rgba(35, 31, 32, 0.16);
+  --ombre-levee: 0 2px 4px rgba(35, 31, 32, 0.05), 0 14px 28px -12px rgba(35, 31, 32, 0.22);
+
+  /* ---- Motion ---- */
+  --duree-1: 150ms;
+  --duree-2: 200ms;
+  --duree-3: 250ms;
+  --duree-4: 300ms;
+  --duree-entree: 500ms;
+  --duree-etiquette: 700ms;
+  --duree-revelation: 1750ms;
+  --courbe-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --courbe-sortie: cubic-bezier(0, 0, 0.2, 1);
+  --courbe-douce: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --courbe-etiquette: cubic-bezier(0.76, 0, 0.24, 1);
+  --courbe-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Grille ---- */
+  --conteneur-lg: 1360px;
+  --conteneur-sm: 672px;
+  --marge-page: 16px;
+  --marge-page-lg: 32px;
+  --pas-points: 9px;
+  --pas-grille: 72px;
+  --decalage-grille: 32px;
+  --pas-diagonal: 4px;
+
+  /* ---- Composants ---- */
+  --bouton-h: 32px;
+  --bouton-h-lien: 28px;
+  --bouton-px: 12px;
+  --bouton-gap: 6px;
+  --chip-icone: 20px;
+  --ornement: 20px;
+  --ornement-sm: 10px;
+  --nav-h: 56px;
+  /* Carte (Kevin, 07/10/2026) : une fiche blanche posée sur la feuille, bord visible,
+     identique partout ; la bande en reprend la surface, les marges et le filet.
+     Bord 1,4:1 sur crème ; texte --texte-fort 16:1, --texte-2 5,7:1 sur la fiche. */
+  --carte-fond: var(--surface-elevee);
+  --carte-bord: var(--ligne-forte);
+  --carte-bord-survol: var(--accent-appui);
+  --carte-ombre: var(--ombre-posee);
+  --carte-ombre-survol: var(--ombre-levee);
+  --carte-rayon: var(--r-carte);
+  --carte-marge: 24px;
+  --carte-marge-lg: 32px;
+  --carte-ecart: 12px;
+  --carte-icone: 40px;
+  --cartes-ecart: 16px;
+  --cartes-ecart-lg: 24px;
+
+  /* ---- Système de page (07/10/2026) : docs/design/2026-10-07-systeme-de-page.md ---- */
+  /* Primitives : espacement, base 4 px. */
+  --espace-1: 4px;
+  --espace-2: 8px;
+  --espace-3: 12px;
+  --espace-4: 16px;
+  --espace-5: 20px;
+  --espace-6: 24px;
+  --espace-8: 32px;
+  --espace-10: 40px;
+  --espace-12: 48px;
+  --espace-16: 64px;
+  --espace-20: 80px;
+  --espace-24: 96px;
+  --espace-32: 128px;
+
+  /* Sémantique : le pas d'une page. Seules valeurs de marge de section. */
+  --section-espace: var(--espace-20); /* du bas d'une section au haut de la suivante */
+  --bloc-ecart: var(--espace-10); /* en-tête → forme ; forme → forme */
+  --tete-ecart: var(--espace-4); /* surtitre → titre → introduction */
+  --rangee-gouttiere: var(--espace-12); /* texte → maquette dans une rangée */
+  --titre-page: clamp(2.25rem, 1rem + 3.6vw, 3.75rem); /* héros centré */
+  --titre-page-partage: clamp(2.25rem, 1.4rem + 2.4vw, 3.5rem); /* héros partagé, maquette à droite */
+  --titre-section: var(--t-5xl);
+  --titre-intertitre: var(--t-3xl); /* intertitre d'un document long */
+  --titre-bloc: var(--t-2xl);
+  --titre-ligne: var(--t-xl);
+  --surtitre: var(--t-sm);
+  --mention: var(--t-sm);
+
+  /* Composants : cadre de maquette, lignes, liste de liens. */
+  --cadre-rayon: var(--r-carte);
+  --cadre-marge: 6px;
+  --cadre-fond: var(--surface-page);
+  --cadre-bord: var(--ligne);
+  --cadre-ecran-bord: var(--ligne-douce);
+  --ligne-pas: var(--espace-5);
+  --ligne-filet: var(--ligne);
+  --lien-rangee-h: 52px;
+  --liens-colonne: 26rem;
+}
+@media (min-width: 48rem) {
+  :root {
+    --section-espace: var(--espace-24);
+    --cadre-rayon: var(--r-cadre);
+    --cadre-marge: 8px;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --section-espace: var(--espace-32);
+    --bloc-ecart: var(--espace-12);
+    --cadre-marge: 12px;
+  }
+}
+
+
+  .article-feuille { background: var(--surface-feuille); }
+  .article {
+    max-width: 720px;
+    padding-top: clamp(28px, 5vw, 56px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+  }
+  .preview-temoin {
+    margin-bottom: 20px; padding: 10px 14px; border: 2px solid var(--accent-appui);
+    border-radius: var(--r-boite); color: var(--texte-fort); font-weight: 600; background: var(--accent-voile);
+  }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
+  .ariane [aria-current] { color: var(--texte); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 34ch; }
+  .article-tete { display: grid; gap: 16px; margin-top: 28px; }
+  .article-sujets { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rubrique-lien { transition: color var(--duree-1), border-color var(--duree-1), background-color var(--duree-1); }
+  .article-h1 { font-size: var(--t-5xl); line-height: 1.08; }
+  .article-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: var(--t-sm); }
+  .article-meta a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  .en-bref {
+    display: grid; gap: 8px; padding: 20px 24px; margin-top: 8px;
+    border: 1px solid var(--ligne); border-left: 4px solid var(--accent-appui);
+    border-radius: var(--r-boite); background: var(--accent-voile);
+  }
+  .en-bref p { font-size: var(--t-lg); color: var(--texte-fort); line-height: 1.5; }
+  .article-sommaire {
+    display: grid; gap: 14px; padding: 20px 24px; margin-top: 8px;
+    border: 1px solid var(--ligne); border-radius: var(--r-boite); background: var(--surface-page);
+  }
+  .article-sommaire h2 { font-size: var(--t-xl); }
+  .article-sommaire ol { display: grid; gap: 8px; padding-left: 1.25em; list-style: decimal; }
+  .article-sommaire li { padding-left: 4px; color: var(--texte-2); }
+  .article-sommaire a { color: var(--texte-fort); text-decoration: underline; text-decoration-color: var(--ligne-forte); text-underline-offset: 3px; }
+  .article-couverture { margin-top: 32px; border-radius: var(--r-carte); overflow: hidden; border: 1px solid var(--ligne-douce); }
+  .article-corps { margin-top: 40px; max-width: none; }
+  .article-corps h2 { font-size: var(--t-3xl); margin: 2.2em 0 0.6em; }
+  .article-corps h3 { font-size: var(--t-xl); margin: 1.6em 0 0.5em; }
+  .article-corps p { margin: 0 0 1.1em; color: var(--texte); }
+  .article-corps ul, .article-corps ol { margin: 0 0 1.2em; padding-left: 1.3em; }
+  .article-corps ul { list-style: disc; }
+  .article-corps ol { list-style: decimal; }
+  .article-corps li { margin: 0.4em 0; }
+  .article-corps li > p { margin-bottom: 0.4em; }
+  .article-corps a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  .article-corps strong { font-weight: 600; color: var(--texte-fort); }
+  .article-corps blockquote {
+    margin: 1.4em 0; padding: 12px 20px; border-left: 3px solid var(--ligne-forte);
+    color: var(--texte-2); font-family: var(--police-display), 'Fraunces Fallback'; font-style: italic; font-weight: 400;
+  }
+  /* Un tableau à trois colonnes dépasse 320 px : il défile dans sa colonne au lieu d'élargir la page. */
+  .article-corps [data-table-scroll] { margin: 1.2em 0 1.6em; }
+  .article-corps table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+  .article-corps th, .article-corps td { min-width: 9em; }
+  .article-corps th:nth-child(2), .article-corps td:nth-child(2) { min-width: 16em; }
+  .article-corps th, .article-corps td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--ligne-douce); }
+  .article-corps th { font-weight: 600; color: var(--texte-fort); border-bottom-color: var(--ligne-forte); }
+  .article-corps figure { margin: 1.8em 0; }
+  .article-corps .preuve-defilante { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
+  .article-corps .preuve-defilante:focus-visible { outline: 3px solid var(--accent-texte); outline-offset: 3px; }
+  /* Conserver les 1600 pixels natifs du cadre pour lire ses petits libellés. */
+  .article-corps .preuve-defilante img { display: block; width: 1600px; max-width: none; height: auto; }
+  .article-corps figure[data-blog-proof] > img { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); }
+  .article-corps figure svg { width: 100%; height: auto; display: block; border: 1px solid var(--ligne-douce); border-radius: var(--r-boite); background: var(--surface-page); }
+  .article-corps figcaption { margin-top: 8px; font-size: var(--t-sm); color: var(--texte-2); }
+  .article-corps code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--surface-hover); padding: 0.1em 0.35em; border-radius: 4px; }
+  .article-corps hr { border: 0; border-top: 1px solid var(--ligne-douce); margin: 2.4em 0; }
+  .article-corps .tableau-defilant { overflow-x: auto; }
+  .article-sources { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--ligne-douce); }
+  .article-sources h2 { font-size: var(--t-xl); margin-bottom: 12px; }
+  .article-sources ol { padding-left: 1.3em; list-style: decimal; font-size: var(--t-sm); color: var(--texte-2); display: grid; gap: 6px; }
+  .article-sources a { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+  .article-pont {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; justify-items: start; margin-top: 48px; padding: 32px 24px;
+    border: 1px solid var(--ligne); border-radius: var(--r-carte); background: rgba(255, 254, 251, 0.92); box-shadow: var(--ombre-xs);
+  }
+  .article-pont h2 { font-size: var(--t-3xl); max-width: 24ch; }
+  .article-pont p { max-width: 58ch; }
+  /* Le lien vers la méthode était une ligne nue en fin de page, sans style ni marge, là où
+     l'attention est la plus faible. Il devient l'action secondaire du bloc d'appel, au moment
+     où la décision se pose, sur le motif déjà employé par la sortie de la page blog. */
+  .article-pont-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; min-width: 0; max-width: 100%; }
+  /* Les libellés restent entiers : retour à la ligne, pas de crop ni de police réduite. */
+  .article-pont-actions .btn {
+    max-width: 100%; min-width: 0; white-space: normal; height: auto; min-height: var(--bouton-h);
+    padding-top: 8px; padding-bottom: 8px; line-height: 1.3; text-align: center; overflow-wrap: anywhere;
+  }
+  .article-auteur { display: flex; gap: 16px; align-items: flex-start; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--ligne-douce); }
+  .auteur-initiale {
+    display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; border-radius: 12px;
+    background: var(--accent); color: var(--creme); font-family: var(--police-display), 'Fraunces Fallback'; font-weight: 600; font-size: 1.4rem;
+  }
+  .auteur-nom { font-weight: 600; color: var(--texte-fort); }
+  .auteur-nom a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .auteur-bio { font-size: var(--t-sm); margin-top: 4px; }
+  .article-suite { margin-top: 48px; }
+  .article-suite h2 { font-size: var(--t-xl); margin-bottom: 12px; }
+  .article-suite ul { display: grid; gap: 12px; }
+  .suite-lien { display: grid; gap: 6px; padding: 20px; border: 1px solid var(--ligne); border-radius: var(--r-boite); transition: border-color var(--duree-1), background-color var(--duree-1); }
+  .suite-titre { font-family: var(--police-display), 'Fraunces Fallback'; font-weight: 600; font-size: var(--t-xl); color: var(--texte-fort); }
+  .suite-resume { font-size: var(--t-sm); }
+  .article-retour { margin-top: 32px; }
+  @media (hover: hover) {
+    .article-sommaire a:hover { color: var(--accent-texte); text-decoration-color: currentColor; }
+    .rubrique-lien:hover { color: var(--accent-texte); border-color: var(--accent); background: var(--accent-voile); }
+    .suite-lien:hover { border-color: var(--ligne-forte); background: var(--surface-page); }
+  }
+  @media (min-width: 48rem) {
+    .article-pont { padding: 40px 48px; }
+  }
+
+@font-face{font-family:Fraunces;src:url('../../../public/fonts/fraunces-600.woff2');font-weight:600}@font-face{font-family:Hanken Grotesk;src:url('../../../public/fonts/hanken-400.woff2')}*{box-sizing:border-box}body{margin:0;background:#fffefb;color:#231f20;font:18px/1.65 'Hanken Grotesk',sans-serif}h1,h2,h3{font-family:Fraunces,serif;line-height:1.2}main{margin:auto;width:calc(100% - 40px);max-width:720px;padding:32px 0}img{max-width:100%;height:auto}h1{font-size:clamp(32px,5vw,50px)}[data-table-scroll]{overflow:auto;max-width:100%}</style></head><body><main><p>Fabrication locale · non publiée · Kevin Kitanga</p><h1>Onboarding client en cabinet comptable : automatiser l'entrée en relation</h1><p>Une checklist d'entrée en relation qui distingue pièces reçues, examen du cabinet, version signée et autorisation de passation. Quinze cas fictifs montrent les propositions et les refus.</p><nav aria-label="Sommaire"><ol><li><a href="#section-1">Réponse directe</a></li><li><a href="#section-2">Qu'est-ce que l'onboarding client au cabinet comptable ?</a></li><li><a href="#section-3">Pourquoi la tâche casse à la main</a></li><li><a href="#section-4">Avant de commencer</a></li><li><a href="#section-5">Checklist 1 : les pièces d'entrée</a></li><li><a href="#section-6">Checklist 2 : les jalons et leur preuve</a></li><li><a href="#section-7">Checklist 3 : la lettre et la signature</a></li><li><a href="#section-8">La règle écrite</a></li><li><a href="#section-9">La règle dans les mots du cabinet</a></li><li><a href="#section-10">Rejoué sur le jeu fictif</a></li><li><a href="#section-11">Ce qui reste au cabinet</a></li><li><a href="#section-12">Les erreurs fréquentes</a></li><li><a href="#section-13">Questions fréquentes</a></li><li><a href="#section-14">La règle à retenir</a></li><li><a href="#section-15">Pour aller plus loin</a></li></ol></nav><img src="preuves/hero-1200.webp" width="1200" height="675" alt="Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide."><div class="article-corps"><h2 id="section-1">Réponse directe</h2>
+<p>Pour automatiser l'entrée en relation d'un nouveau client au cabinet comptable, séparez trois suivis : les pièces attendues, les jalons de préparation et les décisions du cabinet. Une pièce reçue ne vaut pas identité vérifiée ; une lettre envoyée ne vaut pas contrat signé. Préparez les demandes et les rappels dans vos outils, puis soumettez le passage en production à une validation explicite portant sur le bon dossier et la bonne version de mission.</p>
+<h2 id="section-2">Qu'est-ce que l'onboarding client au cabinet comptable ?</h2>
+<p><strong>L'onboarding client</strong> est l'organisation de l'arrivée d'un nouveau dossier : rassembler les informations utiles, cadrer la mission, préparer les accès et installer les habitudes de transmission. Ici, nous traitons son suivi administratif, jusqu'à la proposition de passage en production.</p>
+<p><strong>Un jalon</strong> est un point de contrôle nommé, avec un responsable, un état et une preuve. « Lettre envoyée », « lettre signée » et « démarrage autorisé » sont trois jalons différents. Les confondre produit un tableau vert alors que la mission attend encore une décision.</p>
+<p><strong>La complétude administrative</strong> décrit les pièces présentes dans une liste validée par le cabinet. Elle ne tranche ni leur valeur probante, ni le niveau de vigilance, ni l'acceptation du client. Cette distinction place l'entrée en relation dans la <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">carte des tâches répétitives du cabinet</a>, sans transformer une checklist en décision professionnelle.</p>
+<h2 id="section-3">Pourquoi la tâche casse à la main</h2>
+<p>Le dossier commence dans un échange commercial, continue dans la messagerie, puis arrive dans le suivi de production. À chaque passage, quelqu'un reconstitue ce que la personne précédente avait déjà compris. Une pièce jointe reste dans un fil ; la signature concerne une ancienne lettre ; l'accès est préparé avant que son périmètre soit confirmé.</p>
+<p>La règle implicite ressemble souvent à ceci : « Je sais ce qu'il manque et je sais quand on peut commencer. » Tant qu'elle vit dans une seule tête, l'absence du collaborateur laisse le dossier sans prochaine action lisible. Le savoir-faire à écrire est plus précis : pour cette typologie de dossier et cette mission, quelle pièce attendons-nous, qui l'examine et quel événement autorise le jalon suivant ?</p>
+<p>Avant d'ajouter une automatisation, examinez les fonctions déjà présentes dans vos outils. Un parcours intégré peut déjà suivre les pièces, la lettre et les étapes. Le travail utile porte alors sur les exceptions ou les passages entre outils, pas sur une deuxième checklist concurrente. Gardez un seul registre de référence pour chaque état.</p>
+<h2 id="section-4">Avant de commencer</h2>
+<p>Réunissez cinq éléments, sans recopier tout le dossier dans un nouveau fichier :</p>
+<ul>
+<li>Une référence interne stable, distincte du nom saisi dans un courriel.</li>
+<li>Une typologie de dossier et un périmètre de mission confirmés par le cabinet.</li>
+<li>Une liste de pièces versionnée, avec la raison de chaque demande.</li>
+<li>Les personnes autorisées à qualifier une pièce, apprécier la vigilance et autoriser le démarrage.</li>
+<li>Les événements réellement lisibles dans vos outils : réception, retour de signature, validation et changement de périmètre.</li>
+</ul>
+<p>Une tâche de préparation n'a pas les mêmes droits qu'une tâche d'envoi. Commencez par la lecture des états et la préparation des demandes. Le cabinet choisit ensuite les validations et les accès nécessaires. Ne placez pas de mots de passe dans le registre : gardez uniquement l'état de l'habilitation et une référence vers le dispositif prévu pour les accès.</p>
+<h2 id="section-5">Checklist 1 : les pièces d'entrée</h2>
+<p>La liste suivante est une structure de travail, pas une liste réglementaire universelle. Le cabinet fixe les documents pertinents selon le client, la mission et sa procédure de vigilance.</p>
+<div data-table-scroll tabindex="0" role="region" aria-label="Tableau défilant"><table>
+<thead>
+<tr>
+<th>Ensemble</th>
+<th>Ce que le suivi prépare</th>
+<th>Ce que le cabinet examine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identification</td>
+<td>Référence de pièce, date de réception, état de lisibilité</td>
+<td>Identité du client, portée et fiabilité des éléments</td>
+</tr>
+<tr>
+<td>Bénéficiaire effectif, lorsque pertinent</td>
+<td>Liste des éléments demandés et reçus</td>
+<td>Identification et vérifications nécessaires</td>
+</tr>
+<tr>
+<td>Objet de la relation</td>
+<td>Questionnaire et informations reçues</td>
+<td>Nature de la mission et cohérence de la relation</td>
+</tr>
+<tr>
+<td>Mission</td>
+<td>Référence et version du projet de lettre</td>
+<td>Périmètre, conditions et acceptation</td>
+</tr>
+<tr>
+<td>Reprise du dossier</td>
+<td>Inventaire des fichiers et périodes disponibles</td>
+<td>Travaux de reprise et échanges à conduire</td>
+</tr>
+<tr>
+<td>Accès</td>
+<td>État de la demande d'habilitation</td>
+<td>Autorisation et périmètre des droits</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le principe de départ est posé par L.561-5 : les personnes concernées <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742">« Identifient leur client et, le cas échéant, le bénéficiaire effectif »</a>, puis vérifient les éléments d'identification. Le texte distingue identification et vérification, et prévoit notamment une dérogation encadrée au IV. Notre circuit administratif conserve la décision de vigilance au cabinet ; il n'applique pas cette dérogation par déduction automatique.</p>
+<p>Pour chaque pièce, utilisez quatre états : attendue, reçue à examiner, qualifiée par le cabinet, à remplacer. « Reçue à examiner » signifie seulement que le document est arrivé. Une pièce illisible est à remplacer ; une pièce rattachée à un autre dossier est une exception, pas une réception valable.</p>
+<p>La mécanique de demande peut reprendre la <a href="/blog/automatiser-la-relance-des-pieces-clients">règle de relance des pièces clients</a>. À réception, la proposition de relance correspondante disparaît. Les autres demandes restent visibles, avec leur objet précis. Une relance déjà validée ne se renvoie pas au simple rejeu du même événement.</p>
+<figure data-blog-proof="onboarding-pieces">
+  <img src="preuves/onboarding-pieces.webp" alt="Checklist fictive D-104 : identification qualifiée, bénéficiaire reçu à examiner et lettre V2." width="1600" height="900" loading="lazy" decoding="async">
+</figure>
+<h2 id="section-6">Checklist 2 : les jalons et leur preuve</h2>
+<p>Un jalon utile répond à trois questions : qu'est-ce qui a changé, quel événement le démontre et quelle est la prochaine action ? Ne déduisez pas « terminé » du nombre de cases cochées.</p>
+<div data-table-scroll tabindex="0" role="region" aria-label="Tableau défilant"><table>
+<thead>
+<tr>
+<th>Jalon</th>
+<th>Preuve attendue dans notre méthode</th>
+<th>Prochaine action proposée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liste définie</td>
+<td>Version de checklist validée</td>
+<td>Préparer la demande des pièces absentes</td>
+</tr>
+<tr>
+<td>Pièces reçues</td>
+<td>Références des documents liés au dossier</td>
+<td>Présenter les pièces à examiner</td>
+</tr>
+<tr>
+<td>Examen réalisé</td>
+<td>Décision du cabinet, auteur et périmètre</td>
+<td>Présenter le jalon restant</td>
+</tr>
+<tr>
+<td>Mission cadrée</td>
+<td>Référence de lettre et version retenue</td>
+<td>Préparer la demande de signature</td>
+</tr>
+<tr>
+<td>Signature constatée</td>
+<td>Retour relié à la bonne version</td>
+<td>Présenter le dossier au responsable</td>
+</tr>
+<tr>
+<td>Démarrage autorisé</td>
+<td>Validation explicite du responsable</td>
+<td>Préparer la passation à la production</td>
+</tr>
+</tbody>
+</table></div>
+<p>L.561-5-1 prévoit aussi le recueil des <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858">« informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent »</a>. Le même article prévoit leur actualisation pendant la relation. C'est une raison pour conserver le contexte de mission, pas seulement un indicateur de pièces reçues.</p>
+<p>Lorsqu'une activité ou un périmètre change, ouvrez un événement de réexamen. Ne remettez pas automatiquement toutes les pièces à zéro ; présentez la différence au cabinet. Une personne décide quelles demandes et quelles validations doivent être reprises.</p>
+<h2 id="section-7">Checklist 3 : la lettre et la signature</h2>
+<p>Le cabinet confirme le périmètre et les conditions de la mission, puis retient la version du contrat à signer. Dans notre méthode, le suivi attend ce contrat signé et une autorisation humaine distincte avant de proposer la passation en production. Il ne déduit pas un délai légal de signature et ne transforme pas le retour d'un document en acceptation automatique du client.</p>
+<p>Suivez séparément : projet préparé, version approuvée, demande envoyée, retour reçu et retour rapproché de la version approuvée. « Signée » n'est pas un état fiable si vous ignorez quelle lettre a été signée. Une copie de la version V1 ne ferme pas la demande portant sur V2.</p>
+<p>La <a href="/glossaire#lettre-de-mission">lettre de mission</a> n'est pas un document que l'automatisation accepte à la place du cabinet. Nous préparons le rapprochement de références. Le professionnel conserve le choix du périmètre, des conditions et de l'acceptation ; les parties gardent leur signature.</p>
+<figure data-blog-proof="onboarding-jalons">
+  <img src="preuves/onboarding-jalons.webp" alt="Registre fictif D-101, D-106 et D-107 : passation à valider, signature divergente et passation à préparer." width="1600" height="900" loading="lazy" decoding="async">
+</figure>
+<h2 id="section-8">La règle écrite</h2>
+<p><strong>La frontière.</strong> Notre méthode répartit les gestes ainsi :</p>
+<div data-table-scroll tabindex="0" role="region" aria-label="Tableau défilant"><table>
+<thead>
+<tr>
+<th>Se prépare seul</th>
+<th>Attend une validation</th>
+<th>Reste humain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventaire des pièces et événements reçus</td>
+<td>Envoi d'une demande ou d'un rappel préparé</td>
+<td>Identification et vérification du client</td>
+</tr>
+<tr>
+<td>Liste des pièces manquantes selon la checklist retenue</td>
+<td>Qualification administrative d'une pièce</td>
+<td>Appréciation de la vigilance LCB-FT</td>
+</tr>
+<tr>
+<td>Rapprochement de la signature et de la version</td>
+<td>Autorisation de passation en production</td>
+<td>Acceptation de la mission et signature</td>
+</tr>
+<tr>
+<td>Proposition de prochaine action</td>
+<td>Modification du périmètre du circuit</td>
+<td>Analyse d'un soupçon et décision du professionnel</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>La proposition.</strong> Nous produisons une prochaine action avec ses motifs et ses références. Les commentaires, qualifications et autorisations saisis par le cabinet restent séparés. Une nouvelle réception régénère la proposition, sans remplacer une saisie humaine. Chaque validation porte sur un dossier et une version précise.</p>
+<p>Dans ce jeu fictif, la décision enregistrée comporte la référence du dossier, la version de mission, l'auteur, la référence de décision et un résultat explicitement favorable. « Favorable » est un choix saisi par le cabinet, jamais calculé à partir des pièces. Une décision concernant un autre dossier ou une ancienne version, un résultat défavorable ou inconnu, ou un champ manquant arrêtent la préparation de la passation. Ces champs décrivent notre essai administratif, pas un modèle réglementaire de décision de vigilance. L'autorisation de passation reste un jalon distinct.</p>
+<p><strong>L'arrêt.</strong> La préparation de la passation cesse si une pièce est illisible, si la référence de dossier diverge, si la checklist est absente, si la lettre signée n'est pas la version retenue ou si la décision du cabinet attend un réexamen. Une incohérence d'identité ou une question de vigilance sort du circuit répétitif. L'outil présente le motif ; il ne produit ni classement de risque, ni décision d'acceptation, ni déclaration à TRACFIN.</p>
+<p><strong>Le jeu d'essai.</strong> Un jeu d'essai fictif est un ensemble de situations construites pour éprouver la règle, sans données client. Nous avons rejoué quinze situations administratives sur des références fictives D-101 à D-115. Ce test vérifie des transitions de suivi ; il n'effectue aucune vérification d'identité ou analyse LCB-FT.</p>
+<h2 id="section-9">La règle dans les mots du cabinet</h2>
+<div data-table-scroll tabindex="0" role="region" aria-label="Tableau défilant"><table>
+<thead>
+<tr>
+<th>Déclencheur</th>
+<th>Condition</th>
+<th>Proposition</th>
+<th>Exception</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nouvelle entrée</td>
+<td>Checklist absente</td>
+<td>Aucune proposition</td>
+<td>Faire définir la liste</td>
+</tr>
+<tr>
+<td>Réception</td>
+<td>Pièce attendue encore absente</td>
+<td>Demander la pièce nommée</td>
+<td>Pièce illisible ou mauvais dossier</td>
+</tr>
+<tr>
+<td>Liste reçue</td>
+<td>Pièces non qualifiées</td>
+<td>Présenter l'examen</td>
+<td>Aucune qualification déduite</td>
+</tr>
+<tr>
+<td>Examen terminé</td>
+<td>Décision favorable complète sur le même dossier et la même version</td>
+<td>Présenter le jalon restant</td>
+<td>Décision absente, autre dossier, ancienne version, non favorable ou incomplète : attendre le cabinet</td>
+</tr>
+<tr>
+<td>Lettre rapprochée</td>
+<td>Version signée différente</td>
+<td>Aucune passation</td>
+<td>Rapprocher la bonne version</td>
+</tr>
+<tr>
+<td>Jalons administratifs réunis</td>
+<td>Autorisation non enregistrée</td>
+<td>Présenter la passation à valider</td>
+<td>Ne pas démarrer</td>
+</tr>
+<tr>
+<td>Autorisation enregistrée</td>
+<td>Même dossier et même version</td>
+<td>Préparer la passation</td>
+<td>Réexamen ou incohérence</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section-10">Rejoué sur le jeu fictif</h2>
+<p>Les sorties ci-dessous proviennent du script de règle exécuté sur quinze entrées fictives. « Préparer la passation » est une sortie de suivi, pas un démarrage de mission. Les cinq derniers cas disposent tous d'une signature V2 et d'une autorisation sur leur dossier V2 : seule la décision enregistrée empêche la passation.</p>
+<div data-table-scroll tabindex="0" role="region" aria-label="Tableau défilant"><table>
+<thead>
+<tr>
+<th>Cas joué</th>
+<th>Sortie obtenue</th>
+<th>Décision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D-101, jalons réunis sans autorisation</td>
+<td>PASSATION À VALIDER</td>
+<td>Attendre le responsable</td>
+</tr>
+<tr>
+<td>D-102, pièce d'identification attendue</td>
+<td>DEMANDE À VALIDER : identification</td>
+<td>Préparer la demande</td>
+</tr>
+<tr>
+<td>D-103, pièce illisible</td>
+<td>REFUS : PIÈCE ILLISIBLE</td>
+<td>Faire examiner et remplacer</td>
+</tr>
+<tr>
+<td>D-104, bénéficiaire effectif non qualifié</td>
+<td>EXAMEN DES PIÈCES À FAIRE</td>
+<td>Attendre la qualification du cabinet</td>
+</tr>
+<tr>
+<td>D-105, décision du cabinet absente</td>
+<td>DÉCISION CABINET ATTENDUE</td>
+<td>Ne rien déduire sur la vigilance</td>
+</tr>
+<tr>
+<td>D-106, signature V1 pour lettre V2</td>
+<td>REFUS : VERSION SIGNÉE DIFFÉRENTE</td>
+<td>Rapprocher la bonne version</td>
+</tr>
+<tr>
+<td>D-107, décision favorable complète sur D-107 V2, jalons et autorisation réunis</td>
+<td>PRÉPARER LA PASSATION</td>
+<td>Préparer seulement</td>
+</tr>
+<tr>
+<td>D-108, checklist absente</td>
+<td>REFUS : CHECKLIST ABSENTE</td>
+<td>Faire définir la liste</td>
+</tr>
+<tr>
+<td>D-109, pièce d'un autre dossier</td>
+<td>REFUS : RÉFÉRENCE DIVERGENTE</td>
+<td>Faire corriger le rattachement</td>
+</tr>
+<tr>
+<td>D-110, réexamen demandé</td>
+<td>REFUS : RÉEXAMEN CABINET</td>
+<td>Attendre une nouvelle décision</td>
+</tr>
+<tr>
+<td>D-111, décision concernant D-999</td>
+<td>REFUS : DÉCISION AUTRE DOSSIER</td>
+<td>Faire vérifier le rattachement</td>
+</tr>
+<tr>
+<td>D-112, décision V1 pour mission V2</td>
+<td>REFUS : DÉCISION ANCIENNE VERSION</td>
+<td>Attendre la décision sur V2</td>
+</tr>
+<tr>
+<td>D-113, décision défavorable</td>
+<td>REFUS : DÉCISION NON FAVORABLE</td>
+<td>Arrêter la préparation</td>
+</tr>
+<tr>
+<td>D-114, auteur absent de la décision</td>
+<td>REFUS : DÉCISION INCOMPLÈTE</td>
+<td>Faire compléter par le cabinet</td>
+</tr>
+<tr>
+<td>D-115, résultat absent de la décision</td>
+<td>REFUS : DÉCISION INCOMPLÈTE</td>
+<td>Ne pas déduire un accord</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le rejeu conserve les entrées, les résultats et les assertions. Une seconde exécution sur les mêmes événements produit la même proposition ; elle ne crée aucun message envoyé. Un commentaire humain identique avant et après le calcul vérifie la séparation entre proposition et saisie. Cette preuve porte sur le script fictif présenté, pas sur une intégration déjà livrée au cabinet.</p>
+<h2 id="section-11">Ce qui reste au cabinet</h2>
+<p>La LCB-FT désigne la lutte contre le blanchiment de capitaux et le financement du terrorisme. La vigilance ne se résume pas à collecter des pièces. Notre règle de suivi ne réalise aucune analyse de soupçon, ne décide d'aucune déclaration à TRACFIN et n'affiche pas de verdict « conforme ». Le responsable distingue l'état administratif du dossier de ses décisions professionnelles.</p>
+<p>Pour les données personnelles, le principe de minimisation prévoit des données <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2">« adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées »</a>. Gardez dans le suivi les références et états utiles, plutôt que des copies de documents d'identité dans chaque tableau. Le cabinet définit les accès et la conservation selon les documents et traitements concernés, séparément du simple état « onboarding terminé ».</p>
+<h2 id="section-12">Les erreurs fréquentes</h2>
+<ul>
+<li><strong>Une checklist identique pour toutes les missions.</strong> Le même document peut être pertinent dans un dossier et inutile dans un autre. Le cabinet valide les conditions de demande.</li>
+<li><strong>Un vert unique pour toutes les étapes.</strong> Affichez le jalon manquant et sa prochaine action, pas seulement un pourcentage.</li>
+<li><strong>Une signature détachée de sa version.</strong> Conservez la référence de la lettre concernée et présentez tout écart.</li>
+<li><strong>Un démarrage déduit de la réception des pièces.</strong> Le responsable conserve une autorisation explicite, distincte de la complétude.</li>
+<li><strong>Un dossier complet interprété comme un client accepté.</strong> L'acceptation et l'appréciation de la vigilance restent des décisions professionnelles.</li>
+</ul>
+<h2 id="section-13">Questions fréquentes</h2>
+<h3>Quelles pièces demander à un nouveau client ?</h3>
+<p>Partez de la mission et de la typologie du client, puis faites valider la liste par le cabinet. Distinguez les éléments d'identification, le contexte de la relation, le contrat, les documents de reprise et les accès. Le tableau de cet article aide à structurer cette liste ; il ne prescrit pas les mêmes pièces pour chaque dossier.</p>
+<h3>Peut-on automatiser la lettre de mission ?</h3>
+<p>On peut préparer des informations et suivre ses versions dans les outils prévus par le cabinet. Le contenu retenu, l'acceptation de la mission et la signature restent aux personnes concernées. Commencez par rapprocher les états déjà produits par votre outil de signature, plutôt que par fabriquer un contrat à partir d'un courriel.</p>
+<h3>À quel moment le dossier passe-t-il en production ?</h3>
+<p>Dans notre méthode, quand le cabinet a enregistré les décisions attendues, rapproché la signature de la bonne version et autorisé la passation. Ce n'est pas un automatisme déclenché par la dernière pièce reçue. Un changement de périmètre ouvre un réexamen.</p>
+<h3>Faut-il un nouvel outil pour ce suivi ?</h3>
+<p>Non, pas nécessairement. Une messagerie, une gestion documentaire et un registre existant peuvent fournir les événements utiles. Vérifiez leurs fonctions, leurs accès et leurs formats avant de choisir ce qui mérite réellement une automatisation.</p>
+<h2 id="section-14">La règle à retenir</h2>
+<p>Une réception ferme une demande de pièce, pas une décision du cabinet. Chaque passage important garde sa preuve, sa version et sa validation.</p>
+<h2 id="section-15">Pour aller plus loin</h2>
+<p>Nous prenons en charge la mécanique répétitive de l'entrée en relation : écrire les listes conditionnelles et les jalons dans vos mots, préparer les demandes, rapprocher les états et présenter les exceptions dans vos outils. Votre cabinet garde les qualifications, les décisions de vigilance, l'acceptation et la signature.</p>
+<p>La <a href="/methode">méthode de prise en charge</a> comprend une recette, c'est-à-dire des essais définis puis validés par vos équipes avant usage. Le <a href="/automatisation-cabinet-comptable">service d'automatisation des tâches du cabinet</a> inclut la construction et la maintenance de la règle retenue, sans dupliquer ce que vos outils réalisent déjà.</p>
+</div><h2>Et dans votre cabinet ?</h2><p>Nous écrivons vos listes et jalons, nous automatisons leur suivi dans vos outils et vos équipes valident les essais. Vous gardez les décisions et la signature. Rien à envoyer : la description de la tâche suffit.</p><a href="/contact">Confier cette tâche</a></main></body></html>

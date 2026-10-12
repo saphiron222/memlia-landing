@@ -1,0 +1,251 @@
+{
+  "subject": {
+    "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+    "bodySha256": "97d157549ddf221bd7290d55ae9af7cd3a716ce2e0bc7c154696595290c6a65f",
+    "recipeSha256": "d247f6a9946375f580e0bb52df27e1fc8db65d4213e94a40e75181b6a7e7ce5e",
+    "recipeSubstanceSha256": "4ae32698be147e4da7cc84d60f96311f80a2a81ac2b2e3d1abe4b8a461929896",
+    "renderedSha256": "81ab25394b251c3ab754f734956d028f6ac1adb0297cd84c0361dd3f71bd813d"
+  },
+  "checkedAt": "2026-10-12",
+  "reviewer": "metier:t_67cb2d6a",
+  "verdict": "FAIL",
+  "decision": "corriger",
+  "blocking": true,
+  "scope": "Paquet de fabrication local, non-Astro et non publié ; non scellable en l’état. Le FAIL ne transforme pas les contrôles publics futurs en défauts du fond.",
+  "editorial": {
+    "reviewer": "metier:t_67cb2d6a",
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Trois checklists distinguent pièces, jalons et signature pour le lecteur administratif ; aucune décision de vigilance confiée à l’automatisation."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Guide exécutable et FAQ cohérents avec l’intention onboarding ; brief qualitatif et autocomplétion reçue, sans volume ni classement Google attestés."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Trois citations exactes contrôlées ; CMF confronté à la section officielle affichée au12/10/2026 et CNIL ouverte ; version et champ EC examinés."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "FAIL",
+        "observations": [
+          "F1 : les dix résultats nominaux concordent, mais la seule présence de decisionCabinet permet PRÉPARER LA PASSATION avec une décision hors dossier/version ; le sens favorable n’est pas défini. Trois contre-cas exécutés sont conservés dans preuves/revue-metier-probe.json."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "PASS limité à la fabrication : H1 unique et cinq tableaux complets dans des régions défilantes ; canonical, JSON-LD, OG, sitemap et CI restent à vérifier après matérialisation, pas acquis ici."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Réponse directe, définitions de jalon/complétude, citations dans les paragraphes et quatre FAQ permettent une extraction bornée ; visibilité IA non mesurée."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Clôture en nous/vous et Confier cette tâche vers /contact ; prise en charge dans les outils, essais par les équipes et décision conservée au cabinet."
+        ]
+      }
+    },
+    "p0": [
+      "F1 — décision humaine pertinente et favorable non démontrée dans le rejeu"
+    ]
+  },
+  "business": {
+    "reviewer": "metier:t_67cb2d6a",
+    "role": "administratif-secretariat",
+    "claims": {
+      "claim-unit-486467fd0bdc-1": {
+        "verdict": "soutient",
+        "reasoning": "L561-5,I distingue identification et vérification ; le IV ne concerne que la vérification sous conditions. Extrait exact dans la copie DILA et dans la section officielle affichée au12/10/2026 (preuve conservée). L561-2,12° confirme le champ EC dans le référentiel local ; aucune dérogation décidée automatiquement."
+      },
+      "claim-unit-4e4236251a67-1": {
+        "verdict": "soutient",
+        "reasoning": "L561-5-1 prévoit objet/nature et actualisation pendant toute la relation ; la citation et la phrase d’actualisation concordent avec la copie DILA et la section officielle du12/10/2026. Le suivi de contexte est présenté comme méthode, pas comme diligence de vigilance suffisante."
+      },
+      "claim-unit-2e6ab1298fa8-1": {
+        "verdict": "soutient",
+        "reasoning": "La page officielle CNIL ouverte pendant cette revue porte exactement l’article5,1,c du RGPD. Le conseil de suivre les références/états plutôt que multiplier les copies est cohérent ; aucune durée universelle ou suppression des justificatifs requis n’en est déduite."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "metier:t_67cb2d6a",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Six composantes présentes dans le brief du candidat alternatif ; palette instrumentée conservée, pas déduite à l’œil. La pièce jointe opérateur a un brief distinct à reprendre selon N1."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Original du candidat concordant avec sa provenance OpenAI native ; recoloration locale déclarée. Modèle/coût non communiqués, aucun nom ou crédit supposé. Ce résultat ne vaut pas validation du choix contre la nouvelle instruction opérateur."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Candidat et pièce jointe opérateur effectivement regardés : documents fictifs et pictogrammes génériques, aucune donnée réelle, marque ni texte lisible."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Candidat : chemise ouverte, trois plateaux et tampon distinct, feuilles vierges. Pièce jointe demandée : quatre bacs, main au crayon, case en attente. Couvertures évocatrices, pas preuve de validation réglementaire."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Dérivés WebP/AVIF/OG du candidat présents sur disque ; figures séparées1600×900 regardées et tailles21066/23478octets contrôlées. Dérivés et métadonnées de la pièce jointe opérateur restent à produire selon N1 ; aucune preuve de production revendiquée."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alt actuel décrit correctement les trois plateaux et le tampon du candidat. À réécrire lors de l’adoption de la pièce jointe opérateur ; ne pas réutiliser cet alt pour une autre composition."
+        ]
+      }
+    },
+    "reserves": [
+      "N1 — instruction opérateur en cours de revue : utiliser la pièce jointe réelle et sa provenance, sans nouvelle génération.",
+      "Mouchetures du candidat alternatif : cosmétique non bloquante."
+    ]
+  },
+  "figures": [
+    {
+      "id": "onboarding-pieces",
+      "reviewer": "metier:t_67cb2d6a",
+      "criteria": [
+        {
+          "critere": "Écran d’outil crédible",
+          "result": "PASS"
+        },
+        {
+          "critere": "Données fictives concrètes sans marque",
+          "result": "PASS"
+        },
+        {
+          "critere": "Image autonome et article complet sans image",
+          "result": "PASS"
+        },
+        {
+          "critere": "Ni étapes commentées ni slogan ni avertissement",
+          "result": "PASS"
+        },
+        {
+          "critere": "Parenté visuelle avec le cadre relance-checklist regardé",
+          "result": "PASS"
+        }
+      ],
+      "observation": "D-104 : bénéficiaire reçu mais à examiner ; séparation des états exacte."
+    },
+    {
+      "id": "onboarding-jalons",
+      "reviewer": "metier:t_67cb2d6a",
+      "criteria": [
+        {
+          "critere": "Écran d’outil crédible",
+          "result": "PASS"
+        },
+        {
+          "critere": "Données fictives concrètes sans marque",
+          "result": "PASS"
+        },
+        {
+          "critere": "Image autonome et article complet sans image",
+          "result": "PASS"
+        },
+        {
+          "critere": "Ni étapes commentées ni slogan ni avertissement",
+          "result": "PASS"
+        },
+        {
+          "critere": "Parenté visuelle avec le cadre relance-checklist regardé",
+          "result": "PASS"
+        }
+      ],
+      "observation": "D-101 à valider, D-106 anomalieV1/V2, D-107 préparation seulement ; cohérence avec les cas nominaux, pas levée de F1."
+    }
+  ],
+  "sources": {
+    "reviewedBy": "metier:t_67cb2d6a",
+    "observations": {
+      "cmf-identification": "L561-5,I distingue identification et vérification ; le IV ne concerne que la vérification sous conditions. Extrait exact dans la copie DILA et dans la section officielle affichée au12/10/2026 (preuve conservée). L561-2,12° confirme le champ EC dans le référentiel local ; aucune dérogation décidée automatiquement.",
+      "cmf-relation": "L561-5-1 prévoit objet/nature et actualisation pendant toute la relation ; la citation et la phrase d’actualisation concordent avec la copie DILA et la section officielle du12/10/2026. Le suivi de contexte est présenté comme méthode, pas comme diligence de vigilance suffisante.",
+      "cnil-minimisation": "La page officielle CNIL ouverte pendant cette revue porte exactement l’article5,1,c du RGPD. Le conseil de suivre les références/états plutôt que multiplier les copies est cohérent ; aucune durée universelle ou suppression des justificatifs requis n’en est déduite."
+    },
+    "preuves": [
+      "preuves/revue-metier-cmf-section.md",
+      "preuves/revue-metier-inventaire.json",
+      "preuves/sources/cnil-minimisation.html"
+    ]
+  },
+  "qualite": {
+    "reviewer": "metier:t_67cb2d6a",
+    "score": null,
+    "p0": [
+      "F1"
+    ],
+    "verdict": "FAIL de cohérence de preuve ; pas de score global inventé.",
+    "reservations": [
+      "Revue qualitative du paquet exécutée ; barème qualité final, métadonnées publiques, CI et preuve servie non acquis."
+    ]
+  },
+  "skills": {
+    "rows": 63,
+    "states": {
+      "execute": 15,
+      "a-executer": 3,
+      "N/A": 23,
+      "partiel": 19,
+      "indisponible": 3
+    },
+    "omissions": [],
+    "referencesExist": true,
+    "limite": "Inventaire et existence contrôlés ; les N/A justifiés et états partiels ne sont pas des PASS d’exécution intégrale."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "evidence": "preuves/revue-metier-probe.json",
+      "observedCases": 3,
+      "references": [
+        "rejouer.mjs:15",
+        "rejouer.mjs:20",
+        "corps.md:88",
+        "corps.md:90"
+      ],
+      "correction": "Définir et éprouver une décision humaine favorable rattachée au dossier et à la version/périmètre ; refus/attente pour décision hors dossier, périmée, défavorable ou incomplète. Rejouer le cas favorable et conserver les cas nominaux, saisies et absence d’envoi.",
+      "liftCriterion": "Aucun contre-cas ne prépare la passation ; cas favorable rattaché permet le parcours avec les autres validations. Prétraitement autorisé seulement avec contrat et preuve exécutée."
+    }
+  ],
+  "notes": [
+    {
+      "id": "N1",
+      "blocking": false,
+      "observation": "Couverture jointe opérateur et candidat alternatif distincts, chacun regardé. Reprendre la pièce jointe demandée avec son alt/brief/provenance/dérivés concordants ; pas de nouvelle revue juridique pour ce portage cosmétique."
+    }
+  ],
+  "remaining": [
+    "Matérialisation/scellement natifs",
+    "Rendu Astro final et surfaces SEO publiques",
+    "Jour réel de réservation/publication",
+    "CI et reçu de production"
+  ],
+  "report": "REVUE-METIER.md",
+  "rereview": "F1 et critère de fini seulement ; constats acquis conservés pour le fond et les figures inchangés."
+}

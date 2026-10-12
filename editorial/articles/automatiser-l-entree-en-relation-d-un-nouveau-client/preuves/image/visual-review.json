@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-13",
+  "articleSha256": "e62d22aae516a86a2e559371666b59d98d9136228241c96cc3a756568f200ff3",
+  "manifestSha256": "25b5ba83e69c3df66ff39a230e5c5e68483e3b2f269cddad02464f3acf5b29b7",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "dominante"
+      },
+      {
+        "hex": "#27b657",
+        "role": "touche"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "touche"
+      },
+      {
+        "hex": "#231f20",
+        "role": "touche"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
+    "parts": {
+      "#fcfbf7": 0.6724652777777778,
+      "#27b657": 0.0001388888888888889,
+      "#1c8a41": 0.11413194444444444,
+      "#231f20": 0.03324652777777778
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
+    "ecarts": [
+      "Palette : #27b657 (touche) mesurée à 0,014 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Six composantes présentes : sujet, composition, style, palette, interdits, alt.",
+        "Prompt exact corroboré par requête native, revisedPrompt et provenance ; aucune réécriture historique.",
+        "Le terme historique matte ceramic est conservé sans l'attribuer au bloc de référence ; rendu réellement géométrique mat, isométrique et aéré."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Source, WebP1200, AVIF1200 décodé et OG réellement vus ; lumière haut gauche, ombres courtes, fond crème, verts et graphite.",
+        "Aucun texte, lettre, chiffre, logo, main, personnage, donnée client, interface, alerte rouge, symbole d'envoi ou certification visible."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Dossier et feuilles vierges fictifs, sans identité réelle ni interface simulée.",
+        "Génération native OpenAI completed corroborée au journal Codex lignes6774/6780/6783 ; résultat PNG natif, fichier généré, pièce jointe et source du paquet identiques.",
+        "Provenance jointe identique ; modèle exact/coût non communiqués, aucune génération ou dépense QA."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Dossier ouvert, trois plateaux verts dont un vide, plateau graphite séparé avec feuille : préparation et dossier administratif incomplet lisibles.",
+        "Vignettes320×180 et sociale320×168 réellement vues ; plateau vide et séparation graphite lisibles.",
+        "OG1200×630 réellement vu : aucun objet essentiel coupé, marges préservées.",
+        "Le visuel ne certifie pas la vigilance ni un processus réglementaire ; pertinence administrative seulement."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "SourcePNG1672×941 et huit sorties décodées ; dimensions, formats, tailles et empreintes concordants.",
+        "MasterPNG1920×1080, OGWebP1200×630, AVIF/WebP768×432,1200×675,1600×900 ; AVIF confirmés par marque avif et compression AV1.",
+        "Huit sorties reproduites avec les opérations de la forge et identiques octet pour octet ; master redimensionné, non généré à1920×1080."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt exact calculé à103 caractères, sous125 ; manque et séparation décrits sans promesse de conformité.",
+        "Plateau d'examen décrit l'intention éditoriale, non une certification visible."
+      ]
+    }
+  ]
+}

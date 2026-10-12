@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { materialiser, ecrireSceau } from '../../../scripts/blog-forge.mjs';
+import { inscrireArticle } from '../../../scripts/seo/forge-seo.mjs';
+import { validateDossier } from '../../../scripts/lib/blog-pipeline.mjs';
+const root=process.cwd();
+const slug='automatiser-l-entree-en-relation-d-un-nouveau-client';
+const result=await materialiser({root,slug,statut:'publie'});
+assert.deepEqual(result.erreurs,[]);
+ecrireSceau(root,slug);
+const inscription=inscrireArticle(root,slug);
+assert.equal(inscription.ok,true);
+const report=await validateDossier({root,slug,gateMode:'publication-scellee',renderedBlogHtml:readFileSync('dist/blog.html','utf8'),renderedArticleHtml:readFileSync(`dist/blog/${slug}.html`,'utf8')});
+assert.equal(report.pass,true,JSON.stringify(report.errors));
+writeFileSync(`editorial/recettes/${slug}/preuves/scellement-portage.json`,JSON.stringify({checkedAt:new Date().toISOString(),nativeMaterialisation:true,nativeSealValidated:true,inscription,report,productionVerified:false,globalSuite:'CI requise ; commande publier locale interrompue à 300 secondes, aucun PASS global local'},null,2)+'\n');
+console.log(JSON.stringify({inscription,report,productionVerified:false},null,2));

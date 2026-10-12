@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+const archive = '.qa/onboarding-client-revue-pass.tgz';
+const dir = 'editorial/recettes/automatiser-l-entree-en-relation-d-un-nouveau-client/';
+const extract = name => execFileSync('tar', ['-xOf', archive, dir + name], { encoding: 'utf8' });
+const review = JSON.parse(extract('revues.json'));
+assert.equal(review.verdict, 'PASS');
+assert.equal(review.blocking, false);
+assert.equal(JSON.parse(extract('revues-initiales.json')).verdict, 'FAIL');
+assert.ok(extract('REVUE-METIER.md').startsWith('PASS\n'));
+const proof = JSON.parse(extract(review.correction.evidence));
+assert.equal(proof.articleCases, 15);
+assert.equal(proof.targetedControls, 19);
+console.log(JSON.stringify({ archive, bytes: statSync(archive).size, verdict: review.verdict, history: 'FAIL préservé', articleCases: proof.articleCases, targetedControls: proof.targetedControls }, null, 2));

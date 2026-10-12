@@ -1,0 +1,2702 @@
+14:41:07 [content] Syncing content
+14:41:07 [content] Synced content
+14:41:07 [types] Generated 406ms
+14:41:07 [build] output: "static"
+14:41:07 [build] mode: "static"
+14:41:07 [build] directory: /var/folders/vm/f90yz5jx7xv1c2019p97kpr40000gn/T/memlia-blog-render-PAkiwS/
+14:41:07 [build] Collecting build info...
+14:41:07 [build] ✓ Completed in 442ms.
+14:41:07 [build] Building static entrypoints...
+14:41:07 [vite] ✓ built in 402ms
+14:41:07 [vite] ✓ built in 290ms
+14:41:07 [build] Rearranging server assets...
+
+ generating static routes 
+14:41:08   ├─ /404.html (+10ms) 
+14:41:08   ├─ /a-propos.html (+7ms) 
+14:41:08   ├─ /automatisation/bulletins-controle.html (+15ms) 
+14:41:08   ├─ /automatisation/circularisation-cac.html (+6ms) 
+14:41:08   ├─ /automatisation/entrees-sorties-salaries.html (+6ms) 
+14:41:08   ├─ /automatisation/evaluation-transmission.html (+4ms) 
+14:41:08   ├─ /automatisation/facture-electronique.html (+4ms) 
+14:41:08   ├─ /automatisation/factures-fournisseurs.html (+3ms) 
+14:41:08   ├─ /automatisation/notes-de-frais.html (+4ms) 
+14:41:08   ├─ /automatisation/paie.html (+3ms) 
+14:41:08   ├─ /automatisation/rapprochement-bancaire.html (+4ms) 
+14:41:08   ├─ /automatisation/registres-obligations.html (+4ms) 
+14:41:08   ├─ /automatisation/saisie-comptable.html (+2ms) 
+14:41:08   ├─ /automatisation/secretariat-juridique.html (+3ms) 
+14:41:08   ├─ /automatisation-cabinet-comptable.html (+3ms) 
+14:41:08   ├─ /blog/rss.xml (+45ms) 
+14:41:08   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+4ms) 
+14:41:08   ├─ /blog/rubrique/gestion-pieces-comptables.html (+3ms) 
+14:41:08   ├─ /blog/rubrique/ia-cabinet-comptable.html (+4ms) 
+14:41:08   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+5ms) 
+14:41:08   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+4ms) 
+14:41:08   ├─ /blog/cac-reception-fec-constat.html (+9ms) 
+14:41:08   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+4ms) 
+14:41:08   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+3ms) 
+14:41:08   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+14:41:08   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+4ms) 
+14:41:08   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+3ms) 
+14:41:08   ├─ /blog/logiciel-ia-comptabilite.html (+4ms) 
+14:41:08   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms) 
+14:41:08   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+14:41:08   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+14:41:08   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms) 
+14:41:08   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+4ms) 
+14:41:08   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+4ms) 
+14:41:08   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+5ms) 
+14:41:08   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+3ms) 
+14:41:08   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+4ms) 
+14:41:08   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+4ms) 
+14:41:08   ├─ /blog.html (+9ms) 
+14:41:08   ├─ /blog/commissariat-aux-comptes.html (+2ms) 
+14:41:08   ├─ /commissaires-aux-comptes.html (+4ms) 
+14:41:08   ├─ /contact/erreur.html (+2ms) 
+14:41:08   ├─ /contact/merci.html (+2ms) 
+14:41:08   ├─ /contact.html (+4ms) 
+14:41:08   ├─ /garanties.html (+3ms) 
+14:41:08   ├─ /glossaire.html (+8ms) 
+14:41:08   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+14:41:08   ├─ /integrations/lettrage-sage.html (+1ms) 
+14:41:08   ├─ /integrations/dsn-sage.html (+1ms) 
+14:41:08   ├─ /integrations/bulletin-de-paie-sage.html (+1ms) 
+14:41:08   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+14:41:08   ├─ /integrations/cloture-sage.html (+1ms) 
+14:41:08   ├─ /integrations/lettrage-cegid.html (+1ms) 
+14:41:08   ├─ /integrations/dsn-silae.html (+1ms) 
+14:41:08   ├─ /integrations/bulletin-de-paie-silae.html (+1ms) 
+14:41:08   ├─ /integrations/export-fec-ebp.html (+1ms) 
+14:41:08   ├─ /integrations/lettrage-ebp.html (+1ms) 
+14:41:08   ├─ /integrations/cloture-ebp.html (+1ms) 
+14:41:08   ├─ /integrations.html (+5ms) 
+14:41:08   ├─ /mentions-legales.html (+2ms) 
+14:41:08   ├─ /methode.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+6ms) 
+14:41:08   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+5ms) 
+14:41:08   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms) 
+14:41:08   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+6ms) 
+14:41:08   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+3ms) 
+14:41:08   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+3ms) 
+14:41:08   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+3ms) 
+14:41:08   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+14:41:08   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+3ms) 
+14:41:08   ├─ /outils-comptables-gratuits.html (+2ms) 
+14:41:08   ├─ /politique-de-confidentialite.html (+2ms) 
+14:41:08   ├─ /index.html (+2ms) 
+14:41:08 ✓ Completed in 389ms.
+
+14:41:08 [build] ✓ Completed in 1.13s.
+14:41:08 [@astrojs/sitemap] `sitemap-index.xml` created at `../../../../../../../var/folders/vm/f90yz5jx7xv1c2019p97kpr40000gn/T/memlia-blog-render-PAkiwS`
+14:41:11 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+66 images sociales JPEG générées.
+14:41:14 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+14:41:21 [memlia-responsive-proofs] 115 masters conservés, 345 variantes responsives
+14:41:21 [build] 85 page(s) built in 15.21s
+14:41:21 [build] Complete!
+
+> memlia-landing@2.0.0 build:site
+> npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && npm run render:public && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts
+
+
+> memlia-landing@2.0.0 guide:audit
+> node scripts/service-forge.mjs --guide audit
+
+{
+  "pass": true,
+  "guides": 4,
+  "errors": []
+}
+14:41:24 [content] Syncing content
+14:41:24 [content] Synced content
+14:41:24 [types] Generated 370ms
+14:41:24 [build] output: "static"
+14:41:24 [build] mode: "static"
+14:41:24 [build] directory: /Users/kevinkitanga/.hermes/kanban/workspaces/t_0380a3db/site/dist/
+14:41:24 [build] Collecting build info...
+14:41:24 [build] ✓ Completed in 404ms.
+14:41:24 [build] Building static entrypoints...
+14:41:25 [vite] ✓ built in 342ms
+14:41:25 [vite] ✓ built in 242ms
+14:41:25 [build] Rearranging server assets...
+
+ generating static routes 
+14:41:25   ├─ /404.html (+10ms) 
+14:41:25   ├─ /a-propos.html (+6ms) 
+14:41:25   ├─ /automatisation/bulletins-controle.html (+15ms) 
+14:41:25   ├─ /automatisation/circularisation-cac.html (+6ms) 
+14:41:25   ├─ /automatisation/entrees-sorties-salaries.html (+5ms) 
+14:41:25   ├─ /automatisation/evaluation-transmission.html (+4ms) 
+14:41:25   ├─ /automatisation/facture-electronique.html (+3ms) 
+14:41:25   ├─ /automatisation/factures-fournisseurs.html (+3ms) 
+14:41:25   ├─ /automatisation/notes-de-frais.html (+4ms) 
+14:41:25   ├─ /automatisation/paie.html (+3ms) 
+14:41:25   ├─ /automatisation/rapprochement-bancaire.html (+3ms) 
+14:41:25   ├─ /automatisation/registres-obligations.html (+3ms) 
+14:41:25   ├─ /automatisation/saisie-comptable.html (+4ms) 
+14:41:25   ├─ /automatisation/secretariat-juridique.html (+3ms) 
+14:41:25   ├─ /automatisation-cabinet-comptable.html (+3ms) 
+14:41:25   ├─ /blog/rss.xml (+37ms) 
+14:41:25   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms) 
+14:41:25   ├─ /blog/rubrique/gestion-pieces-comptables.html (+3ms) 
+14:41:25   ├─ /blog/rubrique/ia-cabinet-comptable.html (+4ms) 
+14:41:25   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+5ms) 
+14:41:25   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+3ms) 
+14:41:25   ├─ /blog/cac-reception-fec-constat.html (+4ms) 
+14:41:25   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+3ms) 
+14:41:25   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+3ms) 
+14:41:25   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms) 
+14:41:25   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+4ms) 
+14:41:25   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+3ms) 
+14:41:25   ├─ /blog/logiciel-ia-comptabilite.html (+4ms) 
+14:41:25   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms) 
+14:41:25   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms) 
+14:41:25   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms) 
+14:41:25   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms) 
+14:41:25   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+3ms) 
+14:41:25   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms) 
+14:41:25   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+5ms) 
+14:41:25   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+3ms) 
+14:41:25   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+4ms) 
+14:41:25   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+4ms) 
+14:41:25   ├─ /blog.html (+8ms) 
+14:41:25   ├─ /blog/commissariat-aux-comptes.html (+2ms) 
+14:41:25   ├─ /commissaires-aux-comptes.html (+5ms) 
+14:41:25   ├─ /contact/erreur.html (+3ms) 
+14:41:25   ├─ /contact/merci.html (+2ms) 
+14:41:25   ├─ /contact.html (+3ms) 
+14:41:25   ├─ /garanties.html (+3ms) 
+14:41:25   ├─ /glossaire.html (+9ms) 
+14:41:25   ├─ /integrations/rapprochement-bancaire-sage.html (+2ms) 
+14:41:25   ├─ /integrations/lettrage-sage.html (+1ms) 
+14:41:25   ├─ /integrations/dsn-sage.html (+4ms) 
+14:41:25   ├─ /integrations/bulletin-de-paie-sage.html (+2ms) 
+14:41:25   ├─ /integrations/saisie-comptable-sage.html (+1ms) 
+14:41:25   ├─ /integrations/cloture-sage.html (+1ms) 
+14:41:25   ├─ /integrations/lettrage-cegid.html (+2ms) 
+14:41:25   ├─ /integrations/dsn-silae.html (+2ms) 
+14:41:25   ├─ /integrations/bulletin-de-paie-silae.html (+2ms) 
+14:41:25   ├─ /integrations/export-fec-ebp.html (+1ms) 
+14:41:25   ├─ /integrations/lettrage-ebp.html (+2ms) 
+14:41:25   ├─ /integrations/cloture-ebp.html (+1ms) 
+14:41:25   ├─ /integrations.html (+6ms) 
+14:41:25   ├─ /mentions-legales.html (+3ms) 
+14:41:25   ├─ /methode.html (+3ms) 
+14:41:25   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+4ms) 
+14:41:25   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+7ms) 
+14:41:25   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms) 
+14:41:25   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+6ms) 
+14:41:25   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+3ms) 
+14:41:25   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+5ms) 
+14:41:25   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+4ms) 
+14:41:25   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms) 
+14:41:25   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+3ms) 
+14:41:25   ├─ /outils-comptables-gratuits.html (+2ms) 
+14:41:25   ├─ /politique-de-confidentialite.html (+2ms) 
+14:41:25   ├─ /index.html (+3ms) 
+14:41:25 ✓ Completed in 384ms.
+
+14:41:25 [build] ✓ Completed in 1.01s.
+14:41:25 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+14:41:28 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+66 images sociales JPEG générées.
+14:41:32 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+14:41:39 [memlia-responsive-proofs] 115 masters conservés, 345 variantes responsives
+14:41:39 [build] 85 page(s) built in 15.12s
+14:41:39 [build] Complete!
+
+> memlia-landing@2.0.0 test:blog-contract
+> node --test tests/scripts/blog-contract.test.mjs tests/scripts/blog-intent-preservation.test.mjs && node scripts/verify-blog-contract.mjs
+
+TAP version 13
+# [TÉMOIN ROUGE CLAUSE 1] article-test : clause 1, légende de preuve invalide, provenance interne manquante ou consigne technique publique
+# [TÉMOIN ROUGE CLAUSE 2] article-test : clause 2, 6 H2 mais sommaire incomplet (sommaire absent)
+# [TÉMOIN ROUGE CLAUSE 3] article-test : clause 3, la meta-description n’ouvre sur aucune requête déclarée et mesurée — « La méthode en six étapes pour préparer le contrôle et ses preuves. »
+# [TÉMOIN ROUGE CLAUSE 4] article-test : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter
+# [TÉMOIN ROUGE CLAUSE 5] article-test : clause 5, H1, og:title et headline divergent — H1 « Contrôle bulletin de paie : la méthode du cabinet », og:title « Un autre titre », headline « Contrôle bulletin de paie : la méthode du cabinet »
+# Subtest: clause 1 — image directe liée à la recette ; une variante portrait est refusée
+ok 1 - clause 1 — image directe liée à la recette ; une variante portrait est refusée
+  ---
+  duration_ms: 27.419917
+  type: 'test'
+  ...
+# Subtest: le contrat vert contrôle chaque article de la collection sans slug codé en dur
+ok 2 - le contrat vert contrôle chaque article de la collection sans slug codé en dur
+  ---
+  duration_ms: 6.321292
+  type: 'test'
+  ...
+# Subtest: le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+ok 3 - le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+  ---
+  duration_ms: 11.0915
+  type: 'test'
+  ...
+# Subtest: un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+ok 4 - un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+  ---
+  duration_ms: 1.785916
+  type: 'test'
+  ...
+# Subtest: clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+ok 5 - clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+  ---
+  duration_ms: 11.291209
+  type: 'test'
+  ...
+# Subtest: clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+ok 6 - clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+  ---
+  duration_ms: 13.744167
+  type: 'test'
+  ...
+# Subtest: clause 1 — une légende technique publique fait échouer le contrat
+ok 7 - clause 1 — une légende technique publique fait échouer le contrat
+  ---
+  duration_ms: 3.365416
+  type: 'test'
+  ...
+# Subtest: clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+ok 8 - clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+  ---
+  duration_ms: 10.565334
+  type: 'test'
+  ...
+# Subtest: clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+ok 9 - clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+  ---
+  duration_ms: 9.88825
+  type: 'test'
+  ...
+# Subtest: clause 1 — image directe sans légende exige provenance liée à la recette
+ok 10 - clause 1 — image directe sans légende exige provenance liée à la recette
+  ---
+  duration_ms: 8.661875
+  type: 'test'
+  ...
+# Subtest: clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+ok 11 - clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+  ---
+  duration_ms: 5.003791
+  type: 'test'
+  ...
+# Subtest: clause 2 — dès six H2, le sommaire porte toutes les ancres
+ok 12 - clause 2 — dès six H2, le sommaire porte toutes les ancres
+  ---
+  duration_ms: 2.695416
+  type: 'test'
+  ...
+# Subtest: clause 3 — la meta-description ouvre sur la requête mesurée
+ok 13 - clause 3 — la meta-description ouvre sur la requête mesurée
+  ---
+  duration_ms: 2.750667
+  type: 'test'
+  ...
+# Subtest: clause 4 — la rubrique est déclarée, construite et réciproque
+ok 14 - clause 4 — la rubrique est déclarée, construite et réciproque
+  ---
+  duration_ms: 2.728458
+  type: 'test'
+  ...
+# Subtest: clause 5 — H1, Open Graph et headline restent identiques
+ok 15 - clause 5 — H1, Open Graph et headline restent identiques
+  ---
+  duration_ms: 3.159416
+  type: 'test'
+  ...
+# Subtest: clause 4 — une page de rubrique sans lien retour échoue
+ok 16 - clause 4 — une page de rubrique sans lien retour échoue
+  ---
+  duration_ms: 2.601458
+  type: 'test'
+  ...
+# Subtest: clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+ok 17 - clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+  ---
+  duration_ms: 2.536292
+  type: 'test'
+  ...
+# (node:50283) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: la fixture historique se matérialise même après expiration des relevés
+    # Subtest: 2026-10-21
+    ok 1 - 2026-10-21
+      ---
+      duration_ms: 1442.003375
+      type: 'test'
+      ...
+    # Subtest: 2030-01-01
+    ok 2 - 2030-01-01
+      ---
+      duration_ms: 1323.393375
+      type: 'test'
+      ...
+    1..2
+ok 18 - la fixture historique se matérialise même après expiration des relevés
+  ---
+  duration_ms: 2800.406333
+  type: 'test'
+  ...
+# Subtest: la vieillesse du relevé seule ne refuse pas un article public scellé
+ok 19 - la vieillesse du relevé seule ne refuse pas un article public scellé
+  ---
+  duration_ms: 199.680584
+  type: 'test'
+  ...
+# Subtest: un candidat non scellé conserve le refus sur un relevé vieilli
+ok 20 - un candidat non scellé conserve le refus sur un relevé vieilli
+  ---
+  duration_ms: 191.757458
+  type: 'test'
+  ...
+# Subtest: un sceau rompu ne peut bénéficier de la conservation historique
+ok 21 - un sceau rompu ne peut bénéficier de la conservation historique
+  ---
+  duration_ms: 190.031458
+  type: 'test'
+  ...
+1..21
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4950.935583
+VERT — contrat blog : 19 article(s) contrôlé(s) · 3 exemption(s) clause 4
+- automatiser-un-cabinet-comptable-la-carte-des-taches : clause 4 exemptée le 2026-09-20 — Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA.
+- cabinet-comptable-surcharge-de-travail-ou-passe-le-temps : clause 4 exemptée le 2026-09-21 — Diagnostic transversal de la charge et des états du flux : seul article du portefeuille, il concerne plusieurs familles. Les pièces y illustrent un blocage sans justifier un rattachement au parcours de saisie.
+- pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils : clause 4 exemptée le 2026-09-20 — Cicatrice transversale d’adoption et de cadrage : elle explique un échec et la règle qui en est sortie, pas l’exécution d’un geste métier. La réunir avec le pilier ne constituerait pas un parcours propre.
+
+> memlia-landing@2.0.0 test:service-design
+> node scripts/verify-service-design.mjs && node --test tests/scripts/service-design.test.mjs
+
+VERT — garde DA services : 12 page(s)
+TAP version 13
+# Subtest: le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu
+ok 1 - le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu
+  ---
+  duration_ms: 10.905084
+  type: 'test'
+  ...
+# Subtest: une page à plat échoue, une page composée passe
+ok 2 - une page à plat échoue, une page composée passe
+  ---
+  duration_ms: 5.224625
+  type: 'test'
+  ...
+# Subtest: deux occurrences du même cadre sont refusées
+ok 3 - deux occurrences du même cadre sont refusées
+  ---
+  duration_ms: 3.132208
+  type: 'test'
+  ...
+# Subtest: une future page non publiée ne peut pas contourner la porte DA
+ok 4 - une future page non publiée ne peut pas contourner la porte DA
+  ---
+  duration_ms: 3.783291
+  type: 'test'
+  ...
+# Subtest: une page sans bloc de couverture ou Person reliée échoue la porte de confiance
+ok 5 - une page sans bloc de couverture ou Person reliée échoue la porte de confiance
+  ---
+  duration_ms: 3.367958
+  type: 'test'
+  ...
+# Subtest: un média partagé par deux pages échoue en nommant les deux routes
+ok 6 - un média partagé par deux pages échoue en nommant les deux routes
+  ---
+  duration_ms: 3.779625
+  type: 'test'
+  ...
+# Subtest: une page sans recette scellée échoue
+ok 7 - une page sans recette scellée échoue
+  ---
+  duration_ms: 3.278958
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 83.577667
+
+> memlia-landing@2.0.0 render:public
+> node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs
+
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 133 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Sources publiques : texte final rendu sur 10 pages ; corpus interne conservé.
+Sources publiques : 85 pages, 0 pages avec libellés de processus.
+
+> memlia-landing@2.0.0 test:page-contract
+> node scripts/verify-page-contract.mjs && node --test tests/scripts/page-contract.test.mjs
+
+VERT — contrat de page : 85 page(s), 5 clauses, 3 exemption(s) appliquée(s)
+- clause 4 déléguée : test_positioning.py PASS
+- garde services déléguée : verify-service-design.mjs PASS
+- service-forge délégué : PASS
+- blog-contract délégué : PASS
+- blog-title-intent délégué : PASS
+TAP version 13
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — une og:image absolue unique sur https://memlia.fr en .jpg ou .png est requise pour toute page indexable
+# TÉMOIN ROUGE CLAUSE 1
+# /alpha : clause 1 (DA) — aucune section ou aucun layout de composition approuvé n’est importé
+# TÉMOIN ROUGE CLAUSE 2
+# /alpha : clause 2 (IMAGES) — aucun média propre à la page ; partagés : /proofs/source.webp
+# /source : clause 2 (IMAGES) — aucun média propre à la page ; partagés : /proofs/source.webp
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — og:title doit être identique au H1 ; H1="Automatisation alpha en cabinet", og:title="Titre divergent"
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — aucune requête mesurée ni décision d’intention écrite pour cette route
+# TÉMOIN ROUGE CLAUSE 4
+# /alpha : clause 4 (COPIE) — lexique public interdit
+# TÉMOIN ROUGE CLAUSE 5
+# /alpha : clause 5 (LIENS) — aucune page servie ne pointe vers elle
+# TÉMOIN ROUGE PAGE MANUELLE SANS CONTRAT
+# /alpha : clause 2 (IMAGES) — aucun média dans le contenu principal
+# /alpha : clause 3 (SEO) — aucune requête mesurée ni décision d’intention écrite pour cette route
+# /alpha : clause 3 (SEO) — headline JSON-LD doit être identique au H1
+# /alpha : clause 3 (SEO) — author absent du JSON-LD
+# /alpha : clause 3 (SEO) — schéma WebPage absent ou incohérent avec le type de page
+# TÉMOIN ROUGE CLAUSE 1 MOBILE
+# bouton et panneau de navigation mobile absents
+# navigation sans JavaScript absente
+# bouton de menu mobile haut de 32px dans le contrat CSS, 48px requis
+# cible principale mobile haute de 32px dans le contrat CSS, 44px requis
+# liens structurants mobiles hauts de 0px dans le contrat CSS, 44px requis
+# TÉMOIN ROUGE CLAUSE 3
+# /alpha : clause 3 (SEO) — la description doit ouvrir sur "Description alpha" pour la requête "automatisation alpha"
+# /alpha : clause 3 (SEO) — author absent du JSON-LD
+# TÉMOIN ROUGE CLAUSE 5
+# /alpha : clause 5 (LIENS) — le footer généré ne porte pas le hub /outils-comptables-gratuits
+# TÉMOIN ROUGE CLAUSE 5
+# /alpha : clause 5 (LIENS) — le footer porte /mentions-legales 2 occurrence(s), exactement 1 requise
+# /alpha : clause 5 (LIENS) — le footer porte /politique-de-confidentialite 2 occurrence(s), exactement 1 requise
+# TÉMOIN ROUGE CLAUSE 2
+# /alpha : clause 2 (IMAGES) — 1 média(s) propre(s) manifesté(s), 2 requis par le contrat de cette page
+# TÉMOIN ROUGE CLAUSE 1 GABARIT
+# le gabarit Outil ne compose que 1 section(s) du système, 3 requises au minimum
+# le gabarit Outil porte 11 ligne(s) CSS locale(s), 10 tolérées au maximum pour les ajustements propres au layout
+# Subtest: une page indexable refuse une og:image relative, absente, dupliquée ou hors origine HTTPS Memlia
+ok 1 - une page indexable refuse une og:image relative, absente, dupliquée ou hors origine HTTPS Memlia
+  ---
+  duration_ms: 38.575583
+  type: 'test'
+  ...
+# Subtest: la surface publique attendue refuse exactement la dépublication silencieuse de l’incident
+ok 2 - la surface publique attendue refuse exactement la dépublication silencieuse de l’incident
+  ---
+  duration_ms: 8.695417
+  type: 'test'
+  ...
+# Subtest: un service public reste découvrable par le footer et le contenu principal du catalogue
+ok 3 - un service public reste découvrable par le footer et le contenu principal du catalogue
+  ---
+  duration_ms: 8.578084
+  type: 'test'
+  ...
+# Subtest: les cinq clauses rougissent avec la page et la clause, puis la fixture restaurée repasse au vert
+ok 4 - les cinq clauses rougissent avec la page et la clause, puis la fixture restaurée repasse au vert
+  ---
+  duration_ms: 11.74775
+  type: 'test'
+  ...
+# Subtest: une page manuelle noindex échoue sans contrat explicite puis respecte son contrat transactionnel
+ok 5 - une page manuelle noindex échoue sans contrat explicite puis respecte son contrat transactionnel
+  ---
+  duration_ms: 6.997375
+  type: 'test'
+  ...
+# Subtest: une collection indexable peut manifester qu’aucun média fonctionnel ne sert son intention
+ok 6 - une collection indexable peut manifester qu’aucun média fonctionnel ne sert son intention
+  ---
+  duration_ms: 5.344625
+  type: 'test'
+  ...
+# Subtest: les contrats explicites couvrent six routes noindex et trois collections indexables
+ok 7 - les contrats explicites couvrent six routes noindex et trois collections indexables
+  ---
+  duration_ms: 0.303042
+  type: 'test'
+  ...
+# Subtest: les six routes indexables ciblées ne portent plus aucune exemption
+ok 8 - les six routes indexables ciblées ne portent plus aucune exemption
+  ---
+  duration_ms: 0.131583
+  type: 'test'
+  ...
+# Subtest: une exemption doit être exacte, datée et motivée
+ok 9 - une exemption doit être exacte, datée et motivée
+  ---
+  duration_ms: 6.133041
+  type: 'test'
+  ...
+# Subtest: la clause DA exige le menu, le repli sans JavaScript et les cibles tactiles
+ok 10 - la clause DA exige le menu, le repli sans JavaScript et les cibles tactiles
+  ---
+  duration_ms: 6.671292
+  type: 'test'
+  ...
+# Subtest: la clause SEO exige l’ouverture de description et l’auteur
+ok 11 - la clause SEO exige l’ouverture de description et l’auteur
+  ---
+  duration_ms: 5.122792
+  type: 'test'
+  ...
+# Subtest: une WebPage sans provenance éditoriale ne requiert pas de dates artificielles
+ok 12 - une WebPage sans provenance éditoriale ne requiert pas de dates artificielles
+  ---
+  duration_ms: 6.26125
+  type: 'test'
+  ...
+# Subtest: la clause liens exige le hub outils dans le footer généré
+ok 13 - la clause liens exige le hub outils dans le footer généré
+  ---
+  duration_ms: 4.973459
+  type: 'test'
+  ...
+# Subtest: la clause liens refuse les destinations légales dupliquées dans le footer
+ok 14 - la clause liens refuse les destinations légales dupliquées dans le footer
+  ---
+  duration_ms: 4.855167
+  type: 'test'
+  ...
+# Subtest: la clause images applique le minimum propre déclaré par page
+ok 15 - la clause images applique le minimum propre déclaré par page
+  ---
+  duration_ms: 4.562959
+  type: 'test'
+  ...
+# Subtest: la clause DA suit le gabarit Outil et refuse une section avec trop de CSS local
+ok 16 - la clause DA suit le gabarit Outil et refuse une section avec trop de CSS local
+  ---
+  duration_ms: 4.947834
+  type: 'test'
+  ...
+# Subtest: les articles délèguent leur intention au contrat blog au lieu de la recopier
+ok 17 - les articles délèguent leur intention au contrat blog au lieu de la recopier
+  ---
+  duration_ms: 6.303584
+  type: 'test'
+  ...
+# Subtest: un article explicitement inscrit au contrat universel y verrouille aussi son amorce
+ok 18 - un article explicitement inscrit au contrat universel y verrouille aussi son amorce
+  ---
+  duration_ms: 5.983459
+  type: 'test'
+  ...
+# Subtest: les rubriques blog lisent leur intention canonique et leur vrai gabarit
+ok 19 - les rubriques blog lisent leur intention canonique et leur vrai gabarit
+  ---
+  duration_ms: 6.197041
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 693.323416
+
+> memlia-landing@2.0.0 test:blog-title-intent
+> node --test tests/scripts/blog-title-intent.test.mjs
+
+TAP version 13
+# (node:50423) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent
+ok 1 - un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent
+  ---
+  duration_ms: 15.786833
+  type: 'test'
+  ...
+# Subtest: le relevé de demande du lundi compte comme mesure, pas ses pannes, et vieillit comme les autres
+ok 2 - le relevé de demande du lundi compte comme mesure, pas ses pannes, et vieillit comme les autres
+  ---
+  duration_ms: 2.590708
+  type: 'test'
+  ...
+# Subtest: la mesure la plus récente gagne, qu’elle vienne de la forge ou du relevé de demande
+ok 3 - la mesure la plus récente gagne, qu’elle vienne de la forge ou du relevé de demande
+  ---
+  duration_ms: 2.358208
+  type: 'test'
+  ...
+# Subtest: un relevé de demande sans date lisible arrête la lecture au lieu d’être ignoré
+ok 4 - un relevé de demande sans date lisible arrête la lecture au lieu d’être ignoré
+  ---
+  duration_ms: 1.240833
+  type: 'test'
+  ...
+# Subtest: une mesure du lundi datée après le jour lu est ignorée, comme toute mesure future
+ok 5 - une mesure du lundi datée après le jour lu est ignorée, comme toute mesure future
+  ---
+  duration_ms: 2.122375
+  type: 'test'
+  ...
+# Subtest: un relevé du lundi entièrement en pannes n’est pas un relevé frais
+ok 6 - un relevé du lundi entièrement en pannes n’est pas un relevé frais
+  ---
+  duration_ms: 1.656709
+  type: 'test'
+  ...
+# Subtest: le préfiltre ouvre une semaine tant que son dimanche est dans la fenêtre
+ok 7 - le préfiltre ouvre une semaine tant que son dimanche est dans la fenêtre
+  ---
+  duration_ms: 1.189209
+  type: 'test'
+  ...
+# Subtest: un vieux relevé de demande abîmé ne bloque pas la porte ; un relevé frais abîmé l’arrête en se nommant
+ok 8 - un vieux relevé de demande abîmé ne bloque pas la porte ; un relevé frais abîmé l’arrête en se nommant
+  ---
+  duration_ms: 1.672875
+  type: 'test'
+  ...
+# Subtest: chaque H1 publié porte une requête mesurée, y compris une mesure sans suggestion
+ok 9 - chaque H1 publié porte une requête mesurée, y compris une mesure sans suggestion
+  ---
+  duration_ms: 120.734833
+  type: 'test'
+  ...
+# Subtest: le gardien rejette un H1 narratif fabriqué
+ok 10 - le gardien rejette un H1 narratif fabriqué
+  ---
+  duration_ms: 0.915959
+  type: 'test'
+  ...
+# Subtest: H1, Open Graph et JSON-LD portent le même titre intent-first ; l’onglet garde la même intention
+ok 11 - H1, Open Graph et JSON-LD portent le même titre intent-first ; l’onglet garde la même intention
+  ---
+  duration_ms: 181.573417
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 489.092959
+
+> memlia-landing@2.0.0 test:blog-proof-render
+> node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check
+
+check : 38 preuves d’article conformes à leur contrat et à leur manifeste.
+  controle-dsn-val               35 Ko
+  bulletins-crm                  30 Ko
+  saisie-controle-piece          40 Ko
+  saisie-file-anomalies-avril    42 Ko
+  social-dictionnaire            28 Ko
+  social-vue-agregee             27 Ko
+  relance-checklist              33 Ko
+  relance-quatre-etats           35 Ko
+  crm-lecture-ligne              29 Ko
+  crm-registre                   26 Ko
+  carte-inventaire-taches        42 Ko
+  carte-fiche-regle-relance      43 Ko
+  cicatrice-questionnaire-vide   29 Ko
+  cicatrice-formulaire-manques   26 Ko
+  logiciel-grille-demonstration  32 Ko
+  logiciel-file-controle         38 Ko
+  prompt-assistant-brouillon     38 Ko
+  prompt-suivi-demandes          37 Ko
+  competences-tableau-dossier    37 Ko
+  competences-journal-rejeu      39 Ko
+  surcharge-journal-semaine      35 Ko
+  surcharge-grille-priorisation  37 Ko
+  trois-passes-journal-recette   38 Ko
+  trois-passes-chaine-preuve     35 Ko
+  usage-fiche-selection          33 Ko
+  usage-file-essais              34 Ko
+  verification-registre          37 Ko
+  verification-fiche-reserve     33 Ko
+  confidentialite-fiche          32 Ko
+  confidentialite-registre       30 Ko
+  passage-registre               28 Ko
+  passage-reprises               30 Ko
+  cac-inventaire-taches          23 Ko
+  cac-fiche-regle                20 Ko
+  cac-fec-registre-reception     17 Ko
+  cac-fec-constat                17 Ko
+  onboarding-pieces              21 Ko
+  onboarding-jalons              24 Ko
+check : 2 articles et 7 cas fictifs rejoués.
+
+> memlia-landing@2.0.0 test:integration-proof-render
+> node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check
+
+check : 10 preuves intégrations conformes à leur contrat et à leur manifeste.
+  public/proofs/integrations/hub.webp 47 Ko
+  public/proofs/integrations/rapprochement-bancaire-sage.webp 36 Ko
+  public/proofs/integrations/lettrage-sage.webp 33 Ko
+  public/proofs/integrations/dsn-sage.webp 32 Ko
+  public/proofs/integrations/bulletin-de-paie-sage.webp 34 Ko
+  public/proofs/integrations/saisie-comptable-sage.webp 35 Ko
+  public/proofs/integrations/cloture-sage.webp 35 Ko
+  public/proofs/integrations/lettrage-cegid.webp 31 Ko
+  public/proofs/integrations/dsn-silae.webp 31 Ko
+  public/proofs/integrations/bulletin-de-paie-silae.webp 33 Ko
+check : 2 preuves v2 conformes à leur manifeste.
+  outil-charte-ia      65 Ko
+
+> memlia-landing@2.0.0 test:proof
+> python3 -m unittest discover -s tests/proof -v
+
+test_identity_and_non_attestation_are_explicit (test_article_3_contract.Article3Contract.test_identity_and_non_attestation_are_explicit) ... ok
+test_mutations_reject_bad_canonical_and_internal_404 (test_article_3_contract.Article3Contract.test_mutations_reject_bad_canonical_and_internal_404) ... ok
+test_mutations_reject_missing_stale_or_uncited_sources (test_article_3_contract.Article3Contract.test_mutations_reject_missing_stale_or_uncited_sources) ... ok
+test_mutations_reject_wrong_author_and_fabricated_attestation (test_article_3_contract.Article3Contract.test_mutations_reject_wrong_author_and_fabricated_attestation) ... ok
+test_post_deposit_intent_and_bidirectional_link (test_article_3_contract.Article3Contract.test_post_deposit_intent_and_bidirectional_link) ... ok
+test_rendered_canonical_links_and_jsonld (test_article_3_contract.Article3Contract.test_rendered_canonical_links_and_jsonld) ... ok
+test_source_contract_is_complete_and_fresh (test_article_3_contract.Article3Contract.test_source_contract_is_complete_and_fresh) ... ok
+test_no_card_specific_icon_treatments (test_bento_harmonisation.BentoHarmonisationProof.test_no_card_specific_icon_treatments) ... ok
+test_no_secondary_mixed_surfaces_or_raw_colors (test_bento_harmonisation.BentoHarmonisationProof.test_no_secondary_mixed_surfaces_or_raw_colors) ... ok
+test_articles_rattaches_lient_le_hub_en_html_et_jsonld (test_blog_rubriques.BlogRubriquesProof.test_articles_rattaches_lient_le_hub_en_html_et_jsonld) ... ok
+test_footer_sitemap_et_liens_internes (test_blog_rubriques.BlogRubriquesProof.test_footer_sitemap_et_liens_internes) ... ok
+test_hubs_substantiels_et_dynamiques (test_blog_rubriques.BlogRubriquesProof.test_hubs_substantiels_et_dynamiques) ... ok
+test_only_signed_w39_cicatrice_has_testimony_floor (test_build.ArticleLengthProof.test_only_signed_w39_cicatrice_has_testimony_floor) ... ok
+test_word_count_consistency_and_editorial_floor_diagnostic (test_build.ArticleLengthProof.test_word_count_consistency_and_editorial_floor_diagnostic) ... ok
+test_asset_and_srcset_targets (test_build.BuildProof.test_asset_and_srcset_targets) ... ok
+test_aucune_mention_de_processus_rendue (test_build.BuildProof.test_aucune_mention_de_processus_rendue)
+Le lecteur ne lit pas notre chaîne éditoriale. ... ok
+test_blog_articles_schema_and_head (test_build.BuildProof.test_blog_articles_schema_and_head) ... ok
+test_blog_index_lists_every_article (test_build.BuildProof.test_blog_index_lists_every_article) ... ok
+test_contact_form_posts_to_the_function (test_build.BuildProof.test_contact_form_posts_to_the_function) ... ok
+test_five_generic_examples_no_product_statuses (test_build.BuildProof.test_five_generic_examples_no_product_statuses) ... ok
+test_h1_long_reste_identique_au_graphe_et_a_og (test_build.BuildProof.test_h1_long_reste_identique_au_graphe_et_a_og) ... ok
+test_headline_identity_refuse_une_mutation_og (test_build.BuildProof.test_headline_identity_refuse_une_mutation_og) ... ok
+test_legal_noindex_canonical (test_build.BuildProof.test_legal_noindex_canonical) ... ok
+test_llms_anchors (test_build.BuildProof.test_llms_anchors) ... ok
+test_outil_temoin_csp_and_schema_are_fail_closed (test_build.BuildProof.test_outil_temoin_csp_and_schema_are_fail_closed) ... ok
+test_outils_disponibles_ont_trois_liens_entrants_contextuels (test_build.BuildProof.test_outils_disponibles_ont_trois_liens_entrants_contextuels) ... ok
+test_pages_one_h1_french (test_build.BuildProof.test_pages_one_h1_french) ... ok
+test_placeholders_and_briefs (test_build.BuildProof.test_placeholders_and_briefs) ... ok
+test_requalified_article_static_html_is_indexable (test_build.BuildProof.test_requalified_article_static_html_is_indexable) ... ok
+test_rss_feed_matches_articles (test_build.BuildProof.test_rss_feed_matches_articles) ... ok
+test_sitemap_complete_no_legal (test_build.BuildProof.test_sitemap_complete_no_legal) ... ok
+test_structured_data_no_unreleased_features (test_build.BuildProof.test_structured_data_no_unreleased_features) ... ok
+test_chaque_lien_externe_est_sur_meme_avec_deux_sources (test_build.ExternalLinkSafetyProof.test_chaque_lien_externe_est_sur_meme_avec_deux_sources) ... ok
+test_navigation_locale_et_externe_restent_distinguees (test_build.ExternalLinkSafetyProof.test_navigation_locale_et_externe_restent_distinguees) ... ok
+test_familles_des_articles_pipeline (test_build.FamillesDesArticles.test_familles_des_articles_pipeline) ... ok
+test_attente_du_rendu_derive_des_sources_non_brouillon (test_build.PublicArticleInventoryProof.test_attente_du_rendu_derive_des_sources_non_brouillon) ... ok
+test_inventaire_extensible_mais_uniquement_depuis_un_sceau_coherent (test_build.PublicGuideInventoryProof.test_inventaire_extensible_mais_uniquement_depuis_un_sceau_coherent) ... ok
+test_page_fictive_et_integration_ajoutees_sont_attendues (test_build.SourceInventoryRegression.test_page_fictive_et_integration_ajoutees_sont_attendues) ... ok
+test_preuve_ajoutee_et_substitution_a_compte_constant (test_build.SourceInventoryRegression.test_preuve_ajoutee_et_substitution_a_compte_constant) ... ok
+test_active_families_have_exact_c1_c2_references (test_cac_architecture.CacArchitecture.test_active_families_have_exact_c1_c2_references) ... ok
+test_existing_tools_reused_and_public_contract_untouched (test_cac_architecture.CacArchitecture.test_existing_tools_reused_and_public_contract_untouched) ... ok
+test_five_poles_legacy_and_conditional_durability (test_cac_architecture.CacArchitecture.test_five_poles_legacy_and_conditional_durability) ... ok
+test_four_real_angles_per_active_family (test_cac_architecture.CacArchitecture.test_four_real_angles_per_active_family) ... ok
+test_generated_artifact_matches_sources (test_cac_architecture.CacArchitecture.test_generated_artifact_matches_sources) ... ok
+test_graph_is_closed_reciprocal_and_contextual (test_cac_architecture.CacArchitecture.test_graph_is_closed_reciprocal_and_contextual) ... ok
+test_inactive_families_cannot_enter_backlog (test_cac_architecture.CacArchitecture.test_inactive_families_cannot_enter_backlog) ... ok
+test_no_integration_activated_on_brand_suggestions (test_cac_architecture.CacArchitecture.test_no_integration_activated_on_brand_suggestions) ... ok
+test_no_invented_measurement_and_zero_is_not_unmeasured (test_cac_architecture.CacArchitecture.test_no_invented_measurement_and_zero_is_not_unmeasured) ... ok
+test_parser_default_ec_and_explicit_cac (test_cac_architecture.CacArchitecture.test_parser_default_ec_and_explicit_cac) ... ok
+test_reject_artificial_cross_family_link (test_cac_architecture.CacArchitecture.test_reject_artificial_cross_family_link) ... ok
+test_reject_entire_cac_stock_removed (test_cac_architecture.CacArchitecture.test_reject_entire_cac_stock_removed) ... ok
+test_reject_missing_angle_and_arbitrary_pillar_exemption (test_cac_architecture.CacArchitecture.test_reject_missing_angle_and_arbitrary_pillar_exemption) ... ok
+test_scheduler_pruning_includes_fixed_slots (test_cac_architecture.CacArchitecture.test_scheduler_pruning_includes_fixed_slots) ... ok
+test_unique_queries_cross_hubs_blog_and_current_owners (test_cac_architecture.CacArchitecture.test_unique_queries_cross_hubs_blog_and_current_owners) ... ok
+test_calendrier_plafonds_alternance_et_preservation (test_cac_f4_supplements.SupplementsF4.test_calendrier_plafonds_alternance_et_preservation) ... ok
+test_deux_supplements_et_stock_initial_intact (test_cac_f4_supplements.SupplementsF4.test_deux_supplements_et_stock_initial_intact) ... ok
+test_refus_doublon_arbitraire_et_mauvaise_famille (test_cac_f4_supplements.SupplementsF4.test_refus_doublon_arbitraire_et_mauvaise_famille) ... ok
+test_aucune_page_ne_propose_d_agrandir_une_image (test_cartes.AucunAgrandissement.test_aucune_page_ne_propose_d_agrandir_une_image) ... ok
+test_le_composant_d_agrandissement_n_existe_plus (test_cartes.AucunAgrandissement.test_le_composant_d_agrandissement_n_existe_plus) ... ok
+test_aucun_composant_ne_redessine_la_carte (test_cartes.UnSeulDessinDeCarte.test_aucun_composant_ne_redessine_la_carte) ... ok
+test_global_css_dessine_la_carte_la_grille_et_la_bande (test_cartes.UnSeulDessinDeCarte.test_global_css_dessine_la_carte_la_grille_et_la_bande) ... ok
+test_le_blog_ne_porte_aucune_carte_du_site (test_cartes.UnSeulDessinDeCarte.test_le_blog_ne_porte_aucune_carte_du_site) ... ok
+test_les_anciens_motifs_de_cartes_ne_reviennent_pas (test_cartes.UnSeulDessinDeCarte.test_les_anciens_motifs_de_cartes_ne_reviennent_pas) ... ok
+test_alternance_sur_creneaux_non_figes (test_editorial_cadence.EditorialCadenceProof.test_alternance_sur_creneaux_non_figes) ... ok
+test_ancien_slug_non_publie_est_remplace_sans_doubler_la_cicatrice (test_editorial_cadence.EditorialCadenceProof.test_ancien_slug_non_publie_est_remplace_sans_doubler_la_cicatrice) ... ok
+test_calendrier_p3_mesures_ne_conclut_pas_a_une_absence_de_demande (test_editorial_cadence.EditorialCadenceProof.test_calendrier_p3_mesures_ne_conclut_pas_a_une_absence_de_demande) ... ok
+test_check_necrit_aucun_derive_quel_que_soit_le_jour (test_editorial_cadence.EditorialCadenceProof.test_check_necrit_aucun_derive_quel_que_soit_le_jour) ... CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+ok
+test_check_refuse_une_source_invalide_sans_ecriture (test_editorial_cadence.EditorialCadenceProof.test_check_refuse_une_source_invalide_sans_ecriture) ... CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+ok
+test_cicatrice_du_samedi_ne_consomme_pas_le_plafond_des_quatre (test_editorial_cadence.EditorialCadenceProof.test_cicatrice_du_samedi_ne_consomme_pas_le_plafond_des_quatre) ... ok
+test_cicatrice_hors_samedi_rougit (test_editorial_cadence.EditorialCadenceProof.test_cicatrice_hors_samedi_rougit) ... ok
+test_cicatrice_ne_justifie_pas_une_exception_sans_stock (test_editorial_cadence.EditorialCadenceProof.test_cicatrice_ne_justifie_pas_une_exception_sans_stock) ... ok
+test_creneaux_echus_sont_traces_sans_rester_planifies (test_editorial_cadence.EditorialCadenceProof.test_creneaux_echus_sont_traces_sans_rester_planifies) ... ok
+test_date_explicite_cicatrice_non_publiee_ne_se_replanifie_pas (test_editorial_cadence.EditorialCadenceProof.test_date_explicite_cicatrice_non_publiee_ne_se_replanifie_pas) ... ok
+test_date_figee_echue_est_refusee_avant_planification (test_editorial_cadence.EditorialCadenceProof.test_date_figee_echue_est_refusee_avant_planification) ... ok
+test_date_fixe_intercalee_ne_rejette_pas_stock_alternable (test_editorial_cadence.EditorialCadenceProof.test_date_fixe_intercalee_ne_rejette_pas_stock_alternable) ... ok
+test_dates_figees_et_priorites_du_backlog_sont_inchangees (test_editorial_cadence.EditorialCadenceProof.test_dates_figees_et_priorites_du_backlog_sont_inchangees) ... ok
+test_deuxieme_cicatrice_de_la_meme_semaine_iso_rougit (test_editorial_cadence.EditorialCadenceProof.test_deuxieme_cicatrice_de_la_meme_semaine_iso_rougit) ... ok
+test_exception_invalide_ne_passe_pas (test_editorial_cadence.EditorialCadenceProof.test_exception_invalide_ne_passe_pas) ... ok
+test_exception_non_ancree_est_acceptee_par_le_planificateur_et_le_verificateur (test_editorial_cadence.EditorialCadenceProof.test_exception_non_ancree_est_acceptee_par_le_planificateur_et_le_verificateur) ... ok
+test_exception_sur_mauvais_champ_ne_couvre_pas_une_rupture_de_pole (test_editorial_cadence.EditorialCadenceProof.test_exception_sur_mauvais_champ_ne_couvre_pas_une_rupture_de_pole) ... ok
+test_exceptions_archivees_restent_datees_motivees_et_utilisees (test_editorial_cadence.EditorialCadenceProof.test_exceptions_archivees_restent_datees_motivees_et_utilisees) ... ok
+test_exceptions_utilisees_survivent_a_la_publication (test_editorial_cadence.EditorialCadenceProof.test_exceptions_utilisees_survivent_a_la_publication) ... ok
+test_exemple_crm_dsn_et_consigne_restent_bornes_au_releve (test_editorial_cadence.EditorialCadenceProof.test_exemple_crm_dsn_et_consigne_restent_bornes_au_releve) ... ok
+test_ia_publiee_exige_sa_serp_historique_exacte_sans_modifier_la_publication (test_editorial_cadence.EditorialCadenceProof.test_ia_publiee_exige_sa_serp_historique_exacte_sans_modifier_la_publication) ... ok
+test_ia_sources_mutantes_sont_refusees_sans_changer_le_backlog (test_editorial_cadence.EditorialCadenceProof.test_ia_sources_mutantes_sont_refusees_sans_changer_le_backlog) ... ok
+test_methode_generee_borne_les_signaux_et_compte_les_poles_actifs (test_editorial_cadence.EditorialCadenceProof.test_methode_generee_borne_les_signaux_et_compte_les_poles_actifs) ... ok
+test_oracle_w39_documente_le_quota_reel_du_29 (test_editorial_cadence.EditorialCadenceProof.test_oracle_w39_documente_le_quota_reel_du_29) ... ok
+test_pilier_publie_exige_sa_mesure_primaire_source (test_editorial_cadence.EditorialCadenceProof.test_pilier_publie_exige_sa_mesure_primaire_source) ... ok
+test_planifier_repartit_les_creneaux_autour_d_une_date_fixe (test_editorial_cadence.EditorialCadenceProof.test_planifier_repartit_les_creneaux_autour_d_une_date_fixe) ... ok
+test_priorite_un_exige_un_signal_et_non_seulement_une_date (test_editorial_cadence.EditorialCadenceProof.test_priorite_un_exige_un_signal_et_non_seulement_une_date) ... ok
+test_rattrapage_reel_du_29_conserve_les_creneaux_w39 (test_editorial_cadence.EditorialCadenceProof.test_rattrapage_reel_du_29_conserve_les_creneaux_w39) ... ok
+test_rattrapage_refuse_autre_sujet_et_deuxieme_cicatrice (test_editorial_cadence.EditorialCadenceProof.test_rattrapage_refuse_autre_sujet_et_deuxieme_cicatrice) ... ok
+test_rattrapage_w39_ne_deplace_pas_le_plan_et_est_borne (test_editorial_cadence.EditorialCadenceProof.test_rattrapage_w39_ne_deplace_pas_le_plan_et_est_borne) ... ok
+test_reservation_hors_jours_automatiques_traverse_le_preflight (test_editorial_cadence.EditorialCadenceProof.test_reservation_hors_jours_automatiques_traverse_le_preflight) ... ok
+test_reservations_hors_jours_automatiques_gardent_les_plafonds (test_editorial_cadence.EditorialCadenceProof.test_reservations_hors_jours_automatiques_gardent_les_plafonds) ... ok
+test_selection_refuse_calendrier_perime_puis_accepte_edition_du_jour (test_editorial_cadence.EditorialCadenceProof.test_selection_refuse_calendrier_perime_puis_accepte_edition_du_jour) ... ok
+test_selection_refuse_toute_derive_editoriale_sans_ecrire (test_editorial_cadence.EditorialCadenceProof.test_selection_refuse_toute_derive_editoriale_sans_ecrire) ... ok
+test_titre_signe_w39_refuse_les_mutations_independantes (test_editorial_cadence.EditorialCadenceProof.test_titre_signe_w39_refuse_les_mutations_independantes) ... ok
+test_une_cicatrice_future_manquante_rougit_la_cadence (test_editorial_cadence.EditorialCadenceProof.test_une_cicatrice_future_manquante_rougit_la_cadence) ... ok
+test_une_publication_w40_sur_son_creneau_du_29_depasse_le_quota_reel (test_editorial_cadence.EditorialCadenceProof.test_une_publication_w40_sur_son_creneau_du_29_depasse_le_quota_reel) ... ok
+test_date_manquee_seule_ne_cree_pas_de_reservation (test_editorial_cadence_15.Cadence15.test_date_manquee_seule_ne_cree_pas_de_reservation) ... ok
+test_reservation_partage_le_plafond_ec_cac (test_editorial_cadence_15.Cadence15.test_reservation_partage_le_plafond_ec_cac) ... ok
+test_semaine_complete_et_samedi_independant (test_editorial_cadence_15.Cadence15.test_semaine_complete_et_samedi_independant) ... ok
+test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre (test_editorial_cadence_15.Cadence15.test_trois_reservations_du_meme_jour_peuvent_changer_d_ordre) ... ok
+test_weekend_reserve_refuse (test_editorial_cadence_15.Cadence15.test_weekend_reserve_refuse) ... ok
+test_calendrier_vivant_et_reservations_cac (test_editorial_cadence_15.CalendrierReservations.test_calendrier_vivant_et_reservations_cac) ... ok
+test_reservations_f4_explicitement_replanifiees_sans_antidate (test_editorial_cadence_15.CalendrierVivant.test_reservations_f4_explicitement_replanifiees_sans_antidate) ... ok
+test_reconstruction_sous_horloges_python_ulterieures (test_editorial_fixture_clock.EditorialFixtureClock.test_reconstruction_sous_horloges_python_ulterieures) ... CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+CAC architecture: 52 pages, 32 angles, 309 projected links: OK
+ok
+test_attestation_boundary_and_documented_commitments (test_garanties_copy.GarantiesCopy.test_attestation_boundary_and_documented_commitments) ... ok
+test_d1_locality_is_bounded_to_cadrage (test_garanties_copy.GarantiesCopy.test_d1_locality_is_bounded_to_cadrage) ... ok
+test_page_and_faq_have_same_boundaries (test_garanties_copy.GarantiesCopy.test_page_and_faq_have_same_boundaries) ... ok
+test_un_terme_ajoute_aux_sources_est_attendu_dans_le_rendu (test_glossary.GlossaryInventoryRegression.test_un_terme_ajoute_aux_sources_est_attendu_dans_le_rendu) ... ok
+test_canonical_schema_and_breadcrumb_are_consistent (test_glossary.GlossaryProof.test_canonical_schema_and_breadcrumb_are_consistent) ... ok
+test_glossary_links_to_the_exact_preserved_articles (test_glossary.GlossaryProof.test_glossary_links_to_the_exact_preserved_articles) ... ok
+test_internal_links_only_target_rendered_routes_or_fragments (test_glossary.GlossaryProof.test_internal_links_only_target_rendered_routes_or_fragments) ... ok
+test_metadata_sources_and_boundaries_are_complete (test_glossary.GlossaryProof.test_metadata_sources_and_boundaries_are_complete) ... ok
+test_no_autonomous_or_thin_glossary_pages_exist (test_glossary.GlossaryProof.test_no_autonomous_or_thin_glossary_pages_exist) ... ok
+test_sitemap_contains_only_the_index_not_fragment_or_term_pages (test_glossary.GlossaryProof.test_sitemap_contains_only_the_index_not_fragment_or_term_pages) ... ok
+test_unique_visible_terms_and_real_letters (test_glossary.GlossaryProof.test_unique_visible_terms_and_real_letters) ... ok
+test_invalid_author_and_calendar_date_fail_closed (test_glossary_evidence.GlossaryEvidenceValidatorTest.test_invalid_author_and_calendar_date_fail_closed) ... ok
+test_invalid_status_and_missing_approval_metadata_fail_closed (test_glossary_evidence.GlossaryEvidenceValidatorTest.test_invalid_status_and_missing_approval_metadata_fail_closed) ... ok
+test_validated_frontmatter_requires_approval_metadata (test_glossary_evidence.GlossaryEvidenceValidatorTest.test_validated_frontmatter_requires_approval_metadata) ... ok
+test_date_mutante_et_jour_elargi_refuses (test_ia_catchup.IACatchupProof.test_date_mutante_et_jour_elargi_refuses) ... ok
+test_plafond_hebdomadaire_w40_et_cadence_ordinaire (test_ia_catchup.IACatchupProof.test_plafond_hebdomadaire_w40_et_cadence_ordinaire) ... ok
+test_regle_elargie_refusee_par_le_meme_validateur_node (test_ia_catchup.IACatchupProof.test_regle_elargie_refusee_par_le_meme_validateur_node) ... ok
+test_troisieme_publication_et_quatre_sujets_courants (test_ia_catchup.IACatchupProof.test_troisieme_publication_et_quatre_sujets_courants) ... ok
+test_hero_has_accessible_r9_player (test_integrated_media.IntegratedMediaProof.test_hero_has_accessible_r9_player) ... ok
+test_hero_poster_is_prioritized_before_video_metadata (test_integrated_media.IntegratedMediaProof.test_hero_poster_is_prioritized_before_video_metadata) ... ok
+test_historical_generations_are_not_exported (test_integrated_media.IntegratedMediaProof.test_historical_generations_are_not_exported) ... ok
+test_historical_generations_are_not_referenced_by_any_exported_surface (test_integrated_media.IntegratedMediaProof.test_historical_generations_are_not_referenced_by_any_exported_surface) ... ok
+test_nine_functional_proofs_replace_all_legacy_images (test_integrated_media.IntegratedMediaProof.test_nine_functional_proofs_replace_all_legacy_images) ... ok
+test_only_approved_ec_and_cac_generations_are_exported (test_integrated_media.IntegratedMediaProof.test_only_approved_ec_and_cac_generations_are_exported) ... ok
+test_proof_figures_contain_only_static_images (test_integrated_media.IntegratedMediaProof.test_proof_figures_contain_only_static_images) ... ok
+test_tagline_is_preserved_exactly (test_integrated_media.IntegratedMediaProof.test_tagline_is_preserved_exactly) ... ok
+test_collection_et_provenance_orphelines_restent_refusees (test_integration_inventory.IntegrationInventoryProof.test_collection_et_provenance_orphelines_restent_refusees) ... ok
+test_declaration_hors_tableau_n_autorise_ni_page_ni_sitemap (test_integration_inventory.IntegrationInventoryProof.test_declaration_hors_tableau_n_autorise_ni_page_ni_sitemap) ... ok
+test_guide_scelle_entre_dans_les_pages_sans_liste_fermee (test_integration_inventory.IntegrationInventoryProof.test_guide_scelle_entre_dans_les_pages_sans_liste_fermee) ... ok
+test_page_et_sitemap_supplementaires_restent_refuses (test_integration_inventory.IntegrationInventoryProof.test_page_et_sitemap_supplementaires_restent_refuses) ... ok
+test_host_identity_contact_and_source_are_in_legal_body (test_legal_identity.LegalIdentityProof.test_host_identity_contact_and_source_are_in_legal_body) ... ok
+test_host_phone_source_is_not_expired (test_legal_identity.LegalIdentityProof.test_host_phone_source_is_not_expired) ... ok
+test_publisher_identity_is_in_legal_body (test_legal_identity.LegalIdentityProof.test_publisher_identity_is_in_legal_body) ... ok
+test_legal_identity_is_absent_from_visible_non_legal_pages (test_legal_identity.LegalSurfaceSeparationProof.test_legal_identity_is_absent_from_visible_non_legal_pages) ... ok
+test_reference_copy_is_not_repeated_verbatim (test_legal_identity.LegalSurfaceSeparationProof.test_reference_copy_is_not_repeated_verbatim) ... ok
+test_registry_source_is_not_rendered_as_page_evidence (test_legal_identity.LegalSurfaceSeparationProof.test_registry_source_is_not_rendered_as_page_evidence) ... ok
+test_one_id_means_one_definition (test_legal_identity.PublisherEntityProof.test_one_id_means_one_definition) ... ok
+test_publisher_carries_its_legal_identity (test_legal_identity.PublisherEntityProof.test_publisher_carries_its_legal_identity) ... ok
+test_publisher_is_emitted_by_every_family_of_pages (test_legal_identity.PublisherEntityProof.test_publisher_is_emitted_by_every_family_of_pages) ... ok
+test_publisher_points_at_public_registry_records (test_legal_identity.PublisherEntityProof.test_publisher_points_at_public_registry_records) ... ok
+test_schema_address_repeats_the_legal_page (test_legal_identity.PublisherEntityProof.test_schema_address_repeats_the_legal_page)
+L'adresse du schéma n'est pas une saisie neuve : c'est celle déjà publiée. ... ok
+test_ajout_repete_conserve_exactement_les_reservations_presentes (test_mandated_blog_inventory.MandatedInventory.test_ajout_repete_conserve_exactement_les_reservations_presentes) ... ok
+test_extension_ne_libere_pas_un_angle_arbitraire_ou_une_mauvaise_famille (test_mandated_blog_inventory.MandatedInventory.test_extension_ne_libere_pas_un_angle_arbitraire_ou_une_mauvaise_famille) ... ok
+test_quatre_briefs_seuls_et_ensemble_conservent_historiques_et_quotas (test_mandated_blog_inventory.MandatedInventory.test_quatre_briefs_seuls_et_ensemble_conservent_historiques_et_quotas) ... ok
+test_un_vrai_doublon_reste_refuse (test_mandated_blog_inventory.MandatedInventory.test_un_vrai_doublon_reste_refuse) ... ok
+test_all_media_match_sealed_manifest (test_media_chain.MediaChainProof.test_all_media_match_sealed_manifest) ... ok
+test_method_coverage_without_added_captions (test_media_chain.MediaChainProof.test_method_coverage_without_added_captions) ... ok
+test_vtt_timing_and_captions_are_complete (test_media_chain.MediaChainProof.test_vtt_timing_and_captions_are_complete) ... ok
+test_blog_hub_separates_published_methods_and_service (test_positioning.PositioningProof.test_blog_hub_separates_published_methods_and_service) ... ok
+test_external_actions_and_data_are_bounded (test_positioning.PositioningProof.test_external_actions_and_data_are_bounded) ... ok
+test_guard_allows_only_isolated_generic_singular (test_positioning.PositioningProof.test_guard_allows_only_isolated_generic_singular) ... ok
+test_guard_discovers_nested_and_non_html_surfaces (test_positioning.PositioningProof.test_guard_discovers_nested_and_non_html_surfaces) ... ok
+test_guard_rejects_catalogue_on_every_text_channel (test_positioning.PositioningProof.test_guard_rejects_catalogue_on_every_text_channel) ... ok
+test_illustrations_are_not_product_cards (test_positioning.PositioningProof.test_illustrations_are_not_product_cards) ... ok
+test_no_catalogue_in_any_public_surface (test_positioning.PositioningProof.test_no_catalogue_in_any_public_surface) ... ok
+test_service_identity_and_hero (test_positioning.PositioningProof.test_service_identity_and_hero) ... ok
+test_written_rule_automation_is_bounded_in_daily_passage (test_positioning.PositioningProof.test_written_rule_automation_is_bounded_in_daily_passage) ... ok
+test_contract_preserves_guardrails_and_internal_versions (test_proof_annotations.ProofAnnotations.test_contract_preserves_guardrails_and_internal_versions) ... ok
+test_nine_frames_keep_exact_functional_content (test_proof_annotations.ProofAnnotations.test_nine_frames_keep_exact_functional_content) ... ok
+test_peripheral_annotations_are_absent_not_hidden (test_proof_annotations.ProofAnnotations.test_peripheral_annotations_are_absent_not_hidden) ... ok
+test_styles_have_no_external_worktree_or_generated_annotations (test_proof_annotations.ProofAnnotations.test_styles_have_no_external_worktree_or_generated_annotations) ... ok
+test_real_workbook_with_example_blank_inputs_and_formulas (test_reconciliation_workbook.ReconciliationWorkbookTests.test_real_workbook_with_example_blank_inputs_and_formulas) ... ok
+test_oracle_recalcule_le_sujet_la_preuve_et_la_matrice (test_resource_ai_review.ResourceAiReviewContractTests.test_oracle_recalcule_le_sujet_la_preuve_et_la_matrice) ... ok
+test_blog_authority_and_recouvrement_doctrine_are_preserved (test_resource_v3_traceability.ResourceV3TraceabilityProof.test_blog_authority_and_recouvrement_doctrine_are_preserved) ... ok
+test_contract_v3_contains_no_effective_date_field (test_resource_v3_traceability.ResourceV3TraceabilityProof.test_contract_v3_contains_no_effective_date_field) ... ok
+test_machine_readable_register_is_an_exact_projection (test_resource_v3_traceability.ResourceV3TraceabilityProof.test_machine_readable_register_is_an_exact_projection) ... ok
+test_visible_units_have_complete_bidirectional_evidence (test_resource_v3_traceability.ResourceV3TraceabilityProof.test_visible_units_have_complete_bidirectional_evidence) ... ok
+test_build_audits_resources_after_generating_the_site (test_resources.ResourceProof.test_build_audits_resources_after_generating_the_site) ... ok
+test_conditional_indexes_and_sitemap_fail_closed (test_resources.ResourceProof.test_conditional_indexes_and_sitemap_fail_closed) ... ok
+test_historical_rss_remains_blog_only (test_resources.ResourceProof.test_historical_rss_remains_blog_only) ... ok
+test_complete_unique_partition_of_rendered_indexable_pages (test_sitemaps_types.TypedSitemapsTest.test_complete_unique_partition_of_rendered_indexable_pages) ... ok
+
+----------------------------------------------------------------------
+Ran 179 tests in 131.696s
+
+OK
+familles vérifiées : 19 article(s) pipeline
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 283 satellites (17 publiés), 67 familles, 13 pôles, 1130 liens ; entrants min = 3 ; semaines planifiées = 23 ; dernier créneau = 2027-02-09
+ERREUR : angle de priorité 1 sans signal mesuré : rapprochement-bancaire-automatise-les-ecarts-a-remonter
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 283 satellites (17 publiés), 67 familles, 13 pôles, 1130 liens ; entrants min = 3 ; semaines planifiées = 23 ; dernier créneau = 2027-02-09
+ERREUR : angle de priorité 1 sans signal mesuré : rapprochement-bancaire-automatise-les-ecarts-a-remonter
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 245 satellites (11 publiés), 59 familles, 11 pôles, 980 liens ; entrants min = 3 ; semaines planifiées = 20 ; dernier créneau = 2027-01-18
+invariants : OK
+cluster-plan : 283 satellites (17 publiés), 67 familles, 13 pôles, 1130 liens ; entrants min = 3 ; semaines planifiées = 23 ; dernier créneau = 2027-02-09
+ERREUR : angle de priorité 1 sans signal mesuré : rapprochement-bancaire-automatise-les-ecarts-a-remonter
+Positionnement : 149 surfaces texte / 869 fichiers ; 720 contenus binaires/CSS hors analyse lexicale, noms contrôlés.
+
+> memlia-landing@2.0.0 test:lastmod
+> node scripts/sync-lastmod.mjs --check
+
+check : 56 page(s), registre à jour.
+
+> memlia-landing@2.0.0 test:images
+> node scripts/verify-m4-images.mjs
+
+{
+  "checked": 23,
+  "originalProofs": 9,
+  "totalBytes": 690534,
+  "report": [
+    {
+      "file": "public/proofs/01-flux.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 48436
+    },
+    {
+      "file": "public/proofs/02-repetition.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 34034
+    },
+    {
+      "file": "public/proofs/03-controle.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 34810
+    },
+    {
+      "file": "public/proofs/04-observer.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 28024
+    },
+    {
+      "file": "public/proofs/05-cadrer.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 31384
+    },
+    {
+      "file": "public/proofs/06-eprouver.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 28296
+    },
+    {
+      "file": "public/proofs/07-livrer.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 37050
+    },
+    {
+      "file": "public/proofs/08-integration.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 47982
+    },
+    {
+      "file": "public/proofs/09-garanties.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 27464
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-768.avif",
+      "width": 768,
+      "height": 432,
+      "bytes": 7366
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-768.webp",
+      "width": 768,
+      "height": 432,
+      "bytes": 11544
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-1200.avif",
+      "width": 1200,
+      "height": 675,
+      "bytes": 13491
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "bytes": 21250
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-1600.avif",
+      "width": 1600,
+      "height": 900,
+      "bytes": 19159
+    },
+    {
+      "file": "public/images/img-23-controle-bulletins-paie-1600.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 31328
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-768.avif",
+      "width": 768,
+      "height": 432,
+      "bytes": 8527
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-768.webp",
+      "width": 768,
+      "height": 432,
+      "bytes": 14766
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-1200.avif",
+      "width": 1200,
+      "height": 675,
+      "bytes": 15770
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "bytes": 27568
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-1600.avif",
+      "width": 1600,
+      "height": 900,
+      "bytes": 23093
+    },
+    {
+      "file": "public/images/img-24-suivi-production-sociale-1600.webp",
+      "width": 1600,
+      "height": 900,
+      "bytes": 40116
+    },
+    {
+      "file": "public/media/r9/hero-poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 118494
+    },
+    {
+      "file": "public/media/r9/hero-poster-1200.webp",
+      "width": 1200,
+      "height": 675,
+      "bytes": 20582
+    }
+  ]
+}
+
+> memlia-landing@2.0.0 test:preview-export
+> node --test tests/scripts/prepare-preview.test.mjs
+
+TAP version 13
+# Subtest: prépare une copie noindex, nofollow sans modifier le dist indexable
+ok 1 - prépare une copie noindex, nofollow sans modifier le dist indexable
+  ---
+  duration_ms: 6.245375
+  type: 'test'
+  ...
+# Subtest: refuse de préparer une preview dans le dist de production
+ok 2 - refuse de préparer une preview dans le dist de production
+  ---
+  duration_ms: 1.397125
+  type: 'test'
+  ...
+# Subtest: refuse un HTML sans meta robots unique plutôt que de publier une protection partielle
+ok 3 - refuse un HTML sans meta robots unique plutôt que de publier une protection partielle
+  ---
+  duration_ms: 1.493375
+  type: 'test'
+  ...
+# Subtest: refuse une preview candidat sans rapport de gate PASS correspondant
+ok 4 - refuse une preview candidat sans rapport de gate PASS correspondant
+  ---
+  duration_ms: 1.4825
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 60.486167
+
+> memlia-landing@2.0.0 test:scripts
+> node scripts/test-scripts.mjs
+
+test-scripts : 177 fichier(s) joués, 11 écarté(s) :
+  - relance-provenance.test.mjs — rejoue le wrapper relance dans Chromium : joué explicitement en CI, hors build Cloudflare
+  - proofs-v2-ownership.test.mjs — rend les preuves v2 dans Chromium : joué explicitement en CI, hors build Cloudflare
+  - proof-render-ownership.test.mjs — rend les neuf preuves dans Chromium : joué explicitement en CI, hors build Cloudflare
+  - accueil-cac-geometry.test.mjs — mesure les panneaux CAC dans Chromium : joué explicitement en CI, hors build Cloudflare ; les autres contrôles CAC restent dans accueil-cac-medias.test.mjs
+  - guide-forge.test.mjs — rend les preuves dans Chromium : joué par npm run test:guide-forge et en CI, hors build Cloudflare
+  - guide-proof-layout.test.mjs — mesure les textes dans Chromium : joué par npm run test:guide-forge et en CI, hors build Cloudflare
+  - guide-forge-render.test.mjs — forge une preuve dans Chromium et construit Astro : joué par npm run test:guide-render et en CI, hors build Cloudflare
+  - blog-proof-frame-render.test.mjs — lance Chromium : joué par node --test tests/scripts/blog-proof-frame-render.test.mjs, hors chaîne de build
+  - blog-candidate-render.test.mjs — lance Chromium (Playwright) : joué par npm run test:blog-pipeline:render, hors chaîne de build
+  - blog-title-intent.test.mjs — joué explicitement par npm run test:blog-title-intent juste après le rendu Astro
+  - blog-intent-preservation.test.mjs — exige dist : joué par npm run test:blog-contract après le rendu Astro
+TAP version 13
+# {"titleCharacters":52,"descriptionCharacters":158}
+# Subtest: E1 livre les onze sections, les cinq orientations et les onze questions CAC
+ok 1 - E1 livre les onze sections, les cinq orientations et les onze questions CAC
+  ---
+  duration_ms: 0.7835
+  type: 'test'
+  ...
+# Subtest: la copy de revue reprend chaque chaîne des données, sans variante silencieuse
+ok 2 - la copy de revue reprend chaque chaîne des données, sans variante silencieuse
+  ---
+  duration_ms: 0.950125
+  type: 'test'
+  ...
+# Subtest: titre, description et H1 portent l’intention mesurée, sans prétendre mesurer un volume
+ok 3 - titre, description et H1 portent l’intention mesurée, sans prétendre mesurer un volume
+  ---
+  duration_ms: 4.571875
+  type: 'test'
+  ...
+# Subtest: la couverture est visible et la frontière garde ses trois colonnes
+ok 4 - la couverture est visible et la frontière garde ses trois colonnes
+  ---
+  duration_ms: 0.419042
+  type: 'test'
+  ...
+# Subtest: E9 livre le film CAC sans réutilisation du film ou des preuves EC
+ok 5 - E9 livre le film CAC sans réutilisation du film ou des preuves EC
+  ---
+  duration_ms: 0.920834
+  type: 'test'
+  ...
+# Subtest: les ancres des garanties et orientations ont une cible locale prévue
+ok 6 - les ancres des garanties et orientations ont une cible locale prévue
+  ---
+  duration_ms: 0.137834
+  type: 'test'
+  ...
+# Subtest: le mécanisme et la responsabilité sont explicites, sans titre de CAC attribué à Memlia
+ok 7 - le mécanisme et la responsabilité sont explicites, sans titre de CAC attribué à Memlia
+  ---
+  duration_ms: 0.389375
+  type: 'test'
+  ...
+# Subtest: la fixture rejoue les résultats affichés et la source ne dérive pas
+ok 8 - la fixture rejoue les résultats affichés et la source ne dérive pas
+  ---
+  duration_ms: 1.586625
+  type: 'test'
+  ...
+# Subtest: les trois références CAC ont un registre et des actifs propres
+ok 9 - les trois références CAC ont un registre et des actifs propres
+  ---
+  duration_ms: 7.12925
+  type: 'test'
+  ...
+# Subtest: le manifeste scelle scènes et image sociale indépendamment du film E9
+ok 10 - le manifeste scelle scènes et image sociale indépendamment du film E9
+  ---
+  duration_ms: 3.684834
+  type: 'test'
+  ...
+# Subtest: les scènes montrent le geste et les frontières sans cartouche promotionnel
+ok 11 - les scènes montrent le geste et les frontières sans cartouche promotionnel
+  ---
+  duration_ms: 0.415292
+  type: 'test'
+  ...
+# Subtest: la profession CAC dispose de sa copie sans repli EC
+ok 12 - la profession CAC dispose de sa copie sans repli EC
+  ---
+  duration_ms: 1.381875
+  type: 'test'
+  ...
+# Subtest: la route CAC compose les onze sections et ses compléments validés
+ok 13 - la route CAC compose les onze sections et ses compléments validés
+  ---
+  duration_ms: 0.725958
+  type: 'test'
+  ...
+# Subtest: la variante poster est explicite et ne rend pas de lecteur vide
+ok 14 - la variante poster est explicite et ne rend pas de lecteur vide
+  ---
+  duration_ms: 0.192416
+  type: 'test'
+  ...
+# Subtest: la publication possède son intention et ses liens entrants
+ok 15 - la publication possède son intention et ses liens entrants
+  ---
+  duration_ms: 1.199834
+  type: 'test'
+  ...
+# Subtest: les onze sections de l’accueil acceptent leur contenu et gardent EC par défaut
+ok 16 - les onze sections de l’accueil acceptent leur contenu et gardent EC par défaut
+  ---
+  duration_ms: 2.810083
+  type: 'test'
+  ...
+# Subtest: le contenu EC compose les sources FAQ, méthode et garanties existantes
+ok 17 - le contenu EC compose les sources FAQ, méthode et garanties existantes
+  ---
+  duration_ms: 1.397417
+  type: 'test'
+  ...
+# Subtest: le contenu EC conserve les compteurs dynamiques ; ses preuves suivent le contenu, sans agrandissement
+ok 18 - le contenu EC conserve les compteurs dynamiques ; ses preuves suivent le contenu, sans agrandissement
+  ---
+  duration_ms: 0.565083
+  type: 'test'
+  ...
+# Subtest: le témoin accueil ignore uniquement la diffusion canonique du master
+ok 19 - le témoin accueil ignore uniquement la diffusion canonique du master
+  ---
+  duration_ms: 10.571667
+  type: 'test'
+  ...
+# Subtest: le contenu de / conserve le témoin EC hors lien d’orientation CAC
+ok 20 - le contenu de / conserve le témoin EC hors lien d’orientation CAC
+  ---
+  duration_ms: 32.924625
+  type: 'test'
+  ...
+# Subtest: les métadonnées de partage accueil utilisent la carte JPEG dédiée
+ok 21 - les métadonnées de partage accueil utilisent la carte JPEG dédiée
+  ---
+  duration_ms: 0.314459
+  type: 'test'
+  ...
+# Subtest: le témoin EC admet la publication de pages et les métadonnées hors sections
+ok 22 - le témoin EC admet la publication de pages et les métadonnées hors sections
+  ---
+  duration_ms: 41.940709
+  type: 'test'
+  ...
+# Subtest: le témoin refuse une altération du contenu ou du rendu dans chacune des onze sections EC
+ok 23 - le témoin refuse une altération du contenu ou du rendu dans chacune des onze sections EC
+  ---
+  duration_ms: 340.465625
+  type: 'test'
+  ...
+# Subtest: un vrai build Astro rend les onze sections avec le contenu fourni
+ok 24 - un vrai build Astro rend les onze sections avec le contenu fourni
+  ---
+  duration_ms: 3091.40575
+  type: 'test'
+  ...
+# Subtest: le fragment Astro réellement émis reste accepté
+ok 25 - le fragment Astro réellement émis reste accepté
+  ---
+  duration_ms: 3.71425
+  type: 'test'
+  ...
+# Subtest: le témoin refuse aria-hidden sur a avant de retirer le fragment
+ok 26 - le témoin refuse aria-hidden sur a avant de retirer le fragment
+  ---
+  duration_ms: 0.95525
+  type: 'test'
+  ...
+# Subtest: le témoin refuse tabindex sur a avant de retirer le fragment
+ok 27 - le témoin refuse tabindex sur a avant de retirer le fragment
+  ---
+  duration_ms: 0.347584
+  type: 'test'
+  ...
+# Subtest: le témoin refuse style sur a avant de retirer le fragment
+ok 28 - le témoin refuse style sur a avant de retirer le fragment
+  ---
+  duration_ms: 0.312042
+  type: 'test'
+  ...
+# Subtest: le témoin refuse hidden sur li avant de retirer le fragment
+ok 29 - le témoin refuse hidden sur li avant de retirer le fragment
+  ---
+  duration_ms: 0.353167
+  type: 'test'
+  ...
+# Subtest: le témoin refuse style sur li avant de retirer le fragment
+ok 30 - le témoin refuse style sur li avant de retirer le fragment
+  ---
+  duration_ms: 0.226625
+  type: 'test'
+  ...
+# Subtest: le témoin refuse href dupliqué avant de retirer le fragment
+ok 31 - le témoin refuse href dupliqué avant de retirer le fragment
+  ---
+  duration_ms: 0.316792
+  type: 'test'
+  ...
+# Subtest: le témoin conserve chaque octet hors lien contrôlé, y compris sans nouveau guide
+ok 32 - le témoin conserve chaque octet hors lien contrôlé, y compris sans nouveau guide
+  ---
+  duration_ms: 0.789625
+  type: 'test'
+  ...
+# Subtest: un lien scellé manquant, dupliqué ou altéré reste refusé
+ok 33 - un lien scellé manquant, dupliqué ou altéré reste refusé
+  ---
+  duration_ms: 4.068
+  type: 'test'
+  ...
+# Subtest: un lien hors footer ou enrichi ne peut pas disparaître du témoin
+ok 34 - un lien hors footer ou enrichi ne peut pas disparaître du témoin
+  ---
+  duration_ms: 16.307458
+  type: 'test'
+  ...
+# Subtest: chaque groupe autorisé déclare ses propres Content Signals, sans héritage de *
+ok 35 - chaque groupe autorisé déclare ses propres Content Signals, sans héritage de *
+  ---
+  duration_ms: 1.722125
+  type: 'test'
+  ...
+# Subtest: Bytespider reste bloqué sans déclaration positive de Content Signals
+ok 36 - Bytespider reste bloqué sans déclaration positive de Content Signals
+  ---
+  duration_ms: 0.387458
+  type: 'test'
+  ...
+# Subtest: l’accueil expose llms.txt via Link sans étendre la règle aux autres routes
+ok 37 - l’accueil expose llms.txt via Link sans étendre la règle aux autres routes
+  ---
+  duration_ms: 2.829459
+  type: 'test'
+  ...
+# Subtest: conserve le contenu principal, les liens absolus, les listes, le code et les tableaux
+ok 38 - conserve le contenu principal, les liens absolus, les listes, le code et les tableaux
+  ---
+  duration_ms: 6.3385
+  type: 'test'
+  ...
+# Subtest: génère uniquement les routes sitemap, après nettoyage des sources, de façon idempotente
+ok 39 - génère uniquement les routes sitemap, après nettoyage des sources, de façon idempotente
+  ---
+  duration_ms: 19.586041
+  type: 'test'
+  ...
+# Subtest: refuse un HTML sans main plutôt que de publier la navigation
+ok 40 - refuse un HTML sans main plutôt que de publier la navigation
+  ---
+  duration_ms: 0.288708
+  type: 'test'
+  ...
+# Subtest: le lien de repli sans JavaScript reste un lien Markdown, pas du HTML brut
+ok 41 - le lien de repli sans JavaScript reste un lien Markdown, pas du HTML brut
+  ---
+  duration_ms: 2.8185
+  type: 'test'
+  ...
+# Subtest: R1 : un parseur indépendant retrouve le code littéral en prose et tableaux
+ok 42 - R1 : un parseur indépendant retrouve le code littéral en prose et tableaux
+  ---
+  duration_ms: 1.142584
+  type: 'test'
+  ...
+# Subtest: R2 : cartes liées et listes multiparagraphes conservent titres, libellés et items
+ok 43 - R2 : cartes liées et listes multiparagraphes conservent titres, libellés et items
+  ---
+  duration_ms: 3.599875
+  type: 'test'
+  ...
+# Subtest: dégressif : acquisitions depuis le 01/01/2010 seulement, sans restriction du linéaire
+ok 44 - dégressif : acquisitions depuis le 01/01/2010 seulement, sans restriction du linéaire
+  ---
+  duration_ms: 3.821208
+  type: 'test'
+  ...
+# Subtest: arrondis : aucune dotation négative ni cumul au-delà de la base, y compris deux centimes
+ok 45 - arrondis : aucune dotation négative ni cumul au-delà de la base, y compris deux centimes
+  ---
+  duration_ms: 890.569291
+  type: 'test'
+  ...
+# Subtest: linéaire : prorata quotidien, années civiles et total réconcilié au centime
+ok 46 - linéaire : prorata quotidien, années civiles et total réconcilié au centime
+  ---
+  duration_ms: 0.958
+  type: 'test'
+  ...
+# Subtest: dégressif : coefficient, prorata mensuel et bascule au quotient résiduel
+ok 47 - dégressif : coefficient, prorata mensuel et bascule au quotient résiduel
+  ---
+  duration_ms: 0.415417
+  type: 'test'
+  ...
+# Subtest: les entrées incohérentes sont refusées avant tout plan
+ok 48 - les entrées incohérentes sont refusées avant tout plan
+  ---
+  duration_ms: 0.202417
+  type: 'test'
+  ...
+# Subtest: la valeur amortissable respecte la précision monétaire au centime
+ok 49 - la valeur amortissable respecte la précision monétaire au centime
+  ---
+  duration_ms: 0.246833
+  type: 'test'
+  ...
+# Subtest: à propos garde la valeur et la frontière avant le fondateur
+ok 50 - à propos garde la valeur et la frontière avant le fondateur
+  ---
+  duration_ms: 0.863459
+  type: 'test'
+  ...
+# Subtest: à propos conserve les liens, les preuves et le CTA canonique
+ok 51 - à propos conserve les liens, les preuves et le CTA canonique
+  ---
+  duration_ms: 8.208792
+  type: 'test'
+  ...
+# Subtest: l’article FE n’est plus intercepté par une fonction de maintenance ni exclu de l’index
+ok 52 - l’article FE n’est plus intercepté par une fonction de maintenance ni exclu de l’index
+  ---
+  duration_ms: 0.532375
+  type: 'test'
+  ...
+# Subtest: la règle de conservation distingue la transition fiscale des pièces comptables
+ok 53 - la règle de conservation distingue la transition fiscale des pièces comptables
+  ---
+  duration_ms: 4.558542
+  type: 'test'
+  ...
+# Subtest: la note de suspension décrit le candidat fiscal corrigé sans déclarer sa publication
+ok 54 - la note de suspension décrit le candidat fiscal corrigé sans déclarer sa publication
+  ---
+  duration_ms: 0.470375
+  type: 'test'
+  ...
+# Subtest: tous les AVIF publics reçoivent uniquement noindex
+ok 55 - tous les AVIF publics reçoivent uniquement noindex
+  ---
+  duration_ms: 8.145708
+  type: 'test'
+  ...
+# Subtest: WebP, PNG et pages ne reçoivent pas de restriction d’indexation
+ok 56 - WebP, PNG et pages ne reçoivent pas de restriction d’indexation
+  ---
+  duration_ms: 10.534917
+  type: 'test'
+  ...
+# Subtest: la règle AVIF couvre aussi les nouveaux dossiers, sans englober les autres extensions
+ok 57 - la règle AVIF couvre aussi les nouveaux dossiers, sans englober les autres extensions
+  ---
+  duration_ms: 0.319584
+  type: 'test'
+  ...
+# Subtest: official grid: all boundaries and adjacent cent
+ok 58 - official grid: all boundaries and adjacent cent
+  ---
+  duration_ms: 3.125875
+  type: 'test'
+  ...
+# Subtest: exact decomposition; budget separate
+ok 59 - exact decomposition; budget separate
+  ---
+  duration_ms: 0.19425
+  type: 'test'
+  ...
+# Subtest: all exclusions and unknown suspend
+ok 60 - all exclusions and unknown suspend
+  ---
+  duration_ms: 2.311667
+  type: 'test'
+  ...
+# Subtest: alert applies to programme, never interval
+ok 61 - alert applies to programme, never interval
+  ---
+  duration_ms: 0.6655
+  type: 'test'
+  ...
+# Subtest: reject ambiguity, unit, negatives, missing
+ok 62 - reject ambiguity, unit, negatives, missing
+  ---
+  duration_ms: 0.83725
+  type: 'test'
+  ...
+# Subtest: reprise, safe CSV, inert HTML
+ok 63 - reprise, safe CSV, inert HTML
+  ---
+  duration_ms: 10.536708
+  type: 'test'
+  ...
+# Subtest: official transcript, proof fixture and export provenance
+ok 64 - official transcript, proof fixture and export provenance
+  ---
+  duration_ms: 1.394334
+  type: 'test'
+  ...
+# Subtest: bibliothèque : livraison filtrée GET/HEAD, sans beacon ni réutilisation du corps non filtré
+ok 65 - bibliothèque : livraison filtrée GET/HEAD, sans beacon ni réutilisation du corps non filtré
+  ---
+  duration_ms: 35.2115
+  type: 'test'
+  ...
+# Subtest: bibliothèque : no-transform scoped et CSP locale conservée
+ok 66 - bibliothèque : no-transform scoped et CSP locale conservée
+  ---
+  duration_ms: 0.491417
+  type: 'test'
+  ...
+# Subtest: bibliothèque construite : metadata, corps statique, médias, sitemap et entrants contextuels
+ok 67 - bibliothèque construite : metadata, corps statique, médias, sitemap et entrants contextuels
+  ---
+  duration_ms: 10.904542
+  type: 'test'
+  ...
+# Subtest: douze fiches originales, complètes et compatibles avec le moteur partagé
+ok 68 - douze fiches originales, complètes et compatibles avec le moteur partagé
+  ---
+  duration_ms: 5.704292
+  type: 'test'
+  ...
+# Subtest: filtres combinés, accents, tâche et état vide
+ok 69 - filtres combinés, accents, tâche et état vide
+  ---
+  duration_ms: 0.80775
+  type: 'test'
+  ...
+# Subtest: transfert versionné : ID public seulement, inconnu et payload altéré refusés
+ok 70 - transfert versionné : ID public seulement, inconnu et payload altéré refusés
+  ---
+  duration_ms: 0.165208
+  type: 'test'
+  ...
+# Subtest: ANC : domaine officiel et éditeur ANC reconnus sans remplacer les preuves
+ok 71 - ANC : domaine officiel et éditeur ANC reconnus sans remplacer les preuves
+  ---
+  duration_ms: 974.285459
+  type: 'test'
+  ...
+# Subtest: ANC : domaine officiel et éditeur Autorité des normes comptables reconnus sans remplacer les preuves
+ok 72 - ANC : domaine officiel et éditeur Autorité des normes comptables reconnus sans remplacer les preuves
+  ---
+  duration_ms: 1107.522333
+  type: 'test'
+  ...
+# Subtest: ANC : refus du couple ANC / https://anc.gouv.fr.evil.example/pcg
+ok 73 - ANC : refus du couple ANC / https://anc.gouv.fr.evil.example/pcg
+  ---
+  duration_ms: 1077.322292
+  type: 'test'
+  ...
+# Subtest: ANC : refus du couple ANC / https://fakeanc.gouv.fr/pcg
+ok 74 - ANC : refus du couple ANC / https://fakeanc.gouv.fr/pcg
+  ---
+  duration_ms: 1339.469792
+  type: 'test'
+  ...
+# Subtest: ANC : refus du couple ANC / https://www.urssaf.fr/pcg
+ok 75 - ANC : refus du couple ANC / https://www.urssaf.fr/pcg
+  ---
+  duration_ms: 1565.94
+  type: 'test'
+  ...
+# Subtest: ANC : refus du couple Urssaf / https://www.anc.gouv.fr/pcg
+ok 76 - ANC : refus du couple Urssaf / https://www.anc.gouv.fr/pcg
+  ---
+  duration_ms: 1166.215959
+  type: 'test'
+  ...
+# Subtest: ANC : refus du couple ANC privée / https://www.anc.gouv.fr/pcg
+ok 77 - ANC : refus du couple ANC privée / https://www.anc.gouv.fr/pcg
+  ---
+  duration_ms: 1325.151541
+  type: 'test'
+  ...
+# Subtest: service : cible de collection existante /automatisation/rapprochement-bancaire
+ok 78 - service : cible de collection existante /automatisation/rapprochement-bancaire
+  ---
+  duration_ms: 1256.580167
+  type: 'test'
+  ...
+# Subtest: service : cible de collection existante /automatisation/rapprochement-bancaire?origine=blog\#preuve
+ok 79 - service : cible de collection existante /automatisation/rapprochement-bancaire?origine=blog\#preuve
+  ---
+  duration_ms: 1229.10225
+  type: 'test'
+  ...
+# Subtest: service : refus sans cible réelle {"link":"/automatisation/service-inexistant"}
+ok 80 - service : refus sans cible réelle {"link":"/automatisation/service-inexistant"}
+  ---
+  duration_ms: 1234.614083
+  type: 'test'
+  ...
+# Subtest: service : refus sans cible réelle {"link":"/automatisation/rapprochement-bancaire","route":false}
+ok 81 - service : refus sans cible réelle {"link":"/automatisation/rapprochement-bancaire","route":false}
+  ---
+  duration_ms: 1456.863375
+  type: 'test'
+  ...
+# Subtest: service : refus sans cible réelle {"link":"/automatisation/rapprochement-bancaire","content":false}
+ok 82 - service : refus sans cible réelle {"link":"/automatisation/rapprochement-bancaire","content":false}
+  ---
+  duration_ms: 1226.05775
+  type: 'test'
+  ...
+# Subtest: service : refus sans cible réelle {"link":"/automatisation/../rapprochement-bancaire"}
+ok 83 - service : refus sans cible réelle {"link":"/automatisation/../rapprochement-bancaire"}
+  ---
+  duration_ms: 1592.03325
+  type: 'test'
+  ...
+# Subtest: exact-head independent QA and CI allow a procedural blog PR
+ok 84 - exact-head independent QA and CI allow a procedural blog PR
+  ---
+  duration_ms: 0.8705
+  type: 'test'
+  ...
+# Subtest: blog article and recipe paths remain eligible
+ok 85 - blog article and recipe paths remain eligible
+  ---
+  duration_ms: 0.230875
+  type: 'test'
+  ...
+# Subtest: all check-run pages are counted, including a failed earlier run
+ok 86 - all check-run pages are counted, including a failed earlier run
+  ---
+  duration_ms: 0.305875
+  type: 'test'
+  ...
+# Subtest: repository policy exception requires PR \#3 and the reviewed policy blob after rebasing
+ok 87 - repository policy exception requires PR \#3 and the reviewed policy blob after rebasing
+  ---
+  duration_ms: 0.099875
+  type: 'test'
+  ...
+# Subtest: merge requires a pristine installed main checkout at the expected base
+ok 88 - merge requires a pristine installed main checkout at the expected base
+  ---
+  duration_ms: 0.275667
+  type: 'test'
+  ...
+# Subtest: CLI validates the PR \#3 policy blob and refuses merge from a candidate checkout
+ok 89 - CLI validates the PR \#3 policy blob and refuses merge from a candidate checkout
+  ---
+  duration_ms: 3216.249292
+  type: 'test'
+  ...
+# Subtest: refuses draft
+ok 90 - refuses draft
+  ---
+  duration_ms: 0.210416
+  type: 'test'
+  ...
+# Subtest: refuses moved head
+ok 91 - refuses moved head
+  ---
+  duration_ms: 0.080166
+  type: 'test'
+  ...
+# Subtest: refuses moved main
+ok 92 - refuses moved main
+  ---
+  duration_ms: 0.27175
+  type: 'test'
+  ...
+# Subtest: refuses conflict
+ok 93 - refuses conflict
+  ---
+  duration_ms: 0.377084
+  type: 'test'
+  ...
+# Subtest: refuses stale QA
+ok 94 - refuses stale QA
+  ---
+  duration_ms: 0.123333
+  type: 'test'
+  ...
+# Subtest: refuses failed QA
+ok 95 - refuses failed QA
+  ---
+  duration_ms: 0.050834
+  type: 'test'
+  ...
+# Subtest: refuses conditional QA
+ok 96 - refuses conditional QA
+  ---
+  duration_ms: 0.039209
+  type: 'test'
+  ...
+# Subtest: refuses conditional QA summary
+ok 97 - refuses conditional QA summary
+  ---
+  duration_ms: 0.043375
+  type: 'test'
+  ...
+# Subtest: refuses qualified QA summary
+ok 98 - refuses qualified QA summary
+  ---
+  duration_ms: 0.038583
+  type: 'test'
+  ...
+# Subtest: refuses implicit QA caveat
+ok 99 - refuses implicit QA caveat
+  ---
+  duration_ms: 0.038042
+  type: 'test'
+  ...
+# Subtest: refuses QA for another PR
+ok 100 - refuses QA for another PR
+  ---
+  duration_ms: 0.033834
+  type: 'test'
+  ...
+# Subtest: refuses contradictory CI head
+ok 101 - refuses contradictory CI head
+  ---
+  duration_ms: 0.031166
+  type: 'test'
+  ...
+# Subtest: refuses CI not verified
+ok 102 - refuses CI not verified
+  ---
+  duration_ms: 0.03625
+  type: 'test'
+  ...
+# Subtest: refuses non-independent QA
+ok 103 - refuses non-independent QA
+  ---
+  duration_ms: 0.033042
+  type: 'test'
+  ...
+# Subtest: refuses QA completed by a different profile
+ok 104 - refuses QA completed by a different profile
+  ---
+  duration_ms: 0.032959
+  type: 'test'
+  ...
+# Subtest: refuses QA run without a profile
+ok 105 - refuses QA run without a profile
+  ---
+  duration_ms: 0.0375
+  type: 'test'
+  ...
+# Subtest: refuses wrong check SHA
+ok 106 - refuses wrong check SHA
+  ---
+  duration_ms: 0.034583
+  type: 'test'
+  ...
+# Subtest: refuses failed check
+ok 107 - refuses failed check
+  ---
+  duration_ms: 0.034125
+  type: 'test'
+  ...
+# Subtest: refuses concurrent failed check
+ok 108 - refuses concurrent failed check
+  ---
+  duration_ms: 0.041167
+  type: 'test'
+  ...
+# Subtest: refuses concurrent pending check
+ok 109 - refuses concurrent pending check
+  ---
+  duration_ms: 0.1705
+  type: 'test'
+  ...
+# Subtest: refuses truncated check response
+ok 110 - refuses truncated check response
+  ---
+  duration_ms: 0.060375
+  type: 'test'
+  ...
+# Subtest: refuses CI workflow modification
+ok 111 - refuses CI workflow modification
+  ---
+  duration_ms: 0.049208
+  type: 'test'
+  ...
+# Subtest: refuses unreviewed policy modification
+ok 112 - refuses unreviewed policy modification
+  ---
+  duration_ms: 0.042459
+  type: 'test'
+  ...
+# Subtest: refuses unrelated page
+ok 113 - refuses unrelated page
+  ---
+  duration_ms: 0.043625
+  type: 'test'
+  ...
+# Subtest: refuses glossary manifest outside blog
+ok 114 - refuses glossary manifest outside blog
+  ---
+  duration_ms: 0.038084
+  type: 'test'
+  ...
+# Subtest: refuses sitewide SEO integrity script
+ok 115 - refuses sitewide SEO integrity script
+  ---
+  duration_ms: 0.032958
+  type: 'test'
+  ...
+# Subtest: refuses global image asset
+ok 116 - refuses global image asset
+  ---
+  duration_ms: 0.037625
+  type: 'test'
+  ...
+# Subtest: refuses global image registry
+ok 117 - refuses global image registry
+  ---
+  duration_ms: 0.037
+  type: 'test'
+  ...
+# Subtest: refuses global llms policy
+ok 118 - refuses global llms policy
+  ---
+  duration_ms: 0.096291
+  type: 'test'
+  ...
+# Subtest: refuses push policy
+ok 119 - refuses push policy
+  ---
+  duration_ms: 0.041958
+  type: 'test'
+  ...
+# Subtest: refuses push policy test
+ok 120 - refuses push policy test
+  ---
+  duration_ms: 0.034125
+  type: 'test'
+  ...
+# Subtest: refuses global script disguised as blog
+ok 121 - refuses global script disguised as blog
+  ---
+  duration_ms: 0.033459
+  type: 'test'
+  ...
+# Subtest: refuses global script test disguised as blog
+ok 122 - refuses global script test disguised as blog
+  ---
+  duration_ms: 0.035
+  type: 'test'
+  ...
+# Subtest: refuses blog prefix directory traversal
+ok 123 - refuses blog prefix directory traversal
+  ---
+  duration_ms: 0.033708
+  type: 'test'
+  ...
+# Subtest: refuses blog-like sibling script
+ok 124 - refuses blog-like sibling script
+  ---
+  duration_ms: 0.0335
+  type: 'test'
+  ...
+# Subtest: normalise une liste explicite de slugs de preview sans ouvrir tous les brouillons
+ok 125 - normalise une liste explicite de slugs de preview sans ouvrir tous les brouillons
+  ---
+  duration_ms: 1.897458
+  type: 'test'
+  ...
+# Subtest: prépare un paquet uniquement si chaque candidat du lot possède un gate PASS correspondant
+ok 126 - prépare un paquet uniquement si chaque candidat du lot possède un gate PASS correspondant
+  ---
+  duration_ms: 9.088917
+  type: 'test'
+  ...
+# Subtest: vérifie dans le paquet que chaque article lie l’autre et que les deux destinations existent
+ok 127 - vérifie dans le paquet que chaque article lie l’autre et que les deux destinations existent
+  ---
+  duration_ms: 21.487083
+  type: 'test'
+  ...
+# Subtest: la preview tolère le slug voisin mais refuse sa propre URL indexée
+ok 128 - la preview tolère le slug voisin mais refuse sa propre URL indexée
+  ---
+  duration_ms: 13.212
+  type: 'test'
+  ...
+# Subtest: le contrôle de production exige toutes les pages du lot dans le même build
+ok 129 - le contrôle de production exige toutes les pages du lot dans le même build
+  ---
+  duration_ms: 3.983458
+  type: 'test'
+  ...
+# Subtest: le sitemap et le RSS refusent un slug absent même si un autre slug le prolonge
+ok 130 - le sitemap et le RSS refusent un slug absent même si un autre slug le prolonge
+  ---
+  duration_ms: 4.231708
+  type: 'test'
+  ...
+# Subtest: le paquet de revue sollicite un reçu opérateur borné aux octets, non un go humain routinier
+ok 131 - le paquet de revue sollicite un reçu opérateur borné aux octets, non un go humain routinier
+  ---
+  duration_ms: 6.933291
+  type: 'test'
+  ...
+# Subtest: les quatre écrans CAC réservés sont présents sans publication
+ok 132 - les quatre écrans CAC réservés sont présents sans publication
+  ---
+  duration_ms: 60.741958
+  type: 'test'
+  ...
+# Subtest: le renderer refuse paire non mandatée avant rendu
+ok 133 - le renderer refuse paire non mandatée avant rendu
+  ---
+  duration_ms: 630.065792
+  type: 'test'
+  ...
+# Subtest: le renderer refuse identifiant arbitraire avant rendu
+ok 134 - le renderer refuse identifiant arbitraire avant rendu
+  ---
+  duration_ms: 464.317667
+  type: 'test'
+  ...
+# Subtest: le renderer refuse réservation arbitraire avant rendu
+ok 135 - le renderer refuse réservation arbitraire avant rendu
+  ---
+  duration_ms: 1019.124166
+  type: 'test'
+  ...
+# Subtest: le renderer refuse absence de réservation avant rendu
+ok 136 - le renderer refuse absence de réservation avant rendu
+  ---
+  duration_ms: 881.417208
+  type: 'test'
+  ...
+# Subtest: le renderer refuse recette existante divergente avant rendu
+ok 137 - le renderer refuse recette existante divergente avant rendu
+  ---
+  duration_ms: 990.333833
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : h2a-france.org, H2A, accepté dans les deux chemins
+ok 138 - CAC domaine/éditeur : h2a-france.org, H2A, accepté dans les deux chemins
+  ---
+  duration_ms: 930.677584
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : h2a-france.org, Haute autorité de l’audit, accepté dans les deux chemins
+ok 139 - CAC domaine/éditeur : h2a-france.org, Haute autorité de l’audit, accepté dans les deux chemins
+  ---
+  duration_ms: 1073.376125
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : doc.cncc.fr, CNCC, accepté dans les deux chemins
+ok 140 - CAC domaine/éditeur : doc.cncc.fr, CNCC, accepté dans les deux chemins
+  ---
+  duration_ms: 1005.347708
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : doc.cncc.fr, Compagnie nationale des commissaires aux comptes, accepté dans les deux chemins
+ok 141 - CAC domaine/éditeur : doc.cncc.fr, Compagnie nationale des commissaires aux comptes, accepté dans les deux chemins
+  ---
+  duration_ms: 1431.191792
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : cncc.fr, CNCC, accepté dans les deux chemins
+ok 142 - CAC domaine/éditeur : cncc.fr, CNCC, accepté dans les deux chemins
+  ---
+  duration_ms: 1439.305375
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : cncc.fr, Compagnie nationale des commissaires aux comptes, accepté dans les deux chemins
+ok 143 - CAC domaine/éditeur : cncc.fr, Compagnie nationale des commissaires aux comptes, accepté dans les deux chemins
+  ---
+  duration_ms: 1141.423667
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : h2a-france.org.evil.example, H2A, refusé dans les deux chemins
+ok 144 - CAC domaine/éditeur : h2a-france.org.evil.example, H2A, refusé dans les deux chemins
+  ---
+  duration_ms: 1200.296042
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : fake-h2a-france.org, H2A, refusé dans les deux chemins
+ok 145 - CAC domaine/éditeur : fake-h2a-france.org, H2A, refusé dans les deux chemins
+  ---
+  duration_ms: 1287.001916
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : other.h2a-france.org, H2A, refusé dans les deux chemins
+ok 146 - CAC domaine/éditeur : other.h2a-france.org, H2A, refusé dans les deux chemins
+  ---
+  duration_ms: 1194.74775
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : doc.cncc.fr.evil.example, CNCC, refusé dans les deux chemins
+ok 147 - CAC domaine/éditeur : doc.cncc.fr.evil.example, CNCC, refusé dans les deux chemins
+  ---
+  duration_ms: 1296.537917
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : fake-cncc.fr, CNCC, refusé dans les deux chemins
+ok 148 - CAC domaine/éditeur : fake-cncc.fr, CNCC, refusé dans les deux chemins
+  ---
+  duration_ms: 1542.585417
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : other.cncc.fr, CNCC, refusé dans les deux chemins
+ok 149 - CAC domaine/éditeur : other.cncc.fr, CNCC, refusé dans les deux chemins
+  ---
+  duration_ms: 1349.896542
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : cncc.fr, H2A, refusé dans les deux chemins
+ok 150 - CAC domaine/éditeur : cncc.fr, H2A, refusé dans les deux chemins
+  ---
+  duration_ms: 1468.918375
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : h2a-france.org, CNCC, refusé dans les deux chemins
+ok 151 - CAC domaine/éditeur : h2a-france.org, CNCC, refusé dans les deux chemins
+  ---
+  duration_ms: 1280.092833
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : h2a-france.org, Cabinet fictif, refusé dans les deux chemins
+ok 152 - CAC domaine/éditeur : h2a-france.org, Cabinet fictif, refusé dans les deux chemins
+  ---
+  duration_ms: 1284.962333
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : doc.cncc.fr, Cabinet fictif, refusé dans les deux chemins
+ok 153 - CAC domaine/éditeur : doc.cncc.fr, Cabinet fictif, refusé dans les deux chemins
+  ---
+  duration_ms: 1195.500917
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : evil.example, Haute autorité de l’audit, refusé dans les deux chemins
+ok 154 - CAC domaine/éditeur : evil.example, Haute autorité de l’audit, refusé dans les deux chemins
+  ---
+  duration_ms: 1482.56175
+  type: 'test'
+  ...
+# Subtest: CAC domaine/éditeur : evil.example, Compagnie nationale des commissaires aux comptes, refusé dans les deux chemins
+ok 155 - CAC domaine/éditeur : evil.example, Compagnie nationale des commissaires aux comptes, refusé dans les deux chemins
+  ---
+  duration_ms: 1236.088541
+  type: 'test'
+  ...
+# Subtest: la forge accepte les cinq pôles CAC du contrat de contenu existant
+ok 156 - la forge accepte les cinq pôles CAC du contrat de contenu existant
+  ---
+  duration_ms: 18.737792
+  type: 'test'
+  ...
+# Subtest: une revue unique couvre les deux grilles en conservant verdicts unitaires et indépendance
+ok 157 - une revue unique couvre les deux grilles en conservant verdicts unitaires et indépendance
+  ---
+  duration_ms: 2590.565042
+  type: 'test'
+  ...
+# Subtest: le contexte brut conserve la réserve et la fermeture réelle du paragraphe officiel
+ok 158 - le contexte brut conserve la réserve et la fermeture réelle du paragraphe officiel
+  ---
+  duration_ms: 2.999375
+  type: 'test'
+  ...
+# Subtest: le gate qualifie la frontière HTML sans accepter un contexte fabriqué ou ignoré
+ok 159 - le gate qualifie la frontière HTML sans accepter un contexte fabriqué ou ignoré
+  ---
+  duration_ms: 4335.873958
+  type: 'test'
+  ...
+# Subtest: trois articles EC/CAC par jour, quinze par semaine ISO, vendredi inclus
+ok 160 - trois articles EC/CAC par jour, quinze par semaine ISO, vendredi inclus
+  ---
+  duration_ms: 1.123083
+  type: 'test'
+  ...
+# Subtest: réservation ordinaire du dimanche refusée
+ok 161 - réservation ordinaire du dimanche refusée
+  ---
+  duration_ms: 0.081167
+  type: 'test'
+  ...
+# Subtest: citation exacte et réserves conservées : conservés six ans
+ok 162 - citation exacte et réserves conservées : conservés six ans
+  ---
+  duration_ms: 18.590375
+  type: 'test'
+  ...
+# Subtest: citation exacte et réserves conservées : conservés  six  ans
+ok 163 - citation exacte et réserves conservées : conservés  six  ans
+  ---
+  duration_ms: 0.6545
+  type: 'test'
+  ...
+# Subtest: citation exacte et réserves conservées : expire après le 1<sup>er</sup> janvier 2027
+ok 164 - citation exacte et réserves conservées : expire après le 1<sup>er</sup> janvier 2027
+  ---
+  duration_ms: 0.561208
+  type: 'test'
+  ...
+# Subtest: contexte brut sans contamination non visible : <script>réserve invisible script</script>
+ok 165 - contexte brut sans contamination non visible : <script>réserve invisible script</script>
+  ---
+  duration_ms: 0.445625
+  type: 'test'
+  ...
+# Subtest: contexte brut sans contamination non visible : <style>réserve invisible style</style>
+ok 166 - contexte brut sans contamination non visible : <style>réserve invisible style</style>
+  ---
+  duration_ms: 0.30575
+  type: 'test'
+  ...
+# Subtest: contexte brut sans contamination non visible : <noscript>réserve invisible noscript</noscript>
+ok 167 - contexte brut sans contamination non visible : <noscript>réserve invisible noscript</noscript>
+  ---
+  duration_ms: 0.226583
+  type: 'test'
+  ...
+# Subtest: contexte brut sans contamination non visible : <template>réserve invisible template</template>
+ok 168 - contexte brut sans contamination non visible : <template>réserve invisible template</template>
+  ---
+  duration_ms: 0.346917
+  type: 'test'
+  ...
+# Subtest: contexte brut sans contamination non visible : <!-- réserve invisible commentaire -->
+ok 169 - contexte brut sans contamination non visible : <!-- réserve invisible commentaire -->
+  ---
+  duration_ms: 0.381667
+  type: 'test'
+  ...
+# Subtest: une citation uniquement cachée ne fournit aucun contexte attesté : <p>Texte visible.<script>taux de 7 %, réserve inventée.</script></p>
+ok 170 - une citation uniquement cachée ne fournit aucun contexte attesté : <p>Texte visible.<script>taux de 7 %, réserve inventée.</script></p>
+  ---
+  duration_ms: 0.720166
+  type: 'test'
+  ...
+# Subtest: une citation uniquement cachée ne fournit aucun contexte attesté : <script>taux de 7 %, réserve inventée.</script>
+ok 171 - une citation uniquement cachée ne fournit aucun contexte attesté : <script>taux de 7 %, réserve inventée.</script>
+  ---
+  duration_ms: 0.529667
+  type: 'test'
+  ...
+# Subtest: une citation uniquement cachée ne fournit aucun contexte attesté : <!-- taux de 7 %, réserve inventée. -->
+ok 172 - une citation uniquement cachée ne fournit aucun contexte attesté : <!-- taux de 7 %, réserve inventée. -->
+  ---
+  duration_ms: 0.188792
+  type: 'test'
+  ...
+# Subtest: citation brute conservée en texte simple ou paragraphe implicite : Dans ce cas, taux de 7 %, sous réserve du plafond applicable. Phrase suivante.
+ok 173 - citation brute conservée en texte simple ou paragraphe implicite : Dans ce cas, taux de 7 %, sous réserve du plafond applicable. Phrase suivante.
+  ---
+  duration_ms: 0.062416
+  type: 'test'
+  ...
+# Subtest: citation brute conservée en texte simple ou paragraphe implicite : <p>Dans ce cas, taux de 7 %, sous réserve du plafond applicable. Phrase suivante.
+ok 174 - citation brute conservée en texte simple ou paragraphe implicite : <p>Dans ce cas, taux de 7 %, sous réserve du plafond applicable. Phrase suivante.
+  ---
+  duration_ms: 0.110042
+  type: 'test'
+  ...
+# Subtest: chaque article publié reçoit un pont commercial explicite après le corps éditorial
+not ok 175 - chaque article publié reçoit un pont commercial explicite après le corps éditorial
+  ---
+  duration_ms: 8.039083
+  type: 'test'
+  location: '/Users/kevinkitanga/.hermes/kanban/workspaces/t_0380a3db/site/tests/scripts/blog-commercial-links.test.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'automatiser-avec-ia-sans-changer-logiciel',
+    -   'automatiser-l-entree-en-relation-d-un-nouveau-client',
+        'automatiser-la-relance-des-pieces-clients',
+        'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
+        'automatiser-un-cabinet-cac-la-carte-des-taches',
+        'automatiser-un-cabinet-comptable-la-carte-des-taches',
+        'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'automatiser-avec-ia-sans-changer-logiciel'
+    1: 'automatiser-l-entree-en-relation-d-un-nouveau-client'
+    2: 'automatiser-la-relance-des-pieces-clients'
+    3: 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
+    4: 'automatiser-un-cabinet-cac-la-carte-des-taches'
+    5: 'automatiser-un-cabinet-comptable-la-carte-des-taches'
+    6: 'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps'
+    7: 'cac-reception-fec-constat'
+    8: 'comprendre-les-comptes-rendus-metier-dsn'
+    9: 'controler-les-bulletins-de-paie-avant-la-dsn'
+    10: 'ia-comptabilite-confidentialite-donnees'
+    11: 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
+    12: 'logiciel-ia-comptabilite'
+    13: 'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'
+    14: 'prompt-chatgpt-expert-comptable'
+    15: 'suivre-la-production-sociale-dans-excel'
+    16: 'tests-verts-et-regle-des-trois-passes'
+    17: 'utiliser-chatgpt-cabinet-comptable'
+    18: 'verifier-reponse-ia-comptabilite'
+  actual:
+    0: 'automatiser-avec-ia-sans-changer-logiciel'
+    1: 'automatiser-la-relance-des-pieces-clients'
+    2: 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier'
+    3: 'automatiser-un-cabinet-cac-la-carte-des-taches'
+    4: 'automatiser-un-cabinet-comptable-la-carte-des-taches'
+    5: 'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps'
+    6: 'cac-reception-fec-constat'
+    7: 'comprendre-les-comptes-rendus-metier-dsn'
+    8: 'controler-les-bulletins-de-paie-avant-la-dsn'
+    9: 'ia-comptabilite-confidentialite-donnees'
+    10: 'intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain'
+    11: 'logiciel-ia-comptabilite'
+    12: 'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils'
+    13: 'prompt-chatgpt-expert-comptable'
+    14: 'suivre-la-production-sociale-dans-excel'
+    15: 'tests-verts-et-regle-des-trois-passes'
+    16: 'utiliser-chatgpt-cabinet-comptable'
+    17: 'verifier-reponse-ia-comptabilite'
+  operator: 'deepStrictEqual'
+  stack: |-
+    verifierCardinalite (file:///Users/kevinkitanga/.hermes/kanban/workspaces/t_0380a3db/site/tests/scripts/blog-commercial-links.test.mjs:25:10)
+    TestContext.<anonymous> (file:///Users/kevinkitanga/.hermes/kanban/workspaces/t_0380a3db/site/tests/scripts/blog-commercial-links.test.mjs:29:3)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39
+ok 176 - le passage de 9 à 12 articles publiés ne double-compte pas les trois ponts W39
+  ---
+  duration_ms: 4.274792
+  type: 'test'
+  ...
+# Subtest: les trois articles W39 ont un pont explicite avant leur publication, sans repli générique
+ok 177 - les trois articles W39 ont un pont explicite avant leur publication, sans repli générique
+  ---
+  duration_ms: 0.116125
+  type: 'test'
+  ...
+# Subtest: les articles spécialisés mènent directement à la page service correspondante
+ok 178 - les articles spécialisés mènent directement à la page service correspondante
+  ---
+  duration_ms: 0.13225
+  type: 'test'
+  ...
+# Subtest: le build rend le pont commercial attendu dans chaque article publié
+ok 179 - le build rend le pont commercial attendu dans chaque article publié
+  ---
+  duration_ms: 14.731042
+  type: 'test'
+  ...
+# Subtest: les dates techniques, liens HTTPS et empreintes ne changent pas le fond de la recette
+ok 180 - les dates techniques, liens HTTPS et empreintes ne changent pas le fond de la recette
+  ---
+  duration_ms: 0.89375
+  type: 'test'
+  ...
+# Subtest: un corps court ne déclenche aucun refus numérique de longueur
+ok 181 - un corps court ne déclenche aucun refus numérique de longueur
+  ---
+  duration_ms: 1093.253791
+  type: 'test'
+  ...
+# Subtest: une date de recette seule conserve le PASS de la revue sans modifier son avis
+ok 182 - une date de recette seule conserve le PASS de la revue sans modifier son avis
+  ---
+  duration_ms: 1626.661083
+  type: 'test'
+  ...
+# Subtest: un score SEO faible sans P0 est un conseil, pas un refus de revue
+ok 183 - un score SEO faible sans P0 est un conseil, pas un refus de revue
+  ---
+  duration_ms: 1376.937875
+  type: 'test'
+  ...
+# [TÉMOIN ROUGE CLAUSE 1] article-test : clause 1, légende de preuve invalide, provenance interne manquante ou consigne technique publique
+# [TÉMOIN ROUGE CLAUSE 2] article-test : clause 2, 6 H2 mais sommaire incomplet (sommaire absent)
+# [TÉMOIN ROUGE CLAUSE 3] article-test : clause 3, la meta-description n’ouvre sur aucune requête déclarée et mesurée — « La méthode en six étapes pour préparer le contrôle et ses preuves. »
+# [TÉMOIN ROUGE CLAUSE 4] article-test : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter
+# [TÉMOIN ROUGE CLAUSE 5] article-test : clause 5, H1, og:title et headline divergent — H1 « Contrôle bulletin de paie : la méthode du cabinet », og:title « Un autre titre », headline « Contrôle bulletin de paie : la méthode du cabinet »
+# Subtest: clause 1 — image directe liée à la recette ; une variante portrait est refusée
+ok 184 - clause 1 — image directe liée à la recette ; une variante portrait est refusée
+  ---
+  duration_ms: 41.8995
+  type: 'test'
+  ...
+# Subtest: le contrat vert contrôle chaque article de la collection sans slug codé en dur
+ok 185 - le contrat vert contrôle chaque article de la collection sans slug codé en dur
+  ---
+  duration_ms: 29.437333
+  type: 'test'
+  ...
+# Subtest: le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+ok 186 - le build public ignore seulement les brouillons absents ; leur preview reste contrôlée intégralement
+  ---
+  duration_ms: 14.404209
+  type: 'test'
+  ...
+# Subtest: un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+ok 187 - un slug explicitement demandé mais absent des sources échoue au lieu de valider zéro article
+  ---
+  duration_ms: 5.55675
+  type: 'test'
+  ...
+# Subtest: clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+ok 188 - clause 1 — le nombre seul ne refuse pas, chaque figure et preuve déclarée reste contrôlée
+  ---
+  duration_ms: 16.866125
+  type: 'test'
+  ...
+# Subtest: clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+ok 189 - clause 1 — zéro figure ne permet pas un corps rendu vide et n’impose aucune longueur
+  ---
+  duration_ms: 44.2745
+  type: 'test'
+  ...
+# Subtest: clause 1 — une légende technique publique fait échouer le contrat
+ok 190 - clause 1 — une légende technique publique fait échouer le contrat
+  ---
+  duration_ms: 4.704584
+  type: 'test'
+  ...
+# Subtest: clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+ok 191 - clause 1 — la source et la date informatives sont permises, pas une attestation ou consigne
+  ---
+  duration_ms: 18.182791
+  type: 'test'
+  ...
+# Subtest: clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+ok 192 - clause 1 — nouvelles figures sans légende refusées, ancien dossier épinglé conservé
+  ---
+  duration_ms: 13.2095
+  type: 'test'
+  ...
+# Subtest: clause 1 — image directe sans légende exige provenance liée à la recette
+ok 193 - clause 1 — image directe sans légende exige provenance liée à la recette
+  ---
+  duration_ms: 36.797791
+  type: 'test'
+  ...
+# Subtest: clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+ok 194 - clause 1 — deux figures avec le même identifiant ne comptent pas comme deux preuves
+  ---
+  duration_ms: 4.59625
+  type: 'test'
+  ...
+# Subtest: clause 2 — dès six H2, le sommaire porte toutes les ancres
+ok 195 - clause 2 — dès six H2, le sommaire porte toutes les ancres
+  ---
+  duration_ms: 3.413792
+  type: 'test'
+  ...
+# Subtest: clause 3 — la meta-description ouvre sur la requête mesurée
+ok 196 - clause 3 — la meta-description ouvre sur la requête mesurée
+  ---
+  duration_ms: 3.692208
+  type: 'test'
+  ...
+# Subtest: clause 4 — la rubrique est déclarée, construite et réciproque
+ok 197 - clause 4 — la rubrique est déclarée, construite et réciproque
+  ---
+  duration_ms: 3.386167
+  type: 'test'
+  ...
+# Subtest: clause 5 — H1, Open Graph et headline restent identiques
+ok 198 - clause 5 — H1, Open Graph et headline restent identiques
+  ---
+  duration_ms: 2.557166
+  type: 'test'
+  ...
+# Subtest: clause 4 — une page de rubrique sans lien retour échoue
+ok 199 - clause 4 — une page de rubrique sans lien retour échoue
+  ---
+  duration_ms: 3.196167
+  type: 'test'
+  ...
+# Subtest: clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+ok 200 - clause 5 — un titre d’onglet distinct exige une requête déclarée et mesurée
+  ---
+  duration_ms: 13.706417
+  type: 'test'
+  ...
+# (node:53213) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: une fixture importée avant minuit Paris prend une date cohérente à sa création après minuit Paris, sans accepter une revue réellement périmée
+ok 201 - une fixture importée avant minuit Paris prend une date cohérente à sa création après minuit Paris, sans accepter une revue réellement périmée
+  ---
+  duration_ms: 2138.7445
+  type: 'test'
+  ...
+# Subtest: les scénarios de forge restent valides le vendredi, samedi et dimanche dans deux timezones
+ok 202 - les scénarios de forge restent valides le vendredi, samedi et dimanche dans deux timezones
+  ---
+  duration_ms: 89224.184458
+  type: 'test'
+  ...
+# Subtest: materialisation and publication seal archive a bounded backlink without rewriting the opinion
+ok 203 - materialisation and publication seal archive a bounded backlink without rewriting the opinion
+  ---
+  duration_ms: 2498.512958
+  type: 'test'
+  ...
+# Subtest: materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable
+ok 204 - materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable
+  ---
+  duration_ms: 7886.470709
+  type: 'test'
+  ...
+# Subtest: semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO
+ok 205 - semaineIso et les plafonds de cadence : deux par jour, quatre par semaine ISO
+  ---
+  duration_ms: 0.958333
+  type: 'test'
+  ...
+# Subtest: les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ordinaires
+ok 206 - les Cicatrices ont leur samedi hebdomadaire en sus des quatre articles ordinaires
+  ---
+  duration_ms: 0.267875
+  type: 'test'
+  ...
+# Subtest: le rattrapage W39 est limité au slug signé du 27 au 29 septembre sans seconde Cicatrice W39
+ok 207 - le rattrapage W39 est limité au slug signé du 27 au 29 septembre sans seconde Cicatrice W39
+  ---
+  duration_ms: 3.578709
+  type: 'test'
+  ...
+# Subtest: le découpage en unités et les jetons suivent le pipeline
+ok 208 - le découpage en unités et les jetons suivent le pipeline
+  ---
+  duration_ms: 0.592292
+  type: 'test'
+  ...
+# Subtest: les nouvelles preuves inline gardent la provenance en recette et rendent une image directe
+ok 209 - les nouvelles preuves inline gardent la provenance en recette et rendent une image directe
+  ---
+  duration_ms: 0.468958
+  type: 'test'
+  ...
+# Subtest: le frontmatter reproduit le manifeste champ pour champ
+ok 210 - le frontmatter reproduit le manifeste champ pour champ
+  ---
+  duration_ms: 0.306834
+  type: 'test'
+  ...
+# Subtest: l’autorité blog déléguée ouvre le statut production sans nouvelle saisie de go personnel
+ok 211 - l’autorité blog déléguée ouvre le statut production sans nouvelle saisie de go personnel
+  ---
+  duration_ms: 0.251333
+  type: 'test'
+  ...
+# Subtest: la forge refuse un H1 narratif avant de créer le candidat
+ok 212 - la forge refuse un H1 narratif avant de créer le candidat
+  ---
+  duration_ms: 28.760834
+  type: 'test'
+  ...
+# (node:53240) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: la forge rafraîchit la preuve source quand sa classification change le même jour
+ok 213 - la forge rafraîchit la preuve source quand sa classification change le même jour
+  ---
+  duration_ms: 2671.382291
+  type: 'test'
+  ...
+# Subtest: le report conserve les copies vérifiées mais date les claims et les revues du candidat
+ok 214 - le report conserve les copies vérifiées mais date les claims et les revues du candidat
+  ---
+  duration_ms: 3048.258083
+  type: 'test'
+  ...
+# Subtest: une ouverture neuve à 22h UTC porte la date Paris jusque dans le gate
+ok 215 - une ouverture neuve à 22h UTC porte la date Paris jusque dans le gate
+  ---
+  duration_ms: 2991.3235
+  type: 'test'
+  ...
+# Subtest: une ouverture qui franchit minuit Paris interrompt la préparation avant les revues et reprend au jour réel
+ok 216 - une ouverture qui franchit minuit Paris interrompt la préparation avant les revues et reprend au jour réel
+  ---
+  duration_ms: 2482.409417
+  type: 'test'
+  ...
+# Subtest: minuit Paris entre le jour implicite et la garde interrompt sans produire de revue de la veille
+ok 217 - minuit Paris entre le jour implicite et la garde interrompt sans produire de revue de la veille
+  ---
+  duration_ms: 28.438625
+  type: 'test'
+  ...
+# Subtest: la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification
+ok 218 - la forge ne réutilise que des copies intègres, âgées de sept jours au plus et de même classification
+  ---
+  duration_ms: 3166.029125
+  type: 'test'
+  ...
+# Subtest: le cache distingue jour Paris et instant futur aux frontières été/hiver et UTC
+ok 219 - le cache distingue jour Paris et instant futur aux frontières été/hiver et UTC
+  ---
+  duration_ms: 20486.302
+  type: 'test'
+  ...
+# Subtest: la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices
+ok 220 - la réinscription d’un candidat existant ne contourne pas le plafond des Cicatrices
+  ---
+  duration_ms: 2346.887667
+  type: 'test'
+  ...
+# Subtest: la réactivation d’une Cicatrice archivée ou bloquée recontrôle le plafond W39
+ok 221 - la réactivation d’une Cicatrice archivée ou bloquée recontrôle le plafond W39
+  ---
+  duration_ms: 4200.025917
+  type: 'test'
+  ...
+# Subtest: le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée
+ok 222 - le gate compare le corps signé après retrait du seul H1 identique au titre, sans masquer une phrase modifiée
+  ---
+  duration_ms: 3753.300958
+  type: 'test'
+  ...
+# Subtest: la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets
+ok 223 - la forge produit un dossier que le gate accepte, puis un dossier publié scellé sur ses octets
+  ---
+  duration_ms: 14281.8555
+  type: 'test'
+  ...
+# Subtest: l’exception courte refuse les citations vagues, non officielles, isolées ou non littérales
+ok 224 - l’exception courte refuse les citations vagues, non officielles, isolées ou non littérales
+  ---
+  duration_ms: 1.128625
+  type: 'test'
+  ...
+# Subtest: la citation normative courte H2A conserve son contexte et passe la forge puis le gate
+ok 225 - la citation normative courte H2A conserve son contexte et passe la forge puis le gate
+  ---
+  duration_ms: 8342.938292
+  type: 'test'
+  ...
+# Subtest: la forge refuse un claim dont la citation ne recouvre pas l’affirmation
+ok 226 - la forge refuse un claim dont la citation ne recouvre pas l’affirmation
+  ---
+  duration_ms: 2220.742917
+  type: 'test'
+  ...
+# Subtest: le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : visible
+ok 227 - le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : visible
+  ---
+  duration_ms: 2498.245583
+  type: 'test'
+  ...
+# Subtest: le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : accordéon display:none
+ok 228 - le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : accordéon display:none
+  ---
+  duration_ms: 2615.88475
+  type: 'test'
+  ...
+# Subtest: le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : accordéon hidden
+ok 229 - le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : accordéon hidden
+  ---
+  duration_ms: 2372.960208
+  type: 'test'
+  ...
+# Subtest: la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas
+ok 230 - la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas
+  ---
+  duration_ms: 0.494708
+  type: 'test'
+  ...
+# Subtest: la règle écrite : exigée pour un article daté à partir du 19/09/2026, ignorée avant
+ok 231 - la règle écrite : exigée pour un article daté à partir du 19/09/2026, ignorée avant
+  ---
+  duration_ms: 0.241042
+  type: 'test'
+  ...
+# Subtest: la règle écrite : chaque partie manquante est nommée, et deux lignes de rejeu ne suffisent pas
+ok 232 - la règle écrite : chaque partie manquante est nommée, et deux lignes de rejeu ne suffisent pas
+  ---
+  duration_ms: 0.209667
+  type: 'test'
+  ...
+# Subtest: la forge refuse de matérialiser un article nouveau sans sa règle écrite, et l’accepte avec
+ok 233 - la forge refuse de matérialiser un article nouveau sans sa règle écrite, et l’accepte avec
+  ---
+  duration_ms: 1445.6115
+  type: 'test'
+  ...
+# Subtest: HTML original : mesure native fidèle, planchers cosmétiques et provenance non IA
+ok 234 - HTML original : mesure native fidèle, planchers cosmétiques et provenance non IA
+  ---
+  duration_ms: 3181.461458
+  type: 'test'
+  ...

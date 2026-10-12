@@ -39,6 +39,7 @@ export const BLOG_RUBRIQUES = Object.freeze([
     articleIds: Object.freeze([
       'automatiser-la-relance-des-pieces-clients',
       'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier',
+      'automatiser-l-entree-en-relation-d-un-nouveau-client',
     ]),
   }),
   Object.freeze({

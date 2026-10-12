@@ -1,0 +1,96 @@
+TAP version 13
+# Subtest: le contrat central conserve les rubriques historiques et motive chaque exclusion du stock vivant
+ok 1 - le contrat central conserve les rubriques historiques et motive chaque exclusion du stock vivant
+  ---
+  duration_ms: 2.130708
+  type: 'test'
+  ...
+# Subtest: la liste de chaque hub vient des entrées visibles et ignore un article absent de la collection
+ok 2 - la liste de chaque hub vient des entrées visibles et ignore un article absent de la collection
+  ---
+  duration_ms: 0.316208
+  type: 'test'
+  ...
+# Subtest: une rubrique qui tombe sous deux articles visibles est refusée
+ok 3 - une rubrique qui tombe sous deux articles visibles est refusée
+  ---
+  duration_ms: 0.244333
+  type: 'test'
+  ...
+# (node:89282) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent
+ok 4 - un relevé de la nuit Paris reste frais sans emprunter le jour UTC précédent
+  ---
+  duration_ms: 18.074666
+  type: 'test'
+  ...
+# Subtest: le relevé de demande du lundi compte comme mesure, pas ses pannes, et vieillit comme les autres
+ok 5 - le relevé de demande du lundi compte comme mesure, pas ses pannes, et vieillit comme les autres
+  ---
+  duration_ms: 3.1985
+  type: 'test'
+  ...
+# Subtest: la mesure la plus récente gagne, qu’elle vienne de la forge ou du relevé de demande
+ok 6 - la mesure la plus récente gagne, qu’elle vienne de la forge ou du relevé de demande
+  ---
+  duration_ms: 2.532083
+  type: 'test'
+  ...
+# Subtest: un relevé de demande sans date lisible arrête la lecture au lieu d’être ignoré
+ok 7 - un relevé de demande sans date lisible arrête la lecture au lieu d’être ignoré
+  ---
+  duration_ms: 1.175459
+  type: 'test'
+  ...
+# Subtest: une mesure du lundi datée après le jour lu est ignorée, comme toute mesure future
+ok 8 - une mesure du lundi datée après le jour lu est ignorée, comme toute mesure future
+  ---
+  duration_ms: 2.585375
+  type: 'test'
+  ...
+# Subtest: un relevé du lundi entièrement en pannes n’est pas un relevé frais
+ok 9 - un relevé du lundi entièrement en pannes n’est pas un relevé frais
+  ---
+  duration_ms: 1.737375
+  type: 'test'
+  ...
+# Subtest: le préfiltre ouvre une semaine tant que son dimanche est dans la fenêtre
+ok 10 - le préfiltre ouvre une semaine tant que son dimanche est dans la fenêtre
+  ---
+  duration_ms: 1.391417
+  type: 'test'
+  ...
+# Subtest: un vieux relevé de demande abîmé ne bloque pas la porte ; un relevé frais abîmé l’arrête en se nommant
+ok 11 - un vieux relevé de demande abîmé ne bloque pas la porte ; un relevé frais abîmé l’arrête en se nommant
+  ---
+  duration_ms: 2.106292
+  type: 'test'
+  ...
+# Subtest: chaque H1 publié porte une requête mesurée, y compris une mesure sans suggestion
+ok 12 - chaque H1 publié porte une requête mesurée, y compris une mesure sans suggestion
+  ---
+  duration_ms: 258.419084
+  type: 'test'
+  ...
+# Subtest: le gardien rejette un H1 narratif fabriqué
+ok 13 - le gardien rejette un H1 narratif fabriqué
+  ---
+  duration_ms: 0.828084
+  type: 'test'
+  ...
+# Subtest: H1, Open Graph et JSON-LD portent le même titre intent-first ; l’onglet garde la même intention
+ok 14 - H1, Open Graph et JSON-LD portent le même titre intent-first ; l’onglet garde la même intention
+  ---
+  duration_ms: 216.610625
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 781.515542

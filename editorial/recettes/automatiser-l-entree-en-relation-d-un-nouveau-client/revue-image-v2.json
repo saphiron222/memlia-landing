@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "taskId": "t_9b185e18",
+  "deliveryTaskId": "t_0380a3db",
+  "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "reviewer": "qa — Hermes / openai-codex / gpt-6.1-sol",
+  "independent": true,
+  "checkedAt": "2026-10-12T23:46:17.538+02:00",
+  "timezone": "Europe/Paris",
+  "generationId": "exec-9ae9f716-1f67-4cb5-b6f2-f83e7162d0a1",
+  "provider": "OpenAI",
+  "generatedAt": "2026-10-12",
+  "nativeGenerationCompletedAt": "2026-10-12T13:14:52.606Z",
+  "model": "non communiqué par le générateur natif Codex",
+  "cost": null,
+  "credits": null,
+  "generationPerformedByReviewer": false,
+  "status": "PASS",
+  "verdict": "PASS",
+  "outcome": "approved",
+  "scope": "Couverture onboarding v2 et huit sorties locales ; pas une revue métier ni un PASS public.",
+  "sourceSha256": "e9698ec711d0e64110ddd2aa93d8ca611e2c67f96e2f0b14bb98a9d7db799637",
+  "provenanceSha256": "6e372741eb2f8fafcf2e465bfc546b5fd0d7dd33e4df2632f901ffb942faf5ec",
+  "criteria": {
+    "brief-six-components": {
+      "result": "PASS",
+      "observations": [
+        "Six composantes présentes : sujet, composition, style, palette, interdits, alt.",
+        "Prompt exact corroboré par requête native, revisedPrompt et provenance ; aucune réécriture historique.",
+        "Le terme historique matte ceramic est conservé sans l'attribuer au bloc de référence ; rendu réellement géométrique mat, isométrique et aéré."
+      ]
+    },
+    "generation-constraints": {
+      "result": "PASS",
+      "observations": [
+        "Source, WebP1200, AVIF1200 décodé et OG réellement vus ; lumière haut gauche, ombres courtes, fond crème, verts et graphite.",
+        "Aucun texte, lettre, chiffre, logo, main, personnage, donnée client, interface, alerte rouge, symbole d'envoi ou certification visible."
+      ]
+    },
+    "fictive-provenance": {
+      "result": "PASS",
+      "observations": [
+        "Dossier et feuilles vierges fictifs, sans identité réelle ni interface simulée.",
+        "Génération native OpenAI completed corroborée au journal Codex lignes6774/6780/6783 ; résultat PNG natif, fichier généré, pièce jointe et source du paquet identiques.",
+        "Provenance jointe identique ; modèle exact/coût non communiqués, aucune génération ou dépense QA."
+      ]
+    },
+    "recognizable-subject": {
+      "result": "PASS",
+      "observations": [
+        "Dossier ouvert, trois plateaux verts dont un vide, plateau graphite séparé avec feuille : préparation et dossier administratif incomplet lisibles.",
+        "Vignettes320×180 et sociale320×168 réellement vues ; plateau vide et séparation graphite lisibles.",
+        "OG1200×630 réellement vu : aucun objet essentiel coupé, marges préservées.",
+        "Le visuel ne certifie pas la vigilance ni un processus réglementaire ; pertinence administrative seulement."
+      ]
+    },
+    "technical-derivatives": {
+      "result": "PASS",
+      "observations": [
+        "SourcePNG1672×941 et huit sorties décodées ; dimensions, formats, tailles et empreintes concordants.",
+        "MasterPNG1920×1080, OGWebP1200×630, AVIF/WebP768×432,1200×675,1600×900 ; AVIF confirmés par marque avif et compression AV1.",
+        "Huit sorties reproduites avec les opérations de la forge et identiques octet pour octet ; master redimensionné, non généré à1920×1080."
+      ]
+    },
+    "alt-information": {
+      "result": "PASS",
+      "observations": [
+        "Alt exact calculé à103 caractères, sous125 ; manque et séparation décrits sans promesse de conformité.",
+        "Plateau d'examen décrit l'intention éditoriale, non une certification visible."
+      ]
+    }
+  },
+  "alt": "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
+  "altCharacters": 103,
+  "palette": {
+    "statut": "OBSERVATION",
+    "pixels": 57600,
+    "sampleWidth": 320,
+    "sampleHeight": 180,
+    "tolerance": 45,
+    "comptes": {"#fcfbf7":38480,"#fffefb":254,"#27b657":8,"#1c8a41":6574,"#231f20":1915},
+    "parts": {"#fcfbf7":0.6680555555555555,"#fffefb":0.004409722222222222,"#27b657":0.0001388888888888889,"#1c8a41":0.11413194444444444,"#231f20":0.03324652777777778},
+    "independentlyRecomputed": true,
+    "ecarts": [
+      "Palette : #fffefb (presente) mesurée à 0,441 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
+      "Palette : #27b657 (presente) mesurée à 0,014 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ],
+    "exactPaletteComplianceClaimed": false
+  },
+  "visualEvidence": [
+    "couverture-v2-revue/source-originale.png",
+    "couverture-v2-revue/hero-1200.webp",
+    "couverture-v2-revue/og.webp",
+    "avif-1200-decode.png",
+    "vignette-320.png",
+    "vignette-og-320.png"
+  ],
+  "proofs": ["preuve-provenance-qa.json", "preuve-derives-qa.json", "verify-provenance.py", "verify-images.mjs"],
+  "technicalSource": "scripts/blog-forge.mjs:443-453",
+  "preservationChecks": 7,
+  "preservationMatches": true,
+  "candidateGit": {
+    "branch": "site/onboarding-client-t_0380a3db",
+    "head": "23c70cf687281ac7344fabbd8a9ebed6a268b374",
+    "clean": true,
+    "modifiedByReviewer": false
+  },
+  "correctionsRequired": [],
+  "deliveryActions": [
+    "Projeter fidèlement cet avis pour cette génération, alt103 et palette OBSERVATION ; conserver les deux écarts et l'ancien avis image en historique.",
+    "Matérialiser et sceller via la voie native, préserver le fond et les avis métier acquis, vérifier la nouvelle CI puis les critères publics de t_0380a3db."
+  ],
+  "notVerifiedHere": ["integration", "push", "newCandidateCI", "merge", "deployment", "productionHTTP"],
+  "previousImageReviewApplicable": false,
+  "businessReviewReopened": false
+}

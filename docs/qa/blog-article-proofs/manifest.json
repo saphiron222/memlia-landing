@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "c44a1eadeb20acc4db36888a992246ef49ef42cbca5df2b33849879d343b38f5"
+      "sha256": "73790fd466cad34b036096861b9ec992979871770d0d261ac11b648aae018149"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "27e1a54664db6694417a14115b41776f7d0bb231b4949c233a8ab7ba06777096"
+      "sha256": "ef85bc5df143fb4b5f1054a72b0d76f92c3881e54d0974e9884b72d040802dfe"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -235,6 +235,18 @@
       "target": "public/proofs/blog/cac-fec-constat.webp",
       "bytes": 17598,
       "sha256": "835dd19a0ceffdac4e4b5777c92aea00062e0811b8ab98db8cb864019f0d536d"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#onboarding-pieces",
+      "target": "public/proofs/blog/onboarding-pieces.webp",
+      "bytes": 21966,
+      "sha256": "b99a4540695f8a2dc468087cccc3857c7ea9d74b0a0bb07e0a69c9c09adc8791"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#onboarding-jalons",
+      "target": "public/proofs/blog/onboarding-jalons.webp",
+      "bytes": 24336,
+      "sha256": "6a37ea28d55146fa1b99e8b22949010e81cbe6597c3b22640c60bec7c0f9fbbf"
     }
   ]
 }

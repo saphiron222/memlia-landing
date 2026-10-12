@@ -1,0 +1,161 @@
+{
+  "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "controles": [
+    {
+      "nom": "Règle écrite native",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Titre intent-first",
+      "constate": true,
+      "preuve": "recette.json"
+    },
+    {
+      "nom": "Autocomplétion primaire réellement reçue",
+      "constate": true,
+      "preuve": "preuves/autocompletion.json"
+    },
+    {
+      "nom": "Unité unique cmf-identification",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation du corps cmf-identification",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation exacte source cmf-identification",
+      "constate": true,
+      "preuve": "preuves/qualification-sources.json"
+    },
+    {
+      "nom": "Lien public cmf-identification",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Unité unique cmf-relation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation du corps cmf-relation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation exacte source cmf-relation",
+      "constate": true,
+      "preuve": "preuves/qualification-sources.json"
+    },
+    {
+      "nom": "Lien public cmf-relation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Unité unique cnil-minimisation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation du corps cnil-minimisation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Citation exacte source cnil-minimisation",
+      "constate": true,
+      "preuve": "preuves/qualification-sources.json"
+    },
+    {
+      "nom": "Lien public cnil-minimisation",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Lien sortant présent /blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Lien sortant présent /blog/automatiser-la-relance-des-pieces-clients",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Lien sortant présent /glossaire#lettre-de-mission",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Lien sortant présent /methode",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Lien sortant présent /automatisation-cabinet-comptable",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Vocabulaire et forme",
+      "constate": true,
+      "preuve": "corps.md"
+    },
+    {
+      "nom": "Palette mesurée, sans présumer sa conformité",
+      "constate": true,
+      "preuve": "preuves/palette.json"
+    },
+    {
+      "nom": "Pièce jointe native et copie exacte concordantes",
+      "constate": true,
+      "preuve": "provenance-e1b26719-2623-4044-8ccb-86b40198bac6.json"
+    },
+    {
+      "nom": "Quinze cas présents",
+      "constate": true,
+      "preuve": "preuves/rejeu.json"
+    },
+    {
+      "nom": "Deux figures fixes et contrôlées",
+      "constate": true,
+      "preuve": "preuves/rendu-controles.json"
+    },
+    {
+      "nom": "Largeurs contrôlées sans débordement",
+      "constate": true,
+      "preuve": "preuves/rendu-controles.json"
+    }
+  ],
+  "comptage": {
+    "controles": 26,
+    "motsMarkdown": 2780,
+    "sources": 3,
+    "claims": 3
+  },
+  "corpusPublie": 16,
+  "chevauchementsMentions": [
+    {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "title": "titre: \"Automatiser un cabinet comptable : la carte des tâches\"",
+      "mentions": 3
+    }
+  ],
+  "limiteCannibalisation": "Mentions lexicales dans le corpus publié, pas concurrence SERP ni audit embeddings ; différenciation documentée au brief.",
+  "limites": [
+    "Pas de materialisation/scellement natif",
+    "Pas de build Astro/CI/publication",
+    "Article151 conservé seulement en recherche complémentaire, aucun claim public fondé sur son reçu non natif",
+    "Aucun score indépendant produit par auteur",
+    "Palette de la pièce jointe opérateur : écarts conservés, aucun PASS de palette revendiqué ; aucun garde natif modifié."
+  ],
+  "observationsPalette": [
+    "Palette : #27b657 (touche) mesurée à 0 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas.",
+    "Palette : #1c8a41 (touche) mesurée à 0 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas."
+  ]
+}

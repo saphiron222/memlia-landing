@@ -1,0 +1,209 @@
+{
+  "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+  "title": "Onboarding client en cabinet comptable : automatiser l'entrée en relation",
+  "tabTitle": "Onboarding client cabinet comptable : pièces et jalons | Memlia",
+  "summary": "Une checklist d'entrée en relation qui distingue pièces reçues, examen du cabinet, version signée et autorisation de passation. Quinze cas fictifs montrent les propositions et les refus.",
+  "description": "Onboarding client cabinet comptable : suivez les pièces, les jalons et la bonne version signée, avec une validation avant la passation.",
+  "date": "2026-10-13",
+  "topics": [
+    "cabinet",
+    "pieces",
+    "automatisation"
+  ],
+  "keywords": [
+    "onboarding client cabinet comptable",
+    "entrée en relation",
+    "lettre de mission",
+    "pièces d'entrée",
+    "jalons onboarding"
+  ],
+  "primaryQuery": "onboarding client cabinet comptable",
+  "secondaryQueries": [
+    "pièces d'entrée en relation cabinet comptable",
+    "jalons onboarding client cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "quelles pièces demander",
+    "quelle preuve pour chaque jalon",
+    "quelle version a été signée",
+    "quand préparer la passation"
+  ],
+  "role": {
+    "primary": "administratif-secretariat",
+    "secondary": [
+      "chefs-mission-portefeuille",
+      "direction-associes"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Rôle du backlog ; recherche publique et jeu fictif, pas observation client revendiquée."
+  },
+  "funnel": "TOFU",
+  "cluster": "administratif-secretariat",
+  "famille": "onboarding-client",
+  "contentType": "searchable",
+  "format": "listicle-checklist",
+  "task": "Préparer les pièces, jalons et rapprochements de signature d'une entrée en relation sans déduire une décision de vigilance ou un démarrage.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Quinze cas administratifs fictifs exécutés, décision favorable complète liée au dossier/version, autorisation distincte liée à une version, saisies protégées ; trois citations exactes et deux cadres d'outil fictif.",
+  "reviewRule": "Réexaminer la suffisance des sources à toute évolution du périmètre réglementaire ; mesurer après publication sans redater pour la seule cosmétique.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons vos listes et jalons, nous automatisons leur suivi dans vos outils et vos équipes valident les essais. Vous gardez les décisions et la signature. Rien à envoyer : la description de la tâche suffit."
+  },
+  "inlineProofs": [
+    {
+      "id": "onboarding-pieces",
+      "insertBeforeHeading": "Checklist 2 : les jalons et leur preuve",
+      "alt": "Checklist fictive D-104 : identification qualifiée, bénéficiaire reçu à examiner et lettre V2.",
+      "source": "Cadre figures.html dérivé des entrées D-104 du rejeu fictif preuves/rejeu.json ; aucune intégration livrée représentée.",
+      "capturedAt": "2026-10-12"
+    },
+    {
+      "id": "onboarding-jalons",
+      "insertBeforeHeading": "La règle écrite",
+      "alt": "Registre fictif D-101, D-106 et D-107 : passation à valider, signature divergente et passation à préparer.",
+      "source": "Cadre figures.html dérivé des sorties D-101, D-106, D-107 du rejeu fictif preuves/rejeu.json.",
+      "capturedAt": "2026-10-12"
+    }
+  ],
+  "image": {
+    "heroId": "img-art-onboarding-client",
+    "alt": "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
+    "brief": {
+      "sujet": "Préparation du dossier d’entrée en relation : pièces reçues et pièce encore attendue, examen distinct.",
+      "composition": "Dossier vert ouvert, trois plateaux verts dont un vide et plateau graphite distinct avec une feuille non classée ; composition isométrique aérée.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière douce du haut gauche, ombres courtes, fond crème.",
+      "palette": "Crème #fcfbf7 dominante, accents vert #27b657 et vert profond #1c8a41, touches graphite #231f20 ; parts observées, non conformité revendiquée.",
+      "interdits": "Texte, lettres, chiffres, logo, personnage, main, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique ou certification.",
+      "alt": "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
+      "prompt": "Use case: stylized-concept. Asset type: original Memlia accounting blog cover, horizontal 16:9, safe for a centered 1200x630 crop. Premium isometric 3D editorial diorama with simplified geometric objects, matte ceramic and thick blank paper, soft studio light from upper left, short shadows, warm cream paper background #fcfbf7, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. Substantial clear objects readable at thumbnail size, airy coherent composition, consistent with the existing Memlia matte 3D blog covers. No photographic desk scene, no people, no hands, no faces, no human figure, no pawn, no vegetation or scenery, no letters, no readable text, no numbers, no amount, no percentage, no logo, no watermark, no screen, no dashboard, no software interface, no red alert, no automatic sending symbol, no approval seal, no legal or financial certification. No other saturated color. One original wide illustration, no caption. Subject: Preparing a new client onboarding dossier with a missing document still awaiting examination. An open plain green paper folder, three shallow green geometric document trays, two holding blank cream cards and one visibly empty. A separate graphite review tray contains one blank cream card placed loosely, still unfiled. No ID card, portrait, identity pictogram or personal information. Preparation and incomplete dossier, no approval.",
+      "reviewCriteria": [
+        "brief-six-components",
+        "generation-constraints",
+        "fictive-provenance",
+        "recognizable-subject",
+        "technical-derivatives",
+        "alt-information"
+      ]
+    },
+    "source": {
+      "path": "image-source.png",
+      "generationId": "exec-9ae9f716-1f67-4cb5-b6f2-f83e7162d0a1",
+      "model": "non communiqué par le générateur natif Codex",
+      "provider": "OpenAI",
+      "generatedAt": "2026-10-12",
+      "credits": null,
+      "provenancePath": "provenance-v2.json",
+      "processingPath": "image-traitement.json"
+    }
+  },
+  "sources": [
+    {
+      "id": "cmf-identification",
+      "dilaCopyPath": "preuves/cmf-identification.dila.json",
+      "publisher": "Légifrance",
+      "title": "Code monétaire et financier, L561-5",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033517742",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Texte primaire consolidé ; copie DILA collectée au jour Paris 06/10, sans garantie autonome de droit à jour ; confrontation à la section publique lue au 12/10.",
+      "excerpt": "Identifient leur client et, le cas échéant, le bénéficiaire effectif"
+    },
+    {
+      "id": "cmf-relation",
+      "dilaCopyPath": "preuves/cmf-relation.dila.json",
+      "publisher": "Légifrance",
+      "title": "Code monétaire et financier, L561-5-1",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033512858",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Texte primaire consolidé concernant la relation ; copie DILA collectée au jour Paris 06/10, avec réserve de consolidation conservée.",
+      "excerpt": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent"
+    },
+    {
+      "id": "cnil-minimisation",
+      "publisher": "CNIL",
+      "title": "RGPD, chapitre II, article 5",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Article 5 publié par l'autorité de protection des données, source primaire.",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+    }
+  ],
+  "claims": [
+    {
+      "unite": "Le principe de départ est posé par L.561-5",
+      "claim": "Identifient leur client et, le cas échéant, le bénéficiaire effectif",
+      "type": "legal-reglementaire",
+      "sourceId": "cmf-identification",
+      "excerpt": "Identifient leur client et, le cas échéant, le bénéficiaire effectif",
+      "explanation": "Citation partielle exacte du I 1°, avec vérification distinguée et dérogation du IV signalée ; aucun automatisme de vigilance."
+    },
+    {
+      "unite": "L.561-5-1 prévoit aussi le recueil",
+      "claim": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent",
+      "type": "legal-reglementaire",
+      "sourceId": "cmf-relation",
+      "excerpt": "informations relatives à l'objet et à la nature de cette relation et tout autre élément d'information pertinent",
+      "explanation": "Citation exacte contextualisée par la phrase d'actualisation pendant la relation ; ne remplace pas l'appréciation professionnelle."
+    },
+    {
+      "unite": "Pour les données personnelles, le principe de minimisation",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-minimisation",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "explanation": "Citation exacte de l'article 5 1 c ; la règle ne fixe pas de durée universelle ni ne demande d'effacer les pièces requises."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/glossaire#lettre-de-mission",
+      "/methode",
+      "/automatisation-cabinet-comptable"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/blog/automatiser-la-collecte-des-pieces-d-entree-en-relation",
+      "/blog/les-jalons-d-un-onboarding-client-qui-attendent-toujours-la-signature"
+    ],
+    "decision": "Ce candidat traite le parcours administratif complet. La relance publiée traite la collecte récurrente. Les deux angles onboarding du backlog sont non publiés et ne justifient pas deux variantes : réévaluer leur besoin avant fabrication."
+  },
+  "serp": {
+    "requete": "onboarding client cabinet comptable",
+    "date": "2026-10-12",
+    "volume": "ND",
+    "acteurs": [
+      "Teradion",
+      "C4RBON GROUP",
+      "Liberall Conseil",
+      "Plyq"
+    ],
+    "formats": "Pages de fonctionnalités, service d'entrée en relation et guide en étapes.",
+    "note": "Recherche web qualitative du jour ; ni rang Google attesté ni volume. Deux pages concurrentes ouvertes ; besoin de checklist avec preuves des jalons et cas de refus."
+  },
+  "gsc": {
+    "requete": "onboarding client cabinet comptable",
+    "date": "2026-10-12",
+    "impressions": null,
+    "clics": null,
+    "note": "Pas de relevé GSC neuf dans cette fabrication ; ND, jamais zéro déduit de l'absence de page."
+  },
+  "businessReview": {
+    "reviewerId": "metier",
+    "role": "administratif-secretariat"
+  },
+  "preuvesSkills": {}
+}

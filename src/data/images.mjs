@@ -211,6 +211,13 @@ export const IMAGES = {
     alt: "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen.",
     generee: true,
   },
+  'img-art-onboarding-client': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -218,6 +225,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-onboarding-client',
   'img-art-cac-fec-reception',
   'img-art-cac-carte-taches',
   'img-art-ia-comptabilite-confidentialite-donnees',
