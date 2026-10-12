@@ -4,87 +4,91 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-10-12",
-  "articleSha256": "799f2ec512c698a3b98adb88c167ebafbc850a78c308243de2481a3db98b2d0c",
-  "manifestSha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd",
+  "articleSha256": "30597a575ece9eb6e27b7ee6cdb6bf45d33d2ebc6becaaa43423654d06c3c8c1",
+  "manifestSha256": "a33384b2757a092615bb958a6a6f84b2905bf0aea59729dafa495776a8ff0b3a",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-un-cabinet-cac-la-carte-des-taches."
   ],
   "palette": {
     "epinglee": [
       {
-        "hex": "#fffefb",
+        "hex": "#fcfbf7",
         "role": "dominante"
       },
       {
-        "hex": "#231f20",
-        "role": "touche"
+        "hex": "#27b657",
+        "role": "presente"
       },
       {
-        "hex": "#97551a",
-        "role": "touche"
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
       }
     ],
     "tolerance": 45,
-    "pixelsMesures": 2073600,
-    "resolution": "master-natif",
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
     "parts": {
-      "#fffefb": 0.9870688657407407,
-      "#231f20": 0.0014115547839506173,
-      "#97551a": 0.0001663773148148148
+      "#fcfbf7": 0.6621875,
+      "#27b657": 0.03967013888888889,
+      "#1c8a41": 0.06012152777777778,
+      "#231f20": 0.03571180555555555
     },
     "seuils": {
       "dominante": 0.1,
       "touche": 0.005,
       "presente": 0.005
     },
-    "contrat": "observation-html-original",
+    "contrat": "observation-image-generee",
     "statut": "OBSERVATION",
-    "ecarts": [
-      "Palette : #231f20 (touche) mesurée à 0,141 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
-      "Palette : #97551a (touche) mesurée à 0,017 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
-    ]
+    "ecarts": []
   },
   "criteria": [
     {
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Recette:73–84 : sujet inventaire D-004, composition registre à six tâches, style HTML/Fraunces/Hanken, palette hex, interdits et alt définis et cohérents avec la couverture ; pas représentation d’un jugement sur les comptes."
+        "Recette image.brief : sujet, composition, style, palette épinglée, interdits et alt présents. Les six îlots, chemins, papiers vierges, calendrier à cases vides, disque bas central et plateau graphite correspondent au brief. Le prompt initial et la correction ciblée sont conservés distinctement dans image-source.json et réunis explicitement dans le prompt de la recette."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Brief/prompt et provenance annoncent Chromium/HTML original sans IA ; fiction explicite, absence de marque client, gain ou badge de conformité. Palette HTML en observation, pas certification ni réimposition des planchers IA ; réserve cosmétique acquise maintenue."
+        "Master, hero-768 et OG éditoriaux effectivement ouverts, puis OG public ouvert séparément : diorama isométrique de volumes mats, papier crème, verts et graphite, lumière douce et ombres courtes. Cinq îlots verts et un îlot graphite, sans arbre ni pion à tête. Aucun texte, lettre, chiffre, logo, personnage, main, écran/interface, alerte rouge, coche, sceau d’approbation ou symbole d’envoi observé. Les cases du calendrier sont vides, non une interface."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 fictif ; figures illustratives et non interface livrée. Constat historique conservé, non refait comme exigence nouvelle."
+        "Journal natif Codex : tools.image_gen__imagegen appelé pour le prompt initial puis pour la correction référencée. Les octets PNG base64 renvoyés par generatedImage(r) pour call_4ca941e2a93c4cd48d8cb79eaf696144 donnent exactement le SHA de image-source.png ; le PNG original au chemin .codex/generated_images est également identique. Sortie finale exec-7158d591-bb7f-429f-9f7d-91a930085691, retournée le 12/10/2026 à 12:59:35.699 UTC. Le prompt de correction est identique au journal ; le prompt initial est lui aussi corroboré.",
+        "Illustration abstraite fictive, aucun fichier de cabinet ou donnée client représenté. OpenAI est attribué ; modèle non communiqué et crédits null, sans déduction d’un modèle exact ou d’un coût nul mesuré."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Avis acquis §6 : registre de six tâches et états À écrire/Règle renseignée/À valider, sans badge comptes conformes ; six lignes ne prétendent pas couvrir huit familles. Observation complète conservée dans historicalImage."
+        "Réseau de six îlots de tâches, documents et calendrier préparés ; disque immobile avant une jonction ouverte vers un plateau graphite séparé. À 768 px, chemins et catégories d’objets restent reconnaissables ; aucune tâche n’est cochée ou déclarée validée. La carte est une métaphore de préparation et de choix, pas une preuve d’audit achevé."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Mesures indépendantes : master1920×1080, variantes768/1200/1600 AVIF/WebP et OG1200×630 réellement présents ; dimensions déclarées concordent, srcset et image sociale locale résolus.768 et OG visuellement ouverts : six lignes et fiction entières, pas de troncature. Réserve de petits textes inchangée."
+        "Source native 1672×941 ; master PNG 1920×1080 réellement mesuré, reproduction en mémoire depuis la source par resize cover identique octet pour octet. Les six dérivés publics AVIF/WebP 768×432, 1200×675, 1600×900 sont mesurés et reproduits à l’identique ; le hero-768 éditorial correspond au public.",
+        "OG éditorial 1200×630 reproduit à l’identique selon 1200×675 puis crop 1200x630+0+22 ; OG public réencodé par la forge également reproduit à l’identique et réellement regardé. Les six îlots et objets sont entiers dans les deux OG ; aucune coupure ou perte gênante observée."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Hero et deux figures du vrai HTML décrivent carte/registre/fiche, D-004 fictif et propositions/commentaires distincts ; aucune conformité promise. Les alt ne transcrivent pas chaque cellule : tables et limites du corps fournissent l’information complète."
+        "Alt descriptif de 108 caractères : carte de tâches, îlots verts reliés, dossiers vierges, jeton plat et plateau graphite à examiner. Cohérent avec les objets vus, sans prétendre une décision ou une conformité. Identique dans le brief, la recette, image.json, manifest.json, imageAlt du Markdown et src/data/images.mjs."
       ]
     }
   ]

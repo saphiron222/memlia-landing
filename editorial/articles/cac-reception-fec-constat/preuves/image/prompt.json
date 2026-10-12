@@ -4,25 +4,27 @@
   "kind": "image-prompt",
   "status": "PASS",
   "checkedAt": "2026-10-12",
-  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
-  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "articleSha256": "10a119da23834e518be3a7b0058c419edcab51282b375229eb174b3119d4c2c2",
+  "manifestSha256": "4fcb5f1ceaada4fb5bec61ed011722624bd14f3ae2b80f59cadf8dcc43ac104e",
   "observations": [
     "Contrôle image-prompt relu sur le candidat exact cac-reception-fec-constat."
   ],
-  "engine": "html-original",
-  "prompt": "Rendre le cadre HTML original cac-fec-registre-reception avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
+  "engine": "image_generate",
+  "prompt": "Use case: stylized-concept. Asset type: original Memlia blog cover, wide 16:9, for a 1920x1080 hero and centered 1200x630 social crop. Subject: receiving an accounting file and preparing a factual comparison for human examination. A premium quiet isometric 3D diorama on warm paper cream #fcfbf7. On the left, a small open matte deep green #1c8a41 box contains a tidy stack of completely blank cream cards, representing the received file. In the center, two parallel rows of simple short geometric blocks on a low cream comparison tray; several matched pairs are connected by slender solid Memlia green #27b657 bridges. One unmatched graphite #231f20 block sits separately in a smaller graphite review tray to the right, separated by a small gap, suggesting a finding that still needs examination. A simple blank paper folder behind the right tray holds the prepared findings, with no stamp, no tick, no approval seal. Arrange these few elements as a coherent sculpted tactile miniature readable at thumbnail size, with generous space and crop safety. Style: isometric geometric simplified objects, matte ceramic, thick paper and one frosted translucent green plane, consistent with the older Memlia editorial 3D covers. Soft upper left studio light, short realistic shadows, cream background with subtle paper texture, green and graphite substantial volumes. No trees, scenery, game board or pawns; no people, no hands, no faces, no character, no readable text, no letters, no numbers, no money symbols, no logo, no watermark, no computer, no screen, no software window, no dashboard, no fake interface, no checkmark, no red alert, no automatic sending symbol, no certification or audit conclusion. Palette only cream #fcfbf7, white paper #fffefb, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. One original cover illustration, no caption.",
   "brief": {
-    "sujet": "Réception de trois jeux JSON fictifs du dossier D-004.",
-    "composition": "Fenêtre de registre provenant du cadre cac-fec-registre-reception, deux lignes par jeu, périodes et écarts calculés.",
-    "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
-    "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
-    "interdits": "FEC client, gain chiffré, badge de conformité, conclusion sur les comptes.",
-    "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004."
+    "sujet": "Recevoir un FEC et préparer les constats à examiner par le cabinet.",
+    "composition": "Boîte verte avec cartes vierges ; plateau central de blocs comparés par paires ; bloc graphite séparé et dossier de constats vierge.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, fond crème papier, lumière douce du haut gauche.",
+    "palette": "Crème #fcfbf7 dominante ; vert Memlia #27b657, vert profond #1c8a41 et graphite #231f20 en volumes visibles.",
+    "interdits": "Texte, lettres, chiffres, logo, personnage, main, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique.",
+    "alt": "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen."
   },
   "reviewCriteria": [
-    "provenance HTML explicite",
-    "JSON fictif",
-    "lisibilité",
-    "OG JPG 1200×630"
+    "brief à six composantes",
+    "aucun élément interdit",
+    "provenance OpenAI réelle et fictive",
+    "sujet reconnaissable",
+    "dérivés adaptés",
+    "alt descriptif"
   ]
 }

@@ -1,0 +1,298 @@
+{
+  "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "title": "Automatisation cabinet audit : la carte des tâches du CAC",
+  "tabTitle": "Automatisation cabinet audit : carte des tâches | Memlia",
+  "summary": "Huit familles pour choisir une tâche répétitive du mandat : FEC, demandes, rapprochements, confirmations et dossier. Une règle écrite, des cas fictifs rejoués et une décision conservée au cabinet.",
+  "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+  "date": "2026-10-12",
+  "topics": [
+    "cabinet",
+    "automatisation",
+    "methode"
+  ],
+  "keywords": [
+    "automatisation cabinet audit",
+    "commissariat aux comptes",
+    "règle écrite",
+    "dossier de travail"
+  ],
+  "primaryQuery": "automatisation cabinet audit",
+  "secondaryQueries": [],
+  "intent": "decider",
+  "fanOut": [
+    "préparation et décision",
+    "version des entrées",
+    "limites et refus"
+  ],
+  "role": {
+    "primary": "audit-cac",
+    "secondary": [],
+    "proofLevel": "indirect",
+    "proofNote": "Architecture CAC C1/C2 et personas de la charte v5 ; ni témoignage client ni résultat de mission."
+  },
+  "funnel": "MOFU",
+  "cluster": "certification",
+  "famille": "cac-dossier-de-travail",
+  "contentType": "searchable",
+  "format": "pillar-page",
+  "task": "Automatisation cabinet audit : la carte des tâches du CAC",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Sources NEP officielles et jeu fictif exécuté ; portée bornée à la préparation.",
+  "reviewRule": "Relire après évolution des normes ou changement de la tâche ; suivis J+7 et J+28 après publication effective.",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de cette tâche dans vos mots, nous la construisons dans vos outils et votre équipe la recette sur un jeu fictif. Vous gardez l’examen des sorties et les décisions de mission. Rien à envoyer : la description du geste suffit."
+  },
+  "inlineProofs": [
+    {
+      "id": "cac-inventaire-taches",
+      "insertBeforeHeading": "La règle écrite",
+      "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+      "source": "Écran HTML fictif propre à cet article, docs/design/blog-article-proofs ; données du rejeu F4.",
+      "capturedAt": "2026-10-10"
+    },
+    {
+      "id": "cac-fiche-regle",
+      "insertBeforeHeading": "Rejoué sur le jeu fictif",
+      "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+      "source": "Écran HTML fictif propre à cet article, docs/design/blog-article-proofs ; données du rejeu F4.",
+      "capturedAt": "2026-10-10"
+    }
+  ],
+  "image": {
+    "source": {
+      "path": "preuves/couverture-originale.png",
+      "generationId": "html-cac-inventaire-taches-20261011",
+      "model": "playwright-chromium",
+      "provider": "html-original-local",
+      "generatedAt": "2026-10-11",
+      "credits": 0
+    },
+    "brief": {
+      "sujet": "Inventaire des tâches du mandat fictif D-004.",
+      "composition": "Fenêtre de registre provenant du cadre cac-inventaire-taches, références de six tâches et états concrets.",
+      "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
+      "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
+      "interdits": "Données réelles, marques de clients, chiffre de gain, verdict sur les comptes.",
+      "alt": "Inventaire fictif des tâches du mandat D-004, références des entrées et propositions à examiner.",
+      "prompt": "Rendre le cadre HTML original cac-inventaire-taches avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
+      "reviewCriteria": ["provenance HTML explicite", "jeu fictif", "lisibilité", "OG JPG 1200×630"]
+    },
+    "heroId": "img-art-cac-carte-taches",
+    "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+    "cadre": {
+      "titre": "La carte des tâches du mandat",
+      "sousTitre": "Réception, rapprochement, dossier : choisir un premier geste",
+      "famille": "Commissariat aux comptes",
+      "colonnes": [
+        {
+          "titre": "Entrées identifiées",
+          "items": [
+            "FEC-D004-v1",
+            "Pièces et demandes",
+            "Versions et paramètres"
+          ]
+        },
+        {
+          "titre": "Propositions à examiner",
+          "items": [
+            "Fiche REG-01",
+            "Écarts et conflits",
+            "Commentaires conservés"
+          ]
+        },
+        {
+          "titre": "Décisions du cabinet",
+          "items": [
+            "Périmètre de la tâche",
+            "Appréciation de l’outil",
+            "Travaux et opinion"
+          ]
+        }
+      ],
+      "pied": "Dossier D-004 · jeu d’essai fictif"
+    },
+    "provenance": {
+      "type": "html-original",
+      "template": "editorial/templates/cadre-article.html",
+      "createdAt": "2026-10-11",
+      "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+    }
+  },
+  "sources": [
+    {
+      "id": "h2a315",
+      "publisher": "H2A",
+      "title": "NEP 315",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "excerpt": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a315.json"
+    },
+    {
+      "id": "h2a330",
+      "publisher": "H2A",
+      "title": "NEP 330",
+      "url": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "excerpt": "le degré de pertinence et de fiabilité des données qui sont intégrées dans ces outils.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a330.json"
+    },
+    {
+      "id": "h2a230",
+      "publisher": "H2A",
+      "title": "NEP 230",
+      "url": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "excerpt": "Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a230.json"
+    },
+    {
+      "id": "h2a505",
+      "publisher": "H2A",
+      "title": "NEP 505",
+      "url": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+      "excerpt": "Le commissaire aux comptes a la maîtrise de la sélection des tiers",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a505.json"
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/cac-reception-fec-constat",
+      "/garanties",
+      "/methode",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "La page service vise l’achat (évaluer-service) et le pilier la lecture (comprendre) ; titres et intentions distincts, chacun renvoie à l’autre ; l’attribution des impressions sera relue dans Search Console à M+3."
+  },
+  "serp": {
+    "note": "Préparation F4 : intentions mesurées C2 et préflight 09/10 ; pas de nouveau classement revendiqué. Observation SERP fraîche à compléter avant livraison.",
+    "checkedAt": "2026-10-11",
+    "actors": [],
+    "formats": []
+  },
+  "gsc": {
+    "note": "Pages nouvelles non publiées ; Search Console non relue dans cette reprise. Aucune métrique ni conversion revendiquée.",
+    "checkedAt": "2026-10-11",
+    "available": false
+  },
+  "claims": [
+    {
+      "unite": "La NEP 315, paragraphe 14, distingue les outils et techniques automatisés des applications de documentation : ",
+      "claim": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La NEP 330, paragraphe 10 précise : « Le commissaire aux comptes détermine la nature, le calendrier et l’étend",
+      "claim": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a330",
+      "excerpt": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La NEP 505, paragraphe 09 indique : « Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui",
+      "claim": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a505",
+      "excerpt": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La NEP 230, paragraphe 08 précise : « Les éléments de documentation consignés dans le dossier mentionnent l’id",
+      "claim": "Les éléments de documentation consignés dans le dossier mentionnent l’identité du membre de l’équipe d’audit qui a effectué les travaux et leur date de réalisation.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a230",
+      "excerpt": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation.",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La fiche outil relie l'objectif poursuivi, les entrées, le fonctionnement, les paramètres, les essais, les lim",
+      "claim": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+      "explanation": "NEP315 §46 : identification et évaluation des risques, pas toute utilisation d'un outil. En réponse aux risques, l'exigence correspondante relève de NEP330 §33 et sa documentation de §34 e). La fiche prépare l'appréciation du CAC, sans homologation ni certification. Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "Une absence de réponse et un refus de la direction sont deux situations différentes.",
+      "claim": "Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a505",
+      "excerpt": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle.",
+      "explanation": "NEP505 §13 : non-réponse à une demande, procédures alternatives ; une relance ne les remplace pas. Le refus de direction relève séparément des §10 à 12. La suffisance des éléments et les conséquences restent appréciées par le CAC (§14 à 15). Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "Le calendrier post-signature ne sert pas à refaire les travaux manquants.",
+      "claim": "Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a230",
+      "excerpt": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+      "explanation": "NEP230 §9 : documentation au fil des travaux, forme et classement après signature, pas délai pour rattraper les diligences. L'exception du §10 est préservée et déclarée séparément. Ce délai n'est pas une durée de conservation. Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "Le calendrier post-signature ne sert pas à refaire les travaux manquants.",
+      "claim": "qui conduit à de nouvelles procédures ou conclusions",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a230",
+      "excerpt": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :",
+      "explanation": "NEP230 §10 : événement connu entre signature du rapport et approbation des comptes, conduisant à de nouvelles procédures ou conclusions. Le complément documente circonstances, nature, procédures, éléments testés, résultats et éléments collectés. Pas permission générale de réécrire le dossier après signature. Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "La fiche outil relie l'objectif poursuivi",
+      "claim": "la manière dont les outils fonctionnent",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "• la manière dont les outils fonctionnent ; et<br />",
+      "explanation": "NEP315 §46 : apprécier le fonctionnement et les informations pour l'identification et l'évaluation des risques. L'appréciation reste au CAC ; réponse aux risques sous NEP330 §33 et documentation §34 e). Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "La fiche outil relie l'objectif poursuivi",
+      "claim": "éléments d'appréciation",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+      "explanation": "NEP315 §48 d) : éléments d'appréciation des outils visés au §46 consignés dans le dossier de travail (§48). La fiche Memlia est un support de préparation, pas un modèle prescrit ni une attestation de conformité. NEP330 §34 e) traite la documentation en réponse aux risques. Avis métier F4 §3 conservé."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "audit-cac"
+  },
+  "preuvesSkills": {}
+}

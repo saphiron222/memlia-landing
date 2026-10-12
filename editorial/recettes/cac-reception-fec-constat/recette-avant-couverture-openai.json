@@ -1,0 +1,257 @@
+{
+  "slug": "cac-reception-fec-constat",
+  "title": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+  "tabTitle": "FEC contrôle : constat de réception CAC | Memlia",
+  "summary": "Identifier le fichier et sa période, nommer les contrôles effectués et conserver leur portée. Trois cas JSON fictifs montrent un constat à revoir, un refus de période et un écart technique.",
+  "description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+  "date": "2026-10-12",
+  "topics": [
+    "cabinet",
+    "donnees",
+    "methode"
+  ],
+  "keywords": [
+    "fec contrôle",
+    "commissariat aux comptes",
+    "règle écrite",
+    "dossier de travail"
+  ],
+  "primaryQuery": "fec contrôle",
+  "secondaryQueries": [],
+  "intent": "executer",
+  "fanOut": [
+    "préparation et décision",
+    "version des entrées",
+    "limites et refus"
+  ],
+  "role": {
+    "primary": "audit-cac",
+    "secondary": [],
+    "proofLevel": "indirect",
+    "proofNote": "Architecture CAC C1/C2 et personas de la charte v5 ; ni témoignage client ni résultat de mission."
+  },
+  "funnel": "MOFU",
+  "cluster": "certification",
+  "famille": "cac-fec-reception",
+  "contentType": "searchable",
+  "format": "tutorial",
+  "task": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Sources NEP officielles et jeu fictif exécuté ; portée bornée à la préparation.",
+  "reviewRule": "Relire après évolution des normes ou changement de la tâche ; suivis J+7 et J+28 après publication effective.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de cette tâche dans vos mots, nous la construisons dans vos outils et votre équipe la recette sur un jeu fictif. Vous gardez l’examen des sorties et les décisions de mission. Rien à envoyer : la description du geste suffit."
+  },
+  "inlineProofs": [
+    {
+      "id": "cac-fec-registre-reception",
+      "insertBeforeHeading": "La règle écrite",
+      "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+      "source": "Écran HTML fictif propre à cet article, docs/design/blog-article-proofs ; données du rejeu F4.",
+      "capturedAt": "2026-10-10"
+    },
+    {
+      "id": "cac-fec-constat",
+      "insertBeforeHeading": "Rejoué sur le jeu fictif",
+      "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+      "source": "Écran HTML fictif propre à cet article, docs/design/blog-article-proofs ; données du rejeu F4.",
+      "capturedAt": "2026-10-10"
+    }
+  ],
+  "image": {
+    "source": {
+      "path": "preuves/couverture-originale.png",
+      "generationId": "html-cac-fec-registre-reception-20261011",
+      "model": "playwright-chromium",
+      "provider": "html-original-local",
+      "generatedAt": "2026-10-11",
+      "credits": 0
+    },
+    "brief": {
+      "sujet": "Réception de trois jeux JSON fictifs du dossier D-004.",
+      "composition": "Fenêtre de registre provenant du cadre cac-fec-registre-reception, deux lignes par jeu, périodes et écarts calculés.",
+      "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
+      "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
+      "interdits": "FEC client, gain chiffré, badge de conformité, conclusion sur les comptes.",
+      "alt": "Registre fictif des trois réceptions JSON du dossier D-004, avec écarts, périodes et refus nommés.",
+      "prompt": "Rendre le cadre HTML original cac-fec-registre-reception avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
+      "reviewCriteria": ["provenance HTML explicite", "JSON fictif", "lisibilité", "OG JPG 1200×630"]
+    },
+    "heroId": "img-art-cac-fec-reception",
+    "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+    "cadre": {
+      "titre": "Le constat de réception du FEC",
+      "sousTitre": "D-004 · paire de lignes JSON fictives · période et équilibre",
+      "famille": "Commissariat aux comptes",
+      "colonnes": [
+        {
+          "titre": "Entrée identifiée",
+          "items": [
+            "FEC-D004-v1",
+            "Période attendue : 2026",
+            "Deux lignes fictives"
+          ]
+        },
+        {
+          "titre": "Résultats préparés",
+          "items": [
+            "Écart : 0,00 €",
+            "Constat à revoir",
+            "Limites du contrôle"
+          ]
+        },
+        {
+          "titre": "Examen par l’équipe",
+          "items": [
+            "Commentaire conservé",
+            "Suite à donner",
+            "Travaux de mission"
+          ]
+        }
+      ],
+      "pied": "Dossier D-004 · jeu d’essai fictif"
+    },
+    "provenance": {
+      "type": "html-original",
+      "template": "editorial/templates/cadre-article.html",
+      "createdAt": "2026-10-11",
+      "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+    }
+  },
+  "sources": [
+    {
+      "id": "h2a315",
+      "publisher": "H2A",
+      "title": "NEP 315",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "excerpt": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a315.json"
+    },
+    {
+      "id": "h2a330",
+      "publisher": "H2A",
+      "title": "NEP 330",
+      "url": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "excerpt": "le degré de pertinence et de fiabilité des données qui sont intégrées dans ces outils.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a330.json"
+    },
+    {
+      "id": "h2a230",
+      "publisher": "H2A",
+      "title": "NEP 230",
+      "url": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "excerpt": "Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a230.json"
+    },
+    {
+      "id": "h2a500",
+      "publisher": "H2A",
+      "title": "NEP 500",
+      "url": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+      "excerpt": "Le caractère approprié est fonction de la qualité des éléments collectés,",
+      "level": "tier-1",
+      "official": true,
+      "provenance": "primary",
+      "upstreamUrl": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "verificationEvidence": "preuves/sources/h2a500.json"
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "/garanties",
+      "/methode"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "La page service vise l’achat (évaluer-service) et le pilier la lecture (comprendre) ; titres et intentions distincts, chacun renvoie à l’autre ; l’attribution des impressions sera relue dans Search Console à M+3."
+  },
+  "serp": {
+    "note": "Préparation F4 : intentions mesurées C2 et préflight 09/10 ; pas de nouveau classement revendiqué. Observation SERP fraîche à compléter avant livraison.",
+    "checkedAt": "2026-10-11",
+    "actors": [],
+    "formats": []
+  },
+  "gsc": {
+    "note": "Pages nouvelles non publiées ; Search Console non relue dans cette reprise. Aucune métrique ni conversion revendiquée.",
+    "checkedAt": "2026-10-11",
+    "available": false
+  },
+  "claims": [
+    {
+      "unite": "La NEP 500, paragraphe 06 précise : « Le caractère approprié est fonction de la qualité des éléments collectés",
+      "claim": "Le caractère approprié est fonction de la qualité des éléments collectés, c’est-à-dire de leur fiabilité et de leur pertinence.",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a500",
+      "excerpt": "Le caractère approprié est fonction de la qualité des éléments collectés,",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "Les résultats utiles à la mission restent liés au traitement effectué.",
+      "claim": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a230",
+      "excerpt": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La NEP 330, paragraphe 28 cite notamment l'« examen des écritures comptables significatives, y compris des aju",
+      "claim": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a330",
+      "excerpt": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes",
+      "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante."
+    },
+    {
+      "unite": "La NEP 315, paragraphe 46 prévoit l'appréciation de « la manière dont les outils fonctionnent » et du « degré ",
+      "claim": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils",
+      "explanation": "NEP315 §46 : identification et évaluation des risques, pas toute utilisation d'un outil. En réponse aux risques, l'exigence correspondante relève de NEP330 §33 et la documentation de §34 e). La fiche prépare l'appréciation, elle ne certifie pas l'outil. Avis métier F4 §3 conservé."
+    },
+    {
+      "unite": "La NEP 315, paragraphe 46 prévoit l'appréciation",
+      "claim": "la manière dont les outils fonctionnent",
+      "type": "legal-reglementaire",
+      "sourceId": "h2a315",
+      "excerpt": "• la manière dont les outils fonctionnent ; et<br />",
+      "explanation": "NEP315 §46 : appréciation du fonctionnement et des informations pour l'identification et l'évaluation des risques, laissée au CAC. Pour une utilisation en réponse aux risques : NEP330 §33 et §34 e). Le constat de réception ne remplace ni cette appréciation ni les travaux d'audit. Avis métier F4 §3 conservé."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "audit-cac"
+  },
+  "preuvesSkills": {}
+}

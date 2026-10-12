@@ -38,7 +38,7 @@ cta:
   destination: "/contact"
   outcome: "Nous écrivons la règle de cette tâche dans vos mots, nous la construisons dans vos outils et votre équipe la recette sur un jeu fictif. Vous gardez l’examen des sorties et les décisions de mission. Rien à envoyer : la description du geste suffit."
 imageOg: "/images/img-art-cac-carte-taches-og.webp"
-imageAlt: "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004."
+imageAlt: "Une carte de tâches en îlots verts reliés, avec dossiers vierges, jeton plat et plateau graphite à examiner."
 statutEditorial: publie
 sources:
   - editeur: "H2A"

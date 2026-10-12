@@ -1,9 +1,9 @@
 {
   "version": 1,
   "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
-  "articleSha256": "799f2ec512c698a3b98adb88c167ebafbc850a78c308243de2481a3db98b2d0c",
-  "manifestSha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd",
-  "engine": "html-original",
+  "articleSha256": "30597a575ece9eb6e27b7ee6cdb6bf45d33d2ebc6becaaa43423654d06c3c8c1",
+  "manifestSha256": "a33384b2757a092615bb958a6a6f84b2905bf0aea59729dafa495776a8ff0b3a",
+  "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
   "visualReviewEvidence": "preuves/image/visual-review.json",
@@ -34,7 +34,7 @@
       "format": "webp"
     }
   ],
-  "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+  "alt": "Une carte de tâches en îlots verts reliés, avec dossiers vierges, jeton plat et plateau graphite à examiner.",
   "score": 100,
   "directionArt": null,
   "semanticRelevance": null,
@@ -43,13 +43,11 @@
   "palette": {
     "statut": "OBSERVATION",
     "parts": {
-      "#fffefb": 0.9870688657407407,
-      "#231f20": 0.0014115547839506173,
-      "#97551a": 0.0001663773148148148
+      "#fcfbf7": 0.6621875,
+      "#27b657": 0.03967013888888889,
+      "#1c8a41": 0.06012152777777778,
+      "#231f20": 0.03571180555555555
     },
-    "ecarts": [
-      "Palette : #231f20 (touche) mesurée à 0,141 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
-      "Palette : #97551a (touche) mesurée à 0,017 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
-    ]
+    "ecarts": []
   }
 }
