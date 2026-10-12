@@ -47,11 +47,17 @@ Elles peuvent dépasser la préférence normale sans inventer une attestation.
 
 ```sh
 node --test tests/scripts/blog-w41-catchup.test.mjs
+node --test tests/scripts/cron-w41-preflight.test.mjs
 python3 -m unittest discover -s tests/proof -p test_w41_catchup.py -v
 ```
 
 Le témoin JS appelle les vrais `--check` et `--slot` sur une copie du stock réel,
 avec les douze sujets au même jour : dates étrangères, cible manquante, dérive des
 dérivés et recette absente restent refusées ; les autres réservations restent en
-place. Les horloges fixes sont locales aux fixtures. La construction complète est
+place. Le même calendrier traverse aussi le vrai `cron-preflight --phase maintenance`
+dans un checkout Git propre et synchronisé. Le préflight ne retire de ses quotas
+que les réservations explicites du jour Paris et les archives acquises du lot ;
+hors lot, dates étrangères, absence de réservation et quotas ordinaires restent
+contrôlés. Le week-end réel est admis pour ce lot seulement. Les horloges fixes
+sont locales aux fixtures. La construction complète est
 vérifiée par la CI GitHub « Repository gates ».

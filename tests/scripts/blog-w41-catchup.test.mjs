@@ -47,7 +47,7 @@ test('W41 : vrais --check et --slot sur le stock réel, aucune publication inven
   const repo = fileURLToPath(new URL('../../', import.meta.url));
   const root = mkdtempSync(join(tmpdir(), 'w41-slot-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
-  for (const path of ['scripts', 'src/data/familles.ts', 'src/content.config.ts', 'src/content/blog', 'docs/strategy/site-v3']) {
+  for (const path of ['CLAUDE.md', 'scripts', 'src/data/familles.ts', 'src/content.config.ts', 'src/content/blog', 'docs/strategy/site-v3']) {
     cpSync(join(repo, path), join(root, path), { recursive: true });
   }
   // Le contrat d'architecture CAC est joué par la CI ; ici on exerce la cadence.
@@ -95,6 +95,28 @@ test('W41 : vrais --check et --slot sur le stock réel, aucune publication inven
     return true; // La recette absente reste refusée après le vrai préflight.
   });
   assert.equal(existsSync(join(root, 'editorial/articles', slug)), false);
+  // Le vrai préflight de cron doit accepter le calendrier reconstruit, pas
+  // seulement les validations de slot, dans un checkout propre et synchronisé.
+  const nativeClock = join(root, 'clock.mjs');
+  writeFileSync(nativeClock, `const NativeDate = Date;
+globalThis.Date = class extends NativeDate {
+  constructor(...args) { super(...(args.length ? args : ['2026-10-12T12:00:00Z'])); }
+  static now() { return NativeDate.parse('2026-10-12T12:00:00Z'); }
+};\n`);
+  const git = (...args) => {
+    const result = spawnSync('git', args, options);
+    assert.equal(result.status, 0, result.stderr);
+  };
+  git('init', '-q', '-b', 'main');
+  git('config', 'user.name', 'Test');
+  git('config', 'user.email', 'test@example.invalid');
+  git('add', '.'); git('commit', '-qm', 'stock réel réservé');
+  git('remote', 'add', 'origin', root);
+  result = spawnSync(process.execPath, ['--import', nativeClock, join(repo, 'scripts/cron-preflight.mjs'),
+    '--root', root, '--job', 'forge', '--phase', 'maintenance'], options);
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  assert.equal(JSON.parse(result.stdout).ok, true);
+  assert.deepEqual(paths.map((p) => readFileSync(p)), before);
   writeFileSync(paths[1], before[1] + '\nDérive\n');
   result = cli('--slot', slug, jour);
   assert.notEqual(result.status, 0);

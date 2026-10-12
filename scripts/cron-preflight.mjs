@@ -5,6 +5,7 @@ import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './lib/blog-ia-catchup.mjs';
 import { semaineIso, plafondJourOrdinaire, plafondSemaineOrdinaire, DEBUT_CADENCE_15 } from './lib/blog-pipeline.mjs';
+import { estArchiveRattrapageW41, estRattrapageW41 } from './lib/blog-w41-catchup.mjs';
 
 const required = ['RUNBOOK-QUOTIDIEN.md'];
 const args = process.argv.slice(2);
@@ -63,7 +64,13 @@ try {
   const realDays = new Map();
   const realWeeks = new Map();
   const ruleIA = lireRattrapageIA(root);
-  const actifs = posts.filter((post) => ['published', 'planned'].includes(post?.status) && !cicatrices.has(post.slug));
+  const reservations = new Map(backlog.map((entry) => [entry.slug, entry.datePlanifiee]));
+  const horsCadenceW41 = (post) => post.status === 'published'
+    ? estArchiveRattrapageW41(post.slug, post.date, today)
+    : post.status === 'planned' && reservations.get(post.slug) === post.date
+      && estRattrapageW41(post.slug, post.date);
+  const actifs = posts.filter((post) => ['published', 'planned'].includes(post?.status)
+    && !cicatrices.has(post.slug) && !horsCadenceW41(post));
   const overdue = [];
   if (phase === 'maintenance') report.maintenanceRequired = overdue;
   for (const post of posts) {
@@ -81,10 +88,13 @@ try {
     }
     if ((post?.status === 'published' || post?.status === 'planned') && !cicatrices.has(post.slug)) {
       const day = post.date;
+      verifierDateRattrapageIA(ruleIA, post.slug, day);
+      // Only today's explicit W41 reservations and acquired archives leave cadence.
+      // Date validation, overdue slots and all Git release guards stay above/below.
+      if (horsCadenceW41(post)) continue;
       if (post.status === 'planned' && day >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${day}T12:00:00Z`).getUTCDay())) {
         errors.push(`article ordinaire hors lundi-vendredi : ${post.slug} (${day})`);
       }
-      verifierDateRattrapageIA(ruleIA, post.slug, day);
       const semaine = semaineEditorialeIA(ruleIA, post.slug, day, semaineIso(day));
       const week = ruleIA?.publications[post.slug] === day ? `lot-ia-${semaine}` : semaine;
       realDays.set(day, (realDays.get(day) ?? 0) + 1);
