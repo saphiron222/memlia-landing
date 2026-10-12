@@ -1000,6 +1000,66 @@ test('la forge refuse de matérialiser un article nouveau sans sa règle écrite
   }
 });
 
+test('HTML original : mesure native fidèle, planchers cosmétiques et provenance non IA', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    const source = join(root, 'editorial/recettes', SLUG, 'original.png');
+    await sharp(imageFictive(1920, 1080)).png().toFile(source);
+    r.image.source = { path: 'original.png', generationId: 'html-original-test', model: 'playwright-chromium', provider: 'html-original-local', generatedAt: jour, credits: 0 };
+    r.image.provenance = { type: 'html-original', template: 'editorial/templates/cadre-article.html', createdAt: jour, decision: 'Couverture HTML originale autorisée, sans génération IA.' };
+    r.image.brief = { prompt: 'Rendu HTML original sur le jeu fictif.', palette: 'Crème #fffefb dominant, graphite #231f20 en touche, cuivre #97551a en touche.' };
+    const preparer = async () => {
+      writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+      return materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    };
+    const resultat = await preparer();
+    assert.deepEqual(resultat.erreurs, []);
+    const dossier = join(root, 'editorial/articles', SLUG);
+    const lire = (path) => JSON.parse(readFileSync(join(dossier, path)));
+    const palette = lire('preuves/image/visual-review.json').palette;
+    assert.equal(palette.statut, 'OBSERVATION');
+    assert.equal(palette.pixelsMesures, 1920 * 1080);
+    assert.equal(palette.parts['#97551a'], 0, 'absence réelle : pas de part inventée');
+    assert.ok(palette.ecarts.some((e) => /#97551a/.test(e)));
+    assert.ok(palette.ecarts.every((e) => /cosmétique indicatif/.test(e)));
+    assert.equal(lire('image.json').engine, 'html-original');
+    assert.equal(lire('manifest.json').image.engine, 'html-original');
+    assert.equal(lire('preuves/image/prompt.json').engine, 'html-original');
+    const generation = lire('preuves/image/generation.json');
+    assert.equal(generation.engine, 'html-original');
+    assert.equal(generation.credits, 0);
+    assert.deepEqual(generation.provenance, r.image.provenance);
+
+    const paquet = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json')));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(paquet.claims[0].id, root)));
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    const gate = () => validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.deepEqual((await gate()).errors, []);
+    const generationPath = join(dossier, 'preuves/image/generation.json');
+    writeFileSync(generationPath, JSON.stringify({ ...lire('preuves/image/generation.json'), credits: 1 }));
+    assert.ok((await gate()).errors.some((e) => /Provenance HTML/.test(e)));
+    writeFileSync(generationPath, JSON.stringify(generation));
+    const image = lire('image.json');
+    writeFileSync(join(dossier, 'image.json'), JSON.stringify({ ...image, p0: ['Contenu client réel'] }));
+    assert.ok((await gate()).errors.some((e) => /zéro P0/.test(e)));
+    writeFileSync(join(dossier, 'image.json'), JSON.stringify(image));
+    const visual = lire('preuves/image/visual-review.json');
+    visual.criteria[0].result = 'FAIL';
+    writeFileSync(join(dossier, 'preuves/image/visual-review.json'), JSON.stringify(visual));
+    assert.ok((await gate()).errors.some((e) => /critère visuel/.test(e)));
+
+    r.image.source.credits = 3;
+    await assert.rejects(preparer(), /provenance HTML/i);
+    r.image.source.credits = 0;
+    r.image.source.model = 'gpt_image_2_5';
+    await assert.rejects(preparer(), /provenance HTML/i);
+    r.image.source.model = 'playwright-chromium';
+    delete r.image.provenance;
+    await assert.rejects(preparer(), /provenance HTML/i);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
 test('la palette : le brief d’un article nouveau doit épingler ses couleurs, et l’image doit les porter', async () => {
   const root = racineDeTest();
   try {

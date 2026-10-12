@@ -1,0 +1,180 @@
+{
+  "commands": "node scripts/blog-forge.mjs preparer <slug>",
+  "environment": "Copie isolée de F4 ; origin/main intégré depuis le dépôt local ; aucune recette ni image modifiée.",
+  "mastersBefore": {
+    "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/image/master.png": "22692e0f410356bf4c5911736e992ac7f19403595e1d62cb7b5e59f7bc9bef3b",
+    "editorial/articles/cac-reception-fec-constat/preuves/image/master.png": "711c5ad32ca8a59961bd1920129474108010d0079366698726aa57f375e7746b"
+  },
+  "results": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "before": {
+        "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "dossier": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "erreurs": [
+          "claims[8] : citation trop courte ou trop générique (40 caractères et 5 jetons minimum).",
+          "Palette : #231f20 (touche) mesurée à 0 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas.",
+          "Palette : #97551a (touche) mesurée à 0 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas."
+        ],
+        "suite": "corriger la recette"
+      },
+      "after": {
+        "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "dossier": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "erreurs": [
+          "claims[8] : citation trop courte ou trop générique (40 caractères et 5 jetons minimum)."
+        ],
+        "suite": "corriger la recette"
+      },
+      "palette": {
+        "epinglee": [
+          {
+            "hex": "#fffefb",
+            "role": "dominante"
+          },
+          {
+            "hex": "#231f20",
+            "role": "touche"
+          },
+          {
+            "hex": "#97551a",
+            "role": "touche"
+          }
+        ],
+        "tolerance": 45,
+        "pixelsMesures": 2073600,
+        "resolution": "master-natif",
+        "parts": {
+          "#fffefb": 0.9870688657407407,
+          "#231f20": 0.0014115547839506173,
+          "#97551a": 0.0001663773148148148
+        },
+        "seuils": {
+          "dominante": 0.1,
+          "touche": 0.005,
+          "presente": 0.005
+        },
+        "contrat": "observation-html-original",
+        "statut": "OBSERVATION",
+        "ecarts": [
+          "Palette : #231f20 (touche) mesurée à 0,141 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (HTML original, non bloquant).",
+          "Palette : #97551a (touche) mesurée à 0,017 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (HTML original, non bloquant)."
+        ]
+      },
+      "engine": "html-original",
+      "generation": {
+        "version": 1,
+        "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "kind": "image-generation",
+        "status": "PASS",
+        "checkedAt": "2026-10-12",
+        "articleSha256": "d73288d005dfe83d4dbb41f710debde85a595d669479d26d8d252577a618da61",
+        "manifestSha256": "6ecc083df85f9a50e5669c7ed715578f80fb829810f21351eead326b2ac3146a",
+        "observations": [
+          "Contrôle image-generation relu sur le candidat exact automatiser-un-cabinet-cac-la-carte-des-taches."
+        ],
+        "engine": "html-original",
+        "generationId": "html-cac-inventaire-taches-20261011",
+        "model": "playwright-chromium",
+        "provider": "html-original-local",
+        "generatedAt": "2026-10-11",
+        "sourcePath": "preuves/couverture-originale.png",
+        "sourceSha256": "f0fa1ac6fd466d5b29f423be6d365da8d0cd43fee30624d84fb0206562a8af84",
+        "outputSha256": "22692e0f410356bf4c5911736e992ac7f19403595e1d62cb7b5e59f7bc9bef3b",
+        "credits": 0,
+        "provenance": {
+          "type": "html-original",
+          "template": "editorial/templates/cadre-article.html",
+          "createdAt": "2026-10-11",
+          "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+        }
+      },
+      "masterUnchanged": true
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "before": {
+        "slug": "cac-reception-fec-constat",
+        "dossier": "editorial/articles/cac-reception-fec-constat",
+        "erreurs": [
+          "claims[4] : citation trop courte ou trop générique (40 caractères et 5 jetons minimum).",
+          "Palette : #231f20 (touche) mesurée à 0,002 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas.",
+          "Palette : #97551a (touche) mesurée à 0 % sur l'image, plancher 0,5 % — le brief l'annonce, l'image ne la porte pas."
+        ],
+        "suite": "corriger la recette"
+      },
+      "after": {
+        "slug": "cac-reception-fec-constat",
+        "dossier": "editorial/articles/cac-reception-fec-constat",
+        "erreurs": [
+          "claims[4] : citation trop courte ou trop générique (40 caractères et 5 jetons minimum)."
+        ],
+        "suite": "corriger la recette"
+      },
+      "palette": {
+        "epinglee": [
+          {
+            "hex": "#fffefb",
+            "role": "dominante"
+          },
+          {
+            "hex": "#231f20",
+            "role": "touche"
+          },
+          {
+            "hex": "#97551a",
+            "role": "touche"
+          }
+        ],
+        "tolerance": 45,
+        "pixelsMesures": 2073600,
+        "resolution": "master-natif",
+        "parts": {
+          "#fffefb": 0.990561824845679,
+          "#231f20": 0.0008203125,
+          "#97551a": 0.0005420524691358025
+        },
+        "seuils": {
+          "dominante": 0.1,
+          "touche": 0.005,
+          "presente": 0.005
+        },
+        "contrat": "observation-html-original",
+        "statut": "OBSERVATION",
+        "ecarts": [
+          "Palette : #231f20 (touche) mesurée à 0,082 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (HTML original, non bloquant).",
+          "Palette : #97551a (touche) mesurée à 0,054 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (HTML original, non bloquant)."
+        ]
+      },
+      "engine": "html-original",
+      "generation": {
+        "version": 1,
+        "candidateSlug": "cac-reception-fec-constat",
+        "kind": "image-generation",
+        "status": "PASS",
+        "checkedAt": "2026-10-12",
+        "articleSha256": "d244007640c1e9aaa27a1ef19bdc96e955f789f515e6cb4624edcf951a73418e",
+        "manifestSha256": "d430bbd0b27f4fc9150ab3a49312e3c00083e1d63c32801474465b831f5949b3",
+        "observations": [
+          "Contrôle image-generation relu sur le candidat exact cac-reception-fec-constat."
+        ],
+        "engine": "html-original",
+        "generationId": "html-cac-fec-registre-reception-20261011",
+        "model": "playwright-chromium",
+        "provider": "html-original-local",
+        "generatedAt": "2026-10-11",
+        "sourcePath": "preuves/couverture-originale.png",
+        "sourceSha256": "595d4b8d643e7b7641a58652396c3553de42962ffef64a100ca58fdf50062d87",
+        "outputSha256": "711c5ad32ca8a59961bd1920129474108010d0079366698726aa57f375e7746b",
+        "credits": 0,
+        "provenance": {
+          "type": "html-original",
+          "template": "editorial/templates/cadre-article.html",
+          "createdAt": "2026-10-11",
+          "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+        }
+      },
+      "masterUnchanged": true
+    }
+  ]
+}

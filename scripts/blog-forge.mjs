@@ -23,6 +23,7 @@ import { pathToFileURL } from 'node:url';
 import sharp from 'sharp';
 import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } from './lib/palette.mjs';
 import { mesurerPalette } from './mesurer-palette.mjs';
+import { moteurImage } from './lib/blog-image-provenance.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
   PUBLICATION_SEAL_PATH, contexteDeCitation, citationNormativeCourte, verifierPlafonds, verifySource, jourRecuperationParis,
@@ -156,7 +157,7 @@ export function construireManifest(recette, statut, jour, revues, datesSources =
       classificationEvidence: `preuves/sources/${s.id}.classification.json`, verificationEvidence: `preuves/sources/${s.id}.json`,
     })),
     author: 'kevin', reviewer: revues?.editorial?.reviewer ?? 'marketing', reviewRule: recette.reviewRule, cta: recette.cta,
-    image: { heroId: recette.image.heroId, alt: recette.image.alt, master: 'preuves/image/master.png', og: 'preuves/image/og.webp', engine: 'image_generate' },
+    image: { heroId: recette.image.heroId, alt: recette.image.alt, master: 'preuves/image/master.png', og: 'preuves/image/og.webp', engine: moteurImage(recette.image) },
     research: {
       serp: { status: 'PASS', evidence: 'preuves/research-serp.json', checkedAt: jour },
       gsc: { status: 'PASS', evidence: 'preuves/research-gsc.json', checkedAt: jour },
@@ -423,6 +424,8 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
   const master = join(imageDir, 'master.png');
   const marque = join(imageDir, 'cadre.sha256');
   const generee = recette.image.source;
+  const engine = moteurImage(recette.image);
+  const htmlOriginal = engine === 'html-original';
   // Deux régimes : une image générée selon le brief (recette.image.source, chemin relatif à la recette,
   // avec generationId et modèle), ou, à défaut, le cadre de preuve HTML rendu par Playwright.
   let html = null;
@@ -459,25 +462,29 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
   if (generee) {
     const couleurs = couleursDuBrief(brief?.palette);
     const defautsBrief = verifierBriefPalette(brief?.palette);
-    const mesure = couleurs.length ? await mesurerPalette(master, couleurs.map((c) => c.hex)) : null;
-    const manques = mesure ? verifierParts(couleurs, mesure.parts) : [];
+    // Le texte fin d'un cadre HTML disparaît au rééchantillonnage : compter le master natif.
+    const largeur = htmlOriginal ? (await sharp(master).metadata()).width : undefined;
+    const mesure = couleurs.length ? await mesurerPalette(master, couleurs.map((c) => c.hex), { largeur }) : null;
+    const manques = mesure ? verifierParts(couleurs, mesure.parts, { observation: htmlOriginal }) : [];
     const exigee = String(recette.date ?? '') >= DEBUT_REGLE_ECRITE;
     palette = {
       epinglee: couleurs,
       tolerance: mesure?.tolerance ?? null,
       pixelsMesures: mesure?.pixels ?? null,
+      resolution: htmlOriginal ? 'master-natif' : 'largeur-320',
       parts: mesure?.parts ?? null,
       seuils: SEUILS_PALETTE,
-      statut: defautsBrief.length + manques.length === 0 ? 'PASS' : (exigee ? 'FAIL' : 'DETTE'),
+      contrat: htmlOriginal ? 'observation-html-original' : 'planchers-image-generee',
+      statut: htmlOriginal && !defautsBrief.length ? 'OBSERVATION' : (defautsBrief.length + manques.length === 0 ? 'PASS' : (exigee ? 'FAIL' : 'DETTE')),
       ecarts: [...defautsBrief, ...manques],
     };
-    if (exigee) erreursImage.push(...defautsBrief, ...manques);
+    if (exigee) erreursImage.push(...defautsBrief, ...(htmlOriginal ? [] : manques));
   }
   ecrireJson(join(imageDir, 'prompt.json'), artefact(sujet, 'image-prompt', jour, generee
-    ? { engine: 'image_generate', prompt: brief.prompt, brief: { sujet: brief.sujet, composition: brief.composition, style: brief.style, palette: brief.palette, interdits: brief.interdits, alt: recette.image.alt }, reviewCriteria: brief.reviewCriteria }
+    ? { engine, prompt: brief.prompt, brief: { sujet: brief.sujet, composition: brief.composition, style: brief.style, palette: brief.palette, interdits: brief.interdits, alt: recette.image.alt }, reviewCriteria: brief.reviewCriteria }
     : { engine: 'image_generate', prompt: `Cadre de preuve HTML (editorial/templates/cadre-article.html) rendu à 1920×1080 : « ${recette.image.cadre.titre} » — ${recette.image.cadre.sousTitre}. Trois colonnes : ${recette.image.cadre.colonnes.map((c) => c.titre).join(' / ')}. Jeu fictif, aucune donnée client, aucun texte hors charte.` }));
   ecrireJson(join(imageDir, 'generation.json'), artefact(sujet, 'image-generation', jour, generee
-    ? { engine: 'image_generate', generationId: generee.generationId, model: generee.model, provider: generee.provider ?? 'higgsfield', generatedAt: generee.generatedAt, sourcePath: generee.path, sourceSha256: empreinteCadre, outputSha256: sha256(readFileSync(master)), credits: generee.credits ?? null }
+    ? { engine, generationId: generee.generationId, model: generee.model, provider: generee.provider ?? 'higgsfield', generatedAt: generee.generatedAt, sourcePath: generee.path, sourceSha256: empreinteCadre, outputSha256: sha256(readFileSync(master)), credits: generee.credits ?? null, ...(htmlOriginal ? { provenance: recette.image.provenance } : {}) }
     : { engine: 'image_generate', generationId: `cadre-${empreinteCadre.slice(0, 24)}`, outputSha256: sha256(readFileSync(master)), renderer: 'playwright-chromium 1920x1080' }));
   ecrireJson(join(imageDir, 'visual-review.json'), artefact(sujet, 'image-visual-review', jour, {
     status: revueImage ? 'PASS' : 'FAIL',
@@ -485,7 +492,7 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
     criteria: IMAGE_REVIEW_CRITERIA.map((id) => ({ id, result: revueImage?.criteria?.[id]?.result ?? 'FAIL', observations: revueImage?.criteria?.[id]?.observations ?? ['Revue image non exécutée.'] })),
   }));
   ecrireJson(join(dossier, 'image.json'), {
-    version: 1, candidateSlug: sujet.slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash, engine: 'image_generate',
+    version: 1, candidateSlug: sujet.slug, articleSha256: sujet.articleHash, manifestSha256: sujet.manifestHash, engine,
     promptEvidence: 'preuves/image/prompt.json', generationEvidence: 'preuves/image/generation.json', visualReviewEvidence: 'preuves/image/visual-review.json',
     master: { path: 'preuves/image/master.png', width: 1920, height: 1080, format: 'png' },
     og: { path: 'preuves/image/og.webp', width: 1200, height: 630, format: 'webp', crop: '1200x630+0+22' },

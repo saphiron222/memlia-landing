@@ -96,13 +96,15 @@ export function classerPixel(r, g, b, cibles, tolerance) {
 }
 
 /** Les couleurs épinglées qui manquent à l'image, avec la mesure et le plancher de leur rôle. */
-export function verifierParts(couleurs, parts) {
+export function verifierParts(couleurs, parts, { observation = false } = {}) {
   const rouges = [];
   for (const { hex, role } of couleurs) {
     const seuil = SEUILS_PALETTE[role] ?? SEUILS_PALETTE.presente;
     const part = parts[hex];
     if (part === undefined) { rouges.push(`Palette : ${hex} (${role}) épinglée au brief mais non mesurée sur l'image.`); continue; }
-    if (part < seuil) rouges.push(`Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, plancher ${pourcent(seuil)} — le brief l'annonce, l'image ne la porte pas.`);
+    if (part < seuil) rouges.push(observation
+      ? `Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, sous l'objectif cosmétique indicatif de ${pourcent(seuil)} (HTML original, non bloquant).`
+      : `Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, plancher ${pourcent(seuil)} — le brief l'annonce, l'image ne la porte pas.`);
   }
   return rouges;
 }
