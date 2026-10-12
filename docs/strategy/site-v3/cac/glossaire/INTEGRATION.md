@@ -59,9 +59,16 @@ collecte du 6 octobre Paris. Réserve A4 maintenue : collecte récente ne démon
 pas une consolidation générale courante et aucune ouverture HTTP Légifrance
 n’est revendiquée. La fenêtre de nouvelle préparation expire après le 13 octobre.
 
-Le maillage public CAC porte uniquement les deux articles effectivement servis :
+Le maillage public CAC porte les deux articles effectivement servis :
 /blog/verifier-reponse-ia-comptabilite et
 /blog/ia-comptabilite-confidentialite-donnees. Ce sont des contextes EC explicites,
-pas des guides d’audit. Les deferredLinks des quatre candidats restent
-documentaires ; leur publication future autorisera une passe de maillage distincte.
+pas des guides d’audit. Deux outils ont été vérifiés en production HTTP200 :
+/outils-comptables-gratuits/seuil-signification-audit (deux termes liés) et
+/outils-comptables-gratuits/suivi-circularisation (deux termes liés). Leurs liens
+sont promus dans les entrées publiques sans modifier les cinq champs relus.
+Les tables deferredLinks originales restent documentaires comme preuves de
+préparation : sur 29 lignes et 26 destinations distinctes, deux lignes/outils
+sont désormais promues ; les 27 autres lignes et 24 destinations sont encore
+en HTTP404 au constat d’intégration. Leur publication future autorisera une passe
+de maillage distincte.
 Les deux termes IA EC restent reportés, sans changement de la vague EC livrée.
