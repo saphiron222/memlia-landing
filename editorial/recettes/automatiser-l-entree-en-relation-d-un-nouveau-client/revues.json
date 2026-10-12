@@ -2,13 +2,26 @@
   "subject": {
     "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
     "bodySha256": "f4e385eefdc612f4aebc58d56dff4bf94fadf509264f2401c202048d1b113cde",
-    "recipeSha256": "98417dc0ff766136187459fe571e76d7dafbe73e61496a3dbb3a856e26d07e40",
-    "recipeSubstanceSha256": "eed07fcdd3a2088ee724c1a16ae8403bef53a8471a0dbcfa90fd75736dc774a7",
+    "recipeSha256": "305928bb0df50beb6aa4c462b5d474e70631f511c0ba05538bfa845fe8a5c8d9",
+    "recipeSubstanceSha256": "19f78f3852fd59ed85aabdf864a53452ebca7d2236d75cfde6f3ecc5ec982183",
     "renderedSha256": "5ed7829eefed55afe4e952850953669182e4918525f792bdfebeb2b936d297d4"
   },
   "checkedAt": "2026-10-12",
   "reviewer": "metier:t_67cb2d6a",
-  "transport": {"original": "revues-acquises.json", "proof": "verifier-portage.mjs", "renderProof": "preuves/portage-rendu.json", "newReview": false, "note": "Deux libellés de registre et rendu Astro projetés ; paragraphes/tableaux/liens/figures concordants, apostrophes typographiques et ancres logistiques ; aucun verdict ni observation changé."},
+  "transport": {
+    "original": "revues-acquises.json",
+    "proof": "verifier-portage.mjs",
+    "renderProof": "preuves/portage-rendu.json",
+    "newReview": false,
+    "note": "Deux libellés de registre et rendu Astro projetés ; paragraphes/tableaux/liens/figures concordants, apostrophes typographiques et ancres logistiques ; aucun verdict ni observation changé.",
+    "imageProjection": {
+      "original": "revues-avant-couverture-v2.json",
+      "acquiredImageReview": "revue-image-v2.json",
+      "newBusinessReview": false,
+      "publicationDay": "2026-10-13",
+      "paletteNote": "Double épinglage crème reformulé : sens et avis acquis inchangés ; nuances originales conservées dans revue-image-v2.json."
+    }
+  },
   "verdict": "PASS",
   "decision": "approuver",
   "blocking": false,
@@ -81,48 +94,63 @@
     }
   },
   "image": {
-    "reviewer": "metier:t_67cb2d6a",
+    "reviewer": "qa — Hermes / openai-codex / gpt-6.1-sol",
+    "checkedAt": "2026-10-12T23:46:17.538+02:00",
+    "generationId": "exec-9ae9f716-1f67-4cb5-b6f2-f83e7162d0a1",
     "criteria": {
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Six composantes présentes pour la pièce jointe N1 ; prompt historique préservé, cible hex locale explicitement distincte du prompt. Deux écarts de verts restent une note cosmétique, pas une conformité de palette revendiquée."
+          "Six composantes présentes : sujet, composition, style, palette, interdits, alt.",
+          "Prompt exact corroboré par requête native, revisedPrompt et provenance ; aucune réécriture historique.",
+          "Le terme historique matte ceramic est conservé sans l'attribuer au bloc de référence ; rendu réellement géométrique mat, isométrique et aéré."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "N1 levé : copie binaire exacte du fichier opérateur et de sa provenance, démontrée indépendamment. Aucune recoloration ; dérivés seuls redimensionnés/recadrés. Modèle et coût non communiqués."
+          "Source, WebP1200, AVIF1200 décodé et OG réellement vus ; lumière haut gauche, ombres courtes, fond crème, verts et graphite.",
+          "Aucun texte, lettre, chiffre, logo, main, personnage, donnée client, interface, alerte rouge, symbole d'envoi ou certification visible."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Dérivé1200 réellement regardé pendant cette re-revue : pictogrammes et lignes génériques, aucun nom, numéro, texte lisible ou marque identifiable ; source exacte confrontée à la pièce jointe."
+          "Dossier et feuilles vierges fictifs, sans identité réelle ni interface simulée.",
+          "Génération native OpenAI completed corroborée au journal Codex lignes6774/6780/6783 ; résultat PNG natif, fichier généré, pièce jointe et source du paquet identiques.",
+          "Provenance jointe identique ; modèle exact/coût non communiqués, aucune génération ou dépense QA."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Quatre plateaux dont le dernier ocre vide, dossier vert ouvert, main au crayon sur une checklist : composition confirmée dans le dérivé regardé. Illustration, jamais preuve de diligence de vigilance."
+          "Dossier ouvert, trois plateaux verts dont un vide, plateau graphite séparé avec feuille : préparation et dossier administratif incomplet lisibles.",
+          "Vignettes320×180 et sociale320×168 réellement vues ; plateau vide et séparation graphite lisibles.",
+          "OG1200×630 réellement vu : aucun objet essentiel coupé, marges préservées.",
+          "Le visuel ne certifie pas la vigilance ni un processus réglementaire ; pertinence administrative seulement."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "Sept dérivés WebP/AVIF/OG contrôlés présents et non vides ; dérivé1200 regardé. Les deux figures sont byte-identiques au paquet initial. Contrôles publics/production réservés à platform."
+          "SourcePNG1672×941 et huit sorties décodées ; dimensions, formats, tailles et empreintes concordants.",
+          "MasterPNG1920×1080, OGWebP1200×630, AVIF/WebP768×432,1200×675,1600×900 ; AVIF confirmés par marque avif et compression AV1.",
+          "Huit sorties reproduites avec les opérations de la forge et identiques octet pour octet ; master redimensionné, non généré à1920×1080."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "Alt actuel concordant avec le dérivé réellement regardé : main au crayon, dossier fictif, quatre plateaux dont un vide. Aucun pouvoir de décision attribué à cette illustration."
+          "Alt exact calculé à103 caractères, sous125 ; manque et séparation décrits sans promesse de conformité.",
+          "Plateau d'examen décrit l'intention éditoriale, non une certification visible."
         ]
       }
     },
     "reserves": [
-      "Palette : les mesures ne comptent pas les deux verts cibles ; écart cosmétique conservé, pas de PASS palette ni modification de garde."
-    ]
+      "Palette : #fffefb (presente) mesurée à 0,441 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
+      "Palette : #27b657 (presente) mesurée à 0,014 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ],
+    "evidence": "revue-image-v2.json"
   },
   "figures": [
     {

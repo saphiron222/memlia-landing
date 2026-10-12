@@ -3,28 +3,28 @@
   "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
   "kind": "image-prompt",
   "status": "PASS",
-  "checkedAt": "2026-10-12",
-  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
-  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "checkedAt": "2026-10-13",
+  "articleSha256": "e62d22aae516a86a2e559371666b59d98d9136228241c96cc3a756568f200ff3",
+  "manifestSha256": "25b5ba83e69c3df66ff39a230e5c5e68483e3b2f269cddad02464f3acf5b29b7",
   "observations": [
     "Contrôle image-prompt relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
   ],
   "engine": "image_generate",
-  "prompt": "Prompt exact conservé dans provenance-e1b26719-2623-4044-8ccb-86b40198bac6.json ; pièce jointe opérateur utilisée sans régénération. La palette hex est une cible de comparaison locale, pas le prompt historique.",
+  "prompt": "Use case: stylized-concept. Asset type: original Memlia accounting blog cover, horizontal 16:9, safe for a centered 1200x630 crop. Premium isometric 3D editorial diorama with simplified geometric objects, matte ceramic and thick blank paper, soft studio light from upper left, short shadows, warm cream paper background #fcfbf7, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. Substantial clear objects readable at thumbnail size, airy coherent composition, consistent with the existing Memlia matte 3D blog covers. No photographic desk scene, no people, no hands, no faces, no human figure, no pawn, no vegetation or scenery, no letters, no readable text, no numbers, no amount, no percentage, no logo, no watermark, no screen, no dashboard, no software interface, no red alert, no automatic sending symbol, no approval seal, no legal or financial certification. No other saturated color. One original wide illustration, no caption. Subject: Preparing a new client onboarding dossier with a missing document still awaiting examination. An open plain green paper folder, three shallow green geometric document trays, two holding blank cream cards and one visibly empty. A separate graphite review tray contains one blank cream card placed loosely, still unfiled. No ID card, portrait, identity pictogram or personal information. Preparation and incomplete dossier, no approval.",
   "brief": {
-    "sujet": "Pièces d'un nouveau dossier préparées avant la signature.",
-    "composition": "Dossier ouvert à pictogrammes, main au crayon et quatre plateaux alignés dont un vide, en 16:9.",
-    "style": "Illustration tactile de papeterie en vue oblique, lumière chaude et ombres douces.",
-    "palette": "Crème #fcfbf7 dominante, accents vert #27b657 et vert profond #1c8a41, touches graphite #231f20.",
-    "interdits": "Texte lisible, chiffres, logo, données client, interface, certification légale ou action d'envoi.",
-    "alt": "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide."
+    "sujet": "Préparation du dossier d’entrée en relation : pièces reçues et pièce encore attendue, examen distinct.",
+    "composition": "Dossier vert ouvert, trois plateaux verts dont un vide et plateau graphite distinct avec une feuille non classée ; composition isométrique aérée.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière douce du haut gauche, ombres courtes, fond crème.",
+    "palette": "Crème #fcfbf7 dominante, accents vert #27b657 et vert profond #1c8a41, touches graphite #231f20 ; parts observées, non conformité revendiquée.",
+    "interdits": "Texte, lettres, chiffres, logo, personnage, main, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique ou certification.",
+    "alt": "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct."
   },
   "reviewCriteria": [
-    "Dossier ouvert et quatre plateaux",
-    "Main au crayon et attente visible",
-    "Palette mesurée avec écarts conservés",
-    "Aucun texte lisible ni donnée client",
-    "Provenance native exacte",
-    "Dérivés adaptés"
+    "brief-six-components",
+    "generation-constraints",
+    "fictive-provenance",
+    "recognizable-subject",
+    "technical-derivatives",
+    "alt-information"
   ]
 }

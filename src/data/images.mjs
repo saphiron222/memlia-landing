@@ -215,7 +215,7 @@ export const IMAGES = {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide.",
+    alt: "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct.",
     generee: true,
   },
 };

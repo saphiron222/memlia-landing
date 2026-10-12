@@ -15,3 +15,13 @@ Journal local honnête : preparer sans erreur ; gate initial refusait deux libel
 Le sceau natif est une autorisation de candidat, pas un reçu HTTP de production. La construction complète et la suite globale doivent être vertes en CI sur la PR avant fusion normale. Déploiement automatique et recette publique restent à constater. Aucune soumission moteur, rang, gain, visibilité IA ou mesure terrain déclarés.
 
 PR254 d1ca4a92 : premier run CI refusé par cardinalité du registre des ponts commerciaux. Le rendu avait déjà le bon repli ; sa destination et son libellé identiques sont maintenant déclarés explicitement dans le registre, sans modifier le rendu ni l’avis. Test ciblé ponts rejoué, nouveau run requis. Aucun garde assoupli.
+
+## Reprise du 13 octobre 2026
+
+Jour réel Paris constaté après minuit : réservation et publication portées au13/10, calendrier régénéré et créneau accepté, sans nouvelle revue du fond. Main frais b78e6d26 intégré normalement. Avis visuel indépendant PASS t_9b185e18 du12/10 projeté sur la couverture native exec-9ae9f716-1f67-4cb5-b6f2-f83e7162d0a1 ; ancien avis et master conservés en historique. Source et six héros publics identiques aux sorties revues ; OG réencodé par la forge native, même recadrage1200×630, réellement regardé sans main/texte et objets essentiels présents. Alt103 exact. Modèle/coût non communiqués, aucune génération ni dépense.
+
+Double épinglage des nuances crème refusé par le contrôle déterministe : formulation de mesure simplifiée, sens inchangé ; brief original, avis et deux écarts palette toujours conservés dans revue-image-v2.json. Aucune nouvelle revue ni faux PASS palette. Matérialisation publie sans erreur puis sceau natif validé ; rendu confronté à la fabrication, paragraphes/tableaux/liens/figures concordants, avis métier/editorial/sources/figures identiques. Quinze cas et19 contrôles F1 rejoués. Les preuves d'intégration sont dans preuves/livraison-v2/ ; ni score global, ni indexation ou métrique terrain inventés.
+
+regen:generated réussi, lastmod56 à jour, contrats blog et titres ciblés et inventaire images réussis. Cette commande a reconstruit les surfaces Astro ; aucun build complet avec toutes les portes locales revendiqué. Audit global local interrompu au timeout60s, sans succès revendiqué ni répétition lourde ; la suite globale reste à la CI. Deux commandes de contrôle aux noms supposés inexistants ont échoué ; contrôles réels retrouvés puis exécutés, erreurs non assimilées à des PASS. Changements générés hors blog restaurés depuis l'état initial propre.
+
+À ce stade : nouvelle CI, fusion et HTTP public non acquis. Copies CMF du06/10 encore recevables au13/10 inclus, constats métier du12/10 conservés.

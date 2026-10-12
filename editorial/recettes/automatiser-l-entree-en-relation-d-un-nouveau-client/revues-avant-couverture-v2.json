@@ -1,0 +1,267 @@
+{
+  "subject": {
+    "slug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
+    "bodySha256": "f4e385eefdc612f4aebc58d56dff4bf94fadf509264f2401c202048d1b113cde",
+    "recipeSha256": "98417dc0ff766136187459fe571e76d7dafbe73e61496a3dbb3a856e26d07e40",
+    "recipeSubstanceSha256": "eed07fcdd3a2088ee724c1a16ae8403bef53a8471a0dbcfa90fd75736dc774a7",
+    "renderedSha256": "5ed7829eefed55afe4e952850953669182e4918525f792bdfebeb2b936d297d4"
+  },
+  "checkedAt": "2026-10-12",
+  "reviewer": "metier:t_67cb2d6a",
+  "transport": {"original": "revues-acquises.json", "proof": "verifier-portage.mjs", "renderProof": "preuves/portage-rendu.json", "newReview": false, "note": "Deux libellés de registre et rendu Astro projetés ; paragraphes/tableaux/liens/figures concordants, apostrophes typographiques et ancres logistiques ; aucun verdict ni observation changé."},
+  "verdict": "PASS",
+  "decision": "approuver",
+  "blocking": false,
+  "scope": "Re-revue ciblée F1 et fini du paquet de fabrication ; constats réglementaires et figures inchangés reportés, non-Astro et non publié. Ne vaut pas CI ou reçu de production.",
+  "editorial": {
+    "reviewer": "metier:t_67cb2d6a",
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Trois checklists distinguent pièces, jalons et signature pour le lecteur administratif ; aucune décision de vigilance confiée à l’automatisation."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Guide exécutable et FAQ cohérents avec l’intention onboarding ; brief qualitatif et autocomplétion reçue, sans volume ni classement Google attestés."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Trois citations exactes contrôlées ; CMF confronté à la section officielle affichée au12/10/2026 et CNIL ouverte ; version et champ EC examinés."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "F1 levé par exécution indépendante :15 cas du corps et19 contrôles de décision dont hors dossier, ancienne version, non favorable, champ absent/blanc et cas favorable. Dix sorties nominales inchangées confrontées au paquet initial ; saisies protégées, déterminisme et aucun envoi/calcul de vigilance. preuves/revue-metier-correction.json."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "PASS limité à la fabrication : H1 unique et cinq tableaux complets dans des régions défilantes ; canonical, JSON-LD, OG, sitemap et CI restent à vérifier après matérialisation, pas acquis ici."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Réponse directe, définitions de jalon/complétude, citations dans les paragraphes et quatre FAQ permettent une extraction bornée ; visibilité IA non mesurée."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "Clôture en nous/vous et Confier cette tâche vers /contact ; prise en charge dans les outils, essais par les équipes et décision conservée au cabinet."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "reviewer": "metier:t_67cb2d6a",
+    "reviewerId": "metier:t_67cb2d6a",
+    "role": "administratif-secretariat",
+    "claims": {
+      "claim-unit-486467fd0bdc-1": {
+        "verdict": "soutient",
+        "reasoning": "L561-5,I distingue identification et vérification ; le IV ne concerne que la vérification sous conditions. Extrait exact dans la copie DILA et dans la section officielle affichée au12/10/2026 (preuve conservée). L561-2,12° confirme le champ EC dans le référentiel local ; aucune dérogation décidée automatiquement."
+      },
+      "claim-unit-4e4236251a67-1": {
+        "verdict": "soutient",
+        "reasoning": "L561-5-1 prévoit objet/nature et actualisation pendant toute la relation ; la citation et la phrase d’actualisation concordent avec la copie DILA et la section officielle du12/10/2026. Le suivi de contexte est présenté comme méthode, pas comme diligence de vigilance suffisante."
+      },
+      "claim-unit-2e6ab1298fa8-1": {
+        "verdict": "soutient",
+        "reasoning": "La page officielle CNIL ouverte pendant cette revue porte exactement l’article5,1,c du RGPD. Le conseil de suivre les références/états plutôt que multiplier les copies est cohérent ; aucune durée universelle ou suppression des justificatifs requis n’en est déduite."
+      }
+    }
+  },
+  "image": {
+    "reviewer": "metier:t_67cb2d6a",
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Six composantes présentes pour la pièce jointe N1 ; prompt historique préservé, cible hex locale explicitement distincte du prompt. Deux écarts de verts restent une note cosmétique, pas une conformité de palette revendiquée."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "N1 levé : copie binaire exacte du fichier opérateur et de sa provenance, démontrée indépendamment. Aucune recoloration ; dérivés seuls redimensionnés/recadrés. Modèle et coût non communiqués."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Dérivé1200 réellement regardé pendant cette re-revue : pictogrammes et lignes génériques, aucun nom, numéro, texte lisible ou marque identifiable ; source exacte confrontée à la pièce jointe."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Quatre plateaux dont le dernier ocre vide, dossier vert ouvert, main au crayon sur une checklist : composition confirmée dans le dérivé regardé. Illustration, jamais preuve de diligence de vigilance."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Sept dérivés WebP/AVIF/OG contrôlés présents et non vides ; dérivé1200 regardé. Les deux figures sont byte-identiques au paquet initial. Contrôles publics/production réservés à platform."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Alt actuel concordant avec le dérivé réellement regardé : main au crayon, dossier fictif, quatre plateaux dont un vide. Aucun pouvoir de décision attribué à cette illustration."
+        ]
+      }
+    },
+    "reserves": [
+      "Palette : les mesures ne comptent pas les deux verts cibles ; écart cosmétique conservé, pas de PASS palette ni modification de garde."
+    ]
+  },
+  "figures": [
+    {
+      "id": "onboarding-pieces",
+      "reviewer": "metier:t_67cb2d6a",
+      "criteria": [
+        {
+          "critere": "Écran d’outil crédible",
+          "result": "PASS"
+        },
+        {
+          "critere": "Données fictives concrètes sans marque",
+          "result": "PASS"
+        },
+        {
+          "critere": "Image autonome et article complet sans image",
+          "result": "PASS"
+        },
+        {
+          "critere": "Ni étapes commentées ni slogan ni avertissement",
+          "result": "PASS"
+        },
+        {
+          "critere": "Parenté visuelle avec le cadre relance-checklist regardé",
+          "result": "PASS"
+        }
+      ],
+      "observation": "D-104 : bénéficiaire reçu mais à examiner ; séparation des états exacte."
+    },
+    {
+      "id": "onboarding-jalons",
+      "reviewer": "metier:t_67cb2d6a",
+      "criteria": [
+        {
+          "critere": "Écran d’outil crédible",
+          "result": "PASS"
+        },
+        {
+          "critere": "Données fictives concrètes sans marque",
+          "result": "PASS"
+        },
+        {
+          "critere": "Image autonome et article complet sans image",
+          "result": "PASS"
+        },
+        {
+          "critere": "Ni étapes commentées ni slogan ni avertissement",
+          "result": "PASS"
+        },
+        {
+          "critere": "Parenté visuelle avec le cadre relance-checklist regardé",
+          "result": "PASS"
+        }
+      ],
+      "observation": "Constat visuel acquis reporté, fichiers inchangés : D-101 à valider, D-106 anomalieV1/V2, D-107 préparation seulement ; résultats nominaux recontrôlés après correction F1."
+    }
+  ],
+  "sources": {
+    "reviewedBy": "metier:t_67cb2d6a",
+    "observations": {
+      "cmf-identification": "L561-5,I distingue identification et vérification ; le IV ne concerne que la vérification sous conditions. Extrait exact dans la copie DILA et dans la section officielle affichée au12/10/2026 (preuve conservée). L561-2,12° confirme le champ EC dans le référentiel local ; aucune dérogation décidée automatiquement.",
+      "cmf-relation": "L561-5-1 prévoit objet/nature et actualisation pendant toute la relation ; la citation et la phrase d’actualisation concordent avec la copie DILA et la section officielle du12/10/2026. Le suivi de contexte est présenté comme méthode, pas comme diligence de vigilance suffisante.",
+      "cnil-minimisation": "La page officielle CNIL ouverte pendant cette revue porte exactement l’article5,1,c du RGPD. Le conseil de suivre les références/états plutôt que multiplier les copies est cohérent ; aucune durée universelle ou suppression des justificatifs requis n’en est déduite."
+    },
+    "preuves": [
+      "preuves/revue-metier-cmf-section.md",
+      "preuves/revue-metier-inventaire.json",
+      "preuves/sources/cnil-minimisation.html"
+    ]
+  },
+  "qualite": {
+    "reviewer": "metier:t_67cb2d6a",
+    "score": null,
+    "p0": [],
+    "verdict": "PASS de cohérence du paquet après levée F1 ; score global non disponible, CI et publication non vérifiées.",
+    "reservations": [
+      "Revue qualitative du paquet exécutée ; barème qualité final, métadonnées publiques, CI et preuve servie non acquis."
+    ]
+  },
+  "skills": {
+    "rows": 63,
+    "states": {
+      "execute": 15,
+      "a-executer": 3,
+      "N/A": 23,
+      "partiel": 19,
+      "indisponible": 3
+    },
+    "omissions": [],
+    "referencesExist": true,
+    "limite": "Inventaire et existence contrôlés ; les N/A justifiés et états partiels ne sont pas des PASS d’exécution intégrale."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "evidence": "preuves/revue-metier-correction.json",
+      "observedCases": 19,
+      "references": [
+        "rejouer.mjs:15-23",
+        "corps.md:90",
+        "corps.md:110-128"
+      ],
+      "correction": "Définir et éprouver une décision humaine favorable rattachée au dossier et à la version/périmètre ; refus/attente pour décision hors dossier, périmée, défavorable ou incomplète. Rejouer le cas favorable et conserver les cas nominaux, saisies et absence d’envoi.",
+      "liftCriterion": "Aucun contre-cas ne prépare la passation ; cas favorable rattaché permet le parcours avec les autres validations. Prétraitement autorisé seulement avec contrat et preuve exécutée.",
+      "status": "leve",
+      "observation": "Chaque contre-cas refuse/attend ; seule la décision favorable complète sur le dossier/version courants prépare la passation avec les autres validations."
+    }
+  ],
+  "notes": [
+    {
+      "id": "N1",
+      "blocking": false,
+      "status": "applique",
+      "observation": "Pièce jointe opérateur et provenance exactes ; alt/brief/dérivés concordants. Palette mesurée avec deux écarts cosmétiques explicitement conservés."
+    }
+  ],
+  "remaining": [
+    "Matérialisation/scellement natifs",
+    "Rendu Astro final et surfaces SEO publiques",
+    "Jour réel de réservation/publication",
+    "CI et reçu de production"
+  ],
+  "report": "REVUE-METIER.md",
+  "rereview": "F1 et critère de fini seulement ; constats acquis conservés pour le fond et les figures inchangés.",
+  "history": [
+    {
+      "verdict": "FAIL",
+      "checkedAt": "2026-10-12",
+      "report": "REVUE-METIER-initiale.md",
+      "review": "revues-initiales.json",
+      "evidence": "preuves/revue-metier-probe.json"
+    }
+  ],
+  "correction": {
+    "scope": "F1, N1 et fini seulement",
+    "evidence": "preuves/revue-metier-correction.json",
+    "report": "REVUE-METIER.md",
+    "articleCases": 15,
+    "targetedControls": 19,
+    "acquiredObservationsPreserved": true
+  }
+}

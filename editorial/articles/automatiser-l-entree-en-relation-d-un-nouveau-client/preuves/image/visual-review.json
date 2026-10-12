@@ -3,9 +3,9 @@
   "candidateSlug": "automatiser-l-entree-en-relation-d-un-nouveau-client",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-10-12",
-  "articleSha256": "2912dde80362bcb91920b86807317fa86508646ebb5c79569783dbd42c8f519e",
-  "manifestSha256": "95541dac47107a058ee25e9eec3b0f6c3cbc62c37f72b211987f8556bb2bcad3",
+  "checkedAt": "2026-10-13",
+  "articleSha256": "e62d22aae516a86a2e559371666b59d98d9136228241c96cc3a756568f200ff3",
+  "manifestSha256": "25b5ba83e69c3df66ff39a230e5c5e68483e3b2f269cddad02464f3acf5b29b7",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact automatiser-l-entree-en-relation-d-un-nouveau-client."
   ],
@@ -32,10 +32,10 @@
     "pixelsMesures": 57600,
     "resolution": "largeur-320",
     "parts": {
-      "#fcfbf7": 0.09595486111111111,
-      "#27b657": 0,
-      "#1c8a41": 0,
-      "#231f20": 0.19036458333333334
+      "#fcfbf7": 0.6724652777777778,
+      "#27b657": 0.0001388888888888889,
+      "#1c8a41": 0.11413194444444444,
+      "#231f20": 0.03324652777777778
     },
     "seuils": {
       "dominante": 0.1,
@@ -45,9 +45,7 @@
     "contrat": "observation-image-generee",
     "statut": "OBSERVATION",
     "ecarts": [
-      "Palette : #fcfbf7 (dominante) mesurée à 9,595 % sur l'image, sous l'objectif cosmétique indicatif de 10 % (non bloquant).",
-      "Palette : #27b657 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
-      "Palette : #1c8a41 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+      "Palette : #27b657 (touche) mesurée à 0,014 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
     ]
   },
   "criteria": [
@@ -55,42 +53,53 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Six composantes présentes pour la pièce jointe N1 ; prompt historique préservé, cible hex locale explicitement distincte du prompt. Deux écarts de verts restent une note cosmétique, pas une conformité de palette revendiquée."
+        "Six composantes présentes : sujet, composition, style, palette, interdits, alt.",
+        "Prompt exact corroboré par requête native, revisedPrompt et provenance ; aucune réécriture historique.",
+        "Le terme historique matte ceramic est conservé sans l'attribuer au bloc de référence ; rendu réellement géométrique mat, isométrique et aéré."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "N1 levé : copie binaire exacte du fichier opérateur et de sa provenance, démontrée indépendamment. Aucune recoloration ; dérivés seuls redimensionnés/recadrés. Modèle et coût non communiqués."
+        "Source, WebP1200, AVIF1200 décodé et OG réellement vus ; lumière haut gauche, ombres courtes, fond crème, verts et graphite.",
+        "Aucun texte, lettre, chiffre, logo, main, personnage, donnée client, interface, alerte rouge, symbole d'envoi ou certification visible."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Dérivé1200 réellement regardé pendant cette re-revue : pictogrammes et lignes génériques, aucun nom, numéro, texte lisible ou marque identifiable ; source exacte confrontée à la pièce jointe."
+        "Dossier et feuilles vierges fictifs, sans identité réelle ni interface simulée.",
+        "Génération native OpenAI completed corroborée au journal Codex lignes6774/6780/6783 ; résultat PNG natif, fichier généré, pièce jointe et source du paquet identiques.",
+        "Provenance jointe identique ; modèle exact/coût non communiqués, aucune génération ou dépense QA."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Quatre plateaux dont le dernier ocre vide, dossier vert ouvert, main au crayon sur une checklist : composition confirmée dans le dérivé regardé. Illustration, jamais preuve de diligence de vigilance."
+        "Dossier ouvert, trois plateaux verts dont un vide, plateau graphite séparé avec feuille : préparation et dossier administratif incomplet lisibles.",
+        "Vignettes320×180 et sociale320×168 réellement vues ; plateau vide et séparation graphite lisibles.",
+        "OG1200×630 réellement vu : aucun objet essentiel coupé, marges préservées.",
+        "Le visuel ne certifie pas la vigilance ni un processus réglementaire ; pertinence administrative seulement."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Sept dérivés WebP/AVIF/OG contrôlés présents et non vides ; dérivé1200 regardé. Les deux figures sont byte-identiques au paquet initial. Contrôles publics/production réservés à platform."
+        "SourcePNG1672×941 et huit sorties décodées ; dimensions, formats, tailles et empreintes concordants.",
+        "MasterPNG1920×1080, OGWebP1200×630, AVIF/WebP768×432,1200×675,1600×900 ; AVIF confirmés par marque avif et compression AV1.",
+        "Huit sorties reproduites avec les opérations de la forge et identiques octet pour octet ; master redimensionné, non généré à1920×1080."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "Alt actuel concordant avec le dérivé réellement regardé : main au crayon, dossier fictif, quatre plateaux dont un vide. Aucun pouvoir de décision attribué à cette illustration."
+        "Alt exact calculé à103 caractères, sous125 ; manque et séparation décrits sans promesse de conformité.",
+        "Plateau d'examen décrit l'intention éditoriale, non une certification visible."
       ]
     }
   ]

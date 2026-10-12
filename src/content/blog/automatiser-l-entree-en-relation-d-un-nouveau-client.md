@@ -3,7 +3,7 @@ titre: "Onboarding client en cabinet comptable : automatiser l'entrée en relati
 titreOnglet: "Onboarding client cabinet comptable : pièces et jalons | Memlia"
 resume: "Une checklist d'entrée en relation qui distingue pièces reçues, examen du cabinet, version signée et autorisation de passation. Quinze cas fictifs montrent les propositions et les refus."
 description: "Onboarding client cabinet comptable : suivez les pièces, les jalons et la bonne version signée, avec une validation avant la passation."
-datePublication: 2026-10-12
+datePublication: 2026-10-13
 auteur: kevin
 sujets: [cabinet, pieces, automatisation]
 motsCles: ["onboarding client cabinet comptable", "entrée en relation", "lettre de mission", "pièces d'entrée", "jalons onboarding"]
@@ -22,7 +22,7 @@ tache: "Préparer les pièces, jalons et rapprochements de signature d'une entr�
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-10-12
+  date: 2026-10-13
 funnel: TOFU
 contentType: searchable
 format: listicle-checklist
@@ -38,7 +38,7 @@ cta:
   destination: "/contact"
   outcome: "Nous écrivons vos listes et jalons, nous automatisons leur suivi dans vos outils et vos équipes valident les essais. Vous gardez les décisions et la signature. Rien à envoyer : la description de la tâche suffit."
 imageOg: "/images/img-art-onboarding-client-og.webp"
-imageAlt: "Une main au crayon vérifie un dossier fictif devant quatre plateaux de pièces, dont un vide."
+imageAlt: "Dossier ouvert et plateaux de pièces, dont un vide, avec une feuille dans un plateau d’examen distinct."
 statutEditorial: publie
 sources:
   - editeur: "Légifrance"
