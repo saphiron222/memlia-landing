@@ -4,6 +4,8 @@ Préparation bancaire du 12/10/2026, t_d90b7d99 : intégration depuis main fd3ea
 
 Une ligne par article publié, complétée par chaque exécution (manuelle ou planifiée). Les jours sans créneau consignent la maintenance faite.
 
+Reprise CI bancaire du12/10 à15:01UTC : les jobs navigateur de PR257 refusent la clause3 car la route n’était pas encore inscrite dans le registre des requêtes. Réconciliation native exécutée, ajout de la seule entrée bancaire ; verify-page-contract85pages PASS et query-ownership340URL PASS. Deuxième commit/push de cette livraison ; aucun changement de fond ni nouvel avis. Le défaut indépendant de fixture est proposé en PR258, QA/CI encore en cours ; publication toujours non attestée.
+
 Reprise CAC du 12/10/2026, t_79bc51d9 : créneau réel et deux réservations vérifiés, main intégré sans conflit, calendrier régénéré et contrôlé, 27 tests ciblés PASS et deux requêtes réellement remesurées. Les deux préparations restent refusées sur la citation normative courte et les planchers de palette des couvertures HTML autorisées. Fabrication locale partielle uniquement ; aucun commit, push, sceau ou publication. Avis métier acquis conservé, rubrique inactive, F4/H5 non libérées. Rapport : `docs/qa/cac-f4-livraison/ETAT-2026-10-12.md` ; correctifs autonomes dev t_88f84548 et t_22fb4350, sans parent ajouté à la publication.
 
 | Date | Article | Commit | Déploiement | HTTP en ligne | Octets identiques | Sitemap renvoyé | Note |
