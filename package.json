@@ -19,7 +19,7 @@
     "render:public": "node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs",
     "regen:generated": "npm run resource:seal-surfaces && npm run render:public && npm run lastmod:sync && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
-    "test:proof-render": "node scripts/render-proof-images.mjs --check",
+    "test:proof-render": "node --test tests/proof-render/manifest.test.mjs && node scripts/render-proof-images.mjs --check",
     "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",

@@ -50,6 +50,9 @@ jobs:
       - name: Check Astro and content
         run: npm run check
 
+      - name: Recalculate historical proofs and manifest variants
+        run: npm run test:proof-render
+
       - name: Exercise the blog forge
         run: npm run test:blog-pipeline
 
