@@ -16,6 +16,8 @@ Le contrôle inverse uniquement ces ajouts, puis compare le corps aux octets rel
 
 ## Témoins
 
+La fixture du pilier reconstruit sa référence sans l'ajout bancaire : elle retire uniquement l'enveloppe Markdown exacte du lien déclaré et son entrée `links.outgoing`, sur une copie de la recette. Tous les autres liens, textes, sources et figures restent lus dans le vrai pilier, avec son avis original. La même suite rejoue les états sans backlink et déjà lié ; elle ajoute ensuite le lien une seule fois et vérifie aussi le refus d'un outgoing absent ou dupliqué. La publication effective du backlink ne doit donc ni casser le témoin positif ni rendre son témoin négatif inopérant. Aucun fichier éditorial n'est écrit par cette fixture.
+
 `node --test tests/scripts/blog-link-review-projection.test.mjs tests/scripts/blog-forge.test.mjs tests/scripts/blog-review-projection.test.mjs tests/scripts/table-review-binding.test.mjs tests/scripts/responsive-proof-review-binding.test.mjs`
 
 Le témoin du vrai pilier échouait sur les empreintes du corps et de la recette avant correction. La suite couvre la projection HTML bornée, les refus de texte/source/figure/cible/avis et la matérialisation puis l'inventaire du sceau. Le témoin historique `ia-comptabilite-confidentialite-donnees` vérifie que son rapport SEO n'invalide plus sa revue, sans modifier ni le rapport ni l'avis. Le candidat bancaire réel est contrôlé séparément avec son HTML relu, sans réémission d'avis. Aucun texte public n'est modifié par ce correctif.

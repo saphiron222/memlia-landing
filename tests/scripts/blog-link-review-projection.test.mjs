@@ -11,7 +11,18 @@ const dir = new URL(`../../editorial/recettes/${slug}/`, import.meta.url);
 const body = readFileSync(new URL('corps.md', dir), 'utf8').trim();
 const recipe = JSON.parse(readFileSync(new URL('recette.json', dir)));
 const review = JSON.parse(readFileSync(new URL('revues.json', dir)));
-const linked = body.replace('et le rapprochement bancaire (voir', `et le [rapprochement bancaire](${target}) (voir`);
+const link = `[rapprochement bancaire](${target})`;
+const { body: unlinkedBody, recipe: unlinkedRecipe } = pillarBaseline(body, recipe);
+const linked = unlinkedBody.replace('et le rapprochement bancaire (voir', `et le ${link} (voir`);
+const linkedRecipe = structuredClone(unlinkedRecipe);
+linkedRecipe.links.outgoing.push(target);
+
+function pillarBaseline(currentBody, currentRecipe) {
+  // Undo only the declared banking addition, never other links or reviewed content.
+  const baselineRecipe = structuredClone(currentRecipe);
+  baselineRecipe.links.outgoing = baselineRecipe.links.outgoing.filter(url => url !== target);
+  return { body: currentBody.replace(link, 'rapprochement bancaire'), recipe: baselineRecipe };
+}
 
 test('historical SEO maillage report does not become a review projection', () => {
   const root = new URL('../../', import.meta.url).pathname;
@@ -29,7 +40,16 @@ test('historical SEO maillage report does not become a review projection', () =>
   assert.equal(readFileSync(join(folder, 'maillage.json'), 'utf8'), reportBytes);
 });
 
-test('real pillar backlink preserves the independent opinion and bounds recipe and render changes', () => {
+for (const [state, currentBody, currentRecipe] of [
+  ['without backlink', unlinkedBody, unlinkedRecipe],
+  ['already linked', linked, linkedRecipe],
+]) test(`real pillar ${state} preserves the independent opinion and bounds recipe and render changes`, () => {
+  const inputBytes = JSON.stringify(currentRecipe);
+  const baseline = pillarBaseline(currentBody, currentRecipe);
+  assert.equal(baseline.body, unlinkedBody);
+  assert.deepEqual(baseline.recipe, unlinkedRecipe);
+  assert.notEqual(baseline.recipe, currentRecipe, 'fixture must not mutate the current recipe');
+  assert.equal(JSON.stringify(currentRecipe), inputBytes);
   const root = mkdtempSync(join(tmpdir(), 'blog-links-'));
   try {
     const folder = join(root, 'editorial/recettes', slug);
@@ -39,10 +59,13 @@ test('real pillar backlink preserves the independent opinion and bounds recipe a
     const projection = { version: 1, reviewSha256: reviewSha256(JSON.stringify(review)), additions: [{ text: 'rapprochement bancaire', url: target }] };
     const save = () => writeFileSync(join(folder, 'review-link-projection.json'), JSON.stringify(projection));
     save();
-    const next = structuredClone(recipe);
+    const next = structuredClone(baseline.recipe);
     next.links.outgoing.push(target);
     const check = (b = linked, r = next, opinion = review, html) => reviewBindingErrors(opinion, slug, b, JSON.stringify(r), html, root);
     assert.deepEqual(check(), []);
+    const duplicate = structuredClone(next);
+    duplicate.links.outgoing.push(target);
+    assert.ok(check(linked, duplicate).length, 'duplicate outgoing remains refused');
     projection.version = 2;
     save();
     assert.ok(check().some(error => error.includes('projection ou avis divergent')));
@@ -55,7 +78,7 @@ test('real pillar backlink preserves the independent opinion and bounds recipe a
     const figure = structuredClone(next);
     figure.inlineProofs[0].alt += ' modifié';
     assert.ok(check(linked, figure).length);
-    assert.ok(check(linked, recipe).length, 'outgoing declaration required');
+    assert.ok(check(linked, baseline.recipe).length, 'outgoing declaration required');
     assert.ok(check(linked, next, { ...review, editorial: { ...review.editorial, reviewer: 'autre' } }).length);
     rmSync(join(root, 'src/content/blog', `${target.split('/').pop()}.md`));
     assert.ok(check().length, 'absent target refused');
