@@ -78,7 +78,7 @@ def sitemap_urls():
 
 
 RUBRIQUES_HISTORIQUES = set(RUBRIQUES)
-RUBRIQUES = {entry['slug']: {'label': entry['libelle'], 'articles': set(entry['articleIds'])}
+RUBRIQUES = {entry['slug']: {'label': entry['libelle'], 'route': entry['chemin'], 'articles': set(entry['articleIds'])}
              for entry in source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')}
 HORS_RUBRIQUE = set(source_export(ROOT, 'src/data/blog-rubriques.mjs', 'ARTICLES_HORS_RUBRIQUE'))
 
@@ -88,10 +88,11 @@ class BlogRubriquesProof(unittest.TestCase):
         self.assertGreaterEqual(len(RUBRIQUES), 2)
         self.assertTrue(RUBRIQUES_HISTORIQUES <= set(RUBRIQUES))
         hubs = sorted((DIST / "blog/rubrique").glob("*.html"))
-        self.assertEqual([hub.stem for hub in hubs], sorted(RUBRIQUES))
+        self.assertEqual([hub.stem for hub in hubs], sorted(slug for slug, entry in RUBRIQUES.items()
+                         if entry["route"].startswith("/blog/rubrique/")))
         for slug, attendu in RUBRIQUES.items():
             self.assertGreaterEqual(len(attendu['articles']), 2)
-            route = f"/blog/rubrique/{slug}"
+            route = attendu["route"]
             html = page_path(route).read_text(encoding="utf-8")
             doc = Document(html)
             canonical = next(attrs["href"] for tag, attrs in doc.tags if tag == "link" and attrs.get("rel") == "canonical")
@@ -135,7 +136,7 @@ class BlogRubriquesProof(unittest.TestCase):
 
     def test_articles_rattaches_lient_le_hub_en_html_et_jsonld(self):
         for rubrique_slug, attendu in RUBRIQUES.items():
-            hub = f"/blog/rubrique/{rubrique_slug}"
+            hub = attendu["route"]
             hub_url = f"{SITE}{hub}"
             for article in attendu["articles"]:
                 html = page_path(f"/blog/{article}").read_text(encoding="utf-8")
@@ -158,8 +159,8 @@ class BlogRubriquesProof(unittest.TestCase):
         if comprendre is None:
             self.fail("colonne Comprendre absente du footer")
         urls = sitemap_urls()
-        for slug in RUBRIQUES:
-            route = f"/blog/rubrique/{slug}"
+        for slug, attendu in RUBRIQUES.items():
+            route = attendu["route"]
             self.assertIn(f'href="{route}"', comprendre.group(1))
             self.assertIn(f"{SITE}{route}", urls)
 

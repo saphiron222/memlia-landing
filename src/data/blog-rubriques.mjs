@@ -64,6 +64,23 @@ export const BLOG_RUBRIQUES = Object.freeze([
       'tests-verts-et-regle-des-trois-passes',
     ]),
   }),
+  Object.freeze({
+    slug: 'commissariat-aux-comptes',
+    chemin: '/blog/commissariat-aux-comptes',
+    libelle: 'Commissariat aux comptes',
+    primaryQuery: 'commissariat aux comptes',
+    descriptionLead: 'Commissariat aux comptes',
+    h1: 'Commissariat aux comptes : écrire la règle et examiner le résultat',
+    titreOnglet: 'Commissariat aux comptes : méthodes du cabinet | Memlia',
+    description: 'Commissariat aux comptes : une carte des tâches à préparer et un exemple de réception du FEC, avec des règles écrites et des résultats à examiner.',
+    chapeau: 'Commencez par la tâche que vous voulez préparer, puis regardez ses entrées, ses contrôles et sa sortie. Ces deux articles présentent une carte des tâches du cabinet et un exemple de réception d’un FEC sur un jeu fictif.',
+    roleTitre: 'De la tâche choisie au constat de réception',
+    role: 'La carte aide à choisir un premier geste et à écrire sa règle. L’exemple de réception du FEC montre les résultats des contrôles, leurs limites et les questions à reprendre avec l’équipe. Lisez la carte pour cadrer le travail, ou ouvrez le constat pour examiner un fichier reçu. Les cas et leurs limites sont présentés dans chaque méthode.',
+    articleIds: Object.freeze([
+      'automatiser-un-cabinet-cac-la-carte-des-taches',
+      'cac-reception-fec-constat',
+    ]),
+  }),
 ]);
 /**
  * Les articles transversaux restent hors rubrique par décision explicite. Chaque exemption est

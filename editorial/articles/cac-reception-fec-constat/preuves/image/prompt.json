@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "candidateSlug": "cac-reception-fec-constat",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact cac-reception-fec-constat."
+  ],
+  "engine": "html-original",
+  "prompt": "Rendre le cadre HTML original cac-fec-registre-reception avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
+  "brief": {
+    "sujet": "Réception de trois jeux JSON fictifs du dossier D-004.",
+    "composition": "Fenêtre de registre provenant du cadre cac-fec-registre-reception, deux lignes par jeu, périodes et écarts calculés.",
+    "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
+    "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
+    "interdits": "FEC client, gain chiffré, badge de conformité, conclusion sur les comptes.",
+    "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004."
+  },
+  "reviewCriteria": [
+    "provenance HTML explicite",
+    "JSON fictif",
+    "lisibilité",
+    "OG JPG 1200×630"
+  ]
+}

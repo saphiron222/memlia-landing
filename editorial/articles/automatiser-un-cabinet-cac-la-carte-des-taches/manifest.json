@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Automatisation cabinet audit : la carte des tâches du CAC",
+  "tabTitle": "Automatisation cabinet audit : carte des tâches | Memlia",
+  "summary": "Huit familles pour choisir une tâche répétitive du mandat : FEC, demandes, rapprochements, confirmations et dossier. Une règle écrite, des cas fictifs rejoués et une décision conservée au cabinet.",
+  "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+  "publicationDate": "2026-10-12",
+  "updatedAt": null,
+  "topics": [
+    "cabinet",
+    "automatisation",
+    "methode"
+  ],
+  "keywords": [
+    "automatisation cabinet audit",
+    "commissariat aux comptes",
+    "règle écrite",
+    "dossier de travail"
+  ],
+  "primaryQuery": "automatisation cabinet audit",
+  "secondaryQueries": [],
+  "intent": "decider",
+  "fanOut": [
+    "préparation et décision",
+    "version des entrées",
+    "limites et refus"
+  ],
+  "role": {
+    "primary": "audit-cac",
+    "secondary": [],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-12"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "audit-cac",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "certification",
+  "famille": "cac-dossier-de-travail",
+  "contentType": "searchable",
+  "format": "pillar-page",
+  "task": "Automatisation cabinet audit : la carte des tâches du CAC",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Sources NEP officielles et jeu fictif exécuté ; portée bornée à la préparation.",
+  "sourcesVerifiedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "h2a315",
+      "publisher": "H2A",
+      "title": "NEP 315",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "checkedAt": "2026-10-11",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/h2a315.classification.json",
+      "verificationEvidence": "preuves/sources/h2a315.json"
+    },
+    {
+      "id": "h2a330",
+      "publisher": "H2A",
+      "title": "NEP 330",
+      "url": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "checkedAt": "2026-10-11",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/h2a330.classification.json",
+      "verificationEvidence": "preuves/sources/h2a330.json"
+    },
+    {
+      "id": "h2a230",
+      "publisher": "H2A",
+      "title": "NEP 230",
+      "url": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "checkedAt": "2026-10-11",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/h2a230.classification.json",
+      "verificationEvidence": "preuves/sources/h2a230.json"
+    },
+    {
+      "id": "h2a505",
+      "publisher": "H2A",
+      "title": "NEP 505",
+      "url": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+      "checkedAt": "2026-10-11",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+      "classificationReason": "Page primaire de la norme ou de présentation du contrôle technique par son éditeur officiel.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/h2a505.classification.json",
+      "verificationEvidence": "preuves/sources/h2a505.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "relecteur-metier-ia-memlia",
+  "reviewRule": "Relire après évolution des normes ou changement de la tâche ; suivis J+7 et J+28 après publication effective.",
+  "cta": {
+    "label": "Confier une première tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle de cette tâche dans vos mots, nous la construisons dans vos outils et votre équipe la recette sur un jeu fictif. Vous gardez l’examen des sorties et les décisions de mission. Rien à envoyer : la description du geste suffit."
+  },
+  "image": {
+    "heroId": "img-art-cac-carte-taches",
+    "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "html-original"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-12"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-12"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/cac-reception-fec-constat",
+      "/garanties",
+      "/methode",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ],
+    "incoming": [
+      "/blog"
+    ]
+  },
+  "cannibalization": {
+    "risk": "moyen",
+    "comparedWith": [
+      "/automatisation-cabinet-comptable"
+    ],
+    "decision": "La page service vise l’achat (évaluer-service) et le pilier la lecture (comprendre) ; titres et intentions distincts, chacun renvoie à l’autre ; l’attribution des impressions sera relue dans Search Console à M+3."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-12",
+  "publicationEvidence": "preuves/publication.json"
+}

@@ -1,0 +1,620 @@
+{
+  "version": 1,
+  "candidateSlug": "cac-reception-fec-constat",
+  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fff95d6fc8b5",
+      "text": "Pour préparer un contrôle du FEC reçu en mission CAC, identifiez d'abord le fichier, l'entité, la période et la version. Produisez ensuite un constat de réception avec les contrôles techniques réellement effectués et les points qui empêchent de poursuivre. Gardez ce constat distinct des tests sur les écritures et des conclusions de mission. Un fichier reçu ou lisible n'est pas, à lui seul, une preuve que les comptes sont fiables.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2fb9b8bae787",
+      "text": "Qu'est-ce qu'un constat de réception du FEC ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4b349c08c794",
+      "text": "Le FEC est le fichier des écritures comptables. Le constat de réception est une fiche qui identifie l'export reçu et décrit les vérifications effectuées avant de le réutiliser. La version reçue est la matière exacte à laquelle ces vérifications se rapportent ; elle reste identifiable lorsqu'un nouvel export arrive.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-dc341e95d9b3",
+      "text": "Le constat répond à quatre questions : qu'avons-nous reçu ? Pour quelle entité et quelle période ? Qu'avons-nous effectivement vérifié ? Qui décide de la suite ? Il ne se présente ni comme un rapport d'audit ni comme une certification du format.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-07f1893d88ca",
+      "text": "La NEP 500, paragraphe 06 précise : « Le caractère approprié est fonction de la qualité des éléments collectés, c’est-à-dire de leur fiabilité et de leur pertinence. » La présence d'un fichier et la lecture de ses lignes ne répondent donc pas à toutes les questions sur les éléments utilisés dans la mission. Le constat consigne le nom et la version du traitement effectivement exécuté, sans lui attribuer une portée plus large que ses contrôles.",
+      "claimIds": [
+        "claim-unit-07f1893d88ca-1"
+      ]
+    },
+    {
+      "id": "unit-e2ae1140f87b",
+      "text": "Pourquoi la réception casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8a1de1887631",
+      "text": "Un message dit « voici le FEC définitif ». L'export est déposé dans un dossier où un fichier porte déjà le même nom. Le collaborateur le remplace, puis reprend une feuille qui a été construite sur la première version. Les deux feuilles paraissent parler du même fichier, alors qu'elles n'ont plus la même entrée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-102f95d2f790",
+      "text": "Le problème n'est pas le nombre de clics. La règle implicite manque : un fichier reçu devient une version identifiée, et chaque traitement reste rattaché à cette version. Si le fichier change, le constat change aussi. Le commentaire du chef de mission, lui, ne se réécrit pas automatiquement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-30ba3b957f48",
+      "text": "Une autre confusion vient du statut « contrôlé ». Il peut signifier « fichier ouvert », « colonnes présentes », « période rapprochée » ou « écritures examinées ». Sans liste des vérifications effectuées, ce statut ne dit rien d'utilisable à la personne qui reprend le travail.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6388d83a8b4d",
+      "text": "Réunissez le fichier reçu sans le modifier, le message ou bordereau qui l'accompagne et la demande d'export. Identifiez l'entité et la période attendues. Précisez aussi si le cabinet attend un export provisoire ou une version issue d'une clôture : cette qualification vient de la demande et des informations reçues, pas du nom du fichier.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bc483d62c628",
+      "text": "Dans la fiche de réception, prévoyez les champs suivants :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9a90658dcb37",
+      "text": "| Champ | Ce qu'il permet de retrouver | |---|---| | Référence du mandat | À quel dossier rattacher l'entrée | | Nom et version de l'export | Quel objet a été reçu | | Origine et date de réception | D'où provient la matière | | Période attendue et période annoncée | Quel périmètre comparer | | Référence du contrôle et version de sa règle | Quel traitement a été effectué | | Résultats techniques et limites | Ce qui a été constaté et ce qui reste à faire | | Commentaire et décision du responsable | Qui a examiné la suite |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8e77ebd6ab72",
+      "text": "L'empreinte d'un fichier aide à distinguer deux contenus. Elle n'atteste pas son exhaustivité ni sa provenance. Gardez donc la trace de réception et les informations de périmètre à côté de cette empreinte.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d49c92bc9086",
+      "text": "1. Identifier l'entrée sans la réécrire",
+      "claimIds": []
+    },
+    {
+      "id": "unit-833636b982bd",
+      "text": "Conservez le fichier original dans l'emplacement prévu par le cabinet. Le traitement travaille sur une copie ou en lecture seule. La référence de la réception accompagne le constat et les sorties préparées.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a4e71659f937",
+      "text": "Si deux exports ont le même nom mais des contenus différents, donnez-leur deux références. Si le même contenu est reçu deux fois, signalez le doublon sans supprimer silencieusement la trace. Une retransmission peut avoir son propre message d'accompagnement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9b1a4802775c",
+      "text": "Dans notre exemple fictif, D-004 est le dossier et FEC-D004-v1 la première référence d'entrée. Ces identifiants sont inventés. Aucun fichier client n'est utilisé dans le jeu d'essai.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-004b78991b93",
+      "text": "2. Nommer les contrôles techniques réellement effectués",
+      "claimIds": []
+    },
+    {
+      "id": "unit-eb4b4d8e75e5",
+      "text": "La liste des contrôles dépend du traitement employé. Distinguez les colonnes attendues, les formats de dates, les montants lisibles, les périodes, les équilibres calculés et les éventuelles ruptures de séquence. Un contrôle absent n'est pas coché par défaut.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d08004bacacd",
+      "text": "Un total nul donne un résultat de calcul. Il ne démontre pas que toutes les écritures attendues sont présentes. Un fichier peut être équilibré tout en couvrant une mauvaise période. Un contrôle de période peut, lui aussi, rester limité aux informations visibles dans l'export.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-18552d2d7928",
+      "text": "La fiche porte donc une colonne « limite ». Par exemple : « écart débit-crédit calculé sur les lignes lues ; exhaustivité de l'export non établie ». Cette précision évite de transformer un résultat exact mais partiel en conclusion générale.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c1b2f66881af",
+      "text": "Les résultats utiles à la mission restent liés au traitement effectué. La NEP 230, paragraphe 04, précise : « Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre ». La liste qui suit comprend les résultats des procédures et les éléments collectés. Le constat prépare leur référencement ; il ne suffit pas à lui seul à documenter tous les travaux d'audit.",
+      "claimIds": [
+        "claim-unit-c1b2f66881af-1"
+      ]
+    },
+    {
+      "id": "unit-eaccfce8e182",
+      "text": "3. Séparer anomalie technique et question de mission",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2f41e839039e",
+      "text": "Un champ illisible ou une période incompatible avec la demande donne une difficulté d'entrée. Le collaborateur peut préparer une demande de précision ou de nouvel export. Le responsable décide de la suite à donner.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-14df2b153fa9",
+      "text": "Une écriture qui répond à un critère de sélection est une autre question. Elle appelle des travaux définis dans la mission. Le même écran peut montrer une référence de réception et une référence d'écriture, mais les deux listes conservent leur objet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5de42e22084b",
+      "text": "La NEP 330, paragraphe 28 cite notamment l'« examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes ». Le contrôle de réception n'est pas cet examen. Il prépare une entrée identifiable pour les travaux qui suivront.",
+      "claimIds": [
+        "claim-unit-5de42e22084b-1"
+      ]
+    },
+    {
+      "id": "unit-fb4fa72d3a6c",
+      "text": "4. Présenter le constat avant de poursuivre",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4deeda0d25ed",
+      "text": "La sortie distingue trois zones : les résultats calculés, les informations encore absentes et la décision du responsable. Un nouvel export régénère la première zone sur une nouvelle version ; il ne remplace ni le commentaire ni la décision associés à la précédente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a0ad41e4ff64",
+      "text": "| Situation | Sortie préparée | Suite à examiner | |---|---|---| | Entrée identifiée, contrôles effectués sans difficulté technique relevée | Constat à revoir, avec limites visibles | Décider des travaux suivants | | Période différente de celle demandée | Refus de poursuite sur cette entrée | Demander une précision ou un export correspondant | | Écart technique inexpliqué | Constat avec écart nommé | Examiner l'écart avant réutilisation | | Nouveau contenu sous le même nom | Nouvelle référence de version | Comparer avant de reprendre les feuilles | | Information absente du fichier | Champ non vérifiable | Obtenir l'information, sans la déduire |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f9f730e03152",
+      "text": "La carte des tâches du cabinet CAC situe ce geste en amont de la revue des écritures, des demandes de documents et du dossier de travail.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-eec82c619c36",
+      "text": "La frontière. Le constat garde une séparation lisible entre calcul, validation et travaux de mission :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c5c1a3b8ab98",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Identifier la version et calculer les résultats des contrôles définis | Examiner le constat et les informations absentes | Apprécier la pertinence et la fiabilité des données | | Présenter les écarts techniques | Choisir la demande de précision ou de nouvel export | Déterminer les procédures sur les écritures | | Préparer une nouvelle fiche pour une nouvelle entrée | Autoriser sa réutilisation selon l'organisation du cabinet | Conclure sur les éléments collectés et les comptes |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-848a58ffddb9",
+      "text": "La proposition. Nous préparons le constat, ses références et les résultats des contrôles écrits avec votre équipe. Le collaborateur saisit son commentaire séparément. La nouvelle réception produit une nouvelle proposition ; elle ne réécrit pas la saisie précédente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-002e57b61dbb",
+      "text": "L'arrêt. Le traitement refuse la poursuite lorsque la période ne correspond pas à celle attendue ou qu'un écart calculé n'est pas expliqué. Un champ absent ou une donnée illisible se présente comme une information manquante, jamais comme une valeur devinée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d5b012d4a1a7",
+      "text": "Le jeu d'essai. Trois cas ont été rejoués sur deux lignes JSON fictives représentant une paire débit-crédit : période attendue et équilibre nul, mauvaise période, écart d'un euro. Ce banc éditorial teste uniquement les conditions de période et d'équilibre décrites ci-dessous. Il ne teste pas les colonnes du format FEC et n'établit ni exhaustivité ni validité du format.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-274ac7b41295",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | Deux lignes fictives 2026, débit et crédit de 1 200,00 € | CONSTATAREVOIR ; écart 0,00 € | Examiner le constat, sans conclusion sur les comptes | | Les mêmes lignes portent 2025, période attendue 2026 | REFUSPERIODE ; écart 0,00 € | Identifier la bonne entrée avant de poursuivre | | Débit 1 200,00 €, crédit 1 199,00 € en 2026 | REFUSECART ; écart 1,00 € | Présenter l'écart au responsable |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-508378dc331e",
+      "text": "Les montants et statuts sont les sorties du rejeu local sur données inventées. Aucune opinion n'est produite dans les trois cas. Ce rejeu montre précisément pourquoi un équilibre nul ne suffit pas : le deuxième cas reste refusé pour sa période.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1e7ee1940e7f",
+      "text": "Apprécier le traitement utilisé",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5dd375d1ba9c",
+      "text": "La fiche outil présente les entrées, les contrôles, les paramètres, les limites et la version du traitement. Elle conserve les cas où la règle aboutit et ceux où elle refuse. C'est le point de départ pour comprendre la sortie et éviter d'en élargir la portée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bc18e9499a79",
+      "text": "La NEP 315, paragraphe 46 prévoit l'appréciation de « la manière dont les outils fonctionnent » et du « degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils ». Un résultat reproductible n'écarte donc pas la question de la bonne entrée ou du bon objectif.",
+      "claimIds": [
+        "claim-unit-bc18e9499a79-1",
+        "claim-unit-bc18e9499a79-2"
+      ]
+    },
+    {
+      "id": "unit-d793785fbdd3",
+      "text": "Les accès et la destination des données se cadrent pour la tâche. Le fichier reste dans l'environnement convenu avec le cabinet ; une illustration éditoriale n'autorise aucune transmission de données à un service extérieur. Les garanties de Memlia expliquent les engagements de traitement et les éléments définis avant la prise en charge.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6062f8450027",
+      "text": "- Nommer la sortie « FEC validé ». Décrivez les contrôles effectués et leurs résultats. - Confondre équilibre et exhaustivité. Gardez une ligne distincte pour la limite de population. - Remplacer l'export précédent. Créez une nouvelle version et conservez les références des travaux antérieurs. - Choisir la période depuis le seul nom du fichier. Comparez avec la demande et les informations reçues. - Fermer le point dès réception. Le dépôt et l'examen du constat sont deux étapes différentes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7c5d007cd51f",
+      "text": "Le constat remplace-t-il un contrôle complet du format FEC ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d9768a489099",
+      "text": "Non. Sa portée dépend des contrôles effectivement exécutés et de l'outil utilisé. Le banc fictif de cet article ne vérifie que la période et l'équilibre d'une paire de lignes JSON. Le contrôle complet du format est un travail distinct, à identifier comme tel.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6429165ba737",
+      "text": "Que faire si le fichier est équilibré mais incomplet ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aa65c604db8a",
+      "text": "Le résultat d'équilibre reste consigné. La complétude de la population reste une autre question, avec ses éléments à obtenir. N'utilisez pas le premier résultat pour fermer automatiquement la seconde.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-452692a9774e",
+      "text": "Pourquoi conserver une référence par version ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8cd51bff66c6",
+      "text": "Pour retrouver l'entrée exacte d'un calcul ou d'une feuille. Le nom du fichier ne suffit pas si son contenu a changé. La référence de réception et le commentaire du responsable accompagnent la version traitée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-3d53f60ea1f3",
+      "text": "Peut-on partir d'un tableur existant ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7c2f8dfee4b1",
+      "text": "Oui, si les formats et les accès permettent de lire l'entrée et de présenter la sortie sans écraser les saisies. La méthode de Memlia commence par l'observation de ce geste dans les outils de votre équipe, avant de choisir le mode de construction.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-663fb04b4d79",
+      "text": "Le constat dit quel fichier a été reçu, ce qui a été contrôlé et ce qui empêche de poursuivre. Il prépare une entrée traçable pour les travaux de mission ; il ne conclut pas sur les comptes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c5fc36cb1d82",
+      "text": "Nous prenons en charge la réception du fichier et la préparation du constat : références de version, contrôles écrits avec l'équipe, refus nommés et présentation des résultats dans vos outils. Vous gardez l'examen du constat, les travaux sur les écritures et les décisions de mission. Rien à envoyer pour en parler : décrivez le geste que vos collaborateurs répètent.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-07f1893d88ca-1",
+      "unitId": "unit-07f1893d88ca",
+      "claim": "Le caractère approprié est fonction de la qualité des éléments collectés, c’est-à-dire de leur fiabilité et de leur pertinence.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a500"
+      ],
+      "sourceExcerpts": {
+        "h2a500": "Le caractère approprié est fonction de la qualité des éléments collectés,"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a500",
+            "sourceUrl": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+            "verifiedUrl": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+            "excerpt": "Le caractère approprié est fonction de la qualité des éléments collectés,",
+            "context": "Le caractère approprié est fonction de la qualité des éléments collectés, c’est-à-dire de leur fiabilité et de leur pertinence.",
+            "contextSha256": "6e8ecb2eca6789124f2ce0f931f710c666254f44e8ec771dcff492dbdccbf42c",
+            "citation": {
+              "text": "Le caractère approprié est fonction de la qualité des éléments collectés,",
+              "sha256": "19eb1adbe261ed48271bc779e676397c9b4201476c823ed44e3b660dbaa7a9e4",
+              "sourceContentSha256": "33244e3497ce7db2c927fcfb0371db42ad46aee5bd8315163fac27c64f12f678",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 500",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 585,
+                  "endLine": 585
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "caractere",
+                "approprie",
+                "fonction",
+                "qualite",
+                "elements",
+                "collectes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 585 de la copie locale de H2A, porte les mêmes entités que le claim (caractere, approprie, fonction, qualite, elements, collectes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-c1b2f66881af-1",
+      "unitId": "unit-c1b2f66881af",
+      "claim": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a230"
+      ],
+      "sourceExcerpts": {
+        "h2a230": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a230",
+            "sourceUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "excerpt": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique",
+            "context": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre : – la planification de l’audit dont les principaux éléments sont formalisés dans le plan de mission et le programme de travail ; – la nature, le calendrier et l’étendue des procédures d’audit effectuées ; – les caractéristiques qui permettent d’identifier les éléments qu’il a testés afin de préciser l’étendue des procédures mises en œuvre ; – les résultats de ces procédures et les éléments collectés ; – les problématiques concernant les éléments significatifs des comptes qui ont été relevées au cours de l’audit et les conclusions du commissaire aux comptes sur ces problématiques.",
+            "contextSha256": "94d33f3ba5bac847259a79800c02e176e05e5c4f644481a5ea547cd9646a9fe6",
+            "citation": {
+              "text": "Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique",
+              "sha256": "1ddaed8a6a2d036bd028dc574a9fcd200475126bc87b0674b2a4867e79f0198f",
+              "sourceContentSha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 230",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 583,
+                  "endLine": 583
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "commissaire",
+                "comptes",
+                "consigne",
+                "dossier",
+                "elements",
+                "permettent",
+                "autre",
+                "personne",
+                "ayant",
+                "experience",
+                "pratique"
+              ],
+              "reasoning": "La citation, relevée à la ligne 583 de la copie locale de H2A, porte les mêmes entités que le claim (commissaire, comptes, consigne, dossier, elements, permettent, autre, personne, ayant, experience, pratique) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-5de42e22084b-1",
+      "unitId": "unit-5de42e22084b",
+      "claim": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a330"
+      ],
+      "sourceExcerpts": {
+        "h2a330": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a330",
+            "sourceUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+            "verifiedUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+            "excerpt": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes",
+            "context": "De plus, le commissaire aux comptes met en oeuvre les procédures de substance suivantes : • rapprochement des comptes annuels ou consolidés avec les documents comptables dont ils sont issus ; • examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes ; et • évaluation de la conformité au référentiel comptable applicable de la présentation des comptes, y compris les informations fournies en annexe.",
+            "contextSha256": "202b71e79b8dd08f01fccc9ed2fb048fab272f13dc7f57d10e067e190cb3e8ac",
+            "citation": {
+              "text": "examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes",
+              "sha256": "3dfa9aa7502f5d32ba2412e15e98e57cda18281c3ab80b68167d30c5f78b9f97",
+              "sourceContentSha256": "674e5646be4ffc9b0bb60d3f68e91d330e345bef14b115790b9af8de6601c9f4",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 330",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 651,
+                  "endLine": 651
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "examen",
+                "ecritures",
+                "comptables",
+                "significatives",
+                "compris",
+                "ajustements",
+                "effectues",
+                "lors",
+                "cloture",
+                "comptes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 651 de la copie locale de H2A, porte les mêmes entités que le claim (examen, ecritures, comptables, significatives, compris, ajustements, effectues, lors, cloture, comptes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-bc18e9499a79-1",
+      "unitId": "unit-bc18e9499a79",
+      "claim": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils",
+            "context": "Pour ce faire, il apprécie : • la manière dont les outils fonctionnent ; et • le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+            "contextSha256": "6a5ec2b26c073c46fb3bd9609271e0a2459280e96c370ea5bf855d50ea683e42",
+            "citation": {
+              "text": "degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils",
+              "sha256": "2435e7b3a4bb7d85c34628cf733fd937554afccab17b82fd857aa52f7ab35cf9",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 746,
+                  "endLine": 746
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "degre",
+                "pertinence",
+                "fiabilite",
+                "informations",
+                "integrees",
+                "outils"
+              ],
+              "reasoning": "La citation, relevée à la ligne 746 de la copie locale de H2A, porte les mêmes entités que le claim (degre, pertinence, fiabilite, informations, integrees, outils) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP315 §46 : identification et évaluation des risques, pas toute utilisation d'un outil. En réponse aux risques, l'exigence correspondante relève de NEP330 §33 et la documentation de §34 e). La fiche prépare l'appréciation, elle ne certifie pas l'outil. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-bc18e9499a79-2",
+      "unitId": "unit-bc18e9499a79",
+      "claim": "la manière dont les outils fonctionnent",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "• la manière dont les outils fonctionnent ; et<br />"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "• la manière dont les outils fonctionnent ; et<br />",
+            "context": "46. Conformément aux dispositions de la norme d’exercice professionnel « Caractère probant des éléments collectés », lorsque le commissaire aux comptes a recours à des outils et techniques automatisés pour l’aider à identifier et évaluer le risque d’anomalies significatives, il apprécie, en exerçant son esprit critique, si les outils permettent d’atteindre l’objectif poursuivi par les procédures d’audit relatives à l’identification et l’évaluation du risque d’anomalies significatives. Pour ce faire, il apprécie :<br />\n• la manière dont les outils fonctionnent ; et<br />\n• le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+            "contextSha256": "3017e146c5bbce01c74fb1ace5f54ff2e281db5424fea51edbdff7d334ffb5fa",
+            "citation": {
+              "text": "• la manière dont les outils fonctionnent ; et<br />",
+              "sha256": "efb45a9aa1eaad0d7a16ba014e59f7294d701ae50171e687bc000441bdef2a02",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 745,
+                  "endLine": 745
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "maniere",
+                "dont",
+                "outils",
+                "fonctionnent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 745 de la copie locale de H2A, porte les mêmes entités que le claim (maniere, dont, outils, fonctionnent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP315 §46 : appréciation du fonctionnement et des informations pour l'identification et l'évaluation des risques, laissée au CAC. Pour une utilisation en réponse aux risques : NEP330 §33 et §34 e). Le constat de réception ne remplace ni cette appréciation ni les travaux d'audit. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "candidateSlug": "cac-reception-fec-constat",
+  "kind": "image-generation",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "observations": [
+    "Contrôle image-generation relu sur le candidat exact cac-reception-fec-constat."
+  ],
+  "engine": "html-original",
+  "generationId": "html-cac-fec-registre-reception-20261011",
+  "model": "playwright-chromium",
+  "provider": "html-original-local",
+  "generatedAt": "2026-10-11",
+  "sourcePath": "preuves/couverture-originale.png",
+  "sourceSha256": "595d4b8d643e7b7641a58652396c3553de42962ffef64a100ca58fdf50062d87",
+  "outputSha256": "711c5ad32ca8a59961bd1920129474108010d0079366698726aa57f375e7746b",
+  "credits": 0,
+  "provenance": {
+    "type": "html-original",
+    "template": "editorial/templates/cadre-article.html",
+    "createdAt": "2026-10-11",
+    "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+  }
+}

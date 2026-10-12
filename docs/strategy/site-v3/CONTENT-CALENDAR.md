@@ -1,6 +1,6 @@
 # Calendrier éditorial v3 — quinze articles et une Cicatrice par semaine au plus
 
-Généré le 10/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Décision de Kevin du 05/10 appliquée le 06/10 : quinze articles ordinaires par semaine ISO, trois par jour au plus du lundi au vendredi, EC et CAC confondus, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
+Généré le 12/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : ne pas éditer à la main, corriger le backlog ou la taxonomie puis régénérer. Décision de Kevin du 05/10 appliquée le 06/10 : quinze articles ordinaires par semaine ISO, trois par jour au plus du lundi au vendredi, EC et CAC confondus, plus une Cicatrice le samedi. Les dates sont des créneaux de production, pas des promesses : un article qui n'atteint pas le gate attend le créneau suivant, et le backlog se réordonne à chaque signal (impressions Search Console par famille, demandes de contact citant une tâche).
 
 ## Règles
 
@@ -18,7 +18,7 @@ Généré le 10/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 ## Volume
 
-- 283 satellites + 1 pilier ; 15 satellite(s) publié(s) dans le registre au 10/10/2026 ; dernier créneau planifié : 2027-02-10.
+- 283 satellites + 1 pilier ; 15 satellite(s) publié(s) dans le registre au 12/10/2026 ; dernier créneau planifié : 2027-02-10.
 
 ## Semaine par semaine
 
@@ -69,26 +69,26 @@ Généré le 10/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 | 2026-10-07 | Ancien créneau manqué de « FEC contrôle : préparer le constat de réception pour la mission CAC » — trace, non actionnable | — | — | — | — | manque |
 | 2026-10-08 | Ancien créneau manqué de « Seuil de signification en audit : documenter un exemple de choix » — trace, non actionnable | — | — | — | — | manque |
 | 2026-10-09 | Ancien créneau manqué de « Circularisation commissaire aux comptes : préparer et suivre une campagne » — trace, non actionnable | — | — | — | — | manque |
-| 2026-10-10 | [Pourquoi un build réussi ne prouve pas qu’une application démarre](/blog/build-reussi-application-ne-demarre-pas) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | planned |
+| 2026-10-10 | [Pourquoi un build réussi ne prouve pas qu’une application démarre](/blog/build-reussi-application-ne-demarre-pas) | Connecteurs, imports et synchronisation | Numérique, IT et data | thought-leadership | 3 | manque |
 
 ### Semaine 2026-W42
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-12 | [FEC contrôle : préparer le constat de réception pour la mission CAC](/blog/cac-reception-fec-constat) | Réception du FEC | Certification des comptes | tutorial | 1 | planned |
+| 2026-10-12 | [Automatisation en cabinet CAC : la carte des tâches et des décisions humaines](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) | Dossier de travail | Certification des comptes | pillar-page | 3 | planned |
 | 2026-10-12 | [Rapprochement bancaire automatisé : les écarts à remonter](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) | Relevés bancaires et rapprochement | Production comptable | how-to-guide | 1 | planned |
-| 2026-10-12 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
+| 2026-10-12 | [FEC contrôle : préparer le constat de réception pour la mission CAC](/blog/cac-reception-fec-constat) | Réception du FEC | Certification des comptes | tutorial | 1 | planned |
 | 2026-10-13 | [Calendrier fiscal d'un cabinet comptable : suivre les échéances d'un portefeuille](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) | Calendrier et échéances fiscales du portefeuille | Portefeuille et échéances | how-to-guide | 1 | planned |
 | 2026-10-13 | [Test des écritures de journal en audit FEC : rejouer les critères du cabinet](/blog/cac-ecritures-journal-criteres) | Sélection des écritures | Certification des comptes | tutorial | 3 | planned |
 | 2026-10-13 | [Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent](/blog/manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent) | Règle, jeu d’essai et recette | Méthode et décision humaine | how-to-guide | 1 | planned |
-| 2026-10-14 | [Automatisation en cabinet CAC : la carte des tâches et des décisions humaines](/blog/automatiser-un-cabinet-cac-la-carte-des-taches) | Dossier de travail | Certification des comptes | pillar-page | 3 | planned |
-| 2026-10-14 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
+| 2026-10-14 | [Automatiser l'entrée en relation d'un nouveau client](/blog/automatiser-l-entree-en-relation-d-un-nouveau-client) | Entrée en relation et onboarding client | Administration et secrétariat | listicle-checklist | 1 | planned |
 | 2026-10-14 | [Seuil de signification en audit : documenter un exemple de choix](/blog/cac-seuil-signification-justification) | Revue analytique | Certification des comptes | how-to-guide | 1 | planned |
-| 2026-10-15 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
+| 2026-10-14 | [Mentions obligatoires de la facture électronique : la checklist avant le passage](/blog/checklist-de-conformite-avant-le-passage-a-la-facture-electronique) | Facture électronique et e-reporting | Production comptable | listicle-checklist | 1 | planned |
 | 2026-10-15 | [Circularisation commissaire aux comptes : préparer et suivre une campagne](/blog/cac-circularisation-campagne) | Confirmations de tiers | Certification des comptes | tutorial | 1 | planned |
 | 2026-10-15 | [Mise au rebut d'une immobilisation : ce qu'un tableau d'amortissement ne tranche pas](/blog/cession-et-mise-au-rebut-ce-qu-un-tableau-d-amortissement-automatique-ne-tranche-pas) | Immobilisations, amortissements et emprunts | Production comptable | how-to-guide | 1 | planned |
-| 2026-10-16 | [FEC conforme : pourquoi la structure ne conclut pas sur les comptes](/blog/cac-fec-controle-structure-limites) | Réception du FEC | Certification des comptes | faq-knowledge | 1 | planned |
-| 2026-10-16 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | Entrées, sorties et attestations | Paie et social | listicle-checklist | 1 | planned |
+| 2026-10-15 | [Date limite de dépôt de la DSN mensuelle : la checklist avant le 5 ou le 15](/blog/checklist-avant-le-depot-mensuel-de-la-dsn) | DSN et comptes rendus métier | Paie et social | listicle-checklist | 1 | planned |
+| 2026-10-16 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | Registres et obligations périodiques | Juridique et fiscal | how-to-guide | 1 | planned |
+| 2026-10-16 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | Relevés bancaires et rapprochement | Production comptable | faq-knowledge | 1 | planned |
 | 2026-10-16 | [Procédures alternatives à la circularisation : documenter le relais humain](/blog/cac-circularisation-alternatives) | Confirmations de tiers | Certification des comptes | how-to-guide | 1 | planned |
 | 2026-10-17 | [Pourquoi zéro erreur ne prouve pas une collecte complète : sept pages manquaient](/blog/zero-erreur-collecte-incomplete) | Règle, jeu d’essai et recette | Méthode et décision humaine | thought-leadership | 3 | planned |
 
@@ -96,13 +96,13 @@ Généré le 10/10/2026 par `build-cluster-plan.py` depuis `backlog-v3.json` : n
 
 | Date | Article | Famille | Pôle | Format | P | Statut |
 |---|---|---|---|---|---|---|
-| 2026-10-19 | [Qu'est-ce que le rapprochement bancaire, en comptabilité ?](/blog/qu-est-ce-que-le-rapprochement-bancaire-en-comptabilite) | Relevés bancaires et rapprochement | Production comptable | faq-knowledge | 1 | planned |
+| 2026-10-19 | [Documents obligatoires en fin de contrat : la checklist de sortie d'un salarié](/blog/checklist-de-sortie-d-un-salarie-documents-et-delais) | Entrées, sorties et attestations | Paie et social | listicle-checklist | 1 | planned |
 | 2026-10-19 | [NEP 315 et 330 : préparer les demandes de documents par cycle](/blog/cac-demandes-documents-cycles) | Demandes de documents | Certification des comptes | tutorial | 1 | planned |
 | 2026-10-19 | [Rupture conventionnelle : délai d'homologation, ce qu'un générateur ne boucle pas seul](/blog/les-ruptures-de-contrat-qu-un-generateur-automatique-de-documents-ne-doit-pas-boucler-seul) | Entrées, sorties et attestations | Paie et social | how-to-guide | 1 | planned |
+| 2026-10-20 | [FEC conforme : pourquoi la structure ne conclut pas sur les comptes](/blog/cac-fec-controle-structure-limites) | Réception du FEC | Certification des comptes | faq-knowledge | 1 | planned |
 | 2026-10-20 | [Avenant à la lettre de mission : ce qui se prépare seul, ce qui attend la signature](/blog/checklist-avant-le-renouvellement-d-une-lettre-de-mission) | Lettre de mission et vigilance | Juridique et fiscal | listicle-checklist | 1 | planned |
 | 2026-10-20 | [Appréciation des outils automatisés en audit : documenter les limites](/blog/cac-appreciation-outil-automatise) | Dossier de travail | Certification des comptes | how-to-guide | 3 | planned |
-| 2026-10-20 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | DSN et comptes rendus métier | Paie et social | faq-knowledge | 1 | planned |
-| 2026-10-21 | [Changement de bénéficiaire effectif : ce qu'une mise à jour ne déclare pas seule](/blog/changement-de-beneficiaire-effectif-ce-qu-une-mise-a-jour-automatique-ne-declare-pas-seule) | Registres et obligations périodiques | Juridique et fiscal | how-to-guide | 1 | planned |
+| 2026-10-21 | [CRM DSN de substitution : ce que le compte rendu remplace, et ce qu'il faut refaire](/blog/crm-dsn-de-substitution-ce-que-le-compte-rendu-remplace-et-ce-qu-il-faut-refaire) | DSN et comptes rendus métier | Paie et social | faq-knowledge | 1 | planned |
 | 2026-10-21 | [Constitution finale du dossier d’audit : la checklist des 60 jours](/blog/cac-dossier-constitution-soixante-jours) | Dossier de travail | Certification des comptes | listicle-checklist | 3 | planned |
 | 2026-10-21 | [Majoration de retard Urssaf : le calcul, et ce qu'un suivi automatique doit signaler](/blog/retard-ou-erreur-de-cotisation-ce-qu-un-suivi-automatique-doit-toujours-signaler) | Charges sociales et échéances | Paie et social | how-to-guide | 1 | planned |
 | 2026-10-22 | [FEC non conforme : tracer les défauts et demander un nouvel export](/blog/cac-fec-non-conforme-traitement) | Réception du FEC | Certification des comptes | listicle-checklist | 1 | planned |

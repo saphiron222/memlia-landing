@@ -1,0 +1,1034 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "articleSha256": "799f2ec512c698a3b98adb88c167ebafbc850a78c308243de2481a3db98b2d0c",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-db76a91c960a",
+      "text": "Pour automatiser un cabinet de commissariat aux comptes, commencez par un geste dont l'entrée, la règle et la sortie sont identifiables : recevoir un FEC, suivre une demande, préparer un rapprochement ou référencer une feuille. Écrivez ensuite ce qui se prépare, ce qui attend une validation et ce qui reste au commissaire aux comptes. Cette carte relie huit familles de tâches, sans confondre préparation du dossier et opinion sur les comptes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4da9006d52db",
+      "text": "Ce que désigne l'automatisation en cabinet d'audit",
+      "claimIds": []
+    },
+    {
+      "id": "unit-239ac941660c",
+      "text": "Une tâche répétitive est un geste qui revient avec les mêmes conditions d'entrée et une sortie vérifiable. La règle de cabinet est la description du déclencheur, des conditions, de l'action et des exceptions. Une proposition est une sortie préparée pour être examinée, distincte de la saisie du collaborateur et de sa décision.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0b6b8896727b",
+      "text": "Un fichier reçu, un écart calculé et une conclusion ne désignent pas le même état. L'automatisation organise les deux premiers ; elle présente au professionnel les informations nécessaires au troisième. La carte commence donc par les documents et les gestes, pas par le choix d'une IA.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-81302e4ef666",
+      "text": "La NEP 315, paragraphe 14, distingue les outils et techniques automatisés des applications de documentation : « Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes. » Une application qui range les feuilles et une analyse qui prépare une liste d'écritures répondent à des besoins différents.",
+      "claimIds": [
+        "claim-unit-81302e4ef666-1"
+      ]
+    },
+    {
+      "id": "unit-77e3c4b44bd6",
+      "text": "Pourquoi la tâche casse entre deux outils",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71250a029002",
+      "text": "Le cabinet sait souvent ce qui rend une réponse exploitable : la bonne entité, la bonne période, un document lisible, un renvoi à la demande et une personne qui prend la suite. Mais cette règle tient parfois dans la tête du senior. Le tableau ne porte qu'un statut « reçu », tandis que le commentaire et la décision vivent ailleurs.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-03fcc8b68e41",
+      "text": "Quand la personne change, la pièce reste présente mais son sens se perd. Une liste de demandes paraît terminée alors qu'une réponse est hors période. Une variation a une explication proposée, mais personne ne sait si elle a été examinée. Une feuille a un nom, mais plus de lien vers la version du FEC utilisée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b7d55e92437b",
+      "text": "La première règle à écrire est donc celle du passage d'un état à l'autre. Pour chaque passage, nommez l'information requise et le professionnel qui peut le valider. Un statut unique « terminé » masque ces différences ; plusieurs états utiles les rendent lisibles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-951ee6c2f470",
+      "text": "Choisissez un mandat et une tâche, puis réunissez :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8c0dedd640cd",
+      "text": "- le fichier ou document d'entrée et sa version ; - la période, l'entité et le périmètre attendu ; - un exemple de sortie acceptable, avec les commentaires de l'équipe ; - les paramètres choisis par le responsable de mission ; - les conditions qui imposent un arrêt ; - les droits d'accès aux documents et la destination de la proposition ; - les personnes qui préparent, examinent et décident.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-21ea21776fed",
+      "text": "Un jeu d'essai fictif est un ensemble de dossiers inventés pour éprouver la règle avant de l'utiliser sur les dossiers du cabinet. Préparez un cas courant, un cas limite et un cas de refus. Une recette est la vérification par votre équipe que les sorties et les refus correspondent bien à la tâche confiée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-98cb45508d0c",
+      "text": "La carte des huit familles",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a1b019261934",
+      "text": "| Famille | Entrée à identifier | Sortie préparée | Décision à nommer | |---|---|---|---| | Réception du FEC | Export, entité, période, version | Constat de réception et anomalies techniques | Suite à donner au fichier reçu | | Demandes de documents | Risque, assertion, liste validée | Demandes et états des réponses | Caractère exploitable des réponses | | Revue analytique | Balances et regroupements retenus | Variations et renvois aux justificatifs | Analyse des variations | | Préparation de synthèse | Observations et feuilles sources | Mémos reliés à leurs origines | Conclusions et opinion | | Confirmations des tiers | Sélection et type de demande choisis | Lettres, suivi des retours et écarts | Maîtrise de la campagne et appréciation des résultats | | Revue des écritures | Population et critères décidés | Résultats rattachés aux écritures | Nature et étendue des travaux | | Dossier de travail | Pièces, contributions, références | Index et points en suspens | Travaux, revue et constitution du dossier | | Suivi des mandats | Données de mandat et jalons vérifiés | Calendrier de préparation | Échéances applicables et actions à réaliser |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4d231af7aa1d",
+      "text": "Ces familles sont des points de départ pour écrire une tâche. Elles ne désignent pas huit fonctions déjà installées dans votre cabinet. Le périmètre concret dépend des accès, des formats, des règles et des exceptions observés avec l'équipe.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a4b84f0fab48",
+      "text": "Recevoir le FEC avant de tester les écritures",
+      "claimIds": []
+    },
+    {
+      "id": "unit-039fcdfb2dfd",
+      "text": "La réception commence par une question simple : quel fichier a servi à quel travail ? Conservez la version reçue, le périmètre annoncé, la date de réception et le constat produit. Un nouvel export crée une nouvelle version ; il ne remplace pas silencieusement la matière déjà utilisée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11c3a0d8d3fc",
+      "text": "Le constat de structure et les travaux sur les écritures restent deux objets distincts. Une liste de dates ou de champs manquants aide à préparer une demande de correction. Elle ne suffit pas à apprécier les comptes. Le constat de réception du FEC détaille ce premier geste.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a323db0eeace",
+      "text": "Pour préparer une revue d'écritures, identifiez ensuite la population et les critères choisis par l'équipe. Un résultat porte la référence de l'écriture, la règle appliquée et la version de l'entrée. Un champ absent donne un cas à traiter, pas une qualification supposée d'écriture manuelle ou de fraude.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aeb668137754",
+      "text": "Relier les demandes de pièces aux risques et aux assertions",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a8b2427f144b",
+      "text": "Une assertion est un critère utilisé pour apprécier les comptes, par exemple l'existence ou l'exhaustivité. Dans la liste de demandes, rapprochez le risque identifié, l'assertion, la pièce attendue et la procédure prévue. Une demande générique « tous les documents du cycle » ne dit pas pourquoi chaque pièce est nécessaire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7dc88f00a940",
+      "text": "La NEP 330, paragraphe 10 précise : « Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent. » La préparation du tableau rend ce lien visible ; elle ne le choisit pas à la place du professionnel.",
+      "claimIds": [
+        "claim-unit-7dc88f00a940-1"
+      ]
+    },
+    {
+      "id": "unit-c5fad8abefe6",
+      "text": "Sur un petit mandat, commencez avec une liste courte mais explicite. Le volume de pièces n'est pas le critère de qualité de cette liste. Conservez la raison de la demande et les conditions de qualification de la réponse. « Reçu », « exploitable » et « examiné » restent trois états différents.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ec84cc71e5d5",
+      "text": "Préparer la revue analytique et documenter les paramètres",
+      "claimIds": []
+    },
+    {
+      "id": "unit-21697a0f9ae1",
+      "text": "Une comparaison de balances gagne à séparer le calcul et l'interprétation. Conservez les regroupements, le périmètre des deux exercices et les comptes nouvellement présents. Un solde nul en référence se signale comme tel ; il ne donne pas un pourcentage fabriqué.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-692d66e81c7d",
+      "text": "Pour les seuils retenus dans la mission, écrivez qui a choisi la base et les paramètres, pour quel périmètre, avec quelle justification et quelle version. Une case contenant seulement un montant ne permet pas de retrouver le raisonnement. Cette carte ne recommande aucun taux universel : elle montre comment conserver le choix du professionnel et éviter qu'un calcul le remplace.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9051c8b787af",
+      "text": "Le commentaire généré et l'explication fournie par l'entité restent identifiables. Le professionnel peut les confirmer, les compléter ou les écarter. Une nouvelle balance régénère les calculs ; elle ne réécrit pas son appréciation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c897e02eab05",
+      "text": "Suivre une circularisation jusqu'au rapprochement",
+      "claimIds": []
+    },
+    {
+      "id": "unit-dba0c2f0df88",
+      "text": "La demande de confirmation des tiers, souvent appelée circularisation, ne se résume pas à une lettre. Distinguez sélection, préparation, envoi, réponse reçue, rapprochement et traitement du point en suspens. Un retour signé peut laisser un écart inexpliqué ; sa présence n'autorise pas à fermer le point.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b68abda7d08b",
+      "text": "La NEP 505, paragraphe 09 indique : « Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses. » La préparation des lettres et des états de suivi s'organise dans ce cadre.",
+      "claimIds": [
+        "claim-unit-b68abda7d08b-1"
+      ]
+    },
+    {
+      "id": "unit-a8b93ddd7abd",
+      "text": "Une absence de réponse et un refus de la direction sont deux situations différentes. Le registre peut présenter leur état, leur historique et les éléments disponibles. Le commissaire aux comptes choisit la suite. Le paragraphe 13 de la même norme précise : « Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle. » Un compteur de relances n'est donc pas une procédure alternative.",
+      "claimIds": [
+        "claim-unit-a8b93ddd7abd-1"
+      ]
+    },
+    {
+      "id": "unit-d01adcc6d4a8",
+      "text": "Préparer une synthèse sans fabriquer une conclusion",
+      "claimIds": []
+    },
+    {
+      "id": "unit-6060784078ff",
+      "text": "Un mémo reprend une observation avec son renvoi à la feuille source, sa date et son auteur. Il présente les éléments qui confirment et ceux qui contredisent l'explication envisagée. Il ne transforme pas une absence de pièce en conclusion rassurante.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9d24166d5c13",
+      "text": "Préparez une file de points en suspens avec un responsable et une prochaine action. Séparez le texte proposé du commentaire du responsable de mission. Si une observation est corrigée dans sa feuille d'origine, présentez la différence avant de mettre à jour sa reprise. La synthèse garde ainsi le lien avec le travail effectué.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-56b9a8abcf97",
+      "text": "Organiser le dossier et son calendrier de constitution",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8ff33f459945",
+      "text": "Un index utile relie une pièce, une feuille et le travail auquel elle se rapporte. Signalez les renvois absents, les doublons et les dates incohérentes. Conservez les contributions de l'équipe ; un conflit entre deux versions se présente à la personne compétente.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-813e2235bc2f",
+      "text": "La NEP 230, paragraphe 08 précise : « Les éléments de documentation consignés dans le dossier mentionnent l’identité du membre de l’équipe d’audit qui a effectué les travaux et leur date de réalisation. » La trace ne se réduit donc pas à la date d'enregistrement d'un fichier.",
+      "claimIds": [
+        "claim-unit-813e2235bc2f-1"
+      ]
+    },
+    {
+      "id": "unit-0965ce7da77b",
+      "text": "Le calendrier post-signature ne sert pas à refaire les travaux manquants. Le paragraphe 09 dispose : « Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes. » Le même paragraphe exclut les modifications de fond après signature ; le paragraphe 10 traite séparément l'évènement connu entre signature et approbation qui conduit à de nouvelles procédures ou conclusions. Ce repère ne se confond ni avec la durée de conservation, ni avec la simple préservation des saisies dans un dossier partagé.",
+      "claimIds": [
+        "claim-unit-0965ce7da77b-1",
+        "claim-unit-0965ce7da77b-2"
+      ]
+    },
+    {
+      "id": "unit-2a62058aaa1c",
+      "text": "Suivre les mandats sans inventer leurs échéances",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ffa90bc4028b",
+      "text": "Séparez les jalons internes des dates applicables à la mission. Une date de préparation choisie par le cabinet est un paramètre d'organisation. Une échéance issue d'un texte porte sa source, sa portée et les conditions qui la rendent applicable.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a0b3ef86dc97",
+      "text": "Le calendrier préparé met en évidence les informations absentes : début de mandat non renseigné, période contradictoire, jalon sans responsable. Il n'envoie pas une déclaration au nom du cabinet et ne décide pas d'un renouvellement. L'action à réaliser reste visible avec son propriétaire.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a62b6f21b77f",
+      "text": "La frontière. La tâche confiée se décrit dans trois colonnes. Voici la frontière pour l'inventaire des tâches et la préparation de leur fiche :",
+      "claimIds": []
+    },
+    {
+      "id": "unit-66036cb4fbad",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Rassembler les entrées identifiées et préparer une fiche avec leurs références | Confirmer le périmètre, la règle et les conditions de refus | Choisir la tâche et apprécier l'outil utilisé | | Régénérer la proposition depuis la même entrée et la même règle | Examiner les écarts et les conflits de version | Déterminer les procédures, conclure et formuler l'opinion | | Présenter les informations manquantes | Autoriser la suite selon le rôle prévu | Apprécier le caractère probant des éléments collectés |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-b80d8b20f322",
+      "text": "La proposition. Nous préparons une fiche par tâche avec l'entrée, la règle, les paramètres et la sortie attendue. Le collaborateur saisit ses commentaires dans un espace distinct. Ce que nous produisons se régénère ; ce que votre équipe saisit se conserve.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e374ba5701eb",
+      "text": "L'arrêt. Une source absente, une règle non renseignée ou un conflit avec la saisie précédente empêche la préparation silencieuse d'une nouvelle sortie. Le cas est présenté avec sa condition de refus. Un commentaire plus récent n'est jamais remplacé par l'ancien.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-694a7ba7265b",
+      "text": "Le jeu d'essai. Cette frontière a été rejouée sur quatre cas du dossier fictif D-004 : entrée et règle présentes, source absente, règle absente, contribution modifiée. Le rejeu porte sur ces conditions de préparation ; il ne simule pas une mission d'audit entière.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ca4decd4c7c1",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | FEC-D004-v1 et REG-01 présents | PROPOSITIONAVALIDER ; commentaire du senior conservé | Présenter la fiche au responsable | | Source absente | REFUSSOURCEABSENTE ; aucune proposition | Identifier l'entrée avant de poursuivre | | Règle absente | REFUSREGLEABSENTE ; aucune proposition | Écrire la condition avant de poursuivre | | Commentaire corrigé depuis la contribution précédente | CONFLITAPRESENTER ; commentaire corrigé conservé | Faire examiner le conflit, sans écrasement |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-24c4f8c0d99a",
+      "text": "Ces sorties proviennent d'un rejeu local déterministe sur données inventées. Elles illustrent la règle de préparation de la fiche. Elles ne constituent ni des résultats client ni une qualification des outils du cabinet.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-9aeb2ee04d0d",
+      "text": "Apprécier l'outil avant d'utiliser sa sortie",
+      "claimIds": []
+    },
+    {
+      "id": "unit-77849f5f3eff",
+      "text": "La fiche outil relie l'objectif poursuivi, les entrées, le fonctionnement, les paramètres, les essais, les limites et la version utilisée. La NEP 315, paragraphe 46, demande au commissaire aux comptes d'apprécier notamment « la manière dont les outils fonctionnent » et « le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils. » Le paragraphe 48 d) prévoit la documentation des éléments d'appréciation correspondants.",
+      "claimIds": [
+        "claim-unit-77849f5f3eff-1",
+        "claim-unit-77849f5f3eff-2",
+        "claim-unit-77849f5f3eff-3"
+      ]
+    },
+    {
+      "id": "unit-d43b37c51fa8",
+      "text": "Pour préparer cette appréciation, gardez un exemple où le traitement aboutit et un exemple où il refuse. Précisez ce qu'un contrôle couvre et ce qu'il ne couvre pas. Un fichier techniquement lisible peut encore être incomplet ; une sélection reproductible peut répondre au mauvais objectif. Le nombre de lignes traitées ne tranche aucune de ces questions.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-8cb47ec91fee",
+      "text": "Cette fiche accompagne l'usage de l'outil dans la mission. Elle ne se confond pas avec une démonstration commerciale. Les accès, le secret et le périmètre du traitement se cadrent pour la tâche concernée, selon les engagements de Memlia.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-494a693fd210",
+      "text": "Choisir une première tâche",
+      "claimIds": []
+    },
+    {
+      "id": "unit-00e9e810aa28",
+      "text": "Privilégiez un geste dont la sortie est facile à comparer avec le travail attendu par l'équipe. Trois questions suffisent pour départager les candidats : peut-on identifier l'entrée ? Peut-on écrire la règle sans supposer une information absente ? Peut-on vérifier la sortie et le refus sur un jeu fictif ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-159effeea3be",
+      "text": "Un constat de réception ou une file de points en suspens peut être un meilleur départ qu'une synthèse entière. Une première tâche complète comprend ses exceptions et sa reprise, pas seulement le cas courant. Notre méthode de prise en charge relie observation, règle, jeu d'essai et recette par l'équipe.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-29d5c5b90dc6",
+      "text": "Gardez la distinction avec la carte des tâches d'expertise comptable. Les gestes peuvent se ressembler, mais l'objectif du travail et les décisions à conserver ne sont pas interchangeables. La mission CAC s'organise avec son périmètre propre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c7941002bfd3",
+      "text": "- Partir du nom d'un outil. Décrivez d'abord la tâche et la sortie attendue. - Utiliser un seul statut « fait ». Séparez reçu, exploitable, examiné et résolu. - Régénérer sur la saisie du collaborateur. Gardez proposition et saisie dans deux espaces distincts. - Confondre format et caractère probant. Un constat technique n'est pas une conclusion sur les comptes. - Reporter la documentation à la fin. Le renvoi à la matière traitée se prépare au moment du travail. - Confondre dossier partagé et archivage. La conservation d'une contribution ne démontre pas le respect du calendrier post-signature.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5a0264a778ae",
+      "text": "Faut-il remplacer le dossier d'audit ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7b2a045f4317",
+      "text": "Pas pour écrire une première tâche. Identifiez où l'entrée existe et où la sortie doit être examinée. Les formats et les accès sont vérifiés avec l'équipe avant de choisir le véhicule de l'automatisation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-fd1a6ba25963",
+      "text": "Une analyse automatique du FEC suffit-elle ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c016015d585b",
+      "text": "Elle fournit des résultats sur la population et selon les règles utilisées. Le professionnel apprécie ce que ces résultats permettent d'établir, leur portée et les travaux complémentaires. La trace conserve la population, les paramètres et les limites du traitement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f3dabad2bfe7",
+      "text": "Quelle place donner à l'IA ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a5455e9f7682",
+      "text": "Commencez par la règle et les essais. Certains gestes relèvent d'un calcul déterministe ; d'autres peuvent inclure une proposition de texte ou de qualification. Dans les deux cas, la fiche précise les conditions de refus et la personne qui examine la sortie.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-198fd59a66bb",
+      "text": "Que documenter dans un petit cabinet ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-572f071fc3e0",
+      "text": "Une fiche courte peut suffire à rendre la mécanique compréhensible : entrée, règle, paramètres, sortie, refus et validation. La documentation des travaux de mission suit son cadre propre. La taille du tableau ne remplace pas le raisonnement du commissaire aux comptes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1dd9a7309dd8",
+      "text": "Choisissez une tâche dont l'entrée et la sortie sont traçables, puis écrivez ses conditions de préparation, de validation et de refus. Une proposition utile rend le travail du cabinet plus lisible sans se transformer en jugement sur les comptes.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-daf424b4efa5",
+      "text": "Nous prenons en charge la mécanique de la première tâche choisie : observer les gestes, écrire la règle dans vos mots, construire dans vos outils, éprouver les refus et faire recetter par votre équipe. Vous gardez l'appréciation de l'outil, les travaux de mission et les décisions qui engagent votre opinion. Rien à envoyer pour en parler : la description de la tâche suffit.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-81302e4ef666-1",
+      "unitId": "unit-81302e4ef666",
+      "claim": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+            "context": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+            "contextSha256": "1b2b9ec9ef2834351150d56b20de326b5e96ce332a54fb8a5fbbb76f43fe427d",
+            "citation": {
+              "text": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+              "sha256": "1b2b9ec9ef2834351150d56b20de326b5e96ce332a54fb8a5fbbb76f43fe427d",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 613,
+                  "endLine": 613
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "outils",
+                "techniques",
+                "automatises",
+                "distinguent",
+                "plateformes",
+                "logiciels",
+                "audit",
+                "utilises",
+                "documenter",
+                "travaux",
+                "commissaire",
+                "comptes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 613 de la copie locale de H2A, porte les mêmes entités que le claim (outils, techniques, automatises, distinguent, plateformes, logiciels, audit, utilises, documenter, travaux, commissaire, comptes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7dc88f00a940-1",
+      "unitId": "unit-7dc88f00a940",
+      "claim": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a330"
+      ],
+      "sourceExcerpts": {
+        "h2a330": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a330",
+            "sourceUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+            "verifiedUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+            "excerpt": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+            "context": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+            "contextSha256": "6bf76e6e5e60d64b913e3f5548b4a07c8793e76589886736dbbc6ecda0a89e0a",
+            "citation": {
+              "text": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+              "sha256": "6bf76e6e5e60d64b913e3f5548b4a07c8793e76589886736dbbc6ecda0a89e0a",
+              "sourceContentSha256": "674e5646be4ffc9b0bb60d3f68e91d330e345bef14b115790b9af8de6601c9f4",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 330",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 607,
+                  "endLine": 607
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "commissaire",
+                "comptes",
+                "determine",
+                "nature",
+                "calendrier",
+                "etendue",
+                "procedures",
+                "audit",
+                "realise",
+                "mettant",
+                "evidence",
+                "lien",
+                "risques",
+                "auxquels",
+                "repondent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 607 de la copie locale de H2A, porte les mêmes entités que le claim (commissaire, comptes, determine, nature, calendrier, etendue, procedures, audit, realise, mettant, evidence, lien, risques, auxquels, repondent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-b68abda7d08b-1",
+      "unitId": "unit-b68abda7d08b",
+      "claim": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a505"
+      ],
+      "sourceExcerpts": {
+        "h2a505": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a505",
+            "sourceUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+            "verifiedUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+            "excerpt": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction",
+            "context": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses.",
+            "contextSha256": "732b6b777c3aad4977b810c1c757f045360a3f9f9a5506a90e9d33cc03e1cb89",
+            "citation": {
+              "text": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction",
+              "sha256": "22fb0692dff27cbe93259697619202184dc60e90ca02b8f8f9db9521381eebc2",
+              "sourceContentSha256": "08e45b56cb909e85f4ebe0984594816c3413d886aba5e2daad63bd0f10e6e4f7",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 505",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 591,
+                  "endLine": 591
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "commissaire",
+                "comptes",
+                "maitrise",
+                "selection",
+                "tiers",
+                "souhaite",
+                "adresser",
+                "demandes",
+                "confirmation",
+                "redaction"
+              ],
+              "reasoning": "La citation, relevée à la ligne 591 de la copie locale de H2A, porte les mêmes entités que le claim (commissaire, comptes, maitrise, selection, tiers, souhaite, adresser, demandes, confirmation, redaction) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-813e2235bc2f-1",
+      "unitId": "unit-813e2235bc2f",
+      "claim": "Les éléments de documentation consignés dans le dossier mentionnent l’identité du membre de l’équipe d’audit qui a effectué les travaux et leur date de réalisation.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a230"
+      ],
+      "sourceExcerpts": {
+        "h2a230": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a230",
+            "sourceUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "excerpt": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation.",
+            "context": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation.",
+            "contextSha256": "9960eaac9138daa6547a89db2196375fc200663bd88400511a83f0c869e4e08c",
+            "citation": {
+              "text": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation.",
+              "sha256": "9960eaac9138daa6547a89db2196375fc200663bd88400511a83f0c869e4e08c",
+              "sourceContentSha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 230",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 593,
+                  "endLine": 593
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "elements",
+                "documentation",
+                "consignes",
+                "dossier",
+                "mentionnent",
+                "identite",
+                "membre",
+                "equipe",
+                "audit",
+                "effectue",
+                "travaux",
+                "leur",
+                "date",
+                "realisation"
+              ],
+              "reasoning": "La citation, relevée à la ligne 593 de la copie locale de H2A, porte les mêmes entités que le claim (elements, documentation, consignes, dossier, mentionnent, identite, membre, equipe, audit, effectue, travaux, leur, date, realisation) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation de la norme officielle, avec ses limites dans le paragraphe ; portée complète à apprécier lors de la revue métier indépendante.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-77849f5f3eff-1",
+      "unitId": "unit-77849f5f3eff",
+      "claim": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+            "context": "Pour ce faire, il apprécie : • la manière dont les outils fonctionnent ; et • le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+            "contextSha256": "6a5ec2b26c073c46fb3bd9609271e0a2459280e96c370ea5bf855d50ea683e42",
+            "citation": {
+              "text": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+              "sha256": "fcd722968451c21a33d51e195a0d375fccc71d341cff6bf992ada132f40998ea",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 746,
+                  "endLine": 746
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "degre",
+                "pertinence",
+                "fiabilite",
+                "informations",
+                "integrees",
+                "outils"
+              ],
+              "reasoning": "La citation, relevée à la ligne 746 de la copie locale de H2A, porte les mêmes entités que le claim (degre, pertinence, fiabilite, informations, integrees, outils) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP315 §46 : identification et évaluation des risques, pas toute utilisation d'un outil. En réponse aux risques, l'exigence correspondante relève de NEP330 §33 et sa documentation de §34 e). La fiche prépare l'appréciation du CAC, sans homologation ni certification. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-a8b93ddd7abd-1",
+      "unitId": "unit-a8b93ddd7abd",
+      "claim": "Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a505"
+      ],
+      "sourceExcerpts": {
+        "h2a505": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a505",
+            "sourceUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+            "verifiedUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+            "excerpt": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle.",
+            "context": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle.",
+            "contextSha256": "5617ca9dc12c442657c506b2918b33c439544eff095490fb7e4f6693a41b4b90",
+            "citation": {
+              "text": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle.",
+              "sha256": "5617ca9dc12c442657c506b2918b33c439544eff095490fb7e4f6693a41b4b90",
+              "sourceContentSha256": "08e45b56cb909e85f4ebe0984594816c3413d886aba5e2daad63bd0f10e6e4f7",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 505",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 596,
+                  "endLine": 596
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "lorsque",
+                "commissaire",
+                "comptes",
+                "obtient",
+                "reponse",
+                "demande",
+                "confirmation",
+                "uvre",
+                "procedures",
+                "audit",
+                "alternatives",
+                "permettant",
+                "collecter",
+                "elements",
+                "estime",
+                "necessaires",
+                "verifier",
+                "assertions",
+                "faisant",
+                "objet",
+                "controle"
+              ],
+              "reasoning": "La citation, relevée à la ligne 596 de la copie locale de H2A, porte les mêmes entités que le claim (lorsque, commissaire, comptes, obtient, reponse, demande, confirmation, uvre, procedures, audit, alternatives, permettant, collecter, elements, estime, necessaires, verifier, assertions, faisant, objet, controle) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP505 §13 : non-réponse à une demande, procédures alternatives ; une relance ne les remplace pas. Le refus de direction relève séparément des §10 à 12. La suffisance des éléments et les conséquences restent appréciées par le CAC (§14 à 15). Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-0965ce7da77b-1",
+      "unitId": "unit-0965ce7da77b",
+      "claim": "Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a230"
+      ],
+      "sourceExcerpts": {
+        "h2a230": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a230",
+            "sourceUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "excerpt": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+            "context": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+            "contextSha256": "dd278a7683c770e5407dca79a2b4c35e76e82b770b1a28e62b2712284ab0a6fa",
+            "citation": {
+              "text": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+              "sha256": "dd278a7683c770e5407dca79a2b4c35e76e82b770b1a28e62b2712284ab0a6fa",
+              "sourceContentSha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 230",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 597,
+                  "endLine": 597
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "peut",
+                "apporter",
+                "modifications",
+                "forme",
+                "revoir",
+                "leur",
+                "classement",
+                "delai",
+                "soixante",
+                "jours",
+                "apres",
+                "date",
+                "signature",
+                "rapport",
+                "comptes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 597 de la copie locale de H2A, porte les mêmes entités que le claim (peut, apporter, modifications, forme, revoir, leur, classement, delai, soixante, jours, apres, date, signature, rapport, comptes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP230 §9 : documentation au fil des travaux, forme et classement après signature, pas délai pour rattraper les diligences. L'exception du §10 est préservée et déclarée séparément. Ce délai n'est pas une durée de conservation. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-0965ce7da77b-2",
+      "unitId": "unit-0965ce7da77b",
+      "claim": "qui conduit à de nouvelles procédures ou conclusions",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a230"
+      ],
+      "sourceExcerpts": {
+        "h2a230": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a230",
+            "sourceUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+            "excerpt": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :",
+            "context": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :",
+            "contextSha256": "886c40aa2238a5b5d54667dbfc7f689b98d388ac1b624f620c9402250aa20a26",
+            "citation": {
+              "text": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :",
+              "sha256": "886c40aa2238a5b5d54667dbfc7f689b98d388ac1b624f620c9402250aa20a26",
+              "sourceContentSha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 230",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 598,
+                  "endLine": 598
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "conduit",
+                "nouvelles",
+                "procedures",
+                "conclusions"
+              ],
+              "reasoning": "La citation, relevée à la ligne 598 de la copie locale de H2A, porte les mêmes entités que le claim (conduit, nouvelles, procedures, conclusions) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP230 §10 : événement connu entre signature du rapport et approbation des comptes, conduisant à de nouvelles procédures ou conclusions. Le complément documente circonstances, nature, procédures, éléments testés, résultats et éléments collectés. Pas permission générale de réécrire le dossier après signature. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-77849f5f3eff-2",
+      "unitId": "unit-77849f5f3eff",
+      "claim": "la manière dont les outils fonctionnent",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "• la manière dont les outils fonctionnent ; et<br />"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "• la manière dont les outils fonctionnent ; et<br />",
+            "context": "46. Conformément aux dispositions de la norme d’exercice professionnel « Caractère probant des éléments collectés », lorsque le commissaire aux comptes a recours à des outils et techniques automatisés pour l’aider à identifier et évaluer le risque d’anomalies significatives, il apprécie, en exerçant son esprit critique, si les outils permettent d’atteindre l’objectif poursuivi par les procédures d’audit relatives à l’identification et l’évaluation du risque d’anomalies significatives. Pour ce faire, il apprécie :<br />\n• la manière dont les outils fonctionnent ; et<br />\n• le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+            "contextSha256": "3017e146c5bbce01c74fb1ace5f54ff2e281db5424fea51edbdff7d334ffb5fa",
+            "citation": {
+              "text": "• la manière dont les outils fonctionnent ; et<br />",
+              "sha256": "efb45a9aa1eaad0d7a16ba014e59f7294d701ae50171e687bc000441bdef2a02",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 745,
+                  "endLine": 745
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "maniere",
+                "dont",
+                "outils",
+                "fonctionnent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 745 de la copie locale de H2A, porte les mêmes entités que le claim (maniere, dont, outils, fonctionnent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP315 §46 : apprécier le fonctionnement et les informations pour l'identification et l'évaluation des risques. L'appréciation reste au CAC ; réponse aux risques sous NEP330 §33 et documentation §34 e). Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-77849f5f3eff-3",
+      "unitId": "unit-77849f5f3eff",
+      "claim": "éléments d'appréciation",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "h2a315"
+      ],
+      "sourceExcerpts": {
+        "h2a315": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "h2a315",
+            "sourceUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "verifiedUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+            "excerpt": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+            "context": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+            "contextSha256": "81020877f67551562a53bcc43cacf6a7f2f14cfbf6991c45d1d1ba7ad7799a8d",
+            "citation": {
+              "text": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+              "sha256": "81020877f67551562a53bcc43cacf6a7f2f14cfbf6991c45d1d1ba7ad7799a8d",
+              "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+              "coordinates": {
+                "finalUrl": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+                "checkedAt": "2026-10-11",
+                "title": "NEP 315",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 758,
+                  "endLine": 758
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "elements",
+                "appreciation"
+              ],
+              "reasoning": "La citation, relevée à la ligne 758 de la copie locale de H2A, porte les mêmes entités que le claim (elements, appreciation) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "NEP315 §48 d) : éléments d'appréciation des outils visés au §46 consignés dans le dossier de travail (§48). La fiche Memlia est un support de préparation, pas un modèle prescrit ni une attestation de conformité. NEP330 §34 e) traite la documentation en réponse aux risques. Avis métier F4 §3 conservé.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "verification-mecanique-R1-et-liaison",
+  "newIndependentReview": false,
+  "protectedFilesUnchanged": true,
+  "results": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "claims": 10,
+      "preflightErrors": [],
+      "ruleErrors": [],
+      "bindingErrors": [],
+      "R1Units": {
+        "unit-a8b93ddd7abd": 1,
+        "unit-0965ce7da77b": 2,
+        "unit-77849f5f3eff": 3
+      },
+      "claimsSourceHashesVerified": true,
+      "actualRegistryEqualsForgeReplay": true,
+      "verdictAcquis": "PASS AVEC RÉSERVES",
+      "publicationApproval": false
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "claims": 5,
+      "preflightErrors": [],
+      "ruleErrors": [],
+      "bindingErrors": [],
+      "R1Units": {
+        "unit-bc18e9499a79": 2
+      },
+      "claimsSourceHashesVerified": true,
+      "actualRegistryEqualsForgeReplay": true,
+      "verdictAcquis": "PASS AVEC RÉSERVES",
+      "publicationApproval": false
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 Une ligne par article publié, complétée par chaque exécution (manuelle ou planifiée). Les jours sans créneau consignent la maintenance faite.
 
+Reprise CAC du 12/10/2026, t_79bc51d9 : créneau réel et deux réservations vérifiés, main intégré sans conflit, calendrier régénéré et contrôlé, 27 tests ciblés PASS et deux requêtes réellement remesurées. Les deux préparations restent refusées sur la citation normative courte et les planchers de palette des couvertures HTML autorisées. Fabrication locale partielle uniquement ; aucun commit, push, sceau ou publication. Avis métier acquis conservé, rubrique inactive, F4/H5 non libérées. Rapport : `docs/qa/cac-f4-livraison/ETAT-2026-10-12.md` ; correctifs autonomes dev t_88f84548 et t_22fb4350, sans parent ajouté à la publication.
+
 | Date | Article | Commit | Déploiement | HTTP en ligne | Octets identiques | Sitemap renvoyé | Note |
 |---|---|---|---|---|---|---|---|
 | 2026-09-16 | automatiser-un-cabinet-comptable-la-carte-des-taches | d992cec | bfe1ae98 | 200 | oui | oui, 18:05 | pilier ; revue 100/100, 5 verdicts « soutient » |

@@ -1,0 +1,818 @@
+{
+  "observedAt": "2026-10-12T07:11:44.490Z",
+  "scope": "Contrôles locaux de fabrication, non revue indépendante ni production",
+  "performance": {
+    "Lighthouse": "non mesure",
+    "CWV": "non mesure, URLs non publiees"
+  },
+  "results": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "checks": {
+        "oneH1": true,
+        "hierarchy": true,
+        "canonical": true,
+        "ogTitle": true,
+        "ogUrl": true,
+        "description": true,
+        "twitter": true,
+        "schemaAuthor": true,
+        "schemaHeadline": true,
+        "dates": true,
+        "allInternalLinks": true,
+        "allImages": true,
+        "noPrimaryCollision": true,
+        "voice": true,
+        "browser": true
+      },
+      "title": "Automatisation cabinet audit : carte des tâches | Memlia",
+      "titleLength": 56,
+      "descriptionLength": 153,
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1",
+        "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+        "author": "Kevin Kitanga",
+        "robots": "noindex, follow",
+        "theme-color": "#fffefb",
+        "og:type": "article",
+        "og:site_name": "Memlia",
+        "og:locale": "fr_FR",
+        "og:url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "og:title": "Automatisation cabinet audit : la carte des tâches du CAC",
+        "og:description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+        "og:image": "https://memlia.fr/social/images/img-art-cac-carte-taches-og.webp.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Automatisation cabinet audit : la carte des tâches du CAC",
+        "twitter:description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+        "twitter:image": "https://memlia.fr/social/images/img-art-cac-carte-taches-og.webp.jpg",
+        "article:published_time": "2026-10-12T00:00:00.000Z",
+        "article:modified_time": "2026-10-12T00:00:00.000Z",
+        "article:author": "https://memlia.fr/a-propos#kevin-kitanga",
+        "article:tag": "Méthode"
+      },
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Automatisation cabinet audit : la carte des tâches du CAC"
+        },
+        {
+          "level": 2,
+          "text": "Dans cet article"
+        },
+        {
+          "level": 2,
+          "text": "Réponse directe"
+        },
+        {
+          "level": 2,
+          "text": "Ce que désigne l’automatisation en cabinet d’audit"
+        },
+        {
+          "level": 2,
+          "text": "Pourquoi la tâche casse entre deux outils"
+        },
+        {
+          "level": 2,
+          "text": "Avant de commencer"
+        },
+        {
+          "level": 2,
+          "text": "La carte des huit familles"
+        },
+        {
+          "level": 3,
+          "text": "Recevoir le FEC avant de tester les écritures"
+        },
+        {
+          "level": 3,
+          "text": "Relier les demandes de pièces aux risques et aux assertions"
+        },
+        {
+          "level": 3,
+          "text": "Préparer la revue analytique et documenter les paramètres"
+        },
+        {
+          "level": 3,
+          "text": "Suivre une circularisation jusqu’au rapprochement"
+        },
+        {
+          "level": 3,
+          "text": "Préparer une synthèse sans fabriquer une conclusion"
+        },
+        {
+          "level": 3,
+          "text": "Organiser le dossier et son calendrier de constitution"
+        },
+        {
+          "level": 3,
+          "text": "Suivre les mandats sans inventer leurs échéances"
+        },
+        {
+          "level": 2,
+          "text": "La règle écrite"
+        },
+        {
+          "level": 2,
+          "text": "Rejoué sur le jeu fictif"
+        },
+        {
+          "level": 2,
+          "text": "Apprécier l’outil avant d’utiliser sa sortie"
+        },
+        {
+          "level": 2,
+          "text": "Choisir une première tâche"
+        },
+        {
+          "level": 2,
+          "text": "Les erreurs fréquentes"
+        },
+        {
+          "level": 2,
+          "text": "Questions fréquentes"
+        },
+        {
+          "level": 3,
+          "text": "Faut-il remplacer le dossier d’audit ?"
+        },
+        {
+          "level": 3,
+          "text": "Une analyse automatique du FEC suffit-elle ?"
+        },
+        {
+          "level": 3,
+          "text": "Quelle place donner à l’IA ?"
+        },
+        {
+          "level": 3,
+          "text": "Que documenter dans un petit cabinet ?"
+        },
+        {
+          "level": 2,
+          "text": "La règle à retenir"
+        },
+        {
+          "level": 2,
+          "text": "Pour aller plus loin"
+        },
+        {
+          "level": 2,
+          "text": "Cette tâche vit encore dans la tête de vos collaborateurs ?"
+        },
+        {
+          "level": 2,
+          "text": "À lire ensuite"
+        },
+        {
+          "level": 2,
+          "text": "Ce qu’on automatise"
+        },
+        {
+          "level": 2,
+          "text": "Comprendre"
+        },
+        {
+          "level": 2,
+          "text": "L’entreprise"
+        },
+        {
+          "level": 2,
+          "text": "Environnements"
+        },
+        {
+          "level": 2,
+          "text": "Outils gratuits"
+        }
+      ],
+      "hierarchyErrors": [],
+      "links": [
+        {
+          "href": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+          "anchor": "NEP 315, paragraphe 14"
+        },
+        {
+          "href": "/blog/cac-reception-fec-constat",
+          "anchor": "constat de réception du FEC"
+        },
+        {
+          "href": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+          "anchor": "NEP 330, paragraphe 10"
+        },
+        {
+          "href": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+          "anchor": "NEP 505, paragraphe 09"
+        },
+        {
+          "href": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+          "anchor": "NEP 230, paragraphe 08"
+        },
+        {
+          "href": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+          "anchor": "NEP 315, paragraphe 46"
+        },
+        {
+          "href": "/garanties",
+          "anchor": "engagements de Memlia"
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de prise en charge"
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "anchor": "carte des tâches d’expertise comptable"
+        }
+      ],
+      "internal": [
+        {
+          "href": "/blog/cac-reception-fec-constat",
+          "anchor": "constat de réception du FEC",
+          "status": 200,
+          "fragmentExists": null
+        },
+        {
+          "href": "/garanties",
+          "anchor": "engagements de Memlia",
+          "status": 200,
+          "fragmentExists": null
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de prise en charge",
+          "status": 200,
+          "fragmentExists": null
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "anchor": "carte des tâches d’expertise comptable",
+          "status": 200,
+          "fragmentExists": null
+        }
+      ],
+      "reciprocal": [
+        {
+          "href": "/blog/cac-reception-fec-constat",
+          "backlink": true
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "backlink": true
+        }
+      ],
+      "images": [
+        {
+          "src": "/images/img-art-cac-carte-taches-1600.webp",
+          "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+          "width": "1600",
+          "height": "900",
+          "loading": "eager",
+          "bytes": 19390,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        },
+        {
+          "src": "/proofs/blog/cac-inventaire-taches.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "bytes": 23852,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        },
+        {
+          "src": "/proofs/blog/cac-fiche-regle.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "bytes": 20674,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        }
+      ],
+      "derivatives": [
+        {
+          "path": "public/images/img-art-cac-carte-taches-1200.avif",
+          "bytes": 10105,
+          "width": 1200,
+          "height": 675,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1200.webp",
+          "bytes": 13344,
+          "width": 1200,
+          "height": 675,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1600.avif",
+          "bytes": 13541,
+          "width": 1600,
+          "height": 900,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1600.webp",
+          "bytes": 19390,
+          "width": 1600,
+          "height": 900,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-768.avif",
+          "bytes": 6087,
+          "width": 768,
+          "height": 432,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-768.webp",
+          "bytes": 6324,
+          "width": 768,
+          "height": 432,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-og.webp",
+          "bytes": 12844,
+          "width": 1200,
+          "height": 630,
+          "format": "webp"
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ],
+      "robotsIsPreview": true,
+      "viewports": [
+        {
+          "width": 375,
+          "http": 200,
+          "errors": [],
+          "documentWidth": 375,
+          "h1": 1,
+          "bodyCharacters": 17815,
+          "missingImages": [],
+          "tables": [
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            }
+          ],
+          "cta": [
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier une première tâche"
+          ]
+        },
+        {
+          "width": 1440,
+          "http": 200,
+          "errors": [],
+          "documentWidth": 1440,
+          "h1": 1,
+          "bodyCharacters": 17815,
+          "missingImages": [],
+          "tables": [
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            }
+          ],
+          "cta": [
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier une première tâche"
+          ]
+        }
+      ],
+      "primaryCollision": [],
+      "forbidden": [],
+      "paragraphs": 75,
+      "words": 2917
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "checks": {
+        "oneH1": true,
+        "hierarchy": true,
+        "canonical": true,
+        "ogTitle": true,
+        "ogUrl": true,
+        "description": true,
+        "twitter": true,
+        "schemaAuthor": true,
+        "schemaHeadline": true,
+        "dates": true,
+        "allInternalLinks": true,
+        "allImages": true,
+        "noPrimaryCollision": true,
+        "voice": true,
+        "browser": true
+      },
+      "title": "FEC contrôle : constat de réception CAC | Memlia",
+      "titleLength": 48,
+      "descriptionLength": 153,
+      "meta": {
+        "viewport": "width=device-width, initial-scale=1",
+        "description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+        "author": "Kevin Kitanga",
+        "robots": "noindex, follow",
+        "theme-color": "#fffefb",
+        "og:type": "article",
+        "og:site_name": "Memlia",
+        "og:locale": "fr_FR",
+        "og:url": "https://memlia.fr/blog/cac-reception-fec-constat",
+        "og:title": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+        "og:description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+        "og:image": "https://memlia.fr/social/images/img-art-cac-fec-reception-og.webp.jpg",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+        "twitter:description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+        "twitter:image": "https://memlia.fr/social/images/img-art-cac-fec-reception-og.webp.jpg",
+        "article:published_time": "2026-10-12T00:00:00.000Z",
+        "article:modified_time": "2026-10-12T00:00:00.000Z",
+        "article:author": "https://memlia.fr/a-propos#kevin-kitanga",
+        "article:tag": "Méthode"
+      },
+      "canonical": "https://memlia.fr/blog/cac-reception-fec-constat",
+      "headings": [
+        {
+          "level": 1,
+          "text": "FEC contrôle : préparer le constat de réception pour la mission CAC"
+        },
+        {
+          "level": 2,
+          "text": "Dans cet article"
+        },
+        {
+          "level": 2,
+          "text": "Réponse directe"
+        },
+        {
+          "level": 2,
+          "text": "Qu’est-ce qu’un constat de réception du FEC ?"
+        },
+        {
+          "level": 2,
+          "text": "Pourquoi la réception casse à la main"
+        },
+        {
+          "level": 2,
+          "text": "Avant de commencer"
+        },
+        {
+          "level": 2,
+          "text": "1. Identifier l’entrée sans la réécrire"
+        },
+        {
+          "level": 2,
+          "text": "2. Nommer les contrôles techniques réellement effectués"
+        },
+        {
+          "level": 2,
+          "text": "3. Séparer anomalie technique et question de mission"
+        },
+        {
+          "level": 2,
+          "text": "4. Présenter le constat avant de poursuivre"
+        },
+        {
+          "level": 2,
+          "text": "La règle écrite"
+        },
+        {
+          "level": 2,
+          "text": "Rejoué sur le jeu fictif"
+        },
+        {
+          "level": 2,
+          "text": "Apprécier le traitement utilisé"
+        },
+        {
+          "level": 2,
+          "text": "Les erreurs fréquentes"
+        },
+        {
+          "level": 2,
+          "text": "Questions fréquentes"
+        },
+        {
+          "level": 3,
+          "text": "Le constat remplace-t-il un contrôle complet du format FEC ?"
+        },
+        {
+          "level": 3,
+          "text": "Que faire si le fichier est équilibré mais incomplet ?"
+        },
+        {
+          "level": 3,
+          "text": "Pourquoi conserver une référence par version ?"
+        },
+        {
+          "level": 3,
+          "text": "Peut-on partir d’un tableur existant ?"
+        },
+        {
+          "level": 2,
+          "text": "La règle à retenir"
+        },
+        {
+          "level": 2,
+          "text": "Pour aller plus loin"
+        },
+        {
+          "level": 2,
+          "text": "Cette tâche vit encore dans la tête de vos collaborateurs ?"
+        },
+        {
+          "level": 2,
+          "text": "À lire ensuite"
+        },
+        {
+          "level": 2,
+          "text": "Ce qu’on automatise"
+        },
+        {
+          "level": 2,
+          "text": "Comprendre"
+        },
+        {
+          "level": 2,
+          "text": "L’entreprise"
+        },
+        {
+          "level": 2,
+          "text": "Environnements"
+        },
+        {
+          "level": 2,
+          "text": "Outils gratuits"
+        }
+      ],
+      "hierarchyErrors": [],
+      "links": [
+        {
+          "href": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+          "anchor": "NEP 500, paragraphe 06"
+        },
+        {
+          "href": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+          "anchor": "NEP 230, paragraphe 04"
+        },
+        {
+          "href": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+          "anchor": "NEP 330, paragraphe 28"
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "anchor": "carte des tâches du cabinet CAC"
+        },
+        {
+          "href": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+          "anchor": "NEP 315, paragraphe 46"
+        },
+        {
+          "href": "/garanties",
+          "anchor": "garanties de Memlia"
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de Memlia"
+        }
+      ],
+      "internal": [
+        {
+          "href": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "anchor": "carte des tâches du cabinet CAC",
+          "status": 200,
+          "fragmentExists": null
+        },
+        {
+          "href": "/garanties",
+          "anchor": "garanties de Memlia",
+          "status": 200,
+          "fragmentExists": null
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de Memlia",
+          "status": 200,
+          "fragmentExists": null
+        }
+      ],
+      "reciprocal": [
+        {
+          "href": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "backlink": true
+        }
+      ],
+      "images": [
+        {
+          "src": "/images/img-art-cac-fec-reception-1600.webp",
+          "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+          "width": "1600",
+          "height": "900",
+          "loading": "eager",
+          "bytes": 14710,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        },
+        {
+          "src": "/proofs/blog/cac-fec-registre-reception.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "bytes": 17678,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        },
+        {
+          "src": "/proofs/blog/cac-fec-constat.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "width": "1600",
+          "height": "900",
+          "loading": "lazy",
+          "bytes": 17598,
+          "format": "webp",
+          "pixelWidth": 1600,
+          "pixelHeight": 900,
+          "http": 200
+        }
+      ],
+      "derivatives": [
+        {
+          "path": "public/images/img-art-cac-fec-reception-1200.avif",
+          "bytes": 7358,
+          "width": 1200,
+          "height": 675,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1200.webp",
+          "bytes": 9980,
+          "width": 1200,
+          "height": 675,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1600.avif",
+          "bytes": 9399,
+          "width": 1600,
+          "height": 900,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1600.webp",
+          "bytes": 14710,
+          "width": 1600,
+          "height": 900,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-768.avif",
+          "bytes": 4051,
+          "width": 768,
+          "height": 432,
+          "format": "heif"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-768.webp",
+          "bytes": 4788,
+          "width": 768,
+          "height": 432,
+          "format": "webp"
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-og.webp",
+          "bytes": 9814,
+          "width": 1200,
+          "height": 630,
+          "format": "webp"
+        }
+      ],
+      "schemaTypes": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ],
+      "robotsIsPreview": true,
+      "viewports": [
+        {
+          "width": 375,
+          "http": 200,
+          "errors": [],
+          "documentWidth": 375,
+          "h1": 1,
+          "bodyCharacters": 12853,
+          "missingImages": [],
+          "tables": [
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            }
+          ],
+          "cta": [
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier cette tâche",
+            "Confier une première tâche"
+          ]
+        },
+        {
+          "width": 1440,
+          "http": 200,
+          "errors": [],
+          "documentWidth": 1440,
+          "h1": 1,
+          "bodyCharacters": 12853,
+          "missingImages": [],
+          "tables": [
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            },
+            {
+              "scrollContainer": true,
+              "head": true
+            }
+          ],
+          "cta": [
+            "Confier une première tâche",
+            "Confier une première tâche",
+            "Confier cette tâche",
+            "Confier une première tâche"
+          ]
+        }
+      ],
+      "primaryCollision": [],
+      "forbidden": [],
+      "paragraphs": 60,
+      "words": 2151
+    }
+  ]
+}

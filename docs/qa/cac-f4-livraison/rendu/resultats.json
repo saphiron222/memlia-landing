@@ -1,0 +1,723 @@
+{
+  "observedAt": "2026-10-12T06:45:23.033Z",
+  "scope": "Vrai rendu Astro des deux brouillons, pas publication ni revue indépendante",
+  "contract": {
+    "pass": false,
+    "articles": 2,
+    "exemptions": [],
+    "erreurs": [
+      "automatiser-un-cabinet-cac-la-carte-des-taches : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter",
+      "cac-reception-fec-constat : clause 4, rubrique non déclarée dans le registre canonique ni dans le frontmatter"
+    ]
+  },
+  "observations": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "width": 375,
+      "http": 200,
+      "title": "Automatisation cabinet audit : carte des tâches | Memlia",
+      "h1": [
+        "Automatisation cabinet audit : la carte des tâches du CAC"
+      ],
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "bodyCharacters": 17815,
+      "viewport": 375,
+      "documentWidth": 375,
+      "images": [
+        {
+          "src": "/images/img-art-cac-carte-taches-1600.webp",
+          "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-inventaire-taches.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fiche-regle.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "loaded": true
+        }
+      ],
+      "links": [
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/blog/cac-reception-fec-constat",
+        "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+        "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+        "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/garanties",
+        "/methode",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches#article",
+              "headline": "Automatisation cabinet audit : la carte des tâches du CAC",
+              "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+              "url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
+              },
+              "datePublished": "2026-10-12T00:00:00.000Z",
+              "dateModified": "2026-10-12T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-cac-carte-taches-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004."
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-cac-carte-taches-og.webp",
+              "articleSection": [
+                "Cabinet",
+                "Automatisation",
+                "Méthode"
+              ],
+              "keywords": [
+                "automatisation cabinet audit",
+                "commissariat aux comptes",
+                "règle écrite",
+                "dossier de travail"
+              ],
+              "wordCount": 2735
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Automatisation cabinet audit : la carte des tâches du CAC",
+                  "item": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "width": 1440,
+      "http": 200,
+      "title": "Automatisation cabinet audit : carte des tâches | Memlia",
+      "h1": [
+        "Automatisation cabinet audit : la carte des tâches du CAC"
+      ],
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "bodyCharacters": 17815,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "images": [
+        {
+          "src": "/images/img-art-cac-carte-taches-1600.webp",
+          "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-inventaire-taches.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fiche-regle.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "loaded": true
+        }
+      ],
+      "links": [
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/blog/cac-reception-fec-constat",
+        "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+        "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/",
+        "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/garanties",
+        "/methode",
+        "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches#article",
+              "headline": "Automatisation cabinet audit : la carte des tâches du CAC",
+              "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+              "url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
+              },
+              "datePublished": "2026-10-12T00:00:00.000Z",
+              "dateModified": "2026-10-12T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-cac-carte-taches-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004."
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-cac-carte-taches-og.webp",
+              "articleSection": [
+                "Cabinet",
+                "Automatisation",
+                "Méthode"
+              ],
+              "keywords": [
+                "automatisation cabinet audit",
+                "commissariat aux comptes",
+                "règle écrite",
+                "dossier de travail"
+              ],
+              "wordCount": 2735
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Automatisation cabinet audit : la carte des tâches du CAC",
+                  "item": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "width": 375,
+      "http": 200,
+      "title": "FEC contrôle : constat de réception CAC | Memlia",
+      "h1": [
+        "FEC contrôle : préparer le constat de réception pour la mission CAC"
+      ],
+      "canonical": "https://memlia.fr/blog/cac-reception-fec-constat",
+      "bodyCharacters": 12853,
+      "viewport": 375,
+      "documentWidth": 375,
+      "images": [
+        {
+          "src": "/images/img-art-cac-fec-reception-1600.webp",
+          "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fec-registre-reception.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fec-constat.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "loaded": true
+        }
+      ],
+      "links": [
+        "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+        "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+        "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+        "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/garanties",
+        "/methode"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/cac-reception-fec-constat#article",
+              "headline": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+              "description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+              "url": "https://memlia.fr/blog/cac-reception-fec-constat",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/cac-reception-fec-constat"
+              },
+              "datePublished": "2026-10-12T00:00:00.000Z",
+              "dateModified": "2026-10-12T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-cac-fec-reception-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004."
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-cac-fec-reception-og.webp",
+              "articleSection": [
+                "Cabinet",
+                "Données",
+                "Méthode"
+              ],
+              "keywords": [
+                "fec contrôle",
+                "commissariat aux comptes",
+                "règle écrite",
+                "dossier de travail"
+              ],
+              "wordCount": 1996
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/cac-reception-fec-constat#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+                  "item": "https://memlia.fr/blog/cac-reception-fec-constat"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "width": 1440,
+      "http": 200,
+      "title": "FEC contrôle : constat de réception CAC | Memlia",
+      "h1": [
+        "FEC contrôle : préparer le constat de réception pour la mission CAC"
+      ],
+      "canonical": "https://memlia.fr/blog/cac-reception-fec-constat",
+      "bodyCharacters": 12853,
+      "viewport": 1440,
+      "documentWidth": 1440,
+      "images": [
+        {
+          "src": "/images/img-art-cac-fec-reception-1600.webp",
+          "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fec-registre-reception.webp",
+          "alt": "Registre du dossier fictif D-004 : références des entrées et statuts des propositions à examiner.",
+          "loaded": true
+        },
+        {
+          "src": "/proofs/blog/cac-fec-constat.webp",
+          "alt": "Fiche du dossier fictif D-004 : proposition et commentaire du responsable dans des espaces distincts.",
+          "loaded": true
+        }
+      ],
+      "links": [
+        "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/",
+        "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/",
+        "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/",
+        "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/",
+        "/garanties",
+        "/methode"
+      ],
+      "schema": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://memlia.fr/blog/cac-reception-fec-constat#article",
+              "headline": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+              "description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+              "url": "https://memlia.fr/blog/cac-reception-fec-constat",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://memlia.fr/blog/cac-reception-fec-constat"
+              },
+              "datePublished": "2026-10-12T00:00:00.000Z",
+              "dateModified": "2026-10-12T00:00:00.000Z",
+              "inLanguage": "fr-FR",
+              "isPartOf": {
+                "@id": "https://memlia.fr/#website"
+              },
+              "author": {
+                "@id": "https://memlia.fr/a-propos#kevin-kitanga"
+              },
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              },
+              "image": {
+                "@type": "ImageObject",
+                "url": "https://memlia.fr/images/img-art-cac-fec-reception-og.webp",
+                "width": 1200,
+                "height": 630,
+                "caption": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004."
+              },
+              "thumbnailUrl": "https://memlia.fr/images/img-art-cac-fec-reception-og.webp",
+              "articleSection": [
+                "Cabinet",
+                "Données",
+                "Méthode"
+              ],
+              "keywords": [
+                "fec contrôle",
+                "commissariat aux comptes",
+                "règle écrite",
+                "dossier de travail"
+              ],
+              "wordCount": 1996
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://memlia.fr/blog/cac-reception-fec-constat#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Accueil",
+                  "item": "https://memlia.fr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://memlia.fr/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+                  "item": "https://memlia.fr/blog/cac-reception-fec-constat"
+                }
+              ]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://memlia.fr/a-propos#kevin-kitanga",
+              "name": "Kevin Kitanga",
+              "jobTitle": "Fondateur de Memlia",
+              "description": "Kevin Kitanga a fondé Memlia et livre lui-même chaque automatisation : il observe le geste avec les équipes du cabinet, écrit la règle, la code et la fait recetter. Il écrit ici sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine.",
+              "url": "https://memlia.fr/a-propos",
+              "worksFor": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://memlia.fr/#organization",
+              "name": "Memlia",
+              "legalName": "MEMLIA",
+              "url": "https://memlia.fr/",
+              "logo": "https://memlia.fr/apple-touch-icon.png",
+              "email": "contact@memlia.fr",
+              "slogan": "Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.",
+              "description": "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Bureau 326, 59 rue de Ponthieu",
+                "postalCode": "75008",
+                "addressLocality": "Paris",
+                "addressCountry": "FR"
+              },
+              "identifier": [
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIREN",
+                  "value": "108621541"
+                },
+                {
+                  "@type": "PropertyValue",
+                  "propertyID": "SIRET",
+                  "value": "10862154100011"
+                }
+              ],
+              "sameAs": [
+                "https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541",
+                "https://www.pappers.fr/entreprise/memlia-108621541",
+                "https://www.societe.com/societe/memlia-108621541.html"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@memlia.fr",
+                "contactType": "customer support",
+                "areaServed": "FR",
+                "availableLanguage": "French"
+              }
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://memlia.fr/#website",
+              "url": "https://memlia.fr/",
+              "name": "Memlia",
+              "inLanguage": "fr-FR",
+              "publisher": {
+                "@id": "https://memlia.fr/#organization"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -30,7 +30,7 @@ class CalendrierVivant(unittest.TestCase):
             'cac-reception-fec-constat': '2026-10-12',
             'cac-ecritures-journal-criteres': '2026-10-13',
             'cac-seuil-signification-justification': '2026-10-14',
-            'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-14',
+            'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-12',
             'cac-circularisation-campagne': '2026-10-15',
             'cac-circularisation-alternatives': '2026-10-16',
             'cac-demandes-documents-cycles': '2026-10-19',

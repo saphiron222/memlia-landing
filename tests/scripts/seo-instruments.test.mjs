@@ -147,6 +147,8 @@ test('le runtime SEO GPT exécute directement les scripts du pack Hermes sans la
 
   const root = mkdtempSync(join(tmpdir(), 'memlia-seo-runtime-'));
   try {
+    // Le double Node conserve son mode, même sous un projet ESM.
+    writeFileSync(join(root, 'package.json'), JSON.stringify({ type: 'commonjs' }));
     const scripts = join(root, 'scripts');
     mkdirSync(scripts);
     writeFileSync(join(scripts, 'outil.py'), 'console.log(JSON.stringify({ runtime: "gpt", args: process.argv.slice(2) }));\n');

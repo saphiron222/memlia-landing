@@ -1,0 +1,61 @@
+{
+  "jeu": "D-004 fictif",
+  "limites": "Trois contrôles éditoriaux sur JSON fictif ; ni conformité du format FEC, ni exhaustivité, ni preuve d’audit.",
+  "pilier": [
+    {
+      "statut": "PROPOSITION_A_VALIDER",
+      "proposition": {
+        "source": "FEC-D004-v1",
+        "regle": "REG-01"
+      },
+      "saisie": "commentaire du senior"
+    },
+    {
+      "statut": "REFUS_SOURCE_ABSENTE",
+      "proposition": null,
+      "saisie": "commentaire du senior"
+    },
+    {
+      "statut": "REFUS_REGLE_ABSENTE",
+      "proposition": null,
+      "saisie": "commentaire du senior"
+    },
+    {
+      "statut": "CONFLIT_A_PRESENTER",
+      "proposition": null,
+      "saisie": "commentaire corrigé"
+    }
+  ],
+  "fec": [
+    {
+      "statut": "CONSTAT_A_REVOIR",
+      "lignes": 2,
+      "ecart": "0.00",
+      "periodes": [
+        "2026"
+      ],
+      "sha256_jeu_json": "5b5200794ec43542e3434f51a646fa72a63c0752fdce8cba65ef318a72258a5a",
+      "opinion": null
+    },
+    {
+      "statut": "REFUS_PERIODE",
+      "lignes": 2,
+      "ecart": "0.00",
+      "periodes": [
+        "2025"
+      ],
+      "sha256_jeu_json": "74d88a016dfd17c8f1259286cacd98088eec115980ef84d3ca7566f9e1a471f5",
+      "opinion": null
+    },
+    {
+      "statut": "REFUS_ECART",
+      "lignes": 2,
+      "ecart": "1.00",
+      "periodes": [
+        "2026"
+      ],
+      "sha256_jeu_json": "86e64c5e5b168d8ce62941ad44be9733165da771b54b22f186265115d0a891b0",
+      "opinion": null
+    }
+  ]
+}

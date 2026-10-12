@@ -209,8 +209,9 @@ class PublicArticleInventoryProof(unittest.TestCase):
                 self.assertEqual(public_articles(), {'autorise'})
                 (source / 'autorise.md').write_text('---\nbrouillon: true\n---\nArticle')
                 self.assertEqual(public_articles(), set())
-BLOG_RUBRIQUES = {article: entry['slug']
-                 for entry in source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')
+RUBRIQUES_SOURCE = source_export(ROOT, 'src/data/blog-rubriques.mjs', 'BLOG_RUBRIQUES')
+BLOG_RUBRIQUES = {article: entry['chemin']
+                 for entry in RUBRIQUES_SOURCE
                  for article in entry['articleIds']}
 
 
@@ -282,7 +283,9 @@ def article_headline_identity(article):
 
 
 def articles():
-    return sorted((DIST / 'blog').glob('*.html'))
+    rubriques = {entry['chemin'] for entry in RUBRIQUES_SOURCE}
+    return sorted(path for path in (DIST / 'blog').glob('*.html')
+                  if f'/blog/{path.stem}' not in rubriques)
 
 def minimum_word_count(article):
     # La Cicatrice signée W39 est un témoignage, pas un satellite de recherche.
@@ -508,7 +511,7 @@ class BuildProof(unittest.TestCase):
                      f'{SITE}/outils-comptables-gratuits/fusionner-fichiers-csv',
                      f'{SITE}/outils-comptables-gratuits/generateur-relance-facture-impayee',
                      f'{SITE}/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit'} | {
-                         f'{SITE}/blog/rubrique/{slug}' for slug in set(BLOG_RUBRIQUES.values())
+                         f'{SITE}{route}' for route in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
                          f'{SITE}/integrations/{slug}' for slug in integration_pages()
                      } | services_publies
@@ -708,10 +711,12 @@ class BuildProof(unittest.TestCase):
         # pilier était l'article le plus récent, et le premier satellite daté après lui l'a cassée.
         dates = {a.stem: next(n for g in jsonld(a) for n in g['@graph'] if n['@type'] == 'BlogPosting')['datePublished'] for a in articles()}
         piliers = [s for s in listed if s in pillar_slugs()]
-        self.assertLessEqual(len(piliers), 1, 'un seul article peut porter le format pillar-page')
         if piliers:
-            self.assertEqual(listed[0], piliers[0], 'le pilier doit ouvrir la liste du blog')
-        suite = [s for s in listed if s not in piliers]
+            self.assertEqual(listed[0], piliers[0], 'le pilier retenu doit ouvrir la liste du blog')
+            self.assertEqual(dates[piliers[0]], max(dates[s] for s in piliers),
+                             'le point de départ est le pilier le plus récent')
+        # Les autres piliers restent des articles de la liste chronologique.
+        suite = listed[1:] if piliers else listed
         self.assertEqual([dates[s] for s in suite], sorted((dates[s] for s in suite), reverse=True))
         self.assertEqual([p['@id'] for p in blog['blogPost']], [f'{SITE}/blog/{s}#article' for s in listed])
 
@@ -766,7 +771,7 @@ class BuildProof(unittest.TestCase):
                 crumbs = nodes['BreadcrumbList']['itemListElement']
                 attendus = [f'{SITE}/', f'{SITE}/blog']
                 if article.stem in BLOG_RUBRIQUES:
-                    attendus.append(f'{SITE}/blog/rubrique/{BLOG_RUBRIQUES[article.stem]}')
+                    attendus.append(f'{SITE}{BLOG_RUBRIQUES[article.stem]}')
                 attendus.append(url)
                 self.assertEqual([c['item'] for c in crumbs], attendus)
                 self.assertNotIn('aggregateRating', article.read_text())

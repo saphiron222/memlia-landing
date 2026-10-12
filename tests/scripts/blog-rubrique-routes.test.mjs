@@ -19,7 +19,14 @@ test('les routes EC gardent leur chemin et leur liste, sans alias direct', () =>
   const visibles = taxonomy.BLOG_RUBRIQUES.flatMap(({ articleIds }) => articleIds.map((id) => ({ id })));
   const routes = taxonomy.construireRoutesRubriques(visibles);
   assert.deepEqual(routes.map(({ rubrique }) => rubrique.chemin), taxonomy.BLOG_RUBRIQUES.map(({ chemin }) => chemin));
-  assert.ok(routes.every(({ historique, param, rubrique }) => historique && `/blog/rubrique/${param}` === rubrique.chemin));
+  const cheminsEC = new Set([
+    '/blog/rubrique/paie-dsn-cabinet-comptable',
+    '/blog/rubrique/gestion-pieces-comptables',
+    '/blog/rubrique/ia-cabinet-comptable',
+  ]);
+  const routesEC = routes.filter(({ rubrique }) => cheminsEC.has(rubrique.chemin));
+  assert.equal(routesEC.length, cheminsEC.size);
+  assert.ok(routesEC.every(({ historique, param, rubrique }) => historique && `/blog/rubrique/${param}` === rubrique.chemin));
 });
 
 test('collision avec un article, doublon et chemin réservé échouent fermés', () => {
