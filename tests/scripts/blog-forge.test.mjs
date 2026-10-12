@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis, citationNormativeCourte } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -810,6 +810,94 @@ print(json.dumps(p.etat_publie()))
   }
 });
 
+test('l’exception courte refuse les citations vagues, non officielles, isolées ou non littérales', () => {
+  const claim = 'les outils automatisés fonctionnent';
+  const excerpt = `• ${claim}`;
+  const snapshot = `<p>Le commissaire aux comptes apprécie les outils et les informations utilisées : ${excerpt} pour la procédure poursuivie.</p>`;
+  const valide = { claim, type: 'legal-reglementaire', excerpt, snapshot, officialAuthority: true };
+  assert.equal(citationNormativeCourte(valide), true, 'une autre citation de moins de 40 caractères est admissible');
+  for (const variation of [
+    { officialAuthority: false },
+    { type: 'technique' },
+    { claim: `${claim} sans contrôle` },
+    { claim: 'les outils fonctionnent', excerpt: 'les outils fonctionnent', snapshot: '<p>Le commissaire apprécie : les outils fonctionnent pour la procédure poursuivie.</p>' },
+    { excerpt: 'une autre citation qui ne figure pas dans la copie' },
+    { snapshot: `<p>${excerpt}</p>` },
+    { snapshot: `<script>${snapshot}</script>` },
+    { snapshot: `<p>${'Texte sans rapport. '.repeat(100)}${excerpt}</p>` },
+    { claim: 'les outils fonctionnent', excerpt: '<span class="conformite fiabilite pertinence">les outils fonctionnent</span>' },
+  ]) assert.equal(citationNormativeCourte({ ...valide, ...variation }), false, JSON.stringify(variation));
+});
+
+test('la citation normative courte H2A conserve son contexte et passe la forge puis le gate', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    const claim = 'la manière dont les outils fonctionnent';
+    const excerpt = '• la manière dont les outils fonctionnent ; et<br />';
+    const paragraphe = '46. Conformément aux dispositions de la norme d’exercice professionnel « Caractère probant des éléments collectés », lorsque le commissaire aux comptes a recours à des outils et techniques automatisés pour l’aider à identifier et évaluer le risque d’anomalies significatives, il apprécie, en exerçant son esprit critique, si les outils permettent d’atteindre l’objectif poursuivi par les procédures d’audit relatives à l’identification et l’évaluation du risque d’anomalies significatives. Pour ce faire, il apprécie :<br />\n' + excerpt + '\n• le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.';
+    const corps = CORPS.replace(/Les données personnelles[^\n]+/, `La NEP 315 prévoit l'appréciation de « ${claim} ».`);
+    r.sources[0] = { ...r.sources[0], publisher: 'H2A', title: 'NEP 315', url: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/' };
+    r.claims[0] = { ...r.claims[0], unite: claim, claim, excerpt, explanation: 'La citation exacte du paragraphe 46 porte sur le fonctionnement des outils ; le CAC conserve son appréciation.' };
+    const page = PAGE_SOURCE.replace('</body>', `<p>${paragraphe}</p></body>`);
+    const fetcherH2a = async () => new Response(page, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), corps);
+    const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetcherH2a, rendreImage });
+    assert.deepEqual(preparation.erreurs, []);
+    const claims = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'claims.json'), 'utf8'));
+    const result = claims.claims[0].factCheck.sourceResults[0];
+    assert.equal(result.citation.text, excerpt);
+    assert.equal(result.context, paragraphe);
+    assert.deepEqual(result.justification.sharedTerms, ['maniere', 'dont', 'outils', 'fonctionnent']);
+    const revue = revues(claims.claims[0].id, root);
+    revue.subject.bodySha256 = createHash('sha256').update(corps.trim()).digest('hex');
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revue));
+    const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: fetcherH2a, rendreImage });
+    assert.deepEqual(scellement.erreurs, []);
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.deepEqual(gate.errors, []);
+    assert.equal(gate.pass, true);
+    const claimsPath = join(root, 'editorial/articles', SLUG, 'claims.json');
+    const original = readFileSync(claimsPath, 'utf8');
+    for (const [label, mutate, attendu] of [
+      ['contexte tronqué', (c) => { const s = c.claims[0].factCheck.sourceResults[0]; s.context = excerpt; s.contextSha256 = createHash('sha256').update(excerpt).digest('hex'); }, /bloc local complet/],
+      ['portée ajoutée', (c) => { c.claims[0].claim += ' sans aucune validation humaine'; }, /trop générique/],
+      ['citation inventée', (c) => { c.claims[0].factCheck.sourceResults[0].citation.text = 'la manière dont les outils décident'; }, /citation exacte/],
+      ['copie divergente', (c) => { c.claims[0].factCheck.sourceResults[0].citation.sourceContentSha256 = '0'.repeat(64); }, /sourceContentSha256/],
+      ['localisateur erroné', (c) => { c.claims[0].factCheck.sourceResults[0].citation.coordinates.locator = { kind: 'line-range', startLine: 1, endLine: 1 }; }, /coordinates ne reproduit pas/],
+    ]) {
+      const altered = JSON.parse(original);
+      mutate(altered);
+      writeFileSync(claimsPath, JSON.stringify(altered));
+      const refus = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+      assert.equal(refus.pass, false, label);
+      assert.ok(refus.errors.some((e) => attendu.test(e)), `${label}: ${refus.errors.join('\n')}`);
+    }
+    writeFileSync(claimsPath, original);
+    for (const [label, fragment] of [
+      ['bloc hidden', `<p hidden>${paragraphe}</p>`],
+      ['bloc display:none', `<p style="display: none !important">${paragraphe}</p>`],
+      ['ancêtre hidden', `<div hidden="until-found"><p>${paragraphe}</p></div>`],
+      ['ancêtre display:none', `<div style="DISPLAY : NONE"><p>${paragraphe}</p></div>`],
+      ['citation hidden', `<p>${paragraphe.replace(excerpt, `<span hidden>${excerpt}</span>`)}</p>`],
+      ['citation display:none', `<p>${paragraphe.replace(excerpt, `<span style="display:none">${excerpt}</span>`)}</p>`],
+    ]) {
+      const hiddenPage = PAGE_SOURCE.replace('</body>', `${fragment}</body>`);
+      const hiddenFetcher = async () => new Response(hiddenPage, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+      // Le chemin normal régénère copies, reçus, claims et revues liés au même candidat.
+      rmSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json'));
+      const hiddenForge = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: hiddenFetcher, rendreImage });
+      assert.ok(hiddenForge.erreurs.some((e) => /citation trop courte ou trop générique/.test(e)), `${label}: ${hiddenForge.erreurs.join('\n')}`);
+      const hiddenGate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+      assert.equal(hiddenGate.pass, false, label);
+      assert.ok(hiddenGate.errors.some((e) => /trop générique/.test(e)), `${label}: ${hiddenGate.errors.join('\n')}`);
+    }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('la forge refuse un claim dont la citation ne recouvre pas l’affirmation', async () => {
   const root = racineDeTest();
   try {
@@ -825,14 +913,19 @@ test('la forge refuse un claim dont la citation ne recouvre pas l’affirmation'
   }
 });
 
-test('le contexte d’une source HTML monoligne avec balise inline reste borné et passe le gate', async () => {
+for (const [label, ouverture, fermeture] of [
+  ['visible', '', ''],
+  ['accordéon display:none', '<button aria-controls="section-cnil">Déplier</button><div id="section-cnil" style="display:none">', '</div>'],
+  ['accordéon hidden', '<button aria-controls="section-cnil">Déplier</button><div id="section-cnil" hidden>', '</div>'],
+]) {
+test(`le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : ${label}`, async () => {
   const root = racineDeTest();
   try {
     const r = recette();
     const phrase = r.claims[0].excerpt;
     const autresExtraits = r.sources.slice(1).map((source) => `<p>${source.excerpt} dans une phrase de contrôle distincte.</p>`).join('');
     const contexteAttendu = `Introduction ${phrase} conclusion.`;
-    const pageSurUneLigne = `<html><head><style>${'.carte{color:#231f20}'.repeat(80)}</style></head><body><p>Phrase précédente sans rapport.</p><p>Introduction <a>${phrase}</a> conclusion.</p>${autresExtraits}<p>Phrase suivante sans rapport.</p></body></html>`;
+    const pageSurUneLigne = `<html><head><style>${'.carte{color:#231f20}'.repeat(80)}</style></head><body><p>Phrase précédente sans rapport.</p>${ouverture}<p>Introduction <a>${phrase}</a> conclusion.</p>${fermeture}${autresExtraits}<p>Phrase suivante sans rapport.</p></body></html>`;
     const fetcherMonoligne = async () => new Response(pageSurUneLigne, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
     const preparation = await materialiser({
       root,
@@ -858,6 +951,8 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+}
 
 test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {
   const sans = frontmatter(construireManifest(recette(), 'publie', jour, null));
