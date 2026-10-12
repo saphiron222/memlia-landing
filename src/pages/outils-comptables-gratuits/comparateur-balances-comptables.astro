@@ -1,0 +1,21 @@
+---
+import Outil from '@/layouts/Outil.astro';
+import ComparateurBalances from '@/components/outils/ComparateurBalances.astro';
+import { getOutil } from '@/data/outils';
+const outil = getOutil('comparateur-balances-comptables');
+---
+<Outil outil={outil}>
+  <ComparateurBalances />
+  <section class="lecture" aria-labelledby="balance-lecture">
+    <h2 id="balance-lecture">Lire la variation, puis expliquer le compte</h2>
+    <p>Un solde de 100,00 en N−1 et 130,00 en N produit un delta de 30,00 et 30 %. Un solde de −100,00 puis −80,00 produit +20,00 et +20 % : le signe décrit la variation du solde signé, pas une croissance de l’activité. Un compte nouveau a une référence zéro ; son pourcentage n’est pas calculable.</p>
+    <h3>Pourquoi confirmer les périodes et les doublons ?</h3>
+    <p>Deux périodes de durée différente peuvent expliquer une variation. L’alerte reste dans le tableau et le rapport même après votre confirmation. Plusieurs lignes d’un même compte sont refusées avant agrégation explicite ; leurs numéros et libellés d’origine restent dans le rapport.</p>
+    <h3>Comment reprendre cette comparaison ?</h3>
+    <p>Il n’y a pas de sauvegarde automatique. Conservez vos deux CSV d’origine et le rapport de conventions, puis relisez le mapping et les paramètres lors d’un nouveau calcul. Le CSV exporté documente la lecture ; il n’est pas un fichier comptable à injecter dans un dossier.</p>
+    <h3>Que signifie la liste à examiner ?</h3>
+    <p>Elle indique uniquement quels comptes atteignent au moins un de vos seuils. Aucun seuil recommandé, contrôle d’exhaustivité métier ou conclusion fiscale n’est établi. Votre équipe explique les variations et décide des suites.</p>
+    <p>Notre <a href="/methode">méthode de règle écrite et de recette</a> permet de définir les colonnes, les arrêts et la validation pour une préparation récurrente. Retrouvez aussi les <a href="/outils-comptables-gratuits">outils comptables gratuits</a>.</p>
+  </section>
+</Outil>
+<style>.lecture{display:grid;gap:16px;padding-top:32px;margin-top:32px;border-top:1px solid var(--ligne)}.lecture h2{font-size:var(--t-3xl)}.lecture h3{font-size:var(--t-2xl)}.lecture p{color:var(--texte-2)}</style>

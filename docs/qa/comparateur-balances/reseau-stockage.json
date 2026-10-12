@@ -1,0 +1,53 @@
+{
+  "surface": "Wrangler Pages (Functions et en-têtes réels)",
+  "url": "http://127.0.0.1:4330/outils-comptables-gratuits/comparateur-balances-comptables",
+  "headers": {
+    "access-control-allow-origin": "*",
+    "cache-control": "public, max-age=0, must-revalidate, no-transform",
+    "content-encoding": "gzip",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Wed, 07 Oct 2026 06:23:03 GMT",
+    "transfer-encoding": "chunked",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "x-content-type-options": "nosniff",
+    "x-server-env": "dev"
+  },
+  "steps": [
+    "exemple",
+    "fichier CSV fictif",
+    "lecture confirmée",
+    "calcul",
+    "copie",
+    "export"
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4330/_astro/comparateur-balances.worker-Brp_-pSV.js",
+      "type": "script",
+      "body": null
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:4330/_astro/comparateur-balances.worker-Brp_-pSV.js",
+      "type": "script",
+      "body": null
+    }
+  ],
+  "before": {
+    "local": {},
+    "session": {},
+    "cookies": "",
+    "databases": [],
+    "caches": []
+  },
+  "after": {
+    "local": {},
+    "session": {},
+    "cookies": "",
+    "databases": [],
+    "caches": []
+  },
+  "pass": true
+}

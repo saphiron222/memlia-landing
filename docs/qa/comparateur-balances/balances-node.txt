@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: livraison locale : beacon retiré, GET/HEAD, cache et CSP
+ok 1 - livraison locale : beacon retiré, GET/HEAD, cache et CSP
+  ---
+  duration_ms: 14.969417
+  type: 'test'
+  ...
+# Subtest: HTML canonique, schema, preuve et entrants construits
+ok 2 - HTML canonique, schema, preuve et entrants construits
+  ---
+  duration_ms: 42.837292
+  type: 'test'
+  ...
+# Subtest: exemple, zéros initiaux, signes, statuts, totaux et ordre lexical
+ok 3 - exemple, zéros initiaux, signes, statuts, totaux et ordre lexical
+  ---
+  duration_ms: 2.116958
+  type: 'test'
+  ...
+# Subtest: disparu et référence zéro
+ok 4 - disparu et référence zéro
+  ---
+  duration_ms: 0.401
+  type: 'test'
+  ...
+# Subtest: centimes exacts au-delà des floats
+ok 5 - centimes exacts au-delà des floats
+  ---
+  duration_ms: 0.362166
+  type: 'test'
+  ...
+# Subtest: débit moins crédit et mapping explicite
+ok 6 - débit moins crédit et mapping explicite
+  ---
+  duration_ms: 0.090291
+  type: 'test'
+  ...
+# Subtest: montants invalides, ambigus ou fractionnaires refusés sans arrondi
+ok 7 - montants invalides, ambigus ou fractionnaires refusés sans arrondi
+  ---
+  duration_ms: 0.472709
+  type: 'test'
+  ...
+# Subtest: doublons : refus puis agrégation confirmée, libellés et provenance
+ok 8 - doublons : refus puis agrégation confirmée, libellés et provenance
+  ---
+  duration_ms: 0.215375
+  type: 'test'
+  ...
+# Subtest: CSV BOM, CRLF, quotes multilignes et ligne physique
+ok 9 - CSV BOM, CRLF, quotes multilignes et ligne physique
+  ---
+  duration_ms: 0.858083
+  type: 'test'
+  ...
+# Subtest: CSV malformé et mapping invalide refusés
+ok 10 - CSV malformé et mapping invalide refusés
+  ---
+  duration_ms: 0.314833
+  type: 'test'
+  ...
+# Subtest: seuil obligatoire, non négatif, exact et OR inclusif
+ok 11 - seuil obligatoire, non négatif, exact et OR inclusif
+  ---
+  duration_ms: 0.707084
+  type: 'test'
+  ...
+# Subtest: seuil relatif compare ratio exact, pas pourcentage arrondi
+ok 12 - seuil relatif compare ratio exact, pas pourcentage arrondi
+  ---
+  duration_ms: 0.450042
+  type: 'test'
+  ...
+# Subtest: arrondi relatif symétrique à deux décimales et valeur absolue référence
+ok 13 - arrondi relatif symétrique à deux décimales et valeur absolue référence
+  ---
+  duration_ms: 0.157542
+  type: 'test'
+  ...
+# Subtest: dates valides, ordre et confirmations strictement obligatoires
+ok 14 - dates valides, ordre et confirmations strictement obligatoires
+  ---
+  duration_ms: 0.187917
+  type: 'test'
+  ...
+# Subtest: durées différentes : warning persistant et conventions exportées
+ok 15 - durées différentes : warning persistant et conventions exportées
+  ---
+  duration_ms: 0.436083
+  type: 'test'
+  ...
+# Subtest: libellé différent entre périodes signalé et sources inchangées
+ok 16 - libellé différent entre périodes signalé et sources inchangées
+  ---
+  duration_ms: 0.093875
+  type: 'test'
+  ...
+# Subtest: limites individuelles octets UTF-8 et lignes
+ok 17 - limites individuelles octets UTF-8 et lignes
+  ---
+  duration_ms: 10.461791
+  type: 'test'
+  ...
+# Subtest: limites cumulées des deux fichiers et lignes agrégées
+ok 18 - limites cumulées des deux fichiers et lignes agrégées
+  ---
+  duration_ms: 690.610417
+  type: 'test'
+  ...
+# Subtest: comptage physique borne aussi les cellules multilignes
+ok 19 - comptage physique borne aussi les cellules multilignes
+  ---
+  duration_ms: 0.301292
+  type: 'test'
+  ...
+# Subtest: rapport complet versionné, provenance, noms, totaux et 300 écarts
+ok 20 - rapport complet versionné, provenance, noms, totaux et 300 écarts
+  ---
+  duration_ms: 3.1975
+  type: 'test'
+  ...
+# Subtest: export neutralise formules, préserve HTML en texte et originaux
+ok 21 - export neutralise formules, préserve HTML en texte et originaux
+  ---
+  duration_ms: 0.232208
+  type: 'test'
+  ...
+# Subtest: Worker : parse, compare, erreurs et identifiant conservé
+ok 22 - Worker : parse, compare, erreurs et identifiant conservé
+  ---
+  duration_ms: 8.389542
+  type: 'test'
+  ...
+# Subtest: Worker réel : transfert structured clone, aller-retour et terminate
+ok 23 - Worker réel : transfert structured clone, aller-retour et terminate
+  ---
+  duration_ms: 23.79875
+  type: 'test'
+  ...
+# Subtest: seuil zéro relatif reste non calculable sur référence zéro
+ok 24 - seuil zéro relatif reste non calculable sur référence zéro
+  ---
+  duration_ms: 0.122208
+  type: 'test'
+  ...
+# Subtest: limite totale exacte de 20 000 lignes acceptée après agrégation
+ok 25 - limite totale exacte de 20 000 lignes acceptée après agrégation
+  ---
+  duration_ms: 5.601542
+  type: 'test'
+  ...
+# Subtest: Pseudonymisation : aucune transformation edge, seulement sur la route Pseudonymisation, CSP inchangée
+ok 26 - Pseudonymisation : aucune transformation edge, seulement sur la route Pseudonymisation, CSP inchangée
+  ---
+  duration_ms: 1.996291
+  type: 'test'
+  ...
+# Subtest: ROI : aucune transformation edge, seulement sur la route ROI, CSP inchangée
+ok 27 - ROI : aucune transformation edge, seulement sur la route ROI, CSP inchangée
+  ---
+  duration_ms: 1.141625
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 809.428375
