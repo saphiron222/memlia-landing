@@ -133,6 +133,6 @@ test('SEO canonical schema sitemap hub footer et entrants contextuels', async ({
   expect(await (await request.get('/sitemap-outils.xml')).text()).toContain('https://memlia.fr' + route);
   for (const from of ['/outils-comptables-gratuits','/methode','/automatisation-cabinet-comptable']) {
     await page.goto(from); await expect(page.locator(`main a[href="${route}"]`).first()).toBeVisible();
-    await expect(page.locator(`footer a[href="${route}"]`)).toHaveCount(1);
+    await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);
   }
 });

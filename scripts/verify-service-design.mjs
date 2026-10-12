@@ -72,10 +72,19 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
         proprietairesMedia.set(preuve, slug);
       }
     }
-    for (const destination of servicesDansFooter) {
-      const href = `/automatisation/${destination}`;
-      if (!html.includes(`href="${href}"`)) erreurs.push(`${route} : lien de footer absent vers ${href}`);
+    const footers = html.match(/<footer\b[^>]*>[\s\S]*?<\/footer>/g) ?? [];
+    if (!footers.some(footer => footer.includes('href="/automatisation-cabinet-comptable"'))) {
+      erreurs.push(`${route} : lien de footer absent vers le catalogue /automatisation-cabinet-comptable`);
     }
+
+  }
+  // Chaque tâche reste atteignable en deux liens depuis le footer, via le catalogue.
+  const cataloguePath = ['dist/automatisation-cabinet-comptable.html', 'dist/automatisation-cabinet-comptable/index.html']
+    .map(path => join(root, path)).find(path => existsSync(path));
+  const catalogue = (cataloguePath ? readFileSync(cataloguePath, 'utf8') : '').match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0] ?? '';
+  for (const destination of servicesDansFooter) {
+    const href = `/automatisation/${destination}`;
+    if (!catalogue.includes(`href="${href}"`)) erreurs.push(`catalogue des tâches : lien absent vers ${href}`);
   }
   return { pass: erreurs.length === 0, services: services.length, erreurs };
 }

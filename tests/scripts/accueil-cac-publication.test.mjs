@@ -10,7 +10,10 @@ test('la profession CAC dispose de sa copie sans repli EC', () => {
 test('la route CAC compose les onze sections et ses compléments validés', () => {
   const page = read('src/pages/commissaires-aux-comptes.astro');
   for (const section of ['Hero', 'Orientation', 'Quotidien', 'Promesse', 'Usages', 'Methode', 'Integration', 'Preuves', 'Garanties', 'Faq', 'AppelFinal']) assert.match(page, new RegExp(`<${section}\\b`));
-  for (const name of ['CouvertureCac', 'FrontiereCac', 'FicheOutilCac', 'SourcesCac']) assert.match(page, new RegExp(`<${name}\\b`));
+  for (const name of ['CouvertureCac', 'FrontiereCac', 'FicheOutilCac']) assert.match(page, new RegExp(`<${name}\\b`));
+  assert.doesNotMatch(page, /<SourcesCac\b/);
+  for (const authority of ['h2a-france.org', 'doc.cncc.fr']) assert.ok(page.includes(authority));
+  assert.match(page, /<Faq[^>]*references=/);
   assert.match(page, /contenuDe\('cac'\)/);
   assert.match(page, /audienceType: 'Cabinets de commissariat aux comptes'/);
   assert.match(page, /questions\.map/);

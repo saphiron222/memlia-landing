@@ -1,5 +1,6 @@
 ---
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import { getCollection } from 'astro:content';
 import Renvois from '@/components/Renvois.astro';
 import ProofRow from '@/components/ProofRow.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
@@ -11,6 +12,8 @@ import { eeatCommercial } from '@/data/page-eeat';
 import { famillesDeLaProfession } from '@/data/familles';
 const familles = famillesDeLaProfession('ec');
 const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
+const servicesPublies = (await getCollection('services', ({ data }) => data.status === 'publie'))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'fr'));
 
 const page = PAGES_V2.service;
 // La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
@@ -207,6 +210,10 @@ const appel = {
       <p class="texte-2">Choisir une tâche, lire ses contrôles et comprendre nos engagements.</p>
     </div>
     <Renvois items={renvois} />
+  </section>
+  <section class="pv" aria-labelledby="taches-guides">
+    <div class="tete"><h2 id="taches-guides">Les tâches que vous pouvez confier</h2><p>Retrouvez la règle, les limites et les essais prévus pour chaque tâche.</p></div>
+    <ul class="liens" data-service-catalog>{servicesPublies.map(service => <li><a class="lien-action" href={`/automatisation/${service.id}`}>{service.data.title}<Picto nom="fleche" taille={14} /></a></li>)}</ul>
   </section>
 </PageCommerciale>
 

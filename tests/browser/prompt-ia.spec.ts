@@ -81,7 +81,7 @@ test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg');
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/01-outil-prompt-ia.webp.jpg');
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
-  await expect(page.locator(`footer a[href="${ROUTE}"]`)).toHaveCount(1);
+  await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);
   const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
   const nodes = schemas.flatMap((text) => JSON.parse(text)['@graph'] ?? []); expect(nodes.map((node) => node['@type'])).toEqual(expect.arrayContaining(['WebPage', 'WebApplication', 'BreadcrumbList']));
   expect(nodes.map((node) => node['@type'])).not.toContain('BlogPosting');

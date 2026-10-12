@@ -6,6 +6,41 @@ import { checkIntegrationPage, widths } from './helpers/inventories';
 const slugs = INTEGRATIONS_INDEXABLES.map(({ slug }) => slug);
 const services = [...new Set(INTEGRATIONS_INDEXABLES.map(({ service }) => service.href))];
 
+test('le hub filtre par logiciel et tâche, annonce le résultat et permet de tout retrouver', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/integrations');
+  const guide = INTEGRATIONS_INDEXABLES.find(item => item.vendor === 'Silae' && item.task === 'DSN')!;
+  await page.getByLabel('Votre logiciel', { exact: true }).selectOption(guide.product);
+  await page.getByLabel('Votre tâche', { exact: true }).fill('dsn');
+  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(1);
+  await expect(page.locator('[data-guide-count]')).toHaveText('1 guide disponible.');
+  await expect(page.locator(`main a[href="/integrations/${guide.slug}"]`)).toBeVisible();
+  await page.getByLabel('Votre tâche', { exact: true }).press('Enter');
+  await expect(page).toHaveURL(/\/integrations$/);
+  await page.getByLabel('Votre tâche', { exact: true }).fill('aucun-resultat-possible');
+  await expect(page.locator('[data-guide-count]')).toHaveText('0 guides disponibles.');
+  await expect(page.locator('[data-guide-empty]')).toBeVisible();
+  await page.getByRole('button', { name: 'Tout afficher', exact: true }).click();
+  await expect(page.getByLabel('Votre tâche', { exact: true })).toBeFocused();
+  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
+  await page.getByLabel('Votre tâche', { exact: true }).fill('CLÔTURE');
+  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(INTEGRATIONS_INDEXABLES.filter(item => item.task.toLocaleLowerCase('fr').includes('clôture')).length);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+});
+
+test('sans JavaScript, le hub conserve tous les guides et les raccourcis logiciels', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+  try {
+    const page = await context.newPage();
+    await page.goto('/integrations');
+    await expect(page.locator('[data-guide-filters]')).toBeHidden();
+    await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
+    await page.locator('.hub-raccourcis a').last().click();
+    await expect(page).toHaveURL(/#product-\d+$/);
+    await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
+  } finally { await context.close(); }
+});
+
 test('inventaire des guides : plancher et identités uniques', () => {
   expect(slugs.length).toBeGreaterThanOrEqual(9);
   expect(new Set(slugs).size).toBe(slugs.length);

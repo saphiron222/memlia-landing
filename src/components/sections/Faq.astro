@@ -2,8 +2,23 @@
 import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
-interface Props { contenu?: ContenuAccueil['faq']; }
-const { contenu = contenuDe('ec').faq } = Astro.props;
+interface Lien { texte: string; href: string }
+interface Props { contenu?: ContenuAccueil['faq']; references?: Record<string, Lien[]>; }
+const { contenu = contenuDe('ec').faq, references = {} } = Astro.props;
+// Les mêmes mots servent au paragraphe et au schéma FAQ ; seuls les liens changent.
+const fragments = (texte: string, liens: Lien[]) => {
+  const morceaux: Array<{ texte: string; href?: string }> = [];
+  let restant = texte;
+  while (restant) {
+    const suivant = liens.map(lien => ({ ...lien, index: restant.indexOf(lien.texte) }))
+      .filter(lien => lien.index >= 0).sort((a, b) => a.index - b.index)[0];
+    if (!suivant) { morceaux.push({ texte: restant }); break; }
+    if (suivant.index) morceaux.push({ texte: restant.slice(0, suivant.index) });
+    morceaux.push({ texte: suivant.texte, href: suivant.href });
+    restant = restant.slice(suivant.index + suivant.texte.length);
+  }
+  return morceaux;
+};
 const retour = '\n';
 import { CTA } from '@/data/site.mjs';
 
@@ -30,7 +45,8 @@ import { CTA } from '@/data/site.mjs';
           <span class="faq-question">{q.question}</span>
           <Picto nom="chevron" taille={16} class="faq-chevron" />
         </summary>
-        <p class="faq-r texte-2">{q.reponse}</p>
+        <p class="faq-r texte-2">{fragments(q.reponse, references[q.id] ?? []).map(fragment => fragment.href
+          ? <a href={fragment.href} rel="noopener noreferrer">{fragment.texte}</a> : fragment.texte)}</p>
       </details>
     ))}
   </div>

@@ -8,7 +8,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('h1')).toHaveText('Guides par environnement comptable');
     const count = await page.locator('script[type="application/ld+json"]').first().evaluate(el =>
       JSON.parse(el.textContent!)['@graph'].find((node: any) => node['@type'] === 'ItemList').numberOfItems);
-    await expect(page.locator('.page-chapeau')).toContainText(`Les ${count} guides`);
+    await expect(page.locator('.hub-intro')).toContainText(`Les ${count} guides`);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/integrations');
     await expect(page.locator('[data-integration-cards] > li')).toHaveCount(count);
     const titles = await page.locator('[data-integration-cards] h3').allTextContents();

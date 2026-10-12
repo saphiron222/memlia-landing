@@ -22,8 +22,8 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Lecture regroupée et hubs directs sur desktop ; destinations dans le panneau sur mobile.
-      await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 5 : 4);
+      // Cabinets et hubs directs sur desktop ; destinations dans le panneau sur mobile.
+      await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 4 : 3);
       if (width < 1024) {
         await page.locator('[data-burger]').click();
         const liens = page.locator('#menu-mobile .nav-mobile-lien');
@@ -61,7 +61,7 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      // Les trois hubs sont des liens directs ; la lecture est un bouton de sous-menu.
+      // Les trois hubs sont des liens directs ; Cabinets est un bouton de sous-menu.
       nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {

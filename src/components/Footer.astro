@@ -1,16 +1,13 @@
 ---
 import Lockup from './Lockup.astro';
-import { getCollection } from 'astro:content';
 import { SITE } from '@/data/site.mjs';
 import { LIEN_CAC } from '@/data/navigation.mjs';
 import { cacDisponible } from '@/data/navigation-publiee';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
-import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
-import { INTEGRATIONS_HUB_PATH, INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
+import { OUTILS_HUB_PATH } from '@/data/outils';
+import { INTEGRATIONS_HUB_PATH } from '@/data/integrations';
 
-/** Pied de page (spec §4.14) : colonnes générées, ligne © en --texte-2, emblème « M » en filigrane.
- *  Les colonnes grandissent avec chaque outil et chaque guide publiés (tous doivent rester liés ici) :
- *  la mise en page absorbe cette croissance (outils sur plusieurs colonnes, rubriques repliables sur mobile). */
+/** Les hubs donnent accès aux catalogues complets, sans les répéter sur chaque page. */
 interface Props {
   blogActif: boolean;
   rubriques: Array<{ libelle: string; chemin: string }>;
@@ -18,24 +15,14 @@ interface Props {
 }
 const { blogActif, rubriques } = Astro.props;
 const annee = new Date().getFullYear();
-const services = (await getCollection('services', ({ data }) => data.status === 'publie'))
-  .sort((a, b) => a.data.primaryQuery.localeCompare(b.data.primaryQuery, 'fr'))
-  .map((entree) => ({
-    libelle: entree.data.primaryQuery.charAt(0).toUpperCase() + entree.data.primaryQuery.slice(1),
-    href: `/automatisation/${entree.id}`,
-  }));
-const outils = OUTILS_DISPONIBLES.map((outil) => ({
-  libelle: outil.h1,
-  href: outilPath(outil),
-}));
-const integrations = INTEGRATIONS_INDEXABLES.map((integration) => ({
-  libelle: `${integration.task.charAt(0).toUpperCase()}${integration.task.slice(1)} · ${integration.vendor}`,
-  href: integrationPath(integration),
-}));
-
 const automatise = {
-  titre: 'Ce qu’on automatise',
-  liens: [{ libelle: 'Automatisation pour cabinet comptable', href: PAGES_V2.service.chemin }, ...(cacDisponible ? [LIEN_CAC] : []), ...services],
+  titre: 'Votre cabinet',
+  liens: [
+    { libelle: 'Expertise comptable', href: '/' },
+    ...(cacDisponible ? [LIEN_CAC] : []),
+    { libelle: 'Ce qu’on automatise', href: PAGES_V2.service.chemin },
+    { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
+  ],
 };
 const comprendre = {
   titre: 'Comprendre',
@@ -43,8 +30,6 @@ const comprendre = {
     ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
     ...rubriques.map((rubrique) => ({ libelle: rubrique.libelle, href: rubrique.chemin })),
     { libelle: 'Glossaire', href: '/glossaire' },
-    { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
-    { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
   ],
 };
 // Seule rubrique jamais repliée : elle porte l'appel « Confier une première tâche », qui doit rester
@@ -58,26 +43,23 @@ const entreprise = {
     { libelle: 'Confier une première tâche', href: PAGES_V2.contact.chemin },
   ],
 };
-const environnements = { titre: 'Environnements', liens: integrations };
-const outilsGratuits = {
-  titre: 'Outils gratuits',
-  liens: [{ libelle: 'Tous les outils comptables gratuits', href: OUTILS_HUB_PATH }, ...outils],
+const ressources = {
+  titre: 'Pour votre équipe',
+  liens: [
+    { libelle: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
+    { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
+  ],
 };
 const blocs = [
   { groupes: [automatise], classe: '' },
-  { groupes: [comprendre, entreprise], classe: '' },
-  { groupes: [environnements], classe: '' },
-  { groupes: [outilsGratuits], classe: 'pied-large' },
+  { groupes: [comprendre], classe: '' },
+  { groupes: [ressources], classe: '' },
+  { groupes: [entreprise], classe: '' },
 ];
 ---
 
 <footer class="pied">
   <div class="conteneur pied-int">
-    <svg class="pied-embleme" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-      <rect x="0" y="0" width="100" height="100" rx="23" />
-      <text x="50" y="72" text-anchor="middle" font-size="64" font-family="Fraunces, Georgia, serif" font-weight="600">M</text>
-    </svg>
-
     <div class="pied-colonnes">
       {blocs.map((bloc) => (
         <div class:list={['pied-bloc', bloc.classe]}>
@@ -162,9 +144,6 @@ const blocs = [
   }
   .pied-int {
     position: relative;
-  }
-  .pied-embleme {
-    display: none;
   }
   /* Mobile : une rubrique par ligne, séparées par un filet ; la liste se replie (script). */
   .pied-colonnes {
@@ -279,16 +258,13 @@ const blocs = [
       padding: 64px 0 40px;
     }
     .pied-colonnes {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 40px 32px;
     }
     .pied-bloc {
       display: grid;
       align-content: start;
       gap: 28px;
-    }
-    .pied-large {
-      grid-column: 1 / -1;
     }
     .pied-col {
       border-bottom: 0;
@@ -303,14 +279,6 @@ const blocs = [
       margin-top: 10px;
       padding-bottom: 0;
     }
-    .pied-large .pied-liste {
-      display: block;
-      columns: 3;
-      column-gap: 32px;
-    }
-    .pied-large .pied-liste li {
-      break-inside: avoid;
-    }
     .pied-bas {
       grid-template-columns: 1fr auto;
       align-items: end;
@@ -324,14 +292,8 @@ const blocs = [
       padding: 72px 0 40px;
     }
     .pied-colonnes {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 32px;
-    }
-    .pied-large {
-      grid-column: span 2;
-    }
-    .pied-large .pied-liste {
-      columns: 2;
     }
     .pied-lien,
     .pied-legal {
@@ -348,20 +310,6 @@ const blocs = [
     }
     .pied-legal {
       gap: 32px;
-    }
-    .pied-embleme {
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: -24px;
-      width: 440px;
-      height: 440px;
-      transform: translateX(-50%);
-      fill: var(--surface-hover);
-      pointer-events: none;
-    }
-    .pied-embleme text {
-      fill: var(--surface-feuille);
     }
   }
 </style>

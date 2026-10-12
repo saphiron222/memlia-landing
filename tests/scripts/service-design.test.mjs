@@ -11,19 +11,35 @@ function fixture() {
   mkdirSync(join(root, 'dist/automatisation/tache-test'), { recursive: true });
   mkdirSync(join(root, 'public/proofs/v2'), { recursive: true });
   mkdirSync(join(root, 'docs/qa/site-v2'), { recursive: true });
+  writeFileSync(join(root, 'dist/automatisation-cabinet-comptable.html'), '<main data-service-catalog><a href="/automatisation/tache-test">Tâche</a></main>');
   writeFileSync(join(root, 'src/content/services/tache-test.md'), '---\nstatus: publie\n---\n');
   writeFileSync(join(root, 'public/proofs/v2/service-tache-test.webp'), 'preuve');
   writeFileSync(join(root, 'docs/qa/site-v2/proofs-manifest.json'), JSON.stringify({ entries: [{ target: 'public/proofs/v2/service-tache-test.webp' }] }));
   return root;
 }
 
-function pageComposee(preuve = 'v2/service-tache-test', liens = ['/automatisation/tache-test']) {
+function pageComposee(preuve = 'v2/service-tache-test', liens = ['/automatisation-cabinet-comptable']) {
   const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebPage', author: { '@id': 'https://memlia.fr/a-propos#kevin-kitanga' }, datePublished: '2026-09-20', dateModified: '2026-09-20' },
     { '@type': 'Person', '@id': 'https://memlia.fr/a-propos#kevin-kitanga', worksFor: { '@id': 'https://memlia.fr/#organization' } },
   ] });
   return `<script type="application/ld+json">${schema}</script><main data-service-layout="da-v1"><section data-service-hero class="rv in"><div data-service-media><figure data-proof="${preuve}"></figure></div><div data-service-media><figure data-proof="${preuve}"></figure></div></section><p data-page-byline>Par Kevin Kitanga · mis à jour le 20 septembre 2026</p><section data-service-sections></section><section data-service-section="couverture">Ce que votre logiciel fait déjà</section><footer>${liens.map((href) => `<a href="${href}">Tâche</a>`).join('')}</footer></main>`;
 }
+
+test('le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu', () => {
+  const root = fixture();
+  try {
+    const cible = join(root, 'dist/automatisation/tache-test/index.html');
+    const valide = pageComposee().replace('<div data-service-media><figure data-proof="v2/service-tache-test"></figure></div>', '');
+    writeFileSync(cible, valide);
+    assert.equal(auditerServiceDesign({ root }).pass, true);
+    writeFileSync(cible, valide.replace('href="/automatisation-cabinet-comptable"', 'href="/ailleurs"'));
+    assert.match(auditerServiceDesign({ root }).erreurs.join('\n'), /lien de footer absent vers le catalogue/);
+    writeFileSync(cible, valide);
+    writeFileSync(join(root, 'dist/automatisation-cabinet-comptable.html'), '<main>Catalogue vide</main><footer><a href="/automatisation/tache-test">Tâche</a></footer>');
+    assert.match(auditerServiceDesign({ root }).erreurs.join('\n'), /catalogue des tâches : lien absent/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('une page à plat échoue, une page composée passe', () => {
   const root = fixture();

@@ -17,6 +17,6 @@ test('HTML construit : intention, canonical, schémas, CTA et confidentialité',
 });
 test('HTML construit : trois entrants, footer et sitemap',()=>{
  for(const p of ['/methode','/automatisation-cabinet-comptable','/outils-comptables-gratuits']) assert.ok(read(p).includes(`href="${route}"`),p);
- assert.ok(readFileSync('dist/index.html','utf8').includes(`href="${route}"`),'footer');
+ assert.match(readFileSync('dist/index.html','utf8'), /<footer\b[\s\S]*href="\/outils-comptables-gratuits"/,'footer vers le catalogue');
  assert.ok(readFileSync('dist/sitemap-outils.xml','utf8').includes(`https://memlia.fr${route}`));
 });

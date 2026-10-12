@@ -41,6 +41,39 @@ test('les références, dates éditoriales/réglementaires et métadonnées inte
   assert.deepEqual(auditHtml(html), []);
 });
 
+test('une bibliographie ne revient pas sous un autre titre ou avec des balises séparées', () => {
+  for (const title of ['Sources', 'Source officielle', 'Références', 'Les textes de référence', 'Les textes de <em>référence</em>']) {
+    assert.ok(auditHtml(`<h2>${title}</h2><p>Liste documentaire</p>`).length, title);
+  }
+  assert.deepEqual(auditHtml('<h2>Quels textes encadrent votre décision ?</h2><p>La <a href="https://h2a-france.org/">NEP</a> précise ce point.</p>'), []);
+  assert.ok(auditHtml('<p>Références : <a href="https://h2a-france.org/">NEP</a>.</p>').length);
+});
+
+test('les liens de présentation des Cicatrices restent dans le paragraphe, sans modifier le JSON-LD', () => {
+  const text = 'les sources Python citées en annexe éclairent seulement la méthode des tests';
+  const script = `<script type="application/ld+json">${JSON.stringify({ text })}</script>`;
+  const html = `<head><link rel="canonical" href="https://memlia.fr/blog/tests-verts-et-regle-des-trois-passes">${script}</head><body><p>${text}.</p></body>`;
+  const rendered = renderPublicSourceText(html);
+  assert.ok(rendered.includes(script));
+  assert.ok(rendered.includes('<a href="https://docs.python.org/fr/3/library/doctest.html">doctest</a>'));
+  assert.ok(rendered.includes('<a href="https://docs.python.org/fr/3/library/unittest.html">unittest</a>'));
+  assert.ok(rendered.includes('<a href="https://docs.pytest.org/en/stable/how-to/assert.html">pytest</a>'));
+  assert.equal(renderPublicSourceText(rendered), rendered);
+});
+
+test('le rendu retire une bibliographie redondante et conserve chaque lien dans son paragraphe', () => {
+  const paragraph = '<p>Le <a href="https://example.org/texte">texte officiel</a> encadre ce contrôle.</p>';
+  const source = '<h2 id="sources">Sources</h2><ul><li><a href="https://example.org/texte">Texte officiel</a></li></ul>';
+  const html = `<div class="article-corps lecture">${paragraph}${source}</div>`;
+  assert.equal(renderPublicSourceText(html), `<div class="article-corps lecture">${paragraph}</div>`);
+  assert.equal(renderPublicSourceText(renderPublicSourceText(html)), renderPublicSourceText(html));
+  assert.throws(() => renderPublicSourceText(`<div class="article-corps">${source}</div>`), /Citations à intégrer/);
+  const toc = '<nav data-blog-toc><ol><li><a href="#controle">Le contrôle</a></li><li><a href="#sources">Sources</a></li></ol></nav>';
+  const rendered = renderPublicSourceText(toc + html);
+  assert.ok(rendered.includes('<li><a href="#controle">Le contrôle</a></li>'));
+  assert.ok(!rendered.includes('href="#sources"'));
+});
+
 test('toutes les pages rendues, sans liste figée de routes, sont exemptes de libellés de processus', () => {
   const pages = renderedPages();
   assert.ok(pages.some((page) => page.route === '/glossaire'));

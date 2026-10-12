@@ -50,11 +50,12 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'ItemList').itemListElement).toHaveLength(OUTILS_DISPONIBLES.length);
 });
 
-test('footer : le hub et les outils publiés sont générés, le témoin reste absent', async ({ page }) => {
+test('footer : le hub donne accès au catalogue, le témoin reste absent', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator(`footer a[href="${HUB}"]`)).toHaveCount(1);
+  await page.locator(`footer a[href="${HUB}"]`).click();
   for (const outil of OUTILS_DISPONIBLES) {
-    await expect(page.locator(`footer a[href="${outilPath(outil)}"]`)).toHaveCount(1);
+    await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
   }
   await expect(page.locator(`footer a[href="${TEMOIN}"]`)).toHaveCount(0);
 });

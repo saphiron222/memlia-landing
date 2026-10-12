@@ -94,19 +94,18 @@ test('sans JavaScript : les destinations publiées et l’action restent servies
   }
   await expect(page.locator('[data-burger]')).toBeHidden();
   await expect(navigation.locator('a').last()).toHaveAttribute('href', CTA.nav.href);
-  await navigation.getByText('Méthode', { exact: true }).click();
-  await expect(page).toHaveURL(/\/#methode$/);
+  await navigation.getByText('Ce qu’on automatise', { exact: true }).click();
+  await expect(page).toHaveURL(/\/automatisation-cabinet-comptable$/);
   await context.close();
 });
 
-test('ancre : après défilement, un fragment atterrit sur sa cible', async ({ page }) => {
+test('après défilement, le menu permet de rejoindre le blog', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 568 });
   await page.goto('/');
   await page.evaluate(() => scrollTo({ top: 500, behavior: 'instant' }));
   await page.locator('[data-burger]').click();
-  const ancre = page.locator('#menu-mobile a[href="/#questions"]');
-  await ancre.scrollIntoViewIfNeeded();
-  await ancre.click();
-  await expect(page).toHaveURL(/#questions$/);
-  await expect.poll(async () => Math.abs(await page.locator('#questions').evaluate((el) => el.getBoundingClientRect().top)) < 150).toBe(true);
+  await page.locator('#menu-mobile a[href="/blog"]').click();
+  await expect(page).toHaveURL(/\/blog$/);
+  await expect(page.locator('main h1')).toBeVisible();
+  await expect(page.locator('#menu-mobile')).toBeHidden();
 });
