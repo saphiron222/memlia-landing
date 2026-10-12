@@ -1,0 +1,661 @@
+{
+  "observedAt": "2026-10-12T07:21:22.686Z",
+  "scope": "Complément métier ciblé, exécution indépendante ; blocs writers réels de forge en sandbox sans materialiser/sceller",
+  "results": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "synthetic": {
+        "business": "PASS",
+        "imageStatus": "PASS",
+        "imageScore": 100,
+        "imageCriteria": [
+          {
+            "id": "brief-six-components",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "generation-constraints",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "fictive-provenance",
+            "result": "PASS"
+          },
+          {
+            "id": "recognizable-subject",
+            "result": "PASS"
+          },
+          {
+            "id": "technical-derivatives",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "alt-information",
+            "result": "NON_EXAMINE"
+          }
+        ],
+        "editorialStatus": "PASS",
+        "editorialDecision": "pret-preview",
+        "editorialCriteria": [
+          {
+            "id": "intent-satisfaction",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "§1 et §3 : les deux corps complets et leur périmètre méthodologique ont été relus ; aucune appréciation de satisfaction de requête ou du rendu final."
+            ]
+          },
+          {
+            "id": "serp-format-rankability",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "eeat-sources",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau.",
+              "LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09).",
+              "Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+              "Les neuf claims déclarés (cinq P, quatre F) disposent d'un soutien textuel effectif. Le préflight vérifie notamment la présence de citations ; la portée a été relue ici, sans prendre son seul « SUPPORTED » pour un avis métier. Les entités HTML du reçu NEP230 §8 ne changent pas le sens de la citation publique."
+            ]
+          },
+          {
+            "id": "information-gain-proof",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "Exécution indépendante : `python3 docs/qa/cac-f4-metier/verifier.py`, sortie 0. Le code de calcul/assertions du banc fourni est exécuté sans sa seule écriture finale dans le dossier de l'auteur. Le résultat obtenu correspond exactement au reçu lu ; il est enregistré dans `rejeu-independant.json`.",
+              "- Quatre cas P : proposition à valider ; refus de source absente ; refus de règle absente ; conflit à présenter. Les trois premiers conservent le commentaire du senior ; le dernier conserve le commentaire corrigé, sans proposition qui l'écrase.",
+              "- Trois cas F : deux lignes 2026 équilibrées → CONSTAT_A_REVOIR, écart 0,00 ; mêmes lignes 2025 → REFUS_PERIODE malgré équilibre nul ; crédit 1199 contre débit 1200 en 2026 → REFUS_ECART, écart 1,00. Opinion `None` dans les trois cas.",
+              "Ce sont sept cas éditoriaux inventés, pas un parseur du format FEC ni une automatisation CAC livrée. L'empreinte produite par ce banc est celle d'une sérialisation JSON de l'objet, pas celle d'un fichier FEC reçu. F:37 ne revendique pas que cette empreinte démontre provenance/exhaustivité. F:93/125 expose précisément les limites JSON/période/équilibre. Ni champ absent/illisible, ni conservation réelle multi-utilisateur, ni restauration d'un dossier d'audit ne sont éprouvés par ce banc. Leur description est une règle de service à recetter, pas un résultat expérimental acquis."
+            ]
+          },
+          {
+            "id": "technical-onpage-seo",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "ai-citability",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "contextual-conversion",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "P:48 exclut huit fonctions déjà installées ; les clôtures P:178/F:145 disent la prise en charge d'une tâche dans les outils du cabinet, pas l'existence d'une suite d'audit commercialisée. Tableaux et CTA laissent choix des procédures, appréciation, conclusions/opinion au cabinet. Aucun gain client ou agrément H2A/CNCC. Aucune confusion EC/CAC ni synergie préparation/audit des mêmes comptes. Pas d'engagement absolu d'absence de flux réseau ou de conformité RGPD ; environnement et accès sont convenus par tâche. La sécurité réelle d'une future réalisation n'est pas attestée."
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "path": "/images/img-art-cac-carte-taches-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 19390
+        },
+        {
+          "path": "/proofs/blog/cac-inventaire-taches.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 23852
+        },
+        {
+          "path": "/proofs/blog/cac-fiche-regle.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 20674
+        },
+        {
+          "path": "/images/img-art-cac-carte-taches-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif",
+          "bytes": 6087
+        },
+        {
+          "path": "/images/img-art-cac-carte-taches-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "heif",
+          "bytes": 10105
+        },
+        {
+          "path": "/images/img-art-cac-carte-taches-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "heif",
+          "bytes": 13541
+        },
+        {
+          "path": "/images/img-art-cac-carte-taches-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp",
+          "bytes": 6324
+        },
+        {
+          "path": "/images/img-art-cac-carte-taches-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 13344
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-inventaire-taches-7eed6f9f6827f3ce-400.webp",
+          "width": 400,
+          "height": 225,
+          "format": "webp",
+          "bytes": 3644
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-inventaire-taches-7eed6f9f6827f3ce-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 9806
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-inventaire-taches-7eed6f9f6827f3ce-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 16858
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fiche-regle-447031fed56fe6cd-400.webp",
+          "width": 400,
+          "height": 225,
+          "format": "webp",
+          "bytes": 2940
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fiche-regle-447031fed56fe6cd-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 8674
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fiche-regle-447031fed56fe6cd-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 14480
+        },
+        {
+          "path": "/social/images/img-art-cac-carte-taches-og.webp.jpg",
+          "width": 1200,
+          "height": 630,
+          "format": "jpeg",
+          "bytes": 29691
+        }
+      ],
+      "derivatives": [
+        {
+          "path": "public/images/img-art-cac-carte-taches-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "heif",
+          "bytes": 10105
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 13344
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "heif",
+          "bytes": 13541
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 19390
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif",
+          "bytes": 6087
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp",
+          "bytes": 6324
+        },
+        {
+          "path": "public/images/img-art-cac-carte-taches-og.webp",
+          "width": 1200,
+          "height": 630,
+          "format": "webp",
+          "bytes": 12844
+        }
+      ],
+      "declaredAssets": [
+        {
+          "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/image/master.png",
+          "width": 1920,
+          "height": 1080,
+          "format": "png"
+        },
+        {
+          "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/image/og.webp",
+          "width": 1200,
+          "height": 630,
+          "format": "webp"
+        },
+        {
+          "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/image/hero-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif"
+        },
+        {
+          "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/image/hero-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 375,
+          "http": 200,
+          "documentWidth": 375,
+          "errors": [],
+          "missing": []
+        },
+        {
+          "width": 1440,
+          "http": 200,
+          "documentWidth": 1440,
+          "errors": [],
+          "missing": []
+        }
+      ],
+      "links": [
+        {
+          "href": "/blog/cac-reception-fec-constat",
+          "anchor": "constat de réception du FEC",
+          "http": 200
+        },
+        {
+          "href": "/garanties",
+          "anchor": "engagements de Memlia",
+          "http": 200
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de prise en charge",
+          "http": 200
+        },
+        {
+          "href": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "anchor": "carte des tâches d’expertise comptable",
+          "http": 200
+        }
+      ]
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "synthetic": {
+        "business": "PASS",
+        "imageStatus": "PASS",
+        "imageScore": 100,
+        "imageCriteria": [
+          {
+            "id": "brief-six-components",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "generation-constraints",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "fictive-provenance",
+            "result": "PASS"
+          },
+          {
+            "id": "recognizable-subject",
+            "result": "PASS"
+          },
+          {
+            "id": "technical-derivatives",
+            "result": "NON_EXAMINE"
+          },
+          {
+            "id": "alt-information",
+            "result": "NON_EXAMINE"
+          }
+        ],
+        "editorialStatus": "PASS",
+        "editorialDecision": "pret-preview",
+        "editorialCriteria": [
+          {
+            "id": "intent-satisfaction",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "§1 et §3 : les deux corps complets et leur périmètre méthodologique ont été relus ; aucune appréciation de satisfaction de requête ou du rendu final."
+            ]
+          },
+          {
+            "id": "serp-format-rankability",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "eeat-sources",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau.",
+              "LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09).",
+              "Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+              "Les neuf claims déclarés (cinq P, quatre F) disposent d'un soutien textuel effectif. Le préflight vérifie notamment la présence de citations ; la portée a été relue ici, sans prendre son seul « SUPPORTED » pour un avis métier. Les entités HTML du reçu NEP230 §8 ne changent pas le sens de la citation publique."
+            ]
+          },
+          {
+            "id": "information-gain-proof",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "Exécution indépendante : `python3 docs/qa/cac-f4-metier/verifier.py`, sortie 0. Le code de calcul/assertions du banc fourni est exécuté sans sa seule écriture finale dans le dossier de l'auteur. Le résultat obtenu correspond exactement au reçu lu ; il est enregistré dans `rejeu-independant.json`.",
+              "- Quatre cas P : proposition à valider ; refus de source absente ; refus de règle absente ; conflit à présenter. Les trois premiers conservent le commentaire du senior ; le dernier conserve le commentaire corrigé, sans proposition qui l'écrase.",
+              "- Trois cas F : deux lignes 2026 équilibrées → CONSTAT_A_REVOIR, écart 0,00 ; mêmes lignes 2025 → REFUS_PERIODE malgré équilibre nul ; crédit 1199 contre débit 1200 en 2026 → REFUS_ECART, écart 1,00. Opinion `None` dans les trois cas.",
+              "Ce sont sept cas éditoriaux inventés, pas un parseur du format FEC ni une automatisation CAC livrée. L'empreinte produite par ce banc est celle d'une sérialisation JSON de l'objet, pas celle d'un fichier FEC reçu. F:37 ne revendique pas que cette empreinte démontre provenance/exhaustivité. F:93/125 expose précisément les limites JSON/période/équilibre. Ni champ absent/illisible, ni conservation réelle multi-utilisateur, ni restauration d'un dossier d'audit ne sont éprouvés par ce banc. Leur description est une règle de service à recetter, pas un résultat expérimental acquis."
+            ]
+          },
+          {
+            "id": "technical-onpage-seo",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "ai-citability",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+            ]
+          },
+          {
+            "id": "contextual-conversion",
+            "result": "NON_EXAMINE",
+            "earned": 0,
+            "observations": [
+              "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+              "P:48 exclut huit fonctions déjà installées ; les clôtures P:178/F:145 disent la prise en charge d'une tâche dans les outils du cabinet, pas l'existence d'une suite d'audit commercialisée. Tableaux et CTA laissent choix des procédures, appréciation, conclusions/opinion au cabinet. Aucun gain client ou agrément H2A/CNCC. Aucune confusion EC/CAC ni synergie préparation/audit des mêmes comptes. Pas d'engagement absolu d'absence de flux réseau ou de conformité RGPD ; environnement et accès sont convenus par tâche. La sécurité réelle d'une future réalisation n'est pas attestée."
+            ]
+          }
+        ]
+      },
+      "assets": [
+        {
+          "path": "/images/img-art-cac-fec-reception-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 14710
+        },
+        {
+          "path": "/proofs/blog/cac-fec-registre-reception.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 17678
+        },
+        {
+          "path": "/proofs/blog/cac-fec-constat.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 17598
+        },
+        {
+          "path": "/images/img-art-cac-fec-reception-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif",
+          "bytes": 4051
+        },
+        {
+          "path": "/images/img-art-cac-fec-reception-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "heif",
+          "bytes": 7358
+        },
+        {
+          "path": "/images/img-art-cac-fec-reception-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "heif",
+          "bytes": 9399
+        },
+        {
+          "path": "/images/img-art-cac-fec-reception-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp",
+          "bytes": 4788
+        },
+        {
+          "path": "/images/img-art-cac-fec-reception-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 9980
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-registre-reception-45ad7494b1381505-400.webp",
+          "width": 400,
+          "height": 225,
+          "format": "webp",
+          "bytes": 2582
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-registre-reception-45ad7494b1381505-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 7774
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-registre-reception-45ad7494b1381505-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 12372
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-constat-835dd19a0ceffdac-400.webp",
+          "width": 400,
+          "height": 225,
+          "format": "webp",
+          "bytes": 2590
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-constat-835dd19a0ceffdac-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 7172
+        },
+        {
+          "path": "/proofs/responsive/blog/cac-fec-constat-835dd19a0ceffdac-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 11754
+        },
+        {
+          "path": "/social/images/img-art-cac-fec-reception-og.webp.jpg",
+          "width": 1200,
+          "height": 630,
+          "format": "jpeg",
+          "bytes": 23206
+        }
+      ],
+      "derivatives": [
+        {
+          "path": "public/images/img-art-cac-fec-reception-1200.avif",
+          "width": 1200,
+          "height": 675,
+          "format": "heif",
+          "bytes": 7358
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 9980
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1600.avif",
+          "width": 1600,
+          "height": 900,
+          "format": "heif",
+          "bytes": 9399
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 14710
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif",
+          "bytes": 4051
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp",
+          "bytes": 4788
+        },
+        {
+          "path": "public/images/img-art-cac-fec-reception-og.webp",
+          "width": 1200,
+          "height": 630,
+          "format": "webp",
+          "bytes": 9814
+        }
+      ],
+      "declaredAssets": [
+        {
+          "path": "editorial/articles/cac-reception-fec-constat/preuves/image/master.png",
+          "width": 1920,
+          "height": 1080,
+          "format": "png"
+        },
+        {
+          "path": "editorial/articles/cac-reception-fec-constat/preuves/image/og.webp",
+          "width": 1200,
+          "height": 630,
+          "format": "webp"
+        },
+        {
+          "path": "editorial/articles/cac-reception-fec-constat/preuves/image/hero-768.avif",
+          "width": 768,
+          "height": 432,
+          "format": "heif"
+        },
+        {
+          "path": "editorial/articles/cac-reception-fec-constat/preuves/image/hero-768.webp",
+          "width": 768,
+          "height": 432,
+          "format": "webp"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 375,
+          "http": 200,
+          "documentWidth": 375,
+          "errors": [],
+          "missing": []
+        },
+        {
+          "width": 1440,
+          "http": 200,
+          "documentWidth": 1440,
+          "errors": [],
+          "missing": []
+        }
+      ],
+      "links": [
+        {
+          "href": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+          "anchor": "carte des tâches du cabinet CAC",
+          "http": 200
+        },
+        {
+          "href": "/garanties",
+          "anchor": "garanties de Memlia",
+          "http": 200
+        },
+        {
+          "href": "/methode",
+          "anchor": "méthode de Memlia",
+          "http": 200
+        }
+      ]
+    }
+  ],
+  "matrixCounts": {
+    "execute": 14,
+    "partiel": 18,
+    "N/A": 27,
+    "a-executer": 4
+  },
+  "protectedFiles": 901,
+  "changed": []
+}

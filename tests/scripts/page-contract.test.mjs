@@ -280,11 +280,12 @@ test('une collection indexable peut manifester qu’aucun média fonctionnel ne 
   }
 });
 
-test('les contrats explicites couvrent six routes noindex et deux collections indexables', () => {
+test('les contrats explicites couvrent six routes noindex et trois collections indexables', () => {
   const contrats = contratsRoute(process.cwd());
   assert.deepEqual([...contrats.keys()].sort(), [
     '/404',
     '/blog',
+    '/blog/commissariat-aux-comptes',
     '/contact/erreur',
     '/contact/merci',
     '/glossaire',
@@ -301,7 +302,7 @@ test('les contrats explicites couvrent six routes noindex et deux collections in
   for (const route of ['/404', '/contact/erreur', '/contact/merci', '/mentions-legales', '/outils-comptables-gratuits/temoin-calcul-local', '/politique-de-confidentialite']) {
     assert.equal(contrats.get(route).indexing, 'noindex');
   }
-  for (const route of ['/blog', '/glossaire']) {
+  for (const route of ['/blog', '/glossaire', '/blog/commissariat-aux-comptes']) {
     assert.equal(contrats.get(route).indexing, 'index');
     assert.equal(contrats.get(route).role, 'collection');
     assert.equal(contrats.get(route).assetDecision.kind, 'no-functional-media');

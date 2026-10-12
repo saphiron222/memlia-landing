@@ -1,0 +1,119 @@
+{
+  "checked_at": "2026-10-11T21:02:38.157213+02:00",
+  "sources": [
+    {
+      "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a315.source.txt",
+      "metadata": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a315.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/"
+    },
+    {
+      "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a330.source.txt",
+      "metadata": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a330.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/"
+    },
+    {
+      "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a230.source.txt",
+      "metadata": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a230.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/"
+    },
+    {
+      "path": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a505.source.txt",
+      "metadata": "editorial/articles/automatiser-un-cabinet-cac-la-carte-des-taches/preuves/sources/h2a505.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/"
+    },
+    {
+      "path": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a315.source.txt",
+      "metadata": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a315.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/"
+    },
+    {
+      "path": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a330.source.txt",
+      "metadata": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a330.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/"
+    },
+    {
+      "path": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a230.source.txt",
+      "metadata": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a230.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/documentation-de-laudit-des-comptes/"
+    },
+    {
+      "path": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a500.source.txt",
+      "metadata": "editorial/articles/cac-reception-fec-constat/preuves/sources/h2a500.json",
+      "hash_verified": true,
+      "httpStatus_recorded": 200,
+      "checkedAt_recorded": "2026-10-11",
+      "url": "https://h2a-france.org/normes/caractere-probant-des-elements-collectes/"
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "body_sha256": "31fb00218074c96af1f71a904027b18adcd50637d92f27bd8db779d3fa933442",
+      "declared_claims": 5,
+      "preflight_errors": [],
+      "uncovered_nep_units": [
+        {
+          "id": "unit-a8b93ddd7abd",
+          "text": "Une absence de réponse et un refus de la direction sont deux situations différentes. Le registre peut présenter leur état, leur historique et les éléments disponibles. Le commissaire aux comptes choisit la suite. Le paragraphe 13 de la même norme précise : « Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle. » Un compteur de relances n'est donc pas une procédure alternative.",
+          "claimIds": []
+        },
+        {
+          "id": "unit-0965ce7da77b",
+          "text": "Le calendrier post-signature ne sert pas à refaire les travaux manquants. Le paragraphe 09 dispose : « Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes. » Le même paragraphe exclut les modifications de fond après signature ; le paragraphe 10 traite séparément l'évènement connu entre signature et approbation qui conduit à de nouvelles procédures ou conclusions. Ce repère ne se confond ni avec la durée de conservation, ni avec la simple préservation des saisies dans un dossier partagé.",
+          "claimIds": []
+        }
+      ]
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "body_sha256": "45f257271d0f0778d7aae446c92ec416cba46b601d707bb26ae0c988c2db6605",
+      "declared_claims": 4,
+      "preflight_errors": [],
+      "uncovered_nep_units": []
+    }
+  ],
+  "images": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "frame": "cac-inventaire-taches",
+      "hashes_verified": true,
+      "aiGeneration_recorded": false,
+      "credits_recorded": 0
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "frame": "cac-fec-registre-reception",
+      "hashes_verified": true,
+      "aiGeneration_recorded": false,
+      "credits_recorded": 0
+    }
+  ],
+  "rejeu": {
+    "cases": 7,
+    "matches_author_receipt": true,
+    "all_four_inputs_preserved": true,
+    "fec_opinion": null,
+    "scope": "Banc éditorial JSON ; aucune intégration produit ni validation du format FEC."
+  }
+}

@@ -1,0 +1,1 @@
+('articles', 'CREATE TABLE articles (id TEXT PRIMARY KEY, code TEXT, number TEXT, valid_from TEXT, valid_to TEXT, status TEXT, record TEXT NOT NULL)')

@@ -1,0 +1,1343 @@
+{
+  "date": "2026-10-12T07:05:02.170045+00:00",
+  "scope": "Matrice du lot, états de fabrication honnêtes ; ni RUN synthétique de preparer ni revue indépendante",
+  "slugs": [
+    "automatiser-un-cabinet-cac-la-carte-des-taches",
+    "cac-reception-fec-constat"
+  ],
+  "inventory": {
+    "pack": 63,
+    "blog": 31,
+    "seo": 24,
+    "catalogueAbsent": [
+      "blog-audio",
+      "blog-notebooklm",
+      "seo-ahrefs",
+      "seo-profound",
+      "seo-seranking",
+      "seo-unlighthouse"
+    ],
+    "extensionOutsideRegistry": [
+      "seo-ahrefs",
+      "seo-bing",
+      "seo-firecrawl",
+      "seo-profound",
+      "seo-seranking",
+      "seo-unlighthouse"
+    ]
+  },
+  "rows": [
+    {
+      "skill": "blog",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": false,
+      "phase": "routage",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux racines chargées ; union pack/catalogue/registre confrontée. Le routage ne certifie pas les sous-compétences.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-analyze",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-analyze/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "qualité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md",
+        "docs/qa/cac-f4-livraison/editorial/LECTURE-EDITORIALE.md"
+      ],
+      "finding": "Lecture des deux corps, réponse utile avant vente, limites explicites et CTA contextuel. Extraction et contrôles réels conservés, rapport qualitatif sans note numérique. Pas revue indépendante du rendu : mêmes critères à qualifier par métier, pas second examen du fond acquis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-audio",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-audio/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": false,
+      "technicalRegistry": true,
+      "phase": "distribution",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Aucune narration ni déclinaison externe blog mandatée ; aucune nouvelle surface ou action hors blog.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-audit",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-audit/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "qualité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md",
+        "docs/qa/cac-f4-livraison/editorial/LECTURE-EDITORIALE.md"
+      ],
+      "finding": "Lecture des deux corps, réponse utile avant vente, limites explicites et CTA contextuel. Extraction et contrôles réels conservés, rapport qualitatif sans note numérique. Pas revue indépendante du rendu : mêmes critères à qualifier par métier, pas second examen du fond acquis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-brand",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-brand/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md",
+        ".agents/product-marketing.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Charte v5 relue, signataire/chef de mission/auditeur CAC distincts des EC ; nous/vous, saisies préservées et jugement conservé. Aucun nouveau profil de marque créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-brief",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-brief/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "fabrication",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json"
+      ],
+      "finding": "Deux corps et recettes relus intégralement : réponse initiale, définitions, prérequis, méthode, frontière, sept cas fictifs, erreurs et quatre FAQ chacun. Maintien des textes déjà examinés, aucun nouveau texte écrit. Ce contrôle de conformité du paquet ne revendique pas l’exécution historique de la rédaction.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-calendar",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-calendar/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "créneau",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/strategy/site-v3/CONTENT-CALENDAR.md",
+        "docs/qa/cac-f4-livraison/editorial/creneau.json"
+      ],
+      "finding": "Garde réel du12/10 et deux réservations PASS ; calendrier inchangé dans cette fabrication. Ni antidate ni publication.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-cannibalization",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-cannibalization/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "maillage",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Comparaison locale des requêtes primaires de toutes les recettes et lecture des deux intentions : aucune collision exacte ; pilier choix/organisation CAC, satellite réception technique distinct du fiscal et de l’EC. Pas d’intersection SERP quantifiée. Liens réciproques présents dans rendu.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-chart",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-chart/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "visuels",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Aucune série de données à tracer, figures écrans fictifs acquis conservées ; pas de graphique ajouté pour cocher une case.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-cluster",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-cluster/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/strategy/site-v3/backlog-v3.json"
+      ],
+      "finding": "Lot mandaté conservé : choix d’une tâche CAC / réception FEC, cluster certification. Recherche fraîche de formats, sans SERP Google calibrée ni volumes ; aucun nouveau sujet choisi.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-decay",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-decay/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "maintenance",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Première publication, aucune baseline ou série de trafic de ces URLs ; pas de déclin ni dérive à calculer avant existence publique.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-discourse",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-discourse/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Aucune recherche de discours sociaux ou d’actualité récente mandatée ; sujet normatif/méthodologique déjà revu, recherche concurrentielle suffisante pour cette remise. Aucun démarrage LinkedIn.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-factcheck",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-factcheck/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "sources",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json"
+      ],
+      "finding": "Avis acquis relié aux15 claims ; rejeu du construireClaims réel sans erreur, extraits et copies intègres. R1 reliée aux unités, exception signature/approbation et portées315/330 conservées. Pas de nouvelle ouverture HTTP prétendue.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-flow",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-flow/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "extractibilité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json",
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Corps statique complet ; définitions FEC/constat/version et tâche/règle/proposition autonomes ; tableaux avec thead et jeu fictif borné. Support officiel associé, pas estimation de chance de citation ni simulation de réponses IA.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-geo",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-geo/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "extractibilité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json",
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Corps statique complet ; définitions FEC/constat/version et tâche/règle/proposition autonomes ; tableaux avec thead et jeu fictif borné. Support officiel associé, pas estimation de chance de citation ni simulation de réponses IA.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-google",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-google/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "mesure publique",
+      "applicability": "applicable",
+      "execution": "a-executer",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/ETAT-2026-10-12.md"
+      ],
+      "finding": "URLs nouvelles non publiées : données de performance/indexation/soumission à relever après reçu réel, aucun zéro ni credential manquant supposé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-image",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-image/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "images",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md"
+      ],
+      "finding": "Quatre figures relues par métier, provenance HTML non IA et zéro crédit ; dimensions/poids/alt des dérivés réellement mesurés, chargement local vérifié. Nouveaux critères complets image non examinés dans l’avis : qualification restante, pas score inventé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-locale-audit",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-locale-audit/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "international",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux méthodes CAC françaises, site fr-FR, aucune autre langue/locale ni alternates à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-localize",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-localize/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "international",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux méthodes CAC françaises, site fr-FR, aucune autre langue/locale ni alternates à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-multilingual",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-multilingual/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "international",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux méthodes CAC françaises, site fr-FR, aucune autre langue/locale ni alternates à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-notebooklm",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-notebooklm/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": false,
+      "technicalRegistry": true,
+      "phase": "sources",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Sources primaires locales avec copies et avis acquis ; aucun notebook ni compte nécessaire au lot.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-outline",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-outline/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "fabrication",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json"
+      ],
+      "finding": "Deux corps et recettes relus intégralement : réponse initiale, définitions, prérequis, méthode, frontière, sept cas fictifs, erreurs et quatre FAQ chacun. Maintien des textes déjà examinés, aucun nouveau texte écrit. Ce contrôle de conformité du paquet ne revendique pas l’exécution historique de la rédaction.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-persona",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-persona/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md",
+        ".agents/product-marketing.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Charte v5 relue, signataire/chef de mission/auditeur CAC distincts des EC ; nous/vous, saisies préservées et jugement conservé. Aucun nouveau profil de marque créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-repurpose",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-repurpose/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "distribution",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Aucune narration ni déclinaison externe blog mandatée ; aucune nouvelle surface ou action hors blog.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-rewrite",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-rewrite/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rédaction",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Pas réécriture ni actualisation du fond : corps acquis explicitement conservés.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-schema",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-schema/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rendu",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "JSON-LD lu et parsé dans vrai HTML : BlogPosting, Person Kevin Kitanga, Organization, WebSite, BreadcrumbList ; headline/canonical/dates concordent. Pas de bénéfice de citation ou rich-result FAQ promis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-seo-check",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-seo-check/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rendu",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Un H1, niveaux propres, canonical/OG/Twitter, descriptions exactes, liens et images locaux200, viewport375/1440 sans erreur JS ni overflow. noindex attendu de preview ; CWV/Lighthouse/production non mesurés, pas PASS global anticipé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-strategy",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-strategy/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/strategy/site-v3/backlog-v3.json"
+      ],
+      "finding": "Lot mandaté conservé : choix d’une tâche CAC / réception FEC, cluster certification. Recherche fraîche de formats, sans SERP Google calibrée ni volumes ; aucun nouveau sujet choisi.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-style",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-style/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "voix",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        ".agents/product-marketing.md"
+      ],
+      "finding": "Sous-skill courant apprend une voix sur5–10 articles ; pas de nouvelle voix à apprendre, charte française v5 fait foi. Diagnostic prose local distinct, pas exécution fictive du learner anglais.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-taxonomy",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-taxonomy/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "métadonnées",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/ETAT-2026-10-12.md"
+      ],
+      "finding": "Sujets autorisés cabinet/automatisation/methode et cabinet/donnees/methode, cluster certification. Rubrique CAC délibérément inactive, activation réservée à platform.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-translate",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-translate/SKILL.md",
+      "version": "2.2.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "international",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux méthodes CAC françaises, site fr-FR, aucune autre langue/locale ni alternates à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-write",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-write/SKILL.md",
+      "version": "non déclarée",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "fabrication",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json"
+      ],
+      "finding": "Deux corps et recettes relus intégralement : réponse initiale, définitions, prérequis, méthode, frontière, sept cas fictifs, erreurs et quatre FAQ chacun. Maintien des textes déjà examinés, aucun nouveau texte écrit. Ce contrôle de conformité du paquet ne revendique pas l’exécution historique de la rédaction.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": false,
+      "phase": "routage",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux racines chargées ; union pack/catalogue/registre confrontée. Le routage ne certifie pas les sous-compétences.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-ahrefs",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-ahrefs/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": false,
+      "technicalRegistry": false,
+      "phase": "mesure",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Pas campagne de liens ni monitoring fournisseur dans cette fabrication ; URLs non publiques, aucun abonnement ou outil supplémentaire créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-audit",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-audit/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "qualité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md",
+        "docs/qa/cac-f4-livraison/editorial/LECTURE-EDITORIALE.md"
+      ],
+      "finding": "Lecture des deux corps, réponse utile avant vente, limites explicites et CTA contextuel. Extraction et contrôles réels conservés, rapport qualitatif sans note numérique. Pas revue indépendante du rendu : mêmes critères à qualifier par métier, pas second examen du fond acquis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-backlinks",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-backlinks/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "mesure",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Pas campagne de liens ni monitoring fournisseur dans cette fabrication ; URLs non publiques, aucun abonnement ou outil supplémentaire créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-bing",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-bing/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": false,
+      "phase": "mesure publique",
+      "applicability": "applicable",
+      "execution": "a-executer",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/ETAT-2026-10-12.md"
+      ],
+      "finding": "URLs nouvelles non publiées : données de performance/indexation/soumission à relever après reçu réel, aucun zéro ni credential manquant supposé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-cluster",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-cluster/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/strategy/site-v3/backlog-v3.json"
+      ],
+      "finding": "Lot mandaté conservé : choix d’une tâche CAC / réception FEC, cluster certification. Recherche fraîche de formats, sans SERP Google calibrée ni volumes ; aucun nouveau sujet choisi.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-competitor-pages/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "format",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Analyse de concurrence exécutée pour le besoin ; pas de page comparative d’éditeurs à fabriquer.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-content",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-content/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "qualité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md",
+        "docs/qa/cac-f4-livraison/editorial/LECTURE-EDITORIALE.md"
+      ],
+      "finding": "Lecture des deux corps, réponse utile avant vente, limites explicites et CTA contextuel. Extraction et contrôles réels conservés, rapport qualitatif sans note numérique. Pas revue indépendante du rendu : mêmes critères à qualifier par métier, pas second examen du fond acquis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-content-brief",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-content-brief/SKILL.md",
+      "version": "1.0.0",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "fabrication",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json"
+      ],
+      "finding": "Deux corps et recettes relus intégralement : réponse initiale, définitions, prérequis, méthode, frontière, sept cas fictifs, erreurs et quatre FAQ chacun. Maintien des textes déjà examinés, aucun nouveau texte écrit. Ce contrôle de conformité du paquet ne revendique pas l’exécution historique de la rédaction.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-dataforseo",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-dataforseo/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "outil",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Extension fournisseur non nécessaire : recherche Hermes et2 URLs locales suffisantes, sans crawl site-wide ni dépense SEO pour cocher la matrice.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-drift",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-drift/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "maintenance",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Première publication, aucune baseline ou série de trafic de ces URLs ; pas de déclin ni dérive à calculer avant existence publique.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-ecommerce",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-ecommerce/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "commerce",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        ".agents/product-marketing.md"
+      ],
+      "finding": "Aucun catalogue/achat/produit ecommerce dans le lot, service à la tâche.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-firecrawl",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-firecrawl/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": false,
+      "phase": "outil",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Extension fournisseur non nécessaire : recherche Hermes et2 URLs locales suffisantes, sans crawl site-wide ni dépense SEO pour cocher la matrice.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-flow",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-flow/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "extractibilité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json",
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Corps statique complet ; définitions FEC/constat/version et tâche/règle/proposition autonomes ; tableaux avec thead et jeu fictif borné. Support officiel associé, pas estimation de chance de citation ni simulation de réponses IA.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-geo",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-geo/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "extractibilité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/liaison-avis/VERIFICATION-R1-LIAISON.json",
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Corps statique complet ; définitions FEC/constat/version et tâche/règle/proposition autonomes ; tableaux avec thead et jeu fictif borné. Support officiel associé, pas estimation de chance de citation ni simulation de réponses IA.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-google",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-google/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "mesure publique",
+      "applicability": "applicable",
+      "execution": "a-executer",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/ETAT-2026-10-12.md"
+      ],
+      "finding": "URLs nouvelles non publiées : données de performance/indexation/soumission à relever après reçu réel, aucun zéro ni credential manquant supposé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-hreflang",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-hreflang/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "international",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Deux méthodes CAC françaises, site fr-FR, aucune autre langue/locale ni alternates à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-image-gen",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-image-gen/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "génération",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Couvertures HTML originales autorisées et figures acquises, aucune génération IA demandée ou dépense.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-images",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-images/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "images",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-metier/AVIS.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md"
+      ],
+      "finding": "Quatre figures relues par métier, provenance HTML non IA et zéro crédit ; dimensions/poids/alt des dérivés réellement mesurés, chargement local vérifié. Nouveaux critères complets image non examinés dans l’avis : qualification restante, pas score inventé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-local",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-local/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "local",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Méthodes professionnelles nationales CAC, pas page d’établissement/zone ni GBP ; pas données géolocalisées à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-maps",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-maps/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "local",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Méthodes professionnelles nationales CAC, pas page d’établissement/zone ni GBP ; pas données géolocalisées à produire.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-page",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-page/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rendu",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Un H1, niveaux propres, canonical/OG/Twitter, descriptions exactes, liens et images locaux200, viewport375/1440 sans erreur JS ni overflow. noindex attendu de preview ; CWV/Lighthouse/production non mesurés, pas PASS global anticipé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-plan",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-plan/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "cadrage",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/strategy/site-v3/backlog-v3.json"
+      ],
+      "finding": "Lot mandaté conservé : choix d’une tâche CAC / réception FEC, cluster certification. Recherche fraîche de formats, sans SERP Google calibrée ni volumes ; aucun nouveau sujet choisi.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-profound",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-profound/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": false,
+      "technicalRegistry": false,
+      "phase": "mesure",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Pas campagne de liens ni monitoring fournisseur dans cette fabrication ; URLs non publiques, aucun abonnement ou outil supplémentaire créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-programmatic",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-programmatic/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "volume",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-metier/AVIS.md"
+      ],
+      "finding": "Deux textes originaux acquis, pas production à partir d’un dataset ni variantes de pages.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-schema",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-schema/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rendu",
+      "applicability": "applicable",
+      "execution": "execute",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "JSON-LD lu et parsé dans vrai HTML : BlogPosting, Person Kevin Kitanga, Organization, WebSite, BreadcrumbList ; headline/canonical/dates concordent. Pas de bénéfice de citation ou rich-result FAQ promis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-seranking",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-seranking/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": false,
+      "technicalRegistry": false,
+      "phase": "mesure",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md"
+      ],
+      "finding": "Pas campagne de liens ni monitoring fournisseur dans cette fabrication ; URLs non publiques, aucun abonnement ou outil supplémentaire créé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-sitemap",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-sitemap/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "publication",
+      "applicability": "applicable",
+      "execution": "a-executer",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/ETAT-2026-10-12.md"
+      ],
+      "finding": "Brouillons non publics et noindex dans preview ; vérifier inclusion des2 articles et rubrique lors de livraison, sans inventer état du sitemap public.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-sxo",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-sxo/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "qualité",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json",
+        "docs/qa/cac-f4-livraison/editorial/RECHERCHE-2026-10-12.md",
+        "docs/qa/cac-f4-livraison/liaison-avis/QUALIFICATION-AVIS.md",
+        "docs/qa/cac-f4-livraison/editorial/LECTURE-EDITORIALE.md"
+      ],
+      "finding": "Lecture des deux corps, réponse utile avant vente, limites explicites et CTA contextuel. Extraction et contrôles réels conservés, rapport qualitatif sans note numérique. Pas revue indépendante du rendu : mêmes critères à qualifier par métier, pas second examen du fond acquis.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-technical",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-technical/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": true,
+      "technicalRegistry": true,
+      "phase": "rendu",
+      "applicability": "applicable",
+      "execution": "partiel",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Un H1, niveaux propres, canonical/OG/Twitter, descriptions exactes, liens et images locaux200, viewport375/1440 sans erreur JS ni overflow. noindex attendu de preview ; CWV/Lighthouse/production non mesurés, pas PASS global anticipé.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-unlighthouse",
+      "slugs": [
+        "automatiser-un-cabinet-cac-la-carte-des-taches",
+        "cac-reception-fec-constat"
+      ],
+      "loadedPath": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-unlighthouse/SKILL.md",
+      "version": "2.3.1",
+      "catalogueAvailable": false,
+      "technicalRegistry": false,
+      "phase": "performance",
+      "applicability": "N/A",
+      "execution": "N/A",
+      "evidence": [
+        "docs/qa/cac-f4-livraison/editorial/CONTROLES.json"
+      ],
+      "finding": "Extension de crawl Lighthouse global hors fabrication de2 articles ; la performance finale demeure à vérifier en livraison, pas certifiée par cette ligne.",
+      "change": "Maintien des corps et figures ; fabrication/contrôles seulement",
+      "independentReview": false
+    }
+  ],
+  "articleSlug": "cac-reception-fec-constat"
+}

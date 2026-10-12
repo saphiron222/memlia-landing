@@ -1,0 +1,42 @@
+{
+  "task_id": "t_8bb28890",
+  "reviewer_profile": "metier",
+  "reviewer_type": "IA indépendante de l'auteur",
+  "date": "2026-10-11",
+  "verdict": "PASS AVEC RÉSERVES",
+  "scope": "Deux corps complets, recettes et lectures internes non Astro, sources normatives, banc éditorial fictif, couvertures et quatre figures",
+  "slugs": ["automatiser-un-cabinet-cac-la-carte-des-taches", "cac-reception-fec-constat"],
+  "report": "docs/qa/cac-f4-metier/AVIS.md",
+  "evidence": ["docs/qa/cac-f4-metier/controles-locaux.json", "docs/qa/cac-f4-metier/rejeu-independant.json", "docs/qa/cac-f4-metier/legi-versions.json"],
+  "substantive_blocking_defects": [],
+  "required_before_sealing": [{
+    "id": "R1",
+    "owner": "marketing",
+    "finding": "Déclaration de claims incomplète, sans contradiction de fond : NEP505 §13, NEP230 §9 et §10, fonctionnement des outils dans les deux recettes et NEP315 §48 d) pour le pilier.",
+    "resolution": "Déclarer les énoncés déjà soutenus, avec citations exactes et explication de portée NEP315 §46/48 d) et NEP330 §33/34 e). Rejouer les contrôles de fabrication ; conserver cet avis de fond."
+  }],
+  "facts_verified": {
+    "h2a_pages_independently_reopened": 5,
+    "local_h2a_copies_integrity_verified": 8,
+    "local_legi_current_versions_read": 5,
+    "local_legi_historical_versions_excluded": 2,
+    "declared_claims_supported": 9,
+    "fictitious_cases_reexecuted": 7,
+    "matches_author_receipt": true,
+    "all_four_pillar_comments_preserved": true,
+    "fec_opinion_generated": false,
+    "covers_visually_reviewed": 2,
+    "og_visually_reviewed": 2,
+    "body_figures_visually_reviewed": 4,
+    "covers_png_dimensions": [1600, 900],
+    "og_jpg_dimensions": [1200, 630],
+    "cover_provenance_verified": "HTML original local ; aiGeneration:false ; aucun crédit revendiqué"
+  },
+  "candidate_modified_by_reviewer": false,
+  "production_gate_pass": false,
+  "astro_final_render_reviewed": false,
+  "published": false,
+  "f4_completed": false,
+  "h5_released": false,
+  "remaining_fabrication": ["couverture interne des claims", "matrice exhaustive Blog/SEO et observations spécifiques", "préparation au créneau ouvré réel", "vrai rendu Astro et liens", "liaison des quatre sujets canoniques de revue", "scellement et circuit CI/publication", "contrôle production et suivis J+7/J+28"]
+}

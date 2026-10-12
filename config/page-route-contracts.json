@@ -6,7 +6,10 @@
       "role": "collection",
       "mediaRequired": false,
       "measuredIntentRequired": true,
-      "schemaTypes": ["CollectionPage", "BreadcrumbList"],
+      "schemaTypes": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
       "incomingLinkRequired": true,
       "assetDecision": {
         "kind": "no-functional-media",
@@ -18,7 +21,10 @@
       "role": "collection",
       "mediaRequired": false,
       "measuredIntentRequired": true,
-      "schemaTypes": ["CollectionPage", "BreadcrumbList"],
+      "schemaTypes": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
       "incomingLinkRequired": true,
       "assetDecision": {
         "kind": "no-functional-media",
@@ -70,8 +76,28 @@
       "role": "technical",
       "mediaRequired": false,
       "measuredIntentRequired": false,
-      "schemaTypes": ["WebPage", "WebApplication", "BreadcrumbList"],
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
       "incomingLinkRequired": false
+    },
+    "/blog/commissariat-aux-comptes": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "La rubrique conduit aux deux méthodes CAC et affiche leurs couvertures propres ; une troisième illustration décorative ne montrerait aucun contrôle supplémentaire au lecteur."
+      }
     }
   }
 }

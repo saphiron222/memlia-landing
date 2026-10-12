@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "candidateSlug": "cac-reception-fec-constat",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact cac-reception-fec-constat."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "audit-cac",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-07f1893d88ca-1-h2a500",
+      "candidateSlug": "cac-reception-fec-constat",
+      "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+      "claimId": "claim-unit-07f1893d88ca-1",
+      "claimSha256": "6e8ecb2eca6789124f2ce0f931f710c666254f44e8ec771dcff492dbdccbf42c",
+      "sourceId": "h2a500",
+      "sourceContentSha256": "33244e3497ce7db2c927fcfb0371db42ad46aee5bd8315163fac27c64f12f678",
+      "citationSha256": "19eb1adbe261ed48271bc779e676397c9b4201476c823ed44e3b660dbaa7a9e4",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Liaison du constat acquis à claim-unit-07f1893d88ca-1 (« Le caractère approprié est fonction de la qualité des éléments collectés, c’est-à-dire de leur fiabilité et de leur pertinence. »), sans nouvel avis : | F:11 et F:49–53, NEP500 §6 | Citation exacte sur fiabilité et pertinence. Le même §6 exige des éléments sur exactitude/exhaustivité des informations produites par l'entité ; §§5–7 relus. Fichier lisible, empreinte ou équilibre nul ne valent pas preuve suffisante sur les comptes ; limites visibles et informations complémentaires restent à obtenir. |"
+    },
+    {
+      "id": "review-claim-unit-c1b2f66881af-1-h2a230",
+      "candidateSlug": "cac-reception-fec-constat",
+      "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+      "claimId": "claim-unit-c1b2f66881af-1",
+      "claimSha256": "ddac660e4adee16e7efdfdd4588a749bd102430112f0774518f29f30e090ec91",
+      "sourceId": "h2a230",
+      "sourceContentSha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e",
+      "citationSha256": "1ddaed8a6a2d036bd028dc574a9fcd200475126bc87b0674b2a4867e79f0198f",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Liaison du constat acquis à claim-unit-c1b2f66881af-1 (« Le commissaire aux comptes consigne dans son dossier les éléments qui permettent à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre »), sans nouvel avis : | F:55, NEP230 §4 | Fragment exact suivi d'une paraphrase correcte de la liste : résultats/procédures/éléments collectés. Le constat n'est pas présenté comme toute la documentation de mission. Le §4 inclut également planification, identification des éléments testés, problématiques et conclusions : pas remplacés par cette fiche. |"
+    },
+    {
+      "id": "review-claim-unit-5de42e22084b-1-h2a330",
+      "candidateSlug": "cac-reception-fec-constat",
+      "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+      "claimId": "claim-unit-5de42e22084b-1",
+      "claimSha256": "3dfa9aa7502f5d32ba2412e15e98e57cda18281c3ab80b68167d30c5f78b9f97",
+      "sourceId": "h2a330",
+      "sourceContentSha256": "674e5646be4ffc9b0bb60d3f68e91d330e345bef14b115790b9af8de6601c9f4",
+      "citationSha256": "3dfa9aa7502f5d32ba2412e15e98e57cda18281c3ab80b68167d30c5f78b9f97",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Liaison du constat acquis à claim-unit-5de42e22084b-1 (« examen des écritures comptables significatives, y compris des ajustements effectués lors de la clôture des comptes »), sans nouvel avis : | F:63, NEP330 §28 | Fragment exact sur les écritures significatives/ajustements de clôture ; §28 inclut aussi rapprochement comptes/documents et présentation/annexe. Le contrôle de réception est explicitement distinct de l'examen des écritures, pas une réduction des procédures obligatoires à un équilibre de fichier. |"
+    },
+    {
+      "id": "review-claim-unit-bc18e9499a79-1-h2a315",
+      "candidateSlug": "cac-reception-fec-constat",
+      "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+      "claimId": "claim-unit-bc18e9499a79-1",
+      "claimSha256": "2435e7b3a4bb7d85c34628cf733fd937554afccab17b82fd857aa52f7ab35cf9",
+      "sourceId": "h2a315",
+      "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+      "citationSha256": "2435e7b3a4bb7d85c34628cf733fd937554afccab17b82fd857aa52f7ab35cf9",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Liaison du constat acquis à claim-unit-bc18e9499a79-1 (« degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils »), sans nouvel avis : | P:131–135 et F:107–111, NEP315 §46/48 d) | Les deux fragments sur fonctionnement et pertinence/fiabilité sont exacts ; §48 d) exige les éléments d'appréciation au dossier. Le texte fournit une fiche pour préparer l'appréciation, pas une fiche imposée/homologuée par la NEP ni une certification d'outil. Limite de champ : §46 concerne l'identification/évaluation des risques ; pour l'utilisation en réponse aux risques, NEP330 §33/34 e) porte l'exigence correspondante. Sources et paragraphes relus ; ajouter cette qualification au dossier interne de claims. Les formulations publiques ne prétendent pas que §46 est l'unique norme pour toute utilisation. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps."
+    },
+    {
+      "id": "review-claim-unit-bc18e9499a79-2-h2a315",
+      "candidateSlug": "cac-reception-fec-constat",
+      "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+      "claimId": "claim-unit-bc18e9499a79-2",
+      "claimSha256": "fe237d742b9f0950ab7432bb4fcbf94fc08301951cbb13ec9a0ad99a2701741d",
+      "sourceId": "h2a315",
+      "sourceContentSha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac",
+      "citationSha256": "efb45a9aa1eaad0d7a16ba014e59f7294d701ae50171e687bc000441bdef2a02",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Liaison du constat acquis à claim-unit-bc18e9499a79-2 (« la manière dont les outils fonctionnent »), sans nouvel avis : | P:131–135 et F:107–111, NEP315 §46/48 d) | Les deux fragments sur fonctionnement et pertinence/fiabilité sont exacts ; §48 d) exige les éléments d'appréciation au dossier. Le texte fournit une fiche pour préparer l'appréciation, pas une fiche imposée/homologuée par la NEP ni une certification d'outil. Limite de champ : §46 concerne l'identification/évaluation des risques ; pour l'utilisation en réponse aux risques, NEP330 §33/34 e) porte l'exigence correspondante. Sources et paragraphes relus ; ajouter cette qualification au dossier interne de claims. Les formulations publiques ne prétendent pas que §46 est l'unique norme pour toute utilisation. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps."
+    }
+  ]
+}

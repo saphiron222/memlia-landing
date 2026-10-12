@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "799f2ec512c698a3b98adb88c167ebafbc850a78c308243de2481a3db98b2d0c",
+  "manifestSha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact automatiser-un-cabinet-cac-la-carte-des-taches."
+  ],
+  "engine": "html-original",
+  "prompt": "Rendre le cadre HTML original cac-inventaire-taches avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
+  "brief": {
+    "sujet": "Inventaire des tâches du mandat fictif D-004.",
+    "composition": "Fenêtre de registre provenant du cadre cac-inventaire-taches, références de six tâches et états concrets.",
+    "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
+    "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
+    "interdits": "Données réelles, marques de clients, chiffre de gain, verdict sur les comptes.",
+    "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004."
+  },
+  "reviewCriteria": [
+    "provenance HTML explicite",
+    "jeu fictif",
+    "lisibilité",
+    "OG JPG 1200×630"
+  ]
+}

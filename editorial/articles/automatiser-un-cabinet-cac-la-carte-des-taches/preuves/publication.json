@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "kind": "publication-scellee",
+  "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "articleSha256": "116d9cace4b7fe85e8eaaa236128ea392d5b9aa88819b436db390b01fb8f5423",
+  "manifestSha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd",
+  "publishedAt": "2026-10-12",
+  "sealedAt": "2026-10-12T10:42:03.659Z",
+  "files": [
+    {
+      "path": "brief.md",
+      "bytes": 189,
+      "sha256": "98bc2dc5e0d5b2321f11c1af5f337f8e4703138e46f3e077a84aa61f1e1ce7df"
+    },
+    {
+      "path": "claims.json",
+      "bytes": 62019,
+      "sha256": "d8db1453bd58c30bc28f09310c70438c93d1880bb68a314253d8878bc4ef5720"
+    },
+    {
+      "path": "image.json",
+      "bytes": 1668,
+      "sha256": "18552ab670bb3a8ac1f89093d351ebe5bcc13078d5dde400fc28629a77c85333"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 7155,
+      "sha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd"
+    },
+    {
+      "path": "preuves/business-review.json",
+      "bytes": 16431,
+      "sha256": "bf3fe18864762848229fc450dfacd7a9de37213ec124f1d0e12f90fa08088ef0"
+    },
+    {
+      "path": "preuves/image/cadre.sha256",
+      "bytes": 65,
+      "sha256": "dac54c23737ccd7e4cd30a7ee4315167ea6c61ffdd83968891918307a31abf3f"
+    },
+    {
+      "path": "preuves/image/generation.json",
+      "bytes": 1186,
+      "sha256": "b856b28e717bd1dc6bb0691f41bac25e1bbc3022a1f336d148a64135f3124184"
+    },
+    {
+      "path": "preuves/image/hero-768.avif",
+      "bytes": 6087,
+      "sha256": "485e29e5140f32f834347de775b23434ebdf732c05338a664cabdba51f53a9dd"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "bytes": 6324,
+      "sha256": "05a5477ed4e189a747e069fea624007bc6ccb3f0e1d881a9309e18749df54bf5"
+    },
+    {
+      "path": "preuves/image/master.png",
+      "bytes": 138707,
+      "sha256": "22692e0f410356bf4c5911736e992ac7f19403595e1d62cb7b5e59f7bc9bef3b"
+    },
+    {
+      "path": "preuves/image/og.webp",
+      "bytes": 16074,
+      "sha256": "311b0dc2660102b035347799de56ea43df2fb15f57a938f29f26a5a6f87287ae"
+    },
+    {
+      "path": "preuves/image/prompt.json",
+      "bytes": 1355,
+      "sha256": "b41a0c9771838e2eb4cb80f372c1119342f0159caff00addcaa523ee30ffc4fb"
+    },
+    {
+      "path": "preuves/image/visual-review.json",
+      "bytes": 3631,
+      "sha256": "546d612ee27bbaffffe8f30843c869e44c3c78cf4883261d86dbf04f90fc28c7"
+    },
+    {
+      "path": "preuves/research-gsc.json",
+      "bytes": 667,
+      "sha256": "bff155f9af196dc1d9bca401aa4ea76d5ce905acf171f920ce3ffc87e6d78e2c"
+    },
+    {
+      "path": "preuves/research-serp.json",
+      "bytes": 727,
+      "sha256": "a8e67463444ee8328b2dca4fc57d6d84c2371bff75f1420b2e450bf129592134"
+    },
+    {
+      "path": "preuves/review.json",
+      "bytes": 3525,
+      "sha256": "997ae1c25e03a4fc63e92b5cbbeed685f674813cb0240cfc39eaea82c51fa32d"
+    },
+    {
+      "path": "preuves/role.json",
+      "bytes": 484,
+      "sha256": "9449dba2da01ad1a99c422550ac6148b816a4205a23d08576a18df45138ee582"
+    },
+    {
+      "path": "preuves/skills/blog-audit.json",
+      "bytes": 505,
+      "sha256": "50ac34b22201c424370f0ad2eddefd1d309524f9ea7b73cd620a668a24e57d95"
+    },
+    {
+      "path": "preuves/skills/blog-brief.json",
+      "bytes": 570,
+      "sha256": "b36701e8f086dc0be0f9c06bc075a6f0f7c5815e37f1e903c781be6255e29e1f"
+    },
+    {
+      "path": "preuves/skills/blog-cannibalization.json",
+      "bytes": 517,
+      "sha256": "fe8051c9556dcffbae28bb98b0d49077e750488351169861adce57c889cc84af"
+    },
+    {
+      "path": "preuves/skills/blog-factcheck.json",
+      "bytes": 529,
+      "sha256": "1d58ff06d5fad4389921fdd9e711e530b0bff601c3da17007c697f930be99b90"
+    },
+    {
+      "path": "preuves/skills/blog-geo.json",
+      "bytes": 486,
+      "sha256": "e73d3b163c841eac905afe1e234d0582c9a15db253466beb4d414e53631991d9"
+    },
+    {
+      "path": "preuves/skills/blog-image.json",
+      "bytes": 555,
+      "sha256": "fead23d9c6b48ceba681aa49d8dba48626b433cd04ca3844e6a07e0ae7e12a94"
+    },
+    {
+      "path": "preuves/skills/blog-seo-check.json",
+      "bytes": 617,
+      "sha256": "9572a36a29db9afd94f512750b7084ab66cacae4013471de20aaf58e5dc242dc"
+    },
+    {
+      "path": "preuves/skills/blog-write.json",
+      "bytes": 452,
+      "sha256": "8a4e35f2de5813cc302a8130c0eb1155b3943044c403648489fab1bc0a3ec4d4"
+    },
+    {
+      "path": "preuves/skills/seo-audit.json",
+      "bytes": 477,
+      "sha256": "220d5527db9df1c9fdb39b83bf2819deeccd55b6702f8c41d31da9d8c67048cd"
+    },
+    {
+      "path": "preuves/skills/seo-content-brief.json",
+      "bytes": 514,
+      "sha256": "260ad6d9a667e877bac9329677ad5a41ca41b1493b0a432fe4882b2b28ebbb08"
+    },
+    {
+      "path": "preuves/skills/seo-content.json",
+      "bytes": 502,
+      "sha256": "ab7083579e1b7954c865a68178bd96496e3f5d2419796709718d3366b684a653"
+    },
+    {
+      "path": "preuves/skills/seo-images.json",
+      "bytes": 527,
+      "sha256": "23bfecad056a868f0d4b2005496b7481290306b147a476378808e69b84fcd6be"
+    },
+    {
+      "path": "preuves/skills/seo-page.json",
+      "bytes": 557,
+      "sha256": "b982a5198af02d9141c98aa6e37e2c980c1820094ab99e475df86dbef0e43be2"
+    },
+    {
+      "path": "preuves/skills/seo-schema.json",
+      "bytes": 495,
+      "sha256": "5c0f1596c59f1a1e3817b5660a9d5d76556059d683efaf6c8af3006674a658dd"
+    },
+    {
+      "path": "preuves/skills/seo-technical.json",
+      "bytes": 554,
+      "sha256": "5e093fc4f7b814a5b6f4c3dbad20f25008cefc017b23fa7f4d4268b14562b930"
+    },
+    {
+      "path": "preuves/sources/h2a230.classification.json",
+      "bytes": 2614,
+      "sha256": "74193856c2324329a455d91830a257c69248304e6787f2b7b3279f03488980f8"
+    },
+    {
+      "path": "preuves/sources/h2a230.json",
+      "bytes": 1047,
+      "sha256": "d8c7fc6f31202601c8e27461fa4daf4432a772fc1163972f8444b4f102c48900"
+    },
+    {
+      "path": "preuves/sources/h2a230.source.txt",
+      "bytes": 76742,
+      "sha256": "77ab2afdf9a878d3793227323a1f68baff4e6799bb571278ac0f592ac754040e"
+    },
+    {
+      "path": "preuves/sources/h2a315.classification.json",
+      "bytes": 3021,
+      "sha256": "81a5140ad4f499a23ceb40b8ab4c45f4484283c00d6ca3b458b384f6a7dc6c9c"
+    },
+    {
+      "path": "preuves/sources/h2a315.json",
+      "bytes": 1212,
+      "sha256": "2e13ddc1461c290952b4693f1ecf94f3873689f658d0a562e86730f137324103"
+    },
+    {
+      "path": "preuves/sources/h2a315.source.txt",
+      "bytes": 110059,
+      "sha256": "d43cb7c3ac35bc46a041a9518b5b317318e4ecbbe626a93c7e4ede3b707f8fac"
+    },
+    {
+      "path": "preuves/sources/h2a330.classification.json",
+      "bytes": 2924,
+      "sha256": "e7c27dea66d8bec04a0718b67649cdc73550ea1f6ebe0ffa98a187b58bf6fde6"
+    },
+    {
+      "path": "preuves/sources/h2a330.json",
+      "bytes": 1175,
+      "sha256": "db0e9bc5c00d52ef20aeabe4c5a0a16c26762260b1f2640b03fb82f8a4df86d5"
+    },
+    {
+      "path": "preuves/sources/h2a330.source.txt",
+      "bytes": 92058,
+      "sha256": "674e5646be4ffc9b0bb60d3f68e91d330e345bef14b115790b9af8de6601c9f4"
+    },
+    {
+      "path": "preuves/sources/h2a505.classification.json",
+      "bytes": 2613,
+      "sha256": "b6580acc529dc2c1b82f25038ff95c3ebabc98e7cfc7f131c5f41928f45180b0"
+    },
+    {
+      "path": "preuves/sources/h2a505.json",
+      "bytes": 945,
+      "sha256": "e5c6da7572ea0bd46d48f0899cf43aaf0fc70819308b92623d26f62fc08c3cfb"
+    },
+    {
+      "path": "preuves/sources/h2a505.source.txt",
+      "bytes": 76123,
+      "sha256": "08e45b56cb909e85f4ebe0984594816c3413d886aba5e2daad63bd0f10e6e4f7"
+    },
+    {
+      "path": "review.json",
+      "bytes": 458,
+      "sha256": "4b9b449bd0d00e1ba302dc1e8fc11355e7737b476f4b9379e3561e962c81fb2b"
+    },
+    {
+      "path": "skills.json",
+      "bytes": 16373,
+      "sha256": "262c35dcc87934731479b9694c07957ba0da867e956d762d58ffb42403d3c484"
+    }
+  ]
+}

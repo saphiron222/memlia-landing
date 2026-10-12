@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "799f2ec512c698a3b98adb88c167ebafbc850a78c308243de2481a3db98b2d0c",
+  "manifestSha256": "c11823303146dce5ebc507e755283acecb2971d55e48e99eec5e0f074227a3bd",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact automatiser-un-cabinet-cac-la-carte-des-taches."
+  ],
+  "reviewer": "relecteur-metier-ia-memlia",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Corps:3,35–48,137–141 : réponse avant vente, huit familles entrée/sortie/décision et trois questions pour choisir une tâche CAC ; distinction EC/CAC explicite. L’intention décider est satisfaite dans ce périmètre, pas sélection d’un logiciel ou audit automatique."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Pilier d’organisation adapté au choix d’un geste, tutoriel FEC lié réciproquement ; recherche12/10 montre des formats EC/fiscal/audit mêlés et rend la différenciation nécessaire. Rankability plausible reste une hypothèse : aucune SERP Google calibrée, difficulté, volume, position ni absence totale de cannibalisation prouvés."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Sources officielles proches des citations, soutien et portées conservés de l’avis11/10. Auteur visible/JSON-LD Kevin Kitanga, fondateur de Memlia sans titre CAC attribué ; fiction et limites déclarées, sans témoignage client ni autorité réglementaire déduite."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Carte entrée/sortie/décision, règle écrite et quatre cas acquis de préparation/refus/conflit utiles à choisir et recetter une tâche. Contribution humaine distincte ; preuves locales illustratives, pas automatisation CAC livrée ni suffisance des diligences."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter, BlogPosting/Person/BreadcrumbList cohérents ; corps et tables statiques, liens/fragments et srcset locaux vérifiés. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex attendu du brouillon ; production, sitemap, Lighthouse/CWV non attestés."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Définitions autonomes tâche/règle/proposition, tables à en-têtes et références NEP au passage utile ; limites du jeu fictif présentes à proximité. Extractibilité observée, pas citation effective ni probabilité ; la fiche ne se cite pas comme modèle homologué."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "CTA principal Confier une première tâche vers /contact après réponse utile ; méthode/garanties et satellite contextuels. Description du geste plutôt qu’envoi de données, tâches construites puis recettées et opinion conservée au cabinet ; efficacité commerciale inconnue."
+      ]
+    }
+  ]
+}

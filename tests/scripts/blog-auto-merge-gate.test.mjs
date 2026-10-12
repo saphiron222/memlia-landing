@@ -85,6 +85,8 @@ test('merge requires a pristine installed main checkout at the expected base', (
 test('CLI validates the PR #3 policy blob and refuses merge from a candidate checkout', () => {
   const dir = mkdtempSync(path.join(tmpdir(), 'blog-merge-refusal-'));
   try {
+    // Les doubles de CLI utilisent CommonJS, même dans un TMPDIR du projet ESM.
+    writeFileSync(path.join(dir, 'package.json'), JSON.stringify({ type: 'commonjs' }));
     const bin = path.join(dir, 'bin');
     mkdirSync(bin);
     const payload = proof();
@@ -123,7 +125,8 @@ else process.exit(7);
     assert.equal(runGate().status, 2);
     payload.policyBlobSha = 'b3b1d575a4405d9288ff8d2f1842d8faa2950535';
     writeFileSync(path.join(dir, 'evidence.json'), JSON.stringify(payload));
-    assert.equal(runGate().status, 0);
+    const valid = runGate();
+    assert.equal(valid.status, 0, `${valid.stdout}\n${valid.stderr}`);
     const run = runGate(true);
     assert.equal(run.status, 2, run.stderr);
     assert.match(run.stderr, /clean, current main checkout/);

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "candidateSlug": "cac-reception-fec-constat",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
+  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact cac-reception-fec-constat."
+  ],
+  "reviewer": "relecteur-metier-ia-memlia",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Corps:3,21–77 : réception/versionnement avec prérequis et quatre gestes exécutables, sans écraser les références/commentaires. Titre CAC, réponse et FAQ bornent fec contrôle au constat, pas à tous les sens de la requête ni au validateur fiscal complet."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Tutoriel de réception adapté à ce besoin, distinct de l’analyse d’écritures/fiscal et du pilier choix de tâche lié réciproquement. Recherche12/10 éclaire ces intentions mêlées ; plausible est une hypothèse qualitative, sans SERP Google calibrée, difficulté, volume ou position démontrés."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Références officielles au bon passage, soutien/conditions NEP acquis conservés. HTML/JSON-LD attribuent l’article à Kevin Kitanga, fondateur de Memlia, sans titre CAC ; JSON fictif et contrôles limités affichés, pas expérience client ou habilitation normative déduite."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Champs de constat, séparation anomalie technique/question de mission et trois cas acquis montrent pourquoi équilibre nul ne suffit pas face à une mauvaise période. Aucun parseur FEC, contrôle complet des colonnes, exhaustivité ou opinion issus du banc ; ce sont des preuves éditoriales utiles et bornées."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter et BlogPosting/Person/BreadcrumbList cohérents ; tables statiques et liens/fragments/srcset locaux résolus. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex de preview attendu ; production, sitemap et Lighthouse/CWV restent inconnus."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "FEC/constat/version définis en phrases autonomes, tableaux à en-têtes, sources proches et limite JSON explicite près du résultat/FAQ. Extractibilité vérifiable, pas probabilité de citation ni citation observée ; un total nul ne doit pas être extrait comme conclusion sur les comptes."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "CTA principal Confier cette tâche vers /contact, liens méthode/garanties/pilier utiles ; réponse avant vente et demande de description plutôt que données client. Service de constat/références/refus dans les outils, examen et opinion conservés ; conversion effective non mesurée."
+      ]
+    }
+  ]
+}

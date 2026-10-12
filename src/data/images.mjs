@@ -197,6 +197,20 @@ export const IMAGES = {
     alt: "Deux plans de travail verts reliés par un cadre, sur des supports graphite et un fond crème",
     generee: true,
   },
+  'img-art-cac-carte-taches': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+    generee: true,
+  },
+  'img-art-cac-fec-reception': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -204,6 +218,8 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-cac-fec-reception',
+  'img-art-cac-carte-taches',
   'img-art-ia-comptabilite-confidentialite-donnees',
   'img-art-automatiser-avec-ia-sans-changer-logiciel',
   'img-art-verifier-reponse-ia-comptabilite',

@@ -3,6 +3,14 @@
  * cette table relie chaque intention informationnelle à une seule page commerciale.
  */
 export const LIENS_COMMERCIAUX_BLOG = Object.freeze({
+  'automatiser-un-cabinet-cac-la-carte-des-taches': Object.freeze({
+    href: '/commissaires-aux-comptes',
+    label: 'Voir comment cadrer une tâche du cabinet CAC',
+  }),
+  'cac-reception-fec-constat': Object.freeze({
+    href: '/commissaires-aux-comptes',
+    label: 'Voir la préparation des tâches en cabinet CAC',
+  }),
   'automatiser-avec-ia-sans-changer-logiciel': Object.freeze({
     href: '/automatisation-cabinet-comptable',
     label: 'Voir comment automatiser un passage dans vos outils',

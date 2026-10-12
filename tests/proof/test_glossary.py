@@ -268,7 +268,8 @@ class GlossaryProof(unittest.TestCase):
             self.assertEqual(hashlib.sha256(editorial.encode()).hexdigest(), review['subject']['articleSha256'], article.stem)
         # Le glossaire ne renvoie qu'a des articles publies, et garde ses renvois historiques vers les
         # deux articles paie et social qu'il citait avant leur entree dans la forge.
-        linked = set(re.findall(r'href="/blog/([a-z0-9-]+)"', self.html))
+        main = re.search(r'<main\b[^>]*>(.*?)</main>', self.html, re.S).group(1)
+        linked = set(re.findall(r'href="/blog/([a-z0-9-]+)"', main))
         self.assertTrue(linked <= {article.stem for article in published}, linked)
         for slug in ('controler-les-bulletins-de-paie-avant-la-dsn', 'suivre-la-production-sociale-dans-excel'):
             self.assertIn(slug, linked)

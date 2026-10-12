@@ -24,10 +24,17 @@
   ],
   "articles": [
     {
-      "slug": "comparateur-balances-comptables", "type": "outil",
+      "slug": "comparateur-balances-comptables",
+      "type": "outil",
       "url": "https://memlia.fr/outils-comptables-gratuits/comparateur-balances-comptables",
-      "requete": "comparateur balance comptable", "secondaires": ["comparaison balance n n-1", "variation solde compte CSV"],
-      "famille": "outils-comptables", "format": "web-application", "publieLe": null,
+      "requete": "comparateur balance comptable",
+      "secondaires": [
+        "comparaison balance n n-1",
+        "variation solde compte CSV"
+      ],
+      "famille": "outils-comptables",
+      "format": "web-application",
+      "publieLe": null,
       "titreOnglet": "Comparateur de balances comptables N et N−1 | Memlia",
       "source": "Fiche EC 05 ; sondes réelles G3 du 06/10 copiées dans outils-ec-vague-4. Primaire sans suggestion, demande faible explicitée. Candidat non publié, trafic et conversions ND."
     },
@@ -675,6 +682,30 @@
       "famille": "bulletins-controle",
       "publieLe": "2026-10-10",
       "source": "recette-service-publiee"
+    },
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "requete": "automatisation cabinet audit",
+      "secondaires": [],
+      "famille": "cac-dossier-de-travail",
+      "format": "pillar-page",
+      "publieLe": "2026-10-12",
+      "titreOnglet": "Automatisation cabinet audit : carte des tâches | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "url": "https://memlia.fr/blog/cac-reception-fec-constat",
+      "requete": "fec contrôle",
+      "secondaires": [],
+      "famille": "cac-fec-reception",
+      "format": "tutorial",
+      "publieLe": "2026-10-12",
+      "titreOnglet": "FEC contrôle : constat de réception CAC | Memlia",
+      "source": "frontmatter",
+      "type": "blog"
     }
   ]
 }

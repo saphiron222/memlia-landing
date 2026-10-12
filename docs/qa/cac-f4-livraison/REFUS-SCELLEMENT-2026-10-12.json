@@ -1,0 +1,58 @@
+{
+  "observedAt": "2026-10-12T07:53:45.511Z",
+  "readOnly": true,
+  "sourceNetworkRequests": 0,
+  "results": [
+    {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "cluster": "certification",
+      "author": "kevin",
+      "editorialReviewer": "relecteur-metier-ia-memlia",
+      "businessReviewer": "relecteur-metier-ia-memlia",
+      "historicalReview": {
+        "cardId": "t_8bb28890",
+        "reviewedAt": "2026-10-11",
+        "verdict": "PASS AVEC RÉSERVES"
+      },
+      "pass": false,
+      "errors": [
+        "cluster doit valoir production-comptable | portefeuille-echeances | paie-social | juridique-fiscal | audit-cac | administratif-secretariat | facturation-recouvrement | rh-formation | excel-outils-existants | numerique-it-data | methode-decision-humaine | conseil-missions.",
+        "claims[9].factCheck.sourceResults.h2a315.context est absent, hors de la copie vérifiée ou ne contient pas l’extrait exact.",
+        "La revue métier doit être portée par une identité distincte de l’auteur et du reviewer éditorial.",
+        "Le lien entrant depuis /blog vers /blog/automatiser-un-cabinet-cac-la-carte-des-taches est absent."
+      ],
+      "rejectedContexts": [
+        {
+          "index": 9,
+          "claimId": "claim-unit-77849f5f3eff-3",
+          "sourceId": "h2a315",
+          "excerpt": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+          "excerptInVerifiedCopy": true,
+          "rawContextContainsExcerpt": true,
+          "ordinaryExtraction": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+          "context": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>",
+          "rejectedByGate": true
+        }
+      ]
+    },
+    {
+      "slug": "cac-reception-fec-constat",
+      "cluster": "certification",
+      "author": "kevin",
+      "editorialReviewer": "relecteur-metier-ia-memlia",
+      "businessReviewer": "relecteur-metier-ia-memlia",
+      "historicalReview": {
+        "cardId": "t_8bb28890",
+        "reviewedAt": "2026-10-11",
+        "verdict": "PASS AVEC RÉSERVES"
+      },
+      "pass": false,
+      "errors": [
+        "cluster doit valoir production-comptable | portefeuille-echeances | paie-social | juridique-fiscal | audit-cac | administratif-secretariat | facturation-recouvrement | rh-formation | excel-outils-existants | numerique-it-data | methode-decision-humaine | conseil-missions.",
+        "La revue métier doit être portée par une identité distincte de l’auteur et du reviewer éditorial.",
+        "Le lien entrant depuis /blog vers /blog/cac-reception-fec-constat est absent."
+      ],
+      "rejectedContexts": []
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "date": "2026-10-10",
+  "date": "2026-10-12",
   "seed": "automatisation cabinet comptable",
   "methode": "backlog de quatre angles par famille (méthode, contrôle ou checklist, exceptions et refus, définition), 67 familles et 13 pôles actifs dans ce plan (12 pôles dans la taxonomie EC historique, 5 pôles CAC dont durabilité inactive) ; cadence de 15 articles ordinaires par semaine ISO, 3 par jour au plus du lundi au vendredi, EC et CAC confondus, plus 1 Cicatrice le samedi ; maillage pilier ↔ satellite et 2 liens cycliques par famille ; priorités fondées sur les suggestions d'autocomplétion Google des formulations testées (704 amorces au relevé du 19/09/2026, scripts/seo/questions.mjs). Les 59 pages de résultats DataForSEO ont été relevées par famille, pas par angle ; elles éclairent l'intention à vérifier, sans mesurer la demande ni le volume de chaque angle. Aucune suggestion relevée ne prouve une absence de demande ; confronter SERP, intention cabinet et Search Console avant de réécrire ou d'écarter. --check contrôle les P1 du backlog, publiées comprises, sans réécrire les publications : date et signal primaire positif, ou exception du seul angle IA publié avec requête primaire à zéro le 21/09 (titres-intent), secondaires non mesurées et questions identiques à la SERP par famille du 19/09 (questions) ; les trois articles historiques synthétiques et la série restent hors gate",
   "pillar": {
@@ -384,7 +384,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-19",
+          "date": "2026-10-16",
           "missedDate": null,
           "secondaryKeywords": [
             "clé de rapprochement bancaire définition",
@@ -2531,7 +2531,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-20",
+          "date": "2026-10-21",
           "missedDate": null,
           "secondaryKeywords": [
             "crm dsn substitution net entreprise",
@@ -2619,7 +2619,7 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-16",
+          "date": "2026-10-19",
           "missedDate": null,
           "secondaryKeywords": [
             "checklist sortie salarié documents obligatoires",
@@ -3744,7 +3744,7 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-21",
+          "date": "2026-10-16",
           "missedDate": null,
           "secondaryKeywords": [
             "délai déclaration bénéficiaire effectif greffe",
@@ -4524,7 +4524,7 @@
           "intent": "executer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-12",
+          "date": "2026-10-14",
           "missedDate": null,
           "secondaryKeywords": [
             "pièces d'entrée en relation cabinet comptable",
@@ -5838,7 +5838,7 @@
           "officialSources": [
             "aucune"
           ],
-          "status": "planned",
+          "status": "manque",
           "incomingLinks": 3
         },
         {
@@ -7474,7 +7474,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-16",
+          "date": "2026-10-20",
           "missedDate": null,
           "secondaryKeywords": [],
           "proof": "Fichier fictif valide structurellement avec anomalies de fond laissées à la mission",
@@ -8051,7 +8051,7 @@
           "intent": "decider",
           "funnel": "MOFU",
           "priority": 3,
-          "date": "2026-10-14",
+          "date": "2026-10-12",
           "missedDate": null,
           "secondaryKeywords": [],
           "proof": "Carte des gestes C1 croisés C2 ; aucune opinion automatisée",
@@ -15127,7 +15127,7 @@
   ],
   "meta": {
     "totalPosts": 283,
-    "plannedPosts": 266,
+    "plannedPosts": 265,
     "publishedPosts": 15,
     "totalClusters": 13,
     "totalFamilies": 67,
