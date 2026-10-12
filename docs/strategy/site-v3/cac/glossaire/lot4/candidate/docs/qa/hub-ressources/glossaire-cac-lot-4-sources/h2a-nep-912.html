@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie7 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8 lt-ie9"> <![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+
+<html class="no-js" lang="fr" prefix="og: http://ogp.me/ns#"><!--<![endif]-->
+<head><meta charset="utf-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="1.2.5.1",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this.t.bind(this),this.touchStartHandler=this.i.bind(this),this.touchMoveHandler=this.o.bind(this),this.touchEndHandler=this.h.bind(this),this.clickHandler=this.u.bind(this),this.interceptedClicks=[],this.interceptedClickListeners=[],this.l(this),window.addEventListener("pageshow",(t=>{this.persisted=t.persisted,this.everythingLoaded&&this.m()})),document.addEventListener("DOMContentLoaded",(()=>{this.p()})),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}k(t){document.hidden?t.t():(this.triggerEvents.forEach((e=>window.addEventListener(e,t.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler))}_(){this.triggerEvents.forEach((t=>window.removeEventListener(t,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}i(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this.L(t.target,!0),this.M(t.target,"onclick","rocket-onclick"),this.C())}o(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this.L(t.target,!1),this.M(t.target,"rocket-onclick","onclick"),this.O()}h(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}u(t){t.target.removeEventListener("click",this.clickHandler),this.L(t.target,!1),this.M(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this.O()}D(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))}))}l(t){EventTarget.prototype.addEventListenerBase=EventTarget.prototype.addEventListener,EventTarget.prototype.addEventListener=function(e,i,o){"click"!==e||t.windowLoaded||i===t.clickHandler||t.interceptedClickListeners.push({target:this,func:i,options:o}),(this||window).addEventListenerBase(e,i,o)}}L(t,e){this.interceptedClickListeners.forEach((i=>{i.target===t&&(e?t.removeEventListener("click",i.func,i.options):t.addEventListener("click",i.func,i.options))})),t.parentNode!==document.documentElement&&this.L(t.parentNode,e)}S(){return new Promise((t=>{this.T?this.O=t:t()}))}C(){this.T=!0}O(){this.T=!1}M(t,e,i){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(i,event.target.getAttribute(e)),event.target.removeAttribute(e))}t(){this._(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this.R.bind(this)):this.R()}p(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach((e=>{let i=e.getAttribute("data-rocket-src");if(i&&0!==i.indexOf("data:")){0===i.indexOf("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}})),t=[...new Map(t.map((t=>[JSON.stringify(t),t]))).values()],this.j(t,"preconnect")}async R(){this.lastBreath=Date.now(),this.P(this),this.F(this),this.q(),this.A(),this.I(),await this.U(this.delayedScripts.normal),await this.U(this.delayedScripts.defer),await this.U(this.delayedScripts.async);try{await this.W(),await this.H(this),await this.J()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.S().then((()=>{this.D()})),this.N()}A(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)}))}async B(t){if(await this.G(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise((e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)i=document.createElement("script"),[...t.attributes].forEach((t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))})),t.text&&(i.text=t.text),i.hasAttribute("src")?(i.addEventListener("load",o),i.addEventListener("error",(function(){i.setAttribute("data-rocket-status","failed"),e()})),setTimeout((()=>{i.isConnected||e()}),1)):(i.text=t.text,o()),t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o),t.addEventListener("error",(function(){t.setAttribute("data-rocket-status","failed"),e()})),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed"),e()}}));t.setAttribute("data-rocket-status","skipped")}async U(t){const e=t.shift();return e&&e.isConnected?(await this.B(e),this.U(t)):Promise.resolve()}I(){this.j([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}j(t,e){var i=document.createDocumentFragment();t.forEach((t=>{const o=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(o){const n=document.createElement("link");n.href=o,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),i.appendChild(n),this.trash.push(n)}})),document.head.appendChild(i)}P(t){let e={};function i(i,o){return e[o].eventsToRewrite.indexOf(i)>=0&&!t.everythingLoaded?"rocket-"+i:i}function o(t,o){!function(t){e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=i(arguments[0],t),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=i(arguments[0],t),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(o)}function n(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o||function(){},set(n){t.everythingLoaded?o=n:e["rocket"+i]=o=n}})}o(document,"DOMContentLoaded"),o(window,"DOMContentLoaded"),o(window,"load"),o(window,"pageshow"),o(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}F(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map((t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t)).join(" ")}function o(o){if(o&&o.fn&&!t.allJQueries.includes(o)){o.fn.ready=o.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(o):document.addEventListener("rocket-DOMContentLoaded",(()=>e.bind(document)(o))),o([])};const e=o.fn.on;o.fn.on=o.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e}))),e.apply(this,arguments),this},t.allJQueries.push(o)}e=o}o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}async H(t){const e=document.querySelector("script[data-webpack]");e&&(await async function(){return new Promise((t=>{e.addEventListener("load",t),e.addEventListener("error",t)}))}(),await t.K(),await t.H(t))}async W(){this.domReadyFired=!0,await this.G(),document.dispatchEvent(new Event("rocket-readystatechange")),await this.G(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.G(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.G(),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}async J(){await this.G(),document.dispatchEvent(new Event("rocket-readystatechange")),await this.G(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.G(),window.dispatchEvent(new Event("rocket-load")),await this.G(),window.rocketonload&&window.rocketonload(),await this.G(),this.allJQueries.forEach((t=>t(window).trigger("rocket-jquery-load"))),await this.G();const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.G(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted}),this.windowLoaded=!0}m(){document.onreadystatechange&&document.onreadystatechange(),window.onload&&window.onload(),window.onpageshow&&window.onpageshow({persisted:this.persisted})}q(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript;i||console.error("WPRocket unable to document.write this: "+e);const o=document.createRange(),n=i.parentElement;let s=t.get(i);void 0===s&&(s=i.nextSibling,t.set(i,s));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),n.insertBefore(c,s)}}async G(){Date.now()-this.lastBreath>45&&(await this.K(),this.lastBreath=Date.now())}async K(){return document.hidden?new Promise((t=>setTimeout(t))):new Promise((t=>requestAnimationFrame(t)))}N(){this.trash.forEach((t=>t.remove()))}static run(){const t=new RocketLazyLoadScripts;t.k(t)}}RocketLazyLoadScripts.run()})();</script>
+    <!-- start head.tpl.html-->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<script type="rocketlazyloadscript">
+		var tarteaucitronForceLanguage = "fr";
+		</script><script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://tarteaucitron.io/load.js?locale=fr&iswordpress=true&domain=h2a-france.org&uuid=c6c2eb8506a0692140058909cc522ad6d89ad51d" defer></script>
+	<!-- This site is optimized with the Yoast SEO plugin v22.8 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises - H2A - Haute Autorité de l&#039;audit</title>
+	<link rel="canonical" href="https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises - H2A - Haute Autorité de l&#039;audit" />
+	<meta property="og:url" content="https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/" />
+	<meta property="og:site_name" content="H2A - Haute Autorité de l&#039;audit" />
+	<meta property="article:modified_time" content="2026-07-30T09:39:16+00:00" />
+	<meta property="og:image" content="https://h2a-france.org/wp-content/uploads/2024/01/H2A_Logotype-bandeau-couleurs-transparent@2x-RVB.png" />
+	<meta property="og:image:width" content="1646" />
+	<meta property="og:image:height" content="399" />
+	<meta property="og:image:type" content="image/png" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@H3C_actu" />
+	<meta name="twitter:label1" content="Durée de lecture estimée" />
+	<meta name="twitter:data1" content="22 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/","url":"https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/","name":"Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises - H2A - Haute Autorité de l&#039;audit","isPartOf":{"@id":"https://h2a-france.org/#website"},"datePublished":"2026-07-26T12:50:33+00:00","dateModified":"2026-07-30T09:39:16+00:00","breadcrumb":{"@id":"https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/#breadcrumb"},"inLanguage":"fr-FR","potentialAction":[{"@type":"ReadAction","target":["https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/"]}]},{"@type":"BreadcrumbList","@id":"https://h2a-france.org/normes/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://h2a-france.org/"},{"@type":"ListItem","position":2,"name":"Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises"}]},{"@type":"WebSite","@id":"https://h2a-france.org/#website","url":"https://h2a-france.org/","name":"H2A - Haute Autorité de l&#039;audit","description":"Le site de la Haute Autorité de l&#039;Audit","publisher":{"@id":"https://h2a-france.org/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://h2a-france.org/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"fr-FR"},{"@type":"Organization","@id":"https://h2a-france.org/#organization","name":"H2A","url":"https://h2a-france.org/","logo":{"@type":"ImageObject","inLanguage":"fr-FR","@id":"https://h2a-france.org/#/schema/logo/image/","url":"https://h2a-france.org/wp-content/uploads/2024/01/H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423.jpg","contentUrl":"https://h2a-france.org/wp-content/uploads/2024/01/H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423.jpg","width":400,"height":400,"caption":"H2A"},"image":{"@id":"https://h2a-france.org/#/schema/logo/image/"},"sameAs":["https://x.com/H3C_actu"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+
+<link rel="alternate" type="application/rss+xml" title="H2A - Haute Autorité de l&#039;audit &raquo; Flux" href="https://h2a-france.org/feed/" />
+<link data-minify="1" rel='stylesheet' id='gutenberg-pdfjs-css' href='https://h2a-france.org/wp-content/cache/min/1/wp-content/plugins/pdfjs-viewer-shortcode/blocks/dist/style.css?ver=1789979210' media='all' />
+<link data-minify="1" rel='stylesheet' id='contact-form-7-css' href='https://h2a-france.org/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1789979210' media='all' />
+<link rel='stylesheet' id='wpcf7-redirect-script-frontend-css' href='https://h2a-france.org/wp-content/plugins/wpcf7-redirect/build/css/wpcf7-redirect-frontend.min.css' media='all' />
+<link data-minify="1" rel='stylesheet' id='cf7cf-style-css' href='https://h2a-france.org/wp-content/cache/min/1/wp-content/plugins/cf7-conditional-fields/style.css?ver=1789979210' media='all' />
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js" defer></script>
+<link rel="https://api.w.org/" href="https://h2a-france.org/wp-json/" /><link rel="alternate" type="application/json" href="https://h2a-france.org/wp-json/wp/v2/normes/84003" /><link rel="alternate" type="application/json+oembed" href="https://h2a-france.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fh2a-france.org%2Fnormes%2Fmission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://h2a-france.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fh2a-france.org%2Fnormes%2Fmission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises%2F&#038;format=xml" />
+<meta name="generator" content="WPML ver:4.6.11 stt:1,4;" />
+<link rel="icon" href="https://h2a-france.org/wp-content/uploads/2024/01/cropped-H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://h2a-france.org/wp-content/uploads/2024/01/cropped-H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://h2a-france.org/wp-content/uploads/2024/01/cropped-H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://h2a-france.org/wp-content/uploads/2024/01/cropped-H2A_Symbole-logo-couleurs-fond-blanc@2x-RVB-e1706718679423-270x270.jpg" />
+		<style id="wp-custom-css">
+			.wpcf7 input[type="submit"],
+.wpcf7 .wpcf7-submit {
+    background-color: #495c86; /* couleur de fond */
+}		</style>
+		<noscript><style>.perfmatters-lazy[data-src]{display:none !important;}</style></noscript><style>.perfmatters-lazy-youtube{position:relative;width:100%;max-width:100%;height:0;padding-bottom:56.23%;overflow:hidden}.perfmatters-lazy-youtube img{position:absolute;top:0;right:0;bottom:0;left:0;display:block;width:100%;max-width:100%;height:auto;margin:auto;border:none;cursor:pointer;transition:.5s all;-webkit-transition:.5s all;-moz-transition:.5s all}.perfmatters-lazy-youtube img:hover{-webkit-filter:brightness(75%)}.perfmatters-lazy-youtube .play{position:absolute;top:50%;left:50%;right:auto;width:68px;height:48px;margin-left:-34px;margin-top:-24px;background:url(https://h2a-france.org/wp-content/plugins/perfmatters/img/youtube.svg) no-repeat;background-position:center;background-size:cover;pointer-events:none;filter:grayscale(1)}.perfmatters-lazy-youtube:hover .play{filter:grayscale(0)}.perfmatters-lazy-youtube iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99}.wp-has-aspect-ratio .wp-block-embed__wrapper{position:relative;}.wp-has-aspect-ratio .perfmatters-lazy-youtube{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;padding-bottom:0}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1" id="viewport-meta"/>
+    <link rel="icon" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon.ico"/>
+    <link rel="shortcut icon" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon-32.png" type="image/png">
+    <link rel="icon" sizes="64x64" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon-64.png" type="image/png">
+    <link rel="icon" sizes="96x96" href="https://h2a-france.org/wp-content/themes/h2a-france/favicon-96.png" type="image/png">
+    <!-- /////// -->
+    <!--   CSS   -->
+    <!-- /////// -->
+    <!-- My CSS -->
+    <link data-minify="1" rel="stylesheet" type="text/css" href="https://h2a-france.org/wp-content/cache/min/1/wp-content/themes/h2a-france/assets-front/css/critical.css?ver=1789979210"/>
+    
+    <!-- //////// -->
+    <!--   /CSS   -->
+    <!-- //////// -->
+
+    <!-- /////// -->
+    <!-- SCRIPTS -->
+    <!-- /////// -->
+    <!--[if lte IE 9]>
+    <script type="text/javascript" src="https://h2a-france.org/wp-content/themes/h2a-france/assets-front/js/specifics/fallbacks/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+<!--    <script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="//polyfill.io/v3/polyfill.min.js?features=Object.assign%2CrequestAnimationFrame%2CElement.prototype.classList%2CFunction.prototype.bind%2CObject.keys"></script>-->
+    <!-- jQuery -->
+<!--    <script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="//code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<!--    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="https://h2a-france.org/wp-content/themes/h2a-france/assets-front/js/specifics/fallbacks/jquery-3.4.1.min.js">\x3C/script>');</script>-->
+
+    <!-- SCRIPTS -->
+    <!-- /////// -->
+
+    <!-- end head.tpl.html-->
+    </head>
+<body class="norme-detail ">
+<div class="global-wrapper">
+
+    <!--[if lt IE 10]>
+    <div class="browsehappy">
+        <div class="site-content">
+            <p>Vous utilisez un <strong>ancien</strong> navigateur. Ce site risque de ne pas s'afficher correctement. <a href="http://browsehappy.com/">Mettez à jour votre navigateur</a> pour améliorer votre expérience.</p>
+        </div>
+    </div>
+    <![endif]-->
+    <ul class="skip-links">
+        <li><a href="#anchor-content">Aller au contenu</a></li>
+    </ul>
+    <!-- start header.tpl.html-->
+    <header role="banner" class="page-header-wrapper">
+
+        <div class="site-content">
+
+            <div class="header-left">
+                <div class="logo-header">
+                                        <a href="/" aria-label="H2A - Haute autorité de l'audit">
+                        <svg enable-background="new 0 0 806.7 189.5" version="1.1" viewBox="0 0 806.7 189.5" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                            <path class="st0" d="m332 74.8h3.3v11.2h11.2v-11.2h3.4v25.8h-3.3v-11.2h-11.2v11.2h-3.4-0.1l0.1-25.8z"/>
+                            <path class="st0" d="m367.3 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.4 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.6-3.8h3.2zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-1.9 4.8-0.7 1.5-1.7 3.8-2.9 6.8z"/>
+                            <path class="st0" d="m381.4 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.6 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8l-0.1-16.5z"/>
+                            <path class="st0" d="m422 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                            <path class="st0" d="m425.3 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7z"/>
+                            <path class="st0" d="m464.4 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.4 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.6-3.8h3.2zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-2 4.8-0.6 1.5-1.5 3.8-2.8 6.8z"/>
+                            <path class="st0" d="m478.5 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.5 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8v-16.5z"/>
+                            <path class="st0" d="m519.1 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.8v-3.4h17.1z"/>
+                            <path class="st0" d="m533.5 74.8c3.5 0 6.5 1.3 9 4 2.3 2.6 3.4 5.6 3.4 8.9 0 3.7-1.3 6.8-4 9.5-2.5 2.3-5.3 3.4-8.4 3.4s-5.9-1.1-8.3-3.3c-1.1-1.1-1.8-2-2.1-2.7-1.3-2.1-2-4.5-2-7v-0.1c0-3.7 1.4-6.8 4.1-9.6 0.3-0.2 0.7-0.5 1.2-0.9 2.2-1.5 4.6-2.2 7.1-2.2zm-9 12.9c0 2.8 1.1 5.2 3.2 7.3 1.7 1.5 3.7 2.3 5.9 2.3 2.8 0 5.2-1.2 7.1-3.8 1.2-1.8 1.8-3.7 1.8-5.6v-0.2c0-2.4-0.8-4.6-2.5-6.5-1.9-2-4-2.9-6.5-2.9-2.7 0-5 1.2-7 3.5-1.3 1.7-2 3.7-2 5.9z"/>
+                            <path class="st0" d="m550.7 74.8h8.5c2.7 0 5 1 7 3.1 1.4 1.7 2 3.5 2 5.4 0 2.4-1 4.5-2.9 6.3-1 0.8-2 1.4-2.7 1.6 0 0.1 1.1 2.1 3.4 6 0.5 0.8 1.1 1.9 2 3.4h-4s-0.4-0.6-1-1.7c-2.5-4.4-3.9-6.8-4-7.1h-4.9v8.8h-3.3-0.1v-25.8zm3.4 3.4v10.2h5.3c1.7 0 3.2-0.7 4.4-2.1 0.7-0.9 1-1.9 1-2.9v-0.2c0-1.5-0.7-2.8-2.2-4-0.9-0.7-2.2-1-3.8-1h-4.7z"/>
+                            <path class="st0" d="m572.2 74.8h3.4v25.9h-3.4v-25.9z"/>
+                            <path class="st0" d="m596 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                            <path class="st0" d="m599.3 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7zm11.3-7.1c-1.1 0.7-3.4 2.1-6.8 4.1-0.3-0.5-0.9-1.4-1.8-2.9 1.1-0.7 3.4-2.1 6.8-4.1 0.3 0.5 0.9 1.4 1.8 2.9z"/>
+                            <path class="st0" d="m627.2 74.8h6.7c3.1 0 5.9 1.1 8.5 3.2 1 0.9 1.6 1.6 1.9 2 1.7 2.4 2.6 4.9 2.6 7.7v0.2c0 3.4-1.3 6.5-3.9 9.2-1.4 1.3-2.8 2.2-4.2 2.7-1.6 0.6-3.1 0.9-4.6 0.9h-6.9-0.1v-25.9zm3.4 3.4v19h3.1c3 0 5.5-1.1 7.5-3.4 1.5-1.8 2.3-3.9 2.3-6.2s-0.8-4.4-2.4-6.3c-0.9-1-1.6-1.6-2.2-1.8-0.5-0.3-1.2-0.7-2.2-1-0.9-0.3-2-0.4-3.5-0.4l-2.6 0.1z"/>
+                            <path class="st0" d="m651.6 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7z"/>
+                            <path class="st0" d="m679.5 74.8h3.4v22.5h11.2v3.4h-14.6v-25.9z"/>
+                            <path class="st0" d="m699.7 71.4c0.6 0 1.1 0.3 1.5 0.8 0.2 0.3 0.3 0.8 0.3 1.3 0 1.4-0.8 2.9-2.5 4.4-0.5 0.4-0.8 0.7-1 0.7-0.1-0.2-0.4-0.5-0.7-0.9 1.2-1.1 1.8-2.1 1.8-3-0.4-0.2-0.7-0.4-0.9-0.8-0.1-0.2-0.2-0.5-0.2-0.8 0-0.6 0.3-1.1 0.8-1.4 0.2-0.2 0.5-0.3 0.9-0.3z"/>
+                            <path class="st0" d="m718.1 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.3 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.5-3.8h3.3zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-1.9 4.8-0.7 1.5-1.7 3.8-2.9 6.8z"/>
+                            <path class="st0" d="m732.1 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.5 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8v-16.5z"/>
+                            <path class="st0" d="m758.4 74.8h6.7c3.1 0 5.9 1.1 8.5 3.2 1 0.9 1.6 1.6 1.9 2 1.7 2.4 2.6 4.9 2.6 7.7v0.2c0 3.4-1.3 6.5-3.9 9.2-1.4 1.3-2.8 2.2-4.2 2.7-1.6 0.6-3.1 0.9-4.6 0.9h-6.9-0.1v-25.9zm3.4 3.4v19h3.1c3 0 5.5-1.1 7.5-3.4 1.5-1.8 2.3-3.9 2.3-6.2s-0.8-4.4-2.4-6.3c-0.9-1-1.6-1.6-2.2-1.8-0.5-0.3-1.2-0.7-2.2-1-0.9-0.3-2-0.4-3.5-0.4l-2.6 0.1z"/>
+                            <path class="st0" d="m782.8 74.8h3.4v25.9h-3.4v-25.9z"/>
+                            <path class="st0" d="m806.7 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                            <path class="st0" d="m76.6 55.9h5.8l0.1 0.1v28.5h27.9v-28.5l0.1-0.1h5.9l0.1 0.1v63.1l-0.1 0.1h-5.9l-0.1-0.1v-28.6h-27.9v28.6l-0.1 0.1h-5.8c-0.1 0-0.1 0-0.2-0.1v-63.1l0.2-0.1z"/>
+                            <path class="st0" d="m142.7 67.2c5.1 0 9.1 2.1 12 6.2 0.9 1.2 1.6 2.7 2.1 4.4 0.6 1.7 0.9 3.5 0.9 5.3 0 2.7-0.6 5.1-1.9 7.2-2.1 2.4-5.2 6-9.3 10.8-1.7 1.9-5 5.7-9.9 11.4-0.2 0.3-0.8 0.9-1.6 2h22.6v5.3h-29.4v-5.6s0.1-0.2 0.4-0.4c2.1-2.4 5.3-6 9.5-10.9 1.5-1.7 4.4-5.2 9-10.4 0.8-0.8 2.3-2.6 4.5-5.2 0.6-1.2 0.9-2.6 0.9-4.1 0-2.5-0.8-4.8-2.3-6.9-1.8-2.5-4.2-3.7-7.3-3.7h-0.3c-4.3 0-7.2 2-8.8 6-0.2 0.8-0.5 1.7-0.8 2.9-0.1 0.8-0.1 1.4-0.1 1.8h-5.3v-0.2c0-1.6 0.3-3.5 1-5.8 0.5-1.4 1.1-2.6 1.7-3.7 0.4-0.7 0.9-1.3 1.7-2 2.7-2.9 6.3-4.4 10.7-4.4z"/>
+                            <path class="st0" d="m193.9 55.9c0.1 0 0.5 1.1 1.4 3.3 5 13 12.6 32.5 22.7 58.5 0.1 0.2 0.3 0.7 0.6 1.5h-6.6c-0.2-0.2-1.5-3.5-3.9-9.8-1.2-3.2-1.9-4.9-2.1-5.1h-30.9c-0.2 0.2-1.7 4.1-4.6 11.7-0.8 2-1.2 3-1.3 3.2h-6.5c4.1-10.6 12.4-31.7 24.7-63.3h6.5zm-16.3 42.3h26.3c-2.2-5.6-6.6-16.8-13.1-33.6-2.2 5.5-6.6 16.7-13.2 33.6z"/>
+                            <path class="st1" d="m33.4 107.8-9.2 0.1-0.4 0.7c-8.8 15.3-9.7 29.9-2.5 42.3 10.4 17.9 37 28.5 71.3 28.5h0.3s0.1 0 0 0c-29.5 0-52.3-10.7-62.2-27.7-7.3-12.5-6.6-27.7 2-42.7 0-0.1 0.7-1.2 0.7-1.2z"/>
+                            <path class="st2" d="m256.4 80.6c8.9-16.3 9.6-31.5 1.9-44-10.7-17.6-36.4-27.2-70.3-26.3h-0.3l-3.5 6.3h0.9c33.4-0.9 60.7 9.4 71.4 26.9 6.6 10.8 7.1 24-0.1 37.1z"/>
+                            <path class="st0" d="m267.3 21.7c-14.8-15-41.3-22.7-74.6-21.6-33.1 1.1-69.1 10.5-101.3 26.5-32 15.8-56.4 36.2-68.8 57.4l-0.5 0.8c23.9-41 104.2-76.4 167.7-78.4 36-1.2 63.3 8.8 74.8 27.4 8 13 7.4 28.8-1.7 45.8l-0.4 0.8 9.2-0.2 0.1-0.3c12-22.4 10.4-43.1-4.5-58.2z"/>
+                            <path class="st0" d="m258.3 104.5c-23.4 42.9-104.1 78.6-168.1 78.7h-0.2c-36.4 0-64.6-11.2-75.5-30-7.4-12.8-6.5-28 2.7-44.1l0.8-1.1-9.2 0.1-0.4 0.7c-12.4 21.6-11 41.8 4 57 14.9 15.3 41.5 23.7 74.9 23.7s69.5-8.6 101.6-24.4c32.2-15.9 56.6-37 68.9-59.4l0.5-1.2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <button class="btn-nav-mob js-toggle-mob-nav" type="button">
+                <span class="hamburger"><span></span></span>
+                <span class="text out">MENU</span>
+            </button>
+
+            <div class="header-right">
+
+                <div class="lists-wrapper">
+                    <div class="header-sup">
+                        <ul class="list-header-sup">
+                            <li class="rs-links">
+																<a href="https://h2a-france.org/comment-utiliser-le-flux-rss/" target="_blank" aria-label="les flux rss h3c"><span class="icon-ress"></span></a>
+                                <a href="https://fr.linkedin.com/organization-guest/company/h3c-haut-conseil-du-commissariat-aux-comptes" target="blank" aria-label="linkedin h3c"><span class="icon-linkedin"></span></a>                                                            </li>
+                            <li class="line-spacer not-mobile"></li>
+                            <li>
+                                                                        <a href="https://h2a-france.org/nous-contacter/"><span class=""></span>Nous contacter</a>
+                                        
+                                                                            
+                                                                            <a href="https://h2a-france.org/recrutement/"><span class=""></span>Nous rejoindre</a>
+                                        
+                                                                            
+                                    
+                            </li>
+                            
+                                                                                </ul>
+                    </div>
+
+
+                    <nav class="main-nav" role="navigation" aria-label="Menu principal">
+
+                        <aside class="mob-side-left">
+                            <ul class="btns-wrapper">
+                                <li>
+                                    <div class="burger-aside">
+                                        <span></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="https://portail.h2a-france.org/" target="_blank" aria-label="Portail H2A"><span class="icon-user" aria-hidden="true"></span></a>
+                                </li>
+                            </ul>
+                        </aside>
+
+
+                        <div class="ul-wrapper">
+
+                                                        <ul class="">
+                                                                        <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/la-h2a/" class=" lk-level-1">QUI SOMMES-NOUS ?</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/la-h2a/presentation-de-la-h2a/">Présentation de la H2A</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/nos-missions-2/">Nos missions</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/organisation-de-la-h2a/">Organisation de la H2A</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/nos-equipes-les-services-de-la-h2a/">Nos équipes</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/populations-regulees/">Populations régulées</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/cooperation-europeenne-et-mondiale/">Coopération européenne et mondiale</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/la-h2a/agenda/">Agenda</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                                                            <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/publications-et-actualites/" class=" lk-level-1">ACTUALITES & PUBLICATIONS</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/evenements/">Evènements</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications-et-actualites/communiques/">Communiqués</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications-et-actualites/rapports-et-etudes/">Rapports</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications-et-actualites/faq/">FAQ</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications-et-actualites/avis-decisions-deliberations/">Avis et délibérations</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications-et-actualites/dossiers-thematiques/">Dossiers thématiques</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                                                            <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/" class=" lk-level-1">REGLEMENTATION</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/code-de-deontologie/">Code de déontologie</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/acceder-au-referentiel-normatif/">Référentiel normatif</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/lignes-directrices-de-la-h2a/">Lignes directrices</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/referentiel-normatif-et-code-de-deontologie/reglement-interieur/">Règlements intérieurs</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                                                            <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/listes/" class=" lk-level-1">LISTES DES PROFESSIONNELS</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/listes/liste-i-liste-des-commissaires-aux-comptes-habilites-a-exercer-la-profession-de-commissaires-aux-comptes/">Liste I : Commissaires aux comptes habilités à exercer la profession de commissaire aux comptes</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/liste/liste-II.html">Liste II : Commissaires aux comptes durables</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/listes/liste-iii-liste-des-controleurs-des-pays-tiers-qui-exercent-le-controle-legal-des-comptes/">Liste III : Contrôleurs des pays tiers (contrôle des comptes)</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/listes/liste-iv-liste-des-controleurs-des-pays-tiers-qui-exercent-la-certification-des-informations-en-matiere-de-durabilite/">Liste IV : Contrôleurs des pays tiers (durabilité)</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/liste/liste-V.html">Liste V : Organismes tiers indépendants</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/liste/liste-VI.html">Liste VI : Auditeurs de durabilité</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                                                            <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/demarches/" class=" lk-level-1">VOS DEMARCHES</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/demarches/commissaires-aux-comptes/">Commissaire aux comptes</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/demarches/organismes-tiers-independants/">Organisme tiers indépendant</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/demarches/auditeurs-des-informations-de-durabilite/">Auditeur des informations de durabilité</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/demarches/controleurs-de-pays-tiers-2/">Contrôleur de pays tiers</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/demarches/formation-de-durabilite/">Organisme de formation</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/publications/sinscrire-a-lepreuve-de-durabilite/">S'inscrire à l'épreuve de durabilité</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                                                            <li class="li-level-1 ">
+                                        <a href="https://h2a-france.org/commission-des-sanctions/" class=" lk-level-1">COMMISSION DES SANCTIONS</a>
+                                        
+                                    
+                                                                                <button class="show-more" aria-label="Voir le sous-menu"><span class="icon-chevron-right" aria-hidden="true"></span></button>
+                                            <div class="level-2-wrapper">
+                                            <div class="site-content">
+                                            <div class="wrapper-column">
+                                            <ul class="list-links">
+                                        
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/presentation-de-la-commission-des-sanctions/">La Commission</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/les-procedures-de-sanction/">Procédures de sanction</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/decisions-de-la-commission-des-sanctions/">Décisions de la Commission des sanctions</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/decisions-de-la-formation-restreinte/">Décisions de la formation restreinte</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/accords-de-compositions-administratives/">Accords de composition administrative</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/vademecum-de-la-commission-des-sanctions/">Vademecum de la Commission des sanctions</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/reglement-interieur-de-la-commission-des-sanctions-de-la-h2a/">Règlement intérieur</a></li>
+
+                                        
+                                    
+                                    
+                                        <li><a href="https://h2a-france.org/commission-des-sanctions/agenda-de-la-commission-des-sanctions/">Agenda</a></li>
+
+                                                                                    </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                                                            </li>
+                                        
+                                    
+                            </ul>
+                            <ul class="icons-wrapper">
+                                <li>
+                                    <a href="https://portail.h2a-france.org/">
+                                        <div class="icon icon-user" aria-hidden="true"></div>
+                                        <span class="hover-text">Portail H2A</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="js-toggle-search" role="button">
+                                        <div class="icon icon-search white-btn" aria-hidden="true"></div>
+                                        <span class="hover-text">Recherche</span>
+                                    </a>
+                                </li>
+                            </ul>
+                           
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="module-opacity"></div>
+    
+    <div class="module-search">
+        <button type="button" class="js-toggle-search close-btn" aria-label="Fermer"></button>
+        <div class="wrapper-infos -theming-1">
+
+            <div class="title">
+                <span class="icon-curve"></span>
+                <span class="text">Rechercher</span>
+            </div>
+
+            <form method="get" action="https://h2a-france.org/" id='header-parsley' role="search">
+                <p data-parsley-error-wrapper>
+                    <label for="search-module" class="out">Recherche par mot clé</label>
+                    <input type="text" class="input-search-module" data-parsley-required-message="Recherche par mot clé" name="s" required tabindex="-1" aria-hidden="true" id="search-module" placeholder="Recherche par mot clé">
+                </p>
+                <div class="btn-wrapper-center">
+                    <input type="submit" id="searchsubmit" value="Valider" class="btn" />
+                </div>
+                
+            </form>
+        </div>
+        <div class="big-text-bottom" role="presentation">H2A</div>
+    </div>
+
+    <div class="mob-icons-wrapper">
+			<ul class="icons-wrapper">
+			<li>
+				<a href="#" class="js-toggle-search" aria-label="Recherche" role="button">
+					<span class="icon">
+						<img loading="lazy" width="40" height="40" src="/wp-content/themes/h3c/assets-front/images/search.svg" alt="">
+					</span>
+					<span class="hover-text">Recherche</span>
+				</a>
+			</li>
+      </ul>
+</div>    <!-- end header.tpl.html-->
+
+    <div id="anchor-content"></div>
+    <main class="page-content-wrapper" role="main">
+        <!-- start main -->
+        <div class="site-content -main">
+	<style>
+	body {
+	  counter-reset: section; /* Set a counter named 'section', and its initial value is 0. */
+	}
+
+	 ol li::before {
+	  counter-increment: section; /* Increment the value of section counter by 1 */
+	  content: counter(section); 
+	}
+
+	</style>
+	<article class="wrapper-content bk-type-xxl">
+
+			
+		
+		
+<nav class="breadcrumb-w-print bk-type" role="navigation" aria-label="vous êtes ici :">
+	<span>
+		<span><a href="https://h2a-france.org">Accueil</a> 
+		&gt; 
+		<span><a href="https://h2a-france.org/publications-et-actualites/">Actualités &amp; Publications</a> 
+		&gt;
+				<span><a href=""></a> 
+		&gt;
+		<span class="breadcrumb_last" aria-current="page">Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises</span>
+		</span></span></span></span>
+
+        <button type="button" aria-label="Imprimer">
+            <span class="icon-print" aria-hidden="true"></span>
+        </button>
+</nav>						
+		<div>
+			<h1>
+								NEP 912 - Mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises							</h1>
+
+		</div>
+
+		<div class="bk-img-text bk-type-l">
+			<div class="wrapper-text">
+				<p style="text-align: justify">Homologuée par arrêté du 24 juillet 2026 publié au J.O. du 26 juillet 2026 (<a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000048875554/2025-01-08/?isSuggest=true">article A. 821-94 du code de commerce</a>).</p>
+<h4 style="text-align: justify">Champ d’application</h4>
+<p style="text-align: justify">01. La présente norme a pour objet de définir les diligences proportionnées à la « petite entreprise » à accomplir par le commissaire aux comptes désigné par une telle entreprise pour un mandat de six exercices, ainsi que le formalisme qui s’attache à la réalisation de sa mission.</p>
+<p style="text-align: justify">« Une « petite entreprise » est une personne ou entité qui ne dépasse pas, à la clôture d’un exercice social, les seuils fixés par l’article D. 221-5 du code de commerce pour deux des trois critères suivants : le total du bilan, le montant du chiffre d’affaires hors taxes ou le nombre moyen de salariés employés au cours de l’exercice.</p>
+<p style="text-align: justify">Les situations visées par la présente norme sont définies aux paragraphes 2 à 4.</p>
+<p style="text-align: justify">02. En l’absence d’obligation légale de nommer un commissaire aux comptes pour un mandat de six exercices, une personne ou entité qui répond à la définition de petite entreprise peut décider volontairement de nommer un commissaire aux comptes. Lorsque cette personne ou entité est une société, elle peut choisir de lui confier un mandat de six exercices. Lorsque cette personne ou entité n’est pas une société, la durée du mandat du commissaire aux comptes est obligatoirement de six exercices.</p>
+<p style="text-align: justify">03. Une entité “tête de groupe” est définie par les <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532413?isSuggest=true">1er et 2e alinéas de l’article L. 821-43 du code de commerce</a> comme une personne ou entité :<br />
+– non astreinte à publier des comptes consolidés ;<br />
+– ne répondant pas à la définition d’une entité d’intérêt public ;<br />
+– non contrôlée par une personne ou une entité qui a désigné un commissaire aux comptes, et qui forme avec les sociétés qu’elle contrôle un ensemble dépassant, à la clôture d’un exercice social, les seuils fixés par les articles <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048876313"> D. 821-171</a> et <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216674">D. 221-5 du code de commerce</a> pour deux des trois critères suivants : le total cumulé de leurs bilans, le montant cumulé hors taxes de leurs chiffres d’affaires ou le nombre moyen cumulé de leurs salariés au cours de l’exercice. </p>
+<p style="text-align: justify">Dans la présente norme, la notion de contrôle s’entend du contrôle direct ou indirect au sens de l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031564650?isSuggest=true">article L. 233-3 du code de commerce</a>.</p>
+<p style="text-align: justify">Une entité tête de groupe a l’obligation de désigner au moins un commissaire aux comptes.</p>
+<p style="text-align: justify">Lorsque l’entité tête de groupe est une société qui répond à la définition de petite entreprise, elle peut choisir de confier à son commissaire aux comptes un mandat de six exercices.</p>
+<p style="text-align: justify">Lorsque l’entité tête de groupe n’est pas une société mais qu’elle répond à la définition de petite entreprise, la durée du mandat du commissaire aux comptes est obligatoirement de six exercices.</p>
+<p style="text-align: justify">04. Les petites entreprises qui sont des sociétés contrôlées par une entité tête de groupe ont l’obligation, en application du <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048532413?isSuggest=true">3e alinéa de l’article L. 821-43 du code de commerce</a>, de désigner au moins un commissaire aux comptes, lorsqu’elles dépassent, à la clôture d’un exercice social, les seuils fixés par l’article <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049216656">D. 821-172 du code de commerce</a> pour deux des trois critères suivants : le total du bilan, le montant du chiffre d’affaires hors taxes ou le nombre moyen de salariés employés au cours de l’exercice.</p>
+<p style="text-align: justify">Dans ce cas, ces sociétés peuvent choisir de confier au commissaire aux comptes un mandat de six exercices.</p>
+<h4 style="text-align: justify">Nature et étendue de la mission</h4>
+<p style="text-align: justify">05. La mission du commissaire aux comptes comprend :<br />
+– la mission de certification des comptes annuels, et le cas échéant, des comptes consolidés lorsque l’entité décide sur une base volontaire de publier de tels comptes, prévue à l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441?isSuggest=true">article L. 821-53 du code de commerce</a> et dont il rend compte dans son rapport sur les comptes annuels, et le cas échéant, dans son rapport sur les comptes consolidés ; <br />
+– les autres diligences légales qui lui sont confiées par le législateur et qui donnent lieu, lorsque les textes légaux et réglementaires le prévoient, à des restitutions spécifiques.</p>
+<h4 style="text-align: justify">Respect des règles de déontologie</h4>
+<p style="text-align: justify">06. Le commissaire aux comptes respecte les dispositions du code de déontologie de la profession. Il réalise sa mission conformément aux textes légaux et réglementaires et, s’agissant des normes d’exercice professionnel, à la présente norme d’exercice professionnel.</p>
+<h4 style="text-align: justify">Esprit critique, jugement professionnel et proportionnalité</h4>
+<p style="text-align: justify">07. Tout au long de sa mission, le commissaire aux comptes fait preuve d’esprit critique. A ce titre, il évalue de façon critique la validité des éléments collectés au cours de ses travaux et reste attentif aux informations qui contredisent ou remettent en cause la fiabilité des éléments obtenus.</p>
+<p style="text-align: justify">08. Le commissaire aux comptes exerce son jugement professionnel pour décider de la nature, du calendrier et de l’étendue des travaux, proportionnés à la taille et à la complexité de l’entité, nécessaires pour fonder son opinion sur les comptes.</p>
+<h4 style="text-align: justify">Implication du commissaire aux comptes</h4>
+<p style="text-align: justify">09. Le commissaire aux comptes veille à être compris du dirigeant quant à l’objectif de sa mission et aux modalités pratiques de sa réalisation. Si le commissaire aux comptes fait appel à des collaborateurs, il veille à rester l’interlocuteur principal du dirigeant, notamment pour la prise de connaissance de l’entité et de son environnement et la restitution des conclusions des travaux mis en œuvre.</p>
+<h4 style="text-align: justify">Lettre de mission</h4>
+<p style="text-align: justify">10. Au plus tard à l’issue de la prise de connaissance de l’entité et de son environnement, le commissaire aux comptes établit une lettre de mission pouvant porter sur les six exercices de son mandat et définissant les termes et conditions de son intervention. Si nécessaire, il revoit les termes de la lettre de mission en cours de mandat. Il demande à l’entité de confirmer par écrit son accord sur les termes et conditions exposés.</p>
+<h4 style="text-align: justify">Mise en œuvre de la mission de certification des comptes</h4>
+<p style="text-align: justify">11. Pour certifier les comptes, le commissaire aux comptes met en œuvre un audit des comptes afin d’obtenir l’assurance que les comptes, pris dans leur ensemble, ne comportent pas d’anomalies significatives. Cette assurance élevée, mais non absolue du fait des limites de l’audit est qualifiée, par convention, d’assurance raisonnable.</p>
+<p style="text-align: justify">Les limites de l’audit résultent notamment de l’utilisation des techniques de sondages, des limites inhérentes au contrôle interne, et du fait que la plupart des éléments collectés au cours de la mission conduisent davantage à des présomptions qu’à des certitudes.</p>
+<p style="text-align: justify">12. La notion de caractère significatif est appliquée par le commissaire aux comptes pour planifier et réaliser son audit, puis pour évaluer l’incidence des anomalies non corrigées dans les comptes.</p>
+<p style="text-align: justify">Le commissaire aux comptes met en œuvre la notion de caractère significatif en considérant le montant des anomalies, leur nature et les circonstances particulières de leur survenance.</p>
+<p style="text-align: justify">La détermination du caractère significatif des anomalies relève du jugement professionnel du commissaire aux comptes et reflète sa perception de ce qui peut influencer le jugement des utilisateurs de comptes.</p>
+<p style="text-align: justify">Pour évaluer le caractère significatif d’une anomalie à partir de son montant, le commissaire aux comptes détermine un seuil de signification, montant au-delà duquel les décisions économiques ou le jugement fondé sur les comptes sont susceptibles d’être influencés. Ce seuil sert également de référence pour déterminer la nature et l’étendue des procédures d’audit à mettre en œuvre. </p>
+<p style="text-align: justify">Au cours de la mission, le commissaire aux comptes reconsidère le seuil de signification s’il a connaissance de faits nouveaux ou d’évolutions de l’entité qui remettent en cause l’évaluation initiale de ce seuil.</p>
+<p style="text-align: justify">13. La démarche pour la mise en œuvre de la mission de certification des comptes comprend les phases suivantes : <br />
+– la prise de connaissance de l’entité en vue de l’identification et de l’évaluation du risque d’anomalies significatives dans les comptes ainsi que la planification de la mission ; <br />
+– les procédures d’audit mises en œuvre en réponse à l’évaluation du risque d’anomalies significatives ; <br />
+– les procédures d’audit mises en œuvre indépendamment de l’évaluation du risque d’anomalies significatives.</p>
+<p style="text-align: justify">En outre, pour la certification des comptes consolidés, le commissaire aux comptes se réfère à la démarche prévue par la norme d’exercice professionnel relative à l’audit des comptes de groupe (y compris l’utilisation des travaux des auditeurs des composants) et l’applique de manière adaptée à la taille et à la complexité de l’ensemble consolidé.</p>
+<p style="text-align: justify">Le commissaire aux comptes est vigilant sur tout événement ou circonstance susceptible de mettre en cause la continuité d’exploitation et apprécie si l’établissement des comptes dans une perspective de continuité d’exploitation est approprié.</p>
+<p style="text-align: justify">En application des articles <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525780">L. 821-60</a> et <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525784">L. 821-61 du code de commerce</a>, le commissaire aux comptes opère toutes vérifications et tous contrôles qu’il juge opportuns et peut se faire communiquer toutes les pièces qu’il estime utiles à l’exercice de sa mission. Lorsqu’il intervient dans une entité tête de groupe ces investigations peuvent être faites tant auprès de l’entité tête de groupe que des personnes ou entités qui la contrôlent ou qui sont <br />
+contrôlées par elle au sens des I et II et de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031564650">l’article L. 233-3 du code de commerce</a>.</p>
+<p style="text-align: justify">14. Lorsque l’entité a recours aux services d’un expert-comptable, le commissaire aux comptes prend contact avec l’expert-comptable pour s’informer du contenu de la mission qui lui a été confiée. Lorsqu’il envisage d’utiliser les travaux de l’expert-comptable, le commissaire aux comptes se fait communiquer les travaux réalisés et apprécie s’ils peuvent contribuer à la formation de son opinion sur les comptes. En fonction de cette appréciation, le commissaire aux comptes détermine les procédures d’audit supplémentaires dont la mise en œuvre lui paraît nécessaire.</p>
+<h4 style="text-align: justify">Prise de connaissance de l’entité et de son environnement en vue de l’évaluation du risque d’anomalies significatives dans les comptes et planification de la mission</h4>
+<p style="text-align: justify">15. Le commissaire aux comptes acquiert une connaissance suffisante de l’entité afin d’identifier et d’évaluer le risque d’anomalies significatives dans les comptes, qu’elles résultent d’erreurs ou de fraudes. Pour ce faire, il s’entretient avec le dirigeant et le cas échéant avec les personnes appropriées au sein de l’entité et prend connaissance : <br />
+– du secteur d’activité de l’entité et de la nature plus ou moins complexe de ses activités ;<br />
+– de ses objectifs et de sa stratégie ;<br />
+– de sa structure juridique ;<br />
+– de son organisation et de son financement ;<br />
+– des textes légaux et réglementaires applicables, notamment en matière de référentiel comptable ;<br />
+– des éléments du contrôle interne pertinents pour l’audit ;<br />
+– des relations et transactions avec les parties liées ;<br />
+– de l’importance des estimations comptables ;<br />
+– de l’existence de procès, contentieux ou de litiges.</p>
+<p style="text-align: justify">Le commissaire aux comptes prend en considération le comportement et l’éthique professionnels du dirigeant et son implication dans le processus d’autorisation et de contrôle des opérations.</p>
+<p style="text-align: justify">16. Lors de sa prise de connaissance de l’entité et de son environnement, le commissaire aux comptes met en œuvre des procédures analytiques.</p>
+<p style="text-align: justify">Les procédures analytiques consistent à apprécier des informations financières à partir de leurs corrélations avec d’autres informations, issues ou non des comptes, ou avec des données antérieures, postérieures ou prévisionnelles de l’entité ou d’entités similaires et à partir de l’analyse des variations significatives ou des tendances inattendues.</p>
+<p style="text-align: justify">Les procédures analytiques peuvent notamment permettre au commissaire aux comptes d’identifier des opérations ou des évènements inhabituels ou incohérents.</p>
+<p style="text-align: justify"> 17. A l’issue de sa prise de connaissance de l’entité et de son environnement, le commissaire aux comptes consigne dans un plan de mission : <br />
+– l’approche générale des travaux en réponse à l’évaluation du risque d’anomalies significatives dans les comptes ; <br />
+– le programme de travail définissant la nature et l’étendue des diligences estimées nécessaires ; <br />
+– le nombre d’heures de travail affectées à l’accomplissement de ces diligences ; <br />
+– le seuil de signification retenu ; <br />
+– le calendrier et les intervenants.</p>
+<p style="text-align: justify">19. Sur la base des éléments collectés lors de la mise en œuvre des procédures d’audit, le commissaire aux comptes peut décider de modifier les éléments planifiés et consignés dans le plan de mission. Il peut être ainsi amené à modifier son approche générale, à revoir ses choix et à prévoir des travaux complémentaires ou différents.</p>
+<p style="text-align: justify">18. Sur la base des éléments collectés lors de la mise en œuvre des procédures d’audit, le commissaire aux comptes peut décider de modifier les éléments planifiés et consignés dans le plan de mission. Il peut être ainsi amené à modifier son approche générale, à revoir ses choix et à prévoir des travaux complémentaires ou différents.</p>
+<p style="text-align: justify">19. Lorsque le commissaire aux comptes intervient au titre de la première année de son mandat, il vérifie que le bilan de clôture de l’exercice précédent repris pour l’ouverture du premier exercice dont il certifie les comptes ne contient pas d’anomalies significatives susceptibles d’avoir une incidence sur les comptes de l’exercice. Lorsque les comptes de l’exercice précédent ont fait l’objet d’une certification par un commissaire aux comptes, le commissaire aux comptes prend connaissance du dossier de travail de son prédécesseur, s’il l’estime nécessaire.</p>
+<p style="text-align: justify">La certification sans réserve des comptes de l’exercice précédent constitue une présomption de régularité et sincérité du bilan d’ouverture. Si les comptes de l’exercice précédent n’ont pas fait l’objet d’une certification ou si le commissaire aux comptes n’a pas pris connaissance du dossier de travail de son prédécesseur ou n’a pas obtenu des travaux de celui-ci les éléments suffisants et appropriés estimés nécessaires, les procédures mises en œuvre pour les besoins de la certification des comptes de l’exercice peuvent lui permettre d’obtenir les éléments suffisants et appropriés pour conclure sur certains soldes de comptes du bilan d’ouverture. Lorsque ces procédures ne permettent pas au commissaire aux comptes d’obtenir les éléments suffisants et appropriés estimés nécessaires, il met en œuvre des procédures complémentaires.</p>
+<p style="text-align: justify">Lorsque les comptes de l’exercice précédent n’ont pas fait l’objet d’une certification par un commissaire aux comptes, le commissaire aux comptes le mentionne dans son rapport.</p>
+<h4 style="text-align: justify">Procédures d’audit mises en œuvre en réponse à l’évaluation du risque d’anomalies significatives</h4>
+<p style="text-align: justify">20. En réponse à son évaluation du risque d’anomalies significatives, le commissaire aux comptes conçoit et met en œuvre des procédures d’audit qui peuvent comprendre, selon son jugement professionnel : <br />
+– des tests sur les contrôles ; <br />
+– des procédures de substance consistant en des tests de détail et/ ou des procédures analytiques de substance ; <br />
+– une approche mixte utilisant à la fois des tests sur les contrôles et des procédures de substance.</p>
+<p style="text-align: justify">21. Le commissaire aux comptes utilise une ou plusieurs des techniques de contrôle suivantes : <br />
+– les procédures analytiques qui, utilisées comme procédures de substance, consistent à apprécier des éléments de comptes à partir de leurs corrélations avec d’autres données financières ou non. Pour cela, le commissaire aux comptes détermine les montants ou ratios attendus dans les comptes et les écarts jugés acceptables entre ces montants ou ratios et ceux enregistrés ; <br />
+– l’inspection des enregistrements ou des documents, qui consiste à examiner des enregistrements ou des documents, soit internes soit externes, sous forme papier, sous forme électronique ou autres supports ; <br />
+– l’inspection des actifs corporels, qui correspond à un contrôle physique des actifs corporels ; <br />
+– l’observation physique, qui consiste à examiner la façon dont une procédure est exécutée au sein de l’entité ; <br />
+– la demande d’information qui peut être adressée à des personnes internes ou externes à l’entité ; <br />
+– la demande de confirmation de tiers, qui consiste à obtenir de la part d’un tiers une déclaration directement adressée au commissaire aux comptes concernant une ou plusieurs informations ; <br />
+– la vérification d’un calcul ; <br />
+– la réexécution d’un contrôle, qui porte sur des contrôles réalisés à l’origine par l’entité.</p>
+<p style="text-align: justify">22. Le commissaire aux comptes détermine les méthodes appropriées de sélection des éléments à contrôler parmi les suivantes : <br />
+– la sélection de tous les éléments, méthode principalement utilisée lorsque la population est constituée d’un petit nombre d’éléments ; <br />
+– la sélection d’éléments spécifiques, méthode utilisée pour couvrir en valeur une large proportion de la population ou pour contrôler des éléments inhabituels en raison de leur importance ou de leur nature ; <br />
+– les sondages statistiques ou non statistiques.</p>
+<p style="text-align: justify">23. Lorsque le commissaire aux comptes intervient plusieurs semaines après la clôture de l’exercice, il peut estimer pertinent de contrôler les créances clients par les encaissements intervenus sur la période subséquente et les dettes fournisseurs par rapport aux factures reçues ou aux règlements effectués postérieurement à la clôture.</p>
+<p style="text-align: justify">L’utilisation de ces techniques de contrôle peut permettre de limiter les demandes de confirmation des clients et fournisseurs ou se substituer au recours à de telles confirmations.</p>
+<p style="text-align: justify">24. Le calendrier d’intervention du commissaire aux comptes peut également lui permettre de s’appuyer, pour le contrôle de certaines estimations comptables, sur l’examen du dénouement postérieur à la clôture de l’exercice des opérations objets de ces estimations.</p>
+<p style="text-align: justify">25. Le commissaire aux comptes assiste à la prise d’inventaire physique des stocks lorsqu’il estime que les stocks sont significatifs ou présentent un risque d’anomalies significatives. Si, en raison de circonstances imprévues, il ne peut être présent à la date prévue pour la prise d’inventaire physique, et dans la mesure où il existe un inventaire permanent, il intervient à une autre date. Lorsque sa présence à la prise d’inventaire physique est impossible, notamment en raison de la nature et du lieu de cet inventaire, le commissaire aux comptes détermine s’il peut mettre en œuvre des procédures d’audit alternatives fournissant des éléments présentant un caractère probant équivalent.</p>
+<h4 style="text-align: justify">Procédures d’audit mises en œuvre indépendamment de l’évaluation du risque d’anomalies significatives</h4>
+<p style="text-align: justify">26. Indépendamment de l’évaluation du risque d’anomalies significatives, le commissaire aux comptes conçoit et met en œuvre des procédures de substance pour chaque compte présentant un caractère significatif. Selon son jugement professionnel, le commissaire aux comptes peut décider de limiter ses travaux à des procédures analytiques de substance ou à un nombre restreint de tests de détails.</p>
+<p style="text-align: justify">27. De plus, le commissaire aux comptes met en œuvre les procédures d’audit suivantes : <br />
+– compréhension de la justification économique d’opérations importantes qui lui semblent être en dehors des activités ordinaires de l’entité, ou qui lui apparaissent inhabituelles eu égard à sa connaissance de l’entité et de son environnement ; <br />
+– évaluation de la conformité au référentiel comptable applicable pour la présentation des comptes, notamment pour la reconnaissance des produits et y compris les informations fournies en annexe ; <br />
+– rapprochement des comptes, y compris des informations fournies dans l’annexe avec les documents comptables dont ils sont issus ; <br />
+– vérification du report des montants figurant dans les comptes de l’exercice précédent, y compris dans l’annexe ; <br />
+– examen des rapprochements bancaires à la clôture de l’exercice ; <br />
+– examen des écritures d’inventaire ; <br />
+– identification et prise en compte des évènements postérieurs à la clôture.</p>
+<p style="text-align: justify">28. Le commissaire aux comptes effectue une revue de la cohérence d’ensemble des comptes au regard des éléments collectés tout au long de l’audit.</p>
+<h4 style="text-align: justify">Traitement des anomalies relevées au cours de la mission</h4>
+<p style="text-align: justify">29. Au cours de la mission, le commissaire aux comptes communique en temps utile, au dirigeant de l’entité ou au niveau approprié de responsabilité, les anomalies qu’il a relevées autres que celles qui sont manifestement insignifiantes. Le commissaire aux comptes demande la correction de ces anomalies.</p>
+<p style="text-align: justify">A la fin de la mission, le commissaire aux comptes récapitule les anomalies non corrigées, autres que celles qui sont manifestement insignifiantes, ainsi que les anomalies non corrigées relevées au cours des exercices précédents et dont les effets perdurent. Il détermine si les anomalies non corrigées, prises individuellement ou en cumulé, sont significatives.</p>
+<h4 style="text-align: justify">Déclarations écrites de la direction</h4>
+<p style="text-align: justify">30. Si, au titre d’un ou plusieurs éléments à contrôler, les procédures d’audit ne permettent pas au commissaire aux comptes d’obtenir les éléments probants nécessaires pour fonder son opinion sur les comptes, il peut, sur la base de son jugement professionnel, demander au dirigeant de lui confirmer par écrit certaines de ses déclarations orales.</p>
+<p style="text-align: justify">Lorsque le dirigeant refuse, le commissaire aux comptes s’enquiert des raisons de ce refus et, en fonction des réponses formulées, en tire les conséquences éventuelles sur l’expression de son opinion sur les comptes.</p>
+<h4 style="text-align: justify">Communications avec les organes mentionnés à l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525792?isSuggest=true">article L. 821-63 du code de commerce</a></h4>
+<p style="text-align: justify">31. Selon son jugement professionnel et au moment qu’il juge approprié au regard de l’importance du sujet, le commissaire aux comptes porte à la connaissance du dirigeant ou d’un autre organe de direction ou de l’organe collégial chargé de l’administration ou de l’organe de surveillance : <br />
+– l’étendue et le calendrier des travaux d’audit ; <br />
+– ses commentaires éventuels sur les pratiques comptables de l’entité susceptibles d’avoir une incidence significative sur les comptes ; <br />
+– le cas échéant, les événements ou circonstances identifiés susceptibles de mettre en cause la continuité d’exploitation ; <br />
+– les modifications qui lui paraissent devoir être apportées aux comptes devant être arrêtés ou aux autres documents comptables ; <br />
+– les irrégularités et les inexactitudes qu’il aurait découvertes ; <br />
+– les conclusions auxquelles conduisent les observations et rectifications ci-dessus sur les résultats de la période comparés à ceux de la période précédente ; <br />
+– les motifs de l’observation, de la certification avec réserve, du refus de certifier ou de l’impossibilité de certifier qu’il envisage, le cas échéant, de formuler dans son rapport sur les comptes.</p>
+<p style="text-align: justify">32. Le commissaire aux comptes communique par écrit les éléments importants relatifs à sa mission lorsqu’il considère qu’une communication orale ne serait pas appropriée ou lorsque des dispositions légales ou réglementaires le prévoient spécifiquement.</p>
+<h4 style="text-align: justify">Autres diligences légales confiées par le législateur au commissaire aux comptes</h4>
+<p style="text-align: justify">33. Il appartient au commissaire aux comptes de procéder au contrôle des documents adressés à l’organe appelé à statuer sur les comptes. Pour ce faire, il met en œuvre les diligences prévues par la norme d’exercice professionnel relative aux diligences du commissaire aux comptes relatives au rapport de gestion, aux autres documents sur la situation financière et les comptes et aux informations relevant du rapport sur le gouvernement d’entreprise adressés aux membres de l’organe appelé à statuer sur les comptes.</p>
+<p style="text-align: justify">34. En application de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048535369">l’article L. 821-10 du code de commerce</a>, le commissaire aux comptes signale à la plus prochaine assemblée générale ou réunion de l’organe compétent les irrégularités et inexactitudes relevées au cours de l’accomplissement de sa mission et révèle au procureur de la République les faits délictueux dont il a eu connaissance, sans que sa responsabilité puisse être engagée par cette révélation.</p>
+<p style="text-align: justify">35. Le commissaire aux comptes met également en œuvre les dispositions prévues par la norme d’exercice professionnel relative aux obligations du commissaire aux comptes relatives à la lutte contre le blanchiment des capitaux et le financement du terrorisme.</p>
+<p style="text-align: justify">36. Lorsque le commissaire aux comptes relève, à l’occasion de l’exercice de sa mission, des faits de nature à compromettre la continuité de l’exploitation, il met en œuvre les dispositions prévues par les textes légaux et réglementaires relatifs à la procédure d’alerte et il en tire les conséquences éventuelles sur son rapport sur les comptes. La continuité d’exploitation est appréciée sur une période de douze mois à compter de la clôture de l’exercice.</p>
+<p style="text-align: justify">37. Plus généralement, le commissaire aux comptes met en œuvre les autres diligences légales qui lui sont confiées par le législateur.</p>
+<h4 style="text-align: justify">Rapport du commissaire aux comptes établi en application de l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441">article L. 821-53 du code de commerce</a></h4>
+<p style="text-align: justify">38. Le commissaire aux comptes établit le rapport mentionné au 1er alinéa de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441">l’article L. 821-53 du code de commerce</a> dans lequel il certifie, en justifiant de ses appréciations, que les comptes annuels sont réguliers et sincères et donnent une image fidèle du résultat des opérations de l’exercice écoulé ainsi que de la situation financière et du patrimoine de l’entité à la fin de cet exercice.</p>
+<p style="text-align: justify">En outre, lorsque la personne ou entité décide sur une base volontaire de publier des comptes consolidés, le commissaire aux comptes établit le rapport mentionné au 2e alinéa de<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048525441">  l’article L. 821-53 du code de commerce</a> dans lequel il certifie, en justifiant de ses appréciations, que les comptes consolidés sont réguliers et sincères et donnent une image fidèle du patrimoine, de la situation financière ainsi que du résultat de l’ensemble constitué par les personnes et entités comprises dans la consolidation.</p>
+<p style="text-align: justify">39. Le commissaire aux comptes exprime son opinion selon les dispositions des paragraphes 6 à 14 de la norme d’exercice professionnel relative aux rapports du commissaire aux comptes sur les comptes annuels et consolidés.</p>
+<p style="text-align: justify">40. La justification des appréciations par le commissaire aux comptes a pour objet de permettre au destinataire du rapport de mieux comprendre l’opinion émise sur les comptes.</p>
+<p style="text-align: justify">Le commissaire aux comptes, sur la base de son jugement professionnel, peut adopter une rédaction succincte pour la justification de ses appréciations.</p>
+<p style="text-align: justify">41. Le contenu du rapport respecte les dispositions prévues au paragraphe 18 de la norme relative aux rapports du commissaire aux comptes sur les comptes annuels et consolidés.</p>
+<h4 style="text-align: justify">Documentation des travaux</h4>
+<p style="text-align: justify">42. Le commissaire aux comptes constitue dans le respect de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048876355">l’article D. 821-186 du code de commerce</a> un dossier adapté à la taille et aux caractéristiques de l’entité contrôlée en tenant compte du principe de proportionnalité.</p>
+<p style="text-align: justify">43. Ce dossier permet à toute autre personne ayant une expérience de la pratique de l’audit et n’ayant pas participé à la mission d’être en mesure de comprendre la démarche adoptée, les travaux effectués et l’opinion émise.</p>
+<p style="text-align: justify">44. En particulier, le commissaire aux comptes formalise dans son dossier les échanges verbaux avec les organes mentionnés à <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000051559617"> l’article L. 821-63 du code de commerce</a> et la date de ces échanges ainsi qu’une copie de ses communications écrites.</p>
+			</div>
+		</div>
+
+		    <!-- BLOC ANNEXE -->
+
+	</article>		
+	
+	
+	<!-- PUSH -->
+	
+				
+
+</div>
+<!-- end main -->
+  </main>
+
+<!-- start footer.tpl.html-->
+<button type="button" class="btn-back-to-top"><span class="icon-arrow-t"></span><span class="out">Remonter en haut de page</span></button>
+
+<footer role="contentinfo" class="page-footer-wrapper">
+
+  <div class="site-content">
+    <ul class="links-list">
+      <li>
+        <div class="logo-wrapper">
+                        <a href="/" aria-label="H2A - Haute autorité de l'audit">
+              <svg enable-background="new 0 0 806.7 189.5" version="1.1" viewBox="0 0 806.7 189.5" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#fff" d="m332 74.8h3.3v11.2h11.2v-11.2h3.4v25.8h-3.3v-11.2h-11.2v11.2h-3.4-0.1l0.1-25.8z"/>
+                <path fill="#fff" d="m367.3 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.4 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.6-3.8h3.2zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-1.9 4.8-0.7 1.5-1.7 3.8-2.9 6.8z"/>
+                <path fill="#fff" d="m381.4 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.6 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8l-0.1-16.5z"/>
+                <path fill="#fff" d="m422 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                <path fill="#fff" d="m425.3 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7z"/>
+                <path fill="#fff" d="m464.4 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.4 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.6-3.8h3.2zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-2 4.8-0.6 1.5-1.5 3.8-2.8 6.8z"/>
+                <path fill="#fff" d="m478.5 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.5 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8v-16.5z"/>
+                <path fill="#fff" d="m519.1 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.8v-3.4h17.1z"/>
+                <path fill="#fff" d="m533.5 74.8c3.5 0 6.5 1.3 9 4 2.3 2.6 3.4 5.6 3.4 8.9 0 3.7-1.3 6.8-4 9.5-2.5 2.3-5.3 3.4-8.4 3.4s-5.9-1.1-8.3-3.3c-1.1-1.1-1.8-2-2.1-2.7-1.3-2.1-2-4.5-2-7v-0.1c0-3.7 1.4-6.8 4.1-9.6 0.3-0.2 0.7-0.5 1.2-0.9 2.2-1.5 4.6-2.2 7.1-2.2zm-9 12.9c0 2.8 1.1 5.2 3.2 7.3 1.7 1.5 3.7 2.3 5.9 2.3 2.8 0 5.2-1.2 7.1-3.8 1.2-1.8 1.8-3.7 1.8-5.6v-0.2c0-2.4-0.8-4.6-2.5-6.5-1.9-2-4-2.9-6.5-2.9-2.7 0-5 1.2-7 3.5-1.3 1.7-2 3.7-2 5.9z"/>
+                <path fill="#fff" d="m550.7 74.8h8.5c2.7 0 5 1 7 3.1 1.4 1.7 2 3.5 2 5.4 0 2.4-1 4.5-2.9 6.3-1 0.8-2 1.4-2.7 1.6 0 0.1 1.1 2.1 3.4 6 0.5 0.8 1.1 1.9 2 3.4h-4s-0.4-0.6-1-1.7c-2.5-4.4-3.9-6.8-4-7.1h-4.9v8.8h-3.3-0.1v-25.8zm3.4 3.4v10.2h5.3c1.7 0 3.2-0.7 4.4-2.1 0.7-0.9 1-1.9 1-2.9v-0.2c0-1.5-0.7-2.8-2.2-4-0.9-0.7-2.2-1-3.8-1h-4.7z"/>
+                <path fill="#fff" d="m572.2 74.8h3.4v25.9h-3.4v-25.9z"/>
+                <path fill="#fff" d="m596 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                <path fill="#fff" d="m599.3 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7zm11.3-7.1c-1.1 0.7-3.4 2.1-6.8 4.1-0.3-0.5-0.9-1.4-1.8-2.9 1.1-0.7 3.4-2.1 6.8-4.1 0.3 0.5 0.9 1.4 1.8 2.9z"/>
+                <path fill="#fff" d="m627.2 74.8h6.7c3.1 0 5.9 1.1 8.5 3.2 1 0.9 1.6 1.6 1.9 2 1.7 2.4 2.6 4.9 2.6 7.7v0.2c0 3.4-1.3 6.5-3.9 9.2-1.4 1.3-2.8 2.2-4.2 2.7-1.6 0.6-3.1 0.9-4.6 0.9h-6.9-0.1v-25.9zm3.4 3.4v19h3.1c3 0 5.5-1.1 7.5-3.4 1.5-1.8 2.3-3.9 2.3-6.2s-0.8-4.4-2.4-6.3c-0.9-1-1.6-1.6-2.2-1.8-0.5-0.3-1.2-0.7-2.2-1-0.9-0.3-2-0.4-3.5-0.4l-2.6 0.1z"/>
+                <path fill="#fff" d="m651.6 74.8h13.9v3.4h-10.5v7.8h8.3v3.3h-8.3v7.8h10.5v3.4h-13.9v-25.7z"/>
+                <path fill="#fff" d="m679.5 74.8h3.4v22.5h11.2v3.4h-14.6v-25.9z"/>
+                <path fill="#fff" d="m699.7 71.4c0.6 0 1.1 0.3 1.5 0.8 0.2 0.3 0.3 0.8 0.3 1.3 0 1.4-0.8 2.9-2.5 4.4-0.5 0.4-0.8 0.7-1 0.7-0.1-0.2-0.4-0.5-0.7-0.9 1.2-1.1 1.8-2.1 1.8-3-0.4-0.2-0.7-0.4-0.9-0.8-0.1-0.2-0.2-0.5-0.2-0.8 0-0.6 0.3-1.1 0.8-1.4 0.2-0.2 0.5-0.3 0.9-0.3z"/>
+                <path fill="#fff" d="m718.1 74.8s0.5 1.3 1.5 3.8c2 4.9 5 12.2 9 22.1h-3.8s-0.2-0.4-0.5-1.2c-0.4-1-1-2.4-1.8-4.4h-12.3c-0.3 0.9-1.1 2.8-2.2 5.6h-3.7c1.5-3.7 4.5-11.1 9-22.1 0.3-0.6 0.8-1.9 1.5-3.8h3.3zm-6.4 16.8h9.5c-0.8-1.9-2.3-5.8-4.7-11.6 0 0-0.7 1.6-1.9 4.8-0.7 1.5-1.7 3.8-2.9 6.8z"/>
+                <path fill="#fff" d="m732.1 74.8h3.3v15.8c0 1.9 0.3 3.3 1 4.2 0.6 1 1.6 1.8 3 2.2 0.5 0.1 1.1 0.2 1.5 0.2h2.5c2 0 3.6-0.9 4.7-2.8 0.5-1 0.7-2.1 0.7-3.4v-16.2h0.1 3.3 0.1v15.4c0 2.1-0.2 3.5-0.5 4.4-0.7 2.1-1.9 3.6-3.5 4.7-1.4 0.9-3.2 1.4-5.2 1.4h-1.7c-2.7 0-4.9-0.8-6.5-2.4-0.7-0.7-1.3-1.4-1.7-2.2-0.8-1.5-1.1-3.1-1.1-4.8v-16.5z"/>
+                <path fill="#fff" d="m758.4 74.8h6.7c3.1 0 5.9 1.1 8.5 3.2 1 0.9 1.6 1.6 1.9 2 1.7 2.4 2.6 4.9 2.6 7.7v0.2c0 3.4-1.3 6.5-3.9 9.2-1.4 1.3-2.8 2.2-4.2 2.7-1.6 0.6-3.1 0.9-4.6 0.9h-6.9-0.1v-25.9zm3.4 3.4v19h3.1c3 0 5.5-1.1 7.5-3.4 1.5-1.8 2.3-3.9 2.3-6.2s-0.8-4.4-2.4-6.3c-0.9-1-1.6-1.6-2.2-1.8-0.5-0.3-1.2-0.7-2.2-1-0.9-0.3-2-0.4-3.5-0.4l-2.6 0.1z"/>
+                <path fill="#fff" d="m782.8 74.8h3.4v25.9h-3.4v-25.9z"/>
+                <path fill="#fff" d="m806.7 74.8v3.4h-6.9v22.5h-3.4v-22.5h-6.9v-3.4h17.2z"/>
+                <path fill="#fff" d="m76.6 55.9h5.8l0.1 0.1v28.5h27.9v-28.5l0.1-0.1h5.9l0.1 0.1v63.1l-0.1 0.1h-5.9l-0.1-0.1v-28.6h-27.9v28.6l-0.1 0.1h-5.8c-0.1 0-0.1 0-0.2-0.1v-63.1l0.2-0.1z"/>
+                <path fill="#fff" d="m142.7 67.2c5.1 0 9.1 2.1 12 6.2 0.9 1.2 1.6 2.7 2.1 4.4 0.6 1.7 0.9 3.5 0.9 5.3 0 2.7-0.6 5.1-1.9 7.2-2.1 2.4-5.2 6-9.3 10.8-1.7 1.9-5 5.7-9.9 11.4-0.2 0.3-0.8 0.9-1.6 2h22.6v5.3h-29.4v-5.6s0.1-0.2 0.4-0.4c2.1-2.4 5.3-6 9.5-10.9 1.5-1.7 4.4-5.2 9-10.4 0.8-0.8 2.3-2.6 4.5-5.2 0.6-1.2 0.9-2.6 0.9-4.1 0-2.5-0.8-4.8-2.3-6.9-1.8-2.5-4.2-3.7-7.3-3.7h-0.3c-4.3 0-7.2 2-8.8 6-0.2 0.8-0.5 1.7-0.8 2.9-0.1 0.8-0.1 1.4-0.1 1.8h-5.3v-0.2c0-1.6 0.3-3.5 1-5.8 0.5-1.4 1.1-2.6 1.7-3.7 0.4-0.7 0.9-1.3 1.7-2 2.7-2.9 6.3-4.4 10.7-4.4z"/>
+                <path fill="#fff" d="m193.9 55.9c0.1 0 0.5 1.1 1.4 3.3 5 13 12.6 32.5 22.7 58.5 0.1 0.2 0.3 0.7 0.6 1.5h-6.6c-0.2-0.2-1.5-3.5-3.9-9.8-1.2-3.2-1.9-4.9-2.1-5.1h-30.9c-0.2 0.2-1.7 4.1-4.6 11.7-0.8 2-1.2 3-1.3 3.2h-6.5c4.1-10.6 12.4-31.7 24.7-63.3h6.5zm-16.3 42.3h26.3c-2.2-5.6-6.6-16.8-13.1-33.6-2.2 5.5-6.6 16.7-13.2 33.6z"/>
+                <path class="st1" d="m33.4 107.8-9.2 0.1-0.4 0.7c-8.8 15.3-9.7 29.9-2.5 42.3 10.4 17.9 37 28.5 71.3 28.5h0.3s0.1 0 0 0c-29.5 0-52.3-10.7-62.2-27.7-7.3-12.5-6.6-27.7 2-42.7 0-0.1 0.7-1.2 0.7-1.2z"/>
+                <path class="st2" d="m256.4 80.6c8.9-16.3 9.6-31.5 1.9-44-10.7-17.6-36.4-27.2-70.3-26.3h-0.3l-3.5 6.3h0.9c33.4-0.9 60.7 9.4 71.4 26.9 6.6 10.8 7.1 24-0.1 37.1z"/>
+                <path fill="#fff" d="m267.3 21.7c-14.8-15-41.3-22.7-74.6-21.6-33.1 1.1-69.1 10.5-101.3 26.5-32 15.8-56.4 36.2-68.8 57.4l-0.5 0.8c23.9-41 104.2-76.4 167.7-78.4 36-1.2 63.3 8.8 74.8 27.4 8 13 7.4 28.8-1.7 45.8l-0.4 0.8 9.2-0.2 0.1-0.3c12-22.4 10.4-43.1-4.5-58.2z"/>
+                <path fill="#fff" d="m258.3 104.5c-23.4 42.9-104.1 78.6-168.1 78.7h-0.2c-36.4 0-64.6-11.2-75.5-30-7.4-12.8-6.5-28 2.7-44.1l0.8-1.1-9.2 0.1-0.4 0.7c-12.4 21.6-11 41.8 4 57 14.9 15.3 41.5 23.7 74.9 23.7s69.5-8.6 101.6-24.4c32.2-15.9 56.6-37 68.9-59.4l0.5-1.2z"/>
+            </svg>
+          </a>
+        </div>
+      </li>
+	  <li><a href="https://h2a-france.org/glossaire/">Glossaire</a></li><li><a href="https://h2a-france.org/accueil-2/marches-publics/">Marchés publics</a></li><li><a href="https://h2a-france.org/mentions-legales/">Informations légales</a></li><li><a href="https://h2a-france.org/sitemap/">Plan du site</a></li><li><a href="https://h2a-france.org/repertoire-des-informations-publiques/">Répertoire des informations publiques</a></li><li><a href="https://h2a-france.org/comment-utiliser-le-flux-rss/">Comment utiliser le flux RSS?</a></li>    </ul>
+
+    <ul class="icons-list">
+				<li><a href="https://h2a-france.org/comment-utiliser-le-flux-rss/" target="_blank" aria-label="les flux rss h3c"><span class="icon-ress"></span></a></li>
+              <li><a href="https://fr.linkedin.com/organization-guest/company/h3c-haut-conseil-du-commissariat-aux-comptes" target="blank" aria-label="Linkedin"><span class="icon-linkedin" aria-hidden="true"></span></a></li>    </ul>
+  </div>
+
+</footer>
+<!-- end footer.tpl.html-->
+
+</div>
+
+<!-- Matomo --><script type="rocketlazyloadscript">
+var _paq = window._paq = window._paq || [];
+_paq.push(['trackAllContentImpressions']);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);_paq.push(['alwaysUseSendBeacon']);_paq.push(['setTrackerUrl', "\/\/h2a-france.org\/wp-content\/plugins\/matomo\/app\/matomo.php"]);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.src="\/\/h2a-france.org\/wp-content\/uploads\/matomo\/matomo.js"; s.parentNode.insertBefore(g,s);
+</script>
+<!-- End Matomo Code -->    <script type="rocketlazyloadscript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // On cible le label contenant le texte pour trouver la checkbox CF7
+        const checkboxes = document.querySelectorAll('.wpcf7-checkbox input[type="checkbox"]');
+        const bloc = document.getElementById('documents-handicap');
+
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.value.includes('souhaite joindre')) {
+                checkbox.addEventListener('change', function () {
+                    bloc.style.display = this.checked ? 'block' : 'none';
+                });
+            }
+        });
+    });
+    </script>
+    <script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/contact-form-7/includes/swv/js/index.js" id="swv-js" defer></script>
+<script id="contact-form-7-js-extra">
+var wpcf7 = {"api":{"root":"https:\/\/h2a-france.org\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/contact-form-7/includes/js/index.js" id="contact-form-7-js" defer></script>
+<script id="wpcf7-redirect-script-js-extra">
+var wpcf7r = {"ajax_url":"https:\/\/h2a-france.org\/wp-admin\/admin-ajax.php"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/wpcf7-redirect/build/js/wpcf7r-fe.js" id="wpcf7-redirect-script-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/themes/h2a-france/js/priority-menu.js" id="twentynineteen-priority-menu-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/themes/h2a-france/js/touch-keyboard-navigation.js" id="twentynineteen-touch-navigation-js" defer></script>
+<script id="perfmatters-lazy-load-js-before">
+window.lazyLoadOptions={elements_selector:"img[data-src],.perfmatters-lazy,.perfmatters-lazy-css-bg",thresholds:"0px 0px",class_loading:"pmloading",class_loaded:"pmloaded",callback_loaded:function(element){if(element.tagName==="IFRAME"){if(element.classList.contains("pmloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener("LazyLoad::Initialized",function(e){var lazyLoadInstance=e.detail.instance;});function perfmattersLazyLoadYouTube(e){var t=document.createElement("iframe"),r="ID?";r+=0===e.dataset.query.length?"":e.dataset.query+"&",r+="autoplay=1",t.setAttribute("src",r.replace("ID",e.dataset.src)),t.setAttribute("frameborder","0"),t.setAttribute("allowfullscreen","1"),t.setAttribute("allow","accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),e.replaceChild(t,e.firstChild)}
+</script>
+<script async src="https://h2a-france.org/wp-content/plugins/perfmatters/js/lazyload.min.js" id="perfmatters-lazy-load-js"></script>
+<script id="wpcf7cf-scripts-js-extra">
+var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/h2a-france.org\/wp-admin\/admin-ajax.php"};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/cf7-conditional-fields/js/scripts.js" id="wpcf7cf-scripts-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/jquery-validation-for-contact-form-7-pro/includes/assets/js/jquery.validate.min.js" id="jvcf7p_jquery_validate-js" defer></script>
+<script id="jvcf7p_validation-js-extra">
+var scriptData = {"jvcf7p_default_settings":{"jvcf7p_show_label_error":"errorMsgshow","jvcf7p_invalid_field_design":"theme_1","jvcf7p_verify_code_field_placeholder":"Verification Code","jvcf7p_code_send_button_label":"Send Code","jvcf7p_email_verify_subject":"Your Verification Code","jvcf7p_email_verify_body":"Hi, \r\n\r\nYour Verification Code is [CODE] . \r\n\r\nPlease keep the code in Verification Code input box to verify.\r\n\r\nThanks","jvcf7p_msg_email_verify":"Verification Code didn't matched."},"jvcf7p_default_error_msgs":{"required":"Ce champ est obligatoire.","email":"Merci de renseigner une adresse e-mail valide.","url":"Please enter a valid URL.","date":"Please enter a valid date.","dateISO":"Please enter a valid date (ISO).","number":"Please enter a valid number.","digits":"Please enter only digits.","alphanumeric":"Letters, numbers, and underscores only.","lettersonly":"Letters only please.","letters_space":"Merci de ne renseigner des lettres et des espaces dans ce champ.","creditcard":"Please enter a valid credit card number.","phoneUS":"Please specify a valid phone number","phoneUK":"Please specify a valid UK phone number","mobileUK":"Please specify a valid UK mobile number","stateUS":"Please specify a valid US state","ipv4":"Please specify a valid IP v4 Address","ipv6":"Please specify a valid IP v6 Address","equalTo":"Please enter the same value again.","extension":"Please enter a file with a valid extension.","require_from_group":"Please fill at least {0} of these fields.","maxlength":"Please enter no more than {0} characters.","minlength":"Please enter at least {0} characters.","rangelength":"Please enter a value between {0} and {1} characters long.","range":"Please enter a value between {0} and {1}.","max":"Please enter a value less than or equal to {0}.","min":"Please enter a value greater than or equal to {0}.","iban":"Please specify a valid IBAN.","bic":"Please specify a valid BIC code.","custom_code":"Please enter valid code.","check_username":"Username doesn't exists.","email_verification":"Email verification code doesn't match"},"jvcf7p_ajax_url":"https:\/\/h2a-france.org\/wp-admin\/admin-ajax.php?action=jvcf7p_ajax_validation","jvcf7p_regexs":[]};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://h2a-france.org/wp-content/plugins/jquery-validation-for-contact-form-7-pro/includes/assets/js/jvcf7p_validation.js" id="jvcf7p_validation-js" defer></script>
+	<script type="rocketlazyloadscript">
+	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+	</script>
+	
+<link data-minify="1" rel="stylesheet" type="text/css" href="https://h2a-france.org/wp-content/cache/min/1/wp-content/themes/h2a-france/assets-front/css/main.css?ver=1789979210"/>
+<link rel="stylesheet" type="text/css" href="https://h2a-france.org/wp-content/themes/h2a-france/assets-front/css/print.css" media="print"/>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://h2a-france.org/wp-content/themes/h2a-france/assets-front/js/scripts.min.js" defer></script>
+<script>var rocket_lcp_data = {"ajax_url":"https:\/\/h2a-france.org\/wp-admin\/admin-ajax.php","nonce":"0e758b2b99","url":"https:\/\/h2a-france.org\/normes\/mission-du-commissaire-aux-comptes-nomme-pour-six-exercices-dans-des-petites-entreprises","is_mobile":false,"elements":"img, video, picture, p, main, div, li, svg","width_threshold":1600,"height_threshold":700,"debug":null}</script><script data-name="wpr-lcp-beacon" src='https://h2a-france.org/wp-content/plugins/wp-rocket/assets/js/lcp-beacon.min.js' async></script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1791203411 -->

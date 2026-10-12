@@ -1,0 +1,46 @@
+{
+  "pass": true,
+  "scope": "Fonction validateClaims native de resource-pipeline et digest natif exercés sur une projection réelle du lot 3 ; pas validation d’un manifeste global ni autorisation de publication.",
+  "librarySha256": "58406aaea2dede2d8d2dcdf01722330cadd18f7a9b711b02302057595af5f4af",
+  "projectionCounts": {
+    "renderedFields": 50,
+    "claims": 88,
+    "citations": 162,
+    "sources": 11,
+    "sensitiveVerdicts": 64
+  },
+  "errors": [],
+  "mutations": [
+    {
+      "name": "unité sensible manquante",
+      "rejected": true,
+      "errorCount": 6
+    },
+    {
+      "name": "citation inventée",
+      "rejected": true,
+      "errorCount": 3
+    },
+    {
+      "name": "avis absent",
+      "rejected": true,
+      "errorCount": 4
+    },
+    {
+      "name": "reviewer auteur",
+      "rejected": true,
+      "errorCount": 2
+    },
+    {
+      "name": "copie DILA redatée",
+      "rejected": true,
+      "errorCount": 14
+    },
+    {
+      "name": "confusion auto-validée",
+      "rejected": true,
+      "errorCount": 2
+    }
+  ],
+  "candidateUnchanged": true
+}

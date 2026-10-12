@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "docs/qa/hub-ressources/glossaire-cac-lot-4-sources/mutations.mjs"
+  ],
+  "exitCode": 0,
+  "stdout": "{\n  \"pass\": true,\n  \"cases\": [\n    {\n      \"name\": \"terme manquant\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"citation inventée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"source périmée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"lien futur exposé\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"terme lié absent\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"empreinte divergente\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"fausse revue\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"alias déplacé\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"ancienne numérotation\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"ALPE ancienne version\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"classement transformé en obligation\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"frontière amputée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    },\n    {\n      \"name\": \"unité dupliquée\",\n      \"rejected\": true,\n      \"exitCode\": 1\n    }\n  ]\n}\n",
+  "stderr": ""
+}

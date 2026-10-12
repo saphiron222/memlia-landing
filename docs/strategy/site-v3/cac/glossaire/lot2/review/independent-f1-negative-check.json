@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "case": "omit-claim",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "case": "wrong-source",
+      "rejected": true,
+      "exitCode": 1
+    },
+    {
+      "case": "missing-definition-citation",
+      "rejected": true,
+      "exitCode": 1
+    }
+  ]
+}

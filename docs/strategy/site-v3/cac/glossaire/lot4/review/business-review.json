@@ -1,0 +1,730 @@
+{
+  "required": true,
+  "reviewerType": "ai-agent",
+  "reviewerProfile": "metier",
+  "reviewerId": "t_bf6cb3b3",
+  "reviewerRole": "reviewer-metier-memlia",
+  "distinctFrom": [
+    "author",
+    "editorialReviewer",
+    "sourceClassifier"
+  ],
+  "reviewedCandidateHash": "07f19332eab21acfab3014a2288c6221acbb720a08d41669c9fa67e3d1e7f896",
+  "status": "AI_REVIEW_PASS",
+  "claimSourceVerdicts": [
+    {
+      "claimId": "dossier-travail-audit-definition-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "dossier-travail-audit-definition-h2a-nep-230-nep-230-citation-1",
+        "dossier-travail-audit-definition-h2a-nep-230-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "dossier-travail-audit-definition-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "dossier-travail-audit-definition-dila-a821-66-nep-230-citation-1",
+        "dossier-travail-audit-definition-dila-a821-66-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "dossier-travail-audit-context-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "dossier-travail-audit-context-h2a-nep-230-nep-230-citation-1",
+        "dossier-travail-audit-context-h2a-nep-230-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§04/08 : intelligibilité pour un auditeur expérimenté non participant ; identité et date des travaux, identité/date/étendue de la revue lorsqu’elle existe. Aucune suppression de revue professionnelle n’est proposée. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "dossier-travail-audit-context-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "dossier-travail-audit-context-dila-a821-66-nep-230-citation-1",
+        "dossier-travail-audit-context-dila-a821-66-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§04/08 : intelligibilité pour un auditeur expérimenté non participant ; identité et date des travaux, identité/date/étendue de la revue lorsqu’elle existe. Aucune suppression de revue professionnelle n’est proposée. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "dossier-travail-audit-commonConfusion-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "dossier-travail-audit-commonConfusion-h2a-nep-230-nep-230-citation-1",
+        "dossier-travail-audit-commonConfusion-h2a-nep-230-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§04/07 : l’accumulation ne satisfait pas l’intelligibilité ; les explications fournies aux autorités de contrôle ne sont pas la documentation. Ce n’est pas une interdiction de compléter le dossier dans les cas du §10. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "dossier-travail-audit-commonConfusion-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "dossier-travail-audit-commonConfusion-dila-a821-66-nep-230-citation-1",
+        "dossier-travail-audit-commonConfusion-dila-a821-66-nep-230-citation-2"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§04/07 : l’accumulation ne satisfait pas l’intelligibilité ; les explications fournies aux autorités de contrôle ne sont pas la documentation. Ce n’est pas une interdiction de compléter le dossier dans les cas du §10. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "dossier-permanent-audit-context-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "dossier-permanent-audit-context-h2a-nep-230-nep-230-citation-1",
+        "dossier-permanent-audit-context-h2a-nep-230-nep-230-citation-2",
+        "dossier-permanent-audit-context-h2a-nep-230-nep-230-citation-3"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "dossier-permanent-audit-context-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "dossier-permanent-audit-context-dila-a821-66-nep-230-citation-1",
+        "dossier-permanent-audit-context-dila-a821-66-nep-230-citation-2",
+        "dossier-permanent-audit-context-dila-a821-66-nep-230-citation-3"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "feuille-maitresse-audit-context-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "feuille-maitresse-audit-context-h2a-nep-230-nep-230-citation-1"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "feuille-maitresse-audit-context-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "feuille-maitresse-audit-context-dila-a821-66-nep-230-citation-1"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "plan-mission-audit-definition-h2a-nep-300-nep-300",
+      "sourceId": "h2a-nep-300",
+      "citationIds": [
+        "plan-mission-audit-definition-h2a-nep-300-nep-300-citation-1"
+      ],
+      "sourceContentSha256": "12cec8ce96ca8923f066535d74280afccce17486bf1118f3b3f9e4fe11efedd4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §10 : approche générale, étendue/calendrier/orientation, seuils et lignes directrices ; aucun taux normatif ou choix automatique de seuil n’est proposé. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "plan-mission-audit-definition-dila-a821-69-nep-300",
+      "sourceId": "dila-a821-69",
+      "citationIds": [
+        "plan-mission-audit-definition-dila-a821-69-nep-300-citation-1"
+      ],
+      "sourceContentSha256": "d1a4a2a204e939fbfe8107f76b9d7f5e6d93515edc8a470479e11732113848ef",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §10 : approche générale, étendue/calendrier/orientation, seuils et lignes directrices ; aucun taux normatif ou choix automatique de seuil n’est proposé. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "plan-mission-audit-context-h2a-nep-300-nep-300",
+      "sourceId": "h2a-nep-300",
+      "citationIds": [
+        "plan-mission-audit-context-h2a-nep-300-nep-300-citation-1",
+        "plan-mission-audit-context-h2a-nep-300-nep-300-citation-2",
+        "plan-mission-audit-context-h2a-nep-300-nep-300-citation-3"
+      ],
+      "sourceContentSha256": "12cec8ce96ca8923f066535d74280afccce17486bf1118f3b3f9e4fe11efedd4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§08/12/13 : plan et programme écrits pour l’exercice ; modification à partir des éléments collectés, raisons consignées. Portée attribuée à cette norme, pas prescription universelle de forme ALPE. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "plan-mission-audit-context-dila-a821-69-nep-300",
+      "sourceId": "dila-a821-69",
+      "citationIds": [
+        "plan-mission-audit-context-dila-a821-69-nep-300-citation-1",
+        "plan-mission-audit-context-dila-a821-69-nep-300-citation-2",
+        "plan-mission-audit-context-dila-a821-69-nep-300-citation-3"
+      ],
+      "sourceContentSha256": "d1a4a2a204e939fbfe8107f76b9d7f5e6d93515edc8a470479e11732113848ef",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§08/12/13 : plan et programme écrits pour l’exercice ; modification à partir des éléments collectés, raisons consignées. Portée attribuée à cette norme, pas prescription universelle de forme ALPE. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "plan-mission-audit-commonConfusion-h2a-nep-300-nep-300",
+      "sourceId": "h2a-nep-300",
+      "citationIds": [
+        "plan-mission-audit-commonConfusion-h2a-nep-300-nep-300-citation-1",
+        "plan-mission-audit-commonConfusion-h2a-nep-300-nep-300-citation-2"
+      ],
+      "sourceContentSha256": "12cec8ce96ca8923f066535d74280afccce17486bf1118f3b3f9e4fe11efedd4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§10/11 : approche générale distincte des diligences d’exécution ; un seul calendrier d’affectation ne contient pas tous les éléments du plan. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "plan-mission-audit-commonConfusion-dila-a821-69-nep-300",
+      "sourceId": "dila-a821-69",
+      "citationIds": [
+        "plan-mission-audit-commonConfusion-dila-a821-69-nep-300-citation-1",
+        "plan-mission-audit-commonConfusion-dila-a821-69-nep-300-citation-2"
+      ],
+      "sourceContentSha256": "d1a4a2a204e939fbfe8107f76b9d7f5e6d93515edc8a470479e11732113848ef",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§10/11 : approche générale distincte des diligences d’exécution ; un seul calendrier d’affectation ne contient pas tous les éléments du plan. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "programme-travail-audit-definition-h2a-nep-300-nep-300",
+      "sourceId": "h2a-nep-300",
+      "citationIds": [
+        "programme-travail-audit-definition-h2a-nep-300-nep-300-citation-1"
+      ],
+      "sourceContentSha256": "12cec8ce96ca8923f066535d74280afccce17486bf1118f3b3f9e4fe11efedd4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §11 : nature et étendue des diligences estimées nécessaires au cours de l’exercice et nombre d’heures affectées. Ni barème universel ni tarif n’est déduit. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "programme-travail-audit-definition-dila-a821-69-nep-300",
+      "sourceId": "dila-a821-69",
+      "citationIds": [
+        "programme-travail-audit-definition-dila-a821-69-nep-300-citation-1"
+      ],
+      "sourceContentSha256": "d1a4a2a204e939fbfe8107f76b9d7f5e6d93515edc8a470479e11732113848ef",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §11 : nature et étendue des diligences estimées nécessaires au cours de l’exercice et nombre d’heures affectées. Ni barème universel ni tarif n’est déduit. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "programme-travail-audit-context-h2a-nep-300-nep-300",
+      "sourceId": "h2a-nep-300",
+      "citationIds": [
+        "programme-travail-audit-context-h2a-nep-300-nep-300-citation-1",
+        "programme-travail-audit-context-h2a-nep-300-nep-300-citation-2",
+        "programme-travail-audit-context-h2a-nep-300-nep-300-citation-3",
+        "programme-travail-audit-context-h2a-nep-300-nep-300-citation-4"
+      ],
+      "sourceContentSha256": "12cec8ce96ca8923f066535d74280afccce17486bf1118f3b3f9e4fe11efedd4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§08/09/12/13 : écrit adapté à forme, taille, activités et complexité ; travaux ajustables et modifications motivées au dossier. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "programme-travail-audit-context-dila-a821-69-nep-300",
+      "sourceId": "dila-a821-69",
+      "citationIds": [
+        "programme-travail-audit-context-dila-a821-69-nep-300-citation-1",
+        "programme-travail-audit-context-dila-a821-69-nep-300-citation-2",
+        "programme-travail-audit-context-dila-a821-69-nep-300-citation-3",
+        "programme-travail-audit-context-dila-a821-69-nep-300-citation-4"
+      ],
+      "sourceContentSha256": "d1a4a2a204e939fbfe8107f76b9d7f5e6d93515edc8a470479e11732113848ef",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 300 §§08/09/12/13 : écrit adapté à forme, taille, activités et complexité ; travaux ajustables et modifications motivées au dossier. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "programme-travail-audit-commonConfusion-h2a-nep-230-nep-230",
+      "sourceId": "h2a-nep-230",
+      "citationIds": [
+        "programme-travail-audit-commonConfusion-h2a-nep-230-nep-230-citation-1"
+      ],
+      "sourceContentSha256": "8103031fd92f604481580bc88da253d7fe36ec6271be0ac5e64fee32a687896f",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §04 distingue planification et procédures effectuées/résultats/conclusions ; programme seul ne démontre pas exécution. La définition du programme relue dans NEP 300 §11 corrobore le contraste. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "programme-travail-audit-commonConfusion-dila-a821-66-nep-230",
+      "sourceId": "dila-a821-66",
+      "citationIds": [
+        "programme-travail-audit-commonConfusion-dila-a821-66-nep-230-citation-1"
+      ],
+      "sourceContentSha256": "ec1c61dde929a11520ce6be9147ad345f5c0361faddf580d05645817f75f0b8c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 230 §04 distingue planification et procédures effectuées/résultats/conclusions ; programme seul ne démontre pas exécution. La définition du programme relue dans NEP 300 §11 corrobore le contraste. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-definition-h2a-nep-580-nep-580",
+      "sourceId": "h2a-nep-580",
+      "citationIds": [
+        "declarations-ecrites-direction-definition-h2a-nep-580-nep-580-citation-1",
+        "declarations-ecrites-direction-definition-h2a-nep-580-nep-580-citation-2"
+      ],
+      "sourceContentSha256": "28753b08de1678aefe351b0eaf74710bd8f1028d930a64b6e53a9502a90bedca",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§06/08 : formulation écrite demandée au représentant légal, lettre d’affirmation comme une des formes. La clause pas une mission ni une entrée distincte est une convention éditoriale, pas une disposition de NEP. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-definition-dila-a821-79-nep-580",
+      "sourceId": "dila-a821-79",
+      "citationIds": [
+        "declarations-ecrites-direction-definition-dila-a821-79-nep-580-citation-1",
+        "declarations-ecrites-direction-definition-dila-a821-79-nep-580-citation-2"
+      ],
+      "sourceContentSha256": "8aedf9f9b1b37f7f634cb2eda12f8237edb53a1c433f26393e98ca49aeca087e",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§06/08 : formulation écrite demandée au représentant légal, lettre d’affirmation comme une des formes. La clause pas une mission ni une entrée distincte est une convention éditoriale, pas une disposition de NEP. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-context-h2a-nep-580-nep-580",
+      "sourceId": "h2a-nep-580",
+      "citationIds": [
+        "declarations-ecrites-direction-context-h2a-nep-580-nep-580-citation-1",
+        "declarations-ecrites-direction-context-h2a-nep-580-nep-580-citation-2",
+        "declarations-ecrites-direction-context-h2a-nep-580-nep-580-citation-3",
+        "declarations-ecrites-direction-context-h2a-nep-580-nep-580-citation-4"
+      ],
+      "sourceContentSha256": "28753b08de1678aefe351b0eaf74710bd8f1028d930a64b6e53a9502a90bedca",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§08/09/10 et §11 relu : plusieurs formes, lettre datée/signée envoyée directement, date proche et non postérieure à la signature du rapport ; §11 prouve la confirmation écrite de la lettre du CAC. La citation §11 est ajoutée à la preuve de revue, candidat inchangé. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-context-dila-a821-79-nep-580",
+      "sourceId": "dila-a821-79",
+      "citationIds": [
+        "declarations-ecrites-direction-context-dila-a821-79-nep-580-citation-1",
+        "declarations-ecrites-direction-context-dila-a821-79-nep-580-citation-2",
+        "declarations-ecrites-direction-context-dila-a821-79-nep-580-citation-3",
+        "declarations-ecrites-direction-context-dila-a821-79-nep-580-citation-4"
+      ],
+      "sourceContentSha256": "8aedf9f9b1b37f7f634cb2eda12f8237edb53a1c433f26393e98ca49aeca087e",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§08/09/10 et §11 relu : plusieurs formes, lettre datée/signée envoyée directement, date proche et non postérieure à la signature du rapport ; §11 prouve la confirmation écrite de la lettre du CAC. La citation §11 est ajoutée à la preuve de revue, candidat inchangé. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-commonConfusion-h2a-nep-580-nep-580",
+      "sourceId": "h2a-nep-580",
+      "citationIds": [
+        "declarations-ecrites-direction-commonConfusion-h2a-nep-580-nep-580-citation-1",
+        "declarations-ecrites-direction-commonConfusion-h2a-nep-580-nep-580-citation-2"
+      ],
+      "sourceContentSha256": "28753b08de1678aefe351b0eaf74710bd8f1028d930a64b6e53a9502a90bedca",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§04/05 : corroboration des déclarations significatives et élucidation des incohérences, avec conséquences appréciées par le CAC. Lettre reçue n’est pas preuve suffisante par elle-même. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "declarations-ecrites-direction-commonConfusion-dila-a821-79-nep-580",
+      "sourceId": "dila-a821-79",
+      "citationIds": [
+        "declarations-ecrites-direction-commonConfusion-dila-a821-79-nep-580-citation-1",
+        "declarations-ecrites-direction-commonConfusion-dila-a821-79-nep-580-citation-2"
+      ],
+      "sourceContentSha256": "8aedf9f9b1b37f7f634cb2eda12f8237edb53a1c433f26393e98ca49aeca087e",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 580 §§04/05 : corroboration des déclarations significatives et élucidation des incohérences, avec conséquences appréciées par le CAC. Lettre reçue n’est pas preuve suffisante par elle-même. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-definition-h2a-nep-560-nep-560",
+      "sourceId": "h2a-nep-560",
+      "citationIds": [
+        "evenements-posterieurs-cloture-definition-h2a-nep-560-nep-560-citation-1"
+      ],
+      "sourceContentSha256": "358caedd00359009d6b8aa4c97635f3fc0e694899a31a9edc837ed125954b260",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §01 : événements identifiés entre clôture et approbation appelant traitement comptable ou information de l’organe statuant. Le terme ne se réduit pas à la survenance après signature. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-definition-dila-a821-85-nep-560",
+      "sourceId": "dila-a821-85",
+      "citationIds": [
+        "evenements-posterieurs-cloture-definition-dila-a821-85-nep-560-citation-1"
+      ],
+      "sourceContentSha256": "12937c914b0d0ab44e92a46cf129adc7e43a0ded05491ff2410cd9b4c21bf3b4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §01 : événements identifiés entre clôture et approbation appelant traitement comptable ou information de l’organe statuant. Le terme ne se réduit pas à la survenance après signature. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560",
+      "sourceId": "h2a-nep-560",
+      "citationIds": [
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-1",
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-2",
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-3",
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-4",
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-5",
+        "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560-citation-6"
+      ],
+      "sourceContentSha256": "358caedd00359009d6b8aa4c97635f3fc0e694899a31a9edc837ed125954b260",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §§04/07/15–18 : survenance et identification distinctes ; recherche au plus près du rapport puis cessation de recherche, sans suppression des suites d’un événement connu avant approbation. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-context-dila-a821-85-nep-560",
+      "sourceId": "dila-a821-85",
+      "citationIds": [
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-1",
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-2",
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-3",
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-4",
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-5",
+        "evenements-posterieurs-cloture-context-dila-a821-85-nep-560-citation-6"
+      ],
+      "sourceContentSha256": "12937c914b0d0ab44e92a46cf129adc7e43a0ded05491ff2410cd9b4c21bf3b4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §§04/07/15–18 : survenance et identification distinctes ; recherche au plus près du rapport puis cessation de recherche, sans suppression des suites d’un événement connu avant approbation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-commonConfusion-h2a-nep-560-nep-560",
+      "sourceId": "h2a-nep-560",
+      "citationIds": [
+        "evenements-posterieurs-cloture-commonConfusion-h2a-nep-560-nep-560-citation-1",
+        "evenements-posterieurs-cloture-commonConfusion-h2a-nep-560-nep-560-citation-2"
+      ],
+      "sourceContentSha256": "358caedd00359009d6b8aa4c97635f3fc0e694899a31a9edc837ed125954b260",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §§02/03 : traitement suivant référentiel et dates, information de l’organe distincte de l’écriture ; absence d’enregistrement systématique. Ni réécriture automatique des comptes ni garantie de détection. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "evenements-posterieurs-cloture-commonConfusion-dila-a821-85-nep-560",
+      "sourceId": "dila-a821-85",
+      "citationIds": [
+        "evenements-posterieurs-cloture-commonConfusion-dila-a821-85-nep-560-citation-1",
+        "evenements-posterieurs-cloture-commonConfusion-dila-a821-85-nep-560-citation-2"
+      ],
+      "sourceContentSha256": "12937c914b0d0ab44e92a46cf129adc7e43a0ded05491ff2410cd9b4c21bf3b4",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 560 §§02/03 : traitement suivant référentiel et dates, information de l’organe distincte de l’écriture ; absence d’enregistrement systématique. Ni réécriture automatique des comptes ni garantie de détection. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "continuite-exploitation-definition-h2a-nep-570-nep-570",
+      "sourceId": "h2a-nep-570",
+      "citationIds": [
+        "continuite-exploitation-definition-h2a-nep-570-nep-570-citation-1",
+        "continuite-exploitation-definition-h2a-nep-570-nep-570-citation-2"
+      ],
+      "sourceContentSha256": "6848aa8912d80302a337789162cf8b66824870b9ff2ed5d342daa15d2382834c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§01/02 : présomption de poursuite pour établir les comptes, appréciation du caractère approprié et de l’incertitude significative par le CAC, non par la préparation. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "continuite-exploitation-definition-dila-a821-83-nep-570",
+      "sourceId": "dila-a821-83",
+      "citationIds": [
+        "continuite-exploitation-definition-dila-a821-83-nep-570-citation-1",
+        "continuite-exploitation-definition-dila-a821-83-nep-570-citation-2"
+      ],
+      "sourceContentSha256": "f982477ad16f47e9cc0914c4cc69059421fcf2e7bf45b6e8126c9dc9cb34b5c1",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§01/02 : présomption de poursuite pour établir les comptes, appréciation du caractère approprié et de l’incertitude significative par le CAC, non par la préparation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "continuite-exploitation-context-h2a-nep-570-nep-570",
+      "sourceId": "h2a-nep-570",
+      "citationIds": [
+        "continuite-exploitation-context-h2a-nep-570-nep-570-citation-1",
+        "continuite-exploitation-context-h2a-nep-570-nep-570-citation-2",
+        "continuite-exploitation-context-h2a-nep-570-nep-570-citation-3"
+      ],
+      "sourceContentSha256": "6848aa8912d80302a337789162cf8b66824870b9ff2ed5d342daa15d2382834c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§06/07/11 : examen de l’évaluation en présence d’événements/circonstances susceptibles de mettre en cause la continuité ; douze mois seulement si référentiel sans période ; conclusion sous jugement à partir des éléments. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "continuite-exploitation-context-dila-a821-83-nep-570",
+      "sourceId": "dila-a821-83",
+      "citationIds": [
+        "continuite-exploitation-context-dila-a821-83-nep-570-citation-1",
+        "continuite-exploitation-context-dila-a821-83-nep-570-citation-2",
+        "continuite-exploitation-context-dila-a821-83-nep-570-citation-3"
+      ],
+      "sourceContentSha256": "f982477ad16f47e9cc0914c4cc69059421fcf2e7bf45b6e8126c9dc9cb34b5c1",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§06/07/11 : examen de l’évaluation en présence d’événements/circonstances susceptibles de mettre en cause la continuité ; douze mois seulement si référentiel sans période ; conclusion sous jugement à partir des éléments. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570",
+      "sourceId": "h2a-nep-570",
+      "citationIds": [
+        "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570-citation-1",
+        "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570-citation-2",
+        "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570-citation-3",
+        "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570-citation-4"
+      ],
+      "sourceContentSha256": "6848aa8912d80302a337789162cf8b66824870b9ff2ed5d342daa15d2382834c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§12–15 : principe approprié avec incertitude et annexe pertinente entraîne partie distincte sans modifier l’opinion ; information insuffisante ou principe inapproprié ont d’autres conséquences. Aucune assimilation automatique incertitude/refus. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "continuite-exploitation-commonConfusion-dila-a821-83-nep-570",
+      "sourceId": "dila-a821-83",
+      "citationIds": [
+        "continuite-exploitation-commonConfusion-dila-a821-83-nep-570-citation-1",
+        "continuite-exploitation-commonConfusion-dila-a821-83-nep-570-citation-2",
+        "continuite-exploitation-commonConfusion-dila-a821-83-nep-570-citation-3",
+        "continuite-exploitation-commonConfusion-dila-a821-83-nep-570-citation-4"
+      ],
+      "sourceContentSha256": "f982477ad16f47e9cc0914c4cc69059421fcf2e7bf45b6e8126c9dc9cb34b5c1",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 570 §§12–15 : principe approprié avec incertitude et annexe pertinente entraîne partie distincte sans modifier l’opinion ; information insuffisante ou principe inapproprié ont d’autres conséquences. Aucune assimilation automatique incertitude/refus. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "rapport-sur-comptes-definition-h2a-nep-700-nep-700",
+      "sourceId": "h2a-nep-700",
+      "citationIds": [
+        "rapport-sur-comptes-definition-h2a-nep-700-nep-700-citation-1",
+        "rapport-sur-comptes-definition-h2a-nep-700-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "344f9c6b366d9d469d2ee9b7d7e8df386f013e67f4979dd250be0541bee6b96c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§01/02 : opinion, justification des appréciations et vérifications/informations spécifiques dans le rapport destiné à l’organe statuant sur les comptes. Memlia n’est ni auteur d’opinion ni signataire. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "rapport-sur-comptes-definition-dila-a821-92-nep-700",
+      "sourceId": "dila-a821-92",
+      "citationIds": [
+        "rapport-sur-comptes-definition-dila-a821-92-nep-700-citation-1",
+        "rapport-sur-comptes-definition-dila-a821-92-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "70cff58c65204d4ee21b0bd4850d18ef0f78c92e00f312e8513205211b1209ba",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§01/02 : opinion, justification des appréciations et vérifications/informations spécifiques dans le rapport destiné à l’organe statuant sur les comptes. Memlia n’est ni auteur d’opinion ni signataire. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "rapport-sur-comptes-context-h2a-nep-700-nep-700",
+      "sourceId": "h2a-nep-700",
+      "citationIds": [
+        "rapport-sur-comptes-context-h2a-nep-700-nep-700-citation-1",
+        "rapport-sur-comptes-context-h2a-nep-700-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "344f9c6b366d9d469d2ee9b7d7e8df386f013e67f4979dd250be0541bee6b96c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§04/06 : annuels et consolidés ont rapports distincts ; certification sans/avec réserve, refus et impossibilité distingués et motifs des trois derniers au fondement de l’opinion. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "rapport-sur-comptes-context-dila-a821-92-nep-700",
+      "sourceId": "dila-a821-92",
+      "citationIds": [
+        "rapport-sur-comptes-context-dila-a821-92-nep-700-citation-1",
+        "rapport-sur-comptes-context-dila-a821-92-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "70cff58c65204d4ee21b0bd4850d18ef0f78c92e00f312e8513205211b1209ba",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§04/06 : annuels et consolidés ont rapports distincts ; certification sans/avec réserve, refus et impossibilité distingués et motifs des trois derniers au fondement de l’opinion. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "rapport-sur-comptes-commonConfusion-h2a-nep-700-nep-700",
+      "sourceId": "h2a-nep-700",
+      "citationIds": [
+        "rapport-sur-comptes-commonConfusion-h2a-nep-700-nep-700-citation-1",
+        "rapport-sur-comptes-commonConfusion-h2a-nep-700-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "344f9c6b366d9d469d2ee9b7d7e8df386f013e67f4979dd250be0541bee6b96c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§07/08 : observation portant sur information de l’annexe distincte de réserve ; assurance raisonnable élevée non absolue, pas garantie d’absence de toute erreur. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "rapport-sur-comptes-commonConfusion-dila-a821-92-nep-700",
+      "sourceId": "dila-a821-92",
+      "citationIds": [
+        "rapport-sur-comptes-commonConfusion-dila-a821-92-nep-700-citation-1",
+        "rapport-sur-comptes-commonConfusion-dila-a821-92-nep-700-citation-2"
+      ],
+      "sourceContentSha256": "70cff58c65204d4ee21b0bd4850d18ef0f78c92e00f312e8513205211b1209ba",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 700 §§07/08 : observation portant sur information de l’annexe distincte de réserve ; assurance raisonnable élevée non absolue, pas garantie d’absence de toute erreur. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "alpe-definition-h2a-nep-911-nep-911",
+      "sourceId": "h2a-nep-911",
+      "citationIds": [
+        "alpe-definition-h2a-nep-911-nep-911-citation-1",
+        "alpe-definition-h2a-nep-911-nep-911-citation-2"
+      ],
+      "sourceContentSha256": "fa40bf74539a69c6f968be31ef6d5728604363377b30ea5859660bf21e5d490d",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-definition-dila-a821-94-nep-911",
+      "sourceId": "dila-a821-94",
+      "citationIds": [
+        "alpe-definition-dila-a821-94-nep-911-citation-1",
+        "alpe-definition-dila-a821-94-nep-911-citation-2"
+      ],
+      "sourceContentSha256": "cb64cee30ef6fa651a0fe9e9582a3d319ab1d0f5b6ef0c901d45d1cff8618b5c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "alpe-context-h2a-nep-911-nep-911",
+      "sourceId": "h2a-nep-911",
+      "citationIds": [
+        "alpe-context-h2a-nep-911-nep-911-citation-1",
+        "alpe-context-h2a-nep-911-nep-911-citation-2"
+      ],
+      "sourceContentSha256": "fa40bf74539a69c6f968be31ef6d5728604363377b30ea5859660bf21e5d490d",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-context-dila-a821-94-nep-911",
+      "sourceId": "dila-a821-94",
+      "citationIds": [
+        "alpe-context-dila-a821-94-nep-911-citation-1",
+        "alpe-context-dila-a821-94-nep-911-citation-2"
+      ],
+      "sourceContentSha256": "cb64cee30ef6fa651a0fe9e9582a3d319ab1d0f5b6ef0c901d45d1cff8618b5c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "alpe-commonConfusion-h2a-nep-911-nep-911",
+      "sourceId": "h2a-nep-911",
+      "citationIds": [
+        "alpe-commonConfusion-h2a-nep-911-nep-911-citation-1",
+        "alpe-commonConfusion-h2a-nep-911-nep-911-citation-2",
+        "alpe-commonConfusion-h2a-nep-911-nep-911-citation-3",
+        "alpe-commonConfusion-h2a-nep-911-nep-911-citation-4"
+      ],
+      "sourceContentSha256": "fa40bf74539a69c6f968be31ef6d5728604363377b30ea5859660bf21e5d490d",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/03/09/12 : régime de trois exercices conditionnel, assurance raisonnable non réduite et jugement du CAC. La petite taille seule ne décide ni nomination ni durée. Aucun seuil chiffré non vérifié. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-commonConfusion-dila-a821-94-nep-911",
+      "sourceId": "dila-a821-94",
+      "citationIds": [
+        "alpe-commonConfusion-dila-a821-94-nep-911-citation-1",
+        "alpe-commonConfusion-dila-a821-94-nep-911-citation-2",
+        "alpe-commonConfusion-dila-a821-94-nep-911-citation-3",
+        "alpe-commonConfusion-dila-a821-94-nep-911-citation-4"
+      ],
+      "sourceContentSha256": "cb64cee30ef6fa651a0fe9e9582a3d319ab1d0f5b6ef0c901d45d1cff8618b5c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/03/09/12 : régime de trois exercices conditionnel, assurance raisonnable non réduite et jugement du CAC. La petite taille seule ne décide ni nomination ni durée. Aucun seuil chiffré non vérifié. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "alpe-context-h2a-nep-912-nep-912",
+      "sourceId": "h2a-nep-912",
+      "citationIds": [
+        "alpe-context-h2a-nep-912-nep-912-citation-1",
+        "alpe-context-h2a-nep-912-nep-912-citation-2",
+        "alpe-context-h2a-nep-912-nep-912-citation-3"
+      ],
+      "sourceContentSha256": "1f6783d6884d945a6952a767efb5a42b4836c9a8f558031c87e2ab038665c01c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-context-dila-a821-94-nep-912",
+      "sourceId": "dila-a821-94",
+      "citationIds": [
+        "alpe-context-dila-a821-94-nep-912-citation-1",
+        "alpe-context-dila-a821-94-nep-912-citation-2",
+        "alpe-context-dila-a821-94-nep-912-citation-3"
+      ],
+      "sourceContentSha256": "cb64cee30ef6fa651a0fe9e9582a3d319ab1d0f5b6ef0c901d45d1cff8618b5c",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues."
+    },
+    {
+      "claimId": "alpe-context-cncc-nep-911-homologation",
+      "sourceId": "cncc-nep-911",
+      "citationIds": [
+        "alpe-context-cncc-nep-911-homologation-citation-1"
+      ],
+      "sourceContentSha256": "3df093f63ffe08d35b2672ac346ef948cf59fd290e7db28d883423eb76e71a17",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-context-cncc-nep-911-remplacement",
+      "sourceId": "cncc-nep-911",
+      "citationIds": [
+        "alpe-context-cncc-nep-911-remplacement-citation-1"
+      ],
+      "sourceContentSha256": "3df093f63ffe08d35b2672ac346ef948cf59fd290e7db28d883423eb76e71a17",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-context-cncc-nep-912-homologation",
+      "sourceId": "cncc-nep-912",
+      "citationIds": [
+        "alpe-context-cncc-nep-912-homologation-citation-1"
+      ],
+      "sourceContentSha256": "6f57f281e77f4712d97433bd7a85a4b5165d41e1797958afafea355af06ec108",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    },
+    {
+      "claimId": "alpe-context-cncc-nep-912-remplacement",
+      "sourceId": "cncc-nep-912",
+      "citationIds": [
+        "alpe-context-cncc-nep-912-remplacement-citation-1"
+      ],
+      "sourceContentSha256": "6f57f281e77f4712d97433bd7a85a4b5165d41e1797958afafea355af06ec108",
+      "checkedAt": "2026-10-11T14:01:49.095Z",
+      "verdict": "soutient",
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées."
+    }
+  ]
+}

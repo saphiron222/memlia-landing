@@ -7,6 +7,7 @@ import { dirname, join } from 'node:path';
 import { createResourceFixture } from '../tests/scripts/resource-fixture.mjs';
 import { loadMetierEvidence } from './lib/resource-metier-evidence.mjs';
 import { carryResourceReview } from './lib/resource-review-carry.mjs';
+import { appendCacEvidence } from './lib/resource-metier-cac.mjs';
 
 const root = process.cwd();
 const checkedAt = '2026-09-16T20:24:14+01:00'; // Date du corpus officiel, pas une date d’effet.
@@ -242,6 +243,7 @@ function createManifest(adapter) {
       claimIds: surfaceEntries.filter((entry) => entry.sourceId === sourceId).map((entry) => entry.claimId),
     };
   });
+  appendCacEvidence(manifest, root);
   manifest.claimsEvidence.sensitiveMatter = {
     detected: true,
     signals: [...new Set(surfaceEntries.filter((entry) => ['dsn', 'legal-reglementaire'].includes(entry.type)).map((entry) => entry.type))],
@@ -294,11 +296,11 @@ function createManifest(adapter) {
   manifest.quality.blocking = revueReportee ? revueReportee.blocking : false;
   const sourceBundlePaths = [...new Set([
     ...surfaceEntries.map((entry) => entry.contentPath),
-    ...usedSourceIds.map((sourceId) => metierEvidence.sources[sourceId].snapshotPath),
+    ...manifest.claimsEvidence.sources.flatMap(source => [source.snapshotPath, ...(source.dilaCopyPath ? [source.dilaCopyPath] : [])]),
   ])];
   manifest.integrity.sourceBundle = bundle(sourceBundlePaths);
   manifest.integrity.assetBundle = bundle([sourcePath]);
-  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs', 'scripts/lib/resource-metier-ec.mjs']);
+  manifest.integrity.configBundle = bundle([registryPath, 'scripts/lib/resource-metier-evidence.mjs', 'scripts/lib/resource-metier-v3.mjs', 'scripts/lib/resource-metier-ec.mjs', 'scripts/lib/resource-metier-cac.mjs']);
   manifest.integrity.buildOutput = bundle([outputPath]);
   manifest.build = { ...manifest.build, pipelineCommit: '5c33c9ba18807cc70c6535e4edbbf3327bdd7d9a', commands: bootstrapCommands.map((row) => row.command), startedAt: buildStartedAt, endedAt: buildEndedAt, result: 'PASS', sourceBundleDigest: manifest.integrity.sourceBundle.digest, assetBundleDigest: manifest.integrity.assetBundle.digest, configBundleDigest: manifest.integrity.configBundle.digest, outputDigest: manifest.integrity.buildOutput.digest, reportRefs: ['docs/qa/hub-ressources/freshness-r4-exec.md'] };
   manifest.limitations = [

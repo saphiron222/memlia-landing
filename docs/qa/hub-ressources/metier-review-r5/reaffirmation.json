@@ -1,35 +1,42 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-10-11T15:12:14.777Z",
+  "reaffirmeLe": "2026-10-12T00:00:50.715Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "69dbd450c41da9ba6f57aa00dfc3899cdec00ae1a8f063c89c12a057964d2e5d",
+  "registreSha256": "f8a4fb99aa924b3a51703517611f292f2285af30297761d0ee8d140c3a46c306",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
   "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
-  "ancreSha256": "07fe6ac3bc740ee66c0bed5da116f8a657c871d92fd09afaab7e911c7a173532",
+  "ancreSha256": "a97352187492379842dc8f2be48490b7ee238854f28a66197eddba17035bc311",
   "regle": "Une réaffirmation ne vaut que pour les feuilles déclarées ; la matière jugée est revérifiée rendue et intacte.",
   "surfaces": {
     "T": {
       "action": "réaffirmée",
-      "sujetAncre": "d0feceb0b7919b1f9b773eb94de2a78fb7d4d766c0a84b587549470ed38bdd24",
-      "sujetReaffirme": "6d32159e469968364d80906a4cf671a70d8956d690d7927055a2ff890ab6d85e",
-      "feuillesEcartees": 8,
+      "sujetAncre": "930fc89299c744fc8de09a5674f4b8e98f3624198a78da35d0240d3ad9c1bf2d",
+      "sujetReaffirme": "f2c4a52c6109312116b5ae07faa3378ac35f334de07443bc4e49239880224bef",
+      "feuillesEcartees": 50,
       "feuillesParChamp": {
-        "configBundleDigest.configBundleDigest": 1,
-        "skills.checkedAt": 7
+        "assetBundleDigest.assetBundleDigest": 1,
+        "buildOutputDigest.buildOutputDigest": 1,
+        "claimsEvidence.sourceContentSha256": 39,
+        "claimsEvidence.contentSha256": 1,
+        "skills.checkedAt": 7,
+        "sourceBundleDigest.sourceBundleDigest": 1
       },
       "justifications": {
-        "configBundleDigest": "Le lot de configuration suit src/data/glossary.ts, qui gagne sept sources et dix entrées, et les deux modules de preuve, dont les planchers passent de 43 à 53 définitions et de 63 à 76 unités. Aucune spécification d'une affirmation sensible n'est modifiée.",
-        "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées ; le verdict de chaque ligne ne peut pas bouger."
+        "assetBundleDigest": "Le lot d'actifs suit le rendu : il n'entre ni image ni média dans cette vague, mais son empreinte est dérivée du build qui vient de changer. Aucun actif n'est ajouté, retiré ni remplacé.",
+        "buildOutputDigest": "Le contrat de page universel ajoute au HTML rendu de /glossaire le schéma WebPage et le chrome de navigation accessible, sans modifier sa matière éditoriale. Le script revérifie que chacune des affirmations revues par R5 est encore rendue mot pour mot dans ce HTML.",
+        "claimsEvidence": "La vague 2 ajoute treize affirmations — dix définitions et trois champs « confusion fréquente » — et sept sources, toutes de type non sensible (dix « information », trois « methode-memlia »). Mesure du jour : aucune affirmation ni unité conservée n'a bougé d'un octet ; les vingt-sept affirmations sensibles de R5 sont identiques une à une ; les seules lignes conservées à changer sont les trente citations adossées à source-glossary-memlia et cette source elle-même, dont la copie EST src/data/glossary.ts : seuls contentSha256, sourceContentSha256 et claimIds y bougent. Cette source n'est officielle pour aucune affirmation sensible, donc aucun verdict R5 ne s'y appuie. Le reste des écarts est positionnel : les tableaux sont comparés par rang, et insérer treize lignes décale les suivantes.",
+        "skills": "Les lignes de skill portent l'horodatage du build qui les a rejouées ; le verdict de chaque ligne ne peut pas bouger.",
+        "sourceBundleDigest": "Le lot d'intégrité des copies de source gagne les sept copies de la vague 2 (docs/qa/hub-ressources/glossaire-vague-2-sources), ouvertes le 19/09/2026, et suit la copie de src/data/glossary.ts. Aucune des vingt copies jugées par R5 n'est modifiée : les vingt-sept verdicts portent encore sur des octets identiques."
       },
-      "affirmationsRenduesVerifiees": 101,
-      "verdictsConserves": 45,
-      "candidateHash": "0798839c73c2249fa1f879bc5a7207e7833ca838058210b408ea3bd9aceb29cf",
-      "auditHash": "690bd72e85c45233bc011a32a71144749e7c92087bcf62f73b9b87c3fc6fe668",
-      "manifestSha256": "98ee895c84327e4569a252ba6c25ebd4ca462f9733d86d31edda7b247c860059",
-      "preuveRef": "docs/strategy/site-v3/ec/glossaire-reglementaire/review/business-review-global.json",
-      "preuveSha256": "8b87c10f02a5e20e002a371a9492129e48bfc93791f39d893ac9afb898c34ff0"
+      "affirmationsRenduesVerifiees": 423,
+      "verdictsConserves": 262,
+      "candidateHash": "99d208390cc34b18182c9a52346bb69ce49f952e0d75713d01b6aed5294e7018",
+      "auditHash": "e66214085ca68e6eb2315fdc59f772102bdcbe8c05e0034b5aba7bb8239a459d",
+      "manifestSha256": "353e568ee62f02c1b163fc56b54d50e04ac35a1e2a2c792fbdf09a470cd10a6f",
+      "preuveRef": "docs/strategy/site-v3/cac/glossaire/business-review-aggregate.json",
+      "preuveSha256": "bf5834b3605d997efd95dc4a0d5a0be10cd492f33edc01a1aa9e8278cf3e29c1"
     }
   }
 }

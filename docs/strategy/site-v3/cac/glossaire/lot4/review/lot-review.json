@@ -1,0 +1,1179 @@
+{
+  "schemaVersion": 1,
+  "lot": "cac-audit-4",
+  "verdict": "PASS",
+  "checkedAt": "2026-10-11T14:01:49.095Z",
+  "reviewerId": "t_bf6cb3b3",
+  "reviewerRole": "reviewer-metier-memlia",
+  "reviewedPackageSha256": "c5ddcecdae2a138fecf89ead4ed53092626988f7efb3e23c6471e379e1497198",
+  "baselineMain": "f9b65c7d5a40d6ec6ccf17a3c8dee8f6f93eb73f",
+  "publicationAuthorized": false,
+  "counts": {
+    "entries": 10,
+    "originalUnitReviews": 84,
+    "originalOfficialUnitReviews": 57,
+    "originalMethodUnitReviews": 27,
+    "projectedClaims": 87,
+    "sensitiveClaimSourceVerdicts": 58,
+    "renderedFields": 50,
+    "citations": 163,
+    "officialSources": 18
+  },
+  "unitReviews": [
+    {
+      "unitId": "dossier-travail-audit-definition-memlia-terminologie",
+      "entryId": "dossier-travail-audit",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dossier de travail est ici le nom de pratique associé à cette documentation."
+      ],
+      "reasoning": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation.",
+      "supplementalCitations": [
+        {
+          "text": "Dossier de travail est ici le nom de pratique associé à cette documentation.",
+          "locator": "dossier-travail-audit:definition"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-travail-audit-definition-h2a-nep-230-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La documentation de l’audit rassemble, dans le dossier de chaque entité contrôlée, les documents qui étayent l’opinion du commissaire aux comptes et établissent la réalisation de ses travaux."
+      ],
+      "reasoning": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-definition-dila-a821-66-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La documentation de l’audit rassemble, dans le dossier de chaque entité contrôlée, les documents qui étayent l’opinion du commissaire aux comptes et établissent la réalisation de ses travaux."
+      ],
+      "reasoning": "NEP 230 §§01/02 : dossier par entité, documents étayant l’opinion et établissant les travaux. L’alias dossier de travail est une présentation du glossaire, non une nouvelle obligation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-context-h2a-nep-230-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 demande de rendre compréhensibles la planification, les procédures, les éléments testés, les résultats et les conclusions pour une personne expérimentée en audit qui n’a pas participé à la mission. Les auteurs des travaux et leurs dates sont indiqués ; lorsqu’une revue existe, son auteur, sa date et son étendue le sont aussi."
+      ],
+      "reasoning": "NEP 230 §§04/08 : intelligibilité pour un auditeur expérimenté non participant ; identité et date des travaux, identité/date/étendue de la revue lorsqu’elle existe. Aucune suppression de revue professionnelle n’est proposée. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-context-dila-a821-66-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "context",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 demande de rendre compréhensibles la planification, les procédures, les éléments testés, les résultats et les conclusions pour une personne expérimentée en audit qui n’a pas participé à la mission. Les auteurs des travaux et leurs dates sont indiqués ; lorsqu’une revue existe, son auteur, sa date et son étendue le sont aussi."
+      ],
+      "reasoning": "NEP 230 §§04/08 : intelligibilité pour un auditeur expérimenté non participant ; identité et date des travaux, identité/date/étendue de la revue lorsqu’elle existe. Aucune suppression de revue professionnelle n’est proposée. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-commonConfusion-h2a-nep-230-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Accumuler des fichiers ne suffit pas à documenter un audit. Les explications données au contrôle ne constituent pas un élément de documentation, même lorsqu’elles précisent le dossier."
+      ],
+      "reasoning": "NEP 230 §§04/07 : l’accumulation ne satisfait pas l’intelligibilité ; les explications fournies aux autorités de contrôle ne sont pas la documentation. Ce n’est pas une interdiction de compléter le dossier dans les cas du §10. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-commonConfusion-dila-a821-66-nep-230",
+      "entryId": "dossier-travail-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Accumuler des fichiers ne suffit pas à documenter un audit. Les explications données au contrôle ne constituent pas un élément de documentation, même lorsqu’elles précisent le dossier."
+      ],
+      "reasoning": "NEP 230 §§04/07 : l’accumulation ne satisfait pas l’intelligibilité ; les explications fournies aux autorités de contrôle ne sont pas la documentation. Ce n’est pas une interdiction de compléter le dossier dans les cas du §10. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-travail-audit-exampleFictitious-memlia",
+      "entryId": "dossier-travail-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un dossier fictif, une feuille de contrôle renvoie aux écritures testées et aux pièces reçues. L’auditeur ajoute son résultat et le CAC sa conclusion ; un export de calcul isolé ne remplace pas cet ensemble."
+      ],
+      "reasoning": "Exemple nommé fictif : écritures, pièces, résultat et conclusion reliés ; un export isolé n’est pas réputé suffisant. Aucun cas client ni test d’intégration réel n’est allégué.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un dossier fictif, une feuille de contrôle renvoie aux écritures testées et aux pièces reçues. L’auditeur ajoute son résultat et le CAC sa conclusion ; un export de calcul isolé ne remplace pas cet ensemble.",
+          "locator": "dossier-travail-audit:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-travail-audit-automationBoundary-memlia",
+      "entryId": "dossier-travail-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : proposer un index et des renvois en conservant les pièces et commentaires saisis. Validation : l’équipe vérifie le rattachement et traite les liens manquants ; dans le doute, la préparation s’arrête. Jugement : le CAC apprécie les travaux, leur documentation et les conclusions qui fondent son opinion."
+      ],
+      "reasoning": "Index et renvois proposés, pièces et commentaires préservés ; l’équipe traite les liens manquants, le CAC apprécie travaux et conclusions. Aucun statut conforme aux NEP ni opinion générée.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : proposer un index et des renvois en conservant les pièces et commentaires saisis. Validation : l’équipe vérifie le rattachement et traite les liens manquants ; dans le doute, la préparation s’arrête. Jugement : le CAC apprécie les travaux, leur documentation et les conclusions qui fondent son opinion.",
+          "locator": "dossier-travail-audit:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-permanent-audit-definition-memlia",
+      "entryId": "dossier-permanent-audit",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans ce glossaire, le dossier permanent désigne le classement des informations utiles sur plusieurs exercices : structure de l’entité, contrats durables ou description de son organisation. Ce vocabulaire de classement ne crée pas une obligation normative autonome."
+      ],
+      "reasoning": "Convention de classement explicitement limitée à ce glossaire : informations pluriannuelles, sans obligation normative autonome. La NEP 230 ne prescrit pas un dossier-type permanent distinct sous ce nom.",
+      "supplementalCitations": [
+        {
+          "text": "Dans ce glossaire, le dossier permanent désigne le classement des informations utiles sur plusieurs exercices : structure de l’entité, contrats durables ou description de son organisation. Ce vocabulaire de classement ne crée pas une obligation normative autonome.",
+          "locator": "dossier-permanent-audit:definition"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-permanent-audit-commonConfusion-memlia",
+      "entryId": "dossier-permanent-audit",
+      "field": "commonConfusion",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Convention Memlia : permanent ne signifie ni immuable ni automatiquement valable pour l’exercice suivant. Une pièce conservée n’est pas une conclusion reconduite."
+      ],
+      "reasoning": "Convention Memlia recevable : conservation ne signifie ni actualité ni conclusion reconduite. Aucun automatisme de réutilisation ni règle légale universelle n’est déduit.",
+      "supplementalCitations": [
+        {
+          "text": "Convention Memlia : permanent ne signifie ni immuable ni automatiquement valable pour l’exercice suivant. Une pièce conservée n’est pas une conclusion reconduite.",
+          "locator": "dossier-permanent-audit:commonConfusion"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-permanent-audit-context-memlia-terminologie",
+      "entryId": "dossier-permanent-audit",
+      "field": "context",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Elle définit la forme, le contenu et l’étendue de cette documentation ; le classement permanent présenté ici est une convention de pratique, pas un dossier-type prescrit par cette norme."
+      ],
+      "reasoning": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence.",
+      "supplementalCitations": [
+        {
+          "text": "Elle définit la forme, le contenu et l’étendue de cette documentation ; le classement permanent présenté ici est une convention de pratique, pas un dossier-type prescrit par cette norme.",
+          "locator": "dossier-permanent-audit:context"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-permanent-audit-context-h2a-nep-230-nep-230",
+      "entryId": "dossier-permanent-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 exige une documentation permettant de comprendre les travaux et les conclusions de la mission."
+      ],
+      "reasoning": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-permanent-audit-context-dila-a821-66-nep-230",
+      "entryId": "dossier-permanent-audit",
+      "field": "context",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 exige une documentation permettant de comprendre les travaux et les conclusions de la mission."
+      ],
+      "reasoning": "NEP 230 §§03/04/06 : documentation des travaux et conclusions et supports lisibles ; la seconde phrase est une convention de classement, séparée du claim normatif. Elle ne prétend pas que le dossier permanent constitue une diligence. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "dossier-permanent-audit-exampleFictitious-memlia",
+      "entryId": "dossier-permanent-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un dossier fictif, un contrat de financement conservé depuis l’exercice précédent est accompagné d’un avenant nouveau. L’équipe vérifie ce qui demeure applicable avant de le réutiliser."
+      ],
+      "reasoning": "Contrat et avenant fictifs : vérification de l’actualité avant réutilisation. Aucun contenu ancien reconduit automatiquement.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un dossier fictif, un contrat de financement conservé depuis l’exercice précédent est accompagné d’un avenant nouveau. L’équipe vérifie ce qui demeure applicable avant de le réutiliser.",
+          "locator": "dossier-permanent-audit:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "dossier-permanent-audit-automationBoundary-memlia",
+      "entryId": "dossier-permanent-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : proposer les pièces à reconduire et signaler une version nouvelle, sans remplacer les notes du cabinet. Validation : l’équipe confirme l’actualité et le classement ; une version ambiguë arrête la reconduction. Jugement : le CAC décide de l’usage de ces informations dans l’audit et reste responsable de son opinion."
+      ],
+      "reasoning": "Pièces proposées sans remplacer les notes ; validation de l’actualité, arrêt en version ambiguë, usage et opinion réservés au CAC.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : proposer les pièces à reconduire et signaler une version nouvelle, sans remplacer les notes du cabinet. Validation : l’équipe confirme l’actualité et le classement ; une version ambiguë arrête la reconduction. Jugement : le CAC décide de l’usage de ces informations dans l’audit et reste responsable de son opinion.",
+          "locator": "dossier-permanent-audit:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "feuille-maitresse-audit-definition-memlia",
+      "entryId": "feuille-maitresse-audit",
+      "field": "definition",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans ce glossaire, une feuille maîtresse est un tableau de synthèse qui regroupe les soldes d’un cycle et leurs renvois vers les feuilles de contrôle. C’est un support de travail du cabinet, pas une diligence autonome imposée sous ce nom."
+      ],
+      "reasoning": "Convention de tableau de synthèse des soldes et renvois, expressément distincte d’une diligence autonome imposée ; pas de modèle homologué allégué.",
+      "supplementalCitations": [
+        {
+          "text": "Dans ce glossaire, une feuille maîtresse est un tableau de synthèse qui regroupe les soldes d’un cycle et leurs renvois vers les feuilles de contrôle. C’est un support de travail du cabinet, pas une diligence autonome imposée sous ce nom.",
+          "locator": "feuille-maitresse-audit:definition"
+        }
+      ]
+    },
+    {
+      "unitId": "feuille-maitresse-audit-commonConfusion-memlia",
+      "entryId": "feuille-maitresse-audit",
+      "field": "commonConfusion",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Convention Memlia : une concordance entre balance et feuille maîtresse ne prouve pas que les soldes ont été contrôlés. Regrouper des comptes et conclure sur un cycle sont deux gestes distincts."
+      ],
+      "reasoning": "Convention Memlia correcte : concordance arithmétique et regroupement ne démontrent pas l’exécution des contrôles ni la conclusion sur le cycle.",
+      "supplementalCitations": [
+        {
+          "text": "Convention Memlia : une concordance entre balance et feuille maîtresse ne prouve pas que les soldes ont été contrôlés. Regrouper des comptes et conclure sur un cycle sont deux gestes distincts.",
+          "locator": "feuille-maitresse-audit:commonConfusion"
+        }
+      ]
+    },
+    {
+      "unitId": "feuille-maitresse-audit-context-memlia-terminologie",
+      "entryId": "feuille-maitresse-audit",
+      "field": "context",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La feuille maîtresse présentée ici organise les renvois ; elle ne démontre pas à elle seule que cette exigence est satisfaite."
+      ],
+      "reasoning": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode.",
+      "supplementalCitations": [
+        {
+          "text": "La feuille maîtresse présentée ici organise les renvois ; elle ne démontre pas à elle seule que cette exigence est satisfaite.",
+          "locator": "feuille-maitresse-audit:context"
+        }
+      ]
+    },
+    {
+      "unitId": "feuille-maitresse-audit-context-h2a-nep-230-nep-230",
+      "entryId": "feuille-maitresse-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 demande que les procédures effectuées, les éléments testés, les résultats et les conclusions soient compréhensibles dans la documentation."
+      ],
+      "reasoning": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "feuille-maitresse-audit-context-dila-a821-66-nep-230",
+      "entryId": "feuille-maitresse-audit",
+      "field": "context",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 230 demande que les procédures effectuées, les éléments testés, les résultats et les conclusions soient compréhensibles dans la documentation."
+      ],
+      "reasoning": "NEP 230 §04 : compréhension des procédures, éléments, résultats et conclusions. La feuille organise les renvois mais n’établit pas seule le respect de l’exigence ; cette seconde proposition est une limite de méthode. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "feuille-maitresse-audit-exampleFictitious-memlia",
+      "entryId": "feuille-maitresse-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un exemple fictif, les comptes d’immobilisations sont regroupés dans une feuille maîtresse. Un solde sans feuille de contrôle associée est signalé à l’équipe, sans être marqué comme audité."
+      ],
+      "reasoning": "Immobilisations fictives : le solde sans feuille associée est signalé, jamais marqué audité. Aucun audit exécuté ni conformité automatique.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un exemple fictif, les comptes d’immobilisations sont regroupés dans une feuille maîtresse. Un solde sans feuille de contrôle associée est signalé à l’équipe, sans être marqué comme audité.",
+          "locator": "feuille-maitresse-audit:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "feuille-maitresse-audit-automationBoundary-memlia",
+      "entryId": "feuille-maitresse-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : regrouper selon la table fournie et proposer les concordances. Validation : l’équipe valide les regroupements et renvois ; un compte sans règle reste en exception. Jugement : le CAC choisit les diligences et apprécie les résultats ; les commentaires saisis restent intacts et aucune opinion n’est produite par le tableau."
+      ],
+      "reasoning": "Regroupement selon table fournie, compte hors règle en exception, validation des renvois ; diligences et appréciation au CAC, commentaires intacts, aucune opinion issue du tableau.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : regrouper selon la table fournie et proposer les concordances. Validation : l’équipe valide les regroupements et renvois ; un compte sans règle reste en exception. Jugement : le CAC choisit les diligences et apprécie les résultats ; les commentaires saisis restent intacts et aucune opinion n’est produite par le tableau.",
+          "locator": "feuille-maitresse-audit:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "plan-mission-audit-definition-h2a-nep-300-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-300",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le plan de mission décrit l’approche générale de l’audit : étendue, calendrier et orientation des travaux, seuils de signification retenus et lignes directrices pour préparer le programme de travail."
+      ],
+      "reasoning": "NEP 300 §10 : approche générale, étendue/calendrier/orientation, seuils et lignes directrices ; aucun taux normatif ou choix automatique de seuil n’est proposé. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-definition-dila-a821-69-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-69",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le plan de mission décrit l’approche générale de l’audit : étendue, calendrier et orientation des travaux, seuils de signification retenus et lignes directrices pour préparer le programme de travail."
+      ],
+      "reasoning": "NEP 300 §10 : approche générale, étendue/calendrier/orientation, seuils et lignes directrices ; aucun taux normatif ou choix automatique de seuil n’est proposé. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-context-h2a-nep-300-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-300",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Selon la NEP 300, le CAC établit par écrit un plan de mission et un programme de travail relatifs aux comptes de l’exercice. Il peut modifier les éléments planifiés à partir des éléments collectés ; les modifications et leurs raisons sont consignées dans le dossier."
+      ],
+      "reasoning": "NEP 300 §§08/12/13 : plan et programme écrits pour l’exercice ; modification à partir des éléments collectés, raisons consignées. Portée attribuée à cette norme, pas prescription universelle de forme ALPE. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-context-dila-a821-69-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "context",
+      "sourceId": "dila-a821-69",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Selon la NEP 300, le CAC établit par écrit un plan de mission et un programme de travail relatifs aux comptes de l’exercice. Il peut modifier les éléments planifiés à partir des éléments collectés ; les modifications et leurs raisons sont consignées dans le dossier."
+      ],
+      "reasoning": "NEP 300 §§08/12/13 : plan et programme écrits pour l’exercice ; modification à partir des éléments collectés, raisons consignées. Portée attribuée à cette norme, pas prescription universelle de forme ALPE. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-commonConfusion-h2a-nep-300-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-300",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le plan de mission expose l’approche générale ; le programme de travail définit les diligences nécessaires à sa mise en œuvre. Un calendrier d’affectation seul n’exprime pas cette approche."
+      ],
+      "reasoning": "NEP 300 §§10/11 : approche générale distincte des diligences d’exécution ; un seul calendrier d’affectation ne contient pas tous les éléments du plan. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-commonConfusion-dila-a821-69-nep-300",
+      "entryId": "plan-mission-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-69",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le plan de mission expose l’approche générale ; le programme de travail définit les diligences nécessaires à sa mise en œuvre. Un calendrier d’affectation seul n’exprime pas cette approche."
+      ],
+      "reasoning": "NEP 300 §§10/11 : approche générale distincte des diligences d’exécution ; un seul calendrier d’affectation ne contient pas tous les éléments du plan. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "plan-mission-audit-exampleFictitious-memlia",
+      "entryId": "plan-mission-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans une mission fictive, un changement d’activité conduit le CAC à revoir l’orientation des travaux. L’équipe conserve la version précédente et documente la raison de la modification."
+      ],
+      "reasoning": "Changement d’activité fictif : réorientation décidée par le CAC et motif conservé ; aucun élément planifié modifié par l’outil seul.",
+      "supplementalCitations": [
+        {
+          "text": "Dans une mission fictive, un changement d’activité conduit le CAC à revoir l’orientation des travaux. L’équipe conserve la version précédente et documente la raison de la modification.",
+          "locator": "plan-mission-audit:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "plan-mission-audit-automationBoundary-memlia",
+      "entryId": "plan-mission-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : assembler les informations et proposer un calendrier à partir des choix saisis. Validation : l’équipe confirme les versions et ressources ; une donnée de mission manquante bloque la proposition. Jugement : le CAC fixe l’approche, les seuils et les modifications nécessaires, sans écrasement de ses choix ni génération d’opinion."
+      ],
+      "reasoning": "Assemblage et calendrier à partir des choix saisis ; donnée de mission manquante bloquante, approche/seuils/modifications réservés au CAC et choix préservés.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : assembler les informations et proposer un calendrier à partir des choix saisis. Validation : l’équipe confirme les versions et ressources ; une donnée de mission manquante bloque la proposition. Jugement : le CAC fixe l’approche, les seuils et les modifications nécessaires, sans écrasement de ses choix ni génération d’opinion.",
+          "locator": "plan-mission-audit:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "programme-travail-audit-definition-h2a-nep-300-nep-300",
+      "entryId": "programme-travail-audit",
+      "field": "definition",
+      "sourceId": "h2a-nep-300",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le programme de travail définit la nature et l’étendue des diligences estimées nécessaires pour mettre en œuvre le plan de mission pendant l’exercice, compte tenu des prescriptions légales et des normes d’exercice professionnel. Il indique les heures affectées à ces diligences."
+      ],
+      "reasoning": "NEP 300 §11 : nature et étendue des diligences estimées nécessaires au cours de l’exercice et nombre d’heures affectées. Ni barème universel ni tarif n’est déduit. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-definition-dila-a821-69-nep-300",
+      "entryId": "programme-travail-audit",
+      "field": "definition",
+      "sourceId": "dila-a821-69",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le programme de travail définit la nature et l’étendue des diligences estimées nécessaires pour mettre en œuvre le plan de mission pendant l’exercice, compte tenu des prescriptions légales et des normes d’exercice professionnel. Il indique les heures affectées à ces diligences."
+      ],
+      "reasoning": "NEP 300 §11 : nature et étendue des diligences estimées nécessaires au cours de l’exercice et nombre d’heures affectées. Ni barème universel ni tarif n’est déduit. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-context-h2a-nep-300-nep-300",
+      "entryId": "programme-travail-audit",
+      "field": "context",
+      "sourceId": "h2a-nep-300",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 300 prévoit un programme écrit, adapté à l’entité et à la mission. Les éléments collectés peuvent conduire le CAC à revoir les travaux prévus ; les modifications et les raisons qui les motivent sont consignées dans le dossier."
+      ],
+      "reasoning": "NEP 300 §§08/09/12/13 : écrit adapté à forme, taille, activités et complexité ; travaux ajustables et modifications motivées au dossier. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-context-dila-a821-69-nep-300",
+      "entryId": "programme-travail-audit",
+      "field": "context",
+      "sourceId": "dila-a821-69",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 300 prévoit un programme écrit, adapté à l’entité et à la mission. Les éléments collectés peuvent conduire le CAC à revoir les travaux prévus ; les modifications et les raisons qui les motivent sont consignées dans le dossier."
+      ],
+      "reasoning": "NEP 300 §§08/09/12/13 : écrit adapté à forme, taille, activités et complexité ; travaux ajustables et modifications motivées au dossier. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-commonConfusion-h2a-nep-230-nep-230",
+      "entryId": "programme-travail-audit",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-230",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Un programme décrit les travaux prévus ; il ne constitue pas, à lui seul, leur documentation d’exécution. La NEP 230 demande aussi les procédures effectuées, leurs résultats et les conclusions."
+      ],
+      "reasoning": "NEP 230 §04 distingue planification et procédures effectuées/résultats/conclusions ; programme seul ne démontre pas exécution. La définition du programme relue dans NEP 300 §11 corrobore le contraste. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-commonConfusion-dila-a821-66-nep-230",
+      "entryId": "programme-travail-audit",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-66",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Un programme décrit les travaux prévus ; il ne constitue pas, à lui seul, leur documentation d’exécution. La NEP 230 demande aussi les procédures effectuées, leurs résultats et les conclusions."
+      ],
+      "reasoning": "NEP 230 §04 distingue planification et procédures effectuées/résultats/conclusions ; programme seul ne démontre pas exécution. La définition du programme relue dans NEP 300 §11 corrobore le contraste. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "programme-travail-audit-exampleFictitious-memlia",
+      "entryId": "programme-travail-audit",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un programme fictif, les diligences choisies sont reliées à leurs feuilles de contrôle. Une procédure ajoutée conserve son auteur et le motif de son ajout ; une case cochée sans résultat est laissée à examiner."
+      ],
+      "reasoning": "Programme fictif : ajout motivé et case sans résultat laissée à examiner. Case cochée et contrôle achevé ne sont pas assimilés.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un programme fictif, les diligences choisies sont reliées à leurs feuilles de contrôle. Une procédure ajoutée conserve son auteur et le motif de son ajout ; une case cochée sans résultat est laissée à examiner.",
+          "locator": "programme-travail-audit:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "programme-travail-audit-automationBoundary-memlia",
+      "entryId": "programme-travail-audit",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : présenter les diligences décidées et les pièces attendues, sans déclarer un contrôle terminé. Validation : l’équipe vérifie la correspondance avec les travaux réalisés ; une pièce absente reste en exception. Jugement : le CAC détermine les diligences suffisantes, leurs ajustements et ses conclusions ; les saisies humaines restent préservées."
+      ],
+      "reasoning": "Présentation des diligences décidées et pièces attendues, vérification humaine de l’exécution, pièce absente en exception ; sufficience et conclusions au CAC, saisies intactes.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : présenter les diligences décidées et les pièces attendues, sans déclarer un contrôle terminé. Validation : l’équipe vérifie la correspondance avec les travaux réalisés ; une pièce absente reste en exception. Jugement : le CAC détermine les diligences suffisantes, leurs ajustements et ses conclusions ; les saisies humaines restent préservées.",
+          "locator": "programme-travail-audit:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "declarations-ecrites-direction-definition-h2a-nep-580-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "definition",
+      "sourceId": "h2a-nep-580",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Les déclarations écrites de la direction sont les formulations que le CAC demande au représentant légal pour conclure sur les assertions qu’il souhaite vérifier. La lettre d’affirmation est une forme de ces déclarations"
+      ],
+      "reasoning": "NEP 580 §§06/08 : formulation écrite demandée au représentant légal, lettre d’affirmation comme une des formes. La clause pas une mission ni une entrée distincte est une convention éditoriale, pas une disposition de NEP. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "declarations-ecrites-direction-definition-dila-a821-79-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "definition",
+      "sourceId": "dila-a821-79",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Les déclarations écrites de la direction sont les formulations que le CAC demande au représentant légal pour conclure sur les assertions qu’il souhaite vérifier. La lettre d’affirmation est une forme de ces déclarations"
+      ],
+      "reasoning": "NEP 580 §§06/08 : formulation écrite demandée au représentant légal, lettre d’affirmation comme une des formes. La clause pas une mission ni une entrée distincte est une convention éditoriale, pas une disposition de NEP. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "declarations-ecrites-direction-context-h2a-nep-580-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "context",
+      "sourceId": "h2a-nep-580",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 580 prévoit notamment une lettre du représentant légal au CAC, une lettre du CAC confirmée par le représentant légal ou certaines déclarations consignées dans un procès-verbal. La lettre d’affirmation est datée et signée, envoyée directement au CAC et émise au plus près de la signature de son rapport, sans lui être postérieure."
+      ],
+      "reasoning": "NEP 580 §§08/09/10 et §11 relu : plusieurs formes, lettre datée/signée envoyée directement, date proche et non postérieure à la signature du rapport ; §11 prouve la confirmation écrite de la lettre du CAC. La citation §11 est ajoutée à la preuve de revue, candidat inchangé. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": [
+        {
+          "text": "11. Lorsque le commissaire aux comptes adresse une lettre au représentant légal, il lui demande d’en accuser réception et de confirmer par écrit son accord sur les termes exposés à une date la plus rapprochée possible de la date de signature de son rapport. Cette confirmation ne peut être postérieure à la date de signature du rapport.",
+          "locator": "h2a-nep-580:nep-580:paragraphe-11:ligne-96"
+        }
+      ]
+    },
+    {
+      "unitId": "declarations-ecrites-direction-context-dila-a821-79-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "context",
+      "sourceId": "dila-a821-79",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 580 prévoit notamment une lettre du représentant légal au CAC, une lettre du CAC confirmée par le représentant légal ou certaines déclarations consignées dans un procès-verbal. La lettre d’affirmation est datée et signée, envoyée directement au CAC et émise au plus près de la signature de son rapport, sans lui être postérieure."
+      ],
+      "reasoning": "NEP 580 §§08/09/10 et §11 relu : plusieurs formes, lettre datée/signée envoyée directement, date proche et non postérieure à la signature du rapport ; §11 prouve la confirmation écrite de la lettre du CAC. La citation §11 est ajoutée à la preuve de revue, candidat inchangé. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": [
+        {
+          "text": "11. Lorsque le commissaire aux comptes adresse une lettre au représentant légal, il lui demande d'en accuser réception et de confirmer par écrit son accord sur les termes exposés à une date la plus rapprochée possible de la date de signature de son rapport. Cette confirmation ne peut être postérieure à la date de signature du rapport.",
+          "locator": "dila-a821-79:nep-580:paragraphe-11:ligne-36"
+        }
+      ]
+    },
+    {
+      "unitId": "declarations-ecrites-direction-commonConfusion-h2a-nep-580-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-580",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une déclaration ne dispense pas de rechercher des éléments qui la corroborent lorsqu’elle concerne un élément significatif des comptes. Une incohérence avec d’autres éléments appelle des procédures pour l’élucider."
+      ],
+      "reasoning": "NEP 580 §§04/05 : corroboration des déclarations significatives et élucidation des incohérences, avec conséquences appréciées par le CAC. Lettre reçue n’est pas preuve suffisante par elle-même. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "declarations-ecrites-direction-commonConfusion-dila-a821-79-nep-580",
+      "entryId": "declarations-ecrites-direction",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-79",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une déclaration ne dispense pas de rechercher des éléments qui la corroborent lorsqu’elle concerne un élément significatif des comptes. Une incohérence avec d’autres éléments appelle des procédures pour l’élucider."
+      ],
+      "reasoning": "NEP 580 §§04/05 : corroboration des déclarations significatives et élucidation des incohérences, avec conséquences appréciées par le CAC. Lettre reçue n’est pas preuve suffisante par elle-même. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "declarations-ecrites-direction-exampleFictitious-memlia",
+      "entryId": "declarations-ecrites-direction",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans une mission fictive, une lettre reçue n’est pas signée. La préparation signale ce manque et laisse le dossier en attente de l’équipe ; elle n’ajoute ni signature ni déclaration au nom de la direction."
+      ],
+      "reasoning": "Lettre fictive non signée : signalement sans ajouter de signature ou déclaration au nom de la direction ; manque transmis à l’équipe.",
+      "supplementalCitations": [
+        {
+          "text": "Dans une mission fictive, une lettre reçue n’est pas signée. La préparation signale ce manque et laisse le dossier en attente de l’équipe ; elle n’ajoute ni signature ni déclaration au nom de la direction.",
+          "locator": "declarations-ecrites-direction:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "declarations-ecrites-direction-automationBoundary-memlia",
+      "entryId": "declarations-ecrites-direction",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : proposer une liste des éléments attendus et repérer les champs manquants. Validation : la direction formule et signe ses déclarations, l’équipe contrôle la réception et les dates ; un contenu contradictoire arrête la préparation. Jugement : le CAC apprécie leur cohérence et leurs conséquences sur son opinion ; aucun texte humain n’est remplacé silencieusement."
+      ],
+      "reasoning": "Liste et champs manquants seulement ; déclarations humaines, contrôle des dates/réception et arrêt sur contradiction ; cohérence et conséquence sur opinion au CAC, aucun texte remplacé.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : proposer une liste des éléments attendus et repérer les champs manquants. Validation : la direction formule et signe ses déclarations, l’équipe contrôle la réception et les dates ; un contenu contradictoire arrête la préparation. Jugement : le CAC apprécie leur cohérence et leurs conséquences sur son opinion ; aucun texte humain n’est remplacé silencieusement.",
+          "locator": "declarations-ecrites-direction:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-definition-h2a-nep-560-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "definition",
+      "sourceId": "h2a-nep-560",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Les événements postérieurs sont les événements identifiés entre la clôture de l’exercice et l’approbation des comptes qui doivent faire l’objet d’un traitement comptable ou d’une information à l’organe appelé à statuer sur les comptes."
+      ],
+      "reasoning": "NEP 560 §01 : événements identifiés entre clôture et approbation appelant traitement comptable ou information de l’organe statuant. Le terme ne se réduit pas à la survenance après signature. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-definition-dila-a821-85-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "definition",
+      "sourceId": "dila-a821-85",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Les événements postérieurs sont les événements identifiés entre la clôture de l’exercice et l’approbation des comptes qui doivent faire l’objet d’un traitement comptable ou d’une information à l’organe appelé à statuer sur les comptes."
+      ],
+      "reasoning": "NEP 560 §01 : événements identifiés entre clôture et approbation appelant traitement comptable ou information de l’organe statuant. Le terme ne se réduit pas à la survenance après signature. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-context-h2a-nep-560-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "context",
+      "sourceId": "h2a-nep-560",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 560 distingue la date de survenance de l’événement et celle de son identification. Les procédures de recherche sont menées au plus près de la signature du rapport ; après cette signature, le CAC n’en met plus en œuvre pour identifier des événements, mais traite ceux dont il prend connaissance avant l’approbation selon les situations prévues par la norme."
+      ],
+      "reasoning": "NEP 560 §§04/07/15–18 : survenance et identification distinctes ; recherche au plus près du rapport puis cessation de recherche, sans suppression des suites d’un événement connu avant approbation. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-context-dila-a821-85-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "context",
+      "sourceId": "dila-a821-85",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 560 distingue la date de survenance de l’événement et celle de son identification. Les procédures de recherche sont menées au plus près de la signature du rapport ; après cette signature, le CAC n’en met plus en œuvre pour identifier des événements, mais traite ceux dont il prend connaissance avant l’approbation selon les situations prévues par la norme."
+      ],
+      "reasoning": "NEP 560 §§04/07/15–18 : survenance et identification distinctes ; recherche au plus près du rapport puis cessation de recherche, sans suppression des suites d’un événement connu avant approbation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-commonConfusion-h2a-nep-560-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-560",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Postérieur à la clôture ne signifie pas écriture obligatoire dans tous les cas. Le traitement comptable dépend du référentiel et des dates ; l’information de l’organe appelé à statuer constitue un autre volet."
+      ],
+      "reasoning": "NEP 560 §§02/03 : traitement suivant référentiel et dates, information de l’organe distincte de l’écriture ; absence d’enregistrement systématique. Ni réécriture automatique des comptes ni garantie de détection. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-commonConfusion-dila-a821-85-nep-560",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-85",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Postérieur à la clôture ne signifie pas écriture obligatoire dans tous les cas. Le traitement comptable dépend du référentiel et des dates ; l’information de l’organe appelé à statuer constitue un autre volet."
+      ],
+      "reasoning": "NEP 560 §§02/03 : traitement suivant référentiel et dates, information de l’organe distincte de l’écriture ; absence d’enregistrement systématique. Ni réécriture automatique des comptes ni garantie de détection. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-exampleFictitious-memlia",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un cas fictif, un litige existant à la clôture fait l’objet d’un jugement après celle-ci. L’équipe consigne les dates et transmet les pièces au CAC, sans déduire automatiquement une écriture ou une opinion."
+      ],
+      "reasoning": "Litige fictif existant à la clôture et jugement ultérieur : dates et pièces au CAC, pas de traitement comptable ou opinion automatiquement déduit.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un cas fictif, un litige existant à la clôture fait l’objet d’un jugement après celle-ci. L’équipe consigne les dates et transmet les pièces au CAC, sans déduire automatiquement une écriture ou une opinion.",
+          "locator": "evenements-posterieurs-cloture:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "evenements-posterieurs-cloture-automationBoundary-memlia",
+      "entryId": "evenements-posterieurs-cloture",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : ordonner les pièces et dates déclarées dans une chronologie. Validation : l’équipe confirme les dates et la nature des informations ; une date incertaine arrête le classement. Jugement : le CAC apprécie les suites dans les comptes, les communications et son rapport, sans modifier les saisies ni produire son opinion."
+      ],
+      "reasoning": "Chronologie de dates déclarées, confirmation humaine et arrêt sur date incertaine ; comptes/communications/rapport appréciés par le CAC, saisies intactes.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : ordonner les pièces et dates déclarées dans une chronologie. Validation : l’équipe confirme les dates et la nature des informations ; une date incertaine arrête le classement. Jugement : le CAC apprécie les suites dans les comptes, les communications et son rapport, sans modifier les saisies ni produire son opinion.",
+          "locator": "evenements-posterieurs-cloture:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "continuite-exploitation-definition-h2a-nep-570-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "definition",
+      "sourceId": "h2a-nep-570",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La continuité d’exploitation est la perspective dans laquelle l’entité est présumée poursuivre ses activités pour établir ses comptes. Le CAC apprécie si cette perspective est appropriée et s’il existe une incertitude significative susceptible de la remettre en cause."
+      ],
+      "reasoning": "NEP 570 §§01/02 : présomption de poursuite pour établir les comptes, appréciation du caractère approprié et de l’incertitude significative par le CAC, non par la préparation. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-definition-dila-a821-83-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "definition",
+      "sourceId": "dila-a821-83",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La continuité d’exploitation est la perspective dans laquelle l’entité est présumée poursuivre ses activités pour établir ses comptes. Le CAC apprécie si cette perspective est appropriée et s’il existe une incertitude significative susceptible de la remettre en cause."
+      ],
+      "reasoning": "NEP 570 §§01/02 : présomption de poursuite pour établir les comptes, appréciation du caractère approprié et de l’incertitude significative par le CAC, non par la préparation. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-context-h2a-nep-570-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "context",
+      "sourceId": "h2a-nep-570",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 570 demande au CAC d’examiner l’évaluation de la direction lorsque des événements ou circonstances sont identifiés. Quand le référentiel comptable ne définit pas la période d’appréciation, celle-ci est de douze mois à compter de la clôture. Le CAC conclut sur l’incertitude à partir des éléments collectés et de son jugement professionnel."
+      ],
+      "reasoning": "NEP 570 §§06/07/11 : examen de l’évaluation en présence d’événements/circonstances susceptibles de mettre en cause la continuité ; douze mois seulement si référentiel sans période ; conclusion sous jugement à partir des éléments. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-context-dila-a821-83-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "context",
+      "sourceId": "dila-a821-83",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 570 demande au CAC d’examiner l’évaluation de la direction lorsque des événements ou circonstances sont identifiés. Quand le référentiel comptable ne définit pas la période d’appréciation, celle-ci est de douze mois à compter de la clôture. Le CAC conclut sur l’incertitude à partir des éléments collectés et de son jugement professionnel."
+      ],
+      "reasoning": "NEP 570 §§06/07/11 : examen de l’évaluation en présence d’événements/circonstances susceptibles de mettre en cause la continuité ; douze mois seulement si référentiel sans période ; conclusion sous jugement à partir des éléments. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-commonConfusion-h2a-nep-570-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-570",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une incertitude significative ne signifie pas automatiquement que la continuité est inappropriée. Si le principe reste approprié et que l’annexe informe correctement sur l’incertitude, le rapport comporte une partie distincte sans remettre en cause l’opinion ; les autres situations ont des conséquences différentes."
+      ],
+      "reasoning": "NEP 570 §§12–15 : principe approprié avec incertitude et annexe pertinente entraîne partie distincte sans modifier l’opinion ; information insuffisante ou principe inapproprié ont d’autres conséquences. Aucune assimilation automatique incertitude/refus. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-commonConfusion-dila-a821-83-nep-570",
+      "entryId": "continuite-exploitation",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-83",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une incertitude significative ne signifie pas automatiquement que la continuité est inappropriée. Si le principe reste approprié et que l’annexe informe correctement sur l’incertitude, le rapport comporte une partie distincte sans remettre en cause l’opinion ; les autres situations ont des conséquences différentes."
+      ],
+      "reasoning": "NEP 570 §§12–15 : principe approprié avec incertitude et annexe pertinente entraîne partie distincte sans modifier l’opinion ; information insuffisante ou principe inapproprié ont d’autres conséquences. Aucune assimilation automatique incertitude/refus. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "continuite-exploitation-exampleFictitious-memlia",
+      "entryId": "continuite-exploitation",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un exemple fictif, un emprunt arrive à échéance sans confirmation de renouvellement. La préparation rassemble l’échéancier et les prévisions ; le CAC apprécie les hypothèses et les plans de la direction."
+      ],
+      "reasoning": "Emprunt fictif non renouvelé : échéancier et prévisions rassemblés, plans et hypothèses appréciés par le CAC. Renouvellement ou continuité non inventés.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un exemple fictif, un emprunt arrive à échéance sans confirmation de renouvellement. La préparation rassemble l’échéancier et les prévisions ; le CAC apprécie les hypothèses et les plans de la direction.",
+          "locator": "continuite-exploitation:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "continuite-exploitation-automationBoundary-memlia",
+      "entryId": "continuite-exploitation",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : rapprocher échéanciers et prévisions et signaler les données absentes. Validation : l’équipe vérifie les hypothèses documentées ; un financement non confirmé reste une exception. Jugement : le CAC apprécie la continuité, l’incertitude, l’information donnée et les suites dans son rapport ; ni les hypothèses saisies ni son opinion ne sont générées à sa place."
+      ],
+      "reasoning": "Rapprochements documentaires, donnée absente signalée et financement non confirmé en exception ; appréciation de la continuité et du rapport réservée au CAC, pas d’hypothèses générées.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : rapprocher échéanciers et prévisions et signaler les données absentes. Validation : l’équipe vérifie les hypothèses documentées ; un financement non confirmé reste une exception. Jugement : le CAC apprécie la continuité, l’incertitude, l’information donnée et les suites dans son rapport ; ni les hypothèses saisies ni son opinion ne sont générées à sa place.",
+          "locator": "continuite-exploitation:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "rapport-sur-comptes-definition-h2a-nep-700-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "definition",
+      "sourceId": "h2a-nep-700",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le rapport sur les comptes est le document dans lequel le CAC formule son opinion à l’organe appelé à statuer sur les comptes, justifie ses appréciations et rend compte des vérifications et informations spécifiques prévues par les textes."
+      ],
+      "reasoning": "NEP 700 §§01/02 : opinion, justification des appréciations et vérifications/informations spécifiques dans le rapport destiné à l’organe statuant sur les comptes. Memlia n’est ni auteur d’opinion ni signataire. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-definition-dila-a821-92-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "definition",
+      "sourceId": "dila-a821-92",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Le rapport sur les comptes est le document dans lequel le CAC formule son opinion à l’organe appelé à statuer sur les comptes, justifie ses appréciations et rend compte des vérifications et informations spécifiques prévues par les textes."
+      ],
+      "reasoning": "NEP 700 §§01/02 : opinion, justification des appréciations et vérifications/informations spécifiques dans le rapport destiné à l’organe statuant sur les comptes. Memlia n’est ni auteur d’opinion ni signataire. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-context-h2a-nep-700-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "context",
+      "sourceId": "h2a-nep-700",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 700 distingue le rapport sur les comptes annuels du rapport sur les comptes consolidés. Le CAC peut certifier sans réserve, certifier avec réserve, refuser de certifier ou être dans l’impossibilité de certifier ; les motifs des trois dernières situations figurent dans le fondement de l’opinion."
+      ],
+      "reasoning": "NEP 700 §§04/06 : annuels et consolidés ont rapports distincts ; certification sans/avec réserve, refus et impossibilité distingués et motifs des trois derniers au fondement de l’opinion. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-context-dila-a821-92-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "context",
+      "sourceId": "dila-a821-92",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 700 distingue le rapport sur les comptes annuels du rapport sur les comptes consolidés. Le CAC peut certifier sans réserve, certifier avec réserve, refuser de certifier ou être dans l’impossibilité de certifier ; les motifs des trois dernières situations figurent dans le fondement de l’opinion."
+      ],
+      "reasoning": "NEP 700 §§04/06 : annuels et consolidés ont rapports distincts ; certification sans/avec réserve, refus et impossibilité distingués et motifs des trois derniers au fondement de l’opinion. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-commonConfusion-h2a-nep-700-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-700",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une observation attire l’attention sur une information de l’annexe ; elle ne se confond pas avec une réserve. Une certification sans réserve exprime une assurance raisonnable, élevée mais non absolue, et non une garantie d’absence de toute erreur."
+      ],
+      "reasoning": "NEP 700 §§07/08 : observation portant sur information de l’annexe distincte de réserve ; assurance raisonnable élevée non absolue, pas garantie d’absence de toute erreur. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-commonConfusion-dila-a821-92-nep-700",
+      "entryId": "rapport-sur-comptes",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-92",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une observation attire l’attention sur une information de l’annexe ; elle ne se confond pas avec une réserve. Une certification sans réserve exprime une assurance raisonnable, élevée mais non absolue, et non une garantie d’absence de toute erreur."
+      ],
+      "reasoning": "NEP 700 §§07/08 : observation portant sur information de l’annexe distincte de réserve ; assurance raisonnable élevée non absolue, pas garantie d’absence de toute erreur. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "rapport-sur-comptes-exampleFictitious-memlia",
+      "entryId": "rapport-sur-comptes",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un projet fictif, l’identité de l’entité, l’exercice et les comptes joints sont rapprochés des pièces validées. La zone d’opinion reste vide jusqu’à la décision et la rédaction du CAC."
+      ],
+      "reasoning": "Projet fictif d’identité/exercice/comptes joints : zone d’opinion vide jusqu’à décision et rédaction du CAC. Aucun projet d’opinion de l’outil.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un projet fictif, l’identité de l’entité, l’exercice et les comptes joints sont rapprochés des pièces validées. La zone d’opinion reste vide jusqu’à la décision et la rédaction du CAC.",
+          "locator": "rapport-sur-comptes:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "rapport-sur-comptes-automationBoundary-memlia",
+      "entryId": "rapport-sur-comptes",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : assembler les références et comptes joints et signaler les incohérences. Validation : l’équipe confirme le périmètre et les versions ; des comptes non validés bloquent la proposition. Jugement : le CAC rédige l’opinion, ses motifs et appréciations, puis signe sous sa responsabilité ; aucun résultat d’outil ni remplacement de ses saisies ne certifie les comptes."
+      ],
+      "reasoning": "Assemblage de références et versions, comptes non validés bloquants ; opinion/motifs/appréciations rédigés et rapport signé par le CAC sous sa responsabilité. Aucun résultat ne certifie.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : assembler les références et comptes joints et signaler les incohérences. Validation : l’équipe confirme le périmètre et les versions ; des comptes non validés bloquent la proposition. Jugement : le CAC rédige l’opinion, ses motifs et appréciations, puis signe sous sa responsabilité ; aucun résultat d’outil ni remplacement de ses saisies ne certifie les comptes.",
+          "locator": "rapport-sur-comptes:automationBoundary"
+        }
+      ]
+    },
+    {
+      "unitId": "alpe-definition-h2a-nep-911-nep-911",
+      "entryId": "alpe",
+      "field": "definition",
+      "sourceId": "h2a-nep-911",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Ce nom de pratique renvoie ici à la mission du CAC nommé pour trois exercices encadrée par la NEP 911, dont les diligences sont proportionnées à la petite entreprise et aux risques de la mission."
+      ],
+      "reasoning": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-definition-dila-a821-94-nep-911",
+      "entryId": "alpe",
+      "field": "definition",
+      "sourceId": "dila-a821-94",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Ce nom de pratique renvoie ici à la mission du CAC nommé pour trois exercices encadrée par la NEP 911, dont les diligences sont proportionnées à la petite entreprise et aux risques de la mission."
+      ],
+      "reasoning": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-h2a-nep-911-nep-911",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "h2a-nep-911",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 911 encadre les situations de mandat de trois exercices et comprend la certification des comptes ainsi qu’un rapport sur les risques financiers, comptables et de gestion."
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-dila-a821-94-nep-911",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "dila-a821-94",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 911 encadre les situations de mandat de trois exercices et comprend la certification des comptes ainsi qu’un rapport sur les risques financiers, comptables et de gestion."
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-commonConfusion-h2a-nep-911-nep-911",
+      "entryId": "alpe",
+      "field": "commonConfusion",
+      "sourceId": "h2a-nep-911",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une mission proportionnée n’est pas une assurance réduite ni un simple classement administratif. La NEP 911 vise une assurance raisonnable, élevée mais non absolue ; le CAC conserve son jugement pour déterminer les travaux et fonder son opinion. Une petite entreprise ne relève pas automatiquement d’un mandat de trois exercices."
+      ],
+      "reasoning": "NEP 911 §§01/03/09/12 : régime de trois exercices conditionnel, assurance raisonnable non réduite et jugement du CAC. La petite taille seule ne décide ni nomination ni durée. Aucun seuil chiffré non vérifié. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-commonConfusion-dila-a821-94-nep-911",
+      "entryId": "alpe",
+      "field": "commonConfusion",
+      "sourceId": "dila-a821-94",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Une mission proportionnée n’est pas une assurance réduite ni un simple classement administratif. La NEP 911 vise une assurance raisonnable, élevée mais non absolue ; le CAC conserve son jugement pour déterminer les travaux et fonder son opinion. Une petite entreprise ne relève pas automatiquement d’un mandat de trois exercices."
+      ],
+      "reasoning": "NEP 911 §§01/03/09/12 : régime de trois exercices conditionnel, assurance raisonnable non réduite et jugement du CAC. La petite taille seule ne décide ni nomination ni durée. Aucun seuil chiffré non vérifié. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-h2a-nep-912-nep-912",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "h2a-nep-912",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 912 concerne une mission de six exercices dans les petites entreprises."
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-dila-a821-94-nep-912",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "dila-a821-94",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "La NEP 912 concerne une mission de six exercices dans les petites entreprises."
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Copie locale identique au réexport A4 ; collecte originale et réserve de consolidation maintenues.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-cncc-nep-911",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "cncc-nep-911",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "homologuées le 24 juillet 2026",
+        "remplacent celles homologuées le 13 novembre 2024"
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-context-cncc-nep-912",
+      "entryId": "alpe",
+      "field": "context",
+      "sourceId": "cncc-nep-912",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "homologuées le 24 juillet 2026",
+        "remplacent celles homologuées le 13 novembre 2024"
+      ],
+      "reasoning": "NEP 911 §§01/06 : trois exercices, certification et rapport sur les risques ; NEP 912 §§01/02/05 : six exercices et certification en petite entreprise. Chaque page CNCC atteste pour sa propre norme l’homologation du 24 juillet 2026 et le remplacement de celle du 13 novembre 2024 ; la conclusion conjointe repose sur les deux pages, sans attribuer chaque pluralité à une seule. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-definition-cncc-alpe",
+      "entryId": "alpe",
+      "field": "definition",
+      "sourceId": "cncc-alpe",
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "ALPE signifie audit légal des petites entreprises."
+      ],
+      "reasoning": "NEP 911 §§01/09 : mission de trois exercices, diligences proportionnées et jugement professionnel. CNCC septembre 2022 confirme uniquement le développement lexical ALPE ; aucun seuil, statistique ou ancien régime de cette brochure n’est repris. Source institutionnelle rouverte, version et portée vérifiées.",
+      "supplementalCitations": []
+    },
+    {
+      "unitId": "alpe-exampleFictitious-memlia",
+      "entryId": "alpe",
+      "field": "exampleFictitious",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Dans un mandat fictif, la préparation identifie la durée déclarée et les pièces de nomination. Une durée non confirmée bloque le choix de la trame ; le CAC détermine la norme applicable et ses diligences."
+      ],
+      "reasoning": "Mandat fictif : durée et nomination documentées, durée non confirmée bloque la trame ; norme applicable déterminée par le CAC, pas automatiquement par taille.",
+      "supplementalCitations": [
+        {
+          "text": "Dans un mandat fictif, la préparation identifie la durée déclarée et les pièces de nomination. Une durée non confirmée bloque le choix de la trame ; le CAC détermine la norme applicable et ses diligences.",
+          "locator": "alpe:exampleFictitious"
+        }
+      ]
+    },
+    {
+      "unitId": "alpe-automationBoundary-memlia",
+      "entryId": "alpe",
+      "field": "automationBoundary",
+      "sourceId": null,
+      "verdict": "PASS",
+      "sourceSupportedTexts": [
+        "Préparation : rassembler les pièces de mandat et proposer un suivi documentaire. Validation : l’équipe confirme les informations et la trame retenue ; une situation hors règle reste en exception. Jugement : le CAC apprécie le cadre applicable, les risques, ses diligences et ses rapports, sans écrasement de ses choix ni génération de son opinion."
+      ],
+      "reasoning": "Pièces de mandat et suivi seulement ; cadre hors règle en exception, risques/diligences/rapports et opinion restent au CAC, choix non écrasés.",
+      "supplementalCitations": [
+        {
+          "text": "Préparation : rassembler les pièces de mandat et proposer un suivi documentaire. Validation : l’équipe confirme les informations et la trame retenue ; une situation hors règle reste en exception. Jugement : le CAC apprécie le cadre applicable, les risques, ses diligences et ses rapports, sans écrasement de ses choix ni génération de son opinion.",
+          "locator": "alpe:automationBoundary"
+        }
+      ]
+    }
+  ]
+}

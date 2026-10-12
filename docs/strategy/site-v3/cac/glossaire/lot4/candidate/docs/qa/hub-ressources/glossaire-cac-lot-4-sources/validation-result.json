@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "docs/qa/hub-ressources/glossaire-cac-lot-4-sources/validate.mjs"
+  ],
+  "exitCode": 0,
+  "stdout": "{\n  \"pass\": true,\n  \"entries\": 10,\n  \"sources\": 18,\n  \"units\": 84,\n  \"links\": 2,\n  \"existingAnchors\": 53,\n  \"asOf\": \"2026-10-11T13:43:58.062842+00:00\",\n  \"review\": \"pending; format/source control only\"\n}\n",
+  "stderr": ""
+}

@@ -1,0 +1,45 @@
+{
+  "pass": true,
+  "scope": "Sous-contrat validateClaims et digest natifs ; projection réelle du lot 2, pas manifeste global de publication.",
+  "nativeLibrarySha256": "58406aaea2dede2d8d2dcdf01722330cadd18f7a9b711b02302057595af5f4af",
+  "counts": {
+    "renderedFields": 50,
+    "claims": 87,
+    "citations": 213,
+    "sources": 9,
+    "sensitiveVerdicts": 66
+  },
+  "errors": [],
+  "mutations": [
+    {
+      "name": "unité sensible manquante",
+      "rejected": true,
+      "errorCount": 5
+    },
+    {
+      "name": "citation fabriquée",
+      "rejected": true,
+      "errorCount": 3
+    },
+    {
+      "name": "avis absent",
+      "rejected": true,
+      "errorCount": 4
+    },
+    {
+      "name": "reviewer auteur",
+      "rejected": true,
+      "errorCount": 2
+    },
+    {
+      "name": "copie DILA redatée",
+      "rejected": true,
+      "errorCount": 8
+    },
+    {
+      "name": "extension du sous-claim",
+      "rejected": true,
+      "errorCount": 2
+    }
+  ]
+}

@@ -2,13 +2,14 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { expandV3Evidence } from './resource-metier-v3.mjs';
 import { EC_ADMITTED, expandEcEvidence } from './resource-metier-ec.mjs';
+import { loadCacProjections } from './resource-metier-cac.mjs';
 
 const REPORT = 'docs/qa/hub-ressources/metier-fix-a.md';
 // Planchers fail-closed : 23 définitions et 41 unités (dont 3 du hub) au candidat R4 ; 43 définitions et 63 unités
 // depuis la vague 1 (R5) et le retrait de la page Ressources (16/09/2026 au soir), qui ne laisse que la surface T ;
 // 53 définitions et 76 unités depuis la vague 2 (19/09/2026), qui n’ajoute aucune affirmation de type sensible.
 // Sous-lot EC admis du 11/10/2026 : deux définitions et les cinq champs de chacun, soit 55/86.
-const DEFINITIONS_ATTENDUES = 55;
+const DEFINITIONS_ATTENDUES = 95;
 const UNITES_ATTENDUES = 86;
 
 const SOURCE_SPECS = {
@@ -459,7 +460,8 @@ export function loadMetierEvidence(root, checkedAt) {
     classificationEvidenceRef: `${source.report ?? REPORT}#classification-des-sources`,
   }]));
 
-  const entries = extractDefinitions(glossary).filter(({ slug }) => !EC_ADMITTED.includes(slug)).map(({ slug, text }) => {
+  const cacAnchors = loadCacProjections(root).flatMap(lot => lot.packet.entries.map(entry => entry.anchor));
+  const entries = extractDefinitions(glossary).filter(({ slug }) => !EC_ADMITTED.includes(slug) && !cacAnchors.includes(slug)).map(({ slug, text }) => {
     const official = OFFICIAL[slug];
     const sourceId = official?.sourceId ?? 'source-glossary-memlia';
     const citations = official?.citations ?? [text];

@@ -6,16 +6,12 @@
       "exitCode": 0
     },
     {
-      "command": "node scripts/strip-briefs.mjs",
-      "exitCode": 0
-    },
-    {
-      "command": "node scripts/render-public-source-text.mjs",
+      "command": "npm run render:public",
       "exitCode": 0
     }
   ],
-  "startedAt": "2026-10-11T15:11:44.454Z",
-  "endedAt": "2026-10-11T15:12:14.428Z",
+  "startedAt": "2026-10-12T00:00:13.927Z",
+  "endedAt": "2026-10-12T00:00:49.242Z",
   "result": "PASS",
   "verification": {
     "commands": [
@@ -24,11 +20,7 @@
         "exitCode": 0
       },
       {
-        "command": "node scripts/strip-briefs.mjs",
-        "exitCode": 0
-      },
-      {
-        "command": "node scripts/render-public-source-text.mjs",
+        "command": "npm run render:public",
         "exitCode": 0
       }
     ],
@@ -37,10 +29,10 @@
   },
   "surfaces": {
     "T": {
-      "sourceBundleDigest": "cacf97035e9e4d49e7809c9b0816fbefaa820d091da8c1ede8e459603ceefac2",
-      "assetBundleDigest": "d67773b372160ee213401ee539dec96269197985133efdd268f6934b05a94229",
-      "configBundleDigest": "97bc6044f2a1147a5479204a8304171190e783d1fa91839033c45531856efe0e",
-      "outputDigest": "43b8cb4f28d9967f2cbb35d244215e970e0a44b22e32e91d7d9610677b32e594"
+      "sourceBundleDigest": "1fd847b77cf17c2022dcebf4d11ab216e2e42b24f900c56697eda3f37122b48c",
+      "assetBundleDigest": "3993810f4913bf7b639f08265ddcb9d924a7b98ab9e0db177193bd8c4bc9d219",
+      "configBundleDigest": "71ac2230b2128565e89db4a762817f272a64d199e9150887e2151eb8ab9b9e64",
+      "outputDigest": "d8a88beaf68c80e6cd572191df0b6f91ce08d00ba20b0c75b26be906ca349629"
     }
   }
 }
