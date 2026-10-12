@@ -49,44 +49,46 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Recette image.brief : sujet, composition, style, palette épinglée, interdits et alt présents. Les six îlots, chemins, papiers vierges, calendrier à cases vides, disque bas central et plateau graphite correspondent au brief. Le prompt initial et la correction ciblée sont conservés distinctement dans image-source.json et réunis explicitement dans le prompt de la recette."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Master, hero-768 et OG éditoriaux effectivement ouverts, puis OG public ouvert séparément : diorama isométrique de volumes mats, papier crème, verts et graphite, lumière douce et ombres courtes. Cinq îlots verts et un îlot graphite, sans arbre ni pion à tête. Aucun texte, lettre, chiffre, logo, personnage, main, écran/interface, alerte rouge, coche, sceau d’approbation ou symbole d’envoi observé. Les cases du calendrier sont vides, non une interface."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Journal natif Codex : tools.image_gen__imagegen appelé pour le prompt initial puis pour la correction référencée. Les octets PNG base64 renvoyés par generatedImage(r) pour call_4ca941e2a93c4cd48d8cb79eaf696144 donnent exactement le SHA de image-source.png ; le PNG original au chemin .codex/generated_images est également identique. Sortie finale exec-7158d591-bb7f-429f-9f7d-91a930085691, retournée le 12/10/2026 à 12:59:35.699 UTC. Le prompt de correction est identique au journal ; le prompt initial est lui aussi corroboré.",
+        "Illustration abstraite fictive, aucun fichier de cabinet ou donnée client représenté. OpenAI est attribué ; modèle non communiqué et crédits null, sans déduction d’un modèle exact ou d’un coût nul mesuré."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Réseau de six îlots de tâches, documents et calendrier préparés ; disque immobile avant une jonction ouverte vers un plateau graphite séparé. À 768 px, chemins et catégories d’objets restent reconnaissables ; aucune tâche n’est cochée ou déclarée validée. La carte est une métaphore de préparation et de choix, pas une preuve d’audit achevé."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Source native 1672×941 ; master PNG 1920×1080 réellement mesuré, reproduction en mémoire depuis la source par resize cover identique octet pour octet. Les six dérivés publics AVIF/WebP 768×432, 1200×675, 1600×900 sont mesurés et reproduits à l’identique ; le hero-768 éditorial correspond au public.",
+        "OG éditorial 1200×630 reproduit à l’identique selon 1200×675 puis crop 1200x630+0+22 ; OG public réencodé par la forge également reproduit à l’identique et réellement regardé. Les six îlots et objets sont entiers dans les deux OG ; aucune coupure ou perte gênante observée."
       ]
     },
     {
       "id": "alt-information",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Alt descriptif de 108 caractères : carte de tâches, îlots verts reliés, dossiers vierges, jeton plat et plateau graphite à examiner. Cohérent avec les objets vus, sans prétendre une décision ou une conformité. Identique dans le brief, la recette, image.json, manifest.json, imageAlt du Markdown et src/data/images.mjs."
       ]
     }
   ]

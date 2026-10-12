@@ -51,44 +51,47 @@
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Six composantes présentes dans image.brief : réception d’un FEC, boîte de cartes vierges, comparaison par paires et écart isolé, style mat isométrique, palette hex, interdits, alt. Prompt exact identique dans le journal natif, image-source.json, la recette et la preuve prompt.json ; composition cohérente avec les objets vus."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Master, hero-768 et OG éditoriaux ouverts, puis OG public ouvert séparément : boîte vert profond et pile de cartes crème à gauche, plateau crème de cubes verts/crème reliés par des ponts verts, cube graphite séparé dans son petit plateau, dossier vierge en arrière-plan. Volumes mats, perspective isométrique, lumière douce et ombres courtes. Aucun texte, lettre, chiffre, logo, personnage, main, écran/interface, alerte rouge, coche, sceau ou symbole d’envoi observé.",
+        "Parts de palette recomptées indépendamment et identiques à l’archive. Le vert #27b657 est mesuré à environ 0,115 %, observation cosmétique non bloquante ; les ombres et teintes éclaircies ne constituent pas une violation du sujet ou de la direction artistique."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Journal natif Codex : tools.image_gen__imagegen, call_31137fe931334cf09b22be7521a61eb8, prompt exact corroboré. Le PNG base64 renvoyé par generatedImage(r), le PNG original .codex/generated_images et image-source.png ont le même SHA. Sortie exec-f4cac3ce-e658-4b97-bb0c-b55a90637db5 retournée le 12/10/2026 à 12:58:49.140 UTC.",
+        "Représentation géométrique fictive d’une réception/comparaison, aucune donnée de client ni fichier FEC réel. Fournisseur OpenAI attribué, modèle inconnu et crédits null conservés sans inventer modèle ou facture."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "La boîte de cartes figure la réception ; quatre paires de blocs sur un plateau rendent la comparaison lisible, un cube graphite est isolé pour examen à côté d’un dossier vierge. Ces trois groupes restent distinguables à 768 px et dans les OG. L’image ne démontre ni contrôle fiscal complet du FEC ni conclusion sur les comptes ; le fichier FEC n’est pas identifiable comme tel sans le titre, limite normale de cette métaphore sans texte."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Source PNG native 1672×941, master PNG 1920×1080 mesuré et reproduit octet pour octet depuis la source. Six variantes publiques AVIF/WebP mesurées à 768×432, 1200×675 et 1600×900 et reproduites à l’identique ; hero-768 éditorial/public identique.",
+        "OG éditorial 1200×630 selon crop déclaré reproduit à l’identique ; OG public issu d’un réencodage reproduit à l’identique et regardé. Boîte, plateau, paires, cube isolé et dossier entiers, aucune troncature ou dégradation gênante observée dans les OG."
       ]
     },
     {
       "id": "alt-information",
-      "result": "FAIL",
+      "result": "PASS",
       "observations": [
-        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        "Alt de 100 caractères, descriptif du fichier reçu, des blocs comparés et de l’écart graphite dans le plateau d’examen. Il décrit la métaphore sans validation automatique ni promesse de conformité. Même valeur vérifiée dans brief/recette/image.json/manifest.json/frontmatter imageAlt/registre images.mjs."
       ]
     }
   ]

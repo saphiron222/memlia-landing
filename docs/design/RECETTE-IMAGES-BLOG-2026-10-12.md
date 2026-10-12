@@ -31,4 +31,3 @@ La note Obsidian `visuels-fonctionnels-landing-gpt-image-2-5.md` du09/09 concern
 ## Correction des deux articles CAC
 
 Les couvertures publiées étaient des captures des cadres HTML `cac-inventaire-taches` et `cac-fec-registre-reception`, fabriquées le11/10 : elles confondaient les deux recettes. Les remplacer par des dioramas OpenAI propres à ces articles ; garder les figures du corps, les sources et les avis métier de fond. La correction acquiert sa propre revue visuelle et sa livraison réelle.
-
