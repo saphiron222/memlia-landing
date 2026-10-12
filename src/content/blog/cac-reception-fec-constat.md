@@ -38,7 +38,7 @@ cta:
   destination: "/contact"
   outcome: "Nous écrivons la règle de cette tâche dans vos mots, nous la construisons dans vos outils et votre équipe la recette sur un jeu fictif. Vous gardez l’examen des sorties et les décisions de mission. Rien à envoyer : la description du geste suffit."
 imageOg: "/images/img-art-cac-fec-reception-og.webp"
-imageAlt: "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004."
+imageAlt: "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen."
 statutEditorial: publie
 sources:
   - editeur: "H2A"

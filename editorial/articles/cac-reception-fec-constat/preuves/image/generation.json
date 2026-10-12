@@ -4,24 +4,18 @@
   "kind": "image-generation",
   "status": "PASS",
   "checkedAt": "2026-10-12",
-  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
-  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "articleSha256": "10a119da23834e518be3a7b0058c419edcab51282b375229eb174b3119d4c2c2",
+  "manifestSha256": "4fcb5f1ceaada4fb5bec61ed011722624bd14f3ae2b80f59cadf8dcc43ac104e",
   "observations": [
     "Contrôle image-generation relu sur le candidat exact cac-reception-fec-constat."
   ],
-  "engine": "html-original",
-  "generationId": "html-cac-fec-registre-reception-20261011",
-  "model": "playwright-chromium",
-  "provider": "html-original-local",
-  "generatedAt": "2026-10-11",
-  "sourcePath": "preuves/couverture-originale.png",
-  "sourceSha256": "595d4b8d643e7b7641a58652396c3553de42962ffef64a100ca58fdf50062d87",
-  "outputSha256": "711c5ad32ca8a59961bd1920129474108010d0079366698726aa57f375e7746b",
-  "credits": 0,
-  "provenance": {
-    "type": "html-original",
-    "template": "editorial/templates/cadre-article.html",
-    "createdAt": "2026-10-11",
-    "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
-  }
+  "engine": "image_generate",
+  "generationId": "exec-f4cac3ce-e658-4b97-bb0c-b55a90637db5",
+  "model": "non communiqué par le générateur natif Codex",
+  "provider": "OpenAI",
+  "generatedAt": "2026-10-12",
+  "sourcePath": "image-source.png",
+  "sourceSha256": "21d823ad1b9dc1ec239fd124d3cc8f0e8dd6bad4f149a11e033251bbb90678c7",
+  "outputSha256": "e3f1dbe022d54c3079971fbc46fb66ce6fcc6ba4d636ac1f0bcdb7860f5c4e46",
+  "credits": null
 }

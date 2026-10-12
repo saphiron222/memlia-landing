@@ -1,0 +1,380 @@
+{
+  "version": 1,
+  "subject": {
+    "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+    "bodySha256": "35dd9c49b7b37f6ee7a9057f5ba485b275d08302457d30c76743b26d441b8e3b",
+    "recipeSha256": "fa20eca363331d1b4d4b4b19704097004770dc9262b6bbd42dedc71b98f8fc80",
+    "recipeSubstanceSha256": "033390622e4e3fc19f4b49e1c9a163ac0d8680aae6ab537a2a1b75c1414d1123",
+    "renderedSha256": "7d1935e45ecf8f2ef2d71a051e12594d2f6d3e449fe14b23dec9ab100a4472aa"
+  },
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "reviewedAt": "2026-10-11",
+  "verdict": "PASS AVEC RÉSERVES",
+  "cardId": "t_8bb28890",
+  "kind": "liaison-avis-acquis",
+  "avis": {
+    "path": "docs/qa/cac-f4-metier/AVIS.md",
+    "sha256": "cf7ad6e569804b760cd6b1225743120cfae0986feed52bc803933d7ceccf1f05",
+    "notice": "PASS AVEC RÉSERVES — fond du pilier CAC et du constat de réception FEC recevable dans le périmètre éditorial décrit. Les citations et paraphrases déterminantes sont soutenues par les textes relus ; aucune correction de fond bloquante identifiée. Compléter la déclaration interne des claims avant scellement. Cet avis n'est ni une validation produit ni un PASS de publication.",
+    "newIndependentReview": false,
+    "renderedReviewed": false
+  },
+  "business": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-11",
+    "verdict": "PASS AVEC RÉSERVES",
+    "cardId": "t_8bb28890",
+    "claims": {
+      "claim-unit-81302e4ef666-1": {
+        "verdict": "soutient",
+        "claim": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes.",
+        "sourceIds": [
+          "h2a315"
+        ],
+        "avisLocator": "§3, ligne 44",
+        "reasoning": "Liaison du constat acquis à claim-unit-81302e4ef666-1 (« Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes. »), sans nouvel avis : | P:11, NEP315 §14 | Citation exacte après décodage HTML : distinction entre outils d'analyse automatisés et plateformes de documentation. Ni agrément d'une IA ni modèle de fiche réglementaire n'en découle. |",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a315": "Ces outils et techniques automatisés se distinguent des plateformes et logiciels d’audit utilisés pour documenter les travaux du commissaire aux comptes."
+          }
+        }
+      },
+      "claim-unit-7dc88f00a940-1": {
+        "verdict": "soutient",
+        "claim": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent.",
+        "sourceIds": [
+          "h2a330"
+        ],
+        "avisLocator": "§3, ligne 45",
+        "reasoning": "Liaison du constat acquis à claim-unit-7dc88f00a940-1 (« Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent. »), sans nouvel avis : | P:60–64, NEP330 §10 | Définition vulgarisée d'assertion compatible avec NEP315 §5/NEP500 §3. Citation exacte sur nature/calendrier/étendue et lien aux risques. Le cabinet choisit ces procédures ; le tableau ne choisit pas ce lien. Une liste courte sur un petit mandat n'est pas présentée comme suffisante pour toute la mission. |",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a330": "Le commissaire aux comptes détermine la nature, le calendrier et l’étendue des procédures d’audit qu’il réalise en mettant en évidence le lien entre ces procédures d’audit et les risques auxquels elles répondent."
+          }
+        }
+      },
+      "claim-unit-b68abda7d08b-1": {
+        "verdict": "soutient",
+        "claim": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses.",
+        "sourceIds": [
+          "h2a505"
+        ],
+        "avisLocator": "§3, ligne 47",
+        "reasoning": "Liaison du constat acquis à claim-unit-b68abda7d08b-1 (« Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction et de l’envoi de ces demandes, ainsi que de la réception des réponses. »), sans nouvel avis : | P:76–80, NEP505 §9 et §13 | Citations exactes. La maîtrise inclut sélection, rédaction, envoi ET réception. Non-réponse implique des procédures alternatives, pas seulement une relance. Refus de direction distinct de la non-réponse. §§10–12 relus : apprécier motifs/éléments ; si fondé, alternatives ; si non fondé, conséquences éventuelles au rapport. §§14–15 : travaux supplémentaires si insuffisance puis appréciation. Le passage n'est pas une procédure complète de circularisation et n'autorise pas une clôture automatique ou une réception par l'entité réputée probante. |",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a505": "Le commissaire aux comptes a la maîtrise de la sélection des tiers à qui il souhaite adresser les demandes de confirmation, de la rédaction"
+          }
+        }
+      },
+      "claim-unit-813e2235bc2f-1": {
+        "verdict": "soutient",
+        "claim": "Les éléments de documentation consignés dans le dossier mentionnent l’identité du membre de l’équipe d’audit qui a effectué les travaux et leur date de réalisation.",
+        "sourceIds": [
+          "h2a230"
+        ],
+        "avisLocator": "§3, ligne 48",
+        "reasoning": "Liaison du constat acquis à claim-unit-813e2235bc2f-1 (« Les éléments de documentation consignés dans le dossier mentionnent l’identité du membre de l’équipe d’audit qui a effectué les travaux et leur date de réalisation. »), sans nouvel avis : | P:90–94, NEP230 §8–10 | Identité/date des travaux correctement citées ; une date de fichier ne suffit pas. §8 comporte aussi identité/date/étendue de revue lorsqu'elle existe : obligation non effacée par le résumé. §9 : documentation au fil de l'eau ; après signature, forme/classement dans les soixante jours, pas rattrapage de diligences. §10 : événement connu entre signature et approbation conduisant à nouvelles procédures/conclusions, complément documenté. L'exception est explicitement préservée ; la citation isolée de §9 ne sert pas à interdire ce complément. Aucun délai de soixante jours pour refaire l'audit n'est promis. |",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a230": "Les éléments de documentation consignés dans le dossier mentionnent l&rsquo;identité du membre de l&rsquo;équipe d&rsquo;audit qui a effectué les travaux et leur date de réalisation."
+          }
+        }
+      },
+      "claim-unit-77849f5f3eff-1": {
+        "verdict": "soutient",
+        "claim": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.",
+        "sourceIds": [
+          "h2a315"
+        ],
+        "avisLocator": "§3, ligne 49 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-77849f5f3eff-1 (« le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils. »), sans nouvel avis : | P:131–135 et F:107–111, NEP315 §46/48 d) | Les deux fragments sur fonctionnement et pertinence/fiabilité sont exacts ; §48 d) exige les éléments d'appréciation au dossier. Le texte fournit une fiche pour préparer l'appréciation, pas une fiche imposée/homologuée par la NEP ni une certification d'outil. Limite de champ : §46 concerne l'identification/évaluation des risques ; pour l'utilisation en réponse aux risques, NEP330 §33/34 e) porte l'exigence correspondante. Sources et paragraphes relus ; ajouter cette qualification au dossier interne de claims. Les formulations publiques ne prétendent pas que §46 est l'unique norme pour toute utilisation. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a315": "le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils."
+          }
+        }
+      },
+      "claim-unit-a8b93ddd7abd-1": {
+        "verdict": "soutient",
+        "claim": "Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle.",
+        "sourceIds": [
+          "h2a505"
+        ],
+        "avisLocator": "§3, ligne 47 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-a8b93ddd7abd-1 (« Lorsque le commissaire aux comptes n’obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d’audit alternatives permettant de collecter les éléments qu’il estime nécessaires pour vérifier les assertions faisant l’objet du contrôle. »), sans nouvel avis : | P:76–80, NEP505 §9 et §13 | Citations exactes. La maîtrise inclut sélection, rédaction, envoi ET réception. Non-réponse implique des procédures alternatives, pas seulement une relance. Refus de direction distinct de la non-réponse. §§10–12 relus : apprécier motifs/éléments ; si fondé, alternatives ; si non fondé, conséquences éventuelles au rapport. §§14–15 : travaux supplémentaires si insuffisance puis appréciation. Le passage n'est pas une procédure complète de circularisation et n'autorise pas une clôture automatique ou une réception par l'entité réputée probante. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a505": "Lorsque le commissaire aux comptes n&rsquo;obtient pas de réponse à une demande de confirmation, il met en œuvre des procédures d&rsquo;audit alternatives permettant de collecter les éléments qu&rsquo;il estime nécessaires pour vérifier les assertions faisant l&rsquo;objet du contrôle."
+          }
+        }
+      },
+      "claim-unit-0965ce7da77b-1": {
+        "verdict": "soutient",
+        "claim": "Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes.",
+        "sourceIds": [
+          "h2a230"
+        ],
+        "avisLocator": "§3, ligne 48 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-0965ce7da77b-1 (« Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes. »), sans nouvel avis : | P:90–94, NEP230 §8–10 | Identité/date des travaux correctement citées ; une date de fichier ne suffit pas. §8 comporte aussi identité/date/étendue de revue lorsqu'elle existe : obligation non effacée par le résumé. §9 : documentation au fil de l'eau ; après signature, forme/classement dans les soixante jours, pas rattrapage de diligences. §10 : événement connu entre signature et approbation conduisant à nouvelles procédures/conclusions, complément documenté. L'exception est explicitement préservée ; la citation isolée de §9 ne sert pas à interdire ce complément. Aucun délai de soixante jours pour refaire l'audit n'est promis. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a230": "Au-delà de la date de signature de son rapport, le commissaire aux comptes ne peut apporter aucune modification de fond aux éléments de documentation. Il ne peut y apporter que des modifications de forme ou revoir leur classement dans un délai de soixante jours après la date de signature du rapport sur les comptes."
+          }
+        }
+      },
+      "claim-unit-0965ce7da77b-2": {
+        "verdict": "soutient",
+        "claim": "qui conduit à de nouvelles procédures ou conclusions",
+        "sourceIds": [
+          "h2a230"
+        ],
+        "avisLocator": "§3, ligne 48 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-0965ce7da77b-2 (« qui conduit à de nouvelles procédures ou conclusions »), sans nouvel avis : | P:90–94, NEP230 §8–10 | Identité/date des travaux correctement citées ; une date de fichier ne suffit pas. §8 comporte aussi identité/date/étendue de revue lorsqu'elle existe : obligation non effacée par le résumé. §9 : documentation au fil de l'eau ; après signature, forme/classement dans les soixante jours, pas rattrapage de diligences. §10 : événement connu entre signature et approbation conduisant à nouvelles procédures/conclusions, complément documenté. L'exception est explicitement préservée ; la citation isolée de §9 ne sert pas à interdire ce complément. Aucun délai de soixante jours pour refaire l'audit n'est promis. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a230": "10. Lorsque le commissaire aux comptes a connaissance, entre la date de signature de son rapport et la date d&rsquo;approbation des comptes, d&rsquo;un évènement qui le conduit à mettre en œuvre de nouvelles procédures d&rsquo;audit ou à formuler de nouvelles conclusions, il complète son dossier en y consignant :"
+          }
+        }
+      },
+      "claim-unit-77849f5f3eff-2": {
+        "verdict": "soutient",
+        "claim": "la manière dont les outils fonctionnent",
+        "sourceIds": [
+          "h2a315"
+        ],
+        "avisLocator": "§3, ligne 49 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-77849f5f3eff-2 (« la manière dont les outils fonctionnent »), sans nouvel avis : | P:131–135 et F:107–111, NEP315 §46/48 d) | Les deux fragments sur fonctionnement et pertinence/fiabilité sont exacts ; §48 d) exige les éléments d'appréciation au dossier. Le texte fournit une fiche pour préparer l'appréciation, pas une fiche imposée/homologuée par la NEP ni une certification d'outil. Limite de champ : §46 concerne l'identification/évaluation des risques ; pour l'utilisation en réponse aux risques, NEP330 §33/34 e) porte l'exigence correspondante. Sources et paragraphes relus ; ajouter cette qualification au dossier interne de claims. Les formulations publiques ne prétendent pas que §46 est l'unique norme pour toute utilisation. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a315": "• la manière dont les outils fonctionnent ; et<br />"
+          }
+        }
+      },
+      "claim-unit-77849f5f3eff-3": {
+        "verdict": "soutient",
+        "claim": "éléments d'appréciation",
+        "sourceIds": [
+          "h2a315"
+        ],
+        "avisLocator": "§3, ligne 49 ; §4 R1",
+        "reasoning": "Liaison du constat acquis à claim-unit-77849f5f3eff-3 (« éléments d'appréciation »), sans nouvel avis : | P:131–135 et F:107–111, NEP315 §46/48 d) | Les deux fragments sur fonctionnement et pertinence/fiabilité sont exacts ; §48 d) exige les éléments d'appréciation au dossier. Le texte fournit une fiche pour préparer l'appréciation, pas une fiche imposée/homologuée par la NEP ni une certification d'outil. Limite de champ : §46 concerne l'identification/évaluation des risques ; pour l'utilisation en réponse aux risques, NEP330 §33/34 e) porte l'exigence correspondante. Sources et paragraphes relus ; ajouter cette qualification au dossier interne de claims. Les formulations publiques ne prétendent pas que §46 est l'unique norme pour toute utilisation. | Enrichissement documentaire autorisé par §4, lignes 64–69 ; aucun changement du sens du corps.",
+        "evidence": {
+          "avis": "docs/qa/cac-f4-metier/AVIS.md",
+          "sourceExcerpts": {
+            "h2a315": "d) Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46.</p>"
+          }
+        }
+      }
+    },
+    "limitations": [
+      "Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+      "Ce sont sept cas éditoriaux inventés, pas un parseur du format FEC ni une automatisation CAC livrée. L'empreinte produite par ce banc est celle d'une sérialisation JSON de l'objet, pas celle d'un fichier FEC reçu. F:37 ne revendique pas que cette empreinte démontre provenance/exhaustivité. F:93/125 expose précisément les limites JSON/période/équilibre. Ni champ absent/illisible, ni conservation réelle multi-utilisateur, ni restauration d'un dossier d'audit ne sont éprouvés par ce banc. Leur description est une règle de service à recetter, pas un résultat expérimental acquis.",
+      "P:48 exclut huit fonctions déjà installées ; les clôtures P:178/F:145 disent la prise en charge d'une tâche dans les outils du cabinet, pas l'existence d'une suite d'audit commercialisée. Tableaux et CTA laissent choix des procédures, appréciation, conclusions/opinion au cabinet. Aucun gain client ou agrément H2A/CNCC. Aucune confusion EC/CAC ni synergie préparation/audit des mêmes comptes. Pas d'engagement absolu d'absence de flux réseau ou de conformité RGPD ; environnement et accès sont convenus par tâche. La sécurité réelle d'une future réalisation n'est pas attestée.",
+      "Avis de fond conservable ; compléter R1 dans la fabrication de marketing. Le lot ne reçoit pas un PASS de porte de production : aucun vrai rendu Astro, contrôle de liens servis/SEO exhaustif, scellement, CI, fusion, déploiement ou suivi n'est exécuté par cette revue. Les quatre sujets canoniques de revue seront rattachés par marketing aux vrais fichiers produits après préparation au jour ouvré, sans inventer un rendu final à partir de la lecture interne. La matrice exhaustive Blog/SEO, fraîcheur des requêtes et contrôles du vrai rendu restent sa responsabilité.",
+      "Inconnues restantes : comportement/sécurité/flux d'une future réalisation produit, conformité complète d'un vrai FEC, exactitude/exhaustivité d'une population réelle, suffisance des diligences d'une mission, rendu Astro et état public final. Ces inconnues ne conditionnent pas ce contenu méthodologique borné ; elles interdisent d'en déduire une validation produit ou une mission conforme."
+    ]
+  },
+  "sources": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-11",
+    "verdict": "PASS AVEC RÉSERVES",
+    "cardId": "t_8bb28890",
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "h2a315": "Avis §2 : | NEP 315 | Arrêté du 13/11/2024, JO 19/11/2024, A.821-72 ; certification, exercices ouverts à compter de la publication au JO. Identification/évaluation des risques, §46 et §48 d). | https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/ | JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau. LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09). Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+      "h2a330": "Avis §2 : | NEP 330 | Même arrêté/JO, A.821-73 et même clause d'application par ouverture d'exercice. Réponse aux risques, §33 et §34 e). | https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/ | JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau. LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09). Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+      "h2a230": "Avis §2 : | NEP 230 | Arrêté du 28/12/2023, JO 31/12/2023, A.821-66 ; documentation des travaux d'audit. | https://h2a-france.org/normes/documentation-de-laudit-des-comptes/ | JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau. LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09). Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+      "h2a505": "Avis §2 : | NEP 505 | Arrêté du 28/12/2023, JO 31/12/2023, A.821-76 ; technique des confirmations de tiers. | https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/ | JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau. LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09). Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé."
+    }
+  },
+  "historicalEditorial": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-11",
+    "verdict": "PASS AVEC RÉSERVES",
+    "cardId": "t_8bb28890",
+    "reviewer": "relecteur-metier-ia-memlia",
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+          "§1 et §3 : les deux corps complets et leur périmètre méthodologique ont été relus ; aucune appréciation de satisfaction de requête ou du rendu final."
+        ],
+        "supportedScope": "Constats partiels de fond seulement ; ne valent pas validation de la grille entière."
+      },
+      "serp-format-rankability": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+        ],
+        "supportedScope": "Aucun constat indépendant acquis."
+      },
+      "eeat-sources": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+          "JORF DILA 2024 : `JORFARTI000050510524` et `JORFARTI000050510528` corroborent la définition, l'appréciation et la documentation des outils, les procédures et la clause d'application. Les dates de modification WordPress ne sont pas des dates d'entrée en vigueur. Les copies locales portent réellement un reçu HTTP200 du 11/10 ; leur intégrité est vérifiée, sans assimiler un reçu de marketing à ma propre ouverture réseau.",
+          "LEGI local : A.821-72/73 portent un début de version au 20/11/2024 ; leur clause spéciale vise néanmoins les exercices ouverts à compter de la publication au JO le 19/11/2024. Ne pas remplacer cette clause par la seule date de version de l'article. Les anciens identifiants 048882280/048882242 liés par H2A correspondent aux versions historiques dans l'export ; le texte 2024 effectivement affiché a été corroboré avec les versions 054151014/054151024 et le JO. A.821-66/74/76 commencent au 01/01/2024 dans la base. Les passages relus concordent, sous différences de typographie et numérotation de paragraphe (6/06, 9/09).",
+          "Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+          "Les neuf claims déclarés (cinq P, quatre F) disposent d'un soutien textuel effectif. Le préflight vérifie notamment la présence de citations ; la portée a été relue ici, sans prendre son seul « SUPPORTED » pour un avis métier. Les entités HTML du reçu NEP230 §8 ne changent pas le sens de la citation publique."
+        ],
+        "supportedScope": "Constats partiels de fond seulement ; ne valent pas validation de la grille entière."
+      },
+      "information-gain-proof": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+          "Exécution indépendante : `python3 docs/qa/cac-f4-metier/verifier.py`, sortie 0. Le code de calcul/assertions du banc fourni est exécuté sans sa seule écriture finale dans le dossier de l'auteur. Le résultat obtenu correspond exactement au reçu lu ; il est enregistré dans `rejeu-independant.json`.",
+          "- Quatre cas P : proposition à valider ; refus de source absente ; refus de règle absente ; conflit à présenter. Les trois premiers conservent le commentaire du senior ; le dernier conserve le commentaire corrigé, sans proposition qui l'écrase.",
+          "- Trois cas F : deux lignes 2026 équilibrées → CONSTAT_A_REVOIR, écart 0,00 ; mêmes lignes 2025 → REFUS_PERIODE malgré équilibre nul ; crédit 1199 contre débit 1200 en 2026 → REFUS_ECART, écart 1,00. Opinion `None` dans les trois cas.",
+          "Ce sont sept cas éditoriaux inventés, pas un parseur du format FEC ni une automatisation CAC livrée. L'empreinte produite par ce banc est celle d'une sérialisation JSON de l'objet, pas celle d'un fichier FEC reçu. F:37 ne revendique pas que cette empreinte démontre provenance/exhaustivité. F:93/125 expose précisément les limites JSON/période/équilibre. Ni champ absent/illisible, ni conservation réelle multi-utilisateur, ni restauration d'un dossier d'audit ne sont éprouvés par ce banc. Leur description est une règle de service à recetter, pas un résultat expérimental acquis."
+        ],
+        "supportedScope": "Constats partiels de fond seulement ; ne valent pas validation de la grille entière."
+      },
+      "technical-onpage-seo": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+        ],
+        "supportedScope": "Aucun constat indépendant acquis."
+      },
+      "ai-citability": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable."
+        ],
+        "supportedScope": "Aucun constat indépendant acquis."
+      },
+      "contextual-conversion": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Critère complet non examiné dans l’avis métier ; aucun PASS/FAIL transférable.",
+          "P:48 exclut huit fonctions déjà installées ; les clôtures P:178/F:145 disent la prise en charge d'une tâche dans les outils du cabinet, pas l'existence d'une suite d'audit commercialisée. Tableaux et CTA laissent choix des procédures, appréciation, conclusions/opinion au cabinet. Aucun gain client ou agrément H2A/CNCC. Aucune confusion EC/CAC ni synergie préparation/audit des mêmes comptes. Pas d'engagement absolu d'absence de flux réseau ou de conformité RGPD ; environnement et accès sont convenus par tâche. La sécurité réelle d'une future réalisation n'est pas attestée."
+        ],
+        "supportedScope": "Constats partiels de fond seulement ; ne valent pas validation de la grille entière."
+      }
+    },
+    "scope": "Constats métier partiels conservés ; grille complète non examinée, sans décision de publication."
+  },
+  "historicalImage": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-11",
+    "verdict": "PASS AVEC RÉSERVES",
+    "cardId": "t_8bb28890",
+    "criteria": {
+      "brief-six-components": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Absence de constat explicite sur ce critère complet dans l’avis métier ; non examiné."
+        ]
+      },
+      "generation-constraints": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Absence de constat explicite sur ce critère complet dans l’avis métier ; non examiné."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Les deux PNG sont réellement 1600×900 ; les deux OG JPG 1200×630 ; les quatre WebP 1600×900. Dimensions lues avec `sips`. Empreintes des PNG et de la source HTML vérifiées contre les deux provenances. Celles-ci désignent les cadres `cac-inventaire-taches` et `cac-fec-registre-reception`, `aiGeneration:false`, zéro crédit. Pas d'attribution d'une génération IA fictive.",
+          "Les quatre figures satisfont les cinq questions de la grille : écrans concrets d'outil, données fictives sans marque, compréhension des états indépendante du corps et corps lisible sans figure, pas de schéma d'étapes/slogan/avertissement, même vocabulaire visuel de fenêtre/pastille/fond quadrillé. Elles illustrent et ne certifient pas un traitement exécuté dans une interface fonctionnelle."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "| cac-inventaire-taches, PNG/OG/WebP | Fenêtre de registre, six tâches/références/états « À écrire », « Règle renseignée », « À valider ». Fiction D-004/2026 visible. Six lignes dans l'illustration ne prétendent pas couvrir les huit familles du tableau du pilier. Aucun badge comptes conformes ni fonction livrée. |",
+          "Les quatre figures satisfont les cinq questions de la grille : écrans concrets d'outil, données fictives sans marque, compréhension des états indépendante du corps et corps lisible sans figure, pas de schéma d'étapes/slogan/avertissement, même vocabulaire visuel de fenêtre/pastille/fond quadrillé. Elles illustrent et ne certifient pas un traitement exécuté dans une interface fonctionnelle."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Les deux PNG sont réellement 1600×900 ; les deux OG JPG 1200×630 ; les quatre WebP 1600×900. Dimensions lues avec `sips`. Empreintes des PNG et de la source HTML vérifiées contre les deux provenances. Celles-ci désignent les cadres `cac-inventaire-taches` et `cac-fec-registre-reception`, `aiGeneration:false`, zéro crédit. Pas d'attribution d'une génération IA fictive.",
+          "Dimensions des objets relus seulement ; aucun contrôle des nouveaux dérivés AVIF/WebP matérialisés par la forge."
+        ]
+      },
+      "alt-information": {
+        "result": "NON_EXAMINE",
+        "observations": [
+          "Absence de constat explicite sur ce critère complet dans l’avis métier ; non examiné."
+        ]
+      }
+    },
+    "reservations": [
+      "Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."
+    ],
+    "scope": "Objets visuels effectivement relus dans §6 uniquement ; aucun score, directionArt ou semanticRelevance acquis."
+  },
+  "reservations": {
+    "R1": "Vérification mécanique séparée ; liaison autorisée par §4, ni nouvelle revue ni PASS de publication.",
+    "cosmetique": "Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."
+  },
+  "limitations": [
+    "Ces articles sont des méthodes de préparation pour les missions CAC françaises. Ils n'étendent pas ces NEP à toute prestation/SACC ou à la durabilité ; ils ne prétendent pas traiter le régime complet des petites entreprises/ALPE ni un exercice ancien. Les illustrations 2026 sont dans le champ temporel décrit. Aucun seuil de nomination, durée de mandat, obligation fiscale FEC ou régime de conservation universel n'est annoncé.",
+    "Ce sont sept cas éditoriaux inventés, pas un parseur du format FEC ni une automatisation CAC livrée. L'empreinte produite par ce banc est celle d'une sérialisation JSON de l'objet, pas celle d'un fichier FEC reçu. F:37 ne revendique pas que cette empreinte démontre provenance/exhaustivité. F:93/125 expose précisément les limites JSON/période/équilibre. Ni champ absent/illisible, ni conservation réelle multi-utilisateur, ni restauration d'un dossier d'audit ne sont éprouvés par ce banc. Leur description est une règle de service à recetter, pas un résultat expérimental acquis.",
+    "P:48 exclut huit fonctions déjà installées ; les clôtures P:178/F:145 disent la prise en charge d'une tâche dans les outils du cabinet, pas l'existence d'une suite d'audit commercialisée. Tableaux et CTA laissent choix des procédures, appréciation, conclusions/opinion au cabinet. Aucun gain client ou agrément H2A/CNCC. Aucune confusion EC/CAC ni synergie préparation/audit des mêmes comptes. Pas d'engagement absolu d'absence de flux réseau ou de conformité RGPD ; environnement et accès sont convenus par tâche. La sécurité réelle d'une future réalisation n'est pas attestée.",
+    "Avis de fond conservable ; compléter R1 dans la fabrication de marketing. Le lot ne reçoit pas un PASS de porte de production : aucun vrai rendu Astro, contrôle de liens servis/SEO exhaustif, scellement, CI, fusion, déploiement ou suivi n'est exécuté par cette revue. Les quatre sujets canoniques de revue seront rattachés par marketing aux vrais fichiers produits après préparation au jour ouvré, sans inventer un rendu final à partir de la lecture interne. La matrice exhaustive Blog/SEO, fraîcheur des requêtes et contrôles du vrai rendu restent sa responsabilité.",
+    "Inconnues restantes : comportement/sécurité/flux d'une future réalisation produit, conformité complète d'un vrai FEC, exactitude/exhaustivité d'une population réelle, suffisance des diligences d'une mission, rendu Astro et état public final. Ces inconnues ne conditionnent pas ce contenu méthodologique borné ; elles interdisent d'en déduire une validation produit ou une mission conforme."
+  ],
+  "complement": {
+    "kind": "complement-cible-meme-voie-metier",
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-12",
+    "cardId": "t_5b379d47",
+    "verdict": "PASS AVEC RÉSERVES",
+    "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
+    "evidence": "docs/qa/cac-f4-metier/complement-2026-10-12/CONTROLES-INDEPENDANTS.json",
+    "renderedReviewed": true,
+    "newBusinessReview": false,
+    "publicationApproval": false,
+    "unknowns": ["SERP Google calibrée, volumes et classement", "Citations et conversions effectives", "Lighthouse et CWV", "Indexabilité, sitemap et état public final", "Inconnues produit et mission conservées de l’avis du11/10"]
+  },
+  "editorial": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewer": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-12",
+    "cardId": "t_5b379d47",
+    "verdict": "PASS AVEC RÉSERVES",
+    "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
+    "scope": "Complément éditorial qualitatif du vrai rendu local ; pas classement, validation produit ou PASS de publication. Historique intact dans historicalEditorial.",
+    "criteria": {
+      "intent-satisfaction": {"result": "PASS", "observations": ["Corps:3,35–48,137–141 : réponse avant vente, huit familles entrée/sortie/décision et trois questions pour choisir une tâche CAC ; distinction EC/CAC explicite. L’intention décider est satisfaite dans ce périmètre, pas sélection d’un logiciel ou audit automatique."]},
+      "serp-format-rankability": {"result": "PASS", "observations": ["Pilier d’organisation adapté au choix d’un geste, tutoriel FEC lié réciproquement ; recherche12/10 montre des formats EC/fiscal/audit mêlés et rend la différenciation nécessaire. Rankability plausible reste une hypothèse : aucune SERP Google calibrée, difficulté, volume, position ni absence totale de cannibalisation prouvés."]},
+      "eeat-sources": {"result": "PASS", "observations": ["Sources officielles proches des citations, soutien et portées conservés de l’avis11/10. Auteur visible/JSON-LD Kevin Kitanga, fondateur de Memlia sans titre CAC attribué ; fiction et limites déclarées, sans témoignage client ni autorité réglementaire déduite."]},
+      "information-gain-proof": {"result": "PASS", "observations": ["Carte entrée/sortie/décision, règle écrite et quatre cas acquis de préparation/refus/conflit utiles à choisir et recetter une tâche. Contribution humaine distincte ; preuves locales illustratives, pas automatisation CAC livrée ni suffisance des diligences."]},
+      "technical-onpage-seo": {"result": "PASS", "observations": ["Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter, BlogPosting/Person/BreadcrumbList cohérents ; corps et tables statiques, liens/fragments et srcset locaux vérifiés. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex attendu du brouillon ; production, sitemap, Lighthouse/CWV non attestés."]},
+      "ai-citability": {"result": "PASS", "observations": ["Définitions autonomes tâche/règle/proposition, tables à en-têtes et références NEP au passage utile ; limites du jeu fictif présentes à proximité. Extractibilité observée, pas citation effective ni probabilité ; la fiche ne se cite pas comme modèle homologué."]},
+      "contextual-conversion": {"result": "PASS", "observations": ["CTA principal Confier une première tâche vers /contact après réponse utile ; méthode/garanties et satellite contextuels. Description du geste plutôt qu’envoi de données, tâches construites puis recettées et opinion conservée au cabinet ; efficacité commerciale inconnue."]}
+    }
+  },
+  "image": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "reviewedAt": "2026-10-12",
+    "cardId": "t_5b379d47",
+    "verdict": "PASS AVEC RÉSERVES",
+    "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
+    "scope": "Quatre critères complétés sur brief/HTML/alt/dérivés ; deux PASS visuels acquis reportés avec attribution au11/10. Aucun score esthétique ; historique intégral dans historicalImage.",
+    "criteria": {
+      "brief-six-components": {"result": "PASS", "observations": ["Recette:73–84 : sujet inventaire D-004, composition registre à six tâches, style HTML/Fraunces/Hanken, palette hex, interdits et alt définis et cohérents avec la couverture ; pas représentation d’un jugement sur les comptes."]},
+      "generation-constraints": {"result": "PASS", "observations": ["Brief/prompt et provenance annoncent Chromium/HTML original sans IA ; fiction explicite, absence de marque client, gain ou badge de conformité. Palette HTML en observation, pas certification ni réimposition des planchers IA ; réserve cosmétique acquise maintenue."]},
+      "fictive-provenance": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 fictif ; figures illustratives et non interface livrée. Constat historique conservé, non refait comme exigence nouvelle."]},
+      "recognizable-subject": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 : registre de six tâches et états À écrire/Règle renseignée/À valider, sans badge comptes conformes ; six lignes ne prétendent pas couvrir huit familles. Observation complète conservée dans historicalImage."]},
+      "technical-derivatives": {"result": "PASS", "observations": ["Mesures indépendantes : master1920×1080, variantes768/1200/1600 AVIF/WebP et OG1200×630 réellement présents ; dimensions déclarées concordent, srcset et image sociale locale résolus.768 et OG visuellement ouverts : six lignes et fiction entières, pas de troncature. Réserve de petits textes inchangée."]},
+      "alt-information": {"result": "PASS", "observations": ["Hero et deux figures du vrai HTML décrivent carte/registre/fiche, D-004 fictif et propositions/commentaires distincts ; aucune conformité promise. Les alt ne transcrivent pas chaque cellule : tables et limites du corps fournissent l’information complète."]}
+    },
+    "reservations": ["Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."]
+  },
+  "publicationApproval": false
+}

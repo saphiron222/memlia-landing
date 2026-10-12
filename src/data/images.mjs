@@ -201,14 +201,14 @@ export const IMAGES = {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
+    alt: "Une carte de tâches en îlots verts reliés, avec dossiers vierges, jeton plat et plateau graphite à examiner.",
     generee: true,
   },
   'img-art-cac-fec-reception': {
     brief: 'ART',
     largeurs: [768, 1200, 1600],
     ratio: [16, 9],
-    alt: "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+    alt: "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen.",
     generee: true,
   },
   'img-art-onboarding-client': {

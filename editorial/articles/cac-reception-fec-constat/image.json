@@ -1,9 +1,9 @@
 {
   "version": 1,
   "candidateSlug": "cac-reception-fec-constat",
-  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
-  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
-  "engine": "html-original",
+  "articleSha256": "10a119da23834e518be3a7b0058c419edcab51282b375229eb174b3119d4c2c2",
+  "manifestSha256": "4fcb5f1ceaada4fb5bec61ed011722624bd14f3ae2b80f59cadf8dcc43ac104e",
+  "engine": "image_generate",
   "promptEvidence": "preuves/image/prompt.json",
   "generationEvidence": "preuves/image/generation.json",
   "visualReviewEvidence": "preuves/image/visual-review.json",
@@ -34,7 +34,7 @@
       "format": "webp"
     }
   ],
-  "alt": "Le constat de réception du FEC : préparation, examen et décision sur le dossier fictif D-004.",
+  "alt": "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen.",
   "score": 100,
   "directionArt": null,
   "semanticRelevance": null,
@@ -43,13 +43,13 @@
   "palette": {
     "statut": "OBSERVATION",
     "parts": {
-      "#fffefb": 0.990561824845679,
-      "#231f20": 0.0008203125,
-      "#97551a": 0.0005420524691358025
+      "#fcfbf7": 0.69625,
+      "#27b657": 0.0011458333333333333,
+      "#1c8a41": 0.01855902777777778,
+      "#231f20": 0.03822916666666667
     },
     "ecarts": [
-      "Palette : #231f20 (touche) mesurée à 0,082 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
-      "Palette : #97551a (touche) mesurée à 0,054 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+      "Palette : #27b657 (presente) mesurée à 0,115 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
     ]
   }
 }
