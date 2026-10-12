@@ -1,0 +1,776 @@
+{
+  "checkedAt": "2026-10-12T22:12:25.007Z",
+  "property": "sc-domain:memlia.fr",
+  "periods": {
+    "current": {
+      "start": "2026-09-26",
+      "end": "2026-10-09"
+    },
+    "previous": {
+      "start": "2026-09-12",
+      "end": "2026-09-25"
+    }
+  },
+  "sameFilters": {
+    "dimensions": [
+      "page"
+    ],
+    "searchType": "web",
+    "dataState": "final",
+    "device": "all",
+    "country": "all",
+    "limit": 25000
+  },
+  "totals": {
+    "current": {
+      "clicks": 11,
+      "impressions": 710,
+      "ctr": 1.55,
+      "position": 0
+    },
+    "previous": {
+      "clicks": 21,
+      "impressions": 641,
+      "ctr": 3.28,
+      "position": 0
+    }
+  },
+  "warnings": [
+    "Comparaison courte de 14 jours, pas trimestre contre trimestre ni année contre année.",
+    "Volumes faibles : variation d’un clic souvent classée critical par l’outil ; aucune causalité contenu démontrée.",
+    "Requêtes anonymisées absentes du rapport page/query ; son total ne remplace pas celui des pages.",
+    "Historique de publication de septembre ; saisonnalité annuelle non estimable.",
+    "Backlinks non collectés : ne pas conclure à une absence ou perte de liens."
+  ],
+  "pages": [
+    {
+      "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+        ],
+        "clicks": 0,
+        "impressions": 42,
+        "ctr": 0,
+        "position": 10.2,
+        "page": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+        ],
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 35.8,
+        "page": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn"
+      },
+      "impressionDropPct": 88.09523809523809,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "inspection": {
+        "url": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-04T12:17:19Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/blog"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "user_canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+            "contrôle dsn"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 66,
+          "page": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+          "query": "contrôle dsn"
+        }
+      ],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+        ],
+        "clicks": 1,
+        "impressions": 17,
+        "ctr": 5.88,
+        "position": 10.9,
+        "page": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+        ],
+        "clicks": 0,
+        "impressions": 6,
+        "ctr": 0,
+        "position": 25,
+        "page": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+      },
+      "impressionDropPct": 64.70588235294117,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "inspection": {
+        "url": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-06T13:45:23Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/sitemap-0.xml"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "user_canonical": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "lien CAC et date de republication, sans refonte SEO spéculative"
+    },
+    {
+      "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+        ],
+        "clicks": 0,
+        "impressions": 13,
+        "ctr": 0,
+        "position": 5.1,
+        "page": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+        ],
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 16.4,
+        "page": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel"
+      },
+      "impressionDropPct": 61.53846153846154,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "inspection": {
+        "url": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-06T22:30:23Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/blog"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+          "user_canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients"
+        ],
+        "clicks": 0,
+        "impressions": 12,
+        "ctr": 0,
+        "position": 11.7,
+        "page": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients"
+        ],
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 14.6,
+        "page": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients"
+      },
+      "impressionDropPct": 58.333333333333336,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "inspection": {
+        "url": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-06T03:45:23Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/sitemap-0.xml"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+          "user_canonical": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+            "quelles fonctionnalités de relance, de classement et de contrôle des pièces manquantes sont essentielles ?"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 5,
+          "page": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+          "query": "quelles fonctionnalités de relance, de classement et de contrôle des pièces manquantes sont essentielles ?"
+        }
+      ],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+        ],
+        "clicks": 1,
+        "impressions": 26,
+        "ctr": 3.85,
+        "position": 25.5,
+        "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+        ],
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 20.5,
+        "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier"
+      },
+      "impressionDropPct": 57.692307692307686,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "inspection": {
+        "url": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-09-17T15:02:29Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/sitemap-0.xml"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "user_canonical": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "automatisation imputation comptable"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 24.7,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "automatisation imputation comptable"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "automatisation saisie comptable"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 92,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "automatisation saisie comptable"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "controle comptabilité automatique"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 28,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "controle comptabilité automatique"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "saisie automatique des factures"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 90.5,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "saisie automatique des factures"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "saisie automatique facture"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 99,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "saisie automatique facture"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+            "saisie et contrôle des factures"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 28,
+          "page": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+          "query": "saisie et contrôle des factures"
+        }
+      ],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps"
+        ],
+        "clicks": 1,
+        "impressions": 14,
+        "ctr": 7.14,
+        "position": 14,
+        "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps"
+        ],
+        "clicks": 1,
+        "impressions": 8,
+        "ctr": 12.5,
+        "position": 31.1,
+        "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps"
+      },
+      "impressionDropPct": 42.857142857142854,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "inspection": {
+        "url": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-06T20:00:24Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/sitemap-0.xml"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "user_canonical": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+            "charge de travail cabinet comptable"
+          ],
+          "clicks": 0,
+          "impressions": 4,
+          "ctr": 0,
+          "position": 10.8,
+          "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "query": "charge de travail cabinet comptable"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+            "horaire comptable"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 74,
+          "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "query": "horaire comptable"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+            "la saisie des temps en cabinet comptable obligations"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 51,
+          "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "query": "la saisie des temps en cabinet comptable obligations"
+        },
+        {
+          "keys": [
+            "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+            "saisie des temps en cabinet comptable obligations"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 49,
+          "page": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+          "query": "saisie des temps en cabinet comptable obligations"
+        }
+      ],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn"
+        ],
+        "clicks": 2,
+        "impressions": 22,
+        "ctr": 9.09,
+        "position": 9.2,
+        "page": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn"
+        ],
+        "clicks": 1,
+        "impressions": 13,
+        "ctr": 7.69,
+        "position": 13.8,
+        "page": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn"
+      },
+      "impressionDropPct": 40.909090909090914,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "inspection": {
+        "url": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-04T17:09:45Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/blog"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "user_canonical": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [
+        {
+          "keys": [
+            "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+            "compte rendu métier"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 11,
+          "page": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+          "query": "compte rendu métier"
+        }
+      ],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    },
+    {
+      "url": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "previous": {
+        "keys": [
+          "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+        ],
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 24.8,
+        "page": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+      },
+      "current": {
+        "keys": [
+          "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+        ],
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 36.3,
+        "page": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+      },
+      "impressionDropPct": 40,
+      "http": 200,
+      "canonical": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "inspection": {
+        "url": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+        "property": "sc-domain:memlia.fr",
+        "index_status": {
+          "verdict": "PASS",
+          "coverage_state": "Submitted and indexed",
+          "robots_txt_state": "ALLOWED",
+          "indexing_state": "INDEXING_ALLOWED",
+          "page_fetch_state": "SUCCESSFUL",
+          "last_crawl_time": "2026-10-06T17:30:25Z",
+          "crawled_as": "MOBILE",
+          "referring_urls": [
+            "https://memlia.fr/sitemap-0.xml"
+          ]
+        },
+        "crawl_info": null,
+        "canonical": {
+          "google_canonical": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+          "user_canonical": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+          "match": true
+        },
+        "mobile_usability": {
+          "verdict": "VERDICT_UNSPECIFIED",
+          "issues": []
+        },
+        "rich_results": {
+          "verdict": "PASS",
+          "detected_items": [
+            {
+              "type": "Breadcrumbs",
+              "items": [
+                {
+                  "name": "Unnamed item",
+                  "issues": []
+                }
+              ]
+            }
+          ]
+        },
+        "verdict": "PASS",
+        "error": null
+      },
+      "visibleQueries": [],
+      "businessValue": "méthode cœur de cabinet ; conserver URL et maillage",
+      "decision": "surveiller ; pas de refonte/prune sur 0 à 2 clics et quelques dizaines d’impressions"
+    }
+  ]
+}
