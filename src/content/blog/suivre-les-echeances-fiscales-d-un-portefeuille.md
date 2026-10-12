@@ -3,7 +3,7 @@ titre: "Calendrier fiscal d’un cabinet comptable : suivre les échéances d’
 titreOnglet: "Calendrier fiscal cabinet comptable : suivi du portefeuille | Memlia"
 resume: "Une ligne par obligation et période, une date confirmée et des états séparés pour préparation, retour et paiement. Douze lignes fictives montrent les exceptions et les totaux sans comparer les collaborateurs."
 description: "Calendrier fiscal cabinet comptable : qualifier les dates par dossier, séparer dépôt et paiement, suivre les exceptions et les totaux du portefeuille."
-datePublication: 2026-10-12
+datePublication: 2026-10-13
 auteur: kevin
 sujets: [cabinet, automatisation]
 motsCles: ["calendrier fiscal cabinet comptable", "suivi échéances fiscales cabinet comptable", "suivi TVA portefeuille"]
@@ -22,7 +22,7 @@ tache: "Suivre chaque obligation qualifiée du portefeuille et présenter les ex
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-10-12
+  date: 2026-10-13
 funnel: MOFU
 contentType: searchable
 format: how-to-guide

@@ -3,9 +3,9 @@
   "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
   "kind": "business-review",
   "status": "PASS",
-  "checkedAt": "2026-10-12",
-  "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
-  "manifestSha256": "e270eaa36bdf6ced624d0e3205239711a49987304d5c2a86b67ab07686d05a4e",
+  "checkedAt": "2026-10-13",
+  "articleSha256": "d7c21d2d6193b564e197879ca6539d8c9735af47cddff79085e39202f55fa97d",
+  "manifestSha256": "074bd5f18df88b387d4fb542a93e25a0c2672c421d590916404aa45d3354e77e",
   "observations": [
     "Contrôle business-review relu sur le candidat exact suivre-les-echeances-fiscales-d-un-portefeuille."
   ],
@@ -15,7 +15,7 @@
     {
       "id": "review-claim-unit-d20bfc6ae3b0-1-dgfip-calendrier",
       "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
-      "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+      "articleSha256": "d7c21d2d6193b564e197879ca6539d8c9735af47cddff79085e39202f55fa97d",
       "claimId": "claim-unit-d20bfc6ae3b0-1",
       "claimSha256": "2b9de40953254d41b36046dcd392a22d29b6f9f936d7960242a0979b81d03f3f",
       "sourceId": "dgfip-calendrier",
@@ -23,13 +23,13 @@
       "citationSha256": "2b9de40953254d41b36046dcd392a22d29b6f9f936d7960242a0979b81d03f3f",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-13",
       "reasoning": "Copie DGFiP, lignes 625–627 : titre TVA régime réel normal d’imposition et phrase exacte octobre 2026. La fenêtre 15–24 renvoie à la date de l’espace professionnel ; le corps refuse d’attribuer une date commune ou de conclure sur une date absente."
     },
     {
       "id": "review-claim-unit-446c0389db2d-1-dgfip-echeances",
       "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
-      "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+      "articleSha256": "d7c21d2d6193b564e197879ca6539d8c9735af47cddff79085e39202f55fa97d",
       "claimId": "claim-unit-446c0389db2d-1",
       "claimSha256": "c3ada4319779d9d75ff6403ef83911ad3800cf75e54312ed61d9572e11448543",
       "sourceId": "dgfip-echeances",
@@ -37,13 +37,13 @@
       "citationSha256": "c3ada4319779d9d75ff6403ef83911ad3800cf75e54312ed61d9572e11448543",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-13",
       "reasoning": "Copie DGFiP ligne 299 : extrait exact, complété dans le contexte par Mes services, Consulter, Compte fiscal, Accès par impôt, TVA ou IS et Échéancier. L’article garde ce renvoi à l’espace professionnel, pas une date calculée à partir du calendrier national."
     },
     {
       "id": "review-claim-unit-57e380a85d74-1-cnil-minimisation",
       "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
-      "articleSha256": "e3d9b268de2f4a29d314c55b5a1f238eb4c320d2c8f7d9ea97c3ab22c535fb7e",
+      "articleSha256": "d7c21d2d6193b564e197879ca6539d8c9735af47cddff79085e39202f55fa97d",
       "claimId": "claim-unit-57e380a85d74-1",
       "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "sourceId": "cnil-minimisation",
@@ -51,7 +51,7 @@
       "citationSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
       "reviewerId": "relecteur-metier-ia-memlia",
       "verdict": "soutient",
-      "checkedAt": "2026-10-12",
+      "checkedAt": "2026-10-13",
       "reasoning": "Copie CNIL lignes 522–541, article 5 §1 c : citation exacte de minimisation, parmi les autres principes. La vue non nominative est présentée comme convention Memlia, pas obligation RGPD exhaustive ni anonymisation garantie ; un code réidentifiable reste protégé."
     }
   ]

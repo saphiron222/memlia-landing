@@ -31,3 +31,11 @@ Reprise : intégrer le correctif livré sur main, préserver les autres livraiso
 ## Hotspots
 
 Renderer global des figures et manifeste ; pilier et sa projection de liens ; dérivés du calendrier et dates ; manifeste dérivé du glossaire. Toujours repartir de main frais et régénérer les dérivés, pas fusionner des sceaux manuellement.
+
+## Reprise du 13 octobre 2026
+
+Main 2f8f9ad5 intégré par fusion normale, dont le correctif de fixture PR260 et le nouveau repère CAC du pilier PR263. La nouvelle revue H4 du pilier est conservée intégralement ; la projection native ajoute seulement le lien fiscal. Le diff public du pilier contre main est limité à ce lien. La réservation et la date publique fiscales sont le 13/10/2026, tandis que les copies officielles, le corps, les figures et l'avis de fabrication gardent leur lecture du 12/10.
+
+Matérialisation native des deux articles : erreurs vides ; gates fiscaux et pilier PASS. Dix-neuf tests ciblés (projection, rubriques, titre) et huit tests du jeu fictif PASS. Le log CI initial a aussi révélé l'absence d'entrée fiscale dans llms.txt ; entrée ajoutée depuis le périmètre relu, reconstruction réelle puis test_llms_anchors PASS. Aucun test ou garde de production modifié dans PR259. Dérivés du calendrier et surfaces Ressources régénérés et audités.
+
+Ces résultats sont locaux ; la CI de la reprise et la publication sont à constater séparément, sans assimiler le scellement local à une réponse publique.
