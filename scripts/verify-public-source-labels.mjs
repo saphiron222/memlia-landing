@@ -8,6 +8,27 @@ import { pathToFileURL } from 'node:url';
 const LABELS = /\b(?:consult[ée](?:e)?s?\s+le\s+\d|vérifi[ée](?:e)?s?\s+le\s+\d|(?:date|dates)\s+de\s+(?:consultation|vérification|capture)\b|sources?\s+(?:consultées?|vérifiées?)\b|captur(?:e|é|ée)s?\s+(?:du|le)\s+\d)/giu;
 const BLOCKS = new Set(['p', 'li', 'div', 'section', 'article', 'h1', 'h2', 'h3', 'h4', 'figure', 'figcaption', 'tr', 'td', 'br']);
 const INTERNAL = new Set(['head', 'script', 'style', 'template']);
+const BIBLIOGRAPHY = /^(?:sources?(?: officielles?| documentaires?)?|références(?: officielles?| documentaires?)?|(?:les )?textes de référence)$/iu;
+
+export function bibliographyHeadings(html) {
+  const matches = [];
+  function visit(node) {
+    if (INTERNAL.has(node.tagName)) return;
+    if (/^h[1-6]$/.test(node.tagName ?? '')) {
+      const text = child => child.nodeName === '#text' ? child.value : (child.childNodes ?? []).map(text).join('');
+      const title = text(node).normalize('NFC').replace(/\s+/gu, ' ').trim();
+      if (BIBLIOGRAPHY.test(title)) matches.push({ label: title, context: `Rubrique bibliographique : ${title}` });
+    }
+    if (node.tagName === 'p') {
+      const text = child => child.nodeName === '#text' ? child.value : (child.childNodes ?? []).map(text).join('');
+      const title = text(node).normalize('NFC').replace(/\s+/gu, ' ').trim();
+      if (/^Références\s*:/iu.test(title)) matches.push({ label: 'Références', context: `Paragraphe bibliographique : ${title.slice(0, 100)}` });
+    }
+    for (const child of node.childNodes ?? []) visit(child);
+  }
+  visit(parse(html));
+  return matches;
+}
 
 export function publicText(html) {
   function text(node) {
@@ -23,7 +44,7 @@ export function auditHtml(html) {
   const text = publicText(html);
   return [...text.matchAll(LABELS)].map((match) => ({
     label: match[0], context: text.slice(Math.max(0, match.index - 65), match.index + match[0].length + 95),
-  }));
+  })).concat(bibliographyHeadings(html));
 }
 
 export function renderedPages(dist = 'dist') {

@@ -158,6 +158,7 @@ function pageSnapshot(route, path) {
   const canonicals = [];
   const hrefs = [];
   const footerHrefs = [];
+  const mainHrefs = [];
   const media = [];
   let title = '';
   let main = null;
@@ -184,6 +185,10 @@ function pageSnapshot(route, path) {
   });
   if (main) {
     traverse(main, (node) => {
+      if (node.nodeName === 'a') {
+        const href = normalizeRoute(attr(node, 'href'));
+        if (href) mainHrefs.push(href);
+      }
       if (node.nodeName === 'h1') headings.push(normalizedText(text(node)));
       if (node.nodeName === 'img' && attr(node, 'src')) media.push(attr(node, 'src'));
       if (node.nodeName === 'video') {
@@ -195,7 +200,7 @@ function pageSnapshot(route, path) {
   const jsonLd = collectJsonLd(document);
   const schema = collectSchema(jsonLd);
   return {
-    route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs,
+    route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs, mainHrefs,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
 }
@@ -445,6 +450,14 @@ export function auditerServicesPublics({ root = process.cwd(), dist = join(root,
   for (const path of walk(dist, (item) => /sitemap(?:-[^/]+)?\.xml$/.test(item))) {
     for (const match of readFileSync(path, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)) sitemapLocations.add(match[1]);
   }
+  const catalogueRoute = '/automatisation-cabinet-comptable';
+  const catalogue = byRoute.get(catalogueRoute);
+  if (expected.length > 0) {
+    if (!catalogue) errors.push(`${catalogueRoute} : catalogue public des services absent du build`);
+    for (const source of snapshots) {
+      if (!source.footerHrefs.includes(catalogueRoute)) errors.push(`${catalogueRoute} : absent du footer rendu sur ${source.route}`);
+    }
+  }
   for (const route of expected) {
     const page = byRoute.get(route);
     if (!page) {
@@ -456,9 +469,7 @@ export function auditerServicesPublics({ root = process.cwd(), dist = join(root,
     }
     if (page.canonicals.length !== 1 || page.canonicals[0] !== `https://memlia.fr${route}`) errors.push(`${route} : canonical public exact absent`);
     if (!sitemapLocations.has(`https://memlia.fr${route}`)) errors.push(`${route} : absent du sitemap public`);
-    for (const source of snapshots) {
-      if (!source.footerHrefs.includes(route)) errors.push(`${route} : absent du footer rendu sur ${source.route}`);
-    }
+    if (catalogue && !catalogue.mainHrefs.includes(route)) errors.push(`${route} : absent du contenu principal du catalogue ${catalogueRoute}`);
   }
   return { pass: errors.length === 0, errors, expected };
 }

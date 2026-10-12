@@ -105,9 +105,11 @@ test('la surface publique attendue refuse exactement la dépublication silencieu
       version: 1,
       services: [{ slug: 'alpha', route: '/alpha', status: 'publie', publishedOn: '2026-09-20', testFixture: true }],
     }, null, 2)}\n`);
-    const footer = '<a href="/alpha">Automatisation alpha</a><a href="/outils-comptables-gratuits">Outils comptables gratuits</a>';
+    const footer = '<a href="/automatisation-cabinet-comptable">Ce qu’on automatise</a><a href="/outils-comptables-gratuits">Outils comptables gratuits</a>';
     writeFileSync(join(root, 'dist/alpha.html'), pages.alpha.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
     writeFileSync(join(root, 'dist/source.html'), pages.source.replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer));
+    const catalogue = html({ route: '/automatisation-cabinet-comptable', h1: 'Les tâches du cabinet', media: '/proofs/source.webp', href: '/alpha', description: 'Toutes les tâches publiées du cabinet.' }).replace('<a href="/outils-comptables-gratuits">Outils comptables gratuits</a>', footer);
+    writeFileSync(join(root, 'dist/automatisation-cabinet-comptable.html'), catalogue);
     writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/alpha</loc></url></urlset>');
 
     assert.deepEqual(auditerServicesPublics({ root }).errors, []);
@@ -119,8 +121,30 @@ test('la surface publique attendue refuse exactement la dépublication silencieu
     const rouge = auditerServicesPublics({ root });
     assert.equal(rouge.pass, false);
     assert.match(rouge.errors.join('\n'), /\/alpha.*noindex/i);
-    assert.match(rouge.errors.join('\n'), /\/alpha.*footer/i);
+    assert.match(rouge.errors.join('\n'), /\/automatisation-cabinet-comptable.*footer.*\/source/i);
     assert.match(rouge.errors.join('\n'), /\/alpha.*sitemap/i);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('un service public reste découvrable par le footer et le contenu principal du catalogue', () => {
+  const { root, pages } = fixture();
+  try {
+    mkdirSync(join(root, 'config'), { recursive: true });
+    writeFileSync(join(root, 'config/service-publication-ledger.json'), JSON.stringify({ version: 1, services: [{ slug: 'alpha', route: '/alpha', status: 'publie', publishedOn: '2026-09-20', testFixture: true }] }));
+    const footer = '<a href="/automatisation-cabinet-comptable">Ce qu’on automatise</a>';
+    for (const [slug, body] of Object.entries(pages)) writeFileSync(join(root, `dist/${slug}.html`), body.replace('<footer>', `<footer>${footer}`));
+    const catalogue = html({ route: '/automatisation-cabinet-comptable', h1: 'Les tâches du cabinet', media: '/proofs/source.webp', href: '/alpha', description: 'Toutes les tâches publiées du cabinet.' }).replace('<footer>', `<footer>${footer}`);
+    const path = join(root, 'dist/automatisation-cabinet-comptable.html');
+    writeFileSync(path, catalogue);
+    writeFileSync(join(root, 'dist/sitemap-0.xml'), '<urlset><url><loc>https://memlia.fr/alpha</loc></url></urlset>');
+    assert.equal(auditerServicesPublics({ root }).pass, true);
+    writeFileSync(path, catalogue.replace('href="/alpha"', 'href="/source"').replace('<footer>', '<footer><a href="/alpha">Lien hors du catalogue</a>'));
+    assert.match(auditerServicesPublics({ root }).errors.join('\n'), /\/alpha.*contenu principal du catalogue/);
+    writeFileSync(path, catalogue);
+    writeFileSync(join(root, 'dist/source.html'), pages.source);
+    assert.match(auditerServicesPublics({ root }).errors.join('\n'), /absent du footer rendu sur \/source/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

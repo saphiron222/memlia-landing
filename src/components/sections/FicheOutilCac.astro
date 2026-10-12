@@ -1,12 +1,11 @@
 ---
 import { FICHE_OUTIL_CAC } from '@/data/accueil/cac';
-import Picto from '@/components/Picto.astro';
+const [avant, apres] = FICHE_OUTIL_CAC.precision.split('NEP 315 révisée');
 ---
 <aside class="tete fiche-outil" aria-labelledby="fiche-outil-cac">
   <h3 id="fiche-outil-cac">{FICHE_OUTIL_CAC.titre}</h3>
   <p>{FICHE_OUTIL_CAC.texte}</p>
-  <p>{FICHE_OUTIL_CAC.precision}</p>
-  <a href={FICHE_OUTIL_CAC.source.href} class="lien-action" rel="noopener noreferrer">{FICHE_OUTIL_CAC.source.libelle}<Picto nom="fleche" taille={14} /></a>
+  <p>{avant}<a href={FICHE_OUTIL_CAC.source.href} rel="noopener noreferrer">NEP 315 révisée</a>{apres}</p>
 </aside>
 <style>
   .fiche-outil {

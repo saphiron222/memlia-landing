@@ -86,16 +86,16 @@ test('burger : passage au bureau libère le fond et conserve un focus visible', 
   await expect(page.locator('.nav-centre .nav-entree').first()).toBeFocused();
 });
 
-test('burger : chaque destination de lecture ferme le panneau et atteint son fragment', async ({ page }) => {
+test('burger : chaque hub ferme le panneau et rejoint sa page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const fragment of ['usages', 'methode', 'preuves', 'questions']) {
+  for (const destination of ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits', '/blog']) {
     await page.goto('/');
     await page.locator('[data-burger]').click();
-    await page.locator(`#menu-mobile a[href="/#${fragment}"]`).click();
-    await expect(page).toHaveURL(new RegExp(`#${fragment}$`));
+    await page.locator(`#menu-mobile a[href="${destination}"]`).click();
+    await expect(page).toHaveURL(new RegExp(`${destination}$`));
     await expect(page.locator('#menu-mobile')).toBeHidden();
     await expect(page.locator('#main')).not.toHaveAttribute('inert');
     await expect(page.locator('body')).not.toHaveCSS('position', 'fixed');
-    await expect(page.locator(`#${fragment}`)).toBeVisible();
+    await expect(page.locator('main h1')).toBeVisible();
   }
 });

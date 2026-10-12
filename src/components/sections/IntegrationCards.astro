@@ -15,7 +15,7 @@ const { integrations, titresParTache = false } = Astro.props;
 
 <ul class="cartes" data-integration-cards>
   {integrations.map((integration) => (
-    <li>
+    <li data-guide-product={integration.product} data-guide-search={`${integration.task} ${integration.vendor} ${integration.product} ${integration.description}`}>
       <a class="carte" href={integrationPath(integration)}>
         <div class="carte-corps">
           <span class="carte-meta">{integration.vendor} · {integration.product}</span>
@@ -34,4 +34,5 @@ const { integrations, titresParTache = false } = Astro.props;
   /* La carte remplit sa cellule de grille : les actions s'alignent d'une carte à l'autre. */
   li { display: flex; }
   li > .carte { flex: 1 1 auto; }
+  li[hidden] { display: none; }
 </style>

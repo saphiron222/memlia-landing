@@ -14,12 +14,23 @@ import AppelFinal from '@/components/sections/AppelFinal.astro';
 import CouvertureCac from '@/components/sections/CouvertureCac.astro';
 import FrontiereCac from '@/components/sections/FrontiereCac.astro';
 import FicheOutilCac from '@/components/sections/FicheOutilCac.astro';
-import SourcesCac from '@/components/sections/SourcesCac.astro';
 import { contenuDe } from '@/data/accueil/contenu';
 import { SEO_CAC } from '@/data/accueil/cac';
 import { SITE } from '@/data/site.mjs';
 import { organizationNode, serviceNode } from '@/data/schema.mjs';
 const contenu = contenuDe('cac');
+const nep505 = 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/';
+const commerce = 'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024';
+const references = {
+  selection: [{ texte: 'NEP 505', href: nep505 }],
+  alternatives: [{ texte: 'NEP 505', href: nep505 }],
+  dossier: [{ texte: 'NEP 230', href: 'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/' }],
+  independance: [
+    { texte: 'L.821-27', href: commerce }, { texte: 'L.821-31', href: commerce },
+    { texte: 'code de déontologie', href: 'https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026' },
+  ],
+  secret: [{ texte: 'L.821-35', href: commerce }],
+};
 const url = `${SITE.url}${SEO_CAC.chemin}`;
 const image = '/proofs/cac/og/accueil-selection-tiers.webp';
 const service = { ...serviceNode({
@@ -58,8 +69,7 @@ const schema = { '@context': 'https://schema.org', '@graph': [
     <Integration contenu={contenu.integration} />
     <Preuves contenu={contenu.preuves} />
     <Garanties contenu={contenu.garanties} />
-    <Faq contenu={contenu.faq} />
-    <SourcesCac />
+    <Faq contenu={contenu.faq} references={references} />
     <AppelFinal contenu={contenu.appelFinal} />
   </div>
 </Base>

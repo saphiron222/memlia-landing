@@ -1,5 +1,8 @@
 ---
-import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import Base from '@/layouts/Base.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
+import { PROOFS } from '@/data/proofs';
+import { organizationNode } from '@/data/schema.mjs';
 import IntegrationCards from '@/components/sections/IntegrationCards.astro';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
@@ -21,7 +24,7 @@ const page = {
 const noeuds = [
   {
     '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: page.h1, headline: page.h1,
-    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-08', inLanguage: SITE.langue,
+    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-12', inLanguage: SITE.langue,
     author: { '@id': `${SITE.url}${identiteAuteur(auteur)}` }, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#items` },
   },
   {
@@ -33,36 +36,48 @@ const noeuds = [
 ];
 ---
 
-<PageCommerciale
-  page={page}
-  noeuds={noeuds}
-  eyebrow="Guides documentés"
-  hero="integrations/hub"
-  appel={{
-    titre: 'Confiez la tâche qui revient dans votre équipe.',
-    texte: 'Nous écrivons sa règle dans vos mots, puis nous automatisons sa part répétitive dans vos outils. Nous prenons en charge la construction, les essais avec votre équipe et la maintenance. Vous gardez la décision.',
-    points: ['Une règle qui appartient au cabinet.', 'Une proposition avant validation.', 'Un arrêt quand le cas sort de la règle.'],
-    action: { libelle: 'Confier une première tâche', href: '/contact' },
-  }}
->
-  <section class="pv" aria-labelledby="publication">
-    <div class="tete rv">
-      <h2 id="publication">Trouvez les repères utiles à votre tâche</h2>
-      <p class="texte-2 lecture">Quand la tâche traverse plusieurs supports, il faut <a href="/blog/automatiser-avec-ia-sans-changer-logiciel">écrire le passage entre les outils</a> : ce qui entre, ce qui sort et le cas qui arrête la préparation.</p>
-      <p>Chaque guide part de la documentation de l’éditeur et montre une règle de préparation sur un jeu d’essai fictif. Le chemin disponible, les champs à vérifier et les limites du repère sont précisés dans le guide.</p>
-    </div>
-    <ol class="lignes rv">
-      <li class="ligne"><h3 class="ligne-libelle">Le logiciel de votre équipe</h3><p class="ligne-texte">Choisissez le produit exact : Sage 100 Comptabilité et Sage 100 Paie &amp; RH ont des parcours distincts.</p></li>
-      <li class="ligne"><h3 class="ligne-libelle">Les champs à vérifier</h3><p class="ligne-texte">Ouvrez le guide de votre tâche pour retrouver les données nécessaires au contrôle et leur rôle dans la préparation.</p></li>
-      <li class="ligne"><h3 class="ligne-libelle">La décision à garder</h3><p class="ligne-texte">La règle écrite distingue ce qui se prépare, ce qui attend votre validation et le cas qui arrête la préparation.</p></li>
-      <li class="ligne"><h3 class="ligne-libelle">Les limites du repère</h3><p class="ligne-texte">Lisez le périmètre de la documentation citée. Avant de construire une automatisation, nous vérifions votre version, vos formats et vos accès.</p></li>
-    </ol>
-  </section>
+<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={chemin}
+  socialImage={{ url: `${SITE.url}/proofs/integrations/hub.webp`, width: 1600, height: 900, alt: PROOFS['integrations/hub'].alt }}
+  schema={{ '@context': 'https://schema.org', '@graph': [...noeuds, organizationNode(), {
+    '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+      { '@type': 'ListItem', position: 2, name: page.ariane, item: url },
+    ],
+  }] }}>
+  <div class="feuille hub-environnements">
+    <section class="hub-hero" aria-labelledby="environnements-titre">
+      <nav class="ariane" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">{page.ariane}</li></ol></nav>
+      <div class="hub-intro">
+        <div class="tete">
+          <p class="surtitre">Vos logiciels, vos tâches</p>
+          <h1 id="environnements-titre">{page.h1}</h1>
+          <p>{page.chapeau}</p>
+          <p class="texte-2">Une version, un export ou un accès peut changer le parcours. Chaque guide précise son périmètre avant de montrer ce qui se prépare et ce que vous validez.</p>
+        </div>
+        <figure class="cadre hub-apercu">
+          <img src="/proofs/integrations/hub.webp" alt={PROOFS['integrations/hub'].alt} width="1600" height="900" loading="eager" data-proof="integrations/hub" />
+          <figcaption>Un aperçu des champs, de la règle écrite et du contrôle à garder.</figcaption>
+        </figure>
+      </div>
+      <nav class="hub-raccourcis" aria-label="Choisir votre logiciel">
+        {products.map((product, index) => <a href={`#product-${index}`}>{product}</a>)}
+      </nav>
+    </section>
 
+    <section class="hub-recherche" aria-labelledby="choisir-guide">
+      <h2 id="choisir-guide">Quelle tâche voulez-vous préparer ?</h2>
+      <form role="search" aria-label="Trouver un guide" data-guide-filters hidden>
+        <div><label for="guide-product">Votre logiciel</label><select id="guide-product" name="logiciel"><option value="">Tous les logiciels</option>{products.map(product => <option value={product}>{product}</option>)}</select></div>
+        <div><label for="guide-query">Votre tâche</label><input id="guide-query" name="tache" type="search" placeholder="Lettrage, DSN, clôture…" autocomplete="off" /></div>
+        <button type="reset">Tout afficher</button>
+      </form>
+      <p role="status" aria-live="polite" aria-atomic="true" data-guide-count>{INTEGRATIONS_INDEXABLES.length} guides disponibles.</p>
+      <p data-guide-empty hidden>Aucun guide ne correspond à cette recherche. Essayez un autre mot ou affichez tous les guides.</p>
+    </section>
   {products.map((product, index) => {
     const integrations = INTEGRATIONS_INDEXABLES.filter((integration) => integration.product === product);
     return (
-      <section class="pv" aria-labelledby={`product-${index}`}>
+      <section class="pv hub-groupe" aria-labelledby={`product-${index}`} data-guide-group>
         <div class="tete rv">
           <p class="surtitre">{integrations[0].vendor}</p>
           <h2 id={`product-${index}`}>{product}</h2>
@@ -73,10 +88,83 @@ const noeuds = [
     );
   })}
 
-  <section class="pv" aria-labelledby="passage-tache">
-    <div class="tete rv">
-      <h2 id="passage-tache">Du guide à la tâche confiée</h2>
-      <p>Le guide vous aide à choisir ce que vous voulez confier. Nous partons ensuite de votre manière de travailler, de ce que votre logiciel fait déjà et des exceptions que votre équipe rencontre. La règle est éprouvée sur un dossier fictif, puis votre équipe teste et accepte le résultat avant la mise en service.</p>
-    </div>
-  </section>
-</PageCommerciale>
+    <section class="pv" aria-labelledby="passage-tache">
+      <div class="tete">
+        <h2 id="passage-tache">La tâche continue au-delà du logiciel</h2>
+        <p>Le guide vous aide à choisir ce que vous voulez confier. Nous partons de ce que votre logiciel fait déjà et des exceptions de votre équipe. Quand la tâche traverse plusieurs supports, nous <a href="/blog/automatiser-avec-ia-sans-changer-logiciel">écrivons le passage entre les outils</a> : ce qui entre, ce qui sort et le cas qui arrête la préparation.</p>
+        <p>Nous éprouvons la règle sur un dossier fictif. Votre équipe teste et accepte ensuite le résultat avant la mise en service.</p>
+      </div>
+    </section>
+    <AppelFinal id="suite" titre="Confiez la tâche qui revient dans votre équipe."
+      texte="Nous écrivons sa règle dans vos mots, puis nous automatisons sa part répétitive dans vos outils. Vous gardez la décision."
+      points={['Une règle qui appartient au cabinet.', 'Une proposition avant validation.', 'Un arrêt quand le cas sort de la règle.']}
+      action={{ libelle: 'Confier une première tâche', href: '/contact' }} />
+  </div>
+</Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-guide-filters]');
+  const product = document.querySelector<HTMLSelectElement>('#guide-product');
+  const query = document.querySelector<HTMLInputElement>('#guide-query');
+  const count = document.querySelector<HTMLElement>('[data-guide-count]');
+  const empty = document.querySelector<HTMLElement>('[data-guide-empty]');
+  const groups = [...document.querySelectorAll<HTMLElement>('[data-guide-group]')];
+  const normalize = (text: string) => text.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('fr');
+  if (form && product && query && count && empty) {
+    const update = () => {
+      const words = normalize(query.value).trim().split(/\s+/).filter(Boolean);
+      let visible = 0;
+      for (const group of groups) {
+        const guides = [...group.querySelectorAll<HTMLElement>('[data-guide-product]')];
+        for (const guide of guides) {
+          guide.hidden = Boolean(product.value && guide.dataset.guideProduct !== product.value)
+            || !words.every(word => normalize(guide.dataset.guideSearch ?? '').includes(word));
+          if (!guide.hidden) visible += 1;
+        }
+        group.hidden = guides.every(guide => guide.hidden);
+      }
+      count.textContent = `${visible} ${visible === 1 ? 'guide disponible' : 'guides disponibles'}.`;
+      empty.hidden = visible !== 0;
+    };
+    form.hidden = false;
+    form.addEventListener('submit', event => event.preventDefault());
+    product.addEventListener('change', update);
+    query.addEventListener('input', update);
+    form.addEventListener('reset', () => { product.value = ''; query.value = ''; update(); query.focus(); });
+    // Une ancre vers un logiciel reste utile même après avoir filtré un autre produit.
+    document.querySelectorAll<HTMLAnchorElement>('.hub-raccourcis a').forEach(link => link.addEventListener('click', () => {
+      product.value = ''; query.value = ''; update();
+    }));
+  }
+</script>
+
+<style>
+  .hub-environnements { padding-inline: var(--marge-page); }
+  .hub-hero { padding-top: 32px; }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; color: var(--texte-2); font-size: var(--t-sm); }
+  .ariane li + li::before { content: '/'; margin-right: 8px; }
+  .hub-intro { display: grid; gap: 32px; align-items: center; margin-top: 32px; }
+  h1 { font-size: var(--titre-page); }
+  .hub-apercu { margin: 0; }
+  .hub-apercu img { width: 100%; height: auto; }
+  figcaption { padding: 12px; color: var(--texte-2); font-size: var(--t-sm); }
+  .hub-raccourcis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+  .hub-raccourcis a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); }
+  .hub-recherche { display: grid; gap: 16px; margin-top: 40px; padding: 24px; background: var(--surface-hover); border-radius: var(--r-bouton); }
+  .hub-recherche h2 { font-size: var(--titre-bloc); }
+  form { display: grid; gap: 16px; align-items: end; }
+  form > div { display: grid; gap: 8px; }
+  label { font-weight: 600; }
+  input, select, button { font: inherit; color: var(--texte); min-height: 48px; }
+  input, select { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); background: var(--surface-feuille); }
+  button { padding: 10px 16px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); background: var(--surface-feuille); cursor: pointer; }
+  .pv { padding-top: 48px; }
+  .hub-groupe { scroll-margin-top: calc(var(--nav-h) + 24px); }
+  .hub-groupe .tete { margin-bottom: 24px; }
+  .hub-groupe[hidden], form[hidden], [data-guide-empty][hidden] { display: none; }
+  @media (min-width: 48rem) { form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; } }
+  @media (min-width: 64rem) {
+    .hub-environnements { padding-inline: var(--marge-page-lg); }
+    .hub-intro { grid-template-columns: 1.15fr 1fr; gap: 48px; }
+  }
+</style>
