@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "candidateSlug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "articleSha256": "d7c21d2d6193b564e197879ca6539d8c9735af47cddff79085e39202f55fa97d",
+  "manifestSha256": "074bd5f18df88b387d4fb542a93e25a0c2672c421d590916404aa45d3354e77e",
+  "engine": "image_generate",
+  "promptEvidence": "preuves/image/prompt.json",
+  "generationEvidence": "preuves/image/generation.json",
+  "visualReviewEvidence": "preuves/image/visual-review.json",
+  "master": {
+    "path": "preuves/image/master.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "png"
+  },
+  "og": {
+    "path": "preuves/image/og.webp",
+    "width": 1200,
+    "height": 630,
+    "format": "webp",
+    "crop": "1200x630+0+22"
+  },
+  "variants": [
+    {
+      "path": "preuves/image/hero-768.avif",
+      "width": 768,
+      "height": 432,
+      "format": "avif"
+    },
+    {
+      "path": "preuves/image/hero-768.webp",
+      "width": 768,
+      "height": 432,
+      "format": "webp"
+    }
+  ],
+  "alt": "Calendrier vierge et dossiers en diorama 3D vert, avec un disque graphite dans un bac séparé.",
+  "score": 100,
+  "directionArt": 17,
+  "semanticRelevance": 23,
+  "p0": [],
+  "kevinApproved": true,
+  "palette": {
+    "statut": "OBSERVATION",
+    "parts": {
+      "#fcfbf7": 0.6853298611111112,
+      "#27b657": 0.00001736111111111111,
+      "#1c8a41": 0.07236111111111111,
+      "#231f20": 0.04534722222222222
+    },
+    "ecarts": [
+      "Palette : #27b657 (touche) mesurée à 0,002 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  }
+}

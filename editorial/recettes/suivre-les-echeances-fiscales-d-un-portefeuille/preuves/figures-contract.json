@@ -1,0 +1,32 @@
+[
+  {
+    "id": "fiscal-registre-portefeuille",
+    "insertBeforeHeading": "Étape 3 : séparer préparation, retour et paiement",
+    "alt": "Registre fictif des lignes F-01 à F-07, avec leurs dates à qualifier et leurs états de préparation ou de retour.",
+    "source": "Reconstitution depuis le jeu fictif exécuté, preuves/rejeu.json.",
+    "capturedAt": "2026-10-12",
+    "centralText": "Registre des échéances Jeu d’essai fictif · TVA · 2026-09 Portefeuille de démonstration TVA · septembre 2026 Registre Retours Paiements Ligne Date dossier Statut proposé Paiement F-01 À qualifier À qualifier À vérifier F-02 Confirmée Pièces attendues À vérifier F-03 Confirmée Préparation prête À vérifier F-04 Confirmée Retour attendu À vérifier F-05 Confirmée Rejet à reprendre À vérifier F-06 Confirmée Dépôt confirmé, paiement à vérifier À vérifier F-07 Confirmée Éléments confirmés Confirmé F-03 Préparation prête Transmission : aucune",
+    "article": "suivre-les-echeances-fiscales-d-un-portefeuille",
+    "width": 1600,
+    "height": 900,
+    "bytes": 33130,
+    "sha256": "a67caca583334611567d08f0dcf44236df1eb5ad16146df1197ff170ac71fc8e",
+    "clipped": [],
+    "hidden": []
+  },
+  {
+    "id": "fiscal-files-agregees",
+    "insertBeforeHeading": "La règle écrite",
+    "alt": "Vue fictive des quatre files : sept lignes à reprendre, deux en préparation, deux en attente et une confirmée.",
+    "source": "Totaux exacts du classement fictif exécuté, preuves/rejeu.json.",
+    "capturedAt": "2026-10-12",
+    "centralText": "Files du portefeuille Jeu d’essai fictif · TVA · 2026-09 12 lignes importées · 11 clés uniques Vue par état Files Doublons 7 À qualifier ou reprendre 2 Préparation 2 Retour ou paiement attendu 1 Éléments confirmés Ligne Motif Statut proposé F-01 Date inconnue À qualifier F-05 Retour rejeté Rejet à reprendre F-08 Retour sans transmission Incohérence à qualifier F-09 Libellé inconnu Retour non reconnu F-10 Situation non qualifiée À qualifier F-11 Copie de F-03 Doublon à qualifier F-12 Période du retour différente Période à qualifier",
+    "article": "suivre-les-echeances-fiscales-d-un-portefeuille",
+    "width": 1600,
+    "height": 900,
+    "bytes": 34376,
+    "sha256": "f34cbc2dcdea0c7f77be622bf9df4d50a3865cf5b730be09fc218b906430bddf",
+    "clipped": [],
+    "hidden": []
+  }
+]

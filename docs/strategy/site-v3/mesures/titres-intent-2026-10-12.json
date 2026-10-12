@@ -1,12 +1,20 @@
 {
   "date": "2026-10-12",
   "autocompletion": {
+    "calendrier fiscal cabinet comptable": ["date période fiscale cabinet comptable"],
     "automatisation cabinet audit": [],
     "fec contrôle": [
       "contrôle fec"
     ]
   },
   "receipts": [
+    {
+      "query": "calendrier fiscal cabinet comptable",
+      "retrievedAt": "2026-10-12T18:10:26.167Z",
+      "ok": true,
+      "suggestions": ["date période fiscale cabinet comptable"],
+      "erreur": null
+    },
     {
       "query": "automatisation cabinet audit",
       "retrievedAt": "2026-10-11T22:48:55.514Z",
@@ -24,5 +32,5 @@
       "erreur": null
     }
   ],
-  "note": "Relevé réel limité aux deux requêtes CAC. Liste vide ne signifie ni volume nul ni absence de demande. Aucun achat et aucune SERP certifiée."
+  "note": "Relevés réels des deux requêtes CAC et du calendrier fiscal via autocompleterGoogle. Liste vide ne signifie ni volume nul ni absence de demande. Aucun achat et aucune SERP certifiée."
 }

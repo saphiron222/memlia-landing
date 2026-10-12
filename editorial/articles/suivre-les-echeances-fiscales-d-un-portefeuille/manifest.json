@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "slug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Calendrier fiscal d’un cabinet comptable : suivre les échéances d’un portefeuille",
+  "tabTitle": "Calendrier fiscal cabinet comptable : suivi du portefeuille | Memlia",
+  "summary": "Une ligne par obligation et période, une date confirmée et des états séparés pour préparation, retour et paiement. Douze lignes fictives montrent les exceptions et les totaux sans comparer les collaborateurs.",
+  "description": "Calendrier fiscal cabinet comptable : qualifier les dates par dossier, séparer dépôt et paiement, suivre les exceptions et les totaux du portefeuille.",
+  "publicationDate": "2026-10-13",
+  "updatedAt": null,
+  "topics": [
+    "cabinet",
+    "automatisation"
+  ],
+  "keywords": [
+    "calendrier fiscal cabinet comptable",
+    "suivi échéances fiscales cabinet comptable",
+    "suivi TVA portefeuille"
+  ],
+  "primaryQuery": "calendrier fiscal cabinet comptable",
+  "secondaryQueries": [
+    "suivi échéances fiscales cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "quelle date retenir par dossier",
+    "quand une déclaration est-elle déposée",
+    "comment suivre les exceptions sans classement nominatif"
+  ],
+  "role": {
+    "primary": "chefs-mission-portefeuille",
+    "secondary": [
+      "collaborateurs-comptables"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-13"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "chefs-mission-portefeuille",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "echeances-fiscales",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Suivre chaque obligation qualifiée du portefeuille et présenter les exceptions sans attribuer une date supposée.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Douze lignes fictives classées, onze clés uniques, agrégats et exceptions ; calendrier DGFiP daté dans les preuves privées.",
+  "sourcesVerifiedAt": "2026-10-12",
+  "sources": [
+    {
+      "id": "dgfip-calendrier",
+      "publisher": "DGFiP",
+      "title": "Calendrier fiscal professionnel, octobre 2026",
+      "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/dgfip-calendrier.classification.json",
+      "verificationEvidence": "preuves/sources/dgfip-calendrier.json"
+    },
+    {
+      "id": "dgfip-echeances",
+      "publisher": "DGFiP",
+      "title": "Comment connaître les dates d’échéance de mes obligations fiscales ?",
+      "url": "https://www.impots.gouv.fr/professionnel/questions/comment-connaitre-les-dates-decheance-de-mes-obligations-fiscales",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.impots.gouv.fr/professionnel/questions/comment-connaitre-les-dates-decheance-de-mes-obligations-fiscales",
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/dgfip-echeances.classification.json",
+      "verificationEvidence": "preuves/sources/dgfip-echeances.json"
+    },
+    {
+      "id": "cnil-minimisation",
+      "publisher": "CNIL",
+      "title": "RGPD, chapitre II, article 5",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-minimisation.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-minimisation.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Relire au changement de calendrier ou de situation déclarative ; confirmer les informations au jour réel de publication.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle du suivi dans vos mots, automatisons sa mécanique dans vos outils et la faisons recetter par vos équipes. Vous gardez la qualification fiscale et les décisions. Rien à envoyer : la description de la tâche suffit."
+  },
+  "image": {
+    "heroId": "img-art-echeances-fiscales",
+    "alt": "Calendrier vierge et dossiers en diorama 3D vert, avec un disque graphite dans un bac séparé.",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-13"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-13"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/glossaire#piece-justificative",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/glossaire#cas-de-refus",
+      "/automatisation-cabinet-comptable"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/blog/automatiser-la-relance-des-pieces-clients"
+    ],
+    "decision": "Le pilier cartographie, le suivi social concerne paie/DSN, la relance collecte les pièces ; cette page qualifie les dates et sépare les faits de suivi fiscal."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-13",
+  "publicationEvidence": "preuves/publication.json"
+}

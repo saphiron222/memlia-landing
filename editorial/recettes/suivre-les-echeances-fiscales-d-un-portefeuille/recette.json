@@ -1,0 +1,217 @@
+{
+  "slug": "suivre-les-echeances-fiscales-d-un-portefeuille",
+  "title": "Calendrier fiscal d’un cabinet comptable : suivre les échéances d’un portefeuille",
+  "tabTitle": "Calendrier fiscal cabinet comptable : suivi du portefeuille | Memlia",
+  "summary": "Une ligne par obligation et période, une date confirmée et des états séparés pour préparation, retour et paiement. Douze lignes fictives montrent les exceptions et les totaux sans comparer les collaborateurs.",
+  "description": "Calendrier fiscal cabinet comptable : qualifier les dates par dossier, séparer dépôt et paiement, suivre les exceptions et les totaux du portefeuille.",
+  "date": "2026-10-13",
+  "topics": [
+    "cabinet",
+    "automatisation"
+  ],
+  "keywords": [
+    "calendrier fiscal cabinet comptable",
+    "suivi échéances fiscales cabinet comptable",
+    "suivi TVA portefeuille"
+  ],
+  "primaryQuery": "calendrier fiscal cabinet comptable",
+  "secondaryQueries": [
+    "suivi échéances fiscales cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "quelle date retenir par dossier",
+    "quand une déclaration est-elle déposée",
+    "comment suivre les exceptions sans classement nominatif"
+  ],
+  "role": {
+    "primary": "chefs-mission-portefeuille",
+    "secondary": [
+      "collaborateurs-comptables"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Rôle et besoin du backlog v3 ; aucune observation client ni mesure d’usage revendiquée."
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "echeances-fiscales",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Suivre chaque obligation qualifiée du portefeuille et présenter les exceptions sans attribuer une date supposée.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Douze lignes fictives classées, onze clés uniques, agrégats et exceptions ; calendrier DGFiP daté dans les preuves privées.",
+  "reviewRule": "Relire au changement de calendrier ou de situation déclarative ; confirmer les informations au jour réel de publication.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la règle du suivi dans vos mots, automatisons sa mécanique dans vos outils et la faisons recetter par vos équipes. Vous gardez la qualification fiscale et les décisions. Rien à envoyer : la description de la tâche suffit."
+  },
+  "inlineProofs": [
+    {
+      "id": "fiscal-registre-portefeuille",
+      "insertBeforeHeading": "Étape 3 : séparer préparation, retour et paiement",
+      "alt": "Registre fictif des lignes F-01 à F-07, avec leurs dates à qualifier et leurs états de préparation ou de retour.",
+      "source": "Reconstitution depuis le jeu fictif exécuté, preuves/rejeu.json.",
+      "capturedAt": "2026-10-12"
+    },
+    {
+      "id": "fiscal-files-agregees",
+      "insertBeforeHeading": "La règle écrite",
+      "alt": "Vue fictive des quatre files : sept lignes à reprendre, deux en préparation, deux en attente et une confirmée.",
+      "source": "Totaux exacts du classement fictif exécuté, preuves/rejeu.json.",
+      "capturedAt": "2026-10-12"
+    }
+  ],
+  "image": {
+    "heroId": "img-art-echeances-fiscales",
+    "alt": "Calendrier vierge et dossiers en diorama 3D vert, avec un disque graphite dans un bac séparé.",
+    "source": {
+      "path": "image-source.png",
+      "generationId": "exec-1ab7ca55-1c81-48f0-ae0c-0710064ef107",
+      "provider": "OpenAI",
+      "model": "non communiqué par le générateur natif Codex",
+      "generatedAt": "2026-10-12",
+      "credits": null
+    },
+    "brief": {
+      "sujet": "Organizing the fiscal deadlines of a portfolio without claiming a legal date. A matte geometric calendar block with completely empty cream squares in a deep green frame, several small anonymous cream folders organized on two low green trays, and one graphite placeholder disc resting in a separate review tray rather than on the calendar. No dates, no numbers, no clock, no ticks or approval. Calm pending choice among blank calendar slots.",
+      "composition": "Calendrier vierge central, dossiers à gauche et bac séparé à droite ; cadrage horizontal.",
+      "style": "Diorama 3D isométrique, objets mats, lumière du haut gauche, ombres courtes.",
+      "palette": "Crème #fcfbf7, accents verts #27b657 et #1c8a41, graphite #231f20 ; parts mesurées en observation.",
+      "interdits": "Aucun texte, chiffre, personnage, main, logo, interface, alerte rouge ou symbole d’envoi automatique.",
+      "alt": "Calendrier vierge et dossiers en diorama 3D vert, avec un disque graphite dans un bac séparé.",
+      "prompt": "Use case: stylized-concept. Asset type: original Memlia accounting blog cover, horizontal 16:9, safe for a centered 1200x630 crop. Premium isometric 3D editorial diorama with simplified geometric objects, matte ceramic and thick blank paper, soft studio light from upper left, short shadows, warm cream paper background #fcfbf7, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. Substantial clear objects readable at thumbnail size, airy coherent composition, consistent with the existing Memlia matte 3D blog covers. No photographic desk scene, no people, no hands, no faces, no human figure, no pawn, no vegetation or scenery, no letters, no readable text, no numbers, no amount, no percentage, no logo, no watermark, no screen, no dashboard, no software interface, no red alert, no automatic sending symbol, no approval seal, no legal or financial certification. No other saturated color. One original wide illustration, no caption. Subject: Organizing the fiscal deadlines of a portfolio without claiming a legal date. A matte geometric calendar block with completely empty cream squares in a deep green frame, several small anonymous cream folders organized on two low green trays, and one graphite placeholder disc resting in a separate review tray rather than on the calendar. No dates, no numbers, no clock, no ticks or approval. Calm pending choice among blank calendar slots.",
+      "reviewCriteria": [
+        "brief-six-components",
+        "generation-constraints",
+        "fictive-provenance",
+        "recognizable-subject",
+        "technical-derivatives",
+        "alt-information"
+      ]
+    },
+    "provenance": {
+      "type": "openai-native-codex",
+      "decision": "Master OpenAI fourni par le propriétaire, recette du 12/10/2026 ; aucun nouvel achat.",
+      "createdAt": "2026-10-12"
+    }
+  },
+  "sources": [
+    {
+      "id": "dgfip-calendrier",
+      "publisher": "DGFiP",
+      "title": "Calendrier fiscal professionnel, octobre 2026",
+      "url": "https://www.impots.gouv.fr/professionnel/calendrier-fiscal",
+      "excerpt": "Entre les 15 et 24 octobre 2026, dépôt et paiement de la déclaration mensuelle ou trimestrielle de TVA à la date figurant dans votre espace professionnel.",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité."
+    },
+    {
+      "id": "dgfip-echeances",
+      "publisher": "DGFiP",
+      "title": "Comment connaître les dates d’échéance de mes obligations fiscales ?",
+      "url": "https://www.impots.gouv.fr/professionnel/questions/comment-connaitre-les-dates-decheance-de-mes-obligations-fiscales",
+      "excerpt": "Retrouvez les échéanciers de vos obligations en matière de TVA et d’impôt sur les sociétés dans les rubriques",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité."
+    },
+    {
+      "id": "cnil-minimisation",
+      "publisher": "CNIL",
+      "title": "RGPD, chapitre II, article 5",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle primaire de l’administration compétente, portée limitée au passage cité."
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/glossaire#piece-justificative",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/methode",
+      "/glossaire#cas-de-refus",
+      "/automatisation-cabinet-comptable"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/suivre-la-production-sociale-dans-excel",
+      "/blog/automatiser-la-relance-des-pieces-clients"
+    ],
+    "decision": "Le pilier cartographie, le suivi social concerne paie/DSN, la relance collecte les pièces ; cette page qualifie les dates et sépare les faits de suivi fiscal."
+  },
+  "serp": {
+    "requete": "calendrier fiscal cabinet comptable",
+    "date": "2026-10-12",
+    "volume": "ND",
+    "acteurs": [
+      "Pennylane",
+      "ECMA",
+      "Wize Expert",
+      "KIMISUITE",
+      "JLB Expert"
+    ],
+    "formats": "Aide produit de suivi, calendrier annuel et pages commerciales.",
+    "note": "Relevé outil web_search ; Pennylane ouvert et décrit des tableaux déjà disponibles. Aucun constat direct des surfaces AI Overview/AI Mode ni de volumes."
+  },
+  "gsc": {
+    "requete": "calendrier fiscal cabinet comptable",
+    "date": "2026-10-12",
+    "periode": "non relevée",
+    "impressions": null,
+    "clics": null,
+    "note": "Page nouvelle non publiée ; aucun relevé GSC ni crédit métrique revendiqué."
+  },
+  "claims": [
+    {
+      "unite": "Pour octobre 2026, le calendrier professionnel indique",
+      "claim": "Entre les 15 et 24 octobre 2026, dépôt et paiement de la déclaration mensuelle ou trimestrielle de TVA à la date figurant dans votre espace professionnel.",
+      "type": "fiscal",
+      "sourceId": "dgfip-calendrier",
+      "excerpt": "Entre les 15 et 24 octobre 2026, dépôt et paiement de la déclaration mensuelle ou trimestrielle de TVA à la date figurant dans votre espace professionnel.",
+      "explanation": "Citation littérale de la page officielle ; la portée est conservée dans le paragraphe et ses conditions."
+    },
+    {
+      "unite": "La DGFiP précise aussi",
+      "claim": "Retrouvez les échéanciers de vos obligations en matière de TVA et d’impôt sur les sociétés dans les rubriques",
+      "type": "fiscal",
+      "sourceId": "dgfip-echeances",
+      "excerpt": "Retrouvez les échéanciers de vos obligations en matière de TVA et d’impôt sur les sociétés dans les rubriques",
+      "explanation": "Citation littérale de la page officielle ; la portée est conservée dans le paragraphe et ses conditions."
+    },
+    {
+      "unite": "Pour les données personnelles éventuellement présentes",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-minimisation",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "explanation": "Citation littérale de la page officielle ; la portée est conservée dans le paragraphe et ses conditions."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "chefs-mission-portefeuille"
+  },
+  "preuvesSkills": {
+    "blog-brief": ["BRIEF.md : lecteur chef de mission, intention de suivi, recherche qualitative et trois pages concurrentes ouvertes le 12/10 ; volumes et GSC non mesurés."],
+    "blog-outline": ["Gabarit how-to-guide effectivement lu ; quatre étapes, prérequis, règle écrite, douze situations fictives et FAQ. Plan conservé dans BRIEF.md."],
+    "blog-style": ["Diagnostic cognitive_load.py réellement exécuté : Healthy, quatorze sections, aucune surchargée, deux borderline ; preuves/style.json. Pas de réapprentissage de la voix."],
+    "blog-image": ["Master OpenAI natif fourni et provenance exacte conservée ; huit dérivés et deux figures HTML contrôlés, revue indépendante six critères PASS dans revues.json."],
+    "blog-seo-check": ["Aperçu Satteri/Chromium réel : un H1, quatre thead, deux figures ; quinze contrôles et six liens/ancres HTTP200 dans preuves/verification.json. SEO public final à platform."],
+    "blog-cannibalization": ["Inventaire local des titres et requêtes dans preuves/verification.json ; aucune requête primaire identique, distinction pilier/social/relance dans BRIEF.md."],
+    "blog-geo": ["Réponse directe de soixante-dix mots, définitions autonomes, tableaux avec thead et citations contextuelles ; critère ai-citability relu. Aucune citation IA ou accessibilité crawler publique revendiquée."],
+    "blog-analyze": ["Avis indépendant dans revues.json et preuves/revue-independante.md : PASS métier/éditorial/visuel, qualité conseil83/100, réserves de phase platform explicites ; pas de validation de publication."]
+  }
+}

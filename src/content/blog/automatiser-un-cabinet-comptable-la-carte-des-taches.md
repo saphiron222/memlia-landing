@@ -133,7 +133,7 @@ Sur la conservation des pièces, le cadre est clair et il borne la règle de cla
 
 ## Portefeuille et échéances : piloter la production sans classer les personnes
 
-Cinq familles, et un principe qui les traverse : on pilote des dossiers et des étapes, jamais des personnes. Le calendrier des échéances fiscales et sociales du portefeuille se tient par dossier, avec une alerte quand une échéance approche sans que le dossier soit à l’étape attendue. Les télédéclarations et leurs rejets se suivent de la même façon : envoyé, accusé, rejeté, corrigé. Le suivi des dossiers par état, dans un classeur que le cabinet possède déjà, donne en une lecture l’étape de chacun et ses exceptions.
+Cinq familles, et un principe qui les traverse : on pilote des dossiers et des étapes, jamais des personnes. Le calendrier des [échéances fiscales](/blog/suivre-les-echeances-fiscales-d-un-portefeuille) et sociales du portefeuille se tient par dossier, avec une alerte quand une échéance approche sans que le dossier soit à l’étape attendue. Les télédéclarations et leurs rejets se suivent de la même façon : envoyé, accusé, rejeté, corrigé. Le suivi des dossiers par état, dans un classeur que le cabinet possède déjà, donne en une lecture l’étape de chacun et ses exceptions.
 
 Le tableau de bord de production agrège tout cela en [indicateurs non nominatifs](/glossaire#agregat-non-nominatif) : combien de dossiers à chaque étape, combien en retard, combien d’exceptions ouvertes. Le plan de charge en découle, pour répartir les périodes de pointe. La ligne rouge est nette : un indicateur qui classe les collaborateurs n’est pas un indicateur de production, c’est de la surveillance, et la carte ne le prévoit nulle part.
 

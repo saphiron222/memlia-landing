@@ -326,5 +326,23 @@
     "capturedAt": "2026-10-10",
     "reservation": "F4",
     "centralText": "Constat R-004 Jeu d’essai fictif · JSON fictif · D-004 · 2026 R-004 2 lignes Ligne Débit Crédit E-001 1 200,00 0,00 E-002 0,00 1 200,00 Écart 0,00 Constat R-004 CONSTAT_A_REVOIR Période 2026 Commentaire saisi À examiner"
+  },
+  {
+    "id": "fiscal-registre-portefeuille",
+    "article": "suivre-les-echeances-fiscales-d-un-portefeuille",
+    "alt": "Registre fictif des lignes F-01 à F-07, avec leurs dates à qualifier et leurs états de préparation ou de retour.",
+    "source": "Reconstitution depuis le jeu fictif exécuté, preuves/rejeu.json.",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-12",
+    "centralText": "Registre des échéances Jeu d’essai fictif · TVA · 2026-09 Portefeuille de démonstration TVA · septembre 2026 Registre Retours Paiements Ligne Date dossier Statut proposé Paiement F-01 À qualifier À qualifier À vérifier F-02 Confirmée Pièces attendues À vérifier F-03 Confirmée Préparation prête À vérifier F-04 Confirmée Retour attendu À vérifier F-05 Confirmée Rejet à reprendre À vérifier F-06 Confirmée Dépôt confirmé, paiement à vérifier À vérifier F-07 Confirmée Éléments confirmés Confirmé F-03 Préparation prête Transmission : aucune"
+  },
+  {
+    "id": "fiscal-files-agregees",
+    "article": "suivre-les-echeances-fiscales-d-un-portefeuille",
+    "alt": "Vue fictive des quatre files : sept lignes à reprendre, deux en préparation, deux en attente et une confirmée.",
+    "source": "Totaux exacts du classement fictif exécuté, preuves/rejeu.json.",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-12",
+    "centralText": "Files du portefeuille Jeu d’essai fictif · TVA · 2026-09 12 lignes importées · 11 clés uniques Vue par état Files Doublons 7 À qualifier ou reprendre 2 Préparation 2 Retour ou paiement attendu 1 Éléments confirmés Ligne Motif Statut proposé F-01 Date inconnue À qualifier F-05 Retour rejeté Rejet à reprendre F-08 Retour sans transmission Incohérence à qualifier F-09 Libellé inconnu Retour non reconnu F-10 Situation non qualifiée À qualifier F-11 Copie de F-03 Doublon à qualifier F-12 Période du retour différente Période à qualifier"
   }
 ]

@@ -211,6 +211,13 @@ export const IMAGES = {
     alt: "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen.",
     generee: true,
   },
+  'img-art-echeances-fiscales': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Calendrier vierge et dossiers en diorama 3D vert, avec un disque graphite dans un bac séparé.",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -218,6 +225,7 @@ export const FORMATS = ['avif', 'webp'];
 
 /** M4 retire chaque identifiant de cette liste après validation du visuel final. */
 export const PUBLISHED_IMAGE_IDS = [
+  'img-art-echeances-fiscales',
   'img-art-cac-fec-reception',
   'img-art-cac-carte-taches',
   'img-art-ia-comptabilite-confidentialite-donnees',

@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-12",
+  "registry": {
+    "blog": 31,
+    "seo": 24
+  },
+  "scope": "Lecture du registre complet existant ; état honnête par phase, aucun RUN généré automatiquement ne tient lieu de preuve.",
+  "referenceCampaign": "docs/qa/cac-f4-livraison/catalogue-skills-2026-10-12.json ; matrice lue mais aucun avis CAC transféré.",
+  "rows": [
+    {
+      "skill": "blog-strategy",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-brand",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-persona",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-discourse",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-google",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "GSC non relevé ; aucun zéro synthétique présenté comme mesure.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-calendar",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-cluster",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-taxonomy",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-brief",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "BRIEF.md : lectorat, requêtes du backlog, recherche qualitative et limites observées.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-outline",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "BRIEF.md : how-to-guide lu, plan et quatre étapes avec critère concret.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-notebooklm",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Absent du catalogue fourni ; lecture primaire directe, aucun notebook nécessaire.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-write",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "corps.md : réponse70mots, définitions, frontière, douze lignes rejouées, FAQ et maillage.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-rewrite",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Nouveau candidat adapté d’une proposition privée, pas republication d’un article public.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-factcheck",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "preuves/claims-techniques.json, sources et revues.json : trois citations soutenues dans leur contexte.",
+      "independentReview": true
+    },
+    {
+      "skill": "blog-style",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Pas d’apprentissage de voix sur cinq articles : charte stable ; diagnostic cognitive_load réellement joué dans style.json.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-chart",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Pas de série statistique ni graphique ; états et totaux fictifs dans écrans HTML.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-image",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "Provenance OpenAI exacte, huit dérivés, palette observée et revue indépendante six critères.",
+      "independentReview": true
+    },
+    {
+      "skill": "blog-schema",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Gabarit ArticleJsonLd canonique à matérialiser : pas de JSON-LD fabriqué dans l’aperçu.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-seo-check",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "preuves/rendu-controles.json et verification.json : hiérarchie, métadonnées déclarées, liens HTTP/ancres, figures. Métadonnées finales à platform.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-geo",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "Réponse et définitions autonomes, tableaux thead, citations exactes ; revue ai-citability. Crawler public non qualifié.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-analyze",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "revues.json et revue-independante.md : score conseil83 calculé, réserves techniques distinctes du fond.",
+      "independentReview": true
+    },
+    {
+      "skill": "blog-audit",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Audit complet du blog hors périmètre : candidat unique, analyse indépendante et inventaire local seulement.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-cannibalization",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "preuves/verification.json : inventaire local et absence de requête primaire égale ; intentions proches différenciées.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-decay",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Article non publié, aucun déclin mesurable.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-flow",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-repurpose",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Aucun canal externe mandaté pour cette fabrication.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-audio",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Absent du catalogue fourni ; aucune version audio demandée.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-multilingual",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Français uniquement.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-translate",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Aucune traduction demandée.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-localize",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Un seul marché, France.",
+      "independentReview": false
+    },
+    {
+      "skill": "blog-locale-audit",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Pas de variantes linguistiques.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-plan",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-google",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "GSC non relevé ; aucune métrique déduite de l’absence de page.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-content-brief",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "BRIEF.md : guide opérationnel, trois pages concurrentes ouvertes, aucun score concurrent fabriqué.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-cluster",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-sxo",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-page",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Contrôles locaux effectués ; canonical, OG/Twitter, indexabilité et page publique restent phase livraison.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-content",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "Corps, style.json et revue indépendante : auteur nommé, méthode fictive traçable, besoin du portefeuille.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-technical",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Chromium sans débordement ni erreur sur aperçu ; robots, sitemap, en-têtes, CI et production restent à contrôler.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-schema",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Validation du graphe final dans le HTML public à platform, non prouvée dans l’aperçu NOINDEX.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-images",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "Dérivés réels AVIF/WebP et deux figures, tailles et alts vérifiés ; insertion picture finale par forge.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-sitemap",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Pas de route publiée encore ; entrée réelle à vérifier après matérialisation/publication.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-geo",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-flow",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Décisions de stratégie, marque, persona, calendrier, cluster, taxonomie et workflow déjà définies par le backlog et la charte ; pas de nouveau livrable distinct dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-audit",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Audit complet multisurface hors périmètre : fabrication d’un seul article.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-drift",
+      "applicability": "applicable",
+      "execution": "partiel, suite platform",
+      "evidence": "Baseline article, /blog et pilier à poser après publication, pas maintenant.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-backlinks",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Pas de campagne de liens externes dans cette carte.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Lecture concurrentielle dans le brief, pas de comparatif fournisseur public.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-local",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Aucune intention géographique pour le suivi fiscal d’un portefeuille.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-maps",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Aucune fiche locale concernée.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-hreflang",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Article français, aucune version linguistique supplémentaire.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-ecommerce",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Ni produit marchand ni catalogue de prix.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-programmatic",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Article unique rédigé, pas de série de variantes.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-dataforseo",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Recherche qualitative et mesure backlog réutilisées ; pas de nouvel achat ni de volume revendiqué.",
+      "independentReview": false
+    },
+    {
+      "skill": "seo-image-gen",
+      "applicability": "N/A",
+      "execution": "N/A motivé",
+      "evidence": "Couverture native OpenAI déjà fournie ; aucune nouvelle génération.",
+      "independentReview": false
+    },
+    {
+      "skill": "memlia-blog-strategie",
+      "applicability": "applicable",
+      "execution": "exécuté sur fabrication",
+      "evidence": "Charte v5 et runbook main frais lus ; fabrication isolée et passage à platform sans modifier le garde.",
+      "independentReview": false
+    }
+  ]
+}
