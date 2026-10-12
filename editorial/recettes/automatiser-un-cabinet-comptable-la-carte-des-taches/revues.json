@@ -1,13 +1,13 @@
 {
   "subject": {
     "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-    "bodySha256": "3374e1dd0cf6d2f4f8368fb8a76598044655d7e2d9ba44c0213a6ff31f8c8005",
-    "recipeSha256": "31b9ef6d625d1a33c7886fc6fe7192faafad97b156f6ff9fe92ca6cc486fea7e",
-    "recipeSubstanceSha256": "246a4cf9fcc1249a4f84851d6799f0f99bfe20dc6e2dac199752d0886adc6f09",
-    "renderedSha256": "ece021589285963f4bcc8ef8c3b6c79465479ee36ee2b3ec4ed0c93f3ea428c5"
+    "bodySha256": "e36431f55ea9b6bc5213b90ecb7c212e407477e0610a6f3f5eb58e5f6d98947d",
+    "recipeSha256": "54f4182ea6c0a248e28dca474275906499356815401c6c8e565bbf29a13b9be7",
+    "recipeSubstanceSha256": "79f3b6d39998e03de435821e4b57ba6f2ffeb68dfff41d0ae22f3d465bf71453",
+    "renderedSha256": "8920b3f075d6361bf6ea2858491ce365d095d103cfa97486a799c905546ce479"
   },
   "editorial": {
-    "reviewer": "qa:h4-independent-hermes",
+    "reviewer": "qa:h5-independent-hermes",
     "p0": [],
     "criteria": {
       "intent-satisfaction": {
@@ -62,7 +62,7 @@
         ]
       }
     },
-    "scope": "PASS limité au maillage H4 : quatre transitions du pilier, ancre glossaire, entrants hors blog et libellés outils. Avis B2 ci-dessous conservés comme historique ; aucun nouveau score métier, image, SERP ou GSC."
+    "scope": "PASS limité au maillage H5 : un lien contextuel EC vers la carte CAC et date de mise à jour. Observations des critères B2/H4 ci-dessus conservées comme historiques, non réexécutées ; jugement H5 détaillé dans scopedReview. Aucun nouveau score métier, image, SERP ou GSC."
   },
   "business": {
     "reviewerTaskId": "relecteur-metier-ia:doctrine-b2-independent",
@@ -199,7 +199,7 @@
     "verdict": "PASS du candidat doctrinal B2 et de sa figure d'inventaire ; grille complète réévaluée, limites explicites, aucune publication autorisée par ce fichier.",
     "scope": "Score 91 et sous-notes B2 conservés, non recalculés H4 ; verdict courant limité au maillage dans scopedReview."
   },
-  "provenance": {
+  "historicalProvenanceH4": {
     "reviewedAt": "2026-10-07",
     "reviewer": "qa:h4-independent-hermes",
     "author": "kevin",
@@ -210,7 +210,7 @@
     "report": "docs/qa/h4-maillage.md",
     "previousReview": "docs/qa/h4-maillage/revues-b2-historique.json"
   },
-  "scopedReview": {
+  "historicalScopedReviewH4": {
     "verdict": "PASS",
     "reviewer": "qa:h4-independent-hermes",
     "checkedAt": "2026-10-06T22:55:53.495Z",
@@ -236,6 +236,69 @@
       "Ni sceau, ni publication, ni clôture de carte.",
       "Rematérialisation du candidat par le parent nécessaire après cette liaison ; les FAIL techniques issus de preparer ne sont pas transformés directement en PASS.",
       "CI complète et constat public hors mandat."
+    ]
+  },
+  "historicalSubjectH4": {
+    "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+    "bodySha256": "3374e1dd0cf6d2f4f8368fb8a76598044655d7e2d9ba44c0213a6ff31f8c8005",
+    "recipeSha256": "31b9ef6d625d1a33c7886fc6fe7192faafad97b156f6ff9fe92ca6cc486fea7e",
+    "recipeSubstanceSha256": "246a4cf9fcc1249a4f84851d6799f0f99bfe20dc6e2dac199752d0886adc6f09",
+    "renderedSha256": "ece021589285963f4bcc8ef8c3b6c79465479ee36ee2b3ec4ed0c93f3ea428c5"
+  },
+  "provenance": {
+    "reviewedAt": "2026-10-12",
+    "reviewer": "qa:h5-independent-hermes",
+    "author": "kevin",
+    "reviewerNature": "Agent IA de revue indépendante unique, distinct de l'auteur ; ni CAC humain ni seconde personne réelle.",
+    "scope": "Maillage H5 du pilier EC uniquement ; aucune nouvelle vérification métier ou artistique et aucune réémission des scores B2.",
+    "fingerprintCommand": "node scripts/blog-forge.mjs empreinte automatiser-un-cabinet-comptable-la-carte-des-taches .qa/h5-render/blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html",
+    "report": "../REVUE-H5.md",
+    "previousReview": "historicalSubjectH4, historicalProvenanceH4 et historicalScopedReviewH4 ; critères B2/H4 et blocs business/image/sources/qualite conservés"
+  },
+  "scopedReview": {
+    "verdict": "PASS",
+    "reviewer": "qa:h5-independent-hermes",
+    "checkedAt": "2026-10-12",
+    "scope": "Maillage H5 uniquement, candidat non publié",
+    "reviewSubstance": {
+      "verdict": "PASS",
+      "observations": [
+        "Jugement indépendant du passage ajouté, pas approbation par concordance d'empreintes : l'ancre nomme la carte CAC et oriente le lecteur mixte vers ses familles distinctes, au bon endroit dans Que ne contient pas cette carte ?.",
+        "Le lien résout le renvoi auparavant seulement textuel vers les familles CAC ; il ne mélange pas les comptes EC/CAC. La phrase qui conserve un repère transversal et celle qui réserve sélection des travaux, appréciation et opinion au commissaire aux comptes restent littéralement inchangées.",
+        "Charte v5 §§2,5,7 bis et9 : aucun gain chiffré, audit autonome, conformité NEP garantie ni fonction livrée n'est ajouté. La formulation les détaille est cohérente avec la page publique portant le H1 Automatisation cabinet audit : la carte des tâches du CAC ; la cible F4 n'est pas re-revue.",
+        "Le nouveau recipeSubstanceSha256 est réellement jugé : diff recette limité à une entrée links.outgoing et updatedAt ; tous les autres champs de recette, notamment claims, sources, images et preuves inline, identiques à HEAD."
+      ]
+    },
+    "checks": {
+      "bodyOnlyExpectedReplacement": true,
+      "recipeChangedPaths": ["links.outgoing", "updatedAt"],
+      "removedExistingLinks": [],
+      "missingRenderedBodyLinks": [],
+      "addedBodyLinkOccurrences": 1,
+      "publicTarget": {
+        "url": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "status": 200,
+        "finalUrl": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+        "robots": "index, follow, max-image-preview:large"
+      },
+      "publicationDate": "2026-09-16",
+      "updatedAt": "2026-10-12",
+      "previewRobots": "noindex, follow",
+      "previewCanonical": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    },
+    "observations": [
+      "Diff git source comparé à HEAD b78e6d26 ; remplacement inverse du seul ajout donne exactement le corps HEAD. Titres, tableaux, fond, citations, limites et clôture conservés.",
+      "HTML réel .qa/h5-render consulté et analysé avec parse5 : un H1, une ancre CAC dans article-corps avec href exact et libellé naturel, aucun lien existant manquant.",
+      "Dates recette/frontmatter/time/BlogPosting concordantes : publication 16 septembre 2026 conservée, mise à jour 12 octobre 2026 ; canonical EC exact. Le noindex de preview est normal.",
+      "Couverture et deux preuves inline présentes avec alt et dimensions 1600x900 ; recette image/preuves inline identiques, aucun fichier public image modifié. Continuité technique uniquement, aucune nouvelle inspection artistique ou génération d'image.",
+      "Le diff global inclut les artefacts de preparer : empreintes, métadonnées et portes périmées, brouillon:true et a-valider. Ce n'est pas un changement d'auteur élargi ni une publication ; ces portes doivent être rematérialisées par le parent après cette revue, pas forcées ici."
+    ],
+    "limitations": [
+      "Business, image, sources et score qualité B2 sont des avis historiques inchangés ; observations H4 conservées, tests H4 non réexécutés.",
+      "Ni nouvelle relecture réglementaire, ni vérification de tous les liens en HTTP, ni QA visuelle/mobile, ni CI générale.",
+      "Contrôle HTTP public limité à la cible CAC ; le nouveau lien EC n'est vérifié que dans le candidat HTML.",
+      "Ni scellement, ni commit, ni publication. PASS H5 ne vaut pas gate de publication."
     ]
   }
 }
