@@ -33,6 +33,27 @@ Cette exception est lexicale, jamais une validation juridique : provenance prima
 
 ## Auditer et ouvrir le gate
 
+### Réparation des refus de scellement CAC
+
+Le contrat `cluster` accepte aussi les cinq pôles CAC déjà présents dans la collection Astro :
+`certification`, `interventions-legales`, `sacc`, `durabilite`, `administration`.
+Une même identité indépendante de l’auteur peut examiner les grilles éditoriale et métier
+dans une revue unique. Les preuves des deux grilles et chaque verdict claim/source restent requis ;
+aucun nouveau nom de relecteur ni nouvelle revue du fond ne sont nécessaires.
+
+Une citation brute peut finir à la fermeture réelle de son bloc HTML (`</p>` notamment).
+L’extraction et le garde utilisent alors le bloc nettoyé et sa fermeture parsée depuis la copie,
+sans inventer une frontière ni admettre scripts, templates ou commentaires. Les exclusions
+`hidden` / `display:none` de l’exception courte restent actives ; le contrat documentaire ordinaire
+des accordéons n’est pas changé. Une reformulation technique d’extrait de même sens n’est pas
+une nouvelle revue métier.
+
+Régression : `node --test tests/scripts/blog-cac-sealing.test.mjs tests/scripts/blog-pipeline.test.mjs tests/scripts/blog-pipeline-hardening.test.mjs tests/scripts/blog-published-authority.test.mjs`.
+Les quatre tests CAC échouaient avant réparation et passent ensuite. Le rejeu en lecture seule
+des deux dossiers CAC matérialisés avec leur HTML d’article archivé ne signale plus aucune
+des trois classes de refus ; le rendu `/blog` absent de ce diagnostic doit encore être fourni
+par la vraie commande `sceller` lors de la reprise propriétaire, sans fabriquer de lien témoin.
+
 ### Conservation bornée des deux articles déjà publiés
 
 Les deux articles du commit `939464c90ecee928bfd9d7f7be26ea028758cf8b` restent publics, `brouillon: false`, auteur Kevin Kitanga et `publie-non-atteste`. `blog:audit` les traite par `published-audit`, jamais par `legacy-preserved`. Ce mode exige leurs octets SHA-256 exacts, le dossier complet, ses contrôles de structure/citations et un reçu `preuves/published-adoption.json` couvrant tous ses fichiers. Il ne valide aucune nouvelle rédaction.

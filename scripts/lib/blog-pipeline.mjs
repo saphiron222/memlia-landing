@@ -258,7 +258,7 @@ const ENUMS = Object.freeze({
   editorialStatus: ['a-preparer', 'a-valider', 'bloque', 'pret-preview', 'go-production', 'publie', 'publie-non-atteste', 'a-maintenir', 'archive'],
   intent: ['comprendre', 'executer', 'diagnostiquer', 'comparer-approches', 'evaluer-service', 'reduire-risque', 'decider'],
   funnel: ['TOFU', 'MOFU', 'BOFU'],
-  cluster: ['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions'],
+  cluster: ['production-comptable', 'portefeuille-echeances', 'paie-social', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-formation', 'excel-outils-existants', 'numerique-it-data', 'methode-decision-humaine', 'conseil-missions', 'certification', 'interventions-legales', 'sacc', 'durabilite', 'administration'],
   role: ['direction-associes', 'chefs-mission-portefeuille', 'collaborateurs-comptables', 'assistants-comptables', 'paie-responsables-sociaux', 'juridique-fiscal', 'audit-cac', 'administratif-secretariat', 'facturation-recouvrement', 'rh-recrutement-formation', 'numerique-it-data', 'profils-formation', 'autre-role-documente'],
   roleProof: ['observe', 'indirect', 'hypothese', 'absent'],
   contentType: ['searchable', 'shareable', 'experimental'],
@@ -1027,6 +1027,11 @@ function visibleSourceBlocks(source, { raw = false, visibleOnly = false } = {}) 
       const text = (raw ? visibleRawInnerHTML(node) : null)
         ?? nodeText(node).replace(/\s+/g, ' ').trim();
       if (text) blocks.push(text);
+      // Une copie officielle peut citer jusqu’à </p> : conserver seulement
+      // la fermeture réellement parsée, après retrait des descendants ignorés.
+      // Le bloc intérieur reste prioritaire pour les citations sans frontière.
+      const endTag = raw ? node.sourceCodeLocation?.endTag : null;
+      if (text && endTag) blocks.push(text + source.slice(endTag.startOffset, endTag.endOffset));
       return;
     }
     for (const child of node.childNodes ?? []) visit(child, ignored);
@@ -1480,7 +1485,7 @@ function validateBusinessReview(manifest, dossier, subject, sensitiveMatter, cla
     return errors;
   }
   requireText(errors, review.reviewerId, 'businessReview.reviewerId', 3);
-  if ([manifest.author, manifest.reviewer].includes(review.reviewerId)) errors.push('La revue métier doit être portée par une identité distincte de l’auteur et du reviewer éditorial.');
+  if (manifest.author === review.reviewerId) errors.push('La revue métier doit être portée par une identité distincte de l’auteur.');
   requireEnum(errors, review.role, 'businessReview.role', ENUMS.role);
   if (review.status !== 'PASS') errors.push('businessReview.status doit valoir PASS avant preview.');
   const proof = readEvidenceJson(dossier, review.evidence, errors, 'preuve de revue métier');
