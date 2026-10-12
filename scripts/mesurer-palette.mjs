@@ -4,8 +4,8 @@
  *
  *   node scripts/mesurer-palette.mjs <image.png> "#27b657,#1c8a41,#fffefb,#231f20"
  *
- * L'image est réduite avant comptage (la proportion de couleur ne dépend pas de la définition,
- * et une réduction moyenne les grains de matière) ; chaque pixel est attribué à la couleur
+ * L'image est réduite avant comptage par défaut : cela moyenne les grains de matière mais peut
+ * effacer les traits et textes fins. Les cadres HTML utilisent la largeur native ; chaque pixel est attribué à la couleur
  * épinglée la plus proche dans la tolérance, ou à aucune. La somme des parts est donc
  * inférieure à 1 : ce qui n'est proche d'aucune couleur épinglée n'est pas compté, et c'est
  * voulu — l'instrument mesure la présence des couleurs annoncées, pas une décomposition
