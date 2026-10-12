@@ -14,8 +14,8 @@ const TITRE_ONGLET = 'Contrôle bulletin de paie en cabinet | Memlia';
 const DESCRIPTION = 'Contrôle bulletin de paie : les étapes, les preuves et les arrêts à documenter avant la DSN.';
 const MESURE = { autocompletion: { [REQUETE]: [] } };
 
-function sourceArticle({ rubrique = true, brouillon = false } = {}) {
-  return `---\ntitre: "${TITRE}"\ntitreOnglet: "${TITRE_ONGLET}"\ndescription: "${DESCRIPTION}"\nprimaryQuery: "${REQUETE}"\nsecondaryQueries: []\nbrouillon: ${brouillon}\n${rubrique ? 'rubrique: paie-dsn\n' : ''}---\n\n## Section\n`;
+function sourceArticle({ rubrique = true, brouillon = false, description = DESCRIPTION, primaryQuery = REQUETE } = {}) {
+  return `---\ntitre: "${TITRE}"\ntitreOnglet: "${TITRE_ONGLET}"\ndescription: "${description}"\nprimaryQuery: "${primaryQuery}"\nsecondaryQueries: []\nbrouillon: ${brouillon}\n${rubrique ? 'rubrique: paie-dsn\n' : ''}---\n\n## Section\n`;
 }
 
 function preuve(numero) {
@@ -316,8 +316,52 @@ test('clause 2 — dès six H2, le sommaire porte toutes les ancres', () => {
   temoinClause(2, { sommaire: false });
 });
 
-test('clause 3 — la meta-description ouvre sur la requête mesurée', () => {
+test('clause 3 — une description générique sans intention mesurée échoue', () => {
   temoinClause(3, { description: 'La méthode en six étapes pour préparer le contrôle et ses preuves.' });
+});
+
+// Description et requête du candidat bancaire relu, sans changer ses affirmations.
+const REQUETE_BANQUE = 'définition rapprochement bancaire comptabilité';
+const DESCRIPTION_BANQUE = 'Définition du rapprochement bancaire en comptabilité : pointage, clé date-montant-référence et exemple fictif de solde avec 190 euros à expliquer.';
+
+function auditerDescriptionBanque(description, { mesure = true, rendue = description } = {}) {
+  const root = fixture({ description, primaryQuery: REQUETE_BANQUE });
+  try {
+    writeFileSync(join(root, 'dist/blog', `${SLUG}.html`), pageArticle({ description: rendue }));
+    return auditerContratBlog({ root, dist: join(root, 'dist'), mesure: {
+      autocompletion: mesure ? { [REQUETE_BANQUE]: [] } : {},
+    } }).erreurs.filter((erreur) => erreur.includes('clause 3'));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+}
+
+test('clause 3 — français naturel et intention complète hors amorce sont acceptés', () => {
+  for (const description of [
+    DESCRIPTION_BANQUE,
+    `Comprendre la méthode : ${DESCRIPTION_BANQUE}`,
+    'Définition du rapprochement bancaire dans la comptabilité : un exemple fictif.',
+  ]) {
+    assert.deepEqual(auditerDescriptionBanque(description), [], description);
+  }
+});
+
+test('clause 3 — absence, sujet partiel, autre sens et mots tronqués sont refusés', () => {
+  for (const description of [
+    '', '   ',
+    'Définition de la comptabilité : un guide pour le cabinet.',
+    'Définition du rapprochement commercial en comptabilité.',
+    'Définition du rapprochement bancaire : ouvrez votre compte personnel.',
+    'Définition du rapprochement non bancaire en comptabilité.',
+    'Définition du rapprochement bancaire comptabilitéautomatique.',
+  ]) {
+    assert.ok(auditerDescriptionBanque(description).length > 0, description);
+  }
+});
+
+test('clause 3 — aucune requête non mesurée ni promesse ajoutée au rendu', () => {
+  assert.ok(auditerDescriptionBanque(DESCRIPTION_BANQUE, { mesure: false }).length > 0);
+  assert.ok(auditerDescriptionBanque(DESCRIPTION_BANQUE, {
+    rendue: `${DESCRIPTION_BANQUE} Solde automatiquement garanti sans validation.`,
+  }).length > 0);
 });
 
 test('clause 4 — la rubrique est déclarée, construite et réciproque', () => {
