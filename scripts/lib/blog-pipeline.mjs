@@ -16,6 +16,7 @@ import { reviewBindingErrors, reviewSha256, recipeReviewMatches } from './blog-r
 import { verifierTitreIntentMesure } from './blog-title-intent.mjs';
 import { estReliquatW39, lireCadrageW39, jourCadrageParis, verifierIdentiteW39 } from './blog-w39-framing.mjs';
 import { estRattrapageIA, lireRattrapageIA, verifierDateRattrapageIA, semaineEditorialeIA, plafondJourIA } from './blog-ia-catchup.mjs';
+import { estArchiveRattrapageW41, estRattrapageW41, verifierJourW41 } from './blog-w41-catchup.mjs';
 
 export const BLOG_SKILLS = Object.freeze([
   'blog-strategy', 'blog-brand', 'blog-persona', 'blog-discourse', 'blog-google', 'blog-calendar',
@@ -93,6 +94,8 @@ export function semaineIso(value) {
 }
 /** Refuse une date qui ferait dépasser la cadence propre à chaque flux éditorial. */
 export function verifierPlafonds(actifs, date, { serie = null, slug = null, root = null, now = new Date() } = {}) {
+  verifierJourW41(slug, date, serie, now);
+  const rattrapageW41 = estRattrapageW41(slug, date, serie, now);
   if (estRattrapageIA(slug) && serie === 'cicatrices') throw new Error('Rattrapage IA : série ordinaire requise.');
   if (estReliquatW39(slug) && !isDate(date)) throw new Error('Cadrage W39 : date invalide.');
   const semaine = semaineIso(date);
@@ -110,14 +113,19 @@ export function verifierPlafonds(actifs, date, { serie = null, slug = null, root
     return;
   }
   if (estReliquatW39(slug)) throw new Error('Le reliquat W39 ne peut pas devenir un article ordinaire.');
-  if (date >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${date}T00:00:00Z`).getUTCDay())) {
+  if (!rattrapageW41 && date >= DEBUT_CADENCE_15 && [0, 6].includes(new Date(`${date}T00:00:00Z`).getUTCDay())) {
     throw new Error(`Un article ordinaire paraît du lundi-vendredi : ${date}.`);
   }
-  const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices');
+  const ordinaires = actifs.filter((candidate) => candidate.serie !== 'cicatrices'
+    && !estArchiveRattrapageW41(candidate.slug, candidate.date, jourCadrageParis(now), candidate.serie));
   const rule = lireRattrapageIA(root);
   if (estRattrapageIA(slug) && root && !rule) throw new Error('Rattrapage IA : règle requise.');
   verifierDateRattrapageIA(rule, slug, date, serie);
   for (const candidate of ordinaires) verifierDateRattrapageIA(rule, candidate.slug, candidate.date, candidate.serie);
+  if (rattrapageW41) {
+    if (actifs.some((e) => e.slug === slug)) throw new Error('Rattrapage W41 : sujet déjà actif.');
+    return; // La cadence seule cède ; les gardes de contenu/publication restent chez leurs appelants.
+  }
   const plafondJour = plafondJourIA(rule, slug, date, ordinaires, plafondJourOrdinaire(date));
   if (ordinaires.filter((candidate) => candidate.date === date).length >= plafondJour) {
     throw new Error(`${plafondJour} candidats sont déjà planifiés le ${date} ; le plafond est de ${plafondJour} candidats par jour.`);
