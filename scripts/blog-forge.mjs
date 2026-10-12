@@ -25,7 +25,7 @@ import { couleursDuBrief, verifierBriefPalette, verifierParts, SEUILS_PALETTE } 
 import { mesurerPalette } from './mesurer-palette.mjs';
 import {
   BLOG_SKILLS, SEO_SKILLS, CORE_BLOG_SKILLS, CORE_SEO_SKILLS, REVIEW_CRITERIA, CLAIM_TYPES,
-  PUBLICATION_SEAL_PATH, contexteDeCitation, verifierPlafonds, verifySource, jourRecuperationParis,
+  PUBLICATION_SEAL_PATH, contexteDeCitation, citationNormativeCourte, verifierPlafonds, verifySource, jourRecuperationParis,
 } from './lib/blog-pipeline.mjs';
 import { dossierFiles } from './lib/blog-published-authority.mjs';
 import { estRattrapageIA } from './lib/blog-ia-catchup.mjs';
@@ -314,7 +314,8 @@ export function construireClaims({ recette, corps, dossier, sujet, jour }) {
     const pos = v.texte.indexOf(c.excerpt);
     if (pos < 0 || /\r?\n/.test(c.excerpt)) { erreurs.push(`${prefixe} : l'extrait n'est pas une ligne de la copie locale de ${c.sourceId}.`); return; }
     const ligne = v.texte.slice(0, pos).split(/\r?\n/).length;
-    const contexte = contexteDeCitation(v.texte, c.excerpt);
+    const courte = citationNormativeCourte({ claim: c.claim, type: c.type, excerpt: c.excerpt, snapshot: v.texte, officialAuthority: v.source.official === true && Boolean(autoriteDe(v.source.url, v.source.publisher)) });
+    const contexte = contexteDeCitation(v.texte, c.excerpt, { bloc: courte });
     const jetonsClaim = jetons(c.claim);
     const jetonsCitation = jetons(c.excerpt);
     const partages = jetonsClaim.filter((t) => jetonsCitation.includes(t));
@@ -323,7 +324,7 @@ export function construireClaims({ recette, corps, dossier, sujet, jour }) {
     const recouvrement = normaliser(c.excerpt).includes(normaliser(c.claim)) || partages.length >= Math.max(2, Math.ceil(jetonsClaim.length * 0.6)) || traductions.length >= 2;
     if (!recouvrement) erreurs.push(`${prefixe} : recouvrement insuffisant entre le claim et la citation (${partages.length} jeton(s) partagé(s) sur ${jetonsClaim.length} : ${partages.join(', ') || 'aucun'}) ; ajouter des translationTerms ou reformuler.`);
     if (partages.length + traductions.length < 2) erreurs.push(`${prefixe} : au moins deux correspondances exactes ou traductions sont requises.`);
-    if (c.excerpt.trim().length < 40 || jetonsCitation.length < 5) erreurs.push(`${prefixe} : citation trop courte ou trop générique (40 caractères et 5 jetons minimum).`);
+    if ((c.excerpt.trim().length < 40 || jetonsCitation.length < 5) && !courte) erreurs.push(`${prefixe} : citation trop courte ou trop générique (40 caractères et 5 jetons minimum, ou citation normative littérale contextualisée).`);
     if (CLAIM_TYPES_OFFICIELS.has(c.type) && !(v.source.official === true && autoriteDe(v.source.url, v.source.publisher))) erreurs.push(`${prefixe} : un claim ${c.type} exige une source officielle reconnue (H2A, CNCC, Urssaf, Net-entreprises, Service-Public, Légifrance, CNIL, impots.gouv, Insee, travail-emploi).`);
     if (!c.explanation || c.explanation.length < 20) erreurs.push(`${prefixe} : explanation d'au moins 20 caractères requise.`);
     const id = `claim-${unite.id}-${(claimIdsParUnite.get(unite.id)?.length ?? 0) + 1}`;

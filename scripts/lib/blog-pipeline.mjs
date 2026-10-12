@@ -1030,7 +1030,7 @@ function visibleSourceBlocks(source, { raw = false } = {}) {
   return blocks.length ? blocks : [fallback];
 }
 
-export function contexteDeCitation(source, excerpt) {
+export function contexteDeCitation(source, excerpt, { bloc = false } = {}) {
   // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
   const exact = excerpt.trim();
   const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
@@ -1039,6 +1039,7 @@ export function contexteDeCitation(source, excerpt) {
     : null;
   const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
   const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  if (bloc) return visible;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
   const end = position + citation.length;
@@ -1186,6 +1187,20 @@ function citationRange(snapshot, proof, locator) {
   return null;
 }
 
+/** Exception lexicale bornée ; ne remplace ni la vérification de copie ni la revue de portée. */
+export function citationNormativeCourte({ claim, type, excerpt, snapshot, officialAuthority }) {
+  const visibleExcerpt = String(excerpt ?? '').replace(/<[^>]*>/g, '').trim();
+  if ((excerpt?.trim().length ?? 0) >= 40 && supportTokens(excerpt).length >= 5) return false;
+  if (!SENSITIVE_CLAIM_TYPES.has(type) || officialAuthority !== true
+    || typeof claim !== 'string' || claim.trim().length < 20 || !visibleExcerpt.includes(claim)
+    || supportTokens(visibleExcerpt).length < 3 || supportTokens(claim).length < 3
+    || typeof snapshot !== 'string' || !snapshot.includes(excerpt)) return false;
+  const context = contexteDeCitation(snapshot, excerpt, { bloc: true });
+  const visibleContext = context.replace(/<[^>]*>/g, '').trim();
+  return context.includes(excerpt) && context !== excerpt.trim()
+    && visibleContext.length >= 40 && visibleContext.length <= 1500 && supportTokens(visibleContext).length >= 5;
+}
+
 function validateCitation(result, claim, source, verified, prefix) {
   const errors = [];
   const citation = result?.citation;
@@ -1202,7 +1217,10 @@ function validateCitation(result, claim, source, verified, prefix) {
   const located = citationRange(verified?.snapshot ?? '', verified?.proof, coordinates?.locator);
   if (!located || !located.includes(text ?? '')) errors.push(`${prefix}.citation.coordinates ne reproduit pas la citation dans la section, l’ancre ou la plage indiquée.`);
   const citationTokens = supportTokens(text);
-  if ((text?.trim().length ?? 0) < 40 || citationTokens.length < 5) errors.push(`${prefix}.citation.text est trop générique pour étayer seule un claim sensible.`);
+  const courte = citationNormativeCourte({ claim: claim?.claim, type: claim?.type, excerpt: text, snapshot: verified?.snapshot, officialAuthority: verified?.deterministicClassification?.officialAuthority });
+  if (((text?.trim().length ?? 0) < 40 || citationTokens.length < 5) && !courte) errors.push(`${prefix}.citation.text est trop générique pour étayer seule un claim sensible.`);
+  if (((text?.trim().length ?? 0) < 40 || citationTokens.length < 5) && courte
+    && result?.context !== contexteDeCitation(verified.snapshot, text, { bloc: true })) errors.push(`${prefix}.context doit conserver le bloc local complet de la citation normative courte.`);
   if (!hasDocumentedClaimCitationOverlap(claim?.claim, text, result?.justification?.translationTerms)) errors.push(`${prefix}.citation.text ne partage pas assez d’entités ou traductions documentées avec le claim.`);
   if (hasContradictoryPolarity(claim?.claim, text)) errors.push(`${prefix}.citation.text porte une négation ou polarité contradictoire avec le claim.`);
   const sharedTerms = result?.justification?.sharedTerms;

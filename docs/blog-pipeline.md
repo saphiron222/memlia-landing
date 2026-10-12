@@ -22,6 +22,14 @@ Le dossier doit conserver :
 
 Les templates sont dans `editorial/templates/`, dont `source-classification.json` à copier une fois par source sous le chemin déclaré par `classificationEvidence`. Les placeholders `__A_RENSEIGNER__` sont volontairement bloquants.
 
+### Citation normative courte
+
+Le seuil ordinaire reste 40 caractères et cinq jetons de soutien distincts. La forge et le gate partagent une exception pour un claim de type sensible provenant d’une autorité officielle reconnue : le claim entier doit figurer littéralement dans le texte visible de la citation, compter au moins 20 caractères et trois jetons de soutien, et la citation doit elle aussi compter au moins trois jetons hors balises HTML. La copie doit contenir les octets exacts de l’extrait.
+
+Dans ce cas, `context` conserve le bloc visible local complet (paragraphe ou élément de liste), pas la seule puce ou une phrase choisie. Ce bloc doit contenir l’extrait, apporter un contexte distinct et compter de 40 à 1 500 caractères visibles avec au moins cinq jetons de soutien. Le gate reconstruit ce bloc depuis la copie vérifiée et refuse sa troncature. Exemple : la puce H2A NEP 315 §46 « la manière dont les outils fonctionnent » conserve le paragraphe 46, son objectif de procédure d’audit et l’appréciation des informations intégrées.
+
+Cette exception est lexicale, jamais une validation juridique : provenance primaire officielle, classification, intégrité de la copie, coordonnées, recouvrement, polarité et revue métier restent exigés. Un claim élargi, une citation vague ou isolée ne bénéficie pas de l’exception. Régression : `node --test tests/scripts/blog-forge.test.mjs tests/scripts/blog-pipeline-hardening.test.mjs tests/scripts/blog-pipeline.test.mjs`.
+
 ## Auditer et ouvrir le gate
 
 ### Conservation bornée des deux articles déjà publiés

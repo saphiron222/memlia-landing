@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
-import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis } from '../../scripts/lib/blog-pipeline.mjs';
+import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis, citationNormativeCourte } from '../../scripts/lib/blog-pipeline.mjs';
 import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -805,6 +805,76 @@ print(json.dumps(p.etat_publie()))
     writeFileSync(claimsPath, readFileSync(claimsPath, 'utf8').replace('"version": 1', '"version": 1 '));
     const casse = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'publication-scellee' });
     assert.ok(casse.errors.some((e) => /empreinte divergente \(claims\.json\)/.test(e)), casse.errors.join('\n'));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('l’exception courte refuse les citations vagues, non officielles, isolées ou non littérales', () => {
+  const claim = 'les outils automatisés fonctionnent';
+  const excerpt = `• ${claim}`;
+  const snapshot = `<p>Le commissaire aux comptes apprécie les outils et les informations utilisées : ${excerpt} pour la procédure poursuivie.</p>`;
+  const valide = { claim, type: 'legal-reglementaire', excerpt, snapshot, officialAuthority: true };
+  assert.equal(citationNormativeCourte(valide), true, 'une autre citation de moins de 40 caractères est admissible');
+  for (const variation of [
+    { officialAuthority: false },
+    { type: 'technique' },
+    { claim: `${claim} sans contrôle` },
+    { claim: 'les outils fonctionnent', excerpt: 'les outils fonctionnent', snapshot: '<p>Le commissaire apprécie : les outils fonctionnent pour la procédure poursuivie.</p>' },
+    { excerpt: 'une autre citation qui ne figure pas dans la copie' },
+    { snapshot: `<p>${excerpt}</p>` },
+    { snapshot: `<script>${snapshot}</script>` },
+    { snapshot: `<p>${'Texte sans rapport. '.repeat(100)}${excerpt}</p>` },
+    { claim: 'les outils fonctionnent', excerpt: '<span class="conformite fiabilite pertinence">les outils fonctionnent</span>' },
+  ]) assert.equal(citationNormativeCourte({ ...valide, ...variation }), false, JSON.stringify(variation));
+});
+
+test('la citation normative courte H2A conserve son contexte et passe la forge puis le gate', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    const claim = 'la manière dont les outils fonctionnent';
+    const excerpt = '• la manière dont les outils fonctionnent ; et<br />';
+    const paragraphe = '46. Conformément aux dispositions de la norme d’exercice professionnel « Caractère probant des éléments collectés », lorsque le commissaire aux comptes a recours à des outils et techniques automatisés pour l’aider à identifier et évaluer le risque d’anomalies significatives, il apprécie, en exerçant son esprit critique, si les outils permettent d’atteindre l’objectif poursuivi par les procédures d’audit relatives à l’identification et l’évaluation du risque d’anomalies significatives. Pour ce faire, il apprécie :<br />\n' + excerpt + '\n• le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils.';
+    const corps = CORPS.replace(/Les données personnelles[^\n]+/, `La NEP 315 prévoit l'appréciation de « ${claim} ».`);
+    r.sources[0] = { ...r.sources[0], publisher: 'H2A', title: 'NEP 315', url: 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/' };
+    r.claims[0] = { ...r.claims[0], unite: claim, claim, excerpt, explanation: 'La citation exacte du paragraphe 46 porte sur le fonctionnement des outils ; le CAC conserve son appréciation.' };
+    const page = PAGE_SOURCE.replace('</body>', `<p>${paragraphe}</p></body>`);
+    const fetcherH2a = async () => new Response(page, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), corps);
+    const preparation = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher: fetcherH2a, rendreImage });
+    assert.deepEqual(preparation.erreurs, []);
+    const claims = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'claims.json'), 'utf8'));
+    const result = claims.claims[0].factCheck.sourceResults[0];
+    assert.equal(result.citation.text, excerpt);
+    assert.equal(result.context, paragraphe);
+    assert.deepEqual(result.justification.sharedTerms, ['maniere', 'dont', 'outils', 'fonctionnent']);
+    const revue = revues(claims.claims[0].id, root);
+    revue.subject.bodySha256 = createHash('sha256').update(corps.trim()).digest('hex');
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revue));
+    const scellement = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: fetcherH2a, rendreImage });
+    assert.deepEqual(scellement.erreurs, []);
+    const gate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.deepEqual(gate.errors, []);
+    assert.equal(gate.pass, true);
+    const claimsPath = join(root, 'editorial/articles', SLUG, 'claims.json');
+    const original = readFileSync(claimsPath, 'utf8');
+    for (const [label, mutate, attendu] of [
+      ['contexte tronqué', (c) => { const s = c.claims[0].factCheck.sourceResults[0]; s.context = excerpt; s.contextSha256 = createHash('sha256').update(excerpt).digest('hex'); }, /bloc local complet/],
+      ['portée ajoutée', (c) => { c.claims[0].claim += ' sans aucune validation humaine'; }, /trop générique/],
+      ['citation inventée', (c) => { c.claims[0].factCheck.sourceResults[0].citation.text = 'la manière dont les outils décident'; }, /citation exacte/],
+      ['copie divergente', (c) => { c.claims[0].factCheck.sourceResults[0].citation.sourceContentSha256 = '0'.repeat(64); }, /sourceContentSha256/],
+      ['localisateur erroné', (c) => { c.claims[0].factCheck.sourceResults[0].citation.coordinates.locator = { kind: 'line-range', startLine: 1, endLine: 1 }; }, /coordinates ne reproduit pas/],
+    ]) {
+      const altered = JSON.parse(original);
+      mutate(altered);
+      writeFileSync(claimsPath, JSON.stringify(altered));
+      const refus = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+      assert.equal(refus.pass, false, label);
+      assert.ok(refus.errors.some((e) => attendu.test(e)), `${label}: ${refus.errors.join('\n')}`);
+    }
+    writeFileSync(claimsPath, original);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
