@@ -10,7 +10,7 @@ import sharp from 'sharp';
 import * as forge from '../../scripts/blog-forge.mjs';
 import { materialiser, ecrireSceau, unitesRendues, jetons, construireManifest, frontmatter, injecterPreuvesInline } from '../../scripts/blog-forge.mjs';
 import { validateDossier, semaineIso, verifierPlafonds, PUBLICATION_SEAL_PATH, jourRecuperationParis, citationNormativeCourte } from '../../scripts/lib/blog-pipeline.mjs';
-import { renderedBodySha256 } from '../../scripts/lib/blog-review-binding.mjs';
+import { renderedBodySha256, reviewSha256, recipeSubstanceSha256 } from '../../scripts/lib/blog-review-binding.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const SLUG = 'automatiser-une-tache-de-test';
@@ -147,6 +147,39 @@ function racineDeTest(date = jour) {
   return root;
 }
 const blogRendu = `<li data-article="${SLUG}"><a href="/blog/${SLUG}"></a></li>`;
+
+test('materialisation and publication seal archive a bounded backlink without rewriting the opinion', async () => {
+  const root = racineDeTest();
+  try {
+    const prepared = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage, jour });
+    const claims = JSON.parse(readFileSync(join(prepared.dossier, 'claims.json')));
+    const opinion = revues(claims.claims[0].id, root);
+    const recipePath = join(root, 'editorial/recettes', SLUG, 'recette.json');
+    opinion.subject.recipeSubstanceSha256 = recipeSubstanceSha256(readFileSync(recipePath));
+    const opinionPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
+    const opinionBytes = JSON.stringify(opinion);
+    writeFileSync(opinionPath, opinionBytes);
+    const target = '/blog/article-bancaire';
+    writeFileSync(join(root, 'src/content/blog/article-bancaire.md'), '# Article bancaire');
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'maillage.json'), JSON.stringify({ version: 1, reviewSha256: reviewSha256(opinionBytes), additions: [{ text: 'validation', url: target }] }));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS.replace('conserve la validation ;', `conserve la [validation](${target}) ;`));
+    const next = JSON.parse(readFileSync(recipePath));
+    next.links.outgoing.push(target);
+    writeFileSync(recipePath, JSON.stringify(next));
+    const result = await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage, jour });
+    assert.deepEqual(result.erreurs, []);
+    assert.equal(readFileSync(opinionPath, 'utf8'), opinionBytes);
+    const proof = JSON.parse(readFileSync(join(result.dossier, 'preuves/maillage.json')));
+    assert.deepEqual(proof.review, opinion.subject);
+    ecrireSceau(root, SLUG, jour);
+    const seal = JSON.parse(readFileSync(join(result.dossier, PUBLICATION_SEAL_PATH)));
+    assert.ok(seal.files.some(file => file.path === 'preuves/maillage.json'));
+    rmSync(join(root, 'src/content/blog/article-bancaire.md'));
+    const refused = await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage, jour });
+    assert.ok(refused.erreurs.some(error => error.includes('maillage.json')));
+    assert.equal(existsSync(join(result.dossier, 'preuves/maillage.json')), false);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
 
 test('materialiser appelle le vrai garde : calendrier périmé refusé sans écriture, édition fraîche utilisable', async (t) => {
   const root = racineDeTest();

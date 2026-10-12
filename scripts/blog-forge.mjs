@@ -16,7 +16,7 @@
  * projette en `dateMiseAJour` (frontmatter, JSON-LD dateModified, lastmod du sitemap). `date` ne change jamais.
  */
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, rmSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
@@ -710,6 +710,17 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   // unitesRendues les ignore et conserve le registre des phrases scellées inchangé.
   const { erreurs, claims } = construireClaims({ recette, corps: corpsPublie, dossier, sujet, jour });
   erreurs.push(...revueErreurs);
+  const maillagePath = join(dossierRecette, 'maillage.json');
+  const maillageProofPath = join(dossier, 'preuves/maillage.json');
+  if (existsSync(maillagePath) && revues && !revueErreurs.length) {
+    // Le sceau inventorie cette projection technique ; l'avis original n'est pas réécrit.
+    ecrireJson(maillageProofPath, {
+      version: 1, kind: 'review-link-projection', subject: sujet,
+      projection: lireJson(maillagePath), review: revues.subject,
+    });
+  } else if (existsSync(maillageProofPath)) {
+    rmSync(maillageProofPath);
+  }
   if (erreurPreuveInline) erreurs.push(erreurPreuveInline);
   ecrireJson(join(dossier, 'claims.json'), claims);
   erreurs.push(...verifierRegleEcrite(corps, { date: recette.date }));

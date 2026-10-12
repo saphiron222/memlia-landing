@@ -79,8 +79,52 @@ export function renderedBodySha256(html) {
   return visit(document);
 }
 
+// Inverse projection: never normalize all links or reissue an independent opinion.
+// Only explicitly added, plain-text links to existing blog candidates are undone.
+function projectLinkReview(review, slug, body, recipeBytes, renderedHtml, root) {
+  const path = root && join(root, 'editorial/recettes', slug, 'maillage.json');
+  if (!path || !existsSync(path)) return { body, recipeBytes, renderedHtml };
+  const projection = JSON.parse(readFileSync(path));
+  if (projection.version !== 1 || projection.reviewSha256 !== reviewSha256(JSON.stringify(review))
+    || !Array.isArray(projection.additions) || !projection.additions.length) throw new Error('projection ou avis divergent');
+  const recipe = JSON.parse(String(recipeBytes));
+  const seen = new Set();
+  for (const { text, url } of projection.additions) {
+    if (typeof text !== 'string' || !/^[\p{L}\p{N} -]+$/u.test(text)
+      || typeof url !== 'string' || !/^\/blog\/[a-z0-9]+(?:-[a-z0-9]+)*$/.test(url)
+      || seen.has(url) || url === `/blog/${slug}`
+      || !existsSync(join(root, 'src/content/blog', `${url.slice(6)}.md`))) throw new Error('cible ou libellé invalide');
+    seen.add(url);
+    const link = `[${text}](${url})`;
+    if (body.split(link).length !== 2 || recipe.links?.outgoing?.filter(item => item === url).length !== 1) throw new Error('ajout absent, répété ou non déclaré');
+    body = body.replace(link, text);
+    recipe.links.outgoing = recipe.links.outgoing.filter(item => item !== url);
+    if (renderedHtml !== undefined) {
+      const source = String(renderedHtml);
+      const document = parse(source, { sourceCodeLocationInfo: true });
+      const matches = [];
+      const visit = (node, inBody = false) => {
+        inBody ||= node.tagName === 'div' && node.attrs?.some(attr => attr.name === 'class' && attr.value.split(/\s+/).includes('article-corps'));
+        if (inBody && node.tagName === 'a' && node.attrs?.length === 1 && node.attrs[0].name === 'href' && node.attrs[0].value === url
+          && node.childNodes?.length === 1 && node.childNodes[0].nodeName === '#text' && node.childNodes[0].value === text) matches.push(node.sourceCodeLocation);
+        for (const child of node.childNodes ?? []) visit(child, inBody);
+      };
+      visit(document);
+      if (matches.length !== 1) throw new Error('lien rendu divergent');
+      const location = matches[0];
+      renderedHtml = source.slice(0, location.startOffset) + source.slice(location.startTag.endOffset, location.endTag.startOffset) + source.slice(location.endOffset);
+    }
+  }
+  return { body, recipeBytes: JSON.stringify(recipe), renderedHtml };
+}
+
 export function reviewBindingErrors(review, slug, body, recipeBytes, renderedHtml, root) {
   const errors = [];
+  try {
+    ({ body, recipeBytes, renderedHtml } = projectLinkReview(review, slug, body, recipeBytes, renderedHtml, root));
+  } catch (error) {
+    errors.push(`maillage.json : ${error.message} ; projection de maillage refusée.`);
+  }
   if (review?.subject?.slug !== slug || review?.subject?.bodySha256 !== reviewSha256(body.trim())) {
     errors.push('revues.json : empreinte du corps ou slug divergent ; nouvelle revue indépendante requise.');
   }
