@@ -1,0 +1,39 @@
+{
+  "scope": "PNG réel exact de t_67cb2d6a copié en fixture ; matérialisation et gate réels sur un article fictif avec sources et revue de fixture, pas publication ni avis métier sur l'article réel.",
+  "command": "node --test --test-name-pattern='PNG OpenAI réel' tests/scripts/blog-forge.test.mjs",
+  "exitCode": 0,
+  "sourceSha256": "399ca91fd64054e5d940e611915eff4f3dc9a86e763add6bb8dcf302781af59f",
+  "outputSha256": "19e49981dc1a63217e97bc945764039a545933ef1fa6fa0c7ba5a88bd98c2529",
+  "provider": "OpenAI",
+  "generationId": "exec-e1b26719-2623-4044-8ccb-86b40198bac6",
+  "model": "non communiqué par le générateur natif Codex",
+  "credits": null,
+  "palette": {
+    "epinglee": [
+      { "hex": "#fcfbf7", "role": "dominante" },
+      { "hex": "#27b657", "role": "touche" },
+      { "hex": "#1c8a41", "role": "touche" },
+      { "hex": "#231f20", "role": "touche" }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
+    "parts": {
+      "#fcfbf7": 0.09595486111111111,
+      "#27b657": 0,
+      "#1c8a41": 0,
+      "#231f20": 0.19036458333333334
+    },
+    "seuils": { "dominante": 0.1, "touche": 0.005, "presente": 0.005 },
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
+    "ecarts": [
+      "Palette : #fcfbf7 (dominante) mesurée à 9,595 % sur l'image, sous l'objectif cosmétique indicatif de 10 % (non bloquant).",
+      "Palette : #27b657 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
+      "Palette : #1c8a41 (touche) mesurée à 0 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  },
+  "criticalGuards": ["independent-review", "alt", "p0", "generation-id", "uniformity"],
+  "previewGateWithFixtureReview": "PASS",
+  "imageScoreBeforeReview": null
+}

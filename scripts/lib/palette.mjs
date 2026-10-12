@@ -8,8 +8,8 @@
  *
  * D'où deux contrôles distincts, à ne pas confondre :
  *   1. le BRIEF épingle chaque couleur nommée par son hex (contrôle de texte, ici) ;
- *   2. l'IMAGE porte vraiment ces couleurs, au-dessus du plancher de leur rôle (mesure des
- *      pixels, dans scripts/mesurer-palette.mjs, qui appelle `classerPixel` d'ici).
+ *   2. les parts réelles de l'IMAGE se mesurent ; les écarts aux objectifs de leur rôle
+ *      sont cosmétiques, pas une conformité (scripts/mesurer-palette.mjs appelle `classerPixel`).
  *
  * Fonctions pures : aucune lecture de fichier, aucune mutation.
  */
@@ -103,7 +103,7 @@ export function verifierParts(couleurs, parts, { observation = false } = {}) {
     const part = parts[hex];
     if (part === undefined) { rouges.push(`Palette : ${hex} (${role}) épinglée au brief mais non mesurée sur l'image.`); continue; }
     if (part < seuil) rouges.push(observation
-      ? `Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, sous l'objectif cosmétique indicatif de ${pourcent(seuil)} (HTML original, non bloquant).`
+      ? `Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, sous l'objectif cosmétique indicatif de ${pourcent(seuil)} (non bloquant).`
       : `Palette : ${hex} (${role}) mesurée à ${pourcent(part)} sur l'image, plancher ${pourcent(seuil)} — le brief l'annonce, l'image ne la porte pas.`);
   }
   return rouges;

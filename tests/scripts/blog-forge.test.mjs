@@ -1060,7 +1060,62 @@ test('HTML original : mesure native fidèle, planchers cosmétiques et provenanc
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
-test('la palette : le brief d’un article nouveau doit épingler ses couleurs, et l’image doit les porter', async () => {
+test('le PNG OpenAI réel passe la palette en observation sans ouvrir les portes critiques', async () => {
+  const root = racineDeTest();
+  try {
+    const r = recette();
+    cpSync(join(RACINE, 'tests/fixtures/openai-onboarding/image-source.png'), join(root, 'editorial/recettes', SLUG, 'image-source.png'));
+    const provenance = JSON.parse(readFileSync(join(RACINE, 'tests/fixtures/openai-onboarding/provenance.json')));
+    const { generationId, model, provider, generatedAt, credits } = provenance;
+    r.image.source = { path: 'image-source.png', generationId, model, provider, generatedAt, credits };
+    r.image.brief = { prompt: provenance.prompt, palette: 'Crème #fcfbf7 dominante, accents vert #27b657 et vert profond #1c8a41, touches graphite #231f20.' };
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r));
+    const resultat = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
+    assert.deepEqual(resultat.erreurs, []);
+    const dossier = join(root, 'editorial/articles', SLUG);
+    const lire = (path) => JSON.parse(readFileSync(join(dossier, path)));
+    const palette = lire('preuves/image/visual-review.json').palette;
+    assert.equal(palette.statut, 'OBSERVATION');
+    assert.equal(palette.contrat, 'observation-image-generee');
+    assert.equal(palette.parts['#27b657'], 0);
+    assert.equal(palette.parts['#1c8a41'], 0);
+    assert.ok(palette.ecarts.some((e) => /#27b657/.test(e) && /0 %/.test(e)));
+    assert.ok(palette.ecarts.some((e) => /#1c8a41/.test(e) && /0 %/.test(e)));
+    assert.equal(lire('image.json').score, null, 'la mesure ne fabrique pas une revue');
+    const gate = () => validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+    assert.ok((await gate()).errors.some((e) => /critère visuel/.test(e)), 'sans revue indépendante, refus conservé');
+    const paquet = JSON.parse(readFileSync(join(root, 'editorial/recettes', SLUG, 'paquet-revue.json')));
+    // Revue de fixture sur un article fictif : ce n'est pas l'avis de publication du PNG.
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'revues.json'), JSON.stringify(revues(paquet.claims[0].id, root)));
+    await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher, rendreImage });
+    assert.deepEqual((await gate()).errors, []);
+    const imagePath = join(dossier, 'image.json');
+    const image = lire('image.json');
+    for (const [mutate, attendu] of [
+      [(value) => { value.alt = 'image-source.png'; }, /alt.*non descriptif/],
+      [(value) => { value.p0 = ['Donnée client visible']; }, /zéro P0/],
+    ]) {
+      const invalide = structuredClone(image);
+      mutate(invalide);
+      writeFileSync(imagePath, JSON.stringify(invalide));
+      assert.ok((await gate()).errors.some((e) => attendu.test(e)));
+    }
+    writeFileSync(imagePath, JSON.stringify(image));
+    const generationPath = join(dossier, 'preuves/image/generation.json');
+    const generation = lire('preuves/image/generation.json');
+    assert.equal(generation.provider, r.image.source.provider);
+    assert.equal(generation.model, r.image.source.model);
+    assert.equal(generation.generationId, r.image.source.generationId);
+    writeFileSync(generationPath, JSON.stringify({ ...generation, generationId: '' }));
+    assert.ok((await gate()).errors.some((e) => /preuve de génération/.test(e)));
+    writeFileSync(generationPath, JSON.stringify(generation));
+    await sharp({ create: { width: 1920, height: 1080, channels: 3, background: '#fcfbf7' } }).png().toFile(join(dossier, image.master.path));
+    assert.ok((await gate()).errors.some((e) => /uniforme/.test(e)));
+    console.log('OPENAI_PALETTE_WITNESS ' + JSON.stringify({ palette, generation, criticalGuards: ['independent-review', 'alt', 'p0', 'generation-id', 'uniformity'] }));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('la palette générée archive les couleurs absentes comme observations, mais exige un brief mesurable', async () => {
   const root = racineDeTest();
   try {
     const source = join(root, 'editorial/recettes', SLUG, 'image-source.png');
@@ -1074,18 +1129,20 @@ test('la palette : le brief d’un article nouveau doit épingler ses couleurs, 
     r.image.brief = { sujet: 'Sujet de test.', composition: 'Composition de test.', style: 'Style de test.', palette: 'Vert Memlia #27b657 dominant, crème #fcfbf7, touches de graphite #231f20.', interdits: 'Texte lisible.', prompt: 'Prompt de test.' };
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
     const refus = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
-    assert.ok(refus.erreurs.some((e) => /#231f20/.test(e) && /plancher/.test(e)), refus.erreurs.join('\n'));
+    assert.deepEqual(refus.erreurs, []);
     const revue = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/image/visual-review.json'), 'utf8'));
-    assert.equal(revue.palette.statut, 'FAIL');
+    assert.equal(revue.palette.statut, 'OBSERVATION');
+    assert.equal(revue.palette.parts['#231f20'], 0);
+    assert.ok(revue.palette.ecarts.some((e) => /#231f20/.test(e) && /cosmétique indicatif/.test(e)));
     assert.ok(revue.palette.parts['#27b657'] > 0.2, 'le vert du carré est bien mesuré');
 
-    // Le même défaut sur un article antérieur au 19/09 : enregistré en dette, il ne bloque pas.
+    // L'observation cosmétique ne dépend pas de la date de l'article.
     r.date = '2026-09-15';
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'recette.json'), JSON.stringify(r, null, 2));
     const dette = await materialiser({ root, slug: SLUG, statut: 'a-valider', fetcher, rendreImage });
     assert.deepEqual(dette.erreurs, []);
     const revueDette = JSON.parse(readFileSync(join(root, 'editorial/articles', SLUG, 'preuves/image/visual-review.json'), 'utf8'));
-    assert.equal(revueDette.palette.statut, 'DETTE');
+    assert.equal(revueDette.palette.statut, 'OBSERVATION');
     assert.ok(revueDette.palette.ecarts.some((e) => /#231f20/.test(e)));
 
     // Un brief qui nomme une couleur sans son hex est refusé avant même de regarder l'image.

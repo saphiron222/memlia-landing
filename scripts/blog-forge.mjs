@@ -454,9 +454,8 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
   }
   const revueImage = revues?.image;
   const brief = recette.image.brief;
-  // La palette se MESURE (leçon du 18/09/2026 : la revue image ne la mesurait pas). Le brief d'un
-  // article daté à partir du 19/09 doit épingler ses couleurs par leur hex, et l'image doit les
-  // porter ; avant cette date, l'écart est enregistré en dette, il ne bloque pas une republication.
+  // Le brief reste mesurable ; les parts de couleurs sont des observations cosmétiques,
+  // jamais une conformité visuelle ni une raison de régénérer une image (constitution §4).
   const erreursImage = [];
   let palette = null;
   if (generee) {
@@ -465,7 +464,7 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
     // Le texte fin d'un cadre HTML disparaît au rééchantillonnage : compter le master natif.
     const largeur = htmlOriginal ? (await sharp(master).metadata()).width : undefined;
     const mesure = couleurs.length ? await mesurerPalette(master, couleurs.map((c) => c.hex), { largeur }) : null;
-    const manques = mesure ? verifierParts(couleurs, mesure.parts, { observation: htmlOriginal }) : [];
+    const manques = mesure ? verifierParts(couleurs, mesure.parts, { observation: true }) : [];
     const exigee = String(recette.date ?? '') >= DEBUT_REGLE_ECRITE;
     palette = {
       epinglee: couleurs,
@@ -474,11 +473,11 @@ async function materialiserImage({ root, recette, dossier, sujet, jour, revues, 
       resolution: htmlOriginal ? 'master-natif' : 'largeur-320',
       parts: mesure?.parts ?? null,
       seuils: SEUILS_PALETTE,
-      contrat: htmlOriginal ? 'observation-html-original' : 'planchers-image-generee',
-      statut: htmlOriginal && !defautsBrief.length ? 'OBSERVATION' : (defautsBrief.length + manques.length === 0 ? 'PASS' : (exigee ? 'FAIL' : 'DETTE')),
+      contrat: htmlOriginal ? 'observation-html-original' : 'observation-image-generee',
+      statut: !defautsBrief.length ? 'OBSERVATION' : (exigee ? 'FAIL' : 'DETTE'),
       ecarts: [...defautsBrief, ...manques],
     };
-    if (exigee) erreursImage.push(...defautsBrief, ...(htmlOriginal ? [] : manques));
+    if (exigee) erreursImage.push(...defautsBrief);
   }
   ecrireJson(join(imageDir, 'prompt.json'), artefact(sujet, 'image-prompt', jour, generee
     ? { engine, prompt: brief.prompt, brief: { sujet: brief.sujet, composition: brief.composition, style: brief.style, palette: brief.palette, interdits: brief.interdits, alt: recette.image.alt }, reviewCriteria: brief.reviewCriteria }
