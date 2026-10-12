@@ -315,7 +315,7 @@ export function construireClaims({ recette, corps, dossier, sujet, jour }) {
     if (pos < 0 || /\r?\n/.test(c.excerpt)) { erreurs.push(`${prefixe} : l'extrait n'est pas une ligne de la copie locale de ${c.sourceId}.`); return; }
     const ligne = v.texte.slice(0, pos).split(/\r?\n/).length;
     const courte = citationNormativeCourte({ claim: c.claim, type: c.type, excerpt: c.excerpt, snapshot: v.texte, officialAuthority: v.source.official === true && Boolean(autoriteDe(v.source.url, v.source.publisher)) });
-    const contexte = contexteDeCitation(v.texte, c.excerpt, { bloc: courte });
+    const contexte = contexteDeCitation(v.texte, c.excerpt, { bloc: courte, visibleOnly: courte });
     const jetonsClaim = jetons(c.claim);
     const jetonsCitation = jetons(c.excerpt);
     const partages = jetonsClaim.filter((t) => jetonsCitation.includes(t));

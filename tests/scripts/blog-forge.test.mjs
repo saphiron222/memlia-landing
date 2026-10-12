@@ -913,14 +913,19 @@ test('la forge refuse un claim dont la citation ne recouvre pas l’affirmation'
   }
 });
 
-test('le contexte d’une source HTML monoligne avec balise inline reste borné et passe le gate', async () => {
+for (const [label, ouverture, fermeture] of [
+  ['visible', '', ''],
+  ['accordéon display:none', '<button aria-controls="section-cnil">Déplier</button><div id="section-cnil" style="display:none">', '</div>'],
+  ['accordéon hidden', '<button aria-controls="section-cnil">Déplier</button><div id="section-cnil" hidden>', '</div>'],
+]) {
+test(`le contexte ordinaire HTML avec balise inline reste borné et passe forge/gate : ${label}`, async () => {
   const root = racineDeTest();
   try {
     const r = recette();
     const phrase = r.claims[0].excerpt;
     const autresExtraits = r.sources.slice(1).map((source) => `<p>${source.excerpt} dans une phrase de contrôle distincte.</p>`).join('');
     const contexteAttendu = `Introduction ${phrase} conclusion.`;
-    const pageSurUneLigne = `<html><head><style>${'.carte{color:#231f20}'.repeat(80)}</style></head><body><p>Phrase précédente sans rapport.</p><p>Introduction <a>${phrase}</a> conclusion.</p>${autresExtraits}<p>Phrase suivante sans rapport.</p></body></html>`;
+    const pageSurUneLigne = `<html><head><style>${'.carte{color:#231f20}'.repeat(80)}</style></head><body><p>Phrase précédente sans rapport.</p>${ouverture}<p>Introduction <a>${phrase}</a> conclusion.</p>${fermeture}${autresExtraits}<p>Phrase suivante sans rapport.</p></body></html>`;
     const fetcherMonoligne = async () => new Response(pageSurUneLigne, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
     const preparation = await materialiser({
       root,
@@ -946,6 +951,8 @@ test('le contexte d’une source HTML monoligne avec balise inline reste borné 
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+}
 
 test('la recette porte sa date de mise à jour jusqu’au frontmatter, et son absence ne l’invente pas', () => {
   const sans = frontmatter(construireManifest(recette(), 'publie', jour, null));

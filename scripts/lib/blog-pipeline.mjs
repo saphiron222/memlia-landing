@@ -971,14 +971,16 @@ function normalizedDetectionText(value) {
   return String(value ?? '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 }
 
-function visibleSourceBlocks(source, { raw = false } = {}) {
+function visibleSourceBlocks(source, { raw = false, visibleOnly = false } = {}) {
   if (!/<\/?[a-z][^>]*>|<!--/i.test(source)) return [raw ? source.trim() : source.replace(/\s+/g, ' ').trim()];
   const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  // Le contrat ordinaire lit aussi les accordéons repliés de la copie officielle.
+  // Seule l’exception lexicale courte exige un bloc immédiatement visible.
   const isHidden = (node) => ignoredTags.has(node.tagName)
-    || (node.attrs ?? []).some(({ name, value }) => name === 'hidden'
-      || (name === 'style' && /(?:^|;)\s*display\s*:\s*none\s*(?:!\s*important\s*)?(?:;|$)/i.test(value)));
+    || (visibleOnly && (node.attrs ?? []).some(({ name, value }) => name === 'hidden'
+      || (name === 'style' && /(?:^|;)\s*display\s*:\s*none\s*(?:!\s*important\s*)?(?:;|$)/i.test(value))));
   // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
   // innerHTML complète réintroduirait les descendants ignorés par nodeText.
   const omittedRanges = [];
@@ -1033,15 +1035,15 @@ function visibleSourceBlocks(source, { raw = false } = {}) {
   return blocks.length ? blocks : [fallback];
 }
 
-export function contexteDeCitation(source, excerpt, { bloc = false } = {}) {
+export function contexteDeCitation(source, excerpt, { bloc = false, visibleOnly = false } = {}) {
   // Une citation brute (NBSP, <sup>…) doit garder ses octets ET la réserve de sa phrase.
   const exact = excerpt.trim();
   const needsRaw = exact !== exact.replace(/\s+/g, ' ') || /<[^>]+>/.test(exact);
   const rawBlock = needsRaw
-    ? visibleSourceBlocks(source, { raw: true }).find((block) => block.includes(exact))
+    ? visibleSourceBlocks(source, { raw: true, visibleOnly }).find((block) => block.includes(exact))
     : null;
   const citation = rawBlock ? exact : excerpt.replace(/\s+/g, ' ').trim();
-  const visible = rawBlock ?? visibleSourceBlocks(source).find((block) => block.includes(citation)) ?? citation;
+  const visible = rawBlock ?? visibleSourceBlocks(source, { visibleOnly }).find((block) => block.includes(citation)) ?? citation;
   if (bloc) return visible;
   const position = visible.indexOf(citation);
   if (position < 0) return citation;
@@ -1198,7 +1200,7 @@ export function citationNormativeCourte({ claim, type, excerpt, snapshot, offici
     || typeof claim !== 'string' || claim.trim().length < 20 || !visibleExcerpt.includes(claim)
     || supportTokens(visibleExcerpt).length < 3 || supportTokens(claim).length < 3
     || typeof snapshot !== 'string' || !snapshot.includes(excerpt)) return false;
-  const context = contexteDeCitation(snapshot, excerpt, { bloc: true });
+  const context = contexteDeCitation(snapshot, excerpt, { bloc: true, visibleOnly: true });
   const visibleContext = context.replace(/<[^>]*>/g, '').trim();
   return context.includes(excerpt) && context !== excerpt.trim()
     && visibleContext.length >= 40 && visibleContext.length <= 1500 && supportTokens(visibleContext).length >= 5;
@@ -1223,7 +1225,7 @@ function validateCitation(result, claim, source, verified, prefix) {
   const courte = citationNormativeCourte({ claim: claim?.claim, type: claim?.type, excerpt: text, snapshot: verified?.snapshot, officialAuthority: verified?.deterministicClassification?.officialAuthority });
   if (((text?.trim().length ?? 0) < 40 || citationTokens.length < 5) && !courte) errors.push(`${prefix}.citation.text est trop générique pour étayer seule un claim sensible.`);
   if (((text?.trim().length ?? 0) < 40 || citationTokens.length < 5) && courte
-    && result?.context !== contexteDeCitation(verified.snapshot, text, { bloc: true })) errors.push(`${prefix}.context doit conserver le bloc local complet de la citation normative courte.`);
+    && result?.context !== contexteDeCitation(verified.snapshot, text, { bloc: true, visibleOnly: true })) errors.push(`${prefix}.context doit conserver le bloc local complet de la citation normative courte.`);
   if (!hasDocumentedClaimCitationOverlap(claim?.claim, text, result?.justification?.translationTerms)) errors.push(`${prefix}.citation.text ne partage pas assez d’entités ou traductions documentées avec le claim.`);
   if (hasContradictoryPolarity(claim?.claim, text)) errors.push(`${prefix}.citation.text porte une négation ou polarité contradictoire avec le claim.`);
   const sharedTerms = result?.justification?.sharedTerms;
