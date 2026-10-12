@@ -95,13 +95,13 @@ test('chaque page porte une intention, une source, un auteur et une preuve propr
   }
 });
 
-test('le hub et les guides suivent la coque commerciale canonique sans CSS de page parallèle', () => {
+test('le hub utilise le chrome commun et les guides gardent leur coque commerciale', () => {
   const hub = readFileSync(join(root, 'src/pages/integrations/index.astro'), 'utf8');
   const guide = readFileSync(join(root, 'src/pages/integrations/[slug].astro'), 'utf8');
-  for (const [label, contenu] of [['hub', hub], ['guide', guide]]) {
-    assert.match(contenu, /import PageCommerciale from '@\/layouts\/PageCommerciale\.astro'/, `${label}: coque canonique`);
-    assert.doesNotMatch(contenu, /<style>/, `${label}: pas de grammaire CSS locale`);
-  }
+  assert.match(hub, /import Base from '@\/layouts\/Base\.astro'/, 'hub : chrome commun');
+  assert.doesNotMatch(hub, /<header\b|<footer\b|:root\s*\{/, 'hub : aucun chrome ni token global dupliqué');
+  assert.match(guide, /import PageCommerciale from '@\/layouts\/PageCommerciale\.astro'/, 'guides : coque canonique');
+  assert.doesNotMatch(guide, /<style>/, 'guides : pas de grammaire CSS locale');
 });
 
 test('les guides conservent auteur et dates dans le schéma sans signature éditoriale', () => {
