@@ -3,8 +3,8 @@
   "subject": {
     "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
     "bodySha256": "35dd9c49b7b37f6ee7a9057f5ba485b275d08302457d30c76743b26d441b8e3b",
-    "recipeSha256": "fa20eca363331d1b4d4b4b19704097004770dc9262b6bbd42dedc71b98f8fc80",
-    "recipeSubstanceSha256": "033390622e4e3fc19f4b49e1c9a163ac0d8680aae6ab537a2a1b75c1414d1123",
+    "recipeSha256": "5a7bdf14e87863efde643f08dc0b285e7b37344c6a243188be5c7a680f9c44fa",
+    "recipeSubstanceSha256": "1a67198594fbb811f3e1bb0afbfefb9b4b2f4a4170cb8cb6b778a4193747f1e9",
     "renderedSha256": "7d1935e45ecf8f2ef2d71a051e12594d2f6d3e449fe14b23dec9ab100a4472aa"
   },
   "reviewerId": "relecteur-metier-ia-memlia",
@@ -339,7 +339,13 @@
     "renderedReviewed": true,
     "newBusinessReview": false,
     "publicationApproval": false,
-    "unknowns": ["SERP Google calibrée, volumes et classement", "Citations et conversions effectives", "Lighthouse et CWV", "Indexabilité, sitemap et état public final", "Inconnues produit et mission conservées de l’avis du11/10"]
+    "unknowns": [
+      "SERP Google calibrée, volumes et classement",
+      "Citations et conversions effectives",
+      "Lighthouse et CWV",
+      "Indexabilité, sitemap et état public final",
+      "Inconnues produit et mission conservées de l’avis du11/10"
+    ]
   },
   "editorial": {
     "reviewerId": "relecteur-metier-ia-memlia",
@@ -350,16 +356,93 @@
     "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
     "scope": "Complément éditorial qualitatif du vrai rendu local ; pas classement, validation produit ou PASS de publication. Historique intact dans historicalEditorial.",
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Corps:3,35–48,137–141 : réponse avant vente, huit familles entrée/sortie/décision et trois questions pour choisir une tâche CAC ; distinction EC/CAC explicite. L’intention décider est satisfaite dans ce périmètre, pas sélection d’un logiciel ou audit automatique."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Pilier d’organisation adapté au choix d’un geste, tutoriel FEC lié réciproquement ; recherche12/10 montre des formats EC/fiscal/audit mêlés et rend la différenciation nécessaire. Rankability plausible reste une hypothèse : aucune SERP Google calibrée, difficulté, volume, position ni absence totale de cannibalisation prouvés."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Sources officielles proches des citations, soutien et portées conservés de l’avis11/10. Auteur visible/JSON-LD Kevin Kitanga, fondateur de Memlia sans titre CAC attribué ; fiction et limites déclarées, sans témoignage client ni autorité réglementaire déduite."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Carte entrée/sortie/décision, règle écrite et quatre cas acquis de préparation/refus/conflit utiles à choisir et recetter une tâche. Contribution humaine distincte ; preuves locales illustratives, pas automatisation CAC livrée ni suffisance des diligences."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter, BlogPosting/Person/BreadcrumbList cohérents ; corps et tables statiques, liens/fragments et srcset locaux vérifiés. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex attendu du brouillon ; production, sitemap, Lighthouse/CWV non attestés."]},
-      "ai-citability": {"result": "PASS", "observations": ["Définitions autonomes tâche/règle/proposition, tables à en-têtes et références NEP au passage utile ; limites du jeu fictif présentes à proximité. Extractibilité observée, pas citation effective ni probabilité ; la fiche ne se cite pas comme modèle homologué."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["CTA principal Confier une première tâche vers /contact après réponse utile ; méthode/garanties et satellite contextuels. Description du geste plutôt qu’envoi de données, tâches construites puis recettées et opinion conservée au cabinet ; efficacité commerciale inconnue."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Corps:3,35–48,137–141 : réponse avant vente, huit familles entrée/sortie/décision et trois questions pour choisir une tâche CAC ; distinction EC/CAC explicite. L’intention décider est satisfaite dans ce périmètre, pas sélection d’un logiciel ou audit automatique."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Pilier d’organisation adapté au choix d’un geste, tutoriel FEC lié réciproquement ; recherche12/10 montre des formats EC/fiscal/audit mêlés et rend la différenciation nécessaire. Rankability plausible reste une hypothèse : aucune SERP Google calibrée, difficulté, volume, position ni absence totale de cannibalisation prouvés."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Sources officielles proches des citations, soutien et portées conservés de l’avis11/10. Auteur visible/JSON-LD Kevin Kitanga, fondateur de Memlia sans titre CAC attribué ; fiction et limites déclarées, sans témoignage client ni autorité réglementaire déduite."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Carte entrée/sortie/décision, règle écrite et quatre cas acquis de préparation/refus/conflit utiles à choisir et recetter une tâche. Contribution humaine distincte ; preuves locales illustratives, pas automatisation CAC livrée ni suffisance des diligences."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter, BlogPosting/Person/BreadcrumbList cohérents ; corps et tables statiques, liens/fragments et srcset locaux vérifiés. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex attendu du brouillon ; production, sitemap, Lighthouse/CWV non attestés."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Définitions autonomes tâche/règle/proposition, tables à en-têtes et références NEP au passage utile ; limites du jeu fictif présentes à proximité. Extractibilité observée, pas citation effective ni probabilité ; la fiche ne se cite pas comme modèle homologué."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "CTA principal Confier une première tâche vers /contact après réponse utile ; méthode/garanties et satellite contextuels. Description du geste plutôt qu’envoi de données, tâches construites puis recettées et opinion conservée au cabinet ; efficacité commerciale inconnue."
+        ]
+      }
     }
   },
   "image": {
+    "scope": "Nouvelle couverture OpenAI : revue visuelle indépendante à réaliser.",
+    "criteria": {
+      "brief-six-components": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "generation-constraints": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "alt-information": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      }
+    }
+  },
+  "publicationApproval": false,
+  "previousCoverReview": {
     "reviewerId": "relecteur-metier-ia-memlia",
     "reviewedAt": "2026-10-12",
     "cardId": "t_5b379d47",
@@ -367,14 +450,63 @@
     "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
     "scope": "Quatre critères complétés sur brief/HTML/alt/dérivés ; deux PASS visuels acquis reportés avec attribution au11/10. Aucun score esthétique ; historique intégral dans historicalImage.",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Recette:73–84 : sujet inventaire D-004, composition registre à six tâches, style HTML/Fraunces/Hanken, palette hex, interdits et alt définis et cohérents avec la couverture ; pas représentation d’un jugement sur les comptes."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Brief/prompt et provenance annoncent Chromium/HTML original sans IA ; fiction explicite, absence de marque client, gain ou badge de conformité. Palette HTML en observation, pas certification ni réimposition des planchers IA ; réserve cosmétique acquise maintenue."]},
-      "fictive-provenance": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 fictif ; figures illustratives et non interface livrée. Constat historique conservé, non refait comme exigence nouvelle."]},
-      "recognizable-subject": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 : registre de six tâches et états À écrire/Règle renseignée/À valider, sans badge comptes conformes ; six lignes ne prétendent pas couvrir huit familles. Observation complète conservée dans historicalImage."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Mesures indépendantes : master1920×1080, variantes768/1200/1600 AVIF/WebP et OG1200×630 réellement présents ; dimensions déclarées concordent, srcset et image sociale locale résolus.768 et OG visuellement ouverts : six lignes et fiction entières, pas de troncature. Réserve de petits textes inchangée."]},
-      "alt-information": {"result": "PASS", "observations": ["Hero et deux figures du vrai HTML décrivent carte/registre/fiche, D-004 fictif et propositions/commentaires distincts ; aucune conformité promise. Les alt ne transcrivent pas chaque cellule : tables et limites du corps fournissent l’information complète."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Recette:73–84 : sujet inventaire D-004, composition registre à six tâches, style HTML/Fraunces/Hanken, palette hex, interdits et alt définis et cohérents avec la couverture ; pas représentation d’un jugement sur les comptes."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Brief/prompt et provenance annoncent Chromium/HTML original sans IA ; fiction explicite, absence de marque client, gain ou badge de conformité. Palette HTML en observation, pas certification ni réimposition des planchers IA ; réserve cosmétique acquise maintenue."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "reviewedAt": "2026-10-11",
+        "cardId": "t_8bb28890",
+        "observations": [
+          "Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 fictif ; figures illustratives et non interface livrée. Constat historique conservé, non refait comme exigence nouvelle."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "reviewedAt": "2026-10-11",
+        "cardId": "t_8bb28890",
+        "observations": [
+          "Avis acquis §6 : registre de six tâches et états À écrire/Règle renseignée/À valider, sans badge comptes conformes ; six lignes ne prétendent pas couvrir huit familles. Observation complète conservée dans historicalImage."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Mesures indépendantes : master1920×1080, variantes768/1200/1600 AVIF/WebP et OG1200×630 réellement présents ; dimensions déclarées concordent, srcset et image sociale locale résolus.768 et OG visuellement ouverts : six lignes et fiction entières, pas de troncature. Réserve de petits textes inchangée."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Hero et deux figures du vrai HTML décrivent carte/registre/fiche, D-004 fictif et propositions/commentaires distincts ; aucune conformité promise. Les alt ne transcrivent pas chaque cellule : tables et limites du corps fournissent l’information complète."
+        ]
+      }
     },
-    "reservations": ["Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."]
+    "reservations": [
+      "Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."
+    ]
   },
-  "publicationApproval": false
+  "coverCorrection": {
+    "kind": "projection-technique-couverture",
+    "date": "2026-10-12",
+    "originalReview": "revues-avant-couverture-openai.json",
+    "originalReviewSha256": "98471516cc875a83e77de615fbb9755d648922510a501417b54261c9954747b8",
+    "originalSubject": {
+      "slug": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "bodySha256": "35dd9c49b7b37f6ee7a9057f5ba485b275d08302457d30c76743b26d441b8e3b",
+      "recipeSha256": "fa20eca363331d1b4d4b4b19704097004770dc9262b6bbd42dedc71b98f8fc80",
+      "recipeSubstanceSha256": "033390622e4e3fc19f4b49e1c9a163ac0d8680aae6ab537a2a1b75c1414d1123",
+      "renderedSha256": "7d1935e45ecf8f2ef2d71a051e12594d2f6d3e449fe14b23dec9ab100a4472aa"
+    },
+    "scope": "Seul image est modifié ; contenu réglementé, sources, claims, corps et figures inchangés. Avis de fond originaux conservés et non réémis. Le nouveau rendu image attend un avis indépendant."
+  }
 }

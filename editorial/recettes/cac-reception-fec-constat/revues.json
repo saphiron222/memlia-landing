@@ -3,8 +3,8 @@
   "subject": {
     "slug": "cac-reception-fec-constat",
     "bodySha256": "de1d9ead0bf77e80767d44021f9d26b167f0105523782dc7197620d3b4fc9f23",
-    "recipeSha256": "e80a09e440e2cad6bf9356f3838a7d3d968c0b3619dada28157ac1b0dd7ce469",
-    "recipeSubstanceSha256": "afc5b8abe31c770821b3537844a0ab4b971477fd466d2f71feff99a1b9b5088c",
+    "recipeSha256": "31efa499f6d6744bfa7df3104c951f4fb8d47f9ab5a7ef8693b561ab5310256a",
+    "recipeSubstanceSha256": "3cdd3bb64fa62d4be67e5bb68bc590914f55909afc7ad0a39e61d68c5eb0799e",
     "renderedSha256": "024e72025fcaffe6e2a3656455bef0e671bc1e47040ecc43bbdb67f3bd16ecd8"
   },
   "reviewerId": "relecteur-metier-ia-memlia",
@@ -264,7 +264,13 @@
     "renderedReviewed": true,
     "newBusinessReview": false,
     "publicationApproval": false,
-    "unknowns": ["SERP Google calibrée, volumes et classement", "Citations et conversions effectives", "Lighthouse et CWV", "Indexabilité, sitemap et état public final", "Inconnues produit et mission conservées de l’avis du11/10"]
+    "unknowns": [
+      "SERP Google calibrée, volumes et classement",
+      "Citations et conversions effectives",
+      "Lighthouse et CWV",
+      "Indexabilité, sitemap et état public final",
+      "Inconnues produit et mission conservées de l’avis du11/10"
+    ]
   },
   "editorial": {
     "reviewerId": "relecteur-metier-ia-memlia",
@@ -275,16 +281,93 @@
     "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
     "scope": "Complément éditorial qualitatif du vrai rendu local ; pas classement, validation produit ou PASS de publication. Historique intact dans historicalEditorial.",
     "criteria": {
-      "intent-satisfaction": {"result": "PASS", "observations": ["Corps:3,21–77 : réception/versionnement avec prérequis et quatre gestes exécutables, sans écraser les références/commentaires. Titre CAC, réponse et FAQ bornent fec contrôle au constat, pas à tous les sens de la requête ni au validateur fiscal complet."]},
-      "serp-format-rankability": {"result": "PASS", "observations": ["Tutoriel de réception adapté à ce besoin, distinct de l’analyse d’écritures/fiscal et du pilier choix de tâche lié réciproquement. Recherche12/10 éclaire ces intentions mêlées ; plausible est une hypothèse qualitative, sans SERP Google calibrée, difficulté, volume ou position démontrés."]},
-      "eeat-sources": {"result": "PASS", "observations": ["Références officielles au bon passage, soutien/conditions NEP acquis conservés. HTML/JSON-LD attribuent l’article à Kevin Kitanga, fondateur de Memlia, sans titre CAC ; JSON fictif et contrôles limités affichés, pas expérience client ou habilitation normative déduite."]},
-      "information-gain-proof": {"result": "PASS", "observations": ["Champs de constat, séparation anomalie technique/question de mission et trois cas acquis montrent pourquoi équilibre nul ne suffit pas face à une mauvaise période. Aucun parseur FEC, contrôle complet des colonnes, exhaustivité ou opinion issus du banc ; ce sont des preuves éditoriales utiles et bornées."]},
-      "technical-onpage-seo": {"result": "PASS", "observations": ["Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter et BlogPosting/Person/BreadcrumbList cohérents ; tables statiques et liens/fragments/srcset locaux résolus. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex de preview attendu ; production, sitemap et Lighthouse/CWV restent inconnus."]},
-      "ai-citability": {"result": "PASS", "observations": ["FEC/constat/version définis en phrases autonomes, tableaux à en-têtes, sources proches et limite JSON explicite près du résultat/FAQ. Extractibilité vérifiable, pas probabilité de citation ni citation observée ; un total nul ne doit pas être extrait comme conclusion sur les comptes."]},
-      "contextual-conversion": {"result": "PASS", "observations": ["CTA principal Confier cette tâche vers /contact, liens méthode/garanties/pilier utiles ; réponse avant vente et demande de description plutôt que données client. Service de constat/références/refus dans les outils, examen et opinion conservés ; conversion effective non mesurée."]}
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "Corps:3,21–77 : réception/versionnement avec prérequis et quatre gestes exécutables, sans écraser les références/commentaires. Titre CAC, réponse et FAQ bornent fec contrôle au constat, pas à tous les sens de la requête ni au validateur fiscal complet."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Tutoriel de réception adapté à ce besoin, distinct de l’analyse d’écritures/fiscal et du pilier choix de tâche lié réciproquement. Recherche12/10 éclaire ces intentions mêlées ; plausible est une hypothèse qualitative, sans SERP Google calibrée, difficulté, volume ou position démontrés."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Références officielles au bon passage, soutien/conditions NEP acquis conservés. HTML/JSON-LD attribuent l’article à Kevin Kitanga, fondateur de Memlia, sans titre CAC ; JSON fictif et contrôles limités affichés, pas expérience client ou habilitation normative déduite."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Champs de constat, séparation anomalie technique/question de mission et trois cas acquis montrent pourquoi équilibre nul ne suffit pas face à une mauvaise période. Aucun parseur FEC, contrôle complet des colonnes, exhaustivité ou opinion issus du banc ; ce sont des preuves éditoriales utiles et bornées."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Vrai HTML : H1 unique, hiérarchie, description/canonical/OG/Twitter et BlogPosting/Person/BreadcrumbList cohérents ; tables statiques et liens/fragments/srcset locaux résolus. Chromium375/1440 HTTP200 sans image absente/erreur JS/overflow. noindex de preview attendu ; production, sitemap et Lighthouse/CWV restent inconnus."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "FEC/constat/version définis en phrases autonomes, tableaux à en-têtes, sources proches et limite JSON explicite près du résultat/FAQ. Extractibilité vérifiable, pas probabilité de citation ni citation observée ; un total nul ne doit pas être extrait comme conclusion sur les comptes."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "CTA principal Confier cette tâche vers /contact, liens méthode/garanties/pilier utiles ; réponse avant vente et demande de description plutôt que données client. Service de constat/références/refus dans les outils, examen et opinion conservés ; conversion effective non mesurée."
+        ]
+      }
     }
   },
   "image": {
+    "scope": "Nouvelle couverture OpenAI : revue visuelle indépendante à réaliser.",
+    "criteria": {
+      "brief-six-components": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "generation-constraints": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      },
+      "alt-information": {
+        "result": "FAIL",
+        "observations": [
+          "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
+        ]
+      }
+    }
+  },
+  "publicationApproval": false,
+  "previousCoverReview": {
     "reviewerId": "relecteur-metier-ia-memlia",
     "reviewedAt": "2026-10-12",
     "cardId": "t_5b379d47",
@@ -292,14 +375,63 @@
     "report": "docs/qa/cac-f4-metier/complement-2026-10-12/COMPLEMENT.md",
     "scope": "Quatre critères complétés sur brief/HTML/alt/dérivés ; deux PASS visuels acquis reportés avec attribution au11/10. Aucun score esthétique ; historique intégral dans historicalImage.",
     "criteria": {
-      "brief-six-components": {"result": "PASS", "observations": ["Recette:73–84 : sujet trois jeux JSON fictifs D-004, composition deux lignes/périodes/écarts, style HTML/Fraunces/Hanken, palette hex, interdits et alt présents. Brief cohérent avec registre, sans promesse de conformité du format FEC."]},
-      "generation-constraints": {"result": "PASS", "observations": ["Brief/prompt/provenance annoncent HTML original Chromium sans génération IA ni crédit ; JSON fictif explicite, pas de fichier client, gain, badge de conformité ou conclusion sur les comptes. Palette HTML en observation et réserve cosmétique acquise conservées."]},
-      "fictive-provenance": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 inventé ; figures éditoriales et non interface fonctionnelle. Constat historique conservé, pas nouvelle validation produit."]},
-      "recognizable-subject": {"result": "PASS", "reviewedAt": "2026-10-11", "cardId": "t_8bb28890", "observations": ["Avis acquis §6 : trois réceptions JSON deux lignes, périodes2026/2025/2026, écarts0/0/1 et états à revoir/refus correspondants. Aucun équilibre ne devient validation des comptes ; observation intégrale dans historicalImage."]},
-      "technical-derivatives": {"result": "PASS", "observations": ["Mesures indépendantes : master1920×1080, six variantes768/1200/1600 AVIF/WebP et OG1200×630 présents ; dimensions déclarées concordent, srcset/image sociale locale résolus.768 et OG examinés visuellement conservent trois lignes/statuts/fiction sans troncature. Petits textes : réserve acquise maintenue."]},
-      "alt-information": {"result": "PASS", "observations": ["Hero et deux figures réellement rendus nomment constat/registre/fiche, fiction D-004 et séparation proposition/commentaire sans validation du FEC. Alt descriptifs courts, tableaux/limites assurent le détail ; préciser périodes et écarts serait amélioration facultative, pas nouveau FAIL."]}
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Recette:73–84 : sujet trois jeux JSON fictifs D-004, composition deux lignes/périodes/écarts, style HTML/Fraunces/Hanken, palette hex, interdits et alt présents. Brief cohérent avec registre, sans promesse de conformité du format FEC."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Brief/prompt/provenance annoncent HTML original Chromium sans génération IA ni crédit ; JSON fictif explicite, pas de fichier client, gain, badge de conformité ou conclusion sur les comptes. Palette HTML en observation et réserve cosmétique acquise conservées."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "reviewedAt": "2026-10-11",
+        "cardId": "t_8bb28890",
+        "observations": [
+          "Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 inventé ; figures éditoriales et non interface fonctionnelle. Constat historique conservé, pas nouvelle validation produit."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "reviewedAt": "2026-10-11",
+        "cardId": "t_8bb28890",
+        "observations": [
+          "Avis acquis §6 : trois réceptions JSON deux lignes, périodes2026/2025/2026, écarts0/0/1 et états à revoir/refus correspondants. Aucun équilibre ne devient validation des comptes ; observation intégrale dans historicalImage."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Mesures indépendantes : master1920×1080, six variantes768/1200/1600 AVIF/WebP et OG1200×630 présents ; dimensions déclarées concordent, srcset/image sociale locale résolus.768 et OG examinés visuellement conservent trois lignes/statuts/fiction sans troncature. Petits textes : réserve acquise maintenue."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "Hero et deux figures réellement rendus nomment constat/registre/fiche, fiction D-004 et séparation proposition/commentaire sans validation du FEC. Alt descriptifs courts, tableaux/limites assurent le détail ; préciser périodes et écarts serait amélioration facultative, pas nouveau FAIL."
+        ]
+      }
     },
-    "reservations": ["Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."]
+    "reservations": [
+      "Note cosmétique non bloquante : mention fictive et petits textes moins saillants dans les aperçus OG réduits ; améliorer la hiérarchie typographique après publication selon la décision fixée. Les cadres regardés ne tronquent aucun texte. Pas d'exigence nouvelle de supprimer les statuts, de mettre des avertissements dans les figures ou de refaire des couvertures IA."
+    ]
   },
-  "publicationApproval": false
+  "coverCorrection": {
+    "kind": "projection-technique-couverture",
+    "date": "2026-10-12",
+    "originalReview": "revues-avant-couverture-openai.json",
+    "originalReviewSha256": "79dc4cf225a307c5685a7ab12e8562a4422864db98a596ece750d9516926cf1d",
+    "originalSubject": {
+      "slug": "cac-reception-fec-constat",
+      "bodySha256": "de1d9ead0bf77e80767d44021f9d26b167f0105523782dc7197620d3b4fc9f23",
+      "recipeSha256": "e80a09e440e2cad6bf9356f3838a7d3d968c0b3619dada28157ac1b0dd7ce469",
+      "recipeSubstanceSha256": "afc5b8abe31c770821b3537844a0ab4b971477fd466d2f71feff99a1b9b5088c",
+      "renderedSha256": "024e72025fcaffe6e2a3656455bef0e671bc1e47040ecc43bbdb67f3bd16ecd8"
+    },
+    "scope": "Seul image est modifié ; contenu réglementé, sources, claims, corps et figures inchangés. Avis de fond originaux conservés et non réémis. Le nouveau rendu image attend un avis indépendant."
+  }
 }

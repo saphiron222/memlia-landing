@@ -62,63 +62,32 @@
     }
   ],
   "image": {
+    "heroId": "img-art-cac-carte-taches",
+    "alt": "Une carte de tâches en îlots verts reliés, avec dossiers vierges, jeton plat et plateau graphite à examiner.",
     "source": {
-      "path": "preuves/couverture-originale.png",
-      "generationId": "html-cac-inventaire-taches-20261011",
-      "model": "playwright-chromium",
-      "provider": "html-original-local",
-      "generatedAt": "2026-10-11",
-      "credits": 0
+      "path": "image-source.png",
+      "generationId": "exec-7158d591-bb7f-429f-9f7d-91a930085691",
+      "model": "non communiqué par le générateur natif Codex",
+      "provider": "OpenAI",
+      "generatedAt": "2026-10-12",
+      "credits": null
     },
     "brief": {
-      "sujet": "Inventaire des tâches du mandat fictif D-004.",
-      "composition": "Fenêtre de registre provenant du cadre cac-inventaire-taches, références de six tâches et états concrets.",
-      "style": "HTML original canonique, Fraunces et Hanken ; aucune génération IA.",
-      "palette": "Fond crème #fffefb dominant, encre #231f20 en touche, accent cuivre #97551a.",
-      "interdits": "Données réelles, marques de clients, chiffre de gain, verdict sur les comptes.",
-      "alt": "Inventaire fictif des tâches du mandat D-004, références des entrées et propositions à examiner.",
-      "prompt": "Rendre le cadre HTML original cac-inventaire-taches avec Chromium ; ce texte est un brief de rendu, pas un prompt IA.",
-      "reviewCriteria": ["provenance HTML explicite", "jeu fictif", "lisibilité", "OG JPG 1200×630"]
-    },
-    "heroId": "img-art-cac-carte-taches",
-    "alt": "La carte des tâches du mandat : préparation, examen et décision sur le dossier fictif D-004.",
-    "cadre": {
-      "titre": "La carte des tâches du mandat",
-      "sousTitre": "Réception, rapprochement, dossier : choisir un premier geste",
-      "famille": "Commissariat aux comptes",
-      "colonnes": [
-        {
-          "titre": "Entrées identifiées",
-          "items": [
-            "FEC-D004-v1",
-            "Pièces et demandes",
-            "Versions et paramètres"
-          ]
-        },
-        {
-          "titre": "Propositions à examiner",
-          "items": [
-            "Fiche REG-01",
-            "Écarts et conflits",
-            "Commentaires conservés"
-          ]
-        },
-        {
-          "titre": "Décisions du cabinet",
-          "items": [
-            "Périmètre de la tâche",
-            "Appréciation de l’outil",
-            "Travaux et opinion"
-          ]
-        }
-      ],
-      "pied": "Dossier D-004 · jeu d’essai fictif"
-    },
-    "provenance": {
-      "type": "html-original",
-      "template": "editorial/templates/cadre-article.html",
-      "createdAt": "2026-10-11",
-      "decision": "Couverture originale HTML propre à l’article, décision éditoriale du 11/10/2026 ; aucun appel IA ni crédit dépensé."
+      "sujet": "La carte des tâches d’un mandat CAC, avec un choix encore ouvert.",
+      "composition": "Six îlots géométriques reliés ; documents et calendrier vierges ; jeton plat central devant une bifurcation vers un plateau graphite.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, fond crème papier, lumière douce du haut gauche.",
+      "palette": "Crème #fcfbf7 dominante ; vert Memlia #27b657, vert profond #1c8a41 et graphite #231f20 en volumes visibles.",
+      "interdits": "Texte, lettres, chiffres, logo, personnage, main, donnée client, fausse interface, alerte rouge, symbole d’envoi automatique.",
+      "alt": "Une carte de tâches en îlots verts reliés, avec dossiers vierges, jeton plat et plateau graphite à examiner.",
+      "prompt": "Use case: stylized-concept. Asset type: original Memlia blog cover, horizontal 16:9, composed for a 1920x1080 hero and a centered 1200x630 social crop. Subject: a map of the tasks in a statutory audit engagement, prepared work and one pending human choice. Create a premium quiet isometric 3D diorama on a warm paper cream #fcfbf7 background. Arrange six low geometric islands made of matte deep green #1c8a41, bright Memlia green #27b657 and graphite #231f20, connected by short understated physical paths. On several islands place simple blank folded sheets, a small blank file folder, an abstract calendar block with completely empty squares, and a stack of blank cards. Near the center, a small solid green token rests BEFORE an open fork, with one unchosen branch leading to a separate graphite review tray. Nothing has an approval checkmark. Style: simplified geometric objects, matte ceramic and paper, a little frosted translucent green, sophisticated tactile editorial miniature, consistent with the older Memlia 3D isometric covers. Soft studio light from upper left, short natural shadows, crisp sculpted shapes, no shiny plastic, no office photography. Composition airy but the islands form a substantial coherent central map readable at thumbnail size; keep important objects within the middle 80 percent for cropping. Strict cream, green, deep green and graphite palette, no other saturated colors. No people, no hands, no faces, no characters, no readable text, no letters, no numbers, no logo, no watermark, no software window, no screen, no dashboard, no fake interface, no red alert, no automatic sending symbol, no claim that an audit is certified or concluded. One original illustration, no text overlay.\nCorrection ciblée du rendu initial : Edit this Memlia cover to remove all elements that look like game scenery or characters. Replace the central pawn-shaped object (round head on conical body) with a plain low flat cylindrical green token, no head, no figure. Remove every tree/conical bush and every small shrub sphere on the six islands; leave simple geometric islands, papers, cards, blank calendar, folder and graphite tray. Preserve the composition, six connected islands, fork, isometric 3D matte ceramic/paper materials, soft upper left light, cream #fcfbf7, green #27b657/deep green #1c8a41/graphite #231f20, the original blank paper objects, camera framing and 16:9 format. Keep no person, no hand, no character, no text, letters or numbers, no logo, no software interface, no watermark. This is a clean abstract map of professional tasks awaiting a decision. Only remove decorative vegetation and replace the central pawn with the low disc.",
+      "reviewCriteria": [
+        "brief à six composantes",
+        "aucun élément interdit",
+        "provenance OpenAI réelle et fictive",
+        "sujet reconnaissable",
+        "dérivés adaptés",
+        "alt descriptif"
+      ]
     }
   },
   "sources": [

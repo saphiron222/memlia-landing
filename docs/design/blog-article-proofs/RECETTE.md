@@ -3,7 +3,8 @@
 Décision de Kevin du 03/10/2026 : « les images servent juste à illustrer, pas à être une explication
 comme le texte du blog ». Cette recette vaut pour toute figure du corps d'un article
 (`<figure data-blog-proof>`), qu'elle soit nouvelle ou refaite. La couverture suit sa propre recette
-(forge, crédits Higgsfield).
+(diorama 3D généré avec OpenAI dans Codex depuis la décision du 12/10/2026 ;
+voir `../RECETTE-IMAGES-BLOG-2026-10-12.md`).
 
 ## Les références
 

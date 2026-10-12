@@ -4,87 +4,91 @@
   "kind": "image-visual-review",
   "status": "PASS",
   "checkedAt": "2026-10-12",
-  "articleSha256": "bed142d795a23553b03b7c9318ba582ce674df0559ebf1f3dbda280762e9296b",
-  "manifestSha256": "33c8fbd90c0c13a1a08c75b53a12f408a3304128c7de6dfd529f90b0ed9322dc",
+  "articleSha256": "10a119da23834e518be3a7b0058c419edcab51282b375229eb174b3119d4c2c2",
+  "manifestSha256": "4fcb5f1ceaada4fb5bec61ed011722624bd14f3ae2b80f59cadf8dcc43ac104e",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact cac-reception-fec-constat."
   ],
   "palette": {
     "epinglee": [
       {
-        "hex": "#fffefb",
+        "hex": "#fcfbf7",
         "role": "dominante"
       },
       {
-        "hex": "#231f20",
-        "role": "touche"
+        "hex": "#27b657",
+        "role": "presente"
       },
       {
-        "hex": "#97551a",
-        "role": "touche"
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
       }
     ],
     "tolerance": 45,
-    "pixelsMesures": 2073600,
-    "resolution": "master-natif",
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
     "parts": {
-      "#fffefb": 0.990561824845679,
-      "#231f20": 0.0008203125,
-      "#97551a": 0.0005420524691358025
+      "#fcfbf7": 0.69625,
+      "#27b657": 0.0011458333333333333,
+      "#1c8a41": 0.01855902777777778,
+      "#231f20": 0.03822916666666667
     },
     "seuils": {
       "dominante": 0.1,
       "touche": 0.005,
       "presente": 0.005
     },
-    "contrat": "observation-html-original",
+    "contrat": "observation-image-generee",
     "statut": "OBSERVATION",
     "ecarts": [
-      "Palette : #231f20 (touche) mesurée à 0,082 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant).",
-      "Palette : #97551a (touche) mesurée à 0,054 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+      "Palette : #27b657 (presente) mesurée à 0,115 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
     ]
   },
   "criteria": [
     {
       "id": "brief-six-components",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Recette:73–84 : sujet trois jeux JSON fictifs D-004, composition deux lignes/périodes/écarts, style HTML/Fraunces/Hanken, palette hex, interdits et alt présents. Brief cohérent avec registre, sans promesse de conformité du format FEC."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     },
     {
       "id": "generation-constraints",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Brief/prompt/provenance annoncent HTML original Chromium sans génération IA ni crédit ; JSON fictif explicite, pas de fichier client, gain, badge de conformité ou conclusion sur les comptes. Palette HTML en observation et réserve cosmétique acquise conservées."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     },
     {
       "id": "fictive-provenance",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Avis acquis §6 et historicalImage : provenance HTML non IA, zéro crédit, D-004/2026 inventé ; figures éditoriales et non interface fonctionnelle. Constat historique conservé, pas nouvelle validation produit."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     },
     {
       "id": "recognizable-subject",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Avis acquis §6 : trois réceptions JSON deux lignes, périodes2026/2025/2026, écarts0/0/1 et états à revoir/refus correspondants. Aucun équilibre ne devient validation des comptes ; observation intégrale dans historicalImage."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     },
     {
       "id": "technical-derivatives",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Mesures indépendantes : master1920×1080, six variantes768/1200/1600 AVIF/WebP et OG1200×630 présents ; dimensions déclarées concordent, srcset/image sociale locale résolus.768 et OG examinés visuellement conservent trois lignes/statuts/fiction sans troncature. Petits textes : réserve acquise maintenue."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     },
     {
       "id": "alt-information",
-      "result": "PASS",
+      "result": "FAIL",
       "observations": [
-        "Hero et deux figures réellement rendus nomment constat/registre/fiche, fiction D-004 et séparation proposition/commentaire sans validation du FEC. Alt descriptifs courts, tableaux/limites assurent le détail ; préciser périodes et écarts serait amélioration facultative, pas nouveau FAIL."
+        "Nouveau rendu produit par l’auteur ; aucune revue indépendante acquise à ce stade."
       ]
     }
   ]
