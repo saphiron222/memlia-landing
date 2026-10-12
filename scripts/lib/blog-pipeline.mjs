@@ -976,12 +976,15 @@ function visibleSourceBlocks(source, { raw = false } = {}) {
   const document = parseHtml(source, { sourceCodeLocationInfo: raw });
   const ignoredTags = new Set(['head', 'style', 'script', 'noscript', 'template']);
   const blockTags = new Set(['p', 'li', 'blockquote', 'figcaption', 'td', 'th', 'dt', 'dd', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
+  const isHidden = (node) => ignoredTags.has(node.tagName)
+    || (node.attrs ?? []).some(({ name, value }) => name === 'hidden'
+      || (name === 'style' && /(?:^|;)\s*display\s*:\s*none\s*(?:!\s*important\s*)?(?:;|$)/i.test(value)));
   // Les offsets gardent NBSP/balises inline à l'identique, mais une tranche
   // innerHTML complète réintroduirait les descendants ignorés par nodeText.
   const omittedRanges = [];
   if (raw) {
     const collectOmitted = (node) => {
-      if (ignoredTags.has(node.tagName) || node.nodeName === '#comment') {
+      if (isHidden(node) || node.nodeName === '#comment') {
         const location = node.sourceCodeLocation;
         if (location) {
           omittedRanges.push([location.startOffset, location.endOffset]);
@@ -1009,14 +1012,14 @@ function visibleSourceBlocks(source, { raw = false } = {}) {
     return parts.join('').trim();
   };
   const nodeText = (node, hidden = false) => {
-    const ignored = hidden || ignoredTags.has(node.tagName);
+    const ignored = hidden || isHidden(node);
     if (ignored) return '';
     if (node.nodeName === '#text') return node.value;
     return (node.childNodes ?? []).map((child) => nodeText(child, ignored)).join(' ');
   };
   const blocks = [];
   const visit = (node, hidden = false) => {
-    const ignored = hidden || ignoredTags.has(node.tagName);
+    const ignored = hidden || isHidden(node);
     if (!ignored && blockTags.has(node.tagName)) {
       const text = (raw ? visibleRawInnerHTML(node) : null)
         ?? nodeText(node).replace(/\s+/g, ' ').trim();

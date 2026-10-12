@@ -875,6 +875,24 @@ test('la citation normative courte H2A conserve son contexte et passe la forge p
       assert.ok(refus.errors.some((e) => attendu.test(e)), `${label}: ${refus.errors.join('\n')}`);
     }
     writeFileSync(claimsPath, original);
+    for (const [label, fragment] of [
+      ['bloc hidden', `<p hidden>${paragraphe}</p>`],
+      ['bloc display:none', `<p style="display: none !important">${paragraphe}</p>`],
+      ['ancêtre hidden', `<div hidden="until-found"><p>${paragraphe}</p></div>`],
+      ['ancêtre display:none', `<div style="DISPLAY : NONE"><p>${paragraphe}</p></div>`],
+      ['citation hidden', `<p>${paragraphe.replace(excerpt, `<span hidden>${excerpt}</span>`)}</p>`],
+      ['citation display:none', `<p>${paragraphe.replace(excerpt, `<span style="display:none">${excerpt}</span>`)}</p>`],
+    ]) {
+      const hiddenPage = PAGE_SOURCE.replace('</body>', `${fragment}</body>`);
+      const hiddenFetcher = async () => new Response(hiddenPage, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+      // Le chemin normal régénère copies, reçus, claims et revues liés au même candidat.
+      rmSync(join(root, 'editorial/articles', SLUG, 'preuves/sources/cnil-durees.json'));
+      const hiddenForge = await materialiser({ root, slug: SLUG, statut: 'pret-preview', fetcher: hiddenFetcher, rendreImage });
+      assert.ok(hiddenForge.erreurs.some((e) => /citation trop courte ou trop générique/.test(e)), `${label}: ${hiddenForge.erreurs.join('\n')}`);
+      const hiddenGate = await validateDossier({ root, slug: SLUG, renderedBlogHtml: blogRendu, gateMode: 'protected-preview' });
+      assert.equal(hiddenGate.pass, false, label);
+      assert.ok(hiddenGate.errors.some((e) => /trop générique/.test(e)), `${label}: ${hiddenGate.errors.join('\n')}`);
+    }
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
