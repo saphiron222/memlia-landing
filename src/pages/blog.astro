@@ -24,7 +24,7 @@ import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
 const parDate = (await getCollection('blog', isBlogEntryVisible)).sort(
   (a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime()
 );
-const pilier = parDate.find((a) => a.data.format === 'pillar-page');
+const pilier = parDate.find((a) => a.id === BLOG.pilierGeneral && a.data.format === 'pillar-page');
 const suite = parDate.filter((a) => a !== pilier);
 // L'ordre du DOM, et donc celui du graphe : le pilier d'abord, puis la liste chronologique.
 const articles = pilier ? [pilier, ...suite] : suite;

@@ -711,12 +711,13 @@ class BuildProof(unittest.TestCase):
         # pilier était l'article le plus récent, et le premier satellite daté après lui l'a cassée.
         dates = {a.stem: next(n for g in jsonld(a) for n in g['@graph'] if n['@type'] == 'BlogPosting')['datePublished'] for a in articles()}
         piliers = [s for s in listed if s in pillar_slugs()]
-        if piliers:
-            self.assertEqual(listed[0], piliers[0], 'le pilier retenu doit ouvrir la liste du blog')
-            self.assertEqual(dates[piliers[0]], max(dates[s] for s in piliers),
-                             'le point de départ est le pilier le plus récent')
+        general = re.search(r"pilierGeneral:\s*'([^']+)'",
+                            (ROOT / 'src/data/blog.mjs').read_text()).group(1)
+        if general in listed:
+            self.assertIn(general, piliers, 'le point de départ général doit être un pilier')
+            self.assertEqual(listed[0], general, 'le pilier général doit ouvrir le blog')
         # Les autres piliers restent des articles de la liste chronologique.
-        suite = listed[1:] if piliers else listed
+        suite = listed[1:] if general in listed else listed
         self.assertEqual([dates[s] for s in suite], sorted((dates[s] for s in suite), reverse=True))
         self.assertEqual([p['@id'] for p in blog['blogPost']], [f'{SITE}/blog/{s}#article' for s in listed])
 

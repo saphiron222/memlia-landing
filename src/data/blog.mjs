@@ -16,6 +16,8 @@ export const BLOG = {
   description:
     'Blog Memlia : des méthodes pour écrire le savoir-faire du cabinet, préparer les tâches répétitives et garder la décision humaine.',
   fluxRss: '/blog/rss.xml',
+  /** Point de départ général ; les piliers de métier restent dans leurs parcours. */
+  pilierGeneral: 'automatiser-un-cabinet-comptable-la-carte-des-taches',
   /** Mots par minute retenus pour le temps de lecture affiché. */
   motsParMinute: 200,
 };

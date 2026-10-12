@@ -16,7 +16,7 @@ export async function GET(context: APIContext) {
   );
   // Le blog met un seul point de départ en tête, puis reprend l’ordre des dates,
   // y compris les autres piliers de métiers distincts. Le flux suit le même ordre.
-  const pilier = parDate.find((article) => article.data.format === 'pillar-page');
+  const pilier = parDate.find((article) => article.id === BLOG.pilierGeneral && article.data.format === 'pillar-page');
   const suite = parDate.filter((article) => article !== pilier);
   const publies = pilier ? [pilier, ...suite] : suite;
   const site = context.site ?? new URL(SITE.url);
