@@ -27,7 +27,7 @@ interface Props {
 }
 const { entree, suivants, headings } = Astro.props;
 const { data } = entree;
-const sections = headings.filter(({ depth, text }) => depth === 2 && !/^(?:sources?|références)$/iu.test(text.trim()));
+const sections = headings.filter(({ depth }) => depth === 2);
 const afficherSommaire = sections.length >= 6;
 const chemin = `${BLOG.chemin}/${entree.id}`;
 const rubrique = rubriquePourArticle(entree.id);

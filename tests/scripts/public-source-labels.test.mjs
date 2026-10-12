@@ -68,6 +68,10 @@ test('le rendu retire une bibliographie redondante et conserve chaque lien dans 
   assert.equal(renderPublicSourceText(html), `<div class="article-corps lecture">${paragraph}</div>`);
   assert.equal(renderPublicSourceText(renderPublicSourceText(html)), renderPublicSourceText(html));
   assert.throws(() => renderPublicSourceText(`<div class="article-corps">${source}</div>`), /Citations à intégrer/);
+  const toc = '<nav data-blog-toc><ol><li><a href="#controle">Le contrôle</a></li><li><a href="#sources">Sources</a></li></ol></nav>';
+  const rendered = renderPublicSourceText(toc + html);
+  assert.ok(rendered.includes('<li><a href="#controle">Le contrôle</a></li>'));
+  assert.ok(!rendered.includes('href="#sources"'));
 });
 
 test('toutes les pages rendues, sans liste figée de routes, sont exemptes de libellés de processus', () => {

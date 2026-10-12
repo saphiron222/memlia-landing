@@ -14,7 +14,7 @@ test('registres : contrat public, preuve et limites du jeu', async ({ page }) =>
   await expect(page.locator('[data-proof="v2/44-service-registres-obligations"] img')).toHaveCount(1);
   await expect(page.locator('[data-service-sections]')).toContainText('sans connexion aux registres');
   await expect(page.locator('[data-service-sections]')).toContainText('distinct de la tenue d’un registre légal');
-  await expect(page.locator('footer a[href="/automatisation/registres-obligations"]')).toHaveCount(1);
+  await expect(page.locator('footer a[href="/automatisation-cabinet-comptable"]')).toHaveCount(1);
 });
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {

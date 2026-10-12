@@ -37,6 +37,7 @@ const INLINE_REFERENCES = {
 
 export function renderPublicSourceText(html) {
   const edits = [];
+  const removedIds = new Set();
   const document = parse(html, { sourceCodeLocationInfo: true });
   const attr = (node, name) => node.attrs?.find(item => item.name === name)?.value;
   const text = node => node.nodeName === '#text' ? node.value : (node.childNodes ?? []).map(text).join('');
@@ -62,10 +63,21 @@ export function renderPublicSourceText(html) {
       const missing = links(list).filter(href => !inline.has(href));
       if (missing.length) throw new Error(`Citations à intégrer dans les paragraphes avant publication : ${missing.join(', ')}`);
       edits.push({ startOffset: heading.sourceCodeLocation.startOffset, endOffset: list.sourceCodeLocation.endOffset, replacement: '' });
+      if (attr(heading, 'id')) removedIds.add(attr(heading, 'id'));
     }
     for (const child of children) bibliography(child);
   }
   bibliography(document);
+  function trimToc(node, inToc = false) {
+    if (INTERNAL.has(node.tagName)) return;
+    inToc ||= node.tagName === 'nav' && node.attrs?.some(item => item.name === 'data-blog-toc');
+    if (inToc && node.tagName === 'li' && links(node).some(href => href?.startsWith('#') && removedIds.has(href.slice(1)))) {
+      edits.push({ startOffset: node.sourceCodeLocation.startOffset, endOffset: node.sourceCodeLocation.endOffset, replacement: '' });
+      return;
+    }
+    for (const child of node.childNodes ?? []) trimToc(child, inToc);
+  }
+  trimToc(document);
   function visit(node) {
     if (INTERNAL.has(node.tagName)) return;
     if (node.nodeName === '#text' && node.sourceCodeLocation) {

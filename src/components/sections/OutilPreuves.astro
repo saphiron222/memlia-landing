@@ -32,7 +32,7 @@ const { source, mentionLocale, refus, assemblage = false } = Astro.props;
         <p class="carte-texte">{refus}</p>
       </article>
       <article class="cellule outil-preuve rv" data-official-source>
-        <h3 class="carte-titre">{source.titre ?? 'Le repère qui encadre ce résultat'}</h3>
+        {source.titre && <h3 class="carte-titre">{source.titre}</h3>}
         <p class="carte-texte"><a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a> : {source.extrait}</p>
         {source.complement && (
           <p class="outil-source-complement">
