@@ -63,21 +63,81 @@ test('les exceptions ne déclenchent pas une archive artificielle et le stock CA
   assert.doesNotThrow(() => verifier([entry('pilier', 'cadrage'), entry('cicatrice', 'cadrage'), entry('cac-a', 'audit'), entry('cac-b', 'audit')], { rubriques: [], exemptions: { pilier: exemption, cicatrice: exemption } }));
 });
 
-test('le stock publié réel est couvert à partir du frontmatter et de la taxonomie des familles', async () => {
+async function stockPublie() {
   const compiled = ts.transpileModule(readFileSync('src/data/familles.ts', 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
   const { FAMILLES } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
   const entries = readdirSync('src/content/blog').filter((file) => file.endsWith('.md')).map((file) => {
     const markdown = readFileSync(`src/content/blog/${file}`, 'utf8');
     return { id: file.slice(0, -3), data: parse(markdown.match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]) };
   }).filter(({ data }) => data.brouillon === false);
+  return { entries, FAMILLES };
+}
+
+function verifierStock(entries, FAMILLES, {
+  rubriques = taxonomy.BLOG_RUBRIQUES, exemptions = taxonomy.ARTICLES_HORS_RUBRIQUE,
+} = {}) {
   assert.ok(entries.length > 0);
-  assert.doesNotThrow(() => taxonomy.verifierCouvertureRubriques(entries, FAMILLES));
-  const base = readFileSync('src/layouts/Base.astro', 'utf8');
-  assert.match(base, /verifierCouvertureRubriques\(articles\.filter\(.*brouillon === false.*\), FAMILLES\)/);
-  assert.deepEqual(Object.keys(taxonomy.ARTICLES_HORS_RUBRIQUE).sort(), [
-    'automatiser-un-cabinet-comptable-la-carte-des-taches',
-    'cabinet-comptable-surcharge-de-travail-ou-passe-le-temps',
-    'pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils',
-  ].sort());
-  for (const { raison } of Object.values(taxonomy.ARTICLES_HORS_RUBRIQUE)) assert.doesNotMatch(raison, /deux rubriques/);
+  taxonomy.verifierCouvertureRubriques(entries, FAMILLES, { rubriques, exemptions });
+  const hubs = taxonomy.construireRubriques(entries, { rubriques });
+  for (const { id, data } of entries) {
+    const famille = FAMILLES.find((famille) => famille.id === data.famille);
+    assert.ok(famille, `${id} : famille connue`);
+    if (famille.profession !== 'ec') continue;
+    const rattachements = hubs.filter(({ articles }) => articles.some((article) => article.id === id));
+    const horsRubrique = Object.hasOwn(exemptions, id);
+    assert.equal(rattachements.length + Number(horsRubrique), 1, `${id} : un parcours ou une exemption, exclusivement`);
+    if (horsRubrique) {
+      assert.match(exemptions[id].date, /^\d{4}-\d{2}-\d{2}$/);
+      assert.ok(exemptions[id].raison.trim().length >= 50, `${id} : motif substantiel`);
+    } else {
+      assert.equal(taxonomy.rubriquePourArticle(id)?.slug, rattachements[0].slug);
+    }
+  }
+}
+
+test('le stock publié réel rejoint un hub ou une exemption motivée, sans liste historique figée', async () => {
+  const { entries, FAMILLES } = await stockPublie();
+  verifierStock(entries, FAMILLES);
+});
+
+test('le stock réel accepte plusieurs nouvelles exemptions sans créer de parcours artificiel', async () => {
+  const { entries, FAMILLES } = await stockPublie();
+  const famille = FAMILLES.find(({ profession }) => profession === 'ec');
+  const exemptions = { ...taxonomy.ARTICLES_HORS_RUBRIQUE };
+  const evolutif = [...entries];
+  for (const id of ['nouvelle-exemption-a', 'nouvelle-exemption-b']) {
+    evolutif.push(entry(id, famille.id));
+    exemptions[id] = exemption;
+    verifierStock(evolutif, FAMILLES, { exemptions });
+    const sansExemption = { ...exemptions };
+    delete sansExemption[id];
+    assert.throws(() => taxonomy.verifierCouvertureRubriques(evolutif, FAMILLES, { exemptions: sansExemption }), /sans parcours de rubrique|rubrique ou exemption/);
+    assert.throws(() => taxonomy.verifierCouvertureRubriques(evolutif, FAMILLES, {
+      exemptions: { ...exemptions, [id]: { ...exemption, raison: 'Transversal' } },
+    }), /exemption datée et motivée/);
+  }
+});
+
+test('les exemptions du stock réel restent contrôlées et les rattachements exclusifs', async () => {
+  const { entries, FAMILLES } = await stockPublie();
+  const ec = entries.filter(({ data }) => FAMILLES.some(({ id, profession }) => id === data.famille && profession === 'ec'));
+  const exemptes = ec.filter(({ id }) => Object.hasOwn(taxonomy.ARTICLES_HORS_RUBRIQUE, id));
+  assert.ok(exemptes.length > 0);
+  for (const { id } of exemptes) {
+    for (const invalide of [undefined, { ...exemption, raison: 'Transversal' }, { ...exemption, date: '' }]) {
+      const exemptions = { ...taxonomy.ARTICLES_HORS_RUBRIQUE, [id]: invalide };
+      if (!invalide) delete exemptions[id];
+      assert.throws(() => taxonomy.verifierCouvertureRubriques(entries, FAMILLES, { exemptions }), /sans parcours de rubrique|rubrique ou exemption|exemption datée et motivée/);
+    }
+    const inconnue = entries.map((article) => article.id === id ? entry(id, 'inconnue') : article);
+    assert.throws(() => taxonomy.verifierCouvertureRubriques(inconnue, FAMILLES), /famille inconnue/);
+  }
+  const rattache = ec.find(({ id }) => taxonomy.rubriquePourArticle(id));
+  assert.ok(rattache);
+  assert.throws(() => taxonomy.verifierCouvertureRubriques(entries, FAMILLES, {
+    rubriques: [...taxonomy.BLOG_RUBRIQUES, { slug: 'doublon', articleIds: [rattache.id] }],
+  }), /plusieurs rubriques/);
+  assert.throws(() => taxonomy.verifierCouvertureRubriques(entries, FAMILLES, {
+    exemptions: { ...taxonomy.ARTICLES_HORS_RUBRIQUE, [rattache.id]: exemption },
+  }), /rattaché et hors rubrique/);
 });
