@@ -82,7 +82,7 @@ export function renderedBodySha256(html) {
 // Inverse projection: never normalize all links or reissue an independent opinion.
 // Only explicitly added, plain-text links to existing blog candidates are undone.
 function projectLinkReview(review, slug, body, recipeBytes, renderedHtml, root) {
-  const path = root && join(root, 'editorial/recettes', slug, 'maillage.json');
+  const path = root && join(root, 'editorial/recettes', slug, 'review-link-projection.json');
   if (!path || !existsSync(path)) return { body, recipeBytes, renderedHtml };
   const projection = JSON.parse(readFileSync(path));
   if (projection.version !== 1 || projection.reviewSha256 !== reviewSha256(JSON.stringify(review))
@@ -123,7 +123,7 @@ export function reviewBindingErrors(review, slug, body, recipeBytes, renderedHtm
   try {
     ({ body, recipeBytes, renderedHtml } = projectLinkReview(review, slug, body, recipeBytes, renderedHtml, root));
   } catch (error) {
-    errors.push(`maillage.json : ${error.message} ; projection de maillage refusée.`);
+    errors.push(`review-link-projection.json : ${error.message} ; projection de maillage refusée.`);
   }
   if (review?.subject?.slug !== slug || review?.subject?.bodySha256 !== reviewSha256(body.trim())) {
     errors.push('revues.json : empreinte du corps ou slug divergent ; nouvelle revue indépendante requise.');

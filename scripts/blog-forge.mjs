@@ -710,8 +710,8 @@ export async function materialiser({ root, slug, statut, fetcher, rendreImage, j
   // unitesRendues les ignore et conserve le registre des phrases scellées inchangé.
   const { erreurs, claims } = construireClaims({ recette, corps: corpsPublie, dossier, sujet, jour });
   erreurs.push(...revueErreurs);
-  const maillagePath = join(dossierRecette, 'maillage.json');
-  const maillageProofPath = join(dossier, 'preuves/maillage.json');
+  const maillagePath = join(dossierRecette, 'review-link-projection.json');
+  const maillageProofPath = join(dossier, 'preuves/review-link-projection.json');
   if (existsSync(maillagePath) && revues && !revueErreurs.length) {
     // Le sceau inventorie cette projection technique ; l'avis original n'est pas réécrit.
     ecrireJson(maillageProofPath, {

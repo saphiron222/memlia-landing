@@ -13,6 +13,22 @@ const recipe = JSON.parse(readFileSync(new URL('recette.json', dir)));
 const review = JSON.parse(readFileSync(new URL('revues.json', dir)));
 const linked = body.replace('et le rapprochement bancaire (voir', `et le [rapprochement bancaire](${target}) (voir`);
 
+test('historical SEO maillage report does not become a review projection', () => {
+  const root = new URL('../../', import.meta.url).pathname;
+  const legacySlug = 'ia-comptabilite-confidentialite-donnees';
+  const folder = join(root, 'editorial/recettes', legacySlug);
+  const opinionBytes = readFileSync(join(folder, 'revues.json'), 'utf8');
+  const reportBytes = readFileSync(join(folder, 'maillage.json'), 'utf8');
+  assert.equal(JSON.parse(reportBytes).slug, legacySlug);
+  assert.deepEqual(reviewBindingErrors(
+    JSON.parse(opinionBytes), legacySlug,
+    readFileSync(join(folder, 'corps.md'), 'utf8').trim(),
+    readFileSync(join(folder, 'recette.json'), 'utf8'), undefined, root,
+  ), []);
+  assert.equal(readFileSync(join(folder, 'revues.json'), 'utf8'), opinionBytes);
+  assert.equal(readFileSync(join(folder, 'maillage.json'), 'utf8'), reportBytes);
+});
+
 test('real pillar backlink preserves the independent opinion and bounds recipe and render changes', () => {
   const root = mkdtempSync(join(tmpdir(), 'blog-links-'));
   try {
@@ -21,12 +37,17 @@ test('real pillar backlink preserves the independent opinion and bounds recipe a
     mkdirSync(join(root, 'src/content/blog'), { recursive: true });
     writeFileSync(join(root, 'src/content/blog', `${target.split('/').pop()}.md`), '# Candidat bancaire\n');
     const projection = { version: 1, reviewSha256: reviewSha256(JSON.stringify(review)), additions: [{ text: 'rapprochement bancaire', url: target }] };
-    const save = () => writeFileSync(join(folder, 'maillage.json'), JSON.stringify(projection));
+    const save = () => writeFileSync(join(folder, 'review-link-projection.json'), JSON.stringify(projection));
     save();
     const next = structuredClone(recipe);
     next.links.outgoing.push(target);
     const check = (b = linked, r = next, opinion = review, html) => reviewBindingErrors(opinion, slug, b, JSON.stringify(r), html, root);
     assert.deepEqual(check(), []);
+    projection.version = 2;
+    save();
+    assert.ok(check().some(error => error.includes('projection ou avis divergent')));
+    projection.version = 1;
+    save();
     assert.ok(check(linked.replace('validation', 'suppression')).length);
     const changed = structuredClone(next);
     changed.sources[0].title += ' modifié';

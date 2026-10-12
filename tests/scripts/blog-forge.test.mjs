@@ -159,9 +159,15 @@ test('materialisation and publication seal archive a bounded backlink without re
     const opinionPath = join(root, 'editorial/recettes', SLUG, 'revues.json');
     const opinionBytes = JSON.stringify(opinion);
     writeFileSync(opinionPath, opinionBytes);
+    const legacyPath = join(root, 'editorial/recettes', SLUG, 'maillage.json');
+    const legacyBytes = JSON.stringify({ ok: false, slug: SLUG, entrants: [], sortants: [] });
+    writeFileSync(legacyPath, legacyBytes);
+    const withoutProjection = await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage, jour });
+    assert.deepEqual(withoutProjection.erreurs, []);
+    assert.equal(existsSync(join(withoutProjection.dossier, 'preuves/review-link-projection.json')), false);
     const target = '/blog/article-bancaire';
     writeFileSync(join(root, 'src/content/blog/article-bancaire.md'), '# Article bancaire');
-    writeFileSync(join(root, 'editorial/recettes', SLUG, 'maillage.json'), JSON.stringify({ version: 1, reviewSha256: reviewSha256(opinionBytes), additions: [{ text: 'validation', url: target }] }));
+    writeFileSync(join(root, 'editorial/recettes', SLUG, 'review-link-projection.json'), JSON.stringify({ version: 1, reviewSha256: reviewSha256(opinionBytes), additions: [{ text: 'validation', url: target }] }));
     writeFileSync(join(root, 'editorial/recettes', SLUG, 'corps.md'), CORPS.replace('conserve la validation ;', `conserve la [validation](${target}) ;`));
     const next = JSON.parse(readFileSync(recipePath));
     next.links.outgoing.push(target);
@@ -169,15 +175,17 @@ test('materialisation and publication seal archive a bounded backlink without re
     const result = await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage, jour });
     assert.deepEqual(result.erreurs, []);
     assert.equal(readFileSync(opinionPath, 'utf8'), opinionBytes);
-    const proof = JSON.parse(readFileSync(join(result.dossier, 'preuves/maillage.json')));
+    assert.equal(readFileSync(legacyPath, 'utf8'), legacyBytes);
+    const proof = JSON.parse(readFileSync(join(result.dossier, 'preuves/review-link-projection.json')));
     assert.deepEqual(proof.review, opinion.subject);
     ecrireSceau(root, SLUG, jour);
     const seal = JSON.parse(readFileSync(join(result.dossier, PUBLICATION_SEAL_PATH)));
-    assert.ok(seal.files.some(file => file.path === 'preuves/maillage.json'));
+    assert.ok(seal.files.some(file => file.path === 'preuves/review-link-projection.json'));
     rmSync(join(root, 'src/content/blog/article-bancaire.md'));
     const refused = await materialiser({ root, slug: SLUG, statut: 'publie', fetcher, rendreImage, jour });
-    assert.ok(refused.erreurs.some(error => error.includes('maillage.json')));
-    assert.equal(existsSync(join(result.dossier, 'preuves/maillage.json')), false);
+    assert.ok(refused.erreurs.some(error => error.includes('review-link-projection.json')));
+    assert.equal(existsSync(join(result.dossier, 'preuves/review-link-projection.json')), false);
+    assert.equal(readFileSync(legacyPath, 'utf8'), legacyBytes);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
