@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "action": "creation",
+  "editorialStatus": "publie",
+  "title": "Rapprochement bancaire automatique : les écarts à remonter",
+  "tabTitle": "Rapprochement bancaire automatique : écarts | Memlia",
+  "summary": "Une clé d'appariement univoque, quatre cas fictifs rejoués et des refus explicites : le rapprochement prépare les paires sans masquer les écarts ni prendre la décision.",
+  "description": "Rapprochement bancaire automatique : comparer relevé et compte 512, proposer les paires univoques et remonter les écarts à valider.",
+  "publicationDate": "2026-10-12",
+  "updatedAt": null,
+  "topics": [
+    "lettrage",
+    "revision",
+    "automatisation"
+  ],
+  "keywords": [
+    "rapprochement bancaire automatique",
+    "écarts rapprochement bancaire",
+    "clé de rapprochement bancaire comptabilité"
+  ],
+  "primaryQuery": "rapprochement bancaire automatique",
+  "secondaryQueries": [
+    "clé de rapprochement bancaire comptabilité",
+    "logiciel rapprochement bancaire cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "quelles lignes apparier",
+    "comment traiter un transit",
+    "que faire avec plusieurs candidats"
+  ],
+  "role": {
+    "primary": "collaborateurs-comptables",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proof": {
+      "level": "indirect",
+      "source": "preuves/role.json",
+      "verifiedAt": "2026-10-12"
+    }
+  },
+  "businessReview": {
+    "required": true,
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "collaborateurs-comptables",
+    "status": "PASS",
+    "evidence": "preuves/business-review.json"
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "banque-rapprochement",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Comparer le relevé et le compte bancaire, proposer les paires univoques et remonter les lignes ouvertes sans les solder d'office.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofStatus": "verifiee",
+  "proofRequired": "Clé écrite et quatre cas fictifs RB-01 à RB-04, avec paire unique, transit possible, refus d'ambiguïté et entrée incomplète ; ne prouve pas l'exhaustivité des écarts.",
+  "sourcesVerifiedAt": "2026-10-12",
+  "sources": [
+    {
+      "id": "anc-plan",
+      "publisher": "ANC",
+      "title": "Plan comptable général",
+      "url": "https://www.anc.gouv.fr/plan-comptable-general-0",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.anc.gouv.fr/plan-comptable-general-0",
+      "classificationReason": "Page primaire de l'Autorité des normes comptables donnant accès au plan de comptes 2026 ; ne prouve pas à elle seule le numéro 512.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/anc-plan.classification.json",
+      "verificationEvidence": "preuves/sources/anc-plan.json"
+    },
+    {
+      "id": "cnil-definition",
+      "publisher": "CNIL",
+      "title": "Donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "classificationReason": "Définition primaire de l'autorité de protection des données.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-definition.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-definition.json"
+    },
+    {
+      "id": "cnil-principes",
+      "publisher": "CNIL",
+      "title": "RGPD chapitre II — Principes",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "checkedAt": "2026-10-12",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "classificationReason": "Texte de l'article 5 du RGPD publié par la CNIL.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/cnil-principes.classification.json",
+      "verificationEvidence": "preuves/sources/cnil-principes.json"
+    }
+  ],
+  "author": "kevin",
+  "reviewer": "marketing",
+  "reviewRule": "Revoir toute extension de l'oracle, du périmètre des exports ou des sources officielles avant republication.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la clé de rapprochement dans vos mots, préparons les paires et les écarts dans vos outils, puis faisons recetter les refus par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez la tâche."
+  },
+  "image": {
+    "heroId": "img-art-rapprochement-bancaire",
+    "alt": "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+    "master": "preuves/image/master.png",
+    "og": "preuves/image/og.webp",
+    "engine": "image_generate"
+  },
+  "research": {
+    "serp": {
+      "status": "PASS",
+      "evidence": "preuves/research-serp.json",
+      "checkedAt": "2026-10-12"
+    },
+    "gsc": {
+      "status": "PASS",
+      "evidence": "preuves/research-gsc.json",
+      "checkedAt": "2026-10-12"
+    }
+  },
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/glossaire#rapprochement-bancaire",
+      "/glossaire#lettrage-comptable",
+      "/methode",
+      "/automatisation/rapprochement-bancaire",
+      "/garanties"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/automatisation/rapprochement-bancaire"
+    ],
+    "decision": "Le pilier cartographie, la page service cadre une mission ; cet article donne une méthode et les cas limites rejoués."
+  },
+  "contradictions": [],
+  "kevin": {
+    "briefApproved": true,
+    "previewApproved": true,
+    "productionApproved": true,
+    "delegation": {
+      "date": "2026-09-16",
+      "basis": "Délégation explicite de Kevin : « tu gères les publications sans go », « pas besoin de relecture », « sinon go » (16/09/2026). Chaque approbation ci-dessus est portée par cette délégation, pas par une relecture unitaire."
+    }
+  },
+  "publishedAt": "2026-10-12",
+  "publicationEvidence": "preuves/publication.json"
+}

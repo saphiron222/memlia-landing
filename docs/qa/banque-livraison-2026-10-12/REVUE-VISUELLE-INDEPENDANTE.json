@@ -1,0 +1,255 @@
+{
+  "reviewer": "hermes-sous-agent-revue-visuelle-independante",
+  "date": "2026-10-12T16:47:18.909794+02:00",
+  "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "generationId": "exec-33d99a39-d32b-4617-9253-060758da07f0",
+  "scope": "Nouvelle couverture uniquement ; conservation documentaire du fond, sans nouvel avis métier ou réglementaire, sans publication.",
+  "verdict": "PASS",
+  "blockingDefects": [],
+  "criteria": {
+    "brief-six-components": {
+      "result": "PASS",
+      "observations": [
+        "Les six composantes sujet, composition, style, palette, interdits et alt sont explicites. Deux longs plateaux parallèles vert/graphite de cartes crème, trois attaches vertes, petite carte isolée et dossier arrière réellement visibles dans master, hero et OG.",
+        "Diorama géométrique isométrique mat ; lumière douce, ombres vers le bas/droite et fond crème aéré. Le dossier arrière est vert, détail non bloquant."
+      ]
+    },
+    "generation-constraints": {
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, chiffre, logo, personnage, main, donnée client, interface, rouge, sceau de validation ni symbole d’envoi visible dans les trois images inspectées.",
+        "Identifiant exec-33d99a39-d32b-4617-9253-060758da07f0 et fournisseur OpenAI consignés ; empreintes source et master concordent avec generation.json. Modèle exact et coût inconnus ; credits null ne signifie pas coût nul. Aucun appel de génération pendant cette revue. Le mot ceramic appartient au prompt exact fourni : aucune réécriture de conformité."
+      ]
+    },
+    "fictive-provenance": {
+      "result": "PASS",
+      "observations": [
+        "Cartes entièrement vierges et géométriques, sans montant, identité ou compte réel : métaphore fictive, pas capture bancaire ni preuve de produit livré.",
+        "image-source.png identique octet pour octet à la pièce jointe désignée ; prompt identique entre recette et image-source.json. Provenance locale cohérente, sans vérification indépendante de l’appel fournisseur originel."
+      ]
+    },
+    "recognizable-subject": {
+      "result": "PASS",
+      "observations": [
+        "Trois ponts verts relient des paires entre deux ensembles ; une carte séparée en plateau graphite rend visible le reste à examiner. Ces objets restent lisibles au format hero 768 et en OG.",
+        "Le rapprochement et ses exceptions sont reconnaissables avec le titre bancaire. Sans titre, aucune banque littérale n’est identifiable : limite sémantique non bloquante du brief abstrait, sans garantie de solde ou choix automatique."
+      ]
+    },
+    "technical-derivatives": {
+      "result": "PASS",
+      "observations": [
+        "Mesures sips : master 1920×1080 PNG ; hero 768×432 WebP/AVIF ; OG preuve et public 1200×630 WebP ; variantes publiques 1200×675 et 1600×900 WebP/AVIF. Tailles et SHA-256 détaillés ci-dessous.",
+        "Hero et OG effectivement regardés : aucun objet important coupé, séparation de la carte isolée préservée. OG public aussi regardé car son encodage diffère : même composition et recadrage, sans défaut visuel bloquant. Ne pas prétendre à une identité binaire OG public/preuve."
+      ]
+    },
+    "alt-information": {
+      "result": "PASS",
+      "observations": [
+        "Alt mesuré à 96 caractères, sous 125, identique entre recette.image.alt et brief.alt : Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+        "Décrit les deux plateaux, les attaches et la carte isolée sans certifier de validation. Le dossier arrière n’est pas décrit, omission secondaire acceptable. Les alternatives des figures sont inchangées dans inlineProofs."
+      ]
+    }
+  },
+  "figures": {
+    "banque-cle": {
+      "result": "PASS",
+      "questionsRecette": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "observations": [
+        "Fiche plausible d'outil, compte A/EUR, références concrètes sans marque ; les sources crédit/débit et la décision En attente se lisent seules. Le texte fournit le solde d'ouverture non répété dans la figure.",
+        "Fenêtre et quadrillage conformes à la référence relance-checklist regardée ; ni schéma d'étapes, slogan ou avertissement. La clé affiche 12500 centimes et un candidat de chaque côté, sans certifier le dossier."
+      ]
+    },
+    "banque-rejeu": {
+      "result": "PASS",
+      "questionsRecette": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "observations": [
+        "Registre plausible avec quatre lignes fictives, résultats distincts et suites lisibles ; RB-01 attend une validation et RB-03 ne choisit aucune paire. L'article explique les cas sans dépendre de l'image.",
+        "Même fenêtre canonique, données sans marque et titre court ; aucun slogan ni schéma commenté. Ouverture du relevé absente pourrait être précisé en solde d'ouverture pour lever une petite ambiguïté autonome."
+      ]
+    }
+  },
+  "figuresStatus": "Avis historiques conservés, non réattribués au nouveau reviewer ; fichiers contrôlés contre le manifeste figé.",
+  "preservation": {
+    "date": "2026-10-12T16:47:18.909794+02:00",
+    "recipeChangedPaths": [
+      "/image/alt",
+      "/image/brief/alt",
+      "/image/brief/composition",
+      "/image/brief/interdits",
+      "/image/brief/palette",
+      "/image/brief/prompt",
+      "/image/brief/reviewCriteria",
+      "/image/brief/style",
+      "/image/brief/sujet",
+      "/image/source/generationId"
+    ],
+    "historicalBodyMatches": true,
+    "originalSubjectMatches": true,
+    "historicalReviewMatches": true,
+    "preservedReviewSections": {
+      "editorial": true,
+      "business": true,
+      "sources": true,
+      "qualite": true
+    },
+    "figuresHistoricalReviewMatches": true,
+    "alt": "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+    "altLength": 96,
+    "briefKeys": [
+      "sujet",
+      "composition",
+      "style",
+      "palette",
+      "interdits",
+      "alt",
+      "reviewCriteria",
+      "prompt"
+    ],
+    "promptExactMatch": true,
+    "promptSha256": "4015527af599f1200420042a8b5b5f8c0b5531f742d0c6a3fa0803114a621440",
+    "sourceAttachmentMatches": true,
+    "generationSourceShaMatches": true,
+    "generationOutputShaMatches": true,
+    "files": [
+      {
+        "path": "editorial/articles/rapprochement-bancaire-automatise-les-ecarts-a-remonter/preuves/image/master.png",
+        "bytes": 2914196,
+        "sha256": "9c1c102b62279e01010ae4f272e395227e8a6b3aa9eafa7a3b4601341fdde260",
+        "pixelWidth": 1920,
+        "pixelHeight": 1080
+      },
+      {
+        "path": "editorial/articles/rapprochement-bancaire-automatise-les-ecarts-a-remonter/preuves/image/hero-768.webp",
+        "bytes": 15340,
+        "sha256": "9427428118609da795264e57c909e14c23a8b77cfe52c5842c9ed87127943bb6",
+        "pixelWidth": 768,
+        "pixelHeight": 432
+      },
+      {
+        "path": "editorial/articles/rapprochement-bancaire-automatise-les-ecarts-a-remonter/preuves/image/hero-768.avif",
+        "bytes": 9536,
+        "sha256": "96d70b8c6dc0a1a0c6b32fa64bc3b2e237cc244d7a932310073b60017a399aea",
+        "pixelWidth": 768,
+        "pixelHeight": 432
+      },
+      {
+        "path": "editorial/articles/rapprochement-bancaire-automatise-les-ecarts-a-remonter/preuves/image/og.webp",
+        "bytes": 42414,
+        "sha256": "c4fbd8485aae32082d120fdb54e12fe15743dd51c45b2772cbea316c182c6b6a",
+        "pixelWidth": 1200,
+        "pixelHeight": 630
+      },
+      {
+        "path": "editorial/recettes/rapprochement-bancaire-automatise-les-ecarts-a-remonter/image-source.png",
+        "bytes": 1927030,
+        "sha256": "9d08ff4acd4485fc7203de0f396dc6aa1ee631c929db007dbc0bf93bf0add1f9",
+        "pixelWidth": 1672,
+        "pixelHeight": 941
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-og.webp",
+        "bytes": 26090,
+        "sha256": "2d49ad75b131f34ee593fabf8941a82907a59995a07ddadad9a0cd29600b6076",
+        "pixelWidth": 1200,
+        "pixelHeight": 630
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-1200.avif",
+        "bytes": 15821,
+        "sha256": "e2921f1392f6e6a2ded37cb1b80270aa731e55947270c407a92402431b0f2885",
+        "pixelWidth": 1200,
+        "pixelHeight": 675
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-1200.webp",
+        "bytes": 27160,
+        "sha256": "0ae3803ad629facd75592a6673525819c5ec2c6dd3c5822e141ccbf4189d06ca",
+        "pixelWidth": 1200,
+        "pixelHeight": 675
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-1600.avif",
+        "bytes": 23117,
+        "sha256": "ed378defd438516237bc23404dcd73e06eb1ffb177c4d9274ccb1a315ed32bdd",
+        "pixelWidth": 1600,
+        "pixelHeight": 900
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-1600.webp",
+        "bytes": 40592,
+        "sha256": "c248758e9f4e852f1f7adf2e6f4aea9a32b1b6783096a670e571ef764fc66e35",
+        "pixelWidth": 1600,
+        "pixelHeight": 900
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-768.avif",
+        "bytes": 9536,
+        "sha256": "96d70b8c6dc0a1a0c6b32fa64bc3b2e237cc244d7a932310073b60017a399aea",
+        "pixelWidth": 768,
+        "pixelHeight": 432
+      },
+      {
+        "path": "public/images/img-art-rapprochement-bancaire-768.webp",
+        "bytes": 15340,
+        "sha256": "9427428118609da795264e57c909e14c23a8b77cfe52c5842c9ed87127943bb6",
+        "pixelWidth": 768,
+        "pixelHeight": 432
+      },
+      {
+        "path": "public/proofs/blog/banque-cle.webp",
+        "bytes": 27722,
+        "sha256": "88cafccfc38df0e014bb7e7e810159e70444ca9161d70bb809374bc652775cdc",
+        "pixelWidth": 1600,
+        "pixelHeight": 900
+      },
+      {
+        "path": "public/proofs/blog/banque-rejeu.webp",
+        "bytes": 28752,
+        "sha256": "78b056ec5a0a24fcd7ddbc0c73cbf679d75d256dde25d02444d6d7af7203ba94",
+        "pixelWidth": 1600,
+        "pixelHeight": 900
+      }
+    ],
+    "bodyRawSha256": "073a76b3985a2ea2112c948cbb23b0077bc73611d3452a986ab7a827a68d7e97",
+    "bodySha256": "35bafc1b60252726d1025326a392c3ac14d8220b435148cc142793b2bf9a7bba",
+    "bodyHashMethod": "SHA-256 UTF-8 après trim(), méthode chargerRecette scripts/blog-forge.mjs:133 ; empreinte brute distincte conservée.",
+    "figuresManifestHashesMatch": true
+  },
+  "originalSubject": {
+    "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+    "bodySha256": "35bafc1b60252726d1025326a392c3ac14d8220b435148cc142793b2bf9a7bba",
+    "recipeSha256": "a9d20320ea81ae8cf54495b795634ea276c49fac7fe688bda989ab4150e1547c",
+    "recipeSubstanceSha256": "292dda9d453f9311f07cba9f9c7c401688cff6b250571e6b249bf249cb572b91",
+    "renderedSha256": "f73970a5f4f0918737348aa6e89ce507a27da08ec6b2335b4448b61df6ff6254"
+  },
+  "provenance": {
+    "provider": "OpenAI",
+    "model": null,
+    "cost": null,
+    "credits": null,
+    "generatedAt": "2026-10-12",
+    "promptSha256": "4015527af599f1200420042a8b5b5f8c0b5531f742d0c6a3fa0803114a621440",
+    "promptPreserved": true
+  },
+  "scoring": "directionArt et semanticRelevance omis : aucun barème vérifiable appliqué pour cette nouvelle revue ; ne pas recycler 18/24 de l’ancienne couverture.",
+  "palette": {
+    "status": "OBSERVATION",
+    "note": "Couleurs crème, verts et graphite constatées visuellement. Parts numériques existantes non remesurées dans cette revue ; aucun seuil automatique ni défaut bloquant de palette."
+  },
+  "limits": [
+    "Pas de vérification de publication, CI ou service réseau ; revue locale bornée.",
+    "image.json et revues.json restent en attente : aucun fichier editorial modifié, JSON réutilisable fourni séparément."
+  ]
+}

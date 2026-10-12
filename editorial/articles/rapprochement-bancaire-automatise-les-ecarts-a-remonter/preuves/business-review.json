@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "kind": "business-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+  "manifestSha256": "94c170aa7486ae7ec7f605c77275816ead5a0a4eb4e88b62eec9dd0336d7cd0f",
+  "observations": [
+    "Contrôle business-review relu sur le candidat exact rapprochement-bancaire-automatise-les-ecarts-a-remonter."
+  ],
+  "reviewerId": "relecteur-metier-ia-memlia",
+  "role": "collaborateurs-comptables",
+  "claimReviews": [
+    {
+      "id": "review-claim-unit-66ee55875b6f-1-anc-plan",
+      "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+      "claimId": "claim-unit-66ee55875b6f-1",
+      "claimSha256": "5e8b5dd55aa95bacbbf50b63d5c75e8787a6bfde0153fa8f5fbfcb2dcfe40a51",
+      "sourceId": "anc-plan",
+      "sourceContentSha256": "ed8da9de8f33ec41356b71bb055c54a1ce7c8923acf1c6fd343315dd14c0d3b1",
+      "citationSha256": "5e8b5dd55aa95bacbbf50b63d5c75e8787a6bfde0153fa8f5fbfcb2dcfe40a51",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Le libellé exact plan de comptes (version au 1er janvier 2026) figure dans le lien visible ANC vers Plan-de-comptes-2026.pdf. Il soutient uniquement l'existence et la version annoncées dans le corps. Le numéro 512 relève du PDF complémentaire, pas de cette citation ; aucune autorité sur la clé d'appariement n'en est déduite."
+    },
+    {
+      "id": "review-claim-unit-d356127977dc-1-cnil-definition",
+      "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+      "claimId": "claim-unit-d356127977dc-1",
+      "claimSha256": "87b2d4ad1873dafaba1831e4f6927f5b061834e5572e5daf66eaa7495d6ab35f",
+      "sourceId": "cnil-definition",
+      "sourceContentSha256": "2cc6a9628aeb1bba9248699c0a2db72d8beb844c6df603ab7f43d4128bf435da",
+      "citationSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "Le paragraphe visible CNIL commence par la définition exacte Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable. La possibilité d'informations personnelles dans les exports respecte cette portée ; elle n'assimile pas toutes les coordonnées d'entreprise à des données personnelles."
+    },
+    {
+      "id": "review-claim-unit-d356127977dc-2-cnil-principes",
+      "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+      "claimId": "claim-unit-d356127977dc-2",
+      "claimSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "sourceId": "cnil-principes",
+      "sourceContentSha256": "deffa4e0aa5259a1eaed30cd9087f716c2007138a2aeb2dae2666008d5b7817f",
+      "citationSha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "L'article 5 paragraphe 1 c publié par la CNIL porte exactement la citation de minimisation. Le corps la cite à propos des données personnelles et des finalités, sans prétendre que des essais fictifs garantissent la conformité RGPD de la prestation ou d'un dossier."
+    },
+    {
+      "id": "review-claim-unit-d356127977dc-3-cnil-principes",
+      "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+      "claimId": "claim-unit-d356127977dc-3",
+      "claimSha256": "8034283aa0df1867b076ad5a7e86de328b8a9c2a811704a49616b7def4987df3",
+      "sourceId": "cnil-principes",
+      "sourceContentSha256": "deffa4e0aa5259a1eaed30cd9087f716c2007138a2aeb2dae2666008d5b7817f",
+      "citationSha256": "8034283aa0df1867b076ad5a7e86de328b8a9c2a811704a49616b7def4987df3",
+      "reviewerId": "relecteur-metier-ia-memlia",
+      "verdict": "soutient",
+      "checkedAt": "2026-10-12",
+      "reasoning": "L'article 5 paragraphe 1 f publié par la CNIL porte exactement la sécurité appropriée, complétée par la protection contre les traitements non autorisés, pertes et dégâts et les mesures techniques ou organisationnelles. Le corps cite ce principe sans certification, sécurité absolue ni hébergement inventés."
+    }
+  ]
+}

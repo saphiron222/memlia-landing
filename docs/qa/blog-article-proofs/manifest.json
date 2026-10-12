@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/blog-article-proofs/index.html",
-      "sha256": "c44a1eadeb20acc4db36888a992246ef49ef42cbca5df2b33849879d343b38f5"
+      "sha256": "4659949805275233860cf36f0b6b752fa8fc557a3da72e325b09c4bbd2b4e490"
     },
     {
       "path": "docs/design/blog-article-proofs/styles.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "docs/design/blog-article-proofs/content-contract.json",
-      "sha256": "27e1a54664db6694417a14115b41776f7d0bb231b4949c233a8ab7ba06777096"
+      "sha256": "fcca8914c1bcbac7aa58afc71e0bbf4b8409527d850cf7e1027fba1ffd244b4e"
     },
     {
       "path": "scripts/render-blog-article-proofs.mjs",
@@ -235,6 +235,18 @@
       "target": "public/proofs/blog/cac-fec-constat.webp",
       "bytes": 17598,
       "sha256": "835dd19a0ceffdac4e4b5777c92aea00062e0811b8ab98db8cb864019f0d536d"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#banque-cle",
+      "target": "public/proofs/blog/banque-cle.webp",
+      "bytes": 27722,
+      "sha256": "88cafccfc38df0e014bb7e7e810159e70444ca9161d70bb809374bc652775cdc"
+    },
+    {
+      "source": "docs/design/blog-article-proofs/index.html#banque-rejeu",
+      "target": "public/proofs/blog/banque-rejeu.webp",
+      "bytes": 28752,
+      "sha256": "78b056ec5a0a24fcd7ddbc0c73cbf679d75d256dde25d02444d6d7af7203ba94"
     }
   ]
 }

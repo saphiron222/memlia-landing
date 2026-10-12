@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
   "revue": "metier-review-r5",
-  "reaffirmeLe": "2026-10-12T11:14:13.054Z",
+  "reaffirmeLe": "2026-10-12T14:52:31.725Z",
   "registreRef": "docs/qa/hub-ressources/metier-fix-c-register.json",
-  "registreSha256": "32cfbb211181b4daf7fda113c34d8ef08222939b9ee24a1e2126bd504ccc5bda",
+  "registreSha256": "91ab2005302c9474143190a12f4ee4861d3dc943ebfa1eff6bf3c91928c0e627",
   "declarationRef": "docs/qa/hub-ressources/metier-review-r5/reaffirmation-declaration.json",
   "declarationSha256": "b4f2208576ddb9672c312ce3601b5c59015ead6dd86cd420013be01a3937a4c5",
   "ancreRef": "docs/qa/hub-ressources/metier-review-r5/sujet-ancre.json",
@@ -13,7 +13,7 @@
     "T": {
       "action": "réaffirmée",
       "sujetAncre": "930fc89299c744fc8de09a5674f4b8e98f3624198a78da35d0240d3ad9c1bf2d",
-      "sujetReaffirme": "2f4ca05b803f9019995c3382944ecf65ca8c8021f7a309fba4efd709961eb294",
+      "sujetReaffirme": "e23ed3072817f6423ffa7e135d6d97318aec325ecdddebf396bfde1fcfe44656",
       "feuillesEcartees": 50,
       "feuillesParChamp": {
         "assetBundleDigest.assetBundleDigest": 1,
@@ -32,11 +32,11 @@
       },
       "affirmationsRenduesVerifiees": 423,
       "verdictsConserves": 262,
-      "candidateHash": "9723ff4bea2e6dd0cd5719d0f0cf19cec66a4d5c41841576dc1a9f94b9f71150",
-      "auditHash": "45a71a26644f791ced754eb2f1ca52b6327abff5ca7584758d5c393630649103",
-      "manifestSha256": "b0ba42aa48cf2aed5cb2a752fdf44dd57cd30ad388a02f8247ef4d7b33dc9e74",
+      "candidateHash": "368e808dc64f5e31a44901cfa353a4ff6037625421c438356aad48921e8a9fbf",
+      "auditHash": "b72fb501f2c1722c1289574e543955071585412de20b32e46c9a392ed0287bf5",
+      "manifestSha256": "978097223436a444d8e2595932ffb9e21aeed295ae50bb866ad7def58092036b",
       "preuveRef": "docs/strategy/site-v3/cac/glossaire/business-review-aggregate.json",
-      "preuveSha256": "bccb2a5152076d0e77a44778815ee29fbd35537263dd78172695423238aeff60"
+      "preuveSha256": "c5b615d77a41ef6781096268e3ac0145cafb7ae024b449d78cd989074228fc4d"
     }
   }
 }

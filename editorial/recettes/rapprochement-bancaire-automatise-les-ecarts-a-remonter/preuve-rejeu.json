@@ -1,0 +1,47 @@
+{
+  "jeu": "fictif",
+  "periode": [
+    "2026-08-01",
+    "2026-08-31"
+  ],
+  "resultats": [
+    {
+      "id": "RB-01",
+      "obtenu": {
+        "statut": "PROPOSITION_UNIQUE",
+        "paires": [
+          {
+            "releve": "R-01",
+            "journal": "J-01",
+            "reference": "V-041",
+            "montantCentimes": 12500
+          }
+        ]
+      }
+    },
+    {
+      "id": "RB-02",
+      "obtenu": {
+        "statut": "ECART_OUVERT",
+        "motif": "J-02 : transit possible non confirmé",
+        "paires": []
+      }
+    },
+    {
+      "id": "RB-03",
+      "obtenu": {
+        "statut": "REFUS_AMBIGUITE",
+        "motif": "2 candidats pour R-03",
+        "paires": []
+      }
+    },
+    {
+      "id": "RB-04",
+      "obtenu": {
+        "statut": "REFUS_ENTREE",
+        "motif": "solde d’ouverture du relevé manquant",
+        "paires": []
+      }
+    }
+  ]
+}
