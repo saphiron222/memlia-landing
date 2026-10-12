@@ -1,0 +1,25 @@
+{
+  "periode": ["2026-08-01", "2026-08-31"],
+  "cas": [
+    {
+      "id": "RB-01",
+      "releve": {"ouverture": 100000, "cloture": 112500, "lignes": [{"id": "R-01", "date": "2026-08-12", "sens": "credit", "montantCentimes": 12500, "reference": "V-041", "compte": "A", "devise": "EUR"}]},
+      "journal": {"ouverture": 100000, "cloture": 112500, "lignes": [{"id": "J-01", "date": "2026-08-12", "sens": "debit", "montantCentimes": 12500, "reference": "V-041", "compte": "A", "devise": "EUR"}]}
+    },
+    {
+      "id": "RB-02",
+      "releve": {"ouverture": 100000, "cloture": 100000, "lignes": []},
+      "journal": {"ouverture": 100000, "cloture": 108000, "lignes": [{"id": "J-02", "date": "2026-08-31", "sens": "debit", "montantCentimes": 8000, "reference": "V-042", "compte": "A", "devise": "EUR"}]}
+    },
+    {
+      "id": "RB-03",
+      "releve": {"ouverture": 100000, "cloture": 105000, "lignes": [{"id": "R-03", "date": "2026-08-20", "sens": "credit", "montantCentimes": 5000, "reference": "V-043", "compte": "A", "devise": "EUR"}]},
+      "journal": {"ouverture": 100000, "cloture": 110000, "lignes": [{"id": "J-03", "date": "2026-08-20", "sens": "debit", "montantCentimes": 5000, "reference": "V-043", "compte": "A", "devise": "EUR"}, {"id": "J-04", "date": "2026-08-21", "sens": "debit", "montantCentimes": 5000, "reference": "V-043", "compte": "A", "devise": "EUR"}]}
+    },
+    {
+      "id": "RB-04",
+      "releve": {"ouverture": null, "cloture": 100000, "lignes": []},
+      "journal": {"ouverture": 100000, "cloture": 100000, "lignes": []}
+    }
+  ]
+}

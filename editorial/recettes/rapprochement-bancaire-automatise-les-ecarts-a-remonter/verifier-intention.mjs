@@ -1,0 +1,11 @@
+import { auditerContratBlog } from '../../../scripts/verify-blog-contract.mjs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { resolve, dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const dir=dirname(fileURLToPath(import.meta.url));
+const slug='rapprochement-bancaire-automatise-les-ecarts-a-remonter';
+const recipe=JSON.parse(readFileSync(join(dir,'recette.json')));
+const collision=readdirSync('src/content/blog').filter(x=>x.endsWith('.md')&&x!==slug+'.md').filter(x=>readFileSync('src/content/blog/'+x,'utf8').includes('primaryQuery: "'+recipe.primaryQuery+'"'));
+const contract=auditerContratBlog({root:process.cwd(),dist:resolve('.qa/render-banque'),slugs:[slug]});
+writeFileSync(join(dir,'verification-intention.json'),JSON.stringify({slug,primaryQuery:recipe.primaryQuery,collision,contract,notice:'Contrat ciblé de preview, pas validation de publication ; rubrique éventuelle = préférence éditoriale à traiter selon constitution.'},null,2)+'\n');
+console.log(JSON.stringify({collision,contract},null,2));

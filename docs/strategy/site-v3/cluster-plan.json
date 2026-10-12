@@ -384,7 +384,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-16",
+          "date": "2026-10-19",
           "missedDate": null,
           "secondaryKeywords": [
             "clé de rapprochement bancaire définition",
@@ -935,7 +935,7 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-15",
+          "date": "2026-10-16",
           "missedDate": null,
           "secondaryKeywords": [
             "sortie d'immobilisation comptabilité cession automatique"
@@ -2473,7 +2473,7 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-15",
+          "date": "2026-10-14",
           "missedDate": null,
           "secondaryKeywords": [
             "checklist dépôt DSN mensuelle cabinet",
@@ -2531,7 +2531,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-21",
+          "date": "2026-10-20",
           "missedDate": null,
           "secondaryKeywords": [
             "crm dsn substitution net entreprise",
@@ -2619,7 +2619,7 @@
           "intent": "diagnostiquer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-19",
+          "date": "2026-10-16",
           "missedDate": null,
           "secondaryKeywords": [
             "checklist sortie salarié documents obligatoires",
@@ -3744,7 +3744,7 @@
           "intent": "reduire-risque",
           "funnel": "BOFU",
           "priority": 1,
-          "date": "2026-10-16",
+          "date": "2026-10-21",
           "missedDate": null,
           "secondaryKeywords": [
             "délai déclaration bénéficiaire effectif greffe",
@@ -4524,7 +4524,7 @@
           "intent": "executer",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-14",
+          "date": "2026-10-13",
           "missedDate": null,
           "secondaryKeywords": [
             "pièces d'entrée en relation cabinet comptable",
@@ -6433,7 +6433,7 @@
           "intent": "executer",
           "funnel": "MOFU",
           "priority": 1,
-          "date": "2026-10-13",
+          "date": "2026-10-15",
           "missedDate": null,
           "secondaryKeywords": [
             "manuel de procédure cabinet comptable",
@@ -7429,7 +7429,7 @@
             "DGFiP",
             "CNCC"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 3
         },
         {
@@ -7474,7 +7474,7 @@
           "intent": "comprendre",
           "funnel": "TOFU",
           "priority": 1,
-          "date": "2026-10-20",
+          "date": "2026-10-15",
           "missedDate": null,
           "secondaryKeywords": [],
           "proof": "Fichier fictif valide structurellement avec anomalies de fond laissées à la mission",
@@ -8059,7 +8059,7 @@
             "CNCC",
             "H2A"
           ],
-          "status": "planned",
+          "status": "published",
           "incomingLinks": 35
         },
         {
@@ -8345,6 +8345,18 @@
   ],
   "links": [
     {
+      "from": "cac-reception-fec-constat",
+      "to": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "to": "cac-reception-fec-constat",
+      "type": "pilier",
+      "anchor": "FEC contrôle : préparer le constat de réception pour la mission CAC"
+    },
+    {
       "from": "logiciel-ia-comptabilite",
       "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
       "type": "pilier",
@@ -8451,6 +8463,18 @@
       "to": "automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
       "type": "pilier",
       "anchor": "Automatiser la saisie comptable : ce qui reste à vérifier"
+    },
+    {
+      "from": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "automatiser une tâche du cabinet"
+    },
+    {
+      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "to": "automatiser-un-cabinet-cac-la-carte-des-taches",
+      "type": "pilier",
+      "anchor": "Automatisation en cabinet CAC : la carte des tâches et des décisions humaines"
     },
     {
       "from": "automatiser-avec-ia-sans-changer-logiciel",
@@ -8583,18 +8607,6 @@
       "to": "manuel-de-procedures-cabinet-expertise-comptable-ecrire-les-regles-qui-tournent",
       "type": "pilier",
       "anchor": "Manuel de procédures d'un cabinet d'expertise comptable : écrire les règles qui tournent"
-    },
-    {
-      "from": "cac-reception-fec-constat",
-      "to": "automatiser-un-cabinet-cac-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-cac-la-carte-des-taches",
-      "to": "cac-reception-fec-constat",
-      "type": "pilier",
-      "anchor": "FEC contrôle : préparer le constat de réception pour la mission CAC"
     },
     {
       "from": "cac-demandes-documents-cycles",
@@ -9783,18 +9795,6 @@
       "to": "cac-ecritures-journal-criteres",
       "type": "pilier",
       "anchor": "Test des écritures de journal en audit FEC : rejouer les critères du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-cac-la-carte-des-taches",
-      "to": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "automatiser une tâche du cabinet"
-    },
-    {
-      "from": "automatiser-un-cabinet-comptable-la-carte-des-taches",
-      "to": "automatiser-un-cabinet-cac-la-carte-des-taches",
-      "type": "pilier",
-      "anchor": "Automatisation en cabinet CAC : la carte des tâches et des décisions humaines"
     },
     {
       "from": "controler-la-completude-d-un-dossier-client",
@@ -11741,6 +11741,54 @@
       "anchor": "Pourquoi un test automatisé peut accuser le mauvais système"
     },
     {
+      "from": "cac-reception-fec-constat",
+      "to": "cac-fec-non-conforme-traitement",
+      "type": "famille",
+      "anchor": "fec non conforme"
+    },
+    {
+      "from": "cac-reception-fec-constat",
+      "to": "cac-fec-controle-structure-limites",
+      "type": "famille",
+      "anchor": "fec conforme"
+    },
+    {
+      "from": "cac-fec-non-conforme-traitement",
+      "to": "cac-fec-controle-structure-limites",
+      "type": "famille",
+      "anchor": "fec conforme"
+    },
+    {
+      "from": "cac-fec-non-conforme-traitement",
+      "to": "cac-fec-reception-versions",
+      "type": "famille",
+      "anchor": "versionner fec reçu audit"
+    },
+    {
+      "from": "cac-fec-controle-structure-limites",
+      "to": "cac-fec-reception-versions",
+      "type": "famille",
+      "anchor": "versionner fec reçu audit"
+    },
+    {
+      "from": "cac-fec-controle-structure-limites",
+      "to": "cac-reception-fec-constat",
+      "type": "famille",
+      "anchor": "fec contrôle"
+    },
+    {
+      "from": "cac-fec-reception-versions",
+      "to": "cac-reception-fec-constat",
+      "type": "famille",
+      "anchor": "fec contrôle"
+    },
+    {
+      "from": "cac-fec-reception-versions",
+      "to": "cac-fec-non-conforme-traitement",
+      "type": "famille",
+      "anchor": "fec non conforme"
+    },
+    {
       "from": "ia-cabinet-comptable",
       "to": "logiciel-ia-comptabilite",
       "type": "famille",
@@ -12185,6 +12233,78 @@
       "anchor": "checklist contrôle saisie comptable automatisée"
     },
     {
+      "from": "cac-feuille-maitresse-exemple",
+      "to": "cac-referencement-dossier",
+      "type": "famille",
+      "anchor": "référencement dossier audit"
+    },
+    {
+      "from": "cac-feuille-maitresse-exemple",
+      "to": "cac-contributions-dossier-preservation",
+      "type": "famille",
+      "anchor": "dossier cac contributions sans écraser saisies"
+    },
+    {
+      "from": "cac-referencement-dossier",
+      "to": "cac-contributions-dossier-preservation",
+      "type": "famille",
+      "anchor": "dossier cac contributions sans écraser saisies"
+    },
+    {
+      "from": "cac-referencement-dossier",
+      "to": "cac-dossier-travail-permanent",
+      "type": "famille",
+      "anchor": "dossier de travail commissaire aux comptes"
+    },
+    {
+      "from": "cac-contributions-dossier-preservation",
+      "to": "cac-dossier-travail-permanent",
+      "type": "famille",
+      "anchor": "dossier de travail commissaire aux comptes"
+    },
+    {
+      "from": "cac-contributions-dossier-preservation",
+      "to": "cac-appreciation-outil-automatise",
+      "type": "famille",
+      "anchor": "appréciation outils automatisés audit"
+    },
+    {
+      "from": "cac-dossier-travail-permanent",
+      "to": "cac-appreciation-outil-automatise",
+      "type": "famille",
+      "anchor": "appréciation outils automatisés audit"
+    },
+    {
+      "from": "cac-dossier-travail-permanent",
+      "to": "cac-dossier-constitution-soixante-jours",
+      "type": "famille",
+      "anchor": "archivage dossier audit 60 jours"
+    },
+    {
+      "from": "cac-appreciation-outil-automatise",
+      "to": "cac-dossier-constitution-soixante-jours",
+      "type": "famille",
+      "anchor": "archivage dossier audit 60 jours"
+    },
+    {
+      "from": "cac-appreciation-outil-automatise",
+      "to": "cac-feuille-maitresse-exemple",
+      "type": "famille",
+      "anchor": "feuille maîtresse audit exemple"
+    },
+    {
+      "from": "cac-dossier-constitution-soixante-jours",
+      "to": "cac-feuille-maitresse-exemple",
+      "type": "famille",
+      "anchor": "feuille maîtresse audit exemple"
+    },
+    {
+      "from": "cac-dossier-constitution-soixante-jours",
+      "to": "cac-referencement-dossier",
+      "type": "famille",
+      "anchor": "référencement dossier audit"
+    },
+    {
       "from": "automatiser-sans-exposer-le-secret-professionnel-du-cabinet",
       "to": "checklist-rgpd-avant-de-brancher-un-outil-d-ia-sur-des-donnees-clients",
       "type": "famille",
@@ -12531,54 +12651,6 @@
       "to": "automatiser-la-collecte-des-pieces-d-entree-en-relation",
       "type": "famille",
       "anchor": "pièces entrée en relation client cabinet comptable"
-    },
-    {
-      "from": "cac-reception-fec-constat",
-      "to": "cac-fec-non-conforme-traitement",
-      "type": "famille",
-      "anchor": "fec non conforme"
-    },
-    {
-      "from": "cac-reception-fec-constat",
-      "to": "cac-fec-controle-structure-limites",
-      "type": "famille",
-      "anchor": "fec conforme"
-    },
-    {
-      "from": "cac-fec-non-conforme-traitement",
-      "to": "cac-fec-controle-structure-limites",
-      "type": "famille",
-      "anchor": "fec conforme"
-    },
-    {
-      "from": "cac-fec-non-conforme-traitement",
-      "to": "cac-fec-reception-versions",
-      "type": "famille",
-      "anchor": "versionner fec reçu audit"
-    },
-    {
-      "from": "cac-fec-controle-structure-limites",
-      "to": "cac-fec-reception-versions",
-      "type": "famille",
-      "anchor": "versionner fec reçu audit"
-    },
-    {
-      "from": "cac-fec-controle-structure-limites",
-      "to": "cac-reception-fec-constat",
-      "type": "famille",
-      "anchor": "fec contrôle"
-    },
-    {
-      "from": "cac-fec-reception-versions",
-      "to": "cac-reception-fec-constat",
-      "type": "famille",
-      "anchor": "fec contrôle"
-    },
-    {
-      "from": "cac-fec-reception-versions",
-      "to": "cac-fec-non-conforme-traitement",
-      "type": "famille",
-      "anchor": "fec non conforme"
     },
     {
       "from": "cac-demandes-documents-cycles",
@@ -12963,78 +13035,6 @@
       "to": "checklist-avant-le-renouvellement-d-une-lettre-de-mission",
       "type": "famille",
       "anchor": "avenant lettre de mission cabinet comptable"
-    },
-    {
-      "from": "cac-feuille-maitresse-exemple",
-      "to": "cac-referencement-dossier",
-      "type": "famille",
-      "anchor": "référencement dossier audit"
-    },
-    {
-      "from": "cac-feuille-maitresse-exemple",
-      "to": "cac-contributions-dossier-preservation",
-      "type": "famille",
-      "anchor": "dossier cac contributions sans écraser saisies"
-    },
-    {
-      "from": "cac-referencement-dossier",
-      "to": "cac-contributions-dossier-preservation",
-      "type": "famille",
-      "anchor": "dossier cac contributions sans écraser saisies"
-    },
-    {
-      "from": "cac-referencement-dossier",
-      "to": "cac-dossier-travail-permanent",
-      "type": "famille",
-      "anchor": "dossier de travail commissaire aux comptes"
-    },
-    {
-      "from": "cac-contributions-dossier-preservation",
-      "to": "cac-dossier-travail-permanent",
-      "type": "famille",
-      "anchor": "dossier de travail commissaire aux comptes"
-    },
-    {
-      "from": "cac-contributions-dossier-preservation",
-      "to": "cac-appreciation-outil-automatise",
-      "type": "famille",
-      "anchor": "appréciation outils automatisés audit"
-    },
-    {
-      "from": "cac-dossier-travail-permanent",
-      "to": "cac-appreciation-outil-automatise",
-      "type": "famille",
-      "anchor": "appréciation outils automatisés audit"
-    },
-    {
-      "from": "cac-dossier-travail-permanent",
-      "to": "cac-dossier-constitution-soixante-jours",
-      "type": "famille",
-      "anchor": "archivage dossier audit 60 jours"
-    },
-    {
-      "from": "cac-appreciation-outil-automatise",
-      "to": "cac-dossier-constitution-soixante-jours",
-      "type": "famille",
-      "anchor": "archivage dossier audit 60 jours"
-    },
-    {
-      "from": "cac-appreciation-outil-automatise",
-      "to": "cac-feuille-maitresse-exemple",
-      "type": "famille",
-      "anchor": "feuille maîtresse audit exemple"
-    },
-    {
-      "from": "cac-dossier-constitution-soixante-jours",
-      "to": "cac-feuille-maitresse-exemple",
-      "type": "famille",
-      "anchor": "feuille maîtresse audit exemple"
-    },
-    {
-      "from": "cac-dossier-constitution-soixante-jours",
-      "to": "cac-referencement-dossier",
-      "type": "famille",
-      "anchor": "référencement dossier audit"
     },
     {
       "from": "automatiser-les-tableaux-d-amortissement-et-d-emprunt-du-dossier-permanent",
@@ -15127,8 +15127,8 @@
   ],
   "meta": {
     "totalPosts": 283,
-    "plannedPosts": 265,
-    "publishedPosts": 15,
+    "plannedPosts": 263,
+    "publishedPosts": 17,
     "totalClusters": 13,
     "totalFamilies": 67,
     "totalLinks": 1130,

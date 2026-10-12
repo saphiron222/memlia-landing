@@ -211,6 +211,13 @@ export const IMAGES = {
     alt: "Un fichier reçu, des blocs comparés par paires et un écart graphite séparé dans un plateau d’examen.",
     generee: true,
   },
+  'img-art-rapprochement-bancaire': {
+    brief: 'ART',
+    largeurs: [768, 1200, 1600],
+    ratio: [16, 9],
+    alt: "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+    generee: true,
+  },
 };
 
 /** Formats livrés, du plus léger au repli. */
@@ -220,6 +227,7 @@ export const FORMATS = ['avif', 'webp'];
 export const PUBLISHED_IMAGE_IDS = [
   'img-art-cac-fec-reception',
   'img-art-cac-carte-taches',
+  'img-art-rapprochement-bancaire',
   'img-art-ia-comptabilite-confidentialite-donnees',
   'img-art-automatiser-avec-ia-sans-changer-logiciel',
   'img-art-verifier-reponse-ia-comptabilite',

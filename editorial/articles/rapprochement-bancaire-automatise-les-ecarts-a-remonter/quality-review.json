@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "reviewedAt": "2026-10-12",
+  "reviewer": "relecteur-qualite-ia-memlia",
+  "rubric": "blog-analyze-100",
+  "status": "PASS",
+  "score": 92,
+  "p0": 0,
+  "categories": {
+    "contentQuality": {
+      "score": 28,
+      "max": 30
+    },
+    "seoOptimization": {
+      "score": 24,
+      "max": 25
+    },
+    "eeatSignals": {
+      "score": 15,
+      "max": 15
+    },
+    "technicalElements": {
+      "score": 12,
+      "max": 15
+    },
+    "aiCitationReadiness": {
+      "score": 13,
+      "max": 15
+    }
+  },
+  "evidence": [
+    "Qualité 28/30 : couverture 7, lisibilité 6, originalité 5, structure 4, blocs variés 4, clarté 2. Une phrase dense de prérequis ralentit la lecture ; certaine suggère trop de certitude avant une validation, malgré le cadrage correct voisin.",
+    "SEO 24/25 : hiérarchie 5, titre 4, cohérence sémantique 4, maillage 3, URL 3, description 3, liens officiels 2. Les liens internes contextuels sont présents ; leurs retours depuis les autres pages n'ont pas été vérifiés.",
+    "E-E-A-T 15/15 : attribution avec bio 4, fidélité sources 4, contact/à-propos et transparence visibles 4, méthode et preuves rejouées 3. L'erreur de pagination reste interne et ne falsifie pas le contenu ANC vérifié.",
+    "Technique 12/15 : socle schema 4, images/alt/chargement 3, tableaux 2, signaux de vitesse 1, signaux mobile 1, métadonnées sociales 1. Les points non attribués concernent les mesures vitesse/mobile et le service effectif de l'OG non exécutés ici.",
+    "Citation IA 13/15 : citabilité étayée 4, utilité 3, entités 3, structure extractible 3, accessibilité des crawlers cibles 0 car non vérifiée dans cette revue de preview privée.",
+    "L'oracle exécuté compare strictement les résultats attendus des quatre cas ; les soldes ont été recalculés séparément et les trois copies HTML et le PDF ont été authentifiés par SHA-256.",
+    "Les deux figures réellement regardées répondent oui aux cinq questions RECETTE.md ; leur texte garde la validation attendue, le transit ouvert et les deux refus."
+  ],
+  "reservations": [
+    "Lighthouse, Core Web Vitals, affichage mobile et accessibilité des crawlers en production non mesurés ; ce score apprécie le candidat local et ne remplace ni CI ni contrôle de publication.",
+    "Citation réelle par une IA, classement SERP et bidirectionnalité du maillage non mesurés ; aucun résultat d'acquisition n'est promis.",
+    "Qualification auteur interne : 512 Banques est à la page 10/18 du PDF, pas 9/18 ; correction documentaire non bloquante, sans changement de corps ni de portée de claim.",
+    "Certaine peut devenir candidate univoque et Ouverture du relevé absente peut devenir Solde d'ouverture absent ; polis éditoriaux non critiques, contexte et décisions en attente déjà explicites.",
+    "Les essais ne qualifient pas imports PDF/CSV, dossiers mixtes, omissions invisibles, multi-devise, commissions, paiements groupés, conservation des décisions ou reprise d'un reliquat. Ces limites sont dites dans le corps et ne constituent pas des capacités livrées."
+  ],
+  "verdict": "PASS pour cette revue unique métier, éditoriale et visuelle du candidat borné : 92/100 calculés, quatre claims soutenus et aucun défaut critique ; les réserves non bloquantes et mesures non réalisées sont explicites, sans autorisation de publication ni attestation de produit livré.",
+  "subject": {
+    "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+    "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+    "manifestSha256": "94c170aa7486ae7ec7f605c77275816ead5a0a4eb4e88b62eec9dd0336d7cd0f"
+  }
+}

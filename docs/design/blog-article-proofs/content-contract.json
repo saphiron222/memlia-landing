@@ -326,5 +326,23 @@
     "capturedAt": "2026-10-10",
     "reservation": "F4",
     "centralText": "Constat R-004 Jeu d’essai fictif · JSON fictif · D-004 · 2026 R-004 2 lignes Ligne Débit Crédit E-001 1 200,00 0,00 E-002 0,00 1 200,00 Écart 0,00 Constat R-004 CONSTAT_A_REVOIR Période 2026 Commentaire saisi À examiner"
+  },
+  {
+    "id": "banque-cle",
+    "article": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+    "alt": "Fiche fictive RB-01 : relevé R-01 et journal J-01, référence V-041, paire à valider.",
+    "source": "Jeu fictif structuré et oracle local RB-01",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-12",
+    "centralText": "Paire proposée · RB-01 Jeu d’essai fictif · compte A · août 2026 V-041 R-01 et J-01 Origine Date Sens d’origine Montant Référence Relevé R-01 12/08 Crédit 125,00 € V-041 Journal J-01 12/08 Débit 125,00 € V-041 Paire proposée À valider Solde recalculé : 1 125,00 € de chaque côté Clé de travail V-041 Compte · devise A · EUR Sens normalisé Entrée d’argent Montant 12 500 centimes Candidats 1 de chaque côté Décision En attente PROPOSITION_UNIQUE"
+  },
+  {
+    "id": "banque-rejeu",
+    "article": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+    "alt": "Registre fictif RB-01 à RB-04 : paire à valider, transit ouvert, ambiguïté et entrée refusées.",
+    "source": "Quatre cas indépendants du jeu fictif et preuve-rejeu.json",
+    "sourceUrl": null,
+    "capturedAt": "2026-10-12",
+    "centralText": "Registre des essais bancaires Jeu d’essai fictif · quatre cas indépendants · août 2026 Compte A · EUR RB-01 à RB-04 Cas Lignes fictives Sortie obtenue Suite RB-01 R-01 ↔ J-01 · 125,00 € PROPOSITION_UNIQUE Validation attendue RB-02 J-02 · 80,00 € ECART_OUVERT Relevé suivant à examiner RB-03 R-03 · J-03 et J-04 REFUS_AMBIGUITE 2 candidats · aucune paire RB-04 Ouverture du relevé absente REFUS_ENTREE Relevé complet attendu"
   }
 ]

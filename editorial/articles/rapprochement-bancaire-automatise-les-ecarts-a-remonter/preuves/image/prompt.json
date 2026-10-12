@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "kind": "image-prompt",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+  "manifestSha256": "94c170aa7486ae7ec7f605c77275816ead5a0a4eb4e88b62eec9dd0336d7cd0f",
+  "observations": [
+    "Contrôle image-prompt relu sur le candidat exact rapprochement-bancaire-automatise-les-ecarts-a-remonter."
+  ],
+  "engine": "image_generate",
+  "prompt": "Use case: stylized-concept. Asset type: original Memlia accounting blog cover, horizontal 16:9, safe for a centered 1200x630 crop. Premium isometric 3D editorial diorama with simplified geometric objects, matte ceramic and thick blank paper, soft studio light from upper left, short shadows, warm cream paper background #fcfbf7, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. Substantial clear objects readable at thumbnail size, airy coherent composition, consistent with the existing Memlia matte 3D blog covers. No photographic desk scene, no people, no hands, no faces, no human figure, no pawn, no vegetation or scenery, no letters, no readable text, no numbers, no amount, no percentage, no logo, no watermark, no screen, no dashboard, no software interface, no red alert, no automatic sending symbol, no approval seal, no legal or financial certification. No other saturated color. One original wide illustration, no caption. Subject: Bank reconciliation discrepancies awaiting examination. Two low parallel green and graphite trays contain rows of blank cream paper cards. Small matte green clips visually match some pairs across the two trays. One cream card is deliberately placed apart on a small graphite exception tray, without stamp or checkmark. A blank file behind that tray holds prepared findings. Treat this as a geometric tactile miniature, not actual bank documents. Pending exception stays separate from matching pairs.",
+  "brief": {
+    "sujet": "Bank reconciliation discrepancies awaiting examination. Two low parallel green and graphite trays contain rows of blank cream paper cards. Small matte green clips visually match some pairs across the two trays. One cream card is deliberately placed apart on a small graphite exception tray, without stamp or checkmark. A blank file behind that tray holds prepared findings. Treat this as a geometric tactile miniature, not actual bank documents. Pending exception stays separate from matching pairs.",
+    "composition": "Deux plateaux parallèles verts et graphite de cartes crème, attaches vertes sur les paires, carte isolée dans un plateau graphite et dossier vierge derrière.",
+    "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce du haut gauche, ombres courtes, composition aérée.",
+    "palette": "Fond crème #fcfbf7 ; vert Memlia #27b657 ; vert profond #1c8a41 ; graphite #231f20. Parts mesurées comme observation cosmétique uniquement.",
+    "interdits": "Aucun texte, lettre, chiffre, logo, personnage, main, donnée client, interface, alerte rouge, sceau ou symbole d’envoi automatique.",
+    "alt": "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen."
+  },
+  "reviewCriteria": [
+    "brief-six-components",
+    "generation-constraints",
+    "fictive-provenance",
+    "recognizable-subject",
+    "technical-derivatives",
+    "alt-information"
+  ]
+}

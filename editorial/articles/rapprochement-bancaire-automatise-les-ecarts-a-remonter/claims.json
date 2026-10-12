@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+  "contentUnits": [
+    {
+      "id": "unit-29f91aec1e24",
+      "text": "Réponse directe",
+      "claimIds": []
+    },
+    {
+      "id": "unit-bc499c874a6c",
+      "text": "Un rapprochement bancaire automatique utile au cabinet ne force pas les lignes à coïncider. Il compare le relevé et le compte bancaire en comptabilité, propose les correspondances univoques et laisse les écarts ouverts. Nous éprouvons ici quatre situations fictives : une paire unique, une écriture absente du relevé, plusieurs candidats et un solde d'ouverture manquant. Le collaborateur retrouve les lignes d'origine et décide ; aucun de ces résultats ne valide le rapprochement à sa place.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-12610e9ab060",
+      "text": "De quoi parle-t-on ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-66ee55875b6f",
+      "text": "Le rapprochement bancaire compare les mouvements et les soldes d'un compte bancaire dans la comptabilité avec ceux du relevé. L'ANC publie le plan de comptes (version au 1er janvier 2026). Une différence n'est pas en soi une erreur : une opération comptabilisée en fin de mois peut figurer sur le relevé suivant. Elle doit néanmoins pouvoir s'expliquer.",
+      "claimIds": [
+        "claim-unit-66ee55875b6f-1"
+      ]
+    },
+    {
+      "id": "unit-825bc1c65a2f",
+      "text": "La clé d'appariement réunit les indices utilisés pour proposer qu'une ligne du relevé correspond à une écriture : montant, sens économique normalisé, référence, compte et devise. Un crédit du relevé (entrée d'argent) correspond ainsi à un débit du compte 512, pas à un crédit comptable. Le montant seul ne suffit pas quand plusieurs opérations identiques existent.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-70a83734360f",
+      "text": "L'état de rapprochement conserve la période, le solde de chaque source, les lignes proposées comme correspondantes et les lignes encore ouvertes. Un total qui s'équilibre sans explication ligne par ligne ne constitue pas une validation.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-db6369e8553b",
+      "text": "Notre glossaire du rapprochement bancaire précise la frontière avec le lettrage comptable. Le lettrage rapproche des écritures entre elles ; ici, il faut aussi confronter les écritures à une source externe, le relevé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-f0ab0828a31c",
+      "text": "Pourquoi la tâche casse à la main",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7dcef7ed399e",
+      "text": "Une personne sait souvent qu'un virement annoncé le dernier jour ouvré ne sera visible sur le relevé que plus tard, ou qu'un prélèvement groupé ne correspond pas à une facture unique. Si ce savoir n'est pas écrit, une autre personne peut apparier par montant, marquer l'écart comme traité et perdre sa piste d'explication. Le problème n'est pas de cliquer moins : c'est de transmettre la clé, ses priorités et ses cas d'arrêt.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-081d7e82d26d",
+      "text": "Le relevé peut arriver en CSV, PDF ou par un export de l'outil bancaire. Le journal peut porter une date comptable distincte de la date d'opération. L'import doit préserver l'original : on ne corrige pas une ligne source pour obtenir un total attendu. Notre carte des tâches à automatiser situe ce contrôle parmi les gestes de production qui se préparent et ceux qui restent à décider.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-11a1dd1ac7fc",
+      "text": "Avant de commencer",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e10fea3789e5",
+      "text": "Réunissez deux exports du même compte et une période commune : les lignes du relevé et les écritures du compte bancaire en comptabilité. Conservez les identifiants d'origine, les dates, le sens débit ou crédit, le montant, la devise et les références telles qu'elles figurent dans chaque source. Notez les dates de début et de fin et, de chaque côté, les soldes d'ouverture et de clôture. Si l'export ne fournit pas de total ou d'indicateur d'exhaustivité, demandez le relevé complet : une ligne manquante peut passer inaperçue même lorsque les calculs internes concordent.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e34186464586",
+      "text": "Reprenez aussi les lignes ouvertes du rapprochement précédent. Une opération ancienne encore en attente ne devient pas invisible au changement de mois. Ce suivi est une consigne de travail pour le cabinet ; les quatre essais présentés plus bas partent chacun d'un solde d'ouverture fictif, sans reliquat antérieur.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ae1b0f14b976",
+      "text": "Décidez avec l'équipe ce qui fait une correspondance certaine. Dans notre jeu fictif, une proposition exige le même montant, le même sens économique après conversion des signes débit/crédit propres à chaque source, une référence commune non vide et un candidat unique. Les deux dates doivent être dans la période d'essai (du 1er au 31 août 2026, bornes incluses) ; la date du relevé et la date comptable sont utilisées chacune de leur côté. Une référence vide, deux candidats possibles ou une devise différente empêchent cette proposition. Ce sont des choix de démonstration, non des tolérances à appliquer à tous les cabinets.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2ebc479fe673",
+      "text": "Comparer les lignes sans effacer l'écart",
+      "claimIds": []
+    },
+    {
+      "id": "unit-983849871940",
+      "text": "1. Vérifier les entrées. Confirmer le compte, la période, les soldes d'ouverture et de clôture et la lisibilité des deux exports ; recalculer les soldes de clôture depuis les lignes. La règle à mettre en place prévoit un refus si une entrée est incohérente ou signalée incomplète. Le rejeu ci-dessous éprouve précisément le solde d'ouverture manquant, pas tous les défauts d'import. Un export qui omet des lignes tout en gardant des soldes concordants ne peut pas être détecté par le seul contrôle arithmétique. 2. Normaliser sans transformer la preuve. Construire une copie de travail : date au même format, montant en unités entières de centimes, sens explicite. Garder la ligne brute à côté de la copie pour contrôler toute proposition. 3. Proposer uniquement les paires univoques. Convertir d'abord le sens en entrée ou sortie d'argent du point de vue du compte de l'entreprise ; conserver les signes d'origine. Trier les clés communes, compter les candidats de part et d'autre, puis proposer une paire seulement si la clé a un candidat unique dans chaque source. Un libellé proche n'est pas une référence commune. 4. Classer le reliquat. Les lignes non appariées ne disparaissent pas. Les marquer « mouvement en transit possible », « écriture absente », « mouvement bancaire sans pièce », « plusieurs candidats » ou « entrée incohérente », selon l'indice réellement observé. Le mot « possible » compte : il ne remplace pas l'enquête. 5. Réconcilier les soldes. Recalculer chaque solde à partir des lignes fournies et confronter l'écart final au reliquat, avec les sens. Un reliquat qui explique le montant sans expliquer les lignes demeure ouvert. Le collaborateur examine les pièces, valide ou délie les propositions, et décide des écritures éventuelles.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2c9a20ac6638",
+      "text": "Cette démarche sépare la préparation du rapprochement de la validation humaine. Nous n'attribuons pas une cause à un mouvement bancaire sur la seule base de son montant.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-e5f622a495a9",
+      "text": "La recherche de pièces suit une autre règle : notre méthode pour automatiser la relance des pièces clients organise les demandes sans confondre une pièce réclamée avec une opération justifiée.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ecb9e025e5f0",
+      "text": "La clé dans les mots du cabinet",
+      "claimIds": []
+    },
+    {
+      "id": "unit-00add8b8980a",
+      "text": "| Déclencheur | Condition dans le jeu fictif | Proposition | Exception visible | |---|---|---|---| | Deux lignes candidates | Même compte, sens économique normalisé, montant, devise, référence non vide et unique ; dates dans la période | Paire proposée, sources et dates conservées | Deux écritures portent la même clé : aucune paire choisie | | Écriture sans ligne bancaire à la clôture | Date comptable dans la période, référence non trouvée sur le relevé | Ligne ouverte « transit possible » | Chercher le relevé suivant avant d'expliquer la cause | | Ligne bancaire sans écriture | Aucune clé univoque dans le journal | Ligne ouverte « écriture ou pièce à rechercher » | Ne créer aucune écriture par déduction | | Import incomplet | Solde d'ouverture ou période absent | Refus de l'état complet | Redemander la source plutôt que produire un solde trompeur |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-325f5563da30",
+      "text": "Cette clé est un exemple contrôlable, pas une règle comptable universelle. Sur un paiement groupé, le cabinet peut décider de tester des combinaisons, mais une somme identique obtenue de plusieurs manières ne départage rien. Il faut alors présenter les combinaisons et attendre un choix.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-71e96cca4855",
+      "text": "La règle écrite",
+      "claimIds": []
+    },
+    {
+      "id": "unit-78cfcfcbdd2d",
+      "text": "La frontière. Pour cette tâche, les trois colonnes suivantes se lisent avant de lancer le traitement.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0cbb634fcfa8",
+      "text": "| Se prépare seul | Attend une validation | Reste humain | |---|---|---| | Import contrôlé, candidats uniques et état des écarts avec références et dates | Accepter ou délier une paire proposée, expliquer un transit documenté | Chercher une pièce, trancher entre plusieurs affectations, décider d'une écriture de régularisation |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-920a8f3382fb",
+      "text": "La proposition. Nous produisons une liste de paires candidates et de lignes ouvertes, jamais une saisie irréversible. Chaque paire porte ses deux lignes sources et la version de la clé. Les commentaires et décisions saisis par le collaborateur sont conservés à part ; un nouveau calcul ne les remplace pas.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-46c76c89e6b8",
+      "text": "L'arrêt. Si la période ou le solde d'ouverture manque, le calcul de l'état complet cesse. Si plusieurs lignes partagent la même clé, aucune paire n'est choisie. Une ligne sans pièce reste ouverte : aucun montant n'est imputé pour forcer l'équilibre.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-227d5980646f",
+      "text": "Le jeu d'essai. Nous rejouons ci-dessous quatre mini-dossiers indépendants sur la même période fictive, dont une paire unique, un transit possible, une ambiguïté et une entrée incomplète. Les entrées, les sorties et le programme local qui les compare aux résultats attendus sont conservés avec la recette ; ce n'est ni un dossier client ni une mesure de performance.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-040b0c812e9c",
+      "text": "Rejoué sur le jeu fictif",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0a319f117a5d",
+      "text": "Le compte fictif est en euros. Les montants ci-dessous sont des données de test, pas des montants observés dans un cabinet. Chaque décision reste à confirmer sur les justificatifs.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-aa78c8ee157e",
+      "text": "Chaque essai couvre août 2026 et utilise le compte fictif A. Les soldes d'ouverture sont de 1 000,00 € dans les deux sources, sauf le relevé de RB-04 où ce champ manque. Nous calculons en centimes et convertissons les signes : un crédit du relevé et un débit comptable valent tous deux une entrée d'argent. Les quatre essais ne s'additionnent pas en un rapprochement mensuel unique.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-c7426ea6af33",
+      "text": "| Cas joué | Sortie obtenue | Décision | |---|---|---| | RB-01 : relevé R-01 crédité et compte 512 J-01 débité de 125,00 €, référence V-041 | PROPOSITIONUNIQUE : paire V-041, 125,00 €, sources R-01 et J-01 | Attendre la validation du collaborateur | | RB-02 : écriture J-02 de 80,00 € datée en fin de période, absente du relevé | ECARTOUVERT : J-02, 80,00 €, transit possible non confirmé | Consulter le relevé suivant et garder la ligne ouverte | | RB-03 : deux écritures J-03 et J-04 de 50,00 € portent la même référence que R-03 | REFUSAMBIGUITE : deux candidats pour R-03, aucune paire écrite | Examiner les pièces et choisir ou refuser l'appariement | | RB-04 : solde d'ouverture du relevé absent | REFUSENTREE : solde d'ouverture du relevé manquant | Demander un relevé complet avant le contrôle des soldes |",
+      "claimIds": []
+    },
+    {
+      "id": "unit-32a23be33d5e",
+      "text": "Le rejeu est limité à ces conditions écrites. Il ne démontre pas le traitement de toutes les banques, des commissions, des devises multiples ni des paiements groupés. Il ne détecte pas une omission invisible dans deux exports aux soldes cohérents. Ces cas s'ajoutent à la règle seulement après une nouvelle recette sur données fictives.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-019e18115d23",
+      "text": "Dans RB-01, les deux soldes recalculés atteignent 1 125,00 €. Dans RB-02, le relevé reste à 1 000,00 € et le journal atteint 1 080,00 € : les 80,00 € de J-02 expliquent la différence numérique, pas la cause du mouvement. Dans RB-03, le relevé atteint 1 050,00 € et le journal 1 100,00 € ; deux candidats partagent la référence V-043, donc le programme refuse l'appariement du cas entier. Dans RB-04, aucun contrôle complet des soldes n'est produit.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-1f037b7dda23",
+      "text": "Le programme ne lit ni PDF ni connexion bancaire : il traite les lignes fictives déjà structurées. Ses quatre résultats éprouvent cette clé restreinte et ses refus. Un vrai dossier peut mélanger des paires et des écarts ; leur coexistence, la reprise des décisions et la conservation des lignes ouvertes nécessitent leurs propres essais avant livraison.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7f3561e21436",
+      "text": "Ce qu'il faut contrôler avant de valider",
+      "claimIds": []
+    },
+    {
+      "id": "unit-68adb01b1109",
+      "text": "Un appariement n'efface aucune ligne d'origine. Le dossier de contrôle associe la version du relevé, celle du journal, la période, les deux soldes d'ouverture, la clé appliquée et la liste des refus. Pour chaque paire, le collaborateur doit pouvoir revenir aux deux lignes source. Pour chaque ligne ouverte, il doit voir le motif, pas seulement un écart net.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-d356127977dc",
+      "text": "Les exports peuvent contenir des informations sur des personnes physiques. La CNIL définit la donnée personnelle comme « toute information se rapportant à une personne physique identifiée ou identifiable ». Le RGPD, article 5, publié par la CNIL, indique que les données personnelles sont « adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées » et « traitées de façon à garantir une sécurité appropriée des données à caractère personnel ». Dans ce guide, nous utilisons des références et des montants fictifs ; les vrais exports restent dans le circuit du cabinet, avec les accès prévus pour la mission. Une vue de pilotage porte des agrégats, jamais un classement nominatif.",
+      "claimIds": [
+        "claim-unit-d356127977dc-1",
+        "claim-unit-d356127977dc-2",
+        "claim-unit-d356127977dc-3"
+      ]
+    },
+    {
+      "id": "unit-5f23419bd669",
+      "text": "Les erreurs fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-63983e2ae0e9",
+      "text": "- Rapprocher seulement par montant. Des virements de même montant peuvent viser des dossiers différents. Il faut une clé discriminante et une règle pour les collisions. - Appeler « régularisé » un transit supposé. Le relevé suivant et la pièce éventuelle permettent d'expliquer le décalage ; avant cela, l'étiquette reste une hypothèse. - Compenser deux écarts. Deux lignes ouvertes de sens opposés peuvent donner zéro sans se justifier mutuellement. - Écraser les corrections humaines au prochain import. Les propositions sont recalculables ; les décisions de l'équipe sont historisées séparément. - Comparer deux périodes différentes. Un rapport sans compte, période et solde de départ vérifiables doit refuser sa conclusion.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-928357c59233",
+      "text": "Questions fréquentes",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ba6b1105a59c",
+      "text": "Un même montant suffit-il pour automatiser le rapprochement bancaire ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-13d371ad3144",
+      "text": "Non. Dans notre règle fictive, il faut aussi le sens économique normalisé, la devise, le compte et une référence commune non vide. Deux candidats avec la même clé restent ouverts.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-39c488ecd5df",
+      "text": "Pourquoi les soldes peuvent-ils diverger sans erreur de saisie ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-31621b1928b0",
+      "text": "Une ligne présente dans le journal en fin de période peut apparaître sur le relevé suivant. Cette possibilité se vérifie sur les sources : l'étiquette « transit possible » ne vaut pas justification.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-2007119c4849",
+      "text": "Que faire d'un prélèvement bancaire sans écriture correspondante ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4209b7e16a12",
+      "text": "Le placer dans les lignes ouvertes avec son identifiant, sa date et son montant, puis rechercher la pièce et l'écriture. Nous ne créons pas une écriture sur la seule base d'un libellé.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-a2a3dbbf01f6",
+      "text": "Comment traiter un paiement groupé ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-5e1962f6d5dd",
+      "text": "Écrire d'abord quelles combinaisons sont admissibles et quels justificatifs les relient. Si plusieurs combinaisons conviennent, présenter les candidats au collaborateur ; ne pas choisir au hasard pour faire coïncider les totaux.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0c3444a4733f",
+      "text": "La règle à retenir",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4e86300ddb76",
+      "text": "Une paire est une proposition contrôlable ; une ligne non expliquée reste une ligne ouverte. Le rapprochement vaut par la traçabilité des écarts, pas par un voyant vert.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-deef3fe991e2",
+      "text": "Pour aller plus loin",
+      "claimIds": []
+    },
+    {
+      "id": "unit-db3acebe36ec",
+      "text": "Nous partons du rapprochement que votre outil métier prépare déjà, sans refaire ce qu'il prend en charge. Nous écrivons avec votre équipe la règle des exceptions restantes, automatisons leur préparation dans vos outils, puis faisons recetter les cas qui doivent aboutir et ceux qui doivent être refusés : cette recette est le test d'acceptation par l'équipe. Nous maintenons ensuite la règle et ses essais. Votre cabinet garde la décision sur chaque appariement et toute écriture. La page de service consacrée au rapprochement bancaire précise le périmètre d'une tâche confiée, distinct de cette méthode ; nos engagements expliquent ses limites.",
+      "claimIds": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-unit-66ee55875b6f-1",
+      "unitId": "unit-66ee55875b6f",
+      "claim": "plan de comptes (version au 1er janvier 2026)",
+      "type": "information",
+      "sourceIds": [
+        "anc-plan"
+      ],
+      "sourceExcerpts": {
+        "anc-plan": "plan de comptes (version au 1er janvier 2026)"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "anc-plan",
+            "sourceUrl": "https://www.anc.gouv.fr/plan-comptable-general-0",
+            "verifiedUrl": "https://www.anc.gouv.fr/plan-comptable-general-0",
+            "excerpt": "plan de comptes (version au 1er janvier 2026)",
+            "context": "plan de comptes (version au 1er janvier 2026)",
+            "contextSha256": "5e8b5dd55aa95bacbbf50b63d5c75e8787a6bfde0153fa8f5fbfcb2dcfe40a51",
+            "citation": {
+              "text": "plan de comptes (version au 1er janvier 2026)",
+              "sha256": "5e8b5dd55aa95bacbbf50b63d5c75e8787a6bfde0153fa8f5fbfcb2dcfe40a51",
+              "sourceContentSha256": "ed8da9de8f33ec41356b71bb055c54a1ce7c8923acf1c6fd343315dd14c0d3b1",
+              "coordinates": {
+                "finalUrl": "https://www.anc.gouv.fr/plan-comptable-general-0",
+                "checkedAt": "2026-10-12",
+                "title": "Plan comptable général",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 491,
+                  "endLine": 491
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "plan",
+                "comptes",
+                "version",
+                "janvier",
+                "2026"
+              ],
+              "reasoning": "La citation, relevée à la ligne 491 de la copie locale de ANC, porte les mêmes entités que le claim (plan, comptes, version, janvier, 2026) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La page ANC donne accès au plan de comptes 2026 ; le compte 512 doit être vérifié dans le PDF lié séparément.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d356127977dc-1",
+      "unitId": "unit-d356127977dc",
+      "claim": "toute information se rapportant à une personne physique identifiée ou identifiable",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-definition"
+      ],
+      "sourceExcerpts": {
+        "cnil-definition": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-definition",
+            "sourceUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+            "verifiedUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+            "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+            "context": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+            "contextSha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+            "citation": {
+              "text": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+              "sha256": "91d7e16c54066783e4009ebcfce65def017c95f9137cc81ae4ad6782ab803294",
+              "sourceContentSha256": "2cc6a9628aeb1bba9248699c0a2db72d8beb844c6df603ab7f43d4128bf435da",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+                "checkedAt": "2026-10-12",
+                "title": "Donnée personnelle",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 7,
+                  "endLine": 7
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "information",
+                "rapportant",
+                "personne",
+                "physique",
+                "identifiee",
+                "identifiable"
+              ],
+              "reasoning": "La citation, relevée à la ligne 7 de la copie locale de CNIL, porte les mêmes entités que le claim (information, rapportant, personne, physique, identifiee, identifiable) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition exacte du glossaire CNIL.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d356127977dc-2",
+      "unitId": "unit-d356127977dc",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-principes"
+      ],
+      "sourceExcerpts": {
+        "cnil-principes": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-principes",
+            "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+            "context": "a) traitées de manière licite, loyale et transparente au regard de la personne concernée (licéité, loyauté, transparence); b) collectées pour des finalités déterminées, explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités; le traitement ultérieur à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques n'est pas considéré, conformément à l'article 89, paragraphe 1, comme incompatible avec les finalités initiales (limitation des finalités); c) adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ( minimisation des données); d) exactes et, si nécessaire, tenues à jour; toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder (exactitude); e) conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées; les données à caractère personnel peuvent être conservées pour des durées plus longues dans la mesure où elles seront traitées exclusivement à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques conformément à l'article 89, paragraphe 1, pour autant que soient mises en œuvre les mesures techniques et organisationnelles appropriées requises par le présent règlement afin de garantir les droits et libertés de la personne concernée (limitation de la conservation); f) traitées de façon à garantir une sécurité appropriée des données à caractère personnel, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées (intégrité et confidentialité);",
+            "contextSha256": "c225de36bf199a45fea454329c7f85442fab95ca16e5c28784c24e1ce65a0ebd",
+            "citation": {
+              "text": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+              "sha256": "c5c7d56e0d246ed1075e1c0b70bb17a197210eb22784a13aeabd40777083dd92",
+              "sourceContentSha256": "deffa4e0aa5259a1eaed30cd9087f716c2007138a2aeb2dae2666008d5b7817f",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+                "checkedAt": "2026-10-12",
+                "title": "RGPD chapitre II — Principes",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 531,
+                  "endLine": 531
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "adequates",
+                "pertinentes",
+                "limitees",
+                "necessaire",
+                "regard",
+                "finalites",
+                "lesquelles",
+                "traitees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 531 de la copie locale de CNIL, porte les mêmes entités que le claim (adequates, pertinentes, limitees, necessaire, regard, finalites, lesquelles, traitees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation du point c de l'article 5.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d356127977dc-3",
+      "unitId": "unit-d356127977dc",
+      "claim": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel",
+      "type": "legal-reglementaire",
+      "sourceIds": [
+        "cnil-principes"
+      ],
+      "sourceExcerpts": {
+        "cnil-principes": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel"
+      },
+      "checkedAt": "2026-10-12",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-10-12",
+        "sourceResults": [
+          {
+            "sourceId": "cnil-principes",
+            "sourceUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "verifiedUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+            "excerpt": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel",
+            "context": "a) traitées de manière licite, loyale et transparente au regard de la personne concernée (licéité, loyauté, transparence); b) collectées pour des finalités déterminées, explicites et légitimes, et ne pas être traitées ultérieurement d'une manière incompatible avec ces finalités; le traitement ultérieur à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques n'est pas considéré, conformément à l'article 89, paragraphe 1, comme incompatible avec les finalités initiales (limitation des finalités); c) adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées ( minimisation des données); d) exactes et, si nécessaire, tenues à jour; toutes les mesures raisonnables doivent être prises pour que les données à caractère personnel qui sont inexactes, eu égard aux finalités pour lesquelles elles sont traitées, soient effacées ou rectifiées sans tarder (exactitude); e) conservées sous une forme permettant l'identification des personnes concernées pendant une durée n'excédant pas celle nécessaire au regard des finalités pour lesquelles elles sont traitées; les données à caractère personnel peuvent être conservées pour des durées plus longues dans la mesure où elles seront traitées exclusivement à des fins archivistiques dans l'intérêt public, à des fins de recherche scientifique ou historique ou à des fins statistiques conformément à l'article 89, paragraphe 1, pour autant que soient mises en œuvre les mesures techniques et organisationnelles appropriées requises par le présent règlement afin de garantir les droits et libertés de la personne concernée (limitation de la conservation); f) traitées de façon à garantir une sécurité appropriée des données à caractère personnel, y compris la protection contre le traitement non autorisé ou illicite et contre la perte, la destruction ou les dégâts d'origine accidentelle, à l'aide de mesures techniques ou organisationnelles appropriées (intégrité et confidentialité);",
+            "contextSha256": "c225de36bf199a45fea454329c7f85442fab95ca16e5c28784c24e1ce65a0ebd",
+            "citation": {
+              "text": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel",
+              "sha256": "8034283aa0df1867b076ad5a7e86de328b8a9c2a811704a49616b7def4987df3",
+              "sourceContentSha256": "deffa4e0aa5259a1eaed30cd9087f716c2007138a2aeb2dae2666008d5b7817f",
+              "coordinates": {
+                "finalUrl": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+                "checkedAt": "2026-10-12",
+                "title": "RGPD chapitre II — Principes",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 537,
+                  "endLine": 537
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "traitees",
+                "facon",
+                "garantir",
+                "securite",
+                "appropriee",
+                "donnees",
+                "caractere",
+                "personnel"
+              ],
+              "reasoning": "La citation, relevée à la ligne 537 de la copie locale de CNIL, porte les mêmes entités que le claim (traitees, facon, garantir, securite, appropriee, donnees, caractere, personnel) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Citation du point f de l'article 5.",
+            "checkedAt": "2026-10-12"
+          }
+        ]
+      }
+    }
+  ]
+}

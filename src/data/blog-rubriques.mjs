@@ -87,6 +87,10 @@ export const BLOG_RUBRIQUES = Object.freeze([
  * datée et motivée : le garde du contrat blog peut ainsi la rendre visible sans liste parallèle.
  */
 export const ARTICLES_HORS_RUBRIQUE = Object.freeze({
+  'rapprochement-bancaire-automatise-les-ecarts-a-remonter': Object.freeze({
+    date: '2026-10-12',
+    raison: 'Premier guide de la famille banque-rapprochement : sa méthode de comparaison relevé/journal ne relève ni de la paie, ni de la collecte et saisie des pièces, ni du choix d’un usage IA. Il reste relié au pilier général et au service bancaire ; ouvrir une rubrique bancaire avec ce seul article produirait un parcours maigre.',
+  }),
   'automatiser-un-cabinet-comptable-la-carte-des-taches': Object.freeze({
     date: '2026-09-20',
     raison: 'Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA.',

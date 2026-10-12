@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "kind": "image-visual-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+  "manifestSha256": "94c170aa7486ae7ec7f605c77275816ead5a0a4eb4e88b62eec9dd0336d7cd0f",
+  "observations": [
+    "Contrôle image-visual-review relu sur le candidat exact rapprochement-bancaire-automatise-les-ecarts-a-remonter."
+  ],
+  "palette": {
+    "epinglee": [
+      {
+        "hex": "#fcfbf7",
+        "role": "presente"
+      },
+      {
+        "hex": "#27b657",
+        "role": "presente"
+      },
+      {
+        "hex": "#1c8a41",
+        "role": "presente"
+      },
+      {
+        "hex": "#231f20",
+        "role": "presente"
+      }
+    ],
+    "tolerance": 45,
+    "pixelsMesures": 57600,
+    "resolution": "largeur-320",
+    "parts": {
+      "#fcfbf7": 0.5822916666666667,
+      "#27b657": 0.0036805555555555554,
+      "#1c8a41": 0.06604166666666667,
+      "#231f20": 0.08192708333333333
+    },
+    "seuils": {
+      "dominante": 0.1,
+      "touche": 0.005,
+      "presente": 0.005
+    },
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
+    "ecarts": [
+      "Palette : #27b657 (presente) mesurée à 0,368 % sur l'image, sous l'objectif cosmétique indicatif de 0,5 % (non bloquant)."
+    ]
+  },
+  "criteria": [
+    {
+      "id": "brief-six-components",
+      "result": "PASS",
+      "observations": [
+        "Les six composantes sujet, composition, style, palette, interdits et alt sont explicites. Deux longs plateaux parallèles vert/graphite de cartes crème, trois attaches vertes, petite carte isolée et dossier arrière réellement visibles dans master, hero et OG.",
+        "Diorama géométrique isométrique mat ; lumière douce, ombres vers le bas/droite et fond crème aéré. Le dossier arrière est vert, détail non bloquant."
+      ]
+    },
+    {
+      "id": "generation-constraints",
+      "result": "PASS",
+      "observations": [
+        "Aucun texte, chiffre, logo, personnage, main, donnée client, interface, rouge, sceau de validation ni symbole d’envoi visible dans les trois images inspectées.",
+        "Identifiant exec-33d99a39-d32b-4617-9253-060758da07f0 et fournisseur OpenAI consignés ; empreintes source et master concordent avec generation.json. Modèle exact et coût inconnus ; credits null ne signifie pas coût nul. Aucun appel de génération pendant cette revue. Le mot ceramic appartient au prompt exact fourni : aucune réécriture de conformité."
+      ]
+    },
+    {
+      "id": "fictive-provenance",
+      "result": "PASS",
+      "observations": [
+        "Cartes entièrement vierges et géométriques, sans montant, identité ou compte réel : métaphore fictive, pas capture bancaire ni preuve de produit livré.",
+        "image-source.png identique octet pour octet à la pièce jointe désignée ; prompt identique entre recette et image-source.json. Provenance locale cohérente, sans vérification indépendante de l’appel fournisseur originel."
+      ]
+    },
+    {
+      "id": "recognizable-subject",
+      "result": "PASS",
+      "observations": [
+        "Trois ponts verts relient des paires entre deux ensembles ; une carte séparée en plateau graphite rend visible le reste à examiner. Ces objets restent lisibles au format hero 768 et en OG.",
+        "Le rapprochement et ses exceptions sont reconnaissables avec le titre bancaire. Sans titre, aucune banque littérale n’est identifiable : limite sémantique non bloquante du brief abstrait, sans garantie de solde ou choix automatique."
+      ]
+    },
+    {
+      "id": "technical-derivatives",
+      "result": "PASS",
+      "observations": [
+        "Mesures sips : master 1920×1080 PNG ; hero 768×432 WebP/AVIF ; OG preuve et public 1200×630 WebP ; variantes publiques 1200×675 et 1600×900 WebP/AVIF. Tailles et SHA-256 détaillés ci-dessous.",
+        "Hero et OG effectivement regardés : aucun objet important coupé, séparation de la carte isolée préservée. OG public aussi regardé car son encodage diffère : même composition et recadrage, sans défaut visuel bloquant. Ne pas prétendre à une identité binaire OG public/preuve."
+      ]
+    },
+    {
+      "id": "alt-information",
+      "result": "PASS",
+      "observations": [
+        "Alt mesuré à 96 caractères, sous 125, identique entre recette.image.alt et brief.alt : Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+        "Décrit les deux plateaux, les attaches et la carte isolée sans certifier de validation. Le dossier arrière n’est pas décrit, omission secondaire acceptable. Les alternatives des figures sont inchangées dans inlineProofs."
+      ]
+    }
+  ]
+}

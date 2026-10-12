@@ -1,0 +1,270 @@
+{
+  "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "title": "Rapprochement bancaire automatique : les écarts à remonter",
+  "tabTitle": "Rapprochement bancaire automatique : écarts | Memlia",
+  "summary": "Une clé d'appariement univoque, quatre cas fictifs rejoués et des refus explicites : le rapprochement prépare les paires sans masquer les écarts ni prendre la décision.",
+  "description": "Rapprochement bancaire automatique : comparer relevé et compte 512, proposer les paires univoques et remonter les écarts à valider.",
+  "date": "2026-10-12",
+  "topics": [
+    "lettrage",
+    "revision",
+    "automatisation"
+  ],
+  "keywords": [
+    "rapprochement bancaire automatique",
+    "écarts rapprochement bancaire",
+    "clé de rapprochement bancaire comptabilité"
+  ],
+  "primaryQuery": "rapprochement bancaire automatique",
+  "secondaryQueries": [
+    "clé de rapprochement bancaire comptabilité",
+    "logiciel rapprochement bancaire cabinet comptable"
+  ],
+  "intent": "executer",
+  "fanOut": [
+    "quelles lignes apparier",
+    "comment traiter un transit",
+    "que faire avec plusieurs candidats"
+  ],
+  "role": {
+    "primary": "collaborateurs-comptables",
+    "secondary": [
+      "chefs-mission-portefeuille"
+    ],
+    "proofLevel": "indirect",
+    "proofNote": "Le besoin vient du backlog mesuré le 19 septembre ; la règle et ses quatre cas sont fictifs, pas un résultat de production."
+  },
+  "funnel": "MOFU",
+  "cluster": "production-comptable",
+  "famille": "banque-rapprochement",
+  "contentType": "searchable",
+  "format": "how-to-guide",
+  "task": "Comparer le relevé et le compte bancaire, proposer les paires univoques et remonter les lignes ouvertes sans les solder d'office.",
+  "rankability": "plausible",
+  "businessRelevance": "directe",
+  "proofRequired": "Clé écrite et quatre cas fictifs RB-01 à RB-04, avec paire unique, transit possible, refus d'ambiguïté et entrée incomplète ; ne prouve pas l'exhaustivité des écarts.",
+  "reviewRule": "Revoir toute extension de l'oracle, du périmètre des exports ou des sources officielles avant republication.",
+  "cta": {
+    "label": "Confier cette tâche",
+    "destination": "/contact",
+    "outcome": "Nous écrivons la clé de rapprochement dans vos mots, préparons les paires et les écarts dans vos outils, puis faisons recetter les refus par vos équipes. Votre cabinet garde la décision. Rien à envoyer : décrivez la tâche."
+  },
+  "inlineProofs": [
+    {
+      "id": "banque-cle",
+      "insertBeforeHeading": "La règle écrite",
+      "alt": "Fiche fictive RB-01 : relevé R-01 et journal J-01, référence V-041, paire à valider.",
+      "source": "jeu d'essai fictif et oracle RB-01 à RB-04 décrits dans l'article",
+      "capturedAt": "2026-10-12"
+    },
+    {
+      "id": "banque-rejeu",
+      "insertBeforeHeading": "Ce qu'il faut contrôler avant de valider",
+      "alt": "Registre fictif RB-01 à RB-04 : paire à valider, transit ouvert, ambiguïté et entrée refusées.",
+      "source": "rejeu des quatre cas fictifs, preuve-rejeu.json",
+      "capturedAt": "2026-10-12"
+    }
+  ],
+  "image": {
+    "heroId": "img-art-rapprochement-bancaire",
+    "alt": "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+    "source": {
+      "path": "image-source.png",
+      "generationId": "exec-33d99a39-d32b-4617-9253-060758da07f0",
+      "model": "non communiqué par le générateur natif Codex",
+      "provider": "OpenAI",
+      "generatedAt": "2026-10-12",
+      "credits": null
+    },
+    "cadre": {
+      "titre": "Rapprochement bancaire automatique",
+      "sousTitre": "Proposer les paires, conserver les écarts",
+      "famille": "Production comptable · Rapprochement bancaire",
+      "colonnes": [
+        {
+          "titre": "Se prépare seul",
+          "items": [
+            "Clé commune",
+            "Paires uniques",
+            "Écarts visibles"
+          ]
+        },
+        {
+          "titre": "Attend une validation",
+          "items": [
+            "Paire proposée",
+            "Transit possible",
+            "Justificatif retrouvé"
+          ]
+        },
+        {
+          "titre": "Reste humain",
+          "items": [
+            "Cas ambigu",
+            "Pièce absente",
+            "Écriture éventuelle"
+          ]
+        }
+      ],
+      "pied": "memlia.fr · jeu fictif"
+    },
+    "brief": {
+      "sujet": "Bank reconciliation discrepancies awaiting examination. Two low parallel green and graphite trays contain rows of blank cream paper cards. Small matte green clips visually match some pairs across the two trays. One cream card is deliberately placed apart on a small graphite exception tray, without stamp or checkmark. A blank file behind that tray holds prepared findings. Treat this as a geometric tactile miniature, not actual bank documents. Pending exception stays separate from matching pairs.",
+      "composition": "Deux plateaux parallèles verts et graphite de cartes crème, attaches vertes sur les paires, carte isolée dans un plateau graphite et dossier vierge derrière.",
+      "style": "Diorama 3D isométrique, formes géométriques simplifiées, matières mates, lumière de studio douce du haut gauche, ombres courtes, composition aérée.",
+      "palette": "Fond crème #fcfbf7 ; vert Memlia #27b657 ; vert profond #1c8a41 ; graphite #231f20. Parts mesurées comme observation cosmétique uniquement.",
+      "interdits": "Aucun texte, lettre, chiffre, logo, personnage, main, donnée client, interface, alerte rouge, sceau ou symbole d’envoi automatique.",
+      "alt": "Deux plateaux de cartes vierges appariées par des attaches vertes, une carte isolée pour examen.",
+      "reviewCriteria": [
+        "brief-six-components",
+        "generation-constraints",
+        "fictive-provenance",
+        "recognizable-subject",
+        "technical-derivatives",
+        "alt-information"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original Memlia accounting blog cover, horizontal 16:9, safe for a centered 1200x630 crop. Premium isometric 3D editorial diorama with simplified geometric objects, matte ceramic and thick blank paper, soft studio light from upper left, short shadows, warm cream paper background #fcfbf7, Memlia green #27b657, deep green #1c8a41 and graphite #231f20. Substantial clear objects readable at thumbnail size, airy coherent composition, consistent with the existing Memlia matte 3D blog covers. No photographic desk scene, no people, no hands, no faces, no human figure, no pawn, no vegetation or scenery, no letters, no readable text, no numbers, no amount, no percentage, no logo, no watermark, no screen, no dashboard, no software interface, no red alert, no automatic sending symbol, no approval seal, no legal or financial certification. No other saturated color. One original wide illustration, no caption. Subject: Bank reconciliation discrepancies awaiting examination. Two low parallel green and graphite trays contain rows of blank cream paper cards. Small matte green clips visually match some pairs across the two trays. One cream card is deliberately placed apart on a small graphite exception tray, without stamp or checkmark. A blank file behind that tray holds prepared findings. Treat this as a geometric tactile miniature, not actual bank documents. Pending exception stays separate from matching pairs."
+    }
+  },
+  "sources": [
+    {
+      "id": "anc-plan",
+      "publisher": "ANC",
+      "title": "Plan comptable général",
+      "url": "https://www.anc.gouv.fr/plan-comptable-general-0",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page primaire de l'Autorité des normes comptables donnant accès au plan de comptes 2026 ; ne prouve pas à elle seule le numéro 512.",
+      "excerpt": "plan de comptes (version au 1er janvier 2026)"
+    },
+    {
+      "id": "cnil-definition",
+      "publisher": "CNIL",
+      "title": "Donnée personnelle",
+      "url": "https://www.cnil.fr/fr/definition/donnee-personnelle",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Définition primaire de l'autorité de protection des données.",
+      "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable."
+    },
+    {
+      "id": "cnil-principes",
+      "publisher": "CNIL",
+      "title": "RGPD chapitre II — Principes",
+      "url": "https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Texte de l'article 5 du RGPD publié par la CNIL.",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées"
+    }
+  ],
+  "links": {
+    "outgoing": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/blog/automatiser-la-relance-des-pieces-clients",
+      "/glossaire#rapprochement-bancaire",
+      "/glossaire#lettrage-comptable",
+      "/methode",
+      "/automatisation/rapprochement-bancaire",
+      "/garanties"
+    ],
+    "incoming": [
+      "/blog",
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"
+    ]
+  },
+  "cannibalization": {
+    "risk": "faible",
+    "comparedWith": [
+      "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "/automatisation/rapprochement-bancaire"
+    ],
+    "decision": "Le pilier cartographie, la page service cadre une mission ; cet article donne une méthode et les cas limites rejoués."
+  },
+  "serp": {
+    "requete": "rapprochement bancaire automatique",
+    "date": "2026-10-12",
+    "volume": "ND",
+    "acteurs": [
+      "LeanPay",
+      "Pennylane",
+      "Fimorax",
+      "Dougs"
+    ],
+    "formats": "guides pratiques et pages de logiciel",
+    "note": "Recherche Hermes du 12/10/2026 : guides généraux et automatisation déjà couverte par les outils. Pennylane ouvert. Différence : clé explicitée, quatre refus/sorties traçables. Aucun rang Google ni volume revendiqué."
+  },
+  "gsc": {
+    "requete": "rapprochement bancaire automatique",
+    "date": "2026-10-12",
+    "periode": "page candidate non publiée",
+    "note": "Aucun relevé GSC de cette nouvelle route exécuté ; aucune impression, clic ni position revendiqués. Baseline à relever après publication."
+  },
+  "claims": [
+    {
+      "unite": "L'ANC publie le",
+      "claim": "plan de comptes (version au 1er janvier 2026)",
+      "type": "information",
+      "sourceId": "anc-plan",
+      "excerpt": "plan de comptes (version au 1er janvier 2026)",
+      "explanation": "La page ANC donne accès au plan de comptes 2026 ; le compte 512 doit être vérifié dans le PDF lié séparément."
+    },
+    {
+      "unite": "La CNIL définit la donnée personnelle",
+      "claim": "toute information se rapportant à une personne physique identifiée ou identifiable",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-definition",
+      "excerpt": "Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable.",
+      "explanation": "Définition exacte du glossaire CNIL."
+    },
+    {
+      "unite": "Le RGPD, article 5",
+      "claim": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-principes",
+      "excerpt": "adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées",
+      "explanation": "Citation du point c de l'article 5."
+    },
+    {
+      "unite": "Le RGPD, article 5",
+      "claim": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel",
+      "type": "legal-reglementaire",
+      "sourceId": "cnil-principes",
+      "excerpt": "traitées de façon à garantir une sécurité appropriée des données à caractère personnel",
+      "explanation": "Citation du point f de l'article 5."
+    }
+  ],
+  "businessReview": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "collaborateurs-comptables"
+  },
+  "preuvesSkills": {
+    "blog-brief": [
+      "Rattrapage W41 : demande du backlog et recherche du 12/10, quatre cas indépendants, voir decision-editoriale.md."
+    ],
+    "blog-outline": [
+      "Gabarit how-to-guide : réponse, préparation, méthode, clé, règle écrite, quatre cas et FAQ."
+    ],
+    "blog-schema": [
+      "Contrôle du HTML candidat dans verification-locale.json ; pas de revendication de résultats enrichis."
+    ],
+    "blog-image": [
+      "Couverture OpenAI fournie et provenance réelle conservée ; aucun achat ni génération Higgsfield. Voir revue-visuelle-auteur.md."
+    ],
+    "blog-style": [
+      "Charte v5 appliquée ; analyse cognitive séparée, aucune nouvelle voix apprise."
+    ],
+    "blog-factcheck": [
+      "Citations ANC/CNIL ouvertes ; complément PDF ANC pour 512. Portée du rejeu limitée aux quatre cas. Voir qualification-claims.md."
+    ],
+    "blog-write": [
+      "corps.md corrigé : quatre essais indépendants, programme structuré sans import bancaire et sans preuve exhaustive."
+    ],
+    "blog-geo": [
+      "Réponse autonome, définitions, tableaux et quatre FAQ ; contrôles DOM/schema/crawl dans verification-locale.json, aucune citation IA observée revendiquée."
+    ],
+    "blog-seo-check": [
+      "Contrôle du titre, canonical, OG, auteur, liens, figures et date dans verification-locale.json."
+    ]
+  }
+}

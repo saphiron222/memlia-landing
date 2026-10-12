@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "candidateSlug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "kind": "editorial-review",
+  "status": "PASS",
+  "checkedAt": "2026-10-12",
+  "articleSha256": "da500606148e2a10eb3ad6e143e821b52ea3aad2f71ed74e6aa49cc8c3f08e98",
+  "manifestSha256": "94c170aa7486ae7ec7f605c77275816ead5a0a4eb4e88b62eec9dd0336d7cd0f",
+  "observations": [
+    "Contrôle editorial-review relu sur le candidat exact rapprochement-bancaire-automatise-les-ecarts-a-remonter."
+  ],
+  "reviewer": "marketing",
+  "criteria": [
+    {
+      "id": "intent-satisfaction",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "La réponse directe pose la comparaison relevé/journal, la proposition univoque et les écarts ouverts ; les prérequis et cinq étapes répondent au geste du collaborateur comptable.",
+        "La reprise du rapprochement précédent est une consigne explicite, distinguée des quatre mini-dossiers sans reliquat ; le guide ne prétend pas établir un inventaire exhaustif des écarts."
+      ]
+    },
+    {
+      "id": "serp-format-rankability",
+      "result": "PASS",
+      "earned": 15,
+      "observations": [
+        "Le titre vise le rapprochement bancaire automatique et le format how-to-guide est tenu : définitions, entrées, étapes, clé, essais, erreurs et quatre questions fréquentes.",
+        "Les trois tableaux de règle, de frontière et de résultats rendent la méthode consultable ; l'aptitude du format n'est pas une preuve de classement ni de volume de recherche."
+      ]
+    },
+    {
+      "id": "eeat-sources",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Les quatre citations ont été retrouvées dans le texte visible des copies ANC/CNIL et leurs SHA concordent ; l'ANC HTML établit le lien vers le plan 2026, pas la clé ni le compte 512.",
+        "Le PDF ANC authentifié complète effectivement le compte 512 Banques et 5121 Comptes en euros ; sa page réelle est 10/18, et non 9/18 comme indiqué dans la qualification auteur interne.",
+        "Kevin Kitanga est attribué comme fondateur avec bio, non comme expert-comptable ; les exemples restent fictifs et ne sont pas présentés comme des résultats clients."
+      ]
+    },
+    {
+      "id": "information-gain-proof",
+      "result": "PASS",
+      "earned": 20,
+      "observations": [
+        "Exécution indépendante de rejouer.mjs : PASS, quatre cas concordants par assert.deepEqual, sans réécriture des attendus ; RB-01 propose R-01/J-01 et RB-03 refuse deux candidats.",
+        "Les quatre parties de La règle écrite sont propres à la tâche bancaire ; les soldes RB-01 à RB-03 ont été recalculés indépendamment depuis les entrées, avec conversion des signes correcte.",
+        "Le corps borne expressément les preuves à des lignes JSON structurées : ni import PDF/CSV, ni dossiers mixtes, ni conservation/reprise des décisions ou reliquats ne sont démontrés."
+      ]
+    },
+    {
+      "id": "technical-onpage-seo",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Le rendu porte un H1 cohérent avec og:title et headline, une canonical du slug, la description spécifique et le socle BlogPosting, Person, Organization, BreadcrumbList.",
+        "Les deux figures déclarées sont réellement présentes avec image existante, alternative descriptive et dimensions 1600×900 ; les images de couverture et de corps référencées existent dans le rendu local.",
+        "Le noindex, follow et le bandeau de candidat sont ceux de la preview privée ; cette revue ne déclare aucune indexation ni accessibilité de production."
+      ]
+    },
+    {
+      "id": "ai-citability",
+      "result": "PASS",
+      "earned": 10,
+      "observations": [
+        "Les définitions du rapprochement, de la clé et de l'état sont autonomes ; la table RB-01 à RB-04 expose statut, sortie et suite sans substituer l'image au texte.",
+        "Le paragraphe de portée exclut les commissions, paiements groupés et omissions invisibles ; une citation des résultats doit conserver le qualificatif fictif et leur caractère indépendant."
+      ]
+    },
+    {
+      "id": "contextual-conversion",
+      "result": "PASS",
+      "earned": 5,
+      "observations": [
+        "La clôture prend les exceptions que l'outil métier laisse, dans les outils existants, avec recette et maintenance ; elle n'affirme pas une automatisation bancaire déjà livrée.",
+        "Le bloc rendu Confier cette tâche pointe vers /contact, dit ce que nous préparons, la décision gardée et Rien à envoyer ; pilier, article frère, méthode, garanties et glossaire sont reliés dans le corps.",
+        "Aucun gain, donnée client, tiret cadratin ni vocabulaire de catalogue interdit dans le corps ; les réserves sur les essais décrivent leurs limites techniques, pas un avertissement commercial répété."
+      ]
+    }
+  ]
+}

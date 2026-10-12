@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-12T14:53:09.112Z",
+  "reports": [
+    {
+      "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "gate": {
+        "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+        "pass": true,
+        "errors": []
+      },
+      "renderedBodySha256": "f73970a5f4f0918737348aa6e89ce507a27da08ec6b2335b4448b61df6ff6254"
+    },
+    {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "gate": {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "pass": false,
+        "errors": [
+          "revues.json : empreinte du rendu HTML divergente ; nouvelle revue indépendante requise."
+        ]
+      },
+      "renderedBodySha256": "c3301deeb21f6e7e6fb3df8ff8f9fcb7bcbeaa6baee80b61dfaf3ce697574f55"
+    }
+  ],
+  "contract": {
+    "pass": true,
+    "articles": 2,
+    "exemptions": [
+      {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "clause": 4,
+        "date": "2026-09-20",
+        "raison": "Pilier transversal de toutes les familles de tâches du cabinet : il reste la porte d’entrée générale, sans être réduit à un parcours métier ou à un usage de l’IA."
+      },
+      {
+        "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+        "clause": 4,
+        "date": "2026-10-12",
+        "raison": "Premier guide de la famille banque-rapprochement : sa méthode de comparaison relevé/journal ne relève ni de la paie, ni de la collecte et saisie des pièces, ni du choix d’un usage IA. Il reste relié au pilier général et au service bancaire ; ouvrir une rubrique bancaire avec ce seul article produirait un parcours maigre."
+      }
+    ],
+    "erreurs": []
+  },
+  "scope": "Rendu Astro de regen:generated, contrôles ciblés ; aucune CI complète ou publication HTTP attestée."
+}

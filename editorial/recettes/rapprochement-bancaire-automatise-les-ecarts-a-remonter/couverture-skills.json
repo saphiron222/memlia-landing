@@ -1,0 +1,656 @@
+{
+  "date": "2026-10-12",
+  "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+  "limites": [
+    "Exécution au périmètre du candidat, pas invocation automatique de tous les services/scripts transitifs.",
+    "Les phases futures et N/A ne sont pas des PASS.",
+    "Aucun score de qualité ou visibilité automatique."
+  ],
+  "lignes": [
+    {
+      "skill": "blog",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog/SKILL.md",
+      "version_sha256": "7ce5833fb6905f8451552304ef95678a18eec658901e0cc975b8a19fed5ebc4c",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Cadrage de la forge du dépôt, charte v5 et backlog ; pas de quotas de graphiques inventés.",
+      "preuves": [
+        "decision-editoriale.md",
+        "corps.md"
+      ]
+    },
+    {
+      "skill": "blog-analyze",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-analyze/SKILL.md",
+      "version_sha256": "a0256d77fa9c0eccbfd26f21ccc50795902b39bd4f3a4b512bae4b8a9177d1be",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Une lecture indépendante métier/éditorial/visuel acquise, qualité92/100 calculée et sansP0 ; avis propre au candidat, pas repris de septembre.",
+      "preuves": [
+        "revues.json",
+        "revue-independante-2026-10-12.md"
+      ]
+    },
+    {
+      "skill": "blog-audit",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-audit/SKILL.md",
+      "version_sha256": "e9c8808b7f4ccfea5f445893579d281e87cc37e8bc5c6f0934ba258ccd1e4b93",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Audit de tout le blog hors périmètre ; contrôle ciblé de cet article via blog-seo-check.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-brand",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-brand/SKILL.md",
+      "version_sha256": "673d0e64bf074cd8de3086386f05652716bb3c2ef43f5a14ce003f7435237b58",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas création BRAND.md : marque et voix fixées par charte du dépôt.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-brief",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-brief/SKILL.md",
+      "version_sha256": "a992bf619b0ac32f45b4e6879eb225446cfb0e54334b6aabd35ea6ab35ce5e0a",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Lecteur collaborateurs comptables, requête mesurée historique et quatre cas indépendants.",
+      "preuves": [
+        "decision-editoriale.md",
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "blog-calendar",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-calendar/SKILL.md",
+      "version_sha256": "b83374a9835030949c240f91fd6de01f15e6c4a14849a4c54e2244f37fb2567b",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Sources main actualisées, calendrier recalculé avant preparer ; date de recette réelle 12/10, ancien créneau pas antidaté.",
+      "preuves": [
+        "recette.json",
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "blog-cannibalization",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-cannibalization/SKILL.md",
+      "version_sha256": "f9b73ebc79ddd3d243ecce574d970b86aaccde913b9c4037a36224d9de2252d3",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Méthode vs page service, outil Excel et futurs définition/checklist ; aucun doublon de requête primaire dans le corpus articles.",
+      "preuves": [
+        "decision-editoriale.md",
+        "verification-intention.json"
+      ]
+    },
+    {
+      "skill": "blog-chart",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-chart/SKILL.md",
+      "version_sha256": "a0e9a5999333668b6eedecf57578984c46a94b46da74c21717812299840cfd6c",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas de données d’étude ni série à grapher ; tableaux des cas fictifs suffisent.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-cluster",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-cluster/SKILL.md",
+      "version_sha256": "c79e96299f965aad169c938c35ca7554c5bdd694ea8790c101ddcb3e79e7c50f",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Architecture déjà planifiée ; comparaison de voisinage dans décision éditoriale, pas nouveau cluster.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-decay",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-decay/SKILL.md",
+      "version_sha256": "7371597aa5fe8a931a8c88d8de12a6b2e2d8224a51048c2597d79c445fc52776",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Article non publié : aucune baisse de trafic à diagnostiquer.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-discourse",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-discourse/SKILL.md",
+      "version_sha256": "b7e30c2666076bcebfef746b7ba14be4c533c642b7bef287e6e636b741e38e2a",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune enquête sociale30jours demandée ; recherche web et backlog suffisent au besoin identifié.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-factcheck",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-factcheck/SKILL.md",
+      "version_sha256": "b8dd61f0d5480dfb31f9fd4d12a4909ade41fdc489bb1de5248a17455e1c1765",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Trois pages ANC/CNIL réellement ouvertes par la forge, plus PDF ANC distinct. Calculs du jeu vérifiés ; revue indépendante encore requise.",
+      "preuves": [
+        "qualification-claims.md",
+        "anc-pdf-provenance.json",
+        "preuve-rejeu.json"
+      ]
+    },
+    {
+      "skill": "blog-flow",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-flow/SKILL.md",
+      "version_sha256": "82054b14b3f389e5a4e26e4462644b71a7ab8e64e0d167e193c0dd77e605aecb",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucun prompt FLOW ni nouvelle campagne à lancer ; discipline de preuve appliquée via forge.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-geo",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-geo/SKILL.md",
+      "version_sha256": "650a39d02aaa03cd4083286ec6f0346bef2268a732ede0b26f24a6a967149b90",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Réponse autonome, trois définitions, trois tableaux, quatre FAQ ; preview noindex voulu. Aucun taux de citation ni probabilité revendiqués.",
+      "preuves": [
+        "corps.md",
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "blog-google",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-google/SKILL.md",
+      "version_sha256": "7406cd6b5f78bb50cc7b0fe6fe9828ca8c5ad054ed498cd30791043ab31428fd",
+      "applicabilite": "applicable",
+      "etat": "phase-suivante",
+      "motif": "Route candidate : GSC/PageSpeed public après publication, pas relevé prématuré.",
+      "preuves": [
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "blog-image",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-image/SKILL.md",
+      "version_sha256": "3d802efe079b76b3da09c7b40fd0f90ab5fb414b5839b5b177b60c8c269bc3ec",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Adoption et revue auteur du fichier OpenAI fourni, pas génération Gemini/Higgsfield. Modèle non communiqué conservé.",
+      "preuves": [
+        "image-source.json",
+        "revue-visuelle-auteur.md"
+      ]
+    },
+    {
+      "skill": "blog-locale-audit",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-locale-audit/SKILL.md",
+      "version_sha256": "3a6136a83f9e46b134f6831862c33dabf0a6486b65f5872541e527aa7ff898b7",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Publication française unique, aucune traduction/localisation.",
+      "preuves": [
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "blog-localize",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-localize/SKILL.md",
+      "version_sha256": "f30f565d9a7a8d0e02a2d7fb7166600b8dd61e447c030891d3ff339eb5db1418",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Publication française unique, aucune traduction/localisation.",
+      "preuves": [
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "blog-multilingual",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-multilingual/SKILL.md",
+      "version_sha256": "e7819afdcd008dbeb47632474214a482a379bbdbfbc450c276d371c17aad1761",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Publication française unique, aucune traduction/localisation.",
+      "preuves": [
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "blog-outline",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-outline/SKILL.md",
+      "version_sha256": "86633a92c1cbfaf8c4797bacb1a7e5413b9de054820aa710b282e2587ea3bbdb",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Gabarit how-to-guide : réponse, entrées, étapes, règle et cas, erreurs et quatre FAQ.",
+      "preuves": [
+        "corps.md"
+      ]
+    },
+    {
+      "skill": "blog-persona",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-persona/SKILL.md",
+      "version_sha256": "c86e77e7f2e33c588dafcac786ebd08425f6dac5ad52d4fb541add69608f5c41",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas création persona : rôle existant collaborateurs-comptables.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-repurpose",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-repurpose/SKILL.md",
+      "version_sha256": "7504750bc45aa2a0cc3c2deef58738328cd28fc634f01e5c95b72394a234024a",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune diffusion externe hors blog mandatée.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-rewrite",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-rewrite/SKILL.md",
+      "version_sha256": "57f82cd2bdf68447e8612fc329b16c4ff76614d94e5c33a26f1d09d0b9de068a",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Réutilisation du manuscrit historique : portée du programme resserrée sans changer les quatre cas.",
+      "preuves": [
+        "corps.md",
+        "qualification-claims.md"
+      ]
+    },
+    {
+      "skill": "blog-schema",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-schema/SKILL.md",
+      "version_sha256": "38beb31b1bcc4454b9d994e056ae060631d2a9626ee8b4cd006c1cdd6a2a88c3",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "BlogPosting, Person, Organization, BreadcrumbList parsés dans le DOM ; pas nouvelle promesse de rich result.",
+      "preuves": [
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "blog-seo-check",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-seo-check/SKILL.md",
+      "version_sha256": "41a922ab74ef91f4dffb1bfd20c707acd1910fe0b568f6b695fd7477eabf3941",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "39 assertions locales : meta, OG, canonical, auteur/date, figures, liens/ancres, mobile et tableaux.",
+      "preuves": [
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "blog-strategy",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-strategy/SKILL.md",
+      "version_sha256": "de99ccfd75c10f46821a2f5ec53f05077ad31abf3ab7c2be2f8a9d1dc387ecce",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas stratégie nouvelle : sujet déjà mandaté au backlog W41.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-style",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-style/SKILL.md",
+      "version_sha256": "b8d4277cecb77f7f0a29914e9796da1fc415f7ed1920e490f55a840d668185e0",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucun apprentissage de voix sur5à10posts demandé : charte v5 déjà canonique. Analyse cognitive exécutée séparément, pas nominalement ce learner.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-taxonomy",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-taxonomy/SKILL.md",
+      "version_sha256": "55a6af5a13216e2ecdcbd1a4c7bedef6ab9b3193378278d8450088f7725c0ea9",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Famille banque-rapprochement et topics existants conservés. Aucune rubrique bancaire maigre fabriquée.",
+      "preuves": [
+        "recette.json",
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "blog-translate",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-translate/SKILL.md",
+      "version_sha256": "f391cd910732ebbcd8ed5d633b74261ff011e0b91cb0927a5f5c47c79b856566",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Publication française unique, aucune traduction/localisation.",
+      "preuves": [
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "blog-write",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/blog-write/SKILL.md",
+      "version_sha256": "523bb06666235df94920de3eb7eb4d3e17c09e33c5ab7b39cfe196e29a4a5bc4",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Réponse de 75 mots ; définitions, règle et rejeu distincts ; zéro donnée client.",
+      "preuves": [
+        "corps.md",
+        "charge-cognitive.json"
+      ]
+    },
+    {
+      "skill": "seo",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo/SKILL.md",
+      "version_sha256": "cda684a0ec0fe16fba94b92eb517d8c47023876357b22141656cfbb6085719c0",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Intention de méthode, métadonnées et DOM local contrôlés ; aucune visibilité acquise déclarée.",
+      "preuves": [
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "seo-audit",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-audit/SKILL.md",
+      "version_sha256": "325dad9d3d5519bfe57ed23c42012374bdc6d83a4f5352e7bb0511cbc603c045",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Crawl global/500pages hors périmètre ; contrôles locaux via seo-page/seo-technical.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-backlinks",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-backlinks/SKILL.md",
+      "version_sha256": "fdf39ebc752518a4d9886001cc434d6057dbe8b8c54ade752567e30b52524950",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune acquisition de liens ni analyse historique de backlinks de cette route nouvelle.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-bing",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-bing/SKILL.md",
+      "version_sha256": "a49d4ac84f2b120ab599e2824279711928fe3f61b7e0ef269ff3336aec9a6109",
+      "applicabilite": "applicable",
+      "etat": "phase-suivante",
+      "motif": "Soumission IndexNow après publication réelle par platform ; suivi partagé existant.",
+      "preuves": [
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "seo-cluster",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-cluster/SKILL.md",
+      "version_sha256": "87ebca8bfc333e11eb0a0e96003913bac6f0cd6334f4e5b55fa1097c009b086a",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas nouvelle grappe/mesure de chevauchement SERP ; méthode unique déjà cadrée.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-competitor-pages",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-competitor-pages/SKILL.md",
+      "version_sha256": "e72afb5cf70b6d2f4e9f484152b0b134fd53712d1086b3509d3f3e55fb7c7aa6",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Guide de méthode, pas comparatif éditeurs/alternatives.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-content",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-content/SKILL.md",
+      "version_sha256": "dc49ade005a0c8744b6497a887236decf0568a7abb4f5030b0091daefbd5f18a",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Mécanique vs jugement, preuve restreinte, citations dans paragraphes, charte v5 et refus concrets.",
+      "preuves": [
+        "corps.md",
+        "qualification-claims.md"
+      ]
+    },
+    {
+      "skill": "seo-content-brief",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-content-brief/SKILL.md",
+      "version_sha256": "e821f346b0c31f413c6562d0cf83b30130c07ed40371ab80199383eb1e8af21b",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Cadrage requête/tâche/lecteur et différenciation face aux guides généralistes ; volumes ND.",
+      "preuves": [
+        "decision-editoriale.md",
+        "recette.json"
+      ]
+    },
+    {
+      "skill": "seo-dataforseo",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-dataforseo/SKILL.md",
+      "version_sha256": "a46a63519e37c442df1ba70b6a10565ee0f563a92e48ed3b7e5e2806730e414c",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas de dépense supplémentaire ; demande historique et recherche Hermes, volume ND.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-drift",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-drift/SKILL.md",
+      "version_sha256": "9e95de1236fda0de9b56c8d524e4e2bac6adce1b4792d8fa030477e0e6ed524a",
+      "applicabilite": "applicable",
+      "etat": "phase-suivante",
+      "motif": "Baseline du contenu public après preuve HTTP, aucun état public fabriqué.",
+      "preuves": [
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "seo-ecommerce",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-ecommerce/SKILL.md",
+      "version_sha256": "de5a80d8def9cea5e31836bdaa79775cd417a53d16e0368699c345a363323825",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Pas boutique, catalogue de produits ou Shopping.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-firecrawl",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-firecrawl/SKILL.md",
+      "version_sha256": "21b4fa3bd5b17e2ca839267671246b1018d650507d432bed45a59c38a263ee3b",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucun crawl externe de masse nécessaire ; sources ouvertes individuellement.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-flow",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-flow/SKILL.md",
+      "version_sha256": "cdf396fabb5148de7ed120b1689ebeb685f9874e066fe1cf364c0d2817274e8e",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune campagne FLOW additionnelle ; preuve et maillage traités dans brief.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-geo",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-geo/SKILL.md",
+      "version_sha256": "a4c4a9ce1b0639dbfa07d550cd13ad8b4338df440c1701f7a7eb00433ff604b6",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Contrôle de citabilité partagé avec blog-geo : définitions, réponse directe, source/limite, DOM et schema. Aucun résultat dans un moteur IA revendiqué.",
+      "preuves": [
+        "corps.md",
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "seo-google",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-google/SKILL.md",
+      "version_sha256": "f98434b30d130ca186eddaae0e3ef45046d6ae1ef155a4319d881883e4eb0d5c",
+      "applicabilite": "applicable",
+      "etat": "phase-suivante",
+      "motif": "Mesure Google publique après publication, aucun rang ni CTR inventé.",
+      "preuves": [
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "seo-hreflang",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-hreflang/SKILL.md",
+      "version_sha256": "693216e42b85235ad2b24c41c9e9c779d875f420be4ea067fe69a50b21d11eb4",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Article français unique, aucune traduction.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-image-gen",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-image-gen/SKILL.md",
+      "version_sha256": "72119a37fac14b9a95d9c703b80c1060e330ab4162c3cc71bdf543dcd180a6c1",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Couverture existante fournie, pas nouvelle génération payante ni assistant Python image.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-images",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-images/SKILL.md",
+      "version_sha256": "3a8d61c3a1aea0d3ef299071939eb6c17ef4d832f9fd279d2c4470c87aff0fe4",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Dérivés AVIF/WebP 768/1200/1600, OG1200x630 ; deux écrans canoniques 1600x900 sous150Ko ; contrôles de chargement 390/1280.",
+      "preuves": [
+        "verification-locale.json",
+        "revue-visuelle-auteur.md"
+      ]
+    },
+    {
+      "skill": "seo-local",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-local/SKILL.md",
+      "version_sha256": "8d4a8cadba37753890d4c014cd3be1dc7248ea9db317f9e199de92c30f46b765",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune intention locale ni page ville.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-maps",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-maps/SKILL.md",
+      "version_sha256": "308d5e79abefd0bd5159a6027033ca018fa8eefc4c37f13d9445e067eac2c51a",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucune fiche locale/Maps.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-page",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-page/SKILL.md",
+      "version_sha256": "0232327ab14e9b325687f279b153e6946942ad96a6a58813699eeb73a6691be9",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Titre, description, un H1, langue, date, canonical et schema sur la page réellement rendue.",
+      "preuves": [
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "seo-plan",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-plan/SKILL.md",
+      "version_sha256": "aef988384e686fa9a7deb67f654aae9ffec9a11e6997bf01b157b00b83d29682",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Aucun nouveau plan de site ; exécution d’un sujet du backlog.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-programmatic",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-programmatic/SKILL.md",
+      "version_sha256": "22331842878025ee649f264a17bed12ded2253dc31d50a9a18b7b50af45676fc",
+      "applicabilite": "N/A",
+      "etat": "N/A",
+      "motif": "Article singulier de méthode, pas génération de pages par données.",
+      "preuves": [
+        "decision-editoriale.md"
+      ]
+    },
+    {
+      "skill": "seo-schema",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-schema/SKILL.md",
+      "version_sha256": "67b0fa5004e755d148588b8dc555bddae77cb00c5c92bee233cf9e17db7d547c",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Validation syntaxique JSON-LD et cohérence auteur/titre par navigateur ; pas test Google en ligne.",
+      "preuves": [
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "seo-sitemap",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-sitemap/SKILL.md",
+      "version_sha256": "6bad4a4ba1ce83631ff3ab3de3834481578c21ba8a29d4371c95ed6200ecdcd3",
+      "applicabilite": "applicable",
+      "etat": "phase-suivante",
+      "motif": "Vérification sitemap/RSS public par platform après publication ; preview exclue volontairement.",
+      "preuves": [
+        "CONTROLES.md"
+      ]
+    },
+    {
+      "skill": "seo-sxo",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-sxo/SKILL.md",
+      "version_sha256": "d5c949684c9d00bca2e6f993b69b45337d5ff7eba8dacae35c6a1e8d5575778d",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "Lecture réponse d’abord, sommaire, tableaux accessibles et CTA après méthode. Aucun test conversion inventé.",
+      "preuves": [
+        "corps.md",
+        "verification-locale.json"
+      ]
+    },
+    {
+      "skill": "seo-technical",
+      "chemin_charge": "/Users/kevinkitanga/hermes/packs/memlia-skills/seo-technical/SKILL.md",
+      "version_sha256": "cd21e750a27ae5ef764887d0e50ca211254be1fb8bfa3938105828d752988371",
+      "applicabilite": "applicable",
+      "etat": "execute-perimetre",
+      "motif": "DOM présent, preview noindex attendu, liens/ancres existants et absence de débordement ; production/CI futures.",
+      "preuves": [
+        "verification-locale.json",
+        "CONTROLES.md"
+      ]
+    }
+  ]
+}

@@ -23,7 +23,7 @@ tache: "Dresser la carte des tâches automatisables du cabinet et repérer celle
 preuveRole:
   niveau: indirect
   source: "preuves/role.json"
-  date: 2026-10-08
+  date: 2026-10-12
 funnel: TOFU
 contentType: searchable
 format: pillar-page
@@ -119,7 +119,7 @@ C’est le pôle le plus large, treize familles, parce que c’est là que la r�
 
 Pour rédiger la première demande de pièce sans perdre la décision d'envoi, voyez le [patron de prompt sur cas fictif](/blog/prompt-chatgpt-expert-comptable). Si vous comparez des outils plutôt que des formulations, la [grille de choix d'un logiciel IA comptable](/blog/logiciel-ia-comptabilite) fait rejouer la pièce, l'exception et la reprise par l'équipe, sans classement de marques.
 
-Le [lettrage](/glossaire#lettrage-comptable) et le rapprochement bancaire (voir la [définition du rapprochement bancaire](/glossaire#rapprochement-bancaire)) obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.
+Le [lettrage](/glossaire#lettrage-comptable) et le [rapprochement bancaire](/blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter) (voir la [définition du rapprochement bancaire](/glossaire#rapprochement-bancaire)) obéissent à des règles d’appariement que le cabinet connaît par cœur mais écrit rarement : montant identique, référence présente, tolérance de quelques centimes, délai entre facture et règlement. Écrites, ces règles deviennent une proposition d’écriture et une liste d’écarts typés. Les factures d’achat, les ventes importées d’une caisse ou d’une boutique en ligne, les notes de frais, les tableaux d’amortissement et d’emprunt suivent la même logique : un import sans ressaisie, un contrôle de schéma, une écriture récurrente générée puis validée.
 
 La [révision par cycles](/glossaire#revision-comptable) et la clôture concentrent des contrôles répétitifs : justification de chaque solde, comparaison avec l’exercice précédent, cohérence entre journaux. Une checklist datée, rejouée sur chaque dossier, prépare le travail du réviseur sans jamais le remplacer. Les situations intermédiaires et le reporting client s’en déduisent. La facture électronique change la matière première de tout ce pôle : ce que le cabinet reçoit, sous quel format, par quel canal. Enfin la gestion documentaire, dossier permanent compris, se règle par un nommage et un classement automatiques que l’on vérifie par échantillon.
 

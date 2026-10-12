@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-12T14:49:31.030Z",
+  "logs": [
+    {
+      "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+      "materialisationErrors": [],
+      "gate": {
+        "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+        "pass": false,
+        "errors": [
+          "Le lien entrant depuis /blog vers /blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter est absent.",
+          "Le lien entrant depuis /blog/automatiser-un-cabinet-comptable-la-carte-des-taches vers /blog/rapprochement-bancaire-automatise-les-ecarts-a-remonter est absent."
+        ]
+      }
+    },
+    {
+      "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "materialisationErrors": [],
+      "gate": {
+        "slug": "automatiser-un-cabinet-comptable-la-carte-des-taches",
+        "pass": false,
+        "errors": [
+          "Le lien entrant depuis /blog vers /blog/automatiser-un-cabinet-comptable-la-carte-des-taches est absent."
+        ]
+      }
+    }
+  ],
+  "publication": false,
+  "renduCI": "à vérifier",
+  "oldPillarReviewUnchanged": true
+}

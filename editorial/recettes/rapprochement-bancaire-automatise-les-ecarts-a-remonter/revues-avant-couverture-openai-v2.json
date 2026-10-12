@@ -1,0 +1,206 @@
+{
+  "reviewedAt": "2026-10-12",
+  "subject": {
+    "slug": "rapprochement-bancaire-automatise-les-ecarts-a-remonter",
+    "bodySha256": "35bafc1b60252726d1025326a392c3ac14d8220b435148cc142793b2bf9a7bba",
+    "recipeSha256": "a9d20320ea81ae8cf54495b795634ea276c49fac7fe688bda989ab4150e1547c",
+    "recipeSubstanceSha256": "292dda9d453f9311f07cba9f9c7c401688cff6b250571e6b249bf249cb572b91",
+    "renderedSha256": "f73970a5f4f0918737348aa6e89ce507a27da08ec6b2335b4448b61df6ff6254"
+  },
+  "editorial": {
+    "reviewer": "marketing",
+    "score": 100,
+    "criteria": {
+      "intent-satisfaction": {
+        "result": "PASS",
+        "observations": [
+          "La réponse directe pose la comparaison relevé/journal, la proposition univoque et les écarts ouverts ; les prérequis et cinq étapes répondent au geste du collaborateur comptable.",
+          "La reprise du rapprochement précédent est une consigne explicite, distinguée des quatre mini-dossiers sans reliquat ; le guide ne prétend pas établir un inventaire exhaustif des écarts."
+        ]
+      },
+      "serp-format-rankability": {
+        "result": "PASS",
+        "observations": [
+          "Le titre vise le rapprochement bancaire automatique et le format how-to-guide est tenu : définitions, entrées, étapes, clé, essais, erreurs et quatre questions fréquentes.",
+          "Les trois tableaux de règle, de frontière et de résultats rendent la méthode consultable ; l'aptitude du format n'est pas une preuve de classement ni de volume de recherche."
+        ]
+      },
+      "eeat-sources": {
+        "result": "PASS",
+        "observations": [
+          "Les quatre citations ont été retrouvées dans le texte visible des copies ANC/CNIL et leurs SHA concordent ; l'ANC HTML établit le lien vers le plan 2026, pas la clé ni le compte 512.",
+          "Le PDF ANC authentifié complète effectivement le compte 512 Banques et 5121 Comptes en euros ; sa page réelle est 10/18, et non 9/18 comme indiqué dans la qualification auteur interne.",
+          "Kevin Kitanga est attribué comme fondateur avec bio, non comme expert-comptable ; les exemples restent fictifs et ne sont pas présentés comme des résultats clients."
+        ]
+      },
+      "information-gain-proof": {
+        "result": "PASS",
+        "observations": [
+          "Exécution indépendante de rejouer.mjs : PASS, quatre cas concordants par assert.deepEqual, sans réécriture des attendus ; RB-01 propose R-01/J-01 et RB-03 refuse deux candidats.",
+          "Les quatre parties de La règle écrite sont propres à la tâche bancaire ; les soldes RB-01 à RB-03 ont été recalculés indépendamment depuis les entrées, avec conversion des signes correcte.",
+          "Le corps borne expressément les preuves à des lignes JSON structurées : ni import PDF/CSV, ni dossiers mixtes, ni conservation/reprise des décisions ou reliquats ne sont démontrés."
+        ]
+      },
+      "technical-onpage-seo": {
+        "result": "PASS",
+        "observations": [
+          "Le rendu porte un H1 cohérent avec og:title et headline, une canonical du slug, la description spécifique et le socle BlogPosting, Person, Organization, BreadcrumbList.",
+          "Les deux figures déclarées sont réellement présentes avec image existante, alternative descriptive et dimensions 1600×900 ; les images de couverture et de corps référencées existent dans le rendu local.",
+          "Le noindex, follow et le bandeau de candidat sont ceux de la preview privée ; cette revue ne déclare aucune indexation ni accessibilité de production."
+        ]
+      },
+      "ai-citability": {
+        "result": "PASS",
+        "observations": [
+          "Les définitions du rapprochement, de la clé et de l'état sont autonomes ; la table RB-01 à RB-04 expose statut, sortie et suite sans substituer l'image au texte.",
+          "Le paragraphe de portée exclut les commissions, paiements groupés et omissions invisibles ; une citation des résultats doit conserver le qualificatif fictif et leur caractère indépendant."
+        ]
+      },
+      "contextual-conversion": {
+        "result": "PASS",
+        "observations": [
+          "La clôture prend les exceptions que l'outil métier laisse, dans les outils existants, avec recette et maintenance ; elle n'affirme pas une automatisation bancaire déjà livrée.",
+          "Le bloc rendu Confier cette tâche pointe vers /contact, dit ce que nous préparons, la décision gardée et Rien à envoyer ; pilier, article frère, méthode, garanties et glossaire sont reliés dans le corps.",
+          "Aucun gain, donnée client, tiret cadratin ni vocabulaire de catalogue interdit dans le corps ; les réserves sur les essais décrivent leurs limites techniques, pas un avertissement commercial répété."
+        ]
+      }
+    },
+    "p0": []
+  },
+  "business": {
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "collaborateurs-comptables",
+    "claims": {
+      "claim-unit-66ee55875b6f-1": {
+        "verdict": "soutient",
+        "reasoning": "Le libellé exact plan de comptes (version au 1er janvier 2026) figure dans le lien visible ANC vers Plan-de-comptes-2026.pdf. Il soutient uniquement l'existence et la version annoncées dans le corps. Le numéro 512 relève du PDF complémentaire, pas de cette citation ; aucune autorité sur la clé d'appariement n'en est déduite."
+      },
+      "claim-unit-d356127977dc-1": {
+        "verdict": "soutient",
+        "reasoning": "Le paragraphe visible CNIL commence par la définition exacte Une donnée personnelle est toute information se rapportant à une personne physique identifiée ou identifiable. La possibilité d'informations personnelles dans les exports respecte cette portée ; elle n'assimile pas toutes les coordonnées d'entreprise à des données personnelles."
+      },
+      "claim-unit-d356127977dc-2": {
+        "verdict": "soutient",
+        "reasoning": "L'article 5 paragraphe 1 c publié par la CNIL porte exactement la citation de minimisation. Le corps la cite à propos des données personnelles et des finalités, sans prétendre que des essais fictifs garantissent la conformité RGPD de la prestation ou d'un dossier."
+      },
+      "claim-unit-d356127977dc-3": {
+        "verdict": "soutient",
+        "reasoning": "L'article 5 paragraphe 1 f publié par la CNIL porte exactement la sécurité appropriée, complétée par la protection contre les traitements non autorisés, pertes et dégâts et les mesures techniques ou organisationnelles. Le corps cite ce principe sans certification, sécurité absolue ni hébergement inventés."
+      }
+    }
+  },
+  "image": {
+    "criteria": {
+      "brief-six-components": {
+        "result": "PASS",
+        "observations": [
+          "Le brief fourni porte sujet, composition, style tactile, palette d'adoption, interdits et alt ; master, hero et OG montrent deux documents anonymes, coches et exception ambre examinée au crayon.",
+          "La mesure existante porte #fffefb 0.634375, #244b36 0.039114583333333335, #231f20 0.04592013888888889, tolérance 45 ; elle ne prouve pas la présence du vert historique absent ni des hex imposés au prompt originel."
+        ]
+      },
+      "generation-constraints": {
+        "result": "PASS",
+        "observations": [
+          "Génération native OpenAI fournie exec-0a71821c-c185-4eb5-a527-d602cb525727, modèle non communiqué et crédits null ; ni coût ni appel Higgsfield inventés. La main et la vue du dessus appartiennent au brief fourni, non à l'ancien gabarit isométrique sans personnage.",
+          "Le master mesure 1920×1080 ; les trois vues inspectées ne montrent ni interface réelle ni texte lisible. Les liaisons flottantes sont une métaphore, pas la preuve des quatre cas."
+        ]
+      },
+      "fictive-provenance": {
+        "result": "PASS",
+        "observations": [
+          "Documents abstraits sans nom, compte ou montant lisible ; les figures marquent Jeu d'essai fictif et le registre précise quatre cas indépendants. Aucune donnée client ni capture de produit livré n'est revendiquée."
+        ]
+      },
+      "recognizable-subject": {
+        "result": "PASS",
+        "observations": [
+          "Le document à pictogramme bancaire, celui à calculatrice et l'exception ambre pointée par un crayon rendent la comparaison et le contrôle humain identifiables, sans prétendre montrer une justification de solde."
+        ]
+      },
+      "technical-derivatives": {
+        "result": "PASS",
+        "observations": [
+          "Dimensions lues par sips : master 1920×1080, hero 768×432 et OG 1200×630 ; les deux figures mesurent 1600×900 et pèsent 27722 et 28752 octets, sous 150 Ko.",
+          "Hero et OG regardés effectivement : exception et pointe conservées ; les figures sont placées avant La règle écrite et Ce qu'il faut contrôler avant de valider, avec alternatives descriptives et chargement différé."
+        ]
+      },
+      "alt-information": {
+        "result": "PASS",
+        "observations": [
+          "L'alt de couverture décrit les deux documents fictifs et la ligne ambre au crayon ; ceux des figures nomment RB-01 et les quatre statuts fictifs sans promesse de validation automatique."
+        ]
+      }
+    },
+    "directionArt": 18,
+    "semanticRelevance": 24,
+    "figures": {
+      "banque-cle": {
+        "result": "PASS",
+        "questionsRecette": [true, true, true, true, true],
+        "observations": [
+          "Fiche plausible d'outil, compte A/EUR, références concrètes sans marque ; les sources crédit/débit et la décision En attente se lisent seules. Le texte fournit le solde d'ouverture non répété dans la figure.",
+          "Fenêtre et quadrillage conformes à la référence relance-checklist regardée ; ni schéma d'étapes, slogan ou avertissement. La clé affiche 12500 centimes et un candidat de chaque côté, sans certifier le dossier."
+        ]
+      },
+      "banque-rejeu": {
+        "result": "PASS",
+        "questionsRecette": [true, true, true, true, true],
+        "observations": [
+          "Registre plausible avec quatre lignes fictives, résultats distincts et suites lisibles ; RB-01 attend une validation et RB-03 ne choisit aucune paire. L'article explique les cas sans dépendre de l'image.",
+          "Même fenêtre canonique, données sans marque et titre court ; aucun slogan ni schéma commenté. Ouverture du relevé absente pourrait être précisé en solde d'ouverture pour lever une petite ambiguïté autonome."
+        ]
+      }
+    }
+  },
+  "sources": {
+    "reviewedBy": "relecteur-metier-ia-memlia",
+    "observations": {
+      "anc-plan": "ANC, anc.gouv.fr, source officielle primaire tier-1 : copie HTML authentifiée établissant le lien du plan 2026 ; PDF complémentaire authentifié lu, 512/5121/5124 à la page 10/18, sans preuve normative de la clé.",
+      "cnil-definition": "CNIL, cnil.fr, source officielle primaire tier-1 : définition dans le corps visible de la page, SHA concordant et portée limitée aux personnes physiques identifiées ou identifiables.",
+      "cnil-principes": "CNIL, cnil.fr, source officielle primaire tier-1 publiant le RGPD article 5 : citations visibles des points 1 c et 1 f et SHA concordant, sans conformité de Memlia déduite."
+    }
+  },
+  "qualite": {
+    "reviewer": "relecteur-qualite-ia-memlia",
+    "score": 92,
+    "p0": [],
+    "categories": {
+      "contentQuality": {"score": 28, "max": 30},
+      "seoOptimization": {"score": 24, "max": 25},
+      "eeatSignals": {"score": 15, "max": 15},
+      "technicalElements": {"score": 12, "max": 15},
+      "aiCitationReadiness": {"score": 13, "max": 15}
+    },
+    "evidence": [
+      "Qualité 28/30 : couverture 7, lisibilité 6, originalité 5, structure 4, blocs variés 4, clarté 2. Une phrase dense de prérequis ralentit la lecture ; certaine suggère trop de certitude avant une validation, malgré le cadrage correct voisin.",
+      "SEO 24/25 : hiérarchie 5, titre 4, cohérence sémantique 4, maillage 3, URL 3, description 3, liens officiels 2. Les liens internes contextuels sont présents ; leurs retours depuis les autres pages n'ont pas été vérifiés.",
+      "E-E-A-T 15/15 : attribution avec bio 4, fidélité sources 4, contact/à-propos et transparence visibles 4, méthode et preuves rejouées 3. L'erreur de pagination reste interne et ne falsifie pas le contenu ANC vérifié.",
+      "Technique 12/15 : socle schema 4, images/alt/chargement 3, tableaux 2, signaux de vitesse 1, signaux mobile 1, métadonnées sociales 1. Les points non attribués concernent les mesures vitesse/mobile et le service effectif de l'OG non exécutés ici.",
+      "Citation IA 13/15 : citabilité étayée 4, utilité 3, entités 3, structure extractible 3, accessibilité des crawlers cibles 0 car non vérifiée dans cette revue de preview privée.",
+      "L'oracle exécuté compare strictement les résultats attendus des quatre cas ; les soldes ont été recalculés séparément et les trois copies HTML et le PDF ont été authentifiés par SHA-256.",
+      "Les deux figures réellement regardées répondent oui aux cinq questions RECETTE.md ; leur texte garde la validation attendue, le transit ouvert et les deux refus."
+    ],
+    "reservations": [
+      "Lighthouse, Core Web Vitals, affichage mobile et accessibilité des crawlers en production non mesurés ; ce score apprécie le candidat local et ne remplace ni CI ni contrôle de publication.",
+      "Citation réelle par une IA, classement SERP et bidirectionnalité du maillage non mesurés ; aucun résultat d'acquisition n'est promis.",
+      "Qualification auteur interne : 512 Banques est à la page 10/18 du PDF, pas 9/18 ; correction documentaire non bloquante, sans changement de corps ni de portée de claim.",
+      "Certaine peut devenir candidate univoque et Ouverture du relevé absente peut devenir Solde d'ouverture absent ; polis éditoriaux non critiques, contexte et décisions en attente déjà explicites.",
+      "Les essais ne qualifient pas imports PDF/CSV, dossiers mixtes, omissions invisibles, multi-devise, commissions, paiements groupés, conservation des décisions ou reprise d'un reliquat. Ces limites sont dites dans le corps et ne constituent pas des capacités livrées."
+    ],
+    "seo": [
+      "Titre et H1 portent le rapprochement bancaire automatique ; og:title et headline reprennent le H1.",
+      "Description spécifique, canonical du slug, langue française et hiérarchie H1/H2/H3 cohérentes dans le rendu.",
+      "BlogPosting, Person, Organization et BreadcrumbList présents ; FAQ traitée dans le texte sans promesse de rich result.",
+      "Maillage du corps vers pilier, frère, méthode, garanties, service et glossaire ; trois domaines/pages officielles citées dans les phrases utiles.",
+      "Noindex, follow attendu pour la preview privée ; aucune conclusion sur indexation ou levée de noindex en production."
+    ],
+    "geo": [
+      "Réponse d'abord et trois définitions autonomes identifient le rapprochement, la clé et l'état.",
+      "Tableaux avec en-têtes et FAQ sont présents dans le HTML primaire, sans dépendance aux figures pour comprendre les sorties.",
+      "RB-01 à RB-04 sont citables seulement comme quatre cas fictifs indépendants, non comme un mois de production ni une mesure de performance.",
+      "La distinction transit possible/cause confirmée évite de transformer un résultat numérique en justification comptable.",
+      "Les limites d'import, de conservation et de reprise doivent accompagner toute citation décrivant la portée de ce programme."
+    ],
+    "verdict": "PASS pour cette revue unique métier, éditoriale et visuelle du candidat borné : 92/100 calculés, quatre claims soutenus et aucun défaut critique ; les réserves non bloquantes et mesures non réalisées sont explicites, sans autorisation de publication ni attestation de produit livré."
+  }
+}

@@ -1,0 +1,10 @@
+# Revue indépendante provisoire — rapprochement bancaire
+
+Candidat évalué le 26/09/2026, sans validation de publication. Relecteur indépendant distinct de l'auteur ; contrôle du Markdown, des captures de sources et du master visuel. Le HTML exact n'était pas disponible au moment de cette passe. Score indicatif : 79/100 (contenu 26/30, SEO 24/25, E-E-A-T 11/15, technique 8/15, citabilité 10/15), **non transférable** à la grille de la forge. Les revues structurées enregistrées demeurent FAIL.
+
+- Les quatre citations sont effectivement présentes dans les captures ANC/CNIL : libellé du plan de comptes, définition de la donnée personnelle, minimisation et sécurité de l'article 5. Le libellé ANC ne prouve pas à lui seul le numéro 512, qui nécessite de vérifier le plan de comptes PDF lié.
+- L'oracle ne valide que RB-01 à RB-04 : proposition unique, transit possible non confirmé, ambiguïté refusée, solde d'ouverture manquant refusé. Il ne prouve ni inventaire exhaustif des écarts ni livraison opérationnelle.
+- L'image master suggère un relevé et un registre, sans donnée client ni texte lisible. La mesure de palette est PASS. L'alt « lignes restant ouvertes » interprète une situation que le dessin sans libellé ne rend pas distinctement vérifiable ; revue des dérivés et du rendu encore nécessaire.
+- À la reprise, vérifier le HTML candidat (deux figures, balises SEO, accessibilité, mobile) et porter une vraie revue métier/éditoriale/image aux empreintes actuelles, sans convertir le score provisoire en PASS.
+
+Exécution locale après cette revue : `env BLOG_PREVIEW_SLUGS=rapprochement-bancaire-automatise-les-ecarts-a-remonter npm run build:site` rend bien le slug en HTML, mais échoue au contrat blog clause 4 : rubrique non déclarée. Le registre `src/data/blog-rubriques.mjs` exige au moins deux articles visibles par rubrique ; rattacher artificiellement cette tâche à « Saisie et pièces » ou créer une rubrique à un seul article contournerait le contrat. `node scripts/blog-pipeline.mjs gate rapprochement-bancaire-automatise-les-ecarts-a-remonter` échoue sur les revues non exécutées. Aucun scellement ni publication.
