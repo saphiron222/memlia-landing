@@ -50,20 +50,36 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     expect(await page.locator('main img').evaluateAll(images => images.filter(image => !(image as HTMLImageElement).complete || !(image as HTMLImageElement).naturalWidth).map(image => image.getAttribute('src')))).toEqual([]);
     expect(errors).toEqual([]);
     expect(mediaRequests).toEqual([]);
-    // Régression des deux écarts de la revue QA : sources pointables, fiche encadrée.
-    for (const link of await page.locator('#sources-cac').locator('..').locator('..').locator('a').all()) {
-      expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
-      await expect(link.locator('svg')).toHaveCount(1);
+    // Les références font partie des paragraphes, sans bibliographie ni boutons de source.
+    await expect(page.locator('#sources-cac')).toHaveCount(0);
+    for (const href of [
+      'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/',
+      'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/',
+      'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/',
+      'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024',
+      'https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026',
+    ]) {
+      const links = page.locator(`main a[href="${href}"]`);
+      expect(await links.count()).toBeGreaterThan(0);
+      for (const link of await links.all()) expect(await link.evaluate(node => Boolean(node.closest('p')))).toBe(true);
     }
     const fiche = page.locator('aside[aria-labelledby="fiche-outil-cac"]');
     expect(await fiche.evaluate(node => parseFloat(getComputedStyle(node).borderTopWidth))).toBeGreaterThan(0);
     expect(await fiche.evaluate(node => parseFloat(getComputedStyle(node).paddingTop))).toBeGreaterThan(0);
-    await expect(fiche.locator('a')).toHaveClass(/lien-action/);
-    await expect(fiche.locator('a svg')).toHaveCount(1);
+    await expect(fiche.locator('p a')).toHaveText('NEP 315 révisée');
+    const reference = fiche.locator('p a');
+    await reference.scrollIntoViewIfNeeded();
+    await expect(reference).toBeVisible();
+    await reference.focus();
+    await expect(reference).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(reference).not.toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(reference).toBeFocused();
     const gap = await page.evaluate(() => {
-      const sources = document.querySelector('#sources-cac')!.closest('section')!.getBoundingClientRect();
+      const questions = document.querySelector('#questions')!.closest('section')!.getBoundingClientRect();
       const final = document.querySelector('.appel-final') ?? document.querySelector('main .feuille > section:last-child');
-      return final!.querySelector('h2')!.getBoundingClientRect().top - sources.bottom;
+      return final!.querySelector('h2')!.getBoundingClientRect().top - questions.bottom;
     });
     expect(gap).toBeGreaterThanOrEqual(80);
   });

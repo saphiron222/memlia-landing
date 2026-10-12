@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
-import { DESTINATIONS } from '../navigation-attendue.mjs';
+import { DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
 
 for (const width of [320, 375, 768, 1024, 1366, 1440, 1920]) {
   test(`accueil sans débordement à ${width}px`, async ({ page }) => {
@@ -62,7 +62,7 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
-  await expect(page.locator('.nav-sans-js a[href="/#methode"]')).toBeVisible();
+  await expect(page.locator('.nav-sans-js a[href="/automatisation-cabinet-comptable"]')).toBeVisible();
   await context.close();
 });
 
@@ -73,20 +73,22 @@ test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
-test('navigation desktop : quatre destinations atteignables au clavier et CTA unique', async ({ page }) => {
+test('navigation desktop : destinations atteignables au clavier et CTA unique', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const links = page.locator('.nav-centre a');
   await expect(links).toHaveText(DESTINATIONS);
-  for (const fragment of ['usages', 'methode', 'preuves', 'questions']) {
+  for (const href of HREFS) {
     await page.goto('/');
-    await page.locator('[aria-controls="sous-menu-lecture"]').focus();
-    await page.keyboard.press('Enter');
-    const link = page.locator(`.nav-centre a[href="/#${fragment}"]`);
+    const link = page.locator(`.nav-centre a[href="${href}"]`);
+    if (!await link.isVisible()) {
+      await page.getByRole('button', { name: 'Cabinets', exact: true }).focus();
+      await page.keyboard.press('Enter');
+    }
     await link.focus();
     await link.press('Enter');
-    await expect(page).toHaveURL(new RegExp(`#${fragment}$`));
-    await expect(page.locator(`#${fragment}`)).toBeVisible();
+    await expect(page).toHaveURL(new RegExp(`${href}/?$`));
+    await expect(page.locator('main h1')).toBeVisible();
   }
   await page.goto('/');
   await expect(page.locator('.nav-principal')).toHaveText(CTA.nav.libelle);

@@ -27,3 +27,11 @@ Complément du12/10 : retrait du lien du sommaire effectué avec la bibliographi
 Vérifier l’accessibilité des filtres et de la navigation mobile, la présence de chaque service public dans le catalogue, le placement des références historiques et l’absence de modification des claims ou verdicts métier. La table de correspondance des références historiques rejette une phrase devenue introuvable plutôt que de déplacer une citation arbitrairement ; une future réécriture d’un de ces paragraphes doit réconcilier sa citation.
 
 La livraison nécessite une revue QA indépendante PASS, la CI verte puis une vérification de memlia.fr après déploiement. Aucune fusion n’est attestée par ce document initial.
+
+## Levée des réserves des contrats navigateur
+
+La QA indépendante a examiné les81 pages,16 articles,12 services et les11 réponses FAQ CAC ; ses parcours bureau/mobile/clavier/sans JS et ses contre-preuves des citations étaient PASS. Son avis du12/10 a signalé R1 (contrat de l’ancien bloc SourcesCac) et R2 (ancien lien de navigation /#methode), avec re-revue limitée à ces défauts et au fini.
+
+Les contrats corrigés vérifient maintenant les cinq autorités dans des paragraphes, la référence NEP315 visible et parcourable par Tab/Shift+Tab, la fiche toujours encadrée, la séparation FAQ/appel final et les hubs sans JS. Les anciennes assertions de la classe page-chapeau et du compte des entrées du menu ont été remplacées par la présence du chapeau du hub, ses guides et la navigation réellement proposée. Les cibles historiques des ancres de l’accueil restent testées.
+
+Résultats locaux :8 cas CAC/blog/site sans JS PASS ;7 cas du hub (six largeurs et parcours de tous les guides) PASS ;7 cas de navigation desktop et des pages responsives PASS. Aucun changement de code produit dans ce complément. Le runCI38221562463 a passé les portes déterministes et les quatre jobs clavier ; ses échecs navigateur sur ces attentes anciennes imposent une nouvelle CI complète. La re-revue QA et cette CI sont encore attendues au moment de ce complément.
