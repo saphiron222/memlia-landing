@@ -1,4 +1,4 @@
-"""Contrat rendu des deux rubriques éditoriales du blog."""
+"""Contrat rendu des rubriques éditoriales déclarées, dont les trois parcours EC historiques."""
 import json
 from html.parser import HTMLParser
 from pathlib import Path

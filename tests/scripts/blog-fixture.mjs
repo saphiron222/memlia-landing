@@ -164,6 +164,7 @@ secondaryQueries: [${manifest.secondaryQueries.map((item) => `"${item}"`).join('
 intent: ${manifest.intent}
 fanOut: [${manifest.fanOut.map((item) => `"${item}"`).join(', ')}]
 cluster: ${manifest.cluster}
+famille: bulletins-controle
 rolePrincipal: ${manifest.role.primary}
 rolesSecondaires: [${manifest.role.secondary.join(', ')}]
 tache: "${manifest.task}"
