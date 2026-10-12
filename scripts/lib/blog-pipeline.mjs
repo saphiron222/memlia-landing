@@ -198,6 +198,7 @@ const DISALLOWED_SOURCE_PLATFORMS = Object.freeze([
 const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
   { id: 'h2a', host: /^h2a-france\.org$/i, publisher: /\b(?:h2a|haute autorite de l audit)\b/i },
   { id: 'cncc', host: /^(?:doc\.)?cncc\.fr$/i, publisher: /\b(?:cncc|compagnie nationale des commissaires aux comptes)\b/i },
+  { id: 'anc', host: /^(?:www\.)?anc\.gouv\.fr$/i, publisher: /^(?:anc|autorite des normes comptables)(?: anc)?$/i },
   { id: 'urssaf', host: /(?:^|\.)urssaf\.fr$/i, publisher: /\burssaf\b/i },
   { id: 'net-entreprises', host: /(?:^|\.)net-entreprises\.fr$/i, publisher: /\bnet[- ]entreprises\b/i },
   { id: 'service-public', host: /(?:^|\.)service-public\.(?:fr|gouv\.fr)$/i, publisher: /\bservice public\b/i },
@@ -1744,6 +1745,12 @@ function validateContentDepthAndDuplication(markdown, root, slug) {
 
 function incomingSourcePath(root, url) {
   if (url === '/') return join(root, 'src/pages/index.astro');
+  // Cette route Astro produit une page par entrée de la collection services.
+  // Le gabarit seul ne prouve jamais qu'un slug existe.
+  const service = url.match(/^\/automatisation\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/);
+  if (service && existsSync(join(root, 'src/pages/automatisation/[slug].astro'))) {
+    return join(root, 'src/content/services', `${service[1]}.md`);
+  }
   if (url.startsWith('/blog/')) return join(root, 'src/content/blog', `${url.slice('/blog/'.length)}.md`);
   return join(root, 'src/pages', `${url.replace(/^\//, '')}.astro`);
 }
