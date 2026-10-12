@@ -1,4 +1,43 @@
 import { test, expect } from '@playwright/test';
+import { parseDelimited } from '../../src/lib/pseudonymisation.mjs';
+
+for (const [label, delimiter] of [['Tabulation', '\t'], ['Point-virgule', ';'], ['Virgule', ','], ['Barre verticale', '|']]) {
+ test(`séparateur ${label} : deux balances, cellule citée multiligne et export complet`, async ({page}) => {
+  await page.goto(route);
+  await page.getByRole('button', {name:'Charger les deux CSV fictifs'}).click();
+  await page.locator('#same-currency').check();
+  await page.locator('#comparable').check();
+  const quotedLabel = `Fictif${delimiter}"cité"\nsuite`;
+  for (const [key, amount] of [['previous', '100.00'], ['current', '130.00']]) {
+   await page.locator(`#delimiter-${key}`).selectOption({label});
+   const source = ['Compte', 'Libellé', 'Solde'].join(delimiter) + '\n'
+    + ['00123', `"${quotedLabel.replaceAll('"', '""')}"`, amount].join(delimiter) + '\n'
+    + ['00999', 'Autre fictif', '5.00'].join(delimiter);
+   await page.locator(`#csv-${key}`).fill(source);
+  }
+  await page.getByRole('button', {name:'Comparer les balances', exact:true}).click();
+  await expect(page.locator('[data-result]')).toBeVisible();
+  await expect(page.locator('[data-error]')).toBeHidden();
+  await expect(page.locator('[data-totals]')).toContainText('N−1 105,00 ; N 135,00 ; delta 30,00');
+  const cells = page.locator('[data-table] tbody tr').first().locator('td');
+  expect(await cells.allTextContents()).toEqual(['00123', quotedLabel, '100,00', '130,00', '30,00', '30.00 %', 'présent', 'oui', '2', '2']);
+  await page.locator('[data-filter]').check();
+  await expect(page.locator('[data-table] tbody tr')).toHaveCount(1);
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', {name:'Exporter le rapport CSV complet'}).click();
+  const file = await download;
+  let csv = '';
+  for await (const chunk of (await file.createReadStream())!) csv += chunk.toString();
+  const rows: string[][] = parseDelimited(csv, ';').rows;
+  const accounts = rows.filter(row => row[0] === 'compte');
+  expect(accounts).toHaveLength(2);
+  expect(accounts[0].slice(1, 11)).toEqual(['00123', quotedLabel, '10000', '13000', '3000', '30.00', 'présent', 'oui', '2', '2']);
+  expect(accounts[1].slice(1, 6)).toEqual(['00999', 'Autre fictif', '500', '500', '0']);
+  expect(accounts[1].slice(9, 11)).toEqual(['4', '4']);
+  expect(rows.find(row => row[0] === 'totaux')?.slice(3, 6)).toEqual(['10500', '13500', '3000']);
+  for (const key of ['previous', 'current']) expect(await page.locator(`#delimiter-${key}`).inputValue()).toBe(delimiter);
+ });
+}
 test('copie complète, exemple ne remplace pas sans accord, reflow 400 %',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await example(page);
  await page.getByRole('button',{name:'Copier le rapport complet'}).click();await expect(page.locator('[data-status]')).toContainText('copié');

@@ -12,7 +12,7 @@ const periods = [{key:'previous',title:'N−1'},{key:'current',title:'N'}];
       <button type="button" data-read={key} class="btn btn-contour">Lire {title}</button>
       <p data-filename={key}>Aucun fichier lu.</p>
       <label for={`csv-${key}`}>Contenu CSV {title} (éditable)</label><textarea id={`csv-${key}`} rows="5" aria-describedby="balance-help balance-error"></textarea>
-      <label for={`delimiter-${key}`}>Séparateur {title}</label><select id={`delimiter-${key}`}><option value=";">Point-virgule</option><option value=",">Virgule</option><option value="\t">Tabulation</option><option value="|">Barre verticale</option></select>
+      <label for={`delimiter-${key}`}>Séparateur {title}</label><select id={`delimiter-${key}`}><option value=";">Point-virgule</option><option value=",">Virgule</option><option value={'\t'}>Tabulation</option><option value="|">Barre verticale</option></select>
       <label for={`mode-${key}`}>Convention des montants {title}</label><select id={`mode-${key}`}><option value="balance">Solde signé</option><option value="debit-credit">Débit et crédit</option></select>
       <p>Mapping explicite : les numéros désignent les colonnes de gauche à droite, à partir de 1. Relisez l’en-tête dans le contenu CSV ; aucune colonne n’est devinée.</p>
       <p>Convention à confirmer par votre choix : solde signé positif débiteur, négatif créditeur ; avec deux colonnes, solde = débit − crédit.</p>
