@@ -1034,17 +1034,21 @@ h3.liens-titre {
   min-width: 0;
   border-bottom: 1px solid var(--ligne);
 }
+/* Les sélecteurs gardent le poids de ceux de `.cartes` : un `li` dans un `:has()` alourdirait la
+   règle des trois colonnes et ferait perdre celle des sept liens (3 + 3 + 1 au lieu de 3 + 2 + 2).
+   Un lien seul prend la largeur d'une colonne et se centre, comme une carte seule. */
 @container (min-width: 36rem) {
-  .liens:has(> li:last-child:nth-child(even)) > li {
+  .liens:has(> :last-child:nth-child(even)) > li,
+  .liens > li:only-child {
     flex-basis: calc((100% - var(--liens-ecart)) / 2 - 0.1px);
   }
 }
 @container (min-width: 56rem) {
-  .liens:has(> li:nth-child(3)):not(:has(> li:last-child:nth-child(4))) > li {
+  .liens:has(> :nth-child(3)):not(:has(> :last-child:nth-child(4))) > li {
     flex-basis: calc((100% - 2 * var(--liens-ecart)) / 3 - 0.1px);
   }
   /* Sept liens : 3 + 2 + 2, comme les cartes. */
-  .liens:has(> li:last-child:nth-child(7)) > li:nth-child(n + 4) {
+  .liens:has(> :last-child:nth-child(7)) > li:nth-child(n + 4) {
     flex-basis: calc((100% - 2 * var(--liens-ecart)) / 3 + 1px);
   }
 }
