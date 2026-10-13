@@ -111,8 +111,9 @@ largeur du groupe (requête de conteneur), pas sur celle de l'écran.
 - **Lignes** : une par rangée, filet entre deux lignes. Dès 768 px, le libellé occupe un tiers et
   le texte deux tiers ; dès 1 024 px, les deux moitiés de la rangée : la définition commence sur
   le bord de la maquette.
-- **Liste de liens** : une colonne de 26 rem au plus jusqu'à 4 liens ; deux colonnes à partir de
-  5 liens, dès 640 px de bloc.
+- **Liste de liens** : la disposition des cartes (tableau ci-dessus, mesurée sur la largeur de la
+  liste) ; rangée incomplète centrée, filets du bas alignés par rangée (Kevin, 13/10/2026 : les
+  listes collées à gauche laissaient jusqu'à 878 px vides à droite).
 
 ## 6. Lien d'action
 
@@ -169,7 +170,8 @@ Points ouverts pour la phase 2 :
 - Les preuves illisibles à 375 px (§ 7).
 - Restent des cartes seules parce que le contenu les impose : l'outil seul de sa catégorie
   (Explorer, Se situer) et le guide seul de son produit (Cegid Loop). Les regrouper est une
-  décision de contenu.
+  décision de contenu. Depuis le 13/10/2026, une carte seule se centre sur la largeur d'une
+  colonne, comme toute rangée incomplète.
 - /integrations porte quatre surtitres (l'éditeur de chaque produit) : c'est une catégorie, mais
   la règle « un pour trois sections » y est dépassée.
 

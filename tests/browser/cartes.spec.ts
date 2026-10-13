@@ -19,6 +19,7 @@ import { test, expect, type Page } from '@playwright/test';
  */
 const ROUTES = [
   '/',
+  '/commissaires-aux-comptes',
   '/automatisation-cabinet-comptable',
   '/automatisation/rapprochement-bancaire',
   '/automatisation/factures-fournisseurs',
@@ -142,8 +143,9 @@ async function mesurer(page: Page) {
         };
       });
     // Toutes les grilles rendues, même réduites à zéro : une grille écrasée par sa requête de
-    // conteneur (largeur tirée de son contenu) doit rougir, pas disparaître du contrôle.
-    const grilles = [...document.querySelectorAll('.cartes')].filter((el) => el.getClientRects().length > 0).map((grille) => {
+    // conteneur (largeur tirée de son contenu) doit rougir, pas disparaître du contrôle. Les listes
+    // de liens suivent la même règle de disposition que les cartes (Kevin, 13/10/2026).
+    const grilles = [...document.querySelectorAll('.cartes, .liens')].filter((el) => el.getClientRects().length > 0).map((grille) => {
       const boite = grille.getBoundingClientRect();
       const parent = grille.parentElement!;
       const ps = getComputedStyle(parent);
@@ -222,8 +224,9 @@ for (const largeur of LARGEURS) {
           g.rangees.forEach((rangee, i) => {
             const derniere = i === g.rangees.length - 1;
             if (g.nombre === 1) {
-              // Une destination seule (phase 2 : lien d'action) se range à gauche.
-              expect.soft(rangee.gauche, `${nom} : carte seule à gauche`).toBeLessThanOrEqual(1.5);
+              // Une carte seule imposée par le contenu se centre, comme toute rangée incomplète
+              // (Kevin, 13/10/2026).
+              expect.soft(Math.abs(rangee.gauche - rangee.droite), `${nom} : carte seule centrée`).toBeLessThanOrEqual(1.5);
             } else if (!derniere || g.bande) {
               expect.soft(rangee.gauche, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);
               expect.soft(rangee.droite, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);

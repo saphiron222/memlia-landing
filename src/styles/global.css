@@ -645,11 +645,8 @@ ol {
   }
 }
 /* Une destination seule n'est pas une carte (c'est un lien d'action). Quand le contenu impose une
-   carte seule (l'outil seul de sa catégorie, le guide seul de son produit), elle se range à
-   gauche, sur la largeur d'une colonne, au lieu de s'étirer. */
-.cartes:has(> :only-child) {
-  justify-content: flex-start;
-}
+   carte seule (l'outil seul de sa catégorie, le guide seul de son produit), elle prend la largeur
+   d'une colonne au lieu de s'étirer et se centre, comme toute rangée incomplète. */
 @container (min-width: 36rem) {
   .cartes:has(> :last-child:nth-child(even)) > *,
   .cartes > :only-child {
@@ -1012,21 +1009,43 @@ h3.liens-titre {
   font-size: var(--titre-bloc);
   line-height: 1.2;
 }
+/*
+ * La liste suit le nombre de liens, comme la grille `.cartes` (système de page, § 5) : tous les
+ * liens d'une liste ont la même largeur, la dernière rangée ne porte jamais un lien seul et une
+ * rangée incomplète se centre. Sous 36 rem de liste, une colonne ; dès 36 rem, deux colonnes pour
+ * un nombre pair, une pour un nombre impair ; dès 56 rem, trois colonnes dès 3 liens, sauf 4
+ * (2 × 2) : 5 = 3 + 2, 7 = 3 + 2 + 2, 8 = 3 + 3 + 2. Les rangées s'étirent à la hauteur de leur
+ * plus haut lien : les filets du bas restent alignés d'une colonne à l'autre.
+ */
 .liens {
-  max-width: var(--liens-colonne);
+  --liens-ecart: var(--espace-8);
+  container-type: inline-size;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: var(--liens-ecart);
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
-  column-gap: var(--espace-8);
 }
 .liens > li {
-  break-inside: avoid;
+  flex: 0 0 100%;
+  min-width: 0;
   border-bottom: 1px solid var(--ligne);
 }
-@container (min-width: 40rem) {
-  .liens:has(> li:nth-child(5)) {
-    columns: 2;
-    max-width: calc(2 * var(--liens-colonne) + var(--espace-8));
+@container (min-width: 36rem) {
+  .liens:has(> li:last-child:nth-child(even)) > li {
+    flex-basis: calc((100% - var(--liens-ecart)) / 2 - 0.1px);
+  }
+}
+@container (min-width: 56rem) {
+  .liens:has(> li:nth-child(3)):not(:has(> li:last-child:nth-child(4))) > li {
+    flex-basis: calc((100% - 2 * var(--liens-ecart)) / 3 - 0.1px);
+  }
+  /* Sept liens : 3 + 2 + 2, comme les cartes. */
+  .liens:has(> li:last-child:nth-child(7)) > li:nth-child(n + 4) {
+    flex-basis: calc((100% - 2 * var(--liens-ecart)) / 3 + 1px);
   }
 }
 .lien-rangee {
