@@ -37,6 +37,15 @@ test('le hub ne masque pas un produit d’un nouvel éditeur', () => {
   assert.doesNotMatch(source, /Neuf guides/);
 });
 
+test('les guides par environnement d’une page se comptent depuis les données', () => {
+  // Le garde du hub (« Neuf guides ») n'avait pas été porté à ce composant : il annonçait encore
+  // « les neuf guides » quand il y en avait douze, et titrait un guide par sa requête (« Dsn sage »).
+  const source = read('src/components/RelatedIntegrations.astro');
+  assert.doesNotMatch(source, /neuf guides/i);
+  assert.match(source, /\{INTEGRATIONS_INDEXABLES\.length\} guides/);
+  assert.doesNotMatch(source, /primaryQuery/);
+});
+
 test('le pont CAC est accepté, pas une destination éditoriale ou externe', () => {
   for (const href of ['/commissaires-aux-comptes', '/automatisation/paie', '/automatisation-cabinet-comptable']) assert.equal(estLienCommercialBlog(href), true);
   for (const href of ['/blog/fictif', 'https://exemple.fr', '/commissaires-aux-comptes?x=1', '/commissaires-aux-comptes-autre']) assert.equal(estLienCommercialBlog(href), false);
