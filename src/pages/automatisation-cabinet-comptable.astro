@@ -9,11 +9,31 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { serviceNode, SERVICE_ID } from '@/data/schema.mjs';
 import { eeatCommercial } from '@/data/page-eeat';
-import { famillesDeLaProfession } from '@/data/familles';
+import { familleParId, famillesDeLaProfession } from '@/data/familles';
 const familles = famillesDeLaProfession('ec');
 const nombrePoles = new Set(familles.map(({ pole }) => pole)).size;
-const servicesPublies = (await getCollection('services', ({ data }) => data.status === 'publie'))
-  .sort((a, b) => a.data.title.localeCompare(b.data.title, 'fr'));
+// Le catalogue nomme la tâche, pas le titre de sa page (Kevin, 13/10/2026) : un libellé court par
+// service ; à défaut, celui de sa famille ; à défaut, le titre avant ses deux-points.
+const LIBELLES_TACHES: Record<string, string> = {
+  'bulletins-controle': 'Contrôle des bulletins de paie',
+  'circularisation-cac': 'Circularisation',
+  'entrees-sorties-salaries': 'Entrées et sorties des salariés',
+  'evaluation-transmission': 'Dossier d’évaluation d’entreprise',
+  'facture-electronique': 'Facture électronique',
+  'factures-fournisseurs': 'Factures fournisseurs',
+  'notes-de-frais': 'Notes de frais',
+  'paie': 'Paie',
+  'rapprochement-bancaire': 'Rapprochement bancaire',
+  'registres-obligations': 'Registres et obligations',
+  'saisie-comptable': 'Saisie comptable',
+  'secretariat-juridique': 'Secrétariat juridique',
+};
+const taches = (await getCollection('services', ({ data }) => data.status === 'publie'))
+  .map((service) => ({
+    href: `/automatisation/${service.id}`,
+    libelle: LIBELLES_TACHES[service.id] ?? familleParId(service.id)?.libelle ?? service.data.title.split(/\s*:/)[0].trim(),
+  }))
+  .sort((a, b) => a.libelle.localeCompare(b.libelle, 'fr'));
 
 const page = PAGES_V2.service;
 // La source de la page se cite sur ses mots, dans « Le jeu d’essai » (décision de Kevin du 06/10/2026).
@@ -44,22 +64,13 @@ const renvois = [
   { texte: 'Le questionnaire revenu vide qui a changé notre façon de cadrer une tâche.', libelle: 'Lire ce retour d’expérience', href: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils' },
   { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Nos garanties', href: '/garanties' },
 ];
-// Ce qui reste hors des logiciels du cabinet, pôle par pôle (règle de couverture du 06/10/2026 :
-// preuves dans le chantier cac-site-niveau-superieur, sorties/couverture-logiciels-2026-10-06/).
-const poles = [
-  { nom: 'Production comptable', reste: 'Les pièces que votre outil n’impute pas, les points à trancher avant le bilan.' },
-  { nom: 'Paie et social', reste: 'Les variables reçues hors portail, les retours DSN triés par date limite.' },
-  { nom: 'Portefeuille et échéances', reste: 'Le rappel à chaque client de ses échéances du mois, avec le montant.' },
-  { nom: 'Juridique', reste: 'L’échéancier d’approbation et de dépôt du portefeuille, les fiches clients tenues à jour des registres.' },
-  { nom: 'Administratif', reste: 'La boîte mail rangée par dossier, les lettres de mission non signées relancées.' },
-  { nom: 'Données et outils', reste: 'Les gestes entre deux outils qui ne se parlent pas.' },
-  { nom: 'Commissariat aux comptes', reste: 'La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.' },
-];
 const outils = [
   { href: '/outils-comptables-gratuits/fusionner-fichiers-csv', libelle: 'Fusionner des exports CSV', texte: 'Correspondance des colonnes confirmée, fichier consolidé et rapport des exceptions. Le cabinet vérifie la comparabilité des exports.' },
   { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
   { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
+  { href: '/outils-comptables-gratuits/comparateur-balances-comptables', libelle: 'Comparateur de balances comptables', texte: 'Comptes nouveaux, disparus et variations selon vos seuils. L’explication des soldes reste à votre équipe.' },
   { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
+  { href: '/outils-comptables-gratuits/generateur-relance-facture-impayee', libelle: 'Générateur de relance de facture impayée', texte: 'Trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.' },
   { href: '/outils-comptables-gratuits/calculateur-amortissement-comptable', libelle: 'Calculateur d’amortissement comptable', texte: 'Base, prorata, dotation et valeur nette par exercice.' },
   { href: '/outils-comptables-gratuits/calculateur-marge-commerciale', libelle: 'Calculateur de marge commerciale', texte: 'Marge, taux de marge et taux de marque sur deux montants HT fictifs, sans produire de conseil de prix.' },
 ];
@@ -145,27 +156,44 @@ const appel = {
   <section class="pv" aria-labelledby="perimetre">
     <div class="tete rv">
       <h2 id="perimetre">Ce que nous savons écrire</h2>
-      <p class="texte-2 lecture">Avant d’écrire une préparation récurrente, vous pouvez <a href="/outils-comptables-gratuits/comparateur-balances-comptables">comparer deux balances comptables</a> issues de CSV : comptes nouveaux, disparus et variations selon vos seuils. Le rapport conserve les conventions et la provenance ; l’explication des soldes reste à votre équipe.</p>
-      <p>Pour <a href="/outils-comptables-gratuits/generateur-relance-facture-impayee">préparer une relance de facture impayée</a>, rejouez trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.</p>
       <p class="texte-2 lecture">Partons d’une tâche : rassembler les pièces manquantes, préparer des écarts entre deux états ou suivre une échéance. Nous écrivons ce qui déclenche le traitement, la proposition attendue et ce que votre équipe doit décider. <a href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches">Lire la carte des tâches</a>.</p>
-      <p class="texte-2 lecture">Pour le commissariat aux comptes, nous préparons aussi les demandes de documents, le suivi des réponses et les comparaisons entre exercices. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission.</p>
-      <p class="texte-2 lecture">Pour vos missions d’audit, découvrez <a href="/commissaires-aux-comptes">l’automatisation pour commissaire aux comptes</a> : sélection des tiers, écarts de confirmation et fichiers rapprochés de la balance, avec votre validation.</p>
     </div>
+    {/* Ce qui reste hors des logiciels du cabinet, pôle par pôle (règle de couverture du 06/10/2026 :
+        preuves dans le chantier cac-site-niveau-superieur, sorties/couverture-logiciels-2026-10-06/).
+        Les lignes s'écrivent en clair : leurs liens sont les ancres contextuelles que la recette de
+        chaque service exige depuis cette page (scripts/service-forge.mjs). */}
     <dl class="lignes perimetre-poles rv">
-      {poles.map((pole) => (
-        <div class="ligne">
-          <dt class="ligne-libelle">{pole.nom}</dt>
-          <dd class="ligne-texte">{pole.reste}</dd>
-        </div>
-      ))}
+      <div class="ligne">
+        <dt class="ligne-libelle">Production comptable</dt>
+        <dd class="ligne-texte">Les pièces que votre outil n’impute pas, les points à trancher avant le bilan.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Paie et social</dt>
+        <dd class="ligne-texte">Les variables reçues hors portail, les retours DSN triés par date limite. Vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> ; nous pouvons <a href="/automatisation/bulletins-controle">automatiser les contrôles des bulletins de paie</a> là où les contrôles natifs laissent un rapprochement manuel, et <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a> pour les annonces reçues hors portail. Les écarts attendent l’examen du gestionnaire : chaque correction et chaque décision restent au pôle social.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Portefeuille et échéances</dt>
+        <dd class="ligne-texte">Le rappel à chaque client de ses échéances du mois, avec le montant.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Juridique</dt>
+        <dd class="ligne-texte">L’échéancier d’approbation et de dépôt du portefeuille, les fiches clients tenues à jour des registres. Nous pouvons <a href="/automatisation/registres-obligations">automatiser le suivi des registres et obligations</a>, de la publication à la fiche client proposée, et <a href="/automatisation/secretariat-juridique">suivre les échéances juridiques hors de votre outil</a> si ce suivi reste manuel après vérification de votre offre. Les dates, l’approbation, le dépôt et les suites à donner restent au cabinet et aux personnes habilitées.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Administratif</dt>
+        <dd class="ligne-texte">La boîte mail rangée par dossier, les lettres de mission non signées relancées.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Données et outils</dt>
+        <dd class="ligne-texte">Les gestes entre deux outils qui ne se parlent pas.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Commissariat aux comptes</dt>
+        <dd class="ligne-texte">La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission. Pour vos missions d’audit, découvrez <a href="/commissaires-aux-comptes">l’automatisation pour commissaire aux comptes</a>.</dd>
+      </div>
     </dl>
-      <p class="texte-2 lecture">Pour passer d’une publication à une fiche client proposée et à une alerte destinée à l’associé, vous pouvez <a href="/automatisation/registres-obligations">automatiser le suivi des registres et obligations</a>. Le cabinet garde la mise à jour, la date applicable et les suites à donner.</p>
-    <p class="texte-2 lecture perimetre-paie rv">Dans le pôle social, vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> tout en laissant chaque correction et chaque décision aux gestionnaires.</p>
-    <p class="texte-2 lecture rv">Nous pouvons <a href="/automatisation/bulletins-controle">automatiser les contrôles des bulletins de paie</a> là où les contrôles natifs laissent un rapprochement manuel entre variables validées et résultats calculés. Les écarts attendent l’examen du gestionnaire ; aucune correction ne part seule.</p>
-    <p class="texte-2 lecture perimetre-salaries rv">Pour les annonces reçues hors portail, nous pouvons <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a>. Le circuit déjà utilisé et les décisions sociales restent au pôle social.</p>
-    <p class="texte-2 lecture rv">Dans le pôle juridique, nous pouvons <a href="/automatisation/secretariat-juridique">suivre les échéances juridiques hors de votre outil</a> si ce suivi reste manuel après vérification de votre offre et de ses options. Les dates, l’approbation et le dépôt restent au cabinet et aux personnes habilitées.</p>
     <div class="liens-bloc perimetre-outils rv">
-      <h3 class="liens-titre">Avant de confier une tâche, cinq outils gratuits</h3>
+      <h3 class="liens-titre">Avant de confier une tâche, nos outils gratuits</h3>
       <ul class="liens">
         {outils.map((outil) => (
           <li>
@@ -213,7 +241,18 @@ const appel = {
   </section>
   <section class="pv" aria-labelledby="taches-guides">
     <div class="tete"><h2 id="taches-guides">Les tâches que vous pouvez confier</h2><p>Retrouvez la règle, les limites et les essais prévus pour chaque tâche.</p></div>
-    <ul class="liens" data-service-catalog>{servicesPublies.map(service => <li><a class="lien-action" href={`/automatisation/${service.id}`}>{service.data.title}<Picto nom="fleche" taille={14} /></a></li>)}</ul>
+    <div class="liens-bloc">
+      <ul class="liens" data-service-catalog>
+        {taches.map((tache) => (
+          <li>
+            <a class="lien-rangee" href={tache.href}>
+              <span class="lien-libelle">{tache.libelle}</span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 </PageCommerciale>
 
