@@ -13,7 +13,7 @@ Le générateur lit uniquement le `<main>` du HTML final, après suppression des
 
 ## Ordre de construction
 
-`build:site` reste la construction contrôlée des surfaces éditoriales. L’export est une étape finale de `build`, après `resource:audit:qa` : il n’altère pas les corps de pages ni les dates du registre éditorial. Les contrôles historiques du HTML brut et des ressources sont exécutés avant l’ajout du lien de découverte. Le contrat d’export est exécuté ensuite sur la sortie réellement livrée et compare chaque texte au `<main>` final. Il ne faut pas publier la seule sortie de `build:site` pour obtenir cet export.
+`build:site` reste la construction contrôlée des surfaces éditoriales. L’export est une étape finale de `build`, après `resource:audit:qa` : il n’altère pas les corps de pages ni les dates du registre éditorial. Les contrôles historiques du HTML brut et des ressources sont exécutés avant l’ajout du lien de découverte. Le contrat d’export est exécuté ensuite sur la sortie réellement livrée et compare chaque texte au `<main>` final. Le verrou de vocabulaire (`tests/proof/test_positioning.py`) est enfin rejoué sur cette sortie par `npm run test:positioning:export`, dernière étape de `build` : il exige `llms-full.txt` et un Markdown par page du sitemap. Sans ce rejeu, la porte de `build:site` passe avant l’existence de l’export et ne le lit jamais (13/10/2026 : deux adresses d’éditeurs écrivant « modules » dans leur chemin n’étaient vues nulle part). Il ne faut pas publier la seule sortie de `build:site` pour obtenir cet export.
 
 Aucune fonction Cloudflare ni dépendance de production supplémentaire. Les fichiers sont régénérés à chaque construction ; ni le Markdown ni les ajouts à `dist/llms.txt` et `dist/_headers` ne sont versionnés. Le générateur est idempotent sur un même `dist`. Les copies textuelles portent `X-Robots-Tag: noindex` pour conserver les pages HTML comme surfaces d’indexation ; elles restent accessibles aux assistants.
 
@@ -24,6 +24,7 @@ Le code inline est lu littéralement, sans échappement de prose ; la longueur d
 - `node --test tests/scripts/agent-markdown.test.mjs` : conversion, nettoyage des sources, sitemap, génération idempotente et témoin négatif d’un export divergent. `markdown-it`, dépendance de test uniquement, vérifie indépendamment le code en prose/tableaux, les titres, les libellés des cartes liées et les limites des items multiparagraphes.
 - `npm run build` : suite existante puis contrat de l’export complet.
 - `node scripts/verify-agent-markdown.mjs` : contrat de `dist` déjà construit.
+- `npm run test:positioning:export` : verrou de vocabulaire sur `dist` déjà construit, export compris. Une adresse d’éditeur n’est pas de la copie ; son libellé, les adresses memlia.fr et le texte restent contrôlés.
 - `node scripts/verify-agent-markdown.mjs --origin=https://<preview>.memlia.pages.dev` : même contrat via HTTP, avec statut et type MIME pour chaque page et chaque fichier texte.
 - Après fusion et déploiement automatique : `node scripts/verify-agent-markdown.mjs --origin=https://memlia.fr`.
 
