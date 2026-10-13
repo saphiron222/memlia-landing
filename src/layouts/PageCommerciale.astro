@@ -153,6 +153,10 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   /* Texte d'une rangée : l'en-tête du système, puis les paragraphes tels qu'écrits. */
   .page-v2 :global(.pv-copy) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
   .page-v2 :global(.pv-copy p) { margin: 0; }
+  /* Une colonne, une couleur : sous le titre, les paragraphes sont l'introduction du système de page
+     (--texte-2), sans alternance 88 % / 68 % d'un paragraphe à l'autre (Kevin, 13/10/2026). Le gras
+     garde l'emphase. */
+  .page-v2 :global(.pv-copy > p:not(.surtitre)) { color: var(--texte-2); }
   .page-v2 :global(.pv-copy h2) { font-size: var(--titre-section); }
   .page-v2 :global(.pv strong) { color: var(--texte-fort); font-weight: 600; }
   /* La bande va bord à bord de la feuille, seule forme à le faire. */

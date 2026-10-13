@@ -51,6 +51,25 @@ for (const [width, height] of LARGEURS) {
  */
 const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
 
+/**
+ * Une colonne, une couleur (Kevin, 13/10/2026) : sous un titre de section, les paragraphes d'une même
+ * colonne ne passent plus de 88 % à 68 % d'opacité d'un paragraphe à l'autre. Les surtitres et les
+ * mentions gardent leur rôle ; le gras garde l'emphase.
+ */
+test('pages v2 : une seule couleur de paragraphe par colonne de texte', async ({ page }) => {
+  for (const route of ROUTES) {
+    await page.goto(route);
+    const colonnes = await page.evaluate(() => [...document.querySelectorAll('main .pv-copy, main .etape-copie')].map((colonne) => ({
+      titre: (colonne.querySelector('h2, h3')?.textContent ?? '').trim().slice(0, 50),
+      couleurs: [...new Set([...colonne.children]
+        .filter((e) => e.tagName === 'P' && !e.matches('.surtitre, .mention'))
+        .map((e) => getComputedStyle(e).color))],
+    })));
+    expect(colonnes.length, `${route} : colonnes de texte mesurées`).toBeGreaterThan(0);
+    for (const c of colonnes) expect.soft(c.couleurs.length, `${route} « ${c.titre} » : ${c.couleurs.join(' / ')}`).toBeLessThanOrEqual(1);
+  }
+});
+
 test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, request }) => {
   for (const route of INDEXABLES) {
     const initial = await (await request.get(route)).text();
