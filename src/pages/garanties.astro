@@ -15,9 +15,6 @@ const noeuds = [{
 /**
  * Les six garanties de l'accueil, chacune menant ici à la section qui la tient. Système de page :
  * des destinations nommées par leur libellé, donc une liste de liens (pictogramme, libellé, flèche).
- * Chaque section porte son engagement en tête (trois paragraphes au plus), puis ses applications en
- * lignes : la tâche ou l'outil, la phrase qui la borne (Kevin, 13/10/2026 : plus de murs de dix
- * paragraphes). Les liens de service gardent les ancres que leur recette exige depuis cette page.
  */
 const grille: { picto: NomPicto; libelle: string; href: string }[] = [
   { picto: 'main', libelle: 'L’IA prépare, l’humain décide', href: '#arret' },
@@ -27,6 +24,12 @@ const grille: { picto: NomPicto; libelle: string; href: string }[] = [
   { picto: 'regle', libelle: 'Périmètre écrit avant la mise en service', href: '#ecrit' },
   { picto: 'bouclier', libelle: 'Ce que nous ne promettons pas', href: '#refus' },
 ];
+/*
+ * Chaque section porte son engagement en tête (trois paragraphes au plus), puis ses applications en
+ * lignes : la tâche ou l'outil, la phrase qui la borne (Kevin, 13/10/2026 : plus de murs de dix
+ * paragraphes). Une phrase qui renvoie à la précédente (« ainsi », « Cette frontière ») reste collée
+ * à son antécédent. Les liens de service gardent les ancres que leur recette exige depuis cette page.
+ */
 const appel = {
   titre: 'Ces engagements se lisent avant de s’engager.',
   texte: 'Confiez-nous la tâche répétitive qui charge votre équipe. Nous écrivons sa règle avec vous, puis nous la construisons et la maintenons dans vos outils. Vous gardez la décision.',
@@ -66,7 +69,7 @@ const appel = {
         <dd class="ligne-texte">Cette règle borne la décision de <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> : une pièce incertaine ne devient jamais une écriture certaine.</dd>
       </div>
       <div class="ligne">
-        <dt class="ligne-libelle">Évaluation d’entreprise</dt>
+        <dt class="ligne-libelle">Dossier d’évaluation d’entreprise</dt>
         <dd class="ligne-texte">Vous pouvez <a href="/automatisation/evaluation-transmission">garder la décision sur la valeur de l’entreprise</a> tout en confiant la préparation des pièces et tableaux. Un ajustement en attente reste hors du total ; un conflit de versions réclame votre arbitrage.</dd>
       </div>
       <div class="ligne">
@@ -80,7 +83,7 @@ const appel = {
     <ProofRow id="v2/45-cadrage-donnees">
       <div class="pv-copy rv">
         <h2 id="donnees-titre">Des essais fictifs, des flux cadrés par mission</h2>
-        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
+        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu. Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p>
         <p class="texte-2">Les fichiers réels autorisés pour le cadrage sont lus en place. Nous ne les copions pas dans nos dépôts et nous développons sur des jeux fictifs. Pour le premier échange, la description du geste suffit.</p>
         <p class="texte-2">Avant la mise en service, nous documentons les données lues, les droits d’accès, les destinataires et les flux du traitement. Les hébergements éventuels, les durées de conservation et les responsabilités sont précisés pour la mission. Un traitement local se vérifie sur ses appels réseau et sa télémétrie ; le lieu du fichier ne suffit pas.</p>
       </div>
@@ -93,10 +96,6 @@ const appel = {
       <div class="ligne">
         <dt class="ligne-libelle">Copie de travail</dt>
         <dd class="ligne-texte">Pour une copie de travail, vous pouvez <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">supprimer des colonnes et pseudonymiser un CSV local</a>, puis examiner les risques restants. Des alias ne garantissent pas l’anonymat.</dd>
-      </div>
-      <div class="ligne">
-        <dt class="ligne-libelle">Notes de frais</dt>
-        <dd class="ligne-texte">Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</dd>
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Circularisation</dt>
@@ -151,7 +150,7 @@ const appel = {
         <dd class="ligne-texte">Ce périmètre est la condition pour <a href="/automatisation/factures-fournisseurs">cadrer le flux des factures fournisseurs</a> sans confondre préparation, litige et décision de paiement.</dd>
       </div>
       <div class="ligne">
-        <dt class="ligne-libelle">Facture électronique</dt>
+        <dt class="ligne-libelle">Relances de facture électronique</dt>
         <dd class="ligne-texte">Pour <a href="/automatisation/facture-electronique">valider les relances hors de la plateforme du cabinet</a>, l’équipe confirme le dossier, le destinataire et le texte ; les notes saisies restent intactes et aucun message ne part seul.</dd>
       </div>
       <div class="ligne">
@@ -164,7 +163,7 @@ const appel = {
   <section class="pv" id="refus" aria-labelledby="refus-titre">
     <div class="tete rv">
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
-      <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
+      <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>. Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
     <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -179,10 +178,6 @@ const appel = {
       <div class="ligne">
         <dt class="ligne-libelle">Checklist des pièces</dt>
         <dd class="ligne-texte">Vous pouvez <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a> sans interpréter une pièce inconnue comme absente : les éléments à clarifier restent séparés. La liste est choisie par le cabinet, pas déduite d’obligations fiscales ; le message n’est jamais envoyé par l’outil.</dd>
-      </div>
-      <div class="ligne">
-        <dt class="ligne-libelle">Contrôle d’un FEC</dt>
-        <dd class="ligne-texte">Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</dd>
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Barème d’heures CAC</dt>
