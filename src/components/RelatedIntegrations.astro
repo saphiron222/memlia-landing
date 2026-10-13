@@ -1,19 +1,19 @@
 ---
 import Picto from '@/components/Picto.astro';
-import { integrationPath, integrationsForService } from '@/data/integrations';
+import { INTEGRATIONS_INDEXABLES, integrationPath, integrationsForService } from '@/data/integrations';
 
 /**
  * Guides par environnement d'une page (hub, service). Système de page : des destinations nommées
- * par leur titre, donc une liste de liens, titrée par son libellé (titre, éditeur et produit
- * dessous, « Lire le guide » et la flèche au bout), jamais une carte seule ; puis le lien d'action
- * vers les neuf guides. Le libellé titre la liste plutôt qu'un surtitre : au plus un surtitre pour
- * trois sections.
+ * par leur titre, donc une liste de liens, titrée par son libellé (« la tâche dans le produit »,
+ * comme les cartes du hub des intégrations, l'éditeur dessous, « Lire le guide » et la flèche au
+ * bout), jamais une carte seule ; puis le lien d'action vers tous les guides, comptés depuis les
+ * données. Le libellé titre la liste plutôt qu'un surtitre : au plus un surtitre pour trois sections.
  */
 interface Props { servicePath: string; }
 const { servicePath } = Astro.props;
 const integrations = integrationsForService(servicePath);
 const titleId = `rayons-${servicePath.replaceAll('/', '-')}`;
-const titre = (requete: string) => requete.charAt(0).toUpperCase() + requete.slice(1);
+const titre = (tache: string, produit: string) => `${tache.charAt(0).toUpperCase() + tache.slice(1)} dans ${produit}`;
 ---
 
 {integrations.length > 0 && (
@@ -28,7 +28,7 @@ const titre = (requete: string) => requete.charAt(0).toUpperCase() + requete.sli
         {integrations.map((integration) => (
           <li>
             <a class="lien-rangee" href={integrationPath(integration)}>
-              <span class="lien-libelle">{titre(integration.primaryQuery)}<span class="lien-detail">{integration.vendor} · {integration.product}</span></span>
+              <span class="lien-libelle">{titre(integration.task, integration.product)}<span class="lien-detail">{integration.vendor}</span></span>
               <span class="lien-suite">Lire le guide</span>
               <Picto nom="fleche" taille={14} class="lien-fleche" />
             </a>
@@ -36,7 +36,7 @@ const titre = (requete: string) => requete.charAt(0).toUpperCase() + requete.sli
         ))}
       </ul>
     </div>
-    <a class="lien-action" href="/integrations">Voir les neuf guides par environnement<Picto nom="fleche" taille={14} /></a>
+    <a class="lien-action" href="/integrations">Voir les {INTEGRATIONS_INDEXABLES.length} guides par environnement<Picto nom="fleche" taille={14} /></a>
   </aside>
 )}
 

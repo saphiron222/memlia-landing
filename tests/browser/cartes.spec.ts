@@ -19,6 +19,7 @@ import { test, expect, type Page } from '@playwright/test';
  */
 const ROUTES = [
   '/',
+  '/commissaires-aux-comptes',
   '/automatisation-cabinet-comptable',
   '/automatisation/rapprochement-bancaire',
   '/automatisation/factures-fournisseurs',
@@ -142,8 +143,9 @@ async function mesurer(page: Page) {
         };
       });
     // Toutes les grilles rendues, même réduites à zéro : une grille écrasée par sa requête de
-    // conteneur (largeur tirée de son contenu) doit rougir, pas disparaître du contrôle.
-    const grilles = [...document.querySelectorAll('.cartes')].filter((el) => el.getClientRects().length > 0).map((grille) => {
+    // conteneur (largeur tirée de son contenu) doit rougir, pas disparaître du contrôle. Les listes
+    // de liens suivent la même règle de disposition que les cartes (Kevin, 13/10/2026).
+    const grilles = [...document.querySelectorAll('.cartes, .liens')].filter((el) => el.getClientRects().length > 0).map((grille) => {
       const boite = grille.getBoundingClientRect();
       const parent = grille.parentElement!;
       const ps = getComputedStyle(parent);
@@ -222,8 +224,9 @@ for (const largeur of LARGEURS) {
           g.rangees.forEach((rangee, i) => {
             const derniere = i === g.rangees.length - 1;
             if (g.nombre === 1) {
-              // Une destination seule (phase 2 : lien d'action) se range à gauche.
-              expect.soft(rangee.gauche, `${nom} : carte seule à gauche`).toBeLessThanOrEqual(1.5);
+              // Une carte seule imposée par le contenu se centre, comme toute rangée incomplète
+              // (Kevin, 13/10/2026).
+              expect.soft(Math.abs(rangee.gauche - rangee.droite), `${nom} : carte seule centrée`).toBeLessThanOrEqual(1.5);
             } else if (!derniere || g.bande) {
               expect.soft(rangee.gauche, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);
               expect.soft(rangee.droite, `${nom} : rangée ${i + 1} incomplète`).toBeLessThanOrEqual(1.5);
@@ -246,6 +249,62 @@ for (const largeur of LARGEURS) {
     }
   });
 }
+
+/**
+ * Disposition selon le nombre, indépendamment du contenu des pages (revue du 13/10/2026 : aucune
+ * page ne portait 7 liens, et la règle des sept était morte sans que rien ne rougisse). Des listes
+ * de liens et des grilles de cartes témoins, de 1 à 9 éléments, sont injectées à trois largeurs ;
+ * chaque rangée doit suivre le tableau du système de page (§ 5) et la dernière se centrer.
+ */
+test('listes et cartes témoins : rangées selon le nombre, de 1 à 9 éléments', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const mesures = await page.evaluate(() => {
+    const hote = document.createElement('div');
+    hote.style.cssText = 'position:absolute;left:0;top:0;';
+    (document.querySelector('main') ?? document.body).append(hote);
+    const resultats: { forme: string; largeur: number; nombre: number; rangees: number[]; ecartCentre: number; largeurs: number[] }[] = [];
+    for (const largeur of [1200, 700, 400]) {
+      for (let nombre = 1; nombre <= 9; nombre += 1) {
+        for (const forme of ['liens', 'cartes']) {
+          const boite = document.createElement('div');
+          boite.style.width = `${largeur}px`;
+          const elements = Array.from({ length: nombre }, (_, i) => forme === 'liens'
+            ? `<li><a class="lien-rangee" href="#"><span class="lien-libelle">Lien ${i + 1}</span></a></li>`
+            : `<li class="carte"><div class="carte-corps"><p class="carte-texte">Carte ${i + 1}</p></div></li>`).join('');
+          boite.innerHTML = forme === 'liens'
+            ? `<div class="liens-bloc"><ul class="liens">${elements}</ul></div>`
+            : `<ul class="cartes">${elements}</ul>`;
+          hote.append(boite);
+          const groupe = boite.querySelector(`.${forme}`)!;
+          const g = groupe.getBoundingClientRect();
+          const rs = [...groupe.children].map((e) => e.getBoundingClientRect());
+          const tops = [...new Set(rs.map((r) => Math.round(r.top)))].sort((a, b) => a - b);
+          const rangees = tops.map((t) => rs.filter((r) => Math.round(r.top) === t));
+          const derniere = rangees[rangees.length - 1];
+          const gauche = Math.min(...derniere.map((r) => r.left)) - g.left;
+          const droite = g.right - Math.max(...derniere.map((r) => r.right));
+          resultats.push({ forme, largeur, nombre, rangees: rangees.map((r) => r.length), ecartCentre: Math.abs(gauche - droite), largeurs: rs.map((r) => r.width) });
+          boite.remove();
+        }
+      }
+    }
+    hote.remove();
+    return resultats;
+  });
+  for (const m of mesures) {
+    const nom = `${m.forme} : ${m.nombre} éléments sur ${m.largeur} px`;
+    const colonnes = colonnesAttendues(m.nombre, m.largeur, false);
+    const attendu = m.nombre === 7 && colonnes === 3
+      ? [3, 2, 2]
+      : Array.from({ length: Math.ceil(m.nombre / colonnes) }, (_, i) => Math.min(colonnes, m.nombre - i * colonnes));
+    expect.soft(m.rangees, `${nom} : rangées`).toEqual(attendu);
+    expect.soft(m.ecartCentre, `${nom} : dernière rangée centrée`).toBeLessThanOrEqual(1.5);
+    expect.soft(Math.max(...m.largeurs) - Math.min(...m.largeurs), `${nom} : même largeur`).toBeLessThanOrEqual(1.5);
+    // Un élément seul garde la largeur d'une colonne dès deux colonnes possibles, il ne s'étire pas.
+    if (m.nombre === 1 && m.largeur >= DEUX_COLONNES) expect.soft(m.largeurs[0], `${nom} : élément seul étiré`).toBeLessThan(m.largeur * 0.55);
+  }
+});
 
 /** Cartes cliquables : la carte entière mène au lien, avec le même survol et le même focus. */
 const CLIQUABLES: [string, string][] = [

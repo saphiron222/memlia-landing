@@ -157,8 +157,9 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
   .page-v2 :global(.pv strong) { color: var(--texte-fort); font-weight: 600; }
   /* La bande va bord à bord de la feuille, seule forme à le faire. */
   .page-v2 :global(.pv > .bande) { margin-inline: calc(-1 * var(--marge-page)); }
-  /* Un lien dans un paragraphe se voit : c'est là que vivent les sources et les renvois (Kevin, 06/10/2026). */
-  .page-v2 :global(.pv p a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+  /* Un lien dans un paragraphe ou une définition se voit : c'est là que vivent les sources et les
+     renvois (Kevin, 06/10/2026). */
+  .page-v2 :global(.pv :is(p, dd) a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
 
   @media (min-width: 64rem) {
     .page-v2 :global(.pv) { padding-inline: var(--marge-page-lg); }

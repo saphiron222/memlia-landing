@@ -54,6 +54,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('#sources-cac')).toHaveCount(0);
     for (const href of [
       'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/',
+      'https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/',
       'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/',
       'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/',
       'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024',
@@ -63,13 +64,24 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       expect(await links.count()).toBeGreaterThan(0);
       for (const link of await links.all()) expect(await link.evaluate(node => Boolean(node.closest('p')))).toBe(true);
     }
-    const fiche = page.locator('aside[aria-labelledby="fiche-outil-cac"]');
-    expect(await fiche.evaluate(node => parseFloat(getComputedStyle(node).borderTopWidth))).toBeGreaterThan(0);
-    expect(await fiche.evaluate(node => parseFloat(getComputedStyle(node).paddingTop))).toBeGreaterThan(0);
-    await expect(fiche.locator('p a')).toHaveText('NEP 315 révisée');
-    const reference = fiche.locator('p a');
+    // Décision de Kevin du 13/10/2026 : l'encadré « Une fiche outil pour votre dossier » est retiré ;
+    // la NEP 315 révisée se cite dans la réponse FAQ « fiche », au clavier comme à la souris.
+    await expect(page.locator('#fiche-outil-cac')).toHaveCount(0);
+    await expect(page.locator('main')).not.toContainText('Une fiche outil pour votre dossier');
+    // L'accordéon se replie au chargement : le lecteur ouvre la question, comme depuis la garantie.
+    const question = page.locator('#faq-fiche');
+    await question.locator('summary').click();
+    await expect(question).toHaveAttribute('open', '');
+    // Revue métier du 13/10/2026 : la NEP 330 révisée suit, pour les procédures qui répondent aux risques.
+    await expect(question.locator('p a')).toHaveText(['NEP 315 révisée', 'NEP 330 révisée']);
+    await expect(question.locator('p a').nth(1)).toHaveAttribute('href', 'https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/');
+    const reference = question.locator('p a').first();
+    await expect(reference).toHaveAttribute('href', 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/');
     await reference.scrollIntoViewIfNeeded();
     await expect(reference).toBeVisible();
+    // Une source se voit dans la réponse (Kevin, 06/10/2026) : soulignée, à la couleur d'accent.
+    await expect(reference).toHaveCSS('text-decoration-line', 'underline');
+    expect(await reference.evaluate(node => getComputedStyle(node).color)).not.toBe(await question.locator('p').evaluate(node => getComputedStyle(node).color));
     await reference.focus();
     await expect(reference).toBeFocused();
     await page.keyboard.press('Tab');

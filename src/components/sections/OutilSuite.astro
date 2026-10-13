@@ -27,8 +27,9 @@ const destinations: Record<OutilServicePage, { libelle: string; description: str
 };
 const destination = destinations[outil.pageService];
 /*
- * Système de page : trois suites de même rang, donc trois cartes de même largeur (le niveau en
- * tête, une phrase, le lien d'action qui nomme la destination). L'appel final qui suit porte le
+ * Système de page : trois suites de même rang, donc trois cartes de même largeur et de même forme
+ * (le niveau en tête, une phrase, le lien d'action qui nomme la destination ; aucune ne porte de
+ * titre en plus, Kevin, 13/10/2026). L'appel final qui suit porte le
  * seul bouton principal de la fin de page : « Passer à votre tâche » garde ses mots et son lien,
  * en lien d'action. La ressource associée, quand elle existe, suit en lien d'action.
  */
@@ -61,7 +62,6 @@ const destination = destinations[outil.pageService];
         <li class="carte rv">
           <div class="carte-corps">
             <p class="carte-meta">Passer à votre tâche</p>
-            <h3 class="carte-titre">Une tâche se répète dans votre cabinet&nbsp;?</h3>
             <p class="carte-texte">Décrivez le geste, les outils et le résultat attendu. Aucun fichier ni donnée client ne sont demandés à ce stade.</p>
             <a class="carte-action carte-lien" href={outil.cta}>Confier une première tâche<Picto nom="fleche" taille={14} /></a>
           </div>
