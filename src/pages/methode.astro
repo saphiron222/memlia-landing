@@ -2,6 +2,7 @@
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import Renvois from '@/components/Renvois.astro';
 import ProofMedia from '@/components/ProofMedia.astro';
+import Picto from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { SERVICE_ID } from '@/data/schema.mjs';
@@ -49,6 +50,44 @@ const renvois = [
   { texte: 'Nos engagements, écrits avant de commencer.', libelle: 'Les garanties', href: '/garanties' },
   { texte: `La carte des tâches automatisables d’un cabinet : ${nombrePoles} pôles, ${familles.length} familles pour l’expertise comptable, une frontière par tâche.`, libelle: 'Lire la carte des tâches', href: '/blog/automatiser-un-cabinet-comptable-la-carte-des-taches' },
   { texte: 'Pourquoi Memlia existe, et qui écrit et code la règle.', libelle: 'À propos', href: '/a-propos' },
+];
+/**
+ * Les outils à rejouer dans le navigateur : des destinations nommées, donc des listes de liens,
+ * groupées par usage (Kevin, 13/10/2026 : dix-sept paragraphes d'affilée ne se lisaient pas). Le
+ * libellé nomme l'outil ; le détail dit sa limite en une phrase.
+ */
+const OUTILS = '/outils-comptables-gratuits';
+const groupesOutils: { titre: string; outils: { href: string; libelle: string; limite: string }[]; mention?: string }[] = [
+  { titre: 'Comparer et contrôler', outils: [
+    { href: `${OUTILS}/comparateur-balances-comptables`, libelle: 'Comparateur de balances comptables', limite: 'Les variations gardent leurs lignes sources ; votre équipe explique ensuite le compte.' },
+    { href: `${OUTILS}/modele-rapprochement-bancaire-excel-gratuit`, libelle: 'Modèle de rapprochement bancaire ouvrable dans Excel', limite: 'Le classeur se télécharge sans compte, avant tout contrôle ; même des soldes concordants restent à valider par le collaborateur.' },
+  ], mention: 'Le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement.' },
+  { titre: 'Préparer', outils: [
+    { href: `${OUTILS}/fusionner-fichiers-csv`, libelle: 'Fusionner des exports CSV', limite: 'Le fichier consolidé garde son rapport de provenance ; il ne valide pas les opérations comptables.' },
+    { href: `${OUTILS}/checklist-pieces-comptables`, libelle: 'Checklist des pièces comptables à demander', limite: 'Seule la pièce manquante entre dans la demande à relire.' },
+    { href: `${OUTILS}/preparer-pseudonymiser-fichier-csv-fec`, libelle: 'Préparer et pseudonymiser un fichier comptable avant IA', limite: 'Les risques de réidentification s’examinent avant toute décision de partage.' },
+    { href: `${OUTILS}/generateur-relance-facture-impayee`, libelle: 'Générateur de relance de facture impayée', limite: 'Le message amiable reste à valider ; vous décidez de l’envoi.' },
+  ] },
+  { titre: 'Calculer', outils: [
+    { href: `${OUTILS}/calculateur-marge-commerciale`, libelle: 'Calculateur de marge commerciale', limite: 'Il montre ses trois formules et refuse un dénominateur nul.' },
+    { href: `${OUTILS}/calculateur-date-echeance-facture`, libelle: 'Calculateur de date d’échéance de facture', limite: 'Il exige le point de départ et la convention choisie.' },
+    { href: `${OUTILS}/calculateur-amortissement-comptable`, libelle: 'Calculateur d’amortissement comptable', limite: 'Il déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale.' },
+    { href: `${OUTILS}/calculateur-roi-automatisation`, libelle: 'Calculateur de ROI d’automatisation comptable', limite: 'Il sépare temps libéré, coûts et dépenses évitables, sans en faire une promesse de gain.' },
+  ] },
+  { titre: 'Écrire avec l’IA', outils: [
+    { href: `${OUTILS}/generateur-prompt-ia-gratuit`, libelle: 'Générateur de prompt IA gratuit', limite: 'La consigne se relit avant d’être utilisée dans un outil autorisé.' },
+    { href: `${OUTILS}/verificateur-prompt-ia`, libelle: 'Vérificateur de prompt IA', limite: 'Le rapport explique les formulations repérées et les points manquants, en gardant votre original.' },
+    { href: `${OUTILS}/generateur-prompt-expert-comptable`, libelle: 'Générateur de prompt pour expert-comptable', limite: 'Il assemble les entrées autorisées, la validation et les conditions d’arrêt ; aucun modèle d’IA n’est appelé.' },
+    { href: `${OUTILS}/bibliotheque-prompts-comptables`, libelle: 'Bibliothèque de prompts comptables', limite: 'Douze modèles à adapter dans le générateur ; le cabinet garde la décision.' },
+    { href: `${OUTILS}/generateur-charte-ia-cabinet`, libelle: 'Générateur de charte IA du cabinet', limite: 'Un rôle manquant ne s’invente pas ; le cabinet le désigne avant adoption.' },
+  ] },
+];
+// Le groupe CAC finit par le service de circularisation, écrit en clair dans le gabarit : son ancre
+// est le lien contextuel que la recette du service exige depuis cette page (scripts/service-forge.mjs).
+const outilsCac = [
+  { href: `${OUTILS}/seuil-signification-audit`, libelle: 'Seuil de signification en audit', limite: 'Le calcul ne décide pas du caractère significatif.' },
+  { href: `${OUTILS}/suivi-circularisation`, libelle: 'Suivi de circularisation', limite: 'Un refus suspend la proposition de relance ; le CAC choisit les suites.' },
+  { href: `${OUTILS}/bareme-heures-cac`, libelle: 'Barème d’heures du commissaire aux comptes', limite: 'Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.' },
 ];
 const appel = {
   titre: 'La première étape commence par un échange.',
@@ -103,8 +142,8 @@ const appel = {
         <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle coûte</h3><p class="carte-texte"><a href="/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils">Le cadrage</a> et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
         <li class="cellule rv"><h3 class="carte-titre">Ce qu’elle évite</h3><p class="carte-texte">Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
       </ul>
-      <p class="texte-2 lecture">Nous pouvons aussi <a href="/automatisation/facture-electronique">éprouver la préparation des appels de facture électronique</a> : un dossier sur une autre plateforme avance, un circuit déjà couvert est exclu et un choix incertain arrête la préparation.</p>
     </div>
+    <p class="mention">Nous pouvons aussi <a href="/automatisation/facture-electronique">éprouver la préparation des appels de facture électronique</a> : un dossier sur une autre plateforme avance, un circuit déjà couvert est exclu et un choix incertain arrête la préparation.</p>
   </section>
 
   <section class="pv" aria-labelledby="suite-titre-renvois">
@@ -119,35 +158,43 @@ const appel = {
 
   <section class="pv" aria-labelledby="outils-gratuits-titre">
     <div class="tete rv">
-
-
       <h2 id="outils-gratuits-titre">Des règles à rejouer dans le navigateur</h2>
-      <p class="texte-2 lecture">Pour <a href="/outils-comptables-gratuits/comparateur-balances-comptables">comparer deux balances comptables</a>, alignez les numéros de compte, confirmez les périodes et retrouvez les variations avec leurs lignes sources. Une hausse de 100 à 130 donne un delta de 30 et 30 % ; votre équipe explique ensuite le compte.</p>
-
-      <p>Pour <a href="/outils-comptables-gratuits/generateur-relance-facture-impayee">préparer une relance de facture impayée</a>, rejouez trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.</p>
-
-      <p><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> commence par la règle de sélection du cabinet et sa feuille de couverture. Le CAC valide les tiers et choisit les pièces à examiner ; les plateformes gardent les envois et les relances.</p>
-
-      <p>Pour <a href="/outils-comptables-gratuits/fusionner-fichiers-csv">fusionner des exports CSV</a>, confirmez les colonnes puis conservez le fichier consolidé et son rapport de provenance. Ce résultat permet de rejouer la préparation ; il ne valide pas les opérations comptables.</p>
-
-      <p>Pour <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a>, choisissez une trame et déclarez les quatre états. Le résultat sépare le relevé bancaire manquant du récapitulatif de paie à clarifier ; seule la pièce manquante entre dans la demande à relire.</p>
-
-
-      <p>Pour <a href="/outils-comptables-gratuits/seuil-signification-audit">calculer et documenter les seuils d’audit</a>, choisissez votre base et vos taux, comparez les scénarios puis conservez leur justification. Le calcul ne décide pas du caractère significatif.</p>
-      <p>Pour préparer et suivre les confirmations, le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi de circularisation</a> sépare lettre préparée, envoi renseigné et réponse rapprochée. Un refus suspend la proposition de relance ; le CAC choisit les suites.</p>
-      <p>Pour un calcul traçable, <a href="/outils-comptables-gratuits/bareme-heures-cac">calculez le barème d’heures CAC</a> avec sa base décomposée et ses exclusions déclarées. Le budget saisi reste distinct de la grille ; le programme de travail demeure une décision du CAC.</p>
-      <p>Pour préparer une réunion ou résumer des notes fictives, <a href="/outils-comptables-gratuits/generateur-prompt-ia-gratuit">écrivez une consigne texte professionnelle</a> avec un format, des critères d’acceptation et un arrêt sur information manquante. La consigne se relit avant d’être utilisée dans un outil autorisé.</p>
-      <p>Vous avez déjà écrit une consigne ? <a href="/outils-comptables-gratuits/verificateur-prompt-ia">Examinez les contraintes de votre prompt IA</a> : le rapport explique les formulations repérées, les points manquants et les négations à relire, en gardant votre original.</p>
-      <p>Vous pouvez aussi <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">préparer une copie CSV pseudonymisée</a> : choisir les colonnes utiles, voir les alias et les suppressions, puis examiner les risques de réidentification avant toute décision de partage.</p>
-      <p>Pour discuter les hypothèses avant une mission, le <a href="/outils-comptables-gratuits/calculateur-roi-automatisation">calculateur de ROI d’automatisation</a> sépare temps libéré, coûts et dépenses évitables. Exportez les trois scénarios pour les confronter au travail observé, sans en faire une promesse de gain.</p>
-
-      <p>Avant de mettre une préparation IA en pratique, <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">écrivez les usages et les validations dans une trame de charte IA</a>. Un rôle manquant ne s’invente pas ; le cabinet le désigne avant adoption.</p>
-
-
-      <p>Le <a href="/outils-comptables-gratuits/calculateur-marge-commerciale">calcul de marge commerciale</a> montre ses trois formules et refuse un dénominateur nul. Le <a href="/outils-comptables-gratuits/calculateur-date-echeance-facture">calcul de date d’échéance</a> exige le point de départ et la convention choisie. Le <a href="/outils-comptables-gratuits/calculateur-amortissement-comptable">calcul d’amortissement comptable</a> déroule le prorata et chaque dotation, sans choisir la durée ni l’éligibilité fiscale. Chaque page nomme la source, la règle et la limite avant le résultat.</p>
-      <p>Le <a href="/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit">modèle de rapprochement bancaire ouvrable dans Excel</a> se télécharge sans compte, avant tout contrôle. Le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement. Même des soldes concordants restent à valider par le collaborateur.</p>
-      <p>Pour une consigne plutôt qu’un calcul, le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a> assemble les entrées autorisées, la validation et les conditions d’arrêt. Aucun modèle d’IA n’est appelé.</p>
-      <p>Pour choisir un point de départ par geste, la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables">bibliothèque de prompts comptables</a> présente douze modèles : relance de pièces, compte rendu ou checklist. Lisez l’exemple fictif, copiez la consigne complète puis adaptez-la dans le générateur ; le cabinet garde la décision.</p>
+      <p class="lecture">Chaque page nomme la source, la règle et la limite avant le résultat.</p>
+    </div>
+    {groupesOutils.map((groupe) => (
+      <div class="liens-bloc rv">
+        <h3 class="liens-titre">{groupe.titre}</h3>
+        <ul class="liens">
+          {groupe.outils.map((outil) => (
+            <li>
+              <a class="lien-rangee" href={outil.href}>
+                <span class="lien-libelle">{outil.libelle}<span class="lien-detail">{outil.limite}</span></span>
+                <Picto nom="fleche" taille={14} class="lien-fleche" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        {groupe.mention && <p class="mention">{groupe.mention}</p>}
+      </div>
+    ))}
+    <div class="liens-bloc rv">
+      <h3 class="liens-titre">Pour le commissariat aux comptes</h3>
+      <ul class="liens">
+        {outilsCac.map((outil) => (
+          <li>
+            <a class="lien-rangee" href={outil.href}>
+              <span class="lien-libelle">{outil.libelle}<span class="lien-detail">{outil.limite}</span></span>
+              <Picto nom="fleche" taille={14} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+        <li>
+          <a class="lien-rangee" href="/automatisation/circularisation-cac">
+            <span class="lien-libelle">Automatiser la circularisation<span class="lien-detail">Le CAC valide les tiers et choisit les pièces à examiner ; les plateformes gardent les envois et les relances.</span></span>
+            <Picto nom="fleche" taille={14} class="lien-fleche" />
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </PageCommerciale>
