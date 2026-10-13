@@ -46,7 +46,7 @@ Le § 46 ne vise que les outils qui aident à identifier et évaluer le risque d
 
 URL : https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/
 
-Homologuée par arrêté du 13 novembre 2024 (JO du 19 novembre 2024), comme la NEP 315 ; page relue le 13/10/2026. La page H2A n’emploie pas le mot « révisée » : le site le reprend de la charte v5 § 6 (« notamment la NEP 330 révisée pour la réponse aux risques »).
+Homologuée par arrêté du 13 novembre 2024 (JO du 19 novembre 2024), comme la NEP 315 ; page relue le 13/10/2026. La page H2A n’emploie pas le mot « révisée » ; la source primaire est l’arrêté du 13 novembre 2024 « portant homologation de onze normes d’exercice professionnel révisées » (JORF n° 0273 du 19 novembre 2024, texte n° 2, NOR JUSC2426325A, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050510512, relu le 13/10/2026), dont les articles 4 et 5 modifient les articles A. 821-72 (NEP-315) et A. 821-73 (NEP-330). La charte v5 § 6 emploie le même mot.
 
 Extraits exacts :
 
