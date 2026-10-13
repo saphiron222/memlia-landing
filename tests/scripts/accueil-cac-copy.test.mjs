@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { CONTENU_CAC, SEO_CAC, COUVERTURE_CAC, FRONTIERE_CAC, FICHE_OUTIL_CAC, MEDIAS_CAC } from '../../src/data/accueil/cac.ts';
+import { CONTENU_CAC, SEO_CAC, COUVERTURE_CAC, FRONTIERE_CAC, MEDIAS_CAC } from '../../src/data/accueil/cac.ts';
 const copy = readFileSync(new URL('../../docs/strategy/site-v3/cac/accueil-cac/COPY.md', import.meta.url), 'utf8');
 const strings = value => typeof value === 'string' ? [value] : Object.values(value).flatMap(strings);
 
@@ -13,7 +13,7 @@ test('E1 livre les onze sections, les cinq orientations et les onze questions CA
   assert.equal(CONTENU_CAC.methode.etapes.length, 4);
 });
 test('la copy de revue reprend chaque chaîne des données, sans variante silencieuse', () => {
-  for (const value of strings({ CONTENU_CAC, SEO_CAC, COUVERTURE_CAC, FRONTIERE_CAC, FICHE_OUTIL_CAC, MEDIAS_CAC }).filter(Boolean)) assert.ok(copy.includes(value), value);
+  for (const value of strings({ CONTENU_CAC, SEO_CAC, COUVERTURE_CAC, FRONTIERE_CAC, MEDIAS_CAC }).filter(Boolean)) assert.ok(copy.includes(value), value);
 });
 test('titre, description et H1 portent l’intention mesurée, sans prétendre mesurer un volume', () => {
   const measure = JSON.parse(readFileSync(new URL('../../docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json', import.meta.url), 'utf8'));
@@ -36,9 +36,11 @@ test('la couverture est visible et la frontière garde ses trois colonnes', () =
   assert.ok(FRONTIERE_CAC.lignes.every(row => row.length === 3));
   assert.match(COUVERTURE_CAC.texte, /FEC/);
   assert.match(COUVERTURE_CAC.texte, /archivage/);
-  assert.match(FICHE_OUTIL_CAC.precision, /§ 14/);
-  assert.match(FICHE_OUTIL_CAC.precision, /§ 46/);
-  assert.match(FICHE_OUTIL_CAC.precision, /§ 48 d/);
+  // L'encadré de la fiche outil est retiré (Kevin, 13/10/2026) : la réponse FAQ porte seule la norme.
+  const fiche = CONTENU_CAC.faq.questions.find(q => q.id === 'fiche');
+  assert.ok(fiche);
+  assert.match(fiche.reponse, /NEP 315 révisée, § 46 et 48 d/);
+  assert.match(fiche.reponse, /§ 14/);
 });
 test('E9 livre le film CAC sans réutilisation du film ou des preuves EC', () => {
   assert.ok(CONTENU_CAC.hero.video.startsWith('/media/cac-r4/'));

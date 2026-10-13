@@ -114,6 +114,13 @@ import { CTA } from '@/data/site.mjs';
     max-width: 62ch;
     padding: 0 4px 24px;
   }
+  /* Une source citée dans une réponse se voit, comme dans un paragraphe des pages commerciales
+     (Kevin, 06/10/2026) : sur la page CAC, la NEP 315 révisée y remplace l'ancienne fiche outil. */
+  .faq-r a {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
   @media (hover: hover) {
     .faq-q:hover .faq-chevron {
       color: var(--accent-texte);

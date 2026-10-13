@@ -16,7 +16,7 @@ Trois blocs additionnels de contenu sont exportés sans modifier le contrat D1 :
 
 - `COUVERTURE_CAC` : bandeau immédiatement après Orientation, avant les exemples. Son titre exact est « Ce que votre suite d’audit fait déjà ». Pas un élément escamoté dans la FAQ.
 - `FRONTIERE_CAC` : tableau visible à trois colonnes dans Méthode, après l’étape de cadrage. Conserver les colonnes sur mobile avec en-têtes accessibles. La prose de l’étape ne remplace pas ce tableau.
-- `FICHE_OUTIL_CAC` : encadré dans Méthode, après les étapes ; afficher le lien H2A. La fiche est un support Memlia, pas un modèle exigé par le § 14 ni un certificat de conformité.
+- `FICHE_OUTIL_CAC` : retiré de la page le 13/10/2026 (décision de Kevin). Le lien H2A de la NEP 315 révisée vit dans la réponse FAQ « fiche ». La fiche reste un support Memlia, pas un modèle exigé par le § 14 ni un certificat de conformité.
 
 Le hero garde une affiche CAC. `video` et `sousTitres` sont vides tant qu’E9 n’a pas livré les médias CAC : E4 rend le poster seul et masque lecteur, lecture et téléchargement. Ne jamais passer une chaîne vide à un lecteur rendu, ni reprendre le film EC. Cette variante est à construire par E4 ; elle n’existe pas encore dans Hero. SEO_CAC fournit les métadonnées ; og:title et headline éventuel reprennent le H1 exact. E4 utilise la FAQ CAC pour le rendu et le schéma, jamais FAQ EC. L’image sociale CAC vient d’E3.
 
@@ -38,7 +38,7 @@ Extraits exacts :
 - § 46 : « la manière dont les outils fonctionnent » ; « le degré de pertinence et de fiabilité des informations qui sont intégrées dans ces outils ».
 - § 48 d) : « Les éléments d’appréciation des outils et techniques automatisés visés au paragraphe 46. »
 
-Rattachement : FICHE_OUTIL_CAC, méthode étape 4, garantie fiche, FAQ fiche. Les rubriques de notre fiche sont un engagement de livraison issu de la charte v5 § 6, pas des exigences de formulaire attribuées à la norme. La NEP 330 peut ajouter des exigences selon la procédure ; aucune suffisance universelle de la fiche n’est annoncée.
+Rattachement : méthode étape 4, garantie fiche, FAQ fiche (lien H2A depuis le 13/10/2026, encadré FICHE_OUTIL_CAC retiré). Les rubriques de notre fiche sont un engagement de livraison issu de la charte v5 § 6, pas des exigences de formulaire attribuées à la norme. La NEP 330 peut ajouter des exigences selon la procédure ; aucune suffisance universelle de la fiche n’est annoncée.
 
 ### S2 — H2A, NEP 505
 
@@ -225,29 +225,6 @@ Le rapprochement proposé et les éléments à examiner.
 
 Décider des procédures alternatives ou supplémentaires et conclure.
 
-### FICHE_OUTIL_CAC
-
-#### titre
-
-Une fiche outil pour votre dossier
-
-#### texte
-
-La livraison comprend une fiche outil : objectif, périmètre, méthode et version, données d’entrée, contrôles de fiabilité, paramètres, sorties et traces. Elle décrit aussi les limites, les arrêts et les essais fictifs. Vous disposez de ces éléments pour apprécier l’outil et documenter son usage dans la mission.
-
-#### precision
-
-La NEP 315 révisée distingue les outils et techniques automatisés des logiciels de dossier (§ 14). Elle demande d’en apprécier le fonctionnement et les informations intégrées (§ 46), puis de consigner cette appréciation (§ 48 d). La fiche est notre support de livraison. Votre appréciation et vos travaux restent à documenter.
-
-#### source
-
-##### libelle
-
-H2A, NEP 315 révisée
-
-##### href
-
-https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/
 
 ### MEDIAS_CAC
 
@@ -933,7 +910,7 @@ Comment apprécier l’outil pour la NEP 315 révisée ?
 
 ###### reponse
 
-Nous remettons une fiche décrivant le fonctionnement, la version, les entrées, les contrôles de fiabilité, les paramètres, les sorties et les limites. Les essais fictifs montrent les résultats et les arrêts attendus. Vous appréciez le fonctionnement et les informations intégrées, puis consignez votre appréciation au dossier (§ 46 et 48 d). Le § 14 définit les outils automatisés ; il n’impose pas notre modèle de fiche.
+Nous remettons une fiche décrivant le fonctionnement, la version, les entrées, les contrôles de fiabilité, les paramètres, les sorties et les limites. Les essais fictifs montrent les résultats et les arrêts attendus. Vous appréciez le fonctionnement et les informations intégrées, puis consignez votre appréciation au dossier (NEP 315 révisée, § 46 et 48 d). Le § 14 définit les outils automatisés ; il n’impose pas notre modèle de fiche.
 
 ###### 5
 
