@@ -20,11 +20,12 @@ import { organizationNode, serviceNode } from '@/data/schema.mjs';
 const contenu = contenuDe('cac');
 const nep505 = 'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/';
 const nep315 = 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/';
+const nep330 = 'https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/';
 const commerce = 'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024';
 const references = {
   selection: [{ texte: 'NEP 505', href: nep505 }],
   alternatives: [{ texte: 'NEP 505', href: nep505 }],
-  fiche: [{ texte: 'NEP 315 révisée', href: nep315 }],
+  fiche: [{ texte: 'NEP 315 révisée', href: nep315 }, { texte: 'NEP 330 révisée', href: nep330 }],
   dossier: [{ texte: 'NEP 230', href: 'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/' }],
   independance: [
     { texte: 'L.821-27', href: commerce }, { texte: 'L.821-31', href: commerce },

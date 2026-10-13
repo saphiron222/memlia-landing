@@ -68,7 +68,7 @@ const outils = [
   { href: '/outils-comptables-gratuits/fusionner-fichiers-csv', libelle: 'Fusionner des exports CSV', texte: 'Correspondance des colonnes confirmée, fichier consolidé et rapport des exceptions. Le cabinet vérifie la comparabilité des exports.' },
   { href: '/outils-comptables-gratuits/calculateur-roi-automatisation', libelle: 'Calculateur de ROI d’automatisation comptable', texte: 'Volumes, contrôle restant et dépenses vraiment évitables. La capacité libérée reste distincte des économies de trésorerie.' },
   { href: '/outils-comptables-gratuits/verificateur-fec-local', libelle: 'Vérificateur FEC local', texte: 'Un rapport par ligne, colonne et règle, sans corriger ni certifier le fichier.' },
-  { href: '/outils-comptables-gratuits/comparateur-balances-comptables', libelle: 'Comparateur de balances comptables', texte: 'Comptes nouveaux, disparus et variations selon vos seuils. L’explication des soldes reste à votre équipe.' },
+  { href: '/outils-comptables-gratuits/comparateur-balances-comptables', libelle: 'Comparateur de balances comptables', texte: 'Deux balances issues de CSV : comptes nouveaux, disparus et variations selon vos seuils. L’explication des soldes reste à votre équipe.' },
   { href: '/outils-comptables-gratuits/generateur-prompt-expert-comptable', libelle: 'Générateur de prompt pour expert-comptable', texte: 'Entrées, format, validation et arrêt d’une consigne. Il aide à décrire le geste ; il ne réalise pas la tâche à la place du cabinet.' },
   { href: '/outils-comptables-gratuits/generateur-relance-facture-impayee', libelle: 'Générateur de relance de facture impayée', texte: 'Trois factures fictives : un solde de 90 euros, une facture soldée exclue et un litige à examiner. Le message amiable reste à valider ; vous décidez de l’envoi.' },
   { href: '/outils-comptables-gratuits/calculateur-amortissement-comptable', libelle: 'Calculateur d’amortissement comptable', texte: 'Base, prorata, dotation et valeur nette par exercice.' },
@@ -169,7 +169,7 @@ const appel = {
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Paie et social</dt>
-        <dd class="ligne-texte">Les variables reçues hors portail, les retours DSN triés par date limite. Vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> ; nous pouvons <a href="/automatisation/bulletins-controle">automatiser les contrôles des bulletins de paie</a> là où les contrôles natifs laissent un rapprochement manuel, et <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a> pour les annonces reçues hors portail. Les écarts attendent l’examen du gestionnaire : chaque correction et chaque décision restent au pôle social.</dd>
+        <dd class="ligne-texte">Les variables reçues hors portail, les retours DSN triés par date limite. Vous pouvez <a href="/automatisation/paie">confier un geste répétitif autour de la paie</a> ; nous pouvons <a href="/automatisation/bulletins-controle">automatiser les contrôles des bulletins de paie</a> là où les contrôles natifs laissent un rapprochement manuel entre variables validées et résultats calculés, et <a href="/automatisation/entrees-sorties-salaries">préparer les dossiers d’entrée et de sortie des salariés</a> pour les annonces reçues hors portail. Les écarts attendent l’examen du gestionnaire : le circuit déjà utilisé, chaque correction et chaque décision restent au pôle social.</dd>
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Portefeuille et échéances</dt>
@@ -177,7 +177,7 @@ const appel = {
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Juridique</dt>
-        <dd class="ligne-texte">L’échéancier d’approbation et de dépôt du portefeuille, les fiches clients tenues à jour des registres. Nous pouvons <a href="/automatisation/registres-obligations">automatiser le suivi des registres et obligations</a>, de la publication à la fiche client proposée, et <a href="/automatisation/secretariat-juridique">suivre les échéances juridiques hors de votre outil</a> si ce suivi reste manuel après vérification de votre offre. Les dates, l’approbation, le dépôt et les suites à donner restent au cabinet et aux personnes habilitées.</dd>
+        <dd class="ligne-texte">L’échéancier d’approbation et de dépôt du portefeuille, les fiches clients tenues à jour des registres. Nous pouvons <a href="/automatisation/registres-obligations">automatiser le suivi des registres et obligations</a>, de la publication à la fiche client proposée. Nous pouvons aussi <a href="/automatisation/secretariat-juridique">suivre les échéances juridiques hors de votre outil</a> si ce suivi reste manuel après vérification de votre offre et de ses options. La mise à jour, les dates, l’approbation, le dépôt et les suites à donner restent au cabinet et aux personnes habilitées.</dd>
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Administratif</dt>
@@ -189,7 +189,7 @@ const appel = {
       </div>
       <div class="ligne">
         <dt class="ligne-libelle">Commissariat aux comptes</dt>
-        <dd class="ligne-texte">La sélection des tiers à circulariser, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission. Pour vos missions d’audit, découvrez <a href="/commissaires-aux-comptes">l’automatisation pour commissaire aux comptes</a>.</dd>
+        <dd class="ligne-texte">La sélection des tiers à circulariser selon votre règle et avec votre validation, les écarts de confirmation, les fichiers du client rapprochés de la balance. Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion. Dans un cabinet mixte, les accès et le périmètre sont cadrés séparément pour chaque mission. Pour vos missions d’audit, découvrez <a href="/commissaires-aux-comptes">l’automatisation pour commissaire aux comptes</a>.</dd>
       </div>
     </dl>
     <div class="liens-bloc perimetre-outils rv">

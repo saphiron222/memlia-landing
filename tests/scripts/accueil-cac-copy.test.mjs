@@ -39,8 +39,11 @@ test('la couverture est visible et la frontière garde ses trois colonnes', () =
   // L'encadré de la fiche outil est retiré (Kevin, 13/10/2026) : la réponse FAQ porte seule la norme.
   const fiche = CONTENU_CAC.faq.questions.find(q => q.id === 'fiche');
   assert.ok(fiche);
-  assert.match(fiche.reponse, /NEP 315 révisée, § 46 et 48 d/);
-  assert.match(fiche.reponse, /§ 14/);
+  assert.match(fiche.reponse, /NEP 315 révisée \(§ 46 et 48 d\) pour l’évaluation des risques/);
+  // Revue métier du 13/10/2026 : les procédures vendues répondent aux risques, donc NEP 330.
+  assert.match(fiche.reponse, /NEP 330 révisée \(§ 33 et 34 e\) pour les procédures qui y répondent/);
+  assert.match(fiche.reponse, /elle ne remplace pas votre appréciation/);
+  assert.match(fiche.reponse, /§ 14 de la NEP 315/);
 });
 test('E9 livre le film CAC sans réutilisation du film ou des preuves EC', () => {
   assert.ok(CONTENU_CAC.hero.video.startsWith('/media/cac-r4/'));

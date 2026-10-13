@@ -14,7 +14,7 @@ test('la route CAC compose les onze sections et ses compléments validés', () =
   // Décision de Kevin du 13/10/2026 : plus d'encadré « Une fiche outil pour votre dossier » ; la NEP 315
   // révisée se cite dans la réponse FAQ « fiche ».
   assert.doesNotMatch(page, /FicheOutilCac/);
-  assert.match(page, /fiche: \[\{ texte: 'NEP 315 révisée', href: nep315 \}\]/);
+  assert.match(page, /fiche: \[\{ texte: 'NEP 315 révisée', href: nep315 \}, \{ texte: 'NEP 330 révisée', href: nep330 \}\]/);
   assert.doesNotMatch(page, /<SourcesCac\b/);
   for (const authority of ['h2a-france.org', 'doc.cncc.fr']) assert.ok(page.includes(authority));
   assert.match(page, /<Faq[^>]*references=/);

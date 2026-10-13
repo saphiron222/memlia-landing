@@ -54,6 +54,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('#sources-cac')).toHaveCount(0);
     for (const href of [
       'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/',
+      'https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/',
       'https://h2a-france.org/normes/demandes-de-confirmation-des-tiers/',
       'https://h2a-france.org/normes/documentation-de-laudit-des-comptes/',
       'https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024',
@@ -71,8 +72,10 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     const question = page.locator('#faq-fiche');
     await question.locator('summary').click();
     await expect(question).toHaveAttribute('open', '');
-    const reference = question.locator('p a');
-    await expect(reference).toHaveText('NEP 315 révisée');
+    // Revue métier du 13/10/2026 : la NEP 330 révisée suit, pour les procédures qui répondent aux risques.
+    await expect(question.locator('p a')).toHaveText(['NEP 315 révisée', 'NEP 330 révisée']);
+    await expect(question.locator('p a').nth(1)).toHaveAttribute('href', 'https://h2a-france.org/normes/procedures-daudit-mises-en-oeuvre-par-le-commissaire-aux-comptes-a-lissue-de-son-evaluation-des-risques/');
+    const reference = question.locator('p a').first();
     await expect(reference).toHaveAttribute('href', 'https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/');
     await reference.scrollIntoViewIfNeeded();
     await expect(reference).toBeVisible();
