@@ -6,6 +6,12 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { SERVICE_ID } from '@/data/schema.mjs';
 
+/*
+ * Corps de la page. Chaque section porte son engagement en tête (trois paragraphes au plus), puis
+ * ses applications en lignes : la tâche ou l'outil, la phrase qui la borne (Kevin, 13/10/2026 : plus
+ * de murs de dix paragraphes). Une phrase qui renvoie à la précédente (« ainsi », « Cette frontière ») reste collée
+ * à son antécédent. Les liens de service gardent les ancres que leur recette exige depuis cette page.
+ */
 const page = PAGES_V2.garanties;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [{
@@ -24,12 +30,6 @@ const grille: { picto: NomPicto; libelle: string; href: string }[] = [
   { picto: 'regle', libelle: 'Périmètre écrit avant la mise en service', href: '#ecrit' },
   { picto: 'bouclier', libelle: 'Ce que nous ne promettons pas', href: '#refus' },
 ];
-/*
- * Chaque section porte son engagement en tête (trois paragraphes au plus), puis ses applications en
- * lignes : la tâche ou l'outil, la phrase qui la borne (Kevin, 13/10/2026 : plus de murs de dix
- * paragraphes). Une phrase qui renvoie à la précédente (« ainsi », « Cette frontière ») reste collée
- * à son antécédent. Les liens de service gardent les ancres que leur recette exige depuis cette page.
- */
 const appel = {
   titre: 'Ces engagements se lisent avant de s’engager.',
   texte: 'Confiez-nous la tâche répétitive qui charge votre équipe. Nous écrivons sa règle avec vous, puis nous la construisons et la maintenons dans vos outils. Vous gardez la décision.',
