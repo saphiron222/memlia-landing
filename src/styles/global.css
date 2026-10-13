@@ -1158,6 +1158,11 @@ h3.liens-titre {
 .etape-copie p {
   margin: 0;
 }
+/* Une colonne, une couleur : le texte d'une étape est son introduction (--texte-2), comme sur
+   l'accueil, sans premier paragraphe plus foncé que les suivants (Kevin, 13/10/2026). */
+.etape-copie > p:not(.surtitre) {
+  color: var(--texte-2);
+}
 @media (min-width: 64rem) {
   .etapes {
     grid-template-columns: repeat(2, minmax(0, 1fr));

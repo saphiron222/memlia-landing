@@ -28,6 +28,15 @@ test('garanties : ni comparaison ni délai, politique bornée au site', () => {
   assert.doesNotMatch(text, /plus souvent que d’autres|quelques minutes|des mois plus tard/);
 });
 
+test('garanties : une phrase qui renvoie à la précédente reste collée à son antécédent', () => {
+  // Revue du 13/10/2026 : en lignes, « Nous pouvons ainsi » suivait la pseudonymisation et laissait
+  // croire à des essais sur données réelles. Ces renvois restent dans le paragraphe de leur antécédent.
+  const text = source('src/pages/garanties.astro');
+  assert.match(text, /jamais leur contenu\. Nous pouvons ainsi <a href="\/automatisation\/notes-de-frais">/);
+  assert.match(text, /après une saisie automatisée<\/a>\. Cette frontière vaut aussi pour le <a href="\/outils-comptables-gratuits\/verificateur-fec-local">/);
+  assert.match(text, /Chaque mission a son périmètre et ses accès\.[\s\S]{0,600}?<dd class="ligne-texte">Ce périmètre est la condition pour/);
+});
+
 test('contact : finalités séparées, provenance facultative et base identifiée', () => {
   const text = source('src/pages/contact.astro');
   assert.ok(text.includes('comprendre la page du site à l’origine de ma demande'));

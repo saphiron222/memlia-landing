@@ -181,7 +181,7 @@ Points ouverts pour la phase 2 :
 |---|---|---|
 | Hub | règle en bande ; qualification en cartes non cliquables ; outils en cartes ; quinconce | lignes (règle, qualification, pôles) ; outils en liste de liens ; rangées alignées |
 | Services | héros à coins ; logiciel en cartes non cliquables ; document à filets | héros partagé, cadre unique ; lignes ; document sans filets ; principes en bande |
-| Garanties | six tuiles centrées ; rangées en quinconce | liste de six liens ; rangées alignées ; bande de 4 |
+| Garanties | six tuiles centrées ; rangées en quinconce | liste de six liens ; rangées alignées ; bande de 4 ; sous les rangées d’arrêt, de données et d’écrit, et sous la bande de refus, les applications en lignes (13/10/2026 : « Ce que nous ne promettons pas » garde deux formes, la bande puis ses lignes) |
 | Méthode | étapes en quinconce, titres de section à chaque étape | étapes deux par deux, surtitre « Étape n », h3, maquettes encadrées |
 | À propos | rangées en quinconce | rangées alignées ; en-têtes du système ; bande de 2 |
 | Contact | titre dans le plateau du formulaire ; pastilles grises ; astuce sous filet | en-tête de section, plateau, lignes à pictogramme, mention |

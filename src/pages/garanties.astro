@@ -6,6 +6,12 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { SERVICE_ID } from '@/data/schema.mjs';
 
+/*
+ * Corps de la page. Chaque section porte son engagement en tête (trois paragraphes au plus), puis
+ * ses applications en lignes : la tâche ou l'outil, la phrase qui la borne (Kevin, 13/10/2026 : plus
+ * de murs de dix paragraphes). Une phrase qui renvoie à la précédente (« ainsi », « Cette frontière ») reste collée
+ * à son antécédent. Les liens de service gardent les ancres que leur recette exige depuis cette page.
+ */
 const page = PAGES_V2.garanties;
 const url = `${SITE.url}${page.chemin}`;
 const noeuds = [{
@@ -52,33 +58,59 @@ const appel = {
     <ProofRow id="v2/07-exception-visible">
       <div class="pv-copy rv">
         <h2 id="arret-titre">Dans le doute, l’automatisation s’arrête</h2>
-        <p class="texte-2">Vous pouvez <a href="/automatisation/evaluation-transmission">garder la décision sur la valeur de l’entreprise</a> tout en confiant la préparation des pièces et tableaux. Un ajustement en attente reste hors du total ; un conflit de versions réclame votre arbitrage.</p>
-        <p class="texte-2">Pour <a href="/automatisation/registres-obligations">confier la préparation des mises à jour et rappels</a>, la fiche proposée conserve les annotations du cabinet. Une identité incertaine ou des sources contradictoires arrêtent la proposition ; l’alerte reste à valider.</p>
         <p>Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation et présente le motif à votre équipe.</p>
-        <p class="texte-2">Une contradiction entre deux règles ou un format inattendu bloque l’écriture concernée. Le motif est visible ; votre équipe corrige l’entrée ou décide de la suite. La règle ne devine pas la donnée manquante.</p>
-        <p class="texte-2">Cette règle borne la décision de <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> : une pièce incertaine ne devient jamais une écriture certaine.</p>
-        <p class="texte-2">Une exception visible se présente avec son contexte et son motif. Votre équipe décide de la suite.</p>
+        <p class="texte-2">Une contradiction entre deux règles ou un format inattendu bloque l’écriture concernée. Le motif est visible ; votre équipe corrige l’entrée ou décide de la suite. La règle ne devine pas la donnée manquante. Une exception visible se présente avec son contexte et son motif. Votre équipe décide de la suite.</p>
         <p class="texte-2">La règle écrite distingue ce qui se prépare seul, ce qui attend une validation et ce qui reste humain. Les décisions sensibles vous sont proposées. Aucun envoi externe sans validation humaine : courriel, déclaration ou facture.</p>
       </div>
     </ProofRow>
+    <dl class="lignes rv">
+      <div class="ligne">
+        <dt class="ligne-libelle">Saisie comptable</dt>
+        <dd class="ligne-texte">Cette règle borne la décision de <a href="/automatisation/saisie-comptable">confier la préparation de la saisie comptable</a> : une pièce incertaine ne devient jamais une écriture certaine.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Dossier d’évaluation d’entreprise</dt>
+        <dd class="ligne-texte">Vous pouvez <a href="/automatisation/evaluation-transmission">garder la décision sur la valeur de l’entreprise</a> tout en confiant la préparation des pièces et tableaux. Un ajustement en attente reste hors du total ; un conflit de versions réclame votre arbitrage.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Registres et obligations</dt>
+        <dd class="ligne-texte">Pour <a href="/automatisation/registres-obligations">confier la préparation des mises à jour et rappels</a>, la fiche proposée conserve les annotations du cabinet. Une identité incertaine ou des sources contradictoires arrêtent la proposition ; l’alerte reste à valider.</dd>
+      </div>
+    </dl>
   </section>
 
   <section class="pv" id="donnees" aria-labelledby="donnees-titre">
     <ProofRow id="v2/45-cadrage-donnees">
       <div class="pv-copy rv">
         <h2 id="donnees-titre">Des essais fictifs, des flux cadrés par mission</h2>
-        <p class="texte-2">Le cadrage commence par <a href="/blog/ia-comptabilite-confidentialite-donnees">préparer les données avant de les confier à une IA</a> : déterminer les entrées utiles et les usages autorisés avant tout partage.</p>
-        <p class="texte-2">Vous pouvez <a href="/outils-comptables-gratuits/seuil-signification-audit">reprendre localement vos scénarios de seuils d’audit</a> : le JSON conserve paramètres et commentaires, sans stockage automatique. Le CAC choisit et justifie les seuils ; nous calculons leur effet.</p>
-        <p class="texte-2">Le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi local de circularisation</a> conserve lettres et notes uniquement dans l’onglet. Exportez le JSON pour reprendre votre campagne ; aucun envoi de courrier ni stockage automatique n’est effectué.</p>
-        <p class="texte-2"><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> prépare une proposition de tiers et les pièces postérieures choisies par le CAC. Ses saisies restent séparées des résultats générés ; les conclusions lui appartiennent.</p>
-        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu.</p>
-        <p class="texte-2">Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p>
+        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu. Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p>
         <p class="texte-2">Les fichiers réels autorisés pour le cadrage sont lus en place. Nous ne les copions pas dans nos dépôts et nous développons sur des jeux fictifs. Pour le premier échange, la description du geste suffit.</p>
         <p class="texte-2">Avant la mise en service, nous documentons les données lues, les droits d’accès, les destinataires et les flux du traitement. Les hébergements éventuels, les durées de conservation et les responsabilités sont précisés pour la mission. Un traitement local se vérifie sur ses appels réseau et sa télémétrie ; le lieu du fichier ne suffit pas.</p>
-        <p class="texte-2">La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit les données du site. Les flux du service sont documentés par mission avant la mise en service.</p>
-        <p class="texte-2">Pour une copie de travail, vous pouvez <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">supprimer des colonnes et pseudonymiser un CSV local</a>, puis examiner les risques restants. Des alias ne garantissent pas l’anonymat.</p>
       </div>
     </ProofRow>
+    <dl class="lignes rv">
+      <div class="ligne">
+        <dt class="ligne-libelle">Données confiées à une IA</dt>
+        <dd class="ligne-texte">Le cadrage commence par <a href="/blog/ia-comptabilite-confidentialite-donnees">préparer les données avant de les confier à une IA</a> : déterminer les entrées utiles et les usages autorisés avant tout partage.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Copie de travail</dt>
+        <dd class="ligne-texte">Pour une copie de travail, vous pouvez <a href="/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec">supprimer des colonnes et pseudonymiser un CSV local</a>, puis examiner les risques restants. Des alias ne garantissent pas l’anonymat.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Circularisation</dt>
+        <dd class="ligne-texte"><a href="/automatisation/circularisation-cac">Automatiser la circularisation</a> prépare une proposition de tiers et les pièces postérieures choisies par le CAC. Ses saisies restent séparées des résultats générés ; les conclusions lui appartiennent.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Suivi de circularisation</dt>
+        <dd class="ligne-texte">Le <a href="/outils-comptables-gratuits/suivi-circularisation">suivi local de circularisation</a> conserve lettres et notes uniquement dans l’onglet. Exportez le JSON pour reprendre votre campagne ; aucun envoi de courrier ni stockage automatique n’est effectué.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Seuils d’audit</dt>
+        <dd class="ligne-texte">Vous pouvez <a href="/outils-comptables-gratuits/seuil-signification-audit">reprendre localement vos scénarios de seuils d’audit</a> : le JSON conserve paramètres et commentaires, sans stockage automatique. Le CAC choisit et justifie les seuils ; nous calculons leur effet.</dd>
+      </div>
+    </dl>
+    <p class="mention">La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit les données du site. Les flux du service sont documentés par mission avant la mise en service.</p>
   </section>
 
   <section class="pv" id="personnes" aria-labelledby="personnes-titre">
@@ -110,20 +142,28 @@ const appel = {
         <p>Avant de construire, nous écrivons avec vous la tâche entière : entrées, règle, exceptions, résultat attendu et limites. Le périmètre accepté fixe les accès, les personnes qui valident et les critères de recette avant la mise en service.</p>
         <p class="texte-2">Le devis précise la maintenance, le support et les évolutions couverts. Si vos outils ou votre règle changent, nous analysons leur effet sur le résultat et rejouons la recette si nécessaire. Une extension du périmètre se convient avec vous.</p>
         <p class="texte-2">En expertise comptable, votre équipe garde ses contrôles et ses décisions. Pour une tâche de commissariat aux comptes, elle garde aussi le choix des travaux et ses conclusions ; la signature reste au CAC. Chaque mission a son périmètre et ses accès. Le <a href="https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026">code de déontologie, article 10</a>, rappelle que le CAC conserve la responsabilité de sa mission lorsqu’il se fait assister.</p>
-        <p class="texte-2">Ce périmètre est la condition pour <a href="/automatisation/factures-fournisseurs">cadrer le flux des factures fournisseurs</a> sans confondre préparation, litige et décision de paiement.</p>
-        <p class="texte-2">Pour <a href="/automatisation/facture-electronique">valider les relances hors de la plateforme du cabinet</a>, l’équipe confirme le dossier, le destinataire et le texte ; les notes saisies restent intactes et aucun message ne part seul.</p>
-        <p class="texte-2">Pour organiser les usages et les rôles avant de choisir une automatisation, vous pouvez <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">préparer une trame de charte IA du cabinet</a> : chaque arbitrage non décidé reste à compléter.</p>
       </div>
     </ProofRow>
+    <dl class="lignes rv">
+      <div class="ligne">
+        <dt class="ligne-libelle">Factures fournisseurs</dt>
+        <dd class="ligne-texte">Ce périmètre est la condition pour <a href="/automatisation/factures-fournisseurs">cadrer le flux des factures fournisseurs</a> sans confondre préparation, litige et décision de paiement.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Relances de facture électronique</dt>
+        <dd class="ligne-texte">Pour <a href="/automatisation/facture-electronique">valider les relances hors de la plateforme du cabinet</a>, l’équipe confirme le dossier, le destinataire et le texte ; les notes saisies restent intactes et aucun message ne part seul.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Charte IA du cabinet</dt>
+        <dd class="ligne-texte">Pour organiser les usages et les rôles avant de choisir une automatisation, vous pouvez <a href="/outils-comptables-gratuits/generateur-charte-ia-cabinet">préparer une trame de charte IA du cabinet</a> : chaque arbitrage non décidé reste à compléter.</dd>
+      </div>
+    </dl>
   </section>
 
   <section class="pv" id="refus" aria-labelledby="refus-titre">
     <div class="tete rv">
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
-      <p>Vous pouvez <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a> sans interpréter une pièce inconnue comme absente : les éléments à clarifier restent séparés. La liste est choisie par le cabinet, pas déduite d’obligations fiscales ; le message n’est jamais envoyé par l’outil.</p>
-      <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>.</p>
-      <p>Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
-      <p>Le <a href="/outils-comptables-gratuits/bareme-heures-cac">barème d’heures du commissaire aux comptes</a> n’est pas un tarif universel. Une exclusion ou un champ inconnu suspend la fourchette ; le budget et la suffisance des diligences restent à justifier par le CAC.</p>
+      <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>. Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
     <div class="bande coins">
       <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
@@ -134,5 +174,15 @@ const appel = {
         <li class="cellule rv"><h3 class="carte-titre">Aucune illustration trompeuse</h3><p class="carte-texte">Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
       </ul>
     </div>
+    <dl class="lignes rv">
+      <div class="ligne">
+        <dt class="ligne-libelle">Checklist des pièces</dt>
+        <dd class="ligne-texte">Vous pouvez <a href="/outils-comptables-gratuits/checklist-pieces-comptables">préparer la checklist des pièces manquantes</a> sans interpréter une pièce inconnue comme absente : les éléments à clarifier restent séparés. La liste est choisie par le cabinet, pas déduite d’obligations fiscales ; le message n’est jamais envoyé par l’outil.</dd>
+      </div>
+      <div class="ligne">
+        <dt class="ligne-libelle">Barème d’heures CAC</dt>
+        <dd class="ligne-texte">Le <a href="/outils-comptables-gratuits/bareme-heures-cac">barème d’heures du commissaire aux comptes</a> n’est pas un tarif universel. Une exclusion ou un champ inconnu suspend la fourchette ; le budget et la suffisance des diligences restent à justifier par le CAC.</dd>
+      </div>
+    </dl>
   </section>
 </PageCommerciale>
