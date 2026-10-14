@@ -3,7 +3,9 @@
 > **Porte 2 (15/10/2026)** : Kevin a supprimé les statuts d'outil (Éprouvé, Par export, Sur demande) et
 > la règle de reprise à l'identique des démonstrations. La page `/integrations` devient une page de
 > compatibilité à logos, sans statut (spec §5, `CONNECTEURS.md`) ; chaque fiche a sa démonstration
-> (spec §2.1, `AGENTS-CONTENU.md`). Ce relevé reste lisible comme historique ; il ne fait plus foi sur ces points.
+> (spec §2.1, `AGENTS-CONTENU.md`). Les familles neuves sont **21**, et non six ; 13 familles CAC
+> inactives restent hors titulaire, et non 17 (`AGENTS-CONTENU.md` §14). Ce relevé reste lisible comme
+> historique ; il ne fait plus foi sur ces points.
 
 
 Lu : cadrage, ADR 0001, `HUB-AGENTS-IA-SPEC.md` §0-6, `CONTEXT.md`, charte v6, `phase2/json-ld.md` (intégré §4, non refait), puis le code du worktree `hub-specialistes`. Rien exécuté sauf `node` en lecture (`familles.ts` : 85 familles, 60 EC dans 12 pôles, 25 CAC). Les citations sont `chemin:ligne`. Ce plan alimente le §7 de la spécification.
@@ -201,7 +203,7 @@ Adopté tel quel : `src/data/schema.mjs` +`pageId`, `breadcrumbNode`, `itemListN
 ### 8.2 Invariants du chantier : tests écrits **avant** le code (rouges au ticket 01, verts au ticket indiqué)
 | # | Invariant | Test | Mutant qui doit le faire rougir | Vert au |
 |---|---|---|---|---|
-| I1 | **Partition** : chaque famille active (EC+CAC) et `audit-legal` a un seul titulaire parmi agents, hub (`ia-generative-agents`) et « nous » (4 familles Méthode) ; les 6 familles neuves sont toutes assignées ; les 17 familles CAC inactives sont **comptées et imprimées** hors titulaire | `specialistes-partition.test.mjs` | retirer une famille, en dupliquer une, id inconnu | 02 |
+| I1 | **Partition** : chaque famille active (EC+CAC) et `audit-legal` a un seul titulaire parmi agents, hub (`ia-generative-agents`) et « nous » (4 familles Méthode) ; les 21 familles neuves sont toutes assignées ; les 13 familles CAC inactives restantes sont **comptées et imprimées** hors titulaire (porte 2) | `specialistes-partition.test.mjs` | retirer une famille, en dupliquer une, id inconnu | 02 |
 | I2 | **12 cartes complètes liées à leur destination** : champs non vides, `fiche` ssi destination `fiche`, chemin ∈ {3 pages}, route existante et indexable (dist) | `specialistes.test.mjs` + `schema-render` B1 | carte sans `alt`, destination vers une page `noindex` | 02 / 04 |
 | I3 | **Comptes publics stables** : `famillesDeLaProfession('ec')` = 60 familles / 12 pôles ; le résumé scellé de la « carte des tâches » dit les mêmes nombres (mots → chiffres) ; `cluster` ⊂ `IDS_POLES` ; pôle hors enum ⇒ familles inactives seulement | `familles-hub.test.mjs` | pousser une famille neuve dans `FAMILLES` | 02 |
 | I4 | **Filtres sans JavaScript** : 12 visibles par défaut ; chaque filtre montre 5 (3 + 2 centrées), 3 (une rangée), 4 (2 × 2) ; aucun `<script>` de filtre | `agents-ia.spec.ts` (`javaScriptEnabled:false`, mesure des positions) | retirer la surcharge `flex-basis` (E1) | 04 |

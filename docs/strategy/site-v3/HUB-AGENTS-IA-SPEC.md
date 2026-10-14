@@ -115,6 +115,10 @@ contenu vit dans les données de la fiche (`hub-agents-ia/AGENTS-CONTENU.md`) ; 
 table déjà publiée. Un test vérifie la forme (quatre cas, trois issues possibles, au moins un arrêt,
 mention « dossier fictif » visible) ; la revue `metier` en vérifie le fond.
 
+Les trois agents sans fiche : Octavie montre sa démonstration sur `/integrations`, sous son bandeau ;
+Salomé laisse `/automatisation/paie` à son rejeu déjà publié ; Aude n'ajoute rien à l'accueil CAC (D5).
+Leurs démonstrations vivent dans les données et passent le même test de forme (arbitrage du 15/10/2026).
+
 L'image sociale de chaque fiche (1200 × 630) est le **recadrage de ce rejeu ou de la frontière**,
 rendu par le pipeline des preuves, et sert aussi de média propre de la page (contrat de page).
 
@@ -122,6 +126,8 @@ rendu par le pipeline des preuves, et sert aussi de média propre de la page (co
 
 > **Élargies à la porte 2** : le périmètre de chaque agent (tâches, livrables, démonstration, questions)
 > est celui de `hub-agents-ia/AGENTS-CONTENU.md`, qui remplace les listes ci-dessous là où il va plus loin.
+> Les H1 et les familles d'`AGENTS-CONTENU.md` font foi (requêtes du §6) ; ceux ci-dessous sont l'état de
+> la phase 2 avant la porte.
 
 Pour chaque fiche : H1 (intention d'abord, requête provisoire en gras), familles titulaires, livrables,
 frontière, arrêts, envois, avec / sans, voisins, questions, tâches de départ. Les identifiants de
