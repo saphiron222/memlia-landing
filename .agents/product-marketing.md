@@ -1,6 +1,6 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v6 — 14 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-14. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v7 — 15 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-15. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
@@ -17,7 +17,8 @@ Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge r
 **Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, prise entière : observation, règle, construction, recette, maintenance.**
 
 - L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire, en expertise comptable et en commissariat aux comptes : de la relance des pièces à la DSN, du suivi des demandes de confirmation des tiers à la préparation des rapprochements) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »). Les familles publiées restent celles des données du site ; ouvrir le public CAC dans la charte ne prouve ni une intégration livrée ni une page déjà en ligne.
-- L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
+- L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle.
+- **Les agents IA visent grand (décision de Kevin du 15/10/2026).** Un agent présente tout ce qu'un agent bien construit peut prendre en charge dans son métier : c'est la promesse d'un service à la tâche (nous le construisons, le faisons recetter, le maintenons), pas l'inventaire de ce qui tourne déjà. Rien n'est écrit en défense ni en retrait. Aucune page ne dit qu'une tâche est déjà en service chez un client, ni ne cite un client. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
 - Le prix se dit ainsi : **« Vous payez une tâche prise en charge, pas des sièges. »** Le devis dépend de la complexité (sources, règles, exceptions, validations) ; maintenance, support et évolutions y sont écrits.
 
 ## 2 bis. Le mécanisme, nommé : « la règle écrite » (19/09/2026, révisable par Kevin)
@@ -187,7 +188,7 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 Un **agent IA**, chez Memlia, est la règle écrite des tâches d'un même métier du cabinet, mise en œuvre dans vos outils. Il prépare, il s'arrête dans le doute, votre collaborateur valide. Il porte un prénom pour être reconnu ; il ne parle pas à la première personne, ne se présente ni comme un collègue ni comme un membre de l'équipe, et n'envoie rien. Derrière chaque agent, c'est nous : nous observons la tâche, écrivons sa règle, l'éprouvons sur un jeu fictif, la faisons recetter et la maintenons. Aucune équipe de personas n'est inventée.
 
-- **Il promet** : la tâche prise entière ; la frontière en trois colonnes ; l'arrêt dans le doute ; le rejeu sur un dossier fictif, montré seulement là où la règle est publiée ; une proposition que le cabinet valide.
+- **Il promet** : la tâche prise entière ; la frontière en trois colonnes ; l'arrêt dans le doute ; le rejeu de sa règle sur un dossier fictif, dit comme tel ; une proposition que le cabinet valide.
 - **Il ne promet jamais** : l'autonomie ; un envoi sans validation (courriel, relance, lettre d'information, publication, réponse à un client, déclaration, facture : tout ce qui sort du cabinet est préparé, jamais envoyé) ; un gain chiffré ; une compétence réglementée : il n'est ni expert-comptable, ni commissaire aux comptes, ni avocat, ni délégué à la protection des données désigné.
 - **Il se définit à sa première apparition** sur chaque page. Le mot de catégorie est « agent IA » ; « spécialiste », « assistant » et « collaborateur » ne le désignent pas.
 - **Ne s'écrit jamais** : agent autonome, collaborateur IA, employé IA, « embaucher » ou « recruter » un agent, « votre nouveau collègue », agent IA CAC, commissaire aux comptes IA, DPO IA, « agent administratif » ou « agent comptable » sans « IA » (grades de la fonction publique). Le métier d'audit se dit « missions d'audit » ; le titre de commissaire aux comptes désigne le lecteur.
@@ -196,12 +197,13 @@ Un **agent IA**, chez Memlia, est la règle écrite des tâches d'un même méti
 
 ## 10. Preuves autorisées et garde-fous
 
-Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
+Sur la page de compatibilité (`/integrations`), les logos des éditeurs de logiciels figurent avec la mention « Marques et logos de leurs titulaires, cités sans partenariat » (décision de Kevin du 15/10/2026) ; un logo de client, jamais. Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
 
 Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (séparation entre texte visible, mentions légales et Organization), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync` et la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) ; la construction complète est faite par la CI GitHub (« Repository gates »), pas sur le Mac.
 
 ## Changelog
 
+- v7 (2026-10-15) — Porte 2 du hub : les agents IA présentent tout ce que nous savons construire dans leur métier (§2), jamais comme déjà en service chez un client ; le rejeu de chaque agent est montré sur dossier fictif (§9 bis) ; logos des éditeurs admis sur la page de compatibilité, sans statut ni total (§10).
 - v6 (2026-10-14) — Ajouté les agents IA (§9 bis) : définition, promesses et interdits, place dans la navigation ; trois lignes au §7 (hub, fiches, page des outils). Décision de Kevin à la porte 1 du hub (cadrage `docs/strategy/site-v3/HUB-SPECIALISTES-CADRAGE.md`, ADR 0001).
 - v5 (2026-10-06) — Ouvert la charte au commissariat aux comptes : personas, vocabulaire, secret, indépendance, responsabilité, documentation et fiche outil ; séparé l'accueil CAC de l'accueil EC sans promettre de fonctions déjà livrées.
 - v4 (2026-09-21) — Réservé l'identité juridique aux mentions légales et au schéma Organization ; À propos revient à la valeur produit après mesure du bloc registre hors contexte.

@@ -1,6 +1,15 @@
 # Hub des agents IA — spécification de la phase 2
 
-> **Statut : brouillon, à valider à la porte 2** (Kevin valide la spécification, le pilote d'image et
+> **Porte 2 franchie le 15/10/2026 (décisions de Kevin)** : spécification validée avec deux changements de
+> fond. (1) **Les agents visent grand** : chaque agent présente tout ce qu'un agent bien construit peut
+> prendre en charge dans son métier, inspiré des agents de Factory et amélioré à notre façon ; chaque fiche
+> a sa démonstration sur dossier fictif (contenu : `hub-agents-ia/AGENTS-CONTENU.md`). (2) **`/integrations`
+> devient une page de compatibilité logiciels** à la manière de Factory : connecteurs par domaine, logos,
+> aucun statut, « d'autres s'intègrent sur demande » (§5). Suivies : pas de `FAQPage` ; requête du
+> Commercial « agent ia commercial » ; couleur `#c2410c` ; disposition 3 × 4 et exemption média ajoutées
+> au système de page. Charte v7.
+>
+> **Statut antérieur : brouillon, à valider à la porte 2** (Kevin valide la spécification, le pilote d'image et
 > la liste des outils, puis génère les avatars). Décisions de cadre : D1 à D14 du
 > [cadrage](HUB-SPECIALISTES-CADRAGE.md), validées le 14/10/2026 ; ADR
 > [0001](../../adr/0001-hub-agents-ia-source-unique.md) accepté ; charte v6 §9 bis ; glossaire
@@ -100,25 +109,19 @@ raison lisible. En tête : *Rejoué sur un dossier fictif* ; en pied : un lien v
 est publiée. Aucun minuteur, aucun compteur de lignes, aucun champ de saisie simulé. Rendu au build,
 sans JavaScript, sans requête réseau (CSP `connect-src 'none'` sur `/agents-ia/*`).
 
-**Règle de vérité** : une fiche ne montre un rejeu que s'il est **repris à l'identique** d'une table
-« Rejoué sur le jeu fictif » déjà publiée par l'une de ses familles titulaires. Un test vérifie que
-chaque cas affiché figure mot pour mot dans la page source rendue. Sources :
-
-| Fiche | Source du rejeu | Statut |
-|---|---|---|
-| Comptabilité | `/automatisation/saisie-comptable` | publiée |
-| Juridique et fiscal | `/automatisation/secretariat-juridique` | publiée |
-| Finance | `/automatisation/evaluation-transmission` | publiée |
-| Commercial | `/blog/automatiser-l-entree-en-relation-d-un-nouveau-client` | publiée |
-| Gestion du cabinet | `/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps` (plan de charge) | publiée |
-| Protection des données | `/blog/ia-comptabilite-confidentialite-donnees` | publiée |
-| RH du cabinet | **à décider à la porte 2** : écrire et publier la règle de la synthèse de rémunération, livrée et recettée le 20/08, rejouée sur son jeu d'essai fictif (contenu paie : vérification sur source datée) ; sinon, pas de rejeu | — |
-| Communication, Relation client | aucune règle publiée : **pas de rejeu** ; le héros montre la frontière | — |
+**Chaque fiche a sa démonstration** (décision de la porte 2) : la règle écrite de sa tâche phare, en deux
+phrases, puis quatre cas joués sur un dossier fictif, dont au moins un **Arrêt** avec sa raison. Le
+contenu vit dans les données de la fiche (`hub-agents-ia/AGENTS-CONTENU.md`) ; il n'a pas à recopier une
+table déjà publiée. Un test vérifie la forme (quatre cas, trois issues possibles, au moins un arrêt,
+mention « dossier fictif » visible) ; la revue `metier` en vérifie le fond.
 
 L'image sociale de chaque fiche (1200 × 630) est le **recadrage de ce rejeu ou de la frontière**,
 rendu par le pipeline des preuves, et sert aussi de média propre de la page (contrat de page).
 
 ## 3. Les fiches de contenu
+
+> **Élargies à la porte 2** : le périmètre de chaque agent (tâches, livrables, démonstration, questions)
+> est celui de `hub-agents-ia/AGENTS-CONTENU.md`, qui remplace les listes ci-dessous là où il va plus loin.
 
 Pour chaque fiche : H1 (intention d'abord, requête provisoire en gras), familles titulaires, livrables,
 frontière, arrêts, envois, avec / sans, voisins, questions, tâches de départ. Les identifiants de
@@ -326,40 +329,24 @@ pré-sélectionne un champ **visible et facultatif** « Tâche à confier ». Ja
 transmis, jamais de message pré-écrit, jamais l'accord de provenance pré-coché, aucune donnée
 personnelle dans l'URL. Sans JavaScript, la puce mène à `/contact` sans pré-sélection.
 
-## 5. La page des outils `/integrations`
+## 5. La page de compatibilité `/integrations`
 
-Liste complète, preuves datées et règles de marque : [`hub-agents-ia/OUTILS.md`](hub-agents-ia/OUTILS.md)
-(14 et 15/10/2026). **49 outils sur 13 domaines** ; statuts proposés : **Éprouvé 2** (Microsoft Excel,
-Silae, sous réserve de K1), **Par export 15** (format documenté par l'éditeur, URL officielle lue et
-datée), **Sur demande 32**. Aucun total n'est affiché sur la page.
+**Décision de la porte 2** : une page « compatibilité logiciels » à la manière de factory456.com/marketplace.
+On montre ce qui est faisable, sans statut ni réserve : un connecteur par logiciel, avec son logo.
 
-**Structure** (correspondance factory456.com/marketplace) : héros sans chiffre (H1 sur la requête
-retenue au §6) ; puces d'ancres par domaine ; une section par domaine (une phrase sur les gestes repris
-et l'agent qui les porte, puis une carte par outil : nom et éditeur **en texte**, statut, ce que nous
-reprenons, lien vers le guide s'il existe) ; « Comment nous reprenons un outil » en trois étapes, dont
-*accès et formats vérifiés avant tout devis* ; « Votre outil n'est pas cité ? » vers `/contact` ; la
-mention de marques. La recherche des douze guides reste, avec **un seul lien par guide** dans la page
-(`integrations.spec.ts`) : les cartes d'outils renvoient aux guides par ancre. Le bandeau « Qui prend ce
-métier : Octavie, agent IA informatique et outils » s'y pose.
+**Structure** : héros (H1 sur « intégration logiciels cabinet comptable », aucun total) ; puces d'ancres par
+domaine ; une section par domaine (une phrase sur ce que nos agents y font et l'agent qui le porte, puis
+une carte par logiciel : **logo**, nom, éditeur, ce que nos agents font avec, « En savoir plus » vers le
+guide quand il existe) ; « Comment nous branchons un logiciel » en trois étapes ; **« Votre logiciel n'est
+pas listé ? Nous l'intégrons sur demande. »** vers `/contact` ; la mention *Marques et logos de leurs
+titulaires, cités sans partenariat.* La recherche des douze guides reste (un seul lien par guide dans la
+page). Le bandeau « Qui prend ce métier : Octavie » s'y pose.
 
-**Règles** : aucun logo (Microsoft, Google, Docusign, PrestaShop et Sage exigent une licence ou un
-programme partenaire ; les autres n'ont pas de règle publique) ; mention proposée *Marques citées :
-propriété de leurs titulaires ; Memlia n'en est ni partenaire ni revendeur.* ; **aucune plateforme
-agréée nommée** tant que la liste officielle d'impots.gouv.fr (en maintenance les 14 et 15/10) n'est
-pas relue, et les sept libellés « plateforme agréée » de `couverture-logiciels.mjs` sont à revérifier
-contre elle ; « Youtrust (anciennement Yousign) » ; aucune page de détail par outil, sauf Excel, à trois
-conditions (K1 validé, requête mesurée distincte de l'article « tableau de bord paie excel », aucun
-mot verrouillé).
-
-**À trancher à la porte 2** (détail en tête de l'annexe) : **K1** les recettes sont plus faibles que le
-disait `~/dev/CLAUDE.md` (production sociale : en usage depuis le 04/08, recette sur jeu fictif le
-05/08, jamais sur une copie du vrai classeur ; synthèse de rémunération : installeur du 20/08 corrigé
-le 06/09, passe sur le poste de l'expert-comptable non prouvée) : Excel et Silae restent « Éprouvé » si
-Kevin l'accepte, sinon « Par export » ; **K2** ACD reste « Sur demande » tant que le ré-import du
-fichier généré n'est pas vérifié ; **K3** facturation électronique ci-dessus ; **K4** RévisAudit absent
-ou en texte seul, jamais lié (domaine proscrit) ; **K5** Youtrust ; **K6** Sage 100 « Sur demande »
-malgré six guides (ses fiches décrivent des gestes, pas un format d'échange) ; **K7** la mention de
-marques et la page Excel conditionnelle.
+**Liste** : `hub-agents-ia/CONNECTEURS.md` (domaines, logiciels, source officielle de chaque logo).
+RévisAudit en est exclu (domaine proscrit, contenu piraté). Les logos se téléchargent depuis les sites des
+éditeurs, jamais depuis celui d'un concurrent, avec l'accord de Kevin au moment du téléchargement.
+Plusieurs éditeurs (Microsoft, Google, Sage, Docusign, PrestaShop) réservent leur logo à leurs
+partenaires : Kevin l'a su et a décidé de les afficher, comme Factory, avec la mention de marques.
 
 ## 6. Référencement
 
@@ -373,7 +360,7 @@ du §3 sont réécrits sur elles en phase 3 (copywriting). Détail : [`hub-agent
 | comptabilite | ia comptabilité | 390 | L'IA en comptabilité, au cabinet : saisie, lettrage et rapprochements préparés, vos collaborateurs valident |
 | juridique-fiscal | ia juridique expert comptable | — | IA juridique et fiscale pour expert-comptable : les documents d'approbation des comptes et les déclarations préparés |
 | finance | agent ia finance | 20 | Agent IA finance pour cabinet comptable : prévisionnels et situations préparés pour votre revue |
-| commercial | **à trancher** : agent ia commercial (30) ou agent ia prospection (70) | — | la prospection sortante n'est dans aucune famille : « agent ia commercial » colle au périmètre (entrée en relation, lettre de mission) |
+| commercial | agent ia commercial (décision de la porte 2) | 30 | Agent IA commercial pour cabinet comptable : entrée en relation, propositions et suivi des prospects préparés, vous décidez de ce qui part |
 | communication | newsletter expert comptable | 10 | Newsletter d'expert-comptable : l'agent IA rédige l'actualité de votre cabinet, vous relisez avant l'envoi |
 | relation-client | relation client cabinet comptable | 10 | Relation client en cabinet comptable : l'agent IA trie les demandes et prépare les réponses, votre collaborateur valide |
 | gestion-cabinet | gestion cabinet comptable | 10 | Gestion de cabinet comptable : honoraires facturés une fois et suivi de production en agrégats, préparés |
@@ -412,7 +399,7 @@ Jamais : `Person` pour un agent, `SoftwareApplication`, `offers`, prix, `aggrega
 Une garde de build (`assertGraph`) refuse ces types, les `@id` en double, les URL relatives et plus
 d'un `Service` par page ; un test par interdit prouve qu'elle rougit.
 
-**FAQPage : décision à prendre à la porte 2.** La consigne la demandait sur les fiches ; l'agent
+**FAQPage : non (décision de la porte 2).** La consigne la demandait sur les fiches ; l'agent
 `seo-schema` recommande de **ne pas l'émettre** : Google a retiré le résultat enrichi le 07/05/2026,
 les réponses sont déjà dans la page, et Kevin l'a retirée des outils gratuits le 14/10 pour la même
 raison (un gabarit répété). Les questions restent visibles en accordéon. L'accueil et l'accueil CAC
@@ -502,7 +489,7 @@ depuis `memlia-rdv` ; contact ; avatars mesurés.
 
 **Treize tickets** (`.scratch/hub-specialistes/issues/`) : 01 socle de contrôles rouges et garde
 `domaine-proscrit` · 02 données (PR isolée) · 03 utilitaires JSON-LD · 04 hub · 05 navigation · 06 fiche
-pilote Comptabilité · 07 CSP et Functions · 08 page des outils · 09 huit fiches restantes · 10 contact
+pilote Comptabilité · 07 CSP et Functions · 08 page de compatibilité · 09 huit fiches restantes · 10 contact
 (`ready-for-human` : migration) · 11 maillage · 12 avatars (`ready-for-human` : génération par Kevin
 dans ChatGPT) · 13 passe finale. Ordre : 01 → 02 → 03 → 04 → 05 → {06, 07, 08} → 09 → 10 → 11 → 12 → 13 ;
 aucune fiche fusionnée sur `main` avant 07.

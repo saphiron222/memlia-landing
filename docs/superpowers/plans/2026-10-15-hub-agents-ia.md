@@ -20,7 +20,7 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 - Tout ce qui sort du cabinet est préparé, jamais envoyé : chaque fiche le dit (« Ce qui ne part jamais sans vous »).
 - Système de page du 07/10 : aucune capitale dans un surtitre ni un libellé (`text-transform`, `small-caps` absents des sources neuves) ; trois colonnes de cartes au plus ; la carte entière est le lien ; aucun hex littéral si le jeton existe dans `tokens.css`.
 - Formulations réglementées : celles de `FACT-CHECK.md`, et aucune de sa liste « à éviter ».
-- Statut d'outil ∈ {Éprouvé, Par export, Sur demande} ; tout « Éprouvé » cite sa livraison ; aucun total affiché ; aucun logo.
+- Page de compatibilité (porte 2) : un connecteur par logiciel avec son logo, aucun statut, aucun total, « d'autres s'intègrent sur demande », mention « Marques et logos de leurs titulaires, cités sans partenariat ». Les agents visent grand (charte v7 §2) : rien n'est présenté comme déjà en service chez un client.
 - Aucune requête réseau sur `/agents-ia/*` ; aucun lien ni mention livrée de `revisaudit[.]fr`.
 - Requêtes primaires : spec §6 (mesurées sur Google le 15/10/2026) ; zéro conflit à `scripts/verify-query-ownership.mjs`.
 - `FAQPage` non émise sauf décision contraire de Kevin à la porte 2 (gabarit prêt, désactivé par donnée).
@@ -43,7 +43,7 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 - Modify: `tests/proof/test_positioning.py` (lecture de `config/agents-interdits.json`)
 
 **Interfaces:**
-- Produces: `config/agents-interdits.json` = `{ "expressions": string[] }` (les interdits du §9 bis), lu par Node et Python ; les tests I1, I3, I8, I9, I10 importent des modules qui n'existent pas encore.
+- Produces: `config/agents-interdits.json` = `{ "expressions": string[] }` (les interdits du §9 bis), lu par Node et Python ; les tests I1, I3, I8, I9 (connecteurs complets), I10 (démonstrations bien formées) importent des modules qui n'existent pas encore.
 
 - [ ] **Step 1: Porter la garde** depuis `~/dev/interne/memlia-rdv/tests/preuve/domaine-proscrit.test.ts` : témoins d'abord (un lien, la mention neutralisée `revisaudit[.]fr`, le nom d'outil seul) ; livré (`src`, `public`, `functions`, `scripts`, `config`, `db`) : zéro mention ; `docs` : aucune forme cliquable hors la liste fermée datée `docs/strategy/site-v3/cac/TERRAIN-CAC.md:204` et `cac/terrain-verbatims.json:35`, qui échoue si elle grossit.
 - [ ] **Step 2: Run** `node --test tests/scripts/domaine-proscrit.test.mjs` — Expected: PASS (l'état de base est propre), et le témoin « lien ajouté » échoue quand on l'injecte.
@@ -122,7 +122,7 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 - Consumes: Tasks 2-4 ; `couvertureDe` (`couverture-logiciels.mjs`).
 - Produces: le gabarit de fiche, lu par `getStaticPaths` sur `FICHES` ; `AgentRejeu` rend `Fiche['rejeu']`.
 
-- [ ] **Step 1: Write the failing tests** : `agents-rejeu-source.test.mjs` (chaque cas de `comptabilite.rejeu.cas` figure mot pour mot dans la table « Rejoué sur le jeu fictif » de `dist/automatisation/saisie-comptable/index.html`) ; `agents-ia.spec.ts` « fiche » (un `h1` = `og:title` = `headline`, ligne `Arrêt` barrée avec sa raison, « Ce qui ne part jamais sans vous » présent, aucun prix, lien vers la source du rejeu).
+- [ ] **Step 1: Write the failing tests** : `agents-rejeu-source.test.mjs` (la démonstration de `comptabilite` a quatre cas, chaque issue ∈ {Préparé, À valider, Arrêt}, au moins un Arrêt avec sa raison, mention « dossier fictif » rendue) ; `agents-ia.spec.ts` « fiche » (un `h1` = `og:title` = `headline`, ligne `Arrêt` barrée avec sa raison, « Ce qui ne part jamais sans vous » présent, aucun prix, lien vers la source du rejeu).
 - [ ] **Step 2: Run** `node --test tests/scripts/agents-rejeu-source.test.mjs` (après `npm run build`) — Expected: FAIL (route absente).
 - [ ] **Step 3: Implémenter** le gabarit selon la spec §2 (douze sections) et l'annexe §2 ; remplir `comptabilite.ts` depuis la spec §3, copy passée par `marketing-skills:copywriting` puis `copy-editing`.
 - [ ] **Step 4: Run** les deux tests + `node scripts/verify-page-contract.mjs` — Expected: PASS ; fiche relevée à 375 et 1440 px ; revue `metier` PASS.
@@ -143,7 +143,7 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 - [ ] **Step 4: Run** les deux tests + `npx playwright test tests/browser/agents-ia.spec.ts` — Expected: PASS ; mutant « `fetch` ajouté » ⇒ FAIL.
 - [ ] **Step 5: Commit** `git commit -m "feat(livraison): CSP sans réseau sur les agents IA" -- functions public/_headers tests/scripts/agents-ia-delivery.test.mjs tests/scripts/agents-ia-csp.test.mjs`
 
-### Task 8: Page des outils `/integrations`
+### Task 8: Page de compatibilité `/integrations`
 
 **Files:**
 - Create: `src/data/connecteurs.ts`, `src/components/sections/QuiPrendCeMetier.astro`
@@ -153,20 +153,20 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 - Consumes: `outilsGraph` (Task 3).
 - Produces: `STATUTS`, `Statut`, `DOMAINES`, `Connecteur`, `MENTION_MARQUES`, `PAGE_OUTILS` (annexe §1.2) ; `<QuiPrendCeMetier agent variante="bandeau"|"ligne" />`.
 
-- [ ] **Step 1: Write the failing test** `connecteurs.test.mjs` (déjà rouge depuis la Tâche 1) : statut ∈ 3 valeurs ; « Éprouvé » ⇒ `livraison` non vide sans nom de produit interne ; pas de `livraison` ailleurs ; ids uniques ; `guides` ⊂ `INTEGRATIONS` ; aucun `lien` proscrit.
+- [ ] **Step 1: Write the failing test** `connecteurs.test.mjs` (déjà rouge depuis la Tâche 1) : chaque connecteur a nom, éditeur, domaine, logo (`/logos/<id>.svg|webp` présent) et une ligne « ce que nos agents font avec » ; ids uniques ; aucun champ de statut ; `guides` ⊂ `INTEGRATIONS` ; aucun `lien` ni logo vers un domaine proscrit ; aucun total rendu.
 - [ ] **Step 2: Run** `node --test tests/scripts/connecteurs.test.mjs` — Expected: FAIL.
-- [ ] **Step 3: Implémenter** `connecteurs.ts` depuis `OUTILS.md` **avec les statuts arrêtés par Kevin à la porte 2 (K1 à K7)**, puis la page selon la spec §5 et l'annexe §3 (sections par domaine, un seul lien par guide, mention de marques).
+- [ ] **Step 3: Implémenter** `connecteurs.ts` depuis `hub-agents-ia/CONNECTEURS.md`, logos téléchargés depuis les sites des éditeurs **après accord de Kevin** (liste des fichiers, sources et tailles), puis la page selon la spec §5 (sections par domaine, cartes à logo, « intégration sur demande », un seul lien par guide, mention de marques).
 - [ ] **Step 4: Run** `node --test tests/scripts/connecteurs.test.mjs` + `npx playwright test tests/browser/integrations.spec.ts tests/browser/integrations-hub-copy.spec.ts tests/browser/cartes.spec.ts` + `node scripts/verify-query-ownership.mjs` — Expected: PASS.
-- [ ] **Step 5: Commit** `git commit -m "feat(outils): /integrations devient la page des outils par domaine" -- <fichiers>`
+- [ ] **Step 5: Commit** `git commit -m "feat(outils): /integrations devient la page de compatibilité logiciels" -- <fichiers>`
 
 ### Task 9: Les huit fiches restantes et les trois cartes cibles
 
 **Files:**
 - Modify: `src/data/specialistes/{juridique-fiscal,finance,commercial,communication,relation-client,gestion-cabinet,rh-cabinet,protection-donnees}.ts`, `config/page-intent-contract.json` (requêtes de la spec §6), `config/page-contract-exemptions.json`, `public/llms.txt` (section « Agents IA »), `scripts/lib/llms-inventory.mjs`, `tests/scripts/llms-inventory.test.mjs`
 
-- [ ] **Step 1: Étendre** `agents-rejeu-source.test.mjs` aux six sources de la spec §2.1 et vérifier `rejeu: null` pour Communication, Relation client (et RH selon la porte 2).
+- [ ] **Step 1: Étendre** `agents-rejeu-source.test.mjs` aux neuf fiches : chacune a sa démonstration bien formée (spec §2.1).
 - [ ] **Step 2: Run** — Expected: FAIL (contenus vides).
-- [ ] **Step 3: Remplir** chaque fiche depuis la spec §3 et §6, formulations réglementées depuis `FACT-CHECK.md` ; copywriting puis copy-editing.
+- [ ] **Step 3: Remplir** chaque fiche depuis `hub-agents-ia/AGENTS-CONTENU.md` et la spec §6, formulations réglementées depuis `FACT-CHECK.md` ; copywriting puis copy-editing.
 - [ ] **Step 4: Run** `npm run build && node --test tests/scripts/agents-rejeu-source.test.mjs tests/scripts/specialistes-copy.test.mjs tests/scripts/llms-inventory.test.mjs && node scripts/verify-page-contract.mjs && node scripts/verify-query-ownership.mjs` — Expected: PASS ; revues `metier` (paie, fiscal, RGPD) PASS.
 - [ ] **Step 5: Commit** `git commit -m "feat(fiches): huit fiches d'agents IA" -- <fichiers>`
 
@@ -212,6 +212,6 @@ réutilisation, appelée ci-dessous « l'annexe »), [`JSON-LD.md`](../../strate
 
 - [ ] **Step 1:** `AVATARS_REQUIRED = true` (plus aucun `avatar: null`) ; `npm run regen:generated` (`lastmod:sync`, scellés, `render:public`) ; tout le site est redaté (menu et pied) : le dire dans la PR.
 - [ ] **Step 2: Suites** : `npx astro check` (0 erreur), CI « Repository gates » verte sur le SHA ; comptes de tests comparés à ceux d'avant le chantier (aucun compte qui baisse sans échec).
-- [ ] **Step 3: Chaîne de preuve** : rejeu repris mot pour mot ; chaque « Éprouvé » relié à sa livraison ; comparaison par séquences de six mots contre les textes relevés d'agpt et de Factory (`~/dev/interne/memlia-landing-sources/hub-agents-ia/recherche-2026-10-14/releve/textes/`) : 0 séquence commune ; JSON-LD extrait de `dist/` et validé.
+- [ ] **Step 3: Chaîne de preuve** : chaque démonstration relue par la revue `metier` ; chaque logo vérifié à sa source officielle ; comparaison par séquences de six mots contre les textes relevés d'agpt et de Factory (`~/dev/interne/memlia-landing-sources/hub-agents-ia/recherche-2026-10-14/releve/textes/`) : 0 séquence commune ; JSON-LD extrait de `dist/` et validé.
 - [ ] **Step 4: Écran** : captures côte à côte agpt / Memlia par section à 1440 et 375 ; Lighthouse ≥ 95 sur les quatre axes ; agents `a11y-architect`, `seo-content`, `seo-schema`, `code-reviewer`, puis `/code-review`.
 - [ ] **Step 5:** prévisualisation `npx wrangler pages deploy dist --project-name memlia --branch preview-hub-specialistes` ; branche poussée ; **aucune fusion sur `main` sans Kevin**.

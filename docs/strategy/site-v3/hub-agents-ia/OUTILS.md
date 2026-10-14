@@ -1,5 +1,11 @@
 # Page des outils : connecteurs par domaine (phase 2, recherche du 14-15/10/2026)
 
+> **Porte 2 (15/10/2026)** : Kevin a supprimé les statuts d'outil (Éprouvé, Par export, Sur demande) et
+> la règle de reprise à l'identique des démonstrations. La page `/integrations` devient une page de
+> compatibilité à logos, sans statut (spec §5, `CONNECTEURS.md`) ; chaque fiche a sa démonstration
+> (spec §2.1, `AGENTS-CONTENU.md`). Ce relevé reste lisible comme historique ; il ne fait plus foi sur ces points.
+
+
 > Recherche en lecture seule pour `/integrations` devenue page des outils (cadrage hub §12, D10).
 > Aucune écriture dans un dépôt. Les noms internes des automatisations n'apparaissent que dans
 > la colonne « interne » du §2 ; aucune ligne publique proposée ne les porte.

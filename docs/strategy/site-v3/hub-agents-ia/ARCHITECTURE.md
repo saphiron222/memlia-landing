@@ -1,5 +1,11 @@
 # Hub des agents IA : plan d'architecture (blueprint de la phase 3), 15/10/2026
 
+> **Porte 2 (15/10/2026)** : Kevin a supprimé les statuts d'outil (Éprouvé, Par export, Sur demande) et
+> la règle de reprise à l'identique des démonstrations. La page `/integrations` devient une page de
+> compatibilité à logos, sans statut (spec §5, `CONNECTEURS.md`) ; chaque fiche a sa démonstration
+> (spec §2.1, `AGENTS-CONTENU.md`). Ce relevé reste lisible comme historique ; il ne fait plus foi sur ces points.
+
+
 Lu : cadrage, ADR 0001, `HUB-AGENTS-IA-SPEC.md` §0-6, `CONTEXT.md`, charte v6, `phase2/json-ld.md` (intégré §4, non refait), puis le code du worktree `hub-specialistes`. Rien exécuté sauf `node` en lecture (`familles.ts` : 85 familles, 60 EC dans 12 pôles, 25 CAC). Les citations sont `chemin:ligne`. Ce plan alimente le §7 de la spécification.
 
 ## 0. Écarts avec la spécification (et le cadrage) : à trancher ou à savoir

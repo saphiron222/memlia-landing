@@ -16,7 +16,7 @@ appartient à **exactement un** titulaire : un agent, le hub (l'IA générative 
 « Derrière chaque agent, nous » (pôle Méthode et décision humaine). Un agent dont le métier a déjà
 sa page sur le site (paie, accueil CAC, page des outils) y mène au lieu d'ouvrir une fiche.
 Pages, JSON-LD, sitemap, `llms.txt` et tests lisent ce seul fichier.
-La page des outils suit la même règle (`src/data/connecteurs.ts`, statut fermé à trois valeurs).
+La page de compatibilité suit la même règle (`src/data/connecteurs.ts` : un connecteur par logiciel, avec logo et mention de marques, sans statut : décision de Kevin du 15/10/2026).
 
 ## Ce que cette décision remplace
 
@@ -28,8 +28,8 @@ La page des outils suit la même règle (`src/data/connecteurs.ts`, statut ferm�
   (« refus figés : pages par pôle/rôle ») : le hub ouvre des pages par métier ; l'article garde
   l'intention informationnelle et lie le hub.
 - `docs/strategy/site-v3/mesures/QUALIFICATION-INTEGRATION-CONNECTEURS.md` (06/10) : `/integrations`
-  devient la page des outils par domaine (D10). Ce n'est pas un catalogue chiffré : aucun total, un
-  statut vérifié par outil ; la page service `/automatisation/integration-connecteurs` reste fermée.
+  devient la page des outils par domaine (D10). C'est une page de compatibilité à la manière d'un catalogue : aucun
+  total, aucun statut ; la page service `/automatisation/integration-connecteurs` reste fermée.
 
 ## Considered Options
 

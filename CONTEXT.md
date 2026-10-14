@@ -45,17 +45,16 @@ manière ; active quand une tâche y est documentée.
 _Avoid_ : catégorie, thème
 
 **Titulaire** :
-Celui qui porte une famille sur le site : un agent IA, le hub des agents, ou le bloc « Derrière
+Celui qui porte une famille sur le site (pour le maillage) : un agent IA, le hub des agents, ou le bloc « Derrière
 chaque agent, nous ». Chaque famille en a un seul.
 _Avoid_ : propriétaire, responsable
 
 ### Les outils du cabinet
 
-**Statut d'un outil** :
-Ce que nous savons d'un outil du cabinet, parmi trois valeurs : *Éprouvé* (une automatisation livrée
-et recettée le touche), *Par export* (format documenté, aucune recette), *Sur demande* (accès et
-formats vérifiés avant devis).
-_Avoid_ : compatible, intégré, connecté, partenaire
+**Connecteur** :
+Un logiciel du cabinet dans lequel nos agents travaillent ; la page de compatibilité les liste par
+domaine, et d'autres s'intègrent sur demande.
+_Avoid_ : partenaire, intégration certifiée, plateforme
 
 **Recette** :
 La vérification, par les équipes du cabinet qui feront le travail, qu'une automatisation livrée fait
