@@ -19,7 +19,7 @@
 | D3 | L'image figée quitte le héros. Elle descend sous l'outil, dans « Comment c'est calculé », en `lazy`, et reste l'image Open Graph. Hub : sous le catalogue, avant l'appel. |
 | D4 | Le contrat de liens fait foi : hub, ressource exacte éventuelle, page service, puis **un seul** `/contact`. Les tests sont réécrits. |
 | D5 | **Refusée** : tout se livre maintenant. La refonte se date dans `OUTILS-BOUCLE.md` pour que la lecture du 21/10 la voie. |
-| D6 | `FAQPage` ajouté au JSON-LD des pages outils, construit depuis les deux questions rendues. |
+| D6 | ~~`FAQPage` ajouté au JSON-LD des pages outils~~ — **rouverte et retirée le 14/10** : Google ne montre plus le résultat enrichi FAQ depuis le 07/05/2026 (journal Search Central) ; la FAQ reste visible. |
 | D7 | DataForSEO change de compte (identifiants posés par Kevin dans `~/.claude/settings.json`) ; relevé SERP relancé dès qu'ils sont présents. |
 | D8 | Épure maintenant ; l'exemple chiffré par calculateur est un chantier de contenu séparé. |
 
@@ -117,3 +117,15 @@ Textes fixés (copywriting, charte v5 §8) :
 - [ ] Écran : captures 375×812 et 1440×900, Lighthouse ≥ 95 sur un échantillon.
 - [ ] Revues `seo-content`, `a11y-architect`, `code-reviewer`, puis `/code-review`.
 - [ ] Prévisualisation `preview-outils-epure`, push de la branche après contrôle du diff ; ni fusion ni production.
+
+## Décisions de Kevin après la livraison en prévisualisation (14/10/2026, « ok pour tout sauf le 5, il faut mettre en ligne maintenant ; replanifie l'article du blog »)
+
+| | Décision | Où |
+|---|---|---|
+| 1 | Retirer le JSON-LD `FAQPage` (D6 rouverte) ; la FAQ visible reste. | `Outil.astro`, `outil-page.ts`, contrats et tests revenus à trois types |
+| 2 | Description du hub : « Des outils gratuits pour calculer, contrôler ou préparer une tâche comptable. Chaque outil montre sa règle, sa source et ses limites, sans inscription. » | `outils-comptables-gratuits.astro` |
+| 3a | La première « limite » du rapprochement décrivait le classeur : retirée de la liste (le composant dit déjà ce que contient le classeur et la notice des signes). | `outils.ts` |
+| 3b | Nouvelle source du rapprochement : proposée à Kevin, livrée dans une seconde demande de fusion. | à venir |
+| 4 | Introductions des neuf outils hors premier écran mobile raccourcies : textes proposés à Kevin, seconde demande de fusion. | à venir |
+| 5 | Mise en ligne immédiate : fusion sur `main` après la CI ; l'article CAC réservé au 13/10, jamais produit, devient une trace `dateManquee` (`f5b8e31b`). | — |
+

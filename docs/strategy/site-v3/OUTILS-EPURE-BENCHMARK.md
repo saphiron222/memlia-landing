@@ -252,7 +252,7 @@ Le test `outils publiés : le premier champ tient au premier écran` nomme ces 9
 
 **Chaîne de preuve** :
 - mêmes saisies sur la production (avant) et sur la construction locale (après), quatre calculateurs historiques : **12 cas sur 12 identiques**, dont 3 refus et 4 CSV comparés à l'octet ;
-- JSON-LD : **23 pages, aucun nœud retiré ni modifié** ; seul ajout, `FAQPage` sur les 22 pages du gabarit (le hub ne change pas).
+- JSON-LD : **23 pages, aucun nœud retiré ni modifié** ; `FAQPage`, ajouté d'abord sur les 22 pages du gabarit, a été retiré le 14/10 sur décision de Kevin (résultat enrichi FAQ abandonné par Google le 07/05/2026) : le JSON-LD des pages est donc inchangé.
 
 **Redites qui restent, hors gabarit** (composants d'outil et données, hors périmètre de l'épure) : six composants redisent qu'une saisie reste dans l'onglet (comparateur, checklist, relance, seuil, vérificateur de prompt, circularisation) ; la revue SEO du 14/10 relève aussi des réserves répétées entre composant et limites sur le FEC, l'échéance, le rapprochement, la marge et l'amortissement.
 

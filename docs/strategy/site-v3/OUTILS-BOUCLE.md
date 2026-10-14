@@ -101,7 +101,7 @@ La collecte personnalisée n’est pas ajoutée dans cette livraison. Elle exige
 
 Kevin a décidé le 14/10/2026 de livrer l'épure des 22 pages du gabarit et du hub sans attendre la lecture du 21 octobre (`OUTILS-EPURE-PLAN.md`, décision D5). Cet addendum ne modifie ni les populations, ni les instruments, ni les seuils, ni les dates ci-dessus.
 
-- La forme des pages change à la **mise en production** de la branche `site/outils-epure` : l'outil remonte au premier écran, l'image figée quitte le héros, la page ne porte plus qu'un appel `/contact`, et le JSON-LD gagne `FAQPage`. Les URL, titres, descriptions et la logique des outils ne changent pas.
+- La forme des pages change à la **mise en production** de la branche `site/outils-epure` : l'outil remonte au premier écran, l'image figée quitte le héros, la page ne porte plus qu'un appel `/contact`. Le JSON-LD ne change pas (`FAQPage` ajouté puis retiré le même jour : Google ne montre plus ce résultat depuis le 07/05/2026). Les URL, titres, descriptions et la logique des outils ne changent pas.
 - La date de mise en production se reporte ici le jour de la fusion. Si elle tombe avant le 17 octobre, le relevé du 21 octobre affiche cette date et sépare les jours antérieurs et postérieurs ; il n'attribue aucun écart à l'épure sur une fenêtre aussi courte.
 - Le verdict J+90 du 19 décembre (et du 20 décembre pour l'amortissement) lit les mêmes seuils ; il mentionne que la forme a changé en cours de fenêtre.
 - Un contact d'origine reste compté sur l'envoi D1 seulement : la page n'a plus qu'un lien vers `/contact`, ce qui ne change pas l'instrument.
