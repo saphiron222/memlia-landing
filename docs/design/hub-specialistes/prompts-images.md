@@ -230,3 +230,10 @@ mesure.
 retient `public/agents/` (annexe ARCHITECTURE §5 : `test_build.py` compte les images d'articles sous
 `public/images/`, et `strip-briefs.mjs` y opère). Les WebP livrés servent de sources ; les dérivés
 AVIF et WebP (128, 256, 512) sont produits par la tâche 12.
+
+**Reprise du 15/10/2026 (00 h 43), remesurée** : Florent céladon (`#8aa19b`), plus aucune paire de corps
+sous ΔE 11 (la plus proche : Victoire ~ Octavie 13,8, filtres différents) ; Victoire tient un dossier
+kraft lié d'un ruban plat (petit nœud résiduel, lu comme un dossier, plus comme un cadeau) ; aucun
+texte ; manifeste de la livraison à jour (48 empreintes SHA-256 conformes). **Série validée pour la
+tâche 12.** Restent mineurs et acceptés en l'état : la base d'Aude un peu haute, la balance de
+Balthazar (jeu de mots « balance »).
