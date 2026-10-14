@@ -1,7 +1,7 @@
 ---
-status: proposed
+status: accepted
 date: 2026-10-14
-deciders: Kevin (porte 1 du chantier « hub de spécialistes »)
+deciders: Kevin (porte 1 du chantier « hub de spécialistes », recommandations D1 à D14 validées le 14/10/2026)
 ---
 
 # Un hub d'agents IA par métier, lu depuis une source unique qui référence les familles
@@ -18,7 +18,7 @@ sa page sur le site (paie, accueil CAC, page des outils) y mène au lieu d'ouvri
 Pages, JSON-LD, sitemap, `llms.txt` et tests lisent ce seul fichier.
 La page des outils suit la même règle (`src/data/connecteurs.ts`, statut fermé à trois valeurs).
 
-## Ce que cette décision remplace (si Kevin l'accepte)
+## Ce que cette décision remplace
 
 - `docs/strategy/site-v3/ARCHITECTURE-ACCES-COMMERCIAUX.md` §1.4 (« aucune liste publique de tout
   ce que nous faisons ») et §2 (« pas de page par pôle », « aucun croisement tâche × rôle ») : le
@@ -27,14 +27,13 @@ La page des outils suit la même règle (`src/data/connecteurs.ts`, statut ferm�
 - La note de l'article planifié `ia-cabinet-comptable` dans `docs/strategy/site-v3/backlog-v3.json`
   (« refus figés : pages par pôle/rôle ») : le hub ouvre des pages par métier ; l'article garde
   l'intention informationnelle et lie le hub.
-- `docs/strategy/site-v3/mesures/QUALIFICATION-INTEGRATION-CONNECTEURS.md` (06/10) : selon
-  l'option retenue à la porte 1, `/integrations` devient la page des outils par domaine, ou une
-  page distincte s'ajoute. Dans les deux cas, ce n'est pas un catalogue chiffré : aucun total, un
-  statut vérifié par outil.
+- `docs/strategy/site-v3/mesures/QUALIFICATION-INTEGRATION-CONNECTEURS.md` (06/10) : `/integrations`
+  devient la page des outils par domaine (D10). Ce n'est pas un catalogue chiffré : aucun total, un
+  statut vérifié par outil ; la page service `/automatisation/integration-connecteurs` reste fermée.
 
 ## Considered Options
 
-- **Partition des familles (proposée)** : chaque famille a un seul agent titulaire ; un test
+- **Partition des familles (retenue)** : chaque famille a un seul agent titulaire ; un test
   vérifie la partition. Cela rend la cannibalisation lisible (une fiche = ses familles) et empêche
   deux fiches de promettre la même tâche.
 - **Agent = pôle, sans familles** : plus simple, mais trois pôles n'ont pas d'agent (Portefeuille

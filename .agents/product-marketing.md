@@ -1,6 +1,6 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v5 — 6 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-06. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v6 — 14 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-14. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
@@ -103,6 +103,9 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 | `/contact` | la conversion | — | Quelle tâche vos collaborateurs refont-ils encore à la main ? |
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
+| `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia expert comptable (provisoire, à confirmer par les volumes Google) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
+| `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | « agent ia <métier> » (provisoire) | ce que l'agent prend en charge, intention d'abord |
+| `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable (provisoire) | arrêté par la spécification du hub |
 
 Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
 
@@ -160,9 +163,9 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 ## 9. Vocabulaire
 
-- **On dit** : tâche, geste, règle, savoir-faire, collaborateur, cabinet, dossier, pièce, bulletin, DSN, retour DSN, écart, exception, proposition, recette, validation, périmètre, maintenance, « prise en charge », « écrite dans vos mots », « dans vos outils ».
+- **On dit** : tâche, geste, règle, savoir-faire, collaborateur, cabinet, dossier, pièce, bulletin, DSN, retour DSN, écart, exception, proposition, recette, validation, périmètre, maintenance, « prise en charge », « écrite dans vos mots », « dans vos outils », agent IA (§9 bis).
 - **On ne dit jamais** : module, complément Excel ou Memlia (verrouillés par `tests/proof/test_positioning.py`), plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution, gain chiffré, « logiciel » pour désigner Memlia, mots de processus interne (revue métier, fact-check, non attesté : verrouillés par `test_build.py`).
-- **Définir à la première apparition** : recette, fail-closed, jeu d'essai fictif, agrégat non nominatif.
+- **Définir à la première apparition** : recette, fail-closed, jeu d'essai fictif, agrégat non nominatif, agent IA.
 
 ### Vocabulaire CAC : relier les normes aux mots de l'équipe
 
@@ -180,6 +183,17 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 **Interdits CAC** : « audit automatisé », « conforme aux NEP » et variantes (« conforme NEP »), « validé H2A/CNCC », « passe le contrôle H2A », « archivage conforme » sans démonstration. Aucun nom de service, outil ou slogan ressemblant au titre protégé de commissaire aux comptes ou créant une confusion (L.821-7) : « CAC virtuel », « commissaire aux comptes IA », « votre CAC augmenté ». Le titre désigne le lecteur qualifié, jamais Memlia. La préparation d'un FEC, d'une confirmation ou d'une analyse ne vaut ni contrôle d'audit complet, ni conclusion, ni opinion. Aucun gain chiffré CAC tiré d'une étude générale sur l'IA. Les sujets LCB-FT et durabilité exigent leur périmètre et leurs sources propres ; aucun outil ne décide d'une déclaration à TRACFIN.
 
+## 9 bis. Les agents IA (14/10/2026, décision de Kevin, porte 1 du hub)
+
+Un **agent IA**, chez Memlia, est la règle écrite des tâches d'un même métier du cabinet, mise en œuvre dans vos outils. Il prépare, il s'arrête dans le doute, votre collaborateur valide. Il porte un prénom pour être reconnu ; il ne parle pas à la première personne, ne se présente ni comme un collègue ni comme un membre de l'équipe, et n'envoie rien. Derrière chaque agent, c'est nous : nous observons la tâche, écrivons sa règle, l'éprouvons sur un jeu fictif, la faisons recetter et la maintenons. Aucune équipe de personas n'est inventée.
+
+- **Il promet** : la tâche prise entière ; la frontière en trois colonnes ; l'arrêt dans le doute ; le rejeu sur un dossier fictif, montré seulement là où la règle est publiée ; une proposition que le cabinet valide.
+- **Il ne promet jamais** : l'autonomie ; un envoi sans validation (courriel, relance, lettre d'information, publication, réponse à un client, déclaration, facture : tout ce qui sort du cabinet est préparé, jamais envoyé) ; un gain chiffré ; une compétence réglementée : il n'est ni expert-comptable, ni commissaire aux comptes, ni avocat, ni délégué à la protection des données désigné.
+- **Il se définit à sa première apparition** sur chaque page. Le mot de catégorie est « agent IA » ; « spécialiste », « assistant » et « collaborateur » ne le désignent pas.
+- **Ne s'écrit jamais** : agent autonome, collaborateur IA, employé IA, « embaucher » ou « recruter » un agent, « votre nouveau collègue », agent IA CAC, commissaire aux comptes IA, DPO IA, « agent administratif » ou « agent comptable » sans « IA » (grades de la fonction publique). Le métier d'audit se dit « missions d'audit » ; le titre de commissaire aux comptes désigne le lecteur.
+- **L'agent RH du cabinet** ne note ni ne surveille personne : préparation de documents et agrégats seulement.
+- **Place** : sous « Ce qu'on automatise », entre la vue par tâche (le pilier) et la vue par outil (`/integrations`). L'appel principal reste « Confier une première tâche ».
+
 ## 10. Preuves autorisées et garde-fous
 
 Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
@@ -188,6 +202,7 @@ Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre 
 
 ## Changelog
 
+- v6 (2026-10-14) — Ajouté les agents IA (§9 bis) : définition, promesses et interdits, place dans la navigation ; trois lignes au §7 (hub, fiches, page des outils). Décision de Kevin à la porte 1 du hub (cadrage `docs/strategy/site-v3/HUB-SPECIALISTES-CADRAGE.md`, ADR 0001).
 - v5 (2026-10-06) — Ouvert la charte au commissariat aux comptes : personas, vocabulaire, secret, indépendance, responsabilité, documentation et fiche outil ; séparé l'accueil CAC de l'accueil EC sans promettre de fonctions déjà livrées.
 - v4 (2026-09-21) — Réservé l'identité juridique aux mentions légales et au schéma Organization ; À propos revient à la valeur produit après mesure du bloc registre hors contexte.
 - v3 (2026-09-17) — Repositionné Memlia sur le savoir-faire non écrit du cabinet, la règle écrite et la prise en charge entière d'une tâche répétitive.

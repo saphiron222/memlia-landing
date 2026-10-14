@@ -70,7 +70,7 @@ ni réglage d'horloge de production n'est modifié.
 
 ## Message et copy
 
-**La charte de message fait foi : `.agents/product-marketing.md` (v5, 06/10/2026).** Toute surface publique
+**La charte de message fait foi : `.agents/product-marketing.md` (v6, 14/10/2026 : §9 bis, les agents IA).** Toute surface publique
 (site, blog, LinkedIn, devis, prise de parole) suit son angle (« Votre cabinet tourne sur un savoir-faire que
 personne n'a écrit »), sa promesse (toute tâche répétitive, prise entière), sa voix (« nous », concret,
 confiant) et ses interdits. Une phrase qui la contredit se corrige ; une phrase qu'elle ne couvre pas se

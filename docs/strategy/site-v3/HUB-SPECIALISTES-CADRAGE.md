@@ -1,8 +1,11 @@
 # Hub d'agents IA par métier — cadrage de la phase 1 (14/10/2026)
 
-> **Statut : proposition, en attente de la porte 1.** Aucune ligne de code n'est écrite. Branche
-> `site/hub-specialistes`, worktree `.worktrees/hub-specialistes`, base `origin/main` `9cb65a56`.
-> ADR proposé : [`docs/adr/0001-hub-agents-ia-source-unique.md`](../../adr/0001-hub-agents-ia-source-unique.md).
+> **Statut : porte 1 franchie le 14/10/2026 vers 23 h.** Kevin a validé les recommandations D1 à
+> D14 telles quelles (« Je valide les recommandations D1 à D14 du cadrage telles quelles. Passe à la
+> phase 2. »). Aucune ligne de code n'est écrite. Branche `site/hub-specialistes`, worktree
+> `.worktrees/hub-specialistes`, base `origin/main` `9cb65a56`.
+> ADR accepté : [`docs/adr/0001-hub-agents-ia-source-unique.md`](../../adr/0001-hub-agents-ia-source-unique.md).
+> Suite : la spécification de la phase 2.
 > Charte appliquée : `.agents/product-marketing.md` **v5 du 06/10/2026** (et non la v3 citée dans la
 > consigne du chantier : le checkout principal pointait sur une branche du 21/09).
 
