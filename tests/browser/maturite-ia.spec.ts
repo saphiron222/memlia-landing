@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 const route = '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet';
 for (const mixed of [false, true]) test(`impression exhaustive avec détails ${mixed ? 'mixtes' : 'fermés'}, sans changer leur état écran`, async ({ page }, testInfo) => {
@@ -90,6 +91,7 @@ test('copie réussie et refus offrent le même rapport sélectionnable', async (
   await expect(page.locator('#diagnostic-report')).toBeFocused();
 });
 test('interaction sans réseau ni stockage et événements sans réponses', async ({ page, context }) => {
+  await chargerImagesDifferees(page);
   const requests: string[] = []; page.on('request', r => requests.push(r.url()));
   await page.evaluate(() => { (window as any).__events = []; window.addEventListener('memlia:outil', (e: Event) => (window as any).__events.push((e as CustomEvent).detail)); });
   await page.locator('#usages_1').selectOption('formalise');

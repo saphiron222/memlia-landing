@@ -3,8 +3,10 @@ import Base from '@/layouts/Base.astro';
 import OutilHero from '@/components/sections/OutilHero.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import Picto from '@/components/Picto.astro';
+import ProofMedia from '@/components/ProofMedia.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
+import { HUB_GRATUIT } from '@/data/outil-page';
 
 const h1 = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const title = `${h1} | Memlia`;
@@ -48,10 +50,9 @@ const graph = {
   <div class="feuille outils-feuille">
     <OutilHero
       title={h1}
-      description="Choisissez la tâche que vous voulez préparer, puis ouvrez l’outil sans inscription. Chaque carte indique les données nécessaires, le résultat disponible et sa limite. Vous gardez la validation et la décision pour votre dossier."
-      proof="v2/24-outils-hub"
+      description="Choisissez la tâche que vous voulez préparer, puis ouvrez l’outil. Chaque page montre sa règle, sa source et ses limites. Vous gardez la validation et la décision pour votre dossier."
       titleId="outils-titre"
-      eyebrow="Un besoin, un résultat, une limite"
+      gratuit={HUB_GRATUIT}
       breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
     />
 
@@ -67,13 +68,7 @@ const graph = {
                 <div class="carte-corps">
                   <h3 class="carte-titre">{titreHub(outil)}</h3>
                   <p class="carte-texte">{outil.description}</p>
-                  <dl>
-                    <div><dt>Entrée</dt><dd>{outil.promesse.entree}</dd></div>
-                    <div><dt>Résultat</dt><dd>{outil.promesse.resultat}</dd></div>
-                    <div><dt>Limite</dt><dd>{outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]}</dd></div>
-                  </dl>
                   <a class="carte-action carte-lien outil-carte-action" href={outilPath(outil)}>{outil.libelleAction}<Picto nom="fleche" taille={14} /></a>
-                  <p>Gratuit, sans inscription.</p>
                 </div>
               </li>
             ))}
@@ -81,6 +76,14 @@ const graph = {
         </div>
       </section>
     ))}
+
+    <div class="section">
+      <div class="conteneur">
+        <div class="outils-apercu rv" data-tool-media>
+          <ProofMedia id="v2/24-outils-hub" cadre />
+        </div>
+      </div>
+    </div>
   </div>
   <AppelFinal
     id="hub-confier"
@@ -97,8 +100,5 @@ const graph = {
    * nombre d'outils de la catégorie ; l'outil seul de sa catégorie garde la largeur d'une colonne.
    */
   .outils-feuille { min-height: 70vh; padding-bottom: var(--section-espace); }
-  .outils-categorie dl { display: grid; gap: 10px; margin: 4px 0 0; padding-top: 16px; border-top: 1px solid var(--ligne); }
-  .outils-categorie dl div { display: grid; gap: 2px; }
-  .outils-categorie dt { color: var(--texte-2); font-size: var(--t-sm); font-weight: 600; }
-  .outils-categorie dd { margin: 0; color: var(--texte-fort); }
+  .outils-apercu { max-width: 720px; }
 </style>

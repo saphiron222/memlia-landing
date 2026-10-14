@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
 import { MODELS, modelPrompt, TRANSFER_KEY } from '../../src/lib/bibliotheque-prompts.mjs';
 const ROUTE = '/outils-comptables-gratuits/bibliotheque-prompts-comptables';
@@ -31,7 +32,7 @@ test('filtres combinés, recherche vide, effacement sans nouvelle URL', async ({
 for (const m of MODELS) test(`copie et export exacts sans réseau : ${m.id}`, async ({ page }) => {
   // Une page par fiche : Chromium bloque une rafale de plus de dix téléchargements.
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async (text: string) => { (window as any).__copy = text; } } }));
-  await page.goto(ROUTE); await page.waitForLoadState('networkidle');
+  await page.goto(ROUTE); await chargerImagesDifferees(page);
   const requests: string[] = []; page.on('request', r => requests.push(r.url()));
   const card = page.locator(`[data-model="${m.id}"]`);
   await card.getByRole('button', { name: 'Copier le modèle' }).click();

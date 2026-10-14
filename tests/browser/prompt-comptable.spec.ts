@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
 const ROUTE = '/outils-comptables-gratuits/generateur-prompt-expert-comptable';
 async function generate(page: import('@playwright/test').Page) {
@@ -19,7 +20,7 @@ test('amorces, édition contrôlée, export exact et copie ; aucune donnée dans
   });
   const requests: string[] = []; let armed = false;
   page.on('request', (request) => { if (armed) requests.push(request.url()); });
-  await page.goto(ROUTE); await page.waitForLoadState('networkidle'); armed = true;
+  await page.goto(ROUTE); await chargerImagesDifferees(page); armed = true;
   await generate(page);
   const editor = page.getByLabel('Prompt éditable');
   const initial = await editor.inputValue();

@@ -26,6 +26,7 @@ export interface OutilDefinition {
   libelleAction: string;
   title: string;
   description: string;
+  // Registre seulement : ni la page ni le hub ne l'affichent depuis l'épure du 14/10/2026.
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;

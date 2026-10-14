@@ -1,36 +1,25 @@
 ---
 import Picto from '@/components/Picto.astro';
+import type { QuestionOutil } from '@/data/outil-page';
 
 interface Props {
-  mentionLocale: string;
+  questions: readonly QuestionOutil[];
 }
 
-const { mentionLocale } = Astro.props;
-const questions = [
-  {
-    id: 'outil-faq-gratuit',
-    question: 'Cet outil est-il vraiment gratuit ?',
-    reponse: 'Oui. Vous pouvez l’utiliser sans compte, sans adresse e-mail et sans transmettre de moyen de paiement.',
-  },
-  {
-    id: 'outil-faq-local',
-    question: 'Mes données quittent-elles le navigateur ?',
-    reponse: `${mentionLocale} La politique de sécurité de cette page bloque aussi les connexions sortantes pendant le calcul.`,
-  },
-];
+const { questions } = Astro.props;
 // Système de page : la forme « questions » de l'accueil — l'en-tête collant à gauche dès
-// 1 024 px, l'accordéon natif à droite, aux mêmes mesures.
+// 1 024 px, l'accordéon natif à droite, aux mêmes mesures. Les deux réponses absorbent les
+// anciennes garanties (épure du 14/10/2026) ; le JSON-LD FAQPage lit le même tableau.
 ---
 
 <section class="section outil-faq" data-tool-section="faq" aria-labelledby="outil-faq-titre">
   <div class="conteneur outil-faq-inner">
     <div class="tete outil-faq-heading rv">
-      <h2 id="outil-faq-titre">Avant d’utiliser l’outil.</h2>
-      <p>Les deux objections relevées lors de la conception des outils gratuits.</p>
+      <h2 id="outil-faq-titre">Gratuité et données</h2>
     </div>
     <div class="outil-faq-list rv-groupe">
       {questions.map((item) => (
-        <details class="outil-faq-item rv" id={item.id} open>
+        <details class="outil-faq-item rv" id={item.id}>
           <summary>
             <span>{item.question}</span>
             <Picto nom="chevron" taille={16} class="outil-faq-chevron" />
@@ -83,7 +72,8 @@ const questions = [
   .outil-faq-chevron {
     flex: 0 0 auto;
     margin-top: 0.35em;
-    color: var(--picto-repos);
+    /* Seul indice qu'une réponse se déplie, la FAQ étant repliée : contraste 3:1 au moins (1.4.11). */
+    color: var(--texte-2);
     transition: transform var(--duree-2) var(--courbe-standard), color var(--duree-1) var(--courbe-standard);
   }
   .outil-faq-item[open] .outil-faq-chevron {

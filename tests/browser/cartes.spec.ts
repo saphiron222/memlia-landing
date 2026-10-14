@@ -30,7 +30,8 @@ const ROUTES = [
   '/integrations',
   '/integrations/rapprochement-bancaire-sage',
   '/outils-comptables-gratuits',
-  '/outils-comptables-gratuits/calculateur-date-echeance-facture',
+  // Les pages outils n'ont plus de cartes depuis l'épure du 14/10/2026 (la suite est une ligne de
+  // liens) ; la bibliothèque et le hub gardent la couverture des cartes.
   '/outils-comptables-gratuits/bibliotheque-prompts-comptables',
 ];
 /** Le blog garde son propre dessin (Kevin, 07/10/2026 : « les blogs pas besoin de toucher »). */
@@ -312,7 +313,6 @@ const CLIQUABLES: [string, string][] = [
   ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet'],
   ['/integrations', '/integrations/rapprochement-bancaire-sage'],
   ['/outils-comptables-gratuits', '/outils-comptables-gratuits/bibliotheque-prompts-comptables'],
-  ['/outils-comptables-gratuits/calculateur-date-echeance-facture', '/outils-comptables-gratuits'],
 ];
 for (const [route, cible] of CLIQUABLES) {
   test(`${route} : carte cliquable en entier, survol et focus du site`, async ({ page }) => {

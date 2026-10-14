@@ -1,26 +1,22 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
-import Button from '@/components/Button.astro';
 import Insecable from '@/components/Insecable.astro';
-import type { ProofId } from '@/data/proofs';
 
 interface Crumb { label: string; href?: string }
 interface Props {
   title: string;
   description: string;
-  proof?: ProofId;
   breadcrumbs: readonly Crumb[];
   eyebrow?: string;
   titleId: string;
-  ctaHref?: string;
-  ctaLabel?: string;
+  gratuit: string;
 }
 
-const { title, description, proof, breadcrumbs, eyebrow, titleId, ctaHref, ctaLabel } = Astro.props;
+const { title, description, breadcrumbs, eyebrow, titleId, gratuit } = Astro.props;
 /*
- * Héros partagé du système de page (docs/design/2026-10-07-systeme-de-page.md, § 1), comme les
- * services : surtitre, titre, chapeau et un bouton principal à gauche ; la preuve dans le cadre
- * unique à droite dès 1 024 px, dessous avant. Sans preuve, la pile de texte reste seule.
+ * Héros des outils et du hub (épure du 14/10/2026, OUTILS-EPURE-PLAN.md) : le fil d'Ariane, le
+ * titre, une phrase et la ligne « Gratuit », rien d'autre. Ni image ni bouton d'ancre : l'outil
+ * suit immédiatement, et son image figée descend sous l'outil. En mobile, la page courante du fil
+ * finit sur une ellipse et le texte se resserre pour que l'outil commence au premier écran.
  */
 ---
 
@@ -28,54 +24,51 @@ const { title, description, proof, breadcrumbs, eyebrow, titleId, ctaHref, ctaLa
   <div class="conteneur outil-hero-inner">
     <nav class="ariane" aria-label="Fil d’Ariane">
       <ol>
-        {breadcrumbs.map((crumb, index) => (
-          <li aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}>
-            {crumb.href ? <a href={crumb.href}>{crumb.label}</a> : crumb.label}
-          </li>
+        {breadcrumbs.map((crumb, index) => index === breadcrumbs.length - 1 ? (
+          <li class="ariane-courant"><span aria-current="page">{crumb.label}</span></li>
+        ) : (
+          <li>{crumb.href ? <a href={crumb.href}>{crumb.label}</a> : crumb.label}</li>
         ))}
       </ol>
     </nav>
-    <div class:list={["outil-hero-grid", { "sans-visuel": !proof }]}>
-      <header class="outil-hero-copy">
-        {eyebrow && <span class="surtitre">{eyebrow}</span>}
-        <h1 id={titleId}><Insecable texte={title} /></h1>
-        <p>{description}</p>
-        {ctaHref && ctaLabel && <Button href={ctaHref} variante="principal" picto="fleche">{ctaLabel}</Button>}
-      </header>
-      {proof && (
-        <div class="outil-hero-visual" data-tool-media>
-          <ProofMedia id={proof} priority cadre />
-        </div>
-      )}
-    </div>
+    <header class="outil-hero-copy">
+      {eyebrow && <span class="surtitre">{eyebrow}</span>}
+      <h1 id={titleId}><Insecable texte={title} /></h1>
+      <p>{description}</p>
+      <p class="outil-gratuit" data-gratuit>{gratuit}</p>
+    </header>
   </div>
 </section>
 
 <style>
-  .outil-hero-inner { padding-top: 28px; }
-  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: var(--t-sm); color: var(--texte-2); }
+  .outil-hero-inner { display: grid; gap: var(--espace-3); padding-top: var(--espace-3); }
+  .ariane { min-width: 0; }
+  /* En mobile, la page courante finit la ligne, coupée par une ellipse ; trop étroite (320 px,
+     texte agrandi), elle passe seule à la ligne suivante plutôt que de disparaître. */
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 2px 6px; min-width: 0; margin: 0; padding: 0; list-style: none; font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane li { flex: 0 1 auto; min-width: 0; }
   .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
   .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
-  .ariane [aria-current] { min-width: 0; color: var(--texte); overflow-wrap: anywhere; }
-  .outil-hero-grid { display: grid; gap: var(--bloc-ecart); align-items: center; padding-top: var(--bloc-ecart); }
-  .outil-hero-copy { display: grid; justify-items: start; gap: 20px; min-width: 0; }
-  .outil-hero-copy h1 { max-width: 21ch; font-size: var(--titre-page-partage); line-height: 1.08; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) both; }
-  .outil-hero-copy p { max-width: 62ch; margin: 0; color: var(--texte-2); font-size: var(--t-lg); line-height: 1.55; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) 100ms both; }
-  .outil-hero-copy :global(.btn) { animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) 180ms both; }
-  .outil-hero-visual { min-width: 0; animation: outil-proof-reveal var(--duree-revelation) var(--courbe-douce) both; }
+  .ariane .ariane-courant { flex: 1 1 4ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--texte); }
+  .outil-hero-copy { display: grid; justify-items: start; gap: var(--espace-3); max-width: 720px; min-width: 0; }
+  /* Plus petit que --titre-page-partage en mobile (30 px contre 36) : l'outil doit suivre au premier écran. */
+  .outil-hero-copy h1 { max-width: 21ch; font-size: clamp(1.875rem, 1.2rem + 2.4vw, 3.5rem); line-height: 1.08; text-wrap: balance; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) both; }
+  .outil-hero-copy p { max-width: 62ch; margin: 0; color: var(--texte-2); line-height: 1.5; text-wrap: pretty; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) 100ms both; }
+  /* La ligne gratuite se lit avec le chapô : elle s'en rapproche. */
+  .outil-hero-copy .outil-gratuit { margin-top: calc(var(--espace-1) * -1); color: var(--accent-texte); font-size: var(--t-sm); font-weight: 600; }
   @keyframes outil-copy-entry { from { opacity: 0; transform: translateY(15px) scale(0.98); filter: blur(7px); } to { opacity: 1; transform: none; filter: none; } }
-  @keyframes outil-proof-reveal { from { opacity: 0; transform: scale(0.98); filter: blur(6px) grayscale(1); } to { opacity: 1; transform: none; filter: none; } }
   @media (prefers-reduced-motion: reduce) {
     .outil-hero-copy h1,
-    .outil-hero-copy p,
-    .outil-hero-copy :global(.btn),
-    .outil-hero-visual {
+    .outil-hero-copy p {
       animation: none;
     }
   }
+  @media (min-width: 48rem) {
+    .ariane .ariane-courant { flex: 0 1 auto; overflow: visible; white-space: normal; overflow-wrap: anywhere; }
+    .outil-hero-copy { gap: var(--espace-4); }
+    .outil-hero-copy p:not(.outil-gratuit) { font-size: var(--t-lg); line-height: 1.55; }
+  }
   @media (min-width: 64rem) {
-    .outil-hero-inner { padding-top: 32px; }
-    .outil-hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--rangee-gouttiere); padding-top: 64px; }
-    .outil-hero-grid.sans-visuel { grid-template-columns: minmax(0, 720px); }
+    .outil-hero-inner { gap: var(--espace-10); padding-top: var(--espace-8); }
   }
 </style>

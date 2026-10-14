@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`gabarit : destinations visibles et CTA effectif à ${width}px`, async ({ page }) => {
+  test(`gabarit : destinations visibles et outil sans ancre à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     for (const outil of OUTILS_DISPONIBLES) {
@@ -32,12 +32,11 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
         await expect(page.locator('.nav-centre')).toBeVisible();
         await expect(page.locator('[data-burger]')).toBeHidden();
       }
-      await expect(page.locator('[data-tool-section="hero"] img')).toHaveAttribute('loading', 'eager');
-      await expect(page.locator('[data-tool-section="hero"] img')).toHaveAttribute('fetchpriority', 'high');
+      // Épure du 14/10/2026 : l'outil suit le titre ; ni image prioritaire ni bouton d'ancre au-dessus.
+      await expect(page.locator('[data-tool-section="hero"] img')).toHaveCount(0);
+      await expect(page.locator('main img[fetchpriority="high"]')).toHaveCount(0);
+      await expect(page.locator('a[href="#outil-calcul"]')).toHaveCount(0);
       await expect(page.locator('#outil-calcul')).toHaveCount(1);
-      await page.locator('[data-tool-section="hero"] a[href="#outil-calcul"]').click();
-      await expect(page).toHaveURL(/#outil-calcul$/);
-      await expect.poll(() => page.locator('#outil-calcul').evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBeLessThan(100);
       await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
     }
   });

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { ROI_EXAMPLES, buildRoiReport, roiCsv } from '../../src/lib/roi-automatisation.mjs';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 const route = '/outils-comptables-gratuits/calculateur-roi-automatisation';
 const compare = 'Comparer les trois scénarios';
 for (const mode of ['disabled','blocked'] as const) test(`ROI : scripts ${mode}, clic et Entrée ne transmettent ni ne perdent les saisies`, async ({browser,baseURL}) => {
@@ -50,7 +51,7 @@ test('ROI : borne exacte concordante dans interface, copie, JSON et CSV', async 
 test('ROI : oracle, comparaison, copie et exports complets, zéro envoi ou stockage', async ({page,context}) => {
   await context.grantPermissions(['clipboard-read','clipboard-write']);
   await page.goto(route);
-  await page.waitForLoadState('networkidle');
+  await chargerImagesDifferees(page);
   const requests:string[] = []; page.on('request',request=>requests.push(request.url()));
   await page.getByRole('button',{name:'Charger trois exemples fictifs'}).click();
   await page.getByRole('button',{name:compare}).click();
@@ -110,7 +111,7 @@ test('ROI : SEO, média propre, sitemap, hub/footer et entrants', async ({page,r
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://memlia.fr/social/proofs/v2/og/30-outil-roi.webp.jpg');
   const schemas = (await page.locator('script[type="application/ld+json"]').allTextContents()).map(text=>JSON.parse(text));
   const graph = schemas.find(schema=>schema['@graph'])['@graph'];
-  expect(graph.map((node:Record<string,string>)=>node['@type'])).toEqual(['WebPage','WebApplication','BreadcrumbList']);
+  expect(graph.map((node:Record<string,string>)=>node['@type'])).toEqual(['WebPage','WebApplication','BreadcrumbList','FAQPage']);
   expect(graph[0].headline).toBe(h1);
   await expect(page.locator('[data-official-source] h3')).toHaveText('Formules documentées');
   await page.setViewportSize({width:1440,height:900});

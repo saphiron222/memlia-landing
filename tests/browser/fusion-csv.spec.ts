@@ -1,4 +1,5 @@
 import {test,expect,type Page} from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import {readFile} from 'node:fs/promises';
 const route='/outils-comptables-gratuits/fusionner-fichiers-csv';
 const file=(name:string,text:string)=>({name,mimeType:'text/csv',buffer:Buffer.from(text)});
@@ -31,7 +32,7 @@ test('annulation immédiate et refus supérieur à 20 Mo sans succès',async({pa
  await page.locator('[data-reset]').click();await page.locator('#fusion-files').setInputFiles([file('a.csv','A;B\n1;2'),file('b.csv','A;B\n3;4')]);await page.evaluate(()=>{const c=document.querySelector('[data-config]')!;const input=document.querySelector<HTMLInputElement>('#fusion-files')!;const dt=new DataTransfer();dt.items.add(new File([new Uint8Array(20*1024*1024)],'big.csv'));dt.items.add(new File(['A;B\n1;2'],'b.csv'));input.files=dt.files;input.dispatchEvent(new Event('change'));});await page.getByRole('button',{name:'Importer les fichiers',exact:true}).click();await expect(page.locator('[data-error]')).toContainText('20 Mo');await expect(page.locator('[data-result]')).toBeHidden();
 });
 test('pagination export complet, zéro transfert contenu et stockage',async({page})=>{
- await page.goto(route);await page.waitForLoadState('networkidle');const requests:string[]=[];page.on('request',r=>{expect(r.method()).toBe('GET');expect(r.postData()).toBeNull();if(!r.url().includes('/_astro/'))requests.push(r.url());});
+ await page.goto(route);await chargerImagesDifferees(page);const requests:string[]=[];page.on('request',r=>{expect(r.method()).toBe('GET');expect(r.postData()).toBeNull();if(!r.url().includes('/_astro/'))requests.push(r.url());});
  await page.evaluate(()=>{(window as any).writes=[];Storage.prototype.setItem=(...args:any[])=>{(window as any).writes.push(args);throw Error('storage');};IDBFactory.prototype.open=(...args:any[]):any=>{(window as any).writes.push(args);throw Error('idb');};});
  await load(page,[file('a.csv','ID;V\n'+Array.from({length:30},(_,i)=>`${i};x`).join('\n')),file('b.csv','V;ID\nx;30')]);await merge(page);await expect(page.locator('[data-table] tbody tr')).toHaveCount(25);await page.locator('[data-next]').click();await expect(page.locator('[data-table] tbody tr')).toHaveCount(6);await page.locator('[data-reviewed]').check();const report=JSON.parse(await download(page,'report'));expect(report.outputRows).toBe(31);expect((await download(page,'csv')).split('\r\n').length).toBe(33);expect(requests).toEqual([]);expect(await page.evaluate(()=>(window as any).writes)).toEqual([]);expect(await page.evaluate(()=>[localStorage.length,sessionStorage.length,document.cookie])).toEqual([0,0,'']);
 });

@@ -11,7 +11,8 @@ test('bibliothèque construite : metadata, corps statique, médias, sitemap et e
   assert.ok(html.includes(`href="https://memlia.fr${route}"`));
   assert.ok(html.includes('name="robots" content="index, follow, max-image-preview:large"'));
   assert.ok(html.includes('connect-src &#39;none&#39;') || html.includes("connect-src 'none'"));
-  assert.ok(html.includes('L’assemblage, sa source et son refus sont visibles.'));
+  // Épure du 14/10/2026 : la source se lit sous l'outil, dans « Comment c'est assemblé ».
+  assert.ok(html.includes('Comment c’est assemblé'));
   for (const m of MODELS) assert.ok(html.includes(`data-model="${m.id}"`));
   for (const type of ['WebPage', 'WebApplication', 'BreadcrumbList']) assert.ok(html.includes(`"@type":"${type}"`));
   assert.ok(!html.includes('"@type":"BlogPosting"'));
