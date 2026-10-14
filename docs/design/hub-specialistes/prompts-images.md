@@ -125,6 +125,56 @@ Chaque prompt se lit **après la bible du §2** (pilote) ou après la phrase de 
 > galet à 18 % du haut, base à 82 % ; vue de face légèrement de trois quarts. Aucun texte, chiffre,
 > lettre, logo, filigrane ; aucun humain ; aucun effet « IA ».
 
+### 5 bis. Prompts prêts à coller
+
+Le pilote se colle seul. Chacun des onze suivants se colle dans une **nouvelle conversation**, avec
+**l'image du pilote validé jointe**.
+
+**IMG-25 · Balthazar · Comptabilité (pilote, sans image jointe)** : le prompt type ci-dessus, tel quel.
+
+**Phrase de reprise**, en tête des onze suivants : *Même style, même matière, même lumière, même
+cadrage, même hauteur et même anneau vert #27b657 que l'image jointe. Seuls changent la forme du
+galet, sa couleur et l'objet posé à côté.* Puis :
+
+- **IMG-26 · Salomé · Paie et social** : Un galet debout d'un seul tenant, ovale élancé, couleur rose
+  terre (jamais rouge vif). Posée au sol contre le socle : une enveloppe blanche à fenêtre, vide. Le
+  galet se tient droit, attentif.
+- **IMG-27 · Grégoire · Juridique et fiscal** : Un galet debout d'un seul tenant, en rectangle aux
+  angles très arrondis, couleur gris ardoise bleuté. Posé au sol à côté : un petit registre relié de
+  toile vert profond #1c8a41, avec un ruban marque-page. Le galet est stable, très légèrement penché
+  en avant.
+- **IMG-28 · Florent · Finance** : Un galet debout d'un seul tenant, en goutte arrondie à la base
+  plus large, couleur céladon. Posés au sol à côté : trois petits blocs de bois clair de hauteurs
+  croissantes. Le galet se tient droit.
+- **IMG-29 · Aude · Missions d'audit** : Un galet debout d'un seul tenant, rond et plein, couleur grès
+  chaud. Posée au sol devant lui : une loupe à manche de bois, devant une chemise cartonnée fermée. Le
+  galet est penché vers la loupe.
+- **IMG-30 · Victoire · Commercial** : Un galet debout d'un seul tenant, légèrement incliné vers
+  l'avant, couleur terre cuite claire. Posée au sol à côté : une chemise cartonnée nouée d'un ruban
+  vert profond #1c8a41. Le galet est incliné, accueillant.
+- **IMG-31 · Colette · Communication** : Un galet debout d'un seul tenant, fin et haut, couleur terre
+  cuite très pâle. Posées au sol à côté : une plume d'écriture et une feuille pliée en lettre, vierge.
+  Le galet se tient droit, légèrement incliné sur le côté.
+- **IMG-32 · Émile · Relation client** : Un galet debout d'un seul tenant, en forme d'œuf, couleur
+  lavande grisée. Posé au sol à côté : un petit trieur de bois où trois enveloppes vierges sont rangées
+  en éventail. Le galet est tourné vers le trieur.
+- **IMG-33 · Honoré · Gestion du cabinet** : Un galet debout d'un seul tenant, trapu, au sommet plat
+  arrondi, couleur sable cuivré. Posés au sol à côté : un petit classeur à anneaux fermé et une pile de
+  feuilles vierges agrafées. Le galet est stable.
+- **IMG-34 · Raphaël · RH du cabinet** : Un galet debout d'un seul tenant, en dôme doux, couleur vieux
+  rose foncé, nettement plus sombre qu'un rose terre. Posée au sol à côté : une petite plante verte
+  dans un pot de terre cuite. Le galet est penché vers la plante.
+- **IMG-35 · Octavie · Informatique et outils** : Un galet debout d'un seul tenant, aux faces très
+  légèrement facettées, couleur ocre doux. Posées au sol à côté : deux pièces de puzzle en bois clair,
+  emboîtées. Le galet se tient droit.
+- **IMG-36 · Prudence · Protection des données** : Un galet debout d'un seul tenant, compact et
+  symétrique, couleur bleu pervenche. Posé au sol à côté : un petit cadenas fermé en laiton mat, sans
+  aucune inscription. Le galet se tient droit, posé.
+
+**Fin commune** des onze : *Fond uni crème #fffefb, sans dégradé ni décor. Image carrée 1024 × 1024,
+figurine centrée, même hauteur que l'image jointe. Aucun texte, chiffre, lettre, logo ni filigrane ;
+aucun humain ; aucun effet « IA ».*
+
 ### IMG-37 : le visuel du héros à trois agents
 
 Le héros compose **en HTML** les trois avatars Balthazar, Salomé et Grégoire en médaillons décalés

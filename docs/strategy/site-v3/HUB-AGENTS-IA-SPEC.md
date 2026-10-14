@@ -154,8 +154,9 @@ familles sont ceux de `familles.ts` ; les familles neuves (`*`) s'y ajoutent `ac
 
 ### Grégoire · Juridique et fiscal (`/agents-ia/juridique-fiscal`)
 
-- **H1** : *IA juridique pour expert-comptable : l'approbation des comptes, les registres et les
-  échéances fiscales préparés, rien déposé à votre place.* — requête **ia juridique expert comptable**.
+- **H1** : *IA juridique pour expert-comptable : les documents d'approbation des comptes, les
+  registres et les échéances fiscales préparés, rien déposé à votre place.* — requête **ia juridique
+  expert comptable**. (L'approbation est une décision des associés : l'agent en prépare les documents.)
 - **Familles** : `tva`, `is-acomptes`, `declarations-annexes`, `secretariat-juridique`,
   `formalites-creation-modification`, `registres-obligations`, `echeances-fiscales`,
   `teledeclarations-rejets` (8) ; pages service : secretariat-juridique, registres-obligations.
@@ -262,6 +263,9 @@ familles sont ceux de `familles.ts` ; les familles neuves (`*`) s'y ajoutent `ac
   l'avancement ; validation — chaque facture, chaque relance ; humain — le tarif, le geste commercial,
   la répartition de la charge.
 - **Arrêts** : acte sans tarif écrit ; rejet sans motif lisible ; donnée nominative demandée.
+- **Précision réglementaire** : la facture d'honoraires du cabinet passe par sa propre plateforme
+  agréée (réception obligatoire depuis le 01/09/2026, émission selon la taille) ; l'agent la prépare,
+  il ne l'émet ni ne la transmet.
 - **Ne part jamais sans vous** : une facture d'honoraires ; une relance d'impayé ; un lot de
   prélèvement.
 - **Rejeu** : plan de charge (publié).
@@ -284,13 +288,15 @@ familles sont ceux de `familles.ts` ; les familles neuves (`*`) s'y ajoutent `ac
 
 ### Prudence · Protection des données (`/agents-ia/protection-donnees`)
 
-- **H1** : *Agent IA RGPD pour cabinet comptable : le registre des traitements et les demandes d'accès
-  de vos clients préparés pour votre référent.* — requête **agent ia rgpd**.
+- **H1** : *Agent IA RGPD pour cabinet comptable : la mise à jour du registre des traitements et les
+  réponses aux demandes d'accès préparées pour votre référent.* — requête **agent ia rgpd**. (Le
+  registre est tenu par le responsable de traitement, art. 30 ; le droit d'accès appartient aux
+  personnes physiques concernées, pas à un client personne morale.)
 - **Familles** : `rgpd-secret-securite`, `ai-act-conformite`, `*registre-traitements`,
   `*demandes-droits` (2 actives, 2 neuves inactives).
-- **Livrables** : le registre des traitements du cabinet mis à jour depuis ses outils ; la réponse à
-  une demande d'accès préparée, avec les données retrouvées ; *(pointillés)* la revue des
-  sous-traitants.
+- **Livrables** : la mise à jour du registre que tient votre cabinet, préparée depuis ses outils ; la
+  réponse à une demande d'accès d'une personne concernée (client particulier, salarié d'un client,
+  collaborateur), préparée avec les données retrouvées ; *(pointillés)* la revue des sous-traitants.
 - **Frontière** : seul — inventorier, retrouver, mettre en forme ; validation — chaque réponse, chaque
   ligne du registre ; humain — la décision de votre référent ou de votre délégué désigné, toute
   notification.
@@ -368,10 +374,42 @@ par domaine. Liens rendus par les données et les gabarits, jamais en éditant u
 fiches Communication et RH du cabinet n'ont aujourd'hui que des liens internes au hub : leur premier
 article de famille est le remède, pas un lien forcé.
 
-## 7. Données, gabarits et contrôles
+## 7. Contenus réglementés
+
+Fact-check daté du 14/10/2026 (23 h à 23 h 40), sources officielles : scratchpad
+`phase2/fact-check.md` (117 lignes, à copier hors scratchpad avec les autres pièces). Chaque phrase
+réglementée d'une page reprend la **formulation proposée** du fact-check et passe la revue `metier`.
+Ne s'écrivent jamais :
+
+- « votre DPO », « DPO IA », « délégué IA » (le délégué est une personne désignée, art. 37) ;
+  « l'agent tient le registre » (art. 30 : il en prépare la mise à jour) ; « les demandes d'accès de
+  vos clients » (le droit appartient aux personnes physiques concernées) ; « registre conforme »,
+  « conforme RGPD », « nous répondons en moins d'un mois » ; « tout cabinet doit désigner un DPO »
+  comme son contraire.
+- « PDP » (dire « plateforme agréée ») ; « nous émettons » ou « nous transmettons vos factures » ;
+  « via Chorus Pro » entre entreprises ; « toutes les entreprises émettent dès le 01/09/2026 » (PME et
+  micro-entreprises : 01/09/2027) ; « la réforme arrive en 2026 » (la réception est en vigueur) ;
+  « article 289 bis du CGI » sans date (abrogé au 01/01/2027).
+- « l'agent dépose la DSN », « DSN automatique », « échéance au 5 pour tous » (le 5 ou le 15 de M+1
+  selon l'effectif et la date de paie), « CRM corrigés automatiquement ».
+- « détection du blanchiment », « déclaration de soupçon automatisée », « nous alertons TRACFIN »,
+  « KYC automatisé » ; tout ce qui laisse croire que Memlia voit une déclaration (L.561-18).
+- « nous déposons vos formalités ou vos comptes » ; « l'agent approuve les comptes » ; « six mois
+  impératifs » (le juge peut prolonger) ; un article de loi cité pour la mauvaise forme de société.
+- « conforme NEP », « audit automatisé », « circularisation envoyée par nos soins », « une sortie
+  d'outil suffit comme élément probant », « agent IA CAC » ; l'envoi des demandes de confirmation et la
+  réception des réponses restent au commissaire aux comptes (NEP 505 § 09).
+- « Memlia, tenue au secret professionnel », « secret garanti ».
+
+Restent **non vérifiés**, donc absents des pages tant qu'ils ne le sont pas : le mandat qui permet à
+l'expert-comptable d'agir sur la plateforme agréée d'un client ; la différence entre bilan d'anomalies
+et CRM ; le délai d'approbation en SAS ; l'article du code de déontologie des experts-comptables sur
+le secret.
+
+## 8. Données, gabarits et contrôles
 
 *(complétée depuis le plan d'architecture.)*
 
-## 8. Images
+## 9. Images
 
 Bible, prompts et marche à suivre : [`docs/design/hub-specialistes/prompts-images.md`](../../design/hub-specialistes/prompts-images.md).

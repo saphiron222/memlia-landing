@@ -379,7 +379,7 @@ Vera) : aucun n'est retenu.
 |---|---|
 | Balthazar · Comptabilité | Relance les pièces manquantes, prépare la saisie et le rapprochement bancaire, et vous présente chaque écart avant l'écriture. |
 | Salomé · Paie et social | Contrôle les variables et les bulletins avant la DSN, trie les retours DSN et vous présente chaque écart à valider. |
-| Grégoire · Juridique et fiscal | Prépare l'approbation des comptes, les registres et les échéances fiscales du portefeuille, sans rien déposer à votre place. |
+| Grégoire · Juridique et fiscal | Prépare les documents de l'approbation et du dépôt des comptes, les registres et les échéances fiscales du portefeuille, sans rien déposer à votre place. *(corrigée après le fact-check du 14/10 : l'approbation est une décision des associés)* |
 | Aude · Missions d'audit | Prépare la sélection des tiers selon votre règle, les écarts de confirmation et les fichiers du client à rapprocher de la balance ; l'appréciation et l'opinion restent au commissaire aux comptes. |
 | Victoire · Commercial | Prépare l'entrée en relation d'un nouveau client et sa lettre de mission : pièces à réunir, jalons, documents qui attendent la signature. |
 | Colette · Communication | Rédige la lettre d'information de vos clients à partir de l'actualité que vous avez retenue ; rien ne part sans votre relecture. |
@@ -387,7 +387,7 @@ Vera) : aucun n'est retenu.
 | Florent · Finance | Prépare le prévisionnel, la trésorerie prévisionnelle et les situations de vos clients à partir de la comptabilité tenue, hypothèses tracées. |
 | Honoré · Gestion du cabinet | Prépare la facturation des honoraires et des actes hors forfait, suit les rejets de prélèvement et l'avancement du portefeuille, en agrégats. |
 | Octavie · Informatique et outils | Relie vos logiciels par export ou par API, contrôle chaque import et le rejoue sans doublon. |
-| Prudence · Protection des données | Tient le registre des traitements du cabinet et prépare les réponses aux demandes d'accès de vos clients ; votre référent décide. |
+| Prudence · Protection des données | Prépare la mise à jour du registre des traitements et les réponses aux demandes d'accès des personnes concernées ; votre référent décide. *(corrigée après le fact-check du 14/10 : art. 30 et droit d'accès des personnes physiques)* |
 | Émile · Relation client | Trie la boîte mail par client et par priorité, prépare les réponses types et suit l'envoi des plaquettes ; rien ne part sans validation. |
 
 La ligne d'Aude reprend les points de départ que l'accueil CAC affiche déjà (la réception du FEC et
