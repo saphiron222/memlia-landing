@@ -310,12 +310,12 @@ EC active a **un seul** titulaire (un agent, le hub, ou le bloc « nous »). Par
 | Métier (libellé proposé) | Destination de la carte | Familles titulaires | Pages service | Règle écrite publiée et rejouée | Automatisations livrées (interne, jamais nommées en public) |
 |---|---|---|---|---|---|
 | **Comptabilité** | fiche | pôle `production-comptable` sauf `situations-reporting-client` (12) | saisie-comptable, rapprochement-bancaire, factures-fournisseurs, notes-de-frais, facture-electronique | oui (5 services, 8 guides) | caisse et e-commerce : construite le 04/08, **recette non faite** |
-| **Paie et social** | `/automatisation/paie` | pôle `paie-social` (7) | paie, bulletins-controle, entrees-sorties-salaries | oui (3 services, 4 guides, 3 articles) | production sociale : **recette passée le 26/07** ; vue de pilotage en agrégats : recette en cours |
+| **Paie et social** | `/automatisation/paie` | pôle `paie-social` (7) | paie, bulletins-controle, entrees-sorties-salaries | oui (3 services, 4 guides, 3 articles) | production sociale : en usage depuis le 04/08, **recette sur jeu fictif le 05/08, jamais sur une copie du vrai classeur** (« 26/07 » était inexact, relevé du 15/10) ; vue de pilotage en agrégats : recette en cours |
 | **Juridique et fiscal** | fiche | pôle `juridique-fiscal` sauf `lettre-de-mission-lcbft` (6) + `echeances-fiscales`, `teledeclarations-rejets` | secretariat-juridique, registres-obligations | oui (2 services) | — |
 | **Missions d'audit** (profession CAC) | `/commissaires-aux-comptes` | familles CAC (8 actives sur 25) + `audit-legal` | circularisation-cac | oui (1 service, 2 articles) | — |
 | **Commercial** | fiche | `onboarding-client`, `lettre-de-mission-lcbft` + familles à créer (D6) : propositions de mission et devis | — | oui (article entrée en relation) | — |
 | **Communication** | fiche | familles à créer (D6) : lettre d'information aux clients, actualité à diffuser, publications du cabinet | — | **non** : pas de rejeu sur la fiche | — |
-| **RH du cabinet** | fiche | pôle `rh-formation` (3) | — | oui (article formation à l'IA) | synthèse de rémunération : **recette passée le 20/08** |
+| **RH du cabinet** | fiche | pôle `rh-formation` (3) | — | oui (article formation à l'IA) | synthèse de rémunération : recette du 20/08, **installeur corrigé le 06/09**, passe sur le poste de l'expert-comptable non prouvée (relevé du 15/10) |
 | **Finance** (conseil aux clients) | fiche | pôle `conseil-missions` (4) + `situations-reporting-client` | evaluation-transmission | oui (1 service) | — |
 | **Gestion du cabinet** | fiche | pôle `facturation-recouvrement` (4) + `suivi-dossiers-etats`, `tableau-de-bord-production`, `planification-charge` | — | oui (article plan de charge) | — |
 | **Informatique et outils** | page des outils (D10) | `integration-connecteurs` + pôle `excel-outils-existants` (3) | — | oui (articles « sans changer de logiciel ») | — |

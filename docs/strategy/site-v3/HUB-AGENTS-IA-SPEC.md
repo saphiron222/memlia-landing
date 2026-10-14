@@ -328,7 +328,38 @@ personnelle dans l'URL. Sans JavaScript, la puce mène à `/contact` sans pré-s
 
 ## 5. La page des outils `/integrations`
 
-*(complétée depuis la recherche des outils.)*
+Liste complète, preuves datées et règles de marque : [`hub-agents-ia/OUTILS.md`](hub-agents-ia/OUTILS.md)
+(14 et 15/10/2026). **49 outils sur 13 domaines** ; statuts proposés : **Éprouvé 2** (Microsoft Excel,
+Silae, sous réserve de K1), **Par export 15** (format documenté par l'éditeur, URL officielle lue et
+datée), **Sur demande 32**. Aucun total n'est affiché sur la page.
+
+**Structure** (correspondance factory456.com/marketplace) : héros sans chiffre (H1 sur la requête
+retenue au §6) ; puces d'ancres par domaine ; une section par domaine (une phrase sur les gestes repris
+et l'agent qui les porte, puis une carte par outil : nom et éditeur **en texte**, statut, ce que nous
+reprenons, lien vers le guide s'il existe) ; « Comment nous reprenons un outil » en trois étapes, dont
+*accès et formats vérifiés avant tout devis* ; « Votre outil n'est pas cité ? » vers `/contact` ; la
+mention de marques. La recherche des douze guides reste, avec **un seul lien par guide** dans la page
+(`integrations.spec.ts`) : les cartes d'outils renvoient aux guides par ancre. Le bandeau « Qui prend ce
+métier : Octavie, agent IA informatique et outils » s'y pose.
+
+**Règles** : aucun logo (Microsoft, Google, Docusign, PrestaShop et Sage exigent une licence ou un
+programme partenaire ; les autres n'ont pas de règle publique) ; mention proposée *Marques citées :
+propriété de leurs titulaires ; Memlia n'en est ni partenaire ni revendeur.* ; **aucune plateforme
+agréée nommée** tant que la liste officielle d'impots.gouv.fr (en maintenance les 14 et 15/10) n'est
+pas relue, et les sept libellés « plateforme agréée » de `couverture-logiciels.mjs` sont à revérifier
+contre elle ; « Youtrust (anciennement Yousign) » ; aucune page de détail par outil, sauf Excel, à trois
+conditions (K1 validé, requête mesurée distincte de l'article « tableau de bord paie excel », aucun
+mot verrouillé).
+
+**À trancher à la porte 2** (détail en tête de l'annexe) : **K1** les recettes sont plus faibles que le
+disait `~/dev/CLAUDE.md` (production sociale : en usage depuis le 04/08, recette sur jeu fictif le
+05/08, jamais sur une copie du vrai classeur ; synthèse de rémunération : installeur du 20/08 corrigé
+le 06/09, passe sur le poste de l'expert-comptable non prouvée) : Excel et Silae restent « Éprouvé » si
+Kevin l'accepte, sinon « Par export » ; **K2** ACD reste « Sur demande » tant que le ré-import du
+fichier généré n'est pas vérifié ; **K3** facturation électronique ci-dessus ; **K4** RévisAudit absent
+ou en texte seul, jamais lié (domaine proscrit) ; **K5** Youtrust ; **K6** Sage 100 « Sur demande »
+malgré six guides (ses fiches décrivent des gestes, pas un format d'échange) ; **K7** la mention de
+marques et la page Excel conditionnelle.
 
 ## 6. Référencement
 
@@ -408,7 +439,44 @@ le secret.
 
 ## 8. Données, gabarits et contrôles
 
-*(complétée depuis le plan d'architecture.)*
+Plan complet, ancré dans le code (chemins et lignes) : [`hub-agents-ia/ARCHITECTURE.md`](hub-agents-ia/ARCHITECTURE.md) ;
+gabarits JSON-LD : [`hub-agents-ia/JSON-LD.md`](hub-agents-ia/JSON-LD.md). Ce que le plan change à cette
+spécification :
+
+- **Familles neuves** : un registre à part `FAMILLES_HUB` (`active: false` imposé) et le pôle
+  `developpement-cabinet`, **hors** de `FAMILLES` : les comptes publics « 60 familles, 12 pôles » de
+  l'accueil, de `/methode`, du pilier et de l'article scellé ne bougent pas. `familles.ts` est une
+  entrée du calendrier du blog : PR isolée, fusionnée tôt.
+- **Avatars** : maîtres dans `docs/design/hub-specialistes/avatars/`, dérivés dans `public/agents/`
+  (pas `public/images/`, dont `test_build.py` compte les images d'articles) ; un monogramme tient lieu
+  d'avatar tant que les images manquent.
+- **Média propre des fiches** : la table de rejeu est du HTML ; chaque fiche prend une exemption
+  motivée de la clause « média » du contrat de page plutôt qu'une image qui doublerait le rejeu ; le
+  hub a son cadre `49-hero-agents-ia` (série de preuves `agents-ia`, générée depuis les données).
+- **Aucune requête réseau** : `connect-src 'none'` exige des Pages Functions (`functions/agents-ia.js`
+  et une par fiche, comme les outils gratuits), pas seulement `_headers` ; c'est le ticket 07, prérequis
+  de toute fusion d'une fiche.
+- **Contact** : `sessionStorage` à usage unique et liste blanche (pas `?tache=`) ; la migration D1
+  `0003` doit être **appliquée en production par Kevin avant** la fusion de la fonction, sinon tout envoi
+  échoue.
+- **Filtres** : les règles de grille comptent les cartes cachées ; une surcharge `flex-basis` par
+  filtre tient les dispositions 3 + 2, 3 et 2 × 2, mesurée par Playwright à chaque état.
+- **Hub** : sous l'annuaire, la définition détaillée de l'agent IA, le tableau des métiers et la
+  frontière en trois colonnes (exigence d'intention informationnelle, cadrage §5).
+- **Navigation** : le menu casse cinq assertions existantes, mises à jour délibérément.
+
+**Invariants écrits avant le code** (I1 à I14, chacun avec le mutant qui doit le faire rougir) :
+partition des familles ; douze cartes complètes ; comptes publics stables ; filtres sans JavaScript ;
+un `h1`, aucune capitale ; JSON-LD attendu ; sitemap ; mots interdits du §9 bis ; statut d'outil fermé
+et livraison citée ; rejeu repris mot pour mot ; aucune requête réseau ; garde `domaine-proscrit` portée
+depuis `memlia-rdv` ; contact ; avatars mesurés.
+
+**Treize tickets** (`.scratch/hub-specialistes/issues/`) : 01 socle de contrôles rouges et garde
+`domaine-proscrit` · 02 données (PR isolée) · 03 utilitaires JSON-LD · 04 hub · 05 navigation · 06 fiche
+pilote Comptabilité · 07 CSP et Functions · 08 page des outils · 09 huit fiches restantes · 10 contact
+(`ready-for-human` : migration) · 11 maillage · 12 avatars (`ready-for-human` : génération par Kevin
+dans ChatGPT) · 13 passe finale. Ordre : 01 → 02 → 03 → 04 → 05 → {06, 07, 08} → 09 → 10 → 11 → 12 → 13 ;
+aucune fiche fusionnée sur `main` avant 07.
 
 ## 9. Images
 

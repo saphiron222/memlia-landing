@@ -62,10 +62,11 @@ fond transparent (le crème uni sert à la mesure de palette).
    du dépôt.
 4. **Dépôt** : `~/dev/interne/memlia-landing-sources/hub-agents-ia/` (hors de tout dépôt git), un
    fichier par agent nommé comme au §5.
-5. **Au retour, la session** : convertit chaque PNG en AVIF et WebP aux largeurs du manifeste
-   (`src/data/images.mjs` ; carré, largeurs 168, 256 et 512 pour les cartes et le héros), écrit son
-   `alt` (§6) et son brief `public/images/brief-img-NN-agent-<identifiant>.md` (convention des briefs
-   existants), **mesure sa palette** (`node scripts/mesurer-palette.mjs <png> "#fffefb,#27b657,<accent>"`)
+5. **Au retour, la session** : garde le maître sans perte dans `docs/design/hub-specialistes/avatars/`,
+   produit les dérivés AVIF et WebP carrés (128, 256 et 512 px) dans `public/agents/` (pas dans
+   `public/images/`, dont le build compte les images d'articles), écrit son `alt` (§6) et son brief
+   `docs/design/hub-specialistes/briefs/<identifiant>.md` dans la grammaire des briefs existants, chaque
+   couleur nommée épinglée par son hex, **mesure sa palette** (`node scripts/mesurer-palette.mjs <png> "#fffefb,#27b657,<accent>"`)
    et vérifie que deux agents voisins dans l'annuaire restent distincts. Une image qui échoue à la
    mesure ou montre du texte accidentel retourne à la génération.
 
