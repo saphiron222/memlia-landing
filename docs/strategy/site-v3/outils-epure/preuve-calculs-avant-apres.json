@@ -1,0 +1,139 @@
+{
+ "avant_production_memlia_fr": {
+  "marge 80,00/100,00": {
+   "resultat": "Résultat et trace Marge commerciale 20,00 € Taux de marge 25,00 % Taux de marque 20,00 % Marge = 100,00 € − 80,00 € = 20,00 €. Taux de marge = 20,00 € ÷ 80,00 € × 100 = 25,00 %. Taux de marque = 20,00 € ÷ 100,00 € × 100 = 20,00 %. Les montants sont calculés au centime ; les taux sont arrondis à deux décimales pour l’affichage. Copier le résultat et la trace Télécharger le CSV Preuve de refus : un montant vide, négatif, nul, ambigu ou au-delà de la borne ne produit aucun taux.",
+   "csv": {
+    "fichier": "calcul-marge-commerciale.csv",
+    "octets": 198,
+    "sha256": "21259a28ed1b640d34a6b2631fa975318305a93d29a7c1fe49a83aba390c7baf"
+   }
+  },
+  "marge 100,00/80,00": {
+   "resultat": "Résultat et trace Marge commerciale -20,00 € Taux de marge -20,00 % Taux de marque -25,00 % Marge = 80,00 € − 100,00 € = -20,00 €. Taux de marge = -20,00 € ÷ 100,00 € × 100 = -20,00 %. Taux de marque = -20,00 € ÷ 80,00 € × 100 = -25,00 %. Les montants sont calculés au centime ; les taux sont arrondis à deux décimales pour l’affichage. Copier le résultat et la trace Télécharger le CSV Preuve de refus : un montant vide, négatif, nul, ambigu ou au-delà de la borne ne produit aucun taux.",
+   "csv": {
+    "fichier": "calcul-marge-commerciale.csv",
+    "octets": 201,
+    "sha256": "2432c4304bfa791504e052f8be7d11097157195472b7d1d50e66c3206a9d9dd8"
+   }
+  },
+  "marge 0/80,00": {
+   "refus": "Refus : le prix d’achat et le prix de vente doivent être supérieurs à zéro pour calculer les taux."
+  },
+  "echeance eom45 sans convention": {
+   "refus": "Refus : choisissez explicitement l’une des deux conventions de calcul des 45 jours fin de mois."
+  },
+  "echeance eom45 Ajouter 45 jours": {
+   "resultat": "Échéance calculée : 31 mars 2026."
+  },
+  "echeance eom45 Aller à la fin du mois": {
+   "resultat": "Échéance calculée : 17 mars 2026."
+  },
+  "echeance default30": {
+   "resultat": "Échéance calculée : 03 mars 2026."
+  },
+  "echeance invoice60": {
+   "resultat": "Échéance calculée : 21 mars 2026."
+  },
+  "amortissement lineaire": {
+   "lignes": "2026 10 000,00 € 275/365 (Valeur × 20.0000 % × 275/365) 1 506,85 € 1 506,85 € 8 493,15 € 2027 8 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 3 506,85 € 6 493,15 € 2028 6 493,15 € 366/366 (Valeur × 20.0000 % × 366/366) 2 000,00 € 5 506,85 € 4 493,15 € 2029 4 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 7 506,85 € 2 493,15 € 2030 2 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 9 506,85 € 493,15 € 2031 493,15 € 90/365 (Valeur × 20.0000 % × 90/365) 493,15 € 10 000,00 € 0,00 €",
+   "total": "10 000,00 €",
+   "csv": {
+    "fichier": "plan-amortissement-comptable-fictif.csv",
+    "octets": 808,
+    "sha256": "ea52717c6884be1483396405292498531065596183b04b2a76f987eb08504922"
+   }
+  },
+  "amortissement degressif": {
+   "lignes": "2026 10 000,00 € Dégressif sur 9/12 mois (Valeur × 35.0000 % × 9/12) 2 625,00 € 2 625,00 € 7 375,00 € 2027 7 375,00 € Dégressif sur la valeur résiduelle (Valeur résiduelle × 35.0000 %) 2 581,25 € 5 206,25 € 4 793,75 € 2028 4 793,75 € Dégressif sur la valeur résiduelle (Valeur résiduelle × 35.0000 %) 1 677,81 € 6 884,06 € 3 115,94 € 2029 3 115,94 € Linéaire sur 2 ans (Valeur résiduelle ÷ 2) 1 557,97 € 8 442,03 € 1 557,97 € 2030 1 557,97 € Linéaire sur 1 an (Valeur résiduelle ÷ 1) 1 557,97 € 10 000,00 € 0,00 €",
+   "total": "10 000,00 €",
+   "coefficient": "1,75"
+  },
+  "rapprochement concordant": {
+   "difference": "0,00 €",
+   "csv": {
+    "fichier": "modele-rapprochement-bancaire-fictif.csv",
+    "octets": 909,
+    "sha256": "8971d868c99c2cb81d033248a1e9a78db196cbea28af93eda9333b9e87156b28"
+   }
+  },
+  "rapprochement ecart": {
+   "refus": "NON VALIDÉ : les soldes ajustés ne concordent pas. Le CSV conserve cet écart."
+  }
+ },
+ "apres_construction_locale": {
+  "marge 80,00/100,00": {
+   "resultat": "Résultat et trace Marge commerciale 20,00 € Taux de marge 25,00 % Taux de marque 20,00 % Marge = 100,00 € − 80,00 € = 20,00 €. Taux de marge = 20,00 € ÷ 80,00 € × 100 = 25,00 %. Taux de marque = 20,00 € ÷ 100,00 € × 100 = 20,00 %. Les montants sont calculés au centime ; les taux sont arrondis à deux décimales pour l’affichage. Copier le résultat et la trace Télécharger le CSV Preuve de refus : un montant vide, négatif, nul, ambigu ou au-delà de la borne ne produit aucun taux.",
+   "csv": {
+    "fichier": "calcul-marge-commerciale.csv",
+    "octets": 198,
+    "sha256": "21259a28ed1b640d34a6b2631fa975318305a93d29a7c1fe49a83aba390c7baf"
+   }
+  },
+  "marge 100,00/80,00": {
+   "resultat": "Résultat et trace Marge commerciale -20,00 € Taux de marge -20,00 % Taux de marque -25,00 % Marge = 80,00 € − 100,00 € = -20,00 €. Taux de marge = -20,00 € ÷ 100,00 € × 100 = -20,00 %. Taux de marque = -20,00 € ÷ 80,00 € × 100 = -25,00 %. Les montants sont calculés au centime ; les taux sont arrondis à deux décimales pour l’affichage. Copier le résultat et la trace Télécharger le CSV Preuve de refus : un montant vide, négatif, nul, ambigu ou au-delà de la borne ne produit aucun taux.",
+   "csv": {
+    "fichier": "calcul-marge-commerciale.csv",
+    "octets": 201,
+    "sha256": "2432c4304bfa791504e052f8be7d11097157195472b7d1d50e66c3206a9d9dd8"
+   }
+  },
+  "marge 0/80,00": {
+   "refus": "Refus : le prix d’achat et le prix de vente doivent être supérieurs à zéro pour calculer les taux."
+  },
+  "echeance eom45 sans convention": {
+   "refus": "Refus : choisissez explicitement l’une des deux conventions de calcul des 45 jours fin de mois."
+  },
+  "echeance eom45 Ajouter 45 jours": {
+   "resultat": "Échéance calculée : 31 mars 2026."
+  },
+  "echeance eom45 Aller à la fin du mois": {
+   "resultat": "Échéance calculée : 17 mars 2026."
+  },
+  "echeance default30": {
+   "resultat": "Échéance calculée : 03 mars 2026."
+  },
+  "echeance invoice60": {
+   "resultat": "Échéance calculée : 21 mars 2026."
+  },
+  "amortissement lineaire": {
+   "lignes": "2026 10 000,00 € 275/365 (Valeur × 20.0000 % × 275/365) 1 506,85 € 1 506,85 € 8 493,15 € 2027 8 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 3 506,85 € 6 493,15 € 2028 6 493,15 € 366/366 (Valeur × 20.0000 % × 366/366) 2 000,00 € 5 506,85 € 4 493,15 € 2029 4 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 7 506,85 € 2 493,15 € 2030 2 493,15 € 365/365 (Valeur × 20.0000 % × 365/365) 2 000,00 € 9 506,85 € 493,15 € 2031 493,15 € 90/365 (Valeur × 20.0000 % × 90/365) 493,15 € 10 000,00 € 0,00 €",
+   "total": "10 000,00 €",
+   "csv": {
+    "fichier": "plan-amortissement-comptable-fictif.csv",
+    "octets": 808,
+    "sha256": "ea52717c6884be1483396405292498531065596183b04b2a76f987eb08504922"
+   }
+  },
+  "amortissement degressif": {
+   "lignes": "2026 10 000,00 € Dégressif sur 9/12 mois (Valeur × 35.0000 % × 9/12) 2 625,00 € 2 625,00 € 7 375,00 € 2027 7 375,00 € Dégressif sur la valeur résiduelle (Valeur résiduelle × 35.0000 %) 2 581,25 € 5 206,25 € 4 793,75 € 2028 4 793,75 € Dégressif sur la valeur résiduelle (Valeur résiduelle × 35.0000 %) 1 677,81 € 6 884,06 € 3 115,94 € 2029 3 115,94 € Linéaire sur 2 ans (Valeur résiduelle ÷ 2) 1 557,97 € 8 442,03 € 1 557,97 € 2030 1 557,97 € Linéaire sur 1 an (Valeur résiduelle ÷ 1) 1 557,97 € 10 000,00 € 0,00 €",
+   "total": "10 000,00 €",
+   "coefficient": "1,75"
+  },
+  "rapprochement concordant": {
+   "difference": "0,00 €",
+   "csv": {
+    "fichier": "modele-rapprochement-bancaire-fictif.csv",
+    "octets": 909,
+    "sha256": "8971d868c99c2cb81d033248a1e9a78db196cbea28af93eda9333b9e87156b28"
+   }
+  },
+  "rapprochement ecart": {
+   "refus": "NON VALIDÉ : les soldes ajustés ne concordent pas. Le CSV conserve cet écart."
+  }
+ },
+ "cas_identiques": [
+  "marge 80,00/100,00",
+  "marge 100,00/80,00",
+  "marge 0/80,00",
+  "echeance eom45 sans convention",
+  "echeance eom45 Ajouter 45 jours",
+  "echeance eom45 Aller à la fin du mois",
+  "echeance default30",
+  "echeance invoice60",
+  "amortissement lineaire",
+  "amortissement degressif",
+  "rapprochement concordant",
+  "rapprochement ecart"
+ ],
+ "cas_differents": []
+}

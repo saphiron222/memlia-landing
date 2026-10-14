@@ -1,6 +1,6 @@
 # Épure des pages d'outils gratuits — benchmark et inventaire (phase 1, 14/10/2026)
 
-Statut : **en attente du go de Kevin** (porte de fin de phase 1). Aucune ligne de code n'a changé.
+Statut : **go de Kevin le 14/10/2026** (D1 à D8, sauf D5 : tout se livre maintenant). Conception et plan : `OUTILS-EPURE-PLAN.md`. Mesure après l'épure : §e.
 Base : `origin/main` 554fafc5, pages servies par memlia.fr le 14/10/2026.
 Données brutes jointes dans `outils-epure/` :
 - `inventaire-avant.json` : toutes les pages, 375×812 et 1440×900 ;
@@ -33,7 +33,7 @@ Données brutes jointes dans `outils-epure/` :
    | Amortissement | 3 | 0 |
 
    Les 17 autres outils n'ont aucune ligne.
-7. **Aucune SERP Google France mesurée.** Les 8 appels DataForSEO ont été refusés (HTTP 402, solde du compte −0,0036 $, coût réel 0 $). La lecture des SERP ci-dessous vient d'un moteur de repli non localisé : **elle n'est pas un rang Google**. Le script est prêt à être relancé dès que le compte est rechargé (D7).
+7. **Aucune SERP Google France mesurée en phase 1** (relevé fait le 14/10 après changement de compte, voir §f). Les 8 appels DataForSEO ont été refusés (HTTP 402, solde du compte −0,0036 $, coût réel 0 $). La lecture des SERP ci-dessous vient d'un moteur de repli non localisé : **elle n'est pas un rang Google**. Le script est prêt à être relancé dès que le compte est rechargé (D7).
 8. **Performance Lighthouse des pages outils au 06/10 : 57 à 94** (`AUDIT.md:189-201`), sous le plancher de 95. L'image figée chargée en `eager` en tête de page est un suspect à mesurer en phase 4, pas une certitude.
 9. **Fenêtre de mesure en cours.** OUTILS-BOUCLE fixe :
    - 21/10 : lecture de la fenêtre du 20/09 au 17/10 ;
@@ -220,3 +220,53 @@ La mesure réelle se fera en phase 4.
 | D6 | Ajouter le JSON-LD `FAQPage` aux pages outils (absent aujourd'hui) ? | Oui si la FAQ reste ; 2 questions réelles. |
 | D7 | Recharger DataForSEO pour une vraie SERP Google France avant la phase 2 ? | Recommandé : 8 SERP à 0,0035 $. Le relevé de repli n'est pas un rang Google. |
 | D8 | Volume des 4 calculateurs après épure (360–460 mots). | Épurer maintenant ; un exemple chiffré par calculateur dans un chantier de contenu séparé. |
+
+## e. Mesure après l'épure (14/10/2026, construction locale de `site/outils-epure`)
+
+Mêmes scripts et même règle de comptage qu'au §a et au §d ; la FAQ, repliée désormais, est ouverte pour le comptage comme elle l'était avant. Données : `outils-epure/inventaire-apres.json`, `premier-ecran-apres.txt`, `preuve-calculs-avant-apres.json`, `diff-jsonld.json`, captures `*--apres.jpg`.
+
+**Premier champ au premier écran** (au moins 44 px du champ visibles, une cible tactile) :
+
+| Vue | Avant | Après |
+|---|---:|---:|
+| Mobile 375×812 | 0 / 22 | **13 / 22** |
+| Bureau 1440×900 | 0 / 22 | **22 / 22** |
+
+Les 9 pages mobiles restantes sont repoussées par le texte propre à l'outil (`src/components/outils/*`, hors périmètre) ; le plateau de l'outil y commence pourtant au premier écran (entre 298 et 387 px). Mesure du haut du premier champ, puis texte de l'outil qui le précède :
+
+| Page | Haut du champ | Ce qui le précède dans l'outil |
+|---|---:|---|
+| generateur-prompt-expert-comptable | 1 148 | lien d'introduction et bibliothèque d'amorces, 850 px |
+| calculateur-roi-automatisation | 914 | titre et présentation des scénarios, 559 px |
+| generateur-prompt-ia-gratuit | 896 | exemples fictifs proposés avant la tâche, 598 px |
+| seuil-signification-audit | 881 | mention de session et actions, 526 px |
+| comparateur-balances-comptables | 840 | titre et présentation, 486 px |
+| generateur-relance-facture-impayee | 830 | mention de session et actions, 509 px |
+| modele-rapprochement-bancaire-excel-gratuit | 828 | téléchargement du modèle et règle des signes, 474 px |
+| suivi-circularisation | 828 | mention de session et actions, 498 px |
+| diagnostic-maturite-ia-cabinet | 794 | présentation du questionnaire, 472 px |
+
+Le test `outils publiés : le premier champ tient au premier écran` nomme ces 9 pages et échoue si la liste change dans un sens ou dans l'autre.
+
+**Mots** (mobile) : médiane des 22 pages **1 040 → 725** (estimation du §d : ≈ 670). Calculateurs historiques : marge 668 → 386, échéance 739 → 476, amortissement 778 → 487, rapprochement 786 → 468. Hub **1 679 → 765** ; hauteur du hub en mobile 17 209 → 9 300 px ; page marge 6 659 → 3 900 px.
+
+**Chaîne de preuve** :
+- mêmes saisies sur la production (avant) et sur la construction locale (après), quatre calculateurs historiques : **12 cas sur 12 identiques**, dont 3 refus et 4 CSV comparés à l'octet ;
+- JSON-LD : **23 pages, aucun nœud retiré ni modifié** ; seul ajout, `FAQPage` sur les 22 pages du gabarit (le hub ne change pas).
+
+**Redites qui restent, hors gabarit** (composants d'outil et données, hors périmètre de l'épure) : six composants redisent qu'une saisie reste dans l'onglet (comparateur, checklist, relance, seuil, vérificateur de prompt, circularisation) ; la revue SEO du 14/10 relève aussi des réserves répétées entre composant et limites sur le FEC, l'échéance, le rapprochement, la marge et l'amortissement.
+
+## f. SERP Google France (14/10/2026, DataForSEO, compte changé par Kevin)
+
+Relevé `serp/google/organic/live/advanced`, France, français, bureau, 10 résultats ; 8 appels, **0,016 $**. Données : `outils-epure/serp-google-fr-2026-10-14.json` (SERP et mesures des pages classées). Les pages classées ont été mesurées en mobile 375×812 par le même type de script que nos pages (DOM seulement : une page derrière un mur anti-robots rend 0 mot).
+
+- **memlia.fr est absent du top 10 sur les 8 requêtes**, et **les 8 SERP portent un AI Overview** (People also ask sur 6).
+- **Marge** : les deux premiers sont des calculateurs au premier écran — bgepro (champ à 555 px, 130 mots) et calcul-marge.fr (150 px, 741 mots) ; vmaths 6ᵉ (517 px, 199 mots). Un guide sans outil est 3ᵉ (1 675 mots). **Un outil court peut se classer en tête** : la lecture de repli du §a (« 1 000 à 1 500 mots sous l'outil ») ne vaut pas pour cette requête.
+- **Amortissement** : 1ᵉʳ L-Expert-comptable, outil haut (iframe à 416 px) puis 3 441 mots de guide ; 2ᵉ reagjir (champ à 587 px, 325 mots). Les deux modèles se classent.
+- **Échéance** : des guides en tête (bizyness 2 538 mots, Indy, Finom), un calculateur seulement au 6ᵉ rang (kolirys, champ à 1 245 px). L'intention est d'abord **informative**.
+- **Rapprochement Excel** : des **modèles à télécharger** (AssoConnect, carm2i, Etsy, Scribd) et une vidéo en tête.
+- **FEC** : aucun outil en ligne dans le top 10 ; produits (PwC, logiciels), guides et le dépôt DGFiP Test Compta Demat (5ᵉ).
+- **Hub « outils comptables gratuits »** : la requête est captée par des **comparatifs de logiciels** (Indy, GetApp, Appvizer, Sage) ; un catalogue d'outils n'y répond pas à l'intention.
+
+Ce que cela change pour la suite (décisions de Kevin, non appliquées ici) : l'épure (outil au premier écran) va dans le sens des pages qui se classent sur marge et amortissement ; sur échéance et FEC, c'est le chantier de contenu D8 (exemple chiffré, « comment calculer », FAQ propre à l'outil) qui répond à l'intention.
+
