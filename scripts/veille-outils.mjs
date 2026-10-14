@@ -23,7 +23,7 @@ export const SOURCES_OUTILS = [
   {
     slug: 'modele-rapprochement-bancaire-excel-gratuit',
     alternatives: [
-      { url: 'https://www.anc.gouv.fr/plan-comptable-general-0', signatures: ['plan comptable general'] },
+      { url: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219304', signatures: ['controler par inventaire', 'existence et la valeur des elements actifs et passifs'] },
     ],
   },
 ];

@@ -2,8 +2,7 @@
 const periods = [{key:'previous',title:'N−1'},{key:'current',title:'N'}];
 ---
 <div data-balances>
-  <h2>Deux exports, des variations à expliquer</h2>
-  <p>Alignez les comptes texte, choisissez vos seuils et retrouvez toutes les lignes sources. Les comptes absents valent zéro uniquement pour ce calcul. Une liste à examiner n’est pas un jugement de risque.</p>
+  <p>Alignez les comptes et choisissez vos seuils. Un compte absent vaut zéro pour ce seul calcul ; une liste à examiner n’est pas un jugement de risque.</p>
   <form data-async-tool novalidate>
     <p id="balance-help">Deux CSV avec en-têtes, 10 Mo (10 000 000 octets) et 20 000 lignes au total. Montants sans séparateur de milliers, au plus deux décimales. Choisissez l’encodage et le séparateur avant lecture. Ni FEC ni conversion de devise.</p>
     <div class="periods">{periods.map(({key,title})=><fieldset><legend>Balance {title}</legend>

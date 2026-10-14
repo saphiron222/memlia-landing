@@ -2,7 +2,7 @@
 const fields=[['id','Identifiant du scénario'],['name','Nom du scénario'],['baseName','Base nommée'],['base','Montant de base (EUR)'],['rate','Taux de signification choisi (%)'],['period','Période'],['reference','Source / référence de la base']] as const;
 ---
 <div class="sig" data-signification>
- <p>Vos paramètres restent en mémoire dans cet onglet. Sauvegardez le JSON pour reprendre le travail après fermeture. Aucun taux n’est prérempli ; l’exemple fictif sert seulement à rejouer les calculs.</p>
+ <p>Aucun taux n’est prérempli ; l’exemple fictif sert seulement à rejouer les calculs.</p>
  <p id="sig-error" role="alert" data-sig-error hidden></p><p role="status" aria-live="polite" data-sig-status>Ajoutez un scénario ou chargez l’exemple fictif.</p>
  <div class="actions"><button type="button" class="btn btn-contour" data-sig-demo>Charger l’exemple fictif</button><button type="button" class="btn btn-contour" data-sig-reset>Effacer la session</button><button type="button" class="btn btn-contour" data-sig-cancel disabled>Annuler le traitement</button></div>
  <details><summary>Mission et intervenants (facultatifs)</summary><form data-sig-meta class="fields"><label>Référence de mission<input name="missionRef" maxlength="65536" /></label><label>Préparateur (saisie volontaire)<input name="preparer" maxlength="65536" /></label><label>Réviseur (saisie volontaire)<input name="reviewer" maxlength="65536" /></label><p>Ces mentions ne valent ni revue ni validation.</p></form></details>

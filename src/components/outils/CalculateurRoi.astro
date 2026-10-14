@@ -2,8 +2,7 @@
 import { ROI_FIELDS, ROI_FORMULAS, ROI_CONVENTION } from '@/lib/roi-automatisation.mjs';
 ---
 <div class="roi-tool">
-  <h2>Tester des hypothèses économiques</h2>
-  <p>Décrivez une même tâche dans trois scénarios indépendants. Aucun pourcentage ni prix n’est proposé par défaut. Les temps libérés constituent une capacité, pas un encaissement : seules les dépenses réellement évitables que vous saisissez alimentent le ROI cash.</p>
+  <p>Trois scénarios indépendants, sans pourcentage ni prix par défaut. Le temps libéré est une capacité, pas un encaissement : seules les dépenses réellement évitables que vous saisissez alimentent le ROI cash.</p>
   <div data-roi-form role="group" aria-label="Hypothèses de ROI">
     <p id="roi-hint">Deux décimales au maximum, virgule ou point, sans séparateur de milliers. Volume entier, jusqu’à 1 000 000 tâches/mois ; pourcentages de 0 à 100 ; horizon supérieur à zéro, jusqu’à 1 200 mois. E vide signifie inconnu ; E = 0 signifie aucune dépense évitable.</p>
     <div class="scenarios">
