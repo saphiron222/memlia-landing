@@ -103,9 +103,9 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 | `/contact` | la conversion | — | Quelle tâche vos collaborateurs refont-ils encore à la main ? |
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
-| `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia expert comptable (provisoire, à confirmer par les volumes Google) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
-| `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | « agent ia <métier> » (provisoire) | ce que l'agent prend en charge, intention d'abord |
-| `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable (provisoire) | arrêté par la spécification du hub |
+| `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia comptable (50 recherches par mois, Google, 15/10/2026) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
+| `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | une requête par fiche, mesurée sur Google le 15/10/2026 (`docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md` §6) | ce que l'agent prend en charge, intention d'abord |
+| `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable | arrêté par la spécification du hub |
 
 Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
 

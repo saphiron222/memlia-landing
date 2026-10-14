@@ -363,6 +363,35 @@ marques et la page Excel conditionnelle.
 
 ## 6. Référencement
 
+**Requêtes retenues, mesurées sur Google le 15/10/2026** (DataForSEO, 34 SERP Google FR, rejeu de
+l'instrument de propriété : **0 conflit**). Elles **remplacent** les requêtes provisoires du §3 ; les H1
+du §3 sont réécrits sur elles en phase 3 (copywriting). Détail : [`hub-agents-ia/MOTS-CLES.md`](hub-agents-ia/MOTS-CLES.md).
+
+| Page | Requête primaire | Google / mois | H1 de départ (à passer en copywriting) |
+|---|---|---|---|
+| `/agents-ia` | agent ia comptable | 50 | Agents IA pour votre cabinet comptable : ce que chacun prépare, ce que vos collaborateurs valident |
+| comptabilite | ia comptabilité | 390 | L'IA en comptabilité, au cabinet : saisie, lettrage et rapprochements préparés, vos collaborateurs valident |
+| juridique-fiscal | ia juridique expert comptable | — | IA juridique et fiscale pour expert-comptable : les documents d'approbation des comptes et les déclarations préparés |
+| finance | agent ia finance | 20 | Agent IA finance pour cabinet comptable : prévisionnels et situations préparés pour votre revue |
+| commercial | **à trancher** : agent ia commercial (30) ou agent ia prospection (70) | — | la prospection sortante n'est dans aucune famille : « agent ia commercial » colle au périmètre (entrée en relation, lettre de mission) |
+| communication | newsletter expert comptable | 10 | Newsletter d'expert-comptable : l'agent IA rédige l'actualité de votre cabinet, vous relisez avant l'envoi |
+| relation-client | relation client cabinet comptable | 10 | Relation client en cabinet comptable : l'agent IA trie les demandes et prépare les réponses, votre collaborateur valide |
+| gestion-cabinet | gestion cabinet comptable | 10 | Gestion de cabinet comptable : honoraires facturés une fois et suivi de production en agrégats, préparés |
+| rh-cabinet | ia rh | 390 | IA RH pour cabinet comptable : arrivée des collaborateurs et synthèses de rémunération préparées, en agrégats |
+| protection-donnees | rgpd expert comptable | 10 | RGPD de l'expert-comptable : la mise à jour du registre et les réponses aux demandes d'accès préparées pour votre référent |
+| `/integrations` | intégration logiciels cabinet comptable | — | Google la lit comme « choisir ses logiciels » : la page dit ce que nous reprenons dans les outils déjà choisis |
+
+Ce que la mesure Google a changé : « agent ia » 8 100 par mois contre 2 400 pour « assistant ia » et 90
+pour « spécialiste ia » (D1 confirmée) ; « agent ia expert comptable » ne fait que 10 et montre un
+pack local, « agent ia cabinet comptable » partage 6 URL sur 10 avec « ia cabinet comptable »
+(article planifié) : d'où « agent ia comptable » pour le hub ; pour finance, communication, relation
+client et protection des données, le plus gros volume vise une autre intention et la plus petite
+requête alignée est retenue. **Une AI Overview répond à 31 des 34 SERP** : une simple définition sera
+absorbée ; le hub traite les questions récurrentes (« quelle IA pour un comptable ? », « l'IA va-t-elle
+remplacer les comptables ? », « prix d'un agent IA »). La question « salaire d'un agent IA » montre que
+Google lit parfois l'agent comme un emploi : la définition de l'agent, à sa première apparition, le
+dissipe.
+
 **Balises par page** : `title` (titre d'onglet, même requête que le H1, plus court), `description`
 unique ouvrant par son `descriptionLead` (contrat d'intention), canonical absolue, Open Graph complet ;
 `og:title` = H1 = `headline` (contrat de page) ; **un seul `h1`** ; `lang="fr"`.
