@@ -15,19 +15,18 @@ const SECTIONS_OUTIL = ['hero', 'calcul', 'source', 'faq', 'suite', 'appel'];
 const PAGES_GABARIT = OUTILS.filter((outil) => outil.statut !== 'suspendu');
 // Un champ est au premier écran quand ses 44 premiers pixels (une cible tactile) y tiennent.
 const CIBLE_TACTILE = 44;
-// Pages dont le texte propre à l'outil (src/components/outils/*, inchangé par l'épure) repousse le
-// premier champ sous le premier écran mobile 375×812. Mesuré le 14/10/2026 : haut du premier
-// champ, et hauteur du texte de l'outil qui le précède. La liste ne peut que rétrécir.
+// Une page de la liste qui passe de justesse ne fait pas échouer le test (un rendu au pixel près
+// n'est pas une preuve) ; une page qui passe avec cette marge doit en sortir.
+const MARGE_SEUIL = 16;
+// Pages dont le texte propre à l'outil (src/components/outils/*) repousse encore le premier champ
+// sous le premier écran mobile 375×812 après les introductions raccourcies du 14/10/2026 (haut du
+// premier champ mesuré). La liste ne peut que rétrécir.
 const PREAMBULE_LONG_MOBILE: readonly string[] = [
-  'calculateur-roi-automatisation', // 914 px ; titre et présentation des scénarios, 559 px
-  'comparateur-balances-comptables', // 840 px ; titre et présentation, 486 px
-  'diagnostic-maturite-ia-cabinet', // 794 px ; présentation du questionnaire, 472 px
-  'generateur-prompt-expert-comptable', // 1 148 px ; lien d'introduction et bibliothèque d'amorces, 850 px
-  'generateur-prompt-ia-gratuit', // 896 px ; exemples fictifs proposés avant la tâche, 598 px
-  'generateur-relance-facture-impayee', // 830 px ; mention de session et actions, 509 px
-  'modele-rapprochement-bancaire-excel-gratuit', // 828 px ; téléchargement du modèle et règle des signes, 474 px
-  'seuil-signification-audit', // 881 px ; mention de session et actions, 526 px
-  'suivi-circularisation', // 828 px ; mention de session et actions, 498 px
+  'calculateur-roi-automatisation', // 819 px : consigne de saisie et trois scénarios
+  'generateur-prompt-expert-comptable', // 967 px : bibliothèque d'amorces avant la tâche
+  'generateur-prompt-ia-gratuit', // 845 px : exemples fictifs proposés avant la tâche
+  'generateur-relance-facture-impayee', // 805 px : statut et actions de session empilés
+  'seuil-signification-audit', // 803 px : statut et actions de session empilés
 ];
 const PREAMBULE_LONG_BUREAU: readonly string[] = [];
 
@@ -427,27 +426,29 @@ test('outils publiés : la mention locale, les limites et la source se disent un
 
 test('outils publiés : le premier champ tient au premier écran, en mobile et sur bureau', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  const horsEcran: Record<string, string[]> = {};
   for (const [nom, viewport, longs] of [
     ['mobile', { width: 375, height: 812 }, PREAMBULE_LONG_MOBILE],
     ['bureau', { width: 1440, height: 900 }, PREAMBULE_LONG_BUREAU],
   ] as const) {
     await page.setViewportSize(viewport);
-    horsEcran[nom] = [];
+    const aRetirer: string[] = [];
     for (const outil of PAGES_GABARIT) {
       await page.goto(outilPath(outil));
       await page.evaluate(() => document.fonts.ready);
       const champ = await premierChamp(page);
       expect(champ, `${outil.slug} : aucun champ mesurable`).not.toBeNull();
-      if (champ!.top + Math.min(CIBLE_TACTILE, champ!.bottom - champ!.top) > viewport.height) horsEcran[nom].push(outil.slug);
+      const bas = champ!.top + Math.min(CIBLE_TACTILE, champ!.bottom - champ!.top);
+      if (!longs.includes(outil.slug)) {
+        expect(bas, `${outil.slug} : premier champ au premier écran ${nom}`).toBeLessThanOrEqual(viewport.height);
+      } else if (bas <= viewport.height - MARGE_SEUIL) {
+        aRetirer.push(outil.slug);
+      }
       // Même quand le texte propre à l'outil repousse son premier champ, le plateau de l'outil
       // commence au premier écran : rien du gabarit ne le précède hormis le titre et une phrase.
       const plateau = await page.locator('#outil-calcul .outil-calcul').boundingBox();
       expect(plateau!.y, `${outil.slug} : plateau en ${nom}`).toBeLessThan(viewport.height * 0.7);
     }
-    // La liste des exceptions est nommée et comptée : une page qui en sort doit en être retirée,
-    // une page qui y entre fait échouer le test.
-    expect(horsEcran[nom].sort(), `pages dont le premier champ dépasse le premier écran ${nom}`).toEqual([...longs].sort());
+    expect(aRetirer, `pages à retirer de la liste ${nom} : leur premier champ tient au premier écran`).toEqual([]);
   }
 });
 

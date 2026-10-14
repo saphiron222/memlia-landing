@@ -13,7 +13,7 @@ const choices = [
   <div class="library">
     <h2>Bibliothèque d’amorces</h2>
     <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
-    <p>Pour choisir une tâche déjà détaillée, parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">bibliothèque de prompts comptables (nouvel onglet)</a> : douze modèles avec leurs entrées et exemples fictifs. Vos choix et votre prompt restent dans cet onglet ; l’adaptation du modèle se fait dans le nouvel onglet, sans remplacer votre travail.</p>
+    <p>Une tâche déjà détaillée ? Parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">bibliothèque de prompts comptables (nouvel onglet)</a> : douze modèles avec leurs entrées et exemples fictifs, sans perdre votre travail ici.</p>
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
   </div>
   <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">

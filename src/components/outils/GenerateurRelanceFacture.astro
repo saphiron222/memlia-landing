@@ -2,7 +2,7 @@
 const fields=[['clientKey','Clé client'],['client','Nom du client'],['reference','Référence de facture'],['amount','Montant initial (EUR)'],['payments','Paiements reçus (EUR)'],['credits','Avoirs (EUR)'],['dueDate','Échéance (AAAA-MM-JJ ou AAAAMMJJ)']] as const;
 ---
 <div class="relance" data-relance>
- <p>Préparez une facture ou un lot, puis relisez chaque message. Rien n’est envoyé. Les paiements et avoirs déjà reçus diminuent le montant initial.</p>
+ <p>Préparez une facture ou un lot, puis relisez chaque message. Les paiements et avoirs déjà reçus diminuent le montant initial.</p>
  <p id="rel-error" role="alert" hidden></p><p id="rel-status" role="status" aria-live="polite">Commencez par une saisie, un CSV ou le jeu fictif.</p>
  <div class="actions"><button type="button" class="btn btn-contour" data-rel-demo>Charger l’exemple fictif</button><button type="button" class="btn btn-contour" data-rel-reset>Effacer la session</button><button type="button" class="btn btn-contour" data-rel-cancel disabled>Annuler le traitement</button></div>
  <details open><summary>Saisir ou corriger une facture</summary>
