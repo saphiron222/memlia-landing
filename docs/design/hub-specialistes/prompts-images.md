@@ -193,3 +193,40 @@ Forme : *« <Prénom>, agent IA <métier> : figurine d'argile <ton> posée près
 *« Balthazar, agent IA comptabilité : figurine d'argile vert sauge posée près d'une petite balance »*.
 Dans une carte dont le prénom est déjà écrit, l'image est décorative (`alt=""`) pour ne pas répéter le
 nom au lecteur d'écran ; l'`alt` complet sert dans le héros et les fiches.
+
+## 7. Revue de la série livrée le 15/10/2026
+
+Livraison de Kevin : `~/dev/interne/memlia-landing-sources/hub-agents-ia/figurines-2026-10-15/` (12 PNG
+1024², WebP 1024 et 512, originaux 1254², manifeste, prompts). Mesures : scripts du scratchpad de la
+session (`mesure-figurines.mjs`, `anneaux.mjs`, `planche-objets.mjs`), copiés avec les pièces de recherche.
+
+| Contrôle | Mesure | Verdict |
+|---|---|---|
+| Format, opacité | 12 × 1024², aucun canal alpha | conforme |
+| Fond | coins entre `#fdfdfa` et `#fefefc` (cible `#fffefb`) | conforme |
+| Silhouette | galet d'un seul tenant, aucune tête séparée ni écharpe | distincte d'agpt |
+| Texte accidentel | planche des objets à pleine résolution : enveloppes, registre, classeur, cadenas vierges | aucun |
+| Anneau | présent sur les douze ; vert **rendu** médian ≈ `#3d8545` (le `#27b657` sous lumière mate) | conforme ; **la mesure de la tâche 12 épingle ce vert rendu**, pas le hex CSS, sinon elle refuse à tort |
+| Couleurs des corps | ΔE (CIE76) entre corps : **Balthazar ~ Florent 7,4** ; les autres paires ≥ 11 | **Florent à régénérer** |
+| Cadrage | haut du corps entre 13,3 % et 20,7 % (cible 18 %) ; base entre 77,2 % (Aude) et 81,6 % | variation due aux formes voulues ; Aude un peu haute, sans gravité à 84 px |
+| Sens des objets | le dossier de Victoire porte un nœud décoratif : il se lit comme un **paquet cadeau** | à reprendre (un cadeau évoque l'avantage commercial) |
+| Sens des objets | la balance de Balthazar peut se lire « justice » | à arbitrer, faible : c'est le jeu de mots « balance » de la bible |
+
+**Reprises** (nouvelle conversation, joindre `png/01-balthazar.png`, phrase de reprise du §5 bis, puis) :
+
+- **Florent · Finance** : Un galet debout d'un seul tenant, en goutte arrondie à la base plus large,
+  couleur céladon : un vert d'eau nettement bleuté, proche de #8fb8b3, très différent du vert sauge de
+  l'image jointe, sans aucune nuance olive ni jaune. Posés au sol à côté : trois petits blocs de bois
+  clair de hauteurs croissantes. Le galet se tient droit.
+- **Victoire · Commercial** : Un galet debout d'un seul tenant, légèrement incliné vers l'avant, couleur
+  terre cuite claire. Posée au sol à côté : une chemise cartonnée kraft fermée par un ruban plat vert
+  profond #1c8a41 noué d'un simple nœud plat, sans boucle décorative : un dossier administratif, pas un
+  paquet cadeau. Le galet est incliné, accueillant.
+
+Puis la fin commune du §5 bis. Remplacer les deux fichiers sous le même nom ; la session refait la
+mesure.
+
+**Emplacement sur le site** : le README de la livraison propose `public/images/agents-ia/` ; le plan
+retient `public/agents/` (annexe ARCHITECTURE §5 : `test_build.py` compte les images d'articles sous
+`public/images/`, et `strip-briefs.mjs` y opère). Les WebP livrés servent de sources ; les dérivés
+AVIF et WebP (128, 256, 512) sont produits par la tâche 12.
