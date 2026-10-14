@@ -7,70 +7,44 @@ interface Props {
 }
 
 const { outil } = Astro.props;
-const destinations: Record<OutilServicePage, { libelle: string; description: string }> = {
-  '/automatisation-cabinet-comptable': {
-    libelle: 'Comprendre notre méthode d’automatisation',
-    description: 'Voir comment une règle est écrite, éprouvée puis validée dans les outils du cabinet.',
-  },
-  '/automatisation/factures-fournisseurs': {
-    libelle: 'Voir le cadrage des factures fournisseurs',
-    description: 'Suivre la frontière entre préparation, contrôles et validation par le cabinet.',
-  },
-  '/automatisation/rapprochement-bancaire': {
-    libelle: 'Voir le cadrage du rapprochement bancaire',
-    description: 'Comprendre comment les écarts sont préparés sans décider à la place du collaborateur.',
-  },
-  '/methode': {
-    libelle: 'Comprendre la méthode',
-    description: 'De la tâche observée à la recette sur un jeu d’essai fictif, étape par étape.',
-  },
+const destinations: Record<OutilServicePage, string> = {
+  '/automatisation-cabinet-comptable': 'Comprendre notre méthode d’automatisation',
+  '/automatisation/factures-fournisseurs': 'Voir le cadrage des factures fournisseurs',
+  '/automatisation/rapprochement-bancaire': 'Voir le cadrage du rapprochement bancaire',
+  '/methode': 'Comprendre la méthode',
 };
-const destination = destinations[outil.pageService];
 /*
- * Système de page : trois suites de même rang, donc trois cartes de même largeur et de même forme
- * (le niveau en tête, une phrase, le lien d'action qui nomme la destination ; aucune ne porte de
- * titre en plus, Kevin, 13/10/2026). L'appel final qui suit porte le
- * seul bouton principal de la fin de page : « Passer à votre tâche » garde ses mots et son lien,
- * en lien d'action. La ressource associée, quand elle existe, suit en lien d'action.
+ * Les liens du contrat (OUTILS-CONTRAT-DE-LIENS.md), sur une ligne, dans l'ordre : le hub, la
+ * ressource exacte quand elle existe, la page service. L'appel vers /contact suit, seul, dans
+ * l'appel final (épure du 14/10/2026 : plus de cartes ni de second appel).
  */
 ---
 
-<section class="section outil-suite" data-tool-section="suite" aria-labelledby="outil-suite-titre">
-  <div class="conteneur pile">
-    <div class="tete rv">
-      <p class="surtitre">Après l’outil</p>
-      <h2 id="outil-suite-titre">Choisissez la suite qui vous est utile.</h2>
-      <p>Continuez à explorer, regardez comment la règle serait cadrée, ou partez de votre propre tâche.</p>
-    </div>
-
-    <nav class="outil-parcours pile" data-tool-links aria-label="Pour continuer">
-      <ul class="cartes rv-groupe">
-        <li class="carte rv">
-          <div class="carte-corps">
-            <p class="carte-meta">Explorer</p>
-            <p class="carte-texte">Retrouver les autres calculs et modèles utilisables sans compte.</p>
-            <a class="carte-action carte-lien" href={OUTILS_HUB_PATH}>Tous les outils comptables gratuits<Picto nom="fleche" taille={14} /></a>
-          </div>
-        </li>
-        <li class="carte rv">
-          <div class="carte-corps">
-            <p class="carte-meta">Comprendre</p>
-            <p class="carte-texte">{destination.description}</p>
-            <a class="carte-action carte-lien" href={outil.pageService}>{destination.libelle}<Picto nom="fleche" taille={14} /></a>
-          </div>
-        </li>
-        <li class="carte rv">
-          <div class="carte-corps">
-            <p class="carte-meta">Passer à votre tâche</p>
-            <p class="carte-texte">Décrivez le geste, les outils et le résultat attendu. Aucun fichier ni donnée client ne sont demandés à ce stade.</p>
-            <a class="carte-action carte-lien" href={outil.cta}>Confier une première tâche<Picto nom="fleche" taille={14} /></a>
-          </div>
-        </li>
+<div class="outil-suite" data-tool-section="suite">
+  <div class="conteneur">
+    <nav data-tool-links aria-label="Pour continuer">
+      <ul class="outil-suite-liens">
+        <li><a class="lien-action" href={OUTILS_HUB_PATH}>Tous les outils comptables gratuits<Picto nom="fleche" taille={14} /></a></li>
+        {outil.articleExact && (
+          <li><a class="lien-action" href={outil.articleExact}>Consulter la ressource associée<Picto nom="fleche" taille={14} /></a></li>
+        )}
+        <li><a class="lien-action" href={outil.pageService}>{destinations[outil.pageService]}<Picto nom="fleche" taille={14} /></a></li>
       </ul>
-
-      {outil.articleExact && (
-        <a class="lien-action" href={outil.articleExact}>Consulter la ressource associée<Picto nom="fleche" taille={14} /></a>
-      )}
     </nav>
   </div>
-</section>
+</div>
+
+<style>
+  .outil-suite {
+    padding-top: var(--section-espace);
+  }
+  .outil-suite-liens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-2) var(--espace-8);
+    margin: 0;
+    padding: var(--espace-4) 0 0;
+    border-top: 1px solid var(--ligne);
+    list-style: none;
+  }
+</style>

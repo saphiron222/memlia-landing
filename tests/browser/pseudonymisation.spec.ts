@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
 const route = '/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec';
 const fictif = '\uFEFFNom;Libelle;Date;Montant\r\nAlice;"alice@example.test\npièce";20261004;9876\r\nAlice;"=HYPERLINK(""x"")";20261005;-10\r\nBob;Facture;20261006;20';
@@ -52,7 +53,7 @@ test('UTF-8 refusé puis Windows-1252 explicite, TSV/FEC', async ({ page }) => {
   await page.locator('#pseudo-encoding').selectOption('windows-1252'); await page.getByRole('button', { name:'Importer une copie', exact:true }).click(); await expect(page.locator('[data-before]')).toContainText('André');
 });
 test('aucun réseau de contenu ni stockage pendant import/preview/export', async ({ page }) => {
-  await page.goto(route); await page.waitForLoadState('networkidle');
+  await page.goto(route); await chargerImagesDifferees(page);
   const requests: string[] = []; page.on('request', request => { if (!request.url().includes('/_astro/')) requests.push(request.url()); expect(request.method()).toBe('GET'); expect(request.postData()).toBeNull(); });
   await page.evaluate(() => { (window as any).storageWrites=[]; for(const proto of [Storage.prototype, IDBFactory.prototype]) for(const name of ['setItem','open']) { if(name in proto) { (proto as any)[name] = (...args: any[]) => { (window as any).storageWrites.push(args); throw new Error('stockage interdit'); }; } } });
   await importFile(page); await prepare(page); await page.locator('[data-reviewed]').check(); await download(page,'csv');

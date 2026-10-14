@@ -2,14 +2,13 @@
 import Base from '@/layouts/Base.astro';
 import AppelFinal from '@/components/sections/AppelFinal.astro';
 import OutilFaq from '@/components/sections/OutilFaq.astro';
-import OutilGaranties from '@/components/sections/OutilGaranties.astro';
 import OutilHero from '@/components/sections/OutilHero.astro';
-import OutilPreuves from '@/components/sections/OutilPreuves.astro';
-import OutilPromesse from '@/components/sections/OutilPromesse.astro';
+import OutilSource from '@/components/sections/OutilSource.astro';
 import OutilSuite from '@/components/sections/OutilSuite.astro';
 import OutilZone from '@/components/sections/OutilZone.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTILS_HUB_PATH, outilPath, type OutilDefinition } from '@/data/outils';
+import { OUTIL_GRATUIT, questionsOutil, titreAppel, titreSource } from '@/data/outil-page';
 
 interface Props { outil: OutilDefinition }
 const { outil } = Astro.props;
@@ -20,6 +19,7 @@ const socialImage = outil.proof ? {
   alt: `Aperçu fictif — ${outil.h1}`,
 } : undefined;
 const workerSources = outil.slug === 'generateur-relance-facture-impayee' ? "'self' blob:" : "'self'";
+const questions = questionsOutil();
 const csp = `default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src ${workerSources}; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'`;
 const graph = {
   '@context': 'https://schema.org',
@@ -51,34 +51,26 @@ const graph = {
     <OutilHero
       title={outil.h1}
       description={outil.description}
-      proof={outil.proof}
       eyebrow={outil.proof ? undefined : 'Démonstration technique'}
       titleId="outil-titre"
-      ctaHref="#outil-calcul"
-      ctaLabel={outil.statut === 'suspendu' ? 'Voir la suspension' : 'Utiliser l’outil'}
+      gratuit={OUTIL_GRATUIT}
       breadcrumbs={[
         { label: 'Accueil', href: '/' },
         { label: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
         { label: outil.h1 },
       ]}
     />
-    <OutilPromesse entree={outil.promesse.entree} resultat={outil.promesse.resultat} />
     <OutilZone mentionLocale={outil.mentionLocale} limites={outil.limites} suspension={outil.suspension} large={outil.zoneLarge}>
       {outil.statut !== 'suspendu' && <slot />}
     </OutilZone>
-    <OutilPreuves source={outil.source} mentionLocale={outil.mentionLocale} refus={outil.limites.at(-1) ?? outil.limites[0]} assemblage={outil.categorie === 'ecrire' || outil.categorie === 'explorer'} />
-    <OutilGaranties />
-    <OutilFaq mentionLocale={outil.mentionLocale} />
+    <OutilSource titre={titreSource(outil.categorie)} source={outil.source} proof={outil.proof} />
+    <OutilFaq questions={questions} />
     <OutilSuite outil={outil} />
     <AppelFinal
       id="outil-confier"
-      titre={outil.categorie === 'ecrire' || outil.categorie === 'explorer' ? 'Une consigne écrite est le départ, pas la tâche entière.' : 'La règle de votre cabinet ne tient pas dans un calculateur.'}
+      titre={titreAppel(outil)}
       texte="Nous observons la tâche complète, nous écrivons sa règle et ses limites, puis nous l’automatisons dans vos outils. Votre équipe garde la validation."
-      points={[
-        'Le geste : ce qui revient et dans quel outil.',
-        'La limite : le cas qui doit arrêter le traitement.',
-        'Le résultat : ce que votre équipe doit pouvoir valider.',
-      ]}
+      points={[]}
       action={{ libelle: 'Confier une première tâche', href: outil.cta }}
     />
   </div>

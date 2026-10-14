@@ -1,19 +1,68 @@
 import { test, expect, type Page } from '@playwright/test';
-import { OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
+import { OUTILS, OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 import { readFile } from 'node:fs/promises';
 import { INPUT_FIELDS } from '../../src/lib/signification.mjs';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 
 const HUB = '/outils-comptables-gratuits';
 const TEMOIN = `${HUB}/temoin-calcul-local`;
 const H1_HUB = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const H1_TEMOIN = 'Témoin de calcul local';
 
+// Structure cible de l'épure (OUTILS-EPURE-PLAN.md) et pages servies par le gabarit : les outils
+// disponibles et le témoin.
+const SECTIONS_OUTIL = ['hero', 'calcul', 'source', 'faq', 'suite', 'appel'];
+const PAGES_GABARIT = OUTILS.filter((outil) => outil.statut !== 'suspendu');
+// Un champ est au premier écran quand ses 44 premiers pixels (une cible tactile) y tiennent.
+const CIBLE_TACTILE = 44;
+// Pages dont le texte propre à l'outil (src/components/outils/*, inchangé par l'épure) repousse le
+// premier champ sous le premier écran mobile 375×812. Mesuré le 14/10/2026 : haut du premier
+// champ, et hauteur du texte de l'outil qui le précède. La liste ne peut que rétrécir.
+const PREAMBULE_LONG_MOBILE: readonly string[] = [
+  'calculateur-roi-automatisation', // 914 px ; titre et présentation des scénarios, 559 px
+  'comparateur-balances-comptables', // 840 px ; titre et présentation, 486 px
+  'diagnostic-maturite-ia-cabinet', // 794 px ; présentation du questionnaire, 472 px
+  'generateur-prompt-expert-comptable', // 1 148 px ; lien d'introduction et bibliothèque d'amorces, 850 px
+  'generateur-prompt-ia-gratuit', // 896 px ; exemples fictifs proposés avant la tâche, 598 px
+  'generateur-relance-facture-impayee', // 830 px ; mention de session et actions, 509 px
+  'modele-rapprochement-bancaire-excel-gratuit', // 828 px ; téléchargement du modèle et règle des signes, 474 px
+  'seuil-signification-audit', // 881 px ; mention de session et actions, 526 px
+  'suivi-circularisation', // 828 px ; mention de session et actions, 498 px
+];
+const PREAMBULE_LONG_BUREAU: readonly string[] = [];
+
 async function graphFrom(page: Page) {
   const payloads = await page.locator('script[type="application/ld+json"]').allTextContents();
   return payloads.map((text) => JSON.parse(text)).find((payload) => Array.isArray(payload['@graph']))?.['@graph'] ?? [];
 }
 
-test('hub : outils disponibles et schéma de collection', async ({ page }) => {
+const normaliser = (texte: string) => texte.replace(/[\u00a0\u202f]/g, ' ').replace(/\s+/g, ' ').trim();
+
+// Compte les occurrences d'un texte dans tout `main` (textContent : les réponses repliées, les
+// zones masquées et le texte des composants d'outil comptent aussi). Une redite ne se cache pas
+// derrière un `hidden`.
+async function occurrences(page: Page, texte: string, scope = 'main') {
+  const contenu = normaliser(await page.locator(scope).evaluate((element) => element.textContent ?? ''));
+  return contenu.split(normaliser(texte)).length - 1;
+}
+
+// Le premier champ de l'outil : le premier contrôle de saisie qui occupe une place à l'écran ; un
+// champ de fichier masqué derrière son libellé se mesure à son libellé.
+async function premierChamp(page: Page) {
+  return page.locator('#outil-calcul .outil-calcul').evaluate((zone) => {
+    for (const control of zone.querySelectorAll<HTMLElement>('input:not([type="hidden"]), select, textarea')) {
+      const visible = (element: Element | null) => {
+        const box = element?.getBoundingClientRect();
+        return box && box.width > 0 && box.height > 0 ? box : null;
+      };
+      const box = visible(control) ?? visible(control.closest('label')) ?? visible(control.id ? zone.querySelector(`label[for="${control.id}"]`) : null);
+      if (box) return { top: Math.round(box.top + window.scrollY), bottom: Math.round(box.bottom + window.scrollY), nom: control.getAttribute('name') ?? control.tagName };
+    }
+    return null;
+  });
+}
+
+test('hub : outils disponibles, une ligne par carte et schéma de collection', async ({ page }) => {
   const response = await page.goto(HUB);
   expect(response?.status()).toBe(200);
   await expect(page.locator('main h1')).toHaveText(H1_HUB);
@@ -22,25 +71,36 @@ test('hub : outils disponibles et schéma de collection', async ({ page }) => {
   await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
   await expect(page.locator('[data-empty-category]')).toHaveCount(0);
   for (const outil of OUTILS_DISPONIBLES) {
-    await expect(page.locator(`[data-outil-card] a[href="${outilPath(outil)}"]`)).toHaveCount(1);
     const card = page.locator('[data-outil-card]').filter({ has: page.locator(`a[href="${outilPath(outil)}"]`) });
-    await expect(card.locator('dt')).toHaveText(['Entrée', 'Résultat', 'Limite']);
-    await expect(card.locator('dd').nth(0)).toHaveText(outil.promesse.entree);
-    await expect(card.locator('dd').nth(1)).toHaveText(outil.promesse.resultat);
-    await expect(card.locator('dd').nth(2)).toHaveText(outil.limites[outil.slug === 'modele-rapprochement-bancaire-excel-gratuit' ? 1 : 0]);
-    await expect(card).toContainText('Gratuit, sans inscription.');
+    await expect(card).toHaveCount(1);
+    await expect(card.locator('a')).toHaveCount(1);
+    // Épure du 14/10/2026 : une carte = un titre, une ligne et le lien. Entrée, résultat et limite
+    // vivent sur la page de l'outil.
+    await expect(card.locator('.carte-texte')).toHaveText(outil.description);
+    await expect(card.locator('dl')).toHaveCount(0);
     await expect(card.locator('a')).not.toHaveText(/Utiliser sans compte|Ouvrir l’outil/);
   }
+  // « Gratuit, sans inscription » se dit une fois, sous le H1, et plus sur chacune des cartes.
+  expect(await occurrences(page, 'Gratuit, sans inscription')).toBe(1);
+  await expect(page.locator('[data-tool-section="hero"] [data-gratuit]')).toHaveText('Gratuit, sans inscription.');
+  await expect(page.locator('[data-tool-section="hero"] .surtitre')).toHaveCount(0);
+  await expect(page.locator('[data-tool-section="hero"] img')).toHaveCount(0);
   await expect(page.locator('#hub-confier a')).toHaveText('Confier une première tâche');
   await expect(page.locator('#hub-confier a')).toHaveAttribute('href', '/contact');
-  expect(await page.evaluate(() => [...document.querySelectorAll('[data-outil-card]')].every(card => Boolean(card.compareDocumentPosition(document.querySelector('#hub-confier')!) & Node.DOCUMENT_POSITION_FOLLOWING)))).toBe(true);
+  // L'image du hub descend sous le catalogue (décision D3), en lazy, avant l'appel final.
+  await expect(page.locator('[data-tool-media]')).toHaveCount(1);
+  await expect(page.locator('[data-tool-media] img')).toHaveAttribute('loading', 'lazy');
+  expect(await page.evaluate(() => {
+    const media = document.querySelector('[data-tool-media]')!;
+    const appel = document.querySelector('#hub-confier')!;
+    return [...document.querySelectorAll('[data-outil-card]')].every((card) => Boolean(card.compareDocumentPosition(media) & Node.DOCUMENT_POSITION_FOLLOWING))
+      && Boolean(media.compareDocumentPosition(appel) & Node.DOCUMENT_POSITION_FOLLOWING);
+  })).toBe(true);
   await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
   await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
-  await expect(page.locator('[data-tool-media]')).toHaveCount(1);
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
-
 
   const graph = await graphFrom(page);
   expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual([
@@ -258,7 +318,7 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   expect(exceptionBytes.toString('utf8')).toContain('NON VALIDÉ');
 });
 
-test('contrat de liens : le registre borne les outils publiés et leurs sorties', async ({ page }) => {
+test('contrat de liens : hub, ressource exacte, page service, puis un seul appel', async ({ page }) => {
   await page.goto(HUB);
   await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
 
@@ -267,42 +327,43 @@ test('contrat de liens : le registre borne les outils publiés et leurs sorties'
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    // Les trois suites (explorer, comprendre, passer à votre tâche) sont trois cartes de même rang ;
-    // la ressource associée, quand elle existe, suit en lien d'action (système de page, 07/10/2026).
-    const expectedLinks = [HUB, outil.pageService, outil.cta, ...(outil.articleExact ? [outil.articleExact] : [])];
+    // OUTILS-CONTRAT-DE-LIENS.md (décision D4 du 14/10/2026) : le hub, zéro ou une ressource exacte,
+    // la page service, puis un seul appel vers /contact, après ces liens et hors de leur liste.
+    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), outil.pageService];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
-    await expect(page.locator('[data-tool-links] a[href="/contact"]')).toHaveCount(1);
-    await expect(page.locator('[data-tool-links] a[href^="/contact?"]')).toHaveCount(0);
+    await expect(page.locator('main a[href="/contact"]')).toHaveCount(1);
+    await expect(page.locator('main a[href^="/contact?"]')).toHaveCount(0);
+    expect(await page.evaluate(() => {
+      const nav = document.querySelector('[data-tool-links]')!;
+      const appel = document.querySelector('main a[href="/contact"]')!;
+      return !nav.contains(appel) && Boolean(nav.compareDocumentPosition(appel) & Node.DOCUMENT_POSITION_FOLLOWING);
+    })).toBe(true);
   }
 });
 
-test('pour continuer : trois niveaux lisibles, clavier et responsive sans débordement', async ({ page }) => {
+test('pour continuer : une ligne de liens, un seul bouton, clavier et responsive sans débordement', async ({ page }) => {
   const path = `${HUB}/calculateur-date-echeance-facture`;
   for (const width of [375, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(path);
-    const suite = page.locator('[data-tool-section="suite"]');
-    const links = suite.locator('[data-tool-links] a');
+    const links = page.locator('[data-tool-section="suite"] [data-tool-links] a');
+    const appel = page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' });
 
-    await expect(suite.getByRole('heading', { name: 'Choisissez la suite qui vous est utile.' })).toBeVisible();
-    await expect(suite.getByText('Explorer', { exact: true })).toBeVisible();
-    await expect(suite.getByText('Comprendre', { exact: true })).toBeVisible();
-    await expect(suite.getByText('Passer à votre tâche', { exact: true })).toBeVisible();
-    // Un seul bouton principal en fin de page, celui de l'appel final : dans la suite, l'appel à
-    // passer à sa tâche garde ses mots et son lien, en lien d'action de carte (système de page).
-    await expect(suite.getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/carte-action/);
-    await expect(page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' })).toHaveClass(/btn-principal/);
-    await expect(suite.getByRole('link', { name: /Voir le cadrage des factures fournisseurs/ })).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
+    await expect(links).toHaveText(['Tous les outils comptables gratuits', 'Voir le cadrage des factures fournisseurs']);
+    await expect(links.nth(1)).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
+    // Un seul bouton principal en fin de page, celui de l'appel final (inventaire 27 et 31, CONT-15).
+    await expect(appel).toHaveClass(/btn-principal/);
+    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(1);
+    await expect(page.locator('#outil-confier .appel-cadrage')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
 
     await links.nth(0).focus();
     await expect(links.nth(0)).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(links.nth(1)).toBeFocused();
+    await expect(links.nth(1)).toHaveCSS('outline-style', 'solid');
     await page.keyboard.press('Tab');
-    await expect(links.nth(2)).toBeFocused();
-    // Le focus d'un lien de carte se dessine sur la carte entière (global.css).
-    await expect(suite.locator('.carte:has(.carte-lien:focus-visible)')).toHaveCSS('outline-style', 'solid');
+    await expect(appel).toBeFocused();
   }
 });
 
@@ -316,26 +377,109 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', outil.h1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
-    await expect(page.locator('[data-official-source]')).toContainText(outil.source.extrait);
+    await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
+    // Six sections, dans l'ordre de la structure cible (OUTILS-EPURE-PLAN.md).
+    expect(await page.locator('[data-tool-section]').evaluateAll((sections) => sections.map((section) => section.getAttribute('data-tool-section')))).toEqual(SECTIONS_OUTIL);
+    await expect(page.locator('[data-tool-section="hero"] [data-gratuit]')).toHaveText('Gratuit, sans compte.');
+    await expect(page.locator('[data-tool-section="hero"] img')).toHaveCount(0);
+    await expect(page.locator('a[href="#outil-calcul"]')).toHaveCount(0);
+    // La source officielle, une fois, sous l'outil, sans date affichée (charte §7 bis, D2).
+    await expect(page.locator('[data-official-source]')).toHaveCount(1);
+    await expect(page.locator('[data-tool-section="source"] [data-official-source]')).toContainText(outil.source.extrait);
     await expect(page.locator('[data-official-source]')).not.toContainText(/vérifiée le|consultée le/i);
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
-    await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toBeVisible();
+    // L'image figée quitte le héros pour la section source, en lazy ; elle reste l'image de partage (D3).
+    await expect(page.locator(`[data-tool-section="source"] [data-proof="${outil.proof}"] img`)).toHaveAttribute('loading', 'lazy');
     await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
     await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
-    await expect(page.locator('[data-tool-section]')).toHaveCount(8);
-    await expect(page.locator('[data-tool-section="garanties"]')).toBeVisible();
+    // Deux questions repliées ; « Confier une première tâche » une fois dans la page, plus la
+    // navigation et le pied de page.
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
-    // L'appel « Confier une première tâche » : deux fois dans la page (suite et appel final), au pied,
-    // et au bouton de la navigation, qui porte le même libellé depuis le 07/10/2026 (décision de Kevin).
-    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(2);
+    await expect(page.locator('[data-tool-section="faq"] details[open]')).toHaveCount(0);
+    await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(1);
+    await expect(page.locator('.feuille #outil-confier a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('header .nav-principal')).toHaveText('Confier une première tâche');
-    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(4);
+    await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
+
     const graph = await graphFrom(page);
+    // Pas de FAQPage : Google ne montre plus ce résultat depuis le 07/05/2026 (D6 rouverte le 14/10).
     expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(outil.h1);
   }
+});
+
+test('outils publiés : la mention locale, les limites et la source se disent une fois', async ({ page }) => {
+  for (const outil of PAGES_GABARIT) {
+    await page.goto(outilPath(outil));
+    await expect(page.locator('[data-local-notice]')).toHaveCount(1);
+    await expect(page.locator('[data-local-notice]')).toHaveText(outil.mentionLocale);
+    expect(await occurrences(page, outil.mentionLocale), `${outil.slug} : mention locale`).toBe(1);
+    await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toHaveCount(1);
+    await expect(page.locator('[data-tool-limits] li')).toHaveText([...outil.limites]);
+    for (const limite of outil.limites) expect(await occurrences(page, limite), `${outil.slug} : ${limite}`).toBe(1);
+    expect(await occurrences(page, outil.source.extrait), `${outil.slug} : extrait de source`).toBe(1);
+    // La FAQ sur les données ne recopie pas la mention : elle dit la CSP et le consentement.
+    await expect(page.locator('#outil-faq-local p')).not.toContainText(outil.mentionLocale);
+  }
+});
+
+test('outils publiés : le premier champ tient au premier écran, en mobile et sur bureau', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const horsEcran: Record<string, string[]> = {};
+  for (const [nom, viewport, longs] of [
+    ['mobile', { width: 375, height: 812 }, PREAMBULE_LONG_MOBILE],
+    ['bureau', { width: 1440, height: 900 }, PREAMBULE_LONG_BUREAU],
+  ] as const) {
+    await page.setViewportSize(viewport);
+    horsEcran[nom] = [];
+    for (const outil of PAGES_GABARIT) {
+      await page.goto(outilPath(outil));
+      await page.evaluate(() => document.fonts.ready);
+      const champ = await premierChamp(page);
+      expect(champ, `${outil.slug} : aucun champ mesurable`).not.toBeNull();
+      if (champ!.top + Math.min(CIBLE_TACTILE, champ!.bottom - champ!.top) > viewport.height) horsEcran[nom].push(outil.slug);
+      // Même quand le texte propre à l'outil repousse son premier champ, le plateau de l'outil
+      // commence au premier écran : rien du gabarit ne le précède hormis le titre et une phrase.
+      const plateau = await page.locator('#outil-calcul .outil-calcul').boundingBox();
+      expect(plateau!.y, `${outil.slug} : plateau en ${nom}`).toBeLessThan(viewport.height * 0.7);
+    }
+    // La liste des exceptions est nommée et comptée : une page qui en sort doit en être retirée,
+    // une page qui y entre fait échouer le test.
+    expect(horsEcran[nom].sort(), `pages dont le premier champ dépasse le premier écran ${nom}`).toEqual([...longs].sort());
+  }
+});
+
+test('fil d’Ariane : la page courante reste lisible jusqu’à 320 px', async ({ page }) => {
+  for (const width of [320, 375]) {
+    await page.setViewportSize({ width, height: 812 });
+    for (const outil of PAGES_GABARIT) {
+      await page.goto(outilPath(outil));
+      await page.evaluate(() => document.fonts.ready);
+      // Revue d'accessibilité du 14/10/2026 : à 320 px, la page courante était réduite à un
+      // chevron. Elle finit la ligne avec une ellipse, ou passe seule à la ligne suivante.
+      const courant = await page.locator('.ariane [aria-current="page"]').locator('..').boundingBox();
+      expect(courant!.width, `${outil.slug} à ${width} px`).toBeGreaterThanOrEqual(30);
+      expect(courant!.x + courant!.width, `${outil.slug} à ${width} px`).toBeLessThanOrEqual(width);
+    }
+  }
+});
+
+test('outils publiés : le bouton de fin déclenche la mesure « cta » sans autre appel', async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as unknown as { outilEvents: string[] }).outilEvents = [];
+    window.addEventListener('memlia:outil', (event) => {
+      (window as unknown as { outilEvents: string[] }).outilEvents.push((event as CustomEvent<{ action: string }>).detail.action);
+    });
+    // Garde la page ouverte pour lire la mesure : le clic est intercepté avant la navigation.
+    window.addEventListener('click', (event) => {
+      if ((event.target as Element | null)?.closest('a[href="/contact"]')) event.preventDefault();
+    }, true);
+  });
+  await page.goto(`${HUB}/calculateur-marge-commerciale`);
+  await page.locator('#outil-confier a[href="/contact"]').click();
+  expect(await page.evaluate(() => (window as unknown as { outilEvents: string[] }).outilEvents)).toEqual(['cta']);
 });
 
 test('outils et services : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
@@ -346,7 +490,7 @@ test('outils et services : les entrées respectent la préférence de mouvement 
   ]) {
     await page.goto(route);
     const animated = page.locator(route.startsWith(HUB)
-      ? '.outil-hero-copy h1, .outil-hero-copy p, .outil-hero-visual'
+      ? '.outil-hero-copy h1, .outil-hero-copy p'
       : '.service-hero-copy h1, .service-hero-label, .service-hero-lead, .service-hero-action, .service-hero-visual');
     const count = await animated.count();
     expect(await animated.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName))).toEqual(
@@ -384,7 +528,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     context.on('request', listener);
     await page.goto(outilPath(outil));
     await page.evaluate(() => document.fonts.ready);
-    await page.waitForLoadState('networkidle');
+    await chargerImagesDifferees(page);
     armed = true;
     if (outil.slug === 'comparateur-balances-comptables') {
       await page.getByRole('button', { name: 'Charger les deux CSV fictifs', exact: true }).click();
@@ -689,11 +833,15 @@ test('témoin : noindex, CSP, quatre surfaces et liens sortants concordants', as
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(H1_TEMOIN);
 
   const links = page.locator('[data-tool-links] a');
-  await expect(links).toHaveCount(3);
+  await expect(links).toHaveCount(2);
   expect(await links.evaluateAll((items) => items.map((item) => item.getAttribute('href')))).toEqual([
-    HUB, '/methode', '/contact',
+    HUB, '/methode',
   ]);
-  await expect(page.locator('[data-tool-links] a[href="/contact"]')).toHaveCount(1);
+  await expect(page.locator('main a[href="/contact"]')).toHaveCount(1);
+  await expect(page.locator('#outil-confier a[href="/contact"]')).toHaveCount(1);
+  // Le témoin n'a ni image figée ni ressource : la section source s'en passe.
+  await expect(page.locator('[data-tool-section="source"] [data-official-source]')).toHaveCount(1);
+  await expect(page.locator('[data-tool-section="source"] img')).toHaveCount(0);
 });
 
 test('témoin : le garde détecte toute requête après armement, puis exige zéro', async ({ page, context }) => {
@@ -790,7 +938,7 @@ test('outil vers contact : origine attribuée après accord distinct, sans envoi
   }));
 
   await page.goto(TEMOIN);
-  await page.locator('[data-tool-links] a[href="/contact"]').click();
+  await page.locator('#outil-confier a[href="/contact"]').click();
   await expect(page).toHaveURL(/\/contact$/);
   await expect(page.locator('#origine')).toHaveValue('');
   await expect(page.locator('#consentement_origine')).not.toBeChecked();

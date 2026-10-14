@@ -26,6 +26,7 @@ export interface OutilDefinition {
   libelleAction: string;
   title: string;
   description: string;
+  // Registre seulement : ni la page ni le hub ne l'affichent depuis l'épure du 14/10/2026.
   promesse: { entree: string; resultat: string };
   limites: readonly string[];
   mentionLocale: string;
@@ -483,7 +484,6 @@ export const OUTILS: readonly OutilDefinition[] = [
     description: 'Modèle de rapprochement bancaire Excel gratuit : téléchargez le .xlsx sans compte, avec exemple fictif, feuille à remplir, formules et écarts visibles.',
     promesse: { entree: 'Période, soldes et éléments de rapprochement', resultat: 'Classeur .xlsx réutilisable et contrôle fictif exportable en CSV' },
     limites: [
-      'Le classeur contient un exemple fictif, une feuille à remplir et une notice des signes. Le calcul en ligne et son CSV restent disponibles pour les données fictives.',
       'Ce contrôle de soldes n’apparie pas les lignes, ne passe aucune écriture et ne valide aucun rapprochement à la place du collaborateur.',
       'Une période inversée ou un montant illisible bloque le calcul en ligne. Un écart ou un élément inexpliqué reste visible et exportable avec l’état NON VALIDÉ.',
     ],

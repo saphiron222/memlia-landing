@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
 const route = '/outils-comptables-gratuits/verificateur-prompt-ia';
 const complete = 'Préparer une synthèse. À partir des notes fictives fournies. Répondre sous forme de tableau. Le responsable relit avant utilisation. Si une information manque, arrêter et demander une précision.';
@@ -9,7 +10,7 @@ async function analyse(page: import('@playwright/test').Page, text = complete) {
 }
 test('reformulation, extraits, deux copies et rapport édité complet sans réseau ni stockage', async ({page,context}) => {
  await context.grantPermissions(['clipboard-read','clipboard-write']);
- await page.goto(route); await page.waitForLoadState('networkidle');
+ await page.goto(route); await chargerImagesDifferees(page);
  const requests:string[]=[]; page.on('request',r=>requests.push(r.url()));
  await analyse(page);
  await expect(page.locator('[data-findings] li')).toHaveCount(5);

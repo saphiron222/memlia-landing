@@ -1,4 +1,6 @@
 ---
+import Picto from '@/components/Picto.astro';
+
 interface Props {
   mentionLocale: string;
   limites: readonly string[];
@@ -8,15 +10,16 @@ interface Props {
 
 const { mentionLocale, limites, suspension, large = false } = Astro.props;
 /*
- * Système de page : l'outil est un formulaire, donc un plateau ; à côté dès 1 024 px, ce qui
- * reste dans le navigateur (un titre de bloc et son texte, comme sur /contact). « Ce que cette
- * page ne fait pas » est une section à part entière : son titre tombe au pas des sections, sa
- * liste se lit comme du texte.
+ * L'outil suit le titre (épure du 14/10/2026, OUTILS-EPURE-PLAN.md) : le plateau du formulaire,
+ * puis une seule colonne qui dit une fois ce qui reste dans le navigateur et une fois ce que la
+ * page ne fait pas. Elle passe à droite dès 1 024 px, sauf pour un outil large (`zoneLarge`) où
+ * elle reste dessous, sur deux colonnes ; en mobile, les limites tombent sous le résultat. La
+ * phrase de consentement vit dans la FAQ sur les données.
  */
 ---
 
 <section id="outil-calcul" class="section outil-zone-section" data-tool-section="calcul" aria-labelledby="outil-zone-titre">
-  <div class="conteneur outil-zone-inner">
+  <div class="conteneur">
     <h2 id="outil-zone-titre" class="sr-only">Utiliser l’outil</h2>
     <div class:list={['outil-zone', { 'outil-zone-large': large }]}>
       <div class="outil-calcul">
@@ -32,26 +35,22 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
           </div>
         ) : <slot />}
       </div>
-      <aside class="outil-local rv" data-local-notice aria-labelledby="local-titre">
-        <h3 id="local-titre">Ce qui reste dans votre navigateur</h3>
-        <p>{mentionLocale}</p>
-        <p>Seul un clic volontaire vers « Confier une première tâche » change de page. Le chemin de cette page n’est conservé que si vous envoyez ensuite le formulaire avec votre consentement.</p>
-      </aside>
-    </div>
-
-    <div class="outil-limites rv" aria-labelledby="limites-titre">
-      <h2 id="limites-titre">Ce que cette page ne fait pas</h2>
-      <ul>
-        {limites.map((limite) => <li>{limite}</li>)}
-      </ul>
+      <div class="outil-cadre rv">
+        <p class="outil-local" data-local-notice><Picto nom="bouclier" taille={18} /><span>{mentionLocale}</span></p>
+        <div class="outil-limites">
+          <h2 id="limites-titre">Ce que cette page ne fait pas</h2>
+          <ul data-tool-limits>
+            {limites.map((limite) => <li>{limite}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .outil-zone-inner {
-    display: grid;
-    gap: var(--section-espace);
+  .outil-zone-section {
+    padding-top: var(--espace-4);
   }
   .outil-zone {
     display: grid;
@@ -61,7 +60,7 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
   /* Le plateau du formulaire, comme sur /contact. */
   .outil-calcul {
     min-width: 0;
-    padding: var(--carte-marge);
+    padding: var(--espace-4);
     border: 1px solid var(--ligne);
     border-radius: var(--r-carte);
     background: var(--surface-feuille);
@@ -93,27 +92,34 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
   .outil-suspension dt {
     font-weight: 700;
   }
-  .outil-local {
+  .outil-cadre {
     display: grid;
-    gap: var(--tete-ecart);
+    gap: var(--espace-8);
     align-content: start;
+    min-width: 0;
   }
-  .outil-local h3 {
-    font-size: var(--titre-bloc);
-    line-height: 1.2;
-  }
-  .outil-local p {
+  .outil-local {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espace-2);
+    max-width: 62ch;
     margin: 0;
-    max-width: 58ch;
     color: var(--texte-2);
+    font-size: var(--t-sm);
+    text-wrap: pretty;
+  }
+  .outil-local :global(svg) {
+    flex: 0 0 auto;
+    margin-top: 0.15em;
+    color: var(--accent-appui);
   }
   .outil-limites {
     display: grid;
     gap: var(--tete-ecart);
-    max-width: 46rem;
   }
   .outil-limites h2 {
-    font-size: var(--titre-section);
+    font-size: var(--titre-bloc);
+    line-height: 1.2;
   }
   .outil-limites ul {
     display: grid;
@@ -133,15 +139,21 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
     }
   }
   @media (min-width: 64rem) {
+    .outil-zone-section {
+      padding-top: var(--espace-10);
+    }
     .outil-zone {
       grid-template-columns: minmax(0, 7fr) minmax(280px, 5fr);
       gap: var(--espace-16);
     }
-    .outil-local {
+    .outil-zone-large { grid-template-columns: minmax(0, 1fr); }
+    .outil-zone-large .outil-cadre { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espace-16); }
+  }
+  /* La colonne porte la mention et toutes les limites : elle ne colle que si l'écran la tient. */
+  @media (min-width: 64rem) and (min-height: 56rem) {
+    .outil-zone:not(.outil-zone-large) .outil-cadre {
       position: sticky;
       top: calc(var(--nav-h) + 32px);
     }
-    .outil-zone-large { grid-template-columns: minmax(0, 1fr); }
-    .outil-zone-large .outil-local { position: static; }
   }
 </style>
