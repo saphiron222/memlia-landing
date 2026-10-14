@@ -403,16 +403,10 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(3);
 
     const graph = await graphFrom(page);
-    expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList', 'FAQPage']);
+    // Pas de FAQPage : Google ne montre plus ce résultat depuis le 07/05/2026 (D6 rouverte le 14/10).
+    expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual(['WebPage', 'WebApplication', 'BreadcrumbList']);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebPage').headline).toBe(outil.h1);
     expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(outil.h1);
-    // Le JSON-LD FAQPage reprend mot pour mot les questions et les réponses rendues (D6).
-    const faq = graph.find((node: { '@type': string }) => node['@type'] === 'FAQPage');
-    const rendu = await page.locator('[data-tool-section="faq"] details').evaluateAll((items) => items.map((item) => ({
-      question: item.querySelector('summary')?.textContent?.trim(),
-      reponse: item.querySelector('p')?.textContent?.trim(),
-    })));
-    expect(faq.mainEntity.map((q: { name: string; acceptedAnswer: { text: string } }) => ({ question: q.name, reponse: q.acceptedAnswer.text }))).toEqual(rendu);
   }
 });
 
@@ -834,7 +828,7 @@ test('témoin : noindex, CSP, quatre surfaces et liens sortants concordants', as
 
   const graph = await graphFrom(page);
   expect(graph.map((node: { '@type': string }) => node['@type'])).toEqual([
-    'WebPage', 'WebApplication', 'BreadcrumbList', 'FAQPage',
+    'WebPage', 'WebApplication', 'BreadcrumbList',
   ]);
   expect(graph.find((node: { '@type': string }) => node['@type'] === 'WebApplication').name).toBe(H1_TEMOIN);
 

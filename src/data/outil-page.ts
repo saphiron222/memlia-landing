@@ -1,9 +1,9 @@
 import type { OutilCategory, OutilDefinition } from '@/data/outils';
 
 /*
- * Textes propres au gabarit des outils (épure du 14/10/2026, OUTILS-EPURE-PLAN.md). Le rendu de la
- * FAQ et son JSON-LD `FAQPage` lisent le même tableau : la question affichée et la question
- * déclarée ne peuvent pas diverger.
+ * Textes propres au gabarit des outils (épure du 14/10/2026, OUTILS-EPURE-PLAN.md). Pas de JSON-LD
+ * `FAQPage` : Google ne montre plus ce résultat enrichi depuis le 07/05/2026 et la même FAQ se
+ * répète sur toutes les pages (décision de Kevin du 14/10, D6 rouverte).
  */
 
 export const OUTIL_GRATUIT = 'Gratuit, sans compte.';
@@ -66,18 +66,4 @@ const QUESTIONS_OUTIL: readonly QuestionOutil[] = [
 
 export function questionsOutil(): readonly QuestionOutil[] {
   return QUESTIONS_OUTIL;
-}
-
-export function faqPageNode(url: string, langue: string, questions: readonly QuestionOutil[]) {
-  return {
-    '@type': 'FAQPage',
-    '@id': `${url}#faq`,
-    url,
-    inLanguage: langue,
-    mainEntity: questions.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.reponse },
-    })),
-  };
 }

@@ -8,7 +8,7 @@ import OutilSuite from '@/components/sections/OutilSuite.astro';
 import OutilZone from '@/components/sections/OutilZone.astro';
 import { SITE } from '@/data/site.mjs';
 import { OUTILS_HUB_PATH, outilPath, type OutilDefinition } from '@/data/outils';
-import { OUTIL_GRATUIT, faqPageNode, questionsOutil, titreAppel, titreSource } from '@/data/outil-page';
+import { OUTIL_GRATUIT, questionsOutil, titreAppel, titreSource } from '@/data/outil-page';
 
 interface Props { outil: OutilDefinition }
 const { outil } = Astro.props;
@@ -41,7 +41,6 @@ const graph = {
         { '@type': 'ListItem', position: 3, name: outil.h1, item: url },
       ],
     },
-    faqPageNode(url, SITE.langue, questions),
   ],
 };
 ---

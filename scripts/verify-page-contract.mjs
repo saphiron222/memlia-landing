@@ -289,7 +289,7 @@ export function expectedSchema(route, rubriques = BLOG_RUBRIQUES) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
   if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
   if (route === '/integrations') return ['CollectionPage', 'ItemList'];
-  if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList', 'FAQPage'];
+  if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   if (rubriques.some(({ chemin }) => chemin === route) || /^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];
   if (isBlogArticle(route, rubriques)) return ['BlogPosting', 'BreadcrumbList'];

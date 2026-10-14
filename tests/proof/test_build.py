@@ -550,7 +550,7 @@ class BuildProof(unittest.TestCase):
         self.assertIn('/outils-comptables-gratuits/*', headers)
         self.assertIn("connect-src 'none'", headers)
         graph = jsonld(path)[0]['@graph']
-        self.assertEqual([node['@type'] for node in graph], ['WebPage', 'WebApplication', 'BreadcrumbList', 'FAQPage'])
+        self.assertEqual([node['@type'] for node in graph], ['WebPage', 'WebApplication', 'BreadcrumbList'])
         self.assertNotIn('SoftwareApplication', path.read_text())
 
     def test_outils_disponibles_ont_trois_liens_entrants_contextuels(self):
