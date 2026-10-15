@@ -6,7 +6,7 @@ const { robot } = Astro.props;
 ---
 <div class="routine-demo" data-robot-demo={robot.id}>
   <div class="routine-demo-tete"><p class="routine-demo-label">Dossier fictif</p><p>{robot.demonstration.dossier}</p></div>
-  <div class="routine-demo-table" role="region" aria-label={`Quatre cas fictifs du robot ${robot.nom}`} tabindex="0">
+  <div class="routine-demo-table" data-table-scroll role="region" aria-label={`Quatre cas fictifs du robot ${robot.nom}`} tabindex="0">
     <table>
       <caption>Ce que la règle produit dans quatre situations</caption>
       <thead><tr><th scope="col">Cas joué</th><th scope="col">Sortie obtenue</th><th scope="col">Décision</th></tr></thead>

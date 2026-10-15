@@ -21,14 +21,14 @@ const ROUTES = [
   '/',
   '/commissaires-aux-comptes',
   '/automatisation-cabinet-comptable',
-  '/automatisation/rapprochement-bancaire',
-  '/automatisation/factures-fournisseurs',
+  '/automatisation/cfe',
+  '/automatisation/suivi-urssaf',
   '/methode',
   '/garanties',
   '/a-propos',
   '/contact',
   '/integrations',
-  '/integrations/rapprochement-bancaire-sage',
+  '/agents-ia/paie-social',
   '/outils-comptables-gratuits',
   // Les pages outils n'ont plus de cartes depuis l'épure du 14/10/2026 (la suite est une ligne de
   // liens) ; la bibliothèque et le hub gardent la couverture des cartes.
@@ -202,14 +202,15 @@ for (const largeur of LARGEURS) {
       test(`${route} : un seul dessin, grilles sans carte étirée ni orpheline, contrastes`, async ({ page }) => {
         await page.setViewportSize({ width: largeur, height: 900 });
         await page.emulateMedia({ reducedMotion: 'reduce' });
-        await page.goto(route);
+        expect((await page.goto(route))?.status(), route).toBe(200);
+        await expect(page.locator('main h1')).toHaveCount(1);
         await page.evaluate(() => document.fonts.ready);
         await page.mouse.move(0, 0);
         const m: Mesure = await mesurer(page);
         const ref = m.reference;
 
         // Un seul dessin : chaque carte, titre, texte et pastille a la signature de la carte témoin.
-        expect(m.cartes.length + m.catalogue.length + m.cellules.length, 'la page porte des cartes ou une bande').toBeGreaterThan(0);
+        expect(m.cartes.length + m.catalogue.length + m.cellules.length + await page.locator('main .liens,main .parcours-cartes,main .editorial-points,main form').count(), 'composition visible dans une page existante').toBeGreaterThan(0);
         for (const carte of m.cartes) expect.soft(carte, 'carte').toBe(ref.carte);
         // Variante catalogue validée avec les robots : même coque, bandeau bord à bord et corps rembourré de 24 px.
         for(const carte of m.catalogue){expect.soft(carte.signature,'coque catalogue').toBe(ref.carte.split(' | ').slice(0,-2).join(' | '));expect.soft(carte.marges,'bandeau bord à bord').toBe('0px | 0px');expect.soft(carte.corps,'marges du corps catalogue').toBe('24px | 24px');}
@@ -318,11 +319,10 @@ test('listes et cartes témoins : rangées selon le nombre, de 1 à 9 éléments
 /** Cartes cliquables : la carte entière mène au lien, avec le même survol et le même focus. */
 const CLIQUABLES: [string, string][] = [
   ['/', '/automatisation-cabinet-comptable'],
-  ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet'],
-  ['/integrations', '/integrations/rapprochement-bancaire-sage'],
+  ['/commissaires-aux-comptes', '/agents-ia'],
+  ['/automatisation-cabinet-comptable', '/automatisation/cfe'],
   ['/outils-comptables-gratuits', '/outils-comptables-gratuits/bibliotheque-prompts-comptables'],
-  // Une carte d'agent menant à une page déjà construite (Salomé, la paie) : les fiches viennent aux tâches 6 et 9.
-  ['/agents-ia', '/automatisation/paie'],
+  ['/agents-ia', '/agents-ia/paie-social'],
 ];
 for (const [route, cible] of CLIQUABLES) {
   test(`${route} : carte cliquable en entier, survol et focus du site`, async ({ page }) => {

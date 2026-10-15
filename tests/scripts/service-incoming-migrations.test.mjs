@@ -29,6 +29,17 @@ function fixture() {
     mkdirSync(dirname(join(root, path)), { recursive: true });
     cpSync(join(REPO, path), join(root, path));
   }
+  // Scénario historique isolé : les données publiques actuelles ont retiré ces services.
+  // Réactiver seulement ce témoin dans le dossier éphémère garde tous les mutants du garde
+  // de migration exécutables, sans changer une recette, un sceau ou une route du vrai dépôt.
+  replace(root, DATA, 'servicesLies: []',
+    "servicesLies: ['saisie-comptable', 'factures-fournisseurs', 'rapprochement-bancaire', 'notes-de-frais', 'facture-electronique']");
+  replace(root, SERVICE, 'status: a-valider', 'status: publie');
+  const recipe = json(root, RECIPE);
+  for (const link of recipe.incomingLinks.filter(item => item.url !== '/methode')) {
+    writeFileSync(join(root, link.sourcePath),
+      `<main><a href="${recipe.path}">${link.anchor}</a></main>\n`);
+  }
   return root;
 }
 

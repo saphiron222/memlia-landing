@@ -1,27 +1,18 @@
-import { test, expect } from '@playwright/test';
-
-const path = '/automatisation/registres-obligations';
-const title = 'Automatisation du suivi des registres et obligations en cabinet comptable';
-
-test('registres : contrat public, preuve et limites du jeu', async ({ page }) => {
-  await page.setExtraHTTPHeaders({ 'Cache-Control': 'no-cache' });
-  const response = await page.goto(path);
-  expect(response?.status()).toBe(200);
-  await expect(page.locator('h1')).toHaveText(title);
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${path}`);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', title);
-  await expect(page.locator('meta[name="robots"]')).not.toHaveAttribute('content', /noindex/);
-  await expect(page.locator('[data-proof="v2/44-service-registres-obligations"] img')).toHaveCount(1);
-  await expect(page.locator('[data-service-sections]')).toContainText('sans connexion aux registres');
-  await expect(page.locator('[data-service-sections]')).toContainText('distinct de la tenue d’un registre légal');
-  await expect(page.locator('footer a[href="/automatisation-cabinet-comptable"]')).toHaveCount(1);
+import {test,expect} from '@playwright/test';
+import {AGENTS,ficheDe} from '../../src/data/specialistes';
+const path='/agents-ia/juridique-fiscal';const fiche=ficheDe(AGENTS.find(a=>a.slug==='juridique-fiscal')!);
+test('registres : tâche de Grégoire, démonstration et limites',async({page})=>{
+ expect((await page.goto(path))?.status()).toBe(200);
+ await expect(page.locator('main h1')).toHaveText(fiche.h1);
+ await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',`https://memlia.fr${path}`);
+ await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',fiche.h1);
+ await expect(page.locator('#tache-registres-obligations-10')).toContainText(/registre|obligation/i);
+ await expect(page.locator('[data-agent-rejeu] tbody tr')).toHaveCount(4);
+ expect(await page.locator('[data-agent-rejeu] [data-issue="Arrêt"]').count()).toBeGreaterThanOrEqual(1);
+ await expect(page.locator('#regle')).toContainText(/validation/i);
+ await expect(page.locator('#regle')).toContainText(/cabinet/i);
 });
-
-for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`registres : largeur ${width} sans débordement`, async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto(path);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  });
-}
+for(const width of [320,375,768,1024,1440,1920])test(`registres : largeur ${width} sans débordement`,async({page})=>{
+ await page.emulateMedia({reducedMotion:'reduce'});await page.setViewportSize({width,height:900});expect((await page.goto(path))?.status()).toBe(200);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});

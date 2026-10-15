@@ -8,8 +8,8 @@ Kevin valide `docs/strategy/pricing-2026-10-15/RECOMMANDATION.md` et `agents-ind
 - [x] Terminer les rails FAQ et Dans vos outils : limites de section, panneaux hauts et repli mobile.
 - [x] Terminer le hub et le gabarit : figurines, cartes courtes, formulaire immédiat, détails secondaires repliés.
 - [x] Simplifier le ROI à partir des prix validés, puis les outils denses ; conserver règles, sources et fonctions.
-- [ ] Tester calculs, imports/exports, absence de réseau, clavier, mobile, grand écran, mouvement réduit, SEO et liens.
-- [ ] Revoir, pousser la branche et livrer une prévisualisation. Aucun déploiement de production ni fusion.
+- [x] Tester calculs, imports/exports, absence de réseau, clavier, mobile, grand écran, mouvement réduit, SEO et liens.
+- [x] Revoir, pousser la branche et livrer une prévisualisation. Aucun déploiement de production ni fusion.
 
 ## Direction
 
@@ -27,4 +27,4 @@ Claude : `free-tools`, `cro`, `copywriting`, `copy-editing`, `frontend-design-di
 
 Conserver les calculs et leurs cas limites. Les confirmations CAC indispensables restent explicites. Tests ciblés et régénération sur le Mac ; compilation complète en CI, conformément aux consignes du dépôt.
 
-Décisions et inventaire : [DECISIONS.md](./DECISIONS.md). La recette finale reste en cours.
+Décisions et inventaire : [DECISIONS.md](./DECISIONS.md). Recette et preuves : [RECETTE.md](./RECETTE.md). La vérification complète sur le SHA exact reste consultable dans les contrôles de la PR ; aucune fusion ne fait partie de cette livraison.

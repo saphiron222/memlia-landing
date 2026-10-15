@@ -1,3 +1,6 @@
+import { createHash } from 'node:crypto';
+import { MIGRATION_CATALOGUES } from '../../src/data/migrations-catalogues.mjs';
+import { FICHES, ficheDe } from '../../src/data/specialistes.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -26,12 +29,20 @@ test('registres : preuve dédiée fonctionnelle sans cartouche promotionnel', ()
   assert.doesNotMatch(html, /Memlia|logo|partenariat|data-brand/);
   assert.ok(existsSync(new URL('../../docs/design/registres-obligations-proof/content-contract.json', import.meta.url)));
 });
-test('registres : trois liens contextuels exacts et frontière de formalités', () => {
+test('registres : archive conservée, tâche de Grégoire et frontière de formalités', () => {
   const recipe = JSON.parse(read('commercial/recettes/registres-obligations/recette.json'));
-  for (const link of recipe.incomingLinks) {
-    const source = read(link.sourcePath);
-    assert.ok(source.includes(`[${link.anchor}](${recipe.path})`) || source.includes(`href="${recipe.path}">${link.anchor}</a>`));
-  }
+  const migration = MIGRATION_CATALOGUES.routes.find(row => row.from === recipe.path);
+  assert.ok(migration, 'retrait documenté de cette route exacte');
+  assert.equal(migration.archive.sha256, createHash('sha256').update(read(migration.archive.path)).digest('hex'), 'recette archivée inchangée');
+  const seal = JSON.parse(read(`commercial/services/${recipe.slug}/preuves/scellement.json`));
+  assert.equal(seal.kind, 'service-depublication-scellee');
+  assert.equal(seal.files.recipe.sha256, migration.archive.sha256, 'sceau du retrait lié à la recette');
+  const agent = FICHES.find(item => item.slug === 'juridique-fiscal');
+  assert.equal(agent?.publie, true);
+  const index = ficheDe(agent).taches.findIndex(item => item.famille === recipe.family);
+  assert.ok(index >= 0, 'la tâche historique est couverte dans la fiche publiée');
+  assert.equal(migration.to, `/agents-ia/${agent.slug}#tache-${recipe.family}-${index + 1}`);
+  assert.ok(!agent.servicesLies.includes(recipe.slug), 'aucun lien de retour vers la route retirée');
   const body = read('commercial/recettes/registres-obligations/corps.md');
   assert.match(body, /distinct de la tenue d’un registre légal/);
   assert.match(body, /sans connexion aux registres/);

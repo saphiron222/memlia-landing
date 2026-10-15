@@ -2,6 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import fs f
 import {SCENES} from '../../src/data/scenes-figurines.ts';
 const manifest=JSON.parse(fs.readFileSync('docs/qa/coherence-figurines/production-images.json'));
 const baseline=JSON.parse(fs.readFileSync('docs/qa/coherence-figurines/baseline-pages.json'));
+const migrations=new Map(JSON.parse(fs.readFileSync('config/migration-catalogues.json')).routes.map(r=>[r.from,r.to]));
 const pageFor=route=>parse(fs.readFileSync(path.join('dist',route==='/'?'index.html':route.slice(1)+'.html'),'utf8'));
 const walk=(n,fn)=>{fn(n);for(const c of n.childNodes??[])walk(c,fn)};
 const attrs=n=>Object.fromEntries((n.attrs??[]).map(a=>[a.name,a.value]));
@@ -20,7 +21,8 @@ test('les six pages gardent leurs liens contextuels et leurs ancres utiles',()=>
  for(const base of baseline.pages){const doc=pageFor(base.route);const ids=new Set(),links=new Set();walk(doc,n=>{const a=attrs(n);if(a.id)ids.add(a.id);if(a.href)links.add(a.href)});
   // Décision A : vidéos retirées. Kevin retire aussi ce paragraphe précis le 15/10 à 14:20.
   const videosRetirees=new Set(['/media/r9/explainer-hero-45s.mp4','/media/cac-r4/explainer-hero-45s.mp4']);
-  for(const href of base.hrefs.filter(href=>!videosRetirees.has(href)&&!(base.route==='/methode'&&href==='/automatisation/facture-electronique')))assert.ok(links.has(href)||href==='/methode#cadrer'&&links.has('/agents-ia'),`${base.route} lien perdu : ${href}`);
+  for(const href of base.hrefs.filter(href=>!videosRetirees.has(href)&&!(base.route==='/methode'&&href==='/automatisation/facture-electronique'))){const destination=migrations.get(href)??href;assert.ok(links.has(destination)||href==='/methode#cadrer'&&links.has('/agents-ia'),`${base.route} parcours perdu : ${href} → ${destination}`);}
+  for(const href of links)assert.ok(!migrations.has(href),`${base.route} doit lier directement la destination actuelle : ${href}`);
   for(const id of base.ids.filter(id=>id!=='hero-video-description'))assert.ok(ids.has(id),`${base.route} ancre perdue : ${id}`);
  }
 });
@@ -30,7 +32,7 @@ test('une scène propre, aucun ancien cadre, des métadonnées complètes pour c
  const og=metas.find(m=>m.property==='og:image').content;assert.equal(og,`https://memlia.fr/social/illustrations/figurines/${id}-1200.webp.jpg`);const social=await sharp(path.join('dist',new URL(og).pathname)).metadata();assert.equal(social.width,1200);assert.equal(social.height,630);
  }
 });
-test('les guides conservent leur coque et les pages éditoriales choisissent leur nouvelle coque',()=>{
- assert.match(fs.readFileSync('src/pages/integrations/[slug].astro','utf8'),/import PageCommerciale/);
+test('les anciens guides restent retirés et les pages éditoriales partagent leur coque figurines',()=>{
+ for(const [from] of migrations)if(from.startsWith('/integrations/'))assert.ok(!fs.existsSync(path.join('dist',from.slice(1)+'.html')),`${from} ne redevient pas une page concurrente`);
  for(const name of ['methode','a-propos','garanties','contact'])assert.match(fs.readFileSync(`src/pages/${name}.astro`,'utf8'),/import PageEditoriale/);
 });

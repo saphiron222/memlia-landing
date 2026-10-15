@@ -8,7 +8,7 @@ export const routes = [
   ...['calculateur-marge-commerciale', 'calculateur-amortissement-comptable', 'generateur-charte-ia-cabinet', 'calculateur-date-echeance-facture', 'verificateur-fec-local', 'verificateur-prompt-ia', 'modele-rapprochement-bancaire-excel-gratuit', 'generateur-prompt-expert-comptable', 'diagnostic-maturite-ia-cabinet'].map(slug => `/outils-comptables-gratuits/${slug}`),
 ];
 const blocks = readFileSync(new URL('../../public/_headers', import.meta.url), 'utf8').trim().split(/\n\s*\n/).map(block => block.split('\n'));
-const cspFor = route => blocks.find(([path]) => path === (route === '/contact' ? route : '/outils-comptables-gratuits'))[1].split(': ').slice(1).join(': ');
+const cspFor = route => blocks.find(([path]) => path === (route === '/contact' || route === '/outils-comptables-gratuits' ? route : '/outils-comptables-gratuits/*'))[1].split(': ').slice(1).join(': ');
 
 test('surfaces locales : filtre de route, GET/HEAD complets, CSP propre et scripts utiles conservés', async () => {
   const previous = globalThis.HTMLRewriter;
@@ -39,7 +39,15 @@ test('surfaces locales : filtre de route, GET/HEAD complets, CSP propre et scrip
         });
         assert.deepEqual(removed, beacons, route);
         assert.equal(response.status, 200);
-        assert.equal(response.headers.get('Content-Security-Policy'), cspFor(route), route);
+        const deliveredCsp = response.headers.get('Content-Security-Policy');
+        assert.equal(deliveredCsp, cspFor(route), route);
+        if (route === '/contact') {
+          assert.match(deliveredCsp, /connect-src 'self' https:\/\/challenges\.cloudflare\.com;/);
+          assert.match(deliveredCsp, /form-action 'self';/);
+        } else {
+          assert.match(deliveredCsp, /connect-src 'none';/);
+          assert.match(deliveredCsp, /form-action 'none';/);
+        }
         assert.match(response.headers.get('Cache-Control'), /no-transform/);
         for (const header of ['ETag', 'Last-Modified', 'Content-Length']) assert.equal(response.headers.get(header), null);
         assert.equal(await response.text(), method === 'GET' ? 'full html' : '');
