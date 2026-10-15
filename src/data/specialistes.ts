@@ -129,7 +129,12 @@ export interface Fiche {
   /** `Service.serviceType` du JSON-LD. */
   serviceType: string;
   eeat: PageEeat;
-  /** Image sociale : le recadrage de la démonstration ou de la frontière, rendu par le pipeline des preuves. */
+  /**
+   * Image sociale : le recadrage 1200 × 630 de la démonstration, rendu par le pipeline des preuves
+   * (`scripts/render-agents-proofs.mjs`, cadre `data-og-only`). Contrat : `url` est **absolue**, sur `https://memlia.fr/`
+   * (`Service.image` du JSON-LD, `og:image`) ; `specialistes-controle.ts` refuse une URL relative, d'un autre hôte ou
+   * un `alt` vide, et `render-agents-proofs.mjs` refuse une URL qui n'est pas celle du cadre rendu pour la fiche.
+   */
   image: { url: string; alt: string };
   taches: readonly Tache[];
   aussi: readonly FamilleAussi[];

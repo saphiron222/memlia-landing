@@ -40,11 +40,12 @@ function ficheFictive(agent) {
     requete: 'ia comptabilité', h1: 'Titre fictif', titreOnglet: 'Onglet fictif', descriptionLead: 'Début fictif.', description: 'Début fictif. Suite.',
     chapeau: texte('chapeau'), serviceType: 'Préparation fictive',
     eeat: { auteur: 'kevin', datePublication: '2026-10-15', dateModification: '2026-10-15', sources: [] },
-    image: { url: '/og/agents-ia/comptabilite.jpg', alt: texte('alt') },
+    image: { url: 'https://memlia.fr/proofs/v2/og/99-fiche-fictive.webp', alt: texte('alt') },
     taches: agent.familles.filter((id) => !aussi.includes(id)).map((famille, i) => ({ geste: texte(`geste ${i}`), prepare: texte(`prépare ${i}`), famille })),
     aussi: aussi.map((famille) => ({ famille, texte: texte(famille) })),
     livrables: [1, 2, 3].map((n) => ({ titre: texte(`livrable ${n}`), texte: texte(n) })),
-    frontiere: [[texte('seul'), texte('validation'), texte('humain')]],
+    // La première ligne est la frontière en bref de la carte : le hub la montre comme « sa première ligne ».
+    frontiere: [[...agent.frontiereEnBref], [texte('seul'), texte('validation'), texte('humain')]],
     arrets: [texte('arrêt')],
     neJamaisSansVous: [{ envoi: texte('envoi'), validation: texte('validation') }],
     avecSans: [1, 2, 3, 4].map((n) => ({ sans: texte(`sans ${n}`), avec: texte(`avec ${n}`) })),
@@ -74,10 +75,14 @@ test('les données réelles des douze agents passent tous les recoupements', (t)
 });
 
 test('R19 : publiée veut dire « page de destination construite » ; les filtres comptent les douze cartes, publiées ou non', () => {
-  assert.deepEqual(AGENTS.filter(({ publie }) => publie).map(({ slug }) => slug), ['paie-social', 'missions-audit', 'informatique-outils']);
-  assert.ok(AGENTS.filter(({ publie }) => publie).every(({ destination }) => destination.type === 'page'), 'seules les pages existantes sont construites à ce jour');
-  // Spec §0 : Production et conseil 5, Relation client 3, Vie du cabinet 4. Le total vaut 12 alors que 3 agents seulement
-  // sont publiés : un filtre sur `publie` rendrait 2 / 0 / 1.
+  // L'invariant, et non la liste du jour (revue de la tâche 2) : une carte qui mène à une page existante est publiée,
+  // puisque sa page l'est déjà ; une fiche publiée porte son contenu. Les fiches passent à `true` une à une (6, puis 9).
+  const versPage = AGENTS.filter(({ destination }) => destination.type === 'page');
+  assert.ok(versPage.length > 0, 'des cartes mènent à une page existante');
+  assert.deepEqual(versPage.filter(({ publie }) => publie !== true).map(({ slug }) => slug), [], 'carte vers une page existante non publiée');
+  assert.deepEqual(FICHES.filter(({ publie, fiche }) => publie === true && !fiche).map(({ slug }) => slug), [], 'fiche publiée sans contenu');
+  // Spec §0 : Production et conseil 5, Relation client 3, Vie du cabinet 4. Le total vaut 12 quel que soit le nombre
+  // d'agents publiés : un filtre sur `publie` rendrait un compte qui bouge à chaque fiche construite.
   assert.deepEqual(comptesParGroupe(), { 'production-conseil': 5, 'relation-client': 3, 'vie-cabinet': 4 });
   assert.equal(Object.values(comptesParGroupe()).reduce((total, n) => total + n, 0), AGENTS.length);
 });
@@ -139,6 +144,24 @@ test('témoins de fiche : une fiche complète passe, chaque écart d’un seul c
   fiche((f) => { f.livrables[2].texte = ' '; }, /livrable incomplet/u);
   fiche((f) => { f.neJamaisSansVous = []; }, /« Ce qui ne part jamais sans vous » vide/u);
   fiche((f) => { f.h1 = ''; }, /fiche : h1 vide/u);
+  // Image sociale (contrat de `ficheGraph` et du contrat de page) : URL absolue sur https://memlia.fr, alt rédigé.
+  fiche((f) => { f.image.url = '/proofs/v2/og/50-fiche-comptabilite.webp'; }, /fiche : image sociale/u);
+  fiche((f) => { f.image.url = 'http://memlia.fr/proofs/v2/og/50-fiche-comptabilite.webp'; }, /fiche : image sociale/u);
+  fiche((f) => { f.image.url = 'https://example.com/proofs/v2/og/50-fiche-comptabilite.webp'; }, /fiche : image sociale/u);
+  fiche((f) => { f.image.alt = ' '; }, /fiche : image sociale/u);
+  // Le hub promet « sa première ligne » : la frontière en bref de la carte est la première ligne de la fiche.
+  fiche((f) => { f.frontiere = [f.frontiere[1], f.frontiere[0]]; }, /fiche : la frontière en bref n’est pas la première ligne/u);
+  fiche((f) => { f.frontiere[0] = [f.frontiere[0][0], f.frontiere[0][1], 'Une autre cellule']; }, /fiche : la frontière en bref n’est pas la première ligne/u);
+});
+
+test('les fiches écrites : la frontière en bref de chaque carte est la première ligne de sa fiche, mot pour mot', () => {
+  const ecrites = AGENTS.filter(({ fiche }) => fiche);
+  assert.ok(ecrites.length > 0, 'au moins une fiche écrite (Comptabilité, tâche 6)');
+  for (const agent of ecrites) assert.deepEqual([...agent.fiche.frontiere[0]], [...agent.frontiereEnBref], agent.slug);
+});
+
+test('R19 : une carte vers une page existante non publiée rougit', () => {
+  rougit((a) => { de(a, 'informatique-outils').publie = false; }, /informatique-outils : carte vers une page existante non publiée/u);
 });
 
 test('témoins de démonstration : trois cas, une issue inventée, aucun Arrêt, un Arrêt sans motif, un dossier qui ne se dit pas fictif', () => {

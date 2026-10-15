@@ -20,6 +20,12 @@
       "reason": "Page de collection : les médias visibles identifient les articles liés et restent leurs preuves propres ; ajouter une illustration décorative ne prouverait rien sur la rubrique."
     },
     {
+      "route": "/agents-ia/comptabilite",
+      "clauses": [2],
+      "date": "2026-10-15",
+      "reason": "Fiche d’agent IA (annexe du hub, E4) : sa preuve propre est le rejeu de sa démonstration, un tableau HTML accessible rendu au build depuis les données ; une image le doublerait sans rien prouver de plus. Son recadrage 1200 × 630 n’est que l’image sociale (série agents-ia, data-og-only)."
+    },
+    {
       "route": "/integrations",
       "clauses": [2],
       "date": "2026-09-20",

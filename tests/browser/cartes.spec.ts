@@ -35,6 +35,8 @@ const ROUTES = [
   '/outils-comptables-gratuits/bibliotheque-prompts-comptables',
   // L'annuaire des agents IA : douze cartes au dessin commun, bandeau teinté et avatar posés dedans (tâche 4).
   '/agents-ia',
+  // La fiche pilote (tâche 6) : bande des livrables, bande des étapes, cartes des agents voisins.
+  '/agents-ia/comptabilite',
 ];
 /** Le blog garde son propre dessin (Kevin, 07/10/2026 : « les blogs pas besoin de toucher »). */
 const BLOG = [

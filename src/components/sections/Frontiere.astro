@@ -1,0 +1,124 @@
+---
+import Insecable from '@/components/Insecable.astro';
+import type { LigneFrontiere } from '@/data/specialistes';
+
+/**
+ * La frontière en trois colonnes d'une règle écrite (charte §2 bis, 1) : ce qui se prépare seul, ce qui attend une
+ * validation, ce qui reste humain. Copie paramétrée de `FrontiereCac.astro`, qui reste intacte (épinglée par les
+ * tests de l'accueil CAC) : ce doublon de forme est signalé, pas refactoré (annexe §2).
+ *
+ * Elle se lit en un tableau ; sous 48 rem, chaque ligne s'empile et chaque cellule porte, au-dessus d'elle, le nom de
+ * sa colonne (`data-label`), sans défilement horizontal. `sombre` : posée dans le panneau de « La règle écrite ».
+ */
+interface Props {
+  colonnes: readonly [string, string, string];
+  lignes: readonly LigneFrontiere[];
+  legende: string;
+  variante?: 'clair' | 'sombre';
+}
+const { colonnes, lignes, legende, variante = 'clair' } = Astro.props;
+---
+
+<div class:list={['agent-frontiere', `agent-frontiere-${variante}`]} data-agent-frontiere>
+  <table>
+    <caption class="sr-only">{legende}</caption>
+    <thead>
+      <tr>{colonnes.map((colonne) => <th scope="col">{colonne}</th>)}</tr>
+    </thead>
+    <tbody>
+      {lignes.map((ligne) => (
+        <tr>{ligne.map((cellule, i) => <td data-label={colonnes[i]}><span class="agent-frontiere-texte"><Insecable texte={cellule} /></span></td>)}</tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* Deux variantes, mêmes mesures : claire sur la feuille, sombre dans le panneau d'encre. Les couleurs de la
+     variante sombre se dérivent des jetons (encre, crème) : aucun hex local. */
+  .agent-frontiere {
+    --frontiere-fond: var(--surface-elevee);
+    --frontiere-tete: var(--surface-page);
+    --frontiere-bord: var(--ligne);
+    --frontiere-filet: var(--ligne-douce);
+    --frontiere-titre: var(--texte-fort);
+    --frontiere-texte: var(--texte-2);
+    min-width: 0;
+    border: 1px solid var(--frontiere-bord);
+    border-radius: var(--r-boite);
+    background: var(--frontiere-fond);
+    overflow: hidden;
+  }
+  .agent-frontiere-sombre {
+    --frontiere-fond: color-mix(in srgb, var(--creme) 5%, var(--encre));
+    --frontiere-tete: color-mix(in srgb, var(--creme) 10%, var(--encre));
+    --frontiere-bord: color-mix(in srgb, var(--creme) 20%, var(--encre));
+    --frontiere-filet: color-mix(in srgb, var(--creme) 13%, var(--encre));
+    --frontiere-titre: var(--creme);
+    --frontiere-texte: color-mix(in srgb, var(--creme) 80%, var(--encre));
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  th,
+  td {
+    padding: var(--espace-4);
+    border-bottom: 1px solid var(--frontiere-filet);
+    text-align: left;
+    vertical-align: top;
+  }
+  th + th,
+  td + td {
+    border-left: 1px solid var(--frontiere-filet);
+  }
+  thead th {
+    background: var(--frontiere-tete);
+    color: var(--frontiere-titre);
+    font-size: var(--t-sm);
+    font-weight: 600;
+  }
+  td {
+    color: var(--frontiere-texte);
+  }
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+  @media (max-width: 47.99rem) {
+    thead {
+      display: none;
+    }
+    table,
+    tbody,
+    tr,
+    td {
+      display: block;
+      width: 100%;
+    }
+    tr {
+      padding: var(--espace-4);
+      border-bottom: 1px solid var(--frontiere-bord);
+    }
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+    td,
+    td + td {
+      padding: 0;
+      border: 0;
+    }
+    /* Le nom de la colonne au-dessus de sa valeur : à côté, la valeur n'avait plus que 150 px à 375 px de large. */
+    td + td {
+      margin-top: var(--espace-3);
+    }
+    td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 2px;
+      color: var(--frontiere-titre);
+      font-size: var(--t-sm);
+      font-weight: 600;
+    }
+  }
+</style>

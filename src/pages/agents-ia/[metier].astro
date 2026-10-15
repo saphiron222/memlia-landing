@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Agent from '@/layouts/Agent.astro';
+import { FICHES, ficheDe, type SpecialisteAFiche } from '@/data/specialistes';
+import { exigerAgents } from '@/data/specialistes-controle';
+import { isBlogEntryVisible } from '@/data/blog-visibility.mjs';
+import { SITE } from '@/data/site.mjs';
+
+/**
+ * Les fiches `/agents-ia/<métier>` (spec §2) : une route par agent publié dont la carte mène à une fiche (R19 :
+ * `publie` = la page est construite). Avant toute route, les données de tous les agents passent leurs recoupements
+ * contre les pages service de la collection (`exigerAgents`, fail-closed) : une fiche qui lie un service inconnu ou
+ * non publié, ou qui oublie une famille, arrête le build.
+ */
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  exigerAgents(services.map((entree) => ({ slug: entree.id, famille: entree.data.family, statut: entree.data.status })));
+  return FICHES.filter((agent) => agent.publie === true).map((agent) => ({ params: { metier: agent.slug }, props: { agent } }));
+}
+
+interface Props {
+  agent: SpecialisteAFiche;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+
+// La page qui détaille chaque tâche : la page service publiée de sa famille, sinon l'article publié le plus récent de
+// sa famille. Le maillage complet (guides, outils gratuits) vient à la tâche 11.
+const services = (await getCollection('services')).filter((entree) => entree.data.status === 'publie');
+const articles = (await getCollection('blog', isBlogEntryVisible))
+  .filter((entree) => entree.data.brouillon === false)
+  .sort((a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime() || a.id.localeCompare(b.id));
+const liens: Record<string, { href: string }> = {};
+for (const id of agent.familles) {
+  const service = services.find((entree) => entree.data.family === id);
+  const article = articles.find((entree) => entree.data.famille === id);
+  if (service) liens[id] = { href: `/automatisation/${service.id}` };
+  else if (article) liens[id] = { href: `/blog/${article.id}` };
+}
+
+// La page où la règle de la démonstration est publiée : une page service liée (contrôlé par `exigerAgents`).
+let regle: { href: string; libelle: string } | undefined;
+if (fiche.pageDeLaRegle) {
+  const slug = fiche.pageDeLaRegle.slice('/automatisation/'.length);
+  const service = services.find((entree) => entree.id === slug);
+  if (!service) throw new Error(`/agents-ia/${agent.slug} : page de la règle « ${fiche.pageDeLaRegle} » absente des services publiés`);
+  regle = { href: fiche.pageDeLaRegle, libelle: service.data.tabTitle.replace(new RegExp(`\\s*\\|\\s*${SITE.nom}$`, 'u'), '') };
+}
+---
+
+<Agent agent={agent} liens={liens} regle={regle} />

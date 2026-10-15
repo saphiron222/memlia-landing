@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/agents-ia-proof/index.html",
-      "sha256": "c964cf82d0f926748120727a9ef5ec97b5f9e48c99a31abc090041eddd295c08"
+      "sha256": "da2be7337e91d32d4fc653e45c4103903c18a8c29899cb6455e9aa7dcdf01677"
     },
     {
       "path": "docs/design/agents-ia-proof/styles.css",
-      "sha256": "857ccfa13617dd584654c15f6977bc4280340e48a6942328c652111bb9a50f41"
+      "sha256": "81cea6cb2dd4a1c3055c83cee38e41d7ac675613018db293a12126a7d73cac44"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,11 +15,11 @@
     },
     {
       "path": "docs/design/agents-ia-proof/content-contract.json",
-      "sha256": "ca35530fce104356ee39a29005587080cbf024c29cf49fecf2b3b79ffbcc29e6"
+      "sha256": "74630bc138d341a2dce7112b9899dd71008a22f5726a633d297deb277fad003f"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
-      "sha256": "64842c215a37a08b89dcc9dab9bda561bdbe40860a7832537149dd7e8abdc831"
+      "sha256": "3439a7f220b2f3fad759ed6944daaab0f743fa95fade3ed6f40fc46af4cd6437"
     }
   ],
   "browser": "153.0.8010.12",
@@ -35,6 +35,12 @@
       "target": "public/proofs/v2/og/49-hero-agents-ia.webp",
       "bytes": 21636,
       "sha256": "d3337c55df117ac26c449a61a27a87cf799eb56d9f0e1e9ca7e23959574b12c8"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-comptabilite",
+      "target": "public/proofs/v2/og/50-fiche-comptabilite.webp",
+      "bytes": 48704,
+      "sha256": "723ca0b26c3b13a965dd7a8fbac299ee56aad13e610181a265e8ee752b0c3ab3"
     }
   ]
 }

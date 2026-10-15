@@ -1,0 +1,61 @@
+---
+import Insecable from '@/components/Insecable.astro';
+import type { Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Comment <prénom> travaille » (spec §2, section 5) : trois étapes, deux puces chacune. Une suite ordonnée sans
+ * maquette : la bande à trois cellules du hub (« Construit sur votre cabinet »), numérotée par son surtitre.
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const { etapes } = gabaritDe(agent);
+---
+
+<section class="pv" aria-labelledby="etapes-titre" data-agent-etapes>
+  <div class="tete">
+    <h2 id="etapes-titre"><Insecable texte={etapes.titre} /></h2>
+  </div>
+  <div class="bande">
+    <ol class="cartes">
+      {etapes.etapes.map((etape, i) => (
+        <li class="cellule">
+          <p class="surtitre">Étape {i + 1}</p>
+          <h3 class="carte-titre"><Insecable texte={etape.titre} /></h3>
+          <ul class="agent-puces">
+            {etape.puces.map((puce) => <li><Insecable texte={puce} /></li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .agent-puces {
+    display: grid;
+    gap: var(--espace-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .agent-puces > li {
+    position: relative;
+    padding-left: var(--espace-5);
+    max-width: 62ch;
+    color: var(--texte-2);
+    text-wrap: pretty;
+  }
+  .agent-puces > li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent-appui);
+  }
+</style>

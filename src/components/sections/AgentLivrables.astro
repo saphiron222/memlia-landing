@@ -1,0 +1,95 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import { ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Ce que <prénom> vous remet » (spec §2, section 4) : une bande de trois cellules non cliquables (système de page
+ * § 4). Les deux premières sont des exemples fictifs, dits comme tels, chacun avec la pastille « En attente de votre
+ * validation » ; la troisième, tracée en pointillés, dit ce qui vient une fois les accès du cabinet branchés.
+ *
+ * La cellule garde le dessin de global.css (test_cartes.py) : le pointillé est un cadre intérieur, `agent-a-venir`.
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+const { livrables } = gabaritDe(agent);
+const [premier, second, aVenir] = fiche.livrables;
+---
+
+<section class="pv" id={livrables.ancre} aria-labelledby={`${livrables.ancre}-titre`} data-agent-livrables>
+  <div class="tete">
+    <h2 id={`${livrables.ancre}-titre`}><Insecable texte={livrables.titre} /></h2>
+    <p><Insecable texte={livrables.texte} /></p>
+  </div>
+  <div class="bande">
+    <ul class="cartes">
+      {[premier, second].map((livrable) => (
+        <li class="cellule">
+          <p class="carte-meta agent-livrable-meta"><Picto nom="fictif" taille={16} />{livrables.exemple}</p>
+          <h3 class="carte-titre"><Insecable texte={livrable.titre} /></h3>
+          <p class="carte-texte"><Insecable texte={livrable.texte} /></p>
+          <p class="agent-attente">{livrables.attente}</p>
+        </li>
+      ))}
+      <li class="cellule">
+        <div class="agent-a-venir">
+          <p class="carte-meta agent-livrable-meta"><Picto nom="panneau" taille={16} />{livrables.aVenir}</p>
+          <h3 class="carte-titre"><Insecable texte={aVenir.titre} /></h3>
+          <p class="carte-texte"><Insecable texte={aVenir.texte} /></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Le libellé de la cellule : « Exemple fictif » ou « Dès que vos accès sont branchés », pictogramme en tête. */
+  .agent-livrable-meta {
+    align-items: center;
+  }
+  .agent-livrable-meta :global(svg) {
+    flex: none;
+  }
+  /* La pastille d'attente : la couleur du signal « à valider », en bas de la cellule, alignée d'une cellule à l'autre. */
+  .agent-attente {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 6px;
+    margin: auto 0 0;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--ocre-voile);
+    color: var(--ocre);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .agent-attente::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  /* Ce qui vient avec les accès : un cadre en pointillés dans la cellule, qui en remplit la hauteur. */
+  .agent-a-venir {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--carte-ecart);
+    margin: calc(-1 * var(--espace-2));
+    padding: var(--espace-4);
+    border: 1.5px dashed var(--ligne-forte);
+    border-radius: var(--r-boite);
+  }
+  @media (forced-colors: active) {
+    .agent-attente {
+      border: 1px solid CanvasText;
+    }
+  }
+</style>

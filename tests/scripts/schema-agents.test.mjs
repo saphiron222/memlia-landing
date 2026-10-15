@@ -844,7 +844,8 @@ test('ficheGraph : lève pour un agent sans fiche écrite, pour une carte qui m�
   const { ficheGraph } = await agents();
   const { AGENTS } = await donnees();
   const comptabilite = AGENTS.find((a) => a.slug === 'comptabilite');
-  assert.throws(() => ficheGraph(comptabilite), /pas encore écrit/);
+  // Fixture : une fiche retirée, quel que soit l'état des données (Comptabilité est écrite depuis la tâche 6).
+  assert.throws(() => ficheGraph({ ...comptabilite, fiche: undefined }), /pas encore écrit/);
   assert.throws(() => ficheGraph(avecFiche(AGENTS.find((a) => a.slug === 'paie-social'))), /pas à une fiche/);
   assert.throws(() => ficheGraph(avecFiche(comptabilite, { serviceType: undefined })), /serviceType/);
   assert.throws(() => ficheGraph(avecFiche(comptabilite, { image: { url: '/proofs/x.webp', alt: 'x' } })), /image/i);
@@ -868,6 +869,23 @@ test('ficheGraph : n’altère pas l’agent reçu', async () => {
   const agent = structuredClone(avecFiche(AGENTS.find((a) => a.slug === 'comptabilite')));
   ficheGraph(agent);
   assert.deepEqual(agent, structuredClone(avecFiche(AGENTS.find((a) => a.slug === 'comptabilite'))));
+});
+
+test('ficheGraph : chaque fiche publiée assemble son graphe depuis ses propres données, image sociale absolue', async () => {
+  const { ficheGraph } = await agents();
+  const { FICHES } = await donnees();
+  const publiees = FICHES.filter((agent) => agent.publie === true);
+  assert.ok(publiees.length > 0, 'au moins une fiche publiée (Comptabilité, tâche 6)');
+  for (const agent of publiees) {
+    const graphe = ficheGraph(agent);
+    const service = unique(graphe, 'Service');
+    assert.equal(service.image, agent.fiche.image.url, agent.slug);
+    assert.ok(service.image.startsWith(`${SITE.url}/`), `${agent.slug} : image sur ${SITE.url}`);
+    assert.ok(service.alternateName.includes(agent.prenom), agent.slug);
+    assert.equal(unique(graphe, 'BreadcrumbList').itemListElement.length, 3, agent.slug);
+    assert.equal(dePuis(graphe, 'FAQPage').length, 0, `${agent.slug} : FAQPage écartée à la porte 2`);
+    assert.equal(unique(graphe, 'WebPage').headline, agent.fiche.h1, agent.slug);
+  }
 });
 
 /* ------------------------------------------------------------------------------------------------------------------ */

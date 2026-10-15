@@ -1,0 +1,141 @@
+---
+import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
+import AgentAvatar from '@/components/sections/AgentAvatar.astro';
+import AgentRejeu from '@/components/sections/AgentRejeu.astro';
+import Frontiere from '@/components/sections/Frontiere.astro';
+import { HUB, ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * Le héros partagé d'une fiche (système de page § 1 ; spec §2, sections 1 et 2). À gauche : le fil d'Ariane à trois
+ * niveaux, l'agent (avatar ou monogramme, puis « <prénom> · agent IA <métier> »), le H1 de la requête, le chapeau
+ * qui définit l'agent IA et finit sur la décision du cabinet, le bouton « Confier une première tâche » et l'ancre
+ * vers ce que l'agent remet. À droite dès 64 rem, dessous avant : le rejeu de sa démonstration ; sans démonstration,
+ * la frontière en trois colonnes. Aucun prix.
+ */
+interface Props {
+  agent: Specialiste;
+  /** La page où la règle de la démonstration est publiée, liée en pied du rejeu. */
+  regle?: { href: string; libelle: string };
+}
+const { agent, regle } = Astro.props;
+const fiche = ficheDe(agent);
+const g = gabaritDe(agent);
+---
+
+<section class="agent-heros" aria-labelledby="page-titre" data-agent-heros>
+  <nav class="ariane" aria-label="Fil d’Ariane">
+    <ol>
+      <li><a href="/">Accueil</a></li>
+      <li><a href={HUB.chemin}>{HUB.ariane}</a></li>
+      <li aria-current="page">{agent.libelle}</li>
+    </ol>
+  </nav>
+  <div class="agent-heros-grille">
+    <header class="agent-heros-copie">
+      <div class="agent-heros-agent">
+        <AgentAvatar agent={agent} taille="heros" prioritaire />
+        <p class="agent-heros-etiquette" data-agent-etiquette>{g.etiquette}</p>
+      </div>
+      <h1 id="page-titre"><Insecable texte={fiche.h1} /></h1>
+      <p class="agent-heros-chapeau" data-agent-chapeau>{fiche.chapeau}</p>
+      <div class="agent-heros-actions">
+        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <Button href={`#${g.livrables.ancre}`} variante="lien" picto="chevron">{g.ancreRemet}</Button>
+      </div>
+    </header>
+    <div class="agent-heros-media">
+      {agent.demonstration
+        ? <AgentRejeu demonstration={agent.demonstration} source={regle} />
+        : <Frontiere colonnes={g.regle.colonnes} lignes={fiche.frontiere} legende={g.regle.legende} />}
+    </div>
+  </div>
+</section>
+
+<style>
+  .agent-heros {
+    padding: 28px var(--marge-page) 0;
+  }
+  .ariane ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .ariane li + li::before {
+    content: '›';
+    margin-right: 6px;
+    color: var(--picto-repos);
+  }
+  .ariane a {
+    color: var(--texte-2);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ariane [aria-current] {
+    min-width: 0;
+    color: var(--texte);
+  }
+  .agent-heros-grille {
+    display: grid;
+    gap: var(--bloc-ecart);
+    align-items: start;
+    padding-top: var(--bloc-ecart);
+  }
+  .agent-heros-copie {
+    display: grid;
+    justify-items: start;
+    gap: 20px;
+    min-width: 0;
+  }
+  /* L’agent avant son titre : sa tuile au format du héros (--avatar-heros), puis l'étiquette en casse de phrase. */
+  .agent-heros-agent {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-4);
+  }
+  .agent-heros-etiquette {
+    margin: 0;
+    font-weight: 600;
+    color: var(--accent-texte);
+  }
+  .agent-heros-copie h1 {
+    max-width: 24ch;
+    font-size: var(--titre-page-partage);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  .agent-heros-chapeau {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--texte-2);
+    font-size: var(--t-lg);
+    line-height: 1.55;
+  }
+  .agent-heros-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 4px;
+  }
+  .agent-heros-media {
+    min-width: 0;
+  }
+  @media (min-width: 64rem) {
+    .agent-heros {
+      padding: 32px var(--marge-page-lg) 0;
+    }
+    .agent-heros-grille {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--rangee-gouttiere);
+      padding-top: 64px;
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
-import { AGENTS, GROUPES, HUB, cheminAgent, comptesParGroupe, type GroupeId, type Specialiste } from '../../src/data/specialistes';
+import { AGENTS, FICHES, GROUPES, HUB, cheminAgent, comptesParGroupe, type GroupeId, type Specialiste } from '../../src/data/specialistes';
+import { gabaritDe } from '../../src/data/specialistes/gabarit';
 import { POLES } from '../../src/data/familles';
 
 /**
@@ -363,3 +364,211 @@ test.describe('le hub avec JavaScript', () => {
     }
   });
 });
+
+/**
+ * Les fiches `/agents-ia/<métier>` (tâche 6 ; spec §2 et §2.1). Une boucle sur les fiches publiées : la tâche 6 n'en
+ * publie qu'une (Comptabilité), la tâche 9 les neuf, sans retoucher ce fichier. Tout ce qui est attendu se lit dans les
+ * données de l'agent et dans le gabarit composé (`gabaritDe`), jamais recopié ici.
+ */
+const FICHES_PUBLIEES = FICHES.filter((agent) => agent.publie === true);
+
+test('au moins une fiche est publiée : les tests des fiches ne tournent pas à vide', () => {
+  expect(FICHES_PUBLIEES.length).toBeGreaterThan(0);
+});
+
+for (const agent of FICHES_PUBLIEES) {
+  const fiche = agent.fiche!;
+  const g = gabaritDe(agent);
+  const chemin = cheminAgent(agent);
+
+  test.describe(`la fiche ${chemin} sans JavaScript`, () => {
+    test.use({ javaScriptEnabled: false });
+
+    test('un seul h1, celui des données, repris par og:title et le headline ; titre, description et fil à trois niveaux', async ({ page }) => {
+      await page.goto(chemin);
+      await expect(page.locator('h1')).toHaveCount(1);
+      await expect(page.locator('h1')).toHaveText(fiche.h1);
+      await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', fiche.h1);
+      await expect(page).toHaveTitle(fiche.titreOnglet);
+      await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', fiche.description);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${chemin}`);
+      const fil = page.locator('main nav[aria-label="Fil d’Ariane"] li');
+      await expect(fil).toHaveText(['Accueil', HUB.ariane, agent.libelle]);
+      await expect(fil.nth(1).locator('a')).toHaveAttribute('href', HUB.chemin);
+      await expect(fil.nth(2)).toHaveAttribute('aria-current', 'page');
+      const blocs = await page.locator('script[type="application/ld+json"]').allTextContents();
+      expect(blocs).toHaveLength(1);
+      const graphe = JSON.parse(blocs[0])['@graph'] as Record<string, any>[];
+      const deType = (type: string) => graphe.filter((n) => [].concat(n['@type']).includes(type as never));
+      expect(deType('Service')).toHaveLength(1);
+      expect(deType('Service')[0].alternateName).toContain(agent.prenom);
+      expect(deType('FAQPage')).toHaveLength(0);
+      expect(deType('BreadcrumbList')).toHaveLength(1);
+      expect(deType('BreadcrumbList')[0].itemListElement).toHaveLength(3);
+      expect(deType('WebPage')[0].headline).toBe(fiche.h1);
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social${new URL(fiche.image.url).pathname}.jpg`);
+    });
+
+    test('le menu marque « Par métier » et son groupe : la fiche est dans la section des agents IA', async ({ page }) => {
+      await page.goto(chemin);
+      await expect(page.locator('.nav-centre a[href="/agents-ia"]')).toHaveAttribute('aria-current', 'true');
+      await expect(page.locator('[aria-controls="sous-menu-automatise"]')).toHaveAttribute('aria-current', 'true');
+    });
+
+    test('le héros : l’étiquette de l’agent, le chapeau, le bouton vers /contact et l’ancre vers ce qu’il remet ; aucun prix', async ({ page }) => {
+      await page.goto(chemin);
+      const heros = page.locator('[data-agent-heros]');
+      await expect(heros.locator('[data-agent-etiquette]')).toHaveText(g.etiquette);
+      await expect(heros.locator('[data-agent-chapeau]')).toHaveText(fiche.chapeau);
+      await expect(heros.locator('a.btn-principal[href="/contact"]')).toHaveText(/Confier une première tâche/);
+      await expect(heros.locator(`a[href="#${g.livrables.ancre}"]`)).toHaveText(g.ancreRemet);
+      await expect(page.locator(`#${g.livrables.ancre}`)).toHaveCount(1);
+      const texte = (await page.locator('main').innerText()).replace(/\s+/g, ' ');
+      expect(texte, 'aucun montant').not.toMatch(/€|\d\s*euros?\b|\bEUR\b/i);
+    });
+
+    test('le rejeu : en-tête, dossier fictif, règle, tableau accessible, une puce par ligne, la ligne Arrêt barrée et son motif lisible', async ({ page }) => {
+      await page.goto(chemin);
+      const rejeu = page.locator('[data-agent-rejeu]');
+      await expect(rejeu).toHaveCount(1);
+      await expect(rejeu.locator('h2, h3').first()).toHaveText(g.rejeu.entete);
+      await expect(rejeu).toContainText(agent.demonstration.dossier);
+      await expect(rejeu).toContainText(agent.demonstration.regle);
+      await expect(rejeu.locator('table caption')).toHaveCount(1);
+      await expect(rejeu.locator('thead th')).toHaveText([...g.rejeu.colonnes]);
+      const lignes = rejeu.locator('tbody tr');
+      await expect(lignes).toHaveCount(agent.demonstration.cas.length);
+      for (const [i, unCas] of agent.demonstration.cas.entries()) {
+        const ligne = lignes.nth(i);
+        await expect(ligne).toHaveAttribute('data-issue', unCas.issue);
+        await expect(ligne.locator('th[scope="row"]')).toHaveText(unCas.cas);
+        await expect(ligne.locator('[data-issue-puce]')).toHaveText(unCas.issue);
+        const barres = ligne.locator('[data-barre]');
+        if (unCas.issue === 'Arrêt') {
+          const [avant, motif] = unCas.sortie.split(/(?=Motif\s:)/u);
+          await expect(barres, 'le cas et ce qui n’a pas été proposé sont barrés').toHaveCount(2);
+          for (const barre of await barres.all()) expect(await barre.evaluate((el) => getComputedStyle(el).textDecorationLine)).toContain('line-through');
+          await expect(barres.nth(1)).toHaveText(avant.trim());
+          const raison = ligne.locator('[data-motif]');
+          await expect(raison).toHaveText(motif.trim());
+          await expect(raison).toBeVisible();
+          // Un trait se propage aux descendants sans paraître dans leur style calculé : le motif et chacun de ses
+          // ancêtres jusqu'à la ligne doivent être sans trait.
+          const traits = await raison.evaluate((el) => {
+            const vus: string[] = [];
+            for (let n: Element | null = el; n && n.tagName !== 'TR'; n = n.parentElement) vus.push(getComputedStyle(n).textDecorationLine);
+            return vus;
+          });
+          expect(traits.filter((trait) => trait.includes('line-through')), 'le motif reste lisible, sans trait, lui ni ses ancêtres').toEqual([]);
+        } else {
+          await expect(barres, `${unCas.issue} : rien de barré`).toHaveCount(0);
+          await expect(ligne.locator('td').first()).toHaveText(unCas.sortie);
+        }
+      }
+      // Aucun minuteur, compteur ni champ simulé ; aucun script dans le rejeu (rendu au build).
+      await expect(rejeu.locator('input, textarea, select, button, script, progress, meter, time')).toHaveCount(0);
+      const source = rejeu.locator('a');
+      if (fiche.pageDeLaRegle) {
+        await expect(source).toHaveCount(1);
+        await expect(source).toHaveAttribute('href', fiche.pageDeLaRegle);
+      } else {
+        await expect(source).toHaveCount(0);
+      }
+    });
+
+    test('ce que l’agent remet : deux exemples fictifs en attente de validation, puis ce qui vient avec les accès', async ({ page }) => {
+      await page.goto(chemin);
+      const cellules = page.locator(`#${g.livrables.ancre} .cellule`);
+      await expect(cellules).toHaveCount(fiche.livrables.length);
+      for (const [i, livrable] of fiche.livrables.entries()) {
+        await expect(cellules.nth(i)).toContainText(livrable.titre);
+        await expect(cellules.nth(i)).toContainText(livrable.texte);
+        if (i < 2) {
+          await expect(cellules.nth(i)).toContainText(g.livrables.exemple);
+          await expect(cellules.nth(i)).toContainText(g.livrables.attente);
+        } else {
+          await expect(cellules.nth(i)).toContainText(g.livrables.aVenir);
+          await expect(cellules.nth(i)).not.toContainText(g.livrables.attente);
+        }
+      }
+    });
+
+    test('les tâches, la règle écrite, ce qui ne part jamais sans vous, avec ou sans, les voisins et les questions viennent des données', async ({ page }) => {
+      await page.goto(chemin);
+      const taches = page.locator('[data-agent-taches] .ligne');
+      await expect(taches).toHaveCount(fiche.taches.length);
+      for (const [i, tache] of fiche.taches.entries()) {
+        await expect(taches.nth(i).locator('dt')).toHaveText(tache.geste);
+        await expect(taches.nth(i).locator('dd')).toContainText(tache.prepare);
+      }
+      // Chaque page service liée à l'agent est atteinte depuis sa fiche, ancrée sur le geste.
+      for (const slug of agent.servicesLies) await expect(page.locator(`main a[href="/automatisation/${slug}"]`).first()).toBeVisible();
+      await expect(page.locator('[data-agent-outils] li')).toHaveText([...agent.logiciels]);
+      const regle = page.locator('[data-agent-regle]');
+      await expect(regle.locator('h2')).toHaveText(g.regle.titre);
+      await expect(regle.locator('table tbody tr')).toHaveCount(fiche.frontiere.length);
+      await expect(regle.locator('table tbody tr').first().locator('td')).toHaveText([...agent.frontiereEnBref]);
+      await expect(regle.locator('[data-agent-arrets] li')).toHaveText([...fiche.arrets]);
+      await expect(regle.locator('h3', { hasText: 'Ce qui ne part jamais sans vous' })).toHaveCount(1);
+      await expect(regle.locator('[data-agent-envois] li')).toHaveCount(fiche.neJamaisSansVous.length);
+      for (const [i, envoi] of fiche.neJamaisSansVous.entries()) {
+        await expect(regle.locator('[data-agent-envois] li').nth(i)).toContainText(envoi.envoi);
+        await expect(regle.locator('[data-agent-envois] li').nth(i)).toContainText(envoi.validation);
+      }
+      const avecSans = page.locator('[data-agent-avec-sans] tbody tr');
+      await expect(avecSans).toHaveCount(fiche.avecSans.length);
+      for (const [i, ligne] of fiche.avecSans.entries()) await expect(avecSans.nth(i).locator('td')).toHaveText([ligne.sans, ligne.avec]);
+      const voisins = page.locator('[data-agent-voisins] [data-carte-agent]');
+      await expect(voisins).toHaveCount(fiche.voisins.length);
+      for (const [i, voisin] of fiche.voisins.entries()) {
+        const autre = AGENTS.find((a) => a.slug === voisin.agent)!;
+        await expect(voisins.nth(i).locator('a')).toHaveAttribute('href', cheminAgent(autre));
+      }
+      await expect(page.locator('[data-agent-voisins]')).toContainText(g.voisins.phrase);
+      await expect(page.locator('[data-agent-voisins] a[href="/methode"]')).toHaveCount(1);
+      const questions = page.locator('[data-faq] details');
+      await expect(questions).toHaveCount(fiche.faq.questions.length);
+      for (const [i, q] of fiche.faq.questions.entries()) {
+        await expect(questions.nth(i).locator('summary')).toHaveText(q.question);
+        await expect(questions.nth(i)).toContainText(q.reponse);
+      }
+      await expect(page.locator('#faq-titre')).toHaveText(g.questions.titre);
+    });
+
+    test('par quelle tâche commencer : trois tâches vers /contact, chacune avec sa famille ; le bouton, la mention, tous les agents', async ({ page }) => {
+      await page.goto(chemin);
+      const depart = page.locator('[data-agent-depart]');
+      await expect(depart.locator('h2')).toHaveText(g.depart.titre);
+      const taches = depart.locator('a[data-tache]');
+      await expect(taches).toHaveCount(fiche.tachesDepart.length);
+      for (const [i, famille] of fiche.tachesDepart.entries()) {
+        await expect(taches.nth(i)).toHaveAttribute('data-tache', famille);
+        await expect(taches.nth(i)).toHaveAttribute('href', '/contact');
+      }
+      await expect(depart.locator('a.btn-principal[href="/contact"]')).toHaveCount(1);
+      await expect(depart).toContainText(g.depart.mention);
+      await expect(page.locator('main a[href="/agents-ia"]', { hasText: g.depart.tous })).toHaveCount(1);
+    });
+
+    for (const largeur of [375, 1440]) {
+      test(`à ${largeur} px, aucun défilement horizontal ; le rejeu et les tableaux tiennent dans la page`, async ({ page }) => {
+        await page.setViewportSize({ width: largeur, height: 900 });
+        await page.goto(chemin);
+        await expect(page.locator('h1')).toHaveText(fiche.h1);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+        const debords = await page.locator('main table').evaluateAll((tables) => tables.map((t) => t.getBoundingClientRect().right).filter((droite) => droite > innerWidth + 0.5));
+        expect(debords, 'tableau hors de la page').toEqual([]);
+      });
+    }
+
+    test('aucune capitale calculée dans la fiche', async ({ page }) => {
+      await page.goto(chemin);
+      await expect(page.locator('h1')).toHaveText(fiche.h1);
+      const fautes = await page.locator('main').evaluate((main) => [main, ...main.querySelectorAll('*')].flatMap((el) => {
+        const style = getComputedStyle(el);
+        return style.textTransform === 'uppercase' || /small-caps|unicase|titling-caps/.test(style.fontVariantCaps) ? [`${el.tagName.toLowerCase()}.${el.className}`] : [];
+      }));
+      expect(fautes).toEqual([]);
+    });
+  });
+}

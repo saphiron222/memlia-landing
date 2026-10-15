@@ -97,6 +97,29 @@ function erreursDeRendu(html, demonstration) {
   return erreurs;
 }
 
+/**
+ * Le marquage d'une démonstration rendue (tâche 6) : chaque ligne du tableau porte son issue (`data-issue`, dans l'ordre
+ * des données), et chaque ligne Arrêt garde « Motif : » dans son texte visible. Le trait qui barre la ligne est du CSS :
+ * il se mesure dans le navigateur (`tests/browser/agents-ia.spec.ts`), pas ici.
+ */
+function erreursDeMarquage(html, demonstration) {
+  const lignes = [];
+  const marcher = (n) => {
+    const issue = n.nodeName === 'tr' ? n.attrs?.find(({ name }) => name === 'data-issue')?.value : undefined;
+    if (issue !== undefined) lignes.push({ issue, texte: texteDe(n) });
+    for (const enfant of n.childNodes ?? []) marcher(enfant);
+  };
+  marcher(parse(html));
+  const erreurs = [];
+  const attendues = demonstration.cas.map(({ issue }) => issue);
+  const rendues = lignes.map(({ issue }) => issue);
+  if (JSON.stringify(rendues) !== JSON.stringify(attendues)) erreurs.push(`issues rendues « ${rendues.join(' / ') || 'aucune'} » au lieu de « ${attendues.join(' / ')} »`);
+  lignes.forEach(({ issue, texte }, i) => {
+    if (issue === 'Arrêt' && !texte.includes(normaliser('Motif :'))) erreurs.push(`ligne ${i + 1} (Arrêt) sans « Motif : » lisible`);
+  });
+  return erreurs;
+}
+
 const cas = (texte, sortie, issue) => ({ cas: texte, sortie, issue });
 const exemple = () => ({
   dossier: 'Dossier fictif : l’Atelier Loriot, SARL inventée.',
@@ -151,6 +174,23 @@ test('témoins du rendu : l’en-tête, une ligne manquante, une lettre changée
   // Le texte d'un script ou d'un commentaire n'est pas du texte rendu.
   const cache = page(demonstration).replace(/<table>[\s\S]*<\/table>/u, `<!-- ${JSON.stringify(demonstration)} --><script>const d = ${JSON.stringify(demonstration)};</script>`);
   assert.equal(erreursDeRendu(cache, demonstration).length, NOMBRE_DE_CAS);
+});
+
+test('témoins du marquage : chaque ligne porte son issue dans l’ordre, une ligne Arrêt sans motif ou une issue absente rougissent', () => {
+  const demonstration = exemple();
+  const ligne = (unCas, issue = unCas.issue, sortie = unCas.sortie) => `<tr${issue === null ? '' : ` data-issue="${issue}"`}><td>${unCas.cas}</td><td>${sortie}</td><td>${unCas.issue}</td></tr>`;
+  const marquee = (lignes) => `<table><tbody>${lignes.join('')}</tbody></table>`;
+  assert.deepEqual(erreursDeMarquage(marquee(demonstration.cas.map((c) => ligne(c))), demonstration), []);
+  // Motif posé après une espace insécable : il se lit toujours.
+  const insecable = String.fromCharCode(0xa0);
+  const avecInsecable = demonstration.cas.map((c) => ligne(c, c.issue, c.sortie.replace(' : ', `${insecable}: `)));
+  assert.ok(avecInsecable.join('').includes(`Motif${insecable}:`), 'le témoin porte bien une espace insécable');
+  assert.deepEqual(erreursDeMarquage(marquee(avecInsecable), demonstration), []);
+  assert.equal(erreursDeMarquage(marquee(demonstration.cas.map((c, i) => ligne(c, i === 0 ? null : c.issue))), demonstration).length, 1, 'une ligne sans issue');
+  assert.equal(erreursDeMarquage(marquee(demonstration.cas.map((c, i) => ligne(c, i === 1 ? 'Préparé' : c.issue))), demonstration).length, 1, 'une issue changée');
+  assert.equal(erreursDeMarquage(marquee([...demonstration.cas].reverse().map((c) => ligne(c))), demonstration).length, 1, 'l’ordre des données');
+  assert.deepEqual(erreursDeMarquage(marquee(demonstration.cas.map((c, i) => ligne(c, c.issue, i === 2 ? 'Aucune écriture proposée' : c.sortie))), demonstration), ['ligne 3 (Arrêt) sans « Motif : » lisible']);
+  assert.equal(erreursDeMarquage('<p>Aucun tableau</p>', demonstration).length, 1);
 });
 
 test('I10 : les douze démonstrations des données ont quatre cas, une issue permise chacun, un Arrêt motivé, un dossier et une règle', async (t) => {
@@ -211,7 +251,8 @@ test('I10 : chaque fiche publiée rend « Rejoué sur un dossier fictif » et le
   const erreurs = publiees.flatMap((agent) => {
     const chemin = join(DIST, 'agents-ia', `${agent.slug}.html`);
     if (!existsSync(chemin)) return [`${agent.slug} : ${chemin.slice(RACINE.length)} absent du build`];
-    return erreursDeRendu(readFileSync(chemin, 'utf8'), agent.demonstration).map((erreur) => `${agent.slug} : ${erreur}`);
+    const html = readFileSync(chemin, 'utf8');
+    return [...erreursDeRendu(html, agent.demonstration), ...erreursDeMarquage(html, agent.demonstration)].map((erreur) => `${agent.slug} : ${erreur}`);
   });
   assert.deepEqual(erreurs, []);
 });

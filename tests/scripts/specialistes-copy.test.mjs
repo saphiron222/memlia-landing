@@ -116,3 +116,35 @@ test('I8 : aucune donnée des agents n’écrit « module » ni « complément E
   assert.ok(textes.length > 100, `${textes.length} chaînes lues : les données sont vides`);
   assert.deepEqual(textes.filter(([, texte]) => MOTS_DE_PRODUIT.test(normaliser(texte))).map(([chemin, texte]) => `${chemin} : ${texte}`), []);
 });
+
+/*
+ * Le gabarit des fiches (tâche 6) : les titres, intertitres et mentions communs aux neuf fiches vivent dans
+ * `src/data/specialistes/gabarit.ts`, hors d'`AGENTS`. Le garde ne s'y propage pas seul : il les lit ici, pour chaque
+ * fiche publiée, une fois composés avec le prénom, le métier et les voisins de l'agent.
+ */
+const gabarit = () => import('../../src/data/specialistes/gabarit.ts');
+
+test('I8 : le gabarit composé de chaque fiche publiée n’écrit ni expression interdite, ni « module », ni « complément Excel »', async () => {
+  const { FICHES } = await specialistes();
+  const { gabaritDe } = await gabarit();
+  const publiees = FICHES.filter((agent) => agent.publie === true);
+  assert.ok(publiees.length > 0, 'au moins une fiche publiée (Comptabilité, tâche 6)');
+  const textes = publiees.flatMap((agent) => chaines(gabaritDe(agent), `gabaritDe(${agent.slug})`));
+  assert.ok(textes.length > 30 * publiees.length, `${textes.length} chaînes lues : le gabarit est vide`);
+  const interditsTrouves = textes.flatMap(([chemin, texte]) => trouverInterdits(texte, interdits).map((expression) => `${chemin} : « ${expression} » dans « ${texte} »`));
+  assert.deepEqual(interditsTrouves, []);
+  assert.deepEqual(textes.filter(([, texte]) => MOTS_DE_PRODUIT.test(normaliser(texte))).map(([chemin, texte]) => `${chemin} : ${texte}`), []);
+});
+
+test('le gabarit nomme l’agent par son prénom, jamais par un pronom genré, et élide devant une voyelle', async () => {
+  const { AGENTS } = await specialistes();
+  const { elider, metierEnPhrase } = await gabarit();
+  assert.equal(elider('que', 'Balthazar'), 'que Balthazar');
+  assert.equal(elider('que', 'Émile'), 'qu’Émile');
+  assert.equal(elider('de', 'Honoré'), 'd’Honoré');
+  assert.equal(elider('de', 'Octavie'), 'd’Octavie');
+  assert.equal(elider('à', 'Aude'), 'à Aude');
+  assert.equal(metierEnPhrase('Comptabilité'), 'comptabilité');
+  assert.equal(metierEnPhrase('RH du cabinet'), 'RH du cabinet');
+  assert.ok(AGENTS.every((agent) => typeof agent.prenom === 'string'));
+});
