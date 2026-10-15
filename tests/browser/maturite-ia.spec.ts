@@ -109,6 +109,7 @@ test('sans JavaScript : questions, méthode et limites accessibles', async ({ br
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   await page.goto(baseURL! + route);
   await expect(page.locator('fieldset')).toHaveCount(5); await expect(page.locator('select')).toHaveCount(15);
+  await page.getByText('Méthode du diagnostic',{exact:true}).click();
   await expect(page.locator('#diagnostic-method')).toBeVisible();
   await context.close();
 });

@@ -33,7 +33,7 @@
     </div>
   </section>
 </form>
-<section class="scope">
+<details data-tool-help><summary>Comprendre les contrôles FEC</summary><section class="scope">
   <h2>Ce que nous contrôlons, ce qui reste à vérifier</h2>
   <p>Nous comparons l’en-tête et son ordre au profil choisi, puis la largeur des lignes, la présence des champs requis, le calendrier des dates et la syntaxe des décimaux. Les lignes et colonnes du rapport correspondent au fichier source, en comptant l’en-tête comme ligne 1. Aucun montant n’est converti en nombre flottant, et aucun fichier n’est corrigé.</p>
   <p>Auxiliaire, lettrage et devise peuvent rester vides s’ils ne sont pas utilisés. Une ligne trop courte reste signalée sans interprétation de ses valeurs. Un en-tête déplacé arrête les contrôles des valeurs : nous n’attribuons pas une date à la mauvaise colonne.</p>
@@ -42,7 +42,7 @@
   <p>L’exemple fourni contient trois lignes de données. Ligne 4, colonne EcritureDate : 20260230 est une date impossible. Le rapport indique la règle « date » ; le cabinet retourne à son logiciel et décide de la suite, sans modifier l’original ici.</p>
   <h2>Compléter avec Test Compta Demat</h2>
   <p>La DGFiP propose <a href="https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec">Test Compta Demat</a> pour examiner la structure des FEC. Notre outil n’est ni ce logiciel officiel, ni une certification. Les règles s’appuient sur le profil de l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027804775">article A.47 A-1</a> et les précisions de format du <a href="https://bofip.impots.gouv.fr/bofip/9028-PGP.html">BOFiP</a>, sans décider du traitement fiscal.</p>
-</section>
+</section></details>
 <script>
   import { exampleFec, MAX_BYTES, reportCsv, type analyzeFec } from '@/lib/fec-local.mjs';
   import FecWorker from '@/lib/fec-worker.mjs?worker';

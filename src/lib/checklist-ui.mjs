@@ -18,19 +18,21 @@ export function initializeChecklist(WorkerClass){
   $('[data-cl-unknown]').replaceChildren(...(r?.unknown??[]).map(i=>node('li',i.label)));
   $('[data-cl-no-message]').hidden=!!r?.message;
  }
- function renderItems(){const list=$('[data-cl-items]');list.replaceChildren();
-  for(const item of session.items){const row=node('fieldset');row.dataset.clItem=item.id;row.append(node('legend',`Pièce ${item.id}`));
+ function renderItems(){const list=$('[data-cl-items]');list.replaceChildren(); $('[aria-labelledby=cl-list-title]').hidden=!session.items.length;$('[aria-labelledby=cl-output-title]').hidden=!session.items.length;
+  for(const item of session.items){const row=node('fieldset');row.dataset.clItem=item.id;row.append(node('legend',item.label));const extra=node('details');extra.dataset.outilOptions='';extra.append(node('summary','Modifier cette pièce'));
    for(const [key,label,options] of [['label','Libellé',null],['family','Famille',m.FAMILIES],['state','État déclaré',m.STATES],['note','Note interne (non envoyée)',null]]){
     const wrap=node('label',label),input=node(options?'select':key==='note'?'textarea':'input');input.id=`cl-${item.id}-${key}`;input.dataset.field=key;input.setAttribute('aria-describedby','cl-error');
     if(options)for(const [value,text] of Object.entries(options))input.append(new Option(text,value));else input.maxLength=key==='note'?2000:300;
-    input.value=item[key];input.oninput=()=>{capture();renderResult();};wrap.append(input);row.append(wrap);
+    input.value=item[key];input.oninput=()=>{if(key==='label')row.querySelector('legend').textContent=input.value;capture();renderResult();};wrap.append(input);(key==='state'?row:extra).append(wrap);
    }
-   const b=node('button',`Supprimer ${item.id}`);b.type='button';b.className='btn btn-contour';b.onclick=()=>{capture();session={...session,items:session.items.filter(i=>i.id!==item.id)};renderItems();renderResult();$('[data-cl-summary]').focus();status('Pièce supprimée ; demande et exports mis à jour.');};row.append(b);list.append(row);
+   const b=node('button',`Supprimer ${item.id}`);b.type='button';b.className='btn btn-contour';b.onclick=()=>{capture();session={...session,items:session.items.filter(i=>i.id!==item.id)};renderItems();renderResult();$('[data-cl-summary]').focus();status('Pièce supprimée ; demande et exports mis à jour.');};extra.append(b);row.append(extra);list.append(row);
   }
  }
- function load(s){session=s;for(const k of ['mode','period','deadline'])meta.elements[k].value=s[k];add.reset();renderItems();lock();renderResult();}
+ function load(s){session=s;$('[data-cl-template]').value=s.mode;for(const k of ['mode','period','deadline'])meta.elements[k].value=s[k];add.reset();renderItems();lock();renderResult();}
  function guard(fn){try{capture();m.validate(session);error('');fn();}catch(e){error(e.message);}}
- meta.oninput=()=>{capture();renderResult();};meta.onsubmit=e=>e.preventDefault();
+ meta.oninput=()=>{$('[data-cl-template]').value=meta.elements.mode.value;capture();renderResult();};
+ $('[data-cl-template]').onchange=()=>{meta.elements.mode.value=$('[data-cl-template]').value;capture();renderResult();};
+ $('[data-cl-start]').onclick=()=>guard(()=>{session=m.addFamilies(session,Object.keys(m.FAMILIES).filter(key=>key!=='libre'));renderItems();renderResult();$('#cl-list-title')?.focus();status('Choisissez l’état de chaque pièce.');});meta.onsubmit=e=>e.preventDefault();
  add.onsubmit=e=>{e.preventDefault();guard(()=>{session=m.addItem(session,Object.fromEntries(['family','label','state','note'].map(k=>[k,add.elements[k].value])));renderItems();renderResult();add.reset();status('Pièce ajoutée.');});};
  $('[data-cl-families]').onsubmit=e=>{e.preventDefault();guard(()=>{const selected=$$('[name="families"]:checked').map(el=>el.value);if(!selected.length)throw new Error('Choisissez au moins une famille de trame.');session=m.addFamilies(session,selected);renderItems();renderResult();status('Trame ajoutée : nouvelles pièces à clarifier, saisies existantes conservées.');});};
  $('[data-cl-demo]').onclick=()=>{if(hasContent()&&!confirm('Remplacer vos saisies par l’exemple fictif ? Exportez votre JSON avant remplacement.'))return;cancel();pending=null;load(m.demoSession());status('Quatre pièces fictives et quatre états.');};

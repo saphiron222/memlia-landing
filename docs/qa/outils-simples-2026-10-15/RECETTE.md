@@ -7,9 +7,9 @@ Branche `site/agents-robots-integrations`, [PR 270](https://github.com/saphiron2
 ## Livré
 
 - 21 outils conservés, six essentiels en premier choix ; filtres natifs, sans compte et sans dépendance JavaScript pour parcourir le hub.
-- Gabarit commun crème/vert et figurines existantes ; cartes, focus et typographie du site. Le formulaire réel arrive avant les explications et les réglages spécialisés restent repliés.
-- ROI court : offre, volume, coût horaire, calcul. Les temps sont un exemple fictif modifiable. Le budget récurrent, la mise en service et la première année restent distincts ; un coût inconnu reste à chiffrer et un résultat négatif reste négatif. Le comparateur détaillé reste accessible.
-- Quotas des agents accompagnés de profils approximatifs. Pour Balthazar, 5 000 crédits représentent environ 20 dossiers légers, 8 courants ou 3 chargés, pour les seuls travaux décrits. Ce ne sont ni des dossiers comptables complets ni des consommations mesurées.
+- Gabarit commun crème/vert et figurines existantes ; cartes, focus et typographie du site. L’aide et les sources sont repliées. Chaque outil commence par six contrôles de saisie au maximum ; relance courte à quatre données et confirmation, checklist à une trame puis un état par pièce. Bibliothèque : rail de cartes et lecteur du seul prompt complet.
+- Dernière correction de Kevin : ROI neutre à trois valeurs (heures économisées, coût horaire, budget mensuel), sans tarif Memlia ni comparateur. Mise en service facultative, solde négatif conservé, budget nul sans ROI inventé ; estimation de capacité distinguée de la trésorerie.
+- Dans la documentation tarifaire, quotas des agents accompagnés de profils approximatifs. Pour Balthazar, 5 000 crédits représentent environ 20 dossiers légers, 8 courants ou 3 chargés, pour les seuls travaux décrits. Ce ne sont ni des dossiers comptables complets ni des consommations mesurées.
 - FAQ et panneaux Dans vos outils suivent leur section sur grand écran. Les panneaux hauts laissent lire leur bas ; mobile en flux normal, sans barre de défilement imbriquée.
 - Titres, URL et intentions des outils conservés. 22 images sociales originales de composition, construites avec les figurines Memlia, dans `public/outils/social/` ; variantes JPEG du pipeline existant. Manifeste et empreintes : `social-manifest.json`.
 
@@ -31,7 +31,7 @@ Deux documents commerciaux font foi : [RECOMMANDATION.md](../../strategy/pricing
 - Chargement tardif des polices : le dernier élément du fil d’Ariane occupe une rangée stable sur mobile. Les 17 contrôles passent, CLS ≤ 0,1 et déplacement du chapeau ≤ 2 px, notamment à 320 px pour Salomé et CFE.
 - Lien éditorial conservé du hub robots vers la carte des tâches du cabinet ; les six sections restent inchangées. Contrôle du lien rendu à 375, 768 et 1 440 px réussi.
 - Prévisualisation distante : 25 contrôles réussis, dont les 21 fiches robots, les présélections de contact et les redirections. Copie préparée avec balise et en-tête `noindex, nofollow`, en conservant les protections. Les 95 HTML du paquet local concordent avec l’artefact construit et vérifié en CI.
-- Audit des 95 HTML : 6 563 liens internes, aucune destination ou ancre manquante. 87 pages dans les sitemaps ; index XML par type, dates synchronisées depuis le registre, anciennes routes et aperçus exclus. `llms.txt`, Markdown et `llms-full.txt` dérivés des pages publiées, avec contrôle de chaque lien et du contenu intégral.
+- Audit des 95 HTML : 5 824 liens internes, aucune destination ou ancre manquante. 87 pages dans les sitemaps ; index XML par type, dates synchronisées depuis le registre, anciennes routes et aperçus exclus. `llms.txt`, Markdown et `llms-full.txt` dérivés des pages publiées, avec contrôle de chaque lien et du contenu intégral.
 
 ## Performance et portée des mesures
 
@@ -42,3 +42,11 @@ Mesures Lighthouse locales sur le hub, le ROI, la bibliothèque, le FEC et le ba
 `references/` conserve les captures du hub et des 27 outils Outrank ainsi que les manipulations du ROI Outils-EC. Les captures de recette, journaux détaillés, Lighthouse et audits de liens sont dans `.qa/outils-simples/` du worktree ; ils ne sont pas des actifs publics du site.
 
 Compétences utilisées pour cette phase : exclusivement celles de l’installation Claude, dont free-tools, cro, copywriting, copy-editing, direction de design, accessibilité, seo-technical, seo-schema, seo-images, seo-sitemap, seo-content et seo-audit. L’audit global prévoit une revue spécialisée en parallèle ; les revues migrations, rédaction et livraison ont été effectuées. Aucun modèle d’image ni consommation API n’a été simulé.
+
+## Correction finale demandée après la première prévisualisation
+
+ROI neutre, carrousel de prompts et parcours courts relance/checklist ont fait l’objet d’une seconde revue indépendante : rédaction/UX, fonctions/sécurité et SEO/exports. Corrections testées : objet de relance conservé avant remplacement, titre de pièce actualisé sans perte de focus, ouverture des lecteurs par fragment et historique, conservation des douze prompts dans les exports Markdown. Seuls les textarea statiques marqués et en lecture seule de la bibliothèque sont sérialisés ; les saisies et autres routes restent exclues. Les exemples explicatifs propres aux fiches quittent aussi le texte copié.
+
+L’aide et les sources restent dans le HTML, repliées. La bibliothèque utilise des identifiants publics dans ses ancres, jamais la recherche ni le contenu saisi. Chromium peut relire le favicon statique après un changement d’ancre ; le garde n’autorise que ce GET exact, sans paramètres, et refuse tout autre appel. Les contrôles de réseau, de saisies et de stockage restent actifs. Les contrats navigateur ont été adaptés aux vrais parcours, sans diminuer les seuils de reflow ou les validations métier.
+
+Les contrôles ciblés de cette correction comprennent les 21 pages à 375/1 440 px, les 12 copies et exports de prompts, les calculs neutres, le parcours sans scripts, les cas de refus et de reprise. Les trois revues indépendantes sont PASS après correction. L’export final comprend 87 pages Markdown, les douze prompts complets et 95 HTML ; 5 824 liens internes vérifiés, sans destination ni ancre absente. La CI complète sur le commit exact reste l’autorité de livraison, consultable dans les contrôles de la PR.

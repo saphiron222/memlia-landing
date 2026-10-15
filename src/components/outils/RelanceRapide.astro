@@ -1,0 +1,48 @@
+<div class="relance-rapide" data-relance-rapide>
+ <form method="dialog" novalidate>
+  <div class="fields">
+   <label>Client<input name="client" maxlength="2000" required /></label>
+   <label>Référence de facture<input name="reference" maxlength="2000" required /></label>
+   <label>Solde restant (€)<input name="amount" inputmode="decimal" maxlength="18" required /></label>
+   <label>Date d’échéance<input name="dueDate" type="date" required /></label>
+  </div>
+  <label class="confirmation"><input name="confirmed" type="checkbox" />Le solde est à jour et la facture n’est pas contestée.</label>
+  <button class="btn btn-principal" type="submit">Préparer ma relance</button>
+  <p data-quick-error role="alert" hidden></p>
+ </form>
+ <section data-quick-output hidden>
+  <h2 tabindex="-1">Votre message à relire</h2>
+  <label>Objet<input data-quick-subject maxlength="10000" /></label>
+  <label>Message<textarea data-quick-body rows="11" maxlength="300000"></textarea></label>
+  <button class="btn btn-contour" type="button" data-quick-copy>Copier le message</button>
+  <p data-quick-status role="status"></p>
+ </section>
+</div>
+<script>
+ import {prepareReminders} from '@/lib/relance-facture.mjs';
+ const root=document.querySelector<HTMLElement>('[data-relance-rapide]');
+ if(root){
+  const form=root.querySelector<HTMLFormElement>('form')!,error=root.querySelector<HTMLElement>('[data-quick-error]')!,output=root.querySelector<HTMLElement>('[data-quick-output]')!;
+  const subject=root.querySelector<HTMLInputElement>('[data-quick-subject]')!,body=root.querySelector<HTMLTextAreaElement>('[data-quick-body]')!,status=root.querySelector<HTMLElement>('[data-quick-status]')!;
+  let generated='',generatedSubject='';
+  form.addEventListener('submit',event=>{
+   event.preventDefault();error.hidden=true;
+   const invalid=[...form.querySelectorAll<HTMLInputElement>('input[required]')].find(input=>!input.validity.valid);
+   if(invalid){invalid.focus();error.textContent='Complétez les quatre informations de la facture.';error.hidden=false;return;}
+   const data=new FormData(form);
+   if(!data.has('confirmed')){form.querySelector<HTMLInputElement>('[name=confirmed]')!.focus();error.textContent='Confirmez le solde et l’absence de litige avant de préparer la relance.';error.hidden=false;return;}
+   try{
+    const d=new Date(),today=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const report=prepareReminders([{clientKey:'saisie-unique',client:String(data.get('client')),reference:String(data.get('reference')),amount:String(data.get('amount')),payments:'0',credits:'0',dueDate:String(data.get('dueDate')),dispute:'non',currency:'EUR'}],{preparationDate:today,currency:'EUR',groupConfirmed:true,level:'first',signature:''});
+    if(!report.messages.length){error.textContent=report.invoices[0].reason;error.hidden=false;return;}
+    if((body.value!==generated||subject.value!==generatedSubject)&&!confirm('Remplacer votre message édité ? Copiez-le avant de continuer.'))return;
+    subject.value=generatedSubject=report.messages[0].subject;body.value=generated=report.messages[0].body;status.textContent='';output.hidden=false;output.querySelector<HTMLElement>('h2')!.focus();
+   }catch(e){error.textContent=e instanceof Error?e.message:'Vérifiez les données de la facture.';error.hidden=false;}
+  });
+  form.addEventListener('input',()=>{error.hidden=true;output.hidden=true;});
+  root.querySelector<HTMLButtonElement>('[data-quick-copy]')!.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(`Objet : ${subject.value}\n\n${body.value}`);status.textContent='Message copié. Aucun envoi.';}catch{body.focus();body.select();status.textContent='Texte sélectionné : utilisez votre raccourci de copie.';}});
+ }
+</script>
+<style>
+.relance-rapide,.relance-rapide form,.relance-rapide section,.fields{display:grid;gap:20px;min-width:0}.relance-rapide label{display:grid;gap:8px;font-weight:600;min-width:0}.relance-rapide input:not([type=checkbox]),.relance-rapide textarea{width:100%;min-width:0;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);background:var(--surface-feuille);font:inherit;color:var(--texte-fort)}.relance-rapide .confirmation{display:flex;align-items:start;gap:12px;font-size:var(--t-sm);font-weight:400}.confirmation input{width:20px;height:20px;flex-shrink:0;margin-top:3px}.relance-rapide button{justify-self:start}.relance-rapide h2{font-size:var(--titre-bloc)}.relance-rapide [hidden],.relance-rapide p:empty{display:none!important}.relance-rapide [role=alert]{border-left:3px solid var(--rouge);padding-left:12px}@media(min-width:48rem){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

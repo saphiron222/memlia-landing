@@ -110,7 +110,7 @@ test('toutes les amorces, choix configurables et effacement explicite', async ({
 });
 test('maillage, médias propres, canonical et sitemap', async ({ page }) => {
   for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/bibliotheque-prompts-comptables']) {
-    await page.goto(route); await ouvrirReglages(page); await rendreLienOutilVisible(page,ROUTE); await expect(page.locator(`main a[href="${ROUTE}"]`).first()).toBeVisible();
+    await page.goto(route); await ouvrirReglages(page); await rendreLienOutilVisible(page,ROUTE); await expect(page.locator(`main a[href="${ROUTE}"]`).filter({visible:true}).first()).toBeVisible();
   }
   const response = await page.goto(ROUTE); await ouvrirReglages(page); expect(response?.status()).toBe(200);
   await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);

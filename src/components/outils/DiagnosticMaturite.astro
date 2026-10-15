@@ -23,13 +23,13 @@ import { DIMENSIONS, OPTIONS } from '@/lib/maturite-ia.mjs';
     <div class="actions"><button type="button" data-edit>Revenir aux réponses</button><button type="button" data-copy>Copier le rapport</button><button type="button" data-export>Exporter en Markdown</button><button type="button" data-print>Imprimer</button></div>
     <label for="diagnostic-report">Rapport complet sélectionnable, identique à la copie et à l’export</label><textarea id="diagnostic-report" readonly rows="12"></textarea>
   </section>
-  <section aria-labelledby="diagnostic-method"><h3 id="diagnostic-method">Méthode Memlia déclarative</h3>
+  <details data-tool-help><summary>Méthode du diagnostic</summary><section aria-labelledby="diagnostic-method"><h3 id="diagnostic-method">Méthode Memlia déclarative</h3>
     <p>Cette rubrique originale de travail ne fournit pas de note globale. Une dimension est « Incomplet » dès qu’une réponse est inconnue ; « Formalisé » si les trois réponses le sont ; « À démarrer » si les trois sont non commencées ; « En essai » dans les autres cas connus.</p>
     <p>L’ordre de travail proposé est : données, validation, règle, mesure, usage. Nous retenons jusqu’à trois dimensions non formalisées et citons les réponses qui justifient chaque action. Une inconnue demande d’abord clarification. Nous complétons jusqu’à trois actions par le suivi des dimensions formalisées, sans doublon : exceptions de validation, relecture des règles puis comparaison des observations de mesure.</p>
     <p>La synthèse aide à décrire une prochaine tâche. Vous gardez la décision et la vérification des pratiques. <a href="/methode">Voir comment nous écrivons et éprouvons la règle d’une tâche.</a></p>
     <details><summary>Que faire si je ne connais pas une pratique ?</summary><p>Gardez « Je ne sais pas ». La dimension sera incomplète, sans être assimilée à une faible maturité. Clarifiez cette pratique avec l’équipe avant de décider.</p></details>
     <details><summary>Un état formalisé permet-il d’élargir les usages ?</summary><p>Pas à lui seul. Il décrit vos réponses, sans vérifier les documents ni les pratiques. Rejouez les exceptions et faites décider le cabinet.</p></details>
-  </section>
+  </section></details>
 </div>
 <script>
   import { DIMENSIONS, diagnose, reportMarkdown, STATES, answerLabel } from '@/lib/maturite-ia.mjs';

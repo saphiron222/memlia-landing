@@ -87,3 +87,11 @@ test('R2 : cartes liées et listes multiparagraphes conservent titres, libellés
   const continuation = tokens.find(token => token.type === 'inline' && token.content === 'Suite de la première étape.');
   assert.equal(continuation.level, 3);
 });
+
+test('bibliothèque : seul le prompt statique marqué, en lecture seule, rejoint le Markdown',()=>{
+ const url='https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables';
+ const html='<main><h1>Prompts</h1><textarea readonly data-public-prompt>## Consigne\nArrêter si une pièce manque.\n```texte```</textarea><textarea data-public-prompt>EDITION PRIVEE</textarea><textarea readonly>AUTRE CONTENU</textarea><input value="SAISIE" /></main>';
+ const md=pageMarkdown(html,url);assert.match(md,/## Consigne\nArrêter si une pièce manque/);assert.match(md,/````/);assert.doesNotMatch(md,/EDITION PRIVEE|AUTRE CONTENU|SAISIE/);
+ assert.doesNotMatch(pageMarkdown(html,'https://memlia.fr/outre'),/Consigne|pièce manque/);
+ assert.doesNotMatch(pageMarkdown('<main><textarea readonly hidden data-public-prompt>MASQUE</textarea></main>',url),/MASQUE/);
+});

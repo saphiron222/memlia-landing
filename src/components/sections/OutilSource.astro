@@ -13,9 +13,9 @@ const { titre, source } = Astro.props;
 ---
 
 <section class="section outil-source" data-tool-section="source" aria-labelledby="outil-source-titre">
-  <div class="conteneur outil-source-inner">
+  <div class="conteneur"><details class="outil-source-inner" data-tool-help><summary>{titre}</summary>
     <div class="outil-source-texte rv">
-      <h2 id="outil-source-titre">{titre}</h2>
+      <h2 id="outil-source-titre" class="sr-only">{titre}</h2>
       <div class="outil-source-citation" data-official-source>
         {source.titre && <h3>{source.titre}</h3>}
         <p><a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a> : {source.extrait}</p>
@@ -27,11 +27,13 @@ const { titre, source } = Astro.props;
         )}
       </div>
     </div>
-
-  </div>
+  </details></div>
 </section>
 
 <style>
+  .outil-source { padding-block:24px; }
+  .outil-source summary { cursor:pointer;min-height:44px;font-weight:600;color:var(--accent-texte); }
+  .outil-source-inner[open] > div {margin-top:20px;}
   .outil-source-inner {
     display: grid;
     gap: var(--bloc-ecart);

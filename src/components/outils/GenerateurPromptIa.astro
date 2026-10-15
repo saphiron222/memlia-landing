@@ -36,12 +36,12 @@ const choices = [
     <div class="actions"><button class="btn btn-contour" type="button" data-copy>Copier le prompt</button><button class="btn btn-contour" type="button" data-txt>Exporter en texte (.txt)</button><button class="btn btn-contour" type="button" data-json>Exporter en JSON (.json)</button></div>
   </section>
   <p data-status aria-live="polite"></p>
-  <section class="check" aria-labelledby="generic-preview-title">
+<details data-tool-help><summary>Aperçu de la consigne</summary>  <section class="check" aria-labelledby="generic-preview-title">
     <h2 id="generic-preview-title">Prévisualisation au fil des choix</h2>
     <p>La prévisualisation ne remplace jamais votre édition. Confirmez le formulaire puis assemblez pour la reprendre dans l’éditeur.</p>
     <pre data-preview aria-live="off">Choisissez un exemple ou renseignez les champs pour prévisualiser la consigne.</pre>
-  </section>
-  <section class="check">
+  </section></details>
+  <details data-tool-help><summary>Aide au générateur</summary><section class="check">
     <h2>Formats et contraintes</h2>
     <p>Le texte sépare synthèse, propositions et questions. Le tableau demande action, responsable, délai et point à vérifier. Le JSON fournit un schéma syntaxiquement valide, des clés obligatoires et des valeurs null pour les informations absentes. Le futur modèle peut malgré cela produire une réponse invalide : vous la vérifiez.</p>
     <h2>Tester et réviser</h2>
@@ -50,7 +50,7 @@ const choices = [
     <h3>Est-ce une IA qui répond ?</h3><p>Non. Le moteur local versionné assemble des blocs écrits. Il ne comprend pas l’ensemble du sens et ne garantit ni la qualité d’une future réponse ni la confidentialité du service où vous collerez la consigne.</p>
     <h3>Que deviennent mes modifications ?</h3><p>Changer les choix conserve le prompt édité et ses exports. Un nouvel assemblage demande confirmation avant de remplacer une édition. Recharger efface l’état ; aucun stockage n’est utilisé.</p>
     <p>Pour une tâche de cabinet, utilisez le <a href="/outils-comptables-gratuits/generateur-prompt-expert-comptable">générateur de prompt pour expert-comptable</a>. Pour passer de cette consigne à une tâche répétitive prise entière, découvrez <a href="/methode">notre méthode d’écriture et d’essai</a>.</p>
-  </section>
+  </section></details>
 </div>
 <script>
   import { GENERIC_SEEDS, assembleGenericPrompt, PROMPT_ENGINE_VERSION } from '@/lib/prompt-ia.mjs';

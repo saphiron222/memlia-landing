@@ -25,7 +25,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
   ]);
   await other.bringToFront(); await expect(other).toHaveURL(new RegExp(lib + '$'));
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
-  await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
+  await other.locator('[data-read="compte-rendu"]').click();await other.locator('[data-prompt-reader="compte-rendu"] summary').click();await other.locator('[data-prompt-reader="compte-rendu"] [data-adapt]').click();
   await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
   // Chromium macOS peut suspendre l'évaluation dans l'onglet en arrière-plan.
@@ -65,7 +65,7 @@ test('R3 : export adapté différé exact et nettoyage', async ({ page }) => {
     HTMLAnchorElement.prototype.click = function () { if (this.download && this.href.startsWith('blob:')) setTimeout(() => click.call(this), 100); else click.call(this); };
     URL.revokeObjectURL = url => { (window as any).__revoked.push(url); revoke.call(URL, url); };
   });
-  await page.goto(lib); await ouvrirReglages(page); await page.locator('[data-model="relance-pieces"] [data-adapt]').click();
+  await page.goto(lib); await ouvrirReglages(page); await page.locator('[data-read="relance-pieces"]').click();await page.locator('[data-prompt-reader="relance-pieces"] summary').click();await page.locator('[data-prompt-reader="relance-pieces"] [data-adapt]').click();
   await expect(page).toHaveURL(new RegExp(gen + '$')); await assemble(page);
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click(); const file = await downloaded;
   expect(await file.failure()).toBe(null); expect(file.suggestedFilename()).toBe('prompt-expert-comptable.txt');

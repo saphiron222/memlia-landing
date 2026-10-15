@@ -23,7 +23,14 @@ export function pageMarkdown(html, url) {
   function render(node, depth = 0) {
     if (node.nodeName === '#text') return escapeText(node.value.replace(/\s+/g, ' '));
     const tag = node.tagName;
-    if (OMIT.has(tag) || attr(node, 'hidden') !== undefined || attr(node, 'aria-hidden') === 'true') return '';
+    if (attr(node, 'hidden') !== undefined || attr(node, 'aria-hidden') === 'true') return '';
+    // Seul le corpus public statique de la bibliothèque : jamais une saisie ou un résultat éditable.
+    if (tag === 'textarea' && attr(node, 'readonly') !== undefined && attr(node, 'data-public-prompt') !== undefined && new URL(url).pathname === '/outils-comptables-gratuits/bibliotheque-prompts-comptables') {
+      const text = rawText(node).trimEnd();
+      const fence = '`'.repeat(Math.max(3, ...[...text.matchAll(/`+/g)].map(m => m[0].length + 1)));
+      return `\n\n${fence}\n${text}\n${fence}\n\n`;
+    }
+    if (OMIT.has(tag)) return '';
     const body = () => children(node).map(child => render(child, depth)).join('');
     if (/^h[1-6]$/.test(tag ?? '')) return `\n\n${'#'.repeat(Number(tag[1]))} ${body().trim()}\n\n`;
     if (tag === 'br') return '\n';

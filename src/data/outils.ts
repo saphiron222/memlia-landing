@@ -210,8 +210,8 @@ export const OUTILS: readonly OutilDefinition[] = [
     libelleAction: 'Choisir un modèle de prompt',
     h1: 'Bibliothèque de prompts comptables',
     title: 'Bibliothèque de prompts comptables | Memlia',
-    description: 'Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.',
-    promesse: { entree: 'Pôle, tâche, format et recherche locale', resultat: 'Douze modèles complets, exemples fictifs, copie, export et adaptation' },
+    description: 'Parcourez douze prompts comptables, ouvrez le texte complet et copiez-le gratuitement, sans inscription.',
+    promesse: { entree: 'Pôle, tâche, format et recherche locale', resultat: 'Douze prompts complets à copier ou personnaliser' },
     limites: [
       'Corpus original de consignes et de sorties attendues rédigées : aucune réponse de modèle d’IA ni validation comptable.',
       'La bibliothèque sélectionne un modèle ; le générateur permet d’adapter ses contraintes. Le cabinet choisit l’outil autorisé et relit chaque résultat.',
@@ -311,20 +311,20 @@ export const OUTILS: readonly OutilDefinition[] = [
 
 
     slug: 'calculateur-roi-automatisation', categorie: 'calculer', statut: 'disponible',
-    libelleAction: 'Comparer vos hypothèses de ROI',
+    libelleAction: 'Estimer votre ROI',
     h1: 'Calculateur de ROI d’automatisation comptable',
     title: 'Calculateur de ROI d’automatisation comptable | Memlia',
-    description: 'Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.',
-    promesse: { entree: 'Trois scénarios de volumes, temps, adoption, coûts et dépenses évitables', resultat: 'Capacité, trésorerie, ROI cash et récupération ; hypothèses et calculs exportables en CSV ou JSON' },
+    description: 'Estimez le ROI d’une automatisation avec trois valeurs : temps économisé, coût horaire et budget mensuel. Calcul gratuit, sans inscription.',
+    promesse: { entree: 'Temps économisé, coût horaire et budget mensuel choisis', resultat: 'Temps annuel, valeur estimée, solde et ROI copiables' },
     limites: [
       'Hypothèses constantes et mois continus : aucun gain garanti, aucune prévision ou tarification Memlia.',
-      'La capacité valorisée ne devient jamais automatiquement du cash. E inconnu laisse le ROI et la trésorerie ND.',
-      'Une entrée négative, ambiguë ou hors borne bloque le calcul sans effacer vos hypothèses ; un temps net négatif reste affiché.',
+      'Le temps valorisé mesure une capacité disponible ; il ne constitue pas automatiquement une économie de trésorerie.',
+      'Une entrée négative ou hors borne bloque le calcul sans effacer les hypothèses ; un solde négatif reste affiché.',
     ],
-    mentionLocale: 'Vos hypothèses, calculs, copies et exports restent dans ce navigateur, sans envoi ni stockage persistant. Effacer retire les hypothèses et les résultats de la page.',
+    mentionLocale: 'Vos hypothèses, calculs et copies restent dans cet onglet, sans envoi ni stockage persistant. Recharger les efface.',
     proof: 'v2/30-outil-roi',
     zoneLarge: true,
-    source: { titre: 'Formules documentées', nom: 'Conventions de calcul détaillées sur cette page', url: '#roi-formules', extrait: 'Le temps, les coûts et les dépenses réellement évitables sont des hypothèses indépendantes. Les formules visibles définissent le calcul, pas un taux de gain attendu.', verifieeLe: '4 octobre 2026' },
+    source: { titre: 'Formules documentées', nom: 'Conventions de calcul détaillées sur cette page', url: '#roi-formules', extrait: 'Valeur annuelle du temps moins budget annuel ; ROI calculé sur ce budget. Vos hypothèses ne constituent pas un gain mesuré.', verifieeLe: '4 octobre 2026' },
     pageService: '/methode', cta: '/contact',
   },
   {

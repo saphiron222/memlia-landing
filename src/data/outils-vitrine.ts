@@ -11,7 +11,7 @@ type Presentation = { nom:string; texte:string; groupe:Groupe; picto:NomPicto };
 const PRESENTATIONS:Record<string,Presentation> = {
   'bibliotheque-prompts-comptables': {nom:'Prompts comptables',texte:'Choisissez un modèle de consigne, adaptez-le et copiez-le.',groupe:'ia',picto:'feuilles'},
   'generateur-prompt-expert-comptable': {nom:'Générateur de prompt comptable',texte:'Préparez une consigne à partir de la tâche que vous décrivez.',groupe:'ia',picto:'regle'},
-  'calculateur-roi-automatisation': {nom:'Simulateur de ROI',texte:'Estimez le temps valorisé et le budget d’un robot ou d’un agent IA.',groupe:'calculs',picto:'agregat'},
+  'calculateur-roi-automatisation': {nom:'Simulateur de ROI',texte:'Trois valeurs pour estimer le temps valorisé et le ROI.',groupe:'calculs',picto:'agregat'},
   'generateur-relance-facture-impayee': {nom:'Relance de facture impayée',texte:'Préparez un message amiable à relire avant de l’envoyer.',groupe:'dossiers',picto:'feuilles'},
   'checklist-pieces-comptables': {nom:'Checklist des pièces comptables',texte:'Retrouvez les pièces manquantes et préparez votre demande.',groupe:'dossiers',picto:'recette'},
   'verificateur-fec-local': {nom:'Vérificateur FEC',texte:'Importez un fichier et obtenez les anomalies de structure.',groupe:'dossiers',picto:'bouclier'},

@@ -1,89 +1,54 @@
----
-import ComparateurRoiAvance from './ComparateurRoiAvance.astro';
-import { tarifs } from '@/lib/tarifs-memlia.mjs';
----
 <div class="budget-tool" data-budget-tool>
-  <div class="budget-entrees" role="group" aria-label="Votre estimation Memlia">
-    <label for="budget-offre">Que souhaitez-vous déployer ?
-      <select id="budget-offre"><option value="robots">Robots — suivi du portefeuille</option>{tarifs.agents.map(a=><option value={a.id}>{a.name} — {a.role}</option>)}</select>
-    </label>
-    <div class="budget-slider"><label for="budget-dossiers"><span data-volume-label>Dossiers du portefeuille</span><output for="budget-dossiers" data-volume>100</output></label><input id="budget-dossiers" type="range" min="1" max="1000" value="100" step="1"/><p data-volume-hint>Le même dossier compte une seule fois pour les neuf routines incluses.</p></div>
-    <div class="budget-slider"><label for="budget-cout">Coût d’une heure de travail<output for="budget-cout" data-hour>40 €</output></label><input id="budget-cout" type="range" min="10" max="150" value="40" step="1"/><p>Coût complet estimé par votre cabinet, charges comprises.</p></div>
-    <p class="budget-hypothese" data-hypothese>Exemple fictif : 120 minutes de travail manuel par dossier et par an, dont 30 minutes de contrôle conservées. Adaptez ces hypothèses à votre tâche.</p>
-    <details class="budget-options"><summary>Adapter les temps et la mise en service</summary><div class="budget-options-fields">
-      <label for="budget-profil" data-profile-label hidden>Travaux par dossier<select id="budget-profil"></select><small data-profile-hint></small></label>
-      <label for="budget-manuel"><span data-manual-label>Temps manuel par dossier et par an (min)</span><input id="budget-manuel" type="number" min="0" max="10000" step="0.1" value="120"/></label>
-      <label for="budget-controle"><span data-review-label>Contrôle conservé par dossier et par an (min)</span><input id="budget-controle" type="number" min="0" max="10000" step="0.1" value="30"/></label>
-      <label for="budget-setup">Mise en service HT (€)<input id="budget-setup" type="number" min="0" max="1000000" step="0.01" placeholder="Montant du devis"/><small data-setup-hint>Sur devis. Laissez vide tant que ce coût est inconnu.</small></label>
-    </div></details>
-    <button class="btn btn-principal" type="button" data-budget-calculate>Calculer mon estimation</button>
+  <form method="dialog" class="budget-entrees" data-budget-form novalidate>
+    <label for="budget-heures">Temps économisé par mois (h)<input id="budget-heures" name="heures" type="number" min="0" max="100000" step="0.1" value="10" required /><small>Après les contrôles que vous conservez.</small></label>
+    <label for="budget-cout">Coût d’une heure de travail (€)<input id="budget-cout" name="coutHoraire" type="number" min="0" max="10000" step="0.01" value="40" required /></label>
+    <label for="budget-mensuel">Votre budget d’automatisation (€ HT/mois)<input id="budget-mensuel" name="budgetMensuel" type="number" min="0" max="1000000" step="0.01" placeholder="Montant de votre choix" required /></label>
+    <details data-outil-options><summary>Ajouter un coût de mise en service</summary><label for="budget-setup">Mise en service (€ HT, facultatif)<input id="budget-setup" name="miseEnService" type="number" min="0" max="1000000" step="0.01" /></label></details>
+    <button class="btn btn-principal" type="submit" data-budget-calculate>Calculer mon estimation</button>
     <p class="budget-error" data-budget-error role="alert" hidden></p>
-    <p class="budget-status" role="status" data-budget-status>Tarifs HT. Simulation indicative, sans engagement.</p>
-  </div>
+    <p class="budget-status" role="status" data-budget-status></p>
+  </form>
   <section class="budget-result" data-budget-result hidden aria-labelledby="budget-result-title">
-    <p class="surtitre">Votre estimation annuelle</p><h2 id="budget-result-title" tabindex="-1">Du temps valorisé, un budget visible.</h2>
-    <dl><div><dt>Capacité dégagée</dt><dd data-result-hours></dd></div><div><dt>Valeur du temps dégagé</dt><dd data-result-value></dd></div><div><dt>Coût récurrent HT</dt><dd data-result-price></dd></div><div><dt>Valeur après coût récurrent</dt><dd data-result-net></dd></div></dl>
-    <p class="budget-price-detail" data-price-detail></p><p data-credit-detail></p>
-    <p data-first-year></p>
-    <p class="budget-limite">Le temps valorisé représente une capacité disponible. Il ne devient une économie de trésorerie que si une dépense est réellement évitée. Ces hypothèses ne constituent pas un gain mesuré chez un client.</p>
+    <h2 id="budget-result-title" tabindex="-1">Votre estimation sur un an</h2>
+    <dl><div><dt>Temps dégagé</dt><dd data-result-hours></dd></div><div><dt>Valeur du temps</dt><dd data-result-value></dd></div><div><dt>Solde après votre budget</dt><dd data-result-net></dd></div></dl>
+    <p data-result-roi></p><p data-first-year hidden></p>
+    <p class="budget-limite">Estimation de capacité disponible, pas une économie de trésorerie garantie.</p>
     <button class="btn btn-contour" type="button" data-budget-copy data-outil-action="copie">Copier mon estimation</button>
     <p role="status" data-copy-status></p>
   </section>
-  <details class="budget-scope"><summary>Ce que le tarif comprend</summary><div><h3>Neuf routines pour le portefeuille standard</h3><p>Suivi des déclarations fiscales, CFE, taxes foncières, URSSAF, messagerie fiscale, habilitations, informations légales et RNE, dette fiscale et veille BODACC. Les douze autres robots, les campagnes spécifiques et les portefeuilles de plus de 500 dossiers font l’objet d’un devis.</p><h3>Un socle cabinet et les agents choisis</h3><p>Le socle de 199 € HT/mois est facturé une seule fois au cabinet. Cette simulation calcule un agent avec son usage inclus. Les crédits estiment un périmètre de travaux décrit ; ils ne représentent pas la tenue complète d’un dossier. Les dépassements estimés sont affichés séparément : ils nécessitent votre accord et un plafond fixé avant lancement.</p><p>Mise en service : à partir de 1 990 € HT pour le premier agent ; à partir de 990 € HT pour un agent supplémentaire standard lorsque le socle est réutilisé. Le devis fixe le périmètre et le prix.</p></div></details>
-  <details class="budget-advanced"><summary>Comparer trois scénarios personnalisés</summary><ComparateurRoiAvance/></details>
+ <details id="roi-formules" data-tool-help><summary>Formule de calcul</summary><p>Valeur annuelle = heures économisées par mois × coût horaire × 12. Solde = valeur annuelle − budget mensuel × 12. ROI = solde ÷ budget annuel × 100.</p><p>La mise en service facultative est déduite du solde de première année.</p></details>
 </div>
 <script>
-  import { tarifs, estimerBudget } from '@/lib/tarifs-memlia.mjs';
-  const root=document.querySelector<HTMLElement>('[data-budget-tool]');
-  if(root){
-    const get=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!;
-    const offre=get<HTMLSelectElement>('#budget-offre'),volume=get<HTMLInputElement>('#budget-dossiers'),hour=get<HTMLInputElement>('#budget-cout'),profile=get<HTMLSelectElement>('#budget-profil'),manual=get<HTMLInputElement>('#budget-manuel'),review=get<HTMLInputElement>('#budget-controle'),setup=get<HTMLInputElement>('#budget-setup');
-    const error=get<HTMLElement>('[data-budget-error]'),result=get<HTMLElement>('[data-budget-result]'),status=get<HTMLElement>('[data-budget-status]');
-    const eur=(c:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(c/100);
-    const number=(n:number)=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:1}).format(n);
-    let copy='';
-    const invalidate=()=>{result.hidden=true;copy='';error.hidden=true;get<HTMLElement>('[data-copy-status]').textContent='';status.textContent='Hypothèses modifiées : relancez le calcul.';};
-    const update=()=>{
-      const agent=tarifs.agents.find(a=>a.id===offre.value),period=agent?'par mois':'par an';
-      get<HTMLElement>('[data-volume]').textContent=volume.value;get<HTMLElement>('[data-hour]').textContent=`${hour.value} €`;
-      get<HTMLElement>('[data-manual-label]').textContent=`Temps manuel par dossier et ${period} (min)`;get<HTMLElement>('[data-review-label]').textContent=`Contrôle conservé par dossier et ${period} (min)`;
-      get<HTMLElement>('[data-hypothese]').textContent=`Exemple fictif : ${manual.value || '…'} minutes de travail manuel par dossier et ${period}, dont ${review.value || '…'} minutes de contrôle conservées. Adaptez ces hypothèses à votre tâche.`;
-      get<HTMLElement>('[data-volume-label]').textContent=agent?'Dossiers ou lots traités par mois':'Dossiers du portefeuille';
-      get<HTMLElement>('[data-volume-hint]').textContent=agent?`${agent.profiles.find(p=>p.id===profile.value)?.description ?? ''}. Profil modifiable dans les réglages.`:'Le même dossier compte une seule fois pour les neuf routines incluses. Au-delà de 500 : sur devis.';
-      get<HTMLElement>('[data-profile-label]').hidden=!agent;
-      get<HTMLElement>('[data-profile-hint]').textContent=agent?.profiles.find(p=>p.id===profile.value)?.description ?? '';
-    };
-    offre.addEventListener('change',()=>{
-      const agent=tarifs.agents.find(a=>a.id===offre.value);profile.replaceChildren(...(agent?.profiles??[]).map(p=>{const option=document.createElement('option');option.value=p.id;option.textContent=p.label;return option;}));
-      volume.value=agent?String(agent.profiles[0].approxCases):'100';volume.max=agent?'100':'1000';
-      setup.value=agent?String(tarifs.setup.firstAgentPriceCents/100):'';
-      get<HTMLElement>('[data-setup-hint]').textContent=agent?'Hypothèse de départ : premier agent standard, à partir de 1 990 € HT. Remplacez par le montant du devis.':'Sur devis. Laissez vide tant que ce coût est inconnu.';
-      invalidate();update();
-    });
-    root.addEventListener('input',event=>{if((event.target as Element).closest('[data-roi-form]'))return;invalidate();update();});
-    const calculate=()=>{
-      invalidate();
-      try{
-        for(const field of [manual,review,setup])if((field!==setup && !field.value.trim())||!field.validity.valid){field.closest('details')?.setAttribute('open','');field.focus();throw new Error('Vérifiez les temps et le montant de mise en service dans les réglages.');}
-        const r=estimerBudget({offre:offre.value,dossiers:Number(volume.value),profil:profile.value,coutHoraire:Number(hour.value),tempsManuel:Number(manual.value),tempsControle:Number(review.value),miseEnService:setup.value.trim()?Math.round(Number(setup.value)*100):null});
-        get<HTMLElement>('[data-result-hours]').textContent=`${number(r.heures)} h/an`;
-        get<HTMLElement>('[data-result-value]').textContent=eur(r.tempsValorise);
-        get<HTMLElement>('[data-result-price]').textContent=r.annuel===null?'Sur devis':`${eur(r.annuel)}/an`;
-        get<HTMLElement>('[data-result-net]').textContent=r.soldeAnnuel===null?'À chiffrer':`${eur(r.soldeAnnuel)}/an`;
-        get<HTMLElement>('[data-price-detail]').textContent=r.detail?`Socle ${eur(tarifs.baseMonthlyCents)} + agent ${eur(r.detail.abonnement-tarifs.baseMonthlyCents)} = ${eur(r.detail.abonnement)}/mois, hors dépassement.`:`Portefeuille de ${number(r.dossiers)} dossiers : ${r.annuel===null?'devis requis au-delà de 500 dossiers':eur(r.annuel)+' HT/an pour les neuf routines incluses'}. Mise en service en supplément.`;
-        get<HTMLElement>('[data-credit-detail]').textContent=r.detail?`${number(r.detail.creditsInclus)} crédits inclus/mois ; environ ${number(r.profil!.approxCases)} dossiers ou lots de ce profil avec ce quota. Hypothèse : ${r.profil!.description}. Pour le volume choisi : ${number(r.detail.creditsNecessaires)} crédits/mois. ${r.detail.depassement?`Dépassement estimé : ${eur(r.detail.depassement)}/mois, uniquement si autorisé. Il est inclus dans le coût annuel affiché.`:'Le volume estimé tient dans le quota.'}`:'';
-        get<HTMLElement>('[data-first-year]').textContent=r.coutPremiereAnnee===null?'Première année : total à chiffrer après devis de mise en service.':`Première année, avec ${eur(r.miseEnService!)} de mise en service : ${eur(r.coutPremiereAnnee)} HT. Valeur après coût total : ${eur(r.soldePremiereAnnee!)}.`;
-        result.hidden=false;status.textContent='Estimation calculée. Vos hypothèses restent modifiables.';
-        copy=[`Estimation Memlia — ${offre.selectedOptions[0].textContent}`,`Volume : ${volume.value} ; coût horaire : ${hour.value} € ; temps manuel : ${manual.value} min ; contrôle : ${review.value} min ${r.periodes===12?'par mois':'par an'}.`,...Array.from(result.querySelectorAll('dl div,p')).map(p=>p.textContent?.trim()).filter(Boolean)].join('\n');
-        get<HTMLElement>('#budget-result-title').focus();
-      }catch(failure){error.textContent=failure instanceof Error?failure.message:'Vérifiez les hypothèses.';error.hidden=false;status.textContent='Calcul refusé ; vos saisies sont conservées.';}
-    };
-    get<HTMLButtonElement>('[data-budget-calculate]').addEventListener('click',calculate);
-    get<HTMLElement>('.budget-entrees').addEventListener('keydown',e=>{if(e.key==='Enter' && e.target instanceof HTMLInputElement){e.preventDefault();calculate();}});
-    get<HTMLButtonElement>('[data-budget-copy]').addEventListener('click',async()=>{if(!copy)return;try{await navigator.clipboard.writeText(copy);get<HTMLElement>('[data-copy-status]').textContent='Estimation copiée avec les hypothèses et les limites.';}catch{get<HTMLElement>('[data-copy-status]').textContent='La copie est bloquée. Le résultat reste sélectionnable.';}});
-    update();
-  }
+ import {calculerRoiSimple} from '@/lib/roi-simple.mjs';
+ const root=document.querySelector<HTMLElement>('[data-budget-tool]');
+ if(root){
+  const get=<T extends HTMLElement>(s:string)=>root.querySelector<T>(s)!;
+  const form=get<HTMLFormElement>('[data-budget-form]'),result=get<HTMLElement>('[data-budget-result]'),error=get<HTMLElement>('[data-budget-error]');
+  const field=(name:string)=>form.elements.namedItem(name) as HTMLInputElement;
+  const eur=(c:number)=>new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:2}).format(c/100);
+  const number=(n:number)=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:1}).format(n);
+  let copy='';
+  form.addEventListener('input',()=>{result.hidden=true;copy='';error.hidden=true;get<HTMLElement>('[data-budget-status]').textContent='';get<HTMLElement>('[data-copy-status]').textContent='';});
+  form.addEventListener('submit',event=>{
+   event.preventDefault();error.hidden=true;
+   for(const name of ['heures','coutHoraire','budgetMensuel','miseEnService']){
+    const input=field(name);
+    if(!input.validity.valid){input.closest('details')?.setAttribute('open','');input.focus();error.textContent='Vérifiez le montant ou le temps saisi.';error.hidden=false;return;}
+   }
+   try{
+    const r=calculerRoiSimple({heures:Number(field('heures').value),coutHoraire:Number(field('coutHoraire').value),budgetMensuel:Number(field('budgetMensuel').value),miseEnService:field('miseEnService').value.trim()?Number(field('miseEnService').value):null});
+    get<HTMLElement>('[data-result-hours]').textContent=`${number(r.heuresAnnuelles)} h`;
+    get<HTMLElement>('[data-result-value]').textContent=eur(r.valeurAnnuelle);
+    get<HTMLElement>('[data-result-net]').textContent=eur(r.soldeAnnuel);
+    get<HTMLElement>('[data-result-roi]').textContent=r.roi===null?'ROI non calculable avec un budget nul.':`ROI estimé : ${number(r.roi)} %`;
+    const first=get<HTMLElement>('[data-first-year]');first.hidden=r.premiereAnnee===null;first.textContent=r.premiereAnnee===null?'':`Première année, mise en service déduite : ${eur(r.premiereAnnee)}.`;
+    copy=[`Estimation annuelle — hypothèses du cabinet : ${field('heures').value} h économisées/mois, ${field('coutHoraire').value} €/h, budget ${field('budgetMensuel').value} € HT/mois.`,field('miseEnService').value?`Mise en service : ${field('miseEnService').value} € HT.`:'Mise en service non renseignée.',`Temps : ${number(r.heuresAnnuelles)} h/an ; valeur : ${eur(r.valeurAnnuelle)} ; budget : ${eur(r.budgetAnnuel)}/an ; solde : ${eur(r.soldeAnnuel)}.`,get<HTMLElement>('[data-result-roi]').textContent,first.hidden?'':first.textContent,'Estimation de capacité disponible, pas une économie de trésorerie garantie.'].filter(Boolean).join('\n');
+    result.hidden=false;get<HTMLElement>('#budget-result-title').focus();
+   }catch(e){error.textContent=e instanceof Error?e.message:'Vérifiez vos hypothèses.';error.hidden=false;}
+  });
+  get<HTMLButtonElement>('[data-budget-copy]').addEventListener('click',async()=>{if(!copy)return;try{await navigator.clipboard.writeText(copy);get<HTMLElement>('[data-copy-status]').textContent='Estimation copiée.';}catch{get<HTMLElement>('[data-copy-status]').textContent='Copie bloquée : sélectionnez le résultat.';}});
+ }
 </script>
 <style>
-.budget-tool{display:grid;gap:24px}.budget-entrees{display:grid;gap:24px;max-width:720px;width:100%;margin:auto}.budget-tool label{display:grid;gap:12px;font-weight:600}.budget-tool select,.budget-tool input:not([type=range]){width:100%;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);font:inherit;background:var(--surface-feuille);color:var(--texte-fort);min-height:48px}.budget-slider label{display:flex;align-items:center;justify-content:space-between;gap:16px}.budget-slider output{font-size:var(--t-2xl);color:var(--accent-texte);white-space:nowrap;font-variant-numeric:tabular-nums}.budget-slider input{width:100%;height:44px;accent-color:var(--accent-texte);cursor:pointer}.budget-slider p,.budget-tool small,.budget-hypothese,.budget-status,.budget-limite{font-size:var(--t-sm);color:var(--texte-2)}.budget-options-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px 0}.budget-options label:first-child{grid-column:1/-1}.budget-entrees>.btn{justify-self:start}.budget-result{display:grid;gap:20px;background:var(--accent-voile);border:1px solid var(--accent-ligne,var(--ligne));border-radius:var(--r-carte);padding:32px}.budget-result h2{font-size:var(--titre-section)}.budget-result dl{display:grid;grid-template-columns:1fr 1fr;gap:24px}.budget-result dd{margin:4px 0 0;font-size:var(--t-2xl);font-weight:600;font-variant-numeric:tabular-nums}.budget-result dt{color:var(--texte-2);font-size:var(--t-sm)}.budget-result button{justify-self:start}.budget-tool summary{cursor:pointer;font-weight:600;min-height:48px;padding:16px 0}.budget-scope>div{display:grid;gap:16px;padding:16px 0}.budget-scope h3{font-size:var(--t-xl)}.budget-advanced{border-top:1px solid var(--ligne);padding-top:12px}.budget-error{padding:12px;border-left:3px solid var(--rouge);color:var(--rouge)}.budget-tool [hidden]{display:none!important}@media(max-width:40rem){.budget-result{padding:20px}.budget-result dl,.budget-options-fields{grid-template-columns:1fr}.budget-slider output{font-size:var(--t-xl)}}
+.budget-tool,.budget-entrees{display:grid;gap:24px;min-width:0}.budget-entrees{max-width:640px;width:100%;margin:auto}.budget-tool label{display:grid;gap:8px;font-weight:600}.budget-tool input{width:100%;padding:12px;border:1px solid var(--ligne-forte);border-radius:var(--r-bouton);font:inherit;background:var(--surface-feuille);color:var(--texte-fort);min-height:48px}.budget-tool small,.budget-status,.budget-limite{font-size:var(--t-sm);font-weight:400;color:var(--texte-2)}.budget-entrees>.btn,.budget-result>.btn{justify-self:start}.budget-result{display:grid;gap:20px;background:var(--accent-voile);border:1px solid var(--ligne);border-radius:var(--r-carte);padding:32px}.budget-result h2{font-size:var(--titre-bloc)}.budget-result dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.budget-result dd{margin:4px 0 0;font-size:var(--t-2xl);font-weight:600;font-variant-numeric:tabular-nums}.budget-result dt{font-size:var(--t-sm);color:var(--texte-2)}.budget-tool summary{cursor:pointer;font-weight:600;min-height:44px}.budget-error{padding:12px;border-left:3px solid var(--rouge);color:var(--rouge)}.budget-tool [hidden],.budget-tool p:empty{display:none!important}@media(max-width:40rem){.budget-result{padding:20px}.budget-result dl{grid-template-columns:1fr}}
 </style>

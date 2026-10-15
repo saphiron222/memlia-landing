@@ -17,15 +17,15 @@ const periods = [{key:'previous',title:'N−1'},{key:'current',title:'N'}];
       <p>Convention à confirmer par votre choix : solde signé positif débiteur, négatif créditeur ; avec deux colonnes, solde = débit − crédit.</p>
       <div class="mapping">{[{field:'account',label:'Compte',value:1},{field:'label',label:'Libellé',value:2},{field:'balance',label:'Solde signé',value:3},{field:'debit',label:'Débit',value:3},{field:'credit',label:'Crédit',value:4}].map(({field,label,value})=><div data-map-field={field}><label for={`map-${key}-${field}`}>{label} {title}</label><select id={`map-${key}-${field}`}>{Array.from({length:128},(_,i)=><option value={i} selected={i===value-1}>Colonne {i+1}</option>)}</select></div>)}</div>
       <label class="check"><input id={`aggregate-${key}`} type="checkbox" /> J’autorise l’agrégation des doublons de compte {title}, avec provenance et alerte de libellés divergents.</label>
-      </div></details><div class="mapping"><div><label for={`${key}-start`}>Début {title}</label><input id={`${key}-start`} type="date" aria-describedby="balance-error" /></div><div><label for={`${key}-end`}>Fin {title}</label><input id={`${key}-end`} type="date" aria-describedby="balance-error" /></div></div>
+      </div></details><details data-outil-options><summary>Période {title} — à renseigner</summary><div class="mapping"><div><label for={`${key}-start`}>Début {title}</label><input id={`${key}-start`} type="date" aria-describedby="balance-error" /></div><div><label for={`${key}-end`}>Fin {title}</label><input id={`${key}-end`} type="date" aria-describedby="balance-error" /></div></div></details>
     </fieldset>)}</div>
-    <fieldset><legend>Vos critères de comparaison</legend>
+    <details data-outil-options><summary>Devise et critères — à vérifier</summary><fieldset><legend>Vos critères de comparaison</legend>
       <label for="currency">Devise déclarée (code ou libellé)</label><input id="currency" type="text" maxlength="40" aria-describedby="balance-error" />
       <label class="check"><input id="same-currency" type="checkbox" /> Je confirme que les deux balances sont dans cette même devise, sans conversion.</label>
       <label class="check"><input id="comparable" type="checkbox" /> J’ai vérifié le périmètre et les périodes ; je confirme leur comparabilité pour cette lecture. Une différence de durée reste signalée.</label>
       <div class="mapping"><div><label for="absolute-threshold">Seuil absolu, dans votre devise</label><input id="absolute-threshold" type="text" inputmode="decimal" aria-describedby="threshold-help balance-error" /></div><div><label for="relative-threshold">Seuil relatif (%)</label><input id="relative-threshold" type="text" inputmode="decimal" aria-describedby="threshold-help balance-error" /></div></div>
       <p id="threshold-help">Renseignez au moins un seuil non négatif. À examiner si |delta| ≥ seuil absolu OU |variation| ≥ seuil relatif. Aucun seuil professionnel proposé. Référence zéro : pourcentage non calculable, seul le seuil absolu peut sélectionner ce compte.</p>
-    </fieldset>
+    </fieldset></details>
     <div class="actions"><button type="submit" class="btn btn-principal">Comparer les balances</button><button type="button" data-example class="btn btn-contour">Charger les deux CSV fictifs</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler le traitement</button><button type="button" data-reset class="btn btn-contour">Tout effacer</button></div>
     <p id="balance-error" data-error role="alert" hidden tabindex="-1"></p>
   </form>

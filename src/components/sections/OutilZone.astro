@@ -36,9 +36,9 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
         ) : <slot />}
       </div>
       <div class="outil-cadre rv">
-        <p class="outil-local" data-local-notice><Picto nom="bouclier" taille={18} /><span>{mentionLocale}</span></p>
+        <p class="outil-local" data-local-notice><Picto nom="bouclier" taille={18} /><span>Aucun envoi : l’outil fonctionne dans votre navigateur.</span></p>
         <details class="outil-limites"><summary>Lire les limites de cet outil</summary>
-          <h2 id="limites-titre">Ce que cette page ne fait pas</h2>
+          <p>{mentionLocale}</p><h2 id="limites-titre">Ce que cette page ne fait pas</h2>
           <ul data-tool-limits>
             {limites.map((limite) => <li>{limite}</li>)}
           </ul>

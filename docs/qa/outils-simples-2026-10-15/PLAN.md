@@ -13,6 +13,15 @@ Kevin valide `docs/strategy/pricing-2026-10-15/RECOMMANDATION.md` et `agents-ind
 
 ## Direction
 
+### Correction demandée après la recette (15/10, soir)
+
+- [x] ROI neutre : trois hypothèses du cabinet, aucun tarif Memlia, crédit ou agent ; supprimer le comparateur et le détail tarifaire publics. Les deux documents de prix validés restent inchangés.
+- [x] Bibliothèque : cartes à défilement horizontal, recherche courte, lecteur avec le prompt complet seulement ; supprimer les exemples et la fiche explicative du lecteur.
+- [x] Relance : quatre données de facture, une action principale ; les lots et réglages restent secondaires, les cas litigieux restent refusés.
+- [x] Checklist : trame rapide, état de chaque pièce immédiatement modifiable ; notes, import et réglages repliés.
+- [x] Parcourir les 21 outils : raccourcir les textes et replier l’aide, sans retirer contrôles, sources, import/export et confirmations nécessaires.
+- [x] Rejouer calculs, fonctions, clavier, repli sans scripts, responsive, SEO et revue ; mettre à jour la prévisualisation sans production ni fusion.
+
 Crème et vert, Fraunces/Hanken Grotesk, espacements et cartes des robots/agents validés. Hub : titre centré, trio de figurines, filtres natifs et trois colonnes maximum. Outils essentiels d’abord, toutes les routes conservées accessibles. Chaque outil commence par quelques saisies, une action et un résultat explicite. Les réglages spécialisés restent consultables en accordéons natifs.
 
 `references/` conserve le hub et les 27 outils Outrank, ainsi que les manipulations du ROI Outils-EC. Ces captures ne sont pas des actifs du site. Nous reprenons la simplicité de parcours avec notre code et nos textes.

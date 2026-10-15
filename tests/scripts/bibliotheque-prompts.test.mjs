@@ -12,7 +12,9 @@ test('douze fiches originales, complètes et compatibles avec le moteur partagé
     assert.equal(checkPrompt(modelPrompt(m)).ok, true, m.id);
     for (const section of SECTIONS) assert.ok(modelPrompt(m).includes(`## ${section}\n`));
     for (const key of ['context', 'input', 'output', 'human', 'stop', 'exampleIn', 'exampleOut']) assert.ok(m[key].length > 20, `${m.id} ${key}`);
-    assert.ok(modelPrompt(m).includes(m.exampleIn));
+    assert.ok(!modelPrompt(m).includes(m.exampleIn));
+    assert.ok(!modelPrompt(m).includes(m.exampleOut));
+    for(const key of ['input','output','human','stop'])assert.ok(modelPrompt(m).includes(m[key]));
   }
 });
 test('filtres combinés, accents, tâche et état vide', () => {

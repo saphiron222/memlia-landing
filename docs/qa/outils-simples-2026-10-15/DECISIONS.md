@@ -14,24 +14,24 @@ Tous les autres outils restent accessibles par « Tous » et par trois besoins :
 
 | Outil | Premier parcours | Réglages ou parcours conservés |
 | --- | --- | --- |
-| Prompts comptables | Recherche puis copie d’un modèle | Métier, format et tâche ; détail du prompt et exemples repliés |
+| Prompts comptables | Recherche, cartes à défilement latéral, prompt à copier | Filtres supplémentaires ; téléchargement et personnalisation repliés. Aucun exemple ou fiche explicative autour du prompt |
 | Générateur de prompt comptable | Tâche, format, description abstraite | Entrées, validateur et arrêt ; amorces ; contrôle et édition |
 | Générateur de prompt texte | Tâche, format, objectif abstrait | Contexte, ton, contraintes ; exemples et exports |
 | Vérificateur de prompt | Texte abstrait et confirmation | Diagnostic structurel et copie ; aucun modèle appelé |
 | Charte IA | Usages, famille de données, validation, fréquence | Rôles, outils, formation, relecture ; éditions conservées |
 | Diagnostic IA | Une dimension à la fois | Réponses inconnues conservées ; synthèse sans score inventé |
-| ROI | Offre et deux curseurs | Temps, contrôle, installation ; trois scénarios personnalisés |
+| ROI | Trois valeurs : heures économisées, coût horaire, budget mensuel | Mise en service facultative ; aucun prix Memlia ni comparateur |
 | Marge | Achat et vente | Formules repliées ; calculs, négatifs et exports conservés |
 | Échéance de facture | Règle et dates utiles | Confirmation du délai et convention de fin de mois indispensables |
 | Amortissement | Base, date, durée | Méthode dégressive et éligibilité explicite |
 | Rapprochement bancaire | Période et deux soldes | Opérations en rapprochement, conventions et trace |
-| Checklist | Période et familles choisies | Pièce personnalisée, états, exceptions et reprises |
-| Relance de facture | Client, référence, montant, échéance, litige | Clé client, paiements, avoirs ; préparation et regroupement validés |
+| Checklist | Une trame, puis l’état de chaque pièce | Période, familles personnalisées, modification de pièce, notes et reprises |
+| Relance de facture | Client, référence, solde, échéance ; confirmation du solde et de l’absence de litige | Lots, clés client, paiements, avoirs et regroupement dans un parcours secondaire |
 | Vérificateur FEC | Fichier | Profil, encodage et limites détaillées ; anomalies localisées |
 | Préparation du lettrage | Fichier | Format ; règles exactes et ambiguïtés, sans écriture comptable |
 | Pseudonymisation | Fichier puis colonnes choisies | Format, remplacement et revue ; aucune promesse d’anonymat |
 | Fusion CSV | Fichiers | Association explicite des colonnes et provenance |
-| Balances | Deux fichiers et périodes | Format et colonnes ; devise, comparabilité et seuil choisis |
+| Balances | Deux fichiers | Périodes, format et colonnes ; devise, comparabilité et seuil choisis, toujours requis pour comparer |
 | Barème CAC | Trois montants et période | Champ d’application requis avant fourchette ; budget et alerte distincts |
 | Signification | Base nommée, montant, taux choisi, période | Référence, justification, identifiant, planification ; choix réservé au CAC |
 | Circularisation | Tiers, contact, date, catégorie et demande | Mission, devise, solde ; lettres, réponses et rapprochements validés |
@@ -40,11 +40,9 @@ Les confirmations essentielles ne sont pas retirées pour gagner un champ. Les f
 
 ## ROI et tarifs
 
-La seule source publique structurée est `src/data/tarifs-memlia.json`. Les deux références validées se trouvent dans `docs/strategy/pricing-2026-10-15/README.md`. Les anciennes propositions et leur classeur ont été supprimés ; les sources fournisseur restent identifiées comme telles.
+**Dernier arbitrage de Kevin : le simulateur public n’affiche aucun prix Memlia.** Il ne choisit plus de robot ni d’agent et ne calcule aucun quota de crédits. Le cabinet indique ses heures économisées par mois, son coût horaire et son budget mensuel. Une mise en service peut être ajoutée volontairement ; son absence ne devient pas un montant connu. Le résultat annuel reste une estimation de capacité et de coût, pas une économie de trésorerie garantie. Le comparateur de trois scénarios et « Ce que le tarif comprend » ont quitté la page.
 
-Robots : neuf routines standard, forfait annuel progressif jusqu’à 500 dossiers, extensions et installation sur devis. Agents : un socle de 199 € HT/mois, un agent sélectionné, son quota et ses profils approximatifs. Un dépassement estimé n’est jamais présenté comme déjà autorisé.
-
-Les 120 minutes manuelles et 30 minutes de contrôle sont un **exemple fictif modifiable**, pas une mesure Memlia. Pour les robots, le rythme est annuel ; pour les agents, mensuel puis annualisé. Le temps valorisé, le coût récurrent et le coût de première année restent distincts. Une installation inconnue reste à chiffrer ; une valeur négative reste négative. Le comparateur avancé conserve le calcul de trésorerie séparé.
+Les deux références de prix validées et leur source structurée `src/data/tarifs-memlia.json` restent inchangées. Leurs profils de dossiers approximatifs restent documentaires. Les anciennes propositions et leur classeur ont été supprimés ; les sources fournisseur restent identifiées comme telles.
 
 ## Sécurité et accessibilité
 
@@ -69,4 +67,8 @@ Le plan éditorial CAC conserve son propriétaire historique de circularisation 
 
 Le générateur `llms.txt` énumère aussi chaque outil et chaque article, avec un lien HTML et un lien Markdown vérifiés dans l’export final. Les anciens guides retirés sont déduits de la décision de migration après validation des archives scellées. Une suite courte d’outils complémentaires maintient le maillage sans ajouter de cartes sous chaque outil.
 
-La bibliothèque réserve dès le HTML l’espace des filtres et des actions. Les contrôles restent désactivés sans JavaScript ; les douze prompts et leurs exemples demeurent lisibles. Cette disposition évite le déplacement du contenu au démarrage.
+La bibliothèque réserve dès le HTML l’espace des filtres et des actions. Les contrôles restent désactivés sans JavaScript ; les douze prompts complets demeurent lisibles. Cette disposition évite le déplacement du contenu au démarrage.
+
+## Épure après la recette du soir
+
+Six contrôles de saisie maximum visibles au départ sur chacun des 21 outils, vérifiés à 375 et 1 440 px. Les confirmations nécessaires restent explicites : aucun champ d’application CAC, litige, identité de lot ou devise n’est présumé pour gagner une saisie. L’aide et les sources sont repliées, toujours présentes dans le HTML. La relance courte travaille sur un solde restant explicitement confirmé, une facture à la fois ; elle n’infère ni regroupement de clients ni paiement. La checklist ne traite pas un état inconnu comme manquant.

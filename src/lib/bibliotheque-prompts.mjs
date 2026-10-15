@@ -129,8 +129,7 @@ export function modelPrompt(model) {
     .replace('## Résultat attendu\n', `Entrées de la fiche : ${model.input}\n\n## Résultat attendu\n`)
     .replace('## Frontière\n', `Format de la fiche : ${model.output}\n\n## Frontière\n`)
     .replace('## Arrêt\n', `Décision réservée : ${model.human}\n\n## Arrêt\n`)
-    .replace('## Jeu d’essai fictif\n', `Arrêt de la fiche : ${model.stop}\n\n## Jeu d’essai fictif\n`)
-    + `\n\nEntrée fictive propre à la fiche : ${model.exampleIn}\nSortie attendue rédigée (pas une réponse de modèle) : ${model.exampleOut}`;
+    .replace('## Jeu d’essai fictif\n', `Arrêt de la fiche : ${model.stop}\n\n## Jeu d’essai fictif\n`);
 }
 const normalize = (value) => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
 export function filterModels({ pole = '', format = '', task = '', query = '' } = {}) {

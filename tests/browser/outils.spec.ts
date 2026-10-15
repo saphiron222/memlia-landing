@@ -410,7 +410,8 @@ test('outils publiés : la mention locale, les limites et la source se disent un
   for (const outil of PAGES_GABARIT) {
     await page.goto(outilPath(outil));
     await expect(page.locator('[data-local-notice]')).toHaveCount(1);
-    await expect(page.locator('[data-local-notice]')).toHaveText(outil.mentionLocale);
+    await expect(page.locator('[data-local-notice]')).toHaveText('Aucun envoi : l’outil fonctionne dans votre navigateur.');
+    await expect(page.locator('.outil-limites > p')).toHaveText(outil.mentionLocale);
     expect(await occurrences(page, outil.mentionLocale), `${outil.slug} : mention locale`).toBe(1);
     await page.getByText('Lire les limites de cet outil',{exact:true}).click();
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toHaveCount(1);
@@ -529,6 +530,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     const listener = (request: { method(): string; url(): string }) => { if (armed) requests.push(`${request.method()} ${request.url()}`); };
     context.on('request', listener);
     await page.goto(outilPath(outil));
+    for (const summary of await page.locator('[data-outil-options] > summary').all()) {if(await summary.isVisible() && await summary.locator('..').getAttribute('open')===null)await summary.click();}
     await page.evaluate(() => document.fonts.ready);
     await chargerImagesDifferees(page);
     armed = true;
@@ -546,6 +548,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       expect(csv).toContain('00123');
       expect(csv).toContain('comparateur-balances-1');
     } else if (outil.slug === 'generateur-relance-facture-impayee') {
+      await page.locator('[data-tool-advanced] > summary').click();
       await page.locator('summary').filter({ hasText: 'Importer un CSV' }).click();
       await page.locator('#rel-file').setInputFiles({
         name: 'factures-fictives.csv', mimeType: 'text/csv',
@@ -609,11 +612,10 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await expect(page.locator('[data-output]')).toBeVisible();
 
     } else if (outil.slug === 'bibliotheque-prompts-comptables') {
-      await page.getByText('Affiner par métier, tâche ou format',{exact:true}).click();
       await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
       await page.getByLabel('Format attendu', { exact: true }).selectOption('mail');
       await expect(page.locator('[data-model]:visible')).toHaveCount(3);
-      await page.getByLabel('Rechercher un modèle').fill('relance');
+      await page.getByLabel('Rechercher un prompt').fill('relance');
       await expect(page.locator('[data-model]:visible')).toHaveCount(1);
       await page.getByRole('button', { name: 'Effacer les filtres' }).click();
       await expect(page.locator('[data-model]:visible')).toHaveCount(12);
@@ -625,9 +627,9 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await expect(page.locator('[data-after]')).toContainText('C1_000001');
 
     } else if (outil.slug === 'calculateur-roi-automatisation') {
-      await page.getByText('Comparer trois scénarios personnalisés',{exact:true}).click(); await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
-      await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
-      await expect(page.locator('[data-results]')).toContainText('266,67');
+      await page.locator('#budget-mensuel').fill('100');
+      await page.getByRole('button', { name: 'Calculer mon estimation' }).click();
+      await expect(page.locator('[data-result-roi]')).toHaveText('ROI estimé : 300 %');
     } else if (outil.slug === 'verificateur-fec-local') {
       await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
       await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
@@ -753,7 +755,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.locator('[data-cl-export="json"]').click();
       const raw = await readFile((await (await downloading).path())!, 'utf8');
       await page.locator('#cl-period').fill('Octobre 2026');
-      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
+      await page.locator('#cl-file').evaluate(element => element.closest('details')!.setAttribute('open', ''));
       await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
       await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
       await expect(page.locator('[data-cl-apply]')).toBeEnabled();
@@ -829,7 +831,7 @@ test('témoin : noindex, CSP, quatre surfaces et liens sortants concordants', as
   await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', H1_TEMOIN);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${TEMOIN}`);
   await expect(page.getByText('Démonstration technique', { exact: true })).toBeVisible();
-  await expect(page.locator('[data-local-notice]')).toContainText('aucune valeur n’est envoyée ni conservée');
+  await expect(page.locator('.outil-limites > p')).toContainText('aucune valeur n’est envoyée ni conservée');
   await expect(page.locator('.ariane [aria-current="page"]')).toHaveText(H1_TEMOIN);
 
   const graph = await graphFrom(page);

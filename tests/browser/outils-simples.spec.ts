@@ -28,15 +28,14 @@ for(const width of [375,1440])test(`les 21 outils : page initiale compacte et sa
  expect(failures).toEqual([]);
  await page.goto(hub);await page.evaluate(()=>document.fonts.ready);await page.screenshot({path:`.qa/outils-simples/screens/hub-${width}.png`,fullPage:true});
 });
-test('simulateur court : tarifs, profils de dossiers, dépassement, valeurs négatives et copie',async({page,context})=>{
+test('simulateur court : hypothèses du cabinet, aucun prix catalogue et copie',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await page.goto(`${hub}/calculateur-roi-automatisation`);await page.waitForLoadState('networkidle');
  const sent:string[]=[];page.on('request',r=>sent.push(r.url()));
- await page.getByRole('button',{name:'Calculer mon estimation',exact:true}).click();await expect(page.locator('[data-result-price]')).toHaveText(/600,00.*an/);await expect(page.locator('[data-first-year]')).toContainText('à chiffrer');
- await page.locator('#budget-offre').selectOption('comptabilite');await expect(page.locator('[data-budget-result]')).toBeHidden();await expect(page.locator('#budget-dossiers')).toHaveValue('20');
- await page.getByRole('button',{name:'Calculer mon estimation',exact:true}).click();await expect(page.locator('[data-price-detail]')).toContainText('548,00');await expect(page.locator('[data-credit-detail]')).toContainText('20 dossiers ou lots');await expect(page.locator('[data-first-year]')).toContainText('8 566,00');
- await page.getByText('Adapter les temps et la mise en service',{exact:true}).click();await page.locator('#budget-profil').selectOption('courant');await page.locator('#budget-dossiers').fill('10');await page.locator('#budget-manuel').fill('10');await page.locator('#budget-controle').fill('20');await page.getByRole('button',{name:'Calculer mon estimation',exact:true}).click();
- await expect(page.locator('[data-credit-detail]')).toContainText('39,00');await expect(page.locator('[data-result-net]')).toHaveText(/-/);
- await page.getByRole('button',{name:'Copier mon estimation',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('uniquement si autorisé');expect(sent).toEqual([]);
+ await page.locator('#budget-mensuel').fill('100');await page.getByRole('button',{name:'Calculer mon estimation',exact:true}).click();
+ await expect(page.locator('[data-result-net]')).toHaveText(/3.?600/);await expect(page.locator('[data-result-roi]')).toHaveText('ROI estimé : 300 %');
+ await expect(page.locator('[data-first-year]')).toBeHidden();await expect(page.locator('[data-budget-tool]')).not.toContainText(/Socle|crédits|dépassement|trois scénarios|Ce que le tarif/);
+ await page.locator('#budget-mensuel').fill('1000');await expect(page.locator('[data-budget-result]')).toBeHidden();await page.getByRole('button',{name:'Calculer mon estimation',exact:true}).click();await expect(page.locator('[data-result-net]')).toHaveText(/-/);
+ await page.getByRole('button',{name:'Copier mon estimation',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('budget 1000 € HT/mois');expect(sent).toEqual([]);
 });
 for(const enabled of [true,false])test(`aucune saisie envoyée par un formulaire, JavaScript ${enabled}`,async({browser,baseURL})=>{
  const context=await browser.newContext({baseURL,javaScriptEnabled:enabled,reducedMotion:'reduce'});const page=await context.newPage();
