@@ -114,7 +114,7 @@ Dossier fictif : l'Atelier Loriot, SARL de menuiserie inventée, exercice au 31/
 
 **Tâches de départ** : `collecte-pieces` · `saisie-ocr` · `banque-rapprochement`
 
-**Logiciels concernés** : Pennylane, Cegid Loop, Cegid Quadra Plus, Sage 100 Comptabilité, Sage Génération Experts, ACD Comptabilité Expert, EBP Comptabilité, MyU, Tiime, Inqom, fulll, AMICOMPTA, Dext, N2F, Qonto, Planity, PrestaShop, Microsoft Excel.
+**Logiciels concernés** : Pennylane, Cegid Loop, Cegid Quadra Plus, Sage 100 Comptabilité, Sage Génération Experts, ACD COMPTA, EBP Comptabilité, MyU, Tiime, Inqom, fulll, AMICOMPTA, Dext, N2F, Qonto, Planity, PrestaShop, Microsoft Excel.
 
 ---
 
@@ -205,7 +205,7 @@ Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictif
 
 **Tâches de départ** : `variables-de-paie` · `bulletins-controle` · `dsn-crm`
 
-**Logiciels concernés** : Silae, PayFit, Sage 100 Paie & RH, Sage Production Sociale Experts, Quadra Paie, Cegid Payroll Ultimate, ACD Paie, Microsoft Excel, Outlook, Gmail.
+**Logiciels concernés** : Silae, Payfit, Sage 100 Paie & RH, Sage Paie, Quadra Paie, Cegid Payroll Ultimate, ACD Paie, Microsoft Excel, Outlook, Gmail.
 
 ---
 
@@ -296,7 +296,7 @@ Dossier fictif : un portefeuille de quatre sociétés inventées ; calendrier jo
 
 **Tâches de départ** : `secretariat-juridique` · `tva` · `echeances-fiscales`
 
-**Logiciels concernés** : Lexis PolyActe, registre national des entreprises (INPI), BODACC, répertoire Sirene, Youtrust (anciennement Yousign), Docusign, Cegid Loop, ACD Comptabilité Expert, Sage 100 Comptabilité, EBP Comptabilité, Microsoft Excel.
+**Logiciels concernés** : Lexis PolyActe, registre national des entreprises (INPI), BODACC, répertoire Sirene, Youtrust (anciennement Yousign), Docusign, Cegid Loop, ACD COMPTA, Sage 100 Comptabilité, EBP Comptabilité, Microsoft Excel.
 
 ---
 
@@ -384,7 +384,7 @@ Dossier fictif : la Menuiserie Pinson, SAS inventée, solde bancaire rapproché 
 
 **Tâches de départ** : `situations-reporting-client` · `tresorerie-previsionnelle` · `evaluation-transmission`
 
-**Logiciels concernés** : Microsoft Excel, RCA Évaluation, Qonto, Pennylane, Cegid Loop, ACD Comptabilité Expert, Sage 100 Comptabilité, EBP Comptabilité, MyU.
+**Logiciels concernés** : Microsoft Excel, RCA Évaluation, Qonto, Pennylane, Cegid Loop, ACD COMPTA, Sage 100 Comptabilité, EBP Comptabilité, MyU.
 
 ---
 
@@ -569,7 +569,7 @@ Dossier fictif : le Studio Rouge-Gorge, SAS de design graphique inventée, entr�
 
 **Tâches de départ** : `onboarding-client` · `lettre-de-mission-lcbft` · neuve `propositions-mission`
 
-**Logiciels concernés** : Youtrust (anciennement Yousign), Docusign, JeSignExpert, Kanta, répertoire Sirene, registre national des entreprises (INPI), Outlook, Gmail, Microsoft Excel.
+**Logiciels concernés** : Youtrust (anciennement Yousign), Docusign, jesignexpert.com, Kanta, répertoire Sirene, registre national des entreprises (INPI), Outlook, Gmail, Microsoft Excel.
 
 ---
 
@@ -657,7 +657,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, lettre d'information d'o
 
 **Tâches de départ** : neuve `lettre-information-clients` · neuve `actualite-a-diffuser` · neuve `publications-cabinet`
 
-**Logiciels concernés** : Outlook, Gmail, SharePoint, Google Drive, l'outil d'envoi de lettres que votre cabinet utilise déjà.
+**Logiciels concernés** : Outlook, Gmail, SharePoint, Google Drive, Brevo, Mailchimp.
 
 ---
 
@@ -836,7 +836,7 @@ Dossier fictif : trois dossiers inventés (Martinet, Rossignol, Sittelle), relev
 
 **Tâches de départ** : `honoraires-facturation` · `relances-impayes` · `planification-charge`
 
-**Logiciels concernés** : ACD (gestion interne), MEG (RCA), Microsoft Excel, Qonto, Pennylane, Cegid Loop, Outlook, Gmail.
+**Logiciels concernés** : ACD GI, MEG (RCA), Microsoft Excel, Qonto, Pennylane, Cegid Loop, Outlook, Gmail.
 
 ---
 
@@ -1017,7 +1017,7 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 
 **Tâches de départ** : `exports-imports-logiciels` · `integration-connecteurs` · `excel-classeurs-suivi`
 
-**Logiciels concernés** : Microsoft Excel, SharePoint, OneDrive, Google Drive, Outlook, Gmail, Cegid Loop, Sage 100 Comptabilité, ACD Comptabilité Expert, Pennylane, EBP Comptabilité, Silae, Planity, PrestaShop.
+**Logiciels concernés** : Microsoft Excel, SharePoint, OneDrive, Google Drive, Outlook, Gmail, Cegid Loop, Sage 100 Comptabilité, ACD COMPTA, Pennylane, EBP Comptabilité, Silae, Planity, PrestaShop.
 
 ---
 
