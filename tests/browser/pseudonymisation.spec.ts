@@ -18,7 +18,7 @@ async function download(page: Page, format: string) {
 }
 test('import local, aperçu cohérent, copie/rapport/mapping séparés et reset', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
-  await page.goto(route); await importFile(page); await prepare(page);
+  await page.goto(route); await ouvrirReglages(page); await importFile(page); await prepare(page);
   await expect(page.locator('[data-before]')).toContainText('Alice');
   await expect(page.locator('[data-after]')).not.toContainText('Alice');
   await expect(page.locator('[data-after]')).toContainText('C1_000001');
@@ -36,7 +36,7 @@ test('import local, aperçu cohérent, copie/rapport/mapping séparés et reset'
   await page.locator('[data-reset]').click(); await expect(page.locator('[data-selection]')).toBeHidden(); await expect(page.locator('[data-before]')).toBeEmpty(); await expect(page.locator('[data-after]')).toBeEmpty(); expect(await page.locator('#pseudo-file').inputValue()).toBe(''); expect(errors).toEqual([]);
 });
 test('erreur préserve import, cancel et exemple sans écrasement', async ({ page }) => {
-  await page.goto(route); await importFile(page);
+  await page.goto(route); await ouvrirReglages(page); await importFile(page);
   await page.getByRole('button', { name:'Essayer le fichier fictif' }).click(); await expect(page.locator('[data-error]')).toContainText('Réinitialisez');
   await page.locator('#pseudo-file').setInputFiles({ name:'bad.csv', mimeType:'text/csv', buffer:Buffer.from('A;B\n1') });
   await page.getByRole('button', { name:'Importer une copie', exact:true }).click(); await expect(page.locator('[data-error]')).toContainText('colonnes'); await expect(page.locator('[data-before]')).toContainText('Alice');
@@ -47,13 +47,13 @@ test('erreur préserve import, cancel et exemple sans écrasement', async ({ pag
   await expect(page.locator('[data-status]')).toContainText('annulé'); await expect(page.locator('[data-before]')).toContainText('Alice');
 });
 test('UTF-8 refusé puis Windows-1252 explicite, TSV/FEC', async ({ page }) => {
-  await page.goto(route); await page.locator('#pseudo-separator').selectOption('tab');
+  await page.goto(route); await ouvrirReglages(page); await page.locator('#pseudo-separator').selectOption('tab');
   await page.locator('#pseudo-file').setInputFiles({ name:'fec.txt', mimeType:'text/plain', buffer:Buffer.from('Nom\tMontant\nAndr\xe9\t12','latin1') });
   await page.getByRole('button', { name:'Importer une copie', exact:true }).click(); await expect(page.locator('[data-error]')).toContainText('Encodage');
   await page.locator('#pseudo-encoding').selectOption('windows-1252'); await page.getByRole('button', { name:'Importer une copie', exact:true }).click(); await expect(page.locator('[data-before]')).toContainText('André');
 });
 test('aucun réseau de contenu ni stockage pendant import/preview/export', async ({ page }) => {
-  await page.goto(route); await chargerImagesDifferees(page);
+  await page.goto(route); await ouvrirReglages(page); await chargerImagesDifferees(page);
   const requests: string[] = []; page.on('request', request => { if (!request.url().includes('/_astro/')) requests.push(request.url()); expect(request.method()).toBe('GET'); expect(request.postData()).toBeNull(); });
   await page.evaluate(() => { (window as any).storageWrites=[]; for(const proto of [Storage.prototype, IDBFactory.prototype]) for(const name of ['setItem','open']) { if(name in proto) { (proto as any)[name] = (...args: any[]) => { (window as any).storageWrites.push(args); throw new Error('stockage interdit'); }; } } });
   await importFile(page); await prepare(page); await page.locator('[data-reviewed]').check(); await download(page,'csv');
@@ -61,7 +61,7 @@ test('aucun réseau de contenu ni stockage pendant import/preview/export', async
   expect(await page.evaluate(() => ({ local:localStorage.length, session:sessionStorage.length, cookies:document.cookie }))).toEqual({ local:0, session:0, cookies:'' });
 });
 for (const width of [320,375,768,1024,1440,1920]) test(`rendu, SEO et export au clavier ${width}px`, async ({ page }) => {
-  await page.setViewportSize({width,height:900}); await page.emulateMedia({ reducedMotion:'reduce' }); await page.goto(route);
+  await page.setViewportSize({width,height:900}); await page.emulateMedia({ reducedMotion:'reduce' }); await page.goto(route); await ouvrirReglages(page);
   expect(await page.locator('h1').count()).toBe(1); const h1=await page.locator('h1').innerText(); await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',h1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);
   await page.locator('[data-example]').click(); await prepare(page);
@@ -75,3 +75,5 @@ for (const width of [320,375,768,1024,1440,1920]) test(`rendu, SEO et export au 
   await page.evaluate(() => scrollTo(0,0));
   await page.screenshot({ path:`.qa/pseudonymisation-${width}.png`, fullPage:true });
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

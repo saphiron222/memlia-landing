@@ -66,6 +66,8 @@ const renvois = [
 const OUTILS = '/outils-comptables-gratuits';
 const groupesOutils: { titre: string; outils: { href: string; libelle: string; limite: string }[]; mention?: string }[] = [
   { titre: 'Comparer et contrôler', outils: [
+    { href: `${OUTILS}/verificateur-fec-local`, libelle: 'Vérificateur FEC', limite: 'Les anomalies de structure sont localisées sans modifier votre fichier.' },
+    { href: `${OUTILS}/assistant-lettrage-comptable-local`, libelle: 'Préparer le lettrage', limite: 'Les paires exactes sont proposées ; les ambiguïtés attendent votre décision.' },
     { href: `${OUTILS}/comparateur-balances-comptables`, libelle: 'Comparateur de balances comptables', limite: 'Les variations gardent leurs lignes sources ; votre équipe explique ensuite le compte.' },
     { href: `${OUTILS}/modele-rapprochement-bancaire-excel-gratuit`, libelle: 'Modèle de rapprochement bancaire ouvrable dans Excel', limite: 'Le classeur se télécharge sans compte, avant tout contrôle ; même des soldes concordants restent à valider par le collaborateur.' },
   ], mention: 'Avec le modèle de rapprochement bancaire, le contrôle en ligne garde les écarts et éléments inexpliqués visibles et exportables avec l’état NON VALIDÉ. Télécharger le classeur ou exporter le contrôle ne valide pas le rapprochement.' },

@@ -1,0 +1,22 @@
+/* Le calcul ou la préparation ouvre la page ; les détails restent à portée d’un accordéon. */
+[data-outil] .outil-calcul { border-color:var(--ligne); background:var(--surface-page); box-shadow:none; }
+[data-outil] .outil-calcul :is(input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]),select,textarea) { border-radius:var(--r-bouton); background:var(--surface-feuille); min-height:48px; }
+[data-outil] .outil-calcul :is(form > h2, [data-roi-form] h2) { font-size:var(--titre-bloc); }
+[data-outil] .outil-calcul :is(.hint,.proof) { font-size:var(--t-sm); }
+[data-outil] .outil-calcul .actions { align-items:center; }
+[data-outil] .outil-calcul :is(.btn-contour) { box-shadow:none; }
+[data-outil] .outil-calcul details:not([data-output] *) { border-top:1px solid var(--ligne); padding-block:12px; }
+[data-outil] .outil-calcul details > summary { cursor:pointer; min-height:44px; display:flex; align-items:center; gap:12px; font-weight:600; color:var(--accent-texte); }
+[data-outil] .outil-calcul details > summary::before { content:'+'; }
+[data-outil] .outil-calcul details[open] > summary::before { content:'−'; }
+[data-outil] .outil-calcul details > summary::-webkit-details-marker { display:none; }
+[data-outil] .outil-calcul details > :not(summary) { margin-top:16px; }
+[data-outil] .outil-calcul .result { background:var(--surface-feuille); border-radius:var(--r-boite); }
+[data-outil] :is(output,dd,[data-result]) { font-variant-numeric:tabular-nums; }
+[data-outil] .outil-calcul form { scroll-margin-top:calc(var(--nav-h) + 24px); }
+[data-outil] .outil-calcul :is(.fields,.options,.mapping) { min-width:0; }
+@media(max-width:47.99rem) { [data-outil] .outil-calcul { padding:20px 16px; } [data-outil] .outil-calcul .actions .btn { width:100%; justify-content:center; } }
+
+[data-outil] .outil-options { display:grid; gap:16px; min-width:0; }
+[data-outil] .outil-calcul [data-outil-options] { border:0; border-top:1px solid var(--ligne); border-radius:0; padding:12px 0; }
+[data-outil] .outil-calcul :is(input,select,textarea,summary,button):focus-visible { outline:2px solid var(--focus); outline-offset:3px; }

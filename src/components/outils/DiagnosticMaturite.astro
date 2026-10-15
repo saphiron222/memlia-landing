@@ -4,7 +4,7 @@ import { DIMENSIONS, OPTIONS } from '@/lib/maturite-ia.mjs';
 <div class="diagnostic" data-diagnostic>
   <header><p>Quinze questions, cinq dimensions, toutes facultatives. Répondez pour le cabinet, sans nom de salarié. « Formalisé » : écrit et utilisé ; « En essai » : testé, pas encore stabilisé.</p></header>
   <noscript><p>Activez JavaScript pour obtenir la synthèse et l’export local. Vous pouvez lire les quinze questions et la méthode sans JavaScript.</p></noscript>
-  <form data-async-tool>
+  <form method="dialog" data-async-tool>
     <p data-step aria-live="polite">Cinq dimensions à parcourir</p>
     {DIMENSIONS.map((d, index) => <fieldset data-dimension={index}>
       <legend>{d.label}</legend>

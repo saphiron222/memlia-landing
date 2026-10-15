@@ -10,17 +10,18 @@ const choices = [
 ---
 <div class="prompt-tool" data-prompt-tool>
   <noscript><p>Activez JavaScript pour assembler la consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
-  <div class="library">
+  <details class="library"><summary>Partir d’un exemple de consigne</summary>
     <h2>Bibliothèque d’amorces</h2>
     <p>Choisissez une préparation. Chaque amorce remplit les contraintes ; vous pouvez ensuite les adapter.</p>
     <p>Une tâche déjà détaillée ? Parcourez la <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">bibliothèque de prompts comptables (nouvel onglet)</a> : douze modèles avec leurs entrées et exemples fictifs, sans perdre votre travail ici.</p>
     <div class="actions">{AMORCES.map((seed) => <button class="btn btn-contour" type="button" data-seed={seed.task}>{seed.label}</button>)}</div>
-  </div>
-  <form class="prompt-form" data-own-telemetry novalidate autocomplete="off">
+  </details>
+  <form method="dialog" class="prompt-form" data-own-telemetry novalidate autocomplete="off">
     <h2>Votre consigne, dans vos mots</h2>
     <p class="hint" id="prompt-privacy">Décrivez seulement un geste abstrait : aucun nom, identifiant, montant, contenu de pièce ni fichier. Le filtre repère quelques signaux explicites ; il ne détecte pas tous les noms et n’anonymise rien.</p>
-    {choices.map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
+    {choices.filter(c=>['task','format'].includes(c.name)).map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
     <label>Description abstraite de la tâche<textarea name="description" minlength="20" maxlength="800" rows="4" required aria-describedby="prompt-privacy" placeholder="Préparer une demande générique de pièces manquantes."></textarea></label>
+    <details class="tool-options" data-outil-options><summary>Adapter les entrées, le validateur et l’arrêt</summary><p>Réglage de départ : liste fictive, relecture par le collaborateur et arrêt si une information manque.</p>{choices.filter(c=>!['task','format'].includes(c.name)).map(choice=><label>{choice.label}<select name={choice.name} required>{choice.options.map(option=><option value={option.id} selected={option.id===({input:'liste',validator:'collaborateur',stop:'absent'} as Record<string,string>)[choice.name]}>{option.label}</option>)}</select></label>)}</details>
     <label class="confirmation"><input type="checkbox" name="confirmed" required />Je confirme que cette description ne contient aucune donnée réelle.</label>
     <div class="actions">
       <button class="btn btn-principal" type="submit">Assembler le prompt</button>
@@ -101,7 +102,8 @@ const choices = [
       return !stale && result.ok;
     };
     const hasContent = () => editor.value.length > 0
-      || ['task', 'input', 'format', 'validator', 'stop', 'description'].some(name => Boolean(field(name).value))
+      || ['task', 'format', 'description'].some(name => Boolean(field(name).value))
+      || ['input','validator','stop'].some(name => { const select=field(name) as HTMLSelectElement; return select.value !== [...select.options].find(option=>option.defaultSelected)?.value; })
       || (field('confirmed') as HTMLInputElement).checked;
     const resumeModel = () => {
       let model: ReturnType<typeof parseTransfer> = null;

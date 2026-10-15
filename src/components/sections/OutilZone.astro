@@ -37,12 +37,12 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
       </div>
       <div class="outil-cadre rv">
         <p class="outil-local" data-local-notice><Picto nom="bouclier" taille={18} /><span>{mentionLocale}</span></p>
-        <div class="outil-limites">
+        <details class="outil-limites"><summary>Lire les limites de cet outil</summary>
           <h2 id="limites-titre">Ce que cette page ne fait pas</h2>
           <ul data-tool-limits>
             {limites.map((limite) => <li>{limite}</li>)}
           </ul>
-        </div>
+        </details>
       </div>
     </div>
   </div>
@@ -138,22 +138,10 @@ const { mentionLocale, limites, suspension, large = false } = Astro.props;
       padding: var(--carte-marge-lg);
     }
   }
-  @media (min-width: 64rem) {
-    .outil-zone-section {
-      padding-top: var(--espace-10);
-    }
-    .outil-zone {
-      grid-template-columns: minmax(0, 7fr) minmax(280px, 5fr);
-      gap: var(--espace-16);
-    }
-    .outil-zone-large { grid-template-columns: minmax(0, 1fr); }
-    .outil-zone-large .outil-cadre { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--espace-16); }
-  }
-  /* La colonne porte la mention et toutes les limites : elle ne colle que si l'écran la tient. */
-  @media (min-width: 64rem) and (min-height: 56rem) {
-    .outil-zone:not(.outil-zone-large) .outil-cadre {
-      position: sticky;
-      top: calc(var(--nav-h) + 32px);
-    }
-  }
+  .outil-zone { max-width: 1040px; margin-inline: auto; }
+  .outil-zone-large { max-width: none; }
+  .outil-cadre { gap: 16px; }
+  .outil-limites summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--accent-texte); font-weight: 600; }
+  .outil-limites[open] h2 { margin: 16px 0; }
+  @media (min-width: 64rem) { .outil-zone-section { padding-top: var(--espace-6); } }
 </style>

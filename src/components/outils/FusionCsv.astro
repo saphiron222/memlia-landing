@@ -1,7 +1,7 @@
 <div data-fusion>
   <h2>Assembler les lignes, garder leur origine</h2>
   <p>2 à 20 CSV texte, 20 Mo au total, 100 000 lignes au total, 128 colonnes et 65 536 caractères par cellule. Chaque fichier commence par ses en-têtes. Aucune jointure ni conversion de montants, de dates ou de devises.</p>
-  <form data-async-tool data-own-telemetry>
+  <form method="dialog" data-async-tool data-own-telemetry>
     <label for="fusion-files">Fichiers CSV locaux</label>
     <input id="fusion-files" type="file" multiple accept=".csv,.txt,.tsv" aria-describedby="fusion-help fusion-error" />
     <p id="fusion-help">Choisissez ensuite l’encodage et le séparateur de chaque fichier, puis importez. Une sélection remplace seulement le choix avant import ; réinitialisez explicitement pour commencer un autre lot.</p>

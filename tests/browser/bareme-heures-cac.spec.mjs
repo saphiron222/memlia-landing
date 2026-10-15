@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 const route='/outils-comptables-gratuits/bareme-heures-cac';
 test('local calculation, refusals, preservation and reprise',async({page})=>{
- const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);
  const requests=[];page.on('request',r=>{if(!r.url().startsWith('blob:'))requests.push(r.url());});
  await page.locator('[data-demo]').click();await expect(page.locator('[data-result]')).toContainText('20 à 35');await expect(page.locator('[data-result]')).toContainText('42 heures');
  await page.locator('[name="notes"]').fill('001 note <script>bad()</script>');await expect(page.locator('[data-export="json"]')).toBeDisabled();await page.locator('[data-bareme-form]').evaluate(f=>f.requestSubmit());
@@ -18,7 +18,9 @@ test('local calculation, refusals, preservation and reprise',async({page})=>{
  page.once('dialog',d=>d.accept());await page.locator('[data-reset]').click();await expect(page.locator('[data-result]')).toHaveText('Session effacée.');
 });
 for(const width of [320,375,768,1024,1440,1920])test(`layout ${width}`,async({page},testInfo)=>{
- await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route);await page.evaluate(()=>document.fonts.ready);await page.locator('[data-demo]').click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);await page.locator('[data-demo]').click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await expect(page.locator('h1')).toHaveCount(1);await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',await page.locator('h1').innerText());
  if([375,1440].includes(width)){await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:testInfo.outputPath(`bareme-${width}.png`),fullPage:true});}
 });
+
+async function ouvrirReglages(page){ for (const summary of await page.locator('.budget-advanced, [data-outil-options], [data-bareme-qualification]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

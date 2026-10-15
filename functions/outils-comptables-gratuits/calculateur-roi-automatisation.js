@@ -18,7 +18,7 @@ export async function onRequestGet(context) {
   if (response.status !== 200 || !response.headers.get('Content-Type')?.startsWith('text/html')) return response;
   const headers = new Headers(response.headers);
   headers.set('Cache-Control', 'public, max-age=0, must-revalidate, no-transform');
-  headers.set('Content-Security-Policy', "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
+  headers.set('Content-Security-Policy', "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'none'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'");
   headers.delete('ETag');
   headers.delete('Last-Modified');
   headers.delete('Content-Length');

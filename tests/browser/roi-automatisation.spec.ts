@@ -11,7 +11,7 @@ for (const mode of ['disabled','blocked'] as const) test(`ROI : scripts ${mode},
   if (mode === 'blocked') await context.route('**/*',route => route.request().resourceType() === 'script' ? route.abort() : route.continue());
   const page = await context.newPage();
   try {
-    await page.goto(route); await page.waitForLoadState('networkidle');
+    await page.goto(route); await ouvrirReglages(page); await page.waitForLoadState('networkidle');
     const originalUrl = page.url();
     const inputs = page.locator('[data-roi-form] input');
     const values = Array.from({length:33},(_,index)=>index === 6 ? '12345,67' : String(index+1));
@@ -27,7 +27,7 @@ for (const mode of ['disabled','blocked'] as const) test(`ROI : scripts ${mode},
 });
 test('ROI : borne exacte concordante dans interface, copie, JSON et CSV', async ({page,context}) => {
   await context.grantPermissions(['clipboard-read','clipboard-write']);
-  await page.goto(route); await page.locator('[data-example]').click();
+  await page.goto(route); await ouvrirReglages(page); await page.locator('[data-example]').click();
   for (const [index,n] of ['9,99','10','10,01'].entries()) {
     for (const [key,value] of Object.entries({I:'1',M:'0,90',E:'1',d:'0',n})) await page.locator(`#roi-${index}-${key}`).fill(value);
   }
@@ -50,7 +50,7 @@ test('ROI : borne exacte concordante dans interface, copie, JSON et CSV', async 
 });
 test('ROI : oracle, comparaison, copie et exports complets, zéro envoi ou stockage', async ({page,context}) => {
   await context.grantPermissions(['clipboard-read','clipboard-write']);
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   await chargerImagesDifferees(page);
   const requests:string[] = []; page.on('request',request=>requests.push(request.url()));
   await page.getByRole('button',{name:'Charger trois exemples fictifs'}).click();
@@ -74,7 +74,7 @@ test('ROI : oracle, comparaison, copie et exports complets, zéro envoi ou stock
   expect(await page.evaluate(async()=>({local:localStorage.length,session:sessionStorage.length,cookies:document.cookie,databases:(await indexedDB.databases()).length}))).toEqual({local:0,session:0,cookies:'',databases:0});
 });
 test('ROI : E inconnu, temps négatif, payback hors horizon, coûts nuls', async ({page}) => {
-  await page.goto(route); await page.locator('[data-example]').click();
+  await page.goto(route); await ouvrirReglages(page); await page.locator('[data-example]').click();
   await page.locator('#roi-0-E').fill('');
   await page.locator('#roi-1-p').fill('0');
   await page.locator('#roi-1-d').fill('13');
@@ -86,7 +86,7 @@ test('ROI : E inconnu, temps négatif, payback hors horizon, coûts nuls', async
   expect(report.scenarios[2].results.roi).toBeNull(); expect(report.scenarios[2].results.paybackState).toBe('non-applicable');
 });
 test('ROI : refus sans perte, résultat périmé inaccessible, remplacement consenti et effacement', async ({page}) => {
-  await page.goto(route); await page.locator('[data-example]').click(); await page.getByRole('button',{name:compare}).click();
+  await page.goto(route); await ouvrirReglages(page); await page.locator('[data-example]').click(); await page.getByRole('button',{name:compare}).click();
   await page.locator('#roi-0-p').fill('101');
   await expect(page.locator('[data-output]')).toBeHidden();
   await page.getByRole('button',{name:compare}).click();
@@ -102,13 +102,13 @@ test('ROI : refus sans perte, résultat périmé inaccessible, remplacement cons
   await expect(page.locator('[data-results] article')).toHaveCount(0);
 });
 test('ROI : SEO, média propre, sitemap, hub/footer et entrants', async ({page,request}) => {
-  const response = await page.goto(route); expect(response?.status()).toBe(200);
+  const response = await page.goto(route); await ouvrirReglages(page); expect(response?.status()).toBe(200);
   const h1 = 'Calculateur de ROI d’automatisation comptable';
   await expect(page.locator('main h1')).toHaveCount(1); await expect(page.locator('main h1')).toHaveText(h1);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content',h1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',`https://memlia.fr${route}`);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content','https://memlia.fr/social/proofs/v2/og/30-outil-roi.webp.jpg');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://memlia.fr/social/proofs/v2/og/30-outil-roi.webp.jpg');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content','https://memlia.fr/social/outils/social/calculateur-roi-automatisation.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://memlia.fr/social/outils/social/calculateur-roi-automatisation.webp.jpg');
   const schemas = (await page.locator('script[type="application/ld+json"]').allTextContents()).map(text=>JSON.parse(text));
   const graph = schemas.find(schema=>schema['@graph'])['@graph'];
   expect(graph.map((node:Record<string,string>)=>node['@type'])).toEqual(['WebPage','WebApplication','BreadcrumbList']);
@@ -119,14 +119,14 @@ test('ROI : SEO, média propre, sitemap, hub/footer et entrants', async ({page,r
   expect(zone?.width).toBeGreaterThan(1000);
   expect((await request.get('/sitemap-outils.xml')).status()).toBe(200);
   expect(await (await request.get('/sitemap-outils.xml')).text()).toContain(`https://memlia.fr${route}`);
-  for (const source of ['/outils-comptables-gratuits','/automatisation-cabinet-comptable','/methode']) {
-    await page.goto(source); expect(await page.locator(`main a[href="${route}"]`).count()).toBeGreaterThan(0);
+  for (const source of ['/outils-comptables-gratuits','/automatisation-cabinet-comptable','/agents-ia','/methode']) {
+    await page.goto(source); await ouvrirReglages(page); expect(await page.locator(`main a[href="${route}"]`).count()).toBeGreaterThan(0);
     await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);
   }
 });
 for (const width of [320,375,768,1024,1440,1920]) test(`ROI : largeur ${width}, clavier et reflow`, async ({page}) => {
   await page.setViewportSize({width,height:900}); await page.emulateMedia({reducedMotion:'reduce'});
-  await page.goto(route); await page.locator('[data-example]').click(); await page.getByRole('button',{name:compare}).click();
+  await page.goto(route); await ouvrirReglages(page); await page.locator('[data-example]').click(); await page.getByRole('button',{name:compare}).click();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.locator('#roi-0-V').focus(); await page.keyboard.press('Tab'); await expect(page.locator('#roi-0-t')).toBeFocused();
   for (const input of await page.locator('[data-roi-form] input').all()) {
@@ -139,3 +139,5 @@ for (const width of [320,375,768,1024,1440,1920]) test(`ROI : largeur ${width}, 
     await page.screenshot({path:`.qa/roi-${width}-full.png`,fullPage:true});
   }
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('.budget-advanced, [data-outil-options], [data-bareme-qualification]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

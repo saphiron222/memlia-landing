@@ -1,0 +1,392 @@
+[
+  {
+    "slug": "content-brief-generator",
+    "controls": [
+      "16 text field (settable) Primary Keyword *, ID: primaryKeyword",
+      "18 text field (settable) Target Audience *, ID: targetAudience",
+      "20 combo box (collapsed) Value: Professional, Secondary Actions: Expand",
+      "23 button Generate Content Brief",
+      "45 button What is a content brief and why do I need one?",
+      "49 button How does the AI content brief generator work?",
+      "53 button Is this content brief generator really free?",
+      "57 button What information is included in the generated content brief?",
+      "61 button Can I customize the tone of voice in my content brief?",
+      "65 button How do I use the generated content brief to create actual content?"
+    ]
+  },
+  {
+    "slug": "seo-title-generator",
+    "controls": [
+      "17 text field (settable) Enter your main keyword or topic *, ID: keyword",
+      "20 text field (settable) What is your target audience? (optional), ID: audience",
+      "21 button Generate Titles",
+      "42 button (collapsed) What makes a good SEO title?, Secondary Actions: Expand",
+      "44 button (collapsed) Why is the 60-character limit important?, Secondary Actions: Expand",
+      "46 button (collapsed) How is the SEO score calculated?, Secondary Actions: Expand",
+      "48 button (collapsed) Can I use these titles for blog posts and articles?, Secondary Actions: Expand",
+      "50 button (collapsed) Do I need to create an account to use this tool?, Secondary Actions: Expand",
+      "52 button (collapsed) What if I want to generate more titles or get different variations?, Secondary Actions: Expand"
+    ]
+  },
+  {
+    "slug": "cta-generator",
+    "controls": [
+      "20 text field (settable) What is your product/service? *, ID: productService",
+      "22 pop up button (collapsed, settable) Select a Tone, Value: Persuasive - Focus on benefits and value, ID: tone, Secondary Actions: Expand",
+      "31 text field (settable) Target Audience (optional), ID: targetAudience",
+      "33 button Generate CTAs",
+      "48 text Click the Generate CTAs button and let our advanced AI analyze your inputs to create five unique, compelling call-to-action phrases instantly.",
+      "52 text Review your generated CTAs, click the copy button on your favorites, and use them in your marketing campaigns, websites, or emails right away.",
+      "56 button What is a CTA and why is it important?",
+      "60 button How do I choose the right tone for my CTA?",
+      "64 button Can I use these CTAs for commercial purposes?",
+      "68 button How can I generate more CTA options?",
+      "72 button What makes a CTA effective?",
+      "76 button Should I specify a target audience?"
+    ]
+  },
+  {
+    "slug": "blog-outline-generator",
+    "controls": [
+      "15 text field (settable) Enter your main blog topic or keyword, ID: topic-input",
+      "18 button (disabled) Generate Outline",
+      "39 button What is a blog outline generator?",
+      "43 button How does this free tool help with SEO?",
+      "47 button Can I customize the generated outline?",
+      "51 button Is this tool really free to use?",
+      "55 button What makes a good blog outline?",
+      "59 button Can I use the outlines for commercial content?"
+    ]
+  },
+  {
+    "slug": "meta-description-generator",
+    "controls": [
+      "15 text field (settable) Target Keyword *, ID: keyword",
+      "17 text entry area (settable) Page Content / Article Outline *, ID: content",
+      "19 pop up button (collapsed, settable) Tone of Voice, Value: Professional, ID: tone, Secondary Actions: Expand",
+      "27 button Generate Meta Descriptions",
+      "47 button (collapsed) What is a meta description generator and how does it work?, Secondary Actions: Expand",
+      "49 button (collapsed) What is the optimal length for a meta description?, Secondary Actions: Expand",
+      "51 button (collapsed) How do meta descriptions benefit my SEO strategy?, Secondary Actions: Expand",
+      "53 button (collapsed) Is this meta description generator completely free?, Secondary Actions: Expand",
+      "55 button (collapsed) How does the AI create meta descriptions?, Secondary Actions: Expand",
+      "57 button (collapsed) What are the best practices for meta descriptions?, Secondary Actions: Expand"
+    ]
+  },
+  {
+    "slug": "ai-article-summarizer",
+    "controls": [
+      "15 text entry area (settable)",
+      "21 text field (settable)",
+      "23 button (disabled) Summarize Article",
+      "45 button How does the AI article summarizer work?",
+      "49 button What types of articles can I summarize?",
+      "53 button Is the AI article summarizer free to use?",
+      "57 button How accurate are the AI-generated summaries?",
+      "61 button Can I customize the summary tone?",
+      "65 button What's the difference between URL input and text input?"
+    ]
+  },
+  {
+    "slug": "headline-checker",
+    "controls": [
+      "15 text field (settable) Enter your headline here, ID: headline-input",
+      "18 button (disabled) Analyze Headline",
+      "37 button (collapsed) What does the Free AI Headline Analyzer do?, Secondary Actions: Expand",
+      "39 button (collapsed) How does the AI headline analysis work?, Secondary Actions: Expand",
+      "41 button (collapsed) What makes a good headline according to SEO best practices?, Secondary Actions: Expand",
+      "43 button (collapsed) Is the headline checker completely free to use?, Secondary Actions: Expand",
+      "45 button (collapsed) What should I do with the AI-suggested alternative headlines?, Secondary Actions: Expand",
+      "47 button (collapsed) Can I use this tool for social media posts and email subject lines?, Secondary Actions: Expand"
+    ]
+  },
+  {
+    "slug": "lsi-keyword-generator",
+    "controls": [
+      "15 text field (settable) Enter Your Main Keyword, ID: keyword",
+      "17 pop up button (collapsed, settable) Target Country, Value: United States, ID: country, Secondary Actions: Expand",
+      "27 button Generate LSI Keywords",
+      "48 button (collapsed) What are LSI keywords and why are they important?, Secondary Actions: Expand",
+      "50 button (collapsed) How does the LSI keyword generator work?, Secondary Actions: Expand",
+      "52 button (collapsed) How many LSI keywords should I use in my content?, Secondary Actions: Expand",
+      "54 button (collapsed) Can I use LSI keywords for different countries?, Secondary Actions: Expand",
+      "56 button (collapsed) Are the generated LSI keywords free to use?, Secondary Actions: Expand",
+      "58 button (collapsed) How is this different from regular keyword research tools?, Secondary Actions: Expand"
+    ]
+  },
+  {
+    "slug": "content-idea-generator",
+    "controls": [
+      "15 text field (settable) Enter a primary topic or keyword, ID: topic",
+      "17 pop up button (collapsed, settable) Content Style, Value: Blog Post, ID: contentStyle, Secondary Actions: Expand",
+      "23 button Generate Ideas",
+      "48 button What is a Content Idea Generator?",
+      "52 button How does the Content Idea Generator work?",
+      "56 button Who should use this Content Idea Generator?",
+      "60 button Is the Content Idea Generator really free?",
+      "64 button How does this tool help with keyword research and SEO?",
+      "68 button What content styles can I generate ideas for?"
+    ]
+  },
+  {
+    "slug": "ad-copy-ai",
+    "controls": [
+      "21 text field (settable) Product/Service Name *, ID: product-name",
+      "23 text entry area (settable) Product/Service Description *, ID: product-description, Value: Outrank is an AI-powered SEO platform that helps digital marketers, content creators, and businesses create high-quality content that ranks. Get keyword research, content optimization, and competitive analysis all in one place.",
+      "29 checkbox Description: Digital Marketers, Value: 1",
+      "32 checkbox Description: Content Creators, Value: 0",
+      "34 checkbox Description: SEO Specialists, Value: 0",
+      "36 checkbox Description: Indie Hackers, Value: 0",
+      "38 checkbox Description: Solopreneurs, Value: 0",
+      "41 combo box (collapsed) Ad Platform *, Value: Google Ads, ID: ad-platform, Secondary Actions: Expand",
+      "43 button Generate Ad Copy",
+      "61 text Click generate and receive three unique, compelling ad copy variations instantly. Each includes a headline and body text optimized for your chosen platform with easy copy buttons.",
+      "65 button Is the AI Ad Copy Generator really free?",
+      "69 button What ad platforms are supported?",
+      "73 button How does the AI generate ad copy?",
+      "77 button Can I customize the generated ad copy?"
+    ]
+  },
+  {
+    "slug": "character-count-checker",
+    "controls": [
+      "15 text entry area (settable) Description: Text input area for character counting, ID: text-input",
+      "22 button Copy text to clipboard",
+      "25 button Clear text area",
+      "41 text See character, word, and paragraph counts update automatically as you type without clicking any buttons.",
+      "49 button How does the character count checker work?",
+      "53 button Does the character count include spaces?",
+      "57 button What is the difference between characters and words?",
+      "61 button Can I use this tool for social media posts?",
+      "65 button How are paragraphs counted?",
+      "69 button Is my text data stored or saved?"
+    ]
+  },
+  {
+    "slug": "grammar-checker",
+    "controls": [
+      "15 text entry area (settable)",
+      "17 button (disabled) Check Grammar",
+      "18 button Clear Text",
+      "39 button Is this grammar checker really free?",
+      "43 button What types of errors does it detect?",
+      "47 button How accurate is the AI grammar checker?",
+      "51 button Can I use this for academic or professional writing?",
+      "55 button Is there a character or word limit?",
+      "59 button How is this different from other grammar checkers?"
+    ]
+  },
+  {
+    "slug": "keyword-density-analyzer",
+    "controls": [
+      "16 button Try Example",
+      "17 text entry area (settable) Text Content Try Example, ID: text-input",
+      "21 text field (settable) Target Keywords(separate multiple keywords with commas), ID: keywords-input",
+      "23 button Analyze Keyword Density",
+      "39 text Click the Analyze button and instantly view detailed density percentages, word counts, and color-coded optimization recommendations for each keyword to improve your SEO strategy effectively.",
+      "43 button What is keyword density?",
+      "47 button What is a good keyword density percentage?",
+      "51 button Can I analyze multiple keywords at once?",
+      "55 button Does the tool consider keyword variations?",
+      "59 button Why is keyword density important for SEO?",
+      "63 button Is this tool free to use?"
+    ]
+  },
+  {
+    "slug": "permalink-generator",
+    "controls": [
+      "15 text field (settable)",
+      "17 text field (settable)",
+      "19 button Generate Permalink",
+      "52 text Click the generate button and our tool instantly transforms your title into a clean, SEO-friendly permalink by removing special characters, converting spaces to hyphens, and optimizing structure.",
+      "60 button What is a permalink and why is it important for SEO?",
+      "64 button What makes a good SEO-friendly permalink?",
+      "68 button Should I include my target keyword in the permalink?",
+      "72 button Can I use numbers and special characters in permalinks?",
+      "76 button How long should my permalink be?",
+      "80 button Can I change a permalink after publishing content?"
+    ]
+  },
+  {
+    "slug": "robots-txt-file-generator",
+    "controls": [
+      "16 button Standard Website Best for corporate and informational websites",
+      "20 button E-commerce Site Optimized for online stores and shopping sites",
+      "24 button Blog/Content Site Perfect for blogs and content-heavy websites",
+      "30 text field (settable) Sitemap URL *, ID: sitemap-url",
+      "35 checkbox (settable, integer) Description: Googlebot (Google Search) Main Google crawler, Value: 1",
+      "38 checkbox (settable, integer) Description: Googlebot-Image (Google Images) Google image search, Value: 0",
+      "41 checkbox (settable, integer) Description: Googlebot-News (Google News) Google news crawler, Value: 0",
+      "44 checkbox (settable, integer) Description: Bingbot (Bing Search) Microsoft Bing crawler, Value: 1",
+      "47 checkbox (settable, integer) Description: Slurp (Yahoo Search) Yahoo search crawler, Value: 0",
+      "50 checkbox (settable, integer) Description: DuckDuckBot (DuckDuckGo) DuckDuckGo crawler, Value: 1",
+      "53 checkbox (settable, integer) Description: Baiduspider (Baidu) Chinese search engine, Value: 0",
+      "56 checkbox (settable, integer) Description: YandexBot (Yandex) Russian search engine, Value: 0",
+      "60 text entry area (settable) Directories to Disallow (Optional), ID: disallow-dirs",
+      "62 button ▶ Advanced Options"
+    ]
+  },
+  {
+    "slug": "subject-line-creator",
+    "controls": [
+      "16 text entry area (settable) ID: emailContent, Describe your email's content(e.g., announcing a new feature, a weekly newsletter, a sales promotion)",
+      "18 pop up button (collapsed, settable) Select Tone of Voice, Value: Professional, ID: tone, Secondary Actions: Expand",
+      "27 text field (settable) Target Audience (optional), ID: audience",
+      "28 button Generate Subject Lines",
+      "44 text Click the generate button and our advanced AI will instantly create five compelling, engaging email subject lines tailored to your specifications and audience.",
+      "52 button What is an AI subject line generator?",
+      "56 button How does the AI subject line creator work?",
+      "60 button Is the subject line generator really free?",
+      "64 button What tones of voice are available?",
+      "68 button Can I use these subject lines for commercial purposes?",
+      "72 button How can I improve my subject line results?"
+    ]
+  },
+  {
+    "slug": "snippet-generator",
+    "controls": [
+      "15 text entry area (settable) Page URL or Content, ID: content-input",
+      "17 pop up button (collapsed, settable) Snippet Type, Value: FAQ Page, ID: snippet-type, Secondary Actions: Expand",
+      "27 button Generate Snippet",
+      "47 button What is a JSON-LD snippet?",
+      "51 button Which schema types does this tool support?",
+      "55 button How do I use the generated snippet on my website?",
+      "59 button Is the snippet generator really free?",
+      "63 button Can I use a URL instead of pasting content?",
+      "67 button Will the generated snippets improve my SEO?"
+    ]
+  },
+  {
+    "slug": "social-media-ai-generator",
+    "controls": [
+      "17 text entry area (settable) What is your post about?, ID: topic",
+      "22 button 🐦 Twitter Concise & engaging ✓",
+      "27 button 💼 LinkedIn Professional & insightful ✓",
+      "32 button 👥 Facebook Social & conversational",
+      "36 button 📸 Instagram Visual & inspiring",
+      "43 text field (settable) Tone of Voice, Value: Professional, ID: tone",
+      "45 button Generate Posts",
+      "70 button How does the AI social media post generator work?",
+      "74 button Is this social media post generator really free?",
+      "78 button Can I customize the tone and style of generated posts?",
+      "82 button What social media platforms are supported?",
+      "86 button Do the generated posts follow platform character limits?",
+      "90 button Can I edit the generated posts before using them?"
+    ]
+  },
+  {
+    "slug": "ai-article-generator",
+    "controls": [
+      "16 text field (settable) Enter your main keyword or article title *, ID: mainKeyword",
+      "19 text field (settable) Target keywords (comma-separated, optional), ID: targetKeywords",
+      "22 pop up button (collapsed, settable) Article Length, Value: Medium (~1,500 words), ID: articleLength, Secondary Actions: Expand",
+      "28 button Generate Article",
+      "44 text Choose your desired article length from short (~500 words), medium (~1,500 words), or long (~3,000 words). Click the generate button and our AI will craft a comprehensive, SEO-optimized article tailored to your specifications.",
+      "52 button Is the AI Article Generator really free?",
+      "56 button How does the AI Article Generator work?",
+      "60 button What article lengths can I generate?",
+      "64 button Are the generated articles SEO-optimized?",
+      "68 button Can I edit the generated articles?",
+      "72 button Who should use this AI Article Generator?"
+    ]
+  },
+  {
+    "slug": "headline-generator",
+    "controls": [
+      "16 text field (settable) Enter your topic or main keyword",
+      "18 pop up button (collapsed, settable) Select Headline Tone, Value: Catchy - Attention-grabbing, memorable, and viral-worthy, ID: tone, Secondary Actions: Expand",
+      "25 button Generate Headlines",
+      "47 button How does the AI headline generator work?",
+      "51 button What makes a good headline?",
+      "55 button Can I use these headlines for SEO content?",
+      "59 button What's the difference between the tone options?",
+      "63 button How many times can I generate headlines?",
+      "67 button Can I create a full article from my headline?"
+    ]
+  },
+  {
+    "slug": "article-rewriter",
+    "controls": [
+      "15 text entry area (settable) Paste your article here (up to 3,000 words), ID: article-input",
+      "19 pop up button (collapsed, settable) Rewrite Tone, Value: Professional - Formal and business-appropriate, ID: tone-select, Secondary Actions: Expand",
+      "25 button (disabled) Rewrite Article",
+      "48 button Is this article rewriter really free?",
+      "52 button How does the AI article rewriter work?",
+      "56 button What tones can I choose for rewriting?",
+      "60 button Will the rewritten article pass plagiarism checks?",
+      "64 button Can I use this for commercial purposes?",
+      "68 button What's the maximum article length I can rewrite?"
+    ]
+  },
+  {
+    "slug": "reading-level-checker",
+    "controls": [
+      "15 text entry area (settable) Enter Your Text, ID: text-input",
+      "20 button (disabled) Check Reading Level",
+      "42 button What is a reading level checker?",
+      "46 button How does the reading level checker work?",
+      "50 button What reading level scores are calculated?",
+      "54 button What is a good reading level for SEO content?",
+      "58 button Can I upload documents to check reading level?",
+      "62 button How can I improve my content's reading level?"
+    ]
+  },
+  {
+    "slug": "word-counter",
+    "controls": [
+      "15 text entry area (settable) Enter or paste your text below, ID: text-input",
+      "16 button Clear Text",
+      "44 text Watch as the word count, character count, and character count without spaces update in real-time as you type. No need to click any buttons - results are immediate and accurate.",
+      "52 button How accurate is this word counter tool?",
+      "56 button What's the difference between characters and characters without spaces?",
+      "60 button Can I use this word counter for SEO content?",
+      "64 button Does this tool work for all languages?",
+      "68 button Is there a limit to how much text I can analyze?",
+      "72 button Will my text be saved or stored anywhere?"
+    ]
+  },
+  {
+    "slug": "plagiarism-checker",
+    "controls": [
+      "15 text entry area (settable) Enter Your Text, ID: text-input",
+      "22 button (disabled) Check for Plagiarism",
+      "44 button How accurate is this plagiarism checker?",
+      "48 button Is this plagiarism checker really free?",
+      "52 button What file formats can I upload?",
+      "56 button How long does a plagiarism check take?",
+      "60 button What should I do if plagiarism is detected?",
+      "64 button Can teachers and students use this tool?"
+    ]
+  },
+  {
+    "slug": "image-resizer",
+    "controls": [
+      "19 button Select Image",
+      "39 button (collapsed) What image formats does the image resizer support?, Secondary Actions: Expand",
+      "41 button (collapsed) Does resizing images reduce quality?, Secondary Actions: Expand",
+      "43 button (collapsed) What are the best image dimensions for social media?, Secondary Actions: Expand",
+      "45 button (collapsed) Should I lock the aspect ratio when resizing?, Secondary Actions: Expand",
+      "47 button (collapsed) Can I resize images without losing transparency?, Secondary Actions: Expand",
+      "49 button (collapsed) Is there a limit to how large or small I can resize images?, Secondary Actions: Expand"
+    ]
+  },
+  {
+    "slug": "topic-cluster-generator",
+    "controls": [
+      "16 text field (settable) <redacted>",
+      "18 text field (settable)",
+      "21 combo box (collapsed) Value: Digital Marketers, Secondary Actions: Expand",
+      "24 combo box (collapsed) Value: Auto (balanced mix), Secondary Actions: Expand",
+      "27 combo box (collapsed) Value: Auto (mixed formats), Secondary Actions: Expand",
+      "30 text field (settable)",
+      "32 combo box (collapsed) Value: English, Secondary Actions: Expand",
+      "35 combo box (collapsed) Value: Global, Secondary Actions: Expand",
+      "42 button Click to upload a .csv, .json, or .txt file",
+      "45 button Generate Topic Cluster",
+      "67 button What is a topic cluster and why does it matter for SEO?",
+      "71 button How does this topic cluster generator work?",
+      "75 button How many supporting topics should a cluster include?",
+      "79 button Can I upload my existing keywords instead of starting from scratch?"
+    ]
+  }
+]

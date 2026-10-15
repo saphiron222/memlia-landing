@@ -134,6 +134,7 @@ const schemaComplet = withBreadcrumb(schemaAvecAttribution, { chemin, name: titr
     <Footer blogActif={blogActif} rubriques={rubriques} base={base} />
 
     <script>
+      import '@/lib/sticky-rails';
       // Apparitions au défilement (spec §5.2) : la classe `js` active les états initiaux ;
       // sans JS, tout est visible. Sous prefers-reduced-motion, tout est révélé d'emblée.
       document.documentElement.classList.add('js');

@@ -70,6 +70,14 @@ jobs:
         env:
           CF_PAGES: "1"
 
+      - name: Preserve the verified site for a preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-verifie-${{ github.event.pull_request.head.sha }}
+          path: dist
+          include-hidden-files: true
+          retention-days: 7
+
   verify:
     name: Contrats navigateur (${{ matrix.part }}/4)
     runs-on: ubuntu-latest

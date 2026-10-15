@@ -2,7 +2,7 @@
 import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
 ---
 <div class="charte" data-charter>
-  <form data-charter-form novalidate autocomplete="off">
+  <form method="dialog" data-charter-form novalidate autocomplete="off">
     <h2>Préparer une charte de travail</h2>
     <p>Décrivez des rôles et des outils, pas des personnes ou des dossiers. Cette trame organise des usages sans données clients ; elle ne donne aucune autorisation pour un dossier réel.</p>
     <p class="texte-2">Usages, données, validation et fréquence sont requis. Les autres champs peuvent rester vides : ils apparaîtront « à compléter ».</p>
@@ -14,7 +14,11 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
     </fieldset>
     <label for="donnees">Données autorisées dans cette trame</label>
     <select id="donnees" name="donnees" aria-describedby="charte-error"><option value="">Choisir une famille</option><option value="fictives">Fictives uniquement</option><option value="publiques">Publiques, sans donnée personnelle ni client</option><option value="internes">Processus internes, sans donnée personnelle ni client</option></select>
-    <label><input type="checkbox" name="publicFiles" aria-describedby="charte-error" /> Envoi de fichiers clients à une IA publique</label>
+    <label for="validation">Moment de validation humaine</label>
+    <select id="validation" name="validation" aria-describedby="charte-error"><option value="">Choisir un contrôle</option><option value="chaque-resultat">Chaque résultat, même en interne</option><option value="avant-diffusion">Avant diffusion ou intégration à un travail</option></select>
+    <label for="frequence">Fréquence de relecture</label>
+    <select id="frequence" name="frequence" aria-describedby="charte-error"><option value="">Choisir une fréquence</option><option value="mensuelle">Mensuelle</option><option value="trimestrielle">Trimestrielle</option><option value="avant chaque nouvel usage">Avant chaque nouvel usage</option></select>
+    <details data-outil-options><summary>Préciser les rôles, les outils et la formation</summary><div class="outil-options">    <label><input type="checkbox" name="publicFiles" aria-describedby="charte-error" /> Envoi de fichiers clients à une IA publique</label>
     <p class="charte-hors-perimetre">Choix hors périmètre : cette option sert à détecter une contradiction, pas à autoriser un envoi. Elle bloque la génération.</p>
     <label for="outils">Outils retenus (description générique)</label>
     <textarea id="outils" name="outils" maxlength="400" rows="2" aria-describedby="charte-error" placeholder="Ex. environnement de démonstration validé par le cabinet"></textarea>
@@ -22,14 +26,11 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
     <input id="responsable" name="responsable" maxlength="160" aria-describedby="charte-error" placeholder="Ex. référent outils" />
     <label for="validateur">Rôle de validation</label>
     <input id="validateur" name="validateur" maxlength="160" aria-describedby="charte-error" placeholder="Ex. responsable de pôle" />
-    <label for="validation">Moment de validation humaine</label>
-    <select id="validation" name="validation" aria-describedby="charte-error"><option value="">Choisir un contrôle</option><option value="chaque-resultat">Chaque résultat, même en interne</option><option value="avant-diffusion">Avant diffusion ou intégration à un travail</option></select>
     <label for="formation">Formation et jeu d’essai prévus</label>
     <textarea id="formation" name="formation" maxlength="400" rows="2" aria-describedby="charte-error" placeholder="Ex. atelier sur les usages retenus et leurs cas d’arrêt"></textarea>
-    <label for="frequence">Fréquence de relecture</label>
-    <select id="frequence" name="frequence" aria-describedby="charte-error"><option value="">Choisir une fréquence</option><option value="mensuelle">Mensuelle</option><option value="trimestrielle">Trimestrielle</option><option value="avant chaque nouvel usage">Avant chaque nouvel usage</option></select>
     <label for="revision">Prochaine date de relecture</label>
     <input id="revision" name="revision" type="date" aria-describedby="charte-error" />
+</div></details>
     <p id="charte-error" data-error role="alert" hidden></p>
     <div class="charte-actions"><button type="submit" class="btn btn-principal">Préparer la charte</button><button type="button" class="btn btn-contour" data-example data-outil-action="exemple">Charger un exemple fictif</button></div>
   </form>
@@ -54,10 +55,10 @@ import { CHARTER_NOTICE } from '@/lib/charte-ia.mjs';
   <section aria-labelledby="charte-pratique">
     <h2 id="charte-pratique">Mettre les choix en pratique</h2>
     <p>Commencez par deux usages précis. Désignez les rôles, choisissez les données et le contrôle, puis relisez chaque clause. Exportez votre version pour la discuter avec l’équipe. La formation et le jeu d’essai viennent avant une décision d’adoption, pas après.</p>
-    <details open><summary>Est-ce la charte officielle de l’Ordre ?</summary><p>Non. Le CNOEC propose ses propres ressources, liées ci-dessous. Nous composons une trame originale qui rend vos usages, vos contrôles et vos arbitrages visibles ; nous ne reproduisons pas le modèle de l’Ordre.</p></details>
-    <details open><summary>Pourquoi un responsable reste-t-il « à compléter » ?</summary><p>Nous ne désignons personne à votre place. L’aperçu et la checklist signalent le rôle manquant. Le cabinet décide qui assume ce rôle avant de mettre la charte en pratique.</p></details>
-    <details open><summary>Puis-je autoriser un fichier client avec cette charte ?</summary><p>Non. Les familles de données proposées excluent les données personnelles et clients. Les usages sur dossiers réels nécessitent un cadrage distinct des outils, accès et traitements. Le choix d’envoi à une IA publique bloque la génération.</p></details>
-    <details open><summary>Comment conserver mes éditions ?</summary><p>Copiez ou exportez les clauses en Markdown ou texte. L’impression reprend la même version avec la mention non officielle. Rien n’est enregistré par l’outil ; fermez la page seulement après avoir conservé ce qui vous est utile.</p></details>
+    <details><summary>Est-ce la charte officielle de l’Ordre ?</summary><p>Non. Le CNOEC propose ses propres ressources, liées ci-dessous. Nous composons une trame originale qui rend vos usages, vos contrôles et vos arbitrages visibles ; nous ne reproduisons pas le modèle de l’Ordre.</p></details>
+    <details><summary>Pourquoi un responsable reste-t-il « à compléter » ?</summary><p>Nous ne désignons personne à votre place. L’aperçu et la checklist signalent le rôle manquant. Le cabinet décide qui assume ce rôle avant de mettre la charte en pratique.</p></details>
+    <details><summary>Puis-je autoriser un fichier client avec cette charte ?</summary><p>Non. Les familles de données proposées excluent les données personnelles et clients. Les usages sur dossiers réels nécessitent un cadrage distinct des outils, accès et traitements. Le choix d’envoi à une IA publique bloque la génération.</p></details>
+    <details><summary>Comment conserver mes éditions ?</summary><p>Copiez ou exportez les clauses en Markdown ou texte. L’impression reprend la même version avec la mention non officielle. Rien n’est enregistré par l’outil ; fermez la page seulement après avoir conservé ce qui vous est utile.</p></details>
   </section>
   <noscript>La génération locale nécessite JavaScript. Vous pouvez consulter la ressource de l’Ordre ci-dessous sans l’activer.</noscript>
 </div>

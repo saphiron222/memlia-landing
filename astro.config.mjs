@@ -55,6 +55,7 @@ const LASTMOD_PAGES = new Map((() => {
 
 export default defineConfig({
   site: SITE.url,
+  devToolbar: { enabled: false },
   trailingSlash: 'never',
   // `file` : `mentions-legales.html` servi par Cloudflare Pages à `/mentions-legales`
   // (clean URLs), donc canonical extensionless sans saut de redirection.

@@ -1,17 +1,19 @@
 <p><a class="btn btn-principal" href="/downloads/modele-rapprochement-bancaire.xlsx" download data-outil-action="export">Télécharger le modèle Excel (.xlsx)</a></p>
 <p>Le classeur : exemple fictif, feuille à remplir, formules et écarts visibles.</p>
-<p>Signes : solde positif = avoir bancaire ou solde débiteur du 512 ; solde négatif = découvert ou solde créditeur. Remises et paiements déjà comptabilisés ajustent la banque (+ remises − paiements). Frais et intérêts déjà au relevé ajustent le 512 (− frais + intérêts). Les ajustements sont positifs, sauf contrepassation de signe opposé ; les éléments inexpliqués restent un contrôle séparé.</p>
-<form class="outil-form" data-reconciliation-form novalidate>
+<form method="dialog" class="outil-form" data-reconciliation-form novalidate>
   <div class="fields two"><label>Début de période <input type="date" name="start" required /></label><label>Fin de période <input type="date" name="end" required /></label></div>
   <div class="fields two">
     <label>Solde du relevé bancaire <input name="bank" inputmode="decimal" placeholder="Ex. 1000,00" required /></label>
     <label>Solde du compte 512 <input name="ledger" inputmode="decimal" placeholder="Ex. 950,00" required /></label>
-    <label>Remises en circulation <input name="deposits" inputmode="decimal" value="0,00" required /></label>
+  </div>
+  <details data-outil-options><summary>Ajouter les opérations en rapprochement</summary><div class="fields two">    <label>Remises en circulation <input name="deposits" inputmode="decimal" value="0,00" required /></label>
     <label>Paiements en circulation <input name="payments" inputmode="decimal" value="0,00" required /></label>
     <label>Frais bancaires à comptabiliser <input name="fees" inputmode="decimal" value="0,00" required /></label>
     <label>Intérêts à comptabiliser <input name="interest" inputmode="decimal" value="0,00" required /></label>
     <label>Éléments inexpliqués <input name="unexplained" inputmode="decimal" value="0,00" required /></label>
-  </div>
+  </div><p>Signes : solde positif = avoir bancaire ou solde débiteur du 512 ; solde négatif = découvert ou solde créditeur. Remises et paiements déjà comptabilisés ajustent la banque (+ remises − paiements). Frais et intérêts déjà au relevé ajustent le 512 (− frais + intérêts). Les ajustements sont positifs, sauf contrepassation de signe opposé ; les éléments inexpliqués restent un contrôle séparé.</p>
+</details>
+
   <p class="hint">Montants signés autorisés, deux décimales au maximum, valeur absolue bornée à 999 999 999,99 €. Utilisez uniquement des données fictives.</p>
   <div class="actions">
     <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Charger un exemple fictif</button>

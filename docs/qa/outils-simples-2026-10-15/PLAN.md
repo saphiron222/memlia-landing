@@ -1,30 +1,30 @@
-# Outils simples et repères de défilement — 15 octobre 2026
+# Outils gratuits simples et repères de défilement — 15 octobre 2026
 
-Demande de Kevin : les repères de FAQ et les panneaux « Dans vos outils » suivent le défilement de leur section. Le hub et les outils gratuits adoptent la simplicité d’Outrank dans la famille visuelle des robots et agents Memlia. Base 3386ac21, même checkout isolé, prévisualisation seulement.
+Kevin valide `docs/strategy/pricing-2026-10-15/RECOMMANDATION.md` et `agents-individuels/GRILLE.md`, demande de supprimer les anciennes grilles, de donner un équivalent dossiers aux crédits et de terminer le hub et les outils. **Pour la suite : uniquement les skills de son installation Claude.**
 
-- [ ] Capturer le hub et les 27 outils Outrank ; inventorier les 21 outils Memlia et leurs contrôles.
-- [ ] Documenter la sélection mise en avant et les regroupements proposés, sans suppression arbitraire de routes indexables.
-- [ ] Corriger les rails collants partagés : desktop, petits écrans, panneaux hauts, limites de section et clavier.
-- [ ] Refaire le hub et le gabarit d’outil : accès immédiat, quelques champs, options secondaires, résultat lisible, identité Memlia.
-- [ ] Simplifier le ROI et les parcours à forte densité ; conserver les calculs, sources, validations et données en local.
-- [ ] Vérifier fonctions, accessibilité, rendu, SEO et sécurité ; documenter et livrer une nouvelle prévisualisation.
+- [x] Capturer le hub et les 27 outils Outrank ; inventorier les 21 routes Memlia.
+- [x] Fixer les deux références validées, supprimer les anciennes grilles et donner des profils de dossiers approximatifs.
+- [x] Documenter les outils mis en avant et les parcours secondaires.
+- [x] Terminer les rails FAQ et Dans vos outils : limites de section, panneaux hauts et repli mobile.
+- [x] Terminer le hub et le gabarit : figurines, cartes courtes, formulaire immédiat, détails secondaires repliés.
+- [x] Simplifier le ROI à partir des prix validés, puis les outils denses ; conserver règles, sources et fonctions.
+- [ ] Tester calculs, imports/exports, absence de réseau, clavier, mobile, grand écran, mouvement réduit, SEO et liens.
+- [ ] Revoir, pousser la branche et livrer une prévisualisation. Aucun déploiement de production ni fusion.
 
-## Direction et contrat
+## Direction
 
-Crème/vert, Fraunces/Hanken Grotesk, espaces et cartes du catalogue validé. Hub : titre centré, trio discret de figurines existantes, cartes courtes et action explicite, trois colonnes maximum. Outil : titre court, formulaire avant le contenu documentaire, bouton unique principal, résultat après action. Paramètres spécialisés et explications dans des accordéons natifs. Les états vide, erreur, résultat et modification sont explicites. Aucun résultat n’est présenté comme acquis sans calcul ni comme avis professionnel.
+Crème et vert, Fraunces/Hanken Grotesk, espacements et cartes des robots/agents validés. Hub : titre centré, trio de figurines, filtres natifs et trois colonnes maximum. Outils essentiels d’abord, toutes les routes conservées accessibles. Chaque outil commence par quelques saisies, une action et un résultat explicite. Les réglages spécialisés restent consultables en accordéons natifs.
 
-Cibles : 375×812 et 1440×900 ; vérification complémentaire des rails en fenêtre basse et en zoom. Le sticky reste limité à la section ; un panneau trop haut doit rester entièrement parcourable. Pas de suivi animé du scroll. Sans JavaScript : contenu et limites restent lisibles, aucun formulaire ne transmet les données.
+`references/` conserve le hub et les 27 outils Outrank, ainsi que les manipulations du ROI Outils-EC. Ces captures ne sont pas des actifs du site. Nous reprenons la simplicité de parcours avec notre code et nos textes.
 
-Compétences lues : copywriting et page-cro (Codex), frontend-design-direction et make-interfaces-feel-better (Claude), seo-images (Codex). motion-foundations a été consulté : ses prescriptions React ne s’appliquent pas à Astro ; aucun ajout React/motion ni animation de scroll.
+## Compétences pour la suite
 
-## Arbitrage tarifaire demandé en cours de chantier
+Claude : `free-tools`, `cro`, `copywriting`, `copy-editing`, `frontend-design-direction`, `make-interfaces-feel-better`, `accessibility`, `seo-technical`, `seo-content`, `seo-schema`, `seo-sitemap`, `seo-images`. Lire les instructions pertinentes avant chaque étape. `motion-foundations` a été consulté ; pas d’ajout React ni d’animation de scroll dans Astro. Aucun skill Codex appliqué après la correction de Kevin.
 
-Kevin demande ensuite d’analyser Outils-EC, Factory 456 et les modèles de prix IA de 2026 avant de figer le ROI. Recherche réalisée avec les skills Claude `pricing`, `offers`, `market-research`, `deep-research` et les équivalents Codex `pricing-strategy` / `competitor-profiling`. Les trois volets concurrents, marché et économie sont terminés ; recommandation et preuves dans [pricing-2026-10-15](../../strategy/pricing-2026-10-15/README.md). Le 7 €/h est un repère Factory de 2025 dont les conditions ne sont pas publiques ; ne pas le publier comme prix Memlia acquis.
+## Vérification
 
-État de travail conservé : captures des 27 outils Outrank et du hub réalisées ; nouveau hub, gabarit allégé et rails mesurés implémentés mais pas encore validés visuellement ni livrés. Les 21 routes existantes sont conservées. La grille Memlia reste une proposition interne, sans modification des prix publics, de la charte ni du simulateur livré à ce stade. Le ROI doit séparer valeur du temps, coût de service et frais initiaux ; aucune performance concurrente ne devient une mesure Memlia.
+375×812 et 1440×900, puis 320 px, écran large et fenêtre basse. Rails limités à leur section, sans défilement imbriqué. Sans JavaScript : contenu visible, filtres natifs et aucune transmission de saisie. Erreurs : ouvrir le réglage concerné. Aucun fichier ne quitte le navigateur. Aucun gain présenté comme une performance client mesurée.
 
-Kevin valide ensuite le modèle tarifaire et demande le chiffrage complet des unités agents avec Mammouth. Le [dossier de coûts et la grille consolidée](../../strategy/pricing-2026-10-15/mammouth/GRILLE-AGENTS.md) fournissent désormais les unités, plafonds et frais de mise en service proposés ; le classeur recalcule trois scénarios. Aucun appel payant n’a été lancé : Kevin confirme le travail sur tarifs publics faute de clé. Les hypothèses de coûts restent distinguées des prix fournisseur observés.
+Conserver les calculs et leurs cas limites. Les confirmations CAC indispensables restent explicites. Tests ciblés et régénération sur le Mac ; compilation complète en CI, conformément aux consignes du dépôt.
 
-Après lecture, Kevin refuse la complexité de la grille commerciale et précise **1 000 € HT/mois + 300 € HT/mois par pôle**, à adapter au catalogue actuel. La [proposition simplifiée](../../strategy/pricing-2026-10-15/offre-simple/OFFRE.md) remplace la recommandation agents ; l’étude Mammouth reste historique. Le simulateur ne doit pas reprendre les huit unités ni le socle de 99 € comme prix actif. Les enveloppes et suppléments de la nouvelle proposition ne sont pas encore validés ni publiés.
-
-**Clarification suivante de Kevin :** ces 1 000 € + 300 € étaient son ancien modèle, pas des prix imposés. La recommandation active devient la [grille recalculée par agent](../../strategy/pricing-2026-10-15/agents-individuels/GRILLE.md) : socle candidat de 199 €, prix et crédits inclus distincts pour chaque agent. La formule par pôle est donc historique. Aucun tarif ni quota de cette nouvelle grille n’est encore validé pour le simulateur public.
+Décisions et inventaire : [DECISIONS.md](./DECISIONS.md). La recette finale reste en cours.

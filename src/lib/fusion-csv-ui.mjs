@@ -54,7 +54,7 @@ export function initFusionCsv(){
   const mappings=order.map(i=>[...q(`[data-file="${i}"]`).querySelectorAll('[data-map]')].map(e=>e.value));
   const options={confirmed:q('[data-confirmed]').checked,union:q('[data-union]').checked,provenance:q('[data-provenance]').checked,deduplicate:q('[data-dedup]').checked};
   if(merge)invalidate();
-  pending=new Worker(new URL('../workers/fusion-csv.worker.mjs',import.meta.url),{name:'memlia-fusion-csv'});const candidate=pending,id=++seq;
+  pending=new Worker(new URL('../workers/fusion-csv.worker.mjs',import.meta.url),{type:'module',name:'memlia-fusion-csv'});const candidate=pending,id=++seq;
   q('[data-cancel]').hidden=false;exports();status.textContent='Traitement local en cours ; annulation disponible.';
   candidate.onerror=()=>{if(candidate!==pending)return;stop();fail('Le Worker local a échoué. Réessayez ; fichiers et choix conservés.');};
   candidate.onmessage=({data:m})=>{

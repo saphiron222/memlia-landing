@@ -18,6 +18,7 @@ function fixture() {
   writeFileSync(join(dist, '404.html'), `<html><head>${NOINDEX_META}</head><body>Absente</body></html>`);
   writeFileSync(join(dist, 'blog', 'article.html'), `<html><head>${INDEXABLE_META}</head><body>Article</body></html>`);
   writeFileSync(join(dist, 'asset.txt'), 'inchangé');
+  writeFileSync(join(dist, '_headers'), "/outil\n  Content-Security-Policy: connect-src 'none'; form-action 'none'\n  Cache-Control: no-transform\n");
   return { root, dist, target };
 }
 
@@ -33,6 +34,7 @@ test('prépare une copie noindex, nofollow sans modifier le dist indexable', () 
     assert.equal(readFileSync(join(dist, 'index.html'), 'utf8'), originalIndex);
     assert.equal(readFileSync(join(dist, '404.html'), 'utf8'), original404);
     assert.match(readFileSync(join(target, '_headers'), 'utf8'), /X-Robots-Tag: noindex, nofollow/);
+    assert.ok(readFileSync(join(target, '_headers'),'utf8').includes(readFileSync(join(dist,'_headers'),'utf8').trim()));
     for (const relative of ['index.html', '404.html', 'blog/article.html']) {
       const html = readFileSync(join(target, relative), 'utf8');
       assert.equal(html.match(/<meta name="robots"/g)?.length, 1);

@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 import * as c from '../../src/lib/circularisation.mjs';
 const route='/outils-comptables-gratuits/suivi-circularisation';
 for(const replacement of ['reset','demo','resume']) test(`R3 cleans detail on ${replacement}`,async({page})=>{
- await page.goto(route);
+ await page.goto(route); await ouvrirReglages(page);
  await page.locator('[data-circ-demo]').click();await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();
  await page.locator('#circ-return').fill('Coordonnées anciennes uniques');await page.locator('#circ-note').fill('Note ancienne unique');await page.getByText('Ajouter une réponse ou un refus (historique conservé)',{exact:true}).click();await page.locator('#circ-response-comment').fill('Commentaire ancien unique');
  page.once('dialog',d=>d.accept());
@@ -21,7 +21,7 @@ for(const replacement of ['reset','demo','resume']) test(`R3 cleans detail on ${
  expect(calls).toEqual({downloads:0,copies:0});
 });
 for(const [field,value] of [['referenceDate','2026-06-30'],['currency','USD'],['requestedAmount','110']])test(`R1 browser correction ${field}`,async({page})=>{
- await page.goto(route);await page.locator('[data-circ-demo]').click();await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();
+ await page.goto(route); await ouvrirReglages(page);await page.locator('[data-circ-demo]').click();await page.getByRole('button',{name:'Ouvrir 001',exact:true}).click();
  await page.locator('[data-circ-reconcile]').click();
  await page.locator('#circ-'+field).fill(value);await page.locator('[data-circ-save]').click();
  await expect(page.locator('[name="comparable"]')).not.toBeChecked();
@@ -37,7 +37,7 @@ test('R2 browser saves all parts, confirms replacement and resumes equal work',a
  let s=c.importCsv(c.createSession(),c.parseCsv(csv,{delimiter:';'}),{mapping:Object.fromEntries(headers.map(h=>[h,h])),selectedRows:Array.from({length:count},(_,i)=>i),selectionValidated:true});
  s=c.updateTier(s,'0',{note:'Note précieuse',sentDate:'2026-01-10'});s=c.generateLetter(s,'0',{returnContact:'Retour précieux',validated:true,amountValidated:true}).session;s=c.addResponse(s,'0',{date:'2026-01-11',amount:'120',comparable:true});s=c.reconcileResponse(s,'0');
  const seed=c.exportSessionFiles(s).map(f=>({name:f.name,mimeType:'application/json',buffer:Buffer.from(f.text)}));
- await page.goto(route);await page.getByText('Reprendre une sauvegarde JSON',{exact:true}).click();await page.locator('#circ-json').setInputFiles(seed);await page.locator('[data-circ-reimport] button').click();await expect(page.locator('[data-circ-summary]')).toContainText('25000 tiers');
+ await page.goto(route); await ouvrirReglages(page);await page.getByText('Reprendre une sauvegarde JSON',{exact:true}).click();await page.locator('#circ-json').setInputFiles(seed);await page.locator('[data-circ-reimport] button').click();await expect(page.locator('[data-circ-summary]')).toContainText('25000 tiers');
  await page.locator('[data-circ-export="json"]').click();
  const buttons=page.locator('[data-circ-export-parts] button'),files=[];
  expect(await buttons.count()).toBeGreaterThan(1);
@@ -51,3 +51,5 @@ test('R2 browser saves all parts, confirms replacement and resumes equal work',a
  for(const button of await page.locator('[data-circ-export-parts] button').all()){const pending=page.waitForEvent('download');await button.click();resumed.push((await readFile(await(await pending).path())).toString());}
  expect(c.importSessionFiles(resumed)).toEqual(s);
 });
+
+async function ouvrirReglages(page){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

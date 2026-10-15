@@ -1,9 +1,11 @@
-<form class="outil-form" data-fec-form data-async-tool>
-  <p id="fec-limites">Fichier texte uniquement, 20 Mo maximum (20 000 000 octets), 200 000 lignes de données et 200 000 anomalies maximum pour préserver la mémoire du navigateur ; au-delà, refus sans rapport partiel. Profil commercial à 18 colonnes Débit/Crédit ; tabulation ou pipe. XML, BNC/BA, Montant/Sens et colonnes supplémentaires : non évalués. Le choix Windows-1252 permet la lecture, sans valider l’encodage au regard du texte légal.</p>
+<form method="dialog" class="outil-form" data-fec-form data-async-tool>
+  <p>Choisissez un FEC texte de 20 Mo maximum, au profil commercial à 18 colonnes. L’outil localise les anomalies de structure dans un rapport à relire.</p>
   <div class="fields">
     <label for="fec-file">Fichier FEC local<input id="fec-file" name="file" type="file" aria-describedby="fec-limites fec-erreur" /></label>
+    <details data-outil-options><summary>Profil et encodage du FEC</summary>  <p id="fec-limites">Fichier texte uniquement, 20 Mo maximum (20 000 000 octets), 200 000 lignes de données et 200 000 anomalies maximum pour préserver la mémoire du navigateur ; au-delà, refus sans rapport partiel. Profil commercial à 18 colonnes Débit/Crédit ; tabulation ou pipe. XML, BNC/BA, Montant/Sens et colonnes supplémentaires : non évalués. Le choix Windows-1252 permet la lecture, sans valider l’encodage au regard du texte légal.</p>
     <label for="fec-encoding">Encodage de lecture<select id="fec-encoding" name="encoding"><option value="utf-8">UTF-8 (avec ou sans BOM)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></label>
     <label for="fec-profile">Profil à examiner<select id="fec-profile" name="profile"><option value="commercial-18">Commercial — 18 colonnes</option><option value="other">Autre profil (non évalué)</option></select></label>
+</details>
   </div>
   <div class="actions">
     <button class="btn btn-contour" type="button" data-example data-outil-action="exemple">Analyser l’exemple fictif</button>

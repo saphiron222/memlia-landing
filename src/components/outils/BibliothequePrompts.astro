@@ -6,11 +6,12 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
     <h2 id="library-title">Trouver un modèle</h2>
     <p>Douze points de départ pour préparer un travail du cabinet. Les exemples sont fictifs ; leurs sorties attendues sont rédigées, pas obtenues d’une IA. Aucun modèle n’est appelé ici.</p>
     <noscript><p>Les douze fiches et leurs prompts restent lisibles ci-dessous. Activez JavaScript pour filtrer, copier, exporter ou préparer une reprise dans le générateur.</p></noscript>
-    <form class="filters" data-filters hidden autocomplete="off" data-own-telemetry>
-      <div><label for="library-pole">Pôle</label><select id="library-pole" name="pole"><option value="">Tous les pôles</option>{POLES.map(p => <option value={p.id}>{p.label}</option>)}</select></div>
+    <form method="dialog" class="filters" data-filters hidden autocomplete="off" data-own-telemetry>
+      <label>Rechercher un modèle<input name="query" type="search" maxlength="200" placeholder="Relance, contrôle, note…" /></label>
+      <details class="library-facettes" data-outil-options><summary>Affiner par métier, tâche ou format</summary>      <div><label for="library-pole">Pôle</label><select id="library-pole" name="pole"><option value="">Tous les pôles</option>{POLES.map(p => <option value={p.id}>{p.label}</option>)}</select></div>
       <div><label for="library-format">Format attendu</label><select id="library-format" name="format"><option value="">Tous les formats</option>{MODEL_FORMATS.map(f => <option value={f.id}>{f.label}</option>)}</select></div>
       <div><label for="library-task">Tâche</label><select id="library-task" name="task"><option value="">Toutes les tâches</option>{MODELS.map(m => <option value={m.id}>{m.title}</option>)}</select></div>
-      <label>Rechercher un modèle<input name="query" type="search" maxlength="200" placeholder="Relance, contrôle, note…" /></label>
+</details>
       <button type="reset" class="btn btn-contour">Effacer les filtres</button>
     </form>
     <p data-count role="status">12 modèles disponibles.</p>
@@ -21,7 +22,7 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
       <p class="carte-meta meta">{POLES.find(p => p.id === m.pole)?.label} · {MODEL_FORMATS.find(f => f.id === m.format)?.label}</p>
       <h3 id={`title-${m.id}`} class="carte-titre">{m.title}</h3>
       <p class="carte-texte">{m.context}</p>
-      <dl>
+      <details><summary>Lire le prompt complet et son exemple fictif</summary>      <dl>
         <div><dt>Entrées permises</dt><dd>{m.input}</dd></div>
         <div><dt>Résultat à préparer</dt><dd>{m.output}</dd></div>
         <div><dt>Se prépare seul</dt><dd>{m.description}</dd></div>
@@ -29,7 +30,7 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
         <div><dt>Reste humain</dt><dd>{m.human}</dd></div>
         <div><dt>Arrêt dans le doute</dt><dd>{m.stop}</dd></div>
       </dl>
-      <details><summary>Lire le prompt complet et son exemple fictif</summary>
+
         <h4>Entrée fictive</h4><p>{m.exampleIn}</p>
         <h4>Sortie attendue rédigée</h4><p>{m.exampleOut}</p>
         <label>Prompt complet : {m.title}<textarea readonly rows="12" spellcheck="false" data-text>{modelPrompt(m)}</textarea></label>

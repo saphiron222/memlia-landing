@@ -7,7 +7,7 @@ const GENERATOR = '/outils-comptables-gratuits/generateur-prompt-expert-comptabl
 
 test('sans JS : douze fiches, prompts complets et limites lisibles', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
-  const page = await context.newPage(); await page.goto(ROUTE);
+  const page = await context.newPage(); await page.goto(ROUTE); await ouvrirReglages(page);
   await expect(page.locator('[data-model]')).toHaveCount(12);
   for (const m of MODELS) {
     const card = page.locator(`[data-model="${m.id}"]`);
@@ -17,7 +17,7 @@ test('sans JS : douze fiches, prompts complets et limites lisibles', async ({ br
   await context.close();
 });
 test('filtres combinés, recherche vide, effacement sans nouvelle URL', async ({ page }) => {
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await ouvrirReglages(page);
   await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
   await page.getByLabel('Format attendu', { exact: true }).selectOption('mail');
   await expect(page.locator('[data-model]:visible')).toHaveCount(3);
@@ -32,7 +32,7 @@ test('filtres combinés, recherche vide, effacement sans nouvelle URL', async ({
 for (const m of MODELS) test(`copie et export exacts sans réseau : ${m.id}`, async ({ page }) => {
   // Une page par fiche : Chromium bloque une rafale de plus de dix téléchargements.
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async (text: string) => { (window as any).__copy = text; } } }));
-  await page.goto(ROUTE); await chargerImagesDifferees(page);
+  await page.goto(ROUTE); await ouvrirReglages(page); await chargerImagesDifferees(page);
   const requests: string[] = []; page.on('request', r => requests.push(r.url()));
   const card = page.locator(`[data-model="${m.id}"]`);
   await card.getByRole('button', { name: 'Copier le modèle' }).click();
@@ -60,7 +60,7 @@ test('export : navigation différée et nettoyage après consommation du Blob', 
       revoke.call(URL, url);
     };
   });
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await ouvrirReglages(page);
   const download = page.waitForEvent('download');
   await page.locator('[data-model="relance-pieces"] [data-export]').click();
   const file = await download;
@@ -70,13 +70,13 @@ test('export : navigation différée et nettoyage après consommation du Blob', 
 });
 test('copie refusée : texte complet sélectionné, aucune perte', async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async () => { throw new Error('denied'); } } }));
-  await page.goto(ROUTE); const card = page.locator('[data-model="relance-pieces"]');
+  await page.goto(ROUTE); await ouvrirReglages(page); const card = page.locator('[data-model="relance-pieces"]');
   await card.getByRole('button', { name: 'Copier le modèle' }).click();
   await expect(card.locator('[data-text]')).toBeFocused();
   expect(await card.locator('[data-text]').evaluate((e: HTMLTextAreaElement) => e.selectionEnd - e.selectionStart)).toBe(modelPrompt(MODELS[0]).length);
 });
 test('reprise publique complète, consommée puis éditions protégées', async ({ page }) => {
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await ouvrirReglages(page);
   await page.locator('[data-model="relance-pieces"]').getByRole('link', { name: 'Adapter dans le générateur' }).click();
   await expect(page).toHaveURL(new RegExp(GENERATOR + '$'));
   await expect(page.getByLabel('Description abstraite de la tâche')).toHaveValue(MODELS[0].description);
@@ -103,7 +103,7 @@ test('reprise publique complète, consommée puis éditions protégées', async 
 });
 test('stockage indisponible : repli explicite, catalogue conservé', async ({ page }) => {
   await page.addInitScript(() => Storage.prototype.setItem = () => { throw new Error('denied'); });
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await ouvrirReglages(page);
   const card = page.locator('[data-model="relance-pieces"]');
   await card.getByRole('link', { name: 'Adapter dans le générateur' }).click();
   await expect(card.locator('[data-card-status]')).toContainText('Stockage temporaire indisponible');
@@ -112,7 +112,7 @@ test('stockage indisponible : repli explicite, catalogue conservé', async ({ pa
 for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier, reflow et captures à ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 }); await page.emulateMedia({ reducedMotion: 'reduce' });
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
-  await page.goto(ROUTE); await page.waitForLoadState('networkidle');
+  await page.goto(ROUTE); await ouvrirReglages(page); await page.waitForLoadState('networkidle');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
   await page.getByLabel('Tâche', { exact: true }).selectOption('relance-pieces');
@@ -125,3 +125,5 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier, reflow et 
   expect(errors).toEqual([]);
   await page.screenshot({ path: `.qa/bibliotheque-${width}.png`, fullPage: true });
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

@@ -50,7 +50,7 @@ const { title, description, breadcrumbs, eyebrow, titleId, gratuit } = Astro.pro
   .ariane li + li::before { content: '›'; margin-right: 6px; color: var(--picto-repos); }
   .ariane a { color: var(--texte-2); text-decoration: underline; text-underline-offset: 2px; }
   .ariane .ariane-courant { flex: 1 1 4ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--texte); }
-  .outil-hero-copy { display: grid; justify-items: start; gap: var(--espace-3); max-width: 720px; min-width: 0; }
+  .outil-hero-copy { display: grid; justify-items: center; text-align: center; margin: 0 auto; gap: var(--espace-3); max-width: 720px; min-width: 0; }
   /* Plus petit que --titre-page-partage en mobile (30 px contre 36) : l'outil doit suivre au premier écran. */
   .outil-hero-copy h1 { max-width: 21ch; font-size: clamp(1.875rem, 1.2rem + 2.4vw, 3.5rem); line-height: 1.08; text-wrap: balance; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) both; }
   .outil-hero-copy p { max-width: 62ch; margin: 0; color: var(--texte-2); line-height: 1.5; text-wrap: pretty; animation: outil-copy-entry var(--duree-entree) var(--courbe-sortie) 100ms both; }
@@ -69,6 +69,6 @@ const { title, description, breadcrumbs, eyebrow, titleId, gratuit } = Astro.pro
     .outil-hero-copy p:not(.outil-gratuit) { font-size: var(--t-lg); line-height: 1.55; }
   }
   @media (min-width: 64rem) {
-    .outil-hero-inner { gap: var(--espace-10); padding-top: var(--espace-8); }
+    .outil-hero-inner { gap: var(--espace-6); padding-top: var(--espace-6); }
   }
 </style>

@@ -10,19 +10,20 @@ const choices = [
 ---
 <div class="prompt-tool" data-generic-prompt>
   <noscript><p>Activez JavaScript pour assembler une consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
-  <section aria-labelledby="generic-examples">
+  <details><summary>Choisir un exemple fictif</summary>
     <h2 id="generic-examples">Une consigne texte professionnelle</h2>
     <p>Choisissez un exemple fictif : nous assemblons des blocs déterministes dans votre navigateur, pas une réponse d’IA.</p>
     <div class="actions">{GENERIC_TASKS.map((task) => <button class="btn btn-contour" type="button" data-seed={task.id}>{task.label}</button>)}</div>
-  </section>
-  <form data-own-telemetry novalidate autocomplete="off">
+  </details>
+  <form method="dialog" data-own-telemetry novalidate autocomplete="off">
     <h2>Construire la consigne</h2>
     <p id="generic-privacy" class="hint">Décrivez un objectif abstrait, sans nom, coordonnée, contenu de document ni donnée réelle. Le filtre repère quelques signaux explicites et contradictions, pas tous les noms ni le sens de toutes les phrases ; il n’anonymise rien. Texte seulement : aucun prompt image ou vidéo.</p>
-    {choices.map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
+    {choices.filter(c=>['task','format'].includes(c.name)).map((choice) => <label>{choice.label}<select name={choice.name} required><option value="">Choisir…</option>{choice.options.map((option) => <option value={option.id}>{option.label}</option>)}</select></label>)}
     <label>Objectif abstrait (20 à 1 500 caractères)<textarea name="description" rows="4" maxlength="1500" required aria-describedby="generic-privacy"></textarea></label>
-    <label>Public de la consigne<input name="public" maxlength="120" required /></label>
-    <label>Contexte abstrait<textarea name="context" rows="3" maxlength="500" required></textarea></label>
+    <details data-outil-options><summary>Adapter le contexte, le ton et les contraintes</summary>{choices.filter(c=>!['task','format'].includes(c.name)).map(choice=><label>{choice.label}<select name={choice.name} required>{choice.options.map((option,i)=><option value={option.id} selected={i===0}>{option.label}</option>)}</select></label>)}    <label>Public de la consigne<input value="Équipe du cabinet" name="public" maxlength="120" required /></label>
+    <label>Contexte abstrait<textarea name="context" rows="3" maxlength="500" required>Préparation de travail à partir de notes fictives.</textarea></label>
     <label>Contraintes supplémentaires (facultatif)<textarea name="constraints" rows="3" maxlength="500"></textarea></label>
+</details>
     <label class="confirmation"><input type="checkbox" name="confirmed" />Je confirme une description abstraite et des exemples fictifs, sans donnée réelle.</label>
     <div class="actions"><button class="btn btn-principal" type="submit">Assembler le prompt</button><button class="btn btn-contour" type="button" data-clear>Effacer</button></div>
     <p id="generic-error" data-error class="error" role="alert" hidden></p>

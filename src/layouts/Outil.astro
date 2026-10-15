@@ -7,20 +7,23 @@ import OutilSource from '@/components/sections/OutilSource.astro';
 import OutilSuite from '@/components/sections/OutilSuite.astro';
 import OutilZone from '@/components/sections/OutilZone.astro';
 import { SITE } from '@/data/site.mjs';
+import { OUTILS_VITRINE } from '@/data/outils-vitrine';
+import '@/styles/outils-simples.css';
 import { OUTILS_HUB_PATH, outilPath, type OutilDefinition } from '@/data/outils';
 import { OUTIL_GRATUIT, questionsOutil, titreAppel, titreSource } from '@/data/outil-page';
 
 interface Props { outil: OutilDefinition }
 const { outil } = Astro.props;
 const path = outilPath(outil);
+const presentation = OUTILS_VITRINE.find(o=>o.slug===outil.slug);
 const url = `${SITE.url}${path}`;
-const socialImage = outil.proof ? {
-  url: `${SITE.url}/proofs/v2/og/${outil.proof.slice(3)}.webp`, width: 1200, height: 630,
-  alt: `Aperçu fictif — ${outil.h1}`,
+const socialImage = presentation ? {
+  url: `${SITE.url}/outils/social/${outil.slug}.webp`, width:1200, height:630,
+  alt: `${presentation.nom} — outil gratuit Memlia, sans inscription.`,
 } : undefined;
 const workerSources = outil.slug === 'generateur-relance-facture-impayee' ? "'self' blob:" : "'self'";
 const questions = questionsOutil();
-const csp = `default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src ${workerSources}; font-src 'self'; form-action 'self'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'`;
+const csp = `default-src 'self'; base-uri 'self'; connect-src 'none'; worker-src ${workerSources}; font-src 'self'; form-action 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'`;
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -50,7 +53,7 @@ const graph = {
   <div class="feuille" data-outil={outil.slug}>
     <OutilHero
       title={outil.h1}
-      description={outil.description}
+      description={presentation?.texte ?? outil.description}
       eyebrow={outil.proof ? undefined : 'Démonstration technique'}
       titleId="outil-titre"
       gratuit={OUTIL_GRATUIT}
@@ -69,7 +72,7 @@ const graph = {
     <AppelFinal
       id="outil-confier"
       titre={titreAppel(outil)}
-      texte="Nous observons la tâche complète, nous écrivons sa règle et ses limites, puis nous l’automatisons dans vos outils. Votre équipe garde la validation."
+      texte="Nous déployons et adaptons un robot ou un agent IA à cette tâche, dans vos outils. Nous le maintenons et construisons sur mesure lorsque votre besoin le demande."
       points={[]}
       action={{ libelle: 'Confier une première tâche', href: outil.cta }}
     />
@@ -79,6 +82,20 @@ const graph = {
 <script>
   const root = document.querySelector<HTMLElement>('[data-outil]');
   if (root) {
+    // Une erreur dans un réglage replié doit rester visible et atteignable au clavier.
+    const reveal = (field: HTMLElement) => {
+      let parent = field.parentElement;
+      while (parent && parent !== root) {
+        if (parent instanceof HTMLDetailsElement) parent.open = true;
+        parent = parent.parentElement;
+      }
+      field.focus();
+    };
+    root.addEventListener('invalid', event => { if (event.target instanceof HTMLElement) reveal(event.target); }, true);
+    root.addEventListener('submit', () => queueMicrotask(() => {
+      const invalid = root.querySelector<HTMLElement>('[aria-invalid="true"]');
+      if (invalid) reveal(invalid);
+    }));
     const outil = root.dataset.outil ?? 'inconnu';
     const form = root.querySelector<HTMLFormElement>('[data-tool-section="calcul"] form');
     let started = false;

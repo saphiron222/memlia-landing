@@ -1,0 +1,214 @@
+{
+  "renderer": "scripts/render-outils-socials.mjs",
+  "sources": {
+    "scripts/render-outils-socials.mjs": "70d44dc1505fcf6dce9ad76deb7eab6cd18178f305e7595bfe90b375c63149ad",
+    "src/data/outils-vitrine.ts": "345684ef2b57fcee405f8382e3ffdcda884f7e5801e4ba65b2918f93840e8bab",
+    "src/data/outils.ts": "a6e1b419e997882800c27eabb0938b9f69c9bac52d2c030283b8f06816c0bab7",
+    "public/fonts/hanken-400.woff2": "787b3fdd0b7e6d59ae7ce14ce7a41d1a44616584b4c919b527da951972d5d87d",
+    "public/fonts/fraunces-600.woff2": "3a1de7711d147bad4422825045f87597fd77cca72e7c96d3b0a81735d00dda82",
+    "public/agents/comptabilite-512.webp": "af1aa296627aef24e8dace2b7bd74b2494ea0923e354a6d2e88722e53ea41917",
+    "public/agents/finance-512.webp": "957b8917e1977fa9284520339fee1abee11c571370882170a3929685c70b3b9e",
+    "public/agents/informatique-outils-512.webp": "6c1311e1d7e1a253d365bcb19a5f640057f420ead09c3803ef67efce07e9a98d",
+    "public/agents/missions-audit-512.webp": "bfb4a15ccc39150a4fdc8824687f378e802c532355f9302071e8a8c99c0ac4a6"
+  },
+  "records": [
+    {
+      "slug": "hub",
+      "path": "public/outils/social/hub.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27196,
+      "sha256": "e4a327eba85ab470b4c5f8d4fdba3fc7f1f36757d505939be6a995ea57a9fd8f",
+      "sourceHash": "fa0d8a25fa082028172574a02f812c8a5cd6f1d0a6f51d34c5d2db991eb46ac6"
+    },
+    {
+      "slug": "bibliotheque-prompts-comptables",
+      "path": "public/outils/social/bibliotheque-prompts-comptables.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27122,
+      "sha256": "5cb35e4f1f31f8ae3a0cede6a9f45468b8c7410667388e355a2d6f3bdc164150",
+      "sourceHash": "7a7a8758cc005867f3e79fadb03f3839b4657ec2339872d9ba6703dee6a2824d"
+    },
+    {
+      "slug": "generateur-prompt-expert-comptable",
+      "path": "public/outils/social/generateur-prompt-expert-comptable.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 30824,
+      "sha256": "b96bd1e077e51bf9b9cce2788aeef8816770ea385300d9d3bfb49332248995bf",
+      "sourceHash": "d7a77ef25c08a314b2d21e01a34437a5445ad4b1b93acc05259d0b0c3779a72c"
+    },
+    {
+      "slug": "calculateur-roi-automatisation",
+      "path": "public/outils/social/calculateur-roi-automatisation.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 24008,
+      "sha256": "5dfb32f692972963ee6337d0ad8f8dee6a4d63f738691a30ccccdffd32d70f4e",
+      "sourceHash": "5c95156fd5ac09555a9f0636047a5d855d1a4b97a8bb699244083e96d0329368"
+    },
+    {
+      "slug": "generateur-relance-facture-impayee",
+      "path": "public/outils/social/generateur-relance-facture-impayee.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27886,
+      "sha256": "94143baa5e9026c54f83d2453b96e7649b25285d9a48e103fa7a697b143768c2",
+      "sourceHash": "cb4d0631905467d91da386478f66d6995120eb176ff31fd8d2ed72f8a946bad0"
+    },
+    {
+      "slug": "checklist-pieces-comptables",
+      "path": "public/outils/social/checklist-pieces-comptables.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 30202,
+      "sha256": "45caa7eb8290b490e2623468869ea6231c53d8c79a7b11bcc1d405fad4a71734",
+      "sourceHash": "d69fd7d4619ecc6c7ae98c7ce67691e850556024183275ce3e88e6108f660e10"
+    },
+    {
+      "slug": "verificateur-fec-local",
+      "path": "public/outils/social/verificateur-fec-local.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 24842,
+      "sha256": "8e14f9da5ae520b43676614e7172030016416fbae03a954167778558c5c53a5e",
+      "sourceHash": "0f3048cbb1cadab067f959914c6be57fa64d7e2b6409b041e23761c2fbc10daf"
+    },
+    {
+      "slug": "calculateur-marge-commerciale",
+      "path": "public/outils/social/calculateur-marge-commerciale.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 24354,
+      "sha256": "49132a54a78db170e4c47fb87f3898859242aab30f3095fd4683d1b4bc54e95a",
+      "sourceHash": "6cc95f3f51f23e6db7dbd17439ed38cd4ba8fc09f3908059329073a621e3bdbf"
+    },
+    {
+      "slug": "calculateur-date-echeance-facture",
+      "path": "public/outils/social/calculateur-date-echeance-facture.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 23682,
+      "sha256": "2fc281d941a4c874e3684848efef5b8e5e728087628527fb11e2714fd9d79922",
+      "sourceHash": "5a27ffb87835daef698f9058dccd567656edc2af1096d90a84c4fe9bcbf80c18"
+    },
+    {
+      "slug": "calculateur-amortissement-comptable",
+      "path": "public/outils/social/calculateur-amortissement-comptable.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 24474,
+      "sha256": "a80adc28839e6345757b537615d891a654fdb37f80abb471fb8122d2521f2f10",
+      "sourceHash": "3c4cfcd76bddcdcd520faa0a825222b0f30025503a2b78ac5fe8758d94830612"
+    },
+    {
+      "slug": "generateur-charte-ia-cabinet",
+      "path": "public/outils/social/generateur-charte-ia-cabinet.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 26272,
+      "sha256": "0af9e6944e031bd6eced83299518d5bc0894daf30ee39ead9731c9fb3ad2bdee",
+      "sourceHash": "799cc9de404e12730cea5b16950cb8ba5fe89d9e724f373839e04a4c26bf5f6c"
+    },
+    {
+      "slug": "verificateur-prompt-ia",
+      "path": "public/outils/social/verificateur-prompt-ia.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27422,
+      "sha256": "77da9197864de549d465b93160c86588df8111d8928baaa56952346f1fcde927",
+      "sourceHash": "15d4acd51773807329f7ada5cf3b451671ed1746d6a880200010201373cd0fef"
+    },
+    {
+      "slug": "generateur-prompt-ia-gratuit",
+      "path": "public/outils/social/generateur-prompt-ia-gratuit.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 29448,
+      "sha256": "aef8beaee177b1fb81a8eaadfa6ff28f14046cbd812af36329a75823ead5fb88",
+      "sourceHash": "ae07c502cae11df5e0cc22bed7b97d43af928b4fa90810ba64593cc5885b08d1"
+    },
+    {
+      "slug": "diagnostic-maturite-ia-cabinet",
+      "path": "public/outils/social/diagnostic-maturite-ia-cabinet.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27488,
+      "sha256": "a6220c499b6f9be8c228cc7aa3a97d45776450960370eeac369471704c183eb0",
+      "sourceHash": "546111a8105b2a3232464c7d00692c7726de46a37647dd58cef307465a0f43f4"
+    },
+    {
+      "slug": "preparer-pseudonymiser-fichier-csv-fec",
+      "path": "public/outils/social/preparer-pseudonymiser-fichier-csv-fec.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27618,
+      "sha256": "2a4b87b38906a29ee069df90d83f05c1673edadc6d45cd5b84298d4127549652",
+      "sourceHash": "cadbfbb5d6243ddf55854583725e1d9cc4229958d015a03afd1ba732b7079e06"
+    },
+    {
+      "slug": "fusionner-fichiers-csv",
+      "path": "public/outils/social/fusionner-fichiers-csv.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 26712,
+      "sha256": "f439bb46c8fb5add841a39a7bfd136625add40d821358314f668d9d4059d58c2",
+      "sourceHash": "feac96b376fda702865f751f3a204530f0b252e6c815c6508c729326db2acf83"
+    },
+    {
+      "slug": "comparateur-balances-comptables",
+      "path": "public/outils/social/comparateur-balances-comptables.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 28084,
+      "sha256": "f1f84e677a09b6cea15075f6018d938137d6cb234be1a186b29c3e37d87f3642",
+      "sourceHash": "a25d21552bd01a52e8f02a49cb4702faa087004c2b38f819fc7e5cfce8b12bc5"
+    },
+    {
+      "slug": "assistant-lettrage-comptable-local",
+      "path": "public/outils/social/assistant-lettrage-comptable-local.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 26374,
+      "sha256": "e9c9ef1573f8573093a532242b928c335bb50a5e4d5500a505d096d908fad0cf",
+      "sourceHash": "387c81fa89c6295020bc90580902b37d5b495657a3f0edc4a896e844047491ec"
+    },
+    {
+      "slug": "modele-rapprochement-bancaire-excel-gratuit",
+      "path": "public/outils/social/modele-rapprochement-bancaire-excel-gratuit.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27536,
+      "sha256": "eda031af8378e7880a4a1f9fac4339d169afa5a51fca59e0332f7bece64b8050",
+      "sourceHash": "13e17a086d06733caeac7eac53a67f5f3050ecedb58e4988973c4ec49c6a0352"
+    },
+    {
+      "slug": "bareme-heures-cac",
+      "path": "public/outils/social/bareme-heures-cac.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 28174,
+      "sha256": "832d370a678efd031471f77f595a8b9cc5ffe9cd6180a5c260b6c3225a0d25a3",
+      "sourceHash": "39cc4f7114484424e477fb7edecf79714f013c4fadd42351edf30f5fbcbb9399"
+    },
+    {
+      "slug": "seuil-signification-audit",
+      "path": "public/outils/social/seuil-signification-audit.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 27782,
+      "sha256": "44c1afa18a10c03d030caf0a761be3ce762aa69d1cfc307f84118e1fae8c80a5",
+      "sourceHash": "a03001fb6393de402f8471f36ab67618a72f9fd7ffa027ceecfc318f083e1c12"
+    },
+    {
+      "slug": "suivi-circularisation",
+      "path": "public/outils/social/suivi-circularisation.webp",
+      "width": 1200,
+      "height": 630,
+      "bytes": 28020,
+      "sha256": "f9aaf0d03bc4c5915b52108a8dc6a7840eede9b7631033fa7e47277e39366944",
+      "sourceHash": "15154e48672849e77520409f30bcecca3be17383dfe94ff79bb28b3179da3fd9"
+    }
+  ]
+}

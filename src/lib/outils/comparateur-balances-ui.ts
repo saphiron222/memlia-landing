@@ -32,7 +32,7 @@ export function initComparateurBalances() {
     stop('Traitement local en cours…'); busy = true; root.setAttribute('aria-busy','true');
     get('[data-cancel]').hidden = false;
     get<HTMLButtonElement>('button[type=submit]').disabled = true;
-    worker = new Worker(new URL('./comparateur-balances.worker.ts', import.meta.url), { name: 'memlia-balances' });
+    worker = new Worker(new URL('./comparateur-balances.worker.ts', import.meta.url), { type: 'module', name: 'memlia-balances' });
     return revision;
   };
   let id = 0;
