@@ -1,3 +1,5 @@
+> Archive de la copy précédente. La demande de Kevin du 15/10 sur le déploiement du catalogue la remplace pour les passages commerciaux. Version courante : `docs/strategy/site-v3/coherence-figurines/COPY-CAC-CATALOGUE.md`. Les éléments de revue ci-dessous restent conservés.
+
 # Accueil CAC — copy E1 pour E2, E3 et E4
 
 ## Décision éditoriale et mesure

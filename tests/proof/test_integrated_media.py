@@ -102,7 +102,7 @@ class IntegratedMediaProof(unittest.TestCase):
         self.assertFalse(any(re.match(r'img-(0[1-9]|1[0-9]|2[0-2])-', p.name) for p in (DIST / 'images').iterdir()))
 
     def test_tagline_is_preserved_exactly(self):
-        self.assertIn('Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.', (DIST / 'index.html').read_text())
+        self.assertIn('Vos robots et agents IA, déployés et maintenus dans vos outils.', (DIST / 'index.html').read_text())
 
     def test_hero_poster_is_prioritized_before_video_metadata(self):
         links = Document(DIST / 'index.html').select('link')

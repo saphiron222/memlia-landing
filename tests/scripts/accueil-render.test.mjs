@@ -52,10 +52,10 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
   ]) assert.notEqual(digest(changed), expected, changed);
 });
 
-// Témoin de la recette A choisie par Kevin le 15/10, après correction des surfaces vertes.
+// Témoin de la copy catalogue demandée par Kevin le 15/10, design A et structure conservés.
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
 function assertEcContent(html) {
-  const expected = '203fe1dbe6181916e5af07bbe87ddcfbd38f935f39b106745765a272714cec98';
+  const expected = 'd2f977cf6155a9659afa90346016b89ae8b45bab198f1e7a06c66d5d0d8e7eb9';
 
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]

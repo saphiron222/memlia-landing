@@ -287,7 +287,7 @@ class PositioningProof(unittest.TestCase):
     def test_service_identity_and_hero(self):
         html = (DIST / 'index.html').read_text()
         text = ' '.join(Text(html).parts)
-        self.assertIn('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.', text)
+        self.assertIn('Robots et agents IA pour votre cabinet comptable.', text)
         hero = re.search(r'<section[^>]*class="hero(?:-editorial)?"[\s\S]*?</section>', html).group()
         self.assertNotIn('Excel', hero)
         self.assertNotIn('module', hero.lower())
@@ -310,8 +310,7 @@ class PositioningProof(unittest.TestCase):
         assert match is not None
         passage = match.group(1)
         text = ' '.join(' '.join(Text(passage).parts).split())
-        self.assertEqual(text, 'Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet. '
-                         'Nous en automatisons la part répétitive lorsque les formats, les accès et les cas couverts le permettent.')
+        self.assertEqual(text, 'Nous adaptons chaque robot ou agent aux formats, aux accès et aux cas couverts par votre cabinet. La règle écrite précise le résultat attendu et les validations à conserver.')
         self.assertNotIn('une règle écrite s’automatise', html)
 
     def test_blog_hub_separates_published_methods_and_service(self):

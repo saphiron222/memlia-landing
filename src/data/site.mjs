@@ -5,7 +5,7 @@
 export const SITE = {
   url: 'https://memlia.fr',
   nom: 'Memlia',
-  tagline: 'Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous.',
+  tagline: 'Vos robots et agents IA, déployés et maintenus dans vos outils.',
   email: 'contact@memlia.fr',
   /** Plancher du `lastmod` du sitemap, quand le dépôt git n'est pas lisible (voir astro.config.mjs). */
   derniereMiseAJour: '2026-09-09',

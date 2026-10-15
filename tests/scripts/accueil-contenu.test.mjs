@@ -13,9 +13,11 @@ test('les onze sections de l’accueil acceptent leur contenu et gardent EC par 
   }
 });
 
-test('le contenu EC compose les sources FAQ, méthode et garanties existantes', () => {
+test('le contenu EC compose les sources FAQ et garanties, avec une méthode de déploiement du catalogue', () => {
   const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
-  for (const name of ['FAQ', 'METHODE', 'GARANTIES']) assert.match(source, new RegExp(name));
+  for (const name of ['FAQ', 'GARANTIES', 'ROBOTS']) assert.match(source, new RegExp(name));
+  for (const step of ['Choisir la tâche.', 'Adapter à vos outils.', 'Vérifier avec votre équipe.', 'Déployer et maintenir.']) assert.ok(source.includes(step),step);
+  assert.match(source,/\$\{ROBOTS.length\}/);
 });
 
 // Plus aucun agrandissement d'image (demande de Kevin du 07/10/2026, #166) : la preuve suit le contenu, sans zoom.

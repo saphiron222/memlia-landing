@@ -3,9 +3,26 @@
 Le site public de Memlia : il présente et vend l'automatisation IA des tâches répétitives des
 cabinets d'expertise comptable et de commissariat aux comptes, prise en charge comme un service.
 
+Décision commerciale du 15/10/2026 : partir des robots et agents IA Memlia du catalogue,
+les adapter et les déployer dans les outils du cabinet, puis les maintenir. Construire sur mesure
+lorsque le besoin dépasse le catalogue. La règle écrite décrit leur fonctionnement dans le cabinet ;
+elle reste le mécanisme de contrôle. Voir la charte v8 et `docs/strategy/site-v3/coherence-figurines/COPY-CATALOGUE.md`.
+
 ## Langage
 
 ### L'offre
+
+**Robot** :
+Une routine précise du catalogue, avec un déclencheur, des tâches et un résultat identifié.
+Nous l’adaptons aux accès, dossiers, formats et validations du cabinet avant sa mise en service.
+
+**Déploiement** :
+L’adaptation et la mise en service d’un robot ou agent IA Memlia dans le périmètre accepté.
+Les essais, la recette et la maintenance sont définis avec le cabinet. Un catalogue ne prouve
+aucune installation chez un client ni une compatibilité sans configuration.
+
+**Sur mesure** :
+Une construction ou extension nécessaire lorsque le catalogue ne couvre pas le besoin du cabinet.
 
 **Tâche** :
 Un geste répétitif d'un cabinet, assez stable pour que sa règle s'écrive (relancer une pièce,

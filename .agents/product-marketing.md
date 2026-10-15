@@ -1,20 +1,20 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v7 — 15 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-15. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v8 — 15 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-15. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
-**« Votre cabinet tourne sur un savoir-faire que personne n'a écrit. »**
+**« Des robots et agents IA pour votre cabinet. Nous les déployons et les adaptons à vos outils. »**
 
-Le constat : les règles qui font tourner un cabinet (quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel, quel compte lettrer d'office) vivent dans la tête de collaborateurs submergés, difficiles à recruter et plus difficiles encore à garder. Quand l'un d'eux part, la règle part avec lui. Le cabinet ne manque ni de compétences ni d'outils : il manque de temps, de bras, et d'une règle écrite quelque part.
+**Dernier arbitrage de Kevin, 15/10/2026 après la recette des cartes Méthode.** L’offre part des robots et agents IA Memlia déjà conçus et présentés. Nous les déployons, les adaptons aux dossiers, aux outils et aux validations du cabinet, et les maintenons. Lorsqu’un besoin dépasse ce catalogue, nous construisons sur mesure. L’existence d’une fiche ne prouve aucun déploiement chez un client : aucun client, résultat mesuré, délai standard, certification ou mode d’hébergement n’est déduit de ce positionnement.
 
-Memlia écrit ce savoir-faire et automatise sa part répétitive dans les outils existants. Le collaborateur garde la décision ; le cabinet garde le savoir.
+Le lecteur reconnaît d’abord le travail confié et le résultat remis : avis classés, récapitulatif de portefeuille, pièces réunies, rapprochements préparés, exceptions à revoir. Un robot couvre une routine précise ; un agent IA accompagne les tâches d’un métier. La règle écrite explique l’adaptation et la maîtrise du traitement. Elle n’est plus l’unique accroche des pages commerciales.
 
-Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge répétitive sur les collaborateurs (ils travaillent sur les dossiers qui demandent du jugement) ; un savoir-faire qui appartient au cabinet (écrit, testé, maintenu, indépendant des personnes) ; moins de dépendance au recrutement dans l'urgence.
+Trois bénéfices, jamais chiffrés sans mesure : moins de collecte et de manipulations répétitives ; des résultats et exceptions que l’équipe peut reprendre ; un déploiement adapté et maintenu par Memlia. Le cabinet garde ses règles, ses saisies et ses décisions.
 
 ## 2. La promesse : ambitieuse, et tenue
 
-**Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, prise entière : observation, règle, construction, recette, maintenance.**
+**Choisissez un robot ou un agent IA Memlia. Nous l’adaptons, le déployons dans vos outils et le maintenons. Votre besoin dépasse le catalogue ? Nous construisons sur mesure.**
 
 - L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire, en expertise comptable et en commissariat aux comptes : de la relance des pièces à la DSN, du suivi des demandes de confirmation des tiers à la préparation des rapprochements) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »). Les familles publiées restent celles des données du site ; ouvrir le public CAC dans la charte ne prouve ni une intégration livrée ni une page déjà en ligne.
 - L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle.
@@ -46,7 +46,7 @@ Ce que le nom ne dit jamais : un chiffre de gain, une promesse d'autonomie, une 
 
 ## 4. Produit et modèle économique
 
-Memlia est un service, pas un logiciel : observer une tâche, écrire sa règle et ses limites dans les mots du cabinet, construire l'automatisation dans l'environnement existant, l'éprouver sur un jeu d'essai fictif (les cas qui doivent aboutir et ceux qui doivent échouer), la faire recetter par les équipes, la maintenir. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
+Memlia est un service : déployer les robots et agents IA du catalogue, les adapter à l’environnement et aux règles du cabinet, les faire recetter et les maintenir. Une construction sur mesure intervient lorsque le besoin le demande. Le déploiement comprend l’observation de la tâche, les accès, la règle écrite et ses limites, les essais fictifs et la recette par les équipes. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
 
 Le résultat et les critères d'acceptation sont définis au devis ; prix à la complexité, jamais au siège. Un classeur, un export, un logiciel métier, une messagerie ou un dossier partagé peuvent être le point d'entrée ; les formats et accès sont vérifiés avant tout engagement. Excel est une intégration possible, jamais la catégorie commerciale ni un mot du hero (`test_positioning.py`).
 
@@ -95,20 +95,20 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 
 | Page | Rôle | Requête visée | H1 |
 |---|---|---|---|
-| `/` | l'angle et la promesse | automatisation IA cabinet comptable | Votre cabinet tourne sur un savoir-faire que personne n'a écrit. |
-| `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Vos mandats avancent. Votre équipe garde le jugement. (direction de copy ; H1 intent-first arrêté par E1 après mesure) |
+| `/` | l'angle et la promesse | automatisation IA cabinet comptable | Robots et agents IA pour votre cabinet comptable. |
+| `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Automatisation pour commissaire aux comptes : robots et agents IA. |
 | `/automatisation-cabinet-comptable` | le service, le périmètre, le prix | automatisation sur mesure cabinet comptable | Toute tâche répétitive de votre cabinet, écrite puis automatisée. |
 | `/methode` | la preuve de méthode | comment se déroule une mission | Observer. Écrire. Éprouver. Livrer. |
-| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Ce que nous garantissons, avant même de commencer. |
-| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner. |
-| `/contact` | la conversion | — | Quelle tâche vos collaborateurs refont-ils encore à la main ? |
+| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Vos robots au travail. Vos décisions sous contrôle. |
+| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous mettons les robots et agents IA au travail dans votre cabinet. |
+| `/contact` | la conversion | — | Quel robot ou agent IA souhaitez-vous déployer ? |
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
 | `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia comptable (50 recherches par mois, Google, 15/10/2026) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
 | `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | une requête par fiche, mesurée sur Google le 15/10/2026 (`docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md` §6) | ce que l'agent prend en charge, intention d'abord |
 | `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable | arrêté par la spécification du hub |
 
-Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
+Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Vos robots et agents IA, déployés et maintenus dans vos outils. »
 
 ## 7 bis. Les articles du blog
 

@@ -27,13 +27,14 @@ test('ancre FAQ : le fragment ouvre le détail, le clavier le referme', async ({
   await expect(page.locator('#faq-recette')).not.toHaveAttribute('open', '');
 });
 
-test('cinq usages illustratifs, aucun catalogue public', async ({ page }) => {
+test('cinq domaines de tâches et accès au catalogue', async ({ page }) => {
   await page.goto('/');
   for (const id of ['collect', 'check', 'compare', 'follow', 'decide']) {
     await expect(page.locator(`[data-usage="${id}"]`)).toHaveCount(1);
   }
   await expect(page.locator('[id^="module-"]')).toHaveCount(0);
   await expect(page.locator('#usages')).not.toContainText('Exemples non contractuels');
+  await expect(page.locator('.catalogue-carte[href="/automatisation-cabinet-comptable"]')).toHaveCount(1);
 });
 
 test('FAQ DOM et JSON-LD identiques, ancres locales complètes', async ({ page }) => {

@@ -9,11 +9,11 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       await route.fulfill({ status: 503, contentType: 'application/json', body: '{}' });
     });
     await page.goto('/contact');
-    await expect(page.locator('h1')).toHaveText('Quelle tâche vos collaborateurs refont-ils encore à la main ?');
+    await expect(page.locator('h1')).toHaveText('Quel robot ou agent IA souhaitez-vous déployer ?');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/contact');
-    await expect(page.locator('main')).toContainText('Votre équipe garde les décisions.');
-    await expect(page.locator('#ensuite').locator('..')).toContainText('Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.');
-    await expect(page.locator('#ensuite').locator('..')).toContainText('Le devis vient après ce cadrage.');
+    await expect(page.locator('main')).toContainText('une adaptation ou une construction sur mesure');
+    await expect(page.locator('section[aria-labelledby="ensuite"]')).toContainText('Nous retenons le robot ou l’agent adapté');
+    await expect(page.locator('section[aria-labelledby="ensuite"]')).toContainText('un périmètre et un devis selon la complexité');
     await expect(page.getByText(/Rien à envoyer : la description suffit\./)).toHaveCount(1);
     const form = page.locator('[data-contact]');
     await expect(form.locator('input[type="file"]')).toHaveCount(0);
@@ -27,6 +27,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     if (await page.locator('#type_cabinet').count()) await page.keyboard.press('Tab');
     await expect(page.locator('#courriel')).toBeFocused();
     await page.keyboard.type('camille@exemple.test');
+    await page.keyboard.press('Tab');
+    await expect(page.locator('#tache_robot')).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(page.locator('#message')).toBeFocused();
     await page.keyboard.type('Chaque mois nous rapprochons deux listes et validons les écarts.');

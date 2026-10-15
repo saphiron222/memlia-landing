@@ -7,8 +7,8 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     const passage = page.locator('.daily-note');
     await passage.scrollIntoViewIfNeeded();
     await expect(passage).toBeVisible();
-    await expect(passage).toHaveText('Écrire la règle, c’est notre métier. Une règle écrite appartient au cabinet. Nous en automatisons la part répétitive lorsque les formats, les accès et les cas couverts le permettent.');
-    await expect(page.locator('h1')).toHaveText('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.');
+    await expect(passage).toHaveText('Nous adaptons chaque robot ou agent aux formats, aux accès et aux cas couverts par votre cabinet. La règle écrite précise le résultat attendu et les validations à conserver.');
+    await expect(page.locator('h1')).toHaveText('Robots et agents IA pour votre cabinet comptable.');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: `.qa/home-bounded-automation/${width}.png`, fullPage: true });
   });

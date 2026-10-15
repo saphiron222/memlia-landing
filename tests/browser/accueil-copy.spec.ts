@@ -5,10 +5,10 @@ for (const width of [375, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('h1')).toHaveText('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.');
-    await expect(page.locator('.hero-editorial-intro')).toContainText('Confiez-nous une tâche répétitive.');
-    await expect(page.locator('.hero-editorial-intro')).toContainText('dans leurs outils');
-    await expect(page.locator('.hero-editorial-intro')).toContainText('Ils gardent la décision. Votre cabinet garde le savoir.');
+    await expect(page.locator('h1')).toHaveText('Robots et agents IA pour votre cabinet comptable.');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('Nous déployons nos robots et agents IA');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('dans vos outils');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('Nous construisons sur mesure lorsque votre besoin dépasse le catalogue.');
     await expect(page.locator('main section')).toHaveCount(11);
     // Recette A validée le 15 octobre : scène de portefeuille, plus de fausse interface décorative.
     await expect(page.locator('main [data-proof]')).toHaveCount(0);
@@ -17,9 +17,9 @@ for (const width of [375, 1440]) {
     await scene.scrollIntoViewIfNeeded();
     await expect.poll(()=>scene.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/');
-    await expect(page.locator('#promesse')).toContainText('De l’observation à la maintenance');
+    await expect(page.locator('#promesse')).toContainText('Nous assurons le déploiement et la suite.');
     await expect(page.locator('#preuves')).toContainText('ce qui se prépare seul, ce qui attend votre validation et ce qui reste humain');
-    await expect(page.locator('#evaluer')).toContainText('un périmètre et un devis avant tout engagement');
+    await expect(page.locator('#evaluer')).toContainText('les adaptations utiles et un devis');
     const ctas = page.getByRole('link', { name: 'Confier une première tâche', exact: true });
     expect(await ctas.count()).toBeGreaterThanOrEqual(2);
     for (const cta of await ctas.all()) await expect(cta).toHaveAttribute('href', '/contact');

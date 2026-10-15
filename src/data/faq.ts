@@ -12,9 +12,9 @@ export interface QuestionReponse {
 export const FAQ: readonly QuestionReponse[] = [
   {
     id: 'abonnement',
-    question: 'Memlia est-il un logiciel à paramétrer seul ?',
+    question: 'Comment déployer un robot ou un agent IA Memlia ?',
     reponse:
-      'Non. Memlia est un service : nous observons la tâche, nous écrivons sa règle et ses limites, nous construisons l’automatisation dans vos outils, et vos équipes la valident. Vous n’avez rien à paramétrer.',
+      'Vous choisissez une tâche ou un métier à accompagner. Nous partons du catalogue Memlia, adaptons les accès, les règles et les livrables à votre cabinet, puis faisons vérifier le résultat par votre équipe. Nous assurons la mise en service et la maintenance convenue. Vous avez un interlocuteur pour le déploiement.',
   },
   {
     id: 'quitter-excel',
@@ -48,21 +48,21 @@ export const FAQ: readonly QuestionReponse[] = [
   },
   {
     id: 'sujets',
-    question: 'Quels processus pouvez-vous automatiser ?',
+    question: 'Faut-il tout construire sur mesure ?',
     reponse:
-      'Toute tâche répétitive dont la règle peut s’écrire : des entrées identifiables, des exceptions listables, un résultat vérifiable. Saisie, relances de pièces, rapprochements, contrôles de paie, retours DSN, échéances, dossier permanent, reporting. Ce qui demande un jugement reste à vos équipes ; ce qui se répète nous revient.',
+      'Nous commençons par les robots et agents IA du catalogue : collectes fiscales et sociales, préparation comptable, documents, suivi et reporting. Nous les adaptons à vos outils et à vos règles. Si une fonction manque ou si votre processus est particulier, nous construisons le complément ou la prise en charge sur mesure.',
   },
   {
     id: 'prix',
     question: 'Comment le prix est-il calculé ?',
     reponse:
-      'Vous payez une tâche prise en charge, pas des sièges. Le devis dépend des sources, des règles, des exceptions et des validations à couvrir ; maintenance, support et évolutions y sont écrits.',
+      'Vous payez une tâche prise en charge, pas des sièges. Le devis précise le déploiement, les adaptations et la maintenance. Il dépend des sources, des règles, des exceptions et des validations à couvrir. Une construction sur mesure est détaillée lorsqu’elle est nécessaire.',
   },
   {
     id: 'compatibilite',
-    question: 'Memlia fonctionne-t-il uniquement dans Excel ?',
+    question: 'Et si notre logiciel n’est pas listé ?',
     reponse:
-      'Non. Excel peut faire partie du processus, comme un logiciel métier, un export, une messagerie ou un dossier partagé. Le choix dépend de la tâche et des intégrations techniquement accessibles. Les versions et environnements couverts sont définis avant de développer.',
+      'Votre logiciel n’est pas listé ? Nous l’intégrons sur demande. Nous vérifions la version, les formats disponibles, les droits et les étapes d’authentification avant de définir la connexion. Votre logiciel métier, un export, une messagerie ou un dossier partagé peuvent être le point d’entrée du traitement.',
   },
   {
     id: 'evolution',

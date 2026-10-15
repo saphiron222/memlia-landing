@@ -35,7 +35,7 @@ export const organizationNode = () => ({
   email: SITE.email,
   slogan: SITE.tagline,
   description:
-    "Memlia écrit le savoir-faire des cabinets d'expertise comptable et automatise, avec l'IA, la part répétitive de leur travail dans leurs outils existants : la règle est écrite avec le cabinet, l'automatisation est livrée après recette, la décision reste au professionnel.",
+    "Memlia conçoit, adapte, déploie et maintient des robots et agents IA pour les cabinets d’expertise comptable et de commissariat aux comptes. Le catalogue est le point de départ ; une construction sur mesure répond aux besoins particuliers. Le cabinet conserve les décisions professionnelles.",
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Bureau 326, 59 rue de Ponthieu',
