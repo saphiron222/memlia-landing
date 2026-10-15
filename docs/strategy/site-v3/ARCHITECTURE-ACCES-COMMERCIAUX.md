@@ -230,6 +230,19 @@ Les trois sources minimales sont :
    tâche. S’il n’existe pas, la page reste prête mais non publiée : on ne fabrique pas un lien hors
    sujet pour atteindre le nombre.
 
+Une recette scellée conserve ses liens historiques. Si une décision explicite retire ensuite une
+source, le ledger `config/service-publication-ledger.json` peut déclarer une migration précise :
+service, SHA-256 de la recette scellée, ancien triplet URL/source/ancre, nouveau lien, date et motif.
+L'audit vérifie l'empreinte contre le sceau et les octets de la recette, puis la réalité du lien
+remplaçant. Il recompte **trois URL et trois sources effectives distinctes**, sans compter l'ancienne
+et la nouvelle source comme deux liens. Il n'existe aucune dispense générale de lien entrant.
+Le seul rendu dynamique actuellement reconnu est une tâche d'une fiche agent publiée : données,
+famille du service, route construite et nœud d'ancre dans la section Tâches passent une lecture
+d'AST, sans exécuter les données. Un commentaire ou un lien global ne suffit pas. La
+[migration du 15/10/2026](hub-robots/migration-lien-methode-facture-electronique-2026-10-15.md)
+documente le remplacement du lien de Méthode pour la facture électronique ; les recettes et leurs
+sceaux restent inchangés.
+
 Après publication, **chaque satellite futur de la famille** remplace son lien commercial générique
 vers `/automatisation-cabinet-comptable` par un lien vers la page de tâche. Une page atteint ainsi
 **cinq liens entrants contextuels au plus tard après la publication de deux nouveaux satellites**.
@@ -392,12 +405,15 @@ npm run service:audit               # relit toutes les recettes, mesures fraîch
 ```
 
 Entretien des intentions : `node scripts/seo/relever-titres-services.mjs` mesure via
-`autocompleterGoogle` les quinze requêtes déclarées par les cinq recettes, puis ajoute le relevé
-`docs/strategy/site-v3/mesures/titres-intent-AAAA-MM-JJ.json` (jour UTC). Chaque appel doit réussir ;
-une liste vide reste une mesure valide, une panne interdit toute écriture. Les entrées déjà présentes
-le même jour sont conservées et les nouvelles portent leur heure et URL de capture. Relancer
-`node --test tests/scripts/service-intent-fresh.test.mjs` et `npm run service:audit` après mesure.
-Le gate conserve sa limite de huit jours : renouveler la mesure à échéance, ne pas antidater.
+`autocompleterGoogle` toutes les requêtes primaires et secondaires déclarées par les recettes de
+services présentes (dédupliquées), puis ajoute le relevé
+`docs/strategy/site-v3/mesures/titres-intent-AAAA-MM-JJ.json` (jour Europe/Paris au début du relevé).
+Chaque appel doit réussir ; une liste vide reste une mesure valide, une panne interdit toute écriture.
+Les entrées déjà présentes le même jour sont conservées et les nouvelles portent leur heure UTC et
+URL de capture. Relancer `node --test tests/scripts/service-intent-fresh.test.mjs` et
+`npm run service:audit` après mesure. Le gate conserve sa limite de huit jours : renouveler la mesure
+à échéance, ne pas antidater. Le [relevé de maintenance du 15/10/2026](mesures/maintenance-intentions-services-2026-10-15.md)
+documente les 33 requêtes des 12 recettes et les audits avant/après, sans modifier leurs sceaux.
 
 `service:publier` interroge l’URL exacte sans query string, avec `Cache-Control: no-cache`, et
 refuse d’écrire le statut, la date ou le reçu si le HTTP 200, le canonical, le H1 et l’empreinte

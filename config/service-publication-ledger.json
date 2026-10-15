@@ -79,5 +79,29 @@
   "catalogueDecision": {
     "date": "2026-10-15",
     "reason": "Kevin remplace le hub automatisation par le catalogue des routines de robots. Les services historiques et destinations des agents restent publiés et doivent garder au moins un lien contextuel depuis le contenu principal d’une page publiée."
-  }
+  },
+  "incomingLinkMigrations": [
+    {
+      "version": 1,
+      "id": "facture-electronique-methode-vers-comptabilite-2026-10-15",
+      "date": "2026-10-15",
+      "service": "facture-electronique",
+      "recipeSha256": "70ac85abb0cc5377e74d88e4a869cf31465002793c0c2f4d9aee972347a9cb70",
+      "reason": "Kevin a explicitement supprimé le paragraphe promotionnel de Méthode. Son lien historique est remplacé, sans réécrire la recette scellée, par le lien contextuel de la tâche facture électronique dans la fiche publiée de Balthazar. Les deux autres sources entrantes restent requises.",
+      "from": {
+        "url": "/methode",
+        "sourcePath": "src/pages/methode.astro",
+        "anchor": "éprouver la préparation des appels de facture électronique"
+      },
+      "to": {
+        "kind": "agent-task",
+        "url": "/agents-ia/comptabilite",
+        "sourcePath": "src/pages/agents-ia/[metier].astro",
+        "agent": "comptabilite",
+        "family": "facture-electronique",
+        "anchor": "Détailler cette tâche",
+        "context": "Reprendre les factures électroniques reçues"
+      }
+    }
+  ]
 }

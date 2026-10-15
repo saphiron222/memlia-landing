@@ -34,7 +34,7 @@ export const PAIE_SOCIAL: Specialiste = {
     'Silae', 'Payfit', 'Sage 100 Paie & RH', 'Sage Paie', 'Cegid Quadra Paie', 'Cegid Payroll Ultimate', 'ACD PAIE',
     'Microsoft Excel', 'Microsoft Outlook', 'Gmail',
   ],
-  avatar: null,
+  avatar: { src: '/agents/paie-social-256.webp', alt: 'Figurine Memlia, agent IA paie social.' },
   demonstration: {
     tache: 'collecte des variables',
     dossier: 'Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictifs, paie versée le dernier jour du mois, variables d’octobre 2026.',
@@ -78,7 +78,7 @@ export const MISSIONS_AUDIT: Specialiste = {
     'Caseware Audit France', 'Acropole Expert CAC', 'Auditsoft Premier', 'PackAUDIT', 'SmartFEC+', 'DreamAudit',
     'e-Circu', 'Circit', 'Microsoft Excel',
   ],
-  avatar: null,
+  avatar: { src: '/agents/missions-audit-256.webp', alt: 'Figurine Memlia, agent IA missions audit.' },
   demonstration: {
     tache: 'réception du FEC',
     dossier: 'Dossier fictif : le mandat Héron, SAS inventée, exercice clos le 30/06/2026, FEC et balance remis par l’entité.',
@@ -120,7 +120,7 @@ export const INFORMATIQUE_OUTILS: Specialiste = {
     'Cegid Loop', 'Sage 100 Comptabilité', 'ACD COMPTA', 'Pennylane', 'EBP Comptabilité', 'Silae', 'Planity',
     'PrestaShop',
   ],
-  avatar: null,
+  avatar: { src: '/agents/informatique-outils-256.webp', alt: 'Figurine Memlia, agent IA informatique outils.' },
   demonstration: {
     tache: 'import contrôlé',
     dossier: 'Dossier fictif : l’Épicerie Bergeronnette, SARL inventée, export de caisse de septembre 2026 vers le logiciel comptable du cabinet.',

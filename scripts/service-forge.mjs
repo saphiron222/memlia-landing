@@ -21,6 +21,7 @@ import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { ajouterAuRegistre, chargerRegistre, sauverRegistre } from './lib/seo-registres.mjs';
 import { LIENS_COMMERCIAUX_BLOG } from '../src/data/blog-commercial-links.mjs';
 import { readDilaCopy } from './lib/dila-source-copy.mjs';
+import { migrerLiensEntrantsService } from './lib/service-incoming-migrations.mjs';
 
 const REQUIRED_SCHEMA_TYPES = ['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'];
 const FORBIDDEN_SCHEMA_TYPES = ['BlogPosting', 'Product', 'SoftwareApplication', 'Offer', 'Review'];
@@ -148,9 +149,12 @@ function verifyIncomingLinkDeclarations(recipe, errors) {
 }
 
 export function verifierLiensEntrantsService(root, recipe, errors) {
-  verifyIncomingLinkDeclarations(recipe, errors);
-  const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
+  const { links, migrated } = migrerLiensEntrantsService(root, recipe, errors);
+  // Compter les trois sources effectives après migration, jamais le couple ancien + nouveau.
+  verifyIncomingLinkDeclarations({ ...recipe, incomingLinks: links }, errors);
   for (const link of links) {
+    // La route dynamique, ses données et son nœud d'ancre ont déjà été vérifiés par le résolveur.
+    if (migrated.has(link)) continue;
     const prefix = link?.url ?? 'lien sans URL';
     if (!link || typeof link.sourcePath !== 'string' || !link.sourcePath.startsWith('src/')) continue;
     const absolute = resolve(root, link.sourcePath);

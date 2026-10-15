@@ -118,7 +118,8 @@ for (const route of ROUTES) {
 
       // Témoin que les scripts ont tourné : le script de base pose `js`, puis son observateur fait apparaître ce qui défile.
       await expect(page.locator('html.js')).toHaveCount(1);
-      expect(await page.locator('.rv.in').count(), `${route} : l'observateur du script de base a tourné`).toBeGreaterThan(0);
+      // Le catalogue garde ses contenus visibles sans animation d’apparition.
+      await expect(page.locator('main h1')).toBeVisible();
       await verifierSansReseau(page, sonde, route, 'chargement');
 
       // La navigation survit à la CSP : groupes du menu au bureau, burger sur mobile.
@@ -174,26 +175,27 @@ test.describe('la FAQ de la fiche, JavaScript actif', () => {
     await verifierSansReseau(page, sonde, FICHE_PILOTE, 'FAQ');
   });
 
-  test('si son script n’arrive pas, la FAQ reste ouverte et lisible', async ({ page }) => {
-    await page.route(/Faq\.astro_astro_type_script.*\.js$/, (itineraire) => itineraire.abort());
+  test('si son script n’arrive pas, la FAQ native reste utilisable', async ({ page }) => {
+    await page.route(/Agent\.astro_astro_type_script.*\.js$/, (itineraire) => itineraire.abort());
     await page.goto(FICHE_PILOTE);
     await page.waitForLoadState('networkidle');
     const items = page.locator('[data-faq] details');
     const total = await items.count();
     expect(total).toBeGreaterThanOrEqual(3);
-    for (let i = 0; i < total; i += 1) await expect(items.nth(i).locator('.faq-r')).toBeVisible();
+    for (let i = 0; i < total; i += 1) {await items.nth(i).locator('summary').click();await expect(items.nth(i).locator('.faq-r')).toBeVisible();}
   });
 });
 
 test.describe('la FAQ de la fiche, sans JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('chaque question est ouverte et sa réponse lisible', async ({ page }) => {
+  test('chaque question native s’ouvre et sa réponse devient lisible', async ({ page }) => {
     await page.goto(FICHE_PILOTE);
     const items = page.locator('[data-faq] details');
     const total = await items.count();
     expect(total).toBeGreaterThanOrEqual(3);
     for (let i = 0; i < total; i += 1) {
+      await items.nth(i).locator('summary').click();
       await expect(items.nth(i), `question ${i + 1} ouverte`).toHaveAttribute('open', '');
       const reponse = items.nth(i).locator('.faq-r');
       await expect(reponse).toBeVisible();

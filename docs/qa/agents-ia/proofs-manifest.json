@@ -3,11 +3,11 @@
   "sources": [
     {
       "path": "docs/design/agents-ia-proof/index.html",
-      "sha256": "da2be7337e91d32d4fc653e45c4103903c18a8c29899cb6455e9aa7dcdf01677"
+      "sha256": "54ba8147274780f417613f15807f2befc900facf5a73a3a1d86687a746567e4b"
     },
     {
       "path": "docs/design/agents-ia-proof/styles.css",
-      "sha256": "81cea6cb2dd4a1c3055c83cee38e41d7ac675613018db293a12126a7d73cac44"
+      "sha256": "f7e7c86437cf18a46991af74bbc7d4c370c760353222446bf7bad88ab5baf6cb"
     },
     {
       "path": "docs/design/m4-r1-functional-proofs/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/agents-ia-proof/content-contract.json",
-      "sha256": "74630bc138d341a2dce7112b9899dd71008a22f5726a633d297deb277fad003f"
+      "sha256": "2e9c8c6761b89398a8005eb338626beabf30a87a61d8c4ad5a6e406b70cf02b1"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -27,20 +27,74 @@
     {
       "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
       "target": "public/proofs/v2/49-hero-agents-ia.webp",
-      "bytes": 53874,
-      "sha256": "7ed30eb1b699cf2067ecd07319b90e9f88956f97f658d133f3187e50ea54f3b8"
+      "bytes": 58904,
+      "sha256": "1dc44f7acdf84cde2f6e51ac33af47d73054207013734a6f279dbb64aa45777b"
     },
     {
       "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
       "target": "public/proofs/v2/og/49-hero-agents-ia.webp",
-      "bytes": 21636,
-      "sha256": "d3337c55df117ac26c449a61a27a87cf799eb56d9f0e1e9ca7e23959574b12c8"
+      "bytes": 24060,
+      "sha256": "b3340f002d09868c0344233493e7bb972eedf4a0b72fd1c5505c70378e35a9d1"
     },
     {
       "source": "docs/design/agents-ia-proof/index.html#fiche-comptabilite",
       "target": "public/proofs/v2/og/50-fiche-comptabilite.webp",
-      "bytes": 48704,
-      "sha256": "723ca0b26c3b13a965dd7a8fbac299ee56aad13e610181a265e8ee752b0c3ab3"
+      "bytes": 48998,
+      "sha256": "1af8f68e20f345f1913ada84e5690833725704d7674d1d642fa014c7bc903cc9"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-juridique-fiscal",
+      "target": "public/proofs/v2/og/51-fiche-juridique-fiscal.webp",
+      "bytes": 55940,
+      "sha256": "93e0184e681aa8f236f2ac3cc65232e3b8c54cb3aba2f054a11b1d23a99f2e03"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-finance",
+      "target": "public/proofs/v2/og/52-fiche-finance.webp",
+      "bytes": 50810,
+      "sha256": "9976e824127d01fb8dddab12bba46945779dd354d6b80e404f67817af68e3765"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-commercial",
+      "target": "public/proofs/v2/og/53-fiche-commercial.webp",
+      "bytes": 50434,
+      "sha256": "9b14526190163864da731ef6a833c87a9761453960089865a88edb6f2d8c98f5"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-communication",
+      "target": "public/proofs/v2/og/54-fiche-communication.webp",
+      "bytes": 51582,
+      "sha256": "a094d19fb46f2c1ca5b0cc56e139c6389dc2f563d89d1ec68609d5a676477a5d"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-relation-client",
+      "target": "public/proofs/v2/og/55-fiche-relation-client.webp",
+      "bytes": 50112,
+      "sha256": "389a3fe1d15d674ffb989a5483fbba448acb099dee0acd162a278f3d965b2c77"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-gestion-cabinet",
+      "target": "public/proofs/v2/og/56-fiche-gestion-cabinet.webp",
+      "bytes": 46556,
+      "sha256": "aaaf51c21a046f950e8f963e3405c918f2d3cc3048383763c607ef1d384cf9e7"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-rh-cabinet",
+      "target": "public/proofs/v2/og/57-fiche-rh-cabinet.webp",
+      "bytes": 50714,
+      "sha256": "1a685265416c57bfdd017327f400bd0343dd7e0947b0d791800f39be62c3ea7a"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-protection-donnees",
+      "target": "public/proofs/v2/og/58-fiche-protection-donnees.webp",
+      "bytes": 54610,
+      "sha256": "dfaded1b5693f4299d1b3a611e7afa2136fdf6c448ca9cedefaafba40308ad42"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#compatibilites",
+      "target": "public/proofs/v2/og/59-compatibilites.webp",
+      "bytes": 30218,
+      "sha256": "de085d0fd13b2069a80147b42b2827adc17fbea1cac6cf2c5e509568bd185893"
     }
   ]
 }

@@ -27,7 +27,9 @@
     },
     {
       "route": "/agents-ia/comptabilite",
-      "clauses": [2],
+      "clauses": [
+        2
+      ],
       "date": "2026-10-15",
       "reason": "Fiche d’agent IA (annexe du hub, E4) : sa preuve propre est le rejeu de sa démonstration, un tableau HTML accessible rendu au build depuis les données ; une image le doublerait sans rien prouver de plus. Son recadrage 1200 × 630 n’est que l’image sociale (série agents-ia, data-og-only)."
     },
@@ -37,7 +39,7 @@
         2
       ],
       "date": "2026-09-20",
-      "reason": "Page de collection : elle distribue neuf guides dont chacun porte sa preuve fonctionnelle propre ; ajouter une illustration décorative au hub ne prouverait rien de plus."
+      "reason": "Page de compatibilité : chaque logiciel y a sa carte et son logo d’éditeur, et chaque guide lié porte sa preuve fonctionnelle propre ; une illustration ajoutée à la collection ne prouverait rien de plus."
     },
     {
       "route": "/integrations/rapprochement-bancaire-sage",
@@ -286,6 +288,78 @@
       ],
       "date": "2026-10-15",
       "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/agents-ia/juridique-fiscal",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/finance",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/commercial",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/communication",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/relation-client",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/gestion-cabinet",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/rh-cabinet",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/protection-donnees",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Hub agents aligné sur le hub robots à la demande de Kevin : trio de figurines des agents et cartes du catalogue. Les images sont partagées avec les fiches et un rendu social propre présente le trio ; aucun cadre HTML décoratif supplémentaire dans le héros."
     }
   ]
 }

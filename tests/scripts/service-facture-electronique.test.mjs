@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { parse } from 'parse5';
+import { verifierLiensEntrantsService } from '../../scripts/service-forge.mjs';
+import { fileURLToPath } from 'node:url';
 
 const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8');
 function find(node, id) {
@@ -20,7 +22,10 @@ test('la preuve montre appels, brouillon, exclusion et note préservée sans car
   assert.match(design, /'facture-electronique':\s*\{\s*heroProof: 'v2\/30-service-facture-electronique'/);
 });
 
-test('les trois liens contextuels reprennent les ancres de la recette recadrée', () => {
+test('les trois liens contextuels restent vérifiés après la migration historique du lien de Méthode', () => {
   const recipe = JSON.parse(read('commercial/recettes/facture-electronique/recette.json'));
-  for (const link of recipe.incomingLinks) assert.ok(read(link.sourcePath).includes(`href="${recipe.path}">${link.anchor}</a>`), link.sourcePath);
+  const errors = [];
+  verifierLiensEntrantsService(fileURLToPath(new URL('../../', import.meta.url)), recipe, errors);
+  assert.deepEqual(errors, []);
+  assert.ok(recipe.incomingLinks.some((link) => link.url === '/methode'), 'la recette scellée garde son lien historique');
 });

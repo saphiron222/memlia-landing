@@ -142,11 +142,13 @@
     },
     "/": {
       "query": "automatisation IA cabinet comptable",
-      "descriptionLead": "Votre cabinet"
+      "descriptionLead": "Robots comptables et agents IA Memlia",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/a-propos": {
       "query": "marque / preuve d’identité",
-      "descriptionLead": "À propos de Memlia"
+      "descriptionLead": "Memlia conçoit, déploie et maintient",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/agents-ia": {
       "query": "agent ia comptable",
@@ -158,7 +160,7 @@
       "query": "ia comptabilité",
       "descriptionLead": "IA en comptabilité",
       "measuredAt": "2026-10-15",
-      "source": "docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md §6 et hub-agents-ia/MOTS-CLES.md : DataForSEO, SERP Google FR du 15/10/2026, 390 recherches par mois ; H1 d’AGENTS-CONTENU §1 (porte 2) ; rejeu de propriété sans conflit."
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
     },
     "/automatisation-cabinet-comptable": {
       "query": "robot cabinet comptable",
@@ -222,19 +224,23 @@
     },
     "/contact": {
       "query": "navigation transactionnelle de marque",
-      "descriptionLead": "Décrivez la tâche"
+      "descriptionLead": "Choisissez un robot",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/garanties": {
       "query": "preuve et réduction du risque",
-      "descriptionLead": "Garanties Memlia"
+      "descriptionLead": "Déploiement des robots et agents IA Memlia",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/glossaire": {
       "query": "glossaire comptable",
       "descriptionLead": "Glossaire comptable"
     },
     "/integrations": {
-      "query": "guides par environnement comptable",
-      "descriptionLead": "Trouvez les repères de contrôle"
+      "query": "intégration logiciels cabinet comptable",
+      "descriptionLead": "Intégration des logiciels de votre cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md §6 et hub-agents-ia/MOTS-CLES.md : SERP Google FR du 15/10/2026, aucun volume Google Ads ; Google la lit comme « choisir ses logiciels », la page dit ce que nos agents reprennent dans les outils déjà choisis ; rejeu de propriété sans conflit."
     },
     "/integrations/rapprochement-bancaire-sage": {
       "query": "rapprochement bancaire sage",
@@ -445,6 +451,54 @@
       "descriptionLead": "Situation TVA ",
       "measuredAt": "2026-10-15",
       "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/agents-ia/juridique-fiscal": {
+      "query": "ia juridique expert comptable",
+      "descriptionLead": "IA juridique pour expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/finance": {
+      "query": "agent ia finance",
+      "descriptionLead": "Agent IA finance",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/commercial": {
+      "query": "agent ia commercial",
+      "descriptionLead": "Agent IA commercial",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/communication": {
+      "query": "newsletter expert comptable",
+      "descriptionLead": "Newsletter d’expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/relation-client": {
+      "query": "relation client cabinet comptable",
+      "descriptionLead": "Relation client en cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/gestion-cabinet": {
+      "query": "gestion cabinet comptable",
+      "descriptionLead": "Gestion de cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/rh-cabinet": {
+      "query": "ia rh",
+      "descriptionLead": "IA RH pour cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/protection-donnees": {
+      "query": "rgpd expert comptable",
+      "descriptionLead": "RGPD de l’expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
     }
   }
 }

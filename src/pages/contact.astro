@@ -10,7 +10,10 @@ import Courriel from '@/components/Courriel.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
 import { ROBOTS, contactsRobots } from '@/data/robots';
+import { FICHES } from '@/data/specialistes';
+import { contactsAgents } from '@/data/contacts-agents';
 const tachesRobots = contactsRobots();
+const tachesAgents = contactsAgents();
 
 const page = PAGES_V2.contact;
 const url = `${SITE.url}${page.chemin}`;
@@ -66,6 +69,7 @@ const appel = {
           <select id="tache_robot" name="tache_robot" aria-describedby="tache-aide">
             <option value="">Choisir une tâche ou décrire la vôtre</option>
             {ROBOTS.map((robot) => <optgroup label={robot.nom}>{tachesRobots.filter((tache) => tache.robot === robot.id).map((tache) => <option value={tache.id}>{tache.nom}</option>)}</optgroup>)}
+            {FICHES.filter(a=>a.publie).map(agent=><optgroup label={`${agent.prenom} · ${agent.libelle}`}>{tachesAgents.filter(t=>t.agent===agent.slug).map(t=><option value={t.id}>{t.nom}</option>)}</optgroup>)}
           </select>
           <p id="tache-aide" class="champ-aide texte-2">Vous pouvez changer ce choix ou le laisser vide.</p>
         </div>

@@ -114,7 +114,7 @@ function pageDeLaSerie() {
   return [
     '<!doctype html>',
     '<html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="styles.css"><title>Agents IA : le trio du hub et les rejeux des fiches</title></head>',
-    `<body><main>${[cadreDuHub(), ...fiches.map(cadreDeFiche)].join('\n')}</main></body></html>`,
+    `<body><main>${[cadreDuHub(), ...fiches.map(cadreDeFiche), `<section class="frame hatch compatibilites" id="compatibilites" data-og-only aria-label="Robots et agents IA Memlia dans les logiciels de votre cabinet"><div><p class="micro">Les compatibilités Memlia</p><h1>Vos outils.<br>Nos robots et agents IA.</h1><p>Production, paie, juridique, banque et messagerie.</p></div><div class="compatibilites-figurine"><img src="../../../public/agents/informatique-outils-512.webp" alt="Octavie, informatique et outils"><div class="compatibilites-logos"><img src="../../../public/logos/pennylane.webp" alt="Pennylane"><img src="../../../public/logos/microsoft-excel.svg" alt="Microsoft Excel"><img src="../../../public/logos/slack.webp" alt="Slack"></div></div></section>`].join('\n')}</main></body></html>`,
     '',
   ].join('\n');
 }

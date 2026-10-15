@@ -2,6 +2,8 @@
 import PageCommerciale from '@/layouts/PageCommerciale.astro';
 import IntegrationReplay from '@/components/sections/IntegrationReplay.astro';
 import Renvois from '@/components/Renvois.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import { AGENTS } from '@/data/specialistes';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
 import { INTEGRATIONS_INDEXABLES, integrationPath, type IntegrationDefinition } from '@/data/integrations';
 import { SITE } from '@/data/site.mjs';
@@ -15,6 +17,7 @@ export function getStaticPaths() {
 interface Props { integration: IntegrationDefinition; }
 const { integration } = Astro.props;
 const chemin = integrationPath(integration);
+const agent=AGENTS.find(a=>a.servicesLies.includes(integration.service.href.replace('/automatisation/','')));
 const hero = `integrations/${integration.slug}` as ProofId;
 const generatedIdentity = (generatedGuides as IntegrationDefinition[]).some(guide => guide.slug === integration.slug)
   ? createHash('sha256').update(JSON.stringify(integration)).digest('hex') : null;
@@ -114,12 +117,13 @@ const portee = {
   <section class="pv" aria-labelledby="maillage">
     <div class="tete rv">
       <h2 id="maillage">La tâche avant le nom du logiciel</h2>
-      <p>Ce guide répond à une requête d’environnement. Le périmètre vendu reste une tâche prise en charge, avec sa frontière, ses cas d’arrêt et sa recette.</p>
+      <p>Ce guide vous aide à préparer une tâche dans votre logiciel. Nous adaptons le robot ou l’agent IA à vos formats, à vos contrôles et aux exceptions de votre cabinet.</p>
     </div>
     <Renvois items={[
       { texte: 'Le service correspondant décrit la tâche sans la réduire à un éditeur.', libelle: integration.service.label, href: integration.service.href },
       ...(integration.tool ? [{ texte: 'L’outil local contrôle des soldes fictifs et exporte un CSV ; il ne réalise pas l’appariement des mouvements.', libelle: integration.tool.label, href: integration.tool.href }] : []),
       { texte: 'Choisissez un autre produit et le geste à contrôler.', libelle: INTEGRATIONS_INDEXABLES.length === 9 ? 'Voir les neuf guides par environnement' : 'Voir les guides par environnement', href: '/integrations' },
     ]} />
+    {agent&&<QuiPrendCeMetier agent={agent} variante="ligne"/>}
   </section>
 </PageCommerciale>

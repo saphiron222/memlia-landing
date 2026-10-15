@@ -52,10 +52,10 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
   ]) assert.notEqual(digest(changed), expected, changed);
 });
 
-// Témoin de la copy catalogue demandée par Kevin le 15/10, design A et structure conservés.
+// Témoin catalogue v8 : le lien Agents IA rejoint son hub finalisé (15/10), design A conservé.
 // PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
 function assertEcContent(html) {
-  const expected = 'd2f977cf6155a9659afa90346016b89ae8b45bab198f1e7a06c66d5d0d8e7eb9';
+  const expected = '259d60ddb2a0a0d6d2f56624175397a462bd3fa749661292a31c89f965283e08';
 
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]

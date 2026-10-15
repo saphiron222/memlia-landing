@@ -127,6 +127,7 @@ async function mesurer(page: Page) {
     temoin.remove();
 
     const cartes = [...document.querySelectorAll('.carte')].filter(visible);
+    const catalogue=cartes.filter(el=>el.matches('.catalogue-carte')).map(el=>({signature:signature(el,PROPRIETES_CARTE.slice(0,-2)),marges:signature(el,['padding-top','padding-left']),corps:signature(el.querySelector('.catalogue-carte-corps')!,['padding-top','padding-left'])}));
     const cellules = [...document.querySelectorAll('.cellule')].filter(visible);
     const textesAA: { texte: string; ratio: number }[] = [];
     for (const surface of [...cartes, ...cellules]) {
@@ -180,7 +181,8 @@ async function mesurer(page: Page) {
     });
     return {
       reference,
-      cartes: cartes.map((el) => signature(el, PROPRIETES_CARTE)),
+      cartes: cartes.filter(el=>!el.matches('.catalogue-carte')).map((el) => signature(el, PROPRIETES_CARTE)),
+      catalogue,
       cellules: cellules.map((el) => signature(el, ['background-color', 'padding-top', 'padding-left'])),
       filets: [...document.querySelectorAll('.bande > .cartes')].filter(visible).map((el) => getComputedStyle(el).backgroundColor),
       bordsDeBande: [...document.querySelectorAll('.bande')].filter(visible).map((el) => `${getComputedStyle(el).borderTopWidth} ${getComputedStyle(el).borderTopColor}`),
@@ -207,8 +209,10 @@ for (const largeur of LARGEURS) {
         const ref = m.reference;
 
         // Un seul dessin : chaque carte, titre, texte et pastille a la signature de la carte témoin.
-        expect(m.cartes.length + m.cellules.length, 'la page porte des cartes ou une bande').toBeGreaterThan(0);
+        expect(m.cartes.length + m.catalogue.length + m.cellules.length, 'la page porte des cartes ou une bande').toBeGreaterThan(0);
         for (const carte of m.cartes) expect.soft(carte, 'carte').toBe(ref.carte);
+        // Variante catalogue validée avec les robots : même coque, bandeau bord à bord et corps rembourré de 24 px.
+        for(const carte of m.catalogue){expect.soft(carte.signature,'coque catalogue').toBe(ref.carte.split(' | ').slice(0,-2).join(' | '));expect.soft(carte.marges,'bandeau bord à bord').toBe('0px | 0px');expect.soft(carte.corps,'marges du corps catalogue').toBe('24px | 24px');}
         for (const titre of m.titres) expect.soft(titre, 'titre de carte').toBe(ref.titre);
         for (const texte of m.textes) expect.soft(texte, 'texte de carte').toBe(ref.texte);
         for (const icone of m.icones) expect.soft(icone, 'pastille de carte').toBe(ref.icone);
@@ -366,3 +370,55 @@ test('le blog reste hors du dessin commun des cartes', async ({ page }) => {
     await expect(page.locator('.cartes, .carte, .cellule, .bande'), route).toHaveCount(0);
   }
 });
+
+/**
+ * La grille des logiciels de `/integrations` (tâche 8) : une liste longue, hors du tableau de 2 à 9 cartes, mais sous
+ * les mêmes règles (système de page § 5) : même largeur pour toutes, trois colonnes au plus, une colonne sous 56 rem de
+ * grille, rangées pleines sauf la dernière, centrée et jamais réduite à une carte. Chaque grille est amenée à l'écran
+ * avant sa mesure : les domaines hors de l'écran attendent leur rendu (`content-visibility: auto`).
+ */
+for (const largeur of LARGEURS) {
+  test(`/integrations : grilles de logiciels à ${largeur}px, sans carte étirée ni orpheline`, async ({ page }) => {
+    await page.setViewportSize({ width: largeur, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/integrations');
+    const grilles = await page.evaluate(() => [...document.querySelectorAll('.connecteurs')].map((grille) => {
+      grille.scrollIntoView();
+      const boite = grille.getBoundingClientRect();
+      const enfants = [...grille.children].map((e) => e.getBoundingClientRect());
+      const rangees = new Map<number, DOMRect[]>();
+      for (const r of enfants) {
+        const cle = [...rangees.keys()].find((y) => Math.abs(y - r.top) <= 1) ?? r.top;
+        rangees.set(cle, [...(rangees.get(cle) ?? []), r]);
+      }
+      return {
+        nom: grille.getAttribute('data-connecteurs'),
+        largeur: boite.width,
+        nombre: enfants.length,
+        largeurs: enfants.map((r) => r.width),
+        rangees: [...rangees.values()].map((rangee) => ({
+          nombre: rangee.length,
+          gauche: Math.min(...rangee.map((r) => r.left)) - boite.left,
+          droite: boite.right - Math.max(...rangee.map((r) => r.right)),
+        })),
+      };
+    }));
+    expect(grilles.length).toBeGreaterThan(0);
+    for (const g of grilles) {
+      const nom = `${g.nom} (${g.nombre} cartes, ${Math.round(g.largeur)} px)`;
+      const attendues = g.largeur >= TROIS_COLONNES ? 3 : 1;
+      // Les rangées attendues : pleines, puis le reste ; 3n + 1 cartes finissent en deux rangées de deux (comme sept).
+      const pleines = attendues === 3 && g.nombre % 3 === 1 && g.nombre >= 4 ? (g.nombre - 4) / 3 : Math.floor(g.nombre / attendues);
+      const reste = g.nombre - pleines * attendues;
+      const rangeesAttendues = [...Array(pleines).fill(attendues), ...(reste === 4 && attendues === 3 ? [2, 2] : reste > 0 ? [reste] : [])];
+      expect.soft(g.rangees.map((r) => r.nombre), `${nom} : rangées`).toEqual(rangeesAttendues);
+      expect.soft(Math.max(...g.largeurs) - Math.min(...g.largeurs), `${nom} : carte étirée`).toBeLessThanOrEqual(1.5);
+      for (const [i, rangee] of g.rangees.entries()) {
+        if (rangee.nombre === attendues) continue;
+        expect.soft(Math.abs(rangee.gauche - rangee.droite), `${nom} : rangée ${i + 1} incomplète, centrée`).toBeLessThanOrEqual(1.5);
+        expect.soft(rangee.nombre, `${nom} : carte orpheline`).toBeGreaterThanOrEqual(2);
+      }
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(0);
+  });
+}

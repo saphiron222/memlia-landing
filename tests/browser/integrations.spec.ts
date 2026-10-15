@@ -20,7 +20,7 @@ test('le hub filtre par logiciel et tâche, annonce le résultat et permet de to
   await page.getByLabel('Votre tâche', { exact: true }).fill('aucun-resultat-possible');
   await expect(page.locator('[data-guide-count]')).toHaveText('0 guides disponibles.');
   await expect(page.locator('[data-guide-empty]')).toBeVisible();
-  await page.getByRole('button', { name: 'Tout afficher', exact: true }).click();
+  await page.getByRole('search', {name:'Trouver un guide'}).getByRole('button', { name: 'Tout afficher', exact: true }).click();
   await expect(page.getByLabel('Votre tâche', { exact: true })).toBeFocused();
   await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
   await page.getByLabel('Votre tâche', { exact: true }).fill('CLÔTURE');
@@ -101,7 +101,7 @@ test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servi
     await expect(page.locator('h1')).toBeVisible();
     await expect(page.locator('h1')).toHaveText(guide.h1);
     await expect(page.locator(`[data-proof="integrations/${guide.slug}"]`)).toBeVisible();
-    await expect(page.locator(`main a[href="${guide.service.href}"]`)).toBeVisible();
+    await expect(page.getByRole('link',{name:guide.service.label,exact:true})).toBeVisible();
   }
   await context.close();
 });

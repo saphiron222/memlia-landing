@@ -1,71 +1,10 @@
 ---
-import { POLES } from '@/data/familles';
+import Figurine from '@/components/catalogue/Figurine.astro';
+import { imageAgent } from '@/data/images-agents';
 import type { Specialiste } from '@/data/specialistes';
-
-/**
- * L'avatar d'un agent IA : sa figurine quand la tâche 12 l'a livrée, sinon son monogramme, l'initiale du prénom à la
- * teinte de son pôle. Le monogramme est décoratif (`aria-hidden`) : le nom de l'agent est porté par le lien ou le
- * titre qui l'entoure. Jamais une image cassée ni un `alt` vide (spec §1, revue « avatar absent »).
- *
- * Tailles : `carte` (--avatar-carte, 84 px, annuaire et voisins) et `heros` (--avatar-heros, héros d'une fiche et
- * bandeau « Qui prend ce métier »). La figurine de 256 px couvre les deux à densité double.
- */
-interface Props {
-  agent: Specialiste;
-  taille?: 'carte' | 'heros';
-  /** Le média du haut de page se charge tout de suite ; les autres attendent d'être à l'écran. */
-  prioritaire?: boolean;
-}
-const { agent, taille = 'carte', prioritaire = false } = Astro.props;
-const COTE_PX = { carte: 84, heros: 116 } as const;
-const teinte = POLES[agent.teinte].couleur;
-const initiale = agent.prenom.charAt(0);
+interface Props { agent: Specialiste; taille?: 'carte' | 'heros'; prioritaire?:boolean; }
+const { agent, taille='carte',prioritaire=false }=Astro.props;
+const image=imageAgent(agent);
 ---
-
-{agent.avatar ? (
-  <img
-    class:list={['agent-avatar', `agent-avatar-${taille}`]}
-    src={agent.avatar.src}
-    alt={agent.avatar.alt}
-    width={COTE_PX[taille]}
-    height={COTE_PX[taille]}
-    loading={prioritaire ? 'eager' : 'lazy'}
-    decoding="async"
-    style={`--teinte: ${teinte}`}
-  />
-) : (
-  <span class:list={['agent-avatar', `agent-avatar-${taille}`]} data-monogramme aria-hidden="true" style={`--teinte: ${teinte}`}>{initiale}</span>
-)}
-
-<style>
-  .agent-avatar {
-    display: grid;
-    place-items: center;
-    flex: none;
-    box-sizing: border-box;
-    width: var(--avatar-carte);
-    height: var(--avatar-carte);
-    border: 4px solid var(--surface-elevee);
-    border-radius: var(--r-boite);
-    background: color-mix(in srgb, var(--teinte) 7%, var(--surface-feuille));
-    box-shadow: var(--ombre-ornement);
-    object-fit: cover;
-  }
-  .agent-avatar-heros {
-    width: var(--avatar-heros);
-    height: var(--avatar-heros);
-  }
-  /* L'initiale prend la teinte du pôle, assombrie d'un quart vers l'encre : lisible sur son voile (≥ 4,5:1 pour
-     les douze teintes), jamais le rouge plein d'une erreur. */
-  span.agent-avatar {
-    font-family: var(--police-display), 'Fraunces Fallback';
-    font-size: calc(var(--avatar-carte) * 0.46);
-    font-weight: 600;
-    line-height: 1;
-    color: color-mix(in srgb, var(--teinte) 75%, var(--encre));
-    user-select: none;
-  }
-  span.agent-avatar-heros {
-    font-size: calc(var(--avatar-heros) * 0.46);
-  }
-</style>
+<div class="agent-avatar" style={`width:${taille==='heros'?116:84}px`}><Figurine src={image.src} alt={image.alt} taille={taille==='heros'?116:84} prioritaire={prioritaire} /></div>
+<style>.agent-avatar {flex-shrink:0; border-radius:var(--r-boite);overflow:hidden;border:1px solid var(--ligne-douce);}</style>

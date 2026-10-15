@@ -1,71 +1,61 @@
 ---
 import Base from '@/layouts/Base.astro';
-import AppelFinal from '@/components/sections/AppelFinal.astro';
-import { PROOFS } from '@/data/proofs';
-import { organizationNode } from '@/data/schema.mjs';
+import Button from '@/components/Button.astro';
+import Figurine from '@/components/catalogue/Figurine.astro';
+import SourcesRobots from '@/components/catalogue/SourcesRobots.astro';
+import { imageAgent } from '@/data/images-agents';
+import '@/styles/catalogue/commun.css';
+import '@/styles/catalogue/hub.css';
+import ConnecteursDomaine from '@/components/sections/ConnecteursDomaine.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+
 import IntegrationCards from '@/components/sections/IntegrationCards.astro';
-import { auteurPar, identiteAuteur } from '@/data/auteurs';
-import { INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
+import { CONNECTEURS, DOMAINES, MENTION_MARQUES, PAGE_OUTILS } from '@/data/connecteurs';
+import { outilsGraph } from '@/data/schema-agents.mjs';
+import { INTEGRATIONS_INDEXABLES } from '@/data/integrations';
+import { AGENTS, cheminAgent } from '@/data/specialistes';
 import { SITE } from '@/data/site.mjs';
 
-const chemin = '/integrations';
-const url = `${SITE.url}${chemin}`;
-const auteur = auteurPar('kevin');
+/**
+ * `/integrations`, la page de compatibilité logiciels (tâche 8, spec §5) : le héros sur « intégration logiciels
+ * cabinet comptable », le bandeau d'Octavie et sa démonstration, une section par domaine de `connecteurs.ts`, « Votre
+ * logiciel n'est pas listé ? », la mention de marques, la façon dont nous branchons un logiciel ; puis la recherche des
+ * guides, inchangée, dont chaque guide reste lié une seule fois (les cartes de logiciels renvoient à ses ancres).
+ *
+ * Le JSON-LD est assemblé et vérifié par `outilsGraph` : un `ListItem` par logiciel vers son ancre, aucun statut,
+ * aucun lien vers un éditeur, aucun Service.
+ */
+const { chemin } = PAGE_OUTILS;
 const products = [...new Set(INTEGRATIONS_INDEXABLES.map((integration) => integration.product))];
+const octavie = AGENTS.find((agent) => cheminAgent(agent) === chemin);
+if (!octavie) throw new Error(`${chemin} : aucun agent IA ne mène à cette page (« Qui prend ce métier »)`);
 const page = {
   chemin,
-  titre: 'Guides par environnement comptable | Memlia',
-  description: `Trouvez les repères de contrôle dans ${new Intl.ListFormat('fr', { type: 'disjunction' }).format(products)} : champs à lire, préparation et décisions du cabinet.`,
-  h1: 'Guides par environnement comptable',
-  chapeau: `Choisissez le logiciel de votre équipe, puis la tâche qui vous occupe. Les ${INTEGRATIONS_INDEXABLES.length} guides indiquent les champs à lire, les contrôles à préparer et les décisions qui restent au cabinet.`,
-  ariane: 'Guides par environnement',
-  secondaire: { libelle: 'Comprendre le service Memlia', href: '/automatisation-cabinet-comptable' },
+  titre: PAGE_OUTILS.titreOnglet,
+  description: PAGE_OUTILS.description,
+  h1: PAGE_OUTILS.h1,
+  ariane: PAGE_OUTILS.ariane,
 };
-const noeuds = [
-  {
-    '@type': 'CollectionPage', '@id': `${url}#webpage`, url, name: page.h1, headline: page.h1,
-    description: page.description, datePublished: '2026-09-20', dateModified: '2026-10-12', inLanguage: SITE.langue,
-    author: { '@id': `${SITE.url}${identiteAuteur(auteur)}` }, isPartOf: { '@id': `${SITE.url}/#website` }, mainEntity: { '@id': `${url}#items` },
-  },
-  {
-    '@type': 'ItemList', '@id': `${url}#items`, numberOfItems: INTEGRATIONS_INDEXABLES.length,
-    itemListElement: INTEGRATIONS_INDEXABLES.map((integration, index) => ({
-      '@type': 'ListItem', position: index + 1, name: integration.h1, url: `${SITE.url}${integrationPath(integration)}`,
-    })),
-  },
-];
+const schema = outilsGraph(PAGE_OUTILS, CONNECTEURS);
+const { surDemande, branchement, guides: textesGuides, domaines: textesDomaines } = PAGE_OUTILS;
 ---
-
-<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={chemin}
-  socialImage={{ url: `${SITE.url}/proofs/integrations/hub.webp`, width: 1600, height: 900, alt: PROOFS['integrations/hub'].alt }}
-  schema={{ '@context': 'https://schema.org', '@graph': [...noeuds, organizationNode(), {
-    '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
-      { '@type': 'ListItem', position: 2, name: page.ariane, item: url },
-    ],
-  }] }}>
-  <div class="feuille hub-environnements">
-    <section class="hub-hero" aria-labelledby="environnements-titre">
-      <nav class="ariane" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li aria-current="page">{page.ariane}</li></ol></nav>
-      <div class="hub-intro">
-        <div class="tete">
-          <p class="surtitre">Vos logiciels, vos tâches</p>
-          <h1 id="environnements-titre">{page.h1}</h1>
-          <p>{page.chapeau}</p>
-          <p class="texte-2">Une version, un export ou un accès peut changer le parcours. Chaque guide précise son périmètre avant de montrer ce qui se prépare et ce que vous validez.</p>
-        </div>
-        <figure class="cadre hub-apercu">
-          <img src="/proofs/integrations/hub.webp" alt={PROOFS['integrations/hub'].alt} width="1600" height="900" loading="eager" data-proof="integrations/hub" />
-          <figcaption>Un aperçu des champs, de la règle écrite et du contrôle à garder.</figcaption>
-        </figure>
-      </div>
+<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={chemin} socialImage={{url:`${SITE.url}/proofs/v2/og/59-compatibilites.webp`,width:1200,height:630,alt:'Octavie réunit les outils du cabinet, scène fictive Memlia.'}} schema={schema}>
+<div class="feuille catalogue-page catalogue-hub integrations-page">
+<section class="hub-hero" aria-labelledby="environnements-titre"><p class="surtitre">Les compatibilités Memlia</p><h1 id="environnements-titre">{page.h1}</h1><p class="hub-intro">{PAGE_OUTILS.chapeau}</p><Button href="#domaines" variante="lien" picto="chevron">Trouver votre logiciel</Button><ul class="hub-trio">{[AGENTS[0],octavie,AGENTS[2]].map(a=><li><div class="hub-medaillon"><Figurine {...imageAgent(a)} taille={116} prioritaire/></div><p>{a.prenom}</p><span>{a.libelle}</span></li>)}</ul></section>
+<section class="catalogue-section" aria-labelledby="compatibilites-titre"><div class="tete"><h2 id="compatibilites-titre">Vos outils. Nos robots et agents IA.</h2><p>{PAGE_OUTILS.complement}</p></div><div class="memlia-surface-verte"><form role="search" aria-label="Trouver un logiciel" data-connecteur-filters hidden><div><label for="connecteur-query">Le nom de votre logiciel</label><input id="connecteur-query" type="search" autocomplete="off" placeholder="Pennylane, Silae, Outlook…"/></div><div><label for="connecteur-domaine">Votre besoin</label><select id="connecteur-domaine"><option value="">Tous les domaines</option>{DOMAINES.map(d=><option value={d.id}>{d.libelle}</option>)}</select></div><button type="reset">Tout afficher</button></form><p role="status" data-connecteur-count aria-live="polite" hidden></p><nav class="hub-domaines" id="domaines" aria-label={textesDomaines.legende}>{DOMAINES.map(d=><a href={`#${d.id}`}>{d.libelle}</a>)}</nav></div></section>
+<div class="compatibilites-catalogue">{DOMAINES.map(domaine=><ConnecteursDomaine domaine={domaine} produits={products}/>)}</div>
+<section class="catalogue-section" aria-labelledby="sur-demande-titre" data-sur-demande><div class="hub-autre"><h2 id="sur-demande-titre">Votre logiciel n’est pas listé ? Nous l’intégrons sur demande.</h2><p>{surDemande.texte}</p><a class="catalogue-action" href="/contact">Nous parler de vos outils<Picto nom="fleche" taille={14}/></a></div><p class="mention" data-mention-marques>{MENTION_MARQUES}</p><SourcesRobots/></section>
+<section class="catalogue-section" aria-labelledby="branchement-titre" data-branchement><div class="tete"><h2 id="branchement-titre">Du logiciel au résultat remis.</h2><p>Une même méthode pour vos robots et vos agents IA. Nous préparons les accès, réglons les échanges et vérifions le résultat avec votre équipe.</p></div><ol class="catalogue-etapes">{branchement.etapes.map((e,i)=><li><span class="catalogue-etape-numero">0{i+1}</span><h3>{e.terme}</h3><p>{e.texte}</p></li>)}</ol><a class="catalogue-action" href="/methode">Voir notre méthode<Picto nom="fleche" taille={14}/></a></section>
+<div class="catalogue-section"><QuiPrendCeMetier agent={octavie} variante="bandeau" demonstration/></div>
+<div class="guides-environnements">
+    <section class="hub-recherche" id="guides" aria-labelledby="choisir-guide">
+      <h2 id="choisir-guide">{textesGuides.titre}</h2>
+      <p class="hub-recherche-texte">{textesGuides.texte}</p>
       <nav class="hub-raccourcis" aria-label="Choisir votre logiciel">
         {products.map((product, index) => <a href={`#product-${index}`}>{product}</a>)}
       </nav>
-    </section>
-
-    <section class="hub-recherche" aria-labelledby="choisir-guide">
-      <h2 id="choisir-guide">Quelle tâche voulez-vous préparer ?</h2>
       <form role="search" aria-label="Trouver un guide" data-guide-filters hidden>
         <div><label for="guide-product">Votre logiciel</label><select id="guide-product" name="logiciel"><option value="">Tous les logiciels</option>{products.map(product => <option value={product}>{product}</option>)}</select></div>
         <div><label for="guide-query">Votre tâche</label><input id="guide-query" name="tache" type="search" placeholder="Lettrage, DSN, clôture…" autocomplete="off" /></div>
@@ -88,20 +78,9 @@ const noeuds = [
     );
   })}
 
-    <section class="pv" aria-labelledby="passage-tache">
-      <div class="tete">
-        <h2 id="passage-tache">La tâche continue au-delà du logiciel</h2>
-        <p>Le guide vous aide à choisir ce que vous voulez confier. Nous partons de ce que votre logiciel fait déjà et des exceptions de votre équipe. Quand la tâche traverse plusieurs supports, nous vous aidons à <a href="/blog/automatiser-avec-ia-sans-changer-logiciel">écrire le passage entre les outils</a> : ce qui entre, ce qui sort et le cas qui arrête la préparation.</p>
-        <p>Nous éprouvons la règle sur un dossier fictif. Votre équipe teste et accepte ensuite le résultat avant la mise en service.</p>
-      </div>
-    </section>
-    <AppelFinal id="suite" titre="Confiez la tâche qui revient dans votre équipe."
-      texte="Nous écrivons sa règle dans vos mots, puis nous automatisons sa part répétitive dans vos outils. Vous gardez la décision."
-      points={['Une règle qui appartient au cabinet.', 'Une proposition avant validation.', 'Un arrêt quand le cas sort de la règle.']}
-      action={{ libelle: 'Confier une première tâche', href: '/contact' }} />
-  </div>
-</Base>
-
+</div>
+<section class="catalogue-fin" id="suite" aria-labelledby="fin-titre"><h2 id="fin-titre">Quelle tâche voulez-vous confier ?</h2><p>Choisissez un robot pour une routine ou un agent IA pour un métier. Nous l’adaptons à votre cabinet, le déployons dans vos outils et le maintenons. Le sur mesure complète l’offre au besoin.</p><div class="liens-catalogues"><a class="catalogue-action" href="/automatisation-cabinet-comptable">Explorer les robots<Picto nom="fleche" taille={14}/></a><a class="catalogue-action" href="/agents-ia">Rencontrer les agents IA<Picto nom="fleche" taille={14}/></a></div><Button href="/contact" variante="principal" picto="fleche">Confier une première tâche</Button></section>
+</div></Base>
 <script>
   const form = document.querySelector<HTMLFormElement>('[data-guide-filters]');
   const product = document.querySelector<HTMLSelectElement>('#guide-product');
@@ -137,34 +116,26 @@ const noeuds = [
     }));
   }
 </script>
+<script>
+const form=document.querySelector<HTMLFormElement>('[data-connecteur-filters]');
+const query=document.querySelector<HTMLInputElement>('#connecteur-query');
+const domain=document.querySelector<HTMLSelectElement>('#connecteur-domaine');
+const status=document.querySelector<HTMLElement>('[data-connecteur-count]');
+const groups=[...document.querySelectorAll<HTMLElement>('[data-domaine]')];
+const normaliser=(texte:string)=>texte.normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase('fr');
+if(form&&query&&domain&&status){
+ const update=()=>{const mots=normaliser(query.value).trim().split(/\s+/).filter(Boolean);let trouve=false;
+ for(const groupe of groups){let visible=false;groupe.querySelectorAll<HTMLElement>('[data-connecteur]').forEach(c=>{c.hidden=Boolean(domain.value&&groupe.dataset.domaine!==domain.value)||!mots.every(m=>normaliser(c.textContent??'').includes(m));visible ||= !c.hidden;});
+ const vide=!groupe.querySelector('[data-connecteur]');groupe.hidden=vide?Boolean(mots.length||domain.value&&groupe.dataset.domaine!==domain.value):!visible;trouve ||= !groupe.hidden;}
+ status.hidden=false;status.textContent=trouve?'Les logiciels correspondant à votre recherche sont affichés.':'Aucun logiciel ne correspond. Nous pouvons l’intégrer sur demande.';};
+ form.hidden=false;form.addEventListener('submit',e=>e.preventDefault());query.addEventListener('input',update);domain.addEventListener('change',update);form.addEventListener('reset',()=>{query.value='';domain.value='';update();query.focus();});
+ document.querySelectorAll<HTMLAnchorElement>('.hub-domaines a').forEach(a=>a.addEventListener('click',()=>{query.value='';domain.value='';update();}));
+ // Une destination provenant d’une fiche révèle sa carte même après un filtre.
+ const reveal=()=>{if(location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)))?.matches('[data-connecteur]')){query.value='';domain.value='';update();}};
+ addEventListener('hashchange',reveal);reveal();
+}
+</script>
 
 <style>
-  .hub-environnements { padding-inline: var(--marge-page); }
-  .hub-hero { padding-top: 32px; }
-  .ariane ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; color: var(--texte-2); font-size: var(--t-sm); }
-  .ariane li + li::before { content: '/'; margin-right: 8px; }
-  .hub-intro { display: grid; gap: 32px; align-items: center; margin-top: 32px; }
-  h1 { font-size: var(--titre-page); }
-  .hub-apercu { margin: 0; }
-  .hub-apercu img { width: 100%; height: auto; }
-  figcaption { padding: 12px; color: var(--texte-2); font-size: var(--t-sm); }
-  .hub-raccourcis { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
-  .hub-raccourcis a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); }
-  .hub-recherche { display: grid; gap: 16px; margin-top: 40px; padding: 24px; background: var(--surface-hover); border-radius: var(--r-bouton); }
-  .hub-recherche h2 { font-size: var(--titre-bloc); }
-  form { display: grid; gap: 16px; align-items: end; }
-  form > div { display: grid; gap: 8px; }
-  label { font-weight: 600; }
-  input, select, button { font: inherit; color: var(--texte); min-height: 48px; }
-  input, select { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); background: var(--surface-feuille); }
-  button { padding: 10px 16px; border: 1px solid var(--ligne); border-radius: var(--r-bouton); background: var(--surface-feuille); cursor: pointer; }
-  .pv { padding-top: 48px; }
-  .hub-groupe { scroll-margin-top: calc(var(--nav-h) + 24px); }
-  .hub-groupe .tete { margin-bottom: 24px; }
-  .hub-groupe[hidden], form[hidden], [data-guide-empty][hidden] { display: none; }
-  @media (min-width: 48rem) { form { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; } }
-  @media (min-width: 64rem) {
-    .hub-environnements { padding-inline: var(--marge-page-lg); }
-    .hub-intro { grid-template-columns: 1.15fr 1fr; gap: 48px; }
-  }
+.guides-environnements{padding:0 var(--marge-page);}.guides-environnements :global(.pv){padding-top:48px;}.hub-recherche{display:grid;gap:20px;margin-top:var(--section-espace);padding:24px;background:var(--accent-voile);border-radius:var(--r-cadre);}.hub-recherche h2{font-size:var(--titre-section);}.hub-raccourcis,.hub-domaines,.liens-catalogues{display:flex;flex-wrap:wrap;gap:8px;}.hub-domaines{margin-top:24px;}.hub-raccourcis a,.hub-domaines a{display:inline-flex;min-height:44px;align-items:center;padding:8px 14px;border:1px solid var(--ligne);border-radius:var(--r-chip);color:var(--texte);background:var(--surface-feuille);font-size:var(--t-sm);text-decoration:none;}.hub-domaines a:hover{border-color:var(--accent-appui);}.hub-groupe{padding-top:48px;}.hub-groupe .tete{margin-bottom:24px;}.hub-recherche-texte{color:var(--texte-2);max-width:62ch;}form{display:grid;gap:16px;align-items:end;}form>div{display:grid;gap:8px;}label{font-weight:600;}input,select,button{font:inherit;color:var(--texte);min-height:48px;border:1px solid var(--ligne);border-radius:var(--r-bouton);background:var(--surface-feuille);padding:10px 12px;}input,select{width:100%;min-width:0;}button{cursor:pointer;}[hidden],.hub-groupe[hidden]{display:none!important;}[data-connecteur-count]{margin-top:16px;}.liens-catalogues{gap:24px;justify-content:center;}@media(min-width:48rem){form{grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;}}@media(min-width:64rem){.guides-environnements{padding-inline:var(--marge-page-lg);}}
 </style>

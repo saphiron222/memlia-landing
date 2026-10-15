@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { INTEGRATIONS } from '../helpers/integration-data.mjs';
 import { DOMAINE } from '../helpers/domaines-proscrits.mjs';
@@ -38,6 +38,8 @@ const ADRESSE = /https?:\/\/|\/\/[a-z0-9]|\bwww\.|mailto:/iu;
 /** Un total affiché : « 365 connecteurs », « 500+ logiciels », « plus de 300 outils ». */
 const TOTAL = /\b\d[\d\s.,]*\+?\s*(?:connecteurs?|logiciels?|outils?|intégrations?|solutions?|cartes?)\b/iu;
 
+/** Le compte des cartes écrit comme un nombre, sauf après « Microsoft » (Microsoft 365 est un produit). */
+const motifDuTotal = (n) => new RegExp(`(?<!Microsoft\\s)(?<![\\p{L}\\p{N}])${n}(?![\\p{N}])`, 'u');
 const chaines = (valeur) => {
   if (typeof valeur === 'string') return [valeur];
   if (Array.isArray(valeur)) return valeur.flatMap(chaines);
@@ -74,6 +76,8 @@ function erreursConnecteur(c, { domaines, guides, logoPresent }) {
   else if (c.logo !== null) {
     if (Object.keys(c.logo ?? {}).sort().join() !== 'alt,src') erreurs.push(`${nom} : logo doit être { src, alt }`);
     else if (!SRC_LOGO.test(c.logo.src)) erreurs.push(`${nom} : logo.src hors de /logos/ en svg ou webp « ${c.logo.src} »`);
+    // R27 (mineur différé de la tâche 1) : le fichier porte l'id de SA carte, jamais celui d'une autre.
+    else if (c.logo.src.replace(/^\/logos\/|\.(?:svg|webp)$/gu, '') !== c.id) erreurs.push(`${nom} : logo.src ne porte pas l'id de sa carte « ${c.logo.src} »`);
     else if (!logoPresent(c.logo.src)) erreurs.push(`${nom} : fichier de logo absent « ${c.logo.src} »`);
     if (typeof c.logo?.alt !== 'string' || c.logo.alt.trim() === '') erreurs.push(`${nom} : logo.alt vide`);
   }
@@ -116,6 +120,8 @@ test('témoins : un champ de statut, un lien, un logo mal posé, un guide inconn
     [{ logo: { src: 'https://cdn.exemple.fr/logo.svg', alt: 'x' } }, /logo.src hors de \/logos\//u],
     [{ logo: { src: '/logos/pennylane.png', alt: 'x' } }, /logo.src hors de \/logos\//u],
     [{ logo: { src: '/logos/pennylane.svg', alt: '' } }, /logo.alt vide/u],
+    [{ logo: { src: '/logos/cegid-loop.svg', alt: 'Logo Cegid' } }, /ne porte pas l'id de sa carte/u],
+    [{ logo: { src: '/logos/pennylane-encre.svg', alt: 'Logo Pennylane' } }, /ne porte pas l'id de sa carte/u],
     [{ etat: true }, /carte de l'État n'a jamais de logo/u],
     [{ etat: false }, /etat vaut true/u],
     [{ nom: 'RévisAudit' }, /RévisAudit est exclu/u],
@@ -147,9 +153,11 @@ test('I9 : ids et noms uniques (chaque logiciel une seule fois), aucun total dan
   assert.deepEqual(doublons(CONNECTEURS.map(({ id }) => id)), [], 'ids en double');
   assert.deepEqual(doublons(CONNECTEURS.map(({ nom }) => cle(nom))), [], 'noms en double');
   assert.equal(PAGE_OUTILS.chemin, '/integrations');
-  // Aucun total : ni dans les domaines, ni dans la page. Le compte (365 au relevé du 15/10) reste interne.
+  // Aucun total : ni dans les domaines, ni dans la page. Le compte (365 au relevé du 15/10) reste interne ; le motif
+  // suit le compte réel, et « Microsoft 365 » (un nom de produit) n'en est pas un.
   const textes = [...chaines(DOMAINES), ...chaines(PAGE_OUTILS)];
-  assert.deepEqual(textes.filter((texte) => TOTAL.test(texte) || /\b365\b/u.test(texte)), []);
+  const total = motifDuTotal(CONNECTEURS.length);
+  assert.deepEqual(textes.filter((texte) => TOTAL.test(texte) || total.test(texte)), []);
   const parDomaine = DOMAINES.map(({ id }) => `${id} ${CONNECTEURS.filter((c) => c.domaine === id).length}`);
   t.diagnostic(`${CONNECTEURS.length} connecteurs en ${DOMAINES.length} domaines (compte interne, jamais affiché) : ${parDomaine.join(', ')}`);
 });
@@ -190,12 +198,135 @@ test('I9 : LOGOS_REQUIRED est booléen ; vrai, toute carte hors État a son logo
   }
 });
 
-test('I9 : chaque nom de Specialiste.logiciels est un connecteur (nom ou id), comme le contrôle de CONNECTEURS.md §20 bis', async (t) => {
+test('I9 : chaque nom de Specialiste.logiciels est le nom exact d’une carte (R14), comme le contrôle de CONNECTEURS.md §20 bis', async (t) => {
   const { CONNECTEURS } = await connecteurs();
   const { AGENTS } = await specialistes();
-  const connus = new Set(CONNECTEURS.flatMap((c) => [cle(c.nom), cle(c.id)]));
+  // R14 : égalité stricte avec `Connecteur.nom` (le texte en gras de la colonne « Logiciel »), ni casse ni id.
+  const connus = new Set(CONNECTEURS.map((c) => c.nom));
   const cites = AGENTS.flatMap((agent) => (agent.logiciels ?? agent.fiche?.logiciels ?? []).map((nom) => [agent.slug, nom]));
   assert.ok(cites.length > 0, 'aucun agent n’expose `logiciels` (sur Specialiste ou sur sa Fiche) : le contrôle serait vide');
   t.diagnostic(`${cites.length} logiciels cités par les agents, ${new Set(cites.map(([, nom]) => cle(nom))).size} noms distincts`);
-  assert.deepEqual(cites.filter(([, nom]) => !connus.has(cle(nom))).map(([slug, nom]) => `${slug} : ${nom}`), []);
+  assert.deepEqual(cites.filter(([, nom]) => !connus.has(nom)).map(([slug, nom]) => `${slug} : ${nom}`), []);
+});
+
+/* ---------------------------------------------------------------------------------------------------------------
+ * Tâche 8 : les fichiers de logos, les domaines et la page (porte 2, R14, R17, R27).
+ * ------------------------------------------------------------------------------------------------------------- */
+
+const DOSSIER_LOGOS = `${RACINE}public/logos`;
+/** Ce qui, dans un SVG servi par le site, pourrait agir hors de l'image (le fichier vient d'un tiers). */
+const SVG_INTERDIT = [
+  [/<script/iu, '<script>'],
+  [/\son[a-z]+\s*=/iu, 'attribut on*'],
+  [/<foreignObject/iu, '<foreignObject>'],
+  [/(?:xlink:)?href\s*=\s*["'](?!#|data:image\/(?:png|jpe?g|gif|webp);base64,)/iu, 'href externe'],
+  [/@import/iu, '@import'],
+  [/url\(\s*['"]?\s*(?:https?:|\/\/)/iu, 'url() externe'],
+  [/javascript:/iu, 'javascript:'],
+  [/<!ENTITY|<!DOCTYPE/iu, 'DOCTYPE ou ENTITY'],
+  [/<(?:iframe|embed|object)\b/iu, 'iframe, embed ou object'],
+  // Un SVG servi est une surface publique : test_positioning.py y lit « module- » jusque dans les noms de classes.
+  [/module-|\bmodules?\b|\bcompléments?\s+(?:excel|memlia)\b/iu, 'vocabulaire verrouillé (charte §9)'],
+];
+/** Un logo est petit : un fichier plus lourd est un visuel, ou un raster mal converti. */
+const OCTETS_MAX = 40_000;
+const WEBP = (octets) => octets.subarray(0, 4).toString('latin1') === 'RIFF' && octets.subarray(8, 12).toString('latin1') === 'WEBP';
+
+/** Les erreurs d'un fichier de logo, lu comme octets ; `nom` est son nom dans public/logos. */
+function erreursFichierLogo(nom, octets) {
+  const erreurs = [];
+  if (octets.length > OCTETS_MAX) erreurs.push(`${nom} : ${octets.length} octets (plafond ${OCTETS_MAX})`);
+  if (nom.endsWith('.svg')) {
+    const texte = octets.toString('utf8');
+    for (const [motif, libelle] of SVG_INTERDIT) if (motif.test(texte)) erreurs.push(`${nom} : ${libelle}`);
+    const ouverture = texte.match(/<svg\b[^>]*>/iu)?.[0];
+    if (!ouverture) erreurs.push(`${nom} : aucune balise <svg>`);
+    else if (!/\sxmlns\s*=\s*["']http:\/\/www\.w3\.org\/2000\/svg["']/u.test(ouverture)) erreurs.push(`${nom} : xmlns SVG absent (rien ne s'affiche dans un <img>)`);
+  } else if (nom.endsWith('.webp')) {
+    if (!WEBP(octets)) erreurs.push(`${nom} : pas un WebP (en-tête RIFF/WEBP absent)`);
+  } else erreurs.push(`${nom} : extension hors de svg et webp`);
+  return erreurs;
+}
+
+test('témoins : un SVG piégé, sans xmlns, un faux WebP ou un fichier lourd rougissent ; un SVG sain passe', () => {
+  const sain = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10 10"><defs><path id="a" d="M0 0h10v10z"/></defs><use xlink:href="#a"/><image href="data:image/png;base64,AAAA"/></svg>';
+  assert.deepEqual(erreursFichierLogo('sain.svg', Buffer.from(sain)), []);
+  const piege = (morceau) => erreursFichierLogo('piege.svg', Buffer.from(sain.replace('<defs>', `${morceau}<defs>`)));
+  for (const [morceau, attendu] of [
+    ['<script>alert(1)</script>', /<script>/u],
+    ['<g onload="x()"/>', /attribut on\*/u],
+    ['<foreignObject><p>x</p></foreignObject>', /foreignObject/u],
+    ['<a href="https://exemple.fr"><g/></a>', /href externe/u],
+    ['<use xlink:href="https://exemple.fr/s.svg#a"/>', /href externe/u],
+    ['<style>@import url(x.css);</style>', /@import/u],
+    ['<rect style="fill:url(https://exemple.fr/p.svg#g)"/>', /url\(\) externe/u],
+    ['<a href="javascript:x()"><g/></a>', /javascript:|href externe/u],
+    ['<iframe src="x"/>', /iframe/u],
+    ['<g class="Logo-module--medium--3cfc65"/>', /vocabulaire verrouillé/u],
+  ]) assert.ok(piege(morceau).some((e) => attendu.test(e)), morceau);
+  assert.ok(erreursFichierLogo('a.svg', Buffer.from('<?xml version="1.0"?><!DOCTYPE svg [<!ENTITY a "b">]><svg xmlns="http://www.w3.org/2000/svg"/>')).some((e) => /DOCTYPE/u.test(e)));
+  assert.ok(erreursFichierLogo('a.svg', Buffer.from('<svg viewBox="0 0 1 1"><path d="M0 0"/></svg>')).some((e) => /xmlns/u.test(e)));
+  assert.ok(erreursFichierLogo('a.webp', Buffer.from('<html>pas une image</html>')).some((e) => /pas un WebP/u.test(e)));
+  assert.ok(erreursFichierLogo('a.png', Buffer.from('x')).some((e) => /extension/u.test(e)));
+  assert.ok(erreursFichierLogo('a.svg', Buffer.from(sain.padEnd(OCTETS_MAX + 1, ' '))).some((e) => /plafond/u.test(e)));
+});
+
+test('témoin : le motif du total suit le compte et laisse passer « Microsoft 365 »', () => {
+  const total = motifDuTotal(365);
+  assert.ok(total.test('Nos 365 connecteurs'));
+  assert.ok(total.test('365 logiciels pris en charge'));
+  assert.ok(!total.test('Microsoft 365, Google Workspace'));
+  assert.ok(!total.test('3650 ou 1365'));
+  assert.ok(motifDuTotal(366).test('366 cartes') && !motifDuTotal(366).test('365 cartes'));
+});
+
+test('R27 : chaque fichier de public/logos est le logo d’une seule carte, sain, et chaque logo déclaré y est', async (t) => {
+  const { CONNECTEURS } = await connecteurs();
+  const fichiers = existsSync(DOSSIER_LOGOS) ? readdirSync(DOSSIER_LOGOS) : [];
+  const declares = new Map(CONNECTEURS.filter((c) => c.logo).map((c) => [c.logo.src.replace(/^\/logos\//u, ''), c.id]));
+  t.diagnostic(`${fichiers.length} fichiers dans public/logos, ${declares.size} logos déclarés`);
+  assert.deepEqual(fichiers.filter((nom) => !declares.has(nom)), [], 'fichier de logo sans carte (orphelin)');
+  assert.deepEqual([...declares.keys()].filter((nom) => !fichiers.includes(nom)), [], 'logo déclaré sans fichier');
+  // Un id, un fichier : deux extensions pour la même carte rendraient la correspondance ambiguë.
+  const ids = fichiers.map((nom) => nom.replace(/\.[a-z]+$/u, ''));
+  assert.deepEqual(ids.filter((id, i) => ids.indexOf(id) !== i), [], 'deux fichiers pour une même carte');
+  assert.deepEqual(fichiers.flatMap((nom) => erreursFichierLogo(nom, readFileSync(`${DOSSIER_LOGOS}/${nom}`))), []);
+});
+
+test('R17 : les logos sur tuile encre sont des logos posés, jamais une carte de l’État', async () => {
+  const { CONNECTEURS, LOGOS_SUR_ENCRE } = await connecteurs();
+  assert.ok(LOGOS_SUR_ENCRE instanceof Set, 'LOGOS_SUR_ENCRE est un ensemble d’ids de cartes');
+  const parId = new Map(CONNECTEURS.map((c) => [c.id, c]));
+  assert.deepEqual([...LOGOS_SUR_ENCRE].filter((id) => !parId.get(id)?.logo || parId.get(id)?.etat), []);
+});
+
+test('les domaines : agents connus, ids distincts de ceux des cartes (ancres), libellé de la famille Excel jamais affiché', async () => {
+  const { CONNECTEURS, DOMAINES, PAGE_OUTILS } = await connecteurs();
+  for (const domaine of DOMAINES) {
+    assert.ok(typeof domaine.gestes === 'string' && domaine.gestes.trim() !== '', `${domaine.id} : gestes vides`);
+    assert.ok(Array.isArray(domaine.agents) && domaine.agents.length > 0, `${domaine.id} : aucun agent`);
+    assert.deepEqual(domaine.agents.filter((agent) => !AGENTS_ID.includes(agent)), [], `${domaine.id} : agent inconnu`);
+  }
+  const idsCartes = new Set(CONNECTEURS.map(({ id }) => id));
+  assert.deepEqual(DOMAINES.map(({ id }) => id).filter((id) => idsCartes.has(id)), [], 'un domaine et une carte partagent une ancre');
+  const visibles = normaliser([...chaines(DOMAINES), ...chaines(PAGE_OUTILS), ...CONNECTEURS.flatMap(chaines)].join(' '));
+  assert.ok(!visibles.includes(normaliser('Compléments greffés sur Excel')), 'le libellé de la famille complements-excel ne s’affiche jamais');
+  assert.ok(!/\bmodules?\b|\bcompléments?\s+(?:excel|memlia)\b/iu.test(visibles), '« module » et « complément Excel » ne s’écrivent pas');
+});
+
+test('PAGE_OUTILS : la requête et l’ouverture de la description du contrat d’intention ; le H1 porte la requête', async () => {
+  const { PAGE_OUTILS } = await connecteurs();
+  const contrat = JSON.parse(readFileSync(`${RACINE}config/page-intent-contract.json`, 'utf8')).pages[PAGE_OUTILS.chemin];
+  assert.ok(contrat, 'config/page-intent-contract.json porte /integrations');
+  assert.equal(contrat.query, PAGE_OUTILS.requete);
+  assert.equal(contrat.descriptionLead, PAGE_OUTILS.descriptionLead);
+  assert.ok(PAGE_OUTILS.description.startsWith(PAGE_OUTILS.descriptionLead), 'la description ouvre sur son descriptionLead');
+  const mots = (texte) => normaliser(texte).normalize('NFD').replace(/\p{M}/gu, '').match(/[\p{L}\p{N}]+/gu) ?? [];
+  const h1 = new Set(mots(PAGE_OUTILS.h1).map((mot) => mot.replace(/s$/u, '')));
+  const manquants = mots(PAGE_OUTILS.requete).filter((mot) => mot.length > 2 && !h1.has(mot.replace(/s$/u, '')));
+  assert.deepEqual(manquants, [], 'mot de la requête absent du H1');
+  for (const champ of ['h1', 'titreOnglet', 'description', 'ariane', 'nomListe', 'datePublication', 'dateMiseAJour']) {
+    assert.ok(typeof PAGE_OUTILS[champ] === 'string' && PAGE_OUTILS[champ].trim() !== '', `PAGE_OUTILS.${champ}`);
+  }
+  assert.ok(PAGE_OUTILS.datePublication <= PAGE_OUTILS.dateMiseAJour);
 });

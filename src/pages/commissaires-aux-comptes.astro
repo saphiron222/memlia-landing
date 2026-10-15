@@ -1,5 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import { AGENTS } from '@/data/specialistes';
 import Hero from '@/components/editorial/HeroEditorial.astro';
 import {sceneSociale} from '@/data/scenes-figurines';
 import '@/styles/editorial.css';
@@ -61,6 +63,7 @@ const schema = { '@context': 'https://schema.org', '@graph': [
     <Hero contenu={contenu.hero} />
     <Quotidien contenu={contenu.quotidien} scene="cac" />
     <Orientation contenu={contenu.orientation} cac />
+    <div class="catalogue-section"><QuiPrendCeMetier agent={AGENTS.find(a=>a.slug==='missions-audit')!}/></div>
     <CouvertureCac />
 
     <Promesse contenu={contenu.promesse} />

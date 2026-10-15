@@ -290,7 +290,8 @@ function mediaIsOwned(root, provenance, asset, route, references) {
 export function expectedSchema(route, rubriques = BLOG_RUBRIQUES) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
   if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
-  if (route === '/integrations') return ['CollectionPage', 'ItemList'];
+  // Page de compatibilité (tâche 8) : outilsGraph, aucun Service, fil à deux niveaux.
+  if (route === '/integrations') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   // Hub des agents IA et ses fiches (JSON-LD.md §4) : jamais de Service au hub, un seul par fiche.
   if (route === '/agents-ia') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   if (/^\/agents-ia\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'BreadcrumbList'];

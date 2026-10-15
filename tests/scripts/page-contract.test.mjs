@@ -584,6 +584,12 @@ test('les routes des agents IA trouvent leur gabarit et leur schéma : le hub et
   assert.deepEqual(expectedSchema('/agents-iaa'), ['WebPage']);
 });
 
+test('la page de compatibilité attend son fil d’Ariane ; un guide garde le sien', () => {
+  // Tâche 8 : outilsGraph émet CollectionPage, ItemList et BreadcrumbList ; un fil perdu doit rougir au contrat de page.
+  assert.deepEqual(expectedSchema('/integrations'), ['CollectionPage', 'ItemList', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/integrations/lettrage-sage'), ['TechArticle', 'WebPage', 'BreadcrumbList']);
+});
+
 test('le contrat d’intention du hub reprend la requête et l’ouverture de description de ses données', async () => {
   const { HUB } = await import('../../src/data/specialistes.ts');
   const contrat = contratsIntention(process.cwd()).get(HUB.chemin);

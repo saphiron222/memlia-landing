@@ -111,16 +111,16 @@ test('témoins des pages service : inconnue, non publiée, d’une famille non p
 
 test('la fiche : jamais pour une carte vers une page, obligatoire dès que l’agent est publié, facultative avant', () => {
   rougit((a) => { de(a, 'paie-social').fiche = ficheFictive(de(a, 'comptabilite')); }, /paie-social : fiche écrite alors que la carte mène à une page existante/u);
-  rougit((a) => { de(a, 'finance').publie = true; }, /finance : publié sans contenu de fiche/u);
+  rougit((a) => { de(a, 'finance').publie = true; delete de(a,'finance').fiche; }, /finance : publié sans contenu de fiche/u);
   const nonPubliee = copie();
-  assert.equal(de(nonPubliee, 'finance').publie, false);
+  de(nonPubliee,'finance').publie=false; delete de(nonPubliee,'finance').fiche;
   assert.deepEqual(erreurs(nonPubliee), [], 'une fiche non publiée peut attendre son contenu');
   // Une carte vers une page existante peut être publiée sans fiche.
   const page = copie();
   de(page, 'paie-social').publie = true;
   assert.deepEqual(erreurs(page), []);
   // `ficheDe` refuse de rendre une fiche absente ou une carte vers une page.
-  assert.throws(() => ficheDe(de(AGENTS, 'finance')), /pas encore écrit/u);
+  assert.throws(() => ficheDe(de(nonPubliee, 'finance')), /pas encore écrit/u);
   assert.throws(() => ficheDe(de(AGENTS, 'paie-social')), /mène à \/automatisation\/paie/u);
 });
 

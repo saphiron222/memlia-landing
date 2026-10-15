@@ -215,7 +215,7 @@ Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictif
 
 **Mission (carte)** : Prépare déclarations fiscales, formalités et documents de l'approbation des comptes ; les associés approuvent, votre cabinet signe et dépose.
 
-**H1** : IA juridique pour expert-comptable : TVA, liasse, formalités et documents de l'approbation des comptes préparés ; les associés approuvent, votre cabinet signe et dépose.
+**H1** : IA juridique pour expert-comptable : documents de l'approbation des comptes prêts à valider.
 
 **Chapeau** : Grégoire est un agent IA : la règle écrite des tâches juridiques et fiscales de votre cabinet, mise en œuvre dans vos outils. Il calcule les échéances, prépare déclarations et projets d'actes, puis s'arrête dès qu'une date ou une règle manque ; ce qui part, c'est vous qui le décidez.
 
@@ -229,7 +229,7 @@ Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictif
 | Préparer les déclarations annexes | CFE, CVAE, DAS2, IFU et taxes sur les véhicules préparées et suivies jusqu'à leur dépôt. | `declarations-annexes` |
 | Tenir le calendrier fiscal du portefeuille | Échéances déclaratives et de paiement de chaque dossier selon son régime et sa clôture, retards signalés en agrégats. | `echeances-fiscales` |
 | Suivre télédéclarations et rejets | Accusés de réception lus, rejets rattachés au dossier, correction proposée jusqu'au nouvel envoi. | `teledeclarations-rejets` |
-| Préparer l'approbation des comptes | Convocation, projet de rapport de gestion repris des comptes, projets de résolutions et de procès-verbal. | `secretariat-juridique` |
+| Préparer les documents de l'approbation des comptes | Convocation, projet de rapport de gestion repris des comptes, projets de résolutions et de procès-verbal. | `secretariat-juridique` |
 | Préparer le dépôt des comptes | La liasse de pièces assemblée pour le guichet unique ou le greffe, le délai qui suit l'approbation posé au calendrier. | `secretariat-juridique` |
 | Constituer les dossiers de formalités | Création, modification ou cessation : dossier préparé pour le guichet unique, pièces manquantes réclamées en les nommant. | `formalites-creation-modification` |
 | Mettre à jour registres et bénéficiaires effectifs | Registres des décisions et des mouvements de titres mis à jour, déclaration des bénéficiaires effectifs préparée, changement repéré au registre national des entreprises ou au BODACC. | `registres-obligations` |
@@ -306,7 +306,7 @@ Dossier fictif : un portefeuille de quatre sociétés inventées ; calendrier jo
 
 **Mission (carte)** : Prépare situations, trésorerie et prévisionnels de vos clients depuis la comptabilité tenue ; chaque hypothèse est tracée pour votre revue.
 
-**H1** : Agent IA finance pour cabinet comptable : situations, trésorerie et prévisionnels de vos clients préparés, chaque hypothèse tracée pour votre revue.
+**H1** : Agent IA finance : vos situations et prévisionnels préparés pour la revue.
 
 **Chapeau** : Florent est un agent IA : la règle écrite des missions de conseil financier de votre cabinet, mise en œuvre dans vos outils. Il agrège, projette et met en forme, puis s'arrête dès qu'une hypothèse n'a pas de source ; ce qui part, c'est vous qui le décidez.
 
@@ -340,7 +340,7 @@ Dossier fictif : la Menuiserie Pinson, SAS inventée, solde bancaire rapproché 
 | Cas joué | Sortie obtenue | Décision |
 |---|---|---|
 | Solde rapproché au 30/09 ; échéance d'emprunt, salaires et TVA datés | Projection semaine par semaine jusqu'à fin décembre, chaque flux avec sa source | Préparé |
-| Facture client de 18 000 € échue depuis soixante jours | Encaissement laissé à son échéance avec la mention « retard constaté » ; scénario sans cet encaissement présenté à côté | À valider |
+| Facture client de 18 000 € échue depuis soixante jours | Encaissement exclu de la projection de départ ; scénario séparé en attente d’une date future d’encaissement validée | À valider |
 | Semaine du 23/11, solde projeté sous le seuil d'alerte écrit du dossier | Tension signalée, les trois flux qui la causent listés | À valider |
 | Grosse commande annoncée par le dirigeant, sans date ni montant écrit | Flux non intégré. Motif : hypothèse sans source | Arrêt |
 
@@ -490,7 +490,7 @@ Dossier fictif : le mandat Héron, SAS inventée, exercice clos le 30/06/2026, F
 
 **Mission (carte)** : Prépare propositions, entrée en relation et lettres de mission ; l'acceptation du client et la vigilance restent à votre cabinet.
 
-**H1** : Agent IA commercial pour cabinet comptable : propositions, entrée en relation et suivi des prospects préparés, vous décidez de ce qui part.
+**H1** : Agent IA commercial : les propositions prêtes, votre cabinet choisit et envoie.
 
 **Chapeau** : Victoire est un agent IA : la règle écrite des tâches commerciales de votre cabinet, mise en œuvre dans vos outils. Elle qualifie, chiffre et rassemble, puis s'arrête dès qu'une pièce ou un prix sort de la règle ; ce qui part, c'est vous qui le décidez.
 
@@ -498,7 +498,7 @@ Dossier fictif : le mandat Héron, SAS inventée, exercice clos le 30/06/2026, F
 
 | Geste | Ce qui est préparé | Famille |
 |---|---|---|
-| Repérer les entreprises à contacter | Entreprises nouvellement immatriculées dans vos secteurs et sur votre territoire, lues dans le répertoire Sirene, listées avec leur source ; le choix de qui contacter reste à l'associé. | neuve : `suivi-prospects` |
+| Repérer les entreprises à contacter | Entreprises récemment inscrites au répertoire Sirene dans vos secteurs et sur votre territoire, listées avec leur source. Un premier message est préparé ; l'associé choisit qui contacter et fait chaque envoi. | neuve : `suivi-prospects` |
 | Qualifier les demandes entrantes | Formulaire, courriel ou appel noté : activité, forme sociale, effectif, besoin ; fiche prospect complétée des données publiques. | neuve : `suivi-prospects` |
 | Préparer le premier rendez-vous | Fiche du prospect, questions à poser, pièces à demander, points que votre règle de vigilance fait vérifier. | neuve : `suivi-prospects` |
 | Chiffrer la proposition de mission | Périmètre et honoraires calculés depuis votre barème écrit, options présentées, proposition mise en page aux couleurs du cabinet. | neuve : `propositions-mission` |
@@ -579,7 +579,7 @@ Dossier fictif : le Studio Rouge-Gorge, SAS de design graphique inventée, entr�
 
 **Mission (carte)** : Rédige la lettre d'information et l'actualité de vos clients depuis les sources officielles ; vous la relisez et l'envoyez.
 
-**H1** : Newsletter d'expert-comptable : l'agent IA rédige la lettre d'information et l'actualité de vos clients, vous relisez avant l'envoi.
+**H1** : Newsletter d'expert-comptable : l'agent IA rédige, votre cabinet relit et envoie.
 
 **Chapeau** : Colette est un agent IA : la règle écrite des tâches de communication de votre cabinet, mise en œuvre dans vos outils. Elle lit les sources officielles, rédige et met en forme, puis s'arrête dès qu'une règle citée n'a pas de source datée ; ce qui part, c'est vous qui le décidez.
 
@@ -611,7 +611,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, lettre d'information d'o
 
 | Cas joué | Sortie obtenue | Décision |
 |---|---|---|
-| Sujet retenu : réception des factures électroniques, source officielle lue | Paragraphe rédigé autour de la phrase « Depuis le 1er septembre 2026, toute entreprise doit pouvoir recevoir ses factures au format électronique. », lien vers la source | Préparé |
+| Sujet retenu : réception des factures électroniques, source officielle lue | Paragraphe rédigé autour de la phrase « Depuis le 1er septembre 2026, toute entreprise établie en France et assujettie à la TVA doit pouvoir recevoir ses factures électroniques. », lien vers la source | Préparé |
 | Sujet proposé par la veille, pas encore retenu par l'associé | Sujet placé en attente au calendrier, résumé joint | À valider |
 | Liste de diffusion qui contient trois clients sortis du portefeuille | Destinataires en cause listés, envoi suspendu jusqu'à la décision de l'associé | À valider |
 | Barème repris d'un article de presse, sans texte officiel | Aucun paragraphe rédigé. Motif : source non officielle | Arrêt |
@@ -667,7 +667,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, lettre d'information d'o
 
 **Mission (carte)** : Trie chaque demande de vos clients, la relie à son dossier et prépare la réponse ; votre collaborateur la valide et l'envoie.
 
-**H1** : Relation client en cabinet comptable : l'agent IA trie chaque demande, la relie au dossier et prépare la réponse, votre collaborateur valide.
+**H1** : Relation client en cabinet comptable : réponses préparées, votre collaborateur valide et envoie.
 
 **Chapeau** : Émile est un agent IA : la règle écrite des tâches de relation client de votre cabinet, mise en œuvre dans vos outils. Il trie, relie et rédige, puis s'arrête dès qu'une demande sort des réponses écrites ; ce qui part, c'est vous qui le décidez.
 
@@ -757,9 +757,9 @@ Dossier fictif : la boîte partagée d'un cabinet inventé, messages du 12/10/20
 
 **Mission (carte)** : Prépare honoraires, prélèvements, relances d'impayés et plan de charge ; le portefeuille se lit en agrégats, jamais par personne.
 
-**H1** : Gestion de cabinet comptable : honoraires, prélèvements, impayés et plan de charge préparés, le portefeuille lu en agrégats.
+**H1** : Gestion de cabinet comptable : honoraires et charge préparés, l'associé arbitre.
 
-**Chapeau** : Honoré est un agent IA : la règle écrite des tâches de gestion de votre cabinet, mise en œuvre dans vos outils. Il rapproche, facture et agrège, puis s'arrête dès qu'un tarif manque ou qu'un indicateur viserait une personne ; ce qui part, c'est vous qui le décidez.
+**Chapeau** : Honoré est un agent IA : la règle écrite des tâches de gestion de votre cabinet, mise en œuvre dans vos outils. Il rapproche, prépare les factures et agrège, puis s'arrête dès qu'un tarif manque ou qu'un indicateur viserait une personne ; ce qui part, c'est vous qui le décidez.
 
 ### Tâches prises en charge
 
@@ -819,7 +819,7 @@ Dossier fictif : trois dossiers inventés (Martinet, Rossignol, Sittelle), relev
 
 | Sans Honoré | Avec Honoré |
 |---|---|
-| Des actes hors forfait oubliés, ou facturés deux fois | Chaque acte facturé une fois, la facture validée par le collaborateur |
+| Des actes hors forfait oubliés, ou facturés deux fois | Chaque acte repris une fois dans le projet de facture, que le collaborateur valide |
 | Des rejets de prélèvement découverts trop tard | Chaque rejet rattaché à son dossier, l'échéancier proposé que l'associé accepte |
 | Des relances écrites quand quelqu'un y pense | Une relance au stade prévu, que l'associé envoie |
 | Un plan de charge refait de mémoire avant la haute saison | Une répartition proposée par équipe, que l'associé arbitre |
@@ -846,7 +846,7 @@ Dossier fictif : trois dossiers inventés (Martinet, Rossignol, Sittelle), relev
 
 **Mission (carte)** : Prépare les documents RH de votre équipe, de l'annonce à la synthèse de rémunération ; les décisions sur les personnes restent à vous.
 
-**H1** : IA RH pour cabinet comptable : recrutement, arrivées, formation et synthèse de rémunération préparés, les décisions sur les personnes restent à vous.
+**H1** : IA RH pour cabinet comptable : les documents prêts, les décisions restent à vous.
 
 **Chapeau** : Raphaël est un agent IA : la règle écrite des tâches RH internes de votre cabinet, mise en œuvre dans vos outils. Il rassemble, rédige et agrège, puis s'arrête dès qu'on lui demande d'apprécier une personne ; ce qui part, c'est vous qui le décidez.
 
@@ -1027,7 +1027,7 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 
 **Mission (carte)** : Prépare la mise à jour du registre des traitements et les réponses aux demandes d'accès des personnes concernées ; votre référent décide.
 
-**H1** : RGPD de l'expert-comptable : la mise à jour du registre des traitements, les demandes d'accès et les sous-traitants préparés pour votre référent.
+**H1** : RGPD de l'expert-comptable : mises à jour du registre des traitements préparées pour votre référent.
 
 **Chapeau** : Prudence est un agent IA : la règle écrite des tâches de protection des données de votre cabinet, mise en œuvre dans vos outils. Elle inventorie, retrouve et rédige, puis s'arrête dès qu'une identité ou un tiers est en doute ; ce qui part, c'est vous qui le décidez.
 
@@ -1035,7 +1035,7 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 
 | Geste | Ce qui est préparé | Famille |
 |---|---|---|
-| Préparer la mise à jour du registre | Tâche par tâche, depuis vos outils : finalité, données, destinataires et durée de chaque traitement ; lignes changées signalées au référent. | neuve : `registre-traitements` |
+| Préparer la mise à jour du registre des traitements | Tâche par tâche, depuis vos outils : finalité, données, destinataires et durée de chaque traitement ; lignes changées signalées au référent. | neuve : `registre-traitements` |
 | Préparer la réponse à une demande d'accès | Données de la personne concernée retrouvées dans les outils listés au registre, réponse rédigée traitement par traitement, délai suivi. | neuve : `demandes-droits` |
 | Préparer les autres demandes de droits | Rectification, effacement, opposition : données en cause listées, obligations de conservation qui s'y opposent signalées. | neuve : `demandes-droits` |
 | Revoir les contrats de sous-traitance | Clauses que le RGPD exige d'un contrat de sous-traitance repérées dans chaque contrat, manques listés. | `rgpd-secret-securite` |
@@ -1048,7 +1048,7 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 
 ### Ce que Prudence vous remet
 
-1. *Exemple fictif* · **La mise à jour du registre** après une tâche nouvelle : la ligne « collecte des variables de paie » complétée (finalité, données, destinataires, durée). Pastille « En attente de votre validation ».
+1. *Exemple fictif* · **La mise à jour du registre des traitements** après une tâche nouvelle : la ligne « collecte des variables de paie » complétée (finalité, données, destinataires, durée). Pastille « En attente de votre validation ».
 2. *Exemple fictif* · **La réponse à la demande d'accès** d'une salariée inventée d'un client inventé : données retrouvées dans la paie et la messagerie, réponse rédigée, date limite posée. Pastille « En attente de votre validation ».
 3. *Dès que vos accès sont branchés* · **La revue des contrats de vos sous-traitants**, clause par clause.
 
@@ -1071,7 +1071,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, demandes reçues en octo
 |---|---|---|
 | Inventorier traitements, outils et sous-traitants | Chaque ligne du registre | La décision du responsable de traitement et de la personne qu'il a désignée |
 | Retrouver les données d'une personne concernée | Chaque réponse à une personne concernée | L'appréciation d'un risque ou d'un incident |
-| Rédiger registre, réponses, trames et mentions | Chaque proposition de suppression | Toute notification |
+| Rédiger les mises à jour du registre, les réponses, trames et mentions | Chaque proposition de suppression | Toute notification |
 | Suivre délais et durées de conservation | Chaque mention d'information | La désignation d'un délégué à la protection des données |
 
 **Conditions d'arrêt**
@@ -1131,7 +1131,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, demandes reçues en octo
 | Aude · questions | Chaque préparation laisse une trace que votre dossier de travail peut reprendre : source, règle appliquée, éléments retenus. | §7 (NEP 230) |
 | Victoire · questions | À l'entrée en relation, nous réunissons les pièces que votre règle de vigilance demande ; l'appréciation et l'acceptation du client restent à votre cabinet. | §4 |
 | Victoire · questions | La déclaration de soupçon appartient au professionnel assujetti ; elle reste hors de tout ce que nous préparons. | §4 |
-| Colette · démonstration | Depuis le 1er septembre 2026, toute entreprise doit pouvoir recevoir ses factures au format électronique. | §2 |
+| Colette · démonstration | Depuis le 1er septembre 2026, toute entreprise établie en France et assujettie à la TVA doit pouvoir recevoir ses factures électroniques. | §2 |
 | Honoré · questions | Les PME et les micro-entreprises émettront au format électronique à partir du 1er septembre 2027. | §2 |
 | Prudence · questions | Notre agent IA n'est pas votre délégué à la protection des données : il prépare, la personne que vous avez désignée décide. | §1 |
 | Prudence · questions | Désigner un DPO dépend de vos traitements : votre cabinet en juge ; la CNIL le recommande même lorsqu'il n'est pas obligatoire. | §1 |
@@ -1239,3 +1239,18 @@ unifiées, ponctuation retirée, notes internes comprises) :
 - **Phrase dérivée de Salomé** (« le 5 ou le 15 du mois suivant ») : relue par la même revue `metier`.
 - **Logiciels concernés** : chaque nom cité dans les listes « Logiciels concernés » doit exister dans
   `CONNECTEURS.md` ; contrôle fait à l'intégration de la liste des connecteurs.
+
+
+### Corrections de la tâche 9, reprise Codex (15/10/2026)
+
+- Grégoire : le geste dit « préparer les documents de l'approbation des comptes » ; l'approbation reste aux associés. La démonstration garde la réserve de prolongation judiciaire et l'arrêt si la forme n'a pas de délai écrit.
+- Colette et Émile : le H1 précise la personne qui envoie, comme leur mission de carte.
+- Prudence : « registre des traitements » dès le geste et le livrable ; les mises à jour sont préparées, le cabinet tient le registre.
+- Honoré : il prépare les factures et le plan de charge. L'associé garde la décision de recruter et la répartition entre les personnes ; une sixième réponse de fiche le précise. La carte reste en agrégats.
+- Victoire : « récemment inscrites au répertoire Sirene » remplace « nouvellement immatriculées » ; liste sourcée et premier message préparés, choix du contact et chaque envoi à l'associé. L'article 152 du décret 2012-432 et les pages Insee ont été relus ; la CNIL reste en maintenance. Aucune conformité de la prospection n'est revendiquée ; voir l'ajout daté de FACT-CHECK.md.
+- Les chapeaux des huit nouvelles fiches suivent la charte v8 : agent du catalogue, adaptation, déploiement et maintenance par Memlia, puis limite métier et validation du cabinet. Les tâches, familles, logiciels, démonstrations et requêtes sont conservés.
+- Raphaël : index de l'égalité maintenu comme préparation pour les cabinets concernés. Le ministère du Travail confirme le dispositif actuel en 2026 et présente encore la transposition en projet le 10/09/2026 ; aucun droit nouveau issu de ce projet n'est affirmé.
+
+- Dernier arbitrage de direction relayé par le contrôleur : H1 raccourcis en conservant chaque intention, la préparation des documents de l’approbation chez Grégoire, l’expéditeur chez Colette et Émile, le registre des traitements chez Prudence. Les images sociales conservent le chemin du moteur éprouvé `/proofs/v2/og/51…58-fiche-<slug>.webp`.
+
+- Citations inline : les FAQ Colette et Raphaël portent un exemple précisément sourcé (calendrier de réception des factures électroniques ; index de l’égalité pour les entreprises d’au moins 50 salariés). Raphaël a six questions après ajout de celle sur l’index.

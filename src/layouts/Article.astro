@@ -1,5 +1,7 @@
 ---
 import Base from './Base.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import { titulaireDe } from '@/data/specialistes';
 import ScrollableTables from '@/components/ScrollableTables.astro';
 import Picture from '@/components/Picture.astro';
 import Picto from '@/components/Picto.astro';
@@ -27,6 +29,7 @@ interface Props {
 }
 const { entree, suivants, headings } = Astro.props;
 const { data } = entree;
+const agent=titulaireDe(data.famille??'');
 const sections = headings.filter(({ depth }) => depth === 2);
 const afficherSommaire = sections.length >= 6;
 const chemin = `${BLOG.chemin}/${entree.id}`;
@@ -168,6 +171,7 @@ const lienCommercial = lienCommercialPourArticle(entree.id);
         <ScrollableTables><slot /></ScrollableTables>
       </div>
 
+      {agent&&<QuiPrendCeMetier agent={agent} variante="ligne"/>}
       <aside class="article-pont coins" aria-labelledby="pont-titre">
         <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
         <span class="eyebrow">Et dans votre cabinet ?</span>

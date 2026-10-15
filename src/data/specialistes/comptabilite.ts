@@ -36,7 +36,7 @@ export const COMPTABILITE: Specialiste = {
     'EBP Comptabilité', 'MyU', 'Tiime', 'Inqom', 'fulll', 'AMICOMPTA', 'Dext', 'N2F', 'Qonto', 'Planity',
     'PrestaShop', 'Microsoft Excel',
   ],
-  avatar: null,
+  avatar: { src: '/agents/comptabilite-256.webp', alt: 'Figurine Memlia, agent IA comptabilite.' },
   demonstration: {
     tache: 'lecture et pré-imputation des pièces',
     dossier: 'Dossier fictif : l’Atelier Loriot, SARL de menuiserie inventée, exercice au 31/12/2026, pièces de septembre.',
@@ -50,11 +50,11 @@ export const COMPTABILITE: Specialiste = {
   },
   fiche: {
     requete: 'ia comptabilité',
-    h1: 'IA en comptabilité : de la pièce reçue à la clôture, l’agent IA prépare la saisie, les rapprochements et la révision, vos collaborateurs valident.',
+    h1: 'IA en comptabilité : de la pièce reçue à la clôture, les tâches préparées pour votre revue.',
     titreOnglet: 'IA en comptabilité : de la pièce reçue à la clôture | Memlia',
     descriptionLead: 'IA en comptabilité',
     description: 'IA en comptabilité : pièces lues, saisie pré-imputée, banque rapprochée, révision préparée. L’agent IA s’arrête dans le doute ; votre collaborateur valide chaque écriture.',
-    chapeau: 'Balthazar est un agent IA : la règle écrite des tâches comptables de votre cabinet, mise en œuvre dans vos outils. Il lit, rapproche et propose, puis s’arrête dès qu’un cas sort de la règle ; ce qui part, c’est vous qui le décidez.',
+    chapeau: 'Balthazar prépare la tenue comptable dans les outils de votre cabinet : pièces lues, écritures proposées, rapprochements et révision préparés. Nous adaptons cet agent IA à vos dossiers et à vos contrôles. Votre collaborateur valide les écritures et l’expert-comptable garde le jugement de révision.',
     serviceType: 'Préparation de la tenue comptable : saisie, rapprochements, révision et clôture',
     eeat: { auteur: 'kevin', datePublication: '2026-10-15', dateModification: '2026-10-15', sources: [] },
     image: {
@@ -111,7 +111,7 @@ export const COMPTABILITE: Specialiste = {
         { question: 'Les écritures entrent-elles dans le logiciel sans contrôle ?', reponse: 'Chaque écriture proposée attend la validation de votre collaborateur, lot par lot. L’import dans votre logiciel reste son geste.' },
         { question: 'Que devient une pièce illisible ?', reponse: 'Elle sort du lot avec son motif et la relance qui la réclame. Aucune écriture n’est proposée par ressemblance avec une autre pièce.' },
         { question: 'Balthazar prépare-t-il aussi la révision et la clôture ?', reponse: 'Oui : comptes d’attente, régularisations de fin d’exercice, contrôle de la balance et forme du FEC. Le jugement de révision et la clôture restent au chef de mission et à l’expert-comptable.' },
-        { question: 'Qui voit les pièces de vos clients ?', reponse: 'Les pièces sont lues en place, dans vos outils, avec les seuls accès ouverts pour la tâche. La règle est rejouée sur un dossier fictif avant de toucher un vrai dossier.' },
+        { question: 'Qui voit les pièces de vos clients ?', reponse: 'Nous définissons les accès, les données lues et les destinataires avec votre cabinet avant la mise en service. Les conditions de traitement sont écrites pour la mission. Les essais de construction utilisent des dossiers fictifs.' },
         { question: 'Combien coûte une tâche prise en charge ?', reponse: 'Vous payez une tâche prise en charge, pas des sièges. Le devis dépend des sources, des règles et des exceptions ; la maintenance y est écrite.' },
       ],
     },

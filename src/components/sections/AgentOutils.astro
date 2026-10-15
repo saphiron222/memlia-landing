@@ -1,24 +1,31 @@
 ---
 import type { Specialiste } from '@/data/specialistes';
 import { gabaritDe } from '@/data/specialistes/gabarit';
+import { PAGE_OUTILS, connecteurNomme } from '@/data/connecteurs';
 
 /**
  * « Dans vos outils » (spec §2, section 6) : les logiciels où l'agent prépare ses tâches, sous leur nom exact de
- * carte (`CONNECTEURS.md`, R14). Du texte seulement à ce stade : la tâche 8 les relie à leur carte de la page de
- * compatibilité (`/integrations#<id>`). Aucun statut, aucun total, aucun lien sortant vers un éditeur (porte 2).
+ * carte (`CONNECTEURS.md`, R14), chacun lié à sa carte de la page de compatibilité (`/integrations#<id>`, tâche 8).
+ * Un nom sans carte ne se construit pas (fail-closed ; `connecteurs.test.mjs` le refuse déjà dans les données).
+ * Aucun statut, aucun total, aucun lien sortant vers un éditeur (porte 2).
  */
 interface Props {
   agent: Specialiste;
 }
 const { agent } = Astro.props;
 const { outils } = gabaritDe(agent);
+const logiciels = agent.logiciels.map((nom) => {
+  const carte = connecteurNomme(nom);
+  if (!carte) throw new Error(`${agent.slug} : « ${nom} » n’est le nom d’aucune carte de ${PAGE_OUTILS.chemin} (R14)`);
+  return { nom, href: `${PAGE_OUTILS.chemin}#${carte.id}` };
+});
 ---
 
 <div class="agent-outils" data-agent-outils>
   <h3>{outils.titre}</h3>
   <p>{outils.texte}</p>
   <ul class="agent-logiciels">
-    {agent.logiciels.map((nom) => <li>{nom}</li>)}
+    {logiciels.map(({ nom, href }) => <li><a href={href}>{nom}</a></li>)}
   </ul>
 </div>
 
@@ -37,7 +44,7 @@ const { outils } = gabaritDe(agent);
     max-width: 62ch;
     color: var(--texte-2);
   }
-  /* Des noms, pas des boutons : un filet léger, aucune ombre, aucun survol. */
+  /* Des noms, chacun lié à sa carte : un filet léger, aucune ombre ; le survol ne fait que souligner. */
   .agent-logiciels {
     display: flex;
     flex-wrap: wrap;
@@ -46,12 +53,21 @@ const { outils } = gabaritDe(agent);
     padding: 0;
     list-style: none;
   }
-  .agent-logiciels li {
+  .agent-logiciels a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
     padding: 4px 10px;
     border: 1px solid var(--ligne);
     border-radius: var(--r-chip);
     background: var(--surface-page);
     font-size: var(--t-sm);
     color: var(--texte);
+    text-decoration: none;
+  }
+  .agent-logiciels a:hover {
+    border-color: var(--accent-appui);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 </style>

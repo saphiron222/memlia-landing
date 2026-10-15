@@ -1,0 +1,268 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import { LOGOS_SUR_ENCRE, PAGE_OUTILS, connecteursDu, type Domaine } from '@/data/connecteurs';
+import { HAUTEUR_MAX, tailleDuLogo } from '@/data/connecteurs-rendu';
+import { INTEGRATIONS, integrationPath } from '@/data/integrations';
+import { AGENTS, cheminAgent } from '@/data/specialistes';
+import { metierEnPhrase } from '@/data/specialistes/gabarit';
+
+/**
+ * Un domaine de la page de compatibilité (spec §5, tâche 8) : son titre, ce que nos agents y font, qui s'en charge,
+ * puis une carte par logiciel. Une carte n'est pas une destination : elle porte le logo de l'éditeur (ou son nom
+ * seul), le nom, l'éditeur et la ligne « ce que nos agents font avec ». Seul lien possible : « En savoir plus », vers
+ * l'ancre de la liste des guides de la même page, pour que chaque guide reste lié une seule fois (porte 2 : aucun lien
+ * vers un éditeur, aucun statut, aucun compte).
+ *
+ * Le logo est décoratif (`alt=""`) : le nom de la carte suit, en titre. Une variante blanche se pose sur une tuile
+ * encre (R17), le fichier inchangé. Sans logo, l'initiale du nom tient la place, à part des marques.
+ */
+interface Props {
+  domaine: Domaine;
+  /** Les produits de la liste des guides, dans l'ordre de leurs ancres `#product-<rang>`. */
+  produits: readonly string[];
+}
+const { domaine, produits } = Astro.props;
+const { domaines: textes } = PAGE_OUTILS;
+const cartes = connecteursDu(domaine.id);
+
+/** Les liens « En savoir plus » d'une carte : un par produit de ses guides, vers son ancre, sinon vers le guide. */
+function liensDeGuides(guides: readonly string[] = []) {
+  const liens = new Map<string, { href: string; produit: string }>();
+  for (const slug of guides) {
+    const guide = INTEGRATIONS.find((integration) => integration.slug === slug);
+    if (!guide) throw new Error(`/integrations : guide inconnu « ${slug} »`);
+    const rang = produits.indexOf(guide.product);
+    const href = rang >= 0 ? `#product-${rang}` : integrationPath(guide);
+    if (!liens.has(href)) liens.set(href, { href, produit: guide.product });
+  }
+  return [...liens.values()];
+}
+
+const rendues = await Promise.all(cartes.map(async (carte) => {
+  const encre = LOGOS_SUR_ENCRE.has(carte.id);
+  const taille = carte.logo ? await tailleDuLogo(carte.logo.src, encre ? HAUTEUR_MAX.encre : HAUTEUR_MAX.clair) : null;
+  const editeurVisible = carte.editeur.toLocaleLowerCase('fr') !== carte.nom.toLocaleLowerCase('fr');
+  return { carte, encre, taille, editeurVisible, liens: liensDeGuides(carte.guides), initiale: carte.nom.charAt(0).toLocaleUpperCase('fr') };
+}));
+
+/** Qui s'en charge : le nom accessible de l'agent, lié à sa page quand elle est en ligne, au bandeau quand c'est ici. */
+const porteurs = domaine.agents.map((id) => {
+  const agent = AGENTS.find(({ slug }) => slug === id);
+  if (!agent) throw new Error(`/integrations : agent inconnu « ${id} » au domaine ${domaine.id}`);
+  const chemin = cheminAgent(agent);
+  const href = chemin === PAGE_OUTILS.chemin ? '#qui-prend-ce-metier' : agent.publie ? chemin : null;
+  return { nom: `${agent.prenom}, agent IA ${metierEnPhrase(agent.libelle)}`, href };
+});
+const idTitre = `${domaine.id}-titre`;
+---
+
+<section class="catalogue-section domaine" id={domaine.id} aria-labelledby={idTitre} data-domaine={domaine.id}>
+  <div class="tete">
+    <h2 id={idTitre}>{domaine.libelle}</h2>
+    <p><Insecable texte={domaine.gestes} /></p>
+    <p class="domaine-porteurs" data-domaine-porteurs>
+      {textes.quiSenCharge}{' '}
+      {porteurs.map((porteur, i) => (
+        <Fragment>{i > 0 && (i === porteurs.length - 1 ? ' et ' : ', ')}{porteur.href ? <a href={porteur.href}>{porteur.nom}</a> : <span>{porteur.nom}</span>}</Fragment>
+      ))}
+    </p>
+  </div>
+  {rendues.length > 0 && (
+    <ul class="connecteurs" data-connecteurs={domaine.id}>
+      {rendues.map(({ carte, encre, taille, editeurVisible, liens, initiale }) => (
+        <li class="connecteur" id={carte.id} data-connecteur={carte.id} data-logo={carte.logo ? (encre ? 'encre' : 'clair') : 'nom'}>
+          <div class="connecteur-marque" aria-hidden="true">
+            {carte.logo && taille ? (
+              <span class:list={['connecteur-logo', { 'connecteur-tuile': encre }]}>
+                <img src={carte.logo.src} alt="" width={taille.largeur} height={taille.hauteur} loading="lazy" decoding="async" />
+              </span>
+            ) : (
+              <span class="connecteur-sans-logo">{carte.etat ? 'Source officielle' : 'Logiciel du cabinet'}</span>
+            )}
+          </div>
+          <h3 class="connecteur-nom">{carte.nom}</h3>
+          {editeurVisible && <p class="connecteur-editeur">{carte.editeur}</p>}
+          <p class="connecteur-ligne"><Insecable texte={carte.faitAvec} /></p>
+          {liens.map((lien) => (
+            <a class="lien-action connecteur-guide" href={lien.href}>{textes.enSavoirPlus}<span class="sr-only"> : les guides {lien.produit}</span><Picto nom="fleche" taille={14} /></a>
+          ))}
+        </li>
+      ))}
+    </ul>
+  )}
+  <p class="domaine-retour"><a href="#domaines">{textes.retour}</a></p>
+</section>
+
+<style>
+  /* Une section par domaine, au pas des sections de la page. Hors de l'écran, son rendu attend d'être atteint : la
+     page compte plusieurs centaines de cartes. */
+  [hidden] { display:none!important; }
+  .connecteur-sans-logo {font-size:var(--t-xs);color:var(--texte-2);}
+  .domaine {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1600px;
+  }
+  .domaine .tete {
+    margin-bottom: var(--espace-6);
+  }
+  .domaine-porteurs {
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .domaine-porteurs a {
+    font-weight: 600;
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .domaine-porteurs span {
+    font-weight: 600;
+    color: var(--texte);
+  }
+
+  /* La grille des logiciels (système de page § 5, exception d'une liste longue) : une colonne, puis trois dès 56 rem
+     de grille. Toutes les cartes ont la même largeur ; une rangée incomplète se centre et ne porte jamais une carte
+     seule (3n + 1 cartes : les quatre dernières vont par deux, comme les sept cartes de global.css). */
+  .connecteurs {
+    --ecart: var(--cartes-ecart);
+    container-type: inline-size;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--ecart);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .connecteurs > li {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+  @media (min-width: 48rem) {
+    .connecteurs {
+      --ecart: var(--cartes-ecart-lg);
+    }
+  }
+  @container (min-width: 56rem) {
+    .connecteurs > li {
+      flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
+    }
+    .connecteurs:has(> :last-child:nth-child(3n + 1)) > :nth-last-child(-n + 4) {
+      flex-basis: calc((100% - 2 * var(--ecart)) / 3 + 1px);
+    }
+  }
+
+  /* Une fiche de logiciel : posée à plat (rien ne s'y clique en entier), filet et rayon plus légers que la carte du
+     site, qui reste la forme des destinations. */
+  .connecteur {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espace-2);
+    padding: var(--espace-5);
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-boite);
+    background: var(--surface-elevee);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  /* Arrivée par une ancre (« Dans vos outils » d'une fiche) : la carte se signale. */
+  .connecteur:target {
+    border-color: var(--accent-appui);
+    box-shadow: 0 0 0 3px var(--accent-voile);
+  }
+  .connecteur-marque {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    margin-bottom: var(--espace-1);
+  }
+  .connecteur-logo {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+  }
+  .connecteur-logo img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  /* R17 : une variante blanche sur une tuile encre qui l'épouse ; le fichier n'est pas recoloré. */
+  .connecteur-tuile {
+    padding: 8px 12px;
+    border-radius: var(--r-pastille);
+    background: var(--encre);
+  }
+  .connecteur-initiale {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-pastille);
+    background: var(--surface-page);
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--t-xl);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--texte-2);
+  }
+  .connecteur-nom {
+    font-size: var(--titre-ligne);
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .connecteur p {
+    margin: 0;
+  }
+  .connecteur-editeur {
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .connecteur .connecteur-ligne {
+    margin-top: var(--espace-1);
+    color: var(--texte);
+    text-wrap: pretty;
+  }
+  .connecteur-guide {
+    margin-top: auto;
+  }
+  /* Entre 40 et 56 rem de grille, une colonne large : la marque à gauche, le texte à droite. */
+  @container (min-width: 40rem) and (max-width: 55.99rem) {
+    .connecteur {
+      display: grid;
+      grid-template-columns: 11rem minmax(0, 1fr);
+      grid-auto-rows: min-content;
+      column-gap: var(--espace-6);
+      align-items: start;
+    }
+    .connecteur-marque {
+      grid-row: 1 / span 5;
+      margin-bottom: 0;
+    }
+    .connecteur > :not(.connecteur-marque) {
+      grid-column: 2;
+    }
+    .connecteur-guide {
+      justify-self: start;
+    }
+  }
+  .domaine-retour {
+    margin: var(--espace-4) 0 0;
+    font-size: var(--t-sm);
+  }
+  .domaine-retour a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--texte-2);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @media (forced-colors: active) {
+    .connecteur-tuile {
+      forced-color-adjust: none;
+    }
+  }
+</style>

@@ -1,10 +1,46 @@
 [
   {
     "id": "hero-agents-ia",
-    "centralText": "B Agent IA Balthazar Comptabilité S Agent IA Salomé Paie et social G Agent IA Grégoire Juridique et fiscal"
+    "centralText": "Agent IA Balthazar Comptabilité Agent IA Salomé Paie et social Agent IA Grégoire Juridique et fiscal"
   },
   {
     "id": "fiche-comptabilite",
-    "centralText": "B Balthazar · agent IA comptabilité Rejoué sur un dossier fictif Dossier fictif : l’Atelier Loriot, SARL de menuiserie inventée, exercice au 31/12/2026, pièces de septembre. Facture d’électricité d’un fournisseur déjà imputé en 6061, TVA à 20 % lue Écriture proposée 6061 / 44566 / 401, pièce en lien Préparé Première facture d’un fournisseur de quincaillerie Champs extraits ; deux imputations présentées : achats de matières ou petit équipement À valider Facture de même numéro et de même montant qu’une pièce saisie en août Aucune écriture proposée. Motif : doublon probable, pièce d’août en lien Arrêt Photo de ticket floue, montant TTC illisible Aucune écriture proposée. Motif : montant illisible ; relance de la pièce préparée Arrêt"
+    "centralText": "Balthazar · agent IA comptabilité Rejoué sur un dossier fictif Dossier fictif : l’Atelier Loriot, SARL de menuiserie inventée, exercice au 31/12/2026, pièces de septembre. Facture d’électricité d’un fournisseur déjà imputé en 6061, TVA à 20 % lue Écriture proposée 6061 / 44566 / 401, pièce en lien Préparé Première facture d’un fournisseur de quincaillerie Champs extraits ; deux imputations présentées : achats de matières ou petit équipement À valider Facture de même numéro et de même montant qu’une pièce saisie en août Aucune écriture proposée. Motif : doublon probable, pièce d’août en lien Arrêt Photo de ticket floue, montant TTC illisible Aucune écriture proposée. Motif : montant illisible ; relance de la pièce préparée Arrêt"
+  },
+  {
+    "id": "fiche-juridique-fiscal",
+    "centralText": "Grégoire · agent IA juridique et fiscal Rejoué sur un dossier fictif Dossier fictif : un portefeuille de quatre sociétés inventées ; calendrier joué le 14/10/2026. SARL Bouvreuil, clôture au 30/06/2026 confirmée par la balance Approbation au plus tard le 31/12/2026, sauf prolongation accordée par le juge ; dépôt dans le mois qui suit, ou dans les deux mois en ligne ; rappel au gérant préparé Préparé SA Grand-Duc, même clôture, prolongation évoquée par le président Date légale conservée, mention « prolongation annoncée, décision à recevoir » À valider SARL Hulotte, clôture au 30/06/2026 selon les statuts, au 31/12/2026 selon la balance remise Aucune date calculée. Motif : date de clôture divergente entre deux sources Arrêt SARL Ortolan, comptes approuvés le 20/06/2026, aucun dépôt constaté Dépôt manquant signalé, justificatif réclamé dans un brouillon au gérant À valider"
+  },
+  {
+    "id": "fiche-finance",
+    "centralText": "Florent · agent IA finance Rejoué sur un dossier fictif Dossier fictif : la Menuiserie Pinson, SAS inventée, solde bancaire rapproché au 30/09/2026, projection jusqu’au 31/12/2026. Solde rapproché au 30/09 ; échéance d’emprunt, salaires et TVA datés Projection semaine par semaine jusqu’à fin décembre, chaque flux avec sa source Préparé Facture client de 18 000 € échue depuis soixante jours Encaissement exclu de la projection de départ ; scénario séparé en attente d’une date future d’encaissement validée À valider Semaine du 23/11, solde projeté sous le seuil d’alerte écrit du dossier Tension signalée, les trois flux qui la causent listés À valider Grosse commande annoncée par le dirigeant, sans date ni montant écrit Flux non intégré. Motif : hypothèse sans source Arrêt"
+  },
+  {
+    "id": "fiche-commercial",
+    "centralText": "Victoire · agent IA commercial Rejoué sur un dossier fictif Dossier fictif : le Studio Rouge-Gorge, SAS de design graphique inventée, entrée en relation ouverte le 01/10/2026. Statuts, extrait d’immatriculation et pièce d’identité de la présidente reçus et lisibles Jalon « identification de la société » complet, pièces classées dans le dossier Préparé Pièce d’identité du second associé expirée depuis mars Pièce signalée, nouvelle demande rédigée pour le dirigeant À valider Société détenue à 60 % par une holding dont les associés ne sont pas connus Dossier bloqué. Motif : bénéficiaire effectif non identifié Arrêt Proposition acceptée, toutes les pièces du jalon reçues Projet de lettre de mission prêt à relire, honoraires repris de la proposition À valider"
+  },
+  {
+    "id": "fiche-communication",
+    "centralText": "Colette · agent IA communication Rejoué sur un dossier fictif Dossier fictif : le cabinet Alouette, cabinet inventé, lettre d’information d’octobre 2026. Sujet retenu : réception des factures électroniques, source officielle lue Paragraphe rédigé autour de la phrase « Depuis le 1er septembre 2026, toute entreprise établie en France et assujettie à la TVA doit pouvoir recevoir ses factures électroniques. », lien vers la source Préparé Sujet proposé par la veille, pas encore retenu par l’associé Sujet placé en attente au calendrier, résumé joint À valider Liste de diffusion qui contient trois clients sortis du portefeuille Destinataires en cause listés, envoi suspendu jusqu’à la décision de l’associé À valider Barème repris d’un article de presse, sans texte officiel Aucun paragraphe rédigé. Motif : source non officielle Arrêt"
+  },
+  {
+    "id": "fiche-relation-client",
+    "centralText": "Émile · agent IA relation client Rejoué sur un dossier fictif Dossier fictif : la boîte partagée d’un cabinet inventé, messages du 12/10/2026 sur le dossier Fauvette (SARL de fleuristerie inventée). La gérante de Fauvette demande la date de sa prochaine déclaration de TVA Réponse rédigée avec la date du calendrier du dossier Préparé La gérante demande la plaquette de l’exercice 2025 Plaquette retrouvée dans le dossier, envoi préparé Préparé Message d’une adresse inconnue, facture en pièce jointe Pièce mise de côté, dossier probable proposé À valider La gérante demande s’il vaut mieux acheter ou louer sa camionnette Aucune réponse rédigée. Motif : demande de conseil, hors des réponses types ; message placé devant l’expert-comptable Arrêt"
+  },
+  {
+    "id": "fiche-gestion-cabinet",
+    "centralText": "Honoré · agent IA gestion du cabinet Rejoué sur un dossier fictif Dossier fictif : trois dossiers inventés (Martinet, Rossignol, Sittelle), relevé d’actes d’octobre 2026. Martinet : trois bulletins au-delà du forfait, tarif unitaire écrit dans la lettre Ligne préparée avec la référence du relevé d’actes Préparé Martinet : lettre de mission échue au 30/09/2026 Ligne préparée au tarif de la lettre échue, mention « lettre à renouveler » À valider Rossignol : attestation demandée par la banque, aucun tarif écrit Aucune ligne préparée. Motif : acte sans tarif écrit Arrêt Sittelle : déclaration rectificative déjà facturée en septembre Aucune ligne préparée. Motif : acte déjà facturé, facture de septembre en lien Arrêt"
+  },
+  {
+    "id": "fiche-rh-cabinet",
+    "centralText": "Raphaël · agent IA RH du cabinet Rejoué sur un dossier fictif Dossier fictif : le cabinet Alouette, cabinet inventé, synthèse de rémunération 2025 d’une collaboratrice inventée. Salaire de base de l’année et prime annuelle versée en décembre Lignes reprises avec leur rubrique et leur mois Préparé Rubrique créée cette année pour le forfait mobilités durables Ligne reprise, libellé proposé pour la synthèse À valider Avantage en nature véhicule présent dans la paie et dans un tableau annexe, montants différents Synthèse suspendue. Motif : double source ; les deux montants présentés côte à côte Arrêt Demande d’ajouter un commentaire sur la performance de l’année Aucun commentaire rédigé. Motif : appréciation d’une personne, hors de la règle Arrêt"
+  },
+  {
+    "id": "fiche-protection-donnees",
+    "centralText": "Prudence · agent IA protection des données Rejoué sur un dossier fictif Dossier fictif : le cabinet Alouette, cabinet inventé, demandes reçues en octobre 2026. Salariée d’un client, identité vérifiée ; données dans la paie et la messagerie Données retrouvées par traitement, éléments de réponse préparés pour l’employeur responsable du traitement, date limite suivie Préparé Courriel de la même salariée qui cite aussi un collègue Passages concernant le tiers isolés pour la décision du responsable de traitement ou de son interlocuteur autorisé À valider Client particulier écrivant d’une adresse inconnue du dossier Aucune recherche lancée. Motif : identité non vérifiée ; demande de justificatif préparée Arrêt Société cliente qui demande « toutes ses données personnelles » Aucune recherche lancée. Motif : le droit d’accès appartient aux personnes physiques ; note au référent Arrêt"
+  },
+  {
+    "id": "compatibilites",
+    "centralText": "Les compatibilités Memlia Vos outils. Nos robots et agents IA. Production, paie, juridique, banque et messagerie."
   }
 ]
