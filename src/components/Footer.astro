@@ -1,11 +1,10 @@
 ---
 import Lockup from './Lockup.astro';
 import { SITE } from '@/data/site.mjs';
-import { LIEN_CAC } from '@/data/navigation.mjs';
+import { ENTREES_AUTOMATISE, LIEN_CAC } from '@/data/navigation.mjs';
 import { cacDisponible } from '@/data/navigation-publiee';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_HUB_PATH } from '@/data/outils';
-import { INTEGRATIONS_HUB_PATH } from '@/data/integrations';
 
 /** Les hubs donnent accès aux catalogues complets, sans les répéter sur chaque page. */
 interface Props {
@@ -15,14 +14,18 @@ interface Props {
 }
 const { blogActif, rubriques } = Astro.props;
 const annee = new Date().getFullYear();
-const automatise = {
+const cabinet = {
   titre: 'Votre cabinet',
   liens: [
     { libelle: 'Expertise comptable', href: '/' },
     ...(cacDisponible ? [LIEN_CAC] : []),
-    { libelle: 'Ce qu’on automatise', href: PAGES_V2.service.chemin },
     { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
   ],
+};
+// Les trois entrées du menu « Ce qu’on automatise », reprises de la même source : par tâche, par métier, dans vos outils.
+const automatise = {
+  titre: 'Ce qu’on automatise',
+  liens: ENTREES_AUTOMATISE,
 };
 const comprendre = {
   titre: 'Comprendre',
@@ -47,11 +50,10 @@ const ressources = {
   titre: 'Pour votre équipe',
   liens: [
     { libelle: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
-    { libelle: 'Guides par environnement', href: INTEGRATIONS_HUB_PATH },
   ],
 };
 const blocs = [
-  { groupes: [automatise], classe: '' },
+  { groupes: [cabinet, automatise], classe: '' },
   { groupes: [comprendre], classe: '' },
   { groupes: [ressources], classe: '' },
   { groupes: [entreprise], classe: '' },
