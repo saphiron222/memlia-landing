@@ -10,7 +10,8 @@ import { normaliser } from '../helpers/agents-interdits.mjs';
  * I10 (remplacé à la porte 2, 15/10/2026) : chaque agent IA a sa démonstration, rejouée sur un dossier fictif.
  * Le test ne compare plus rien à une page source publiée ; il vérifie la FORME des douze démonstrations des données
  * (`Specialiste.demonstration`, spec §2.1) puis, sur un `dist` construit, leur rendu :
- *   - neuf fiches (/agents-ia/<slug>) : « Rejoué sur un dossier fictif » et les quatre cas ;
+ *   - les fiches publiées (/agents-ia/<slug>, `publie: true` et destination fiche : Comptabilité à la tâche 6, les neuf à la
+ *     tâche 9) : « Rejoué sur un dossier fictif » et les quatre cas ;
  *   - Octavie : la même chose sur /integrations, sous son bandeau ;
  *   - Salomé et Aude n'ont pas de page où se rendre : leurs démonstrations vivent dans les données seulement.
  * Le fond (les mots des cas) est relu par la revue `metier`, pas par ce test.
@@ -166,6 +167,7 @@ test('I10 : neuf fiches portent une fiche, Salomé, Aude et Octavie mènent à u
   const { AGENTS, FICHES } = await specialistes();
   assert.deepEqual(FICHES.map(({ slug }) => slug).sort(), SLUGS.filter((slug) => !SANS_FICHE.includes(slug)).sort());
   assert.ok(FICHES.every((agent) => agent.fiche && agent.destination?.type === 'fiche'));
+  assert.ok(AGENTS.every((agent) => typeof agent.publie === 'boolean'), '`publie` est un booléen sur chacun des douze agents');
   assert.ok(AGENTS.filter(({ slug }) => SANS_FICHE.includes(slug)).every((agent) => !agent.fiche && agent.destination?.type === 'page'));
 });
 
@@ -185,10 +187,17 @@ const gabaritDeFiche = () => {
 };
 const bandeauOctavie = () => existsSync(join(RACINE, 'src/components/sections/QuiPrendCeMetier.astro'));
 
-test('I10 : chacune des neuf fiches construites rend « Rejoué sur un dossier fictif » et les quatre cas de sa démonstration', async (t) => {
+/** Les fiches que le site publie : un agent `publie` dont la carte mène à une fiche (la tâche 6 ne publie que Comptabilité, la tâche 9 les neuf). */
+const fichesPubliees = (agents) => agents.filter((agent) => agent.publie === true && agent.destination?.type === 'fiche');
+
+test('I10 : chaque fiche publiée rend « Rejoué sur un dossier fictif » et les quatre cas de sa démonstration', async (t) => {
   const { FICHES } = await specialistes();
   if (!exigerRendu(t, { raison: 'gabarit de fiche absent (tâche 6)', source: gabaritDeFiche })) return;
-  const erreurs = FICHES.flatMap((agent) => {
+  const publiees = fichesPubliees(FICHES);
+  // Un gabarit écrit sans fiche publiée ne prouve rien : au moins une fiche (Comptabilité, tâche 6) doit être rendue.
+  assert.ok(publiees.length > 0, 'le gabarit de fiche existe mais aucun agent n’est `publie: true` avec une fiche');
+  t.diagnostic(`${publiees.length} fiche(s) publiée(s) sur ${FICHES.length} : ${publiees.map(({ slug }) => slug).join(', ')}`);
+  const erreurs = publiees.flatMap((agent) => {
     const chemin = join(DIST, 'agents-ia', `${agent.slug}.html`);
     if (!existsSync(chemin)) return [`${agent.slug} : ${chemin.slice(RACINE.length)} absent du build`];
     return erreursDeRendu(readFileSync(chemin, 'utf8'), agent.demonstration).map((erreur) => `${agent.slug} : ${erreur}`);

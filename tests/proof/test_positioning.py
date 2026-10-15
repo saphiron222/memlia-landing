@@ -23,8 +23,9 @@ AGENTS_INTERDITS = tuple(json.loads((ROOT / 'config' / 'agents-interdits.json').
 # Plancher : la liste de la charte ne perd jamais une expression, elle peut en gagner.
 AGENTS_INTERDITS_CHARTE = (
     'agent autonome', 'collaborateur IA', 'employé IA', 'assistant IA', 'spécialiste IA', 'agent IA CAC',
-    'commissaire aux comptes IA', 'DPO IA', 'embaucher', 'recruter', 'votre nouveau collègue',
-    'agent administratif', 'agent comptable',
+    'commissaire aux comptes IA', 'DPO IA', 'embaucher un agent', 'recruter un agent', 'embauchez un agent',
+    'recrutez un agent', 'embaucher votre agent', 'recruter votre agent', 'embauchez votre agent',
+    'recrutez votre agent', 'votre nouveau collègue', 'agent administratif', 'agent comptable',
 )
 MOT_COURT = 3  # « ia », « aux », « dpo », « cac » ne se pluralisent pas
 INVISIBLES = re.compile('[\u00ad\u200b-\u200d\u2060\ufeff]')
@@ -352,14 +353,27 @@ class PositioningProof(unittest.TestCase):
             '<h1>Agents IA pour cabinet d’expertise comptable : chacun prépare un métier, vos collaborateurs valident.</h1>',
             '<p>Balthazar, agent IA comptable, prépare les écritures ; votre collaborateur les valide.</p>',
             '<p>La réponse à un candidat est envoyée par la personne qui recrute. Préparer un recrutement.</p>',
+            '<p>Des collaborateurs submergés, difficiles à recruter et plus difficiles encore à garder.</p>',
+            '<p>Pour recruter un collaborateur, la fiche de poste et l’annonce sont rédigées.</p>',
             '<p>Un accusé de réception prêt pour chaque candidat, que le recruteur envoie.</p>',
             '<p>Aude prépare la mécanique de vos missions d’audit ; le jugement reste au commissaire aux comptes.</p>',
             '<style>.agent-autonome { color: red; }</style><p>Agents IA</p>',
         ]:
             with self.subTest(source=source):
                 self.assertEqual(agents_page_violations(source, '.html'), [])
-        # Limite connue et assumée : seules les formes écrites dans la liste sont vues (« embaucher », pas « embauchez »).
+        # Limites connues et assumées : un agent désigné par son prénom ou une autre conjugaison n'est pas vu.
         self.assertEqual(agents_page_violations('<p>Embauchez Balthazar.</p>', '.html'), [])
+        self.assertEqual(agents_page_violations('<p>Nous embauchons un agent.</p>', '.html'), [])
+
+    def test_agents_guard_rejects_hiring_said_of_an_agent(self):
+        for source, expression in [
+            ('<p>Recrutez un agent IA en dix minutes.</p>', 'recrutez un agent'),
+            ('<p>Embauchez votre agent IA comptable.</p>', 'embauchez votre agent'),
+            ('<p>Pourquoi recruter un agent IA ?</p>', 'recruter un agent'),
+            ('<p>Embaucher votre agent IA prend une semaine.</p>', 'embaucher votre agent'),
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual(agents_page_violations(source, '.html'), [expression])
 
     def test_agents_surfaces_follow_the_sources(self):
         from tempfile import TemporaryDirectory

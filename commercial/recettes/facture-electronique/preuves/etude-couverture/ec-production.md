@@ -926,7 +926,7 @@ Toutes consultées le 06/10/2026. La date entre parenthèses est la date de publ
 - FO2 https://www.compta-online.com/comment-gerez-vous-les-documents-manquants-de-vos-clients-t74739 (01/09/2026) [U]
 - FO3 https://www.compta-online.com/relance-clients-vos-methodes-t74729 (13/08/2026) [U]
 - Q1 https://quickbooks.intuit.com/fr/ [É]
-- I1 https://www.ibizasoftware.fr/ [D]
+- I1 https://www.ibizasoftware[.]fr/ [D]
 - PC1 https://www.idocus.com/ [É]
 - PC2 https://www.sogescot.com/sobank/solution/ [É]
 - PC3 https://www.getyooz.com/fr [É]

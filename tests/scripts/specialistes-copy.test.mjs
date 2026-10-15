@@ -13,7 +13,8 @@ import { lireInterdits, normaliser, trouverInterdits } from '../helpers/agents-i
 /** Plancher : la liste de la charte §9 bis. Elle peut grandir, jamais perdre une expression. */
 const PLANCHER = [
   'agent autonome', 'collaborateur IA', 'employé IA', 'assistant IA', 'spécialiste IA', 'agent IA CAC',
-  'commissaire aux comptes IA', 'DPO IA', 'embaucher', 'recruter', 'votre nouveau collègue',
+  'commissaire aux comptes IA', 'DPO IA', 'embaucher un agent', 'recruter un agent', 'embauchez un agent', 'recrutez un agent',
+  'embaucher votre agent', 'recruter votre agent', 'embauchez votre agent', 'recrutez votre agent', 'votre nouveau collègue',
   'agent administratif', 'agent comptable',
 ];
 /** Charte §9 : « module » et « complément Excel » ne s'écrivent sur aucune surface publique (test_positioning.py). */
@@ -63,6 +64,8 @@ test('témoins : ce que la charte permet passe, dont l’autonomie niée et le m
     'Il ne promet jamais l’autonomie ni un envoi sans validation.',
     'Agents IA pour cabinet d’expertise comptable : chacun prépare un métier, vos collaborateurs valident.',
     'Balthazar, agent IA comptable, prépare les écritures ; votre collaborateur les valide.',
+    'Des collaborateurs submergés, difficiles à recruter et plus difficiles encore à garder.',
+    'Pour recruter un collaborateur, la fiche de poste et l’annonce sont rédigées ; vous choisissez la diffusion.',
     'Fiche de poste et annonce rédigées ; la réponse à un candidat est envoyée par la personne qui recrute.',
     'Un accusé de réception prêt pour chaque candidat, que le recruteur envoie. Préparer un recrutement.',
     'Raphaël, agent IA RH du cabinet, prépare les documents ; les décisions sur les personnes restent à vous.',
@@ -72,8 +75,16 @@ test('témoins : ce que la charte permet passe, dont l’autonomie niée et le m
   ]) assert.deepEqual(trouverInterdits(permis, interdits), [], permis);
   // Les apostrophes typographiques et droites se valent.
   assert.deepEqual(trouverInterdits('Les devoirs d’aujourd’hui', ["d'aujourd'hui"]), ["d'aujourd'hui"]);
-  // Limite connue et assumée : seules les formes écrites dans la liste sont vues (« embaucher », pas « embauchez »).
+  // Le verbe dit d'un agent est refusé, à l'infinitif, à l'impératif, avec « un » ou « votre », au pluriel.
+  for (const [refuse, expression] of [
+    ['Recrutez un agent IA en dix minutes.', 'recrutez un agent'], ['Embauchez votre agent IA comptable.', 'embauchez votre agent'],
+    ['Pourquoi recruter un agent IA ?', 'recruter un agent'], ['Embaucher votre agent IA prend une semaine.', 'embaucher votre agent'],
+    ['Vous pouvez recruter un agent, puis embaucher un agent de plus.', 'recruter un agent'],
+  ]) assert.ok(trouverInterdits(refuse, interdits).includes(expression), refuse);
+  // Limites connues et assumées : un agent désigné par son prénom (« Embauchez Balthazar ») ou une autre conjugaison
+  // (« nous embauchons un agent ») n'est pas vu ; le verbe seul, dit d'une personne, passe.
   assert.deepEqual(trouverInterdits('Embauchez Balthazar.', interdits), []);
+  assert.deepEqual(trouverInterdits('Pour recruter vos équipes, nous préparons l’annonce.', interdits), []);
 });
 
 test('témoin : les mots de produit « module » et « complément Excel » sont vus', () => {

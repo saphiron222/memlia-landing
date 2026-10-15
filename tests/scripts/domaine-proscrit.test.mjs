@@ -12,7 +12,7 @@ import { DOMAINES_PROSCRITS, DOMAINE, LIEN, neutralise } from '../helpers/domain
  * Garde portée de memlia-rdv/tests/preuve/domaine-proscrit.test.ts et étendue à ces domaines.
  *
  * - Ce qui se livre (code, données, fichiers publics, build) ne les nomme sous aucune forme.
- * - Les notes (docs/) peuvent les nommer pour mettre en garde, jamais sous une forme qui se clique, sauf la liste
+ * - Les notes (docs/, commercial/, editorial/) peuvent les nommer pour mettre en garde, jamais sous une forme qui se clique, sauf la liste
  *   fermée et datée ci-dessous : elle échoue si elle grossit, et aussi si elle périme (un lien neutralisé doit
  *   sortir de la liste).
  * Les fichiers se lisent octet pour octet (latin1) : les noms de domaine sont de l'ASCII, et un binaire qui en
@@ -21,7 +21,8 @@ import { DOMAINES_PROSCRITS, DOMAINE, LIEN, neutralise } from '../helpers/domain
 
 const RACINE = fileURLToPath(new URL('../../', import.meta.url));
 const LIVRES = ['src', 'public', 'functions', 'scripts', 'config', 'db', 'workers', 'guides'];
-const NOTES = 'docs';
+/** Les trois arbres de notes : le relevé de sources de `commercial/` et les dossiers de `editorial/` valent ceux de `docs/`. */
+const NOTES = ['docs', 'commercial', 'editorial'];
 const BUILD = 'dist';
 
 /** Relevé du 15/10/2026 : les deux seuls liens cliquables que les notes portent encore. */
@@ -72,8 +73,8 @@ function comparer(trouvees, liste) {
   return { inattendus, perimes };
 }
 
-const controleNotes = (racine, liste) => {
-  const trouvees = occurrences(racine, fichiers(racine, NOTES), LIEN, DOMAINE);
+const controleNotes = (racine, liste, arbres = NOTES) => {
+  const trouvees = occurrences(racine, arbres.flatMap((arbre) => fichiers(racine, arbre)), LIEN, DOMAINE);
   return { trouvees, ...comparer(trouvees, liste) };
 };
 const controleLivre = (racine, dossiers) => occurrences(racine, dossiers.flatMap((dossier) => fichiers(racine, dossier)), DOMAINE);
@@ -138,7 +139,12 @@ test('témoins : le domaine se lit entier, sous-domaine compris, jamais au milie
 });
 
 test('témoins du balayage : un lien ajouté aux notes, un second lien dans un fichier listé, un lien retiré, une mention livrée', () => {
-  const base = { 'docs/a.md': `[x](${LIEN_LISTE})\n`, 'docs/b.md': `la forme neutralisée ${neutralise('revisaudit.fr')} est permise\n` };
+  const base = {
+    'docs/a.md': `[x](${LIEN_LISTE})\n`,
+    'docs/b.md': `la forme neutralisée ${neutralise('revisaudit.fr')} est permise\n`,
+    'commercial/recette/sources.md': `- I1 https://www.ibizasoftware${'[.]'}fr/ [D]\n`,
+    'editorial/article/manifest.json': '{"sources":["https://exemple.fr/a"]}\n',
+  };
   // L'état de base : la liste fermée dit exactement ce que les notes portent.
   const propre = arbre(base, (racine) => controleNotes(racine, LISTE_TEMOIN));
   assert.deepEqual([propre.inattendus, propre.perimes], [[], []]);
@@ -147,6 +153,13 @@ test('témoins du balayage : un lien ajouté aux notes, un second lien dans un f
   // Un lien ajouté dans une note neuve : la liste grossit.
   const ajoute = arbre({ ...base, 'docs/c.md': '[ibiza](https://www.ibiza.fr/)\n' }, (racine) => controleNotes(racine, LISTE_TEMOIN));
   assert.deepEqual(decrire(ajoute.inattendus), ['docs/c.md:1 https://www.ibiza.fr']);
+
+  // Le même lien dans `commercial/` ou dans `editorial/` : la liste grossit aussi (la garde ne s'arrête plus à `docs/`).
+  for (const dossier of ['commercial', 'editorial']) {
+    const ailleurs = dossier === 'commercial' ? { 'commercial/recette/sources.md': '- I1 https://www.ibizasoftware.fr/ [D]\n' } : { 'editorial/article/manifest.json': '{"url":"https://www.formalis.io/"}\n' };
+    const vu = dossier === 'commercial' ? 'commercial/recette/sources.md:1 https://www.ibizasoftware.fr' : 'editorial/article/manifest.json:1 https://www.formalis.io';
+    assert.deepEqual(decrire(arbre({ ...base, ...ailleurs }, (racine) => controleNotes(racine, LISTE_TEMOIN)).inattendus), [vu], dossier);
+  }
 
   // Un lien de plus dans un fichier déjà listé : elle grossit aussi.
   const double = arbre({ ...base, 'docs/a.md': `[x](${LIEN_LISTE})\n[y](${LIEN_LISTE})\n` }, (racine) => controleNotes(racine, LISTE_TEMOIN));
@@ -183,13 +196,23 @@ test('ce qui se livre ne nomme aucun domaine proscrit : src, public, functions, 
   assert.deepEqual(decrire(controleLivre(RACINE, dossiers)), []);
 });
 
-test('les notes nomment les domaines proscrits pour mettre en garde, jamais sous une forme qui se clique, hors la liste fermée du 15/10/2026', (t) => {
-  const lus = fichiers(RACINE, NOTES);
-  // La lecture voit bien les deux fichiers de la liste fermée, dont un JSON, et au moins une note neutralisée.
-  for (const { chemin } of LISTE_FERMEE) assert.ok(lus.includes(chemin), `${chemin} n'est pas lu`);
-  assert.ok(lus.includes('docs/strategy/site-v3/hub-agents-ia/CONNECTEURS.md'));
+test('les notes (docs, commercial, editorial) nomment les domaines proscrits pour mettre en garde, jamais sous une forme qui se clique, hors la liste fermée du 15/10/2026', (t) => {
+  const parArbre = Object.fromEntries(NOTES.map((arbre) => [arbre, fichiers(RACINE, arbre)]));
+  // La lecture voit bien ce qu'elle doit voir dans chaque arbre : les deux fichiers de la liste fermée (dont un JSON) et
+  // une note neutralisée dans docs ; le relevé de sources qui portait un lien ibizasoftware dans commercial ; un manifeste
+  // dans editorial.
+  for (const { chemin } of LISTE_FERMEE) assert.ok(parArbre.docs.includes(chemin), `${chemin} n'est pas lu`);
+  for (const attendu of [
+    'docs/strategy/site-v3/hub-agents-ia/CONNECTEURS.md',
+    'commercial/recettes/facture-electronique/preuves/etude-couverture/ec-production.md',
+    'editorial/articles/automatiser-un-cabinet-comptable-la-carte-des-taches/manifest.json',
+  ]) {
+    assert.ok(Object.values(parArbre).some((lus) => lus.includes(attendu)), `${attendu} n'est pas lu`);
+  }
+  for (const arbre of NOTES) assert.ok(parArbre[arbre].length > 0, `${arbre} : aucun fichier lu`);
   const { trouvees, inattendus, perimes } = controleNotes(RACINE, LISTE_FERMEE);
-  t.diagnostic(`${lus.length} fichiers lus dans ${NOTES} ; ${trouvees.length} lien(s) cliquable(s), liste fermée de ${LISTE_FERMEE.length}`);
+  const total = Object.values(parArbre).reduce((somme, lus) => somme + lus.length, 0);
+  t.diagnostic(`${total} fichiers lus (${NOTES.map((arbre) => `${arbre} ${parArbre[arbre].length}`).join(', ')}) ; ${trouvees.length} lien(s) cliquable(s), liste fermée de ${LISTE_FERMEE.length}`);
   t.diagnostic(`liste fermée relevée le ${LISTE_FERMEE[0].releve} : ${decrire(LISTE_FERMEE).join(' ; ')}`);
   assert.deepEqual(decrire(inattendus), [], 'un lien cliquable vers un domaine proscrit : l’écrire sous sa forme neutralisée, par exemple revisaudit[.]fr');
   assert.deepEqual(decrire(perimes), [], 'la liste fermée périme : retirer l’entrée dont le lien a été neutralisé');
