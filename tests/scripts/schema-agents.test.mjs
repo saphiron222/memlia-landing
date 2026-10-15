@@ -384,6 +384,14 @@ test('assertGraph : une FAQPage et ses Question/Answer ne sont pas des interdits
   assert.doesNotThrow(() => schema.assertGraph(graphe));
 });
 
+test('assertGraph : un objet qui se contient lui-même est signalé « circulaire », et le parcours s’arrête', () => {
+  const graphe = grapheValide();
+  const boucle = { '@type': 'Thing', name: 'Boucle' };
+  boucle.partie = boucle;
+  noeudsDe(graphe).push(boucle);
+  leve(graphe, /circulaire/);
+});
+
 test('assertGraph : servicesMax relève la limite sans lever les autres', () => {
   const graphe = grapheValide();
   noeudsDe(graphe).push({ ...noeud(graphe, 'Service'), '@id': `${SITE.url}/agents-ia/test#service-bis` });
@@ -569,6 +577,27 @@ test('assertGraph MUTANT page : deux pages, ou aucune page à laquelle comparer 
   const aucune = grapheValide();
   aucune['@graph'] = noeudsDe(aucune).filter((n) => !typesDe(n).includes('WebPage'));
   leve(aucune, /page/i);
+});
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* grapheVerifie : les options d'assertGraph passent, le hub et la page des logiciels n'admettent aucun Service         */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+test('grapheVerifie : transmet servicesMax à assertGraph ; sans option, un Service passe, avec 0, il lève', async () => {
+  const { grapheVerifie } = await agents();
+  const noeuds = grapheValide()['@graph'];
+  assert.doesNotThrow(() => grapheVerifie(structuredClone(noeuds)));
+  assert.throws(() => grapheVerifie(structuredClone(noeuds), { servicesMax: 0 }), (e) => e.violations?.length === 1 && /Service/.test(e.violations[0]));
+});
+
+test('hubGraph et outilsGraph appellent le garde avec servicesMax: 0 ; ficheGraph garde la limite d’un Service', async () => {
+  // Un nœud Service ne peut pas entrer dans ces graphes par leurs paramètres : la limite se lit à l'appel du garde.
+  const { readFileSync } = await import('node:fs');
+  const source = readFileSync(new URL('../../src/data/schema-agents.mjs', import.meta.url), 'utf8');
+  const corps = (nom) => source.slice(source.indexOf(`export function ${nom}(`), source.indexOf('\n}\n', source.indexOf(`export function ${nom}(`)));
+  assert.match(corps('hubGraph'), /grapheVerifie\(\[[\s\S]*\], \{ servicesMax: 0 \}\)/);
+  assert.match(corps('outilsGraph'), /grapheVerifie\(\[[\s\S]*\], \{ servicesMax: 0 \}\)/);
+  assert.doesNotMatch(corps('ficheGraph'), /servicesMax/);
 });
 
 /* ------------------------------------------------------------------------------------------------------------------ */
@@ -762,15 +791,17 @@ test('ficheGraph : isRelatedTo renvoie aux pages service liées, et manque quand
   const lies = unique(ficheGraph(avecFiche(comptabilite)), 'Service').isRelatedTo;
   assert.deepEqual(lies, comptabilite.servicesLies.map((slug) => ({ '@id': `${SITE.url}/automatisation/${slug}#service` })));
 
-  const commercial = AGENTS.find((a) => a.slug === 'commercial');
-  assert.equal(commercial.servicesLies.length, 0);
-  assert.ok(!('isRelatedTo' in unique(ficheGraph(avecFiche(commercial)), 'Service')));
+  // Fixture : un agent sans page service liée, quel que soit l'état des données (revue de la tâche 3).
+  const sansService = { ...AGENTS.find((a) => a.slug === 'commercial'), servicesLies: [] };
+  assert.ok(!('isRelatedTo' in unique(ficheGraph(avecFiche(sansService)), 'Service')));
 });
 
 test('ficheGraph : les neuf fiches, un Service chacune, le prénom une seule fois (alternateName)', async () => {
   const { ficheGraph } = await agents();
-  const { FICHES } = await donnees();
-  assert.equal(FICHES.length, 9);
+  const { FICHES, AGENTS } = await donnees();
+  // Ce que FICHES est (les agents dont la carte mène à une fiche), pas combien il y en a aujourd'hui (revue de la tâche 3).
+  assert.ok(FICHES.length > 0, 'au moins une fiche à jouer');
+  assert.deepEqual(FICHES.map((a) => a.slug), AGENTS.filter((a) => a.destination.type === 'fiche').map((a) => a.slug));
   for (const agent of FICHES) {
     const graphe = ficheGraph(avecFiche(agent));
     assert.equal(dePuis(graphe, 'Service').length, 1, agent.slug);

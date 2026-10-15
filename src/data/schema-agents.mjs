@@ -38,11 +38,15 @@ function auteurIdDe(idAuteur) {
   return `${SITE.url}${identiteAuteur(auteur)}`;
 }
 
-const graphe = (noeuds) => {
+/**
+ * Assemble un graphe et le passe au garde de build. `options` va tel quel à `assertGraph` : sans elles, sa limite
+ * d'un Service ; le hub et la page des logiciels passent `{ servicesMax: 0 }`, ils n'en portent aucun (JSON-LD.md §1).
+ */
+export function grapheVerifie(noeuds, options = {}) {
   const resultat = { '@context': SCHEMA_CONTEXTE, '@graph': noeuds };
-  assertGraph(resultat);
+  assertGraph(resultat, options);
   return resultat;
-};
+}
 
 /**
  * Le hub : `CollectionPage` + `ItemList`, jamais de Service. L'`ItemList` reprend `agents` tel quel et dans l'ordre : le
@@ -54,7 +58,7 @@ const graphe = (noeuds) => {
 export function hubGraph(hub, agents) {
   exigerChamps(hub, ['chemin', 'ariane', 'h1', 'description', 'nomListe', 'datePublication', 'dateMiseAJour'], 'hubGraph');
   if (!Array.isArray(agents) || agents.length === 0) throw new Error('hubGraph : liste d’agents vide');
-  return graphe([
+  return grapheVerifie([
     collectionPageNode({
       chemin: hub.chemin, h1: hub.h1, description: hub.description,
       datePublication: hub.datePublication, dateModification: hub.dateMiseAJour,
@@ -67,7 +71,7 @@ export function hubGraph(hub, agents) {
     }),
     organizationNode(),
     breadcrumbNode({ chemin: hub.chemin, name: hub.ariane }),
-  ]);
+  ], { servicesMax: 0 });
 }
 
 /**
@@ -83,7 +87,7 @@ export function ficheGraph(agent) {
   if (!fiche.eeat) throw new Error(`ficheGraph : « eeat » manquant à la fiche de ${agent.slug}`);
   const chemin = cheminAgent(agent);
   const serviceId = pageId(chemin, 'service');
-  return graphe([
+  return grapheVerifie([
     webPageNode({
       chemin, h1: fiche.h1, description: fiche.description,
       datePublication: fiche.eeat.datePublication, dateModification: fiche.eeat.dateModification,
@@ -119,7 +123,7 @@ export function outilsGraph(page, connecteurs) {
     exigerChamps(connecteur, ['nom'], `outilsGraph : connecteur « ${connecteur.id} »`);
     return { name: connecteur.nom, url: pageId(page.chemin, connecteur.id) };
   });
-  return graphe([
+  return grapheVerifie([
     collectionPageNode({
       chemin: page.chemin, h1: page.h1, description: page.description,
       datePublication: page.datePublication, dateModification: page.dateMiseAJour,
@@ -128,5 +132,5 @@ export function outilsGraph(page, connecteurs) {
     itemListNode({ chemin: page.chemin, name: page.nomListe, items }),
     organizationNode(),
     breadcrumbNode({ chemin: page.chemin, name: page.ariane }),
-  ]);
+  ], { servicesMax: 0 });
 }
