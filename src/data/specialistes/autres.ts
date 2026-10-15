@@ -2,7 +2,8 @@ import type { Specialiste } from '../specialistes.ts';
 
 /*
  * Les trois agents dont la carte mène à une page existante (spec §0 et §3) : aucune fiche, aucun contenu de fiche.
- * Leur démonstration passe le même contrôle de forme que celle des neuf fiches (arbitrage 4 de la porte 2).
+ * Leur démonstration passe le même contrôle de forme que celle des neuf fiches (arbitrage 4 de la porte 2). Ils sont
+ * `publie: true` : leur page de destination est déjà construite (R19 du 15/10/2026).
  */
 
 /**
@@ -16,7 +17,7 @@ export const PAIE_SOCIAL: Specialiste = {
   libelle: 'Paie et social',
   groupe: 'production-conseil',
   teinte: 'paie-social',
-  publie: false,
+  publie: true,
   destination: { type: 'page', chemin: '/automatisation/paie' },
   ligne: 'Prépare la paie de vos dossiers, des variables reçues aux retours DSN ; votre gestionnaire valide et dépose.',
   frontiereEnBref: [
@@ -58,7 +59,7 @@ export const MISSIONS_AUDIT: Specialiste = {
   libelle: 'Missions d’audit',
   groupe: 'production-conseil',
   teinte: 'audit-cac',
-  publie: false,
+  publie: true,
   destination: { type: 'page', chemin: '/commissaires-aux-comptes' },
   ligne: 'Prépare la mécanique de vos mandats : FEC reçu, revue analytique, sélections et confirmations des tiers ; le jugement reste au commissaire aux comptes.',
   frontiereEnBref: [
@@ -101,7 +102,7 @@ export const INFORMATIQUE_OUTILS: Specialiste = {
   libelle: 'Informatique et outils',
   groupe: 'vie-cabinet',
   teinte: 'excel-outils-existants',
-  publie: false,
+  publie: true,
   destination: { type: 'page', chemin: '/integrations' },
   ligne: 'Relie vos logiciels, contrôle chaque import et prépare accès, sauvegardes et migrations ; votre administrateur applique.',
   frontiereEnBref: [

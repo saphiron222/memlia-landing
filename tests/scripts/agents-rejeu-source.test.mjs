@@ -163,10 +163,21 @@ test('I10 : les douze démonstrations des données ont quatre cas, une issue per
   t.diagnostic(`${AGENTS.length} démonstrations, ${issues.length} cas : ${ISSUES_ATTENDUES.map((issue) => `${issue} ${issues.filter((autre) => autre === issue).length}`).join(', ')}`);
 });
 
-test('I10 : neuf fiches portent une fiche, Salomé, Aude et Octavie mènent à une page existante', async () => {
+/** R18 (15/10/2026) : une carte de fiche porte sa fiche dès que l'agent est publié ; avant, le contenu peut manquer. */
+const ficheEnRegle = (agent) => agent.destination?.type === 'fiche' && (agent.publie !== true || Boolean(agent.fiche));
+
+test('témoin : une carte de fiche publiée sans fiche rougit ; non publiée, elle peut attendre son contenu', () => {
+  const carte = (publie, fiche) => ({ slug: 'x', destination: { type: 'fiche' }, publie, ...(fiche ? { fiche } : {}) });
+  assert.equal(ficheEnRegle(carte(true)), false, 'publiée sans fiche');
+  assert.equal(ficheEnRegle(carte(true, { h1: 'Titre' })), true, 'publiée avec sa fiche');
+  assert.equal(ficheEnRegle(carte(false)), true, 'non publiée, sans fiche');
+  assert.equal(ficheEnRegle({ slug: 'y', destination: { type: 'page', chemin: '/integrations' }, publie: true }), false, 'une carte vers une page n’est pas une fiche');
+});
+
+test('I10 : neuf cartes mènent à une fiche, obligatoire dès que l’agent est publié ; Salomé, Aude et Octavie mènent à une page existante', async () => {
   const { AGENTS, FICHES } = await specialistes();
   assert.deepEqual(FICHES.map(({ slug }) => slug).sort(), SLUGS.filter((slug) => !SANS_FICHE.includes(slug)).sort());
-  assert.ok(FICHES.every((agent) => agent.fiche && agent.destination?.type === 'fiche'));
+  assert.deepEqual(FICHES.filter((agent) => !ficheEnRegle(agent)).map(({ slug }) => slug), [], 'agent publié sans fiche, ou carte de FICHES sans destination fiche');
   assert.ok(AGENTS.every((agent) => typeof agent.publie === 'boolean'), '`publie` est un booléen sur chacun des douze agents');
   assert.ok(AGENTS.filter(({ slug }) => SANS_FICHE.includes(slug)).every((agent) => !agent.fiche && agent.destination?.type === 'page'));
 });

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { AGENTS, FICHES, ficheDe } from '../../src/data/specialistes.ts';
+import { AGENTS, FICHES, comptesParGroupe, ficheDe } from '../../src/data/specialistes.ts';
 import { controlerAgents, erreursDemonstration, exigerAgents } from '../../src/data/specialistes-controle.ts';
 
 /*
@@ -71,6 +71,15 @@ test('les données réelles des douze agents passent tous les recoupements', (t)
   assert.doesNotThrow(() => exigerAgents(SERVICES));
   const publiees = SERVICES.filter(({ statut }) => statut === 'publie').length;
   t.diagnostic(`${AGENTS.length} agents, ${FICHES.length} à fiche, ${AGENTS.filter(({ publie }) => publie).length} publiés, ${AGENTS.filter(({ fiche }) => fiche).length} fiches écrites ; ${publiees} pages service publiées, toutes liées`);
+});
+
+test('R19 : publiée veut dire « page de destination construite » ; les filtres comptent les douze cartes, publiées ou non', () => {
+  assert.deepEqual(AGENTS.filter(({ publie }) => publie).map(({ slug }) => slug), ['paie-social', 'missions-audit', 'informatique-outils']);
+  assert.ok(AGENTS.filter(({ publie }) => publie).every(({ destination }) => destination.type === 'page'), 'seules les pages existantes sont construites à ce jour');
+  // Spec §0 : Production et conseil 5, Relation client 3, Vie du cabinet 4. Le total vaut 12 alors que 3 agents seulement
+  // sont publiés : un filtre sur `publie` rendrait 2 / 0 / 1.
+  assert.deepEqual(comptesParGroupe(), { 'production-conseil': 5, 'relation-client': 3, 'vie-cabinet': 4 });
+  assert.equal(Object.values(comptesParGroupe()).reduce((total, n) => total + n, 0), AGENTS.length);
 });
 
 test('témoins de partition : famille inconnue, en double, prise au hub ou au bloc « nous », perdue, neuve non portée', () => {

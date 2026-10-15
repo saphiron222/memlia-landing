@@ -157,7 +157,10 @@ export interface Specialiste {
   groupe: GroupeId;
   /** Le pôle dont l'accent teinte la carte. */
   teinte: PoleId;
-  /** La carte et sa destination sont en ligne. `false` partout à la tâche 2 ; les tâches 6 et 9 le passent à `true`. */
+  /**
+   * La page de destination est construite (R19). Vrai pour les trois cartes vers une page existante ; pour une fiche,
+   * passe à `true` quand sa page est construite (tâche 6 pour Comptabilité, tâche 9 pour les huit autres).
+   */
   publie: boolean;
   destination: Destination;
   /** La mission d'une phrase, sur la carte (« Mission (carte) »). */
@@ -237,8 +240,11 @@ export function ficheDe(agent: Specialiste): Fiche {
 /** Le titulaire d'une famille ; `undefined` pour le hub, le bloc « Derrière chaque agent, nous » et les orphelines. */
 export const titulaireDe = (familleId: string): Specialiste | undefined => AGENTS.find((agent) => agent.familles.includes(familleId));
 
-/** Le compte de chaque filtre de l'annuaire, sur les agents publiés : écrit dans le libellé du filtre au build. */
+/**
+ * Le compte de chaque filtre de l'annuaire, écrit dans le libellé du filtre au build. Toutes les cartes du groupe
+ * comptent, publiées ou non : le hub affiche les douze cartes (R19).
+ */
 export const comptesParGroupe = (): Record<GroupeId, number> => {
-  const comptes = Object.fromEntries(GROUPES.map(({ id }) => [id, AGENTS.filter((agent) => agent.groupe === id && agent.publie).length]));
+  const comptes = Object.fromEntries(GROUPES.map(({ id }) => [id, AGENTS.filter((agent) => agent.groupe === id).length]));
   return comptes as Record<GroupeId, number>;
 };
