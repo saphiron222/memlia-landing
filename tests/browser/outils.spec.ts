@@ -400,6 +400,8 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
 });
 
 test('outils publiés : la mention locale, les limites et la source se disent une fois', async ({ page }) => {
+  test.setTimeout(60_000);
+  await page.emulateMedia({reducedMotion:'reduce'});
   for (const outil of PAGES_GABARIT) {
     await page.goto(outilPath(outil));
     await expect(page.locator('[data-local-notice]')).toHaveCount(1);

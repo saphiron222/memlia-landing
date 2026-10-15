@@ -39,3 +39,16 @@ export const OUTILS_VITRINE = Object.entries(PRESENTATIONS).map(([slug,presentat
   return {...outil,...presentation,essentiel:ESSENTIELS.has(slug),imageAgent:['bareme-heures-cac','seuil-signification-audit','suivi-circularisation'].includes(slug)?'missions-audit':presentation.groupe==='calculs'?'finance':presentation.groupe==='ia'?'comptabilite':'informatique-outils'};
 });
 if (OUTILS_VITRINE.length !== OUTILS_DISPONIBLES.length) throw new Error('Chaque outil publié doit rester accessible depuis le hub.');
+
+/** Suites courtes par intention : un seul lien voisin, sans nouvelle section de cartes. */
+const PARCOURS_OUTILS = [
+ ['bibliotheque-prompts-comptables','generateur-prompt-expert-comptable','verificateur-prompt-ia','generateur-prompt-ia-gratuit','generateur-charte-ia-cabinet','diagnostic-maturite-ia-cabinet'],
+ ['calculateur-roi-automatisation','calculateur-marge-commerciale','calculateur-amortissement-comptable','comparateur-balances-comptables','seuil-signification-audit','bareme-heures-cac'],
+ ['calculateur-date-echeance-facture','generateur-relance-facture-impayee','checklist-pieces-comptables','suivi-circularisation','modele-rapprochement-bancaire-excel-gratuit','assistant-lettrage-comptable-local','verificateur-fec-local','preparer-pseudonymiser-fichier-csv-fec','fusionner-fichiers-csv'],
+] as const;
+export function outilVoisin(slug:string) {
+ const parcours=PARCOURS_OUTILS.find(group=>group.some(id=>id===slug));
+ if(!parcours) return undefined;
+ const index=parcours.findIndex(id=>id===slug);
+ return OUTILS_VITRINE.find(outil=>outil.slug===parcours[(index+1)%parcours.length])!;
+}

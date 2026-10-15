@@ -6,13 +6,13 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
     <h2 id="library-title">Trouver un modèle</h2>
     <p>Douze points de départ pour préparer un travail du cabinet. Les exemples sont fictifs ; leurs sorties attendues sont rédigées, pas obtenues d’une IA. Aucun modèle n’est appelé ici.</p>
     <noscript><p>Les douze fiches et leurs prompts restent lisibles ci-dessous. Activez JavaScript pour filtrer, copier, exporter ou préparer une reprise dans le générateur.</p></noscript>
-    <form method="dialog" class="filters" data-filters hidden autocomplete="off" data-own-telemetry>
-      <label>Rechercher un modèle<input name="query" type="search" maxlength="200" placeholder="Relance, contrôle, note…" /></label>
-      <details class="library-facettes" data-outil-options><summary>Affiner par métier, tâche ou format</summary>      <div><label for="library-pole">Pôle</label><select id="library-pole" name="pole"><option value="">Tous les pôles</option>{POLES.map(p => <option value={p.id}>{p.label}</option>)}</select></div>
-      <div><label for="library-format">Format attendu</label><select id="library-format" name="format"><option value="">Tous les formats</option>{MODEL_FORMATS.map(f => <option value={f.id}>{f.label}</option>)}</select></div>
-      <div><label for="library-task">Tâche</label><select id="library-task" name="task"><option value="">Toutes les tâches</option>{MODELS.map(m => <option value={m.id}>{m.title}</option>)}</select></div>
+    <form method="dialog" class="filters" data-filters autocomplete="off" data-own-telemetry>
+      <label>Rechercher un modèle<input name="query" type="search" disabled maxlength="200" placeholder="Relance, contrôle, note…" /></label>
+      <details class="library-facettes" data-outil-options><summary>Affiner par métier, tâche ou format</summary>      <div><label for="library-pole">Pôle</label><select id="library-pole" name="pole" disabled><option value="">Tous les pôles</option>{POLES.map(p => <option value={p.id}>{p.label}</option>)}</select></div>
+      <div><label for="library-format">Format attendu</label><select id="library-format" name="format" disabled><option value="">Tous les formats</option>{MODEL_FORMATS.map(f => <option value={f.id}>{f.label}</option>)}</select></div>
+      <div><label for="library-task">Tâche</label><select id="library-task" name="task" disabled><option value="">Toutes les tâches</option>{MODELS.map(m => <option value={m.id}>{m.title}</option>)}</select></div>
 </details>
-      <button type="reset" class="btn btn-contour">Effacer les filtres</button>
+      <button type="reset" disabled class="btn btn-contour">Effacer les filtres</button>
     </form>
     <p data-count role="status">12 modèles disponibles.</p>
     <p data-empty hidden>Aucun modèle ne correspond. Effacez les filtres ou utilisez un terme plus général ; vos fiches restent disponibles.</p>
@@ -35,9 +35,9 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
         <h4>Sortie attendue rédigée</h4><p>{m.exampleOut}</p>
         <label>Prompt complet : {m.title}<textarea readonly rows="12" spellcheck="false" data-text>{modelPrompt(m)}</textarea></label>
       </details>
-      <div class="actions" data-actions hidden>
-        <button type="button" class="btn btn-contour" data-copy>Copier le modèle</button>
-        <button type="button" class="btn btn-contour" data-export>Exporter en texte</button>
+      <div class="actions" data-actions>
+        <button type="button" class="btn btn-contour" data-copy disabled>Copier le modèle</button>
+        <button type="button" class="btn btn-contour" data-export disabled>Exporter en texte</button>
         <a class="btn btn-contour" href={GENERATOR_PATH} data-adapt>Adapter dans le générateur</a>
       </div>
       <p data-card-status aria-live="polite"></p>
@@ -62,8 +62,8 @@ import { MODELS, POLES, MODEL_FORMATS, modelPrompt, GENERATOR_PATH } from '@/lib
   const root = document.querySelector<HTMLElement>('[data-library]');
   if (root) {
     const form = root.querySelector<HTMLFormElement>('[data-filters]')!;
-    form.hidden = false;
-    root.querySelectorAll<HTMLElement>('[data-actions]').forEach(el => el.hidden = false);
+    // Le gabarit réserve leur place dès le HTML ; seul leur état change au démarrage.
+    root.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLButtonElement>('[disabled]').forEach(el => el.disabled = false);
     const filter = () => {
       const ids = new Set(filterModels(Object.fromEntries(new FormData(form))).map(m => m.id));
       root.querySelectorAll<HTMLElement>('[data-model]').forEach(el => el.hidden = !ids.has(el.dataset.model!));

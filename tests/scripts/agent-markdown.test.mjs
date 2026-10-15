@@ -24,12 +24,12 @@ test('génère uniquement les routes sitemap, après nettoyage des sources, de f
   const dist = mkdtempSync(join(tmpdir(), 'agent-markdown-'));
   try {
     mkdirSync(join(dist, 'blog'), { recursive: true });
-    const hubs = ['/glossaire', '/integrations', '/outils-comptables-gratuits', '/blog'];
+    const hubs = ['/automatisation-cabinet-comptable', '/agents-ia', '/glossaire', '/integrations', '/outils-comptables-gratuits', '/blog'];
     writeFileSync(join(dist, 'sitemap-pages.xml'), `<urlset>${['/', '/blog/article', ...hubs].map(path => `<url><loc>https://memlia.fr${path}</loc></url>`).join('')}</urlset>`);
     for (const path of hubs) writeFileSync(join(dist, `${path}.html`), `<html><head><meta name="description" content="Description du hub.">${path === '/glossaire' ? '<script type="application/ld+json">{"@type":"DefinedTermSet","hasDefinedTerm":[{}]}</script>' : ''}</head><body><main><h1>Hub</h1></main></body></html>`);
-    writeFileSync(join(dist, 'index.html'), '<html><head></head><body><main><h1>Accueil</h1></main></body></html>');
-    writeFileSync(join(dist, 'blog/article.html'), renderPublicSourceText('<html><head></head><body><main><h1>Article</h1><p>Source, consultée le 6 octobre 2026</p></main></body></html>'));
-    writeFileSync(join(dist, 'llms.txt'), '# Memlia\n- [Glossaire](https://memlia.fr/glossaire) : définitions.\n');
+    writeFileSync(join(dist, 'index.html'), '<html><head><meta name="description" content="Présentation du service."></head><body><main><h1>Accueil</h1></main></body></html>');
+    writeFileSync(join(dist, 'blog/article.html'), renderPublicSourceText('<html><head><meta name="description" content="Méthode sourcée."><script type="application/ld+json">{"@type":"BlogPosting"}</script></head><body><main><h1>Article</h1><p>Source, consultée le 6 octobre 2026</p></main></body></html>'));
+    writeFileSync(join(dist, 'llms.txt'), '# Memlia\n- [Accueil](https://memlia.fr/)\n- [Glossaire](https://memlia.fr/glossaire) : définitions.\n');
     writeFileSync(join(dist, '_headers'), '/contact\n  X-Test: intact\n');
     assert.equal(generateAgentMarkdown(dist), 2 + hubs.length);
     const full = readFileSync(join(dist, 'llms-full.txt'), 'utf8');

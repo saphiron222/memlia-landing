@@ -9,6 +9,8 @@ test('sans JS : douze fiches, prompts complets et limites lisibles', async ({ br
   const context = await browser.newContext({ javaScriptEnabled: false, baseURL });
   const page = await context.newPage(); await page.goto(ROUTE); await ouvrirReglages(page);
   await expect(page.locator('[data-model]')).toHaveCount(12);
+  await expect(page.getByLabel('Rechercher un modèle')).toBeDisabled();
+  await expect(page.locator('[data-copy]').first()).toBeDisabled();
   for (const m of MODELS) {
     const card = page.locator(`[data-model="${m.id}"]`);
     await expect(card).toBeVisible(); await card.locator('summary').click();

@@ -20,6 +20,23 @@ export function readSitemapPages(dist) {
     .filter(xml => /<urlset(?:\s|>)/.test(xml)).join('\n');
 }
 
+/** La synchronisation du registre doit aussi mettre à jour l'artefact de prévisualisation. */
+export function syncSitemapLastmod(dist, pages) {
+  const xml = readSitemapPages(dist).replace(/<url(?:\s[^>]*)?>[\s\S]*?<\/url>/g, entry => {
+    const location = entry.match(/<loc>([^<]+)<\/loc>/)?.[1];
+    const route = location ? new URL(location).pathname.replace(/\/$/, '') || '/' : undefined;
+    const lastmod = pages[route]?.lastmod;
+    if (!lastmod) return entry; // Les articles gardent la date de leur frontmatter.
+    return /<lastmod>/.test(entry)
+      ? entry.replace(/<lastmod>[^<]+<\/lastmod>/, `<lastmod>${lastmod}</lastmod>`)
+      : entry.replace('</loc>', `</loc><lastmod>${lastmod}</lastmod>`);
+  });
+  if (!xml.includes('<urlset')) throw new Error('Sitemap absent : dates non synchronisées.');
+  const entries = [...xml.matchAll(/<url(?:\s[^>]*)?>[\s\S]*?<\/url>/g)].map(m => m[0]);
+  writeFileSync(join(dist, 'sitemap-0.xml'), `${declaration}<urlset xmlns="${namespace}">${entries.join('')}</urlset>`);
+  splitSitemaps(dist, 'https://memlia.fr');
+}
+
 /** Partitionne la sortie Astro sans réécrire les blocs url ni leurs lastmod. */
 export function splitSitemaps(dist, origin) {
   const generated = readdirSync(dist).filter(name => /^sitemap-\d+\.xml$/.test(name)).sort();

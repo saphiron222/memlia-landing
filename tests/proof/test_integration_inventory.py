@@ -16,6 +16,7 @@ class IntegrationInventoryProof(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             shutil.copytree(build.ROOT / 'src', root / 'src')
+            shutil.copytree(build.ROOT / 'config', root / 'config')
             shutil.copytree(build.ROOT / 'guides', root / 'guides')
             shutil.copytree(build.ROOT / 'public/proofs', root / 'public/proofs')
             shutil.copytree(build.DIST, root / 'dist')

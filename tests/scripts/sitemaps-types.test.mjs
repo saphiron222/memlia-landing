@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { splitSitemaps, sitemapType, readSitemapPages } from '../../scripts/lib/sitemaps.mjs';
+import { splitSitemaps, sitemapType, readSitemapPages, syncSitemapLastmod } from '../../scripts/lib/sitemaps.mjs';
 
 const header = '<?xml version="1.0" encoding="UTF-8"?>';
 const paths = ['/', '/contact', '/automatisation/fec', '/integrations', '/integrations/sage', '/outils-comptables-gratuits', '/outils-comptables-gratuits/fec', '/blog', '/blog/article', '/glossaire', '/commissaires-aux-comptes', '/commissaires-aux-comptes/certification', '/agents-ia', '/agents-ia/comptabilite'];
@@ -46,4 +46,21 @@ test('refuse un doublon au lieu de le masquer et ne publie pas un type vide', ()
     assert.ok(!readdirSync(dist).includes('sitemap-cac.xml'));
     assert.ok(!readFileSync(join(dist, 'sitemap.xml'), 'utf8').includes('sitemap-cac.xml'));
   } finally { rmSync(dist, { recursive: true }); }
+});
+
+test('la synchronisation du registre actualise la preview sans changer les articles ni les autres champs', () => {
+ const dist=mkdtempSync(join(tmpdir(),'sitemap-sync-'));
+ try {
+  writeFileSync(join(dist,'sitemap-0.xml'),`<urlset>${entries.join('')}</urlset>`);
+  splitSitemaps(dist,'https://memlia.fr');
+  const dates={'/contact':{lastmod:'2026-10-15T18:00:00.000Z'},'/agents-ia/comptabilite':{lastmod:'2026-10-15T17:00:00.000Z'}};
+  syncSitemapLastmod(dist,dates);
+  const actual=readSitemapPages(dist);
+  assert.equal([...actual.matchAll(/<loc>/g)].length,paths.length);
+  for(const [route,value] of Object.entries(dates)) assert.ok(actual.includes(`<loc>https://memlia.fr${route}</loc><lastmod>${value.lastmod}</lastmod><priority>0.6</priority>`));
+  assert.ok(actual.includes(entries[8]),'date éditoriale préservée');
+  assert.ok(readFileSync(join(dist,'sitemap.xml'),'utf8').includes('<lastmod>2026-10-15T18:00:00.000Z</lastmod>'));
+  syncSitemapLastmod(dist,dates);
+  assert.equal(readSitemapPages(dist),actual,'idempotence');
+ } finally {rmSync(dist,{recursive:true});}
 });

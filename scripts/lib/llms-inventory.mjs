@@ -44,7 +44,7 @@ export function renderLlmsInventory(template, pages) {
     const page = records.find(page => page.path === path);
     if (!page) throw new Error(`Hub publié absent : ${path}`);
     return page;
-  }), ...robots, ...agents];
+  }), ...records.filter(page => !hubs.includes(page.path))];
   for (const page of listed) if (!page.title || !page.description) throw new Error(`Métadonnées publiées absentes : ${page.url}`);
   return `${source}${MARKER}\n${robots.length} robots, ${agents.length} fiches agents IA, ${articles.length} articles et ${tools.length} outils publiés.\n\n${listed.map(page => `- [${label(page.title)}](${page.url}) : ${label(page.description)}`).join('\n')}\n`;
 }

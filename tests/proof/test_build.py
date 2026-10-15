@@ -91,6 +91,14 @@ def public_integrations():
         generated.add(f'integrations/{slug}')
         slugs.add(slug)
     assert set(proofs) == generated, 'Métadonnées de preuve orphelines'
+    # Décision Kevin du 15/10 : archives scellées conservées, routes retirées du site.
+    migration = ROOT / 'config/migration-catalogues.json'
+    if migration.exists():
+        decision = json.loads(migration.read_text())
+        assert decision.get('version') == 1 and decision.get('authorizedBy') == 'Kevin Kitanga'
+        retired = {row['from'].removeprefix('/integrations/') for row in decision['routes'] if row['type'] == 'guide'}
+        assert retired <= slugs, 'Guide retiré absent des archives sources'
+        slugs -= retired
     return slugs
 
 INTEGRATION_PAGES = {
@@ -524,9 +532,15 @@ class BuildProof(unittest.TestCase):
         for service in (ROOT / 'src/content/services').glob('*.md'):
             if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
+        migration = json.loads((ROOT / 'config/migration-catalogues.json').read_text())
+        services_publies -= {SITE + row['from'] for row in migration['routes']}
+        script = 'const { ROBOTS } = await import(process.argv[1]); console.log(JSON.stringify(ROBOTS.map(r=>r.slug)));'
+        robots = json.loads(subprocess.run(['node', '--experimental-strip-types', '--input-type=module', '-e', script,
+            (ROOT / 'src/data/robots.ts').resolve().as_uri()], capture_output=True, text=True, check=True).stdout)
+        services_publies |= {f'{SITE}/automatisation/{slug}' for slug in robots}
         attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
                      for slug in fixed_pages(nested=True)
-                     if f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
+                     if not slug.startswith('apercu/') and f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
                      f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
                      f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
@@ -640,8 +654,9 @@ class BuildProof(unittest.TestCase):
                     if target.startswith('/'):
                         self.assertTrue((DIST / target.lstrip('/')).is_file(), f'{page.name}: {target}')
                         seen.add(target)
-        # M4-R3 : 9 preuves originales ; les dérivés Blog ne sont chargés que pour le candidat explicitement rendu.
-        self.assertTrue({f'/proofs/{name}.webp' for name in ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer', '06-eprouver', '07-livrer', '08-integration', '09-garanties']} <= seen)
+        # Direction figurines A validée le 15/10 : les deux catalogues alimentent les médias.
+        self.assertTrue(any(path.startswith('/robots/') for path in seen))
+        self.assertTrue(any(path.startswith('/illustrations/figurines/') for path in seen))
         self.assertGreaterEqual(len(seen), 24 if PREVIEW_ARTICLES else 18)
 
     def test_placeholders_and_briefs(self):
@@ -703,11 +718,14 @@ class BuildProof(unittest.TestCase):
         ids = {attrs['id'] for _, attrs in Document(DIST / 'index.html').tags if 'id' in attrs}
         llms = (DIST / 'llms.txt').read_text()
         anchors = re.findall(r'https://memlia.fr/#([a-z0-9-]+)', llms)
-        self.assertGreaterEqual(len(anchors), 4)
+        # Le llms décrit désormais les trois catalogues plutôt que les anciennes ancres de l’accueil.
+        for route in ['automatisation-cabinet-comptable', 'agents-ia', 'integrations', 'outils-comptables-gratuits']:
+            self.assertIn(f'https://memlia.fr/{route})', llms)
         self.assertEqual(set(anchors) - ids, set())
-        # Chaque article publié est déclaré dans llms.txt, et rien d'autre ne l'est.
-        declares = set(re.findall(r'https://memlia.fr/blog/([a-z0-9-]+)\)', llms))
-        self.assertEqual(declares, {a.stem for a in articles()})
+        # Ce contrat intervient avant l'export Markdown final. Celui-ci ajoute les 87 URL
+        # du sitemap et vérifie chacune dans verify-agent-markdown.mjs, articles compris.
+        self.assertIn('https://memlia.fr/blog)', llms)
+        self.assertIn('https://memlia.fr/blog/rss.xml', llms)
 
     def test_structured_data_no_unreleased_features(self):
         html = (DIST / 'index.html').read_text()

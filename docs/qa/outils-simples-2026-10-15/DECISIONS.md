@@ -59,3 +59,14 @@ Le héros des outils est compact ; les anciens écrans HTML illustratifs quitten
 H1, intentions, routes et canonicals existants conservés. Hub : CollectionPage, ItemList et BreadcrumbList ; outil : WebPage, WebApplication et BreadcrumbList. Aucune FAQPage ajoutée. Le maillage, le sitemap et les surfaces LLM sont régénérés selon le dépôt ; les corps d’articles scellés restent intacts.
 
 Le contrat de page reconnaît explicitement les 21 outils interactifs : l’identité du catalogue, des saisies et une action dans le HTML sont obligatoires, ainsi qu’une image sociale propre et son empreinte. Les contrôles d’intention, de schéma et de maillage restent actifs. Une capture fonctionnelle dans le corps n’est plus imposée en plus de l’outil réel. Les autres pages conservent leurs règles de médias.
+
+
+## Mise à jour des garde-fous historiques
+
+La première exécution complète en CI a révélé des attentes du site antérieur à la direction A : lecteur vidéo à l’accueil, neuf écrans de preuve HTML, quatre images dans la méthode et anciennes pages d’intégration. Ces attentes sont remplacées par des contrôles des six scènes figurines réellement livrées (empreintes, formats, dimensions, textes alternatifs), des étapes natives et de la migration autorisée. Les archives vidéo et leurs empreintes restent contrôlées. Les tests refusent toujours une page ou une entrée sitemap orpheline.
+
+Le plan éditorial CAC conserve son propriétaire historique de circularisation comme archive. Son intention est relue dans la recette dont l’empreinte figure dans la décision de migration ; aucune route publique n’est recréée. Les mots « immatriculation » et « Annuaire des Entreprises » sont autorisés lorsqu’ils décrivent le travail d’un robot ; le contrôle d’identité juridique recherche l’identité de Memlia elle-même.
+
+Le générateur `llms.txt` énumère aussi chaque outil et chaque article, avec un lien HTML et un lien Markdown vérifiés dans l’export final. Les anciens guides retirés sont déduits de la décision de migration après validation des archives scellées. Une suite courte d’outils complémentaires maintient le maillage sans ajouter de cartes sous chaque outil.
+
+La bibliothèque réserve dès le HTML l’espace des filtres et des actions. Les contrôles restent désactivés sans JavaScript ; les douze prompts et leurs exemples demeurent lisibles. Cette disposition évite le déplacement du contenu au démarrage.

@@ -11,6 +11,8 @@ test('compte la sortie des inventaires canoniques et conserve la description CAC
   assert.match(result, /2 définitions/);
   assert.match(result, /1 robots, 1 fiches agents IA, 1 articles et 1 outils/);
   assert.match(result, /\[Service fictif\]\(https:\/\/memlia.fr\/automatisation\/fictif\)/);
+  assert.match(result, /\[Outil fictif\]\(https:\/\/memlia.fr\/outils-comptables-gratuits\/fictif\)/);
+  assert.match(result, /\[Article\]\(https:\/\/memlia.fr\/blog\/fictif\)/);
   assert.ok(result.includes(template.split('\n')[2]));
   assert.doesNotMatch(result, /candidat/);
   assert.equal(renderLlmsInventory(result, inventory()), result);

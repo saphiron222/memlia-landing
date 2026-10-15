@@ -63,7 +63,7 @@ test('la fixture candidate est réellement construite par Astro puis servie en p
   let browser;
   try {
     mkdirSync(project, { recursive: true });
-    for (const entry of ['src', 'public', 'editorial', 'scripts', 'astro.config.mjs', 'tsconfig.json', 'package.json']) {
+    for (const entry of ['src', 'public', 'editorial', 'scripts', 'config', 'astro.config.mjs', 'tsconfig.json', 'package.json']) {
       copyFile(join(REPO, entry), join(project, entry));
     }
     symlinkSync(DEPENDENCIES, join(project, 'node_modules'), 'dir');
