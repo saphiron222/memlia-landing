@@ -1,10 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { GLOSSARY_ENTRIES } from '../../src/data/glossary';
-import { INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
-import { assertGlossaryInventory, checkIntegrationPage, widths } from './helpers/inventories';
+import { CONNECTEURS } from '../../src/data/connecteurs';
+import { assertGlossaryInventory, widths } from './helpers/inventories';
 
 const fictitiousTerm = { ...GLOSSARY_ENTRIES[0], anchor: 'z-test-inventory', term: 'Zèbre fictif' };
-const fictitiousGuide = { ...INTEGRATIONS_INDEXABLES[0], slug: 'guide-fictif-inventory' };
+const fictitiousConnector = { ...CONNECTEURS[0], id: 'connecteur-fictif-inventory', nom: 'Xylophone fictif' };
+async function assertConnectorInventory(page: import('@playwright/test').Page, entries: readonly {id:string;nom:string}[]) {
+  expect(entries.length).toBeGreaterThan(0);
+  const actual = await page.locator('[data-connecteur]').evaluateAll(cards => cards.map(card => ({
+    id: card.id, nom: card.querySelector('h3')?.textContent?.replace(/\s+/g, ' ').trim(),
+  })).sort((a,b) => a.id.localeCompare(b.id)));
+  expect(new Set(actual.map(card => card.id)).size).toBe(actual.length);
+  expect(actual).toEqual(entries.map(({id,nom}) => ({id,nom})).sort((a,b) => a.id.localeCompare(b.id)));
+}
 
 test('inventaire glossaire : ajout de terme et initiale, absence et substitution', async ({ page }) => {
   await page.goto('/glossaire');
@@ -36,22 +44,37 @@ test('inventaire glossaire : ajout de terme et initiale, absence et substitution
 });
 
 for (const width of widths) {
-  test(`guide ajouté visité et contrôlé à ${width}px sans modifier le parcours`, async ({ page }) => {
+  test(`connecteur ajouté : inventaire et recherche à ${width}px sans modifier le parcours`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    const visited: string[] = [];
-    await page.route(`**/integrations/${fictitiousGuide.slug}`, async (route) => {
-      visited.push(new URL(route.request().url()).pathname);
-      const response = await page.request.get(`/integrations/${INTEGRATIONS_INDEXABLES[0].slug}`);
-      await route.fulfill({ status: 200, contentType: 'text/html', body: (await response.text()).replaceAll(INTEGRATIONS_INDEXABLES[0].slug, fictitiousGuide.slug) });
-    });
-    for (const guide of [...INTEGRATIONS_INDEXABLES, fictitiousGuide]) await checkIntegrationPage(page, guide, width);
-    expect(visited).toContain(`/integrations/${fictitiousGuide.slug}`);
+    expect((await page.goto('/integrations'))?.status()).toBe(200);
+    // Le catalogue commun remplace les pages de guides. Le témoin étend le vrai dessin
+    // de carte et passe par la recherche de production, comme un ajout aux données.
+    await page.evaluate(({id,nom}) => {
+      const base = document.querySelector<HTMLElement>('[data-connecteur]')!;
+      const card = base.cloneNode(true) as HTMLElement;
+      card.id = id; card.dataset.connecteur = id;
+      card.querySelector('h3')!.textContent = nom;
+      card.querySelector('.connecteur-marque')!.textContent = 'Logiciel fictif';
+      base.parentElement!.append(card);
+    }, fictitiousConnector);
+    await assertConnectorInventory(page, [...CONNECTEURS,fictitiousConnector]);
+    await page.getByLabel('Le nom de votre logiciel', {exact:true}).fill(fictitiousConnector.nom);
+    await expect(page.locator('[data-connecteur]:visible')).toHaveCount(1);
+    const card=page.locator(`#${fictitiousConnector.id}`);
+    await expect(card).toBeVisible();
+    await card.scrollIntoViewIfNeeded();
+    await expect(card.locator('h3')).toHaveText(fictitiousConnector.nom);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   });
 }
 
-for (const status of [404, 200]) {
-  test(`guide absent ou invalide refusé (HTTP ${status})`, async ({ page }) => {
-    await page.route(`**/integrations/${fictitiousGuide.slug}`, (route) => route.fulfill({ status, contentType: 'text/html', body: '<main><h1>Route invalide</h1></main>' }));
-    await expect(checkIntegrationPage(page, fictitiousGuide, 1280)).rejects.toThrow();
+for (const mutation of ['absence','substitution']) {
+  test(`inventaire des connecteurs refuse une ${mutation}`, async ({ page }) => {
+    await page.goto('/integrations');
+    await page.locator('[data-connecteur]').first().evaluate((card,mutation) => {
+      if(mutation==='absence')card.remove();
+      else {card.id='substitution-inventory';(card as HTMLElement).dataset.connecteur=card.id;}
+    },mutation);
+    await expect(assertConnectorInventory(page,CONNECTEURS)).rejects.toThrow();
   });
 }

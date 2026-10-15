@@ -30,6 +30,7 @@ Deux documents commerciaux font foi : [RECOMMANDATION.md](../../strategy/pricing
 - Revue navigateur complémentaire : 83 contrôles du hub, du gabarit et des pages commerciales ; 63 interactions des outils ; 69 contrôles visuels et de performance réussis. Les anciennes assertions ont été remplacées par les parcours du catalogue actuel, sans réduire les seuils.
 - Chargement tardif des polices : le dernier élément du fil d’Ariane occupe une rangée stable sur mobile. Les 17 contrôles passent, CLS ≤ 0,1 et déplacement du chapeau ≤ 2 px, notamment à 320 px pour Salomé et CFE.
 - Lien éditorial conservé du hub robots vers la carte des tâches du cabinet ; les six sections restent inchangées. Contrôle du lien rendu à 375, 768 et 1 440 px réussi.
+- Prévisualisation distante : 25 contrôles réussis, dont les 21 fiches robots, les présélections de contact et les redirections. Copie préparée avec balise et en-tête `noindex, nofollow`, en conservant les protections. Les 95 HTML du paquet local concordent avec l’artefact construit et vérifié en CI.
 - Audit des 95 HTML : 6 563 liens internes, aucune destination ou ancre manquante. 87 pages dans les sitemaps ; index XML par type, dates synchronisées depuis le registre, anciennes routes et aperçus exclus. `llms.txt`, Markdown et `llms-full.txt` dérivés des pages publiées, avec contrôle de chaque lien et du contenu intégral.
 
 ## Performance et portée des mesures

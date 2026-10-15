@@ -13,7 +13,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
     await delay(navigationDelay);
     await route.continue();
   });
-  await page.goto(gen); await ouvrirReglages(page); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
+  await page.goto(gen); await page.locator('details.library > summary').click(); await ouvrirReglages(page); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
   const edited = (await page.locator('[data-editor]').inputValue()) + '\nNote abstraite à conserver.';
   await page.locator('[data-editor]').fill(edited);
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
