@@ -45,3 +45,15 @@ Kevin refuse les longs blocs étroits laissant la moitié droite vide. Les secti
 ## Contrats et exports
 
 Les tests des lecteurs vidéo retirés ont été remplacés par des contrôles de chargement des scènes, de légende, de mouvement réduit, de clavier et de formats responsifs. Les preuves fonctionnelles des services, outils et guides gardent leurs tests. Le témoin de contenu de l’accueil est recalé sur la recette A et continue de rejeter une altération dans les onze sections. Le contrat de navigation attend le libellé robots déjà validé. L’export Markdown refusait la formulation fonctionnelle « date de consultation », assimilée à une note interne de recherche : elle devient « date de lecture » dans Suivi URSSAF et Dette fiscale ; la restitution sociale URSSAF est régénérée depuis sa démonstration. Le garde n’est pas désactivé.
+
+## Ajustement demandé à 14:20 : étapes compactes et deux suppressions
+
+Kevin demande des petites cartes d’étapes, avec sa capture Outils-EC pour référence de composition. Cinq cartes numérotées remplacent les longues rangées et leurs blocs de livrables répétés. Numéro dans un carré vert, repère court, titre Fraunces et un paragraphe ; fond vert clair continu, cartes blanches, sans interaction factice. Trois colonnes au maximum, dernière paire centrée ; deux colonnes sur tablette, pile sur téléphone. La hiérarchie et les cinq ancres historiques restent natives et accessibles sans JavaScript. Cette demande explicite remplace, pour cette section, la règle ancienne qui réservait les cartes aux destinations.
+
+Les textes raccourcis conservent observation, accès et règle, essais fictifs, acceptation par l’équipe, maintenance définie au devis. Les frontières détaillées restent dans le panneau sombre et la section sur le coût. Aucun changement de promesse technique.
+
+Le paragraphe de Méthode contenant le lien « éprouver la préparation des appels de facture électronique » est supprimé entièrement, sans déplacement. Le lien de Garanties vers ce service est conservé. Le test de préservation autorise ce seul retrait sur `/methode` ; le relevé historique reste intact. La déclaration historique de ce lien dans la recette scellée du service devient obsolète : ce point est consigné dans la recette QA, sans réécrire le corps scellé ni contourner le validateur global.
+
+La légende « Nos figurines représentent les tâches que nous construisons et maintenons avec vous. » est supprimée sur À propos. L’image A et son texte alternatif restent présents ; aucun figcaption vide n’est rendu.
+
+Contrat visuel : cabinet souhaitant comprendre la mission avant le contact ; priorité aux cinq étapes et à leur ordre, puis à la règle écrite. Cibles 375 × 1000, 768 × 1000 et 1440 × 1000. Aucun état de chargement, erreur, vide, permission ou résultat partiel : contenu HTML statique, sans action réseau ni contrôle supplémentaire. Vérifier l’état chargé, l’ancre directe, l’absence de JS et le mouvement réduit. Captures et tests ciblés dans la recette QA.

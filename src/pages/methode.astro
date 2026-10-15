@@ -1,5 +1,6 @@
 ---
 import ListeEditoriale from '@/components/editorial/ListeEditoriale.astro';
+import EtapesCartes from '@/components/editorial/EtapesCartes.astro';
 import PageEditoriale from '@/layouts/PageEditoriale.astro';
 import Renvois from '@/components/Renvois.astro';
 import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
@@ -22,32 +23,32 @@ const etapes = [
   {
     "id": "observer",
     "titre": "Observer le geste",
-    "texte": "Vous montrez une tâche telle qu’elle se fait dans votre cabinet. Nous suivons ses fichiers, ses outils et les moments où votre équipe doit décider.",
-    "livrable": "La tâche décrite, son point de départ, ses outils et le résultat attendu."
+    "repere": "Observation",
+    "texte": "Vous montrez une tâche courante et une exception. Nous repérons ses fichiers, ses outils et le résultat que votre équipe attend."
   },
   {
     "id": "cadrer",
     "titre": "Écrire la règle",
-    "texte": "Nous précisons les accès, les formats, les cas couverts et les exceptions. Nous séparons préparation automatique, validation et jugement métier. Vos saisies restent distinctes des propositions.",
-    "livrable": "La règle écrite : accès, périmètre, validations, exceptions et conditions d’arrêt."
+    "repere": "Règle",
+    "texte": "Nous écrivons les accès, les cas couverts et les conditions d’arrêt. Vous savez ce qui se prépare seul et ce qui attend votre validation."
   },
   {
     "id": "eprouver",
     "titre": "Construire et éprouver",
-    "texte": "Nous construisons dans les outils convenus et rejouons les cas courants comme les cas qui doivent s’arrêter, sur un jeu entièrement fictif.",
-    "livrable": "Les cas fictifs, les sorties obtenues et les refus attendus, corrigés avant la recette."
+    "repere": "Construction",
+    "texte": "Nous construisons dans les outils convenus. Des dossiers fictifs permettent de vérifier les résultats, les exceptions et les arrêts avant votre recette."
   },
   {
     "id": "valider",
-    "titre": "Faire la recette avec vous",
-    "texte": "Les personnes qui feront le travail vérifient les propositions, les exceptions et les arrêts dans l’environnement autorisé, sur les cas et fichiers convenus. Elles acceptent ou refusent le résultat.",
-    "livrable": "Le robot ou l’agent, sa règle et ses essais, après acceptation par votre équipe."
+    "titre": "Valider avec votre équipe",
+    "repere": "Recette",
+    "texte": "Votre équipe vérifie les résultats et les exceptions sur les cas convenus, dans l’environnement autorisé. Elle accepte ou refuse la mise en service."
   },
   {
     "id": "maintenir",
-    "titre": "Maintenir la prise en charge",
-    "texte": "Un portail change, un format évolue ou votre règle se précise : nous analysons l’effet sur la tâche et rejouons les cas concernés. Le devis précise le support et les évolutions couverts ; une extension se convient avec vous.",
-    "livrable": "Une règle à jour et une évolution vérifiée avant sa mise en service."
+    "titre": "Maintenir dans la durée",
+    "repere": "Maintenance",
+    "texte": "Un outil ou votre règle change ? Nous vérifions l’effet sur la tâche et rejouons les essais concernés. Le devis précise la maintenance et les évolutions couvertes."
   }
 ];
 const renvois = [
@@ -105,19 +106,7 @@ const appel = {
 <PageEditoriale page={page} noeuds={noeuds} eyebrow="Derrière nos robots et nos agents IA, nous" scene="methode" appel={appel}>
   <section class="pv" aria-labelledby="travail-titre"><BlocEditorial scene="methode"><div class="pv-copy"><h2 id="travail-titre">Le travail de votre équipe devient la règle.</h2><p>Vos collaborateurs savent quelle pièce manque, quel écart mérite une vérification et quand il faut s’arrêter. Nous écrivons ce savoir-faire avec eux, puis nous faisons tourner sa part répétitive.</p><p>Votre cabinet reçoit un résultat dans ses outils, une règle qui se relit et les exceptions qu’il doit reprendre. Un robot pour une routine, un agent IA pour un métier, une construction sur mesure pour votre propre tâche.</p></div></BlocEditorial></section>
   <section class="pv" aria-labelledby="etapes-titre">
-    <div class="tete"><h2 id="etapes-titre">Une prise en charge qui va jusqu’à la maintenance.</h2><p>À chaque étape, votre équipe sait ce qu’elle nous montre, ce que nous construisons et ce qu’elle vérifie.</p></div>
-    <ol class="editorial-etapes" id="etapes">
-      {etapes.map((e, i) => (
-        <li class="etape" id={e.id}>
-          <div class="etape-copie rv">
-            <p class="surtitre">Étape {i + 1}</p>
-            <h3>{e.titre}</h3>
-            <p>{e.texte}</p>
-          </div>
-          <div class="editorial-remis"><span>Ce que nous vous remettons</span><p>{e.livrable}</p></div>
-        </li>
-      ))}
-    </ol>
+    <EtapesCartes etapes={etapes}/>
     <div class="editorial-regle"><h2>La règle écrite.</h2><p>La même frontière pour un robot, un agent IA et une tâche sur mesure.</p><div class="editorial-frontiere"><div><h3>Se prépare seul</h3><p>Les données autorisées sont rassemblées et les propositions préparées selon la règle convenue.</p></div><div><h3>Attend votre validation</h3><p>Votre équipe relit les propositions et traite les exceptions avant toute suite prévue par la règle.</p></div><div><h3>Reste humain</h3><p>Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.</p></div></div><div class="editorial-arret"><h3>Dans le doute, le dossier s’arrête.</h3><p>Une donnée absente, un format inattendu ou une règle ambiguë produit un arrêt expliqué. Ces cas font partie des essais et de votre recette.</p></div><a href="/garanties">Lire nos garanties →</a></div>
   </section>
 
@@ -129,7 +118,6 @@ const appel = {
         <li class="editorial-point rv"><h3 class="editorial-point-titre">Ce qu’elle coûte</h3><p class="editorial-point-texte"><a href="/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils">Le cadrage</a> et la recette demandent du temps à votre équipe. Le devis dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.</p></li>
         <li class="editorial-point rv"><h3 class="editorial-point-titre">Ce qu’elle évite</h3><p class="editorial-point-texte">Une automatisation livrée vite, qui produit des résultats plausibles, et dont personne ne sait dire quand elle se trompe. Cette exigence permet notamment d’<a href="/automatisation/factures-fournisseurs">éprouver le flux des factures fournisseurs</a> sur ses doublons et ses avoirs avant de le livrer.</p></li>
       </ListeEditoriale>
-    <p class="mention">Nous pouvons aussi <a href="/automatisation/facture-electronique">éprouver la préparation des appels de facture électronique</a> : un dossier sur une autre plateforme avance, un circuit déjà couvert est exclu et un choix incertain arrête la préparation.</p>
   </section>
 
   <section class="pv editorial-ressources" aria-labelledby="suite-titre-renvois"><div class="tete"><h2 id="suite-titre-renvois">Des cas concrets à éprouver.</h2><p>Le cas courant, la donnée absente et le refus attendu changent avec chaque tâche.</p></div><details><summary>Voir des exemples de recette par tâche</summary><div class="editorial-exemples"><p>Pour <a href="/automatisation/evaluation-transmission">recetter la préparation d’un dossier d’évaluation</a>, nous rejouons un ajustement accepté, un ajustement en attente et deux versions concurrentes. Le tableau prépare les chiffres, jamais la valeur de l’entreprise.</p><p>Le cas courant et le justificatif absent suffisent déjà à <a href="/automatisation/notes-de-frais">rejouer une règle de notes de frais</a> sans utiliser de dossier réel.</p><p>Pour <a href="/automatisation/secretariat-juridique">éprouver les rappels de dépôt encore manuels</a>, le jeu fictif oppose une date confirmée, un circuit déjà couvert et une date inconnue. Le brouillon attend une validation ; aucun message n’est envoyé.</p><p class="texte-2">Avant l’essai, vous pouvez <a href="/blog/logiciel-ia-comptabilite">comparer le parcours complet d’un outil IA</a> : entrée, résultat, exception et reprise.</p><p class="texte-2">Pour relier les tests au résultat visible, voyez comment <a href="/blog/tests-verts-et-regle-des-trois-passes">recetter le parcours en trois passes</a>.</p><p class="texte-2">Pour <a href="/automatisation/bulletins-controle">faire recetter les contrôles croisés des bulletins</a>, votre pôle social examine une prime différente, une référence absente et une revue à reprendre après recalcul. Il garde la correction et la validation.</p><p class="texte-2 lecture">Vous pouvez <a href="/automatisation/registres-obligations">faire recetter un suivi de registres</a> sur des changements fictifs fournis : annotations conservées, alerte non envoyée et terme calendaire à vérifier. Les accès réels se testent avant utilisation.</p><p>La recette revient aux personnes qui feront le travail. C’est indispensable pour <a href="/automatisation/paie">faire recetter un contrôle de paie</a> sans déplacer la correction ni la décision hors du pôle social.</p><p>Nous pouvons aussi <a href="/automatisation/entrees-sorties-salaries">éprouver la préparation d’un dossier salarié</a> : une annonce hors portail, ses informations manquantes et le retour au circuit existant font partie des essais.</p></div></details><Renvois items={renvois}/></section>

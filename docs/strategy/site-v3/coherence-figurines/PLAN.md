@@ -60,3 +60,11 @@ Kevin choisit **A** (« la A », 15 octobre 2026). La piste B est archivée et r
 
 
 Le worktree agents a été relu au commit `42a10d59` : le premier gabarit et la première fiche existent désormais ; le chantier se poursuit. Aucune fusion partielle ni copie de ses pages. Les cartes éditoriales utilisent le gabarit déjà partagé avec les robots ; la destination agents pointe vers le cadrage de méthode tant que le catalogue agents n’est pas intégré à cette branche. La reprise du hub intégrations reste différée.
+
+## Ajustement après retour de 14:20
+
+- [x] Méthode : cinq petites cartes numérotées à la place des longues rangées de livrables.
+- [x] Retirer le paragraphe des appels de facture électronique sans le déplacer.
+- [x] Retirer la légende des figurines sur À propos ; conserver image et alt.
+- [x] Vérifier 375/768/1440, sans JavaScript, ancres, liens et rendu réel ; régénérer les exports.
+- [ ] Déployer et vérifier la nouvelle prévisualisation ; recette dans `docs/qa/coherence-figurines/ETAPES-CARTES.md`.

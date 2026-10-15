@@ -18,9 +18,9 @@ test('le contact garde exactement sa logique, ses présélections et ses consent
 });
 test('les six pages gardent leurs liens contextuels et leurs ancres utiles',()=>{
  for(const base of baseline.pages){const doc=pageFor(base.route);const ids=new Set(),links=new Set();walk(doc,n=>{const a=attrs(n);if(a.id)ids.add(a.id);if(a.href)links.add(a.href)});
-  // Seuls les deux liens de téléchargement des vidéos décoratives sont retirés, décision A.
+  // Décision A : vidéos retirées. Kevin retire aussi ce paragraphe précis le 15/10 à 14:20.
   const videosRetirees=new Set(['/media/r9/explainer-hero-45s.mp4','/media/cac-r4/explainer-hero-45s.mp4']);
-  for(const href of base.hrefs.filter(href=>!videosRetirees.has(href)))assert.ok(links.has(href),`${base.route} lien perdu : ${href}`);
+  for(const href of base.hrefs.filter(href=>!videosRetirees.has(href)&&!(base.route==='/methode'&&href==='/automatisation/facture-electronique')))assert.ok(links.has(href),`${base.route} lien perdu : ${href}`);
   for(const id of base.ids.filter(id=>id!=='hero-video-description'))assert.ok(ids.has(id),`${base.route} ancre perdue : ${id}`);
  }
 });
