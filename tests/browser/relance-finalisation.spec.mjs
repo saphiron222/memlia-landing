@@ -33,4 +33,4 @@ test('reflow 400 % équivalent 1280/4, parcours animations et captures complète
  }
 });
 
-async function ouvrirReglages(page){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }
+async function ouvrirReglages(page){ for (const summary of await page.locator('[data-tool-advanced], [data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

@@ -35,9 +35,17 @@ test('annulation immédiate laisse le rapport précédent intact',async({page})=
 for(const width of [320,375,768,1024,1440,1920])test(`clavier et lisibilité à ${width}px`,async({page})=>{
   await page.setViewportSize({width,height:900});await page.goto(route); await ouvrirReglages(page);await page.getByRole('button',{name:'Essayer l’exemple fictif'}).focus();await page.keyboard.press('Enter');await expect(page.locator('[data-summary]')).toContainText('6 lignes source');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1)).toBe(true);await page.getByRole('button',{name:'Accepter la paire P1',exact:true}).focus();await page.keyboard.press('Enter');await expect(page.locator('[data-pairs]')).toContainText('accepté');
   const csv=await exportCsv(page);expect(csv).toContain('R-003');expect(csv).toContain('F-003');expect(csv).toContain('"accepté"');
+  // L’aide/source reste repliée au départ : son contenu n’entre dans l’animation
+  // qu’après ouverture. Tester cette ouverture au clavier, puis garder l’exigence
+  // stricte de révélation de tous les éléments après le parcours de la page.
+  const source=page.locator('[data-tool-section="source"] details');
+  await expect(source).not.toHaveAttribute('open');
+  const sourceSummary=source.locator(':scope > summary');await sourceSummary.focus();await page.keyboard.press('Enter');
+  await expect(source).toHaveAttribute('open','');await expect(source.locator('[data-official-source]')).toBeVisible();
   mkdirSync('.qa/lettrage/captures',{recursive:true});
   for(let top=0;top<await page.evaluate(()=>document.documentElement.scrollHeight);top+=450){await page.evaluate(top=>window.scrollTo({top,behavior:'instant'}),top);await page.waitForTimeout(100);}
   await page.waitForTimeout(1100);expect(await page.locator('.rv:not(.in)').count()).toBe(0);
+  await sourceSummary.press('Enter');await expect(source.locator('[data-official-source]')).toBeHidden();
   await page.evaluate(()=>{for(const el of document.querySelectorAll<HTMLElement>('.table-scroll'))el.scrollLeft=0;window.scrollTo({top:0,behavior:'instant'});});await page.waitForTimeout(2100);
   await page.screenshot({path:`.qa/lettrage/captures/largeur-${width}.png`,fullPage:true,animations:'disabled'});
 });
