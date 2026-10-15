@@ -79,8 +79,10 @@ ce que sa règle dit, sur leurs propres cas.
 _Avoid_ : validation (réservée à la décision du collaborateur sur une proposition), test
 
 
-Décision d’architecture du 15/10/2026 : Robots (routines), Agents IA (métiers), Intégrations (compatibilités) sont les trois entrées commerciales. Les douze anciens services par pôle et les douze guides logiciels sont des archives internes, avec redirections permanentes vers les catalogues actifs. Salomé possède sa fiche ; Aude et Octavie conservent les destinations partagées CAC et Intégrations. Les pôles éditoriaux du blog ne constituent pas une quatrième offre.
+Décision d’architecture des 15–16/10/2026 : « Nos services » regroupe Robots (routines), Agents IA (métiers), Memlia OS et Modèle IA privé. Intégrations (compatibilités) est une entrée directe de la navigation, séparée des prestations. Les douze anciens services par pôle et les douze guides logiciels sont des archives internes, avec redirections permanentes vers les catalogues actifs. Salomé possède sa fiche ; Aude et Octavie conservent les destinations partagées CAC et Intégrations. Les pôles éditoriaux du blog ne constituent pas une quatrième offre.
 
 
 ### 16/10/2026 — Deux offres complémentaires
 Kevin demande Memlia OS pour relier mémoire, outils, équipes et agents du cabinet, et un modèle IA privé entraîné pour entreprises. Routes /memoire-collective-cabinet-comptable et /modele-ia-prive-entreprise. Source typée src/data/solutions.ts ; cadrage docs/strategy/memoire-modeles-2026-10-16/. Aucune collecte, installation ou formation réelle par ce chantier. Base 39226848, worktree isolé memoire-modeles-prives. Pas de fusion ni production autorisée.
+
+Dernier arbitrage du 16/10 : six familles de modèles à poids accessibles sur la page modèle privé (Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss), logos officiels locaux et version/licence définies par projet. Footer aligné avec Nos services et Intégrations dans Vos outils.

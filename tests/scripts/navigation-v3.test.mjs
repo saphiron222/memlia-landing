@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { creerNavigation, LIEN_CAC } from '../../src/data/navigation.mjs';
-import { AUTOMATISE } from '../navigation-attendue.mjs';
+import { SERVICES } from '../navigation-attendue.mjs';
 
 const aplatir = (navigation) => navigation.flatMap((e) => e.sousEntrees ?? [e]);
 const groupe = (navigation, id) => navigation.find((e) => e.id === id);
@@ -11,6 +11,8 @@ test('les hubs restent accessibles sans route CAC ni menu de lecture locale', ()
   assert.deepEqual(links.map((e) => e.href), [
     '/automatisation-cabinet-comptable',
     '/agents-ia',
+    '/memoire-collective-cabinet-comptable',
+    '/modele-ia-prive-entreprise',
     '/integrations',
     '/outils-comptables-gratuits',
     '/blog',
@@ -33,26 +35,26 @@ test('une page interne conserve les hubs et le blog suit sa disponibilité', () 
   assert.equal(new Set(ids).size, ids.length);
 });
 
-test('« Ce qu’on automatise » expose les trois catalogues : Robots, Agents IA et Intégrations', () => {
+test('« Nos services » expose les quatre services, sans les intégrations', () => {
   for (const cacDisponible of [true, false]) {
-    const entree = groupe(creerNavigation({ chemin: '/', cacDisponible, blogActif: true }), 'automatise');
-    assert.ok(entree, `groupe automatise présent (cacDisponible ${cacDisponible})`);
-    assert.equal(entree.libelle, 'Ce qu’on automatise');
+    const entree = groupe(creerNavigation({ chemin: '/', cacDisponible, blogActif: true }), 'services');
+    assert.ok(entree, `groupe services présent (cacDisponible ${cacDisponible})`);
+    assert.equal(entree.libelle, 'Nos services');
     assert.equal(entree.href, undefined, 'un groupe est un bouton : il ne mène nulle part lui-même');
-    assert.deepEqual(entree.sousEntrees, AUTOMATISE);
+    assert.deepEqual(entree.sousEntrees, SERVICES);
   }
 });
 
-test('l’ordre de la barre : Cabinets, Ce qu’on automatise, Outils gratuits, Blog', () => {
+test('l’ordre de la barre : Cabinets, Nos services, Intégrations, Outils gratuits, Blog', () => {
   const navigation = creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true });
   assert.deepEqual(
     navigation.map((e) => e.id ?? e.href),
-    ['cabinets', 'automatise', '/outils-comptables-gratuits', '/blog'],
+    ['cabinets', 'services', '/integrations', '/outils-comptables-gratuits', '/blog'],
   );
   const sansCac = creerNavigation({ chemin: '/', cacDisponible: false, blogActif: true });
   assert.deepEqual(
     sansCac.map((e) => e.id ?? e.href),
-    ['automatise', '/outils-comptables-gratuits', '/blog'],
+    ['services', '/integrations', '/outils-comptables-gratuits', '/blog'],
   );
 });
 
@@ -65,7 +67,7 @@ test('les intitulés suivent la charte : casse de phrase, sigle IA et aucun anci
   const navigation = creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true });
   const intitules = [...navigation.map((e) => e.libelle), ...aplatir(navigation).map((e) => e.libelle)];
   for (const intitule of intitules) {
-    assert.match(intitule.replace(/\bIA\b/gu, 'ia'), /^\p{Lu}[^\p{Lu}]*$/u, `${intitule} : casse de phrase, sigle IA admis`);
+    assert.match(intitule.replace(/\b(IA|OS)\b/gu, m=>m.toLowerCase()), /^\p{Lu}[^\p{Lu}]*$/u, `${intitule} : casse de phrase, sigle IA admis`);
     assert.doesNotMatch(intitule, /module|compl[ée]ment excel/i, intitule);
     assert.doesNotMatch(intitule, /Par tâche|Par métier|Dans vos outils|Guides par environnement|Automatisation par pôle/iu);
   }

@@ -1,8 +1,9 @@
 {
   "date": "2026-10-16",
-  "sourceSha": "33a1e83ec9499be20b85044355de0eee2973b5cf5e33c979260092a75c5f16fe",
+  "sourceSha": "74fc4fff06e648a2fc81556c353ef2a3671b0c6899594e1a3be42c7211c9ad41",
   "inputs": [
     "src/data/solutions.ts",
+    "src/data/modeles-ouverts.ts",
     "src/components/solutions/PageSolution.astro",
     "src/components/solutions/SceneModele.astro",
     "src/components/solutions/SceneOS.astro",
@@ -16,14 +17,14 @@
       "target": "public/assets/solutions/og-os.webp",
       "width": 1200,
       "height": 630,
-      "sha256": "e1afa668bf46d48bfc6360b16a6f9456796d1da3c471063e076a8a243295ec42",
+      "sha256": "f862a26e3f52657b484a12b2826f897c4b3cedcf804512c59bcc94f6e906e7e6",
       "route": "/memoire-collective-cabinet-comptable"
     },
     {
       "target": "public/assets/solutions/og-modele.webp",
       "width": 1200,
       "height": 630,
-      "sha256": "95917eb46a66e68d34dae0ffbec0c5003d1e73ba0562960c7a11272ba06cd1a5",
+      "sha256": "8d41cc6957aaa40fe7cb864f506b1826efefbda65f980acfc620cdd835ceafea",
       "route": "/modele-ia-prive-entreprise"
     }
   ]

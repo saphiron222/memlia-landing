@@ -25,7 +25,7 @@ for (const [width, height] of LARGEURS) {
       }
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Boutons de groupe (Cabinets, Ce qu'on automatise) et liens directs sur desktop ; destinations dans le panneau sur mobile.
+      // Boutons de groupe (Cabinets, Nos services) et liens directs sur desktop ; destinations dans le panneau sur mobile.
       await expect(page.locator('.nav-entree'), route).toHaveCount((CAC_PUBLIE ? 2 : 1) + HREFS_DIRECTS.length);
       if (width < 1024) {
         await page.locator('[data-burger]').click();
@@ -84,7 +84,7 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      // Outils gratuits et le blog sont des liens directs ; Cabinets et Ce qu'on automatise sont des boutons de sous-menu.
+      // Outils gratuits et le blog sont des liens directs ; Cabinets et Nos services sont des boutons de sous-menu.
       nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {

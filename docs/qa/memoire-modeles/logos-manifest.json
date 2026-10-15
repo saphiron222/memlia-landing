@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-16",
+  "scope": "Familles candidates uniquement ; version, licence et dimensionnement à définir par projet. Les licences de poids ne concèdent pas les marques.",
+  "records": [
+    {
+      "id": "llama",
+      "page": "https://github.com/meta-llama",
+      "source": "https://avatars.githubusercontent.com/u/153379578?s=200&v=4",
+      "licence": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE",
+      "note": "Llama 3.1 : licence communautaire spécifique, pas Apache 2.0. Logo Meta du compte officiel de Llama.",
+      "original": "originaux/llama.png",
+      "originalSha256": "4fa93b598fa3169f08463796874035c509a68420c199fe6d137b661d5aa8c7c8",
+      "target": "public/logos/modeles/llama.webp",
+      "width": 64,
+      "height": 64,
+      "sha256": "3d20044f030f0606ad25c7243fed39c3f6b14022e20a903c3b93759130184dc5"
+    },
+    {
+      "id": "mistral",
+      "page": "https://github.com/mistralai",
+      "source": "https://avatars.githubusercontent.com/u/132372032?s=200&v=4",
+      "licence": "https://mistral.ai/news/mistral-small-4/",
+      "note": "Mistral Small 4 : Apache 2.0. Les licences des autres versions peuvent différer.",
+      "original": "originaux/mistral.png",
+      "originalSha256": "a92382d5434f01eafd3f19a0046252ad101079335aec14f1a6abab5b4d44c542",
+      "target": "public/logos/modeles/mistral.webp",
+      "width": 64,
+      "height": 64,
+      "sha256": "52e7816026d6bee049c40007405e6dfb0e71a7857ed5a838dafbe86ee008e306"
+    },
+    {
+      "id": "qwen",
+      "page": "https://github.com/QwenLM",
+      "source": "https://avatars.githubusercontent.com/u/141221163?s=200&v=4",
+      "licence": "https://qwenlm.github.io/blog/qwen3/",
+      "note": "Qwen3 : Apache 2.0 pour les modèles annoncés dans cette publication.",
+      "original": "originaux/qwen.png",
+      "originalSha256": "82e37492111cab614fa53384e6110a3c4f9f183cde073c69d0b7ebceb53d56a7",
+      "target": "public/logos/modeles/qwen.webp",
+      "width": 64,
+      "height": 64,
+      "sha256": "a2d758a1ee361850ab97ec68d2113a3ad334e705289fc9a9d63a6f4f32b09f91"
+    },
+    {
+      "id": "deepseek",
+      "page": "https://github.com/deepseek-ai",
+      "source": "https://avatars.githubusercontent.com/u/148330874?s=200&v=4",
+      "licence": "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp",
+      "note": "DeepSeek-V3.2-Exp : code et poids sous MIT ; exemple de licence, pas choix de production.",
+      "original": "originaux/deepseek.png",
+      "originalSha256": "1c468e299d8b9fe73a1c99126000a628eaa9bef63cd4c5f22fcb94e4f1531cdb",
+      "target": "public/logos/modeles/deepseek.webp",
+      "width": 64,
+      "height": 64,
+      "sha256": "a79ed25b4baff382a6670a7a6db8c046d8c49de3451b4845b0bf5a097d1b0b95"
+    },
+    {
+      "id": "gemma",
+      "page": "https://deepmind.google/models/gemma/gemma-4/",
+      "source": "https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/original_images/nav__dm__gemma__large.svg",
+      "licence": "https://ai.google.dev/gemma/apache_2",
+      "note": "Gemma 4 : Apache 2.0 ; les générations antérieures ont leurs propres conditions.",
+      "original": "originaux/gemma.svg",
+      "originalSha256": "6e8124788ad93b54be99e45d261c7ceb686f4f4f5434403b73cdc706f6c0362e",
+      "target": "public/logos/modeles/gemma.webp",
+      "width": 64,
+      "height": 64,
+      "sha256": "bf2827585b8adc8e5480c30e128f1f6c0bf63ade9d4b3ec6fa90d3001a1434d9"
+    },
+    {
+      "id": "gpt-oss",
+      "page": "https://github.com/openai/gpt-oss",
+      "source": "https://raw.githubusercontent.com/openai/gpt-oss/main/docs/gpt-oss.svg",
+      "licence": "https://openai.com/index/introducing-gpt-oss/",
+      "note": "gpt-oss-20b/120b : Apache 2.0. Logotype complet officiel, pas logo ChatGPT.",
+      "original": "originaux/gpt-oss.svg",
+      "originalSha256": "4d621976d2d4570b7663f55a356cfa2db9f20c4aa8658b54bf4e4a5a4bd17172",
+      "target": "public/logos/modeles/gpt-oss.webp",
+      "width": 280,
+      "height": 56,
+      "sha256": "c8ddf5d0cdeefe3ad9ccbe5d4a7fbd2036c8ba2a0da0cfc58dd3045611443472"
+    }
+  ]
+}

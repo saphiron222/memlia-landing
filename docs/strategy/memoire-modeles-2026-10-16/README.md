@@ -9,3 +9,5 @@ Source typée :`src/data/solutions.ts`. Pages :`/memoire-collective-cabinet-comp
 Sources lourdes :`/Users/kevinkitanga/dev/interne/memlia-landing-sources/memoire-modeles/2026-10-16/` (vidéo,255 images,6 planches, pages brutes, pistes générées rejetées). Aucun actif rejeté n’est publié.
 
 Les skills utilisés proviennent uniquement de`~/.claude` : competitor-profiling, copywriting, copy-editing, image, writing-plans, frontend-design-direction, make-interfaces-feel-better, seo-technical et seo-schema. Principes de mouvement adaptés à Astro, sans ajouter React ni prétendre exécuter une commande Claude dans Codex. L’outil imagegen disponible dans Codex a servi aux pistes archivées ; aucun modèle n’a été sélectionné par un paramètre absent de l’outil.
+
+Le dernier arbitrage modèles/navigation se trouve à la fin de CADRAGE.md. Les six logos ont leurs originaux et leurs empreintes dans le dossier sources logos-modeles/ ; leur manifeste de production est docs/qa/memoire-modeles/logos-manifest.json.

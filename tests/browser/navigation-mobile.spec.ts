@@ -2,7 +2,7 @@ import { test, expect, type Locator } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
 
 /** Le burger ouvre les destinations ; sans JavaScript, les liens restent servis en clair. */
-import { AUTOMATISE, CAC_PUBLIE, DESTINATIONS, HREFS, ORDRE_SANS_JS } from '../navigation-attendue.mjs';
+import { SERVICES, CAC_PUBLIE, DESTINATIONS, HREFS, ORDRE_SANS_JS } from '../navigation-attendue.mjs';
 
 /** Un contrôle n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
 async function mesurerAtteignable(cible: Locator) {
@@ -94,8 +94,8 @@ test('sans JavaScript : les destinations publiées et l’action restent servies
   }
   await expect(page.locator('[data-burger]')).toBeHidden();
   await expect(navigation.locator('a').last()).toHaveAttribute('href', CTA.nav.href);
-  // « Ce qu'on automatise » n'est plus un lien : ses trois entrées le sont, chacune menant à sa page.
-  for (const { libelle, href } of AUTOMATISE) {
+  // « Nos services » n'est plus un lien : ses quatre entrées le sont, chacune menant à sa page.
+  for (const { libelle, href } of SERVICES) {
     await page.goto('/');
     await page.locator('.nav-sans-js').getByText(libelle, { exact: true }).click();
     await expect(page).toHaveURL(new RegExp(`${href}$`));

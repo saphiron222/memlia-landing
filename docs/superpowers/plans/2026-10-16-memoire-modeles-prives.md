@@ -40,3 +40,9 @@ Confusion RAG/entraînement ; attribution des droits de la base et des poids ada
 
 ## Recette avant CI
 4tests scripts et9tests navigateur PASS ;97HTML au contrat de page,89exports Markdown ; Lighthouse mobile99/100/100/100 pour les deux offres. Revues indépendantes copie et code PASS, tableau clavier corrigé. Dernière décision : aucun emblème/figurine, bureau collectif avec pictogramme. Détails dans docs/qa/memoire-modeles/RECETTE.md. La livraison attend le verdict de CI sur le SHA exact et sa prévisualisation noindex ; aucune fusion automatique.
+
+## Dernier ajustement demandé
+- [x] Nos services : quatre offres ; Intégrations en lien direct ; footer identique.
+- [x] Six familles de modèles à poids accessibles, logos officiels optimisés et sources archivées. Licences et choix documentés par version.
+- [x] Rejouer les tests ciblés de navigation et modèles, inspection réelle, revue du delta : 12 tests scripts et 86 tests navigateur PASS, sans test ignoré.
+- [ ] CI sur le nouveau SHA puis prévisualisation de son artefact. Le premier lancement CI a été annulé pour intégrer cette demande.

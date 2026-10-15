@@ -1,7 +1,7 @@
 ---
 import Lockup from './Lockup.astro';
 import { SITE } from '@/data/site.mjs';
-import { ENTREES_AUTOMATISE, ENTREES_MEMOIRE, LIEN_CAC } from '@/data/navigation.mjs';
+import { ENTREES_SERVICES, LIEN_INTEGRATIONS, LIEN_CAC } from '@/data/navigation.mjs';
 import { cacDisponible } from '@/data/navigation-publiee';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_HUB_PATH } from '@/data/outils';
@@ -22,10 +22,10 @@ const cabinet = {
     { libelle: 'Comment se déroule une mission', href: PAGES_V2.methode.chemin },
   ],
 };
-// Les trois entrées du menu « Ce qu’on automatise », reprises de la même source : par tâche, par métier, dans vos outils.
-const automatise = {
-  titre: 'Ce qu’on automatise',
-  liens: ENTREES_AUTOMATISE,
+// Les quatre prestations sont identiques à celles du menu Nos services.
+const services = {
+  titre: 'Nos services',
+  liens: ENTREES_SERVICES,
 };
 const comprendre = {
   titre: 'Comprendre',
@@ -47,14 +47,14 @@ const entreprise = {
   ],
 };
 const ressources = {
-  titre: 'Pour votre équipe',
+  titre: 'Vos outils',
   liens: [
-    ...ENTREES_MEMOIRE,
+    LIEN_INTEGRATIONS,
     { libelle: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
   ],
 };
 const blocs = [
-  { groupes: [cabinet, automatise], classe: '' },
+  { groupes: [cabinet, services], classe: '' },
   { groupes: [comprendre], classe: '' },
   { groupes: [ressources], classe: '' },
   { groupes: [entreprise], classe: '' },

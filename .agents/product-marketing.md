@@ -1,6 +1,6 @@
 # Charte de message et contexte marketing Memlia
 
-Décision complémentaire de Kevin du 15/10/2026 : trois entrées commerciales, **Robots**, **Agents IA** et **Intégrations**. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
+Décision du 16/10/2026 : **Nos services** regroupe **Robots**, **Agents IA**, **Memlia OS** et **Modèle IA privé**. **Intégrations** est une entrée directe de navigation, séparée des prestations, comme Outils gratuits et Blog. Cette organisation remplace les trois entrées commerciales décidées le 15/10. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
 
 
 Document version : v9 — 16 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-16. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
@@ -196,7 +196,7 @@ Un **agent IA**, chez Memlia, est la règle écrite des tâches d'un même méti
 - **Il se définit à sa première apparition** sur chaque page. Le mot de catégorie est « agent IA » ; « spécialiste », « assistant » et « collaborateur » ne le désignent pas.
 - **Ne s'écrit jamais** : agent autonome, collaborateur IA, employé IA, « embaucher » ou « recruter » un agent, « votre nouveau collègue », agent IA CAC, commissaire aux comptes IA, DPO IA, « agent administratif » ou « agent comptable » sans « IA » (grades de la fonction publique). Le métier d'audit se dit « missions d'audit » ; le titre de commissaire aux comptes désigne le lecteur.
 - **L'agent RH du cabinet** ne note ni ne surveille personne : préparation de documents et agrégats seulement.
-- **Place** : sous « Ce qu'on automatise », entre la vue par tâche (le pilier) et la vue par outil (`/integrations`). L'appel principal reste « Confier une première tâche ».
+- **Place** : sous « Nos services », à côté des robots, de Memlia OS et du modèle privé. Les intégrations (`/integrations`) disposent de leur propre entrée directe. L'appel principal reste « Confier une première tâche ».
 
 ## 10. Preuves autorisées et garde-fous
 
@@ -228,8 +228,10 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 
 
 ## Décision Kevin du 16/10/2026 — Memlia OS et modèle privé
-Deux pages de service complètent les trois entrées du catalogue : Memlia OS (mémoire collective et orchestration du cabinet) et Modèle IA privé (adaptation/entraînement pour entreprises). Le mot système d’exploitation décrit ici une couche métier reliée aux outils existants. Ce périmètre explicitement demandé étend l’audience à l’entreprise pour la seconde offre. Les interdits génériques de plateforme/logiciel ne doivent pas empêcher de nommer ces deux offres ; ils restent applicables aux robots et agents.
+Deux pages complètent les catalogues robots et agents dans « Nos services » : Memlia OS (mémoire collective et orchestration du cabinet) et Modèle IA privé (adaptation/entraînement pour entreprises). Le mot système d’exploitation décrit ici une couche métier reliée aux outils existants. Ce périmètre explicitement demandé étend l’audience à l’entreprise pour la seconde offre. Les interdits génériques de plateforme/logiciel ne doivent pas empêcher de nommer ces deux offres ; ils restent applicables aux robots et agents.
 
 Le catalogue reste Robots / Agents IA / Intégrations ; les deux prestations ont leurs destinations dédiées dans la navigation. Décrire des livrables et une prise en charge sur devis, pas un matériel déjà commercialisé ni une installation client acquise. Boîtier = vue de principe ; interfaces = exemples fictifs. RAG et entraînement sont distincts ; droits sur l’adaptation soumis à la licence de base. Aucun « tout local », « souverain », « propriétaire exclusif » ou conformité automatique sans périmètre et preuve. Mammouth n’est pas présenté comme service d’entraînement personnalisé. Les deux documents de pricing validés restent inchangés.
 
 Dernier arbitrage visuel du 16/10 : la représentation validée de Memlia OS est le bureau collectif, sans boîtier illustré, décomposition au scroll ou figurine. Le petit pictogramme de mémoire reste au centre. Les pistes générées sont archivées hors site.
+
+Dernier arbitrage modèles du 16/10 : la page modèle privé montre Llama, Mistral, Qwen, DeepSeek, Gemma et gpt-oss. Nom public : modèles à poids accessibles, car les licences dépendent des versions. Pas de logo ChatGPT, Claude ou Gemini comme base entraînable. Les logos officiels sont hébergés sur le site, sans partenariat revendiqué.

@@ -1,5 +1,5 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
-import { AUTOMATISE, CAC_PUBLIE } from '../navigation-attendue.mjs';
+import { SERVICES, CAC_PUBLIE } from '../navigation-attendue.mjs';
 
 /**
  * Les deux groupes de la barre. Mêmes gestes pour chacun (souris, trajet continu, clavier) : la boucle
@@ -7,7 +7,7 @@ import { AUTOMATISE, CAC_PUBLIE } from '../navigation-attendue.mjs';
  */
 const GROUPES = [
   { id: 'cabinets', nom: 'Cabinets', premiere: /\/$/ },
-  { id: 'automatise', nom: 'Ce qu’on automatise', premiere: /\/automatisation-cabinet-comptable$/ },
+  { id: 'services', nom: 'Nos services', premiere: /\/automatisation-cabinet-comptable$/ },
 ];
 
 /**
@@ -62,7 +62,7 @@ for (const width of [1024, 1440]) for (const groupe of GROUPES) {
 
 /**
  * Un seul sous-menu ouvert à la fois. Ouvrir l'un referme l'autre, quels que soient l'ordre et le geste :
- * le panneau de « Ce qu'on automatise » recouvrait celui de Cabinets quand ce dernier gardait le focus
+ * le panneau de « Nos services » recouvrait celui de Cabinets quand ce dernier gardait le focus
  * d'un clic (le survol ne referme jamais un groupe qui a le focus).
  */
 const ORDRES = [
@@ -120,7 +120,7 @@ for (const width of [1024, 1440]) for (const { premier, second } of ORDRES) {
 }
 
 /** Les cinq destinations qui ne sont pas des entrées de Cabinets : toutes publiées, toutes servies. */
-const HUBS = [...AUTOMATISE.map((entree) => entree.href), '/outils-comptables-gratuits', '/blog'];
+const HUBS = [...SERVICES.map((entree) => entree.href), '/outils-comptables-gratuits', '/blog'];
 /** Une ancienne route redirigée vers une carte du catalogue commun. */
 const GUIDE = '/integrations/bulletin-de-paie-sage';
 
@@ -141,17 +141,17 @@ for (const width of [375, 1024, 1440]) {
   });
 }
 
-test('« Ce qu’on automatise » se marque sur ses trois pages et après la migration d’un ancien guide', async ({ page }) => {
+test('« Nos services » se marque sur ses quatre pages et après la migration d’un ancien guide', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  const bouton = page.locator('[aria-controls="sous-menu-automatise"]');
-  for (const { href } of AUTOMATISE) {
+  const bouton = page.locator('[aria-controls="sous-menu-services"]');
+  for (const { href } of SERVICES) {
     await page.goto(href);
     await expect(bouton).toHaveAttribute('aria-current', 'true');
   }
   // L’ancienne route arrive sur le catalogue lui-même : « page » décrit la destination finale.
   await page.goto(process.env.QA_PAGES_DELIVERY === '1' ? GUIDE : '/integrations#sage-100-paie-rh');
   await expect(page).toHaveURL(/\/integrations#sage-100-paie-rh$/);
-  await expect(bouton).toHaveAttribute('aria-current', 'true');
+  await expect(bouton).not.toHaveAttribute('aria-current');
   await expect(page.locator('.nav-centre a[href="/integrations"]')).toHaveAttribute('aria-current', 'page');
   await page.goto('/blog');
   await expect(bouton).not.toHaveAttribute('aria-current');
@@ -180,47 +180,47 @@ for (const groupe of GROUPES) {
   });
 }
 
-test('menu Ce qu’on automatise : les trois entrées se parcourent au clavier dans l’ordre', async ({ page }) => {
+test('menu Nos services : les quatre entrées se parcourent au clavier dans l’ordre', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  const trigger = page.locator('[aria-controls="sous-menu-automatise"]');
+  const trigger = page.locator('[aria-controls="sous-menu-services"]');
   await trigger.focus();
   await page.keyboard.press('Enter');
-  for (const { libelle, href } of AUTOMATISE) {
+  for (const { libelle, href } of SERVICES) {
     await page.keyboard.press('Tab');
-    const lien = page.locator('#sous-menu-automatise a:focus');
+    const lien = page.locator('#sous-menu-services a:focus');
     await expect(lien).toHaveText(libelle);
     await expect(lien).toHaveAttribute('href', href);
   }
   // Le groupe se referme dès que le focus en sort.
   await page.keyboard.press('Tab');
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
-  await expect(page.locator('#sous-menu-automatise')).toBeHidden();
+  await expect(page.locator('#sous-menu-services')).toBeHidden();
 });
 
 for (const width of [375, 1440]) {
-  test(`pied de page : « Ce qu’on automatise » reprend les trois entrées du menu, une fois chacune, à ${width}px`, async ({ page }) => {
+  test(`pied de page : « Nos services » reprend les quatre entrées du menu, une fois chacune, à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
-    const rubrique = page.locator('footer .pied-col', { has: page.locator('.pied-titre', { hasText: 'Ce qu’on automatise' }) });
+    const rubrique = page.locator('footer .pied-col', { has: page.locator('.pied-titre', { hasText: 'Nos services' }) });
     await expect(rubrique).toHaveCount(1);
     // Sous 48 rem le pied replie ses rubriques derrière leur titre : un geste, comme le fait un lecteur.
-    if (width < 768) await rubrique.getByRole('button', { name: 'Ce qu’on automatise' }).click();
+    if (width < 768) await rubrique.getByRole('button', { name: 'Nos services' }).click();
     const liens = rubrique.locator('.pied-lien');
-    await expect(liens).toHaveText(AUTOMATISE.map((entree) => entree.libelle));
-    expect(await liens.evaluateAll((elements) => elements.map((element) => element.getAttribute('href')))).toEqual(AUTOMATISE.map((entree) => entree.href));
+    await expect(liens).toHaveText(SERVICES.map((entree) => entree.libelle));
+    expect(await liens.evaluateAll((elements) => elements.map((element) => element.getAttribute('href')))).toEqual(SERVICES.map((entree) => entree.href));
     for (const lien of await liens.all()) await expect(lien).toBeVisible();
     // Une seule fois dans tout le pied : plusieurs gabarits (strict mode) comptent sur un lien unique par destination.
-    for (const { href } of AUTOMATISE) await expect(page.locator(`footer a[href="${href}"]`)).toHaveCount(1);
+    for (const { href } of SERVICES) await expect(page.locator(`footer a[href="${href}"]`)).toHaveCount(1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   });
 }
 
-test('pied de page : le menu et le pied portent les mêmes destinations de « Ce qu’on automatise »', async ({ page }) => {
+test('pied de page : le menu et le pied portent les mêmes destinations de « Nos services »', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   const lire = (selecteur: string) => page.locator(selecteur).evaluateAll((liens) => liens.map((lien) => ({ libelle: lien.textContent!.trim(), href: lien.getAttribute('href') })));
-  expect(await lire('footer .pied-col:has(.pied-titre:has-text("Ce qu’on automatise")) .pied-lien')).toEqual(await lire('#sous-menu-automatise a'));
+  expect(await lire('footer .pied-col:has(.pied-titre:has-text("Nos services")) .pied-lien')).toEqual(await lire('#sous-menu-services a'));
 });
 
 for (const width of [375, 1024, 1440]) {
