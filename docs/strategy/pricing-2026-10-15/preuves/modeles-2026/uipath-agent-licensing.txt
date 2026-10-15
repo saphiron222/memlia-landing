@@ -1,0 +1,491 @@
+Agents - Licensing
+search
+Search
+​
+Language
+translate
+English
+expand_more
+​
+Sign in
+agents
+latest
+false
+Agents user guide
+Agents user guide
+Automation Cloud
+·
+latest
+- Collapse
+Getting started
+About this guide
+About agents
+Agent capabilities in the UiPath Platform™
+Agents feature availability
+UiPath Conversational Agents
+Overview
+Chat
+Build in Maestro Flow (Preview)
+Build in Agent Builder
+Getting started
+Designing the agent
+Evaluating the agent
+Licensing
+Deployment
+Instance Management
+Assistant
+Microsoft Teams
+Dedicated Microsoft Teams App
+Slack
+IFrame and Apps embedding
+Anonymous access setup
+UiPath TypeScript SDK
+Observability
+Limitations and FAQ
+Voice (Preview)
+Deployment
+Any SIP provider
+Twilio
+Observability
+UiPath Agents in Studio Web
+About UiPath Agents
+Licensing
+Getting started with UiPath Agents
+Agents workspaces
+Prerequisites
+Agents governance
+Data residency and supported models
+Limitations
+Building an agent in Studio Web
+Testing the agent
+Publishing and deploying the agent
+Running the agent
+Using agent templates
+Autopilot for Agents (Preview)
+Autopilot Agent
+Classic Autopilot
+Classic Autopilot tools
+Coded agents in Studio Web
+Clone a low-code agent as coded
+Advanced agents (Preview)
+Agents in Flow
+Limitations
+Running agents
+Best practices
+Agents and workflows
+Best practices for building agents
+Choosing the best model for your agent
+Best practices for publishing and deploying agents
+Best practices for context engineering
+Best practices for DeepRAG and Batch Transform: JIT vs. index-based strategies
+Prompts
+Prompt editor
+Defining arguments
+Working with files
+Guardrails
+Out-of-the-box guardrails
+Monitoring guardrails
+Tools
+Activities
+Agents
+API workflows
+Automations
+Functions
+IXP
+MCP Servers
+MCP compliance guidelines
+Client-side tools
+Built-in tools
+Analyze files
+Batch transform
+DeepRAG
+Building effective agent tools
+Custom guardrails
+Configuring simulations for agent tools
+Contexts
+Memory (Preview)
+Configuring agent memory
+Escalations
+Evaluations
+Agent traces
+Agent review
+Managing UiPath agents
+Managing deployed agents
+Managing draft agents
+Managing Context Grounding indexes
+Managing feedback
+Managing guardrails
+Managing memory spaces (Preview)
+UiPath Coded agents
+About coded agents
+Licensing for coded agents
+Building and deploying coded agents
+Troubleshooting coded agents
+Build with Coding Agents
+Overview
+Build low-code agents with Coding Agents
+Build coded agents with Coding Agents
+Example: social sentiment agent
+Home
+Open Dropdown to choose product
+Agents
+​
+Automation Cloud
+latest
+Licensing
+Licensing
+Licensing model for Agents, covering agent runs, plan entitlements, and how consumption maps to Platform Units (Unified Pricing) or agent units (Flex).
+Understanding agent runs
+​
+link
+An agent run refers to a complete execution of an agent, tracked under a single run ID. Each run starts with a trigger and continues until it reaches a terminal state: Succeeded, Failed, Canceled, or Timed-out.
+Licensing and consumption
+​
+link
+Production runs consume platform units or agent units, depending on your pricing plan.
+Design-time tests performed in Studio Web consume only LLM quota — no platform units or agent units are consumed.
+By default, agents on Community and Standard Trial organizations can only use Bring Your Own models. To use UiPath-hosted models,
+request access
+. For setup details, refer to
+Configuring LLMs
+.
+Note:
+When running agents from a shared folder, an unattended robot identity must be assigned to the folder. This is an identity requirement, not a licensing requirement — the agent itself does not consume an unattended robot license during development, debugging, or production runs. For setup details, refer to
+Assigning objects to a folder
+.
+What counts as an agent run
+​
+link
+Runs invoked from Orchestrator after publishing (manual start, schedule, or queue trigger).
+Runs invoked via API or webhook in a production workspace.
+A conversation session started on a published channel (counts as a single run until it ends or idles out).
+What does not count as an agent run
+​
+link
+Studio Web Test/Preview during agent build or design time.
+Autopilot, score runs, and simulations/evaluations marked as preview.
+Unified Pricing Licensing
+​
+link
+Important:
+The information on this page applies to you if you are on Unified Pricing. If you are on Flex, refer to
+Flex Licensing
+. For general licensing information, refer to the
+Automation Cloud Admin guide
+.
+This page provides details on the licenses that give you access to agents and how agent activities are quantified through Platform Units.
+Agent licenses and entitlements
+​
+link
+The following tables provides a list of licenses that give you access to agents, the plans associated with each license, and the entitlements enabled by them.
+Table 1. Licensing plans
+Feature
+Free
+Basic Trial
+Basic
+Standard Trial
+Standard
+Enterprise
+Application Test Standard Trial
+Application Test Standard
+Application Test Enterprise
+Develop agents: Design, conduct debug runs, and evaluate agents in Studio Web
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+Run agents: Deploy and run agents as processes
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+Table 2. User licenses
+Feature
+Express User
+Basic User
+Plus User
+Pro User
+App Tester
+App Test Developer
+Develop agents: Design, conduct debug runs, and evaluate agents in Studio Web
+❌
+✅
+✅
+✅
+❌
+✅
+Run agents: Deploy and run agents as processes
+❌
+✅
+✅
+✅
+✅
+✅
+Design time entitlements
+​
+link
+Enterprise
+All Enterprise licensed users receive a monthly AI and Agentic usage pool, shared across UiPath AI and Agentic products and usable for agent development and evaluations. The pool replaces the daily entitlement of free agent runs previously granted as LLM calls.
+When you use the pool for agent design time, usage is drawn down based on the cost of the model you use and the complexity of the LLM calls executed, counting both input and output tokens.
+The monthly limit is available per the following rules:
+The monthly limit is shared across all AI and Agentic products, not only the Agent builder experience in Studio Web. It is not granted in the form of Platform Units.
+The monthly limit is assigned individually to each named user and is not poolable at tenant or organization level.
+Usage draws from three sources in a fixed order, with only one source active at a time: the monthly limit first, then any administrator-granted top-up, then Platform Units. Each top-up is a fixed pack of 50 Platform Units, and an unused top-up persists across monthly resets.
+Users cannot grant their own top-ups. A user requests a top-up from
+Preferences > Licensing
+, and a License Administrator grants it from
+Admin > Licenses > Consumables > User usage
+.
+For details on how the monthly limit, top-ups, and paid-unit fallback work, refer to
+AI and Agentic usage pool
+. For the procedures, refer to
+Requesting AI and Agentic usage top-ups
+and
+Granting AI and Agentic usage top-ups
+.
+Note:
+The AI and Agentic usage pool requires User Licensing to be enabled for your organization. When User Licensing is not enabled, all agent interactions at design time are charged per the standard consumption logic.
+The pool is available on the Unified Pricing and Flex licensing plans, and is not available on Community. For Community, refer to the
+Community
+section below.
+Feature availability also depends on the cloud platform that you use; for details, refer to the
+Feature availability page
+.
+The size of the monthly limit depends on the user license, as follows.
+User license
+AI and Agentic usage pool
+Basic User
+Basic Usage Pool
+Plus User
+Basic x7.5
+Pro User
+Basic x20
+App Tester
+Basic x7.5
+App Test Developer
+Basic x20
+The consumption of pool and purchased entitlements during design time and run time occurs according to the following scenarios:
+Platform units availability
+Design time execution
+Run time execution
+No purchased units
+Allowed up to the monthly limit. Blocked once the monthly limit is reached.
+Not allowed
+Purchased and available units
+Draws from the monthly limit first, then from any administrator-granted top-up, then from Platform Units.
+Allowed from available Platform Units
+Community
+On the Community plan, agent development draws from the Community Monthly Pool of Credits, which the organization shares with other capabilities. When the pool is exhausted, it recovers at the next monthly reset.
+Community organizations receive platform changes first, before Enterprise organizations, but some preview features may not be available on the Community plan. For details, refer to
+Feature rollout
+. For everything the Community plan includes, refer to
+Community plan
+.
+Platform Units consumption
+​
+link
+Platform Units measure the usage of agent-specific activities. Any agent execution consumes Platform Units, at both design time (for debug and evaluations) and run time.
+For UiPath-hosted models, consumption is based on the number of LLM calls made during an agent run, with rates varying by model tier.
+For customer-managed models, consumption is charged once per agent run at the Agent Rate, regardless of the number of LLM calls made within that run.
+Table 3. Agents consumption rate per model tiers
+Model tier
+Standard consumption rate
+How consumption is calculated
+Premium models (preview): Claude Opus 4.7, GPT-5.5
+0.4 Platform Units (Agent Rate × 2)
+Charged per LLM call
+Standard models: GPT-4.1, GPT-4o, GPT-5, GPT-5.1, GPT-5.2, GPT-5.4, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude Sonnet 4, Claude Sonnet 4.5, Claude Sonnet 4.6, Gemini 3 Pro, Gemini 3.1 Pro (preview)
+0.2 Platform Units (referred to below as Agent Rate)
+Charged per LLM call
+Basic models: Claude Haiku 4.5, Gemini 2.0 Flash, Gemini 3 Flash (preview), GPT-4.1-mini, GPT-4o-mini, GPT-5-mini
+0.16 Platform Units (Agent Rate × 0.8)
+Charged per LLM call
+Customer-managed models (through the
+Bring your own model/subscription
+feature in AI Trust Layer)
+0.2 Platform Units (Agent Rate)
+Charged once per agent run
+Note:
+We charge for LLM calls in 64k input token increments. Input tokens refer to the content sent to the model per request — including the system prompt, conversation history, tool definitions, and user messages — and do not include the model's response. For calls exceeding this limit, multiple charges apply. For example, a 100k input token call incurs two LLM call charges. This token limit does not apply to customer-managed models.
+You can work with your sales representative to assess your agent use case and predicted Platform Units consumption.
+LLM as Judge guardrail consumption — Platform Units
+​
+link
+Guardrails that make their own LLM call — specifically, the
+LLM as Judge guardrail
+— consume Platform Units at the same per-model rates shown in Table 3, tracked separately from the agent's own consumption. An agent run with this guardrail enabled costs the agent's Platform Units plus the judge model's Platform Units. Because guardrail evaluation doesn't require the same model capability as the agent, you can use a lower-tier judge model to reduce cost.
+Flex Licensing
+​
+link
+Note:
+The information on this page applies to you if you are on the Flex Plan. If you are on Unified Pricing, refer to
+Unified Pricing Licensing
+. For details, refer to
+Licensing plan framework
+.
+This page provides details on the licenses that give you access to agents and how agent activities are quantified through agent units.
+Agent licenses and entitlements
+​
+link
+The following table provides a list of licenses that give you access to agents, the plans associated with each license, and the entitlements enabled by them.
+License
+License plan
+Entitlements
+Unlicensed
+Community
+1
+Develop agents: Design, conduct debug runs, and evaluate agents in Studio Web
+Automation Developer
+Enterprise
+Develop agents: Design, conduct debug runs, and evaluate agents in Studio Web
+Run agents: Deploy and run agents as processes
+Citizen Developer
+Cloud Basic User
+1
+– Community users can develop agents using the design time entitlements.
+Design time entitlements
+​
+link
+Enterprise
+All Enterprise licensed users receive a monthly AI and Agentic usage pool, shared across UiPath AI and Agentic products and usable for agent development and evaluations. The pool replaces the daily entitlement of free agent runs previously granted as LLM calls.
+When you use the pool for agent design time, usage is drawn down based on the cost of the model you use and the complexity of the LLM calls executed, counting both input and output tokens.
+The monthly limit is available per the following rules:
+The monthly limit is shared across all AI and Agentic products, not only the Agent builder experience in Studio Web. It is not granted in the form of agent units.
+The monthly limit is assigned individually to each named user and is not poolable at tenant or organization level.
+Usage draws from three sources in a fixed order, with only one source active at a time: the monthly limit first, then any administrator-granted top-up, then agent units. An unused top-up persists across monthly resets.
+Users cannot grant their own top-ups. A user requests a top-up from
+Preferences > Licensing
+, and a License Administrator grants it from
+Admin > Licenses > Consumables > User usage
+.
+For details on how the monthly limit, top-ups, and paid-unit fallback work, refer to
+AI and Agentic usage pool
+. For the procedures, refer to
+Requesting AI and Agentic usage top-ups
+and
+Granting AI and Agentic usage top-ups
+.
+Note:
+The AI and Agentic usage pool requires User Licensing to be enabled for your organization. When User Licensing is not enabled, all Agent actions at design time are charged per the standard consumption logic.
+The pool is available on the Unified Pricing and Flex licensing plans, and is not available on Community. For Community, refer to the
+Community
+section below.
+Feature availability also depends on the cloud platform that you use; for details, refer to the
+Feature availability page
+.
+The size of the monthly limit depends on the user license, as follows.
+User license
+AI and Agentic usage pool
+Cloud Basic User
+Basic Usage Pool
+Citizen Developer
+Basic x7.5
+Automation Developer
+Basic x20
+The consumption of pool and purchased entitlements during design time and run time occurs according to the following scenarios:
+Agent units availability
+Design time execution
+Run time execution
+No purchased units
+Allowed up to the monthly limit. Blocked once the monthly limit is reached.
+Not allowed
+Purchased and available units
+Draws from the monthly limit first, then from any administrator-granted top-up, then from agent units.
+Allowed from available agent units
+Community
+On the Community plan, agent development draws from the Community Monthly Pool of Credits, which the organization shares with other capabilities. When the pool is exhausted, it recovers at the next monthly reset.
+Community organizations receive platform changes first, before Enterprise organizations, but some preview features may not be available on the Community plan. For details, refer to
+Feature rollout
+. For everything the Community plan includes, refer to
+Community plan
+.
+Agent unit consumption
+​
+link
+Agent units measure the usage of agents-specific activities. Any agent execution consumes agent units, at both design time (for debug and evaluations) and run time.
+Agent unit consumption depends on the model type used by the agent and differs between UiPath-hosted and customer-managed models.
+By default, each tenant is allocated 0 agent units, and agent unit consumption draws from the organization pool. If agent units are allocated to a specific tenant, that tenant's allocation is used for consumption.
+Consumption is calculated as follows:
+UiPath-hosted models
+: Consumption is based on the number of LLM calls made during an agent run. Each LLM call is charged as an agent action, and multiple calls within a single run result in multiple charges.
+Customer-managed models
+(Bring Your Own Model or Bring Your Own Subscription): Consumption is charged once per agent run, regardless of the number of LLM calls made within that run. LLM calls made using customer-managed models are not metered.
+Table 4. Agents consumption rate per model tiers
+Model tier
+Standard consumption rate
+How consumption is calculated
+Premium models (preview): Claude Opus 4.7, GPT-5.5
+2 Agent Units
+Charged per LLM call
+Standard models: GPT-4o, GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, GPT-5.4, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude Sonnet 4, Claude Sonnet 4.5, Claude Sonnet 4.6, Gemini 3 Pro, Gemini 3.1 Pro (preview)
+1 Agent Unit
+Charged per LLM call
+Basic models: Claude Haiku 4.5, Gemini 2.0 Flash, Gemini 3 Flash (preview), GPT-4.1-mini, GPT-4o-mini, GPT-5-mini
+0.8 Agent Units
+Charged per LLM call
+Customer-managed models (through the
+Bring your own model/subscription
+feature in AI Trust Layer)
+1 Agent Unit
+Charged once per agent run
+Note:
+For UiPath-hosted models, we charge for LLM calls in 64k input token increments. Input tokens refer to the content sent to the model per request — including the system prompt, conversation history, tool definitions, and user messages — and do not include the model's response. For calls exceeding this limit, multiple charges apply. For example, a 100k input token call incurs two LLM call charges. This token limit does not apply to customer-managed models. For customer-managed models (BYOM/BYOS), LLM calls are not metered, as consumption is charged once per agent run.
+Agent units consumption is displayed in Automation Cloud Admin, on the
+Consumables
+tab of the tenant-level
+Licensing
+page. For details, refer to
+The Consumables tab
+.
+You can work with your sales representative to assess your agent use case and predicted agent unit consumption.
+LLM as Judge guardrail consumption — Agent Units
+​
+link
+Guardrails that make their own LLM call — specifically, the
+LLM as Judge guardrail
+— consume Agent Units at the same per-model rates shown in Table 4, tracked separately from the agent's own consumption. An agent run with this guardrail enabled costs the agent's Agent Units plus the judge model's Agent Units. Because guardrail evaluation doesn't require the same model capability as the agent, you can use a lower-tier judge model to reduce cost.
+On this page
+Understanding agent runs
+​
+Licensing and consumption
+​
+Unified Pricing Licensing
+​
+Agent licenses and entitlements
+​
+Platform Units consumption
+​
+Flex Licensing
+​
+Agent licenses and entitlements
+​
+Agent unit consumption
+​
+Help improve this page
+Was this page helpful?
+thumb_up
+Yes
+thumb_down
+No
+PREVIOUS
+About UiPath Agents
+NEXT
+Getting started with UiPath Agents
+Connect
+Need help?
+Support
+Want to learn?
+UiPath Academy
+Have questions?
+UiPath Forum
+Stay updated

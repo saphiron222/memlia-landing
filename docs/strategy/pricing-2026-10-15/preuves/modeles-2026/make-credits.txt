@@ -1,0 +1,434 @@
+Credits - Help Center
+Developer Hub
+Community
+Academy
+Contact support
+Make.com
+Help Center
+Apps Documentation
+Navigate through spaces
+Search
+K
+Ask AI
+Get started
+Learn the basics
+Create your first scenario
+Expand your scenario
+Key concepts
+Credits & operations
+Scenarios & connections
+Apps & modules
+Data & mapping
+Tools
+Resources
+Canvas interaction model
+Error handling
+Introduction to errors and warnings
+Overview of error handling
+Error handlers
+Exponential backoff
+Throw
+Common errors and warnings and their fixes
+Explore more
+Scenarios
+Connections
+Tools
+Functions
+Securing data with Make
+Data stores
+Developers
+AI providers and data zones in Make
+Make AI Agent (New)
+Introduction to Make AI Agent (New)
+Create your first AI agent
+Sales outreach AI agent use case
+Create AI agents for different triggers
+Input files and knowledge files for AI agents
+Make AI Agent (New) app
+Make AI Agent (New) best practices
+Credit usage for AI agents
+Make AI Agents
+Introduction to AI agents
+Manage AI agents
+Tools for AI agents
+AI agent best practices
+AI Agents configuration
+Make AI Agents app
+AI agent use case
+Model Context Protocol
+Introduction to MCP
+Make MCP server
+MCP toolboxes
+Make Skills
+Make Grid
+Introduction to Make Grid
+Access Make Grid
+Explore Make Grid
+How to use Make Grid
+Connect external providers
+Tutorial: How to replace a dependency
+Best practices to use Make Grid
+Maia by Make
+Introduction to Maia by Make
+Maia by Make best practices
+Maia by Make pricing
+Maia by Make system card
+Your organization
+Organizations & teams
+Subscription
+Administration
+Access management
+Make Managed Services (MMS)
+Event subscriptions
+Your profile
+Profile settings
+Make programs
+Switch between appearance modes
+Release notes
+2026
+2025
+2024
+Docs powered by
+Archbee
+Key concepts
+Credits & operations
+Credits
+11 min
+Credits replaced operations as the term for Make's billing unit. Your existing plan and pricing, including the cost of credits, remain unchanged. The cost of credits
+varies by plan
+.
+How credits are used:
+Non-AI apps
+: 1 operation equals 1 credit.
+Third-party AI apps like OpenAI, Anthropic Claude, and Gemini
+: 1 operation equals 1 credit. Credits for modules with automatic AI provider connections also include token usage.
+Built-in AI apps:
+Varies by connection type:
+Make’s AI Provider (all plans)
+: Credits are based on tokens and operations. Make’s AI Provider is available in
+Make AI Agents
+Make AI Agents
+and
+Make AI Toolkit
+Make AI Toolkit
+.
+Custom AI provider connection (paid plans)
+: With custom AI provider connections, such as OpenAI or Anthropic Claude, credits are based on operations. You pay your provider directly for tokens.
+Automatic AI provider connection (all plans)
+:
+Make AI Web Search
+Make AI Web Search
+and
+Make AI Content Extractor
+Make AI Content Extractor
+use an AI provider of Make's choice. Credits are based on tokens, operations, and other usage-based factors.
+In this guide to credits in
+Make
+﻿
+, learn about how credits work and the different types of credit usage.
+https://www.youtube.com/embed/ufYhY5WgEnw
+﻿
+What are credits?
+Credits are the currency you buy and consume to use Make. Only features triggered by scenario runs (apps, modules, and some in-app features) or the AI agent’s chat use credits.
+Your credit usage can vary based on the number of operations, tokens, and other usage-based factors.
+Credits and operations are separate terms because they serve different purposes: credits help you track how much you’re spending, and
+operations
+﻿
+show the outcome of your activities on the platform.
+In
+Make
+﻿
+, credit usage is either fixed or dynamic:
+﻿
+Fixed credit usage
+﻿
+: Apps use a set number of credits per run.
+﻿
+Dynamic credit usage
+﻿
+: Some AI and advanced apps use a varying number of credits per run based on actual consumption.
+Whether a feature has fixed or dynamic credit usage depends on its processing complexity, whether it uses AI, and the connection type.
+Fixed credit usage
+With fixed credit usage, modules consume credits based on a set rate. By default, 1 operation equals 1 credit. ﻿That rate is constant regardless of input or data transfer size. Most apps consume credits on a fixed basis.
+For example, running the
+Google Drive
+>
+Upload a File
+module always uses 1 credit per file upload, regardless of the file size.
+Exceptions
+Some
+Make AI Content Extractor
+Make AI Content Extractor
+modules with fixed credit usage consume more than the default 1 credit per operation due to their processing complexity.
+Features using more than the default 1 credit have a unique tag. In the example below, the modules consume 2 or 10 credits per operation.
+﻿
+You can find detailed examples of fixed credit usage in
+Credits by module type
+﻿
+.
+Dynamic credit usage
+With dynamic credit usage, modules consume a different number of credits per run based on actual usage rather than a fixed rate.
+The most common factor affecting credit usage is token consumption. Tokens are the unit that AI providers use to measure and charge for usage. They vary depending on the amount of information processed: more interactions, longer prompts, larger files, and longer responses all increase token usage. In English,
+1 token equals around 4 characters
+, and 100 tokens equal about a paragraph.
+Other factors that can determine credit usage include file size, page count, or processing time.
+Features with dynamic credit usage have unique tags:
+Tokens:
+Credits based on tokens and/or embedding tokens consumed (and operations in some cases)
+File size:
+Credits based on file size processed
+Per page:
+Credits based on pages processed
+Run time:
+Credits based on processing time
+In the example below, the modules use credits based on tokens.
+﻿
+For a list of all dynamic credit usage features, see
+Credits by feature
+Credits by feature
+.
+Credit usage for AI features
+When you use
+third-party AI app modules that require you to create a connection,
+such as Anthropic Claude or OpenAI, you pay
+Make
+﻿
+for credits based on operations and your AI provider for tokens.
+Make's
+built-in AI apps
+and
+third-party AI app modules that don't require creating a connection
+can follow a different credit usage logic. They include the following apps:
+﻿
+Make AI Agents
+Make AI Agents
+﻿
+﻿
+Make AI Toolkit
+Make AI Toolkit
+﻿
+﻿
+Make AI Web Search
+Make AI Web Search
+﻿
+﻿
+Make AI Content Extractor
+Make AI Content Extractor
+﻿
+The
+Simple Text Prompt
+module in
+OpenAI
+,
+Google Gemini AI
+,
+Groq
+, and
+Anthropic Claude
+apps.
+These apps consume credits differently based on their connection type:
+Make's AI Provider
+: Credits are based on operations and tokens.
+Custom AI provider connection
+: You pay
+Make
+﻿
+for credits based on operations, and the AI provider for tokens.
+Automatic AI provider connection
+: In apps without an option to select an AI provider, credits are based on tokens, operations, and other usage-based factors.
+Make's AI Provider
+Make's AI Provider is available to users on all plans in
+Make AI Agents
+and
+Make AI Toolkit
+.
+With Make's AI Provider,
+Make
+﻿
+connects to an AI provider for you. You don't need to create an account with providers like OpenAI or Anthropic. You pay
+Make
+﻿
+for credits used based on tokens and operations.
+Choose between Make's tiered models (Small, Medium, and Large) or models from providers like OpenAI and Anthropic Claude.
+Token usage with Make's AI Provider
+When you use Make's AI Provider, credits vary based on the input and output tokens consumed and the model selected.
+Small, Medium, and Large models
+T
+ier
+Model
+Input tokens per credit
+Output tokens per credit
+Small
+GPT-5 nano with minimal reasoning
+18,080
+2,260
+Medium
+GPT-5 nano with low reasoning
+18,080
+2,260
+Large
+GPT-5 mini
+3,616
+452
+All other models
+AI provider
+Model
+Input tokens per credit
+Output tokens per credit
+OpenAI
+GPT-5.6 Sol
+180
+30
+OpenAI
+GPT-5.6 Sol with over 272,000-token context
+90
+20
+OpenAI
+GPT-5.6 Terra
+452
+75
+OpenAI
+GPT-5.6 Terra with over 272,000-token context
+226
+50
+OpenAI
+GPT-5.6 Luna
+4,520
+753
+OpenAI
+GPT-5.6 Luna with over 272,000-token context
+2,260
+502
+OpenAI
+GPT-5.5
+180
+30
+OpenAI
+GPT-5.5 with over 272,000-token context
+90
+20
+OpenAI
+GPT-5.4 nano
+4,520
+723
+OpenAI
+GPT-5.4 mini
+1,205
+200
+OpenAI
+GPT-5.4 with up to 272,000-token context
+361
+60
+OpenAI
+GPT-5.4 with over 272,000-token context
+180
+40
+OpenAI
+GPT-5.2
+516
+64
+OpenAI
+GPT-5.1
+723
+90
+OpenAI
+GPT-5
+723
+90
+OpenAI
+GPT-5 mini
+3,616
+452
+OpenAI
+GPT-5 nano
+18,080
+2,260
+Anthropic Claude
+Fable 5
+90
+18
+Anthropic Claude
+Sonnet 5
+452
+90
+Anthropic Claude
+Opus 5
+180
+36
+Anthropic Claude
+Opus 4.8
+180
+36
+Anthropic Claude
+Opus 4.7
+180
+36
+Anthropic Claude
+Sonnet 4.6
+301
+60
+Anthropic Claude
+Opus 4.6
+181
+36
+Anthropic Claude
+Opus 4.5
+181
+36
+Anthropic Claude
+Haiku 4.5
+904
+181
+Anthropic Claude
+Sonnet 4.5
+301
+60
+According to Anthropic's Terms and Conditions for its Fable model, data may be stored for a 30-day period, during which time logs can be accessed.
+Learn more
+﻿
+The models used for Make's AI Provider and their token-to-credit conversion rates are subject to change as newer models become available.
+Custom AI provider connection
+Custom AI provider connections are available to users on paid plans.
+You can select from AI provider connections like OpenAI, Anthropic, and Gemini and link to your accounts with these providers using API keys and other methods. You pay Make for credit usage based on operations, and pay your AI provider for token usage.
+Automatic AI provider connection
+Some AI features don't provide an option to select and create a connection to an AI provider. They connect automatically to one, so you don't need to set up an account with a provider. You pay
+Make
+﻿
+for credits based on tokens, operations, and other usage-based factors.
+These features include:
+﻿
+Make AI Web Search
+Make AI Web Search
+﻿
+﻿
+Make AI Content Extractor
+Make AI Content Extractor
+﻿
+The
+Simple Text Prompt
+module in
+OpenAI
+,
+Google Gemini AI
+,
+Groq
+, and
+Anthropic Claude
+apps
+For more information on the credit usage of any of the features mentioned, including credit-to-tokens conversion rates, refer to their documentation.
+Buying extra credits
+If you run out of credits before the next billing cycle starts, you can upgrade your subscription, buy extra credits, or enable extra credits auto-purchasing. To learn more about these options, refer to
+Extra credits
+﻿
+.
+Updated
+15 Oct 2026
+PREVIOUS
+Credits & operations
+NEXT
+Operations
+Docs powered by
+Archbee
+Docs powered by
+Archbee
+×
