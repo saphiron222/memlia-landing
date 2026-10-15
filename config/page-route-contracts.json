@@ -114,6 +114,34 @@
         "kind": "no-functional-media",
         "reason": "Le catalogue est lui-même la restitution : figurines, cartes et filtres dérivés des données, avec une image sociale de son trio."
       }
+    },
+    "/apercu/direction-figurines": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [
+        "WebPage"
+      ],
+      "incomingLinkRequired": false,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Proposition visuelle interne demandée par Kevin le 15/10/2026, avec images générées à valider ; cette route est exclue du sitemap et ne remplace pas la page commerciale."
+      }
+    },
+    "/apercu/methode-figurines": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [
+        "WebPage"
+      ],
+      "incomingLinkRequired": false,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Proposition visuelle interne demandée par Kevin le 15/10/2026, avec images générées à valider ; cette route est exclue du sitemap et ne remplace pas la page commerciale."
+      }
     }
   }
 }

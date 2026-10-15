@@ -72,6 +72,7 @@ export default defineConfig({
       filenameBase: 'sitemap',
       filter: (page) => {
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
+        if (path.startsWith('/apercu/')) return false;
         if (PAGES_NOINDEX.includes(path)) return false;
         if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
         if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path) && !ROBOT_ROUTES.has(path)) return false;
