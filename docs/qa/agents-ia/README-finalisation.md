@@ -55,3 +55,16 @@ Un défaut de correspondance hérité a été trouvé après le premier audit : 
 Le hub commun contenant le rejeu d’Octavie réutilise aussi la Function/CSP des agents : suppression de la balise Insights de l’hébergeur, connexions fermées et scripts de l’origine. Les guides conservent leurs propres routes. Les 27 tests CSP de la première preview ont passé ; le hub commun est ajouté à la recette finale distante.
 
 La reprise finale des marques passe 17 contrôles Node (logos/source/CSP) et 42 contrôles navigateur, puis le témoin de présence des trois routes repasse après adaptation explicite de son assertion. La vérification distante finale ajoute `/integrations` aux dix routes agents.
+
+
+### Prévisualisation finale vérifiée
+
+- URL immuable : https://fbc59424.memlia.pages.dev/agents-ia
+- Compatibilités communes : https://fbc59424.memlia.pages.dev/integrations
+- Alias : https://preview-agents-robots.memlia.pages.dev
+- Candidat source : `73450c1bbb0db38dd783848ebbfea1f0346798f3`, poussé et SHA distant vérifié.
+- 13 réponses HTTP réelles vérifiées : 200, noindex/nofollow de preview et canonical de production correct. `preview-http.json` conserve les en-têtes observés, dont la CSP fermée d’`/integrations` et l’absence de balise Insights.
+- **32 tests navigateur distants réussis** : 29 contrôles de livraison/réseau/FAQ et 3 contrôles des compatibilités, mobile/bureau et sans JavaScript.
+- Inspection CUA de la preview finale : héros agents et recherche Pennylane dans le hub commun. Les captures de `visuel/` documentent le même rendu du candidat à 375/1440.
+
+La première lecture HTTP immédiatement après publication a rencontré une réponse transitoire ; la recette complète a été rejouée après disponibilité. Aucun échec ne reste ouvert. Aucune production ni fusion sur main.

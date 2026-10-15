@@ -30,7 +30,7 @@ Demande de Kevin après arrêt explicite de Claude. Base : version robots et cop
 - Reprise : `530263b7`, socle fusionné ; tâche 8 importée et sauvegardée.
 - Fiches : terminées et relues par `fiches_agents` (huit fichiers de données, corrections métier tracées).
 - Logos : terminés et relus par `logos_compatibilites` (fichiers, sécurité, provenance et remplacements officiels).
-- Interface, contact, maillage, référencement et contrôles terminés par le contrôleur ; vérification finale de prévisualisation en cours.
+- Interface, contact, maillage, référencement et contrôles terminés par le contrôleur ; prévisualisation finale publiée et vérifiée.
 
 ## Recette du candidat
 
@@ -39,7 +39,7 @@ Demande de Kevin après arrêt explicite de Claude. Base : version robots et cop
 - [x] Contact facultatif et liste blanche commune de 90 points de départ, maillage par données et gabarits sans retoucher les articles scellés.
 - [x] SEO, onze rendus sociaux de la série, schémas, sitemap, llms/Markdown, CSP sans réseau, nouveau relevé Google des services.
 - [x] Revue métier indépendante PASS ; contrôles de données, de contrats, de liens et parcours navigateur ; inspection mobile/bureau et Lighthouse ≥99.
-- [ ] Publier la prévisualisation du candidat et vérifier ses réponses réelles, puis consigner le lien.
+- [x] Prévisualisation finale publiée et vérifiée : https://fbc59424.memlia.pages.dev/agents-ia ; hub commun https://fbc59424.memlia.pages.dev/integrations. 13 réponses HTTP et 32 tests navigateur distants réussis.
 
 Ruling C6 : les tableaux mobiles conservent les mots de décision sur une ligne. Le filtre Vie du cabinet (quatre agents) passe à deux colonnes au bureau, pour éviter une dernière carte isolée. Les composants et styles restent ceux des robots.
 Ruling C7 : les treize cartes sans logo restent nommées et documentées ; aucun substitut trompeur. Les services officiels conservent leurs logos dans la bande dédiée demandée par Kevin.
