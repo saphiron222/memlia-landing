@@ -215,3 +215,11 @@ https://memlia.fr/*
 /integrations
   Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'
   Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/memoire-collective-cabinet-comptable
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/modele-ia-prive-entreprise
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform

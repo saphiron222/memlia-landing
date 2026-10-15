@@ -1,0 +1,8 @@
+---
+import Base from '@/layouts/Base.astro';
+import PageSolution from '@/components/solutions/PageSolution.astro';
+import { SOLUTIONS } from '@/data/solutions';
+import { schemaSolution } from '@/data/solutions-schema';
+const s=SOLUTIONS.modele;
+---
+<Base titre={s.title} titreSocial={s.h1} description={s.description} chemin={s.chemin} schema={schemaSolution(s)} socialImage={{url:'https://memlia.fr/assets/solutions/og-modele.webp',width:1200,height:630,alt:'Un modèle IA privé formé à la façon de travailler de votre entreprise'}}><PageSolution solution={s}/></Base>

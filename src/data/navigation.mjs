@@ -12,12 +12,17 @@ export const ENTREES_AUTOMATISE = Object.freeze([
   Object.freeze({ libelle: 'Intégrations', href: '/integrations' }),
 ]);
 
+export const ENTREES_MEMOIRE = Object.freeze([
+  Object.freeze({libelle:"Memlia OS",href:"/memoire-collective-cabinet-comptable"}),
+  Object.freeze({libelle:"Modèle IA privé",href:"/modele-ia-prive-entreprise"}),
+]);
+
 export function creerNavigation({ chemin, cacDisponible, blogActif }) {
   return [
     ...(cacDisponible ? [{ id: 'cabinets', libelle: 'Cabinets', sousEntrees: [
       { libelle: 'Expertise comptable', href: '/' }, LIEN_CAC,
     ] }] : []),
-    { id: 'automatise', libelle: "Ce qu’on automatise", sousEntrees: [...ENTREES_AUTOMATISE] },
+    { id: 'automatise', libelle: "Ce qu’on automatise", sousEntrees: [...ENTREES_AUTOMATISE, ...ENTREES_MEMOIRE] },
     { libelle: 'Outils gratuits', href: '/outils-comptables-gratuits' },
     ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
   ];

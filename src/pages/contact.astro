@@ -11,6 +11,7 @@ import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
 import { ROBOTS, contactsRobots } from '@/data/robots';
 import { FICHES } from '@/data/specialistes';
+import { CONTACTS_SOLUTIONS } from '@/data/contacts-solutions';
 import { contactsAgents } from '@/data/contacts-agents';
 const tachesRobots = contactsRobots();
 const tachesAgents = contactsAgents();
@@ -39,7 +40,7 @@ const appel = {
   <section class="pv" aria-labelledby="formulaire-titre">
     <div class="tete rv">
       <h2 id="formulaire-titre">Parlons de votre premier déploiement.</h2>
-      <p>Indiquez le robot ou l’agent qui vous intéresse, ou décrivez votre besoin sur mesure. Nous vous répondons par courriel pour préparer la suite.</p>
+      <p>Indiquez le robot, l’agent, la mémoire collective ou le modèle privé qui vous intéresse, ou décrivez votre besoin sur mesure. Nous vous répondons par courriel pour préparer la suite.</p>
     </div>
     <div class="contact-grille">
       <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" aria-labelledby="formulaire-titre" data-contact>
@@ -70,6 +71,7 @@ const appel = {
             <option value="">Choisir une tâche ou décrire la vôtre</option>
             {ROBOTS.map((robot) => <optgroup label={robot.nom}>{tachesRobots.filter((tache) => tache.robot === robot.id).map((tache) => <option value={tache.id}>{tache.nom}</option>)}</optgroup>)}
             {FICHES.filter(a=>a.publie).map(agent=><optgroup label={`${agent.prenom} · ${agent.libelle}`}>{tachesAgents.filter(t=>t.agent===agent.slug).map(t=><option value={t.id}>{t.nom}</option>)}</optgroup>)}
+          <optgroup label="Mémoire et modèles privés">{CONTACTS_SOLUTIONS.map(t=><option value={t.id}>{t.nom}</option>)}</optgroup>
           </select>
           <p id="tache-aide" class="champ-aide texte-2">Vous pouvez changer ce choix ou le laisser vide.</p>
         </div>

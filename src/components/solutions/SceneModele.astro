@@ -1,0 +1,22 @@
+---
+const phases=[
+ {nom:'La demande',titre:'Une réponse dans vos mots.',texte:'Prépare une réponse au client à partir de notre procédure de reprise. Signale les points à confirmer.',meta:'Session · Reprise de dossier'},
+ {nom:'Le contexte',titre:'Les bonnes sources, dans le bon périmètre.',texte:'Procédure de reprise · version validée. Guide de ton · relation client. Mémoire de session · accès autorisé.',meta:'Documents + consignes + mémoire'},
+ {nom:'Le travail',titre:'Votre règle, appliquée à la préparation.',texte:'Le modèle prépare le brouillon au format du cabinet. Une pièce manque : il l’indique et suspend la partie concernée.',meta:'Savoir-faire · Préparer une réponse'},
+ {nom:'La remise',titre:'Un brouillon et les points à valider.',texte:'Voici la réponse préparée, ses sources et la pièce à demander. Votre équipe relit et autorise l’envoi dans son outil.',meta:'Validation humaine avant envoi'},
+];
+---
+<div class="modele-scene" data-model-scene>
+  <div class="modele-barre"><span class="modele-marque">M<span>emlia</span></span><span>Votre espace métier</span><span class="scene-fiction">Exemple fictif</span></div>
+  <div class="modele-espace">
+    <aside class="modele-rail" aria-label="Contexte de l’illustration"><span>Votre modèle privé</span><ul><li>Documents <span>↗</span></li><li>Mémoire <span>↗</span></li><li>Savoir-faire <span>↗</span></li><li>Sessions <span>↗</span></li></ul><small>Procédure de reprise<br/>Source autorisée</small></aside>
+    <div class="modele-dialogue">
+      <p class="modele-question">Comment préparons-nous la reprise de ce dossier ?</p>
+      <div class="modele-reponses">{phases.map((p,i)=><article data-model-frame={i}><p class="modele-meta">{p.meta}</p><h2>{p.titre}</h2><p>{p.texte}</p><span class="modele-source">↗ Procédure interne · Exemple fictif</span></article>)}</div>
+      <p class="modele-composer" aria-hidden="true">Votre prochaine question… <span>↑</span></p>
+    </div>
+  </div>
+  <div class="modele-controles" data-model-controls hidden><div aria-label="Étapes de l’illustration">{phases.map((p,i)=><button type="button" data-model-step={i} aria-pressed={i===0?'true':'false'}>{String(i+1).padStart(2,'0')} <span>{p.nom}</span></button>)}</div><button type="button" class="scene-pause" data-model-pause>Mettre en pause</button></div>
+  <p class="scene-note">Illustration animée d’un usage après déploiement. Aucun modèle ni outil externe n’est appelé.</p>
+</div>
+<script>import '@/lib/solutions-scenes';</script>

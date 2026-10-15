@@ -3,7 +3,7 @@
 Décision complémentaire de Kevin du 15/10/2026 : trois entrées commerciales, **Robots**, **Agents IA** et **Intégrations**. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
 
 
-Document version : v8 — 15 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-15. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v9 — 16 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-16. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
@@ -225,3 +225,11 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 - Décision de Kevin du 17/09/2026 (soir) : « fais pareil pour les articles du blog » ; les six articles réécrits selon le §7 bis et republiés par la forge, les trois articles antérieurs à la v3 compris.
 - v2 du 15/09/2026 (carte t_630c4a13), coffre 10-memlia/00-socle.md, marketing/positionnement-memlia-automatisation-ia.md, marketing/seo/20-voix-client-vocabulaire.md.
 - `src/data/familles.ts`, `src/data/site.mjs`, `src/data/pages-v2.mjs`, `src/data/faq.ts`, `src/data/schema.mjs`, `public/llms.txt`, et `docs/strategy/site-v3/` (stratégie, crons, journal).
+
+
+## Décision Kevin du 16/10/2026 — Memlia OS et modèle privé
+Deux pages de service complètent les trois entrées du catalogue : Memlia OS (mémoire collective et orchestration du cabinet) et Modèle IA privé (adaptation/entraînement pour entreprises). Le mot système d’exploitation décrit ici une couche métier reliée aux outils existants. Ce périmètre explicitement demandé étend l’audience à l’entreprise pour la seconde offre. Les interdits génériques de plateforme/logiciel ne doivent pas empêcher de nommer ces deux offres ; ils restent applicables aux robots et agents.
+
+Le catalogue reste Robots / Agents IA / Intégrations ; les deux prestations ont leurs destinations dédiées dans la navigation. Décrire des livrables et une prise en charge sur devis, pas un matériel déjà commercialisé ni une installation client acquise. Boîtier = vue de principe ; interfaces = exemples fictifs. RAG et entraînement sont distincts ; droits sur l’adaptation soumis à la licence de base. Aucun « tout local », « souverain », « propriétaire exclusif » ou conformité automatique sans périmètre et preuve. Mammouth n’est pas présenté comme service d’entraînement personnalisé. Les deux documents de pricing validés restent inchangés.
+
+Dernier arbitrage visuel du 16/10 : la représentation validée de Memlia OS est le bureau collectif, sans boîtier illustré, décomposition au scroll ou figurine. Le petit pictogramme de mémoire reste au centre. Les pistes générées sont archivées hors site.

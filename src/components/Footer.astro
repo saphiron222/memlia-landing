@@ -1,7 +1,7 @@
 ---
 import Lockup from './Lockup.astro';
 import { SITE } from '@/data/site.mjs';
-import { ENTREES_AUTOMATISE, LIEN_CAC } from '@/data/navigation.mjs';
+import { ENTREES_AUTOMATISE, ENTREES_MEMOIRE, LIEN_CAC } from '@/data/navigation.mjs';
 import { cacDisponible } from '@/data/navigation-publiee';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { OUTILS_HUB_PATH } from '@/data/outils';
@@ -49,6 +49,7 @@ const entreprise = {
 const ressources = {
   titre: 'Pour votre équipe',
   liens: [
+    ...ENTREES_MEMOIRE,
     { libelle: 'Outils comptables gratuits', href: OUTILS_HUB_PATH },
   ],
 };
