@@ -44,8 +44,8 @@ function ficheFictive(agent) {
     taches: agent.familles.filter((id) => !aussi.includes(id)).map((famille, i) => ({ geste: texte(`geste ${i}`), prepare: texte(`prépare ${i}`), famille })),
     aussi: aussi.map((famille) => ({ famille, texte: texte(famille) })),
     livrables: [1, 2, 3].map((n) => ({ titre: texte(`livrable ${n}`), texte: texte(n) })),
-    // La première ligne est la frontière en bref de la carte : le hub la montre comme « sa première ligne ».
-    frontiere: [[...agent.frontiereEnBref], [texte('seul'), texte('validation'), texte('humain')]],
+    // La frontière en bref de la carte en est un extrait : chaque cellule dans sa colonne, ici sur deux lignes (R25).
+    frontiere: [[agent.frontiereEnBref[0], texte('validation'), agent.frontiereEnBref[2]], [texte('seul'), agent.frontiereEnBref[1], texte('humain')]],
     arrets: [texte('arrêt')],
     neJamaisSansVous: [{ envoi: texte('envoi'), validation: texte('validation') }],
     avecSans: [1, 2, 3, 4].map((n) => ({ sans: texte(`sans ${n}`), avec: texte(`avec ${n}`) })),
@@ -149,15 +149,24 @@ test('témoins de fiche : une fiche complète passe, chaque écart d’un seul c
   fiche((f) => { f.image.url = 'http://memlia.fr/proofs/v2/og/50-fiche-comptabilite.webp'; }, /fiche : image sociale/u);
   fiche((f) => { f.image.url = 'https://example.com/proofs/v2/og/50-fiche-comptabilite.webp'; }, /fiche : image sociale/u);
   fiche((f) => { f.image.alt = ' '; }, /fiche : image sociale/u);
-  // Le hub promet « sa première ligne » : la frontière en bref de la carte est la première ligne de la fiche.
-  fiche((f) => { f.frontiere = [f.frontiere[1], f.frontiere[0]]; }, /fiche : la frontière en bref n’est pas la première ligne/u);
-  fiche((f) => { f.frontiere[0] = [f.frontiere[0][0], f.frontiere[0][1], 'Une autre cellule']; }, /fiche : la frontière en bref n’est pas la première ligne/u);
+  // R25 : chaque cellule de la frontière en bref figure dans sa colonne de la règle, sur n'importe quelle ligne.
+  fiche((f) => { f.frontiere[0] = [f.frontiere[0][0], f.frontiere[0][1], 'Une autre cellule']; }, /fiche : la frontière en bref « .+ » manque dans sa colonne 3/u);
+  // La bonne cellule dans une autre colonne ne compte pas : elle doit être dans la sienne.
+  fiche((f, a) => { f.frontiere[0] = [f.frontiere[0][0], f.frontiere[0][1], 'Une autre cellule']; f.frontiere[1] = [a.frontiereEnBref[2], f.frontiere[1][1], f.frontiere[1][2]]; }, /fiche : la frontière en bref « .+ » manque dans sa colonne 3/u);
+  // Témoin : l'ordre des lignes est libre, le contrôle ne réclame pas la première.
+  const permutee = copie();
+  avecFiche(permutee, (f) => { f.frontiere = [...f.frontiere].reverse(); });
+  assert.deepEqual(erreurs(permutee), [], 'lignes de la règle dans un autre ordre');
 });
 
-test('les fiches écrites : la frontière en bref de chaque carte est la première ligne de sa fiche, mot pour mot', () => {
+test('les fiches écrites : chaque cellule de la frontière en bref figure, mot pour mot, dans sa colonne de la règle (R25)', () => {
   const ecrites = AGENTS.filter(({ fiche }) => fiche);
   assert.ok(ecrites.length > 0, 'au moins une fiche écrite (Comptabilité, tâche 6)');
-  for (const agent of ecrites) assert.deepEqual([...agent.fiche.frontiere[0]], [...agent.frontiereEnBref], agent.slug);
+  for (const agent of ecrites) {
+    agent.frontiereEnBref.forEach((cellule, i) => {
+      assert.ok(agent.fiche.frontiere.some((ligne) => ligne[i] === cellule), `${agent.slug} : « ${cellule} » absent de la colonne ${i + 1}`);
+    });
+  }
 });
 
 test('R19 : une carte vers une page existante non publiée rougit', () => {

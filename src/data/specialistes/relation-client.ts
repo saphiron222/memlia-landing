@@ -13,7 +13,7 @@ export const RELATION_CLIENT: Specialiste = {
   teinte: 'administratif-secretariat',
   publie: false,
   destination: { type: 'fiche' },
-  ligne: 'Trie chaque demande de vos clients, la relie à son dossier et prépare la réponse ; votre collaborateur valide avant envoi.',
+  ligne: 'Trie chaque demande de vos clients, la relie à son dossier et prépare la réponse ; votre collaborateur la valide et l’envoie.',
   frontiereEnBref: [
     'Trier, relier au dossier et prioriser',
     'Chaque réponse avant envoi',

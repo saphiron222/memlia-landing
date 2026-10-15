@@ -173,11 +173,11 @@ export const FAMILLES_HUB: readonly Famille[] = [
   fh('suivi-prospects', 'Prospects et demandes entrantes', 'developpement-cabinet', 'Qualifier les demandes, préparer rendez-vous et relances des prospects ; le choix de qui contacter et chaque envoi restent à l’associé.'),
   fh('propositions-mission', 'Propositions de mission', 'developpement-cabinet', 'Chiffrer périmètre et honoraires depuis le barème écrit du cabinet, mettre en page la proposition, suivre sa réponse.'),
   fh('actualite-a-diffuser', 'Veille et actualité à diffuser', 'developpement-cabinet', 'Repérer dans les sources officielles ce qui touche le portefeuille, le résumer et l’adapter à un secteur de clients.'),
-  fh('lettre-information-clients', 'Lettre d’information aux clients', 'developpement-cabinet', 'Rédiger la lettre du cabinet et les rappels collectifs, chaque règle reliée à sa source officielle, relus avant envoi.'),
+  fh('lettre-information-clients', 'Lettre d’information aux clients', 'developpement-cabinet', 'Rédiger la lettre du cabinet et les rappels collectifs, chaque règle reliée à sa source officielle, relus puis envoyés par le cabinet.'),
   fh('publications-cabinet', 'Publications et présentation du cabinet', 'developpement-cabinet', 'Préparer publications, invitations et calendrier éditorial ; le cabinet publie, les retours se lisent en agrégats.'),
   // Paie et social (Salomé).
   fh('ecritures-de-paie', 'Écritures de paie en comptabilité', 'paie-social', 'Mettre le journal de paie au format d’import du dossier comptable et contrôler la concordance des charges sociales.'),
-  fh('diffusion-documents-paie', 'Diffusion des bulletins et états de paie', 'paie-social', 'Préparer bulletins, journaux et états pour les salariés et le client, libérés après validation de la paie.'),
+  fh('diffusion-documents-paie', 'Diffusion des bulletins et états de paie', 'paie-social', 'Préparer bulletins, journaux et états pour les salariés et le client, que le gestionnaire diffuse après validation de la paie.'),
   // Juridique et fiscal (Grégoire).
   fh('liasse-fiscale', 'Liasse fiscale', 'juridique-fiscal', 'Préparer la liasse depuis la balance validée et contrôler ses tableaux ; la télétransmission reste au cabinet.'),
   // Conseil et missions spéciales (Florent).
@@ -186,18 +186,18 @@ export const FAMILLES_HUB: readonly Famille[] = [
   fh('suivi-demandes-clients', 'Suivi des demandes clients', 'administratif-secretariat', 'Suivre par dossier les demandes restées sans réponse au-delà du délai du cabinet, vue du pôle en agrégats.'),
   fh('satisfaction-clients', 'Avis et satisfaction des clients', 'administratif-secretariat', 'Préparer le questionnaire après le bilan et rassembler les réponses en agrégats pour l’associé.'),
   // RH et formation (Raphaël).
-  fh('indicateurs-sociaux-cabinet', 'Indicateurs sociaux du cabinet', 'rh-formation', 'Préparer en agrégats effectifs, mise à jour du registre du personnel et index de l’égalité, pour les cabinets qui y sont tenus.'),
+  fh('indicateurs-sociaux-cabinet', 'Indicateurs sociaux du cabinet', 'rh-formation', 'Préparer la mise à jour du registre du personnel, les effectifs en agrégats et l’index de l’égalité, pour les cabinets qui y sont tenus.'),
   // Numérique, IT et data (Octavie, puis Prudence).
   fh('comptes-acces', 'Comptes et droits d’accès', 'numerique-it-data', 'Préparer les accès à créer ou à révoquer et revoir les droits par logiciel ; jamais l’activité de chacun.'),
   fh('sauvegardes-mises-a-jour', 'Sauvegardes et mises à jour', 'numerique-it-data', 'Lire les rapports de sauvegarde, signaler un échec le jour même, préparer les mises à jour des logiciels métier.'),
   fh('support-outils', 'Support des outils', 'numerique-it-data', 'Rattacher une demande de support à la procédure interne, préparer la réponse ou la demande au prestataire.'),
-  fh('inventaire-outils', 'Inventaire des outils et des usages d’IA', 'numerique-it-data', 'Tenir la liste des logiciels, licences et outils d’IA du cabinet, avec les données qu’ils traitent.'),
+  fh('inventaire-outils', 'Inventaire des outils et des usages d’IA', 'numerique-it-data', 'Préparer la mise à jour de la liste des logiciels, licences et outils d’IA que tient le cabinet, avec les données qu’ils traitent.'),
   fh('registre-traitements', 'Registre des traitements', 'numerique-it-data', 'Préparer, tâche par tâche, la mise à jour du registre des traitements que tient le cabinet ; le référent la valide.'),
   fh('demandes-droits', 'Demandes d’accès et autres droits', 'numerique-it-data', 'Retrouver les données d’une personne concernée et rédiger la réponse ; elle part du cabinet, après validation.'),
   fh('durees-conservation', 'Durées de conservation', 'numerique-it-data', 'Lister les données arrivées au terme de leur durée de conservation, proposer suppression ou archivage au cabinet.'),
   fh('incidents-donnees', 'Incidents de données', 'numerique-it-data', 'Rassembler faits, données et personnes concernées ; le responsable de traitement décide de toute notification.'),
   // Excel et outils existants (Octavie).
-  fh('migrations-reprises', 'Migrations et reprises de données', 'excel-outils-existants', 'Reprendre plans, tiers et historiques d’un logiciel à l’autre, balances avant et après rapprochées.'),
+  fh('migrations-reprises', 'Migrations et reprises de données', 'excel-outils-existants', 'Préparer la reprise des plans, tiers et historiques d’un logiciel à l’autre, balances avant et après rapprochées.'),
 ];
 
 /** La carte publiée, puis les familles du hub : ce que cherchent `familleParId` et `famillesDuPole`. */

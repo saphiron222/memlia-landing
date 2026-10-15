@@ -170,7 +170,10 @@ export interface Specialiste {
   destination: Destination;
   /** La mission d'une phrase, sur la carte (« Mission (carte) »). */
   ligne: string;
-  /** La règle écrite du métier en une cellule par colonne, pour la carte et le tableau des métiers du hub. */
+  /**
+   * La règle écrite du métier en une cellule par colonne, pour le tableau des métiers du hub. Chaque cellule figure dans
+   * sa colonne de `fiche.frontiere` quand la fiche est écrite, sur n'importe quelle ligne (R25).
+   */
   frontiereEnBref: LigneFrontiere;
   /** Familles titulaires (familles.ts ou FAMILLES_HUB) : chacune a un seul titulaire (partition, I1). */
   familles: readonly string[];
@@ -242,7 +245,7 @@ export interface Hub {
   annuaire: { titre: string; texte: string; legende: string; tous: string; microLabel: string; action: string };
   /** La définition détaillée, sous l'annuaire (annexe E12) : ce que fait un agent IA, ce qu'il coûte. */
   definitionDetaillee: { titre: string; lignes: readonly LigneHub[] };
-  /** Le tableau des métiers : une ligne par agent, ses trois cellules depuis `frontiereEnBref`. */
+  /** Le tableau des métiers : une ligne par agent, ses trois cellules depuis `frontiereEnBref` (un extrait de sa règle, R25). */
   metiers: { titre: string; texte: string; legende: string; colonnes: readonly [string, string, string, string] };
   construit: { titre: string; texte: string; etapes: readonly [LigneHub, LigneHub, LigneHub] };
   sansAgent: { question: string; texte: string; action: ActionHub & { href: '/contact' } };
@@ -296,7 +299,7 @@ export const HUB: Hub = {
   },
   metiers: {
     titre: 'La frontière de chaque métier, en trois colonnes',
-    texte: 'Chaque agent suit la règle écrite de son métier : ce qui se prépare seul, ce qui attend votre validation, ce qui reste humain. Voici sa première ligne, métier par métier.',
+    texte: 'Chaque agent suit la règle écrite de son métier : ce qui se prépare seul, ce qui attend votre validation, ce qui reste humain. Le tableau en donne un geste par colonne, métier par métier.',
     legende: 'La frontière de la règle écrite, métier par métier',
     colonnes: ['Agent IA', 'Se prépare seul', 'Attend votre validation', 'Reste humain'],
   },

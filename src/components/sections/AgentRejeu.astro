@@ -1,7 +1,7 @@
 ---
 import Picto from '@/components/Picto.astro';
 import Insecable from '@/components/Insecable.astro';
-import { texteDuRejeu } from '@/data/specialistes/gabarit';
+import { decouperArret, texteDuRejeu } from '@/data/specialistes/gabarit';
 import type { Demonstration } from '@/data/specialistes';
 
 /**
@@ -22,14 +22,7 @@ interface Props {
 }
 const { demonstration, id = 'rejeu', source } = Astro.props;
 const texte = texteDuRejeu(demonstration);
-/** « Aucune écriture proposée. Motif : doublon probable » → ce qui est barré, puis le motif lisible. */
-function decouper(sortie: string): { barre: string; motif: string } {
-  const [barre, ...reste] = sortie.split(/(?=Motif\s:)/u);
-  const motif = reste.join('');
-  if (!motif) throw new Error(`AgentRejeu : un Arrêt sans « Motif : » dans sa sortie (« ${sortie} »)`);
-  return { barre: barre.trim(), motif: motif.trim() };
-}
-const lignes = demonstration.cas.map((unCas) => ({ ...unCas, arret: unCas.issue === 'Arrêt' ? decouper(unCas.sortie) : null }));
+const lignes = demonstration.cas.map((unCas) => ({ ...unCas, arret: unCas.issue === 'Arrêt' ? decouperArret(unCas.sortie) : null }));
 ---
 
 <section class="agent-rejeu" aria-labelledby={`${id}-titre`} data-agent-rejeu>

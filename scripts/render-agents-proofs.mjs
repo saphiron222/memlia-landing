@@ -26,7 +26,7 @@ import { spawnSync } from 'node:child_process';
 import { AGENTS, FICHES, HUB, ficheDe } from '../src/data/specialistes.ts';
 import { POLES } from '../src/data/familles.ts';
 import { SITE } from '../src/data/site.mjs';
-import { texteDuRejeu, gabaritDe } from '../src/data/specialistes/gabarit.ts';
+import { decouperArret, texteDuRejeu, gabaritDe } from '../src/data/specialistes/gabarit.ts';
 
 const SOURCE = 'docs/design/agents-ia-proof';
 const CHEMIN_HTML = `${SOURCE}/index.html`;
@@ -79,10 +79,9 @@ function ligneDeCas(unCas) {
   let sortie = echapper(unCas.sortie);
   let cas = echapper(unCas.cas);
   if (unCas.issue === 'Arrêt') {
-    const [avant, ...motif] = unCas.sortie.split(/(?=Motif\s:)/u);
-    assert.ok(motif.length > 0, `Arrêt sans « Motif : » : ${unCas.sortie}`);
+    const { barre, motif } = decouperArret(unCas.sortie);
     cas = `<span class="barre">${cas}</span>`;
-    sortie = `<span class="barre">${echapper(avant.trim())}</span> <span class="motif">${echapper(motif.join('').trim())}</span>`;
+    sortie = `<span class="barre">${echapper(barre)}</span> <span class="motif">${echapper(motif)}</span>`;
   }
   return `<li data-issue="${echapper(unCas.issue)}"><span class="fiche-cas-titre">${cas}</span>`
     + `<span class="fiche-cas-sortie">${sortie}</span><span class="fiche-issue">${echapper(unCas.issue)}</span></li>`;

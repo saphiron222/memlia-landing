@@ -26,7 +26,7 @@ const { regle } = gabaritDe(agent);
       <h2 id="regle-titre">{regle.titre}</h2>
       <p><Insecable texte={regle.texte} /></p>
     </div>
-    <Frontiere colonnes={regle.colonnes} lignes={fiche.frontiere} legende={regle.legende} variante="sombre" />
+    <Frontiere colonnes={regle.colonnes} lignes={fiche.frontiere} legende={regle.legende} />
     <div class="agent-regle-bas">
       <div class="agent-regle-bloc" data-agent-arrets>
         <h3>{regle.arrets.titre}</h3>

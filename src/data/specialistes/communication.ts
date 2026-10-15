@@ -13,7 +13,7 @@ export const COMMUNICATION: Specialiste = {
   teinte: 'developpement-cabinet',
   publie: false,
   destination: { type: 'fiche' },
-  ligne: 'Rédige la lettre d’information et l’actualité de vos clients depuis les sources officielles ; vous relisez avant tout envoi.',
+  ligne: 'Rédige la lettre d’information et l’actualité de vos clients depuis les sources officielles ; vous la relisez et l’envoyez.',
   frontiereEnBref: [
     'Lire les sources officielles et repérer les changements',
     'Chaque texte avant envoi ou publication',

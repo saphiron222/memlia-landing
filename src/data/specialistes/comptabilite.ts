@@ -6,11 +6,10 @@ import type { Specialiste } from '../specialistes.ts';
  * typographiques) ; seules les balises de la page (titre d'onglet, description, type de service, image sociale) sont
  * écrites ici, passées par `marketing-skills:copywriting` puis `copy-editing`.
  *
- * Deux écarts assumés avec la lettre d'AGENTS-CONTENU, à relire en revue `metier` :
- *  - la règle écrite du métier est lue colonne par colonne ; la troisième colonne échange ses lignes 1 et 3, pour que
- *    la première ligne soit la frontière en bref de la carte (le hub la montre comme « sa première ligne ») ;
- *  - le premier livrable ouvre son texte sur « Pour l’Atelier Loriot » (le titre « Le lot de saisie du mois » est
- *    séparé de la phrase qui le complétait).
+ * La règle écrite reprend l'ordre d'AGENTS-CONTENU §1 ; la frontière en bref de la carte en est un extrait, chaque
+ * cellule dans sa colonne (R25). Un écart assumé avec la lettre d'AGENTS-CONTENU, relu en revue `metier` : le premier
+ * livrable ouvre son texte sur « Pour l’Atelier Loriot » (le titre « Le lot de saisie du mois » est séparé de la phrase
+ * qui le complétait).
  */
 export const COMPTABILITE: Specialiste = {
   slug: 'comptabilite',
@@ -84,9 +83,9 @@ export const COMPTABILITE: Specialiste = {
       { titre: 'Le rapprochement bancaire du mois', texte: 'Relevé par relevé, chaque suspens typé et daté.' },
     ],
     frontiere: [
-      ['Lire les pièces et en extraire les champs', 'Chaque écriture proposée, lot par lot', 'Le jugement de révision'],
+      ['Lire les pièces et en extraire les champs', 'Chaque écriture proposée, lot par lot', 'L’imputation d’un cas nouveau ou atypique'],
       ['Proposer l’imputation d’un fournisseur connu', 'Chaque appariement à plusieurs candidats, en banque ou en lettrage', 'L’intégration dans votre logiciel comptable'],
-      ['Rapprocher un mouvement de son unique candidat', 'Chaque relance de pièces au client', 'L’imputation d’un cas nouveau ou atypique'],
+      ['Rapprocher un mouvement de son unique candidat', 'Chaque relance de pièces au client', 'Le jugement de révision'],
       ['Préparer relances, états et contrôle de forme du FEC', 'Chaque régularisation de fin d’exercice', 'La clôture et les comptes remis au client'],
     ],
     arrets: [

@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { AGENTS, FICHES, GROUPES, HUB, cheminAgent, comptesParGroupe, type GroupeId, type Specialiste } from '../../src/data/specialistes';
-import { gabaritDe } from '../../src/data/specialistes/gabarit';
+import { decouperArret, gabaritDe } from '../../src/data/specialistes/gabarit';
 import { POLES } from '../../src/data/familles';
 
 /**
@@ -445,12 +445,12 @@ for (const agent of FICHES_PUBLIEES) {
         await expect(ligne.locator('[data-issue-puce]')).toHaveText(unCas.issue);
         const barres = ligne.locator('[data-barre]');
         if (unCas.issue === 'Arrêt') {
-          const [avant, motif] = unCas.sortie.split(/(?=Motif\s:)/u);
+          const { barre: avant, motif } = decouperArret(unCas.sortie);
           await expect(barres, 'le cas et ce qui n’a pas été proposé sont barrés').toHaveCount(2);
           for (const barre of await barres.all()) expect(await barre.evaluate((el) => getComputedStyle(el).textDecorationLine)).toContain('line-through');
-          await expect(barres.nth(1)).toHaveText(avant.trim());
+          await expect(barres.nth(1)).toHaveText(avant);
           const raison = ligne.locator('[data-motif]');
-          await expect(raison).toHaveText(motif.trim());
+          await expect(raison).toHaveText(motif);
           await expect(raison).toBeVisible();
           // Un trait se propage aux descendants sans paraître dans leur style calculé : le motif et chacun de ses
           // ancêtres jusqu'à la ligne doivent être sans trait.
@@ -507,7 +507,9 @@ for (const agent of FICHES_PUBLIEES) {
       const regle = page.locator('[data-agent-regle]');
       await expect(regle.locator('h2')).toHaveText(g.regle.titre);
       await expect(regle.locator('table tbody tr')).toHaveCount(fiche.frontiere.length);
-      await expect(regle.locator('table tbody tr').first().locator('td')).toHaveText([...agent.frontiereEnBref]);
+      // R25 : la frontière en bref du hub est un extrait de la règle, chaque cellule dans sa colonne.
+      const colonnes = await regle.locator('table tbody tr').evaluateAll((lignes) => [0, 1, 2].map((i) => lignes.map((tr) => (tr.querySelectorAll('td')[i]?.textContent ?? '').trim())));
+      agent.frontiereEnBref.forEach((cellule, i) => expect(colonnes[i], `colonne ${i + 1}`).toContain(cellule));
       await expect(regle.locator('[data-agent-arrets] li')).toHaveText([...fiche.arrets]);
       await expect(regle.locator('h3', { hasText: 'Ce qui ne part jamais sans vous' })).toHaveCount(1);
       await expect(regle.locator('[data-agent-envois] li')).toHaveCount(fiche.neJamaisSansVous.length);
@@ -533,6 +535,10 @@ for (const agent of FICHES_PUBLIEES) {
         await expect(questions.nth(i)).toContainText(q.reponse);
       }
       await expect(page.locator('#faq-titre')).toHaveText(g.questions.titre);
+      // Le rail des questions ne répète pas l'appel : la fiche en porte déjà deux (héros, départ).
+      await expect(page.locator('#questions .faq-humain')).toHaveCount(0);
+      await expect(page.locator('[data-agent-etapes] .surtitre')).toHaveText(g.etapes.etapes.map((etape) => etape.rang));
+      expect(g.etapes.etapes.map((etape) => etape.rang)).toEqual(['01', '02', '03']);
     });
 
     test('par quelle tâche commencer : trois tâches vers /contact, chacune avec sa famille ; le bouton, la mention, tous les agents', async ({ page }) => {
@@ -548,6 +554,46 @@ for (const agent of FICHES_PUBLIEES) {
       await expect(depart.locator('a.btn-principal[href="/contact"]')).toHaveCount(1);
       await expect(depart).toContainText(g.depart.mention);
       await expect(page.locator('main a[href="/agents-ia"]', { hasText: g.depart.tous })).toHaveCount(1);
+    });
+
+    test('à 1440 px, le H1 tient sur une rangée pleine largeur en 4 lignes au plus, au-dessus du chapeau et du rejeu ; le rejeu garde ses colonnes', async ({ page }) => {
+      // Arbitrage R23 : un titre d'intention long ne s'écrase plus dans une demi-colonne.
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto(chemin);
+      const mesure = await page.evaluate(() => {
+        const boite = (sel: string) => document.querySelector(sel)!.getBoundingClientRect();
+        const h1 = document.querySelector('main h1')!;
+        const style = getComputedStyle(h1);
+        const tailles = [...document.querySelectorAll('main h2')].map((h2) => parseFloat(getComputedStyle(h2).fontSize));
+        const tableau = document.querySelector('[data-agent-rejeu] .agent-rejeu-tableau')!;
+        return {
+          lignes: Math.round(h1.getBoundingClientRect().height / parseFloat(style.lineHeight)),
+          tailleH1: parseFloat(style.fontSize),
+          tailleH2Max: Math.max(...tailles),
+          h1: boite('main h1'),
+          heros: boite('[data-agent-heros]'),
+          chapeau: boite('[data-agent-chapeau]'),
+          rejeu: boite('[data-agent-rejeu]'),
+          largeurTableau: tableau.getBoundingClientRect().width,
+          enteteVisible: getComputedStyle(tableau.querySelector('thead')!).display !== 'none',
+        };
+      });
+      expect(mesure.lignes, 'lignes du H1').toBeLessThanOrEqual(4);
+      expect(mesure.tailleH1, 'le H1 n’est pas plus petit qu’un H2').toBeGreaterThanOrEqual(mesure.tailleH2Max);
+      expect(mesure.h1.bottom, 'H1 au-dessus du chapeau').toBeLessThanOrEqual(mesure.chapeau.top);
+      expect(mesure.h1.bottom, 'H1 au-dessus du rejeu').toBeLessThanOrEqual(mesure.rejeu.top);
+      expect(mesure.h1.width, 'H1 sur la largeur du héros, pas dans une colonne').toBeGreaterThan(mesure.rejeu.width);
+      expect(mesure.rejeu.left, 'le rejeu à droite du chapeau').toBeGreaterThan(mesure.chapeau.right);
+      expect(mesure.largeurTableau, 'tableau du rejeu à 34 rem au moins').toBeGreaterThanOrEqual(544);
+      expect(mesure.enteteVisible, 'le rejeu garde ses colonnes, sans s’empiler').toBe(true);
+    });
+
+    test('à 375 px, le héros s’empile dans le même ordre : l’agent, le H1, le chapeau, les actions, le rejeu', async ({ page }) => {
+      await page.setViewportSize({ width: 375, height: 812 });
+      await page.goto(chemin);
+      const hauts = await page.evaluate(() => ['[data-agent-etiquette]', 'main h1', '[data-agent-chapeau]', '[data-agent-heros] .btn-principal', '[data-agent-rejeu]']
+        .map((sel) => document.querySelector(sel)!.getBoundingClientRect().top));
+      expect([...hauts].sort((a, b) => a - b)).toEqual(hauts);
     });
 
     for (const largeur of [375, 1440]) {

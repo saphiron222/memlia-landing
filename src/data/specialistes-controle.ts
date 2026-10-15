@@ -79,7 +79,12 @@ function erreursDeFiche(agent: Specialiste, fiche: Fiche, slugs: ReadonlySet<str
   if (!fiche.taches.every((t) => plein(t.geste) && plein(t.prepare))) erreurs.push('fiche : tâche sans geste ou sans préparation');
   if (!fiche.livrables.every((l) => plein(l.titre) && plein(l.texte))) erreurs.push('fiche : livrable incomplet');
   if (fiche.frontiere.length === 0 || !fiche.frontiere.every((ligne) => ligne.length === 3 && ligne.every(plein))) erreurs.push('fiche : frontière vide ou incomplète');
-  else if (!agent.frontiereEnBref.every((cellule, i) => fiche.frontiere[0][i] === cellule)) erreurs.push('fiche : la frontière en bref n’est pas la première ligne de la frontière (le hub la montre comme « sa première ligne »)');
+  else {
+    // R25 : la frontière en bref est un extrait de la règle, chaque cellule dans sa colonne, sur n'importe quelle ligne.
+    agent.frontiereEnBref.forEach((cellule, i) => {
+      if (!fiche.frontiere.some((ligne) => ligne[i] === cellule)) erreurs.push(`fiche : la frontière en bref « ${cellule} » manque dans sa colonne ${i + 1} de la frontière`);
+    });
+  }
   if (fiche.arrets.length === 0 || !fiche.arrets.every(plein)) erreurs.push('fiche : conditions d’arrêt absentes');
   if (fiche.neJamaisSansVous.length === 0 || !fiche.neJamaisSansVous.every((e) => plein(e.envoi) && plein(e.validation))) erreurs.push('fiche : « Ce qui ne part jamais sans vous » vide ou incomplet');
   if (!fiche.avecSans.every((l) => plein(l.sans) && plein(l.avec))) erreurs.push('fiche : ligne « avec ou sans » incomplète');

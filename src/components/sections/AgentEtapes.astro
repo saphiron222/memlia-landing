@@ -5,7 +5,8 @@ import { gabaritDe } from '@/data/specialistes/gabarit';
 
 /**
  * « Comment <prénom> travaille » (spec §2, section 5) : trois étapes, deux puces chacune. Une suite ordonnée sans
- * maquette : la bande à trois cellules du hub (« Construit sur votre cabinet »), numérotée par son surtitre.
+ * maquette : la bande à trois cellules du hub (« Construit sur votre cabinet »), numérotée par son surtitre au rang de
+ * la spec (« 01 », « 02 », « 03 » ; l'ordre de la liste `ol` le dit déjà aux lecteurs d'écran, le rang est masqué).
  */
 interface Props {
   agent: Specialiste;
@@ -20,9 +21,9 @@ const { etapes } = gabaritDe(agent);
   </div>
   <div class="bande">
     <ol class="cartes">
-      {etapes.etapes.map((etape, i) => (
+      {etapes.etapes.map((etape) => (
         <li class="cellule">
-          <p class="surtitre">Étape {i + 1}</p>
+          <p class="surtitre" aria-hidden="true">{etape.rang}</p>
           <h3 class="carte-titre"><Insecable texte={etape.titre} /></h3>
           <ul class="agent-puces">
             {etape.puces.map((puce) => <li><Insecable texte={puce} /></li>)}

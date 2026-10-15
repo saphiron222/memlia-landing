@@ -3,21 +3,22 @@ import Button from '@/components/Button.astro';
 import Insecable from '@/components/Insecable.astro';
 import AgentAvatar from '@/components/sections/AgentAvatar.astro';
 import AgentRejeu from '@/components/sections/AgentRejeu.astro';
-import Frontiere from '@/components/sections/Frontiere.astro';
 import { HUB, ficheDe, type Specialiste } from '@/data/specialistes';
 import { gabaritDe } from '@/data/specialistes/gabarit';
 import { CTA } from '@/data/site.mjs';
 
 /**
- * Le héros partagé d'une fiche (système de page § 1 ; spec §2, sections 1 et 2). À gauche : le fil d'Ariane à trois
- * niveaux, l'agent (avatar ou monogramme, puis « <prénom> · agent IA <métier> »), le H1 de la requête, le chapeau
- * qui définit l'agent IA et finit sur la décision du cabinet, le bouton « Confier une première tâche » et l'ancre
- * vers ce que l'agent remet. À droite dès 64 rem, dessous avant : le rejeu de sa démonstration ; sans démonstration,
- * la frontière en trois colonnes. Aucun prix.
+ * Le héros d'une fiche (système de page § 1 ; spec §2, sections 1 et 2 ; arbitrage R23 du contrôleur). Le fil
+ * d'Ariane à trois niveaux, puis une rangée pleine largeur : l'agent (avatar ou monogramme, puis « <prénom> · agent
+ * IA <métier> ») et le H1 de la requête, au corps du héros partagé (`--titre-page-partage`) sur toute la largeur de
+ * la feuille, pour qu'un titre d'intention long tienne en quelques lignes. Dessous, en deux colonnes dès 64 rem : le
+ * chapeau, qui définit l'agent IA et finit sur la décision du cabinet, avec « Confier une première tâche » et l'ancre
+ * vers ce que l'agent remet ; à droite, plus large, le rejeu de sa démonstration (au moins 34 rem de tableau à
+ * 1 440 px, sinon il s'empile). En dessous de 64 rem, tout s'empile dans le même ordre. Aucun prix.
  */
 interface Props {
   agent: Specialiste;
-  /** La page où la règle de la démonstration est publiée, liée en pied du rejeu. */
+  /** La page où la tâche de la démonstration est détaillée, liée en pied du rejeu. */
   regle?: { href: string; libelle: string };
 }
 const { agent, regle } = Astro.props;
@@ -33,23 +34,23 @@ const g = gabaritDe(agent);
       <li aria-current="page">{agent.libelle}</li>
     </ol>
   </nav>
+  <header class="agent-heros-tete">
+    <div class="agent-heros-agent">
+      <AgentAvatar agent={agent} taille="heros" prioritaire />
+      <p class="agent-heros-etiquette" data-agent-etiquette>{g.etiquette}</p>
+    </div>
+    <h1 id="page-titre"><Insecable texte={fiche.h1} /></h1>
+  </header>
   <div class="agent-heros-grille">
-    <header class="agent-heros-copie">
-      <div class="agent-heros-agent">
-        <AgentAvatar agent={agent} taille="heros" prioritaire />
-        <p class="agent-heros-etiquette" data-agent-etiquette>{g.etiquette}</p>
-      </div>
-      <h1 id="page-titre"><Insecable texte={fiche.h1} /></h1>
+    <div class="agent-heros-copie">
       <p class="agent-heros-chapeau" data-agent-chapeau>{fiche.chapeau}</p>
       <div class="agent-heros-actions">
         <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
         <Button href={`#${g.livrables.ancre}`} variante="lien" picto="chevron">{g.ancreRemet}</Button>
       </div>
-    </header>
+    </div>
     <div class="agent-heros-media">
-      {agent.demonstration
-        ? <AgentRejeu demonstration={agent.demonstration} source={regle} />
-        : <Frontiere colonnes={g.regle.colonnes} lignes={fiche.frontiere} legende={g.regle.legende} />}
+      <AgentRejeu demonstration={agent.demonstration} source={regle} />
     </div>
   </div>
 </section>
@@ -82,19 +83,14 @@ const g = gabaritDe(agent);
     min-width: 0;
     color: var(--texte);
   }
-  .agent-heros-grille {
-    display: grid;
-    gap: var(--bloc-ecart);
-    align-items: start;
-    padding-top: var(--bloc-ecart);
-  }
-  .agent-heros-copie {
+  /* La rangée du titre : l'agent, puis le H1 sur toute la largeur de la feuille. */
+  .agent-heros-tete {
     display: grid;
     justify-items: start;
     gap: 20px;
-    min-width: 0;
+    padding-top: var(--bloc-ecart);
   }
-  /* L’agent avant son titre : sa tuile au format du héros (--avatar-heros), puis l'étiquette en casse de phrase. */
+  /* L'agent avant son titre : sa tuile au format du héros (--avatar-heros), puis l'étiquette en casse de phrase. */
   .agent-heros-agent {
     display: flex;
     align-items: center;
@@ -105,11 +101,22 @@ const g = gabaritDe(agent);
     font-weight: 600;
     color: var(--accent-texte);
   }
-  .agent-heros-copie h1 {
-    max-width: 24ch;
+  .agent-heros-tete h1 {
     font-size: var(--titre-page-partage);
     line-height: 1.08;
     text-wrap: balance;
+  }
+  .agent-heros-grille {
+    display: grid;
+    gap: var(--bloc-ecart);
+    align-items: start;
+    padding-top: var(--espace-8);
+  }
+  .agent-heros-copie {
+    display: grid;
+    justify-items: start;
+    gap: var(--espace-6);
+    min-width: 0;
   }
   .agent-heros-chapeau {
     max-width: 62ch;
@@ -123,7 +130,6 @@ const g = gabaritDe(agent);
     flex-wrap: wrap;
     align-items: center;
     gap: 16px;
-    margin-top: 4px;
   }
   .agent-heros-media {
     min-width: 0;
@@ -132,10 +138,14 @@ const g = gabaritDe(agent);
     .agent-heros {
       padding: 32px var(--marge-page-lg) 0;
     }
+    .agent-heros-tete {
+      padding-top: 56px;
+    }
+    /* Le rejeu prend la colonne large : son tableau garde ses trois colonnes à 1 440 px (≥ 34 rem). */
     .agent-heros-grille {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
       gap: var(--rangee-gouttiere);
-      padding-top: 64px;
+      padding-top: var(--espace-10);
     }
   }
 </style>

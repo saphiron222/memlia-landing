@@ -8,18 +8,18 @@ import type { LigneFrontiere } from '@/data/specialistes';
  * tests de l'accueil CAC) : ce doublon de forme est signalé, pas refactoré (annexe §2).
  *
  * Elle se lit en un tableau ; sous 48 rem, chaque ligne s'empile et chaque cellule porte, au-dessus d'elle, le nom de
- * sa colonne (`data-label`), sans défilement horizontal. `sombre` : posée dans le panneau de « La règle écrite ».
+ * sa colonne (`data-label`), sans défilement horizontal. Posée dans le panneau d'encre de « La règle écrite », son
+ * seul emploi : une seule variante, sombre.
  */
 interface Props {
   colonnes: readonly [string, string, string];
   lignes: readonly LigneFrontiere[];
   legende: string;
-  variante?: 'clair' | 'sombre';
 }
-const { colonnes, lignes, legende, variante = 'clair' } = Astro.props;
+const { colonnes, lignes, legende } = Astro.props;
 ---
 
-<div class:list={['agent-frontiere', `agent-frontiere-${variante}`]} data-agent-frontiere>
+<div class="agent-frontiere" data-agent-frontiere>
   <table>
     <caption class="sr-only">{legende}</caption>
     <thead>
@@ -34,28 +34,19 @@ const { colonnes, lignes, legende, variante = 'clair' } = Astro.props;
 </div>
 
 <style>
-  /* Deux variantes, mêmes mesures : claire sur la feuille, sombre dans le panneau d'encre. Les couleurs de la
-     variante sombre se dérivent des jetons (encre, crème) : aucun hex local. */
+  /* Les couleurs se dérivent des jetons (encre, crème) : aucun hex local. */
   .agent-frontiere {
-    --frontiere-fond: var(--surface-elevee);
-    --frontiere-tete: var(--surface-page);
-    --frontiere-bord: var(--ligne);
-    --frontiere-filet: var(--ligne-douce);
-    --frontiere-titre: var(--texte-fort);
-    --frontiere-texte: var(--texte-2);
-    min-width: 0;
-    border: 1px solid var(--frontiere-bord);
-    border-radius: var(--r-boite);
-    background: var(--frontiere-fond);
-    overflow: hidden;
-  }
-  .agent-frontiere-sombre {
     --frontiere-fond: color-mix(in srgb, var(--creme) 5%, var(--encre));
     --frontiere-tete: color-mix(in srgb, var(--creme) 10%, var(--encre));
     --frontiere-bord: color-mix(in srgb, var(--creme) 20%, var(--encre));
     --frontiere-filet: color-mix(in srgb, var(--creme) 13%, var(--encre));
     --frontiere-titre: var(--creme);
     --frontiere-texte: color-mix(in srgb, var(--creme) 80%, var(--encre));
+    min-width: 0;
+    border: 1px solid var(--frontiere-bord);
+    border-radius: var(--r-boite);
+    background: var(--frontiere-fond);
+    overflow: hidden;
   }
   table {
     width: 100%;

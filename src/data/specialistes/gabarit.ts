@@ -60,11 +60,15 @@ export function phraseDesVoisins(voisins: readonly Voisin[]): string {
   return `${propositions.join(' ; ')}.`;
 }
 
-/** Les trois étapes de « Comment <prénom> travaille » : deux puces chacune (spec §2, section 5). */
+/** Les trois étapes de « Comment <prénom> travaille » : leur rang (« 01 », spec §2), deux puces chacune (section 5). */
 export interface EtapeFiche {
+  rang: string;
   titre: string;
   puces: readonly [string, string];
 }
+
+/** « 01 », « 02 », « 03 » : le rang d'une étape, tel que la spec §2 l'écrit. */
+const rangDEtape = (index: number): string => String(index + 1).padStart(2, '0');
 
 export interface GabaritFiche {
   /** « Balthazar · agent IA comptabilité » : l'étiquette du héros, en casse de phrase. */
@@ -98,13 +102,25 @@ export interface TexteDuRejeu {
   source: string;
 }
 
+/**
+ * La sortie d'un cas Arrêt, découpée pour le rendu : ce qui n'a pas été proposé (barré), puis le motif, qui reste
+ * lisible (« Motif : … »). Une seule découpe pour la page, le cadre social et la spec navigateur ; lève sur un Arrêt
+ * sans motif (fail-closed : `erreursDemonstration` le refuse déjà dans les données).
+ */
+export function decouperArret(sortie: string): { barre: string; motif: string } {
+  const [barre, ...reste] = sortie.split(/(?=Motif\s:)/u);
+  const motif = reste.join('').trim();
+  if (!motif) throw new Error(`Arrêt sans « Motif : » dans sa sortie (« ${sortie} »)`);
+  return { barre: barre.trim(), motif };
+}
+
 export function texteDuRejeu(demonstration: Demonstration): TexteDuRejeu {
   return {
     entete: EN_TETE_REJEU,
     regle: `La règle écrite : ${demonstration.tache}`,
     colonnes: ['Cas joué', 'Sortie obtenue', 'Décision'],
     legende: `${demonstration.cas.length} cas joués sur le dossier fictif : ${demonstration.tache}`,
-    source: 'La règle de cette tâche est publiée sur sa page :',
+    source: 'Le détail de cette tâche est publié sur sa page :',
   };
 }
 
@@ -128,9 +144,9 @@ export function gabaritDe(agent: Specialiste): GabaritFiche {
     etapes: {
       titre: `Comment ${prenom} travaille`,
       etapes: [
-        { titre: 'Vous montrez la tâche', puces: ['Un collaborateur nous montre le geste, dans les outils où il le fait.', 'Nous relevons les sources, les cas courants et les cas qui doivent arrêter la tâche.'] },
-        { titre: 'Nous écrivons sa règle', puces: ['La frontière en trois colonnes, écrite dans vos mots.', 'Rejouée sur un dossier fictif, puis recettée par vos collaborateurs, qui la vérifient sur leurs propres cas.'] },
-        { titre: `${prenom} propose, vous validez`, puces: ['Chaque proposition arrive avec sa source et la règle appliquée.', 'Votre collaborateur valide ou corrige ; un cas hors règle lui revient avec son motif.'] },
+        { rang: rangDEtape(0), titre: 'Vous montrez la tâche', puces: ['Un collaborateur nous montre le geste, dans les outils où il le fait.', 'Nous relevons les sources, les cas courants et les cas qui doivent arrêter la tâche.'] },
+        { rang: rangDEtape(1), titre: 'Nous écrivons sa règle', puces: ['La frontière en trois colonnes, écrite dans vos mots.', 'Rejouée sur un dossier fictif, puis recettée par vos collaborateurs, qui la vérifient sur leurs propres cas.'] },
+        { rang: rangDEtape(2), titre: `${prenom} propose, vous validez`, puces: ['Chaque proposition arrive avec sa source et la règle appliquée.', 'Votre collaborateur valide ou corrige ; un cas hors règle lui revient avec son motif.'] },
       ],
     },
     taches: {
@@ -141,7 +157,7 @@ export function gabaritDe(agent: Specialiste): GabaritFiche {
     },
     outils: {
       titre: 'Dans vos outils',
-      texte: `${prenom} prépare ces tâches dans les logiciels de votre cabinet, parmi lesquels :`,
+      texte: `${prenom} prépare ces tâches dans vos outils et à partir de ceux de vos clients, par exemple :`,
     },
     avecSans: {
       titre: `Avec ou sans ${prenom}`,

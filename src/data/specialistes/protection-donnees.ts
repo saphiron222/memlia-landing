@@ -13,7 +13,7 @@ export const PROTECTION_DONNEES: Specialiste = {
   teinte: 'numerique-it-data',
   publie: false,
   destination: { type: 'fiche' },
-  ligne: 'Prépare la mise à jour du registre et les réponses aux demandes d’accès des personnes concernées ; votre référent décide.',
+  ligne: 'Prépare la mise à jour du registre des traitements et les réponses aux demandes d’accès des personnes concernées ; votre référent décide.',
   frontiereEnBref: [
     'Inventorier traitements, outils et sous-traitants',
     'Chaque réponse à une personne concernée',
