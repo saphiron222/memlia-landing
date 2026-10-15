@@ -28,19 +28,22 @@ Demande de Kevin après arrêt explicite de Claude. Base : version robots et cop
 ## Avancement
 
 - Reprise : `530263b7`, socle fusionné ; tâche 8 importée et sauvegardée.
-- Fiches : en cours par `fiches_agents` (huit fichiers de données, corrections métier tracées).
-- Logos : en cours par `logos_compatibilites` (fichiers, sécurité, provenance et remplacements officiels).
-- Interface, contact, maillage, référencement, contrôles et preview : en cours par le contrôleur.
+- Fiches : terminées et relues par `fiches_agents` (huit fichiers de données, corrections métier tracées).
+- Logos : terminés et relus par `logos_compatibilites` (fichiers, sécurité, provenance et remplacements officiels).
+- Interface, contact, maillage, référencement et contrôles terminés par le contrôleur ; vérification finale de prévisualisation en cours.
 
 ## Recette du candidat
 
 - [x] Douze agents, neuf fiches complètes et trois destinations identifiées ; figurines validées réutilisées, 72 dérivés légers et manifeste.
-- [x] Catalogue de compatibilités commun : 365 cartes, quinze domaines, recherche, 356 logos officiels contrôlés et neuf noms seuls documentés ; guides et URLs conservés.
+- [x] Catalogue de compatibilités commun : 365 cartes, quinze domaines, recherche, 352 logos officiels contrôlés et treize noms seuls documentés ; guides et URLs conservés.
 - [x] Contact facultatif et liste blanche commune de 90 points de départ, maillage par données et gabarits sans retoucher les articles scellés.
 - [x] SEO, onze rendus sociaux de la série, schémas, sitemap, llms/Markdown, CSP sans réseau, nouveau relevé Google des services.
 - [x] Revue métier indépendante PASS ; contrôles de données, de contrats, de liens et parcours navigateur ; inspection mobile/bureau et Lighthouse ≥99.
 - [ ] Publier la prévisualisation du candidat et vérifier ses réponses réelles, puis consigner le lien.
 
 Ruling C6 : les tableaux mobiles conservent les mots de décision sur une ligne. Le filtre Vie du cabinet (quatre agents) passe à deux colonnes au bureau, pour éviter une dernière carte isolée. Les composants et styles restent ceux des robots.
-Ruling C7 : les neuf cartes sans logo restent nommées et documentées ; aucun substitut trompeur. Les services officiels conservent leurs logos dans la bande dédiée demandée par Kevin.
+Ruling C7 : les treize cartes sans logo restent nommées et documentées ; aucun substitut trompeur. Les services officiels conservent leurs logos dans la bande dédiée demandée par Kevin.
 Ruling C8 : les styles et mesures des cartes du catalogue sont vérifiés comme variante validée par Kevin : coque commune, bandeau bord à bord, corps à 24 px. Le test historique qui exigeait une marge extérieure au-dessus du bandeau est adapté à cette variante et conserve ses témoins et contrastes.
+
+Ruling C9 : l’identité visuelle est contrôlée en plus du SHA. Bluebiz n’est pas le logo Air France ; les anciens pictogrammes Working Papers ne présentent pas tous les produits Caseware. Rejets/remplacements documentés, trois favicon ambigus écartés et 215 SVG normalisés sans modifier leur dessin.
+Ruling C10 : le hub /integrations contient la démonstration Octavie ; sa livraison réutilise donc la Function et la CSP sans réseau des agents, y compris le retrait des balises analytiques injectées par l’hébergeur.

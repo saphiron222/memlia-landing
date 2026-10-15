@@ -27,7 +27,7 @@ const SERVIE_PAR_PAGES = process.env.QA_PAGES_DELIVERY === '1';
 
 const FICHE_PILOTE = '/agents-ia/comptabilite';
 /** Le hub et la fiche pilote toujours, puis toute autre fiche dont la page est dans `dist` : celles de la tâche 9 entrent dès qu'elles existent. */
-const ROUTES = [HUB.chemin, FICHE_PILOTE, ...FICHES.map((fiche) => `/agents-ia/${fiche.slug}`).filter((route) => route !== FICHE_PILOTE && existsSync(`dist${route}.html`))];
+const ROUTES = [HUB.chemin, '/integrations', FICHE_PILOTE, ...FICHES.map((fiche) => `/agents-ia/${fiche.slug}`).filter((route) => route !== FICHE_PILOTE && existsSync(`dist${route}.html`))];
 const FORMATS = [{ nom: 'bureau', largeur: 1440, hauteur: 900 }, { nom: 'mobile', largeur: 375, hauteur: 812 }];
 
 interface Sonde {
@@ -96,7 +96,7 @@ async function verifierSansReseau(page: Page, sonde: Sonde, route: string, etape
 
 test('les pages jugées : le hub, la fiche pilote (qui est bien une fiche des données), plus chaque fiche construite', () => {
   expect(FICHES.map((fiche) => `/agents-ia/${fiche.slug}`)).toContain(FICHE_PILOTE);
-  expect(ROUTES.slice(0, 2)).toEqual([HUB.chemin, FICHE_PILOTE]);
+  expect(ROUTES.slice(0, 3)).toEqual([HUB.chemin, '/integrations', FICHE_PILOTE]);
   expect(new Set(ROUTES).size).toBe(ROUTES.length);
 });
 

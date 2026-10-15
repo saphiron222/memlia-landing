@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-15",
+  "rejets": [
+    {
+      "id": "air-france",
+      "fichierRejete": "public/logos/air-france.svg",
+      "sourceRejetee": "https://bluebiz.azureedge.net/Static/images/logos/logo-bluebiz.svg",
+      "sha256": "3d2b8332b0303afc86ace2c69395ee4412b9767ba04ea7441a4bc98bb6f05bb1",
+      "marqueObservee": "Bluebiz",
+      "marqueAttendue": "Air France",
+      "raison": "Le programme Bluebiz ne constitue pas le logo de la compagnie Air France.",
+      "decision": "Retiré de la publication ; source conservée comme rejet.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/air-france-bluebiz.svg"
+    },
+    {
+      "id": "caseware-audit-france",
+      "fichierRejete": "public/logos/caseware-audit-france.webp",
+      "sourceRejetee": "https://i0.wp.com/www.caseware.fr/wp-content/uploads/2017/04/Logo-WP.png?w=580&ssl=1",
+      "sha256": "559b0f2b1c21bb77498ef70dfe7c23471f2c436528129b4b6a60d8188de483c9",
+      "statut": "mauvais-produit",
+      "marqueObservee": "Caseware Working Papers",
+      "marqueAttendue": "Caseware Audit France",
+      "raison": "La page officielle rattache Logo-WP.png à Working Papers, pas à la marque générique Caseware ni aux produits IDEA et Extractly.",
+      "decision": "Remplacé par le mot-symbole général officiel Caseware, sans badge de partenaire.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/caseware-audit-france-rejet-2026-10-15.webp"
+    },
+    {
+      "id": "caseware-idea",
+      "fichierRejete": "public/logos/caseware-idea.webp",
+      "sourceRejetee": "https://i0.wp.com/www.caseware.fr/wp-content/uploads/2017/04/Logo-WP.png?w=580&ssl=1",
+      "sha256": "559b0f2b1c21bb77498ef70dfe7c23471f2c436528129b4b6a60d8188de483c9",
+      "statut": "mauvais-produit",
+      "marqueObservee": "Caseware Working Papers",
+      "marqueAttendue": "Caseware IDEA",
+      "raison": "La page officielle rattache Logo-WP.png à Working Papers, pas à la marque générique Caseware ni aux produits IDEA et Extractly.",
+      "decision": "Remplacé par le mot-symbole général officiel Caseware, sans badge de partenaire.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/caseware-idea-rejet-2026-10-15.webp"
+    },
+    {
+      "id": "caseware-extractly",
+      "fichierRejete": "public/logos/caseware-extractly.webp",
+      "sourceRejetee": "https://i0.wp.com/www.caseware.fr/wp-content/uploads/2017/04/Logo-WP.png?w=580&ssl=1",
+      "sha256": "559b0f2b1c21bb77498ef70dfe7c23471f2c436528129b4b6a60d8188de483c9",
+      "statut": "mauvais-produit",
+      "marqueObservee": "Caseware Working Papers",
+      "marqueAttendue": "Caseware Extractly",
+      "raison": "La page officielle rattache Logo-WP.png à Working Papers, pas à la marque générique Caseware ni aux produits IDEA et Extractly.",
+      "decision": "Remplacé par le mot-symbole général officiel Caseware, sans badge de partenaire.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/caseware-extractly-rejet-2026-10-15.webp"
+    },
+    {
+      "id": "e-circu",
+      "fichierRejete": "public/logos/e-circu.webp",
+      "sourceRejetee": "https://www.e-circu.com/favicon.svg",
+      "sha256": "5073a63887f0b918c1aee2b5386f5eba881f85600384803f948e5ab52aca6d98",
+      "statut": "identification-ambigue",
+      "marqueObservee": "Pictogramme sans nom identifiable",
+      "marqueAttendue": "e-Circu",
+      "raison": "Pictogramme de favicon en forme de tableur ; identification visuelle de la marque e-Circu non établie. Nom seul plutôt qu’une attribution incertaine.",
+      "decision": "Retiré ; nom seul.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/e-circu-rejet-2026-10-15.webp"
+    },
+    {
+      "id": "e-recup",
+      "fichierRejete": "public/logos/e-recup.svg",
+      "sourceRejetee": "https://www.e-recup.com/favicon.svg",
+      "sha256": "d4952c87854efc80e6ae373acce669b9c22c64d7561d71019cdd5aa6bab1ee4e",
+      "statut": "identification-ambigue",
+      "marqueObservee": "Pictogramme sans nom identifiable",
+      "marqueAttendue": "e-Recup",
+      "raison": "Pictogramme de favicon en forme de tableur ; identification visuelle de la marque e-Recup non établie. Nom seul plutôt qu’une attribution incertaine.",
+      "decision": "Retiré ; nom seul.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/e-recup-rejet-2026-10-15.svg"
+    },
+    {
+      "id": "followapp",
+      "fichierRejete": "public/logos/followapp.webp",
+      "sourceRejetee": "https://www.follow-app.fr/follow_app_fr_logo.jpg",
+      "sha256": "f289f0bd9081319ce503060e0a5107f79933d1358b5bdc56ee8cd4e743249e1a",
+      "statut": "identification-ambigue",
+      "marqueObservee": "Pictogramme sans nom identifiable",
+      "marqueAttendue": "FollowApp",
+      "raison": "Pictogramme de coche générique proche d’icônes d’applications de tâches ; marque FollowApp non identifiable avec certitude. Nom seul.",
+      "decision": "Retiré ; nom seul.",
+      "preuveSourceLocale": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/rejets/followapp-rejet-2026-10-15.webp"
+    }
+  ]
+}

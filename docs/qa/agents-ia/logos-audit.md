@@ -1,54 +1,48 @@
 # Audit des logos de compatibilité — 15 octobre 2026
 
-Périmètre : les logos du catalogue commun robots et agents. Aucun changement d’UI, de texte métier, de contact, de build ou de génération publique dans cette passe.
+## État final
 
-## Résultat
+Le catalogue commun robots et agents contient **365 cartes : 352 avec logo et 13 en nom seul**. Les fichiers publiés représentent **222 SVG et 130 WebP, soit 1 847 568 octets**. Les quatre cartes État restent sans logo. Les sources officielles demandées par Kevin conservent leurs logos dans une bande dédiée.
 
-- **356 cartes avec logo, 9 cartes en nom seul, sur 365 cartes.** Les quatre cartes `etat: true` restent sans logo.
-- 221 SVG et 135 WebP ; **1 845 361 octets** pour tous les fichiers, au plus **22 483 octets** pour un fichier.
-- 35 logos ajoutés à la reprise. Parmi eux : PayPal, les sept cartes Sage, Silae, ADP, Revolut Business, Square, BNP Paribas, Notion, ECMA, Up Déjeuner, Pappers, Booking.com, Infogreffe, Meta, UPS, Veolia et Leroy Merlin.
-- Les logos des éditeurs partagés restent identiques entre leurs produits. Chaque carte a son propre fichier portant son id, conformément à R27. Les groupes identiques sont consignés au manifeste ; aucun doublon entre deux marques sans rapport n’a été retenu.
+Les **299 fichiers bruts sauvegardés sont conformes à leurs empreintes SHA-256**. Les **38 décisions d’apport ou de remplacement** sont tracées dans `logos-remplacements.json`, avec leurs sources officielles et leurs empreintes. Les logos partagés entre produits d’un même éditeur restent identiques ; chaque carte dispose de son propre fichier portant son identifiant. Aucun partenariat n’est revendiqué.
 
-## Sources, sécurité et formats
+## Contrôle de l’identité et des fichiers
 
-Les 299 fichiers bruts distincts de la reprise ont été lus comme octets et vérifiés par SHA-256 contre le manifeste sauvegardé : **299/299 conformes**. Les 35 ajouts disposent de leur URL officielle, du SHA du fichier source et de celui du fichier publié : **35/35 conformes**. Les kits Sage, Square, Revolut, PayPal et Etsy ont fourni uniquement des images ; aucun code ni fichier applicatif n’a été exécuté. Les archives n’ont pas été décompressées sur leurs chemins internes : seuls les membres images choisis ont été lus.
+L’intégrité d’un fichier ne prouve pas qu’il représente la bonne marque. La relecture des six planches a donc complété le contrôle des empreintes. Le logo Bluebiz hérité a été retiré de la carte Air France. Les trois anciens pictogrammes Working Papers ont été remplacés par le mot-symbole général Caseware officiel. e-Circu, e-Recup et FollowApp restent en nom seul faute d’identification certaine. Les fichiers rejetés et leurs sources sont conservés ; voir `logos-rejets.json`.
 
-Les SVG ont été contrôlés statiquement avant décodage : aucun script, gestionnaire d’événement, `foreignObject`, import, lien ou ressource externe, entité XML ou DTD. Les **221 SVG sont du XML bien formé**. Le décodage des fichiers publics par sharp/librsvg ne produit aucune erreur. Le contrôle de sécurité n’ouvre aucun SVG dans un navigateur ou un interpréteur.
+Les SVG ont été contrôlés statiquement avant leur décodage : aucun script, gestionnaire d’événement, `foreignObject`, import ou ressource externe, entité XML ou DTD. Le décodage par sharp/librsvg ne produit aucune erreur. Les archives officielles n’ont fourni que les images retenues ; aucun code téléchargé n’a été exécuté.
 
-Les formes, couleurs et proportions des marques sont conservées. Les SVG fournis sont inchangés ; le SVG en ligne de Leroy Merlin reçoit seulement le namespace XML nécessaire à un fichier autonome. Les rasters ajoutés sont réencodés en WebP sans perte, à une hauteur maximale de 80 px et sans agrandissement. Les dimensions intrinsèques de toutes les images figurent dans `logos-manifest.json` ; les WebP publiés mesurent de 20 à 80 px de haut. Avec le calcul d’affichage existant, les images sont affichées entre 18 et 40 px de haut et au plus 176 px de large.
+Les formes, couleurs et proportions des marques sont conservées. Les **215 normalisations** d’espaces et de fins de ligne sont consignées dans `logos-normalisation.json` ; elles ne modifient ni le dessin, ni les couleurs, ni le cadrage. Les bruts restent intacts. Les rasters ajoutés sont réencodés en WebP sans perte et sans agrandissement. Les dimensions intrinsèques et d’affichage, les poids et les empreintes de tous les fichiers sont au manifeste.
 
-Les six planches de relecture ont été produites aux dimensions d’affichage du catalogue, sur les fonds clair ou encre déclarés. Les variantes blanches Bimpli, Upflow et Revue Fiduciaire ont été ajoutées à `LOGOS_SUR_ENCRE`. Le logo Sage du kit avait un plan de travail très large ; il est remplacé par le SVG exact de l’en-tête officiel, **57 × 32 px**, sans recadrage ni recoloration. Le logo de kDrive est le SVG du titre de sa page officielle. Twenty et Pipedrive utilisent leurs symboles officiels, confirmés visuellement.
+Les variantes blanches Bimpli, Upflow et Revue Fiduciaire utilisent le fond encre prévu. Sage utilise le SVG officiel de l’en-tête, kDrive celui du titre de sa page officielle. Twenty et Pipedrive utilisent leurs symboles officiels. Les avertissements statiques portant sur les classes CSS, variables ou `currentColor` restent consignés ; les images correspondantes ont été relues dans les planches à leur taille d’affichage.
 
-Les avertissements automatisés `currentColor`, classes ou variables CSS sont conservés au manifeste pour transparence : les images correspondantes rendent correctement sur les planches. Dropbox et VigiCab comportent une surface claire propre au fichier ; leur symbole coloré reste visible sur fond clair. La Société Nouvelle conserve son logo complet et sa signature, sans grossir séparément un élément de la marque.
-
-## Les neuf noms seuls
+## Les treize noms seuls
 
 | Carte | Motif |
 |---|---|
-| impots.gouv.fr, espace professionnel | Décision État : jamais de logo. |
-| Guichet unique des formalités d’entreprises | Décision État : jamais de logo. |
-| Annuaire des entreprises | Décision État : jamais de logo. |
-| douane.gouv.fr | Décision État : jamais de logo. |
-| Registre national des entreprises | Le fichier officiel INPI contient le bloc République française / Marianne ; aucun découpage de la marque. |
-| BODACC | Le fichier officiel contient le bloc République française / Marianne ; aucun découpage de la marque. |
-| Chorus Pro | Le fichier officiel sauvegardé contient le bloc-marque de l’État. |
-| Modèle de registre des traitements | Document CNIL : aucun logo de produit distinct identifié ; pas de logo d’autorité substitué au document. |
-| Liasse 360 | Le favicon sauvegardé est une loupe rouge générique ; marque non identifiable avec certitude. |
+| impots.gouv.fr, espace professionnel | Décision État : carte sans logo. |
+| Guichet unique des formalités d’entreprises | Décision État : carte sans logo. |
+| Annuaire des entreprises | Décision État : carte sans logo. |
+| douane.gouv.fr | Décision État : carte sans logo. |
+| Registre national des entreprises | Fichier INPI avec bloc-marque de l’État ; aucun découpage. |
+| BODACC | Fichier avec bloc-marque de l’État ; aucun découpage. |
+| Chorus Pro | Source sauvegardée avec bloc-marque de l’État. |
+| Modèle de registre des traitements | Document CNIL, sans logo de produit distinct. |
+| Liasse 360 | Favicon générique non identifiable avec certitude. |
+| Air France | Source héritée Bluebiz rejetée. |
+| e-Circu | Favicon générique non identifiable avec certitude. |
+| e-Recup | Favicon générique non identifiable avec certitude. |
+| FollowApp | Favicon générique non identifiable avec certitude. |
 
-Un visuel de page jedeclare représentant une personne au travail et un logo Atlantic’eau associé à Veolia ont été écartés. Les deux cartes ECMA emploient le logo de l’éditeur ; Veolia emploie celui du groupe depuis son site officiel. Aucun fichier tiers de banque de logos n’a été utilisé. Aucune qualité de partenaire n’est revendiquée.
+Aucun substitut générique ou logo d’une autre marque ne remplace ces identités. Un visuel de personne chez jedeclare et un logo Atlantic’eau associé à Veolia ont également été écartés. Les cartes ECMA emploient le logo de l’éditeur ; Veolia celui du groupe depuis sa source officielle.
 
-## Vérifications
+## Vérifications et preuves
 
-- `node --test tests/scripts/connecteurs.test.mjs tests/scripts/connecteurs-source.test.mjs tests/scripts/connecteurs-rendu.test.mjs` : **16 tests PASS**, 0 échec.
-- `node docs/qa/agents-ia/logos-audit.mjs <dossier-de-reprise> --planches` : **0 erreur**, 356 fichiers pour 356 logos déclarés, aucun orphelin ni fichier absent.
-- Parse XML isolé : **221/221 SVG bien formés**, sans DTD ni entité.
-- Comparaison des 365 cartes avec la copie de début de passe : **tous les champs hors `logo` sont identiques**. Seul l’ensemble de fonds existant `LOGOS_SUR_ENCRE` reçoit les trois variantes blanches citées.
+- Audit reproductible des fichiers : zéro erreur, 352 logos déclarés, aucun fichier absent ni orphelin ; manifeste recalculé après les corrections finales.
+- Contrôles ciblés finaux des logos, des sources, du rendu et de la CSP : 17 tests Node réussis.
+- Les vérifications de page, navigateur, performance et livraison sont décrites séparément dans `README-finalisation.md` ; elles ne sont pas déduites du seul contrôle des fichiers.
+- `logos-manifest.json` : inventaire final, dimensions, poids, SHA, fond et motifs des noms seuls.
+- `logos-remplacements.json`, `logos-rejets.json`, `logos-normalisation.json` : décisions et transformations.
+- `logos-audit.mjs` : audit et génération des planches, sans requête réseau.
 
-Le build, Lighthouse et les tests navigateur de la page ne font pas partie de cette passe ciblée ; aucune performance de page ou conformité complète n’est déduite du seul poids des logos.
-
-## Fichiers de preuve
-
-- `logos-manifest.json` : inventaire final, dimensions, poids, SHA et provenance de chaque image ; motifs de chaque nom seul.
-- `logos-remplacements.json` : les 35 apports officiels, leur traitement et leurs empreintes.
-- `logos-audit.mjs` : contrôle reproductible et génération des planches, sans requête réseau.
-- Sources durables : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/` ; contient les fichiers sources, les journaux de téléchargement, les manifestes du navigateur, `logos-tests.tap`, `logos-audit.json` et `logos-planche-1.png` à `logos-planche-6.png`.
+Sources durables : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/audit-codex/`. Ce dossier contient les sources, journaux, manifestes, rejets et les six planches de comparaison.

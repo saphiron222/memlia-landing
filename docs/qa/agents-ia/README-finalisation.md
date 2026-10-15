@@ -17,7 +17,7 @@ La version robots et pages commerciales Codex est la référence choisie par Kev
 - Source des compatibilités : `src/data/connecteurs.ts` ; recherche/logo, guides et JSON-LD dérivés.
 - Figurines validées, originaux et prompts : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/figurines-2026-10-15/`.
 - Production : `public/agents/<slug>-{128,256,512}.{webp,avif}`, 72 fichiers. Manifeste de dimensions/poids/SHA : `figurines-production.json`. Aucune nouvelle génération prétendue : ce sont les dérivés des figurines déjà validées.
-- Logos : `public/logos/`, 356 fichiers. `logos-manifest.json`, `logos-remplacements.json`, `logos-audit.md`. 35 apports officiels, contrôle des 299 bruts et de la sécurité SVG. Neuf noms seuls documentés : quatre cartes État, RNE, BODACC, Chorus Pro, modèle de registre CNIL et Liasse 360. Aucun faux logo ni logo générique substitué.
+- Logos : `public/logos/`, 352 fichiers. `logos-manifest.json`, `logos-remplacements.json`, `logos-audit.md`. 38 décisions d’apport ou de remplacement officiels, contrôle des 299 bruts et de la sécurité SVG. Treize noms seuls documentés : quatre cartes État, RNE, BODACC, Chorus Pro, modèle de registre CNIL et Liasse 360, puis Air France, e-Circu, e-Recup et FollowApp après second audit. Aucun faux logo ni logo générique substitué.
 - Sauvegarde Claude et planches logos : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/reprise-codex-2026-10-15/`.
 - Recherche, intentions et revue métier : `docs/strategy/site-v3/hub-agents-ia/`, notamment `AGENTS-CONTENU.md`, `CONNECTEURS.md`, `MOTS-CLES.md`, `FACT-CHECK.md` ; revue indépendante dans `revue-independante-codex.md`.
 - Nouveau relevé Google réel : `docs/strategy/site-v3/mesures/titres-intent-2026-10-15.json` (33 requêtes), sans volume inventé ni affaiblissement des gardes.
@@ -42,8 +42,16 @@ Les résultats finaux et la prévisualisation sont consignés en fin de ce docum
 - 13 contrôles complémentaires des cartes agents et des grilles de logiciels réussis. La variante de carte du catalogue garde la coque commune, avec bandeau bord à bord et corps à 24 px, comme les robots.
 - CSP : neuf fiches et hub parcourus sur mobile/bureau, zéro appel hors origine, zéro violation et scripts/navigation actifs ; tests négatifs des API réseau et scripts inline conservés.
 - Contrat de page, audit services, blog et propriété des requêtes : verts. 22 contrôles de positionnement et analyse finale des exports verts.
-- Contrôle des 19 destinations affectées : 1 217 liens internes, 558 images et toutes les images sociales, aucune absence ni ancre cassée.
+- Contrôle des 19 destinations affectées : 1 217 liens internes, 554 images et toutes les images sociales, aucune absence ni ancre cassée.
 - Lighthouse mobile du rendu indexable local : hub agents 100/100/100/100 ; fiche Comptabilité 100/100/100/100 ; compatibilités 99/100/100/100. Ordre : performance/accessibilité/bonnes pratiques/SEO. Ce sont des mesures de laboratoire, pas des données de terrain ni des scores sur la preview noindex.
 - Revue indépendante de source/métier et contact : PASS après correction des quatre constats. Inspection visuelle réelle CUA à 375 et 1440 ; neuf captures dans `visuel/` ; registre de preuve du skill validé.
 
 Aucune collecte réelle et aucun formulaire de contact réel soumis pendant cette recette. CI globale GitHub non exécutée localement, conformément aux instructions du dépôt ; ces contrôles ciblés ne constituent pas un verdict de CI sur main.
+
+### Relecture de livraison des marques et du réseau
+
+Un défaut de correspondance hérité a été trouvé après le premier audit : l’empreinte était correcte mais le logo Bluebiz figurait sous Air France. Le second contrôle visuel a corrigé ce cas, les marques Caseware et trois identifiants ambigus. Registre des rejets et preuves conservés ; aucun quota de logos ne prime sur l’identité. État final : 352 logos / 13 noms seuls.
+
+Le hub commun contenant le rejeu d’Octavie réutilise aussi la Function/CSP des agents : suppression de la balise Insights de l’hébergeur, connexions fermées et scripts de l’origine. Les guides conservent leurs propres routes. Les 27 tests CSP de la première preview ont passé ; le hub commun est ajouté à la recette finale distante.
+
+La reprise finale des marques passe 17 contrôles Node (logos/source/CSP) et 42 contrôles navigateur, puis le témoin de présence des trois routes repasse après adaptation explicite de son assertion. La vérification distante finale ajoute `/integrations` aux dix routes agents.
