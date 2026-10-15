@@ -33,6 +33,7 @@ class IntegrationInventoryProof(unittest.TestCase):
                 pages.test_pages_one_h1_french()
                 sitemap.test_sitemap_complete_no_legal()
                 orphan = root / 'dist/integrations/orpheline-qa.html'
+                orphan.parent.mkdir(parents=True, exist_ok=True)
                 orphan.write_text('<html lang="fr"><h1>Orpheline QA</h1></html>')
                 with self.assertRaises(AssertionError):
                     pages.test_pages_one_h1_french()
@@ -65,6 +66,7 @@ class IntegrationInventoryProof(unittest.TestCase):
                 pages.test_pages_one_h1_french()
                 sitemap.test_sitemap_complete_no_legal()
                 orphan = dist / 'integrations/orpheline.html'
+                orphan.parent.mkdir(parents=True, exist_ok=True)
                 orphan.write_text('<html lang="fr"><h1>Orpheline</h1></html>')
                 with self.assertRaises(AssertionError):
                     pages.test_pages_one_h1_french()
