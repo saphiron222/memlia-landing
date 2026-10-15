@@ -191,26 +191,128 @@ export const FAMILLES_TENUES_HORS_PAGE: Readonly<Record<string, string>> = {
   'audit-legal': 'Aude : identifiant historique de la carte EC, détaillé par les familles CAC (AGENTS-CONTENU §5).',
 };
 
-/** Le hub : ce qui est arrêté par la spécification (§1 et §6). La tâche 4 y ajoute ses sections. */
+/** Un terme et son explication : une ligne du système de page (`.lignes`). */
+export interface LigneHub {
+  terme: string;
+  texte: string;
+}
+
+/** Un lien d'action du hub (système de page § 6) : libellé et destination interne. */
+export interface ActionHub {
+  libelle: string;
+  href: '/methode' | '/contact';
+}
+
+/**
+ * Le hub `/agents-ia` : balises, héros et copie de chaque section (spec §1 et §6, annexe E12), passée par
+ * `marketing-skills:copywriting` puis `copy-editing` à la tâche 4. Aucun effectif n'y est écrit : le compteur et le
+ * compte des filtres se dérivent d'`AGENTS` et de `comptesParGroupe()` (`data-driven-counts.test.mjs`).
+ */
 export interface Hub {
   chemin: '/agents-ia';
   ariane: string;
-  /** Requête primaire mesurée le 15/10/2026 (spec §6). */
+  /** Requête primaire mesurée le 15/10/2026 (spec §6) ; le H1, le titre d'onglet et la description la portent. */
   requete: string;
+  /** Titre d'onglet : même requête que le H1, plus court. */
+  titreOnglet: string;
+  description: string;
+  /** Début obligatoire de `description` (contrat d'intention, `config/page-intent-contract.json`). */
+  descriptionLead: string;
   surtitre: string;
-  /** H1 de départ de la spec §6, à passer en copywriting à la tâche 4. */
+  /** Le H1 de la charte (v7 §7) et de la spec §1 ; = `og:title` = `headline`. */
   h1: string;
-  /** La définition de l'agent IA à sa première apparition (spec §1, charte §9 bis). */
+  /** Le chapeau du héros : la définition de l'agent IA à sa première apparition (spec §1, charte §9 bis). */
   definition: string;
+  /** L'ancre secondaire du héros, vers `#annuaire`. */
+  ancreAnnuaire: string;
+  /** Les trois agents du média du héros, en médaillons (cadre `49-hero-agents-ia`, `scripts/render-agents-proofs.mjs`). */
+  trio: readonly [AgentId, AgentId, AgentId];
+  /** `ItemList.name` du JSON-LD. */
+  nomListe: string;
+  /** Dates explicites, AAAA-MM-JJ : jamais le `lastmod` du sitemap ni la date du build. */
+  datePublication: string;
+  dateMiseAJour: string;
+  /** « Derrière chaque agent, nous » : le lockup à la place d'une figurine, les cinq gestes de la charte, dans l'ordre. */
+  derriere: { titre: string; texte: string; gestes: readonly [LigneHub, LigneHub, LigneHub, LigneHub, LigneHub]; action: ActionHub & { href: '/methode' } };
+  annuaire: { titre: string; texte: string; legende: string; tous: string; microLabel: string; action: string };
+  /** La définition détaillée, sous l'annuaire (annexe E12) : ce que fait un agent IA, ce qu'il coûte. */
+  definitionDetaillee: { titre: string; lignes: readonly LigneHub[] };
+  /** Le tableau des métiers : une ligne par agent, ses trois cellules depuis `frontiereEnBref`. */
+  metiers: { titre: string; texte: string; legende: string; colonnes: readonly [string, string, string, string] };
+  construit: { titre: string; texte: string; etapes: readonly [LigneHub, LigneHub, LigneHub] };
+  sansAgent: { question: string; texte: string; action: ActionHub & { href: '/contact' } };
+  appel: { titre: string; texte: string };
 }
 
 export const HUB: Hub = {
   chemin: '/agents-ia',
   ariane: 'Agents IA',
   requete: 'agent ia comptable',
+  titreOnglet: 'Agent IA comptable, métier par métier | Memlia',
+  description: 'Agent IA comptable, métier par métier : saisie, paie, juridique, RGPD. Chaque agent prépare et s’arrête dans le doute ; votre collaborateur valide ce qui part.',
+  descriptionLead: 'Agent IA comptable, métier par métier',
   surtitre: 'Agents IA par métier',
-  h1: 'Agents IA pour votre cabinet comptable : ce que chacun prépare, ce que vos collaborateurs valident.',
+  h1: 'Agents IA pour cabinet d’expertise comptable : chacun prépare un métier, vos collaborateurs valident.',
   definition: 'Un agent IA, chez nous, c’est la règle écrite d’un métier de votre cabinet, mise en œuvre dans vos outils. Il prépare, il s’arrête dès qu’un cas sort de la règle, et votre collaborateur valide ce qui part.',
+  ancreAnnuaire: 'Trouver votre premier agent',
+  trio: ['comptabilite', 'paie-social', 'juridique-fiscal'],
+  nomListe: 'Les agents IA de Memlia, métier par métier',
+  datePublication: '2026-10-15',
+  dateMiseAJour: '2026-10-15',
+  derriere: {
+    titre: 'Derrière chaque agent, nous.',
+    texte: 'Le prénom sert à reconnaître l’agent ; la règle qu’il applique, nous l’écrivons avec vous et nous la maintenons.',
+    gestes: [
+      { terme: 'Observer', texte: 'La tâche telle qu’elle se fait chez vous, pièce par pièce.' },
+      { terme: 'Écrire', texte: 'Sa règle dans vos mots, en trois colonnes.' },
+      { terme: 'Éprouver', texte: 'Sur un dossier fictif, cas courants et arrêts compris.' },
+      { terme: 'Faire recetter', texte: 'Par vos collaborateurs, sur leurs cas, avant la mise en service.' },
+      { terme: 'Maintenir', texte: 'Une règle qui change est réécrite, rejouée et recettée.' },
+    ],
+    action: { libelle: 'Voir notre méthode', href: '/methode' },
+  },
+  annuaire: {
+    titre: 'Qui prend quel métier ?',
+    texte: 'Chaque agent tient un métier du cabinet et s’arrête là où votre collaborateur reprend la main.',
+    legende: 'Filtrer les agents IA par groupe de métiers',
+    tous: 'Tous',
+    microLabel: 'Agent IA',
+    action: 'Rencontrer',
+  },
+  definitionDetaillee: {
+    titre: 'Ce qu’un agent IA fait dans un cabinet comptable',
+    lignes: [
+      { terme: 'Ce qu’il prépare', texte: 'Il lit les pièces, les exports et les messages que sa règle lui désigne. Il prépare une écriture, un contrôle de bulletin, une réponse ou une déclaration à relire ; ce qu’il produit reste une proposition.' },
+      { terme: 'Où il s’arrête', texte: 'Une pièce illisible, un cas hors règle ou un écart inexpliqué l’arrête. Il nomme le motif et vous présente le cas au lieu de deviner.' },
+      { terme: 'Qui valide', texte: 'Votre collaborateur valide chaque proposition. Courriel, relance, déclaration, facture ou publication : l’agent prépare l’envoi, une personne du cabinet le fait partir.' },
+      { terme: 'Qui garde le jugement', texte: 'Nous prenons toute la mécanique. Vous gardez tout le jugement : la révision, le conseil, la signature. La règle est écrite dans vos mots et appartient au cabinet.' },
+      { terme: 'Ce qu’il coûte', texte: 'Vous payez une tâche prise en charge, pas des sièges. Le devis dépend des sources, des règles, des exceptions et des validations ; la maintenance y est écrite.' },
+    ],
+  },
+  metiers: {
+    titre: 'La frontière de chaque métier, en trois colonnes',
+    texte: 'Chaque agent suit la règle écrite de son métier : ce qui se prépare seul, ce qui attend votre validation, ce qui reste humain. Voici sa première ligne, métier par métier.',
+    legende: 'La frontière de la règle écrite, métier par métier',
+    colonnes: ['Agent IA', 'Se prépare seul', 'Attend votre validation', 'Reste humain'],
+  },
+  construit: {
+    titre: 'Construit sur votre cabinet, tel qu’il travaille.',
+    texte: 'Un agent se construit à partir de trois choses qui sont déjà chez vous.',
+    etapes: [
+      { terme: 'Votre règle écrite', texte: 'La frontière en trois colonnes, écrite avec vous avant la première ligne de code.' },
+      { terme: 'Vos outils', texte: 'Classeur, export, logiciel métier, messagerie : l’agent travaille là où vos équipes travaillent déjà. Ce que votre logiciel fait déjà, nous ne le refaisons pas.' },
+      { terme: 'Vos échéances', texte: 'L’agent prépare au rythme de vos échéances de DSN, de TVA et de clôture, et s’arrête dans le doute.' },
+    ],
+  },
+  sansAgent: {
+    question: 'Votre tâche n’a pas d’agent ?',
+    texte: 'Toute tâche répétitive dont la règle peut s’écrire se confie. Décrivez-la en trois phrases.',
+    action: { libelle: 'Décrire votre tâche', href: '/contact' },
+  },
+  appel: {
+    titre: 'Confiez une première tâche.',
+    texte: 'Décrivez le geste que vos collaborateurs refont chaque semaine. Nous écrivons sa règle avec vous, construisons l’agent dans vos outils et faisons recetter le résultat par votre équipe. La description suffit pour commencer.',
+  },
 };
 
 /** Les douze, dans l'ordre du cadrage (spec §0). */

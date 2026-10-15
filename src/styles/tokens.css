@@ -145,6 +145,10 @@
   --carte-marge-lg: 32px;
   --carte-ecart: 12px;
   --carte-icone: 40px;
+  /* Avatar d'agent IA (hub du 15/10/2026, cadrage §2.5) : tuile carrée au rayon --r-boite, bord --surface-elevee,
+     à cheval sur le bandeau de la carte ; plus grande dans un héros ou un bandeau « Qui prend ce métier ». */
+  --avatar-carte: 84px;
+  --avatar-heros: 116px;
   --cartes-ecart: 16px;
   --cartes-ecart-lg: 24px;
 

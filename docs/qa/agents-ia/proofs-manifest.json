@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/agents-ia-proof/index.html",
+      "sha256": "c964cf82d0f926748120727a9ef5ec97b5f9e48c99a31abc090041eddd295c08"
+    },
+    {
+      "path": "docs/design/agents-ia-proof/styles.css",
+      "sha256": "857ccfa13617dd584654c15f6977bc4280340e48a6942328c652111bb9a50f41"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/agents-ia-proof/content-contract.json",
+      "sha256": "ca35530fce104356ee39a29005587080cbf024c29cf49fecf2b3b79ffbcc29e6"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "64842c215a37a08b89dcc9dab9bda561bdbe40860a7832537149dd7e8abdc831"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
+      "target": "public/proofs/v2/49-hero-agents-ia.webp",
+      "bytes": 53874,
+      "sha256": "7ed30eb1b699cf2067ecd07319b90e9f88956f97f658d133f3187e50ea54f3b8"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
+      "target": "public/proofs/v2/og/49-hero-agents-ia.webp",
+      "bytes": 21636,
+      "sha256": "d3337c55df117ac26c449a61a27a87cf799eb56d9f0e1e9ca7e23959574b12c8"
+    }
+  ]
+}

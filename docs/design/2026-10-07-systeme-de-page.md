@@ -105,6 +105,12 @@ largeur du groupe (requête de conteneur), pas sur celle de l'écran.
 | 7 | 1 | 1 | 3 + 2 + 2 centrées |
 | 8 | 1 | 2 × 4 | 3 + 3 + 2 centrées |
 | 9 | 1 | 1 | 3 × 3 |
+| 12 | 1 | 2 × 6 | 3 × 4 |
+
+- **Exception de l'annuaire des agents IA** (Kevin, porte 2 du 15/10/2026) : le filtre « Tous » de `/agents-ia`
+  montre toutes les cartes d’un coup, au-delà des neuf d’un groupe. Chaque filtre de groupe retombe dans le tableau
+  ci-dessus : les règles de grille comptant les cartes masquées, `AgentAnnuaire.astro` porte la disposition du
+  nombre de cartes du filtre coché, mesurée par `tests/browser/agents-ia.spec.ts` à chaque état.
 
 - **Bande** : 2 → deux colonnes ; 3 → trois colonnes dès 768 px de bande, empilées avant ;
   4 → 2 × 2 dès 576 px. Au-delà de 4 : des lignes.

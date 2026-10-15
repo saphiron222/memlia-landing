@@ -1,0 +1,125 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import AgentAvatar from '@/components/sections/AgentAvatar.astro';
+import { POLES } from '@/data/familles';
+import { HUB, cheminAgent, type Specialiste } from '@/data/specialistes';
+
+/**
+ * La carte d'un agent IA : annuaire du hub, voisins d'une fiche (spec §1, cadrage §2.5). C'est la carte du site
+ * (global.css, un seul dessin), cliquable en entier ; elle porte en plus un bandeau au voile de l'accent de son pôle,
+ * le libellé du pôle en casse de phrase, et l'avatar à cheval sur le bandeau.
+ *
+ * Le nom accessible de la carte est « <prénom>, agent IA <métier> » ; sa ligne la décrit (`aria-describedby`). Rien
+ * n'y est en capitales calculées, rien n'y redessine la carte : bord, rayon, surface, ombre et marges restent ceux de
+ * global.css (test_cartes.py, cartes.spec.ts). Le parent rend la grille `ul.cartes`.
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const pole = POLES[agent.teinte];
+/** « Comptabilité » → « comptabilité » ; un sigle en tête (« RH du cabinet ») reste tel quel. */
+const metier = /^\p{Lu}\p{Lu}/u.test(agent.libelle) ? agent.libelle : agent.libelle.charAt(0).toLocaleLowerCase('fr') + agent.libelle.slice(1);
+const idLigne = `agent-ligne-${agent.slug}`;
+---
+
+<li class="agent-item" data-carte-agent={agent.slug} data-agent-groupe={agent.groupe}>
+  <a
+    class="carte agent-carte"
+    href={cheminAgent(agent)}
+    aria-label={`${agent.prenom}, agent IA ${metier}`}
+    aria-describedby={idLigne}
+    style={`--teinte: ${pole.couleur}`}
+  >
+    <div class="agent-entete">
+      <span class="agent-pole">{pole.libelle}</span>
+      <span class="agent-tuile"><AgentAvatar agent={agent} taille="carte" /></span>
+    </div>
+    <div class="carte-corps agent-corps">
+      <p class="agent-micro">{HUB.annuaire.microLabel}</p>
+      <h3 class="carte-titre">{agent.prenom}</h3>
+      <p class="agent-metier">{agent.libelle}</p>
+      <p class="carte-texte" id={idLigne}><Insecable texte={agent.ligne} /></p>
+      <div class="agent-suite">
+        <span class="carte-action">{HUB.annuaire.action} {agent.prenom}<Picto nom="fleche" taille={14} /></span>
+      </div>
+    </div>
+  </a>
+</li>
+
+<style>
+  /* La carte remplit sa cellule : les actions s'alignent d'une carte à l'autre. */
+  .agent-item {
+    display: flex;
+  }
+  .agent-carte {
+    --agent-marge: var(--carte-marge);
+    --agent-bandeau: 104px;
+    --agent-debord: 24px;
+    flex: 1 1 auto;
+  }
+  @media (min-width: 48rem) {
+    .agent-carte {
+      --agent-marge: var(--carte-marge-lg);
+    }
+  }
+  /* Bandeau : bord à bord en haut de la carte, au voile de l'accent du pôle (jamais l'accent en aplat : celui de la
+     paie est un rouge). L'avatar s'y pose en bas à gauche et en déborde de --agent-debord. */
+  .agent-entete {
+    position: relative;
+    height: var(--agent-bandeau);
+    margin: calc(-1 * var(--agent-marge)) calc(-1 * var(--agent-marge)) 0;
+    padding: 14px var(--agent-marge) 0;
+    border-radius: calc(var(--carte-rayon) - 1px) calc(var(--carte-rayon) - 1px) 0 0;
+    background: color-mix(in srgb, var(--teinte) 14%, var(--surface-feuille));
+  }
+  .agent-pole {
+    display: block;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    color: color-mix(in srgb, var(--teinte) 70%, var(--encre));
+  }
+  .agent-tuile {
+    position: absolute;
+    left: var(--agent-marge);
+    bottom: calc(-1 * var(--agent-debord));
+  }
+  .agent-corps {
+    margin-top: var(--agent-debord);
+  }
+  .agent-micro {
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--accent-texte);
+  }
+  .agent-metier {
+    margin: -6px 0 0;
+    font-weight: 500;
+    color: var(--texte-fort);
+  }
+  /* Le filet au-dessus du lien d'action. */
+  .agent-suite {
+    margin-top: auto;
+    padding-top: var(--espace-2);
+    border-top: 1px solid var(--ligne);
+  }
+  /* Survol : la carte se lève de 4 px en 200 ms (bord et ombre : global.css). Rien en mouvement réduit. */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .agent-carte {
+      transition:
+        border-color var(--duree-2) var(--courbe-standard),
+        box-shadow var(--duree-2) var(--courbe-standard),
+        translate var(--duree-2) var(--courbe-standard);
+    }
+    .agent-carte:hover {
+      translate: 0 -4px;
+    }
+    .agent-carte:active {
+      translate: 0 -3px;
+    }
+  }
+</style>

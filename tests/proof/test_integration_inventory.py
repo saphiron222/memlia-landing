@@ -120,6 +120,8 @@ class IntegrationInventoryProof(unittest.TestCase):
             (dist / 'integrations').mkdir(parents=True)
             for name in ['historique', slug]:
                 (dist / 'integrations' / f'{name}.html').write_text('<html lang="fr"><h1>Contrôle</h1></html>')
+            # L'oracle lit aussi les fiches d'agent publiées (tâche 4 du hub) : aucune dans ce dépôt minimal.
+            (root / 'src/data/specialistes.ts').write_text('export const FICHES = [];')
             with patch.multiple(build, ROOT=root, DIST=dist, PAGES_FIXES=[], PREVIEW_ARTICLES=set()):
                 self.assertEqual(build.public_integrations(), {'historique', slug})
                 build.BuildProof('test_pages_one_h1_french').test_pages_one_h1_french()

@@ -33,6 +33,8 @@ const ROUTES = [
   // Les pages outils n'ont plus de cartes depuis l'épure du 14/10/2026 (la suite est une ligne de
   // liens) ; la bibliothèque et le hub gardent la couverture des cartes.
   '/outils-comptables-gratuits/bibliotheque-prompts-comptables',
+  // L'annuaire des agents IA : douze cartes au dessin commun, bandeau teinté et avatar posés dedans (tâche 4).
+  '/agents-ia',
 ];
 /** Le blog garde son propre dessin (Kevin, 07/10/2026 : « les blogs pas besoin de toucher »). */
 const BLOG = [
@@ -313,6 +315,8 @@ const CLIQUABLES: [string, string][] = [
   ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet'],
   ['/integrations', '/integrations/rapprochement-bancaire-sage'],
   ['/outils-comptables-gratuits', '/outils-comptables-gratuits/bibliotheque-prompts-comptables'],
+  // Une carte d'agent menant à une page déjà construite (Salomé, la paie) : les fiches viennent aux tâches 6 et 9.
+  ['/agents-ia', '/automatisation/paie'],
 ];
 for (const [route, cible] of CLIQUABLES) {
   test(`${route} : carte cliquable en entier, survol et focus du site`, async ({ page }) => {
