@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { ROBOTS } from '../src/data/robots.ts';
 /**
  * Forge des pages de service. Elle partage uniquement le registre de requêtes avec le blog :
  * aucun article, dossier éditorial ou plafond de cadence n'est lu puis réécrit ici.
@@ -169,7 +170,14 @@ export function verifierLiensEntrantsService(root, recipe, errors) {
     const articleId = link.sourcePath.match(/^src\/content\/blog\/(.+)\.md$/)?.[1];
     const bridge = articleId ? LIENS_COMMERCIAUX_BLOG[articleId] : null;
     const contextualBridge = bridge?.href === recipe.path && bridge?.label === link.anchor;
-    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge)) {
+    const ledgerPath = join(root, 'config/service-publication-ledger.json');
+    const ledger = existsSync(ledgerPath) ? readJson(ledgerPath) : {};
+    const contextualRobotBridge = ledger.catalogueMode === 'robots-routines' && ledger.catalogueDecision?.date === '2026-10-15' &&
+      String(ledger.catalogueDecision?.reason ?? '').length >= 60 && link.url === '/automatisation-cabinet-comptable' &&
+      link.sourcePath === 'src/pages/automatisation-cabinet-comptable.astro' && source.includes('import HubRobots') &&
+      ROBOTS.some((robot) => robot.liens.some((lien) => lien.href === recipe.path));
+
+    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge || contextualRobotBridge)) {
       errors.push(`${prefix} : aucun lien contextuel avec l’ancre « ${link.anchor} » vers ${recipe.path} dans ${link.sourcePath}.`);
     }
   }

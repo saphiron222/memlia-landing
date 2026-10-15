@@ -280,10 +280,11 @@ test('une collection indexable peut manifester qu’aucun média fonctionnel ne 
   }
 });
 
-test('les contrats explicites couvrent six routes noindex et trois collections indexables', () => {
+test('les contrats explicites couvrent six routes noindex et quatre collections indexables', () => {
   const contrats = contratsRoute(process.cwd());
   assert.deepEqual([...contrats.keys()].sort(), [
     '/404',
+    '/automatisation-cabinet-comptable',
     '/blog',
     '/blog/commissariat-aux-comptes',
     '/contact/erreur',

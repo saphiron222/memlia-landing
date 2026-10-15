@@ -469,7 +469,14 @@ export function auditerServicesPublics({ root = process.cwd(), dist = join(root,
     }
     if (page.canonicals.length !== 1 || page.canonicals[0] !== `https://memlia.fr${route}`) errors.push(`${route} : canonical public exact absent`);
     if (!sitemapLocations.has(`https://memlia.fr${route}`)) errors.push(`${route} : absent du sitemap public`);
-    if (catalogue && !catalogue.mainHrefs.includes(route)) errors.push(`${route} : absent du contenu principal du catalogue ${catalogueRoute}`);
+    if (catalogue && !catalogue.mainHrefs.includes(route)) {
+      // Depuis le hub robots (15/10), les services historiques gardent leur parcours
+      // par métier ou par guide. Le registre exige alors un lien contextuel publié.
+      const contextePublie = ledger.catalogueMode === 'robots-routines' && ledger.catalogueDecision?.date === '2026-10-15' &&
+        String(ledger.catalogueDecision?.reason ?? '').length >= 60 &&
+        snapshots.some((source) => source.route !== route && source.mainHrefs.includes(route));
+      if (!contextePublie) errors.push(`${route} : absent du contenu principal du catalogue ${catalogueRoute} et sans parcours contextuel autorisé`);
+    }
   }
   return { pass: errors.length === 0, errors, expected };
 }

@@ -1,0 +1,22 @@
+---
+import type { Robot } from '@/data/robots';
+interface Props { robot: Robot; }
+const { robot } = Astro.props;
+---
+<div class="routine-demo" data-robot-demo={robot.id}>
+  <div class="routine-demo-tete"><p class="routine-demo-label">Dossier fictif</p><p>{robot.demonstration.dossier}</p></div>
+  <div class="routine-demo-table" role="region" aria-label={`Quatre cas fictifs du robot ${robot.nom}`} tabindex="0">
+    <table>
+      <caption>Ce que la règle produit dans quatre situations</caption>
+      <thead><tr><th scope="col">Cas joué</th><th scope="col">Sortie obtenue</th><th scope="col">Décision</th></tr></thead>
+      <tbody>{robot.demonstration.cas.map((cas) => <tr data-decision={cas.decision}><th scope="row">{cas.cas}</th><td>{cas.sortie}</td><td><span class:list={['routine-decision', { 'routine-arret': cas.decision === 'Arrêt' }]}>{cas.decision}</span></td></tr>)}</tbody>
+    </table>
+  </div>
+  <p class="routine-demo-pied">Exemple de restitution préparé pour cette fiche. <a href="#regle">Lire la règle et ses conditions d’arrêt</a>.</p>
+</div>
+<style>
+.routine-demo { border: 1px solid var(--ligne); border-radius: var(--r-cadre); background: var(--surface-elevee); overflow: hidden; box-shadow: var(--ombre-posee); }
+.routine-demo-tete { padding: 24px; border-bottom: 1px solid var(--ligne-douce); font-size: var(--t-sm); color: var(--texte-2); }.routine-demo-label { color: var(--accent-texte); font-weight: 600; margin-bottom: 8px; }
+.routine-demo-table { overflow-x: auto; }.routine-demo table { border-collapse: collapse; width: 100%; margin: 0; font-size: var(--t-sm); }.routine-demo caption { text-align: left; padding: 16px 24px; font-size: var(--t-sm); color: var(--texte-2); }.routine-demo th, .routine-demo td { padding: 16px; border-bottom: 1px solid var(--ligne-douce); vertical-align: top; text-align: left; }.routine-demo th { font-family: var(--police-corps); font-weight: 500; }.routine-demo thead { background: var(--surface-page); }.routine-demo thead th { font-weight: 600; }.routine-demo tbody th { width: 30%; }.routine-demo tbody td:last-child { width: 96px; }.routine-decision { color: var(--accent-texte); font-weight: 600; }.routine-arret { color: var(--rouge); }.routine-demo tr[data-decision="Arrêt"] { background: var(--rouge-voile); }.routine-demo-pied { padding: 16px 24px; color: var(--texte-2); font-size: var(--t-sm); }
+@media(max-width: 40rem) { .routine-demo th, .routine-demo td { padding: 12px 8px; font-size: 14px; overflow-wrap: anywhere; }.routine-demo tbody td:last-child { width: 65px; }.routine-demo caption { padding: 16px; } }
+</style>

@@ -19,6 +19,26 @@ import { COPY, TEXT, URL } from './dila-copy-fixture.mjs';
 
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
+test('le pont hub robots est limité aux services réellement reliés et à la migration documentée',async()=>{
+ const root=racineDeTest();
+ try{
+  const {verifierLiensEntrantsService}=await import('../../scripts/service-forge.mjs');
+  mkdirSync(join(root,'src/pages'),{recursive:true});mkdirSync(join(root,'config'),{recursive:true});
+  const file=join(root,'src/pages/automatisation-cabinet-comptable.astro');
+  const ledger=join(root,'config/service-publication-ledger.json');
+  writeFileSync(file,"---\nimport HubRobots from '../components/catalogue/HubRobots.astro';\n---\n<HubRobots />");
+  writeFileSync(ledger,JSON.stringify({catalogueMode:'robots-routines',catalogueDecision:{date:'2026-10-15',reason:'Remplacement demandé du catalogue de services par les routines robots ; les parcours contextuels existants sont conservés.'}}));
+  const hubLink={url:'/automatisation-cabinet-comptable',sourcePath:'src/pages/automatisation-cabinet-comptable.astro',anchor:'Ancienne ancre de service'};
+  const errors=[];verifierLiensEntrantsService(root,{...recette(),path:'/automatisation/paie',incomingLinks:[hubLink]},errors);
+  assert.ok(!errors.some(e=>e.startsWith(hubLink.url)),errors.join('\n'));
+  for(const change of ['unknown','decision','component']){
+   if(change==='decision')writeFileSync(ledger,'{}');
+   if(change==='component')writeFileSync(file,'<main>Catalogue vide</main>');
+   const invalid=[];verifierLiensEntrantsService(root,{...recette(),path:change==='unknown'?'/automatisation/absent':'/automatisation/paie',incomingLinks:[hubLink]},invalid);
+   assert.ok(invalid.some(e=>e.startsWith(hubLink.url)),change);
+  }
+ }finally{rmSync(root,{recursive:true,force:true});}
+});
 test('le pont commercial contextualisé compte sans modifier le Markdown scellé du blog', async () => {
   const root = racineDeTest();
   try {

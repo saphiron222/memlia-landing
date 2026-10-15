@@ -1,0 +1,91 @@
+{
+  "origin": "https://3d972653.memlia.pages.dev",
+  "verifiedAt": "2026-10-15T07:49:00.758Z",
+  "client": "Playwright APIRequestContext, TLS vérifié",
+  "responses": [
+    {
+      "path": "/automatisation-cabinet-comptable",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "strict-transport-security": null
+      },
+      "bytes": 115725
+    },
+    {
+      "path": "/automatisation/cfe",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "strict-transport-security": null
+      },
+      "bytes": 101262
+    },
+    {
+      "path": "/automatisation/situation-tva",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "strict-transport-security": null
+      },
+      "bytes": 100510
+    },
+    {
+      "path": "/automatisation/paie",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": null,
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "strict-transport-security": null
+      },
+      "bytes": 93368
+    },
+    {
+      "path": "/robots/cfe-128.avif",
+      "status": 200,
+      "headers": {
+        "content-type": "image/avif",
+        "content-security-policy": null,
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "strict-transport-security": null
+      },
+      "bytes": 1171
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'",
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate, no-transform",
+        "strict-transport-security": null
+      },
+      "bytes": 84770
+    },
+    {
+      "path": "/sitemap-index.xml",
+      "status": 200,
+      "headers": {
+        "content-type": "application/xml",
+        "content-security-policy": null,
+        "x-robots-tag": "noindex, nofollow",
+        "cache-control": "public, max-age=0, must-revalidate",
+        "strict-transport-security": null
+      },
+      "bytes": 881
+    }
+  ]
+}

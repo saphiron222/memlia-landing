@@ -1,0 +1,17 @@
+# Compétences appliquées et adaptations Codex
+
+Fichiers réellement consultés dans l’installation Codex : `competitor-profiling`, `copywriting`, `copy-editing`, `seo-sxo`, `seo-cluster`, `blog-cannibalization`, `seo-dataforseo`, `seo-programmatic`, `seo-content`, `seo-schema`, `seo-technical`, `seo-images` sous `/Users/kevinkitanga/.codex/skills/`, et `imagegen` sous `.codex/skills/.system/`. Les consignes de chaque étape sont appliquées au périmètre du chantier, pas à une extension automatique vers un audit de backlinks, une nouvelle stratégie de blog ou une publication.
+
+Recherche concurrentielle : profils et bruts datés, séparation entre affirmations des concurrents et offre Memlia. Firecrawl n’est pas disponible ici : lecture web et collecte HTTP des pages publiques, sauvegardées dans les sources. DataForSEO n’est pas exposé en MCP, mais les accès REST sont configurés : contrôle de coût, lot Ads et six SERP, réponses brutes et coût réel conservés.
+
+Rédaction : copywriting pour partir du geste et du résultat ; copy-editing pour les passes clarté, voix, bénéfice concret, preuve, précision et friction au contact. Pas d’ajout de témoignage, garantie générale ou gain chiffré demandé par les exemples génériques des skills. La charte et les dernières décisions de Kevin priment.
+
+SEO : intentions confrontées aux résultats disponibles ; chevauchement des six SERP documenté sans prétendre à une mesure exhaustive. Cannibalisation locale contre les requêtes et contenus du dépôt ; schémas émis depuis les données, contrôles de contenu et de référencement sur la sortie HTML. Les FAQ restent visibles et ne produisent pas de FAQPage.
+
+Design retrouvés et lus dans l’installation Claude : `frontend-design-direction`, `make-interfaces-feel-better`, `motion-foundations` sous `.claude/skills/`, et `image-to-code-skill/SKILL.md` sous `.claude/plugins/marketplaces/taste-skill/skills/`. La direction, les états et l’inspection rendue de frontend-design-direction sont utiles ; les détails de lisibilité, focus, cibles et transitions sont repris de make-interfaces-feel-better. Les prescriptions React de motion-foundations ne s’appliquent pas à la stack Astro/CSS : conservation des transitions CSS et respect du mouvement réduit. La génération d’une nouvelle direction demandée par image-to-code contredirait la consigne de Kevin : la source visuelle reste le gabarit validé et ses captures, sans nouveaux mockups.
+
+Modèle de données et planification : plan concret versionné, types et validation du catalogue, projection des contrats et matrices. Aucun équivalent natif de commande Claude `/implement`, `/to-spec` ou `/to-tickets` n’est invoqué. Aucune prétention d’avoir exécuté les agents Hermes ou Claude depuis Codex.
+
+Instructions métier lues : `/Users/kevinkitanga/.hermes/profiles/metier/SOUL.md` : source officielle, champ d’application, inconnues, distinction préparation / décision, et refus des conclusions de conformité. La revue locale est une relecture du chantier, pas présentée comme une revue indépendante signée par ce profil. Aucun déploiement de production ou fusion n’est réalisé.
+
+Imagegen : outil intégré réellement disponible ; un pilote CFE avec Balthazar en référence, puis une génération séparée par robot avec le pilote. Aucun nom de modèle non exposé n’est annoncé. Les PNG maîtres normalisés et les formats de production sont dérivés sans remplacement d’une figurine par un dessin de code.

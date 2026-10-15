@@ -3,7 +3,12 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
-    "/outils-comptables-gratuits/comparateur-balances-comptables": { "query": "comparateur balance comptable", "descriptionLead": "Comparez deux balances CSV", "measuredAt": "2026-10-06", "source": "Fiche EC 05 et sondes G3 : aucune suggestion sur la primaire ; signal faible, aucun volume revendiqué. Calcul sur deux exports distinct d’un guide logiciel ou d’une prestation." },
+    "/outils-comptables-gratuits/comparateur-balances-comptables": {
+      "query": "comparateur balance comptable",
+      "descriptionLead": "Comparez deux balances CSV",
+      "measuredAt": "2026-10-06",
+      "source": "Fiche EC 05 et sondes G3 : aucune suggestion sur la primaire ; signal faible, aucun volume revendiqué. Calcul sur deux exports distinct d’un guide logiciel ou d’une prestation."
+    },
     "/automatisation/bulletins-controle": {
       "query": "automatisation contrôle bulletins de paie cabinet comptable",
       "descriptionLead": "Contrôles des bulletins de paie en cabinet",
@@ -144,8 +149,10 @@
       "descriptionLead": "À propos de Memlia"
     },
     "/automatisation-cabinet-comptable": {
-      "query": "automatisation tâches répétitives cabinet comptable",
-      "descriptionLead": "Toute tâche répétitive"
+      "query": "robot cabinet comptable",
+      "descriptionLead": "Robots pour cabinet comptable ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
     },
     "/automatisation/factures-fournisseurs": {
       "query": "factures fournisseurs des dossiers clients",
@@ -300,6 +307,132 @@
       "descriptionLead": "Clients sur une autre plateforme agréée",
       "measuredAt": "2026-10-06",
       "source": "commercial/recettes/facture-electronique/preuves/demande.json ; autocomplétion sans suggestion commerciale, aucun volume revendiqué."
+    },
+    "/automatisation/cfe": {
+      "query": "robot cfe cabinet comptable",
+      "descriptionLead": "Robot CFE ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/taxes-foncieres": {
+      "query": "robot collecte taxe fonciere",
+      "descriptionLead": "Robot taxes foncières ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/suivi-urssaf": {
+      "query": "robot suivi urssaf cabinet comptable",
+      "descriptionLead": "Robot URSSAF ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/dette-fiscale": {
+      "query": "robot dette fiscale situation paiement",
+      "descriptionLead": "Suivi des dettes fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/suivi-declarations-fiscales": {
+      "query": "robot suivi declarations fiscales cabinet",
+      "descriptionLead": "Suivi des déclarations fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/habilitations-fiscales": {
+      "query": "robot habilitations fiscales edi efi",
+      "descriptionLead": "Habilitations fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/rattachement-fiscal": {
+      "query": "robot rattachement fiscal siren",
+      "descriptionLead": "Rattachement fiscal ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/informations-legales-rne": {
+      "query": "robot rne informations legales cabinet",
+      "descriptionLead": "Robot RNE ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/messagerie-fiscale": {
+      "query": "robot messagerie fiscale impots",
+      "descriptionLead": "Messagerie fiscale ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/veille-bodacc": {
+      "query": "robot veille bodacc portefeuille",
+      "descriptionLead": "Veille BODACC ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/annuaire-facturation-electronique": {
+      "query": "robot annuaire facturation electronique",
+      "descriptionLead": "Annuaire de facturation électronique ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/attestation-fiscale": {
+      "query": "robot attestation regularite fiscale",
+      "descriptionLead": "Attestation de régularité fiscale ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/attestation-sociale": {
+      "query": "robot attestation vigilance urssaf",
+      "descriptionLead": "Attestations URSSAF ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/fiches-dgfip-facturation-electronique": {
+      "query": "robot fiches dgfip facturation electronique",
+      "descriptionLead": "Fiches DGFiP par dossier ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/mandats-plateforme-agreee": {
+      "query": "robot mandats plateforme agreee jesignexpert",
+      "descriptionLead": "Mandats de plateforme agréée ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/beneficiaires-effectifs": {
+      "query": "robot beneficiaires effectifs cabinet",
+      "descriptionLead": "Bénéficiaires effectifs ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/anonymisation-documents": {
+      "query": "robot anonymisation documents cabinet comptable",
+      "descriptionLead": "Anonymisation de documents ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/tableaux-de-bord-fec": {
+      "query": "robot tableaux bord fec power bi",
+      "descriptionLead": "Tableaux de bord à partir du FEC ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/collecte-ir": {
+      "query": "robot collecte declarations ir preremplies",
+      "descriptionLead": "Collecte IR ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/collecte-ifi": {
+      "query": "robot collecte declarations ifi historique",
+      "descriptionLead": "Collecte IFI ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/situation-tva": {
+      "query": "robot situation tva avis solde",
+      "descriptionLead": "Situation TVA ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
     }
   }
 }

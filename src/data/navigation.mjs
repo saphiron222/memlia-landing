@@ -6,7 +6,7 @@ export function creerNavigation({ chemin, cacDisponible, blogActif }) {
     ...(cacDisponible ? [{ id: 'cabinets', libelle: 'Cabinets', sousEntrees: [
       { libelle: 'Expertise comptable', href: '/' }, LIEN_CAC,
     ] }] : []),
-    { libelle: "Ce qu’on automatise", href: '/automatisation-cabinet-comptable' },
+    { libelle: 'Robots comptables', href: '/automatisation-cabinet-comptable' },
     { libelle: 'Outils gratuits', href: '/outils-comptables-gratuits' },
     ...(blogActif ? [{ libelle: 'Blog', href: '/blog' }] : []),
   ];

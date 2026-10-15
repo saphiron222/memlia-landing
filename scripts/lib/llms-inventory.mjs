@@ -39,7 +39,7 @@ export function renderLlmsInventory(template, pages) {
   const articles = records.filter(page => page.nodes.some(node => node['@type'] === 'BlogPosting'));
   const tools = records.filter(page => page.path.startsWith('/outils-comptables-gratuits/'));
   const services = records.filter(page => page.path.startsWith('/automatisation/'));
-  const hubs = ['/integrations', '/outils-comptables-gratuits', '/blog'];
+  const hubs = ['/automatisation-cabinet-comptable', '/integrations', '/outils-comptables-gratuits', '/blog'];
   const listed = [...hubs.map(path => {
     const page = records.find(page => page.path === path);
     if (!page) throw new Error(`Hub publié absent : ${path}`);

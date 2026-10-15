@@ -98,6 +98,22 @@
         "kind": "no-functional-media",
         "reason": "La rubrique conduit aux deux méthodes CAC et affiche leurs couvertures propres ; une troisième illustration décorative ne montrerait aucun contrôle supplémentaire au lecteur."
       }
+    },
+    "/automatisation-cabinet-comptable": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "CollectionPage",
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Le catalogue est lui-même la restitution : figurines, cartes et filtres dérivés des données, avec une image sociale de son trio."
+      }
     }
   }
 }

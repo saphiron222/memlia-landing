@@ -82,3 +82,93 @@ https://memlia.fr/*
 # WebP et PNG restent indexables pour la recherche d’images.
 /*.avif
   X-Robots-Tag: noindex
+
+# Hub robots — projection du catalogue
+
+/automatisation-cabinet-comptable
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/cfe
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/taxes-foncieres
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/suivi-urssaf
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/dette-fiscale
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/suivi-declarations-fiscales
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/habilitations-fiscales
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/rattachement-fiscal
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/informations-legales-rne
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/messagerie-fiscale
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/veille-bodacc
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/annuaire-facturation-electronique
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/attestation-fiscale
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/attestation-sociale
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/fiches-dgfip-facturation-electronique
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/mandats-plateforme-agreee
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/beneficiaires-effectifs
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/anonymisation-documents
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/tableaux-de-bord-fec
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/collecte-ir
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/collecte-ifi
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/automatisation/situation-tva
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform

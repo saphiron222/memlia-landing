@@ -6,6 +6,8 @@ import Picto, { type NomPicto } from '@/components/Picto.astro';
 import Courriel from '@/components/Courriel.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
+import { ROBOTS, contactsRobots } from '@/data/robots';
+const tachesRobots = contactsRobots();
 
 const page = PAGES_V2.contact;
 const url = `${SITE.url}${page.chemin}`;
@@ -55,6 +57,14 @@ const appel = {
         <div class="champ">
           <label for="courriel">Votre adresse de courriel</label>
           <input id="courriel" name="courriel" type="email" required maxlength="254" autocomplete="email" inputmode="email" />
+        </div>
+        <div class="champ">
+          <label for="tache_robot">Tâche à confier <span class="texte-2">(facultatif)</span></label>
+          <select id="tache_robot" name="tache_robot" aria-describedby="tache-aide">
+            <option value="">Choisir une tâche ou décrire la vôtre</option>
+            {ROBOTS.map((robot) => <optgroup label={robot.nom}>{tachesRobots.filter((tache) => tache.robot === robot.id).map((tache) => <option value={tache.id}>{tache.nom}</option>)}</optgroup>)}
+          </select>
+          <p id="tache-aide" class="champ-aide texte-2">Vous pouvez changer ce choix ou le laisser vide.</p>
         </div>
         <div class="champ">
           <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
@@ -143,6 +153,13 @@ const appel = {
    * Sans JavaScript, il fonctionne tel quel : la fonction redirige vers une page de réponse.
    */
   const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
+  const choixTache = document.querySelector<HTMLSelectElement>('#tache_robot');
+  try {
+    const identifiant = sessionStorage.getItem('memlia-tache');
+    sessionStorage.removeItem('memlia-tache');
+    if (choixTache && identifiant && Array.from(choixTache.options).some((option) => option.value === identifiant)) choixTache.value = identifiant;
+  } catch { /* Le formulaire garde son choix facultatif vide. */ }
+
   const etat = document.querySelector<HTMLElement>('[data-etat]');
   const afficherEtat = (texte: string, ok: boolean) => {
     if (!etat) return;

@@ -26,6 +26,23 @@ function pageComposee(preuve = 'v2/service-tache-test', liens = ['/automatisatio
   return `<script type="application/ld+json">${schema}</script><main data-service-layout="da-v1"><section data-service-hero class="rv in"><div data-service-media><figure data-proof="${preuve}"></figure></div><div data-service-media><figure data-proof="${preuve}"></figure></div></section><p data-page-byline>Par Kevin Kitanga · mis à jour le 20 septembre 2026</p><section data-service-sections></section><section data-service-section="couverture">Ce que votre logiciel fait déjà</section><footer>${liens.map((href) => `<a href="${href}">Tâche</a>`).join('')}</footer></main>`;
 }
 
+test('migration robots : un parcours contextuel documenté remplace le lien de grille, sans rendre les services orphelins',()=>{
+ const root=fixture();
+ try{
+  mkdirSync(join(root,'config'),{recursive:true});
+  writeFileSync(join(root,'config/service-publication-ledger.json'),JSON.stringify({catalogueMode:'robots-routines',catalogueDecision:{date:'2026-10-15',reason:'Le catalogue des routines remplace la grille des services historiques ; leurs liens contextuels publiés doivent rester présents.'}}));
+  writeFileSync(join(root,'dist/automatisation/tache-test/index.html'),pageComposee().replace('<div data-service-media><figure data-proof="v2/service-tache-test"></figure></div>',''));
+  writeFileSync(join(root,'dist/automatisation-cabinet-comptable.html'),'<main>Hub robots</main>');
+  writeFileSync(join(root,'dist/metier.html'),'<main><a href="/automatisation/tache-test">Préparer la tâche du métier</a></main>');
+  assert.equal(auditerServiceDesign({root}).pass,true);
+  writeFileSync(join(root,'dist/metier.html'),'<main>Métier</main><footer><a href="/automatisation/tache-test">Tâche</a></footer>');
+  assert.match(auditerServiceDesign({root}).erreurs.join('\n'),/catalogue des tâches : lien absent/);
+  writeFileSync(join(root,'dist/metier.html'),'<main><a href="/automatisation/tache-test">Tâche</a></main>');
+  writeFileSync(join(root,'config/service-publication-ledger.json'),'{}');
+  assert.match(auditerServiceDesign({root}).erreurs.join('\n'),/catalogue des tâches : lien absent/);
+ }finally{rmSync(root,{recursive:true,force:true});}
+});
+
 test('le footer donne accès au catalogue et celui-ci relie chaque tâche dans son contenu', () => {
   const root = fixture();
   try {

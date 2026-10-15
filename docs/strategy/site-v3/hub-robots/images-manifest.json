@@ -1,0 +1,1078 @@
+{
+  "date": "2026-10-15",
+  "generator": "imagegen intégré Codex ; aucun choix de modèle exposé",
+  "normalizer": "scripts/optimise-robots.mjs",
+  "records": [
+    {
+      "id": "cfe",
+      "nom": "Collecte CFE",
+      "palette": "#cd966c",
+      "description": "Robot CFE en argile abricot avec un trieur d’avis et un anneau vert.",
+      "objet": "Trieur de bureau crème avec trois feuilles vierges à onglets",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/cfe.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/cfe.json",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/figurines-2026-10-15/png/01-balthazar.png",
+      "sha256": "2ec3f53ec141435810022f39896cd8e73eea7211bc09aceaf42460333c8241d8",
+      "variants": [
+        {
+          "path": "public/robots/cfe-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1171
+        },
+        {
+          "path": "public/robots/cfe-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1196
+        },
+        {
+          "path": "public/robots/cfe-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2757
+        },
+        {
+          "path": "public/robots/cfe-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 3076
+        },
+        {
+          "path": "public/robots/cfe-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8478
+        },
+        {
+          "path": "public/robots/cfe-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10328
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/references/balthazar.png"
+    },
+    {
+      "id": "taxes-foncieres",
+      "nom": "Collecte des taxes foncières",
+      "palette": "#aab3cc",
+      "description": "Figurine du robot Collecte des taxes foncières, en argile mate, avec une petite maison de céramique crème et un anneau vert.",
+      "objet": "une petite maison de céramique crème à toiture simple, sans fenêtre peinte",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/taxes-foncieres.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/taxes-foncieres.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/taxes-foncieres.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "7b441e941f0735427c0262a0aa4ed1fb41e2445c29f47cc89ef9dcb3d2e9dae7",
+      "variants": [
+        {
+          "path": "public/robots/taxes-foncieres-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1182
+        },
+        {
+          "path": "public/robots/taxes-foncieres-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1056
+        },
+        {
+          "path": "public/robots/taxes-foncieres-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2580
+        },
+        {
+          "path": "public/robots/taxes-foncieres-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2632
+        },
+        {
+          "path": "public/robots/taxes-foncieres-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8475
+        },
+        {
+          "path": "public/robots/taxes-foncieres-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10502
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "suivi-urssaf",
+      "nom": "Suivi URSSAF",
+      "palette": "#c68c99",
+      "description": "Figurine du robot Suivi URSSAF, en argile mate, avec un porte-courrier crème avec enveloppe et un anneau vert.",
+      "objet": "un petit porte-courrier crème avec une enveloppe vierge et un intercalaire",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/suivi-urssaf.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/suivi-urssaf.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/suivi-urssaf.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "c5b6f10871caa3501c6307f754c8cff319ba9feb153e1a7e62ecf93d85099b87",
+      "variants": [
+        {
+          "path": "public/robots/suivi-urssaf-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1130
+        },
+        {
+          "path": "public/robots/suivi-urssaf-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1022
+        },
+        {
+          "path": "public/robots/suivi-urssaf-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2450
+        },
+        {
+          "path": "public/robots/suivi-urssaf-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2526
+        },
+        {
+          "path": "public/robots/suivi-urssaf-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7505
+        },
+        {
+          "path": "public/robots/suivi-urssaf-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 8750
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "dette-fiscale",
+      "nom": "Suivi des dettes fiscales",
+      "palette": "#a0afa0",
+      "description": "Figurine du robot Suivi des dettes fiscales, en argile mate, avec une balance de céramique crème et un anneau vert.",
+      "objet": "une petite balance à deux plateaux en céramique crème, plateaux légèrement décalés",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/dette-fiscale.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/dette-fiscale.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/dette-fiscale.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "8a34f96f35af3eefe591810ec874261ac652798b0ac75f2932bfe3bb2913121b",
+      "variants": [
+        {
+          "path": "public/robots/dette-fiscale-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1174
+        },
+        {
+          "path": "public/robots/dette-fiscale-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1108
+        },
+        {
+          "path": "public/robots/dette-fiscale-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2834
+        },
+        {
+          "path": "public/robots/dette-fiscale-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2862
+        },
+        {
+          "path": "public/robots/dette-fiscale-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8707
+        },
+        {
+          "path": "public/robots/dette-fiscale-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 11134
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "suivi-declarations-fiscales",
+      "nom": "Suivi des déclarations fiscales",
+      "palette": "#d0b96e",
+      "description": "Figurine du robot Suivi des déclarations fiscales, en argile mate, avec un calendrier de bureau crème vierge et un anneau vert.",
+      "objet": "un petit calendrier de bureau crème, pages totalement vierges, spirale céramique",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/suivi-declarations-fiscales.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/suivi-declarations-fiscales.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/suivi-declarations-fiscales.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "643415410411dfcd7cc46b43f6a8a00ef8a34d99cce6bf62c4a215ca9096a1a3",
+      "variants": [
+        {
+          "path": "public/robots/suivi-declarations-fiscales-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1161
+        },
+        {
+          "path": "public/robots/suivi-declarations-fiscales-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1144
+        },
+        {
+          "path": "public/robots/suivi-declarations-fiscales-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2572
+        },
+        {
+          "path": "public/robots/suivi-declarations-fiscales-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2916
+        },
+        {
+          "path": "public/robots/suivi-declarations-fiscales-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7672
+        },
+        {
+          "path": "public/robots/suivi-declarations-fiscales-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9946
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "habilitations-fiscales",
+      "nom": "Habilitations fiscales",
+      "palette": "#a79bbd",
+      "description": "Figurine du robot Habilitations fiscales, en argile mate, avec une clé de céramique crème et un anneau vert.",
+      "objet": "une seule grosse clé de céramique crème posée en diagonale",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/habilitations-fiscales.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/habilitations-fiscales.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/habilitations-fiscales.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "9fe15214b1ec2b657bd4ddf54554cd37a09e3ba15d5d29ec380b9375818248b1",
+      "variants": [
+        {
+          "path": "public/robots/habilitations-fiscales-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1166
+        },
+        {
+          "path": "public/robots/habilitations-fiscales-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1058
+        },
+        {
+          "path": "public/robots/habilitations-fiscales-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2643
+        },
+        {
+          "path": "public/robots/habilitations-fiscales-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2656
+        },
+        {
+          "path": "public/robots/habilitations-fiscales-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8407
+        },
+        {
+          "path": "public/robots/habilitations-fiscales-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9600
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "rattachement-fiscal",
+      "nom": "Rattachement fiscal",
+      "palette": "#7ba8a5",
+      "description": "Figurine du robot Rattachement fiscal, en argile mate, avec deux maillons de céramique crème emboîtés et un anneau vert.",
+      "objet": "deux maillons de chaîne en céramique crème emboîtés, formant un seul objet",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/rattachement-fiscal.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/rattachement-fiscal.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/rattachement-fiscal.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "65fb0c5b2a8110573392b9b608452c3b7d69bd13425ae9f70ed10f03cd690dcc",
+      "variants": [
+        {
+          "path": "public/robots/rattachement-fiscal-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1153
+        },
+        {
+          "path": "public/robots/rattachement-fiscal-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1082
+        },
+        {
+          "path": "public/robots/rattachement-fiscal-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2515
+        },
+        {
+          "path": "public/robots/rattachement-fiscal-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2578
+        },
+        {
+          "path": "public/robots/rattachement-fiscal-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8151
+        },
+        {
+          "path": "public/robots/rattachement-fiscal-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10734
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "informations-legales-rne",
+      "nom": "Informations légales et RNE",
+      "palette": "#b7a28a",
+      "description": "Figurine du robot Informations légales et RNE, en argile mate, avec un registre crème ouvert aux pages vierges et un anneau vert.",
+      "objet": "un petit registre de toile crème ouvert avec pages vierges",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/informations-legales-rne.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/informations-legales-rne.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/informations-legales-rne.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "e2976a4c8a5d525615bc393f2f5aaeacf4784c64238fd4eaeb070f5a4831ebef",
+      "variants": [
+        {
+          "path": "public/robots/informations-legales-rne-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1081
+        },
+        {
+          "path": "public/robots/informations-legales-rne-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1038
+        },
+        {
+          "path": "public/robots/informations-legales-rne-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2649
+        },
+        {
+          "path": "public/robots/informations-legales-rne-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2776
+        },
+        {
+          "path": "public/robots/informations-legales-rne-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8741
+        },
+        {
+          "path": "public/robots/informations-legales-rne-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 11484
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "messagerie-fiscale",
+      "nom": "Messagerie fiscale",
+      "palette": "#8ba7bf",
+      "description": "Figurine du robot Messagerie fiscale, en argile mate, avec une enveloppe crème ouverte et une feuille vierge et un anneau vert.",
+      "objet": "une enveloppe crème ouverte avec feuille vierge partiellement sortie",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/messagerie-fiscale.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/messagerie-fiscale.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/messagerie-fiscale.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "852ec33c9d1b58f11239aa62cc51fbefcdf9a9d6dd86205160a0352f3aaa0414",
+      "variants": [
+        {
+          "path": "public/robots/messagerie-fiscale-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1202
+        },
+        {
+          "path": "public/robots/messagerie-fiscale-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1114
+        },
+        {
+          "path": "public/robots/messagerie-fiscale-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2745
+        },
+        {
+          "path": "public/robots/messagerie-fiscale-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2768
+        },
+        {
+          "path": "public/robots/messagerie-fiscale-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8559
+        },
+        {
+          "path": "public/robots/messagerie-fiscale-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10166
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "veille-bodacc",
+      "nom": "Veille BODACC",
+      "palette": "#b9ac81",
+      "description": "Figurine du robot Veille BODACC, en argile mate, avec une loupe de céramique à manche vert et un anneau vert.",
+      "objet": "une loupe à manche vert profond posée au sol, lentille claire sans image",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/veille-bodacc.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/veille-bodacc.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/veille-bodacc.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "2f02112c69fa9b6e4980262b1c9759f74f25a77616035efbd812d3ed6dfc442f",
+      "variants": [
+        {
+          "path": "public/robots/veille-bodacc-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1156
+        },
+        {
+          "path": "public/robots/veille-bodacc-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1170
+        },
+        {
+          "path": "public/robots/veille-bodacc-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2730
+        },
+        {
+          "path": "public/robots/veille-bodacc-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2976
+        },
+        {
+          "path": "public/robots/veille-bodacc-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8857
+        },
+        {
+          "path": "public/robots/veille-bodacc-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 11322
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "annuaire-facturation-electronique",
+      "nom": "Annuaire de facturation électronique",
+      "palette": "#8aaabc",
+      "description": "Figurine du robot Annuaire de facturation électronique, en argile mate, avec un répertoire crème à onglets vierges et un anneau vert.",
+      "objet": "un petit répertoire crème debout à onglets vierges, sans aucun signe",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/annuaire-facturation-electronique.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/annuaire-facturation-electronique.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/annuaire-facturation-electronique.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "c1481e1cb82faf59e6f23c56a8719c3b716da13c5246e796f77e965e59d8b5d5",
+      "variants": [
+        {
+          "path": "public/robots/annuaire-facturation-electronique-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1107
+        },
+        {
+          "path": "public/robots/annuaire-facturation-electronique-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 960
+        },
+        {
+          "path": "public/robots/annuaire-facturation-electronique-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2492
+        },
+        {
+          "path": "public/robots/annuaire-facturation-electronique-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2566
+        },
+        {
+          "path": "public/robots/annuaire-facturation-electronique-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7710
+        },
+        {
+          "path": "public/robots/annuaire-facturation-electronique-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9184
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "attestation-fiscale",
+      "nom": "Attestation de régularité fiscale",
+      "palette": "#b69a77",
+      "description": "Figurine du robot Attestation de régularité fiscale, en argile mate, avec une feuille crème au bord inférieur roulé et un anneau vert.",
+      "objet": "une feuille de céramique crème roulée seulement sur son bord inférieur, totalement vierge",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/attestation-fiscale.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/attestation-fiscale.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/attestation-fiscale.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "0b22b588dfd540a22c597e7f586ca5a637c62c1a65f7df883af2e184561d7820",
+      "variants": [
+        {
+          "path": "public/robots/attestation-fiscale-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1116
+        },
+        {
+          "path": "public/robots/attestation-fiscale-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1022
+        },
+        {
+          "path": "public/robots/attestation-fiscale-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2439
+        },
+        {
+          "path": "public/robots/attestation-fiscale-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2720
+        },
+        {
+          "path": "public/robots/attestation-fiscale-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8168
+        },
+        {
+          "path": "public/robots/attestation-fiscale-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10168
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "attestation-sociale",
+      "nom": "Attestations URSSAF",
+      "palette": "#c4a0b8",
+      "description": "Figurine du robot Attestations URSSAF, en argile mate, avec un document crème à sceau vierge en relief et un anneau vert.",
+      "objet": "un document crème rigide avec un relief de sceau rond vierge sans texte, posé verticalement",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/attestation-sociale.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/attestation-sociale.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/attestation-sociale.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "43b7c2f7800ab6ceafbec0f7bbf75f7e3d1565aaa9fa6fa3cd6e4e5cb4a61ebd",
+      "variants": [
+        {
+          "path": "public/robots/attestation-sociale-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1140
+        },
+        {
+          "path": "public/robots/attestation-sociale-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 962
+        },
+        {
+          "path": "public/robots/attestation-sociale-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2588
+        },
+        {
+          "path": "public/robots/attestation-sociale-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2574
+        },
+        {
+          "path": "public/robots/attestation-sociale-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8358
+        },
+        {
+          "path": "public/robots/attestation-sociale-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9860
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "fiches-dgfip-facturation-electronique",
+      "nom": "Fiches DGFiP par dossier",
+      "palette": "#95b6aa",
+      "description": "Figurine du robot Fiches DGFiP par dossier, en argile mate, avec un éventail de trois fiches crème vierges et un anneau vert.",
+      "objet": "un petit éventail de trois fiches crème rectangulaires vierges retenues par un petit axe",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/fiches-dgfip-facturation-electronique.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/fiches-dgfip-facturation-electronique.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/fiches-dgfip-facturation-electronique.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "e94b7e41d8b7b8086cc3593d8949257e11f1bb3a51fe72f5b1e3ab6f46142268",
+      "variants": [
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1116
+        },
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 982
+        },
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2489
+        },
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2638
+        },
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8334
+        },
+        {
+          "path": "public/robots/fiches-dgfip-facturation-electronique-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10404
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "mandats-plateforme-agreee",
+      "nom": "Mandats de plateforme agréée",
+      "palette": "#c59573",
+      "description": "Figurine du robot Mandats de plateforme agréée, en argile mate, avec un stylo de bois clair sur une feuille crème vierge et un anneau vert.",
+      "objet": "un stylo en bois clair posé en diagonale sur une feuille crème vierge, un seul ensemble",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/mandats-plateforme-agreee.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/mandats-plateforme-agreee.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/mandats-plateforme-agreee.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "b0b534eeb4a7e3ff1dc07983b6c8257ebd9b911d7bce47e0746014faf890964c",
+      "variants": [
+        {
+          "path": "public/robots/mandats-plateforme-agreee-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1186
+        },
+        {
+          "path": "public/robots/mandats-plateforme-agreee-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1170
+        },
+        {
+          "path": "public/robots/mandats-plateforme-agreee-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2720
+        },
+        {
+          "path": "public/robots/mandats-plateforme-agreee-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2926
+        },
+        {
+          "path": "public/robots/mandats-plateforme-agreee-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8522
+        },
+        {
+          "path": "public/robots/mandats-plateforme-agreee-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10768
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "beneficiaires-effectifs",
+      "nom": "Bénéficiaires effectifs",
+      "palette": "#aa9fbe",
+      "description": "Figurine du robot Bénéficiaires effectifs, en argile mate, avec un arbre de propriété sculpté en céramique crème et un anneau vert.",
+      "objet": "un petit arbre de propriété abstrait en céramique crème : trois disques vierges reliés par des tiges courtes",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/beneficiaires-effectifs.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/beneficiaires-effectifs.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/beneficiaires-effectifs.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "8b58d2fdfe38b5068c49583729912970e353bf926495c67031b014cfde6d133d",
+      "variants": [
+        {
+          "path": "public/robots/beneficiaires-effectifs-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1160
+        },
+        {
+          "path": "public/robots/beneficiaires-effectifs-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1042
+        },
+        {
+          "path": "public/robots/beneficiaires-effectifs-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2730
+        },
+        {
+          "path": "public/robots/beneficiaires-effectifs-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2668
+        },
+        {
+          "path": "public/robots/beneficiaires-effectifs-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8425
+        },
+        {
+          "path": "public/robots/beneficiaires-effectifs-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10106
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "anonymisation-documents",
+      "nom": "Anonymisation de documents",
+      "palette": "#8d9eaa",
+      "description": "Figurine du robot Anonymisation de documents, en argile mate, avec une feuille crème aux bandes opaques sans inscription et un anneau vert.",
+      "objet": "une feuille crème avec trois bandes opaques gris foncé en relief, sans aucun signe ni mot",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/anonymisation-documents.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/anonymisation-documents.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/anonymisation-documents.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "6ab85e40c0cfad97597244325703879f765f3cf1b6197712e3673f13367c869b",
+      "variants": [
+        {
+          "path": "public/robots/anonymisation-documents-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1145
+        },
+        {
+          "path": "public/robots/anonymisation-documents-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1064
+        },
+        {
+          "path": "public/robots/anonymisation-documents-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2622
+        },
+        {
+          "path": "public/robots/anonymisation-documents-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2782
+        },
+        {
+          "path": "public/robots/anonymisation-documents-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 8799
+        },
+        {
+          "path": "public/robots/anonymisation-documents-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 10962
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "tableaux-de-bord-fec",
+      "nom": "Tableaux de bord à partir du FEC",
+      "palette": "#8ab1a8",
+      "description": "Figurine du robot Tableaux de bord à partir du FEC, en argile mate, avec trois colonnes de bois clair sur un socle crème et un anneau vert.",
+      "objet": "un seul petit diagramme sculpté de trois colonnes croissantes en bois clair sur socle crème",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/tableaux-de-bord-fec.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/tableaux-de-bord-fec.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/tableaux-de-bord-fec.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "3f085886041537704a1edbfe6f1c14ff77fc0907c75ae6e0728a7e17cd3add38",
+      "variants": [
+        {
+          "path": "public/robots/tableaux-de-bord-fec-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1107
+        },
+        {
+          "path": "public/robots/tableaux-de-bord-fec-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1054
+        },
+        {
+          "path": "public/robots/tableaux-de-bord-fec-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2529
+        },
+        {
+          "path": "public/robots/tableaux-de-bord-fec-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2630
+        },
+        {
+          "path": "public/robots/tableaux-de-bord-fec-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7995
+        },
+        {
+          "path": "public/robots/tableaux-de-bord-fec-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9074
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "collecte-ir",
+      "nom": "Collecte IR",
+      "palette": "#c6af81",
+      "description": "Figurine du robot Collecte IR, en argile mate, avec un tiroir d’archives crème ouvert avec feuilles vierges et un anneau vert.",
+      "objet": "un petit tiroir d'archives crème ouvert contenant des feuilles vierges à plat",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/collecte-ir.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/collecte-ir.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/collecte-ir.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "93b45efc82890cb99be9d1de1372ed1d854fa81a96ab0ee29c3d966c651e800f",
+      "variants": [
+        {
+          "path": "public/robots/collecte-ir-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1153
+        },
+        {
+          "path": "public/robots/collecte-ir-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1142
+        },
+        {
+          "path": "public/robots/collecte-ir-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2636
+        },
+        {
+          "path": "public/robots/collecte-ir-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2806
+        },
+        {
+          "path": "public/robots/collecte-ir-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7324
+        },
+        {
+          "path": "public/robots/collecte-ir-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 8938
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "collecte-ifi",
+      "nom": "Collecte IFI",
+      "palette": "#bea5a0",
+      "description": "Figurine du robot Collecte IFI, en argile mate, avec une petite maison crème sur une feuille vierge et un anneau vert.",
+      "objet": "une petite maison crème posée sur une unique feuille rigide vierge, un ensemble",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/collecte-ifi.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/collecte-ifi.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/collecte-ifi.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "6211aee526e971d5609d7be22b1de0f080196d4a3ffdbc615b8bf2bb11de223f",
+      "variants": [
+        {
+          "path": "public/robots/collecte-ifi-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1208
+        },
+        {
+          "path": "public/robots/collecte-ifi-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1158
+        },
+        {
+          "path": "public/robots/collecte-ifi-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2922
+        },
+        {
+          "path": "public/robots/collecte-ifi-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2970
+        },
+        {
+          "path": "public/robots/collecte-ifi-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 9399
+        },
+        {
+          "path": "public/robots/collecte-ifi-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 11380
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    },
+    {
+      "id": "situation-tva",
+      "nom": "Situation TVA",
+      "palette": "#9abcb8",
+      "description": "Figurine du robot Situation TVA, en argile mate, avec un petit boulier de bois clair aux perles crème et un anneau vert.",
+      "objet": "un petit boulier en bois clair avec quelques perles crème sur deux tiges, sans chiffres",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/situation-tva.png",
+      "png": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/png/situation-tva.png",
+      "prompt": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/prompts/situation-tva.json",
+      "reference": "/Users/kevinkitanga/.codex/generated_images/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/exec-62da60bd-df10-4cd9-9af2-8e759c2b3bd5.png",
+      "sha256": "f0573ef6db003b3524474da631923773e2338bbf3f6a22e538e396e0dfa6683e",
+      "variants": [
+        {
+          "path": "public/robots/situation-tva-128.avif",
+          "width": 128,
+          "height": 128,
+          "bytes": 1090
+        },
+        {
+          "path": "public/robots/situation-tva-128.webp",
+          "width": 128,
+          "height": 128,
+          "bytes": 1088
+        },
+        {
+          "path": "public/robots/situation-tva-256.avif",
+          "width": 256,
+          "height": 256,
+          "bytes": 2562
+        },
+        {
+          "path": "public/robots/situation-tva-256.webp",
+          "width": 256,
+          "height": 256,
+          "bytes": 2728
+        },
+        {
+          "path": "public/robots/situation-tva-512.avif",
+          "width": 512,
+          "height": 512,
+          "bytes": 7718
+        },
+        {
+          "path": "public/robots/situation-tva-512.webp",
+          "width": 512,
+          "height": 512,
+          "bytes": 9318
+        }
+      ],
+      "referenceArchive": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-robots/2026-10-15/originaux/cfe.png"
+    }
+  ]
+}

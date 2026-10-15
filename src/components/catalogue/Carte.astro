@@ -1,0 +1,27 @@
+---
+import Figurine from './Figurine.astro';
+import Picto from '@/components/Picto.astro';
+interface Props { nom: string; fonction: string; resume: string; categorie: string; href: string; image: {src: string; alt: string; couleur: string}; action?: string; }
+const { nom, fonction, resume, categorie, href, image, action = 'Découvrir ce robot' } = Astro.props;
+---
+<a class="carte catalogue-carte" href={href} aria-label={`${nom} : ${fonction}`} style={`--figurine-teinte: ${image.couleur}`}>
+  <div class="catalogue-carte-bande"><span>{categorie}</span></div>
+  <div class="catalogue-carte-figurine"><Figurine src={image.src} alt="" /></div>
+  <div class="catalogue-carte-corps">
+    <span class="catalogue-carte-nature">Robot Memlia</span><h3>{nom}</h3><p class="catalogue-carte-fonction">{fonction}</p><p class="catalogue-carte-resume">{resume}</p>
+    <span class="carte-action">{action}<Picto nom="fleche" taille={14} /></span>
+  </div>
+</a>
+<style>
+.catalogue-carte { display: flex; flex-direction: column; padding: 0; overflow: hidden; position: relative; color: var(--texte); text-decoration: none; height: 100%; transition: transform 200ms, border-color 200ms, box-shadow 200ms; }
+.catalogue-carte-bande { height: 138px; padding: 24px; background: color-mix(in srgb, var(--figurine-teinte) 18%, var(--surface-feuille)); color: var(--texte-2); font-size: var(--t-sm); }
+.catalogue-carte-figurine { width: var(--avatar-carte); height: var(--avatar-carte); margin: -60px 0 0 24px; border: 4px solid var(--surface-elevee); border-radius: var(--r-boite); background: var(--surface-feuille); overflow: hidden; position: relative; }
+.catalogue-carte-corps { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 24px; }
+.catalogue-carte-nature { color: var(--accent-texte); font-size: var(--t-sm); }
+.catalogue-carte h3 { font-size: var(--titre-bloc); }
+.catalogue-carte-fonction { font-size: var(--t-sm); color: var(--texte-2); }
+.catalogue-carte-resume { margin: 12px 0 24px; color: var(--texte-2); }
+.catalogue-carte .carte-action { border-top: 1px solid var(--ligne-douce); margin-top: auto; padding-top: 16px; min-height: 44px; display: flex; align-items: center; gap: 8px; }
+@media (hover:hover) { .catalogue-carte:hover { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .catalogue-carte { transition: none; }.catalogue-carte:hover { transform: none; } }
+</style>

@@ -1,3 +1,4 @@
+import { ROBOT_HUB } from './robots.ts';
 /**
  * Les cinq pages commerciales du site v2 — une seule source pour la navigation,
  * les titres, les chapeaux et les appels à l'action.
@@ -8,14 +9,14 @@
  */
 export const PAGES_V2 = {
   service: {
-    chemin: '/automatisation-cabinet-comptable',
-    nav: 'Automatisation',
-    titre: 'Automatisation sur mesure pour cabinet comptable | Memlia',
-    description: "Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils. Livrée après recette, maintenue, sans siège à payer.",
-    h1: 'Automatisation pour cabinet comptable : votre règle écrite, dans vos outils.',
-    chapeau: "Nous prenons une tâche répétitive entière, de l’observation à la maintenance, dans les outils que vos équipes utilisent déjà. La règle est écrite avec le cabinet ; votre équipe garde chaque décision.",
-    ariane: 'Automatisation',
-    secondaire: { libelle: 'Voir comment se déroule la mission', href: '/methode' },
+    chemin: String(ROBOT_HUB.chemin),
+    nav: 'Robots comptables',
+    titre: String(ROBOT_HUB.titre),
+    description: String(ROBOT_HUB.description),
+    h1: String(ROBOT_HUB.h1),
+    chapeau: String(ROBOT_HUB.introduction),
+    ariane: 'Robots comptables',
+    secondaire: { libelle: 'Trouver votre premier robot', href: '#annuaire' },
   },
   methode: {
     chemin: '/methode',
