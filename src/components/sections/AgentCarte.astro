@@ -65,17 +65,23 @@ const idLigne = `agent-ligne-${agent.slug}`;
     }
   }
   /* Bandeau : bord à bord en haut de la carte, au voile de l'accent du pôle (jamais l'accent en aplat : celui de la
-     paie est un rouge). L'avatar s'y pose en bas à gauche et en déborde de --agent-debord. */
+     paie est un rouge). L'avatar s'y pose en bas à gauche et en déborde de --agent-debord ; le libellé du pôle se pose
+     à sa droite, calé en bas du bandeau. Un libellé long passe à la ligne vers le haut sans jamais croiser la tuile
+     (revue de la tâche 4 : « Facturation et recouvrement du cabinet » passait sous l'avatar en haut à gauche). */
   .agent-entete {
     position: relative;
+    display: flex;
+    align-items: flex-end;
     height: var(--agent-bandeau);
     margin: calc(-1 * var(--agent-marge)) calc(-1 * var(--agent-marge)) 0;
-    padding: 14px var(--agent-marge) 0;
+    padding: 0 var(--agent-marge) var(--espace-3) calc(var(--agent-marge) + var(--avatar-carte) + var(--espace-4));
     border-radius: calc(var(--carte-rayon) - 1px) calc(var(--carte-rayon) - 1px) 0 0;
     background: color-mix(in srgb, var(--teinte) 14%, var(--surface-feuille));
   }
   .agent-pole {
     display: block;
+    min-width: 0;
+    text-wrap: balance;
     font-size: var(--t-sm);
     font-weight: 600;
     line-height: 1.4;

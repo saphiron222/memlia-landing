@@ -282,6 +282,54 @@ test.describe('le hub sans JavaScript', () => {
     await expect(page.locator('#suite h2')).toHaveText(HUB.appel.titre);
   });
 
+  test('à 375 px, le tableau empilé aligne chaque valeur sur un seul bord gauche, aucune bribe sous son libellé', async ({ page }) => {
+    // Revue de la tâche 4 (I1) : une cellule dont le texte se découpait en plusieurs éléments de grille laissait
+    // « LCB-FT » ou « sous-traitants » seul sous la colonne du libellé. Chaque ligne de texte de chaque valeur doit
+    // commencer au même bord gauche, le même pour toutes les cellules.
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto(ROUTE);
+    const bords = await page.locator('[data-metiers] tbody td').evaluateAll((cellules) => cellules.map((td) => {
+      const plage = document.createRange();
+      plage.selectNodeContents(td);
+      const lignes = new Map<number, number>();
+      for (const r of plage.getClientRects()) {
+        if (r.width === 0 || r.height === 0) continue;
+        const cle = [...lignes.keys()].find((y) => Math.abs(y - r.top) <= 2) ?? r.top;
+        lignes.set(cle, Math.min(lignes.get(cle) ?? Infinity, r.left));
+      }
+      return { texte: (td.textContent ?? '').trim(), bords: [...lignes.values()].map(Math.round) };
+    }));
+    expect(bords.length).toBe(AGENTS.length * 3);
+    const reference = bords[0].bords[0];
+    for (const { texte, bords: b } of bords) {
+      expect(b.length, `« ${texte} » : au moins une ligne`).toBeGreaterThan(0);
+      for (const bord of b) expect(Math.abs(bord - reference), `« ${texte} » : une ligne hors de la colonne des valeurs`).toBeLessThanOrEqual(1);
+    }
+  });
+
+  for (const largeur of [320, 375, 640, 768, 1024, 1440]) {
+    test(`à ${largeur} px, le libellé du pôle et la tuile de l’avatar ne se croisent sur aucune carte`, async ({ page }) => {
+      // Revue de la tâche 4 (I2) : « Facturation et recouvrement du cabinet » passait sur deux lignes, sous la tuile.
+      await page.setViewportSize({ width: largeur, height: 900 });
+      await page.goto(ROUTE);
+      const cartes = await page.locator('[data-carte-agent]').evaluateAll((items) => items.map((li) => {
+        const p = li.querySelector('.agent-pole')!.getBoundingClientRect();
+        const t = li.querySelector('.agent-tuile')!.getBoundingClientRect();
+        const entete = li.querySelector('.agent-entete')!.getBoundingClientRect();
+        return {
+          slug: (li as HTMLElement).dataset.carteAgent,
+          croisent: p.left < t.right && p.right > t.left && p.top < t.bottom && p.bottom > t.top,
+          dansLeBandeau: p.top >= entete.top - 0.5 && p.bottom <= entete.bottom + 0.5 && p.right <= entete.right + 0.5,
+        };
+      }));
+      expect(cartes).toHaveLength(AGENTS.length);
+      for (const carte of cartes) {
+        expect(carte.croisent, `${carte.slug} : libellé du pôle sous la tuile`).toBe(false);
+        expect(carte.dansLeBandeau, `${carte.slug} : libellé du pôle hors du bandeau`).toBe(true);
+      }
+    });
+  }
+
   test('JSON-LD : CollectionPage et ItemList des cartes du DOM, dans leur ordre ; aucun Service, aucune FAQPage', async ({ page }) => {
     await page.goto(ROUTE);
     const blocs = await page.locator('script[type="application/ld+json"]').allTextContents();

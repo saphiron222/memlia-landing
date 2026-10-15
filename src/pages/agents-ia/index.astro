@@ -68,7 +68,7 @@ const { definitionDetaillee, metiers, construit, sansAgent } = HUB;
                 <span class="hub-metier-prenom">{agent.prenom}</span>
                 <span class="hub-metier-libelle">{agent.libelle}</span>
               </th>
-              {agent.frontiereEnBref.map((cellule, i) => <td data-label={metiers.colonnes[i + 1]}><Insecable texte={cellule} /></td>)}
+              {agent.frontiereEnBref.map((cellule, i) => <td data-label={metiers.colonnes[i + 1]}><span class="hub-metier-texte"><Insecable texte={cellule} /></span></td>)}
             </tr>
           ))}
         </tbody>
@@ -189,6 +189,8 @@ const { definitionDetaillee, metiers, construit, sansAgent } = HUB;
       padding: 0;
       border: 0;
     }
+    /* Deux éléments de grille par cellule, le libellé (::before) et la valeur : la valeur tient dans un seul
+       élément, sinon un segment insécable tombait seul sous le libellé (revue de la tâche 4). */
     td {
       display: grid;
       grid-template-columns: minmax(7.5rem, 0.8fr) minmax(0, 1.2fr);
