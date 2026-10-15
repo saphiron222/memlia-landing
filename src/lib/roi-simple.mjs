@@ -1,6 +1,9 @@
 /** Estimation neutre : les montants viennent du cabinet, jamais du catalogue Memlia. */
+/** @param {{heures:number,coutHoraire:number,budgetMensuel:number,miseEnService?:number|null}} options */
 export function calculerRoiSimple({heures,coutHoraire,budgetMensuel,miseEnService=null}) {
- for(const [nom,valeur,max] of [['Temps',heures,100000],['Coût horaire',coutHoraire,10000],['Budget mensuel',budgetMensuel,1000000]]) {
+ /** @type {[string,number,number][]} */
+ const limites=[['Temps',heures,100000],['Coût horaire',coutHoraire,10000],['Budget mensuel',budgetMensuel,1000000]];
+ for(const [nom,valeur,max] of limites) {
   if(typeof valeur!=='number'||!Number.isFinite(valeur)||valeur<0||valeur>max)throw new Error(`${nom} : renseignez un nombre entre 0 et ${max}.`);
  }
  if(miseEnService!==null&&(typeof miseEnService!=='number'||!Number.isFinite(miseEnService)||miseEnService<0||miseEnService>1000000))throw new Error('Mise en service : montant positif ou nul requis.');
