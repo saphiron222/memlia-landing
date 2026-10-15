@@ -9,7 +9,7 @@
 - [x] Mettre la charte à jour : catalogue d’abord, déploiement et adaptation, construction sur mesure au besoin. Aucune preuve de déploiement client déduite de l’existence d’une fiche.
 - [x] Réécrire les cinq pages, les éléments communs et les métadonnées. Garder les parcours, ancres, textes réglementaires sourcés et mécanique du contact.
 - [x] Effectuer les sept passes de copy-editing et une autocritique selon les angles lecteur, conversion, marque et UX ; vérifier les affirmations et la distinction CAC.
-- [ ] Régénérer, vérifier le rendu et les contrats affectés ; publier une prévisualisation, sans production ni fusion.
+- [x] Régénérer, vérifier le rendu et les contrats affectés ; publier une prévisualisation, sans production ni fusion : https://f477055f.memlia.pages.dev.
 
 ## Décision éditoriale
 
@@ -62,3 +62,7 @@ Les corps scellés des articles et services restent inchangés. La signature et 
 Le worktree agents est lu au commit `03acf961`, sans le modifier ni fusionner ses changements. Les liens agents de cette branche conduisent au cadrage existant avec le libellé « Préparer son déploiement », sans prétendre ouvrir un annuaire absent du checkout. La refonte des guides et intégrations reste différée conformément à la demande précédente.
 
 L’archive CAC précédente reste conservée. La copy CAC courante est dans `COPY-CAC-CATALOGUE.md`. Le témoin du contenu EC est recalé sur cette demande explicite et continue de refuser une altération dans chacune des onze sections.
+
+## Livraison
+
+Prévisualisation finale : https://f477055f.memlia.pages.dev — code au commit `007c1fe4`. Les deux accueils, À propos, Garanties et Contact sont réécrits ; 15 scénarios navigateur PASS sur cette version distante. `docs/qa/coherence-figurines/COPY-CATALOGUE.md` détaille les vérifications et les limites préexistantes du validateur global. Aucun déploiement en production ni fusion.

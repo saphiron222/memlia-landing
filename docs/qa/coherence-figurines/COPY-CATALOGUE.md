@@ -35,4 +35,10 @@ Le validateur global des services reste en échec sur les mêmes 25 points qu’
 - `docs/strategy/site-v3/coherence-figurines/COPY-CATALOGUE.md` : décision, sources, plan et relecture.
 - `/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/copy-catalogue/` : sources primaires, profils qualitatifs, captures et journaux de QA.
 
-La prévisualisation finale et son contrôle distant seront ajoutés après le déploiement.
+## Prévisualisation finale
+
+https://f477055f.memlia.pages.dev — code `007c1fe4`. Alias actualisé : https://preview-coherence-figurines.memlia.pages.dev.
+
+Quinze scénarios navigateur PASS sur la version distante : accueils, Contact au clavier et six pages éditoriales à 375/768/1440. Inspection réelle du nouvel accueil dans le navigateur intégré. HTTP 200, H1 et description correspondant à la copy finale, canonical memlia.fr et en-tête noindex/nofollow sur les cinq pages ; relevé `copy-preview-http.json`. Le dernier contrôle de types sur le code livré confirme 0 erreur, 0 avertissement et 40 indications existantes.
+
+Captures, rapport distant et dernier contrôle de types ajoutés au dossier des preuves. Aucun message réel envoyé, aucun déploiement de production, aucune fusion.
