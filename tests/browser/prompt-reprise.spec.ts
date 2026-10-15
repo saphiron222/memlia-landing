@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 const ROUTE = '/outils-comptables-gratuits/generateur-prompt-expert-comptable';
 async function generate(page: import('@playwright/test').Page) {
-  await page.goto(ROUTE); await ouvrirReglages(page);
+  await page.goto(ROUTE); await page.locator('details.library > summary').click(); await ouvrirReglages(page);
   await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
   await page.getByLabel(/Je confirme que cette description/).check();
   await page.getByRole('button', { name: 'Assembler le prompt' }).click();

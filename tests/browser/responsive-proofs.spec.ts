@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-const routes = ['/', '/contact', '/methode', '/integrations/dsn-silae', '/outils-comptables-gratuits/calculateur-roi-automatisation', '/blog/logiciel-ia-comptabilite'];
+// Scènes éditoriales, figurines des catalogues/fiches et preuves des articles scellés.
+// L'outil ROI réel n'ajoute plus de capture décorative dans le corps de sa page.
+const routes = ['/', '/contact', '/methode', '/integrations', '/outils-comptables-gratuits', '/agents-ia/paie-social', '/automatisation/cfe', '/blog/logiciel-ia-comptabilite'];
 for (const route of routes) for (const width of [375, 1440]) for (const deviceScaleFactor of [1, 2]) {
   test(`preuves responsives ${route} à ${width}px DPR ${deviceScaleFactor}`, async ({ browser, baseURL }) => {
     const measurements = [];
@@ -14,8 +16,10 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
         await handler.fulfill({ response, body: html });
       });
       await page.goto(route);
-      const editorial=['/','/contact','/methode'].includes(route);
-      const images = page.locator(editorial?'[data-scene] img':'img[src^="/proofs/"]');
+      const editorial = ['/', '/contact', '/methode'].includes(route);
+      const figurines = ['/integrations', '/outils-comptables-gratuits', '/agents-ia/paie-social', '/automatisation/cfe'].includes(route);
+      const selector = editorial ? '[data-scene] img' : figurines ? '.hub-trio img, .routine-identite img' : 'img[src^="/proofs/"]';
+      const images = page.locator(selector);
       expect(await images.count()).toBeGreaterThan(0);
       const selections = [];
       for (const image of await images.all()) {
@@ -29,6 +33,17 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
         expect(selected.naturalWidth).toBeGreaterThan(0);
         if(editorial){
           if(responsive){expect(selected.currentSrc).toMatch(/\/illustrations\/figurines\/(accueil|contact|methode)-(640|1200)\.(avif|webp)$/);expect(selected.srcset).not.toBe('')}else expect(selected.currentSrc).toBe(selected.src);
+        } else if (figurines) {
+          expect(selected.width).toBeGreaterThan(0);
+          if (responsive) {
+            expect(selected.srcset).toContain('128w');
+            expect(selected.sizes).toMatch(/^\d+px$/);
+            expect(selected.currentSrc).toMatch(/^\/(agents|robots)\/[a-z-]+-(128|256|512)\.(avif|webp)$/);
+            const rasterWidth = Number(selected.currentSrc.match(/-(128|256|512)\./)?.[1]);
+            expect(rasterWidth).toBeGreaterThanOrEqual(Math.min(selected.width * deviceScaleFactor, 512) - 1);
+          } else expect(selected.currentSrc).toBe(selected.src);
+          const master = await context.request.get(selected.src!);
+          expect(master.status()).toBe(200);
         } else if (responsive) {
           expect(selected.srcset).toContain(`${selected.src} 1600w`);
           expect(selected.sizes).not.toBe('');
@@ -42,7 +57,7 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
       const bytes = await page.evaluate((prefix) => (performance.getEntriesByType('resource') as PerformanceResourceTiming[])
         .filter((item: PerformanceResourceTiming) => item.initiatorType === 'img' || item.initiatorType === 'link')
         .filter(item => new URL(item.name).pathname.startsWith(prefix))
-        .reduce((sum, item: PerformanceResourceTiming) => sum + item.encodedBodySize, 0),editorial?'/illustrations/figurines/':'/proofs/');
+        .reduce((sum, item: PerformanceResourceTiming) => sum + item.encodedBodySize, 0),editorial ? '/illustrations/figurines/' : figurines ? (route === '/automatisation/cfe' ? '/robots/' : '/agents/') : '/proofs/');
       measurements.push({ responsive, bytes, selections });
       await context.close();
     }

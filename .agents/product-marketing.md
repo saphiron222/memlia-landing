@@ -100,7 +100,7 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 |---|---|---|---|
 | `/` | l'angle et la promesse | automatisation IA cabinet comptable | Robots et agents IA pour votre cabinet comptable. |
 | `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Automatisation pour commissaire aux comptes : robots et agents IA. |
-| `/automatisation-cabinet-comptable` | le service, le périmètre, le prix | automatisation sur mesure cabinet comptable | Toute tâche répétitive de votre cabinet, écrite puis automatisée. |
+| `/automatisation-cabinet-comptable` | le catalogue des robots, les routines et leurs livrables | robot cabinet comptable, automatisation cabinet comptable | Choisissez une routine : nous adaptons et déployons son robot dans vos outils. |
 | `/methode` | la preuve de méthode | comment se déroule une mission | Observer. Écrire. Éprouver. Livrer. |
 | `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Vos robots au travail. Vos décisions sous contrôle. |
 | `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous mettons les robots et agents IA au travail dans votre cabinet. |

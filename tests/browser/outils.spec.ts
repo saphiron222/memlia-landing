@@ -3,7 +3,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { OUTILS, OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 import { readFile } from 'node:fs/promises';
 import { INPUT_FIELDS } from '../../src/lib/signification.mjs';
-import { OUTILS_VITRINE } from '../../src/data/outils-vitrine';
+import { OUTILS_VITRINE, outilVoisin } from '../../src/data/outils-vitrine';
 import { chargerImagesDifferees } from './helpers/images-chargees';
 
 const HUB = '/outils-comptables-gratuits';
@@ -308,7 +308,7 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   expect(exceptionBytes.toString('utf8')).toContain('NON VALIDÉ');
 });
 
-test('contrat de liens : hub, ressource exacte, page service, puis un seul appel', async ({ page }) => {
+test('contrat de liens : hub, ressource exacte, outil voisin, catalogue et appel unique', async ({ page }) => {
   await page.goto(HUB);
   await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
 
@@ -317,9 +317,10 @@ test('contrat de liens : hub, ressource exacte, page service, puis un seul appel
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    // OUTILS-CONTRAT-DE-LIENS.md (décision D4 du 14/10/2026) : le hub, zéro ou une ressource exacte,
-    // la page service, puis un seul appel vers /contact, après ces liens et hors de leur liste.
-    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), outil.pageService];
+    // Le parcours du 15/10 conserve le hub et la ressource, puis un outil voisin pertinent,
+    // la destination commerciale actuelle et un seul appel hors de la liste.
+    const voisin = outilVoisin(outil.slug);
+    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), ...(voisin ? [`${HUB}/${voisin.slug}`] : []), outil.pageService];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
     await expect(page.locator('main a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('main a[href^="/contact?"]')).toHaveCount(0);
@@ -339,8 +340,10 @@ test('pour continuer : une ligne de liens, un seul bouton, clavier et responsive
     const links = page.locator('[data-tool-section="suite"] [data-tool-links] a');
     const appel = page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' });
 
-    await expect(links).toHaveText(['Tous les outils comptables gratuits', 'Voir le cadrage des factures fournisseurs']);
-    await expect(links.nth(1)).toHaveAttribute('href', '/agents-ia/comptabilite#tache-achats-fournisseurs-4');
+    const voisin = outilVoisin('calculateur-date-echeance-facture')!;
+    await expect(links).toHaveText(['Tous les outils comptables gratuits', voisin.nom, 'Voir le cadrage des factures fournisseurs']);
+    await expect(links.nth(1)).toHaveAttribute('href', `${HUB}/${voisin.slug}`);
+    await expect(links.nth(2)).toHaveAttribute('href', '/agents-ia/comptabilite#tache-achats-fournisseurs-4');
     // Un seul bouton principal en fin de page, celui de l'appel final (inventaire 27 et 31, CONT-15).
     await expect(appel).toHaveClass(/btn-principal/);
     await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(1);
@@ -349,9 +352,11 @@ test('pour continuer : une ligne de liens, un seul bouton, clavier et responsive
 
     await links.nth(0).focus();
     await expect(links.nth(0)).toBeFocused();
-    await page.keyboard.press('Tab');
-    await expect(links.nth(1)).toBeFocused();
-    await expect(links.nth(1)).toHaveCSS('outline-style', 'solid');
+    for (let index = 1; index < await links.count(); index++) {
+      await page.keyboard.press('Tab');
+      await expect(links.nth(index)).toBeFocused();
+      await expect(links.nth(index)).toHaveCSS('outline-style', 'solid');
+    }
     await page.keyboard.press('Tab');
     await expect(appel).toBeFocused();
   }
@@ -476,17 +481,18 @@ test('outils publiés : le bouton de fin déclenche la mesure « cta » sans aut
   expect(await page.evaluate(() => (window as unknown as { outilEvents: string[] }).outilEvents)).toEqual(['cta']);
 });
 
-test('outils et services : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
+test('outils et agents : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const route of [
     `${HUB}/calculateur-marge-commerciale`,
-    '/automatisation/paie',
+    '/agents-ia/paie-social',
   ]) {
-    await page.goto(route);
+    expect((await page.goto(route))?.status(), route).toBe(200);
     const animated = page.locator(route.startsWith(HUB)
       ? '.outil-hero-copy h1, .outil-hero-copy p'
-      : '.service-hero-copy h1, .service-hero-label, .service-hero-lead, .service-hero-action, .service-hero-visual');
+      : '.routine-hero-texte h1, .routine-hero-texte > p');
     const count = await animated.count();
+    expect(count, route).toBeGreaterThan(0);
     expect(await animated.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName))).toEqual(
       Array(count).fill('none'),
     );

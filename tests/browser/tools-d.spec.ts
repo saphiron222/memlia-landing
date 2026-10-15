@@ -7,6 +7,7 @@ test('formules et classeur accessibles sans JavaScript et sans compte', async ({
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(`${HUB}/${slugs[0]}`);
+  await page.getByText('Formules et conventions', { exact: true }).click();
   const formulas = page.getByRole('region', { name: 'Formules de marge' });
   await expect(formulas).toContainText('Taux de marge = marge ÷ achat HT × 100');
   await expect(formulas).toContainText('Taux de marque = marge ÷ vente HT × 100');
@@ -22,6 +23,7 @@ test('formules et classeur accessibles sans JavaScript et sans compte', async ({
 
 test('dégressif utilise acquisition novembre plutôt que mise en service décembre', async ({ page }) => {
   await page.goto(`${HUB}/${slugs[2]}`);
+  await page.getByText('Choisir une autre méthode : dégressif fiscal', { exact: true }).click();
   await page.getByLabel('Date de mise en service').fill('2026-12-15');
   await page.getByLabel('Méthode').selectOption('declining');
   await page.getByLabel('Date d’acquisition').fill('2026-11-15');
@@ -40,6 +42,7 @@ test('dégressif utilise acquisition novembre plutôt que mise en service décem
 
 test('dégressif refuse 2009 et accepte la borne du 01/01/2010', async ({ page }) => {
   await page.goto(`${HUB}/${slugs[2]}`);
+  await page.getByText('Choisir une autre méthode : dégressif fiscal', { exact: true }).click();
   await page.getByLabel('Méthode').selectOption('declining');
   await expect(page.locator('#amortissement-acquisition-aide')).toContainText('01/01/2010');
   await expect(page.getByLabel('Date d’acquisition')).toHaveAttribute('min', '2010-01-01');
@@ -59,6 +62,7 @@ test('dégressif refuse 2009 et accepte la borne du 01/01/2010', async ({ page }
 test('exceptions inexpliquées exportées sans annoncer de validation', async ({ page }) => {
   await page.goto(`${HUB}/${slugs[3]}`);
   await page.getByRole('button', { name: 'Charger un exemple fictif' }).click();
+  await page.getByText('Ajouter les opérations en rapprochement', { exact: true }).click();
   await page.getByLabel('Éléments inexpliqués').fill('12,34');
   await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
   await expect(page.locator('[data-status]')).toContainText('NON VALIDÉ');
@@ -89,7 +93,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
           expect(await image.evaluate((node: HTMLImageElement) => node.naturalWidth)).toBeGreaterThan(0);
         }
         await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-        await page.screenshot({ path: `docs/qa/site-tools-d/${slug}-${width}.png`, fullPage: true });
+        await page.screenshot({ path: `.qa/site-tools-d/${slug}-${width}.png`, fullPage: true });
       }
     });
   }

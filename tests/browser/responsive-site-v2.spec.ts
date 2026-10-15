@@ -9,7 +9,7 @@ import { CAC_PUBLIE, DESTINATIONS, HREFS_DIRECTS } from '../navigation-attendue.
  * largeur, plutôt que l'attendre d'une suite qui n'en parle pas.
  */
 const LARGEURS: [number, number][] = [[320, 740], [375, 812], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
-const ROUTES = ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact'];
+const ROUTES = ['/automatisation-cabinet-comptable', '/agents-ia', '/integrations', '/agents-ia/paie-social', '/automatisation/cfe', '/methode', '/garanties', '/a-propos', '/contact'];
 
 for (const [width, height] of LARGEURS) {
   test(`pages v2 sans débordement ni titre manquant ${width}x${height}`, async ({ page }) => {
@@ -19,7 +19,10 @@ for (const [width, height] of LARGEURS) {
       await page.goto(route);
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator('h1'), route).toHaveCount(1);
-      await expect(page.locator('.ariane'), route).toBeVisible();
+      await expect(page.locator('main'), route).toBeVisible();
+      if (['/agents-ia/paie-social', '/automatisation/cfe'].includes(route)) {
+        await expect(page.getByRole('navigation', { name: 'Fil d’Ariane' }), route).toBeVisible();
+      }
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
       // Boutons de groupe (Cabinets, Ce qu'on automatise) et liens directs sur desktop ; destinations dans le panneau sur mobile.
@@ -36,6 +39,7 @@ for (const [width, height] of LARGEURS) {
         await expect(page.locator('[data-burger]'), route).toBeVisible();
         await page.keyboard.press('Escape');
         await expect(page.locator('#menu-mobile'), route).toBeHidden();
+        await expect(page.locator('[data-burger]'), `${route} : focus rendu après fermeture`).toBeFocused();
       } else {
         await expect(page.locator('.nav-centre'), route).toBeVisible();
         await expect(page.locator('.nav-principal'), route).toBeVisible();
@@ -49,7 +53,7 @@ for (const [width, height] of LARGEURS) {
  * robots. Un script qui réécrit un titre ou une canonical après le chargement ne casse
  * rien à l'écran : seule cette comparaison le voit.
  */
-const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
+const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/agents-ia', '/integrations', '/agents-ia/paie-social', '/automatisation/cfe', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
 
 /**
  * Une colonne, une couleur (Kevin, 13/10/2026) : sous un titre de section, les paragraphes d'une même
@@ -59,7 +63,7 @@ const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/gara
 test('pages v2 : une seule couleur de paragraphe par colonne de texte', async ({ page }) => {
   for (const route of ROUTES) {
     await page.goto(route);
-    const colonnes = await page.evaluate(() => [...document.querySelectorAll('main .pv-copy, main .etape-copie')].map((colonne) => ({
+    const colonnes = await page.evaluate(() => [...document.querySelectorAll('main .pv-copy, main .etape-copie, main .hub-signature > div:has(h2), main .catalogue-section > .tete, main .routine-hero-texte, main .hub-hero, main .contact-aside')].map((colonne) => ({
       titre: (colonne.querySelector('h2, h3')?.textContent ?? '').trim().slice(0, 50),
       couleurs: [...new Set([...colonne.children]
         .filter((e) => e.tagName === 'P' && !e.matches('.surtitre, .mention'))

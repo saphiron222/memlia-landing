@@ -4,6 +4,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`frontières et focus des deux textarea, vides/remplis — ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/outils-comptables-gratuits/generateur-prompt-expert-comptable');
+    await page.locator('details.library > summary').click();
     await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
     await page.getByLabel(/Je confirme que cette description/).check();
     await page.getByRole('button', { name: 'Assembler le prompt' }).click();

@@ -5,13 +5,16 @@ import { expect, test } from '@playwright/test';
 // 0,8 s à apparaître. Pendant une lecture (molette à 1 000 px/s), il doit être lisible dès son
 // entrée à l'écran.
 const RETARD_MAX_MS = 150;
+// Les sections de catalogue n'ont plus d'animation d'apparition : leur lisibilité
+// immédiate reste contrôlée, au même titre que les anciens blocs .rv encore utilisés.
+const CIBLES = 'main .rv, main [data-hub-section], main [data-agent-section], main [data-robot-section]';
 
 for (const chemin of ['/', '/automatisation-cabinet-comptable', '/methode']) {
   test(`${chemin} : un bloc révélé est lisible dès son entrée à l'écran`, async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(chemin);
-    await page.evaluate(() => {
-      const suivi = [...document.querySelectorAll('.rv')].map((bloc) => ({ bloc, entree: -1, lisible: -1 }));
+    await page.evaluate((selector) => {
+      const suivi = [...document.querySelectorAll(selector)].map((bloc) => ({ bloc, entree: -1, lisible: -1 }));
       Object.assign(window, { __suiviRevelation: suivi });
       const observer = () => {
         const maintenant = performance.now();
@@ -23,7 +26,7 @@ for (const chemin of ['/', '/automatisation-cabinet-comptable', '/methode']) {
         requestAnimationFrame(observer);
       };
       requestAnimationFrame(observer);
-    });
+    }, CIBLES);
     await page.mouse.move(720, 450);
     const hauteur = await page.evaluate(() => document.documentElement.scrollHeight);
     for (let y = 0; y < hauteur; y += 100) {
@@ -40,5 +43,23 @@ for (const chemin of ['/', '/automatisation-cabinet-comptable', '/methode']) {
     console.log(`${chemin} : ${retards.length} blocs observés, retard maximal ${Math.max(...retards.map((r) => r.retardMs))} ms (seuil ${RETARD_MAX_MS} ms).`);
     expect(retards.length).toBeGreaterThan(0);
     expect(retards.filter((r) => r.retardMs > RETARD_MAX_MS)).toEqual([]);
+  });
+}
+
+for (const chemin of ['/', '/automatisation-cabinet-comptable', '/methode']) {
+  test(`${chemin} : le mouvement réduit laisse les sections lisibles sans transition d'entrée`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(chemin);
+    const etats = await page.locator(CIBLES).evaluateAll(nodes => nodes.map(node => {
+      const style = getComputedStyle(node);
+      return { classe: node.className, opacity: Number(style.opacity), transform: style.transform,
+        transition: style.transitionDuration.split(',').map(value => parseFloat(value) * (value.trim().endsWith('ms') ? 1 : 1000)) };
+    }));
+    expect(etats.length).toBeGreaterThan(0);
+    for (const etat of etats) {
+      expect(etat.opacity, etat.classe).toBe(1);
+      expect(etat.transform, etat.classe).toBe('none');
+      expect(Math.max(...etat.transition), etat.classe).toBeLessThanOrEqual(1);
+    }
   });
 }

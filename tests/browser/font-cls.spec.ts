@@ -25,7 +25,12 @@ async function etatDesReplis(page: import('@playwright/test').Page) {
   }, REPLIS);
 }
 
-const routes = ['/glossaire', '/integrations/bulletin-de-paie-silae', '/integrations/saisie-comptable-sage'];
+// Les guides par environnement ont été retirés : mesurer leurs propriétaires canoniques.
+const routes = ['/glossaire', '/integrations', '/agents-ia/paie-social', '/automatisation/cfe'];
+const anchors: Record<string, string> = {
+  '/glossaire': '.alphabet', '/integrations': '.hub-intro',
+  '/agents-ia/paie-social': '.routine-hero-texte > p', '/automatisation/cfe': '.routine-hero-texte > p',
+};
 for (const route of routes) {
   for (const width of [320, 375, 412, 1440]) {
     test(`${route} — delayed fonts at ${width}px`, async ({ page }, testInfo) => {
@@ -48,7 +53,7 @@ for (const route of routes) {
       // Là où l'OS a les polices d'un repli, une face supprimée ou mal écrite échoue ici au lieu d'être ignorée.
       for (const repli of replis) if (repli.os) expect(repli.site, `${repli.famille} chargé`).toBe(true);
       await page.waitForTimeout(1500);
-      const anchor = page.locator(route === '/glossaire' ? '.alphabet' : '.page-chapeau');
+      const anchor = page.locator(anchors[route]);
       const before = await anchor.boundingBox();
       const pile = (valeur: string) => valeur.split(',').map((nom) => nom.trim().replace(/^["']|["']$/g, ''));
       const families = pile(await page.locator('h1').evaluate(el => getComputedStyle(el).fontFamily));

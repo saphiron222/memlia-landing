@@ -15,7 +15,7 @@ for(const width of [375,768,1440])test(`Méthode : cinq petites cartes lisibles 
   await expect(page.getByText('Ce que nous vous remettons',{exact:true})).toHaveCount(0);
   await expect(page.locator('main a[href="/automatisation/facture-electronique"]')).toHaveCount(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
-  await page.locator('.parcours').screenshot({path:`.qa/coherence-figurines/methode-cartes-${width}.png`,animations:'disabled'});
+  await page.locator('.parcours').screenshot({path:`.qa/copy-browser-final/screens/methode-cartes-${width}.png`,animations:'disabled'});
 });
 
 test('Étapes sans JavaScript et scène À propos sans légende',async({browser})=>{
@@ -27,6 +27,7 @@ test('Étapes sans JavaScript et scène À propos sans légende',async({browser}
   await expect(scene.locator('figcaption')).toHaveCount(0);
   await expect(scene.locator('img')).toHaveAttribute('alt',/Deux figurines Memlia/);
   await expect(page.getByText('Nos figurines représentent les tâches que nous construisons et maintenons avec vous.',{exact:true})).toHaveCount(0);
-  await page.goto('/garanties');await expect(page.locator('main a[href="/automatisation/facture-electronique"]')).toHaveCount(1);
+  await page.goto('/garanties');await expect(page.locator('main a[href="/agents-ia/comptabilite#tache-facture-electronique-3"]')).toHaveCount(1);
+  await expect(page.locator('main a[href="/automatisation/facture-electronique"]')).toHaveCount(0);
   await context.close();
 });
