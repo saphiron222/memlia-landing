@@ -11,7 +11,7 @@
  * raison, et chaque exécution l'imprime. Un fichier écarté qui disparaît du dépôt fait échouer
  * la commande plutôt que de laisser vieillir la liste.
  */
-import { readdirSync, existsSync } from 'node:fs';
+import { readdirSync, existsSync, readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 
@@ -30,15 +30,42 @@ const SANS_NAVIGATEUR = {
   'blog-intent-preservation.test.mjs': 'exige dist : joué par npm run test:blog-contract après le rendu Astro',
 };
 
+/**
+ * Contrôles du hub des agents IA, écrits avant le code (plan 2026-10-15, tâche 1) : rouges tant que ce qu'ils lisent
+ * n'existe pas. Chacun est écarté tant que sa condition manque et joué dès qu'elle tombe : la levée est automatique,
+ * aucune ligne à retirer ici (un garde qui ne se propage pas seul reste débranché sans que personne le voie).
+ * `npm run test:agents` les joue tous, sans condition, pour lire la liste des échecs attendus.
+ * Une condition rend la raison de l'attente, ou null quand le contrôle doit tourner.
+ */
+const existe = (chemin) => (existsSync(chemin) ? null : `${chemin} n'existe pas encore`);
+const exporte = (chemin, motif, nom) => (existsSync(chemin) && motif.test(readFileSync(chemin, 'utf8')) ? null : `${chemin} n'exporte pas encore ${nom}`);
+const donneesDesAgents = () => {
+  const dossier = 'src/data/specialistes';
+  const fichiersDuDossier = existsSync(dossier) ? readdirSync(dossier).filter((f) => f.endsWith('.ts')).map((f) => join(dossier, f)) : [];
+  return ['src/data/specialistes.ts', ...fichiersDuDossier].filter((f) => existsSync(f)).map((f) => readFileSync(f, 'utf8')).join('\n');
+};
+const ROUGES_TANT_QUE = {
+  'specialistes-partition.test.mjs': () => existe('src/data/specialistes.ts'),
+  'specialistes-copy.test.mjs': () => existe('src/data/specialistes.ts'),
+  'connecteurs.test.mjs': () => existe('src/data/connecteurs.ts'),
+  'familles-hub.test.mjs': () => exporte('src/data/familles.ts', /export const FAMILLES_HUB\b/, 'FAMILLES_HUB'),
+  'agents-rejeu-source.test.mjs': () => (/\bdemonstration\b/.test(donneesDesAgents()) ? null : "aucune démonstration n'est encore écrite dans les données des agents (src/data/specialistes*)"),
+};
+
 const fichiers = readdirSync(DOSSIER).filter((f) => f.endsWith('.test.mjs')).sort();
-const manquants = Object.keys(SANS_NAVIGATEUR).filter((f) => !existsSync(join(DOSSIER, f)));
+const manquants = [...Object.keys(SANS_NAVIGATEUR), ...Object.keys(ROUGES_TANT_QUE)].filter((f) => !existsSync(join(DOSSIER, f)));
 if (manquants.length > 0) {
   console.error(`test-scripts : fichier(s) écarté(s) introuvable(s), liste à mettre à jour : ${manquants.join(', ')}`);
   process.exit(2);
 }
-const retenus = fichiers.filter((f) => !(f in SANS_NAVIGATEUR));
+const enAttente = Object.entries(ROUGES_TANT_QUE).flatMap(([fichier, condition]) => {
+  const raison = condition();
+  return raison ? [[fichier, `contrôle écrit avant le code, rouge tant que ${raison} ; joué dès que cela tombe, et par npm run test:agents sans condition`]] : [];
+});
+const ecartes = { ...SANS_NAVIGATEUR, ...Object.fromEntries(enAttente) };
+const retenus = fichiers.filter((f) => !(f in ecartes));
 console.log(`test-scripts : ${retenus.length} fichier(s) joués, ${fichiers.length - retenus.length} écarté(s) :`);
-for (const [fichier, raison] of Object.entries(SANS_NAVIGATEUR)) console.log(`  - ${fichier} — ${raison}`);
+for (const [fichier, raison] of Object.entries(ecartes)) console.log(`  - ${fichier} — ${raison}`);
 
 const run = spawnSync(process.execPath, ['--test', ...retenus.map((f) => join(DOSSIER, f))], { stdio: 'inherit' });
 process.exit(run.status ?? 1);
