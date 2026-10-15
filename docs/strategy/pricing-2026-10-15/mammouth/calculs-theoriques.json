@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-15",
+  "source": "archives/public-models.json.gz",
+  "warning": "Calcul arithmetique uniquement, aucun appel inference; hors frais non documentes et couts autres que tokens",
+  "calculations": [
+    {
+      "scenario": "10k-2k",
+      "model": "gpt-6-luna",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.0020000",
+      "measured": false
+    },
+    {
+      "scenario": "10k-2k",
+      "model": "glm-5.3-flash",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.00250000",
+      "measured": false
+    },
+    {
+      "scenario": "10k-2k",
+      "model": "gpt-6.1-sol",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.040000",
+      "measured": false
+    },
+    {
+      "scenario": "10k-2k",
+      "model": "claude-sonnet-5-5",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.040000",
+      "measured": false
+    },
+    {
+      "scenario": "10k-2k",
+      "model": "claude-opus-5-5",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.080000",
+      "measured": false
+    },
+    {
+      "scenario": "10k-2k",
+      "model": "gpt-6-astra",
+      "input_tokens_hypothese": 10000,
+      "output_tokens_hypothese": 2000,
+      "cost_usd_theorique": "0.20000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "gpt-6-luna",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "0.0150000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "glm-5.3-flash",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "0.02000000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "gpt-6.1-sol",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "0.300000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "claude-sonnet-5-5",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "0.300000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "claude-opus-5-5",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "0.600000",
+      "measured": false
+    },
+    {
+      "scenario": "100k-10k",
+      "model": "gpt-6-astra",
+      "input_tokens_hypothese": 100000,
+      "output_tokens_hypothese": 10000,
+      "cost_usd_theorique": "1.50000",
+      "measured": false
+    }
+  ]
+}

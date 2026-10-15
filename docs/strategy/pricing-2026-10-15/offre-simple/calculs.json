@@ -1,0 +1,275 @@
+{
+  "date": "2026-10-15",
+  "nature": "Budgets et calculs hypothétiques ; aucun usage facturé mesuré",
+  "examples": [
+    {
+      "poleCount": 1,
+      "overageEur": 0,
+      "revenueEur": 1300,
+      "usageValueEur": 200,
+      "variableCostBudgetEur": 50,
+      "fixedHumanEur": 187.5,
+      "infraEur": 30,
+      "collectionEur": 26.25,
+      "directEur": 293.75,
+      "grossMargin": 0.7740384615384616,
+      "contributionAfterAllocationsEur": 926.25,
+      "passesTarget": true,
+      "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+    },
+    {
+      "poleCount": 2,
+      "overageEur": 0,
+      "revenueEur": 1600,
+      "usageValueEur": 400,
+      "variableCostBudgetEur": 100,
+      "fixedHumanEur": 225,
+      "infraEur": 30,
+      "collectionEur": 32.25,
+      "directEur": 387.25,
+      "grossMargin": 0.75796875,
+      "contributionAfterAllocationsEur": 1132.75,
+      "passesTarget": true,
+      "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+    },
+    {
+      "poleCount": 3,
+      "overageEur": 0,
+      "revenueEur": 1900,
+      "usageValueEur": 600,
+      "variableCostBudgetEur": 150,
+      "fixedHumanEur": 262.5,
+      "infraEur": 30,
+      "collectionEur": 38.25,
+      "directEur": 480.75,
+      "grossMargin": 0.7469736842105263,
+      "contributionAfterAllocationsEur": 1339.25,
+      "passesTarget": true,
+      "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+    },
+    {
+      "poleCount": 12,
+      "overageEur": 0,
+      "revenueEur": 4600,
+      "usageValueEur": 2400,
+      "variableCostBudgetEur": 600,
+      "fixedHumanEur": 600,
+      "infraEur": 30,
+      "collectionEur": 92.25,
+      "directEur": 1322.25,
+      "grossMargin": 0.712554347826087,
+      "contributionAfterAllocationsEur": 3197.75,
+      "passesTarget": true,
+      "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+    }
+  ],
+  "onePoleNoUsage": {
+    "poleCount": 1,
+    "overageEur": 0,
+    "revenueEur": 1300,
+    "usageValueEur": 0,
+    "variableCostBudgetEur": 0,
+    "fixedHumanEur": 187.5,
+    "infraEur": 30,
+    "collectionEur": 26.25,
+    "directEur": 243.75,
+    "grossMargin": 0.8125,
+    "contributionAfterAllocationsEur": 976.25,
+    "passesTarget": true,
+    "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+  },
+  "onePoleAt1500Cap": {
+    "poleCount": 1,
+    "overageEur": 200,
+    "revenueEur": 1500,
+    "usageValueEur": 400,
+    "variableCostBudgetEur": 100,
+    "fixedHumanEur": 187.5,
+    "infraEur": 30,
+    "collectionEur": 30.25,
+    "directEur": 347.75,
+    "grossMargin": 0.7681666666666667,
+    "contributionAfterAllocationsEur": 1072.25,
+    "passesTarget": true,
+    "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+  },
+  "adverseOnePole": {
+    "poleCount": 1,
+    "overageEur": 0,
+    "revenueEur": 1300,
+    "usageValueEur": 200,
+    "variableCostBudgetEur": 50,
+    "fixedHumanEur": 500,
+    "infraEur": 60,
+    "collectionEur": 39.3,
+    "directEur": 649.3,
+    "grossMargin": 0.5005384615384616,
+    "contributionAfterAllocationsEur": 570.7,
+    "passesTarget": false,
+    "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+  },
+  "incidentOnePole": {
+    "poleCount": 1,
+    "overageEur": 0,
+    "revenueEur": 1300,
+    "usageValueEur": 200,
+    "variableCostBudgetEur": 50,
+    "fixedHumanEur": 3100,
+    "infraEur": 60,
+    "collectionEur": 39.3,
+    "directEur": 3249.3,
+    "grossMargin": -1.4994615384615386,
+    "contributionAfterAllocationsEur": -2029.3000000000002,
+    "passesTarget": false,
+    "condition": "Coûts variables effectivement contenus dans leur réserve ; coûts fixes hypothétiques ; aucune rentabilité observée."
+  },
+  "setup": {
+    "revenueEur": 1990,
+    "directCostEur": 815.3,
+    "firstMonthOnePoleEur": 3290,
+    "firstYearOnePoleEur": 17590
+  },
+  "valueThreshold": {
+    "hourlyValueHypothesisEur": 35,
+    "monthlyHoursWithoutSetup": 37.142857142857146,
+    "monthlyHoursWithSetup": 41.88095238095238,
+    "measuredSavings": false
+  },
+  "costReferenceExamples": [
+    {
+      "scenario": "base",
+      "minimumPriceExamples": [
+        {
+          "id": "U1",
+          "variableCostEur": 0.16441666666666668,
+          "minimumServiceEur": 0.66
+        },
+        {
+          "id": "U2",
+          "variableCostEur": 0.2809583333333333,
+          "minimumServiceEur": 1.13
+        },
+        {
+          "id": "U3",
+          "variableCostEur": 0.7943749999999999,
+          "minimumServiceEur": 3.18
+        },
+        {
+          "id": "U4",
+          "variableCostEur": 1.5787499999999999,
+          "minimumServiceEur": 6.32
+        },
+        {
+          "id": "U5",
+          "variableCostEur": 2.146,
+          "minimumServiceEur": 8.59
+        },
+        {
+          "id": "U6",
+          "variableCostEur": 4.6,
+          "minimumServiceEur": 18.4
+        },
+        {
+          "id": "U7",
+          "variableCostEur": 7.58,
+          "minimumServiceEur": 30.32
+        },
+        {
+          "id": "U8",
+          "variableCostEur": 15.38,
+          "minimumServiceEur": 61.52
+        }
+      ]
+    },
+    {
+      "scenario": "reprises",
+      "minimumPriceExamples": [
+        {
+          "id": "U1",
+          "variableCostEur": 0.4328177777777778,
+          "minimumServiceEur": 1.74
+        },
+        {
+          "id": "U2",
+          "variableCostEur": 0.7494755555555557,
+          "minimumServiceEur": 3
+        },
+        {
+          "id": "U3",
+          "variableCostEur": 2.107466666666667,
+          "minimumServiceEur": 8.43
+        },
+        {
+          "id": "U4",
+          "variableCostEur": 4.194933333333333,
+          "minimumServiceEur": 16.78
+        },
+        {
+          "id": "U5",
+          "variableCostEur": 5.68016,
+          "minimumServiceEur": 22.73
+        },
+        {
+          "id": "U6",
+          "variableCostEur": 12.328,
+          "minimumServiceEur": 49.32
+        },
+        {
+          "id": "U7",
+          "variableCostEur": 19.703466666666664,
+          "minimumServiceEur": 78.82
+        },
+        {
+          "id": "U8",
+          "variableCostEur": 40.09813333333333,
+          "minimumServiceEur": 160.4
+        }
+      ]
+    },
+    {
+      "scenario": "premium",
+      "minimumPriceExamples": [
+        {
+          "id": "U1",
+          "variableCostEur": 0.8129777777777778,
+          "minimumServiceEur": 3.26
+        },
+        {
+          "id": "U2",
+          "variableCostEur": 1.2851555555555554,
+          "minimumServiceEur": 5.15
+        },
+        {
+          "id": "U3",
+          "variableCostEur": 3.230666666666667,
+          "minimumServiceEur": 12.93
+        },
+        {
+          "id": "U4",
+          "variableCostEur": 6.441333333333334,
+          "minimumServiceEur": 25.77
+        },
+        {
+          "id": "U5",
+          "variableCostEur": 7.2008,
+          "minimumServiceEur": 28.81
+        },
+        {
+          "id": "U6",
+          "variableCostEur": 14.92,
+          "minimumServiceEur": 59.68
+        },
+        {
+          "id": "U7",
+          "variableCostEur": 23.850666666666662,
+          "minimumServiceEur": 95.41
+        },
+        {
+          "id": "U8",
+          "variableCostEur": 44.24533333333333,
+          "minimumServiceEur": 176.99
+        }
+      ]
+    }
+  ]
+}
