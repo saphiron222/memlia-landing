@@ -1,3 +1,4 @@
+import {rendreLienOutilVisible} from './helpers/liens-outils';
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 const ROUTE = '/outils-comptables-gratuits/generateur-prompt-ia-gratuit';
@@ -72,7 +73,7 @@ test('fallback presse-papiers, reload efface et aucun texte dans URL', async ({ 
 });
 test('SEO, trois entrants, footer, médias et sitemap', async ({ page }) => {
   for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/generateur-prompt-expert-comptable', '/outils-comptables-gratuits/verificateur-prompt-ia']) {
-    await page.goto(route); await ouvrirReglages(page); await expect(page.locator(`main a[href="${ROUTE}"]`).first()).toBeVisible();
+    await page.goto(route); await ouvrirReglages(page); await rendreLienOutilVisible(page,ROUTE); await expect(page.locator(`main a[href="${ROUTE}"]`).first()).toBeVisible();
   }
   const response = await page.goto(ROUTE); await ouvrirReglages(page); expect(response?.status()).toBe(200);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Générateur de prompt IA gratuit');

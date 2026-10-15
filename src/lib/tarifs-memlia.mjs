@@ -24,6 +24,7 @@ export function prixAgentsMensuel(ids, creditsNecessaires = 0) {
   const depassement = creditsSupplementaires * tarifs.overagePriceCentsPerCredit;
   return { abonnement, creditsInclus, creditsNecessaires, creditsSupplementaires, depassement, total: abonnement + depassement };
 }
+/** @param {{offre?: string, dossiers: number, profil?: string, coutHoraire: number, tempsManuel: number, tempsControle: number, miseEnService?: number|null}} options */
 export function estimerBudget({ offre = 'robots', dossiers, profil, coutHoraire, tempsManuel, tempsControle, miseEnService = null }) {
   entier(dossiers, 1, 100000, 'Dossiers');
   for (const [nom,value,max] of [['Coût horaire',coutHoraire,1000],['Temps manuel',tempsManuel,10000],['Temps de contrôle',tempsControle,10000]]) {
@@ -36,7 +37,9 @@ export function estimerBudget({ offre = 'robots', dossiers, profil, coutHoraire,
   else {
     const agent = tarifs.agents.find(a => a.id === offre);
     if (!agent) throw new RangeError('Offre inconnue.');
-    profilChoisi = agent.profiles.find(p => p.id === profil) ?? agent.profiles[0];
+    const trouve = agent.profiles.find(p => p.id === profil);
+    if (profil && !trouve) throw new RangeError('Profil de dossier inconnu.');
+    profilChoisi = trouve ?? agent.profiles[0];
     detail = prixAgentsMensuel([offre], dossiers * profilChoisi.creditsPerCase);
     annuel = detail.total * 12;
   }

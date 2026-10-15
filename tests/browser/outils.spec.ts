@@ -1,3 +1,4 @@
+import {rendreLienOutilVisible} from './helpers/liens-outils';
 import { test, expect, type Page } from '@playwright/test';
 import { OUTILS, OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 import { readFile } from 'node:fs/promises';
@@ -503,6 +504,7 @@ test('maillage entrant : hub et contextes conservés après migration des pôles
       const [pathname, hash] = route.split('#');
       await page.goto(pathname);
       if(pathname===HUB)await page.getByRole('radio',{name:'Tous (21)'}).check();
+      await rendreLienOutilVisible(page,tool);
       const scope = hash ? page.locator(`#${hash}`) : page.locator('main');
       await expect(scope.locator(`a[href="${tool}"]`)).toBeVisible();
     }

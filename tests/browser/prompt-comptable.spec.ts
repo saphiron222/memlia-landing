@@ -1,3 +1,4 @@
+import {rendreLienOutilVisible} from './helpers/liens-outils';
 import { test, expect } from '@playwright/test';
 import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
@@ -108,8 +109,8 @@ test('toutes les amorces, choix configurables et effacement explicite', async ({
   await expect(page.getByLabel('Description abstraite de la tâche')).toHaveValue('');
 });
 test('maillage, médias propres, canonical et sitemap', async ({ page }) => {
-  for (const route of ['/outils-comptables-gratuits', '/methode', '/automatisation-cabinet-comptable']) {
-    await page.goto(route); await ouvrirReglages(page); if(route==='/outils-comptables-gratuits')await page.getByRole('radio',{name:'Tous (21)'}).check(); await expect(page.locator(`main a[href="${ROUTE}"]`)).toBeVisible();
+  for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/bibliotheque-prompts-comptables']) {
+    await page.goto(route); await ouvrirReglages(page); await rendreLienOutilVisible(page,ROUTE); await expect(page.locator(`main a[href="${ROUTE}"]`).first()).toBeVisible();
   }
   const response = await page.goto(ROUTE); await ouvrirReglages(page); expect(response?.status()).toBe(200);
   await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);

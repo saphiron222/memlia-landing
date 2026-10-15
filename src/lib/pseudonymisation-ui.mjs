@@ -23,7 +23,7 @@ export function initPseudonymisation() {
   const list = (target, items) => { target.replaceChildren(); for (const text of items) { const li = document.createElement('li'); li.textContent = text; target.append(li); } };
   const stopPending = () => { pending?.terminate(); pending = null; q('[data-cancel]').hidden = true; };
   // Vite émet un Worker autonome (IIFE) pour le site statique.
-  const makeWorker = () => new Worker(new URL('../workers/pseudonymisation.worker.mjs', import.meta.url), { type: 'module', name: 'memlia-pseudonymisation' });
+  const makeWorker = () => new Worker(new URL('../workers/pseudonymisation.worker.mjs', import.meta.url), { name: 'memlia-pseudonymisation' });
   const receive = (worker, message) => {
     if (worker !== active || message.id !== latest) return;
     if (message.kind === 'error') { invalidate(); fail(message.error); status.textContent = 'Traitement refusé. Les choix et l’original importé restent disponibles.'; return; }

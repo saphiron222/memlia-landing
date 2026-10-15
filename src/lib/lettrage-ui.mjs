@@ -18,7 +18,7 @@ export function initLettrage() {
     table(q('[data-sums]'),'Sommes exactes sans conversion',['Devise','État','Lignes','Illisibles','Débit','Crédit','Solde'],computeSums(result,decisions).map(s=>[s.devise,s.state,s.count,s.unreadable,s.debit,s.credit,s.balance]));q('[data-result]').hidden=false;q('[data-fallback]').hidden=true;q('[data-fallback-label]').hidden=true;q('[data-fallback]').value='';exportButtons();
   }
   const stopPending=()=>{pending?.terminate();pending=null;q('[data-cancel]').hidden=true;exportButtons();};
-  const makeWorker=()=>new Worker(new URL('../workers/lettrage.worker.mjs',import.meta.url),{type:'module',name:'memlia-lettrage-local'});
+  const makeWorker=()=>new Worker(new URL('../workers/lettrage.worker.mjs',import.meta.url),{name:'memlia-lettrage-local'});
   const receiveExport=async(worker,m)=>{
     const operation=exportOperation;
     const current=()=>operation!==null&&exportOperation===operation&&worker===active;

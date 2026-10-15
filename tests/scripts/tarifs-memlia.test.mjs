@@ -28,3 +28,5 @@ test('agent : usage mensuel annualisé, détail des crédits et installation dis
  const r=estimerBudget({offre:'comptabilite',profil:'courant',dossiers:10,coutHoraire:40,tempsManuel:120,tempsControle:30,miseEnService:199000});
  assert.equal(r.detail.creditsNecessaires,5780);assert.equal(r.detail.depassement,3900);assert.equal(r.annuel,704400);assert.equal(r.coutPremiereAnnee,903400);assert.equal(r.heures,180);
 });
+
+test('un profil de dossier inconnu ne reçoit pas une estimation de repli silencieuse',()=>{assert.throws(()=>estimerBudget({offre:'comptabilite',profil:'inconnu',dossiers:10,coutHoraire:40,tempsManuel:120,tempsControle:30}),/Profil/);});

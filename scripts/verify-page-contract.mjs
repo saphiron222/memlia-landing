@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+import { OUTILS_DISPONIBLES } from '../src/data/outils.ts';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { extname, join, relative, resolve, sep } from 'node:path';
@@ -162,6 +164,7 @@ function pageSnapshot(route, path) {
   const footerHrefs = [];
   const mainHrefs = [];
   const media = [];
+  const toolIds = []; let toolControls = 0; let toolButtons = 0;
   let title = '';
   let main = null;
   let robots = '';
@@ -191,6 +194,9 @@ function pageSnapshot(route, path) {
         const href = normalizeRoute(attr(node, 'href'));
         if (href) mainHrefs.push(href);
       }
+      if (attr(node, 'data-outil')) toolIds.push(attr(node, 'data-outil'));
+      if (['input','select','textarea'].includes(node.nodeName) && attr(node,'type') !== 'hidden') toolControls++;
+      if (node.nodeName === 'button') toolButtons++;
       if (node.nodeName === 'h1') headings.push(normalizedText(text(node)));
       if (node.nodeName === 'img' && attr(node, 'src')) media.push(attr(node, 'src'));
       if (node.nodeName === 'video') {
@@ -203,8 +209,24 @@ function pageSnapshot(route, path) {
   const schema = collectSchema(jsonLd);
   return {
     route, path, document, main, h1s: headings, title, descriptions, ogTitles, ogImages, canonicals, hrefs, footerHrefs, mainHrefs,
+    toolIds, toolControls, toolButtons,
     media: [...new Set(media.filter((item) => item.startsWith('/')))], robots, jsonLd, schema,
   };
+}
+
+/** L’outil réel remplace sa capture statique ; son image sociale reste propre et scellée. */
+export function preuvesOutilInteractif(root, page) {
+  const slug = page.route.slice('/outils-comptables-gratuits/'.length);
+  const errors = [];
+  if (!OUTILS_DISPONIBLES.some(o=>o.slug===slug) || !page.toolIds?.includes(slug) || !(page.toolControls>0) || !(page.toolButtons>0)) errors.push('outil publié, identité, saisie et action visibles dans le HTML requis');
+  const asset = `public/outils/social/${slug}.webp`;
+  try {
+    const manifest = JSON.parse(readFileSync(join(root,'docs/qa/outils-simples-2026-10-15/social-manifest.json'),'utf8'));
+    const record = manifest.records.find(r=>r.slug===slug && r.path===asset && r.width===1200 && r.height===630);
+    if (!record || createHash('sha256').update(readFileSync(join(root,asset))).digest('hex')!==record.sha256) throw new Error('image absente ou périmée');
+  } catch { errors.push('image sociale propre 1200 × 630 et empreinte du manifeste requises'); }
+  if (page.ogImages?.length!==1 || page.ogImages[0]!==`https://memlia.fr/social/outils/social/${slug}.webp.jpg`) errors.push('image sociale de cet outil requise dans Open Graph');
+  return errors;
 }
 
 function manifestedMedia(root) {
@@ -514,7 +536,12 @@ export function auditerContratPages({
       contract.mediaRequired === false && contract.measuredIntentRequired === true && contract.incomingLinkRequired === true &&
       Array.isArray(contract.schemaTypes) && contract.schemaTypes.length > 0 && assetDecision?.kind === 'no-functional-media' &&
       typeof assetDecision?.reason === 'string' && assetDecision.reason.trim().length >= 60;
-    if (!commonValid || (!noindexValid && !indexableCollectionValid)) {
+    const indexableToolValid = contract?.indexing === 'index' && contract?.role === 'interactive-tool' &&
+      OUTILS_DISPONIBLES.some(o=>route===`/outils-comptables-gratuits/${o.slug}`) && contract.mediaRequired === false &&
+      contract.measuredIntentRequired === true && contract.incomingLinkRequired === true &&
+      JSON.stringify(contract.schemaTypes) === JSON.stringify(['WebPage','WebApplication','BreadcrumbList']) &&
+      assetDecision?.kind === 'interactive-tool' && typeof assetDecision.reason === 'string' && assetDecision.reason.trim().length >= 60;
+    if (!commonValid || (!noindexValid && !indexableCollectionValid && !indexableToolValid)) {
       erreurs.push({ route, clause: 0, message: `${route} : contrat de route invalide — route servie, indexation et rôle cohérents, décisions booléennes, schemaTypes et décision asset motivée si indexable requis` });
     }
   }
@@ -542,6 +569,7 @@ export function auditerContratPages({
     }
     if (!page.main || page.main.childNodes?.length === 0) erreurs.push(error(page.route, 1, 'contenu principal absent ou vide'));
 
+    if (routeContract?.role === 'interactive-tool') for (const detail of preuvesOutilInteractif(root,page)) erreurs.push(error(page.route,2,detail));
     const ownedManifested = page.media.filter((asset) => mediaIsOwned(root, provenance, asset, page.route, mediaOwners));
     const mediaRequired = routeContract?.mediaRequired ?? true;
     if (mediaRequired && ownedManifested.length === 0) {
