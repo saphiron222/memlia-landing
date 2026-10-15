@@ -60,6 +60,65 @@ for (const width of [1024, 1440]) for (const groupe of GROUPES) {
   });
 }
 
+/**
+ * Un seul sous-menu ouvert à la fois. Ouvrir l'un referme l'autre, quels que soient l'ordre et le geste :
+ * le panneau de « Ce qu'on automatise » recouvrait celui de Cabinets quand ce dernier gardait le focus
+ * d'un clic (le survol ne referme jamais un groupe qui a le focus).
+ */
+const ORDRES = [
+  { premier: GROUPES[0], second: GROUPES[1] },
+  { premier: GROUPES[1], second: GROUPES[0] },
+];
+
+for (const width of [1024, 1440]) for (const { premier, second } of ORDRES) {
+  const trajet = `${premier.nom} puis ${second.nom} à ${width}px`;
+  const ouvertSeul = async (page: Page, ouvert: typeof premier, ferme: typeof premier) => {
+    await expect(page.locator(`[aria-controls="sous-menu-${ouvert.id}"]`)).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.locator(`#sous-menu-${ouvert.id}`)).toBeVisible();
+    await expect(page.locator(`[aria-controls="sous-menu-${ferme.id}"]`)).toHaveAttribute('aria-expanded', 'false');
+    await expect(page.locator(`#sous-menu-${ferme.id}`)).toBeHidden();
+    await expect(page.locator('.nav-groupe[data-ouvert]')).toHaveCount(1);
+  };
+
+  test(`deux menus, souris : clic puis survol de l'autre, un seul panneau — ${trajet}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.locator(`[aria-controls="sous-menu-${premier.id}"]`).click();
+    await page.locator(`[aria-controls="sous-menu-${second.id}"]`).hover();
+    await ouvertSeul(page, second, premier);
+  });
+
+  test(`deux menus, souris : survol puis clic sur l'autre, un seul panneau — ${trajet}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.locator(`[aria-controls="sous-menu-${premier.id}"]`).hover();
+    await expect(page.locator(`#sous-menu-${premier.id}`)).toBeVisible();
+    await page.locator(`[aria-controls="sous-menu-${second.id}"]`).click();
+    await ouvertSeul(page, second, premier);
+  });
+
+  test(`deux menus, clavier : Entrée sur l'un puis sur l'autre, un seul panneau — ${trajet}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.locator(`[aria-controls="sous-menu-${premier.id}"]`).focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator(`#sous-menu-${premier.id}`)).toBeVisible();
+    await page.locator(`[aria-controls="sous-menu-${second.id}"]`).focus();
+    await page.keyboard.press('Enter');
+    await ouvertSeul(page, second, premier);
+  });
+
+  test(`deux menus, clavier puis souris : Entrée sur l'un, survol de l'autre, un seul panneau — ${trajet}`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.locator(`[aria-controls="sous-menu-${premier.id}"]`).focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator(`#sous-menu-${premier.id}`)).toBeVisible();
+    await page.locator(`[aria-controls="sous-menu-${second.id}"]`).hover();
+    await ouvertSeul(page, second, premier);
+  });
+}
+
 /** Les cinq destinations qui ne sont pas des entrées de Cabinets : toutes publiées, toutes servies. */
 const HUBS = [...AUTOMATISE.map((entree) => entree.href), '/outils-comptables-gratuits', '/blog'];
 /** Un guide publié, sous-page de « Dans vos outils ». */

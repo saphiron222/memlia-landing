@@ -26,5 +26,20 @@ export const HREFS = [
   '/outils-comptables-gratuits',
   '/blog',
 ];
+/** Les deux titres de groupe, tels qu’ils précèdent leurs entrées là où le groupe n’est pas un bouton (nav sans JavaScript). */
+export const TITRES = { cabinets: 'Cabinets', automatise: 'Ce qu’on automatise' };
+
+/**
+ * L’ordre exact de la navigation servie sans JavaScript, sans l’action finale : un titre non cliquable
+ * (`titre:`), puis les liens (`lien:`) de son groupe, puis les deux liens directs.
+ */
+export const ORDRE_SANS_JS = [
+  ...(CAC_PUBLIE ? [`titre:${TITRES.cabinets}`, 'lien:/', 'lien:/commissaires-aux-comptes'] : []),
+  `titre:${TITRES.automatise}`,
+  ...AUTOMATISE.map((entree) => `lien:${entree.href}`),
+  'lien:/outils-comptables-gratuits',
+  'lien:/blog',
+];
+
 /** Les seuls liens posés directement dans la barre (`.nav-entree[href]`) ; tout le reste vit dans un sous-menu. */
 export const HREFS_DIRECTS = ['/outils-comptables-gratuits', '/blog'];

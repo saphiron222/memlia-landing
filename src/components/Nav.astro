@@ -59,8 +59,6 @@ const entrees: (Destination | Groupe)[] = creerNavigation({ chemin, cacDisponibl
   return { ...entree, courant: marquer(entree.href) };
 });
 const estGroupe = (e: Destination | Groupe): e is Groupe => 'sousEntrees' in e;
-/** Toutes les destinations à plat, pour la navigation servie sans JavaScript. */
-const destinationsPlates = entrees.flatMap((e) => (estGroupe(e) ? e.sousEntrees : [e]));
 const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 ---
 
@@ -146,7 +144,14 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
 
 <noscript>
   <nav class="conteneur nav-sans-js" aria-label="Navigation sans JavaScript">
-    {destinationsPlates.map((e) => <a href={e.href} aria-current={e.courant}>{e.libelle}</a>)}
+    {entrees.map((e) => estGroupe(e) ? (
+      <div class="nav-sans-js-groupe" role="group" aria-labelledby={`nav-sans-js-${e.id}`}>
+        <span class="nav-sans-js-titre" id={`nav-sans-js-${e.id}`}>{e.libelle}</span>
+        {e.sousEntrees.map((s) => <a href={s.href} aria-current={s.courant}>{s.libelle}</a>)}
+      </div>
+    ) : (
+      <a href={e.href} aria-current={e.courant}>{e.libelle}</a>
+    ))}
     <a href={CTA.nav.href} aria-current={actionCourante}>{CTA.nav.libelle}</a>
   </nav>
 </noscript>
@@ -362,6 +367,30 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
     align-items: center;
     min-height: 44px;
   }
+  /* Sans JavaScript, un groupe n'est pas un bouton : son titre (non cliquable) ouvre sa ligne de liens. */
+  .nav-sans-js-groupe {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 16px;
+    flex-basis: 100%;
+  }
+  .nav-sans-js-titre {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--texte-2);
+  }
+  /* Étroit : le titre a sa propre ligne, les liens du groupe s'alignent dessous (sinon le premier lien
+     s'accole au titre et le suivant retombe à la marge, sans qu'on voie qu'ils sont du même groupe). */
+  @media (max-width: 39.999rem) {
+    .nav-sans-js-titre {
+      flex-basis: 100%;
+      min-height: 32px;
+    }
+  }
   @media (max-width: 63.999rem) {
     :global(.js) .nav-burger {
       display: inline-flex;
@@ -511,12 +540,19 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   // Le survol ouvre ; le premier clic confirme cette ouverture, les suivants basculent.
   // Le clavier, Échap et le clic extérieur conservent le même état annoncé.
   const groupes = [...document.querySelectorAll<HTMLElement>('[data-groupe]')];
+  const fermer = (groupe: HTMLElement) => {
+    groupe.removeAttribute('data-ouvert');
+    groupe.querySelector('[data-groupe-bouton]')?.setAttribute('aria-expanded', 'false');
+  };
   for (const groupe of groupes) {
     const bouton = groupe.querySelector<HTMLButtonElement>('[data-groupe-bouton]');
     if (!bouton) continue;
     let survolSeul = false;
     const ouvrir = (etat: boolean) => {
       survolSeul = false;
+      // Un seul sous-menu ouvert : le survol ne referme jamais un groupe qui garde le focus d'un clic ou
+      // d'un Entrée, donc ouvrir celui-ci referme explicitement les autres (leurs panneaux se superposaient).
+      if (etat) for (const autre of groupes) if (autre !== groupe) fermer(autre);
       groupe.toggleAttribute('data-ouvert', etat);
       bouton.setAttribute('aria-expanded', String(etat));
     };
@@ -534,11 +570,7 @@ const actionCourante = chemin === CTA.nav.href ? 'page' : undefined;
   }
   if (groupes.length) {
     document.addEventListener('click', (e) => {
-      for (const groupe of groupes) {
-        if (groupe.contains(e.target as Node)) continue;
-        groupe.removeAttribute('data-ouvert');
-        groupe.querySelector('[data-groupe-bouton]')?.setAttribute('aria-expanded', 'false');
-      }
+      for (const groupe of groupes) if (!groupe.contains(e.target as Node)) fermer(groupe);
     });
   }
 </script>
