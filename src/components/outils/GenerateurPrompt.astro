@@ -194,7 +194,7 @@ const choices = [
 </script>
 <style>
   .prompt-tool,.prompt-form,.library,.result,label,.check { display:grid; gap:16px; min-width:0; }
-  .library{grid-template-columns:minmax(0,1fr)}.prompt-seeds{min-width:0;max-width:100%;width:100%;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,40%);overflow-x:auto;gap:16px;padding:4px 4px 16px;scroll-snap-type:x proximity}.prompt-seeds button{white-space:normal;text-align:left;min-height:100px;scroll-snap-align:start;font:inherit;cursor:pointer}
+  .library{grid-template-columns:minmax(0,1fr)}.prompt-seeds{min-width:0;max-width:100%;width:100%;display:flex;overflow-x:auto;gap:16px;padding:4px 4px 16px;scroll-snap-type:x proximity}.prompt-seeds button{flex:0 0 max(200px,40%);white-space:normal;text-align:left;min-height:100px;scroll-snap-align:start;font:inherit;cursor:pointer}
   .prompt-tool h2 { font-size:var(--t-2xl); }
   .prompt-tool h3 { font-size:var(--t-xl); }
   .prompt-tool p { color:var(--texte-2); }

@@ -28,3 +28,22 @@ test('relance courte : objet édité seul protégé avant régénération',async
 test('checklist : le nom visible suit l’édition sans perte du focus',async({page})=>{
  await page.goto(`${hub}/checklist-pieces-comptables`);await page.locator('[data-cl-start]').click();const item=page.locator('[data-cl-item="p1"]');await item.locator('summary').click();await item.locator('[data-field=label]').fill('Libellé corrigé');await expect(item.locator('legend')).toHaveText('Libellé corrigé');await expect(item.locator('[data-field=label]')).toBeFocused();
 });
+
+for(const width of [375,666,768,1440])test(`galerie de prompts : cartes lisibles et défilement réel à ${width} px`,async({page})=>{
+ await page.setViewportSize({width,height:900});await page.goto(`${hub}/bibliotheque-prompts-comptables`);
+ const rail=page.locator('[data-prompt-rail]');const card=page.locator('[data-model]').first();
+ const dimensions=await rail.evaluate(el=>({client:el.clientWidth,scroll:el.scrollWidth}));
+ expect(dimensions.scroll).toBeGreaterThan(dimensions.client*2);
+ expect((await card.boundingBox())!.width).toBeGreaterThan(220);
+ expect((await card.boundingBox())!.width).toBeLessThanOrEqual(dimensions.client);
+ await page.getByRole('button',{name:'Prompts suivants',exact:true}).click();await expect.poll(()=>rail.evaluate(el=>el.scrollLeft)).toBeGreaterThan(100);
+ await page.locator('[data-read]').last().focus();await expect.poll(async()=>{const link=await page.locator('[data-read]').last().boundingBox();const bounds=await rail.boundingBox();return !!link&&!!bounds&&link.x>=bounds.x-1&&link.x+link.width<=bounds.x+bounds.width+1;}).toBe(true);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await page.screenshot({path:`.qa/outils-simples/screens/bibliotheque-cartes-${width}.png`});
+});
+
+for(const width of [375,666,768,1440])test(`générateur de prompts : amorces lisibles à ${width} px`,async({page})=>{
+ await page.setViewportSize({width,height:900});await page.goto(`${hub}/generateur-prompt-expert-comptable`);await page.getByText('Partir d’un exemple de consigne',{exact:true}).click();
+ const rail=page.locator('.prompt-seeds');const dimensions=await rail.evaluate(el=>({client:el.clientWidth,scroll:el.scrollWidth}));expect(dimensions.scroll).toBeGreaterThan(dimensions.client);
+ expect((await rail.locator('button').first().boundingBox())!.width).toBeGreaterThanOrEqual(200);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});
