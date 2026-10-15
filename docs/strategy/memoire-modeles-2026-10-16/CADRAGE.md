@@ -60,3 +60,11 @@ Retrait complet de la figurine, y compris son rappel final. Aucun nouvel emblèm
 Kevin demande de remplacer les trois repères ChatGPT/Claude/Gemini par les familles réellement candidates à l’adaptation : Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss. Les logos proviennent des sites ou comptes officiels. Les versions de licence vérifiées sont consignées dans docs/qa/memoire-modeles/logos-manifest.json et public/logos/modeles/SOURCES.md. La page dit « à poids accessibles » : elle ne promet ni licence uniforme, ni toutes les bases sur tout matériel. Le choix est fait sur la tâche, le français, les formats, les ressources et les droits applicables. Aucune base n’est déjà entraînée par ce chantier.
 
 Le header regroupe quatre prestations sous Nos services. Intégrations sort du groupe et devient un lien direct. Le footer reprend les mêmes quatre offres, et classe Intégrations avec Outils gratuits dans Vos outils. Aucun ancien catalogue de pôles ou guide environnement ne revient.
+
+## Dernier arbitrage — annotations et huit familles
+Kevin ajoute GLM de Z.ai et Kimi de Moonshot : logos officiels et licences de versions documentés dans le manifeste. GLM-5 : Apache 2.0 ; Kimi K2.5 : MIT modifiée. Huit familles candidates, aucun dimensionnement universel promis.
+
+Le bouton de pause et les trois paragraphes de précaution sous les scènes sont retirés. La progression est automatique ; survol/focus suspendent pour lire et une sélection conserve l’étape. Mouvement réduit : étapes manuelles. Retrait des légendes répétées de marques et des rappels de fiction sous les livrables/démonstrations des fiches. Garanties ne répète plus une carte sur la nature fictive des démonstrations. Les libellés compacts des exemples et les limites utiles aux décisions restent présents. Les générateurs de prompts affichent un simple statut de réussite, sans rappeler à chaque génération qu’aucune IA n’est appelée. Aucune suppression des preuves internes ou des contrôles réseau.
+
+## Dernière finition — cadence et marque
+Libellés courts GLM et Kimi. gpt oss utilise le logo OpenAI noir sur blanc, avec nom textuel comme les autres cartes. Cadence des quatre étapes : 2400ms, cycle9,6s. Lockup Memlia partagé, correctement placé en haut à droite, en remplacement de l’imitation typographique. Ces arbitrages ne changent pas l’architecture ni l’offre.

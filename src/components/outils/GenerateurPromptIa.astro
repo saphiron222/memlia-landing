@@ -9,10 +9,10 @@ const choices = [
 ];
 ---
 <div class="prompt-tool" data-generic-prompt>
-  <noscript><p>Activez JavaScript pour assembler une consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
+  <noscript><p>Activez JavaScript pour générer le prompt.</p></noscript>
   <details><summary>Choisir un exemple fictif</summary>
     <h2 id="generic-examples">Une consigne texte professionnelle</h2>
-    <p>Choisissez un exemple fictif : nous assemblons des blocs déterministes dans votre navigateur, pas une réponse d’IA.</p>
+    <p>Choisissez une consigne de départ.</p>
     <div class="actions">{GENERIC_TASKS.map((task) => <button class="btn btn-contour" type="button" data-seed={task.id}>{task.label}</button>)}</div>
   </details>
   <form method="dialog" data-own-telemetry novalidate autocomplete="off">
@@ -89,7 +89,7 @@ const choices = [
       if (editor.value && editor.value !== generated && !window.confirm('Remplacer votre prompt édité ? Copiez ou exportez votre édition pour la garder.')) { status.textContent = 'Assemblage annulé. Votre édition est conservée.'; emit('annulation'); return; }
       editor.value = generated = result.text; editor.scrollTop = 0; output.hidden = false;
       root.querySelector('[data-preview]')!.textContent = result.text;
-      updateActions(); status.textContent = 'Prompt assemblé localement. Aucun modèle d’IA appelé.'; emit('reussite'); if (++generations > 1) emit('recalcul'); root.querySelector<HTMLElement>('#generic-result')!.focus();
+      updateActions(); status.textContent = 'Prompt prêt.'; emit('reussite'); if (++generations > 1) emit('recalcul'); root.querySelector<HTMLElement>('#generic-result')!.focus();
     });
     const updateActions = () => root.querySelectorAll<HTMLButtonElement>('[data-copy],[data-txt],[data-json]').forEach((button) => { button.disabled = !editor.value.trim(); });
     editor.addEventListener('input', () => { updateActions(); status.textContent = 'Édition conservée. Relisez le fond, les contraintes et le schéma avant usage.'; });

@@ -13,5 +13,5 @@ const { robot } = Astro.props;
       <tbody>{robot.demonstration.cas.map((cas) => <tr data-decision={cas.decision}><th scope="row">{cas.cas}</th><td>{cas.sortie}</td><td><span class:list={['routine-decision', { 'routine-arret': cas.decision === 'Arrêt' }]}>{cas.decision}</span></td></tr>)}</tbody>
     </table>
   </div>
-  <p class="routine-demo-pied">Exemple de restitution préparé pour cette fiche. <a href="#regle">Lire la règle et ses conditions d’arrêt</a>.</p>
+  <p class="routine-demo-pied"><a href="#regle">Lire la règle et ses conditions d’arrêt</a>.</p>
 </div>

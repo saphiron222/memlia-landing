@@ -6,7 +6,7 @@
 
 **Base.** 392268488f0fdeb07f18f23a9ca7d7b05bcf0757, version robots/agents/outils vérifiée. Le checkout précédent et sa PR sont préservés.
 
-**Stack.** Astro et composants/tokens existants. Scènes originales ; bureau collectif à étapes manuelles et animation du modèle privé à pause, sans appels à une IA.
+**Stack.** Astro et composants/tokens existants. Scènes originales ; bureau collectif à étapes manuelles et animation automatique du modèle privé, avec lecture stable au survol/focus et sélection manuelle, sans appels à une IA.
 
 ## 1. Recherche et cadrage
 - [x] Sauvegarder et segmenter les 63,865 s de vidéo en environ 256 images ; planches de comparaison et relevé des séquences.
@@ -27,7 +27,7 @@
 
 ## 4. Recette et livraison
 - [x] Cas d’accès refusé/source contradictoire, aucune promesse de stockage ou propriété non définie.
-- [x] Tests ciblés : données/routes, étapes manuelles, boucle/pause, clavier, sans JS, mouvement réduit, mobile/grand écran, réseau et contact.
+- [x] Tests ciblés : données/routes, étapes manuelles, boucle automatique/sélection, clavier, sans JS, mouvement réduit, mobile/grand écran, réseau et contact.
 - [x] Inspection visuelle réelle, performances et revue indépendante.
 - [ ] Régénération autorisée, CI complète sur commit exact et prévisualisation noindex. Pas de fusion automatique.
 
@@ -43,6 +43,9 @@ Confusion RAG/entraînement ; attribution des droits de la base et des poids ada
 
 ## Dernier ajustement demandé
 - [x] Nos services : quatre offres ; Intégrations en lien direct ; footer identique.
-- [x] Six familles de modèles à poids accessibles, logos officiels optimisés et sources archivées. Licences et choix documentés par version.
+- [x] Huit familles de modèles à poids accessibles, logos officiels optimisés et sources archivées. Licences et choix documentés par version.
 - [x] Rejouer les tests ciblés de navigation et modèles, inspection réelle, revue du delta : 12 tests scripts et 86 tests navigateur PASS, sans test ignoré.
 - [ ] CI sur le nouveau SHA puis prévisualisation de son artefact. Le premier lancement CI a été annulé pour intégrer cette demande.
+
+## Présentation finale
+Notes didactiques répétées retirées des pages de service et des blocs de démonstration. Huit modèles, GLM et Kimi sans nom d’éditeur dans leur carte ; gpt oss avec logo OpenAI noir sur blanc et nom à côté. L’animation démarre automatiquement, sans bouton de pause : 2400ms par étape, 9,6s par cycle ; vrai Lockup Memlia en haut à droite. Survol/focus et sélection permettent de lire ; mouvement réduit respecté.

@@ -9,7 +9,7 @@ const choices = [
 ];
 ---
 <div class="prompt-tool" data-prompt-tool>
-  <noscript><p>Activez JavaScript pour assembler la consigne localement. Aucun modèle d’IA n’est appelé.</p></noscript>
+  <noscript><p>Activez JavaScript pour générer le prompt.</p></noscript>
   <details class="library"><summary>Partir d’un exemple de consigne</summary>
     <h2 class="sr-only">Modèles de départ</h2>
     <a href="/outils-comptables-gratuits/bibliotheque-prompts-comptables" target="_blank" rel="noopener noreferrer">Tous les prompts comptables ↗</a>
@@ -164,8 +164,8 @@ const choices = [
       root.querySelector('[data-cases]')!.replaceChildren(...result.cases.map((row) => {
         const li = document.createElement('li'); li.textContent = `${row.label} : ${row.input} Attendu : ${row.expected}`; return li;
       }));
-      output.hidden = false; control(); status.textContent = 'Prompt assemblé localement. Aucun appel d’IA effectué.';
-      if (transferredModel) status.textContent = keepsModel ? 'Modèle complet de la bibliothèque repris. Aucun appel d’IA effectué.' : 'Contraintes du modèle modifiées : blocs génériques assemblés. Relisez et adaptez le texte ; les détails de la fiche ne sont pas repris.';
+      output.hidden = false; control(); status.textContent = 'Prompt prêt.';
+      if (transferredModel) status.textContent = keepsModel ? 'Modèle de la bibliothèque repris.' : 'Contraintes du modèle modifiées : blocs génériques assemblés. Relisez et adaptez le texte ; les détails de la fiche ne sont pas repris.';
       emit('reussite');
       if (++generations > 1) emit('recalcul');
       root.querySelector<HTMLElement>('#prompt-result-title')!.focus();

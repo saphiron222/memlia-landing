@@ -69,16 +69,42 @@
     },
     {
       "id": "gpt-oss",
-      "page": "https://github.com/openai/gpt-oss",
-      "source": "https://raw.githubusercontent.com/openai/gpt-oss/main/docs/gpt-oss.svg",
+      "page": "https://github.com/openai",
+      "source": "https://avatars.githubusercontent.com/u/14957082?s=200&v=4",
       "licence": "https://openai.com/index/introducing-gpt-oss/",
-      "note": "gpt-oss-20b/120b : Apache 2.0. Logotype complet officiel, pas logo ChatGPT.",
-      "original": "originaux/gpt-oss.svg",
-      "originalSha256": "4d621976d2d4570b7663f55a356cfa2db9f20c4aa8658b54bf4e4a5a4bd17172",
+      "note": "gpt-oss-20b/120b : Apache 2.0. À la demande de Kevin : logo OpenAI noir sur fond blanc et nom gpt oss à côté. Aucun partenariat.",
+      "original": "originaux/openai.png",
+      "originalSha256": "6025a4347a8eaed17e31eaebf7834e33ec4af26cc7f59be586ac59ba5157fa1c",
       "target": "public/logos/modeles/gpt-oss.webp",
-      "width": 280,
-      "height": 56,
-      "sha256": "c8ddf5d0cdeefe3ad9ccbe5d4a7fbd2036c8ba2a0da0cfc58dd3045611443472"
+      "width": 64,
+      "height": 64,
+      "sha256": "dfa741803dcfe02c96e95f12a28642f68f51229de436c6d08784d2887d9d05a3"
+    },
+    {
+      "id": "glm",
+      "page": "https://github.com/zai-org/GLM-5",
+      "source": "https://raw.githubusercontent.com/zai-org/GLM-5/main/resources/logo.svg",
+      "licence": "https://github.com/zai-org/GLM-5/blob/main/LICENSE",
+      "note": "GLM-5 : licence Apache 2.0. Logo Z.ai du dépôt officiel.",
+      "original": "originaux/glm.svg",
+      "target": "public/logos/modeles/glm.webp",
+      "width": 64,
+      "height": 64,
+      "originalSha256": "e60742a0b37f805e654249dedb7b6ca11c785a60a2dd9ae33864668dce217693",
+      "sha256": "9a9b6822ab1d46c8a5b88cf7614ec81f1fcace07ea39bca628d7207dbab87e2f"
+    },
+    {
+      "id": "kimi",
+      "page": "https://www.kimi.com",
+      "source": "https://www.kimi.com/pwa-192.png",
+      "licence": "https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE",
+      "note": "Kimi K2.5 : MIT modifiée, attribution particulière au-delà des seuils de la licence ; pas MIT standard.",
+      "original": "originaux/kimi-icone.png",
+      "target": "public/logos/modeles/kimi.webp",
+      "width": 64,
+      "height": 64,
+      "originalSha256": "6c14f9c3062e953b3ed57ae3e19db931c1c1bba38d4d8d55550544f31d55e469",
+      "sha256": "4c82bb30a3d3ef28fcc80bb4cdc778c5a33043459ff29f414bb7e65940700c59"
     }
   ]
 }

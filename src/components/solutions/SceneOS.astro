@@ -17,6 +17,5 @@ const etapes=[
   </div>
   <div class="os-chemin" data-os-controls hidden aria-label="Explorer le fonctionnement de Memlia OS">{etapes.map((e,i)=><button type="button" data-os-step={i} aria-pressed={i===0?'true':'false'}><span class="os-chemin-numero">0{i+1}</span>{e.nom}<span class="os-chemin-fleche" aria-hidden="true">→</span></button>)}</div>
   <div class="os-explications" aria-live="polite" aria-atomic="true">{etapes.map((e,i)=><article data-os-detail={i}><h3>{e.titre}</h3><p>{e.texte}</p></article>)}</div>
-  <p class="scene-note">Illustration du fonctionnement. Dossier fictif, aucune connexion à un outil du cabinet.</p>
 </div>
 <script>import '@/lib/solutions-scenes';</script>

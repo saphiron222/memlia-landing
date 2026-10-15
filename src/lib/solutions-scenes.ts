@@ -14,22 +14,22 @@ for (const scene of document.querySelectorAll<HTMLElement>('[data-model-scene]')
   const frames=[...scene.querySelectorAll<HTMLElement>('[data-model-frame]')];
   const steps=[...scene.querySelectorAll<HTMLButtonElement>('[data-model-step]')];
   const controls=scene.querySelector<HTMLElement>('[data-model-controls]');
-  const pause=scene.querySelector<HTMLButtonElement>('[data-model-pause]');
-  if (!controls || !pause || !frames.length) continue;
-  let index=0, paused=reduced.matches, visible=false, timer: ReturnType<typeof setInterval>|undefined;
+  if (!controls || !frames.length) continue;
+  let index=0, manual=false, hovered=false, focused=false, visible=false, timer: ReturnType<typeof setInterval>|undefined;
   const show=(next:number)=>{index=next;frames.forEach((frame,i)=>{frame.hidden=i!==index;});steps.forEach((step,i)=>step.setAttribute('aria-pressed',String(i===index)));};
   const sync=()=>{
     clearInterval(timer);timer=undefined;
-    pause.disabled=reduced.matches;
-    pause.textContent=reduced.matches?'Mouvement réduit : étapes manuelles':paused?'Lancer l’animation':'Mettre en pause';
-    if (!paused && !document.hidden && visible && !reduced.matches) timer=setInterval(()=>show((index+1)%frames.length),5500);
+    if (!manual && !hovered && !focused && !document.hidden && visible && !reduced.matches) timer=setInterval(()=>show((index+1)%frames.length),2400);
   };
   controls.hidden=false;scene.dataset.enhanced='';show(0);
-  pause.addEventListener('click',()=>{paused=!paused;sync();});
-  steps.forEach((step,i)=>step.addEventListener('click',()=>{paused=true;show(i);sync();}));
-  scene.addEventListener('focusin',(event)=>{if(event.target!==pause){paused=true;sync();}});
+  // La sélection d’une étape garde cette vue. Survol et focus laissent le temps de lire.
+  steps.forEach((step,i)=>step.addEventListener('click',()=>{manual=true;show(i);sync();}));
+  scene.addEventListener('pointerenter',()=>{hovered=true;sync();});
+  scene.addEventListener('pointerleave',()=>{hovered=false;sync();});
+  scene.addEventListener('focusin',()=>{focused=true;sync();});
+  scene.addEventListener('focusout',(event)=>{if(!(event.relatedTarget instanceof Node)||!scene.contains(event.relatedTarget)){focused=false;sync();}});
   document.addEventListener('visibilitychange',sync);
-  reduced.addEventListener('change',()=>{paused=reduced.matches;sync();});
+  reduced.addEventListener('change',sync);
   if ('IntersectionObserver' in window) new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:.15}).observe(scene);
   else {visible=true;sync();}
 }

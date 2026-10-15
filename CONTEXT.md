@@ -85,4 +85,6 @@ Décision d’architecture des 15–16/10/2026 : « Nos services » regroupe Rob
 ### 16/10/2026 — Deux offres complémentaires
 Kevin demande Memlia OS pour relier mémoire, outils, équipes et agents du cabinet, et un modèle IA privé entraîné pour entreprises. Routes /memoire-collective-cabinet-comptable et /modele-ia-prive-entreprise. Source typée src/data/solutions.ts ; cadrage docs/strategy/memoire-modeles-2026-10-16/. Aucune collecte, installation ou formation réelle par ce chantier. Base 39226848, worktree isolé memoire-modeles-prives. Pas de fusion ni production autorisée.
 
-Dernier arbitrage du 16/10 : six familles de modèles à poids accessibles sur la page modèle privé (Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss), logos officiels locaux et version/licence définies par projet. Footer aligné avec Nos services et Intégrations dans Vos outils.
+Dernier arbitrage du 16/10 : huit familles de modèles à poids accessibles sur la page modèle privé (Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss, GLM/Z.ai, Kimi/Moonshot), logos officiels locaux et version/licence définies par projet. Footer aligné avec Nos services et Intégrations dans Vos outils.
+
+Présentation : retrait des légendes et notes pédagogiques répétées sous les exemples, sans masquer en CSS. Animation modèle automatique sans bouton de pause ; la sélection manuelle, le focus et le survol arrêtent la progression, et le mouvement réduit est respecté. Les explications métier et de confidentialité restent dans leur contexte utile.

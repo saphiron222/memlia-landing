@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
-import { CONNECTEURS, DOMAINES, LOGOS_SUR_ENCRE, MENTION_MARQUES, PAGE_OUTILS } from '../../src/data/connecteurs';
+import { CONNECTEURS, DOMAINES, LOGOS_SUR_ENCRE, PAGE_OUTILS } from '../../src/data/connecteurs';
 import { AGENTS, cheminAgent } from '../../src/data/specialistes';
 
 /**
@@ -72,7 +72,7 @@ test('une carte par logiciel, domaine par domaine, dans l’ordre des données ;
   for (const c of etat) await expect(page.locator(`[id="${c.id}"] img`)).toHaveCount(0);
 });
 
-test('aucun statut, aucun total, aucun lien vers un éditeur ; texte fixe et mention de marques sous la liste', async ({ page }) => {
+test('aucun statut, aucun total, aucun lien vers un éditeur ; texte fixe sans annotations sous la liste', async ({ page }) => {
   await page.goto(ROUTE);
   const main = await texteDe(page, 'main');
   expect(main).not.toMatch(TOTAL);
@@ -95,14 +95,8 @@ test('aucun statut, aucun total, aucun lien vers un éditeur ; texte fixe et men
 
   expect(await texteDe(page, '[data-sur-demande] .hub-autre')).toContain(TEXTE_FIXE);
   await expect(page.locator('[data-sur-demande] a[href="/contact"]')).toBeVisible();
-  await expect(page.locator('[data-mention-marques]')).toHaveText(MENTION_MARQUES);
-  // Sous la liste : la mention vient après la dernière carte de logiciel.
-  const ordre = await page.evaluate(() => {
-    const cartes = document.querySelectorAll('[data-connecteur]');
-    const mention = document.querySelector('[data-mention-marques]')!;
-    return cartes[cartes.length - 1].compareDocumentPosition(mention) & Node.DOCUMENT_POSITION_FOLLOWING;
-  });
-  expect(ordre).toBeTruthy();
+  // Arbitrage Kevin du 16/10 : les marques restent sourcées dans la documentation, sans légende répétée.
+  await expect(page.locator('[data-mention-marques]')).toHaveCount(0);
 });
 
 test('facturation électronique : une section sans carte ni nom de plateforme', async ({ page }) => {

@@ -5,7 +5,6 @@ export interface ModeleOuvert {
   logo: string;
   largeur: number;
   hauteur: number;
-  logotype?: boolean;
 }
 export const MODELES_OUVERTS: readonly ModeleOuvert[] = [
   {id:'llama',nom:'Llama',logo:'/logos/modeles/llama.webp',largeur:64,hauteur:64},
@@ -13,5 +12,7 @@ export const MODELES_OUVERTS: readonly ModeleOuvert[] = [
   {id:'qwen',nom:'Qwen',logo:'/logos/modeles/qwen.webp',largeur:64,hauteur:64},
   {id:'deepseek',nom:'DeepSeek',logo:'/logos/modeles/deepseek.webp',largeur:64,hauteur:64},
   {id:'gemma',nom:'Gemma',logo:'/logos/modeles/gemma.webp',largeur:64,hauteur:64},
-  {id:'gpt-oss',nom:'gpt-oss',logo:'/logos/modeles/gpt-oss.webp',largeur:280,hauteur:56,logotype:true},
+  {id:'gpt-oss',nom:'gpt oss',logo:'/logos/modeles/gpt-oss.webp',largeur:64,hauteur:64},
+  {id:'glm',nom:'GLM',logo:'/logos/modeles/glm.webp',largeur:64,hauteur:64},
+  {id:'kimi',nom:'Kimi',logo:'/logos/modeles/kimi.webp',largeur:64,hauteur:64},
 ];
