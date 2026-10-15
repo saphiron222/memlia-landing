@@ -6,12 +6,13 @@ import { tmpdir } from 'node:os';
 import { splitSitemaps, sitemapType, readSitemapPages } from '../../scripts/lib/sitemaps.mjs';
 
 const header = '<?xml version="1.0" encoding="UTF-8"?>';
-const paths = ['/', '/contact', '/automatisation/fec', '/integrations', '/integrations/sage', '/outils-comptables-gratuits', '/outils-comptables-gratuits/fec', '/blog', '/blog/article', '/glossaire', '/commissaires-aux-comptes', '/commissaires-aux-comptes/certification'];
+const paths = ['/', '/contact', '/automatisation/fec', '/integrations', '/integrations/sage', '/outils-comptables-gratuits', '/outils-comptables-gratuits/fec', '/blog', '/blog/article', '/glossaire', '/commissaires-aux-comptes', '/commissaires-aux-comptes/certification', '/agents-ia', '/agents-ia/comptabilite'];
 const entries = paths.map(path => `<url><loc>https://memlia.fr${path}</loc><lastmod>2026-09-20T12:34:56.000Z</lastmod><priority>0.6</priority></url>`);
 
 test('classe les hubs, leurs descendants et CAC sans capturer un préfixe voisin', () => {
-  assert.deepEqual(paths.map(path => sitemapType(`https://memlia.fr${path}`)), ['pages', 'pages', 'services', 'guides', 'guides', 'outils', 'outils', 'blog', 'blog', 'glossaire', 'cac', 'cac']);
+  assert.deepEqual(paths.map(path => sitemapType(`https://memlia.fr${path}`)), ['pages', 'pages', 'services', 'guides', 'guides', 'outils', 'outils', 'blog', 'blog', 'glossaire', 'cac', 'cac', 'agents', 'agents']);
   assert.equal(sitemapType('https://memlia.fr/blogue'), 'pages');
+  assert.equal(sitemapType('https://memlia.fr/agents-iaa'), 'pages');
 });
 
 test('partition complète, unique, XML daté inchangé et absence du sitemap agrégé', () => {
@@ -27,7 +28,7 @@ test('partition complète, unique, XML daté inchangé et absence du sitemap agr
     const urls = [...actual.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
     assert.equal(urls.length, paths.length);
     assert.equal(new Set(urls).size, paths.length);
-    for (const type of ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac']) {
+    for (const type of ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac', 'agents']) {
       assert.ok(readFileSync(join(dist, `sitemap-${type}.xml`), 'utf8').includes('<urlset xmlns='));
       assert.ok(readFileSync(join(dist, 'sitemap.xml'), 'utf8').includes(`https://memlia.fr/sitemap-${type}.xml`));
     }

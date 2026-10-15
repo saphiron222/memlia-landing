@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute } from '../../scripts/verify-page-contract.mjs';
+import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute, expectedSchema, sourceForRoute } from '../../scripts/verify-page-contract.mjs';
 
 function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true, noindex = false, schema = true }) {
   const url = `https://memlia.fr${route}`;
@@ -570,4 +570,24 @@ test('les rubriques blog lisent leur intention canonique et leur vrai gabarit', 
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('les routes des agents IA trouvent leur gabarit et leur schéma : le hub et la fiche, jamais un repli', () => {
+  // Sans règle dédiée, le repli cherchait src/pages/agents-ia.astro (« source Astro introuvable ») et attendait une
+  // WebPage là où le hub émet une CollectionPage (annexe §4).
+  const root = '/depot';
+  assert.equal(sourceForRoute(root, '/agents-ia'), join(root, 'src/pages/agents-ia/index.astro'));
+  assert.equal(sourceForRoute(root, '/agents-ia/comptabilite'), join(root, 'src/pages/agents-ia/[metier].astro'));
+  assert.equal(sourceForRoute(root, '/agents-iaa'), join(root, 'src/pages/agents-iaa.astro'), 'un préfixe voisin garde le repli');
+  assert.deepEqual(expectedSchema('/agents-ia'), ['CollectionPage', 'ItemList', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/agents-ia/comptabilite'), ['WebPage', 'Service', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/agents-iaa'), ['WebPage']);
+});
+
+test('le contrat d’intention du hub reprend la requête et l’ouverture de description de ses données', async () => {
+  const { HUB } = await import('../../src/data/specialistes.ts');
+  const contrat = contratsIntention(process.cwd()).get(HUB.chemin);
+  assert.equal(contrat?.query, HUB.requete);
+  assert.equal(contrat?.descriptionLead, HUB.descriptionLead);
+  assert.ok(HUB.description.startsWith(HUB.descriptionLead));
 });

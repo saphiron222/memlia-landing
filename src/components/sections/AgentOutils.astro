@@ -1,0 +1,57 @@
+---
+import type { Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Dans vos outils » (spec §2, section 6) : les logiciels où l'agent prépare ses tâches, sous leur nom exact de
+ * carte (`CONNECTEURS.md`, R14). Du texte seulement à ce stade : la tâche 8 les relie à leur carte de la page de
+ * compatibilité (`/integrations#<id>`). Aucun statut, aucun total, aucun lien sortant vers un éditeur (porte 2).
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const { outils } = gabaritDe(agent);
+---
+
+<div class="agent-outils" data-agent-outils>
+  <h3>{outils.titre}</h3>
+  <p>{outils.texte}</p>
+  <ul class="agent-logiciels">
+    {agent.logiciels.map((nom) => <li>{nom}</li>)}
+  </ul>
+</div>
+
+<style>
+  .agent-outils {
+    display: grid;
+    gap: var(--espace-3);
+    padding-top: var(--espace-6);
+    border-top: 1px solid var(--ligne);
+  }
+  .agent-outils h3 {
+    font-size: var(--titre-ligne);
+  }
+  .agent-outils p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--texte-2);
+  }
+  /* Des noms, pas des boutons : un filet léger, aucune ombre, aucun survol. */
+  .agent-logiciels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .agent-logiciels li {
+    padding: 4px 10px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-chip);
+    background: var(--surface-page);
+    font-size: var(--t-sm);
+    color: var(--texte);
+  }
+</style>

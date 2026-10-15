@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { CAC_PUBLIE, DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
+import { CAC_PUBLIE, DESTINATIONS, HREFS_DIRECTS } from '../navigation-attendue.mjs';
 
 /**
  * Les six largeurs de la consigne, sur les pages du site v2.
@@ -22,8 +22,8 @@ for (const [width, height] of LARGEURS) {
       await expect(page.locator('.ariane'), route).toBeVisible();
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Cabinets et hubs directs sur desktop ; destinations dans le panneau sur mobile.
-      await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 4 : 3);
+      // Boutons de groupe (Cabinets, Ce qu'on automatise) et liens directs sur desktop ; destinations dans le panneau sur mobile.
+      await expect(page.locator('.nav-entree'), route).toHaveCount((CAC_PUBLIE ? 2 : 1) + HREFS_DIRECTS.length);
       if (width < 1024) {
         await page.locator('[data-burger]').click();
         const liens = page.locator('#menu-mobile .nav-mobile-lien');
@@ -80,7 +80,7 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      // Les trois hubs sont des liens directs ; Cabinets est un bouton de sous-menu.
+      // Outils gratuits et le blog sont des liens directs ; Cabinets et Ce qu'on automatise sont des boutons de sous-menu.
       nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {
@@ -94,8 +94,8 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
     expect(rendu.canonical, `${route} canonical`).toBe(servi.canonical);
     expect(rendu.h1, `${route} h1`).toBe(servi.h1);
     expect(rendu.robots, `${route} robots`).toBe(servi.robots);
-    // Les hubs publiés sont identiques dans le HTML servi et dans le DOM rendu.
+    // Les liens directs publiés sont identiques dans le HTML servi et dans le DOM rendu.
     expect(rendu.nav, `${route} entrées de navigation`).toEqual(servi.nav);
-    expect(rendu.nav, `${route} hubs directs`).toEqual(HREFS.slice(-3));
+    expect(rendu.nav, `${route} liens directs`).toEqual(HREFS_DIRECTS);
   }
 });

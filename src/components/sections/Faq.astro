@@ -3,8 +3,13 @@ import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 interface Lien { texte: string; href: string }
-interface Props { contenu?: ContenuAccueil['faq']; references?: Record<string, Lien[]>; }
-const { contenu = contenuDe('ec').faq, references = {} } = Astro.props;
+interface Props {
+  contenu?: ContenuAccueil['faq'];
+  references?: Record<string, Lien[]>;
+  /** Le bouton « Confier une première tâche » du rail ; une fiche d'agent IA le retire (elle en porte déjà deux). */
+  actionRail?: boolean;
+}
+const { contenu = contenuDe('ec').faq, references = {}, actionRail = true } = Astro.props;
 // Les mêmes mots servent au paragraphe et au schéma FAQ ; seuls les liens changent.
 const fragments = (texte: string, liens: Lien[]) => {
   const morceaux: Array<{ texte: string; href?: string }> = [];
@@ -35,7 +40,7 @@ import { CTA } from '@/data/site.mjs';
   <div class="faq-rail tete rv">
     <h2 id="faq-titre">{contenu.titre}</h2>
     <p class="texte-2 faq-intro">{retour}{contenu.texte}{retour}</p>
-    <Button href={CTA.principal.href} variante="contour" class="faq-humain">{CTA.principal.libelle}</Button>
+    {actionRail && <Button href={CTA.principal.href} variante="contour" class="faq-humain">{CTA.principal.libelle}</Button>}
   </div>
 
   <div class="faq-liste rv-groupe" data-faq>

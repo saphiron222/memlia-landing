@@ -50,3 +50,31 @@ test('le pont CAC est accepté, pas une destination éditoriale ou externe', () 
   for (const href of ['/commissaires-aux-comptes', '/automatisation/paie', '/automatisation-cabinet-comptable']) assert.equal(estLienCommercialBlog(href), true);
   for (const href of ['/blog/fictif', 'https://exemple.fr', '/commissaires-aux-comptes?x=1', '/commissaires-aux-comptes-autre']) assert.equal(estLienCommercialBlog(href), false);
 });
+
+test('le hub des agents IA ne compte pas ses agents à la main : le compteur et les filtres viennent des données', async () => {
+  // Annexe §1.1 : « 12 agents IA » et le compte de chaque filtre se dérivent (AGENTS.length, comptesParGroupe()).
+  // Un nombre écrit à la main reste vrai jusqu'au jour où un agent s'ajoute, puis ment sans que rien ne rougisse.
+  const { readdirSync, existsSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  const pages = existsSync('src/pages/agents-ia')
+    ? readdirSync('src/pages/agents-ia', { recursive: true }).filter((f) => String(f).endsWith('.astro')).map((f) => join('src/pages/agents-ia', String(f)))
+    : [];
+  const sections = readdirSync('src/components/sections').filter((f) => /^(?:Agent\w*|Derriere)\.astro$/.test(f)).map((f) => join('src/components/sections', f));
+  const sources = [...pages, ...sections];
+  for (const attendu of ['src/pages/agents-ia/index.astro', 'src/components/sections/AgentAnnuaire.astro', 'src/components/sections/AgentCarte.astro']) {
+    assert.ok(sources.includes(attendu), `${attendu} absent : le contrôle ne lirait rien`);
+  }
+  const COMPTE_ECRIT = /\b(?:[2-9]|1\d|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze)\s+(?:agents?|fiches?|métiers)\b/iu;
+  for (const path of sources) assert.doesNotMatch(read(path), COMPTE_ECRIT, path);
+  const annuaire = read('src/components/sections/AgentAnnuaire.astro');
+  assert.match(annuaire, /\bagents\.length\b|\bAGENTS\.length\b/, 'compteur dérivé du tableau des agents');
+  assert.match(annuaire, /comptesParGroupe\(\)/, 'compte de chaque filtre dérivé des données');
+  // Le CSS ne compare pas deux attributs : chaque groupe a sa règle de masquage, écrite à la main. Un groupe
+  // ajouté aux données sans la sienne laisserait son filtre sans effet.
+  const { GROUPES } = await import('../../src/data/specialistes.ts');
+  for (const { id } of GROUPES) assert.match(annuaire, new RegExp(`#filtre-${id}:checked`), `règle de masquage du filtre ${id}`);
+  // La copie du hub vit dans HUB (specialistes.ts) : elle ne compte pas non plus à la main.
+  const { HUB } = await import('../../src/data/specialistes.ts');
+  const textes = JSON.stringify(HUB);
+  assert.doesNotMatch(textes, COMPTE_ECRIT, 'HUB écrit un effectif à la main');
+});

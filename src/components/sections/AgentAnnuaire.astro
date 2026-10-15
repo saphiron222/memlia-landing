@@ -1,0 +1,213 @@
+---
+import AgentCarte from '@/components/sections/AgentCarte.astro';
+import { GROUPES, HUB, comptesParGroupe, type GroupeId, type Specialiste } from '@/data/specialistes';
+
+/**
+ * L'annuaire du hub `#annuaire` (spec §1, annexe E1) : un compteur et des filtres dérivés des données, puis la grille
+ * des cartes d'agent. Les filtres marchent sans JavaScript : des radios (« Tous » coché par défaut, l'absence de
+ * filtre), et `:has()` masque les cartes hors du groupe coché. Sans prise en charge de `:has()`, les filtres se
+ * retirent et l'annuaire complet reste affiché : c'est l'état de repli. Aucune URL ne change.
+ *
+ * La disposition suit le nombre de cartes visibles (système de page § 5). Les règles de grille de global.css comptent
+ * les cartes du DOM, masquées comprises (E1, mesuré dans Chromium le 15/10/2026 : sur douze enfants, « Vie du
+ * cabinet » rendait 3 + 1 à 1 200 px et « Relation client » 2 + 1 à 700 px). Chaque filtre porte donc la disposition
+ * de son propre nombre (`data-disposition`, calculé ici), et une surcharge de `flex-basis` l'applique.
+ */
+interface Props {
+  agents: readonly Specialiste[];
+}
+const { agents } = Astro.props;
+const comptes = comptesParGroupe();
+
+/** Le compte de chaque filtre est celui des cartes rendues : un écart entre les deux arrête le build (fail-closed). */
+for (const { id } of GROUPES) {
+  const rendues = agents.filter((agent) => agent.groupe === id).length;
+  if (rendues !== comptes[id]) throw new Error(`AgentAnnuaire : le filtre ${id} compterait ${comptes[id]} agents pour ${rendues} cartes rendues`);
+}
+
+type Disposition = 'pair' | 'impair' | 'deux-colonnes';
+/**
+ * La disposition d'un groupe de n cartes, aux deux paliers de la grille (système de page § 5) : 2 et 4 restent en
+ * deux colonnes ; un nombre pair passe en deux colonnes dès 36 rem puis en trois dès 56 rem ; un nombre impair reste en
+ * une colonne jusqu'à 56 rem, puis passe en trois, dernière rangée centrée. Un groupe de 1 ou de 7 (3 + 2 + 2) ou de
+ * plus de 9 cartes n'a pas de disposition écrite pour un filtre : le build s'arrête plutôt que de rendre une orpheline.
+ */
+function disposition(nombre: number, id: string): Disposition {
+  if (nombre < 2 || nombre === 7 || nombre > 9) throw new Error(`AgentAnnuaire : aucune disposition écrite pour ${nombre} cartes (filtre ${id})`);
+  if (nombre === 2 || nombre === 4) return 'deux-colonnes';
+  return nombre % 2 === 0 ? 'pair' : 'impair';
+}
+
+/*
+ * Le nom de chaque radio dit le libellé et le compte du filtre (« <libellé>, <compte> agents ») : écrit en `aria-label` depuis
+ * les mêmes données que la puce visible, parce que le calcul du nom accessible insère une espace entre les éléments
+ * d'une puce en flex (« conseil , 5 », mesuré dans Chromium le 15/10/2026).
+ */
+const filtres: { id: 'tous' | GroupeId; libelle: string; nombre: number; disposition?: Disposition }[] = [
+  { id: 'tous', libelle: HUB.annuaire.tous, nombre: agents.length },
+  ...GROUPES.map(({ id, libelle }) => ({ id, libelle, nombre: comptes[id], disposition: disposition(comptes[id], id) })),
+];
+---
+
+<section id="annuaire" class="pv agents-annuaire" aria-labelledby="annuaire-titre" data-annuaire>
+  <div class="agents-tete">
+    <div class="tete">
+      <h2 id="annuaire-titre">{HUB.annuaire.titre}</h2>
+      <p>{HUB.annuaire.texte}</p>
+    </div>
+    <p class="agents-compteur" data-annuaire-compteur>{agents.length} agents IA</p>
+  </div>
+
+  <div class="agents-grille">
+    <fieldset class="agents-filtres">
+      <legend class="sr-only">{HUB.annuaire.legende}</legend>
+      {filtres.map((filtre, i) => (
+        <Fragment>
+          <input
+            class="agents-filtre-radio"
+            type="radio"
+            name="agents-filtre"
+            id={`filtre-${filtre.id}`}
+            value={filtre.id}
+            checked={i === 0}
+            aria-label={`${filtre.libelle}, ${filtre.nombre} ${filtre.nombre > 1 ? 'agents' : 'agent'}`}
+            data-disposition={filtre.disposition}
+          />
+          <label class="agents-filtre" for={`filtre-${filtre.id}`}>
+            <span>{filtre.libelle}</span>
+            <span class="agents-filtre-compte">{filtre.nombre}</span>
+          </label>
+        </Fragment>
+      ))}
+    </fieldset>
+
+    <ul class="cartes agents-cartes">
+      {agents.map((agent) => <AgentCarte agent={agent} />)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .agents-tete {
+    display: grid;
+    gap: var(--tete-ecart);
+    align-items: end;
+  }
+  .agents-compteur {
+    margin: 0;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--texte-2);
+    font-variant-numeric: tabular-nums;
+  }
+  @media (min-width: 48rem) {
+    .agents-tete {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+  .agents-grille {
+    display: grid;
+    gap: var(--espace-8);
+    min-width: 0;
+  }
+
+  /* ---- Filtres : des puces au rayon --r-chip, cible de 44 px ; la coche en encre pleine. ---- */
+  .agents-filtres {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espace-2);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  /* Le radio reste focalisable et parcouru aux flèches ; sa puce porte l'état et le focus. */
+  .agents-filtre-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .agents-filtre {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espace-2);
+    min-height: 44px;
+    padding: 0 var(--espace-3) 0 var(--espace-4);
+    border: 1px solid var(--ligne-forte);
+    border-radius: var(--r-chip);
+    background: var(--surface-elevee);
+    color: var(--texte-fort);
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+      background-color var(--duree-1) var(--courbe-standard),
+      border-color var(--duree-1) var(--courbe-standard),
+      color var(--duree-1) var(--courbe-standard);
+  }
+  .agents-filtre-compte {
+    display: inline-grid;
+    place-items: center;
+    min-width: 26px;
+    height: 24px;
+    padding: 0 var(--espace-2);
+    border-radius: var(--r-ornement);
+    background: var(--surface-page);
+    color: var(--texte-2);
+    font-variant-numeric: tabular-nums;
+  }
+  @media (hover: hover) {
+    .agents-filtre:hover {
+      border-color: var(--texte-2);
+    }
+  }
+  .agents-filtre-radio:checked + .agents-filtre {
+    border-color: var(--bouton-sombre);
+    background: var(--bouton-sombre);
+    color: var(--creme);
+  }
+  .agents-filtre-radio:checked + .agents-filtre .agents-filtre-compte {
+    background: color-mix(in srgb, var(--creme) 18%, transparent);
+    color: var(--creme);
+  }
+  .agents-filtre-radio:focus-visible + .agents-filtre {
+    outline: 2.5px solid var(--focus);
+    outline-offset: 3px;
+  }
+  /* Sans :has(), les puces ne filtreraient rien : elles se retirent, l'annuaire entier reste. */
+  @supports not selector(:has(*)) {
+    .agents-filtres {
+      display: none;
+    }
+  }
+
+  /* ---- Masquage : une règle par groupe (le CSS ne compare pas deux attributs ; data-driven-counts.test.mjs). ---- */
+  .agents-annuaire:has(#filtre-production-conseil:checked) :global([data-carte-agent]:not([data-agent-groupe='production-conseil'])),
+  .agents-annuaire:has(#filtre-relation-client:checked) :global([data-carte-agent]:not([data-agent-groupe='relation-client'])),
+  .agents-annuaire:has(#filtre-vie-cabinet:checked) :global([data-carte-agent]:not([data-agent-groupe='vie-cabinet'])) {
+    display: none;
+  }
+
+  /* ---- Disposition du filtre coché, selon son propre nombre de cartes (E1). Les paliers sont ceux de global.css,
+     mesurés sur la grille (requête de conteneur) ; l'identifiant l'emporte sur les règles de grille du site. ---- */
+  @container (min-width: 36rem) {
+    .agents-annuaire:has([data-disposition='impair']:checked) .agents-cartes > :global(*) {
+      flex-basis: 100%;
+    }
+    .agents-annuaire:has([data-disposition='pair']:checked) .agents-cartes > :global(*),
+    .agents-annuaire:has([data-disposition='deux-colonnes']:checked) .agents-cartes > :global(*) {
+      flex-basis: calc((100% - var(--ecart)) / 2 - 0.1px);
+    }
+  }
+  @container (min-width: 56rem) {
+    .agents-annuaire:has([data-disposition='impair']:checked) .agents-cartes > :global(*),
+    .agents-annuaire:has([data-disposition='pair']:checked) .agents-cartes > :global(*) {
+      flex-basis: calc((100% - 2 * var(--ecart)) / 3 - 0.1px);
+    }
+  }
+</style>

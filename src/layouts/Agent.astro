@@ -1,0 +1,84 @@
+---
+import Base from '@/layouts/Base.astro';
+import AgentHero from '@/components/sections/AgentHero.astro';
+import AgentLivrables from '@/components/sections/AgentLivrables.astro';
+import AgentEtapes from '@/components/sections/AgentEtapes.astro';
+import AgentFamilles from '@/components/sections/AgentFamilles.astro';
+import AgentOutils from '@/components/sections/AgentOutils.astro';
+import AvecSans from '@/components/sections/AvecSans.astro';
+import RegleEcrite from '@/components/sections/RegleEcrite.astro';
+import AgentVoisins from '@/components/sections/AgentVoisins.astro';
+import Faq from '@/components/sections/Faq.astro';
+import AgentDepart from '@/components/sections/AgentDepart.astro';
+import { cheminAgent, ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+import { ficheGraph } from '@/data/schema-agents.mjs';
+
+/**
+ * La coque d'une fiche `/agents-ia/<métier>` (spec §2, douze sections ; annexe §2). Un seul gabarit, lu depuis les
+ * données de l'agent : fil d'Ariane et héros partagé avec le rejeu, ce que l'agent remet, comment il travaille, ses
+ * tâches et ses outils, avec ou sans lui, la règle écrite (panneau sombre), ses voisins, les questions, puis « Par
+ * quelle tâche commencer ? » et le lien vers tous les agents. Le graphe JSON-LD est assemblé et vérifié par
+ * `ficheGraph` (un Service, aucune FAQPage). N'importe pas `Service.astro`, couplé à la collection des services.
+ *
+ * Le rythme des sections (`.pv`, au pas de `--section-espace`, blocs espacés de `--bloc-ecart`) reprend celui de la
+ * coque des pages commerciales, sous `.agent-page`.
+ */
+interface Props {
+  agent: Specialiste;
+  /** Par famille : la page qui détaille la tâche (page service publiée, sinon article publié). */
+  liens: Readonly<Record<string, { href: string }>>;
+  /** La page où la règle de la démonstration est publiée (`fiche.pageDeLaRegle`) et son nom. */
+  regle?: { href: string; libelle: string };
+}
+const { agent, liens, regle } = Astro.props;
+const fiche = ficheDe(agent);
+const g = gabaritDe(agent);
+const chemin = cheminAgent(agent);
+const schema = ficheGraph(agent);
+const socialImage = { url: fiche.image.url, width: 1200, height: 630, alt: fiche.image.alt };
+const questions = {
+  titre: g.questions.titre,
+  texte: g.questions.texte,
+  questions: fiche.faq.questions.map((q, i) => ({ id: `${agent.slug}-${i + 1}`, question: q.question, reponse: q.reponse })),
+};
+---
+
+<Base titre={fiche.titreOnglet} titreSocial={fiche.h1} description={fiche.description} chemin={chemin} base="/" socialImage={socialImage} schema={schema}>
+  <div class="feuille agent-page" data-agent-fiche={agent.slug}>
+    <AgentHero agent={agent} regle={regle} />
+    <AgentLivrables agent={agent} />
+    <AgentEtapes agent={agent} />
+    <AgentFamilles agent={agent} liens={liens}>
+      <AgentOutils agent={agent} />
+    </AgentFamilles>
+    <AvecSans agent={agent} />
+    <RegleEcrite agent={agent} />
+    <AgentVoisins agent={agent} />
+    <Faq contenu={questions} actionRail={false} />
+    <AgentDepart agent={agent} />
+  </div>
+</Base>
+
+<style>
+  .agent-page :global(.pv) {
+    display: grid;
+    gap: var(--bloc-ecart);
+    padding: var(--section-espace) var(--marge-page) 0;
+  }
+  .agent-page :global(.pv > *) {
+    min-width: 0;
+  }
+  /* La bande va bord à bord de la feuille, seule forme à le faire. */
+  .agent-page :global(.pv > .bande) {
+    margin-inline: calc(-1 * var(--marge-page));
+  }
+  @media (min-width: 64rem) {
+    .agent-page :global(.pv) {
+      padding-inline: var(--marge-page-lg);
+    }
+    .agent-page :global(.pv > .bande) {
+      margin-inline: calc(-1 * var(--marge-page-lg));
+    }
+  }
+</style>

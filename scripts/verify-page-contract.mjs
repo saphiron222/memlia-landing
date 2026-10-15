@@ -36,6 +36,8 @@ export function sourceForRoute(root, route, rubriques = BLOG_RUBRIQUES) {
   if (route.startsWith('/automatisation/')) return join(root, 'src/pages/automatisation/[slug].astro');
   if (route.startsWith('/integrations/')) return join(root, 'src/pages/integrations/[slug].astro');
   if (route === '/integrations') return join(root, 'src/pages/integrations/index.astro');
+  if (route === '/agents-ia') return join(root, 'src/pages/agents-ia/index.astro');
+  if (route.startsWith('/agents-ia/')) return join(root, 'src/pages/agents-ia/[metier].astro');
   if (route.startsWith('/blog/rubrique/')) return join(root, 'src/pages/blog/rubrique/[slug].astro');
   if (rubriques.some(({ chemin }) => chemin === route)) return join(root, 'src/pages/blog/[...rubrique].astro');
   if (route.startsWith('/blog/')) return join(root, 'src/pages/blog/[slug].astro');
@@ -289,6 +291,9 @@ export function expectedSchema(route, rubriques = BLOG_RUBRIQUES) {
   if (/^\/automatisation\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'Audience', 'BreadcrumbList'];
   if (/^\/integrations\/[^/]+$/.test(route)) return ['TechArticle', 'WebPage', 'BreadcrumbList'];
   if (route === '/integrations') return ['CollectionPage', 'ItemList'];
+  // Hub des agents IA et ses fiches (JSON-LD.md §4) : jamais de Service au hub, un seul par fiche.
+  if (route === '/agents-ia') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
+  if (/^\/agents-ia\/[^/]+$/.test(route)) return ['WebPage', 'Service', 'BreadcrumbList'];
   if (/^\/outils-comptables-gratuits\/[^/]+$/.test(route)) return ['WebPage', 'WebApplication', 'BreadcrumbList'];
   if (route === '/outils-comptables-gratuits') return ['CollectionPage', 'ItemList', 'BreadcrumbList'];
   if (rubriques.some(({ chemin }) => chemin === route) || /^\/blog\/rubrique\/[^/]+$/.test(route)) return ['WebPage', 'CollectionPage', 'BreadcrumbList'];

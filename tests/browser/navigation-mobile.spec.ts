@@ -2,7 +2,7 @@ import { test, expect, type Locator } from '@playwright/test';
 import { CTA } from '../../src/data/site.mjs';
 
 /** Le burger ouvre les destinations ; sans JavaScript, les liens restent servis en clair. */
-import { DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
+import { AUTOMATISE, CAC_PUBLIE, DESTINATIONS, HREFS, ORDRE_SANS_JS } from '../navigation-attendue.mjs';
 
 /** Un contrôle n'est atteignable que si le hit-test le rend, pas seulement sa boîte DOM. */
 async function mesurerAtteignable(cible: Locator) {
@@ -94,8 +94,32 @@ test('sans JavaScript : les destinations publiées et l’action restent servies
   }
   await expect(page.locator('[data-burger]')).toBeHidden();
   await expect(navigation.locator('a').last()).toHaveAttribute('href', CTA.nav.href);
-  await navigation.getByText('Ce qu’on automatise', { exact: true }).click();
-  await expect(page).toHaveURL(/\/automatisation-cabinet-comptable$/);
+  // « Ce qu'on automatise » n'est plus un lien : ses trois entrées le sont, chacune menant à sa page.
+  for (const { libelle, href } of AUTOMATISE) {
+    await page.goto('/');
+    await page.locator('.nav-sans-js').getByText(libelle, { exact: true }).click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+    await expect(page.locator('main h1')).toBeVisible();
+  }
+  await context.close();
+});
+
+test('sans JavaScript : chaque groupe a son titre, non cliquable, avant ses entrées', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
+  const page = await context.newPage();
+  await page.goto('/');
+  const navigation = page.locator('.nav-sans-js');
+  // Les titres sont des `span` : seuls les liens se comptent en `a` (les attendus exacts de DESTINATIONS restent vrais).
+  const ordre = await navigation.evaluate((nav) => [...nav.querySelectorAll('.nav-sans-js-titre, a')].map((element) => (
+    element.matches('a') ? `lien:${element.getAttribute('href')}` : `titre:${element.textContent!.trim()}`
+  )));
+  expect(ordre).toEqual([...ORDRE_SANS_JS, `lien:${CTA.nav.href}`]);
+  await expect(navigation.locator('.nav-sans-js-titre')).toHaveCount(CAC_PUBLIE ? 2 : 1);
+  for (const titre of await navigation.locator('.nav-sans-js-titre').all()) {
+    expect(await titre.evaluate((element) => element.tagName)).toBe('SPAN');
+    expect(await titre.locator('xpath=ancestor-or-self::a').count()).toBe(0);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
   await context.close();
 });
 

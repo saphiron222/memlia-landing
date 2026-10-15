@@ -140,7 +140,7 @@ Dossier fictif : l'Atelier Loriot, SARL de menuiserie inventée, exercice au 31/
 | Suivre absences et arrêts | Arrêts reçus rattachés au salarié, attestations de salaire préparées, indemnités journalières rapprochées des versements. | `absences-ijss` |
 | Tenir les échéances de cotisations | Échéancier Urssaf, retraite complémentaire et prévoyance par dossier, montants rapprochés de la DSN, règlements préparés. | `charges-sociales-echeances` |
 | Passer la paie en comptabilité | Le journal de paie mis au format d'import du dossier comptable, la concordance des charges sociales contrôlée. | neuve : `ecritures-de-paie` |
-| Diffuser bulletins et états | Bulletins prêts pour le coffre de chaque salarié, journaux et états prêts pour le client, libérés après validation de la paie. | neuve : `diffusion-documents-paie` |
+| Diffuser bulletins et états | Bulletins prêts pour le coffre de chaque salarié, journaux et états prêts pour le client, que le gestionnaire diffuse après validation de la paie. | neuve : `diffusion-documents-paie` |
 | Piloter la production sociale | Avancement par dossier et par étape, retards et exceptions, en agrégats ; aucune mesure par gestionnaire. | `suivi-production-sociale` |
 
 ### Ce que Salomé vous remet
@@ -213,9 +213,9 @@ Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictif
 
 **Destination** `/agents-ia/juridique-fiscal` · **Requête** ia juridique expert comptable (aucun volume Google Ads, SERP alignée et annonceurs présents ; lien obligatoire vers `/automatisation/secretariat-juridique`) · **Voisins** Balthazar (avant : la comptabilité tenue) ; Florent (après) ; Victoire (la lettre de mission)
 
-**Mission (carte)** : Prépare déclarations fiscales, approbation des comptes et formalités de vos dossiers ; votre cabinet signe et dépose.
+**Mission (carte)** : Prépare déclarations fiscales, formalités et documents de l'approbation des comptes ; les associés approuvent, votre cabinet signe et dépose.
 
-**H1** : IA juridique pour expert-comptable : TVA, liasse, approbation des comptes et formalités préparées, votre cabinet signe et dépose.
+**H1** : IA juridique pour expert-comptable : TVA, liasse, formalités et documents de l'approbation des comptes préparés ; les associés approuvent, votre cabinet signe et dépose.
 
 **Chapeau** : Grégoire est un agent IA : la règle écrite des tâches juridiques et fiscales de votre cabinet, mise en œuvre dans vos outils. Il calcule les échéances, prépare déclarations et projets d'actes, puis s'arrête dès qu'une date ou une règle manque ; ce qui part, c'est vous qui le décidez.
 
@@ -248,7 +248,7 @@ Dossier fictif : un portefeuille de quatre sociétés inventées ; calendrier jo
 
 | Cas joué | Sortie obtenue | Décision |
 |---|---|---|
-| SARL Bouvreuil, clôture au 30/06/2026 confirmée par la balance | Approbation au plus tard le 31/12/2026, dépôt dans le mois qui suit ou dans les deux mois en ligne ; rappel au gérant préparé | Préparé |
+| SARL Bouvreuil, clôture au 30/06/2026 confirmée par la balance | Approbation au plus tard le 31/12/2026, sauf prolongation accordée par le juge ; dépôt dans le mois qui suit, ou dans les deux mois en ligne ; rappel au gérant préparé | Préparé |
 | SA Grand-Duc, même clôture, prolongation évoquée par le président | Date légale conservée, mention « prolongation annoncée, décision à recevoir » | À valider |
 | SARL Hulotte, clôture au 30/06/2026 selon les statuts, au 31/12/2026 selon la balance remise | Aucune date calculée. Motif : date de clôture divergente entre deux sources | Arrêt |
 | SARL Ortolan, comptes approuvés le 20/06/2026, aucun dépôt constaté | Dépôt manquant signalé, justificatif réclamé dans un brouillon au gérant | À valider |
@@ -577,7 +577,7 @@ Dossier fictif : le Studio Rouge-Gorge, SAS de design graphique inventée, entr�
 
 **Destination** `/agents-ia/communication` · **Requête** newsletter expert comptable (10 par mois ; « ia newsletter », 480, vise les lettres sur l'IA à lire) · **Voisins** Victoire (après : le prospect qui répond) ; Émile (les questions des clients) ; Grégoire (les échéances à rappeler)
 
-**Mission (carte)** : Rédige la lettre d'information et l'actualité de vos clients depuis les sources officielles ; vous relisez avant tout envoi.
+**Mission (carte)** : Rédige la lettre d'information et l'actualité de vos clients depuis les sources officielles ; vous la relisez et l'envoyez.
 
 **H1** : Newsletter d'expert-comptable : l'agent IA rédige la lettre d'information et l'actualité de vos clients, vous relisez avant l'envoi.
 
@@ -665,7 +665,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, lettre d'information d'o
 
 **Destination** `/agents-ia/relation-client` · **Requête** relation client cabinet comptable (10 par mois ; « ia service client », 70, vise les éditeurs de service client) · **Voisins** Victoire (avant : le nouveau client) ; Balthazar, Grégoire et Florent (le dossier derrière chaque demande)
 
-**Mission (carte)** : Trie chaque demande de vos clients, la relie à son dossier et prépare la réponse ; votre collaborateur valide avant envoi.
+**Mission (carte)** : Trie chaque demande de vos clients, la relie à son dossier et prépare la réponse ; votre collaborateur la valide et l'envoie.
 
 **H1** : Relation client en cabinet comptable : l'agent IA trie chaque demande, la relie au dossier et prépare la réponse, votre collaborateur valide.
 
@@ -863,7 +863,7 @@ Dossier fictif : trois dossiers inventés (Martinet, Rossignol, Sittelle), relev
 | Suivre la formation continue | Heures suivies, inscriptions et attestations classées pour chaque professionnel soumis à l'obligation de formation. | `formation-ia-competences` |
 | Tenir la preuve de formation à l'IA | Les outils d'IA du cabinet, leurs limites écrites et les formations suivies par l'équipe, pièces à l'appui. | `formation-ia-competences` |
 | Produire la synthèse annuelle de rémunération | Pour chaque salarié, les éléments de rémunération de l'année repris de la paie tenue, mis en forme, prêts à remettre. | `synthese-remuneration` |
-| Préparer les indicateurs sociaux en agrégats | Effectifs, mise à jour du registre unique du personnel, index de l'égalité professionnelle pour les cabinets qui y sont tenus. | neuve : `indicateurs-sociaux-cabinet` |
+| Préparer les indicateurs sociaux | Mise à jour du registre unique du personnel ; effectifs en agrégats et index de l'égalité professionnelle, pour les cabinets qui y sont tenus. | neuve : `indicateurs-sociaux-cabinet` |
 
 ### Ce que Raphaël vous remet
 
@@ -953,7 +953,7 @@ Dossier fictif : le cabinet Alouette, cabinet inventé, synthèse de rémunérat
 | Préparer les mises à jour des logiciels métier | Notes de version lues, effets sur vos imports et vos classeurs listés, créneau proposé. | neuve : `sauvegardes-mises-a-jour` |
 | Qualifier les demandes de support | Demande d'un collaborateur rattachée à la procédure interne ; réponse préparée, ou demande rédigée pour votre prestataire. | neuve : `support-outils` |
 | Préparer une migration ou un paramétrage en masse | Plans, tiers et historiques repris, balances avant et après rapprochées ; nouveau plan de comptes appliqué à chaque dossier, contrôle à l'appui. | neuve : `migrations-reprises` |
-| Tenir l'inventaire des outils et des usages d'IA | Logiciels, licences et outils d'IA du cabinet, avec les données qu'ils traitent ; Prudence le reprend pour le registre. | neuve : `inventaire-outils` |
+| Préparer l'inventaire des outils et des usages d'IA | La mise à jour de la liste des logiciels, licences et outils d'IA que tient le cabinet, avec les données qu'ils traitent ; Prudence la reprend pour le registre des traitements. | neuve : `inventaire-outils` |
 
 Titulaire dans les données, jamais affichée (son libellé « Compléments greffés sur Excel » ne sort sur aucune page, charte §9) : `complements-excel`. La famille de l'IA générative en général reste au hub (ADR 0001).
 
@@ -983,7 +983,7 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 | Lire exports, rapports et notes de version | Chaque import avant intégration | Le choix des logiciels |
 | Préparer fichiers d'import, listes d'accès et réponses de support | Chaque création ou révocation d'accès | Les droits d'administration et la sécurité |
 | Comparer avant et après une migration | Chaque mise à jour proposée | Le paramétrage final dans chaque logiciel |
-| Tenir l'inventaire des outils | Chaque migration avant bascule | La décision de bascule |
+| Préparer la mise à jour de l'inventaire des outils | Chaque migration avant bascule | La décision de bascule |
 
 **Conditions d'arrêt**
 1. Schéma modifié, ou format inconnu.
@@ -1025,9 +1025,9 @@ Dossier fictif : l'Épicerie Bergeronnette, SARL inventée, export de caisse de 
 
 **Destination** `/agents-ia/protection-donnees` · **Requête** rgpd expert comptable (10 par mois ; « ia rgpd », 140, déjà servie par l'article `/blog/rgpd-et-ia-au-cabinet-…`, lien obligatoire) · **Voisins** Octavie (l'inventaire des outils) ; Raphaël (les données de l'équipe) ; Victoire (les mentions de la lettre de mission)
 
-**Mission (carte)** : Prépare la mise à jour du registre et les réponses aux demandes d'accès des personnes concernées ; votre référent décide.
+**Mission (carte)** : Prépare la mise à jour du registre des traitements et les réponses aux demandes d'accès des personnes concernées ; votre référent décide.
 
-**H1** : RGPD de l'expert-comptable : la mise à jour du registre, les demandes d'accès et les sous-traitants préparés pour votre référent.
+**H1** : RGPD de l'expert-comptable : la mise à jour du registre des traitements, les demandes d'accès et les sous-traitants préparés pour votre référent.
 
 **Chapeau** : Prudence est un agent IA : la règle écrite des tâches de protection des données de votre cabinet, mise en œuvre dans vos outils. Elle inventorie, retrouve et rédige, puis s'arrête dès qu'une identité ou un tiers est en doute ; ce qui part, c'est vous qui le décidez.
 

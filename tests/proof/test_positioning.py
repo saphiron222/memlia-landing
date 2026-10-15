@@ -5,6 +5,7 @@ from html import unescape
 import json
 import os
 import re
+import unicodedata
 import unittest
 from urllib.parse import unquote, urlsplit
 
@@ -16,6 +17,19 @@ PRODUCT_WORDS = re.compile(r'\bmodules?\b|\bcompléments?\s+(?:Excel|Memlia)\b',
 # Exception fermée : une définition technique isolée, jamais un nom/CTA de produit.
 # Toute autre mention au singulier exige une revue explicite, pas une heuristique permissive.
 GENERIC_DEFINITIONS = {'Un module est une unité logicielle.'}
+# Charte §9 bis (agents IA, v7 du 15/10/2026) : ce qu'on n'écrit jamais d'un agent IA. Source unique, lue aussi par
+# tests/helpers/agents-interdits.mjs (données des agents) : les deux lecteurs appliquent la même règle de correspondance.
+AGENTS_INTERDITS = tuple(json.loads((ROOT / 'config' / 'agents-interdits.json').read_text(encoding='utf-8'))['expressions'])
+# Plancher : la liste de la charte ne perd jamais une expression, elle peut en gagner.
+AGENTS_INTERDITS_CHARTE = (
+    'agent autonome', 'collaborateur IA', 'employé IA', 'assistant IA', 'spécialiste IA', 'agent IA CAC',
+    'commissaire aux comptes IA', 'DPO IA', 'embaucher un agent', 'recruter un agent', 'embauchez un agent',
+    'recrutez un agent', 'embaucher votre agent', 'recruter votre agent', 'embauchez votre agent',
+    'recrutez votre agent', 'votre nouveau collègue', 'agent administratif', 'agent comptable',
+)
+MOT_COURT = 3  # « ia », « aux », « dpo », « cac » ne se pluralisent pas
+INVISIBLES = re.compile('[\u00ad\u200b-\u200d\u2060\ufeff]')
+APOSTROPHES = re.compile('[\u2018\u2019\u02bc\u2032]')
 # La construction rejoue ce verrou après l'export pour les assistants (generate-agent-markdown) :
 # la variable l'annonce, et les surfaces de l'export deviennent alors exigées.
 FINAL_EXPORT_FLAG = 'POSITIONING_FINAL_EXPORT'
@@ -34,6 +48,31 @@ def without_third_party_addresses(text):
         host = (urlsplit(match.group()).hostname or '').rstrip('.')
         return ' ' if host and host not in OWN_HOSTS else match.group()
     return ADDRESS.sub(keep_own, text)
+
+
+def normalise_agents(text):
+    """Texte comparé : NFC, apostrophes droites, blancs repliés, césures et largeurs nulles ôtées, minuscules."""
+    text = unicodedata.normalize('NFC', text)
+    text = APOSTROPHES.sub("'", INVISIBLES.sub('', text))
+    return re.sub(r'\s+', ' ', text).strip().lower()
+
+
+def agents_interdits_pattern(expression):
+    """L'expression entière (ni lettre ni chiffre autour) ; chaque mot de plus de trois lettres accepte un « s » final."""
+    words = []
+    for word in normalise_agents(expression).split(' '):
+        escaped = re.escape(word)
+        words.append(escaped + 's?' if len(word) > MOT_COURT and word[-1] not in 'sx' else escaped)
+    return re.compile(r'(?<!\w)' + ' '.join(words) + r'(?!\w)')
+
+
+AGENTS_INTERDITS_PATTERNS = tuple((expression, agents_interdits_pattern(expression)) for expression in AGENTS_INTERDITS)
+
+
+def agents_interdits_found(text):
+    """Les expressions interdites que le texte contient, sous leur forme du fichier de configuration."""
+    normalised = normalise_agents(text)
+    return [expression for expression, pattern in AGENTS_INTERDITS_PATTERNS if pattern.search(normalised)]
 
 
 class PublicText(HTMLParser):
@@ -100,6 +139,44 @@ def public_surface_violations(root):
         if findings:
             violations.setdefault(path.relative_to(root).as_posix(), []).extend(findings)
     return checked, files, violations
+
+
+def agents_page_violations(source, suffix):
+    """Les expressions interdites d'une page : texte et attributs publics d'un HTML, ou le texte brut d'un Markdown."""
+    parts = PublicText(source).parts if suffix in {'.html', '.htm'} else [source]
+    found = []
+    for part in parts:
+        for expression in agents_interdits_found(unescape(part)):
+            if expression not in found:
+                found.append(expression)
+    return found
+
+
+def agents_surfaces(dist_root, source_root=ROOT):
+    """Les pages construites où les agents IA parlent : /integrations toujours ; le hub et les fiches dès que leur
+    source existe (une route écrite doit être construite, sans quoi la page ne serait jamais lue). Leurs Markdown
+    d'export sont lus quand ils sont là : l'export n'est exigé que par le verrou final (required_surfaces)."""
+    sources = source_root / 'src' / 'pages' / 'agents-ia'
+    pages = {'integrations.html'}
+    if (sources / 'index.astro').is_file():
+        pages.add('agents-ia.html')
+    fiches = {p.relative_to(dist_root).as_posix() for p in (dist_root / 'agents-ia').glob('*.html')}
+    if sources.is_dir() and any(p.suffix == '.astro' and p.name != 'index.astro' for p in sources.iterdir()) and not fiches:
+        raise AssertionError('Un gabarit de fiche existe dans les sources, aucune fiche n’est construite dans dist/agents-ia/.')
+    pages |= fiches
+    markdown = {f'markdown/{Path(page).with_suffix("").as_posix()}.md' for page in pages}
+    return pages, {name for name in markdown if (dist_root / name).is_file()}
+
+
+def agents_surface_violations(dist_root, source_root=ROOT):
+    pages, markdown = agents_surfaces(dist_root, source_root)
+    missing = sorted(name for name in pages if not (dist_root / name).is_file())
+    violations = {}
+    for name in sorted((pages - set(missing)) | markdown):
+        found = agents_page_violations((dist_root / name).read_text(encoding='utf-8'), Path(name).suffix.lower())
+        if found:
+            violations[name] = found
+    return pages, markdown, missing, violations
 
 
 def final_export_requested(environ):
@@ -231,6 +308,102 @@ class PositioningProof(unittest.TestCase):
         ]:
             with self.subTest(source=source):
                 self.assertTrue(catalogue_violations(source, suffix))
+
+    def test_agents_pages_respect_the_agent_ia_charter(self):
+        pages, markdown, missing, violations = agents_surface_violations(DIST)
+        print(f'Agents IA : {len(pages)} page(s) et {len(markdown)} Markdown lus, {len(AGENTS_INTERDITS)} expressions interdites.')
+        self.assertEqual(missing, [])
+        self.assertEqual(violations, {})
+
+    def test_agents_forbidden_expressions_keep_the_charter_floor(self):
+        self.assertTrue(all(isinstance(e, str) and e == e.strip() and e for e in AGENTS_INTERDITS))
+        self.assertEqual(len({normalise_agents(e) for e in AGENTS_INTERDITS}), len(AGENTS_INTERDITS))
+        self.assertEqual([e for e in AGENTS_INTERDITS_CHARTE if e not in AGENTS_INTERDITS], [])
+
+    def test_agents_guard_rejects_every_forbidden_expression_on_every_text_channel(self):
+        for expression in AGENTS_INTERDITS:
+            for source, suffix in [
+                (f'<p>Découvrez notre {expression} dès aujourd’hui.</p>', '.html'),
+                (f'<p>Découvrez notre <em>{expression}</em>.</p>', '.html'),
+                (f'<img alt="{expression}">', '.html'),
+                (f'<meta name="description" content="{expression.upper()}">', '.html'),
+                (f'<button aria-label="{expression}">Voir</button>', '.html'),
+                (f'<script type="application/ld+json">{{"description":"{expression}"}}</script>', '.html'),
+                (f'<p>{expression.replace(" ", chr(0xa0))}</p>', '.html'),
+                (f'<p>{expression.replace(" ", "&nbsp;")}</p>', '.html'),
+                (f'Nos {expression}.', '.md'),
+                (f'{expression.upper()}', '.md'),
+            ]:
+                with self.subTest(expression=expression, source=source):
+                    self.assertEqual(agents_page_violations(source, suffix), [expression])
+
+    def test_agents_guard_rejects_plurals(self):
+        for source, expression in [
+            ('<p>Nos agents autonomes</p>', 'agent autonome'), ('<p>Des collaborateurs IA</p>', 'collaborateur IA'),
+            ('<p>Les employés IA</p>', 'employé IA'), ('<p>Vos agents comptables</p>', 'agent comptable'),
+            ('<p>Des agents administratifs</p>', 'agent administratif'),
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual(agents_page_violations(source, '.html'), [expression])
+
+    def test_agents_guard_allows_denied_autonomy_and_the_human_recruiter(self):
+        for source in [
+            '<p>Un agent IA ne travaille jamais en autonomie : il s’arrête dès qu’un cas sort de la règle.</p>',
+            '<p>Il ne promet jamais l’autonomie ni un envoi sans validation.</p>',
+            '<h1>Agents IA pour cabinet d’expertise comptable : chacun prépare un métier, vos collaborateurs valident.</h1>',
+            '<p>Balthazar, agent IA comptable, prépare les écritures ; votre collaborateur les valide.</p>',
+            '<p>La réponse à un candidat est envoyée par la personne qui recrute. Préparer un recrutement.</p>',
+            '<p>Des collaborateurs submergés, difficiles à recruter et plus difficiles encore à garder.</p>',
+            '<p>Pour recruter un collaborateur, la fiche de poste et l’annonce sont rédigées.</p>',
+            '<p>Un accusé de réception prêt pour chaque candidat, que le recruteur envoie.</p>',
+            '<p>Aude prépare la mécanique de vos missions d’audit ; le jugement reste au commissaire aux comptes.</p>',
+            '<style>.agent-autonome { color: red; }</style><p>Agents IA</p>',
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual(agents_page_violations(source, '.html'), [])
+        # Limites connues et assumées : un agent désigné par son prénom ou une autre conjugaison n'est pas vu.
+        self.assertEqual(agents_page_violations('<p>Embauchez Balthazar.</p>', '.html'), [])
+        self.assertEqual(agents_page_violations('<p>Nous embauchons un agent.</p>', '.html'), [])
+
+    def test_agents_guard_rejects_hiring_said_of_an_agent(self):
+        for source, expression in [
+            ('<p>Recrutez un agent IA en dix minutes.</p>', 'recrutez un agent'),
+            ('<p>Embauchez votre agent IA comptable.</p>', 'embauchez votre agent'),
+            ('<p>Pourquoi recruter un agent IA ?</p>', 'recruter un agent'),
+            ('<p>Embaucher votre agent IA prend une semaine.</p>', 'embaucher votre agent'),
+        ]:
+            with self.subTest(source=source):
+                self.assertEqual(agents_page_violations(source, '.html'), [expression])
+
+    def test_agents_surfaces_follow_the_sources(self):
+        from tempfile import TemporaryDirectory
+        with TemporaryDirectory() as directory:
+            dist, source = Path(directory) / 'dist', Path(directory) / 'source'
+            (dist / 'markdown').mkdir(parents=True)
+            (dist / 'integrations.html').write_text('<p>Vos outils</p>', encoding='utf-8')
+            # Sans source d'agents : /integrations seule.
+            self.assertEqual(agents_surfaces(dist, source), ({'integrations.html'}, set()))
+            # Le hub est écrit : sa page est exigée, et absente elle est dite manquante.
+            (source / 'src' / 'pages' / 'agents-ia').mkdir(parents=True)
+            (source / 'src' / 'pages' / 'agents-ia' / 'index.astro').write_text('', encoding='utf-8')
+            self.assertEqual(agents_surfaces(dist, source)[0], {'integrations.html', 'agents-ia.html'})
+            self.assertEqual(agents_surface_violations(dist, source)[2], ['agents-ia.html'])
+            (dist / 'agents-ia.html').write_text('<h1>Agents IA</h1>', encoding='utf-8')
+            self.assertEqual(agents_surface_violations(dist, source)[2], [])
+            # Le gabarit de fiche est écrit sans fiche construite : la construction est en défaut.
+            (source / 'src' / 'pages' / 'agents-ia' / '[metier].astro').write_text('', encoding='utf-8')
+            with self.assertRaises(AssertionError):
+                agents_surfaces(dist, source)
+            (dist / 'agents-ia').mkdir()
+            (dist / 'agents-ia' / 'comptabilite.html').write_text('<p>Balthazar est un agent autonome.</p>', encoding='utf-8')
+            (dist / 'markdown' / 'agents-ia').mkdir()
+            (dist / 'markdown' / 'agents-ia' / 'comptabilite.md').write_text('Balthazar, DPO IA.', encoding='utf-8')
+            pages, markdown, missing, violations = agents_surface_violations(dist, source)
+            self.assertEqual(pages, {'integrations.html', 'agents-ia.html', 'agents-ia/comptabilite.html'})
+            self.assertEqual(markdown, {'markdown/agents-ia/comptabilite.md'})
+            self.assertEqual(missing, [])
+            self.assertEqual(violations, {'agents-ia/comptabilite.html': ['agent autonome'],
+                                          'markdown/agents-ia/comptabilite.md': ['DPO IA']})
 
     def test_final_export_requires_llms_full_and_every_sitemap_markdown(self):
         from tempfile import TemporaryDirectory

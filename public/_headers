@@ -78,6 +78,42 @@ https://memlia.fr/*
 /outils-comptables-gratuits/fusionner-fichiers-csv
   Cache-Control: public, max-age=0, must-revalidate, no-transform
 
+# Agents IA : aucune requête réseau (connect-src 'none'), scripts de l'origine seulement. La Function de chaque
+# route pose la même CSP et retire la balise Insights ; le joker couvre une fiche pas encore nommée.
+/agents-ia
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'
+
+/agents-ia/comptabilite
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/juridique-fiscal
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/finance
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/commercial
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/communication
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/relation-client
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/gestion-cabinet
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/rh-cabinet
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
+/agents-ia/protection-donnees
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
+
 # Les AVIF restent accessibles au navigateur, mais hors index des moteurs.
 # WebP et PNG restent indexables pour la recherche d’images.
 /*.avif

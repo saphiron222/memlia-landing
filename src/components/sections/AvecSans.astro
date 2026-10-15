@@ -1,0 +1,154 @@
+---
+import Insecable from '@/components/Insecable.astro';
+import { ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Avec ou sans <prénom> » (spec §2, section 7) : une comparaison, donc un tableau (système de page § 4). La colonne
+ * « sans » est tracée en pointillés ; la colonne « avec », pleine, sur le voile vert, dit qui valide. Aucun chiffre de
+ * gain (charte §2). Sous 40 rem, chaque ligne s'empile : « sans », puis « avec », chacune nommée par sa colonne.
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+const { avecSans } = gabaritDe(agent);
+---
+
+<section class="pv" aria-labelledby="avec-sans-titre" data-agent-avec-sans>
+  <div class="tete">
+    <h2 id="avec-sans-titre"><Insecable texte={avecSans.titre} /></h2>
+    <p><Insecable texte={avecSans.texte} /></p>
+  </div>
+  <div class="agent-avec-sans">
+    <table>
+      <caption class="sr-only">{avecSans.legende}</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="agent-sans">{avecSans.colonnes[0]}</th>
+          <th scope="col" class="agent-avec">{avecSans.colonnes[1]}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {fiche.avecSans.map((ligne) => (
+          <tr>
+            <td class="agent-sans" data-label={avecSans.colonnes[0]}><Insecable texte={ligne.sans} /></td>
+            <td class="agent-avec" data-label={avecSans.colonnes[1]}><Insecable texte={ligne.avec} /></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  /* Deux colonnes séparées par une gouttière : chaque cellule porte les bords de sa colonne, les coins arrondis
+     ferment la colonne en haut et en bas. */
+  .agent-avec-sans {
+    min-width: 0;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: var(--espace-4) 0;
+    margin-inline: calc(-1 * var(--espace-4));
+    width: calc(100% + 2 * var(--espace-4));
+    table-layout: fixed;
+  }
+  th,
+  td {
+    padding: var(--espace-4) var(--espace-5);
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    padding-top: var(--espace-5);
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--titre-ligne);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--texte-fort);
+  }
+  .agent-sans {
+    border-inline: 1.5px dashed var(--ligne-forte);
+    color: var(--texte-2);
+  }
+  th.agent-sans {
+    border-top: 1.5px dashed var(--ligne-forte);
+    border-radius: var(--r-boite) var(--r-boite) 0 0;
+    color: var(--texte-2);
+  }
+  tbody tr:last-child td.agent-sans {
+    border-bottom: 1.5px dashed var(--ligne-forte);
+    border-radius: 0 0 var(--r-boite) var(--r-boite);
+  }
+  .agent-avec {
+    background: var(--accent-voile);
+    color: var(--texte-fort);
+  }
+  th.agent-avec {
+    border-radius: var(--r-boite) var(--r-boite) 0 0;
+    color: var(--accent-texte);
+  }
+  tbody tr:last-child td.agent-avec {
+    border-radius: 0 0 var(--r-boite) var(--r-boite);
+  }
+  tbody tr:last-child td {
+    padding-bottom: var(--espace-5);
+  }
+  /* Le filet entre deux lignes d'une même colonne. */
+  tbody tr + tr td {
+    background-image: linear-gradient(var(--ligne-douce), var(--ligne-douce));
+    background-size: calc(100% - 2 * var(--espace-5)) 1px;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  @media (max-width: 39.99rem) {
+    table {
+      margin-inline: 0;
+      width: 100%;
+    }
+    thead {
+      display: none;
+    }
+    table,
+    tbody,
+    tr,
+    td {
+      display: block;
+    }
+    tr {
+      display: grid;
+      gap: var(--espace-2);
+    }
+    tr + tr {
+      margin-top: var(--espace-4);
+    }
+    td,
+    tbody tr:last-child td {
+      padding: var(--espace-4);
+      border-radius: var(--r-boite);
+    }
+    td.agent-sans,
+    tbody tr:last-child td.agent-sans {
+      border: 1.5px dashed var(--ligne-forte);
+      border-radius: var(--r-boite);
+    }
+    tbody tr + tr td {
+      background-image: none;
+    }
+    td::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 4px;
+      font-size: var(--t-sm);
+      font-weight: 600;
+    }
+    td.agent-avec::before {
+      color: var(--accent-texte);
+    }
+    td.agent-sans::before {
+      color: var(--texte-2);
+    }
+  }
+</style>

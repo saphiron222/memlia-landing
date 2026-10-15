@@ -134,7 +134,8 @@ test('les moyeux listent tous leurs rayons et le footer expose le hub', () => {
     for (const slug of expected) assert.match(html, new RegExp(`href="/integrations/${slug}"`), `${file} → ${slug}`);
   }
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(home, /href="\/integrations"[^>]*>Guides par environnement<\/a>/);
+  // Le pied porte le hub sous l'intitulé du menu (« Ce qu’on automatise › Dans vos outils »), une seule fois.
+  assert.equal([...home.matchAll(/<a class="pied-lien" href="\/integrations"[^>]*>Dans vos outils<\/a>/g)].length, 1);
 });
 
 test('le footer ne rend chaque destination légale qu’une seule fois', () => {

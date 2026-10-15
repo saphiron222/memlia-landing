@@ -64,6 +64,8 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
   await expect(page.locator('.nav-sans-js a[href="/automatisation-cabinet-comptable"]')).toBeVisible();
+  // Sans JavaScript, les sous-menus n'existent pas : chaque destination reste un lien servi en clair.
+  expect(await page.locator('.nav-sans-js a').evaluateAll((liens) => liens.map((lien) => lien.getAttribute('href')))).toEqual([...HREFS, CTA.nav.href]);
   await context.close();
 });
 
@@ -83,7 +85,8 @@ test('navigation desktop : destinations atteignables au clavier et CTA unique', 
     await page.goto('/');
     const link = page.locator(`.nav-centre a[href="${href}"]`);
     if (!await link.isVisible()) {
-      await page.getByRole('button', { name: 'Cabinets', exact: true }).focus();
+      // Une destination de sous-menu ne se voit qu'une fois son groupe ouvert : bouton au clavier, puis Entrée.
+      await page.locator('.nav-groupe', { has: page.locator(`a[href="${href}"]`) }).locator('[data-groupe-bouton]').focus();
       await page.keyboard.press('Enter');
     }
     await link.focus();

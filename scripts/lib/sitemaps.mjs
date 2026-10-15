@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync, readdirSync, unlinkSync, existsSync } from
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const SITEMAP_TYPES = ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac'];
+export const SITEMAP_TYPES = ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac', 'agents'];
 const namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 const declaration = '<?xml version="1.0" encoding="UTF-8"?>';
-const prefixes = { services: '/automatisation', guides: '/integrations', outils: '/outils-comptables-gratuits', blog: '/blog', glossaire: '/glossaire', cac: '/commissaires-aux-comptes' };
+const prefixes = { services: '/automatisation', guides: '/integrations', outils: '/outils-comptables-gratuits', blog: '/blog', glossaire: '/glossaire', cac: '/commissaires-aux-comptes', agents: '/agents-ia' };
 
 /** La profession ne déplace pas les services/outils hors de leur type de page. */
 export function sitemapType(url) {
