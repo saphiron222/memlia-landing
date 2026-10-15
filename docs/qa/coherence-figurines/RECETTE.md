@@ -1,6 +1,6 @@
 # Recette A — six pages et corrections de composition
 
-15 octobre 2026. Branche locale `site/coherence-figurines`. Prévisualisation préparée sur une copie noindex/nofollow ; le lien immuable et les contrôles distants sont ajoutés après son déploiement. Aucun déploiement de production ni fusion.
+15 octobre 2026. Branche locale `site/coherence-figurines`. Prévisualisation vérifiée : https://a9bf1faf.memlia.pages.dev — code livré au commit `c8715272`. Copie noindex/nofollow, canonical de production conservé. Aucun déploiement de production ni fusion.
 
 ## Résultat contrôlé
 
@@ -23,3 +23,7 @@ Deux accueils, Méthode, À propos, Garanties et Contact utilisent les scènes A
 Le contrat global conserve le seul échec de `service-forge` sur les 24 erreurs historiques de titres/intention des services. Ses autres clauses, le positionnement et les contrats des articles passent. Les garde-fous ne sont pas neutralisés et aucune fusion n’est annoncée comme prête pour la production.
 
 Sources, prompts exacts, planche des six scènes et rapports : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/`. Captures finales : `qa/production/`. Documentation : `docs/strategy/site-v3/coherence-figurines/`, notamment `DECISION-A.md`, le manifeste de production et le témoin de contenu.
+
+## Contrôles distants de livraison
+
+Seize scénarios navigateur PASS sur la prévisualisation finale : six pages à 375/768/1440, vert identique au hub, grilles équilibrées, clavier et repli sans JavaScript, plus la non-régression des robots. Huit routes HTTP 200, meta et en-tête noindex/nofollow, canonical memlia.fr et absence de HSTS sur la preview. Le formulaire garde sa CSP propre, les démonstrations robots leur CSP sans appels distants. `preview-final-http.json` consigne les réponses. Aucun envoi de formulaire ni collecte réelle.

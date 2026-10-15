@@ -2,7 +2,7 @@
 
 Kevin a choisi les scènes de travail A le 15 octobre 2026. Elles sont intégrées aux deux accueils, à Méthode, À propos, Garanties et Contact. Les dernières corrections conservent le **vert du hub robots**, sans cellules blanches ni bandes grises, et répartissent les sections en grilles comme les livrables et les étapes des fiches robots.
 
-Prévisualisation de travail : https://preview-coherence-figurines.memlia.pages.dev/ (le compte rendu QA consigne le lien immuable vérifié).
+Prévisualisation finale vérifiée : https://a9bf1faf.memlia.pages.dev/ — alias : https://preview-coherence-figurines.memlia.pages.dev/.
 
 Les six pages gardent leurs intentions, leurs liens utiles et leurs limites métier. Le formulaire conserve son script, ses consentements et les présélections. Les 21 robots restent présents, avec leurs figurines et leurs démonstrations. Le hub intégrations reste en attente de la fin du chantier Claude Code ; aucun checkout de cette session n’a été modifié.
 

@@ -56,7 +56,7 @@ Kevin choisit **A** (« la A », 15 octobre 2026). La piste B est archivée et r
 - [x] Coque éditoriale sans image de tête obligatoire ; ancienne coque conservée pour les guides.
 - [x] Deux accueils, Méthode, À propos, Garanties et Contact adaptés ; démonstrations des robots conservées.
 - [x] Recette navigateur, contrôles de liens, médias, métadonnées et contact.
-- [ ] Prévisualisation complète et compte rendu.
+- [x] Prévisualisation complète et compte rendu : https://a9bf1faf.memlia.pages.dev.
 
 
 Le worktree agents a été relu au commit `42a10d59` : le premier gabarit et la première fiche existent désormais ; le chantier se poursuit. Aucune fusion partielle ni copie de ses pages. Les cartes éditoriales utilisent le gabarit déjà partagé avec les robots ; la destination agents pointe vers le cadrage de méthode tant que le catalogue agents n’est pas intégré à cette branche. La reprise du hub intégrations reste différée.
