@@ -125,6 +125,8 @@ export function modelPrompt(model) {
   if (!result.ok) throw new Error(result.error);
   // Enrichir les blocs existants avec la tâche, sans dupliquer les rubriques ni affaiblir les gardes.
   return result.text
+    .replace(`Se prépare seul : ${result.boundary[0].value}`, `Se prépare seul : ${model.description}`)
+    .replace(`Reste humain : ${result.boundary[2].value}`, `Reste humain : ${model.human}`)
     .replace('## But\n', `Contexte de la fiche : ${model.context}\n\n## But\n`)
     .replace('## Résultat attendu\n', `Entrées de la fiche : ${model.input}\n\n## Résultat attendu\n`)
     .replace('## Frontière\n', `Format de la fiche : ${model.output}\n\n## Frontière\n`)

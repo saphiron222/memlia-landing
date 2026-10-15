@@ -157,7 +157,8 @@ const choices = [
       editor.value = generated = keepsModel ? modelPrompt(transferredModel!) : result.text;
       stale = false;
       editor.scrollTop = 0;
-      root.querySelector('[data-boundary]')!.replaceChildren(...result.boundary.map((row) => {
+      const boundary = keepsModel ? result.boundary.map(row => ({...row, value: row.label === 'Se prépare seul' ? transferredModel!.description : row.label === 'Reste humain' ? transferredModel!.human : row.value})) : result.boundary;
+      root.querySelector('[data-boundary]')!.replaceChildren(...boundary.map((row) => {
         const div = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = row.label; dd.textContent = row.value; div.append(dt, dd); return div;
       }));
       root.querySelector('[data-cases]')!.replaceChildren(...result.cases.map((row) => {

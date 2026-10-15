@@ -15,6 +15,8 @@ test('douze fiches originales, complètes et compatibles avec le moteur partagé
     assert.ok(!modelPrompt(m).includes(m.exampleIn));
     assert.ok(!modelPrompt(m).includes(m.exampleOut));
     for(const key of ['input','output','human','stop'])assert.ok(modelPrompt(m).includes(m[key]));
+    assert.ok(modelPrompt(m).includes(`Se prépare seul : ${m.description}`), `${m.id} préparation propre à la tâche`);
+    assert.ok(modelPrompt(m).includes(`Reste humain : ${m.human}`), `${m.id} décision propre à la tâche`);
   }
 });
 test('filtres combinés, accents, tâche et état vide', () => {
@@ -27,4 +29,10 @@ test('filtres combinés, accents, tâche et état vide', () => {
 test('transfert versionné : ID public seulement, inconnu et payload altéré refusés', () => {
   assert.equal(parseTransfer(JSON.stringify({ version: 1, id: 'relance-pieces' })).id, 'relance-pieces');
   for (const raw of [null, '', '{', JSON.stringify({ version: 2, id: 'relance-pieces' }), JSON.stringify({ version: 1, id: 'client' }), JSON.stringify({ version: 1, id: 'relance-pieces', text: 'secret' })]) assert.equal(parseTransfer(raw), null);
+});
+
+test('un accusé de réception ne demande pas de préparer une relance de pièces', () => {
+  const text = modelPrompt(MODELS.find(m => m.id === 'accuse-reception'));
+  assert.doesNotMatch(text, /Préparer un brouillon générique de demande de pièces manquantes/);
+  assert.match(text, /Se prépare seul : Préparer un accusé de réception/);
 });

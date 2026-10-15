@@ -3,6 +3,7 @@ import {OUTILS_VITRINE} from '../../src/data/outils-vitrine';
 const hub='/outils-comptables-gratuits';
 test.use({reducedMotion:'reduce'});
 for(const width of [375,1440])test(`21 outils : six saisies visibles maximum au départ, aide repliée, ${width}`,async({page})=>{
+ test.setTimeout(90_000); // 21 navigations et attentes réseau dans ce scénario agrégé.
  await page.setViewportSize({width,height:900});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  for(const o of OUTILS_VITRINE){await page.goto(`${hub}/${o.slug}`);await page.waitForLoadState('networkidle');const n=await page.locator('.outil-calcul input:visible,.outil-calcul select:visible,.outil-calcul textarea:visible').count();expect(n,o.slug).toBeLessThanOrEqual(6);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),o.slug).toBe(true);for(const help of await page.locator('[data-tool-help]').all())expect(await help.getAttribute('open'),o.slug).toBeNull();}
  expect(errors).toEqual([]);

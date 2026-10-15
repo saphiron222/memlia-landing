@@ -132,3 +132,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier, reflow et 
 async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }
 
 async function lirePrompt(page:any,id:string){await page.locator(`[data-model="${id}"] [data-read]`).click();const reader=page.locator(`[data-prompt-reader="${id}"]`);await reader.locator('summary').click();return reader;}
+
+test('reprise Accusé : texte et panneau de règle partagent la même préparation',async({page})=>{
+ await page.goto(ROUTE);const model=MODELS.find(m=>m.id==='accuse-reception')!;const card=await lirePrompt(page,model.id);await card.getByRole('link',{name:'Adapter dans le générateur'}).click();await page.getByLabel(/Je confirme/).check();await page.getByRole('button',{name:'Assembler le prompt'}).click();await expect(page.getByLabel('Prompt éditable')).toHaveValue(modelPrompt(model));await page.getByText('Règle et cas d’essai',{exact:true}).click();const boundary=page.locator('[data-boundary]');await expect(boundary).toContainText(model.description);await expect(boundary).toContainText(model.human);await expect(boundary).not.toContainText('Préparer un brouillon générique de demande de pièces manquantes.');
+});
