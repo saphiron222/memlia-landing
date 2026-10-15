@@ -27,7 +27,8 @@ Deux documents commerciaux font foi : [RECOMMANDATION.md](../../strategy/pricing
 - Contrat des 95 pages compilées et 23 tests de ses garde-fous réussis. Les anciens écrans de démonstration ne sont plus imposés au-dessus de l’outil réel ; identité de l’outil, saisies, action et image sociale propre sont contrôlées.
 - Migration : 12 anciens services et 12 guides retirés, 301 exactes et destinations pertinentes ; 21 robots conservés. Recettes et sceaux archivés sans réécriture. 59 tests services/migrations et rendu Astro du guide synthétique isolé réussis.
 - Revue rédaction et E-E-A-T : 33 tests ciblés réussis ; auteur humain, fournisseur Organization, citations officielles, validations et limites. Aucune Person pour une figurine, FAQPage, certification, note ou avis inventé.
-- Audit des 95 HTML : 5 802 liens internes, aucune destination ou ancre manquante. 87 pages dans les sitemaps ; index XML par type, dates synchronisées depuis le registre, anciennes routes et aperçus exclus. `llms.txt`, Markdown et `llms-full.txt` dérivés des pages publiées, avec contrôle de chaque lien et du contenu intégral.
+- Lien éditorial conservé du hub robots vers la carte des tâches du cabinet ; les six sections restent inchangées. Contrôle du lien rendu à 375, 768 et 1 440 px réussi.
+- Audit des 95 HTML : 6 563 liens internes, aucune destination ou ancre manquante. 87 pages dans les sitemaps ; index XML par type, dates synchronisées depuis le registre, anciennes routes et aperçus exclus. `llms.txt`, Markdown et `llms-full.txt` dérivés des pages publiées, avec contrôle de chaque lien et du contenu intégral.
 
 ## Performance et portée des mesures
 

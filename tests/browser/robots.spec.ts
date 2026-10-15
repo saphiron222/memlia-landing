@@ -7,6 +7,7 @@ for(const width of [375,768,1440]){
  test(`robots : annuaire, filtres natifs et largeur ${width}`,async({page})=>{
   await page.setViewportSize({width,height:1000});await page.goto(hub);
   await expect(page.locator('[data-hub-section]')).toHaveCount(6);
+  await expect(page.locator('[data-hub-section="sur-mesure"] a[href="/blog/automatiser-un-cabinet-comptable-la-carte-des-taches"]')).toBeVisible();
   await expect(page.locator('.hub-robots > li:visible')).toHaveCount(ROBOTS.length);
   const counts=comptesRobots();
   for(const cat of ROBOT_CATEGORIES){
