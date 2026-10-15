@@ -1,5 +1,7 @@
 # Des agents IA dans vos pôles, un budget connu à l’avance
 
+> **Phase remplacée.** Kevin précise que ses anciens 1 000 € + 300 € étaient un repère à adapter, pas des prix à reprendre. Lire la [grille recalculée par agent](../agents-individuels/GRILLE.md). Les montants de ce document ne sont pas une offre validée.
+
 Projet de présentation — prix HT proposés le 15/10/2026, non publiés. Le socle de 1 000 €/mois et les 300 €/mois/pôle reprennent les montants confirmés par Kevin. Enveloppes et conditions restent une recommandation.
 
 Nous déployons les agents IA Memlia dans les métiers que vous choisissez. Nous adaptons leurs tâches à vos outils, les faisons vérifier par votre équipe et les maintenons.

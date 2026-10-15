@@ -1,5 +1,7 @@
 # Agents IA Memlia : un socle, les pôles choisis, un budget maîtrisé
 
+> **Proposition remplacée après clarification de Kevin.** Les anciens 1 000 € + 300 € n’étaient pas des contraintes de prix. Il demande de trouver le socle, le prix et le quota de chaque agent : lire la [nouvelle grille](../agents-individuels/GRILLE.md). L’affirmation d’une recommandation active par pôle dans le reste de ce document appartient à la phase antérieure.
+
 15 octobre 2026. **Nouvelle recommandation interne**, en réponse au refus de la complexité de la grille de livrables. Kevin confirme une base de **1 000 € HT/mois + 300 € HT/mois par pôle**. Les enveloppes et conditions ci-dessous sont proposées ; elles ne sont pas publiées sur le site. Cette recommandation remplace commercialement la [grille précédente](../mammouth/GRILLE-AGENTS.md), conservée pour ses coûts.
 
 ## Le prix à présenter

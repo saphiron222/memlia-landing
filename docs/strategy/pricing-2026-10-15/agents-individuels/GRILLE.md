@@ -1,0 +1,79 @@
+# Prix proposés : un socle cabinet, les agents que vous choisissez
+
+15 octobre 2026. **Recommandation de lancement, non validée ni publiée.** Kevin demande de recalculer les trois paramètres : socle, prix de chaque agent et activité incluse. Les anciens 1 000 € + 300 € ne sont pas une contrainte de prix. Ce document remplace la proposition par pôle de la phase précédente.
+
+## Le socle recommandé : 199 € HT/mois pour le cabinet
+
+Un socle unique, quel que soit le nombre d’agents choisis : supervision commune, suivi du service, gestion des connexions convenues et support commun. L’entretien des scénarios propres à chaque agent est financé par son abonnement. Pas d’abonnement par collaborateur ni par sous-agent technique. La mise en service initiale reste distincte.
+
+## Prix et usage inclus de chaque agent
+
+Tous les prix sont mensuels HT, **en plus du socle payé une seule fois**. Chaque agent donne accès aux tâches de son métier déployées et recettées pour le cabinet.
+
+| Agent IA | Métier | Prix par mois | Activité incluse par mois |
+|---|---|---:|---:|
+| **Balthazar** | Comptabilité | **349 €** | **5 000 crédits** |
+| **Salomé** | Paie et social | **349 €** | **4 000 crédits** |
+| **Grégoire** | Juridique et fiscal | **349 €** | **3 000 crédits** |
+| **Florent** | Finance | **399 €** | **4 000 crédits** |
+| **Aude** | Missions d’audit | **399 €** | **4 000 crédits** |
+| **Victoire** | Commercial | **199 €** | **2 000 crédits** |
+| **Colette** | Communication | **149 €** | **1 500 crédits** |
+| **Émile** | Relation client | **199 €** | **3 000 crédits** |
+| **Honoré** | Gestion du cabinet | **249 €** | **3 000 crédits** |
+| **Raphaël** | RH du cabinet | **199 €** | **2 000 crédits** |
+| **Octavie** | Informatique et outils | **249 €** | **2 000 crédits** |
+| **Prudence** | Protection des données | **249 €** | **2 000 crédits** |
+
+Exemples de facture d’abonnement : **Balthazar seul : 548 €/mois**, **Balthazar + Émile : 747 €/mois**, **Balthazar + Salomé : 897 €/mois**. L’activité incluse n’est pas ajoutée à ces montants.
+
+## Pourquoi un compteur de crédits
+
+Une demande peut produire des pièces, une note et un tableau. Compter huit types de livrables obligerait à les classer ou les additionner ; compter chaque demande comme une unité identique ferait payer pareil un petit brouillon et un gros dossier. **Nous proposons un seul compteur de crédits d’activité, avec le budget du traitement annoncé avant son lancement.** Les nouvelles tâches peuvent utiliser le même compteur ; elles ne sont pas exclues parce qu’elles n’entrent pas dans l’ancienne grille.
+
+Un crédit n’est ni un email ni un appel de modèle. Il réserve **un centime de coût variable prévisionnel complet** de production, IA, outils et interventions opérationnelles prévues compris. Le nombre de crédits est figé avant le lot, à partir du scénario et des entrées qualifiés. Ce n’est pas une refacturation au temps réel du coût Mammouth ou d’une panne. La table des routines activées et leurs paramètres de débit doit être consultable ; l’estimation est à afficher avant toute commande. Pas de débit opaque variant après livraison.
+
+La présentation au cabinet tient en trois informations : **prix de l’agent, crédits inclus, exemples de travaux que cette enveloppe permet de confier**. Les coûts et les tokens restent dans la méthode de calcul. Les exemples ci-dessous donnent un ordre de grandeur, sans promettre un débit de production mesuré.
+
+## Exemples d’activité dans les enveloppes proposées
+
+Ces paniers sont **des simulations sur les hypothèses de coûts de l’étude Mammouth**, pas des volumes validés par un benchmark. Ils supposent les modèles, formats et bornes décrits dans [les hypothèses](./ECONOMIE.md). Ils ne constituent pas la liste limitative des tâches des agents. Les nombres sont arrondis par traitement au crédit supérieur.
+
+Les postes de chaque panier représentent des demandes distinctes. Les étapes internes nécessaires à un même travail ne sont pas additionnées comme des commandes différentes.
+
+| Agent | Exemple de panier mensuel | Crédits calculés | Inclus |
+|---|---|---:|---:|
+| Balthazar | 200 pièces, 5 lots de rapprochement et 4 contrôles | 4 510 | 5 000 |
+| Salomé | 25 contrôles de lots, 20 messages et 2 dossiers préparés | 3 500 | 4 000 |
+| Grégoire | 4 dossiers préparés, 8 messages et 2 synthèses | 2 502 | 3 000 |
+| Florent | 2 scénarios financiers et 2 synthèses | 3 506 | 4 000 |
+| Aude | 10 rapprochements, 5 synthèses et 2 préparations de dossier | 3 575 | 4 000 |
+| Victoire | 20 messages, 2 dossiers préparés et 1 synthèse | 1 715 | 2 000 |
+| Colette | 15 brouillons courts et 4 synthèses de sources fournies | 1 295 | 1 500 |
+| Émile | 80 messages préparés et 3 synthèses | 2 965 | 3 000 |
+| Honoré | 2 reportings, 8 contrôles et 10 messages | 2 446 | 3 000 |
+| Raphaël | 2 dossiers préparés, 3 synthèses et 10 messages | 1 855 | 2 000 |
+| Octavie | 10 contrôles de fichiers, 3 synthèses et 10 messages | 1 735 | 2 000 |
+| Prudence | 2 dossiers préparés, 5 contrôles et 2 synthèses | 1 750 | 2 000 |
+
+La préparation n’inclut pas le jugement professionnel du cabinet, une décision fiscale ou sociale, une opinion d’audit, une désignation de DPO, ni un envoi, dépôt ou une signature autonomes. Octavie couvre des scénarios préparatoires et de suivi déjà déployés ; son abonnement ne vend pas des créations de connecteurs sans limites. Images, vidéo, outils ou corpus nouveaux sont qualifiés avant utilisation et intégrés à leur budget s’ils font partie du service convenu.
+
+## Usage supplémentaire et plafond
+
+**50 € HT pour 1 000 crédits supplémentaires**, facturés au prorata des crédits effectivement remis au-delà de l’inclus : 200 crédits supplémentaires coûtent 10 €, pas un pack imposé de 50 €. Les crédits inclus se renouvellent chaque mois ; pas d’achat de solde supplémentaire qui expirerait sans être utilisé.
+
+Les quotas des agents choisis peuvent être mutualisés au cabinet. Les droits d’accès et les données restent cloisonnés par mission. Un même travail déjà compris dans un robot, ou utilisé par plusieurs agents, ne génère pas une seconde consommation. Les pannes Memlia, doublons involontaires, corrections et attentes ne débitent pas le cabinet.
+
+Le cabinet fixe un supplément maximal en euros. Par exemple, Balthazar à 548 € avec 50 € de supplément autorisé a un maximum de **598 € HT/mois**, hors mise en service. À 6 000 crédits, il atteint ce plafond ; un lot suivant attend une extension. Sans supplément autorisé, le plafond est l’abonnement. Réservation des lots concurrents et alertes à 80 % et 95 % sont des exigences du futur produit, **pas des fonctions implémentées sur le site vitrine**.
+
+## Mise en service et budget de première année
+
+Repères proposés : **à partir de 1 990 € HT pour le premier agent**, puis **à partir de 990 € HT par agent supplémentaire** lorsque les connexions communes sont réutilisées. Le devis fixe le périmètre, les routines, la recette et le montant ferme. Un nouveau connecteur, modèle ou développement sur mesure se chiffre avant engagement ; l’abonnement n’achète pas toutes les adaptations futures. La mise en service n’est pas un deuxième socle mensuel.
+
+Pour Balthazar seul à ces conditions standard : premier mois **2 538 € HT** et première année **8 566 € HT**, hors dépassement, si le service reste actif douze mois. Ce total n’impose pas un engagement annuel ; la durée et les conditions sont précisées au devis. Pas de seconde facturation d’un connecteur ou d’une maintenance déjà couverts par une prestation robot.
+
+## Ce qui justifie la recommandation
+
+**199 € est le plus bas des cinq socles testés qui passe notre cible économique avec l’agent d’entrée de gamme**, dans les hypothèses retenues. Les prix des agents tiennent compte du volume et de l’entretien prévu de leurs scénarios, pas d’un classement de leur importance ni d’un prix au token. À pleine consommation, les douze configurations à un agent et les 4 095 combinaisons gardent plus de 65 % de marge directe de base, après provision humaine, infrastructure, incidents et encaissement, avant frais alloués et impôts. **C’est un résultat conditionnel du modèle, pas une marge réalisée.**
+
+Nous recommandons cette grille comme point de départ à tester commercialement. Les tarifs publics [Mammouth](https://info.mammouth.ai/fr/docs/api-quick-start/) sont vérifiés ; tokens, interventions humaines, volumes, maintenance et acceptabilité des prix restent des hypothèses. Les limites de chaque routine doivent être recettées et calibrées avant publication. Les [calculs détaillés](./ECONOMIE.md) montrent aussi les scénarios qui échouent à la cible et un mois déficitaire : aucune promesse de ne jamais perdre d’argent.

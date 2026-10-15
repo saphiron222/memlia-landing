@@ -1,5 +1,7 @@
 # Économie et règles de l’offre simplifiée
 
+> **Étude historique remplacée.** Les anciens 1 000 € + 300 € ont été repris à tort comme prix imposés. Kevin demande de recalculer socle, prix et quota de chaque agent. Lire [la recommandation actuelle](../agents-individuels/GRILLE.md) et [son économie](../agents-individuels/ECONOMIE.md).
+
 Étude interne du 15/10/2026. La [présentation commerciale](./OFFRE.md) est l’entrée de lecture. **Ni ces coûts ni la rentabilité ne sont mesurés en production.** Le socle mensuel 1 000 € et les 300 € mensuels par pôle viennent de Kevin. Les autres paramètres sont notre proposition modifiable dans `offre.json`.
 
 ## Pourquoi cette structure

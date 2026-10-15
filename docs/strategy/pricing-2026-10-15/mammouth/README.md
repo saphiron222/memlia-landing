@@ -2,7 +2,7 @@
 
 Suite au choix de Kevin du 15 octobre 2026 : chiffrer la consommation par travail remis, plafonds et mise en service, avec Mammouth comme fournisseur. Il confirme le travail sur prix publics sans clé ni appel payant.
 
-**Ce dossier est désormais une étude historique des coûts.** Kevin refuse la complexité de la grille commerciale et confirme son socle initial : 1 000 € HT/mois + 300 € HT/mois par pôle. Lire [l’offre simplifiée actuelle](../offre-simple/OFFRE.md). Les huit exemples, le modèle et le classeur ci-dessous restent conservés pour l’analyse ; ils ne constituent pas le tarif de cette nouvelle proposition.
+**Ce dossier est une étude historique des coûts.** Kevin refuse la complexité de la grille commerciale et demande de recalculer socle, prix et quota de chaque agent : lire [la proposition actuelle](../agents-individuels/GRILLE.md). Ses anciens 1 000 € + 300 € ne sont pas des contraintes tarifaires. Les huit exemples, le modèle et le classeur ci-dessous restent conservés pour l’analyse ; ils ne constituent pas le tarif de la nouvelle proposition.
 
 Le classeur modifiable est dans [`outputs/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/couts-et-tarifs-agents-mammouth.xlsx`](../../../../outputs/01a13e1c-ec37-74f0-8a26-6ad074cde9ac/couts-et-tarifs-agents-mammouth.xlsx). Vues : **Budget**, **Unités**, **Hypothèses**. Quantités, prix, coût humain, modèles, frais et scénario se modifient ; les résultats restent des formules. Le coût d’installation et la première année sont séparés du fonctionnement.
 

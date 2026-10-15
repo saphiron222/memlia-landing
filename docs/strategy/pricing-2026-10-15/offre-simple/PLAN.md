@@ -1,5 +1,7 @@
 # Simplifier le prix des agents IA — 15 octobre 2026
 
+**Phase close et remplacée.** Kevin corrige notre lecture : son ancien tarif était un point de départ à adapter, pas le tarif à conserver. La [phase suivante](../agents-individuels/PLAN.md) recalcule socle, prix et quota par agent. La confirmation de périodicité ne constituait pas une validation des prix proposés ici.
+
 Kevin refuse la complexité de la grille de huit travaux et rappelle sa base : **1 000 € HT/mois par cabinet + 300 € HT/mois par pôle**, fréquence confirmée dans le chat. Il demande de l’adapter au catalogue actuel, avec usage inclus, dépassements et protection des coûts. Aucun tarif de cette phase n’est encore accepté ni publié.
 
 - [x] Relire les skills Claude `pricing` et `offers`, Codex `pricing-strategy`, `copywriting` et `copy-editing`, et la charte v8.

@@ -1,0 +1,1229 @@
+{
+  "date": "2026-10-15",
+  "nature": "Prix candidats, coûts et paniers hypothétiques ; aucune consommation facturée ni capacité mesurée",
+  "baseCandidates": [
+    {
+      "baseEur": 99,
+      "directEur": 59.73,
+      "contributionAfterAllocationsEur": -40.73,
+      "withLightestAgent": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 248,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 5.21,
+        "directEur": 104.46,
+        "directMargin": 0.5787903225806452,
+        "allocatedEur": 80,
+        "contributionEur": 63.54000000000002,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "baseEur": 149,
+      "directEur": 60.73,
+      "contributionAfterAllocationsEur": 8.27000000000001,
+      "withLightestAgent": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 298,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 6.21,
+        "directEur": 105.46,
+        "directMargin": 0.6461073825503356,
+        "allocatedEur": 80,
+        "contributionEur": 112.54000000000002,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "baseEur": 199,
+      "directEur": 61.73,
+      "contributionAfterAllocationsEur": 57.27000000000001,
+      "withLightestAgent": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 348,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 7.21,
+        "directEur": 106.46,
+        "directMargin": 0.6940804597701149,
+        "allocatedEur": 80,
+        "contributionEur": 161.54000000000002,
+        "passesMarginTarget": true
+      }
+    },
+    {
+      "baseEur": 249,
+      "directEur": 62.730000000000004,
+      "contributionAfterAllocationsEur": 106.26999999999998,
+      "withLightestAgent": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 8.21,
+        "directEur": 107.46000000000001,
+        "directMargin": 0.73,
+        "allocatedEur": 80,
+        "contributionEur": 210.53999999999996,
+        "passesMarginTarget": true
+      }
+    },
+    {
+      "baseEur": 299,
+      "directEur": 63.730000000000004,
+      "contributionAfterAllocationsEur": 155.26999999999998,
+      "withLightestAgent": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 9.21,
+        "directEur": 108.46000000000001,
+        "directMargin": 0.7579017857142857,
+        "allocatedEur": 80,
+        "contributionEur": 259.53999999999996,
+        "passesMarginTarget": true
+      }
+    }
+  ],
+  "agents": [
+    {
+      "id": "comptabilite",
+      "name": "Balthazar",
+      "priceEur": 349,
+      "includedCredits": 5000,
+      "includedVariableBudgetEur": 50,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U1",
+            "quantity": 200,
+            "credits": 3400,
+            "costEur": 32.88333333333333
+          },
+          {
+            "reference": "U4",
+            "quantity": 5,
+            "credits": 790,
+            "costEur": 7.893749999999999
+          },
+          {
+            "reference": "U3",
+            "quantity": 4,
+            "credits": 320,
+            "costEur": 3.1775
+          }
+        ],
+        "credits": 4510,
+        "costEur": 43.95458333333333
+      },
+      "fullUsage": {
+        "agentIds": [
+          "comptabilite"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 5000,
+        "variableCostEur": 50,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 10,
+        "collectionEur": 11.21,
+        "directEur": 171.21,
+        "directMargin": 0.6875729927007299,
+        "allocatedEur": 80,
+        "contributionEur": 296.78999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "comptabilite"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 5000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 10,
+        "collectionEur": 11.21,
+        "directEur": 121.21000000000001,
+        "directMargin": 0.7788138686131387,
+        "allocatedEur": 80,
+        "contributionEur": 346.78999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "comptabilite"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 5000,
+        "variableCostEur": 100,
+        "fixedHumanEur": 200,
+        "infraEur": 47.5,
+        "incidentReserveEur": 20,
+        "collectionEur": 16.74,
+        "directEur": 384.24,
+        "directMargin": 0.2988321167883211,
+        "allocatedEur": 80,
+        "contributionEur": 83.75999999999999,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "paie-social",
+      "name": "Salomé",
+      "priceEur": 349,
+      "includedCredits": 4000,
+      "includedVariableBudgetEur": 40,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U3",
+            "quantity": 25,
+            "credits": 2000,
+            "costEur": 19.859375
+          },
+          {
+            "reference": "U2",
+            "quantity": 20,
+            "credits": 580,
+            "costEur": 5.619166666666667
+          },
+          {
+            "reference": "U6",
+            "quantity": 2,
+            "credits": 920,
+            "costEur": 9.2
+          }
+        ],
+        "credits": 3500,
+        "costEur": 34.67854166666666
+      },
+      "fullUsage": {
+        "agentIds": [
+          "paie-social"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 4000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 81.25,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 11.21,
+        "directEur": 172.46,
+        "directMargin": 0.6852919708029197,
+        "allocatedEur": 80,
+        "contributionEur": 295.53999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "paie-social"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 4000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 81.25,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 11.21,
+        "directEur": 132.46,
+        "directMargin": 0.7582846715328467,
+        "allocatedEur": 80,
+        "contributionEur": 335.53999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "paie-social"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 4000,
+        "variableCostEur": 80,
+        "fixedHumanEur": 216.66666666666666,
+        "infraEur": 47.5,
+        "incidentReserveEur": 30,
+        "collectionEur": 16.74,
+        "directEur": 390.90666666666664,
+        "directMargin": 0.28666666666666674,
+        "allocatedEur": 80,
+        "contributionEur": 77.09333333333336,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "juridique-fiscal",
+      "name": "Grégoire",
+      "priceEur": 349,
+      "includedCredits": 3000,
+      "includedVariableBudgetEur": 30,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U6",
+            "quantity": 4,
+            "credits": 1840,
+            "costEur": 18.4
+          },
+          {
+            "reference": "U2",
+            "quantity": 8,
+            "credits": 232,
+            "costEur": 2.2476666666666665
+          },
+          {
+            "reference": "U5",
+            "quantity": 2,
+            "credits": 430,
+            "costEur": 4.292
+          }
+        ],
+        "credits": 2502,
+        "costEur": 24.939666666666668
+      },
+      "fullUsage": {
+        "agentIds": [
+          "juridique-fiscal"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 3000,
+        "variableCostEur": 30,
+        "fixedHumanEur": 87.5,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 11.21,
+        "directEur": 168.71,
+        "directMargin": 0.6921350364963503,
+        "allocatedEur": 80,
+        "contributionEur": 299.28999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "juridique-fiscal"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 3000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 87.5,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 11.21,
+        "directEur": 138.71,
+        "directMargin": 0.7468795620437956,
+        "allocatedEur": 80,
+        "contributionEur": 329.28999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "juridique-fiscal"
+        ],
+        "revenueEur": 548,
+        "includedCredits": 3000,
+        "variableCostEur": 60,
+        "fixedHumanEur": 233.33333333333334,
+        "infraEur": 47.5,
+        "incidentReserveEur": 30,
+        "collectionEur": 16.74,
+        "directEur": 387.5733333333334,
+        "directMargin": 0.2927493917274938,
+        "allocatedEur": 80,
+        "contributionEur": 80.42666666666662,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "finance",
+      "name": "Florent",
+      "priceEur": 399,
+      "includedCredits": 4000,
+      "includedVariableBudgetEur": 40,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U8",
+            "quantity": 2,
+            "credits": 3076,
+            "costEur": 30.759999999999998
+          },
+          {
+            "reference": "U5",
+            "quantity": 2,
+            "credits": 430,
+            "costEur": 4.292
+          }
+        ],
+        "credits": 3506,
+        "costEur": 35.052
+      },
+      "fullUsage": {
+        "agentIds": [
+          "finance"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 93.75,
+        "infraEur": 28,
+        "incidentReserveEur": 15,
+        "collectionEur": 12.21,
+        "directEur": 188.96,
+        "directMargin": 0.6840133779264215,
+        "allocatedEur": 80,
+        "contributionEur": 329.03999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "finance"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 93.75,
+        "infraEur": 28,
+        "incidentReserveEur": 15,
+        "collectionEur": 12.21,
+        "directEur": 148.96,
+        "directMargin": 0.7509030100334448,
+        "allocatedEur": 80,
+        "contributionEur": 369.03999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "finance"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 80,
+        "fixedHumanEur": 250,
+        "infraEur": 52,
+        "incidentReserveEur": 30,
+        "collectionEur": 18.24,
+        "directEur": 430.24,
+        "directMargin": 0.2805351170568562,
+        "allocatedEur": 80,
+        "contributionEur": 87.75999999999999,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "missions-audit",
+      "name": "Aude",
+      "priceEur": 399,
+      "includedCredits": 4000,
+      "includedVariableBudgetEur": 40,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U4",
+            "quantity": 10,
+            "credits": 1580,
+            "costEur": 15.787499999999998
+          },
+          {
+            "reference": "U5",
+            "quantity": 5,
+            "credits": 1075,
+            "costEur": 10.73
+          },
+          {
+            "reference": "U6",
+            "quantity": 2,
+            "credits": 920,
+            "costEur": 9.2
+          }
+        ],
+        "credits": 3575,
+        "costEur": 35.7175
+      },
+      "fullUsage": {
+        "agentIds": [
+          "missions-audit"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 100,
+        "infraEur": 28,
+        "incidentReserveEur": 20,
+        "collectionEur": 12.21,
+        "directEur": 200.21,
+        "directMargin": 0.665200668896321,
+        "allocatedEur": 80,
+        "contributionEur": 317.78999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "missions-audit"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 100,
+        "infraEur": 28,
+        "incidentReserveEur": 20,
+        "collectionEur": 12.21,
+        "directEur": 160.21,
+        "directMargin": 0.7320903010033445,
+        "allocatedEur": 80,
+        "contributionEur": 357.78999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "missions-audit"
+        ],
+        "revenueEur": 598,
+        "includedCredits": 4000,
+        "variableCostEur": 80,
+        "fixedHumanEur": 266.66666666666663,
+        "infraEur": 52,
+        "incidentReserveEur": 40,
+        "collectionEur": 18.24,
+        "directEur": 456.90666666666664,
+        "directMargin": 0.2359420289855073,
+        "allocatedEur": 80,
+        "contributionEur": 61.09333333333336,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "commercial",
+      "name": "Victoire",
+      "priceEur": 199,
+      "includedCredits": 2000,
+      "includedVariableBudgetEur": 20,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U2",
+            "quantity": 20,
+            "credits": 580,
+            "costEur": 5.619166666666667
+          },
+          {
+            "reference": "U6",
+            "quantity": 2,
+            "credits": 920,
+            "costEur": 9.2
+          },
+          {
+            "reference": "U5",
+            "quantity": 1,
+            "credits": 215,
+            "costEur": 2.146
+          }
+        ],
+        "credits": 1715,
+        "costEur": 16.965166666666665
+      },
+      "fullUsage": {
+        "agentIds": [
+          "commercial"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 20,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 115.46000000000001,
+        "directMargin": 0.7098994974874372,
+        "allocatedEur": 80,
+        "contributionEur": 202.53999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "commercial"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 95.46000000000001,
+        "directMargin": 0.7601507537688442,
+        "allocatedEur": 80,
+        "contributionEur": 222.53999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "commercial"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 150,
+        "infraEur": 44.5,
+        "incidentReserveEur": 16,
+        "collectionEur": 12.24,
+        "directEur": 262.74,
+        "directMargin": 0.33984924623115575,
+        "allocatedEur": 80,
+        "contributionEur": 55.25999999999999,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "communication",
+      "name": "Colette",
+      "priceEur": 149,
+      "includedCredits": 1500,
+      "includedVariableBudgetEur": 15,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U2",
+            "quantity": 15,
+            "credits": 435,
+            "costEur": 4.2143749999999995
+          },
+          {
+            "reference": "U5",
+            "quantity": 4,
+            "credits": 860,
+            "costEur": 8.584
+          }
+        ],
+        "credits": 1295,
+        "costEur": 12.798375
+      },
+      "fullUsage": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 348,
+        "includedCredits": 1500,
+        "variableCostEur": 15,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 7.21,
+        "directEur": 106.46,
+        "directMargin": 0.6940804597701149,
+        "allocatedEur": 80,
+        "contributionEur": 161.54000000000002,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 348,
+        "includedCredits": 1500,
+        "variableCostEur": 0,
+        "fixedHumanEur": 56.25,
+        "infraEur": 23,
+        "incidentReserveEur": 5,
+        "collectionEur": 7.21,
+        "directEur": 91.46,
+        "directMargin": 0.737183908045977,
+        "allocatedEur": 80,
+        "contributionEur": 176.54000000000002,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "communication"
+        ],
+        "revenueEur": 348,
+        "includedCredits": 1500,
+        "variableCostEur": 30,
+        "fixedHumanEur": 150,
+        "infraEur": 44.5,
+        "incidentReserveEur": 10,
+        "collectionEur": 10.74,
+        "directEur": 245.24,
+        "directMargin": 0.295287356321839,
+        "allocatedEur": 80,
+        "contributionEur": 22.75999999999999,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "relation-client",
+      "name": "Émile",
+      "priceEur": 199,
+      "includedCredits": 3000,
+      "includedVariableBudgetEur": 30,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U2",
+            "quantity": 80,
+            "credits": 2320,
+            "costEur": 22.476666666666667
+          },
+          {
+            "reference": "U5",
+            "quantity": 3,
+            "credits": 645,
+            "costEur": 6.438
+          }
+        ],
+        "credits": 2965,
+        "costEur": 28.914666666666665
+      },
+      "fullUsage": {
+        "agentIds": [
+          "relation-client"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 3000,
+        "variableCostEur": 30,
+        "fixedHumanEur": 62.5,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 131.71,
+        "directMargin": 0.6690703517587939,
+        "allocatedEur": 80,
+        "contributionEur": 186.28999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "relation-client"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 3000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 62.5,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 101.71000000000001,
+        "directMargin": 0.7444472361809045,
+        "allocatedEur": 80,
+        "contributionEur": 216.28999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "relation-client"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 3000,
+        "variableCostEur": 60,
+        "fixedHumanEur": 166.66666666666669,
+        "infraEur": 44.5,
+        "incidentReserveEur": 16,
+        "collectionEur": 12.24,
+        "directEur": 299.4066666666667,
+        "directMargin": 0.2477219430485762,
+        "allocatedEur": 80,
+        "contributionEur": 18.593333333333305,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "gestion-cabinet",
+      "name": "Honoré",
+      "priceEur": 249,
+      "includedCredits": 3000,
+      "includedVariableBudgetEur": 30,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U7",
+            "quantity": 2,
+            "credits": 1516,
+            "costEur": 15.16
+          },
+          {
+            "reference": "U3",
+            "quantity": 8,
+            "credits": 640,
+            "costEur": 6.355
+          },
+          {
+            "reference": "U2",
+            "quantity": 10,
+            "credits": 290,
+            "costEur": 2.8095833333333333
+          }
+        ],
+        "credits": 2446,
+        "costEur": 24.324583333333333
+      },
+      "fullUsage": {
+        "agentIds": [
+          "gestion-cabinet"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 3000,
+        "variableCostEur": 30,
+        "fixedHumanEur": 68.75,
+        "infraEur": 25,
+        "incidentReserveEur": 10,
+        "collectionEur": 9.21,
+        "directEur": 142.96,
+        "directMargin": 0.6808928571428572,
+        "allocatedEur": 80,
+        "contributionEur": 225.03999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "gestion-cabinet"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 3000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 68.75,
+        "infraEur": 25,
+        "incidentReserveEur": 10,
+        "collectionEur": 9.21,
+        "directEur": 112.96000000000001,
+        "directMargin": 0.7478571428571428,
+        "allocatedEur": 80,
+        "contributionEur": 255.03999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "gestion-cabinet"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 3000,
+        "variableCostEur": 60,
+        "fixedHumanEur": 183.33333333333331,
+        "infraEur": 47.5,
+        "incidentReserveEur": 20,
+        "collectionEur": 13.74,
+        "directEur": 324.5733333333333,
+        "directMargin": 0.27550595238095243,
+        "allocatedEur": 80,
+        "contributionEur": 43.42666666666668,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "rh-cabinet",
+      "name": "Raphaël",
+      "priceEur": 199,
+      "includedCredits": 2000,
+      "includedVariableBudgetEur": 20,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U6",
+            "quantity": 2,
+            "credits": 920,
+            "costEur": 9.2
+          },
+          {
+            "reference": "U5",
+            "quantity": 3,
+            "credits": 645,
+            "costEur": 6.438
+          },
+          {
+            "reference": "U2",
+            "quantity": 10,
+            "credits": 290,
+            "costEur": 2.8095833333333333
+          }
+        ],
+        "credits": 1855,
+        "costEur": 18.44758333333333
+      },
+      "fullUsage": {
+        "agentIds": [
+          "rh-cabinet"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 20,
+        "fixedHumanEur": 68.75,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 127.96000000000001,
+        "directMargin": 0.6784924623115578,
+        "allocatedEur": 80,
+        "contributionEur": 190.03999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "rh-cabinet"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 68.75,
+        "infraEur": 23,
+        "incidentReserveEur": 8,
+        "collectionEur": 8.21,
+        "directEur": 107.96000000000001,
+        "directMargin": 0.7287437185929648,
+        "allocatedEur": 80,
+        "contributionEur": 210.03999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "rh-cabinet"
+        ],
+        "revenueEur": 398,
+        "includedCredits": 2000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 183.33333333333331,
+        "infraEur": 44.5,
+        "incidentReserveEur": 16,
+        "collectionEur": 12.24,
+        "directEur": 296.0733333333333,
+        "directMargin": 0.2560971524288107,
+        "allocatedEur": 80,
+        "contributionEur": 21.926666666666677,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "informatique-outils",
+      "name": "Octavie",
+      "priceEur": 249,
+      "includedCredits": 2000,
+      "includedVariableBudgetEur": 20,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U3",
+            "quantity": 10,
+            "credits": 800,
+            "costEur": 7.9437500000000005
+          },
+          {
+            "reference": "U5",
+            "quantity": 3,
+            "credits": 645,
+            "costEur": 6.438
+          },
+          {
+            "reference": "U2",
+            "quantity": 10,
+            "credits": 290,
+            "costEur": 2.8095833333333333
+          }
+        ],
+        "credits": 1735,
+        "costEur": 17.191333333333333
+      },
+      "fullUsage": {
+        "agentIds": [
+          "informatique-outils"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 20,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 9.21,
+        "directEur": 144.21,
+        "directMargin": 0.6781026785714286,
+        "allocatedEur": 80,
+        "contributionEur": 223.78999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "informatique-outils"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 15,
+        "collectionEur": 9.21,
+        "directEur": 124.21000000000001,
+        "directMargin": 0.7227455357142857,
+        "allocatedEur": 80,
+        "contributionEur": 243.78999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "informatique-outils"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 200,
+        "infraEur": 47.5,
+        "incidentReserveEur": 30,
+        "collectionEur": 13.74,
+        "directEur": 331.24,
+        "directMargin": 0.260625,
+        "allocatedEur": 80,
+        "contributionEur": 36.75999999999999,
+        "passesMarginTarget": false
+      }
+    },
+    {
+      "id": "protection-donnees",
+      "name": "Prudence",
+      "priceEur": 249,
+      "includedCredits": 2000,
+      "includedVariableBudgetEur": 20,
+      "sample": {
+        "lines": [
+          {
+            "reference": "U6",
+            "quantity": 2,
+            "credits": 920,
+            "costEur": 9.2
+          },
+          {
+            "reference": "U3",
+            "quantity": 5,
+            "credits": 400,
+            "costEur": 3.9718750000000003
+          },
+          {
+            "reference": "U5",
+            "quantity": 2,
+            "credits": 430,
+            "costEur": 4.292
+          }
+        ],
+        "credits": 1750,
+        "costEur": 17.463875
+      },
+      "fullUsage": {
+        "agentIds": [
+          "protection-donnees"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 20,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 12,
+        "collectionEur": 9.21,
+        "directEur": 141.21,
+        "directMargin": 0.6847991071428572,
+        "allocatedEur": 80,
+        "contributionEur": 226.78999999999996,
+        "passesMarginTarget": true
+      },
+      "noUsage": {
+        "agentIds": [
+          "protection-donnees"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 0,
+        "fixedHumanEur": 75,
+        "infraEur": 25,
+        "incidentReserveEur": 12,
+        "collectionEur": 9.21,
+        "directEur": 121.21000000000001,
+        "directMargin": 0.7294419642857143,
+        "allocatedEur": 80,
+        "contributionEur": 246.78999999999996,
+        "passesMarginTarget": true
+      },
+      "stress": {
+        "agentIds": [
+          "protection-donnees"
+        ],
+        "revenueEur": 448,
+        "includedCredits": 2000,
+        "variableCostEur": 40,
+        "fixedHumanEur": 200,
+        "infraEur": 47.5,
+        "incidentReserveEur": 24,
+        "collectionEur": 13.74,
+        "directEur": 325.24,
+        "directMargin": 0.2740178571428571,
+        "allocatedEur": 80,
+        "contributionEur": 42.75999999999999,
+        "passesMarginTarget": false
+      }
+    }
+  ],
+  "allCombinations": {
+    "count": 4095,
+    "failures": 0,
+    "minimum": {
+      "agentIds": [
+        "missions-audit",
+        "relation-client"
+      ],
+      "revenueEur": 797,
+      "includedCredits": 7000,
+      "variableCostEur": 70,
+      "fixedHumanEur": 125,
+      "infraEur": 31,
+      "incidentReserveEur": 28,
+      "collectionEur": 16.189999999999998,
+      "directEur": 270.19,
+      "directMargin": 0.66099121706399,
+      "allocatedEur": 80,
+      "contributionEur": 446.80999999999995,
+      "passesMarginTarget": true
+    }
+  },
+  "examples": {
+    "balthazar": {
+      "agentIds": [
+        "comptabilite"
+      ],
+      "revenueEur": 548,
+      "includedCredits": 5000,
+      "variableCostEur": 50,
+      "fixedHumanEur": 75,
+      "infraEur": 25,
+      "incidentReserveEur": 10,
+      "collectionEur": 11.21,
+      "directEur": 171.21,
+      "directMargin": 0.6875729927007299,
+      "allocatedEur": 80,
+      "contributionEur": 296.78999999999996,
+      "passesMarginTarget": true
+    },
+    "balthazarPlusEmile": {
+      "agentIds": [
+        "comptabilite",
+        "relation-client"
+      ],
+      "revenueEur": 747,
+      "includedCredits": 8000,
+      "variableCostEur": 80,
+      "fixedHumanEur": 100,
+      "infraEur": 28,
+      "incidentReserveEur": 18,
+      "collectionEur": 15.19,
+      "directEur": 241.19,
+      "directMargin": 0.6771218206157965,
+      "allocatedEur": 80,
+      "contributionEur": 425.81,
+      "passesMarginTarget": true
+    },
+    "balthazarPlusSalome": {
+      "agentIds": [
+        "comptabilite",
+        "paie-social"
+      ],
+      "revenueEur": 897,
+      "includedCredits": 9000,
+      "variableCostEur": 90,
+      "fixedHumanEur": 118.75,
+      "infraEur": 30,
+      "incidentReserveEur": 25,
+      "collectionEur": 18.19,
+      "directEur": 281.94,
+      "directMargin": 0.685685618729097,
+      "allocatedEur": 80,
+      "contributionEur": 535.06,
+      "passesMarginTarget": true
+    },
+    "balthazar1000Extra": {
+      "agentIds": [
+        "comptabilite"
+      ],
+      "revenueEur": 598,
+      "includedCredits": 5000,
+      "variableCostEur": 60,
+      "fixedHumanEur": 75,
+      "infraEur": 25,
+      "incidentReserveEur": 10,
+      "collectionEur": 12.21,
+      "directEur": 182.21,
+      "directMargin": 0.6953010033444815,
+      "allocatedEur": 80,
+      "contributionEur": 335.78999999999996,
+      "passesMarginTarget": true
+    },
+    "allAgents": {
+      "agentIds": [
+        "comptabilite",
+        "paie-social",
+        "juridique-fiscal",
+        "finance",
+        "missions-audit",
+        "commercial",
+        "communication",
+        "relation-client",
+        "gestion-cabinet",
+        "rh-cabinet",
+        "informatique-outils",
+        "protection-donnees"
+      ],
+      "revenueEur": 3537,
+      "includedCredits": 35500,
+      "variableCostEur": 355,
+      "fixedHumanEur": 487.5,
+      "infraEur": 78,
+      "incidentReserveEur": 141,
+      "collectionEur": 70.99,
+      "directEur": 1132.49,
+      "directMargin": 0.6798162284421827,
+      "allocatedEur": 80,
+      "contributionEur": 2324.51,
+      "passesMarginTarget": true
+    },
+    "heavyIncident": {
+      "agentIds": [
+        "comptabilite"
+      ],
+      "revenueEur": 548,
+      "includedCredits": 5000,
+      "variableCostEur": 100,
+      "fixedHumanEur": 1100,
+      "infraEur": 47.5,
+      "incidentReserveEur": 20,
+      "collectionEur": 16.74,
+      "directEur": 1284.24,
+      "directMargin": -1.3435036496350365,
+      "allocatedEur": 80,
+      "contributionEur": -816.24,
+      "passesMarginTarget": false
+    }
+  },
+  "setup": {
+    "firstPriceEur": 1990,
+    "firstDirectEur": 815.3,
+    "additionalPriceEur": 990,
+    "additionalDirectEur": 340.3
+  }
+}

@@ -1,6 +1,6 @@
 # Agents IA Memlia : grille de consommation et mise en service
 
-> **Étude historique remplacée commercialement.** Après lecture, Kevin refuse la complexité des huit prix et rappelle 1 000 € HT/mois + 300 € HT/mois par pôle. Lire [l’offre simplifiée](../offre-simple/OFFRE.md). Les calculs et le classeur de cette étude restent conservés, sans représenter le tarif actuel proposé.
+> **Étude historique remplacée commercialement.** Après lecture, Kevin refuse la complexité des huit prix et demande de recalculer le socle, le prix et le quota de chaque agent. Lire [la proposition actuelle](../agents-individuels/GRILLE.md). Ses anciens 1 000 € + 300 € ne sont pas des contraintes tarifaires. Les calculs et le classeur de cette étude restent conservés, sans représenter le tarif actuel proposé.
 
 15 octobre 2026. **Socle de 99 € HT/mois et principe de consommation par travail remis validés par Kevin. Les montants unitaires ci-dessous constituent la recommandation chiffrée issue de cette seconde étude.** Fournisseur IA retenu : API Mammouth. Kevin confirme qu’aucune clé n’est disponible : les coûts sont calculés sur les tarifs publics, sans consommation API réelle ni temps humain mesuré en production.
 
