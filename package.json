@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "python3 scripts/build-lock.py -- npm run build:locked",
-    "build:locked": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa && node scripts/generate-agent-markdown.mjs && node scripts/verify-agent-markdown.mjs && npm run test:positioning:export",
+    "build:locked": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa && node scripts/generate-agent-markdown.mjs && node scripts/verify-agent-markdown.mjs && npm run test:migration-catalogues && npm run test:positioning:export",
     "test:query-ownership": "node scripts/verify-query-ownership.mjs && node --test tests/scripts/query-ownership.test.mjs",
     "build:site": "npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && npm run render:public && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
@@ -74,7 +74,8 @@
     "guide:publier": "node scripts/service-forge.mjs --guide publier",
     "guide:audit": "node scripts/service-forge.mjs --guide audit",
     "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs tests/scripts/guide-proof-layout.test.mjs",
-    "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs"
+    "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs",
+    "test:migration-catalogues": "node scripts/verify-catalogue-migration.mjs && node --test tests/scripts/migration-catalogues.test.mjs"
   },
   "engines": {
     "node": ">=22"

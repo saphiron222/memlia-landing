@@ -1,5 +1,8 @@
 # Finalisation Codex : agents IA et intégrations communes
 
+État historique de la première livraison : la décision suivante de Kevin retire les anciens services et guides, et ajoute la fiche Salomé. Voir `docs/qa/migration-catalogues-2026-10-15/README.md` pour le candidat courant.
+
+
 Demande de Kevin après arrêt explicite de Claude. Base : version robots et copy validée `54e37be6`, reprise du socle agents `03acf961` et des 17 chemins interrompus. Aucune production ni fusion sur main dans cette livraison ; prévisualisation complète.
 
 ## Protection et autorité

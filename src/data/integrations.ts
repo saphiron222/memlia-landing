@@ -526,7 +526,10 @@ export const INTEGRATIONS: readonly IntegrationDefinition[] = [
   ...(generatedGuides as IntegrationDefinition[]),
 ];
 
-export const INTEGRATIONS_INDEXABLES = INTEGRATIONS;
+/** Retrait demandé par Kevin le 15/10/2026. Corpus historique conservé pour les sceaux,
+ * recherches et redirections ; aucune ancienne fiche n’est une surface commerciale active. */
+export const INTEGRATIONS_ARCHIVEES = INTEGRATIONS;
+export const INTEGRATIONS_INDEXABLES: readonly IntegrationDefinition[] = [];
 
 export function integrationPath(integration: Pick<IntegrationDefinition, 'slug'>): string {
   return `${INTEGRATIONS_HUB_PATH}/${integration.slug}`;

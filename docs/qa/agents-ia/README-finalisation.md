@@ -1,5 +1,8 @@
 # Agents IA et compatibilités communes — finalisation du 15 octobre 2026
 
+État historique de la première livraison : la décision suivante de Kevin retire les anciens services et guides, et ajoute la fiche Salomé. Voir `docs/qa/migration-catalogues-2026-10-15/README.md` pour le candidat courant.
+
+
 La version robots et pages commerciales Codex est la référence choisie par Kevin. Le socle Claude `03acf961` est repris dans `site/agents-robots-integrations` depuis `54e37be6`, sans modifier le checkout Claude ni fusionner main. Le diff interrompu et les fichiers temporaires ont une sauvegarde durable avec SHA.
 
 ## Ce que livre le candidat

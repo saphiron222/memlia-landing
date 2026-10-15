@@ -6,7 +6,6 @@ import Button from '@/components/Button.astro';
 import Picto from '@/components/Picto.astro';
 import Lockup from '@/components/Lockup.astro';
 import SourcesRobots from './SourcesRobots.astro';
-import { INTEGRATIONS_INDEXABLES, integrationPath } from '@/data/integrations';
 import '@/styles/catalogue/commun.css';
 import '@/styles/catalogue/hub.css';
 const comptes = comptesRobots();
@@ -37,7 +36,7 @@ const trio = ['taxes-foncieres', 'cfe', 'suivi-urssaf'].map((id) => ROBOTS.find(
     <div class="tete"><h2 id="construit-titre">Construit sur votre cabinet.</h2><p>Vos règles, vos outils, vos échéances : le robot suit le travail de votre équipe.</p></div>
     <ol class="catalogue-etapes"><li><span class="catalogue-etape-numero">01</span><h3>Vos règles</h3><p>Un avis absent, un seuil de variation, une validation avant envoi : nous écrivons avec vous ce qui se traite et ce qui s’arrête.</p><a class="catalogue-action" href="/methode">Écrire la règle<Picto nom="fleche" taille={14} /></a></li><li><span class="catalogue-etape-numero">02</span><h3>Vos outils</h3><p>Portail fiscal, logiciel du cabinet, messagerie ou dossier partagé : nous préparons les accès et le classement du résultat dans les outils que vous utilisez.</p><a class="catalogue-action" href="/integrations">Voir les compatibilités<Picto nom="fleche" taille={14} /></a></li><li><span class="catalogue-etape-numero">03</span><h3>Vos échéances</h3><p>Une campagne annuelle, une relève régulière, un nouveau dossier : nous réglons le déclenchement et les reprises au rythme de votre cabinet.</p><a class="catalogue-action" href="/garanties">Connaître les conditions d’arrêt<Picto nom="fleche" taille={14} /></a></li></ol>
     <SourcesRobots />
-    <aside class="hub-guides"><h3>Pour préparer la clôture dans votre logiciel.</h3><p>Les guides précisent les données à réunir et les contrôles du cabinet.</p><ul>{INTEGRATIONS_INDEXABLES.filter(guide=>guide.service.href===hub.chemin).map(guide=><li><a class="catalogue-action" href={integrationPath(guide)}>{guide.task.charAt(0).toLocaleUpperCase('fr')+guide.task.slice(1)} dans {guide.product}<Picto nom="fleche" taille={14}/></a></li>)}</ul></aside>
+
   </section>
   <section class="catalogue-section" aria-labelledby="autre-titre" data-hub-section="autre-tache"><span id="requis" class="catalogue-ancre" aria-hidden="true"></span><span id="avant" class="catalogue-ancre" aria-hidden="true"></span><div class="hub-autre"><h2 id="autre-titre">Votre tâche n’a pas encore son robot ?</h2><p>Décrivez le geste qui revient, l’outil ouvert et le résultat attendu. Nous écrivons sa règle avec vous.</p><a class="catalogue-action" href="/contact">Nous parler de cette tâche<Picto nom="fleche" taille={14} /></a></div></section>
   <section class="catalogue-fin" aria-labelledby="fin-titre" data-hub-section="contact"><span id="prix" class="catalogue-ancre" aria-hidden="true"></span><span id="suite" class="catalogue-ancre" aria-hidden="true"></span><h2 id="fin-titre">Une première tâche. Un résultat à vous remettre.</h2><p>Commençons par la routine que votre équipe refait déjà. Nous cadrons le travail, construisons le robot et le maintenons dans vos outils.</p><Button href="/contact" variante="principal" picto="fleche">Confier une première tâche</Button><p class="mention">Rien à envoyer : la description suffit.</p></section>

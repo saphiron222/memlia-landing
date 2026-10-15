@@ -118,7 +118,7 @@ test('I8 : aucune donnée des agents n’écrit « module » ni « complément E
 });
 
 /*
- * Le gabarit des fiches (tâche 6) : les titres, intertitres et mentions communs aux neuf fiches vivent dans
+ * Le gabarit des fiches (tâche 6) : les titres, intertitres et mentions communs aux dix fiches vivent dans
  * `src/data/specialistes/gabarit.ts`, hors d'`AGENTS`. Le garde ne s'y propage pas seul : il les lit ici, pour chaque
  * fiche publiée, une fois composés avec le prénom, le métier et les voisins de l'agent.
  */

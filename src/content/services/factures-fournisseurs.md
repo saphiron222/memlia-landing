@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: achats-fournisseurs
 verifiedAt: 2026-09-20
-status: publie
+status: a-valider
 candidateFingerprint: "53ce45766652e9c159414a8d74122039df422bab50c0b943134302eb44e39f65"
 cta:
   label: "Confier une première tâche"

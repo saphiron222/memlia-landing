@@ -12,6 +12,8 @@ test('démonstrations robots : CSP sans réseau, cache sans transformation et HE
   }
  }finally{delete globalThis.HTMLRewriter;}
 });
-test('la route dynamique conserve le traitement des services historiques et des inconnus',async()=>{
- for(const slug of ['paie','inconnu']){const original=new Response('Service historique');const res=await onRequestGet({params:{slug},next:async()=>original});assert.equal(res,original);}
+test('la route dynamique redirige la paie retirée et conserve le vrai 404 des inconnus',async()=>{
+ const response=await onRequestGet({request:new Request('https://preview.memlia.pages.dev/automatisation/paie'),params:{slug:'paie'},next:async()=>{throw Error('ancienne page ne doit pas passer');}});
+ assert.equal(response.status,301);assert.equal(response.headers.get('Location'),'https://preview.memlia.pages.dev/agents-ia/paie-social');
+ const original=new Response('Introuvable',{status:404});const res=await onRequestGet({request:new Request('https://preview.memlia.pages.dev/automatisation/inconnu'),params:{slug:'inconnu'},next:async()=>original});assert.equal(res,original);
 });

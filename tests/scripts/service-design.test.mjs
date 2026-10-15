@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerServiceDesign } from '../../scripts/verify-service-design.mjs';
+import { auditerServiceDesign, servicesServis, servicesPublies } from '../../scripts/verify-service-design.mjs';
 
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'memlia-service-design-'));
@@ -100,6 +100,35 @@ test('une future page non publiée ne peut pas contourner la porte DA', () => {
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('une dépublication déclarée retire seulement le service archivé du périmètre public', () => {
+  const root = fixture();
+  try {
+    mkdirSync(join(root, 'config'), { recursive: true });
+    const ledger = join(root, 'config/service-publication-ledger.json');
+    const page = join(root, 'dist/automatisation/tache-test/index.html');
+    // La recette reste présente, mais la route publique ne doit plus être réclamée par le garde DA.
+    writeFileSync(join(root, 'src/content/services/tache-test.md'), '---\nstatus: a-valider\n---\n');
+    writeFileSync(page, pageComposee());
+    rmSync(page);
+    writeFileSync(ledger, JSON.stringify({ services: [{ slug: 'tache-test', route: '/automatisation/tache-test', status: 'depublie' }] }));
+    assert.deepEqual(servicesServis(root), []);
+    assert.deepEqual(servicesPublies(root), []);
+    assert.deepEqual(auditerServiceDesign({ root }), { pass: true, services: 0, erreurs: [] });
+
+    // Retirer la décision, la rattacher à une autre identité ou remettre le service publié ne peut
+    // pas masquer une page absente. Les futurs candidats a-valider gardent eux aussi le garde DA.
+    for (const services of [[], [{ slug: 'autre-tache', status: 'depublie' }], [{ slug: 'tache-test', status: 'publie' }]]) {
+      writeFileSync(ledger, JSON.stringify({ services }));
+      assert.deepEqual(servicesServis(root), ['tache-test']);
+      assert.match(auditerServiceDesign({ root }).erreurs.join('\n'), /page construite absente/);
+    }
+    writeFileSync(ledger, JSON.stringify({ services: [{ slug: 'tache-test', status: 'depublie' }] }));
+    writeFileSync(join(root, 'src/content/services/tache-soeur.md'), '---\nstatus: a-valider\n---\n');
+    assert.deepEqual(servicesServis(root), ['tache-soeur']);
+    assert.match(auditerServiceDesign({ root }).erreurs.join('\n'), /tache-soeur : page construite absente/);
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
 test('une page sans bloc de couverture ou Person reliée échoue la porte de confiance', () => {

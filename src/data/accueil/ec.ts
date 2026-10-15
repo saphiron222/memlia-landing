@@ -29,11 +29,11 @@ export const CONTENU_EC: ContenuAccueil = {
   { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ],
     services: [
-  { libelle: 'Paie', href: '/automatisation/paie' },
-  { libelle: 'Saisie comptable', href: '/automatisation/saisie-comptable' },
-  { libelle: 'Rapprochement bancaire', href: '/automatisation/rapprochement-bancaire' },
-  { libelle: 'Notes de frais', href: '/automatisation/notes-de-frais' },
-  { libelle: 'Factures fournisseurs', href: '/automatisation/factures-fournisseurs' },
+  { libelle: 'Paie', href: '/agents-ia/paie-social' },
+  { libelle: 'Saisie comptable', href: '/agents-ia/comptabilite#tache-saisie-ocr-2' },
+  { libelle: 'Rapprochement bancaire', href: '/agents-ia/comptabilite#tache-banque-rapprochement-5' },
+  { libelle: 'Notes de frais', href: '/agents-ia/comptabilite#taches-titre' },
+  { libelle: 'Factures fournisseurs', href: '/agents-ia/comptabilite#tache-achats-fournisseurs-4' },
 ],
   },
   quotidien: {

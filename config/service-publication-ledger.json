@@ -5,80 +5,92 @@
     {
       "slug": "bulletins-controle",
       "route": "/automatisation/bulletins-controle",
-      "status": "publie",
-      "publishedOn": "2026-10-10"
+      "status": "depublie",
+      "publishedOn": "2026-10-10",
+      "depublicationPath": "commercial/services/bulletins-controle/preuves/depublication.json"
     },
     {
       "slug": "circularisation-cac",
       "route": "/automatisation/circularisation-cac",
-      "status": "publie",
-      "publishedOn": "2026-10-07"
+      "status": "depublie",
+      "publishedOn": "2026-10-07",
+      "depublicationPath": "commercial/services/circularisation-cac/preuves/depublication.json"
     },
     {
       "slug": "evaluation-transmission",
       "route": "/automatisation/evaluation-transmission",
-      "status": "publie",
-      "publishedOn": "2026-10-08"
+      "status": "depublie",
+      "publishedOn": "2026-10-08",
+      "depublicationPath": "commercial/services/evaluation-transmission/preuves/depublication.json"
     },
     {
       "slug": "secretariat-juridique",
       "route": "/automatisation/secretariat-juridique",
-      "status": "publie",
-      "publishedOn": "2026-10-08"
+      "status": "depublie",
+      "publishedOn": "2026-10-08",
+      "depublicationPath": "commercial/services/secretariat-juridique/preuves/depublication.json"
     },
     {
       "slug": "entrees-sorties-salaries",
       "route": "/automatisation/entrees-sorties-salaries",
-      "status": "publie",
-      "publishedOn": "2026-10-07"
+      "status": "depublie",
+      "publishedOn": "2026-10-07",
+      "depublicationPath": "commercial/services/entrees-sorties-salaries/preuves/depublication.json"
     },
     {
       "slug": "factures-fournisseurs",
       "route": "/automatisation/factures-fournisseurs",
-      "status": "publie",
-      "publishedOn": "2026-09-20"
+      "status": "depublie",
+      "publishedOn": "2026-09-20",
+      "depublicationPath": "commercial/services/factures-fournisseurs/preuves/depublication.json"
     },
     {
       "slug": "notes-de-frais",
       "route": "/automatisation/notes-de-frais",
-      "status": "publie",
-      "publishedOn": "2026-09-20"
+      "status": "depublie",
+      "publishedOn": "2026-09-20",
+      "depublicationPath": "commercial/services/notes-de-frais/preuves/depublication.json"
     },
     {
       "slug": "paie",
       "route": "/automatisation/paie",
-      "status": "publie",
-      "publishedOn": "2026-09-20"
+      "status": "depublie",
+      "publishedOn": "2026-09-20",
+      "depublicationPath": "commercial/services/paie/preuves/depublication.json"
     },
     {
       "slug": "rapprochement-bancaire",
       "route": "/automatisation/rapprochement-bancaire",
-      "status": "publie",
-      "publishedOn": "2026-09-20"
+      "status": "depublie",
+      "publishedOn": "2026-09-20",
+      "depublicationPath": "commercial/services/rapprochement-bancaire/preuves/depublication.json"
     },
     {
       "slug": "saisie-comptable",
       "route": "/automatisation/saisie-comptable",
-      "status": "publie",
-      "publishedOn": "2026-09-20"
+      "status": "depublie",
+      "publishedOn": "2026-09-20",
+      "depublicationPath": "commercial/services/saisie-comptable/preuves/depublication.json"
     },
     {
       "slug": "registres-obligations",
       "route": "/automatisation/registres-obligations",
-      "status": "publie",
-      "publishedOn": "2026-10-07"
+      "status": "depublie",
+      "publishedOn": "2026-10-07",
+      "depublicationPath": "commercial/services/registres-obligations/preuves/depublication.json"
     },
     {
       "slug": "facture-electronique",
       "route": "/automatisation/facture-electronique",
-      "status": "publie",
-      "publishedOn": "2026-10-07"
+      "status": "depublie",
+      "publishedOn": "2026-10-07",
+      "depublicationPath": "commercial/services/facture-electronique/preuves/depublication.json"
     }
   ],
   "catalogueMode": "robots-routines",
   "catalogueDecision": {
     "date": "2026-10-15",
-    "reason": "Kevin remplace le hub automatisation par le catalogue des routines de robots. Les services historiques et destinations des agents restent publiés et doivent garder au moins un lien contextuel depuis le contenu principal d’une page publiée."
+    "reason": "Kevin retire les douze anciennes pages de services par pôle et les douze guides par environnement. Robots, Agents IA et Intégrations deviennent les trois entrées commerciales ; les archives et les redirections exactes sont suivies dans config/migration-catalogues.json."
   },
   "incomingLinkMigrations": [
     {

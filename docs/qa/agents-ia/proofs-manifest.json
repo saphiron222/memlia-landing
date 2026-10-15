@@ -3,7 +3,7 @@
   "sources": [
     {
       "path": "docs/design/agents-ia-proof/index.html",
-      "sha256": "54ba8147274780f417613f15807f2befc900facf5a73a3a1d86687a746567e4b"
+      "sha256": "a649a17a79f0007d1a986a8089cac807f3337b11ea854d9cb6b7c0a6c4c3e4b3"
     },
     {
       "path": "docs/design/agents-ia-proof/styles.css",
@@ -15,7 +15,7 @@
     },
     {
       "path": "docs/design/agents-ia-proof/content-contract.json",
-      "sha256": "2e9c8c6761b89398a8005eb338626beabf30a87a61d8c4ad5a6e406b70cf02b1"
+      "sha256": "a6cc34e380b190c9aa7df779ebdaa860cceae1fd6b3982503b6a9093f49fdcf1"
     },
     {
       "path": "scripts/render-proofs-v2.mjs",
@@ -95,6 +95,12 @@
       "target": "public/proofs/v2/og/59-compatibilites.webp",
       "bytes": 30218,
       "sha256": "de085d0fd13b2069a80147b42b2827adc17fbea1cac6cf2c5e509568bd185893"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-paie-social",
+      "target": "public/proofs/v2/og/60-fiche-paie-social.webp",
+      "bytes": 49176,
+      "sha256": "b0df1408b915f8db6597cd457722b7de04fcfe4b500091bd544397c0f319ce62"
     }
   ]
 }

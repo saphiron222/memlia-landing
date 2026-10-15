@@ -10,10 +10,10 @@ import { normaliser } from '../helpers/agents-interdits.mjs';
  * I10 (remplacé à la porte 2, 15/10/2026) : chaque agent IA a sa démonstration, rejouée sur un dossier fictif.
  * Le test ne compare plus rien à une page source publiée ; il vérifie la FORME des douze démonstrations des données
  * (`Specialiste.demonstration`, spec §2.1) puis, sur un `dist` construit, leur rendu :
- *   - les fiches publiées (/agents-ia/<slug>, `publie: true` et destination fiche : Comptabilité à la tâche 6, les neuf à la
- *     tâche 9) : « Rejoué sur un dossier fictif » et les quatre cas ;
+ *   - les dix fiches publiées (/agents-ia/<slug>, `publie: true` et destination fiche, dont Salomé depuis le retrait
+ *     des anciennes pages par pôle) : « Rejoué sur un dossier fictif » et les quatre cas ;
  *   - Octavie : la même chose sur /integrations, sous son bandeau ;
- *   - Salomé et Aude n'ont pas de page où se rendre : leurs démonstrations vivent dans les données seulement.
+ *   - la démonstration d’Aude reste dans les données seulement.
  * Le fond (les mots des cas) est relu par la revue `metier`, pas par ce test.
  *
  * `src/data/specialistes.ts` n'existe pas encore (tâche 2) : les contrôles de données échouent avec « Cannot find
@@ -30,8 +30,8 @@ const SLUGS = [
   'comptabilite', 'paie-social', 'juridique-fiscal', 'finance', 'missions-audit', 'commercial',
   'communication', 'relation-client', 'gestion-cabinet', 'rh-cabinet', 'informatique-outils', 'protection-donnees',
 ];
-/** Les trois agents sans fiche : Salomé et Aude (pages existantes), Octavie (/integrations). */
-const SANS_FICHE = ['paie-social', 'missions-audit', 'informatique-outils'];
+/** Les deux agents sans fiche : Aude (accueil CAC), Octavie (/integrations). */
+const SANS_FICHE = ['missions-audit', 'informatique-outils'];
 const EXIGE_DIST = Boolean(process.env.CI || process.env.CF_PAGES || process.env.AGENTS_DIST_REQUIS === '1');
 
 const specialistes = () => import('../../src/data/specialistes.ts');
@@ -214,12 +214,15 @@ test('témoin : une carte de fiche publiée sans fiche rougit ; non publiée, el
   assert.equal(ficheEnRegle({ slug: 'y', destination: { type: 'page', chemin: '/integrations' }, publie: true }), false, 'une carte vers une page n’est pas une fiche');
 });
 
-test('I10 : neuf cartes mènent à une fiche, obligatoire dès que l’agent est publié ; Salomé, Aude et Octavie mènent à une page existante', async () => {
+test('I10 : dix cartes mènent à une fiche, dont Salomé ; Aude et Octavie mènent à une page existante', async () => {
   const { AGENTS, FICHES } = await specialistes();
   assert.deepEqual(FICHES.map(({ slug }) => slug).sort(), SLUGS.filter((slug) => !SANS_FICHE.includes(slug)).sort());
   assert.deepEqual(FICHES.filter((agent) => !ficheEnRegle(agent)).map(({ slug }) => slug), [], 'agent publié sans fiche, ou carte de FICHES sans destination fiche');
   assert.ok(AGENTS.every((agent) => typeof agent.publie === 'boolean'), '`publie` est un booléen sur chacun des douze agents');
   assert.ok(AGENTS.filter(({ slug }) => SANS_FICHE.includes(slug)).every((agent) => !agent.fiche && agent.destination?.type === 'page'));
+  assert.equal(FICHES.length, 10);
+  assert.deepEqual(AGENTS.filter((agent) => agent.destination.type === 'page').map(({ slug }) => slug).sort(), [...SANS_FICHE].sort());
+  assert.ok(FICHES.find(({ slug }) => slug === 'paie-social')?.fiche, 'la paie ne renvoie plus à l’ancien service par pôle');
 });
 
 /** Le contrôle de rendu s'exige quand la page qui doit le porter existe dans les sources ; il se dit sauté sinon. */
@@ -238,7 +241,7 @@ const gabaritDeFiche = () => {
 };
 const bandeauOctavie = () => existsSync(join(RACINE, 'src/components/sections/QuiPrendCeMetier.astro'));
 
-/** Les fiches que le site publie : un agent `publie` dont la carte mène à une fiche (la tâche 6 ne publie que Comptabilité, la tâche 9 les neuf). */
+/** Les fiches que le site publie : un agent `publie` dont la carte mène à une fiche. */
 const fichesPubliees = (agents) => agents.filter((agent) => agent.publie === true && agent.destination?.type === 'fiche');
 
 test('I10 : chaque fiche publiée rend « Rejoué sur un dossier fictif » et les quatre cas de sa démonstration', async (t) => {

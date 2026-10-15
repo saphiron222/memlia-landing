@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-depublication-scellee",
   "slug": "notes-de-frais",
-  "sealedAt": "2026-09-20T22:53:40.906Z",
+  "sealedAt": "2026-10-15T14:28:20.662Z",
   "files": {
     "page": {
       "path": "src/content/services/notes-de-frais.md",
-      "bytes": 5670,
-      "sha256": "b3e9146c1a167d37576456fa0a5d2a583a173fab68e44687f3fedda13505ea1d"
+      "bytes": 5673,
+      "sha256": "aeeeaa3f3e7ff757634ba7214eb6d53acfa1dc4e5cdd5dd18905df51d98d9457"
     },
     "manifest": {
       "path": "commercial/services/notes-de-frais/manifest.json",
-      "bytes": 2465,
-      "sha256": "682608f78ea945a7ac45d647b0bcd7dbb5b2cb3f20ae81d95560e46b7d836b52"
+      "bytes": 2468,
+      "sha256": "1687f39e91b7b2174d787cc19565cb93cb65683bad3b95547de8acc849201634"
     },
     "recipe": {
       "path": "commercial/recettes/notes-de-frais/recette.json",
@@ -29,10 +29,10 @@
       "bytes": 366,
       "sha256": "b4387973b04c324d849a1603e53ca9aee014d508085dd01974146aaa1a09037f"
     },
-    "publication": {
-      "path": "commercial/services/notes-de-frais/preuves/publication.json",
-      "bytes": 1306,
-      "sha256": "4e3ebb01864614b521c5d20ad0044fcb2c786a87ab0aa4b0b2229026cc0c3b4a"
+    "depublication": {
+      "path": "commercial/services/notes-de-frais/preuves/depublication.json",
+      "bytes": 530,
+      "sha256": "a195f6d96bb5b7ed22d14189b3f251f773ed92884ce7aef54c34b88f9fcea3af"
     }
   }
 }

@@ -23,7 +23,7 @@ export const JURIDIQUE_FISCAL: Specialiste = {
     'tva', 'is-acomptes', 'liasse-fiscale', 'declarations-annexes', 'echeances-fiscales', 'teledeclarations-rejets',
     'secretariat-juridique', 'formalites-creation-modification', 'registres-obligations',
   ],
-  servicesLies: ['secretariat-juridique', 'registres-obligations'],
+  servicesLies: [],
   logiciels: [
     'Lexis PolyActe', 'Registre national des entreprises', 'BODACC', 'Répertoire Sirene', 'Youtrust', 'Docusign',
     'Cegid Loop', 'ACD COMPTA', 'Sage 100 Comptabilité', 'EBP Comptabilité', 'Microsoft Excel',
@@ -263,6 +263,5 @@ export const JURIDIQUE_FISCAL: Specialiste = {
         objet: "la lettre de mission"
       }
     ],
-    pageDeLaRegle: "/automatisation/secretariat-juridique"
   },
 };

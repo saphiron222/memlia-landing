@@ -1,5 +1,8 @@
 # Charte de message et contexte marketing Memlia
 
+Décision complémentaire de Kevin du 15/10/2026 : trois entrées commerciales, **Robots**, **Agents IA** et **Intégrations**. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
+
+
 Document version : v8 — 15 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-15. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence

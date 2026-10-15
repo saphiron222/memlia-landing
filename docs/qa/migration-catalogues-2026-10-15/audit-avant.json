@@ -1,0 +1,2198 @@
+{
+  "date": "2026-10-15T14:28:17.497Z",
+  "dist": "/Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/hub-robots/dist",
+  "method": "Analyse statique de tous les HTML finaux avec parse5 ; aucun réseau, aucun classement ni mesure terrain déduit.",
+  "summary": {
+    "htmlPages": 118,
+    "indexablePages": 110,
+    "sitemapUrls": 110,
+    "internalLinks": 7734,
+    "imageElements": 824,
+    "imageFiles": 1062,
+    "largestHtml": [
+      {
+        "route": "/glossaire",
+        "bytes": 560428
+      },
+      {
+        "route": "/integrations",
+        "bytes": 414157
+      },
+      {
+        "route": "/outils-comptables-gratuits/comparateur-balances-comptables",
+        "bytes": 169783
+      },
+      {
+        "route": "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+        "bytes": 144529
+      },
+      {
+        "route": "/commissaires-aux-comptes",
+        "bytes": 127150
+      }
+    ],
+    "errors": 0,
+    "warnings": 0
+  },
+  "pages": [
+    {
+      "route": "/404",
+      "indexable": false,
+      "title": "Page introuvable — Memlia",
+      "description": "Cette page est introuvable. Revenez à l’accueil Memlia ou consultez nos articles sur les tâches répétitives des cabinets.",
+      "h1": "Cette page est introuvable.",
+      "canonical": "https://memlia.fr/404",
+      "bytes": 51220,
+      "depth": null,
+      "inbound": 0,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/a-propos",
+      "indexable": true,
+      "title": "À propos de Memlia : robots et agents IA pour les cabinets",
+      "description": "Memlia conçoit, déploie et maintient des robots et agents IA pour les cabinets comptables. Catalogue adapté à vos outils et construction sur mesure au besoin.",
+      "h1": "Nous mettons les robots et agents IA au travail dans votre cabinet.",
+      "canonical": "https://memlia.fr/a-propos",
+      "bytes": 83439,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "AboutPage",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/agents-ia/commercial",
+      "indexable": true,
+      "title": "Agent IA commercial pour cabinet comptable | Memlia",
+      "description": "Agent IA commercial pour cabinet comptable : propositions, pièces d’entrée en relation et lettres de mission préparées. L’associé accepte le client et envoie.",
+      "h1": "Agent IA commercial : les propositions prêtes, votre cabinet choisit et envoie.",
+      "canonical": "https://memlia.fr/agents-ia/commercial",
+      "bytes": 97744,
+      "depth": 2,
+      "inbound": 9,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/communication",
+      "indexable": true,
+      "title": "Newsletter d’expert-comptable : la lettre préparée | Memlia",
+      "description": "Newsletter d’expert-comptable : veille officielle, lettre d’information et publications préparées dans le ton du cabinet. Votre équipe relit, choisit et envoie.",
+      "h1": "Newsletter d’expert-comptable : l’agent IA rédige, votre cabinet relit et envoie.",
+      "canonical": "https://memlia.fr/agents-ia/communication",
+      "bytes": 93873,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/comptabilite",
+      "indexable": true,
+      "title": "IA en comptabilité : de la pièce reçue à la clôture | Memlia",
+      "description": "IA en comptabilité : pièces lues, saisie pré-imputée, banque rapprochée, révision préparée. L’agent IA s’arrête dans le doute ; votre collaborateur valide chaque écriture.",
+      "h1": "IA en comptabilité : de la pièce reçue à la clôture, les tâches préparées pour votre revue.",
+      "canonical": "https://memlia.fr/agents-ia/comptabilite",
+      "bytes": 100062,
+      "depth": 2,
+      "inbound": 19,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/finance",
+      "indexable": true,
+      "title": "Agent IA finance : situations, trésorerie et prévisionnels | Memlia",
+      "description": "Agent IA finance pour cabinet comptable : situations, trésorerie et prévisionnels préparés depuis les comptes tenus. Chaque hypothèse attend votre revue.",
+      "h1": "Agent IA finance : vos situations et prévisionnels préparés pour la revue.",
+      "canonical": "https://memlia.fr/agents-ia/finance",
+      "bytes": 95011,
+      "depth": 2,
+      "inbound": 6,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/gestion-cabinet",
+      "indexable": true,
+      "title": "Gestion de cabinet comptable : honoraires et charge | Memlia",
+      "description": "Gestion de cabinet comptable : factures d’honoraires, prélèvements, relances et plan de charge préparés. Vous validez ; les vues restent en agrégats.",
+      "h1": "Gestion de cabinet comptable : honoraires et charge préparés, l’associé arbitre.",
+      "canonical": "https://memlia.fr/agents-ia/gestion-cabinet",
+      "bytes": 95529,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/juridique-fiscal",
+      "indexable": true,
+      "title": "IA juridique pour expert-comptable : fiscalité et actes | Memlia",
+      "description": "IA juridique pour expert-comptable : TVA, liasse, formalités et documents de l’approbation des comptes préparés. Votre cabinet valide, signe et dépose.",
+      "h1": "IA juridique pour expert-comptable : documents de l’approbation des comptes prêts à valider.",
+      "canonical": "https://memlia.fr/agents-ia/juridique-fiscal",
+      "bytes": 98570,
+      "depth": 2,
+      "inbound": 8,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/protection-donnees",
+      "indexable": true,
+      "title": "RGPD de l’expert-comptable : registre et demandes d’accès | Memlia",
+      "description": "RGPD de l’expert-comptable : mises à jour du registre des traitements, demandes d’accès et contrats préparés. Votre référent valide et décide de ce qui part.",
+      "h1": "RGPD de l’expert-comptable : mises à jour du registre des traitements préparées pour votre référent.",
+      "canonical": "https://memlia.fr/agents-ia/protection-donnees",
+      "bytes": 98519,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/relation-client",
+      "indexable": true,
+      "title": "Relation client en cabinet comptable : réponses préparées | Memlia",
+      "description": "Relation client en cabinet comptable : demandes triées, reliées au dossier et réponses courantes préparées. Votre collaborateur valide et fait chaque envoi.",
+      "h1": "Relation client en cabinet comptable : réponses préparées, votre collaborateur valide et envoie.",
+      "canonical": "https://memlia.fr/agents-ia/relation-client",
+      "bytes": 95701,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia/rh-cabinet",
+      "indexable": true,
+      "title": "IA RH pour cabinet comptable : documents et formation | Memlia",
+      "description": "IA RH pour cabinet comptable : candidatures organisées, arrivées, formation et synthèses de rémunération préparées. Les décisions sur les personnes restent à vous.",
+      "h1": "IA RH pour cabinet comptable : les documents prêts, les décisions restent à vous.",
+      "canonical": "https://memlia.fr/agents-ia/rh-cabinet",
+      "bytes": 96008,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/agents-ia",
+      "indexable": true,
+      "title": "Agent IA comptable, métier par métier | Memlia",
+      "description": "Agent IA comptable, métier par métier : saisie, paie, juridique, RGPD. Chaque agent prépare et s’arrête dans le doute ; votre collaborateur valide ce qui part.",
+      "h1": "Des agents IA pour les métiers de votre cabinet comptable.",
+      "canonical": "https://memlia.fr/agents-ia",
+      "bytes": 92123,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "ItemList",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/apercu/direction-figurines",
+      "indexable": false,
+      "title": "Proposition de direction visuelle Memlia — figurines",
+      "description": "Deux recettes d’images et un pilote Méthode pour prolonger le design des agents IA et des robots sur les pages Memlia.",
+      "h1": "Les figurines racontent aussi notre manière de travailler.",
+      "canonical": "https://memlia.fr/apercu/direction-figurines",
+      "bytes": 63319,
+      "depth": null,
+      "inbound": 1,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/apercu/methode-figurines",
+      "indexable": false,
+      "title": "Pilote Méthode Memlia — direction figurines",
+      "description": "Proposition de refonte de la page Méthode dans la famille visuelle des agents IA et robots Memlia.",
+      "h1": "Observer. Écrire. Éprouver. Livrer.",
+      "canonical": "https://memlia.fr/apercu/methode-figurines",
+      "bytes": 74862,
+      "depth": null,
+      "inbound": 1,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/automatisation/annuaire-facturation-electronique",
+      "indexable": true,
+      "title": "Annuaire de facturation électronique : robot comptable | Memlia",
+      "description": "Annuaire de facturation électronique : informations disponibles par dossier, rattachement à une plateforme et activation accessible, avec les écarts à confirmer.",
+      "h1": "Robot annuaire de facturation électronique : suivez le rattachement de vos dossiers.",
+      "canonical": "https://memlia.fr/automatisation/annuaire-facturation-electronique",
+      "bytes": 97593,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/anonymisation-documents",
+      "indexable": true,
+      "title": "Anonymisation de documents : robot comptable | Memlia",
+      "description": "Anonymisation de documents : lots PDF, XLSX, DOCX et CSV préparés par masquage ou remplacement, copies contrôlées et exceptions signalées avant usage.",
+      "h1": "Robot anonymisation : préparez vos documents avant de les réutiliser.",
+      "canonical": "https://memlia.fr/automatisation/anonymisation-documents",
+      "bytes": 97098,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/attestation-fiscale",
+      "indexable": true,
+      "title": "Attestation de régularité fiscale : robot comptable | Memlia",
+      "description": "Attestation de régularité fiscale : demande ou récupération des documents disponibles, classement par dossier et suivi des pièces à reprendre ou renouveler.",
+      "h1": "Robot attestation fiscale : les pièces de régularité réunies pour vos dossiers.",
+      "canonical": "https://memlia.fr/automatisation/attestation-fiscale",
+      "bytes": 96392,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/attestation-sociale",
+      "indexable": true,
+      "title": "Attestations URSSAF : robot comptable | Memlia",
+      "description": "Attestations URSSAF : collecte des pièces disponibles, notamment de vigilance, classement et suivi des renouvellements selon les besoins du dossier.",
+      "h1": "Robot attestations URSSAF : vos pièces sociales prêtes pour la revue.",
+      "canonical": "https://memlia.fr/automatisation/attestation-sociale",
+      "bytes": 96400,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/beneficiaires-effectifs",
+      "indexable": true,
+      "title": "Bénéficiaires effectifs : robot comptable | Memlia",
+      "description": "Bénéficiaires effectifs : collecte sous les droits requis, comparaison avec le dossier, divergences et historique préparés pour la revue du cabinet.",
+      "h1": "Robot bénéficiaires effectifs : préparez la revue des données de vos dossiers.",
+      "canonical": "https://memlia.fr/automatisation/beneficiaires-effectifs",
+      "bytes": 96887,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/bulletins-controle",
+      "indexable": true,
+      "title": "Automatisation contrôle bulletins de paie cabinet comptable | Memlia",
+      "description": "Contrôles des bulletins de paie en cabinet : nous rapprochons variables et résultats, préparons les écarts ; vos gestionnaires corrigent et valident.",
+      "h1": "Automatisation contrôle bulletins de paie cabinet comptable : une file d’écarts à valider",
+      "canonical": "https://memlia.fr/automatisation/bulletins-controle",
+      "bytes": 97300,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/cfe",
+      "indexable": true,
+      "title": "Robot CFE : collecte des avis pour cabinet comptable | Memlia",
+      "description": "Robot CFE : avis d’acompte et de solde classés, montants et prélèvements consolidés, variations signalées. Votre campagne suivie dans vos outils.",
+      "h1": "Robot CFE : vos avis classés, votre campagne prête à suivre.",
+      "canonical": "https://memlia.fr/automatisation/cfe",
+      "bytes": 96794,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/circularisation-cac",
+      "indexable": true,
+      "title": "Automatiser la circularisation dans vos outils | Memlia",
+      "description": "Automatiser la circularisation : proposez les tiers selon votre règle et documentez les écarts. Le CAC valide la sélection. Confiez la mécanique.",
+      "h1": "Automatiser la circularisation : sélectionner les tiers et documenter les écarts",
+      "canonical": "https://memlia.fr/automatisation/circularisation-cac",
+      "bytes": 101640,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/collecte-ifi",
+      "indexable": true,
+      "title": "Collecte IFI : robot comptable | Memlia",
+      "description": "Collecte IFI : déclarations disponibles récupérées et classées par année, index de l’historique accessible et pièces manquantes signalées au cabinet.",
+      "h1": "Robot collecte IFI : l’historique des déclarations accessible au bon dossier.",
+      "canonical": "https://memlia.fr/automatisation/collecte-ifi",
+      "bytes": 95693,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/collecte-ir",
+      "indexable": true,
+      "title": "Collecte IR : robot comptable | Memlia",
+      "description": "Collecte IR : déclarations préremplies accessibles récupérées et données structurées par dossier, avec les étapes d’authentification et les manquants suivis.",
+      "h1": "Robot collecte IR : les déclarations préremplies réunies pour votre campagne.",
+      "canonical": "https://memlia.fr/automatisation/collecte-ir",
+      "bytes": 95878,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/dette-fiscale",
+      "indexable": true,
+      "title": "Suivi des dettes fiscales : robot comptable | Memlia",
+      "description": "Suivi des dettes fiscales : situation de paiement datée par société, impayés visibles et récapitulatif de portefeuille pour votre cabinet.",
+      "h1": "Robot dette fiscale : une situation de paiement à date pour vos dossiers.",
+      "canonical": "https://memlia.fr/automatisation/dette-fiscale",
+      "bytes": 95541,
+      "depth": 2,
+      "inbound": 10,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/entrees-sorties-salaries",
+      "indexable": true,
+      "title": "Automatisation entrées sorties salariés cabinet comptable | Memlia",
+      "description": "Embauche ou départ annoncé hors portail : informations réunies, champs de DPAE et de fiche salarié préparés à valider, sans doubler votre logiciel de paie.",
+      "h1": "Automatisation entrées sorties salariés en cabinet comptable : les annonces hors portail",
+      "canonical": "https://memlia.fr/automatisation/entrees-sorties-salaries",
+      "bytes": 97482,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/evaluation-transmission",
+      "indexable": true,
+      "title": "Dossier d’évaluation : automatisation en cabinet comptable | Memlia",
+      "description": "Confiez l’assemblage du dossier d’évaluation : pièces reliées aux chiffres, retraitements tracés et hypothèses visibles. Le cabinet garde valeur et conseil.",
+      "h1": "Automatisation du dossier d’évaluation d’entreprise en cabinet comptable",
+      "canonical": "https://memlia.fr/automatisation/evaluation-transmission",
+      "bytes": 96649,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/facture-electronique",
+      "indexable": true,
+      "title": "Automatisation flux facture électronique cabinet comptable | Memlia",
+      "description": "Clients sur une autre plateforme agréée : préparer les appels et les relances du cabinet, sans refaire le suivi déjà fourni par votre éditeur.",
+      "h1": "Automatisation des flux de facture électronique en cabinet comptable : appels hors outil",
+      "canonical": "https://memlia.fr/automatisation/facture-electronique",
+      "bytes": 99378,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/factures-fournisseurs",
+      "indexable": true,
+      "title": "Factures fournisseurs des dossiers clients | Memlia",
+      "description": "Factures fournisseurs des dossiers clients : règle écrite, doublons et avoirs isolés, propositions contrôlables, validation humaine.",
+      "h1": "Factures fournisseurs des dossiers clients : les exceptions restent visibles",
+      "canonical": "https://memlia.fr/automatisation/factures-fournisseurs",
+      "bytes": 91541,
+      "depth": 1,
+      "inbound": 7,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/fiches-dgfip-facturation-electronique",
+      "indexable": true,
+      "title": "Fiches DGFiP par dossier : robot comptable | Memlia",
+      "description": "Fiches DGFiP par dossier : caractéristiques rapprochées des cas de facturation électronique, liens officiels et points de revue pour le cabinet.",
+      "h1": "Robot fiches DGFiP : retrouvez les cas de facturation électronique à examiner.",
+      "canonical": "https://memlia.fr/automatisation/fiches-dgfip-facturation-electronique",
+      "bytes": 97260,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/habilitations-fiscales",
+      "indexable": true,
+      "title": "Habilitations fiscales : robot comptable | Memlia",
+      "description": "Habilitations fiscales : inventaire EDI et EFI, accès présents ou manquants et demandes à traiter par dossier. Préparez les droits avant la campagne.",
+      "h1": "Robot habilitations fiscales : les accès de votre portefeuille, en clair.",
+      "canonical": "https://memlia.fr/automatisation/habilitations-fiscales",
+      "bytes": 95564,
+      "depth": 2,
+      "inbound": 7,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/informations-legales-rne",
+      "indexable": true,
+      "title": "Informations légales et RNE : robot comptable | Memlia",
+      "description": "Robot RNE : identité, dirigeants, capital, actes et comptes accessibles collectés par société, exports structurés et changements documentés.",
+      "h1": "Robot RNE : les informations légales de vos dossiers réunies.",
+      "canonical": "https://memlia.fr/automatisation/informations-legales-rne",
+      "bytes": 97043,
+      "depth": 2,
+      "inbound": 7,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/mandats-plateforme-agreee",
+      "indexable": true,
+      "title": "Mandats de plateforme agréée : robot comptable | Memlia",
+      "description": "Mandats de plateforme agréée : données rapprochées et fichiers préparés, notamment pour jesignexpert.com. Choix, envoi et signature validés par le cabinet.",
+      "h1": "Robot mandats de plateforme agréée : vos fichiers préparés pour signature.",
+      "canonical": "https://memlia.fr/automatisation/mandats-plateforme-agreee",
+      "bytes": 97043,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/messagerie-fiscale",
+      "indexable": true,
+      "title": "Messagerie fiscale : robot comptable | Memlia",
+      "description": "Messagerie fiscale : messages impots.gouv.fr et pièces jointes classés par dossier, nouveautés identifiées et courriers à reprendre pour votre cabinet.",
+      "h1": "Robot messagerie fiscale : les courriers de vos dossiers remontent avec leurs pièces.",
+      "canonical": "https://memlia.fr/automatisation/messagerie-fiscale",
+      "bytes": 95886,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/notes-de-frais",
+      "indexable": true,
+      "title": "Notes de frais des clients en cabinet | Memlia",
+      "description": "Notes de frais des clients en cabinet : règle écrite, cas fictifs, exceptions visibles et validation conservée par vos équipes.",
+      "h1": "Notes de frais des clients en cabinet : la validation reste humaine",
+      "canonical": "https://memlia.fr/automatisation/notes-de-frais",
+      "bytes": 90095,
+      "depth": 1,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/paie",
+      "indexable": true,
+      "title": "Automatisation paie du pôle social | Memlia",
+      "description": "Automatisation paie pôle social : règle écrite, contrôles préparés, écarts visibles et décisions conservées par les gestionnaires.",
+      "h1": "Automatisation paie du pôle social : chaque contrôle reste à valider",
+      "canonical": "https://memlia.fr/automatisation/paie",
+      "bytes": 94686,
+      "depth": 1,
+      "inbound": 18,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/rapprochement-bancaire",
+      "indexable": true,
+      "title": "Rapprochement bancaire en cabinet | Memlia",
+      "description": "Confiez la préparation du rapprochement bancaire : règles d’appariement écrites, propositions traçables, écarts typés et validation humaine.",
+      "h1": "Rapprochement bancaire en cabinet : chaque écart reste à décider",
+      "canonical": "https://memlia.fr/automatisation/rapprochement-bancaire",
+      "bytes": 93728,
+      "depth": 1,
+      "inbound": 7,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/rattachement-fiscal",
+      "indexable": true,
+      "title": "Rattachement fiscal : robot comptable | Memlia",
+      "description": "Rattachement fiscal : lots de SIREN contrôlés, adhésions et substitutions préparées, traitement suivi avec validation avant les actions engageantes.",
+      "h1": "Robot rattachement fiscal : préparez les demandes de vos nouveaux dossiers.",
+      "canonical": "https://memlia.fr/automatisation/rattachement-fiscal",
+      "bytes": 95956,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/registres-obligations",
+      "indexable": true,
+      "title": "Automatisation suivi registres obligations cabinet comptable | Memlia",
+      "description": "RNE, BODACC, Sirene : fiche client actualisée, alerte à l’associé et délai de créance préparés. Le cabinet valide les changements et la date applicable.",
+      "h1": "Automatisation du suivi des registres et obligations en cabinet comptable",
+      "canonical": "https://memlia.fr/automatisation/registres-obligations",
+      "bytes": 98635,
+      "depth": 2,
+      "inbound": 6,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/saisie-comptable",
+      "indexable": true,
+      "title": "Saisie comptable en cabinet | Memlia",
+      "description": "Saisie comptable en cabinet : règle écrite, écritures proposées, anomalies nommées et validation humaine.",
+      "h1": "Saisie comptable en cabinet : chaque écriture reste à valider",
+      "canonical": "https://memlia.fr/automatisation/saisie-comptable",
+      "bytes": 95344,
+      "depth": 1,
+      "inbound": 12,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/secretariat-juridique",
+      "indexable": true,
+      "title": "Automatisation secrétariat juridique cabinet comptable | Memlia",
+      "description": "Suivez les échéances d’approbation et de dépôt encore hors de votre outil juridique. Nous préparons les rappels ; le cabinet valide, les habilités déposent.",
+      "h1": "Automatisation du secrétariat juridique en cabinet comptable : les échéances hors outil",
+      "canonical": "https://memlia.fr/automatisation/secretariat-juridique",
+      "bytes": 98248,
+      "depth": 2,
+      "inbound": 7,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/automatisation/situation-tva",
+      "indexable": true,
+      "title": "Situation TVA : robot comptable | Memlia",
+      "description": "Situation TVA : avis de situation et soldes disponibles collectés par dossier, synthèse de portefeuille et écarts présentés avec leurs sources.",
+      "h1": "Robot situation TVA : les avis et soldes disponibles de votre portefeuille.",
+      "canonical": "https://memlia.fr/automatisation/situation-tva",
+      "bytes": 96170,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/suivi-declarations-fiscales",
+      "indexable": true,
+      "title": "Suivi des déclarations fiscales : robot comptable | Memlia",
+      "description": "Suivi des déclarations fiscales : dépôts, attentes et anomalies par dossier, selon les obligations confirmées par votre cabinet. TVA, IS et liasses.",
+      "h1": "Robot de suivi fiscal : voyez les déclarations déposées et celles à reprendre.",
+      "canonical": "https://memlia.fr/automatisation/suivi-declarations-fiscales",
+      "bytes": 97121,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/suivi-urssaf",
+      "indexable": true,
+      "title": "Suivi URSSAF : robot comptable | Memlia",
+      "description": "Robot URSSAF : soldes, dettes, échéances, messages et pièces jointes consolidés par dossier. Les nouveautés et comptes à reprendre sont signalés.",
+      "h1": "Robot URSSAF : les comptes et les messages de vos dossiers, réunis.",
+      "canonical": "https://memlia.fr/automatisation/suivi-urssaf",
+      "bytes": 96725,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/tableaux-de-bord-fec",
+      "indexable": true,
+      "title": "Tableaux de bord à partir du FEC : robot comptable | Memlia",
+      "description": "Tableaux de bord à partir du FEC : données et restitutions Power BI préparées, commentaires à relire et scénarios aux hypothèses explicites.",
+      "h1": "Robot tableaux de bord FEC : préparez la restitution de gestion de vos clients.",
+      "canonical": "https://memlia.fr/automatisation/tableaux-de-bord-fec",
+      "bytes": 98774,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/taxes-foncieres",
+      "indexable": true,
+      "title": "Collecte des taxes foncières : robot comptable | Memlia",
+      "description": "Robot taxes foncières : avis accessibles classés par dossier et par année, montants consolidés et variations signalées pour votre revue.",
+      "h1": "Robot taxes foncières : vos avis réunis, classés et comparés.",
+      "canonical": "https://memlia.fr/automatisation/taxes-foncieres",
+      "bytes": 96291,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation/veille-bodacc",
+      "indexable": true,
+      "title": "Veille BODACC : robot comptable | Memlia",
+      "description": "Veille BODACC : annonces des clients et fournisseurs stratégiques rapprochées des SIREN, procédures collectives signalées et liens officiels conservés.",
+      "h1": "Robot BODACC : les nouvelles annonces de vos entreprises suivies, documentées.",
+      "canonical": "https://memlia.fr/automatisation/veille-bodacc",
+      "bytes": 96164,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/automatisation-cabinet-comptable",
+      "indexable": true,
+      "title": "Robots pour cabinet comptable : tâches prises en charge | Memlia",
+      "description": "Robots pour cabinet comptable : avis fiscaux, messageries, attestations et données collectés, classés et suivis dans vos outils. Une tâche prise en charge.",
+      "h1": "Des robots pour les tâches que votre cabinet refait encore à la main.",
+      "canonical": "https://memlia.fr/automatisation-cabinet-comptable",
+      "bytes": 117518,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "ItemList",
+        "BreadcrumbList",
+        "Organization"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "indexable": true,
+      "title": "Automatiser IA sans changer de logiciel : méthode | Memlia",
+      "description": "Automatiser avec l'IA sans changer de logiciel : reliez entrée, proposition, validation et suivi, puis testez les reprises sur un jeu fictif.",
+      "h1": "Automatiser avec l'IA sans changer de logiciel : écrire le passage entre les outils",
+      "canonical": "https://memlia.fr/blog/automatiser-avec-ia-sans-changer-logiciel",
+      "bytes": 98139,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-l-entree-en-relation-d-un-nouveau-client",
+      "indexable": true,
+      "title": "Onboarding client cabinet comptable : pièces et jalons | Memlia",
+      "description": "Onboarding client cabinet comptable : suivez les pièces, les jalons et la bonne version signée, avec une validation avant la passation.",
+      "h1": "Onboarding client en cabinet comptable : automatiser l'entrée en relation",
+      "canonical": "https://memlia.fr/blog/automatiser-l-entree-en-relation-d-un-nouveau-client",
+      "bytes": 100701,
+      "depth": 2,
+      "inbound": 21,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-la-relance-des-pieces-clients",
+      "indexable": true,
+      "title": "Relance des pièces manquantes en cabinet comptable | Memlia",
+      "description": "Relance pièces manquantes cabinet comptable : une checklist, quatre états et une cadence qui s’arrête à réception, après validation.",
+      "h1": "Automatiser la relance des pièces clients manquantes",
+      "canonical": "https://memlia.fr/blog/automatiser-la-relance-des-pieces-clients",
+      "bytes": 98227,
+      "depth": 2,
+      "inbound": 11,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "indexable": true,
+      "title": "Automatisation saisie comptable : les 6 contrôles | Memlia",
+      "description": "Automatisation saisie comptable : six contrôles à garder, une file d’anomalies et ce qui exige encore une validation humaine.",
+      "h1": "Automatiser la saisie comptable : ce qui reste à vérifier",
+      "canonical": "https://memlia.fr/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier",
+      "bytes": 106720,
+      "depth": 2,
+      "inbound": 6,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "indexable": true,
+      "title": "Automatisation cabinet audit : carte des tâches | Memlia",
+      "description": "Automatisation cabinet audit : choisir une tâche, écrire sa règle et préparer des sorties traçables sans déléguer le jugement du commissaire aux comptes.",
+      "h1": "Automatisation cabinet audit : la carte des tâches du CAC",
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-cac-la-carte-des-taches",
+      "bytes": 100970,
+      "depth": 2,
+      "inbound": 20,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "indexable": true,
+      "title": "Automatisation cabinet comptable : carte des tâches | Memlia",
+      "description": "Automatisation cabinet comptable : une carte pour choisir une tâche, écrire sa règle et fixer ce qui se prépare, se valide ou reste humain.",
+      "h1": "Automatiser un cabinet comptable : la carte des tâches",
+      "canonical": "https://memlia.fr/blog/automatiser-un-cabinet-comptable-la-carte-des-taches",
+      "bytes": 114261,
+      "depth": 2,
+      "inbound": 22,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "indexable": true,
+      "title": "Charge de travail en cabinet comptable : diagnostic | Memlia",
+      "description": "Charge de travail cabinet comptable : observer répétition, attente, exception et décision sans surveillance nominative ni promesse de gain.",
+      "h1": "Charge de travail en cabinet comptable : où passe le temps ?",
+      "canonical": "https://memlia.fr/blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps",
+      "bytes": 91289,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/cac-reception-fec-constat",
+      "indexable": true,
+      "title": "FEC contrôle : constat de réception CAC | Memlia",
+      "description": "FEC contrôle : identifier la version reçue, consigner les contrôles techniques et présenter les refus avant les travaux sur les écritures en mission CAC.",
+      "h1": "FEC contrôle : préparer le constat de réception pour la mission CAC",
+      "canonical": "https://memlia.fr/blog/cac-reception-fec-constat",
+      "bytes": 95626,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/commissariat-aux-comptes",
+      "indexable": true,
+      "title": "Commissariat aux comptes : méthodes du cabinet | Memlia",
+      "description": "Commissariat aux comptes : une carte des tâches à préparer et un exemple de réception du FEC, avec des règles écrites et des résultats à examiner.",
+      "h1": "Commissariat aux comptes : écrire la règle et examiner le résultat",
+      "canonical": "https://memlia.fr/blog/commissariat-aux-comptes",
+      "bytes": 63260,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "indexable": true,
+      "title": "CRM DSN : lire le compte rendu et ses anomalies | Memlia",
+      "description": "CRM DSN : comment identifier chaque retour, qualifier une anomalie et tracer sa correction sans confondre dépôt accepté et paie juste.",
+      "h1": "Comprendre les comptes rendus métier DSN : méthode de lecture",
+      "canonical": "https://memlia.fr/blog/comprendre-les-comptes-rendus-metier-dsn",
+      "bytes": 104390,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "indexable": true,
+      "title": "Contrôle bulletin de paie en cabinet : avant la DSN | Memlia",
+      "description": "Contrôle bulletin de paie : trois revues pour vérifier variables, bulletins et fichier DSN, traiter les écarts et garder les preuves.",
+      "h1": "Comment contrôler les bulletins de paie avant la DSN ?",
+      "canonical": "https://memlia.fr/blog/controler-les-bulletins-de-paie-avant-la-dsn",
+      "bytes": 105384,
+      "depth": 2,
+      "inbound": 10,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/ia-comptabilite-confidentialite-donnees",
+      "indexable": true,
+      "title": "IA comptabilité et confidentialité : les données | Memlia",
+      "description": "IA comptabilité et confidentialité : préparez un contexte fictif, classez les données et vérifiez les conditions de l’outil avant usage au cabinet.",
+      "h1": "IA en cabinet comptable : préparer les données sans perdre leur confidentialité",
+      "canonical": "https://memlia.fr/blog/ia-comptabilite-confidentialite-donnees",
+      "bytes": 96969,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "indexable": true,
+      "title": "Intelligence artificielle, métier comptable et compétences | Memlia",
+      "description": "Métier comptable intelligence artificielle compétences : distinguer préparation automatisée, validation et décision humaine sur des cas fictifs.",
+      "h1": "Intelligence artificielle et métier comptable : compétences humaines",
+      "canonical": "https://memlia.fr/blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain",
+      "bytes": 92183,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/logiciel-ia-comptabilite",
+      "indexable": true,
+      "title": "Logiciel IA comptabilité : grille de choix | Memlia",
+      "description": "Logiciel IA comptabilité : une grille pour comparer le traitement des pièces et des exceptions, sans confondre démonstration et résultat mesuré.",
+      "h1": "Logiciel IA pour la comptabilité : la grille de choix d'un cabinet",
+      "canonical": "https://memlia.fr/blog/logiciel-ia-comptabilite",
+      "bytes": 100057,
+      "depth": 2,
+      "inbound": 8,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "indexable": true,
+      "title": "Pourquoi un cabinet n’adopte pas un nouvel outil | Memlia",
+      "description": "Pourquoi les cabinets comptables n’adoptent pas les nouveaux outils : un échec réel et la règle de cadrage qui en est sortie.",
+      "h1": "Pourquoi un cabinet n’adopte pas un outil : la leçon de mon échec",
+      "canonical": "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils",
+      "bytes": 92172,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/prompt-chatgpt-expert-comptable",
+      "indexable": true,
+      "title": "Prompt ChatGPT expert comptable : demande de pièce | Memlia",
+      "description": "Prompt ChatGPT expert comptable : préparer une demande de pièce sur cas fictif, savoir quand s'arrêter et garder la validation humaine.",
+      "h1": "Prompt ChatGPT pour expert-comptable : partir d'une tâche, pas d'une formule magique",
+      "canonical": "https://memlia.fr/blog/prompt-chatgpt-expert-comptable",
+      "bytes": 94769,
+      "depth": 2,
+      "inbound": 10,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/rubrique/gestion-pieces-comptables",
+      "indexable": true,
+      "title": "Gestion des pièces comptables en cabinet | Memlia",
+      "description": "Gestion des pièces comptables : organiser les pièces manquantes puis vérifier les écritures proposées sous le contrôle du cabinet.",
+      "h1": "Gestion des pièces comptables : de la relance à la saisie vérifiée",
+      "canonical": "https://memlia.fr/blog/rubrique/gestion-pieces-comptables",
+      "bytes": 65886,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/rubrique/ia-cabinet-comptable",
+      "indexable": true,
+      "title": "IA en cabinet comptable | Memlia",
+      "description": "IA en cabinet comptable : choisir un premier usage, écrire la consigne, préparer les données sans perdre leur confidentialité et vérifier chaque réponse.",
+      "h1": "IA en cabinet comptable : choisir l’usage, protéger les données, vérifier la réponse",
+      "canonical": "https://memlia.fr/blog/rubrique/ia-cabinet-comptable",
+      "bytes": 78375,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/rubrique/paie-dsn-cabinet-comptable",
+      "indexable": true,
+      "title": "Paie et DSN en cabinet comptable | Memlia",
+      "description": "Paie et DSN en cabinet comptable : contrôler les bulletins, lire les retours DSN et suivre le pôle social avec la règle écrite du cabinet.",
+      "h1": "Paie et DSN en cabinet comptable : du bulletin au retour métier",
+      "canonical": "https://memlia.fr/blog/rubrique/paie-dsn-cabinet-comptable",
+      "bytes": 66065,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "CollectionPage",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/suivre-la-production-sociale-dans-excel",
+      "indexable": true,
+      "title": "Tableau de bord paie Excel : suivre sans surveiller | Memlia",
+      "description": "Tableau de bord paie Excel : les colonnes, états et règles d’une vue agrégée pour suivre les dossiers sans classer les collaborateurs.",
+      "h1": "Tableau de bord paie Excel en cabinet : suivre sans surveiller",
+      "canonical": "https://memlia.fr/blog/suivre-la-production-sociale-dans-excel",
+      "bytes": 101472,
+      "depth": 2,
+      "inbound": 7,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/tests-verts-et-regle-des-trois-passes",
+      "indexable": true,
+      "title": "Tests verts et défauts invisibles : trois passes | Memlia",
+      "description": "Pourquoi des tests verts peuvent manquer des défauts : deux angles morts, un test rouge à raison et trois passes pour relire le résultat avec le cabinet.",
+      "h1": "Pourquoi des tests verts manquent des défauts : la règle des trois passes",
+      "canonical": "https://memlia.fr/blog/tests-verts-et-regle-des-trois-passes",
+      "bytes": 86479,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/utiliser-chatgpt-cabinet-comptable",
+      "indexable": true,
+      "title": "Utiliser ChatGPT cabinet comptable : premier usage | Memlia",
+      "description": "Utiliser ChatGPT cabinet comptable : choisissez une tâche préparatoire, écrivez ses limites et testez un premier usage sur un dossier fictif.",
+      "h1": "Utiliser ChatGPT en cabinet comptable : choisir un premier usage utile",
+      "canonical": "https://memlia.fr/blog/utiliser-chatgpt-cabinet-comptable",
+      "bytes": 95752,
+      "depth": 2,
+      "inbound": 6,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog/verifier-reponse-ia-comptabilite",
+      "indexable": true,
+      "title": "Vérifier réponse IA comptabilité : checklist | Memlia",
+      "description": "Vérifier une réponse IA en comptabilité : retrouvez la source, contrôlez le contexte, repérez les ajouts et décidez quoi garder dans le brouillon.",
+      "h1": "Vérifier une réponse IA en comptabilité : une checklist avant utilisation",
+      "canonical": "https://memlia.fr/blog/verifier-reponse-ia-comptabilite",
+      "bytes": 98715,
+      "depth": 2,
+      "inbound": 7,
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/blog",
+      "indexable": true,
+      "title": "Blog Memlia : vérifier et automatiser le travail du cabinet",
+      "description": "Blog Memlia : des méthodes pour écrire le savoir-faire du cabinet, préparer les tâches répétitives et garder la décision humaine.",
+      "h1": "Ce qui se vérifie, ce qui s’automatise, ce qui se décide.",
+      "canonical": "https://memlia.fr/blog",
+      "bytes": 106895,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "Blog",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/commissaires-aux-comptes",
+      "indexable": true,
+      "title": "Automatisation pour commissaire aux comptes | Memlia",
+      "description": "Automatisation pour commissaire aux comptes : agents IA, pièces et rapprochements préparés. Déploiement adapté à vos mandats, maintenance et sur mesure.",
+      "h1": "Automatisation pour commissaire aux comptes : robots et agents IA.",
+      "canonical": "https://memlia.fr/commissaires-aux-comptes",
+      "bytes": 127150,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "Organization",
+        "WebPage",
+        "Service",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/contact/erreur",
+      "indexable": false,
+      "title": "Le message n’est pas parti | Memlia",
+      "description": "Un champ manque ou n’est pas valide. Retournez au formulaire, ou écrivez-nous par courriel.",
+      "h1": "Le message n’est pas parti.",
+      "canonical": "https://memlia.fr/contact/erreur",
+      "bytes": 52459,
+      "depth": null,
+      "inbound": 0,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/contact/merci",
+      "indexable": false,
+      "title": "Message envoyé | Memlia",
+      "description": "Votre message est bien arrivé. Nous vous répondons par courriel.",
+      "h1": "Message envoyé.",
+      "canonical": "https://memlia.fr/contact/merci",
+      "bytes": 51853,
+      "depth": null,
+      "inbound": 0,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/contact",
+      "indexable": true,
+      "title": "Confier une première tâche | Contact Memlia",
+      "description": "Choisissez un robot, parlez de l’agent IA recherché ou décrivez votre besoin sur mesure. Nous préparons le périmètre de déploiement et un devis adapté à votre cabinet.",
+      "h1": "Quel robot ou agent IA souhaitez-vous déployer ?",
+      "canonical": "https://memlia.fr/contact",
+      "bytes": 103978,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "ContactPage",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/garanties",
+      "indexable": true,
+      "title": "Ce que Memlia garantit | Garanties",
+      "description": "Déploiement des robots et agents IA Memlia : accès définis, résultats vérifiés, validations conservées et maintenance au devis. Vos engagements avant la mise en service.",
+      "h1": "Vos robots au travail. Vos décisions sous contrôle.",
+      "canonical": "https://memlia.fr/garanties",
+      "bytes": 96043,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/glossaire",
+      "indexable": true,
+      "title": "Glossaire des tâches et contrôles du cabinet | Memlia",
+      "description": "Glossaire comptable : des définitions directes, leur contexte d’usage et la limite entre préparation automatisable et décision professionnelle.",
+      "h1": "Glossaire des tâches et contrôles du cabinet.",
+      "canonical": "https://memlia.fr/glossaire",
+      "bytes": 560428,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "DefinedTermSet",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/",
+      "indexable": true,
+      "title": "Automatisation IA pour cabinets comptables | Memlia",
+      "description": "Robots comptables et agents IA Memlia : collecte fiscale, dossiers préparés et écarts à revoir. Déploiement dans vos outils, adaptation et maintenance. Sur mesure au besoin.",
+      "h1": "Robots et agents IA pour votre cabinet comptable.",
+      "canonical": "https://memlia.fr/",
+      "bytes": 113764,
+      "depth": 0,
+      "inbound": 117,
+      "schemas": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/integrations/bulletin-de-paie-sage",
+      "indexable": true,
+      "title": "Bulletin de paie Sage | Memlia",
+      "description": "Préparez le contrôle d’un bulletin Sage 100 Paie & RH : salarié, période, variables et rubriques, avec repère de version et validation humaine.",
+      "h1": "Bulletin de paie Sage : contrôler les changements avant validation",
+      "canonical": "https://memlia.fr/integrations/bulletin-de-paie-sage",
+      "bytes": 76076,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/bulletin-de-paie-silae",
+      "indexable": true,
+      "title": "Bulletin de paie Silae | Memlia",
+      "description": "Cadrez le contrôle d’un bulletin Silae depuis les éléments fixes, variables et cotisations, avant validation et distribution humaine.",
+      "h1": "Bulletin de paie Silae : contrôler les variables avant distribution",
+      "canonical": "https://memlia.fr/integrations/bulletin-de-paie-silae",
+      "bytes": 76000,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/cloture-ebp",
+      "indexable": true,
+      "title": "Clôture EBP : contrôles avant fermeture | Memlia",
+      "description": "Préparez les contrôles de clôture EBP Comptabilité : exercice, écritures validées et à-nouveaux, sans lancer la fermeture irréversible à la place du collaborateur.",
+      "h1": "Clôture EBP : préparer les contrôles avant de fermer l'exercice",
+      "canonical": "https://memlia.fr/integrations/cloture-ebp",
+      "bytes": 77357,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/cloture-sage",
+      "indexable": true,
+      "title": "Clôture Sage 100 | Memlia",
+      "description": "Structurez les contrôles de clôture Sage 100, les journaux et les à-nouveaux, tout en laissant la décision irréversible au cabinet.",
+      "h1": "Clôture Sage : préparer les contrôles, jamais le clic final",
+      "canonical": "https://memlia.fr/integrations/cloture-sage",
+      "bytes": 75183,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/dsn-sage",
+      "indexable": true,
+      "title": "DSN Sage | Memlia",
+      "description": "Cadrez les contrôles d’une DSN Sage 100 Paie & RH : reprise des contrats sociaux, référence et plage de transfert, avec validation humaine.",
+      "h1": "DSN Sage : préparer les contrôles, laisser la déclaration au gestionnaire",
+      "canonical": "https://memlia.fr/integrations/dsn-sage",
+      "bytes": 75517,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/dsn-silae",
+      "indexable": true,
+      "title": "DSN Silae | Memlia",
+      "description": "Cadrez les contrôles d’une DSN Silae depuis la période, les blocs et les comptes rendus métier, sans transmettre à la place du gestionnaire.",
+      "h1": "DSN Silae : traiter les contrôles avant la transmission",
+      "canonical": "https://memlia.fr/integrations/dsn-silae",
+      "bytes": 75613,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/export-fec-ebp",
+      "indexable": true,
+      "title": "Export FEC EBP : destination et périmètre | Memlia",
+      "description": "Préparez un export FEC EBP en distinguant comptable et administration fiscale, puis contrôlez exercice, période, régime, codage et pièces jointes avant validation.",
+      "h1": "Export FEC EBP : choisir le bon export et contrôler son périmètre",
+      "canonical": "https://memlia.fr/integrations/export-fec-ebp",
+      "bytes": 77379,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/lettrage-cegid",
+      "indexable": true,
+      "title": "Lettrage Cegid | Memlia",
+      "description": "Cadrez un lettrage Cegid avec compte lettrable, code de lettrage, équilibre du paquet et validation humaine des écarts.",
+      "h1": "Lettrage Cegid : équilibrer le paquet sur le bon compte",
+      "canonical": "https://memlia.fr/integrations/lettrage-cegid",
+      "bytes": 76367,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/lettrage-ebp",
+      "indexable": true,
+      "title": "Lettrage EBP : contrôler les paires | Memlia",
+      "description": "Contrôlez les paires de lettrage EBP : compte, pièces, montants et sens. Distinguez l’assistant natif, la proposition préparée et les exceptions à valider.",
+      "h1": "Lettrage EBP : contrôler les paires avant de les valider",
+      "canonical": "https://memlia.fr/integrations/lettrage-ebp",
+      "bytes": 76950,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/lettrage-sage",
+      "indexable": true,
+      "title": "Lettrage Sage | Memlia",
+      "description": "Cadrez le lettrage Sage 100 depuis les journaux ou les comptes tiers, avec règle d’équilibre, proposition traçable et arrêt sur écart.",
+      "h1": "Lettrage Sage : proposer les paires sans masquer l’écart",
+      "canonical": "https://memlia.fr/integrations/lettrage-sage",
+      "bytes": 76023,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/rapprochement-bancaire-sage",
+      "indexable": true,
+      "title": "Rapprochement bancaire Sage | Memlia",
+      "description": "Cadrez un rapprochement bancaire Sage 100 sur les écritures réellement visibles, avec proposition, contrôle des écarts et validation humaine.",
+      "h1": "Rapprochement bancaire Sage : écrire la règle avant le pointage",
+      "canonical": "https://memlia.fr/integrations/rapprochement-bancaire-sage",
+      "bytes": 76469,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations/saisie-comptable-sage",
+      "indexable": true,
+      "title": "Saisie comptable Sage | Memlia",
+      "description": "Cadrez une préparation de saisie Sage 100 par lot avec champs obligatoires, contrôle d’équilibre et validation avant intégration.",
+      "h1": "Saisie comptable Sage : préparer un lot sans perdre le contexte",
+      "canonical": "https://memlia.fr/integrations/saisie-comptable-sage",
+      "bytes": 75927,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "TechArticle",
+        "WebPage",
+        "Person",
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/integrations",
+      "indexable": true,
+      "title": "Intégration des logiciels de cabinet comptable | Memlia",
+      "description": "Intégration des logiciels de votre cabinet comptable : production, paie, banque, GED, juridique. Robots et agents IA préparent dans vos outils ; votre équipe valide.",
+      "h1": "Intégration des logiciels de votre cabinet comptable.",
+      "canonical": "https://memlia.fr/integrations",
+      "bytes": 414157,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "ItemList",
+        "Organization",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/mentions-legales",
+      "indexable": false,
+      "title": "Mentions légales — Memlia",
+      "description": "Mentions légales du site memlia.fr.",
+      "h1": "Mentions légales",
+      "canonical": "https://memlia.fr/mentions-legales",
+      "bytes": 54431,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage"
+      ]
+    },
+    {
+      "route": "/methode",
+      "indexable": true,
+      "title": "Comment se déroule une mission Memlia | Méthode",
+      "description": "Observer le geste réel, écrire la règle, éprouver sur des cas fictifs et livrer après votre recette. Une tâche prise en charge et maintenue dans vos outils.",
+      "h1": "Observer. Écrire. Éprouver. Livrer.",
+      "canonical": "https://memlia.fr/methode",
+      "bytes": 100869,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage",
+        "BreadcrumbList",
+        "Person",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/assistant-lettrage-comptable-local",
+      "indexable": true,
+      "title": "Assistant de lettrage comptable local | Memlia",
+      "description": "Préparez le lettrage d’un export CSV : paires expliquées, ambiguïtés et lignes restantes. Vous validez ; le fichier original reste inchangé.",
+      "h1": "Assistant de lettrage comptable local",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/assistant-lettrage-comptable-local",
+      "bytes": 84587,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/bareme-heures-cac",
+      "indexable": true,
+      "title": "Barème heures commissaire aux comptes | Memlia",
+      "description": "Calculez la base et la tranche du barème d’heures CAC, vérifiez les exclusions et exportez les hypothèses. Distinguez barème et budget de mission.",
+      "h1": "Barème d’heures du commissaire aux comptes : calcul et limites",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/bareme-heures-cac",
+      "bytes": 93381,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "indexable": true,
+      "title": "Bibliothèque de prompts comptables | Memlia",
+      "description": "Choisissez un modèle de prompt comptable par tâche, consultez son exemple fictif, puis copiez-le ou adaptez-le sans inscription.",
+      "h1": "Bibliothèque de prompts comptables",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/bibliotheque-prompts-comptables",
+      "bytes": 144529,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/calculateur-amortissement-comptable",
+      "indexable": true,
+      "title": "Calculateur d’amortissement comptable | Memlia",
+      "description": "Calculez un plan d’amortissement linéaire comptable depuis la mise en service ou dégressif fiscal depuis l’acquisition, avec prorata et trace des dotations.",
+      "h1": "Calculateur d’amortissement comptable",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/calculateur-amortissement-comptable",
+      "bytes": 84098,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "indexable": true,
+      "title": "Calculateur de date d’échéance de facture | Memlia",
+      "description": "Calculez une date d’échéance selon l’un des délais généraux documentés, avec le point de départ, la convention et chaque étape visibles.",
+      "h1": "Calculateur de date d’échéance de facture",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/calculateur-date-echeance-facture",
+      "bytes": 77704,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "indexable": true,
+      "title": "Calculateur de marge commerciale | Memlia",
+      "description": "Calculez une marge commerciale, un taux de marge et un taux de marque à partir de deux montants HT, avec les formules et les arrondis visibles.",
+      "h1": "Calculateur de marge commerciale",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/calculateur-marge-commerciale",
+      "bytes": 76774,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/calculateur-roi-automatisation",
+      "indexable": true,
+      "title": "Calculateur de ROI d’automatisation comptable | Memlia",
+      "description": "Comparez des scénarios d’automatisation avec vos volumes, temps, coûts et hypothèses, en séparant capacité libérée et économies de trésorerie.",
+      "h1": "Calculateur de ROI d’automatisation comptable",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/calculateur-roi-automatisation",
+      "bytes": 88224,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/checklist-pieces-comptables",
+      "indexable": true,
+      "title": "Checklist des pièces comptables à demander | Memlia",
+      "description": "Préparez une checklist personnalisable, suivez les pièces reçues et générez la demande des seuls documents manquants, sans inscription.",
+      "h1": "Checklist des pièces comptables à demander",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/checklist-pieces-comptables",
+      "bytes": 82880,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/comparateur-balances-comptables",
+      "indexable": true,
+      "title": "Comparateur de balances comptables N et N−1 | Memlia",
+      "description": "Comparez deux balances CSV, retrouvez les comptes nouveaux et les variations avec conventions visibles et rapport exportable. Calcul local.",
+      "h1": "Comparateur de balances comptables N et N−1",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/comparateur-balances-comptables",
+      "bytes": 169783,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "indexable": true,
+      "title": "Diagnostic de maturité IA du cabinet | Memlia",
+      "description": "Situez les pratiques IA de votre cabinet et choisissez une prochaine action à partir de vos réponses, sans inscription ni classement des équipes.",
+      "h1": "Diagnostic de maturité IA du cabinet",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet",
+      "bytes": 87027,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/fusionner-fichiers-csv",
+      "indexable": true,
+      "title": "Fusionner des fichiers CSV gratuitement | Memlia",
+      "description": "Fusionnez vos exports CSV localement avec correspondance des colonnes, origine des lignes et fichier consolidé téléchargeable, sans inscription.",
+      "h1": "Fusionner des fichiers CSV gratuitement",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/fusionner-fichiers-csv",
+      "bytes": 82771,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+      "indexable": true,
+      "title": "Générateur de charte IA du cabinet | Memlia",
+      "description": "Préparez une trame de charte IA adaptée aux usages du cabinet, avec responsabilités, données autorisées et validation humaine.",
+      "h1": "Générateur de charte IA du cabinet",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/generateur-charte-ia-cabinet",
+      "bytes": 84531,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "indexable": true,
+      "title": "Générateur de prompt pour expert-comptable | Memlia",
+      "description": "Décrivez une tâche abstraite du cabinet et préparez un prompt structuré, avec validation humaine, conditions d’arrêt et exemples fictifs.",
+      "h1": "Générateur de prompt pour expert-comptable",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-expert-comptable",
+      "bytes": 84773,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+      "indexable": true,
+      "title": "Générateur de prompt IA gratuit | Memlia",
+      "description": "Préparez un prompt texte pour rédiger, résumer ou classer, avec contexte, format de sortie, contraintes et critères de validation.",
+      "h1": "Générateur de prompt IA gratuit",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/generateur-prompt-ia-gratuit",
+      "bytes": 82434,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/generateur-relance-facture-impayee",
+      "indexable": true,
+      "title": "Générateur de relance de facture impayée | Memlia",
+      "description": "Préparez une relance amiable depuis vos factures, paiements et avoirs, avec messages éditables et cas à examiner. Tout reste dans votre navigateur.",
+      "h1": "Générateur de relance de facture impayée",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/generateur-relance-facture-impayee",
+      "bytes": 87559,
+      "depth": 2,
+      "inbound": 2,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+      "indexable": true,
+      "title": "Modèle de rapprochement bancaire Excel gratuit | Memlia",
+      "description": "Modèle de rapprochement bancaire Excel gratuit : téléchargez le .xlsx sans compte, avec exemple fictif, feuille à remplir, formules et écarts visibles.",
+      "h1": "Modèle de rapprochement bancaire Excel gratuit",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit",
+      "bytes": 78696,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "indexable": true,
+      "title": "Préparer et pseudonymiser un fichier comptable avant IA | Memlia",
+      "description": "Supprimez ou remplacez des colonnes d’un fichier CSV ou FEC local et examinez les risques restants avant tout partage avec une IA.",
+      "h1": "Préparer et pseudonymiser un fichier comptable avant IA",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec",
+      "bytes": 82402,
+      "depth": 2,
+      "inbound": 5,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/seuil-signification-audit",
+      "indexable": true,
+      "title": "Seuil de signification audit : calcul motivé | Memlia",
+      "description": "Calculez les seuils de signification et de planification avec vos propres paramètres. Comparez les scénarios et exportez leur justification.",
+      "h1": "Seuil de signification en audit : calcul et justification",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/seuil-signification-audit",
+      "bytes": 86886,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/suivi-circularisation",
+      "indexable": true,
+      "title": "Suivi de circularisation : lettres et retours | Memlia",
+      "description": "Préparez vos lettres de confirmation, suivez les retours et rapprochez les écarts localement. Exportez le tableau de suivi pour votre dossier.",
+      "h1": "Modèle de suivi de circularisation Excel : lettres et retours",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/suivi-circularisation",
+      "bytes": 95184,
+      "depth": 2,
+      "inbound": 4,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/temoin-calcul-local",
+      "indexable": false,
+      "title": "Témoin de calcul local | Memlia",
+      "description": "Témoin de calcul local : une addition fictive démontre le calcul, la copie et le téléchargement sans envoi ni conservation des valeurs.",
+      "h1": "Témoin de calcul local",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/temoin-calcul-local",
+      "bytes": 73141,
+      "depth": null,
+      "inbound": 0,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/verificateur-fec-local",
+      "indexable": true,
+      "title": "Vérificateur FEC gratuit et local | Memlia",
+      "description": "Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.",
+      "h1": "Vérificateur FEC gratuit et local",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/verificateur-fec-local",
+      "bytes": 79287,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits/verificateur-prompt-ia",
+      "indexable": true,
+      "title": "Vérificateur de prompt IA | Memlia",
+      "description": "Repérez les contraintes absentes d’un prompt IA et préparez des corrections expliquées, sans confondre structure et fiabilité des réponses.",
+      "h1": "Vérificateur de prompt IA",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits/verificateur-prompt-ia",
+      "bytes": 80072,
+      "depth": 2,
+      "inbound": 3,
+      "schemas": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/outils-comptables-gratuits",
+      "indexable": true,
+      "title": "Outils comptables gratuits : calculer, vérifier et préparer | Memlia",
+      "description": "Des outils gratuits pour calculer, contrôler ou préparer une tâche comptable. Chaque outil montre sa règle, sa source et ses limites, sans inscription.",
+      "h1": "Outils comptables gratuits : calculer, vérifier et préparer",
+      "canonical": "https://memlia.fr/outils-comptables-gratuits",
+      "bytes": 84055,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "CollectionPage",
+        "ItemList",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "route": "/politique-de-confidentialite",
+      "indexable": false,
+      "title": "Politique de confidentialité — Memlia",
+      "description": "Politique de confidentialité du site memlia.fr : données traitées, finalités, cookies, droits RGPD.",
+      "h1": "Politique de confidentialité",
+      "canonical": "https://memlia.fr/politique-de-confidentialite",
+      "bytes": 59243,
+      "depth": 1,
+      "inbound": 117,
+      "schemas": [
+        "WebPage"
+      ]
+    }
+  ],
+  "discovery": {
+    "robots.txt": {
+      "bytes": 3024
+    },
+    "llms.txt": {
+      "bytes": 38958
+    },
+    "llms-full.txt": {
+      "bytes": 1323399
+    },
+    "blog/rss.xml": {
+      "bytes": 13675
+    }
+  },
+  "largestImages": [
+    {
+      "src": "/proofs/integrations/lettrage-ebp.webp",
+      "bytes": 89778,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/44-outil-relance-facture.webp",
+      "bytes": 84150,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/integrations/export-fec-ebp.webp",
+      "bytes": 76326,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/01-outil-prompt-ia.webp",
+      "bytes": 71572,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/44-service-entrees-sorties-salaries.webp",
+      "bytes": 67542,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/01-outil-charte-ia.webp",
+      "bytes": 66428,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/30-outil-roi.webp",
+      "bytes": 62356,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/46-service-secretariat-juridique.webp",
+      "bytes": 60858,
+      "format": ".webp"
+    },
+    {
+      "src": "/sources-officielles/bodacc.svg",
+      "bytes": 55812,
+      "format": ".svg"
+    },
+    {
+      "src": "/proofs/v2/30-outil-maturite.webp",
+      "bytes": 55286,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/integrations/cloture-ebp.webp",
+      "bytes": 54690,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/44-service-registres-obligations.webp",
+      "bytes": 54466,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/responsive/integrations/lettrage-ebp-e41a78a096111493-1200.webp",
+      "bytes": 52818,
+      "format": ".webp"
+    },
+    {
+      "src": "/images/img-art-carte-des-taches-1600.webp",
+      "bytes": 50686,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/31-outil-bibliotheque.webp",
+      "bytes": 49858,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/responsive/v2/44-outil-relance-facture-76bf8ee81c8bcaac-1200.webp",
+      "bytes": 49368,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/31-outil-verificateur-prompt.webp",
+      "bytes": 48188,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/v2/46-outil-lettrage.webp",
+      "bytes": 47366,
+      "format": ".webp"
+    },
+    {
+      "src": "/images/img-art-cac-carte-taches-1600.webp",
+      "bytes": 47122,
+      "format": ".webp"
+    },
+    {
+      "src": "/proofs/responsive/integrations/export-fec-ebp-461755d287d728b5-1200.webp",
+      "bytes": 45372,
+      "format": ".webp"
+    }
+  ],
+  "findings": []
+}

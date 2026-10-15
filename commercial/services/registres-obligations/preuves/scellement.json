@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-depublication-scellee",
   "slug": "registres-obligations",
-  "sealedAt": "2026-10-07T08:24:35.340Z",
+  "sealedAt": "2026-10-15T14:28:20.683Z",
   "files": {
     "page": {
       "path": "src/content/services/registres-obligations.md",
-      "bytes": 12688,
-      "sha256": "b5707ca465877628614deeb9c52e9b5c18a1deffbf54326f1fa46182c47c0630"
+      "bytes": 12691,
+      "sha256": "7293096510e8f49dac929b17d7a595ea6364c339a751390cf49d400b592fe822"
     },
     "manifest": {
       "path": "commercial/services/registres-obligations/manifest.json",
-      "bytes": 2666,
-      "sha256": "ab795eb2fedd41bb58962e4a24553d1736701da289c274c460bdb803b29db2f6"
+      "bytes": 2669,
+      "sha256": "a6fd0ef3cd0fa730c891f6d94259b97103197dedbde1f52b68ccaa5015bd9a44"
     },
     "recipe": {
       "path": "commercial/recettes/registres-obligations/recette.json",
@@ -29,10 +29,10 @@
       "bytes": 5206,
       "sha256": "7a064392e915189ce8d5dd7af350b417e22cb1f398b080bd12e2ee3f23ba45de"
     },
-    "publication": {
-      "path": "commercial/services/registres-obligations/preuves/publication.json",
-      "bytes": 1403,
-      "sha256": "eda99b1e5351fdca234a6b1ab76a1ef0464f34a46b453900eb222507ed40526e"
+    "depublication": {
+      "path": "commercial/services/registres-obligations/preuves/depublication.json",
+      "bytes": 566,
+      "sha256": "cf068604d0587034b0eb787684f6ea33f7f42bda241b3c8365589693f77235ce"
     }
   }
 }

@@ -44,7 +44,8 @@ async function avecHtmlRewriter(corps) {
 test('une Function par route : le hub et exactement les fiches des données, un fichier explicite chacune', () => {
   assert.ok(existsSync(fichierFonction('/agents-ia')), 'functions/agents-ia.js (le hub)');
   const slugs = FICHES.map((fiche) => fiche.slug).sort();
-  assert.equal(slugs.length, 9, 'neuf fiches dans les données');
+  assert.equal(slugs.length, 10, 'dix fiches dans les données, dont Salomé');
+  assert.ok(slugs.includes('paie-social'), 'Salomé possède une route et une Function propres');
   const fichiers = readdirSync('functions/agents-ia', { withFileTypes: true });
   assert.deepEqual(fichiers.filter((f) => !f.isFile()).map((f) => f.name), [], 'aucun sous-dossier');
   assert.deepEqual(fichiers.map((f) => f.name).sort(), slugs.map((slug) => `${slug}.js`), 'les Functions sont exactement les slugs de FICHES : ni manque, ni surplus, ni [slug].js');

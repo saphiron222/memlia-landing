@@ -1,52 +1,10 @@
 import type { Specialiste } from '../specialistes.ts';
 
 /*
- * Les trois agents dont la carte mène à une page existante (spec §0 et §3) : aucune fiche, aucun contenu de fiche.
- * Leur démonstration passe le même contrôle de forme que celle des neuf fiches (arbitrage 4 de la porte 2). Ils sont
+ * Les deux agents dont la carte mène à une page existante (spec §0 et §3) : aucune fiche, aucun contenu de fiche.
+ * Leur démonstration passe le même contrôle de forme que celle des dix fiches (arbitrage 4 de la porte 2). Ils sont
  * `publie: true` : leur page de destination est déjà construite (R19 du 15/10/2026).
  */
-
-/**
- * Salomé · Paie et social (AGENTS-CONTENU.md §2). Sa carte mène à /automatisation/paie, qui reçoit le bandeau « Qui
- * prend ce métier » sans changer sa requête ni son rejeu publié : la démonstration reste dans les données pour le
- * jour où une fiche s'ouvre (AGENTS-CONTENU §15, arbitrages).
- */
-export const PAIE_SOCIAL: Specialiste = {
-  slug: 'paie-social',
-  prenom: 'Salomé',
-  libelle: 'Paie et social',
-  groupe: 'production-conseil',
-  teinte: 'paie-social',
-  publie: true,
-  destination: { type: 'page', chemin: '/automatisation/paie' },
-  ligne: 'Prépare la paie de vos dossiers, des variables reçues aux retours DSN ; votre gestionnaire valide et dépose.',
-  frontiereEnBref: [
-    'Comparer au mois précédent et à la règle du dossier',
-    'Chaque écart de bulletin',
-    'Le dépôt de la DSN et de la DPAE',
-  ],
-  familles: [
-    'variables-de-paie', 'bulletins-controle', 'dsn-crm', 'entrees-sorties-salaries', 'absences-ijss',
-    'charges-sociales-echeances', 'ecritures-de-paie', 'diffusion-documents-paie', 'suivi-production-sociale',
-  ],
-  servicesLies: ['paie', 'bulletins-controle', 'entrees-sorties-salaries'],
-  logiciels: [
-    'Silae', 'Payfit', 'Sage 100 Paie & RH', 'Sage Paie', 'Cegid Quadra Paie', 'Cegid Payroll Ultimate', 'ACD PAIE',
-    'Microsoft Excel', 'Microsoft Outlook', 'Gmail',
-  ],
-  avatar: { src: '/agents/paie-social-256.webp', alt: 'Figurine Memlia, agent IA paie social.' },
-  demonstration: {
-    tache: 'collecte des variables',
-    dossier: 'Dossier fictif : la Pâtisserie Mésange, SARL inventée, douze salariés fictifs, paie versée le dernier jour du mois, variables d’octobre 2026.',
-    regle: 'Une variable reçue est reprise quand le salarié figure dans la paie du mois et que l’écart au mois précédent reste dans le seuil écrit du dossier. Un salarié absent de la paie, une variable attendue qui manque ou deux sources qui se contredisent arrêtent la reprise et placent le cas devant le gestionnaire.',
-    cas: [
-      { cas: 'Heures supplémentaires d’une vendeuse, dans le seuil du dossier', sortie: 'Variable reprise, courriel du client en lien', issue: 'Préparé' },
-      { cas: 'Prime exceptionnelle d’un pâtissier, trois fois sa prime habituelle', sortie: 'Écart au mois précédent présenté avec le seuil écrit', issue: 'À valider' },
-      { cas: 'Arrêt de travail annoncé par téléphone, sans dates dans le courriel', sortie: 'Absence notée « à confirmer », dates réclamées dans un brouillon au client', issue: 'À valider' },
-      { cas: 'Heures transmises pour un apprenti absent de la paie, aucune entrée déclarée', sortie: 'Reprise refusée. Motif : salarié inconnu de la paie du mois', issue: 'Arrêt' },
-    ],
-  },
-};
 
 /**
  * Aude · Missions d’audit (AGENTS-CONTENU.md §5). Sa carte mène à l'accueil CAC, auquel aucun bloc n'est ajouté
@@ -73,7 +31,7 @@ export const MISSIONS_AUDIT: Specialiste = {
     'cac-planification-missions', 'cac-heures-realisees', 'cac-acceptation-mandats', 'cac-attestations-chiffres',
     'audit-legal',
   ],
-  servicesLies: ['circularisation-cac'],
+  servicesLies: [],
   logiciels: [
     'Caseware Audit France', 'Acropole Expert CAC', 'Auditsoft Premier', 'PackAUDIT', 'SmartFEC+', 'DreamAudit',
     'e-Circu', 'Circit', 'Microsoft Excel',

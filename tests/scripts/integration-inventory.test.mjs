@@ -1,13 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 
 import { integrationInventory, assertIntegrationCoverage, assertScope } from './integration-inventory.mjs';
 import { loadIntegrationFixture } from './integration-fixture.mjs';
 
-const { INTEGRATIONS, INTEGRATION_CANDIDATES } = await loadIntegrationFixture();
+const { INTEGRATIONS, INTEGRATION_CANDIDATES, INTEGRATIONS_INDEXABLES } = await loadIntegrationFixture();
 const extra = { ...structuredClone(INTEGRATIONS[0]), slug: 'guide-fictif-nouveau', vendor: 'Éditeur fictif', task: 'geste fictif', primaryQuery: 'geste fictif nouveau', source: { ...INTEGRATIONS[0].source, checkedAt: '2026-11-12' } };
 const candidate = { task: extra.task, vendor: extra.vendor, suggestions: extra.suggestions, status: 'forte' };
+
+test('les douze définitions restent archivées et chacune possède une migration ; aucune ne construit de guide', () => {
+  assert.equal(INTEGRATIONS.length, 12, 'les neuf guides historiques et les trois guides scellés restent archivés');
+  assert.deepEqual(INTEGRATIONS_INDEXABLES, [], 'les archives ne construisent plus de routes publiques');
+  const migration = JSON.parse(readFileSync('config/migration-catalogues.json', 'utf8'));
+  const routes = migration.routes.filter(row => row.type === 'guide');
+  assert.equal(routes.length, 12);
+  assertIntegrationCoverage(routes.map(row => row.from), INTEGRATIONS.map(guide => `/integrations/${guide.slug}`));
+  for (const guide of INTEGRATIONS) {
+    const row = routes.find(row => row.from === `/integrations/${guide.slug}`);
+    assert.equal(row.archive.definitionSha256, createHash('sha256').update(JSON.stringify(guide)).digest('hex'), `${guide.slug} : archive inchangée`);
+    assert.match(row.to, /^\/integrations#[a-z0-9-]+$/u, `${guide.slug} : environnement final précis`);
+  }
+});
 
 test('une collection générée non vide raccorde chaque mesure source aux routes et mappings', async () => {
   const generatedGuides = [extra, { ...extra, slug: 'autre-guide-fictif', task: 'autre geste fictif', suggestions: 6 }];

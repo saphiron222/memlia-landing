@@ -23,7 +23,7 @@ export const FINANCE: Specialiste = {
     'situations-reporting-client', 'tresorerie-previsionnelle', 'previsionnel-business-plan', 'financement-aides',
     'remuneration-dirigeant', 'evaluation-transmission',
   ],
-  servicesLies: ['evaluation-transmission'],
+  servicesLies: [],
   logiciels: [
     'Microsoft Excel', 'RCA Évaluation', 'Qonto', 'Pennylane', 'Cegid Loop', 'ACD COMPTA', 'Sage 100 Comptabilité',
     'EBP Comptabilité', 'MyU',

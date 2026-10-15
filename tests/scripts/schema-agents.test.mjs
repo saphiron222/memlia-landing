@@ -14,8 +14,8 @@ import { PAGES_V2 } from '../../src/data/pages-v2.mjs';
  *    qui lèverait pour une autre cause ne prouverait rien.
  *  - les constructeurs : le garde se propage s'il est appelé par chacun. Les dates ne sont validées QUE par `assertGraph` : une
  *    date mal formée qui fait lever `hubGraph`, `ficheGraph` ou `outilsGraph` prouve l'appel.
- *  - les neuf fiches n'ont pas encore de contenu (tâches 6 et 9) : `ficheGraph` se joue sur une fiche de fixture qui ne porte
- *    que les champs qu'elle lit. `connecteurs.ts` n'existe pas (tâche 8) : `outilsGraph` se joue sur des connecteurs de fixture.
+ *  - les constructeurs se jouent aussi sur des fixtures explicites indépendantes de l’état du catalogue : fiches,
+ *    connecteurs et anciens liens de service. Les données réelles sont vérifiées séparément.
  *  - le rendu réel (`dist`) relève de `schema-render.test.mjs` et des tâches 4, 6 et 8.
  */
 
@@ -659,10 +659,11 @@ test('hubGraph : ItemList à douze éléments, un par agent, dans l’ordre, ver
     assert.equal(element.description, agent.ligne);
   });
   const destinations = liste.itemListElement.map((e) => e.url.replace(SITE.url, ''));
-  for (const chemin of ['/automatisation/paie', '/commissaires-aux-comptes', '/integrations']) {
+  for (const chemin of ['/agents-ia/paie-social', '/commissaires-aux-comptes', '/integrations']) {
     assert.equal(destinations.filter((d) => d === chemin).length, 1, `${chemin} apparaît une fois`);
   }
-  assert.equal(destinations.filter((d) => d.startsWith('/agents-ia/')).length, 9, 'neuf fiches');
+  assert.equal(destinations.filter((d) => d.startsWith('/agents-ia/')).length, 10, 'dix fiches');
+  assert.ok(!destinations.some((d) => d.startsWith('/automatisation/')), 'aucune ancienne page par pôle dans le catalogue');
 });
 
 test('hubGraph : numberOfItems suit le tableau reçu, jamais un 12 en dur', async () => {
@@ -786,8 +787,8 @@ test('ficheGraph : chaque @id référencé par la page est défini dans le graph
 test('ficheGraph : isRelatedTo renvoie aux pages service liées, et manque quand il n’y en a pas', async () => {
   const { ficheGraph } = await agents();
   const { AGENTS } = await donnees();
-  const comptabilite = AGENTS.find((a) => a.slug === 'comptabilite');
-  assert.ok(comptabilite.servicesLies.length > 0);
+  // Le catalogue courant ne lie plus les anciens services. Une fixture explicite conserve le contrat du constructeur.
+  const comptabilite = { ...AGENTS.find((a) => a.slug === 'comptabilite'), servicesLies: ['saisie-comptable', 'notes-de-frais'] };
   const lies = unique(ficheGraph(avecFiche(comptabilite)), 'Service').isRelatedTo;
   assert.deepEqual(lies, comptabilite.servicesLies.map((slug) => ({ '@id': `${SITE.url}/automatisation/${slug}#service` })));
 
@@ -796,7 +797,7 @@ test('ficheGraph : isRelatedTo renvoie aux pages service liées, et manque quand
   assert.ok(!('isRelatedTo' in unique(ficheGraph(avecFiche(sansService)), 'Service')));
 });
 
-test('ficheGraph : les neuf fiches, un Service chacune, le prénom une seule fois (alternateName)', async () => {
+test('ficheGraph : les dix fiches, un Service chacune, le prénom une seule fois (alternateName)', async () => {
   const { ficheGraph } = await agents();
   const { FICHES, AGENTS } = await donnees();
   // Ce que FICHES est (les agents dont la carte mène à une fiche), pas combien il y en a aujourd'hui (revue de la tâche 3).
@@ -846,7 +847,7 @@ test('ficheGraph : lève pour un agent sans fiche écrite, pour une carte qui m�
   const comptabilite = AGENTS.find((a) => a.slug === 'comptabilite');
   // Fixture : une fiche retirée, quel que soit l'état des données (Comptabilité est écrite depuis la tâche 6).
   assert.throws(() => ficheGraph({ ...comptabilite, fiche: undefined }), /pas encore écrit/);
-  assert.throws(() => ficheGraph(avecFiche(AGENTS.find((a) => a.slug === 'paie-social'))), /pas à une fiche/);
+  assert.throws(() => ficheGraph(avecFiche(AGENTS.find((a) => a.slug === 'missions-audit'))), /pas à une fiche/);
   assert.throws(() => ficheGraph(avecFiche(comptabilite, { serviceType: undefined })), /serviceType/);
   assert.throws(() => ficheGraph(avecFiche(comptabilite, { image: { url: '/proofs/x.webp', alt: 'x' } })), /image/i);
   assert.throws(() => ficheGraph(avecFiche(comptabilite, { eeat: { auteur: 'inconnu', datePublication: '2026-10-15', dateModification: '2026-10-15', sources: [] } })), /auteur/i);

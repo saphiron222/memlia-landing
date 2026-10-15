@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: evaluation-transmission
 verifiedAt: 2026-10-06
-status: publie
+status: a-valider
 candidateFingerprint: "4422302f73a8c84b09dc36290ca3d5ac7ab0ed24e82c86a710f5c17f714910dd"
 cta:
   label: "Confier une première tâche"

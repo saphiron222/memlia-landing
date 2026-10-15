@@ -3,7 +3,6 @@ import Picto from '@/components/Picto.astro';
 import Insecable from '@/components/Insecable.astro';
 import { LOGOS_SUR_ENCRE, PAGE_OUTILS, connecteursDu, type Domaine } from '@/data/connecteurs';
 import { HAUTEUR_MAX, tailleDuLogo } from '@/data/connecteurs-rendu';
-import { INTEGRATIONS, integrationPath } from '@/data/integrations';
 import { AGENTS, cheminAgent } from '@/data/specialistes';
 import { metierEnPhrase } from '@/data/specialistes/gabarit';
 
@@ -19,31 +18,16 @@ import { metierEnPhrase } from '@/data/specialistes/gabarit';
  */
 interface Props {
   domaine: Domaine;
-  /** Les produits de la liste des guides, dans l'ordre de leurs ancres `#product-<rang>`. */
-  produits: readonly string[];
 }
-const { domaine, produits } = Astro.props;
+const { domaine } = Astro.props;
 const { domaines: textes } = PAGE_OUTILS;
 const cartes = connecteursDu(domaine.id);
-
-/** Les liens « En savoir plus » d'une carte : un par produit de ses guides, vers son ancre, sinon vers le guide. */
-function liensDeGuides(guides: readonly string[] = []) {
-  const liens = new Map<string, { href: string; produit: string }>();
-  for (const slug of guides) {
-    const guide = INTEGRATIONS.find((integration) => integration.slug === slug);
-    if (!guide) throw new Error(`/integrations : guide inconnu « ${slug} »`);
-    const rang = produits.indexOf(guide.product);
-    const href = rang >= 0 ? `#product-${rang}` : integrationPath(guide);
-    if (!liens.has(href)) liens.set(href, { href, produit: guide.product });
-  }
-  return [...liens.values()];
-}
 
 const rendues = await Promise.all(cartes.map(async (carte) => {
   const encre = LOGOS_SUR_ENCRE.has(carte.id);
   const taille = carte.logo ? await tailleDuLogo(carte.logo.src, encre ? HAUTEUR_MAX.encre : HAUTEUR_MAX.clair) : null;
   const editeurVisible = carte.editeur.toLocaleLowerCase('fr') !== carte.nom.toLocaleLowerCase('fr');
-  return { carte, encre, taille, editeurVisible, liens: liensDeGuides(carte.guides), initiale: carte.nom.charAt(0).toLocaleUpperCase('fr') };
+  return { carte, encre, taille, editeurVisible, initiale: carte.nom.charAt(0).toLocaleUpperCase('fr') };
 }));
 
 /** Qui s'en charge : le nom accessible de l'agent, lié à sa page quand elle est en ligne, au bandeau quand c'est ici. */
@@ -70,7 +54,7 @@ const idTitre = `${domaine.id}-titre`;
   </div>
   {rendues.length > 0 && (
     <ul class="connecteurs" data-connecteurs={domaine.id}>
-      {rendues.map(({ carte, encre, taille, editeurVisible, liens, initiale }) => (
+      {rendues.map(({ carte, encre, taille, editeurVisible, initiale }) => (
         <li class="connecteur" id={carte.id} data-connecteur={carte.id} data-logo={carte.logo ? (encre ? 'encre' : 'clair') : 'nom'}>
           <div class="connecteur-marque" aria-hidden="true">
             {carte.logo && taille ? (
@@ -84,9 +68,7 @@ const idTitre = `${domaine.id}-titre`;
           <h3 class="connecteur-nom">{carte.nom}</h3>
           {editeurVisible && <p class="connecteur-editeur">{carte.editeur}</p>}
           <p class="connecteur-ligne"><Insecable texte={carte.faitAvec} /></p>
-          {liens.map((lien) => (
-            <a class="lien-action connecteur-guide" href={lien.href}>{textes.enSavoirPlus}<span class="sr-only"> : les guides {lien.produit}</span><Picto nom="fleche" taille={14} /></a>
-          ))}
+
         </li>
       ))}
     </ul>

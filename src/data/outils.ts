@@ -16,7 +16,7 @@ export const OUTIL_CATEGORIES = [
 
 export type OutilCategory = (typeof OUTIL_CATEGORIES)[number]['id'];
 export type OutilStatus = 'temoin' | 'disponible' | 'suspendu';
-export type OutilServicePage = '/automatisation-cabinet-comptable' | '/automatisation/factures-fournisseurs' | '/automatisation/rapprochement-bancaire' | '/methode';
+export type OutilServicePage = '/automatisation-cabinet-comptable' | '/agents-ia/comptabilite#tache-achats-fournisseurs-4' | '/agents-ia/comptabilite#tache-banque-rapprochement-5' | '/methode';
 
 export interface OutilDefinition {
   slug: string;
@@ -441,7 +441,7 @@ export const OUTILS: readonly OutilDefinition[] = [
         extrait: 'La fiche officielle détaille les deux méthodes de calcul admises pour 45 jours fin de mois et exige que les parties se mettent d’accord sur la méthode utilisée.',
       },
     },
-    pageService: '/automatisation/factures-fournisseurs',
+    pageService: '/agents-ia/comptabilite#tache-achats-fournisseurs-4',
     cta: '/contact',
   },
   {
@@ -495,7 +495,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       extrait: 'le commerçant doit « contrôler par inventaire, au moins une fois tous les douze mois, l’existence et la valeur des éléments actifs et passifs du patrimoine de l’entreprise ». Pour le compte 512, ce contrôle passe par le rapprochement avec le relevé bancaire.',
       verifieeLe: '14 octobre 2026',
     },
-    pageService: '/automatisation/rapprochement-bancaire',
+    pageService: '/agents-ia/comptabilite#tache-banque-rapprochement-5',
     cta: '/contact',
   },
   {

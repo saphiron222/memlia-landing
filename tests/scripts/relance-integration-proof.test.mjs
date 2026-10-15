@@ -8,7 +8,9 @@ test('route, registre, intention et deux entrants contextuels', () => {
  assert.match(read(`src/pages/outils-comptables-gratuits/${slug}.astro`), /GenerateurRelanceFacture/);
  assert.match(read('src/data/outils.ts'), new RegExp(`slug: '${slug}'`));
  assert.match(read('src/data/proofs.ts'), /44-outil-relance-facture/);
- for (const p of ['methode','automatisation-cabinet-comptable']) assert.match(read(`src/pages/${p}.astro`),new RegExp(slug));
+ assert.match(read('src/pages/methode.astro'),new RegExp(slug));
+ assert.match(read('src/pages/agents-ia/[metier].astro'),new RegExp("'relances-impayes': '/outils-comptables-gratuits/"+slug));
+ assert.match(read('dist/agents-ia/gestion-cabinet.html'),new RegExp('href="/outils-comptables-gratuits/'+slug+'"'));
  assert.ok(JSON.parse(read('config/page-intent-contract.json')).pages[`/outils-comptables-gratuits/${slug}`]);
  const entry=JSON.parse(read('docs/strategy/site-v3/mesures/registre-requetes.json')).articles.find(e=>e.slug===slug);
  assert.equal(entry.type,'outil'); assert.equal(entry.publieLe,null);

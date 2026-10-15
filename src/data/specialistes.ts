@@ -1,5 +1,5 @@
 /**
- * Les douze agents IA du hub `/agents-ia` : la source unique que lisent le hub, les neuf fiches, la page des outils,
+ * Les douze agents IA du hub `/agents-ia` : la source unique que lisent le hub, les dix fiches, la page des outils,
  * le bandeau « Qui prend ce métier » et le contact (plan du 15/10/2026, tâche 2 ; arbitrages de la porte 2).
  *
  * Un agent IA, chez Memlia, est la règle écrite des tâches d'un même métier du cabinet, mise en œuvre dans ses outils
@@ -21,7 +21,8 @@ import { RELATION_CLIENT } from './specialistes/relation-client.ts';
 import { GESTION_CABINET } from './specialistes/gestion-cabinet.ts';
 import { RH_CABINET } from './specialistes/rh-cabinet.ts';
 import { PROTECTION_DONNEES } from './specialistes/protection-donnees.ts';
-import { INFORMATIQUE_OUTILS, MISSIONS_AUDIT, PAIE_SOCIAL } from './specialistes/autres.ts';
+import { INFORMATIQUE_OUTILS, MISSIONS_AUDIT } from './specialistes/autres.ts';
+import { PAIE_SOCIAL } from './specialistes/paie-social.ts';
 
 /** Issue d'un cas joué : la colonne « Décision » de la démonstration (même fermeture que `IntegrationReplayCase`). */
 export const ISSUES = ['Préparé', 'À valider', 'Arrêt'] as const;
@@ -39,8 +40,8 @@ export const GROUPES = [
 ] as const;
 export type GroupeId = (typeof GROUPES)[number]['id'];
 
-/** Les trois pages existantes où mènent les cartes sans fiche (spec §0) : la paie, l'accueil CAC, la page des outils. */
-export type CheminPage = '/automatisation/paie' | '/commissaires-aux-comptes' | '/integrations';
+/** Les deux pages existantes où mènent les cartes sans fiche : l’accueil CAC et la page des outils. */
+export type CheminPage = '/commissaires-aux-comptes' | '/integrations';
 export type Destination = { type: 'fiche' } | { type: 'page'; chemin: CheminPage };
 
 /** Un cas joué : ce qui entre, ce qui sort, et la décision de la règle (Arrêt : la sortie dit « Motif : »). */
@@ -53,7 +54,7 @@ export interface Cas {
 /**
  * La démonstration d'un agent, rejouée sur un dossier fictif (spec §2.1, arbitrage 4 de la porte 2) : la règle écrite
  * de sa tâche phare en deux phrases, puis quatre cas dont au moins un Arrêt motivé. Vit sur l'agent, pas sur la fiche :
- * Octavie la montre sur /integrations, Salomé et Aude la portent dans les données seulement.
+ * Octavie la montre sur /integrations ; Aude la porte dans les données seulement.
  */
 export interface Demonstration {
   /** La tâche phare dont la règle est rejouée (« lecture et pré-imputation des pièces »). */
@@ -163,7 +164,7 @@ export interface Specialiste {
   /** Le pôle dont l'accent teinte la carte. */
   teinte: PoleId;
   /**
-   * La page de destination est construite (R19). Vrai pour les trois cartes vers une page existante ; pour une fiche,
+   * La page de destination est construite (R19). Vrai pour les deux cartes vers une page existante ; pour une fiche,
    * passe à `true` quand sa page est construite (tâche 6 pour Comptabilité, tâche 9 pour les huit autres).
    */
   publie: boolean;
@@ -332,7 +333,7 @@ export const AGENTS: readonly Specialiste[] = [
 export type SpecialisteAFiche = Specialiste & { destination: { type: 'fiche' } };
 
 /**
- * Les neuf agents dont la carte mène à une fiche, publiée ou non. Le gabarit ne construit que les fiches publiées,
+ * Les dix agents dont la carte mène à une fiche, publiée ou non. Le gabarit ne construit que les fiches publiées,
  * et en lit le contenu par `ficheDe`.
  */
 export const FICHES: readonly SpecialisteAFiche[] = AGENTS.filter((agent): agent is SpecialisteAFiche => agent.destination.type === 'fiche');

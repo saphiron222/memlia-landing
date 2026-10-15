@@ -9,30 +9,6 @@
       "measuredAt": "2026-10-06",
       "source": "Fiche EC 05 et sondes G3 : aucune suggestion sur la primaire ; signal faible, aucun volume revendiqué. Calcul sur deux exports distinct d’un guide logiciel ou d’une prestation."
     },
-    "/automatisation/bulletins-controle": {
-      "query": "automatisation contrôle bulletins de paie cabinet comptable",
-      "descriptionLead": "Contrôles des bulletins de paie en cabinet",
-      "measuredAt": "2026-10-06",
-      "source": "Recette bulletins-controle et relevé du 06/10 : aucune suggestion commerciale, aucun volume revendiqué ; rapprochements inter-sources distincts du blog et du service paie."
-    },
-    "/integrations/cloture-ebp": {
-      "query": "clôture ebp",
-      "descriptionLead": "Préparez les contrôles de clôture EBP Comptabilité",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/cloture-ebp/autocomplete.json ; dix suggestions distinctes, aucun volume revendiqué. Contrôles avant fermeture distincts du guide Sage et de l’export FEC."
-    },
-    "/integrations/lettrage-ebp": {
-      "query": "lettrage ebp",
-      "descriptionLead": "Contrôlez les paires de lettrage EBP",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/lettrage-ebp/autocomplete.json ; neuf suggestions distinctes. Guide documentaire distinct du lettrage Sage et Cegid, sans volume revendiqué."
-    },
-    "/integrations/export-fec-ebp": {
-      "query": "export fec ebp",
-      "descriptionLead": "Préparez un export FEC EBP",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/export-fec-ebp/autocomplete.json ; sept suggestions distinctes, sans estimation de volume."
-    },
     "/outils-comptables-gratuits/assistant-lettrage-comptable-local": {
       "query": "lettrage comptable excel",
       "descriptionLead": "Préparez le lettrage",
@@ -50,35 +26,11 @@
       "measuredAt": "2026-10-06",
       "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2."
     },
-    "/automatisation/circularisation-cac": {
-      "query": "automatiser circularisation",
-      "descriptionLead": "Automatiser la circularisation",
-      "measuredAt": "2026-10-06",
-      "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué."
-    },
     "/outils-comptables-gratuits/fusionner-fichiers-csv": {
       "query": "fusionner fichiers csv",
       "descriptionLead": "Fusionnez vos exports CSV localement",
       "measuredAt": "2026-10-06",
       "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel"
-    },
-    "/automatisation/evaluation-transmission": {
-      "query": "automatisation dossier évaluation entreprise cabinet comptable",
-      "descriptionLead": "Confiez l’assemblage du dossier d’évaluation",
-      "measuredAt": "2026-10-06",
-      "source": "Recette evaluation-transmission et titres-intent-2026-10-06.json : aucune suggestion commerciale ni volume revendiqué ; pièces et versions résiduelles, sans méthode, valeur ni conseil automatique."
-    },
-    "/automatisation/secretariat-juridique": {
-      "query": "automatisation secrétariat juridique cabinet comptable",
-      "descriptionLead": "Suivez les échéances d’approbation et de dépôt",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et titres-intent-2026-10-06.json : aucune suggestion commerciale, aucun volume revendiqué ; suivi annuel résiduel hors outil, distinct des formalités ponctuelles."
-    },
-    "/automatisation/entrees-sorties-salaries": {
-      "query": "automatisation entrées sorties salariés cabinet comptable",
-      "descriptionLead": "Embauche ou départ annoncé hors portail",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et relevé du 06/10 : aucune suggestion commerciale, aucun volume revendiqué ; annonces hors portail distinctes des contrôles mensuels de paie."
     },
     "/outils-comptables-gratuits/bareme-heures-cac": {
       "query": "barème heures commissaire aux comptes",
@@ -168,26 +120,6 @@
       "measuredAt": "2026-10-15",
       "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
     },
-    "/automatisation/factures-fournisseurs": {
-      "query": "factures fournisseurs des dossiers clients",
-      "descriptionLead": "Factures fournisseurs des dossiers clients"
-    },
-    "/automatisation/notes-de-frais": {
-      "query": "notes de frais des clients en cabinet",
-      "descriptionLead": "Notes de frais des clients en cabinet"
-    },
-    "/automatisation/paie": {
-      "query": "automatisation paie pôle social",
-      "descriptionLead": "Automatisation paie pôle social"
-    },
-    "/automatisation/rapprochement-bancaire": {
-      "query": "rapprochement bancaire en cabinet",
-      "descriptionLead": "Confiez la préparation du rapprochement bancaire"
-    },
-    "/automatisation/saisie-comptable": {
-      "query": "saisie comptable en cabinet",
-      "descriptionLead": "Saisie comptable en cabinet"
-    },
     "/blog": {
       "query": "index éditorial",
       "descriptionLead": "Blog Memlia"
@@ -242,42 +174,6 @@
       "measuredAt": "2026-10-15",
       "source": "docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md §6 et hub-agents-ia/MOTS-CLES.md : SERP Google FR du 15/10/2026, aucun volume Google Ads ; Google la lit comme « choisir ses logiciels », la page dit ce que nos agents reprennent dans les outils déjà choisis ; rejeu de propriété sans conflit."
     },
-    "/integrations/rapprochement-bancaire-sage": {
-      "query": "rapprochement bancaire sage",
-      "descriptionLead": "Cadrez un rapprochement bancaire Sage 100"
-    },
-    "/integrations/lettrage-sage": {
-      "query": "lettrage sage",
-      "descriptionLead": "Cadrez le lettrage Sage 100"
-    },
-    "/integrations/dsn-sage": {
-      "query": "dsn sage",
-      "descriptionLead": "Cadrez les contrôles d’une DSN Sage"
-    },
-    "/integrations/bulletin-de-paie-sage": {
-      "query": "bulletin de paie sage",
-      "descriptionLead": "Préparez le contrôle d’un bulletin Sage"
-    },
-    "/integrations/saisie-comptable-sage": {
-      "query": "saisie comptable sage",
-      "descriptionLead": "Cadrez une préparation de saisie Sage 100"
-    },
-    "/integrations/cloture-sage": {
-      "query": "clôture sage",
-      "descriptionLead": "Structurez les contrôles de clôture Sage 100"
-    },
-    "/integrations/lettrage-cegid": {
-      "query": "lettrage cegid",
-      "descriptionLead": "Cadrez un lettrage Cegid"
-    },
-    "/integrations/dsn-silae": {
-      "query": "dsn silae",
-      "descriptionLead": "Cadrez les contrôles d’une DSN Silae"
-    },
-    "/integrations/bulletin-de-paie-silae": {
-      "query": "bulletin de paie silae",
-      "descriptionLead": "Cadrez le contrôle d’un bulletin Silae"
-    },
     "/methode": {
       "query": "méthode automatisation cabinet comptable",
       "descriptionLead": "Observer le geste réel"
@@ -308,23 +204,11 @@
       "query": "modèle rapprochement bancaire Excel gratuit",
       "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit"
     },
-    "/automatisation/registres-obligations": {
-      "query": "automatisation suivi registres obligations cabinet comptable",
-      "descriptionLead": "RNE, BODACC, Sirene",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et demande.json : deux requêtes commerciales sans suggestion, aucun volume revendiqué."
-    },
     "/outils-comptables-gratuits/checklist-pieces-comptables": {
       "query": "checklist pièces comptables",
       "descriptionLead": "Préparez une checklist personnalisable",
       "measuredAt": "2026-10-06",
       "source": "Fiche G3 EC 04 : primaire sans suggestion, besoin produit explicite ; sondes copiées dans docs/strategy/site-v3/outils-ec-vague-4. Aucun volume ni trafic revendiqué."
-    },
-    "/automatisation/facture-electronique": {
-      "query": "automatisation flux facture électronique cabinet comptable",
-      "descriptionLead": "Clients sur une autre plateforme agréée",
-      "measuredAt": "2026-10-06",
-      "source": "commercial/recettes/facture-electronique/preuves/demande.json ; autocomplétion sans suggestion commerciale, aucun volume revendiqué."
     },
     "/automatisation/cfe": {
       "query": "robot cfe cabinet comptable",
@@ -499,6 +383,12 @@
       "descriptionLead": "RGPD de l’expert-comptable",
       "measuredAt": "2026-10-15",
       "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/paie-social": {
+      "query": "ia paie",
+      "descriptionLead": "IA paie pour cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "Recherche agents IA du 15/10/2026, fiche Salomé et retrait autorisé de la page par pôle ; aucun volume revendiqué."
     }
   }
 }

@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "date": "2026-10-15",
+  "authorizedBy": "Kevin Kitanga",
+  "reason": "Kevin demande le retrait de tous les anciens services commerciaux par pôle et guides par environnement au profit des robots, agents IA et du catalogue commun de compatibilités. Les recherches et recettes historiques sont conservées comme archives internes.",
+  "redirectStatus": 301,
+  "routes": [
+    {
+      "from": "/automatisation/saisie-comptable",
+      "to": "/agents-ia/comptabilite#tache-saisie-ocr-2",
+      "type": "service",
+      "reason": "Lecture des pièces et préparation des écritures chez Balthazar.",
+      "archive": {
+        "path": "commercial/recettes/saisie-comptable/recette.json",
+        "sha256": "b5c258e85361f6c7fbbff3ff220fb6f3890c680ed5f2d39e2522d6eb599be6cc"
+      }
+    },
+    {
+      "from": "/automatisation/factures-fournisseurs",
+      "to": "/agents-ia/comptabilite#tache-achats-fournisseurs-4",
+      "type": "service",
+      "reason": "Contrôles des factures d’achat et exceptions chez Balthazar.",
+      "archive": {
+        "path": "commercial/recettes/factures-fournisseurs/recette.json",
+        "sha256": "c1350cb308e6109dd1eb6684cab746c3b4fc2386852c25aaec372e8321bde386"
+      }
+    },
+    {
+      "from": "/automatisation/rapprochement-bancaire",
+      "to": "/agents-ia/comptabilite#tache-banque-rapprochement-5",
+      "type": "service",
+      "reason": "Appariement bancaire et suspens chez Balthazar.",
+      "archive": {
+        "path": "commercial/recettes/rapprochement-bancaire/recette.json",
+        "sha256": "339194141306fddf5e0c140e41859e061de827b69f26ddd1df77a3be490e081d"
+      }
+    },
+    {
+      "from": "/automatisation/notes-de-frais",
+      "to": "/agents-ia/comptabilite#taches-titre",
+      "type": "service",
+      "reason": "Justificatifs de frais dans le périmètre de Balthazar.",
+      "archive": {
+        "path": "commercial/recettes/notes-de-frais/recette.json",
+        "sha256": "013df44c006186268aec934950ce6c2f86b5e02e222a0ea6d2e986c66fc1ee76"
+      }
+    },
+    {
+      "from": "/automatisation/facture-electronique",
+      "to": "/agents-ia/comptabilite#tache-facture-electronique-3",
+      "type": "service",
+      "reason": "Flux de factures et relances hors outil chez Balthazar ; distinct des robots annuaire et mandats.",
+      "archive": {
+        "path": "commercial/recettes/facture-electronique/recette.json",
+        "sha256": "70ac85abb0cc5377e74d88e4a869cf31465002793c0c2f4d9aee972347a9cb70"
+      }
+    },
+    {
+      "from": "/automatisation/paie",
+      "to": "/agents-ia/paie-social",
+      "type": "service",
+      "reason": "Préparation de la paie et du social par Salomé dans les outils du cabinet.",
+      "archive": {
+        "path": "commercial/recettes/paie/recette.json",
+        "sha256": "c176251e826815307b9e54c649becd4a0a668092f12c730436a672115abacd88"
+      }
+    },
+    {
+      "from": "/automatisation/bulletins-controle",
+      "to": "/agents-ia/paie-social#tache-bulletins-controle-2",
+      "type": "service",
+      "reason": "Contrôles croisés des bulletins et écarts chez Salomé.",
+      "archive": {
+        "path": "commercial/recettes/bulletins-controle/recette.json",
+        "sha256": "19b596fd2594ecfa0ecdc8e523cd3ffb4951893ef6012530b474a44ed770b0c5"
+      }
+    },
+    {
+      "from": "/automatisation/entrees-sorties-salaries",
+      "to": "/agents-ia/paie-social#tache-entrees-sorties-salaries-5",
+      "type": "service",
+      "reason": "Préparation des entrées et sorties de salariés chez Salomé.",
+      "archive": {
+        "path": "commercial/recettes/entrees-sorties-salaries/recette.json",
+        "sha256": "6392eb7773562c5e0f878f41793e3cffeb1fa1317a97413cc7deedb7689605b4"
+      }
+    },
+    {
+      "from": "/automatisation/secretariat-juridique",
+      "to": "/agents-ia/juridique-fiscal#tache-secretariat-juridique-7",
+      "type": "service",
+      "reason": "Documents d’approbation et suivi juridique chez Grégoire.",
+      "archive": {
+        "path": "commercial/recettes/secretariat-juridique/recette.json",
+        "sha256": "c57631c052c2416469307a9293c05c1ae7155130a17eeaea601f2d261a62584f"
+      }
+    },
+    {
+      "from": "/automatisation/registres-obligations",
+      "to": "/agents-ia/juridique-fiscal#tache-registres-obligations-10",
+      "type": "service",
+      "reason": "Registres et obligations du portefeuille chez Grégoire.",
+      "archive": {
+        "path": "commercial/recettes/registres-obligations/recette.json",
+        "sha256": "90ce114257421f36d114e5a5204620bf4cae7ab6057f3ff6e0c442a6ab5901d8"
+      }
+    },
+    {
+      "from": "/automatisation/evaluation-transmission",
+      "to": "/agents-ia/finance#tache-evaluation-transmission-10",
+      "type": "service",
+      "reason": "Préparation de l’évaluation et de la transmission chez Florent.",
+      "archive": {
+        "path": "commercial/recettes/evaluation-transmission/recette.json",
+        "sha256": "2ce7588162ffd616ce0e48708acd82e8127d0734c517cb221b90b0f1e1db74d1"
+      }
+    },
+    {
+      "from": "/automatisation/circularisation-cac",
+      "to": "/commissaires-aux-comptes#use-certification",
+      "type": "service",
+      "reason": "Préparation des confirmations et rapprochements sous la maîtrise du CAC.",
+      "archive": {
+        "path": "commercial/recettes/circularisation-cac/recette.json",
+        "sha256": "4e58aef26f2455ef0982f5bf6ea5bd4b88b0463b30156ed7c5080e3be47d9b6c"
+      }
+    },
+    {
+      "from": "/integrations/rapprochement-bancaire-sage",
+      "to": "/integrations#sage-100-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Comptabilité.",
+      "archive": {
+        "definitionSha256": "a24559e75279a8e2a8c1f9ed5ce2e8c85f183cbc49ac116522cbe512b8507c07"
+      }
+    },
+    {
+      "from": "/integrations/lettrage-sage",
+      "to": "/integrations#sage-100-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Comptabilité.",
+      "archive": {
+        "definitionSha256": "c8117d7b238bb197c0f207da5b9de3a124f08ee1e5a4eadb2a7376b54f2aaf3c"
+      }
+    },
+    {
+      "from": "/integrations/dsn-sage",
+      "to": "/integrations#sage-100-paie-rh",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Paie & RH.",
+      "archive": {
+        "definitionSha256": "d993100d82a0179e99427843f90bad4987ff5cf593f8f3ae2a21ac9c2db488d3"
+      }
+    },
+    {
+      "from": "/integrations/bulletin-de-paie-sage",
+      "to": "/integrations#sage-100-paie-rh",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Paie & RH.",
+      "archive": {
+        "definitionSha256": "c3c052b06ed838130352e30c2f01390b93877a1703941ae3b87dffedeb58d7e2"
+      }
+    },
+    {
+      "from": "/integrations/saisie-comptable-sage",
+      "to": "/integrations#sage-100-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Comptabilité.",
+      "archive": {
+        "definitionSha256": "f2814c06f4be2733520f24133c82b46db77fec1f274b8b9e7c12f5a60b412b33"
+      }
+    },
+    {
+      "from": "/integrations/cloture-sage",
+      "to": "/integrations#sage-100-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Sage 100 Comptabilité.",
+      "archive": {
+        "definitionSha256": "8cc6e1db90f819300ba9aa6d5e0b9e5990ab0818b3032283a29de20ee9725ea3"
+      }
+    },
+    {
+      "from": "/integrations/lettrage-cegid",
+      "to": "/integrations#cegid-loop",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de Cegid Loop.",
+      "archive": {
+        "definitionSha256": "d64d80353addfac90f5edc8c36d0b7a95c902918d5885666cabbd022a365264a"
+      }
+    },
+    {
+      "from": "/integrations/dsn-silae",
+      "to": "/integrations#silae",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de mySilae.",
+      "archive": {
+        "definitionSha256": "f71005f7c2a1de78a205a795fb6a459bd63917aaa169b7744392ed40f41b6832"
+      }
+    },
+    {
+      "from": "/integrations/bulletin-de-paie-silae",
+      "to": "/integrations#silae",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de mySilae.",
+      "archive": {
+        "definitionSha256": "70a90474900418b1d30bf39422dec4b268bb8b5cf1e5cb44218abd7e32a17b43"
+      }
+    },
+    {
+      "from": "/integrations/export-fec-ebp",
+      "to": "/integrations#ebp-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de EBP Comptabilité.",
+      "archive": {
+        "definitionSha256": "2ac783e9da02d16de058833e9d3b6df4d62236188643a54e0ff2138fc6d570ab"
+      }
+    },
+    {
+      "from": "/integrations/lettrage-ebp",
+      "to": "/integrations#ebp-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de EBP Comptabilité.",
+      "archive": {
+        "definitionSha256": "877dc138ff02c5cbfbf23d6acdd2eec6660cfd346d97cce125fc8e8dffe1f0e8"
+      }
+    },
+    {
+      "from": "/integrations/cloture-ebp",
+      "to": "/integrations#ebp-comptabilite",
+      "type": "guide",
+      "reason": "Le catalogue commun présente les tâches et les compatibilités de EBP Comptabilité.",
+      "archive": {
+        "definitionSha256": "0194e189d4a7fd15bd5ba0f4fef0b1004c7a7c6f1449af4f01f15aa875eed04a"
+      }
+    }
+  ]
+}

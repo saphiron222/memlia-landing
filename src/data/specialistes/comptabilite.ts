@@ -30,7 +30,7 @@ export const COMPTABILITE: Specialiste = {
     'lettrage', 'ventes-caisse', 'immobilisations-emprunts', 'revision-cycles', 'cloture-bilan', 'notes-de-frais',
     'ged-dossier-permanent',
   ],
-  servicesLies: ['saisie-comptable', 'factures-fournisseurs', 'rapprochement-bancaire', 'notes-de-frais', 'facture-electronique'],
+  servicesLies: [],
   logiciels: [
     'Pennylane', 'Cegid Loop', 'Cegid Quadra Plus', 'Sage 100 Comptabilité', 'Sage Génération Experts', 'ACD COMPTA',
     'EBP Comptabilité', 'MyU', 'Tiime', 'Inqom', 'fulll', 'AMICOMPTA', 'Dext', 'N2F', 'Qonto', 'Planity',
@@ -121,6 +121,5 @@ export const COMPTABILITE: Specialiste = {
       { agent: 'juridique-fiscal', role: 'apres' },
       { agent: 'finance', role: 'apres' },
     ],
-    pageDeLaRegle: '/automatisation/saisie-comptable',
   },
 };

@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: banque-rapprochement
 verifiedAt: 2026-09-20
-status: publie
+status: a-valider
 candidateFingerprint: "597d6ed1ea079102545e6c7f74147245c11a85f93f09c24b1f7e603e443a92cc"
 cta:
   label: "Confier une première tâche"

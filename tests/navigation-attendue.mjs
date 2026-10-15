@@ -4,9 +4,9 @@ export const CAC_PUBLIE = existsSync(new URL('../src/pages/commissaires-aux-comp
 
 /** Les trois entrées du groupe « Ce qu’on automatise » : la tâche, le métier, l’outil. Le pied de page les reprend à l’identique. */
 export const AUTOMATISE = [
-  { libelle: 'Par tâche', href: '/automatisation-cabinet-comptable' },
-  { libelle: 'Par métier', href: '/agents-ia' },
-  { libelle: 'Dans vos outils', href: '/integrations' },
+  { libelle: 'Robots', href: '/automatisation-cabinet-comptable' },
+  { libelle: 'Agents IA', href: '/agents-ia' },
+  { libelle: 'Intégrations', href: '/integrations' },
 ];
 
 /**

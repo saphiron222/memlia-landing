@@ -33,7 +33,7 @@ test('une page interne conserve les hubs et le blog suit sa disponibilité', () 
   assert.equal(new Set(ids).size, ids.length);
 });
 
-test('« Ce qu’on automatise » est un groupe de trois entrées : par tâche, par métier, dans vos outils', () => {
+test('« Ce qu’on automatise » expose les trois catalogues : Robots, Agents IA et Intégrations', () => {
   for (const cacDisponible of [true, false]) {
     const entree = groupe(creerNavigation({ chemin: '/', cacDisponible, blogActif: true }), 'automatise');
     assert.ok(entree, `groupe automatise présent (cacDisponible ${cacDisponible})`);
@@ -61,11 +61,12 @@ test('aucun lien direct ne dépasse son groupe : chaque destination n’apparaî
   assert.equal(new Set(hrefs).size, hrefs.length, hrefs.join(' '));
 });
 
-test('les intitulés suivent la charte : casse de phrase, jamais « module » ni « complément Excel »', () => {
+test('les intitulés suivent la charte : casse de phrase, sigle IA et aucun ancien intitulé', () => {
   const navigation = creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true });
   const intitules = [...navigation.map((e) => e.libelle), ...aplatir(navigation).map((e) => e.libelle)];
   for (const intitule of intitules) {
-    assert.match(intitule, /^\p{Lu}[^\p{Lu}]*$/u, `${intitule} : une majuscule initiale, aucune autre`);
+    assert.match(intitule.replace(/\bIA\b/gu, 'ia'), /^\p{Lu}[^\p{Lu}]*$/u, `${intitule} : casse de phrase, sigle IA admis`);
     assert.doesNotMatch(intitule, /module|compl[ée]ment excel/i, intitule);
+    assert.doesNotMatch(intitule, /Par tâche|Par métier|Dans vos outils|Guides par environnement|Automatisation par pôle/iu);
   }
 });

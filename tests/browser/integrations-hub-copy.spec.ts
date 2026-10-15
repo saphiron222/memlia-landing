@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { INTEGRATIONS, INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
+import { INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
 import { CONNECTEURS, DOMAINES, LOGOS_SUR_ENCRE, MENTION_MARQUES, PAGE_OUTILS } from '../../src/data/connecteurs';
 import { AGENTS, cheminAgent } from '../../src/data/specialistes';
 
@@ -7,7 +7,7 @@ import { AGENTS, cheminAgent } from '../../src/data/specialistes';
  * `/integrations`, page de compatibilité logiciels (tâche 8, porte 2) : tout se lit dans les données (`connecteurs.ts`,
  * `integrations.ts`), rien n'est recopié ici. Aucun statut d'outil, aucun total, aucun lien vers un éditeur ; le texte
  * fixe « Votre logiciel n'est pas listé ? Nous l'intégrons sur demande. » et la mention de marques sous la liste.
- * La recherche des guides garde ses propres contrôles (`integrations.spec.ts`).
+ * Les guides restent archivés ; seul le catalogue commun des logiciels est une surface publique.
  */
 const ROUTE = PAGE_OUTILS.chemin;
 const TEXTE_FIXE = "Votre logiciel n'est pas listé ? Nous l'intégrons sur demande.";
@@ -22,16 +22,14 @@ async function texteDe(page: Page, selecteur: string) {
 }
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`page de compatibilité et guides à ${width}px`, async ({ page }) => {
+  test(`catalogue commun de compatibilité à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(ROUTE);
     await expect(page.locator('h1')).toHaveText(PAGE_OUTILS.h1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${ROUTE}`);
-    // Les guides se comptent dans le DOM : le JSON-LD de la page liste désormais les logiciels.
-    await expect(page.locator('[data-integration-cards] > li')).toHaveCount(INTEGRATIONS_INDEXABLES.length);
-    const titles = await page.locator('[data-integration-cards] h3').allTextContents();
-    expect([...titles].sort()).toEqual(INTEGRATIONS.map(({ task, product }) => `${task.charAt(0).toLocaleUpperCase('fr')}${task.slice(1)} dans ${product}`).sort());
-    for (const title of titles) expect(title).not.toMatch(/Dsn|sage|cegid|silae/);
+    expect(INTEGRATIONS_INDEXABLES).toEqual([]);
+    await expect(page.locator('[data-integration-cards], [data-guide-product], [data-guide-filters]')).toHaveCount(0);
+    await expect(page.locator('[data-connecteur]')).toHaveCount(CONNECTEURS.length);
     await expect(page.locator('main')).not.toContainText(/moyeu|signal d.indexation|Mesurer, publier peu/i);
     await expect(page.locator('#suite a', { hasText: 'Confier une première tâche' })).toHaveAttribute('href', '/contact');
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
@@ -91,13 +89,9 @@ test('aucun statut, aucun total, aucun lien vers un éditeur ; texte fixe et men
     .filter((href) => !href.startsWith('#') && !href.startsWith('/') && !href.startsWith('https://memlia.fr/')));
   expect(sortants.every(href=>['https://www.impots.gouv.fr','https://www.urssaf.fr','https://www.inpi.fr','https://www.bodacc.fr','https://www.data.gouv.fr'].some(h=>href.startsWith(h)))).toBe(true);
 
-  // « En savoir plus » renvoie à l'ancre d'un groupe de guides de la même page, jamais une seconde fois au guide.
-  const enSavoirPlus = await page.locator('[data-connecteur] a').evaluateAll((liens) => liens.map((a) => a.getAttribute('href')));
-  expect(enSavoirPlus.length).toBeGreaterThan(0);
-  for (const href of enSavoirPlus) {
-    expect(href).toMatch(/^#product-\d+$/u);
-    await expect(page.locator(`section[aria-labelledby="${href!.slice(1)}"]`)).toHaveCount(1);
-  }
+  // Les cartes de logiciels ne réintroduisent aucun rayon de guides ou lien de vente éditeur.
+  await expect(page.locator('[data-connecteur] a')).toHaveCount(0);
+  await expect(page.locator('main a[href^="/integrations/"]')).toHaveCount(0);
 
   expect(await texteDe(page, '[data-sur-demande] .hub-autre')).toContain(TEXTE_FIXE);
   await expect(page.locator('[data-sur-demande] a[href="/contact"]')).toBeVisible();
@@ -192,22 +186,18 @@ test('« Dans vos outils » d’une fiche mène à la carte du logiciel', async 
   await expect(page.locator(`[id="${carte.id}"] h3`)).toBeInViewport();
 });
 
-test('chaque carte de guide mène au guide décrit, puis le CTA mène au contact', async ({ page }) => {
+test('le catalogue commun ouvre les robots, les agents et le contact sans ancien rayon de guides', async ({ page }) => {
   await page.goto(ROUTE);
-  const cards = await page.locator('[data-integration-cards] a').evaluateAll((elements) => elements.map((el) => ({
-    path: el.getAttribute('href')!, description: el.querySelector('p')!.textContent!,
-  })));
-  expect(cards.length).toBe(INTEGRATIONS_INDEXABLES.length);
-  for (const card of cards) {
-    const guide = INTEGRATIONS_INDEXABLES.find((integration) => `/integrations/${integration.slug}` === card.path)!;
-    expect(guide, card.path).toBeTruthy();
+  await expect(page.locator('[data-integration-cards], [data-guide-product]')).toHaveCount(0);
+  await expect(page.locator('main')).not.toContainText('Guides par environnement');
+  for (const path of ['/automatisation-cabinet-comptable', '/agents-ia']) {
+    const link = page.locator(`#suite a[href="${path}"]`);
+    await expect(link).toBeVisible();
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(`${path}$`));
+    await expect(page.locator('main h1')).toBeVisible();
     await page.goto(ROUTE);
-    await page.locator(`[data-integration-cards] a[href="${card.path}"]`).click();
-    await expect(page).toHaveURL(new RegExp(`${card.path}$`));
-    await expect(page.locator('h1')).toHaveText(guide.h1);
-    await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', card.description);
   }
-  await page.goto(ROUTE);
   await page.locator('#suite a', { hasText: 'Confier une première tâche' }).click();
   await expect(page).toHaveURL(/\/contact$/);
 });

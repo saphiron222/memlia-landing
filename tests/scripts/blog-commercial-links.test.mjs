@@ -9,15 +9,15 @@ const registre = JSON.parse(readFileSync(join(ROOT, 'docs/strategy/site-v3/mesur
 const articles = registre.articles.filter((entree) => entree.type === 'blog');
 
 const liensAttendus = new Map([
-  ['automatiser-la-saisie-comptable-ce-qui-reste-a-verifier', '/automatisation/saisie-comptable'],
-  ['comprendre-les-comptes-rendus-metier-dsn', '/automatisation/paie'],
-  ['controler-les-bulletins-de-paie-avant-la-dsn', '/automatisation/bulletins-controle'],
-  ['suivre-la-production-sociale-dans-excel', '/automatisation/paie'],
+  ['automatiser-la-saisie-comptable-ce-qui-reste-a-verifier', '/agents-ia/comptabilite#tache-saisie-ocr-2'],
+  ['comprendre-les-comptes-rendus-metier-dsn', '/agents-ia/paie-social'],
+  ['controler-les-bulletins-de-paie-avant-la-dsn', '/agents-ia/paie-social#tache-bulletins-controle-2'],
+  ['suivre-la-production-sociale-dans-excel', '/agents-ia/paie-social'],
 ]);
 const pontsW39 = new Map([
-  ['logiciel-ia-comptabilite', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation sur mesure' }],
-  ['prompt-chatgpt-expert-comptable', { href: '/automatisation-cabinet-comptable', label: 'Voir comment automatiser une règle de cabinet' }],
-  ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Voir le service d’automatisation et sa recette' }],
+  ['logiciel-ia-comptabilite', { href: '/agents-ia', label: 'Explorer les agents IA' }],
+  ['prompt-chatgpt-expert-comptable', { href: '/agents-ia', label: 'Explorer les agents IA du cabinet' }],
+  ['tests-verts-et-regle-des-trois-passes', { href: '/automatisation-cabinet-comptable', label: 'Explorer les robots et leur fonctionnement' }],
 ]);
 
 function verifierCardinalite(articlesPublies, liens = LIENS_COMMERCIAUX_BLOG) {

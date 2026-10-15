@@ -7,9 +7,9 @@ export const LIEN_CAC = { libelle: 'Commissaires aux comptes', href: '/commissai
  * trois entrées telles quelles (une seule source), pour que menu et pied ne divergent jamais.
  */
 export const ENTREES_AUTOMATISE = Object.freeze([
-  Object.freeze({ libelle: 'Par tâche', href: '/automatisation-cabinet-comptable' }),
-  Object.freeze({ libelle: 'Par métier', href: '/agents-ia' }),
-  Object.freeze({ libelle: 'Dans vos outils', href: '/integrations' }),
+  Object.freeze({ libelle: 'Robots', href: '/automatisation-cabinet-comptable' }),
+  Object.freeze({ libelle: 'Agents IA', href: '/agents-ia' }),
+  Object.freeze({ libelle: 'Intégrations', href: '/integrations' }),
 ]);
 
 export function creerNavigation({ chemin, cacDisponible, blogActif }) {

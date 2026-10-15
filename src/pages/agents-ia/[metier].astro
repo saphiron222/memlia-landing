@@ -31,21 +31,17 @@ const articles = (await getCollection('blog', isBlogEntryVisible))
   .filter((entree) => entree.data.brouillon === false)
   .sort((a, b) => b.data.datePublication.getTime() - a.data.datePublication.getTime() || a.id.localeCompare(b.id));
 const liens: Record<string, { href: string }> = {};
+const outilsParFamille: Record<string, string> = { 'relances-impayes': '/outils-comptables-gratuits/generateur-relance-facture-impayee' };
 for (const id of agent.familles) {
   const service = services.find((entree) => entree.data.family === id);
   const article = articles.find((entree) => entree.data.famille === id);
   if (service) liens[id] = { href: `/automatisation/${service.id}` };
   else if (article) liens[id] = { href: `/blog/${article.id}` };
+  else if (outilsParFamille[id]) liens[id] = { href: outilsParFamille[id] };
 }
 
-// La page où la règle de la démonstration est publiée : une page service liée (contrôlé par `exigerAgents`).
-let regle: { href: string; libelle: string } | undefined;
-if (fiche.pageDeLaRegle) {
-  const slug = fiche.pageDeLaRegle.slice('/automatisation/'.length);
-  const service = services.find((entree) => entree.id === slug);
-  if (!service) throw new Error(`/agents-ia/${agent.slug} : page de la règle « ${fiche.pageDeLaRegle} » absente des services publiés`);
-  regle = { href: fiche.pageDeLaRegle, libelle: service.data.tabTitle.replace(new RegExp(`\\s*\\|\\s*${SITE.nom}$`, 'u'), '') };
-}
+// La règle est publiée sur chaque fiche. Les anciens services restent des archives internes.
+const regle = undefined;
 ---
 
 <Agent agent={agent} liens={liens} regle={regle} />

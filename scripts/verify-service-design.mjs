@@ -17,6 +17,11 @@ export function servicesServis(root) {
   if (!existsSync(source)) return [];
   return readdirSync(source)
     .filter((name) => name.endsWith('.md'))
+    .filter((name) => {
+      const ledgerPath = join(root, 'config/service-publication-ledger.json');
+      const ledger = existsSync(ledgerPath) ? JSON.parse(readFileSync(ledgerPath, 'utf8')) : {};
+      return !ledger.services?.some(row => row.slug === name.replace(/\.md$/, '') && row.status === 'depublie');
+    })
     .map((name) => name.replace(/\.md$/, ''))
     .sort();
 }

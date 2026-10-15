@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-depublication-scellee",
   "slug": "secretariat-juridique",
-  "sealedAt": "2026-10-08T11:31:22.901Z",
+  "sealedAt": "2026-10-15T14:28:20.680Z",
   "files": {
     "page": {
       "path": "src/content/services/secretariat-juridique.md",
-      "bytes": 11051,
-      "sha256": "29400dbb88c69f678080fa106bb0da8f7d7583999fba42813267dd08d1b093df"
+      "bytes": 11054,
+      "sha256": "c5ba5117f7d708df418c3eb2f42bcb5d5b51811938c9ec9ed59ff89c176daa8e"
     },
     "manifest": {
       "path": "commercial/services/secretariat-juridique/manifest.json",
-      "bytes": 2826,
-      "sha256": "7c0c1ac7e040ad01fca24bfda3c6e8fc1b060c8a29c02e58f513dcd1d10ae855"
+      "bytes": 2829,
+      "sha256": "3e324bd53cc55544240d2eb20dc19baef28ab3a3660e28a323f33daa35cb026f"
     },
     "recipe": {
       "path": "commercial/recettes/secretariat-juridique/recette.json",
@@ -29,10 +29,10 @@
       "bytes": 3126,
       "sha256": "2c237dc7e5298ac5664d5685a62e61516c7b2f968237c226f26579c31704af35"
     },
-    "publication": {
-      "path": "commercial/services/secretariat-juridique/preuves/publication.json",
-      "bytes": 1420,
-      "sha256": "0295aa9c6beec19365ae6c7f9460c31f7a738ff8ee40313213324c3043a72964"
+    "depublication": {
+      "path": "commercial/services/secretariat-juridique/preuves/depublication.json",
+      "bytes": 569,
+      "sha256": "80d96df53d6a80858853c26779191e3a07c774ac072fb67819da0d4edb317329"
     }
   }
 }

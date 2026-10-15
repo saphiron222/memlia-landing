@@ -43,6 +43,11 @@ test('croise registre, contrat, backlog et collections récursives, y compris ca
     put('src/content/services/service.md', '---\nprimaryQuery: test cabinet\nstatus: pret-preview\n---\nTexte');
     const entries = collectQueries(root);
     assert.equal(entries.length, 5);
+    put('config/migration-catalogues.json', JSON.stringify({ routes: [{ from: '/automatisation/paie' }] }));
+    put('docs/strategy/site-v3/mesures/registre-requetes.json', JSON.stringify({ articles: [{ url: 'https://example.com/automatisation/paie', requete: 'test cabinet' }] }));
+    assert.throws(() => collectQueries(root), /URL locale|URL canonique/, 'une URL externe ne devient pas une archive par son seul chemin');
+    put('docs/strategy/site-v3/mesures/registre-requetes.json', JSON.stringify({ articles: [{ url: 'https://memlia.fr/outil', requete: 'test cabinet' }] }));
+
     assert.equal(auditQueries(entries).pass, false);
     const cli = spawnSync(process.execPath, [join(process.cwd(), 'scripts/verify-query-ownership.mjs'), '--root', root], { encoding: 'utf8' });
     assert.equal(cli.status, 1);

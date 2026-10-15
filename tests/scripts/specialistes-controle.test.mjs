@@ -52,7 +52,6 @@ function ficheFictive(agent) {
     faq: { balisage: false, questions: [1, 2, 3, 4, 5].map((n) => ({ question: `Question ${n} ?`, reponse: texte(n) })) },
     tachesDepart: ['collecte-pieces', 'saisie-ocr', 'banque-rapprochement'],
     voisins: [{ agent: 'commercial', role: 'avant', objet: 'l’entrée en relation' }, { agent: 'juridique-fiscal', role: 'apres' }],
-    pageDeLaRegle: '/automatisation/saisie-comptable',
   };
 }
 const avecFiche = (agents, changer = () => {}) => {
@@ -62,9 +61,14 @@ const avecFiche = (agents, changer = () => {}) => {
   changer(balthazar.fiche, balthazar);
 };
 
-test('les pages service sont lues : douze, chacune avec sa famille et son statut', () => {
-  assert.ok(SERVICES.length >= 12, `${SERVICES.length} pages service lues`);
+test('les douze anciennes pages service sont lues et retirées de la publication, sans lien depuis les agents', () => {
+  assert.equal(SERVICES.length, 12, `${SERVICES.length} pages service lues`);
   assert.ok(SERVICES.every(({ famille, statut }) => famille && statut), JSON.stringify(SERVICES));
+  assert.deepEqual([...new Set(SERVICES.map(({ statut }) => statut))], ['a-valider']);
+  for (const agent of AGENTS) {
+    assert.deepEqual(agent.servicesLies, [], `${agent.slug} : aucun ancien service lié`);
+    assert.equal(agent.fiche?.pageDeLaRegle, undefined, `${agent.slug} : aucun renvoi vers une règle retirée`);
+  }
 });
 
 test('les données réelles des douze agents passent tous les recoupements', (t) => {
@@ -102,26 +106,49 @@ test('témoins de partition : famille inconnue, en double, prise au hub ou au bl
 });
 
 test('témoins des pages service : inconnue, non publiée, d’une famille non portée, publiée sans agent', () => {
-  rougit((a) => de(a, 'finance').servicesLies.push('page-inventee'), /finance : service lié inconnu « page-inventee »/u);
-  rougit((a) => de(a, 'finance').servicesLies.push('saisie-comptable'), /finance : service « saisie-comptable » d’une famille qu’il ne porte pas/u);
-  rougit((a) => { de(a, 'comptabilite').servicesLies = de(a, 'comptabilite').servicesLies.filter((s) => s !== 'notes-de-frais'); }, /service publié « notes-de-frais » lié par aucun agent/u);
-  rougit(() => {}, /service lié non publié « notes-de-frais »/u, SERVICES.map((s) => (s.slug === 'notes-de-frais' ? { ...s, statut: 'brouillon' } : s)));
+  // Le catalogue réel n’a plus de services liés. Cette fixture valide garde les gardes de portage éprouvés.
+  const services = [
+    { slug: 'saisie-comptable', famille: 'saisie-ocr', statut: 'publie' },
+    { slug: 'notes-de-frais', famille: 'notes-de-frais', statut: 'publie' },
+  ];
+  const base = () => {
+    const agents = copie();
+    de(agents, 'comptabilite').servicesLies = ['saisie-comptable', 'notes-de-frais'];
+    de(agents, 'comptabilite').fiche.pageDeLaRegle = '/automatisation/saisie-comptable';
+    return agents;
+  };
+  assert.deepEqual(erreurs(base(), services), [], 'la fixture publiée, portée et liée est valide');
+  const mutant = (changer, attendue, publications = services) => {
+    const agents = base();
+    changer(agents);
+    assert.deepEqual(erreurs(agents, publications), [attendue], 'le témoin rougit uniquement pour son altération');
+  };
+  mutant((a) => de(a, 'finance').servicesLies.push('page-inventee'), 'finance : service lié inconnu « page-inventee »');
+  mutant((a) => {
+    de(a, 'comptabilite').servicesLies = ['notes-de-frais'];
+    delete de(a, 'comptabilite').fiche.pageDeLaRegle;
+    de(a, 'finance').servicesLies.push('saisie-comptable');
+  }, 'finance : service « saisie-comptable » d’une famille qu’il ne porte pas (saisie-ocr)');
+  mutant((a) => { de(a, 'comptabilite').servicesLies = ['saisie-comptable']; }, 'service publié « notes-de-frais » lié par aucun agent (famille notes-de-frais)');
+  mutant(() => {}, 'comptabilite : service lié non publié « notes-de-frais » (a-valider)', services.map((s) => s.slug === 'notes-de-frais' ? { ...s, statut: 'a-valider' } : s));
+  mutant((a) => de(a, 'comptabilite').servicesLies.push('notes-de-frais'), 'comptabilite : service « notes-de-frais » lié deux fois');
   assert.throws(() => exigerAgents([...SERVICES, { slug: 'page-neuve', famille: 'tva', statut: 'publie' }]), /« page-neuve » lié par aucun agent/u);
 });
 
 test('la fiche : jamais pour une carte vers une page, obligatoire dès que l’agent est publié, facultative avant', () => {
-  rougit((a) => { de(a, 'paie-social').fiche = ficheFictive(de(a, 'comptabilite')); }, /paie-social : fiche écrite alors que la carte mène à une page existante/u);
+  rougit((a) => { de(a, 'missions-audit').fiche = ficheFictive(de(a, 'comptabilite')); }, /missions-audit : fiche écrite alors que la carte mène à une page existante/u);
   rougit((a) => { de(a, 'finance').publie = true; delete de(a,'finance').fiche; }, /finance : publié sans contenu de fiche/u);
   const nonPubliee = copie();
   de(nonPubliee,'finance').publie=false; delete de(nonPubliee,'finance').fiche;
   assert.deepEqual(erreurs(nonPubliee), [], 'une fiche non publiée peut attendre son contenu');
   // Une carte vers une page existante peut être publiée sans fiche.
   const page = copie();
-  de(page, 'paie-social').publie = true;
+  de(page, 'missions-audit').publie = true;
   assert.deepEqual(erreurs(page), []);
   // `ficheDe` refuse de rendre une fiche absente ou une carte vers une page.
   assert.throws(() => ficheDe(de(nonPubliee, 'finance')), /pas encore écrit/u);
-  assert.throws(() => ficheDe(de(AGENTS, 'paie-social')), /mène à \/automatisation\/paie/u);
+  assert.throws(() => ficheDe(de(AGENTS, 'missions-audit')), /mène à \/commissaires-aux-comptes/u);
+  assert.equal(ficheDe(de(AGENTS, 'paie-social')).requete, 'ia paie', 'Salomé porte désormais une vraie fiche');
 });
 
 test('témoins de fiche : une fiche complète passe, chaque écart d’un seul champ rougit', () => {

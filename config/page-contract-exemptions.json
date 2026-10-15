@@ -42,78 +42,6 @@
       "reason": "Page de compatibilité : chaque logiciel y a sa carte et son logo d’éditeur, et chaque guide lié porte sa preuve fonctionnelle propre ; une illustration ajoutée à la collection ne prouverait rien de plus."
     },
     {
-      "route": "/integrations/rapprochement-bancaire-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/lettrage-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/dsn-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/bulletin-de-paie-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/saisie-comptable-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/cloture-sage",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/lettrage-cegid",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/dsn-silae",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
-      "route": "/integrations/bulletin-de-paie-silae",
-      "clauses": [
-        2
-      ],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
-    },
-    {
       "route": "/automatisation-cabinet-comptable",
       "clauses": [
         2
@@ -360,6 +288,14 @@
       ],
       "date": "2026-10-15",
       "reason": "Hub agents aligné sur le hub robots à la demande de Kevin : trio de figurines des agents et cartes du catalogue. Les images sont partagées avec les fiches et un rendu social propre présente le trio ; aucun cadre HTML décoratif supplémentaire dans le héros."
+    },
+    {
+      "route": "/agents-ia/paie-social",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
     }
   ]
 }

@@ -70,8 +70,14 @@ const fichesPubliees = () => FICHES.filter((agent) => agent.publie === true);
 const idDeFiche = (agent) => `fiche-${agent.slug}`;
 
 /** L'URL absolue de l'image sociale d'une fiche, telle que le rendu la publie : `fiche.image.url` doit la nommer. */
-function urlSociale(agent, rang) {
-  return `${SITE.url}/proofs/v2/og/${String(DEPART + rang).padStart(2, '0')}-${idDeFiche(agent)}.webp`;
+function numeroDuCadre(agent) {
+  const url = ficheDe(agent).image.url;
+  const match = url.match(/\/og\/(\d+)-fiche-([a-z0-9-]+)\.webp$/);
+  assert.ok(match && match[2] === agent.slug, `${agent.slug} : URL de cadre stable requise`);
+  return Number(match[1]);
+}
+function urlSociale(agent) {
+  return `${SITE.url}/proofs/v2/og/${String(numeroDuCadre(agent)).padStart(2, '0')}-${idDeFiche(agent)}.webp`;
 }
 
 /** Une ligne de cas : l'Arrêt barre le cas et ce qui n'a pas été proposé, son motif reste plein (comme sur la page). */
@@ -108,13 +114,13 @@ function cadreDeFiche(agent) {
 function pageDeLaSerie() {
   const fiches = fichesPubliees();
   fiches.forEach((agent, i) => {
-    const attendue = urlSociale(agent, i + 1);
+    const attendue = urlSociale(agent);
     assert.equal(ficheDe(agent).image.url, attendue, `${agent.slug} : fiche.image.url doit nommer le cadre rendu (${attendue})`);
   });
   return [
     '<!doctype html>',
     '<html lang="fr"><head><meta charset="utf-8"><link rel="stylesheet" href="styles.css"><title>Agents IA : le trio du hub et les rejeux des fiches</title></head>',
-    `<body><main>${[cadreDuHub(), ...fiches.map(cadreDeFiche), `<section class="frame hatch compatibilites" id="compatibilites" data-og-only aria-label="Robots et agents IA Memlia dans les logiciels de votre cabinet"><div><p class="micro">Les compatibilités Memlia</p><h1>Vos outils.<br>Nos robots et agents IA.</h1><p>Production, paie, juridique, banque et messagerie.</p></div><div class="compatibilites-figurine"><img src="../../../public/agents/informatique-outils-512.webp" alt="Octavie, informatique et outils"><div class="compatibilites-logos"><img src="../../../public/logos/pennylane.webp" alt="Pennylane"><img src="../../../public/logos/microsoft-excel.svg" alt="Microsoft Excel"><img src="../../../public/logos/slack.webp" alt="Slack"></div></div></section>`].join('\n')}</main></body></html>`,
+    `<body><main>${[{numero:49,html:cadreDuHub()}, ...fiches.map(agent=>({numero:numeroDuCadre(agent),html:cadreDeFiche(agent)})), {numero:59,html:`<section class="frame hatch compatibilites" id="compatibilites" data-og-only aria-label="Robots et agents IA Memlia dans les logiciels de votre cabinet"><div><p class="micro">Les compatibilités Memlia</p><h1>Vos outils.<br>Nos robots et agents IA.</h1><p>Production, paie, juridique, banque et messagerie.</p></div><div class="compatibilites-figurine"><img src="../../../public/agents/informatique-outils-512.webp" alt="Octavie, informatique et outils"><div class="compatibilites-logos"><img src="../../../public/logos/pennylane.webp" alt="Pennylane"><img src="../../../public/logos/microsoft-excel.svg" alt="Microsoft Excel"><img src="../../../public/logos/slack.webp" alt="Slack"></div></div></section>`}].sort((a,b)=>a.numero-b.numero).map(frame=>frame.html).join('\n')}</main></body></html>`,
     '',
   ].join('\n');
 }

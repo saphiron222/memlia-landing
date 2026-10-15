@@ -3,10 +3,11 @@ import { getCollection } from 'astro:content';
 import Service from '@/layouts/Service.astro';
 import RobotLayout from '@/layouts/Robot.astro';
 import { ROBOTS } from '@/data/robots';
+import { estRouteRetiree } from '@/data/migrations-catalogues.mjs';
 import { eeatService, lierSources } from '@/data/page-eeat';
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
+  const services = (await getCollection('services')).filter(entree => !estRouteRetiree(`/automatisation/${entree.id}`));
   const routes = new Set(services.map((entree) => entree.id));
   for (const robot of ROBOTS) if (routes.has(robot.slug)) throw new Error(`Collision service / robot : ${robot.slug}`);
   return [...services.map((entree) => ({ params: { slug: entree.id }, props: { entree, robot: null } })), ...ROBOTS.map((robot) => ({ params: { slug: robot.slug }, props: { entree: null, robot } }))];

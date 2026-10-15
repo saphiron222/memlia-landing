@@ -77,3 +77,6 @@ _Avoid_ : partenaire, intégration certifiée, plateforme
 La vérification, par les équipes du cabinet qui feront le travail, qu'une automatisation livrée fait
 ce que sa règle dit, sur leurs propres cas.
 _Avoid_ : validation (réservée à la décision du collaborateur sur une proposition), test
+
+
+Décision d’architecture du 15/10/2026 : Robots (routines), Agents IA (métiers), Intégrations (compatibilités) sont les trois entrées commerciales. Les douze anciens services par pôle et les douze guides logiciels sont des archives internes, avec redirections permanentes vers les catalogues actifs. Salomé possède sa fiche ; Aude et Octavie conservent les destinations partagées CAC et Intégrations. Les pôles éditoriaux du blog ne constituent pas une quatrième offre.

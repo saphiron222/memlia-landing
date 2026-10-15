@@ -1,107 +1,99 @@
 import { test, expect } from '@playwright/test';
+import { INTEGRATIONS, INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
+import { CONNECTEURS, DOMAINES } from '../../src/data/connecteurs';
+import migration from '../../config/migration-catalogues.json' with { type: 'json' };
+import { widths } from './helpers/inventories';
 
-import { INTEGRATIONS_INDEXABLES } from '../../src/data/integrations';
-import { checkIntegrationPage, widths } from './helpers/inventories';
+const guides = migration.routes.filter(row => row.type === 'guide');
+const retired = new Set(migration.routes.map(row => row.from));
 
-const slugs = INTEGRATIONS_INDEXABLES.map(({ slug }) => slug);
-const services = [...new Set(INTEGRATIONS_INDEXABLES.map(({ service }) => service.href))];
+test('douze guides archivés, douze migrations et aucune route active de guide : le témoin ne peut pas être vide', () => {
+  expect(INTEGRATIONS).toHaveLength(12);
+  expect(INTEGRATIONS_INDEXABLES).toEqual([]);
+  expect(guides).toHaveLength(12);
+  expect(guides.map(row => row.from).sort()).toEqual(INTEGRATIONS.map(guide => `/integrations/${guide.slug}`).sort());
+});
 
-test('le hub filtre par logiciel et tâche, annonce le résultat et permet de tout retrouver', async ({ page }) => {
+test('la recherche porte sur les logiciels et domaines, sans ancien filtre de guides', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/integrations');
-  const guide = INTEGRATIONS_INDEXABLES.find(item => item.vendor === 'Silae' && item.task === 'DSN')!;
-  await page.getByLabel('Votre logiciel', { exact: true }).selectOption(guide.product);
-  await page.getByLabel('Votre tâche', { exact: true }).fill('dsn');
-  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(1);
-  await expect(page.locator('[data-guide-count]')).toHaveText('1 guide disponible.');
-  await expect(page.locator(`main a[href="/integrations/${guide.slug}"]`)).toBeVisible();
-  await page.getByLabel('Votre tâche', { exact: true }).press('Enter');
+  await expect(page.locator('[data-guide-filters], [data-guide-product]')).toHaveCount(0);
+  const input = page.getByLabel('Le nom de votre logiciel', { exact: true });
+  await input.fill('Silae');
+  const matches = CONNECTEURS.filter(c => c.nom.toLocaleLowerCase('fr').includes('silae'));
+  await expect(page.locator('[data-connecteur]:visible')).toHaveCount(matches.length);
+  await input.press('Enter');
   await expect(page).toHaveURL(/\/integrations$/);
-  await page.getByLabel('Votre tâche', { exact: true }).fill('aucun-resultat-possible');
-  await expect(page.locator('[data-guide-count]')).toHaveText('0 guides disponibles.');
-  await expect(page.locator('[data-guide-empty]')).toBeVisible();
-  await page.getByRole('search', {name:'Trouver un guide'}).getByRole('button', { name: 'Tout afficher', exact: true }).click();
-  await expect(page.getByLabel('Votre tâche', { exact: true })).toBeFocused();
-  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
-  await page.getByLabel('Votre tâche', { exact: true }).fill('CLÔTURE');
-  await expect(page.locator('[data-guide-product]:visible')).toHaveCount(INTEGRATIONS_INDEXABLES.filter(item => item.task.toLocaleLowerCase('fr').includes('clôture')).length);
+  await input.fill('aucun-resultat-possible');
+  await expect(page.locator('[data-connecteur-count]')).toContainText('Aucun logiciel');
+  await page.getByRole('search', {name:'Trouver un logiciel'}).getByRole('button', { name:'Tout afficher', exact:true }).click();
+  await expect(input).toBeFocused();
+  await expect(page.locator('[data-connecteur]:visible')).toHaveCount(CONNECTEURS.length);
+  await page.getByLabel('Votre besoin', { exact:true }).selectOption('production-comptable');
+  await expect(page.locator('[data-connecteur]:visible')).toHaveCount(CONNECTEURS.filter(c => c.domaine === 'production-comptable').length);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
 });
 
-test('sans JavaScript, le hub conserve tous les guides et les raccourcis logiciels', async ({ browser, baseURL }) => {
-  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 375, height: 812 } });
-  try {
-    const page = await context.newPage();
-    await page.goto('/integrations');
-    await expect(page.locator('[data-guide-filters]')).toBeHidden();
-    await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
-    await page.locator('.hub-raccourcis a').last().click();
-    await expect(page).toHaveURL(/#product-\d+$/);
-    await expect(page.locator('[data-guide-product]:visible')).toHaveCount(slugs.length);
-  } finally { await context.close(); }
-});
-
-test('inventaire des guides : plancher et identités uniques', () => {
-  expect(slugs.length).toBeGreaterThanOrEqual(9);
-  expect(new Set(slugs).size).toBe(slugs.length);
-});
-
 for (const width of widths) {
-  test(`les pages intégrations restent lisibles à ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 900 });
-    for (const guide of INTEGRATIONS_INDEXABLES) await checkIntegrationPage(page, guide, width);
+  test(`le catalogue de compatibilités reste lisible et navigable à ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height:900 });
+    const response = await page.goto('/integrations');
+    expect(response?.status()).toBe(200);
+    await expect(page.locator('main h1')).toHaveCount(1);
+    await expect(page.locator('[data-connecteur]')).toHaveCount(CONNECTEURS.length);
+    await expect(page.locator('[data-domaine]')).toHaveCount(DOMAINES.length);
+    await expect(page.locator('[data-integration-cards]')).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   });
 }
 
-test('le hub, les moyeux et le footer relient la vague forte', async ({ page }) => {
-  await page.goto('/integrations');
-  for (const slug of slugs) await expect(page.locator(`main a[href="/integrations/${slug}"]`)).toHaveCount(1);
-  await expect(page.locator('footer a[href="/integrations"]')).toBeVisible();
-
-  for (const service of services) {
-    const response = await page.goto(service);
-    expect(response?.status()).toBe(200);
-    for (const guide of INTEGRATIONS_INDEXABLES.filter((guide) => guide.service.href === service)) {
-      await expect(page.locator(`main a[href="/integrations/${guide.slug}"]`)).toHaveCount(1);
-    }
-  }
-});
-
-test('le hub et tous les guides gardent leurs repères accessibles essentiels', async ({ page }) => {
-  for (const path of ['/integrations', ...slugs.map((slug) => `/integrations/${slug}`)]) {
+test('les trois catalogues gardent leurs repères accessibles et ne lient plus les anciennes pages', async ({ page }) => {
+  for (const path of ['/integrations', '/agents-ia', '/automatisation-cabinet-comptable']) {
     const response = await page.goto(path);
     expect(response?.status()).toBe(200);
     await expect(page.locator('main')).toHaveCount(1);
     await expect(page.locator('nav[aria-label="Navigation principale"]')).toHaveCount(1);
     await expect(page.locator('footer')).toHaveCount(1);
-    await expect(page.locator('img:not([alt])')).toHaveCount(0);
-    await expect(page.locator('a[href=""]')).toHaveCount(0);
+    await expect(page.locator('img:not([alt]), a[href=""]')).toHaveCount(0);
     const structure = await page.evaluate(() => {
-      const ids = [...document.querySelectorAll<HTMLElement>('[id]')].map((element) => element.id);
-      const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
-      const levels = [...document.querySelectorAll('main h1, main h2, main h3')].map((heading) => Number(heading.tagName[1]));
-      const skipped = levels.some((level, index) => index > 0 && level > levels[index - 1] + 1);
-      return { duplicateIds, skipped };
+      const ids = [...document.querySelectorAll<HTMLElement>('[id]')].map(el => el.id);
+      const levels = [...document.querySelectorAll('main h1, main h2, main h3')].map(heading => Number(heading.tagName[1]));
+      return { duplicateIds:ids.filter((id,i) => ids.indexOf(id) !== i), skipped:levels.some((level,i) => i > 0 && level > levels[i-1]+1), links:[...document.querySelectorAll<HTMLAnchorElement>('a[href]')].map(a => new URL(a.href).pathname) };
     });
-    expect(structure.duplicateIds, `${path}: identifiants dupliqués`).toEqual([]);
-    expect(structure.skipped, `${path}: niveau de titre sauté`).toBe(false);
+    expect(structure.duplicateIds, path).toEqual([]);
+    expect(structure.skipped, path).toBe(false);
+    expect(structure.links.filter(href => retired.has(href)), `${path}: aucune destination retirée`).toEqual([]);
   }
 });
 
-test('sans JavaScript, le contenu, la preuve et le retour au moyeu restent servis', async ({ browser, baseURL }) => {
-  const context = await browser.newContext({
-    baseURL,
-    javaScriptEnabled: false,
-    viewport: { width: 375, height: 812 },
-  });
-  const page = await context.newPage();
-  for (const guide of INTEGRATIONS_INDEXABLES) {
-    const response = await page.goto(`/integrations/${guide.slug}`);
-    expect(response?.status()).toBe(200);
-    await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('h1')).toHaveText(guide.h1);
-    await expect(page.locator(`[data-proof="integrations/${guide.slug}"]`)).toBeVisible();
-    await expect(page.getByRole('link',{name:guide.service.label,exact:true})).toBeVisible();
+test('sans JavaScript, tous les logiciels, les raccourcis de domaine et la démonstration restent servis', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled:false, viewport:{width:375,height:812} });
+  try {
+    const page = await context.newPage();
+    await page.goto('/integrations');
+    await expect(page.locator('[data-connecteur-filters]')).toBeHidden();
+    await expect(page.locator('[data-connecteur]')).toHaveCount(CONNECTEURS.length);
+    await expect(page.locator('[data-guide-product], [data-guide-filters]')).toHaveCount(0);
+    const domaine = DOMAINES.find(d => CONNECTEURS.some(c => c.domaine === d.id))!;
+    await page.locator(`#domaines a[href="#${domaine.id}"]`).click();
+    await expect(page).toHaveURL(new RegExp(`#${domaine.id}$`));
+    await expect(page.locator(`[data-domaine="${domaine.id}"]`)).toBeVisible();
+    await expect(page.locator('[data-agent-rejeu] tbody tr')).toHaveCount(4);
+  } finally { await context.close(); }
+});
+
+test('livraison Pages : chaque ancien guide redirige directement vers sa carte, avec et sans barre finale', async ({ request, page }) => {
+  test.skip(process.env.QA_PAGES_DELIVERY !== '1', 'Les redirections de Cloudflare Pages se vérifient sur la livraison réelle, pas sur astro preview.');
+  expect(guides).toHaveLength(12);
+  for (const row of guides) {
+    for (const old of [row.from, `${row.from}/`, `${row.from}.html`]) {
+      const response = await request.get(old, {maxRedirects:0});
+      expect(response.status(), old).toBe(301);
+      const location = new URL(response.headers().location, response.url());
+      expect(location.pathname + location.hash, old).toBe(row.to);
+    }
+    await page.goto(row.to);
+    const id = new URL(row.to, 'https://memlia.fr').hash.slice(1);
+    await expect(page.locator(`[data-connecteur="${id}"]`)).toBeVisible();
   }
-  await context.close();
 });

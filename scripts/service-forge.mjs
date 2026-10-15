@@ -694,9 +694,20 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
       const { recipe, body, review } = snapshot;
       const manifest = readJson(join(base, slug, 'manifest.json'));
       const receiptPath = join(base, slug, 'preuves/publication.json');
-      const sourceAsOf = manifest.status === 'publie' && existsSync(receiptPath) ? readJson(receiptPath).publishedAt : null;
+      const authority = publicationAuthority.get(slug);
+      let archiveDay = null;
+      if (authority?.status === 'depublie') {
+        const proof = readJson(join(root, authority.depublicationPath));
+        if (proof.slug !== slug || proof.route !== recipe.path || proof.authorizedBy !== 'Kevin Kitanga' ||
+            !DATE_RE.test(proof.depublishedOn ?? '') || proof.depublishedOn > today || String(proof.reason ?? '').length < 60 ||
+            [proof.redirect, proof.replacement].filter(value => typeof value === 'string' && value.startsWith('/') && value !== recipe.path).length !== 1) {
+          errors.push(`${slug} : décision d’archivage invalide.`);
+        } else archiveDay = proof.depublishedOn;
+      }
+      // Une archive est contrôlée à sa date de retrait ; une nouvelle publication exige les sources du jour.
+      const sourceAsOf = manifest.status === 'publie' && existsSync(receiptPath) ? readJson(receiptPath).publishedAt : archiveDay ? `${archiveDay}T12:00:00Z` : null;
       // Une copie scellée reste historique après publication ; une nouvelle préparation exige une collecte récente.
-      errors.push(...verifierRecetteService({ root, recipe, body, review, today, requireReview: true, sourceAsOf }).map((error) => `${slug} : ${error}`));
+      errors.push(...verifierRecetteService({ root, recipe, body, review, today: archiveDay ?? today, requireReview: true, sourceAsOf }).map((error) => `${slug} : ${error}`));
       const expectedFingerprint = candidateFingerprint(snapshot);
       const entries = registryServices.filter((entry) => entry.slug === slug);
       if (entries.length !== 1) errors.push(`${slug} : le registre doit contenir exactement une entrée service, reçu ${entries.length}.`);
@@ -705,7 +716,6 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
         errors.push(`${slug} : divergence URL ou requête entre registre et manifeste.`);
       }
       if (manifest.slug !== slug || manifest.type !== 'service') errors.push(`${slug} : divergence de slug ou type dans le manifeste.`);
-      const authority = publicationAuthority.get(slug);
       if (ledgerEnabled && manifest.status === 'publie' && authority?.status !== 'publie') errors.push(`${slug} : service publié absent de l’autorité durable.`);
       if (authority?.status === 'publie' && manifest.status !== 'publie') errors.push(`${slug} : l’autorité durable exige le statut publié ; une dépublication explicite est requise.`);
       if (manifest.candidateFingerprint !== expectedFingerprint) errors.push(`${slug} : l’empreinte du candidat diverge entre recette et manifeste.`);
