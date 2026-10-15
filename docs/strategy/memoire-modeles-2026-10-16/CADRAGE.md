@@ -57,7 +57,7 @@ Retrait complet de la figurine, y compris son rappel final. Aucun nouvel emblèm
 
 
 ## Arbitrage du 16/10 — bases ouvertes et navigation
-Kevin demande de remplacer les trois repères ChatGPT/Claude/Gemini par les familles réellement candidates à l’adaptation : Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss. Les logos proviennent des sites ou comptes officiels. Les versions de licence vérifiées sont consignées dans docs/qa/memoire-modeles/logos-manifest.json et public/logos/modeles/SOURCES.md. La page dit « à poids accessibles » : elle ne promet ni licence uniforme, ni toutes les bases sur tout matériel. Le choix est fait sur la tâche, le français, les formats, les ressources et les droits applicables. Aucune base n’est déjà entraînée par ce chantier.
+Kevin demande de remplacer les trois repères ChatGPT/Claude/Gemini par les familles réellement candidates à l’adaptation : Llama, Mistral, Qwen, DeepSeek, Gemma, gpt-oss. Les logos proviennent des sites ou comptes officiels. Les versions de licence vérifiées sont consignées dans docs/qa/memoire-modeles/logos-manifest.json et public/assets/solutions/modeles/SOURCES.md. La page dit « à poids accessibles » : elle ne promet ni licence uniforme, ni toutes les bases sur tout matériel. Le choix est fait sur la tâche, le français, les formats, les ressources et les droits applicables. Aucune base n’est déjà entraînée par ce chantier.
 
 Le header regroupe quatre prestations sous Nos services. Intégrations sort du groupe et devient un lien direct. Le footer reprend les mêmes quatre offres, et classe Intégrations avec Outils gratuits dans Vos outils. Aucun ancien catalogue de pôles ou guide environnement ne revient.
 

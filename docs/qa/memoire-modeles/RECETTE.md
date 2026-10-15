@@ -34,3 +34,5 @@ Le dossier de preuve visuelle evidence.json passe le vérificateur du skill Clau
 L’ensemble final est suivi par la CI sur son SHA exact ; le déploiement final utilise cet artefact. Les contrôles de scène testent l’absence d’appels réseau, le mouvement réduit, le mode sans JavaScript et les interactions clavier. La suppression du bouton de pause ne supprime pas les moyens de stabiliser la lecture.
 
 Après accélération et remplacement du logo : les13tests navigateur des offres repassent sur le statique final, sans test ignoré. Contrat97HTML,89exports Markdown,24redirections et deux images sociales contrôlées : PASS. Revue indépendante du dernier delta : PASS.
+
+Correction de la première CI complète : public/logos est réservé au catalogue des connecteurs (un fichier par carte). Les huit modèles utilisent désormais public/assets/solutions/modeles, avec manifeste et source typée alignés. Le contrôle d’orphelins du catalogue est conservé intact et rejoué.
