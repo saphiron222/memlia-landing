@@ -25,4 +25,6 @@ La forge de services conserve ses 24 erreurs historiques d’intention des titre
 
 ## Livraison
 
-Lien de la nouvelle prévisualisation et vérification distante consignés après déploiement. Aucun déploiement de production, aucune fusion.
+Prévisualisation : https://04ad1672.memlia.pages.dev/methode#etapes-titre — code au commit `97fb6a6a`. Alias actualisé : https://preview-coherence-figurines.memlia.pages.dev.
+
+Quatre scénarios navigateur PASS sur cette prévisualisation à 375/768/1440, dont ancre sans JavaScript et suppression de la légende. Inspection réelle du rendu distant sur ordinateur : cinq cartes, seconde rangée centrée, aucun texte manquant. HTTP 200, en-tête noindex/nofollow et canonical memlia.fr sur Méthode et À propos ; relevé dans `etapes-cartes-http.json`. Captures de la version distante et journal `memlia-etapes-remote.log` dans le dossier des preuves. Aucun déploiement de production, aucune fusion.

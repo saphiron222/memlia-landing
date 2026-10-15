@@ -67,4 +67,4 @@ Le worktree agents a été relu au commit `42a10d59` : le premier gabarit et la 
 - [x] Retirer le paragraphe des appels de facture électronique sans le déplacer.
 - [x] Retirer la légende des figurines sur À propos ; conserver image et alt.
 - [x] Vérifier 375/768/1440, sans JavaScript, ancres, liens et rendu réel ; régénérer les exports.
-- [ ] Déployer et vérifier la nouvelle prévisualisation ; recette dans `docs/qa/coherence-figurines/ETAPES-CARTES.md`.
+- [x] Déployer et vérifier la nouvelle prévisualisation : https://04ad1672.memlia.pages.dev/methode#etapes-titre ; recette dans `docs/qa/coherence-figurines/ETAPES-CARTES.md`.
