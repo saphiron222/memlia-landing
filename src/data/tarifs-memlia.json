@@ -1,0 +1,248 @@
+{
+  "baseMonthlyCents": 19900,
+  "creditProductionReserveCents": 1,
+  "overagePriceCentsPerCredit": 5,
+  "defaultAuthorizedOverageCents": 0,
+  "version": "2026-10-15.valide",
+  "status": "Valide par Kevin le 15 octobre 2026",
+  "currency": "EUR",
+  "tax": "HT",
+  "robots": {
+    "minimumAnnualCents": 60000,
+    "firstThreshold": 100,
+    "secondThreshold": 250,
+    "maximumPortfolio": 500,
+    "firstAdditionalCents": 400,
+    "secondAdditionalCents": 240,
+    "standardRobotIds": [
+      "suivi-declarations-fiscales",
+      "cfe",
+      "taxes-foncieres",
+      "suivi-urssaf",
+      "messagerie-fiscale",
+      "habilitations-fiscales",
+      "informations-legales-rne",
+      "dette-fiscale",
+      "veille-bodacc"
+    ]
+  },
+  "agents": [
+    {
+      "id": "comptabilite",
+      "name": "Balthazar",
+      "role": "Comptabilité",
+      "priceCents": 34900,
+      "includedCredits": 5000,
+      "profiles": [
+        {
+          "id": "leger",
+          "label": "Dossier léger",
+          "description": "10 pièces et un contrôle, sur un mois",
+          "creditsPerCase": 250,
+          "approxCases": 20
+        },
+        {
+          "id": "courant",
+          "label": "Dossier courant",
+          "description": "20 pièces, un rapprochement et un contrôle, sur un mois",
+          "creditsPerCase": 578,
+          "approxCases": 8
+        },
+        {
+          "id": "charge",
+          "label": "Dossier chargé",
+          "description": "50 pièces, deux rapprochements et deux contrôles, sur un mois",
+          "creditsPerCase": 1326,
+          "approxCases": 3
+        }
+      ]
+    },
+    {
+      "id": "paie-social",
+      "name": "Salomé",
+      "role": "Paie et social",
+      "priceCents": 34900,
+      "includedCredits": 4000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier employeur",
+          "description": "Un lot de contrôle jusqu’à 250 lignes et un brouillon de message, sur un mois",
+          "creditsPerCase": 109,
+          "approxCases": 36
+        }
+      ]
+    },
+    {
+      "id": "juridique-fiscal",
+      "name": "Grégoire",
+      "role": "Juridique et fiscal",
+      "priceCents": 34900,
+      "includedCredits": 3000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier documentaire",
+          "description": "Une préparation de dossier bornée et un brouillon de message",
+          "creditsPerCase": 489,
+          "approxCases": 6
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Florent",
+      "role": "Finance",
+      "priceCents": 39900,
+      "includedCredits": 4000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier de reporting",
+          "description": "Un reporting sur un modèle déjà configuré, une entité et une période",
+          "creditsPerCase": 758,
+          "approxCases": 5
+        },
+        {
+          "id": "previsionnel",
+          "label": "Dossier prévisionnel",
+          "description": "Un scénario financier borné sur un modèle déjà configuré",
+          "creditsPerCase": 1538,
+          "approxCases": 2
+        }
+      ]
+    },
+    {
+      "id": "missions-audit",
+      "name": "Aude",
+      "role": "Missions d’audit",
+      "priceCents": 39900,
+      "includedCredits": 4000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Lot préparatoire de mission",
+          "description": "Une préparation documentaire et deux rapprochements bornés ; aucun audit complet",
+          "creditsPerCase": 776,
+          "approxCases": 5
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "name": "Victoire",
+      "role": "Commercial",
+      "priceCents": 19900,
+      "includedCredits": 2000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier commercial",
+          "description": "Une préparation documentaire et deux brouillons de messages",
+          "creditsPerCase": 518,
+          "approxCases": 3
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "name": "Colette",
+      "role": "Communication",
+      "priceCents": 14900,
+      "includedCredits": 1500,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Campagne éditoriale",
+          "description": "Deux brouillons courts et une synthèse de sources fournie distincte",
+          "creditsPerCase": 273,
+          "approxCases": 5
+        }
+      ]
+    },
+    {
+      "id": "relation-client",
+      "name": "Émile",
+      "role": "Relation client",
+      "priceCents": 19900,
+      "includedCredits": 3000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier relation client",
+          "description": "Cinq brouillons de messages et une synthèse distincte des échanges, sur un mois",
+          "creditsPerCase": 360,
+          "approxCases": 8
+        }
+      ]
+    },
+    {
+      "id": "gestion-cabinet",
+      "name": "Honoré",
+      "role": "Gestion du cabinet",
+      "priceCents": 24900,
+      "includedCredits": 3000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Vue de gestion",
+          "description": "Un reporting agrégé sur un modèle déjà configuré",
+          "creditsPerCase": 758,
+          "approxCases": 3
+        }
+      ]
+    },
+    {
+      "id": "rh-cabinet",
+      "name": "Raphaël",
+      "role": "RH du cabinet",
+      "priceCents": 19900,
+      "includedCredits": 2000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier RH préparatoire",
+          "description": "Une préparation documentaire et deux brouillons de messages",
+          "creditsPerCase": 518,
+          "approxCases": 3
+        }
+      ]
+    },
+    {
+      "id": "informatique-outils",
+      "name": "Octavie",
+      "role": "Informatique et outils",
+      "priceCents": 24900,
+      "includedCredits": 2000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Lot de fichiers",
+          "description": "Un contrôle de fichier et une note de synthèse distincte",
+          "creditsPerCase": 295,
+          "approxCases": 6
+        }
+      ]
+    },
+    {
+      "id": "protection-donnees",
+      "name": "Prudence",
+      "role": "Protection des données",
+      "priceCents": 24900,
+      "includedCredits": 2000,
+      "profiles": [
+        {
+          "id": "courant",
+          "label": "Dossier documentaire",
+          "description": "Une préparation documentaire bornée, pour la revue du cabinet",
+          "creditsPerCase": 460,
+          "approxCases": 4
+        }
+      ]
+    }
+  ],
+  "setup": {
+    "firstAgentPriceCents": 199000,
+    "additionalAgentPriceCents": 99000
+  }
+}

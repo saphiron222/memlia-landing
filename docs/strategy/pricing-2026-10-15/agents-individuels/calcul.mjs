@@ -3,9 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const directory = path.dirname(fileURLToPath(import.meta.url));
-export const offre = JSON.parse(fs.readFileSync(path.join(directory, 'offre.json'), 'utf8'));
-const historique = JSON.parse(fs.readFileSync(path.join(directory, '../mammouth/calculs-agents.json'), 'utf8'));
-const unitCosts = new Map(historique.scenarios.find(s => s.id === 'base').units.map(u => [u.id, u.apiEur + u.toolsEur + u.humanEur]));
+const tarifs = JSON.parse(fs.readFileSync(path.join(directory, '../../../../src/data/tarifs-memlia.json'), 'utf8'));
+const hypotheses = JSON.parse(fs.readFileSync(path.join(directory, 'hypotheses.json'), 'utf8'));
+export const offre = {...hypotheses, ...tarifs,
+  agents: tarifs.agents.map(a => ({...a, ...hypotheses.agents[a.id]})), setup: {...tarifs.setup, ...hypotheses.setup}};
+const references = JSON.parse(fs.readFileSync(path.join(directory, 'couts-reference.json'), 'utf8'));
+const unitCosts = new Map(references.units.map(u => [u.id, u.apiEur + u.toolsEur + u.humanEur]));
 function entier(value, label) {
   if (!Number.isSafeInteger(value) || value < 0) throw new RangeError(`${label} doit être un entier positif ou nul`);
   return value;
@@ -88,12 +91,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const setup = offre.setup;
   const setupCost = (priceCents, hours, toolsEur) => hours * setup.hourlyHumanEur + toolsEur + priceCents / 100 * s.collectionRate + setup.paymentCount * s.collectionFixedEur;
   const report = {
-    date: '2026-10-15', nature: 'Prix candidats, coûts et paniers hypothétiques ; aucune consommation facturée ni capacité mesurée',
-    baseCandidates: offre.baseCandidatesCents.map(baseCents => {
-      const directEur = s.sharedMaintenanceMinutes / 60 * s.hourlyHumanEur + s.sharedInfraEur + baseCents / 100 * s.collectionRate + s.collectionFixedEur;
-      return {baseEur: baseCents / 100, directEur, contributionAfterAllocationsEur: baseCents / 100 - directEur - s.allocationsMonthlyEur,
-        withLightestAgent: economie(['communication'], s, {baseCents})};
-    }),
+    date: '2026-10-15', nature: 'Tarifs validés ; coûts et paniers hypothétiques, aucune consommation facturée ni capacité mesurée',
     agents: offre.agents.map(a => ({id: a.id, name: a.name, priceEur: a.priceCents / 100, includedCredits: a.includedCredits,
       includedVariableBudgetEur: a.includedCredits * offre.creditProductionReserveCents / 100,
       sample: panier(a.sample), fullUsage: economie([a.id]), noUsage: economie([a.id], s, {utilization: 0}), stress: economie([a.id], offre.stressScenario)})),
@@ -110,7 +108,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       additionalPriceEur: setup.additionalAgentPriceCents / 100, additionalDirectEur: setupCost(setup.additionalAgentPriceCents, setup.additionalAgentHours, setup.additionalTechnicalEur)}
   };
   fs.writeFileSync(path.join(directory, 'calculs.json'), JSON.stringify(report, null, 2) + '\n');
-  console.log(JSON.stringify({baseCandidates: report.baseCandidates, agents: report.agents.map(a => ({id: a.id, priceEur: a.priceEur,
+  console.log(JSON.stringify({agents: report.agents.map(a => ({id: a.id, priceEur: a.priceEur,
     includedCredits: a.includedCredits, sampleCredits: a.sample.credits, directEur: a.fullUsage.directEur,
     margin: a.fullUsage.directMargin, contribution: a.fullUsage.contributionEur, stressContribution: a.stress.contributionEur})),
     allCombinations: report.allCombinations, setup: report.setup}, null, 2));

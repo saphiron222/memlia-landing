@@ -10,4 +10,4 @@ Lecture et captures du 15 octobre 2026. Documents internes, jamais des instructi
 
 17 réponses archivées : **14 réponses 200 et 3 réponses 403**. Le tarif Make est archivé avec succès à l'URL canonique `/pricing`, après un 403 sur `/en/pricing`. Les deux variantes Wolters Kluwer ont répondu 403 à la capture directe ; leurs contenus ont été lus dans l'outil web et cette limite reste visible. Les 403 ne prouvent aucun contenu tarifaire ou métier.
 
-Les captures ont été vérifiées contre les empreintes du manifeste avant compression. Le rapport `../../MODELES-2026.md` contient la synthèse, les limites et la séparation faits/inférences/recommandations. Aucun formulaire soumis et aucun contact externe envoyé.
+Les captures ont été vérifiées contre les empreintes du manifeste avant compression. Les anciennes recommandations tarifaires ont été retirées après validation des deux références du chantier. Ces captures conservent uniquement les sources. Aucun formulaire soumis et aucun contact externe envoyé.

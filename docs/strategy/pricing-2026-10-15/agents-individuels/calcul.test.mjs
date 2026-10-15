@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {offre, agentsDe, creditsPourCout, panier, devis, economie, scanCombinaisons} from './calcul.mjs';
 test('douze agents réellement présents, sans doublon, avec prix et quota propres', () => {
-  const catalogue = JSON.parse(fs.readFileSync(new URL('../mammouth/COUVERTURE-TRAVAUX.json', import.meta.url)));
+  const catalogue = JSON.parse(fs.readFileSync(new URL('../preuves/mammouth/COUVERTURE-TRAVAUX.json', import.meta.url)));
   assert.deepEqual(offre.agents.map(a => a.id).sort(), catalogue.agents.map(a => a.id).sort());
   assert.equal(new Set(offre.agents.map(a => a.id)).size, 12);
   for (const a of offre.agents) {
