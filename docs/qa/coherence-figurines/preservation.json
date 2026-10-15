@@ -1,0 +1,24 @@
+{
+  "base": "2f94c8b5",
+  "unchanged": [
+    {
+      "path": "src/pages/integrations/index.astro",
+      "sha256": "e389a5625b954353a196cf6c8efb4434af4c3727b38a8c07e42a5943cd334cf1"
+    },
+    {
+      "path": "src/pages/integrations/[slug].astro",
+      "sha256": "4dc45a53e4ed5e5c3c0aa2aff313f0b76b838aaa772bf2fe737fee00e65502ca"
+    },
+    {
+      "path": "src/layouts/PageCommerciale.astro",
+      "sha256": "505227c10d377928d70d4cb38a972a178137193281475f9dc58401b5b88609de"
+    },
+    {
+      "path": "src/data/accueil/cac.ts",
+      "sha256": "2c579c42c9c9b823fcdc64c3022821ad525c260edebd9ef528674776acff2293"
+    }
+  ],
+  "contactScriptIdentical": true,
+  "sealedBodyDiff": [],
+  "claudeReferenceObserved": "42a10d59 (15/10/2026 13:28), premier gabarit et première fiche, travail en cours, aucun fichier repris."
+}

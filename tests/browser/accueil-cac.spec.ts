@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { CONTENU_CAC, FRONTIERE_CAC, SEO_CAC } from '../../src/data/accueil/cac';
 
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
-  test(`accueil CAC : copie, poster, frontière et ancres à ${width}px`, async ({ page }) => {
+  test(`accueil CAC : copie, scène A, frontière et ancres à ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const errors: string[] = [];
@@ -15,9 +15,11 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(page.locator('h1')).toHaveText(CONTENU_CAC.hero.titre);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${SEO_CAC.chemin}`);
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', CONTENU_CAC.hero.titre);
-    await expect(page.locator('[data-video-player] video')).toHaveAttribute('src', CONTENU_CAC.hero.video);
-    await expect(page.locator('[data-video-player] video')).toHaveAttribute('poster', CONTENU_CAC.hero.poster);
-    await expect(page.locator('[data-video-sound]')).toBeVisible();
+    // Recette A : les responsabilités et les références normatives restent vérifiées ci-dessous.
+    await expect(page.locator('main video')).toHaveCount(0);
+    const scene=page.locator('[data-scene="cac"] img');
+    await scene.scrollIntoViewIfNeeded();
+    await expect.poll(()=>scene.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
     await expect(page.locator('#couverture-cac')).toHaveText('Ce que votre suite d’audit fait déjà');
     for (const id of ['usages', 'methode', 'preuves', 'questions', 'use-certification', 'use-interventions', 'use-sacc', 'use-durabilite', 'use-administration']) await expect(page.locator(`#${id}`)).toHaveCount(1);
     const table = page.locator('[data-frontiere-cac] table');

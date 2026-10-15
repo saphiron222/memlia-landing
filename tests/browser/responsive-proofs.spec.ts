@@ -14,7 +14,8 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
         await handler.fulfill({ response, body: html });
       });
       await page.goto(route);
-      const images = page.locator('img[src^="/proofs/"]');
+      const editorial=['/','/contact','/methode'].includes(route);
+      const images = page.locator(editorial?'[data-scene] img':'img[src^="/proofs/"]');
       expect(await images.count()).toBeGreaterThan(0);
       const selections = [];
       for (const image of await images.all()) {
@@ -26,7 +27,9 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
           naturalWidth: node.naturalWidth,
         }));
         expect(selected.naturalWidth).toBeGreaterThan(0);
-        if (responsive) {
+        if(editorial){
+          if(responsive){expect(selected.currentSrc).toMatch(/\/illustrations\/figurines\/(accueil|contact|methode)-(640|1200)\.(avif|webp)$/);expect(selected.srcset).not.toBe('')}else expect(selected.currentSrc).toBe(selected.src);
+        } else if (responsive) {
           expect(selected.srcset).toContain(`${selected.src} 1600w`);
           expect(selected.sizes).not.toBe('');
           if (width === 375) expect(selected.currentSrc).toMatch(new RegExp(`/responsive/.*-${deviceScaleFactor === 1 ? 400 : 800}\\.webp$`));
@@ -36,10 +39,10 @@ for (const route of routes) for (const width of [375, 1440]) for (const deviceSc
         } else expect(selected.currentSrc).toBe(selected.src);
         selections.push(selected);
       }
-      const bytes = await page.evaluate(() => (performance.getEntriesByType('resource') as PerformanceResourceTiming[])
+      const bytes = await page.evaluate((prefix) => (performance.getEntriesByType('resource') as PerformanceResourceTiming[])
         .filter((item: PerformanceResourceTiming) => item.initiatorType === 'img' || item.initiatorType === 'link')
-        .filter(item => new URL(item.name).pathname.startsWith('/proofs/'))
-        .reduce((sum, item: PerformanceResourceTiming) => sum + item.encodedBodySize, 0));
+        .filter(item => new URL(item.name).pathname.startsWith(prefix))
+        .reduce((sum, item: PerformanceResourceTiming) => sum + item.encodedBodySize, 0),editorial?'/illustrations/figurines/':'/proofs/');
       measurements.push({ responsive, bytes, selections });
       await context.close();
     }

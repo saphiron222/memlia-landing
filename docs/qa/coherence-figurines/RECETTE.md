@@ -1,22 +1,25 @@
-# Recette de la proposition figurines — 15 octobre 2026
+# Recette A — six pages et corrections de composition
 
-Prévisualisation : https://b5fd040f.memlia.pages.dev/apercu/direction-figurines
+15 octobre 2026. Branche locale `site/coherence-figurines`. Prévisualisation préparée sur une copie noindex/nofollow ; le lien immuable et les contrôles distants sont ajoutés après son déploiement. Aucun déploiement de production ni fusion.
 
-Périmètre livré : le hub robots enrichi des sources officielles et imports logiciels ; un atelier de comparaison de deux recettes ; une page Méthode pilote complète ; le plan des six déclinaisons. Les pages commerciales courantes et `/integrations` ne sont pas remplacées avant le choix des images et la fin du chantier Claude, conformément à la demande de Kevin.
+## Résultat contrôlé
 
-- Build Astro et régénération des artefacts PASS, 108 pages. Vérification de types : zéro erreur et zéro avertissement, 39 indications non bloquantes.
-- 29 tests Node ciblés PASS, dont catalogue robots, images, sécurité et contrats des deux routes de proposition.
-- 14 scénarios navigateur locaux PASS : cinq pour les sources, l’atelier et le pilote, neuf de non-régression du hub et des fiches robots. Mobile 375, tablette du hub 768 et bureau 1440, clavier, focus, sans JavaScript et mouvement réduit.
-- Cinq scénarios distants PASS sur la prévisualisation finale. Une réponse transitoire « Nothing is here yet » de Cloudflare Pages a été observée immédiatement après le déploiement ; le site a ensuite été ouvert réellement, les trois routes contrôlées en HTTP 200, puis les cinq scénarios rejoués avec succès. Aucun retry automatique ni contrôle désactivé.
-- Les neuf logos et les deux images sont chargés réellement : contrôle de `complete` et `naturalWidth`, pas seulement présence d’un élément dans la page.
-- Inspection réelle dans le navigateur intégré : Méthode 1440×1000 et 375×812 ; choix A et B visibles sur mobile. Une image interrompue par une reconstruction locale a été rechargée et contrôlée une fois les fichiers disponibles ; le rendu final et les assertions de chargement passent.
-- Le hub garde ses six sections. Sources/imports prennent place dans « Construit sur votre cabinet ». Logos hébergés dans le site, sans hotlink, prix, statut Bêta ou partenariat implicite. Le script inclus dans le SVG source data.gouv a été supprimé du dérivé servi.
-- Les deux routes `/apercu/*` restent noindex et exclues du sitemap ; H1, titre social et headline JSON-LD cohérents. Les images ont des dimensions explicites, des AVIF/WebP 640/1200, sans texte incrusté.
-- Le formulaire de contact, ses consentements, présélections et fonctions d’envoi restent inchangés. Aucun message envoyé. Aucun compte fiscal/social consulté.
-- Les fonctions de protection des propositions compilent ; même retrait du beacon, CSP sans connexion distante et cache sans transformation que pour les robots. La prévisualisation est une copie noindex/nofollow, aucun déploiement de production.
-- Lighthouse du hub enrichi, ordinateur : performance 100, accessibilité 100, bonnes pratiques 100, SEO 100. Ce score ne représente pas une mesure de toutes les pages proposées.
-- Le contrôle global de page conserve uniquement l’échec antérieur de service-forge sur les 24 titres historiques ; aucune nouvelle erreur de rendu ou de métadonnées. La garde des services, le positionnement et les contrats du blog passent. Aucun garde neutralisé.
+Deux accueils, Méthode, À propos, Garanties et Contact utilisent les scènes A. Six scènes propres : Méthode réutilise l’image approuvée, cinq nouvelles images ont été générées séparément. Les grilles, étapes, cartes et panneaux reprennent la famille des fiches robots. Après les captures de Kevin, les surfaces vertes sont devenues continues et partagent les jetons du hub ; les longues demi-pages vides ont été recomposées en deux ou trois colonnes. Le hub intégrations et les guides restent différés.
 
-Rapports, captures et preuve de direction visuelle dans `memlia-landing-sources/coherence-figurines/2026-10-15/qa/`. Le contrôleur `frontend-design-direction/scripts/check-evidence.js` confirme la complétude du dossier ; il ne remplace pas l’inspection visuelle. Les originaux et prompts imagegen y sont archivés, les manifestes versionnés dans `docs/strategy/site-v3/coherence-figurines/`.
+## Vérifications locales
 
-Recette des images en attente de choix par Kevin, à partir des deux propositions concrètes. L’extension aux six pages n’est pas présentée comme déjà réalisée.
+- Astro : 108 pages compilées ; types sans erreur ni avertissement, 40 indications non bloquantes. Régénération, registre lastmod et audit des ressources PASS.
+- 47 tests Node ciblés PASS, dont vrai rendu Astro des onze sections, témoin de contenu, catalogue, images, routage, liens et contrats. 15 contrôles du catalogue et de livraison rejoués après les ajustements de dates : PASS.
+- 139 scénarios navigateur couverts sur les pages et composants affectés, dont images, légendes, formats responsifs DPR 1/2, ancres, clavier, focus, mouvement réduit, sans JavaScript, formulaire et robots. Le premier passage a révélé six attentes périmées du gabarit vidéo et du libellé de navigation ; elles ont été adaptées à la recette approuvée. Le rejeu de leurs fichiers avec les robots et les pages éditoriales valide 44/44 scénarios. Aucun test ignoré ni retry automatique.
+- Les six blocs verts sont comparés à la signature du hub en couleur, arrondi et marge intérieure ; chaque cellule interne doit être transparente. Les grilles occupent la rangée sur ordinateur et s’empilent sur mobile. Toutes les images sont réellement chargées (`naturalWidth`), avec dimensions explicites.
+- Inspection réelle dans le navigateur intégré à 375 et 1440 px : scènes, fondateur, contact, bandes vertes et sections recomposées. Captures automatisées complémentaires à 768 px et jusqu’à 1920 px pour les composants partagés. Preuve de direction visuelle complète, contrôleur `check-evidence.js` PASS ; il ne remplace pas l’inspection.
+- Lighthouse final : accueil mobile 99/100/100/100. Méthode, À propos, Garanties et accueil CAC sur ordinateur : 100 sur les quatre axes. Contact : 100/100/96/100 ; l’API de contact est absente du serveur statique local et journalise cette indisponibilité. Le repli courriel et les erreurs du widget sont testés ; aucun message réel envoyé.
+- Export Markdown et `llms-full.txt` : 100 pages générées et vérifiées depuis le contenu final. Positionnement après export : 15 tests PASS, 280 surfaces texte contrôlées. Les termes fonctionnels « date de lecture » et « date du contrôle » évitent la confusion avec des notes internes ; deux images de restitution ont été régénérées depuis leurs démonstrations.
+- Ancres et liens de corps des six anciennes pages conservés ; seuls les liens de téléchargement des deux vidéos retirées et la description de la vidéo CAC quittent les pages. Champs, script et consentements du contact identiques. Aucune modification des corps scellés des articles, services ou recettes de guides.
+- Images sociales propres aux six pages via le pipeline JPEG existant, canonical de production, un seul H1, schémas et sitemap contrôlés. Les démonstrations fictives des 21 robots restent intactes dans leur fonctionnement ; aucune collecte fiscale ou sociale réelle.
+
+## Limite préexistante
+
+Le contrat global conserve le seul échec de `service-forge` sur les 24 erreurs historiques de titres/intention des services. Ses autres clauses, le positionnement et les contrats des articles passent. Les garde-fous ne sont pas neutralisés et aucune fusion n’est annoncée comme prête pour la production.
+
+Sources, prompts exacts, planche des six scènes et rapports : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/`. Captures finales : `qa/production/`. Documentation : `docs/strategy/site-v3/coherence-figurines/`, notamment `DECISION-A.md`, le manifeste de production et le témoin de contenu.

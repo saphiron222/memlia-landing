@@ -1,17 +1,18 @@
-# Nouvelle recette figurines — proposition à valider
+# Recette A — six pages commerciales Memlia
 
-Prévisualisation du 15 octobre 2026 :
+Kevin a choisi les scènes de travail A le 15 octobre 2026. Elles sont intégrées aux deux accueils, à Méthode, À propos, Garanties et Contact. Les dernières corrections conservent le **vert du hub robots**, sans cellules blanches ni bandes grises, et répartissent les sections en grilles comme les livrables et les étapes des fiches robots.
 
-- [Atelier : deux recettes et les six déclinaisons](https://b5fd040f.memlia.pages.dev/apercu/direction-figurines).
-- [Pilote complet Méthode, comparateur A / B](https://b5fd040f.memlia.pages.dev/apercu/methode-figurines).
-- [Hub robots enrichi des sources et imports](https://b5fd040f.memlia.pages.dev/automatisation-cabinet-comptable).
+Prévisualisation de travail : https://preview-coherence-figurines.memlia.pages.dev/ (le compte rendu QA consigne le lien immuable vérifié).
 
-Le hub robots validé est enrichi, sans changer ses six sections. Les deux autres routes sont des propositions distinctes, non indexables, exclues du sitemap et protégées comme les démonstrations robots. Les pages Méthode, À propos, Garanties, Contact et les deux accueils courants attendent le choix de recette avant remplacement. Le hub intégrations attend la fin du chantier Claude Code.
+Les six pages gardent leurs intentions, leurs liens utiles et leurs limites métier. Le formulaire conserve son script, ses consentements et les présélections. Les 21 robots restent présents, avec leurs figurines et leurs démonstrations. Le hub intégrations reste en attente de la fin du chantier Claude Code ; aucun checkout de cette session n’a été modifié.
 
-Recommandation : A (scènes de travail) pour expliquer les accueils et la méthode ; B (portrait métier) pour accueillir au contact et pour les rappels courts. Le sur mesure reste une porte visible au même niveau que les robots et agents IA. Aucun ajout de statut ou de promesse technique repris d’un concurrent.
+- `DECISION-A.md` : choix de Kevin, préservation, corrections demandées sur les verts et les espaces vides à droite.
+- `PLAN.md` : périmètre et avancement.
+- `RECETTE-IMAGES.md` : matière, références et production.
+- `prompts-production.json` : prompts exacts et références des cinq nouvelles scènes ; Méthode reprend l’image A approuvée.
+- `docs/qa/coherence-figurines/production-images.json` : six routes, originaux, palette, dimensions, poids et empreintes ; portraits existants réutilisés.
+- `docs/qa/coherence-figurines/RECETTE.md` : vérifications et prévisualisation livrée.
 
-`PLAN.md` détaille les six pages, leurs contenus à préserver et les dépendances. `RECETTE-IMAGES.md` décrit la production après choix. `prompts.json` donne les prompts exacts et références ; les deux manifestes d’images et de logos relient les fichiers à leur provenance. `docs/qa/coherence-figurines/RECETTE.md` consigne la recette.
+Les originaux et la planche contact sont dans `/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/`. Les AVIF/WebP sont dans `public/illustrations/figurines/`. Les scènes ne représentent pas une équipe ou un dossier client. Les textes et les démonstrations lisibles restent du contenu natif.
 
-Originaux 1536×1024, prompts, logos et rapports : `/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/`. Production AVIF/WebP dans `public/illustrations/figurines/`, logos dans `public/sources-officielles/`.
-
-Branche `site/coherence-figurines`, basée sur le hub validé `50945e5f`, dans le checkout de ce chat. Aucun travail Claude modifié, aucune fusion ni production.
+L’ancien atelier A/B reste archivé dans sa prévisualisation `b5fd040f` ; B n’est utilisée sur aucune des six pages réelles. Branche locale `site/coherence-figurines`, sans fusion ni production.

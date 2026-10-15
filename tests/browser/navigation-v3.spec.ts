@@ -79,7 +79,7 @@ for (const width of [375, 1024, 1440]) {
     test.skip(!CAC_PUBLIE, 'E4 n’a pas encore publié sa route ; le contrat de données couvre les deux états.');
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
-    await expect(page.locator('.hero-texte a[href="/commissaires-aux-comptes"]')).toBeVisible();
+    await expect(page.locator('.hero-editorial a[href="/commissaires-aux-comptes"]')).toBeVisible();
     if (width >= 1024) {
       await page.locator('[aria-controls="sous-menu-cabinets"]').focus();
       await page.keyboard.press('Enter');

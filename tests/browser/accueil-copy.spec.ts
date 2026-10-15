@@ -6,17 +6,16 @@ for (const width of [375, 1440]) {
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveText('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.');
-    await expect(page.locator('.hero-sub')).toContainText('Confiez-nous une tâche répétitive.');
-    await expect(page.locator('.hero-sub')).toContainText('dans leurs outils');
-    await expect(page.locator('.hero-sub')).toContainText('Ils gardent la décision. Votre cabinet garde le savoir.');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('Confiez-nous une tâche répétitive.');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('dans leurs outils');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('Ils gardent la décision. Votre cabinet garde le savoir.');
     await expect(page.locator('main section')).toHaveCount(11);
-    await expect(page.locator('main [data-proof]')).toHaveCount(9);
-    const video = page.locator('video');
-    await video.scrollIntoViewIfNeeded();
-    await expect(video).toHaveAttribute('src', width < 768
-      ? '/media/r9/explainer-hero-45s-mobile.mp4'
-      : '/media/r9/explainer-hero-45s.mp4');
-    await expect(page.locator('track')).toHaveAttribute('src', '/media/r9/explainer.vtt');
+    // Recette A validée le 15 octobre : scène de portefeuille, plus de fausse interface décorative.
+    await expect(page.locator('main [data-proof]')).toHaveCount(0);
+    await expect(page.locator('main video')).toHaveCount(0);
+    const scene=page.locator('[data-scene="accueil"] img');
+    await scene.scrollIntoViewIfNeeded();
+    await expect.poll(()=>scene.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/');
     await expect(page.locator('#promesse')).toContainText('De l’observation à la maintenance');
     await expect(page.locator('#preuves')).toContainText('ce qui se prépare seul, ce qui attend votre validation et ce qui reste humain');
@@ -29,7 +28,7 @@ for (const width of [375, 1440]) {
       .filter(href => !document.getElementById(decodeURIComponent(href.slice(1)))));
     expect(brokenAnchors).toEqual([]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
-    await page.locator('.hero-btn').click();
+    await page.locator('.hero-editorial-actions a').first().click();
     await expect(page).toHaveURL(/\/contact$/);
   });
 }

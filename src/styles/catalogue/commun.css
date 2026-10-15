@@ -1,4 +1,5 @@
 :root { --avatar-carte: 84px; --avatar-heros: 116px; }
+.memlia-surface-verte { padding: var(--carte-marge); background: var(--accent-voile); border-radius: var(--r-cadre); }
 .catalogue-page { color: var(--texte); }
 .catalogue-section { padding: var(--section-espace) var(--marge-page) 0; display: grid; gap: var(--bloc-ecart); }
 .catalogue-section .tete { display: grid; gap: var(--tete-ecart); }

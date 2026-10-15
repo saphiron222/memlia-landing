@@ -4,7 +4,9 @@ import Button from '@/components/Button.astro';
 import { LIEN_CAC } from '@/data/navigation.mjs';
 import { cacDisponible } from '@/data/navigation-publiee';
 import JsonLd from '@/components/JsonLd.astro';
-import Hero from '@/components/sections/Hero.astro';
+import Hero from '@/components/editorial/HeroEditorial.astro';
+import {sceneSociale} from '@/data/scenes-figurines';
+import '@/styles/editorial.css';
 import Orientation from '@/components/sections/Orientation.astro';
 import Garanties from '@/components/sections/Garanties.astro';
 import Promesse from '@/components/sections/Promesse.astro';
@@ -28,16 +30,16 @@ const description =
   'Votre cabinet tourne sur un savoir-faire que personne n’a écrit. Memlia l’écrit et en automatise la part répétitive dans vos outils, avec validation humaine.';
 ---
 
-<Base titre={titre} titreSocial={headline} description={description} chemin="/" schemaExterne>
+<Base titre={titre} titreSocial={headline} description={description} chemin="/" schemaExterne socialImage={sceneSociale('accueil')}>
   <JsonLd slot="head" description={description} headline={headline} />
-  <link slot="head" rel="preload" as="image" href="/media/r9/hero-poster-1200.webp" fetchpriority="high" />
 
-  <div class="feuille">
+  <div class="feuille editorial-page">
     <Hero contenu={contenu.hero}>
       {cacDisponible && <Button slot="audience" href={LIEN_CAC.href} variante="lien" picto="fleche" data-accueil-cac>Vous êtes commissaire aux comptes ?</Button>}
     </Hero>
+    <Quotidien contenu={contenu.quotidien} scene="accueil" />
     <Orientation contenu={contenu.orientation} />
-    <Quotidien contenu={contenu.quotidien} />
+
     <Promesse contenu={contenu.promesse} />
     <Usages contenu={contenu.usages} />
     <Methode contenu={contenu.methode} />

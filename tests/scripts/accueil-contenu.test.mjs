@@ -19,17 +19,20 @@ test('le contenu EC compose les sources FAQ, méthode et garanties existantes', 
 });
 
 // Plus aucun agrandissement d'image (demande de Kevin du 07/10/2026, #166) : la preuve suit le contenu, sans zoom.
-test('le contenu EC conserve les compteurs dynamiques ; ses preuves suivent le contenu, sans agrandissement', () => {
+test('le contenu EC conserve les compteurs dynamiques ; ses scènes remplacent les cadres commerciaux (recette A du 15/10)', () => {
   const source = readFileSync('src/data/accueil/ec.ts', 'utf8');
   assert.match(source, /famillesDeLaProfession\('ec'\)/);
   assert.match(source, /\$\{familles\.length\}/);
   assert.match(source, /\$\{nombrePoles\}/);
   for (const section of ['Quotidien', 'Promesse', 'Integration', 'Preuves', 'Garanties']) {
     const composant = readFileSync(`src/components/sections/${section}.astro`, 'utf8');
-    assert.match(composant, /id=\{contenu\.image\}/, section);
+    assert.doesNotMatch(composant, /<Proof(?:Row|Media)\b/, section);
     assert.doesNotMatch(composant, /\benlarge\b/, section);
   }
   const methode = readFileSync('src/components/sections/Methode.astro', 'utf8');
-  assert.match(methode, /id=\{e\.image as ProofId\}/);
+  assert.doesNotMatch(methode, /<ProofMedia\b/);
+  assert.match(methode, /editorial-etapes/);
+  const quotidien=readFileSync('src/components/sections/Quotidien.astro','utf8');
+  assert.match(quotidien, /<BlocEditorial scene=\{scene\}/);
   assert.doesNotMatch(methode, /\benlarge\b/);
 });

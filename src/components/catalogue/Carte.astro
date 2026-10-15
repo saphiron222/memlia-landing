@@ -1,14 +1,14 @@
 ---
 import Figurine from './Figurine.astro';
 import Picto from '@/components/Picto.astro';
-interface Props { nom: string; fonction: string; resume: string; categorie: string; href: string; image: {src: string; alt: string; couleur: string}; action?: string; }
-const { nom, fonction, resume, categorie, href, image, action = 'Découvrir ce robot' } = Astro.props;
+interface Props { nom: string; fonction: string; resume: string; categorie: string; href: string; image: {src: string; alt: string; couleur: string}; action?: string; nature?:string; }
+const { nom, fonction, resume, categorie, href, image, action = 'Découvrir ce robot', nature='Robot Memlia' } = Astro.props;
 ---
-<a class="carte catalogue-carte" href={href} aria-label={`${nom} : ${fonction}`} style={`--figurine-teinte: ${image.couleur}`}>
+<a class="carte catalogue-carte" href={href} style={`--figurine-teinte: ${image.couleur}`}>
   <div class="catalogue-carte-bande"><span>{categorie}</span></div>
   <div class="catalogue-carte-figurine"><Figurine src={image.src} alt="" /></div>
   <div class="catalogue-carte-corps">
-    <span class="catalogue-carte-nature">Robot Memlia</span><h3>{nom}</h3><p class="catalogue-carte-fonction">{fonction}</p><p class="catalogue-carte-resume">{resume}</p>
+    <span class="catalogue-carte-nature">{nature}</span><h3>{nom}</h3><p class="catalogue-carte-fonction">{fonction}</p><p class="catalogue-carte-resume">{resume}</p>
     <span class="carte-action">{action}<Picto nom="fleche" taille={14} /></span>
   </div>
 </a>

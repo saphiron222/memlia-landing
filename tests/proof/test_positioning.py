@@ -288,7 +288,7 @@ class PositioningProof(unittest.TestCase):
         html = (DIST / 'index.html').read_text()
         text = ' '.join(Text(html).parts)
         self.assertIn('Votre cabinet tourne sur un savoir-faire que personne n’a écrit.', text)
-        hero = re.search(r'<section[^>]*class="hero"[\s\S]*?</section>', html).group()
+        hero = re.search(r'<section[^>]*class="hero(?:-editorial)?"[\s\S]*?</section>', html).group()
         self.assertNotIn('Excel', hero)
         self.assertNotIn('module', hero.lower())
         self.assertIn('Automatisation IA pour cabinets comptables | Memlia', html)

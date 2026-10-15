@@ -1,0 +1,8 @@
+---
+import Scene from './SceneFigurines.astro';
+import {SCENES,type SceneId} from '@/data/scenes-figurines';
+interface Props {scene:SceneId;prioritaire?:boolean;}
+const {scene,prioritaire=false}=Astro.props;
+---
+<figure class="scene-travail" data-scene={scene}><Scene recette={scene} alt={SCENES[scene].alt} prioritaire={prioritaire}/><figcaption>{SCENES[scene].legende}</figcaption></figure>
+<style>.scene-travail{margin:0;min-width:0}.scene-travail figcaption{font-size:var(--t-sm);color:var(--texte-2);margin:16px auto 0;max-width:58ch;line-height:1.5}</style>

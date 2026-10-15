@@ -1,0 +1,8 @@
+---
+import SceneTravail from './SceneTravail.astro';
+import type { SceneId } from '@/data/scenes-figurines';
+interface Props{scene?:SceneId;}
+const {scene}=Astro.props;
+---
+<div class:list={['editorial-bloc',{'editorial-bloc-scene':scene}]}><slot/>{scene&&<SceneTravail scene={scene}/>}</div>
+<style>.editorial-bloc{display:grid;gap:32px;min-width:0}.editorial-bloc :global(.pv-copy){max-width:76ch}.editorial-bloc-scene{align-items:center;gap:40px}.editorial-bloc-scene :global(.pv-copy){max-width:60ch}@media(min-width:64rem){.editorial-bloc-scene{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}}</style>

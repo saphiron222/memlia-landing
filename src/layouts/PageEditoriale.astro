@@ -1,0 +1,160 @@
+---
+import Base from '@/layouts/Base.astro';
+import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
+import AppelFinal from '@/components/sections/AppelFinal.astro';
+import { CTA, SITE } from '@/data/site.mjs';
+import { organizationNode } from '@/data/schema.mjs';
+import { sceneSociale, type SceneId } from '@/data/scenes-figurines';
+import ChoisirTache from '@/components/editorial/ChoisirTache.astro';
+import '@/styles/editorial.css';
+import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
+import { eeatCommercial } from '@/data/page-eeat';
+
+/**
+ * Coque des quatre pages commerciales, recette A validée le 15 octobre 2026 : le héros centré du système de page
+ * (docs/design/2026-10-07-systeme-de-page.md), surtitre, titre, chapeau et actions. La scène est
+ * placée dans le corps ; la coque partage les cartes de départ et l’appel final.
+ *
+ * Le rythme des sections (`.pv`, au pas de `--section-espace`, blocs espacés de `--bloc-ecart`)
+ * vit ici, sous `.page-v2`, pour qu'aucune page n'en garde une copie qui dériverait. Les formes
+ * (cartes, bande, lignes, liste de liens, étapes, cadre) sont celles de tout le site, définies une
+ * fois dans global.css.
+ */
+interface Props {
+  page: {
+    chemin: string;
+    titre: string;
+    description: string;
+    h1: string;
+    chapeau: string;
+    ariane: string;
+    secondaire: { libelle: string; href: string };
+  };
+  /** Réserve les lignes du titre sur téléphone lorsque les chasses du repli changent sa composition. */
+  lignesTitreMobile?: number;
+  /** Surtitre au-dessus du titre, comme le héros de l'accueil. */
+  eyebrow: string;
+  /** Scène de travail propre à la page ; image sociale produite par le pipeline existant. */
+  scene: SceneId;
+  /** Nœuds supplémentaires du graphe de données structurées, avant Organization et WebSite. */
+  noeuds?: unknown[];
+  /** Appel final propre à la page ; sinon celui de l'accueil. */
+  appel?: { titre?: string; texte?: string; points?: string[]; action?: { libelle: string; href: string }; secondaire?: { libelle: string; href: string } };
+}
+// Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » sur le site.
+// Une source se cite par un lien sur un mot ou un chiffre du texte ; les données E-E-A-T ne servent plus qu'au JSON-LD.
+const { page, eyebrow, scene, lignesTitreMobile, noeuds = [], appel = {} } = Astro.props;
+/**
+ * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
+ * page courante : c'est là que la réservation directe prend le relais.
+ */
+const actionPrincipale = page.chemin === CTA.principal.href ? CTA.rendezVous : CTA.principal;
+const url = `${SITE.url}${page.chemin}`;
+
+const eeat = eeatCommercial(page.chemin);
+const auteur = eeat ? auteurPar(eeat.auteur) : null;
+const auteurId = auteur ? `${SITE.url}${identiteAuteur(auteur)}` : null;
+const noeudsAvecHeadline = noeuds.map((noeud: any) => {
+  const types = Array.isArray(noeud?.['@type']) ? noeud['@type'] : [noeud?.['@type']];
+  if (!types.some((type: unknown) => typeof type === 'string' && type.endsWith('Page'))) return noeud;
+  return {
+    ...noeud,
+    headline: noeud.headline ?? page.h1,
+    ...(eeat && auteurId ? {
+      author: noeud.author ?? { '@id': auteurId },
+      datePublished: noeud.datePublished ?? eeat.datePublication,
+      dateModified: noeud.dateModified ?? eeat.dateModification,
+    } : {}),
+  };
+});
+const socialImage = sceneSociale(scene);
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    ...noeudsAvecHeadline,
+    {
+      '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${SITE.url}/` },
+        { '@type': 'ListItem', position: 2, name: page.ariane, item: url },
+      ],
+    },
+    ...(eeat && auteur ? [noeudAuteur(auteur, SITE.url)] : []),
+    organizationNode(),
+    { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.nom, inLanguage: SITE.langue, publisher: { '@id': `${SITE.url}/#organization` } },
+  ],
+};
+const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
+---
+
+<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={page.chemin} base="/" socialImage={socialImage} schema={graph}>
+
+  <div class="feuille page-v2 editorial-page">
+    <section class="page-hero" aria-labelledby="page-titre">
+      <nav class="ariane" aria-label="Fil d’Ariane">
+        <ol><li><a href="/">Accueil</a></li><li aria-current="page">{page.ariane}</li></ol>
+      </nav>
+      <div class="page-hero-texte">
+        <span class="surtitre">{eyebrow}</span>
+        <h1 id="page-titre" class="page-h1" style={lignesTitreMobile ? `--page-titre-lignes-mobile: ${lignesTitreMobile}` : undefined}><Insecable texte={page.h1} /></h1>
+        <p class="page-chapeau">{page.chapeau}</p>
+        {/* Pas de signature ni de dates d’article hors du blog (décision de Kevin du 04/10/2026). */}
+        <div class="page-actions">
+          <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
+          {secondaireCourriel && <Fragment set:html={`<!--email_off-->`} />}
+          <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
+          {secondaireCourriel && <Fragment set:html={`<!--/email_off-->`} />}
+        </div>
+      </div>
+    </section>
+
+    <slot />
+
+    <ChoisirTache />
+    <AppelFinal id="suite" {...appel} />
+  </div>
+</Base>
+
+<style>
+  /* Héros centré, sans vignette imposée après le titre. */
+  .page-hero { padding: 40px var(--marge-page) 0; }
+  .ariane { font-size: var(--t-sm); color: var(--texte-2); }
+  .ariane ol { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .ariane li + li::before { content: '/'; margin-right: 6px; color: var(--picto-repos); }
+  .ariane a { color: var(--texte-2); }
+  .page-hero-texte { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-top: 32px; text-align: center; }
+  .page-h1 { max-width: 21ch; font-size: var(--titre-page); }
+  @media (max-width: 30rem) {
+    /* La réserve suit l'interligne réel et ne limite jamais un titre plus long. */
+    .page-h1 { min-height: calc(var(--page-titre-lignes-mobile, 0) * 1lh); }
+  }
+  .page-chapeau { max-width: 672px; color: var(--texte-2); font-size: var(--t-base); }
+  .page-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px; margin-top: 12px; }
+  @media (min-width: 64rem) {
+    .page-hero { padding: 64px var(--marge-page-lg) 0; }
+    .page-hero-texte { justify-content: center; padding-top: 24px; }
+  }
+
+  /* ---- Rythme du système de page : chaque section au pas de --section-espace, ses blocs
+     (en-tête, rangée, forme, paragraphe) espacés de --bloc-ecart. L'appel final porte son
+     propre espace : la dernière section n'en ajoute pas. ---- */
+  .page-v2 :global(.pv) { display: grid; gap: var(--bloc-ecart); padding: var(--section-espace) var(--marge-page) 0; }
+  .page-v2 :global(.pv > *) { min-width: 0; }
+  /* Texte d'une rangée : l'en-tête du système, puis les paragraphes tels qu'écrits. */
+  .page-v2 :global(.pv-copy) { display: grid; gap: var(--tete-ecart); max-width: 46rem; }
+  .page-v2 :global(.pv-copy p) { margin: 0; }
+  /* Une colonne, une couleur : sous le titre, les paragraphes sont l'introduction du système de page
+     (--texte-2), sans alternance 88 % / 68 % d'un paragraphe à l'autre (Kevin, 13/10/2026). Le gras
+     garde l'emphase. */
+  .page-v2 :global(.pv-copy > p:not(.surtitre)) { color: var(--texte-2); }
+  .page-v2 :global(.pv-copy h2) { font-size: var(--titre-section); }
+  .page-v2 :global(.pv strong) { color: var(--texte-fort); font-weight: 600; }
+  /* Un lien dans un paragraphe ou une définition se voit : c'est là que vivent les sources et les
+     renvois (Kevin, 06/10/2026). */
+  .page-v2 :global(.pv :is(p, dd) a) { color: var(--accent-texte); text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (min-width: 64rem) {
+    .page-v2 :global(.pv) { padding-inline: var(--marge-page-lg); }
+  }
+</style>

@@ -1,0 +1,330 @@
+{
+  "decision": "Kevin : « la A », 15 octobre 2026. Scènes de travail retenues pour les six pages.",
+  "tool": "image_gen.imagegen (outil intégré, aucun modèle sélectionnable)",
+  "entries": [
+    {
+      "id": "accueil",
+      "route": "/",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/accueil.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/accueil-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 6247,
+          "sha256": "19e3b230c49e70d972da03c946caf9c88de1935abe69e059a7d7912e84f8496c"
+        },
+        {
+          "target": "public/illustrations/figurines/accueil-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 8514,
+          "sha256": "8d983bce6dad40bfd1faccdc14dfb080fa2588d54d46eb857fa7da2068b71117"
+        },
+        {
+          "target": "public/illustrations/figurines/accueil-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 16355,
+          "sha256": "803238ba45110f03c381fe6570f6f950b72415dd372162572e627b2d6ab202d0"
+        },
+        {
+          "target": "public/illustrations/figurines/accueil-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 24370,
+          "sha256": "abb3a914211f7d36e63ad40c28add470271ca3606153594d9cf730b008e592c6"
+        }
+      ],
+      "description": "Portefeuille de trois dossiers, trieur et exception séparée.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "abricot CFE",
+        "sauge Balthazar"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    },
+    {
+      "id": "cac",
+      "route": "/commissaires-aux-comptes",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/cac.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/cac-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 5255,
+          "sha256": "4345615c8feb3a01c87e7df17492cfdcf795bd349ac5b1db7ce4f440c0698758"
+        },
+        {
+          "target": "public/illustrations/figurines/cac-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 7634,
+          "sha256": "14b7a402bd2ba0ce8fd0d4403fb1daee241b68359cccc3474f9744ecd4751aba"
+        },
+        {
+          "target": "public/illustrations/figurines/cac-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 14897,
+          "sha256": "f2cb3bba65ef19a803c0618f5e9299f658eca61baa6faf684222df275dd1a29f"
+        },
+        {
+          "target": "public/illustrations/figurines/cac-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 23340,
+          "sha256": "8e34a53ff854be0e8a80fc8a50ced9799d6e7b03afd2495589d6c5871b70aeac"
+        }
+      ],
+      "description": "Aude, dossier ouvert, loupe et pièce à reprendre.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "sable Aude"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    },
+    {
+      "id": "apropos",
+      "route": "/a-propos",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/apropos.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/apropos-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 7008,
+          "sha256": "2fdad700e4378b404fd8eaa274fd9e55806f9c6edb3116d27bf9d58823bf20e4"
+        },
+        {
+          "target": "public/illustrations/figurines/apropos-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 10058,
+          "sha256": "2bc1dd256b2ec0dd40809f956c8ea37de8be96bf5aece57aba5a367200197b9b"
+        },
+        {
+          "target": "public/illustrations/figurines/apropos-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 19249,
+          "sha256": "e518d0f65e54229b30357abd5d7765a90a3e2103de94f8b9f5ff8a4dd0661dd3"
+        },
+        {
+          "target": "public/illustrations/figurines/apropos-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 28908,
+          "sha256": "f890b3d6298b9eaa782a6417f7b215e014aa19bfcf1d569ff65ea47789a5bf61"
+        }
+      ],
+      "description": "Carnet de travail, crayon et pièces d’essai.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "abricot CFE",
+        "sauge Balthazar"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    },
+    {
+      "id": "garanties",
+      "route": "/garanties",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/garanties.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/garanties-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 6027,
+          "sha256": "e86c0b316bd92012a35ebd18acdba3c9b7cafe50f0c2c71ac849d3f384e10687"
+        },
+        {
+          "target": "public/illustrations/figurines/garanties-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 8066,
+          "sha256": "fa1084452e5acf04967bda0bd88e5d8db66c0bd07aebd2ac6cd0a454209b6133"
+        },
+        {
+          "target": "public/illustrations/figurines/garanties-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 15721,
+          "sha256": "7229a43f5430b4d9ea4657b52e49a989fd4107a6114fd2ce4c6cc39af8f28b71"
+        },
+        {
+          "target": "public/illustrations/figurines/garanties-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 24066,
+          "sha256": "15ee66acc3accb809e4a40763d376db0b5f2af5355d73fda03be33da9a5e1b08"
+        }
+      ],
+      "description": "Accès délimités par une clé, pièces classées et exception.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "abricot CFE"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    },
+    {
+      "id": "contact",
+      "route": "/contact",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/contact.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/contact-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 5813,
+          "sha256": "5e987bd2367d7d48ee0f84017d560ead432324d74d22ab4e94ec69552e2e7d61"
+        },
+        {
+          "target": "public/illustrations/figurines/contact-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 7432,
+          "sha256": "12abceb77213cba2a57f5ddc04b208484633d32c7fd55e572911d7b30997a4c9"
+        },
+        {
+          "target": "public/illustrations/figurines/contact-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 16315,
+          "sha256": "96ce34bdac0495eab1ef9e811adb09ccad8354fdbba679a4caaee76c6284a178"
+        },
+        {
+          "target": "public/illustrations/figurines/contact-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 23306,
+          "sha256": "82d16a084e723a2ade974e7464c426dc6f61579ee7c5b296035b7e641a390b79"
+        }
+      ],
+      "description": "Premier échange autour d’un dossier ouvert.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "abricot CFE",
+        "sauge Balthazar"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    },
+    {
+      "id": "methode",
+      "route": "/methode",
+      "original": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/methode.png",
+      "reference": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/coherence-figurines/2026-10-15/originaux/a-atelier.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/methode-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 6393,
+          "sha256": "376f48aa42f435b5252530da1f9dbb57ec03ba36c8f0dc073cde7c075a43d6c9"
+        },
+        {
+          "target": "public/illustrations/figurines/methode-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 8568,
+          "sha256": "a1c761f270ab86d3372ef9e460294751bc36d6ca13cfbd2d1c7c96718923721c"
+        },
+        {
+          "target": "public/illustrations/figurines/methode-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "bytes": 16694,
+          "sha256": "69ff3faa3b5f2d3b58ffb946690014558aca74516b80953be42aba4780778ede"
+        },
+        {
+          "target": "public/illustrations/figurines/methode-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "bytes": 24816,
+          "sha256": "436e2e3543830d809db20dc9f0636d1619297bc1a60c79aa05c82e088c004154"
+        }
+      ],
+      "description": "CFE et Balthazar, règle écrite, pièces classées et exception.",
+      "palette": [
+        "crème",
+        "vert de l’anneau",
+        "abricot CFE",
+        "sauge Balthazar"
+      ],
+      "controleVisuel": "Matière mate, identités, anneaux, lumière diffuse et absence d’inscriptions vérifiés après génération."
+    }
+  ],
+  "portraitsReutilises": [
+    {
+      "id": "balthazar",
+      "source": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/figurines-2026-10-15/png/01-balthazar.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/balthazar-128.avif",
+          "sha256": "e16dafc15996d207f70814184c8c616fe5e67f301f252b457c77f29683f5ae4b"
+        },
+        {
+          "target": "public/illustrations/figurines/balthazar-128.webp",
+          "sha256": "5fe6ae340e0c7ca462d5cdd33ba75591d9b47593ac142f9c055ad46340c8db91"
+        },
+        {
+          "target": "public/illustrations/figurines/balthazar-256.avif",
+          "sha256": "6238ed1405f2115c74229d94b6ac3f768bce40ddeb58117267a5edd3a1744fab"
+        },
+        {
+          "target": "public/illustrations/figurines/balthazar-256.webp",
+          "sha256": "0ba320ffb49965f0243f440014a4f5e71a17da008042cc1a08caaabdefc6dcd2"
+        },
+        {
+          "target": "public/illustrations/figurines/balthazar-512.avif",
+          "sha256": "2209d31850bd3a55c71baf75b0c9ea4bef9713567426cbda9dcab309e3db5853"
+        },
+        {
+          "target": "public/illustrations/figurines/balthazar-512.webp",
+          "sha256": "9f5b465498e932012a0af50b2cb6dbcdc9beb88705f507379e13761acc003ff6"
+        }
+      ]
+    },
+    {
+      "id": "aude",
+      "source": "/Users/kevinkitanga/dev/interne/memlia-landing-sources/hub-agents-ia/figurines-2026-10-15/png/05-aude.png",
+      "files": [
+        {
+          "target": "public/illustrations/figurines/aude-128.avif",
+          "sha256": "1695a84f839451c1af8877c9f9cb3807e1ab76077643481664801bfb37e8a1d4"
+        },
+        {
+          "target": "public/illustrations/figurines/aude-128.webp",
+          "sha256": "eeee88595aed9b1b552404a320d07235a114dbabb614be0871b65a12a7fbf673"
+        },
+        {
+          "target": "public/illustrations/figurines/aude-256.avif",
+          "sha256": "4ddc9d48886e6540b30523b5e5ecf0199b9c690e8c7a6c8a0399be17add0dda2"
+        },
+        {
+          "target": "public/illustrations/figurines/aude-256.webp",
+          "sha256": "35018befcdccc39c1f39a11fa6fb22b589517bf8935c493c52f167aad671ff47"
+        },
+        {
+          "target": "public/illustrations/figurines/aude-512.avif",
+          "sha256": "aa1848abd944982c7ba93e422147ee3702f679a6ceedccab27ec950bd9363fde"
+        },
+        {
+          "target": "public/illustrations/figurines/aude-512.webp",
+          "sha256": "97238f2b267d2799d1c1f48fb7ae3f7aceb604d4276d6344f771d881c01554fe"
+        }
+      ]
+    }
+  ]
+}

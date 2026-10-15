@@ -1,5 +1,5 @@
 ---
-import ProofRow from '@/components/ProofRow.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 interface Props { contenu?: ContenuAccueil['integration']; }
 const { contenu = contenuDe('ec').integration } = Astro.props;
@@ -8,13 +8,13 @@ const { contenu = contenuDe('ec').integration } = Astro.props;
 ---
 <section id="integration" class="section integration" aria-labelledby="integration-title">
   <div class="conteneur pile">
-    <ProofRow id={contenu.image}>
+    <BlocEditorial>
       <div class="tete rv">
         <h2 id="integration-title">{contenu.titre}</h2>
         <p>{contenu.texte}</p>
         <p>{contenu.limites}</p>
       </div>
-    </ProofRow>
+    </BlocEditorial>
     <ul class="lignes integration-rules">
       {contenu.regles.map((r, i) => <Fragment>{i > 0 && ' '}<li class="ligne"><strong class="ligne-libelle">{r.titre}</strong> <span class="ligne-texte">{r.texte}</span></li></Fragment>)}
     </ul>

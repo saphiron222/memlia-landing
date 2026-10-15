@@ -1,41 +1,11 @@
 ---
-import ProofRow from '@/components/ProofRow.astro';
+
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 interface Props { contenu?: ContenuAccueil['preuves']; }
 const { contenu = contenuDe('ec').preuves } = Astro.props;
 const proofs = contenu.reperes;
 
-/**
- * S6 — « Proposition vs saisie » + repères vérifiables (spec §4.10 / S6 b), à la place
- * des témoignages : aucune preuve sociale sans autorisation distincte. Le motif directeur
- * du produit est dit tel quel ; les repères restent des textes sans microliens.
- *
- * Système de page : le surtitre nomme le motif directeur (seul surtitre de section de
- * l'accueil, en casse de phrase) ; rangée (en-tête, maquette), puis trois engagements dans la
- * bande du site.
- */
+/** Recette A du 15/10/2026 : contenu et ancres conservés, cadres commerciaux retirés. */
 ---
 
-<section id="preuves" class="section pile preuves" aria-labelledby="preuves-titre">
-  <div class="conteneur">
-    <ProofRow id={contenu.image}>
-      <div class="tete rv">
-        <p class="surtitre">{contenu.etiquette}</p>
-        <h2 id="preuves-titre">{contenu.titre}</h2>
-        <p>{contenu.texte}</p>
-        <p>{contenu.propriete}</p>
-      </div>
-    </ProofRow>
-  </div>
-  <div class="bande coins">
-    <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-    <ul class="cartes reperes rv-groupe" aria-label="Preuves de méthode">
-      {proofs.map((r) => (
-        <li class="cellule rv">
-          <h3 class="carte-titre">{r.title}</h3>
-          <p class="carte-texte">{r.text}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-</section>
+<section id="preuves" class="section preuves" aria-labelledby="preuves-titre"><div class="conteneur"><div class="editorial-regle"><div class="tete"><p class="surtitre">La règle écrite · {contenu.etiquette}</p><h2 id="preuves-titre">{contenu.titre}</h2><p>{contenu.texte}</p><p>{contenu.propriete}</p></div><div class="editorial-frontiere">{proofs.map(r=><div><h3>{r.title}</h3><p>{r.text}</p></div>)}</div><div class="editorial-arret"><h3>Dans le doute, le traitement concerné s’arrête.</h3><p>Une pièce manquante ou un cas hors règle reste visible, avec sa raison. Votre équipe décide de la suite.</p></div><a class="catalogue-action" href="/garanties">Examiner nos garanties →</a></div></div></section>

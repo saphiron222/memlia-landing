@@ -11,7 +11,7 @@ for (const width of [320, 375, 1440]) {
     test(`${path} : preuve lisible sans agrandissement à ${width}px`, async ({ page, hasTouch }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(path);
-      const preuves = page.locator('img[src^="/proofs/"]');
+      const preuves = page.locator(path==='/'?'[data-scene] img':'img[src^="/proofs/"]');
       await expect(preuves.first()).toBeVisible();
       await expect(page.getByRole('link', { name: /agrandir/i })).toHaveCount(0);
       await expect(page.getByRole('button', { name: /agrandir|fermer la preuve/i })).toHaveCount(0);
@@ -55,6 +55,6 @@ test('gabarits voisins sans agrandissement', async ({ page }) => {
     await page.goto(path);
     await expect(page.getByRole('link', { name: /agrandir/i })).toHaveCount(0);
     await expect(page.locator('dialog')).toHaveCount(0);
-    await expect(page.locator('img[src^="/proofs/"]').first()).toBeVisible();
+    await expect(page.locator(path==='/methode'?'[data-scene] img':'img[src^="/proofs/"]').first()).toBeVisible();
   }
 });

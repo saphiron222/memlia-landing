@@ -139,13 +139,13 @@ export const COMMERCIAL_EEAT = {
     ],
   },
   '/methode': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-04', sources: [],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-15', sources: [],
   },
   '/garanties': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-06', sources: [sources.controleSalaries],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-15', sources: [sources.controleSalaries],
   },
   '/a-propos': {
-    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-08', sources: [],
+    auteur: 'kevin', datePublication: '2026-09-16', dateModification: '2026-10-15', sources: [],
   },
 } satisfies Record<string, PageEeat>;
 

@@ -3,7 +3,7 @@ import { ROBOT_HUB } from './robots.ts';
  * Les cinq pages commerciales du site v2 — une seule source pour la navigation,
  * les titres, les chapeaux et les appels à l'action.
  *
- * La charte de message fait foi : .agents/product-marketing.md (v3, 17/09/2026). Ce fichier la transporte vers
+ * La charte de message fait foi : .agents/product-marketing.md (v7, 15/10/2026). Ce fichier la transporte vers
  * les gabarits, les tests et le maillage, pour qu'un libellé ne vive jamais à deux
  * endroits qui pourraient diverger.
  */

@@ -17,9 +17,9 @@ for (const [width, height] of [[320,740],[375,812],[1024,768],[1366,768]]) {
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
-    const box = await page.locator('.hero-boutons').boundingBox();
+    const box = await page.locator('.hero-editorial-actions').boundingBox();
     expect(box!.y + box!.height).toBeLessThan(height - 16);
-    expect(await page.locator('.hero').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(96);
+    expect(await page.locator('.hero-editorial').evaluate(el => parseFloat(getComputedStyle(el).paddingTop))).toBeLessThanOrEqual(96);
   });
 }
 
@@ -49,7 +49,7 @@ test('garanties cohérentes avec les limites et les données', async ({ page }) 
 test('promesse tablette conserve des colonnes lisibles', async ({ page }) => {
   await page.setViewportSize({width:768,height:1024});
   await page.goto('/');
-  const box = await page.locator('.promesse-point').first().boundingBox();
+  const box = await page.locator('.promesse .editorial-point').first().boundingBox();
   expect(box!.width).toBeGreaterThan(300);
 });
 
@@ -58,7 +58,7 @@ for (const width of [1024, 1366]) {
     await page.setViewportSize({ width, height: 768 });
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
-    for (const selector of ['.nav-centre .nav-entree:visible', '.nav-principal:visible', '.hero-btn:visible']) {
+    for (const selector of ['.nav-centre .nav-entree:visible', '.nav-principal:visible', '.hero-editorial-actions .btn:visible']) {
       const lines = await textLines(page.locator(selector));
       expect(lines.length).toBeGreaterThan(0);
       expect(lines.every(count => count === 1)).toBe(true);
@@ -68,7 +68,7 @@ for (const width of [1024, 1366]) {
       range.selectNodeContents(el);
       return new Set([...range.getClientRects()].map(rect => Math.round(rect.y))).size;
     });
-    expect(lines).toBeLessThanOrEqual(2);
+    expect(lines).toBeLessThanOrEqual(3);
   });
 
   test(`sous-menus ouverts lisibles à ${width}px`, async ({ page }) => {

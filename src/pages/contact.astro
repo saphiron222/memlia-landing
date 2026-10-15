@@ -1,6 +1,9 @@
 ---
-import PageCommerciale from '@/layouts/PageCommerciale.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import GrilleEditoriale from '@/components/editorial/GrilleEditoriale.astro';
+import ListeEditoriale from '@/components/editorial/ListeEditoriale.astro';
+import PageEditoriale from '@/layouts/PageEditoriale.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
+import SceneTravail from '@/components/editorial/SceneTravail.astro';
 import Button from '@/components/Button.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
 import Courriel from '@/components/Courriel.astro';
@@ -29,11 +32,11 @@ const appel = {
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Premier échange" hero="v2/18-hero-contact" appel={appel}>
+<PageEditoriale page={page} noeuds={noeuds} eyebrow="Premier échange" scene="contact" appel={appel}>
   <section class="pv" aria-labelledby="formulaire-titre">
     <div class="tete rv">
       <h2 id="formulaire-titre">Décrivez la tâche</h2>
-      <p>Trois phrases suffisent. Nous répondons par courriel, sans envoi automatique.</p>
+      <p>Un robot du catalogue, un agent IA ou une tâche sur mesure : trois phrases suffisent. Nous vous répondons par courriel.</p>
     </div>
     <div class="contact-grille">
       <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" aria-labelledby="formulaire-titre" data-contact>
@@ -93,6 +96,7 @@ const appel = {
       </form>
 
       <aside class="contact-aside rv" aria-labelledby="preparer-titre">
+        <SceneTravail scene="contact"/>
         <h3 id="preparer-titre">Ce qu’il est utile de préparer</h3>
         <p class="texte-2">Ces trois repères nous aident à comprendre le travail de votre équipe.</p>
         <ul class="lignes contact-lignes">
@@ -115,36 +119,18 @@ const appel = {
     <div class="tete rv">
       <h2 id="pasdemande">Nous partons du travail de votre équipe</h2>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Le geste qui se répète</h3><p class="carte-texte">Racontez un cas courant et une exception. Nous repérons les étapes répétitives et celles qui demandent le jugement de votre équipe.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Le savoir-faire à écrire</h3><p class="carte-texte">Nous faisons préciser la règle que vos collaborateurs appliquent aujourd’hui. Elle sert à définir la tâche à prendre en charge et les validations à conserver.</p></li>
-      </ul>
-    </div>
+    <ListeEditoriale>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Le geste qui se répète</h3><p class="editorial-point-texte">Racontez un cas courant et une exception. Nous repérons les étapes répétitives et celles qui demandent le jugement de votre équipe.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Le savoir-faire à écrire</h3><p class="editorial-point-texte">Nous faisons préciser la règle que vos collaborateurs appliquent aujourd’hui. Elle sert à définir la tâche à prendre en charge et les validations à conserver.</p></li>
+      </ListeEditoriale>
   </section>
 
-  <section class="pv" aria-labelledby="ensuite">
-    <ProofRow id="v2/13-deux-issues">
-      <div class="pv-copy rv">
-        <h2 id="ensuite">Ce qui se passe ensuite</h2>
-        <p>L’échange dure une trentaine de minutes. Nous parcourons la tâche, ses outils et ses exceptions pour voir si sa règle peut s’écrire.</p>
-        <p class="texte-2">Si la tâche peut être prise en charge, nous vous proposons un cadrage : le résultat à livrer et ce que votre équipe garde à valider. Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.</p>
-        <p class="texte-2">Le devis vient après ce cadrage. Il dépend des sources, des règles, des exceptions et des validations, jamais du nombre de personnes dans votre cabinet. La maintenance, le support et les évolutions y sont écrits.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="ensuite"><div class="tete"><h2 id="ensuite">Ce qui se passe ensuite</h2></div><GrilleEditoriale etapes><article><h3>Un premier échange</h3><p>L’échange dure une trentaine de minutes. Nous parcourons la tâche, ses outils et ses exceptions pour voir si sa règle peut s’écrire.</p></article><article><h3>Le cadrage de votre tâche</h3><p class="texte-2">Si la tâche peut être prise en charge, nous vous proposons un cadrage : le résultat à livrer et ce que votre équipe garde à valider. Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.</p></article><article><h3>Le devis et la maintenance</h3><p class="texte-2">Le devis vient après ce cadrage. Il dépend des sources, des règles, des exceptions et des validations, jamais du nombre de personnes dans votre cabinet. La maintenance, le support et les évolutions y sont écrits.</p></article></GrilleEditoriale>
   </section>
 
-  <section class="pv" aria-labelledby="canaux">
-    <ProofRow id="v2/12-avant-echange">
-      <div class="pv-copy rv">
-        <h2 id="canaux">Les canaux</h2>
-        <p>Le formulaire ci-dessus, un créneau réservé, ou un courriel : <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou <Courriel libelle="écrire à Memlia" /> à <Courriel />.</p>
-        <p class="texte-2">Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>. Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="canaux"><div class="tete"><h2 id="canaux">Les canaux</h2></div><GrilleEditoriale colonnes={2}><article><h3>Choisir votre canal</h3><p>Le formulaire ci-dessus, un créneau réservé, ou un courriel : <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou <Courriel libelle="écrire à Memlia" /> à <Courriel />.</p></article><article><h3>Préparer votre échange</h3><p class="texte-2">Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>. Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p></article></GrilleEditoriale>
   </section>
-</PageCommerciale>
+</PageEditoriale>
 
 <script>
   import { MESSAGES_CONTACT, MESSAGE_CONTACT_DEFAUT } from '@/data/contact-messages.mjs';
@@ -267,7 +253,7 @@ const appel = {
    * trop étroite pour le tiers et les deux tiers.
    */
   .contact-grille { display: grid; gap: var(--bloc-ecart); }
-  .contact-form { display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
+  .contact-form { scroll-margin-top: 100px; display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
   .champ { display: grid; gap: 8px; }
   .champ label { font-weight: 500; color: var(--texte-fort); }
   .champ input[type='text'], .champ input[type='email'], .champ textarea, .champ select {

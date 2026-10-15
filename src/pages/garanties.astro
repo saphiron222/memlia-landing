@@ -1,6 +1,8 @@
 ---
-import PageCommerciale from '@/layouts/PageCommerciale.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import GrilleEditoriale from '@/components/editorial/GrilleEditoriale.astro';
+import ListeEditoriale from '@/components/editorial/ListeEditoriale.astro';
+import PageEditoriale from '@/layouts/PageEditoriale.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
@@ -37,7 +39,7 @@ const appel = {
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Nos engagements" hero="v2/16-hero-garanties" appel={appel}>
+<PageEditoriale page={page} noeuds={noeuds} eyebrow="Nos engagements" scene="garanties" appel={appel}>
   <section class="pv" aria-label="Les six garanties">
     <div class="liens-bloc">
       <ul class="liens rv" data-garanties>
@@ -55,14 +57,14 @@ const appel = {
   </section>
 
   <section class="pv" id="arret" aria-labelledby="arret-titre">
-    <ProofRow id="v2/07-exception-visible">
+    <BlocEditorial scene="garanties">
       <div class="pv-copy rv">
         <h2 id="arret-titre">Dans le doute, l’automatisation s’arrête</h2>
         <p>Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation et présente le motif à votre équipe.</p>
-        <p class="texte-2">Une contradiction entre deux règles ou un format inattendu bloque l’écriture concernée. Le motif est visible ; votre équipe corrige l’entrée ou décide de la suite. La règle ne devine pas la donnée manquante. Une exception visible se présente avec son contexte et son motif. Votre équipe décide de la suite.</p>
+        <p class="texte-2">Une contradiction entre deux règles ou un format inattendu bloque l’écriture concernée. Le motif est visible ; votre équipe corrige l’entrée ou décide de la suite. La règle ne devine pas la donnée manquante. Le cas reste à reprendre avec son contexte.</p>
         <p class="texte-2">La règle écrite distingue ce qui se prépare seul, ce qui attend une validation et ce qui reste humain. Les décisions sensibles vous sont proposées. Aucun envoi externe sans validation humaine : courriel, déclaration ou facture.</p>
       </div>
-    </ProofRow>
+    </BlocEditorial>
     <dl class="lignes rv">
       <div class="ligne">
         <dt class="ligne-libelle">Saisie comptable</dt>
@@ -79,15 +81,9 @@ const appel = {
     </dl>
   </section>
 
-  <section class="pv" id="donnees" aria-labelledby="donnees-titre">
-    <ProofRow id="v2/45-cadrage-donnees">
-      <div class="pv-copy rv">
-        <h2 id="donnees-titre">Des essais fictifs, des flux cadrés par mission</h2>
-        <p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu. Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p>
-        <p class="texte-2">Les fichiers réels autorisés pour le cadrage sont lus en place. Nous ne les copions pas dans nos dépôts et nous développons sur des jeux fictifs. Pour le premier échange, la description du geste suffit.</p>
-        <p class="texte-2">Avant la mise en service, nous documentons les données lues, les droits d’accès, les destinataires et les flux du traitement. Les hébergements éventuels, les durées de conservation et les responsabilités sont précisés pour la mission. Un traitement local se vérifie sur ses appels réseau et sa télémétrie ; le lieu du fichier ne suffit pas.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="regle-commune"><div class="editorial-regle"><h2 id="regle-commune">La règle écrite.</h2><p>Un robot, un agent IA ou une tâche sur mesure suit les mêmes limites.</p><div class="editorial-frontiere"><div><h3>Préparer</h3><p>Lire les sources autorisées, rassembler les pièces et préparer les propositions selon le périmètre convenu.</p></div><div><h3>Faire valider</h3><p>Présenter les exceptions et attendre les validations prévues avant un envoi, un dépôt ou une signature.</p></div><div><h3>Garder le jugement</h3><p>Votre équipe apprécie le dossier, corrige et engage le cabinet. Le CAC conserve ses conclusions et son opinion.</p></div></div><div class="editorial-arret"><h3>Un arrêt expliqué fait partie du résultat.</h3><p>Accès expiré, pièce absente, contradiction ou cas hors règle : le traitement concerné s’arrête et présente son motif.</p></div><a href="/methode">Comment nous écrivons et éprouvons cette règle →</a></div></section>
+
+  <section class="pv" id="donnees" aria-labelledby="donnees-titre"><div class="tete"><h2 id="donnees-titre">Des essais fictifs, des flux cadrés par mission</h2></div><GrilleEditoriale><article><h3>Des cas entièrement fictifs</h3><p>Les jeux d’essai que nous construisons sont <strong>entièrement fictifs</strong>. Ils reproduisent la forme de vos fichiers, jamais leur contenu. Nous pouvons ainsi <a href="/automatisation/notes-de-frais">éprouver le traitement des notes de frais</a> avec un justificatif fictif, un doublon et un refus attendu.</p></article><article><h3>Un cadrage sans copie</h3><p class="texte-2">Les fichiers réels autorisés pour le cadrage sont lus en place. Nous ne les copions pas dans nos dépôts et nous développons sur des jeux fictifs. Pour le premier échange, la description du geste suffit.</p></article><article><h3>Des accès et des flux écrits</h3><p class="texte-2">Avant la mise en service, nous documentons les données lues, les droits d’accès, les destinataires et les flux du traitement. Les hébergements éventuels, les durées de conservation et les responsabilités sont précisés pour la mission. Un traitement local se vérifie sur ses appels réseau et sa télémétrie ; le lieu du fichier ne suffit pas.</p></article></GrilleEditoriale>
     <dl class="lignes rv">
       <div class="ligne">
         <dt class="ligne-libelle">Données confiées à une IA</dt>
@@ -113,37 +109,13 @@ const appel = {
     <p class="mention">La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit les données du site. Les flux du service sont documentés par mission avant la mise en service.</p>
   </section>
 
-  <section class="pv" id="personnes" aria-labelledby="personnes-titre">
-    <ProofRow id="09-garanties">
-      <div class="pv-copy rv">
-        <h2 id="personnes-titre">Nous ne mesurons pas les personnes</h2>
-        <p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs. Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent.</p>
-        <p class="texte-2">L’affectation sert à distribuer le travail ; elle ne justifie pas <a href="https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees" rel="noopener noreferrer">une mesure individuelle continue</a>, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p>
-        <p class="texte-2">C’est notre choix de conception pour les vues de pilotage. Le glossaire définit l’<a href="/glossaire#agregat-non-nominatif">agrégat non nominatif</a> : un total utile pour suivre le travail, sans classement individuel.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" id="personnes" aria-labelledby="personnes-titre"><div class="tete"><h2 id="personnes-titre">Nous ne mesurons pas les personnes</h2></div><GrilleEditoriale><article><h3>Suivre les dossiers</h3><p>Un outil de pilotage compte des dossiers, des étapes et des délais. Il ne classe pas les collaborateurs. Les vues que nous livrons présentent des agrégats : combien de dossiers à telle étape, combien d’exceptions en attente, quelles échéances approchent.</p></article><article><h3>Protéger les personnes</h3><p class="texte-2">L’affectation sert à distribuer le travail ; elle ne justifie pas <a href="https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees" rel="noopener noreferrer">une mesure individuelle continue</a>, et nous ne construisons pas de vue qui la rendrait possible par défaut.</p></article><article><h3>Piloter avec des agrégats</h3><p class="texte-2">C’est notre choix de conception pour les vues de pilotage. Le glossaire définit l’<a href="/glossaire#agregat-non-nominatif">agrégat non nominatif</a> : un total utile pour suivre le travail, sans classement individuel.</p></article></GrilleEditoriale>
   </section>
 
-  <section class="pv" id="recette" aria-labelledby="recette-titre">
-    <ProofRow id="06-eprouver">
-      <div class="pv-copy rv">
-        <h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2>
-        <p>Chaque mission passe par un jeu d’essai fictif qui contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Un arrêt attendu qui ne se produit pas est traité comme un résultat faux : corrigé avant la recette, jamais livré.</p>
-        <p class="texte-2">Un paiement groupé ambigu sert alors à <a href="/automatisation/rapprochement-bancaire">recetter le rapprochement bancaire</a> autant qu’un appariement exact.</p>
-        <p class="texte-2">La recette est la vérification du résultat par vos référents dans l’environnement autorisé du cabinet. Elle porte sur les cas fictifs convenus et les critères écrits. Vos référents acceptent ou refusent le résultat ; leur accord vaut pour les versions, les accès et les cas éprouvés.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" id="recette" aria-labelledby="recette-titre"><div class="tete"><h2 id="recette-titre">La recette éprouve les refus autant que les résultats</h2></div><GrilleEditoriale><article><h3>Les résultats attendus</h3><p>Chaque mission passe par un jeu d’essai fictif qui contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Un arrêt attendu qui ne se produit pas est traité comme un résultat faux : corrigé avant la recette, jamais livré.</p></article><article><h3>Les cas qui doivent s’arrêter</h3><p class="texte-2">Un paiement groupé ambigu sert alors à <a href="/automatisation/rapprochement-bancaire">recetter le rapprochement bancaire</a> autant qu’un appariement exact.</p></article><article><h3>Votre acceptation du résultat</h3><p class="texte-2">La recette est la vérification du résultat par vos référents dans l’environnement autorisé du cabinet. Elle porte sur les cas fictifs convenus et les critères écrits. Vos référents acceptent ou refusent le résultat ; leur accord vaut pour les versions, les accès et les cas éprouvés.</p></article></GrilleEditoriale>
   </section>
 
-  <section class="pv" id="ecrit" aria-labelledby="ecrit-titre">
-    <ProofRow id="v2/09-perimetre-ecrit">
-      <div class="pv-copy rv">
-        <h2 id="ecrit-titre">Ce qui est écrit avant de commencer</h2>
-        <p>Avant de construire, nous écrivons avec vous la tâche entière : entrées, règle, exceptions, résultat attendu et limites. Le périmètre accepté fixe les accès, les personnes qui valident et les critères de recette avant la mise en service.</p>
-        <p class="texte-2">Le devis précise la maintenance, le support et les évolutions couverts. Si vos outils ou votre règle changent, nous analysons leur effet sur le résultat et rejouons la recette si nécessaire. Une extension du périmètre se convient avec vous.</p>
-        <p class="texte-2">En expertise comptable, votre équipe garde ses contrôles et ses décisions. Pour une tâche de commissariat aux comptes, elle garde aussi le choix des travaux et ses conclusions ; la signature reste au CAC. Chaque mission a son périmètre et ses accès. Le <a href="https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026">code de déontologie, article 10</a>, rappelle que le CAC conserve la responsabilité de sa mission lorsqu’il se fait assister.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" id="ecrit" aria-labelledby="ecrit-titre"><div class="tete"><h2 id="ecrit-titre">Ce qui est écrit avant de commencer</h2></div><GrilleEditoriale><article><h3>Le périmètre à construire</h3><p>Avant de construire, nous écrivons avec vous la tâche entière : entrées, règle, exceptions, résultat attendu et limites. Le périmètre accepté fixe les accès, les personnes qui valident et les critères de recette avant la mise en service.</p></article><article><h3>La maintenance convenue</h3><p class="texte-2">Le devis précise la maintenance, le support et les évolutions couverts. Si vos outils ou votre règle changent, nous analysons leur effet sur le résultat et rejouons la recette si nécessaire. Une extension du périmètre se convient avec vous.</p></article><article><h3>La responsabilité du cabinet</h3><p class="texte-2">En expertise comptable, votre équipe garde ses contrôles et ses décisions. Pour une tâche de commissariat aux comptes, elle garde aussi le choix des travaux et ses conclusions ; la signature reste au CAC. Chaque mission a son périmètre et ses accès. Le <a href="https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026">code de déontologie, article 10</a>, rappelle que le CAC conserve la responsabilité de sa mission lorsqu’il se fait assister.</p></article></GrilleEditoriale>
     <dl class="lignes rv">
       <div class="ligne">
         <dt class="ligne-libelle">Factures fournisseurs</dt>
@@ -165,15 +137,12 @@ const appel = {
       <h2 id="refus-titre">Ce que nous ne promettons pas</h2>
       <p>Nos engagements portent sur une tâche définie, sa règle écrite et sa recette. Vous gardez les contrôles métier, comme <a href="/blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier">les six contrôles qui restent après une saisie automatisée</a>. Cette frontière vaut aussi pour le <a href="/outils-comptables-gratuits/verificateur-fec-local">contrôle local de structure d’un FEC</a> : les anomalies sont expliquées et les contrôles non évalués restent visibles ; le rapport ne certifie pas le fichier.</p>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Aucune attestation de conformité</h3><p class="carte-texte">Nous documentons le traitement prévu et ses limites. Ce document n’est pas une attestation de conformité en paie, en droit social ou en protection des données. La recette valide le périmètre convenu ; elle ne certifie pas les comptes ni le dossier d’audit.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Aucun branchement universel</h3><p class="carte-texte">Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Aucun pourcentage inventé</h3><p class="carte-texte">Le résultat attendu et les critères d’acceptation sont écrits avec vous. Les gains se mesurent sur votre tâche ; nous n’annonçons pas d’heures ni de pourcentages sans mesure.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Aucune illustration trompeuse</h3><p class="carte-texte">Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
-      </ul>
-    </div>
+    <ListeEditoriale>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Aucune attestation de conformité</h3><p class="editorial-point-texte">Nous documentons le traitement prévu et ses limites. Ce document n’est pas une attestation de conformité en paie, en droit social ou en protection des données. La recette valide le périmètre convenu ; elle ne certifie pas les comptes ni le dossier d’audit.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Aucun branchement universel</h3><p class="editorial-point-texte">Nous vérifions les formats et les accès de vos outils avant de nous engager. Si la connexion n’est pas possible, nous le disons.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Aucun pourcentage inventé</h3><p class="editorial-point-texte">Le résultat attendu et les critères d’acceptation sont écrits avec vous. Les gains se mesurent sur votre tâche ; nous n’annonçons pas d’heures ni de pourcentages sans mesure.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Aucune illustration trompeuse</h3><p class="editorial-point-texte">Les exemples que nous publions sont fictifs et le disent. Aucun n’est une capture d’un dossier réel ni un résultat client.</p></li>
+      </ListeEditoriale>
     <dl class="lignes rv">
       <div class="ligne">
         <dt class="ligne-libelle">Checklist des pièces</dt>
@@ -185,4 +154,4 @@ const appel = {
       </div>
     </dl>
   </section>
-</PageCommerciale>
+</PageEditoriale>

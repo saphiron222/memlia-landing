@@ -1,0 +1,15 @@
+---
+interface Props {colonnes?:2|3;etapes?:boolean;}
+const {colonnes=3,etapes=false}=Astro.props;
+---
+<div class:list={['editorial-faits',{'editorial-faits-deux':colonnes===2,'editorial-faits-etapes':etapes}]} data-editorial-grid><slot/></div>
+<style>
+/* Anatomie des livrables et du fonctionnement des fiches robots. */
+.editorial-faits{display:grid;gap:24px;min-width:0;counter-reset:fait}
+.editorial-faits :global(article){border-top:2px solid var(--accent-appui);padding-top:24px;min-width:0;display:flex;flex-direction:column;gap:16px;counter-increment:fait}
+.editorial-faits :global(h3){font-family:var(--police-display);font-size:var(--titre-bloc);line-height:1.25;color:var(--texte-fort)}
+.editorial-faits :global(p){margin:0;color:var(--texte-2);max-width:68ch}
+.editorial-faits-etapes :global(article){border-top:0;padding-top:0}
+.editorial-faits-etapes :global(article)::before{content:'0' counter(fait);color:var(--accent-texte);font-variant-numeric:tabular-nums;margin-bottom:4px}
+@media(min-width:48rem){.editorial-faits{grid-template-columns:repeat(3,minmax(0,1fr))}.editorial-faits-deux{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

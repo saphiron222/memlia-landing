@@ -69,7 +69,7 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
 test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('.hero-h1')).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.hero-editorial h1')).toHaveCSS('animation-name', 'none');
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
@@ -104,10 +104,10 @@ test('accueil : les six ancres historiques restent des cibles servies', async ({
   }
 });
 
-test('méthode mobile : chaque étape garde son image et son texte dans le flux', async ({ page }) => {
+test('méthode mobile : chaque étape garde son texte dans le flux', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/');
-  await expect(page.locator('.parcours-visuel')).toBeHidden();
+  await expect(page.locator('.parcours-visuel')).toHaveCount(0);
   for (const step of await page.locator('[data-etape]').all()) {
     await step.locator('h3').scrollIntoViewIfNeeded();
     const visible = await step.locator('h3').evaluate(el => {
@@ -115,7 +115,8 @@ test('méthode mobile : chaque étape garde son image et son texte dans le flux'
       return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === el;
     });
     expect(visible).toBe(true);
-    await expect(step.locator('.functional-proof img')).toBeVisible();
+    await expect(step.locator('p.texte-2')).toBeVisible();
+    await expect(step.locator('img')).toHaveCount(0);
   }
 });
 
