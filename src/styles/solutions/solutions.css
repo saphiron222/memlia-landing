@@ -28,7 +28,7 @@
 .solution-faq details { border-top:1px solid var(--ligne); }.solution-faq summary { cursor:pointer; padding:24px 28px 24px 0; font-family:var(--police-display); font-size:var(--titre-bloc); color:var(--texte-fort); }.solution-faq details p { padding:0 0 24px; color:var(--texte-2); }
 .modele-scene { margin:64px auto 0; max-width:1020px; text-align:left; background:var(--surface-page); border:1px solid var(--ligne); border-radius:var(--r-cadre); box-shadow:var(--ombre-panneau); overflow:hidden; }
 .modele-barre { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:var(--t-sm); border-bottom:1px solid var(--ligne); }
-.modele-contexte { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }.modele-logo { margin-left:auto; flex-shrink:0; }
+.modele-contexte { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }.modele-logo { margin-right:auto; flex-shrink:0; }
 .scene-fiction { border-radius:99px; background:var(--accent-voile); padding:6px 10px; color:var(--accent-texte); white-space:nowrap; }
 .modele-espace { display:grid; }.modele-rail { padding:28px 24px; background:var(--accent-voile); font-size:var(--t-sm); }.modele-rail>span { font-weight:600; }.modele-rail ul { list-style:none; margin:20px 0 40px; padding:0; display:grid; gap:16px; }.modele-rail li { display:flex; justify-content:space-between; }.modele-rail small { color:var(--texte-2); }
 .modele-dialogue { padding:32px; display:grid; gap:28px; align-content:start; }

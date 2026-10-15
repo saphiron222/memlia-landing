@@ -48,4 +48,4 @@ Confusion RAG/entraînement ; attribution des droits de la base et des poids ada
 - [ ] CI sur le nouveau SHA puis prévisualisation de son artefact. Le premier lancement CI a été annulé pour intégrer cette demande.
 
 ## Présentation finale
-Notes didactiques répétées retirées des pages de service et des blocs de démonstration. Huit modèles, GLM et Kimi sans nom d’éditeur dans leur carte ; gpt oss avec logo OpenAI noir sur blanc et nom à côté. L’animation démarre automatiquement, sans bouton de pause : 2400ms par étape, 9,6s par cycle ; vrai Lockup Memlia en haut à droite. Survol/focus et sélection permettent de lire ; mouvement réduit respecté.
+Notes didactiques répétées retirées des pages de service et des blocs de démonstration. Huit modèles, GLM et Kimi sans nom d’éditeur dans leur carte ; gpt oss avec logo OpenAI noir sur blanc et nom à côté. L’animation démarre automatiquement, sans bouton de pause : 2400ms par étape, 9,6s par cycle ; vrai Lockup Memlia en haut à gauche. Survol/focus et sélection permettent de lire ; mouvement réduit respecté.
