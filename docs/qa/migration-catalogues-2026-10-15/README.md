@@ -42,3 +42,14 @@ Au moment où cette version sera effectivement publiée en production, retirer l
 - Inspection visuelle réelle de Salomé dans le gabarit partagé ; la recette distante suit ci-dessous.
 
 La CI globale GitHub n’est pas simulée sur le Mac. La livraison reste une branche et une prévisualisation, sans fusion ni production.
+
+## Prévisualisation et recette distante
+
+Candidat produit `a089fff4b96d09af948e71fd531b773e921fb747`, branche `site/agents-robots-integrations` : **[ouvrir la prévisualisation](https://45a5abeb.memlia.pages.dev)**. Les ajouts ultérieurs portent uniquement sur les preuves de recette et les tests, sans changement de ce rendu.
+
+- **192 vérifications HTTP réussies** : GET et HEAD pour les 96 variantes des 24 anciennes routes, redirection 301 directe vers la destination attendue. Trois routes inconnues restent de vraies 404. Preuve : `redirects-http.json`.
+- **87 pages actives vérifiées sur Cloudflare** : réponse 200, canonical de production et H1 unique. Les cinq fichiers de découverte/Markdown testés répondent avec le type de contenu attendu. Preuve : `preview-http.json`.
+- La prévisualisation porte volontairement `noindex, nofollow` et bloque l’exploration dans son robots.txt ; le candidat destiné à la production garde ses 87 pages indexables. Aucun changement d’indexation de production n’a été déclenché.
+- Inspection visuelle réelle de Salomé sur la prévisualisation : [capture du rendu](visuel/salome-preview.png). Le gabarit commun, les figurines et la direction graphique validée sont conservés.
+- **136/136 scénarios navigateur réussis**, sans échec ni saut, sur cette livraison Cloudflare : agents, robots, compatibilités, recherche, navigation, clavier, mobile/grand écran, mouvement réduit, repli sans JavaScript, contact, présélections et CSP sans réseau. Preuves : `navigateurs.log` et `navigateurs.json`.
+- Trois anciennes attentes de tests ont été adaptées à la migration, puis relues indépendamment : recherche dans toute la carte logiciel, position courante après redirection d’un guide et redirection des services retirés. Aucune modification du rendu n’a été nécessaire ; voir l’addendum de `revue-independante.md`.

@@ -1,5 +1,6 @@
 import {test,expect} from '@playwright/test';
 import {ROBOTS,ROBOT_CATEGORIES,comptesRobots,cheminRobot,contactsRobots} from '../../src/data/robots';
+import migration from '../../config/migration-catalogues.json' with { type: 'json' };
 
 const hub='/automatisation-cabinet-comptable';
 for(const width of [375,768,1440]){
@@ -67,7 +68,7 @@ test('robots : le lien de contact survit au stockage bloqué',async({page})=>{
  await page.route('**/api/contact',r=>r.fulfill({status:503,body:'{}'}));
  await page.goto('/automatisation/cfe');await page.locator('[data-tache-robot]').first().click();await expect(page).toHaveURL(/\/contact$/);await expect(page.locator('#tache_robot')).toHaveValue('');
 });
-test('robots : démonstrations sans requête externe, sitemap et destinations historiques préservés',async({page,request,baseURL})=>{
+test('robots : démonstrations sans requête externe, sitemap et migration des anciens services',async({page,request,baseURL})=>{
  test.setTimeout(120000);const external:string[]=[];
  page.on('request',r=>{if(new URL(r.url()).origin!==new URL(baseURL!).origin)external.push(r.url());});
  for(const path of [hub,...ROBOTS.map(cheminRobot)]){
@@ -80,7 +81,13 @@ test('robots : démonstrations sans requête externe, sitemap et destinations hi
  }
  expect(external).toEqual([]);
  const sitemap=await request.get('/sitemap-services.xml');const xml=await sitemap.text();for(const r of ROBOTS)expect(xml).toContain('https://memlia.fr'+cheminRobot(r));
- for(const slug of ['bulletins-controle','circularisation-cac','entrees-sorties-salaries','evaluation-transmission','facture-electronique','factures-fournisseurs','notes-de-frais','paie','rapprochement-bancaire','registres-obligations','saisie-comptable','secretariat-juridique']){
-  const res=await request.get('/automatisation/'+slug);expect(res.status(),slug).toBe(200);expect(await res.text()).toContain('data-service-layout="da-v1"');
+ const services=migration.routes.filter(row=>row.type==='service');expect(services).toHaveLength(12);
+ for(const {from,to} of services){
+  expect(xml,from).not.toContain(`https://memlia.fr${from}</loc>`);
+  if(process.env.QA_PAGES_DELIVERY==='1'){
+   const redirection=await request.get(from,{maxRedirects:0});expect(redirection.status(),from).toBe(301);
+   const cible=new URL(redirection.headers().location,redirection.url());expect(cible.pathname+cible.hash,from).toBe(to);
+  }
+  const res=await request.get(to);expect(res.status(),to).toBe(200);expect(await res.text()).not.toContain('data-service-layout="da-v1"');
  }
 });

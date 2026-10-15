@@ -16,8 +16,8 @@ Demande de Kevin du 15 octobre 2026 après validation du design. Base `bf09e2e3`
 - [x] Fiche Salomé complète, image sociale et contact.
 - [x] Retrait des routes, des blocs et liens historiques ; redirections permanentes et garde de non-réapparition.
 - [x] Cohérence copy, SEO, schémas, découverte moteurs et IA.
-- [ ] Audit HTML global, régressions ciblées, inspection réelle, prévisualisation distante vérifiée.
-- [ ] Documentation, branche poussée et livraison du lien.
+- [x] Audit HTML global, régressions ciblées, inspection réelle, prévisualisation distante vérifiée.
+- [x] Documentation, branche poussée et livraison du lien.
 
 ## Compétences réellement lues
 

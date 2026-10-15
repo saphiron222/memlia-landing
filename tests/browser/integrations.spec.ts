@@ -20,8 +20,11 @@ test('la recherche porte sur les logiciels et domaines, sans ancien filtre de gu
   await expect(page.locator('[data-guide-filters], [data-guide-product]')).toHaveCount(0);
   const input = page.getByLabel('Le nom de votre logiciel', { exact: true });
   await input.fill('Silae');
-  const matches = CONNECTEURS.filter(c => c.nom.toLocaleLowerCase('fr').includes('silae'));
+  // La recherche inclut le nom, l’éditeur et la tâche décrite sur la carte.
+  const matches = CONNECTEURS.filter(c => `${c.nom} ${c.editeur} ${c.faitAvec}`.toLocaleLowerCase('fr').includes('silae'));
+  expect(matches.length).toBeGreaterThan(0);
   await expect(page.locator('[data-connecteur]:visible')).toHaveCount(matches.length);
+  expect(await page.locator('[data-connecteur]:visible').evaluateAll(cards => cards.map(card => card.id).sort())).toEqual(matches.map(c => c.id).sort());
   await input.press('Enter');
   await expect(page).toHaveURL(/\/integrations$/);
   await input.fill('aucun-resultat-possible');

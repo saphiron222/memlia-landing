@@ -121,7 +121,7 @@ for (const width of [1024, 1440]) for (const { premier, second } of ORDRES) {
 
 /** Les cinq destinations qui ne sont pas des entrées de Cabinets : toutes publiées, toutes servies. */
 const HUBS = [...AUTOMATISE.map((entree) => entree.href), '/outils-comptables-gratuits', '/blog'];
-/** Un guide publié, sous-page de « Dans vos outils ». */
+/** Une ancienne route redirigée vers une carte du catalogue commun. */
 const GUIDE = '/integrations/bulletin-de-paie-sage';
 
 for (const width of [375, 1024, 1440]) {
@@ -141,17 +141,18 @@ for (const width of [375, 1024, 1440]) {
   });
 }
 
-test('« Ce qu’on automatise » se marque sur ses trois pages et sur une sous-page de « Dans vos outils »', async ({ page }) => {
+test('« Ce qu’on automatise » se marque sur ses trois pages et après la migration d’un ancien guide', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   const bouton = page.locator('[aria-controls="sous-menu-automatise"]');
   for (const { href } of AUTOMATISE) {
     await page.goto(href);
     await expect(bouton).toHaveAttribute('aria-current', 'true');
   }
-  // Un guide est dans la section « Dans vos outils » : le groupe et son entrée la signalent (« true », pas « page »).
-  await page.goto(GUIDE);
+  // L’ancienne route arrive sur le catalogue lui-même : « page » décrit la destination finale.
+  await page.goto(process.env.QA_PAGES_DELIVERY === '1' ? GUIDE : '/integrations#sage-100-paie-rh');
+  await expect(page).toHaveURL(/\/integrations#sage-100-paie-rh$/);
   await expect(bouton).toHaveAttribute('aria-current', 'true');
-  await expect(page.locator('.nav-centre a[href="/integrations"]')).toHaveAttribute('aria-current', 'true');
+  await expect(page.locator('.nav-centre a[href="/integrations"]')).toHaveAttribute('aria-current', 'page');
   await page.goto('/blog');
   await expect(bouton).not.toHaveAttribute('aria-current');
 });

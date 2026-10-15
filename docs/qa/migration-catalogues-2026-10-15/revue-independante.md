@@ -55,3 +55,13 @@ Base Git : `bf09e2e3902ae3bdaa5dd00a071685858b458371`. Candidat : diff de travai
 - Contrat Markdown : **PASS**, 87 pages correspondant au rendu indexable.
 
 Aucun build complet, déploiement, appel à un espace fiscal/social ni envoi de formulaire n’a été lancé par cette revue. Le PASS valide la cohérence du code et des artefacts inspectés ; il ne constitue ni un verdict de CI globale ni une mesure de classement Google. La recette HTTP distante et l’inspection visuelle finale restent exécutées par le parent avant livraison.
+
+## Addendum — attentes navigateur de livraison
+
+**PASS**, le 15 octobre 2026. Relecture limitée au dernier diff de trois fichiers de tests ; aucune modification de l’implémentation ni des tests par le relecteur.
+
+- `integrations.spec.ts` : la recherche est évaluée sur les champs réellement recherchables de chaque carte (nom, éditeur, description). Le témoin doit être non vide et les identifiants exacts des résultats sont maintenant comparés en plus du compte : ce changement renforce le contrôle et supprime une attente devenue inexacte.
+- `navigation-v3.spec.ts` : l’ancienne URL du guide est vérifiée comme une entrée redirigée vers le catalogue commun lors de la livraison Pages. La destination finale et son fragment sont exigés ; `aria-current="page"` est approprié sur le lien du catalogue, et le groupe garde `aria-current="true"`. Les tests de souris, clavier, focus, fermeture et navigation mobile restent inchangés.
+- `robots.spec.ts` : les 12 anciennes fiches de services ne doivent plus répondre avec leur ancien gabarit. Elles doivent être absentes du sitemap et répondre301 vers la destination exacte en livraison Pages ; les destinations finales doivent répondre200. Les contrôles des 21 robots, des démonstrations sans réseau, de CSP, de contact, du clavier et du rendu restent conservés.
+
+Aucun garde encore pertinent n’a été supprimé ou affaibli. Les branches conditionnelles distinguent le routage Cloudflare réel du serveur Astro local ; la recette distante utilise `QA_PAGES_DELIVERY=1`. La nouvelle exécution des 136 scénarios et le relevé HTTP distant sont conduits par le parent, distinctement de cette relecture du diff.
