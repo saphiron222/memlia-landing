@@ -20,7 +20,7 @@ const cartes = [
   <ul class="catalogue-grille services-grille">{cartes.map(c => <li>
     <a class="carte catalogue-carte service-carte" href={c.href} style={`--service-teinte:${c.couleur}`}>
       <div class="service-apercu">{c.image ? <Figurine src={c.image} alt="" taille={128} /> : c.id === 'os' ? <SceneOS compact/> : <SceneModele compact/>}</div>
-      <div class="service-corps"><span class="service-repere">{c.repere}</span><h3>{c.nom}</h3><p class="service-fonction">{c.fonction}</p><p class="service-resume">{c.resume}</p><span class="carte-action">{c.action}<Picto nom="fleche" taille={14}/></span></div>
+      <div class="catalogue-carte-corps service-corps"><span class="carte-meta service-repere">{c.repere}</span><h3 class="carte-titre">{c.nom}</h3><p class="carte-texte service-fonction">{c.fonction}</p><p class="carte-texte service-resume">{c.resume}</p><span class="carte-action">{c.action}<Picto nom="fleche" taille={14}/></span></div>
     </a>
   </li>)}</ul>
   <div class="services-suite"><div><h3>Le catalogue d’abord. Le sur mesure au besoin.</h3><p>Nous déployons et adaptons les robots et agents déjà conçus. Si votre besoin dépasse le catalogue, nous prolongeons leur prise en charge ou construisons sur mesure.</p><p>Memlia OS et le modèle privé se cadrent sur devis. La mémoire retrouve vos sources ; l’entraînement travaille le vocabulaire, les formats et les comportements attendus.</p></div><div class="services-liens"><a href="/contact">Décrire votre besoin<Picto nom="fleche" taille={14}/></a><a href="/integrations">Relier vos outils aux services<Picto nom="fleche" taille={14}/></a></div></div>
@@ -33,12 +33,11 @@ const cartes = [
 .service-apercu :global(.solution-apercu){width:100%;max-width:440px;background:transparent}
 .service-corps{display:flex;flex-direction:column;gap:12px;padding:24px;flex:1}
 .service-repere{color:var(--accent-texte);font-size:var(--t-sm)}
-.service-corps h3{font-size:var(--titre-bloc)}
 .service-fonction{font-weight:500}.service-resume{color:var(--texte-2);margin-bottom:12px}
 .service-corps .carte-action{margin-top:auto}
 .services-suite{display:grid;gap:24px;margin-top:40px;padding-top:32px;border-top:1px solid var(--ligne-douce)}
 .services-suite h3{font-size:var(--titre-bloc);margin-bottom:16px}.services-suite p{max-width:66ch;color:var(--texte-2);margin-top:12px}
 .services-liens{display:flex;flex-direction:column;gap:20px;align-items:flex-start;justify-content:center}.services-liens a{display:inline-flex;align-items:center;gap:12px;text-underline-offset:4px}
-@media(min-width:48rem){.services-grille{grid-template-columns:repeat(2,minmax(0,1fr))}.service-corps{padding:32px}}
+@media(min-width:48rem){.services-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:64rem){.services-suite{grid-template-columns:2fr 1fr;gap:64px}}
 </style>

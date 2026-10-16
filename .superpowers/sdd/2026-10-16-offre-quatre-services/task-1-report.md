@@ -157,3 +157,43 @@ Qualification finale après toutes les modifications :
 - Contrat de page : **97 pages VERT**, gardes délégués PASS. Log `.qa/offre-round2-contrat-final.log`.
 - Garde des liens/ancres des six pages : **zéro perte restante** sur la sortie finale.
 - `git diff --check` : PASS. Aucun autre échec réel relevé dans le périmètre exécuté ; CI du commit final à relancer par le contrôleur.
+
+## Correctif CI — round 3
+
+Base `eddaadae`, brief `task-1-fix3-brief.md`, CI `38839951677`. Les deux causes viennent des shards navigateur 1 (`116777509200`) et 4 (`116777509235`) ; les autres constats CI ne sont pas rejoués hors périmètre.
+
+### RED et corrections
+
+Le serveur statique précédent n’était plus actif. Une première tentative constate `ERR_CONNECTION_REFUSED` ; le serveur est relancé sans compilation avec `ASTRO_PREVIEW_BACKGROUND=1 npm run preview -- --host 127.0.0.1 --port 4397` (session 54291). Puis, sur le HTML existant, la commande suivante reproduit exactement les **deux échecs attendus** :
+
+```text
+QA_URL=http://127.0.0.1:4397 npx playwright test tests/browser/cartes.spec.ts tests/browser/site-copy-b.spec.ts --grep 'cartes à 375px.* / :|copy publique et frontières, 375px'
+2 failed
+```
+
+Log : `.qa/offre-round3-red.log`. Le premier échec est le corps catalogue absent, passé à `getComputedStyle` ; le second est l’attente de la phrase de sur mesure remplacée par la copie quatre services autorisée.
+
+1. `ChoisirTache.astro` porte désormais la classe commune `catalogue-carte-corps` et conserve une marge intérieure de **24 px à toutes les largeurs**, comme le catalogue validé. Le repère, le titre et les deux paragraphes portent aussi `carte-meta`, `carte-titre` et `carte-texte` : ils entrent réellement dans les contrôles de typographie et de contraste AA. Le titre hérite de la règle commune, sans redéfinition locale redondante. La coque, les quatre scènes, tous les textes et destinations et la grille 2 × 2 sont conservés. **Aucun changement à `cartes.spec.ts`, aucune carte exclue.**
+2. `site-copy-b.spec.ts` attend la formulation validée « Si votre besoin dépasse le catalogue, nous prolongeons leur prise en charge ou construisons sur mesure. » et ajoute l’assertion « Nous déployons et adaptons les robots et agents déjà conçus. ». Les autres frontières, parcours, largeurs et le glossaire sans JavaScript restent couverts.
+
+Le nouveau balisage et les styles de carte changent logiquement le témoin HTML EC. Le test de rendu est d’abord rejoué et relève uniquement ses deux comparaisons d’empreinte devenues anciennes (9 PASS, 2 FAIL ; `.qa/offre-round3-render-red.log`). La référence passe de `18936a9011a6ee0cfdd19ae710c4bfc34ff596efa7b380f06c00c73276e734c8` à `9b3c1e9ac525171d588f680d383d7d1150422d2318561041f7f12648d4e0fc19`, avec justification du retour au contrat commun inscrite auprès du témoin. **Aucune normalisation ni mutation supprimée** : les 22 mutations des onze sections et les variantes négatives d’image restent actives.
+
+### GREEN et pipeline
+
+| Commande | Résultat |
+|---|---|
+| `npm run regen:generated` | PASS, log `.qa/offre-round3-regen.log`. Commande autorisée ; aucun build/check complet autonome. |
+| `QA_URL=http://127.0.0.1:4397 npx playwright test tests/browser/cartes.spec.ts tests/browser/site-copy-b.spec.ts tests/browser/accueil-quatre-services.spec.ts` | **88/88 PASS** en 35 s, `.qa/offre-round3-browser-green.log`. Les 24 cas affectés du contrat cartes passent, avec contrastes, coque, titre/texte, 24 px ; quatre destinations et 2 × 2 confirmées par le test dédié. |
+| `node --test tests/scripts/accueil-render.test.mjs tests/scripts/editorial-figurines.test.mjs` | **11/11 PASS**, `.qa/offre-round3-render-green.log`. Les 22 mutants des onze sections sont refusés comme attendu ; **zéro perte de lien ou d’ancre** sur les six pages. |
+| `node scripts/sync-lastmod.mjs --check` | 66 entrées à jour, exécuté avant enrichissement Markdown. |
+| `node scripts/generate-agent-markdown.mjs` puis `node scripts/verify-agent-markdown.mjs` | 89 pages générées et PASS. |
+| `node scripts/verify-page-contract.mjs` | **VERT, 97 pages**, cinq gardes délégués PASS ; `.qa/offre-round3-contrat.log`. |
+| `git diff --check` et contrôle indexé avant commit | PASS. |
+
+### Inspection visuelle et auto-revue
+
+Quatre captures réelles du composant ont été produites avec Playwright, depuis le serveur statique, puis ouvertes et inspectées : [EC mobile](preuves/round3-ec-375-services.png), [EC bureau](preuves/round3-ec-1440-services.png), [CAC mobile](preuves/round3-cac-375-services.png), [CAC bureau](preuves/round3-cac-1440-services.png). Capture du rectangle du composant depuis une page entière, sans modification du DOM ou des styles. Les premières captures par locator superposaient le header fixe au milieu du rectangle défilé ; les captures finales évitent cet artefact de capture.
+
+À 375 px : quatre cartes en colonne, titres et CTA lisibles, aucune coupe horizontale. À 1440 px : deux rangées alignées, même largeur et marges de 24 px ; les figurines et les deux scènes approuvées restent visibles. Les mesures [round3-cartes.json](preuves/round3-cartes.json) confirment pour chacune des quatre cartes et des quatre configurations : corps 24 px, un titre commun, deux paragraphes communs et un repère commun. Le clavier, le focus et la surface cliquable sont vérifiés dans les tests verts.
+
+Auto-revue : correction limitée au contrat graphique commun et au contrat de copie autorisée ; aucune redéfinition de grille, aucune baisse de seuil de contraste, aucun changement aux scènes ou à la copie publique. Les dérivés sont ceux du pipeline autorisé ; seuls les six contenus HTML utilisant le composant ont un nouveau lastmod. Aucun prix, type, `Orientation`, article ou rendez-vous modifié. Aucun sous-agent, push ou fusion. Les suites complètes, la CI du SHA exact et la revue indépendante restent au contrôleur. Aucun autre échec constaté dans les contrôles exécutés.

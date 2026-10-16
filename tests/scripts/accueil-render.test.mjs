@@ -56,9 +56,11 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
 // sur mesure en continuité, intégrations transversales et textes d’orientation/conversion élargis.
 // Référence : docs/strategy/offre-quatre-services-2026-10-16/CADRAGE.md et commit 8c39776f.
 // Les onze sections, les scènes approuvées, cinq usages et onze FAQ restent contrôlés.
+// Correctif CI round3 : classes catalogue-carte-corps, carte-meta/titre/texte et corps à 24 px.
+// La copie et les quatre scènes restent identiques ; le témoin inclut ce retour au contrat commun.
 // Aucune nouvelle normalisation : tous les mutants de contenu/rendu ci-dessous restent actifs.
 function assertEcContent(html) {
-  const expected = '18936a9011a6ee0cfdd19ae710c4bfc34ff596efa7b380f06c00c73276e734c8';
+  const expected = '9b3c1e9ac525171d588f680d383d7d1150422d2318561041f7f12648d4e0fc19';
 
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]

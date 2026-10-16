@@ -10,7 +10,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       ['/contact', ['Votre besoin, vos outils et le résultat attendu', 'Décrivez le geste sans donnée client', 'comprendre la page du site à l’origine de ma demande']],
       ['/automatisation-cabinet-comptable', ['une routine précise : un déclencheur, une règle écrite, un résultat dans vos outils', 'Votre équipe reprend les exceptions et valide les actions qui engagent le cabinet.']],
       ['/methode', ['Elle accepte ou refuse la mise en service.', 'Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.']],
-      ['/', ['Nous déployons nos robots et agents IA dans vos outils, avec vos règles et vos validations.', 'Nous construisons sur mesure lorsque votre besoin dépasse le catalogue.', 'Aucun envoi externe sans validation humaine.']],
+      ['/', ['Nous déployons nos robots et agents IA dans vos outils, avec vos règles et vos validations.', 'Nous déployons et adaptons les robots et agents déjà conçus.', 'Si votre besoin dépasse le catalogue, nous prolongeons leur prise en charge ou construisons sur mesure.', 'Aucun envoi externe sans validation humaine.']],
     ] as const) {
       await page.goto(route);
       await expect(page.locator('h1')).toHaveCount(1);
