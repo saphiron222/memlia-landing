@@ -52,11 +52,13 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
   ]) assert.notEqual(digest(changed), expected, changed);
 });
 
-// Migration du 15/10 : les cinq liens de tâches quittent les services retirés pour les tâches des agents.
-// Le contenu, les images et la structure du design A sont conservés ; les mutants restent actifs.
-// PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
+// Témoin révisé le 16/10 pour le delta quatre services autorisé : quatre cartes,
+// sur mesure en continuité, intégrations transversales et textes d’orientation/conversion élargis.
+// Référence : docs/strategy/offre-quatre-services-2026-10-16/CADRAGE.md et commit 8c39776f.
+// Les onze sections, les scènes approuvées, cinq usages et onze FAQ restent contrôlés.
+// Aucune nouvelle normalisation : tous les mutants de contenu/rendu ci-dessous restent actifs.
 function assertEcContent(html) {
-  const expected = '39a57be034af091df3fac2cec3635fa12c961a08035aabee6a9d392fc5ababd3';
+  const expected = '18936a9011a6ee0cfdd19ae710c4bfc34ff596efa7b380f06c00c73276e734c8';
 
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]
@@ -80,7 +82,7 @@ function assertEcContent(html) {
   assert.equal(contentSha(main), expected);
 }
 
-test('le contenu de / conserve le témoin EC recette A hors lien d’orientation CAC', () => {
+test('le contenu de / conserve le témoin EC quatre services hors lien d’orientation CAC', () => {
   assertEcContent(readFileSync('dist/index.html', 'utf8'));
 });
 
