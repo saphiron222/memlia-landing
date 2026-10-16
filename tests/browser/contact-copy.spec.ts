@@ -9,10 +9,10 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       await route.fulfill({ status: 503, contentType: 'application/json', body: '{}' });
     });
     await page.goto('/contact');
-    await expect(page.locator('h1')).toHaveText('Quel robot ou agent IA souhaitez-vous déployer ?');
+    await expect(page.locator('h1')).toHaveText('Que souhaitez-vous confier à Memlia ?');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/contact');
-    await expect(page.locator('main')).toContainText('une adaptation ou une construction sur mesure');
-    await expect(page.locator('section[aria-labelledby="ensuite"]')).toContainText('Nous retenons le robot ou l’agent adapté');
+    await expect(page.locator('main')).toContainText('nous partons du catalogue et construisons sur mesure au besoin');
+    await expect(page.locator('section[aria-labelledby="ensuite"]')).toContainText('Nous retenons le service adapté');
     await expect(page.locator('section[aria-labelledby="ensuite"]')).toContainText('un périmètre et un devis selon la complexité');
     await expect(page.getByText(/Rien à envoyer : la description suffit\./)).toHaveCount(1);
     const form = page.locator('[data-contact]');

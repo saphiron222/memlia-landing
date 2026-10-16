@@ -8,7 +8,7 @@ for (const width of [375, 1440]) {
     await expect(page.locator('h1')).toHaveText('Robots et agents IA pour votre cabinet comptable.');
     await expect(page.locator('.hero-editorial-intro')).toContainText('Nous déployons nos robots et agents IA');
     await expect(page.locator('.hero-editorial-intro')).toContainText('dans vos outils');
-    await expect(page.locator('.hero-editorial-intro')).toContainText('Nous construisons sur mesure lorsque votre besoin dépasse le catalogue.');
+    await expect(page.locator('.hero-editorial-intro')).toContainText('Nous relions aussi le savoir du cabinet et formons une IA à vos façons de travailler.');
     await expect(page.locator('main section')).toHaveCount(11);
     // Recette A validée le 15 octobre : scène de portefeuille, plus de fausse interface décorative.
     await expect(page.locator('main [data-proof]')).toHaveCount(0);

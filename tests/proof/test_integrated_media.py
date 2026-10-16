@@ -64,7 +64,7 @@ class IntegratedMediaProof(unittest.TestCase):
                 self.assertTrue(image.get('width') and image.get('height'))
 
     def test_tagline_is_preserved_exactly(self):
-        self.assertIn('Vos robots et agents IA, déployés et maintenus dans vos outils.', (DIST / 'index.html').read_text())
+        self.assertIn('Des services IA adaptés à votre cabinet, déployés et maintenus.', (DIST / 'index.html').read_text())
 
     def test_centered_hero_keeps_the_scene_in_the_following_content(self):
         html = (DIST / 'index.html').read_text()

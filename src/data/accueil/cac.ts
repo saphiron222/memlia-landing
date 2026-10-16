@@ -37,7 +37,7 @@ export const CONTENU_CAC: ContenuAccueil = {
   hero: {
     etiquette: 'Automatisation IA pour cabinets de commissariat aux comptes',
     titre: 'Automatisation pour commissaire aux comptes : robots et agents IA.',
-    texte: 'Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux et construisons sur mesure au besoin.',
+    texte: 'Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux. Nous pouvons aussi relier le savoir du cabinet ou former un modèle à vos formats métier.',
     poster: '/media/cac-r4/hero-poster-1200.webp',
     video: '/media/cac-r4/explainer-hero-45s.mp4',
     sousTitres: '/media/cac-r4/explainer.vtt',
@@ -45,7 +45,7 @@ export const CONTENU_CAC: ContenuAccueil = {
     descriptionVideo: 'Démonstration sur un jeu fictif : réponses de tiers, proposition de montant, ambiguïté bloquée et validation par le cabinet. Les conclusions restent au CAC.',
   },
   orientation: {
-    titre: 'Choisissez ce qui prépare vos mandats.',
+    titre: 'Quatre services, cadrés pour votre cabinet.',
     destinations: [
       { libelle: 'Certification des comptes', href: '#use-certification', texte: 'Sélection des tiers à circulariser, écarts de confirmation, fichiers du client à rapprocher : une mécanique cadrée autour de vos travaux.' },
       { libelle: 'Interventions légales', href: '#use-interventions', texte: 'Une opération ponctuelle : réunir les données et préparer les comparaisons prévues, dans le périmètre de cette intervention.' },
@@ -72,7 +72,7 @@ export const CONTENU_CAC: ContenuAccueil = {
     image: MEDIAS_CAC.selection,
   },
   promesse: {
-    titre: 'Un agent adapté à vos travaux, maintenu par Memlia.',
+    titre: 'Une prise en charge adaptée à vos travaux.',
     texte: 'Nous partons des prises en charge Memlia et les adaptons à votre environnement d’audit. Vous définissez les travaux ; nous préparons le traitement, sa mise en service et la maintenance convenue.',
     points: [
       { titre: 'Un déploiement défini par mission.', texte: 'Nous précisons les sources, les critères, les accès et les exceptions avec votre équipe. Les fonctions de votre suite d’audit restent en place.' },
@@ -93,10 +93,10 @@ export const CONTENU_CAC: ContenuAccueil = {
     ],
   },
   methode: {
-    titre: 'Du choix de l’agent à son utilisation dans vos mandats.',
+    titre: 'Du besoin à la mise en service dans vos mandats.',
     libelleEtape: 'Étape',
     etapes: [
-      { numero: 1, titre: 'Retenir une première prise en charge.', texte: 'Nous identifions l’agent et la tâche utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu et la frontière du traitement sont écrits.', image: MEDIAS_CAC.selection },
+      { numero: 1, titre: 'Retenir une première prise en charge.', texte: 'Nous retenons le service et le premier usage utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu, les accès et la frontière du traitement sont écrits.', image: MEDIAS_CAC.selection },
       { numero: 2, titre: 'Adapter à vos procédures.', texte: 'Vous fixez les critères. Nous configurons les entrées, les propositions et les arrêts. Si le catalogue ne couvre pas votre comparaison, nous construisons le traitement sur mesure.', image: MEDIAS_CAC.rapprochements },
       { numero: 3, titre: 'Vérifier les résultats et les limites.', texte: 'Les essais fictifs montrent les résultats attendus et les cas bloqués. Votre équipe fait la recette dans l’environnement autorisé. La fiche outil décrit le traitement pour votre appréciation au dossier.', image: MEDIAS_CAC.selection },
       { numero: 4, titre: 'Mettre en service et maintenir.', texte: 'Nous déployons le périmètre accepté. La règle, les essais et la fiche outil accompagnent la livraison. Le devis définit la maintenance, le support et les évolutions couverts.', image: MEDIAS_CAC.ecarts },
@@ -104,7 +104,7 @@ export const CONTENU_CAC: ContenuAccueil = {
   },
   integration: {
     titre: 'Dans votre environnement d’audit.',
-    texte: 'Nous partons de vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.',
+    texte: 'Les intégrations relient les services retenus à vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.',
     limites: 'Formats, accès et fonctions de votre version sont vérifiés avant l’engagement. Une connexion directe n’est annoncée qu’après cette vérification.',
     regles: [
       { titre: 'Conserver les fonctions utilisées.', texte: 'Les lettres et leur circuit d’envoi restent dans vos outils de circularisation.' },
@@ -139,7 +139,7 @@ export const CONTENU_CAC: ContenuAccueil = {
     ],
   },
   faq: {
-    titre: 'Avant de déployer un agent dans vos mandats.',
+    titre: 'Avant de choisir un service pour vos mandats.',
     texte: 'Compatibilité, déploiement, données et responsabilité : les points à préciser avec votre cabinet.',
     questions: [
       { id: 'suite', question: 'Notre suite d’audit fait déjà ces travaux. Que prenez-vous en charge ?', reponse: 'Nous vérifions d’abord ce que votre version couvre. Nous conservons ces fonctions et ciblons le geste restant : votre règle de sélection des tiers, les écarts de confirmation ou les fichiers du client à rapprocher de la balance. Si votre outil couvre déjà la tâche, nous vous le disons.' },
@@ -157,7 +157,7 @@ export const CONTENU_CAC: ContenuAccueil = {
   },
   appelFinal: {
     titre: 'Préparons le premier déploiement pour vos mandats.',
-    texte: 'Indiquez l’agent ou la préparation qui vous intéresse, votre suite d’audit et le résultat attendu. Nous définissons l’adaptation, les validations et le devis. Un besoin particulier peut aussi faire l’objet d’une construction sur mesure.',
+    texte: 'Décrivez la préparation, le savoir à retrouver ou les formats à apprendre, avec votre suite d’audit et le résultat attendu. Nous retenons le service utile, son périmètre par mission et les validations. Le catalogue, ses adaptations et le sur mesure répondent aux tâches à déléguer.',
     points: [
       'Une première tâche utile à vos mandats.',
       'Un périmètre adapté à vos procédures.',

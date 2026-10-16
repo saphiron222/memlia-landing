@@ -9,7 +9,7 @@ for(const width of [375,768,1440])test(`recette A : six pages lisibles et scène
   for(const item of await bloc.locator('li').all())await expect(item).toHaveCSS('background-color','rgba(0, 0, 0, 0)');await expect(bloc.locator('.cellule,.carte,.bande')).toHaveCount(0);
   await bloc.screenshot({path:`.qa/copy-browser-final/screens/vert-${id}-${width}.png`,animations:'disabled'});
   const img=page.locator(`[data-scene="${id}"] img`);await img.scrollIntoViewIfNeeded();await expect.poll(()=>img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
-  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.locator('.catalogue-grille .catalogue-carte')).toHaveCount(3);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.locator('.catalogue-grille .catalogue-carte')).toHaveCount(4);
   const broken=await page.locator('main a[href^="#"]').evaluateAll(links=>links.map(a=>a.getAttribute('href')!).filter(h=>!document.getElementById(decodeURIComponent(h.slice(1)))));expect(broken).toEqual([]);
   const og=await page.locator('meta[property="og:image"]').getAttribute('content');expect((await request.get(new URL(og!).pathname)).status()).toBe(200);
   await page.screenshot({path:`.qa/copy-browser-final/screens/${id}-a-${width}.png`,fullPage:true,animations:'disabled'});

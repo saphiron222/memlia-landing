@@ -3,11 +3,11 @@
 Décision du 16/10/2026 : **Nos services** regroupe **Robots**, **Agents IA**, **Memlia OS** et **Modèle IA privé**. **Intégrations** est une entrée directe de navigation, séparée des prestations, comme Outils gratuits et Blog. Cette organisation remplace les trois entrées commerciales décidées le 15/10. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
 
 
-Document version : v10 — 16 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-16. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Document version : v11 — 16 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-16. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
-**« Des robots et agents IA pour votre cabinet. Nous les déployons et les adaptons à vos outils. »**
+**« Des services IA adaptés au travail et au savoir de votre cabinet. Nous les déployons, les éprouvons avec vous et les maintenons. »**
 
 **Dernier arbitrage de Kevin, 15/10/2026 après la recette des cartes Méthode.** L’offre part des robots et agents IA Memlia déjà conçus et présentés. Nous les déployons, les adaptons aux dossiers, aux outils et aux validations du cabinet, et les maintenons. Lorsqu’un besoin dépasse ce catalogue, nous construisons sur mesure. L’existence d’une fiche ne prouve aucun déploiement chez un client : aucun client, résultat mesuré, délai standard, certification ou mode d’hébergement n’est déduit de ce positionnement.
 
@@ -17,7 +17,16 @@ Trois bénéfices, jamais chiffrés sans mesure : moins de collecte et de manipu
 
 ## 2. La promesse : ambitieuse, et tenue
 
-**Choisissez un robot ou un agent IA Memlia. Nous l’adaptons, le déployons dans vos outils et le maintenons. Votre besoin dépasse le catalogue ? Nous construisons sur mesure.**
+**Choisissez une première prise en charge. Les robots et agents partent du catalogue ; Memlia OS relie la mémoire du cabinet ; le modèle privé travaille ses façons de produire par entraînement. Nous définissons les données autorisées, les accès, les livrables et la recette du service retenu.**
+
+Décision du 16/10/2026, accueils quatre services :
+
+- **Robots** : 21 routines au catalogue, un déclencheur et un résultat ; adaptation et sur mesure au besoin.
+- **Agents IA** : 12 agents au catalogue, les tâches d’un métier, leurs livrables et validations ; adaptation et sur mesure au besoin.
+- **Memlia OS** : la mémoire collective relie personnes, documents, outils et agents avec leurs sources et accès.
+- **Modèle IA privé** : données autorisées préparées et qualifiées, budget d’essai, adaptation par entraînement, évaluation et publication d’une version acceptée. La recherche documentaire (RAG) et l’entraînement sont distincts. Les droits suivent la licence de base et le contrat.
+
+Les intégrations relient ces services aux outils existants ; elles ne forment pas une cinquième offre. Le sur mesure prolonge le catalogue. Les accueils donnent quatre chemins de même importance, sans transformer le hero en inventaire. Les figurines existantes restent réservées aux robots et agents ; les aperçus OS et modèle reprennent leurs scènes validées, sans nouveau boîtier ni emblème.
 
 - L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire, en expertise comptable et en commissariat aux comptes : de la relance des pièces à la DSN, du suivi des demandes de confirmation des tiers à la préparation des rapprochements) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »). Les familles publiées restent celles des données du site ; ouvrir le public CAC dans la charte ne prouve ni une intégration livrée ni une page déjà en ligne.
 - L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle.
@@ -49,7 +58,7 @@ Ce que le nom ne dit jamais : un chiffre de gain, une promesse d'autonomie, une 
 
 ## 4. Produit et modèle économique
 
-Memlia est un service : déployer les robots et agents IA du catalogue, les adapter à l’environnement et aux règles du cabinet, les faire recetter et les maintenir. Une construction sur mesure intervient lorsque le besoin le demande. Le déploiement comprend l’observation de la tâche, les accès, la règle écrite et ses limites, les essais fictifs et la recette par les équipes. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
+Memlia propose quatre services : robots, agents IA, mémoire collective et modèle privé. Les robots et agents partent du catalogue ; nous les adaptons à l’environnement et aux règles du cabinet, les faisons recetter et les maintenons. Memlia OS et le modèle privé ont leur périmètre sur devis. Une construction sur mesure intervient lorsque le besoin le demande. Le déploiement comprend l’observation de la tâche, les accès, la règle écrite et ses limites, les essais fictifs et la recette par les équipes. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
 
 Le résultat et les critères d'acceptation sont définis au devis ; prix à la complexité, jamais au siège. Un classeur, un export, un logiciel métier, une messagerie ou un dossier partagé peuvent être le point d'entrée ; les formats et accès sont vérifiés avant tout engagement. Excel est une intégration possible, jamais la catégorie commerciale ni un mot du hero (`test_positioning.py`).
 
@@ -102,16 +111,16 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 | `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Automatisation pour commissaire aux comptes : robots et agents IA. |
 | `/automatisation-cabinet-comptable` | le catalogue des robots, les routines et leurs livrables | robot cabinet comptable, automatisation cabinet comptable | Choisissez une routine : nous adaptons et déployons son robot dans vos outils. |
 | `/methode` | la preuve de méthode | comment se déroule une mission | Observer. Écrire. Éprouver. Livrer. |
-| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Vos robots au travail. Vos décisions sous contrôle. |
-| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous mettons les robots et agents IA au travail dans votre cabinet. |
-| `/contact` | la conversion | — | Quel robot ou agent IA souhaitez-vous déployer ? |
+| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Vos services IA au travail. Vos décisions sous contrôle. |
+| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous mettons l’IA au travail avec votre cabinet. |
+| `/contact` | la conversion | — | Que souhaitez-vous confier à Memlia ? |
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
 | `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia comptable (50 recherches par mois, Google, 15/10/2026) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
 | `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | une requête par fiche, mesurée sur Google le 15/10/2026 (`docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md` §6) | ce que l'agent prend en charge, intention d'abord |
 | `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable | arrêté par la spécification du hub |
 
-Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Vos robots et agents IA, déployés et maintenus dans vos outils. »
+Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation porte le même libellé. Tagline (pied de page, slogan JSON-LD) : « Des services IA adaptés à votre cabinet, déployés et maintenus. »
 
 ## 7 bis. Les articles du blog
 
@@ -206,6 +215,8 @@ Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre 
 
 ## Changelog
 
+- v11 (2026-10-16) — Quatre chemins sur les accueils EC/CAC ; sur mesure en continuité du catalogue ; mémoire collective et entraînement distincts ; conversion et garanties étendues aux quatre services. Prix validés inchangés.
+
 - v7 (2026-10-15) — Porte 2 du hub : les agents IA présentent tout ce que nous savons construire dans leur métier (§2), jamais comme déjà en service chez un client ; le rejeu de chaque agent est montré sur dossier fictif (§9 bis) ; logos des éditeurs admis sur la page de compatibilité, sans statut ni total (§10).
 - v6 (2026-10-14) — Ajouté les agents IA (§9 bis) : définition, promesses et interdits, place dans la navigation ; trois lignes au §7 (hub, fiches, page des outils). Décision de Kevin à la porte 1 du hub (cadrage `docs/strategy/site-v3/HUB-SPECIALISTES-CADRAGE.md`, ADR 0001).
 - v5 (2026-10-06) — Ouvert la charte au commissariat aux comptes : personas, vocabulaire, secret, indépendance, responsabilité, documentation et fiche outil ; séparé l'accueil CAC de l'accueil EC sans promettre de fonctions déjà livrées.
@@ -230,7 +241,7 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 ## Décision Kevin du 16/10/2026 — Memlia OS et modèle privé
 Deux pages complètent les catalogues robots et agents dans « Nos services » : Memlia OS (mémoire collective et orchestration du cabinet) et Modèle IA privé (adaptation/entraînement pour entreprises). Le mot système d’exploitation décrit ici une couche métier reliée aux outils existants. Ce périmètre explicitement demandé étend l’audience à l’entreprise pour la seconde offre. Les interdits génériques de plateforme/logiciel ne doivent pas empêcher de nommer ces deux offres ; ils restent applicables aux robots et agents.
 
-Nos services regroupe Robots, Agents IA, Memlia OS et Modèle IA privé ; Intégrations est un lien direct. Décrire des livrables et une prise en charge sur devis, pas un matériel déjà commercialisé ni une installation client acquise. Boîtier = vue de principe ; interfaces = exemples fictifs. RAG et entraînement sont distincts ; droits sur l’adaptation soumis à la licence de base. Aucun « tout local », « souverain », « propriétaire exclusif » ou conformité automatique sans périmètre et preuve. Mammouth n’est pas présenté comme service d’entraînement personnalisé. Les deux documents de pricing validés restent inchangés.
+Nos services regroupe Robots, Agents IA, Memlia OS et Modèle IA privé ; Intégrations est un lien direct. Décrire des livrables et une prise en charge sur devis, pas un matériel déjà commercialisé ni une installation client acquise. Les scènes du bureau collectif et du modèle privé sont des exemples fictifs ; aucun boîtier illustré. RAG et entraînement sont distincts ; droits sur l’adaptation soumis à la licence de base. Aucun « tout local », « souverain », « propriétaire exclusif » ou conformité automatique sans périmètre et preuve. Mammouth n’est pas présenté comme service d’entraînement personnalisé. Les deux documents de pricing validés restent inchangés.
 
 Dernier arbitrage visuel du 16/10 : la représentation validée de Memlia OS est le bureau collectif, sans boîtier illustré, décomposition au scroll ou figurine. Le petit pictogramme de mémoire reste au centre. Les pistes générées sont archivées hors site.
 

@@ -1,5 +1,7 @@
 # Copy : partir du catalogue, adapter, construire au besoin
 
+> Archive de la recette du 15/10/2026. Le design A reste la référence visuelle ; la copie commerciale courante suit la charte v11 et le [cadrage quatre services du 16 octobre](../../offre-quatre-services-2026-10-16/CADRAGE.md). Les formulations catalogue seul ci-dessous retracent la version précédente.
+
 15 octobre 2026. Demande directe de Kevin : revoir les deux accueils, À propos, Garanties et Contact parce que Memlia implémente maintenant ses robots et agents IA ; le sur mesure répond aux besoins supplémentaires. Le design A et les corrections déjà validées restent en place.
 
 ## Plan et avancement

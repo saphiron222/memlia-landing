@@ -70,8 +70,8 @@ ni réglage d'horloge de production n'est modifié.
 
 ## Message et copy
 
-**La charte de message fait foi : `.agents/product-marketing.md` (v10, 16/10/2026 : Memlia OS et modèle privé en complément ; catalogue, déploiement, adaptation et sur mesure au besoin ; agents IA §2 et §9 bis, compatibilité §10).** Toute surface publique
-(site, blog, LinkedIn, devis, prise de parole) suit son angle (robots et agents IA Memlia déployés et adaptés dans les outils du cabinet), sa promesse (prise en charge et maintenance), sa voix (« nous », concret,
+**La charte de message fait foi : `.agents/product-marketing.md` (v11, 16/10/2026 : quatre services, catalogue robots/agents en premier, mémoire collective, entraînement privé, intégrations transversales).** Toute surface publique
+(site, blog, LinkedIn, devis, prise de parole) suit son angle (services IA adaptés au travail et au savoir du cabinet, déployés et maintenus), sa promesse (prise en charge et maintenance), sa voix (« nous », concret,
 confiant) et ses interdits. Une phrase qui la contredit se corrige ; une phrase qu'elle ne couvre pas se
 discute dans la charte avant d'être publiée. Le copy des pages vit dans `src/data/pages-v2.mjs`,
 `src/data/site.mjs`, `src/data/faq.ts`, les sections de l'accueil et les pages ; `public/llms.txt` le reflète.

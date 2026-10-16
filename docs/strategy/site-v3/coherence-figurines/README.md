@@ -1,5 +1,7 @@
 # Recette A — six pages commerciales Memlia
 
+> Archive de la recette du 15/10/2026. Le design A reste la référence visuelle ; la copie commerciale courante suit la charte v11 et le [cadrage quatre services du 16 octobre](../../offre-quatre-services-2026-10-16/CADRAGE.md). Les formulations catalogue seul ci-dessous retracent la version précédente.
+
 Kevin a choisi les scènes de travail A le 15 octobre 2026. Elles sont intégrées aux deux accueils, à Méthode, À propos, Garanties et Contact. Les dernières corrections conservent le **vert du hub robots**, sans cellules blanches ni bandes grises, et répartissent les sections en grilles comme les livrables et les étapes des fiches robots.
 
 Prévisualisation finale vérifiée : https://a9bf1faf.memlia.pages.dev/ — alias : https://preview-coherence-figurines.memlia.pages.dev/.

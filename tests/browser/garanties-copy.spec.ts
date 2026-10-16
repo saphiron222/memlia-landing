@@ -6,14 +6,14 @@ for (const width of [375, 1440]) {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const response = await page.goto('/garanties');
     expect(response?.status()).toBe(200);
-    await expect(page.locator('h1')).toHaveText('Vos robots au travail. Vos décisions sous contrôle.');
+    await expect(page.locator('h1')).toHaveText('Vos services IA au travail. Vos décisions sous contrôle.');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/garanties');
     await page.locator('#refus').scrollIntoViewIfNeeded();
     await expect(page.locator('#refus h3').first()).toHaveText('Un traitement documenté');
     await expect(page.locator('#refus h3').first()).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Aucune conformité', exact: true })).toHaveCount(0);
     const limits = page.locator('#refus .editorial-point').first();
-    await expect(limits).toContainText('Nous décrivons le fonctionnement et les limites du robot ou de l’agent.');
+    await expect(limits).toContainText('Nous décrivons le fonctionnement et les limites du service retenu.');
     await expect(limits).toContainText('ne constitue pas une attestation de conformité');
     await expect(limits).toContainText('ne certifie ni les comptes ni le dossier d’audit');
     await expect(page.locator('#donnees')).toContainText('droits d’accès, les destinataires et les flux');

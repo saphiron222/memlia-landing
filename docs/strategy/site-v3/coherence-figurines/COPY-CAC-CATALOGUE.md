@@ -1,6 +1,6 @@
 # Accueil CAC — copy de déploiement du catalogue
 
-15 octobre 2026. Dernière décision de Kevin : déployer et adapter les robots et agents IA Memlia, construire sur mesure au besoin. Le design A reste en place.
+16 octobre 2026. Quatre services : robots, agents IA, Memlia OS et modèle privé. Le catalogue précède l’adaptation et le sur mesure. Le design A reste en place ; les sources, accès et responsabilités sont cadrés par mission.
 
 Le relevé d’autocomplétion du 6 octobre reste le seul relevé de cette requête : zéro suggestion, volume mensuel indisponible. Aucun nouveau volume n’est inventé. Les chemins du masque lecteur et des médias historiques restent tracés dans les données ; le site rend la scène A. Les réponses normatives, le tableau de frontière et la couverture des suites restent inchangés. La FAQ prix décrit maintenant le déploiement et son adaptation.
 
@@ -8,12 +8,12 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 
 - CONTENU_CAC.hero.etiquette : Automatisation IA pour cabinets de commissariat aux comptes
 - CONTENU_CAC.hero.titre : Automatisation pour commissaire aux comptes : robots et agents IA.
-- CONTENU_CAC.hero.texte : Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux et construisons sur mesure au besoin.
+- CONTENU_CAC.hero.texte : Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux. Nous pouvons aussi relier le savoir du cabinet ou former un modèle à vos formats métier.
 - CONTENU_CAC.hero.poster : /media/cac-r4/hero-poster-1200.webp
 - CONTENU_CAC.hero.video : /media/cac-r4/explainer-hero-45s.mp4
 - CONTENU_CAC.hero.sousTitres : /media/cac-r4/explainer.vtt
 - CONTENU_CAC.hero.descriptionVideo : Démonstration sur un jeu fictif : réponses de tiers, proposition de montant, ambiguïté bloquée et validation par le cabinet. Les conclusions restent au CAC.
-- CONTENU_CAC.orientation.titre : Choisissez ce qui prépare vos mandats.
+- CONTENU_CAC.orientation.titre : Quatre services, cadrés pour votre cabinet.
 - CONTENU_CAC.orientation.destinations.0.libelle : Certification des comptes
 - CONTENU_CAC.orientation.destinations.0.href : #use-certification
 - CONTENU_CAC.orientation.destinations.0.texte : Sélection des tiers à circulariser, écarts de confirmation, fichiers du client à rapprocher : une mécanique cadrée autour de vos travaux.
@@ -46,7 +46,7 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 - CONTENU_CAC.quotidien.points.2.texte : Le chef de mission retrouve les paramètres, les exceptions et les références dans le résultat préparé. Il garde ses commentaires et ses conclusions.
 - CONTENU_CAC.quotidien.note : Nous adaptons l’agent aux formats, aux accès et aux procédures que vous avez retenus. Le choix des diligences et l’appréciation des éléments collectés restent au commissaire aux comptes.
 - CONTENU_CAC.quotidien.image : cac/accueil-selection-tiers
-- CONTENU_CAC.promesse.titre : Un agent adapté à vos travaux, maintenu par Memlia.
+- CONTENU_CAC.promesse.titre : Une prise en charge adaptée à vos travaux.
 - CONTENU_CAC.promesse.texte : Nous partons des prises en charge Memlia et les adaptons à votre environnement d’audit. Vous définissez les travaux ; nous préparons le traitement, sa mise en service et la maintenance convenue.
 - CONTENU_CAC.promesse.points.0.titre : Un déploiement défini par mission.
 - CONTENU_CAC.promesse.points.0.texte : Nous précisons les sources, les critères, les accès et les exceptions avec votre équipe. Les fonctions de votre suite d’audit restent en place.
@@ -72,10 +72,10 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 - CONTENU_CAC.usages.exemples.4.id : administration
 - CONTENU_CAC.usages.exemples.4.title : Préparer les repères du portefeuille de mandats
 - CONTENU_CAC.usages.exemples.4.text : Partir des dates et budgets que vous avez retenus pour préparer un échéancier ou une comparaison. Nous conservons les fonctions de votre suite, notamment le préremplissage des déclarations qu’elle propose.
-- CONTENU_CAC.methode.titre : Du choix de l’agent à son utilisation dans vos mandats.
+- CONTENU_CAC.methode.titre : Du besoin à la mise en service dans vos mandats.
 - CONTENU_CAC.methode.libelleEtape : Étape
 - CONTENU_CAC.methode.etapes.0.titre : Retenir une première prise en charge.
-- CONTENU_CAC.methode.etapes.0.texte : Nous identifions l’agent et la tâche utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu et la frontière du traitement sont écrits.
+- CONTENU_CAC.methode.etapes.0.texte : Nous retenons le service et le premier usage utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu, les accès et la frontière du traitement sont écrits.
 - CONTENU_CAC.methode.etapes.0.image : cac/accueil-selection-tiers
 - CONTENU_CAC.methode.etapes.1.titre : Adapter à vos procédures.
 - CONTENU_CAC.methode.etapes.1.texte : Vous fixez les critères. Nous configurons les entrées, les propositions et les arrêts. Si le catalogue ne couvre pas votre comparaison, nous construisons le traitement sur mesure.
@@ -87,7 +87,7 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 - CONTENU_CAC.methode.etapes.3.texte : Nous déployons le périmètre accepté. La règle, les essais et la fiche outil accompagnent la livraison. Le devis définit la maintenance, le support et les évolutions couverts.
 - CONTENU_CAC.methode.etapes.3.image : cac/accueil-ecarts-confirmation
 - CONTENU_CAC.integration.titre : Dans votre environnement d’audit.
-- CONTENU_CAC.integration.texte : Nous partons de vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.
+- CONTENU_CAC.integration.texte : Les intégrations relient les services retenus à vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.
 - CONTENU_CAC.integration.limites : Formats, accès et fonctions de votre version sont vérifiés avant l’engagement. Une connexion directe n’est annoncée qu’après cette vérification.
 - CONTENU_CAC.integration.regles.0.titre : Conserver les fonctions utilisées.
 - CONTENU_CAC.integration.regles.0.texte : Les lettres et leur circuit d’envoi restent dans vos outils de circularisation.
@@ -128,7 +128,7 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 - CONTENU_CAC.garanties.liens.5.picto : regle
 - CONTENU_CAC.garanties.liens.5.libelle : Une fiche outil pour votre appréciation
 - CONTENU_CAC.garanties.liens.5.href : #faq-fiche
-- CONTENU_CAC.faq.titre : Avant de déployer un agent dans vos mandats.
+- CONTENU_CAC.faq.titre : Avant de choisir un service pour vos mandats.
 - CONTENU_CAC.faq.texte : Compatibilité, déploiement, données et responsabilité : les points à préciser avec votre cabinet.
 - CONTENU_CAC.faq.questions.0.id : suite
 - CONTENU_CAC.faq.questions.0.question : Notre suite d’audit fait déjà ces travaux. Que prenez-vous en charge ?
@@ -164,7 +164,7 @@ La liste ci-dessous reprend les chaînes de la source courante, pour que la revu
 - CONTENU_CAC.faq.questions.10.question : Que comprend le devis ?
 - CONTENU_CAC.faq.questions.10.reponse : Le déploiement de la prise en charge retenue, son adaptation à votre cabinet, la recette et la maintenance convenue. Une construction sur mesure est précisée lorsqu’elle est nécessaire. Le prix dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.
 - CONTENU_CAC.appelFinal.titre : Préparons le premier déploiement pour vos mandats.
-- CONTENU_CAC.appelFinal.texte : Indiquez l’agent ou la préparation qui vous intéresse, votre suite d’audit et le résultat attendu. Nous définissons l’adaptation, les validations et le devis. Un besoin particulier peut aussi faire l’objet d’une construction sur mesure.
+- CONTENU_CAC.appelFinal.texte : Décrivez la préparation, le savoir à retrouver ou les formats à apprendre, avec votre suite d’audit et le résultat attendu. Nous retenons le service utile, son périmètre par mission et les validations. Le catalogue, ses adaptations et le sur mesure répondent aux tâches à déléguer.
 - CONTENU_CAC.appelFinal.points.0 : Une première tâche utile à vos mandats.
 - CONTENU_CAC.appelFinal.points.1 : Un périmètre adapté à vos procédures.
 - CONTENU_CAC.appelFinal.points.2 : Un devis couvrant le déploiement et la maintenance.

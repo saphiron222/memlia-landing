@@ -23,14 +23,14 @@ const noeuds = [{
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
 }];
 const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
-  { picto: 'flux', titre: 'Le robot, l’agent ou le besoin', texte: 'La fiche repérée dans le catalogue, le métier à accompagner ou votre tâche particulière.' },
+  { picto: 'flux', titre: 'Le service ou le besoin', texte: 'La routine, le métier, le savoir à retrouver ou les formats que l’IA doit apprendre.' },
   { picto: 'excel', titre: 'Vos outils et vos dossiers', texte: 'Les logiciels utilisés, les sources à lire et les dossiers concernés.' },
   { picto: 'coche', titre: 'Le résultat attendu', texte: 'Les documents ou tableaux à recevoir, leur fréquence et les validations à conserver.' },
 ];
 const appel = {
   titre: 'Vous préférez en parler de vive voix ?',
   texte: 'Réservez un créneau pour choisir votre première prise en charge et préparer son déploiement. Vous pouvez aussi nous écrire par courriel.',
-  points: ['Un robot ou un agent comme point de départ.', 'Une adaptation ou du sur mesure selon votre besoin.', 'Un devis avant de lancer le déploiement.'],
+  points: ['Un premier besoin et le service adapté.', 'Une adaptation ou du sur mesure selon votre besoin.', 'Un devis avant de lancer le déploiement.'],
   action: CTA.rendezVous,
   secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
 };
@@ -116,7 +116,7 @@ const appel = {
             </li>
           ))}
         </ul>
-        <p class="mention">Vous n’avez pas encore choisi ? Décrivez le résultat recherché. Nous vous orientons vers le catalogue ou une construction sur mesure.</p>
+        <p class="mention">Vous n’avez pas encore choisi ? Décrivez le résultat recherché. Nous vous orientons vers le service adapté, depuis le catalogue ou avec un périmètre sur mesure.</p>
       </aside>
     </div>
   </section>
@@ -131,7 +131,7 @@ const appel = {
       </ListeEditoriale>
   </section>
 
-  <section class="pv" aria-labelledby="ensuite"><div class="tete"><h2 id="ensuite">Du premier échange au déploiement.</h2></div><GrilleEditoriale etapes><article><h3>Choisir le point de départ</h3><p>En une trentaine de minutes, nous parcourons la tâche, vos outils et les dossiers concernés. Nous retenons le robot ou l’agent adapté, ou le besoin à construire sur mesure.</p></article><article><h3>Définir la prise en charge</h3><p class="texte-2">Nous précisons le résultat, les accès, les adaptations et les validations. Vous recevez un périmètre et un devis selon la complexité, avec la maintenance, le support et les évolutions prévus.</p></article><article><h3>Adapter, vérifier et déployer</h3><p class="texte-2">Nous préparons l’installation et les essais. Votre équipe vérifie le résultat dans l’environnement autorisé avant d’accepter la mise en service. Nous assurons ensuite la maintenance convenue.</p></article></GrilleEditoriale>
+  <section class="pv" aria-labelledby="ensuite"><div class="tete"><h2 id="ensuite">Du premier échange au déploiement.</h2></div><GrilleEditoriale etapes><article><h3>Choisir le point de départ</h3><p>En une trentaine de minutes, nous parcourons la tâche, vos outils et les dossiers concernés. Nous retenons le service adapté : catalogue, mémoire collective ou modèle privé. Le sur mesure complète les besoins propres à votre cabinet.</p></article><article><h3>Définir la prise en charge</h3><p class="texte-2">Nous précisons le résultat, les accès, les adaptations et les validations. Vous recevez un périmètre et un devis selon la complexité, avec la maintenance, le support et les évolutions prévus.</p></article><article><h3>Adapter, vérifier et déployer</h3><p class="texte-2">Nous préparons l’installation et les essais. Votre équipe vérifie le résultat dans l’environnement autorisé avant d’accepter la mise en service. Nous assurons ensuite la maintenance convenue.</p></article></GrilleEditoriale>
   </section>
 
   <section class="pv" aria-labelledby="canaux"><div class="tete"><h2 id="canaux">Échangeons comme vous le préférez.</h2></div><GrilleEditoriale colonnes={2}><article><h3>Par formulaire, en visio ou par courriel</h3><p>Utilisez le formulaire, <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou choisissez d’<Courriel libelle="écrire à Memlia" /> à <Courriel />.</p></article><article><h3>Préparer votre choix</h3><p class="texte-2">Explorez <a href="/automatisation-cabinet-comptable">les robots et leurs livrables</a>, <a href="/methode">les étapes de mise en service</a> et <a href="/garanties">nos engagements</a>. La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit le traitement de vos données de contact.</p></article></GrilleEditoriale>

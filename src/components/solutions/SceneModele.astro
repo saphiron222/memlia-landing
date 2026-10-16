@@ -1,4 +1,6 @@
 ---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
 import Lockup from '@/components/Lockup.astro';
 const phases=[
  {nom:'La demande',titre:'Une réponse dans vos mots.',texte:'Prépare une réponse au client à partir de notre procédure de reprise. Signale les points à confirmer.',meta:'Session · Reprise de dossier'},
@@ -7,6 +9,9 @@ const phases=[
  {nom:'La remise',titre:'Un brouillon et les points à valider.',texte:'Voici la réponse préparée, ses sources et la pièce à demander. Votre équipe relit et autorise l’envoi dans son outil.',meta:'Validation humaine avant envoi'},
 ];
 ---
+{compact ? <div class="solution-apercu modele-apercu" aria-hidden="true"><span>Votre espace métier</span><div><span>Votre modèle privé</span><strong>{phases[0].titre}</strong><span>Vocabulaire · Formats · Règles</span></div></div> : null}
+{!compact ? <>
+
 <div class="modele-scene" data-model-scene>
   <div class="modele-barre"><Lockup class="modele-logo"/><div class="modele-contexte"><span>Votre espace métier</span><span class="scene-fiction">Exemple fictif</span></div></div>
   <div class="modele-espace">
@@ -19,4 +24,14 @@ const phases=[
   </div>
   <div class="modele-controles" data-model-controls hidden><div aria-label="Étapes de l’illustration">{phases.map((p,i)=><button type="button" data-model-step={i} aria-label={`Afficher et garder l’étape : ${p.nom}`} aria-pressed={i===0?'true':'false'}>{String(i+1).padStart(2,'0')} <span>{p.nom}</span></button>)}</div></div>
 </div>
+</> : null}
 <script>import '@/lib/solutions-scenes';</script>
+
+<style>
+.solution-apercu{height:100%;display:grid;align-content:center;gap:12px;font-size:var(--t-xs);color:var(--texte-2);padding:20px 24px;background:var(--surface-feuille)}
+.solution-apercu strong{display:block;color:var(--texte);font-weight:500}
+.solution-apercu>div{display:grid;gap:6px}
+.apercu-memoire{border-top:1px solid var(--ligne-douce);padding-top:12px;grid-template-columns:28px 1fr;align-items:center}
+.apercu-memoire span{grid-column:2}
+.modele-apercu>div{border-left:2px solid var(--accent);padding:6px 16px;background:var(--surface-page)}
+</style>

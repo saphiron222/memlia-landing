@@ -13,18 +13,18 @@ export const CONTENU_EC: ContenuAccueil = {
   hero: {
     etiquette: "Automatisation IA pour cabinets d’expertise comptable",
     titre: "Robots et agents IA pour votre cabinet comptable.",
-    texte: "Avis fiscaux collectés, pièces classées, dossiers préparés : confiez les tâches répétitives à Memlia. Nous déployons nos robots et agents IA dans vos outils, avec vos règles et vos validations. Nous construisons sur mesure lorsque votre besoin dépasse le catalogue.",
+    texte: "Avis fiscaux collectés, pièces classées, dossiers préparés : confiez les tâches répétitives à Memlia. Nous déployons nos robots et agents IA dans vos outils, avec vos règles et vos validations. Nous relions aussi le savoir du cabinet et formons une IA à vos façons de travailler.",
     poster: "/media/r9/hero-poster-1200.webp",
     video: "/media/r9/explainer-hero-45s.mp4",
     videoMobile: "/media/r9/explainer-hero-45s-mobile.mp4",
     sousTitres: "/media/r9/explainer.vtt",
   },
   orientation: {
-    titre: "Choisissez le travail à nous confier.",
+    titre: "Choisissez ce qui fera avancer votre cabinet.",
     invitation: "D’autres tâches à prendre en charge",
     destinations: [
   { texte: `${ROBOTS.length} robots pour vos collectes, vos campagnes fiscales, vos accès et vos documents. Chaque fiche montre le résultat remis.`, libelle: 'Explorer les robots', href: PAGES_V2.service.chemin },
-  { texte: 'Nous adaptons le robot ou l’agent à votre cabinet, vérifions le résultat avec vous et organisons la maintenance.', libelle: 'Du choix à la mise en service', href: PAGES_V2.methode.chemin },
+  { texte: 'Du catalogue à la mémoire collective ou au modèle privé : un périmètre écrit, des résultats vérifiés avec vous et une maintenance convenue.', libelle: 'Du choix à la mise en service', href: PAGES_V2.methode.chemin },
   { texte: 'Des accès définis, des exceptions visibles et des validations prévues avant les actions qui engagent le cabinet.', libelle: 'Vos garanties de déploiement', href: PAGES_V2.garanties.chemin },
   { texte: 'Le vocabulaire du cabinet, terme par terme, avec pour chacun la limite entre ce qui se prépare seul et ce qui se décide.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ],
@@ -45,7 +45,7 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   promesse: {
     titre: "Nous assurons le déploiement et la suite.",
-    texte: "Vous choisissez une tâche du catalogue. Nous réglons son périmètre, la connectons aux outils convenus et faisons vérifier le résultat par votre équipe. La maintenance accompagne ensuite la prise en charge, selon le devis.",
+    texte: "Vous choisissez une première prise en charge. Nous réglons son périmètre, la connectons aux outils convenus et faisons vérifier le résultat par votre équipe. La maintenance accompagne ensuite la prise en charge, selon le devis.",
     image: "01-flux",
     points: [
   {
@@ -75,7 +75,7 @@ export const CONTENU_EC: ContenuAccueil = {
   },
   integration: {
     titre: "Déployés dans les outils que vous utilisez.",
-    texte: "Votre logiciel comptable, votre messagerie et votre classement restent au centre du travail. Nous y adaptons les robots et agents IA avec les comptes, les droits et les formats convenus.",
+    texte: "Votre logiciel comptable, votre messagerie et votre classement restent au centre du travail. Les intégrations relient les services retenus à vos outils, avec les comptes, les droits et les formats convenus.",
     limites: "Nous vérifions les fonctions déjà couvertes par vos logiciels et les accès nécessaires avant le devis. Votre logiciel n’est pas listé ? Nous l’intégrons sur demande.",
     regles: [{"titre": "Conserver ce qui fonctionne.", "texte": "Ne pas remplacer un outil uniquement pour introduire l’automatisation."}, {"titre": "Relier le nécessaire.", "texte": "Définir les sources, droits et traitements avant de développer."}, {"titre": "Prévoir l’évolution.", "texte": "Analyser les changements de règle ou d’outil avant toute adaptation."}],
     image: "08-integration",
@@ -99,21 +99,21 @@ export const CONTENU_EC: ContenuAccueil = {
     liens: GARANTIES,
   },
   faq: {
-    titre: "Avant de déployer votre premier robot.",
+    titre: "Avant de choisir votre première prise en charge.",
     texte: "Choix du catalogue, adaptation, logiciels, prix et maintenance : voici comment commencer.",
     questions: FAQ,
   },
   appelFinal: {
-    titre: 'Choisissons votre premier robot ou agent IA.',
-    texte: 'Indiquez la tâche qui vous intéresse et les outils de votre cabinet. Nous vous proposons son déploiement, les adaptations utiles et un devis. Votre besoin dépasse le catalogue ? Nous préparons le sur mesure avec vous.',
+    titre: 'Partons de ce que votre équipe veut accomplir.',
+    texte: 'Une routine à confier, une mémoire à partager ou un modèle à former : décrivez le résultat attendu et les outils concernés. Nous précisons le service, les adaptations utiles et un devis. Le catalogue reste le premier point de départ pour les robots et agents ; le sur mesure complète ce qui manque.',
     points: [
-    'Le bon point de départ dans le catalogue.',
+    'Le service adapté à votre premier besoin.',
     'Un résultat et des validations définis avec vous.',
     'Un devis pour le déploiement et la maintenance.',
   ],
   },
-  methode: { titre: 'Du catalogue à votre cabinet.', libelleEtape: 'Étape', etapes: [
-    {numero:1,titre:'Choisir la tâche.',texte:'Nous partons du robot ou de l’agent IA qui correspond à votre besoin. Vous précisez les dossiers concernés et le résultat attendu.',image:'04-observer'},
+  methode: { titre: 'Du premier besoin à la mise en service.', libelleEtape: 'Étape', etapes: [
+    {numero:1,titre:'Choisir la tâche.',texte:'Nous partons du catalogue pour les robots et agents. Pour la mémoire collective ou le modèle privé, nous retenons un premier usage, ses sources et le résultat attendu.',image:'04-observer'},
     {numero:2,titre:'Adapter à vos outils.',texte:'Nous définissons les accès, les formats, le classement et les validations. Si une fonction manque au catalogue, nous construisons l’adaptation nécessaire.',image:'05-cadrer'},
     {numero:3,titre:'Vérifier avec votre équipe.',texte:'Les essais fictifs couvrent les cas courants et les arrêts utiles. Votre équipe vérifie ensuite le résultat dans l’environnement autorisé et accepte la mise en service.',image:'06-eprouver'},
     {numero:4,titre:'Déployer et maintenir.',texte:'Nous mettons en service le périmètre accepté. Le devis précise le support, la maintenance et les évolutions couvertes lorsque vos outils ou vos règles changent.',image:'07-livrer'},

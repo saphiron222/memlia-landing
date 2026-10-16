@@ -1,5 +1,7 @@
 # Copy rendue — catalogue et déploiement
 
+> Archive de la recette du 15/10/2026. Le design A reste la référence visuelle ; la copie commerciale courante suit la charte v11 et le [cadrage quatre services du 16 octobre](../../offre-quatre-services-2026-10-16/CADRAGE.md). Les formulations catalogue seul ci-dessous retracent la version précédente.
+
 ## /
 
 Automatisation IA pour cabinets d’expertise comptable
