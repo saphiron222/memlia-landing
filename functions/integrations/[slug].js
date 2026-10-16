@@ -1,3 +1,3 @@
-import { reponseMigration } from '../../src/data/migrations-catalogues.mjs';
+import { reponseMigration } from '../../src/data/migrations-catalogues-pages.mjs';
 export const onRequestGet = context => reponseMigration(context.request) ?? context.next();
 export const onRequestHead = onRequestGet;

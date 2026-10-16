@@ -22,6 +22,15 @@ Node.js 22 ou supérieur et Python 3 (bibliothèque standard uniquement). `npm c
 - `npm run lighthouse -- http://127.0.0.1:4321/` : quatre scores, seuil 95, échec non masqué.
 - Ajouter `--desktop` pour la mesure desktop. Rapports dans `.lighthouse/` et `.qa/`.
 
+`npm run test:functions` compile uniquement les Pages Functions avec **Wrangler 3.114.17**, version
+observée en production le 16/10/2026, puis rejoue les 301 GET/HEAD du bundle. Cette porte tourne en CI
+dans « Portes déterministes », exigée par « Repository gates », sans déploiement ni accès aux données.
+Un build Astro et une preview Wrangler 4 avaient masqué le refus de l’import JSON `with` par Pages 3.
+La décision reste dans `config/migration-catalogues.json` : `migrations-catalogues.mjs` la charge pour
+Node/Astro, `migrations-catalogues-pages.mjs` pour le bundler Pages ; les deux utilisent le même cœur
+pur `migrations-catalogues-core.mjs`. Si Pages change de version, relever la version réelle avant
+de mettre à jour celle du test. Ne pas remplacer cette garde par une compilation avec `latest`.
+
 ## Prévisualisation Cloudflare Pages
 
 ### Un seul build par machine

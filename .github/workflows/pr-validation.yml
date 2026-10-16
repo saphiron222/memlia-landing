@@ -47,6 +47,9 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Compile Pages Functions with the production Wrangler version
+        run: npm run test:functions
+
       - name: Check Astro and content
         run: npm run check
 

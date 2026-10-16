@@ -10,8 +10,17 @@ import {
   MIGRATION_CATALOGUES, ROUTES_RETIREES, verifierDecisionMigration,
   destinationActuelle, estRouteRetiree, blocRedirections, reponseMigration,
 } from '../../src/data/migrations-catalogues.mjs';
-import { onRequestGet as robotGet, onRequestHead as robotHead } from '../../functions/automatisation/[slug].js';
-import { onRequestGet as guideGet, onRequestHead as guideHead } from '../../functions/integrations/[slug].js';
+import { loadBundledModules } from '../helpers/bundled-modules.mjs';
+
+const [
+  { onRequestGet: robotGet, onRequestHead: robotHead },
+  { onRequestGet: guideGet, onRequestHead: guideHead },
+  { MIGRATION_CATALOGUES: decisionAstro },
+] = await loadBundledModules([
+  '/functions/automatisation/[slug].js',
+  '/functions/integrations/[slug].js',
+  '/src/data/migrations-catalogues.mjs',
+]);
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const decision = MIGRATION_CATALOGUES;
@@ -108,6 +117,7 @@ function assertArchives(value) {
 
 test('migration : décision explicite unique, 12 services et 12 guides, les 21 robots restent actifs', () => {
   assert.deepEqual(decision, sourceJson('config/migration-catalogues.json'));
+  assert.deepEqual(decisionAstro, decision, 'le chargement SSR Vite/Astro conserve la décision Node');
   assert.equal(verifierDecisionMigration(decision), decision);
   assert.equal(ROBOTS.length, 21);
   assertCoverage(decision);
