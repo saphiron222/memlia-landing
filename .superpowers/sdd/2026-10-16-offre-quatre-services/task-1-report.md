@@ -97,3 +97,23 @@ Les tests contrôlent les pages CAC et Contact de 320 à 1920 px, les six pages 
 La revue indépendante et la CI du SHA exact restent nécessaires avant fusion, comme prévu dans la délégation. Pas de nouveau score Lighthouse revendiqué ; la compilation et les suites complètes appartiennent à la CI. Les captures documentent le rendu local ; aucune URL de prévisualisation distante ni vérification de production n’est revendiquée.
 
 Serveurs laissés disponibles : développement `http://127.0.0.1:4396` (session 14664), sortie statique `http://127.0.0.1:4397` (session 69495). Ils étaient absents au début et ont été démarrés dans ce worktree ; aucun serveur d’une autre session n’a été arrêté. La sortie statique contient l’export Markdown final. Pour revalider lastmod, respecter l’ordre de la chaîne avant cet export.
+
+## Correctif CI — round 1
+
+CI `38835743592`, job `116764352466` : échec unique dans `test_garanties_copy.GarantiesCopy.test_attestation_boundary_and_documented_commitments`. L’assertion attendait encore « Nous décrivons le fonctionnement et les limites du robot ou de l’agent. », alors que la copie v11 validée dit « du service retenu ». L’extrait d’échec et son contexte ont été consultés dans `.qa/offre-ci-job-116764352466.log`.
+
+Rejeu ciblé sur le `dist` existant, avant correction :
+
+```text
+PYTHONPATH=tests/proof python3 -m unittest test_garanties_copy -v
+Ran 3 tests in 0.007s
+FAILED (failures=1)
+```
+
+Le seul échec correspond à la formulation héritée ; les cas de localisation bornée au cadrage et de cohérence page/FAQ passent déjà. Log local : `.qa/offre-garanties-round1-red.log`.
+
+Correction limitée à `tests/proof/test_garanties_copy.py` : l’assertion vise désormais le service retenu. Les contrôles existants de non-attestation, droits/flux, maintenance, validation humaine et signature du CAC sont conservés. Quatre assertions renforcent le contrat : recette bornée au périmètre convenu, absence de certification des comptes ou du dossier, séparation des exemples d’évaluation et d’entraînement, budget d’essai et droits selon la licence de base.
+
+Même commande après correction : **3/3 PASS**, en 0,006 s. Log local : `.qa/offre-garanties-round1-green.log`. `git diff --check` PASS. Aucun second échec détecté dans ce fichier.
+
+Aucune source publique, aucun type ni `Orientation` modifiés ; aucune régénération, compilation, suite complète, publication ou délégation exécutée. Seuls le test ciblé et ce rapport sont inclus dans le commit correctif. La CI du nouveau SHA reste à relancer par le contrôleur.

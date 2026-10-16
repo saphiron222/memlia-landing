@@ -25,7 +25,12 @@ class GarantiesCopy(unittest.TestCase):
         text = ' '.join(' '.join(Text(html).parts).split())
         self.assertIn('Elle ne constitue pas une attestation de conformité', text)
         self.assertNotIn('Aucune conformité', text)
-        for phrase in ['Nous décrivons le fonctionnement et les limites du robot ou de l’agent.',
+        # Charte v11 : ces engagements couvrent les quatre services, modèle privé compris.
+        for phrase in ['Nous décrivons le fonctionnement et les limites du service retenu.',
+                       'La recette accepte le périmètre convenu.',
+                       'ne certifie ni les comptes ni le dossier d’audit',
+                       'les exemples d’évaluation sont séparés de ceux de l’entraînement',
+                       'le budget d’essai et les droits selon la licence de base',
                        'droits d’accès, les destinataires et les flux',
                        'maintenance, le support et les évolutions',
                        'Aucun envoi externe sans validation humaine',
