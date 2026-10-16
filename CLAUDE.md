@@ -10,13 +10,19 @@ Dépôt privé `saphiron222/memlia-landing`, intégré sur `main` sous garde PR,
 | le site public et le blog : présenter l'offre, capter, convertir | livrer du produit — les automatisations livrées vivent dans `~/dev/produit*` |
 | parler le vocabulaire réel des cabinets (paie, DSN, bulletin, portefeuille) | présenter comme déjà en service chez un client une tâche qui ne l'est pas (les agents IA promettent ce que nous savons construire : charte §2, 15/10/2026) |
 
-**Ce qui se vend, et qui doit transparaître : l'automatisation IA des tâches répétitives d'un cabinet
-d'expertise comptable ou de commissariat aux comptes.** Un service, pas un logiciel : observer la tâche, écrire sa règle et ses limites dans
-les mots du cabinet, automatiser **dans les outils existants**, éprouver sur un jeu d'essai fictif, recetter,
-maintenir. Proposition puis validation humaine ; prix à la complexité, jamais au siège. Le **véhicule** se
-choisit par tâche (panneau Office.js sur un classeur, add-in COM/.NET, application de bureau) et n'est
-jamais la catégorie commerciale : ⚠ **« module » et « complément Excel » ne s'écrivent sur aucune surface
-publique** — charte §9, verrouillé par `tests/proof/test_positioning.py`. Excel est une intégration
+**Ce qui se vend : quatre services IA pour les cabinets d’expertise comptable et de commissariat
+aux comptes** (charte v11). Les **21 robots** et **12 agents IA** partent du catalogue, adapté aux
+outils, sources et validations du cabinet ; le sur mesure le prolonge au besoin. **Memlia OS** relie
+la mémoire collective, les personnes, documents, outils et agents avec leurs accès. Le **modèle IA
+privé** passe par la préparation de données autorisées, l’entraînement, une évaluation séparée et
+la recette d’une version acceptée : la recherche documentaire seule n’est pas un entraînement.
+Les intégrations sont transversales, pas une cinquième offre. Nous déployons et maintenons ; l’IA
+prépare, le cabinet décide. Les prix validés restent dans `src/data/tarifs-memlia.json` et
+`docs/strategy/pricing-2026-10-15/RECOMMANDATION.md` avec la grille
+`docs/strategy/pricing-2026-10-15/agents-individuels/GRILLE.md` : jamais au siège ; les périmètres et
+conditions de devis font foi. Le véhicule se choisit par tâche, jamais
+comme catégorie commerciale : **« module » et « complément Excel » restent interdits sur les
+surfaces publiques** (charte §9, `tests/proof/test_positioning.py`). Excel est une intégration
 possible, jamais un mot du hero (charte §4).
 
 ## Stack

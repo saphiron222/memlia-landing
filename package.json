@@ -75,6 +75,7 @@
     "guide:audit": "node scripts/service-forge.mjs --guide audit",
     "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs tests/scripts/guide-proof-layout.test.mjs",
     "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs",
+    "test:functions": "node --test tests/functions/pages-bundle.test.mjs",
     "test:migration-catalogues": "node scripts/verify-catalogue-migration.mjs && node --test tests/scripts/migration-catalogues.test.mjs"
   },
   "engines": {
