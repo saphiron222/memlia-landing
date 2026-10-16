@@ -1,0 +1,34 @@
+---
+import { AGENTS, HUB, GROUPES, comptesParGroupe, cheminAgent } from '@/data/specialistes';
+import { imageAgent } from '@/data/images-agents';
+import Figurine from './Figurine.astro';
+import Carte from './Carte.astro';
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import Lockup from '@/components/Lockup.astro';
+import '@/styles/catalogue/commun.css';
+import '@/styles/catalogue/hub.css';
+const comptes=comptesParGroupe();
+const trio=HUB.trio.map(id=>AGENTS.find(a=>a.slug===id)!);
+const filtresCss=GROUPES.map(({id})=>`.hub-annuaire:has(input[value="${id}"]:checked) .hub-agents > :not([data-categorie="${id}"]) { display:none; }`).join('\n') + GROUPES.filter(g=>comptes[g.id]===4).map(g=>`@media(min-width:64rem){.hub-annuaire:has(input[value="${g.id}"]:checked) .hub-agents > li {flex-basis:calc((100% - var(--cartes-ecart))/2);}}`).join('\n');
+---
+<div class="feuille catalogue-page catalogue-hub" data-agents-hub>
+  <section class="hub-hero" aria-labelledby="hub-titre" data-hub-section="hero">
+    <p class="surtitre">{HUB.surtitre}</p><h1 id="hub-titre">{HUB.h1}</h1><p class="hub-intro">{HUB.definition}</p>
+    <Button href="#annuaire" variante="lien" picto="chevron">{HUB.ancreAnnuaire}</Button>
+    <ul class="hub-trio">{trio.map(agent=><li><div class="hub-medaillon"><Figurine {...imageAgent(agent)} taille={116} prioritaire /></div><p>{agent.prenom}</p><span>{agent.libelle}</span></li>)}</ul>
+  </section>
+  <section class="catalogue-section" aria-labelledby="derriere-titre" data-hub-section="signature">
+    <div class="hub-signature memlia-surface-verte"><div class="hub-signature-marque"><Lockup href="/methode" /></div><div><h2 id="derriere-titre">{HUB.derriere.titre}</h2><p>Nous déployons l’agent dans vos outils et adaptons ses tâches à vos règles. Nous éprouvons les cas courants et les arrêts sur des dossiers fictifs. Votre équipe vérifie le résultat ; nous maintenons ensuite la prise en charge.</p><ol aria-label="Notre prise en charge"><li>Observation</li><li>Règle écrite</li><li>Essais</li><li>Recette</li><li>Maintenance</li></ol></div><a class="catalogue-action" href="/methode">Voir notre méthode<Picto nom="fleche" taille={14}/></a></div>
+  </section>
+  <section class="catalogue-section" id="annuaire" aria-labelledby="annuaire-titre" data-hub-section="annuaire">
+    <div class="hub-annuaire-tete tete"><div><h2 id="annuaire-titre">Quel métier voulez-vous alléger ?</h2><p>Choisissez votre agent IA. Sa fiche montre les tâches qu’il prépare, les résultats remis et les décisions qui restent à votre équipe.</p></div><p class="hub-total">{AGENTS.length} agents IA</p></div>
+    <div class="hub-annuaire"><fieldset class="hub-filtres"><legend class="sr-only">{HUB.annuaire.legende}</legend><label><input type="radio" name="agent-groupe" value="tous" checked/><span>Tous <span>({AGENTS.length})</span></span></label>{GROUPES.map(g=><label><input type="radio" name="agent-groupe" value={g.id}/><span>{g.libelle} <span>({comptes[g.id]})</span></span></label>)}</fieldset>
+      <ul class="catalogue-grille hub-agents" aria-label="Catalogue des agents IA">{AGENTS.map(agent=><li data-categorie={agent.groupe} data-agent={agent.slug}><Carte nom={agent.prenom} fonction={agent.libelle} resume={agent.ligne} href={cheminAgent(agent)} categorie={GROUPES.find(g=>g.id===agent.groupe)!.libelle} image={imageAgent(agent)} nature="Agent IA Memlia" action={`Découvrir ${agent.prenom}`}/></li>)}</ul>
+    </div>
+  </section>
+  <section class="catalogue-section" aria-labelledby="construit-titre" data-hub-section="sur-mesure"><div class="tete"><h2 id="construit-titre">Construit sur votre cabinet.</h2><p>Nous partons d’un agent du catalogue et l’adaptons à votre façon de travailler.</p></div><ol class="catalogue-etapes"><li><span class="catalogue-etape-numero">01</span><h3>Vos règles</h3><p>Les pièces à lire, les contrôles à préparer, les cas à reprendre : nous écrivons le périmètre et les validations avec votre équipe.</p><a class="catalogue-action" href="/methode">Écrire la règle<Picto nom="fleche" taille={14}/></a></li><li><span class="catalogue-etape-numero">02</span><h3>Vos outils</h3><p>Logiciel métier, messagerie, classeur ou dossier partagé : l’agent prépare ses tâches dans les outils de votre cabinet.</p><a class="catalogue-action" href="/integrations">Voir les compatibilités<Picto nom="fleche" taille={14}/></a></li><li><span class="catalogue-etape-numero">03</span><h3>Vos échéances</h3><p>Une campagne, la tenue mensuelle ou le suivi quotidien : nous réglons les tâches sur le rythme de votre équipe.</p><a class="catalogue-action" href="/garanties">Les engagements de Memlia<Picto nom="fleche" taille={14}/></a></li></ol></section>
+  <section class="catalogue-section" aria-labelledby="autre-titre" data-hub-section="autre-tache"><div class="hub-autre"><h2 id="autre-titre">Votre besoin dépasse le catalogue ?</h2><p>Décrivez la tâche, ses outils et le résultat attendu. Nous concevons un robot ou un agent IA sur mesure quand le besoin le demande.</p><a class="catalogue-action" href="/contact">Nous parler de cette tâche<Picto nom="fleche" taille={14}/></a></div></section>
+  <section class="catalogue-fin" aria-labelledby="fin-titre" data-hub-section="contact"><h2 id="fin-titre">Un premier agent. Une tâche pour commencer.</h2><p>Vous payez une tâche prise en charge, pas des sièges. Le devis précise le déploiement, les adaptations et la maintenance selon la complexité du besoin.</p><Button href="/contact" variante="principal" picto="fleche">Confier une première tâche</Button><a class="catalogue-action" href="/outils-comptables-gratuits/calculateur-roi-automatisation">Estimer le budget et le temps valorisé<Picto nom="fleche" taille={14}/></a><p class="mention">Rien à envoyer : la description suffit.</p></section>
+</div>
+<style is:inline set:html={filtresCss}/>

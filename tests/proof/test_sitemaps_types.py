@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 
 DIST = Path(__file__).resolve().parents[2] / 'dist'
 NS = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-TYPES = ('pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac')
+TYPES = ('pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac', 'agents')
 
 
 class Metadata(HTMLParser):
@@ -57,3 +57,16 @@ class TypedSitemapsTest(unittest.TestCase):
             if metadata.canonical and not metadata.noindex:
                 expected.add(metadata.canonical)
         self.assertEqual(set(actual), expected)
+
+    def test_les_agents_ia_ont_leur_sitemap(self):
+        # Le hub et chaque fiche construite (tâche 4, puis 6 et 9) : un type à part, préfixe /agents-ia.
+        path = DIST / 'sitemap-agents.xml'
+        self.assertTrue(path.exists(), 'sitemap-agents.xml absent')
+        urls = [node.text for node in ET.parse(path).findall('s:url/s:loc', NS)]
+        self.assertIn('https://memlia.fr/agents-ia', urls)
+        for url in urls:
+            assert url is not None
+            chemin = urlsplit(url).path
+            self.assertTrue(chemin == '/agents-ia' or chemin.startswith('/agents-ia/'), url)
+        index = (DIST / 'sitemap.xml').read_text()
+        self.assertIn('https://memlia.fr/sitemap-agents.xml', index)

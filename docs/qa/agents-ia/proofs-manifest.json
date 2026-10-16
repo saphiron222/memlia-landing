@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "docs/design/agents-ia-proof/index.html",
+      "sha256": "a649a17a79f0007d1a986a8089cac807f3337b11ea854d9cb6b7c0a6c4c3e4b3"
+    },
+    {
+      "path": "docs/design/agents-ia-proof/styles.css",
+      "sha256": "f7e7c86437cf18a46991af74bbc7d4c370c760353222446bf7bad88ab5baf6cb"
+    },
+    {
+      "path": "docs/design/m4-r1-functional-proofs/styles.css",
+      "sha256": "ba7368f6b9fb67eb87733122df1ca71f9a17f6abc0f577590b672ec21aebd985"
+    },
+    {
+      "path": "docs/design/agents-ia-proof/content-contract.json",
+      "sha256": "a6cc34e380b190c9aa7df779ebdaa860cceae1fd6b3982503b6a9093f49fdcf1"
+    },
+    {
+      "path": "scripts/render-proofs-v2.mjs",
+      "sha256": "3439a7f220b2f3fad759ed6944daaab0f743fa95fade3ed6f40fc46af4cd6437"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "entries": [
+    {
+      "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
+      "target": "public/proofs/v2/49-hero-agents-ia.webp",
+      "bytes": 58904,
+      "sha256": "1dc44f7acdf84cde2f6e51ac33af47d73054207013734a6f279dbb64aa45777b"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#hero-agents-ia",
+      "target": "public/proofs/v2/og/49-hero-agents-ia.webp",
+      "bytes": 24060,
+      "sha256": "b3340f002d09868c0344233493e7bb972eedf4a0b72fd1c5505c70378e35a9d1"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-comptabilite",
+      "target": "public/proofs/v2/og/50-fiche-comptabilite.webp",
+      "bytes": 48998,
+      "sha256": "1af8f68e20f345f1913ada84e5690833725704d7674d1d642fa014c7bc903cc9"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-juridique-fiscal",
+      "target": "public/proofs/v2/og/51-fiche-juridique-fiscal.webp",
+      "bytes": 55940,
+      "sha256": "93e0184e681aa8f236f2ac3cc65232e3b8c54cb3aba2f054a11b1d23a99f2e03"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-finance",
+      "target": "public/proofs/v2/og/52-fiche-finance.webp",
+      "bytes": 50810,
+      "sha256": "9976e824127d01fb8dddab12bba46945779dd354d6b80e404f67817af68e3765"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-commercial",
+      "target": "public/proofs/v2/og/53-fiche-commercial.webp",
+      "bytes": 50434,
+      "sha256": "9b14526190163864da731ef6a833c87a9761453960089865a88edb6f2d8c98f5"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-communication",
+      "target": "public/proofs/v2/og/54-fiche-communication.webp",
+      "bytes": 51582,
+      "sha256": "a094d19fb46f2c1ca5b0cc56e139c6389dc2f563d89d1ec68609d5a676477a5d"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-relation-client",
+      "target": "public/proofs/v2/og/55-fiche-relation-client.webp",
+      "bytes": 50112,
+      "sha256": "389a3fe1d15d674ffb989a5483fbba448acb099dee0acd162a278f3d965b2c77"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-gestion-cabinet",
+      "target": "public/proofs/v2/og/56-fiche-gestion-cabinet.webp",
+      "bytes": 46556,
+      "sha256": "aaaf51c21a046f950e8f963e3405c918f2d3cc3048383763c607ef1d384cf9e7"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-rh-cabinet",
+      "target": "public/proofs/v2/og/57-fiche-rh-cabinet.webp",
+      "bytes": 50714,
+      "sha256": "1a685265416c57bfdd017327f400bd0343dd7e0947b0d791800f39be62c3ea7a"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-protection-donnees",
+      "target": "public/proofs/v2/og/58-fiche-protection-donnees.webp",
+      "bytes": 54610,
+      "sha256": "dfaded1b5693f4299d1b3a611e7afa2136fdf6c448ca9cedefaafba40308ad42"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#compatibilites",
+      "target": "public/proofs/v2/og/59-compatibilites.webp",
+      "bytes": 30218,
+      "sha256": "de085d0fd13b2069a80147b42b2827adc17fbea1cac6cf2c5e509568bd185893"
+    },
+    {
+      "source": "docs/design/agents-ia-proof/index.html#fiche-paie-social",
+      "target": "public/proofs/v2/og/60-fiche-paie-social.webp",
+      "bytes": 49176,
+      "sha256": "b0df1408b915f8db6597cd457722b7de04fcfe4b500091bd544397c0f319ce62"
+    }
+  ]
+}

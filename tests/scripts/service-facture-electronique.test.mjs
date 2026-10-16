@@ -1,3 +1,6 @@
+import { createHash } from 'node:crypto';
+import { MIGRATION_CATALOGUES } from '../../src/data/migrations-catalogues.mjs';
+import { FICHES, ficheDe } from '../../src/data/specialistes.ts';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
@@ -20,7 +23,19 @@ test('la preuve montre appels, brouillon, exclusion et note préservée sans car
   assert.match(design, /'facture-electronique':\s*\{\s*heroProof: 'v2\/30-service-facture-electronique'/);
 });
 
-test('les trois liens contextuels reprennent les ancres de la recette recadrée', () => {
+test('la recette scellée conserve ses anciens liens et rejoint la tâche de Balthazar', () => {
   const recipe = JSON.parse(read('commercial/recettes/facture-electronique/recette.json'));
-  for (const link of recipe.incomingLinks) assert.ok(read(link.sourcePath).includes(`href="${recipe.path}">${link.anchor}</a>`), link.sourcePath);
+  const migration = MIGRATION_CATALOGUES.routes.find(row => row.from === recipe.path);
+  assert.ok(migration, 'retrait documenté de cette route exacte');
+  assert.equal(migration.archive.sha256, createHash('sha256').update(read(migration.archive.path)).digest('hex'), 'recette archivée inchangée');
+  const seal = JSON.parse(read(`commercial/services/${recipe.slug}/preuves/scellement.json`));
+  assert.equal(seal.kind, 'service-depublication-scellee');
+  assert.equal(seal.files.recipe.sha256, migration.archive.sha256, 'sceau du retrait lié à la recette');
+  const agent = FICHES.find(item => item.slug === 'comptabilite');
+  assert.equal(agent?.publie, true);
+  const index = ficheDe(agent).taches.findIndex(item => item.famille === recipe.family);
+  assert.ok(index >= 0, 'la tâche historique est couverte dans la fiche publiée');
+  assert.equal(migration.to, `/agents-ia/${agent.slug}#tache-${recipe.family}-${index + 1}`);
+  assert.ok(!agent.servicesLies.includes(recipe.slug), 'aucun lien de retour vers la route retirée');
+  assert.ok(recipe.incomingLinks.some((link) => link.url === '/methode'), 'la recette scellée garde son lien historique');
 });

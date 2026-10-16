@@ -98,6 +98,402 @@
         "kind": "no-functional-media",
         "reason": "La rubrique conduit aux deux méthodes CAC et affiche leurs couvertures propres ; une troisième illustration décorative ne montrerait aucun contrôle supplémentaire au lecteur."
       }
+    },
+    "/automatisation-cabinet-comptable": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "CollectionPage",
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Le catalogue est lui-même la restitution : figurines, cartes et filtres dérivés des données, avec une image sociale de son trio."
+      }
+    },
+    "/apercu/direction-figurines": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [
+        "WebPage"
+      ],
+      "incomingLinkRequired": false,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Proposition visuelle interne demandée par Kevin le 15/10/2026, avec images générées à valider ; cette route est exclue du sitemap et ne remplace pas la page commerciale."
+      }
+    },
+    "/apercu/methode-figurines": {
+      "indexing": "noindex",
+      "role": "technical",
+      "mediaRequired": false,
+      "measuredIntentRequired": false,
+      "schemaTypes": [
+        "WebPage"
+      ],
+      "incomingLinkRequired": false,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Proposition visuelle interne demandée par Kevin le 15/10/2026, avec images générées à valider ; cette route est exclue du sitemap et ne remplace pas la page commerciale."
+      }
+    },
+    "/outils-comptables-gratuits/comparateur-balances-comptables": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/assistant-lettrage-comptable-local": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/generateur-relance-facture-impayee": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/fusionner-fichiers-csv": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/checklist-pieces-comptables": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/bareme-heures-cac": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/seuil-signification-audit": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/suivi-circularisation": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/verificateur-prompt-ia": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/generateur-prompt-expert-comptable": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/calculateur-roi-automatisation": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/generateur-charte-ia-cabinet": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/verificateur-fec-local": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/calculateur-marge-commerciale": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
+      "indexing": "index",
+      "role": "interactive-tool",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "WebPage",
+        "WebApplication",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "interactive-tool",
+        "reason": "Décision de simplification de Kevin du 15/10/2026 : le véritable outil, ses entrées et son résultat remplacent la capture figée dans le corps. Son image sociale propre aux figurines reste scellée et contrôlée."
+      }
+    },
+    "/outils-comptables-gratuits": {
+      "indexing": "index",
+      "role": "collection",
+      "mediaRequired": false,
+      "measuredIntentRequired": true,
+      "schemaTypes": [
+        "CollectionPage",
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "incomingLinkRequired": true,
+      "assetDecision": {
+        "kind": "no-functional-media",
+        "reason": "Décision de Kevin du 15/10/2026 : le hub reprend les catalogues agents et robots avec leur trio de figurines partagé et des filtres natifs. Les cartes constituent le contenu utile ; une capture factice supplémentaire n’aide pas à choisir un outil."
+      }
     }
   }
 }

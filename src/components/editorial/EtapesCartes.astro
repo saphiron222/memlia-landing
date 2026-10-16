@@ -1,0 +1,36 @@
+---
+interface Etape { id: string; repere: string; titre: string; texte: string; }
+interface Props { etapes: Etape[]; }
+const { etapes } = Astro.props;
+---
+<div class="parcours">
+  <header class="parcours-tete">
+    <h2 id="etapes-titre">Votre tâche, en cinq étapes.</h2>
+    <p>De votre premier exemple à la maintenance, nous construisons avec votre équipe.</p>
+  </header>
+  <ol id="etapes" class="parcours-cartes" role="list">
+    {etapes.map((etape, index) => (
+      <li id={etape.id} class="parcours-carte">
+        <div class="parcours-repere"><span class="parcours-numero" aria-hidden="true">{index + 1}</span><span><span class="sr-only">Étape {index + 1} : </span>{etape.repere}</span></div>
+        <h3>{etape.titre}</h3>
+        <p>{etape.texte}</p>
+      </li>
+    ))}
+  </ol>
+</div>
+<style>
+  /* Petites cartes demandées par Kevin le 15/10 ; elles décrivent des étapes, sans interaction. */
+  .parcours{container-type:inline-size;background:var(--accent-voile);border-radius:var(--r-cadre);padding:var(--carte-marge);display:grid;gap:var(--bloc-ecart)}
+  .parcours-tete{display:grid;justify-items:center;gap:var(--tete-ecart);text-align:center}
+  .parcours-tete h2{max-width:24ch;text-wrap:balance}
+  .parcours-tete p{max-width:54ch;color:var(--texte-2);margin:0;text-wrap:pretty}
+  .parcours-cartes{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--cartes-ecart);margin:0;padding:0;list-style:none}
+  .parcours-carte{flex:0 0 100%;min-width:0;box-sizing:border-box;background:var(--carte-fond);border:1px solid var(--carte-bord);border-radius:var(--r-carte);padding:var(--carte-marge);display:flex;flex-direction:column;align-items:start;gap:16px;scroll-margin-top:calc(var(--nav-h) + 24px)}
+  .parcours-repere{display:flex;align-items:center;gap:12px;font-size:var(--t-sm);font-weight:600;color:var(--accent-texte)}
+  .parcours-numero{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border-radius:var(--r-bouton);background:var(--accent-texte);color:var(--surface-elevee);font-size:var(--t-lg);font-variant-numeric:tabular-nums}
+  .parcours-carte h3{font-family:var(--police-display);font-size:var(--titre-bloc);line-height:1.2;text-wrap:balance}
+  .parcours-carte p{font-size:1rem;line-height:1.6;color:var(--texte-2);margin:0;text-wrap:pretty}
+  @container(min-width:35rem){.parcours-carte{flex-basis:calc((100% - var(--cartes-ecart))/2)}}
+  @container(min-width:56rem){.parcours-carte{flex-basis:calc((100% - 2 * var(--cartes-ecart))/3)}}
+  @media(min-width:48rem){.parcours{padding:var(--carte-marge-lg)}}
+</style>

@@ -1,5 +1,7 @@
 ---
 import Base from './Base.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import { titulaireDe } from '@/data/specialistes';
 import ServiceHero from '@/components/sections/ServiceHero.astro';
 import ServiceBody from '@/components/sections/ServiceBody.astro';
 import ServiceCouverture from '@/components/sections/ServiceCouverture.astro';
@@ -21,6 +23,7 @@ interface Props {
 
 const { entree } = Astro.props;
 const { data } = entree;
+const agent=titulaireDe(data.family);
 const chemin = `/automatisation/${entree.id}`;
 const url = `${SITE.url}${chemin}`;
 const noindex = data.status !== 'publie';
@@ -104,6 +107,7 @@ const graph = {
       <ServiceHero headline={data.headline} hero={data.hero} cta={data.cta} proof={design.heroProof} preview={noindex}>
       </ServiceHero>
       <ServiceCouverture slug={entree.id} />
+      {agent&&<div class="service-agent"><QuiPrendCeMetier agent={agent} variante={entree.id==='paie'?'bandeau':'ligne'}/></div>}
       <ServiceBody proof={design.bodyProof}>
         <slot />
         {toolLink && (
@@ -131,6 +135,7 @@ const graph = {
 </Base>
 
 <style>
+.service-agent {padding:32px var(--marge-page);}@media(min-width:64rem){.service-agent{padding-inline:var(--marge-page-lg);}}
   /* L'outil associé : son intitulé, puis le lien d'action du système de page. */
   .service-outil { display: grid; gap: var(--espace-1); margin-top: var(--espace-10); }
   .service-outil strong { color: var(--texte-fort); font-weight: 600; }

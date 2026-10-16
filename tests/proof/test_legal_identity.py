@@ -203,10 +203,10 @@ class LegalSurfaceSeparationProof(unittest.TestCase):
 
     ALLOWLIST = {'mentions-legales.html'}
     LEGAL_IDENTITY_PATTERNS = {
-        'RCS': r'\bRCS\b',
-        'immatriculation': r'\bimmatricul(?:ée|e|ation)\b',
+        'RCS de Memlia': r'\b(?:Memlia|notre société)\s*(?:est\s+)?(?:immatriculée\s+)?au\s+RCS\b',
+        'immatriculation de Memlia': r'\b(?:Memlia|notre société)\s*(?:est\s+)?immatricul(?:ée|e)\b',
         'unité légale': r'\bunité légale\b',
-        'Annuaire des Entreprises': r'\bAnnuaire des Entreprises\b',
+        'fiche registre de Memlia': r'\b(?:fiche|identité) (?:de )?Memlia\b.{0,80}\bAnnuaire des Entreprises\b',
         'identifiant SIREN': r'\b108[ .]?621[ .]?541\b',
         'identifiant SIRET': r'\b10862154100011\b',
     }

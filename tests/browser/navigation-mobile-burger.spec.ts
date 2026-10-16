@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
+import { SERVICES, DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
 
 for (const width of [320, 375, 390, 430, 768]) {
   for (const height of [844, 568, 360]) {
@@ -88,7 +88,7 @@ test('burger : passage au bureau libère le fond et conserve un focus visible', 
 
 test('burger : chaque hub ferme le panneau et rejoint sa page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const destination of ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits', '/blog']) {
+  for (const destination of [...SERVICES.map((entree) => entree.href), '/integrations', '/outils-comptables-gratuits', '/blog']) {
     await page.goto('/');
     await page.locator('[data-burger]').click();
     await page.locator(`#menu-mobile a[href="${destination}"]`).click();

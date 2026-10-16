@@ -1,5 +1,6 @@
 ---
 import Picto from '@/components/Picto.astro';
+import {outilVoisin} from '@/data/outils-vitrine';
 import { OUTILS_HUB_PATH, type OutilDefinition, type OutilServicePage } from '@/data/outils';
 
 interface Props {
@@ -7,10 +8,11 @@ interface Props {
 }
 
 const { outil } = Astro.props;
+const voisin=outilVoisin(outil.slug);
 const destinations: Record<OutilServicePage, string> = {
-  '/automatisation-cabinet-comptable': 'Comprendre notre méthode d’automatisation',
-  '/automatisation/factures-fournisseurs': 'Voir le cadrage des factures fournisseurs',
-  '/automatisation/rapprochement-bancaire': 'Voir le cadrage du rapprochement bancaire',
+  '/automatisation-cabinet-comptable': 'Voir les robots du catalogue',
+  '/agents-ia/comptabilite#tache-achats-fournisseurs-4': 'Voir le cadrage des factures fournisseurs',
+  '/agents-ia/comptabilite#tache-banque-rapprochement-5': 'Voir le cadrage du rapprochement bancaire',
   '/methode': 'Comprendre la méthode',
 };
 /*
@@ -28,6 +30,7 @@ const destinations: Record<OutilServicePage, string> = {
         {outil.articleExact && (
           <li><a class="lien-action" href={outil.articleExact}>Consulter la ressource associée<Picto nom="fleche" taille={14} /></a></li>
         )}
+        {voisin && <li><a class="lien-action" href={`${OUTILS_HUB_PATH}/${voisin.slug}`}>{voisin.nom}<Picto nom="fleche" taille={14} /></a></li>}
         <li><a class="lien-action" href={outil.pageService}>{destinations[outil.pageService]}<Picto nom="fleche" taille={14} /></a></li>
       </ul>
     </nav>

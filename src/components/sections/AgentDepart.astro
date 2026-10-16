@@ -1,0 +1,113 @@
+---
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import { TOUTES_LES_FAMILLES } from '@/data/familles';
+import { HUB, ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * « Par quelle tâche commencer ? » (spec §2, section 11) : l'appel final d'une fiche. Trois tâches de départ, chacune
+ * un lien vers /contact qui porte l'identifiant de sa famille (`data-tache`, liste blanche = `familles.ts`) ; le bouton
+ * principal ; la mention « Rien à envoyer : la description suffit. » ; puis « Tous les agents IA » (section 12).
+ *
+ * Sans JavaScript, chaque tâche mène à /contact sans présélection. La tâche 10 ajoute ici un petit script externe
+ * (`sessionStorage` à usage unique, annexe §6) qui lit `data-tache` au clic : aucun texte libre, aucune donnée
+ * personnelle dans l'URL. Le libellé d'une tâche est son geste (« Réclamer les pièces manquantes ») ; une famille
+ * sans ligne propre prend son libellé de `familles.ts`.
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+const { depart } = gabaritDe(agent);
+const taches = fiche.tachesDepart.map((id) => {
+  const geste = fiche.taches.find(({ famille }) => famille === id)?.geste ?? TOUTES_LES_FAMILLES.find((famille) => famille.id === id)?.libelle;
+  if (!geste) throw new Error(`AgentDepart : tâche de départ « ${id} » sans libellé (${agent.slug})`);
+  return { id, geste };
+});
+---
+
+<section id="depart" class="agent-depart" aria-labelledby="depart-titre" data-agent-depart>
+  <div class="agent-depart-int">
+    <h2 id="depart-titre"><Insecable texte={depart.titre} /></h2>
+    <p class="agent-depart-texte"><Insecable texte={depart.texte} /></p>
+    <div class="agent-depart-taches">
+      <ul class="liens">
+        {taches.map((tache) => (
+          <li>
+            <a class="lien-rangee" href={CTA.principal.href} data-tache={tache.id}>
+              <span class="lien-libelle">{tache.geste}</span>
+              <Picto nom="fleche" taille={16} class="lien-fleche" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="agent-depart-action">
+      <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+      <p class="mention">{depart.mention}</p>
+    </div>
+  </div>
+  <p class="agent-depart-tous"><a class="lien-action" href={HUB.chemin}>{depart.tous}<Picto nom="fleche" taille={14} /></a></p>
+</section>
+
+<style>
+  /* Le seul bloc centré de la fiche, avec le pas des sections dessus et dessous (système de page § 2). */
+  .agent-depart {
+    display: grid;
+    gap: var(--espace-8);
+    padding: var(--section-espace) var(--marge-page);
+  }
+  .agent-depart-int {
+    display: grid;
+    gap: var(--tete-ecart);
+    justify-items: center;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--espace-12) var(--espace-6);
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-carte);
+    background: var(--surface-feuille);
+    box-shadow: var(--ombre-xs);
+    text-align: center;
+  }
+  .agent-depart-int h2 {
+    max-width: 24ch;
+    font-size: var(--titre-section);
+  }
+  .agent-depart-texte {
+    max-width: 52ch;
+    margin: 0;
+    color: var(--texte-2);
+  }
+  /* Les trois tâches : une liste de liens (système de page § 4), alignée à gauche dans le bloc centré. La liste
+     occupe toute la largeur de sa colonne (cartes.spec.ts) ; c'est la colonne qui se borne. */
+  .agent-depart-taches {
+    width: 100%;
+    max-width: 30rem;
+    margin-top: var(--espace-2);
+    text-align: left;
+  }
+  .agent-depart-action {
+    display: grid;
+    gap: var(--espace-3);
+    justify-items: center;
+    margin-top: var(--espace-3);
+  }
+  .agent-depart-tous {
+    margin: 0;
+    text-align: center;
+  }
+  @media (min-width: 64rem) {
+    .agent-depart {
+      padding-inline: var(--marge-page-lg);
+    }
+    .agent-depart-int {
+      padding: var(--espace-16) 72px;
+    }
+  }
+</style>

@@ -1,0 +1,17 @@
+# Collection des robots — bible appliquée le 15 octobre 2026
+
+La référence de matière est Balthazar (`hub-agents-ia/figurines-2026-10-15/png/01-balthazar.png`). Les anciens passages de `docs/design/hub-specialistes/prompts-images.md` demandant une génération manuelle dans ChatGPT et une validation utilisateur supplémentaire sont remplacés, pour ce chantier, par la demande explicite de Kevin : outil imagegen Codex, pilote CFE contrôlé en interne puis un robot par génération.
+
+Argile mate à grain fin, céramique douce, galet monobloc sans cou ni membres, deux yeux ronds et sourire fermé, anneau vert mat, fond crème uniforme, lumière diffuse du haut gauche, ombre de contact. Aucun texte, signe, logo, écran, chrome, néon, écharpe, personnage concurrent ou ruban cadeau. Deux petites encoches horizontales ton sur ton sur le flanc gauche identifient la collection robots. Silhouette, couleur et attribut métier distinguent chaque routine.
+
+Le pilote CFE est abricot avec un trieur et trois feuilles vierges. Il a été comparé à Balthazar avant les vingt générations suivantes ; chaque génération jointe au manifeste utilise son fichier comme référence. L’annuaire FE a été régénéré pour corriger une silhouette trop basse ; version rejetée conservée en `originaux/*-v1.png` et prompt `*-v1.json`. Les vingt et une images retenues ont été inspectées individuellement puis réunies sur la planche contact. Les familles proches se distinguent par forme et objet : CFE/trieur et attestation fiscale/rouleau ; habilitations/clé et bénéficiaires/arbre de propriété ; messagerie/enveloppe et annuaire/répertoire ; RNE/registre et collecte IR/tiroir.
+
+## Mesure et interprétation
+
+Les teintes du manifeste sont des couleurs cibles de prompt, pas la promesse de pixels exactement identiques à leur hex. La mesure par `scripts/mesurer-palette.mjs` retrouve 64 à 71 % de crème et 15 à 19 % de la teinte cible du corps selon les figurines. L’anneau rendu de Balthazar a pour médiane RGB (68, 125, 70), plus sombre que l’hex nominal `#27b657` de la bible, du fait du rendu mat et de sa lumière. Les anneaux des robots restent à une distance RGB comprise entre 2,45 et 9,90 de cette référence rendue. Le contrôle porte donc aussi sur le vert réellement validé, pas seulement sur un hex d’intention. Rapport complet : `docs/qa/hub-robots/palette.json`. Aucune recoloration automatique n’a été appliquée aux figurines.
+
+Les sources originales de l’outil (1254 px) restent intactes. Les PNG de livraison sont normalisés à 1024×1024 ; AVIF/WebP 128, 256 et 512 servent au site avec dimensions explicites, `srcset` et chargement différé. Les premiers médaillons chargent en priorité ; les vingt et une cartes ne téléchargent pas les PNG maîtres. Le script de dérivation et le manifeste permettent de reproduire le conditionnement.
+
+## Logos d’outils
+
+Actifs locaux issus des pages officielles INPI, Cegid, Pennylane, ACD, ECMA, des services Microsoft Excel et Power BI ; marque Microsoft pour Word et SharePoint, marque éditeur ECMA explicitement associée à jesignexpert.com. Logo Sage provenant du jeu de vecteurs Simple Icons (la médiathèque officielle Sage a été identifiée mais refuse le téléchargement direct depuis cet environnement). Les portails fiscaux et sociaux sont aussi nommés en clair ; aucune Marianne ajoutée. Noms et logos signalent la compatibilité de l’offre, sans partenariat, disponibilité ou certification implicites. Bruts et URL de collecte dans les sources de recherche ; aucun chargement distant nécessaire à l’affichage.

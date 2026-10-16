@@ -1,11 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { expectProofSelection } from './proof-selection';
 
-const titles = ['Collecter et préparer', 'Contrôler et signaler', 'Rapprocher et synthétiser', 'Suivre un processus', 'Préparer une décision'];
+const titles = ['Collectes fiscales et sociales', 'Suivi du portefeuille', 'Préparation comptable', 'Dossiers sociaux et juridiques', 'Reporting et conseil'];
 
-// Système de page du 07/10/2026 : les cinq usages sont des lignes (un terme, sa définition), plus
-// des cartes ; les quatre étapes de la méthode vont deux par deux dès 1 024 px, texte au-dessus de
-// la maquette, maquettes alignées d'une colonne à l'autre, jamais en quinconce.
+// Direction A validée le 15/10 : cinq usages en lignes ; quatre étapes courtes en deux colonnes
+// dès 768 px à l'accueil ; la page Méthode détaille cinq petites cartes sans ancien écran HTML.
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`capacités en lignes et méthode deux par deux à ${width}`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width, height: 900 });
@@ -40,52 +38,9 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await expect(steps).toHaveCount(4);
     await expect(page.locator('#methode .step-number')).toHaveText(['Étape 1', 'Étape 2', 'Étape 3', 'Étape 4']);
     await expect(page.locator('#methode .chip, #methode figcaption, #methode small')).toHaveCount(0);
-    const measurements = [];
-    for (let i = 0; i < 4; i++) {
-      const step = steps.nth(i);
-      await step.scrollIntoViewIfNeeded();
-      await step.locator('img').evaluate((image: HTMLImageElement) => image.decode());
-      const m = await step.evaluate(el => {
-        const copy = el.querySelector('[data-proof-copy]')!;
-        const img = el.querySelector('img')!;
-        const frame = img.closest('.proof-media')!;
-        // Coordonnées du document : chaque étape est mesurée après son propre défilement.
-        const boite = (e: Element) => {
-          const r = e.getBoundingClientRect();
-          return { x: r.x + scrollX, y: r.y + scrollY, width: r.width, height: r.height,
-            right: r.right + scrollX, bottom: r.bottom + scrollY };
-        };
-        return { step: boite(el), copy: boite(copy), image: boite(img), frame: boite(frame),
-          framed: frame.classList.contains('cadre'),
-          enlarge: el.querySelectorAll('[data-proof-detail], dialog, a[href^="/proofs/"]').length,
-          natural: [img.naturalWidth, img.naturalHeight], alt: img.alt,
-          copyFirst: !!(copy.compareDocumentPosition(img) & Node.DOCUMENT_POSITION_FOLLOWING),
-          interactive: !!img.closest('a,button,[tabindex],[role="button"]') };
-      });
-      measurements.push(m);
-      expect(m.copyFirst).toBe(true);
-      expect(m.interactive).toBe(false);
-      // Aucune version agrandie de l'illustration (Kevin, 07/10/2026).
-      expect(m.enlarge).toBe(0);
-      expect(m.framed).toBe(true);
-      expect(m.alt.length).toBeGreaterThan(20);
-      await expectProofSelection(step.locator('img'));
-      // Le texte de l'étape, puis sa maquette encadrée, sur toute la largeur de l'étape.
-      expect(m.copy.bottom).toBeLessThanOrEqual(m.image.y + 1);
-      expect(Math.abs(m.frame.width - m.step.width)).toBeLessThanOrEqual(1);
-    }
-    if (width >= 1024) {
-      // Deux étapes par rangée, côte à côte ; maquettes alignées dans chaque rangée ; aucune quinconce.
-      for (const [a, b] of [[0, 1], [2, 3]]) {
-        expect(measurements[a].step.right).toBeLessThanOrEqual(measurements[b].step.x + 1);
-        expect(Math.abs(measurements[a].copy.y - measurements[b].copy.y)).toBeLessThanOrEqual(1);
-        expect(Math.abs(measurements[a].image.y - measurements[b].image.y)).toBeLessThanOrEqual(1);
-      }
-      expect(measurements[2].step.y).toBeGreaterThanOrEqual(measurements[0].frame.bottom);
-      expect(Math.abs(measurements[0].step.x - measurements[2].step.x)).toBeLessThanOrEqual(1);
-    } else {
-      for (let i = 1; i < 4; i++) expect(measurements[i].step.y).toBeGreaterThanOrEqual(measurements[i - 1].frame.bottom);
-    }
+    await expect(steps.locator('img')).toHaveCount(0);
+    const measurements=await steps.evaluateAll(nodes=>nodes.map(node=>{const r=node.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom}}));
+    if(width>=768){for(const [a,b] of [[0,1],[2,3]]){expect(measurements[a].right).toBeLessThanOrEqual(measurements[b].x+1);expect(Math.abs(measurements[a].y-measurements[b].y)).toBeLessThanOrEqual(1)}}else for(let i=1;i<4;i++)expect(measurements[i].y).toBeGreaterThanOrEqual(measurements[i-1].bottom);
     const overflow = await page.locator('#usages, #methode').evaluateAll(sections => sections.flatMap(section =>
       [section, ...section.querySelectorAll('*')].filter(el => {
         const r = el.getBoundingClientRect();
@@ -94,5 +49,32 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     expect(overflow).toEqual([]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
     await testInfo.attach('geometry', { body: JSON.stringify({ boxes, measurements }), contentType: 'application/json' });
+
+    await page.goto('/methode');
+    const cards = page.locator('#etapes .parcours-carte');
+    await expect(cards).toHaveCount(5);
+    await expect(cards.locator('.parcours-numero')).toHaveText(['1', '2', '3', '4', '5']);
+    await expect(cards.locator('a, button, img')).toHaveCount(0);
+    const geometry = await cards.evaluateAll(nodes => nodes.map(node => {
+      const box = node.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, right: box.right, bottom: box.bottom };
+    }));
+    const rows = new Map<number, typeof geometry>();
+    for (const card of geometry) {
+      const top = Math.round(card.y);
+      const row = rows.get(top) ?? [];
+      row.push(card); rows.set(top, row);
+      expect(card.x).toBeGreaterThanOrEqual(0);
+      expect(card.right).toBeLessThanOrEqual(width);
+    }
+    const columns = width < 768 ? 1 : width < 1440 ? 2 : 3;
+    expect(Math.max(...[...rows.values()].map(row => row.length))).toBe(columns);
+    for (const row of rows.values()) for (let i = 1; i < row.length; i++) {
+      expect(row[i].x).toBeGreaterThanOrEqual(row[i - 1].right);
+      expect(Math.abs(row[i].bottom - row[0].bottom)).toBeLessThanOrEqual(1);
+    }
+    await expect(page.locator('[data-scene="methode"] img')).toHaveCount(1);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
+    await testInfo.attach('method-cards', { body: JSON.stringify({ geometry }), contentType: 'application/json' });
   });
 }

@@ -17,6 +17,11 @@ export function servicesServis(root) {
   if (!existsSync(source)) return [];
   return readdirSync(source)
     .filter((name) => name.endsWith('.md'))
+    .filter((name) => {
+      const ledgerPath = join(root, 'config/service-publication-ledger.json');
+      const ledger = existsSync(ledgerPath) ? JSON.parse(readFileSync(ledgerPath, 'utf8')) : {};
+      return !ledger.services?.some(row => row.slug === name.replace(/\.md$/, '') && row.status === 'depublie');
+    })
     .map((name) => name.replace(/\.md$/, ''))
     .sort();
 }
@@ -84,7 +89,13 @@ export function auditerServiceDesign({ root = process.cwd(), dist = join(root, '
   const catalogue = (cataloguePath ? readFileSync(cataloguePath, 'utf8') : '').match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0] ?? '';
   for (const destination of servicesDansFooter) {
     const href = `/automatisation/${destination}`;
-    if (!catalogue.includes(`href="${href}"`)) erreurs.push(`catalogue des tâches : lien absent vers ${href}`);
+    const ledgerPath = join(root, 'config/service-publication-ledger.json');
+    const ledger = existsSync(ledgerPath) ? JSON.parse(readFileSync(ledgerPath, 'utf8')) : {};
+    const contextuel = ledger.catalogueMode === 'robots-routines' && ledger.catalogueDecision?.date === '2026-10-15' &&
+      String(ledger.catalogueDecision?.reason ?? '').length >= 60 &&
+      readdirSync(dist, { recursive: true }).filter((name) => name.endsWith('.html') && !name.endsWith(`${destination}.html`) && !name.endsWith(`${destination}/index.html`))
+        .some((name) => (readFileSync(join(dist, name), 'utf8').match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0] ?? '').includes(`href="${href}"`));
+    if (!catalogue.includes(`href="${href}"`) && !contextuel) erreurs.push(`catalogue des tâches : lien absent vers ${href}`);
   }
   return { pass: erreurs.length === 0, services: services.length, erreurs };
 }

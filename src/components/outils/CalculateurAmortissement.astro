@@ -1,4 +1,4 @@
-<form class="amortissement" data-amortization-form novalidate>
+<form method="dialog" class="amortissement" data-amortization-form novalidate>
   <div class="amortissement-grid">
     <label class="champ" for="amortissement-valeur">
       <span>Valeur amortissable</span>
@@ -10,17 +10,13 @@
       <input id="amortissement-date" name="date" type="date" value="2026-04-01" aria-describedby="amortissement-date-aide" required />
       <small id="amortissement-date-aide">Début usuel de consommation des avantages économiques, pour le linéaire comptable.</small>
     </label>
-    <label class="champ" for="amortissement-acquisition" data-acquisition hidden>
-      <span>Date d’acquisition</span>
-      <input id="amortissement-acquisition" name="acquisition" type="date" min="2010-01-01" value="2026-04-01" aria-describedby="amortissement-acquisition-aide" />
-      <small id="amortissement-acquisition-aide">Dégressif fiscal : acquisitions depuis le 01/01/2010 uniquement, régimes historiques exclus. Premier jour du mois d’acquisition (ou d’achèvement pour un bien construit), pas de mise en service.</small>
-    </label>
     <label class="champ" for="amortissement-duree">
       <span>Durée d’utilisation</span>
       <span class="saisie-montant"><input id="amortissement-duree" name="duree" type="number" min="1" max="50" step="1" value="5" aria-describedby="amortissement-duree-aide" required /><b aria-hidden="true">ans</b></span>
       <small id="amortissement-duree-aide">Durée retenue par le cabinet, de 1 à 50 ans.</small>
     </label>
-    <label class="champ" for="amortissement-methode">
+  </div>
+  <details data-outil-options><summary>Choisir une autre méthode : dégressif fiscal</summary><div class="outil-options">    <label class="champ" for="amortissement-methode">
       <span>Méthode</span>
       <select id="amortissement-methode" name="methode" aria-describedby="amortissement-methode-aide" required>
         <option value="linear">Linéaire comptable, prorata au jour</option>
@@ -28,12 +24,17 @@
       </select>
       <small id="amortissement-methode-aide">Le dégressif ne vérifie pas l’éligibilité du bien.</small>
     </label>
-  </div>
-
   <label class="confirmation" data-declining-confirmation hidden>
     <input type="checkbox" name="eligibilite" />
     <span>Je confirme avoir vérifié que le bien entre dans le champ de l’article 39 A du CGI. La simulation retient l’option de passage au linéaire lorsqu’il devient au moins égal au dégressif.</span>
   </label>
+
+    <label class="champ" for="amortissement-acquisition" data-acquisition hidden>
+      <span>Date d’acquisition</span>
+      <input id="amortissement-acquisition" name="acquisition" type="date" min="2010-01-01" value="2026-04-01" aria-describedby="amortissement-acquisition-aide" />
+      <small id="amortissement-acquisition-aide">Dégressif fiscal : acquisitions depuis le 01/01/2010 uniquement, régimes historiques exclus. Premier jour du mois d’acquisition (ou d’achèvement pour un bien construit), pas de mise en service.</small>
+    </label>
+</div></details>
 
   <div class="actions">
     <button class="btn btn-contour" type="reset" data-outil-action="exemple">Recharger l’exemple fictif</button>

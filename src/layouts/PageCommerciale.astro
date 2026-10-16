@@ -8,6 +8,7 @@ import { organizationNode } from '@/data/schema.mjs';
 import { PROOFS, type ProofId } from '@/data/proofs';
 import { auteurPar, identiteAuteur, noeudAuteur } from '@/data/auteurs';
 import { eeatCommercial } from '@/data/page-eeat';
+import type { NomPicto } from '@/components/Picto.astro';
 
 /**
  * Coque des cinq pages commerciales du site v2 : le héros centré du système de page
@@ -27,7 +28,8 @@ interface Props {
     h1: string;
     chapeau: string;
     ariane: string;
-    secondaire: { libelle: string; href: string };
+    /** Le lien secondaire du héros ; `picto` pour une ancre dans la page (le hub : chevron vers l'annuaire). */
+    secondaire: { libelle: string; href: string; picto?: NomPicto };
   };
   /** Réserve les lignes du titre sur téléphone lorsque les chasses du repli changent sa composition. */
   lignesTitreMobile?: number;
@@ -37,12 +39,18 @@ interface Props {
   hero: ProofId;
   /** Nœuds supplémentaires du graphe de données structurées, avant Organization et WebSite. */
   noeuds?: unknown[];
+  /**
+   * Graphe complet, déjà assemblé et vérifié par son constructeur (`hubGraph`, garde `assertGraph`) : il remplace
+   * celui de la coque, qui n'y ajoute rien. Une page qui le passe ne passe pas `noeuds`.
+   */
+  schema?: Record<string, unknown>;
   /** Appel final propre à la page ; sinon celui de l'accueil. */
   appel?: { titre?: string; texte?: string; points?: string[]; action?: { libelle: string; href: string }; secondaire?: { libelle: string; href: string } };
 }
 // Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » sur le site.
 // Une source se cite par un lien sur un mot ou un chiffre du texte ; les données E-E-A-T ne servent plus qu'au JSON-LD.
-const { page, eyebrow, hero, lignesTitreMobile, noeuds = [], appel = {} } = Astro.props;
+const { page, eyebrow, hero, lignesTitreMobile, noeuds = [], schema, appel = {} } = Astro.props;
+if (schema && noeuds.length > 0) throw new Error(`PageCommerciale ${page.chemin} : un graphe complet et des nœuds à fusionner, choisir l’un des deux`);
 /**
  * L'appel à l'action mène partout à /contact. Sur /contact lui-même il pointerait la
  * page courante : c'est là que la réservation directe prend le relais.
@@ -89,7 +97,7 @@ const graph = {
 const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
 ---
 
-<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={page.chemin} base="/" socialImage={socialImage} schema={graph}>
+<Base titre={page.titre} titreSocial={page.h1} description={page.description} chemin={page.chemin} base="/" socialImage={socialImage} schema={schema ?? graph}>
   <link slot="head" rel="preload" as="image" href={heroSrc} fetchpriority="high" />
 
   <div class="feuille page-v2">
@@ -105,7 +113,7 @@ const secondaireCourriel = page.secondaire.href.startsWith('mailto:');
         <div class="page-actions">
           <Button href={actionPrincipale.href} variante="principal" picto="fleche">{actionPrincipale.libelle}</Button>
           {secondaireCourriel && <Fragment set:html={`<!--email_off-->`} />}
-          <Button href={page.secondaire.href} variante="lien">{page.secondaire.libelle}</Button>
+          <Button href={page.secondaire.href} variante="lien" picto={page.secondaire.picto}>{page.secondaire.libelle}</Button>
           {secondaireCourriel && <Fragment set:html={`<!--/email_off-->`} />}
         </div>
       </div>

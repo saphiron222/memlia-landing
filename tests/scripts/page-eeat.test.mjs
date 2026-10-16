@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
@@ -8,15 +8,9 @@ const AUTHOR_ID = 'https://memlia.fr/a-propos#kevin-kitanga';
 const ORGANIZATION_ID = 'https://memlia.fr/#organization';
 
 const pages = [
-  { route: '/automatisation/paie', modified: '2026-10-06' },
-  { route: '/automatisation/saisie-comptable', modified: '2026-10-06' },
-  { route: '/automatisation/rapprochement-bancaire', modified: '2026-10-06' },
-  { route: '/automatisation/notes-de-frais', modified: '2026-10-06' },
-  { route: '/automatisation/factures-fournisseurs', modified: '2026-10-06' },
-  { route: '/automatisation-cabinet-comptable', modified: '2026-10-08' },
-  { route: '/methode', modified: '2026-10-04' },
-  { route: '/garanties', modified: '2026-10-06' },
-  { route: '/a-propos', modified: '2026-10-08' },
+  { route: '/methode', modified: '2026-10-15' },
+  { route: '/garanties', modified: '2026-10-15' },
+  { route: '/a-propos', modified: '2026-10-15' },
 ];
 
 function htmlFor(route) {
@@ -32,7 +26,7 @@ function graphFor(html) {
 // Décision de Kevin du 04/10/2026 : ces pages ne sont pas des articles ; ni signature ni dates visibles.
 // Décision de Kevin du 06/10/2026 : aucune section « Sources » ni « Expérience de première main » ; une source se
 // cite par un lien sur un mot ou un chiffre du texte. Le JSON-LD garde l'auteur et les dates.
-test('les neuf pages hors blog gardent un Person relié, sans signature, dates visibles ni section de sources', () => {
+test('les pages éditoriales gardent leur auteur réel, sans signature, dates visibles ni section de sources', () => {
   for (const page of pages) {
     const html = htmlFor(page.route);
     assert.doesNotMatch(html, /data-page-byline/, `${page.route} : aucune signature d’article`);
@@ -56,14 +50,36 @@ test('les neuf pages hors blog gardent un Person relié, sans signature, dates v
   }
 });
 
+test('les catalogues et leurs fiches citent l’auteur humain et le fournisseur, sans personnifier un agent ou un robot', () => {
+  const fiches = ['automatisation', 'agents-ia'].flatMap((section) => readdirSync(join(ROOT, 'dist', section))
+    .filter((file) => file.endsWith('.html')).map((file) => `/${section}/${file.slice(0, -5)}`));
+  assert.equal(fiches.filter((route) => route.startsWith('/automatisation/')).length, 21);
+  // Dix fiches métier ; Edmond et Octavie mènent aux pages transverses /methode et /integrations.
+  assert.equal(fiches.filter((route) => route.startsWith('/agents-ia/')).length, 10);
+  for (const route of ['/automatisation-cabinet-comptable', '/agents-ia', '/integrations', ...fiches]) {
+    const html = htmlFor(route);
+    const graph = graphFor(html);
+    const page = graph.find((node) => node['@id'] === `https://memlia.fr${route}#page`);
+    assert.equal(page?.author?.['@id'], AUTHOR_ID, `${route} : auteur réel canonique`);
+    assert.equal(page?.dateModified, '2026-10-15', `${route} : date du catalogue approuvé`);
+    assert.ok(graph.some((node) => node['@type'] === 'Organization' && node['@id'] === ORGANIZATION_ID), `${route} : fournisseur défini`);
+    assert.ok(!graph.some((node) => node['@type'] === 'Person'), `${route} : aucune figurine déclarée comme une personne`);
+    assert.ok(!graph.some((node) => ['SoftwareApplication', 'FAQPage', 'Review', 'AggregateRating'].includes(node['@type'])), `${route} : aucune application, FAQ ou preuve commerciale inventée`);
+    if (fiches.includes(route)) {
+      const service = graph.find((node) => node['@type'] === 'Service');
+      assert.equal(service?.provider?.['@id'], ORGANIZATION_ID, `${route} : Service relié à Memlia`);
+      assert.equal(page?.datePublished, '2026-10-15');
+      assert.doesNotMatch(html, /data-page-byline|data-source-section|data-first-hand-experience/);
+    }
+  }
+});
+
 // Oracle indépendant de page-eeat.ts : chaque source publique est un lien posé sur ces mots-là du texte rendu.
 const citations = [
-  { route: '/automatisation/paie', url: 'https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/', mot: 'tout dépôt' },
-  { route: '/automatisation/entrees-sorties-salaries', url: 'https://www.silae.fr/solution-rh-paie/gestion-des-salaries/', mot: 'mySilae' },
-  { route: '/automatisation/saisie-comptable', url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F31808', mot: 'les champs' },
-  { route: '/automatisation/rapprochement-bancaire', url: 'https://www.anc.gouv.fr/plan-comptable-general-0', mot: 'des écritures' },
-  { route: '/automatisation/notes-de-frais', url: 'https://www.service-public.fr/particuliers/vosdroits/F19846', mot: 'un justificatif' },
-  { route: '/automatisation-cabinet-comptable', url: 'https://www.cnil.fr/fr/reglement-europeen-protection-donnees/chapitre2', mot: 'des données fictives' },
+  { route: '/agents-ia/paie-social', url: 'https://www.net-entreprises.fr/glossaire/tiers-declarant/', mot: 'votre compte déclarant' },
+  { route: '/agents-ia/paie-social', url: 'https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/', mot: 'les comptes rendus métier' },
+  { route: '/automatisation/cfe', url: 'https://www.impots.gouv.fr/professionnel/questions/comment-puis-je-acceder-mon-avis-de-cfe-et-le-payer', mot: 'DGFiP : consulter les avis de CFE et les payer' },
+  { route: '/automatisation/taxes-foncieres', url: 'https://www.impots.gouv.fr/particulier/questions/quelle-date-vais-je-recevoir-mon-avis-de-taxe-fonciere-et-quand-dois-je-la', mot: 'DGFiP : mise à disposition des avis de taxe foncière' },
   { route: '/garanties', url: 'https://www.cnil.fr/fr/controle-de-lactivite-des-personnes-employees', mot: 'une mesure individuelle continue' },
   { route: '/methode', url: '/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils', mot: 'Le cadrage' },
 ];

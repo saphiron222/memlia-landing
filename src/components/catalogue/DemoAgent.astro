@@ -1,0 +1,11 @@
+---
+import type { Specialiste } from '@/data/specialistes';
+import '@/styles/catalogue/demo.css';
+interface Props { agent:Specialiste; }
+const {agent}=Astro.props;
+---
+<div class="routine-demo" data-agent-rejeu>
+  <div class="routine-demo-tete"><p class="routine-demo-label">Rejoué sur un dossier fictif</p><p>{agent.demonstration.dossier}</p></div>
+  <div class="routine-demo-table" data-table-scroll role="region" aria-label={`Quatre cas fictifs de ${agent.prenom}`} tabindex="0"><table><caption>Ce que la règle produit dans quatre situations</caption><thead><tr><th scope="col">Cas joué</th><th scope="col">Sortie obtenue</th><th scope="col">Décision</th></tr></thead><tbody>{agent.demonstration.cas.map(cas=><tr data-decision={cas.issue} data-issue={cas.issue}><th scope="row">{cas.cas}</th><td>{cas.sortie}</td><td><span class:list={['routine-decision',{'routine-arret':cas.issue==='Arrêt'}]}>{cas.issue}</span></td></tr>)}</tbody></table></div>
+  <p class="routine-demo-pied"><a href="#regle">Lire la règle et ses conditions d’arrêt</a>.</p>
+</div>

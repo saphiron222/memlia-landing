@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 import {readFile} from 'node:fs/promises';
 const route='/outils-comptables-gratuits/suivi-circularisation';
 test('campagne locale, refus, lettres, historique et reprise',async({page})=>{
- const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);
  const requests=[];page.on('request',r=>requests.push(r));
  await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();
  await expect(page.locator('[data-circ-summary]')).toContainText('3 tiers');
@@ -24,8 +24,10 @@ test('campagne locale, refus, lettres, historique et reprise',async({page})=>{
  await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content',/connect-src 'none'/);
 });
 for(const width of [320,375,768,1024,1440,1920])test(`rendu ${width}`,async({page},testInfo)=>{
- await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+ await page.setViewportSize({width,height:900});await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);
  await expect(page.locator('h1')).toHaveText('Modèle de suivi de circularisation Excel : lettres et retours');await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);
  await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  if([375,1440].includes(width))await page.screenshot({path:testInfo.outputPath(`circularisation-${width}.png`),fullPage:true});
 });
+
+async function ouvrirReglages(page){ for (const summary of await page.locator('.budget-advanced, [data-outil-options], [data-bareme-qualification]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

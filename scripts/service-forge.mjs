@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { ROBOTS } from '../src/data/robots.ts';
 /**
  * Forge des pages de service. Elle partage uniquement le registre de requêtes avec le blog :
  * aucun article, dossier éditorial ou plafond de cadence n'est lu puis réécrit ici.
@@ -20,6 +21,7 @@ import { verifierTitreIntentMesure } from './lib/blog-title-intent.mjs';
 import { ajouterAuRegistre, chargerRegistre, sauverRegistre } from './lib/seo-registres.mjs';
 import { LIENS_COMMERCIAUX_BLOG } from '../src/data/blog-commercial-links.mjs';
 import { readDilaCopy } from './lib/dila-source-copy.mjs';
+import { migrerLiensEntrantsService } from './lib/service-incoming-migrations.mjs';
 
 const REQUIRED_SCHEMA_TYPES = ['WebPage', 'Service', 'BreadcrumbList', 'Organization', 'WebSite'];
 const FORBIDDEN_SCHEMA_TYPES = ['BlogPosting', 'Product', 'SoftwareApplication', 'Offer', 'Review'];
@@ -147,9 +149,12 @@ function verifyIncomingLinkDeclarations(recipe, errors) {
 }
 
 export function verifierLiensEntrantsService(root, recipe, errors) {
-  verifyIncomingLinkDeclarations(recipe, errors);
-  const links = Array.isArray(recipe.incomingLinks) ? recipe.incomingLinks : [];
+  const { links, migrated } = migrerLiensEntrantsService(root, recipe, errors);
+  // Compter les trois sources effectives après migration, jamais le couple ancien + nouveau.
+  verifyIncomingLinkDeclarations({ ...recipe, incomingLinks: links }, errors);
   for (const link of links) {
+    // La route dynamique, ses données et son nœud d'ancre ont déjà été vérifiés par le résolveur.
+    if (migrated.has(link)) continue;
     const prefix = link?.url ?? 'lien sans URL';
     if (!link || typeof link.sourcePath !== 'string' || !link.sourcePath.startsWith('src/')) continue;
     const absolute = resolve(root, link.sourcePath);
@@ -169,7 +174,14 @@ export function verifierLiensEntrantsService(root, recipe, errors) {
     const articleId = link.sourcePath.match(/^src\/content\/blog\/(.+)\.md$/)?.[1];
     const bridge = articleId ? LIENS_COMMERCIAUX_BLOG[articleId] : null;
     const contextualBridge = bridge?.href === recipe.path && bridge?.label === link.anchor;
-    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge)) {
+    const ledgerPath = join(root, 'config/service-publication-ledger.json');
+    const ledger = existsSync(ledgerPath) ? readJson(ledgerPath) : {};
+    const contextualRobotBridge = ledger.catalogueMode === 'robots-routines' && ledger.catalogueDecision?.date === '2026-10-15' &&
+      String(ledger.catalogueDecision?.reason ?? '').length >= 60 && link.url === '/automatisation-cabinet-comptable' &&
+      link.sourcePath === 'src/pages/automatisation-cabinet-comptable.astro' && source.includes('import HubRobots') &&
+      ROBOTS.some((robot) => robot.liens.some((lien) => lien.href === recipe.path));
+
+    if (!(source.includes(markdownLink) || (source.includes(astroLink) && source.includes(`>${link.anchor}<`)) || contextualBridge || contextualRobotBridge)) {
       errors.push(`${prefix} : aucun lien contextuel avec l’ancre « ${link.anchor} » vers ${recipe.path} dans ${link.sourcePath}.`);
     }
   }
@@ -682,9 +694,20 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
       const { recipe, body, review } = snapshot;
       const manifest = readJson(join(base, slug, 'manifest.json'));
       const receiptPath = join(base, slug, 'preuves/publication.json');
-      const sourceAsOf = manifest.status === 'publie' && existsSync(receiptPath) ? readJson(receiptPath).publishedAt : null;
+      const authority = publicationAuthority.get(slug);
+      let archiveDay = null;
+      if (authority?.status === 'depublie') {
+        const proof = readJson(join(root, authority.depublicationPath));
+        if (proof.slug !== slug || proof.route !== recipe.path || proof.authorizedBy !== 'Kevin Kitanga' ||
+            !DATE_RE.test(proof.depublishedOn ?? '') || proof.depublishedOn > today || String(proof.reason ?? '').length < 60 ||
+            [proof.redirect, proof.replacement].filter(value => typeof value === 'string' && value.startsWith('/') && value !== recipe.path).length !== 1) {
+          errors.push(`${slug} : décision d’archivage invalide.`);
+        } else archiveDay = proof.depublishedOn;
+      }
+      // Une archive est contrôlée à sa date de retrait ; une nouvelle publication exige les sources du jour.
+      const sourceAsOf = manifest.status === 'publie' && existsSync(receiptPath) ? readJson(receiptPath).publishedAt : archiveDay ? `${archiveDay}T12:00:00Z` : null;
       // Une copie scellée reste historique après publication ; une nouvelle préparation exige une collecte récente.
-      errors.push(...verifierRecetteService({ root, recipe, body, review, today, requireReview: true, sourceAsOf }).map((error) => `${slug} : ${error}`));
+      errors.push(...verifierRecetteService({ root, recipe, body, review, today: archiveDay ?? today, requireReview: true, sourceAsOf }).map((error) => `${slug} : ${error}`));
       const expectedFingerprint = candidateFingerprint(snapshot);
       const entries = registryServices.filter((entry) => entry.slug === slug);
       if (entries.length !== 1) errors.push(`${slug} : le registre doit contenir exactement une entrée service, reçu ${entries.length}.`);
@@ -693,7 +716,6 @@ export function auditerServices({ root = process.cwd(), today = todayIso() } = {
         errors.push(`${slug} : divergence URL ou requête entre registre et manifeste.`);
       }
       if (manifest.slug !== slug || manifest.type !== 'service') errors.push(`${slug} : divergence de slug ou type dans le manifeste.`);
-      const authority = publicationAuthority.get(slug);
       if (ledgerEnabled && manifest.status === 'publie' && authority?.status !== 'publie') errors.push(`${slug} : service publié absent de l’autorité durable.`);
       if (authority?.status === 'publie' && manifest.status !== 'publie') errors.push(`${slug} : l’autorité durable exige le statut publié ; une dépublication explicite est requise.`);
       if (manifest.candidateFingerprint !== expectedFingerprint) errors.push(`${slug} : l’empreinte du candidat diverge entre recette et manifeste.`);

@@ -13,7 +13,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
     await delay(navigationDelay);
     await route.continue();
   });
-  await page.goto(gen); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
+  await page.goto(gen); await page.locator('details.library > summary').click(); await ouvrirReglages(page); await page.locator('[data-seed="pieces"]').click(); await assemble(page);
   const edited = (await page.locator('[data-editor]').inputValue()) + '\nNote abstraite à conserver.';
   await page.locator('[data-editor]').fill(edited);
   const before = await page.locator('form').evaluate((f: HTMLFormElement) => Object.fromEntries(new FormData(f)));
@@ -25,7 +25,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
   ]);
   await other.bringToFront(); await expect(other).toHaveURL(new RegExp(lib + '$'));
   expect(await other.evaluate(() => window.opener === null)).toBe(true);
-  await other.locator('[data-model="compte-rendu"] [data-adapt]').click();
+  await other.locator('[data-read="compte-rendu"]').click();await other.locator('[data-prompt-reader="compte-rendu"] summary').click();await other.locator('[data-prompt-reader="compte-rendu"] [data-adapt]').click();
   await expect(other).toHaveURL(new RegExp(gen + '$')); await assemble(other);
   await expect(other.locator('[data-editor]')).toHaveValue(modelPrompt(MODELS.find(m => m.id === 'compte-rendu')!));
   // Chromium macOS peut suspendre l'évaluation dans l'onglet en arrière-plan.
@@ -45,7 +45,7 @@ for (const navigationDelay of [0, 250]) test(`R1 : navigation réelle isolée, o
 });
 for (const name of ['task', 'input', 'format', 'validator', 'stop', 'description', 'confirmed']) {
   for (const accept of [false, true]) test(`R2 : ${name} seul, reprise ${accept ? 'acceptée' : 'refusée'}`, async ({ page }) => {
-    await page.goto(gen); const field = page.locator(`form [name=${name}]`);
+    await page.goto(gen); await ouvrirReglages(page); const field = page.locator(`form [name=${name}]`);
     if (name === 'confirmed') await field.check();
     else if (name === 'description') await field.fill('Une description abstraite à conserver.');
     else await field.selectOption(await field.locator('option').nth(1).getAttribute('value') as string);
@@ -65,7 +65,7 @@ test('R3 : export adapté différé exact et nettoyage', async ({ page }) => {
     HTMLAnchorElement.prototype.click = function () { if (this.download && this.href.startsWith('blob:')) setTimeout(() => click.call(this), 100); else click.call(this); };
     URL.revokeObjectURL = url => { (window as any).__revoked.push(url); revoke.call(URL, url); };
   });
-  await page.goto(lib); await page.locator('[data-model="relance-pieces"] [data-adapt]').click();
+  await page.goto(lib); await ouvrirReglages(page); await page.locator('[data-read="relance-pieces"]').click();await page.locator('[data-prompt-reader="relance-pieces"] summary').click();await page.locator('[data-prompt-reader="relance-pieces"] [data-adapt]').click();
   await expect(page).toHaveURL(new RegExp(gen + '$')); await assemble(page);
   const downloaded = page.waitForEvent('download'); await page.locator('[data-download]').click(); const file = await downloaded;
   expect(await file.failure()).toBe(null); expect(file.suggestedFilename()).toBe('prompt-expert-comptable.txt');
@@ -73,3 +73,5 @@ test('R3 : export adapté différé exact et nettoyage', async ({ page }) => {
   await expect.poll(() => page.evaluate(() => (window as any).__revoked.length)).toBe(1);
   await expect(page.locator('a[download][href^="blob:"]')).toHaveCount(0);
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

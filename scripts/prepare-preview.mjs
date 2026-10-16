@@ -57,7 +57,8 @@ export function preparePreview({
   mkdirSync(dirname(targetPath), { recursive: true });
   cpSync(sourcePath, targetPath, { recursive: true });
   for (const [relative, html] of transformed) writeFileSync(join(targetPath, relative), html);
-  writeFileSync(join(targetPath, '_headers'), '/*\n  X-Robots-Tag: noindex, nofollow\n');
+  const existingHeaders = existsSync(join(sourcePath, '_headers')) ? readFileSync(join(sourcePath, '_headers'), 'utf8') : '';
+  writeFileSync(join(targetPath, '_headers'), `${existingHeaders.trimEnd()}\n\n/*\n  X-Robots-Tag: noindex, nofollow\n`);
   return { htmlFiles: htmlFiles.length, target };
 }
 

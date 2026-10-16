@@ -31,6 +31,7 @@ test('la publication possède son intention et ses liens entrants', () => {
   const intent = JSON.parse(read('config/page-intent-contract.json')).pages[SEO_CAC.chemin];
   assert.equal(intent.query, SEO_CAC.requete);
   assert.match(read('src/components/Footer.astro'), /LIEN_CAC/);
-  assert.match(read('src/pages/automatisation-cabinet-comptable.astro'), /href="\/commissaires-aux-comptes"/);
+  // Le hub robots a remplacé l’ancienne page service ; l’entrée CAC reste dans le corps de l’accueil.
+  assert.match(read('src/pages/index.astro'), /href=\{LIEN_CAC\.href\}[\s\S]*data-accueil-cac/);
   assert.ok(read('public/llms.txt').includes(`https://memlia.fr${SEO_CAC.chemin}`));
 });

@@ -1,3 +1,4 @@
+import { rendreLienOutilVisible } from './helpers/liens-outils';
 import { test, expect } from '@playwright/test';
 import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
@@ -108,6 +109,7 @@ test('sans JavaScript : questions, méthode et limites accessibles', async ({ br
   const context = await browser.newContext({ javaScriptEnabled: false }); const page = await context.newPage();
   await page.goto(baseURL! + route);
   await expect(page.locator('fieldset')).toHaveCount(5); await expect(page.locator('select')).toHaveCount(15);
+  await page.getByText('Méthode du diagnostic',{exact:true}).click();
   await expect(page.locator('#diagnostic-method')).toBeVisible();
   await context.close();
 });
@@ -117,13 +119,13 @@ for (const width of [320,375,768,1024,1440,1920]) test(`reflow et parcours à ${
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await expect(page.locator('[data-result]')).toBeVisible();
   if ([375,1440].includes(width)) {
-    mkdirSync('docs/qa/maturite-ia/screens', { recursive: true });
+    mkdirSync('.qa/maturite-ia/screens', { recursive: true });
     // Déclencher les révélations et les médias paresseux par le vrai parcours de scroll.
     for (let y = 0; y < await page.evaluate(() => document.body.scrollHeight); y += 600) {
       await page.evaluate(y => window.scrollTo(0, y), y); await page.waitForTimeout(70);
     }
     await page.evaluate(() => window.scrollTo(0, 0)); await page.waitForTimeout(1200);
-    await page.screenshot({ path: `docs/qa/maturite-ia/screens/${width}.png`, fullPage: true, animations: 'disabled' });
+    await page.screenshot({ path: `.qa/maturite-ia/screens/${width}.png`, fullPage: true, animations: 'disabled' });
   }
 });
 test('SEO canonical schema sitemap hub footer et entrants contextuels', async ({ page, request }) => {
@@ -133,8 +135,8 @@ test('SEO canonical schema sitemap hub footer et entrants contextuels', async ({
   const graphs = await page.locator('script[type="application/ld+json"]').allTextContents();
   expect(graphs.join('')).toContain('WebApplication'); expect(graphs.join('')).not.toContain('AggregateRating');
   expect(await (await request.get('/sitemap-outils.xml')).text()).toContain('https://memlia.fr' + route);
-  for (const from of ['/outils-comptables-gratuits','/methode','/automatisation-cabinet-comptable']) {
-    await page.goto(from); await expect(page.locator(`main a[href="${route}"]`).first()).toBeVisible();
+  for (const from of ['/outils-comptables-gratuits','/methode','/outils-comptables-gratuits/generateur-charte-ia-cabinet']) {
+    await page.goto(from); await rendreLienOutilVisible(page,route); await expect(page.locator(`main a[href="${route}"]`).first()).toBeVisible();
     await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);
   }
 });

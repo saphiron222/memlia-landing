@@ -16,6 +16,7 @@ class IntegrationInventoryProof(unittest.TestCase):
         with TemporaryDirectory() as directory:
             root = Path(directory)
             shutil.copytree(build.ROOT / 'src', root / 'src')
+            shutil.copytree(build.ROOT / 'config', root / 'config')
             shutil.copytree(build.ROOT / 'guides', root / 'guides')
             shutil.copytree(build.ROOT / 'public/proofs', root / 'public/proofs')
             shutil.copytree(build.DIST, root / 'dist')
@@ -32,6 +33,7 @@ class IntegrationInventoryProof(unittest.TestCase):
                 pages.test_pages_one_h1_french()
                 sitemap.test_sitemap_complete_no_legal()
                 orphan = root / 'dist/integrations/orpheline-qa.html'
+                orphan.parent.mkdir(parents=True, exist_ok=True)
                 orphan.write_text('<html lang="fr"><h1>Orpheline QA</h1></html>')
                 with self.assertRaises(AssertionError):
                     pages.test_pages_one_h1_french()
@@ -64,6 +66,7 @@ class IntegrationInventoryProof(unittest.TestCase):
                 pages.test_pages_one_h1_french()
                 sitemap.test_sitemap_complete_no_legal()
                 orphan = dist / 'integrations/orpheline.html'
+                orphan.parent.mkdir(parents=True, exist_ok=True)
                 orphan.write_text('<html lang="fr"><h1>Orpheline</h1></html>')
                 with self.assertRaises(AssertionError):
                     pages.test_pages_one_h1_french()
@@ -120,6 +123,8 @@ class IntegrationInventoryProof(unittest.TestCase):
             (dist / 'integrations').mkdir(parents=True)
             for name in ['historique', slug]:
                 (dist / 'integrations' / f'{name}.html').write_text('<html lang="fr"><h1>Contrôle</h1></html>')
+            # L'oracle lit aussi les fiches d'agent publiées (tâche 4 du hub) : aucune dans ce dépôt minimal.
+            (root / 'src/data/specialistes.ts').write_text('export const FICHES = [];')
             with patch.multiple(build, ROOT=root, DIST=dist, PAGES_FIXES=[], PREVIEW_ARTICLES=set()):
                 self.assertEqual(build.public_integrations(), {'historique', slug})
                 build.BuildProof('test_pages_one_h1_french').test_pages_one_h1_french()

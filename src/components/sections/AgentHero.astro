@@ -1,0 +1,151 @@
+---
+import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
+import AgentAvatar from '@/components/sections/AgentAvatar.astro';
+import AgentRejeu from '@/components/sections/AgentRejeu.astro';
+import { HUB, ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+import { CTA } from '@/data/site.mjs';
+
+/**
+ * Le héros d'une fiche (système de page § 1 ; spec §2, sections 1 et 2 ; arbitrage R23 du contrôleur). Le fil
+ * d'Ariane à trois niveaux, puis une rangée pleine largeur : l'agent (avatar ou monogramme, puis « <prénom> · agent
+ * IA <métier> ») et le H1 de la requête, au corps du héros partagé (`--titre-page-partage`) sur toute la largeur de
+ * la feuille, pour qu'un titre d'intention long tienne en quelques lignes. Dessous, en deux colonnes dès 64 rem : le
+ * chapeau, qui définit l'agent IA et finit sur la décision du cabinet, avec « Confier une première tâche » et l'ancre
+ * vers ce que l'agent remet ; à droite, plus large, le rejeu de sa démonstration (au moins 34 rem de tableau à
+ * 1 440 px, sinon il s'empile). En dessous de 64 rem, tout s'empile dans le même ordre. Aucun prix.
+ */
+interface Props {
+  agent: Specialiste;
+  /** La page où la tâche de la démonstration est détaillée, liée en pied du rejeu. */
+  regle?: { href: string; libelle: string };
+}
+const { agent, regle } = Astro.props;
+const fiche = ficheDe(agent);
+const g = gabaritDe(agent);
+---
+
+<section class="agent-heros" aria-labelledby="page-titre" data-agent-heros>
+  <nav class="ariane" aria-label="Fil d’Ariane">
+    <ol>
+      <li><a href="/">Accueil</a></li>
+      <li><a href={HUB.chemin}>{HUB.ariane}</a></li>
+      <li aria-current="page">{agent.libelle}</li>
+    </ol>
+  </nav>
+  <header class="agent-heros-tete">
+    <div class="agent-heros-agent">
+      <AgentAvatar agent={agent} taille="heros" prioritaire />
+      <p class="agent-heros-etiquette" data-agent-etiquette>{g.etiquette}</p>
+    </div>
+    <h1 id="page-titre"><Insecable texte={fiche.h1} /></h1>
+  </header>
+  <div class="agent-heros-grille">
+    <div class="agent-heros-copie">
+      <p class="agent-heros-chapeau" data-agent-chapeau>{fiche.chapeau}</p>
+      <div class="agent-heros-actions">
+        <Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button>
+        <Button href={`#${g.livrables.ancre}`} variante="lien" picto="chevron">{g.ancreRemet}</Button>
+      </div>
+    </div>
+    <div class="agent-heros-media">
+      <AgentRejeu demonstration={agent.demonstration} source={regle} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .agent-heros {
+    padding: 28px var(--marge-page) 0;
+  }
+  .ariane ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+  }
+  .ariane li + li::before {
+    content: '›';
+    margin-right: 6px;
+    color: var(--picto-repos);
+  }
+  .ariane a {
+    color: var(--texte-2);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .ariane [aria-current] {
+    min-width: 0;
+    color: var(--texte);
+  }
+  /* La rangée du titre : l'agent, puis le H1 sur toute la largeur de la feuille. */
+  .agent-heros-tete {
+    display: grid;
+    justify-items: start;
+    gap: 20px;
+    padding-top: var(--bloc-ecart);
+  }
+  /* L'agent avant son titre : sa tuile au format du héros (--avatar-heros), puis l'étiquette en casse de phrase. */
+  .agent-heros-agent {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-4);
+  }
+  .agent-heros-etiquette {
+    margin: 0;
+    font-weight: 600;
+    color: var(--accent-texte);
+  }
+  .agent-heros-tete h1 {
+    font-size: var(--titre-page-partage);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  .agent-heros-grille {
+    display: grid;
+    gap: var(--bloc-ecart);
+    align-items: start;
+    padding-top: var(--espace-8);
+  }
+  .agent-heros-copie {
+    display: grid;
+    justify-items: start;
+    gap: var(--espace-6);
+    min-width: 0;
+  }
+  .agent-heros-chapeau {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--texte-2);
+    font-size: var(--t-lg);
+    line-height: 1.55;
+  }
+  .agent-heros-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+  .agent-heros-media {
+    min-width: 0;
+  }
+  @media (min-width: 64rem) {
+    .agent-heros {
+      padding: 32px var(--marge-page-lg) 0;
+    }
+    .agent-heros-tete {
+      padding-top: 56px;
+    }
+    /* Le rejeu prend la colonne large : son tableau garde ses trois colonnes à 1 440 px (≥ 34 rem). */
+    .agent-heros-grille {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--rangee-gouttiere);
+      padding-top: var(--espace-10);
+    }
+  }
+</style>

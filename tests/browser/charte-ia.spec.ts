@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 const route = '/outils-comptables-gratuits/generateur-charte-ia-cabinet';
 const notice = 'Trame non officielle — proposition à relire et à faire adopter par le cabinet. Elle ne remplace pas les ressources de l’Ordre et ne certifie aucune conformité. Aucun usage sur dossier réel n’est autorisé par ce document.';
 const documentOracle = (body: string) => `# Charte IA du cabinet\n\n${notice}\n\n${body}\n`;
-const example = async (page: Page) => { await page.goto(route); await page.getByRole('button', { name: 'Charger un exemple fictif' }).click(); await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click(); };
+const example = async (page: Page) => { await page.goto(route); await ouvrirReglages(page); await page.getByRole('button', { name: 'Charger un exemple fictif' }).click(); await page.getByRole('button', { name: 'Préparer la charte', exact: true }).click(); };
 test('nominal, édition conservée, exports identiques et impression', async ({ page }) => {
   await example(page);
   const editor = page.getByLabel('Clauses à relire et à modifier');
@@ -105,3 +105,5 @@ test('six largeurs, clavier, traitement sans réseau ni stockage', async ({ page
   expect(requests).toEqual([]);
   expect(await page.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length, cookies: document.cookie }))).toEqual({ local: 0, session: 0, cookies: '' });
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('.budget-advanced, [data-outil-options], [data-bareme-qualification]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

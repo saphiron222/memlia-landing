@@ -1,0 +1,36 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+import Lockup from '@/components/Lockup.astro';
+import Picto from '@/components/Picto.astro';
+const etapes=[
+ {nom:'Vos sources',titre:'Le savoir reste relié à son origine.',texte:'Procédures, dossiers et décisions validées sont retrouvables dans les espaces autorisés. Les droits sont vérifiés avant la recherche.'},
+ {nom:'La mémoire',titre:'Le contexte utile suit le travail.',texte:'Une réponse retrouve sa source. Une règle garde sa version. Une session reprend avec les éléments nécessaires à la tâche.'},
+ {nom:'Les agents',titre:'Vos savoir-faire deviennent des tâches préparées.',texte:'Les agents disposent des consignes et des outils prévus pour leur mission. Ils remettent une proposition et signalent les exceptions.'},
+ {nom:'Votre décision',titre:'La remise arrive avec ce qu’il faut vérifier.',texte:'Votre équipe retrouve le travail, ses sources et les points à reprendre. Elle valide les actions engageantes ; les décisions restent tracées.'},
+];
+---
+{compact ? <div class="solution-apercu os-apercu" aria-hidden="true"><div><span>Le bureau collectif</span><strong>Procédures · Dossiers · Décisions</strong></div><div class="apercu-memoire"><Picto nom="complexite" taille={22}/><strong>Mémoire collective</strong><span>Sources et accès conservés</span></div></div> : null}
+{!compact ? <>
+
+<div class="os-atelier" id="explorer" data-os-workspace>
+  <div class="os-atelier-barre"><Lockup/><span class="os-atelier-nom">Le bureau collectif</span><span class="scene-fiction">Exemple fictif</span></div>
+  <div class="os-bureau">
+    <div class="os-sources" data-os-zone="0"><p class="os-colonne-label">Le savoir du cabinet</p><div class="os-source"><span class="os-document"><Picto nom="feuilles" taille={22}/></span><div><strong>Procédure de reprise</strong><span>Dossier partagé · version validée</span></div></div><div class="os-source"><span class="os-document"><Picto nom="regle" taille={22}/></span><div><strong>Règles de communication</strong><span>Référentiel du cabinet</span></div></div><div class="os-source"><span class="os-document"><Picto nom="recette" taille={22}/></span><div><strong>Décision de l’équipe</strong><span>Contexte autorisé du dossier</span></div></div><p class="os-acces"><Picto nom="bouclier" taille={17}/> Les accès suivent les sources</p></div>
+    <div class="os-memoire" data-os-zone="1"><span class="os-memoire-signe" aria-hidden="true"><Picto nom="complexite" taille={32}/></span><p class="os-colonne-label">Mémoire collective</p><h2>Votre contexte,<br/>au même endroit.</h2><p class="os-question">« Comment préparer la reprise de ce dossier ? »</p><div class="os-extrait"><span>Contexte retrouvé</span><p>La procédure, les pièces attendues et la règle de réponse du cabinet.</p><span class="os-extrait-source"><Picto nom="feuilles" taille={14}/> Procédure de reprise</span></div><div class="os-memoire-tags"><span>Sources</span><span>Règles</span><span>Sessions</span></div></div>
+    <div class="os-travail" data-os-zone="2"><p class="os-colonne-label">Le travail avance</p><div class="os-mission"><span class="os-mission-icone"><Picto nom="flux" taille={22}/></span><p><strong>Préparer la reprise</strong><span>Agent IA · Comptabilité</span></p><span class="os-etat">Brouillon</span></div><div class="os-remise"><p class="os-colonne-label">Ce qui revient à l’équipe</p><p><Picto nom="coche" taille={16}/> Réponse préparée et sourcée</p><p><Picto nom="stop" taille={16}/> Une pièce à confirmer</p></div><div class="os-validation" data-os-zone="3"><span class="os-validation-icone"><Picto nom="main" taille={22}/></span><div><strong>Votre validation</strong><span>Avant tout envoi au client</span></div></div></div>
+  </div>
+  <div class="os-chemin" data-os-controls hidden aria-label="Explorer le fonctionnement de Memlia OS">{etapes.map((e,i)=><button type="button" data-os-step={i} aria-pressed={i===0?'true':'false'}><span class="os-chemin-numero">0{i+1}</span>{e.nom}<span class="os-chemin-fleche" aria-hidden="true">→</span></button>)}</div>
+  <div class="os-explications" aria-live="polite" aria-atomic="true">{etapes.map((e,i)=><article data-os-detail={i}><h3>{e.titre}</h3><p>{e.texte}</p></article>)}</div>
+</div>
+</> : null}
+<script>import '@/lib/solutions-scenes';</script>
+
+<style>
+.solution-apercu{height:100%;display:grid;align-content:center;gap:12px;font-size:var(--t-xs);color:var(--texte-2);padding:20px 24px;background:var(--surface-feuille)}
+.solution-apercu strong{display:block;color:var(--texte);font-weight:500}
+.solution-apercu>div{display:grid;gap:6px}
+.apercu-memoire{border-top:1px solid var(--ligne-douce);padding-top:12px;grid-template-columns:28px 1fr;align-items:center}
+.apercu-memoire span{grid-column:2}
+.modele-apercu>div{border-left:2px solid var(--accent);padding:6px 16px;background:var(--surface-page)}
+</style>

@@ -3,30 +3,11 @@
   "measuredAt": "2026-09-20",
   "source": "docs/strategy/site-v3/AUDIT-AUDIENCE-REQUETES-2026-09-20.md et docs/strategy/site-v3/mesures/registre-requetes.json ; corrections demandées par l’audit en ligne du 20/09/2026",
   "pages": {
-    "/outils-comptables-gratuits/comparateur-balances-comptables": { "query": "comparateur balance comptable", "descriptionLead": "Comparez deux balances CSV", "measuredAt": "2026-10-06", "source": "Fiche EC 05 et sondes G3 : aucune suggestion sur la primaire ; signal faible, aucun volume revendiqué. Calcul sur deux exports distinct d’un guide logiciel ou d’une prestation." },
-    "/automatisation/bulletins-controle": {
-      "query": "automatisation contrôle bulletins de paie cabinet comptable",
-      "descriptionLead": "Contrôles des bulletins de paie en cabinet",
+    "/outils-comptables-gratuits/comparateur-balances-comptables": {
+      "query": "comparateur balance comptable",
+      "descriptionLead": "Comparez deux balances CSV",
       "measuredAt": "2026-10-06",
-      "source": "Recette bulletins-controle et relevé du 06/10 : aucune suggestion commerciale, aucun volume revendiqué ; rapprochements inter-sources distincts du blog et du service paie."
-    },
-    "/integrations/cloture-ebp": {
-      "query": "clôture ebp",
-      "descriptionLead": "Préparez les contrôles de clôture EBP Comptabilité",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/cloture-ebp/autocomplete.json ; dix suggestions distinctes, aucun volume revendiqué. Contrôles avant fermeture distincts du guide Sage et de l’export FEC."
-    },
-    "/integrations/lettrage-ebp": {
-      "query": "lettrage ebp",
-      "descriptionLead": "Contrôlez les paires de lettrage EBP",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/lettrage-ebp/autocomplete.json ; neuf suggestions distinctes. Guide documentaire distinct du lettrage Sage et Cegid, sans volume revendiqué."
-    },
-    "/integrations/export-fec-ebp": {
-      "query": "export fec ebp",
-      "descriptionLead": "Préparez un export FEC EBP",
-      "measuredAt": "2026-10-06",
-      "source": "guides/recettes/export-fec-ebp/autocomplete.json ; sept suggestions distinctes, sans estimation de volume."
+      "source": "Fiche EC 05 et sondes G3 : aucune suggestion sur la primaire ; signal faible, aucun volume revendiqué. Calcul sur deux exports distinct d’un guide logiciel ou d’une prestation."
     },
     "/outils-comptables-gratuits/assistant-lettrage-comptable-local": {
       "query": "lettrage comptable excel",
@@ -45,35 +26,11 @@
       "measuredAt": "2026-10-06",
       "source": "C2 : docs/strategy/site-v3/cac/mesures/autocomplete-cac-2026-10-06.json ; réponse valide sans suggestion, aucun volume revendiqué. Copy E1 relue E2."
     },
-    "/automatisation/circularisation-cac": {
-      "query": "automatiser circularisation",
-      "descriptionLead": "Automatiser la circularisation",
-      "measuredAt": "2026-10-06",
-      "source": "C2 CAC et recette recadrée : autocomplétion sans suggestion ; sélection et pièces postérieures, distinctes des articles de méthode et du suivi gratuit. Aucun volume revendiqué."
-    },
     "/outils-comptables-gratuits/fusionner-fichiers-csv": {
       "query": "fusionner fichiers csv",
       "descriptionLead": "Fusionnez vos exports CSV localement",
       "measuredAt": "2026-10-06",
       "source": "Brief 02 EC vague 4 ; 8 suggestions, pas un volume mensuel"
-    },
-    "/automatisation/evaluation-transmission": {
-      "query": "automatisation dossier évaluation entreprise cabinet comptable",
-      "descriptionLead": "Confiez l’assemblage du dossier d’évaluation",
-      "measuredAt": "2026-10-06",
-      "source": "Recette evaluation-transmission et titres-intent-2026-10-06.json : aucune suggestion commerciale ni volume revendiqué ; pièces et versions résiduelles, sans méthode, valeur ni conseil automatique."
-    },
-    "/automatisation/secretariat-juridique": {
-      "query": "automatisation secrétariat juridique cabinet comptable",
-      "descriptionLead": "Suivez les échéances d’approbation et de dépôt",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et titres-intent-2026-10-06.json : aucune suggestion commerciale, aucun volume revendiqué ; suivi annuel résiduel hors outil, distinct des formalités ponctuelles."
-    },
-    "/automatisation/entrees-sorties-salaries": {
-      "query": "automatisation entrées sorties salariés cabinet comptable",
-      "descriptionLead": "Embauche ou départ annoncé hors portail",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et relevé du 06/10 : aucune suggestion commerciale, aucun volume revendiqué ; annonces hors portail distinctes des contrôles mensuels de paie."
     },
     "/outils-comptables-gratuits/bareme-heures-cac": {
       "query": "barème heures commissaire aux comptes",
@@ -100,7 +57,7 @@
     },
     "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
       "query": "bibliothèque prompts comptables",
-      "descriptionLead": "Choisissez un modèle de prompt comptable",
+      "descriptionLead": "Parcourez douze prompts comptables",
       "measuredAt": "2026-10-05",
       "source": "Brief 02 vague 3 ; sélection de modèles distincte du générateur et du guide. Sonde dans docs/qa/bibliotheque-prompts/demande-autocomplete.json ; aucun volume revendiqué."
     },
@@ -127,7 +84,7 @@
     },
     "/outils-comptables-gratuits/calculateur-roi-automatisation": {
       "query": "calculateur roi automatisation comptable",
-      "descriptionLead": "Comparez des scénarios d’automatisation",
+      "descriptionLead": "Estimez le ROI d’une automatisation",
       "source": "Brief 09 vague 3 ; hypothèses économiques, aucune promesse de gain ou de volume"
     },
     "/outils-comptables-gratuits/verificateur-fec-local": {
@@ -137,35 +94,31 @@
     },
     "/": {
       "query": "automatisation IA cabinet comptable",
-      "descriptionLead": "Votre cabinet"
+      "descriptionLead": "Robots comptables et agents IA Memlia",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/a-propos": {
       "query": "marque / preuve d’identité",
-      "descriptionLead": "À propos de Memlia"
+      "descriptionLead": "Memlia conçoit, déploie et maintient",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
+    },
+    "/agents-ia": {
+      "query": "agent ia comptable",
+      "descriptionLead": "Agent IA comptable, métier par métier",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md §6 et hub-agents-ia/MOTS-CLES.md : DataForSEO, 34 SERP Google FR du 15/10/2026, 50 recherches par mois ; rejeu de propriété sans conflit."
+    },
+    "/agents-ia/comptabilite": {
+      "query": "ia comptabilité",
+      "descriptionLead": "IA en comptabilité",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
     },
     "/automatisation-cabinet-comptable": {
-      "query": "automatisation tâches répétitives cabinet comptable",
-      "descriptionLead": "Toute tâche répétitive"
-    },
-    "/automatisation/factures-fournisseurs": {
-      "query": "factures fournisseurs des dossiers clients",
-      "descriptionLead": "Factures fournisseurs des dossiers clients"
-    },
-    "/automatisation/notes-de-frais": {
-      "query": "notes de frais des clients en cabinet",
-      "descriptionLead": "Notes de frais des clients en cabinet"
-    },
-    "/automatisation/paie": {
-      "query": "automatisation paie pôle social",
-      "descriptionLead": "Automatisation paie pôle social"
-    },
-    "/automatisation/rapprochement-bancaire": {
-      "query": "rapprochement bancaire en cabinet",
-      "descriptionLead": "Confiez la préparation du rapprochement bancaire"
-    },
-    "/automatisation/saisie-comptable": {
-      "query": "saisie comptable en cabinet",
-      "descriptionLead": "Saisie comptable en cabinet"
+      "query": "robot cabinet comptable",
+      "descriptionLead": "Robots pour cabinet comptable ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
     },
     "/blog": {
       "query": "index éditorial",
@@ -203,55 +156,23 @@
     },
     "/contact": {
       "query": "navigation transactionnelle de marque",
-      "descriptionLead": "Décrivez la tâche"
+      "descriptionLead": "Choisissez un robot",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/garanties": {
       "query": "preuve et réduction du risque",
-      "descriptionLead": "Garanties Memlia"
+      "descriptionLead": "Déploiement des robots et agents IA Memlia",
+      "source": "Charte v8 et COPY-CATALOGUE.md, décision de Kevin du 15/10 : catalogue, déploiement, adaptation et sur mesure au besoin."
     },
     "/glossaire": {
       "query": "glossaire comptable",
       "descriptionLead": "Glossaire comptable"
     },
     "/integrations": {
-      "query": "guides par environnement comptable",
-      "descriptionLead": "Trouvez les repères de contrôle"
-    },
-    "/integrations/rapprochement-bancaire-sage": {
-      "query": "rapprochement bancaire sage",
-      "descriptionLead": "Cadrez un rapprochement bancaire Sage 100"
-    },
-    "/integrations/lettrage-sage": {
-      "query": "lettrage sage",
-      "descriptionLead": "Cadrez le lettrage Sage 100"
-    },
-    "/integrations/dsn-sage": {
-      "query": "dsn sage",
-      "descriptionLead": "Cadrez les contrôles d’une DSN Sage"
-    },
-    "/integrations/bulletin-de-paie-sage": {
-      "query": "bulletin de paie sage",
-      "descriptionLead": "Préparez le contrôle d’un bulletin Sage"
-    },
-    "/integrations/saisie-comptable-sage": {
-      "query": "saisie comptable sage",
-      "descriptionLead": "Cadrez une préparation de saisie Sage 100"
-    },
-    "/integrations/cloture-sage": {
-      "query": "clôture sage",
-      "descriptionLead": "Structurez les contrôles de clôture Sage 100"
-    },
-    "/integrations/lettrage-cegid": {
-      "query": "lettrage cegid",
-      "descriptionLead": "Cadrez un lettrage Cegid"
-    },
-    "/integrations/dsn-silae": {
-      "query": "dsn silae",
-      "descriptionLead": "Cadrez les contrôles d’une DSN Silae"
-    },
-    "/integrations/bulletin-de-paie-silae": {
-      "query": "bulletin de paie silae",
-      "descriptionLead": "Cadrez le contrôle d’un bulletin Silae"
+      "query": "intégration logiciels cabinet comptable",
+      "descriptionLead": "Intégration des logiciels de votre cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md §6 et hub-agents-ia/MOTS-CLES.md : SERP Google FR du 15/10/2026, aucun volume Google Ads ; Google la lit comme « choisir ses logiciels », la page dit ce que nos agents reprennent dans les outils déjà choisis ; rejeu de propriété sans conflit."
     },
     "/methode": {
       "query": "méthode automatisation cabinet comptable",
@@ -283,23 +204,203 @@
       "query": "modèle rapprochement bancaire Excel gratuit",
       "descriptionLead": "Modèle de rapprochement bancaire Excel gratuit"
     },
-    "/automatisation/registres-obligations": {
-      "query": "automatisation suivi registres obligations cabinet comptable",
-      "descriptionLead": "RNE, BODACC, Sirene",
-      "measuredAt": "2026-10-06",
-      "source": "Recette recadrée et demande.json : deux requêtes commerciales sans suggestion, aucun volume revendiqué."
-    },
     "/outils-comptables-gratuits/checklist-pieces-comptables": {
       "query": "checklist pièces comptables",
       "descriptionLead": "Préparez une checklist personnalisable",
       "measuredAt": "2026-10-06",
       "source": "Fiche G3 EC 04 : primaire sans suggestion, besoin produit explicite ; sondes copiées dans docs/strategy/site-v3/outils-ec-vague-4. Aucun volume ni trafic revendiqué."
     },
-    "/automatisation/facture-electronique": {
-      "query": "automatisation flux facture électronique cabinet comptable",
-      "descriptionLead": "Clients sur une autre plateforme agréée",
-      "measuredAt": "2026-10-06",
-      "source": "commercial/recettes/facture-electronique/preuves/demande.json ; autocomplétion sans suggestion commerciale, aucun volume revendiqué."
+    "/automatisation/cfe": {
+      "query": "robot cfe cabinet comptable",
+      "descriptionLead": "Robot CFE ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/taxes-foncieres": {
+      "query": "robot collecte taxe fonciere",
+      "descriptionLead": "Robot taxes foncières ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/suivi-urssaf": {
+      "query": "robot suivi urssaf cabinet comptable",
+      "descriptionLead": "Robot URSSAF ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/dette-fiscale": {
+      "query": "robot dette fiscale situation paiement",
+      "descriptionLead": "Suivi des dettes fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/suivi-declarations-fiscales": {
+      "query": "robot suivi declarations fiscales cabinet",
+      "descriptionLead": "Suivi des déclarations fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/habilitations-fiscales": {
+      "query": "robot habilitations fiscales edi efi",
+      "descriptionLead": "Habilitations fiscales ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/rattachement-fiscal": {
+      "query": "robot rattachement fiscal siren",
+      "descriptionLead": "Rattachement fiscal ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/informations-legales-rne": {
+      "query": "robot rne informations legales cabinet",
+      "descriptionLead": "Robot RNE ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/messagerie-fiscale": {
+      "query": "robot messagerie fiscale impots",
+      "descriptionLead": "Messagerie fiscale ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/veille-bodacc": {
+      "query": "robot veille bodacc portefeuille",
+      "descriptionLead": "Veille BODACC ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/annuaire-facturation-electronique": {
+      "query": "robot annuaire facturation electronique",
+      "descriptionLead": "Annuaire de facturation électronique ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/attestation-fiscale": {
+      "query": "robot attestation regularite fiscale",
+      "descriptionLead": "Attestation de régularité fiscale ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/attestation-sociale": {
+      "query": "robot attestation vigilance urssaf",
+      "descriptionLead": "Attestations URSSAF ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/fiches-dgfip-facturation-electronique": {
+      "query": "robot fiches dgfip facturation electronique",
+      "descriptionLead": "Fiches DGFiP par dossier ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/mandats-plateforme-agreee": {
+      "query": "robot mandats plateforme agreee jesignexpert",
+      "descriptionLead": "Mandats de plateforme agréée ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/beneficiaires-effectifs": {
+      "query": "robot beneficiaires effectifs cabinet",
+      "descriptionLead": "Bénéficiaires effectifs ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/anonymisation-documents": {
+      "query": "robot anonymisation documents cabinet comptable",
+      "descriptionLead": "Anonymisation de documents ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/tableaux-de-bord-fec": {
+      "query": "robot tableaux bord fec power bi",
+      "descriptionLead": "Tableaux de bord à partir du FEC ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/collecte-ir": {
+      "query": "robot collecte declarations ir preremplies",
+      "descriptionLead": "Collecte IR ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/collecte-ifi": {
+      "query": "robot collecte declarations ifi historique",
+      "descriptionLead": "Collecte IFI ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/automatisation/situation-tva": {
+      "query": "robot situation tva avis solde",
+      "descriptionLead": "Situation TVA ",
+      "measuredAt": "2026-10-15",
+      "source": "Chantier hub robots : DataForSEO Google FR et décisions d’intention du 15/10/2026. Aucun volume supposé ; voir docs/strategy/site-v3/hub-robots/SEO.md."
+    },
+    "/agents-ia/juridique-fiscal": {
+      "query": "ia juridique expert comptable",
+      "descriptionLead": "IA juridique pour expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/finance": {
+      "query": "agent ia finance",
+      "descriptionLead": "Agent IA finance",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/commercial": {
+      "query": "agent ia commercial",
+      "descriptionLead": "Agent IA commercial",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/communication": {
+      "query": "newsletter expert comptable",
+      "descriptionLead": "Newsletter d’expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/relation-client": {
+      "query": "relation client cabinet comptable",
+      "descriptionLead": "Relation client en cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/gestion-cabinet": {
+      "query": "gestion cabinet comptable",
+      "descriptionLead": "Gestion de cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/rh-cabinet": {
+      "query": "ia rh",
+      "descriptionLead": "IA RH pour cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/protection-donnees": {
+      "query": "rgpd expert comptable",
+      "descriptionLead": "RGPD de l’expert-comptable",
+      "measuredAt": "2026-10-15",
+      "source": "docs/strategy/site-v3/hub-agents-ia/MOTS-CLES.md ; décisions d’intention et recherche du chantier agents IA du 15/10. Métier distinct des routines robots et des guides."
+    },
+    "/agents-ia/paie-social": {
+      "query": "ia paie",
+      "descriptionLead": "IA paie pour cabinet comptable",
+      "measuredAt": "2026-10-15",
+      "source": "Recherche agents IA du 15/10/2026, fiche Salomé et retrait autorisé de la page par pôle ; aucun volume revendiqué."
+    },
+    "/memoire-collective-cabinet-comptable": {
+      "query": "mémoire collective cabinet comptable",
+      "descriptionLead": "Mémoire collective du cabinet comptable",
+      "measuredAt": "2026-10-16",
+      "source": "docs/strategy/memoire-modeles-2026-10-16/CADRAGE.md ; recherche web qualitative, décision de service dédiée. Aucun volume disponible."
+    },
+    "/modele-ia-prive-entreprise": {
+      "query": "modèle IA privé entreprise",
+      "descriptionLead": "Modèle IA privé pour entreprise",
+      "measuredAt": "2026-10-16",
+      "source": "docs/strategy/memoire-modeles-2026-10-16/CADRAGE.md ; recherche web qualitative, décision de service dédiée. Aucun volume disponible."
     }
   }
 }

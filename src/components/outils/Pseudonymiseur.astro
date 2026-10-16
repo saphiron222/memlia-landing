@@ -3,15 +3,16 @@
 <div data-pseudo>
   <h2>Minimiser une copie, pas garantir l’anonymat</h2>
   <p>Choisissez ce qui est utile à la tâche. Supprimez le reste. Aucun fichier source n’est modifié ; la copie n’est ni un FEC fiscalement valide, ni une autorisation de partager des données avec une IA.</p>
-  <form>
+  <form method="dialog">
     <label for="pseudo-file">Fichier CSV, TSV ou FEC texte local</label>
     <input id="pseudo-file" type="file" accept=".csv,.tsv,.txt,.fec" aria-describedby="pseudo-help pseudo-error" />
     <p data-file-name>Fichier choisi : aucun.</p>
     <p id="pseudo-help">20 Mo maximum, 100 000 lignes, 128 colonnes, 65 536 caractères par cellule. Première ligne : en-têtes uniques. Choisissez le séparateur et l’encodage avant l’import.</p>
-    <div class="options">
+    <details data-outil-options><summary>Format du fichier : séparateur et encodage</summary>    <div class="options">
       <div><label for="pseudo-separator">Séparateur</label><select id="pseudo-separator"><option value=";">Point-virgule</option><option value="tab">Tabulation (TSV / FEC)</option><option value="|">Barre verticale</option><option value=",">Virgule</option></select></div>
       <div><label for="pseudo-encoding">Encodage</label><select id="pseudo-encoding"><option value="utf-8">UTF-8 (lecture stricte)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></div>
     </div>
+</details>
     <div class="actions"><button type="submit" class="btn btn-principal">Importer une copie</button><button type="button" data-example data-outil-action="exemple" class="btn btn-contour">Essayer le fichier fictif</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler l’import</button><button type="button" data-reset data-outil-action="reset" class="btn btn-contour">Tout réinitialiser</button></div>
     <p id="pseudo-error" data-error role="alert" hidden tabindex="-1"></p>
   </form>

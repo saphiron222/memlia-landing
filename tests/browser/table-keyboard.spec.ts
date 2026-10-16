@@ -1,6 +1,10 @@
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import { createRequire } from 'node:module';
-import routes from './table-keyboard.routes.json' with { type: 'json' };
+import {readFileSync} from 'node:fs';
+import articles from './table-keyboard.routes.json' with { type: 'json' };
+import {FICHES} from '../../src/data/specialistes';
+import {ROBOTS} from '../../src/data/robots';
+const routes=[...FICHES.filter(f=>f.publie).map(f=>`/agents-ia/${f.slug}`),...ROBOTS.map(r=>`/automatisation/${r.slug}`),...articles];
 
 const require = createRequire(import.meta.url);
 async function waitForTabScroll(page: Page) {
@@ -82,14 +86,14 @@ for (const width of [320, 375, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       expect((await page.goto(route))?.status()).toBe(200);
       await page.evaluate(() => document.fonts.ready);
-      const tables = page.locator('.article-corps table, .service-body-copy table');
+      const tables = page.locator('.article-corps table, .routine-demo table, .routine-comparaison table');
       expect(await tables.count()).toBeGreaterThan(0);
       for (let i = 0; i < await tables.count(); i++) {
         const table = tables.nth(i);
         const region = table.locator('..');
         await expect(region).toHaveAttribute('role', 'region');
         await expect(region).toHaveAttribute('tabindex', '0');
-        await expect(region).toHaveAttribute('aria-label', /Tableau .+/);
+        await expect(region).toHaveAttribute('aria-label', /Tableau .+|Quatre cas fictifs|Avec et sans|Comparaison avec et sans/);
         for (let step = 0; step < 150; step++) {
           if (await region.evaluate(el => el === document.activeElement)) break;
           await page.keyboard.press('Tab', { delay: 50 });
@@ -111,7 +115,7 @@ for (const width of [320, 375, 1440]) {
           const lastCell = table.locator('tr').first().locator('th, td').last();
           expect(await lastCell.evaluate(el => {
             const cell = el.getBoundingClientRect();
-            const box = el.closest('[data-table-scroll]')!.getBoundingClientRect();
+            const box = el.closest('[data-table-scroll],.routine-demo-table,.routine-comparaison')!.getBoundingClientRect();
             return cell.right <= box.right + 1 && cell.left < box.right;
           })).toBe(true);
           await page.keyboard.press('ArrowLeft');
@@ -136,7 +140,8 @@ for (const width of [320, 375, 1440]) {
         await page.keyboard.press('Tab');
         await waitForTabScroll(page);
       }
-      await page.addScriptTag({ path: require.resolve('axe-core/axe.min.js') });
+      // Évaluation par le banc de test : la CSP des fiches reste intégralement active.
+      await page.evaluate(readFileSync(require.resolve('axe-core/axe.min.js'),'utf8'));
       const violations = await page.evaluate(async () => {
         return (await (window as any).axe.run(document, { runOnly: ['scrollable-region-focusable'] })).violations;
       });

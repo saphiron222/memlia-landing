@@ -29,6 +29,7 @@ export async function verifyAgentMarkdown({ dist = 'dist', origin } = {}) {
     assert.match(markdown, /^# .+/m, `${path} : titre absent`);
     assert.ok(full.includes(`Source : ${url}\nVersion Markdown : https://memlia.fr${path}\n\n${markdown}`), `${path} : absent du texte intégral`);
     assert.ok(llms.includes(`https://memlia.fr${path}`), `${path} : absent de llms.txt`);
+    assert.ok(llms.includes(`](${url})`), `${url} : lien HTML absent de llms.txt`);
     assert.ok(html.includes(`<link rel="alternate" type="text/markdown" href="https://memlia.fr${path}">`), `${url} : alternate absent`);
     const escaped = markdown.replace(/&/g, '&amp;').replace(/</g, '&lt;');
     assert.deepEqual(auditHtml(`<main>${escaped}</main>`), [], `${path} : libellé de source interne`);

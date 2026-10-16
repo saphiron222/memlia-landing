@@ -1,0 +1,265 @@
+Browser tab: 8, Title: "Simulateur ROI · combien vous fait gagner la Suite Outils EC", URL: "https://outils-ec.fr/roi".
+1 AXWebArea Simulateur ROI · combien vous fait gagner la Suite Outils EC, URL: outils-ec.fr/roi
+	2 container nav
+		3 link Description: Outils EC, accueil, Value: outils-ec.fr/
+		4 link Description: Pilotage, Value: outils-ec.fr/#pilotage
+		5 link Description: Automatisations, Value: outils-ec.fr/#robots
+		6 link Description: Formules, Value: outils-ec.fr/#formules
+		7 pop up button Ressources
+			8 text 🧰
+			9 image
+		10 link Description: Démonstration, Value: outils-ec.fr/roi#
+	11 container
+		12 text SIMULATEUR
+		13 heading Votre formule et votre gain, en un curseur, Value: 1
+			14 text Votre  formule  et votre gain, en un curseur
+		15 text Le simulateur de ROI d'Outils EC estime le temps et le coût économisés par un cabinet d'expertise comptable selon son nombre de dossiers, gratuitement et instantanément. Le nombre de dossiers de votre cabinet détermine tout : la formule adaptée et le temps que la Suite vous fait gagner.
+		16 text Déplacez le curseur, le calcul est instantané.
+	17 container
+		18 heading Votre cabinet, Value: 2
+			19 text Votre cabinet
+		20 text Deux informations suffisent pour estimer votre formule et votre gain. Nombre de dossiers dossiers actifs du portefeuille
+		273 text 10
+		22 slider (settable, integer) Description: Nombre de dossiers, Value: 10, ID: sDossiers
+		23 text 0 100 250 500 Coût horaire chargé collaborateur, charges comprises
+		274 text 35 €/h
+		25 slider (settable, integer) Description: Coût horaire chargé, Value: 35, ID: sTaux
+		26 text 20 € 50 € 80 €
+		27 container
+			28 text Méthode :  pour chaque automatisation, nombre de dossiers × fréquence par an × temps manuel par dossier, valorisé à votre coût horaire.
+		29 button Plus de 500 dossiers ? Offre sur-mesure, on en parle, ID: surMesure
+			30 text Plus de 500 dossiers ?
+			31 text Offre sur-mesure, on en parle
+			32 image
+		116 container stack
+			117 text FORMULE RECOMMANDÉE
+			275 text Démarrage
+			276 text 0 à 100 dossiers
+			277 text 600 €
+			121 text par an HT
+			122 text postes illimités, tout inclus
+			123 text OÙ VOUS SITUEZ-VOUS
+			124 container tiers
+				125 container
+					126 text VOUS Démarrage 0 à 100 600 €
+				127 container
+					128 text Croissance 101 à 250 1 200 €
+				129 container
+					130 text Performance 251 à 500 1 800 €
+				131 container
+					132 text Sur-mesure 500 + Sur devis
+			133 image
+			134 container verdict
+				278 text À  10 dossiers , la formule  Démarrage  (600 €/an) est rentabilisée en  321 jours . Gain net estimé :  +83 €  par an.
+			136 text GAIN NET ANNUEL ESTIMÉ
+			279 text +83 €
+			138 text valeur du temps économisé, moins le prix de la formule
+			280 text 14 %
+			140 text RETOUR SUR INVESTISSEMENT
+			141 image
+			142 text HEURES ÉCONOMISÉES
+			143 container
+				281 text 20
+				145 text  h
+			146 text par an, sur tout le portefeuille
+			147 image
+			148 text VALEUR DU TEMPS
+			282 text 683 €
+			150 text économisé sur l'année
+			151 image
+			152 text RENTABILISÉ EN
+			153 container
+				283 text 321
+				155 text  j
+			156 text prix de la formule couvert
+			157 heading Tout est inclus dans votre formule, Value: 3
+				158 text Tout est inclus dans votre formule
+			159 text quel que soit votre palier Pilotage CFE Taxes Foncières URSSAF Messagerie Habilitations Infos Légales Dette Fiscale BODACC Centre de pilotage
+			160 heading Et le centre de pilotage, non chiffré ici, Value: 4
+				161 text Et le centre de pilotage, non chiffré ici
+			162 text Zéro échéance oubliée, dettes et procédures collectives détectées automatiquement. Votre devoir de conseil sécurisé, au-delà du seul temps gagné.
+			170 container
+				171 button (expanded) Voir le détail du calcul, automatisation par automatisation +, Secondary Actions: Collapse
+					172 text Voir le détail du calcul, automatisation par automatisation
+					173 text +
+				174 table
+					175 row
+						176 cell
+							177 text AUTOMATISATION
+						178 cell
+							179 text FRÉQ./AN
+						180 cell
+							181 text MIN./DOSSIER
+						182 cell
+							183 text HEURES/AN
+					184 container calcRows
+						284 row
+							285 cell
+								286 text 🧭 Pilotage
+							287 cell
+								288 text 4
+							289 cell
+								290 text 6
+							291 cell
+								292 text 4
+						293 row
+							294 cell
+								295 text 🏢 CFE
+							296 cell
+								297 text 1
+							298 cell
+								299 text 4
+							300 cell
+								301 text 0,7
+						302 row
+							303 cell
+								304 text 🏠 Taxes Foncières
+							305 cell
+								306 text 1
+							307 cell
+								308 text 4
+							309 cell
+								310 text 0,7
+						311 row
+							312 cell
+								313 text 🏦 URSSAF
+							314 cell
+								315 text 2
+							316 cell
+								317 text 8
+							318 cell
+								319 text 2,7
+						320 row
+							321 cell
+								322 text 📬 Messagerie
+							323 cell
+								324 text 12
+							325 cell
+								326 text 3
+							327 cell
+								328 text 6
+						329 row
+							330 cell
+								331 text 🔐 Habilitations
+							332 cell
+								333 text 2
+							334 cell
+								335 text 3
+							336 cell
+								337 text 1
+						338 row
+							339 cell
+								340 text ⚖️ Infos Légales
+							341 cell
+								342 text 1
+							343 cell
+								344 text 7
+							345 cell
+								346 text 1,2
+						347 row
+							348 cell
+								349 text 💰 Dette Fiscale
+							350 cell
+								351 text 4
+							352 cell
+								353 text 2
+							354 cell
+								355 text 1,3
+						356 row
+							357 cell
+								358 text 📜 BODACC
+							359 cell
+								360 text 12
+							361 cell
+								362 text 1
+							363 cell
+								364 text 2
+					266 row
+						267 cell
+							268 text Total
+						269 cell
+							365 text 20
+							271 text  h
+				272 container calcMeta
+					366 text Total  20 h  ×  35 €/h  =  683 €  de temps valorisé par an. Prix formule Démarrage :  600 €  HT par an.
+			166 link Description: Choisir Démarrage, Value: outils-ec.fr/#formules, ID: ctaChoose
+			167 button Réserver une démonstration
+			168 text Sans engagement, réponse le jour même.
+			169 text Chiffres indicatifs, fondés sur des hypothèses prudentes de temps manuel par tâche. La valeur du centre de pilotage n'est pas chiffrée ici. Tous les montants sont exprimés HT.
+	39 container enbref
+		40 heading Comment calculer le ROI de la Suite Outils EC ?, Value: 2
+			41 text Comment calculer le ROI de la Suite Outils EC ?
+		42 text Le simulateur de ROI Outils EC est un calculateur gratuit qui estime, en un curseur, la formule adaptée à votre cabinet d'expertise comptable et le gain net annuel apporté par la Suite. Il part de deux informations — le nombre de dossiers actifs de votre portefeuille et le coût horaire chargé d'un collaborateur — puis valorise le temps que les automatisations vous font gagner sur les tâches répétitives liées à impots.gouv.
+		43 heading Comment le gain annuel est-il calculé ?, Value: 3
+			44 text Comment le gain annuel est-il calculé ?
+		45 container
+			46 text Le gain est calculé automatisation par automatisation. Pour chaque robot, le simulateur multiplie le nombre de dossiers par la fréquence annuelle de la tâche et par le temps manuel évité à chaque passage. Le total d'heures est valorisé à votre coût horaire chargé, puis on retire le prix de la formule pour obtenir le gain net. Les hypothèses de temps sont prudentes et tous les montants sont exprimés HT. La valeur du 
+			47 link Description: centre de pilotage, Value: outils-ec.fr/robot-pilotage
+			48 text  — échéances suivies, dettes et procédures collectives détectées — n'est pas chiffrée dans ce calcul, car elle relève du devoir de conseil plus que du temps gagné.
+		49 heading Quelles formules et quels tarifs ?, Value: 3
+			50 text Quelles formules et quels tarifs ?
+		51 container
+			52 text La Suite Outils EC propose trois formules au forfait annuel, à postes illimités, calées sur la taille du portefeuille : Démarrage (jusqu'à 100 dossiers) à 600 € HT par an, Croissance (101 à 250 dossiers) à 1 200 € HT par an et Performance (251 à 500 dossiers) à 1 800 € HT par an. Au-delà de 500 dossiers, une offre sur-mesure est établie sur devis. Chaque formule donne accès à l'intégralité de la Suite, sans surcoût par utilisateur. Le détail des paliers est présenté sur la page 
+			53 link Description: Formules, Value: outils-ec.fr/#formules
+			54 text .
+		55 heading Qu'est-ce qui est inclus dans chaque formule ?, Value: 3
+			56 text Qu'est-ce qui est inclus dans chaque formule ?
+		57 container
+			58 text Toutes les automatisations sont incluses quel que soit le palier : 
+			59 link Description: CFE, Value: outils-ec.fr/robot-cfe
+			60 text , 
+			61 link Description: Taxes Foncières, Value: outils-ec.fr/robot-taxes-foncieres
+			62 text , 
+			63 link Description: URSSAF, Value: outils-ec.fr/robot-urssaf
+			64 text , 
+			65 link Description: Messagerie, Value: outils-ec.fr/robot-messagerie
+			66 text , 
+			67 link Description: Habilitations, Value: outils-ec.fr/robot-habilitations
+			68 text , 
+			69 link Description: Infos Légales, Value: outils-ec.fr/robot-infos-legales
+			70 text , 
+			71 link Description: Dette Fiscale, Value: outils-ec.fr/robot-dette-fiscale
+			72 text  et 
+			73 link Description: BODACC, Value: outils-ec.fr/robot-bodacc
+			74 text , ainsi que le centre de pilotage qui consolide tout le portefeuille depuis un seul écran. L'outil gratuit 
+			75 link Description: DataMask, Value: outils-ec.fr/robot-datamask
+			76 text  de pseudonymisation reste accessible sans abonnement. Pour les questions de licence, d'installation et de sécurité, consultez la 
+			77 link Description: FAQ, Value: outils-ec.fr/faq
+			78 text .
+	79 container
+		80 link Description: Outils EC, Value: outils-ec.fr/
+		81 text La Suite logicielle qui automatise les taches repetitives des experts-comptables et pilote tout le portefeuille depuis un seul ecran.
+		82 link Description: LinkedIn Outils EC, Value: linkedin.com/company/outils-ec/
+		83 heading LA SUITE, Value: 4
+			84 text LA SUITE
+		85 link Description: Centre de pilotage, Value: outils-ec.fr/#pilotage
+		86 link Description: Les robots, Value: outils-ec.fr/#robots
+		87 link Description: Comment ça marche, Value: outils-ec.fr/#etapes
+		88 link Description: Formules, Value: outils-ec.fr/#formules
+		89 link Description: Demonstration, Value: outils-ec.fr/roi#
+		90 heading AUTOMATISATIONS, Value: 4
+			91 text AUTOMATISATIONS
+		92 link Description: Taxes Foncières, Value: outils-ec.fr/#robots
+		93 link Description: CFE, Value: outils-ec.fr/#robots
+		94 link Description: URSSAF, Value: outils-ec.fr/#robots
+		95 link Description: Dette Fiscale, Value: outils-ec.fr/#robots
+		96 link Description: Habilitations, Value: outils-ec.fr/#robots
+		97 link Description: Rattachement, Value: outils-ec.fr/#robots
+		98 link Description: Infos Légales, Value: outils-ec.fr/#robots
+		99 link Description: Messagerie, Value: outils-ec.fr/#robots
+		100 heading RESSOURCES, Value: 4
+			101 text RESSOURCES
+		102 link Description: Simulateur ROI, Value: outils-ec.fr/roi
+		103 link Description: FAQ, Value: outils-ec.fr/faq
+		104 link Description: CFE 2026 : avis et dates, Value: outils-ec.fr/cfe-2026
+		105 link Description: Taxe foncière 2026, Value: outils-ec.fr/taxe-fonciere-2026
+		106 link Description: Notre histoire, Value: outils-ec.fr/histoire
+		107 link Description: DataMask, anonymisation gratuite, Value: outils-ec.fr/robot-datamask
+		108 text © 
+		109 text 2026
+		110 text  Outils EC. Tous droits reserves.
+		111 link Description: Mentions legales, Value: outils-ec.fr/mentions-legales
+		112 link Description: Confidentialite, Value: outils-ec.fr/politique-confidentialite
+		113 link Description: CGV, Value: outils-ec.fr/cgv
+
+The focused UI element is 25 slider (settable, integer) Description: Coût horaire chargé, Value: 35, ID: sTaux

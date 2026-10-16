@@ -1,9 +1,11 @@
+import { createHash } from 'node:crypto';
+import { OUTILS_DISPONIBLES } from '../../src/data/outils.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute } from '../../scripts/verify-page-contract.mjs';
+import { preuvesOutilInteractif, auditerComposition, auditerContratPages, auditerNavigationMobile, auditerServicesPublics, contratsIntention, contratsRoute, expectedSchema, sourceForRoute } from '../../scripts/verify-page-contract.mjs';
 
 function html({ route, h1, media, href, ogTitle = h1, headline = h1, description, attribution = true, footerOutils = true, noindex = false, schema = true }) {
   const url = `https://memlia.fr${route}`;
@@ -280,10 +282,13 @@ test('une collection indexable peut manifester qu’aucun média fonctionnel ne 
   }
 });
 
-test('les contrats explicites couvrent six routes noindex et trois collections indexables', () => {
+test('les contrats explicites couvrent les routes techniques, collections et les 21 outils interactifs', () => {
   const contrats = contratsRoute(process.cwd());
   assert.deepEqual([...contrats.keys()].sort(), [
     '/404',
+    '/apercu/direction-figurines',
+    '/apercu/methode-figurines',
+    '/automatisation-cabinet-comptable',
     '/blog',
     '/blog/commissariat-aux-comptes',
     '/contact/erreur',
@@ -291,8 +296,10 @@ test('les contrats explicites couvrent six routes noindex et trois collections i
     '/glossaire',
     '/mentions-legales',
     '/outils-comptables-gratuits/temoin-calcul-local',
+    '/outils-comptables-gratuits',
     '/politique-de-confidentialite',
-  ]);
+    ...OUTILS_DISPONIBLES.map(o=>`/outils-comptables-gratuits/${o.slug}`),
+  ].sort());
   assert.equal(contrats.get('/404').role, 'technical');
   assert.equal(contrats.get('/contact/erreur').role, 'transactional');
   assert.equal(contrats.get('/contact/merci').role, 'transactional');
@@ -567,4 +574,45 @@ test('les rubriques blog lisent leur intention canonique et leur vrai gabarit', 
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('les routes des agents IA trouvent leur gabarit et leur schéma : le hub et la fiche, jamais un repli', () => {
+  // Sans règle dédiée, le repli cherchait src/pages/agents-ia.astro (« source Astro introuvable ») et attendait une
+  // WebPage là où le hub émet une CollectionPage (annexe §4).
+  const root = '/depot';
+  assert.equal(sourceForRoute(root, '/agents-ia'), join(root, 'src/pages/agents-ia/index.astro'));
+  assert.equal(sourceForRoute(root, '/agents-ia/comptabilite'), join(root, 'src/pages/agents-ia/[metier].astro'));
+  assert.equal(sourceForRoute(root, '/agents-iaa'), join(root, 'src/pages/agents-iaa.astro'), 'un préfixe voisin garde le repli');
+  assert.deepEqual(expectedSchema('/agents-ia'), ['CollectionPage', 'ItemList', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/agents-ia/comptabilite'), ['WebPage', 'Service', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/agents-iaa'), ['WebPage']);
+});
+
+test('la page de compatibilité attend son fil d’Ariane ; un guide garde le sien', () => {
+  // Tâche 8 : outilsGraph émet CollectionPage, ItemList et BreadcrumbList ; un fil perdu doit rougir au contrat de page.
+  assert.deepEqual(expectedSchema('/integrations'), ['CollectionPage', 'ItemList', 'BreadcrumbList']);
+  assert.deepEqual(expectedSchema('/integrations/lettrage-sage'), ['TechArticle', 'WebPage', 'BreadcrumbList']);
+});
+
+test('le contrat d’intention du hub reprend la requête et l’ouverture de description de ses données', async () => {
+  const { HUB } = await import('../../src/data/specialistes.ts');
+  const contrat = contratsIntention(process.cwd()).get(HUB.chemin);
+  assert.equal(contrat?.query, HUB.requete);
+  assert.equal(contrat?.descriptionLead, HUB.descriptionLead);
+  assert.ok(HUB.description.startsWith(HUB.descriptionLead));
+});
+
+test('un outil sans capture doit conserver ses saisies, son action et sa propre image sociale intacte',()=>{
+ const {root}=fixture();
+ try {
+  const slug='calculateur-roi-automatisation',asset=`public/outils/social/${slug}.webp`,bytes=Buffer.from('fixture-social');
+  mkdirSync(join(root,'public/outils/social'),{recursive:true});mkdirSync(join(root,'docs/qa/outils-simples-2026-10-15'),{recursive:true});
+  writeFileSync(join(root,asset),bytes);writeFileSync(join(root,'docs/qa/outils-simples-2026-10-15/social-manifest.json'),JSON.stringify({records:[{slug,path:asset,width:1200,height:630,sha256:createHash('sha256').update(bytes).digest('hex')}]}));
+  const page={route:`/outils-comptables-gratuits/${slug}`,toolIds:[slug],toolControls:2,toolButtons:1,ogImages:[`https://memlia.fr/social/outils/social/${slug}.webp.jpg`]};
+  assert.deepEqual(preuvesOutilInteractif(root,page),[]);
+  assert.match(preuvesOutilInteractif(root,{...page,toolControls:0}).join(' '),/saisie et action/);
+  assert.match(preuvesOutilInteractif(root,{...page,toolIds:['autre']}).join(' '),/identité/);
+  assert.match(preuvesOutilInteractif(root,{...page,ogImages:['https://memlia.fr/social/autre.jpg']}).join(' '),/Open Graph/);
+  writeFileSync(join(root,asset),'périmé');assert.match(preuvesOutilInteractif(root,page).join(' '),/empreinte/);
+ } finally {rmSync(root,{recursive:true,force:true});}
 });

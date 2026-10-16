@@ -178,6 +178,13 @@ class CacArchitecture(unittest.TestCase):
             self.assertTrue(p['family'] and p['terrain'] and p['measure'])
             if p['state'] == 'retenue-non-publiee':
                 self.assertNotIn(p['url'], existing)
+            elif p['measure']['state'] == 'proprietaire-migre':
+                migration = json.loads((ROOT / 'config/migration-catalogues.json').read_text())
+                row = next(r for r in migration['routes'] if r['from'] == p['url'])
+                archive = json.loads((ROOT / row['archive']['path']).read_text())
+                self.assertEqual(p['query'], archive['primaryQuery'])
+                self.assertEqual(p['measure']['redirectTo'], row['to'])
+                self.assertNotIn(p['url'], existing)
             else:
                 self.assertEqual(p['query'], existing[p['url']]['query'])
 

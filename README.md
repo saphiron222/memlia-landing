@@ -1,16 +1,20 @@
 # Memlia — site Astro
 
-Site statique : compléments Excel sur mesure pour les cabinets. Sources dans `src/`,
+Site statique de Memlia : robots, agents IA, mémoire collective et modèle IA privé pour les cabinets. Sources dans `src/`,
 assets publics dans `public/`, sortie déployable uniquement dans `dist/`.
 
+La charte `.agents/product-marketing.md` v11 fait foi : catalogue robots/agents, adaptation et sur mesure au besoin ; intégrations transversales aux quatre services. Les prix validés restent définis dans `docs/strategy/pricing-2026-10-15/`.
+
 ## Installer et vérifier
+
+Sur le Mac, lancer uniquement les tests ciblés et `npm run regen:generated` lorsque les textes ou la navigation changent. Les suites complètes et la compilation de validation restent en CI. Les tests navigateur locaux utilisent `QA_URL` pour viser un serveur existant.
 
 Node.js 22 ou supérieur et Python 3 (bibliothèque standard uniquement). `npm ci`, puis `npx playwright install chromium`.
 
 - `npm run dev` : serveur de développement.
 - `npm run check` : typage Astro/TypeScript.
 - `npm run placeholders` : crée seulement les images manquantes ; ne remplace pas les images M4.
-- `npm run build` : construit quatre pages, génère les sitemaps et retire les briefs de la sortie.
+- `npm run build` : construit le site, génère les sitemaps et retire les briefs de la sortie (CI).
 - `npm run test:proof` : oracle Python standard sur `dist/` ; aucun paquet Python requis.
 - `npm run preview -- --host 127.0.0.1 --port 4321` : servir manuellement un build pour une revue locale.
 - `npm test` : construit puis sert le worktree sur un port isolé appartenant à Playwright ; `QA_URL=https://… npm test` cible explicitement une preview distante sans lancer de serveur local.

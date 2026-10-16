@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-depublication-scellee",
   "slug": "rapprochement-bancaire",
-  "sealedAt": "2026-09-20T14:51:21.091Z",
+  "sealedAt": "2026-10-15T14:28:20.659Z",
   "files": {
     "page": {
       "path": "src/content/services/rapprochement-bancaire.md",
-      "bytes": 5555,
-      "sha256": "da3843eef8b2860c2c5ab0cc7a401b70f8551460a52719596287abe70fe23c4d"
+      "bytes": 5558,
+      "sha256": "5aa8b85d4821148e54de87ce539d0b11aeeaf71ca00249d83604741fffb51745"
     },
     "manifest": {
       "path": "commercial/services/rapprochement-bancaire/manifest.json",
-      "bytes": 2519,
-      "sha256": "64c422115142dc71212f49ed1cf1dcd547cb71729939c2db2aec7472eb0ad8dc"
+      "bytes": 2522,
+      "sha256": "d63e4c57814b52793d7b73846e1deb034fc76df8dd0a6428c2932cfded74041f"
     },
     "recipe": {
       "path": "commercial/recettes/rapprochement-bancaire/recette.json",
@@ -29,10 +29,10 @@
       "bytes": 373,
       "sha256": "d0e64152ce86d5e9b9b5a661b14ad18a539b261041a31181cff4b102c2c1acab"
     },
-    "publication": {
-      "path": "commercial/services/rapprochement-bancaire/preuves/publication.json",
-      "bytes": 1419,
-      "sha256": "c5360da17e5e0636200d955fe42493d3ba2107040b6d521e4ab230322a15842f"
+    "depublication": {
+      "path": "commercial/services/rapprochement-bancaire/preuves/depublication.json",
+      "bytes": 553,
+      "sha256": "1e0c4b80fdef676f34ec83af756a5d39cad8b1fa0ac4f2de08ee58042992fd83"
     }
   }
 }

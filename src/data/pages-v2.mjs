@@ -1,21 +1,22 @@
+import { ROBOT_HUB } from './robots.ts';
 /**
  * Les cinq pages commerciales du site v2 — une seule source pour la navigation,
  * les titres, les chapeaux et les appels à l'action.
  *
- * La charte de message fait foi : .agents/product-marketing.md (v3, 17/09/2026). Ce fichier la transporte vers
+ * La charte de message fait foi : .agents/product-marketing.md (v11, 16/10/2026). Ce fichier la transporte vers
  * les gabarits, les tests et le maillage, pour qu'un libellé ne vive jamais à deux
  * endroits qui pourraient diverger.
  */
 export const PAGES_V2 = {
   service: {
-    chemin: '/automatisation-cabinet-comptable',
-    nav: 'Automatisation',
-    titre: 'Automatisation sur mesure pour cabinet comptable | Memlia',
-    description: "Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils. Livrée après recette, maintenue, sans siège à payer.",
-    h1: 'Automatisation pour cabinet comptable : votre règle écrite, dans vos outils.',
-    chapeau: "Nous prenons une tâche répétitive entière, de l’observation à la maintenance, dans les outils que vos équipes utilisent déjà. La règle est écrite avec le cabinet ; votre équipe garde chaque décision.",
-    ariane: 'Automatisation',
-    secondaire: { libelle: 'Voir comment se déroule la mission', href: '/methode' },
+    chemin: String(ROBOT_HUB.chemin),
+    nav: 'Robots comptables',
+    titre: String(ROBOT_HUB.titre),
+    description: String(ROBOT_HUB.description),
+    h1: String(ROBOT_HUB.h1),
+    chapeau: String(ROBOT_HUB.introduction),
+    ariane: 'Robots comptables',
+    secondaire: { libelle: 'Trouver votre premier robot', href: '#annuaire' },
   },
   methode: {
     chemin: '/methode',
@@ -23,7 +24,7 @@ export const PAGES_V2 = {
     titre: 'Comment se déroule une mission Memlia | Méthode',
     description: "Observer le geste réel, écrire la règle, éprouver sur des cas fictifs et livrer après votre recette. Une tâche prise en charge et maintenue dans vos outils.",
     h1: 'Observer. Écrire. Éprouver. Livrer.',
-    chapeau: "Nous prenons une tâche répétitive entière, de l’observation à la maintenance. Vous recevez une règle écrite dans vos mots et une automatisation dans vos outils existants. Votre équipe vérifie le résultat et garde la décision.",
+    chapeau: "Nous partons du résultat attendu pour choisir le service et écrire son périmètre. Robots et agents s’adaptent depuis le catalogue ; la mémoire collective relie vos sources ; le modèle privé suit des essais d’entraînement et une évaluation. Votre équipe vérifie le résultat avant la mise en service.",
     ariane: 'Méthode',
     secondaire: { libelle: 'Examiner les garanties', href: '/garanties' },
   },
@@ -31,19 +32,19 @@ export const PAGES_V2 = {
     chemin: '/garanties',
     nav: 'Garanties',
     titre: "Ce que Memlia garantit | Garanties",
-    description: "Garanties Memlia : arrêt dans le doute, aucune mesure des personnes, recette sur les refus et périmètre écrit avant de commencer.",
-    h1: 'Ce que nous garantissons, avant même de commencer.',
-    chapeau: "Une donnée absente, une règle ambiguë ou une exception ne disparaît jamais dans le traitement : l’automatisation s’arrête et vous présente le cas. Le périmètre, les accès et les validations sont écrits avant la mise en service.",
+    description: "Déploiement des robots et agents IA Memlia, mémoire collective et modèle privé : accès, recette, validations et maintenance définis avant la mise en service.",
+    h1: 'Vos services IA au travail. Vos décisions sous contrôle.',
+    chapeau: "Pour chaque service, nous définissons le résultat, les données utilisées, les accès et les validations. Votre équipe vérifie les critères de recette avant la mise en service. Les essais d’un modèle privé ont leur budget et leurs critères d’acceptation.",
     ariane: 'Garanties',
     secondaire: { libelle: 'Comprendre les essais', href: '/methode' },
   },
   apropos: {
     chemin: '/a-propos',
     nav: 'À propos',
-    titre: 'À propos de Memlia : le savoir-faire des cabinets, écrit et automatisé',
-    description: "À propos de Memlia : nous écrivons le savoir-faire des cabinets comptables et automatisons la part répétitive du travail, avec validation humaine.",
-    h1: 'Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner.',
-    chapeau: "Vos collaborateurs savent quelle pièce réclamer et quel écart vérifier. Nous écrivons ce savoir-faire avec eux, puis automatisons sa part répétitive dans vos outils existants. Votre cabinet garde la règle et la décision.",
+    titre: 'À propos de Memlia : les services IA pour votre cabinet',
+    description: "Memlia conçoit, déploie et maintient des robots, agents IA, mémoires collectives et modèles privés. Catalogue adapté et sur mesure selon le besoin.",
+    h1: 'Nous mettons l’IA au travail avec votre cabinet.',
+    chapeau: "Memlia conçoit des robots pour les routines et des agents IA pour les métiers. Memlia OS relie le savoir du cabinet ; le modèle privé apprend à partir d’exemples autorisés. Nous adaptons chaque service à votre organisation, avec une recette et une maintenance définies.",
     ariane: 'À propos',
     secondaire: { libelle: 'Comprendre la méthode', href: '/methode' },
   },
@@ -51,9 +52,9 @@ export const PAGES_V2 = {
     chemin: '/contact',
     nav: 'Contact',
     titre: 'Confier une première tâche | Contact Memlia',
-    description: "Décrivez la tâche que vos collaborateurs refont à la main : nous vous disons si elle se cadre, ce qu’il faut pour la prendre en charge, et à quel prix.",
-    h1: 'Quelle tâche vos collaborateurs refont-ils encore à la main ?',
-    chapeau: "Décrivez le geste, vos outils et le résultat attendu. Nous regardons comment prendre la tâche entière en charge dans vos outils existants. Votre équipe garde les décisions.",
+    description: "Choisissez un robot, un agent IA, une mémoire collective ou un modèle privé. Décrivez votre besoin pour cadrer le périmètre, la recette et le devis.",
+    h1: 'Que souhaitez-vous confier à Memlia ?',
+    chapeau: "Vous avez repéré un robot, un agent IA, Memlia OS ou le modèle privé ? Indiquez le résultat attendu et vos outils. Nous retenons un premier périmètre et préparons le devis. Pour les robots et agents, nous partons du catalogue et construisons sur mesure au besoin.",
     ariane: 'Contact',
     secondaire: { libelle: 'Écrire à Memlia', href: 'mailto:contact@memlia.fr' },
   },

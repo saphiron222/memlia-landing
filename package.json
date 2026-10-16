@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "python3 scripts/build-lock.py -- npm run build:locked",
-    "build:locked": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa && node scripts/generate-agent-markdown.mjs && node scripts/verify-agent-markdown.mjs && npm run test:positioning:export",
+    "build:locked": "npm run test:query-ownership && npm run blog:audit && npm run service:audit && npm run build:site && npm run resource:audit:qa && node scripts/generate-agent-markdown.mjs && node scripts/verify-agent-markdown.mjs && npm run test:migration-catalogues && npm run test:positioning:export",
     "test:query-ownership": "node scripts/verify-query-ownership.mjs && node --test tests/scripts/query-ownership.test.mjs",
     "build:site": "npm run guide:audit && astro build && npm run test:blog-contract && npm run test:service-design && npm run render:public && node scripts/verify-public-source-labels.mjs && npm run test:page-contract && npm run test:blog-title-intent && npm run test:blog-proof-render && npm run test:integration-proof-render && npm run test:proof && npm run test:lastmod && npm run test:images && npm run test:preview-export && npm run test:scripts",
     "preview": "astro preview",
@@ -20,7 +20,7 @@
     "regen:generated": "npm run resource:seal-surfaces && npm run render:public && npm run lastmod:sync && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa",
     "test:lastmod": "node scripts/sync-lastmod.mjs --check",
     "test:proof-render": "node scripts/render-proof-images.mjs --check",
-    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check",
+    "test:integration-proof-render": "node scripts/render-integration-proofs.mjs --check && node scripts/render-charte-ia-proof.mjs --check && node scripts/render-agents-proofs.mjs --check",
     "render:proofs": "node scripts/render-proof-images.mjs",
     "render:blog-proofs": "node scripts/render-blog-article-proofs.mjs",
     "test:blog-proof-render": "node scripts/render-blog-article-proofs.mjs --check && node scripts/replay-blog-recrutement-cases.mjs --check",
@@ -35,6 +35,7 @@
     "veille:outils": "node scripts/veille-outils.mjs",
     "test:veille": "node --test tests/scripts/veille-acces.test.mjs",
     "test:scripts": "node scripts/test-scripts.mjs",
+    "test:agents": "node --test tests/scripts/specialistes-partition.test.mjs tests/scripts/familles-hub.test.mjs tests/scripts/specialistes-copy.test.mjs tests/scripts/connecteurs.test.mjs tests/scripts/agents-rejeu-source.test.mjs",
     "test:indexability": "node scripts/verify-production-indexability.mjs",
     "test:blog-pipeline": "npm run test:blog-pipeline:unit && npm run test:blog-pipeline:render",
     "test:blog-pipeline:unit": "node --test tests/scripts/blog-pipeline.test.mjs tests/scripts/blog-pipeline-hardening.test.mjs tests/scripts/blog-published-authority.test.mjs",
@@ -73,7 +74,8 @@
     "guide:publier": "node scripts/service-forge.mjs --guide publier",
     "guide:audit": "node scripts/service-forge.mjs --guide audit",
     "test:guide-forge": "node --test tests/scripts/guide-forge.test.mjs tests/scripts/guide-proof-layout.test.mjs",
-    "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs"
+    "test:guide-render": "node --test tests/scripts/guide-forge-render.test.mjs",
+    "test:migration-catalogues": "node scripts/verify-catalogue-migration.mjs && node --test tests/scripts/migration-catalogues.test.mjs"
   },
   "engines": {
     "node": ">=22"

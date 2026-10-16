@@ -52,10 +52,15 @@ test('le témoin accueil ignore uniquement la diffusion canonique du master', ()
   ]) assert.notEqual(digest(changed), expected, changed);
 });
 
-// Témoin du système de page #166 après intégration de la copy EC relue (#181).
-// PERF-02 : seuls preload, rendition mobile et script du lecteur changent ; copy et structure conservées.
+// Témoin révisé le 16/10 pour le delta quatre services autorisé : quatre cartes,
+// sur mesure en continuité, intégrations transversales et textes d’orientation/conversion élargis.
+// Référence : docs/strategy/offre-quatre-services-2026-10-16/CADRAGE.md et commit 8c39776f.
+// Les onze sections, les scènes approuvées, cinq usages et onze FAQ restent contrôlés.
+// Correctif CI round3 : classes catalogue-carte-corps, carte-meta/titre/texte et corps à 24 px.
+// La copie et les quatre scènes restent identiques ; le témoin inclut ce retour au contrat commun.
+// Aucune nouvelle normalisation : tous les mutants de contenu/rendu ci-dessous restent actifs.
 function assertEcContent(html) {
-  const expected = '95da2034e375f282e274ec39a039dc01940b25717aed38b8ab31f1234a585d07';
+  const expected = '9b3c1e9ac525171d588f680d383d7d1150422d2318561041f7f12648d4e0fc19';
 
   // Le fil de PR109 s’ajoute sans modifier le témoin de contenu PERF-02.
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)]
@@ -79,13 +84,13 @@ function assertEcContent(html) {
   assert.equal(contentSha(main), expected);
 }
 
-test('le contenu de / conserve le témoin EC hors lien d’orientation CAC', () => {
+test('le contenu de / conserve le témoin EC quatre services hors lien d’orientation CAC', () => {
   assertEcContent(readFileSync('dist/index.html', 'utf8'));
 });
 
 test('les métadonnées de partage accueil utilisent la carte JPEG dédiée', () => {
   const html = readFileSync('dist/index.html', 'utf8');
-  const sharing = 'https://memlia.fr/social/assets/og-memlia.png.jpg';
+  const sharing = 'https://memlia.fr/social/illustrations/figurines/accueil-1200.webp.jpg';
   for (const attribute of ['property="og:image"', 'name="twitter:image"']) {
     assert.ok(html.includes(`<meta ${attribute} content="${sharing}">`), attribute);
   }
@@ -106,8 +111,8 @@ test('le témoin refuse une altération du contenu ou du rendu dans chacune des 
   const html = readFileSync('dist/index.html', 'utf8');
   const renderedSections = document => {
     const main = find(document, 'main');
-    const sheet = main.childNodes.find(node => node.attrs?.some(attr => attr.name === 'class' && attr.value === 'feuille'));
-    return sheet.childNodes.filter(node => node.tagName === 'section');
+    const sheet = main.childNodes.find(node => node.attrs?.some(attr => attr.name === 'class' && attr.value.split(' ').includes('feuille')));
+    const sections=[];const collect=node=>{if(node.tagName==='section')sections.push(node);for(const child of node.childNodes??[])collect(child)};collect(sheet);return sections;
   };
   assert.equal(renderedSections(parse(html)).length, Object.keys(sections).length);
   for (const [index, name] of Object.keys(sections).entries()) {
@@ -131,7 +136,7 @@ test('un vrai build Astro rend les onze sections avec le contenu fourni', { time
   try {
     mkdirSync(join(dir, 'src/pages'), { recursive: true });
     writeFileSync(join(dir, 'astro.config.mjs'), `import { defineConfig } from 'astro/config';\nexport default defineConfig({ vite: { resolve: { alias: { '@': ${JSON.stringify(src)} } } } });\n`);
-    const imports = Object.keys(sections).map(name => `import ${name} from ${JSON.stringify(`${src}/components/sections/${name}.astro`)};`).join('\n');
+    const imports = Object.keys(sections).map(name => `import ${name} from ${JSON.stringify(`${src}/components/${name==='Hero'?'editorial/HeroEditorial':'sections/'+name}.astro`)};`).join('\n');
     const cases = Object.entries(sections).map(([name, key]) => `<div id="default-${name}"><${name} /></div>\n<div id="explicit-${name}"><${name} contenu={ec.${key}} /></div>\n<div id="custom-${name}"><${name} contenu={{ ...ec.${key}, titre: ${JSON.stringify(`Texte fictif de contrôle ${name}`)} }} /></div>`).join('\n');
     writeFileSync(join(dir, 'src/pages/index.astro'), `---\n${imports}\nimport { contenuDe } from ${JSON.stringify(`${src}/data/accueil/contenu`)};\nimport assert from 'node:assert/strict';\nconst ec = contenuDe('ec');\nassert.equal(contenuDe('cac').hero.video, '/media/cac-r4/explainer-hero-45s.mp4');\nassert.throws(() => contenuDe('inconnue' as never), /indisponible/);\n---\n<html><head></head><body>${cases}\n<div id="faq-override"><Faq contenu={{ ...ec.faq, questions: [{id: 'fictif', question: 'Question fictive injectée ?', reponse: 'Réponse fictive injectée.'}] }} /></div>\n<div id="appel-priority"><AppelFinal contenu={{ ...ec.appelFinal, titre: 'Titre fourni par audience' }} titre="Priorité au titre de la page" /></div></body></html>`);
     const bin = JSON.parse(readFileSync('node_modules/astro/package.json', 'utf8')).bin.astro;

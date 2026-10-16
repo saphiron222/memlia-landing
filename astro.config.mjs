@@ -10,6 +10,9 @@ import { renderSocialImages } from './scripts/render-social-images.mjs';
 import responsiveProofs from './scripts/lib/responsive-proofs.mjs';
 
 
+import { ROBOTS } from './src/data/robots.ts';
+import { verifierCatalogueRobots } from './src/data/robots-controle.ts';
+verifierCatalogueRobots(ROBOTS);
 import { SITE, PAGES_NOINDEX } from './src/data/site.mjs';
 import { BLOG, lireArticlesPublies } from './src/data/blog.mjs';
 import { parseBlogPreviewSlugs } from './src/data/blog-visibility.mjs';
@@ -21,6 +24,7 @@ const BLOG_PREVIEW_SLUGS = new Set(parseBlogPreviewSlugs(process.env.BLOG_PREVIE
  * ne doit pas être découverte par le sitemap. La publication forge seule passe son statut à
  * `publie`; le filtre lit donc la même source que le layout au lieu d'inférer depuis la route.
  */
+const ROBOT_ROUTES = new Set(ROBOTS.map((robot) => `/automatisation/${robot.slug}`));
 const SERVICES_PUBLIES = new Set((() => {
   const dossier = './src/content/services';
   if (!existsSync(dossier)) return [];
@@ -51,6 +55,7 @@ const LASTMOD_PAGES = new Map((() => {
 
 export default defineConfig({
   site: SITE.url,
+  devToolbar: { enabled: false },
   trailingSlash: 'never',
   // `file` : `mentions-legales.html` servi par Cloudflare Pages à `/mentions-legales`
   // (clean URLs), donc canonical extensionless sans saut de redirection.
@@ -68,9 +73,10 @@ export default defineConfig({
       filenameBase: 'sitemap',
       filter: (page) => {
         const path = new URL(page).pathname.replace(/\/$/, '') || '/';
+        if (path.startsWith('/apercu/')) return false;
         if (PAGES_NOINDEX.includes(path)) return false;
         if (BLOG_PREVIEW_SLUGS.has(path.slice(`${BLOG.chemin}/`.length))) return false;
-        if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path)) return false;
+        if (path.startsWith('/automatisation/') && !SERVICES_PUBLIES.has(path) && !ROBOT_ROUTES.has(path)) return false;
 
         return true;
       },

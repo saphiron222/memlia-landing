@@ -9,7 +9,12 @@
  *   - le texte rendu est FIGÉ dans content-contract.json : `--adopt` l'enregistre après
  *     validation visuelle, `--check` refuse toute dérive sans rien écrire ;
  *   - un WebP par cadre, moins de 150 Ko, publié atomiquement avec son empreinte ;
- *   - un cadre marqué data-og produit en plus l'image sociale 1200 × 630 de sa page (og/).
+ *   - un cadre marqué data-og produit en plus l'image sociale 1200 × 630 de sa page (og/) ;
+ *   - un cadre marqué data-og-only ne publie que cette image sociale : aucun maître 1600 × 900 (une fiche d'agent IA
+ *     n'a pas de média propre, son rejeu est un tableau HTML ; annexe du hub, E4 et §5).
+ *
+ * Séries : site-v2 (défaut), fec, maturite, roi, agents-ia (`--series=agents-ia` : source docs/design/agents-ia-proof,
+ * manifeste docs/qa/agents-ia/, départ 49). `--source`, `--manifest`, `--start` restent prioritaires.
  */
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
@@ -23,15 +28,16 @@ const mode = process.argv.includes('--check') ? 'check' : process.argv.includes(
 const fec = process.argv.includes('--series=fec');
 const maturite = process.argv.includes('--series=maturite');
 const roi = process.argv.includes('--series=roi');
-assert.ok([fec, roi, maturite].filter(Boolean).length <= 1, 'Choisir une seule série');
-const series = maturite ? 'maturite-ia' : roi ? 'roi-automatisation' : fec ? 'fec-local' : 'site-v2';
+const agentsIa = process.argv.includes('--series=agents-ia');
+assert.ok([fec, roi, maturite, agentsIa].filter(Boolean).length <= 1, 'Choisir une seule série');
+const series = agentsIa ? 'agents-ia' : maturite ? 'maturite-ia' : roi ? 'roi-automatisation' : fec ? 'fec-local' : 'site-v2';
 const option = (name, fallback) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.split('=').slice(1).join('=') ?? fallback;
-const source = relative(process.cwd(), resolve(option('source', maturite ? 'docs/design/maturite-ia-proof' : roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs')));
+const source = relative(process.cwd(), resolve(option('source', agentsIa ? 'docs/design/agents-ia-proof' : maturite ? 'docs/design/maturite-ia-proof' : roi ? 'docs/design/roi-automatisation-proof' : fec ? 'docs/design/fec-local-proof' : 'docs/design/site-v2-proofs')));
 const contractPath = `${source}/content-contract.json`;
 const manifestPath = option('manifest', `docs/qa/${series}/proofs-manifest.json`);
 const targetRoot = option('target-root', 'public/proofs/v2');
 const unnumbered = process.argv.includes('--unnumbered');
-const startIndex = Number(option('start', maturite || roi ? '30' : fec ? '29' : '1'));
+const startIndex = Number(option('start', agentsIa ? '49' : maturite || roi ? '30' : fec ? '29' : '1'));
 assert.ok(Number.isInteger(startIndex) && startIndex > 0, 'Index de départ invalide');
 const output = `.qa/annotations/${series}-${mode}`;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -105,10 +111,12 @@ try {
     const webp = await sharp(png).webp({ quality: 90, effort: 6 }).toBuffer();
     assert.ok(webp.length < 150_000, `Preuve trop lourde : ${name} (${webp.length} octets)`);
     writeFileSync(`${output}/${name}.webp`, webp);
-    candidates.push({ target: `${targetRoot}/${name}.webp`, bytes: webp, source: `${source}/index.html#${id}` });
+    // Un cadre `data-og-only` ne publie aucun maître : seulement son image sociale, plus bas.
+    const ogOnly = await element.evaluate((root) => root.hasAttribute('data-og-only'));
+    if (!ogOnly) candidates.push({ target: `${targetRoot}/${name}.webp`, bytes: webp, source: `${source}/index.html#${id}` });
     records.push({ id, pngSha256: hash(png), webpSha256: hash(webp), bytes: webp.length });
     // Un cadre de tête porte aussi l'image sociale de sa page : 1200 × 630, recadrée au centre du 16:9.
-    if (await element.evaluate((root) => root.hasAttribute('data-og'))) {
+    if (ogOnly || await element.evaluate((root) => root.hasAttribute('data-og'))) {
       const og = await sharp(png).resize(1200, 675).extract({ left: 0, top: 22, width: 1200, height: 630 }).webp({ quality: 88, effort: 6 }).toBuffer();
       assert.ok(og.length < 150_000, `Image sociale trop lourde : ${name} (${og.length} octets)`);
       writeFileSync(`${output}/${name}-og.webp`, og);

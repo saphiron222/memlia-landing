@@ -1,12 +1,13 @@
 ---
 import Base from '@/layouts/Base.astro';
-import OutilHero from '@/components/sections/OutilHero.astro';
-import AppelFinal from '@/components/sections/AppelFinal.astro';
 import Picto from '@/components/Picto.astro';
-import ProofMedia from '@/components/ProofMedia.astro';
+import Figurine from '@/components/catalogue/Figurine.astro';
+import Button from '@/components/Button.astro';
+import { GROUPES_OUTILS, OUTILS_VITRINE } from '@/data/outils-vitrine';
+import '@/styles/catalogue/commun.css';
+import '@/styles/catalogue/hub.css';
 import { SITE } from '@/data/site.mjs';
-import { OUTIL_CATEGORIES, OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
-import { HUB_GRATUIT } from '@/data/outil-page';
+import { OUTILS_DISPONIBLES, OUTILS_HUB_PATH, outilPath } from '@/data/outils';
 
 const h1 = 'Outils comptables gratuits : calculer, vérifier et préparer';
 const title = `${h1} | Memlia`;
@@ -16,10 +17,6 @@ const titreHub = (outil: (typeof OUTILS_DISPONIBLES)[number]) => outil.slug === 
   ? 'Suivi de circularisation : préparer les lettres et les retours'
   : outil.h1;
 
-const categoriesPubliees = OUTIL_CATEGORIES.map((category) => ({
-  ...category,
-  tools: OUTILS_DISPONIBLES.filter((outil) => outil.categorie === category.id),
-})).filter((category) => category.tools.length > 0);
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -30,7 +27,7 @@ const graph = {
     {
       '@type': 'ItemList', '@id': `${url}#list`, name: 'Outils comptables gratuits',
       numberOfItems: OUTILS_DISPONIBLES.length,
-      itemListElement: OUTILS_DISPONIBLES.map((outil, index) => ({
+      itemListElement: OUTILS_VITRINE.map((outil, index) => ({
         '@type': 'ListItem', position: index + 1, name: titreHub(outil), url: `${SITE.url}${outilPath(outil)}`,
       })),
     },
@@ -45,60 +42,30 @@ const graph = {
 };
 ---
 
-<Base titre={title} titreSocial={h1} description={description} chemin={OUTILS_HUB_PATH} base="/" socialImage={{ url: `${SITE.url}/proofs/v2/og/24-outils-hub.webp`, width: 1200, height: 630, alt: 'Quatre outils comptables gratuits : marge, échéance, amortissement et rapprochement bancaire.' }} schema={graph}>
-
-  <div class="feuille outils-feuille">
-    <OutilHero
-      title={h1}
-      description="Choisissez la tâche que vous voulez préparer, puis ouvrez l’outil. Chaque page montre sa règle, sa source et ses limites. Vous gardez la validation et la décision pour votre dossier."
-      titleId="outils-titre"
-      gratuit={HUB_GRATUIT}
-      breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Outils comptables gratuits' }]}
-    />
-
-    {categoriesPubliees.map((category) => (
-      <section class="section outils-categorie" aria-labelledby={`categorie-${category.id}`}>
-        <div class="conteneur pile">
-          <div class="tete rv">
-            <h2 id={`categorie-${category.id}`}>{category.label}</h2>
-          </div>
-          <ul class="cartes rv-groupe">
-            {category.tools.map((outil) => (
-              <li class="carte rv" data-outil-card>
-                <div class="carte-corps">
-                  <h3 class="carte-titre">{titreHub(outil)}</h3>
-                  <p class="carte-texte">{outil.description}</p>
-                  <a class="carte-action carte-lien outil-carte-action" href={outilPath(outil)}>{outil.libelleAction}<Picto nom="fleche" taille={14} /></a>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    ))}
-
-    <div class="section">
-      <div class="conteneur">
-        <div class="outils-apercu rv" data-tool-media>
-          <ProofMedia id="v2/24-outils-hub" cadre />
-        </div>
-      </div>
-    </div>
-  </div>
-  <AppelFinal
-    id="hub-confier"
-    titre="La même tâche revient dans vos dossiers ?"
-    texte="Nous écrivons sa règle dans vos mots, puis nous prenons en charge la tâche entière dans vos outils existants. Vos collaborateurs gardent les validations et le jugement."
-    points={['Règle et limites écrites avec votre cabinet', 'Essais sur des données fictives, puis validation par votre équipe', 'Livraison et maintenance dans le périmètre convenu']}
-  />
-</Base>
-
+<Base titre={title} titreSocial={h1} description={description} chemin={OUTILS_HUB_PATH} socialImage={{url:`${SITE.url}/outils/social/hub.webp`,width:1200,height:630,alt:'Les outils gratuits Memlia pour préparer une consigne, un calcul ou un dossier.'}} schema={graph}>
+<div class="feuille catalogue-page catalogue-hub outils-feuille">
+<section class="hub-hero" data-tool-section="hero" aria-labelledby="outils-titre">
+  <p class="surtitre">Les outils gratuits Memlia</p>
+  <h1 id="outils-titre">Outils comptables gratuits : calculer, vérifier et préparer</h1>
+  <p class="hub-intro">Un prompt à préparer, un calcul à faire, un fichier à vérifier. Choisissez votre outil et obtenez un résultat à relire.</p>
+  <p class="outil-gratuit" data-gratuit>Gratuit, sans inscription.</p>
+  <Button href="#catalogue-outils" variante="lien" picto="chevron">Choisir un outil</Button>
+  <ul class="hub-trio" aria-hidden="true">{['comptabilite','informatique-outils','finance'].map(slug=><li><div class="hub-medaillon"><Figurine src={`/agents/${slug}`} taille={116} prioritaire/></div></li>)}</ul>
+</section>
+<section class="catalogue-section" id="catalogue-outils" aria-labelledby="catalogue-titre">
+  <div class="tete hub-annuaire-tete"><h2 id="catalogue-titre">De quoi avez-vous besoin ?</h2><p class="hub-total">{OUTILS_VITRINE.length} outils gratuits</p></div>
+  <fieldset class="hub-filtres"><legend class="sr-only">Filtrer les outils par besoin</legend>
+    <label><input type="radio" name="besoin-outil" value="essentiels" checked/><span>Les essentiels <span>({OUTILS_VITRINE.filter(o=>o.essentiel).length})</span></span></label>
+    <label><input type="radio" name="besoin-outil" value="tous"/><span>Tous <span>({OUTILS_VITRINE.length})</span></span></label>
+    {GROUPES_OUTILS.map(g=><label><input type="radio" name="besoin-outil" value={g.id}/><span>{g.nom} <span>({OUTILS_VITRINE.filter(o=>o.groupe===g.id).length})</span></span></label>)}
+  </fieldset>
+  <ul class="catalogue-grille outils-grille">{OUTILS_VITRINE.map(o=><li data-outil-card data-besoin={o.groupe} data-essentiel={o.essentiel?"oui":"non"}>
+    <a class="carte outil-carte" href={outilPath(o)}><span class="carte-icone"><Picto nom={o.picto} taille={24}/></span><span class="carte-meta">{GROUPES_OUTILS.find(g=>g.id===o.groupe)!.nom}</span><h3 class="carte-titre">{o.nom}</h3><p class="carte-texte">{o.texte}</p><span class="catalogue-action">Utiliser l’outil<Picto nom="fleche" taille={14}/></span></a>
+  </li>)}</ul>
+</section>
+<section class="catalogue-fin" id="hub-confier" aria-labelledby="confier-titre"><h2 id="confier-titre">Cette tâche revient chaque semaine ?</h2><p>Nos outils gratuits vous aident sur un besoin ponctuel. Pour une tâche récurrente, nous déployons et adaptons un robot ou un agent IA dans vos logiciels. Nous construisons aussi sur mesure.</p><div class="outils-catalogues"><a class="catalogue-action" href="/automatisation-cabinet-comptable">Explorer les robots<Picto nom="fleche" taille={14}/></a><a class="catalogue-action" href="/agents-ia">Rencontrer les agents IA<Picto nom="fleche" taille={14}/></a></div><Button href="/contact" variante="principal" picto="fleche">Confier une première tâche</Button></section>
+</div></Base>
 <style>
-  /*
-   * Système de page : une catégorie est une section (titre, puis ses cartes) au pas des sections,
-   * sans filet entre elles. Chaque outil est une carte du site (global.css) : la grille suit le
-   * nombre d'outils de la catégorie ; l'outil seul de sa catégorie garde la largeur d'une colonne.
-   */
-  .outils-feuille { min-height: 70vh; padding-bottom: var(--section-espace); }
-  .outils-apercu { max-width: 720px; }
+.outils-feuille .hub-hero{padding-top:40px;gap:16px}.outils-feuille .hub-trio{margin-top:8px;padding-bottom:0;gap:20px}.outils-feuille .hub-trio li,.outils-feuille .hub-medaillon{width:88px}.outils-feuille .hub-medaillon{height:88px}.outils-feuille .hub-trio li:nth-child(2){padding-top:12px}.outils-feuille #catalogue-outils{padding-top:48px}.outils-feuille .hub-hero h1{max-width:24ch}.outil-gratuit{color:var(--accent-texte);font-size:var(--t-sm);font-weight:600}.outil-carte{height:100%;align-items:start;text-decoration:none}.outil-carte .catalogue-action{margin-top:auto}.outils-catalogues{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+#catalogue-outils:has(input[value="essentiels"]:checked) [data-essentiel="non"],#catalogue-outils:has(input[value="ia"]:checked) [data-besoin]:not([data-besoin="ia"]),#catalogue-outils:has(input[value="calculs"]:checked) [data-besoin]:not([data-besoin="calculs"]),#catalogue-outils:has(input[value="dossiers"]:checked) [data-besoin]:not([data-besoin="dossiers"]){display:none}
 </style>

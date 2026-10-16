@@ -1,0 +1,63 @@
+{
+  "contract": "Deux accueils EC/CAC : quatre destinations dans une grille 2 × 2 sur bureau et une colonne mobile, catalogue avant sur mesure, intégrations transversales, design A et scènes approuvées conservés. Les cartes sont des liens natifs. Une seule décision principale : confier une première tâche.",
+  "targetViewports": [
+    "375x900",
+    "1440x900"
+  ],
+  "accessibility": {
+    "status": "pass",
+    "evidence": "Quatre liens focusables, outline visible et navigation Enter vérifiés par accueil-quatre-services.spec.ts. Contrastes des textes sur cartes blanches calculés avec composition alpha : voir contraste.json. Repli sans JavaScript des cartes et scènes complètes testé. Zones cliquables couvrant la carte ; aucun contrôle imbriqué."
+  },
+  "responsive": {
+    "status": "pass",
+    "evidence": "Captures EC et CAC examinées à 375 et 1440 : lignes, titres longs et CTA lisibles ; aucune coupe de texte. Grille 2 × 2 à 1440, colonne unique à 375, aucun débordement. Tests CAC complémentaires de 320 à 1920."
+  },
+  "contentStates": {
+    "loading": {
+      "status": "not-applicable",
+      "reason": "Le choix est rendu en HTML statique ; les figurines réservées en dimensions fixes sont décoratives."
+    },
+    "empty": {
+      "status": "not-applicable",
+      "reason": "Les quatre services sont des entrées éditoriales obligatoires, sans liste issue d’une recherche ni de données utilisateur."
+    },
+    "error": {
+      "status": "not-applicable",
+      "reason": "Aucun traitement asynchrone ni formulaire dans le composant de choix ; les quatre destinations retournent HTTP 200."
+    },
+    "partial": {
+      "status": "not-applicable",
+      "reason": "Les quatre services sont livrés ensemble dans le HTML ; leurs aperçus décoratifs ne portent aucune information exclusive."
+    },
+    "success": {
+      "status": "pass",
+      "evidence": "Les quatre services et la continuité catalogue/sur mesure sont visibles. Navigation au clavier vers Memlia OS et réponses HTTP 200 des quatre routes vérifiées sur EC et CAC."
+    },
+    "permission": {
+      "status": "not-applicable",
+      "reason": "Pages publiques sans connexion ni demande de permission ; aucun accès documentaire réel ni entraînement exécuté."
+    }
+  },
+  "renderedEvidence": [
+    {
+      "viewport": "375x900",
+      "artifact": "ec-375-services.png",
+      "observation": "Accueil expertise comptable : colonne unique et textes lisibles, quatre destinations, figurines existantes et aperçus des scènes OS/modèle, sur mesure en continuité."
+    },
+    {
+      "viewport": "1440x900",
+      "artifact": "ec-1440-services.png",
+      "observation": "Accueil expertise comptable : deux rangées équilibrées, quatre destinations, figurines existantes et aperçus des scènes OS/modèle, sur mesure en continuité."
+    },
+    {
+      "viewport": "375x900",
+      "artifact": "cac-375-services.png",
+      "observation": "Accueil commissariat aux comptes : colonne unique et textes lisibles, quatre destinations, figurines existantes et aperçus des scènes OS/modèle, sur mesure en continuité."
+    },
+    {
+      "viewport": "1440x900",
+      "artifact": "cac-1440-services.png",
+      "observation": "Accueil commissariat aux comptes : deux rangées équilibrées, quatre destinations, figurines existantes et aperçus des scènes OS/modèle, sur mesure en continuité."
+    }
+  ]
+}

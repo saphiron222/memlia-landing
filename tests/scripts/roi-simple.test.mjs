@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {calculerRoiSimple} from '../../src/lib/roi-simple.mjs';
+test('ROI neutre : oracle annuel et première année distincte',()=>{assert.deepEqual(calculerRoiSimple({heures:10,coutHoraire:40,budgetMensuel:100,miseEnService:500}),{heuresAnnuelles:120,valeurAnnuelle:480000,budgetAnnuel:120000,soldeAnnuel:360000,roi:300,premiereAnnee:310000});});
+test('ROI neutre : solde et ROI négatifs conservés',()=>{const r=calculerRoiSimple({heures:1,coutHoraire:10,budgetMensuel:100});assert.equal(r.soldeAnnuel,-108000);assert.equal(r.roi,-90);assert.equal(r.premiereAnnee,null);});
+test('ROI neutre : budget nul sans division ni ROI inventé',()=>{assert.equal(calculerRoiSimple({heures:0,coutHoraire:0,budgetMensuel:0}).roi,null);});
+test('ROI neutre : arrondi au centime mensuel et mise en service unique',()=>{const r=calculerRoiSimple({heures:0.1,coutHoraire:0.1,budgetMensuel:0.01,miseEnService:0.01});assert.equal(r.valeurAnnuelle,12);assert.equal(r.budgetAnnuel,12);assert.equal(r.premiereAnnee,-1);});
+test('ROI neutre : nombres absents, infinis, négatifs et hors borne refusés',()=>{for(const v of [-1,NaN,Infinity,undefined,'10',100001])assert.throws(()=>calculerRoiSimple({heures:v,coutHoraire:40,budgetMensuel:100}));for(const v of [-1,Infinity,'0'])assert.throws(()=>calculerRoiSimple({heures:1,coutHoraire:40,budgetMensuel:100,miseEnService:v}));});
+test('ROI public : aucun catalogue tarifaire ni comparateur importé',()=>{const s=readFileSync('src/components/outils/CalculateurRoi.astro','utf8');assert.doesNotMatch(s,/tarifs-memlia|ComparateurRoiAvance|budget-offre|crédits inclus|Socle|Ce que le tarif comprend|Comparer trois scénarios/);});

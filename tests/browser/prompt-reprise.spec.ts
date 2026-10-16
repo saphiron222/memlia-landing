@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 const ROUTE = '/outils-comptables-gratuits/generateur-prompt-expert-comptable';
 async function generate(page: import('@playwright/test').Page) {
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await page.locator('details.library > summary').click(); await ouvrirReglages(page);
   await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
   await page.getByLabel(/Je confirme que cette description/).check();
   await page.getByRole('button', { name: 'Assembler le prompt' }).click();
@@ -27,3 +27,5 @@ test('copie refusée : sélection du texte édité sans perte', async ({ page })
   expect(selection.start).toBe(0); expect(selection.end).toBe(selection.size);
   await expect(page.locator('[data-editor]')).toBeFocused();
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

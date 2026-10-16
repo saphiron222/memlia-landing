@@ -1,0 +1,164 @@
+---
+import Insecable from '@/components/Insecable.astro';
+import Frontiere from '@/components/sections/Frontiere.astro';
+import { ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « La règle écrite » d'une fiche (spec §2, section 8) : le panneau d'encre de la page, sa seule surface sombre. La
+ * frontière en trois colonnes, les conditions d'arrêt, puis « Ce qui ne part jamais sans vous » : chaque envoi du
+ * métier avec le geste humain qui le fait partir. L'agent prépare ; il n'envoie rien (charte §9 bis).
+ *
+ * Les couleurs du panneau sont des jetons locaux (`--panneau-*`) dérivés de l'encre et de la crème : aucun hex,
+ * contrastes mesurés à l'écran (texte secondaire ≥ 4,5:1 sur le fond).
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+const { regle } = gabaritDe(agent);
+---
+
+<section class="pv" aria-labelledby="regle-titre" data-agent-regle>
+  <div class="agent-regle">
+    <div class="agent-regle-tete">
+      <h2 id="regle-titre">{regle.titre}</h2>
+      <p><Insecable texte={regle.texte} /></p>
+    </div>
+    <Frontiere colonnes={regle.colonnes} lignes={fiche.frontiere} legende={regle.legende} />
+    <div class="agent-regle-bas">
+      <div class="agent-regle-bloc" data-agent-arrets>
+        <h3>{regle.arrets.titre}</h3>
+        <p class="agent-regle-intro">{regle.arrets.texte}</p>
+        <ol class="agent-regle-liste">
+          {fiche.arrets.map((arret) => <li><Insecable texte={arret} /></li>)}
+        </ol>
+      </div>
+      <div class="agent-regle-bloc" data-agent-envois>
+        <h3>{regle.envois.titre}</h3>
+        <ul class="agent-regle-liste agent-regle-envois">
+          {fiche.neJamaisSansVous.map(({ envoi, validation }) => (
+            <li><strong>{envoi}</strong> : <Insecable texte={validation} /></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agent-regle {
+    --panneau-fond: var(--encre);
+    --panneau-texte: var(--creme);
+    --panneau-texte-2: color-mix(in srgb, var(--creme) 80%, var(--encre));
+    --panneau-filet: color-mix(in srgb, var(--creme) 16%, var(--encre));
+    --panneau-repere: var(--vert-doux);
+    display: grid;
+    gap: var(--bloc-ecart);
+    padding: var(--espace-8) var(--espace-5);
+    border-radius: var(--cadre-rayon);
+    background: var(--panneau-fond);
+    color: var(--panneau-texte);
+  }
+  .agent-regle-tete {
+    display: grid;
+    gap: var(--tete-ecart);
+    max-width: 46rem;
+  }
+  .agent-regle-tete h2 {
+    font-size: var(--titre-section);
+    color: var(--panneau-texte);
+  }
+  .agent-regle-tete p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--panneau-texte-2);
+  }
+  .agent-regle-bas {
+    display: grid;
+    gap: var(--espace-10);
+  }
+  .agent-regle-bloc {
+    display: grid;
+    gap: var(--espace-3);
+    align-content: start;
+    padding-top: var(--espace-5);
+    border-top: 1px solid var(--panneau-filet);
+  }
+  .agent-regle-bloc h3 {
+    font-size: var(--titre-bloc);
+    color: var(--panneau-texte);
+  }
+  .agent-regle-intro {
+    margin: 0;
+    color: var(--panneau-texte-2);
+  }
+  .agent-regle-liste {
+    display: grid;
+    gap: var(--espace-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: arret;
+  }
+  .agent-regle-liste li {
+    position: relative;
+    padding-left: var(--espace-8);
+    color: var(--panneau-texte-2);
+    line-height: 1.55;
+  }
+  /* Les arrêts se numérotent (une liste de conditions qu'on cite par son rang) ; les envois portent une coche. */
+  ol.agent-regle-liste li {
+    counter-increment: arret;
+  }
+  ol.agent-regle-liste li::before {
+    content: counter(arret);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--panneau-filet);
+    border-radius: 50%;
+    font-size: var(--t-xs);
+    font-weight: 600;
+    color: var(--panneau-repere);
+  }
+  .agent-regle-envois li::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0.45em;
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid var(--panneau-repere);
+    border-bottom: 2px solid var(--panneau-repere);
+    transform: rotate(-45deg);
+  }
+  .agent-regle-envois strong {
+    font-weight: 600;
+    color: var(--panneau-texte);
+  }
+  @media (min-width: 48rem) {
+    .agent-regle {
+      padding: var(--espace-12) var(--espace-10);
+    }
+    .agent-regle-bas {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--espace-12);
+    }
+  }
+  @media (min-width: 64rem) {
+    .agent-regle {
+      padding: var(--espace-16);
+    }
+  }
+  @media (forced-colors: active) {
+    .agent-regle {
+      border: 1px solid CanvasText;
+    }
+  }
+</style>

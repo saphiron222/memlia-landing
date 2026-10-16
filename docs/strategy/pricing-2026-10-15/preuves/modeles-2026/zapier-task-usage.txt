@@ -1,0 +1,254 @@
+How is task usage measured in Zapier? – Zapier
+Skip to main content
+Refound your company for the AI era at ZapConnect 2026.
+Save your spot
+→
+My Requests
+My Requests
+Contact Support
+Contact Support
+Sign in
+Zapier
+Your Zapier account
+Billing
+How is task usage measured in Zapier?
+Updated
+August 21, 2026 11:57
+A task is any successful action that runs in Zapier. Only successful actions count toward your task usage. This article explains what counts and what does not.
+What counts toward task usage
+In Zap workflows, the following count as tasks:
+All successful
+action
+steps.
+Any successful step within an
+error handler path
+.
+Any previously successful steps that run again when you
+replay an entire Zap run
+.
+In a
+sub-Zap
+:
+Each action step within the sub-Zap.
+The Call a Sub-Zap action step in the Zap.
+The Return From a Sub-Zap action step in the Zap.
+In
+search actions
+, the number of tasks depends on your settings:
+Yes
+(proceed if nothing found): the search action uses 1 task.
+No
+: the search action uses no tasks.
+Step type
+Tasks used
+Action step
+1 task per successful run
+Step in an error handler path
+1 task per successful run
+Step that reruns during a full Zap replay
+1 task per successful run
+Action step inside a sub-Zap
+1 task per successful run
+Call a Sub-Zap step
+1 task per successful run
+Return from a Sub-Zap step
+1 task per successful run
+Search action set to proceed if nothing found
+1 task
+Search action set to not proceed if nothing found
+No tasks
+Some Zapier products have different task rates:
+In
+AI by Zapier
+, task usage depends on the model tier you select. Learn more about
+AI by Zapier model tier pricing
+.
+In
+Code by Zapier
+, steps use 1 task per run with standard runtime, and can use more tasks if you extend the runtime. Learn more about
+how Code by Zapier usage is measured
+.
+In
+Zapier Lead Router
+, each
+successful lead routed
+counts as 5 tasks.
+In
+Zapier MCP
+, each
+successful tool call
+counts as 2 tasks. Failed tool calls do not count toward your task usage.
+Product
+Task rate
+AI by Zapier
+Depends on the model tier you select
+Code by Zapier
+1 task per run with standard runtime; more tasks with extended runtime
+Zapier Lead Router
+5 tasks per successful lead routed
+Zapier MCP
+2 tasks per successful tool call
+Note
+Starting July 21, 2026, Lead Router usage shows up on the
+Task Usage and Zap History pages
+, attributed to the Zap that triggered it. Before this date, Lead Router usage did not appear on these pages, even though it still counted toward your task usage at the rate listed above.
+If you check a date range that spans July 21, 2026, a Zap that uses Lead Router might show a sudden jump in tasks. This jump means Zapier started displaying that usage, not that you used more tasks.
+What does not count toward task usage?
+In Zap workflows, the following do not count as tasks:
+All
+trigger
+steps.
+Any Filter or Paths step.
+All action steps that
+error or halt
+.
+All steps that do not run, either because of a previous filter or path condition, or because the Zap errored.
+In a sub-Zap, the
+Start a Sub-Zap
+trigger.
+Steps for
+Zapier Tables
+and
+Zapier Forms
+.
+Steps for the following Zapier apps:
+Formatter
+Delay
+Looping
+Sub-Zap app
+Digest
+Zapier Manager
+Storage
+Zapier Agents
+usage does not count as tasks. Agents use a separate activity quota. Learn more about
+how Zapier Agents usage is measured
+.
+Example
+You have a Zap that:
+Triggers when a new email with an attachment is received in Gmail.
+Uploads the attachment to Dropbox.
+Sends a direct message in Slack with a link to the newly uploaded file.
+Uploading the file to Dropbox and sending a message in Slack automates two tasks. If your Zap runs ten times, it will use 20 tasks.
+Zap triggers and tasks
+Zap triggers
+never use tasks. A Zap's first step is always a trigger. Polling triggers will poll an app or check for new trigger events at a regular interval, but these polls never use tasks.
+Example
+You have a Zap that polls Facebook every two minutes to check for new leads, then sends them to your CRM app. If your plan has a two-minute polling interval, Zapier will check Facebook for new leads five times in a ten-minute period (every two minutes). If the Zap finds two new leads during that 10-minute period, two tasks will be used when those leads are successfully sent to the CRM.
+If a Zap checks an app every two minutes, it will complete over 20 thousand polls per month. Zapier does not charge for these events.
+Task limits and pricing
+The number of tasks your account can use depends on the
+pricing plan
+you select. Once your plan reaches its task limit, you'll be
+charged separately for any extra tasks
+.
+Zapier will email you once you reach the plan's task limit and start using pay-per-task billing. After this, you will be notified by email:
+When you reach 80% of the pay-per-task billing limit.
+When you reach 100% of pay-per-task billing tasks, equivalent to 3x your selected plan's task limit.
+Once you reach that limit, all other tasks will be held until the end of your
+billing cycle
+. If you do not want to wait to
+replay held Zap runs
+, you can
+upgrade your plan
+.
+Plans without pay-per-task billing
+If your plan does not include
+pay-per-task billing
+or if you have turned it off, when your plan reaches its task limit Zapier will
+hold any new Zap runs
+until your billing cycle resets.
+Zapier will also send you emails:
+When you reach 80% of your task limit.
+When you reach 100% of your task limit.
+You can
+replay held Zap runs
+and continue using Zapier MCP and Lead Router once one of these happens:
+Your billing cycle resets.
+You
+upgrade your plan
+.
+You
+enable pay-per-task billing
+.
+All these actions reset your usage and let you continue using tasks.
+Monitor task usage
+Task usage is displayed in different areas for different users and purposes. Learn more about
+where to find your task usage
+.
+Admins, Super Admins, and Owners on Team and Enterprise plans can export a CSV breakdown of task usage per account member. Learn how to
+export member task usage data
+.
+You can review all the tasks your Zap workflows attempted in your
+Zap history
+. Learn more about
+what information is available in Zap history
+.
+If you're on an Enterprise plan, you can also
+set up usage alerts
+to get notified when task usage exceeds a threshold you define.
+Was this article helpful?
+Yes
+No
+181 out of 279 found this helpful
+Zapier Early Access
+Get access to tomorrow’s no-code automation products and features today. By opting-in to our current and future pre-release products, you’ll work directly with the Zapier product team and join a dedicated community of automation enthusiasts.
+Learn more about Zapier Early Access
+Contact Support
+Get help from Zapier Support.
+Contact Support
+Visit Community
+Find answers and inspiration.
+Visit Community
+Hire an Expert
+Leverage professionals across the globe ready to help.
+Hire an Expert
+Zapier Learn
+Take courses designed to help you become a better Zapier user.
+Zapier Learn
+Pricing
+Help
+Developer Platform
+Press
+Jobs
+Enterprise
+Templates
+App Integrations
+Partners Program
+Follow us
+Zapier
+©
+2026
+Zapier Inc.
+Manage cookies
+Legal
+Privacy
+https://zapier.com/app/get-help
+/hc/theming_assets/01JZR2ZK3D3Y0ADNZ8F0CV4D6K
+Contact Support
+Get help from Zapier Support.
+custom
+https://community.zapier.com/
+/hc/theming_assets/01JZR2ZKSCWGDD7D04T9RZX68G
+Visit Community
+Find answers and inspiration.
+custom
+https://zapier.com/experts
+/hc/theming_assets/01JZR2ZM3MWFKK8WDP5T7GQQK2
+Hire an Expert
+Leverage professionals across the globe ready to help.
+custom
+https://learn.zapier.com/
+/hc/theming_assets/01JZR2ZK6BXT3PS08JX85FNJDN
+Zapier Learn
+Take courses designed to help you become a better Zapier user.
+custom
+https://zapier.com/blog/
+/hc/theming_assets/01JZR2ZN61HHQ1GWY0XHAF6NAE
+Zapier Blog
+Read the Zapier blog for tips on productivity, automation, and growing your business.
+custom
+https://go.zapier.com/webinars-on-demand/
+/hc/theming_assets/01JZR2ZPTH4JAK7CPCP0AD12Q7
+Zapier Webinars
+Learn about automation anytime, anywhere with our on-demand webinar library.
+quick start guide, troubleshoot zaps with AI, map fields

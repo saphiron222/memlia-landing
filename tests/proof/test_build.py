@@ -5,6 +5,7 @@ import os
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import subprocess
 import unittest
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -16,8 +17,9 @@ ROOT = Path(__file__).resolve().parents[2]
 DIST = ROOT / 'dist'
 SITE = 'https://memlia.fr'
 # Les cinq pages commerciales du site v2 ont rejoint le site le 16/09/2026.
-PAGES_FIXES = ['404', 'a-propos', 'automatisation-cabinet-comptable', 'blog', 'commissaires-aux-comptes', 'contact', 'garanties',
-               'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
+# Le hub des agents IA a rejoint les pages fixes le 15/10/2026 (plan du hub, tâche 4).
+PAGES_FIXES = ['404', 'a-propos', 'agents-ia', 'automatisation-cabinet-comptable', 'blog', 'commissaires-aux-comptes', 'contact',
+               'garanties', 'glossaire', 'index', 'integrations', 'mentions-legales', 'methode', 'outils-comptables-gratuits',
                'politique-de-confidentialite']
 def public_integrations():
     """Inventaire source, indépendant du rendu et de l'audit de la forge.
@@ -89,6 +91,14 @@ def public_integrations():
         generated.add(f'integrations/{slug}')
         slugs.add(slug)
     assert set(proofs) == generated, 'Métadonnées de preuve orphelines'
+    # Décision Kevin du 15/10 : archives scellées conservées, routes retirées du site.
+    migration = ROOT / 'config/migration-catalogues.json'
+    if migration.exists():
+        decision = json.loads(migration.read_text())
+        assert decision.get('version') == 1 and decision.get('authorizedBy') == 'Kevin Kitanga'
+        retired = {row['from'].removeprefix('/integrations/') for row in decision['routes'] if row['type'] == 'guide'}
+        assert retired <= slugs, 'Guide retiré absent des archives sources'
+        slugs -= retired
     return slugs
 
 INTEGRATION_PAGES = {
@@ -184,6 +194,27 @@ def integration_pages():
     if len(expected) != len(set(expected)) or sealed != set(expected):
         raise ValueError('Inventaire source incomplet ou dupliqué')
     return expected
+
+
+def agent_pages():
+    """Fiches d'agent construites : les cartes qui mènent à une fiche et dont `publie` est vrai (R19, 15/10/2026).
+
+    Lues dans la source unique, `src/data/specialistes.ts`, importée telle quelle par Node : ses imports relatifs
+    empêchent la transpilation isolée de `source_export`. Une fiche publiée absente du rendu, ou une fiche rendue
+    sans être publiée, fait échouer l'oracle ; le hub lui-même est une page fixe (`agents-ia/index.astro`).
+    """
+    script = ('const m = await import(process.argv[1]); '
+              'console.log(JSON.stringify(m.FICHES.filter((agent) => agent.publie === true).map((agent) => agent.slug)));')
+    result = subprocess.run(
+        ['node', '--experimental-strip-types', '--input-type=module', '-e', script,
+         (ROOT / 'src/data/specialistes.ts').resolve().as_uri()],
+        check=True, capture_output=True, text=True, cwd=ROOT,
+    )
+    slugs = json.loads(result.stdout)
+    assert isinstance(slugs, list), 'FICHES illisible'
+    assert all(isinstance(slug, str) and re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug) for slug in slugs), 'slug de fiche invalide'
+    assert len(slugs) == len(set(slugs)), 'fiche en double'
+    return slugs
 
 
 def assert_v2_proof_inventory(proof):
@@ -355,6 +386,11 @@ class SourceInventoryRegression(unittest.TestCase):
             (root / 'src/data/guide-proofs.generated.json').write_text('{}')
             for slug in integrations:
                 (dist / 'integrations' / f'{slug}.html').write_text('<html lang="fr"><h1>Guide</h1></html>')
+            # Une fiche publiée est attendue au rendu ; une fiche à venir ne l'est pas.
+            (root / 'src/data/specialistes.ts').write_text(
+                "export const FICHES = [{ slug: 'fiche-fictive', publie: true }, { slug: 'fiche-a-venir', publie: false }];")
+            (dist / 'agents-ia').mkdir()
+            (dist / 'agents-ia/fiche-fictive.html').write_text('<html lang="fr"><h1>Fiche</h1></html>')
             proof = BuildProof('test_pages_one_h1_french')
             with patch.dict(globals(), ROOT=root, DIST=dist, PREVIEW_ARTICLES=set()):
                 proof.test_pages_one_h1_french()
@@ -363,6 +399,11 @@ class SourceInventoryRegression(unittest.TestCase):
                     proof.test_pages_one_h1_french()
                 (dist / 'intrus.html').rename(dist / 'page-fictive.html')
                 (dist / 'integrations/integration-fictive.html').rename(dist / 'integrations/intrus.html')
+                with self.assertRaises(AssertionError):
+                    proof.test_pages_one_h1_french()
+                (dist / 'integrations/intrus.html').rename(dist / 'integrations/integration-fictive.html')
+                proof.test_pages_one_h1_french()
+                (dist / 'agents-ia/fiche-fictive.html').rename(dist / 'agents-ia/fiche-a-venir.html')
                 with self.assertRaises(AssertionError):
                     proof.test_pages_one_h1_french()
 
@@ -441,7 +482,9 @@ class BuildProof(unittest.TestCase):
         expected_integrations = integration_pages()
         self.assertEqual(len(expected_integrations), len(set(expected_integrations)), 'slugs sources dupliqués')
         self.assertEqual({page.stem for page in integrations}, set(expected_integrations))
-        for page in pages + articles() + integrations:
+        agents = sorted((DIST / 'agents-ia').glob('*.html'))
+        self.assertEqual({page.stem for page in agents}, set(agent_pages()), 'fiches d’agent rendues ≠ fiches publiées')
+        for page in pages + articles() + integrations + agents:
             doc = Document(page)
             self.assertEqual(len(doc.select('h1')), 1, page.name)
             self.assertEqual(doc.select('html')[0]['lang'], 'fr')
@@ -489,9 +532,15 @@ class BuildProof(unittest.TestCase):
         for service in (ROOT / 'src/content/services').glob('*.md'):
             if re.search(r'^status:\s*publie\s*$', service.read_text(), re.MULTILINE):
                 services_publies.add(f'{SITE}/automatisation/{service.stem}')
+        migration = json.loads((ROOT / 'config/migration-catalogues.json').read_text())
+        services_publies -= {SITE + row['from'] for row in migration['routes']}
+        script = 'const { ROBOTS } = await import(process.argv[1]); console.log(JSON.stringify(ROBOTS.map(r=>r.slug)));'
+        robots = json.loads(subprocess.run(['node', '--experimental-strip-types', '--input-type=module', '-e', script,
+            (ROOT / 'src/data/robots.ts').resolve().as_uri()], capture_output=True, text=True, check=True).stdout)
+        services_publies |= {f'{SITE}/automatisation/{slug}' for slug in robots}
         attendues = {f'{SITE}/' if slug == 'index' else f'{SITE}/{slug}'
                      for slug in fixed_pages(nested=True)
-                     if f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
+                     if not slug.startswith('apercu/') and f'/{slug}' not in source_export(ROOT, 'src/data/site.mjs', 'PAGES_NOINDEX')} | {
                      f'{SITE}/outils-comptables-gratuits/seuil-signification-audit',
                      f'{SITE}/outils-comptables-gratuits/suivi-circularisation',
                      f'{SITE}/outils-comptables-gratuits/bibliotheque-prompts-comptables',
@@ -514,7 +563,7 @@ class BuildProof(unittest.TestCase):
                          f'{SITE}{route}' for route in set(BLOG_RUBRIQUES.values())
                      } | {f'{SITE}/blog/{a.stem}' for a in published_articles} | {
                          f'{SITE}/integrations/{slug}' for slug in integration_pages()
-                     } | services_publies
+                     } | {f'{SITE}/agents-ia/{slug}' for slug in agent_pages()} | services_publies
         self.assertEqual(set(pages), attendues)
         self.assertNotIn(f'{SITE}/blog/rss.xml', pages)
         self.assertNotIn(f'{SITE}/outils-comptables-gratuits/temoin-calcul-local', pages)
@@ -605,8 +654,9 @@ class BuildProof(unittest.TestCase):
                     if target.startswith('/'):
                         self.assertTrue((DIST / target.lstrip('/')).is_file(), f'{page.name}: {target}')
                         seen.add(target)
-        # M4-R3 : 9 preuves originales ; les dérivés Blog ne sont chargés que pour le candidat explicitement rendu.
-        self.assertTrue({f'/proofs/{name}.webp' for name in ['01-flux', '02-repetition', '03-controle', '04-observer', '05-cadrer', '06-eprouver', '07-livrer', '08-integration', '09-garanties']} <= seen)
+        # Direction figurines A validée le 15/10 : les deux catalogues alimentent les médias.
+        self.assertTrue(any(path.startswith('/robots/') for path in seen))
+        self.assertTrue(any(path.startswith('/illustrations/figurines/') for path in seen))
         self.assertGreaterEqual(len(seen), 24 if PREVIEW_ARTICLES else 18)
 
     def test_placeholders_and_briefs(self):
@@ -668,11 +718,14 @@ class BuildProof(unittest.TestCase):
         ids = {attrs['id'] for _, attrs in Document(DIST / 'index.html').tags if 'id' in attrs}
         llms = (DIST / 'llms.txt').read_text()
         anchors = re.findall(r'https://memlia.fr/#([a-z0-9-]+)', llms)
-        self.assertGreaterEqual(len(anchors), 4)
+        # Le llms décrit désormais les trois catalogues plutôt que les anciennes ancres de l’accueil.
+        for route in ['automatisation-cabinet-comptable', 'agents-ia', 'integrations', 'outils-comptables-gratuits']:
+            self.assertIn(f'https://memlia.fr/{route})', llms)
         self.assertEqual(set(anchors) - ids, set())
-        # Chaque article publié est déclaré dans llms.txt, et rien d'autre ne l'est.
-        declares = set(re.findall(r'https://memlia.fr/blog/([a-z0-9-]+)\)', llms))
-        self.assertEqual(declares, {a.stem for a in articles()})
+        # Ce contrat intervient avant l'export Markdown final. Celui-ci ajoute les 87 URL
+        # du sitemap et vérifie chacune dans verify-agent-markdown.mjs, articles compris.
+        self.assertIn('https://memlia.fr/blog)', llms)
+        self.assertIn('https://memlia.fr/blog/rss.xml', llms)
 
     def test_structured_data_no_unreleased_features(self):
         html = (DIST / 'index.html').read_text()

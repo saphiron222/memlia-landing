@@ -1,0 +1,137 @@
+---
+import Lockup from '@/components/Lockup.astro';
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import { HUB } from '@/data/specialistes';
+
+/**
+ * « Derrière chaque agent, nous » (spec §1, cadrage §10, charte §9 bis) : à la place d'une figurine, le lockup Memlia ;
+ * à la place d'une équipe de personas, les cinq gestes de la charte, dans leur ordre, puis le lien vers la méthode.
+ *
+ * Pas une carte (une carte est une destination entière, système de page § 4) : un plateau pleine largeur. Les gestes
+ * se numérotent parce qu'ils sont une suite ; ils passent en rangée dès 64 rem, empilés avant.
+ */
+const { titre, texte, gestes, action } = HUB.derriere;
+---
+
+<section class="pv" aria-labelledby="derriere-titre" data-derriere>
+  <div class="agent-derriere rv">
+    <div class="agent-derriere-tete">
+      <span class="agent-derriere-marque" aria-hidden="true"><Lockup taille="titre" /></span>
+      <div class="agent-derriere-copie">
+        <h2 id="derriere-titre"><Insecable texte={titre} /></h2>
+        <p><Insecable texte={texte} /></p>
+      </div>
+    </div>
+    <ol class="agent-gestes">
+      {gestes.map((geste, i) => (
+        <li class="agent-geste">
+          <span class="agent-geste-rang" aria-hidden="true">{i + 1}</span>
+          <span class="agent-geste-terme">{geste.terme}</span>
+          <span class="agent-geste-texte"><Insecable texte={geste.texte} /></span>
+        </li>
+      ))}
+    </ol>
+    <a class="lien-action" href={action.href}>{action.libelle}<Picto nom="fleche" taille={14} /></a>
+  </div>
+</section>
+
+<style>
+  .agent-derriere {
+    display: grid;
+    gap: var(--bloc-ecart);
+    padding: var(--espace-8) var(--espace-6);
+    border: 1px solid var(--ligne);
+    border-radius: var(--cadre-rayon);
+    background: var(--surface-page);
+  }
+  .agent-derriere-tete {
+    display: grid;
+    gap: var(--espace-6);
+    align-items: center;
+  }
+  /* Le lockup à la taille d'une tuile d'avatar : la marque tient la place d'une figurine. */
+  .agent-derriere-marque {
+    display: inline-flex;
+    font-size: calc(var(--avatar-carte) * 0.5);
+  }
+  .agent-derriere-copie {
+    display: grid;
+    gap: var(--tete-ecart);
+    max-width: 46rem;
+  }
+  .agent-derriere-copie h2 {
+    font-size: var(--titre-section);
+  }
+  .agent-derriere-copie p {
+    margin: 0;
+    max-width: 62ch;
+    color: var(--texte-2);
+  }
+  .agent-gestes {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+  .agent-geste {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    column-gap: var(--espace-3);
+    row-gap: var(--espace-1);
+    padding-block: var(--espace-4);
+    border-top: 1px solid var(--ligne);
+  }
+  .agent-geste-rang {
+    grid-row: span 2;
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--titre-ligne);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--accent-texte);
+    font-variant-numeric: tabular-nums;
+  }
+  .agent-geste-terme {
+    font-family: var(--police-display), 'Fraunces Fallback';
+    font-size: var(--titre-ligne);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--texte-fort);
+  }
+  .agent-geste-texte {
+    color: var(--texte-2);
+    text-wrap: pretty;
+  }
+  @media (min-width: 48rem) {
+    .agent-derriere {
+      padding: var(--espace-10);
+    }
+    .agent-derriere-tete {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--espace-8);
+    }
+  }
+  /* Dès 64 rem, les cinq gestes en rangée : le filet du haut devient la ligne qui les relie. */
+  @media (min-width: 64rem) {
+    .agent-derriere {
+      padding: var(--espace-12);
+    }
+    .agent-gestes {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      column-gap: var(--espace-6);
+    }
+    .agent-geste {
+      grid-template-columns: minmax(0, 1fr);
+      align-content: start;
+      padding-top: var(--espace-5);
+      border-top: 2px solid var(--accent-appui);
+    }
+    .agent-geste-rang {
+      grid-row: auto;
+      font-size: var(--t-sm);
+      font-family: var(--police-corps), 'Hanken Fallback';
+      color: var(--accent-texte);
+    }
+  }
+</style>

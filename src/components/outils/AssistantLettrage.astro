@@ -3,15 +3,16 @@
 <div data-lettrage>
   <h2>Préparer des paires, garder la décision</h2>
   <p>Aucun accès à votre logiciel comptable. Le fichier original reste intact. Import, calcul et rapport s’effectuent dans ce navigateur, sans stockage ni envoi réseau.</p>
-  <form>
+  <form method="dialog">
     <label for="lettrage-file">Export CSV de mouvements</label>
     <input id="lettrage-file" type="file" accept=".csv,.txt,.tsv" aria-describedby="lettrage-help lettrage-error" />
     <p data-file-name>Fichier choisi : aucun.</p>
-    <p id="lettrage-help">10 Mo et 20 000 lignes maximum. En-têtes obligatoires : id, compte, tiers, reference, date, debit, credit, devise. « lettre » facultatif : toute valeur non vide exclut une ligne déjà lettrée. Identifiants uniques conservés comme texte ; date AAAA-MM-JJ ; devise explicite par ligne (EUR, USD…). Montants positifs sans milliers, virgule ou point décimal, deux décimales maximum ; saisir 0 dans le côté inutilisé. Débit et crédit simultanés refusés.</p>
+    <details data-outil-options><summary>Format du fichier : séparateur et encodage</summary>    <p id="lettrage-help">10 Mo et 20 000 lignes maximum. En-têtes obligatoires : id, compte, tiers, reference, date, debit, credit, devise. « lettre » facultatif : toute valeur non vide exclut une ligne déjà lettrée. Identifiants uniques conservés comme texte ; date AAAA-MM-JJ ; devise explicite par ligne (EUR, USD…). Montants positifs sans milliers, virgule ou point décimal, deux décimales maximum ; saisir 0 dans le côté inutilisé. Débit et crédit simultanés refusés.</p>
     <div class="options">
       <div><label for="lettrage-separator">Séparateur du CSV</label><select id="lettrage-separator"><option value=";">Point-virgule</option><option value=",">Virgule</option><option value="tab">Tabulation</option><option value="|">Barre verticale</option></select></div>
       <div><label for="lettrage-encoding">Encodage du fichier</label><select id="lettrage-encoding"><option value="utf-8">UTF-8 (strict)</option><option value="windows-1252">Windows-1252 (choix explicite)</option></select></div>
     </div>
+</details>
     <div class="actions"><button type="submit" class="btn btn-principal">Importer et rechercher les paires</button><button type="button" data-example class="btn btn-contour">Essayer l’exemple fictif</button><button type="button" data-cancel hidden class="btn btn-contour">Annuler le traitement</button><button type="button" data-reset class="btn btn-contour">Tout réinitialiser</button></div>
     <p id="lettrage-error" data-error role="alert" tabindex="-1" hidden></p>
   </form>

@@ -1,0 +1,193 @@
+# Accueil CAC — copy de déploiement du catalogue
+
+16 octobre 2026. Quatre services : robots, agents IA, Memlia OS et modèle privé. Le catalogue précède l’adaptation et le sur mesure. Le design A reste en place ; les sources, accès et responsabilités sont cadrés par mission.
+
+Le relevé d’autocomplétion du 6 octobre reste le seul relevé de cette requête : zéro suggestion, volume mensuel indisponible. Aucun nouveau volume n’est inventé. Les chemins du masque lecteur et des médias historiques restent tracés dans les données ; le site rend la scène A. Les réponses normatives, le tableau de frontière et la couverture des suites restent inchangés. La FAQ prix décrit maintenant le déploiement et son adaptation.
+
+La liste ci-dessous reprend les chaînes de la source courante, pour que la revue ne lise pas une copie périmée. Les textes des cinq pages et la relecture éditoriale sont dans `docs/strategy/site-v3/coherence-figurines/COPY-CATALOGUE.md`.
+
+- CONTENU_CAC.hero.etiquette : Automatisation IA pour cabinets de commissariat aux comptes
+- CONTENU_CAC.hero.titre : Automatisation pour commissaire aux comptes : robots et agents IA.
+- CONTENU_CAC.hero.texte : Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux. Nous pouvons aussi relier le savoir du cabinet ou former un modèle à vos formats métier.
+- CONTENU_CAC.hero.poster : /media/cac-r4/hero-poster-1200.webp
+- CONTENU_CAC.hero.video : /media/cac-r4/explainer-hero-45s.mp4
+- CONTENU_CAC.hero.sousTitres : /media/cac-r4/explainer.vtt
+- CONTENU_CAC.hero.descriptionVideo : Démonstration sur un jeu fictif : réponses de tiers, proposition de montant, ambiguïté bloquée et validation par le cabinet. Les conclusions restent au CAC.
+- CONTENU_CAC.orientation.titre : Quatre services, cadrés pour votre cabinet.
+- CONTENU_CAC.orientation.destinations.0.libelle : Certification des comptes
+- CONTENU_CAC.orientation.destinations.0.href : #use-certification
+- CONTENU_CAC.orientation.destinations.0.texte : Sélection des tiers à circulariser, écarts de confirmation, fichiers du client à rapprocher : une mécanique cadrée autour de vos travaux.
+- CONTENU_CAC.orientation.destinations.1.libelle : Interventions légales
+- CONTENU_CAC.orientation.destinations.1.href : #use-interventions
+- CONTENU_CAC.orientation.destinations.1.texte : Une opération ponctuelle : réunir les données et préparer les comparaisons prévues, dans le périmètre de cette intervention.
+- CONTENU_CAC.orientation.destinations.2.libelle : Services autres que la certification des comptes (SACC)
+- CONTENU_CAC.orientation.destinations.2.href : #use-sacc
+- CONTENU_CAC.orientation.destinations.2.texte : Une prestation distincte : écrire le traitement attendu et ses limites, après votre appréciation de l’indépendance.
+- CONTENU_CAC.orientation.destinations.3.libelle : Durabilité
+- CONTENU_CAC.orientation.destinations.3.href : #use-durabilite
+- CONTENU_CAC.orientation.destinations.3.texte : Pour une mission entrant dans votre périmètre : préparer les rapprochements entre indicateurs et pièces. Le cadrage précède toute automatisation.
+- CONTENU_CAC.orientation.destinations.4.libelle : Administration des mandats
+- CONTENU_CAC.orientation.destinations.4.href : #use-administration
+- CONTENU_CAC.orientation.destinations.4.texte : Préparer les comparaisons de budget ou l’échéancier que vos outils ne couvrent pas, avec les paramètres de votre cabinet.
+- CONTENU_CAC.orientation.invitation : Préparer le déploiement dans votre cabinet
+- CONTENU_CAC.orientation.services.0.libelle : La règle écrite
+- CONTENU_CAC.orientation.services.0.href : #methode
+- CONTENU_CAC.orientation.services.1.libelle : Vos garanties
+- CONTENU_CAC.orientation.services.1.href : #garanties
+- CONTENU_CAC.orientation.services.2.libelle : Les questions pratiques
+- CONTENU_CAC.orientation.services.2.href : #questions
+- CONTENU_CAC.quotidien.titre : Des feuilles de travail préparées pour votre revue.
+- CONTENU_CAC.quotidien.texte : La balance arrive, les réponses de tiers s’accumulent et les fichiers du client restent à rapprocher. L’agent prépare la sélection selon vos paramètres, les tableaux de comparaison et les références aux pièces. Votre équipe reprend les écarts et documente son appréciation.
+- CONTENU_CAC.quotidien.points.0.titre : Reprendre les paramètres.
+- CONTENU_CAC.quotidien.points.0.texte : Population, critères, couverture ou nombre de comptes : les choix du cabinet restent visibles d’une passe à l’autre.
+- CONTENU_CAC.quotidien.points.1.titre : Retrouver l’origine.
+- CONTENU_CAC.quotidien.points.1.texte : Chaque proposition renvoie à son tiers, à sa source et à la règle qui l’a retenue.
+- CONTENU_CAC.quotidien.points.2.titre : Reprendre le travail.
+- CONTENU_CAC.quotidien.points.2.texte : Le chef de mission retrouve les paramètres, les exceptions et les références dans le résultat préparé. Il garde ses commentaires et ses conclusions.
+- CONTENU_CAC.quotidien.note : Nous adaptons l’agent aux formats, aux accès et aux procédures que vous avez retenus. Le choix des diligences et l’appréciation des éléments collectés restent au commissaire aux comptes.
+- CONTENU_CAC.quotidien.image : cac/accueil-selection-tiers
+- CONTENU_CAC.promesse.titre : Une prise en charge adaptée à vos travaux.
+- CONTENU_CAC.promesse.texte : Nous partons des prises en charge Memlia et les adaptons à votre environnement d’audit. Vous définissez les travaux ; nous préparons le traitement, sa mise en service et la maintenance convenue.
+- CONTENU_CAC.promesse.points.0.titre : Un déploiement défini par mission.
+- CONTENU_CAC.promesse.points.0.texte : Nous précisons les sources, les critères, les accès et les exceptions avec votre équipe. Les fonctions de votre suite d’audit restent en place.
+- CONTENU_CAC.promesse.points.1.titre : Des propositions à relire.
+- CONTENU_CAC.promesse.points.1.texte : La sélection et les rapprochements préparés restent distincts de vos commentaires et de vos conclusions.
+- CONTENU_CAC.promesse.points.2.titre : Le sur mesure pour vos besoins propres.
+- CONTENU_CAC.promesse.points.2.texte : Un fichier particulier ou une comparaison absente du catalogue ? Nous construisons le traitement nécessaire, avec les limites et les essais de cette mission.
+- CONTENU_CAC.promesse.image : cac/accueil-selection-tiers
+- CONTENU_CAC.usages.titre : Des gestes précis, dans le périmètre de chaque mission.
+- CONTENU_CAC.usages.texte : Sélection de tiers, écarts de confirmation et rapprochements de fichiers sont des points de départ. Nous adaptons nos agents à vos procédures ; les besoins propres aux autres missions font l’objet d’un périmètre et d’un traitement sur mesure.
+- CONTENU_CAC.usages.exemples.0.id : certification
+- CONTENU_CAC.usages.exemples.0.title : Préparer la sélection et les rapprochements
+- CONTENU_CAC.usages.exemples.0.text : Appliquer votre règle de soldes, mouvements et part aléatoire aux tiers à circulariser. Préparer deux passes, puis la feuille des écarts de confirmation. Rapprocher les fichiers de paie, d’immobilisations ou d’inventaire avec les comptes convenus de la balance.
+- CONTENU_CAC.usages.exemples.1.id : interventions
+- CONTENU_CAC.usages.exemples.1.title : Préparer les comparaisons d’une intervention légale
+- CONTENU_CAC.usages.exemples.1.text : Pour une opération d’apport, de fusion ou de transformation, définir les sources et les comparaisons à préparer. La nature de la mission, les contrôles et les conclusions restent au professionnel.
+- CONTENU_CAC.usages.exemples.2.id : sacc
+- CONTENU_CAC.usages.exemples.2.title : Cadrer la mécanique d’une prestation distincte
+- CONTENU_CAC.usages.exemples.2.text : Écrire les rapprochements attendus pour un service autre que la certification des comptes. Le périmètre, les accès et l’appréciation de l’indépendance se traitent séparément pour chaque mission.
+- CONTENU_CAC.usages.exemples.3.id : durabilite
+- CONTENU_CAC.usages.exemples.3.title : Relier un indicateur à ses pièces
+- CONTENU_CAC.usages.exemples.3.text : Si la mission entre dans le périmètre de votre cabinet, cadrer une préparation reliant les indicateurs reçus à leurs sources. L’appréciation de ces informations et les conclusions restent au professionnel chargé de la mission.
+- CONTENU_CAC.usages.exemples.4.id : administration
+- CONTENU_CAC.usages.exemples.4.title : Préparer les repères du portefeuille de mandats
+- CONTENU_CAC.usages.exemples.4.text : Partir des dates et budgets que vous avez retenus pour préparer un échéancier ou une comparaison. Nous conservons les fonctions de votre suite, notamment le préremplissage des déclarations qu’elle propose.
+- CONTENU_CAC.methode.titre : Du besoin à la mise en service dans vos mandats.
+- CONTENU_CAC.methode.libelleEtape : Étape
+- CONTENU_CAC.methode.etapes.0.titre : Retenir une première prise en charge.
+- CONTENU_CAC.methode.etapes.0.texte : Nous retenons le service et le premier usage utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu, les accès et la frontière du traitement sont écrits.
+- CONTENU_CAC.methode.etapes.0.image : cac/accueil-selection-tiers
+- CONTENU_CAC.methode.etapes.1.titre : Adapter à vos procédures.
+- CONTENU_CAC.methode.etapes.1.texte : Vous fixez les critères. Nous configurons les entrées, les propositions et les arrêts. Si le catalogue ne couvre pas votre comparaison, nous construisons le traitement sur mesure.
+- CONTENU_CAC.methode.etapes.1.image : cac/accueil-fichiers-balance
+- CONTENU_CAC.methode.etapes.2.titre : Vérifier les résultats et les limites.
+- CONTENU_CAC.methode.etapes.2.texte : Les essais fictifs montrent les résultats attendus et les cas bloqués. Votre équipe fait la recette dans l’environnement autorisé. La fiche outil décrit le traitement pour votre appréciation au dossier.
+- CONTENU_CAC.methode.etapes.2.image : cac/accueil-selection-tiers
+- CONTENU_CAC.methode.etapes.3.titre : Mettre en service et maintenir.
+- CONTENU_CAC.methode.etapes.3.texte : Nous déployons le périmètre accepté. La règle, les essais et la fiche outil accompagnent la livraison. Le devis définit la maintenance, le support et les évolutions couverts.
+- CONTENU_CAC.methode.etapes.3.image : cac/accueil-ecarts-confirmation
+- CONTENU_CAC.integration.titre : Dans votre environnement d’audit.
+- CONTENU_CAC.integration.texte : Les intégrations relient les services retenus à vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.
+- CONTENU_CAC.integration.limites : Formats, accès et fonctions de votre version sont vérifiés avant l’engagement. Une connexion directe n’est annoncée qu’après cette vérification.
+- CONTENU_CAC.integration.regles.0.titre : Conserver les fonctions utilisées.
+- CONTENU_CAC.integration.regles.0.texte : Les lettres et leur circuit d’envoi restent dans vos outils de circularisation.
+- CONTENU_CAC.integration.regles.1.titre : Rendre la source lisible.
+- CONTENU_CAC.integration.regles.1.texte : Le tableau préparé conserve les références nécessaires pour retourner au fichier et à la ligne concernés.
+- CONTENU_CAC.integration.regles.2.titre : Cadrer les changements.
+- CONTENU_CAC.integration.regles.2.texte : Une nouvelle structure de fichier ou un changement de règle se vérifie avant de reprendre le traitement.
+- CONTENU_CAC.integration.image : cac/accueil-fichiers-balance
+- CONTENU_CAC.preuves.etiquette : Illustrations fonctionnelles fictives
+- CONTENU_CAC.preuves.titre : Une différence calculée reste un point à examiner.
+- CONTENU_CAC.preuves.texte : La feuille prépare les écarts entre la demande et la réponse. Une différence de période ou de périmètre bloque le rapprochement. Une non-réponse reste ouverte pour l’équipe d’audit.
+- CONTENU_CAC.preuves.propriete : Vos commentaires et conclusions restent intacts quand la proposition se régénère. Le CAC décide des procédures alternatives ou supplémentaires et apprécie les éléments obtenus. Aucun envoi externe sans validation humaine.
+- CONTENU_CAC.preuves.reperes.0.title : La sélection se reproduit.
+- CONTENU_CAC.preuves.reperes.0.text : Même population, même version, mêmes paramètres et même graine : le jeu fictif permet de vérifier le tirage.
+- CONTENU_CAC.preuves.reperes.1.title : L’écart garde son origine.
+- CONTENU_CAC.preuves.reperes.1.text : Le montant demandé, le montant reçu et leurs références restent visibles. Le calcul ne vaut pas conclusion.
+- CONTENU_CAC.preuves.reperes.2.title : Le rapprochement montre ses limites.
+- CONTENU_CAC.preuves.reperes.2.text : Une pièce absente ou deux clés possibles laissent la ligne ouverte. Le traitement n’invente pas de correspondance.
+- CONTENU_CAC.preuves.image : cac/accueil-ecarts-confirmation
+- CONTENU_CAC.garanties.titre : Le secret, l’indépendance et le jugement cadrent la mission.
+- CONTENU_CAC.garanties.invitation : Lire les réponses pour votre cabinet
+- CONTENU_CAC.garanties.image : cac/accueil-fichiers-balance
+- CONTENU_CAC.garanties.liens.0.picto : bouclier
+- CONTENU_CAC.garanties.liens.0.libelle : Données et accès cadrés par mission
+- CONTENU_CAC.garanties.liens.0.href : #faq-secret
+- CONTENU_CAC.garanties.liens.1.picto : regle
+- CONTENU_CAC.garanties.liens.1.libelle : Indépendance appréciée par le CAC
+- CONTENU_CAC.garanties.liens.1.href : #faq-independance
+- CONTENU_CAC.garanties.liens.2.picto : main
+- CONTENU_CAC.garanties.liens.2.libelle : Opinion et responsabilité au CAC
+- CONTENU_CAC.garanties.liens.2.href : #faq-opinion
+- CONTENU_CAC.garanties.liens.3.picto : fictif
+- CONTENU_CAC.garanties.liens.3.libelle : Des données inventées pour les essais
+- CONTENU_CAC.garanties.liens.3.href : #faq-essais
+- CONTENU_CAC.garanties.liens.4.picto : stop
+- CONTENU_CAC.garanties.liens.4.libelle : Le doute arrête la proposition
+- CONTENU_CAC.garanties.liens.4.href : #faq-arret
+- CONTENU_CAC.garanties.liens.5.picto : regle
+- CONTENU_CAC.garanties.liens.5.libelle : Une fiche outil pour votre appréciation
+- CONTENU_CAC.garanties.liens.5.href : #faq-fiche
+- CONTENU_CAC.faq.titre : Avant de choisir un service pour vos mandats.
+- CONTENU_CAC.faq.texte : Compatibilité, déploiement, données et responsabilité : les points à préciser avec votre cabinet.
+- CONTENU_CAC.faq.questions.0.id : suite
+- CONTENU_CAC.faq.questions.0.question : Notre suite d’audit fait déjà ces travaux. Que prenez-vous en charge ?
+- CONTENU_CAC.faq.questions.0.reponse : Nous vérifions d’abord ce que votre version couvre. Nous conservons ces fonctions et ciblons le geste restant : votre règle de sélection des tiers, les écarts de confirmation ou les fichiers du client à rapprocher de la balance. Si votre outil couvre déjà la tâche, nous vous le disons.
+- CONTENU_CAC.faq.questions.1.id : selection
+- CONTENU_CAC.faq.questions.1.question : Qui choisit les tiers à circulariser ?
+- CONTENU_CAC.faq.questions.1.reponse : Vous fixez la population, les critères et les paramètres. Nous préparons une sélection selon cette règle, avec les raisons du choix et la graine du tirage. Vous retenez les tiers. La NEP 505 (§ 09) vous laisse la maîtrise de la sélection, de la rédaction, de l’envoi et de la réception des réponses.
+- CONTENU_CAC.faq.questions.2.id : alternatives
+- CONTENU_CAC.faq.questions.2.question : Que faire lorsqu’un tiers ne répond pas ?
+- CONTENU_CAC.faq.questions.2.reponse : La non-réponse reste visible. Nous préparons les rapprochements et les références aux pièces prévues dans le périmètre. Vous décidez et mettez en œuvre les procédures alternatives nécessaires, puis appréciez les éléments obtenus. La NEP 505 (§ 13 à 15) prévoit aussi des procédures supplémentaires lorsque les éléments restent insuffisants.
+- CONTENU_CAC.faq.questions.3.id : fiche
+- CONTENU_CAC.faq.questions.3.question : Comment apprécier l’outil au regard des NEP 315 et 330 révisées ?
+- CONTENU_CAC.faq.questions.3.reponse : Nous remettons une fiche décrivant l’objectif, le fonctionnement, la version, les entrées, les contrôles de fiabilité, les paramètres, les sorties, les traces et les limites. Les essais fictifs montrent les résultats et les arrêts attendus. Vous appréciez si l’outil permet d’atteindre l’objectif de vos procédures : son fonctionnement, la pertinence et la fiabilité des informations intégrées. Vous consignez cette appréciation au dossier : NEP 315 révisée (§ 46 et 48 d) pour l’évaluation des risques, NEP 330 révisée (§ 33 et 34 e) pour les procédures qui y répondent, comme la circularisation. La fiche est notre support de livraison ; elle ne remplace pas votre appréciation. Le § 14 de la NEP 315 définit les outils et techniques automatisés et les distingue des logiciels de dossier ; il n’impose pas notre modèle de fiche.
+- CONTENU_CAC.faq.questions.4.id : dossier
+- CONTENU_CAC.faq.questions.4.question : Le tableau préparé suffit-il pour documenter les travaux ?
+- CONTENU_CAC.faq.questions.4.reponse : Vous appréciez et complétez les paramètres, traces et résultats remis. La NEP 230 (§ 04) demande de pouvoir comprendre les procédures, les éléments testés, les résultats et les conclusions. La fiche décrit le traitement ; votre dossier documente aussi vos travaux et votre jugement. Un export seul ne démontre pas la suffisance des diligences.
+- CONTENU_CAC.faq.questions.5.id : secret
+- CONTENU_CAC.faq.questions.5.question : Comment cadrer le secret professionnel et les accès ?
+- CONTENU_CAC.faq.questions.5.reponse : Le secret de L.821-35 s’applique aux CAC, collaborateurs et experts. Avant la mission, nous décrivons les données lues, les accès, les destinataires et les traitements. Les essais utilisent des données fictives. Une exécution locale se vérifie aussi par ses appels réseau et sa télémétrie. Vous appréciez les conditions d’utilisation ; le recours à Memlia ne lève pas le secret.
+- CONTENU_CAC.faq.questions.6.id : independance
+- CONTENU_CAC.faq.questions.6.question : Notre cabinet fait aussi la comptabilité. Pouvons-nous partager la règle ?
+- CONTENU_CAC.faq.questions.6.reponse : Chaque mission conserve son périmètre, ses accès et ses responsabilités. Vous appréciez les incompatibilités et les risques d’indépendance, notamment au regard de L.821-27, L.821-31 et du code de déontologie. Le partage d’un outil ne justifie pas de préparer puis d’auditer les mêmes comptes.
+- CONTENU_CAC.faq.questions.7.id : opinion
+- CONTENU_CAC.faq.questions.7.question : Qui conserve l’opinion et la responsabilité de la mission ?
+- CONTENU_CAC.faq.questions.7.reponse : Le commissaire aux comptes conserve la responsabilité de sa mission et de son opinion. Nous préparons les sélections, rapprochements et exceptions. Votre équipe garde les contrôles et le signataire ses conclusions et sa signature. Une sortie de traitement ne certifie pas les comptes.
+- CONTENU_CAC.faq.questions.8.id : arret
+- CONTENU_CAC.faq.questions.8.question : Que se passe-t-il si les fichiers ne concordent pas ?
+- CONTENU_CAC.faq.questions.8.reponse : Une période différente, une population incomplète ou une clé ambiguë bloque la proposition concernée et en affiche la raison. Vos commentaires restent conservés. L’équipe examine le cas avant de reprendre ; le traitement ne complète pas une donnée au jugé.
+- CONTENU_CAC.faq.questions.9.id : essais
+- CONTENU_CAC.faq.questions.9.question : Comment vérifier le traitement avant son utilisation ?
+- CONTENU_CAC.faq.questions.9.reponse : Nous construisons un jeu d’essai fictif avec des données inventées. Il contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Votre équipe vérifie ensuite le traitement dans l’environnement autorisé : c’est la recette. Cette vérification et la fiche outil accompagnent votre appréciation ; elles ne garantissent pas la conformité du dossier aux NEP.
+- CONTENU_CAC.faq.questions.10.id : prix
+- CONTENU_CAC.faq.questions.10.question : Que comprend le devis ?
+- CONTENU_CAC.faq.questions.10.reponse : Le déploiement de la prise en charge retenue, son adaptation à votre cabinet, la recette et la maintenance convenue. Une construction sur mesure est précisée lorsqu’elle est nécessaire. Le prix dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.
+- CONTENU_CAC.appelFinal.titre : Préparons le premier déploiement pour vos mandats.
+- CONTENU_CAC.appelFinal.texte : Décrivez la préparation, le savoir à retrouver ou les formats à apprendre, avec votre suite d’audit et le résultat attendu. Nous retenons le service utile, son périmètre par mission et les validations. Le catalogue, ses adaptations et le sur mesure répondent aux tâches à déléguer.
+- CONTENU_CAC.appelFinal.points.0 : Une première tâche utile à vos mandats.
+- CONTENU_CAC.appelFinal.points.1 : Un périmètre adapté à vos procédures.
+- CONTENU_CAC.appelFinal.points.2 : Un devis couvrant le déploiement et la maintenance.
+- SEO_CAC.chemin : /commissaires-aux-comptes
+- SEO_CAC.requete : automatisation commissaire aux comptes
+- SEO_CAC.titre : Automatisation pour commissaire aux comptes | Memlia
+- SEO_CAC.description : Automatisation pour commissaire aux comptes : agents IA, pièces et rapprochements préparés. Déploiement adapté à vos mandats, maintenance et sur mesure.
+- COUVERTURE_CAC.titre : Ce que votre suite d’audit fait déjà
+- COUVERTURE_CAC.texte : Réception du FEC, procédures analytiques (revue analytique), dossier de travail, modèles de rapport, collecte de pièces et archivage : nous partons des fonctions de votre suite. Nous vérifions celles que vous utilisez avant de proposer un traitement.
+- COUVERTURE_CAC.suite : La sélection selon votre règle, les écarts de confirmation et les fichiers du client à rapprocher de la balance sont nos points de départ. Les lettres, l’envoi et les relances restent dans votre circuit de circularisation.
+- FRONTIERE_CAC.titre : La règle écrite pour une sélection de tiers
+- FRONTIERE_CAC.colonnes.0 : Se prépare seul
+- FRONTIERE_CAC.colonnes.1 : Attend votre validation
+- FRONTIERE_CAC.colonnes.2 : Reste humain
+- FRONTIERE_CAC.lignes.0.0 : Classer la population selon les soldes et mouvements prévus ; préparer le tirage avec la graine conservée.
+- FRONTIERE_CAC.lignes.0.1 : La proposition de tiers et sa couverture, selon les critères que vous avez fixés.
+- FRONTIERE_CAC.lignes.0.2 : Choisir les assertions, les risques, la méthode de sélection et les paramètres.
+- FRONTIERE_CAC.lignes.1.0 : Comparer la première passe à celle de clôture et signaler les nouveaux tiers.
+- FRONTIERE_CAC.lignes.1.1 : La liste retenue et sa transmission dans le circuit autorisé.
+- FRONTIERE_CAC.lignes.1.2 : Garder la maîtrise des demandes et apprécier les réponses et les non-réponses.
+- FRONTIERE_CAC.lignes.2.0 : Calculer les différences entre montants comparables et référencer les pièces disponibles.
+- FRONTIERE_CAC.lignes.2.1 : Le rapprochement proposé et les éléments à examiner.
+- FRONTIERE_CAC.lignes.2.2 : Décider des procédures alternatives ou supplémentaires et conclure.
+- MEDIAS_CAC.selection : cac/accueil-selection-tiers
+- MEDIAS_CAC.ecarts : cac/accueil-ecarts-confirmation
+- MEDIAS_CAC.rapprochements : cac/accueil-fichiers-balance

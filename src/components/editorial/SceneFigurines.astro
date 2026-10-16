@@ -1,0 +1,8 @@
+---
+import type { SceneId } from '@/data/scenes-figurines';
+interface Props{recette?:SceneId|'a-atelier'|'b-portrait';alt?:string;prioritaire?:boolean;}
+const {recette='a-atelier',alt='',prioritaire=false}=Astro.props;
+const src=`/illustrations/figurines/${recette}`;
+---
+<picture class="scene-figurines"><source type="image/avif" srcset={`${src}-640.avif 640w, ${src}-1200.avif 1200w`} sizes="(min-width:1440px) 600px, (min-width:1024px) 45vw, calc(100vw - 64px)"/><img src={`${src}-1200.webp`} srcset={`${src}-640.webp 640w, ${src}-1200.webp 1200w`} sizes="(min-width:1440px) 600px, (min-width:1024px) 45vw, calc(100vw - 64px)" width="1200" height="800" alt={alt} loading={prioritaire?'eager':'lazy'} fetchpriority={prioritaire?'high':undefined} decoding="async"/></picture>
+<style>.scene-figurines,.scene-figurines img{display:block;width:100%;height:auto;aspect-ratio:3/2}.scene-figurines img{object-fit:contain;border-radius:var(--r-cadre)}</style>

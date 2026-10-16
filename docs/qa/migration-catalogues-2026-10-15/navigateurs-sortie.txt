@@ -1,0 +1,144 @@
+
+Running 136 tests using 1 worker
+
+(node:25299) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/136] tests/browser/agents-ia-sans-reseau.spec.ts:97:1 › les pages jugées : le hub, la fiche pilote (qui est bien une fiche des données), plus chaque fiche construite
+[2/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[3/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[4/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /integrations (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[5/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /integrations (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[6/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/comptabilite (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[7/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/comptabilite (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[8/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/paie-social (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[9/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/paie-social (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[10/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/juridique-fiscal (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[11/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/juridique-fiscal (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[12/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/finance (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[13/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/finance (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[14/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/commercial (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[15/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/commercial (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[16/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/communication (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[17/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/communication (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[18/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/relation-client (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[19/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/relation-client (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[20/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/gestion-cabinet (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[21/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/gestion-cabinet (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[22/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/rh-cabinet (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[23/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/rh-cabinet (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[24/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/protection-donnees (bureau) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[25/136] tests/browser/agents-ia-sans-reseau.spec.ts:105:5 › /agents-ia/protection-donnees (mobile) : 0 violation CSP, 0 requête hors origine, 0 erreur console, scripts exécutés sous la CSP
+[26/136] tests/browser/agents-ia-sans-reseau.spec.ts:150:3 › la FAQ de la fiche, JavaScript actif › elle se replie au chargement, s’ouvre au clic et à l’ancre, sous la CSP
+[27/136] tests/browser/agents-ia-sans-reseau.spec.ts:178:3 › la FAQ de la fiche, JavaScript actif › si son script n’arrive pas, la FAQ native reste utilisable
+[28/136] tests/browser/agents-ia-sans-reseau.spec.ts:192:3 › la FAQ de la fiche, sans JavaScript › chaque question native s’ouvre et sa réponse devient lisible
+[29/136] tests/browser/agents-ia-sans-reseau.spec.ts:208:3 › les témoins : sous cette CSP, ce qui ouvrirait le réseau devient une violation que l’instrument voit › un fetch du même origine est refusé par connect-src
+[30/136] tests/browser/agents-ia-sans-reseau.spec.ts:216:3 › les témoins : sous cette CSP, ce qui ouvrirait le réseau devient une violation que l’instrument voit › un script inline injecté dans la page ne s’exécute pas (script-src)
+[31/136] tests/browser/agents-ia-sans-reseau.spec.ts:228:3 › les témoins : sous cette CSP, ce qui ouvrirait le réseau devient une violation que l’instrument voit › une image d’un tiers n’est pas demandée (img-src)
+[32/136] tests/browser/agents-ia.spec.ts:4:35 › hub agents : composition robots, cartes et filtres sans JS à 375px
+[33/136] tests/browser/agents-ia.spec.ts:4:35 › hub agents : composition robots, cartes et filtres sans JS à 768px
+[34/136] tests/browser/agents-ia.spec.ts:4:35 › hub agents : composition robots, cartes et filtres sans JS à 1440px
+[35/136] tests/browser/agents-ia.spec.ts:14:1 › filtres au clavier, compte lisible, cartes entièrement cliquables et mouvement réduit
+[36/136] tests/browser/agents-ia.spec.ts:18:57 › comptabilite : fiche complète, démonstration et FAQ à 375px
+[37/136] tests/browser/agents-ia.spec.ts:18:57 › comptabilite : fiche complète, démonstration et FAQ à 1440px
+[38/136] tests/browser/agents-ia.spec.ts:18:57 › paie-social : fiche complète, démonstration et FAQ à 375px
+[39/136] tests/browser/agents-ia.spec.ts:18:57 › paie-social : fiche complète, démonstration et FAQ à 1440px
+[40/136] tests/browser/agents-ia.spec.ts:18:57 › juridique-fiscal : fiche complète, démonstration et FAQ à 375px
+[41/136] tests/browser/agents-ia.spec.ts:18:57 › juridique-fiscal : fiche complète, démonstration et FAQ à 1440px
+[42/136] tests/browser/agents-ia.spec.ts:18:57 › finance : fiche complète, démonstration et FAQ à 375px
+[43/136] tests/browser/agents-ia.spec.ts:18:57 › finance : fiche complète, démonstration et FAQ à 1440px
+[44/136] tests/browser/agents-ia.spec.ts:18:57 › commercial : fiche complète, démonstration et FAQ à 375px
+[45/136] tests/browser/agents-ia.spec.ts:18:57 › commercial : fiche complète, démonstration et FAQ à 1440px
+[46/136] tests/browser/agents-ia.spec.ts:18:57 › communication : fiche complète, démonstration et FAQ à 375px
+[47/136] tests/browser/agents-ia.spec.ts:18:57 › communication : fiche complète, démonstration et FAQ à 1440px
+[48/136] tests/browser/agents-ia.spec.ts:18:57 › relation-client : fiche complète, démonstration et FAQ à 375px
+[49/136] tests/browser/agents-ia.spec.ts:18:57 › relation-client : fiche complète, démonstration et FAQ à 1440px
+[50/136] tests/browser/agents-ia.spec.ts:18:57 › gestion-cabinet : fiche complète, démonstration et FAQ à 375px
+[51/136] tests/browser/agents-ia.spec.ts:18:57 › gestion-cabinet : fiche complète, démonstration et FAQ à 1440px
+[52/136] tests/browser/agents-ia.spec.ts:18:57 › rh-cabinet : fiche complète, démonstration et FAQ à 375px
+[53/136] tests/browser/agents-ia.spec.ts:18:57 › rh-cabinet : fiche complète, démonstration et FAQ à 1440px
+[54/136] tests/browser/agents-ia.spec.ts:18:57 › protection-donnees : fiche complète, démonstration et FAQ à 375px
+[55/136] tests/browser/agents-ia.spec.ts:18:57 › protection-donnees : fiche complète, démonstration et FAQ à 1440px
+[56/136] tests/browser/agents-ia.spec.ts:30:77 › comptabilite : point de départ 1 visible, présélectionné et consommé une fois
+[57/136] tests/browser/agents-ia.spec.ts:30:77 › comptabilite : point de départ 2 visible, présélectionné et consommé une fois
+[58/136] tests/browser/agents-ia.spec.ts:30:77 › comptabilite : point de départ 3 visible, présélectionné et consommé une fois
+[59/136] tests/browser/agents-ia.spec.ts:30:77 › paie-social : point de départ 1 visible, présélectionné et consommé une fois
+[60/136] tests/browser/agents-ia.spec.ts:30:77 › paie-social : point de départ 2 visible, présélectionné et consommé une fois
+[61/136] tests/browser/agents-ia.spec.ts:30:77 › paie-social : point de départ 3 visible, présélectionné et consommé une fois
+[62/136] tests/browser/agents-ia.spec.ts:33:1 › le contact reste joignable avec stockage bloqué
+[63/136] tests/browser/integrations-communes.spec.ts:3:31 › compatibilités communes : catalogue, logos et recherche à 375px
+[64/136] tests/browser/integrations-communes.spec.ts:3:31 › compatibilités communes : catalogue, logos et recherche à 1440px
+[65/136] tests/browser/integrations-communes.spec.ts:4:1 › sans JavaScript : tous les logiciels et Octavie sont consultables, les guides restent retirés
+[66/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 320px
+[67/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 375px
+[68/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 768px
+[69/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 1024px
+[70/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 1440px
+[71/136] tests/browser/integrations-hub-copy.spec.ts:25:3 › catalogue commun de compatibilité à 1920px
+[72/136] tests/browser/integrations-hub-copy.spec.ts:44:1 › une carte par logiciel, domaine par domaine, dans l’ordre des données ; l’État en nom seul, les variantes blanches sur encre
+[73/136] tests/browser/integrations-hub-copy.spec.ts:75:1 › aucun statut, aucun total, aucun lien vers un éditeur ; texte fixe et mention de marques sous la liste
+[74/136] tests/browser/integrations-hub-copy.spec.ts:108:1 › facturation électronique : une section sans carte ni nom de plateforme
+[75/136] tests/browser/integrations-hub-copy.spec.ts:119:1 › le bandeau d’Octavie et, dessous, sa démonstration rejouée sur un dossier fictif
+[76/136] tests/browser/integrations-hub-copy.spec.ts:140:1 › JSON-LD : un ListItem par logiciel vers son ancre présente dans la page, fil d’Ariane, aucun logiciel en SoftwareApplication
+[77/136] tests/browser/integrations-hub-copy.spec.ts:154:1 › chaque logo se charge, s’affiche à sa taille et reste dans sa carte
+[78/136] tests/browser/integrations-hub-copy.spec.ts:177:1 › « Dans vos outils » d’une fiche mène à la carte du logiciel
+[79/136] tests/browser/integrations-hub-copy.spec.ts:189:1 › le catalogue commun ouvre les robots, les agents et le contact sans ancien rayon de guides
+[80/136] tests/browser/integrations.spec.ts:10:1 › douze guides archivés, douze migrations et aucune route active de guide : le témoin ne peut pas être vide
+[81/136] tests/browser/integrations.spec.ts:17:1 › la recherche porte sur les logiciels et domaines, sans ancien filtre de guides
+[82/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 320px
+[83/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 375px
+[84/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 768px
+[85/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 1024px
+[86/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 1440px
+[87/136] tests/browser/integrations.spec.ts:41:3 › le catalogue de compatibilités reste lisible et navigable à 1920px
+[88/136] tests/browser/integrations.spec.ts:53:1 › les trois catalogues gardent leurs repères accessibles et ne lient plus les anciennes pages
+[89/136] tests/browser/integrations.spec.ts:72:1 › sans JavaScript, tous les logiciels, les raccourcis de domaine et la démonstration restent servis
+[90/136] tests/browser/integrations.spec.ts:88:1 › livraison Pages : chaque ancien guide redirige directement vers sa carte, avec et sans barre finale
+[91/136] tests/browser/navigation-v3.spec.ts:26:3 › menu Cabinets : premier clic souris à 1024px
+[92/136] tests/browser/navigation-v3.spec.ts:42:3 › menu Cabinets : trajet souris continu à 1024px
+[93/136] tests/browser/navigation-v3.spec.ts:26:3 › menu Ce qu’on automatise : premier clic souris à 1024px
+[94/136] tests/browser/navigation-v3.spec.ts:42:3 › menu Ce qu’on automatise : trajet souris continu à 1024px
+[95/136] tests/browser/navigation-v3.spec.ts:26:3 › menu Cabinets : premier clic souris à 1440px
+[96/136] tests/browser/navigation-v3.spec.ts:42:3 › menu Cabinets : trajet souris continu à 1440px
+[97/136] tests/browser/navigation-v3.spec.ts:26:3 › menu Ce qu’on automatise : premier clic souris à 1440px
+[98/136] tests/browser/navigation-v3.spec.ts:42:3 › menu Ce qu’on automatise : trajet souris continu à 1440px
+[99/136] tests/browser/navigation-v3.spec.ts:83:3 › deux menus, souris : clic puis survol de l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1024px
+[100/136] tests/browser/navigation-v3.spec.ts:91:3 › deux menus, souris : survol puis clic sur l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1024px
+[101/136] tests/browser/navigation-v3.spec.ts:100:3 › deux menus, clavier : Entrée sur l'un puis sur l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1024px
+[102/136] tests/browser/navigation-v3.spec.ts:111:3 › deux menus, clavier puis souris : Entrée sur l'un, survol de l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1024px
+[103/136] tests/browser/navigation-v3.spec.ts:83:3 › deux menus, souris : clic puis survol de l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1024px
+[104/136] tests/browser/navigation-v3.spec.ts:91:3 › deux menus, souris : survol puis clic sur l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1024px
+[105/136] tests/browser/navigation-v3.spec.ts:100:3 › deux menus, clavier : Entrée sur l'un puis sur l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1024px
+[106/136] tests/browser/navigation-v3.spec.ts:111:3 › deux menus, clavier puis souris : Entrée sur l'un, survol de l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1024px
+[107/136] tests/browser/navigation-v3.spec.ts:83:3 › deux menus, souris : clic puis survol de l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1440px
+[108/136] tests/browser/navigation-v3.spec.ts:91:3 › deux menus, souris : survol puis clic sur l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1440px
+[109/136] tests/browser/navigation-v3.spec.ts:100:3 › deux menus, clavier : Entrée sur l'un puis sur l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1440px
+[110/136] tests/browser/navigation-v3.spec.ts:111:3 › deux menus, clavier puis souris : Entrée sur l'un, survol de l'autre, un seul panneau — Cabinets puis Ce qu’on automatise à 1440px
+[111/136] tests/browser/navigation-v3.spec.ts:83:3 › deux menus, souris : clic puis survol de l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1440px
+[112/136] tests/browser/navigation-v3.spec.ts:91:3 › deux menus, souris : survol puis clic sur l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1440px
+[113/136] tests/browser/navigation-v3.spec.ts:100:3 › deux menus, clavier : Entrée sur l'un puis sur l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1440px
+[114/136] tests/browser/navigation-v3.spec.ts:111:3 › deux menus, clavier puis souris : Entrée sur l'un, survol de l'autre, un seul panneau — Ce qu’on automatise puis Cabinets à 1440px
+[115/136] tests/browser/navigation-v3.spec.ts:128:3 › hubs globaux et position courante à 375px
+[116/136] tests/browser/navigation-v3.spec.ts:128:3 › hubs globaux et position courante à 1024px
+[117/136] tests/browser/navigation-v3.spec.ts:128:3 › hubs globaux et position courante à 1440px
+[118/136] tests/browser/navigation-v3.spec.ts:144:1 › « Ce qu’on automatise » se marque sur ses trois pages et après la migration d’un ancien guide
+[119/136] tests/browser/navigation-v3.spec.ts:161:3 › menu Cabinets : Entrée, Tab, Échap et retour du focus
+[120/136] tests/browser/navigation-v3.spec.ts:161:3 › menu Ce qu’on automatise : Entrée, Tab, Échap et retour du focus
+[121/136] tests/browser/navigation-v3.spec.ts:183:1 › menu Ce qu’on automatise : les trois entrées se parcourent au clavier dans l’ordre
+[122/136] tests/browser/navigation-v3.spec.ts:202:3 › pied de page : « Ce qu’on automatise » reprend les trois entrées du menu, une fois chacune, à 375px
+[123/136] tests/browser/navigation-v3.spec.ts:202:3 › pied de page : « Ce qu’on automatise » reprend les trois entrées du menu, une fois chacune, à 1440px
+[124/136] tests/browser/navigation-v3.spec.ts:219:1 › pied de page : le menu et le pied portent les mêmes destinations de « Ce qu’on automatise »
+[125/136] tests/browser/navigation-v3.spec.ts:227:3 › activation CAC : entrée et contenu local conservés à 375px
+[126/136] tests/browser/navigation-v3.spec.ts:227:3 › activation CAC : entrée et contenu local conservés à 1024px
+[127/136] tests/browser/navigation-v3.spec.ts:227:3 › activation CAC : entrée et contenu local conservés à 1440px
+[128/136] tests/browser/robots.spec.ts:7:2 › robots : annuaire, filtres natifs et largeur 375
+[129/136] tests/browser/robots.spec.ts:7:2 › robots : annuaire, filtres natifs et largeur 768
+[130/136] tests/browser/robots.spec.ts:7:2 › robots : annuaire, filtres natifs et largeur 1440
+[131/136] tests/browser/robots.spec.ts:23:1 › robots : fiches complètes, images, métadonnées et liens réels
+[132/136] tests/browser/robots.spec.ts:41:1 › robots : mobile, clavier, accordéon natif et mouvement réduit
+[133/136] tests/browser/robots.spec.ts:51:1 › robots : sans JavaScript, filtres, démonstrations, FAQ et contact restent accessibles
+[134/136] tests/browser/robots.spec.ts:59:1 › robots : présélection facultative, autorisée et consommée une fois
+[135/136] tests/browser/robots.spec.ts:66:1 › robots : le lien de contact survit au stockage bloqué
+[136/136] tests/browser/robots.spec.ts:71:1 › robots : démonstrations sans requête externe, sitemap et migration des anciens services
+  136 passed (2.7m)

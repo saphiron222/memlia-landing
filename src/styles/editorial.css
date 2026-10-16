@@ -1,0 +1,48 @@
+@import './catalogue/commun.css';
+/* Recette A : mêmes jetons et cartes que les catalogues, illustrations ouvertes. */
+.editorial-page .section .conteneur{max-width:none;padding-inline:var(--marge-page)}
+.editorial-page .tete h2,.editorial-page h2{font-size:var(--titre-section)}
+.editorial-page .tete p{max-width:65ch;color:var(--texte-2)}
+.editorial-page .tete{gap:24px}
+.editorial-page .editorial-regle{background:var(--encre);color:var(--creme);padding:32px 24px;border-radius:var(--r-cadre);display:grid;gap:32px}
+.editorial-page .editorial-regle :is(h2,h3,strong){color:var(--creme)}
+.editorial-page .editorial-regle p{color:var(--creme)}
+.editorial-page .editorial-regle a{color:var(--creme);text-underline-offset:4px}
+.editorial-frontiere{display:grid;gap:32px}
+.editorial-frontiere h3{font-size:var(--titre-bloc);margin-bottom:16px}
+.editorial-arret{border-top:1px solid #6b6866;padding-top:24px;display:grid;gap:16px}
+.editorial-page .appel-int{border:0;box-shadow:none;background:transparent;padding:0;max-width:760px}
+.editorial-page .appel-h2{max-width:24ch}
+.editorial-page .editorial-etapes{list-style:none;padding:0;margin:0}
+.editorial-page .editorial-etapes>.etape{display:grid;gap:24px;border-top:1px solid var(--ligne-douce);padding:32px 0}
+.editorial-page .editorial-etapes h3{font-size:var(--titre-bloc)}
+.editorial-page .editorial-etapes p{color:var(--texte-2)}
+.editorial-page .editorial-etapes .surtitre{color:var(--accent-texte)}
+.editorial-page .editorial-etapes .etape-copie{display:grid;gap:20px;max-width:76ch}
+.editorial-remis{border-left:2px solid var(--vert-doux);padding-left:24px;display:grid;gap:12px;align-content:start}
+.editorial-remis>span{color:var(--accent-texte);font-size:var(--t-sm);font-weight:600}
+.editorial-ressources details{border-top:1px solid var(--ligne-douce);padding:20px 0}
+.editorial-ressources summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center;gap:16px}
+.editorial-ressources summary::after{content:'+';margin-left:auto;color:var(--accent-texte)}
+.editorial-ressources details[open]>summary::after{content:'−'}
+.editorial-ressources details>div{margin-top:24px}
+@media(min-width:48rem){.editorial-frontiere{grid-template-columns:repeat(3,minmax(0,1fr))}.editorial-page .editorial-etapes>.etape{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px}}
+@media(min-width:64rem){.editorial-page .section .conteneur{padding-inline:var(--marge-page-lg)}.editorial-page .editorial-regle{padding:48px}}
+.editorial-exemples{display:grid;gap:24px;max-width:76ch;color:var(--texte-2)}
+
+.editorial-page .appel .coin{display:none}
+
+.editorial-page .editorial-etapes-court{display:grid;gap:32px}
+.editorial-page .editorial-etapes-court>.etape{grid-template-columns:minmax(0,1fr)}
+@media(min-width:48rem){.editorial-page .editorial-etapes-court{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media(min-width:64rem){.editorial-page .editorial-publications{grid-template-columns:minmax(0,.85fr) minmax(0,1.65fr);gap:48px;align-items:start}.editorial-publications>.tete{max-width:none}}
+/* Comme les blocs partagés des fiches : titre et introduction occupent ensemble la rangée. */
+@media(min-width:64rem){
+ .editorial-page .pv:not(.editorial-publications)>.tete:has(>p),
+ .editorial-page .editorial-bloc:not(.editorial-bloc-scene)>.tete:has(>p){display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:24px 48px;align-items:start;max-width:none}
+ .editorial-page .pv:not(.editorial-publications)>.tete:has(>p)>h2,
+ .editorial-page .editorial-bloc:not(.editorial-bloc-scene)>.tete:has(>p)>h2{grid-column:1;max-width:22ch}
+ .editorial-page .pv:not(.editorial-publications)>.tete:has(>p)>p,
+ .editorial-page .editorial-bloc:not(.editorial-bloc-scene)>.tete:has(>p)>p{grid-column:2;max-width:none}
+}

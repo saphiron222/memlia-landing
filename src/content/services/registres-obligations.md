@@ -13,7 +13,7 @@ audience:
 intent: evaluer-service
 family: registres-obligations
 verifiedAt: 2026-10-06
-status: publie
+status: a-valider
 candidateFingerprint: "27665cbb21ff684ecdf7b525f5dc53698caeed474fce814bd0a95445e0ce609a"
 cta:
   label: "Confier une première tâche"

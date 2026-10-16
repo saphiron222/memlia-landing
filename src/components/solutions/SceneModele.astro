@@ -1,0 +1,37 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+import Lockup from '@/components/Lockup.astro';
+const phases=[
+ {nom:'La demande',titre:'Une réponse dans vos mots.',texte:'Prépare une réponse au client à partir de notre procédure de reprise. Signale les points à confirmer.',meta:'Session · Reprise de dossier'},
+ {nom:'Le contexte',titre:'Les bonnes sources, dans le bon périmètre.',texte:'Procédure de reprise · version validée. Guide de ton · relation client. Mémoire de session · accès autorisé.',meta:'Documents + consignes + mémoire'},
+ {nom:'Le travail',titre:'Votre règle, appliquée à la préparation.',texte:'Le modèle prépare le brouillon au format du cabinet. Une pièce manque : il l’indique et suspend la partie concernée.',meta:'Savoir-faire · Préparer une réponse'},
+ {nom:'La remise',titre:'Un brouillon et les points à valider.',texte:'Voici la réponse préparée, ses sources et la pièce à demander. Votre équipe relit et autorise l’envoi dans son outil.',meta:'Validation humaine avant envoi'},
+];
+---
+{compact ? <div class="solution-apercu modele-apercu" aria-hidden="true"><span>Votre espace métier</span><div><span>Votre modèle privé</span><strong>{phases[0].titre}</strong><span>Vocabulaire · Formats · Règles</span></div></div> : null}
+{!compact ? <>
+
+<div class="modele-scene" data-model-scene>
+  <div class="modele-barre"><Lockup class="modele-logo"/><div class="modele-contexte"><span>Votre espace métier</span><span class="scene-fiction">Exemple fictif</span></div></div>
+  <div class="modele-espace">
+    <aside class="modele-rail" aria-label="Contexte de l’illustration"><span>Votre modèle privé</span><ul><li>Documents <span>↗</span></li><li>Mémoire <span>↗</span></li><li>Savoir-faire <span>↗</span></li><li>Sessions <span>↗</span></li></ul><small>Procédure de reprise<br/>Source autorisée</small></aside>
+    <div class="modele-dialogue">
+      <p class="modele-question">Comment préparons-nous la reprise de ce dossier ?</p>
+      <div class="modele-reponses">{phases.map((p,i)=><article data-model-frame={i}><p class="modele-meta">{p.meta}</p><h2>{p.titre}</h2><p>{p.texte}</p><span class="modele-source">↗ Procédure interne · Exemple fictif</span></article>)}</div>
+      <p class="modele-composer" aria-hidden="true">Votre prochaine question… <span>↑</span></p>
+    </div>
+  </div>
+  <div class="modele-controles" data-model-controls hidden><div aria-label="Étapes de l’illustration">{phases.map((p,i)=><button type="button" data-model-step={i} aria-label={`Afficher et garder l’étape : ${p.nom}`} aria-pressed={i===0?'true':'false'}>{String(i+1).padStart(2,'0')} <span>{p.nom}</span></button>)}</div></div>
+</div>
+</> : null}
+<script>import '@/lib/solutions-scenes';</script>
+
+<style>
+.solution-apercu{height:100%;display:grid;align-content:center;gap:12px;font-size:var(--t-xs);color:var(--texte-2);padding:20px 24px;background:var(--surface-feuille)}
+.solution-apercu strong{display:block;color:var(--texte);font-weight:500}
+.solution-apercu>div{display:grid;gap:6px}
+.apercu-memoire{border-top:1px solid var(--ligne-douce);padding-top:12px;grid-template-columns:28px 1fr;align-items:center}
+.apercu-memoire span{grid-column:2}
+.modele-apercu>div{border-left:2px solid var(--accent);padding:6px 16px;background:var(--surface-page)}
+</style>

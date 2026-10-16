@@ -1,28 +1,21 @@
 ---
 import Picto from '@/components/Picto.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
 interface Props { contenu?: ContenuAccueil['garanties']; }
 const { contenu = contenuDe('ec').garanties } = Astro.props;
 
-/**
- * S3 — Garanties (spec §4.9), à la place des logos clients.
- * Chaque garantie est un lien vers la question FAQ qui la détaille.
- *
- * Système de page : un titre de section et son lien d'action ; la maquette encadrée à droite ;
- * les six garanties, nommées par leur seul libellé, en liste de liens (pictogramme, libellé,
- * flèche), là où des tuiles à libellé centré parlaient une autre langue.
- */
+/** Recette A du 15/10/2026 : contenu et ancres conservés, cadres commerciaux retirés. */
 ---
 
 <section id="garanties" class="section garanties" aria-labelledby="garanties-titre">
   <div class="conteneur pile">
-    <ProofRow id={contenu.image}>
+    <BlocEditorial>
       <div class="tete rv">
         <h2 id="garanties-titre">{contenu.titre}</h2>
         <a class="lien-action" href="#questions">{contenu.invitation} <Picto nom="fleche" taille={14} /></a>
       </div>
-    </ProofRow>
+    </BlocEditorial>
     <div class="liens-bloc">
       <ul class="liens rv" data-garanties>
         {contenu.liens.map((g) => (

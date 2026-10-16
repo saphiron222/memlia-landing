@@ -1,6 +1,10 @@
 ---
 import Base from '@/layouts/Base.astro';
-import Hero from '@/components/sections/Hero.astro';
+import QuiPrendCeMetier from '@/components/sections/QuiPrendCeMetier.astro';
+import { AGENTS } from '@/data/specialistes';
+import Hero from '@/components/editorial/HeroEditorial.astro';
+import {sceneSociale} from '@/data/scenes-figurines';
+import '@/styles/editorial.css';
 import Orientation from '@/components/sections/Orientation.astro';
 import Quotidien from '@/components/sections/Quotidien.astro';
 import Promesse from '@/components/sections/Promesse.astro';
@@ -34,7 +38,7 @@ const references = {
   secret: [{ texte: 'L.821-35', href: commerce }],
 };
 const url = `${SITE.url}${SEO_CAC.chemin}`;
-const image = '/proofs/cac/og/accueil-selection-tiers.webp';
+const image = '/illustrations/figurines/cac-1200.webp';
 const service = { ...serviceNode({
   chemin: SEO_CAC.chemin,
   audienceType: 'Cabinets de commissariat aux comptes',
@@ -54,14 +58,14 @@ const schema = { '@context': 'https://schema.org', '@graph': [
 ] };
 ---
 <Base titre={SEO_CAC.titre} titreSocial={contenu.hero.titre} description={SEO_CAC.description}
-  chemin={SEO_CAC.chemin} schema={schema} socialImage={{ url: `${SITE.url}${image}`, width: 1200, height: 630,
-    alt: 'Sélection fictive des tiers à circulariser, critères et validation humaine.' }}>
-  <link slot="head" rel="preload" as="image" href={contenu.hero.poster} fetchpriority="high" />
-  <div class="feuille">
+  chemin={SEO_CAC.chemin} schema={schema} socialImage={sceneSociale('cac')}>
+  <div class="feuille editorial-page">
     <Hero contenu={contenu.hero} />
-    <Orientation contenu={contenu.orientation} />
+    <Quotidien contenu={contenu.quotidien} scene="cac" />
+    <Orientation contenu={contenu.orientation} cac />
+    <div class="catalogue-section"><QuiPrendCeMetier agent={AGENTS.find(a=>a.slug==='missions-audit')!}/></div>
     <CouvertureCac />
-    <Quotidien contenu={contenu.quotidien} />
+
     <Promesse contenu={contenu.promesse} />
     <Usages contenu={contenu.usages} />
     <Methode contenu={contenu.methode}>

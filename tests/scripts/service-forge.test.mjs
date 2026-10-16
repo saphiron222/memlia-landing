@@ -19,7 +19,27 @@ import { COPY, TEXT, URL } from './dila-copy-fixture.mjs';
 
 const SLUG = 'tache-de-test';
 const JOUR = '2026-09-20';
-test('le pont commercial contextualisé compte sans modifier le Markdown scellé du blog', async () => {
+test('le pont historique ne valide plus un service retiré du catalogue agents',async()=>{
+ const root=racineDeTest();
+ try{
+  const {verifierLiensEntrantsService}=await import('../../scripts/service-forge.mjs');
+  mkdirSync(join(root,'src/pages'),{recursive:true});mkdirSync(join(root,'config'),{recursive:true});
+  const file=join(root,'src/pages/automatisation-cabinet-comptable.astro');
+  const ledger=join(root,'config/service-publication-ledger.json');
+  writeFileSync(file,"---\nimport HubRobots from '../components/catalogue/HubRobots.astro';\n---\n<HubRobots />");
+  writeFileSync(ledger,JSON.stringify({catalogueMode:'robots-routines',catalogueDecision:{date:'2026-10-15',reason:'Remplacement demandé du catalogue de services par les routines robots ; les parcours contextuels existants sont conservés.'}}));
+  const hubLink={url:'/automatisation-cabinet-comptable',sourcePath:'src/pages/automatisation-cabinet-comptable.astro',anchor:'Ancienne ancre de service'};
+  const errors=[];verifierLiensEntrantsService(root,{...recette(),path:'/automatisation/paie',incomingLinks:[hubLink]},errors);
+  assert.ok(errors.some(e=>e.startsWith(hubLink.url)), 'Un ancien service retiré ne peut plus emprunter le pont des robots');
+  for(const change of ['unknown','decision','component']){
+   if(change==='decision')writeFileSync(ledger,'{}');
+   if(change==='component')writeFileSync(file,'<main>Catalogue vide</main>');
+   const invalid=[];verifierLiensEntrantsService(root,{...recette(),path:change==='unknown'?'/automatisation/absent':'/automatisation/paie',incomingLinks:[hubLink]},invalid);
+   assert.ok(invalid.some(e=>e.startsWith(hubLink.url)),change);
+  }
+ }finally{rmSync(root,{recursive:true,force:true});}
+});
+test('le pont commercial migré ne republie pas l’ancien service depuis le Markdown scellé', async () => {
   const root = racineDeTest();
   try {
     const slug = 'controler-les-bulletins-de-paie-avant-la-dsn';
@@ -36,7 +56,7 @@ test('le pont commercial contextualisé compte sans modifier le Markdown scellé
     const { verifierLiensEntrantsService } = await import('../../scripts/service-forge.mjs');
     const errors = [];
     verifierLiensEntrantsService(root, { ...recipe, incomingLinks: [recipe.incomingLinks[0], ...recette().incomingLinks.slice(1)] }, errors);
-    assert.ok(!errors.some((error) => error.startsWith(`/blog/${slug}`)), errors.join('\n'));
+    assert.ok(errors.some((error) => error.startsWith(`/blog/${slug}`)), 'Le lien vise désormais Salomé ; il ne valide plus le service retiré');
     recipe.incomingLinks[0].anchor = 'ancre non rendue';
     const wrongAnchor = [];
     verifierLiensEntrantsService(root, recipe, wrongAnchor);

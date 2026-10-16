@@ -4,12 +4,13 @@ import { famillesDeLaProfession } from '../../src/data/familles';
 for (const width of [320, 375, 768, 1024, 1440, 1920]) {
   test(`copy publique et frontières, ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     for (const [route, phrases] of [
-      ['/garanties', ['Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation', 'Votre équipe décide de la suite.', 'Les flux du service sont documentés par mission']],
-      ['/contact', ['un cas courant et une exception', 'comprendre la page du site à l’origine de ma demande']],
-      ['/automatisation-cabinet-comptable', ['La sélection des tiers à circulariser', 'Le commissaire aux comptes garde la sélection des travaux, leur appréciation et l’opinion.', 'l’environnement autorisé du cabinet']],
-      ['/methode', ['l’environnement autorisé du cabinet']],
-      ['/', ['Collecter, comparer, préparer', 'l’environnement autorisé du cabinet']],
+      ['/garanties', ['Le robot ou l’agent arrête le traitement concerné et en explique la raison.', 'Votre équipe peut corriger l’entrée, rétablir l’accès ou décider de la suite.', 'Les flux du service sont documentés par mission', 'la signature reste au CAC']],
+      ['/contact', ['Votre besoin, vos outils et le résultat attendu', 'Décrivez le geste sans donnée client', 'comprendre la page du site à l’origine de ma demande']],
+      ['/automatisation-cabinet-comptable', ['une routine précise : un déclencheur, une règle écrite, un résultat dans vos outils', 'Votre équipe reprend les exceptions et valide les actions qui engagent le cabinet.']],
+      ['/methode', ['Elle accepte ou refuse la mise en service.', 'Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.']],
+      ['/', ['Nous déployons nos robots et agents IA dans vos outils, avec vos règles et vos validations.', 'Nous déployons et adaptons les robots et agents déjà conçus.', 'Si votre besoin dépasse le catalogue, nous prolongeons leur prise en charge ou construisons sur mesure.', 'Aucun envoi externe sans validation humaine.']],
     ] as const) {
       await page.goto(route);
       await expect(page.locator('h1')).toHaveCount(1);
@@ -20,7 +21,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
       if (route === '/') {
         const familles = famillesDeLaProfession('ec');
         const poles = new Set(familles.map(({ pole }) => pole));
-        await expect(page.locator('#usages')).toContainText(`${familles.length} familles de tâches, ${poles.size} pôles pour l’expertise comptable`);
+        await expect(page.locator('#usages')).toContainText(`${familles.length} familles de tâches dans ${poles.size} pôles`);
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       if (route === '/methode') {
@@ -35,16 +36,22 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/integrations');
     const products = [
-      ['Sage 100 Comptabilité', ['rapprochement-bancaire-sage', 'lettrage-sage', 'saisie-comptable-sage', 'cloture-sage']],
-      ['Sage 100 Paie & RH', ['dsn-sage', 'bulletin-de-paie-sage']],
-      ['Cegid Loop', ['lettrage-cegid']],
-      ['mySilae', ['dsn-silae', 'bulletin-de-paie-silae']],
+      ['sage-100-comptabilite', 'Sage 100 Comptabilité'],
+      ['sage-100-paie-rh', 'Sage 100 Paie & RH'],
+      ['cegid-loop', 'Cegid Loop'],
+      ['silae', 'Silae'],
     ] as const;
-    for (const [product, slugs] of products) {
-      const section = page.locator('section').filter({ has: page.getByRole('heading', { name: product, exact: true }) });
-      const hrefs = await section.locator('a[href^="/integrations/"]').evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
-      expect(hrefs).toEqual(slugs.map((slug) => `/integrations/${slug}`));
+    for (const [id, product] of products) {
+      const carte = page.locator(`[data-connecteur="${id}"]`);
+      await expect(carte.getByRole('heading', { name: product, exact: true })).toBeVisible();
+      await expect(carte.locator('img')).toHaveCount(1);
+      await expect(carte.locator('img')).toHaveAttribute('alt', '');
+      await expect(carte.locator('.connecteur-ligne')).not.toBeEmpty();
     }
+    await expect(page.locator('main a[href^="/integrations/"]')).toHaveCount(0);
+    await expect(page.locator('main')).toContainText('Vos outils. Nos robots et agents IA.');
+    await expect(page.locator('main')).toContainText('Votre logiciel n’est pas listé ? Nous l’intégrons sur demande.');
+    for (const href of ['/automatisation-cabinet-comptable', '/agents-ia']) await expect(page.locator(`main a[href="${href}"]`).first()).toBeAttached();
     for (const [route, slugs] of [
       ['paie-dsn-cabinet-comptable', ['controler-les-bulletins-de-paie-avant-la-dsn', 'comprendre-les-comptes-rendus-metier-dsn', 'suivre-la-production-sociale-dans-excel']],
       ['gestion-pieces-comptables', ['automatiser-la-relance-des-pieces-clients', 'automatiser-la-saisie-comptable-ce-qui-reste-a-verifier']],

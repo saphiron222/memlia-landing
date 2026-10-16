@@ -1,11 +1,20 @@
 ---
-import PageCommerciale from '@/layouts/PageCommerciale.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import GrilleEditoriale from '@/components/editorial/GrilleEditoriale.astro';
+import ListeEditoriale from '@/components/editorial/ListeEditoriale.astro';
+import PageEditoriale from '@/layouts/PageEditoriale.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
+import SceneTravail from '@/components/editorial/SceneTravail.astro';
 import Button from '@/components/Button.astro';
 import Picto, { type NomPicto } from '@/components/Picto.astro';
 import Courriel from '@/components/Courriel.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { CTA, SITE } from '@/data/site.mjs';
+import { ROBOTS, contactsRobots } from '@/data/robots';
+import { FICHES } from '@/data/specialistes';
+import { CONTACTS_SOLUTIONS } from '@/data/contacts-solutions';
+import { contactsAgents } from '@/data/contacts-agents';
+const tachesRobots = contactsRobots();
+const tachesAgents = contactsAgents();
 
 const page = PAGES_V2.contact;
 const url = `${SITE.url}${page.chemin}`;
@@ -14,24 +23,24 @@ const noeuds = [{
   inLanguage: SITE.langue, isPartOf: { '@id': `${SITE.url}/#website` },
 }];
 const preparer: { picto: NomPicto; titre: string; texte: string }[] = [
-  { picto: 'flux', titre: 'Le geste', texte: 'Ce que quelqu’un refait chaque semaine ou chaque mois, décrit en une phrase.' },
-  { picto: 'excel', titre: 'Les outils', texte: 'D’où viennent les fichiers, où va le résultat.' },
-  { picto: 'coche', titre: 'Le résultat attendu', texte: 'Ce qui devrait exister à la fin, et qui le vérifie aujourd’hui.' },
+  { picto: 'flux', titre: 'Le service ou le besoin', texte: 'La routine, le métier, le savoir à retrouver ou les formats que l’IA doit apprendre.' },
+  { picto: 'excel', titre: 'Vos outils et vos dossiers', texte: 'Les logiciels utilisés, les sources à lire et les dossiers concernés.' },
+  { picto: 'coche', titre: 'Le résultat attendu', texte: 'Les documents ou tableaux à recevoir, leur fréquence et les validations à conserver.' },
 ];
 const appel = {
   titre: 'Vous préférez en parler de vive voix ?',
-  texte: 'Réservez un créneau pour parcourir la tâche ensemble. Vous pouvez aussi nous écrire par courriel.',
-  points: ['Une tâche récurrente pour commencer.', 'Un échange sans engagement sur un développement.', 'Un devis établi selon la complexité de la tâche.'],
+  texte: 'Réservez un créneau pour choisir votre première prise en charge et préparer son déploiement. Vous pouvez aussi nous écrire par courriel.',
+  points: ['Un premier besoin et le service adapté.', 'Une adaptation ou du sur mesure selon votre besoin.', 'Un devis avant de lancer le déploiement.'],
   action: CTA.rendezVous,
   secondaire: { libelle: 'Écrire à Memlia', href: `mailto:${SITE.email}` },
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Premier échange" hero="v2/18-hero-contact" appel={appel}>
+<PageEditoriale page={page} noeuds={noeuds} eyebrow="Premier échange" scene="contact" appel={appel}>
   <section class="pv" aria-labelledby="formulaire-titre">
     <div class="tete rv">
-      <h2 id="formulaire-titre">Décrivez la tâche</h2>
-      <p>Trois phrases suffisent. Nous répondons par courriel, sans envoi automatique.</p>
+      <h2 id="formulaire-titre">Parlons de votre premier déploiement.</h2>
+      <p>Indiquez le robot, l’agent, la mémoire collective ou le modèle privé qui vous intéresse, ou décrivez votre besoin sur mesure. Nous vous répondons par courriel pour préparer la suite.</p>
     </div>
     <div class="contact-grille">
       <form id="formulaire" class="contact-form rv" method="post" action="/api/contact" aria-labelledby="formulaire-titre" data-contact>
@@ -57,7 +66,17 @@ const appel = {
           <input id="courriel" name="courriel" type="email" required maxlength="254" autocomplete="email" inputmode="email" />
         </div>
         <div class="champ">
-          <label for="message">Le geste qui revient, vos outils, le résultat attendu</label>
+          <label for="tache_robot">Tâche à confier <span class="texte-2">(facultatif)</span></label>
+          <select id="tache_robot" name="tache_robot" aria-describedby="tache-aide">
+            <option value="">Choisir une tâche ou décrire la vôtre</option>
+            {ROBOTS.map((robot) => <optgroup label={robot.nom}>{tachesRobots.filter((tache) => tache.robot === robot.id).map((tache) => <option value={tache.id}>{tache.nom}</option>)}</optgroup>)}
+            {FICHES.filter(a=>a.publie).map(agent=><optgroup label={`${agent.prenom} · ${agent.libelle}`}>{tachesAgents.filter(t=>t.agent===agent.slug).map(t=><option value={t.id}>{t.nom}</option>)}</optgroup>)}
+          <optgroup label="Mémoire et modèles privés">{CONTACTS_SOLUTIONS.map(t=><option value={t.id}>{t.nom}</option>)}</optgroup>
+          </select>
+          <p id="tache-aide" class="champ-aide texte-2">Vous pouvez changer ce choix ou le laisser vide.</p>
+        </div>
+        <div class="champ">
+          <label for="message">Votre besoin, vos outils et le résultat attendu</label>
           <textarea id="message" name="message" required minlength="20" maxlength="4000" rows="7" aria-describedby="message-aide"></textarea>
           <p id="message-aide" class="champ-aide texte-2">Rien à envoyer : la description suffit. Décrivez le geste sans donnée client ; ce formulaire ne reçoit pas de fichier.</p>
         </div>
@@ -83,8 +102,9 @@ const appel = {
       </form>
 
       <aside class="contact-aside rv" aria-labelledby="preparer-titre">
+        <SceneTravail scene="contact"/>
         <h3 id="preparer-titre">Ce qu’il est utile de préparer</h3>
-        <p class="texte-2">Ces trois repères nous aident à comprendre le travail de votre équipe.</p>
+        <p class="texte-2">Ces repères nous permettent de proposer le déploiement et les adaptations utiles.</p>
         <ul class="lignes contact-lignes">
           {preparer.map((p) => (
             <li class="ligne">
@@ -96,45 +116,27 @@ const appel = {
             </li>
           ))}
         </ul>
-        <p class="mention">Pour commencer, décrivez une tâche récurrente, un cas courant et une exception. Nous regardons ensemble ce qui se prépare et ce que votre équipe garde à décider.</p>
+        <p class="mention">Vous n’avez pas encore choisi ? Décrivez le résultat recherché. Nous vous orientons vers le service adapté, depuis le catalogue ou avec un périmètre sur mesure.</p>
       </aside>
     </div>
   </section>
 
   <section class="pv" aria-labelledby="pasdemande">
     <div class="tete rv">
-      <h2 id="pasdemande">Nous partons du travail de votre équipe</h2>
+      <h2 id="pasdemande">Vous pouvez partir du catalogue ou de votre besoin.</h2>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Le geste qui se répète</h3><p class="carte-texte">Racontez un cas courant et une exception. Nous repérons les étapes répétitives et celles qui demandent le jugement de votre équipe.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Le savoir-faire à écrire</h3><p class="carte-texte">Nous faisons préciser la règle que vos collaborateurs appliquent aujourd’hui. Elle sert à définir la tâche à prendre en charge et les validations à conserver.</p></li>
-      </ul>
-    </div>
+    <ListeEditoriale>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Vous avez repéré une fiche.</h3><p class="editorial-point-texte">Donnez son nom et les dossiers concernés. Nous précisons avec vous les comptes, les outils, le classement et les validations nécessaires pour la déployer.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Votre tâche est particulière.</h3><p class="editorial-point-texte">Décrivez ce que votre équipe reçoit et ce qu’elle doit produire. Nous déterminons si une adaptation du catalogue suffit ou si une construction sur mesure est nécessaire.</p></li>
+      </ListeEditoriale>
   </section>
 
-  <section class="pv" aria-labelledby="ensuite">
-    <ProofRow id="v2/13-deux-issues">
-      <div class="pv-copy rv">
-        <h2 id="ensuite">Ce qui se passe ensuite</h2>
-        <p>L’échange dure une trentaine de minutes. Nous parcourons la tâche, ses outils et ses exceptions pour voir si sa règle peut s’écrire.</p>
-        <p class="texte-2">Si la tâche peut être prise en charge, nous vous proposons un cadrage : le résultat à livrer et ce que votre équipe garde à valider. Si elle n’est pas automatisable en l’état, nous vous expliquons ce qui bloque.</p>
-        <p class="texte-2">Le devis vient après ce cadrage. Il dépend des sources, des règles, des exceptions et des validations, jamais du nombre de personnes dans votre cabinet. La maintenance, le support et les évolutions y sont écrits.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="ensuite"><div class="tete"><h2 id="ensuite">Du premier échange au déploiement.</h2></div><GrilleEditoriale etapes><article><h3>Choisir le point de départ</h3><p>En une trentaine de minutes, nous parcourons la tâche, vos outils et les dossiers concernés. Nous retenons le service adapté : catalogue, mémoire collective ou modèle privé. Le sur mesure complète les besoins propres à votre cabinet.</p></article><article><h3>Définir la prise en charge</h3><p class="texte-2">Nous précisons le résultat, les accès, les adaptations et les validations. Vous recevez un périmètre et un devis selon la complexité, avec la maintenance, le support et les évolutions prévus.</p></article><article><h3>Adapter, vérifier et déployer</h3><p class="texte-2">Nous préparons l’installation et les essais. Votre équipe vérifie le résultat dans l’environnement autorisé avant d’accepter la mise en service. Nous assurons ensuite la maintenance convenue.</p></article></GrilleEditoriale>
   </section>
 
-  <section class="pv" aria-labelledby="canaux">
-    <ProofRow id="v2/12-avant-echange">
-      <div class="pv-copy rv">
-        <h2 id="canaux">Les canaux</h2>
-        <p>Le formulaire ci-dessus, un créneau réservé, ou un courriel : <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou <Courriel libelle="écrire à Memlia" /> à <Courriel />.</p>
-        <p class="texte-2">Le traitement de vos données de contact est décrit dans la <a href="/politique-de-confidentialite">politique de confidentialité</a>. Avant de nous parler, vous pouvez lire <a href="/automatisation-cabinet-comptable">ce que le service livre</a>, <a href="/methode">comment se déroule une mission</a> ou <a href="/garanties">ce que nous refusons de faire</a>.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="canaux"><div class="tete"><h2 id="canaux">Échangeons comme vous le préférez.</h2></div><GrilleEditoriale colonnes={2}><article><h3>Par formulaire, en visio ou par courriel</h3><p>Utilisez le formulaire, <a href={CTA.rendezVous.href} rel="noopener">{CTA.rendezVous.libelle}</a>, ou choisissez d’<Courriel libelle="écrire à Memlia" /> à <Courriel />.</p></article><article><h3>Préparer votre choix</h3><p class="texte-2">Explorez <a href="/automatisation-cabinet-comptable">les robots et leurs livrables</a>, <a href="/methode">les étapes de mise en service</a> et <a href="/garanties">nos engagements</a>. La <a href="/politique-de-confidentialite">politique de confidentialité</a> décrit le traitement de vos données de contact.</p></article></GrilleEditoriale>
   </section>
-</PageCommerciale>
+</PageEditoriale>
 
 <script>
   import { MESSAGES_CONTACT, MESSAGE_CONTACT_DEFAUT } from '@/data/contact-messages.mjs';
@@ -143,6 +145,13 @@ const appel = {
    * Sans JavaScript, il fonctionne tel quel : la fonction redirige vers une page de réponse.
    */
   const formulaire = document.querySelector<HTMLFormElement>('[data-contact]');
+  const choixTache = document.querySelector<HTMLSelectElement>('#tache_robot');
+  try {
+    const identifiant = sessionStorage.getItem('memlia-tache');
+    sessionStorage.removeItem('memlia-tache');
+    if (choixTache && identifiant && Array.from(choixTache.options).some((option) => option.value === identifiant)) choixTache.value = identifiant;
+  } catch { /* Le formulaire garde son choix facultatif vide. */ }
+
   const etat = document.querySelector<HTMLElement>('[data-etat]');
   const afficherEtat = (texte: string, ok: boolean) => {
     if (!etat) return;
@@ -250,7 +259,7 @@ const appel = {
    * trop étroite pour le tiers et les deux tiers.
    */
   .contact-grille { display: grid; gap: var(--bloc-ecart); }
-  .contact-form { display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
+  .contact-form { scroll-margin-top: 100px; display: grid; gap: 20px; padding: var(--carte-marge); border: 1px solid var(--ligne); border-radius: var(--r-carte); background: var(--surface-feuille); box-shadow: var(--ombre-xs); }
   .champ { display: grid; gap: 8px; }
   .champ label { font-weight: 500; color: var(--texte-fort); }
   .champ input[type='text'], .champ input[type='email'], .champ textarea, .champ select {
@@ -276,7 +285,7 @@ const appel = {
   @media (min-width: 48rem) { .contact-form { padding: var(--carte-marge-lg); } }
   @media (min-width: 64rem) {
     .contact-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--espace-16); align-items: start; }
-    .contact-aside { position: sticky; top: calc(var(--nav-h) + 32px); }
+    .contact-aside { align-self: start; }
     .contact-lignes .ligne { grid-template-columns: minmax(0, 1fr); }
     .contact-lignes .ligne > :first-child { padding-right: 0; }
   }

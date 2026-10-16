@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { CONTENU_CAC, SEO_CAC, COUVERTURE_CAC, FRONTIERE_CAC, MEDIAS_CAC } from '../../src/data/accueil/cac.ts';
-const copy = readFileSync(new URL('../../docs/strategy/site-v3/cac/accueil-cac/COPY.md', import.meta.url), 'utf8');
+const copy = readFileSync(new URL('../../docs/strategy/site-v3/coherence-figurines/COPY-CAC-CATALOGUE.md', import.meta.url), 'utf8');
 const strings = value => typeof value === 'string' ? [value] : Object.values(value).flatMap(strings);
 
 test('E1 livre les onze sections, les cinq orientations et les onze questions CAC', () => {

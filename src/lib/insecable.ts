@@ -10,6 +10,12 @@ export interface Segment {
   insecable: boolean;
 }
 
+/** Sous 360 px, un composé peut céder à son dernier trait d’union ; la ponctuation reste attachée. */
+export function composePonctue(texte: string): [string, string] | null {
+  const pieces = texte.match(/^(.+-)([^-]+[   ][:;!?»])$/u);
+  return pieces ? [pieces[1], pieces[2]] : null;
+}
+
 const MOT = String.raw`[\p{L}\p{N}’']+(?:-[\p{L}\p{N}’']+)*`;
 const ESPACE = String.raw`[   ]+`;
 const GROUPE_INSECABLE = new RegExp(

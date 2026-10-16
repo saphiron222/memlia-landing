@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync, readdirSync, unlinkSync, existsSync } from
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const SITEMAP_TYPES = ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac'];
+export const SITEMAP_TYPES = ['pages', 'services', 'guides', 'outils', 'blog', 'glossaire', 'cac', 'agents'];
 const namespace = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 const declaration = '<?xml version="1.0" encoding="UTF-8"?>';
-const prefixes = { services: '/automatisation', guides: '/integrations', outils: '/outils-comptables-gratuits', blog: '/blog', glossaire: '/glossaire', cac: '/commissaires-aux-comptes' };
+const prefixes = { services: '/automatisation', guides: '/integrations', outils: '/outils-comptables-gratuits', blog: '/blog', glossaire: '/glossaire', cac: '/commissaires-aux-comptes', agents: '/agents-ia' };
 
 /** La profession ne déplace pas les services/outils hors de leur type de page. */
 export function sitemapType(url) {
@@ -18,6 +18,23 @@ export function readSitemapPages(dist) {
   return readdirSync(dist).filter(name => /^sitemap(?:-[^/]+)?\.xml$/.test(name)).sort()
     .map(name => readFileSync(join(dist, name), 'utf8'))
     .filter(xml => /<urlset(?:\s|>)/.test(xml)).join('\n');
+}
+
+/** La synchronisation du registre doit aussi mettre à jour l'artefact de prévisualisation. */
+export function syncSitemapLastmod(dist, pages) {
+  const xml = readSitemapPages(dist).replace(/<url(?:\s[^>]*)?>[\s\S]*?<\/url>/g, entry => {
+    const location = entry.match(/<loc>([^<]+)<\/loc>/)?.[1];
+    const route = location ? new URL(location).pathname.replace(/\/$/, '') || '/' : undefined;
+    const lastmod = pages[route]?.lastmod;
+    if (!lastmod) return entry; // Les articles gardent la date de leur frontmatter.
+    return /<lastmod>/.test(entry)
+      ? entry.replace(/<lastmod>[^<]+<\/lastmod>/, `<lastmod>${lastmod}</lastmod>`)
+      : entry.replace('</loc>', `</loc><lastmod>${lastmod}</lastmod>`);
+  });
+  if (!xml.includes('<urlset')) throw new Error('Sitemap absent : dates non synchronisées.');
+  const entries = [...xml.matchAll(/<url(?:\s[^>]*)?>[\s\S]*?<\/url>/g)].map(m => m[0]);
+  writeFileSync(join(dist, 'sitemap-0.xml'), `${declaration}<urlset xmlns="${namespace}">${entries.join('')}</urlset>`);
+  splitSitemaps(dist, 'https://memlia.fr');
 }
 
 /** Partitionne la sortie Astro sans réécrire les blocs url ni leurs lastmod. */

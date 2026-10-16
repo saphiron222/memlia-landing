@@ -1,0 +1,278 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import { decouperArret, texteDuRejeu } from '@/data/specialistes/gabarit';
+import type { Demonstration } from '@/data/specialistes';
+
+/**
+ * Le rejeu d'une démonstration (spec §2.1) : la règle écrite d'une tâche, puis ses quatre cas joués sur un dossier
+ * fictif, dans un tableau HTML accessible (Cas joué, Sortie obtenue, Décision). Prend une `Demonstration`, pas une
+ * fiche : `/integrations` le rend pour Octavie sous son bandeau (tâche 8).
+ *
+ * Une ligne Arrêt est barrée : le cas et ce qui n'a pas été proposé. Son motif, après « Motif : », reste lisible et
+ * sans trait. Chaque ligne porte son issue (`data-issue`) et sa puce. Rendu au build : aucun script, aucun minuteur,
+ * aucun compteur, aucun champ simulé. En pied, la page où la règle est publiée, seulement si elle existe.
+ */
+interface Props {
+  demonstration: Demonstration;
+  /** Préfixe des identifiants, si deux rejeux devaient vivre sur une même page. */
+  id?: string;
+  /** La page service où la règle est écrite ; absente, aucun lien n'est rendu. */
+  source?: { href: string; libelle: string };
+}
+const { demonstration, id = 'rejeu', source } = Astro.props;
+const texte = texteDuRejeu(demonstration);
+const lignes = demonstration.cas.map((unCas) => ({ ...unCas, arret: unCas.issue === 'Arrêt' ? decouperArret(unCas.sortie) : null }));
+---
+
+<section class="agent-rejeu" aria-labelledby={`${id}-titre`} data-agent-rejeu>
+  <div class="agent-rejeu-tete">
+    <span class="agent-rejeu-picto" aria-hidden="true"><Picto nom="fictif" taille={20} /></span>
+    <h2 id={`${id}-titre`} class="agent-rejeu-titre">{texte.entete}</h2>
+  </div>
+  <p class="agent-rejeu-dossier"><Insecable texte={demonstration.dossier} /></p>
+  <div class="agent-rejeu-regle">
+    <p class="agent-rejeu-regle-libelle">{texte.regle}</p>
+    <p class="agent-rejeu-regle-texte">{demonstration.regle}</p>
+  </div>
+  <div class="agent-rejeu-tableau">
+    <table>
+      <caption class="sr-only">{texte.legende}</caption>
+      <thead>
+        <tr>{texte.colonnes.map((colonne) => <th scope="col">{colonne}</th>)}</tr>
+      </thead>
+      <tbody>
+        {lignes.map((ligne) => (
+          <tr data-issue={ligne.issue}>
+            <th scope="row" data-label={texte.colonnes[0]}>
+              {ligne.arret ? <span class="agent-rejeu-barre" data-barre>{ligne.cas}</span> : ligne.cas}
+            </th>
+            <td data-label={texte.colonnes[1]}>
+              {ligne.arret ? (
+                <Fragment><span class="agent-rejeu-barre" data-barre>{ligne.arret.barre}</span> <span class="agent-rejeu-motif" data-motif>{ligne.arret.motif}</span></Fragment>
+              ) : ligne.sortie}
+            </td>
+            <td data-label={texte.colonnes[2]}>
+              <span class="agent-issue" data-issue-puce={ligne.issue}>{ligne.issue}</span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  {source && (
+    <p class="agent-rejeu-pied">{texte.source} <a href={source.href}>{source.libelle}</a></p>
+  )}
+</section>
+
+<style>
+  /* Le rejeu est un dossier posé sur la feuille : plateau blanc, bord et rayon du cadre unique, aucune ombre levée.
+     Le tableau passe en lignes empilées sous 34 rem de largeur propre (requête de conteneur) : à droite du héros
+     dès 64 rem, il peut être étroit sur une page large. */
+  .agent-rejeu {
+    display: grid;
+    gap: var(--espace-4);
+    min-width: 0;
+    padding: var(--espace-5);
+    border: 1px solid var(--ligne);
+    border-radius: var(--cadre-rayon);
+    background: var(--surface-elevee);
+  }
+  .agent-rejeu-tete {
+    display: flex;
+    align-items: center;
+    gap: var(--espace-2);
+  }
+  .agent-rejeu-picto {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--ligne);
+    border-radius: var(--r-pastille);
+    background: var(--surface-page);
+    color: var(--accent-texte);
+  }
+  .agent-rejeu-titre {
+    font-size: var(--titre-ligne);
+    line-height: 1.3;
+  }
+  .agent-rejeu-dossier {
+    margin: 0;
+    color: var(--texte-2);
+    font-size: var(--t-sm);
+  }
+  /* La règle rejouée, citée avant ses cas : un filet vert la rattache au mécanisme nommé. */
+  .agent-rejeu-regle {
+    display: grid;
+    gap: var(--espace-1);
+    padding: var(--espace-1) 0 var(--espace-1) var(--espace-4);
+    border-left: 2px solid var(--accent-appui);
+  }
+  .agent-rejeu-regle p {
+    margin: 0;
+  }
+  .agent-rejeu-regle-libelle {
+    font-size: var(--t-sm);
+    font-weight: 600;
+    color: var(--accent-texte);
+  }
+  .agent-rejeu-regle-texte {
+    font-size: var(--t-sm);
+    line-height: 1.55;
+    color: var(--texte);
+  }
+  .agent-rejeu-tableau {
+    container-type: inline-size;
+    min-width: 0;
+    border: 1px solid var(--ligne-douce);
+    border-radius: var(--r-boite);
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--t-sm);
+    line-height: 1.5;
+  }
+  th,
+  td {
+    padding: var(--espace-3);
+    border-bottom: 1px solid var(--ligne-douce);
+    text-align: left;
+    vertical-align: top;
+  }
+  thead th {
+    background: var(--surface-page);
+    color: var(--texte-fort);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  tbody th {
+    width: 36%;
+    font-weight: 600;
+    color: var(--texte-fort);
+  }
+  td {
+    color: var(--texte-2);
+  }
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+  td:last-child {
+    width: 1%;
+    white-space: nowrap;
+  }
+  /* La ligne arrêtée : le cas et ce qui n'a pas été proposé sont barrés ; le motif reste plein et lisible. */
+  .agent-rejeu-barre {
+    color: var(--texte-2);
+    font-weight: 400;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--texte-2);
+  }
+  .agent-rejeu-motif {
+    color: var(--texte-fort);
+    text-decoration: none;
+  }
+  /* Une puce par issue : les couleurs de signal du système, jamais décoratives. Le texte dit l'issue ; la couleur
+     seule n'en porte aucune. */
+  .agent-issue {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .agent-issue::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  [data-issue-puce='Préparé'] {
+    background: var(--accent-voile);
+    color: var(--accent-texte);
+  }
+  [data-issue-puce='À valider'] {
+    background: var(--ocre-voile);
+    color: var(--ocre);
+  }
+  [data-issue-puce='Arrêt'] {
+    background: var(--rouge-voile);
+    color: var(--rouge);
+  }
+  .agent-rejeu-pied {
+    margin: 0;
+    font-size: var(--mention);
+    color: var(--texte-2);
+  }
+  .agent-rejeu-pied a {
+    font-weight: 600;
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  @container (max-width: 33.99rem) {
+    thead {
+      display: none;
+    }
+    table,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: auto;
+    }
+    tr {
+      display: grid;
+      gap: var(--espace-2);
+      padding: var(--espace-4);
+      border-bottom: 1px solid var(--ligne-douce);
+    }
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+    th,
+    td {
+      padding: 0;
+      border: 0;
+    }
+    tbody th,
+    td:last-child {
+      width: auto;
+    }
+    td[data-label]::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 2px;
+      font-size: var(--t-xs);
+      font-weight: 600;
+      color: var(--texte-fort);
+    }
+    /* La décision vient en tête de la ligne empilée : on lit l'issue, puis le cas. */
+    td:last-child {
+      order: -1;
+    }
+    td:last-child::before {
+      content: none;
+    }
+  }
+  @media (min-width: 48rem) {
+    .agent-rejeu {
+      padding: var(--espace-6);
+    }
+  }
+  @media (forced-colors: active) {
+    .agent-issue {
+      border: 1px solid CanvasText;
+    }
+  }
+</style>

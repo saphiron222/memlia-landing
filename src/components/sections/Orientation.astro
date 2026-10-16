@@ -1,51 +1,13 @@
 ---
+import ChoisirTache from '@/components/editorial/ChoisirTache.astro';
 import Picto from '@/components/Picto.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
-interface Props { contenu?: ContenuAccueil['orientation']; }
-const { contenu = contenuDe('ec').orientation } = Astro.props;
+interface Props { contenu?: ContenuAccueil['orientation']; cac?:boolean; }
+const { contenu = contenuDe('ec').orientation, cac=false } = Astro.props;
 
-/**
- * Les quatre résumés d'orientation de l'accueil (copy transversale, section « Accueil —
- * les résumés qui mènent aux nouvelles pages »).
- *
- * L'accueil oriente ; il ne détaille pas. Sans ce bloc, les cinq pages du site v2
- * n'étaient atteignables que par le bandeau et le pied de page : aucun lien de corps,
- * donc aucun chemin de lecture depuis la page d'entrée.
- *
- * Système de page : quatre destinations décrites par une phrase, donc quatre cartes (2 × 2),
- * chacune finie par le lien d'action ; cinq services nommés par leur seul libellé, donc une
- * liste de liens.
- */
+/** Recette A du 15/10/2026 : contenu et ancres conservés, cadres commerciaux retirés. */
 const { destinations, services } = contenu;
 ---
 
-<section class="section orientation" aria-labelledby="orientation-titre">
-  <div class="conteneur pile">
-    <div class="tete">
-      <h2 id="orientation-titre">{contenu.titre}</h2>
-    </div>
-    <ul class="cartes">
-      {destinations.map((d) => (
-        <li class="carte">
-          <div class="carte-corps">
-            <p class="carte-texte">{d.texte}</p>
-            <a class="carte-action carte-lien" href={d.href}>{d.libelle}<Picto nom="fleche" taille={14} /></a>
-          </div>
-        </li>
-      ))}
-    </ul>
-    <nav class="liens-bloc" aria-label="Pages de service">
-      <span class="liens-titre">{contenu.invitation}</span>
-      <ul class="liens">
-        {services.map((service) => (
-          <li>
-            <a class="lien-rangee" href={service.href}>
-              <span class="lien-libelle">{service.libelle}</span>
-              <Picto nom="fleche" taille={14} class="lien-fleche" />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  </div>
-</section>
+<div class="orientation"><span id="orientation-titre"></span><ChoisirTache titre={contenu.titre} cac={cac}/><nav class="section conteneur orientation-renvois" aria-label="Comprendre le service et voir des tâches"><ul class="liens">{destinations.map(d=><li><a class="lien-rangee" href={d.href}><span class="lien-libelle">{d.libelle}<span class="lien-detail">{d.texte}</span></span><Picto nom="fleche" taille={14}/></a></li>)}</ul><div class="liens-bloc"><p class="liens-titre">{contenu.invitation}</p><ul class="liens">{services.map(service=><li><a class="lien-rangee" href={service.href}><span class="lien-libelle">{service.libelle}</span><Picto nom="fleche" taille={14}/></a></li>)}</ul></div></nav></div>
+<style>.orientation-renvois{display:grid;gap:40px;padding-top:40px}@media(min-width:64rem){.orientation-renvois{grid-template-columns:1fr 1fr;gap:64px}}</style>

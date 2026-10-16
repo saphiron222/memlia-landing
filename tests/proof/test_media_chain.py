@@ -67,5 +67,7 @@ class MediaChainProof(unittest.TestCase):
 
     def test_method_coverage_without_added_captions(self):
         html = (DIST / 'index.html').read_text()
-        self.assertEqual(sorted(re.findall(r'data-proof="(0[4-7]-[a-z]+)"', html)), ['04-observer', '05-cadrer', '06-eprouver', '07-livrer'])
+        self.assertEqual(re.findall(r'data-etape="([0-9]+)"', html), ['0', '1', '2', '3'])
+        for title in ['Choisir la tâche.', 'Adapter à vos outils.', 'Vérifier avec votre équipe.', 'Déployer et maintenir.']:
+            self.assertIn(title, html)
         self.assertNotIn('Illustration de fonctionnement sur données fictives, pas une capture produit.', html)

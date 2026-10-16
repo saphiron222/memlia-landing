@@ -1,3 +1,6 @@
+import { createHash } from 'node:crypto';
+import { MIGRATION_CATALOGUES } from '../../src/data/migrations-catalogues.mjs';
+import { FICHES, ficheDe } from '../../src/data/specialistes.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -11,7 +14,15 @@ test('les annonces hors portail ont leur couverture et leur intention propres', 
   assert.deepEqual([...new Set(couverture.dejaFait.map((geste) => geste.outil))], ['mySilae', 'PayFit']);
   assert.match(couverture.reste.join(' '), /seulement pour une entrée hors portail/);
   const intent = JSON.parse(read('config/page-intent-contract.json')).pages[`/automatisation/${slug}`];
-  assert.equal(intent.query, 'automatisation entrées sorties salariés cabinet comptable');
+  assert.equal(intent, undefined, 'la route retirée ne réserve plus une intention publique');
+  const migration = MIGRATION_CATALOGUES.routes.find(row => row.from === `/automatisation/${slug}`);
+  const recipe = JSON.parse(read(migration.archive.path));
+  assert.equal(recipe.primaryQuery, 'automatisation entrées sorties salariés cabinet comptable');
+  assert.equal(createHash('sha256').update(read(migration.archive.path)).digest('hex'), migration.archive.sha256);
+  const agent = FICHES.find(item => item.slug === 'paie-social');
+  const index = ficheDe(agent).taches.findIndex(item => item.famille === recipe.family);
+  assert.ok(index >= 0);
+  assert.equal(migration.to, `/agents-ia/paie-social#tache-${recipe.family}-${index + 1}`);
 });
 
 test('la scène spécifique conserve les sept cas sans cartouche promotionnel', () => {

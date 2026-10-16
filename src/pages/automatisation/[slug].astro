@@ -1,21 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
 import Service from '@/layouts/Service.astro';
+import RobotLayout from '@/layouts/Robot.astro';
+import { ROBOTS } from '@/data/robots';
+import { estRouteRetiree } from '@/data/migrations-catalogues.mjs';
 import { eeatService, lierSources } from '@/data/page-eeat';
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
-  return services.map((entree) => ({ params: { slug: entree.id }, props: { entree } }));
+  const services = (await getCollection('services')).filter(entree => !estRouteRetiree(`/automatisation/${entree.id}`));
+  const routes = new Set(services.map((entree) => entree.id));
+  for (const robot of ROBOTS) if (routes.has(robot.slug)) throw new Error(`Collision service / robot : ${robot.slug}`);
+  return [...services.map((entree) => ({ params: { slug: entree.id }, props: { entree, robot: null } })), ...ROBOTS.map((robot) => ({ params: { slug: robot.slug }, props: { entree: null, robot } }))];
 }
 
-const { entree } = Astro.props;
+const { entree, robot } = Astro.props;
 // Le corps rendu de la fiche, chaque source posée sur un mot de son texte (décision de Kevin du 06/10/2026) :
 // le fichier scellé de la fiche reste intact, seul son rendu porte les liens.
-const corps = entree.rendered?.html;
-if (!corps) throw new Error(`Corps rendu absent pour /automatisation/${entree.id}`);
-const html = lierSources(corps, eeatService(entree.id).sources);
+const corps = entree?.rendered?.html;
+if (!robot && !corps) throw new Error(`Corps rendu absent pour /automatisation/${entree.id}`);
+const html = entree && corps ? lierSources(corps, eeatService(entree.id).sources) : '';
 ---
 
-<Service entree={entree}>
-  <Fragment set:html={html} />
-</Service>
+{robot ? <RobotLayout robot={robot} /> : <Service entree={entree}><Fragment set:html={html} /></Service>}

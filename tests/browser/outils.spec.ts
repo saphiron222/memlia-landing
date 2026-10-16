@@ -1,7 +1,9 @@
+import {rendreLienOutilVisible} from './helpers/liens-outils';
 import { test, expect, type Page } from '@playwright/test';
 import { OUTILS, OUTILS_DISPONIBLES, outilPath } from '../../src/data/outils';
 import { readFile } from 'node:fs/promises';
 import { INPUT_FIELDS } from '../../src/lib/signification.mjs';
+import { OUTILS_VITRINE, outilVoisin } from '../../src/data/outils-vitrine';
 import { chargerImagesDifferees } from './helpers/images-chargees';
 
 const HUB = '/outils-comptables-gratuits';
@@ -21,13 +23,7 @@ const MARGE_SEUIL = 16;
 // Pages dont le texte propre à l'outil (src/components/outils/*) repousse encore le premier champ
 // sous le premier écran mobile 375×812 après les introductions raccourcies du 14/10/2026 (haut du
 // premier champ mesuré). La liste ne peut que rétrécir.
-const PREAMBULE_LONG_MOBILE: readonly string[] = [
-  'calculateur-roi-automatisation', // 819 px : consigne de saisie et trois scénarios
-  'generateur-prompt-expert-comptable', // 967 px : bibliothèque d'amorces avant la tâche
-  'generateur-prompt-ia-gratuit', // 845 px : exemples fictifs proposés avant la tâche
-  'generateur-relance-facture-impayee', // 805 px : statut et actions de session empilés
-  'seuil-signification-audit', // 803 px : statut et actions de session empilés
-];
+const PREAMBULE_LONG_MOBILE: readonly string[] = [];
 const PREAMBULE_LONG_BUREAU: readonly string[] = [];
 
 async function graphFrom(page: Page) {
@@ -75,30 +71,23 @@ test('hub : outils disponibles, une ligne par carte et schéma de collection', a
     await expect(card.locator('a')).toHaveCount(1);
     // Épure du 14/10/2026 : une carte = un titre, une ligne et le lien. Entrée, résultat et limite
     // vivent sur la page de l'outil.
-    await expect(card.locator('.carte-texte')).toHaveText(outil.description);
+    await expect(card.locator('.carte-texte')).toHaveText(OUTILS_VITRINE.find(o=>o.slug===outil.slug)!.texte);
     await expect(card.locator('dl')).toHaveCount(0);
     await expect(card.locator('a')).not.toHaveText(/Utiliser sans compte|Ouvrir l’outil/);
   }
   // « Gratuit, sans inscription » se dit une fois, sous le H1, et plus sur chacune des cartes.
   expect(await occurrences(page, 'Gratuit, sans inscription')).toBe(1);
   await expect(page.locator('[data-tool-section="hero"] [data-gratuit]')).toHaveText('Gratuit, sans inscription.');
-  await expect(page.locator('[data-tool-section="hero"] .surtitre')).toHaveCount(0);
-  await expect(page.locator('[data-tool-section="hero"] img')).toHaveCount(0);
-  await expect(page.locator('#hub-confier a')).toHaveText('Confier une première tâche');
-  await expect(page.locator('#hub-confier a')).toHaveAttribute('href', '/contact');
-  // L'image du hub descend sous le catalogue (décision D3), en lazy, avant l'appel final.
-  await expect(page.locator('[data-tool-media]')).toHaveCount(1);
-  await expect(page.locator('[data-tool-media] img')).toHaveAttribute('loading', 'lazy');
-  expect(await page.evaluate(() => {
-    const media = document.querySelector('[data-tool-media]')!;
-    const appel = document.querySelector('#hub-confier')!;
-    return [...document.querySelectorAll('[data-outil-card]')].every((card) => Boolean(card.compareDocumentPosition(media) & Node.DOCUMENT_POSITION_FOLLOWING))
-      && Boolean(media.compareDocumentPosition(appel) & Node.DOCUMENT_POSITION_FOLLOWING);
-  })).toBe(true);
+  await expect(page.locator('[data-tool-section="hero"] .surtitre')).toHaveText('Les outils gratuits Memlia');
+  await expect(page.locator('[data-tool-section="hero"] img')).toHaveCount(3);
+  await expect(page.locator('#hub-confier a[href="/contact"]')).toHaveText('Confier une première tâche');
+  await expect(page.locator('#hub-confier a[href="/contact"]')).toHaveAttribute('href', '/contact');
+  await expect(page.locator('[data-tool-media]')).toHaveCount(0);
+  await expect(page.locator('[data-outil-card]:visible')).toHaveCount(6);
   await expect(page.locator('[data-outil-card] h3').filter({ hasText: 'Suivi de circularisation' })).not.toContainText('Excel');
   await expect(page.locator('#outils-titre').locator('..')).not.toContainText('Les valeurs restent dans votre navigateur');
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/24-outils-hub.webp.jpg');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/outils/social/hub.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/outils/social/hub.webp.jpg');
   await expect(page.locator(`a[href="${TEMOIN}"]`)).toHaveCount(0);
 
   const graph = await graphFrom(page);
@@ -221,6 +210,7 @@ test('amortissement : plan linéaire tracé, dégressif confirmé et entrées in
   await page.getByLabel('Valeur amortissable').fill('10000');
   await page.getByLabel('Date de mise en service').fill('2026-04-01');
   await duration.fill('5');
+  await page.getByText('Choisir une autre méthode : dégressif fiscal',{exact:true}).click();
   await page.getByLabel('Méthode').selectOption('linear');
   await expect(confirmation).toBeHidden();
   await page.getByRole('button', { name: 'Calculer le plan' }).click();
@@ -294,6 +284,7 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   await expect(page.getByLabel('Solde du relevé bancaire')).toHaveValue('');
   await page.getByLabel('Début de période').fill('2026-01-01'); await page.getByLabel('Fin de période').fill('2026-01-31');
   await page.getByLabel('Solde du relevé bancaire').fill('1000'); await page.getByLabel('Solde du compte 512').fill('950');
+  await page.getByText('Ajouter les opérations en rapprochement',{exact:true}).click();
   await page.getByLabel('Frais bancaires à comptabiliser').fill('0'); await page.getByLabel('Intérêts à comptabiliser').fill('50');
   await page.getByRole('button', { name: 'Contrôler les soldes' }).click();
   await expect(page.locator('[data-difference]')).toHaveText('0,00 €');
@@ -317,7 +308,7 @@ test('rapprochement : CSV exact et refus d’une différence', async ({ page, co
   expect(exceptionBytes.toString('utf8')).toContain('NON VALIDÉ');
 });
 
-test('contrat de liens : hub, ressource exacte, page service, puis un seul appel', async ({ page }) => {
+test('contrat de liens : hub, ressource exacte, outil voisin, catalogue et appel unique', async ({ page }) => {
   await page.goto(HUB);
   await expect(page.locator('[data-outil-card]')).toHaveCount(OUTILS_DISPONIBLES.length);
 
@@ -326,9 +317,10 @@ test('contrat de liens : hub, ressource exacte, page service, puis un seul appel
     await page.goto(HUB);
     await expect(page.locator(`main a[href="${path}"]`)).toHaveCount(1);
     await page.goto(path);
-    // OUTILS-CONTRAT-DE-LIENS.md (décision D4 du 14/10/2026) : le hub, zéro ou une ressource exacte,
-    // la page service, puis un seul appel vers /contact, après ces liens et hors de leur liste.
-    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), outil.pageService];
+    // Le parcours du 15/10 conserve le hub et la ressource, puis un outil voisin pertinent,
+    // la destination commerciale actuelle et un seul appel hors de la liste.
+    const voisin = outilVoisin(outil.slug);
+    const expectedLinks = [HUB, ...(outil.articleExact ? [outil.articleExact] : []), ...(voisin ? [`${HUB}/${voisin.slug}`] : []), outil.pageService];
     expect(await page.locator('[data-tool-links] a').evaluateAll((links) => links.map((link) => link.getAttribute('href')))).toEqual(expectedLinks);
     await expect(page.locator('main a[href="/contact"]')).toHaveCount(1);
     await expect(page.locator('main a[href^="/contact?"]')).toHaveCount(0);
@@ -348,8 +340,10 @@ test('pour continuer : une ligne de liens, un seul bouton, clavier et responsive
     const links = page.locator('[data-tool-section="suite"] [data-tool-links] a');
     const appel = page.locator('#outil-confier').getByRole('link', { name: 'Confier une première tâche' });
 
-    await expect(links).toHaveText(['Tous les outils comptables gratuits', 'Voir le cadrage des factures fournisseurs']);
-    await expect(links.nth(1)).toHaveAttribute('href', '/automatisation/factures-fournisseurs');
+    const voisin = outilVoisin('calculateur-date-echeance-facture')!;
+    await expect(links).toHaveText(['Tous les outils comptables gratuits', voisin.nom, 'Voir le cadrage des factures fournisseurs']);
+    await expect(links.nth(1)).toHaveAttribute('href', `${HUB}/${voisin.slug}`);
+    await expect(links.nth(2)).toHaveAttribute('href', '/agents-ia/comptabilite#tache-achats-fournisseurs-4');
     // Un seul bouton principal en fin de page, celui de l'appel final (inventaire 27 et 31, CONT-15).
     await expect(appel).toHaveClass(/btn-principal/);
     await expect(page.locator('main').getByRole('link', { name: 'Confier une première tâche' })).toHaveCount(1);
@@ -358,9 +352,11 @@ test('pour continuer : une ligne de liens, un seul bouton, clavier et responsive
 
     await links.nth(0).focus();
     await expect(links.nth(0)).toBeFocused();
-    await page.keyboard.press('Tab');
-    await expect(links.nth(1)).toBeFocused();
-    await expect(links.nth(1)).toHaveCSS('outline-style', 'solid');
+    for (let index = 1; index < await links.count(); index++) {
+      await page.keyboard.press('Tab');
+      await expect(links.nth(index)).toBeFocused();
+      await expect(links.nth(index)).toHaveCSS('outline-style', 'solid');
+    }
     await page.keyboard.press('Tab');
     await expect(appel).toBeFocused();
   }
@@ -387,11 +383,10 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
     await expect(page.locator('[data-tool-section="source"] [data-official-source]')).toContainText(outil.source.extrait);
     await expect(page.locator('[data-official-source]')).not.toContainText(/vérifiée le|consultée le/i);
     await expect(page.locator(`[data-official-source] a[href="${outil.source.url}"]`)).toHaveCount(1);
-    // L'image figée quitte le héros pour la section source, en lazy ; elle reste l'image de partage (D3).
-    await expect(page.locator(`[data-tool-section="source"] [data-proof="${outil.proof}"] img`)).toHaveAttribute('loading', 'lazy');
-    await expect(page.locator(`[data-proof="${outil.proof}"] img`)).toBeVisible();
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
-    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/proofs/v2/og/${outil.proof?.slice(3)}.webp.jpg`);
+    // La source reste textuelle ; l’image propre à la page est réservée au partage.
+    await expect(page.locator('[data-tool-section="source"] img')).toHaveCount(0);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', `https://memlia.fr/social/outils/social/${outil.slug}.webp.jpg`);
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://memlia.fr/social/outils/social/${outil.slug}.webp.jpg`);
     // Deux questions repliées ; « Confier une première tâche » une fois dans la page, plus la
     // navigation et le pied de page.
     await expect(page.locator('[data-tool-section="faq"] details')).toHaveCount(2);
@@ -410,11 +405,15 @@ test('outils publiés : métadonnées, source liée et schémas concordent', asy
 });
 
 test('outils publiés : la mention locale, les limites et la source se disent une fois', async ({ page }) => {
+  test.setTimeout(60_000);
+  await page.emulateMedia({reducedMotion:'reduce'});
   for (const outil of PAGES_GABARIT) {
     await page.goto(outilPath(outil));
     await expect(page.locator('[data-local-notice]')).toHaveCount(1);
-    await expect(page.locator('[data-local-notice]')).toHaveText(outil.mentionLocale);
+    await expect(page.locator('[data-local-notice]')).toHaveText('Aucun envoi : l’outil fonctionne dans votre navigateur.');
+    await expect(page.locator('.outil-limites > p')).toHaveText(outil.mentionLocale);
     expect(await occurrences(page, outil.mentionLocale), `${outil.slug} : mention locale`).toBe(1);
+    await page.getByText('Lire les limites de cet outil',{exact:true}).click();
     await expect(page.getByRole('heading', { name: 'Ce que cette page ne fait pas' })).toHaveCount(1);
     await expect(page.locator('[data-tool-limits] li')).toHaveText([...outil.limites]);
     for (const limite of outil.limites) expect(await occurrences(page, limite), `${outil.slug} : ${limite}`).toBe(1);
@@ -483,35 +482,38 @@ test('outils publiés : le bouton de fin déclenche la mesure « cta » sans aut
   expect(await page.evaluate(() => (window as unknown as { outilEvents: string[] }).outilEvents)).toEqual(['cta']);
 });
 
-test('outils et services : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
+test('outils et agents : les entrées respectent la préférence de mouvement réduit', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const route of [
     `${HUB}/calculateur-marge-commerciale`,
-    '/automatisation/paie',
+    '/agents-ia/paie-social',
   ]) {
-    await page.goto(route);
+    expect((await page.goto(route))?.status(), route).toBe(200);
     const animated = page.locator(route.startsWith(HUB)
       ? '.outil-hero-copy h1, .outil-hero-copy p'
-      : '.service-hero-copy h1, .service-hero-label, .service-hero-lead, .service-hero-action, .service-hero-visual');
+      : '.routine-hero-texte h1, .routine-hero-texte > p');
     const count = await animated.count();
+    expect(count, route).toBeGreaterThan(0);
     expect(await animated.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).animationName))).toEqual(
       Array(count).fill('none'),
     );
   }
 });
 
-test('maillage entrant : trois contextes rendus par outil, dont le hub et une ressource exacte', async ({ page }) => {
+test('maillage entrant : hub et contextes conservés après migration des pôles', async ({ page }) => {
   const referrers = new Map<string, string[]>([
-    [`${HUB}/calculateur-marge-commerciale`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
-    [`${HUB}/calculateur-date-echeance-facture`, [HUB, '/methode', '/automatisation/factures-fournisseurs']],
-    [`${HUB}/calculateur-amortissement-comptable`, [HUB, '/methode', '/automatisation-cabinet-comptable']],
-    [`${HUB}/modele-rapprochement-bancaire-excel-gratuit`, [HUB, '/methode', '/automatisation/rapprochement-bancaire']],
+    [`${HUB}/calculateur-marge-commerciale`, [HUB, '/methode']],
+    [`${HUB}/calculateur-date-echeance-facture`, [HUB, '/methode']],
+    [`${HUB}/calculateur-amortissement-comptable`, [HUB, '/methode']],
+    [`${HUB}/modele-rapprochement-bancaire-excel-gratuit`, [HUB, '/methode']],
   ]);
   for (const [tool, routes] of referrers) {
-    expect(routes).toHaveLength(3);
+    expect(routes.length).toBeGreaterThanOrEqual(2);
     for (const route of routes) {
       const [pathname, hash] = route.split('#');
       await page.goto(pathname);
+      if(pathname===HUB)await page.getByRole('radio',{name:'Tous (21)'}).check();
+      await rendreLienOutilVisible(page,tool);
       const scope = hash ? page.locator(`#${hash}`) : page.locator('main');
       await expect(scope.locator(`a[href="${tool}"]`)).toBeVisible();
     }
@@ -528,6 +530,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
     const listener = (request: { method(): string; url(): string }) => { if (armed) requests.push(`${request.method()} ${request.url()}`); };
     context.on('request', listener);
     await page.goto(outilPath(outil));
+    for (const summary of await page.locator('[data-outil-options] > summary').all()) {if(await summary.isVisible() && await summary.locator('..').getAttribute('open')===null)await summary.click();}
     await page.evaluate(() => document.fonts.ready);
     await chargerImagesDifferees(page);
     armed = true;
@@ -545,6 +548,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       expect(csv).toContain('00123');
       expect(csv).toContain('comparateur-balances-1');
     } else if (outil.slug === 'generateur-relance-facture-impayee') {
+      await page.locator('[data-tool-advanced] > summary').click();
       await page.locator('summary').filter({ hasText: 'Importer un CSV' }).click();
       await page.locator('#rel-file').setInputFiles({
         name: 'factures-fictives.csv', mimeType: 'text/csv',
@@ -584,6 +588,8 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await expect(page.locator('[data-result-total]')).toHaveText('10 000,00 €');
 
     } else if (outil.slug === 'generateur-prompt-ia-gratuit') {
+      await page.getByText('Choisir un exemple fictif',{exact:true}).click();
+      await page.getByText('Adapter le contexte, le ton et les contraintes',{exact:true}).click();
       await page.getByRole('button', { name: 'Préparer une réunion', exact: true }).click();
       await page.getByLabel(/Je confirme une description/).check();
       await page.getByRole('button', { name: 'Assembler le prompt' }).click();
@@ -599,6 +605,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByRole('button', { name: 'Analyser la structure', exact: true }).click();
       await expect(page.locator('[data-findings]')).toContainText('Arrêt : manquant');
     } else if (outil.slug === 'generateur-prompt-expert-comptable') {
+      await page.getByText('Partir d’un exemple de consigne',{exact:true}).click();
       await page.getByRole('button', { name: 'Demande de pièces', exact: true }).click();
       await page.getByLabel(/Je confirme que cette description/).check();
       await page.getByRole('button', { name: 'Assembler le prompt' }).click();
@@ -608,7 +615,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.getByLabel('Pôle', { exact: true }).selectOption('relation-client');
       await page.getByLabel('Format attendu', { exact: true }).selectOption('mail');
       await expect(page.locator('[data-model]:visible')).toHaveCount(3);
-      await page.getByLabel('Rechercher un modèle').fill('relance');
+      await page.getByLabel('Rechercher un prompt').fill('relance');
       await expect(page.locator('[data-model]:visible')).toHaveCount(1);
       await page.getByRole('button', { name: 'Effacer les filtres' }).click();
       await expect(page.locator('[data-model]:visible')).toHaveCount(12);
@@ -620,9 +627,9 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await expect(page.locator('[data-after]')).toContainText('C1_000001');
 
     } else if (outil.slug === 'calculateur-roi-automatisation') {
-      await page.getByRole('button', { name: 'Charger trois exemples fictifs' }).click();
-      await page.getByRole('button', { name: 'Comparer les trois scénarios' }).click();
-      await expect(page.locator('[data-results]')).toContainText('266,67');
+      await page.locator('#budget-mensuel').fill('100');
+      await page.getByRole('button', { name: 'Calculer mon estimation' }).click();
+      await expect(page.locator('[data-result-roi]')).toHaveText('ROI estimé : 300 %');
     } else if (outil.slug === 'verificateur-fec-local') {
       await page.getByRole('button', { name: 'Analyser l’exemple fictif' }).click();
       await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
@@ -748,7 +755,7 @@ test('outils publiés : zéro requête et zéro stockage après armement', async
       await page.locator('[data-cl-export="json"]').click();
       const raw = await readFile((await (await downloading).path())!, 'utf8');
       await page.locator('#cl-period').fill('Octobre 2026');
-      await page.locator('details').filter({ has: page.locator('#cl-file') }).evaluate(element => element.setAttribute('open', ''));
+      await page.locator('#cl-file').evaluate(element => element.closest('details')!.setAttribute('open', ''));
       await page.locator('#cl-file').setInputFiles({ name: 'reprise.json', mimeType: 'application/json', buffer: Buffer.from(raw) });
       await page.getByRole('button', { name: 'Vérifier la reprise', exact: true }).click();
       await expect(page.locator('[data-cl-apply]')).toBeEnabled();
@@ -824,7 +831,7 @@ test('témoin : noindex, CSP, quatre surfaces et liens sortants concordants', as
   await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute('content', H1_TEMOIN);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${TEMOIN}`);
   await expect(page.getByText('Démonstration technique', { exact: true })).toBeVisible();
-  await expect(page.locator('[data-local-notice]')).toContainText('aucune valeur n’est envoyée ni conservée');
+  await expect(page.locator('.outil-limites > p')).toContainText('aucune valeur n’est envoyée ni conservée');
   await expect(page.locator('.ariane [aria-current="page"]')).toHaveText(H1_TEMOIN);
 
   const graph = await graphFrom(page);

@@ -2,7 +2,7 @@
 // d'union. Le découpage ne change aucun caractère du titre.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { segmentsInsecables } from '../../src/lib/insecable.ts';
+import { segmentsInsecables, composePonctue } from '../../src/lib/insecable.ts';
 
 const recoller = (segments) => segments.map((s) => s.texte).join('');
 
@@ -47,4 +47,11 @@ test('un guillemet ouvrant reste avec son mot, un guillemet fermant avec le sien
   const segments = segmentsInsecables(titre);
   assert.equal(recoller(segments), titre);
   assert.deepEqual(segments.filter((s) => s.insecable).map((s) => s.texte), ['« Activer', 'son »', 'lisible ?']);
+});
+
+test('le composé suivi de ponctuation peut céder sans séparer la ponctuation ni changer le titre',()=>{
+ for(const texte of ['expert-comptable :','l’expert-comptable ?','passe-t-il !']){
+  const parts=composePonctue(texte);assert.ok(parts);assert.equal(parts.join(''),texte);assert.ok(parts[0].endsWith('-'));assert.match(parts[1],/[^ ] [!:?]$/u);
+ }
+ for(const texte of ['cabinet :','expert-comptable','« cabinet'])assert.equal(composePonctue(texte),null);
 });

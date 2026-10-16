@@ -5,7 +5,7 @@ const route='/outils-comptables-gratuits/verificateur-fec-local';
 async function upload(page,text,name='fictif.txt') { await page.locator('#fec-file').setInputFiles({name,mimeType:'text/plain',buffer:Buffer.from(text)}); await page.getByRole('button',{name:'Contrôler la structure',exact:true}).click(); }
 test('Worker, exemple, CSV/JSON entier, CSP et zéro transmission/stockage',async({page},testInfo)=>{
   const errors=[]; page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(route); await page.evaluate(()=>document.fonts.ready);
+  await page.goto(route); await ouvrirReglages(page); await page.evaluate(()=>document.fonts.ready);
   const requests=[];page.on('request',r=>requests.push({url:r.url(),method:r.method(),body:r.postData()}));
   await page.getByRole('button',{name:'Analyser l’exemple fictif'}).click();
   await expect(page.locator('[data-summary]')).toContainText('1 anomalie');
@@ -28,7 +28,7 @@ test('Worker, exemple, CSV/JSON entier, CSP et zéro transmission/stockage',asyn
   const csp=await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');expect(csp).toContain("connect-src 'none'");
 });
 test('pagination 300, export complet et sélection non écrasée par exemple',async({page})=>{
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   const bad=exampleFec().split('\n').at(-1);
   await upload(page,FIELDS.join('|')+'\n'+Array(300).fill(bad).join('\n'));
   await expect(page.locator('[data-anomalies] li')).toHaveCount(100);
@@ -40,7 +40,7 @@ test('pagination 300, export complet et sélection non écrasée par exemple',as
   expect(await page.locator('#fec-file').evaluate(e=>e.files[0].name)).toBe('fictif.txt');
 });
 test('refus 20 Mo, profil hors périmètre, calendrier et Windows-1252 réel',async({page})=>{
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   await page.locator('#fec-file').setInputFiles({name:'grand.txt',mimeType:'text/plain',buffer:Buffer.alloc(20_000_001)});
   await page.getByRole('button',{name:'Contrôler la structure',exact:true}).click();await expect(page.locator('[data-error]')).toContainText('avant lecture');
   await expect(page.locator('[data-output]')).toBeHidden();
@@ -52,7 +52,7 @@ test('refus 20 Mo, profil hors périmètre, calendrier et Windows-1252 réel',as
   await expect(page.locator('[data-anomalies]')).toContainText('EcritureDate');
 });
 test('annulation interrompt le Worker sans rapport complet ni perte de sélection',async({page})=>{
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   await page.locator('#fec-file').setInputFiles({name:'cancel.txt',mimeType:'text/plain',buffer:Buffer.from(exampleFec())});
   // Annuler dans la même tâche JavaScript, avant toute livraison de message du vrai Worker.
   await page.evaluate(()=>{ document.querySelector('[data-fec-form]').requestSubmit();document.querySelector('[data-cancel]').click(); });
@@ -60,13 +60,13 @@ test('annulation interrompt le Worker sans rapport complet ni perte de sélectio
   expect(await page.locator('#fec-file').evaluate(e=>e.files[0].name)).toBe('cancel.txt');
 });
 test('refus mémoire dans le vrai Worker sans export incomplet',async({page})=>{
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   await upload(page,FIELDS.join('|')+'\n'+'\n'.repeat(200001));
   await expect(page.locator('[data-error]')).toContainText('200 000');
   await expect(page.locator('[data-output]')).toBeHidden();
 });
 test('exemple : les choix saisis restent intacts',async({page})=>{
-  await page.goto(route);
+  await page.goto(route); await ouvrirReglages(page);
   await page.locator('#fec-encoding').selectOption('windows-1252');
   await page.locator('#fec-profile').selectOption('other');
   await page.locator('[data-example]').click();
@@ -75,7 +75,7 @@ test('exemple : les choix saisis restent intacts',async({page})=>{
   await expect(page.locator('#fec-profile')).toHaveValue('other');
 });
 for(const width of [320,375,768,1024,1440,1920]) test(`SEO, reflow et capture ${width}`,async({page},testInfo)=>{
-  await page.setViewportSize({width,height:900}); await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route);await page.evaluate(()=>document.fonts.ready);
+  await page.setViewportSize({width,height:900}); await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);
   await expect(page.locator('h1')).toHaveCount(1);await expect(page.locator('h1')).toHaveText('Vérificateur FEC gratuit et local');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content','Vérificateur FEC gratuit et local');
@@ -84,3 +84,5 @@ for(const width of [320,375,768,1024,1440,1920]) test(`SEO, reflow et capture ${
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   if([375,1440].includes(width))await page.screenshot({path:testInfo.outputPath(`fec-${width}.png`),fullPage:true});
 });
+
+async function ouvrirReglages(page){ for (const summary of await page.locator('[data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

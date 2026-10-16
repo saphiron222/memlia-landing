@@ -1,0 +1,9 @@
+---
+interface Props { src: string; alt?: string; taille?: number; prioritaire?: boolean; }
+const { src, alt = '', taille = 84, prioritaire = false } = Astro.props;
+---
+<picture class="figurine">
+  <source type="image/avif" srcset={`${src}-128.avif 128w, ${src}-256.avif 256w, ${src}-512.avif 512w`} sizes={`${taille}px`} />
+  <img src={`${src}-256.webp`} srcset={`${src}-128.webp 128w, ${src}-256.webp 256w, ${src}-512.webp 512w`} sizes={`${taille}px`} width={taille} height={taille} alt={alt} loading={prioritaire ? 'eager' : 'lazy'} fetchpriority={prioritaire ? 'high' : undefined} decoding="async" />
+</picture>
+<style>.figurine, .figurine img { display: block; width: 100%; height: auto; aspect-ratio: 1; }.figurine img { object-fit: contain; border-radius: inherit; }</style>

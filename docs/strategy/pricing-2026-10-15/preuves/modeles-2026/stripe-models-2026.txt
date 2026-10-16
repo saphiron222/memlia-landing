@@ -1,0 +1,678 @@
+AI Pricing Models Explained | Stripe
+8
+sales reps available
+We're here to discuss your business needs.
+Chat now
+with sales
+Stripe logo
+Products
+Solutions
+Developers
+Resources
+Pricing
+Dashboard
+Sign in
+Sign in
+Contact sales
+Stripe logo
+Back
+Products
+Solutions
+Developers
+Resources
+Pricing
+Dashboard
+Sign in
+Sign in
+See all products
+Explore our full product catalogue
+Payments
+Payments
+Online payments
+Managed Payments
+Merchant of record solution
+Payment links
+No-code payments
+Checkout
+Prebuilt payment UIs
+Elements
+Flexible UI components
+Payment methods
+Access to 125+
+Terminal
+In-person payments
+Authorization Boost
+Acceptance optimisations
+Link
+Accelerated checkout
+Revenue
+Billing
+Recurring revenue
+Metronome
+Usage-based billing
+Subscriptions
+Subscription management
+Invoicing
+One-time or recurring
+Tax
+Sales tax & VAT automation
+Revenue Recognition
+Accounting automation
+Stripe Sigma
+Custom reports
+Data Pipeline
+Data sync
+Money management
+Global Payouts
+Payouts to third parties
+Crypto
+Wallet, stablecoin issuing and card infrastructure
+Embedded Finance
+Connect
+Payments for platforms
+Treasury for platforms
+Embedded financial services
+More
+Product roadmap
+See what's ahead
+Radar
+Fraud prevention
+Atlas
+Start-up incorporation
+Climate
+Carbon removal
+Identity
+Online identity verification
+Stripe Sessions 2026
+See how Stripe is building the economic infrastructure for AI.
+Watch now
+By stage
+Enterprises
+Startups
+By use case
+Agentic commerce
+Crypto
+E-commerce
+Embedded finance
+Finance automation
+Global businesses
+In-app payments
+Marketplaces
+Money management
+Platforms
+SaaS
+By industry
+AI companies
+Creator economy
+Fintech
+Gaming
+Hospitality, travel and leisure
+Insurance
+Media and entertainment
+Non-profits
+Professional services
+Retail
+Ecosystem
+Partners
+Stripe App Marketplace
+Documentation
+Stripe docs
+API reference
+Libraries and SDKs
+Stripe Apps
+Guides
+Accept online payments
+Implement a prebuilt checkout
+Build a platform or marketplace
+Manage subscriptions
+Offer usage-based billing
+Issue stablecoin-backed cards
+Provision and manage services with agents
+Resources
+App integrations
+Code samples
+Developers blog
+API status
+Learn
+Blog
+Customer stories
+Guides
+Support
+Get support
+Managed support plans
+Professional services
+Company
+Product roadmap
+Sessions annual conference
+Careers
+Newsroom
+Stripe Press
+About
+Contact
+Contact sales
+Become a partner
+Start now
+Contact sales
+Payments
+Payments
+Online payments
+Managed Payments
+Merchant of record solution
+Payment links
+No-code payments
+Checkout
+Prebuilt payment UIs
+Elements
+Flexible UI components
+Payment methods
+Access to 125+
+Terminal
+In-person payments
+Authorization Boost
+Acceptance optimisations
+Link
+Accelerated checkout
+Revenue
+Billing
+Recurring revenue
+Metronome
+Usage-based billing
+Subscriptions
+Subscription management
+Invoicing
+One-time or recurring
+Tax
+Sales tax & VAT automation
+Revenue Recognition
+Accounting automation
+Stripe Sigma
+Custom reports
+Data Pipeline
+Data sync
+Money management
+Global Payouts
+Payouts to third parties
+Crypto
+Wallet, stablecoin issuing and card infrastructure
+Embedded Finance
+Connect
+Payments for platforms
+Treasury for platforms
+Embedded financial services
+See all products
+More
+Product roadmap
+See what's ahead
+Radar
+Fraud prevention
+Atlas
+Start-up incorporation
+Climate
+Carbon removal
+Identity
+Online identity verification
+Stripe Sessions 2026
+See how Stripe is building the economic infrastructure for AI.
+Watch now
+By stage
+Enterprises
+Startups
+By use case
+Agentic commerce
+Crypto
+E-commerce
+Embedded finance
+Finance automation
+Global businesses
+In-app payments
+Marketplaces
+Money management
+Platforms
+SaaS
+By industry
+AI companies
+Creator economy
+Fintech
+Gaming
+Hospitality, travel and leisure
+Insurance
+Media and entertainment
+Non-profits
+Professional services
+Public sector
+Retail
+Ecosystem
+Partners
+Stripe App Marketplace
+Documentation
+Stripe docs
+API reference
+Libraries and SDKs
+Stripe Apps
+Guides
+Accept online payments
+Implement a prebuilt checkout
+Build a platform or marketplace
+Manage subscriptions
+Offer usage-based billing
+Issue stablecoin-backed cards
+Provision and manage services with agents
+Resources
+App integrations
+Code samples
+Developers blog
+API status
+Learn
+Blog
+Customer stories
+Guides
+Support
+Get support
+Managed support plans
+Professional services
+Company
+Product roadmap
+Sessions annual conference
+Careers
+Newsroom
+Stripe Press
+About
+Contact
+Contact sales
+Become a partner
+Start now
+Contact sales
+More resources
+Billing
+AI pricing models: How the main structures work and when to use them
+Get started with Stripe
+Last updated 19 April 2026
+Billing
+Stripe Billing powers any pricing model – from recurring to tiered and hybrid – to help manage customers your way.
+Learn more
+Introduction
+What are AI pricing models?
+What are the core AI pricing models?
+Subscription (tiered plans)
+Consumption-based (usage-based)
+Hybrid (subscription plus usage)
+Outcome-based (pay for results)
+Seat-based (per user)
+Capability-based (model tiers)
+What are the core AI pricing models?
+Subscription (tiered plans)
+Consumption-based (usage-based)
+Hybrid (subscription plus usage)
+Outcome-based (pay for results)
+Seat-based (per user)
+Capability-based (model tiers)
+How do you pick the right AI pricing model for your business?
+What do real-world AI pricing patterns look like?
+What are common mistakes when choosing AI pricing models?
+How Stripe Billing can help
+Get started with Stripe
+Pricing an AI product is one of the most consequential structural decisions you'll make. Unlike traditional
+software
+, AI products have marginal costs that scale with usage, value that varies widely across your customer base and a quality aspect you can charge for. The pricing model you choose will shape your unit economics, your sales motion and how customers perceive fairness as usage grows.
+Below, we'll outline the main AI pricing models, how to identify the right value metric for your product and common mistakes founders make when the price metric drifts out of alignment with customer value.
+Highlights
+AI pricing models fail when the value metric (the specific unit customers pay for) stops tracking how customers experience value and how your costs scale with usage.
+There are six core models: subscription, consumption-based, hybrid, outcome-based, seat-based and capability-based.
+Start with the simplest model that fits your customer, account for usage from Day 1 and treat your initial pricing as a hypothesis.
+What are AI pricing models?
+An AI
+pricing model
+defines what customers pay for and how that payment scales with usage, team size or delivered value. Every pricing model has two layers, and getting both right will deliver on customer value, costs and revenue as the business grows.
+The two layers are:
+Pricing architecture:
+How plans are structured (tiers, add-ons, contracts)
+Value metric:
+The unit that determines what the customer pays, such as tokens, users, actions, outcomes or capabilities
+What are the core AI pricing models?
+Six AI pricing models are worth knowing. Most AI products use one or a combination of two.
+Subscription (tiered plans)
+Customers pay a recurring fee for access, with tiers differentiated by features, limits or supported use cases. This works when usage is relatively predictable and value doesn't vary dramatically across customers.
+The trade-off:
+Flat pricing can mask loss-making power users. Subscription models require well-calibrated limits and a manageable cost gap between light and heavy users.
+Consumption-based (usage-based)
+In
+consumption-based models
+, customers pay per unit of usage: tokens, API calls, compute minutes and messages processed. This model aligns revenue with costs and feels fair to light users.
+The trade-off:
+Customers find it more difficult to predict spending, and you find it more difficult to forecast revenue. The model works best for API-first products with developer customers and less well for procurement-driven enterprise sales.
+Hybrid (subscription plus usage)
+A base subscription provides predictability, with usage-based charges added beyond included limits. Mature AI businesses typically converge here because the model balances three forces:
+recurring revenue
+, customer budget comfort and proportional monetisation of heavy usage.
+The trade-off:
+You'll need to keep the consumption component to one easy-to-understand metric rather than a matrix of usage types at different rates.
+Outcome-based (pay for results)
+Customers pay when a defined outcome happens: a ticket is resolved, a meeting is booked or a churn prediction is validated. When the model works, the value proposition is unbeatable because you pay only when you win.
+The trade-off:
+Outcome pricing requires clear definitions, reliable attribution and a sales process that can handle longer negotiations. You might work toward this model rather than start with it.
+Seat-based (per user)
+Customers pay per person with access. This fits products that spread through organisations through individual workflows, such as writing tools, research platforms and sales assistants, where adoption and value grow with user count.
+The trade-off:
+If costs are driven by query volume rather than headcount, one power user can distort unit economics. Model intra-account usage before committing.
+Capability-based (model tiers)
+Customers pay more for better
+performance tiers
+: stronger models, lower latency, higher accuracy or premium features. Capability pricing pairs naturally with subscriptions and works when quality differences are real and visible in the customer's workflow.
+The trade-off:
+If users can't tell the difference, premium tiers collapse into discount negotiations.
+What are the core AI pricing models?
+Six AI pricing models are worth knowing. Most AI products use one or a combination of two.
+Subscription (tiered plans)
+Customers pay a recurring fee for access, with tiers differentiated by features, limits or supported use cases. This works when usage is relatively predictable and value doesn't vary dramatically across customers.
+The trade-off:
+Flat pricing can mask loss-making power users. Subscription models require well-calibrated limits and a manageable cost gap between light and heavy users.
+Consumption-based (usage-based)
+In consumption-based models, customers pay per unit of usage: tokens, API calls, compute minutes and messages processed. This model aligns revenue with costs and feels fair to light users.
+The trade-off:
+Customers find it more difficult to predict spending, and you find it more difficult to forecast revenue. The model works best for API-first products with developer customers and less well for procurement-driven enterprise sales.
+Hybrid (subscription plus usage)
+A base subscription provides predictability, with usage-based charges added beyond included limits. Mature AI businesses typically converge here because the model balances three forces: recurring revenue, customer budget comfort and proportional monetisation of heavy usage.
+The trade-off:
+You'll need to keep the consumption component to one easy-to-understand metric rather than a matrix of usage types at different rates.
+Outcome-based (pay for results)
+Customers pay when a defined outcome happens: a ticket is resolved, a meeting is booked or a churn prediction is validated. When the model works, the value proposition is unbeatable because you pay only when you win.
+The trade-off:
+Outcome pricing requires clear definitions, reliable attribution and a sales process that can handle longer negotiations. You might work toward this model rather than start with it.
+Seat-based (per user)
+Customers pay per person with access. This fits products that spread through organisations through individual workflows, such as writing tools, research platforms and sales assistants, where adoption and value grow with user count.
+The trade-off:
+If costs are driven by query volume rather than headcount, one power user can distort unit economics. Model intra-account usage before committing.
+Capability-based (model tiers)
+Customers pay more for better performance tiers: stronger models, lower latency, higher accuracy or premium features. Capability pricing pairs naturally with subscriptions and works when quality differences are real and visible in the customer's workflow.
+The trade-off:
+If users can't tell the difference, premium tiers collapse into discount negotiations.
+How do you pick the right AI pricing model for your business?
+Start by identifying the moment when value is created for the customer. That event should be your candidate metric.
+Ask these questions to help you decide:
+Does usage correlate with value?:
+If heavier users reliably get more value, consumption-based models fit. If the value is similar across users,
+subscriptions
+are cleaner.
+Does usage correlate with your cost?:
+If inference costs scale with activity, pure subscriptions expose you to margin risk. A usage component protects you.
+Can customers predict spending?:
+High variability favours hybrid pricing. Stable usage supports simple plans.
+Can you measure outcomes reliably?:
+If attribution is provable and uncontested, outcome-based pricing is worth pursuing. If not, avoid it.
+If you're an early-stage
+founder
+, start with a simpler model. Subscription or hybrid models generate the usage data you'll need to see where value and revenue diverge and to improve confidently.
+What do real-world AI pricing patterns look like?
+The market hasn't settled on one dominant model. A few patterns have emerged clearly enough across business types to be worth knowing.
+Here's what real-world AI pricing looks like:
+API-first tools start with consumption-based billing:
+Developer-facing AI products usually launch with pure usage-based billing, then add subscriptions as enterprise customers demand predictability.
+Workflow applications go seat-based or subscription:
+Tools embedded in sales, support or operations workflows spread person by person through organisations.
+Vertical AI often uses capability tiers:
+These reflect different return on investment (ROI) across use cases within the industry.
+Enterprise platforms favour hybrid:
+These sometimes also use
+outcome-based pricing
+components, layering them into contracts once the data exists.
+Consumer AI products use freemium subscriptions:
+These typically offer freemium subscriptions with basic capabilities and usage limits.
+What are common mistakes when choosing AI pricing models?
+Pricing mistakes tend to come back to one problem: often, the price metric stops tracking value.
+Here's what that looks like in practice:
+Pricing in units customers don't understand:
+Tokens are important for you but not most customers. Price in the unit closest to the customer's value description.
+Overcomplicating too early:
+Multiple tiers, add-ons and usage variables slow decisions and complicate invoices. Start with the
+simplest pricing model
+that fits your customers, and add complexity only when data justifies it.
+Flat pricing with extreme usage variance:
+If your top users consume 20x the median usage, flat plans will price them incorrectly. Model the distribution before setting limits.
+Outcome pricing without attribution:
+If the results can't be independently verified, disputes are inevitable. Don't price on outcomes you can't prove.
+Ignoring cost structure:
+A pricing model that feels intuitive but doesn't capture high-cost usage will degrade as you scale. Unit economics should come first.
+How Stripe Billing can help
+Stripe Billing lets you bill and manage customers however you want – from simple recurring billing to usage-based billing and sales-negotiated contracts. Start accepting recurring payments globally in minutes – no code required – or build a custom integration using the API.
+Stripe Billing can help you:
+Offer flexible pricing:
+Respond to user demand faster with flexible pricing models, including usage-based, tiered, flat-fee plus overage and more. Support for coupons, free trials, prorations and add-ons is built in.
+Expand globally:
+Increase conversion by offering customers' preferred payment methods. Stripe supports 100+ local payment methods and 130+ currencies.
+Increase revenue and reduce churn:
+Improve revenue capture and reduce involuntary churn with Smart Retries and recovery workflow automations. Stripe recovery tools helped users recover over $6.5 billion in revenue in 2024.
+Boost efficiency:
+Use Stripe's modular tax, revenue reporting and data tools to consolidate multiple revenue systems into one. Easily integrate with third-party software.
+Learn more
+about Stripe Billing or
+get started
+today.
+The content in this article is for general information and education purposes only and should not be construed as legal or tax advice. Stripe does not warrant or guarantee the accuracy, completeness, adequacy, or currency of the information in the article. You should seek the advice of a competent lawyer or accountant licensed to practise in your jurisdiction for advice on your particular situation.
+More articles
+See all billing articles
+<span data-js-target="MoreArticlesSection.label"></span>
+Something went wrong. Please try again or contact support.
+Ready to get started?
+Create an account and start accepting payments – no contracts or banking details required. Or, contact us to design a custom package for your business.
+Start now
+Contact sales
+Billing
+Billing
+Collect and retain more revenue, automate revenue management workflows, and accept payments globally.
+Explore Billing
+Billing docs
+Create and manage subscriptions, track usage, and issue invoices.
+Explore the docs
+Stripe logo
+Canada (English)
+Australia
+English
+Austria
+Deutsch
+English
+Belgium
+Nederlands
+Français
+Deutsch
+English
+Brazil
+Português
+English
+Bulgaria
+English
+Canada
+English
+Français
+Croatia
+English
+Italiano
+Cyprus
+English
+Czech Republic
+English
+Denmark
+English
+Estonia
+English
+Finland
+English
+Svenska
+France
+Français
+English
+Germany
+Deutsch
+English
+Gibraltar
+English
+Greece
+English
+Hong Kong SAR, China
+English
+简体中文
+Hungary
+English
+India
+English
+Ireland
+English
+Italy
+Italiano
+English
+Japan
+日本語
+English
+Latvia
+English
+Liechtenstein
+Deutsch
+English
+Lithuania
+English
+Luxembourg
+Français
+Deutsch
+English
+Mainland China
+简体中文
+English
+Malaysia
+English
+简体中文
+Malta
+English
+Mexico
+Español
+English
+Netherlands
+Nederlands
+English
+New Zealand
+English
+Norway
+English
+Poland
+English
+Portugal
+Português
+English
+Romania
+English
+Singapore
+English
+简体中文
+Slovakia
+English
+Slovenia
+English
+Italiano
+Spain
+Español
+English
+Sweden
+Svenska
+English
+Switzerland
+Deutsch
+Français
+Italiano
+English
+Thailand
+ไทย
+English
+United Arab Emirates
+English
+United Kingdom
+English
+United States
+English
+Español
+简体中文
+Products & pricing
+Pricing
+Atlas
+Authorization Boost
+Billing
+Capital
+Checkout
+Climate
+Connect
+Crypto
+Data Pipeline
+Elements
+Financial Connections
+Identity
+Invoicing
+Issuing
+Link
+Managed Payments
+Payment links
+Payments
+Payouts
+Radar
+Revenue Recognition
+Stripe Sigma
+Tax
+Terminal
+Treasury
+Solutions
+Enterprises
+Startups
+Agentic commerce
+Crypto
+E-Commerce
+Embedded finance
+Finance automation
+Global businesses
+In-app payments
+Marketplaces
+Money management
+Platforms
+SaaS
+AI companies
+Creator economy
+Fintech
+Gaming
+Hospitality, travel and leisure
+Insurance
+Media and entertainment
+Non-profits
+Professional services
+Public sector
+Retail
+Integrations & custom solutions
+Stripe App Marketplace
+Stripe Partner ecosystem
+Professional services
+Developers
+Documentation
+API reference
+API status
+API changelog
+Libraries and SDKs
+Stripe Projects
+Developer blog
+Resources
+Guides
+Customer stories
+Blog
+Community
+Sessions annual conference
+Privacy & terms
+Prohibited & restricted businesses
+Licences
+Sitemap
+Cookie settings
+More resources
+Company
+About
+Product roadmap
+Careers
+Newsroom
+Stripe Press
+Contact sales
+Support
+Get support
+Managed support plans
+Sign in
+© 2026 Stripe, LLC

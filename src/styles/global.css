@@ -1238,3 +1238,15 @@ h3.liens-titre {
     forced-color-adjust: auto;
   }
 }
+
+/* Repères de sections longues : activés après mesure, jamais étirés sur la rangée. */
+@media (min-width: 64rem) {
+  [data-sticky-rail] {
+    position: sticky;
+    align-self: start;
+    top: var(--sticky-rail-top);
+  }
+}
+
+/* Action commune des cartes du catalogue agents, robots et outils. */
+.catalogue-carte .carte-action { border-top: 1px solid var(--ligne-douce); margin-top: auto; padding-top: 16px; min-height: 44px; display: flex; align-items: center; gap: 8px; }

@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-15",
+  "results": [
+    {
+      "url": "https://memlia.fr/integrations/bulletin-de-paie-sage",
+      "status": 200,
+      "body": {
+        "inspectionResult": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:memlia.fr&id=kx2f84uYWL3UJ5fGLYSmoQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Envoyée et indexée",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-13T11:10:30Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://memlia.fr/integrations/bulletin-de-paie-sage",
+            "userCanonical": "https://memlia.fr/integrations/bulletin-de-paie-sage",
+            "referringUrls": [
+              "https://memlia.fr/integrations/lettrage-sage",
+              "https://memlia.fr/sitemap-0.xml"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Fils d&#39;Ariane",
+                "items": [
+                  {
+                    "name": "Élément sans nom"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://memlia.fr/automatisation/notes-de-frais",
+      "status": 200,
+      "body": {
+        "inspectionResult": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:memlia.fr&id=Rm66CzO2_-jUlmrf3btfcA&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Envoyée et indexée",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-12T15:24:00Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://memlia.fr/automatisation/notes-de-frais",
+            "userCanonical": "https://memlia.fr/automatisation/notes-de-frais",
+            "sitemap": [
+              "https://memlia.fr/sitemap-0.xml",
+              "https://memlia.fr/sitemap-services.xml",
+              "https://memlia.fr/sitemap.xml"
+            ],
+            "referringUrls": [
+              "https://memlia.fr/blog/logiciel-ia-comptabilite",
+              "https://memlia.fr/blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Fils d&#39;Ariane",
+                "items": [
+                  {
+                    "name": "Élément sans nom"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "url": "https://memlia.fr/automatisation/paie",
+      "status": 200,
+      "body": {
+        "inspectionResult": {
+          "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:memlia.fr&id=G3zLe9PLUym5aorm2Ma2tQ&utm_medium=link&utm_source=api",
+          "indexStatusResult": {
+            "verdict": "PASS",
+            "coverageState": "Envoyée et indexée",
+            "robotsTxtState": "ALLOWED",
+            "indexingState": "INDEXING_ALLOWED",
+            "lastCrawlTime": "2026-10-12T10:24:01Z",
+            "pageFetchState": "SUCCESSFUL",
+            "googleCanonical": "https://memlia.fr/automatisation/paie",
+            "userCanonical": "https://memlia.fr/automatisation/paie",
+            "referringUrls": [
+              "https://memlia.fr/integrations/dsn-sage",
+              "https://memlia.fr/sitemap-0.xml"
+            ],
+            "crawledAs": "MOBILE"
+          },
+          "mobileUsabilityResult": {
+            "verdict": "VERDICT_UNSPECIFIED"
+          },
+          "richResultsResult": {
+            "verdict": "PASS",
+            "detectedItems": [
+              {
+                "richResultType": "Fils d&#39;Ariane",
+                "items": [
+                  {
+                    "name": "Élément sans nom"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

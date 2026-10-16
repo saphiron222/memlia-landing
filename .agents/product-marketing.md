@@ -1,23 +1,36 @@
 # Charte de message et contexte marketing Memlia
 
-Document version : v5 — 6 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-06. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
+Décision du 16/10/2026 : **Nos services** regroupe **Robots**, **Agents IA**, **Memlia OS** et **Modèle IA privé**. **Intégrations** est une entrée directe de navigation, séparée des prestations, comme Outils gratuits et Blog. Cette organisation remplace les trois entrées commerciales décidées le 15/10. Les anciens services par pôle et les guides par environnement sont retirés du site et redirigés vers les destinations correspondantes. Salomé dispose de sa fiche Paie et social. Les familles et pôles du blog restent une taxonomie éditoriale, sans créer un catalogue commercial parallèle. Le design validé reste inchangé. Plan et preuves : `docs/qa/migration-catalogues-2026-10-15/PLAN.md`.
+
+
+Document version : v11 — 16 octobre 2026 (les versions antérieures restent lisibles dans git). Dernière mise à jour : 2026-10-16. **Ce document fait foi pour toute surface publique** : site, blog, LinkedIn, devis, prise de parole. Une phrase qui le contredit se corrige ; une phrase qu'il ne couvre pas se discute ici avant d'être publiée. Les skills marketing (copywriting, copy-editing, cro, marketing-psychology, li-*) le lisent avant d'écrire.
 
 ## 1. L'angle : ce qui fait la différence
 
-**« Votre cabinet tourne sur un savoir-faire que personne n'a écrit. »**
+**« Des services IA adaptés au travail et au savoir de votre cabinet. Nous les déployons, les éprouvons avec vous et les maintenons. »**
 
-Le constat : les règles qui font tourner un cabinet (quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel, quel compte lettrer d'office) vivent dans la tête de collaborateurs submergés, difficiles à recruter et plus difficiles encore à garder. Quand l'un d'eux part, la règle part avec lui. Le cabinet ne manque ni de compétences ni d'outils : il manque de temps, de bras, et d'une règle écrite quelque part.
+**Dernier arbitrage de Kevin, 15/10/2026 après la recette des cartes Méthode.** L’offre part des robots et agents IA Memlia déjà conçus et présentés. Nous les déployons, les adaptons aux dossiers, aux outils et aux validations du cabinet, et les maintenons. Lorsqu’un besoin dépasse ce catalogue, nous construisons sur mesure. L’existence d’une fiche ne prouve aucun déploiement chez un client : aucun client, résultat mesuré, délai standard, certification ou mode d’hébergement n’est déduit de ce positionnement.
 
-Memlia écrit ce savoir-faire et automatise sa part répétitive dans les outils existants. Le collaborateur garde la décision ; le cabinet garde le savoir.
+Le lecteur reconnaît d’abord le travail confié et le résultat remis : avis classés, récapitulatif de portefeuille, pièces réunies, rapprochements préparés, exceptions à revoir. Un robot couvre une routine précise ; un agent IA accompagne les tâches d’un métier. La règle écrite explique l’adaptation et la maîtrise du traitement. Elle n’est plus l’unique accroche des pages commerciales.
 
-Trois bénéfices, toujours dans cet ordre, jamais chiffrés : moins de charge répétitive sur les collaborateurs (ils travaillent sur les dossiers qui demandent du jugement) ; un savoir-faire qui appartient au cabinet (écrit, testé, maintenu, indépendant des personnes) ; moins de dépendance au recrutement dans l'urgence.
+Trois bénéfices, jamais chiffrés sans mesure : moins de collecte et de manipulations répétitives ; des résultats et exceptions que l’équipe peut reprendre ; un déploiement adapté et maintenu par Memlia. Le cabinet garde ses règles, ses saisies et ses décisions.
 
 ## 2. La promesse : ambitieuse, et tenue
 
-**Toute tâche répétitive de votre cabinet, écrite dans vos mots puis automatisée dans vos outils, prise entière : observation, règle, construction, recette, maintenance.**
+**Choisissez une première prise en charge. Les robots et agents partent du catalogue ; Memlia OS relie la mémoire du cabinet ; le modèle privé travaille ses façons de produire par entraînement. Nous définissons les données autorisées, les accès, les livrables et la recette du service retenu.**
+
+Décision du 16/10/2026, accueils quatre services :
+
+- **Robots** : 21 routines au catalogue, un déclencheur et un résultat ; adaptation et sur mesure au besoin.
+- **Agents IA** : 12 agents au catalogue, les tâches d’un métier, leurs livrables et validations ; adaptation et sur mesure au besoin.
+- **Memlia OS** : la mémoire collective relie personnes, documents, outils et agents avec leurs sources et accès.
+- **Modèle IA privé** : données autorisées préparées et qualifiées, budget d’essai, adaptation par entraînement, évaluation et publication d’une version acceptée. La recherche documentaire (RAG) et l’entraînement sont distincts. Les droits suivent la licence de base et le contrat.
+
+Les intégrations relient ces services aux outils existants ; elles ne forment pas une cinquième offre. Le sur mesure prolonge le catalogue. Les accueils donnent quatre chemins de même importance, sans transformer le hero en inventaire. Les figurines existantes restent réservées aux robots et agents ; les aperçus OS et modèle reprennent leurs scènes validées, sans nouveau boîtier ni emblème.
 
 - L'ambition porte sur l'étendue (toute tâche répétitive dont la règle peut s'écrire, en expertise comptable et en commissariat aux comptes : de la relance des pièces à la DSN, du suivi des demandes de confirmation des tiers à la préparation des rapprochements) et sur l'engagement (la tâche entière, livrée, maintenue ; « vous confiez une tâche, elle est prise en charge »). Les familles publiées restent celles des données du site ; ouvrir le public CAC dans la charte ne prouve ni une intégration livrée ni une page déjà en ligne.
-- L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
+- L'ambition ne porte jamais sur des chiffres de gain, sur le jugement (qui reste humain) ni sur une compatibilité universelle.
+- **Les agents IA visent grand (décision de Kevin du 15/10/2026).** Un agent présente tout ce qu'un agent bien construit peut prendre en charge dans son métier : c'est la promesse d'un service à la tâche (nous le construisons, le faisons recetter, le maintenons), pas l'inventaire de ce qui tourne déjà. Rien n'est écrit en défense ni en retrait. Aucune page ne dit qu'une tâche est déjà en service chez un client, ni ne cite un client. Formule de référence : **« Nous prenons toute la mécanique. Vous gardez tout le jugement. »**
 - Le prix se dit ainsi : **« Vous payez une tâche prise en charge, pas des sièges. »** Le devis dépend de la complexité (sources, règles, exceptions, validations) ; maintenance, support et évolutions y sont écrits.
 
 ## 2 bis. Le mécanisme, nommé : « la règle écrite » (19/09/2026, révisable par Kevin)
@@ -45,7 +58,7 @@ Ce que le nom ne dit jamais : un chiffre de gain, une promesse d'autonomie, une 
 
 ## 4. Produit et modèle économique
 
-Memlia est un service, pas un logiciel : observer une tâche, écrire sa règle et ses limites dans les mots du cabinet, construire l'automatisation dans l'environnement existant, l'éprouver sur un jeu d'essai fictif (les cas qui doivent aboutir et ceux qui doivent échouer), la faire recetter par les équipes, la maintenir. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
+Memlia propose quatre services : robots, agents IA, mémoire collective et modèle privé. Les robots et agents partent du catalogue ; nous les adaptons à l’environnement et aux règles du cabinet, les faisons recetter et les maintenons. Memlia OS et le modèle privé ont leur périmètre sur devis. Une construction sur mesure intervient lorsque le besoin le demande. Le déploiement comprend l’observation de la tâche, les accès, la règle écrite et ses limites, les essais fictifs et la recette par les équipes. L'IA prépare, l'humain décide. Motif directeur : **proposition vs saisie** (ce que Memlia génère se régénère ; ce que le cabinet saisit ne se touche jamais) et **fail-closed** (dans le doute, l'automatisation s'arrête et présente le cas).
 
 Le résultat et les critères d'acceptation sont définis au devis ; prix à la complexité, jamais au siège. Un classeur, un export, un logiciel métier, une messagerie ou un dossier partagé peuvent être le point d'entrée ; les formats et accès sont vérifiés avant tout engagement. Excel est une intégration possible, jamais la catégorie commerciale ni un mot du hero (`test_positioning.py`).
 
@@ -94,17 +107,20 @@ Pour une tâche CAC, la livraison comprend une **fiche outil**, support Memlia q
 
 | Page | Rôle | Requête visée | H1 |
 |---|---|---|---|
-| `/` | l'angle et la promesse | automatisation IA cabinet comptable | Votre cabinet tourne sur un savoir-faire que personne n'a écrit. |
-| `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Vos mandats avancent. Votre équipe garde le jugement. (direction de copy ; H1 intent-first arrêté par E1 après mesure) |
-| `/automatisation-cabinet-comptable` | le service, le périmètre, le prix | automatisation sur mesure cabinet comptable | Toute tâche répétitive de votre cabinet, écrite puis automatisée. |
+| `/` | l'angle et la promesse | automatisation IA cabinet comptable | Robots et agents IA pour votre cabinet comptable. |
+| `/commissaires-aux-comptes` | accueil CAC : tâches répétitives, fiche outil, frontière avec le jugement d'audit | intention CAC à mesurer par C2 avant le titre final | Automatisation pour commissaire aux comptes : robots et agents IA. |
+| `/automatisation-cabinet-comptable` | le catalogue des robots, les routines et leurs livrables | robot cabinet comptable, automatisation cabinet comptable | Choisissez une routine : nous adaptons et déployons son robot dans vos outils. |
 | `/methode` | la preuve de méthode | comment se déroule une mission | Observer. Écrire. Éprouver. Livrer. |
-| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Ce que nous garantissons, avant même de commencer. |
-| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous écrivons ce que votre cabinet sait faire. Puis nous le faisons tourner. |
-| `/contact` | la conversion | — | Quelle tâche vos collaborateurs refont-ils encore à la main ? |
+| `/garanties` | les engagements, et ce qu'on ne promet pas | garanties Memlia | Vos services IA au travail. Vos décisions sous contrôle. |
+| `/a-propos` | pourquoi Memlia existe, qui est derrière (page de marque : « memlia ») | memlia | Nous mettons l’IA au travail avec votre cabinet. |
+| `/contact` | la conversion | — | Que souhaitez-vous confier à Memlia ? |
 | `/blog`, articles | les méthodes, sourcées (règles au §7 bis) | requêtes du registre (`docs/strategy/site-v3/mesures/registre-requetes.json`) | par article |
 | `/glossaire` | le vocabulaire et sa frontière d'automatisation | glossaire cabinet comptable | inchangé |
+| `/agents-ia` | les agents IA par métier : qui prépare quoi, ce que vos collaborateurs valident (§9 bis) | agent ia comptable (50 recherches par mois, Google, 15/10/2026) | Agents IA pour cabinet d'expertise comptable : chacun prépare un métier, vos collaborateurs valident. |
+| `/agents-ia/<métier>` | un agent : ce qu'il prend en charge, ce qu'il vous remet, où il s'arrête | une requête par fiche, mesurée sur Google le 15/10/2026 (`docs/strategy/site-v3/HUB-AGENTS-IA-SPEC.md` §6) | ce que l'agent prend en charge, intention d'abord |
+| `/integrations` | la page des outils : ce que nous reprenons, outil par outil, avec un statut vérifié | intégration logiciels cabinet comptable | arrêté par la spécification du hub |
 
-Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation dit « Parlons de votre tâche ». Tagline (pied de page, slogan JSON-LD) : « Le savoir-faire de votre cabinet, écrit et automatisé. La décision reste à vous. »
+Les titres sont **intent-first**. Pour chaque article, le H1 porte une requête mesurée par l'instrument du registre, y compris quand l'autocomplétion répond sans suggestion ; le JSON-LD `headline` et `og:title` reprennent ce H1 à l'identique. Le titre d'onglet peut être plus court pour la largeur du SERP, mais vise la même requête. Un angle narratif reste possible en seconde proposition, jamais à la place de l'intention. L'appel principal est unique sur tout le site : **« Confier une première tâche » → `/contact`** ; le bouton de navigation porte le même libellé. Tagline (pied de page, slogan JSON-LD) : « Des services IA adaptés à votre cabinet, déployés et maintenus. »
 
 ## 7 bis. Les articles du blog
 
@@ -160,9 +176,9 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 ## 9. Vocabulaire
 
-- **On dit** : tâche, geste, règle, savoir-faire, collaborateur, cabinet, dossier, pièce, bulletin, DSN, retour DSN, écart, exception, proposition, recette, validation, périmètre, maintenance, « prise en charge », « écrite dans vos mots », « dans vos outils ».
+- **On dit** : tâche, geste, règle, savoir-faire, collaborateur, cabinet, dossier, pièce, bulletin, DSN, retour DSN, écart, exception, proposition, recette, validation, périmètre, maintenance, « prise en charge », « écrite dans vos mots », « dans vos outils », agent IA (§9 bis).
 - **On ne dit jamais** : module, complément Excel ou Memlia (verrouillés par `tests/proof/test_positioning.py`), plateforme tout-en-un, autonome, zéro erreur, conformité garantie, révolution, gain chiffré, « logiciel » pour désigner Memlia, mots de processus interne (revue métier, fact-check, non attesté : verrouillés par `test_build.py`).
-- **Définir à la première apparition** : recette, fail-closed, jeu d'essai fictif, agrégat non nominatif.
+- **Définir à la première apparition** : recette, fail-closed, jeu d'essai fictif, agrégat non nominatif, agent IA.
 
 ### Vocabulaire CAC : relier les normes aux mots de l'équipe
 
@@ -180,14 +196,29 @@ Nous, vouvoiement, français professionnel, concret, calme et confiant. Phrases 
 
 **Interdits CAC** : « audit automatisé », « conforme aux NEP » et variantes (« conforme NEP »), « validé H2A/CNCC », « passe le contrôle H2A », « archivage conforme » sans démonstration. Aucun nom de service, outil ou slogan ressemblant au titre protégé de commissaire aux comptes ou créant une confusion (L.821-7) : « CAC virtuel », « commissaire aux comptes IA », « votre CAC augmenté ». Le titre désigne le lecteur qualifié, jamais Memlia. La préparation d'un FEC, d'une confirmation ou d'une analyse ne vaut ni contrôle d'audit complet, ni conclusion, ni opinion. Aucun gain chiffré CAC tiré d'une étude générale sur l'IA. Les sujets LCB-FT et durabilité exigent leur périmètre et leurs sources propres ; aucun outil ne décide d'une déclaration à TRACFIN.
 
+## 9 bis. Les agents IA (14/10/2026, décision de Kevin, porte 1 du hub)
+
+Un **agent IA**, chez Memlia, est la règle écrite des tâches d'un même métier du cabinet, mise en œuvre dans vos outils. Il prépare, il s'arrête dans le doute, votre collaborateur valide. Il porte un prénom pour être reconnu ; il ne parle pas à la première personne, ne se présente ni comme un collègue ni comme un membre de l'équipe, et n'envoie rien. Derrière chaque agent, c'est nous : nous observons la tâche, écrivons sa règle, l'éprouvons sur un jeu fictif, la faisons recetter et la maintenons. Aucune équipe de personas n'est inventée.
+
+- **Il promet** : la tâche prise entière ; la frontière en trois colonnes ; l'arrêt dans le doute ; le rejeu de sa règle sur un dossier fictif, dit comme tel ; une proposition que le cabinet valide.
+- **Il ne promet jamais** : l'autonomie ; un envoi sans validation (courriel, relance, lettre d'information, publication, réponse à un client, déclaration, facture : tout ce qui sort du cabinet est préparé, jamais envoyé) ; un gain chiffré ; une compétence réglementée : il n'est ni expert-comptable, ni commissaire aux comptes, ni avocat, ni délégué à la protection des données désigné.
+- **Il se définit à sa première apparition** sur chaque page. Le mot de catégorie est « agent IA » ; « spécialiste », « assistant » et « collaborateur » ne le désignent pas.
+- **Ne s'écrit jamais** : agent autonome, collaborateur IA, employé IA, « embaucher » ou « recruter » un agent, « votre nouveau collègue », agent IA CAC, commissaire aux comptes IA, DPO IA, « agent administratif » ou « agent comptable » sans « IA » (grades de la fonction publique). Le métier d'audit se dit « missions d'audit » ; le titre de commissaire aux comptes désigne le lecteur.
+- **L'agent RH du cabinet** ne note ni ne surveille personne : préparation de documents et agrégats seulement.
+- **Place** : sous « Nos services », à côté des robots, de Memlia OS et du modèle privé. Les intégrations (`/integrations`) disposent de leur propre entrée directe. L'appel principal reste « Confier une première tâche ».
+
 ## 10. Preuves autorisées et garde-fous
 
-Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
+Sur la page de compatibilité (`/integrations`), les logos identifient les logiciels, sans partenariat revendiqué ; un logo de client, jamais. Décision du 16/10 : l’attribution et les sources restent documentées, sans légende de marque répétée sous les blocs. Illustrations fonctionnelles fictives (`src/data/proofs.ts`), méthodes publiées et sourcées, glossaire sourcé et daté, la méthode elle-même. Aucun logo client, témoignage, nombre de cabinets, pourcentage de gain ni donnée client réelle, aucun téléphone public, aucune certification. Kevin Kitanga est le fondateur et l'auteur des articles ; le site ne lui attribue ni la qualité d'expert-comptable ni celle de commissaire aux comptes (la règle est celle du cabinet, le jugement professionnel reste au cabinet). Le siège légal est à Paris (mentions légales, JSON-LD Organization).
 
 Tests qui verrouillent la copy : `tests/proof/test_positioning.py` (hero, titre d'accueil, mots interdits), `test_integrated_media.py` (tagline), `test_legal_identity.py` (séparation entre texte visible, mentions légales et Organization), `test_build.py` (FAQ = 11, usages = 5, mots de processus, `pages-lastmod.json`), `tests/browser/positioning.spec.ts`, `sections-redesign.spec.ts` (cinq titres d'usages), `site.spec.ts` (navigation). Toute modification de copy rejoue `npm run lastmod:sync` et la chaîne Ressources (`resource:seal-surfaces` + `reaffirmer`) ; la construction complète est faite par la CI GitHub (« Repository gates »), pas sur le Mac.
 
 ## Changelog
 
+- v11 (2026-10-16) — Quatre chemins sur les accueils EC/CAC ; sur mesure en continuité du catalogue ; mémoire collective et entraînement distincts ; conversion et garanties étendues aux quatre services. Prix validés inchangés.
+
+- v7 (2026-10-15) — Porte 2 du hub : les agents IA présentent tout ce que nous savons construire dans leur métier (§2), jamais comme déjà en service chez un client ; le rejeu de chaque agent est montré sur dossier fictif (§9 bis) ; logos des éditeurs admis sur la page de compatibilité, sans statut ni total (§10).
+- v6 (2026-10-14) — Ajouté les agents IA (§9 bis) : définition, promesses et interdits, place dans la navigation ; trois lignes au §7 (hub, fiches, page des outils). Décision de Kevin à la porte 1 du hub (cadrage `docs/strategy/site-v3/HUB-SPECIALISTES-CADRAGE.md`, ADR 0001).
 - v5 (2026-10-06) — Ouvert la charte au commissariat aux comptes : personas, vocabulaire, secret, indépendance, responsabilité, documentation et fiche outil ; séparé l'accueil CAC de l'accueil EC sans promettre de fonctions déjà livrées.
 - v4 (2026-09-21) — Réservé l'identité juridique aux mentions légales et au schéma Organization ; À propos revient à la valeur produit après mesure du bloc registre hors contexte.
 - v3 (2026-09-17) — Repositionné Memlia sur le savoir-faire non écrit du cabinet, la règle écrite et la prise en charge entière d'une tâche répétitive.
@@ -199,9 +230,21 @@ Une action principale : confier une première tâche, sur `/contact` (formulaire
 ## 12. Sources
 
 - Programme CAC décidé par Kevin le 05/10/2026 : `~/memlia-vault/10-memlia/chantiers/cac-site-niveau-superieur/plan.md` (B1), recherche CAC du 05/10 (pièges et points non vérifiés) ; `~/dev/interne/memlia-rdv/docs/recherche/2026-10-05-cac-*.md` et `src/donnees/cac/textes.ts` pour les rôles et gestes, jamais comme preuve réglementaire.
-- [H2A, NEP 315 révisée](https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/) : § 14 (définition), § 46 (appréciation du fonctionnement et des informations), § 48 d) (documentation). [CNCC, NEP 230](https://doc.cncc.fr/docs/nep-230-documentation-de-laudit-x), notamment § 04 (procédures, éléments testés, résultats, conclusions).
+- [H2A, NEP 315 révisée](https://h2a-france.org/normes/connaissance-de-lentite-et-de-son-environnement-et-evaluation-du-risque-danomalies-significatives-dans-les-comptes/) : § 14 (définition), § 46 (appréciation du fonctionnement et des informations), § 48 d) (documentation). [H2A, NEP 230](https://h2a-france.org/normes/documentation-de-laudit-des-comptes/) (texte homologué par l'arrêté du 28/12/2023 ; la page CNCC exige une connexion), notamment § 04 (procédures, éléments testés, résultats, conclusions).
 - [CNCC, Code de commerce, partie législative, numérotation 2024](https://doc.cncc.fr/docs/brochure-code-com-partie-legislative-2024/attachments/brochure-ccom-legislative-septembre-2024) : L.821-7, L.821-27, L.821-31, L.821-35, L.821-37, L.821-53 ; [code de déontologie, mars 2026](https://doc.cncc.fr/docs/codedeontologiemars2026/attachments/brochure-code-de-deontologie-mars-2026), art. 5, 9, 10, 18 et 19. Toute publication réglementée recontrôle la version applicable ; les points non vérifiés de la recherche ne deviennent pas des affirmations publiques.
 - Décision de Kevin du 17/09/2026 : l'angle « savoir-faire que personne n'a écrit », l'ambition sur la proposition de valeur, le retrait de tout ce qui dessert.
 - Décision de Kevin du 17/09/2026 (soir) : « fais pareil pour les articles du blog » ; les six articles réécrits selon le §7 bis et republiés par la forge, les trois articles antérieurs à la v3 compris.
 - v2 du 15/09/2026 (carte t_630c4a13), coffre 10-memlia/00-socle.md, marketing/positionnement-memlia-automatisation-ia.md, marketing/seo/20-voix-client-vocabulaire.md.
 - `src/data/familles.ts`, `src/data/site.mjs`, `src/data/pages-v2.mjs`, `src/data/faq.ts`, `src/data/schema.mjs`, `public/llms.txt`, et `docs/strategy/site-v3/` (stratégie, crons, journal).
+
+
+## Décision Kevin du 16/10/2026 — Memlia OS et modèle privé
+Deux pages complètent les catalogues robots et agents dans « Nos services » : Memlia OS (mémoire collective et orchestration du cabinet) et Modèle IA privé (adaptation/entraînement pour entreprises). Le mot système d’exploitation décrit ici une couche métier reliée aux outils existants. Ce périmètre explicitement demandé étend l’audience à l’entreprise pour la seconde offre. Les interdits génériques de plateforme/logiciel ne doivent pas empêcher de nommer ces deux offres ; ils restent applicables aux robots et agents.
+
+Nos services regroupe Robots, Agents IA, Memlia OS et Modèle IA privé ; Intégrations est un lien direct. Décrire des livrables et une prise en charge sur devis, pas un matériel déjà commercialisé ni une installation client acquise. Les scènes du bureau collectif et du modèle privé sont des exemples fictifs ; aucun boîtier illustré. RAG et entraînement sont distincts ; droits sur l’adaptation soumis à la licence de base. Aucun « tout local », « souverain », « propriétaire exclusif » ou conformité automatique sans périmètre et preuve. Mammouth n’est pas présenté comme service d’entraînement personnalisé. Les deux documents de pricing validés restent inchangés.
+
+Dernier arbitrage visuel du 16/10 : la représentation validée de Memlia OS est le bureau collectif, sans boîtier illustré, décomposition au scroll ou figurine. Le petit pictogramme de mémoire reste au centre. Les pistes générées sont archivées hors site.
+
+Dernier arbitrage modèles du 16/10 : la page modèle privé montre Llama, Mistral, Qwen, DeepSeek, Gemma, gpt oss, GLM et Kimi. Nom public : modèles à poids accessibles, car les licences dépendent des versions. Pas de logo ChatGPT, Claude ou Gemini comme base entraînable. Les logos officiels sont hébergés sur le site, sans partenariat revendiqué.
+
+Décision de présentation du 16/10 : supprimer les paragraphes de précaution répétés sous les démonstrations (« aucun modèle appelé », « aucune connexion », « sans résultat client »), les mentions répétées de marques, et le rappel de fiction sous les livrables. Les libellés compacts Dossier/Exemple fictif suffisent pour identifier les exemples. Les limites métier, la confidentialité des saisies et les validations restent expliquées là où elles aident à utiliser ou choisir le service. L’illustration du modèle se lance automatiquement sans bouton de pause ; le survol, le focus, la sélection d’une étape et le mouvement réduit permettent une lecture stable.

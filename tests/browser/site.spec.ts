@@ -27,13 +27,14 @@ test('ancre FAQ : le fragment ouvre le détail, le clavier le referme', async ({
   await expect(page.locator('#faq-recette')).not.toHaveAttribute('open', '');
 });
 
-test('cinq usages illustratifs, aucun catalogue public', async ({ page }) => {
+test('cinq domaines de tâches et accès au catalogue', async ({ page }) => {
   await page.goto('/');
   for (const id of ['collect', 'check', 'compare', 'follow', 'decide']) {
     await expect(page.locator(`[data-usage="${id}"]`)).toHaveCount(1);
   }
   await expect(page.locator('[id^="module-"]')).toHaveCount(0);
   await expect(page.locator('#usages')).not.toContainText('Exemples non contractuels');
+  await expect(page.locator('.catalogue-carte[href="/automatisation-cabinet-comptable"]')).toHaveCount(1);
 });
 
 test('FAQ DOM et JSON-LD identiques, ancres locales complètes', async ({ page }) => {
@@ -63,13 +64,15 @@ test('contenu et navigation sans JavaScript', async ({ browser, baseURL }) => {
   await expect(page.locator('h1')).toBeVisible();
   await expect(page.locator('.faq-r').first()).toBeVisible();
   await expect(page.locator('.nav-sans-js a[href="/automatisation-cabinet-comptable"]')).toBeVisible();
+  // Sans JavaScript, les sous-menus n'existent pas : chaque destination reste un lien servi en clair.
+  expect(await page.locator('.nav-sans-js a').evaluateAll((liens) => liens.map((lien) => lien.getAttribute('href')))).toEqual([...HREFS, CTA.nav.href]);
   await context.close();
 });
 
 test('reduced-motion garde les étapes lisibles', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  await expect(page.locator('.hero-h1')).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.hero-editorial h1')).toHaveCSS('animation-name', 'none');
   for (const step of await page.locator('[data-etape]').all()) await expect(step).toHaveCSS('opacity', '1');
 });
 
@@ -82,7 +85,8 @@ test('navigation desktop : destinations atteignables au clavier et CTA unique', 
     await page.goto('/');
     const link = page.locator(`.nav-centre a[href="${href}"]`);
     if (!await link.isVisible()) {
-      await page.getByRole('button', { name: 'Cabinets', exact: true }).focus();
+      // Une destination de sous-menu ne se voit qu'une fois son groupe ouvert : bouton au clavier, puis Entrée.
+      await page.locator('.nav-groupe', { has: page.locator(`a[href="${href}"]`) }).locator('[data-groupe-bouton]').focus();
       await page.keyboard.press('Enter');
     }
     await link.focus();
@@ -104,10 +108,10 @@ test('accueil : les six ancres historiques restent des cibles servies', async ({
   }
 });
 
-test('méthode mobile : chaque étape garde son image et son texte dans le flux', async ({ page }) => {
+test('méthode mobile : chaque étape garde son texte dans le flux', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/');
-  await expect(page.locator('.parcours-visuel')).toBeHidden();
+  await expect(page.locator('.parcours-visuel')).toHaveCount(0);
   for (const step of await page.locator('[data-etape]').all()) {
     await step.locator('h3').scrollIntoViewIfNeeded();
     const visible = await step.locator('h3').evaluate(el => {
@@ -115,7 +119,8 @@ test('méthode mobile : chaque étape garde son image et son texte dans le flux'
       return document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === el;
     });
     expect(visible).toBe(true);
-    await expect(step.locator('.functional-proof img')).toBeVisible();
+    await expect(step.locator('p.texte-2')).toBeVisible();
+    await expect(step.locator('img')).toHaveCount(0);
   }
 });
 

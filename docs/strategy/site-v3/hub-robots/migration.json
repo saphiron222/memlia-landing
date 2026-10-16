@@ -1,0 +1,82 @@
+{
+  "hub": {
+    "route": "/automatisation-cabinet-comptable",
+    "decision": "reecrire",
+    "redirect": false,
+    "reason": "Même URL, offre remplacée par le catalogue des robots ; maintien des parcours historiques."
+  },
+  "services": [
+    {
+      "route": "/automatisation/circularisation-cac",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/paie",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/entrees-sorties-salaries",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/evaluation-transmission",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/rapprochement-bancaire",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/factures-fournisseurs",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/facture-electronique",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/notes-de-frais",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/secretariat-juridique",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/saisie-comptable",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/registres-obligations",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    },
+    {
+      "route": "/automatisation/bulletins-controle",
+      "status": "publie",
+      "decision": "conserver",
+      "reason": "Service détaillé existant, destination des agents et des contenus ; aucune collision avec les robots."
+    }
+  ]
+}

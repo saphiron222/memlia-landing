@@ -1,0 +1,50 @@
+import {test,expect} from '@playwright/test';
+import {OUTILS_VITRINE} from '../../src/data/outils-vitrine';
+const hub='/outils-comptables-gratuits';
+test.use({reducedMotion:'reduce'});
+for(const width of [375,1440])test(`21 outils : six saisies visibles maximum au départ, aide repliée, ${width}`,async({page})=>{
+ test.setTimeout(90_000); // 21 navigations et attentes réseau dans ce scénario agrégé.
+ await page.setViewportSize({width,height:900});const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ for(const o of OUTILS_VITRINE){await page.goto(`${hub}/${o.slug}`);await page.waitForLoadState('networkidle');const n=await page.locator('.outil-calcul input:visible,.outil-calcul select:visible,.outil-calcul textarea:visible').count();expect(n,o.slug).toBeLessThanOrEqual(6);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),o.slug).toBe(true);for(const help of await page.locator('[data-tool-help]').all())expect(await help.getAttribute('open'),o.slug).toBeNull();}
+ expect(errors).toEqual([]);
+});
+test('prompts : rail au clavier, lecteur unique avec uniquement le prompt et copie',async({page,context})=>{
+ await context.grantPermissions(['clipboard-read','clipboard-write']);await page.goto(`${hub}/bibliotheque-prompts-comptables`);await expect(page.locator('[data-prompt-reader]:visible')).toHaveCount(0);
+ await page.locator('[data-model]').last().locator('[data-read]').focus();await page.keyboard.press('Enter');const reader=page.locator('[data-prompt-reader]:visible');await expect(reader).toHaveCount(1);await expect(reader.locator('h3')).toBeFocused();await expect(reader.locator('dl,h4')).toHaveCount(0);await expect(reader.locator('textarea')).not.toHaveValue(/Entrée fictive propre à la fiche|Sortie attendue rédigée/);await expect(reader.locator(':scope > p')).not.toContainText([/Entrée fictive|Sortie attendue|Se prépare seul|Reste humain/]);await reader.getByRole('button',{name:'Copier le prompt',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe(await reader.locator('textarea').inputValue());
+ await page.getByLabel('Rechercher un prompt').fill('relance');await page.locator('[data-read="relance-pieces"]').click();await expect(page.locator('[data-prompt-reader]:visible')).toHaveCount(1);
+});
+test('relance courte : quatre données, confirmation explicite, message éditable et refus',async({page,context})=>{
+ await context.grantPermissions(['clipboard-read','clipboard-write']);await page.goto(`${hub}/generateur-relance-facture-impayee`);const quick=page.locator('[data-relance-rapide]');await expect(quick.locator('input:visible')).toHaveCount(5);await quick.getByLabel('Client',{exact:true}).fill('Atelier fictif');await quick.getByLabel('Référence de facture',{exact:true}).fill('F-1');await quick.getByLabel('Solde restant (€)',{exact:true}).fill('90');await quick.getByLabel('Date d’échéance',{exact:true}).fill('2026-01-01');await quick.getByRole('button',{name:'Préparer ma relance'}).click();await expect(quick.locator('[data-quick-error]')).toContainText('Confirmez');await quick.getByRole('checkbox').check();await quick.getByRole('button',{name:'Préparer ma relance'}).click();await expect(quick.locator('[data-quick-body]')).toHaveValue(/90,00 EUR/);await quick.locator('[data-quick-body]').fill('Message relu');await quick.getByRole('button',{name:'Copier le message'}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Message relu');await quick.getByLabel('Date d’échéance',{exact:true}).fill('2099-01-01');await quick.getByRole('button',{name:'Préparer ma relance'}).click();await expect(quick.locator('[data-quick-error]')).toContainText('Non échue');await expect(quick.locator('[data-quick-output]')).toBeHidden();
+});
+test('checklist courte : une trame puis un état par pièce ; inconnus jamais demandés',async({page})=>{
+ await page.goto(`${hub}/checklist-pieces-comptables`);await expect(page.locator('.cl input:visible,.cl select:visible,.cl textarea:visible')).toHaveCount(1);await page.getByRole('button',{name:'Préparer ma checklist'}).click();await expect(page.locator('[data-cl-item]')).toHaveCount(5);await expect(page.locator('[data-cl-item] input:visible,[data-cl-item] textarea:visible')).toHaveCount(0);await expect(page.locator('[data-cl-message]')).toHaveValue('');await page.locator('#cl-p1-state').selectOption('missing');await expect(page.locator('[data-cl-message]')).toHaveValue(/Factures/);await expect(page.locator('[data-cl-unknown] li')).toHaveCount(4);await page.locator('#cl-p1-state').selectOption('received');await expect(page.locator('[data-cl-message]')).toHaveValue('');
+});
+test('prompts : ouverture directe du fragment, navigation et retour cohérents',async({page})=>{
+ await page.goto(`${hub}/bibliotheque-prompts-comptables#prompt-relance-pieces`);await expect(page.locator('[data-prompt-reader="relance-pieces"]')).toBeVisible();await expect(page.locator('[data-prompt-reader]:visible')).toHaveCount(1);
+ await page.locator('[data-read="fiche-regle"]').click();await expect(page).toHaveURL(/#prompt-fiche-regle$/);await expect(page.locator('[data-prompt-reader="fiche-regle"]')).toBeVisible();await page.goBack();await expect(page.locator('[data-prompt-reader="relance-pieces"]')).toBeVisible();await expect(page.locator('[data-prompt-reader]:visible')).toHaveCount(1);
+});
+test('relance courte : objet édité seul protégé avant régénération',async({page})=>{
+ await page.goto(`${hub}/generateur-relance-facture-impayee`);const quick=page.locator('[data-relance-rapide]');for(const [name,value] of Object.entries({client:'Fictif',reference:'F1',amount:'10',dueDate:'2026-01-01'}))await quick.locator(`[name=${name}]`).fill(value);await quick.getByRole('checkbox').check();await quick.getByRole('button',{name:'Préparer ma relance'}).click();await quick.locator('[data-quick-subject]').fill('Objet personnel conservé');page.once('dialog',d=>d.dismiss());await quick.getByRole('button',{name:'Préparer ma relance'}).click();await expect(quick.locator('[data-quick-subject]')).toHaveValue('Objet personnel conservé');
+});
+test('checklist : le nom visible suit l’édition sans perte du focus',async({page})=>{
+ await page.goto(`${hub}/checklist-pieces-comptables`);await page.locator('[data-cl-start]').click();const item=page.locator('[data-cl-item="p1"]');await item.locator('summary').click();await item.locator('[data-field=label]').fill('Libellé corrigé');await expect(item.locator('legend')).toHaveText('Libellé corrigé');await expect(item.locator('[data-field=label]')).toBeFocused();
+});
+
+for(const width of [375,666,768,1440])test(`galerie de prompts : cartes lisibles et défilement réel à ${width} px`,async({page})=>{
+ await page.setViewportSize({width,height:900});await page.goto(`${hub}/bibliotheque-prompts-comptables`);
+ const rail=page.locator('[data-prompt-rail]');const card=page.locator('[data-model]').first();
+ const dimensions=await rail.evaluate(el=>({client:el.clientWidth,scroll:el.scrollWidth}));
+ expect(dimensions.scroll).toBeGreaterThan(dimensions.client*2);
+ expect((await card.boundingBox())!.width).toBeGreaterThan(220);
+ expect((await card.boundingBox())!.width).toBeLessThanOrEqual(dimensions.client);
+ await page.getByRole('button',{name:'Prompts suivants',exact:true}).click();await expect.poll(()=>rail.evaluate(el=>el.scrollLeft)).toBeGreaterThan(100);
+ await page.locator('[data-read]').last().focus();await expect.poll(async()=>{const link=await page.locator('[data-read]').last().boundingBox();const bounds=await rail.boundingBox();return !!link&&!!bounds&&link.x>=bounds.x-1&&link.x+link.width<=bounds.x+bounds.width+1;}).toBe(true);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+ await page.screenshot({path:`.qa/outils-simples/screens/bibliotheque-cartes-${width}.png`});
+});
+
+for(const width of [375,666,768,1440])test(`générateur de prompts : amorces lisibles à ${width} px`,async({page})=>{
+ await page.setViewportSize({width,height:900});await page.goto(`${hub}/generateur-prompt-expert-comptable`);await page.getByText('Partir d’un exemple de consigne',{exact:true}).click();
+ const rail=page.locator('.prompt-seeds');const dimensions=await rail.evaluate(el=>({client:el.clientWidth,scroll:el.scrollWidth}));expect(dimensions.scroll).toBeGreaterThan(dimensions.client);
+ expect((await rail.locator('button').first().boundingBox())!.width).toBeGreaterThanOrEqual(200);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
+});

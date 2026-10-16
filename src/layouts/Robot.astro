@@ -1,0 +1,43 @@
+---
+import Base from './Base.astro';
+import Button from '@/components/Button.astro';
+import Picto from '@/components/Picto.astro';
+import Demonstration from '@/components/catalogue/Demonstration.astro';
+import Figurine from '@/components/catalogue/Figurine.astro';
+import Carte from '@/components/catalogue/Carte.astro';
+import { ROBOT_HUB, ROBOT_CATEGORIES, robotParId, cheminRobot, contactsRobots, type Robot } from '@/data/robots';
+import { OUTILS_ROBOTS } from '@/data/outils-robots';
+import { grapheFicheRobot } from '@/data/schema-robots';
+import '@/styles/catalogue/commun.css';
+import '@/styles/catalogue/fiche.css';
+interface Props { robot: Robot; }
+const { robot } = Astro.props;
+const voisins = robot.voisins.map(robotParId).filter((r): r is Robot => !!r);
+const contacts = contactsRobots().filter((contact) => contact.robot === robot.id);
+const socialImage = { url: `https://memlia.fr/robots/restitutions/${robot.id}.webp`, width: 1200, height: 630, alt: `Dossier fictif : restitution du robot ${robot.nom}.` };
+const csp = "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; img-src 'self' data:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'";
+---
+<Base titre={robot.seo.titre} titreSocial={robot.h1} description={robot.seo.description} chemin={cheminRobot(robot)} socialImage={socialImage} schema={grapheFicheRobot(robot)} csp={csp}>
+  <div class="feuille catalogue-page routine-page">
+    <div class="routine-haut"><nav class="catalogue-ariane" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href={ROBOT_HUB.chemin}>Robots comptables</a></li><li aria-current="page">{robot.nom}</li></ol></nav></div>
+    <section class="routine-hero" aria-labelledby="routine-titre" data-robot-section="hero">
+      <div class="routine-hero-texte"><div class="routine-identite"><div><Figurine src={robot.image.src} alt={robot.image.alt} taille={84} prioritaire /></div><p class="surtitre">Robot Memlia · {ROBOT_CATEGORIES.find((cat) => cat.id === robot.categorie)?.nom}</p></div><h1 id="routine-titre">{robot.h1}</h1><p>{robot.introduction}</p><Button href="/contact" variante="principal" picto="fleche" data-tache-robot={contacts[0]?.id}>Confier une première tâche</Button><a class="catalogue-action" href="#livrables">Voir ce que le robot vous remet<Picto nom="chevron" taille={14} /></a></div>
+      <Demonstration robot={robot} />
+    </section>
+    <section class="catalogue-section" id="livrables" aria-labelledby="livrables-titre" data-robot-section="livrables"><div class="tete"><h2 id="livrables-titre">Ce que le robot vous remet.</h2><p>{robot.besoin}</p></div><dl class="routine-livrables">{robot.livrables.map(([nom, texte]) => <div><dt>{nom}</dt><dd>{texte}</dd></div>)}</dl><p class="mention">Les sorties montrées sur cette page sont fictives. Nous réglons les formats et le classement sur ceux de votre cabinet.</p></section>
+    <section class="catalogue-section" aria-labelledby="fonctionnement-titre" data-robot-section="fonctionnement"><div class="tete"><h2 id="fonctionnement-titre">Du geste montré au résultat remis.</h2><p>{robot.rythme}</p></div><ol class="catalogue-etapes"><li><span class="catalogue-etape-numero">01</span><h3>Vous montrez la routine</h3><p>{robot.declencheur}</p><p>Nous observons le parcours, vos accès, les documents attendus et les cas qui demandent une reprise.</p></li><li><span class="catalogue-etape-numero">02</span><h3>Nous écrivons sa règle</h3><p>Comptes autorisés, déclenchement, formats, validations et conditions d’arrêt sont écrits avec vous. Nous construisons le robot et l’éprouvons sur des dossiers fictifs.</p></li><li><span class="catalogue-etape-numero">03</span><h3>Votre équipe vérifie</h3><p>Vous faites la recette : votre équipe vérifie que le résultat suit la règle sur ses cas. Nous mettons ensuite le robot en service et maintenons le parcours.</p><p>{robot.usage}</p></li></ol></section>
+    <section class="catalogue-section" aria-labelledby="taches-titre" data-robot-section="taches"><div class="tete"><h2 id="taches-titre">Les tâches prises en charge.</h2></div><div class="routine-taches-outils"><dl class="routine-taches">{robot.taches.map(([nom, texte]) => <div><dt>{nom}</dt><dd>{texte}</dd></div>)}</dl><aside class="routine-outils" aria-labelledby="outils-titre"><h3 id="outils-titre">Dans vos outils</h3><p>Nous utilisons les accès et les destinations définis avec votre cabinet.</p><ul>{robot.outils.map((id) => {const outil = OUTILS_ROBOTS[id];return outil && <li><a href={outil.href}>{outil.logo && <img src={outil.logo} width="28" height="28" alt="" loading="lazy" />}{outil.nom}</a></li>;})}</ul><p>Votre logiciel n’est pas listé ? Nous l’intégrons sur demande.</p><a class="catalogue-action" href="/integrations">Les compatibilités<Picto nom="fleche" taille={14} /></a></aside></div></section>
+    <section class="catalogue-section" aria-labelledby="comparaison-titre" data-robot-section="comparaison"><div class="tete"><h2 id="comparaison-titre">La même routine. Une autre façon de la suivre.</h2></div><div class="routine-comparaison" data-table-scroll role="region" aria-label="Comparaison avec et sans robot" tabindex="0"><table><thead><tr><th scope="col">Sans le robot</th><th scope="col">Avec le robot</th></tr></thead><tbody>{robot.comparaison.map(([sans, avec]) => <tr><td>{sans}</td><td>{avec}</td></tr>)}</tbody></table></div></section>
+    <section class="catalogue-section" id="regle" aria-labelledby="regle-titre" data-robot-section="regle"><div class="routine-regle"><h2 id="regle-titre">La règle écrite.</h2><p>{robot.demonstration.regle}</p><div class="routine-frontiere">{([['Dans le périmètre configuré',robot.frontiere.automatique],['Avec votre validation',robot.frontiere.validation],['Le jugement de votre équipe',robot.frontiere.humain]] as const).map(([titre, lignes]) => <div><h3>{titre}</h3><ul>{lignes.map((ligne) => <li>{ligne}</li>)}</ul></div>)}</div><div class="routine-arrets"><h3>Ce qui arrête le dossier</h3><ul>{robot.frontiere.arrets.map((arret) => <li>{arret}</li>)}</ul></div></div></section>
+    <section class="catalogue-section" aria-labelledby="voisins-titre" data-robot-section="voisins"><div class="tete"><h2 id="voisins-titre">Utiles avant ou après.</h2><p>Le robot traite une routine précise. Les tâches voisines gardent leur propre règle.</p></div><ul class="catalogue-grille">{voisins.map((voisin) => <li><Carte {...voisin} href={cheminRobot(voisin)} categorie={ROBOT_CATEGORIES.find((cat) => cat.id === voisin.categorie)?.nom ?? ''} /></li>)}</ul><a class="catalogue-action" href="/methode">Derrière ces robots, notre méthode<Picto nom="fleche" taille={14} /></a>{robot.liens.length > 0 && <ul class="routine-liens">{robot.liens.map((lien) => <li><a class="catalogue-action" href={lien.href}>{lien.nom}<Picto nom="fleche" taille={14} /></a></li>)}</ul>}</section>
+    <section class="catalogue-section routine-faq" aria-labelledby="faq-titre" data-robot-section="faq"><div class="tete"><h2 id="faq-titre">Avant de confier cette tâche.</h2></div><div>{robot.faq.map(([question, reponse]) => <details><summary>{question}<Picto nom="chevron" taille={16} /></summary><p>{reponse}</p></details>)}</div>{robot.sources.length > 0 && <p class="mention">Pour retrouver les règles de la démarche : {robot.sources.map((source, i) => <><a href={source.href} rel="noopener">{source.nom}</a>{i < robot.sources.length - 1 ? ' · ' : '.'}</>)}</p>}</section>
+    <section class="catalogue-fin" aria-labelledby="contact-titre" data-robot-section="contact"><h2 id="contact-titre">Par quelle tâche commencer ?</h2><p>Vous payez une tâche prise en charge, pas des sièges. Le devis suit sa complexité : accès, règles, formats, exceptions et maintenance.</p><ul class="routine-departs">{contacts.map((contact) => <li><a href="/contact" data-tache-robot={contact.id}>{contact.nom}<Picto nom="fleche" taille={14} /></a></li>)}</ul><Button href="/contact" variante="principal" picto="fleche" data-tache-robot={contacts[0]?.id}>Confier une première tâche</Button><p class="mention">Rien à envoyer : la description suffit.</p></section>
+    <div class="routine-retour" data-robot-section="retour"><a class="catalogue-action" href={ROBOT_HUB.chemin}><Picto nom="gauche" taille={14} />Tous les robots comptables</a></div>
+  </div>
+</Base>
+<script>
+  import '@/lib/table-keyboard';
+  document.querySelectorAll<HTMLAnchorElement>('a[data-tache-robot]').forEach((lien) => lien.addEventListener('click', () => {
+    try { sessionStorage.setItem('memlia-tache', lien.dataset.tacheRobot ?? ''); } catch { /* Le lien reste utilisable quand le stockage est bloqué. */ }
+  }));
+</script>

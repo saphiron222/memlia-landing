@@ -3,81 +3,315 @@
   "exemptions": [
     {
       "route": "/blog/rubrique/gestion-pieces-comptables",
-      "clauses": [2],
+      "clauses": [
+        2
+      ],
       "date": "2026-09-20",
       "reason": "Page de collection : les médias visibles identifient les articles liés et restent leurs preuves propres ; ajouter une illustration décorative ne prouverait rien sur la rubrique."
     },
     {
       "route": "/blog/rubrique/ia-cabinet-comptable",
-      "clauses": [2],
+      "clauses": [
+        2
+      ],
       "date": "2026-10-07",
       "reason": "Page de collection : les médias visibles identifient les articles liés et restent leurs preuves propres ; ajouter une illustration décorative ne prouverait rien sur la rubrique."
     },
     {
       "route": "/blog/rubrique/paie-dsn-cabinet-comptable",
-      "clauses": [2],
+      "clauses": [
+        2
+      ],
       "date": "2026-09-20",
       "reason": "Page de collection : les médias visibles identifient les articles liés et restent leurs preuves propres ; ajouter une illustration décorative ne prouverait rien sur la rubrique."
     },
     {
+      "route": "/agents-ia/comptabilite",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche d’agent IA (annexe du hub, E4) : sa preuve propre est le rejeu de sa démonstration, un tableau HTML accessible rendu au build depuis les données ; une image le doublerait sans rien prouver de plus. Son recadrage 1200 × 630 n’est que l’image sociale (série agents-ia, data-og-only)."
+    },
+    {
       "route": "/integrations",
-      "clauses": [2],
+      "clauses": [
+        2
+      ],
       "date": "2026-09-20",
-      "reason": "Page de collection : elle distribue neuf guides dont chacun porte sa preuve fonctionnelle propre ; ajouter une illustration décorative au hub ne prouverait rien de plus."
+      "reason": "Page de compatibilité : chaque logiciel y a sa carte et son logo d’éditeur, et chaque guide lié porte sa preuve fonctionnelle propre ; une illustration ajoutée à la collection ne prouverait rien de plus."
     },
     {
-      "route": "/integrations/rapprochement-bancaire-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation-cabinet-comptable",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Le catalogue compose les figurines de ses fiches en HTML. Ces images partagées identifient les destinations ; aucun média fonctionnel supplémentaire ne prouverait la routine."
     },
     {
-      "route": "/integrations/lettrage-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/cfe",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/dsn-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/taxes-foncieres",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/bulletin-de-paie-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/suivi-urssaf",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/saisie-comptable-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/dette-fiscale",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/cloture-sage",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/suivi-declarations-fiscales",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/lettrage-cegid",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/habilitations-fiscales",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/dsn-silae",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/rattachement-fiscal",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
     },
     {
-      "route": "/integrations/bulletin-de-paie-silae",
-      "clauses": [2],
-      "date": "2026-09-20",
-      "reason": "La preuve propre est un cadre HTML accessible qui expose le chemin et les champs du jeu fictif ; une capture figée du même cadre dupliquerait l’information sans preuve supplémentaire."
+      "route": "/automatisation/informations-legales-rne",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/messagerie-fiscale",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/veille-bodacc",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/annuaire-facturation-electronique",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/attestation-fiscale",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/attestation-sociale",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/fiches-dgfip-facturation-electronique",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/mandats-plateforme-agreee",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/beneficiaires-effectifs",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/anonymisation-documents",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/tableaux-de-bord-fec",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/collecte-ir",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/collecte-ifi",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/automatisation/situation-tva",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "La démonstration propre à cette fiche est une table HTML accessible de quatre cas fictifs, rendue sans JavaScript. Une capture figée doublerait les sorties et les motifs d’arrêt lisibles."
+    },
+    {
+      "route": "/agents-ia/juridique-fiscal",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/finance",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/commercial",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/communication",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/relation-client",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/gestion-cabinet",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/rh-cabinet",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia/protection-donnees",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/agents-ia",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Hub agents aligné sur le hub robots à la demande de Kevin : trio de figurines des agents et cartes du catalogue. Les images sont partagées avec les fiches et un rendu social propre présente le trio ; aucun cadre HTML décoratif supplémentaire dans le héros."
+    },
+    {
+      "route": "/agents-ia/paie-social",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-15",
+      "reason": "Fiche agents IA : démonstration propre en table HTML accessible, quatre cas fictifs depuis les données. La figurine identifie aussi les cartes voisines ; le rendu social propre ne duplique pas la table dans la page, conformément à la décision de Kevin et au gabarit robots."
+    },
+    {
+      "route": "/modele-ia-prive-entreprise",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-16",
+      "reason": "Kevin demande une illustration animée du modèle, de sa mémoire et de ses sources. La scène HTML accessible et son état sans JavaScript constituent la démonstration fictive ; une capture figée ajoutée dans le corps la doublerait. Le cadre social propre est généré depuis cette scène et manifesté."
+    },
+    {
+      "route": "/memoire-collective-cabinet-comptable",
+      "clauses": [
+        2
+      ],
+      "date": "2026-10-16",
+      "reason": "Kevin a rejeté le boîtier puis retiré la figurine. La représentation validée de Memlia OS est le bureau collectif en HTML accessible, avec sources, mémoire, travail préparé et validation. Ses quatre états manuels sont lisibles sans JavaScript. Une image statique ajoutée dans le corps ferait doublon ; le cadre social propre est généré depuis la scène."
     }
   ]
 }

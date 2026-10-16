@@ -61,7 +61,9 @@ export function auditQueries(entries, exceptions = []) {
 export function collectQueries(root = process.cwd()) {
   const json = (path) => JSON.parse(readFileSync(join(root, path), 'utf8'));
   const entries = [];
-  const add = (url, query, source) => entries.push({ url, query, source });
+  const migrationPath = join(root, 'config/migration-catalogues.json');
+  const retired = new Set(existsSync(migrationPath) ? JSON.parse(readFileSync(migrationPath, 'utf8')).routes.map(row => row.from) : []);
+  const add = (url, query, source) => { const path = canonicalUrl(url); if (!retired.has(path)) entries.push({ url, query, source }); };
   const contractPath = 'config/page-intent-contract.json';
   const contract = json(contractPath);
   for (const [url, page] of Object.entries(contract.pages)) add(url, page.query, contractPath);

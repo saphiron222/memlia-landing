@@ -1,0 +1,36 @@
+test_agents_forbidden_expressions_keep_the_charter_floor (test_positioning.PositioningProof.test_agents_forbidden_expressions_keep_the_charter_floor) ... ok
+test_agents_guard_allows_denied_autonomy_and_the_human_recruiter (test_positioning.PositioningProof.test_agents_guard_allows_denied_autonomy_and_the_human_recruiter) ... ok
+test_agents_guard_rejects_every_forbidden_expression_on_every_text_channel (test_positioning.PositioningProof.test_agents_guard_rejects_every_forbidden_expression_on_every_text_channel) ... ok
+test_agents_guard_rejects_hiring_said_of_an_agent (test_positioning.PositioningProof.test_agents_guard_rejects_hiring_said_of_an_agent) ... ok
+test_agents_guard_rejects_plurals (test_positioning.PositioningProof.test_agents_guard_rejects_plurals) ... ok
+test_agents_pages_respect_the_agent_ia_charter (test_positioning.PositioningProof.test_agents_pages_respect_the_agent_ia_charter) ... ok
+test_agents_surfaces_follow_the_sources (test_positioning.PositioningProof.test_agents_surfaces_follow_the_sources) ... ok
+test_blog_hub_separates_published_methods_and_service (test_positioning.PositioningProof.test_blog_hub_separates_published_methods_and_service) ... ok
+test_build_relocks_vocabulary_on_the_final_export (test_positioning.PositioningProof.test_build_relocks_vocabulary_on_the_final_export) ... ok
+test_external_actions_and_data_are_bounded (test_positioning.PositioningProof.test_external_actions_and_data_are_bounded) ... ok
+test_final_export_flag_is_one_or_absent (test_positioning.PositioningProof.test_final_export_flag_is_one_or_absent) ... ok
+test_final_export_refuses_a_sitemap_without_pages (test_positioning.PositioningProof.test_final_export_refuses_a_sitemap_without_pages) ... ok
+test_final_export_requires_llms_full_and_every_sitemap_markdown (test_positioning.PositioningProof.test_final_export_requires_llms_full_and_every_sitemap_markdown) ... ok
+test_guard_allows_only_isolated_generic_singular (test_positioning.PositioningProof.test_guard_allows_only_isolated_generic_singular) ... ok
+test_guard_discovers_nested_and_non_html_surfaces (test_positioning.PositioningProof.test_guard_discovers_nested_and_non_html_surfaces) ... ok
+test_guard_keeps_copy_and_own_addresses_next_to_sources (test_positioning.PositioningProof.test_guard_keeps_copy_and_own_addresses_next_to_sources) ... ok
+test_guard_reads_third_party_addresses_as_addresses (test_positioning.PositioningProof.test_guard_reads_third_party_addresses_as_addresses) ... ok
+test_guard_rejects_catalogue_on_every_text_channel (test_positioning.PositioningProof.test_guard_rejects_catalogue_on_every_text_channel) ... ok
+test_illustrations_are_not_product_cards (test_positioning.PositioningProof.test_illustrations_are_not_product_cards) ... ok
+test_no_catalogue_in_any_public_surface (test_positioning.PositioningProof.test_no_catalogue_in_any_public_surface) ... ok
+test_service_identity_and_hero (test_positioning.PositioningProof.test_service_identity_and_hero) ... ok
+test_written_rule_automation_is_bounded_in_daily_passage (test_positioning.PositioningProof.test_written_rule_automation_is_bounded_in_daily_passage) ... ok
+test_catalogue_figurines_replace_homepage_mockups (test_integrated_media.IntegratedMediaProof.test_catalogue_figurines_replace_homepage_mockups) ... ok
+test_centered_hero_keeps_the_scene_in_the_following_content (test_integrated_media.IntegratedMediaProof.test_centered_hero_keeps_the_scene_in_the_following_content) ... ok
+test_historical_generations_are_not_exported (test_integrated_media.IntegratedMediaProof.test_historical_generations_are_not_exported) ... ok
+test_historical_generations_are_not_referenced_by_any_exported_surface (test_integrated_media.IntegratedMediaProof.test_historical_generations_are_not_referenced_by_any_exported_surface) ... ok
+test_six_approved_scenes_match_their_production_manifest (test_integrated_media.IntegratedMediaProof.test_six_approved_scenes_match_their_production_manifest) ... ok
+test_tagline_is_preserved_exactly (test_integrated_media.IntegratedMediaProof.test_tagline_is_preserved_exactly) ... ok
+test_video_archives_are_preserved_without_reintroducing_players (test_integrated_media.IntegratedMediaProof.test_video_archives_are_preserved_without_reintroducing_players) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 2.998s
+
+OK
+Agents IA : 12 page(s) et 12 Markdown lus, 19 expressions interdites.
+Positionnement : 489 surfaces texte / 1447 fichiers ; 958 contenus binaires/CSS hors analyse lexicale, noms contrôlés.

@@ -1,0 +1,51 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import AgentCarte from '@/components/sections/AgentCarte.astro';
+import { AGENTS, ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Avant et après <prénom> » (spec §2, section 9) : les agents voisins, en cartes du hub (prénom, métier, ligne ; la
+ * carte entière mène à leur page), la phrase qui dit qui intervient avant et après (composée depuis les données),
+ * puis « Derrière <prénom>, nous » et le lien vers la méthode. Aucune équipe de personas : derrière l'agent, c'est
+ * nous (charte §9 bis).
+ */
+interface Props {
+  agent: Specialiste;
+}
+const { agent } = Astro.props;
+const fiche = ficheDe(agent);
+const { voisins } = gabaritDe(agent);
+const cartes = fiche.voisins.map(({ agent: id }) => {
+  const voisin = AGENTS.find(({ slug }) => slug === id);
+  if (!voisin) throw new Error(`AgentVoisins : voisin inconnu « ${id} » (${agent.slug})`);
+  return voisin;
+});
+---
+
+<section class="pv" aria-labelledby="voisins-titre" data-agent-voisins>
+  <div class="tete">
+    <h2 id="voisins-titre"><Insecable texte={voisins.titre} /></h2>
+    <p><Insecable texte={voisins.phrase} /></p>
+  </div>
+  <ul class="cartes">
+    {cartes.map((voisin) => <AgentCarte agent={voisin} />)}
+  </ul>
+  <div class="agent-derriere-ligne">
+    <p class="mention"><strong>{voisins.derriere.titre}</strong> <Insecable texte={voisins.derriere.texte} /></p>
+    <a class="lien-action" href={voisins.action.href}>{voisins.action.libelle}<Picto nom="fleche" taille={14} /></a>
+  </div>
+</section>
+
+<style>
+  .agent-derriere-ligne {
+    display: grid;
+    gap: var(--espace-1);
+    justify-items: start;
+  }
+  .agent-derriere-ligne strong {
+    font-weight: 600;
+    color: var(--texte-fort);
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Figurine from '@/components/catalogue/Figurine.astro';
+import Picto from '@/components/Picto.astro';
+import SceneOS from '@/components/solutions/SceneOS.astro';
+import SceneModele from '@/components/solutions/SceneModele.astro';
+import { ROBOTS } from '@/data/robots';
+import { AGENTS } from '@/data/specialistes';
+import { SOLUTIONS } from '@/data/solutions';
+interface Props { cac?: boolean; titre?: string; }
+const { cac = false, titre = 'Quatre façons de faire avancer votre cabinet.' } = Astro.props;
+const cartes = [
+  { id: 'robots', nom: 'Robots', fonction: 'Confier une routine précise.', resume: cac ? 'Réunir des informations légales, collecter des attestations ou préparer des documents. Nous adaptons la routine aux outils de votre cabinet.' : 'Collecter les avis fiscaux, suivre les messageries ou classer les attestations. Nous adaptons la routine à vos dossiers et à votre rythme.', repere: `${ROBOTS.length} robots au catalogue`, href: '/automatisation-cabinet-comptable', action: 'Explorer les robots', image: '/robots/cfe', couleur: '#e4a277' },
+  { id: 'agents', nom: 'Agents IA', fonction: 'Préparer les tâches d’un métier.', resume: cac ? 'Pièces, sélections et rapprochements : l’agent IA prépare selon vos paramètres. Votre équipe garde le choix des travaux et ses conclusions.' : 'Comptabilité, social, juridique ou gestion du cabinet : l’agent IA prépare les tâches du métier avec vos sources, vos règles et vos validations.', repere: `${AGENTS.length} agents IA au catalogue`, href: '/agents-ia', action: 'Explorer les agents IA', image: `/illustrations/figurines/${cac ? 'aude' : 'balthazar'}`, couleur: '#a6ad8e' },
+  { id: 'os', nom: SOLUTIONS.os.nom, fonction: 'Retrouver le savoir du cabinet.', resume: cac ? 'Une mémoire collective pour retrouver procédures, documents et décisions avec leurs sources. Les accès restent définis pour chaque mission.' : 'Une mémoire collective relie vos équipes, documents, outils et agents. Vos procédures et décisions se retrouvent avec leurs sources et les accès prévus.', repere: 'La mémoire collective', href: SOLUTIONS.os.chemin, action: 'Découvrir Memlia OS', couleur: '#a6ad8e' },
+  { id: 'modele', nom: SOLUTIONS.modele.nom, fonction: 'Former une IA à votre façon de travailler.', resume: 'Nous préparons vos exemples autorisés, adaptons le modèle par entraînement et évaluons ses réponses. Vous acceptez la version à déployer.', repere: 'L’adaptation par entraînement', href: SOLUTIONS.modele.chemin, action: 'Découvrir le modèle privé', couleur: '#a8bdcf' },
+];
+---
+<section class="catalogue-section editorial-choix" aria-labelledby="choix-tache-titre">
+  <div class="tete"><p class="surtitre">Nos quatre services</p><h2 id="choix-tache-titre">{titre}</h2><p>Une routine à déléguer, un métier à accompagner, un savoir à partager ou une IA à former : choisissez votre point de départ.</p></div>
+  <ul class="catalogue-grille services-grille">{cartes.map(c => <li>
+    <a class="carte catalogue-carte service-carte" href={c.href} style={`--service-teinte:${c.couleur}`}>
+      <div class="service-apercu">{c.image ? <Figurine src={c.image} alt="" taille={128} /> : c.id === 'os' ? <SceneOS compact/> : <SceneModele compact/>}</div>
+      <div class="catalogue-carte-corps service-corps"><span class="carte-meta service-repere">{c.repere}</span><h3 class="carte-titre">{c.nom}</h3><p class="carte-texte service-fonction">{c.fonction}</p><p class="carte-texte service-resume">{c.resume}</p><span class="carte-action">{c.action}<Picto nom="fleche" taille={14}/></span></div>
+    </a>
+  </li>)}</ul>
+  <div class="services-suite"><div><h3>Le catalogue d’abord. Le sur mesure au besoin.</h3><p>Nous déployons et adaptons les robots et agents déjà conçus. Si votre besoin dépasse le catalogue, nous prolongeons leur prise en charge ou construisons sur mesure.</p><p>Memlia OS et le modèle privé se cadrent sur devis. La mémoire retrouve vos sources ; l’entraînement travaille le vocabulaire, les formats et les comportements attendus.</p></div><div class="services-liens"><a href="/contact">Décrire votre besoin<Picto nom="fleche" taille={14}/></a><a href="/integrations">Relier vos outils aux services<Picto nom="fleche" taille={14}/></a></div></div>
+</section>
+<style>
+.services-grille{display:grid;grid-template-columns:minmax(0,1fr)}
+.service-carte{display:flex;flex-direction:column;height:100%;padding:0;overflow:hidden;text-decoration:none;color:var(--texte)}
+.service-apercu{height:172px;background:color-mix(in srgb,var(--service-teinte) 18%,var(--surface-feuille));overflow:hidden;display:grid;justify-items:center;align-items:center}
+.service-apercu :global(picture){display:block;width:128px;height:128px;border:4px solid var(--surface-elevee);border-radius:var(--r-boite);overflow:hidden;background:var(--surface-feuille)}
+.service-apercu :global(.solution-apercu){width:100%;max-width:440px;background:transparent}
+.service-corps{display:flex;flex-direction:column;gap:12px;padding:24px;flex:1}
+.service-repere{color:var(--accent-texte);font-size:var(--t-sm)}
+.service-fonction{font-weight:500}.service-resume{color:var(--texte-2);margin-bottom:12px}
+.service-corps .carte-action{margin-top:auto}
+.services-suite{display:grid;gap:24px;margin-top:40px;padding-top:32px;border-top:1px solid var(--ligne-douce)}
+.services-suite h3{font-size:var(--titre-bloc);margin-bottom:16px}.services-suite p{max-width:66ch;color:var(--texte-2);margin-top:12px}
+.services-liens{display:flex;flex-direction:column;gap:20px;align-items:flex-start;justify-content:center}.services-liens a{display:inline-flex;align-items:center;gap:12px;text-underline-offset:4px}
+@media(min-width:48rem){.services-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:64rem){.services-suite{grid-template-columns:2fr 1fr;gap:64px}}
+</style>

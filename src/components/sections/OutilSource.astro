@@ -1,5 +1,4 @@
 ---
-import ProofMedia from '@/components/ProofMedia.astro';
 import type { OutilDefinition } from '@/data/outils';
 import type { ProofId } from '@/data/proofs';
 
@@ -9,19 +8,14 @@ interface Props {
   proof?: ProofId;
 }
 
-const { titre, source, proof } = Astro.props;
-/*
- * « Comment c'est calculé », sous l'outil (épure du 14/10/2026, OUTILS-EPURE-PLAN.md) : la source
- * se cite par un lien sur son nom, avec son extrait, une seule fois sur la page, sans date de
- * consultation (charte §7 bis). L'image figée de l'outil, retirée du héros, se lit ici, chargée
- * à la demande ; elle reste l'image de partage.
- */
+const { titre, source } = Astro.props;
+/* Source liée sous l’outil ; image propre à la page réservée à Open Graph. */
 ---
 
 <section class="section outil-source" data-tool-section="source" aria-labelledby="outil-source-titre">
-  <div class="conteneur outil-source-inner">
+  <div class="conteneur"><details class="outil-source-inner" data-tool-help><summary>{titre}</summary>
     <div class="outil-source-texte rv">
-      <h2 id="outil-source-titre">{titre}</h2>
+      <h2 id="outil-source-titre" class="sr-only">{titre}</h2>
       <div class="outil-source-citation" data-official-source>
         {source.titre && <h3>{source.titre}</h3>}
         <p><a href={source.url} rel={source.url.startsWith('http') ? 'noopener' : undefined}>{source.nom}</a> : {source.extrait}</p>
@@ -33,15 +27,13 @@ const { titre, source, proof } = Astro.props;
         )}
       </div>
     </div>
-    {proof && (
-      <div class="outil-source-visuel rv" data-tool-media>
-        <ProofMedia id={proof} cadre />
-      </div>
-    )}
-  </div>
+  </details></div>
 </section>
 
 <style>
+  .outil-source { padding-block:24px; }
+  .outil-source summary { cursor:pointer;min-height:44px;font-weight:600;color:var(--accent-texte); }
+  .outil-source-inner[open] > div {margin-top:20px;}
   .outil-source-inner {
     display: grid;
     gap: var(--bloc-ecart);
@@ -50,7 +42,7 @@ const { titre, source, proof } = Astro.props;
   .outil-source-texte {
     display: grid;
     gap: var(--tete-ecart);
-    max-width: 62ch;
+    max-width: 800px; margin-inline: auto; width:100%;
   }
   .outil-source-texte h2 {
     font-size: var(--titre-section);
@@ -83,7 +75,7 @@ const { titre, source, proof } = Astro.props;
   }
   @media (min-width: 64rem) {
     .outil-source-inner {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--espace-16);
     }
   }

@@ -1,0 +1,357 @@
+
+> memlia-landing@2.0.0 regen:generated
+> npm run resource:seal-surfaces && npm run render:public && npm run lastmod:sync && node scripts/reaffirm-resource-review.mjs reaffirmer && node scripts/sync-lastmod.mjs --check && npm run resource:audit:qa
+
+
+> memlia-landing@2.0.0 resource:seal-surfaces
+> node scripts/seal-resource-surfaces.mjs
+
+03:21:54 [content] Syncing content
+03:21:54 [content] Synced content
+03:21:54 [types] Generated 397ms
+03:21:54 [build] output: "static"
+03:21:54 [build] mode: "static"
+03:21:54 [build] directory: /Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/memoire-modeles-prives/dist/
+03:21:54 [build] Collecting build info...
+03:21:54 [build] ✓ Completed in 422ms.
+03:21:54 [build] Building static entrypoints...
+03:21:54 [vite] ✓ built in 447ms
+03:21:55 [vite] ✓ built in 404ms
+03:21:55 [build] Rearranging server assets...
+
+ generating static routes
+03:21:55   ├─ /404.html (+13ms)
+03:21:55   ├─ /a-propos.html (+17ms)
+03:21:55   ├─ /agents-ia/comptabilite.html (+7ms)
+03:21:55   ├─ /agents-ia/paie-social.html (+6ms)
+03:21:55   ├─ /agents-ia/juridique-fiscal.html (+7ms)
+03:21:55   ├─ /agents-ia/finance.html (+3ms)
+03:21:55   ├─ /agents-ia/commercial.html (+3ms)
+03:21:55   ├─ /agents-ia/communication.html (+4ms)
+03:21:55   ├─ /agents-ia/relation-client.html (+4ms)
+03:21:55   ├─ /agents-ia/gestion-cabinet.html (+4ms)
+03:21:55   ├─ /agents-ia/rh-cabinet.html (+3ms)
+03:21:55   ├─ /agents-ia/protection-donnees.html (+3ms)
+03:21:55   ├─ /agents-ia.html (+4ms)
+03:21:55   ├─ /apercu/direction-figurines.html (+7ms)
+03:21:55   ├─ /apercu/methode-figurines.html (+3ms)
+03:21:55   ├─ /automatisation/cfe.html (+3ms)
+03:21:55   ├─ /automatisation/taxes-foncieres.html (+2ms)
+03:21:55   ├─ /automatisation/suivi-urssaf.html (+2ms)
+03:21:55   ├─ /automatisation/dette-fiscale.html (+2ms)
+03:21:55   ├─ /automatisation/suivi-declarations-fiscales.html (+2ms)
+03:21:55   ├─ /automatisation/habilitations-fiscales.html (+2ms)
+03:21:55   ├─ /automatisation/rattachement-fiscal.html (+2ms)
+03:21:55   ├─ /automatisation/informations-legales-rne.html (+2ms)
+03:21:55   ├─ /automatisation/messagerie-fiscale.html (+2ms)
+03:21:55   ├─ /automatisation/veille-bodacc.html (+3ms)
+03:21:55   ├─ /automatisation/annuaire-facturation-electronique.html (+2ms)
+03:21:55   ├─ /automatisation/attestation-fiscale.html (+2ms)
+03:21:55   ├─ /automatisation/attestation-sociale.html (+2ms)
+03:21:55   ├─ /automatisation/fiches-dgfip-facturation-electronique.html (+2ms)
+03:21:55   ├─ /automatisation/mandats-plateforme-agreee.html (+2ms)
+03:21:55   ├─ /automatisation/beneficiaires-effectifs.html (+2ms)
+03:21:55   ├─ /automatisation/anonymisation-documents.html (+2ms)
+03:21:55   ├─ /automatisation/tableaux-de-bord-fec.html (+2ms)
+03:21:55   ├─ /automatisation/collecte-ir.html (+2ms)
+03:21:55   ├─ /automatisation/collecte-ifi.html (+1ms)
+03:21:55   ├─ /automatisation/situation-tva.html (+3ms)
+03:21:55   ├─ /automatisation-cabinet-comptable.html (+4ms)
+03:21:55   ├─ /blog/rss.xml (+32ms)
+03:21:55   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+4ms)
+03:21:55   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms)
+03:21:55   ├─ /blog/rubrique/ia-cabinet-comptable.html (+5ms)
+03:21:55   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+14ms)
+03:21:55   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+7ms)
+03:21:55   ├─ /blog/cac-reception-fec-constat.html (+4ms)
+03:21:55   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+5ms)
+03:21:55   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+4ms)
+03:21:55   ├─ /blog/verifier-reponse-ia-comptabilite.html (+3ms)
+03:21:55   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+3ms)
+03:21:55   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+5ms)
+03:21:55   ├─ /blog/logiciel-ia-comptabilite.html (+4ms)
+03:21:55   ├─ /blog/prompt-chatgpt-expert-comptable.html (+4ms)
+03:21:55   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms)
+03:21:55   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms)
+03:21:55   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms)
+03:21:55   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+3ms)
+03:21:55   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+3ms)
+03:21:55   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+6ms)
+03:21:55   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+4ms)
+03:21:55   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+4ms)
+03:21:55   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+4ms)
+03:21:55   ├─ /blog.html (+8ms)
+03:21:55   ├─ /blog/commissariat-aux-comptes.html (+2ms)
+03:21:55   ├─ /commissaires-aux-comptes.html (+6ms)
+03:21:55   ├─ /contact/erreur.html (+2ms)
+03:21:55   ├─ /contact/merci.html (+1ms)
+03:21:55   ├─ /contact.html (+3ms)
+03:21:55   ├─ /garanties.html (+3ms)
+03:21:55   ├─ /glossaire.html (+9ms)
+03:21:55   ├─ /integrations.html (+85ms)
+03:21:55   ├─ /memoire-collective-cabinet-comptable.html (+4ms)
+03:21:55   ├─ /mentions-legales.html (+2ms)
+03:21:55   ├─ /methode.html (+5ms)
+03:21:55   ├─ /modele-ia-prive-entreprise.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+4ms)
+03:21:55   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+5ms)
+03:21:55   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms)
+03:21:55   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+4ms)
+03:21:55   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+8ms)
+03:21:55   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms)
+03:21:55   ├─ /outils-comptables-gratuits.html (+2ms)
+03:21:55   ├─ /politique-de-confidentialite.html (+1ms)
+03:21:55   ├─ /index.html (+4ms)
+03:21:55 ✓ Completed in 542ms.
+
+03:21:55 [build] ✓ Completed in 1.45s.
+03:21:55 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+03:21:58 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+85 images sociales JPEG générées.
+03:22:03 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+03:22:03 [memlia-responsive-proofs] 38 masters conservés, 114 variantes responsives
+03:22:03 [build] 97 page(s) built in 9.76s
+03:22:03 [build] Complete!
+
+> memlia-landing@2.0.0 render:public
+> node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs
+
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 133 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Sources publiques : texte final rendu sur 6 pages ; corpus interne conservé.
+03:22:06 [content] Syncing content
+03:22:06 [content] Synced content
+03:22:06 [types] Generated 423ms
+03:22:06 [build] output: "static"
+03:22:06 [build] mode: "static"
+03:22:06 [build] directory: /Users/kevinkitanga/dev/interne/memlia-landing/.worktrees/memoire-modeles-prives/dist/
+03:22:06 [build] Collecting build info...
+03:22:06 [build] ✓ Completed in 452ms.
+03:22:06 [build] Building static entrypoints...
+03:22:07 [vite] ✓ built in 443ms
+03:22:07 [vite] ✓ built in 433ms
+03:22:07 [build] Rearranging server assets...
+
+ generating static routes
+03:22:07   ├─ /404.html (+10ms)
+03:22:07   ├─ /a-propos.html (+11ms)
+03:22:07   ├─ /agents-ia/comptabilite.html (+7ms)
+03:22:07   ├─ /agents-ia/paie-social.html (+6ms)
+03:22:07   ├─ /agents-ia/juridique-fiscal.html (+6ms)
+03:22:07   ├─ /agents-ia/finance.html (+3ms)
+03:22:07   ├─ /agents-ia/commercial.html (+4ms)
+03:22:07   ├─ /agents-ia/communication.html (+4ms)
+03:22:07   ├─ /agents-ia/relation-client.html (+4ms)
+03:22:07   ├─ /agents-ia/gestion-cabinet.html (+3ms)
+03:22:07   ├─ /agents-ia/rh-cabinet.html (+3ms)
+03:22:07   ├─ /agents-ia/protection-donnees.html (+3ms)
+03:22:07   ├─ /agents-ia.html (+3ms)
+03:22:07   ├─ /apercu/direction-figurines.html (+4ms)
+03:22:07   ├─ /apercu/methode-figurines.html (+3ms)
+03:22:07   ├─ /automatisation/cfe.html (+4ms)
+03:22:07   ├─ /automatisation/taxes-foncieres.html (+2ms)
+03:22:07   ├─ /automatisation/suivi-urssaf.html (+2ms)
+03:22:07   ├─ /automatisation/dette-fiscale.html (+2ms)
+03:22:07   ├─ /automatisation/suivi-declarations-fiscales.html (+2ms)
+03:22:07   ├─ /automatisation/habilitations-fiscales.html (+2ms)
+03:22:07   ├─ /automatisation/rattachement-fiscal.html (+2ms)
+03:22:07   ├─ /automatisation/informations-legales-rne.html (+2ms)
+03:22:07   ├─ /automatisation/messagerie-fiscale.html (+2ms)
+03:22:07   ├─ /automatisation/veille-bodacc.html (+3ms)
+03:22:07   ├─ /automatisation/annuaire-facturation-electronique.html (+2ms)
+03:22:07   ├─ /automatisation/attestation-fiscale.html (+2ms)
+03:22:07   ├─ /automatisation/attestation-sociale.html (+2ms)
+03:22:07   ├─ /automatisation/fiches-dgfip-facturation-electronique.html (+2ms)
+03:22:07   ├─ /automatisation/mandats-plateforme-agreee.html (+1ms)
+03:22:07   ├─ /automatisation/beneficiaires-effectifs.html (+1ms)
+03:22:07   ├─ /automatisation/anonymisation-documents.html (+2ms)
+03:22:07   ├─ /automatisation/tableaux-de-bord-fec.html (+1ms)
+03:22:07   ├─ /automatisation/collecte-ir.html (+2ms)
+03:22:07   ├─ /automatisation/collecte-ifi.html (+1ms)
+03:22:07   ├─ /automatisation/situation-tva.html (+3ms)
+03:22:07   ├─ /automatisation-cabinet-comptable.html (+3ms)
+03:22:07   ├─ /blog/rss.xml (+31ms)
+03:22:07   ├─ /blog/rubrique/paie-dsn-cabinet-comptable.html (+5ms)
+03:22:07   ├─ /blog/rubrique/gestion-pieces-comptables.html (+2ms)
+03:22:07   ├─ /blog/rubrique/ia-cabinet-comptable.html (+4ms)
+03:22:07   ├─ /blog/automatiser-l-entree-en-relation-d-un-nouveau-client.html (+15ms)
+03:22:07   ├─ /blog/automatiser-un-cabinet-cac-la-carte-des-taches.html (+7ms)
+03:22:07   ├─ /blog/cac-reception-fec-constat.html (+4ms)
+03:22:07   ├─ /blog/automatiser-avec-ia-sans-changer-logiciel.html (+5ms)
+03:22:07   ├─ /blog/ia-comptabilite-confidentialite-donnees.html (+4ms)
+03:22:07   ├─ /blog/verifier-reponse-ia-comptabilite.html (+4ms)
+03:22:07   ├─ /blog/utiliser-chatgpt-cabinet-comptable.html (+3ms)
+03:22:07   ├─ /blog/tests-verts-et-regle-des-trois-passes.html (+4ms)
+03:22:07   ├─ /blog/logiciel-ia-comptabilite.html (+4ms)
+03:22:07   ├─ /blog/prompt-chatgpt-expert-comptable.html (+3ms)
+03:22:07   ├─ /blog/cabinet-comptable-surcharge-de-travail-ou-passe-le-temps.html (+3ms)
+03:22:07   ├─ /blog/intelligence-artificielle-metier-comptable-ce-qu-elle-prepare-ce-qui-reste-humain.html (+3ms)
+03:22:07   ├─ /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils.html (+3ms)
+03:22:07   ├─ /blog/automatiser-la-saisie-comptable-ce-qui-reste-a-verifier.html (+4ms)
+03:22:07   ├─ /blog/automatiser-la-relance-des-pieces-clients.html (+4ms)
+03:22:07   ├─ /blog/automatiser-un-cabinet-comptable-la-carte-des-taches.html (+6ms)
+03:22:07   ├─ /blog/comprendre-les-comptes-rendus-metier-dsn.html (+3ms)
+03:22:07   ├─ /blog/controler-les-bulletins-de-paie-avant-la-dsn.html (+3ms)
+03:22:07   ├─ /blog/suivre-la-production-sociale-dans-excel.html (+4ms)
+03:22:07   ├─ /blog.html (+9ms)
+03:22:07   ├─ /blog/commissariat-aux-comptes.html (+2ms)
+03:22:07   ├─ /commissaires-aux-comptes.html (+7ms)
+03:22:07   ├─ /contact/erreur.html (+2ms)
+03:22:07   ├─ /contact/merci.html (+1ms)
+03:22:07   ├─ /contact.html (+3ms)
+03:22:07   ├─ /garanties.html (+3ms)
+03:22:07   ├─ /glossaire.html (+9ms)
+03:22:07   ├─ /integrations.html (+99ms)
+03:22:07   ├─ /memoire-collective-cabinet-comptable.html (+4ms)
+03:22:07   ├─ /mentions-legales.html (+2ms)
+03:22:07   ├─ /methode.html (+5ms)
+03:22:07   ├─ /modele-ia-prive-entreprise.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/assistant-lettrage-comptable-local.html (+4ms)
+03:22:07   ├─ /outils-comptables-gratuits/bareme-heures-cac.html (+5ms)
+03:22:07   ├─ /outils-comptables-gratuits/bibliotheque-prompts-comptables.html (+5ms)
+03:22:07   ├─ /outils-comptables-gratuits/calculateur-amortissement-comptable.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/calculateur-date-echeance-facture.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/calculateur-marge-commerciale.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/calculateur-roi-automatisation.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/checklist-pieces-comptables.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/comparateur-balances-comptables.html (+5ms)
+03:22:07   ├─ /outils-comptables-gratuits/diagnostic-maturite-ia-cabinet.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/fusionner-fichiers-csv.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/generateur-charte-ia-cabinet.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/generateur-prompt-expert-comptable.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/generateur-prompt-ia-gratuit.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/generateur-relance-facture-impayee.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec.html (+3ms)
+03:22:07   ├─ /outils-comptables-gratuits/seuil-signification-audit.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/suivi-circularisation.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/temoin-calcul-local.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/verificateur-fec-local.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits/verificateur-prompt-ia.html (+2ms)
+03:22:07   ├─ /outils-comptables-gratuits.html (+3ms)
+03:22:08   ├─ /politique-de-confidentialite.html (+2ms)
+03:22:08   ├─ /index.html (+4ms)
+03:22:08 ✓ Completed in 525ms.
+
+03:22:08 [build] ✓ Completed in 1.45s.
+03:22:08 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+03:22:11 [build] Waiting for integration "memlia-social-images", hook "astro:build:done"...
+85 images sociales JPEG générées.
+03:22:15 [build] Waiting for integration "memlia-responsive-proofs", hook "astro:build:done"...
+03:22:15 [memlia-responsive-proofs] 38 masters conservés, 114 variantes responsives
+03:22:15 [build] 97 page(s) built in 9.73s
+03:22:15 [build] Complete!
+
+> memlia-landing@2.0.0 render:public
+> node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs
+
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 20 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 78 ancien(s) asset(s) exclu(s), 133 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Sources publiques : texte final rendu sur 6 pages ; corpus interne conservé.
+Manifeste T v3 rescellé depuis dist (la surface H, page Ressources, est retirée depuis le 16/09/2026) ; revue métier reportée : T=AI_REVIEW_PASS. Contenu non attesté.
+
+> memlia-landing@2.0.0 render:public
+> node scripts/strip-briefs.mjs && node scripts/render-public-source-text.mjs
+
+[strip-briefs] 0 asset(s) R7 exclu(s) de dist/media/r7/.
+[strip-briefs] 0 asset(s) R8 exclu(s) de dist/media/r8/.
+[strip-briefs] 0 brief(s) retiré(s) de dist/images/.
+[strip-briefs] 0 ancien(s) asset(s) exclu(s), 133 attendu(s), 0 manquant(s).
+[strip-briefs] 0 artefact(s) de poste de travail retiré(s) de dist.
+Sources publiques : texte final rendu sur 0 pages ; corpus interne conservé.
+
+> memlia-landing@2.0.0 lastmod:sync
+> node scripts/sync-lastmod.mjs
+
+66 page(s) au registre ; 3 datée(s) du 2026-10-16T01:22:17.413Z : /a-propos, /contact, /garanties.
+T : revue réaffirmée sur 564b6a0ad46bf356d154ed4f657db21680a9f750791af69fbfeb1da2b3896ab8 (50 feuille(s) déclarée(s) : assetBundleDigest.assetBundleDigest, buildOutputDigest.buildOutputDigest, claimsEvidence.sourceContentSha256, claimsEvidence.contentSha256, skills.checkedAt, sourceBundleDigest.sourceBundleDigest).
+Rapport écrit dans docs/qa/hub-ressources/metier-review-r5/reaffirmation.json.
+check : 66 page(s), registre à jour.
+
+> memlia-landing@2.0.0 resource:audit:qa
+> node scripts/resource-pipeline.mjs audit --phase qa
+
+{
+  "generatedAt": "2026-10-16T01:22:18.318Z",
+  "pass": true,
+  "phase": "qa",
+  "result": "PASS",
+  "candidateValidated": true,
+  "scope": "manifestes et surfaces H/T du build rapprochés",
+  "counts": {
+    "discovered": 1,
+    "passed": 1,
+    "failed": 0,
+    "byAdapter": {
+      "H": 0,
+      "A": 0,
+      "T": 1,
+      "G": 0,
+      "M": 0,
+      "invalid": 0
+    },
+    "surfaces": {
+      "discovered": 1,
+      "linked": 1,
+      "unlinked": 0
+    }
+  },
+  "surfaces": [
+    {
+      "formatAdapter": "T",
+      "canonicalPath": "/glossaire",
+      "outputPath": "dist/glossaire.html",
+      "bytes": 561544,
+      "sha256": "e4204ed49e1eeb7a7e253808e4f3ae85efa555141bee6fc8e871f8029bfdbdfd",
+      "manifestPaths": [
+        "editorial/resources/glossaire/manifest.json"
+      ],
+      "relationErrors": []
+    }
+  ],
+  "unlinkedSurfaces": [],
+  "errors": [],
+  "manifests": [
+    {
+      "path": "editorial/resources/glossaire/manifest.json",
+      "pass": true,
+      "phase": "qa",
+      "formatAdapter": "T",
+      "counts": {
+        "blogSkills": 31,
+        "seoSkills": 24,
+        "coreSkills": 19,
+        "gates": 7,
+        "renderedUnits": 286,
+        "claims": 423,
+        "citations": 761,
+        "sources": 84,
+        "sensitiveVerdictsReportes": 27
+      },
+      "errors": []
+    }
+  ],
+  "report": ".qa/resources/staged-gates/qa-audit.json"
+}

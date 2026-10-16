@@ -1,0 +1,10 @@
+---
+import Figurine from '@/components/catalogue/Figurine.astro';
+import { imageAgent } from '@/data/images-agents';
+import type { Specialiste } from '@/data/specialistes';
+interface Props { agent: Specialiste; taille?: 'carte' | 'heros'; prioritaire?:boolean; }
+const { agent, taille='carte',prioritaire=false }=Astro.props;
+const image=imageAgent(agent);
+---
+<div class="agent-avatar" style={`width:${taille==='heros'?116:84}px`}><Figurine src={image.src} alt={image.alt} taille={taille==='heros'?116:84} prioritaire={prioritaire} /></div>
+<style>.agent-avatar {flex-shrink:0; border-radius:var(--r-boite);overflow:hidden;border:1px solid var(--ligne-douce);}</style>

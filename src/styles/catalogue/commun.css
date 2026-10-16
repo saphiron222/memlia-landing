@@ -1,0 +1,27 @@
+:root { --avatar-carte: 84px; --avatar-heros: 116px; }
+.memlia-surface-verte { padding: var(--carte-marge); background: var(--accent-voile); border-radius: var(--r-cadre); }
+.catalogue-page { color: var(--texte); }
+.catalogue-section { padding: var(--section-espace) var(--marge-page) 0; display: grid; gap: var(--bloc-ecart); }
+.catalogue-section .tete { display: grid; gap: var(--tete-ecart); }
+.catalogue-section h2 { font-size: var(--titre-section); }
+.catalogue-section .tete p { max-width: 62ch; color: var(--texte-2); }
+.catalogue-ariane { font-size: var(--t-sm); color: var(--texte-2); }
+.catalogue-ariane ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.catalogue-ariane li+li::before { content: '›'; margin-right: 8px; }
+.catalogue-ariane a { color: var(--texte-2); min-height: 44px; display: inline-flex; align-items: center; }
+.catalogue-ariane li { display: flex; align-items: center; }
+/* Une rangée stable pour le dossier courant évite un saut lors de l’arrivée de la police. */
+@media(max-width:30rem) { .catalogue-ariane li[aria-current="page"] { flex-basis:100%; min-height:44px; } }
+.catalogue-grille { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--cartes-ecart); list-style: none; padding: 0; margin: 0; }
+.catalogue-grille > li { flex: 0 0 100%; min-width: 0; }
+.catalogue-action { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; font-weight: 600; color: var(--accent-texte); text-decoration: none; }
+.catalogue-fin { padding: var(--section-espace) var(--marge-page); display: grid; justify-items: center; text-align: center; gap: 24px; }
+.catalogue-fin h2 { font-size: var(--titre-section); max-width: 22ch; }
+.catalogue-fin p { max-width: 62ch; color: var(--texte-2); }
+.catalogue-etapes { display: grid; gap: 32px; padding: 0; margin: 0; list-style: none; }
+.catalogue-etapes li { display: grid; gap: 16px; align-content: start; }
+.catalogue-etapes h3 { font-size: var(--titre-bloc); }
+.catalogue-etapes p { color: var(--texte-2); }
+.catalogue-etape-numero { color: var(--accent-texte); font-variant-numeric: tabular-nums; }
+@media(min-width: 48rem) { .catalogue-grille > li { flex-basis: calc((100% - var(--cartes-ecart)) / 2); }.catalogue-etapes { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; } }
+@media(min-width:64rem) { .catalogue-section { padding-inline: var(--marge-page-lg); }.catalogue-fin { padding-inline: var(--marge-page-lg); }.catalogue-grille > li { flex-basis: calc((100% - 2 * var(--cartes-ecart)) / 3); } }

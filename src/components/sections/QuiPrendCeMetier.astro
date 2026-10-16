@@ -1,0 +1,130 @@
+---
+import Picto from '@/components/Picto.astro';
+import Insecable from '@/components/Insecable.astro';
+import AgentAvatar from '@/components/sections/AgentAvatar.astro';
+import DemoAgent from '@/components/catalogue/DemoAgent.astro';
+import { POLES } from '@/data/familles';
+import { HUB, cheminAgent, type Specialiste } from '@/data/specialistes';
+import { metierEnPhrase } from '@/data/specialistes/gabarit';
+
+/**
+ * « Qui prend ce métier » (spec §3, tâche 8) : l'agent IA qui porte le métier d'une page existante.
+ *
+ * - `bandeau` : avatar (monogramme tant que la tâche 12 n'a pas livré), nom « <prénom>, agent IA <métier> », sa ligne,
+ *   le lien vers sa page quand ce n'est pas celle-ci, et « Tous les agents IA ». Avec `demonstration`, sa démonstration
+ *   rejouée sur un dossier fictif (`AgentRejeu`) se pose à côté du bandeau, dessous en mobile : Octavie sur
+ *   `/integrations` (spec §2.1). Salomé laisse `/automatisation/paie` à son rejeu déjà publié : sans démonstration.
+ * - `ligne` : une phrase qui nomme l'agent et mène à sa page (pages service, tâche 11).
+ *
+ * Rien ne parle à la première personne ; aucune famille n'est nommée (le libellé de `complements-excel` ne sort
+ * jamais, charte §9).
+ */
+interface Props {
+  agent: Specialiste;
+  variante?: 'bandeau' | 'ligne';
+  /** Rend la démonstration de l'agent sous le bandeau. */
+  demonstration?: boolean;
+}
+const { agent, variante = 'bandeau', demonstration = false } = Astro.props;
+const LIBELLE = 'Qui prend ce métier';
+const nom = `${agent.prenom}, agent IA ${metierEnPhrase(agent.libelle)}`;
+const destination = cheminAgent(agent);
+/** La page courante, sans extension ni barre finale (`build.format: 'file'`). */
+const ici = Astro.url.pathname.replace(/\.html$/u, '').replace(/\/$/u, '') || '/';
+const surSaPage = destination === ici;
+const teinte = POLES[agent.teinte].couleur;
+const idTitre = `qui-prend-${agent.slug}`;
+---
+
+{variante === 'ligne' ? (
+  <p class="qui-prend-ligne" data-qui-prend={agent.slug}>
+    {LIBELLE} : {surSaPage ? nom : <a href={destination}>{nom}</a>}
+  </p>
+) : (
+  <section class:list={['qui-prend', { 'qui-prend-avec-rejeu': demonstration }]} id="qui-prend-ce-metier" aria-labelledby={idTitre} data-qui-prend={agent.slug} style={`--teinte: ${teinte}`}>
+    <div class="qui-prend-bandeau">
+      <AgentAvatar agent={agent} taille="heros" />
+      <div class="qui-prend-texte">
+        <p class="qui-prend-label">{LIBELLE}</p>
+        <h2 id={idTitre} class="qui-prend-nom">{nom}</h2>
+        <p class="qui-prend-mission"><Insecable texte={agent.ligne} /></p>
+        <div class="qui-prend-liens">
+          {!surSaPage && <a class="lien-action" href={destination}>Rencontrer {agent.prenom}<Picto nom="fleche" taille={14} /></a>}
+          <a class="lien-action" href={HUB.chemin}>Tous les agents IA<Picto nom="fleche" taille={14} /></a>
+        </div>
+      </div>
+    </div>
+    {demonstration && <div><DemoAgent agent={agent}/><details id="regle" class="qui-prend-regle"><summary>La règle écrite de cette démonstration</summary><p>{agent.demonstration.regle}</p></details></div>}
+  </section>
+)}
+
+<style>
+  .qui-prend-regle { margin-top:20px;padding:24px;background:var(--accent-voile);border-radius:var(--r-carte);}.qui-prend-regle summary {cursor:pointer;min-height:44px;font-weight:600;}.qui-prend-regle p {margin-top:16px;color:var(--texte-2);}
+  .qui-prend {
+    display: grid;
+    gap: var(--espace-6);
+    margin-top: var(--bloc-ecart);
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  /* Le bandeau : le voile de l'accent du pôle, comme le haut d'une carte d'agent du hub. */
+  .qui-prend-bandeau {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--espace-5);
+    padding: var(--espace-6);
+    border: 1px solid var(--ligne);
+    border-radius: var(--cadre-rayon);
+    background: color-mix(in srgb, var(--teinte) 7%, var(--surface-elevee));
+  }
+  .qui-prend-texte {
+    display: grid;
+    flex: 1 1 16rem;
+    gap: var(--espace-2);
+    min-width: 0;
+  }
+  .qui-prend-texte p {
+    margin: 0;
+  }
+  .qui-prend-label {
+    font-size: var(--surtitre);
+    font-weight: 600;
+    color: var(--texte-2);
+  }
+  .qui-prend-nom {
+    font-size: var(--titre-bloc);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .qui-prend-mission {
+    color: var(--texte);
+    max-width: 52ch;
+  }
+  .qui-prend-liens {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--espace-6);
+  }
+  .qui-prend-ligne {
+    margin: 0;
+    font-size: var(--mention);
+    color: var(--texte-2);
+  }
+  .qui-prend-ligne a {
+    font-weight: 600;
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  /* Dès 64 rem, le bandeau à gauche, le rejeu à droite, alignés en haut (système de page § 7, rangée). */
+  @media (min-width: 64rem) {
+    .qui-prend-avec-rejeu {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: start;
+      gap: var(--rangee-gouttiere);
+    }
+    .qui-prend-avec-rejeu .qui-prend-bandeau {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 # Recette clavier des tableaux — A11Y-01
 
-Périmètre H1 : les 21 routes de `tests/browser/table-keyboard.routes.json` (5 services et 16 articles), dans Chromium et WebKit à 320, 375 et 1440 pixels.
+Périmètre actualisé le 15/10/2026 : les fiches publiées des agents IA et les 21 robots sont dérivés de leurs catalogues typés ; les 16 articles historiques restent dans `tests/browser/table-keyboard.routes.json`. Les anciens services retirés ne sont plus des destinations du banc. Chromium et WebKit, à 320, 375 et 1440 pixels.
 
 ## Rejouer
 
@@ -19,7 +19,7 @@ Avant toute assertion de focus visible et toute capture, l'oracle attend une int
 ## Recette manuelle publique
 
 1. Ouvrir une route de la liste dans Chromium puis Safari, aux trois largeurs.
-2. Utiliser uniquement Tab jusqu'au tableau. Le conteneur est annoncé « Tableau N : [titre de section ou légende] » et entouré d'un trait vert foncé de 3 pixels. Pas de clic préalable.
+2. Utiliser uniquement Tab jusqu'au tableau. Le conteneur est annoncé par la légende, le nom de l’agent/robot ou le titre de comparaison et entouré d'un trait vert foncé de 3 pixels. Pas de clic préalable.
 3. Si le tableau dépasse son conteneur, appuyer sur Flèche droite jusqu'à voir la dernière colonne. Flèche gauche permet le retour. Aucune colonne n'est supprimée. À 1440 pixels, un tableau qui tient intégralement n'a pas besoin de défiler.
 4. Tab quitte le conteneur ; Maj+Tab y revient. Les liens éventuels à l'intérieur conservent leur propre fonctionnement clavier. Les flèches verticales et les touches avec modificateurs ne sont pas interceptées.
 5. Le document entier ne doit pas déborder horizontalement. Le contrôle axe `scrollable-region-focusable` doit rendre zéro violation.
@@ -31,3 +31,5 @@ Avant toute assertion de focus visible et toute capture, l'oracle attend une int
 Le défilement est porté par le conteneur, pas la table. Le test a montré que le focus seul ne suffit pas dans WebKit : un gestionnaire limité aux deux flèches horizontales sur le conteneur focalisé assure le défilement. Sans JavaScript, le contenu reste entier et le conteneur nommé/focusable ; la garantie des flèches dans WebKit nécessite ce script local.
 
 Les surfaces générées ont été régénérées avec `npm run regen:generated`. Aucune recette, revue de fond ou source d'article n'est modifiée ; les circuits de publication du blog et des services restent en place.
+
+Les démonstrations et comparaisons réutilisent le même gestionnaire de flèches sur leurs régions natives. Leur contour de 3 px est placé à l’intérieur du cadre pour rester visible. L’injection axe est effectuée par le banc, sans modifier ni désactiver la CSP du site.

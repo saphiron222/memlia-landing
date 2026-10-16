@@ -3,7 +3,7 @@ const route='/outils-comptables-gratuits/generateur-relance-facture-impayee';
 const storage=page=>page.evaluate(async()=>({local:{...localStorage},session:{...sessionStorage},cookies:document.cookie,idb:await indexedDB.databases(),caches:await caches.keys(),workers:(await navigator.serviceWorker.getRegistrations()).map(r=>r.scope)}));
 test('import, saisie, calcul, copie, export et effacement sans réseau ni persistance',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);
- const response=await page.goto(route);await page.waitForLoadState('networkidle');
+ const response=await page.goto(route); await ouvrirReglages(page);await page.waitForLoadState('networkidle');
  expect(await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content')).toContain("connect-src 'none'");
  if(new URL(response.url()).hostname.endsWith('.pages.dev'))expect(response.headers()['content-security-policy']).toContain("connect-src 'none'");
  expect(await page.content()).not.toMatch(/static\.cloudflareinsights\.com|data-cf-beacon/);
@@ -24,7 +24,7 @@ test('import, saisie, calcul, copie, export et effacement sans réseau ni persis
 test('reflow 400 % équivalent 1280/4, parcours animations et captures complètes',async({page})=>{
  test.setTimeout(120_000);
  for(const width of [320,375,1440]){
-  await page.setViewportSize({width,height:width===320?225:900});await page.goto(route);await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();await page.getByRole('button',{name:'Préparer les relances',exact:true}).click();
+  await page.setViewportSize({width,height:width===320?225:900});await page.goto(route); await ouvrirReglages(page);await page.getByRole('button',{name:'Charger l’exemple fictif',exact:true}).click();await page.getByRole('button',{name:'Préparer les relances',exact:true}).click();
   await expect(page.locator('#rel-message-body')).toHaveValue(/90,00 EUR/);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true);
   const height=await page.evaluate(()=>document.documentElement.scrollHeight);
   for(let y=0;y<height;y+=500){await page.evaluate(y=>scrollTo(0,y),y);await page.waitForTimeout(60);}
@@ -32,3 +32,5 @@ test('reflow 400 % équivalent 1280/4, parcours animations et captures complète
   await page.screenshot({path:`docs/qa/relance-facture/final-${width}.png`,fullPage:true});
  }
 });
+
+async function ouvrirReglages(page){ for (const summary of await page.locator('[data-tool-advanced], [data-outil-options]').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

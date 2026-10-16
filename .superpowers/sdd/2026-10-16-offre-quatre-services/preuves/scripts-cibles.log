@@ -1,0 +1,227 @@
+TAP version 13
+# {"titleCharacters":52,"descriptionCharacters":152}
+# Subtest: E1 livre les onze sections, les cinq orientations et les onze questions CAC
+ok 1 - E1 livre les onze sections, les cinq orientations et les onze questions CAC
+  ---
+  duration_ms: 0.884583
+  type: 'test'
+  ...
+# Subtest: la copy de revue reprend chaque chaîne des données, sans variante silencieuse
+ok 2 - la copy de revue reprend chaque chaîne des données, sans variante silencieuse
+  ---
+  duration_ms: 1.352292
+  type: 'test'
+  ...
+# Subtest: titre, description et H1 portent l’intention mesurée, sans prétendre mesurer un volume
+ok 3 - titre, description et H1 portent l’intention mesurée, sans prétendre mesurer un volume
+  ---
+  duration_ms: 3.153542
+  type: 'test'
+  ...
+# Subtest: la couverture est visible et la frontière garde ses trois colonnes
+ok 4 - la couverture est visible et la frontière garde ses trois colonnes
+  ---
+  duration_ms: 0.224625
+  type: 'test'
+  ...
+# Subtest: E9 livre le film CAC sans réutilisation du film ou des preuves EC
+ok 5 - E9 livre le film CAC sans réutilisation du film ou des preuves EC
+  ---
+  duration_ms: 0.189666
+  type: 'test'
+  ...
+# Subtest: les ancres des garanties et orientations ont une cible locale prévue
+ok 6 - les ancres des garanties et orientations ont une cible locale prévue
+  ---
+  duration_ms: 0.127333
+  type: 'test'
+  ...
+# Subtest: le mécanisme et la responsabilité sont explicites, sans titre de CAC attribué à Memlia
+ok 7 - le mécanisme et la responsabilité sont explicites, sans titre de CAC attribué à Memlia
+  ---
+  duration_ms: 0.369916
+  type: 'test'
+  ...
+# Subtest: la profession CAC dispose de sa copie sans repli EC
+ok 8 - la profession CAC dispose de sa copie sans repli EC
+  ---
+  duration_ms: 0.76225
+  type: 'test'
+  ...
+# Subtest: la route CAC compose les onze sections et ses compléments validés
+ok 9 - la route CAC compose les onze sections et ses compléments validés
+  ---
+  duration_ms: 0.509417
+  type: 'test'
+  ...
+# Subtest: la variante poster est explicite et ne rend pas de lecteur vide
+ok 10 - la variante poster est explicite et ne rend pas de lecteur vide
+  ---
+  duration_ms: 0.176083
+  type: 'test'
+  ...
+# Subtest: la publication possède son intention et ses liens entrants
+ok 11 - la publication possède son intention et ses liens entrants
+  ---
+  duration_ms: 1.301083
+  type: 'test'
+  ...
+# Subtest: les onze sections de l’accueil acceptent leur contenu et gardent EC par défaut
+ok 12 - les onze sections de l’accueil acceptent leur contenu et gardent EC par défaut
+  ---
+  duration_ms: 2.78625
+  type: 'test'
+  ...
+# Subtest: le contenu EC compose les sources FAQ et garanties, avec une méthode de déploiement du catalogue
+ok 13 - le contenu EC compose les sources FAQ et garanties, avec une méthode de déploiement du catalogue
+  ---
+  duration_ms: 1.2005
+  type: 'test'
+  ...
+# Subtest: le contenu EC conserve les compteurs dynamiques ; ses scènes remplacent les cadres commerciaux (recette A du 15/10)
+ok 14 - le contenu EC conserve les compteurs dynamiques ; ses scènes remplacent les cadres commerciaux (recette A du 15/10)
+  ---
+  duration_ms: 0.831792
+  type: 'test'
+  ...
+# Subtest: conserve le contenu principal, les liens absolus, les listes, le code et les tableaux
+ok 15 - conserve le contenu principal, les liens absolus, les listes, le code et les tableaux
+  ---
+  duration_ms: 4.896875
+  type: 'test'
+  ...
+# Subtest: génère uniquement les routes sitemap, après nettoyage des sources, de façon idempotente
+ok 16 - génère uniquement les routes sitemap, après nettoyage des sources, de façon idempotente
+  ---
+  duration_ms: 19.308916
+  type: 'test'
+  ...
+# Subtest: refuse un HTML sans main plutôt que de publier la navigation
+ok 17 - refuse un HTML sans main plutôt que de publier la navigation
+  ---
+  duration_ms: 0.236958
+  type: 'test'
+  ...
+# Subtest: le lien de repli sans JavaScript reste un lien Markdown, pas du HTML brut
+ok 18 - le lien de repli sans JavaScript reste un lien Markdown, pas du HTML brut
+  ---
+  duration_ms: 2.633541
+  type: 'test'
+  ...
+# Subtest: R1 : un parseur indépendant retrouve le code littéral en prose et tableaux
+ok 19 - R1 : un parseur indépendant retrouve le code littéral en prose et tableaux
+  ---
+  duration_ms: 1.003625
+  type: 'test'
+  ...
+# Subtest: R2 : cartes liées et listes multiparagraphes conservent titres, libellés et items
+ok 20 - R2 : cartes liées et listes multiparagraphes conservent titres, libellés et items
+  ---
+  duration_ms: 1.694959
+  type: 'test'
+  ...
+# Subtest: bibliothèque : seul le prompt statique marqué, en lecture seule, rejoint le Markdown
+ok 21 - bibliothèque : seul le prompt statique marqué, en lecture seule, rejoint le Markdown
+  ---
+  duration_ms: 0.677
+  type: 'test'
+  ...
+# Subtest: à propos garde la valeur et la frontière avant le fondateur
+ok 22 - à propos garde la valeur et la frontière avant le fondateur
+  ---
+  duration_ms: 0.906042
+  type: 'test'
+  ...
+# Subtest: à propos conserve les parcours actuels, la scène et le CTA canonique
+ok 23 - à propos conserve les parcours actuels, la scène et le CTA canonique
+  ---
+  duration_ms: 3.423917
+  type: 'test'
+  ...
+# Subtest: une assertion additionnelle suit la date de sa propre source
+ok 24 - une assertion additionnelle suit la date de sa propre source
+  ---
+  duration_ms: 109.410416
+  type: 'test'
+  ...
+# Subtest: les rubriques suivent le geste déclaré, même avec des dates inversées
+ok 25 - les rubriques suivent le geste déclaré, même avec des dates inversées
+  ---
+  duration_ms: 1.208083
+  type: 'test'
+  ...
+# Subtest: garanties : ni comparaison ni délai, politique bornée au site
+ok 26 - garanties : ni comparaison ni délai, politique bornée au site
+  ---
+  duration_ms: 0.352458
+  type: 'test'
+  ...
+# Subtest: garanties : une phrase qui renvoie à la précédente reste collée à son antécédent
+ok 27 - garanties : une phrase qui renvoie à la précédente reste collée à son antécédent
+  ---
+  duration_ms: 0.182166
+  type: 'test'
+  ...
+# Subtest: contact : finalités séparées, provenance facultative et base identifiée
+ok 28 - contact : finalités séparées, provenance facultative et base identifiée
+  ---
+  duration_ms: 0.289958
+  type: 'test'
+  ...
+# Subtest: les compatibilités forment un catalogue commun aux robots et agents, sans anciens guides ni statuts commerciaux
+ok 29 - les compatibilités forment un catalogue commun aux robots et agents, sans anciens guides ni statuts commerciaux
+  ---
+  duration_ms: 0.493583
+  type: 'test'
+  ...
+# Subtest: glossaire : les frontières corrigées restent explicites
+ok 30 - glossaire : les frontières corrigées restent explicites
+  ---
+  duration_ms: 0.992416
+  type: 'test'
+  ...
+# Subtest: chaque source de page se cite sur un mot du texte, sans composant de section
+ok 31 - chaque source de page se cite sur un mot du texte, sans composant de section
+  ---
+  duration_ms: 0.340583
+  type: 'test'
+  ...
+# Subtest: deux offres distinctes, huit couches et contenus complets
+ok 32 - deux offres distinctes, huit couches et contenus complets
+  ---
+  duration_ms: 0.875708
+  type: 'test'
+  ...
+# Subtest: navigation regroupe quatre services et sépare les intégrations
+ok 33 - navigation regroupe quatre services et sépare les intégrations
+  ---
+  duration_ms: 0.413083
+  type: 'test'
+  ...
+# Subtest: huit familles à poids accessibles, logos locaux officiels et empreintes cohérentes
+ok 34 - huit familles à poids accessibles, logos locaux officiels et empreintes cohérentes
+  ---
+  duration_ms: 2.52625
+  type: 'test'
+  ...
+# Subtest: contact : choix autorisé uniquement et pas de champ libre dans le lien
+ok 35 - contact : choix autorisé uniquement et pas de champ libre dans le lien
+  ---
+  duration_ms: 0.661041
+  type: 'test'
+  ...
+# Subtest: GET et HEAD protègent les deux illustrations avec la même CSP sans réseau
+ok 36 - GET et HEAD protègent les deux illustrations avec la même CSP sans réseau
+  ---
+  duration_ms: 18.183166
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 185.559375

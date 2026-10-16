@@ -1,0 +1,78 @@
+{
+  "origin": "https://a9bf1faf.memlia.pages.dev",
+  "sha": "c8715272",
+  "rows": [
+    {
+      "route": "/",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": null
+    },
+    {
+      "route": "/commissaires-aux-comptes",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/commissaires-aux-comptes",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": null
+    },
+    {
+      "route": "/methode",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/methode",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": null
+    },
+    {
+      "route": "/a-propos",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/a-propos",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": null
+    },
+    {
+      "route": "/garanties",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/garanties",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": null
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/contact",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'self' https://challenges.cloudflare.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://challenges.cloudflare.com; img-src 'self' data: https://challenges.cloudflare.com; object-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "route": "/automatisation-cabinet-comptable",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/automatisation-cabinet-comptable",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "route": "/automatisation/cfe",
+      "status": 200,
+      "noindex": "noindex, nofollow",
+      "canonical": "https://memlia.fr/automatisation/cfe",
+      "metaRobots": "noindex, nofollow",
+      "hsts": null,
+      "csp": "default-src 'self'; base-uri 'self'; connect-src 'none'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+    }
+  ]
+}

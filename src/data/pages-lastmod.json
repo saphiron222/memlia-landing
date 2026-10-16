@@ -3,228 +3,268 @@
   "regle": "lastmod = jour où le HTML rendu de la page a changé. Mis à jour par scripts/sync-lastmod.mjs, jamais par le build.",
   "pages": {
     "/": {
-      "sha256": "308c635234f08420f3627768b1586be75d1755f515e30944989ac530b033b5a4",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "731cdac6bcddc5171fc148e9908f517af869eb96595158defa05407472f4aa62",
+      "lastmod": "2026-10-16T02:57:55.504Z"
     },
     "/a-propos": {
-      "sha256": "b4bd6cb424fbbeea0d7707a6e3be02016ab2c202608f017a0127850bc843da54",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "6281e7e1b59d8a7a1355c7b92d418a76d100c4376f14f1cd318ae4509fe685ee",
+      "lastmod": "2026-10-16T02:57:55.504Z"
+    },
+    "/agents-ia": {
+      "sha256": "01c1d75b03cd451d0d4e089d179acba193cd24eda25d0fb65069a8cace1fb7e9",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/commercial": {
+      "sha256": "07a0c0735d37d6a4c752ccb447cfa0548b94e18c4fe7317d5f6aad52a0628b2f",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/communication": {
+      "sha256": "8b798d1ff3aae728dcc2fb2c792d4b8824243d2281b4a230d33b5cccc9b1b9e6",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/comptabilite": {
+      "sha256": "e339fc453ca2c433f5d0465a5de50fec1c447bac38c4d86d6918de8db28f2e7d",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/finance": {
+      "sha256": "0aa134dd97fbc4bb98fd82888d617bd677396657a41b994b66936a28280f2c16",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/gestion-cabinet": {
+      "sha256": "4f145a6852406e9827bcb2ba31622a6e844fc27e8e9719ba5f6fa9a49bf490a5",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/juridique-fiscal": {
+      "sha256": "feb81a873861eb8af9c8da8f8d872a1ccd4ee333b2e5dba45cdf5eb3d0eec8dc",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/paie-social": {
+      "sha256": "c484302b89b99d206ca3f573be4f0e2c46da8899cbd3e10707e2870d3a557f8b",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/protection-donnees": {
+      "sha256": "3b93ccee69925220517ab004988f267f77426e3dc99f20a5070d506fc809a40b",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/relation-client": {
+      "sha256": "b496690e4ac8120aa11905bbc0f90e7df70d3306f76d714977886cd7579c9136",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/agents-ia/rh-cabinet": {
+      "sha256": "35a7c7da0039a33304e55ec26c1523ff7e486f83a19bb2dfa21a8a705caba9f7",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/automatisation-cabinet-comptable": {
-      "sha256": "81f074743e08d7e59cf072b4b0a1b8f0e301c32ee47eadb87517029871ade997",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "94a7405a996f1f341e07d95189c9f217fc7627fa00e834418ba63bdc2f2e4d54",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/bulletins-controle": {
-      "sha256": "4354fe7ec39b4cfd6d287d716950041272e553f0ba8359b3240abf7c92401690",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/annuaire-facturation-electronique": {
+      "sha256": "4977cc2eaac50cf3e125e0acb78c1243b0c8eea74e94ed2e7c63e2686be5007d",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/circularisation-cac": {
-      "sha256": "55a149d1b14338af782f256d7ceb36d104465c2f90b3ece0ab903bf609d4a05f",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/anonymisation-documents": {
+      "sha256": "5944a08ba1db6d0904869f1c1851f3ca51367e11d94fc34a6a4370944246335b",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/entrees-sorties-salaries": {
-      "sha256": "ea2c01721f0677b844d2e9f92689890692ff60ce41c36023d98aa6f66175e72e",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/attestation-fiscale": {
+      "sha256": "180642c3afa9a392b73bb2788ca452b651470c617d9326e08ccc126a558150e7",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/evaluation-transmission": {
-      "sha256": "7c4e5f49b0c610b3e56043b5c9e5864b46f707995d825ac78d0470890aacbb1f",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/attestation-sociale": {
+      "sha256": "a8a3783752ceafd171b2f276929f5e3af400417ee37b22436c2216b6619c0b1e",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/facture-electronique": {
-      "sha256": "77ccda0d68ec055a3593c4acf28afca1c3886be12e2d6aed6fee78d723813fc1",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/beneficiaires-effectifs": {
+      "sha256": "9362c8ba272751f38b49fdd9ab759300763a9d6e1e87b371af7e4abc2e6b3912",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/factures-fournisseurs": {
-      "sha256": "eb4a915b9cdf007ff3370185cce5ea201c070584614e6e8f25e66961597f1fb1",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/cfe": {
+      "sha256": "6985f99bb8259f502023ec55eb8b9d33aedc4d4249a1e796af24dafc17129fa9",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/notes-de-frais": {
-      "sha256": "f0149d08a7acadaefdc0f622dba57afb3a61caab4b6f14854e86d61e2109e7de",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/collecte-ifi": {
+      "sha256": "7df16361ab2077ed870efe7f4475b32a2827c81f0dfe2f6452b6992efbbee743",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/paie": {
-      "sha256": "be1f52f703cb818d281d9b69ab16eff8744bedd1ab0158e7b9864129fdb43c1c",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/collecte-ir": {
+      "sha256": "7a58385df1126b0faa2ecf7783ddbbb51dd5341fb40cbc2aacc18022f33688f3",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/rapprochement-bancaire": {
-      "sha256": "82c7184c3db1e8b36b886987f3acd068dde38cb38cb7923986967de99ce94bce",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/dette-fiscale": {
+      "sha256": "e7abc17af1b81f9dc8da09f1ec4d686b8b9a1467d41f9fd286a87572fcfb162f",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/registres-obligations": {
-      "sha256": "7d17bc87bf72621293085b94175e037ed914c07f7c331371df02f6f96e4180a0",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/fiches-dgfip-facturation-electronique": {
+      "sha256": "a816ab805dd62f9d6373616956fd4df70c6870a1c6f0033ea868d853e87438a9",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/saisie-comptable": {
-      "sha256": "a955ed7c348507456eb1e57185e971f7c3af177a35b5afec3db265e791e234e8",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/habilitations-fiscales": {
+      "sha256": "7a61cfcf18509ee04d6ef234a9179972ea541c0c916a8a803c31b3dcffd7eee1",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/automatisation/secretariat-juridique": {
-      "sha256": "5e15ae062f4051f79a85d479ebc71ddd7828a443f6a9bceaf20e751bf353e15d",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/automatisation/informations-legales-rne": {
+      "sha256": "9bd928dbb643f68cf2f487a209583d12a3632e6ee400b0f2e38b4e7499153dbd",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/mandats-plateforme-agreee": {
+      "sha256": "70a2ee09557f27f114317bd92c668c4420327813043503ee46c26df906d94593",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/messagerie-fiscale": {
+      "sha256": "3cb3fc45a4d37368123e1ba32393022dcca4583e393ed9a1d274dc7d60a3f442",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/rattachement-fiscal": {
+      "sha256": "d025abe44d244615cfeef520ef0dd671364b48d98fd275ccee818dae482ed7ac",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/situation-tva": {
+      "sha256": "1b56c27dddc2db6b247d77e7d0d8de0b1b216054304b10c5b13e5f41927fd83e",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/suivi-declarations-fiscales": {
+      "sha256": "faee54f0ba9985725768effe76589ea4774ed2a445e8073ea629ecc6adf538fa",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/suivi-urssaf": {
+      "sha256": "183b02b4e53e767b5226af88d1734ac143962e5d5b7369541f4dce92190b809f",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/tableaux-de-bord-fec": {
+      "sha256": "ea8fc36c841587225dd294763f65d1fe179fa3a125f164bf962a254aaef441e5",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/taxes-foncieres": {
+      "sha256": "da5ceca95402651127ec37808e79ec513f5badce59af4e423cdd5254cbaadf3d",
+      "lastmod": "2026-10-16T01:16:34.373Z"
+    },
+    "/automatisation/veille-bodacc": {
+      "sha256": "459e2d5364a124294e68db5b0651ac12a78f6fc6f2797e27df58def46b6fdf8f",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/blog": {
-      "sha256": "bbef9e2011d9cf8bba742e0c79e79b51c97bb9cfd176c23546e0d87347421cc5",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "6970a8f1829a251cad48bf154a6bfa47ed2b9da55f18ea68ca879ead4f658343",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/commissaires-aux-comptes": {
-      "sha256": "2dce4feee96a7a2e404189bd435060dd2ad5f541f64f032586ddb336f17330dd",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "7dda49b8bdb155271b982a66d9b49ae0695f0083a376c6c5ce9b6e76e7555016",
+      "lastmod": "2026-10-16T02:57:55.504Z"
     },
     "/contact": {
-      "sha256": "5edd0a5bbd3e2aae2236363aa9865abcc5e9ea7ffea0d180d33f7b05f79cda6c",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "06a652b985492a44125405f1a7637cd451e2413e649d8f2272d77b75b1c69b39",
+      "lastmod": "2026-10-16T02:57:55.504Z"
     },
     "/garanties": {
-      "sha256": "6f33d0256c18d6f2fdbac61249d199f29843922acaeb58cf0fe2280d7eb3c968",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "c7fd1e2e51c36a590e07862492e4dffb21628de15e5d6574b142f268c9653723",
+      "lastmod": "2026-10-16T02:57:55.504Z"
     },
     "/glossaire": {
-      "sha256": "58b877064b0b00c38328052bdcd7fe0c70906f7d1a5c99a803eb9b7494bc535e",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "e4204ed49e1eeb7a7e253808e4f3ae85efa555141bee6fc8e871f8029bfdbdfd",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/integrations": {
-      "sha256": "e9ee45d614186b83d839f086fd3f6502886ca57ff28ba2618f6c78f17873e488",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "79185c660764e5fd468f049a2a04b1e7d5b811b1d2c4b93cc789dae6d503a6c4",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
-    "/integrations/bulletin-de-paie-sage": {
-      "sha256": "b5c172b7eb80b171bfe445811e7a7500196793867e7542c7cdd13810adfaada1",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/bulletin-de-paie-silae": {
-      "sha256": "62e061f7defacb634d6804796e9f714de0a0bb6cb8894427a13c98fa9689a11b",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/cloture-ebp": {
-      "sha256": "ca33e982d9edaed58b872cba7d604c7082bcca8ee7b085810582594627fea6eb",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/cloture-sage": {
-      "sha256": "fb420228c207332ca433bf0d772f2418bb6406c5ac32159e925814182a3d10ac",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/dsn-sage": {
-      "sha256": "46766323f380b84afdc459159746509e8dbf56d65da6fc335fd6d1f16b339ad5",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/dsn-silae": {
-      "sha256": "66a92e2c4da9291bec7fdbfdb6b5f141ecebff35ca1abdf50434e0e5ee5c4217",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/export-fec-ebp": {
-      "sha256": "fceaf4c68a8e62042d5adf07052529a54eb866b5eb1e5183b5759cdbb9fe264f",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/lettrage-cegid": {
-      "sha256": "29b7bac7178ab03d9a3b85b3cee3bead1ccdf9aa8f3e819be895091d56d397c6",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/lettrage-ebp": {
-      "sha256": "962dcf1bdfa42a603b5e6a6ba9a3afe7c493c0c50798999feee434401b80eb9e",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/lettrage-sage": {
-      "sha256": "22f4dbb61fc695d597cbb69a2eac8255cb0d88e9fdd7237d5f7adc51c278be16",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/rapprochement-bancaire-sage": {
-      "sha256": "8ae0a6c0f5948f62d90fbcfa1e5b22a650dc085f039da960876ab7261abe8681",
-      "lastmod": "2026-10-13T15:39:21.025Z"
-    },
-    "/integrations/saisie-comptable-sage": {
-      "sha256": "7b0d7bbdbaa93cefd58006f76e9acc3aadd3a185e96dbd3f2394885e0de61031",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+    "/memoire-collective-cabinet-comptable": {
+      "sha256": "71eaf3e9d89bf811cd8e4e490749fb46238c6e612a2d8c04c3d380ecc5a83ea3",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/methode": {
-      "sha256": "1be7a7efeb1796dc29e8526b6bf58573fc3c904a59027a20669af084e2c271eb",
-      "lastmod": "2026-10-13T15:39:21.025Z"
+      "sha256": "5bcd2ec0dfe4125b29166109458bdb263aaa38bab712a03c5016f52b3d140050",
+      "lastmod": "2026-10-16T02:57:55.504Z"
+    },
+    "/modele-ia-prive-entreprise": {
+      "sha256": "cfc0711c7974c05b5138370e550e1aa0fdeb42a38a72c815b7e432b618365db6",
+      "lastmod": "2026-10-16T02:16:15.132Z"
     },
     "/outils-comptables-gratuits": {
-      "sha256": "131f7ef0992aecd4e1a733bc6ba0a5e187212deb481e948a9252b65499f00363",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "0af893fa7866886a5f35190ca6363f448164e7ff2af88df364c08773e8ff6566",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/assistant-lettrage-comptable-local": {
-      "sha256": "1edf99ee56c18db8611962c26bf328cb71fcec8a9c5da1356658a266857182ab",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "872a4da4fd5abafe0ee134ec2d5b4f0f62e35b7ac926f3254fa2dadcca5179e0",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/bareme-heures-cac": {
-      "sha256": "64fce3433385ebd9f57193854d391501ca621fc85eec5dc9ec87952d777dfd67",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "16b3c3c4103460865658d254f8224c5d6c5431e3d475924849f34827a252591e",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/bibliotheque-prompts-comptables": {
-      "sha256": "743f060d7761f2684470cc907413a11a7794652b17d10ea3de6bebc8ce9d2c5d",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "906c0886ad1528fba8abf243b99930606e71913519a6cf07b6e172ff17746b83",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/calculateur-amortissement-comptable": {
-      "sha256": "69b36564fcc0f9940f56a8c2e4c0256e73078a3592152da86e85eee844c8b702",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "e85db5b238c636c1ceabbdb408c6388490b424f15760adb36e900759b39cf5d2",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/calculateur-date-echeance-facture": {
-      "sha256": "e64cd8b3f743e38f11ff9633754e98a565f0b62b713fb25783263de3b83042f2",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "34ebf387ad766d3937fb46fe4b308b731fdb6716fb543c9af3a3704cfa6fe8c1",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/calculateur-marge-commerciale": {
-      "sha256": "e3b6416d02e886acb8da0e120c36b61ab40511004409bcd9d4b473c3e38de163",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "ba41f5f1b4f20f120c8d2b6888076037e1110ef6701da36c44940119d21127c4",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/calculateur-roi-automatisation": {
-      "sha256": "cbbbd92940fb40bce4448010381e144e93f06f8fb965df772f0d8e6bf941e247",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "29c36fb6350b6c79f33be64994fc083298abaccdde0c8b6577d941b260375446",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/checklist-pieces-comptables": {
-      "sha256": "3ee6a3c342d7c2aad183b92aad28e1f14763758a7c638d6ef826b20e60404091",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "78559ae122a357599507118f5d57b964cb537dfe69ba10319873bdb5372afde2",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/comparateur-balances-comptables": {
-      "sha256": "a1dca09a53eb3f1067afdb3b53359b8881d1fc54f2c9db8ff546180655ae587c",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "142ddbc5f75ccf61d4f04ccd524ebd940af9de54b67593c9b403c81b3c1c690e",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/diagnostic-maturite-ia-cabinet": {
-      "sha256": "77548c7858b1eddf9b3c9a60104da87679b1c6411abba254deb7d3efb037a13a",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "ea2c1eed8c0153862c4c452f80171d0eaf30fa8ff6d468ca8b0c4e942d39e884",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/fusionner-fichiers-csv": {
-      "sha256": "a9f873ad1f7d1cde9ded39de07d85034697c8714e2c8dd6d7c24fc4152cc54ba",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "52d2acb4fe57447a3102b7de054b9e310aae6e8a01a4c2da9851c2d7549f29e3",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/generateur-charte-ia-cabinet": {
-      "sha256": "062e881a67b1106b9b5c96b64255026b560d54b3dd730ff93179a061931c4ec0",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "d4f9e694157b6a653ce89227966a78d35b86be6010ed9ea6956718281a788d40",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/generateur-prompt-expert-comptable": {
-      "sha256": "ebea3110563505a13559d4805f0e0278c99f14ac7b003bd5581e05773307c0a3",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "db445dd3fbc5877e8ef8b30772baad37524c0018f938920051fa0e362b21e8c7",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/generateur-prompt-ia-gratuit": {
-      "sha256": "dfeb4a922a056ed44ed8a592ca00efdbd7515cfccce85383d1bdc1e2121e97bb",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "10a81ec1314ae21ce97a63e7cae91e26ebd3dfffba1c29b1980c7d93709b3a08",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/generateur-relance-facture-impayee": {
-      "sha256": "c90b01adc427187523d47d0b2ce9bac8659cbe8733f7501a8106f5c6a6619876",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "71c4ae200229cd7d905b996dcf85f0dac77de454c90c4f4283dc13fe7b9b2b06",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit": {
-      "sha256": "6acc23a86b12cddc914c44bfd07c561481574fb9bf1cfc8f0a422bac2b7db2a5",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "69bd22e9a3865f27df6fec152718bcc8388ecee22bc660655fd5fe2d2df523a1",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec": {
-      "sha256": "00b06297c8e44fca5c87e071a686faccf961d075eeadfebf0b414848df5914b0",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "0518db05c1bfefb536b905a6e768f523cd3575af810f03d99d4234b90d96520b",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/seuil-signification-audit": {
-      "sha256": "7b35765e8e3efa4f1726b18cd5e74d6a1e9eb016268eaeec34e8eabe973e3b2c",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "bf4754e7ad245f33b115ceac0ff3f71630be456aab06c91874928c3135bef667",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/suivi-circularisation": {
-      "sha256": "880905815bd673de838d9294bb4ef72b5d1b67232df4b718b5df575746bef35b",
-      "lastmod": "2026-10-14T12:26:56.781Z"
+      "sha256": "970bcd7dd790de9d75c098735a1f8955828117a484a9d493f223152e56caeea5",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/verificateur-fec-local": {
-      "sha256": "b05fd42e557be1d09340f2baffaa3b626aa3fadd41b5a78bd0b68a7f080e33eb",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "15b224e011953c7f34d5f0b2a929e3665ee90e57e53397019e0ba65d341621c6",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     },
     "/outils-comptables-gratuits/verificateur-prompt-ia": {
-      "sha256": "be09b9ffad96211e8f6f32a11ff9159cff03c099ead2e561558bdbb638ab38eb",
-      "lastmod": "2026-10-14T11:38:09.497Z"
+      "sha256": "1d93d543d8e3490adf4ec4896d4df8979c9a812ac534ab84f00102a884c6d743",
+      "lastmod": "2026-10-16T01:16:34.373Z"
     }
   }
 }

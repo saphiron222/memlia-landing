@@ -1,23 +1,20 @@
 ---
 import Insecable from '@/components/Insecable.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
 import { contenuDe, type ContenuAccueil } from '@/data/accueil/contenu';
-interface Props { contenu?: ContenuAccueil['quotidien']; }
-const { contenu = contenuDe('ec').quotidien } = Astro.props;
-/**
- * Le problème quotidien, sans métrique client ni témoignage inventé.
- * Système de page : rangée (en-tête, maquette), puis des lignes (un verbe, sa définition), puis
- * la mention qui borne la promesse.
- */
+import type {SceneId} from '@/data/scenes-figurines';
+interface Props { contenu?: ContenuAccueil['quotidien']; scene?:SceneId; }
+const { contenu = contenuDe('ec').quotidien, scene='accueil' } = Astro.props;
+/** Recette A du 15/10/2026 : contenu et ancres conservés, cadres commerciaux retirés. */
 ---
 <section class="section daily" aria-labelledby="daily-title">
   <div class="conteneur pile">
-    <ProofRow id={contenu.image}>
+    <BlocEditorial scene={scene}>
       <div class="tete rv">
         <h2 id="daily-title"><Insecable texte={contenu.titre} /></h2>
         <p>{contenu.texte}</p>
       </div>
-    </ProofRow>
+    </BlocEditorial>
     <dl class="lignes rv">
       {contenu.points.map((p, i) => <Fragment>{i > 0 && ' '}<div class="ligne"><dt class="ligne-libelle">{p.titre}</dt><dd class="ligne-texte">{p.texte}</dd></div></Fragment>)}
     </dl>

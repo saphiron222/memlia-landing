@@ -1,0 +1,83 @@
+{
+  "contract": "Même direction et mêmes gabarits que les robots : Fraunces/Hanken, crème/vert, six sections de hub, figurines, cartes en trois colonnes maximum et démonstrations HTML.",
+  "targetViewports": [
+    "375x812",
+    "1440x1000"
+  ],
+  "accessibility": {
+    "status": "pass",
+    "evidence": "Filtres radio natifs au clavier et sans JS ; focus visible ; accordéons details natifs et ancre progressive ; tables avec caption et th ; sources FAQ inline ; boutons/recherche étiquetés. Tests navigateur 137 cas, détails et reprises dans README-finalisation.md."
+  },
+  "responsive": {
+    "status": "pass",
+    "evidence": "Inspection CUA réelle du hub, des cartes, de la fiche Finance puis Comptabilité à 1440/375, et des compatibilités/recherche. Décisions du tableau corrigées pour rester lisibles. Reprises automatisées 320/375/768/1024/1440/1920 sans débordement."
+  },
+  "contentStates": {
+    "loading": {
+      "status": "not-applicable",
+      "reason": "Catalogue rendu au build : aucun faux chargement ni collecte en direct."
+    },
+    "empty": {
+      "status": "pass",
+      "evidence": "Recherche sans résultat annonce une réponse utile et propose l’intégration sur demande ; capture visuel/compatibilites-vide.png."
+    },
+    "error": {
+      "status": "not-applicable",
+      "reason": "Aucune collecte ou requête distante dans ces démonstrations. Le contact garde ses états serveur existants et ses tests dédiés."
+    },
+    "partial": {
+      "status": "pass",
+      "evidence": "Treize cartes de compatibilité gardent leur nom explicite sans faux logo ; cas Arrêt motivés visibles dans les démonstrations."
+    },
+    "success": {
+      "status": "pass",
+      "evidence": "Recherche Pennylane et catégories filtrées, catalogue complet en repli, liens vers contact et sélection facultative consommée une fois."
+    },
+    "permission": {
+      "status": "pass",
+      "evidence": "Stockage session bloqué : le lien ouvre le contact fonctionnel sans présélection ; aucune demande de permissions dans les catalogues."
+    }
+  },
+  "renderedEvidence": [
+    {
+      "viewport": "1440x1000",
+      "artifact": "visuel/hub-bureau.png",
+      "observation": "Héros centré, trio et respiration identiques au hub robots."
+    },
+    {
+      "viewport": "1440x1000",
+      "artifact": "visuel/annuaire-bureau.png",
+      "observation": "Bande verte continue, filtres et trois colonnes de cartes."
+    },
+    {
+      "viewport": "1440x1000",
+      "artifact": "visuel/fiche-bureau.png",
+      "observation": "Figurine, promesse et CTA à gauche, quatre cas accessibles à droite."
+    },
+    {
+      "viewport": "1440x1000",
+      "artifact": "visuel/compatibilites-bureau.png",
+      "observation": "Cartes de marques locales et regroupement par domaine."
+    },
+    {
+      "viewport": "1440x1000",
+      "artifact": "visuel/compatibilites-vide.png",
+      "observation": "Formulaire et état sans résultat lisibles, sans zone vide inexpliquée."
+    },
+    {
+      "viewport": "375x812",
+      "artifact": "visuel/hub-mobile.png",
+      "observation": "Héros et trio sans débordement horizontal."
+    },
+    {
+      "viewport": "375x812",
+      "artifact": "visuel/demo-mobile.png",
+      "observation": "Les décisions du tableau restent sur une ligne et les exceptions restent visibles."
+    },
+    {
+      "viewport": "375x812",
+      "artifact": "visuel/compatibilites-mobile.png",
+      "observation": "Recherche et carte logiciel sur une colonne."
+    }
+  ]
+}

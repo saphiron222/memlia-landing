@@ -1,0 +1,215 @@
+How is Zapier Agents usage measured? – Zapier
+Skip to main content
+Refound your company for the AI era at ZapConnect 2026.
+Save your spot
+→
+My Requests
+My Requests
+Contact Support
+Contact Support
+Sign in
+Zapier
+Zapier AI
+Agents
+Manage agents
+How is Zapier Agents usage measured?
+Updated
+October 01, 2026 07:59
+Your Zapier Agents usage is measured by the number of activities your agents use and is limited by the plan you choose. This guide explains how billing and usage cycles work and what is considered an agent activity.
+Note
+Zapier is moving Agents to AI by Zapier. Learn how to
+migrate from Agents to AI by Zapier
+.
+Plan comparison
+Plan
+Activities per month
+Testing counts toward quota
+Activities per run
+Agent sharing
+Free
+400
+Yes
+10
+No
+Pro
+1,500
+No
+40
+No
+Enterprise
+Custom
+No
+40
+Yes
+The
+Activities per run
+column shows the limit for each individual agent run. This safeguard prevents a single run from consuming your entire monthly quota. If your agent reaches this limit and has more actions to complete, it will request your input before continuing.
+For full pricing details, visit the
+Zapier Agents pricing page
+.
+What is an activity?
+An activity is any billable action that your agent takes. Each time one of the following happens in Zapier Agents, it's counted as one activity:
+An agent uses a trigger.
+The agent answers a question using a knowledge source.
+The agent runs an action.
+The agent performs a web browsing or scraping request.
+The agent performs a web search.
+You send a message to an agent using the
+Chrome Extension
+.
+Note
+Paid plans:
+Testing an agent does not count as an activity.
+Free plan:
+Tests count toward your monthly activity quota.
+Using activities does not affect your
+Zapier task usage
+.
+Usage examples
+Example 1 - using the agent directly
+You have an agent that runs once a day and does the following:
+Checks your email inbox for a specific keyword.
+Summarizes each email that contains that keyword.
+Runs an action that adds each as a new task on your Trello board.
+Runs another action to send you a message on Slack about the new tasks.
+Each morning, if only one email is found, this action will count as four activities. If two emails with the specific keyword are found, this action will be counted as seven activities. The first check would bring both emails, so it would not be run twice.
+Example 2 - using the agent through the Chrome extension
+You navigate to a LinkedIn profile and send a message to your agent through
+Zapier Agents's Chrome extension
+. This triggers the following:
+The agent uses the information in the profile to determine whether a person's current company is already listed in your
+knowledge source
+.
+If it's not in the knowledge source, the agent then does a web search for more information on the company.
+Finally, the agent runs an action that adds new company information to your knowledge source.
+Result 1 - The company is already in the knowledge source
+If the company is already in the knowledge source, this process counts as three activities:
+Send a message through the Chrome extension.
+Use a trigger.
+Search for an answer within the knowledge source.
+Result 2 - The company is not in the knowledge source
+However, if the company is not there, it counts as five activities:
+Send a message through the Chrome extension.
+Use a trigger.
+Search for an answer within the knowledge source.
+Search the web for information on the company.
+Runs an action that adds new information to the knowledge source.
+Activity usage in multi-user plans
+In
+Team and Enterprise Zapier accounts
+, all the users on your account will share the total number of activities.
+Manage your billing
+Zapier Agents is billed as an add-on to your Zapier account. Learn
+how add-ons work
+, including how they appear on your invoices and how you can cancel an add-on.
+Agents billing cycles
+The activities included in your Zapier Agents plan last for a month, and the limit is reset on the same date every month (the billing date).
+Your billing date is the date when you signed up for your Zapier account or the date you last upgraded your
+Zapier plan
+. If you signed up on January 10th, for example, your usage will reset every month on the 10th. This applies to both monthly and annual plans.
+Upgrading your Agents plan
+You can
+upgrade your Zapier Agents account
+at any time. The way upgrades work depends on whether it's your billing date or not.
+Upgrading on the billing date
+Upgrading outside the billing date
+Upgrading on the billing date
+If you upgrade on your billing date, your activity limit is reset, and you will be charged the full amount at that time.
+Upgrading outside of the billing date
+If you upgrade your Agents plan on any day other than your billing date, you'll be charged a prorated amount. Zapier calculates the remaining time on a per-day basis and issues a credit that's used before charging your payment method.
+Unlike in a Zapier plan, your usage will not reset. Instead, the number of activities in your account will be increased to the new plan's limit.
+What happens if I reach the activity limit?
+If you reach your plan's activity limit:
+Your agents will no longer run.
+You will not be able to use any actions.
+The agent will not be able to browse or scrape web pages.
+The agent will not run web searches.
+Your agents will not receive trigger events from any apps.
+Your agents will not be able to find data on your knowledge sources.
+Your agent will not be available through the Chrome extension.
+You can still chat with your agent even if you reach the activity limit. Zapier will email you once you reach 80% of your activity limit and again once you reach your full limit.
+Note
+Occasionally, your agents may accrue activities beyond your plan's limit to finish a run. You will not be charged for these extra activities. However, you will not be able to run new activities until your next billing date or until you
+upgrade your plan
+.
+Manage your usage
+Zapier Agents displays your activity usage in the left sidebar. Click
+Activities
+to see how your agents are using activities.
+If you're a member of a
+Team or Enterprise account
+, the Activities counter you see is for the entire account. However, the
+Data usage
+page will only display activities related to your own agents, actions, and knowledge sources.
+Provide feedback and get help
+Submit a feature request, provide feedback on existing features, or get help
+from the Zapier Agents team
+. You can also discuss Agents with other users on
+Zapier's Early Access Program Slack
+.
+Was this article helpful?
+Yes
+No
+15 out of 17 found this helpful
+Zapier Early Access
+Get access to tomorrow’s no-code automation products and features today. By opting-in to our current and future pre-release products, you’ll work directly with the Zapier product team and join a dedicated community of automation enthusiasts.
+Learn more about Zapier Early Access
+Contact Support
+Get help from Zapier Support.
+Contact Support
+Visit Community
+Find answers and inspiration.
+Visit Community
+Hire an Expert
+Leverage professionals across the globe ready to help.
+Hire an Expert
+Zapier Learn
+Take courses designed to help you become a better Zapier user.
+Zapier Learn
+Pricing
+Help
+Developer Platform
+Press
+Jobs
+Enterprise
+Templates
+App Integrations
+Partners Program
+Follow us
+Zapier
+©
+2026
+Zapier Inc.
+Manage cookies
+Legal
+Privacy
+https://zapier.com/app/get-help
+/hc/theming_assets/01JZR2ZK3D3Y0ADNZ8F0CV4D6K
+Contact Support
+Get help from Zapier Support.
+custom
+https://community.zapier.com/
+/hc/theming_assets/01JZR2ZKSCWGDD7D04T9RZX68G
+Visit Community
+Find answers and inspiration.
+custom
+https://zapier.com/experts
+/hc/theming_assets/01JZR2ZM3MWFKK8WDP5T7GQQK2
+Hire an Expert
+Leverage professionals across the globe ready to help.
+custom
+https://learn.zapier.com/
+/hc/theming_assets/01JZR2ZK6BXT3PS08JX85FNJDN
+Zapier Learn
+Take courses designed to help you become a better Zapier user.
+custom
+https://zapier.com/blog/
+/hc/theming_assets/01JZR2ZN61HHQ1GWY0XHAF6NAE
+Zapier Blog
+Read the Zapier blog for tips on productivity, automation, and growing your business.
+custom
+https://go.zapier.com/webinars-on-demand/
+/hc/theming_assets/01JZR2ZPTH4JAK7CPCP0AD12Q7
+Zapier Webinars
+Learn about automation anytime, anywhere with our on-demand webinar library.
+quick start guide, troubleshoot zaps with AI, map fields

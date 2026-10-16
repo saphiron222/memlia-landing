@@ -1,0 +1,42 @@
+@import url('../m4-r1-functional-proofs/styles.css');
+/* Série agents-ia (hub du 15/10/2026) : le trio du héros. Le HTML est généré depuis src/data/specialistes.ts par
+   scripts/render-agents-proofs.mjs ; seules les mesures vivent ici. Casse de phrase partout, aucune capitale calculée.
+   Chaque médaillon reprend la carte de l'annuaire : un bandeau au voile du pôle, la tuile d'avatar à cheval dessus. */
+.trio { align-self: center; align-items: start; display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; padding: 0 64px; }
+.medaillon { margin: 0; display: grid; justify-items: center; align-content: start; }
+/* Médaillons décalés : celui du milieu descend. */
+.medaillon:nth-child(2) { margin-top: 104px; }
+.voile { position: relative; width: 100%; height: 196px; border-radius: 32px; background: color-mix(in srgb, var(--teinte) 14%, var(--cream)); }
+.tuile { position: absolute; left: 50%; bottom: -96px; display: grid; place-items: center; width: 232px; height: 232px; transform: translateX(-50%); border: 10px solid white; border-radius: 30px; background: color-mix(in srgb, var(--teinte) 7%, var(--cream)); box-shadow: var(--shadow); overflow: hidden; }
+.tuile img { width: 100%; height: 100%; object-fit: cover; }
+.initiale { font: 600 112px/1 Fraunces, Georgia, serif; color: color-mix(in srgb, var(--teinte) 75%, var(--ink)); }
+.medaillon figcaption { display: grid; justify-items: center; gap: 8px; margin-top: 128px; text-align: center; }
+.micro { font: 600 22px/1.3 Hanken, Arial, sans-serif; color: var(--green-dark); }
+.prenom { font: 600 54px/1.1 Fraunces, Georgia, serif; letter-spacing: -0.015em; color: var(--ink); }
+.metier { font: 400 26px/1.3 Hanken, Arial, sans-serif; color: var(--muted); }
+/* Cadres sociaux des fiches (tâche 6) : le rejeu de la démonstration, recadré en 1200 × 630 (data-og-only, aucun
+   maître publié). À gauche l'agent, l'en-tête du rejeu et le dossier fictif ; à droite les quatre cas et leur issue.
+   La ligne Arrêt barre le cas et ce qui n'a pas été proposé ; son motif reste plein, comme sur la page. */
+.fiche { grid-template-columns: 480px minmax(0, 1fr); grid-template-rows: none; gap: 56px; align-items: center; }
+.fiche-copie { display: grid; gap: 30px; align-content: center; }
+.fiche-agent { display: flex; align-items: center; gap: 20px; }
+.fiche-tuile { display: grid; place-items: center; flex: none; width: 104px; height: 104px; border: 6px solid white; border-radius: 22px; background: color-mix(in srgb, var(--teinte) 7%, var(--cream)); box-shadow: var(--shadow); overflow: hidden; }
+.fiche-tuile img { width: 100%; height: 100%; object-fit: cover; }
+.fiche-tuile .initiale { font-size: 52px; }
+.fiche-etiquette { font: 600 24px/1.3 Hanken, Arial, sans-serif; color: var(--green-dark); }
+.fiche-titre { margin: 0; font: 600 62px/1.04 Fraunces, Georgia, serif; letter-spacing: -0.02em; color: var(--ink); }
+.fiche-dossier { margin: 0; font: 400 24px/1.45 Hanken, Arial, sans-serif; color: var(--muted); }
+.fiche-cas { margin: 0; padding: 0; list-style: none; background: white; border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; }
+.fiche-cas li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; row-gap: 6px; padding: 24px 30px; border-bottom: 1px solid var(--line-soft); }
+.fiche-cas li:last-child { border-bottom: 0; }
+.fiche-cas-titre { grid-column: 1; font: 600 22px/1.35 Hanken, Arial, sans-serif; color: var(--ink); }
+.fiche-cas-sortie { grid-column: 1; font: 400 19px/1.45 Hanken, Arial, sans-serif; color: var(--muted); }
+.fiche-issue { grid-column: 2; grid-row: 1 / span 2; align-self: start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font: 600 18px/1.3 Hanken, Arial, sans-serif; white-space: nowrap; }
+.fiche-issue::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+[data-issue='Préparé'] .fiche-issue { background: #eafaef; color: #176f37; }
+[data-issue='À valider'] .fiche-issue { background: #fbf3df; color: #926500; }
+[data-issue='Arrêt'] .fiche-issue { background: #fbecea; color: #a4322a; }
+.fiche-cas .barre { color: var(--muted); font-weight: 400; text-decoration: line-through; text-decoration-thickness: 2px; }
+.fiche-cas .motif { color: var(--ink); }
+
+.compatibilites {grid-template-columns:1fr 1fr;align-items:center;gap:64px;}.compatibilites h1 {font:600 88px/1.08 Fraunces,Georgia,serif;margin:30px 0;}.compatibilites p {font:400 28px/1.5 Hanken,Arial,sans-serif;color:var(--muted);}.compatibilites-figurine {display:grid;justify-items:center;gap:32px;}.compatibilites-figurine>img {width:380px;height:380px;border-radius:50%;}.compatibilites-logos {display:flex;gap:40px;align-items:center;}.compatibilites-logos img {max-width:130px;height:50px;object-fit:contain;}

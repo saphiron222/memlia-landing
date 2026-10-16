@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import ts from 'typescript';
@@ -14,7 +14,7 @@ const compiled = ts.transpileModule(source.replace("import generatedGuides from 
 const { INTEGRATIONS, INTEGRATION_CANDIDATES: historicalCandidates } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
 const generated = JSON.parse(readFileSync(join(root, 'src/data/guides.generated.json'), 'utf8'));
 const candidates = [...historicalCandidates, ...generated.map(({ task, vendor, suggestions }) => ({ task, vendor, suggestions, status: 'forte' }))];
-const { slugs, primaryQueries, mappings } = integrationInventory(INTEGRATIONS, candidates);
+const { slugs, primaryQueries } = integrationInventory(INTEGRATIONS, candidates);
 
 function decodeEntities(value) {
   return value
@@ -49,49 +49,29 @@ test('le cadre du hub illustre les sorties attendues sans annoncer un rejeu exé
   assert.match(guide, /sorties attendues de la règle proposée, pas des résultats exécutés/);
 });
 
-test('seuls les guides historiques et scellés produisent une page', () => {
+test('les guides restent audités comme archives et aucune ancienne route HTML n’est construite', () => {
   const audit = spawnSync(process.execPath, ['scripts/service-forge.mjs', '--guide', 'audit'], { encoding: 'utf8', timeout: 30_000 });
   assert.equal(audit.status, 0, `${audit.stdout}\n${audit.stderr}`);
-  const rendered = readdirSync(join(dist, 'integrations'))
-    .filter((name) => name.endsWith('.html'))
-    .map((name) => name.replace(/\.html$/, ''))
-    .sort();
-  assertIntegrationCoverage(rendered, slugs);
+  const rendered = existsSync(join(dist, 'integrations')) ? readdirSync(join(dist, 'integrations'))
+    .filter((name) => name.endsWith('.html')).map((name) => name.replace(/\.html$/, '')).sort() : [];
+  assertIntegrationCoverage(rendered, []);
+  assert.equal(slugs.length, 12, 'le retrait du rendu ne supprime aucune archive');
 });
 
-test('chaque page porte une intention, une source, un auteur et une preuve propres', () => {
-  const mediaIds = new Set();
+test('les douze archives conservent intention, source, auteur, dates et cas illustratifs propres', () => {
   const sourceUrls = new Set();
-
-  for (const slug of slugs) {
-    const html = readFileSync(join(dist, 'integrations', `${slug}.html`), 'utf8');
-    const h1 = decodeEntities(html.match(/<h1\b[^>]*>(.*?)<\/h1>/s)?.[1] ?? '').replace(/<[^>]+>/g, '').trim();
-    const ogTitle = decodeEntities(html.match(/<meta property="og:title" content="([^"]+)"/)?.[1] ?? '');
-    const primaryQuery = primaryQueries.get(slug);
-    assert.ok(primaryQuery, slug);
-    assert.ok(h1.toLocaleLowerCase('fr').startsWith(primaryQuery), `${slug}: H1 intent-first`);
-    assert.equal(ogTitle, h1, `${slug}: H1 = og:title`);
-    assert.match(html, /"headline":"[^"]+"/, `${slug}: headline JSON-LD`);
-    assert.match(html, /Kevin Kitanga/, `${slug}: auteur`);
-    assert.match(html, /id="regle-ecrite"/, `${slug}: règle écrite`);
-    assert.match(html, /id="jeu-fictif"/, `${slug}: jeu fictif`);
-    assert.doesNotMatch(html, /Par Kevin Kitanga, mis à jour/, `${slug}: pas de signature dans le corps`);
-    assert.doesNotMatch(html, /Memlia est indépendante de|ni partenariat|compatibilité déjà acquise/, `${slug}: pas d’avertissement défensif répété`);
-    assert.doesNotMatch(html, /Source primaire|Ce qu’elle établit\.|<strong>Limite\.<\/strong>/, `${slug}: source éditoriale compacte`);
-
-    const media = html.match(/<img\b[^>]*src="(\/proofs\/integrations\/[^\"]+\.webp)"[^>]*>/)?.[1];
-    assert.equal(media, `/proofs/integrations/${slug}.webp`, `${slug}: média figé propre`);
-    assert.ok(!mediaIds.has(media), `${slug}: média unique`);
-    mediaIds.add(media);
-
-    // Décision de Kevin du 06/10/2026 : le document de l'éditeur se cite dans le paragraphe de portée, pas dans une section.
-    const sourceUrl = html.match(/aria-labelledby="repere-editeur"[\s\S]*?<a href="([^"]+)" rel="noopener noreferrer"/)?.[1];
-    assert.ok(sourceUrl?.startsWith('https://'), `${slug}: source éditeur`);
-    assert.ok(!sourceUrls.has(sourceUrl), `${slug}: source propre`);
-    sourceUrls.add(sourceUrl);
-
-    const words = textContent(html).split(/\s+/).filter(Boolean).length;
-    assert.ok(words >= 650, `${slug}: ${words} mots, contenu trop mince`);
+  for (const guide of INTEGRATIONS) {
+    assert.ok(guide.h1.toLocaleLowerCase('fr').startsWith(primaryQueries.get(guide.slug)), `${guide.slug}: H1 intent-first`);
+    assert.equal(guide.auteur, 'kevin');
+    assert.match(guide.datePublication, /^\d{4}-\d{2}-\d{2}$/);
+    assert.match(guide.dateMiseAJour, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(guide.source.url.startsWith('https://'), `${guide.slug}: source éditeur`);
+    assert.ok(!sourceUrls.has(guide.source.url), `${guide.slug}: source propre`);
+    sourceUrls.add(guide.source.url);
+    assert.ok(guide.documentScope.length > 80, `${guide.slug}: portée documentaire conservée`);
+    assert.deepEqual([...new Set(guide.replay.map(cas => cas.outcome))].sort(), ['Arrêt', 'Préparé', 'À valider'].sort());
+    assert.ok(guide.writtenRule.length > 40, `${guide.slug}: règle écrite conservée`);
+    assert.ok(Object.values(guide.boundary).every(value => value.length > 20), `${guide.slug}: frontière conservée`);
   }
 });
 
@@ -128,13 +108,19 @@ test('toutes les routes intégrations ont chacune une preuve figée manifestée'
   for (const target of targets) assert.ok(readFileSync(join(root, target)).length < 150_000, `${target}: moins de 150 Ko`);
 });
 
-test('les moyeux listent tous leurs rayons et le footer expose le hub', () => {
-  for (const [file, expected] of mappings) {
+test('le catalogue commun remplace les anciens rayons : aucun guide ni service retiré dans le maillage final', () => {
+  const migration = JSON.parse(readFileSync(join(root, 'config/migration-catalogues.json'), 'utf8'));
+  const paths = ['index.html', 'integrations.html', 'agents-ia.html', 'automatisation-cabinet-comptable.html'];
+  for (const file of paths) {
     const html = readFileSync(join(dist, file), 'utf8');
-    for (const slug of expected) assert.match(html, new RegExp(`href="/integrations/${slug}"`), `${file} → ${slug}`);
+    for (const row of migration.routes) {
+      assert.ok(!html.includes(`href="${row.from}"`) && !html.includes(`href="https://memlia.fr${row.from}"`), `${file}: lien retiré ${row.from}`);
+    }
   }
+  const hub = readFileSync(join(dist, 'integrations.html'), 'utf8');
+  assert.doesNotMatch(hub, /data-integration-cards|data-guide-product|data-guide-filters|Guides par environnement/iu);
   const home = readFileSync(join(dist, 'index.html'), 'utf8');
-  assert.match(home, /href="\/integrations"[^>]*>Guides par environnement<\/a>/);
+  assert.equal([...home.matchAll(/<a class="pied-lien" href="\/integrations"[^>]*>Intégrations<\/a>/g)].length, 1);
 });
 
 test('le footer ne rend chaque destination légale qu’une seule fois', () => {

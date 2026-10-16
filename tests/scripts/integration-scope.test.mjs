@@ -10,7 +10,7 @@ const { INTEGRATIONS } = await import(`data:text/javascript;base64,${Buffer.from
 const guide = read('src/pages/integrations/[slug].astro');
 const get = (slug) => INTEGRATIONS.find((entry) => entry.slug === slug);
 
-test('au moins neuf guides : chaque champ explique un rôle et sa condition de contrôle', () => {
+test('archives des guides : chaque champ explique un rôle et sa condition de contrôle', () => {
   assertScope(INTEGRATIONS);
   assert.doesNotMatch(guide, /Champ observé dans le jeu fictif/);
   // La date de vérification reste dans les données (ligne ci-dessus) ; la page cite la source par un lien dans le texte.

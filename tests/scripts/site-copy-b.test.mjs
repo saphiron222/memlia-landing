@@ -22,8 +22,10 @@ test('les rubriques suivent le geste déclaré, même avec des dates inversées'
 
 test('garanties : ni comparaison ni délai, politique bornée au site', () => {
   const text = source('src/pages/garanties.astro');
-  assert.ok(text.includes('Une donnée absente, une pièce illisible ou un cas hors règle arrête la préparation et présente le motif à votre équipe.'));
-  assert.ok(text.includes('Une exception visible se présente avec son contexte et son motif. Votre équipe décide de la suite.'));
+  assert.ok(text.includes('Un avis absent, une session expirée ou une pièce illisible reste visible dans le compte rendu. Le robot ou l’agent arrête le traitement concerné et en explique la raison.'));
+  assert.ok(text.includes('Votre équipe peut corriger l’entrée, rétablir l’accès ou décider de la suite.'));
+  assert.ok(text.includes('Aucun envoi externe sans validation humaine'));
+  assert.ok(text.includes('Elle ne constitue pas une attestation de conformité en paie, en droit social ou en protection des données'));
   assert.ok(text.includes('Les flux du service sont documentés par mission'));
   assert.doesNotMatch(text, /plus souvent que d’autres|quelques minutes|des mois plus tard/);
 });
@@ -32,15 +34,16 @@ test('garanties : une phrase qui renvoie à la précédente reste collée à son
   // Revue du 13/10/2026 : en lignes, « Nous pouvons ainsi » suivait la pseudonymisation et laissait
   // croire à des essais sur données réelles. Ces renvois restent dans le paragraphe de leur antécédent.
   const text = source('src/pages/garanties.astro');
-  assert.match(text, /jamais leur contenu\. Nous pouvons ainsi <a href="\/automatisation\/notes-de-frais">/);
+  assert.match(text, /jamais leur contenu\. Nous pouvons ainsi <a href="\/agents-ia\/comptabilite#taches-titre">/);
   assert.match(text, /après une saisie automatisée<\/a>\. Cette frontière vaut aussi pour le <a href="\/outils-comptables-gratuits\/verificateur-fec-local">/);
-  assert.match(text, /Chaque mission a son périmètre et ses accès\.[\s\S]{0,600}?<dd class="ligne-texte">Ce périmètre est la condition pour/);
+  assert.match(text, /Chaque mission a son périmètre et ses accès\.[\s\S]{0,700}?<dd class="ligne-texte">Ce périmètre est la condition pour/);
 });
 
 test('contact : finalités séparées, provenance facultative et base identifiée', () => {
   const text = source('src/pages/contact.astro');
   assert.ok(text.includes('comprendre la page du site à l’origine de ma demande'));
-  assert.ok(text.includes('un cas courant et une exception'));
+  assert.ok(text.includes('Votre besoin, vos outils et le résultat attendu'));
+  assert.ok(text.includes('Décrivez le geste sans donnée client ; ce formulaire ne reçoit pas de fichier'));
   assert.match(text, /id="consentement_origine" name="consentement_origine" type="checkbox" \/>/);
   assert.ok(text.includes('sur la base de son intérêt légitime'));
   assert.ok(text.includes('Je peux envoyer mon message sans cet accord'));
@@ -52,9 +55,16 @@ test('contact : finalités séparées, provenance facultative et base identifié
   assert.doesNotMatch(text, /Elles ne servent à rien d’autre|celle qui agace le plus/);
 });
 
-test('les guides sont regroupés par produit exact, sans manifeste SEO public', () => {
+test('les compatibilités forment un catalogue commun aux robots et agents, sans anciens guides ni statuts commerciaux', () => {
   const text = source('src/pages/integrations/index.astro');
-  assert.ok(text.includes('integration.product === product'));
+  assert.match(text, /DOMAINES\.map\(domaine=><ConnecteursDomaine domaine=\{domaine\}/);
+  assert.ok(text.includes('Vos outils. Nos robots et agents IA.'));
+  assert.ok(text.includes('Votre logiciel n’est pas listé ? Nous l’intégrons sur demande.'));
+  for (const href of ['/agents-ia', '/automatisation-cabinet-comptable', '/methode']) assert.ok(text.includes(`href="${href}"`));
+  assert.doesNotMatch(text, /guidesPar|integration\.product === product|integration\.vendor ===/);
+  const cartes = source('src/components/sections/ConnecteursDomaine.astro');
+  assert.match(cartes, /logo/);
+  assert.doesNotMatch(cartes, />Éprouvé<|>Par export<|>Sur demande</);
   assert.doesNotMatch(text, /contenu maigre|Demande mesurée|signal d’indexation|integration.vendor ===/);
 });
 

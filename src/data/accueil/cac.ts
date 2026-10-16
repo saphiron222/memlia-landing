@@ -5,7 +5,7 @@ export const SEO_CAC = {
   chemin: '/commissaires-aux-comptes',
   requete: 'automatisation commissaire aux comptes',
   titre: 'Automatisation pour commissaire aux comptes | Memlia',
-  description: 'Automatisation pour commissaire aux comptes : sélection des tiers, écarts de confirmation et rapprochements. Votre équipe garde ses contrôles et son jugement.',
+  description: 'Automatisation pour commissaire aux comptes : agents IA, pièces et rapprochements préparés. Déploiement adapté à vos mandats, maintenance et sur mesure.',
 } as const;
 
 /** Bandeau à rendre après Orientation, avant les exemples : règle de couverture du 06/10. */
@@ -36,8 +36,8 @@ export const MEDIAS_CAC = {
 export const CONTENU_CAC: ContenuAccueil = {
   hero: {
     etiquette: 'Automatisation IA pour cabinets de commissariat aux comptes',
-    titre: 'Automatisation pour commissaire aux comptes : confiez la mécanique, gardez le jugement.',
-    texte: 'Quels tiers retenir, quel retour rapprocher, quel fichier comparer à la balance : votre équipe connaît les gestes. Nous écrivons leur règle avec vous et automatisons la part répétitive dans vos outils. Vos auditeurs gardent leurs contrôles. Le signataire garde son opinion.',
+    titre: 'Automatisation pour commissaire aux comptes : robots et agents IA.',
+    texte: 'Nous déployons des agents IA pour préparer les pièces, sélections et rapprochements de vos mandats. Vos auditeurs vérifient les résultats ; le signataire garde ses conclusions. Nous adaptons le catalogue à vos travaux. Nous pouvons aussi relier le savoir du cabinet ou former un modèle à vos formats métier.',
     poster: '/media/cac-r4/hero-poster-1200.webp',
     video: '/media/cac-r4/explainer-hero-45s.mp4',
     sousTitres: '/media/cac-r4/explainer.vtt',
@@ -45,7 +45,7 @@ export const CONTENU_CAC: ContenuAccueil = {
     descriptionVideo: 'Démonstration sur un jeu fictif : réponses de tiers, proposition de montant, ambiguïté bloquée et validation par le cabinet. Les conclusions restent au CAC.',
   },
   orientation: {
-    titre: 'Partez de la tâche qui revient dans vos missions.',
+    titre: 'Quatre services, cadrés pour votre cabinet.',
     destinations: [
       { libelle: 'Certification des comptes', href: '#use-certification', texte: 'Sélection des tiers à circulariser, écarts de confirmation, fichiers du client à rapprocher : une mécanique cadrée autour de vos travaux.' },
       { libelle: 'Interventions légales', href: '#use-interventions', texte: 'Une opération ponctuelle : réunir les données et préparer les comparaisons prévues, dans le périmètre de cette intervention.' },
@@ -53,7 +53,7 @@ export const CONTENU_CAC: ContenuAccueil = {
       { libelle: 'Durabilité', href: '#use-durabilite', texte: 'Pour une mission entrant dans votre périmètre : préparer les rapprochements entre indicateurs et pièces. Le cadrage précède toute automatisation.' },
       { libelle: 'Administration des mandats', href: '#use-administration', texte: 'Préparer les comparaisons de budget ou l’échéancier que vos outils ne couvrent pas, avec les paramètres de votre cabinet.' },
     ],
-    invitation: 'Voir comment une tâche se prend en charge',
+    invitation: 'Préparer le déploiement dans votre cabinet',
     services: [
       { libelle: 'La règle écrite', href: '#methode' },
       { libelle: 'Vos garanties', href: '#garanties' },
@@ -61,29 +61,29 @@ export const CONTENU_CAC: ContenuAccueil = {
     ],
   },
   quotidien: {
-    titre: 'Votre règle de sélection ne devrait pas vivre dans une seule tête.',
-    texte: 'La balance arrive. Vous reprenez les plus gros soldes, les mouvements à examiner et la part aléatoire prévue. À la clôture, il faut retrouver les critères de la première passe, puis expliquer les ajouts. Nous écrivons cette règle pour qu’elle se rejoue et se relise.',
+    titre: 'Des feuilles de travail préparées pour votre revue.',
+    texte: 'La balance arrive, les réponses de tiers s’accumulent et les fichiers du client restent à rapprocher. L’agent prépare la sélection selon vos paramètres, les tableaux de comparaison et les références aux pièces. Votre équipe reprend les écarts et documente son appréciation.',
     points: [
       { titre: 'Reprendre les paramètres.', texte: 'Population, critères, couverture ou nombre de comptes : les choix du cabinet restent visibles d’une passe à l’autre.' },
       { titre: 'Retrouver l’origine.', texte: 'Chaque proposition renvoie à son tiers, à sa source et à la règle qui l’a retenue.' },
-      { titre: 'Transmettre le savoir-faire.', texte: 'Le chef de mission relit la règle écrite. L’auditeur suivant retrouve les paramètres plutôt que de reconstituer le geste.' },
+      { titre: 'Reprendre le travail.', texte: 'Le chef de mission retrouve les paramètres, les exceptions et les références dans le résultat préparé. Il garde ses commentaires et ses conclusions.' },
     ],
-    note: 'L’objectif est de décharger l’équipe des manipulations répétitives et de garder la règle au cabinet. Le choix des diligences reste au commissaire aux comptes.',
+    note: 'Nous adaptons l’agent aux formats, aux accès et aux procédures que vous avez retenus. Le choix des diligences et l’appréciation des éléments collectés restent au commissaire aux comptes.',
     image: MEDIAS_CAC.selection,
   },
   promesse: {
-    titre: 'Vous confiez une tâche. Nous la prenons entière.',
-    texte: 'Observation, règle écrite, construction, essais, validation par votre équipe et maintenance : nous prenons en charge le traitement convenu. Vos auditeurs travaillent sur les écarts qui demandent une appréciation.',
+    titre: 'Une prise en charge adaptée à vos travaux.',
+    texte: 'Nous partons des prises en charge Memlia et les adaptons à votre environnement d’audit. Vous définissez les travaux ; nous préparons le traitement, sa mise en service et la maintenance convenue.',
     points: [
-      { titre: 'Une règle qui appartient au cabinet.', texte: 'Les sources, les critères et les exceptions s’écrivent dans vos mots avant de devenir un traitement.' },
+      { titre: 'Un déploiement défini par mission.', texte: 'Nous précisons les sources, les critères, les accès et les exceptions avec votre équipe. Les fonctions de votre suite d’audit restent en place.' },
       { titre: 'Des propositions à relire.', texte: 'La sélection et les rapprochements préparés restent distincts de vos commentaires et de vos conclusions.' },
-      { titre: 'Des arrêts expliqués.', texte: 'Une période incohérente ou une référence absente bloque la proposition concernée. Le cas reste visible pour votre équipe.' },
+      { titre: 'Le sur mesure pour vos besoins propres.', texte: 'Un fichier particulier ou une comparaison absente du catalogue ? Nous construisons le traitement nécessaire, avec les limites et les essais de cette mission.' },
     ],
     image: MEDIAS_CAC.selection,
   },
   usages: {
     titre: 'Des gestes précis, dans le périmètre de chaque mission.',
-    texte: 'Commencez par la certification et une tâche que votre suite laisse à l’équipe. Pour les autres missions, nous vérifions ensemble le besoin et la frontière du traitement avant de nous engager.',
+    texte: 'Sélection de tiers, écarts de confirmation et rapprochements de fichiers sont des points de départ. Nous adaptons nos agents à vos procédures ; les besoins propres aux autres missions font l’objet d’un périmètre et d’un traitement sur mesure.',
     exemples: [
       { id: 'certification', title: 'Préparer la sélection et les rapprochements', text: 'Appliquer votre règle de soldes, mouvements et part aléatoire aux tiers à circulariser. Préparer deux passes, puis la feuille des écarts de confirmation. Rapprocher les fichiers de paie, d’immobilisations ou d’inventaire avec les comptes convenus de la balance.' },
       { id: 'interventions', title: 'Préparer les comparaisons d’une intervention légale', text: 'Pour une opération d’apport, de fusion ou de transformation, définir les sources et les comparaisons à préparer. La nature de la mission, les contrôles et les conclusions restent au professionnel.' },
@@ -93,18 +93,18 @@ export const CONTENU_CAC: ContenuAccueil = {
     ],
   },
   methode: {
-    titre: 'La règle écrite, appliquée à vos travaux d’audit.',
+    titre: 'Du besoin à la mise en service dans vos mandats.',
     libelleEtape: 'Étape',
     etapes: [
-      { numero: 1, titre: 'Observer le geste et sa frontière.', texte: 'Nous suivons la tâche avec votre équipe et repérons ce que votre suite fait déjà. Nous écrivons la frontière en trois colonnes : préparation seule, validation attendue, jugement humain.', image: MEDIAS_CAC.selection },
-      { numero: 2, titre: 'Écrire la proposition et ses arrêts.', texte: 'Votre cabinet fixe les critères. Nous écrivons la règle qui prépare une proposition et conserve vos saisies. Dans le doute, le traitement s’arrête : population incomplète, période différente ou clé ambiguë.', image: MEDIAS_CAC.rapprochements },
-      { numero: 3, titre: 'Rejouer la règle sur un dossier fictif.', texte: 'Un jeu d’essai fictif utilise des données inventées. Nous vérifions les résultats attendus et les cas qui doivent s’arrêter. Pour un tirage, la graine et les paramètres permettent de reproduire la sélection sur la même population.', image: MEDIAS_CAC.selection },
-      { numero: 4, titre: 'Faire valider, remettre la fiche outil, maintenir.', texte: 'La recette est la vérification du traitement par votre équipe dans l’environnement autorisé. Nous livrons la règle, les essais et la fiche outil pour votre appréciation au dossier. La maintenance et les évolutions sont écrites au devis.', image: MEDIAS_CAC.ecarts },
+      { numero: 1, titre: 'Retenir une première prise en charge.', texte: 'Nous retenons le service et le premier usage utiles à vos mandats, en tenant compte des fonctions de votre suite d’audit. Le résultat attendu, les accès et la frontière du traitement sont écrits.', image: MEDIAS_CAC.selection },
+      { numero: 2, titre: 'Adapter à vos procédures.', texte: 'Vous fixez les critères. Nous configurons les entrées, les propositions et les arrêts. Si le catalogue ne couvre pas votre comparaison, nous construisons le traitement sur mesure.', image: MEDIAS_CAC.rapprochements },
+      { numero: 3, titre: 'Vérifier les résultats et les limites.', texte: 'Les essais fictifs montrent les résultats attendus et les cas bloqués. Votre équipe fait la recette dans l’environnement autorisé. La fiche outil décrit le traitement pour votre appréciation au dossier.', image: MEDIAS_CAC.selection },
+      { numero: 4, titre: 'Mettre en service et maintenir.', texte: 'Nous déployons le périmètre accepté. La règle, les essais et la fiche outil accompagnent la livraison. Le devis définit la maintenance, le support et les évolutions couverts.', image: MEDIAS_CAC.ecarts },
     ],
   },
   integration: {
-    titre: 'Votre suite d’audit reste le point de départ.',
-    texte: 'Nous partons de vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.',
+    titre: 'Dans votre environnement d’audit.',
+    texte: 'Les intégrations relient les services retenus à vos exports, fichiers et circuits existants. Pour rapprocher un état d’immobilisations de la balance, nous cadrons les périodes, les comptes, les clés et les pièces à retrouver.',
     limites: 'Formats, accès et fonctions de votre version sont vérifiés avant l’engagement. Une connexion directe n’est annoncée qu’après cette vérification.',
     regles: [
       { titre: 'Conserver les fonctions utilisées.', texte: 'Les lettres et leur circuit d’envoi restent dans vos outils de circularisation.' },
@@ -139,8 +139,8 @@ export const CONTENU_CAC: ContenuAccueil = {
     ],
   },
   faq: {
-    titre: 'Les questions à régler avant de confier une tâche.',
-    texte: 'Votre suite, les données, la sélection et le dossier : des réponses pour délimiter le traitement.',
+    titre: 'Avant de choisir un service pour vos mandats.',
+    texte: 'Compatibilité, déploiement, données et responsabilité : les points à préciser avec votre cabinet.',
     questions: [
       { id: 'suite', question: 'Notre suite d’audit fait déjà ces travaux. Que prenez-vous en charge ?', reponse: 'Nous vérifions d’abord ce que votre version couvre. Nous conservons ces fonctions et ciblons le geste restant : votre règle de sélection des tiers, les écarts de confirmation ou les fichiers du client à rapprocher de la balance. Si votre outil couvre déjà la tâche, nous vous le disons.' },
       { id: 'selection', question: 'Qui choisit les tiers à circulariser ?', reponse: 'Vous fixez la population, les critères et les paramètres. Nous préparons une sélection selon cette règle, avec les raisons du choix et la graine du tirage. Vous retenez les tiers. La NEP 505 (§ 09) vous laisse la maîtrise de la sélection, de la rédaction, de l’envoi et de la réception des réponses.' },
@@ -152,16 +152,16 @@ export const CONTENU_CAC: ContenuAccueil = {
       { id: 'opinion', question: 'Qui conserve l’opinion et la responsabilité de la mission ?', reponse: 'Le commissaire aux comptes conserve la responsabilité de sa mission et de son opinion. Nous préparons les sélections, rapprochements et exceptions. Votre équipe garde les contrôles et le signataire ses conclusions et sa signature. Une sortie de traitement ne certifie pas les comptes.' },
       { id: 'arret', question: 'Que se passe-t-il si les fichiers ne concordent pas ?', reponse: 'Une période différente, une population incomplète ou une clé ambiguë bloque la proposition concernée et en affiche la raison. Vos commentaires restent conservés. L’équipe examine le cas avant de reprendre ; le traitement ne complète pas une donnée au jugé.' },
       { id: 'essais', question: 'Comment vérifier le traitement avant son utilisation ?', reponse: 'Nous construisons un jeu d’essai fictif avec des données inventées. Il contient les cas qui doivent aboutir et ceux qui doivent s’arrêter. Votre équipe vérifie ensuite le traitement dans l’environnement autorisé : c’est la recette. Cette vérification et la fiche outil accompagnent votre appréciation ; elles ne garantissent pas la conformité du dossier aux NEP.' },
-      { id: 'prix', question: 'Que comprend le devis ?', reponse: 'Une tâche prise en charge, de l’observation à la livraison et à la maintenance convenue. Le prix dépend des sources, des règles, des exceptions et des validations. Vous payez la complexité du traitement, pas des sièges. Le périmètre, les critères de recette, le support et les évolutions sont écrits avant de commencer.' },
+      { id: 'prix', question: 'Que comprend le devis ?', reponse: 'Le déploiement de la prise en charge retenue, son adaptation à votre cabinet, la recette et la maintenance convenue. Une construction sur mesure est précisée lorsqu’elle est nécessaire. Le prix dépend des sources, des règles, des exceptions et des validations. Vous payez une tâche prise en charge, pas des sièges.' },
     ],
   },
   appelFinal: {
-    titre: 'Quelle manipulation votre équipe refait-elle à chaque mandat ?',
-    texte: 'Décrivez le geste en trois phrases. Nous vous disons ce que votre suite couvre, ce qui peut se cadrer et ce que nous prendrions en charge. Rien à envoyer : la description suffit.',
+    titre: 'Préparons le premier déploiement pour vos mandats.',
+    texte: 'Décrivez la préparation, le savoir à retrouver ou les formats à apprendre, avec votre suite d’audit et le résultat attendu. Nous retenons le service utile, son périmètre par mission et les validations. Le catalogue, ses adaptations et le sur mesure répondent aux tâches à déléguer.',
     points: [
-      'Le geste restant : votre équipe, ses outils et le résultat attendu.',
-      'La règle : les sources, les exceptions et les validations.',
-      'Le devis : une tâche entière, avec sa recette et sa maintenance.',
+      'Une première tâche utile à vos mandats.',
+      'Un périmètre adapté à vos procédures.',
+      'Un devis couvrant le déploiement et la maintenance.',
     ],
   },
 };

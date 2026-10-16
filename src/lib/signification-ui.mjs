@@ -15,7 +15,7 @@ export function initializeSignification(WorkerClass){
  const values=()=>Object.fromEntries(m.INPUT_FIELDS.map(k=>[k,form.elements[k].value]));
  function markDirty(){dirty=true;clearDownloads();$('[data-sig-dirty]').hidden=false;fieldErrors(m.calculate(values()).errors);render();}
  function loadEditor(r){for(const k of m.INPUT_FIELDS)form.elements[k].value=r[k];editing=r.id||'';form.elements.id.readOnly=!!editing;dirty=false;$('[data-sig-dirty]').hidden=true;fieldErrors();render();}
- function newEditor(){loadEditor(m.emptyScenario());editing='';form.elements.id.readOnly=false;}
+ function newEditor(){const draft=m.emptyScenario();let n=session.scenarios.length+1;while(session.scenarios.some(s=>s.id===`S-${n}`))n++;draft.id=`S-${n}`;draft.name=`Scénario ${n}`;loadEditor(draft);editing='';form.elements.id.readOnly=false;}
  function isBusy(){return !!worker;}
  function render(){
   const total=session.scenarios.length;page=Math.min(page,Math.max(0,Math.ceil(total/20)-1));

@@ -4440,9 +4440,10 @@
       "owner": "/automatisation/circularisation-cac",
       "profession": "cac",
       "measure": {
-        "state": "proprietaire-existant",
-        "source": "config/page-intent-contract.json",
+        "state": "proprietaire-migre",
+        "source": "commercial/recettes/circularisation-cac/recette.json",
         "query": "automatiser circularisation",
+        "redirectTo": "/commissaires-aux-comptes#use-certification",
         "volumeMensuel": null
       },
       "terrain": [

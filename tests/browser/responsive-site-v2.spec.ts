@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { CAC_PUBLIE, DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
+import { CAC_PUBLIE, DESTINATIONS, HREFS_DIRECTS } from '../navigation-attendue.mjs';
 
 /**
  * Les six largeurs de la consigne, sur les pages du site v2.
@@ -9,7 +9,7 @@ import { CAC_PUBLIE, DESTINATIONS, HREFS } from '../navigation-attendue.mjs';
  * largeur, plutôt que l'attendre d'une suite qui n'en parle pas.
  */
 const LARGEURS: [number, number][] = [[320, 740], [375, 812], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
-const ROUTES = ['/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact'];
+const ROUTES = ['/automatisation-cabinet-comptable', '/agents-ia', '/integrations', '/agents-ia/paie-social', '/automatisation/cfe', '/methode', '/garanties', '/a-propos', '/contact'];
 
 for (const [width, height] of LARGEURS) {
   test(`pages v2 sans débordement ni titre manquant ${width}x${height}`, async ({ page }) => {
@@ -19,11 +19,14 @@ for (const [width, height] of LARGEURS) {
       await page.goto(route);
       await page.evaluate(() => document.fonts.ready);
       await expect(page.locator('h1'), route).toHaveCount(1);
-      await expect(page.locator('.ariane'), route).toBeVisible();
+      await expect(page.locator('main'), route).toBeVisible();
+      if (['/agents-ia/paie-social', '/automatisation/cfe'].includes(route)) {
+        await expect(page.getByRole('navigation', { name: 'Fil d’Ariane' }), route).toBeVisible();
+      }
       const debordement = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       expect(debordement, `${route} à ${width}px`).toBeLessThanOrEqual(0);
-      // Cabinets et hubs directs sur desktop ; destinations dans le panneau sur mobile.
-      await expect(page.locator('.nav-entree'), route).toHaveCount(CAC_PUBLIE ? 4 : 3);
+      // Boutons de groupe (Cabinets, Nos services) et liens directs sur desktop ; destinations dans le panneau sur mobile.
+      await expect(page.locator('.nav-entree'), route).toHaveCount((CAC_PUBLIE ? 2 : 1) + HREFS_DIRECTS.length);
       if (width < 1024) {
         await page.locator('[data-burger]').click();
         const liens = page.locator('#menu-mobile .nav-mobile-lien');
@@ -36,6 +39,7 @@ for (const [width, height] of LARGEURS) {
         await expect(page.locator('[data-burger]'), route).toBeVisible();
         await page.keyboard.press('Escape');
         await expect(page.locator('#menu-mobile'), route).toBeHidden();
+        await expect(page.locator('[data-burger]'), `${route} : focus rendu après fermeture`).toBeFocused();
       } else {
         await expect(page.locator('.nav-centre'), route).toBeVisible();
         await expect(page.locator('.nav-principal'), route).toBeVisible();
@@ -49,7 +53,7 @@ for (const [width, height] of LARGEURS) {
  * robots. Un script qui réécrit un titre ou une canonical après le chargement ne casse
  * rien à l'écran : seule cette comparaison le voit.
  */
-const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
+const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/agents-ia', '/integrations', '/agents-ia/paie-social', '/automatisation/cfe', '/methode', '/garanties', '/a-propos', '/contact', '/blog', '/glossaire'];
 
 /**
  * Une colonne, une couleur (Kevin, 13/10/2026) : sous un titre de section, les paragraphes d'une même
@@ -59,7 +63,7 @@ const INDEXABLES = ['/', '/automatisation-cabinet-comptable', '/methode', '/gara
 test('pages v2 : une seule couleur de paragraphe par colonne de texte', async ({ page }) => {
   for (const route of ROUTES) {
     await page.goto(route);
-    const colonnes = await page.evaluate(() => [...document.querySelectorAll('main .pv-copy, main .etape-copie')].map((colonne) => ({
+    const colonnes = await page.evaluate(() => [...document.querySelectorAll('main .pv-copy, main .etape-copie, main .hub-signature > div:has(h2), main .catalogue-section > .tete, main .routine-hero-texte, main .hub-hero, main .contact-aside')].map((colonne) => ({
       titre: (colonne.querySelector('h2, h3')?.textContent ?? '').trim().slice(0, 50),
       couleurs: [...new Set([...colonne.children]
         .filter((e) => e.tagName === 'P' && !e.matches('.surtitre, .mention'))
@@ -80,7 +84,7 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
       canonical: await page.locator('link[rel="canonical"]').getAttribute('href'),
       h1: await page.locator('h1').count(),
       robots: await page.locator('meta[name="robots"]').count(),
-      // Les trois hubs sont des liens directs ; Cabinets est un bouton de sous-menu.
+      // Outils gratuits et le blog sont des liens directs ; Cabinets et Nos services sont des boutons de sous-menu.
       nav: await page.locator('.nav-entree[href]').evaluateAll((liens) => liens.map((l) => l.getAttribute('href'))),
     };
     const servi = {
@@ -94,8 +98,8 @@ test('crawl : le DOM rendu ne contredit pas le HTML initial', async ({ page, req
     expect(rendu.canonical, `${route} canonical`).toBe(servi.canonical);
     expect(rendu.h1, `${route} h1`).toBe(servi.h1);
     expect(rendu.robots, `${route} robots`).toBe(servi.robots);
-    // Les hubs publiés sont identiques dans le HTML servi et dans le DOM rendu.
+    // Les liens directs publiés sont identiques dans le HTML servi et dans le DOM rendu.
     expect(rendu.nav, `${route} entrées de navigation`).toEqual(servi.nav);
-    expect(rendu.nav, `${route} hubs directs`).toEqual(HREFS.slice(-3));
+    expect(rendu.nav, `${route} liens directs`).toEqual(HREFS_DIRECTS);
   }
 });

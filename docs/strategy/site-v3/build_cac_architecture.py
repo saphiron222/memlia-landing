@@ -5,6 +5,7 @@ Called by build-cluster-plan.py after its calendar validation. --check also chec
 that pages-maillage.json is the exact resolved artifact, not merely plausible data.
 """
 import json
+import hashlib
 import re
 import runpy
 import sys
@@ -46,7 +47,15 @@ def resolve(source=None, backlog=None, families=None):
                                'mesureLe': row['retrievedAt'],
                                'instrument': 'autocompleterGoogle', 'source': f4_source}
     terrain = {r['id']: r for r in load(ROOT / source['terrainSource'])}
-    existing = load(ROOT / 'config/page-intent-contract.json')['pages']
+    existing = dict(load(ROOT / 'config/page-intent-contract.json')['pages'])
+    # Les propriétaires retirés restent des archives du plan, jamais de nouvelles routes.
+    migration = load(ROOT / 'config/migration-catalogues.json')
+    retired = {row['from']: row for row in migration['routes'] if row['type'] == 'service'}
+    for url, row in retired.items():
+        archive = ROOT / row['archive']['path']
+        if hashlib.sha256(archive.read_bytes()).hexdigest() != row['archive']['sha256']:
+            raise ValueError('migration archive drift: ' + url)
+        existing[url] = {'query': load(archive)['primaryQuery']}
     errors = plan['verifier_supplements_cac'](backlog)
     cac = [e for e in backlog if e.get('profession', 'ec') == 'cac']
     active = {fid for fid, f in families.items() if f['profession'] == 'cac' and f['active']}
@@ -94,6 +103,9 @@ def resolve(source=None, backlog=None, families=None):
         raise ValueError('\n'.join(errors))
 
     def evidence(query, reused=False, url=None):
+        if reused and url in retired:
+            return {'state': 'proprietaire-migre', 'source': retired[url]['archive']['path'],
+                    'query': existing[url]['query'], 'redirectTo': retired[url]['to'], 'volumeMensuel': None}
         if reused:
             return {'state': 'proprietaire-existant', 'source': 'config/page-intent-contract.json',
                     'query': existing.get(url, {}).get('query'), 'volumeMensuel': None}

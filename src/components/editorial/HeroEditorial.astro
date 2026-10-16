@@ -1,0 +1,10 @@
+---
+import Button from '@/components/Button.astro';
+import Insecable from '@/components/Insecable.astro';
+import {contenuDe,type ContenuAccueil} from '@/data/accueil/contenu';
+import {CTA} from '@/data/site.mjs';
+interface Props {contenu?:ContenuAccueil['hero'];}
+const {contenu=contenuDe('ec').hero}=Astro.props;
+---
+<section class="hero-editorial" aria-labelledby="hero-titre"><p class="surtitre">{contenu.etiquette}</p><h1 id="hero-titre"><Insecable texte={contenu.titre}/></h1><p class="hero-editorial-intro">{contenu.texte}</p><div class="hero-editorial-actions"><Button href={CTA.principal.href} variante="principal" picto="fleche">{CTA.principal.libelle}</Button><a class="catalogue-action" href="#orientation-titre">Trouver votre point de départ ↓</a></div><slot name="audience"/></section>
+<style>.hero-editorial{padding:64px var(--marge-page) 0;display:grid;gap:24px;text-align:center;justify-items:center}.hero-editorial h1{font-size:var(--titre-page);max-width:21ch}.hero-editorial-intro{max-width:65ch;color:var(--texte-2)}.hero-editorial-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px}@media(min-width:64rem){.hero-editorial{padding:96px var(--marge-page-lg) 0}}</style>

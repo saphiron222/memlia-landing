@@ -19,7 +19,9 @@ export type PoleId =
   | 'production-comptable' | 'portefeuille-echeances' | 'paie-social' | 'juridique-fiscal'
   | 'facturation-recouvrement' | 'administratif-secretariat' | 'rh-formation' | 'numerique-it-data'
   | 'excel-outils-existants' | 'methode-decision-humaine' | 'conseil-missions' | 'audit-cac'
-  | 'certification' | 'interventions-legales' | 'sacc' | 'durabilite' | 'administration';
+  | 'certification' | 'interventions-legales' | 'sacc' | 'durabilite' | 'administration'
+  /** Pôle du hub des agents IA (Commercial, Communication) : aucune famille de la carte publiée, absent de l'enum `cluster`. */
+  | 'developpement-cabinet';
 
 export interface Famille {
   id: string;
@@ -50,6 +52,7 @@ export const POLES: Record<PoleId, { libelle: string; couleur: string }> = {
   'sacc': { libelle: 'Services autres que la certification', couleur: '#0f766e' },
   'durabilite': { libelle: 'Durabilité (conditionnelle)', couleur: '#78716c' },
   'administration': { libelle: 'Administration et direction CAC', couleur: '#b5651d' },
+  'developpement-cabinet': { libelle: 'Développement du cabinet', couleur: '#c2410c' },
 };
 
 const f = (id: string, libelle: string, pole: PoleId, description: string, active = true, profession: Profession = PROFESSION_PAR_DEFAUT): Famille => ({ id, libelle, pole, description, active, profession });
@@ -67,7 +70,7 @@ export const FAMILLES: readonly Famille[] = [
   f('revision-cycles', 'Révision par cycles et justification des soldes', 'production-comptable', 'Rejouer les contrôles répétitifs de la révision, justifier chaque solde, tracer les écritures d’inventaire.'),
   f('cloture-bilan', 'Clôture, bilan et plaquette', 'production-comptable', 'Dérouler la clôture, produire les états et la plaquette, contrôler avant livraison.'),
   f('situations-reporting-client', 'Situations intermédiaires et reporting client', 'production-comptable', 'Produire des situations et tableaux de bord clients à partir de la comptabilité tenue.'),
-  f('facture-electronique', 'Facture électronique et e-reporting', 'production-comptable', 'Recevoir, transmettre et archiver les factures électroniques ; ce que la réforme change dans la collecte.'),
+  f('facture-electronique', 'Facture électronique et e-reporting', 'production-comptable', 'Rapprocher de la comptabilité les factures que la plateforme agréée du client a reçues ; ce que la réforme change dans la collecte.'),
   f('ged-dossier-permanent', 'GED, dossier permanent et nommage des pièces', 'production-comptable', 'Classer, nommer et retrouver les pièces et le dossier permanent sans reclasser à la main.'),
   // Portefeuille et échéances : piloter la production sans classer les personnes.
   f('echeances-fiscales', 'Calendrier et échéances fiscales du portefeuille', 'portefeuille-echeances', 'Tenir, par dossier, les échéances déclaratives et de paiement, avec alertes agrégées.'),
@@ -78,7 +81,7 @@ export const FAMILLES: readonly Famille[] = [
   // Paie et social : les modules livrés, et ce qui les entoure.
   f('variables-de-paie', 'Collecte des variables de paie', 'paie-social', 'Obtenir chaque mois les variables des clients, relancer, contrôler avant le bulletin.'),
   f('bulletins-controle', 'Bulletins et contrôles avant et après paie', 'paie-social', 'Contrôler la cohérence des bulletins avant le dépôt et après le calcul.'),
-  f('dsn-crm', 'DSN et comptes rendus métier', 'paie-social', 'Préparer, contrôler et déposer la DSN ; lire et traiter les retours.'),
+  f('dsn-crm', 'DSN et comptes rendus métier', 'paie-social', 'Contrôler la DSN avant que le cabinet la dépose ; trier les comptes rendus métier et présenter chaque écart à corriger.'),
   f('entrees-sorties-salaries', 'Entrées, sorties et attestations', 'paie-social', 'DPAE, contrats, soldes de tout compte, attestations : préparer sans ressaisir.'),
   f('absences-ijss', 'Absences, arrêts et IJSS', 'paie-social', 'Suivre les absences, les arrêts et les indemnités journalières, et leurs pièces.'),
   f('charges-sociales-echeances', 'Charges sociales et échéances', 'paie-social', 'Suivre les échéances Urssaf et caisses par dossier, préparer les règlements.'),
@@ -90,7 +93,7 @@ export const FAMILLES: readonly Famille[] = [
   f('secretariat-juridique', 'Approbation des comptes et secrétariat juridique', 'juridique-fiscal', 'Préparer AG, procès-verbaux et dépôt des comptes, à partir des données tenues.'),
   f('formalites-creation-modification', 'Création, modifications et formalités', 'juridique-fiscal', 'Constituer les dossiers de formalités et suivre leur avancement.'),
   f('registres-obligations', 'Registres et obligations périodiques', 'juridique-fiscal', 'Tenir registres, bénéficiaires effectifs et obligations récurrentes par dossier.'),
-  f('lettre-de-mission-lcbft', 'Lettre de mission et vigilance', 'juridique-fiscal', 'Rédiger, faire signer, renouveler la lettre de mission ; tenir la vigilance LCB-FT.'),
+  f('lettre-de-mission-lcbft', 'Lettre de mission et vigilance', 'juridique-fiscal', 'Rédiger, faire signer, renouveler la lettre de mission ; réunir les pièces de la vigilance LCB-FT, que le cabinet apprécie.'),
   // Facturation et recouvrement du cabinet.
   f('honoraires-facturation', 'Honoraires et actes hors forfait', 'facturation-recouvrement', 'Facturer les honoraires mensualisés et les actes hors forfait, une seule fois.'),
   f('prelevements-encaissements', 'Prélèvements, encaissements et rejets', 'facturation-recouvrement', 'Constituer les lots de prélèvement, détecter les rejets, proposer les échéanciers.'),
@@ -155,8 +158,55 @@ export const FAMILLES: readonly Famille[] = [
   f('cac-heures-realisees', 'Heures et budgets', 'administration', 'Comparer les temps déjà saisis ; barème distinct du réalisé, demande propre non mesurée.', false, 'cac'),
 ];
 
+/**
+ * Familles neuves du hub des agents IA (AGENTS-CONTENU.md §14, porte 2 du 15/10/2026) : tâches qu'un agent prend
+ * en charge et que la carte publiée ne compte pas encore. Toujours inactives (`fh` l'impose) : une fiche les liste
+ * « à écrire avec vous », sans lien. Hors de `FAMILLES` pour que les comptes publics (« soixante familles, douze
+ * pôles » de l'accueil, de /methode, du pilier et de l'article scellé, « huit familles » CAC) restent vrais, et hors
+ * du plan de cluster du blog, qui ne lit que les appels `f(`. Promouvoir une famille, c'est la déplacer dans
+ * `FAMILLES` : les compteurs publics et l'article « carte des tâches » bougent alors, décision à part.
+ */
+const fh = (id: string, libelle: string, pole: PoleId, description: string): Famille => ({ id, libelle, pole, description, active: false, profession: 'ec' });
+
+export const FAMILLES_HUB: readonly Famille[] = [
+  // Développement du cabinet (Victoire · Commercial, Colette · Communication).
+  fh('suivi-prospects', 'Prospects et demandes entrantes', 'developpement-cabinet', 'Qualifier les demandes, préparer rendez-vous et relances des prospects ; le choix de qui contacter et chaque envoi restent à l’associé.'),
+  fh('propositions-mission', 'Propositions de mission', 'developpement-cabinet', 'Chiffrer périmètre et honoraires depuis le barème écrit du cabinet, mettre en page la proposition, suivre sa réponse.'),
+  fh('actualite-a-diffuser', 'Veille et actualité à diffuser', 'developpement-cabinet', 'Repérer dans les sources officielles ce qui touche le portefeuille, le résumer et l’adapter à un secteur de clients.'),
+  fh('lettre-information-clients', 'Lettre d’information aux clients', 'developpement-cabinet', 'Rédiger la lettre du cabinet et les rappels collectifs, chaque règle reliée à sa source officielle, relus puis envoyés par le cabinet.'),
+  fh('publications-cabinet', 'Publications et présentation du cabinet', 'developpement-cabinet', 'Préparer publications, invitations et calendrier éditorial ; le cabinet publie, les retours se lisent en agrégats.'),
+  // Paie et social (Salomé).
+  fh('ecritures-de-paie', 'Écritures de paie en comptabilité', 'paie-social', 'Mettre le journal de paie au format d’import du dossier comptable et contrôler la concordance des charges sociales.'),
+  fh('diffusion-documents-paie', 'Diffusion des bulletins et états de paie', 'paie-social', 'Préparer bulletins, journaux et états pour les salariés et le client, que le gestionnaire diffuse après validation de la paie.'),
+  // Juridique et fiscal (Grégoire).
+  fh('liasse-fiscale', 'Liasse fiscale', 'juridique-fiscal', 'Préparer la liasse depuis la balance validée et contrôler ses tableaux ; la télétransmission reste au cabinet.'),
+  // Conseil et missions spéciales (Florent).
+  fh('remuneration-dirigeant', 'Rémunération du dirigeant', 'conseil-missions', 'Simuler salaire et dividendes sur les barèmes de l’année, chaque hypothèse affichée, pour le conseil de l’expert-comptable.'),
+  // Administration et secrétariat (Émile).
+  fh('suivi-demandes-clients', 'Suivi des demandes clients', 'administratif-secretariat', 'Suivre par dossier les demandes restées sans réponse au-delà du délai du cabinet, vue du pôle en agrégats.'),
+  fh('satisfaction-clients', 'Avis et satisfaction des clients', 'administratif-secretariat', 'Préparer le questionnaire après le bilan et rassembler les réponses en agrégats pour l’associé.'),
+  // RH et formation (Raphaël).
+  fh('indicateurs-sociaux-cabinet', 'Indicateurs sociaux du cabinet', 'rh-formation', 'Préparer la mise à jour du registre du personnel, les effectifs en agrégats et l’index de l’égalité, pour les cabinets qui y sont tenus.'),
+  // Numérique, IT et data (Octavie, puis Prudence).
+  fh('comptes-acces', 'Comptes et droits d’accès', 'numerique-it-data', 'Préparer les accès à créer ou à révoquer et revoir les droits par logiciel ; jamais l’activité de chacun.'),
+  fh('sauvegardes-mises-a-jour', 'Sauvegardes et mises à jour', 'numerique-it-data', 'Lire les rapports de sauvegarde, signaler un échec le jour même, préparer les mises à jour des logiciels métier.'),
+  fh('support-outils', 'Support des outils', 'numerique-it-data', 'Rattacher une demande de support à la procédure interne, préparer la réponse ou la demande au prestataire.'),
+  fh('inventaire-outils', 'Inventaire des outils et des usages d’IA', 'numerique-it-data', 'Préparer la mise à jour de la liste des logiciels, licences et outils d’IA que tient le cabinet, avec les données qu’ils traitent.'),
+  fh('registre-traitements', 'Registre des traitements', 'numerique-it-data', 'Préparer, tâche par tâche, la mise à jour du registre des traitements que tient le cabinet ; le référent la valide.'),
+  fh('demandes-droits', 'Demandes d’accès et autres droits', 'numerique-it-data', 'Retrouver les données d’une personne concernée et rédiger la réponse ; elle part du cabinet, après validation.'),
+  fh('durees-conservation', 'Durées de conservation', 'numerique-it-data', 'Lister les données arrivées au terme de leur durée de conservation, proposer suppression ou archivage au cabinet.'),
+  fh('incidents-donnees', 'Incidents de données', 'numerique-it-data', 'Rassembler faits, données et personnes concernées ; le responsable de traitement décide de toute notification.'),
+  // Excel et outils existants (Octavie).
+  fh('migrations-reprises', 'Migrations et reprises de données', 'excel-outils-existants', 'Préparer la reprise des plans, tiers et historiques d’un logiciel à l’autre, balances avant et après rapprochées.'),
+];
+
+/** La carte publiée, puis les familles du hub : ce que cherchent `familleParId` et `famillesDuPole`. */
+export const TOUTES_LES_FAMILLES: readonly Famille[] = [...FAMILLES, ...FAMILLES_HUB];
+
+/** Identifiants de la carte publiée seulement (enum `famille` du blog) : `FAMILLES_HUB` n'y entre pas. */
 export const IDS_FAMILLES = FAMILLES.map((famille) => famille.id) as [string, ...string[]];
 export const IDS_POLES = Object.keys(POLES) as [PoleId, ...PoleId[]];
-export const familleParId = (id: string): Famille | undefined => FAMILLES.find((famille) => famille.id === id);
-export const famillesDuPole = (pole: PoleId): Famille[] => FAMILLES.filter((famille) => famille.pole === pole);
+export const familleParId = (id: string): Famille | undefined => TOUTES_LES_FAMILLES.find((famille) => famille.id === id);
+export const famillesDuPole = (pole: PoleId): Famille[] => TOUTES_LES_FAMILLES.filter((famille) => famille.pole === pole);
+/** La carte publiée d'une profession : ses comptes sont ceux des pages (60 familles EC, 12 pôles). */
 export const famillesDeLaProfession = (profession: Profession = PROFESSION_PAR_DEFAUT): Famille[] => FAMILLES.filter((famille) => famille.profession === profession);

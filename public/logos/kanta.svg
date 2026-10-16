@@ -1,0 +1,159 @@
+<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="logo_animation" version="1.1" viewbox="0 0 1513.48 356.17" viewBox="0 -20 1513.48 400" preserveAspectRatio="xMidYMid meet" width="100%" height="auto"><style>*, *:before, *:after {
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+  --duration: 0.6s;
+  --stagger: 0.1s;
+  --start-delay: 0.1s;
+}
+.logo-animation-container {
+  width: 100%;
+  height: 100vh;
+}
+#logo_animation {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  height: 100%;
+}
+#bar_1, #bar_2, #k1 {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scale(1, 0);
+}
+#k1 {
+  --initial-x: -180px;
+  transform: scale(1, 0) translate(var(--initial-x), 0);
+  animation: slideIn1 var(--duration) var(--ease-out-quint) var(--start-delay) forwards;
+}
+#bar_2 {
+  --initial-x: -230px;
+  transform: scale(1, 0) translate(var(--initial-x), 0);
+  animation: slideIn2 calc(var(--duration) * 2.9) var(--ease-out-quint) calc(var(--start-delay) + var(--stagger)) forwards;
+}
+#bar_1 {
+  --initial-x: -300px;
+  transform: scale(1, 0) translate(var(--initial-x), 0);
+  animation: slideIn3 calc(var(--duration) * 2.65) var(--ease-out-quint) calc(var(--start-delay) + calc(var(--stagger) * 1.5)) forwards;
+}
+#k_curt {
+  --initial-y: 276.26999px;
+  transform: translate(0, var(--initial-y));
+  animation: slideUp var(--duration) var(--ease-out-quint) calc(var(--start-delay) + calc(var(--stagger) * 2.25)) forwards;
+}
+#k {
+  animation: slideKLeft calc(var(--duration) * 1.25) var(--ease-in-out-quint) calc(var(--start-delay) + calc(var(--stagger) * 11)) forwards;
+}
+#letters_g {
+  animation: slideLettersLeft calc(var(--duration) * 1.25) var(--ease-in-out-quint) calc(var(--start-delay) + calc(var(--stagger) * 11)) forwards;
+}
+
+#a1_curt_1 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 11) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.3) var(--ease-out-quint) var(--delay) forwards;
+}
+#a1_curt_2 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 11.5) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.6) var(--ease-out-quint) var(--delay) forwards;
+}
+
+#n_curt_1 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 11.75) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.35) var(--ease-out-quint) var(--delay) forwards;
+}
+#n_curt_2 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 12.25) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.5) var(--ease-out-quint) var(--delay) forwards;
+}
+
+#t_curt_1 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 12.5) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.45) var(--ease-out-quint) var(--delay) forwards;
+}
+#t_curt_2 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 13) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.3) var(--ease-out-quint) var(--delay) forwards;
+}
+
+#a2_curt_1 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 13.25) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.2) var(--ease-out-quint) var(--delay) forwards;
+}
+#a2_curt_2 {
+  --delay: calc(var(--start-delay) + calc(var(--stagger) * 13.75) + calc(var(--duration) * 0.5));
+  animation: stroke0 calc(var(--duration) * 0.25) var(--ease-out-quint) var(--delay) forwards;
+}
+
+@keyframes slideIn1 {
+  0% {
+    transform: scale(1, 0) translate(var(--initial-x, 0), 0);
+  }
+  100% {
+    transform: scale(1, 1) translate(0, 0);
+  }
+}
+@keyframes slideIn2 {
+  0% {
+    transform: scale(1, 0) translate(var(--initial-x, 0), 0);
+  }
+  25% {
+    transform: scale(1, 1) translate(0, 0);
+  }
+  55% {
+    transform: scale(1, 1) translate(0, 0);
+    animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  }
+  100% {
+    transform: scale(1, 0) translate(calc(4 * var(--initial-x, 0)), 0);
+  }
+}
+@keyframes slideIn3 {
+  0% {
+    transform: scale(1, 0) translate(var(--initial-x, 0), 0);
+  }
+  25% {
+    transform: scale(1, 1) translate(0, 0);
+  }
+  55% {
+    transform: scale(1, 1) translate(0, 0);
+    animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  }
+  100% {
+    transform: scale(1, 0) translate(calc(4 * var(--initial-x, 0)), 0);
+  }
+}
+@keyframes slideKLeft {
+  100% {
+    transform: translate(-705.306px, 0);
+  }
+}
+@keyframes slideLettersLeft {
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translate(0, var(--initial-y, 0));
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes stroke0 {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}</style><defs id="defs1"><mask id="k2_mask"><path d="M0 0 h1513.48 v356.17 H0z" fill="#000"/><path d="M104.68 72.25h221.63v275.27h-221.63z" fill="#fff" id="k_curt"/></mask><mask id="a1_mask" maskunits="objectBoundingBox"><path d="M0 0 h1513.48 v356.17 H0z" fill="#000"/><path d="m 581.82,347.51v -271.98" fill="none" id="a1_curt_1" stroke="#fff" stroke-dasharray="271.9800109863281 271.9800109863281" stroke-dashoffset="271.9800109863281" stroke-width="69"/><path d="m 579.67755,211.515c 0,-65.36595 -51.4728,-118.355509 -114.9676,-118.355492c -63.4948,0 -114.9675,52.989592 -114.9675,118.355492c 0,65.3659 51.4727,118.35545 114.9675,118.35549c 63.4948,0 114.9676,-52.98955 114.9676,-118.35549" fill="none" id="a1_curt_2" stroke="#fff" stroke-dasharray="733.1483154296875 733.1483154296875" stroke-dashoffset="733.1483154296875" stroke-width="89.28"/></mask><mask id="n_mask" maskunits="objectBoundingBox"><path d="M0 0 h1513.48 v356.17 H0z" fill="#000"/><path d="m 726.8,347.51v -271.98" fill="none" id="n_curt_1" stroke="#fff" stroke-dasharray="271.9800109863281 271.9800109863281" stroke-dashoffset="271.9800109863281" stroke-width="81.1"/><path d="m 726.8,211.52c 0,-106.50614 107.202,-142.111557 165.2789,-95.43176c 26.1152,20.99028 34.5861,47.98409 34.5861,98.85093v 132.58083" fill="none" id="n_curt_2" stroke="#fff" stroke-dasharray="480.4404602050781 480.4404602050781" stroke-dashoffset="480.4404602050781" stroke-width="87.3"/></mask><mask id="t_mask" maskunits="objectBoundingBox"><path d="M0 0 h1513.48 v356.17 H0z" fill="#000"/><path d="m 1179.39,310.905c -3.532,0 -1.6085,0 -26.9988,0c -41.7521,0 -74.6412,-27.65742 -75.0464,-76.34989c -0.06,-7.2044 0.4052,-21.28406 0.4052,-21.28406v -213.19697275" fill="none" id="t_curt_1" stroke="#fff" stroke-dasharray="381.80517578125 381.80517578125" stroke-dashoffset="381.80517578125" stroke-width="98.8"/><path d="m 985.75777,106.33001h 200.08223" fill="none" id="t_curt_2" stroke="#fff" stroke-dasharray="200.08221435546875 200.08221435546875" stroke-dashoffset="200.08221435546875" stroke-width="80"/></mask><mask id="a2_mask" maskunits="objectBoundingBox"><path d="M0 0 h1513.48 v356.17 H0z" fill="#000"/><path d="m 1479,347.51v -271.98" fill="none" id="a2_curt_1" stroke="#fff" stroke-dasharray="271.9800109863281 271.9800109863281" stroke-dashoffset="271.9800109863281" stroke-width="69"/><path d="m 1479,211.515c 0,65.36594 -51.4728,118.35551 -114.9676,118.35549c -63.4948,-4e-5 -114.9675,-52.98959 -114.9675,-118.35549c 0,-65.3659 51.4727,-118.355452 114.9675,-118.355492c 63.4948,-1.7e-5 114.9676,52.989542 114.9676,118.355492" fill="none" id="a2_curt_2" stroke="#fff" stroke-dasharray="733.1483154296875 733.1483154296875" stroke-dashoffset="733.1483154296875" stroke-width="89.28"/></mask><style id="style1">.cls-1,.cls-2{fill:#ff9000;stroke-width:0}.cls-2{fill:#00177a}</style></defs><g id="letters_g" transform="translate(705.306)"><path class="cls-1" d="M394.15 211.39c0 11.37 1.92 21.68 5.77 30.95 3.84 9.27 9.05 17.23 15.61 23.87 6.56 6.65 14.25 11.77 23.08 15.34 8.83 3.59 18.23 5.38 28.19 5.38s19.37-1.79 28.2-5.38c8.83-3.58 16.53-8.65 23.08-15.21 6.56-6.56 11.71-14.51 15.47-23.87 3.76-9.35 5.64-19.71 5.64-31.08 0-11.37-1.92-21.37-5.76-30.55-3.85-9.18-9.06-17.05-15.61-23.6-6.56-6.56-14.25-11.63-23.08-15.22-8.83-3.58-18.23-5.37-28.2-5.37-9.97 0-19.63 1.79-28.46 5.37-8.83 3.59-16.48 8.66-22.95 15.22-6.47 6.56-11.58 14.42-15.34 23.6-3.76 9.18-5.64 19.37-5.64 30.55m-81.04.26c0-19.93 3.41-38.69 10.23-56.26s16.53-32.91 29.11-46.03c12.59-13.12 27.89-23.48 45.9-31.08 18.01-7.61 38.2-11.41 60.59-11.41 18.01 0 34.18 2.93 48.52 8.79 14.34 5.87 26.49 12.81 36.46 20.85l3.41-20.98h68.98v271.98h-68.98l-3.67-20.72c-10.14 8.05-22.34 14.95-36.59 20.72-14.25 5.77-30.29 8.65-48.13 8.65-22.21 0-42.31-3.8-60.32-11.41-18.01-7.61-33.36-17.92-46.03-30.95-12.68-13.02-22.43-28.33-29.24-45.9-6.82-17.57-10.23-36.33-10.23-56.26" id="a1" mask="url(#a1_mask)"/><path class="cls-1" d="M967.42 347.52h-81.56V203.53c0-12.59-1.32-23.17-3.94-31.73-2.62-8.56-6.3-15.43-11.02-20.59-4.71-5.16-10.35-8.88-16.92-11.15-6.55-2.27-13.77-3.41-21.63-3.41-9.97 0-18.98 1.88-27.02 5.64s-14.91 8.92-20.59 15.47c-5.68 6.56-10.01 14.38-12.98 23.47-2.98 9.1-4.46 18.98-4.46 29.64v136.65h-81.05V75.53h65.31l4.99 20.72c5.59-4.02 11.8-7.82 18.62-11.41 6.83-3.58 13.99-6.69 21.51-9.31 7.51-2.62 15.25-4.72 23.21-6.29 7.95-1.58 16.04-2.36 24.26-2.36 21.67 0 40.3 3.11 55.86 9.31 15.55 6.2 28.33 15.13 38.29 26.75 9.96 11.63 17.31 25.74 22.03 42.35 4.72 16.61 7.08 35.41 7.08 56.39v145.83z" id="n" mask="url(#n_mask)"/><path class="cls-1" d="M1179.39 272.42h-22.69c-5.42 0-10.49-.61-15.22-1.84-4.72-1.22-8.79-3.45-12.19-6.69-3.41-3.23-6.13-7.61-8.14-13.11-2.01-5.51-3.01-12.46-3.01-20.85v-88.85h67.7v-69.5h-67.7V.19l-66.2-.19-16.68 63.45-41.18 15.74v61.9h43.28V241.3c0 22.91 2.93 41.4 8.78 55.47 5.86 14.08 13.86 25.01 24 32.79 10.14 7.79 21.99 13.03 35.55 15.74 13.55 2.71 27.93 4.07 43.14 4.07h30.56v-76.93z" id="t" mask="url(#t_mask)"/><path class="cls-1" d="M1291.34 211.39c0 11.37 1.92 21.68 5.77 30.95 3.85 9.27 9.05 17.23 15.61 23.87 6.55 6.65 14.24 11.77 23.08 15.34 8.83 3.59 18.24 5.38 28.2 5.38s19.37-1.79 28.19-5.38c8.82-3.58 16.53-8.65 23.09-15.21 6.55-6.56 11.71-14.51 15.47-23.87 3.76-9.35 5.64-19.71 5.64-31.08 0-11.37-1.92-21.37-5.77-30.55-3.85-9.18-9.05-17.05-15.61-23.6-6.56-6.56-14.25-11.63-23.08-15.22-8.83-3.58-18.24-5.37-28.2-5.37s-19.62 1.79-28.45 5.37c-8.83 3.59-16.48 8.66-22.95 15.22-6.48 6.56-11.59 14.42-15.34 23.6-3.76 9.18-5.64 19.37-5.64 30.55m-81.04.26c0-19.93 3.41-38.69 10.23-56.26 6.81-17.57 16.53-32.91 29.11-46.03 12.58-13.12 27.88-23.48 45.91-31.08 17.99-7.61 38.2-11.41 60.58-11.41 18.02 0 34.19 2.93 48.52 8.79 14.34 5.87 26.49 12.81 36.46 20.85l3.41-20.98h68.97v271.98h-68.97l-3.68-20.72c-10.14 8.05-22.35 14.95-36.59 20.72-14.25 5.77-30.28 8.65-48.13 8.65-22.21 0-42.32-3.8-60.32-11.41-18.02-7.61-33.35-17.92-46.04-30.95-12.67-13.02-22.42-28.33-29.24-45.9-6.82-17.57-10.23-36.33-10.23-56.26" id="a2" mask="url(#a2_mask)"/></g><g id="main_logo_g" transform="translate(705.306)"><g id="bar_1"><path class="scale" d="M-223.443 32.964h87.34V347.52h-87.34z" fill="#00177a"/></g><g id="bar_2"><path class="scale" d="M-111.721 120.683h87.34V347.52h-87.34z" fill="#00177a"/></g><g id="k"><g id="k1"><path class="cls-2 scale" d="M0 0h87.34v347.52H0z"/></g><g mask="url(#k2_mask)"><path class="cls-1" d="m147.05 292.81 34.53 54.71h103.25L203.9 227.76 326.31 72.25H223.97L104.68 227.37z" id="k2" style="fill:#ff9000;stroke-width:0"/></g></g></g></svg>

@@ -1,0 +1,7 @@
+---
+import Base from '@/layouts/Base.astro';
+import HubAgents from '@/components/catalogue/HubAgents.astro';
+import { AGENTS, HUB } from '@/data/specialistes';
+import { hubGraph } from '@/data/schema-agents.mjs';
+---
+<Base titre={HUB.titreOnglet} titreSocial={HUB.h1} description={HUB.description} chemin={HUB.chemin} schema={hubGraph(HUB,AGENTS)} socialImage={{url:'https://memlia.fr/proofs/v2/og/49-hero-agents-ia.webp',width:1200,height:630,alt:'Balthazar, Salomé et Grégoire, trois agents IA Memlia par métier.'}}><HubAgents/></Base>

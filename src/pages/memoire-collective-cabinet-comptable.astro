@@ -1,0 +1,8 @@
+---
+import Base from '@/layouts/Base.astro';
+import PageSolution from '@/components/solutions/PageSolution.astro';
+import { SOLUTIONS } from '@/data/solutions';
+import { schemaSolution } from '@/data/solutions-schema';
+const s=SOLUTIONS.os;
+---
+<Base titre={s.title} titreSocial={s.h1} description={s.description} chemin={s.chemin} schema={schemaSolution(s)} socialImage={{url:'https://memlia.fr/assets/solutions/og-os.webp',width:1200,height:630,alt:'Memlia OS, le bureau collectif : sources, mémoire, agents et validation'}}><PageSolution solution={s}/></Base>

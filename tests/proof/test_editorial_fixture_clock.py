@@ -1,6 +1,9 @@
 """Les fixtures reconstruisent leur scénario même sous un jour Python ultérieur."""
-from datetime import date
+from datetime import date, timedelta
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import patch
+import json
 import unittest
 
 import test_editorial_cadence as cadence
@@ -32,6 +35,30 @@ class EditorialFixtureClock(unittest.TestCase):
                     self.assertEqual(resultat.testsRun, attendus)
                     self.assertEqual(resultat.skipped, [])
                     self.assertEqual(resultat.errors + resultat.failures, [])
-                    # La restauration de la fixture laisse le garde réel actif.
-                    with self.assertRaisesRegex(SystemExit, 'date planifiée échue'):
-                        module.PLAN.construire()
+                    # La restauration laisse l'horloge extérieure et le garde actifs.
+                    # Injecter une réservation échue : le stock vivant peut avoir été
+                    # légitimement replanifié depuis l'écriture de ce test.
+                    self.assertEqual(module.PLAN.date.today(), jour)
+                    source = module.PLAN.BACKLOG
+                    backlog = json.loads(source.read_text(encoding='utf-8'))
+                    publies = module.PLAN.etat_publie()
+                    cible = next(e for e in backlog if not e.get('serie')
+                                 and e['slug'] not in publies
+                                 and e['slug'] not in module.PLAN.BRIEFS_IA_MANDATES)
+                    echue = jour - timedelta(days=1)
+                    dates_publiees = {p['date'] for p in publies.values()}
+                    while echue.isoformat() in dates_publiees:
+                        echue -= timedelta(days=1)
+                    # En 2030, d'autres réservations réelles ont aussi expiré :
+                    # isoler celle du scénario pour identifier le refus attendu.
+                    for entree in backlog:
+                        if entree['slug'] not in publies and not entree.get('serie'):
+                            entree.pop('datePlanifiee', None)
+                    cible['datePlanifiee'] = echue.isoformat()
+                    with TemporaryDirectory() as dossier:
+                        fixture = Path(dossier) / 'backlog.json'
+                        fixture.write_text(json.dumps(backlog), encoding='utf-8')
+                        with patch.object(module.PLAN, 'BACKLOG', fixture), \
+                                self.assertRaisesRegex(SystemExit, f"date planifiée échue : {cible['slug']}"):
+                            module.PLAN.construire()
+                    self.assertEqual(module.PLAN.BACKLOG, source)

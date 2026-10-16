@@ -3,29 +3,33 @@ import { EXCLUSIONS, GRID, UPDATED } from '@/lib/bareme-heures-cac.mjs';
 const fields = [['balance','Total bilan (€)'],['operating','Produits d’exploitation hors TVA (€)'],['financial','Produits financiers hors TVA (€)'],['period','Exercice / période'],['budget','Budget choisi (heures, facultatif)'],['programme','Heures prévues au programme (pour l’alerte)'],['missionRef','Référence de mission (facultative)'],['preparer','Préparateur (facultatif)'],['reviewer','Réviseur (facultatif)']];
 ---
 <div class="bareme" data-bareme>
- <p>Montants en euros, sans séparateur de milliers, avec virgule ou point décimal (deux décimales maximum). Les k€ ne sont pas convertis automatiquement. Session en mémoire : sauvegardez le JSON avant fermeture.</p>
+ <p>Trois montants du même exercice, en euros. Décimales avec virgule ou point, sans séparateur de milliers.</p>
  <div class="actions"><button type="button" class="btn btn-contour" data-demo>Charger l’exemple fictif</button><button type="button" class="btn btn-contour" data-reset>Effacer la session</button></div>
- <form data-bareme-form aria-describedby="bareme-error" novalidate>
+ <form method="dialog" data-bareme-form aria-describedby="bareme-error" novalidate>
   <p id="bareme-error" data-error role="alert" hidden></p>
-  <h2>1. Champ d’application</h2>
+  <h2>Votre base de calcul</h2><p>Renseignez les trois montants du même exercice, puis vérifiez le champ d’application. Une situation inconnue suspend la fourchette.</p>
+  <div class="fields">{fields.slice(0,4).map(([name,label])=><label for={`bareme-${name}`}>{label}<input id={`bareme-${name}`} name={name} aria-describedby="bareme-error" /></label>)}</div>
+  <details data-bareme-qualification><summary>Vérifier le champ d’application — requis</summary><div class="outil-options"> <p>Montants en euros, sans séparateur de milliers, avec virgule ou point décimal (deux décimales maximum). Les k€ ne sont pas convertis automatiquement. Session en mémoire : sauvegardez le JSON avant fermeture.</p>
+
   <label>Type de mission<select name="mission"><option value="unknown">À vérifier</option><option value="annual">Certification des comptes annuels</option><option value="consolidated">Comptes consolidés — non évalués</option><option value="small-audit">Audit petite entreprise — non évalué</option><option value="durability">Certification de durabilité — non évaluée</option><option value="other">Autre mission / prestation — non évaluée</option></select></label>
   <p>Répondez pour l’entité concernée à chacun des cas de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048876380">R.821-194</a>. Une réponse inconnue suspend la fourchette. Le dépassement de 122 millions d’euros est contrôlé à partir de la base saisie.</p>
   <details open><summary>Exclusions à vérifier</summary><div class="fields">{EXCLUSIONS.map(({id,label})=><label for={`bareme-${id}`}>{label}<select name={id} id={`bareme-${id}`}><option value="unknown">Inconnu</option><option value="no">Non</option><option value="yes">Oui — hors barème</option></select></label>)}</div></details>
   <label>Dérogation / accord des parties<select name="derogation"><option value="unknown">Situation inconnue</option><option value="none">Aucun cas déclaré</option><option value="requested">Demande en cours</option><option value="granted">Dérogation accordée</option><option value="agreed">Accord sur le dépassement</option></select></label><p>« Aucun cas déclaré » signifie aucune dérogation ni accord des parties. Une demande, une dérogation accordée ou un accord sur le dépassement doivent être documentés par le CAC.</p>
-  <h2>2. Base et budget distinct</h2>
-  <div class="fields">{fields.map(([name,label])=><label for={`bareme-${name}`}>{label}<input id={`bareme-${name}`} name={name} aria-describedby="bareme-error" /></label>)}</div>
+</div></details>
+  <details data-outil-options><summary>Ajouter un budget, une alerte ou des notes</summary><div class="outil-options"><div class="fields">{fields.slice(4).map(([name,label])=><label for={`bareme-${name}`}>{label}<input id={`bareme-${name}`} name={name} aria-describedby="bareme-error" /></label>)}</div>
   <label class="check"><input name="alert" type="checkbox" /> Je déclare une procédure d’alerte nécessitant des diligences particulières (<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048876364">D.821-189</a>)</label>
   <label>Augmentation choisie du programme (%)<input name="alertRate" value="0" aria-describedby="bareme-rate" /></label><p id="bareme-rate">Saisir 0 à 33,33 %, ou « 1/3 » pour le tiers exact. Rien n’est ajouté automatiquement ; le programme saisi, pas la grille, est augmenté.</p>
   <label>Hypothèses, justification du budget et commentaires<textarea name="notes" rows="4"></textarea></label>
   <p>Les noms saisis ne prouvent aucune validation. Le budget et les notes vous appartiennent : un recalcul ne les modifie pas.</p>
+  </div></details>
   <button type="submit" class="btn btn-principal">Calculer et expliquer</button>
  </form>
- <section aria-labelledby="bareme-result-title"><h2 id="bareme-result-title">3. Résultat et reprise</h2><div data-result role="status" aria-live="polite">Renseignez le champ d’application, la période et les trois montants.</div>
+ <section aria-labelledby="bareme-result-title"><h2 id="bareme-result-title">Résultat et reprise</h2><div data-result role="status" aria-live="polite">Renseignez le champ d’application, la période et les trois montants.</div>
   <div class="actions"><button class="btn btn-contour" type="button" data-export="json" disabled>Sauvegarder le JSON</button><button class="btn btn-contour" type="button" data-export="csv" disabled>Exporter le CSV</button><button class="btn btn-contour" type="button" data-export="html" disabled>Rapport et fiche outil imprimables</button></div>
   <label>Reprendre le JSON (20 Mo maximum)<input data-import type="file" accept=".json" /></label><label class="check"><input data-replace type="checkbox" /> J’autorise le remplacement de la session par le fichier ou l’exemple</label><p>La reprise vérifie le format avant remplacement. Une erreur conserve vos saisies. Les fichiers restent sur votre appareil.</p>
  </section>
 </div>
-<section class="bareme editorial">
+<details data-tool-help><summary>Comprendre le barème et ses limites</summary><section class="bareme editorial">
  <h2>Calculer le barème d’heures, pas un prix de mission</h2>
  <p>Nous additionnons le total du bilan, les produits d’exploitation et les produits financiers hors TVA pour lire le barème de <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048876362">D.821-188</a>. Le résultat est une référence d’heures, pas une estimation automatique des diligences à réaliser. Le signataire valide le champ d’application, les montants et le programme de travail. Vous pouvez essayer le jeu fictif, corriger chaque entrée, puis sauvegarder les hypothèses dans le dossier, sans compte ni courriel.</p>
  <h2>Quelle base retenir ?</h2>
@@ -43,7 +47,7 @@ const fields = [['balance','Total bilan (€)'],['operating','Produits d’explo
  <p>Un bilan de 100 000 €, des produits d’exploitation de 150 000 € et des produits financiers de 10 000 € donnent une base de 260 000 €. Avec aucune exclusion déclarée, la référence est 20 à 35 heures. Le budget fictif de 42 heures reste dans une colonne distincte ; il ne reçoit aucun verdict de conformité. Le réalisé n’est pas estimé. Le JSON conserve les saisies, y compris les notes ; le CSV sécurisé s’ouvre dans un tableur ; le rapport HTML s’imprime depuis votre navigateur.</p>
  <div class="frontier"><div><h3>Se prépare seul</h3><p>Somme exacte, comparaison à la grille, contrôles et exports.</p></div><div><h3>Attend validation</h3><p>Champ d’application, données, choix d’alerte et budget.</p></div><div><h3>Reste humain</h3><p>Plan et programme, suffisance des diligences, dérogation et décision du signataire.</p></div></div>
 
-</section>
+</section></details>
 <script>
  import { calculate, example, EXCLUSIONS, save, restore, csv, report } from '@/lib/bareme-heures-cac.mjs';
  const root=document.querySelector<HTMLElement>('[data-bareme]')!;
@@ -59,6 +63,7 @@ const fields = [['balance','Total bilan (€)'],['operating','Produits d’explo
  const showError=(e:unknown)=>{error.hidden=false;error.textContent=e instanceof Error?e.message:String(e);result.textContent='Résultat suspendu : corrigez l’erreur puis recalculez.';exports.forEach(b=>b.disabled=true);};
  const render=()=>{try {const r=calculate(read());error.hidden=true;result.replaceChildren();
   const lines=[`Base : ${r.base} € = ${field('balance').value} + ${field('operating').value} + ${field('financial').value}.`,r.range?`Référence : ${r.range[0]} à ${r.range[1]} heures. Tranche ${r.index!+1} ; ${r.lower} ${r.index===0?'≤':'<'} ${r.base} ≤ ${r.upper} €.`:`Barème non évalué dans ce cas. ${r.reason}`,`Budget saisi distinct : ${r.budget||'non renseigné'}${r.budget?' heures':''}. Aucun verdict de conformité.`,r.alertHours?`Programme après augmentation choisie : ${r.alertHours} heures (fraction exacte si nécessaire).`:'Aucune augmentation restituée.',...r.candidates.map(row=>`Ligne adjacente jusqu’à ${row[0]} € : ${row[1]} à ${row[2]} heures.`)];
+  if(!r.range)root.querySelector<HTMLDetailsElement>('[data-bareme-qualification]')!.open=true;
   for(const line of lines){const p=document.createElement('p');p.textContent=line;result.append(p);}exports.forEach(b=>b.disabled=false);
  }catch(e){showError(e);}};
  const load=(input:ReturnType<typeof example>)=>{for(const [k,v] of Object.entries(input)){if(k==='exclusions'){for(const {id} of EXCLUSIONS)field(id).value=input.exclusions[id];}else if(k==='alert')(field(k) as HTMLInputElement).checked=Boolean(v);else if(k!=='unit')field(k).value=String(v);}dirty=true;render();};

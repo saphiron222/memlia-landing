@@ -79,7 +79,9 @@ test('toutes les pages rendues, sans liste figée de routes, sont exemptes de li
   assert.ok(pages.some((page) => page.route === '/glossaire'));
   assert.ok(pages.some((page) => page.route.startsWith('/blog/')));
   assert.ok(pages.some((page) => page.route.startsWith('/outils-comptables-gratuits/')));
-  assert.ok(pages.some((page) => page.route.startsWith('/integrations/')));
+  assert.ok(pages.some((page) => page.route === '/integrations'), 'le catalogue commun remplace les guides par environnement');
+  assert.ok(pages.some((page) => page.route.startsWith('/agents-ia/')));
+  assert.ok(pages.some((page) => page.route.startsWith('/automatisation/')));
   const violations = pages.flatMap(({ route, file }) => auditHtml(readFileSync(file, 'utf8')).map((match) => `${route}: ${match.context}`));
   assert.deepEqual(violations, []);
 });

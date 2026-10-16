@@ -1,0 +1,114 @@
+---
+import Insecable from '@/components/Insecable.astro';
+import { TOUTES_LES_FAMILLES } from '@/data/familles';
+import { ficheDe, type Specialiste } from '@/data/specialistes';
+import { gabaritDe } from '@/data/specialistes/gabarit';
+
+/**
+ * « Les tâches que <prénom> prend en charge » (spec §2, section 6) : une ligne par geste (système de page § 4,
+ * lignes), puis les familles titulaires sans ligne propre (« Aussi dans son périmètre »). Le geste mène à la page qui
+ * détaille sa tâche quand elle existe (page service publiée, sinon article publié de sa famille : `liens`, calculé
+ * par la page depuis les collections) ; l'ancre est le geste (spec §6, maillage). Une famille `active: false` se dit
+ * « à écrire avec vous », sans lien. « Dans vos outils » se pose dans la même section (`slot`).
+ */
+interface LienDeFamille {
+  href: string;
+}
+interface Props {
+  agent: Specialiste;
+  /** Par identifiant de famille : la page qui détaille la tâche ; absente, le geste reste du texte. */
+  liens: Readonly<Record<string, LienDeFamille>>;
+}
+const { agent, liens } = Astro.props;
+const fiche = ficheDe(agent);
+const { taches } = gabaritDe(agent);
+function famille(id: string) {
+  const trouvee = TOUTES_LES_FAMILLES.find((candidate) => candidate.id === id);
+  if (!trouvee) throw new Error(`AgentFamilles : famille inconnue « ${id} » (${agent.slug})`);
+  return trouvee;
+}
+const lignes = fiche.taches.map((tache) => ({ ...tache, lien: liens[tache.famille], active: famille(tache.famille).active }));
+const aussi = fiche.aussi.map((entree) => ({ ...entree, libelle: famille(entree.famille).libelle, lien: liens[entree.famille], active: famille(entree.famille).active }));
+---
+
+<section class="pv" aria-labelledby="taches-titre" data-agent-taches>
+  <div class="tete">
+    <h2 id="taches-titre"><Insecable texte={taches.titre} /></h2>
+    <p><Insecable texte={taches.texte} /></p>
+  </div>
+  <dl class="lignes">
+    {lignes.map((ligne) => (
+      <div class="ligne">
+        <dt class="ligne-libelle">{ligne.lien ? <a class="agent-tache-lien" href={ligne.lien.href}>{ligne.geste}</a> : ligne.geste}</dt>
+        <dd class="ligne-texte">
+          <Insecable texte={ligne.prepare} />
+          {!ligne.active && <span class="agent-a-ecrire">{taches.aEcrire}</span>}
+        </dd>
+      </div>
+    ))}
+  </dl>
+  {aussi.length > 0 && (
+    <div class="agent-aussi">
+      <h3>{taches.aussi}</h3>
+      <ul>
+        {aussi.map((entree) => (
+          <li>
+            <strong>{entree.lien ? <a class="agent-tache-lien" href={entree.lien.href}>{entree.libelle}</a> : entree.libelle}</strong>
+            <span> : <Insecable texte={entree.texte} /></span>
+            {!entree.active && <span class="agent-a-ecrire">{taches.aEcrire}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+  <slot />
+</section>
+
+<style>
+  /* Un geste qui a sa page se lit comme un lien du texte (Kevin, 06/10/2026) : vert, souligné. */
+  .agent-tache-lien {
+    color: var(--accent-texte);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  @media (hover: hover) {
+    .agent-tache-lien:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+  .agent-a-ecrire {
+    display: inline-block;
+    margin-left: var(--espace-2);
+    padding: 2px 8px;
+    border: 1px dashed var(--ligne-forte);
+    border-radius: 999px;
+    font-size: var(--t-sm);
+    color: var(--texte-2);
+    white-space: nowrap;
+  }
+  .agent-aussi {
+    display: grid;
+    gap: var(--espace-3);
+    padding-top: var(--espace-6);
+    border-top: 1px solid var(--ligne);
+  }
+  .agent-aussi h3 {
+    font-size: var(--titre-ligne);
+  }
+  .agent-aussi ul {
+    display: grid;
+    gap: var(--espace-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .agent-aussi li {
+    max-width: 72ch;
+    color: var(--texte-2);
+  }
+  .agent-aussi strong {
+    font-weight: 600;
+    color: var(--texte-fort);
+  }
+</style>

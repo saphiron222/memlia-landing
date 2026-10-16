@@ -35,16 +35,16 @@ export function renderLlmsInventory(template, pages) {
   const terms = glossary?.nodes.find(node => node['@type'] === 'DefinedTermSet')?.hasDefinedTerm;
   if (!Array.isArray(terms) || !terms.length) throw new Error('DefinedTermSet publié absent ou vide.');
   source = source.replace(/(\[Glossaire\]\(https:\/\/memlia\.fr\/glossaire\) : )(?:\d+ )?définitions/, `$1${terms.length} définitions`);
-  const guides = records.filter(page => page.path.startsWith('/integrations/'));
   const articles = records.filter(page => page.nodes.some(node => node['@type'] === 'BlogPosting'));
   const tools = records.filter(page => page.path.startsWith('/outils-comptables-gratuits/'));
-  const services = records.filter(page => page.path.startsWith('/automatisation/'));
-  const hubs = ['/integrations', '/outils-comptables-gratuits', '/blog'];
+  const robots = records.filter(page => page.path.startsWith('/automatisation/'));
+  const agents = records.filter(page => page.path.startsWith('/agents-ia/'));
+  const hubs = ['/automatisation-cabinet-comptable', '/agents-ia', '/integrations', '/outils-comptables-gratuits', '/blog'];
   const listed = [...hubs.map(path => {
     const page = records.find(page => page.path === path);
     if (!page) throw new Error(`Hub publié absent : ${path}`);
     return page;
-  }), ...services];
+  }), ...records.filter(page => !hubs.includes(page.path))];
   for (const page of listed) if (!page.title || !page.description) throw new Error(`Métadonnées publiées absentes : ${page.url}`);
-  return `${source}${MARKER}\n${guides.length} guides, ${articles.length} articles, ${tools.length} outils et ${services.length} services publiés.\n\n${listed.map(page => `- [${label(page.title)}](${page.url}) : ${label(page.description)}`).join('\n')}\n`;
+  return `${source}${MARKER}\n${robots.length} robots, ${agents.length} fiches agents IA, ${articles.length} articles et ${tools.length} outils publiés.\n\n${listed.map(page => `- [${label(page.title)}](${page.url}) : ${label(page.description)}`).join('\n')}\n`;
 }

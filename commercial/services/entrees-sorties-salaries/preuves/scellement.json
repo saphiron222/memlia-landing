@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "kind": "service-publication-scellee",
+  "kind": "service-depublication-scellee",
   "slug": "entrees-sorties-salaries",
-  "sealedAt": "2026-10-07T14:53:35.173Z",
+  "sealedAt": "2026-10-15T14:28:20.677Z",
   "files": {
     "page": {
       "path": "src/content/services/entrees-sorties-salaries.md",
-      "bytes": 11133,
-      "sha256": "0ae3331f572c607fb19399f9df0188d81937ef681ddef64883a8849679fbaeab"
+      "bytes": 11136,
+      "sha256": "4ebfc3b2ddef372bf4e16786f5c96e97201db0b5c8ccac2741bb73236cc7876c"
     },
     "manifest": {
       "path": "commercial/services/entrees-sorties-salaries/manifest.json",
-      "bytes": 2771,
-      "sha256": "909ce1cc9eb222af698137f46d39808cf52ef13fac50f6dee0f5246c81eb9c0d"
+      "bytes": 2774,
+      "sha256": "3f648464d6bf9c7a53e9bedcb42ecb59d28aeece7b4af3ea3f2d3e93a0604961"
     },
     "recipe": {
       "path": "commercial/recettes/entrees-sorties-salaries/recette.json",
@@ -29,10 +29,10 @@
       "bytes": 4628,
       "sha256": "9d8b22dd230ae78b3254e5b581223288e0759d404083fa90a6c3c329aed56793"
     },
-    "publication": {
-      "path": "commercial/services/entrees-sorties-salaries/preuves/publication.json",
-      "bytes": 1438,
-      "sha256": "5b858b50cfa4afaba20bb6c6e13d08e02b855755e856a6bad8872817ad8a4e84"
+    "depublication": {
+      "path": "commercial/services/entrees-sorties-salaries/preuves/depublication.json",
+      "bytes": 576,
+      "sha256": "e553e2530459dd764d7c0f1d38da4137044684135d96193a6cfeea3b3db065eb"
     }
   }
 }

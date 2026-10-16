@@ -1,12 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { creerNavigation, LIEN_CAC } from '../../src/data/navigation.mjs';
+import { SERVICES } from '../navigation-attendue.mjs';
 
 const aplatir = (navigation) => navigation.flatMap((e) => e.sousEntrees ?? [e]);
+const groupe = (navigation, id) => navigation.find((e) => e.id === id);
 
 test('les hubs restent accessibles sans route CAC ni menu de lecture locale', () => {
   const links = aplatir(creerNavigation({ chemin: '/', cacDisponible: false, blogActif: true }));
-  assert.deepEqual(links.map((e) => e.href), ['/automatisation-cabinet-comptable', '/outils-comptables-gratuits', '/blog']);
+  assert.deepEqual(links.map((e) => e.href), [
+    '/automatisation-cabinet-comptable',
+    '/agents-ia',
+    '/memoire-collective-cabinet-comptable',
+    '/modele-ia-prive-entreprise',
+    '/integrations',
+    '/outils-comptables-gratuits',
+    '/blog',
+  ]);
   assert.ok(!links.some((e) => e.href === LIEN_CAC.href));
 });
 
@@ -23,4 +33,42 @@ test('une page interne conserve les hubs et le blog suit sa disponibilité', () 
   assert.ok(!aplatir(navigation).some((e) => e.href === '/blog'));
   const ids = navigation.filter((e) => e.sousEntrees).map((e) => e.id);
   assert.equal(new Set(ids).size, ids.length);
+});
+
+test('« Nos services » expose les quatre services, sans les intégrations', () => {
+  for (const cacDisponible of [true, false]) {
+    const entree = groupe(creerNavigation({ chemin: '/', cacDisponible, blogActif: true }), 'services');
+    assert.ok(entree, `groupe services présent (cacDisponible ${cacDisponible})`);
+    assert.equal(entree.libelle, 'Nos services');
+    assert.equal(entree.href, undefined, 'un groupe est un bouton : il ne mène nulle part lui-même');
+    assert.deepEqual(entree.sousEntrees, SERVICES);
+  }
+});
+
+test('l’ordre de la barre : Cabinets, Nos services, Intégrations, Outils gratuits, Blog', () => {
+  const navigation = creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true });
+  assert.deepEqual(
+    navigation.map((e) => e.id ?? e.href),
+    ['cabinets', 'services', '/integrations', '/outils-comptables-gratuits', '/blog'],
+  );
+  const sansCac = creerNavigation({ chemin: '/', cacDisponible: false, blogActif: true });
+  assert.deepEqual(
+    sansCac.map((e) => e.id ?? e.href),
+    ['services', '/integrations', '/outils-comptables-gratuits', '/blog'],
+  );
+});
+
+test('aucun lien direct ne dépasse son groupe : chaque destination n’apparaît qu’une fois', () => {
+  const hrefs = aplatir(creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true })).map((e) => e.href);
+  assert.equal(new Set(hrefs).size, hrefs.length, hrefs.join(' '));
+});
+
+test('les intitulés suivent la charte : casse de phrase, sigle IA et aucun ancien intitulé', () => {
+  const navigation = creerNavigation({ chemin: '/', cacDisponible: true, blogActif: true });
+  const intitules = [...navigation.map((e) => e.libelle), ...aplatir(navigation).map((e) => e.libelle)];
+  for (const intitule of intitules) {
+    assert.match(intitule.replace(/\b(IA|OS)\b/gu, m=>m.toLowerCase()), /^\p{Lu}[^\p{Lu}]*$/u, `${intitule} : casse de phrase, sigle IA admis`);
+    assert.doesNotMatch(intitule, /module|compl[ée]ment excel/i, intitule);
+    assert.doesNotMatch(intitule, /Par tâche|Par métier|Dans vos outils|Guides par environnement|Automatisation par pôle/iu);
+  }
 });

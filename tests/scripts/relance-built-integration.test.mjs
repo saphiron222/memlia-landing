@@ -10,13 +10,21 @@ test('HTML construit : intention, canonical, schémas, CTA et confidentialité',
  assert.match(html,new RegExp(`rel="canonical" href="https://memlia.fr${route}"`));
  assert.match(html,new RegExp(`property="og:title" content="${h1}"`));
  for(const type of ['WebPage','WebApplication','BreadcrumbList']) assert.ok(html.includes(`"@type":"${type}"`),type);
- assert.ok(html.includes('/proofs/v2/og/44-outil-relance-facture.webp'));
+ assert.ok(html.includes(`property="og:image" content="https://memlia.fr/social/outils/social/${slug}.webp.jpg"`));
+ assert.ok(html.includes(`data-outil="${slug}"`));
+ assert.match(html, /<input\b/);
+ assert.match(html, /<button\b[^>]*type="submit"[^>]*>Préparer les relances<\/button>/);
+ assert.doesNotMatch(html, /<img\b[^>]*44-outil-relance-facture\.webp/);
+ assert.ok((html.match(/<form\b/g)||[]).length > 0);
+ for (const form of html.match(/<form\b[^>]*>/g)||[]) assert.match(form, /method="dialog"/);
+ assert.doesNotMatch(html, /<dialog\b/);
+ assert.ok(html.includes("form-action &#39;none&#39;")||html.includes("form-action 'none'"));
  assert.ok(html.includes('Confier une première tâche'));
  assert.ok(html.includes("connect-src &#39;none&#39;")||html.includes("connect-src 'none'"));
  assert.doesNotMatch(html,/static\.cloudflareinsights\.com|noindex/);
 });
 test('HTML construit : trois entrants, footer et sitemap',()=>{
- for(const p of ['/methode','/automatisation-cabinet-comptable','/outils-comptables-gratuits']) assert.ok(read(p).includes(`href="${route}"`),p);
+ for(const p of ['/methode','/outils-comptables-gratuits','/outils-comptables-gratuits/calculateur-date-echeance-facture']) assert.ok(read(p).includes(`href="${route}"`),p);
  assert.match(readFileSync('dist/index.html','utf8'), /<footer\b[\s\S]*href="\/outils-comptables-gratuits"/,'footer vers le catalogue');
  assert.ok(readFileSync('dist/sitemap-outils.xml','utf8').includes(`https://memlia.fr${route}`));
 });

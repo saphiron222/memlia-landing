@@ -1,3 +1,4 @@
+import {rendreLienOutilVisible} from './helpers/liens-outils';
 import { test, expect } from '@playwright/test';
 import { chargerImagesDifferees } from './helpers/images-chargees';
 import { readFile } from 'node:fs/promises';
@@ -20,7 +21,7 @@ test('amorces, édition contrôlée, export exact et copie ; aucune donnée dans
   });
   const requests: string[] = []; let armed = false;
   page.on('request', (request) => { if (armed) requests.push(request.url()); });
-  await page.goto(ROUTE); await chargerImagesDifferees(page); armed = true;
+  await page.goto(ROUTE); await ouvrirReglages(page); await chargerImagesDifferees(page); armed = true;
   await generate(page);
   const editor = page.getByLabel('Prompt éditable');
   const initial = await editor.inputValue();
@@ -54,7 +55,7 @@ test('refus accessibles et aucune édition écrasée sans confirmation', async (
     (window as any).events = [];
     window.addEventListener('memlia:outil', (event) => (window as any).events.push((event as CustomEvent).detail));
   });
-  await page.goto(ROUTE);
+  await page.goto(ROUTE); await ouvrirReglages(page);
   await page.getByRole('button', { name: 'Assembler le prompt' }).click();
   await expect(page.getByLabel(/Je confirme que cette description/)).toBeFocused();
   await generate(page);
@@ -89,7 +90,7 @@ test('refus accessibles et aucune édition écrasée sans confirmation', async (
 });
 test('toutes les amorces, choix configurables et effacement explicite', async ({ page }) => {
   for (const seed of ['Demande de pièces', 'Synthèse de notes', 'Checklist de contrôle', 'Tri d’écarts']) {
-    await page.goto(ROUTE);
+    await page.goto(ROUTE); await ouvrirReglages(page);
     await page.getByRole('button', { name: seed, exact: true }).click();
     await page.getByLabel('Format attendu').selectOption('tableau');
     await page.getByLabel('Qui valide le résultat ?').selectOption('expert');
@@ -108,22 +109,22 @@ test('toutes les amorces, choix configurables et effacement explicite', async ({
   await expect(page.getByLabel('Description abstraite de la tâche')).toHaveValue('');
 });
 test('maillage, médias propres, canonical et sitemap', async ({ page }) => {
-  for (const route of ['/outils-comptables-gratuits', '/methode', '/automatisation-cabinet-comptable']) {
-    await page.goto(route); await expect(page.locator(`main a[href="${ROUTE}"]`)).toBeVisible();
+  for (const route of ['/outils-comptables-gratuits', '/methode', '/outils-comptables-gratuits/bibliotheque-prompts-comptables']) {
+    await page.goto(route); await ouvrirReglages(page); await rendreLienOutilVisible(page,ROUTE); await expect(page.locator(`main a[href="${ROUTE}"]`).filter({visible:true}).first()).toBeVisible();
   }
-  const response = await page.goto(ROUTE); expect(response?.status()).toBe(200);
+  const response = await page.goto(ROUTE); await ouvrirReglages(page); expect(response?.status()).toBe(200);
   await expect(page.locator('footer a[href="/outils-comptables-gratuits"]')).toHaveCount(1);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://memlia.fr${ROUTE}`);
-  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/29-outil-prompt.webp.jpg');
-  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/proofs/v2/og/29-outil-prompt.webp.jpg');
-  await expect(page.locator('[data-proof="v2/29-outil-prompt"] img')).toBeVisible();
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/outils/social/generateur-prompt-expert-comptable.webp.jpg');
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', 'https://memlia.fr/social/outils/social/generateur-prompt-expert-comptable.webp.jpg');
+  await expect(page.locator('[data-tool-section="source"] img')).toHaveCount(0);
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveAttribute('content', /connect-src 'none'/);
   const sitemap = await page.request.get('/sitemap-outils.xml'); expect(await sitemap.text()).toContain(`https://memlia.fr${ROUTE}`);
 });
 for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier et aucun débordement à ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto(ROUTE); await generate(page);
+  await page.goto(ROUTE); await ouvrirReglages(page); await generate(page);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
   await page.getByLabel('Prompt éditable').focus();
   await page.keyboard.press('Tab');
@@ -136,3 +137,5 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) test(`clavier et aucun d�
     await page.screenshot({ path: `.qa/prompt-${width}.png`, fullPage: true });
   }
 });
+
+async function ouvrirReglages(page: any){ for (const summary of await page.locator('[data-outil-options], .library, [data-prompt-generic] > details:first-of-type').locator(':scope > summary').all()) { if(await summary.isVisible() && await summary.locator('..').getAttribute('open') === null) await summary.click(); } }

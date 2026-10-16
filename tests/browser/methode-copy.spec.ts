@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { rendreLienOutilVisible } from './helpers/liens-outils';
 
 const tool = '/outils-comptables-gratuits/modele-rapprochement-bancaire-excel-gratuit';
 
@@ -8,11 +9,15 @@ test('méthode : règle écrite, livraison et maintenance sans déplacer la déc
   await expect(page.locator('h1')).toHaveText('Observer. Écrire. Éprouver. Livrer.');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://memlia.fr/methode');
   const cadrage = page.locator('#cadrer');
-  await expect(cadrage).toContainText('la frontière entre préparation, validation et jugement ; la proposition distincte de vos saisies ; l’arrêt dans le doute ; le jeu d’essai fictif');
-  await expect(cadrage).toContainText('vos saisies restent intactes');
-  await expect(page.getByRole('table', { name: 'La frontière de la règle écrite' }).getByRole('cell')).toHaveCount(3);
-  await expect(page.locator('#valider')).toContainText('maintenance, le support et les évolutions');
-  await expect(page.locator('#valider')).toContainText('soumise à votre recette avant sa mise en service');
+  await expect(cadrage).toContainText('les accès, les cas couverts et les conditions d’arrêt');
+  await expect(cadrage).toContainText('ce qui se prépare seul et ce qui attend votre validation');
+  const frontiere = page.locator('.editorial-regle');
+  await expect(frontiere.locator('.editorial-frontiere h3')).toHaveText(['Se prépare seul', 'Attend votre validation', 'Reste humain']);
+  await expect(frontiere).toContainText('Le cabinet garde ses corrections, son appréciation du dossier et la décision de poursuivre.');
+  await expect(frontiere).toContainText('Une donnée absente, un format inattendu ou une règle ambiguë produit un arrêt expliqué.');
+  await expect(page.locator('#valider')).toContainText('Elle accepte ou refuse la mise en service.');
+  await expect(page.locator('#maintenir')).toContainText('rejouons les essais concernés');
+  await expect(page.locator('#maintenir')).toContainText('Le devis précise la maintenance et les évolutions couvertes.');
   const ctas = page.getByRole('link', { name: 'Confier une première tâche', exact: true });
   expect(await ctas.count()).toBeGreaterThan(0);
   for (const cta of await ctas.all()) await expect(cta).toHaveAttribute('href', '/contact');
@@ -29,6 +34,7 @@ test('méthode : règle écrite, livraison et maintenance sans déplacer la déc
 
 test('renvoi méthode : classeur immédiat, écart exporté NON VALIDÉ et concordance à valider', async ({ page }) => {
   await page.goto('/methode');
+  await rendreLienOutilVisible(page, tool);
   await page.getByRole('link', { name: 'modèle de rapprochement bancaire ouvrable dans Excel' }).click();
   await expect(page).toHaveURL(new RegExp(tool));
   const workbookPending = page.waitForEvent('download');
@@ -58,7 +64,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     await page.goto('/methode');
     await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
-    await expect(page.locator('.etape')).toHaveCount(4);
+    await expect(page.locator('#etapes > li')).toHaveCount(5);
     for (const image of await page.locator('main img').all()) {
       await image.scrollIntoViewIfNeeded();
       await expect(image).toHaveJSProperty('complete', true);
@@ -66,7 +72,7 @@ for (const width of [320, 375, 768, 1024, 1440, 1920]) {
     }
     if (width === 375 || width === 1440) {
       await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-      await page.screenshot({ path: `.qa/methode-${width}.png`, fullPage: true });
+      await page.screenshot({ path: `.qa/copy-browser-final/screens/methode-${width}.png`, fullPage: true });
     }
   });
 }

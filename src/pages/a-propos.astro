@@ -1,7 +1,9 @@
 ---
-import PageCommerciale from '@/layouts/PageCommerciale.astro';
+import GrilleEditoriale from '@/components/editorial/GrilleEditoriale.astro';
+import ListeEditoriale from '@/components/editorial/ListeEditoriale.astro';
+import PageEditoriale from '@/layouts/PageEditoriale.astro';
 import Renvois from '@/components/Renvois.astro';
-import ProofRow from '@/components/ProofRow.astro';
+import BlocEditorial from '@/components/editorial/BlocEditorial.astro';
 import { PAGES_V2 } from '@/data/pages-v2.mjs';
 import { SITE } from '@/data/site.mjs';
 import { auteurPar, identiteAuteur } from '@/data/auteurs';
@@ -23,63 +25,45 @@ const renvois = [
   { texte: 'Le vocabulaire du cabinet, terme par terme, sourcé et daté, avec la frontière d’automatisation de chacun.', libelle: 'Consulter le glossaire', href: '/glossaire' },
 ];
 const appel = {
-  titre: 'Confiez-nous le geste qui revient.',
-  texte: 'Nous écrivons la règle avec vos équipes, puis nous prenons la tâche en charge dans leurs outils. Le périmètre, les validations et le prix sont fixés au devis. Une description suffit pour commencer.',
-  points: ['La même personne écoute, écrit et code la règle.', 'Le devis dépend de la complexité, jamais du nombre de postes.', 'La décision reste à vos équipes.'],
+  titre: 'Trouvons la prise en charge utile à votre cabinet.',
+  texte: 'Partez d’une routine, d’un métier, d’un savoir à partager ou d’un modèle à former. Nous préparons son adaptation, son déploiement et la maintenance, avec un périmètre et un devis.',
+  points: ['Le catalogue pour les tâches à déléguer.', 'Une adaptation à vos outils et à vos règles.', 'Une construction sur mesure quand elle est nécessaire.'],
 };
 ---
 
-<PageCommerciale page={page} noeuds={noeuds} eyebrow="Qui nous sommes" hero="v2/17-hero-apropos" appel={appel}>
+<PageEditoriale page={page} noeuds={noeuds} eyebrow="Qui nous sommes" scene="apropos" appel={appel}>
   <section class="pv" aria-labelledby="pourquoi">
-    <ProofRow id="v2/11-regle-mots">
+    <BlocEditorial scene="apropos">
       <div class="pv-copy rv">
-        <h2 id="pourquoi">Pourquoi Memlia existe</h2>
-        <p>Un cabinet tourne sur des règles que personne n’a écrites. Quelle pièce réclamer, quel écart vérifier avant le bulletin, quel retour DSN mérite un appel : ce savoir vit dans la tête de collaborateurs qui en ont déjà trop, difficiles à recruter, plus difficiles encore à garder.</p>
-        <p class="texte-2">Quand l’un d’eux part, la règle part avec lui. Nous l’écrivons pour que vos équipes puissent la relire, la transmettre et la maintenir.</p>
-        <p class="texte-2">Cette règle permet ensuite de <a href="/automatisation/saisie-comptable">prendre en charge la préparation des écritures</a>. Elle précise ce qui se prépare seul, ce qui attend votre validation et ce qui reste une décision humaine.</p>
+        <h2 id="pourquoi">Un catalogue pour le travail qui revient.</h2>
+        <p>Collecter un avis, retrouver une pièce, rapprocher deux fichiers : ces tâches se répètent d’un dossier à l’autre. Nous concevons des robots et agents IA pour les prendre en charge, puis les adaptons à chaque cabinet.</p>
+        <p class="texte-2">Le catalogue donne un point de départ concret. Votre organisation détermine les comptes utilisés, les règles de classement, les livrables et les validations. Nous construisons sur mesure lorsque cette base ne couvre pas votre besoin.</p>
+        <p class="texte-2">Pour <a href="/agents-ia/comptabilite#tache-saisie-ocr-2">prendre en charge la préparation des écritures</a> ou <a href="/agents-ia/juridique-fiscal#tache-secretariat-juridique-7">préparer le suivi juridique</a>, nous définissons les pièces à lire, la proposition attendue et les cas à reprendre. Votre collaborateur conserve la correction et la validation.</p>
       </div>
-    </ProofRow>
+    </BlocEditorial>
   </section>
 
-  <section class="pv" aria-labelledby="faisons">
-    <ProofRow id="v2/10-une-personne">
-      <div class="pv-copy rv">
-        <h2 id="faisons">Ce que nous faisons</h2>
-        <p>Nous prenons une tâche répétitive de votre cabinet de l’observation à la maintenance. Nous écrivons sa règle dans vos mots et construisons l’automatisation dans vos outils existants. Vos équipes vérifient le résultat selon les critères convenus avant sa mise en service : c’est la recette.</p>
-        <p class="texte-2">La règle donne la même limite quand vous choisissez de <a href="/automatisation/rapprochement-bancaire">confier le rapprochement bancaire</a> : la mécanique prépare, le cabinet tranche l’écart.</p>
-        <p class="texte-2">La même personne écoute la règle et la code. Les exceptions décrites par vos collaborateurs font partie du périmètre écrit et des essais.</p>
-        <p class="texte-2">Vous pouvez aussi <a href="/automatisation/secretariat-juridique">confier le suivi juridique restant hors du circuit du cabinet</a> : nous gardons les fonctions de votre outil et préparons les échéances et rappels résiduels, sans actes ni dépôt.</p>
-      </div>
-    </ProofRow>
+  <section class="pv" aria-labelledby="faisons"><div class="tete"><h2 id="faisons">Concevoir, déployer et maintenir.</h2><p>Vous choisissez le travail à confier. Nous préparons le service retenu, réglons son fonctionnement dans vos outils et faisons vérifier le résultat par votre équipe. Nous restons votre interlocuteur pour la maintenance prévue au devis.</p></div><GrilleEditoriale><article><h3>Des résultats à reprendre</h3><p class="texte-2">Pour <a href="/agents-ia/comptabilite#tache-banque-rapprochement-5">confier le rapprochement bancaire</a>, votre équipe reçoit les correspondances proposées et les écarts à examiner. Elle garde la décision sur les cas inexpliqués.</p></article><article><h3>Votre organisation conservée</h3><p class="texte-2">Nous adaptons les sources, les comptes, le classement et le rythme à votre cabinet. La règle écrite décrit les gestes confiés et les validations que vous conservez.</p></article><article><h3>Le savoir utile au travail</h3><p class="texte-2"><a href="/memoire-collective-cabinet-comptable">Memlia OS</a> retrouve vos sources et leur contexte avec les accès définis. Le <a href="/modele-ia-prive-entreprise">modèle privé</a> travaille vos formats et votre vocabulaire par entraînement sur des exemples autorisés. Nous évaluons la version avant sa publication.</p></article></GrilleEditoriale>
   </section>
 
   <section class="pv" aria-labelledby="expert">
     <div class="tete rv">
-      <h2 id="expert">Vous restez l’expert. Nous écrivons, et nous faisons tourner.</h2>
-      <p>Deux choses que nous disons avant toute mission, parce qu’elles délimitent exactement ce que vous nous confiez.</p>
+      <h2 id="expert">Vous confiez le travail répétitif. Vous gardez la maîtrise.</h2>
+      <p>Ces engagements s’appliquent aux quatre services, avec un périmètre et des critères de recette propres à chacun.</p>
     </div>
-    <div class="bande coins">
-      <span class="coin hg"></span><span class="coin hd"></span><span class="coin bg"></span><span class="coin bd"></span>
-      <ul class="cartes rv-groupe">
-        <li class="cellule rv"><h3 class="carte-titre">Votre règle et votre jugement.</h3><p class="carte-texte">En paie, en social, en fiscal, la règle est la vôtre. Vous pouvez <a href="/automatisation/paie">confier la mécanique répétitive de la paie</a> ou <a href="/automatisation/entrees-sorties-salaries">écrire la règle des entrées et sorties des salariés</a> annoncées hors portail. Nous l’écrivons avec vous et nous la testons. Devant un cas hors règle, l’automatisation s’arrête et présente le cas. Le jugement professionnel reste au cabinet.</p></li>
-        <li class="cellule rv"><h3 class="carte-titre">Une tâche prise en charge entière.</h3><p class="carte-texte">Vous confiez une tâche ; nous l’écrivons, l’automatisons et la maintenons après la recette par vos équipes. Vous payez cette prise en charge selon sa complexité, pas un nombre de sièges. Le devis précise le support, la maintenance et les évolutions.</p></li>
-      </ul>
-    </div>
+    <ListeEditoriale>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Vos règles et vos validations.</h3><p class="editorial-point-texte">Pour <a href="/agents-ia/paie-social">confier la mécanique répétitive de la paie</a> ou <a href="/agents-ia/paie-social#tache-entrees-sorties-salaries-5">écrire la règle des entrées et sorties des salariés</a> annoncées hors portail, nous suivons les règles convenues avec votre pôle social. Un cas hors règle est présenté à votre équipe. Le jugement professionnel reste au cabinet.</p></li>
+        <li class="editorial-point rv"><h3 class="editorial-point-titre">Le déploiement et la maintenance.</h3><p class="editorial-point-texte">Vous payez une tâche prise en charge, pas des sièges. Le devis précise le périmètre déployé, les adaptations, le support, la maintenance et les évolutions. Une nouvelle fonction ou une construction sur mesure se définit avec vous.</p></li>
+      </ListeEditoriale>
   </section>
 
-  <section class="pv" id="kevin-kitanga" aria-labelledby="fondateur">
-    <div class="tete rv">
-      <h2 id="fondateur">Qui est derrière Memlia</h2>
-      <p><strong>Kevin Kitanga, fondateur.</strong> Il observe le geste avec vos équipes, écrit la règle et construit l’automatisation. Vos collaborateurs retrouvent ainsi leurs mots et leurs cas limites dans les essais qu’ils vérifient avec lui.</p>
-      <p>Il signe les méthodes publiées sur ce site. Elles montrent comment écrire une règle, la rejouer sur un jeu d’essai fictif et garder les refus visibles. Ce dossier inventé permet d’éprouver la mécanique avant de travailler sur un vrai dossier. La règle écrite et le savoir-faire restent au cabinet.</p>
-    </div>
-  </section>
+  <section class="pv" id="kevin-kitanga" aria-labelledby="fondateur"><div class="tete"><h2 id="fondateur">Qui est derrière Memlia</h2></div><GrilleEditoriale colonnes={2}><article><h3>Kevin Kitanga, fondateur</h3><p>Il conçoit les prises en charge Memlia et les adapte avec vos équipes. Du premier échange à la mise en service, il relie le besoin métier, les règles du cabinet et la mise en œuvre du service retenu.</p></article><article><h3>Des exemples que vous pouvez examiner</h3><p>Il signe les méthodes publiées sur le site. Les démonstrations fictives montrent un résultat, une exception et les décisions qui restent au cabinet. Elles vous aident à choisir une tâche avant d’organiser son déploiement.</p></article></GrilleEditoriale></section>
 
-  <section class="pv" aria-labelledby="ecrivons">
+  <section class="pv editorial-publications" aria-labelledby="ecrivons">
     <div class="tete rv">
       <h2 id="ecrivons">Ce que nous publions</h2>
       <p>Nous écrivons sur ce qui se vérifie, ce qui s’automatise et ce qui reste une décision humaine. Chaque article est signé et sourcé.</p>
     </div>
     <Renvois items={renvois} />
   </section>
-</PageCommerciale>
+</PageEditoriale>

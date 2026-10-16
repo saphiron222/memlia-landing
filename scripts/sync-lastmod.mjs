@@ -23,7 +23,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { readSitemapPages } from './lib/sitemaps.mjs';
+import { readSitemapPages, syncSitemapLastmod } from './lib/sitemaps.mjs';
 
 const REGISTRE = 'src/data/pages-lastmod.json';
 const DIST = 'dist';
@@ -89,6 +89,7 @@ if (controle) {
 } else {
   registre.pages = Object.fromEntries(Object.entries(pages).sort(([a], [b]) => a.localeCompare(b)));
   writeFileSync(REGISTRE, `${JSON.stringify(registre, null, 2)}\n`);
+  syncSitemapLastmod(DIST, registre.pages);
   console.log(`${routes.length} page(s) au registre ; ${bouges.length} datée(s) du ${maintenant}${bouges.length ? ` : ${bouges.join(', ')}` : ''}.`);
   if (disparues.length > 0) console.log(`retirée(s) : ${disparues.join(', ')}`);
 }
