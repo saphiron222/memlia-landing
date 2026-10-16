@@ -1,34 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { join, resolve } from 'node:path';
-import { tmpdir } from 'node:os';
+import { resolve } from 'node:path';
 import { ROBOTS } from '../../src/data/robots.ts';
 import { INTEGRATIONS_ARCHIVEES, INTEGRATIONS_INDEXABLES } from '../../src/data/integrations.ts';
 import {
   MIGRATION_CATALOGUES, ROUTES_RETIREES, verifierDecisionMigration,
   destinationActuelle, estRouteRetiree, blocRedirections, reponseMigration,
 } from '../../src/data/migrations-catalogues.mjs';
-import { createServer } from 'vite';
+import { loadBundledModules } from '../helpers/bundled-modules.mjs';
 
-// Les entrées Pages chargent le JSON via un bundler, comme en production.
-// Le bundle Wrangler de production est également exercé dans tests/functions/pages-bundle.test.mjs.
-const cacheDir = mkdtempSync(join(tmpdir(), 'memlia-migrations-vite-'));
-const bundler = await createServer({
-  configFile: false, cacheDir, optimizeDeps: { noDiscovery: true, include: [] },
-  server: { middlewareMode: true, watch: null }, appType: 'custom',
-});
-let robotGet, robotHead, guideGet, guideHead, decisionAstro;
-try {
-  ({ onRequestGet: robotGet, onRequestHead: robotHead } = await bundler.ssrLoadModule('/functions/automatisation/[slug].js'));
-  ({ onRequestGet: guideGet, onRequestHead: guideHead } = await bundler.ssrLoadModule('/functions/integrations/[slug].js'));
-  ({ MIGRATION_CATALOGUES: decisionAstro } = await bundler.ssrLoadModule('/src/data/migrations-catalogues.mjs'));
-} finally {
-  await bundler.close();
-  rmSync(cacheDir, { recursive: true, force: true });
-}
+const [
+  { onRequestGet: robotGet, onRequestHead: robotHead },
+  { onRequestGet: guideGet, onRequestHead: guideHead },
+  { MIGRATION_CATALOGUES: decisionAstro },
+] = await loadBundledModules([
+  '/functions/automatisation/[slug].js',
+  '/functions/integrations/[slug].js',
+  '/src/data/migrations-catalogues.mjs',
+]);
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const decision = MIGRATION_CATALOGUES;

@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {onRequestGet,onRequestHead} from '../../functions/automatisation/[slug].js';
-import {onRequestGet as hubGet} from '../../functions/automatisation-cabinet-comptable.js';
+import { loadBundledModules } from '../helpers/bundled-modules.mjs';
+const [{onRequestGet,onRequestHead},{onRequestGet:hubGet}] = await loadBundledModules([
+ '/functions/automatisation/[slug].js',
+ '/functions/automatisation-cabinet-comptable.js',
+]);
 test('démonstrations robots : CSP sans réseau, cache sans transformation et HEAD concordant',async()=>{
  globalThis.HTMLRewriter=class{on(){return this;}transform(r){return r;}};
  try{
