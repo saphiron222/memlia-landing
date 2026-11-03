@@ -30,7 +30,8 @@ class SupplementsF4(unittest.TestCase):
         self.assertEqual(arch['meta']['supplements'], 2)
         for e in supplements:
             query, day, fmt = EXPECTED[e['slug']]
-            self.assertEqual((e['requete'], e['datePlanifiee'], e['format']), (query, day, fmt))
+            self.assertEqual((e['requete'], e['dateManquee'], e['format']), (query, day, fmt))
+            self.assertIsNone(e.get('datePlanifiee'), 'aucune date réservée : décision de Kevin du 03/11/2026')
             self.assertEqual((e['profession'], e['famille'], e['role'], e['intent'], e['priorite']),
                              ('cac', 'cac-dossier-de-travail', 'audit-cac', 'executer', 3))
             self.assertEqual(e['demande']['mesureeLe'], '2026-10-09')
@@ -61,7 +62,7 @@ class SupplementsF4(unittest.TestCase):
                 elif kind == 'measure':
                     e['demande']['mesureeLe'] = '2026-10-05'
                 elif kind == 'date':
-                    e['datePlanifiee'] = '2026-10-22'
+                    e['dateManquee'] = '2026-10-22'
                 elif kind == 'format':
                     e['format'] = 'tutorial'
                 elif kind == 'intent':
@@ -79,9 +80,14 @@ class SupplementsF4(unittest.TestCase):
         entries = [data[3]] + data[4]
         by_slug = {e['slug']: e for e in entries}
         for slug, (_, day, _) in EXPECTED.items():
-            self.assertEqual(by_slug[slug]['date'], day)
+            self.assertEqual(by_slug[slug]['dateManquee'], day)
+            self.assertEqual(by_slug[slug]['statut'], 'a-replanifier')
+            self.assertGreaterEqual(by_slug[slug]['date'], PLAN.date.today().isoformat())
         contribution = by_slug['cac-contributions-dossier-preservation']
-        self.assertEqual(contribution['date'], '2026-10-23')
+        # Réservation du 23/10 non produite : trace `dateManquee`, sans nouvelle date mandatée.
+        self.assertEqual(contribution['dateManquee'], '2026-10-23')
+        self.assertEqual(contribution['statut'], 'a-replanifier')
+        self.assertGreaterEqual(contribution['date'], PLAN.date.today().isoformat())
         self.assertEqual(contribution['requete'], 'dossier cac contributions sans écraser saisies')
         self.assertEqual(contribution['angle'], 'fusion-contributions')
         self.assertEqual(contribution['intent'], 'reduire-risque')
