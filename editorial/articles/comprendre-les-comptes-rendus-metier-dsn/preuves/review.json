@@ -4,8 +4,8 @@
   "kind": "editorial-review",
   "status": "PASS",
   "checkedAt": "2026-11-03",
-  "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
-  "manifestSha256": "ac05a84c995d92e206ae79b99963cd770ea553df6334dd233c3b817455cc81ac",
+  "articleSha256": "883a48c7cea482802494f54cac73716aab91479ae5cff025fe0b2d06a9fd1872",
+  "manifestSha256": "0acbe4bc68ef40b518c82dd23a93e7879c0a8797a4ede8f5901f925328b95b26",
   "observations": [
     "Contrôle editorial-review relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
   ],
@@ -16,7 +16,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Les deux H3 répondent aux requêtes mesurées le 03/11 (« dsn et numéros des différents crm », « à qui sont adressé le compte rendu dsn ») : réponse directe dès la première phrase (« Le déclarant qui a effectué le dépôt, et lui seul »), puis la précision et l'exception. Limite assumée : les requêtes sur le statut OK/ANO, les organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse, car leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer ; l'article ne prétend pas y répondre."
+        "Les deux H3 répondent aux requêtes mesurées le 03/11 (« dsn et numéros des différents crm », « à qui sont adressé le compte rendu dsn ») : réponse directe dès la première phrase (« Le déclarant qui a effectué le dépôt, et lui seul »), puis la précision et l'exception. Une section dédiée répond à la requête « mandat à acquitter » : réponse directe en gras dès la première phrase, puis la consultation de la « mandathèque », le cas des mandats préremplis et le périmètre de la fonction. Limite assumée : les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires et la radiation restent sans réponse, car leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer ; l'article ne prétend pas y répondre."
       ]
     },
     {
@@ -24,7 +24,7 @@
       "result": "PASS",
       "earned": 15,
       "observations": [
-        "Titre d'onglet inchangé à 56 caractères, description à 134, une seule H1, intertitres H3 formulés comme les questions posées, tableau de 10 lignes. Réserve de structure : les deux H3 sont rangés sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », thématiquement un peu décalé ; ils iraient mieux sous le H2 de définition."
+        "Titre d'onglet inchangé à 56 caractères, description à 134, une seule H1, intertitres H3 formulés comme les questions posées, tableau de 10 lignes. Le H2 « Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ? » reprend la question posée ; une seule question en intertitre, pas de H3 superflu. Réserve de structure : les deux H3 antérieurs restent rangés sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », thématiquement un peu décalé."
       ]
     },
     {
@@ -32,7 +32,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Six sources tier-1, toutes net-entreprises.fr (GIP-MDS, opérateur de la DSN), chacune ouverte en direct le 03/11/2026 : 29 citations sur 29 retrouvées mot pour mot. Les dates affichées par les pages sont lues (NEOReS « Modifié le 2 novembre 2026 », tableau de bord « Modifié le 19 mars 2026 »). Limite : un seul éditeur pour toutes les sources."
+        "Sept sources tier-1 de Net-entreprises (GIP-MDS, opérateur de la DSN) : six sur net-entreprises.fr et la fiche d'aide n° 964 sur net-entreprises.custhelp.com, hôte officiel de sa base de connaissances (« @2024 GIP-MDS », « Nos sites : net-entreprises.fr - gip-mds.fr »). Chacune ouverte en direct le 03/11/2026 : 37 citations sur 37 retrouvées mot pour mot. Les dates affichées par les pages sont lues (NEOReS « Modifié le 2 novembre 2026 », tableau de bord « Modifié le 19 mars 2026 »). Limite : un seul éditeur pour toutes les sources."
       ]
     },
     {
@@ -40,7 +40,7 @@
       "result": "PASS",
       "earned": 20,
       "observations": [
-        "Le tableau des numéros (118 à 136, 10 lignes) donne l'organisme, la date de mise en service et la portée, ce que les pages dispersent ; il dit aussi ce que la norme ne couvre pas (CCO, BAN, accusés de réception) et refuse de donner un sens à un numéro non recensé. La distinction déclarant / administrateur et la limite des 3 mois sont des informations d'usage directes."
+        "Le tableau des numéros (118 à 136, 10 lignes) donne l'organisme, la date de mise en service et la portée, ce que les pages dispersent ; il dit aussi ce que la norme ne couvre pas (CCO, BAN, accusés de réception) et refuse de donner un sens à un numéro non recensé. La distinction déclarant / administrateur et la limite des 3 mois sont des informations d'usage directes. La section mandat dit ce que la fiche établit (consultation de la « mandathèque », cas des mandats préremplis, organismes hors périmètre) et précise que la fiche ne donne ni code ni format au retour."
       ]
     },
     {
@@ -48,7 +48,7 @@
       "result": "PASS",
       "earned": 10,
       "observations": [
-        "Rendu local du brouillon relu : canonical autoréférente, une seule H1, hiérarchie H2/H3 correcte, image 1200×630 déclarée avec largeur et hauteur, alt non vide, dateModified et article:modified_time à 2026-11-03, datePublished conservé au 2026-09-15. Le noindex observé est celui du brouillon de preview, qui disparaît à la publication."
+        "Rendu local du brouillon relu : canonical autoréférente, une seule H1, hiérarchie H2/H3 correcte, image 1200×630 déclarée avec largeur et hauteur, alt non vide, dateModified et article:modified_time à 2026-11-03, datePublished conservé au 2026-09-15. Le noindex observé est celui du brouillon de preview, qui disparaît à la publication. Le rendu ne contient ni le mot « module » ni date de vérification ; le lien de la section pointe vers la fiche d'aide officielle."
       ]
     },
     {

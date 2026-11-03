@@ -65,6 +65,20 @@ Cette normalisation concerne « uniquement les transmissions d’un organisme de
 
 Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.
 
+## Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ?
+
+**C’est l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé.** Net-entreprises la décrit dans [sa fiche d’aide sur la fonction mandat](https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964), sans lui attribuer de code ni de format.
+
+Ce retour suit une consultation que la fiche décrit ainsi : après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN.
+
+Le déclarant peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN.
+
+La fiche décrit aussi le cas des mandats préremplis : après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration.
+
+Elle rappelle l’enjeu : pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA.
+
+Selon la fiche, cette fonction permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances. Elle ne la généralise pas à tous les organismes : pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne), et pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA. La liste de la fiche cite d’autres organismes, que nous ne reprenons pas ici.
+
 ## Contrôle de structure ou contrôle de cohérence : que regarder ?
 
 La première question est la couche du contrôle. Un rejet technique et un écart métier ne se traitent pas avec les mêmes preuves.

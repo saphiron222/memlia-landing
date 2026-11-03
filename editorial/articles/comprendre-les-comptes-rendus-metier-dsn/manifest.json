@@ -40,7 +40,8 @@
     "corriger après un retour DSN",
     "tracer la décision",
     "numéros des comptes rendus métier 118 119 120 121 124",
-    "qui reçoit et consulte le compte rendu métier"
+    "qui reçoit et consulte le compte rendu métier",
+    "mandat à acquitter dans un compte rendu métier DSN"
   ],
   "role": {
     "primary": "paie-responsables-sociaux",
@@ -69,7 +70,7 @@
   "rankability": "plausible",
   "businessRelevance": "directe",
   "proofStatus": "verifiee",
-  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; vingt-neuf affirmations DSN, chacune reliée à l’extrait exact d’une des six pages Net-entreprises citées, ouvertes le jour de la republication.",
+  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; réponse sur le mandat à acquitter (retour de la nécessité d’acquitter un mandat, consultation de la mandathèque, portée de la fonction mandat de Net-entreprises) ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; trente-sept affirmations DSN, chacune reliée à l’extrait exact d’une des sept pages Net-entreprises citées, ouvertes le jour de la republication.",
   "sourcesVerifiedAt": "2026-11-03",
   "sources": [
     {
@@ -161,11 +162,26 @@
       "method": null,
       "classificationEvidence": "preuves/sources/net-entreprises-neores.classification.json",
       "verificationEvidence": "preuves/sources/net-entreprises-neores.json"
+    },
+    {
+      "id": "net-entreprises-mandat",
+      "publisher": "Net-entreprises",
+      "title": "Le module mandat pour payer ses cotisations DSN",
+      "url": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+      "checkedAt": "2026-11-03",
+      "level": "tier-1",
+      "provenance": "primary",
+      "official": true,
+      "upstreamUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+      "classificationReason": "Fiche d’aide officielle du GIP-MDS, opérateur de la DSN, publiée sur le portail d’assistance de Net-entreprises (miroir de la page « Le module mandat ») : consultation de la mandathèque par l’organisme après un message DSN, retour de la nécessité d’acquitter un mandat au déclarant, portée par organisme.",
+      "method": null,
+      "classificationEvidence": "preuves/sources/net-entreprises-mandat.classification.json",
+      "verificationEvidence": "preuves/sources/net-entreprises-mandat.json"
     }
   ],
   "author": "kevin",
   "reviewer": "marketing",
-  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; relecture des sources à six mois.",
+  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS, fonction mandat) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; la fiche d’aide de la fonction mandat (portail d’assistance de Net-entreprises), modifiée le 16/01/2026, est à relire avant toute reprise de sa portée par organisme ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
     "destination": "/contact",

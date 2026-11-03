@@ -1,14 +1,14 @@
 {
   "subject": {
     "slug": "comprendre-les-comptes-rendus-metier-dsn",
-    "bodySha256": "092925d75b6a1e50540ba9d3173ab7084b69425b16709a2fa7350c89eba6c013",
-    "recipeSha256": "e2de6ce3f6b977c363ebc6658180f9172128c0515b541a4a609e77fcbf0cb228",
-    "recipeSubstanceSha256": "8c9179bdee6f57cc3e2528936abfe95b6d8cd7d9a50fb2f4ead7ce631bf16b4a",
-    "renderedSha256": "d280904a1a7986b6786474b52d118b6a8777d9eb450084e5ce9bbfc6ca33ea0e"
+    "bodySha256": "e4040a2924f0ae5431324ee32182474df6a77042d9a87026e792f0012f9640bc",
+    "recipeSha256": "a8069794b8ac2271966700d7cdb617b2ba563422a9c5ef5eda1bc141fe2074c3",
+    "recipeSubstanceSha256": "869c9ac8665eed342975d5b55a85fe5a0bcca17ff91fda9fff20ce71d8407003",
+    "renderedSha256": "b0d59633352563b61662cd1d17ce6bc381f98e3e5c81a28b989258c90ede4117"
   },
   "reviewedAt": "2026-11-03",
   "verdict": "PASS AVEC RÉSERVES",
-  "scope": "Revue de fond d'une republication de l'article (deux sections et 22 claims ajoutés) faite le 03/11/2026 par une session Claude distincte des agents qui ont rédigé le texte, sous les noms de rôle de la forge. Vérifications faites : 29 citations retrouvées mot pour mot dans les pages officielles ouvertes en direct, fidélité de chaque phrase rendue relue (cinq corrections demandées et appliquées avant ce verdict), rendu local du brouillon, image examinée. Ne certifie pas l'interprétation des codes au-delà de ce que disent les pages citées.",
+  "scope": "Revue de fond de la republication de l'article (section « mandat à acquitter » et 8 claims ajoutés, sur la fiche d'aide officielle du miroir Net-entreprises) faite le 03/11/2026 par une session Claude distincte de l'agent qui a rédigé le texte, sous les noms de rôle de la forge. Vérifications faites : 37 citations retrouvées mot pour mot dans les pages officielles ouvertes en direct, fidélité de chaque phrase de la section lue contre le texte intégral de la fiche, rendu local du brouillon sans le mot « module » ni date de vérification, image examinée. Ne certifie pas l'interprétation du retour au-delà de ce que dit la fiche citée.",
   "editorial": {
     "reviewer": "marketing",
     "p0": [],
@@ -16,31 +16,31 @@
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "Les deux H3 répondent aux requêtes mesurées le 03/11 (« dsn et numéros des différents crm », « à qui sont adressé le compte rendu dsn ») : réponse directe dès la première phrase (« Le déclarant qui a effectué le dépôt, et lui seul »), puis la précision et l'exception. Limite assumée : les requêtes sur le statut OK/ANO, les organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse, car leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer ; l'article ne prétend pas y répondre."
+          "Les deux H3 répondent aux requêtes mesurées le 03/11 (« dsn et numéros des différents crm », « à qui sont adressé le compte rendu dsn ») : réponse directe dès la première phrase (« Le déclarant qui a effectué le dépôt, et lui seul »), puis la précision et l'exception. Une section dédiée répond à la requête « mandat à acquitter » : réponse directe en gras dès la première phrase, puis la consultation de la « mandathèque », le cas des mandats préremplis et le périmètre de la fonction. Limite assumée : les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires et la radiation restent sans réponse, car leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer ; l'article ne prétend pas y répondre."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Titre d'onglet inchangé à 56 caractères, description à 134, une seule H1, intertitres H3 formulés comme les questions posées, tableau de 10 lignes. Réserve de structure : les deux H3 sont rangés sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », thématiquement un peu décalé ; ils iraient mieux sous le H2 de définition."
+          "Titre d'onglet inchangé à 56 caractères, description à 134, une seule H1, intertitres H3 formulés comme les questions posées, tableau de 10 lignes. Le H2 « Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ? » reprend la question posée ; une seule question en intertitre, pas de H3 superflu. Réserve de structure : les deux H3 antérieurs restent rangés sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », thématiquement un peu décalé."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Six sources tier-1, toutes net-entreprises.fr (GIP-MDS, opérateur de la DSN), chacune ouverte en direct le 03/11/2026 : 29 citations sur 29 retrouvées mot pour mot. Les dates affichées par les pages sont lues (NEOReS « Modifié le 2 novembre 2026 », tableau de bord « Modifié le 19 mars 2026 »). Limite : un seul éditeur pour toutes les sources."
+          "Sept sources tier-1 de Net-entreprises (GIP-MDS, opérateur de la DSN) : six sur net-entreprises.fr et la fiche d'aide n° 964 sur net-entreprises.custhelp.com, hôte officiel de sa base de connaissances (« @2024 GIP-MDS », « Nos sites : net-entreprises.fr - gip-mds.fr »). Chacune ouverte en direct le 03/11/2026 : 37 citations sur 37 retrouvées mot pour mot. Les dates affichées par les pages sont lues (NEOReS « Modifié le 2 novembre 2026 », tableau de bord « Modifié le 19 mars 2026 »). Limite : un seul éditeur pour toutes les sources."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Le tableau des numéros (118 à 136, 10 lignes) donne l'organisme, la date de mise en service et la portée, ce que les pages dispersent ; il dit aussi ce que la norme ne couvre pas (CCO, BAN, accusés de réception) et refuse de donner un sens à un numéro non recensé. La distinction déclarant / administrateur et la limite des 3 mois sont des informations d'usage directes."
+          "Le tableau des numéros (118 à 136, 10 lignes) donne l'organisme, la date de mise en service et la portée, ce que les pages dispersent ; il dit aussi ce que la norme ne couvre pas (CCO, BAN, accusés de réception) et refuse de donner un sens à un numéro non recensé. La distinction déclarant / administrateur et la limite des 3 mois sont des informations d'usage directes. La section mandat dit ce que la fiche établit (consultation de la « mandathèque », cas des mandats préremplis, organismes hors périmètre) et précise que la fiche ne donne ni code ni format au retour."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Rendu local du brouillon relu : canonical autoréférente, une seule H1, hiérarchie H2/H3 correcte, image 1200×630 déclarée avec largeur et hauteur, alt non vide, dateModified et article:modified_time à 2026-11-03, datePublished conservé au 2026-09-15. Le noindex observé est celui du brouillon de preview, qui disparaît à la publication."
+          "Rendu local du brouillon relu : canonical autoréférente, une seule H1, hiérarchie H2/H3 correcte, image 1200×630 déclarée avec largeur et hauteur, alt non vide, dateModified et article:modified_time à 2026-11-03, datePublished conservé au 2026-09-15. Le noindex observé est celui du brouillon de preview, qui disparaît à la publication. Le rendu ne contient ni le mot « module » ni date de vérification ; le lien de la section pointe vers la fiche d'aide officielle."
         ]
       },
       "ai-citability": {
@@ -167,6 +167,38 @@
         "verdict": "soutient",
         "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 135. L'extrait garde l'entité brute &rsquo; de la copie ; le rendu porte l'apostrophe. « FCTU » n'est pas développé par la page et ne l'est pas par l'article."
       },
+      "claim-unit-99717672473e-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Description de la consultation de la « mandathèque » reprise du paragraphe « Payer ses cotisations » de la fiche ; la phrase de l'article attribue explicitement cette description à la fiche."
+      },
+      "claim-unit-4ace500e6b1e-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Phrase reprise presque à l'identique (la fiche : « dans le cadre de cette interrogation » ; l'article la garde)."
+      },
+      "claim-unit-15ee51139fe4-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. La fiche ajoute une seconde voie (« ou directement à partir du Module Mandat ») que l'article ne reprend pas ; l'omission ne contredit pas la phrase citée."
+      },
+      "claim-unit-78cc31ec64f6-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Cas distinct du précédent (après le dépôt, mandats préremplis disponibles) : l'article le présente comme tel (« La fiche décrit aussi le cas… ») ; « vous » devient « le déclarant »."
+      },
+      "claim-unit-d23cbf3c3cd3-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Phrase de la fiche (section « Effectuer un télépaiement à la norme SEPA »), avec « donc » et sans virgule ; reprise telle quelle, attribuée à la fiche."
+      },
+      "claim-unit-76b070a89adc-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Périmètre actuel de la fonction mandat repris (institutions de prévoyance, certaines mutuelles et assurances) ; l'article n'ajoute pas d'organisme et l'entité &nbsp; de la copie est rendue en espace."
+      },
+      "claim-unit-76b070a89adc-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Le préfixe « Urssaf » est dans l'extrait ; la fiche ajoute la ligne AGIRC-ARRCO que l'article ne reprend pas et le dit (« d'autres organismes, que nous ne reprenons pas »)."
+      },
+      "claim-unit-76b070a89adc-3": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-mandat) et dans la copie locale. Ligne MSA de la même liste, reprise à l'identique."
+      },
       "claim-unit-29991bc0bacc-1": {
         "verdict": "soutient",
         "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-dsn-val) et dans la copie locale. Phrase reprise à l'identique."
@@ -231,6 +263,7 @@
       "net-entreprises-fiabilisation": "Même éditeur, page publiée le 25/07/2025, ouverte le 03/11/2026 : contact de l'organisme et de l'éditeur, délai « avant minuit la veille de l'échéance ». Tier-1.",
       "net-entreprises-dsn-val": "Même éditeur, page publiée le 11/09/2020, ouverte le 03/11/2026 : outil de contrôle Dsn-Val avant dépôt. Tier-1.",
       "net-entreprises-tableau-de-bord": "Même éditeur, page publiée le 16/09/2020 et affichant « Modifié le 19 mars 2026 », ouverte le 03/11/2026 : qui consulte les retours, où, limite de 3 mois, historisation (sept citations exactes). Tier-1.",
+      "net-entreprises-mandat": "Fiche d'aide n° 964 de la base de connaissances Net-entreprises (GIP-MDS), hôte net-entreprises.custhelp.com, créée le 21/10/2016, modifiée le 16/01/2026 (version en vigueur), ouverte en direct le 03/11/2026 : consultation de la « mandathèque », retour au déclarant, mandats préremplis, périmètre de la fonction (huit citations exactes). Tier-1 pour ces affirmations ; l'hôte custhelp a été déclaré autorité officielle dans la forge par une modification relue séparément, bornée à cet hôte exact. Titre de la fiche non repris dans la page publiée.",
       "net-entreprises-neores": "Même éditeur, page publiée le 19/01/2021 et affichant « Modifié le 2 novembre 2026 », ouverte le 03/11/2026 : définition de NEOReS, périmètre, numéros 118 à 136 (douze citations exactes). Tier-1. Page très vivante, modifiée la veille : la règle de relecture de la recette demande de revoir l'article à chaque changement de cette page."
     }
   },
@@ -261,15 +294,15 @@
       }
     },
     "evidence": [
-      "28/30 contenu : les deux sections répondent à des questions réelles de gestionnaires de paie avec des faits sourcés et leurs limites ; le tableau des numéros est l'apport le plus utile. Retrait de 2 points : plusieurs intentions mesurées restent sans réponse (OK/ANO, organismes complémentaires, mandat, radiation).",
-      "24/25 SEO : titre 56 caractères, description 134, canonical, une H1, hiérarchie propre, image 1200×630 avec dimensions, dateModified projeté. Retrait de 1 point : placement des deux H3 sous un H2 thématiquement décalé.",
-      "14/15 E-E-A-T : sources primaires officielles datées et revérifiées le jour même, citations exactes. Retrait de 1 point : un seul éditeur pour les six sources.",
+      "28/30 contenu : les sections ajoutées répondent à des questions réelles de gestionnaires de paie avec des faits sourcés et leurs limites ; le tableau des numéros est l'apport le plus utile. Retrait de 2 points : plusieurs intentions mesurées restent sans réponse (OK/ANO, organismes complémentaires, radiation).",
+      "24/25 SEO : titre 56 caractères, description 134, canonical, une H1, hiérarchie propre, un H2 question ajouté, image 1200×630 avec dimensions, dateModified projeté. Retrait de 1 point : placement des deux H3 sous un H2 thématiquement décalé.",
+      "14/15 E-E-A-T : sources primaires officielles datées et revérifiées le jour même, 37 citations exactes. Retrait de 1 point : un seul éditeur pour les sept sources.",
       "15/15 technique : rendu local conforme, alt non vide, aucun lien cassé dans la zone ajoutée, aucun terme interdit.",
-      "14/15 citabilité : réponses autonomes d'une phrase en tête de section, tableau lisible hors contexte. Retrait de 1 point : les délais H+4 et J+5 de 119 et 120 manquent, la page les donne."
+      "14/15 citabilité : réponse autonome en gras en tête de la section mandat, tableau lisible hors contexte. Retrait de 1 point : les délais H+4 et J+5 de 119 et 120 manquent, la page les donne."
     ],
     "reservations": [
       "Les deux nouveaux H3 gagneraient à être rangés sous le H2 de définition plutôt que sous « Pourquoi un dépôt accepté ne suffit-il pas ? ».",
-      "Les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse : leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer. À reprendre si la forge accepte ces formats.",
+      "Les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires, et la radiation restent sans réponse : leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer. À reprendre si la forge accepte ces formats.",
       "Les délais de transmission de 119 (H+4) et 120 (J+5) ne sont pas repris : leurs extraits, trop courts pour le seuil de citation du gate, ont été écartés plutôt que d'en contourner la règle.",
       "La page NEOReS a été modifiée le 02/11/2026 : l'article doit être relu à chaque changement de cette page, comme le dit déjà la règle de relecture de la recette."
     ],
@@ -277,19 +310,19 @@
       "Titre d'onglet inchangé à 56 caractères.",
       "Description à 134 caractères, ouverte sur la requête principale.",
       "Canonical autoréférente, une seule H1.",
-      "Hiérarchie H2/H3 cohérente ; deux H3 ajoutés.",
+      "Hiérarchie H2/H3 cohérente ; un H2 question ajouté pour le mandat à acquitter.",
       "dateModified et article:modified_time projetés au 2026-11-03, datePublished conservé.",
       "Image sociale 1200×630 avec largeur, hauteur et alt."
     ],
     "geo": [
-      "Chaque H3 répond d'abord en une phrase autonome.",
+      "Chaque section ajoutée répond d'abord en une phrase autonome.",
       "Le tableau des numéros se lit hors contexte.",
       "Chaque citation est attribuée à une page officielle nommée et à son URL.",
       "Les organismes (Urssaf, MSA, France Travail) et la norme (NEOReS) sont nommés explicitement.",
       "Aucune affirmation sans source n'est présentée comme un fait officiel.",
-      "Les limites (numéros non recensés, 3 mois de recherche) sont dites."
+      "Les limites (numéros non recensés, 3 mois de recherche, organismes hors fonction mandat) sont dites."
     ],
-    "verdict": "PASS avec réserves : la republication apporte deux réponses sourcées et vérifiées en direct sans élargir au-delà de ce que les pages disent. Les réserves portent sur le placement des sections et sur les intentions laissées sans réponse, pas sur la fidélité du contenu."
+    "verdict": "PASS avec réserves : la republication apporte une réponse supplémentaire (mandat à acquitter) sourcée et vérifiées en direct sans élargir au-delà de ce que les pages disent. Les réserves portent sur le placement des sections et sur les intentions laissées sans réponse, pas sur la fidélité du contenu."
   },
   "requiredCorrections": []
 }

@@ -14,7 +14,7 @@ pipelineVersion: 1
 primaryQuery: "crm dsn"
 secondaryQueries: ["comprendre CRM DSN", "bilan d’anomalies DSN", "certificat de conformité DSN", "CRM nominatif", "comptes rendus métier DSN", "compte rendu métier dsn", "anomalies dsn"]
 intent: comprendre
-fanOut: ["distinguer AEE ARE CCO BAN", "lire un CRM par organisme", "qualifier une anomalie DSN", "corriger après un retour DSN", "tracer la décision", "numéros des comptes rendus métier 118 119 120 121 124", "qui reçoit et consulte le compte rendu métier"]
+fanOut: ["distinguer AEE ARE CCO BAN", "lire un CRM par organisme", "qualifier une anomalie DSN", "corriger après un retour DSN", "tracer la décision", "numéros des comptes rendus métier 118 119 120 121 124", "qui reçoit et consulte le compte rendu métier", "mandat à acquitter dans un compte rendu métier DSN"]
 cluster: paie-social
 famille: dsn-crm
 rolePrincipal: paie-responsables-sociaux
@@ -30,8 +30,8 @@ format: how-to-guide
 rankability: plausible
 businessRelevance: directe
 proofStatus: verifiee
-proofRequired: "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; vingt-neuf affirmations DSN, chacune reliée à l’extrait exact d’une des six pages Net-entreprises citées, ouvertes le jour de la republication."
-reviewRule: "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; relecture des sources à six mois."
+proofRequired: "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; réponse sur le mandat à acquitter (retour de la nécessité d’acquitter un mandat, consultation de la mandathèque, portée de la fonction mandat de Net-entreprises) ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; trente-sept affirmations DSN, chacune reliée à l’extrait exact d’une des sept pages Net-entreprises citées, ouvertes le jour de la republication."
+reviewRule: "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS, fonction mandat) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; la fiche d’aide de la fonction mandat (portail d’assistance de Net-entreprises), modifiée le 16/01/2026, est à relire avant toute reprise de sa portée par organisme ; relecture des sources à six mois."
 reviewer: marketing
 sourcesVerifieesLe: 2026-11-03
 cta:
@@ -65,6 +65,10 @@ sources:
   - editeur: "Net-entreprises"
     titre: "Norme et documentation NEOReS"
     url: "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/"
+    consulte: 2026-11-03
+  - editeur: "Net-entreprises"
+    titre: "Le module mandat pour payer ses cotisations DSN"
+    url: "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964"
     consulte: 2026-11-03
 ---
 
@@ -134,6 +138,20 @@ Cette normalisation concerne « uniquement les transmissions d’un organisme de
 | 135 | À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé. |
 
 Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.
+
+## Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ?
+
+**C’est l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé.** Net-entreprises la décrit dans [sa fiche d’aide sur la fonction mandat](https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964), sans lui attribuer de code ni de format.
+
+Ce retour suit une consultation que la fiche décrit ainsi : après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN.
+
+Le déclarant peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN.
+
+La fiche décrit aussi le cas des mandats préremplis : après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration.
+
+Elle rappelle l’enjeu : pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA.
+
+Selon la fiche, cette fonction permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances. Elle ne la généralise pas à tous les organismes : pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne), et pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA. La liste de la fiche cite d’autres organismes, que nous ne reprenons pas ici.
 
 ## Contrôle de structure ou contrôle de cohérence : que regarder ?
 
