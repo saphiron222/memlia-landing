@@ -37,7 +37,8 @@
     "corriger après un retour DSN",
     "tracer la décision",
     "numéros des comptes rendus métier 118 119 120 121 124",
-    "qui reçoit et consulte le compte rendu métier"
+    "qui reçoit et consulte le compte rendu métier",
+    "mandat à acquitter dans un compte rendu métier DSN"
   ],
   "role": {
     "primary": "paie-responsables-sociaux",
@@ -55,8 +56,8 @@
   "task": "Lire les retours reçus après une DSN, déterminer leur portée et organiser une correction ou un classement justifié.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; vingt-neuf affirmations DSN, chacune reliée à l’extrait exact d’une des six pages Net-entreprises citées, ouvertes le jour de la republication.",
-  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; relecture des sources à six mois.",
+  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; réponse sur le mandat à acquitter (retour de la nécessité d’acquitter un mandat, consultation de la mandathèque, portée de la fonction mandat de Net-entreprises) ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; trente-sept affirmations DSN, chacune reliée à l’extrait exact d’une des sept pages Net-entreprises citées, ouvertes le jour de la republication.",
+  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS, fonction mandat) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; la fiche d’aide de la fonction mandat (portail d’assistance de Net-entreprises), modifiée le 16/01/2026, est à relire avant toute reprise de sa portée par organisme ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
     "destination": "/contact",
@@ -167,6 +168,16 @@
       "official": true,
       "classificationReason": "Page officielle du GIP-MDS sur la norme NEOReS des retours des organismes aux déclarants, qui recense les comptes rendus normalisés par numéro.",
       "excerpt": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie."
+    },
+    {
+      "id": "net-entreprises-mandat",
+      "publisher": "Net-entreprises",
+      "title": "Le module mandat pour payer ses cotisations DSN",
+      "url": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Fiche d’aide officielle du GIP-MDS, opérateur de la DSN, publiée sur le portail d’assistance de Net-entreprises (miroir de la page « Le module mandat ») : consultation de la mandathèque par l’organisme après un message DSN, retour de la nécessité d’acquitter un mandat au déclarant, portée par organisme.",
+      "excerpt": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA"
     }
   ],
   "links": {
@@ -406,6 +417,70 @@
       "explanation": "Le compte rendu 135 de France Travail remonte les propositions d’amélioration après un signalement FCTU à partir d’octobre 2026, tel que la page l’écrit."
     },
     {
+      "unite": "après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN",
+      "claim": "après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "Suite à la réception d’un message DSN et en cas de demande de paiement par prélèvement, l'organisme de protection sociale consulte sa «&nbsp;mandathèque&nbsp;» afin de s’assurer de la présence d’un mandat actif pour le couple \"compte bancaire / créancier\"",
+      "explanation": "Consultation de la mandathèque par l’organisme après un message DSN avec demande de paiement par prélèvement, pour le couple compte bancaire / créancier, décrite par la fiche."
+    },
+    {
+      "unite": "l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé",
+      "claim": "l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "Si aucun mandat n’est trouvé dans le cadre de cette interrogation, l’information notifiant la nécessité d’acquitter un mandat est retournée au déclarant.",
+      "explanation": "Lorsque la consultation ne trouve aucun mandat, l’information qui notifie la nécessité d’acquitter un mandat est retournée au déclarant, telle que la fiche l’écrit ; la réponse directe en gras ne dit que cela."
+    },
+    {
+      "unite": "peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN",
+      "claim": "peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "Celui-ci peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les&nbsp;comptes rendus métier&nbsp;affichés sur le tableau de bord DSN",
+      "explanation": "Le déclarant peut visualiser cette nécessité dans les comptes rendus métier du tableau de bord DSN ; « Celui-ci » désigne le déclarant dans la phrase précédente de la même ligne ; les espaces insécables de la copie sont l’entité &nbsp;."
+    },
+    {
+      "unite": "après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration",
+      "claim": "après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "après le dépôt d'une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l'organisme vous informe via un retour métier accessible dans les \"Mandats de prélèvement\" du détail de votre déclaration.",
+      "explanation": "Après le dépôt d’une DSN, la fiche indique que l’organisme informe, par un retour métier du détail de la déclaration, lorsque des mandats préremplis à acquitter sont disponibles."
+    },
+    {
+      "unite": "pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+      "claim": "pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+      "explanation": "Condition posée par la fiche pour le télépaiement des cotisations, citée mot pour mot."
+    },
+    {
+      "unite": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances",
+      "claim": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et&nbsp;certaines mutuelles et assurances.",
+      "explanation": "Portée de la fonction : la plupart des institutions de prévoyance et certaines mutuelles et assurances, sans généralisation à tous les organismes ; l’espace entre « et » et « certaines » est l’entité &nbsp; dans la copie."
+    },
+    {
+      "unite": "pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne)",
+      "claim": "pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne)",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "URSSAF : les mandats continuent d'être gérés comme actuellement à savoir dans les services+ (urssaf en ligne).",
+      "explanation": "Ligne URSSAF de la liste de la fiche : les mandats continuent d’être gérés dans services+ (urssaf en ligne)."
+    },
+    {
+      "unite": "pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA",
+      "claim": "pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA",
+      "type": "dsn",
+      "sourceId": "net-entreprises-mandat",
+      "excerpt": "MSA : les mandats sont gérés directement dans les services complémentaires de la MSA",
+      "explanation": "Ligne MSA de la liste de la fiche : les mandats sont gérés directement dans les services complémentaires de la MSA."
+    },
+    {
       "unite": "décrit Dsn-Val ainsi",
       "claim": "permet de tester votre fichier DSN avant de le déposer",
       "type": "dsn",
@@ -440,11 +515,13 @@
     ],
     "blog-outline": [
       "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, périmètre après dépôt, définitions, pourquoi la lecture casse à la main, pourquoi un dépôt accepté ne suffit pas (tableau des retours), structure ou cohérence, six étapes, jeu fictif, registre, frontière en trois colonnes, erreurs, questions fréquentes, règle à retenir, pour aller plus loin.",
-      "Deux H3 ajoutés le 03/11/2026 sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », intertitres en question, réponse directe dès la première phrase, avant « Comment lire un CRM en six étapes ? »."
+      "Deux H3 ajoutés le 03/11/2026 sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », intertitres en question, réponse directe dès la première phrase, avant « Comment lire un CRM en six étapes ? ».",
+      "Nouveau H2 ajouté le 03/11/2026 entre « Pourquoi un dépôt accepté ne suffit-il pas ? » et « Contrôle de structure ou contrôle de cohérence : que regarder ? », formulé comme la requête de gestionnaires de paie : « Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ? » ; réponse directe en gras dès la première phrase, sans H3."
     ],
     "blog-rewrite": [
       "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, quatre pages Net-entreprises revérifiées le jour même, revue neuve) ; la citation du cahier technique en PDF, invérifiable par la chaîne, est remplacée par la phrase de Net-entreprises qui borne le certificat de conformité et par la définition du contrôle non bloquant ; section « pourquoi la lecture casse à la main » sur la règle que le gestionnaire applique sans l’avoir écrite ; formules « Memlia peut » retirées ; appel « Confier cette tâche » ; liens vers le pilier, la méthode et les garanties. Méthode en six étapes, jeu fictif et registre conservés.",
-      "Republication du 03/11/2026 (audit SEO du jour : page présente dans Google et Bing sur des requêtes de gestionnaires de paie) : deux H3 ajoutés sous « Pourquoi un dépôt accepté ne suffit-il pas ? », avant les six étapes, sans réécrire l’existant : « Qui reçoit le compte rendu métier et où le consulter ? » (page Net-entreprises du tableau de bord) et « Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ? » (page Net-entreprises NEOReS) ; vingt-deux claims ajoutés, deux sources HTML officielles ajoutées, rouvertes le jour même. Statut OK/ANO, comptes rendus d’organismes complémentaires, mandat, radiation, DI/DA/DIDA, CRM 51 et CRM 114 exclus : sources PDF, zip ou non officielles, non supportées par la chaîne."
+      "Republication du 03/11/2026 (audit SEO du jour : page présente dans Google et Bing sur des requêtes de gestionnaires de paie) : deux H3 ajoutés sous « Pourquoi un dépôt accepté ne suffit-il pas ? », avant les six étapes, sans réécrire l’existant : « Qui reçoit le compte rendu métier et où le consulter ? » (page Net-entreprises du tableau de bord) et « Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ? » (page Net-entreprises NEOReS) ; vingt-deux claims ajoutés, deux sources HTML officielles ajoutées, rouvertes le jour même. Statut OK/ANO, comptes rendus d’organismes complémentaires, mandat, radiation, DI/DA/DIDA, CRM 51 et CRM 114 exclus : sources PDF, zip ou non officielles, non supportées par la chaîne.",
+      "Ajout du 03/11/2026 (deuxième passe du jour) : H2 « Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ? », sans réécrire l’existant ; une source HTML officielle ajoutée (fiche d’aide Net-entreprises sur la fonction mandat, portail d’assistance, rouverte le jour même), huit claims ajoutés. La ligne « Prévoyance, mutuelle et délégataires de gestion » de la page des comptes rendus métiers n’a pas pu être citée : son extrait compte quatre jetons d’appui, sous le seuil de cinq du gate. Statut OK/ANO, codes IEVT, radiation, DI/DA/DIDA, CRM 51 et CRM 114 restent exclus : aucune source HTML."
     ],
     "blog-schema": [
       "BlogPosting émis par le gabarit Article avec datePublished 2026-09-15 et dateModified 2026-11-03 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."

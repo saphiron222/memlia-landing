@@ -200,7 +200,7 @@ const OFFICIAL_SOURCE_AUTHORITIES = Object.freeze([
   { id: 'cncc', host: /^(?:doc\.)?cncc\.fr$/i, publisher: /\b(?:cncc|compagnie nationale des commissaires aux comptes)\b/i },
   { id: 'anc', host: /^(?:www\.)?anc\.gouv\.fr$/i, publisher: /^(?:anc|autorite des normes comptables)(?: anc)?$/i },
   { id: 'urssaf', host: /(?:^|\.)urssaf\.fr$/i, publisher: /\burssaf\b/i },
-  { id: 'net-entreprises', host: /(?:^|\.)net-entreprises\.fr$/i, publisher: /\bnet[- ]entreprises\b/i },
+  { id: 'net-entreprises', host: /(?:^|\.)net-entreprises\.fr$|^net-entreprises\.custhelp\.com$/i, publisher: /\bnet[- ]entreprises\b/i },
   { id: 'service-public', host: /(?:^|\.)service-public\.(?:fr|gouv\.fr)$/i, publisher: /\bservice public\b/i },
   { id: 'legifrance', host: /(?:^|\.)legifrance\.gouv\.fr$/i, publisher: /\blegifrance\b/i },
   { id: 'cnil', host: /(?:^|\.)cnil\.fr$/i, publisher: /\bcnil\b/i },

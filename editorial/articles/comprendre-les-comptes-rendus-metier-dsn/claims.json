@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
+  "articleSha256": "883a48c7cea482802494f54cac73716aab91479ae5cff025fe0b2d06a9fd1872",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -162,6 +162,55 @@
       "id": "unit-2a1c6670c94e",
       "text": "Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.",
       "claimIds": []
+    },
+    {
+      "id": "unit-9593246968d3",
+      "text": "Que veut dire « mandat à acquitter » dans un compte rendu métier DSN ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-4ace500e6b1e",
+      "text": "C’est l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé. Net-entreprises la décrit dans sa fiche d’aide sur la fonction mandat, sans lui attribuer de code ni de format.",
+      "claimIds": [
+        "claim-unit-4ace500e6b1e-1"
+      ]
+    },
+    {
+      "id": "unit-99717672473e",
+      "text": "Ce retour suit une consultation que la fiche décrit ainsi : après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN.",
+      "claimIds": [
+        "claim-unit-99717672473e-1"
+      ]
+    },
+    {
+      "id": "unit-15ee51139fe4",
+      "text": "Le déclarant peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN.",
+      "claimIds": [
+        "claim-unit-15ee51139fe4-1"
+      ]
+    },
+    {
+      "id": "unit-78cc31ec64f6",
+      "text": "La fiche décrit aussi le cas des mandats préremplis : après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration.",
+      "claimIds": [
+        "claim-unit-78cc31ec64f6-1"
+      ]
+    },
+    {
+      "id": "unit-d23cbf3c3cd3",
+      "text": "Elle rappelle l’enjeu : pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA.",
+      "claimIds": [
+        "claim-unit-d23cbf3c3cd3-1"
+      ]
+    },
+    {
+      "id": "unit-76b070a89adc",
+      "text": "Selon la fiche, cette fonction permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances. Elle ne la généralise pas à tous les organismes : pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne), et pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA. La liste de la fiche cite d’autres organismes, que nous ne reprenons pas ici.",
+      "claimIds": [
+        "claim-unit-76b070a89adc-1",
+        "claim-unit-76b070a89adc-2",
+        "claim-unit-76b070a89adc-3"
+      ]
     },
     {
       "id": "unit-d04369436357",
@@ -2094,6 +2143,517 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Le compte rendu 135 de France Travail remonte les propositions d’amélioration après un signalement FCTU à partir d’octobre 2026, tel que la page l’écrit.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-99717672473e-1",
+      "unitId": "unit-99717672473e",
+      "claim": "après réception d’un message DSN, et en cas de demande de paiement par prélèvement, l’organisme de protection sociale consulte sa « mandathèque » afin de s’assurer de la présence d’un mandat actif pour le couple « compte bancaire / créancier » du message DSN",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "Suite à la réception d’un message DSN et en cas de demande de paiement par prélèvement, l'organisme de protection sociale consulte sa «&nbsp;mandathèque&nbsp;» afin de s’assurer de la présence d’un mandat actif pour le couple \"compte bancaire / créancier\""
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "Suite à la réception d’un message DSN et en cas de demande de paiement par prélèvement, l'organisme de protection sociale consulte sa «&nbsp;mandathèque&nbsp;» afin de s’assurer de la présence d’un mandat actif pour le couple \"compte bancaire / créancier\"",
+            "context": "Suite à la réception d’un message DSN et en cas de demande de paiement par prélèvement, l'organisme de protection sociale consulte sa «&nbsp;mandathèque&nbsp;» afin de s’assurer de la présence d’un mandat actif pour le couple \"compte bancaire / créancier\"",
+            "contextSha256": "7cc0fcc07d31f0e9ebdd84f503821c7f03557adffa3b5a7a0b5cb9a584624f23",
+            "citation": {
+              "text": "Suite à la réception d’un message DSN et en cas de demande de paiement par prélèvement, l'organisme de protection sociale consulte sa «&nbsp;mandathèque&nbsp;» afin de s’assurer de la présence d’un mandat actif pour le couple \"compte bancaire / créancier\"",
+              "sha256": "7cc0fcc07d31f0e9ebdd84f503821c7f03557adffa3b5a7a0b5cb9a584624f23",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1512,
+                  "endLine": 1512
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "reception",
+                "message",
+                "demande",
+                "paiement",
+                "prelevement",
+                "organisme",
+                "protection",
+                "sociale",
+                "consulte",
+                "mandatheque",
+                "afin",
+                "assurer",
+                "presence",
+                "mandat",
+                "actif",
+                "couple",
+                "compte",
+                "bancaire",
+                "creancier"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1512 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (reception, message, demande, paiement, prelevement, organisme, protection, sociale, consulte, mandatheque, afin, assurer, presence, mandat, actif, couple, compte, bancaire, creancier) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Consultation de la mandathèque par l’organisme après un message DSN avec demande de paiement par prélèvement, pour le couple compte bancaire / créancier, décrite par la fiche.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-4ace500e6b1e-1",
+      "unitId": "unit-4ace500e6b1e",
+      "claim": "l’information notifiant la nécessité d’acquitter un mandat, retournée au déclarant lorsqu’aucun mandat n’est trouvé",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "Si aucun mandat n’est trouvé dans le cadre de cette interrogation, l’information notifiant la nécessité d’acquitter un mandat est retournée au déclarant."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "Si aucun mandat n’est trouvé dans le cadre de cette interrogation, l’information notifiant la nécessité d’acquitter un mandat est retournée au déclarant.",
+            "context": "Si aucun mandat n’est trouvé dans le cadre de cette interrogation, l’information notifiant la nécessité d’acquitter un mandat est retournée au déclarant.",
+            "contextSha256": "5bfd6a3d02c35af7c9e61b9bcfc513f9c591d394cbb0fe304c55832281f79ea3",
+            "citation": {
+              "text": "Si aucun mandat n’est trouvé dans le cadre de cette interrogation, l’information notifiant la nécessité d’acquitter un mandat est retournée au déclarant.",
+              "sha256": "5bfd6a3d02c35af7c9e61b9bcfc513f9c591d394cbb0fe304c55832281f79ea3",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1514,
+                  "endLine": 1514
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "information",
+                "notifiant",
+                "necessite",
+                "acquitter",
+                "mandat",
+                "retournee",
+                "declarant",
+                "aucun",
+                "trouve"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1514 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (information, notifiant, necessite, acquitter, mandat, retournee, declarant, aucun, trouve) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Lorsque la consultation ne trouve aucun mandat, l’information qui notifie la nécessité d’acquitter un mandat est retournée au déclarant, telle que la fiche l’écrit ; la réponse directe en gras ne dit que cela.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-15ee51139fe4-1",
+      "unitId": "unit-15ee51139fe4",
+      "claim": "peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les comptes rendus métier affichés sur le tableau de bord DSN",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "Celui-ci peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les&nbsp;comptes rendus métier&nbsp;affichés sur le tableau de bord DSN"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "Celui-ci peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les&nbsp;comptes rendus métier&nbsp;affichés sur le tableau de bord DSN",
+            "context": "Celui-ci peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les&nbsp;comptes rendus métier&nbsp;affichés sur le tableau de bord DSN",
+            "contextSha256": "fd9ef75d88f24bbd0a6783ffe461b6edfd2ac2813d31ef507154e681814b526f",
+            "citation": {
+              "text": "Celui-ci peut donc visualiser la nécessité de compléter et d’acquitter un mandat dans les&nbsp;comptes rendus métier&nbsp;affichés sur le tableau de bord DSN",
+              "sha256": "fd9ef75d88f24bbd0a6783ffe461b6edfd2ac2813d31ef507154e681814b526f",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1514,
+                  "endLine": 1514
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "peut",
+                "donc",
+                "visualiser",
+                "necessite",
+                "completer",
+                "acquitter",
+                "mandat",
+                "comptes",
+                "rendus",
+                "metier",
+                "affiches",
+                "tableau",
+                "bord"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1514 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (peut, donc, visualiser, necessite, completer, acquitter, mandat, comptes, rendus, metier, affiches, tableau, bord) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le déclarant peut visualiser cette nécessité dans les comptes rendus métier du tableau de bord DSN ; « Celui-ci » désigne le déclarant dans la phrase précédente de la même ligne ; les espaces insécables de la copie sont l’entité &nbsp;.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-78cc31ec64f6-1",
+      "unitId": "unit-78cc31ec64f6",
+      "claim": "après le dépôt d’une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l’organisme informe le déclarant via un retour métier accessible dans les « Mandats de prélèvement » du détail de sa déclaration",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "après le dépôt d'une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l'organisme vous informe via un retour métier accessible dans les \"Mandats de prélèvement\" du détail de votre déclaration."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "après le dépôt d'une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l'organisme vous informe via un retour métier accessible dans les \"Mandats de prélèvement\" du détail de votre déclaration.",
+            "context": "Accessible à partir du détail des déclarations en fonction d'un dépôt : après le dépôt d'une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l'organisme vous informe via un retour métier accessible dans les \"Mandats de prélèvement\" du détail de votre déclaration.",
+            "contextSha256": "550c202cba5ab501a5c4c73cf874f597bfdbbd1127e9ec1d313b274789d94c7c",
+            "citation": {
+              "text": "après le dépôt d'une DSN, lorsque des mandats préremplis à acquitter sont disponibles, l'organisme vous informe via un retour métier accessible dans les \"Mandats de prélèvement\" du détail de votre déclaration.",
+              "sha256": "3127548acbd7b329c2898abc68f47324f7eeaf7709230c5eab202f97d347b822",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1561,
+                  "endLine": 1561
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "apres",
+                "depot",
+                "lorsque",
+                "mandats",
+                "preremplis",
+                "acquitter",
+                "disponibles",
+                "organisme",
+                "informe",
+                "retour",
+                "metier",
+                "accessible",
+                "prelevement",
+                "detail",
+                "declaration"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1561 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (apres, depot, lorsque, mandats, preremplis, acquitter, disponibles, organisme, informe, retour, metier, accessible, prelevement, detail, declaration) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Après le dépôt d’une DSN, la fiche indique que l’organisme informe, par un retour métier du détail de la déclaration, lorsque des mandats préremplis à acquitter sont disponibles.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-d23cbf3c3cd3-1",
+      "unitId": "unit-d23cbf3c3cd3",
+      "claim": "pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+            "context": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA :",
+            "contextSha256": "f6cf1a7b7c8e1101226d030137b0c9ad72dba38535bcde7a8230eb9773ebaa97",
+            "citation": {
+              "text": "Pour effectuer le télépaiement des cotisations il est donc obligatoire d’avoir au préalable acquitté un mandat de prélèvement SEPA",
+              "sha256": "ad12cd55c139d46e06ac4dce7017aa9c0997c710b72cb3a6ad42afcb58aa6fac",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1493,
+                  "endLine": 1493
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "effectuer",
+                "telepaiement",
+                "cotisations",
+                "donc",
+                "obligatoire",
+                "prealable",
+                "acquitte",
+                "mandat",
+                "prelevement",
+                "sepa"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1493 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (effectuer, telepaiement, cotisations, donc, obligatoire, prealable, acquitte, mandat, prelevement, sepa) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Condition posée par la fiche pour le télépaiement des cotisations, citée mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-76b070a89adc-1",
+      "unitId": "unit-76b070a89adc",
+      "claim": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et certaines mutuelles et assurances",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et&nbsp;certaines mutuelles et assurances."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et&nbsp;certaines mutuelles et assurances.",
+            "context": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et&nbsp;certaines mutuelles et assurances.",
+            "contextSha256": "0a4eb753da88ba775fe70d238e8b829efd72f176ee770c627520973a8f69d372",
+            "citation": {
+              "text": "permet actuellement de traiter les mandats pour la plupart des institutions de prévoyance et&nbsp;certaines mutuelles et assurances.",
+              "sha256": "0a4eb753da88ba775fe70d238e8b829efd72f176ee770c627520973a8f69d372",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1538,
+                  "endLine": 1538
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "permet",
+                "actuellement",
+                "traiter",
+                "mandats",
+                "plupart",
+                "institutions",
+                "prevoyance",
+                "certaines",
+                "mutuelles",
+                "assurances"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1538 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (permet, actuellement, traiter, mandats, plupart, institutions, prevoyance, certaines, mutuelles, assurances) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Portée de la fonction : la plupart des institutions de prévoyance et certaines mutuelles et assurances, sans généralisation à tous les organismes ; l’espace entre « et » et « certaines » est l’entité &nbsp; dans la copie.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-76b070a89adc-2",
+      "unitId": "unit-76b070a89adc",
+      "claim": "pour l’Urssaf, les mandats continuent d’être gérés dans les services+ (Urssaf en ligne)",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "URSSAF : les mandats continuent d'être gérés comme actuellement à savoir dans les services+ (urssaf en ligne)."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "URSSAF : les mandats continuent d'être gérés comme actuellement à savoir dans les services+ (urssaf en ligne).",
+            "context": "URSSAF : les mandats continuent d'être gérés comme actuellement à savoir dans les services+ (urssaf en ligne).",
+            "contextSha256": "bd75b1befaff2957d2ea8dd41b5dd731c5be645723d0305cb9858e4d7d089bf4",
+            "citation": {
+              "text": "URSSAF : les mandats continuent d'être gérés comme actuellement à savoir dans les services+ (urssaf en ligne).",
+              "sha256": "bd75b1befaff2957d2ea8dd41b5dd731c5be645723d0305cb9858e4d7d089bf4",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1543,
+                  "endLine": 1543
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "urssaf",
+                "mandats",
+                "continuent",
+                "geres",
+                "services",
+                "ligne"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1543 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (urssaf, mandats, continuent, geres, services, ligne) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Ligne URSSAF de la liste de la fiche : les mandats continuent d’être gérés dans services+ (urssaf en ligne).",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-76b070a89adc-3",
+      "unitId": "unit-76b070a89adc",
+      "claim": "pour la MSA, les mandats sont gérés directement dans les services complémentaires de la MSA",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-mandat"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-mandat": "MSA : les mandats sont gérés directement dans les services complémentaires de la MSA"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-mandat",
+            "sourceUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "verifiedUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+            "excerpt": "MSA : les mandats sont gérés directement dans les services complémentaires de la MSA",
+            "context": "MSA : les mandats sont gérés directement dans les services complémentaires de la MSA",
+            "contextSha256": "1924cbe9ab106f849da0386ac3476a149055f5ab9c0f5ba1f0b30390233db6b3",
+            "citation": {
+              "text": "MSA : les mandats sont gérés directement dans les services complémentaires de la MSA",
+              "sha256": "1924cbe9ab106f849da0386ac3476a149055f5ab9c0f5ba1f0b30390233db6b3",
+              "sourceContentSha256": "b5ffc738a16ca72c1d05eee44b0c73201d06679475d1eb712d84e05892f80e78",
+              "coordinates": {
+                "finalUrl": "https://net-entreprises.custhelp.com/app/answers/detail_dsn/a_id/964",
+                "checkedAt": "2026-11-03",
+                "title": "Le module mandat pour payer ses cotisations DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1545,
+                  "endLine": 1545
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "mandats",
+                "geres",
+                "directement",
+                "services",
+                "complementaires"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1545 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (mandats, geres, directement, services, complementaires) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Ligne MSA de la liste de la fiche : les mandats sont gérés directement dans les services complémentaires de la MSA.",
             "checkedAt": "2026-11-03"
           }
         ]
