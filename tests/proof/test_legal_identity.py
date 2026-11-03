@@ -28,6 +28,16 @@ FICHES_PUBLIQUES = [
 ]
 
 
+class LegalPageUpdateDate(unittest.TestCase):
+    """La date de revérification du téléphone de l'hébergeur ne s'écrit pas sur la page (libellé de processus
+    interdit) : elle se lie à « Dernière mise à jour », que la page affiche déjà."""
+
+    def test_page_update_date_follows_the_phone_check(self):
+        source = (Path(__file__).resolve().parents[2] / 'src/pages/mentions-legales.astro').read_text(encoding='utf-8')
+        self.assertIn(f'miseAJour="{CLOUDFLARE_PHONE_CHECKED_LABEL}"', source,
+                      'la page doit porter la date de la dernière revérification du téléphone de l’hébergeur')
+
+
 class LegalText(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -111,7 +121,6 @@ class LegalIdentityProof(unittest.TestCase):
             CLOUDFLARE_PHONE, CLOUDFLARE_PHONE_NUMERIC,
             f'mises à jour le {CLOUDFLARE_TERMS_UPDATED}',
             'ligne commerciale pour les États-Unis', '« International sales phone numbers »',
-            f'consultée le {CLOUDFLARE_PHONE_CHECKED_LABEL}',
         ]:
             with self.subTest(expected=expected):
                 self.assertIn(expected, self.text)
