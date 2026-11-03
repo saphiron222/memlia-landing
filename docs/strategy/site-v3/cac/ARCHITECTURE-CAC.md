@@ -76,7 +76,7 @@ Quatre angles de geste et de preuve par famille ouverte, plus un pilier transver
 
 | URL / destination | Requête primaire / intention du terme | État | Mesure | Résultat distinct |
 |---|---|---|---|---|
-| `/outils-comptables-gratuits/verificateur-fec-local` | vérificateur fec gratuit | existant-reutilise | proprietaire-existant | Propriétaire existant conservé ; aucune deuxième implémentation CAC. |
+| `/outils-comptables-gratuits/verificateur-fec-local` | test fec | existant-reutilise | proprietaire-existant | Propriétaire existant conservé ; aucune deuxième implémentation CAC. |
 | `/outils-comptables-gratuits/preparer-pseudonymiser-fichier-csv-fec` | pseudonymiser fichier comptable avant ia | existant-reutilise | proprietaire-existant | Préparation existante reliée, jamais présentée comme anonymisation certifiée. |
 
 ### hub-existant

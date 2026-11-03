@@ -3813,7 +3813,7 @@
         {
           "from": "/outils-comptables-gratuits",
           "to": "/outils-comptables-gratuits/verificateur-fec-local",
-          "context": "vérificateur fec gratuit",
+          "context": "test fec",
           "state": "projete-non-publie"
         },
         {
@@ -5035,7 +5035,7 @@
     {
       "id": "fec-existant",
       "url": "/outils-comptables-gratuits/verificateur-fec-local",
-      "query": "vérificateur fec gratuit",
+      "query": "test fec",
       "type": "outil-existant",
       "family": "cac-fec-reception",
       "state": "existant-reutilise",
@@ -5049,7 +5049,7 @@
       "measure": {
         "state": "proprietaire-existant",
         "source": "config/page-intent-contract.json",
-        "query": "vérificateur fec gratuit",
+        "query": "test fec",
         "volumeMensuel": null
       },
       "terrain": [
@@ -5061,7 +5061,7 @@
         {
           "from": "/outils-comptables-gratuits",
           "to": "/outils-comptables-gratuits/verificateur-fec-local",
-          "context": "vérificateur fec gratuit",
+          "context": "test fec",
           "state": "projete-non-publie"
         },
         {
@@ -5590,7 +5590,7 @@
     {
       "from": "/outils-comptables-gratuits",
       "to": "/outils-comptables-gratuits/verificateur-fec-local",
-      "context": "vérificateur fec gratuit",
+      "context": "test fec",
       "state": "projete-non-publie"
     },
     {
