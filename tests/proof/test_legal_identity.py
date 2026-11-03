@@ -13,7 +13,10 @@ CLOUDFLARE_PHONE = '+1 (888) 99 FLARE'
 CLOUDFLARE_PHONE_NUMERIC = '+1 888 993 5273'
 CLOUDFLARE_PHONE_URI = 'tel:+18889935273'
 CLOUDFLARE_TERMS_UPDATED = '12 septembre 2025'
-CLOUDFLARE_PHONE_CHECKED_AT = date(2026, 9, 20)
+# Revérifié le 03/11/2026 dans un navigateur : « US: +1 (888) 99 FLARE » figure sur
+# https://www.cloudflare.com/plans/enterprise/contact/ (liste des lignes commerciales par pays). Les conditions
+# https://www.cloudflare.com/terms/ (mises à jour le 12 septembre 2025, clause 20) ne citent aucun téléphone.
+CLOUDFLARE_PHONE_CHECKED_AT = date(2026, 11, 3)
 CLOUDFLARE_PHONE_EXPIRES_AT = CLOUDFLARE_PHONE_CHECKED_AT + timedelta(days=30)
 FICHES_PUBLIQUES = [
     'https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541',
@@ -115,7 +118,7 @@ class LegalIdentityProof(unittest.TestCase):
         self.assertLessEqual(
             date.today(),
             CLOUDFLARE_PHONE_EXPIRES_AT,
-            'le téléphone de l’hébergeur doit être revérifié sur les conditions Cloudflare',
+            'le téléphone de l’hébergeur doit être revérifié sur la page contact de Cloudflare (cloudflare.com/plans/enterprise/contact/)',
         )
 
 

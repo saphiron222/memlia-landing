@@ -139,10 +139,10 @@ BRIEFS_IA_MANDATES = {
 SUPPLEMENTS_CAC_F4 = {
     'cac-appreciation-outil-automatise': {
         'requete': 'appréciation outils automatisés audit',
-        'datePlanifiee': '2026-10-20', 'format': 'how-to-guide'},
+        'dateManquee': '2026-10-20', 'format': 'how-to-guide'},
     'cac-dossier-constitution-soixante-jours': {
         'requete': 'archivage dossier audit 60 jours',
-        'datePlanifiee': '2026-10-21', 'format': 'listicle-checklist'},
+        'dateManquee': '2026-10-21', 'format': 'listicle-checklist'},
 }
 SOURCE_MESURES_F4 = 'cac/mesures/f4-rubrique-preflight-2026-10-09.json'
 

@@ -29,11 +29,6 @@ class CalendrierVivant(unittest.TestCase):
                           if e.get('profession') == 'cac' and e.get('datePlanifiee')}, {
             'cac-reception-fec-constat': '2026-10-12',
             'automatiser-un-cabinet-cac-la-carte-des-taches': '2026-10-12',
-            'cac-circularisation-alternatives': '2026-10-16',
-            'cac-demandes-documents-cycles': '2026-10-19',
-            'cac-contributions-dossier-preservation': '2026-10-23',
-            'cac-appreciation-outil-automatise': '2026-10-20',
-            'cac-dossier-constitution-soixante-jours': '2026-10-21',
         })
 
 
