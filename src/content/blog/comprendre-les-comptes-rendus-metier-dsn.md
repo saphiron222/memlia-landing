@@ -4,7 +4,7 @@ titreOnglet: "CRM DSN : lire le compte rendu et ses anomalies | Memlia"
 resume: "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant. La mécanique rassemble et rapproche ; votre équipe décide."
 description: "CRM DSN : comment identifier chaque retour, qualifier une anomalie et tracer sa correction sans confondre dépôt accepté et paie juste."
 datePublication: 2026-09-15
-dateMiseAJour: 2026-09-20
+dateMiseAJour: 2026-11-03
 auteur: kevin
 sujets: [dsn, paie, production-sociale, methode]
 motsCles: ["comptes rendus métier DSN", "CRM DSN", "bilan d’anomalies DSN", "certificat de conformité DSN", "CRM nominatif"]
@@ -14,7 +14,7 @@ pipelineVersion: 1
 primaryQuery: "crm dsn"
 secondaryQueries: ["comprendre CRM DSN", "bilan d’anomalies DSN", "certificat de conformité DSN", "CRM nominatif", "comptes rendus métier DSN", "compte rendu métier dsn", "anomalies dsn"]
 intent: comprendre
-fanOut: ["distinguer AEE ARE CCO BAN", "lire un CRM par organisme", "qualifier une anomalie DSN", "corriger après un retour DSN", "tracer la décision"]
+fanOut: ["distinguer AEE ARE CCO BAN", "lire un CRM par organisme", "qualifier une anomalie DSN", "corriger après un retour DSN", "tracer la décision", "numéros des comptes rendus métier 118 119 120 121 124", "qui reçoit et consulte le compte rendu métier"]
 cluster: paie-social
 famille: dsn-crm
 rolePrincipal: paie-responsables-sociaux
@@ -23,17 +23,17 @@ tache: "Lire les retours reçus après une DSN, déterminer leur portée et orga
 preuveRole:
   niveau: hypothese
   source: "preuves/role.json"
-  date: 2026-09-20
+  date: 2026-11-03
 funnel: TOFU
 contentType: searchable
 format: how-to-guide
 rankability: plausible
 businessRelevance: directe
 proofStatus: verifiee
-proofRequired: "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; sept affirmations DSN citées mot pour mot depuis Net-entreprises, ouvertes le jour de la republication."
-reviewRule: "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val) et à chaque nouvelle version de norme DSN ; relecture des sources à six mois."
+proofRequired: "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; vingt-neuf affirmations DSN, chacune reliée à l’extrait exact d’une des six pages Net-entreprises citées, ouvertes le jour de la republication."
+reviewRule: "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; relecture des sources à six mois."
 reviewer: marketing
-sourcesVerifieesLe: 2026-09-20
+sourcesVerifieesLe: 2026-11-03
 cta:
   label: "Confier cette tâche"
   destination: "/contact"
@@ -45,19 +45,27 @@ sources:
   - editeur: "Net-entreprises"
     titre: "Les comptes rendus métiers DSN"
     url: "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/"
-    consulte: 2026-09-20
+    consulte: 2026-11-03
   - editeur: "Net-entreprises"
     titre: "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement"
     url: "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/"
-    consulte: 2026-09-20
+    consulte: 2026-11-03
   - editeur: "Net-entreprises"
     titre: "La fiabilisation des données de la DSN"
     url: "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/"
-    consulte: 2026-09-20
+    consulte: 2026-11-03
   - editeur: "Net-entreprises"
     titre: "Outils d’auto-contrôle Dsn-Val et brique de contrôle"
     url: "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/"
-    consulte: 2026-09-20
+    consulte: 2026-11-03
+  - editeur: "Net-entreprises"
+    titre: "Le tableau de bord de la DSN"
+    url: "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/"
+    consulte: 2026-11-03
+  - editeur: "Net-entreprises"
+    titre: "Norme et documentation NEOReS"
+    url: "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/"
+    consulte: 2026-11-03
 ---
 
 ## Réponse directe
@@ -97,6 +105,35 @@ Dans le tableau, la définition des retours vient de cette source ; la colonne �
 Les sigles de ce tableau sont ceux de la documentation Net-entreprises. **L’intitulé affiché peut varier selon la version de norme, le portail, l’organisme ou le logiciel.** La portée à retenir est celle décrite dans le retour effectivement reçu, pas celle que suggère une étiquette familière.
 
 La frontière entre BAN et CRM dépend du périmètre, du format et de l’organisme décrits dans le retour reçu. Le tableau oriente la lecture ; il ne remplace ni le document ni sa notice.
+
+### Qui reçoit le compte rendu métier et où le consulter ?
+
+Le déclarant qui a effectué le dépôt, et lui seul. Sur la page [Le tableau de bord de la DSN](https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/), Net-entreprises écrit que « seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés ». L’administrateur fait exception : il « peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée ».
+
+Les retours s’affichent dans le tableau de bord DSN, « intégré dans votre logiciel ou sur net-entreprises.fr ». Un cabinet en procédure automatique d’échanges peut le consulter « directement via votre produit (logiciel) de paie » ; dans les autres cas, il doit se connecter à son compte net-entreprises.fr.
+
+La recherche a une limite : il est « impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois ». Net-entreprises précise que l’historisation « peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique ». Consignez donc la référence de chaque retour dans le registre décrit plus bas dès sa réception.
+
+### Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ?
+
+NEOReS, selon Net-entreprises, c’est « la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie ». Les numéros ci-dessous sont ceux des comptes rendus normalisés de cette norme ; Net-entreprises les recense, organisme par organisme, sur sa page [Norme et documentation NEOReS](https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/).
+
+Cette normalisation concerne « uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN » : les certificats de conformité, les bilans d’anomalies et les accusés de réception ne sont pas concernés, selon la même page. Voici les numéros qu’elle recense, résumés ; la page propose en plus des spécifications à télécharger pour plusieurs d’entre eux.
+
+| Numéro | Ce que la page en dit |
+| --- | --- |
+| 118 | Les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues sont mis à disposition des déclarants depuis 2022. |
+| 119 et 120 | Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés. La page publie les spécifications des contrôles présents dans les CRM normalisés 119 et 120. |
+| 121 | Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés. La page publie les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité ». |
+| 124 | Urssaf : depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. |
+| 125 | MSA : à partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. |
+| 130 | MSA : le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024. |
+| 136 | MSA : le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026). |
+| 132 | En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf. |
+| 134 | En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA. |
+| 135 | À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé. |
+
+Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.
 
 ## Contrôle de structure ou contrôle de cohérence : que regarder ?
 

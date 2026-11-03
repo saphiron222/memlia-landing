@@ -1,11 +1,11 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "reviewedAt": "2026-09-20",
+  "reviewedAt": "2026-11-03",
   "reviewer": "relecteur-qualite-ia-memlia",
   "rubric": "blog-analyze-100",
   "status": "PASS",
-  "score": 97,
+  "score": 95,
   "p0": 0,
   "categories": {
     "contentQuality": {
@@ -13,7 +13,7 @@
       "max": 30
     },
     "seoOptimization": {
-      "score": 25,
+      "score": 24,
       "max": 25
     },
     "eeatSignals": {
@@ -25,30 +25,27 @@
       "max": 15
     },
     "aiCitationReadiness": {
-      "score": 15,
+      "score": 14,
       "max": 15
     }
   },
   "evidence": [
-    "Cinq tableaux structurés (<thead>) organisent la comparaison des retours, le registre à dix champs, les trois situations fictives et la matrice d'automatisation, un format favorable à la lecture comme à l'extraction.",
-    "Les sept citations du paquet de revue sont vérifiées mot pour mot contre les quatre fichiers sources tier-1 (Net-entreprises), chacune rattachée à la bonne page et au bon paragraphe.",
-    "Auteur nommé, lié et biographié (Kevin Kitanga, Fondateur de Memlia) avec balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
-    "Le mot « à adapter », cause du FAIL de la première passe, est absent du rendu actuel ; « Memlia peut » et « module » (hors balises <script type=\"module\">) sont également absents après vérification exhaustive.",
-    "L'exemple fictif (dossier D-027, retour R-027-A, rubrique X-14, pièce P-027-08) est explicitement étiqueté « entièrement fictif, sans donnée client ni règle de paie réelle », et les trois situations complémentaires (D-031, D-044, D-052) le sont tout autant.",
-    "Une phrase de la FAQ (« le terme apparaît notamment dans la liste officielle des retours de l'administration fiscale ») avance une affirmation factuelle spécifique sans lien ni citation directe dans ce paragraphe précis, contrairement aux sept claims du paquet de revue qui sont tous sourcés.",
-    "L'image de couverture (1920x1080) décline des dérivés OG 1200x630 et hero 768 en AVIF/WebP déclarés dans image.json, avec chargement eager et fetchpriority high pour l'image LCP plutôt qu'un lazy-load pénalisant.",
-    "Sept liens internes contextuels distincts dans le corps (deux articles frères, le pilier, deux ancres de glossaire, /methode, /garanties), plus /contact et /methode dans le bloc d'appel de fin."
+    "28/30 contenu : les deux sections répondent à des questions réelles de gestionnaires de paie avec des faits sourcés et leurs limites ; le tableau des numéros est l'apport le plus utile. Retrait de 2 points : plusieurs intentions mesurées restent sans réponse (OK/ANO, organismes complémentaires, mandat, radiation).",
+    "24/25 SEO : titre 56 caractères, description 134, canonical, une H1, hiérarchie propre, image 1200×630 avec dimensions, dateModified projeté. Retrait de 1 point : placement des deux H3 sous un H2 thématiquement décalé.",
+    "14/15 E-E-A-T : sources primaires officielles datées et revérifiées le jour même, citations exactes. Retrait de 1 point : un seul éditeur pour les six sources.",
+    "15/15 technique : rendu local conforme, alt non vide, aucun lien cassé dans la zone ajoutée, aucun terme interdit.",
+    "14/15 citabilité : réponses autonomes d'une phrase en tête de section, tableau lisible hors contexte. Retrait de 1 point : les délais H+4 et J+5 de 119 et 120 manquent, la page les donne."
   ],
   "reservations": [
-    "Le score Lighthouse (performance, accessibilité, SEO, Core Web Vitals) n'a pas été mesuré dans cette revue ; l'appréciation technique s'appuie sur une lecture du code (preload de polices, fetchpriority sur l'image hero, formats AVIF/WebP), pas sur un audit chronométré.",
-    "La citation réelle de cette page par des moteurs IA (AI Overviews, Perplexity, ChatGPT) n'est pas mesurée ; le jugement porte sur la structure d'extraction (réponse directe, FAQ, tableaux à <thead>), pas sur une citation observée en production.",
-    "Le rendu mobile (320-768px, cibles tactiles, absence de défilement horizontal) n'a pas été vérifié visuellement dans un navigateur ; l'appréciation s'appuie sur les media queries et les unités clamp() lues dans le CSS.",
-    "Le score de lisibilité (Flesch ou équivalent français) n'a pas été calculé par un outil dédié ; la densité de certaines phrases longues à clauses multiples est une lecture qualitative, pas une mesure."
+    "Les deux nouveaux H3 gagneraient à être rangés sous le H2 de définition plutôt que sous « Pourquoi un dépôt accepté ne suffit-il pas ? ».",
+    "Les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse : leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer. À reprendre si la forge accepte ces formats.",
+    "Les délais de transmission de 119 (H+4) et 120 (J+5) ne sont pas repris : leurs extraits, trop courts pour le seuil de citation du gate, ont été écartés plutôt que d'en contourner la règle.",
+    "La page NEOReS a été modifiée le 02/11/2026 : l'article doit être relu à chaque changement de cette page, comme le dit déjà la règle de relecture de la recette."
   ],
-  "verdict": "Le candidat corrige réellement l'écart de la première passe (la formule « à adapter » a disparu, remplacée par des formulations qui gardent le sens) et atteint un niveau élevé sur les sept critères éditoriaux comme sur le barème qualité à 100 points, avec seulement des réserves mineures et non bloquantes.",
+  "verdict": "PASS avec réserves : la republication apporte deux réponses sourcées et vérifiées en direct sans élargir au-delà de ce que les pages disent. Les réserves portent sur le placement des sections et sur les intentions laissées sans réponse, pas sur la fidélité du contenu.",
   "subject": {
     "slug": "comprendre-les-comptes-rendus-metier-dsn",
-    "articleSha256": "63c2afb4b30b2a9d21cd072495546f215c3fe950db9e992a9b76daca841574c6",
-    "manifestSha256": "992b518b0212b9ff25d7d292656ef228670f6523c7a4ac72062fa81ad3fd3944"
+    "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
+    "manifestSha256": "ac05a84c995d92e206ae79b99963cd770ea553df6334dd233c3b817455cc81ac"
   }
 }

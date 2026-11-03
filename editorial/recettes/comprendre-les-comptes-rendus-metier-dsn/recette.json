@@ -5,7 +5,7 @@
   "summary": "Un dépôt accepté ne clôt pas le contrôle. Identifiez le retour, son émetteur, sa période et sa population ; lisez le statut dans sa source, rapprochez la donnée de paie, puis documentez la décision et le contrôle suivant. La mécanique rassemble et rapproche ; votre équipe décide.",
   "description": "CRM DSN : comment identifier chaque retour, qualifier une anomalie et tracer sa correction sans confondre dépôt accepté et paie juste.",
   "date": "2026-09-15",
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-11-03",
   "topics": [
     "dsn",
     "paie",
@@ -35,7 +35,9 @@
     "lire un CRM par organisme",
     "qualifier une anomalie DSN",
     "corriger après un retour DSN",
-    "tracer la décision"
+    "tracer la décision",
+    "numéros des comptes rendus métier 118 119 120 121 124",
+    "qui reçoit et consulte le compte rendu métier"
   ],
   "role": {
     "primary": "paie-responsables-sociaux",
@@ -53,8 +55,8 @@
   "task": "Lire les retours reçus après une DSN, déterminer leur portée et organiser une correction ou un classement justifié.",
   "rankability": "plausible",
   "businessRelevance": "directe",
-  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; sept affirmations DSN citées mot pour mot depuis Net-entreprises, ouvertes le jour de la republication.",
-  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val) et à chaque nouvelle version de norme DSN ; relecture des sources à six mois.",
+  "proofRequired": "Tableau des retours (AEE, ARE, CCO, BAN, CRM) avec leur portée officielle et le premier geste ; réponse sur le destinataire et le lieu de consultation des retours (tableau de bord DSN) ; tableau des numéros de comptes rendus normalisés (118 à 136) tel que la page NEOReS les recense ; méthode en six étapes ; jeu fictif à quatre situations ; registre à dix champs ; frontière en trois colonnes ; vingt-neuf affirmations DSN, chacune reliée à l’extrait exact d’une des six pages Net-entreprises citées, ouvertes le jour de la republication.",
+  "reviewRule": "Réviser à chaque changement des pages Net-entreprises citées (retours après dépôt, comptes rendus métier, fiabilisation, Dsn-Val, tableau de bord DSN, norme et documentation NEOReS) et à chaque nouvelle version de norme DSN ; la page NEOReS, modifiée le 02/11/2026, est à relire avant toute reprise du tableau des numéros ; relecture des sources à six mois.",
   "cta": {
     "label": "Confier cette tâche",
     "destination": "/contact",
@@ -145,6 +147,26 @@
       "official": true,
       "classificationReason": "Page officielle du GIP-MDS sur l’outil d’auto-contrôle du fichier avant dépôt.",
       "excerpt": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
+    },
+    {
+      "id": "net-entreprises-tableau-de-bord",
+      "publisher": "Net-entreprises",
+      "title": "Le tableau de bord de la DSN",
+      "url": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS, opérateur de la DSN, décrivant le tableau de bord : qui consulte les retours des organismes, où, et jusqu’à quand.",
+      "excerpt": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés."
+    },
+    {
+      "id": "net-entreprises-neores",
+      "publisher": "Net-entreprises",
+      "title": "Norme et documentation NEOReS",
+      "url": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+      "level": "tier-1",
+      "official": true,
+      "classificationReason": "Page officielle du GIP-MDS sur la norme NEOReS des retours des organismes aux déclarants, qui recense les comptes rendus normalisés par numéro.",
+      "excerpt": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie."
     }
   ],
   "links": {
@@ -230,6 +252,160 @@
       "explanation": "Définition du contrôle non bloquant : une DSN acceptée peut encore porter des écarts à corriger."
     },
     {
+      "claim": "seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés.",
+      "explanation": "Seul le déclarant qui a déposé peut consulter les retours associés, cité mot pour mot depuis la page du tableau de bord."
+    },
+    {
+      "claim": "peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "L’administrateur, peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée.",
+      "explanation": "Exception de l’administrateur à la règle du déclarant ayant déposé, citée mot pour mot."
+    },
+    {
+      "claim": "intégré dans votre logiciel ou sur net-entreprises.fr",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "il est essentiel de consulter le tableau de bord (intégré dans votre logiciel ou sur net-entreprises.fr)",
+      "explanation": "Les deux lieux de consultation du tableau de bord, cités mot pour mot."
+    },
+    {
+      "claim": "directement via votre produit (logiciel) de paie",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "Si vous êtes en procédure automatique d’échanges, vous pouvez le consulter directement via votre produit (logiciel) de paie",
+      "explanation": "Consultation depuis le logiciel de paie pour un cabinet en procédure automatique d’échanges, citée mot pour mot."
+    },
+    {
+      "claim": "il doit se connecter à son compte net-entreprises.fr",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "Dans les autres cas, vous devez vous connecter à votre compte net-entreprises.fr.",
+      "explanation": "Dans les autres cas, la connexion au compte net-entreprises.fr est la voie de consultation indiquée par la page."
+    },
+    {
+      "claim": "impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "Il est en effet impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois (les mois présentés dans la liste déroulante étant les seuls pouvant être affichés).",
+      "explanation": "Limite de recherche du tableau de bord à 3 mois, citée mot pour mot."
+    },
+    {
+      "claim": "peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique",
+      "type": "dsn",
+      "sourceId": "net-entreprises-tableau-de-bord",
+      "excerpt": "Cette historisation peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique.",
+      "explanation": "Les deux modes d’historisation indiqués par la page, cités mot pour mot."
+    },
+    {
+      "claim": "la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie.",
+      "explanation": "Définition officielle de NEOReS, citée mot pour mot."
+    },
+    {
+      "claim": "uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "La normalisation des retours DSN concerne uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN",
+      "explanation": "Périmètre des retours normalisés : les transmissions d’un organisme vers le déclarant, cité mot pour mot."
+    },
+    {
+      "claim": "les certificats de conformité, les bilans d’anomalies et les accusés de réception ne sont pas concernés",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Les retours portant sur la phase amont de réception par les SI métiers DSN et PASRAU (Certificats de conformités &#8211; CCO, Bilans d’anomalies &#8211; BAN et accusés de réception) ne sont donc pas concernés.",
+      "explanation": "Les certificats de conformité, bilans d’anomalies et accusés de réception sont hors du périmètre des retours normalisés, selon la page."
+    },
+    {
+      "claim": "Les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues sont mis à disposition des déclarants depuis 2022",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Depuis 2022, les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues, sont mis à disposition des déclarants dans les CRM normalisés 118",
+      "explanation": "Le compte rendu normalisé 118 porte les effectifs calculés par les Urssaf et les caisses MSA depuis 2022."
+    },
+    {
+      "claim": "les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés",
+      "explanation": "Depuis février 2023, l’Urssaf Caisse Nationale transmet ses résultats de contrôles par des comptes rendus normalisés, cité mot pour mot."
+    },
+    {
+      "claim": "spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Téléchargez les spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+      "explanation": "La page rattache les numéros 119 et 120 aux CRM normalisés dont elle publie les spécifications de contrôles."
+    },
+    {
+      "claim": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés",
+      "explanation": "Le CRM Identité (121) remonte les propositions d’amélioration des données d’identification depuis juin 2023, cité mot pour mot."
+    },
+    {
+      "claim": "spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Téléchargez les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »",
+      "explanation": "La page rattache le numéro 121 au CRM Identité dont elle publie les spécifications de contrôles."
+    },
+    {
+      "claim": "depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+      "explanation": "Rappel annuel (124) depuis mars 2025 en cas d’anomalie non corrigée, cité mot pour mot."
+    },
+    {
+      "claim": "à partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "A partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+      "explanation": "Rappel annuel MSA (125) annoncé à partir de mars 2027 en cas d’anomalie non corrigée, cité mot pour mot."
+    },
+    {
+      "claim": "le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+      "explanation": "Compte rendu MSA 130, transmis à H+4 du dépôt depuis juillet 2024, cité mot pour mot."
+    },
+    {
+      "claim": "le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026)",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "Le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026).",
+      "explanation": "Compte rendu MSA 136, transmis à J+5 de l’échéance à partir de juillet 2026, cité mot pour mot."
+    },
+    {
+      "claim": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf.",
+      "explanation": "Le CRM post substitution 132 informe des données substituées par l’Urssaf, cité mot pour mot."
+    },
+    {
+      "claim": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA.",
+      "explanation": "Le CRM post substitution 134 informe des données substituées par la MSA, cité mot pour mot."
+    },
+    {
+      "claim": "À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+      "type": "dsn",
+      "sourceId": "net-entreprises-neores",
+      "excerpt": "A partir d’octobre 2026, France Travail remontera les propositions d&rsquo;amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+      "explanation": "Le compte rendu 135 de France Travail remonte les propositions d’amélioration après un signalement FCTU à partir d’octobre 2026, tel que la page l’écrit."
+    },
+    {
       "unite": "décrit Dsn-Val ainsi",
       "claim": "permet de tester votre fichier DSN avant de le déposer",
       "type": "dsn",
@@ -263,16 +439,18 @@
       "Brief hérité de la première publication du 15/09/2026, requête recalée sur « crm dsn » à l’audit des titres du 17/09/2026 (lecteur paie-responsables-sociaux, intention comprendre, entonnoir TOFU) ; tâche : lire les retours reçus après une DSN, déterminer leur portée et organiser une correction ou un classement justifié."
     ],
     "blog-outline": [
-      "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, périmètre après dépôt, définitions, pourquoi la lecture casse à la main, pourquoi un dépôt accepté ne suffit pas (tableau des retours), structure ou cohérence, six étapes, jeu fictif, registre, frontière en trois colonnes, erreurs, questions fréquentes, règle à retenir, pour aller plus loin."
+      "Plan aligné le 17/09/2026 sur le gabarit how-to-guide de la forge : réponse directe, périmètre après dépôt, définitions, pourquoi la lecture casse à la main, pourquoi un dépôt accepté ne suffit pas (tableau des retours), structure ou cohérence, six étapes, jeu fictif, registre, frontière en trois colonnes, erreurs, questions fréquentes, règle à retenir, pour aller plus loin.",
+      "Deux H3 ajoutés le 03/11/2026 sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », intertitres en question, réponse directe dès la première phrase, avant « Comment lire un CRM en six étapes ? »."
     ],
     "blog-rewrite": [
-      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, quatre pages Net-entreprises revérifiées le jour même, revue neuve) ; la citation du cahier technique en PDF, invérifiable par la chaîne, est remplacée par la phrase de Net-entreprises qui borne le certificat de conformité et par la définition du contrôle non bloquant ; section « pourquoi la lecture casse à la main » sur la règle que le gestionnaire applique sans l’avoir écrite ; formules « Memlia peut » retirées ; appel « Confier cette tâche » ; liens vers le pilier, la méthode et les garanties. Méthode en six étapes, jeu fictif et registre conservés."
+      "Republication du 17/09/2026 selon la charte de message v3 (§7 bis) : entrée dans la forge (recette, quatre pages Net-entreprises revérifiées le jour même, revue neuve) ; la citation du cahier technique en PDF, invérifiable par la chaîne, est remplacée par la phrase de Net-entreprises qui borne le certificat de conformité et par la définition du contrôle non bloquant ; section « pourquoi la lecture casse à la main » sur la règle que le gestionnaire applique sans l’avoir écrite ; formules « Memlia peut » retirées ; appel « Confier cette tâche » ; liens vers le pilier, la méthode et les garanties. Méthode en six étapes, jeu fictif et registre conservés.",
+      "Republication du 03/11/2026 (audit SEO du jour : page présente dans Google et Bing sur des requêtes de gestionnaires de paie) : deux H3 ajoutés sous « Pourquoi un dépôt accepté ne suffit-il pas ? », avant les six étapes, sans réécrire l’existant : « Qui reçoit le compte rendu métier et où le consulter ? » (page Net-entreprises du tableau de bord) et « Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ? » (page Net-entreprises NEOReS) ; vingt-deux claims ajoutés, deux sources HTML officielles ajoutées, rouvertes le jour même. Statut OK/ANO, comptes rendus d’organismes complémentaires, mandat, radiation, DI/DA/DIDA, CRM 51 et CRM 114 exclus : sources PDF, zip ou non officielles, non supportées par la chaîne."
     ],
     "blog-schema": [
-      "BlogPosting émis par le gabarit Article avec datePublished 2026-09-15 et dateModified 2026-09-17 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."
+      "BlogPosting émis par le gabarit Article avec datePublished 2026-09-15 et dateModified 2026-11-03 (updatedAt de la recette), BreadcrumbList, Person Kevin Kitanga rattaché à /a-propos#kevin-kitanga ; aucun FAQPage."
     ],
     "blog-style": [
-      "cognitive_load.py joué le 17/09/2026 sur corps.md : verdict global « Healthy », 12 sections analysées, 1 section(s) signalée(s) (Exemple fictif : un CRM nominatif à qualifier : numeric) ; profondeur de proposition moyenne maximale 0.9."
+      "cognitive_load.py joué le 03/11/2026 sur corps.md : charge globale 3,5/100 (Healthy), 12 sections analysées ; les deux sections ajoutées sont des H3 de la section « Pourquoi un dépôt accepté ne suffit-il pas ? » (charge 0, avec 2,59 entités et 2,95 chiffres pour 100 mots)."
     ]
   }
 }
