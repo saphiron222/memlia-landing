@@ -18,6 +18,9 @@ CLOUDFLARE_TERMS_UPDATED = '12 septembre 2025'
 # https://www.cloudflare.com/terms/ (mises à jour le 12 septembre 2025, clause 20) ne citent aucun téléphone.
 CLOUDFLARE_PHONE_CHECKED_AT = date(2026, 11, 3)
 CLOUDFLARE_PHONE_EXPIRES_AT = CLOUDFLARE_PHONE_CHECKED_AT + timedelta(days=30)
+MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+CLOUDFLARE_PHONE_CHECKED_LABEL = f'{CLOUDFLARE_PHONE_CHECKED_AT.day} {MOIS[CLOUDFLARE_PHONE_CHECKED_AT.month - 1]} {CLOUDFLARE_PHONE_CHECKED_AT.year}'
+CLOUDFLARE_CONTACT_URL = 'https://www.cloudflare.com/plans/enterprise/contact/'
 FICHES_PUBLIQUES = [
     'https://annuaire-entreprises.data.gouv.fr/entreprise/memlia-108621541',
     'https://www.pappers.fr/entreprise/memlia-108621541',
@@ -107,12 +110,15 @@ class LegalIdentityProof(unittest.TestCase):
             '101 Townsend St., San Francisco, CA 94107, États-Unis',
             CLOUDFLARE_PHONE, CLOUDFLARE_PHONE_NUMERIC,
             f'mises à jour le {CLOUDFLARE_TERMS_UPDATED}',
+            'ligne commerciale pour les États-Unis', '« International sales phone numbers »',
+            f'consultée le {CLOUDFLARE_PHONE_CHECKED_LABEL}',
         ]:
             with self.subTest(expected=expected):
                 self.assertIn(expected, self.text)
         self.assertIn(CLOUDFLARE_PHONE_URI, self.doc.links)
         self.assertIn('https://www.cloudflare.com/', self.doc.links)
         self.assertIn('https://www.cloudflare.com/terms/', self.doc.links)
+        self.assertIn(CLOUDFLARE_CONTACT_URL, self.doc.links)
 
     def test_host_phone_source_is_not_expired(self):
         self.assertLessEqual(
