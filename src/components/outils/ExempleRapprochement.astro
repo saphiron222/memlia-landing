@@ -1,0 +1,100 @@
+---
+// Exemple 100 % fictif, même convention que l’onglet « Exemple fictif » du classeur .xlsx (soldes ajustés, différence).
+// Totaux recalculés hors de l’outil (script Python) et rejoués dans l’outil : voir le rapport du 03/11/2026.
+---
+<section class="exemple" id="exemple-rapprochement">
+  <h2>Exemple de rapprochement bancaire, pas à pas</h2>
+  <p>
+    Société fictive, compte bancaire et compte 512 au 31 janvier 2026. Le relevé de la banque et le compte 512 de la comptabilité
+    ne montrent pas le même solde : le rapprochement liste ce qui explique l’écart. Tous les noms et montants sont inventés.
+  </p>
+
+  <div class="paire">
+    <div>
+      <h3>Extrait du relevé bancaire</h3>
+      <div class="table-defile" tabindex="0" role="region" aria-label="Extrait du relevé bancaire fictif, défilement horizontal possible">
+        <table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Libellé</th><th scope="col" class="montant">Montant</th></tr></thead>
+          <tbody>
+            <tr><td>01/01</td><td>Solde reporté</td><td class="montant">12 400,00</td></tr>
+            <tr><td>05/01</td><td>Virement client, facture 2026-0101</td><td class="montant">+3 600,00</td></tr>
+            <tr><td>08/01</td><td>Prélèvement loyer</td><td class="montant">−1 250,00</td></tr>
+            <tr><td>12/01</td><td>Chèque n° 000412</td><td class="montant">−480,00</td></tr>
+            <tr><td>20/01</td><td>Remise de chèques n° 17</td><td class="montant">+2 150,00</td></tr>
+            <tr><td>28/01</td><td>Prélèvement assurance</td><td class="montant">−310,00</td></tr>
+            <tr><td>31/01</td><td>Frais de tenue de compte</td><td class="montant">−18,40</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row" colspan="2">Solde du relevé au 31/01</th><td class="montant">16 091,60</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Extrait du compte 512 (grand livre)</h3>
+      <div class="table-defile" tabindex="0" role="region" aria-label="Extrait du compte 512 fictif, défilement horizontal possible">
+        <table>
+          <thead><tr><th scope="col">Date</th><th scope="col">Libellé</th><th scope="col" class="montant">Montant</th></tr></thead>
+          <tbody>
+            <tr><td>01/01</td><td>Solde reporté</td><td class="montant">12 400,00</td></tr>
+            <tr><td>05/01</td><td>Encaissement virement client</td><td class="montant">+3 600,00</td></tr>
+            <tr><td>08/01</td><td>Loyer</td><td class="montant">−1 250,00</td></tr>
+            <tr><td>12/01</td><td>Chèque n° 000412</td><td class="montant">−480,00</td></tr>
+            <tr><td>20/01</td><td>Remise de chèques n° 17</td><td class="montant">+2 150,00</td></tr>
+            <tr><td>28/01</td><td>Assurance</td><td class="montant">−310,00</td></tr>
+            <tr><td>29/01</td><td>Chèque n° 000413, fournisseur transports</td><td class="montant">−720,00</td></tr>
+            <tr><td>30/01</td><td>Virement fournisseur atelier, ordre passé</td><td class="montant">−1 340,00</td></tr>
+            <tr><td>30/01</td><td>Remise de chèques n° 18</td><td class="montant">+890,00</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row" colspan="2">Solde du compte 512 au 31/01</th><td class="montant">14 940,00</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h3>Les écarts typiques</h3>
+  <ul>
+    <li><strong>Chèque non encaissé</strong> : le chèque n° 000413 (720,00 €) est comptabilisé le 29/01, mais la banque ne l’a pas encore débité. C’est un paiement en circulation.</li>
+    <li><strong>Virement en transit</strong> : l’ordre de virement du 30/01 (1 340,00 €) est comptabilisé, mais la banque ne le débite que début février. Il rejoint les paiements en circulation.</li>
+    <li><strong>Remise non encore créditée</strong> : la remise de chèques n° 18 (890,00 €) est comptabilisée le 30/01 et n’apparaît pas encore au relevé. C’est une remise en circulation.</li>
+    <li><strong>Frais bancaires non comptabilisés</strong> : les frais de tenue de compte de 18,40 € figurent au relevé, pas dans le compte 512. Il reste une écriture à passer.</li>
+  </ul>
+
+  <h3>État de rapprochement</h3>
+  <div class="table-defile" tabindex="0" role="region" aria-label="État de rapprochement fictif, défilement horizontal possible">
+    <table>
+      <thead><tr><th scope="col">Ligne</th><th scope="col" class="montant">Montant</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Solde du relevé bancaire</th><td class="montant">16 091,60</td></tr>
+        <tr><th scope="row">+ Remises en circulation (890,00)</th><td class="montant">+890,00</td></tr>
+        <tr><th scope="row">− Paiements en circulation (720,00 + 1 340,00 = 2 060,00)</th><td class="montant">−2 060,00</td></tr>
+        <tr class="total"><th scope="row">Solde bancaire ajusté</th><td class="montant">14 921,60</td></tr>
+        <tr><th scope="row">Solde du compte 512</th><td class="montant">14 940,00</td></tr>
+        <tr><th scope="row">− Frais bancaires à comptabiliser</th><td class="montant">−18,40</td></tr>
+        <tr class="total"><th scope="row">Solde comptable ajusté</th><td class="montant">14 921,60</td></tr>
+        <tr class="total"><th scope="row">Différence (banque ajustée − comptabilité ajustée)</th><td class="montant">0,00</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">
+    Une différence nulle montre seulement que les soldes ajustés concordent : le collaborateur valide encore chaque élément et l’écriture à passer (ici, les frais). Ce sont les mêmes lignes que celles du contrôle ci-dessus et de l’onglet « Exemple fictif » du classeur, avec d’autres montants :
+    saisissez 16091,60 ; 14940,00 ; remises 890,00 ; paiements 2060,00 ; frais 18,40 pour retrouver cet exemple.
+  </p>
+</section>
+
+<style>
+  .exemple { display:grid; gap:12px; margin-top:var(--espace-6); padding-top:var(--espace-6); border-top:1px solid var(--ligne); }
+  .exemple h2 { font-size:var(--t-2xl); }
+  .exemple h3 { font-size:var(--t-lg); margin:8px 0 0; }
+  .exemple p { margin:0; max-width:68ch; }
+  .exemple a { color:var(--accent-texte); text-decoration:underline; text-underline-offset:2px; }
+  .exemple .note { color:var(--texte-2); font-size:var(--t-sm); }
+  .exemple ul { display:grid; gap:8px; margin:0; padding-left:1.3em; max-width:68ch; list-style:disc; }
+  .paire { display:grid; gap:16px; grid-template-columns:minmax(0,1fr); }
+  @media (min-width:64rem) { .paire { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  .table-defile { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:var(--t-sm); }
+  th, td { padding:8px 10px; border-bottom:1px solid var(--ligne); text-align:left; vertical-align:top; }
+  thead th { color:var(--texte-2); font-weight:600; }
+  tbody th, tfoot th { font-weight:600; color:var(--texte-fort); }
+  tfoot th, tfoot td, .total th, .total td { font-weight:700; }
+  .montant { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+</style>
