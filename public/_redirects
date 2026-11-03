@@ -2,6 +2,12 @@
 /sitemap-0.xml /sitemap.xml 301
 /blog/la-plateforme-que-personne-n-a-achetee /blog/pourquoi-les-cabinets-comptables-n-adoptent-pas-les-nouveaux-outils 308
 
+# 03/11/2026 : la page /ressources a été retirée le 16/09/2026 (commit 29a3eaa3, décision de Kevin) sans redirection ;
+# Google l'affiche encore (404). Elle listait les articles du blog : 301 vers /blog. Même forme que le bloc ci-dessous.
+/ressources /blog 301
+/ressources/ /blog 301
+/ressources.html /blog 301
+
 # Migration catalogues — décision Kevin du 15 octobre 2026
 /automatisation/saisie-comptable /agents-ia/comptabilite#tache-saisie-ocr-2 301
 /automatisation/saisie-comptable/ /agents-ia/comptabilite#tache-saisie-ocr-2 301
