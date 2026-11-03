@@ -1,7 +1,8 @@
 ---
 import Outil from '@/layouts/Outil.astro';
 import CalculateurEcheance from '@/components/outils/CalculateurEcheance.astro';
+import ExempleEcheance from '@/components/outils/ExempleEcheance.astro';
 import { getOutil } from '@/data/outils';
 const outil = getOutil('calculateur-date-echeance-facture');
 ---
-<Outil outil={outil}><CalculateurEcheance /></Outil>
+<Outil outil={outil}><CalculateurEcheance /><ExempleEcheance /></Outil>

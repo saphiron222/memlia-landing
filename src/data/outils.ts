@@ -363,9 +363,9 @@ export const OUTILS: readonly OutilDefinition[] = [
 
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
     libelleAction: 'Contrôler la structure du FEC',
-    h1: 'Vérificateur FEC gratuit et local',
-    title: 'Vérificateur FEC gratuit et local | Memlia',
-    description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
+    h1: 'Test FEC gratuit et local',
+    title: 'Test FEC gratuit et local : contrôle de structure | Memlia',
+    description: 'Contrôlez localement la structure d’un FEC : test gratuit, anomalies par ligne et colonne, rapport exportable non certifiant. Le fichier reste sur votre poste.',
     promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapports complets aux formats CSV et JSON' },
     limites: [
       'Contrôle de structure non certifiant : aucune conclusion comptable ou fiscale, aucun fichier corrigé.',
@@ -378,10 +378,10 @@ export const OUTILS: readonly OutilDefinition[] = [
       nom: 'DGFiP — Test Compta Demat',
       url: 'https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec',
       extrait: 'La DGFiP propose Test Compta Demat pour examiner la structure d’un FEC et localiser les anomalies. Notre contrôle technique borné ne remplace pas cet outil officiel.',
-      verifieeLe: '4 octobre 2026',
+      verifieeLe: '3 novembre 2026',
       complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
     },
-    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+    articleExact: '/blog/cac-reception-fec-constat', pageService: '/automatisation-cabinet-comptable', cta: '/contact',
 
   },
   {
@@ -419,9 +419,9 @@ export const OUTILS: readonly OutilDefinition[] = [
     libelleAction: 'Calculer la date d’échéance',
     categorie: 'calculer',
     statut: 'disponible',
-    h1: 'Calculateur de date d’échéance de facture',
-    title: 'Calculateur de date d’échéance de facture | Memlia',
-    description: 'Calculez une date d’échéance selon l’un des délais généraux documentés, avec le point de départ, la convention et chaque étape visibles.',
+    h1: 'Calcul de l’échéance d’une facture',
+    title: 'Calcul de l’échéance d’une facture : calculateur | Memlia',
+    description: 'Calculez l’échéance d’une facture selon l’un des délais généraux documentés, avec le point de départ, la convention et chaque étape visibles.',
     promesse: { entree: 'Date, délai général et convention choisie', resultat: 'Date d’échéance et trace calendaire' },
     limites: [
       'Ce calcul ne couvre pas les délais sectoriels ou dérogatoires, les marchés publics, les factures périodiques, l’export ni les points de départ particuliers outre-mer. Un délai contractuel plus court reste à appliquer.',
@@ -434,7 +434,7 @@ export const OUTILS: readonly OutilDefinition[] = [
       nom: 'Légifrance — Code de commerce, article L441-10',
       url: 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000038414392',
       extrait: 'L’article L441-10 fixe le délai supplétif à 30 jours après réception des marchandises ou exécution de la prestation, et borne les délais convenus à 60 jours date de facture ou 45 jours fin de mois.',
-      verifieeLe: '20 septembre 2026',
+      verifieeLe: '3 novembre 2026',
       complement: {
         nom: 'Entreprendre.Service-Public.fr — Délais de paiement entre professionnels',
         url: 'https://entreprendre.service-public.gouv.fr/vosdroits/F23211',
@@ -479,9 +479,9 @@ export const OUTILS: readonly OutilDefinition[] = [
     libelleAction: 'Accéder au classeur à télécharger',
     categorie: 'verifier',
     statut: 'disponible',
-    h1: 'Modèle de rapprochement bancaire Excel gratuit',
-    title: 'Modèle de rapprochement bancaire Excel gratuit | Memlia',
-    description: 'Modèle de rapprochement bancaire Excel gratuit : téléchargez le .xlsx sans compte, avec exemple fictif, feuille à remplir, formules et écarts visibles.',
+    h1: 'Exemple de rapprochement bancaire et modèle Excel gratuit',
+    title: 'Exemple de rapprochement bancaire et modèle Excel | Memlia',
+    description: 'Exemple de rapprochement bancaire pas à pas et modèle Excel gratuit : téléchargez le .xlsx sans compte, avec feuille à remplir, formules et écarts visibles.',
     promesse: { entree: 'Période, soldes et éléments de rapprochement', resultat: 'Classeur .xlsx réutilisable et contrôle fictif exportable en CSV' },
     limites: [
       'Ce contrôle de soldes n’apparie pas les lignes, ne passe aucune écriture et ne valide aucun rapprochement à la place du collaborateur.',
