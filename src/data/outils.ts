@@ -363,9 +363,9 @@ export const OUTILS: readonly OutilDefinition[] = [
 
     slug: 'verificateur-fec-local', categorie: 'verifier', statut: 'disponible',
     libelleAction: 'Contrôler la structure du FEC',
-    h1: 'Vérificateur FEC gratuit et local',
-    title: 'Vérificateur FEC gratuit et local | Memlia',
-    description: 'Contrôlez localement la structure d’un FEC et trouvez les lignes en anomalie, avec règles expliquées et rapport exportable non certifiant.',
+    h1: 'Test FEC gratuit et local',
+    title: 'Test FEC gratuit et local : contrôle de structure | Memlia',
+    description: 'Contrôlez localement la structure d’un FEC : test gratuit, anomalies par ligne et colonne, rapport exportable non certifiant. Le fichier reste sur votre poste.',
     promesse: { entree: 'FEC texte commercial, 18 colonnes Débit/Crédit, 20 Mo maximum', resultat: 'Anomalies par ligne, colonne et règle ; rapports complets aux formats CSV et JSON' },
     limites: [
       'Contrôle de structure non certifiant : aucune conclusion comptable ou fiscale, aucun fichier corrigé.',
@@ -378,10 +378,10 @@ export const OUTILS: readonly OutilDefinition[] = [
       nom: 'DGFiP — Test Compta Demat',
       url: 'https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec',
       extrait: 'La DGFiP propose Test Compta Demat pour examiner la structure d’un FEC et localiser les anomalies. Notre contrôle technique borné ne remplace pas cet outil officiel.',
-      verifieeLe: '4 octobre 2026',
+      verifieeLe: '3 novembre 2026',
       complement: { nom: 'BOFiP — Format du fichier des écritures comptables', url: 'https://bofip.impots.gouv.fr/bofip/9028-PGP.html', extrait: 'Les précisions de format distinguent les champs requis et ceux à blanc si non utilisés. Aucun jugement fiscal n’est automatisé ici.' },
     },
-    pageService: '/automatisation-cabinet-comptable', cta: '/contact',
+    articleExact: '/blog/cac-reception-fec-constat', pageService: '/automatisation-cabinet-comptable', cta: '/contact',
 
   },
   {

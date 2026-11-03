@@ -76,9 +76,9 @@ test('exemple : les choix saisis restent intacts',async({page})=>{
 });
 for(const width of [320,375,768,1024,1440,1920]) test(`SEO, reflow et capture ${width}`,async({page},testInfo)=>{
   await page.setViewportSize({width,height:900}); await page.emulateMedia({reducedMotion:'reduce'});await page.goto(route); await ouvrirReglages(page);await page.evaluate(()=>document.fonts.ready);
-  await expect(page.locator('h1')).toHaveCount(1);await expect(page.locator('h1')).toHaveText('Vérificateur FEC gratuit et local');
+  await expect(page.locator('h1')).toHaveCount(1);await expect(page.locator('h1')).toHaveText('Test FEC gratuit et local');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://memlia.fr'+route);
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content','Vérificateur FEC gratuit et local');
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content','Test FEC gratuit et local');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.getByRole('button',{name:'Analyser l’exemple fictif'}).click();await expect(page.locator('[data-output]')).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);

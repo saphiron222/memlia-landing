@@ -33,6 +33,19 @@
     </div>
   </section>
 </form>
+<section class="test-fec" aria-labelledby="test-fec-titre">
+  <h2 id="test-fec-titre">Tester un FEC : ce que l’outil contrôle</h2>
+  <p>Tester un FEC avec cet outil, c’est vérifier la structure du fichier : quelle ligne s’écarte du format attendu, dans quelle colonne et selon quelle règle. Vous déposez un FEC texte au profil commercial à 18 colonnes Débit/Crédit, séparé par tabulation ou par barre verticale. Le test se déroule dans votre navigateur ; le fichier n’est ni envoyé ni conservé.</p>
+  <ul>
+    <li>L’en-tête : les 18 noms de colonnes, dans l’ordre du profil.</li>
+    <li>La largeur : 18 champs sur chaque ligne.</li>
+    <li>Les champs requis : non vides, sauf l’auxiliaire, le lettrage et la devise, qui peuvent rester vides.</li>
+    <li>Les dates : EcritureDate, PieceDate et ValidDate au format AAAAMMJJ, avec un jour qui existe au calendrier ; DateLet aussi, si elle est renseignée.</li>
+    <li>Les montants : Débit et Crédit numériques, avec point ou virgule et sans séparateur de milliers ; Montantdevise aussi, s’il est renseigné.</li>
+  </ul>
+  <p>Le test ne remplace pas le contrôle de l’administration. Il n’évalue ni l’équilibre des écritures, ni l’exhaustivité, la chronologie, la numérotation, le nom du fichier, les pièces, le plan de comptes, l’encodage légal ou le traitement fiscal. Les FEC au format XML, BNC/BA ou Montant/Sens restent hors périmètre, et aucun fichier n’est corrigé. Quand aucune anomalie n’est détectée, cela veut seulement dire que ces contrôles n’en ont pas trouvé : le rapport ne certifie pas le FEC.</p>
+  <p>Pour le test proposé par l’administration, la DGFiP met à disposition <a href="https://www.economie.gouv.fr/dgfip/outil-de-test-des-fichiers-des-ecritures-comptables-fec">Test Compta Demat</a>, un logiciel à télécharger qui vérifie la structure du fichier et précise les anomalies détectées. Les règles de format figurent à l’<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000027804775">article A.47 A-1 du livre des procédures fiscales</a>. Vous recevez un FEC en mission de commissariat aux comptes ? Voyez comment <a href="/blog/cac-reception-fec-constat">préparer le constat de réception du FEC</a>.</p>
+</section>
 <details data-tool-help><summary>Comprendre les contrôles FEC</summary><section class="scope">
   <h2>Ce que nous contrôlons, ce qui reste à vérifier</h2>
   <p>Nous comparons l’en-tête et son ordre au profil choisi, puis la largeur des lignes, la présence des champs requis, le calendrier des dates et la syntaxe des décimaux. Les lignes et colonnes du rapport correspondent au fichier source, en comptant l’en-tête comme ligne 1. Aucun montant n’est converti en nombre flottant, et aucun fichier n’est corrigé.</p>
@@ -140,6 +153,9 @@
   .result ul,.result ol {padding-left:24px;display:grid;gap:12px;}
   .result li {overflow-wrap:anywhere;}
   .scope {margin-top:var(--s-8,32px);}
+  .test-fec {display:grid;gap:16px;min-width:0;margin-top:var(--s-8,32px);}
+  .test-fec h2 {font-size:var(--t-2xl);}
+  .test-fec ul {padding-left:24px;display:grid;gap:8px;list-style:disc;}
   [data-error] {border-left:3px solid var(--rouge);padding:12px;color:var(--rouge);background:var(--rouge-voile);}
   .outil-form [hidden] {display:none!important;}
   @media(max-width:48rem){.fields{grid-template-columns:1fr;}}
