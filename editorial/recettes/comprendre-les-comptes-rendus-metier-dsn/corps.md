@@ -36,6 +36,35 @@ Les sigles de ce tableau sont ceux de la documentation Net-entreprises. **L’in
 
 La frontière entre BAN et CRM dépend du périmètre, du format et de l’organisme décrits dans le retour reçu. Le tableau oriente la lecture ; il ne remplace ni le document ni sa notice.
 
+### Qui reçoit le compte rendu métier et où le consulter ?
+
+Le déclarant qui a effectué le dépôt, et lui seul. Sur la page [Le tableau de bord de la DSN](https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/), Net-entreprises écrit que « seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés ». L’administrateur fait exception : il « peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée ».
+
+Les retours s’affichent dans le tableau de bord DSN, « intégré dans votre logiciel ou sur net-entreprises.fr ». Un cabinet en procédure automatique d’échanges peut le consulter « directement via votre produit (logiciel) de paie » ; dans les autres cas, il doit se connecter à son compte net-entreprises.fr.
+
+La recherche a une limite : il est « impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois ». Net-entreprises précise que l’historisation « peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique ». Consignez donc la référence de chaque retour dans le registre décrit plus bas dès sa réception.
+
+### Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ?
+
+NEOReS, selon Net-entreprises, c’est « la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie ». Les numéros ci-dessous sont ceux des comptes rendus normalisés de cette norme ; Net-entreprises les recense, organisme par organisme, sur sa page [Norme et documentation NEOReS](https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/).
+
+Cette normalisation concerne « uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN » : les certificats de conformité, les bilans d’anomalies et les accusés de réception ne sont pas concernés, selon la même page. Voici les numéros qu’elle recense, résumés ; la page propose en plus des spécifications à télécharger pour plusieurs d’entre eux.
+
+| Numéro | Ce que la page en dit |
+| --- | --- |
+| 118 | Les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues sont mis à disposition des déclarants depuis 2022. |
+| 119 et 120 | Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés. La page publie les spécifications des contrôles présents dans les CRM normalisés 119 et 120. |
+| 121 | Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés. La page publie les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité ». |
+| 124 | Urssaf : depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. |
+| 125 | MSA : à partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. |
+| 130 | MSA : le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024. |
+| 136 | MSA : le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026). |
+| 132 | En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf. |
+| 134 | En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA. |
+| 135 | À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé. |
+
+Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.
+
 ## Contrôle de structure ou contrôle de cohérence : que regarder ?
 
 La première question est la couche du contrôle. Un rejet technique et un écart métier ne se traitent pas avec les mêmes preuves.

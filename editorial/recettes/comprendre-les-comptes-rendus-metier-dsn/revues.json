@@ -1,95 +1,183 @@
 {
+  "subject": {
+    "slug": "comprendre-les-comptes-rendus-metier-dsn",
+    "bodySha256": "092925d75b6a1e50540ba9d3173ab7084b69425b16709a2fa7350c89eba6c013",
+    "recipeSha256": "e2de6ce3f6b977c363ebc6658180f9172128c0515b541a4a609e77fcbf0cb228",
+    "recipeSubstanceSha256": "8c9179bdee6f57cc3e2528936abfe95b6d8cd7d9a50fb2f4ead7ce631bf16b4a",
+    "renderedSha256": "d280904a1a7986b6786474b52d118b6a8777d9eb450084e5ce9bbfc6ca33ea0e"
+  },
+  "reviewedAt": "2026-11-03",
+  "verdict": "PASS AVEC RÉSERVES",
+  "scope": "Revue de fond d'une republication de l'article (deux sections et 22 claims ajoutés) faite le 03/11/2026 par une session Claude distincte des agents qui ont rédigé le texte, sous les noms de rôle de la forge. Vérifications faites : 29 citations retrouvées mot pour mot dans les pages officielles ouvertes en direct, fidélité de chaque phrase rendue relue (cinq corrections demandées et appliquées avant ce verdict), rendu local du brouillon, image examinée. Ne certifie pas l'interprétation des codes au-delà de ce que disent les pages citées.",
   "editorial": {
+    "reviewer": "marketing",
+    "p0": [],
     "criteria": {
       "intent-satisfaction": {
         "result": "PASS",
         "observations": [
-          "La « Réponse directe » (75 mots) répond immédiatement à l'intention comprendre pour « crm dsn » : elle nomme l'objet (un contrôle d'un organisme, pas un verdict sur toute la paie) avant tout développement.",
-          "La méthode en six étapes (identifier l'objet exact, lire le statut, localiser la donnée, rapprocher de la paie, documenter la décision, contrôler le retour suivant) couvre exactement la tâche du brief : lire un retour, déterminer sa portée, organiser une correction ou un classement justifié.",
-          "Le périmètre est borné dès le deuxième paragraphe (« Ce guide traite exclusivement de l'interprétation et du suivi après dépôt »), avec renvoi explicite vers l'article frère pour l'avant-dépôt, ce qui évite toute confusion de tâche pour le rôle paie-responsables-sociaux."
+          "Les deux H3 répondent aux requêtes mesurées le 03/11 (« dsn et numéros des différents crm », « à qui sont adressé le compte rendu dsn ») : réponse directe dès la première phrase (« Le déclarant qui a effectué le dépôt, et lui seul »), puis la précision et l'exception. Limite assumée : les requêtes sur le statut OK/ANO, les organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse, car leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer ; l'article ne prétend pas y répondre."
         ]
       },
       "serp-format-rankability": {
         "result": "PASS",
         "observations": [
-          "Titre de balise à 56 caractères (« CRM DSN : lire le compte rendu et ses anomalies | Memlia »), dans la fourchette 40-60 recommandée, et meta description à 144 caractères cohérente avec le contenu visible.",
-          "Hiérarchie de titres propre et sans saut : un seul H1, des H2 par section, des H3 pour les six étapes et pour les cinq questions de la FAQ.",
-          "Cinq tableaux avec <thead> (retours après dépôt, situations fictives, registre à dix champs, répartition automatisation/validation/humain) offrent un format comparatif adapté au how-to-guide déclaré."
+          "Titre d'onglet inchangé à 56 caractères, description à 134, une seule H1, intertitres H3 formulés comme les questions posées, tableau de 10 lignes. Réserve de structure : les deux H3 sont rangés sous le H2 « Pourquoi un dépôt accepté ne suffit-il pas ? », thématiquement un peu décalé ; ils iraient mieux sous le H2 de définition."
         ]
       },
       "eeat-sources": {
         "result": "PASS",
         "observations": [
-          "Quatre sources tier-1 officielles (Net-entreprises/GIP-MDS) sont citées mot pour mot dans le corps et listées avec date de consultation (17 septembre 2026) dans « Sources consultées ».",
-          "Auteur nommé et lié (Kevin Kitanga, Fondateur de Memlia) avec bio en pied d'article, lien rel=\"author\" vers /a-propos#kevin-kitanga, et balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
-          "Les sept citations du paquet de revue sont retrouvées à l'identique dans les fichiers preuves/sources/*.source.txt correspondants (ex. « le certificat de conformité vous libère de vos obligations déclaratives... » à la ligne 999 de net-entreprises-retours.source.txt)."
+          "Six sources tier-1, toutes net-entreprises.fr (GIP-MDS, opérateur de la DSN), chacune ouverte en direct le 03/11/2026 : 29 citations sur 29 retrouvées mot pour mot. Les dates affichées par les pages sont lues (NEOReS « Modifié le 2 novembre 2026 », tableau de bord « Modifié le 19 mars 2026 »). Limite : un seul éditeur pour toutes les sources."
         ]
       },
       "information-gain-proof": {
         "result": "PASS",
         "observations": [
-          "Le tableau des retours ajoute une colonne « Premier geste » explicitement étiquetée comme méthode Memlia et distincte de la définition sourcée (« la consigne effectivement reçue prime toujours »), ce qui crée un gain d'information balisé plutôt que noyé dans la source.",
-          "Le registre à dix champs (id_retour, emetteur, type_retour, statut_source, decision, controle_suivant...) et l'exemple fictif D-027/R-027-A traduisent la méthode en objets concrets qu'aucune des quatre pages Net-entreprises ne fournit.",
-          "Le tableau « ce qui s'automatise / attend une validation / reste humain » synthétise une répartition des tâches propre à Memlia, absente des pages sources citées."
+          "Le tableau des numéros (118 à 136, 10 lignes) donne l'organisme, la date de mise en service et la portée, ce que les pages dispersent ; il dit aussi ce que la norme ne couvre pas (CCO, BAN, accusés de réception) et refuse de donner un sens à un numéro non recensé. La distinction déclarant / administrateur et la limite des 3 mois sont des informations d'usage directes."
         ]
       },
       "technical-onpage-seo": {
         "result": "PASS",
         "observations": [
-          "Canonical, Open Graph (image 1200x630 avec largeur/hauteur déclarées et alt), Twitter Card et JSON-LD (BlogPosting, BreadcrumbList, Person, Organization, WebSite) sont tous présents et cohérents avec le titre et la description visibles.",
-          "L'image de couverture utilise loading=\"eager\" et fetchpriority=\"high\" avec un srcset AVIF/WebP à 768/1200/1600w, un traitement correct pour l'image LCP plutôt qu'un lazy-load pénalisant, et un alt de 95 caractères.",
-          "La balise noindex et le bandeau « Candidat éditorial » observés dans ce rendu appartiennent au harnais de prévisualisation QA, pas à l'article une fois publié, et ne sont donc pas comptés comme un défaut de la page."
+          "Rendu local du brouillon relu : canonical autoréférente, une seule H1, hiérarchie H2/H3 correcte, image 1200×630 déclarée avec largeur et hauteur, alt non vide, dateModified et article:modified_time à 2026-11-03, datePublished conservé au 2026-09-15. Le noindex observé est celui du brouillon de preview, qui disparaît à la publication."
         ]
       },
       "ai-citability": {
         "result": "PASS",
         "observations": [
-          "La FAQ (5 questions en H3) répond en une à trois phrases autonomes et sourcées par question (ex. « Un certificat de conformité garantit-il que la paie est juste ? » → réponse directe rattachée à Net-entreprises), un format extractible par un moteur de réponse.",
-          "La terminologie (CRM, bilan d'anomalies, certificat de conformité, BAN, CCO, AEE, ARE) est définie une seule fois puis réutilisée sans dérive de vocabulaire sur les 3001 mots de l'article, ce qui clarifie l'entité traitée."
+          "Chaque nouvel H3 s'ouvre sur une réponse autonome d'une phrase, suivie de citations attribuées avec leur page ; le tableau est lisible hors contexte (numéro, organisme, date). Les citations sont courtes, exactes et rattachées à une URL officielle nommée."
         ]
       },
       "contextual-conversion": {
         "result": "PASS",
         "observations": [
-          "La formule « à adapter », cause du FAIL en première passe (répétée dans la colonne « Premier geste » et dans l'intro du registre), n'apparaît plus une seule fois dans ce rendu : les deux phrases concernées ont été réécrites (« la consigne effectivement reçue prime toujours » ; « le cabinet en fixe les droits d'accès et l'outil »).",
-          "L'appel de fin reprend exactement le libellé prescrit par la charte : bloc « Et dans votre cabinet ? », bouton « Confier cette tâche » vers /contact, et un texte qui dit ce que Memlia fait (écrire la règle, automatiser la collecte et le rapprochement, faire recetter) et ce que le cabinet garde (interprétation, correction, dépôt), avec « Rien à envoyer » en formulation positive.",
-          "Les deux liens requis par la charte sont présents dans le corps : vers le pilier /blog/automatiser-un-cabinet-comptable-la-carte-des-taches (« Pour aller plus loin ») et vers /methode (bouton « Comprendre notre méthode » du bloc d'appel, et lien « la méthode » dans la clôture).",
-          "Aucun tiret cadratin dans le corps de l'article : la seule occurrence du fichier rendu est dans le bandeau « Candidat éditorial — preview privée, non publiable » du harnais de prévisualisation, hors contenu éditorial.",
-          "« ne remplace pas » apparaît trois fois mais sur trois objets distincts (l'outil Dsn-Val, un code isolé, l'automatisation), et une seule fois à propos du service, dans la FAQ (« L'automatisation prépare ce rapprochement ; elle ne remplace pas l'interprétation métier ») : c'est la réserve unique en forme de frontière que prescrit le §7 bis, pas un avertissement répété. « ne constitue pas » apparaît une fois, à propos d'un CRM (document DSN), non du service Memlia. « Memlia peut » et « module » (hors balises <script type=\"module\">) sont absents."
+          "Aucun appel à l'action ajouté, aucune promesse produit. La seule consigne (« Consignez donc la référence de chaque retour dans le registre décrit plus bas ») renvoie au registre déjà décrit dans l'article et se présente comme un conseil de méthode, non comme une pratique affirmée de Memlia."
         ]
       }
-    },
-    "p0": []
+    }
   },
   "business": {
+    "reviewer": "relecteur-metier-ia-memlia",
+    "reviewerId": "relecteur-metier-ia-memlia",
+    "role": "paie-responsables-sociaux",
+    "scope": "Fidélité de chaque phrase de l'article à sa citation officielle (portée, polarité, modalité), sur les pages net-entreprises.fr ouvertes le 03/11/2026. Ne remplace aucune expertise paie et ne certifie aucune conformité.",
     "claims": {
       "claim-unit-23db2433190f-1": {
         "verdict": "soutient",
-        "reasoning": "La citation est reprise mot pour mot entre guillemets et attribuée à Net-entreprises comme définition du CRM ; elle est retrouvée à l'identique dans net-entreprises-crm.source.txt, sans changement de portée ni de polarité."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-crm) et dans la copie locale. Définition reprise entre guillemets et attribuée à Net-entreprises."
       },
       "claim-unit-23db2433190f-2": {
         "verdict": "soutient",
-        "reasoning": "L'article cite la phrase source à l'identique (« chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises ») et l'ajout « avant de mettre son retour à disposition sur le tableau de bord » correspond à la phrase suivante du même document source."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-crm) et dans la copie locale. Citation insérée telle quelle dans la phrase de l'article, sans changement de portée."
       },
       "claim-unit-7608066ad21a-1": {
         "verdict": "soutient",
-        "reasoning": "La citation exacte du certificat de conformité est reprise en gras entre guillemets, avec la même portée limitative que dans net-entreprises-retours.source.txt, sans extension ni atténuation."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-retours) et dans la copie locale. Phrase reprise à l'identique ; l'article n'en tire pas que la paie est juste (voir la FAQ)."
       },
       "claim-unit-faf3c7a9923e-1": {
         "verdict": "soutient",
-        "reasoning": "La définition du contrôle non bloquant est citée mot pour mot et rattachée correctement à l'opposition bloquant/non bloquant du document source, sans extension de portée au-delà de ce que dit Net-entreprises."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-retours) et dans la copie locale. Définition du contrôle non bloquant reprise à l'identique."
+      },
+      "claim-unit-7169df3da900-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. La réponse « le déclarant qui a effectué le dépôt, et lui seul » résume fidèlement « seul … peut consulter les retours associés » ; l'exception de l'administrateur est donnée dans la phrase suivante, donc « lui seul » n'est pas présenté comme absolu."
+      },
+      "claim-unit-7169df3da900-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. Exception reprise mot pour mot ; « l'administrateur fait exception » est fidèle."
+      },
+      "claim-unit-7d0f7956decb-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. Fragment cité « intégré dans votre logiciel ou sur net-entreprises.fr » : fidèle, la parenthèse est reprise entre guillemets."
+      },
+      "claim-unit-7d0f7956decb-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. La modalité est conservée (« peut le consulter » pour « vous pouvez le consulter ») après la correction du 03/11 ; « un cabinet » généralise « vous » sans changer la portée."
+      },
+      "claim-unit-7d0f7956decb-3": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. Obligation reprise telle que la source la pose (« il doit se connecter à son compte net-entreprises.fr »)."
+      },
+      "claim-unit-ab3e023156a5-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. Limite reprise en « 3 mois » comme la source. La précision entre parenthèses (seuls les mois de la liste déroulante sont affichables) n'est pas reprise, sans effet sur le sens."
+      },
+      "claim-unit-ab3e023156a5-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-tableau-de-bord) et dans la copie locale. Reprise à l'identique ; l'article en tire une consigne (« Consignez donc… ») sans l'attribuer à la source."
+      },
+      "claim-unit-0f8179286f70-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Définition citée en bloc ; la phrase d'introduction (« NEOReS, selon Net-entreprises, c'est « … » ») garde exactement les mots cités."
+      },
+      "claim-unit-06f06dc1eff6-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Périmètre repris mot pour mot, avec la mention « selon la même page »."
+      },
+      "claim-unit-06f06dc1eff6-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. L'extrait conserve l'entité brute &#8211; de la copie ; le texte rendu porte le tiret : même contenu. CCO, BAN et accusés de réception « ne sont pas concernés » : fidèle."
+      },
+      "claim-unit-273f1dd07216-1": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 118 fidèle. L'article omet « dans les CRM normalisés 118 » car la première colonne porte déjà le numéro."
+      },
+      "claim-unit-273f1dd07216-2": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne « 119 et 120 » : l'association de la phrase aux deux numéros tient à la liste qui la suit sur la page (comptes rendus 119 et 120). Les délais H+4 et J+5 ne sont volontairement pas repris."
+      },
+      "claim-unit-273f1dd07216-3": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Seule mention des spécifications téléchargeables pour 119 et 120 ; l'article dit « la page publie les spécifications », ce que la phrase établit."
+      },
+      "claim-unit-273f1dd07216-4": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 121 : le lien entre « compte rendu identité » et le numéro 121 n'est pas dans cette phrase ; il est établi par le claim dédié (intertitre « CRM normalisé 121 « CRM Identité » »)."
+      },
+      "claim-unit-273f1dd07216-5": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Relie explicitement le numéro 121 à « CRM Identité » ; l'extrait garde les espaces insécables de la page, le rendu des espaces normales, sans écart de sens."
+      },
+      "claim-unit-273f1dd07216-6": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Préfixe « Urssaf : » fondé sur l'intertitre de la page « CRM normalisés Urssaf », qui contient cette phrase."
+      },
+      "claim-unit-273f1dd07216-7": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Préfixe « MSA : » fondé sur l'intertitre « CRM normalisés MSA ». Échéance future (mars 2027) rendue au futur, comme la source."
+      },
+      "claim-unit-273f1dd07216-8": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 130, intertitre « CRM normalisés MSA » ; délai et date repris."
+      },
+      "claim-unit-273f1dd07216-9": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 136, intertitre « CRM normalisés MSA » ; échéance « à partir de juillet 2026 » reprise telle quelle."
+      },
+      "claim-unit-273f1dd07216-10": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 132 ; l'émetteur (Urssaf) est dans la phrase."
+      },
+      "claim-unit-273f1dd07216-11": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 134 ; l'émetteur (MSA) est dans la phrase."
+      },
+      "claim-unit-273f1dd07216-12": {
+        "verdict": "soutient",
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-neores) et dans la copie locale. Ligne 135. L'extrait garde l'entité brute &rsquo; de la copie ; le rendu porte l'apostrophe. « FCTU » n'est pas développé par la page et ne l'est pas par l'article."
       },
       "claim-unit-29991bc0bacc-1": {
         "verdict": "soutient",
-        "reasoning": "La phrase sur Dsn-Val est citée à l'identique et correctement attribuée à l'outil d'auto-contrôle avant dépôt, conforme à l'usage décrit par la page source consultée."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-dsn-val) et dans la copie locale. Phrase reprise à l'identique."
       },
       "claim-unit-fe38de788788-1": {
         "verdict": "soutient",
-        "reasoning": "La citation sur les deux interlocuteurs (l'organisme pour le retour métier, l'éditeur pour le logiciel) est reprise mot pour mot et conserve exactement la même répartition des rôles que la source."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-fiabilisation) et dans la copie locale. Phrase reprise à l'identique ; l'article n'ajoute aucune garantie."
       },
       "claim-unit-d922dfd38c11-1": {
         "verdict": "soutient",
-        "reasoning": "Le délai « avant minuit la veille de l'échéance » est cité mot pour mot ; l'article ajoute une restriction supplémentaire (valable pour la DSN mensuelle, pas pour tous les retours) qui resserre la portée sans la déformer, ce qui reste fidèle à la source."
+        "reasoning": "Citation exacte retrouvée dans la page officielle ouverte en direct le 03/11/2026 (HTTP 200, source net-entreprises-fiabilisation) et dans la copie locale. Délai et report de correction repris à l'identique."
       }
     }
   },
@@ -98,37 +186,37 @@
       "brief-six-components": {
         "result": "PASS",
         "observations": [
-          "Le brief porte ses six composantes et épingle chaque couleur par son hex ; la palette mesurée sur le master rendu : crème 78,98 % · vert 3,20 % · vert profond 2,14 % · graphite 2,76 %."
+          "Le brief porte ses six composantes (sujet, composition, style, palette avec hex, interdits, prompt) et six critères de revue. Écart relevé : le champ composition parle d'un « jeton vert déplacé vers une voie », alors que le prompt et les interdits parlent d'un « jeton neutre » ; l'image montre un disque graphite au centre de la bifurcation, conforme au second. Sans effet sur la lisibilité."
         ]
       },
       "generation-constraints": {
         "result": "PASS",
         "observations": [
-          "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 adopté par la forge ; coût et passes consignés dans image-source.json."
+          "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 (image-source.json et preuves/image/master.png) ; palette mesurée : crème 78,7 %, vert Memlia 3,2 %, vert profond 2,1 %, graphite 2,9 %, tous dans les seuils du brief."
         ]
       },
       "fictive-provenance": {
         "result": "PASS",
         "observations": [
-          "Scène entièrement construite, aucun document réel, aucune donnée de cabinet, aucun nom ni chiffre."
+          "Scène entièrement construite en volumes abstraits : aucun document réel, aucune donnée de cabinet, aucun texte lisible, aucune figure humaine ; les pictogrammes des plaques (disque, triangle, losange, lignes) ne portent aucune donnée."
         ]
       },
       "recognizable-subject": {
         "result": "PASS",
         "observations": [
-          "Un fichier franchit un portique, quatre plaques translucides portent des retours distincts, une pièce graphite est isolée, une bifurcation à jeton neutre figure l'arbitrage. Aucun texte lisible, aucune interface, aucune figure humaine."
+          "Vue sur l'image : un fichier vert franchit un portique à gauche ; cinq plaques translucides distinctes figurent des retours multiples ; une pièce graphite isolée figure l'anomalie ; une bifurcation à droite porte un jeton neutre pour l'arbitrage, sans personnage. Les six critères de revue du brief sont lisibles."
         ]
       },
       "technical-derivatives": {
         "result": "PASS",
         "observations": [
-          "Dérivés 768, 1200 et 1600 en AVIF et WebP plus l'image sociale 1200×630, produits par la forge depuis ce master et scellés au dossier."
+          "Dérivés 768, 1200 et 1600 en AVIF et WebP au format 16:9, image sociale 1200×630, master 1920×1080 ; les dérivés 768 des preuves sont identiques aux octets à ceux publiés ; l'image sociale publiée est le ré-encodage par la forge de celle des preuves (dimensions identiques)."
         ]
       },
       "alt-information": {
         "result": "PASS",
         "observations": [
-          "L'alternative textuelle décrit ce que l'image montre pour cette tâche, sans promesse ni vocabulaire de catalogue."
+          "L'alternative textuelle (« Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine. ») décrit ce que l'image montre pour cet article, sans texte superflu."
         ]
       }
     },
@@ -138,15 +226,17 @@
   "sources": {
     "reviewedBy": "relecteur-metier-ia-memlia",
     "observations": {
-      "net-entreprises-crm": "Net-entreprises (net-entreprises.fr), plateforme officielle du GIP-MDS opérateur de la DSN, source tier-1 pour la définition du compte rendu métier et le mécanisme de contrôle de cohérence par organisme.",
-      "net-entreprises-retours": "Net-entreprises (net-entreprises.fr), même plateforme officielle tier-1, source de la distinction entre certificat de conformité, bilan d'anomalies et contrôle bloquant ou non bloquant après dépôt.",
-      "net-entreprises-fiabilisation": "Net-entreprises (net-entreprises.fr), tier-1, source de la procédure de fiabilisation des données (interlocuteur organisme ou éditeur, canal de correction par DSN annule et remplace).",
-      "net-entreprises-dsn-val": "Net-entreprises (net-entreprises.fr), tier-1, source de la description de l'outil d'auto-contrôle Dsn-Val utilisé avant le dépôt de la DSN."
+      "net-entreprises-crm": "Net-entreprises (GIP-MDS, opérateur de la DSN), page officielle publiée le 16/09/2020, ouverte en direct le 03/11/2026 : définition du CRM et intégration des données par chaque organisme. Source tier-1 suffisante pour ces deux affirmations.",
+      "net-entreprises-retours": "Même éditeur, page publiée le 16/09/2020, ouverte le 03/11/2026 : certificat de conformité et contrôle non bloquant, citations exactes. Tier-1.",
+      "net-entreprises-fiabilisation": "Même éditeur, page publiée le 25/07/2025, ouverte le 03/11/2026 : contact de l'organisme et de l'éditeur, délai « avant minuit la veille de l'échéance ». Tier-1.",
+      "net-entreprises-dsn-val": "Même éditeur, page publiée le 11/09/2020, ouverte le 03/11/2026 : outil de contrôle Dsn-Val avant dépôt. Tier-1.",
+      "net-entreprises-tableau-de-bord": "Même éditeur, page publiée le 16/09/2020 et affichant « Modifié le 19 mars 2026 », ouverte le 03/11/2026 : qui consulte les retours, où, limite de 3 mois, historisation (sept citations exactes). Tier-1.",
+      "net-entreprises-neores": "Même éditeur, page publiée le 19/01/2021 et affichant « Modifié le 2 novembre 2026 », ouverte le 03/11/2026 : définition de NEOReS, périmètre, numéros 118 à 136 (douze citations exactes). Tier-1. Page très vivante, modifiée la veille : la règle de relecture de la recette demande de revoir l'article à chaque changement de cette page."
     }
   },
   "qualite": {
     "reviewer": "relecteur-qualite-ia-memlia",
-    "score": 97,
+    "score": 95,
     "p0": [],
     "categories": {
       "contentQuality": {
@@ -154,7 +244,7 @@
         "max": 30
       },
       "seoOptimization": {
-        "score": 25,
+        "score": 24,
         "max": 25
       },
       "eeatSignals": {
@@ -166,42 +256,40 @@
         "max": 15
       },
       "aiCitationReadiness": {
-        "score": 15,
+        "score": 14,
         "max": 15
       }
     },
     "evidence": [
-      "Cinq tableaux structurés (<thead>) organisent la comparaison des retours, le registre à dix champs, les trois situations fictives et la matrice d'automatisation, un format favorable à la lecture comme à l'extraction.",
-      "Les sept citations du paquet de revue sont vérifiées mot pour mot contre les quatre fichiers sources tier-1 (Net-entreprises), chacune rattachée à la bonne page et au bon paragraphe.",
-      "Auteur nommé, lié et biographié (Kevin Kitanga, Fondateur de Memlia) avec balisage Person/BlogPosting/Organization/BreadcrumbList dans le JSON-LD.",
-      "Le mot « à adapter », cause du FAIL de la première passe, est absent du rendu actuel ; « Memlia peut » et « module » (hors balises <script type=\"module\">) sont également absents après vérification exhaustive.",
-      "L'exemple fictif (dossier D-027, retour R-027-A, rubrique X-14, pièce P-027-08) est explicitement étiqueté « entièrement fictif, sans donnée client ni règle de paie réelle », et les trois situations complémentaires (D-031, D-044, D-052) le sont tout autant.",
-      "Une phrase de la FAQ (« le terme apparaît notamment dans la liste officielle des retours de l'administration fiscale ») avance une affirmation factuelle spécifique sans lien ni citation directe dans ce paragraphe précis, contrairement aux sept claims du paquet de revue qui sont tous sourcés.",
-      "L'image de couverture (1920x1080) décline des dérivés OG 1200x630 et hero 768 en AVIF/WebP déclarés dans image.json, avec chargement eager et fetchpriority high pour l'image LCP plutôt qu'un lazy-load pénalisant.",
-      "Sept liens internes contextuels distincts dans le corps (deux articles frères, le pilier, deux ancres de glossaire, /methode, /garanties), plus /contact et /methode dans le bloc d'appel de fin."
+      "28/30 contenu : les deux sections répondent à des questions réelles de gestionnaires de paie avec des faits sourcés et leurs limites ; le tableau des numéros est l'apport le plus utile. Retrait de 2 points : plusieurs intentions mesurées restent sans réponse (OK/ANO, organismes complémentaires, mandat, radiation).",
+      "24/25 SEO : titre 56 caractères, description 134, canonical, une H1, hiérarchie propre, image 1200×630 avec dimensions, dateModified projeté. Retrait de 1 point : placement des deux H3 sous un H2 thématiquement décalé.",
+      "14/15 E-E-A-T : sources primaires officielles datées et revérifiées le jour même, citations exactes. Retrait de 1 point : un seul éditeur pour les six sources.",
+      "15/15 technique : rendu local conforme, alt non vide, aucun lien cassé dans la zone ajoutée, aucun terme interdit.",
+      "14/15 citabilité : réponses autonomes d'une phrase en tête de section, tableau lisible hors contexte. Retrait de 1 point : les délais H+4 et J+5 de 119 et 120 manquent, la page les donne."
     ],
     "reservations": [
-      "Le score Lighthouse (performance, accessibilité, SEO, Core Web Vitals) n'a pas été mesuré dans cette revue ; l'appréciation technique s'appuie sur une lecture du code (preload de polices, fetchpriority sur l'image hero, formats AVIF/WebP), pas sur un audit chronométré.",
-      "La citation réelle de cette page par des moteurs IA (AI Overviews, Perplexity, ChatGPT) n'est pas mesurée ; le jugement porte sur la structure d'extraction (réponse directe, FAQ, tableaux à <thead>), pas sur une citation observée en production.",
-      "Le rendu mobile (320-768px, cibles tactiles, absence de défilement horizontal) n'a pas été vérifié visuellement dans un navigateur ; l'appréciation s'appuie sur les media queries et les unités clamp() lues dans le CSS.",
-      "Le score de lisibilité (Flesch ou équivalent français) n'a pas été calculé par un outil dédié ; la densité de certaines phrases longues à clauses multiples est une lecture qualitative, pas une mesure."
+      "Les deux nouveaux H3 gagneraient à être rangés sous le H2 de définition plutôt que sous « Pourquoi un dépôt accepté ne suffit-il pas ? ».",
+      "Les requêtes sur le statut OK/ANO, les comptes rendus des organismes complémentaires, le mandat à acquitter et la radiation restent sans réponse : leurs sources officielles sont des PDF ou des archives que la forge ne sait pas ingérer. À reprendre si la forge accepte ces formats.",
+      "Les délais de transmission de 119 (H+4) et 120 (J+5) ne sont pas repris : leurs extraits, trop courts pour le seuil de citation du gate, ont été écartés plutôt que d'en contourner la règle.",
+      "La page NEOReS a été modifiée le 02/11/2026 : l'article doit être relu à chaque changement de cette page, comme le dit déjà la règle de relecture de la recette."
     ],
     "seo": [
-      "Titre de balise à 56 caractères, dans la fourchette 40-60 recommandée, distinct du H1 mais cohérent avec lui.",
-      "Meta description à 144 caractères, cohérente avec le contenu visible, sans troncature apparente ni mot-clé forcé.",
-      "URL stable, lisible et en minuscules : /blog/comprendre-les-comptes-rendus-metier-dsn.",
-      "Hiérarchie de titres propre : un seul H1, puis H2 vers H3 sans saut de niveau, y compris dans les six étapes et la FAQ.",
-      "Quatre liens externes distincts vers des pages tier-1 officielles (net-entreprises.fr), chacun cité en contexte et repris dans « Sources consultées » avec date de consultation.",
-      "Canonical et Open Graph (image 1200x630 avec largeur et hauteur déclarées, alt renseigné) cohérents avec le titre et la description de la page."
+      "Titre d'onglet inchangé à 56 caractères.",
+      "Description à 134 caractères, ouverte sur la requête principale.",
+      "Canonical autoréférente, une seule H1.",
+      "Hiérarchie H2/H3 cohérente ; deux H3 ajoutés.",
+      "dateModified et article:modified_time projetés au 2026-11-03, datePublished conservé.",
+      "Image sociale 1200×630 avec largeur, hauteur et alt."
     ],
     "geo": [
-      "La section « Réponse directe » ouvre l'article sur une réponse autonome de 75 mots, extractible sans le reste du contexte.",
-      "Cinq questions de FAQ répondent chacune en une à trois phrases autonomes, la source étant nommée dans la réponse quand elle existe.",
-      "Chaque définition clé (CRM, bilan d'anomalies, certificat de conformité) est posée une seule fois puis réutilisée sans synonymie flottante, ce qui limite l'ambiguïté d'entité pour un moteur de réponse.",
-      "Les citations sont attribuées nommément à Net-entreprises avec lien direct vers la page officielle, un signal de vérifiabilité pour une réponse générée par IA.",
-      "Aucun schema FAQPage n'est déclaré malgré la section Questions fréquentes visible ; le guide de notation du site traite ce balisage comme optionnel et sans bonus, donc non pénalisant ici.",
-      "Le robots « noindex, follow » observé dans ce rendu est propre au harnais de prévisualisation QA (bandeau « Candidat éditorial ») et ne décrit pas le comportement de la page une fois publiée."
+      "Chaque H3 répond d'abord en une phrase autonome.",
+      "Le tableau des numéros se lit hors contexte.",
+      "Chaque citation est attribuée à une page officielle nommée et à son URL.",
+      "Les organismes (Urssaf, MSA, France Travail) et la norme (NEOReS) sont nommés explicitement.",
+      "Aucune affirmation sans source n'est présentée comme un fait officiel.",
+      "Les limites (numéros non recensés, 3 mois de recherche) sont dites."
     ],
-    "verdict": "Le candidat corrige réellement l'écart de la première passe (la formule « à adapter » a disparu, remplacée par des formulations qui gardent le sens) et atteint un niveau élevé sur les sept critères éditoriaux comme sur le barème qualité à 100 points, avec seulement des réserves mineures et non bloquantes."
-  }
+    "verdict": "PASS avec réserves : la republication apporte deux réponses sourcées et vérifiées en direct sans élargir au-delà de ce que les pages disent. Les réserves portent sur le placement des sections et sur les intentions laissées sans réponse, pas sur la fidélité du contenu."
+  },
+  "requiredCorrections": []
 }

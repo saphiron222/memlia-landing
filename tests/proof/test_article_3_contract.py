@@ -100,7 +100,13 @@ class Article3Contract(unittest.TestCase):
 
     def test_source_contract_is_complete_and_fresh(self):
         self.assertEqual(source_errors(self.source), [])
-        self.assertEqual(len(source_records(self.source)), 4)
+        # L'article déclare exactement les sources de sa recette (six depuis la republication du
+        # 03/11/2026 : les quatre d'origine, NEOReS et le tableau de bord DSN) et jamais moins de
+        # quatre. Un nombre épinglé se périmerait à chaque republication, comme les dates.
+        urls = sorted(url for url, _ in source_records(self.source))
+        recette = json.loads((ROOT / "editorial/recettes" / SLUG / "recette.json").read_text(encoding="utf-8"))
+        self.assertEqual(urls, sorted(source["url"] for source in recette["sources"]))
+        self.assertGreaterEqual(len(urls), 4)
 
     def test_identity_and_non_attestation_are_explicit(self):
         self.assertEqual(identity_errors(self.source), [])
@@ -141,11 +147,17 @@ class Article3Contract(unittest.TestCase):
     def test_mutations_reject_missing_stale_or_uncited_sources(self):
         records = source_records(self.source)
         first_url, _ = records[0]
-        source_line = re.search(r'^  - editeur:[^\n]*\n    titre:[^\n]*\n    url: "' + re.escape(first_url) + r'"\n    consulte: [^\n]*\n', self.source, re.M)
-        self.assertIsNotNone(source_line)
-        assert source_line is not None
-        missing = self.source.replace(source_line.group(), "")
+        blocks = list(re.finditer(r'^  - editeur:[^\n]*\n    titre:[^\n]*\n    url: "https://[^"]+"\n    consulte: [^\n]*\n', self.source, re.M))
+        self.assertEqual(len(blocks), len(records))
+        # Retirer une seule source ne suffit plus à passer sous le minimum de quatre : on en retire
+        # assez pour qu'il en reste trois, ce qui doit être refusé.
+        missing = self.source
+        for block in blocks[: len(blocks) - 3]:
+            missing = missing.replace(block.group(), "", 1)
+        self.assertEqual(len(source_records(missing)), 3)
         self.assertIn("sources-absentes", source_errors(missing))
+        # Et la suppression d'une seule source parmi six reste acceptée : le minimum est un plancher.
+        self.assertNotIn("sources-absentes", source_errors(self.source.replace(blocks[0].group(), "", 1)))
         stale = self.source.replace(f"consulte: {jour_de_publication(self.source)}", "consulte: 2025-09-17", 1)
         self.assertTrue(any(error.startswith("source-perimee:") for error in source_errors(stale)))
         # Une même source peut désormais être citée dans le texte et dans la légende datée

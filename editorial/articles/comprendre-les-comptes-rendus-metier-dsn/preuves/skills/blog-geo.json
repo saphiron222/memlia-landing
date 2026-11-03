@@ -3,17 +3,17 @@
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
   "kind": "skill",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "63c2afb4b30b2a9d21cd072495546f215c3fe950db9e992a9b76daca841574c6",
-  "manifestSha256": "992b518b0212b9ff25d7d292656ef228670f6523c7a4ac72062fa81ad3fd3944",
+  "checkedAt": "2026-11-03",
+  "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
+  "manifestSha256": "ac05a84c995d92e206ae79b99963cd770ea553df6334dd233c3b817455cc81ac",
   "observations": [
     "Réponse directe en tête (76 mots au premier paragraphe) ; définitions extractibles dans le corps.",
-    "La section « Réponse directe » ouvre l'article sur une réponse autonome de 75 mots, extractible sans le reste du contexte.",
-    "Cinq questions de FAQ répondent chacune en une à trois phrases autonomes, la source étant nommée dans la réponse quand elle existe.",
-    "Chaque définition clé (CRM, bilan d'anomalies, certificat de conformité) est posée une seule fois puis réutilisée sans synonymie flottante, ce qui limite l'ambiguïté d'entité pour un moteur de réponse.",
-    "Les citations sont attribuées nommément à Net-entreprises avec lien direct vers la page officielle, un signal de vérifiabilité pour une réponse générée par IA.",
-    "Aucun schema FAQPage n'est déclaré malgré la section Questions fréquentes visible ; le guide de notation du site traite ce balisage comme optionnel et sans bonus, donc non pénalisant ici.",
-    "Le robots « noindex, follow » observé dans ce rendu est propre au harnais de prévisualisation QA (bandeau « Candidat éditorial ») et ne décrit pas le comportement de la page une fois publiée."
+    "Chaque H3 répond d'abord en une phrase autonome.",
+    "Le tableau des numéros se lit hors contexte.",
+    "Chaque citation est attribuée à une page officielle nommée et à son URL.",
+    "Les organismes (Urssaf, MSA, France Travail) et la norme (NEOReS) sont nommés explicitement.",
+    "Aucune affirmation sans source n'est présentée comme un fait officiel.",
+    "Les limites (numéros non recensés, 3 mois de recherche) sont dites."
   ],
   "skill": "blog-geo"
 }

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
-  "articleSha256": "63c2afb4b30b2a9d21cd072495546f215c3fe950db9e992a9b76daca841574c6",
+  "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
   "contentUnits": [
     {
       "id": "unit-29f91aec1e24",
@@ -88,6 +88,79 @@
     {
       "id": "unit-59ed96d51155",
       "text": "La frontière entre BAN et CRM dépend du périmètre, du format et de l’organisme décrits dans le retour reçu. Le tableau oriente la lecture ; il ne remplace ni le document ni sa notice.",
+      "claimIds": []
+    },
+    {
+      "id": "unit-ffebaeb40393",
+      "text": "Qui reçoit le compte rendu métier et où le consulter ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-7169df3da900",
+      "text": "Le déclarant qui a effectué le dépôt, et lui seul. Sur la page Le tableau de bord de la DSN, Net-entreprises écrit que « seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés ». L’administrateur fait exception : il « peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée ».",
+      "claimIds": [
+        "claim-unit-7169df3da900-1",
+        "claim-unit-7169df3da900-2"
+      ]
+    },
+    {
+      "id": "unit-7d0f7956decb",
+      "text": "Les retours s’affichent dans le tableau de bord DSN, « intégré dans votre logiciel ou sur net-entreprises.fr ». Un cabinet en procédure automatique d’échanges peut le consulter « directement via votre produit (logiciel) de paie » ; dans les autres cas, il doit se connecter à son compte net-entreprises.fr.",
+      "claimIds": [
+        "claim-unit-7d0f7956decb-1",
+        "claim-unit-7d0f7956decb-2",
+        "claim-unit-7d0f7956decb-3"
+      ]
+    },
+    {
+      "id": "unit-ab3e023156a5",
+      "text": "La recherche a une limite : il est « impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois ». Net-entreprises précise que l’historisation « peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique ». Consignez donc la référence de chaque retour dans le registre décrit plus bas dès sa réception.",
+      "claimIds": [
+        "claim-unit-ab3e023156a5-1",
+        "claim-unit-ab3e023156a5-2"
+      ]
+    },
+    {
+      "id": "unit-8818a084ab63",
+      "text": "Quels sont les numéros des comptes rendus métier (118, 119, 120, 121, 124…) ?",
+      "claimIds": []
+    },
+    {
+      "id": "unit-0f8179286f70",
+      "text": "NEOReS, selon Net-entreprises, c’est « la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie ». Les numéros ci-dessous sont ceux des comptes rendus normalisés de cette norme ; Net-entreprises les recense, organisme par organisme, sur sa page Norme et documentation NEOReS.",
+      "claimIds": [
+        "claim-unit-0f8179286f70-1"
+      ]
+    },
+    {
+      "id": "unit-06f06dc1eff6",
+      "text": "Cette normalisation concerne « uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN » : les certificats de conformité, les bilans d’anomalies et les accusés de réception ne sont pas concernés, selon la même page. Voici les numéros qu’elle recense, résumés ; la page propose en plus des spécifications à télécharger pour plusieurs d’entre eux.",
+      "claimIds": [
+        "claim-unit-06f06dc1eff6-1",
+        "claim-unit-06f06dc1eff6-2"
+      ]
+    },
+    {
+      "id": "unit-273f1dd07216",
+      "text": "| Numéro | Ce que la page en dit | | --- | --- | | 118 | Les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues sont mis à disposition des déclarants depuis 2022. | | 119 et 120 | Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés. La page publie les spécifications des contrôles présents dans les CRM normalisés 119 et 120. | | 121 | Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés. La page publie les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité ». | | 124 | Urssaf : depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. | | 125 | MSA : à partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent. | | 130 | MSA : le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024. | | 136 | MSA : le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026). | | 132 | En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf. | | 134 | En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA. | | 135 | À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé. |",
+      "claimIds": [
+        "claim-unit-273f1dd07216-1",
+        "claim-unit-273f1dd07216-2",
+        "claim-unit-273f1dd07216-3",
+        "claim-unit-273f1dd07216-4",
+        "claim-unit-273f1dd07216-5",
+        "claim-unit-273f1dd07216-6",
+        "claim-unit-273f1dd07216-7",
+        "claim-unit-273f1dd07216-8",
+        "claim-unit-273f1dd07216-9",
+        "claim-unit-273f1dd07216-10",
+        "claim-unit-273f1dd07216-11",
+        "claim-unit-273f1dd07216-12"
+      ]
+    },
+    {
+      "id": "unit-2a1c6670c94e",
+      "text": "Nous ne donnons aucun sens à un numéro que cette page ne recense pas : relevez l’émetteur et la notice du retour reçu, ou interrogez l’organisme.",
       "claimIds": []
     },
     {
@@ -404,11 +477,11 @@
       "sourceExcerpts": {
         "net-entreprises-crm": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
@@ -420,10 +493,10 @@
             "citation": {
               "text": "Un Compte Rendu Métier (CRM) est un rapport permettant à l’organisme ou administration concernée de faire un retour aux déclarants à réception de leur déclaration lorsqu’une erreur ou suspicion d’erreur est détectée.",
               "sha256": "ef509c5e2bb80ff3b9aebd039458d169e786ca17dbb00478b7c5774d8192c754",
-              "sourceContentSha256": "d53c9907a29cbfaf404e8dbb8e709c8bbab20943024582e3913f75ff9ae92def",
+              "sourceContentSha256": "5523bc76f7b0a046863465eccfa2b82287e75b1bf913379a0316d66c2352d2d8",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
@@ -455,7 +528,7 @@
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition officielle du compte rendu métier, citée mot pour mot depuis Net-entreprises.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -471,11 +544,11 @@
       "sourceExcerpts": {
         "net-entreprises-crm": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations"
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-crm",
@@ -487,15 +560,15 @@
             "citation": {
               "text": "chaque organisme intègre les éléments transmis dans son système et vérifie la cohérence des données transmises dans vos déclarations",
               "sha256": "9025f56c250f637d165f2b9a2d58120108f667fe3d692f91c0760da2769b823c",
-              "sourceContentSha256": "d53c9907a29cbfaf404e8dbb8e709c8bbab20943024582e3913f75ff9ae92def",
+              "sourceContentSha256": "5523bc76f7b0a046863465eccfa2b82287e75b1bf913379a0316d66c2352d2d8",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/comptes-rendus-metiers-dsn/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "Les comptes rendus métiers DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 990,
-                  "endLine": 990
+                  "startLine": 993,
+                  "endLine": 993
                 }
               }
             },
@@ -512,13 +585,13 @@
                 "donnees",
                 "transmises"
               ],
-              "reasoning": "La citation, relevée à la ligne 990 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (chaque, organisme, integre, elements, transmis, systeme, verifie, coherence, donnees, transmises) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 993 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (chaque, organisme, integre, elements, transmis, systeme, verifie, coherence, donnees, transmises) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Le traitement des données par chaque organisme avant la mise à disposition du CRM, cité mot pour mot.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -534,11 +607,11 @@
       "sourceExcerpts": {
         "net-entreprises-retours": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN"
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-retours",
@@ -550,15 +623,15 @@
             "citation": {
               "text": "Le certificat de conformité vous libère de vos obligations déclaratives vis-à-vis de la transmission de la DSN",
               "sha256": "a83fa12f2c9ef77adba16046bafed7c7a1a525fd36f923c4967aa6fbf55736ba",
-              "sourceContentSha256": "a0f1f88e221d2d46780b531f12afcb90ad249296d93519bd6a259b5a2c436f95",
+              "sourceContentSha256": "7709a4db6e59a8e60907b364cf479e4c806de277c46568f418e7f35a3ddad53a",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 999,
-                  "endLine": 999
+                  "startLine": 1002,
+                  "endLine": 1002
                 }
               }
             },
@@ -572,13 +645,13 @@
                 "declaratives",
                 "transmission"
               ],
-              "reasoning": "La citation, relevée à la ligne 999 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (certificat, conformite, vous, libere, obligations, declaratives, transmission) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 1002 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (certificat, conformite, vous, libere, obligations, declaratives, transmission) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Portée du certificat de conformité, limitée à la transmission, formulée par Net-entreprises.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -594,11 +667,11 @@
       "sourceExcerpts": {
         "net-entreprises-retours": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires"
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-retours",
@@ -610,15 +683,15 @@
             "citation": {
               "text": "votre DSN a été acceptée, mais des écarts sont potentiellement à corriger pour une prise en compte correcte par tous les organismes et administrations destinataires",
               "sha256": "f10987711b83d2fd6cbc7c2d4d2f8bb0a4992a9712f9df537aa77e2be69799c5",
-              "sourceContentSha256": "a0f1f88e221d2d46780b531f12afcb90ad249296d93519bd6a259b5a2c436f95",
+              "sourceContentSha256": "7709a4db6e59a8e60907b364cf479e4c806de277c46568f418e7f35a3ddad53a",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/retours-suite-au-depot-dsn-ou-signalement/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "Les retours d’informations suite au dépôt de votre DSN ou signalement d’événement",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 1010,
-                  "endLine": 1010
+                  "startLine": 1013,
+                  "endLine": 1013
                 }
               }
             },
@@ -635,13 +708,1393 @@
                 "administrations",
                 "destinataires"
               ],
-              "reasoning": "La citation, relevée à la ligne 1010 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (acceptee, ecarts, potentiellement, corriger, prise, compte, correcte, organismes, administrations, destinataires) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 1013 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (acceptee, ecarts, potentiellement, corriger, prise, compte, correcte, organismes, administrations, destinataires) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Définition du contrôle non bloquant : une DSN acceptée peut encore porter des écarts à corriger.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7169df3da900-1",
+      "unitId": "unit-7169df3da900",
+      "claim": "seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés.",
+            "context": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés.",
+            "contextSha256": "829645c04f94cc33858ef5aaa1b597aa8ef0eed8fc16f633d61f30d09ff9efe1",
+            "citation": {
+              "text": "Pour des raisons de confidentialité et de sécurisations des informations transmises et de consultation des bilans retours, seul le déclarant ayant effectué le dépôt de la DSN mensuelle ou du signalement d’événement peut consulter les retours associés.",
+              "sha256": "829645c04f94cc33858ef5aaa1b597aa8ef0eed8fc16f633d61f30d09ff9efe1",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1006,
+                  "endLine": 1006
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "seul",
+                "declarant",
+                "ayant",
+                "effectue",
+                "depot",
+                "mensuelle",
+                "signalement",
+                "evenement",
+                "peut",
+                "consulter",
+                "retours",
+                "associes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1006 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (seul, declarant, ayant, effectue, depot, mensuelle, signalement, evenement, peut, consulter, retours, associes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Seul le déclarant qui a déposé peut consulter les retours associés, cité mot pour mot depuis la page du tableau de bord.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7169df3da900-2",
+      "unitId": "unit-7169df3da900",
+      "claim": "peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "L’administrateur, peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "L’administrateur, peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée.",
+            "context": "L’administrateur, peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée.",
+            "contextSha256": "d4c15f1695f9d33843ab70a3591508c837e3073527dc244abcbac8fca724870f",
+            "citation": {
+              "text": "L’administrateur, peut néanmoins consulter l’ensemble des dépôts et des retours transmis via le SIRET de connexion en interfaçant son tableau de bord DSN avec l’un des déclarants de la liste proposée.",
+              "sha256": "d4c15f1695f9d33843ab70a3591508c837e3073527dc244abcbac8fca724870f",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1006,
+                  "endLine": 1006
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "peut",
+                "neanmoins",
+                "consulter",
+                "ensemble",
+                "depots",
+                "retours",
+                "transmis",
+                "siret",
+                "connexion",
+                "interfacant",
+                "tableau",
+                "bord",
+                "declarants",
+                "liste",
+                "proposee"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1006 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (peut, neanmoins, consulter, ensemble, depots, retours, transmis, siret, connexion, interfacant, tableau, bord, declarants, liste, proposee) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Exception de l’administrateur à la règle du déclarant ayant déposé, citée mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7d0f7956decb-1",
+      "unitId": "unit-7d0f7956decb",
+      "claim": "intégré dans votre logiciel ou sur net-entreprises.fr",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "il est essentiel de consulter le tableau de bord (intégré dans votre logiciel ou sur net-entreprises.fr)"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "il est essentiel de consulter le tableau de bord (intégré dans votre logiciel ou sur net-entreprises.fr)",
+            "context": "Après la transmission de la DSN et des signalements d’événements, il est essentiel de consulter le tableau de bord (intégré dans votre logiciel ou sur net-entreprises.fr) afin de visualiser l’ensemble des retours d’informations du dispositif DSN ou des organismes de protection sociale.",
+            "contextSha256": "d9fad9748ff90f7765143f91ae4d57e1f665c0460a9b3d8accd0d01e468f356c",
+            "citation": {
+              "text": "il est essentiel de consulter le tableau de bord (intégré dans votre logiciel ou sur net-entreprises.fr)",
+              "sha256": "22397abc692c0c1ad6f54f2fcae601717a30bcc466caa6800514de9a9eee1fbc",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 977,
+                  "endLine": 977
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "integre",
+                "logiciel",
+                "entreprises"
+              ],
+              "reasoning": "La citation, relevée à la ligne 977 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (integre, logiciel, entreprises) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Les deux lieux de consultation du tableau de bord, cités mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7d0f7956decb-2",
+      "unitId": "unit-7d0f7956decb",
+      "claim": "directement via votre produit (logiciel) de paie",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "Si vous êtes en procédure automatique d’échanges, vous pouvez le consulter directement via votre produit (logiciel) de paie"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "Si vous êtes en procédure automatique d’échanges, vous pouvez le consulter directement via votre produit (logiciel) de paie",
+            "context": "Si vous êtes en procédure automatique d’échanges, vous pouvez le consulter directement via votre produit (logiciel) de paie",
+            "contextSha256": "2d940264fd3a9caf7430934a4dab02ed67f5b8a69e2ba8a3409cdffe0416213b",
+            "citation": {
+              "text": "Si vous êtes en procédure automatique d’échanges, vous pouvez le consulter directement via votre produit (logiciel) de paie",
+              "sha256": "2d940264fd3a9caf7430934a4dab02ed67f5b8a69e2ba8a3409cdffe0416213b",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 994,
+                  "endLine": 994
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "directement",
+                "produit",
+                "logiciel",
+                "paie"
+              ],
+              "reasoning": "La citation, relevée à la ligne 994 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (directement, produit, logiciel, paie) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Consultation depuis le logiciel de paie pour un cabinet en procédure automatique d’échanges, citée mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-7d0f7956decb-3",
+      "unitId": "unit-7d0f7956decb",
+      "claim": "il doit se connecter à son compte net-entreprises.fr",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "Dans les autres cas, vous devez vous connecter à votre compte net-entreprises.fr."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "Dans les autres cas, vous devez vous connecter à votre compte net-entreprises.fr.",
+            "context": "Dans les autres cas, vous devez vous connecter à votre compte net-entreprises.fr.",
+            "contextSha256": "d5876ca485e00678f29dd43f40118d0b57725ab2379bc6327085ad15b13e862c",
+            "citation": {
+              "text": "Dans les autres cas, vous devez vous connecter à votre compte net-entreprises.fr.",
+              "sha256": "d5876ca485e00678f29dd43f40118d0b57725ab2379bc6327085ad15b13e862c",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 995,
+                  "endLine": 995
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "connecter",
+                "compte",
+                "entreprises"
+              ],
+              "reasoning": "La citation, relevée à la ligne 995 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (connecter, compte, entreprises) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Dans les autres cas, la connexion au compte net-entreprises.fr est la voie de consultation indiquée par la page.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-ab3e023156a5-1",
+      "unitId": "unit-ab3e023156a5",
+      "claim": "impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "Il est en effet impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois (les mois présentés dans la liste déroulante étant les seuls pouvant être affichés)."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "Il est en effet impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois (les mois présentés dans la liste déroulante étant les seuls pouvant être affichés).",
+            "context": "Il est en effet impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois (les mois présentés dans la liste déroulante étant les seuls pouvant être affichés).",
+            "contextSha256": "cf6e6cbc924b62c6d3d00f5550bf19d9f62aad276d5d4b509f10bb7754c94a41",
+            "citation": {
+              "text": "Il est en effet impossible à partir du tableau de bord DSN de rechercher un envoi de plus de 3 mois (les mois présentés dans la liste déroulante étant les seuls pouvant être affichés).",
+              "sha256": "cf6e6cbc924b62c6d3d00f5550bf19d9f62aad276d5d4b509f10bb7754c94a41",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1009,
+                  "endLine": 1009
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "impossible",
+                "partir",
+                "tableau",
+                "bord",
+                "rechercher",
+                "envoi",
+                "plus",
+                "mois"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1009 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (impossible, partir, tableau, bord, rechercher, envoi, plus, mois) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Limite de recherche du tableau de bord à 3 mois, citée mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-ab3e023156a5-2",
+      "unitId": "unit-ab3e023156a5",
+      "claim": "peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-tableau-de-bord"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-tableau-de-bord": "Cette historisation peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-tableau-de-bord",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+            "excerpt": "Cette historisation peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique.",
+            "context": "Cette historisation peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique.",
+            "contextSha256": "529dd1b5c9797d2c9fbea36bc18deba187388b3b2c054414eeb35da12f28350d",
+            "citation": {
+              "text": "Cette historisation peut se faire soit directement à partir de votre logiciel de paie soit par l’enregistrement des fichiers transmis directement sur votre poste informatique.",
+              "sha256": "529dd1b5c9797d2c9fbea36bc18deba187388b3b2c054414eeb35da12f28350d",
+              "sourceContentSha256": "43e1a071b8fcb8d1b8c969574124fca1a91760cf4c78c9464bfedff6737b0de8",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/tableau-de-bord-dsn/",
+                "checkedAt": "2026-11-03",
+                "title": "Le tableau de bord de la DSN",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1009,
+                  "endLine": 1009
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "peut",
+                "soit",
+                "directement",
+                "partir",
+                "logiciel",
+                "paie",
+                "enregistrement",
+                "fichiers",
+                "transmis",
+                "poste",
+                "informatique"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1009 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (peut, soit, directement, partir, logiciel, paie, enregistrement, fichiers, transmis, poste, informatique) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Les deux modes d’historisation indiqués par la page, cités mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-0f8179286f70-1",
+      "unitId": "unit-0f8179286f70",
+      "claim": "la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie.",
+            "context": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie.",
+            "contextSha256": "4c1335176648ad061100e15e110c14968f3a169bfa29994fc9fc17dbace36b36",
+            "citation": {
+              "text": "NEOReS est la norme d’échange optimisée des retours sociaux, qui désignent les flux des organismes destinataires de données DSN vers les déclarants et leurs solutions de paie.",
+              "sha256": "4c1335176648ad061100e15e110c14968f3a169bfa29994fc9fc17dbace36b36",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 985,
+                  "endLine": 985
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "norme",
+                "echange",
+                "optimisee",
+                "retours",
+                "sociaux",
+                "designent",
+                "flux",
+                "organismes",
+                "destinataires",
+                "donnees",
+                "declarants",
+                "solutions",
+                "paie"
+              ],
+              "reasoning": "La citation, relevée à la ligne 985 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (norme, echange, optimisee, retours, sociaux, designent, flux, organismes, destinataires, donnees, declarants, solutions, paie) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Définition officielle de NEOReS, citée mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-06f06dc1eff6-1",
+      "unitId": "unit-06f06dc1eff6",
+      "claim": "uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "La normalisation des retours DSN concerne uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "La normalisation des retours DSN concerne uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN",
+            "context": "La normalisation des retours DSN concerne uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN .",
+            "contextSha256": "8b23aa2990f63c3a006914f4caaed282f0a23120b72b6e336c63a4b1078e3b22",
+            "citation": {
+              "text": "La normalisation des retours DSN concerne uniquement les transmissions d’un organisme de protection sociale vers le déclarant dans le contexte global DSN",
+              "sha256": "3b5d4f45241671ed6be8dac508887a020592be134bf771b7a534103c3c63a4e9",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1020,
+                  "endLine": 1020
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "uniquement",
+                "transmissions",
+                "organisme",
+                "protection",
+                "sociale",
+                "declarant",
+                "contexte",
+                "global"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1020 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (uniquement, transmissions, organisme, protection, sociale, declarant, contexte, global) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Périmètre des retours normalisés : les transmissions d’un organisme vers le déclarant, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-06f06dc1eff6-2",
+      "unitId": "unit-06f06dc1eff6",
+      "claim": "les certificats de conformité, les bilans d’anomalies et les accusés de réception ne sont pas concernés",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Les retours portant sur la phase amont de réception par les SI métiers DSN et PASRAU (Certificats de conformités &#8211; CCO, Bilans d’anomalies &#8211; BAN et accusés de réception) ne sont donc pas concernés."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Les retours portant sur la phase amont de réception par les SI métiers DSN et PASRAU (Certificats de conformités &#8211; CCO, Bilans d’anomalies &#8211; BAN et accusés de réception) ne sont donc pas concernés.",
+            "context": "Les retours portant sur la phase amont de réception par les SI métiers DSN et PASRAU (Certificats de conformités &#8211; CCO, Bilans d’anomalies &#8211; BAN et accusés de réception) ne sont donc pas concernés.",
+            "contextSha256": "8cf3e6483255a6249a3f873a484311c70d6955d903e9ec57a65f18649f9a556f",
+            "citation": {
+              "text": "Les retours portant sur la phase amont de réception par les SI métiers DSN et PASRAU (Certificats de conformités &#8211; CCO, Bilans d’anomalies &#8211; BAN et accusés de réception) ne sont donc pas concernés.",
+              "sha256": "8cf3e6483255a6249a3f873a484311c70d6955d903e9ec57a65f18649f9a556f",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1021,
+                  "endLine": 1021
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "certificats",
+                "bilans",
+                "anomalies",
+                "accuses",
+                "reception",
+                "concernes"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1021 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (certificats, bilans, anomalies, accuses, reception, concernes) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Les certificats de conformité, bilans d’anomalies et accusés de réception sont hors du périmètre des retours normalisés, selon la page.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-1",
+      "unitId": "unit-273f1dd07216",
+      "claim": "Les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues sont mis à disposition des déclarants depuis 2022",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Depuis 2022, les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues, sont mis à disposition des déclarants dans les CRM normalisés 118"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Depuis 2022, les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues, sont mis à disposition des déclarants dans les CRM normalisés 118",
+            "context": "Depuis 2022, les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues, sont mis à disposition des déclarants dans les CRM normalisés 118 ( voir fiche consigne dédiée ).",
+            "contextSha256": "d8411c569d7854ce7dc63be66732eca15788f1ae17bc4534190dbf3643d3b233",
+            "citation": {
+              "text": "Depuis 2022, les effectifs calculés par les Urssaf et les Caisses MSA sur la base des DSN reçues, sont mis à disposition des déclarants dans les CRM normalisés 118",
+              "sha256": "dc063bdf25b52cc4c8563b561a612abeb42937839d07240ed69d0c8a0ba0f905",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1073,
+                  "endLine": 1073
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "effectifs",
+                "calcules",
+                "urssaf",
+                "caisses",
+                "base",
+                "recues",
+                "disposition",
+                "declarants",
+                "2022"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1073 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (effectifs, calcules, urssaf, caisses, base, recues, disposition, declarants, 2022) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le compte rendu normalisé 118 porte les effectifs calculés par les Urssaf et les caisses MSA depuis 2022.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-2",
+      "unitId": "unit-273f1dd07216",
+      "claim": "les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés",
+            "context": "Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés visant ainsi à améliorer la qualité des données DSN :",
+            "contextSha256": "e3ca5c9a56052917dbf88b7247d9d1b4f3d572f4b05bb743ffdb0422e53213fb",
+            "citation": {
+              "text": "Depuis février 2023, les résultats de contrôles relatifs au recouvrement des cotisations sociales et plus généralement relatifs à la fiabilisation des données sociales, sont transmis par l’Urssaf Caisse Nationale via les comptes rendus normalisés",
+              "sha256": "dd894611fe137708ffe71ebce1cdd890b42e3073e6f5071c86c308609b1e30c2",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1039,
+                  "endLine": 1039
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "resultats",
+                "controles",
+                "relatifs",
+                "recouvrement",
+                "cotisations",
+                "sociales",
+                "plus",
+                "generalement",
+                "fiabilisation",
+                "donnees",
+                "transmis",
+                "urssaf",
+                "caisse",
+                "nationale",
+                "comptes",
+                "rendus",
+                "normalises"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1039 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (resultats, controles, relatifs, recouvrement, cotisations, sociales, plus, generalement, fiabilisation, donnees, transmis, urssaf, caisse, nationale, comptes, rendus, normalises) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Depuis février 2023, l’Urssaf Caisse Nationale transmet ses résultats de contrôles par des comptes rendus normalisés, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-3",
+      "unitId": "unit-273f1dd07216",
+      "claim": "spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Téléchargez les spécifications des contrôles présents dans les CRM normalisés 119 et 120"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Téléchargez les spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+            "context": "Téléchargez les spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+            "contextSha256": "4f6b34db2fb4680ccb9b2fb51bd965ead8b2010d4c2978cdd2ecb060a2525ca2",
+            "citation": {
+              "text": "Téléchargez les spécifications des contrôles présents dans les CRM normalisés 119 et 120",
+              "sha256": "4f6b34db2fb4680ccb9b2fb51bd965ead8b2010d4c2978cdd2ecb060a2525ca2",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1048,
+                  "endLine": 1048
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "specifications",
+                "controles",
+                "presents",
+                "normalises"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1048 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (specifications, controles, presents, normalises) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La page rattache les numéros 119 et 120 aux CRM normalisés dont elle publie les spécifications de contrôles.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-4",
+      "unitId": "unit-273f1dd07216",
+      "claim": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés",
+            "context": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés ( voir fiche consigne dédiée ).",
+            "contextSha256": "72a4a78b56cf8f320de407a632e3dfc80410c7568c4ebf0fd72190d44dc395fb",
+            "citation": {
+              "text": "Depuis juin 2023, « le compte rendu identité » remonte sous format normalisé les propositions d’amélioration des données d’identification des individus déclarés",
+              "sha256": "32b324793b42ab05f041c86d1e66c494c0339dcafb83cb4de8ea93274ca372b7",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1067,
+                  "endLine": 1067
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "juin",
+                "2023",
+                "compte",
+                "rendu",
+                "identite",
+                "remonte",
+                "format",
+                "normalise",
+                "propositions",
+                "amelioration",
+                "donnees",
+                "identification",
+                "individus",
+                "declares"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1067 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (juin, 2023, compte, rendu, identite, remonte, format, normalise, propositions, amelioration, donnees, identification, individus, declares) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le CRM Identité (121) remonte les propositions d’amélioration des données d’identification depuis juin 2023, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-5",
+      "unitId": "unit-273f1dd07216",
+      "claim": "spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Téléchargez les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Téléchargez les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »",
+            "context": "<a href=\"https://www.net-entreprises.fr/media/documentation/dsn-crm-identite-grille-declaration.xlsx\" class=\"button \" target=\"_blank\"><strong>Téléchargez les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »</strong></a>",
+            "contextSha256": "945e265498819caf45d78589666ae0a3edcb1baf4756089c0c8dcd978a58ce2c",
+            "citation": {
+              "text": "Téléchargez les spécifications des contrôles présents dans le CRM normalisé 121 « CRM Identité »",
+              "sha256": "478a627f56b3d46a01f9e86b54ace49c255a3892a7e0a7efe001271c864f6bf4",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1070,
+                  "endLine": 1070
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "specifications",
+                "controles",
+                "presents",
+                "normalise",
+                "identite"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1070 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (specifications, controles, presents, normalise, identite) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "La page rattache le numéro 121 au CRM Identité dont elle publie les spécifications de contrôles.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-6",
+      "unitId": "unit-273f1dd07216",
+      "claim": "depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+            "context": "Depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+            "contextSha256": "534c3273a868cadfd12e617da18760745683e20e736a95e14eb3da8f6c4014c3",
+            "citation": {
+              "text": "Depuis mars 2025, les comptes rendus métiers de rappel annuel (124) sont remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+              "sha256": "534c3273a868cadfd12e617da18760745683e20e736a95e14eb3da8f6c4014c3",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1044,
+                  "endLine": 1044
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "mars",
+                "2025",
+                "comptes",
+                "rendus",
+                "metiers",
+                "rappel",
+                "annuel",
+                "remontes",
+                "anomalie",
+                "corrigee",
+                "sein",
+                "declarations",
+                "exercice",
+                "precedent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1044 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (mars, 2025, comptes, rendus, metiers, rappel, annuel, remontes, anomalie, corrigee, sein, declarations, exercice, precedent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Rappel annuel (124) depuis mars 2025 en cas d’anomalie non corrigée, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-7",
+      "unitId": "unit-273f1dd07216",
+      "claim": "à partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "A partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "A partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+            "context": "A partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+            "contextSha256": "8debf0c9918a2e5c42d1c46f269104d183e0ffdfc077a3dc41b1066c9360f26a",
+            "citation": {
+              "text": "A partir de mars 2027, les comptes rendus métiers de rappel annuel (125) seront remontés en cas d’anomalie non corrigée au sein des déclarations de l’exercice précédent.",
+              "sha256": "8debf0c9918a2e5c42d1c46f269104d183e0ffdfc077a3dc41b1066c9360f26a",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1058,
+                  "endLine": 1058
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "partir",
+                "mars",
+                "2027",
+                "comptes",
+                "rendus",
+                "metiers",
+                "rappel",
+                "annuel",
+                "seront",
+                "remontes",
+                "anomalie",
+                "corrigee",
+                "sein",
+                "declarations",
+                "exercice",
+                "precedent"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1058 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (partir, mars, 2027, comptes, rendus, metiers, rappel, annuel, seront, remontes, anomalie, corrigee, sein, declarations, exercice, precedent) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Rappel annuel MSA (125) annoncé à partir de mars 2027 en cas d’anomalie non corrigée, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-8",
+      "unitId": "unit-273f1dd07216",
+      "claim": "le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+            "context": "Le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+            "contextSha256": "fd2e47332a6b88153ba89b09e0c47138e232c932fb80a4deead411f7a05b6471",
+            "citation": {
+              "text": "Le compte rendu 130, transmis à H+4 du dépôt de la DSN depuis juillet 2024",
+              "sha256": "fd2e47332a6b88153ba89b09e0c47138e232c932fb80a4deead411f7a05b6471",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1055,
+                  "endLine": 1055
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "compte",
+                "rendu",
+                "transmis",
+                "depot",
+                "juillet",
+                "2024"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1055 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (compte, rendu, transmis, depot, juillet, 2024) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Compte rendu MSA 130, transmis à H+4 du dépôt depuis juillet 2024, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-9",
+      "unitId": "unit-273f1dd07216",
+      "claim": "le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026)",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "Le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026)."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "Le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026).",
+            "context": "Le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026).",
+            "contextSha256": "3f40016ecd045b5e54dc33c040236a165ec3ddf9acbb189162b657ef37c14f28",
+            "citation": {
+              "text": "Le compte rendu 136, transmis à J+5 de l’échéance DSN (à partir de juillet 2026).",
+              "sha256": "3f40016ecd045b5e54dc33c040236a165ec3ddf9acbb189162b657ef37c14f28",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1056,
+                  "endLine": 1056
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "compte",
+                "rendu",
+                "transmis",
+                "echeance",
+                "partir",
+                "juillet",
+                "2026"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1056 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (compte, rendu, transmis, echeance, partir, juillet, 2026) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Compte rendu MSA 136, transmis à J+5 de l’échéance à partir de juillet 2026, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-10",
+      "unitId": "unit-273f1dd07216",
+      "claim": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf.",
+            "context": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf.",
+            "contextSha256": "951a33532c40fcfde4ea1f5232029510b05f84a220956039b64a5d0cfd26b1b5",
+            "citation": {
+              "text": "En cas de substitution, un CRM « post substitution » (132) sera transmis au déclarant au format normalisé pour l’informer des données substituées par l’Urssaf.",
+              "sha256": "951a33532c40fcfde4ea1f5232029510b05f84a220956039b64a5d0cfd26b1b5",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1045,
+                  "endLine": 1045
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "substitution",
+                "post",
+                "sera",
+                "transmis",
+                "declarant",
+                "format",
+                "normalise",
+                "informer",
+                "donnees",
+                "substituees",
+                "urssaf"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1045 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (substitution, post, sera, transmis, declarant, format, normalise, informer, donnees, substituees, urssaf) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le CRM post substitution 132 informe des données substituées par l’Urssaf, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-11",
+      "unitId": "unit-273f1dd07216",
+      "claim": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA."
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA.",
+            "context": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA.",
+            "contextSha256": "0a3a94aa75f3b1039aac56a22f623f108db839875f6f45e67c9756e8e2583909",
+            "citation": {
+              "text": "En cas de substitution, un CRM « post substitution » (134) sera transmis au déclarant au format normalisé pour l’informer des données substituées par la MSA.",
+              "sha256": "0a3a94aa75f3b1039aac56a22f623f108db839875f6f45e67c9756e8e2583909",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1059,
+                  "endLine": 1059
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "substitution",
+                "post",
+                "sera",
+                "transmis",
+                "declarant",
+                "format",
+                "normalise",
+                "informer",
+                "donnees",
+                "substituees"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1059 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (substitution, post, sera, transmis, declarant, format, normalise, informer, donnees, substituees) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le CRM post substitution 134 informe des données substituées par la MSA, cité mot pour mot.",
+            "checkedAt": "2026-11-03"
+          }
+        ]
+      }
+    },
+    {
+      "id": "claim-unit-273f1dd07216-12",
+      "unitId": "unit-273f1dd07216",
+      "claim": "À partir d’octobre 2026, France Travail remontera les propositions d’amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+      "type": "dsn",
+      "sourceIds": [
+        "net-entreprises-neores"
+      ],
+      "sourceExcerpts": {
+        "net-entreprises-neores": "A partir d’octobre 2026, France Travail remontera les propositions d&rsquo;amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé"
+      },
+      "checkedAt": "2026-11-03",
+      "status": "PASS",
+      "factCheck": {
+        "verdict": "SUPPORTED",
+        "checkedAt": "2026-11-03",
+        "sourceResults": [
+          {
+            "sourceId": "net-entreprises-neores",
+            "sourceUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "verifiedUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+            "excerpt": "A partir d’octobre 2026, France Travail remontera les propositions d&rsquo;amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+            "context": "A partir d’octobre 2026, France Travail remontera les propositions d&rsquo;amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+            "contextSha256": "fa8cb66345b21406c5ce196aa3bbf3713068fbb3c268ae03ba4ee890857a6459",
+            "citation": {
+              "text": "A partir d’octobre 2026, France Travail remontera les propositions d&rsquo;amélioration de données suite à la réception d’un signalement FCTU avec le compte rendu métier 135 au format normalisé",
+              "sha256": "fa8cb66345b21406c5ce196aa3bbf3713068fbb3c268ae03ba4ee890857a6459",
+              "sourceContentSha256": "2eb5f7a9262a69a1ee4a67738ca149e115f18b147e8c6bdc53f18d99113f29ac",
+              "coordinates": {
+                "finalUrl": "https://www.net-entreprises.fr/declaration/norme-et-documentation-neores/",
+                "checkedAt": "2026-11-03",
+                "title": "Norme et documentation NEOReS",
+                "locator": {
+                  "kind": "line-range",
+                  "startLine": 1076,
+                  "endLine": 1076
+                }
+              }
+            },
+            "justification": {
+              "sharedTerms": [
+                "partir",
+                "octobre",
+                "2026",
+                "france",
+                "travail",
+                "remontera",
+                "propositions",
+                "amelioration",
+                "donnees",
+                "suite",
+                "reception",
+                "signalement",
+                "fctu",
+                "compte",
+                "rendu",
+                "metier",
+                "format",
+                "normalise"
+              ],
+              "reasoning": "La citation, relevée à la ligne 1076 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (partir, octobre, 2026, france, travail, remontera, propositions, amelioration, donnees, suite, reception, signalement, fctu, compte, rendu, metier, format, normalise) sans en changer la polarité."
+            },
+            "verdict": "SUPPORTED",
+            "supportsClaim": true,
+            "contradictsClaim": false,
+            "explanation": "Le compte rendu 135 de France Travail remonte les propositions d’amélioration après un signalement FCTU à partir d’octobre 2026, tel que la page l’écrit.",
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -657,11 +2110,11 @@
       "sourceExcerpts": {
         "net-entreprises-dsn-val": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-dsn-val",
@@ -673,15 +2126,15 @@
             "citation": {
               "text": "L’outil de contrôle Dsn-Val permet de tester votre fichier DSN avant de le déposer.",
               "sha256": "893f99eabd891f24099976f4a6929fa77d2c407d17fc2218d8b85d1d198d7065",
-              "sourceContentSha256": "25f0a4862f9ffc90dd4e70d9c20c19d5be2b90a9941204d58aa30a1d9a6ac92f",
+              "sourceContentSha256": "1cfd909f3c9b0b31bf6422ad581e863fa8a7a0f1965c06cf74e4dda5743280c7",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/outils-de-controle-dsn-val/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "Outils d’auto-contrôle Dsn-Val et brique de contrôle",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 1011,
-                  "endLine": 1011
+                  "startLine": 1014,
+                  "endLine": 1014
                 }
               }
             },
@@ -693,13 +2146,13 @@
                 "avant",
                 "deposer"
               ],
-              "reasoning": "La citation, relevée à la ligne 1011 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (permet, tester, fichier, avant, deposer) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 1014 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (permet, tester, fichier, avant, deposer) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Rôle de Dsn-Val, outil d’auto-contrôle du fichier avant dépôt, cité depuis Net-entreprises.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -715,11 +2168,11 @@
       "sourceExcerpts": {
         "net-entreprises-fiabilisation": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-fiabilisation",
@@ -731,15 +2184,15 @@
             "citation": {
               "text": "En cas d’incompréhension, le déclarant peut contacter son organisme pour comprendre le retour métier, et son éditeur pour un accompagnement dans l’usage de son logiciel.",
               "sha256": "bb9fec5b0347c9d1d02e0020a766c08ffbaa4c0a202f3e6d07880bcce5331631",
-              "sourceContentSha256": "6e07de5b576af7991d6ee565f15888acb815c79a3ef711f76ab659e62c8aec48",
+              "sourceContentSha256": "f4d34467dd9de4d904c74083f52a1ac3238016daa6070a259755614cd8a206b9",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "La fiabilisation des données de la DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 1028,
-                  "endLine": 1028
+                  "startLine": 1031,
+                  "endLine": 1031
                 }
               }
             },
@@ -755,13 +2208,13 @@
                 "usage",
                 "logiciel"
               ],
-              "reasoning": "La citation, relevée à la ligne 1028 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (contacter, organisme, comprendre, retour, metier, editeur, accompagnement, usage, logiciel) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 1031 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (contacter, organisme, comprendre, retour, metier, editeur, accompagnement, usage, logiciel) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Répartition organisme / éditeur recommandée par Net-entreprises.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }
@@ -777,11 +2230,11 @@
       "sourceExcerpts": {
         "net-entreprises-fiabilisation": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant."
       },
-      "checkedAt": "2026-09-20",
+      "checkedAt": "2026-11-03",
       "status": "PASS",
       "factCheck": {
         "verdict": "SUPPORTED",
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-03",
         "sourceResults": [
           {
             "sourceId": "net-entreprises-fiabilisation",
@@ -793,15 +2246,15 @@
             "citation": {
               "text": "avant minuit la veille de l’échéance si cela est encore possible. Le cas échéant, la correction pourra être réalisée dans la DSN du mois suivant.",
               "sha256": "0a60eada4f445fa37d853caa0d214039ff76e44db4b0063797cd0a1c7815f3ec",
-              "sourceContentSha256": "6e07de5b576af7991d6ee565f15888acb815c79a3ef711f76ab659e62c8aec48",
+              "sourceContentSha256": "f4d34467dd9de4d904c74083f52a1ac3238016daa6070a259755614cd8a206b9",
               "coordinates": {
                 "finalUrl": "https://www.net-entreprises.fr/declaration/la-fiabilisation-des-donnees-de-la-dsn/",
-                "checkedAt": "2026-09-20",
+                "checkedAt": "2026-11-03",
                 "title": "La fiabilisation des données de la DSN",
                 "locator": {
                   "kind": "line-range",
-                  "startLine": 1031,
-                  "endLine": 1031
+                  "startLine": 1034,
+                  "endLine": 1034
                 }
               }
             },
@@ -821,13 +2274,13 @@
                 "mois",
                 "suivant"
               ],
-              "reasoning": "La citation, relevée à la ligne 1031 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (avant, minuit, veille, echeance, cela, encore, possible, echeant, correction, pourra, realisee, mois, suivant) sans en changer la polarité."
+              "reasoning": "La citation, relevée à la ligne 1034 de la copie locale de Net-entreprises, porte les mêmes entités que le claim (avant, minuit, veille, echeance, cela, encore, possible, echeant, correction, pourra, realisee, mois, suivant) sans en changer la polarité."
             },
             "verdict": "SUPPORTED",
             "supportsClaim": true,
             "contradictsClaim": false,
             "explanation": "Fenêtre de la DSN « annule et remplace » et report au mois suivant, cités mot pour mot.",
-            "checkedAt": "2026-09-20"
+            "checkedAt": "2026-11-03"
           }
         ]
       }

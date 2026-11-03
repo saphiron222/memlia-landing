@@ -3,9 +3,9 @@
   "candidateSlug": "comprendre-les-comptes-rendus-metier-dsn",
   "kind": "image-visual-review",
   "status": "PASS",
-  "checkedAt": "2026-09-20",
-  "articleSha256": "63c2afb4b30b2a9d21cd072495546f215c3fe950db9e992a9b76daca841574c6",
-  "manifestSha256": "992b518b0212b9ff25d7d292656ef228670f6523c7a4ac72062fa81ad3fd3944",
+  "checkedAt": "2026-11-03",
+  "articleSha256": "06815b68545f9891081801341cdf2c6a75e2d29116ef35f9fde76e6aff1fe4c5",
+  "manifestSha256": "ac05a84c995d92e206ae79b99963cd770ea553df6334dd233c3b817455cc81ac",
   "observations": [
     "Contrôle image-visual-review relu sur le candidat exact comprendre-les-comptes-rendus-metier-dsn."
   ],
@@ -30,6 +30,7 @@
     ],
     "tolerance": 45,
     "pixelsMesures": 57600,
+    "resolution": "largeur-320",
     "parts": {
       "#fcfbf7": 0.7869444444444444,
       "#27b657": 0.032065972222222225,
@@ -41,7 +42,8 @@
       "touche": 0.005,
       "presente": 0.005
     },
-    "statut": "PASS",
+    "contrat": "observation-image-generee",
+    "statut": "OBSERVATION",
     "ecarts": []
   },
   "criteria": [
@@ -49,42 +51,42 @@
       "id": "brief-six-components",
       "result": "PASS",
       "observations": [
-        "Le brief porte ses six composantes et épingle chaque couleur par son hex ; la palette mesurée sur le master rendu : crème 78,98 % · vert 3,20 % · vert profond 2,14 % · graphite 2,76 %."
+        "Le brief porte ses six composantes (sujet, composition, style, palette avec hex, interdits, prompt) et six critères de revue. Écart relevé : le champ composition parle d'un « jeton vert déplacé vers une voie », alors que le prompt et les interdits parlent d'un « jeton neutre » ; l'image montre un disque graphite au centre de la bifurcation, conforme au second. Sans effet sur la lisibilité."
       ]
     },
     {
       "id": "generation-constraints",
       "result": "PASS",
       "observations": [
-        "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 adopté par la forge ; coût et passes consignés dans image-source.json."
+        "Génération gpt_image_2_5, 16:9, qualité haute, 2K, master 1920×1080 (image-source.json et preuves/image/master.png) ; palette mesurée : crème 78,7 %, vert Memlia 3,2 %, vert profond 2,1 %, graphite 2,9 %, tous dans les seuils du brief."
       ]
     },
     {
       "id": "fictive-provenance",
       "result": "PASS",
       "observations": [
-        "Scène entièrement construite, aucun document réel, aucune donnée de cabinet, aucun nom ni chiffre."
+        "Scène entièrement construite en volumes abstraits : aucun document réel, aucune donnée de cabinet, aucun texte lisible, aucune figure humaine ; les pictogrammes des plaques (disque, triangle, losange, lignes) ne portent aucune donnée."
       ]
     },
     {
       "id": "recognizable-subject",
       "result": "PASS",
       "observations": [
-        "Un fichier franchit un portique, quatre plaques translucides portent des retours distincts, une pièce graphite est isolée, une bifurcation à jeton neutre figure l'arbitrage. Aucun texte lisible, aucune interface, aucune figure humaine."
+        "Vue sur l'image : un fichier vert franchit un portique à gauche ; cinq plaques translucides distinctes figurent des retours multiples ; une pièce graphite isolée figure l'anomalie ; une bifurcation à droite porte un jeton neutre pour l'arbitrage, sans personnage. Les six critères de revue du brief sont lisibles."
       ]
     },
     {
       "id": "technical-derivatives",
       "result": "PASS",
       "observations": [
-        "Dérivés 768, 1200 et 1600 en AVIF et WebP plus l'image sociale 1200×630, produits par la forge depuis ce master et scellés au dossier."
+        "Dérivés 768, 1200 et 1600 en AVIF et WebP au format 16:9, image sociale 1200×630, master 1920×1080 ; les dérivés 768 des preuves sont identiques aux octets à ceux publiés ; l'image sociale publiée est le ré-encodage par la forge de celle des preuves (dimensions identiques)."
       ]
     },
     {
       "id": "alt-information",
       "result": "PASS",
       "observations": [
-        "L'alternative textuelle décrit ce que l'image montre pour cette tâche, sans promesse ni vocabulaire de catalogue."
+        "L'alternative textuelle (« Un dépôt franchi, plusieurs retours distincts et une anomalie isolée avant la décision humaine. ») décrit ce que l'image montre pour cet article, sans texte superflu."
       ]
     }
   ]
