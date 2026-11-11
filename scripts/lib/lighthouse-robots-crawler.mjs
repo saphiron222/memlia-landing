@@ -4,6 +4,15 @@
  * Mode explicite et opt-in ; le rapport de collecte accompagne le LHR brut.
  */
 import BaseGatherer from 'lighthouse/core/gather/base-gatherer.js';
+export function withRobotsCrawler(config, crawler) {
+  return {
+    ...config,
+    // Lighthouse clone les gatherers directs ; l’enveloppe instance conserve celui lu par le companion.
+    artifacts: config.artifacts.map(artifact => artifact.id === 'RobotsTxt' && crawler
+      ? { id: 'RobotsTxt', gatherer: { instance: crawler } } : artifact),
+  };
+}
+
 export default class CrawlerRobots extends BaseGatherer {
   meta = { supportedModes: ['snapshot', 'navigation'] };
   evidence = null;

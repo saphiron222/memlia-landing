@@ -17,7 +17,7 @@ import lighthouse from 'lighthouse';
 import defaultConfig from 'lighthouse/core/config/default-config.js';
 import * as chromeLauncher from 'chrome-launcher';
 import { chromium } from '@playwright/test';
-import CrawlerRobots from './lib/lighthouse-robots-crawler.mjs';
+import CrawlerRobots, { withRobotsCrawler } from './lib/lighthouse-robots-crawler.mjs';
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DOSSIER_RAPPORTS = join(RACINE, '.lighthouse');
@@ -35,9 +35,7 @@ if (!Number.isFinite(seuil) || seuil < 0 || seuil > 100) {
 const CATEGORIES = ['performance', 'accessibility', 'best-practices', 'seo'];
 const robotsCrawler = args.includes('--robots-crawler') ? new CrawlerRobots() : null;
 const config = {
-  ...defaultConfig,
-  artifacts: defaultConfig.artifacts.map(artifact => artifact.id === 'RobotsTxt' && robotsCrawler
-    ? { id: 'RobotsTxt', gatherer: robotsCrawler } : artifact),
+  ...withRobotsCrawler(defaultConfig, robotsCrawler),
   settings: {
     ...defaultConfig.settings,
     ...(desktop ? {
