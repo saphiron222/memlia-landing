@@ -10,7 +10,8 @@
  * (premières vues, état, baselines), docs/strategy/site-v3/mesures/sentinelle.jsonl (une ligne par jour).
  * Ne corrige rien : elle nomme. Code de sortie 0 sans rouge, 2 avec rouge, 1 si un instrument manque.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import { join } from 'node:path';
 
 import { CHEMINS, ecrireJson, lireJson } from '../lib/seo-registres.mjs';
@@ -46,6 +47,76 @@ function options(argv) {
 
 const etatVide = () => ({ version: 1, premieresVues: {}, etat: {}, baselines: {} });
 
+const ETAT_ARCHIVABLE = join(CHEMINS.mesures, 'sentinelle-etat.json');
+const archivesSentinelle = () => process.env.MEMLIA_SEO_ARCHIVES
+  || join(homedir(), '.hermes/profiles/marketing/cron/seo-archives/sentinelle');
+
+/** L'état local fait foi ; les archives complètent seulement les entrées absentes. */
+export function chargerEtatSentinelle({ root, archiveRoot = archivesSentinelle() }) {
+  const etat = etatVide();
+  const sources = [];
+  const messages = [];
+  const charger = (chemin, archive = false) => {
+    if (!existsSync(chemin)) return;
+    try {
+      const lu = lireJson(chemin);
+      if (lu.version !== 1 || ['premieresVues', 'etat', 'baselines'].some((k) => !lu[k] || typeof lu[k] !== 'object' || Array.isArray(lu[k]))) {
+        throw new Error(`état sentinelle invalide : ${chemin}`);
+      }
+      let ajoutes = 0;
+      for (const cle of ['premieresVues', 'etat', 'baselines']) {
+        for (const [url, valeur] of Object.entries(lu[cle])) {
+          if (Object.hasOwn(etat[cle], url)) continue;
+          etat[cle][url] = valeur;
+          ajoutes += 1;
+        }
+      }
+      if (ajoutes) sources.push(chemin);
+    } catch (e) {
+      if (!archive) throw e;
+      messages.push(`archive ignorée : ${chemin} : ${e.message}`);
+    }
+  };
+  charger(join(root, CHEMINS.brut, 'etat-sentinelle.json'));
+  charger(join(root, ETAT_ARCHIVABLE));
+  if (existsSync(archiveRoot)) {
+    const dossiers = readdirSync(archiveRoot, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort().reverse();
+    for (const dossier of dossiers) charger(join(archiveRoot, dossier, ETAT_ARCHIVABLE), true);
+  }
+  return { etat, sources, messages };
+}
+
+export async function releverVariante(url, { chercher = chercherPage } = {}) {
+  const tentatives = [];
+  for (let essai = 0; essai < 2; essai += 1) {
+    const premier = await chercher(url, { suivre: false, timeoutMs: 15_000 });
+    const final = await chercher(url, { suivre: true, timeoutMs: 15_000 });
+    const mesure = {
+      status: premier.status, location: premier.location ?? null,
+      finalStatus: final.status, finalUrl: final.finalUrl ?? null,
+      redirections: final.redirections ?? 0, erreur: premier.erreur ?? final.erreur ?? null,
+    };
+    tentatives.push(mesure);
+    if (!mesure.erreur && mesure.status !== 0 && mesure.finalStatus !== 0) break;
+  }
+  return { url, ...tentatives.at(-1), tentatives };
+}
+
+export function couvertureSentinelle({ urls, inspections, derive, variantes, sitemapsDisponibles, analytiqueDisponible, sansDerive = false }) {
+  const compter = (attendues, mesurees) => ({ attendues: attendues.length, mesurees: mesurees.length, exclues: attendues.filter((u) => !mesurees.includes(u)) });
+  const couverture = {
+    inspections: compter(urls, urls.filter((url) => inspections.some((i) => i.url === url && !i.error && i.coverage_state))),
+    derive: compter(urls, urls.filter((url) => derive.some((d) => d.url === url && ['ok', 'derive'].includes(d.statut)))),
+    variantes: compter(variantes.map((v) => v.url), variantes.filter((v) => !v.erreur && v.status !== 0 && v.finalStatus !== 0).map((v) => v.url)),
+    sitemaps: sitemapsDisponibles,
+    impressionsVariantes: analytiqueDisponible,
+    exclusions: ['Core Web Vitals', 'positions', 'rendu visuel', ...(sansDerive ? ['dérive désactivée'] : [])],
+  };
+  couverture.complete = sitemapsDisponibles && analytiqueDisponible
+    && ['inspections', 'derive', 'variantes'].every((k) => couverture[k].exclues.length === 0);
+  return couverture;
+}
+
 function ligneCompacte(verdict, extras) {
   return {
     date: verdict.date,
@@ -70,10 +141,11 @@ function lignesRegistre(chemin) {
   }).filter(Boolean);
 }
 
-export async function sentinelle({ root = process.cwd(), date = dateLocale(), sansDerive = false, sansIndexnow = false } = {}) {
-  const messages = [];
+export async function sentinelle({ root = process.cwd(), date = dateLocale(), sansDerive = false, sansIndexnow = false, archiveRoot = archivesSentinelle() } = {}) {
+  const historique = chargerEtatSentinelle({ root, archiveRoot });
+  const messages = [...historique.messages];
   const etatChemin = join(root, CHEMINS.brut, 'etat-sentinelle.json');
-  const etat = lireJson(etatChemin, etatVide);
+  const etat = historique.etat;
 
   const sitemap = await sitemapProduction();
   if (!sitemap.ok || sitemap.urls.length === 0) {
@@ -94,10 +166,10 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
   const lignesPages = analytique.json?.rows ?? [];
   const variantes = [];
   for (const v of VARIANTES) {
-    const premier = await chercherPage(v, { suivre: false, timeoutMs: 15_000 });
-    const final = await chercherPage(v, { suivre: true, timeoutMs: 15_000 });
+    const mesure = await releverVariante(v);
     const impressions28j = lignesPages.filter((l) => String(l.keys?.[0] ?? '').startsWith(v.replace(/\/$/, ''))).reduce((t, l) => t + Number(l.impressions ?? 0), 0);
-    variantes.push({ url: v, status: premier.status, location: premier.location, finalUrl: final.finalUrl, redirections: final.redirections, impressions28j, erreur: premier.erreur ?? final.erreur });
+    variantes.push({ ...mesure, impressions28j: analytique.json ? impressions28j : null });
+    if (mesure.tentatives.length > 1) messages.push(`variante reprise une fois : ${v} (${mesure.tentatives[0].erreur ?? 'aucune réponse HTTP'})`);
   }
 
   const commitDeploye = commitDistant(root);
@@ -106,11 +178,15 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
     for (const url of urls) {
       const base = etat.baselines[url];
       if (!base) derive.push({ url, statut: 'sans-baseline' });
-      else derive.push(deriveComparer(url, { commitBaseline: base.commit ?? null }));
+      else derive.push(deriveComparer(url, { commitBaseline: base.commit ?? null, baselineId: base.baselineId ?? null }));
     }
   }
 
   const indexabilite = indexabiliteProduction(root);
+  const couverture = couvertureSentinelle({ urls, inspections, derive, variantes, sansDerive,
+    sitemapsDisponibles: Array.isArray(sitemapsBruts.json?.sitemaps) && sitemaps.length > 0,
+    analytiqueDisponible: Array.isArray(analytique.json?.rows),
+  });
 
   const verdict = jugerIndexation({
     inspections,
@@ -146,6 +222,7 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
   etat.premieresVues = verdict.premieresVues;
   etat.etat = verdict.etat;
   ecrireJson(etatChemin, etat);
+  ecrireJson(join(root, ETAT_ARCHIVABLE), etat);
 
   const brut = {
     date,
@@ -160,13 +237,15 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
     baselinesPosees,
     indexnow: envoiIndexNow,
     messages,
+    historique: { sources: historique.sources },
+    couverture,
   };
   ecrireJson(join(root, CHEMINS.brut, 'sentinelle', `${date}.json`), brut);
 
   const registreChemin = join(root, CHEMINS.mesures, 'sentinelle.jsonl');
   const anciennes = lignesRegistre(registreChemin).filter((l) => l.date !== date);
   const precedente = anciennes.length ? anciennes[anciennes.length - 1] : null;
-  const ligne = ligneCompacte(verdict, { baselinesPosees: baselinesPosees.length, indexnow: envoiIndexNow.statut, commit: commitDeploye });
+  const ligne = ligneCompacte(verdict, { baselinesPosees: baselinesPosees.length, indexnow: envoiIndexNow.statut, commit: commitDeploye, couverture });
   mkdirSync(join(root, CHEMINS.mesures), { recursive: true });
   writeFileSync(registreChemin, [...anciennes, ligne].map((l) => JSON.stringify(l)).join('\n') + '\n');
   const sansDate = ({ date: _d, commit: _c, baselinesPosees: _b, ...reste }) => JSON.stringify(reste);
@@ -174,7 +253,9 @@ export async function sentinelle({ root = process.cwd(), date = dateLocale(), sa
 
   return {
     ok: true,
-    code: verdict.rouges.length ? 2 : 0,
+    code: !couverture.complete ? 1 : verdict.rouges.length ? 2 : 0,
+    couverture,
+    historique: { sources: historique.sources },
     date,
     commitDeploye,
     resume: verdict.resume,
