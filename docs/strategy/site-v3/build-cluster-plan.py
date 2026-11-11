@@ -13,6 +13,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 from itertools import permutations
@@ -50,6 +51,24 @@ def jours_publication(jour):
 
 
 REGLE_IA = 'docs/strategy/site-v3/rattrapage-ia-2026-10-05.json'
+REGLE_W41 = 'scripts/lib/blog-w41-catchup.json'
+
+
+def est_rattrapage_w41(slug, jour, aujourd_hui=None):
+    chemin = RACINE / REGLE_W41
+    if not chemin.exists():
+        return False  # Les fixtures historiques ne reçoivent aucune capacité supplémentaire.
+    regle = json.loads(chemin.read_text(encoding='utf-8'))
+    return (slug in {e['slug'] for e in regle['articles']}
+            and regle['from'] <= jour <= (aujourd_hui or date.today()).isoformat())
+
+
+def hors_cadence_w41(entree):
+    return (est_rattrapage_w41(entree['slug'], entree['date'])
+            and (entree.get('statut') == 'published'
+                 or (entree.get('statut') == 'planned' and entree.get('datePlanifiee') == entree['date'])))
+
+
 # Entrées et sorties du calendrier : un candidat qui en modifie une doit intégrer
 # les changements concurrents pertinents de main. Une avancée hors calendrier
 # laisse la fourche utilisable ; aucun brouillon candidat ne devient publié.
@@ -61,6 +80,7 @@ CHEMINS_CALENDRIER = (
     'docs/strategy/site-v3/mesures/titres-intent-2026-09-21.json',
     'docs/strategy/site-v3/mesures/autocompletion-cache.json',
     'docs/strategy/site-v3/build-cluster-plan.py', 'scripts/lib/blog-ia-catchup.mjs',
+    REGLE_W41, 'scripts/lib/blog-w41-catchup.mjs',
     'docs/strategy/site-v3/build_cac_architecture.py',
     'docs/strategy/site-v3/cac/mesures/f4-rubrique-preflight-2026-10-09.json',
 )
@@ -300,7 +320,8 @@ def exception_autorisee(e, champ, jour):
 
 
 def verifier_alternance(entrees):
-    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'),
+    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'
+                         and not hors_cadence_w41(e)),
                         key=lambda e: (e['date'], e.get('_ordre_calendrier', e['slug'])))
     erreurs = []
     for e in entrees:
@@ -348,11 +369,13 @@ def alterner(entrees):
                 date.fromisoformat(preuve['date'])
             except ValueError as exc:
                 raise SystemExit(f"date d'exception invalide : {e['slug']}") from exc
-    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'),
+    ordinaires = sorted((e for e in entrees if e.get('serie') != 'cicatrices'
+                         and not hors_cadence_w41(e)),
                         key=lambda e: (e['date'], e['slug']))
     dates = [e['date'] for e in ordinaires]
     fixes = {i: e for i, e in enumerate(ordinaires) if e.get('statut') == 'published' or e.get('datePlanifiee')}
-    libres = [e for e in entrees if e.get('serie') != 'cicatrices' and e.get('statut') != 'published' and not e.get('datePlanifiee')]
+    libres = [e for e in entrees if e.get('serie') != 'cicatrices' and e.get('statut') != 'published'
+              and not e.get('datePlanifiee') and not hors_cadence_w41(e)]
     # Les exceptions datées sont réservées à leur créneau : elles ne créent pas de date nouvelle.
     for e in libres:
         for preuve in e.get('exceptionAlternance', {}).values():
@@ -478,6 +501,8 @@ def planifier(entrees, publies, aujourd_hui=None):
     for slug, p in publies.items():
         if slug in slugs_cicatrices:
             continue
+        if est_rattrapage_w41(slug, p['date'], aujourd_hui):
+            continue  # La date réelle reste dans l'entrée publiée, hors capacité ordinaire.
         if p['date']:
             d = date.fromisoformat(RATTRAPAGE_W39.get(slug, p['date']) if p['date'] in DATES_RATTRAPAGE else p['date'])
             par_jour[d] += 1
@@ -530,11 +555,14 @@ def planifier(entrees, publies, aujourd_hui=None):
         if not valeur or e.get('serie') == 'cicatrices' or e['slug'] in publies:
             continue
         candidat = date.fromisoformat(valeur)
+        rattrapage_w41 = est_rattrapage_w41(e['slug'], valeur, aujourd_hui)
+        if rattrapage_w41 and candidat != aujourd_hui:
+            raise SystemExit(f"date planifiée échue : {e['slug']} ({valeur}) ; replanifier au jour réel")
         actifs = [{'slug': slug, 'date': p['date']} for slug, p in publies.items() if slug not in slugs_cicatrices]
         actifs += [x for x in entrees if x.get('statut') == 'planned' and x.get('serie') != 'cicatrices']
         plafond = plafond_jour_ia(regle_ia, e['slug'], valeur, actifs)
         semaine = cle_quota_ia(regle_ia, e['slug'], valeur)
-        if par_jour[candidat] >= plafond and sum(p['date'] == valeur for slug, p in publies.items() if slug not in slugs_cicatrices) >= plafond:
+        if not rattrapage_w41 and par_jour[candidat] >= plafond and sum(p['date'] == valeur for slug, p in publies.items() if slug not in slugs_cicatrices and not est_rattrapage_w41(slug, p['date'], aujourd_hui)) >= plafond:
             # Créneau supplanté par les publications réelles ; conserver la décision
             # datée, sans la transformer en promesse ni déplacer la date du backlog.
             e['date'] = valeur
@@ -545,14 +573,15 @@ def planifier(entrees, publies, aujourd_hui=None):
         if candidat < PREMIER_JOUR:
             raise SystemExit(f"date planifiée avant le début du calendrier : {e['slug']} ({valeur})")
 
-        if candidat >= DEBUT_CADENCE_15 and candidat.weekday() not in JOURS_DE_PUBLICATION:
+        if not rattrapage_w41 and candidat >= DEBUT_CADENCE_15 and candidat.weekday() not in JOURS_DE_PUBLICATION:
             raise SystemExit(f"article ordinaire hors lundi-vendredi : {e['slug']} ({valeur})")
-        if par_jour[candidat] >= plafond or par_semaine[semaine] >= plafond_semaine(semaine):
+        if not rattrapage_w41 and (par_jour[candidat] >= plafond or par_semaine[semaine] >= plafond_semaine(semaine)):
             raise SystemExit(f"date planifiée au-delà de la cadence : {e['slug']} ({valeur})")
         e['date'] = valeur
         e['statut'] = 'planned'
-        par_jour[candidat] += 1
-        par_semaine[semaine] += 1
+        if not rattrapage_w41:
+            par_jour[candidat] += 1
+            par_semaine[semaine] += 1
 
     jour = max(PREMIER_JOUR, aujourd_hui)
     for e in entrees:
@@ -774,10 +803,13 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         if e.get('datePlanifiee') and creneau(e) != e['datePlanifiee']:
             erreurs.append(f"date planifiée non respectée : {e['slug']} ({e['date']} != {e['datePlanifiee']})")
         slot = date.fromisoformat(creneau(e))
-        if e.get('statut') != 'a-replanifier':
+        w41 = hors_cadence_w41(e)
+        if w41 and e.get('statut') == 'planned' and e['date'] != date.today().isoformat():
+            erreurs.append(f"rattrapage W41 hors jour réel : {e['slug']}")
+        if e.get('statut') != 'a-replanifier' and not w41:
             par_jour[slot] += 1
             par_semaine[cle_quota_ia(regle_ia, e['slug'], slot.isoformat())] += 1
-        if e.get('statut') in ('published', 'planned'):
+        if e.get('statut') in ('published', 'planned') and not w41:
             reel = date.fromisoformat(e['date'])
             par_jour_reel[reel] += 1
             if not regle_ia or regle_ia['publications'].get(e['slug']) != e['date']:
@@ -785,6 +817,7 @@ def verifier(poles, familles, publies, pilier, satellites, liens, par_famille):
         # Les jours habituels régissent le seul ordonnancement automatique, pas
         # une réservation explicite concordante ni une publication intégrée.
         if (slot >= PREMIER_JOUR and slot.weekday() not in jours_publication(slot)
+                and not w41
                 and e.get('statut') not in ('a-replanifier', 'published')
                 and (slot >= DEBUT_CADENCE_15 or e.get('datePlanifiee') != e['date'])):
             jours = 'lundi-vendredi' if slot >= DEBUT_CADENCE_15 else 'lundi-jeudi'
@@ -941,6 +974,8 @@ def verifier_creneau(slug, jour, donnees):
         return  # Une republication tient sa date du fichier publié.
     tous = [pilier] + satellites
     cible = next((e for e in tous if e['slug'] == slug), None)
+    if est_rattrapage_w41(slug, jour.isoformat(), jour) and jour != date.today():
+        raise SystemExit('rattrapage W41 : réservation au jour réel requise')
     if not w39 and (cible is None or (cible['date'], cible['statut']) != (jour.isoformat(), 'planned')):
         raise SystemExit(f'créneau planned non actionnable : {slug} ({jour})')
     try:
@@ -964,6 +999,9 @@ def verifier_creneau(slug, jour, donnees):
         raise SystemExit('calendrier désaligné : rééditer le calendrier complet depuis les sources')
 
 if __name__ == '__main__':
+    # Même jour civil que la forge Node, y compris sur une CI configurée en UTC.
+    os.environ['TZ'] = 'Europe/Paris'
+    time.tzset()
     poles, familles, publies, pilier, satellites, liens, par_famille = construire()
     erreurs, entrants, par_semaine = verifier(poles, familles, publies, pilier, satellites, liens, par_famille)
     if '--slot' in sys.argv:
@@ -989,6 +1027,13 @@ if __name__ == '__main__':
         if (ICI / 'cac/page-intent-plan.json').exists():
             subprocess.run([sys.executable, str(ICI / 'build_cac_architecture.py')], check=True)
     print(f"cluster-plan : {len(satellites)} satellites ({sum(e['statut'] == 'published' for e in satellites)} publiés), {len({e['famille'] for e in satellites})} familles, {len({e['pole'] for e in satellites})} pôles, {len(liens)} liens ; entrants min = {min(entrants[e['slug']] for e in satellites)} ; semaines planifiées = {len(par_semaine)} ; dernier créneau = {max(e['date'] for e in satellites)}")
+    actifs_w41 = [e for e in [pilier] + satellites if hors_cadence_w41(e)]
+    for jour in sorted({e['date'] for e in actifs_w41}):
+        reels = [e for e in [pilier] + satellites if e['date'] == jour and e['statut'] in ('planned', 'published') and e.get('serie') != 'cicatrices']
+        print(f"OBSERVATION cadence {jour} : {len(reels)} ordinaires réels dont {sum(e in actifs_w41 for e in reels)} rattrapages W41 ; {sum(e['statut'] == 'published' for e in reels)} publiés, les autres réservés seulement")
+    for semaine in sorted({semaine_iso(date.fromisoformat(e['date'])) for e in actifs_w41}):
+        reels = [e for e in [pilier] + satellites if semaine_iso(date.fromisoformat(e['date'])) == semaine and e['statut'] in ('planned', 'published') and e.get('serie') != 'cicatrices']
+        print(f"OBSERVATION cadence semaine {semaine[0]}-W{semaine[1]:02d} : {len(reels)} ordinaires réels dont {sum(e in actifs_w41 for e in reels)} rattrapages W41 (préférence normale : quinze)")
     for e in erreurs:
         print('ERREUR :', e)
     if erreurs and '--check' in sys.argv:
